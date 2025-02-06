@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+
+// PartitionService serves partition address related functions
+service PartitionService {
+  // Get a partition
+  rpc Get(PartitionServiceGetRequest) returns (PartitionServiceGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // List all partitions
+  rpc List(PartitionServiceListRequest) returns (PartitionServiceListResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// Partition is a failure domain with machines and switches
+message Partition {
+  // ID of this partition
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Descrpartitiontion of this partition
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  // PartitionBootConfiguration defines how metal-hammer boots
+  PartitionBootConfiguration boot_configuration = 5;
+  // DNSServers for this partition
+  repeated DNSServer dns_server = 6 [(buf.validate.field).repeated.max_items = 3];
+  // NTPServers for this partition
+  repeated NTPServer ntp_server = 7 [(buf.validate.field).repeated.max_items = 10];
+  // Tags on this partition
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
+  // CreatedAt is the date when this partition was created
+  google.protobuf.Timestamp created_at = 10;
+  // UpdatedAt is the date when this partition was updated
+  google.protobuf.Timestamp updated_at = 11;
+}
+
+// PartitionBootConfiguration defines how metal-hammer boots
+message PartitionBootConfiguration {
+  // ImageURL the url to download the initrd for the boot image
+  string image_url = 1;
+  // KernelURL the url to download the kernel for the boot image
+  string kernel_url = 2;
+  // Commandline the cmdline to the kernel for the boot image
+  string commandline = 3;
+}
+
+// DNSServer
+message DNSServer {
+  // IP address of this dns server
+  string ip = 1 [(buf.validate.field).string.ip = true];
+}
+
+// NTPServer
+message NTPServer {
+  // Address either as ip or hostname
+  string address = 1 [(buf.validate.field).string = {max_len: 256}];
+}
+
+// PartitionServiceGetRequest is the request payload for a partition get request
+message PartitionServiceGetRequest {
+  // ID of the partition to get
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// PartitionServiceListRequest is the request payload for a partition list request
+message PartitionServiceListRequest {
+  // ID of the partition to get
+  optional string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// PartitionServiceGetResponse is the response payload for a partition get request
+message PartitionServiceGetResponse {
+  // Ip the partition
+  Partition partition = 1;
+}
+
+// PartitionServiceListResponse is the response payload for a partition list request
+message PartitionServiceListResponse {
+  // Ips the partitions
+  repeated Partition partitions = 1;
+}

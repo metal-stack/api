@@ -1,0 +1,194 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+
+// TokenService serves token related functions
+service TokenService {
+  // Get a token
+  rpc Get(TokenServiceGetRequest) returns (TokenServiceGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+  }
+  // Create a token to authenticate against the platform, the secret will be only visible in the response
+  rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
+    option (visibility) = VISIBILITY_SELF;
+  }
+  // Update a token
+  rpc Update(TokenServiceUpdateRequest) returns (TokenServiceUpdateResponse) {
+    option (visibility) = VISIBILITY_SELF;
+  }
+  // List all your tokens
+  rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
+    option (visibility) = VISIBILITY_SELF;
+  }
+  // Revoke a token, no further usage is possible afterwards
+  rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
+    option (visibility) = VISIBILITY_SELF;
+  }
+}
+
+// Token is a jwt authentication token to access the api
+message Token {
+  // Uuid of the jwt token, used to reference it by revoke
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // UserId who created this token
+  string user_id = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 512
+  }];
+  // Description is a user given description of this token.
+  string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
+  }];
+  // Permissions is a list of service methods this token can be used for
+  repeated MethodPermission permissions = 4;
+  // Expires gives the date in the future after which this token can not be used anymore
+  google.protobuf.Timestamp expires = 6;
+  // IssuedAt gives the date when this token was created
+  google.protobuf.Timestamp issued_at = 7;
+  // TokenType describes the type of this token
+  TokenType token_type = 8 [(buf.validate.field).enum.defined_only = true];
+  // ProjectRoles associates a project id with the corresponding role of the token owner
+  map<string, ProjectRole> project_roles = 9;
+  // TenantRoles associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 10;
+  // AdminRole defines the admin role of the token owner
+  optional AdminRole admin_role = 11 [(buf.validate.field).enum.defined_only = true];
+}
+
+// TokenType specifies different use cases of tokens
+enum TokenType {
+  // TOKEN_TYPE_UNSPECIFIED is not specified
+  TOKEN_TYPE_UNSPECIFIED = 0;
+  // TOKEN_TYPE_API is a token for api usage
+  TOKEN_TYPE_API = 1;
+  // TOKEN_TYPE_CONSOLE is a token for console or web ui usage
+  TOKEN_TYPE_CONSOLE = 2;
+}
+
+// TokenServiceCreateRequest is the request payload to create a token
+message TokenServiceCreateRequest {
+  // Description of the token
+  string description = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
+  }];
+  // Permissions is a list of service methods this token can be used for
+  repeated MethodPermission permissions = 2;
+  // Expires gives the duration since now, after which this token can not be used anymore
+  google.protobuf.Duration expires = 4 [(buf.validate.field).duration = {
+    lt: {seconds: 31536001}
+    gte: {seconds: 600}
+  }];
+  // ProjectRoles associates a project id with the corresponding role of the token owner
+  map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
+    keys: {
+      string: {
+        min_len: 3
+        max_len: 128
+      }
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "project role must be specified"
+        expression: "this >= 0 && this <= 3"
+      }
+    }
+  }];
+  // TenantRoles associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 6 [(buf.validate.field).map = {
+    keys: {
+      string: {
+        min_len: 3
+        max_len: 128
+      }
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "tenant role must be specified"
+        expression: "this >= 0 && this <= 4"
+      }
+    }
+  }];
+  // AdminRole defines the admin role of the token owner
+  optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
+}
+
+// MethodPermission is a mapping from a subject/project to a service method
+message MethodPermission {
+  // Subject maybe either the project or the tenant
+  // for which the methods should be allowed
+  string subject = 1;
+  // Methods which should be accessible
+  repeated string methods = 2;
+}
+
+// TokenServiceCreateResponse is the response payload of a token create request
+message TokenServiceCreateResponse {
+  // Token which was created
+  Token token = 1;
+  // Secret is the body if the jwt token, should be used in api requests as bearer token
+  string secret = 2;
+}
+
+// TokenServiceListRequest is the request payload to list tokens
+message TokenServiceListRequest {}
+
+// TokenServiceListResponse is the response payload of a token list request
+message TokenServiceListResponse {
+  // Tokens is a list of tokens without the secrets
+  repeated Token tokens = 1;
+}
+
+// TokenServiceRevokeRequest is the request payload of a token revoke request
+message TokenServiceRevokeRequest {
+  // Uuid of the token to revoke
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// TokenServiceRevokeResponse is the response payload of a token revoke request
+message TokenServiceRevokeResponse {}
+
+// TokenServiceUpdateRequest is the request payload of a token update request
+message TokenServiceUpdateRequest {
+  // Uuid of the token to update
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Description is a user given description of this token.
+  optional string description = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
+  }];
+  // Permissions is a list of service methods this token can be used for
+  repeated MethodPermission permissions = 3;
+  // ProjectRoles associates a project id with the corresponding role of the token owner
+  map<string, ProjectRole> project_roles = 4;
+  // TenantRoles associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 5;
+  // AdminRole defines the admin role of the token owner
+  optional AdminRole admin_role = 6 [(buf.validate.field).enum.defined_only = true];
+}
+
+// TokenServiceUpdateResponse is the response payload of a token update request
+message TokenServiceUpdateResponse {
+  // Token is the updated token
+  Token token = 1;
+}
+
+// TokenServiceGetRequest is the request payload of a token get request
+message TokenServiceGetRequest {
+  // Uuid of the token to get
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// TokenServiceGetResponse is the response payload of a token get request
+message TokenServiceGetResponse {
+  // Token is the token
+  Token token = 1;
+}

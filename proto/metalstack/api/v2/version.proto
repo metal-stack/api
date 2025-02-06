@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "metalstack/api/v2/common.proto";
+
+// VersionService serves version related functions
+service VersionService {
+  // Get the version
+  rpc Get(VersionServiceGetRequest) returns (VersionServiceGetResponse) {
+    option (visibility) = VISIBILITY_PUBLIC;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// Version of the application
+message Version {
+  // Version of the application
+  string version = 1;
+  // Revision of the application
+  string revision = 2;
+  // GitSHA1 of the application
+  string git_sha1 = 3;
+  // BuildDate of the application
+  string build_date = 4;
+}
+
+// VersionServiceGetRequest is the request payload to get the version
+message VersionServiceGetRequest {}
+
+// VersionServiceGetResponse is the response payload with the version
+message VersionServiceGetResponse {
+  // Version of the application
+  Version version = 1;
+}

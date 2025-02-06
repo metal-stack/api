@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/tenant.proto";
+
+// TenantService serves tenant related functions
+service TenantService {
+  // List tenants
+  rpc List(TenantServiceListRequest) returns (TenantServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+}
+
+// TenantServiceListRequest is the request payload for a tenant list request
+message TenantServiceListRequest {
+  // Login of the tenant to list
+  optional string login = 1;
+  // Name of the tenant to list
+  optional string name = 2;
+  // Email of the tenant to list
+  optional string email = 3;
+  // Paging details for the list request
+  metalstack.api.v2.Paging paging = 7;
+}
+
+// TenantServiceListResponse is the response payload for a tenant list request
+message TenantServiceListResponse {
+  // Tenants are the list of tenants
+  repeated metalstack.api.v2.Tenant tenants = 1;
+  // NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+  optional uint64 next_page = 2;
+}

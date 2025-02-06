@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/project.proto";
+import "metalstack/api/v2/tenant.proto";
+
+// UserService exposes rpc calls for users
+service UserService {
+  // Get a User
+  rpc Get(UserServiceGetRequest) returns (UserServiceGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+}
+
+// User is a end user of the platform
+message User {
+  // Login the login at the provider
+  string login = 1;
+  // Name of the user
+  string name = 2;
+  // Email of the user
+  string email = 3;
+  // AvatarUrl of the user
+  string avatar_url = 5;
+  // Tenants the user belongs to
+  repeated Tenant tenants = 8;
+  // Projects the user belongs to
+  repeated Project projects = 9;
+  // DefaultTenant this user belongs to
+  Tenant default_tenant = 10;
+  // DefaultProject this user belongs to
+  Project default_project = 11;
+}
+
+// UserServiceGetRequest is the request to get the user
+message UserServiceGetRequest {}
+
+// UserServiceGetResponse the response when userservice get request was called
+message UserServiceGetResponse {
+  // User is the user
+  User user = 1;
+}

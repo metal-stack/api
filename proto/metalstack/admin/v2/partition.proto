@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/partition.proto";
+
+// PartitionService serves partition address related functions
+service PartitionService {
+  // Create a partition
+  rpc Create(PartitionServiceCreateRequest) returns (PartitionServiceCreateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Update a partition
+  rpc Update(PartitionServiceUpdateRequest) returns (PartitionServiceUpdateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Delete a partition
+  rpc Delete(PartitionServiceDeleteRequest) returns (PartitionServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Capacity of a partitions
+  rpc Capacity(PartitionServiceCapacityRequest) returns (PartitionServiceCapacityResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// PartitionServiceCreateRequest is the request payload for a partition create request
+message PartitionServiceCreateRequest {
+  // Partition the partition
+  metalstack.api.v2.Partition partition = 1;
+}
+
+// PartitionServiceUpdateRequest is the request payload for a partition update request
+message PartitionServiceUpdateRequest {
+  // ID of the partition to get
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // PartitionBootConfiguration defines how metal-hammer boots
+  metalstack.api.v2.PartitionBootConfiguration boot_configuration = 5;
+  // DNSServers for this partition
+  repeated metalstack.api.v2.DNSServer dns_server = 6 [(buf.validate.field).repeated.max_items = 3];
+  // NTPServers for this partition
+  repeated metalstack.api.v2.NTPServer ntp_server = 7 [(buf.validate.field).repeated.max_items = 10];
+  // Tags on this partition
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
+}
+
+// PartitionServiceDeleteRequest is the request payload for a partition delete request
+message PartitionServiceDeleteRequest {
+  // ID of the partition to get
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// PartitionServiceCreateResponse is the response payload for a partition create request
+message PartitionServiceCreateResponse {
+  // Partition the partition
+  metalstack.api.v2.Partition partition = 1;
+}
+
+// PartitionServiceUpdateResponse is the response payload for a partition update request
+message PartitionServiceUpdateResponse {
+  // Partition the partition
+  metalstack.api.v2.Partition partition = 1;
+}
+
+// PartitionServiceCapacityResponse is the response payload for a partition delete request
+message PartitionServiceDeleteResponse {
+  // Partition the partition
+  metalstack.api.v2.Partition partition = 1;
+}
+
+// PartitionServiceListRequest is the request payload for a partition capacity request
+message PartitionServiceCapacityRequest {
+  // ID of the partition to get
+  optional string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Size of machines to show the capacity
+  optional string size = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Project of machines to show the capacity
+  optional string project = 3 [(buf.validate.field).string.uuid = true];
+}
+
+// PartitionServiceCapacityResponse is the response payload for a partition capacity request
+message PartitionServiceCapacityResponse {
+  // Size is the size id correlating to all counts in this server capacity.
+  string size = 1;
+  // Total is the total amount of machines for this size.
+  int64 total = 2;
+  // PhonedHome is the amount of machines that are currently in the provisioning state "phoned home".
+  int64 phoned_home = 3;
+  // Waiting is the amount of machines that are currently in the provisioning state "waiting".
+  int64 waiting = 4;
+  // Other is the amount of machines that are neither in the provisioning state waiting nor in phoned home but in another provisioning state.
+  int64 other = 5;
+  // OtherMachines contains the machine IDs for machines that were classified into "Other".
+  repeated string other_machines = 6;
+  // Allocated is the amount of machines that are currently allocated.
+  int64 allocated = 7;
+  // Allocatable is the amount of machines in a partition is the amount of machines that can be allocated.
+  // Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable. Size reservations are not considered in this count.
+  int64 allocatable = 8;
+  // Free is the amount of machines in a partition that can be freely allocated at any given moment by a project.
+  // Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable due to size reservations.
+  int64 free = 9;
+  // Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or
+  // not in the machine state "available", e.g. locked or reserved.
+  int64 unavailable = 10;
+  // Faulty is the amount of machines that are neither allocated nor in the pool of available machines because they report an error.
+  int64 faulty = 11;
+  // FaultyMachines contains the machine IDs for machines that were classified into "Faulty".
+  repeated string faulty_machines = 12;
+  // Reservations is the amount of reservations made for this size.
+  int64 reservations = 13;
+  // UsedReservations is the amount of reservations already used up for this size.
+  int64 used_reservations = 14;
+  // RemainingReservations is the amount of reservations remaining for this size.
+  int64 remaining_reservations = 15;
+}

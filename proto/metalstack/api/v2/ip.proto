@@ -1,0 +1,213 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+
+// IPService serves ip address related functions
+service IPService {
+  // Get a ip
+  rpc Get(IPServiceGetRequest) returns (IPServiceGetResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Create a ip
+  rpc Create(IPServiceCreateRequest) returns (IPServiceCreateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  // Update a ip
+  rpc Update(IPServiceUpdateRequest) returns (IPServiceUpdateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  // List all ips
+  rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Delete a ip
+  rpc Delete(IPServiceDeleteRequest) returns (IPServiceDeleteResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+}
+
+// IPType specifies different ip address types
+enum IPType {
+  // IP_TYPE_UNSPECIFIED is not specified
+  IP_TYPE_UNSPECIFIED = 0;
+  // IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage
+  IP_TYPE_EPHEMERAL = 1;
+  // IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly
+  IP_TYPE_STATIC = 2;
+}
+
+// IPAddressFamily defines either IPv4 or IPv6 Addressfamily
+enum IPAddressFamily {
+  // IP_ADDRESS_FAMILY_UNSPECIFIED is not specified
+  IP_ADDRESS_FAMILY_UNSPECIFIED = 0;
+  // IP_ADDRESS_FAMILY_V4 defines a IPv4 address
+  IP_ADDRESS_FAMILY_V4 = 1;
+  // IP_ADDRESS_FAMILY_V6 defines a IPv6 address
+  IP_ADDRESS_FAMILY_V6 = 2;
+}
+
+// IP is a ip address which can be used as loadbalancer addresses
+message IP {
+  // Uuid of this ip
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Ip is either ipv4 or ipv6 address
+  string ip = 2 [(buf.validate.field).string.ip = true];
+  // Name of this ip
+  string name = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this ip
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Network is the network this ip belongs to
+  string network = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Project where this ip address belongs to
+  string project = 6 [(buf.validate.field).string.uuid = true];
+  // Type of this ip
+  IPType type = 7 [(buf.validate.field).enum.defined_only = true];
+  // Tags on this ip
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
+  // CreatedAt is the date when this ip was created
+  google.protobuf.Timestamp created_at = 10;
+  // UpdatedAt is the date when this ip was updated
+  google.protobuf.Timestamp updated_at = 11;
+}
+
+// IPServiceGetRequest is the request payload for a ip get request
+message IPServiceGetRequest {
+  // IP of the ip to get
+  string ip = 1 [(buf.validate.field).string.ip = true];
+  // Project of the ip
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// IPServiceCreateRequest is the request payload for a ip create request
+message IPServiceCreateRequest {
+  // Network from which the IP should be created
+  string network = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Project of the ip
+  string project = 2 [(buf.validate.field).string.uuid = true];
+  // Name of the ip
+  optional string name = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of the ip
+  optional string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  // IP if given try to create this ip if still available
+  optional string ip = 5 [(buf.validate.field).string.ip = true];
+  // MachineId for which this ip should get created
+  optional string machine_id = 6 [(buf.validate.field).string.uuid = true];
+  // Tags to put onto the ip
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
+  // Type of the IP, ether ephemeral (default), or static
+  optional IPType type = 9 [(buf.validate.field).enum.defined_only = true];
+  // Addressfamily of the IP to create, defaults to ipv4
+  optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
+}
+
+// IPServiceUpdateRequest is the request payload for a ip update request
+message IPServiceUpdateRequest {
+  // Ip the ip to update
+  string ip = 1 [(buf.validate.field).string.ip = true];
+  // Project of the ip
+  string project = 2 [(buf.validate.field).string.uuid = true];
+  // Name of this ip
+  optional string name = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this ip
+  optional string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Type of this ip
+  optional IPType type = 5 [(buf.validate.field).enum.defined_only = true];
+  // Tags on this ip
+  repeated string tags = 6 [(buf.validate.field).repeated.max_items = 100];
+}
+
+// IPServiceListRequest is the request payload for a ip list request
+message IPServiceListRequest {
+  // Ip the ip to list
+  optional string ip = 1 [(buf.validate.field).string.ip = true];
+  // Network from where the ips to list
+  optional string network = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Project of the ips to list
+  string project = 3 [(buf.validate.field).string.uuid = true];
+  // Name of this ip
+  optional string name = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Uuid for which this ips should get filtered
+  optional string uuid = 5 [(buf.validate.field).string.uuid = true];
+  // MachineId for which this ips should get filtered
+  optional string machine_id = 6 [(buf.validate.field).string.uuid = true];
+  // ParentPrefixCidr for which this ips should get filtered
+  optional string parent_prefix_cidr = 7 [(buf.validate.field).string.ip = true];
+  // Tags for which this ips should get filtered
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
+  // Static if set to true, this will be a Static ip
+  optional IPType type = 9 [(buf.validate.field).enum.defined_only = true];
+  // Addressfamily of the IPs to list, defaults to all addressfamilies
+  optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
+}
+
+// IPServiceDeleteRequest is the request payload for a ip delete request
+message IPServiceDeleteRequest {
+  // IP of the ip to delete
+  string ip = 1 [(buf.validate.field).string.ip = true];
+  // Project of the ip
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// IPServiceGetResponse is the response payload for a ip get request
+message IPServiceGetResponse {
+  // Ip the ip
+  IP ip = 1;
+}
+
+// IPServiceUpdateResponse is the response payload for a ip update request
+message IPServiceUpdateResponse {
+  // Ip the ip
+  IP ip = 1;
+}
+
+// IPServiceCreateResponse is the response payload for a ip create request
+message IPServiceCreateResponse {
+  // Ip the ip
+  IP ip = 1;
+}
+
+// IPServiceListResponse is the response payload for a ip list request
+message IPServiceListResponse {
+  // Ips the ips
+  repeated IP ips = 1;
+}
+
+// IPServiceDeleteResponse is the response payload for a ip delete request
+message IPServiceDeleteResponse {
+  // Ip the ip
+  IP ip = 1;
+}
