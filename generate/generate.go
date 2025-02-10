@@ -226,7 +226,7 @@ func svcs(root string) (map[string]api, error) {
 		}
 		_, name, _ := strings.Cut(*fd.Package, "metalstack.")
 		name = strings.ReplaceAll(name, ".", "")
-		fmt.Printf("package:%s name:%s\n", *fd.Package, name)
+
 		a, ok := result[name]
 		if !ok {
 			a = api{

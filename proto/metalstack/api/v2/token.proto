@@ -46,7 +46,7 @@ message Token {
     max_len: 256
   }];
   // Permissions is a list of service methods this token can be used for
-  repeated MethodPermission permissions = 4;
+  repeated MethodPermission permissions = 4 [(buf.validate.field).repeated.max_items = 500];
   // Expires gives the date in the future after which this token can not be used anymore
   google.protobuf.Timestamp expires = 6;
   // IssuedAt gives the date when this token was created
@@ -79,7 +79,7 @@ message TokenServiceCreateRequest {
     max_len: 256
   }];
   // Permissions is a list of service methods this token can be used for
-  repeated MethodPermission permissions = 2;
+  repeated MethodPermission permissions = 2 [(buf.validate.field).repeated.max_items = 100];
   // Expires gives the duration since now, after which this token can not be used anymore
   google.protobuf.Duration expires = 4 [(buf.validate.field).duration = {
     lt: {seconds: 31536001}
@@ -125,9 +125,12 @@ message TokenServiceCreateRequest {
 message MethodPermission {
   // Subject maybe either the project or the tenant
   // for which the methods should be allowed
-  string subject = 1;
+  string subject = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 256
+  }];
   // Methods which should be accessible
-  repeated string methods = 2;
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
 
 // TokenServiceCreateResponse is the response payload of a token create request
@@ -168,9 +171,37 @@ message TokenServiceUpdateRequest {
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 3;
   // ProjectRoles associates a project id with the corresponding role of the token owner
-  map<string, ProjectRole> project_roles = 4;
+  map<string, ProjectRole> project_roles = 4 [(buf.validate.field).map = {
+    keys: {
+      string: {
+        min_len: 3
+        max_len: 128
+      }
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "project role must be specified"
+        expression: "this >= 0 && this <= 3"
+      }
+    }
+  }];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
-  map<string, TenantRole> tenant_roles = 5;
+  map<string, TenantRole> tenant_roles = 5 [(buf.validate.field).map = {
+    keys: {
+      string: {
+        min_len: 3
+        max_len: 128
+      }
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "tenant role must be specified"
+        expression: "this >= 0 && this <= 4"
+      }
+    }
+  }];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 6 [(buf.validate.field).enum.defined_only = true];
 }
