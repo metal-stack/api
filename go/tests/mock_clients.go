@@ -28,38 +28,42 @@ type (
 		t *testing.T
 	}
 	adminv2 struct {
-		partitionservice *adminv2mocks.PartitionServiceClient
-		tenantservice    *adminv2mocks.TenantServiceClient
-		tokenservice     *adminv2mocks.TokenServiceClient
+		filesystemservice *adminv2mocks.FilesystemServiceClient
+		partitionservice  *adminv2mocks.PartitionServiceClient
+		tenantservice     *adminv2mocks.TenantServiceClient
+		tokenservice      *adminv2mocks.TokenServiceClient
 	}
 
 	Adminv2MockFns struct {
-		Partition func(m *mock.Mock)
-		Tenant    func(m *mock.Mock)
-		Token     func(m *mock.Mock)
+		Filesystem func(m *mock.Mock)
+		Partition  func(m *mock.Mock)
+		Tenant     func(m *mock.Mock)
+		Token      func(m *mock.Mock)
 	}
 	apiv2 struct {
-		healthservice    *apiv2mocks.HealthServiceClient
-		ipservice        *apiv2mocks.IPServiceClient
-		methodservice    *apiv2mocks.MethodServiceClient
-		partitionservice *apiv2mocks.PartitionServiceClient
-		projectservice   *apiv2mocks.ProjectServiceClient
-		tenantservice    *apiv2mocks.TenantServiceClient
-		tokenservice     *apiv2mocks.TokenServiceClient
-		userservice      *apiv2mocks.UserServiceClient
-		versionservice   *apiv2mocks.VersionServiceClient
+		filesystemservice *apiv2mocks.FilesystemServiceClient
+		healthservice     *apiv2mocks.HealthServiceClient
+		ipservice         *apiv2mocks.IPServiceClient
+		methodservice     *apiv2mocks.MethodServiceClient
+		partitionservice  *apiv2mocks.PartitionServiceClient
+		projectservice    *apiv2mocks.ProjectServiceClient
+		tenantservice     *apiv2mocks.TenantServiceClient
+		tokenservice      *apiv2mocks.TokenServiceClient
+		userservice       *apiv2mocks.UserServiceClient
+		versionservice    *apiv2mocks.VersionServiceClient
 	}
 
 	Apiv2MockFns struct {
-		Health    func(m *mock.Mock)
-		IP        func(m *mock.Mock)
-		Method    func(m *mock.Mock)
-		Partition func(m *mock.Mock)
-		Project   func(m *mock.Mock)
-		Tenant    func(m *mock.Mock)
-		Token     func(m *mock.Mock)
-		User      func(m *mock.Mock)
-		Version   func(m *mock.Mock)
+		Filesystem func(m *mock.Mock)
+		Health     func(m *mock.Mock)
+		IP         func(m *mock.Mock)
+		Method     func(m *mock.Mock)
+		Partition  func(m *mock.Mock)
+		Project    func(m *mock.Mock)
+		Tenant     func(m *mock.Mock)
+		Token      func(m *mock.Mock)
+		User       func(m *mock.Mock)
+		Version    func(m *mock.Mock)
 	}
 )
 
@@ -87,12 +91,16 @@ func (w wrapper) Adminv2(fns *Adminv2MockFns) *adminv2 {
 
 func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	a := &adminv2{
-		partitionservice: adminv2mocks.NewPartitionServiceClient(t),
-		tenantservice:    adminv2mocks.NewTenantServiceClient(t),
-		tokenservice:     adminv2mocks.NewTokenServiceClient(t),
+		filesystemservice: adminv2mocks.NewFilesystemServiceClient(t),
+		partitionservice:  adminv2mocks.NewPartitionServiceClient(t),
+		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
+		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
 	}
 
 	if fns != nil {
+		if fns.Filesystem != nil {
+			fns.Filesystem(&a.filesystemservice.Mock)
+		}
 		if fns.Partition != nil {
 			fns.Partition(&a.partitionservice.Mock)
 		}
@@ -108,6 +116,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	return a
 }
 
+func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
+	return c.filesystemservice
+}
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice
 }
@@ -124,18 +135,22 @@ func (w wrapper) Apiv2(fns *Apiv2MockFns) *apiv2 {
 
 func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 	a := &apiv2{
-		healthservice:    apiv2mocks.NewHealthServiceClient(t),
-		ipservice:        apiv2mocks.NewIPServiceClient(t),
-		methodservice:    apiv2mocks.NewMethodServiceClient(t),
-		partitionservice: apiv2mocks.NewPartitionServiceClient(t),
-		projectservice:   apiv2mocks.NewProjectServiceClient(t),
-		tenantservice:    apiv2mocks.NewTenantServiceClient(t),
-		tokenservice:     apiv2mocks.NewTokenServiceClient(t),
-		userservice:      apiv2mocks.NewUserServiceClient(t),
-		versionservice:   apiv2mocks.NewVersionServiceClient(t),
+		filesystemservice: apiv2mocks.NewFilesystemServiceClient(t),
+		healthservice:     apiv2mocks.NewHealthServiceClient(t),
+		ipservice:         apiv2mocks.NewIPServiceClient(t),
+		methodservice:     apiv2mocks.NewMethodServiceClient(t),
+		partitionservice:  apiv2mocks.NewPartitionServiceClient(t),
+		projectservice:    apiv2mocks.NewProjectServiceClient(t),
+		tenantservice:     apiv2mocks.NewTenantServiceClient(t),
+		tokenservice:      apiv2mocks.NewTokenServiceClient(t),
+		userservice:       apiv2mocks.NewUserServiceClient(t),
+		versionservice:    apiv2mocks.NewVersionServiceClient(t),
 	}
 
 	if fns != nil {
+		if fns.Filesystem != nil {
+			fns.Filesystem(&a.filesystemservice.Mock)
+		}
 		if fns.Health != nil {
 			fns.Health(&a.healthservice.Mock)
 		}
@@ -169,6 +184,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 	return a
 }
 
+func (c *apiv2) Filesystem() apiv2connect.FilesystemServiceClient {
+	return c.filesystemservice
+}
 func (c *apiv2) Health() apiv2connect.HealthServiceClient {
 	return c.healthservice
 }

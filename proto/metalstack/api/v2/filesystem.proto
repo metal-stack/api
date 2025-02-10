@@ -1,0 +1,250 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+
+// FilesystemService serves filesystem related functions
+service FilesystemService {
+  // Get a filesystem
+  rpc Get(FilesystemServiceGetRequest) returns (FilesystemServiceGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // List all filesystems
+  rpc List(FilesystemServiceListRequest) returns (FilesystemServiceListResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Try a filesystems
+  rpc Try(FilesystemServiceTryRequest) returns (FilesystemServiceTryResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+
+  // Match a filesystems
+  rpc Match(FilesystemServiceMatchRequest) returns (FilesystemServiceMatchResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// FilesystemServiceGetRequest is the request payload for a filesystem get request
+message FilesystemServiceGetRequest {
+  // ID of the filesystem to get
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// FilesystemServiceListRequest is the request payload for a filesystem list request
+message FilesystemServiceListRequest {
+  // ID of the filesystem to get
+  optional string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// FilesystemServiceGetResponse is the response payload for a filesystem get request
+message FilesystemServiceGetResponse {
+  // Filesystem the filesystem
+  Filesystem filesystem = 1;
+}
+
+// FilesystemServiceListResponse is the response payload for a filesystem list request
+message FilesystemServiceListResponse {
+  // Filesystems the filesystems
+  repeated Filesystem filesystems = 1;
+}
+
+// FilesystemServiceTryRequest
+message FilesystemServiceTryRequest {
+  // Size, machine size to try
+  string size = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Image machine image to try
+  string image = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// FilesystemServiceMatchRequest
+message FilesystemServiceMatchRequest {
+  // Machine to check
+  string machine = 1 [(buf.validate.field).string.uuid = true];
+  // FilesystemLayoutId to check
+  string filesystem_layout_id = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// FilesystemServiceTryResponse
+message FilesystemServiceTryResponse {
+  // Filesystem the filesystem
+  Filesystem filesystem = 1;
+}
+
+// FilesystemServiceMatchResponse
+message FilesystemServiceMatchResponse {
+  // Filesystem the filesystem
+  Filesystem filesystem = 1;
+}
+
+// FilesystemLayout
+message FilesystemLayout {
+  // Filesystems is a list of filesystems to create on a machine
+  repeated Filesystem filesystems = 1;
+  // Disks list of disks that belong to this layout
+  repeated Disk disks = 2;
+  // raid arrays to create
+  repeated Raid raid = 3;
+  // VolumeGroups list of volumegroups to create
+  repeated VolumeGroup volume_groups = 4;
+  // LogicalVolumes list of logicalvolumes to create
+  repeated LogicalVolume logical_volumes = 5;
+  // Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
+  FilesystemLayoutConstraints constraints = 6;
+}
+
+// FilesystemLayoutConstraints
+message FilesystemLayoutConstraints {
+  // Sizes list of sizes this layout applies to
+  repeated string sizes = 1;
+  // Images list of images this layout applies to
+  map<string, string> images = 2;
+}
+
+// Filesystem
+message Filesystem {
+  // Path the mountpoint where this filesystem should be mounted on
+  optional string path = 1;
+  // Device the underlying device where this filesystem should be created
+  string device = 2;
+  // Format of the filesystem format
+  Format format = 3;
+  // Label optional label for this this filesystem
+  optional string label = 4;
+  // MountOptions the options to use to mount this filesystem
+  repeated string mount_options = 5;
+  // CreateOptions the options to use to create (mkfs) this filesystem
+  repeated string create_options = 6;
+}
+
+// Disk
+message Disk {
+  // Device the device to create the partitions
+  string device = 1;
+  // Partitions list of partitions to create on this disk
+  repeated DiskPartition partitions = 2;
+  // WipeOnReinstall if set to true, this disk will be wiped before reinstallation
+  bool wipe_on_reinstall = 3;
+}
+
+// Raid
+message Raid {
+  // ArrayName the name of the resulting array device
+  string array_name = 1;
+  // Devices list of devices to form the raid array from
+  repeated string devices = 2;
+  // Level raid level to create, should be 0 or 1
+  RaidLevel level = 3;
+  // CreateOptions the options to use to create the raid array
+  repeated string create_options = 4;
+  // Spares number of spares for the raid array
+  int32 spares = 5;
+}
+
+// DiskPartition
+message DiskPartition {
+  // Number partition number, will be appended to partitionprefix to create the final devicename
+  uint32 number = 1;
+  // optional label for this this partition
+  optional string label = 2;
+  // Size size in mebibytes (MiB) of this partition"
+  uint64 size = 3;
+  // GPTType the gpt partition table type of this partition
+  optional GPTType gpt_type = 4;
+}
+
+// VolumeGroup
+message VolumeGroup {
+  // Name the name of the resulting volume group
+  string name = 1;
+  // Devices list of devices to form the volume group from
+  repeated string devices = 2;
+  // Tags list of tags to add to the volume group
+  repeated string tags = 3;
+}
+
+// LogicalVolume
+message LogicalVolume {
+  // Name the name of the logical volume
+  string name = 1;
+  // VolumeGroup the name of the volume group where to create the logical volume onto
+  string volume_group = 2;
+  // Size size in mebibytes (MiB) of this volume
+  uint64 size = 3;
+  // LVMType the type of this logical volume can be either linear|striped|raid1
+  LVMType lvm_type = 4 [(buf.validate.field).enum.defined_only = true];
+}
+
+// LVMType
+enum LVMType {
+  // LVM_TYPE_UNSPECIFIED is not specified
+  LVM_TYPE_UNSPECIFIED = 0;
+  // LVM_TYPE_LINEAR append across all physical volumes
+  LVM_TYPE_LINEAR = 1;
+  // LVM_TYPE_STRIPED stripe across all physical volumes
+  LVM_TYPE_STRIPED = 2;
+  // LVM_TYPE_RAID1 mirror with raid across all physical volumes
+  LVM_TYPE_RAID1 = 3;
+}
+
+// Format specifies the filesystem to use on a volume
+enum Format {
+  // FORMAT_UNSPECIFIED
+  FORMAT_UNSPECIFIED = 0;
+  // FORMAT_VFAT is used for the UEFI boot partition
+  FORMAT_VFAT = 1;
+  // FORMAT_EXT3 is usually only used for /boot
+  FORMAT_EXT3 = 2;
+  // FORMAT_EXT4 is the default fs
+  FORMAT_EXT4 = 3;
+  // FORMAT_SWAP is for the swap partition
+  FORMAT_SWAP = 4;
+  // FORMAT_TMPFS is used for a memory filesystem typically /tmp
+  FORMAT_TMPFS = 5;
+  // FORMAT_NONE
+  FORMAT_NONE = 6;
+}
+
+// GPTType specifies the partition type in uefi systems
+enum GPTType {
+  // GPT_TYPE_UNSPECIFIED is no specified
+  GPT_TYPE_UNSPECIFIED = 0;
+  // GPT_TYPE_BOOT EFI Boot Partition
+  GPT_TYPE_BOOT = 1;
+  // GPT_TYPE_LINUX Linux Partition
+  GPT_TYPE_LINUX = 2;
+  // GPT_TYPE_LINUX_RAID Linux Raid Partition
+  GPT_TYPE_LINUX_RAID = 3;
+  // GPT_TYPE_LINUX_LVM Linux LVM Partition
+  GPT_TYPE_LINUX_LVM = 4;
+}
+
+// RaidLevel defines howto mirror two or more block devices
+enum RaidLevel {
+  // RAID_LEVEL_UNSPECIFIED is not specified
+  RAID_LEVEL_UNSPECIFIED = 0;
+  // RAID_LEVEL_0 is a stripe of two or more disks
+  RAID_LEVEL_0 = 1;
+  // RAID_LEVEL_1 is a mirror of two disks
+  RAID_LEVEL_1 = 2;
+}

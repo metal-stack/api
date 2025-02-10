@@ -3,9 +3,11 @@ package permissions
 
 func GetServices() []string {
 	return []string{
+		"metalstack.admin.v2.FilesystemService",
 		"metalstack.admin.v2.PartitionService",
 		"metalstack.admin.v2.TenantService",
 		"metalstack.admin.v2.TokenService",
+		"metalstack.api.v2.FilesystemService",
 		"metalstack.api.v2.HealthService",
 		"metalstack.api.v2.IPService",
 		"metalstack.api.v2.MethodService",
@@ -23,6 +25,9 @@ func GetServicePermissions() *ServicePermissions {
 		Roles: Roles{
 			Admin: Admin{
 				"ADMIN_ROLE_EDITOR": []string{
+					"/metalstack.admin.v2.FilesystemService/Create",
+					"/metalstack.admin.v2.FilesystemService/Update",
+					"/metalstack.admin.v2.FilesystemService/Delete",
 					"/metalstack.admin.v2.PartitionService/Create",
 					"/metalstack.admin.v2.PartitionService/Update",
 					"/metalstack.admin.v2.PartitionService/Delete",
@@ -95,6 +100,9 @@ func GetServicePermissions() *ServicePermissions {
 			},
 		},
 		Methods: map[string]bool{
+			"/metalstack.admin.v2.FilesystemService/Create":    true,
+			"/metalstack.admin.v2.FilesystemService/Delete":    true,
+			"/metalstack.admin.v2.FilesystemService/Update":    true,
 			"/metalstack.admin.v2.PartitionService/Capacity":   true,
 			"/metalstack.admin.v2.PartitionService/Create":     true,
 			"/metalstack.admin.v2.PartitionService/Delete":     true,
@@ -102,6 +110,10 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.admin.v2.TenantService/List":          true,
 			"/metalstack.admin.v2.TokenService/List":           true,
 			"/metalstack.admin.v2.TokenService/Revoke":         true,
+			"/metalstack.api.v2.FilesystemService/Get":         true,
+			"/metalstack.api.v2.FilesystemService/List":        true,
+			"/metalstack.api.v2.FilesystemService/Match":       true,
+			"/metalstack.api.v2.FilesystemService/Try":         true,
 			"/metalstack.api.v2.HealthService/Get":             true,
 			"/metalstack.api.v2.IPService/Create":              true,
 			"/metalstack.api.v2.IPService/Delete":              true,
@@ -153,6 +165,10 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.api.v2.VersionService/Get":                          true,
 			},
 			Self: map[string]bool{
+				"/metalstack.api.v2.FilesystemService/Get":         true,
+				"/metalstack.api.v2.FilesystemService/List":        true,
+				"/metalstack.api.v2.FilesystemService/Match":       true,
+				"/metalstack.api.v2.FilesystemService/Try":         true,
 				"/metalstack.api.v2.MethodService/TokenScopedList": true,
 				"/metalstack.api.v2.PartitionService/Get":          true,
 				"/metalstack.api.v2.PartitionService/List":         true,
@@ -172,6 +188,9 @@ func GetServicePermissions() *ServicePermissions {
 			},
 		},
 		Auditable: map[string]bool{
+			"/metalstack.admin.v2.FilesystemService/Create":    true,
+			"/metalstack.admin.v2.FilesystemService/Delete":    true,
+			"/metalstack.admin.v2.FilesystemService/Update":    true,
 			"/metalstack.admin.v2.PartitionService/Capacity":   false,
 			"/metalstack.admin.v2.PartitionService/Create":     true,
 			"/metalstack.admin.v2.PartitionService/Delete":     true,
@@ -179,6 +198,10 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.admin.v2.TenantService/List":          true,
 			"/metalstack.admin.v2.TokenService/List":           true,
 			"/metalstack.admin.v2.TokenService/Revoke":         true,
+			"/metalstack.api.v2.FilesystemService/Get":         false,
+			"/metalstack.api.v2.FilesystemService/List":        false,
+			"/metalstack.api.v2.FilesystemService/Match":       false,
+			"/metalstack.api.v2.FilesystemService/Try":         false,
 			"/metalstack.api.v2.HealthService/Get":             false,
 			"/metalstack.api.v2.IPService/Create":              true,
 			"/metalstack.api.v2.IPService/Delete":              true,

@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/filesystem.proto";
+
+// FilesystemService serves filesystem related functions
+service FilesystemService {
+  // Create a filesystem
+  rpc Create(FilesystemServiceCreateRequest) returns (FilesystemServiceCreateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Update a filesystem
+  rpc Update(FilesystemServiceUpdateRequest) returns (FilesystemServiceUpdateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Delete a filesystem
+  rpc Delete(FilesystemServiceDeleteRequest) returns (FilesystemServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+}
+
+// FilesystemServiceCreateRequest
+message FilesystemServiceCreateRequest {
+  // Filesystem the filesystem
+  metalstack.api.v2.Filesystem filesystem = 1;
+}
+
+// FilesystemServiceCreateResponse
+message FilesystemServiceCreateResponse {
+  // Filesystem the filesystem
+  metalstack.api.v2.Filesystem filesystem = 1;
+}
+
+// FilesystemServiceUpdateRequest
+message FilesystemServiceUpdateRequest {
+  // Filesystem the filesystem
+  metalstack.api.v2.Filesystem filesystem = 1;
+}
+
+// FilesystemServiceUpdateResponse
+message FilesystemServiceUpdateResponse {
+  // Filesystem the filesystem
+  metalstack.api.v2.Filesystem filesystem = 1;
+}
+
+// FilesystemServiceDeleteRequest
+message FilesystemServiceDeleteRequest {
+  // ID of the filesystem to delete
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// message FilesystemServiceDeleteResponse {
+message FilesystemServiceDeleteResponse {
+  // Filesystem the filesystem
+  metalstack.api.v2.Filesystem filesystem = 1;
+}

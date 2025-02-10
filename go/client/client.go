@@ -17,18 +17,21 @@ type (
 		config DialConfig
 	}
 	Adminv2 interface {
+		Filesystem() adminv2connect.FilesystemServiceClient
 		Partition() adminv2connect.PartitionServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
 	}
 
 	adminv2 struct {
-		partitionservice adminv2connect.PartitionServiceClient
-		tenantservice    adminv2connect.TenantServiceClient
-		tokenservice     adminv2connect.TokenServiceClient
+		filesystemservice adminv2connect.FilesystemServiceClient
+		partitionservice  adminv2connect.PartitionServiceClient
+		tenantservice     adminv2connect.TenantServiceClient
+		tokenservice      adminv2connect.TokenServiceClient
 	}
 
 	Apiv2 interface {
+		Filesystem() apiv2connect.FilesystemServiceClient
 		Health() apiv2connect.HealthServiceClient
 		IP() apiv2connect.IPServiceClient
 		Method() apiv2connect.MethodServiceClient
@@ -41,15 +44,16 @@ type (
 	}
 
 	apiv2 struct {
-		healthservice    apiv2connect.HealthServiceClient
-		ipservice        apiv2connect.IPServiceClient
-		methodservice    apiv2connect.MethodServiceClient
-		partitionservice apiv2connect.PartitionServiceClient
-		projectservice   apiv2connect.ProjectServiceClient
-		tenantservice    apiv2connect.TenantServiceClient
-		tokenservice     apiv2connect.TokenServiceClient
-		userservice      apiv2connect.UserServiceClient
-		versionservice   apiv2connect.VersionServiceClient
+		filesystemservice apiv2connect.FilesystemServiceClient
+		healthservice     apiv2connect.HealthServiceClient
+		ipservice         apiv2connect.IPServiceClient
+		methodservice     apiv2connect.MethodServiceClient
+		partitionservice  apiv2connect.PartitionServiceClient
+		projectservice    apiv2connect.ProjectServiceClient
+		tenantservice     apiv2connect.TenantServiceClient
+		tokenservice      apiv2connect.TokenServiceClient
+		userservice       apiv2connect.UserServiceClient
+		versionservice    apiv2connect.VersionServiceClient
 	}
 )
 
@@ -61,6 +65,11 @@ func New(config DialConfig) Client {
 
 func (c client) Adminv2() Adminv2 {
 	a := &adminv2{
+		filesystemservice: adminv2connect.NewFilesystemServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		partitionservice: adminv2connect.NewPartitionServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -80,6 +89,9 @@ func (c client) Adminv2() Adminv2 {
 	return a
 }
 
+func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
+	return c.filesystemservice
+}
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice
 }
@@ -92,6 +104,11 @@ func (c *adminv2) Token() adminv2connect.TokenServiceClient {
 
 func (c client) Apiv2() Apiv2 {
 	a := &apiv2{
+		filesystemservice: apiv2connect.NewFilesystemServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		healthservice: apiv2connect.NewHealthServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -141,6 +158,9 @@ func (c client) Apiv2() Apiv2 {
 	return a
 }
 
+func (c *apiv2) Filesystem() apiv2connect.FilesystemServiceClient {
+	return c.filesystemservice
+}
 func (c *apiv2) Health() apiv2connect.HealthServiceClient {
 	return c.healthservice
 }

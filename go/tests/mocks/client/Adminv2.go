@@ -13,6 +13,26 @@ type Adminv2 struct {
 	mock.Mock
 }
 
+// Filesystem provides a mock function with no fields
+func (_m *Adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Filesystem")
+	}
+
+	var r0 adminv2connect.FilesystemServiceClient
+	if rf, ok := ret.Get(0).(func() adminv2connect.FilesystemServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.FilesystemServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Partition provides a mock function with no fields
 func (_m *Adminv2) Partition() adminv2connect.PartitionServiceClient {
 	ret := _m.Called()

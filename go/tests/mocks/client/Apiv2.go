@@ -13,6 +13,26 @@ type Apiv2 struct {
 	mock.Mock
 }
 
+// Filesystem provides a mock function with no fields
+func (_m *Apiv2) Filesystem() apiv2connect.FilesystemServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Filesystem")
+	}
+
+	var r0 apiv2connect.FilesystemServiceClient
+	if rf, ok := ret.Get(0).(func() apiv2connect.FilesystemServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv2connect.FilesystemServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Health provides a mock function with no fields
 func (_m *Apiv2) Health() apiv2connect.HealthServiceClient {
 	ret := _m.Called()
