@@ -123,18 +123,60 @@ message FilesystemLayoutConstraints {
 
 // Filesystem
 message Filesystem {
+  // Id of this filesystem
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Name of this filesystem
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this filesystem
+  optional string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Path the mountpoint where this filesystem should be mounted on
-  optional string path = 1;
+  optional string path = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 4096
+  }];
   // Device the underlying device where this filesystem should be created
-  string device = 2;
+  string device = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Format of the filesystem format
-  Format format = 3;
+  Format format = 6 [(buf.validate.field).enum.defined_only = true];
   // Label optional label for this this filesystem
-  optional string label = 4;
+  optional string label = 7 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // MountOptions the options to use to mount this filesystem
-  repeated string mount_options = 5;
+  repeated string mount_options = 8 [(buf.validate.field).repeated = {
+    unique: true
+    max_items: 32
+    items: {
+      string: {
+        min_len: 1
+        max_len: 128
+      }
+    }
+  }];
   // CreateOptions the options to use to create (mkfs) this filesystem
-  repeated string create_options = 6;
+  repeated string create_options = 9 [(buf.validate.field).repeated = {
+    unique: true
+    max_items: 32
+    items: {
+      string: {
+        min_len: 1
+        max_len: 128
+      }
+    }
+  }];
 }
 
 // Disk
@@ -154,9 +196,18 @@ message Raid {
   // Devices list of devices to form the raid array from
   repeated string devices = 2;
   // Level raid level to create, should be 0 or 1
-  RaidLevel level = 3;
+  RaidLevel level = 3 [(buf.validate.field).enum.defined_only = true];
   // CreateOptions the options to use to create the raid array
-  repeated string create_options = 4;
+  repeated string create_options = 4 [(buf.validate.field).repeated = {
+    unique: true
+    max_items: 32
+    items: {
+      string: {
+        min_len: 1
+        max_len: 128
+      }
+    }
+  }];
   // Spares number of spares for the raid array
   int32 spares = 5;
 }
@@ -170,7 +221,7 @@ message DiskPartition {
   // Size size in mebibytes (MiB) of this partition"
   uint64 size = 3;
   // GPTType the gpt partition table type of this partition
-  optional GPTType gpt_type = 4;
+  optional GPTType gpt_type = 4 [(buf.validate.field).enum.defined_only = true];
 }
 
 // VolumeGroup
