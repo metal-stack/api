@@ -29,12 +29,16 @@ enum ServiceStatus {
 enum Service {
   // SERVICE_UNSPECIFIED is a unknown service
   SERVICE_UNSPECIFIED = 0;
-  // SERVICE_CLUSTER the kubernetes cluster service
-  SERVICE_CLUSTER = 1;
-  // SERVICE_VOLUME the volume/storage service
-  SERVICE_VOLUME = 2;
+  // SERVICE_IPAM the ipam service
+  SERVICE_IPAM = 1;
+  // SERVICE_RETHINK the rethinkdb
+  SERVICE_RETHINK = 2;
   // SERVICE_MACHINES the machine service
   SERVICE_MACHINES = 3;
+  // SERVICE_AUDIT the auditing
+  SERVICE_AUDIT = 4;
+  // SERVICE_VPN the vpn service
+  SERVICE_VPN = 5;
 }
 
 // Health reports the health status of all services
