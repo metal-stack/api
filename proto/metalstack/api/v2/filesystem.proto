@@ -123,11 +123,16 @@ message FilesystemLayoutConstraints {
 
 // Filesystem
 message Filesystem {
-  // Id of this filesystem
-  string id = 1 [(buf.validate.field).string = {
+  // Device the underlying device where this filesystem should be created
+  string device = 5 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
+  // Format of the filesystem format
+  Format format = 6 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).required = true
+  ];
   // Name of this filesystem
   optional string name = 2 [(buf.validate.field).string = {
     min_len: 2
@@ -143,13 +148,6 @@ message Filesystem {
     min_len: 2
     max_len: 4096
   }];
-  // Device the underlying device where this filesystem should be created
-  string device = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Format of the filesystem format
-  Format format = 6 [(buf.validate.field).enum.defined_only = true];
   // Label optional label for this this filesystem
   optional string label = 7 [(buf.validate.field).string = {
     min_len: 2
@@ -182,7 +180,10 @@ message Filesystem {
 // Disk
 message Disk {
   // Device the device to create the partitions
-  string device = 1;
+  string device = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Partitions list of partitions to create on this disk
   repeated DiskPartition partitions = 2;
   // WipeOnReinstall if set to true, this disk will be wiped before reinstallation
@@ -196,7 +197,10 @@ message Raid {
   // Devices list of devices to form the raid array from
   repeated string devices = 2;
   // Level raid level to create, should be 0 or 1
-  RaidLevel level = 3 [(buf.validate.field).enum.defined_only = true];
+  RaidLevel level = 3 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).required = true
+  ];
   // CreateOptions the options to use to create the raid array
   repeated string create_options = 4 [(buf.validate.field).repeated = {
     unique: true
@@ -221,13 +225,19 @@ message DiskPartition {
   // Size size in mebibytes (MiB) of this partition"
   uint64 size = 3;
   // GPTType the gpt partition table type of this partition
-  optional GPTType gpt_type = 4 [(buf.validate.field).enum.defined_only = true];
+  optional GPTType gpt_type = 4 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).required = true
+  ];
 }
 
 // VolumeGroup
 message VolumeGroup {
   // Name the name of the resulting volume group
-  string name = 1;
+  string name = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Devices list of devices to form the volume group from
   repeated string devices = 2;
   // Tags list of tags to add to the volume group
@@ -237,9 +247,15 @@ message VolumeGroup {
 // LogicalVolume
 message LogicalVolume {
   // Name the name of the logical volume
-  string name = 1;
+  string name = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // VolumeGroup the name of the volume group where to create the logical volume onto
-  string volume_group = 2;
+  string volume_group = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Size size in mebibytes (MiB) of this volume
   uint64 size = 3;
   // LVMType the type of this logical volume can be either linear|striped|raid1

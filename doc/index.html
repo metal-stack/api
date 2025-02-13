@@ -1425,10 +1425,17 @@ having a direct membership within the tenant.</p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
+                  <td>device</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Id of this filesystem </p></td>
+                  <td><p>Device the underlying device where this filesystem should be created </p></td>
+                </tr>
+              
+                <tr>
+                  <td>format</td>
+                  <td><a href="#metalstack.api.v2.Format">Format</a></td>
+                  <td></td>
+                  <td><p>Format of the filesystem format </p></td>
                 </tr>
               
                 <tr>
@@ -1450,20 +1457,6 @@ having a direct membership within the tenant.</p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Path the mountpoint where this filesystem should be mounted on </p></td>
-                </tr>
-              
-                <tr>
-                  <td>device</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Device the underlying device where this filesystem should be created </p></td>
-                </tr>
-              
-                <tr>
-                  <td>format</td>
-                  <td><a href="#metalstack.api.v2.Format">Format</a></td>
-                  <td></td>
-                  <td><p>Format of the filesystem format </p></td>
                 </tr>
               
                 <tr>

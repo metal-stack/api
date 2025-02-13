@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/bufbuild/protovalidate-go"
-	"github.com/google/go-cmp/cmp"
 	apiv1 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
@@ -14,12 +13,7 @@ func TestValidateIP(t *testing.T) {
 	validator, err := protovalidate.New()
 	require.NoError(t, err)
 
-	tests := []struct {
-		name             string
-		msg              proto.Message
-		wantErr          bool
-		wantErrorMessage string
-	}{
+	tests := prototests{
 		{
 			name: "Invalid IP",
 			msg: &apiv1.IP{
@@ -148,23 +142,24 @@ func TestValidateIP(t *testing.T) {
 		{
 			name: "Valid IPServiceCreateRequest",
 			msg: &apiv1.IPServiceCreateRequest{
-				Network:      "Internet",
-				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
+				Network:   "Internet",
+				Project:   "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
+				MachineId: proto.String("57cd8678-9ff0-4f8c-a34a-43d8f16caacf"),
 			},
 			wantErr: false,
 		},
+		{
+			name: "IPServiceCreateRequest name too short",
+			msg: &apiv1.IPServiceCreateRequest{
+				Network: "Internet",
+				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
+				Name:    proto.String("a"),
+			},
+			wantErr: true,
+			wantErrorMessage: `validation error:
+ - name: value length must be at least 2 characters [string.min_len]`,
+		},
 	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			err := validator.Validate(tt.msg)
-			if err != nil && !tt.wantErr {
-				t.Errorf("validate error = %v, wantErr %v", err, tt.wantErr)
-			}
-			if err != nil && tt.wantErr {
-				if diff := cmp.Diff(err.Error(), tt.wantErrorMessage); diff != "" {
-					t.Errorf("validate error = %v, diff %v", err, diff)
-				}
-			}
-		})
-	}
+
+	validateProtos(t, tests, validator)
 }
