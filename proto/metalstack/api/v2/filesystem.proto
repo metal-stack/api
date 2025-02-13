@@ -246,6 +246,8 @@ message LogicalVolume {
   LVMType lvm_type = 4 [(buf.validate.field).enum.defined_only = true];
 }
 
+// TODO not sure if these Enums gives any value, because the metal-hammer must convert them back to the actual value
+
 // LVMType
 enum LVMType {
   // LVM_TYPE_UNSPECIFIED is not specified
