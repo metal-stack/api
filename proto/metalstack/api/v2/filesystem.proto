@@ -50,14 +50,14 @@ message FilesystemServiceListRequest {
 
 // FilesystemServiceGetResponse is the response payload for a filesystem get request
 message FilesystemServiceGetResponse {
-  // Filesystem the filesystem
-  Filesystem filesystem = 1;
+  // FilesystemLayout the filesystemlayout
+  FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemServiceListResponse is the response payload for a filesystem list request
 message FilesystemServiceListResponse {
-  // Filesystems the filesystems
-  repeated Filesystem filesystems = 1;
+  // FilesystemLayouts the filesystemlayouts
+  repeated FilesystemLayout filesystem_layouts = 1;
 }
 
 // FilesystemServiceTryRequest
@@ -87,30 +87,35 @@ message FilesystemServiceMatchRequest {
 
 // FilesystemServiceTryResponse
 message FilesystemServiceTryResponse {
-  // Filesystem the filesystem
-  Filesystem filesystem = 1;
+  // FilesystemLayout the filesystemlayout
+  FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemServiceMatchResponse
 message FilesystemServiceMatchResponse {
-  // Filesystem the filesystem
-  Filesystem filesystem = 1;
+  // FilesystemLayout the filesystemlayout
+  FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemLayout
 message FilesystemLayout {
+  // Id of this filesystemLayout
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Filesystems is a list of filesystems to create on a machine
-  repeated Filesystem filesystems = 1;
+  repeated Filesystem filesystems = 2;
   // Disks list of disks that belong to this layout
-  repeated Disk disks = 2;
+  repeated Disk disks = 3;
   // raid arrays to create
-  repeated Raid raid = 3;
+  repeated Raid raid = 4;
   // VolumeGroups list of volumegroups to create
-  repeated VolumeGroup volume_groups = 4;
+  repeated VolumeGroup volume_groups = 5;
   // LogicalVolumes list of logicalvolumes to create
-  repeated LogicalVolume logical_volumes = 5;
+  repeated LogicalVolume logical_volumes = 6;
   // Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
-  FilesystemLayoutConstraints constraints = 6;
+  FilesystemLayoutConstraints constraints = 7;
 }
 
 // FilesystemLayoutConstraints

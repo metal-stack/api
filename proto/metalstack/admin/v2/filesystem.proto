@@ -27,26 +27,26 @@ service FilesystemService {
 
 // FilesystemServiceCreateRequest
 message FilesystemServiceCreateRequest {
-  // Filesystem the filesystem
-  metalstack.api.v2.Filesystem filesystem = 1;
+  // FilesystemLayout the filesystemlayout
+  metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemServiceCreateResponse
 message FilesystemServiceCreateResponse {
-  // Filesystem the filesystem
-  metalstack.api.v2.Filesystem filesystem = 1;
+  // FilesystemLayout the filesystemlayout
+  metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemServiceUpdateRequest
 message FilesystemServiceUpdateRequest {
-  // Filesystem the filesystem
-  metalstack.api.v2.Filesystem filesystem = 1;
+  // FilesystemLayout the filesystemlayout
+  metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemServiceUpdateResponse
 message FilesystemServiceUpdateResponse {
-  // Filesystem the filesystem
-  metalstack.api.v2.Filesystem filesystem = 1;
+  // FilesystemLayout the filesystemlayout
+  metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemServiceDeleteRequest
@@ -60,6 +60,6 @@ message FilesystemServiceDeleteRequest {
 
 // message FilesystemServiceDeleteResponse {
 message FilesystemServiceDeleteResponse {
-  // Filesystem the filesystem
-  metalstack.api.v2.Filesystem filesystem = 1;
+  // FilesystemLayout the filesystemlayout
+  metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
