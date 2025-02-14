@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/bufbuild/protovalidate-go"
-	apiv1 "github.com/metal-stack/api/go/metalstack/api/v2"
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
 )
@@ -16,7 +16,7 @@ func TestValidateIP(t *testing.T) {
 	tests := prototests{
 		{
 			name: "Invalid IP",
-			msg: &apiv1.IP{
+			msg: &apiv2.IP{
 				Uuid: "abc",
 			},
 			wantErr: true,
@@ -29,7 +29,7 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "Invalid IP, but valid uuid",
-			msg: &apiv1.IP{
+			msg: &apiv2.IP{
 				Uuid: "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
 			},
 			wantErr: true,
@@ -41,7 +41,7 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "Invalid IP, but valid uuid and ipv4",
-			msg: &apiv1.IP{
+			msg: &apiv2.IP{
 				Uuid: "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
 				Ip:   "1.2.3.4",
 			},
@@ -53,7 +53,7 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "Invalid IP, but valid uuid and ipv6",
-			msg: &apiv1.IP{
+			msg: &apiv2.IP{
 				Uuid: "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
 				Ip:   "fe80:db8::1",
 			},
@@ -65,7 +65,7 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "Invalid IP, but valid uuid, name and ipv6",
-			msg: &apiv1.IP{
+			msg: &apiv2.IP{
 				Uuid: "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
 				Name: "Test IPv6",
 				Ip:   "fe80:db8::1",
@@ -77,7 +77,7 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "Invalid IP, but valid uuid, name, network and ipv6",
-			msg: &apiv1.IP{
+			msg: &apiv2.IP{
 				Uuid:    "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
 				Name:    "Test IPv6",
 				Ip:      "fe80:db8::1",
@@ -89,13 +89,13 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "Invalid IP with invalid type",
-			msg: &apiv1.IP{
+			msg: &apiv2.IP{
 				Uuid:    "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
 				Name:    "Test IPv6",
 				Ip:      "fe80:db8::1",
 				Network: "Internet",
 				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
-				Type:    apiv1.IPType(99),
+				Type:    apiv2.IPType(99),
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
@@ -103,20 +103,20 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "Valid IP",
-			msg: &apiv1.IP{
+			msg: &apiv2.IP{
 				Uuid:    "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
 				Name:    "Test IPv6",
 				Ip:      "fe80:db8::1",
 				Network: "Internet",
 				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
-				Type:    apiv1.IPType_IP_TYPE_EPHEMERAL,
+				Type:    apiv2.IPType_IP_TYPE_EPHEMERAL,
 			},
 			wantErr: false,
 		},
 		// IPServiceGetRequest
 		{
 			name:    "invalid IPServiceGetRequest",
-			msg:     &apiv1.IPServiceGetRequest{},
+			msg:     &apiv2.IPServiceGetRequest{},
 			wantErr: true,
 			wantErrorMessage: `validation error:
  - ip: value is empty, which is not a valid IP address [string.ip_empty]
@@ -124,7 +124,7 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "Valid IPServiceGetRequest",
-			msg: &apiv1.IPServiceGetRequest{
+			msg: &apiv2.IPServiceGetRequest{
 				Ip:      "fe80:db8::1",
 				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
 			},
@@ -133,7 +133,7 @@ func TestValidateIP(t *testing.T) {
 		// IPServiceCreateRequest
 		{
 			name:    "invalid IPServiceCreateRequest",
-			msg:     &apiv1.IPServiceCreateRequest{},
+			msg:     &apiv2.IPServiceCreateRequest{},
 			wantErr: true,
 			wantErrorMessage: `validation error:
  - network: value length must be at least 2 characters [string.min_len]
@@ -141,7 +141,7 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "Valid IPServiceCreateRequest",
-			msg: &apiv1.IPServiceCreateRequest{
+			msg: &apiv2.IPServiceCreateRequest{
 				Network:   "Internet",
 				Project:   "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
 				MachineId: proto.String("57cd8678-9ff0-4f8c-a34a-43d8f16caacf"),
@@ -150,7 +150,7 @@ func TestValidateIP(t *testing.T) {
 		},
 		{
 			name: "IPServiceCreateRequest name too short",
-			msg: &apiv1.IPServiceCreateRequest{
+			msg: &apiv2.IPServiceCreateRequest{
 				Network: "Internet",
 				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
 				Name:    proto.String("a"),

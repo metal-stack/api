@@ -267,18 +267,16 @@ message LogicalVolume {
   LVMType lvm_type = 4 [(buf.validate.field).enum.defined_only = true];
 }
 
-// TODO not sure if these Enums gives any value, because the metal-hammer must convert them back to the actual value
-
 // LVMType
 enum LVMType {
   // LVM_TYPE_UNSPECIFIED is not specified
   LVM_TYPE_UNSPECIFIED = 0;
   // LVM_TYPE_LINEAR append across all physical volumes
-  LVM_TYPE_LINEAR = 1;
+  LVM_TYPE_LINEAR = 1 [(enum_string_value) = "linear"];
   // LVM_TYPE_STRIPED stripe across all physical volumes
-  LVM_TYPE_STRIPED = 2;
+  LVM_TYPE_STRIPED = 2 [(enum_string_value) = "striped"];
   // LVM_TYPE_RAID1 mirror with raid across all physical volumes
-  LVM_TYPE_RAID1 = 3;
+  LVM_TYPE_RAID1 = 3 [(enum_string_value) = "raid1"];
 }
 
 // Format specifies the filesystem to use on a volume
@@ -286,17 +284,17 @@ enum Format {
   // FORMAT_UNSPECIFIED
   FORMAT_UNSPECIFIED = 0;
   // FORMAT_VFAT is used for the UEFI boot partition
-  FORMAT_VFAT = 1;
+  FORMAT_VFAT = 1 [(enum_string_value) = "vfat"];
   // FORMAT_EXT3 is usually only used for /boot
-  FORMAT_EXT3 = 2;
+  FORMAT_EXT3 = 2 [(enum_string_value) = "ext3"];
   // FORMAT_EXT4 is the default fs
-  FORMAT_EXT4 = 3;
+  FORMAT_EXT4 = 3 [(enum_string_value) = "ext4"];
   // FORMAT_SWAP is for the swap partition
-  FORMAT_SWAP = 4;
+  FORMAT_SWAP = 4 [(enum_string_value) = "swap"];
   // FORMAT_TMPFS is used for a memory filesystem typically /tmp
-  FORMAT_TMPFS = 5;
+  FORMAT_TMPFS = 5 [(enum_string_value) = "tmpfs"];
   // FORMAT_NONE
-  FORMAT_NONE = 6;
+  FORMAT_NONE = 6 [(enum_string_value) = "none"];
 }
 
 // GPTType specifies the partition type in uefi systems
@@ -304,13 +302,13 @@ enum GPTType {
   // GPT_TYPE_UNSPECIFIED is no specified
   GPT_TYPE_UNSPECIFIED = 0;
   // GPT_TYPE_BOOT EFI Boot Partition
-  GPT_TYPE_BOOT = 1;
+  GPT_TYPE_BOOT = 1 [(enum_string_value) = "ef00"];
   // GPT_TYPE_LINUX Linux Partition
-  GPT_TYPE_LINUX = 2;
+  GPT_TYPE_LINUX = 2 [(enum_string_value) = "8300"];
   // GPT_TYPE_LINUX_RAID Linux Raid Partition
-  GPT_TYPE_LINUX_RAID = 3;
+  GPT_TYPE_LINUX_RAID = 3 [(enum_string_value) = "fd00"];
   // GPT_TYPE_LINUX_LVM Linux LVM Partition
-  GPT_TYPE_LINUX_LVM = 4;
+  GPT_TYPE_LINUX_LVM = 4 [(enum_string_value) = "8e00"];
 }
 
 // RaidLevel defines howto mirror two or more block devices

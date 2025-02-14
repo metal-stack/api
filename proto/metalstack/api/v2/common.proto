@@ -86,3 +86,9 @@ message Paging {
   // Count is the number of results returned per page, if not given server side defaults apply
   optional uint64 count = 2;
 }
+
+// EnumValueOptions, can be accessed with go/enum/GetFormatStringValue
+extend google.protobuf.EnumValueOptions {
+  // StringValue which can be set to a enum
+  string enum_string_value = 52000;
+}
