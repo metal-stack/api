@@ -5,10 +5,11 @@ import (
 
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
-func GetFormatStringValue(f apiv2.Format) (string, error) {
-	value := f.Descriptor().Values().Get(int(*f.Enum()))
+func GetStringValue[E protoreflect.Enum](f E) (string, error) {
+	value := f.Descriptor().Values().Get(int(f.Number()))
 
 	// Retrieve custom options
 	opts := value.Options()
@@ -19,36 +20,5 @@ func GetFormatStringValue(f apiv2.Format) (string, error) {
 		return stringValue, nil
 	}
 
-	return "", fmt.Errorf("unable to fetch stringvalue from %s", f.String())
-}
-
-// FIXME check how this can be made reusable
-func GetGPTTypeStringValue(f apiv2.GPTType) (string, error) {
-	value := f.Descriptor().Values().Get(int(*f.Enum()))
-
-	// Retrieve custom options
-	opts := value.Options()
-
-	// Check if the option is present
-	if opts != nil && proto.HasExtension(opts, apiv2.E_EnumStringValue) {
-		stringValue := proto.GetExtension(opts, apiv2.E_EnumStringValue).(string)
-		return stringValue, nil
-	}
-
-	return "", fmt.Errorf("unable to fetch stringvalue from %s", f.String())
-}
-
-func GetLVMTypeStringValue(f apiv2.LVMType) (string, error) {
-	value := f.Descriptor().Values().Get(int(*f.Enum()))
-
-	// Retrieve custom options
-	opts := value.Options()
-
-	// Check if the option is present
-	if opts != nil && proto.HasExtension(opts, apiv2.E_EnumStringValue) {
-		stringValue := proto.GetExtension(opts, apiv2.E_EnumStringValue).(string)
-		return stringValue, nil
-	}
-
-	return "", fmt.Errorf("unable to fetch stringvalue from %s", f.String())
+	return "", fmt.Errorf("unable to fetch stringvalue from %v", f)
 }

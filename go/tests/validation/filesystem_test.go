@@ -49,19 +49,19 @@ func TestValidateFilesystem(t *testing.T) {
 
 func TestGetStringValue(t *testing.T) {
 
-	value, err := enum.GetFormatStringValue(apiv2.Format_FORMAT_EXT4)
+	value, err := enum.GetStringValue(apiv2.Format_FORMAT_EXT4)
 	require.NoError(t, err)
 	require.Equal(t, "ext4", value)
 
-	_, err = enum.GetFormatStringValue(apiv2.Format_FORMAT_UNSPECIFIED)
-	require.Error(t, err)
-	require.EqualError(t, err, "unable to fetch stringvalue from FORMAT_UNSPECIFIED")
-
-	value, err = enum.GetLVMTypeStringValue(apiv2.LVMType_LVM_TYPE_LINEAR)
+	value, err = enum.GetStringValue(apiv2.LVMType_LVM_TYPE_LINEAR)
 	require.NoError(t, err)
 	require.Equal(t, "linear", value)
 
-	value, err = enum.GetGPTTypeStringValue(apiv2.GPTType_GPT_TYPE_BOOT)
+	value, err = enum.GetStringValue(apiv2.GPTType_GPT_TYPE_BOOT)
 	require.NoError(t, err)
 	require.Equal(t, "ef00", value)
+
+	_, err = enum.GetStringValue(apiv2.Format_FORMAT_UNSPECIFIED)
+	require.Error(t, err)
+	require.EqualError(t, err, "unable to fetch stringvalue from FORMAT_UNSPECIFIED")
 }
