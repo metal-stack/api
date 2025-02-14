@@ -104,18 +104,28 @@ message FilesystemLayout {
     min_len: 2
     max_len: 128
   }];
+  // Name of this filesystemLayout
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this filesystemLayout
+  optional string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Filesystems is a list of filesystems to create on a machine
-  repeated Filesystem filesystems = 2;
+  repeated Filesystem filesystems = 4;
   // Disks list of disks that belong to this layout
-  repeated Disk disks = 3;
+  repeated Disk disks = 5;
   // raid arrays to create
-  repeated Raid raid = 4;
+  repeated Raid raid = 6;
   // VolumeGroups list of volumegroups to create
-  repeated VolumeGroup volume_groups = 5;
+  repeated VolumeGroup volume_groups = 7;
   // LogicalVolumes list of logicalvolumes to create
-  repeated LogicalVolume logical_volumes = 6;
+  repeated LogicalVolume logical_volumes = 8;
   // Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
-  FilesystemLayoutConstraints constraints = 7;
+  FilesystemLayoutConstraints constraints = 9;
 }
 
 // FilesystemLayoutConstraints

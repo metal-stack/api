@@ -22,6 +22,7 @@ func GetFormatStringValue(f apiv2.Format) (string, error) {
 	return "", fmt.Errorf("unable to fetch stringvalue from %s", f.String())
 }
 
+// FIXME check how this can be made reusable
 func GetGPTTypeStringValue(f apiv2.GPTType) (string, error) {
 	value := f.Descriptor().Values().Get(int(*f.Enum()))
 
