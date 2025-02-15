@@ -82,8 +82,18 @@ message NetworkServiceCreateRequest {
   };
   // Labels on this network
   map<string, string> labels = 6;
+  option (buf.validate.message).cel = {
+    id: "prefixes"
+    message: "given prefixes must be valid"
+    expression: "this.prefixes.all(m, m.isIpPrefix())"
+  };
   // Prefixes in this network
   repeated string prefixes = 8;
+  option (buf.validate.message).cel = {
+    id: "destination_prefixes"
+    message: "given destination_prefixes must be valid"
+    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
+  };
   // Destination Prefixes in this network
   repeated string destination_prefixes = 9;
   // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
