@@ -35,6 +35,7 @@ type (
 		Health() apiv2connect.HealthServiceClient
 		IP() apiv2connect.IPServiceClient
 		Method() apiv2connect.MethodServiceClient
+		Network() apiv2connect.NetworkServiceClient
 		Partition() apiv2connect.PartitionServiceClient
 		Project() apiv2connect.ProjectServiceClient
 		Tenant() apiv2connect.TenantServiceClient
@@ -48,6 +49,7 @@ type (
 		healthservice     apiv2connect.HealthServiceClient
 		ipservice         apiv2connect.IPServiceClient
 		methodservice     apiv2connect.MethodServiceClient
+		networkservice    apiv2connect.NetworkServiceClient
 		partitionservice  apiv2connect.PartitionServiceClient
 		projectservice    apiv2connect.ProjectServiceClient
 		tenantservice     apiv2connect.TenantServiceClient
@@ -124,6 +126,11 @@ func (c client) Apiv2() Apiv2 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		networkservice: apiv2connect.NewNetworkServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		partitionservice: apiv2connect.NewPartitionServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -169,6 +176,9 @@ func (c *apiv2) IP() apiv2connect.IPServiceClient {
 }
 func (c *apiv2) Method() apiv2connect.MethodServiceClient {
 	return c.methodservice
+}
+func (c *apiv2) Network() apiv2connect.NetworkServiceClient {
+	return c.networkservice
 }
 func (c *apiv2) Partition() apiv2connect.PartitionServiceClient {
 	return c.partitionservice

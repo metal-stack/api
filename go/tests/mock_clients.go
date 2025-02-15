@@ -45,6 +45,7 @@ type (
 		healthservice     *apiv2mocks.HealthServiceClient
 		ipservice         *apiv2mocks.IPServiceClient
 		methodservice     *apiv2mocks.MethodServiceClient
+		networkservice    *apiv2mocks.NetworkServiceClient
 		partitionservice  *apiv2mocks.PartitionServiceClient
 		projectservice    *apiv2mocks.ProjectServiceClient
 		tenantservice     *apiv2mocks.TenantServiceClient
@@ -58,6 +59,7 @@ type (
 		Health     func(m *mock.Mock)
 		IP         func(m *mock.Mock)
 		Method     func(m *mock.Mock)
+		Network    func(m *mock.Mock)
 		Partition  func(m *mock.Mock)
 		Project    func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
@@ -139,6 +141,7 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		healthservice:     apiv2mocks.NewHealthServiceClient(t),
 		ipservice:         apiv2mocks.NewIPServiceClient(t),
 		methodservice:     apiv2mocks.NewMethodServiceClient(t),
+		networkservice:    apiv2mocks.NewNetworkServiceClient(t),
 		partitionservice:  apiv2mocks.NewPartitionServiceClient(t),
 		projectservice:    apiv2mocks.NewProjectServiceClient(t),
 		tenantservice:     apiv2mocks.NewTenantServiceClient(t),
@@ -159,6 +162,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		}
 		if fns.Method != nil {
 			fns.Method(&a.methodservice.Mock)
+		}
+		if fns.Network != nil {
+			fns.Network(&a.networkservice.Mock)
 		}
 		if fns.Partition != nil {
 			fns.Partition(&a.partitionservice.Mock)
@@ -195,6 +201,9 @@ func (c *apiv2) IP() apiv2connect.IPServiceClient {
 }
 func (c *apiv2) Method() apiv2connect.MethodServiceClient {
 	return c.methodservice
+}
+func (c *apiv2) Network() apiv2connect.NetworkServiceClient {
+	return c.networkservice
 }
 func (c *apiv2) Partition() apiv2connect.PartitionServiceClient {
 	return c.partitionservice

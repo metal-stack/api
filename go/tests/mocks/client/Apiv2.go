@@ -93,6 +93,26 @@ func (_m *Apiv2) Method() apiv2connect.MethodServiceClient {
 	return r0
 }
 
+// Network provides a mock function with no fields
+func (_m *Apiv2) Network() apiv2connect.NetworkServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Network")
+	}
+
+	var r0 apiv2connect.NetworkServiceClient
+	if rf, ok := ret.Get(0).(func() apiv2connect.NetworkServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv2connect.NetworkServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Partition provides a mock function with no fields
 func (_m *Apiv2) Partition() apiv2connect.PartitionServiceClient {
 	ret := _m.Called()
