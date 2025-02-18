@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/ip.proto";
+
+// IPService serves ip address related functions
+service IPService {
+  // List all ips
+  rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // Show issues with ips
+  rpc Issues(IPServiceIssuesRequest) returns (IPServiceIssuesResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// IPServiceListRequest
+message IPServiceListRequest {
+  // Ip the ip to list
+  optional string ip = 1 [(buf.validate.field).string.ip = true];
+  // Network from where the ips to list
+  optional string network = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Project of the ips to list
+  string project = 3 [(buf.validate.field).string.uuid = true];
+  // Name of this ip
+  optional string name = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Uuid for which this ips should get filtered
+  optional string uuid = 5 [(buf.validate.field).string.uuid = true];
+  // MachineId for which this ips should get filtered
+  optional string machine_id = 6 [(buf.validate.field).string.uuid = true];
+  // ParentPrefixCidr for which this ips should get filtered
+  optional string parent_prefix_cidr = 7 [(buf.validate.field).string.ip = true];
+  // Tags for which this ips should get filtered
+  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
+  // Static if set to true, this will be a Static ip
+  optional metalstack.api.v2.IPType type = 9 [(buf.validate.field).enum.defined_only = true];
+  // Addressfamily of the IPs to list, defaults to all addressfamilies
+  optional metalstack.api.v2.IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
+}
+
+// IPServiceListResponse
+message IPServiceListResponse {
+  // IPs are the list of ips
+  repeated metalstack.api.v2.IP ips = 1;
+}
+
+// IPServiceIssuesRequest
+message IPServiceIssuesRequest {
+  // No arguments actually
+}
+
+// IPServiceIssuesResponse
+message IPServiceIssuesResponse {
+  // Issues with ips
+  repeated IPIssue issues = 1;
+}
+
+// IPIssue
+message IPIssue {
+  // Description of the issue with this ip
+  string description = 1;
+  // IP is the ip with the issue
+  metalstack.api.v2.IP ip = 2;
+}

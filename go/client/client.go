@@ -18,6 +18,7 @@ type (
 	}
 	Adminv2 interface {
 		Filesystem() adminv2connect.FilesystemServiceClient
+		IP() adminv2connect.IPServiceClient
 		Partition() adminv2connect.PartitionServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
@@ -25,6 +26,7 @@ type (
 
 	adminv2 struct {
 		filesystemservice adminv2connect.FilesystemServiceClient
+		ipservice         adminv2connect.IPServiceClient
 		partitionservice  adminv2connect.PartitionServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
 		tokenservice      adminv2connect.TokenServiceClient
@@ -72,6 +74,11 @@ func (c client) Adminv2() Adminv2 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		ipservice: adminv2connect.NewIPServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		partitionservice: adminv2connect.NewPartitionServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -93,6 +100,9 @@ func (c client) Adminv2() Adminv2 {
 
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
+}
+func (c *adminv2) IP() adminv2connect.IPServiceClient {
+	return c.ipservice
 }
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice

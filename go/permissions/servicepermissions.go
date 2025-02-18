@@ -4,6 +4,7 @@ package permissions
 func GetServices() []string {
 	return []string{
 		"metalstack.admin.v2.FilesystemService",
+		"metalstack.admin.v2.IPService",
 		"metalstack.admin.v2.PartitionService",
 		"metalstack.admin.v2.TenantService",
 		"metalstack.admin.v2.TokenService",
@@ -29,6 +30,8 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.admin.v2.FilesystemService/Create",
 					"/metalstack.admin.v2.FilesystemService/Update",
 					"/metalstack.admin.v2.FilesystemService/Delete",
+					"/metalstack.admin.v2.IPService/List",
+					"/metalstack.admin.v2.IPService/Issues",
 					"/metalstack.admin.v2.PartitionService/Create",
 					"/metalstack.admin.v2.PartitionService/Update",
 					"/metalstack.admin.v2.PartitionService/Delete",
@@ -38,6 +41,8 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.admin.v2.TokenService/Revoke",
 				},
 				"ADMIN_ROLE_VIEWER": []string{
+					"/metalstack.admin.v2.IPService/List",
+					"/metalstack.admin.v2.IPService/Issues",
 					"/metalstack.admin.v2.PartitionService/Capacity",
 					"/metalstack.admin.v2.TenantService/List",
 					"/metalstack.admin.v2.TokenService/List",
@@ -116,6 +121,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.admin.v2.FilesystemService/Create":    true,
 			"/metalstack.admin.v2.FilesystemService/Delete":    true,
 			"/metalstack.admin.v2.FilesystemService/Update":    true,
+			"/metalstack.admin.v2.IPService/Issues":            true,
+			"/metalstack.admin.v2.IPService/List":              true,
 			"/metalstack.admin.v2.PartitionService/Capacity":   true,
 			"/metalstack.admin.v2.PartitionService/Create":     true,
 			"/metalstack.admin.v2.PartitionService/Delete":     true,
@@ -209,6 +216,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.admin.v2.FilesystemService/Create":    true,
 			"/metalstack.admin.v2.FilesystemService/Delete":    true,
 			"/metalstack.admin.v2.FilesystemService/Update":    true,
+			"/metalstack.admin.v2.IPService/Issues":            false,
+			"/metalstack.admin.v2.IPService/List":              false,
 			"/metalstack.admin.v2.PartitionService/Capacity":   false,
 			"/metalstack.admin.v2.PartitionService/Create":     true,
 			"/metalstack.admin.v2.PartitionService/Delete":     true,

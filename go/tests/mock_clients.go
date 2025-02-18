@@ -29,6 +29,7 @@ type (
 	}
 	adminv2 struct {
 		filesystemservice *adminv2mocks.FilesystemServiceClient
+		ipservice         *adminv2mocks.IPServiceClient
 		partitionservice  *adminv2mocks.PartitionServiceClient
 		tenantservice     *adminv2mocks.TenantServiceClient
 		tokenservice      *adminv2mocks.TokenServiceClient
@@ -36,6 +37,7 @@ type (
 
 	Adminv2MockFns struct {
 		Filesystem func(m *mock.Mock)
+		IP         func(m *mock.Mock)
 		Partition  func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
@@ -94,6 +96,7 @@ func (w wrapper) Adminv2(fns *Adminv2MockFns) *adminv2 {
 func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	a := &adminv2{
 		filesystemservice: adminv2mocks.NewFilesystemServiceClient(t),
+		ipservice:         adminv2mocks.NewIPServiceClient(t),
 		partitionservice:  adminv2mocks.NewPartitionServiceClient(t),
 		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
 		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
@@ -102,6 +105,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	if fns != nil {
 		if fns.Filesystem != nil {
 			fns.Filesystem(&a.filesystemservice.Mock)
+		}
+		if fns.IP != nil {
+			fns.IP(&a.ipservice.Mock)
 		}
 		if fns.Partition != nil {
 			fns.Partition(&a.partitionservice.Mock)
@@ -120,6 +126,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
+}
+func (c *adminv2) IP() adminv2connect.IPServiceClient {
+	return c.ipservice
 }
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice
