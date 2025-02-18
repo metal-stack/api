@@ -380,6 +380,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.IPQuery"><span class="badge">M</span>IPQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.IPServiceCreateRequest"><span class="badge">M</span>IPServiceCreateRequest</a>
                 </li>
               
@@ -2590,6 +2594,93 @@ having a direct membership within the tenant.</p></td>
 
         
       
+        <h3 id="metalstack.api.v2.IPQuery">IPQuery</h3>
+        <p>IPQuery can be used to query a IP or a list of IP</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>ip</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Ip the ip to list </p></td>
+                </tr>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Network from where the ips to list </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project of the ips to list </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this ip </p></td>
+                </tr>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Uuid for which this ips should get filtered </p></td>
+                </tr>
+              
+                <tr>
+                  <td>machine_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>MachineId for which this ips should get filtered </p></td>
+                </tr>
+              
+                <tr>
+                  <td>parent_prefix_cidr</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ParentPrefixCidr for which this ips should get filtered </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tags</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Tags for which this ips should get filtered </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#metalstack.api.v2.IPType">IPType</a></td>
+                  <td>optional</td>
+                  <td><p>Static if set to true, this will be a Static ip </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address_family</td>
+                  <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
+                  <td>optional</td>
+                  <td><p>Addressfamily of the IPs to list, defaults to all addressfamilies </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.IPServiceCreateRequest">IPServiceCreateRequest</h3>
         <p>IPServiceCreateRequest is the request payload for a ip create request</p>
 
@@ -2815,20 +2906,6 @@ having a direct membership within the tenant.</p></td>
             <tbody>
               
                 <tr>
-                  <td>ip</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Ip the ip to list </p></td>
-                </tr>
-              
-                <tr>
-                  <td>network</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Network from where the ips to list </p></td>
-                </tr>
-              
-                <tr>
                   <td>project</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
@@ -2836,52 +2913,10 @@ having a direct membership within the tenant.</p></td>
                 </tr>
               
                 <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Name of this ip </p></td>
-                </tr>
-              
-                <tr>
-                  <td>uuid</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Uuid for which this ips should get filtered </p></td>
-                </tr>
-              
-                <tr>
-                  <td>machine_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>MachineId for which this ips should get filtered </p></td>
-                </tr>
-              
-                <tr>
-                  <td>parent_prefix_cidr</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>ParentPrefixCidr for which this ips should get filtered </p></td>
-                </tr>
-              
-                <tr>
-                  <td>tags</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Tags for which this ips should get filtered </p></td>
-                </tr>
-              
-                <tr>
-                  <td>type</td>
-                  <td><a href="#metalstack.api.v2.IPType">IPType</a></td>
-                  <td>optional</td>
-                  <td><p>Static if set to true, this will be a Static ip </p></td>
-                </tr>
-              
-                <tr>
-                  <td>address_family</td>
-                  <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
-                  <td>optional</td>
-                  <td><p>Addressfamily of the IPs to list, defaults to all addressfamilies </p></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.IPQuery">IPQuery</a></td>
+                  <td></td>
+                  <td><p>Query to list one ore more ips </p></td>
                 </tr>
               
             </tbody>
@@ -3190,73 +3225,10 @@ having a direct membership within the tenant.</p></td>
             <tbody>
               
                 <tr>
-                  <td>ip</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Ip the ip to list </p></td>
-                </tr>
-              
-                <tr>
-                  <td>network</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Network from where the ips to list </p></td>
-                </tr>
-              
-                <tr>
-                  <td>project</td>
-                  <td><a href="#string">string</a></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.IPQuery">metalstack.api.v2.IPQuery</a></td>
                   <td></td>
-                  <td><p>Project of the ips to list </p></td>
-                </tr>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Name of this ip </p></td>
-                </tr>
-              
-                <tr>
-                  <td>uuid</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Uuid for which this ips should get filtered </p></td>
-                </tr>
-              
-                <tr>
-                  <td>machine_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>MachineId for which this ips should get filtered </p></td>
-                </tr>
-              
-                <tr>
-                  <td>parent_prefix_cidr</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>ParentPrefixCidr for which this ips should get filtered </p></td>
-                </tr>
-              
-                <tr>
-                  <td>tags</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Tags for which this ips should get filtered </p></td>
-                </tr>
-              
-                <tr>
-                  <td>type</td>
-                  <td><a href="#metalstack.api.v2.IPType">metalstack.api.v2.IPType</a></td>
-                  <td>optional</td>
-                  <td><p>Static if set to true, this will be a Static ip </p></td>
-                </tr>
-              
-                <tr>
-                  <td>address_family</td>
-                  <td><a href="#metalstack.api.v2.IPAddressFamily">metalstack.api.v2.IPAddressFamily</a></td>
-                  <td>optional</td>
-                  <td><p>Addressfamily of the IPs to list, defaults to all addressfamilies </p></td>
+                  <td><p>Query to search for one or more ips </p></td>
                 </tr>
               
             </tbody>

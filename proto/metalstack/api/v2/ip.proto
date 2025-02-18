@@ -146,6 +146,14 @@ message IPServiceUpdateRequest {
 
 // IPServiceListRequest is the request payload for a ip list request
 message IPServiceListRequest {
+  // Project of the ips to list
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // Query to list one ore more ips
+  IPQuery query = 2;
+}
+
+// IPQuery can be used to query a IP or a list of IP
+message IPQuery {
   // Ip the ip to list
   optional string ip = 1 [(buf.validate.field).string.ip = true];
   // Network from where the ips to list
@@ -154,7 +162,7 @@ message IPServiceListRequest {
     max_len: 128
   }];
   // Project of the ips to list
-  string project = 3 [(buf.validate.field).string.uuid = true];
+  optional string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this ip
   optional string name = 4 [(buf.validate.field).string = {
     min_len: 2
