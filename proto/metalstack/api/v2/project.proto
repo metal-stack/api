@@ -79,20 +79,18 @@ service ProjectService {
 message Project {
   // Uuid of this project
   string uuid = 1;
+  // Meta for this ip
+  Meta meta = 2;
   // Name of this project must be unique per tenant
-  string name = 2;
+  string name = 3;
   // Description of this project
-  string description = 3;
+  string description = 4;
   // Tenant this project belongs to
-  string tenant = 4;
+  string tenant = 5;
   // IsDefaultProject is true if this is the default project of the tenant.
-  bool is_default_project = 5;
+  bool is_default_project = 6;
   // AvatarUrl of the Project
-  optional string avatar_url = 6;
-  // CreatedAt the date when this project was created
-  google.protobuf.Timestamp created_at = 10;
-  // UpdatedAt the date when this project was updated
-  google.protobuf.Timestamp updated_at = 11;
+  optional string avatar_url = 7;
 }
 
 // ProjectMember defines a user that participates at a project

@@ -104,28 +104,30 @@ message FilesystemLayout {
     min_len: 2
     max_len: 128
   }];
+  // Meta for this ip
+  Meta meta = 2;
   // Name of this filesystemLayout
-  optional string name = 2 [(buf.validate.field).string = {
+  optional string name = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Description of this filesystemLayout
-  optional string description = 3 [(buf.validate.field).string = {
+  optional string description = 4 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Filesystems is a list of filesystems to create on a machine
-  repeated Filesystem filesystems = 4;
+  repeated Filesystem filesystems = 5;
   // Disks list of disks that belong to this layout
-  repeated Disk disks = 5;
+  repeated Disk disks = 6;
   // raid arrays to create
-  repeated Raid raid = 6;
+  repeated Raid raid = 7;
   // VolumeGroups list of volumegroups to create
-  repeated VolumeGroup volume_groups = 7;
+  repeated VolumeGroup volume_groups = 8;
   // LogicalVolumes list of logicalvolumes to create
-  repeated LogicalVolume logical_volumes = 8;
+  repeated LogicalVolume logical_volumes = 9;
   // Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
-  FilesystemLayoutConstraints constraints = 9;
+  FilesystemLayoutConstraints constraints = 10;
 }
 
 // FilesystemLayoutConstraints
@@ -139,37 +141,37 @@ message FilesystemLayoutConstraints {
 // Filesystem
 message Filesystem {
   // Device the underlying device where this filesystem should be created
-  string device = 5 [(buf.validate.field).string = {
+  string device = 1 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Format of the filesystem format
-  Format format = 6 [
+  Format format = 2 [
     (buf.validate.field).enum.defined_only = true,
     (buf.validate.field).required = true
   ];
   // Name of this filesystem
-  optional string name = 2 [(buf.validate.field).string = {
+  optional string name = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Description of this filesystem
-  optional string description = 3 [(buf.validate.field).string = {
+  optional string description = 4 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Path the mountpoint where this filesystem should be mounted on
-  optional string path = 4 [(buf.validate.field).string = {
+  optional string path = 5 [(buf.validate.field).string = {
     min_len: 2
     max_len: 4096
   }];
   // Label optional label for this this filesystem
-  optional string label = 7 [(buf.validate.field).string = {
+  optional string label = 6 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // MountOptions the options to use to mount this filesystem
-  repeated string mount_options = 8 [(buf.validate.field).repeated = {
+  repeated string mount_options = 7 [(buf.validate.field).repeated = {
     unique: true
     max_items: 32
     items: {
@@ -180,7 +182,7 @@ message Filesystem {
     }
   }];
   // CreateOptions the options to use to create (mkfs) this filesystem
-  repeated string create_options = 9 [(buf.validate.field).repeated = {
+  repeated string create_options = 8 [(buf.validate.field).repeated = {
     unique: true
     max_items: 32
     items: {

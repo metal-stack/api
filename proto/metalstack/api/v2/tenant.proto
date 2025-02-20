@@ -82,22 +82,18 @@ service TenantService {
 message Tenant {
   // Login of the tenant
   string login = 1;
+  // Meta for this ip
+  Meta meta = 2;
   // Name of the tenant
-  string name = 2;
+  string name = 3;
   // Email of the tenant
-  string email = 3;
+  string email = 4;
   // Description of this tenant
-  string description = 4;
+  string description = 5;
   // AvatarUrl of the tenant
-  string avatar_url = 5;
+  string avatar_url = 6;
   // CreatedBy stores who created this tenant
   string created_by = 15;
-  // CreatedAt the date when this tenant was created
-  google.protobuf.Timestamp created_at = 20;
-  // UpdatedAt the date when this tenant was updated
-  google.protobuf.Timestamp updated_at = 21;
-  // DeletedAt the date when this tenant was deleted
-  google.protobuf.Timestamp deleted_at = 22;
 }
 
 // TenantMember defines a user that participates at a tenant

@@ -3,7 +3,6 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
-import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/ip.proto";
 
@@ -75,13 +74,8 @@ message NetworkServiceCreateRequest {
   }];
   // Project where this network belongs to
   optional string project = 5 [(buf.validate.field).string.uuid = true];
-  option (buf.validate.message).cel = {
-    id: "labels"
-    message: "there must not be more than 24 labels"
-    expression: "size(this.labels) <= 24"
-  };
   // Labels on this network
-  map<string, string> labels = 6;
+  optional Labels labels = 6;
   option (buf.validate.message).cel = {
     id: "prefixes"
     message: "given prefixes must be valid"
@@ -136,7 +130,7 @@ message NetworkServiceListRequest {
   string id = 1 [(buf.validate.field).string.ip = true];
   // Project of the network
   string project = 2 [(buf.validate.field).string.uuid = true];
-  // FIXME more fields
+  // FIXME Introduce NetworkQuery ala IPQuery
 }
 
 // NetworkServiceListResponse
@@ -158,16 +152,18 @@ message NetworkServiceDeleteResponse {}
 message Network {
   // Id of this network
   string id = 1;
+  // Meta for this ip
+  Meta meta = 2;
   // Name of this network
-  optional string name = 2;
+  optional string name = 3;
   // Description of this network
-  optional string description = 3;
+  optional string description = 4;
   // Partition where this network will be created
-  optional string partition = 4;
+  optional string partition = 5;
   // Project where this network belongs to
-  optional string project = 5;
+  optional string project = 6;
   // Labels on this network
-  map<string, string> labels = 6;
+  optional Labels labels = 7;
   // Prefixes in this network
   repeated string prefixes = 8;
   // Destination Prefixes in this network
@@ -179,15 +175,11 @@ message Network {
   // Vrf ID of this network
   optional uint32 vrf = 12;
   // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 14;
+  optional string parent_network_id = 13;
   // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-  repeated string additional_announceble_cidrs = 15;
+  repeated string additional_announceble_cidrs = 14;
   // Consumption of ips and prefixes in this networks
-  NetworkConsumption consumption = 16;
-  // CreatedAt is the date when this network was created
-  google.protobuf.Timestamp created_at = 20;
-  // UpdatedAt is the date when this network was updated
-  google.protobuf.Timestamp updated_at = 21;
+  NetworkConsumption consumption = 15;
 }
 
 // NetworkOptions

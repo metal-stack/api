@@ -179,6 +179,18 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.api.v2.Labels"><span class="badge">M</span>Labels</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.Labels.LabelsEntry"><span class="badge">M</span>Labels.LabelsEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.Meta"><span class="badge">M</span>Meta</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.Paging"><span class="badge">M</span>Paging</a>
                 </li>
               
@@ -938,10 +950,6 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.Network.LabelsEntry"><span class="badge">M</span>Network.LabelsEntry</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.NetworkConsumption"><span class="badge">M</span>NetworkConsumption</a>
                 </li>
               
@@ -951,10 +959,6 @@
               
                 <li>
                   <a href="#metalstack.api.v2.NetworkServiceCreateRequest"><span class="badge">M</span>NetworkServiceCreateRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.NetworkServiceCreateRequest.LabelsEntry"><span class="badge">M</span>NetworkServiceCreateRequest.LabelsEntry</a>
                 </li>
               
                 <li>
@@ -1195,6 +1199,99 @@
       </div>
       <p></p>
 
+      
+        <h3 id="metalstack.api.v2.Labels">Labels</h3>
+        <p>Labels define additional information to a entity</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels.LabelsEntry">Labels.LabelsEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>Labels consists labels </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.Labels.LabelsEntry">Labels.LabelsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.Meta">Meta</h3>
+        <p>Meta of a message</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Tags on this entity </p></td>
+                </tr>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>CreatedAt is the date when this ip was created </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this ip was updated </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="metalstack.api.v2.Paging">Paging</h3>
         <p>Paging defines paging for methods with a lot of results</p>
@@ -1636,6 +1733,13 @@ having a direct membership within the tenant.</p></td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Id of this filesystemLayout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this ip </p></td>
                 </tr>
               
                 <tr>
@@ -2525,6 +2629,13 @@ having a direct membership within the tenant.</p></td>
                 </tr>
               
                 <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this ip </p></td>
+                </tr>
+              
+                <tr>
                   <td>ip</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
@@ -2564,27 +2675,6 @@ having a direct membership within the tenant.</p></td>
                   <td><a href="#metalstack.api.v2.IPType">IPType</a></td>
                   <td></td>
                   <td><p>Type of this ip </p></td>
-                </tr>
-              
-                <tr>
-                  <td>tags</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Tags on this ip </p></td>
-                </tr>
-              
-                <tr>
-                  <td>created_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>CreatedAt is the date when this ip was created </p></td>
-                </tr>
-              
-                <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>UpdatedAt is the date when this ip was updated </p></td>
                 </tr>
               
             </tbody>
@@ -3368,6 +3458,13 @@ having a direct membership within the tenant.</p></td>
                 </tr>
               
                 <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this ip </p></td>
+                </tr>
+              
+                <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
@@ -3400,20 +3497,6 @@ having a direct membership within the tenant.</p></td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
                   <td><p>Tags on this partition </p></td>
-                </tr>
-              
-                <tr>
-                  <td>created_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>CreatedAt is the date when this partition was created </p></td>
-                </tr>
-              
-                <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>UpdatedAt is the date when this partition was updated </p></td>
                 </tr>
               
             </tbody>
@@ -4004,6 +4087,13 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                 </tr>
               
                 <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this ip </p></td>
+                </tr>
+              
+                <tr>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
@@ -4036,27 +4126,6 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>CreatedBy stores who created this tenant </p></td>
-                </tr>
-              
-                <tr>
-                  <td>created_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>CreatedAt the date when this tenant was created </p></td>
-                </tr>
-              
-                <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>UpdatedAt the date when this tenant was updated </p></td>
-                </tr>
-              
-                <tr>
-                  <td>deleted_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>DeletedAt the date when this tenant was deleted </p></td>
                 </tr>
               
             </tbody>
@@ -6381,6 +6450,13 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this ip </p></td>
+                </tr>
+              
+                <tr>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
@@ -6410,8 +6486,8 @@ for which the methods should be allowed </p></td>
               
                 <tr>
                   <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Network.LabelsEntry">Network.LabelsEntry</a></td>
-                  <td>repeated</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
                   <td><p>Labels on this network </p></td>
                 </tr>
               
@@ -6469,51 +6545,6 @@ for which the methods should be allowed </p></td>
                   <td><a href="#metalstack.api.v2.NetworkConsumption">NetworkConsumption</a></td>
                   <td></td>
                   <td><p>Consumption of ips and prefixes in this networks </p></td>
-                </tr>
-              
-                <tr>
-                  <td>created_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>CreatedAt is the date when this network was created </p></td>
-                </tr>
-              
-                <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>UpdatedAt is the date when this network was updated </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.Network.LabelsEntry">Network.LabelsEntry</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>key</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>value</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -6653,8 +6684,8 @@ for which the methods should be allowed </p></td>
               
                 <tr>
                   <td>labels</td>
-                  <td><a href="#metalstack.api.v2.NetworkServiceCreateRequest.LabelsEntry">NetworkServiceCreateRequest.LabelsEntry</a></td>
-                  <td>repeated</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
                   <td><p>Labels on this network </p></td>
                 </tr>
               
@@ -6719,37 +6750,6 @@ for which the methods should be allowed </p></td>
                   <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
                   <td>optional</td>
                   <td><p>AddressFamily to create, defaults to the same as the parent </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.NetworkServiceCreateRequest.LabelsEntry">NetworkServiceCreateRequest.LabelsEntry</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>key</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>value</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -6867,7 +6867,7 @@ FIXME more fields </p></td>
                   <td></td>
                   <td><p>Project of the network
 
-FIXME more fields </p></td>
+FIXME Introduce NetworkQuery ala IPQuery </p></td>
                 </tr>
               
             </tbody>
@@ -7048,6 +7048,13 @@ FIXME more fields </p></td>
                 </tr>
               
                 <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this ip </p></td>
+                </tr>
+              
+                <tr>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
@@ -7080,20 +7087,6 @@ FIXME more fields </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>AvatarUrl of the Project </p></td>
-                </tr>
-              
-                <tr>
-                  <td>created_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>CreatedAt the date when this project was created </p></td>
-                </tr>
-              
-                <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>UpdatedAt the date when this project was updated </p></td>
                 </tr>
               
             </tbody>

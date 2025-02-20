@@ -3,7 +3,6 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
-import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 
 // IPService serves ip address related functions
@@ -63,30 +62,26 @@ enum IPAddressFamily {
 message IP {
   // Uuid of this ip
   string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Meta for this ip
+  Meta meta = 2;
   // Ip is either ipv4 or ipv6 address
-  string ip = 2 [(buf.validate.field).string.ip = true];
+  string ip = 3 [(buf.validate.field).string.ip = true];
   // Name of this ip
-  string name = 3 [(buf.validate.field).string = {
+  string name = 4 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Description of this ip
-  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  string description = 5 [(buf.validate.field).string = {max_len: 128}];
   // Network is the network this ip belongs to
-  string network = 5 [(buf.validate.field).string = {
+  string network = 6 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Project where this ip address belongs to
-  string project = 6 [(buf.validate.field).string.uuid = true];
+  string project = 7 [(buf.validate.field).string.uuid = true];
   // Type of this ip
-  IPType type = 7 [(buf.validate.field).enum.defined_only = true];
-  // Tags on this ip
-  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
-  // CreatedAt is the date when this ip was created
-  google.protobuf.Timestamp created_at = 10;
-  // UpdatedAt is the date when this ip was updated
-  google.protobuf.Timestamp updated_at = 11;
+  IPType type = 8 [(buf.validate.field).enum.defined_only = true];
 }
 
 // IPServiceGetRequest is the request payload for a ip get request
