@@ -33,13 +33,17 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// TenantServiceCreateProcedure is the fully-qualified name of the TenantService's Create RPC.
+	TenantServiceCreateProcedure = "/metalstack.admin.v2.TenantService/Create"
 	// TenantServiceListProcedure is the fully-qualified name of the TenantService's List RPC.
 	TenantServiceListProcedure = "/metalstack.admin.v2.TenantService/List"
 )
 
 // TenantServiceClient is a client for the metalstack.admin.v2.TenantService service.
 type TenantServiceClient interface {
-	// List tenants
+	// Create a tenant
+	Create(context.Context, *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error)
+	// List all tenants
 	List(context.Context, *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error)
 }
 
@@ -54,6 +58,12 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	tenantServiceMethods := v2.File_metalstack_admin_v2_tenant_proto.Services().ByName("TenantService").Methods()
 	return &tenantServiceClient{
+		create: connect.NewClient[v2.TenantServiceCreateRequest, v2.TenantServiceCreateResponse](
+			httpClient,
+			baseURL+TenantServiceCreateProcedure,
+			connect.WithSchema(tenantServiceMethods.ByName("Create")),
+			connect.WithClientOptions(opts...),
+		),
 		list: connect.NewClient[v2.TenantServiceListRequest, v2.TenantServiceListResponse](
 			httpClient,
 			baseURL+TenantServiceListProcedure,
@@ -65,7 +75,13 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	list *connect.Client[v2.TenantServiceListRequest, v2.TenantServiceListResponse]
+	create *connect.Client[v2.TenantServiceCreateRequest, v2.TenantServiceCreateResponse]
+	list   *connect.Client[v2.TenantServiceListRequest, v2.TenantServiceListResponse]
+}
+
+// Create calls metalstack.admin.v2.TenantService.Create.
+func (c *tenantServiceClient) Create(ctx context.Context, req *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error) {
+	return c.create.CallUnary(ctx, req)
 }
 
 // List calls metalstack.admin.v2.TenantService.List.
@@ -75,7 +91,9 @@ func (c *tenantServiceClient) List(ctx context.Context, req *connect.Request[v2.
 
 // TenantServiceHandler is an implementation of the metalstack.admin.v2.TenantService service.
 type TenantServiceHandler interface {
-	// List tenants
+	// Create a tenant
+	Create(context.Context, *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error)
+	// List all tenants
 	List(context.Context, *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error)
 }
 
@@ -86,6 +104,12 @@ type TenantServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	tenantServiceMethods := v2.File_metalstack_admin_v2_tenant_proto.Services().ByName("TenantService").Methods()
+	tenantServiceCreateHandler := connect.NewUnaryHandler(
+		TenantServiceCreateProcedure,
+		svc.Create,
+		connect.WithSchema(tenantServiceMethods.ByName("Create")),
+		connect.WithHandlerOptions(opts...),
+	)
 	tenantServiceListHandler := connect.NewUnaryHandler(
 		TenantServiceListProcedure,
 		svc.List,
@@ -94,6 +118,8 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 	)
 	return "/metalstack.admin.v2.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case TenantServiceCreateProcedure:
+			tenantServiceCreateHandler.ServeHTTP(w, r)
 		case TenantServiceListProcedure:
 			tenantServiceListHandler.ServeHTTP(w, r)
 		default:
@@ -104,6 +130,10 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 
 // UnimplementedTenantServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTenantServiceHandler struct{}
+
+func (UnimplementedTenantServiceHandler) Create(context.Context, *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TenantService.Create is not implemented"))
+}
 
 func (UnimplementedTenantServiceHandler) List(context.Context, *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TenantService.List is not implemented"))

@@ -711,6 +711,14 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.admin.v2.TenantServiceCreateRequest"><span class="badge">M</span>TenantServiceCreateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TenantServiceCreateResponse"><span class="badge">M</span>TenantServiceCreateResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.TenantServiceListRequest"><span class="badge">M</span>TenantServiceListRequest</a>
                 </li>
               
@@ -5026,6 +5034,82 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
       <p></p>
 
       
+        <h3 id="metalstack.admin.v2.TenantServiceCreateRequest">TenantServiceCreateRequest</h3>
+        <p>TenantServiceCreateRequest is the request payload of the tenant create request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of this tenant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this tenant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>email</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Email of the tenant, if not set will be inherited from the creator </p></td>
+                </tr>
+              
+                <tr>
+                  <td>avatar_url</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>AvatarUrl of the tenant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>phone_number</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>PhoneNumber of the tenant </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TenantServiceCreateResponse">TenantServiceCreateResponse</h3>
+        <p>TenantServiceCreateResponse is the response payload of the tenant create request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant</td>
+                  <td><a href="#metalstack.api.v2.Tenant">metalstack.api.v2.Tenant</a></td>
+                  <td></td>
+                  <td><p>Tenant is the tenant </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.TenantServiceListRequest">TenantServiceListRequest</h3>
         <p>TenantServiceListRequest is the request payload for a tenant list request</p>
 
@@ -5117,10 +5201,17 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
           <tbody>
             
               <tr>
+                <td>Create</td>
+                <td><a href="#metalstack.admin.v2.TenantServiceCreateRequest">TenantServiceCreateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.TenantServiceCreateResponse">TenantServiceCreateResponse</a></td>
+                <td><p>Create a tenant</p></td>
+              </tr>
+            
+              <tr>
                 <td>List</td>
                 <td><a href="#metalstack.admin.v2.TenantServiceListRequest">TenantServiceListRequest</a></td>
                 <td><a href="#metalstack.admin.v2.TenantServiceListResponse">TenantServiceListResponse</a></td>
-                <td><p>List tenants</p></td>
+                <td><p>List all tenants</p></td>
               </tr>
             
           </tbody>
