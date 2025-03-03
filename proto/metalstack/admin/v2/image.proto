@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/image.proto";
+
+// ImageService serves filesystem related functions
+service ImageService {
+  // Create a filesystem
+  rpc Create(ImageServiceCreateRequest) returns (ImageServiceCreateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Update a filesystem
+  rpc Update(ImageServiceUpdateRequest) returns (ImageServiceUpdateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Delete a filesystem
+  rpc Delete(ImageServiceDeleteRequest) returns (ImageServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+}
+
+// ImageServiceCreateRequest
+message ImageServiceCreateRequest {
+  // Image is the image
+  metalstack.api.v2.Image image = 1;
+}
+
+// ImageServiceCreateResponse
+message ImageServiceCreateResponse {
+  // Image is the image
+  metalstack.api.v2.Image image = 1;
+}
+
+// ImageServiceUpdateRequest
+message ImageServiceUpdateRequest {
+  // Image is the image
+  metalstack.api.v2.Image image = 1;
+}
+
+// ImageServiceUpdateResponse
+message ImageServiceUpdateResponse {
+  // Image is the image
+  metalstack.api.v2.Image image = 1;
+}
+
+// ImageServiceDeleteRequest
+message ImageServiceDeleteRequest {
+  // ID of the image to delete
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// message ImageServiceDeleteResponse {
+message ImageServiceDeleteResponse {
+  // ImageLayout the filesystemlayout
+  metalstack.api.v2.Image image = 1;
+}

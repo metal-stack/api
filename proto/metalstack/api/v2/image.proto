@@ -1,0 +1,130 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+
+// ImageService serves image related functions
+service ImageService {
+  // Get a image
+  rpc Get(ImageServiceGetRequest) returns (ImageServiceGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // List all images
+  rpc List(ImageServiceListRequest) returns (ImageServiceListResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// ImageServiceGetRequest is the request payload for a image get request
+message ImageServiceGetRequest {
+  // ID of the image to get
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Latest, if set to true only the latest image is returned
+  bool latest = 2;
+}
+
+// ImageServiceListRequest is the request payload for a image list request
+message ImageServiceListRequest {
+  // Query for images
+  ImageQuery query = 1;
+}
+
+// ImageServiceGetResponse is the response payload for a image get request
+message ImageServiceGetResponse {
+  // Image the image
+  Image image = 1;
+}
+
+// ImageServiceListResponse is the response payload for a image list request
+message ImageServiceListResponse {
+  // Images the images
+  repeated Image images = 1;
+}
+
+// Image
+message Image {
+  // Id of this imageLayout
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Meta for this ip
+  Meta meta = 2;
+  // URL where this image is located
+  string url = 3;
+  // Name of this imageLayout
+  optional string name = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this imageLayout
+  optional string description = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Features of this image
+  repeated ImageFeature features = 6; // FIXME add validation for slice of ENUM
+
+  // Classification of this image
+  ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
+
+  // ExpiresAt usage is not possible after this date
+  google.protobuf.Timestamp expires_at = 8;
+
+  // UsedBy the following machines/firewalls
+  repeated string used_by = 9;
+}
+
+// ImageQuery is used to search images
+message ImageQuery {
+  // ID of the image to get
+  optional string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Name of the image to query
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of the image to query
+  optional string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Feature of the image to query
+  optional ImageFeature feature = 4 [(buf.validate.field).enum.defined_only = true];
+
+  // Classification of the image to query
+  optional ImageClassification classification = 5 [(buf.validate.field).enum.defined_only = true];
+}
+
+// ImageFeature
+enum ImageFeature {
+  // IMAGE_FEATURE_UNSPECIFIED is not specified
+  IMAGE_FEATURE_UNSPECIFIED = 0;
+  // IMAGE_FEATURE_MACHINE indicates this image is usable for a machine
+  IMAGE_FEATURE_MACHINE = 1 [(enum_string_value) = "machine"];
+  // IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall
+  IMAGE_FEATURE_FIREWALL = 2 [(enum_string_value) = "firewall"];
+}
+
+// Image
+enum ImageClassification {
+  // IMAGE_CLASSIFICATION_UNSPECIFIED is not specified
+  IMAGE_CLASSIFICATION_UNSPECIFIED = 0;
+  // IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview
+  IMAGE_CLASSIFICATION_PREVIEW = 1 [(enum_string_value) = "preview"];
+  // IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported
+  IMAGE_CLASSIFICATION_SUPPORTED = 2 [(enum_string_value) = "supported"];
+  // IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated
+  IMAGE_CLASSIFICATION_DEPRECATED = 3 [(enum_string_value) = "deprecated"];
+}
