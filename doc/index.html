@@ -384,6 +384,92 @@
         
           
           <li>
+            <a href="#metalstack%2fapi%2fv2%2fimage.proto">metalstack/api/v2/image.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.api.v2.Image"><span class="badge">M</span>Image</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageQuery"><span class="badge">M</span>ImageQuery</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageServiceGetRequest"><span class="badge">M</span>ImageServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageServiceGetResponse"><span class="badge">M</span>ImageServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageServiceListRequest"><span class="badge">M</span>ImageServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageServiceListResponse"><span class="badge">M</span>ImageServiceListResponse</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageClassification"><span class="badge">E</span>ImageClassification</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageFeature"><span class="badge">E</span>ImageFeature</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageService"><span class="badge">S</span>ImageService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fadmin%2fv2%2fimage.proto">metalstack/admin/v2/image.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ImageServiceCreateRequest"><span class="badge">M</span>ImageServiceCreateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ImageServiceCreateResponse"><span class="badge">M</span>ImageServiceCreateResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ImageServiceDeleteRequest"><span class="badge">M</span>ImageServiceDeleteRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ImageServiceDeleteResponse"><span class="badge">M</span>ImageServiceDeleteResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ImageServiceUpdateRequest"><span class="badge">M</span>ImageServiceUpdateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ImageServiceUpdateResponse"><span class="badge">M</span>ImageServiceUpdateResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ImageService"><span class="badge">S</span>ImageService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2fapi%2fv2%2fip.proto">metalstack/api/v2/ip.proto</a>
             <ul>
               
@@ -2604,6 +2690,538 @@ having a direct membership within the tenant.</p></td>
                 <td>Delete</td>
                 <td><a href="#metalstack.admin.v2.FilesystemServiceDeleteRequest">FilesystemServiceDeleteRequest</a></td>
                 <td><a href="#metalstack.admin.v2.FilesystemServiceDeleteResponse">FilesystemServiceDeleteResponse</a></td>
+                <td><p>Delete a filesystem</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/api/v2/image.proto">metalstack/api/v2/image.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.api.v2.Image">Image</h3>
+        <p>Image</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of this imageLayout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this ip </p></td>
+                </tr>
+              
+                <tr>
+                  <td>url</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>URL where this image is located </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this imageLayout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this imageLayout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>features</td>
+                  <td><a href="#metalstack.api.v2.ImageFeature">ImageFeature</a></td>
+                  <td>repeated</td>
+                  <td><p>Features of this image
+
+FIXME add validation for slice of ENUM </p></td>
+                </tr>
+              
+                <tr>
+                  <td>classification</td>
+                  <td><a href="#metalstack.api.v2.ImageClassification">ImageClassification</a></td>
+                  <td></td>
+                  <td><p>Classification of this image </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expires_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>ExpiresAt usage is not possible after this date </p></td>
+                </tr>
+              
+                <tr>
+                  <td>used_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>UsedBy the following machines/firewalls </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.ImageQuery">ImageQuery</h3>
+        <p>ImageQuery is used to search images</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ID of the image to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of the image to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of the image to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>feature</td>
+                  <td><a href="#metalstack.api.v2.ImageFeature">ImageFeature</a></td>
+                  <td>optional</td>
+                  <td><p>Feature of the image to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>classification</td>
+                  <td><a href="#metalstack.api.v2.ImageClassification">ImageClassification</a></td>
+                  <td>optional</td>
+                  <td><p>Classification of the image to query </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.ImageServiceGetRequest">ImageServiceGetRequest</h3>
+        <p>ImageServiceGetRequest is the request payload for a image get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID of the image to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>latest</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Latest, if set to true only the latest image is returned </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.ImageServiceGetResponse">ImageServiceGetResponse</h3>
+        <p>ImageServiceGetResponse is the response payload for a image get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#metalstack.api.v2.Image">Image</a></td>
+                  <td></td>
+                  <td><p>Image the image </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.ImageServiceListRequest">ImageServiceListRequest</h3>
+        <p>ImageServiceListRequest is the request payload for a image list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.ImageQuery">ImageQuery</a></td>
+                  <td></td>
+                  <td><p>Query for images </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.ImageServiceListResponse">ImageServiceListResponse</h3>
+        <p>ImageServiceListResponse is the response payload for a image list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>images</td>
+                  <td><a href="#metalstack.api.v2.Image">Image</a></td>
+                  <td>repeated</td>
+                  <td><p>Images the images </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="metalstack.api.v2.ImageClassification">ImageClassification</h3>
+        <p>Image</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>IMAGE_CLASSIFICATION_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>IMAGE_CLASSIFICATION_UNSPECIFIED is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>IMAGE_CLASSIFICATION_PREVIEW</td>
+                <td>1</td>
+                <td><p>IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview</p></td>
+              </tr>
+            
+              <tr>
+                <td>IMAGE_CLASSIFICATION_SUPPORTED</td>
+                <td>2</td>
+                <td><p>IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported</p></td>
+              </tr>
+            
+              <tr>
+                <td>IMAGE_CLASSIFICATION_DEPRECATED</td>
+                <td>3</td>
+                <td><p>IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.ImageFeature">ImageFeature</h3>
+        <p>ImageFeature</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>IMAGE_FEATURE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>IMAGE_FEATURE_UNSPECIFIED is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>IMAGE_FEATURE_MACHINE</td>
+                <td>1</td>
+                <td><p>IMAGE_FEATURE_MACHINE indicates this image is usable for a machine</p></td>
+              </tr>
+            
+              <tr>
+                <td>IMAGE_FEATURE_FIREWALL</td>
+                <td>2</td>
+                <td><p>IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="metalstack.api.v2.ImageService">ImageService</h3>
+        <p>ImageService serves image related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.api.v2.ImageServiceGetRequest">ImageServiceGetRequest</a></td>
+                <td><a href="#metalstack.api.v2.ImageServiceGetResponse">ImageServiceGetResponse</a></td>
+                <td><p>Get a image</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.api.v2.ImageServiceListRequest">ImageServiceListRequest</a></td>
+                <td><a href="#metalstack.api.v2.ImageServiceListResponse">ImageServiceListResponse</a></td>
+                <td><p>List all images</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/admin/v2/image.proto">metalstack/admin/v2/image.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.admin.v2.ImageServiceCreateRequest">ImageServiceCreateRequest</h3>
+        <p>ImageServiceCreateRequest</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#metalstack.api.v2.Image">metalstack.api.v2.Image</a></td>
+                  <td></td>
+                  <td><p>Image is the image </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.ImageServiceCreateResponse">ImageServiceCreateResponse</h3>
+        <p>ImageServiceCreateResponse</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#metalstack.api.v2.Image">metalstack.api.v2.Image</a></td>
+                  <td></td>
+                  <td><p>Image is the image </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.ImageServiceDeleteRequest">ImageServiceDeleteRequest</h3>
+        <p>ImageServiceDeleteRequest</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID of the image to delete </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.ImageServiceDeleteResponse">ImageServiceDeleteResponse</h3>
+        <p>message ImageServiceDeleteResponse {</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#metalstack.api.v2.Image">metalstack.api.v2.Image</a></td>
+                  <td></td>
+                  <td><p>ImageLayout the filesystemlayout </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.ImageServiceUpdateRequest">ImageServiceUpdateRequest</h3>
+        <p>ImageServiceUpdateRequest</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#metalstack.api.v2.Image">metalstack.api.v2.Image</a></td>
+                  <td></td>
+                  <td><p>Image is the image </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.ImageServiceUpdateResponse">ImageServiceUpdateResponse</h3>
+        <p>ImageServiceUpdateResponse</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#metalstack.api.v2.Image">metalstack.api.v2.Image</a></td>
+                  <td></td>
+                  <td><p>Image is the image </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.admin.v2.ImageService">ImageService</h3>
+        <p>ImageService serves filesystem related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Create</td>
+                <td><a href="#metalstack.admin.v2.ImageServiceCreateRequest">ImageServiceCreateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.ImageServiceCreateResponse">ImageServiceCreateResponse</a></td>
+                <td><p>Create a filesystem</p></td>
+              </tr>
+            
+              <tr>
+                <td>Update</td>
+                <td><a href="#metalstack.admin.v2.ImageServiceUpdateRequest">ImageServiceUpdateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.ImageServiceUpdateResponse">ImageServiceUpdateResponse</a></td>
+                <td><p>Update a filesystem</p></td>
+              </tr>
+            
+              <tr>
+                <td>Delete</td>
+                <td><a href="#metalstack.admin.v2.ImageServiceDeleteRequest">ImageServiceDeleteRequest</a></td>
+                <td><a href="#metalstack.admin.v2.ImageServiceDeleteResponse">ImageServiceDeleteResponse</a></td>
                 <td><p>Delete a filesystem</p></td>
               </tr>
             

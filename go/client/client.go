@@ -18,6 +18,7 @@ type (
 	}
 	Adminv2 interface {
 		Filesystem() adminv2connect.FilesystemServiceClient
+		Image() adminv2connect.ImageServiceClient
 		IP() adminv2connect.IPServiceClient
 		Partition() adminv2connect.PartitionServiceClient
 		Tenant() adminv2connect.TenantServiceClient
@@ -26,6 +27,7 @@ type (
 
 	adminv2 struct {
 		filesystemservice adminv2connect.FilesystemServiceClient
+		imageservice      adminv2connect.ImageServiceClient
 		ipservice         adminv2connect.IPServiceClient
 		partitionservice  adminv2connect.PartitionServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
@@ -35,6 +37,7 @@ type (
 	Apiv2 interface {
 		Filesystem() apiv2connect.FilesystemServiceClient
 		Health() apiv2connect.HealthServiceClient
+		Image() apiv2connect.ImageServiceClient
 		IP() apiv2connect.IPServiceClient
 		Method() apiv2connect.MethodServiceClient
 		Network() apiv2connect.NetworkServiceClient
@@ -49,6 +52,7 @@ type (
 	apiv2 struct {
 		filesystemservice apiv2connect.FilesystemServiceClient
 		healthservice     apiv2connect.HealthServiceClient
+		imageservice      apiv2connect.ImageServiceClient
 		ipservice         apiv2connect.IPServiceClient
 		methodservice     apiv2connect.MethodServiceClient
 		networkservice    apiv2connect.NetworkServiceClient
@@ -70,6 +74,11 @@ func New(config DialConfig) Client {
 func (c client) Adminv2() Adminv2 {
 	a := &adminv2{
 		filesystemservice: adminv2connect.NewFilesystemServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		imageservice: adminv2connect.NewImageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
@@ -101,6 +110,9 @@ func (c client) Adminv2() Adminv2 {
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }
+func (c *adminv2) Image() adminv2connect.ImageServiceClient {
+	return c.imageservice
+}
 func (c *adminv2) IP() adminv2connect.IPServiceClient {
 	return c.ipservice
 }
@@ -122,6 +134,11 @@ func (c client) Apiv2() Apiv2 {
 			compress.WithAll(compress.LevelBalanced),
 		),
 		healthservice: apiv2connect.NewHealthServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		imageservice: apiv2connect.NewImageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
@@ -180,6 +197,9 @@ func (c *apiv2) Filesystem() apiv2connect.FilesystemServiceClient {
 }
 func (c *apiv2) Health() apiv2connect.HealthServiceClient {
 	return c.healthservice
+}
+func (c *apiv2) Image() apiv2connect.ImageServiceClient {
+	return c.imageservice
 }
 func (c *apiv2) IP() apiv2connect.IPServiceClient {
 	return c.ipservice

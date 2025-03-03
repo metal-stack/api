@@ -73,6 +73,26 @@ func (_m *Apiv2) IP() apiv2connect.IPServiceClient {
 	return r0
 }
 
+// Image provides a mock function with no fields
+func (_m *Apiv2) Image() apiv2connect.ImageServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Image")
+	}
+
+	var r0 apiv2connect.ImageServiceClient
+	if rf, ok := ret.Get(0).(func() apiv2connect.ImageServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv2connect.ImageServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Method provides a mock function with no fields
 func (_m *Apiv2) Method() apiv2connect.MethodServiceClient {
 	ret := _m.Called()

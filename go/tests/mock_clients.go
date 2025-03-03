@@ -29,6 +29,7 @@ type (
 	}
 	adminv2 struct {
 		filesystemservice *adminv2mocks.FilesystemServiceClient
+		imageservice      *adminv2mocks.ImageServiceClient
 		ipservice         *adminv2mocks.IPServiceClient
 		partitionservice  *adminv2mocks.PartitionServiceClient
 		tenantservice     *adminv2mocks.TenantServiceClient
@@ -37,6 +38,7 @@ type (
 
 	Adminv2MockFns struct {
 		Filesystem func(m *mock.Mock)
+		Image      func(m *mock.Mock)
 		IP         func(m *mock.Mock)
 		Partition  func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
@@ -45,6 +47,7 @@ type (
 	apiv2 struct {
 		filesystemservice *apiv2mocks.FilesystemServiceClient
 		healthservice     *apiv2mocks.HealthServiceClient
+		imageservice      *apiv2mocks.ImageServiceClient
 		ipservice         *apiv2mocks.IPServiceClient
 		methodservice     *apiv2mocks.MethodServiceClient
 		networkservice    *apiv2mocks.NetworkServiceClient
@@ -59,6 +62,7 @@ type (
 	Apiv2MockFns struct {
 		Filesystem func(m *mock.Mock)
 		Health     func(m *mock.Mock)
+		Image      func(m *mock.Mock)
 		IP         func(m *mock.Mock)
 		Method     func(m *mock.Mock)
 		Network    func(m *mock.Mock)
@@ -96,6 +100,7 @@ func (w wrapper) Adminv2(fns *Adminv2MockFns) *adminv2 {
 func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	a := &adminv2{
 		filesystemservice: adminv2mocks.NewFilesystemServiceClient(t),
+		imageservice:      adminv2mocks.NewImageServiceClient(t),
 		ipservice:         adminv2mocks.NewIPServiceClient(t),
 		partitionservice:  adminv2mocks.NewPartitionServiceClient(t),
 		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
@@ -105,6 +110,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	if fns != nil {
 		if fns.Filesystem != nil {
 			fns.Filesystem(&a.filesystemservice.Mock)
+		}
+		if fns.Image != nil {
+			fns.Image(&a.imageservice.Mock)
 		}
 		if fns.IP != nil {
 			fns.IP(&a.ipservice.Mock)
@@ -127,6 +135,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }
+func (c *adminv2) Image() adminv2connect.ImageServiceClient {
+	return c.imageservice
+}
 func (c *adminv2) IP() adminv2connect.IPServiceClient {
 	return c.ipservice
 }
@@ -148,6 +159,7 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 	a := &apiv2{
 		filesystemservice: apiv2mocks.NewFilesystemServiceClient(t),
 		healthservice:     apiv2mocks.NewHealthServiceClient(t),
+		imageservice:      apiv2mocks.NewImageServiceClient(t),
 		ipservice:         apiv2mocks.NewIPServiceClient(t),
 		methodservice:     apiv2mocks.NewMethodServiceClient(t),
 		networkservice:    apiv2mocks.NewNetworkServiceClient(t),
@@ -165,6 +177,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		}
 		if fns.Health != nil {
 			fns.Health(&a.healthservice.Mock)
+		}
+		if fns.Image != nil {
+			fns.Image(&a.imageservice.Mock)
 		}
 		if fns.IP != nil {
 			fns.IP(&a.ipservice.Mock)
@@ -204,6 +219,9 @@ func (c *apiv2) Filesystem() apiv2connect.FilesystemServiceClient {
 }
 func (c *apiv2) Health() apiv2connect.HealthServiceClient {
 	return c.healthservice
+}
+func (c *apiv2) Image() apiv2connect.ImageServiceClient {
+	return c.imageservice
 }
 func (c *apiv2) IP() apiv2connect.IPServiceClient {
 	return c.ipservice
