@@ -12,4 +12,6 @@ func TestGetServicePermissions(t *testing.T) {
 	// TODO more coverage
 	require.Contains(t, perms.Methods, "/metalstack.api.v2.IPService/List")
 	require.Contains(t, perms.Visibility.Self, "/metalstack.api.v2.TokenService/Create")
+	require.Contains(t, perms.Visibility.Admin, "/metalstack.admin.v2.TenantService/List")
+	require.Contains(t, perms.Visibility.Project, "/metalstack.api.v2.IPService/List")
 }

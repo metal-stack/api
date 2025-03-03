@@ -1,6 +1,10 @@
 // Code generated discover.go. DO NOT EDIT.
 package permissions
 
+import (
+	"connectrpc.com/connect"
+)
+
 func GetServices() []string {
 	return []string{
 		"metalstack.admin.v2.FilesystemService",
@@ -213,6 +217,52 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.api.v2.TokenService/Update":           true,
 				"/metalstack.api.v2.UserService/Get":               true,
 			},
+			Admin: map[string]bool{
+				"/metalstack.admin.v2.FilesystemService/Create":  true,
+				"/metalstack.admin.v2.FilesystemService/Delete":  true,
+				"/metalstack.admin.v2.FilesystemService/Update":  true,
+				"/metalstack.admin.v2.IPService/Issues":          true,
+				"/metalstack.admin.v2.IPService/List":            true,
+				"/metalstack.admin.v2.PartitionService/Capacity": true,
+				"/metalstack.admin.v2.PartitionService/Create":   true,
+				"/metalstack.admin.v2.PartitionService/Delete":   true,
+				"/metalstack.admin.v2.PartitionService/Update":   true,
+				"/metalstack.admin.v2.TenantService/Create":      true,
+				"/metalstack.admin.v2.TenantService/List":        true,
+				"/metalstack.admin.v2.TokenService/List":         true,
+				"/metalstack.admin.v2.TokenService/Revoke":       true,
+			},
+			Tenant: map[string]bool{
+				"/metalstack.api.v2.ProjectService/Create":      true,
+				"/metalstack.api.v2.TenantService/Delete":       true,
+				"/metalstack.api.v2.TenantService/Get":          true,
+				"/metalstack.api.v2.TenantService/Invite":       true,
+				"/metalstack.api.v2.TenantService/InviteDelete": true,
+				"/metalstack.api.v2.TenantService/InvitesList":  true,
+				"/metalstack.api.v2.TenantService/RemoveMember": true,
+				"/metalstack.api.v2.TenantService/Update":       true,
+				"/metalstack.api.v2.TenantService/UpdateMember": true,
+			},
+			Project: map[string]bool{
+				"/metalstack.api.v2.IPService/Create":            true,
+				"/metalstack.api.v2.IPService/Delete":            true,
+				"/metalstack.api.v2.IPService/Get":               true,
+				"/metalstack.api.v2.IPService/List":              true,
+				"/metalstack.api.v2.IPService/Update":            true,
+				"/metalstack.api.v2.NetworkService/Create":       true,
+				"/metalstack.api.v2.NetworkService/Delete":       true,
+				"/metalstack.api.v2.NetworkService/Get":          true,
+				"/metalstack.api.v2.NetworkService/List":         true,
+				"/metalstack.api.v2.NetworkService/Update":       true,
+				"/metalstack.api.v2.ProjectService/Delete":       true,
+				"/metalstack.api.v2.ProjectService/Get":          true,
+				"/metalstack.api.v2.ProjectService/Invite":       true,
+				"/metalstack.api.v2.ProjectService/InviteDelete": true,
+				"/metalstack.api.v2.ProjectService/InvitesList":  true,
+				"/metalstack.api.v2.ProjectService/RemoveMember": true,
+				"/metalstack.api.v2.ProjectService/Update":       true,
+				"/metalstack.api.v2.ProjectService/UpdateMember": true,
+			},
 		},
 		Auditable: map[string]bool{
 			"/metalstack.admin.v2.FilesystemService/Create":    true,
@@ -280,4 +330,51 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.VersionService/Get":            false,
 		},
 	}
+}
+
+func IsPublicScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Public[req.Spec().Procedure]
+	return ok
+}
+
+func IsSelfScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Self[req.Spec().Procedure]
+	return ok
+}
+
+func IsAdminScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Admin[req.Spec().Procedure]
+	return ok
+}
+
+func IsTenantScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Tenant[req.Spec().Procedure]
+	return ok
+}
+
+func IsProjectScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Project[req.Spec().Procedure]
+	return ok
+}
+
+func GetTenantFromRequest(req connect.AnyRequest) (string, bool) {
+	if !IsTenantScope(req) {
+		return "", false
+	}
+	switch rq := req.Any().(type) {
+	case interface{ GetLogin() string }:
+		return rq.GetLogin(), true
+	}
+	return "", false
+}
+
+func GetProjectFromRequest(req connect.AnyRequest) (string, bool) {
+	if !IsProjectScope(req) {
+		return "", false
+	}
+	switch rq := req.Any().(type) {
+	case interface{ GetProject() string }:
+		return rq.GetProject(), true
+	}
+	return "", false
 }
