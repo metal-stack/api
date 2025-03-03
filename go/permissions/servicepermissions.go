@@ -357,6 +357,11 @@ func IsProjectScope(req connect.AnyRequest) bool {
 	return ok
 }
 
+func IsAuditable(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Auditable[req.Spec().Procedure]
+	return ok
+}
+
 func GetTenantFromRequest(req connect.AnyRequest) (string, bool) {
 	if !IsTenantScope(req) {
 		return "", false
