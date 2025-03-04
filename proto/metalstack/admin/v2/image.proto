@@ -6,22 +6,27 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/image.proto";
 
-// ImageService serves filesystem related functions
+// ImageService serves image related functions
 service ImageService {
-  // Create a filesystem
+  // Create a image
   rpc Create(ImageServiceCreateRequest) returns (ImageServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Update a filesystem
+  // Update a image
   rpc Update(ImageServiceUpdateRequest) returns (ImageServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Delete a filesystem
+  // Delete a image
   rpc Delete(ImageServiceDeleteRequest) returns (ImageServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Usage of images
+  rpc Usage(ImageServiceUsageRequest) returns (ImageServiceUsageResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 
@@ -60,6 +65,18 @@ message ImageServiceDeleteRequest {
 
 // message ImageServiceDeleteResponse {
 message ImageServiceDeleteResponse {
-  // ImageLayout the filesystemlayout
+  // ImageLayout the imagelayout
   metalstack.api.v2.Image image = 1;
+}
+
+// ImageServiceUsageRequest
+message ImageServiceUsageRequest {
+  // Query for which images the usage should be reported
+  metalstack.api.v2.ImageQuery query = 1;
+}
+
+// ImageServiceUsageResponse
+message ImageServiceUsageResponse {
+  // Images with usage
+  repeated metalstack.api.v2.ImageUsage image_usage = 1;
 }

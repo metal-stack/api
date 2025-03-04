@@ -78,9 +78,14 @@ message Image {
 
   // ExpiresAt usage is not possible after this date
   google.protobuf.Timestamp expires_at = 8;
+}
 
+// ImageUsage reports which machines/firewalls actually use this image
+message ImageUsage {
+  // Image with usage
+  Image image = 1;
   // UsedBy the following machines/firewalls
-  repeated string used_by = 9;
+  repeated string used_by = 2;
 }
 
 // ImageQuery is used to search images

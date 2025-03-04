@@ -411,6 +411,10 @@
                   <a href="#metalstack.api.v2.ImageServiceListResponse"><span class="badge">M</span>ImageServiceListResponse</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.ImageUsage"><span class="badge">M</span>ImageUsage</a>
+                </li>
+              
               
                 <li>
                   <a href="#metalstack.api.v2.ImageClassification"><span class="badge">E</span>ImageClassification</a>
@@ -456,6 +460,14 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.ImageServiceUpdateResponse"><span class="badge">M</span>ImageServiceUpdateResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ImageServiceUsageRequest"><span class="badge">M</span>ImageServiceUsageRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ImageServiceUsageResponse"><span class="badge">M</span>ImageServiceUsageResponse</a>
                 </li>
               
               
@@ -2773,13 +2785,6 @@ FIXME add validation for slice of ENUM </p></td>
                   <td><p>ExpiresAt usage is not possible after this date </p></td>
                 </tr>
               
-                <tr>
-                  <td>used_by</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>UsedBy the following machines/firewalls </p></td>
-                </tr>
-              
             </tbody>
           </table>
 
@@ -2933,6 +2938,37 @@ FIXME add validation for slice of ENUM </p></td>
                   <td><a href="#metalstack.api.v2.Image">Image</a></td>
                   <td>repeated</td>
                   <td><p>Images the images </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.ImageUsage">ImageUsage</h3>
+        <p>ImageUsage reports which machines/firewalls actually use this image</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#metalstack.api.v2.Image">Image</a></td>
+                  <td></td>
+                  <td><p>Image with usage </p></td>
+                </tr>
+              
+                <tr>
+                  <td>used_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>UsedBy the following machines/firewalls </p></td>
                 </tr>
               
             </tbody>
@@ -3132,7 +3168,7 @@ FIXME add validation for slice of ENUM </p></td>
                   <td>image</td>
                   <td><a href="#metalstack.api.v2.Image">metalstack.api.v2.Image</a></td>
                   <td></td>
-                  <td><p>ImageLayout the filesystemlayout </p></td>
+                  <td><p>ImageLayout the imagelayout </p></td>
                 </tr>
               
             </tbody>
@@ -3190,6 +3226,54 @@ FIXME add validation for slice of ENUM </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.ImageServiceUsageRequest">ImageServiceUsageRequest</h3>
+        <p>ImageServiceUsageRequest</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.ImageQuery">metalstack.api.v2.ImageQuery</a></td>
+                  <td></td>
+                  <td><p>Query for which images the usage should be reported </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.ImageServiceUsageResponse">ImageServiceUsageResponse</h3>
+        <p>ImageServiceUsageResponse</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image_usage</td>
+                  <td><a href="#metalstack.api.v2.ImageUsage">metalstack.api.v2.ImageUsage</a></td>
+                  <td>repeated</td>
+                  <td><p>Images with usage </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
 
@@ -3197,7 +3281,7 @@ FIXME add validation for slice of ENUM </p></td>
 
       
         <h3 id="metalstack.admin.v2.ImageService">ImageService</h3>
-        <p>ImageService serves filesystem related functions</p>
+        <p>ImageService serves image related functions</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -3208,21 +3292,28 @@ FIXME add validation for slice of ENUM </p></td>
                 <td>Create</td>
                 <td><a href="#metalstack.admin.v2.ImageServiceCreateRequest">ImageServiceCreateRequest</a></td>
                 <td><a href="#metalstack.admin.v2.ImageServiceCreateResponse">ImageServiceCreateResponse</a></td>
-                <td><p>Create a filesystem</p></td>
+                <td><p>Create a image</p></td>
               </tr>
             
               <tr>
                 <td>Update</td>
                 <td><a href="#metalstack.admin.v2.ImageServiceUpdateRequest">ImageServiceUpdateRequest</a></td>
                 <td><a href="#metalstack.admin.v2.ImageServiceUpdateResponse">ImageServiceUpdateResponse</a></td>
-                <td><p>Update a filesystem</p></td>
+                <td><p>Update a image</p></td>
               </tr>
             
               <tr>
                 <td>Delete</td>
                 <td><a href="#metalstack.admin.v2.ImageServiceDeleteRequest">ImageServiceDeleteRequest</a></td>
                 <td><a href="#metalstack.admin.v2.ImageServiceDeleteResponse">ImageServiceDeleteResponse</a></td>
-                <td><p>Delete a filesystem</p></td>
+                <td><p>Delete a image</p></td>
+              </tr>
+            
+              <tr>
+                <td>Usage</td>
+                <td><a href="#metalstack.admin.v2.ImageServiceUsageRequest">ImageServiceUsageRequest</a></td>
+                <td><a href="#metalstack.admin.v2.ImageServiceUsageResponse">ImageServiceUsageResponse</a></td>
+                <td><p>Usage of images</p></td>
               </tr>
             
           </tbody>

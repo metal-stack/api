@@ -39,16 +39,20 @@ const (
 	ImageServiceUpdateProcedure = "/metalstack.admin.v2.ImageService/Update"
 	// ImageServiceDeleteProcedure is the fully-qualified name of the ImageService's Delete RPC.
 	ImageServiceDeleteProcedure = "/metalstack.admin.v2.ImageService/Delete"
+	// ImageServiceUsageProcedure is the fully-qualified name of the ImageService's Usage RPC.
+	ImageServiceUsageProcedure = "/metalstack.admin.v2.ImageService/Usage"
 )
 
 // ImageServiceClient is a client for the metalstack.admin.v2.ImageService service.
 type ImageServiceClient interface {
-	// Create a filesystem
+	// Create a image
 	Create(context.Context, *connect.Request[v2.ImageServiceCreateRequest]) (*connect.Response[v2.ImageServiceCreateResponse], error)
-	// Update a filesystem
+	// Update a image
 	Update(context.Context, *connect.Request[v2.ImageServiceUpdateRequest]) (*connect.Response[v2.ImageServiceUpdateResponse], error)
-	// Delete a filesystem
+	// Delete a image
 	Delete(context.Context, *connect.Request[v2.ImageServiceDeleteRequest]) (*connect.Response[v2.ImageServiceDeleteResponse], error)
+	// Usage of images
+	Usage(context.Context, *connect.Request[v2.ImageServiceUsageRequest]) (*connect.Response[v2.ImageServiceUsageResponse], error)
 }
 
 // NewImageServiceClient constructs a client for the metalstack.admin.v2.ImageService service. By
@@ -80,6 +84,12 @@ func NewImageServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(imageServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
+		usage: connect.NewClient[v2.ImageServiceUsageRequest, v2.ImageServiceUsageResponse](
+			httpClient,
+			baseURL+ImageServiceUsageProcedure,
+			connect.WithSchema(imageServiceMethods.ByName("Usage")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -88,6 +98,7 @@ type imageServiceClient struct {
 	create *connect.Client[v2.ImageServiceCreateRequest, v2.ImageServiceCreateResponse]
 	update *connect.Client[v2.ImageServiceUpdateRequest, v2.ImageServiceUpdateResponse]
 	delete *connect.Client[v2.ImageServiceDeleteRequest, v2.ImageServiceDeleteResponse]
+	usage  *connect.Client[v2.ImageServiceUsageRequest, v2.ImageServiceUsageResponse]
 }
 
 // Create calls metalstack.admin.v2.ImageService.Create.
@@ -105,14 +116,21 @@ func (c *imageServiceClient) Delete(ctx context.Context, req *connect.Request[v2
 	return c.delete.CallUnary(ctx, req)
 }
 
+// Usage calls metalstack.admin.v2.ImageService.Usage.
+func (c *imageServiceClient) Usage(ctx context.Context, req *connect.Request[v2.ImageServiceUsageRequest]) (*connect.Response[v2.ImageServiceUsageResponse], error) {
+	return c.usage.CallUnary(ctx, req)
+}
+
 // ImageServiceHandler is an implementation of the metalstack.admin.v2.ImageService service.
 type ImageServiceHandler interface {
-	// Create a filesystem
+	// Create a image
 	Create(context.Context, *connect.Request[v2.ImageServiceCreateRequest]) (*connect.Response[v2.ImageServiceCreateResponse], error)
-	// Update a filesystem
+	// Update a image
 	Update(context.Context, *connect.Request[v2.ImageServiceUpdateRequest]) (*connect.Response[v2.ImageServiceUpdateResponse], error)
-	// Delete a filesystem
+	// Delete a image
 	Delete(context.Context, *connect.Request[v2.ImageServiceDeleteRequest]) (*connect.Response[v2.ImageServiceDeleteResponse], error)
+	// Usage of images
+	Usage(context.Context, *connect.Request[v2.ImageServiceUsageRequest]) (*connect.Response[v2.ImageServiceUsageResponse], error)
 }
 
 // NewImageServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -140,6 +158,12 @@ func NewImageServiceHandler(svc ImageServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(imageServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
+	imageServiceUsageHandler := connect.NewUnaryHandler(
+		ImageServiceUsageProcedure,
+		svc.Usage,
+		connect.WithSchema(imageServiceMethods.ByName("Usage")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.ImageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ImageServiceCreateProcedure:
@@ -148,6 +172,8 @@ func NewImageServiceHandler(svc ImageServiceHandler, opts ...connect.HandlerOpti
 			imageServiceUpdateHandler.ServeHTTP(w, r)
 		case ImageServiceDeleteProcedure:
 			imageServiceDeleteHandler.ServeHTTP(w, r)
+		case ImageServiceUsageProcedure:
+			imageServiceUsageHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -167,4 +193,8 @@ func (UnimplementedImageServiceHandler) Update(context.Context, *connect.Request
 
 func (UnimplementedImageServiceHandler) Delete(context.Context, *connect.Request[v2.ImageServiceDeleteRequest]) (*connect.Response[v2.ImageServiceDeleteResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ImageService.Delete is not implemented"))
+}
+
+func (UnimplementedImageServiceHandler) Usage(context.Context, *connect.Request[v2.ImageServiceUsageRequest]) (*connect.Response[v2.ImageServiceUsageResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ImageService.Usage is not implemented"))
 }

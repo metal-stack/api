@@ -106,6 +106,36 @@ func (_m *ImageServiceClient) Update(_a0 context.Context, _a1 *connect.Request[a
 	return r0, r1
 }
 
+// Usage provides a mock function with given fields: _a0, _a1
+func (_m *ImageServiceClient) Usage(_a0 context.Context, _a1 *connect.Request[adminv2.ImageServiceUsageRequest]) (*connect.Response[adminv2.ImageServiceUsageResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Usage")
+	}
+
+	var r0 *connect.Response[adminv2.ImageServiceUsageResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceUsageRequest]) (*connect.Response[adminv2.ImageServiceUsageResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceUsageRequest]) *connect.Response[adminv2.ImageServiceUsageResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv2.ImageServiceUsageResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.ImageServiceUsageRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // NewImageServiceClient creates a new instance of ImageServiceClient. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewImageServiceClient(t interface {
