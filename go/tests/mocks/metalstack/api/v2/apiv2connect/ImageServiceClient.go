@@ -46,6 +46,36 @@ func (_m *ImageServiceClient) Get(_a0 context.Context, _a1 *connect.Request[apiv
 	return r0, r1
 }
 
+// Latest provides a mock function with given fields: _a0, _a1
+func (_m *ImageServiceClient) Latest(_a0 context.Context, _a1 *connect.Request[apiv2.ImageServiceLatestRequest]) (*connect.Response[apiv2.ImageServiceLatestResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Latest")
+	}
+
+	var r0 *connect.Response[apiv2.ImageServiceLatestResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.ImageServiceLatestRequest]) (*connect.Response[apiv2.ImageServiceLatestResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.ImageServiceLatestRequest]) *connect.Response[apiv2.ImageServiceLatestResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv2.ImageServiceLatestResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.ImageServiceLatestRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // List provides a mock function with given fields: _a0, _a1
 func (_m *ImageServiceClient) List(_a0 context.Context, _a1 *connect.Request[apiv2.ImageServiceListRequest]) (*connect.Response[apiv2.ImageServiceListResponse], error) {
 	ret := _m.Called(_a0, _a1)

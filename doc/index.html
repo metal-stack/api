@@ -404,6 +404,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.ImageServiceLatestRequest"><span class="badge">M</span>ImageServiceLatestRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageServiceLatestResponse"><span class="badge">M</span>ImageServiceLatestResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.ImageServiceListRequest"><span class="badge">M</span>ImageServiceListRequest</a>
                 </li>
               
@@ -2911,6 +2919,55 @@ having a direct membership within the tenant.</p></td>
 
         
       
+        <h3 id="metalstack.api.v2.ImageServiceLatestRequest">ImageServiceLatestRequest</h3>
+        <p>ImageServiceLatestRequest is the request payload for a image latest request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>os</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>OS for which the latest image should be fetched
+should contain os and major.minor then latest patch version of this os is returned </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.ImageServiceLatestResponse">ImageServiceLatestResponse</h3>
+        <p>ImageServiceLatestResponse is the response payload for a image latest request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#metalstack.api.v2.Image">Image</a></td>
+                  <td></td>
+                  <td><p>Image which is the latest for one os </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.ImageServiceListRequest">ImageServiceListRequest</h3>
         <p>ImageServiceListRequest is the request payload for a image list request</p>
 
@@ -3080,6 +3137,13 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#metalstack.api.v2.ImageServiceListRequest">ImageServiceListRequest</a></td>
                 <td><a href="#metalstack.api.v2.ImageServiceListResponse">ImageServiceListResponse</a></td>
                 <td><p>List all images</p></td>
+              </tr>
+            
+              <tr>
+                <td>Latest</td>
+                <td><a href="#metalstack.api.v2.ImageServiceLatestRequest">ImageServiceLatestRequest</a></td>
+                <td><a href="#metalstack.api.v2.ImageServiceLatestResponse">ImageServiceLatestResponse</a></td>
+                <td><p>Latest image for a specific os</p></td>
               </tr>
             
           </tbody>

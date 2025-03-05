@@ -18,6 +18,11 @@ service ImageService {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
+  // Latest image for a specific os
+  rpc Latest(ImageServiceLatestRequest) returns (ImageServiceLatestResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // ImageServiceGetRequest is the request payload for a image get request
@@ -37,6 +42,13 @@ message ImageServiceListRequest {
   ImageQuery query = 1;
 }
 
+// ImageServiceLatestRequest is the request payload for a image latest request
+message ImageServiceLatestRequest {
+  // OS for which the latest image should be fetched
+  // should contain os and major.minor then latest patch version of this os is returned
+  string os = 1;
+}
+
 // ImageServiceGetResponse is the response payload for a image get request
 message ImageServiceGetResponse {
   // Image the image
@@ -47,6 +59,12 @@ message ImageServiceGetResponse {
 message ImageServiceListResponse {
   // Images the images
   repeated Image images = 1;
+}
+
+// ImageServiceLatestResponse is the response payload for a image latest request
+message ImageServiceLatestResponse {
+  // Image which is the latest for one os
+  Image image = 1;
 }
 
 // Image
