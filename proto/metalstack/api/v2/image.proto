@@ -112,21 +112,31 @@ message ImageQuery {
     min_len: 2
     max_len: 128
   }];
+  // OS of the image
+  optional string os = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Version of the Image
+  optional string version = 3 [(buf.validate.field).string = {
+    min_len: 1
+    max_len: 128
+  }];
   // Name of the image to query
-  optional string name = 2 [(buf.validate.field).string = {
+  optional string name = 4 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Description of the image to query
-  optional string description = 3 [(buf.validate.field).string = {
+  optional string description = 5 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Feature of the image to query
-  optional ImageFeature feature = 4 [(buf.validate.field).enum.defined_only = true];
+  optional ImageFeature feature = 6 [(buf.validate.field).enum.defined_only = true];
 
   // Classification of the image to query
-  optional ImageClassification classification = 5 [(buf.validate.field).enum.defined_only = true];
+  optional ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
 }
 
 // ImageFeature
