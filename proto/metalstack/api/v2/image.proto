@@ -59,7 +59,14 @@ message Image {
   // Meta for this ip
   Meta meta = 2;
   // URL where this image is located
-  string url = 3;
+  string url = 3 [(buf.validate.field).cel = {
+    id: "valid_url"
+    message: "url must be a valid URI"
+    // `isUri` validates that a string is an absolute URI.
+    // This expression validates that the uri field is an absolute URI.
+    // Note: to allow relative URI, use `isUriRef`.
+    expression: "this.isUri()"
+  }];
   // Name of this imageLayout
   optional string name = 4 [(buf.validate.field).string = {
     min_len: 2
@@ -71,8 +78,18 @@ message Image {
     max_len: 128
   }];
   // Features of this image
-  repeated ImageFeature features = 6; // FIXME add validation for slice of ENUM
-
+  repeated ImageFeature features = 6 [(buf.validate.field).repeated = {
+    min_items: 1
+    items: {
+      cel: [
+        {
+          id: "features"
+          message: "feature must be valid"
+          expression: "this >= 0 && this <= 2"
+        }
+      ]
+    }
+  }];
   // Classification of this image
   ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
 
