@@ -32,8 +32,6 @@ message ImageServiceGetRequest {
     min_len: 2
     max_len: 128
   }];
-  // Latest, if set to true only the latest image is returned
-  bool latest = 2;
 }
 
 // ImageServiceListRequest is the request payload for a image list request
