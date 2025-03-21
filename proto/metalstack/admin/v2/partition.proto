@@ -39,19 +39,8 @@ message PartitionServiceCreateRequest {
 
 // PartitionServiceUpdateRequest is the request payload for a partition update request
 message PartitionServiceUpdateRequest {
-  // ID of the partition to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // PartitionBootConfiguration defines how metal-hammer boots
-  metalstack.api.v2.PartitionBootConfiguration boot_configuration = 5;
-  // DNSServers for this partition
-  repeated metalstack.api.v2.DNSServer dns_server = 6 [(buf.validate.field).repeated.max_items = 3];
-  // NTPServers for this partition
-  repeated metalstack.api.v2.NTPServer ntp_server = 7 [(buf.validate.field).repeated.max_items = 10];
-  // Tags on this partition
-  repeated string tags = 8 [(buf.validate.field).repeated.max_items = 100];
+  // Partition the partition
+  metalstack.api.v2.Partition partition = 1;
 }
 
 // PartitionServiceDeleteRequest is the request payload for a partition delete request
