@@ -616,6 +616,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.PartitionQuery"><span class="badge">M</span>PartitionQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.PartitionServiceGetRequest"><span class="badge">M</span>PartitionServiceGetRequest</a>
                 </li>
               
@@ -4331,6 +4335,30 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.PartitionQuery">PartitionQuery</h3>
+        <p>PartitionQuery is used to search partitions</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ID of the partition to get </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.PartitionServiceGetRequest">PartitionServiceGetRequest</h3>
         <p>PartitionServiceGetRequest is the request payload for a partition get request</p>
 
@@ -4390,10 +4418,10 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>ID of the partition to get </p></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.PartitionQuery">PartitionQuery</a></td>
+                  <td></td>
+                  <td><p>Query for partitions </p></td>
                 </tr>
               
             </tbody>

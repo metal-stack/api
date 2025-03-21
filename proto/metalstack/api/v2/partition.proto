@@ -41,6 +41,15 @@ message Partition {
   repeated string mgmt_service_addresses = 7;
 }
 
+// PartitionQuery is used to search partitions
+message PartitionQuery {
+  // ID of the partition to get
+  optional string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
 // PartitionBootConfiguration defines how metal-hammer boots
 message PartitionBootConfiguration {
   // ImageURL the url to download the initrd for the boot image
@@ -88,11 +97,8 @@ message PartitionServiceGetRequest {
 
 // PartitionServiceListRequest is the request payload for a partition list request
 message PartitionServiceListRequest {
-  // ID of the partition to get
-  optional string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  // Query for partitions
+  PartitionQuery query = 1;
 }
 
 // PartitionServiceGetResponse is the response payload for a partition get request
