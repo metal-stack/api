@@ -36,15 +36,9 @@ message Partition {
   repeated DNSServer dns_server = 5 [(buf.validate.field).repeated.max_items = 3];
   // NTPServers for this partition
   repeated NTPServer ntp_server = 6 [(buf.validate.field).repeated.max_items = 10];
-  // ManagementServiceAddress defines where the management is reachable
-  optional string mgmt_service_address = 7 [(buf.validate.field).cel = {
-    id: "valid_url"
-    message: "url must be a valid URI"
-    // `isUri` validates that a string is an absolute URI.
-    // This expression validates that the uri field is an absolute URI.
-    // Note: to allow relative URI, use `isUriRef`.
-    expression: "this.isUri()"
-  }];
+  // ManagementServiceAddresses defines where the management is reachable
+  // should be in the form <ip|host>:<port>
+  repeated string mgmt_service_addresses = 7;
 }
 
 // PartitionBootConfiguration defines how metal-hammer boots
