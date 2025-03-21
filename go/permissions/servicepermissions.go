@@ -25,6 +25,7 @@ func GetServices() []string {
 		"metalstack.api.v2.TokenService",
 		"metalstack.api.v2.UserService",
 		"metalstack.api.v2.VersionService",
+		"metalstack.infra.v2.BMCService",
 	}
 }
 
@@ -58,6 +59,14 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.admin.v2.PartitionService/Capacity",
 					"/metalstack.admin.v2.TenantService/List",
 					"/metalstack.admin.v2.TokenService/List",
+				},
+			},
+			Infra: Infra{
+				"INFRA_ROLE_EDITOR": []string{
+					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
+				},
+				"INFRA_ROLE_VIEWER": []string{
+					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
 				},
 			},
 			Tenant: Tenant{
@@ -200,6 +209,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.TokenService/Update":           true,
 			"/metalstack.api.v2.UserService/Get":               true,
 			"/metalstack.api.v2.VersionService/Get":            true,
+			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":    true,
 		},
 		Visibility: Visibility{
 			Public: map[string]bool{
@@ -252,6 +262,9 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.admin.v2.TenantService/List":        true,
 				"/metalstack.admin.v2.TokenService/List":         true,
 				"/metalstack.admin.v2.TokenService/Revoke":       true,
+			},
+			Infra: map[string]bool{
+				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
 			},
 			Tenant: map[string]bool{
 				"/metalstack.api.v2.ProjectService/Create":      true,
@@ -356,6 +369,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.TokenService/Update":           true,
 			"/metalstack.api.v2.UserService/Get":               true,
 			"/metalstack.api.v2.VersionService/Get":            false,
+			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":    false,
 		},
 	}
 }
@@ -372,6 +386,11 @@ func IsSelfScope(req connect.AnyRequest) bool {
 
 func IsAdminScope(req connect.AnyRequest) bool {
 	_, ok := GetServicePermissions().Visibility.Admin[req.Spec().Procedure]
+	return ok
+}
+
+func IsInfraScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Infra[req.Spec().Procedure]
 	return ok
 }
 

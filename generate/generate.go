@@ -89,6 +89,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		}
 		roles = permissions.Roles{
 			Admin:   permissions.Admin{},
+			Infra:   permissions.Infra{},
 			Tenant:  permissions.Tenant{},
 			Project: permissions.Project{},
 		}
@@ -101,6 +102,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			},
 			Self:    map[string]bool{},
 			Admin:   map[string]bool{},
+			Infra:   map[string]bool{},
 			Tenant:  map[string]bool{},
 			Project: map[string]bool{},
 		}
@@ -170,6 +172,15 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 							roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()] = append(roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()], methodName)
 							visibility.Admin[methodName] = true
 						case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
+							// noop
+						// Infra
+						case v1.InfraRole_INFRA_ROLE_EDITOR.String():
+							roles.Infra[v1.InfraRole_INFRA_ROLE_EDITOR.String()] = append(roles.Admin[v1.InfraRole_INFRA_ROLE_EDITOR.String()], methodName)
+							visibility.Infra[methodName] = true
+						case v1.InfraRole_INFRA_ROLE_VIEWER.String():
+							roles.Infra[v1.InfraRole_INFRA_ROLE_VIEWER.String()] = append(roles.Admin[v1.InfraRole_INFRA_ROLE_VIEWER.String()], methodName)
+							visibility.Infra[methodName] = true
+						case v1.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
 							// noop
 						// Visibility
 						case v1.Visibility_VISIBILITY_PUBLIC.String():

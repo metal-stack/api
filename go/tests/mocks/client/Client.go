@@ -52,6 +52,26 @@ func (_m *Client) Apiv2() goclient.Apiv2 {
 	return r0
 }
 
+// Infrav2 provides a mock function with no fields
+func (_m *Client) Infrav2() goclient.Infrav2 {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Infrav2")
+	}
+
+	var r0 goclient.Infrav2
+	if rf, ok := ret.Get(0).(func() goclient.Infrav2); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(goclient.Infrav2)
+		}
+	}
+
+	return r0
+}
+
 // NewClient creates a new instance of Client. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewClient(t interface {

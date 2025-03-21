@@ -44,6 +44,16 @@ enum AdminRole {
   ADMIN_ROLE_VIEWER = 2;
 }
 
+// InfraRole specifies what role a microservice needs to call this infra service
+enum InfraRole {
+  // INFRA_ROLE_UNSPECIFIED is not specified
+  INFRA_ROLE_UNSPECIFIED = 0;
+  // INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method
+  INFRA_ROLE_EDITOR = 1;
+  // INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method
+  INFRA_ROLE_VIEWER = 2;
+}
+
 // Visibility of a method
 enum Visibility {
   // VISIBILITY_UNSPECIFIED is not defined
@@ -78,6 +88,8 @@ extend google.protobuf.MethodOptions {
   Visibility visibility = 51003;
   // Auditing defines if calls to this method should be audited or not
   Auditing auditing = 51004;
+  // InfraRoles are used to define which infra role a microservice must provide to call this method
+  repeated InfraRole infra_roles = 51005;
 }
 
 // EnumValueOptions, can be accessed with go/enum/GetFormatStringValue

@@ -7,8 +7,10 @@ import (
 	apiclient "github.com/metal-stack/api/go/client"
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
+	"github.com/metal-stack/api/go/metalstack/infra/v2/infrav2connect"
 	adminv2mocks "github.com/metal-stack/api/go/tests/mocks/metalstack/admin/v2/adminv2connect"
 	apiv2mocks "github.com/metal-stack/api/go/tests/mocks/metalstack/api/v2/apiv2connect"
+	infrav2mocks "github.com/metal-stack/api/go/tests/mocks/metalstack/infra/v2/infrav2connect"
 
 	"github.com/stretchr/testify/mock"
 )
@@ -17,11 +19,13 @@ type (
 	client struct {
 		adminv2service *adminv2
 		apiv2service   *apiv2
+		infrav2service *infrav2
 	}
 
 	ClientMockFns struct {
 		Adminv2Mocks *Adminv2MockFns
 		Apiv2Mocks   *Apiv2MockFns
+		Infrav2Mocks *Infrav2MockFns
 	}
 
 	wrapper struct {
@@ -73,6 +77,13 @@ type (
 		User       func(m *mock.Mock)
 		Version    func(m *mock.Mock)
 	}
+	infrav2 struct {
+		bmcservice *infrav2mocks.BMCServiceClient
+	}
+
+	Infrav2MockFns struct {
+		BMC func(m *mock.Mock)
+	}
 )
 
 func New(t *testing.T) *wrapper {
@@ -83,6 +94,7 @@ func (w wrapper) Client(fns *ClientMockFns) *client {
 	return &client{
 		adminv2service: w.Adminv2(fns.Adminv2Mocks),
 		apiv2service:   w.Apiv2(fns.Apiv2Mocks),
+		infrav2service: w.Infrav2(fns.Infrav2Mocks),
 	}
 }
 
@@ -91,6 +103,9 @@ func (c *client) Adminv2() apiclient.Adminv2 {
 }
 func (c *client) Apiv2() apiclient.Apiv2 {
 	return c.apiv2service
+}
+func (c *client) Infrav2() apiclient.Infrav2 {
+	return c.infrav2service
 }
 
 func (w wrapper) Adminv2(fns *Adminv2MockFns) *adminv2 {
@@ -249,4 +264,27 @@ func (c *apiv2) User() apiv2connect.UserServiceClient {
 }
 func (c *apiv2) Version() apiv2connect.VersionServiceClient {
 	return c.versionservice
+}
+
+func (w wrapper) Infrav2(fns *Infrav2MockFns) *infrav2 {
+	return newinfrav2(w.t, fns)
+}
+
+func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
+	a := &infrav2{
+		bmcservice: infrav2mocks.NewBMCServiceClient(t),
+	}
+
+	if fns != nil {
+		if fns.BMC != nil {
+			fns.BMC(&a.bmcservice.Mock)
+		}
+
+	}
+
+	return a
+}
+
+func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
+	return c.bmcservice
 }

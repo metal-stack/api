@@ -6,12 +6,14 @@ import (
 
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
+	"github.com/metal-stack/api/go/metalstack/infra/v2/infrav2connect"
 )
 
 type (
 	Client interface {
 		Adminv2() Adminv2
 		Apiv2() Apiv2
+		Infrav2() Infrav2
 	}
 	client struct {
 		config DialConfig
@@ -62,6 +64,14 @@ type (
 		tokenservice      apiv2connect.TokenServiceClient
 		userservice       apiv2connect.UserServiceClient
 		versionservice    apiv2connect.VersionServiceClient
+	}
+
+	Infrav2 interface {
+		BMC() infrav2connect.BMCServiceClient
+	}
+
+	infrav2 struct {
+		bmcservice infrav2connect.BMCServiceClient
 	}
 )
 
@@ -227,4 +237,19 @@ func (c *apiv2) User() apiv2connect.UserServiceClient {
 }
 func (c *apiv2) Version() apiv2connect.VersionServiceClient {
 	return c.versionservice
+}
+
+func (c client) Infrav2() Infrav2 {
+	a := &infrav2{
+		bmcservice: infrav2connect.NewBMCServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+	}
+	return a
+}
+
+func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
+	return c.bmcservice
 }

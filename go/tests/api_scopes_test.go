@@ -19,6 +19,7 @@ type (
 	tenant     struct{}
 	project    struct{}
 	admin      struct{}
+	infra      struct{}
 	visibility struct{}
 )
 
@@ -44,6 +45,14 @@ func (admin) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []strin
 	scopes = getScopes(methodOpts, []string{
 		v2.AdminRole_ADMIN_ROLE_EDITOR.String(),
 		v2.AdminRole_ADMIN_ROLE_VIEWER.String(),
+	})
+	return
+}
+
+func (infra) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []string) {
+	scopes = getScopes(methodOpts, []string{
+		v2.InfraRole_INFRA_ROLE_EDITOR.String(),
+		v2.InfraRole_INFRA_ROLE_VIEWER.String(),
 	})
 	return
 }
@@ -101,10 +110,10 @@ func Test_APIScopes(t *testing.T) {
 
 	errs := errors.Join(
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Get\" has apiv2.ProjectRole but request payload \"WrongProjectServiceGetRequest\" does not have a project field"),
-		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
+		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Update\" can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.ProjectRole ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Delete\" can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.Visibility ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
-		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Charge\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
+		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Charge\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
 	)
 
 	require.Equal(t, err, errs)
@@ -115,16 +124,18 @@ func validateProto(root string) error {
 		tr v2.TenantRole
 		pr v2.ProjectRole
 		ar v2.AdminRole
+		ir v2.InfraRole
 		vr v2.Visibility
 
 		trs = fmt.Sprintf("%T", tr)
 		prs = fmt.Sprintf("%T", pr)
 		ars = fmt.Sprintf("%T", ar)
+		irs = fmt.Sprintf("%T", ir)
 		vrs = fmt.Sprintf("%T", vr)
 
 		// add all *rs from above here
 		scopeKeys = []string{
-			trs, prs, ars, vrs,
+			trs, prs, ars, irs, vrs,
 		}
 	)
 	slices.Sort(scopeKeys)
@@ -149,6 +160,7 @@ func validateProto(root string) error {
 						trs: tenant{}.Get(methodOpts),
 						prs: project{}.Get(methodOpts),
 						ars: admin{}.Get(methodOpts),
+						irs: infra{}.Get(methodOpts),
 						vrs: visibility{}.Get(methodOpts),
 					}
 					allScopeNames = func() (names []string) {

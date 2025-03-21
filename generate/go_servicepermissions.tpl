@@ -25,6 +25,15 @@ func GetServicePermissions() *ServicePermissions {
 					},
 				{{- end }}
 			},
+			Infra:   Infra{
+				{{- range $role, $methods := .Roles.Infra }}
+					"{{ $role }}": []string{
+						{{- range $method := $methods }}
+							"{{ $method }}",
+						{{- end }}
+					},
+				{{- end }}
+			},
 			Tenant:  Tenant{
 				{{- range $role, $methods := .Roles.Tenant }}
 					"{{ $role }}": []string{
@@ -65,6 +74,11 @@ func GetServicePermissions() *ServicePermissions {
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
+			Infra:    map[string]bool{
+{{- range $key, $value := .Visibility.Infra }}
+	"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
 			Tenant:    map[string]bool{
 {{- range $key, $value := .Visibility.Tenant }}
 	"{{ $key }}": {{ $value }} ,
@@ -96,6 +110,11 @@ func IsSelfScope(req connect.AnyRequest) bool {
 
 func IsAdminScope(req connect.AnyRequest) bool {
 	_, ok := GetServicePermissions().Visibility.Admin[req.Spec().Procedure]
+	return ok
+}
+
+func IsInfraScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Infra[req.Spec().Procedure]
 	return ok
 }
 

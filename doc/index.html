@@ -204,6 +204,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.InfraRole"><span class="badge">E</span>InfraRole</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.ProjectRole"><span class="badge">E</span>ProjectRole</a>
                 </li>
               
@@ -215,6 +219,10 @@
                   <a href="#metalstack.api.v2.Visibility"><span class="badge">E</span>Visibility</a>
                 </li>
               
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fcommon.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
               
                 <li>
                   <a href="#metalstack%2fapi%2fv2%2fcommon.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
@@ -1306,6 +1314,29 @@
             </ul>
           </li>
         
+          
+          <li>
+            <a href="#metalstack%2finfra%2fv2%2fbmc.proto">metalstack/infra/v2/bmc.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.UpdateBMCInfoRequest"><span class="badge">M</span>UpdateBMCInfoRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.UpdateBMCInfoResponse"><span class="badge">M</span>UpdateBMCInfoResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BMCService"><span class="badge">S</span>BMCService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
         <li><a href="#scalar-value-types">Scalar Value Types</a></li>
       </ul>
     </div>
@@ -1503,6 +1534,35 @@ the list response contains then the page number for the next page. </p></td>
           </tbody>
         </table>
       
+        <h3 id="metalstack.api.v2.InfraRole">InfraRole</h3>
+        <p>InfraRole specifies what role a microservice needs to call this infra service</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>INFRA_ROLE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>INFRA_ROLE_UNSPECIFIED is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>INFRA_ROLE_EDITOR</td>
+                <td>1</td>
+                <td><p>INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method</p></td>
+              </tr>
+            
+              <tr>
+                <td>INFRA_ROLE_VIEWER</td>
+                <td>2</td>
+                <td><p>INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
         <h3 id="metalstack.api.v2.ProjectRole">ProjectRole</h3>
         <p>ProjectRole specifies what role a logged in user needs to call this project scoped service</p>
         <table class="enum-table">
@@ -1641,6 +1701,14 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
                 <td>51004</td>
                 <td><p>Auditing defines if calls to this method should be audited or not</p></td>
+              </tr>
+            
+              <tr>
+                <td>infra_roles</td>
+                <td><a href="#metalstack.api.v2.InfraRole">InfraRole</a></td>
+                <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
+                <td>51005</td>
+                <td><p>InfraRoles are used to define which infra role a microservice must provide to call this method</p></td>
               </tr>
             
               <tr>
@@ -9078,6 +9146,53 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.api.v2.VersionServiceGetRequest">VersionServiceGetRequest</a></td>
                 <td><a href="#metalstack.api.v2.VersionServiceGetResponse">VersionServiceGetResponse</a></td>
                 <td><p>Get the version</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/infra/v2/bmc.proto">metalstack/infra/v2/bmc.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.infra.v2.UpdateBMCInfoRequest">UpdateBMCInfoRequest</h3>
+        <p>UpdateBMCInfoRequest</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.infra.v2.UpdateBMCInfoResponse">UpdateBMCInfoResponse</h3>
+        <p>UpdateBMCInfoResponse</p>
+
+        
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.infra.v2.BMCService">BMCService</h3>
+        <p>BMCService serves bmc related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>UpdateBMCInfo</td>
+                <td><a href="#metalstack.infra.v2.UpdateBMCInfoRequest">UpdateBMCInfoRequest</a></td>
+                <td><a href="#metalstack.infra.v2.UpdateBMCInfoResponse">UpdateBMCInfoResponse</a></td>
+                <td><p>UpdateBMCInfo</p></td>
               </tr>
             
           </tbody>
