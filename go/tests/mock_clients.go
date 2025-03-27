@@ -35,6 +35,7 @@ type (
 		filesystemservice *adminv2mocks.FilesystemServiceClient
 		imageservice      *adminv2mocks.ImageServiceClient
 		ipservice         *adminv2mocks.IPServiceClient
+		networkservice    *adminv2mocks.NetworkServiceClient
 		partitionservice  *adminv2mocks.PartitionServiceClient
 		tenantservice     *adminv2mocks.TenantServiceClient
 		tokenservice      *adminv2mocks.TokenServiceClient
@@ -44,6 +45,7 @@ type (
 		Filesystem func(m *mock.Mock)
 		Image      func(m *mock.Mock)
 		IP         func(m *mock.Mock)
+		Network    func(m *mock.Mock)
 		Partition  func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
@@ -117,6 +119,7 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		filesystemservice: adminv2mocks.NewFilesystemServiceClient(t),
 		imageservice:      adminv2mocks.NewImageServiceClient(t),
 		ipservice:         adminv2mocks.NewIPServiceClient(t),
+		networkservice:    adminv2mocks.NewNetworkServiceClient(t),
 		partitionservice:  adminv2mocks.NewPartitionServiceClient(t),
 		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
 		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
@@ -131,6 +134,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		}
 		if fns.IP != nil {
 			fns.IP(&a.ipservice.Mock)
+		}
+		if fns.Network != nil {
+			fns.Network(&a.networkservice.Mock)
 		}
 		if fns.Partition != nil {
 			fns.Partition(&a.partitionservice.Mock)
@@ -155,6 +161,9 @@ func (c *adminv2) Image() adminv2connect.ImageServiceClient {
 }
 func (c *adminv2) IP() adminv2connect.IPServiceClient {
 	return c.ipservice
+}
+func (c *adminv2) Network() adminv2connect.NetworkServiceClient {
+	return c.networkservice
 }
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice

@@ -48,15 +48,15 @@ message NetworkServiceGetRequest {
 }
 
 // NetworkServiceGetResponse
-message NetworkServiceGetResponse {}
+message NetworkServiceGetResponse {
+  // Network which was requested to get
+  Network network = 1;
+}
 
 // NetworkServiceCreateRequest
 message NetworkServiceCreateRequest {
-  // Id of this network
-  optional string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  // Project where this network belongs to
+  string project = 1 [(buf.validate.field).string.uuid = true];
   // Name of this network
   optional string name = 2 [(buf.validate.field).string = {
     min_len: 2
@@ -72,45 +72,25 @@ message NetworkServiceCreateRequest {
     min_len: 2
     max_len: 128
   }];
-  // Project where this network belongs to
-  optional string project = 5 [(buf.validate.field).string.uuid = true];
+
   // Labels on this network
-  optional Labels labels = 6;
-  option (buf.validate.message).cel = {
-    id: "prefixes"
-    message: "given prefixes must be valid"
-    expression: "this.prefixes.all(m, m.isIpPrefix())"
-  };
-  // Prefixes in this network
-  repeated string prefixes = 8;
-  option (buf.validate.message).cel = {
-    id: "destination_prefixes"
-    message: "given destination_prefixes must be valid"
-    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
-  };
-  // Destination Prefixes in this network
-  repeated string destination_prefixes = 9;
-  // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
-  repeated ChildPrefixLength default_child_prefix_length = 10;
-  // Options of this network
-  NetworkOptions options = 11;
-  // Vrf ID of this network
-  optional uint32 vrf = 12;
+  optional Labels labels = 5;
   // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 14 [(buf.validate.field).string = {
+  optional string parent_network_id = 6 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-  repeated string additional_announceble_cidrs = 15;
   // Bitlength per addressfamily
-  ChildPrefixLength length = 16;
+  ChildPrefixLength length = 7;
   // AddressFamily to create, defaults to the same as the parent
-  optional IPAddressFamily address_family = 17 [(buf.validate.field).enum.defined_only = true];
+  optional IPAddressFamily address_family = 8 [(buf.validate.field).enum.defined_only = true];
 }
 
 // NetworkServiceCreateResponse
-message NetworkServiceCreateResponse {}
+message NetworkServiceCreateResponse {
+  // Network is the created network
+  Network network = 1;
+}
 
 // NetworkServiceUpdateRequest
 message NetworkServiceUpdateRequest {
@@ -118,23 +98,28 @@ message NetworkServiceUpdateRequest {
   string id = 1 [(buf.validate.field).string.ip = true];
   // Project of the network
   string project = 2 [(buf.validate.field).string.uuid = true];
-  // FIXME more fields
+  // FIXME which fields should be updateable ?
 }
 
 // NetworkServiceUpdateResponse
-message NetworkServiceUpdateResponse {}
+message NetworkServiceUpdateResponse {
+  // Network is the updated network
+  Network network = 1;
+}
 
 // NetworkServiceListRequest
 message NetworkServiceListRequest {
-  // ID of the network to get
-  string id = 1 [(buf.validate.field).string.ip = true];
-  // Project of the network
-  string project = 2 [(buf.validate.field).string.uuid = true];
-  // FIXME Introduce NetworkQuery ala IPQuery
+  // Project of the networks to list
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // Query which specifies which networks to return
+  NetworkQuery query = 2;
 }
 
 // NetworkServiceListResponse
-message NetworkServiceListResponse {}
+message NetworkServiceListResponse {
+  // Networks are the requested networks
+  repeated Network networks = 1;
+}
 
 // NetworkServiceDeleteRequest
 message NetworkServiceDeleteRequest {
@@ -142,11 +127,13 @@ message NetworkServiceDeleteRequest {
   string id = 1 [(buf.validate.field).string.ip = true];
   // Project of the network
   string project = 2 [(buf.validate.field).string.uuid = true];
-  // FIXME more fields
 }
 
 // NetworkServiceDeleteResponse
-message NetworkServiceDeleteResponse {}
+message NetworkServiceDeleteResponse {
+  // Network is the deleted network
+  Network network = 1;
+}
 
 // Network
 message Network {
@@ -162,8 +149,6 @@ message Network {
   optional string partition = 5;
   // Project where this network belongs to
   optional string project = 6;
-  // Labels on this network
-  optional Labels labels = 7;
   // Prefixes in this network
   repeated string prefixes = 8;
   // Destination Prefixes in this network
@@ -180,6 +165,30 @@ message Network {
   repeated string additional_announceble_cidrs = 14;
   // Consumption of ips and prefixes in this networks
   NetworkConsumption consumption = 15;
+}
+
+// NetworkQuery defines which networks to query
+message NetworkQuery {
+  // Id of the network to query
+  optional string id = 1;
+  // Name of this network
+  optional string name = 3;
+  // Description of this network
+  optional string description = 4;
+  // Partition where this network will be created
+  optional string partition = 5;
+  // Project where this network belongs to
+  optional string project = 6;
+  // Prefixes in this network
+  repeated string prefixes = 8;
+  // Destination Prefixes in this network
+  repeated string destination_prefixes = 9;
+  // Options of this network
+  NetworkOptions options = 11;
+  // Vrf ID of this network
+  optional uint32 vrf = 12;
+  // Parent NetworkId points to the id of the parent network if any
+  optional string parent_network_id = 13;
 }
 
 // NetworkOptions
@@ -223,62 +232,3 @@ message NetworkUsage {
   // the total used Prefixes
   uint64 used_prefixes = 4;
 }
-
-// type NetworkBase struct {
-// 	PartitionID *string           `json:"partitionid" description:"the partition this network belongs to" optional:"true"`
-// 	ProjectID   *string           `json:"projectid" description:"the project id this network belongs to, can be empty if globally available" optional:"true"`
-// 	Labels      map[string]string `json:"labels" description:"free labels that you associate with this network." optional:"true"`
-// 	Shared      *bool             `json:"shared" description:"marks a network as shareable." optional:"true"`
-// }
-
-// // NetworkImmutable defines the properties which are immutable in the Network.
-// type NetworkImmutable struct {
-// 	Prefixes                   []string                `json:"prefixes" modelDescription:"a network which contains prefixes from which IP addresses can be allocated" description:"the prefixes of this network"`
-// 	DestinationPrefixes        []string                `json:"destinationprefixes" modelDescription:"prefixes that are reachable within this network" description:"the destination prefixes of this network"`
-// 	DefaultChildPrefixLength   metal.ChildPrefixLength `json:"defaultchildprefixlength" description:"if privatesuper, this defines the bitlen of child prefixes per addressfamily if not nil" optional:"true"`
-// 	Nat                        bool                    `json:"nat" description:"if set to true, packets leaving this ipv4 network get masqueraded behind interface ip"`
-// 	PrivateSuper               bool                    `json:"privatesuper" description:"if set to true, this network will serve as a partition's super network for the internal machine networks,there can only be one privatesuper network per partition"`
-// 	Underlay                   bool                    `json:"underlay" description:"if set to true, this network can be used for underlay communication"`
-// 	Vrf                        *uint                   `json:"vrf" description:"the vrf this network is associated with" optional:"true"`
-// 	VrfShared                  *bool                   `json:"vrfshared" description:"if set to true, given vrf can be used by multiple networks, which is sometimes useful for network partitioning (default: false)" optional:"true"`
-// 	ParentNetworkID            *string                 `json:"parentnetworkid" description:"the id of the parent network" optional:"true"`
-// 	AdditionalAnnouncableCIDRs []string                `json:"additionalAnnouncableCIDRs,omitempty" description:"list of cidrs which are added to the route maps per tenant private network, these are typically pod- and service cidrs, can only be set for private super networks"`
-// }
-
-// type NetworkCreateRequest struct {
-// 	ID *string `json:"id" description:"the unique ID of this entity, auto-generated if left empty"`
-// 	Describable
-// 	NetworkBase
-// 	NetworkImmutable
-// }
-
-// type NetworkAllocateRequest struct {
-// 	Describable
-// 	NetworkBase
-// 	DestinationPrefixes []string                `json:"destinationprefixes" description:"the destination prefixes of this network" optional:"true"`
-// 	Nat                 *bool                   `json:"nat" description:"if set to true, packets leaving this network get masqueraded behind interface ip" optional:"true"`
-// 	Length              metal.ChildPrefixLength `json:"length" description:"the bitlen of the prefix to allocate, defaults to defaultchildprefixlength of super prefix"`
-// 	ParentNetworkID     *string                 `json:"parentnetworkid" description:"the parent network from which this network should be allocated"`
-// 	AddressFamily       *metal.AddressFamily    `json:"addressfamily" description:"the addressfamily to allocate a child network defaults. If not specified, the child network inherits the addressfamilies from the parent." enum:"IPv4|IPv6"`
-// }
-
-// type NetworkUpdateRequest struct {
-// 	Common
-// 	Prefixes                   []string                `json:"prefixes" description:"the prefixes of this network" optional:"true"`
-// 	DestinationPrefixes        []string                `json:"destinationprefixes" description:"the destination prefixes of this network" optional:"true"`
-// 	Labels                     map[string]string       `json:"labels" description:"free labels that you associate with this network." optional:"true"`
-// 	Shared                     *bool                   `json:"shared" description:"marks a network as shareable." optional:"true"`
-// 	AdditionalAnnouncableCIDRs []string                `json:"additionalAnnouncableCIDRs" description:"list of cidrs which are added to the route maps per tenant private network, these are typically pod- and service cidrs, can only be set for private super networks" optional:"true"`
-// 	DefaultChildPrefixLength   metal.ChildPrefixLength `json:"defaultchildprefixlength" description:"if privatesuper, this defines the bitlen of child prefixes per addressfamily if not nil" optional:"true"`
-// }
-
-// // NetworkResponse holds all properties returned in a FindNetwork or GetNetwork request.
-// type NetworkResponse struct {
-// 	Common
-// 	NetworkBase
-// 	NetworkImmutable
-// 	Consumption NetworkConsumption `json:"consumption" description:"consumption of ips and prefixes in this network" readonly:"true"`
-// 	// Deprecated: The Usage field will be removed in later releases. Use Consumption instead.
-// 	Usage NetworkUsage `json:"usage" description:"usage of IPv4 ips and prefixes in this network" readonly:"true"`
-// 	Timestamps
-// }
