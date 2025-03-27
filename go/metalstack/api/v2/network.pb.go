@@ -135,7 +135,7 @@ type NetworkServiceCreateRequest struct {
 	// Partition where this network will be created
 	Partition *string `protobuf:"bytes,4,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	// Labels on this network
-	Labels *Labels `protobuf:"bytes,5,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	Labels *Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
 	// Parent NetworkId points to the id of the parent network if any
 	ParentNetworkId *string `protobuf:"bytes,6,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
 	// Bitlength per addressfamily
@@ -767,8 +767,10 @@ type NetworkQuery struct {
 	ParentNetworkId *string `protobuf:"bytes,9,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
 	// Addressfamily to query
 	AddressFamily *IPAddressFamily `protobuf:"varint,10,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
+	// Labels on this network
+	Labels *Labels `protobuf:"bytes,11,opt,name=labels,proto3" json:"labels,omitempty"`
 	// Options to query for
-	Options       *NetworkQuery_Options `protobuf:"bytes,11,opt,name=options,proto3" json:"options,omitempty"`
+	Options       *NetworkQuery_Options `protobuf:"bytes,12,opt,name=options,proto3" json:"options,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -871,6 +873,13 @@ func (x *NetworkQuery) GetAddressFamily() IPAddressFamily {
 		return *x.AddressFamily
 	}
 	return IPAddressFamily_IP_ADDRESS_FAMILY_UNSPECIFIED
+}
+
+func (x *NetworkQuery) GetLabels() *Labels {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
 }
 
 func (x *NetworkQuery) GetOptions() *NetworkQuery_Options {
@@ -1231,12 +1240,13 @@ var File_metalstack_api_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/network.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1ametalstack/api/v2/ip.proto\"W\n" +
-	"\x18NetworkServiceGetRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02id\x12\"\n" +
+	"\x1fmetalstack/api/v2/network.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1ametalstack/api/v2/ip.proto\"Z\n" +
+	"\x18NetworkServiceGetRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xb0\x04\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xa0\x04\n" +
 	"\x1bNetworkServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -1244,23 +1254,23 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\vdescription\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12-\n" +
 	"\tpartition\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\tpartition\x88\x01\x01\x126\n" +
-	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsH\x03R\x06labels\x88\x01\x01\x12;\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\tpartition\x88\x01\x01\x121\n" +
+	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12;\n" +
 	"\x11parent_network_id\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x0fparentNetworkId\x88\x01\x01\x12<\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x0fparentNetworkId\x88\x01\x01\x12<\n" +
 	"\x06length\x18\a \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x06length\x12X\n" +
-	"\x0eaddress_family\x18\b \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\raddressFamily\x88\x01\x01B\a\n" +
+	"\x0eaddress_family\x18\b \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\x04R\raddressFamily\x88\x01\x01B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
 	"\n" +
-	"_partitionB\t\n" +
-	"\a_labelsB\x14\n" +
+	"_partitionB\x14\n" +
 	"\x12_parent_network_idB\x11\n" +
 	"\x0f_address_family\"T\n" +
 	"\x1cNetworkServiceCreateResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"Z\n" +
-	"\x1bNetworkServiceUpdateRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02id\x12\"\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"]\n" +
+	"\x1bNetworkServiceUpdateRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"T\n" +
 	"\x1cNetworkServiceUpdateResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"v\n" +
@@ -1268,28 +1278,37 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x125\n" +
 	"\x05query\x18\x02 \x01(\v2\x1f.metalstack.api.v2.NetworkQueryR\x05query\"T\n" +
 	"\x1aNetworkServiceListResponse\x126\n" +
-	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"Z\n" +
-	"\x1bNetworkServiceDeleteRequest\x12\x17\n" +
-	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02id\x12\"\n" +
+	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"]\n" +
+	"\x1bNetworkServiceDeleteRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"T\n" +
 	"\x1cNetworkServiceDeleteResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xdd\x05\n" +
-	"\aNetwork\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12+\n" +
-	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x17\n" +
-	"\x04name\x18\x03 \x01(\tH\x00R\x04name\x88\x01\x01\x12%\n" +
-	"\vdescription\x18\x04 \x01(\tH\x01R\vdescription\x88\x01\x01\x12!\n" +
-	"\tpartition\x18\x05 \x01(\tH\x02R\tpartition\x88\x01\x01\x12\x1d\n" +
-	"\aproject\x18\x06 \x01(\tH\x03R\aproject\x88\x01\x01\x12\x1a\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xfb\b\n" +
+	"\aNetwork\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12+\n" +
+	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12#\n" +
+	"\x04name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
+	"\vdescription\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12-\n" +
+	"\tpartition\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\tpartition\x88\x01\x01\x12'\n" +
+	"\aproject\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x03R\aproject\x88\x01\x01\x12\x1a\n" +
 	"\bprefixes\x18\b \x03(\tR\bprefixes\x121\n" +
 	"\x14destination_prefixes\x18\t \x03(\tR\x13destinationPrefixes\x12c\n" +
 	"\x1bdefault_child_prefix_length\x18\n" +
 	" \x03(\v2$.metalstack.api.v2.ChildPrefixLengthR\x18defaultChildPrefixLength\x12;\n" +
 	"\aoptions\x18\v \x01(\v2!.metalstack.api.v2.NetworkOptionsR\aoptions\x12\x15\n" +
-	"\x03vrf\x18\f \x01(\rH\x04R\x03vrf\x88\x01\x01\x12/\n" +
-	"\x11parent_network_id\x18\r \x01(\tH\x05R\x0fparentNetworkId\x88\x01\x01\x12@\n" +
+	"\x03vrf\x18\f \x01(\rH\x04R\x03vrf\x88\x01\x01\x12;\n" +
+	"\x11parent_network_id\x18\r \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x0fparentNetworkId\x88\x01\x01\x12@\n" +
 	"\x1cadditional_announceble_cidrs\x18\x0e \x03(\tR\x1aadditionalAnnouncebleCidrs\x12G\n" +
-	"\vconsumption\x18\x0f \x01(\v2%.metalstack.api.v2.NetworkConsumptionR\vconsumptionB\a\n" +
+	"\vconsumption\x18\x0f \x01(\v2%.metalstack.api.v2.NetworkConsumptionR\vconsumption:\xd5\x02\xbaH\xd1\x02\x1aN\n" +
+	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
+	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())\x1a\x8a\x01\n" +
+	"\x1cadditional_announceble_cidrs\x120given additional_announceble_cidrs must be valid\x1a8this.additional_announceble_cidrs.all(m, m.isIpPrefix())B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
 	"\n" +
@@ -1297,20 +1316,26 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\n" +
 	"\b_projectB\x06\n" +
 	"\x04_vrfB\x14\n" +
-	"\x12_parent_network_id\"\xb4\x06\n" +
-	"\fNetworkQuery\x12\x13\n" +
-	"\x02id\x18\x01 \x01(\tH\x00R\x02id\x88\x01\x01\x12\x17\n" +
-	"\x04name\x18\x02 \x01(\tH\x01R\x04name\x88\x01\x01\x12%\n" +
-	"\vdescription\x18\x03 \x01(\tH\x02R\vdescription\x88\x01\x01\x12!\n" +
-	"\tpartition\x18\x04 \x01(\tH\x03R\tpartition\x88\x01\x01\x12\x1d\n" +
-	"\aproject\x18\x05 \x01(\tH\x04R\aproject\x88\x01\x01\x12\x1a\n" +
+	"\x12_parent_network_id\"\xf8\b\n" +
+	"\fNetworkQuery\x12\x1f\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x04name\x88\x01\x01\x121\n" +
+	"\vdescription\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\vdescription\x88\x01\x01\x12-\n" +
+	"\tpartition\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\tpartition\x88\x01\x01\x12'\n" +
+	"\aproject\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x04R\aproject\x88\x01\x01\x12\x1a\n" +
 	"\bprefixes\x18\x06 \x03(\tR\bprefixes\x121\n" +
 	"\x14destination_prefixes\x18\a \x03(\tR\x13destinationPrefixes\x12\x15\n" +
-	"\x03vrf\x18\b \x01(\rH\x05R\x03vrf\x88\x01\x01\x12/\n" +
-	"\x11parent_network_id\x18\t \x01(\tH\x06R\x0fparentNetworkId\x88\x01\x01\x12X\n" +
+	"\x03vrf\x18\b \x01(\rH\x05R\x03vrf\x88\x01\x01\x12;\n" +
+	"\x11parent_network_id\x18\t \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x06R\x0fparentNetworkId\x88\x01\x01\x12X\n" +
 	"\x0eaddress_family\x18\n" +
-	" \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\aR\raddressFamily\x88\x01\x01\x12A\n" +
-	"\aoptions\x18\v \x01(\v2'.metalstack.api.v2.NetworkQuery.OptionsR\aoptions\x1a\xed\x01\n" +
+	" \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\aR\raddressFamily\x88\x01\x01\x121\n" +
+	"\x06labels\x18\v \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12A\n" +
+	"\aoptions\x18\f \x01(\v2'.metalstack.api.v2.NetworkQuery.OptionsR\aoptions\x1a\xed\x01\n" +
 	"\aOptions\x12\x1b\n" +
 	"\x06shared\x18\x01 \x01(\bH\x00R\x06shared\x88\x01\x01\x12\x15\n" +
 	"\x03nat\x18\x02 \x01(\bH\x01R\x03nat\x88\x01\x01\x12(\n" +
@@ -1322,7 +1347,9 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x04_natB\x10\n" +
 	"\x0e_private_superB\v\n" +
 	"\t_underlayB\r\n" +
-	"\v_vrf_sharedB\x05\n" +
+	"\v_vrf_shared:\xc8\x01\xbaH\xc4\x01\x1aN\n" +
+	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
+	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())B\x05\n" +
 	"\x03_idB\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
@@ -1409,25 +1436,26 @@ var file_metalstack_api_v2_network_proto_depIdxs = []int32{
 	12, // 11: metalstack.api.v2.Network.options:type_name -> metalstack.api.v2.NetworkOptions
 	14, // 12: metalstack.api.v2.Network.consumption:type_name -> metalstack.api.v2.NetworkConsumption
 	18, // 13: metalstack.api.v2.NetworkQuery.address_family:type_name -> metalstack.api.v2.IPAddressFamily
-	16, // 14: metalstack.api.v2.NetworkQuery.options:type_name -> metalstack.api.v2.NetworkQuery.Options
-	18, // 15: metalstack.api.v2.ChildPrefixLength.address_family:type_name -> metalstack.api.v2.IPAddressFamily
-	15, // 16: metalstack.api.v2.NetworkConsumption.ipv4:type_name -> metalstack.api.v2.NetworkUsage
-	15, // 17: metalstack.api.v2.NetworkConsumption.ipv6:type_name -> metalstack.api.v2.NetworkUsage
-	0,  // 18: metalstack.api.v2.NetworkService.Get:input_type -> metalstack.api.v2.NetworkServiceGetRequest
-	2,  // 19: metalstack.api.v2.NetworkService.Create:input_type -> metalstack.api.v2.NetworkServiceCreateRequest
-	4,  // 20: metalstack.api.v2.NetworkService.Update:input_type -> metalstack.api.v2.NetworkServiceUpdateRequest
-	6,  // 21: metalstack.api.v2.NetworkService.List:input_type -> metalstack.api.v2.NetworkServiceListRequest
-	8,  // 22: metalstack.api.v2.NetworkService.Delete:input_type -> metalstack.api.v2.NetworkServiceDeleteRequest
-	1,  // 23: metalstack.api.v2.NetworkService.Get:output_type -> metalstack.api.v2.NetworkServiceGetResponse
-	3,  // 24: metalstack.api.v2.NetworkService.Create:output_type -> metalstack.api.v2.NetworkServiceCreateResponse
-	5,  // 25: metalstack.api.v2.NetworkService.Update:output_type -> metalstack.api.v2.NetworkServiceUpdateResponse
-	7,  // 26: metalstack.api.v2.NetworkService.List:output_type -> metalstack.api.v2.NetworkServiceListResponse
-	9,  // 27: metalstack.api.v2.NetworkService.Delete:output_type -> metalstack.api.v2.NetworkServiceDeleteResponse
-	23, // [23:28] is the sub-list for method output_type
-	18, // [18:23] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	17, // 14: metalstack.api.v2.NetworkQuery.labels:type_name -> metalstack.api.v2.Labels
+	16, // 15: metalstack.api.v2.NetworkQuery.options:type_name -> metalstack.api.v2.NetworkQuery.Options
+	18, // 16: metalstack.api.v2.ChildPrefixLength.address_family:type_name -> metalstack.api.v2.IPAddressFamily
+	15, // 17: metalstack.api.v2.NetworkConsumption.ipv4:type_name -> metalstack.api.v2.NetworkUsage
+	15, // 18: metalstack.api.v2.NetworkConsumption.ipv6:type_name -> metalstack.api.v2.NetworkUsage
+	0,  // 19: metalstack.api.v2.NetworkService.Get:input_type -> metalstack.api.v2.NetworkServiceGetRequest
+	2,  // 20: metalstack.api.v2.NetworkService.Create:input_type -> metalstack.api.v2.NetworkServiceCreateRequest
+	4,  // 21: metalstack.api.v2.NetworkService.Update:input_type -> metalstack.api.v2.NetworkServiceUpdateRequest
+	6,  // 22: metalstack.api.v2.NetworkService.List:input_type -> metalstack.api.v2.NetworkServiceListRequest
+	8,  // 23: metalstack.api.v2.NetworkService.Delete:input_type -> metalstack.api.v2.NetworkServiceDeleteRequest
+	1,  // 24: metalstack.api.v2.NetworkService.Get:output_type -> metalstack.api.v2.NetworkServiceGetResponse
+	3,  // 25: metalstack.api.v2.NetworkService.Create:output_type -> metalstack.api.v2.NetworkServiceCreateResponse
+	5,  // 26: metalstack.api.v2.NetworkService.Update:output_type -> metalstack.api.v2.NetworkServiceUpdateResponse
+	7,  // 27: metalstack.api.v2.NetworkService.List:output_type -> metalstack.api.v2.NetworkServiceListResponse
+	9,  // 28: metalstack.api.v2.NetworkService.Delete:output_type -> metalstack.api.v2.NetworkServiceDeleteResponse
+	24, // [24:29] is the sub-list for method output_type
+	19, // [19:24] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_network_proto_init() }

@@ -42,7 +42,10 @@ service NetworkService {
 // NetworkServiceGetRequest
 message NetworkServiceGetRequest {
   // ID of the network to get
-  string id = 1 [(buf.validate.field).string.ip = true];
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Project of the network
   string project = 2 [(buf.validate.field).string.uuid = true];
 }
@@ -74,7 +77,7 @@ message NetworkServiceCreateRequest {
   }];
 
   // Labels on this network
-  optional Labels labels = 5;
+  Labels labels = 5;
   // Parent NetworkId points to the id of the parent network if any
   optional string parent_network_id = 6 [(buf.validate.field).string = {
     min_len: 2
@@ -95,7 +98,10 @@ message NetworkServiceCreateResponse {
 // NetworkServiceUpdateRequest
 message NetworkServiceUpdateRequest {
   // ID of the network to get
-  string id = 1 [(buf.validate.field).string.ip = true];
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Project of the network
   string project = 2 [(buf.validate.field).string.uuid = true];
   // FIXME which fields should be updateable ?
@@ -124,7 +130,10 @@ message NetworkServiceListResponse {
 // NetworkServiceDeleteRequest
 message NetworkServiceDeleteRequest {
   // ID of the network to get
-  string id = 1 [(buf.validate.field).string.ip = true];
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Project of the network
   string project = 2 [(buf.validate.field).string.uuid = true];
 }
@@ -138,19 +147,41 @@ message NetworkServiceDeleteResponse {
 // Network
 message Network {
   // Id of this network
-  string id = 1;
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Meta for this ip
   Meta meta = 2;
   // Name of this network
-  optional string name = 3;
+  optional string name = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Description of this network
-  optional string description = 4;
+  optional string description = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Partition where this network will be created
-  optional string partition = 5;
+  optional string partition = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Project where this network belongs to
-  optional string project = 6;
+  optional string project = 6 [(buf.validate.field).string.uuid = true];
+  option (buf.validate.message).cel = {
+    id: "prefixes"
+    message: "given prefixes must be valid"
+    expression: "this.prefixes.all(m, m.isIpPrefix())"
+  };
   // Prefixes in this network
   repeated string prefixes = 8;
+  option (buf.validate.message).cel = {
+    id: "destination_prefixes"
+    message: "given destination_prefixes must be valid"
+    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
+  };
   // Destination Prefixes in this network
   repeated string destination_prefixes = 9;
   // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
@@ -160,7 +191,15 @@ message Network {
   // Vrf ID of this network
   optional uint32 vrf = 12;
   // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 13;
+  optional string parent_network_id = 13 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  option (buf.validate.message).cel = {
+    id: "additional_announceble_cidrs"
+    message: "given additional_announceble_cidrs must be valid"
+    expression: "this.additional_announceble_cidrs.all(m, m.isIpPrefix())"
+  };
   // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
   repeated string additional_announceble_cidrs = 14;
   // Consumption of ips and prefixes in this networks
@@ -170,25 +209,52 @@ message Network {
 // NetworkQuery defines which networks to query
 message NetworkQuery {
   // Id of the network to query
-  optional string id = 1;
+  optional string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Name of this network
-  optional string name = 2;
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Description of this network
-  optional string description = 3;
+  optional string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Partition where this network will be created
-  optional string partition = 4;
+  optional string partition = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Project where this network belongs to
-  optional string project = 5;
+  optional string project = 5 [(buf.validate.field).string.uuid = true];
+  option (buf.validate.message).cel = {
+    id: "prefixes"
+    message: "given prefixes must be valid"
+    expression: "this.prefixes.all(m, m.isIpPrefix())"
+  };
   // Prefixes in this network
   repeated string prefixes = 6;
+  option (buf.validate.message).cel = {
+    id: "destination_prefixes"
+    message: "given destination_prefixes must be valid"
+    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
+  };
   // Destination Prefixes in this network
   repeated string destination_prefixes = 7;
   // Vrf ID of this network
   optional uint32 vrf = 8;
   // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 9;
+  optional string parent_network_id = 9 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Addressfamily to query
   optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
+  // Labels on this network
+  Labels labels = 11;
   // NetworkOptions to query for
   message Options {
     // Shared indicates if this network could be shared between projects
@@ -203,7 +269,7 @@ message NetworkQuery {
     optional bool vrf_shared = 5;
   }
   // Options to query for
-  Options options = 11;
+  Options options = 12;
 }
 
 // NetworkOptions
