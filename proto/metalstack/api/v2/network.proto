@@ -172,23 +172,38 @@ message NetworkQuery {
   // Id of the network to query
   optional string id = 1;
   // Name of this network
-  optional string name = 3;
+  optional string name = 2;
   // Description of this network
-  optional string description = 4;
+  optional string description = 3;
   // Partition where this network will be created
-  optional string partition = 5;
+  optional string partition = 4;
   // Project where this network belongs to
-  optional string project = 6;
+  optional string project = 5;
   // Prefixes in this network
-  repeated string prefixes = 8;
+  repeated string prefixes = 6;
   // Destination Prefixes in this network
-  repeated string destination_prefixes = 9;
-  // Options of this network
-  NetworkOptions options = 11;
+  repeated string destination_prefixes = 7;
   // Vrf ID of this network
-  optional uint32 vrf = 12;
+  optional uint32 vrf = 8;
   // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 13;
+  optional string parent_network_id = 9;
+  // Addressfamily to query
+  optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
+  // NetworkOptions to query for
+  message NetworkOptionsQuery {
+    // Shared indicates if this network could be shared between projects
+    optional bool shared = 1;
+    // Nat defines that outgoing traffic is natted
+    optional bool nat = 2;
+    // PrivateSuper indicates that this network serves a super network for project networks
+    optional bool private_super = 3;
+    // Underlay indicates that this network is a underlay network
+    optional bool underlay = 4;
+    // VrfShared indicates if this network shares the vrf id with other networks
+    optional bool vrf_shared = 5;
+  }
+  // Options to query for
+  NetworkOptionsQuery options = 11;
 }
 
 // NetworkOptions

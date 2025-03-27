@@ -628,6 +628,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.NetworkQuery.NetworkOptionsQuery"><span class="badge">M</span>NetworkQuery.NetworkOptionsQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.NetworkServiceCreateRequest"><span class="badge">M</span>NetworkServiceCreateRequest</a>
                 </li>
               
@@ -4590,13 +4594,6 @@ should contain os and major.minor then latest patch version of this os is return
                 </tr>
               
                 <tr>
-                  <td>options</td>
-                  <td><a href="#metalstack.api.v2.NetworkOptions">NetworkOptions</a></td>
-                  <td></td>
-                  <td><p>Options of this network </p></td>
-                </tr>
-              
-                <tr>
                   <td>vrf</td>
                   <td><a href="#uint32">uint32</a></td>
                   <td>optional</td>
@@ -4608,6 +4605,72 @@ should contain os and major.minor then latest patch version of this os is return
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Parent NetworkId points to the id of the parent network if any </p></td>
+                </tr>
+              
+                <tr>
+                  <td>address_family</td>
+                  <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
+                  <td>optional</td>
+                  <td><p>Addressfamily to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>options</td>
+                  <td><a href="#metalstack.api.v2.NetworkQuery.NetworkOptionsQuery">NetworkQuery.NetworkOptionsQuery</a></td>
+                  <td></td>
+                  <td><p>Options to query for </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.NetworkQuery.NetworkOptionsQuery">NetworkQuery.NetworkOptionsQuery</h3>
+        <p>NetworkOptions to query for</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>shared</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>Shared indicates if this network could be shared between projects </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nat</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>Nat defines that outgoing traffic is natted </p></td>
+                </tr>
+              
+                <tr>
+                  <td>private_super</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>PrivateSuper indicates that this network serves a super network for project networks </p></td>
+                </tr>
+              
+                <tr>
+                  <td>underlay</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>Underlay indicates that this network is a underlay network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>vrf_shared</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>VrfShared indicates if this network shares the vrf id with other networks </p></td>
                 </tr>
               
             </tbody>
