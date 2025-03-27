@@ -190,7 +190,7 @@ message NetworkQuery {
   // Addressfamily to query
   optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
   // NetworkOptions to query for
-  message NetworkOptionsQuery {
+  message Options {
     // Shared indicates if this network could be shared between projects
     optional bool shared = 1;
     // Nat defines that outgoing traffic is natted
@@ -203,7 +203,7 @@ message NetworkQuery {
     optional bool vrf_shared = 5;
   }
   // Options to query for
-  NetworkOptionsQuery options = 11;
+  Options options = 11;
 }
 
 // NetworkOptions

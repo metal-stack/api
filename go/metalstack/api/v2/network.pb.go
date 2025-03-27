@@ -768,7 +768,7 @@ type NetworkQuery struct {
 	// Addressfamily to query
 	AddressFamily *IPAddressFamily `protobuf:"varint,10,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
 	// Options to query for
-	Options       *NetworkQuery_NetworkOptionsQuery `protobuf:"bytes,11,opt,name=options,proto3" json:"options,omitempty"`
+	Options       *NetworkQuery_Options `protobuf:"bytes,11,opt,name=options,proto3" json:"options,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -873,7 +873,7 @@ func (x *NetworkQuery) GetAddressFamily() IPAddressFamily {
 	return IPAddressFamily_IP_ADDRESS_FAMILY_UNSPECIFIED
 }
 
-func (x *NetworkQuery) GetOptions() *NetworkQuery_NetworkOptionsQuery {
+func (x *NetworkQuery) GetOptions() *NetworkQuery_Options {
 	if x != nil {
 		return x.Options
 	}
@@ -1146,7 +1146,7 @@ func (x *NetworkUsage) GetUsedPrefixes() uint64 {
 }
 
 // NetworkOptions to query for
-type NetworkQuery_NetworkOptionsQuery struct {
+type NetworkQuery_Options struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Shared indicates if this network could be shared between projects
 	Shared *bool `protobuf:"varint,1,opt,name=shared,proto3,oneof" json:"shared,omitempty"`
@@ -1162,20 +1162,20 @@ type NetworkQuery_NetworkOptionsQuery struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *NetworkQuery_NetworkOptionsQuery) Reset() {
-	*x = NetworkQuery_NetworkOptionsQuery{}
+func (x *NetworkQuery_Options) Reset() {
+	*x = NetworkQuery_Options{}
 	mi := &file_metalstack_api_v2_network_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *NetworkQuery_NetworkOptionsQuery) String() string {
+func (x *NetworkQuery_Options) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*NetworkQuery_NetworkOptionsQuery) ProtoMessage() {}
+func (*NetworkQuery_Options) ProtoMessage() {}
 
-func (x *NetworkQuery_NetworkOptionsQuery) ProtoReflect() protoreflect.Message {
+func (x *NetworkQuery_Options) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_api_v2_network_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1187,40 +1187,40 @@ func (x *NetworkQuery_NetworkOptionsQuery) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use NetworkQuery_NetworkOptionsQuery.ProtoReflect.Descriptor instead.
-func (*NetworkQuery_NetworkOptionsQuery) Descriptor() ([]byte, []int) {
+// Deprecated: Use NetworkQuery_Options.ProtoReflect.Descriptor instead.
+func (*NetworkQuery_Options) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{11, 0}
 }
 
-func (x *NetworkQuery_NetworkOptionsQuery) GetShared() bool {
+func (x *NetworkQuery_Options) GetShared() bool {
 	if x != nil && x.Shared != nil {
 		return *x.Shared
 	}
 	return false
 }
 
-func (x *NetworkQuery_NetworkOptionsQuery) GetNat() bool {
+func (x *NetworkQuery_Options) GetNat() bool {
 	if x != nil && x.Nat != nil {
 		return *x.Nat
 	}
 	return false
 }
 
-func (x *NetworkQuery_NetworkOptionsQuery) GetPrivateSuper() bool {
+func (x *NetworkQuery_Options) GetPrivateSuper() bool {
 	if x != nil && x.PrivateSuper != nil {
 		return *x.PrivateSuper
 	}
 	return false
 }
 
-func (x *NetworkQuery_NetworkOptionsQuery) GetUnderlay() bool {
+func (x *NetworkQuery_Options) GetUnderlay() bool {
 	if x != nil && x.Underlay != nil {
 		return *x.Underlay
 	}
 	return false
 }
 
-func (x *NetworkQuery_NetworkOptionsQuery) GetVrfShared() bool {
+func (x *NetworkQuery_Options) GetVrfShared() bool {
 	if x != nil && x.VrfShared != nil {
 		return *x.VrfShared
 	}
@@ -1297,7 +1297,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\n" +
 	"\b_projectB\x06\n" +
 	"\x04_vrfB\x14\n" +
-	"\x12_parent_network_id\"\xcc\x06\n" +
+	"\x12_parent_network_id\"\xb4\x06\n" +
 	"\fNetworkQuery\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\tH\x00R\x02id\x88\x01\x01\x12\x17\n" +
 	"\x04name\x18\x02 \x01(\tH\x01R\x04name\x88\x01\x01\x12%\n" +
@@ -1309,9 +1309,9 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x03vrf\x18\b \x01(\rH\x05R\x03vrf\x88\x01\x01\x12/\n" +
 	"\x11parent_network_id\x18\t \x01(\tH\x06R\x0fparentNetworkId\x88\x01\x01\x12X\n" +
 	"\x0eaddress_family\x18\n" +
-	" \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\aR\raddressFamily\x88\x01\x01\x12M\n" +
-	"\aoptions\x18\v \x01(\v23.metalstack.api.v2.NetworkQuery.NetworkOptionsQueryR\aoptions\x1a\xf9\x01\n" +
-	"\x13NetworkOptionsQuery\x12\x1b\n" +
+	" \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\aR\raddressFamily\x88\x01\x01\x12A\n" +
+	"\aoptions\x18\v \x01(\v2'.metalstack.api.v2.NetworkQuery.OptionsR\aoptions\x1a\xed\x01\n" +
+	"\aOptions\x12\x1b\n" +
 	"\x06shared\x18\x01 \x01(\bH\x00R\x06shared\x88\x01\x01\x12\x15\n" +
 	"\x03nat\x18\x02 \x01(\bH\x01R\x03nat\x88\x01\x01\x12(\n" +
 	"\rprivate_super\x18\x03 \x01(\bH\x02R\fprivateSuper\x88\x01\x01\x12\x1f\n" +
@@ -1373,26 +1373,26 @@ func file_metalstack_api_v2_network_proto_rawDescGZIP() []byte {
 
 var file_metalstack_api_v2_network_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_metalstack_api_v2_network_proto_goTypes = []any{
-	(*NetworkServiceGetRequest)(nil),         // 0: metalstack.api.v2.NetworkServiceGetRequest
-	(*NetworkServiceGetResponse)(nil),        // 1: metalstack.api.v2.NetworkServiceGetResponse
-	(*NetworkServiceCreateRequest)(nil),      // 2: metalstack.api.v2.NetworkServiceCreateRequest
-	(*NetworkServiceCreateResponse)(nil),     // 3: metalstack.api.v2.NetworkServiceCreateResponse
-	(*NetworkServiceUpdateRequest)(nil),      // 4: metalstack.api.v2.NetworkServiceUpdateRequest
-	(*NetworkServiceUpdateResponse)(nil),     // 5: metalstack.api.v2.NetworkServiceUpdateResponse
-	(*NetworkServiceListRequest)(nil),        // 6: metalstack.api.v2.NetworkServiceListRequest
-	(*NetworkServiceListResponse)(nil),       // 7: metalstack.api.v2.NetworkServiceListResponse
-	(*NetworkServiceDeleteRequest)(nil),      // 8: metalstack.api.v2.NetworkServiceDeleteRequest
-	(*NetworkServiceDeleteResponse)(nil),     // 9: metalstack.api.v2.NetworkServiceDeleteResponse
-	(*Network)(nil),                          // 10: metalstack.api.v2.Network
-	(*NetworkQuery)(nil),                     // 11: metalstack.api.v2.NetworkQuery
-	(*NetworkOptions)(nil),                   // 12: metalstack.api.v2.NetworkOptions
-	(*ChildPrefixLength)(nil),                // 13: metalstack.api.v2.ChildPrefixLength
-	(*NetworkConsumption)(nil),               // 14: metalstack.api.v2.NetworkConsumption
-	(*NetworkUsage)(nil),                     // 15: metalstack.api.v2.NetworkUsage
-	(*NetworkQuery_NetworkOptionsQuery)(nil), // 16: metalstack.api.v2.NetworkQuery.NetworkOptionsQuery
-	(*Labels)(nil),                           // 17: metalstack.api.v2.Labels
-	(IPAddressFamily)(0),                     // 18: metalstack.api.v2.IPAddressFamily
-	(*Meta)(nil),                             // 19: metalstack.api.v2.Meta
+	(*NetworkServiceGetRequest)(nil),     // 0: metalstack.api.v2.NetworkServiceGetRequest
+	(*NetworkServiceGetResponse)(nil),    // 1: metalstack.api.v2.NetworkServiceGetResponse
+	(*NetworkServiceCreateRequest)(nil),  // 2: metalstack.api.v2.NetworkServiceCreateRequest
+	(*NetworkServiceCreateResponse)(nil), // 3: metalstack.api.v2.NetworkServiceCreateResponse
+	(*NetworkServiceUpdateRequest)(nil),  // 4: metalstack.api.v2.NetworkServiceUpdateRequest
+	(*NetworkServiceUpdateResponse)(nil), // 5: metalstack.api.v2.NetworkServiceUpdateResponse
+	(*NetworkServiceListRequest)(nil),    // 6: metalstack.api.v2.NetworkServiceListRequest
+	(*NetworkServiceListResponse)(nil),   // 7: metalstack.api.v2.NetworkServiceListResponse
+	(*NetworkServiceDeleteRequest)(nil),  // 8: metalstack.api.v2.NetworkServiceDeleteRequest
+	(*NetworkServiceDeleteResponse)(nil), // 9: metalstack.api.v2.NetworkServiceDeleteResponse
+	(*Network)(nil),                      // 10: metalstack.api.v2.Network
+	(*NetworkQuery)(nil),                 // 11: metalstack.api.v2.NetworkQuery
+	(*NetworkOptions)(nil),               // 12: metalstack.api.v2.NetworkOptions
+	(*ChildPrefixLength)(nil),            // 13: metalstack.api.v2.ChildPrefixLength
+	(*NetworkConsumption)(nil),           // 14: metalstack.api.v2.NetworkConsumption
+	(*NetworkUsage)(nil),                 // 15: metalstack.api.v2.NetworkUsage
+	(*NetworkQuery_Options)(nil),         // 16: metalstack.api.v2.NetworkQuery.Options
+	(*Labels)(nil),                       // 17: metalstack.api.v2.Labels
+	(IPAddressFamily)(0),                 // 18: metalstack.api.v2.IPAddressFamily
+	(*Meta)(nil),                         // 19: metalstack.api.v2.Meta
 }
 var file_metalstack_api_v2_network_proto_depIdxs = []int32{
 	10, // 0: metalstack.api.v2.NetworkServiceGetResponse.network:type_name -> metalstack.api.v2.Network
@@ -1409,7 +1409,7 @@ var file_metalstack_api_v2_network_proto_depIdxs = []int32{
 	12, // 11: metalstack.api.v2.Network.options:type_name -> metalstack.api.v2.NetworkOptions
 	14, // 12: metalstack.api.v2.Network.consumption:type_name -> metalstack.api.v2.NetworkConsumption
 	18, // 13: metalstack.api.v2.NetworkQuery.address_family:type_name -> metalstack.api.v2.IPAddressFamily
-	16, // 14: metalstack.api.v2.NetworkQuery.options:type_name -> metalstack.api.v2.NetworkQuery.NetworkOptionsQuery
+	16, // 14: metalstack.api.v2.NetworkQuery.options:type_name -> metalstack.api.v2.NetworkQuery.Options
 	18, // 15: metalstack.api.v2.ChildPrefixLength.address_family:type_name -> metalstack.api.v2.IPAddressFamily
 	15, // 16: metalstack.api.v2.NetworkConsumption.ipv4:type_name -> metalstack.api.v2.NetworkUsage
 	15, // 17: metalstack.api.v2.NetworkConsumption.ipv6:type_name -> metalstack.api.v2.NetworkUsage
