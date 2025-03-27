@@ -1,0 +1,142 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/ip.proto";
+import "metalstack/api/v2/network.proto";
+
+// NetworkService serves network address related functions
+service NetworkService {
+  // Create a network
+  rpc Create(NetworkServiceCreateRequest) returns (NetworkServiceCreateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Update a network
+  rpc Update(NetworkServiceUpdateRequest) returns (NetworkServiceUpdateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Delete a network
+  rpc Delete(NetworkServiceDeleteRequest) returns (NetworkServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // List all networks
+  rpc List(NetworkServiceListRequest) returns (NetworkServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// NetworkServiceCreateRequest
+message NetworkServiceCreateRequest {
+  // Id of this network
+  optional string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Name of this network
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this network
+  optional string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Partition where this network will be created
+  optional string partition = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Project where this network belongs to
+  optional string project = 5 [(buf.validate.field).string.uuid = true];
+  // Labels on this network
+  optional metalstack.api.v2.Labels labels = 6;
+  option (buf.validate.message).cel = {
+    id: "prefixes"
+    message: "given prefixes must be valid"
+    expression: "this.prefixes.all(m, m.isIpPrefix())"
+  };
+  // Prefixes in this network
+  repeated string prefixes = 8;
+  option (buf.validate.message).cel = {
+    id: "destination_prefixes"
+    message: "given destination_prefixes must be valid"
+    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
+  };
+  // Destination Prefixes in this network
+  repeated string destination_prefixes = 9;
+  // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+  repeated metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
+  // Options of this network
+  metalstack.api.v2.NetworkOptions options = 11;
+  // Vrf ID of this network
+  optional uint32 vrf = 12;
+  // Parent NetworkId points to the id of the parent network if any
+  optional string parent_network_id = 14 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  option (buf.validate.message).cel = {
+    id: "additional_announceble_cidrs"
+    message: "given additional_announceble_cidrs must be valid"
+    expression: "this.additional_announceble_cidrs.all(m, m.isIpPrefix())"
+  };
+  // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
+  repeated string additional_announceble_cidrs = 15;
+  // Bitlength per addressfamily
+  metalstack.api.v2.ChildPrefixLength length = 16;
+  // AddressFamily to create, defaults to the same as the parent
+  optional metalstack.api.v2.IPAddressFamily address_family = 17 [(buf.validate.field).enum.defined_only = true];
+}
+
+// NetworkServiceUpdateRequest is the request payload for a network update request
+message NetworkServiceUpdateRequest {
+  // Network the network
+  metalstack.api.v2.Network network = 1;
+}
+
+// NetworkServiceDeleteRequest is the request payload for a network delete request
+message NetworkServiceDeleteRequest {
+  // ID of the network to get
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// NetworkServiceListRequest
+message NetworkServiceListRequest {
+  // Query which specifies which networks to return
+  metalstack.api.v2.NetworkQuery query = 2;
+}
+
+// NetworkServiceCreateResponse is the response payload for a network create request
+message NetworkServiceCreateResponse {
+  // Network the network
+  metalstack.api.v2.Network network = 1;
+}
+
+// NetworkServiceUpdateResponse is the response payload for a network update request
+message NetworkServiceUpdateResponse {
+  // Network the network
+  metalstack.api.v2.Network network = 1;
+}
+
+// NetworkServiceCapacityResponse is the response payload for a network delete request
+message NetworkServiceDeleteResponse {
+  // Network the network
+  metalstack.api.v2.Network network = 1;
+}
+
+// NetworkServiceListResponse
+message NetworkServiceListResponse {
+  // Networks are the requested networks
+  repeated metalstack.api.v2.Network networks = 1;
+}
