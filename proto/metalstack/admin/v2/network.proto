@@ -84,12 +84,12 @@ message NetworkServiceCreateRequest {
     max_len: 128
   }];
   option (buf.validate.message).cel = {
-    id: "additional_announceble_cidrs"
-    message: "given additional_announceble_cidrs must be valid"
-    expression: "this.additional_announceble_cidrs.all(m, m.isIpPrefix())"
+    id: "additional_announceable_cidrs"
+    message: "given additional_announceable_cidrs must be valid"
+    expression: "this.additional_announceable_cidrs.all(m, m.isIpPrefix())"
   };
-  // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-  repeated string additional_announceble_cidrs = 15;
+  // AdditionalAnnounceableCidrs will be added to the allow list on the switch which prefixes might be announced
+  repeated string additional_announceable_cidrs = 15;
   // Bitlength per addressfamily
   metalstack.api.v2.ChildPrefixLength length = 16;
   // AddressFamily to create, defaults to the same as the parent
