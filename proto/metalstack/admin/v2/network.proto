@@ -100,6 +100,8 @@ message NetworkServiceCreateRequest {
 message NetworkServiceUpdateRequest {
   // Network the network
   metalstack.api.v2.Network network = 1;
+  // Force update
+  bool force = 2;
 }
 
 // NetworkServiceDeleteRequest is the request payload for a network delete request

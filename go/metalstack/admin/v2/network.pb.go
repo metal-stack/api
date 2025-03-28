@@ -199,7 +199,9 @@ func (x *NetworkServiceCreateRequest) GetAddressFamily() v2.IPAddressFamily {
 type NetworkServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network the network
-	Network       *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	Network *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	// Force update
+	Force         bool `protobuf:"varint,2,opt,name=force,proto3" json:"force,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -239,6 +241,13 @@ func (x *NetworkServiceUpdateRequest) GetNetwork() *v2.Network {
 		return x.Network
 	}
 	return nil
+}
+
+func (x *NetworkServiceUpdateRequest) GetForce() bool {
+	if x != nil {
+		return x.Force
+	}
+	return false
 }
 
 // NetworkServiceDeleteRequest is the request payload for a network delete request
@@ -558,9 +567,10 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\a_labelsB\x06\n" +
 	"\x04_vrfB\x14\n" +
 	"\x12_parent_network_idB\x11\n" +
-	"\x0f_address_family\"S\n" +
+	"\x0f_address_family\"i\n" +
 	"\x1bNetworkServiceUpdateRequest\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"9\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\x12\x14\n" +
+	"\x05force\x18\x02 \x01(\bR\x05force\"9\n" +
 	"\x1bNetworkServiceDeleteRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"R\n" +
