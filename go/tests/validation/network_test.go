@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/bufbuild/protovalidate-go"
+	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
@@ -16,7 +17,7 @@ func TestValidateNetwork(t *testing.T) {
 	tests := prototests{
 		{
 			name: "Valid NetworkCreateRequest minimal config",
-			msg: &apiv2.NetworkServiceCreateRequest{
+			msg: &adminv2.NetworkServiceCreateRequest{
 				Id:       proto.String("internet"),
 				Options:  &apiv2.NetworkOptions{Shared: true},
 				Prefixes: []string{"1.2.0.0/16"},
@@ -25,7 +26,7 @@ func TestValidateNetwork(t *testing.T) {
 		},
 		{
 			name: "InValid NetworkCreateRequest prefixes malformed",
-			msg: &apiv2.NetworkServiceCreateRequest{
+			msg: &adminv2.NetworkServiceCreateRequest{
 				Id:                  proto.String("internet"),
 				Options:             &apiv2.NetworkOptions{Shared: true},
 				Prefixes:            []string{"1.2.3.4.5/99"},
