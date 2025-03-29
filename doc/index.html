@@ -4742,7 +4742,7 @@ should contain os and major.minor then latest patch version of this os is return
                 <tr>
                   <td>length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">ChildPrefixLength</a></td>
-                  <td></td>
+                  <td>repeated</td>
                   <td><p>Bitlength per addressfamily </p></td>
                 </tr>
               
@@ -4751,6 +4751,14 @@ should contain os and major.minor then latest patch version of this os is return
                   <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
                   <td>optional</td>
                   <td><p>AddressFamily to create, defaults to the same as the parent </p></td>
+                </tr>
+              
+                <tr>
+                  <td>destination_prefixes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Destination Prefixes in this network
+TODO is this really required here </p></td>
                 </tr>
               
             </tbody>

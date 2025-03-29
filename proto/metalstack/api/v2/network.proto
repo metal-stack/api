@@ -84,9 +84,17 @@ message NetworkServiceCreateRequest {
     max_len: 128
   }];
   // Bitlength per addressfamily
-  ChildPrefixLength length = 7;
+  repeated ChildPrefixLength length = 7;
   // AddressFamily to create, defaults to the same as the parent
   optional IPAddressFamily address_family = 8 [(buf.validate.field).enum.defined_only = true];
+  option (buf.validate.message).cel = {
+    id: "destination_prefixes"
+    message: "given destination_prefixes must be valid"
+    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
+  };
+  // Destination Prefixes in this network
+  // TODO is this really required here
+  repeated string destination_prefixes = 9;
 }
 
 // NetworkServiceCreateResponse

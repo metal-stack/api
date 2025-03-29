@@ -139,11 +139,14 @@ type NetworkServiceCreateRequest struct {
 	// Parent NetworkId points to the id of the parent network if any
 	ParentNetworkId *string `protobuf:"bytes,6,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
 	// Bitlength per addressfamily
-	Length *ChildPrefixLength `protobuf:"bytes,7,opt,name=length,proto3" json:"length,omitempty"`
+	Length []*ChildPrefixLength `protobuf:"bytes,7,rep,name=length,proto3" json:"length,omitempty"`
 	// AddressFamily to create, defaults to the same as the parent
 	AddressFamily *IPAddressFamily `protobuf:"varint,8,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	// Destination Prefixes in this network
+	// TODO is this really required here
+	DestinationPrefixes []string `protobuf:"bytes,9,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *NetworkServiceCreateRequest) Reset() {
@@ -218,7 +221,7 @@ func (x *NetworkServiceCreateRequest) GetParentNetworkId() string {
 	return ""
 }
 
-func (x *NetworkServiceCreateRequest) GetLength() *ChildPrefixLength {
+func (x *NetworkServiceCreateRequest) GetLength() []*ChildPrefixLength {
 	if x != nil {
 		return x.Length
 	}
@@ -230,6 +233,13 @@ func (x *NetworkServiceCreateRequest) GetAddressFamily() IPAddressFamily {
 		return *x.AddressFamily
 	}
 	return IPAddressFamily_IP_ADDRESS_FAMILY_UNSPECIFIED
+}
+
+func (x *NetworkServiceCreateRequest) GetDestinationPrefixes() []string {
+	if x != nil {
+		return x.DestinationPrefixes
+	}
+	return nil
 }
 
 // NetworkServiceCreateResponse
@@ -1246,7 +1256,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xa0\x04\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xcc\x05\n" +
 	"\x1bNetworkServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -1258,8 +1268,10 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12;\n" +
 	"\x11parent_network_id\x18\x06 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x0fparentNetworkId\x88\x01\x01\x12<\n" +
-	"\x06length\x18\a \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x06length\x12X\n" +
-	"\x0eaddress_family\x18\b \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\x04R\raddressFamily\x88\x01\x01B\a\n" +
+	"\x06length\x18\a \x03(\v2$.metalstack.api.v2.ChildPrefixLengthR\x06length\x12X\n" +
+	"\x0eaddress_family\x18\b \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\x04R\raddressFamily\x88\x01\x01\x121\n" +
+	"\x14destination_prefixes\x18\t \x03(\tR\x13destinationPrefixes:w\xbaHt\x1ar\n" +
+	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
 	"\n" +
