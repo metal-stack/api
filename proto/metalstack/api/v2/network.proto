@@ -114,6 +114,18 @@ message NetworkServiceUpdateRequest {
   }];
   // Project of the network
   string project = 2 [(buf.validate.field).string.uuid = true];
+  // Name of this network
+  optional string name = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this network
+  optional string description = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Labels on this network
+  Labels labels = 5;
   // FIXME which fields should be updateable ?
 }
 
