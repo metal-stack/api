@@ -95,6 +95,8 @@ message NetworkServiceCreateRequest {
   // Destination Prefixes in this network
   // TODO is this really required here
   repeated string destination_prefixes = 9;
+  // Options of this network
+  metalstack.api.v2.NetworkOptions options = 10;
 }
 
 // NetworkServiceCreateResponse

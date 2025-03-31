@@ -145,8 +145,10 @@ type NetworkServiceCreateRequest struct {
 	// Destination Prefixes in this network
 	// TODO is this really required here
 	DestinationPrefixes []string `protobuf:"bytes,9,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
-	unknownFields       protoimpl.UnknownFields
-	sizeCache           protoimpl.SizeCache
+	// Options of this network
+	Options       *NetworkOptions `protobuf:"bytes,10,opt,name=options,proto3" json:"options,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *NetworkServiceCreateRequest) Reset() {
@@ -238,6 +240,13 @@ func (x *NetworkServiceCreateRequest) GetAddressFamily() IPAddressFamily {
 func (x *NetworkServiceCreateRequest) GetDestinationPrefixes() []string {
 	if x != nil {
 		return x.DestinationPrefixes
+	}
+	return nil
+}
+
+func (x *NetworkServiceCreateRequest) GetOptions() *NetworkOptions {
+	if x != nil {
+		return x.Options
 	}
 	return nil
 }
@@ -1256,7 +1265,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xcc\x05\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\x89\x06\n" +
 	"\x1bNetworkServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -1270,7 +1279,9 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x0fparentNetworkId\x88\x01\x01\x12<\n" +
 	"\x06length\x18\a \x03(\v2$.metalstack.api.v2.ChildPrefixLengthR\x06length\x12X\n" +
 	"\x0eaddress_family\x18\b \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\x04R\raddressFamily\x88\x01\x01\x121\n" +
-	"\x14destination_prefixes\x18\t \x03(\tR\x13destinationPrefixes:w\xbaHt\x1ar\n" +
+	"\x14destination_prefixes\x18\t \x03(\tR\x13destinationPrefixes\x12;\n" +
+	"\aoptions\x18\n" +
+	" \x01(\v2!.metalstack.api.v2.NetworkOptionsR\aoptions:w\xbaHt\x1ar\n" +
 	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
@@ -1438,36 +1449,37 @@ var file_metalstack_api_v2_network_proto_depIdxs = []int32{
 	17, // 1: metalstack.api.v2.NetworkServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
 	13, // 2: metalstack.api.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
 	18, // 3: metalstack.api.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.IPAddressFamily
-	10, // 4: metalstack.api.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
-	10, // 5: metalstack.api.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
-	11, // 6: metalstack.api.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
-	10, // 7: metalstack.api.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
-	10, // 8: metalstack.api.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
-	19, // 9: metalstack.api.v2.Network.meta:type_name -> metalstack.api.v2.Meta
-	13, // 10: metalstack.api.v2.Network.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	12, // 11: metalstack.api.v2.Network.options:type_name -> metalstack.api.v2.NetworkOptions
-	14, // 12: metalstack.api.v2.Network.consumption:type_name -> metalstack.api.v2.NetworkConsumption
-	18, // 13: metalstack.api.v2.NetworkQuery.address_family:type_name -> metalstack.api.v2.IPAddressFamily
-	17, // 14: metalstack.api.v2.NetworkQuery.labels:type_name -> metalstack.api.v2.Labels
-	16, // 15: metalstack.api.v2.NetworkQuery.options:type_name -> metalstack.api.v2.NetworkQuery.Options
-	18, // 16: metalstack.api.v2.ChildPrefixLength.address_family:type_name -> metalstack.api.v2.IPAddressFamily
-	15, // 17: metalstack.api.v2.NetworkConsumption.ipv4:type_name -> metalstack.api.v2.NetworkUsage
-	15, // 18: metalstack.api.v2.NetworkConsumption.ipv6:type_name -> metalstack.api.v2.NetworkUsage
-	0,  // 19: metalstack.api.v2.NetworkService.Get:input_type -> metalstack.api.v2.NetworkServiceGetRequest
-	2,  // 20: metalstack.api.v2.NetworkService.Create:input_type -> metalstack.api.v2.NetworkServiceCreateRequest
-	4,  // 21: metalstack.api.v2.NetworkService.Update:input_type -> metalstack.api.v2.NetworkServiceUpdateRequest
-	6,  // 22: metalstack.api.v2.NetworkService.List:input_type -> metalstack.api.v2.NetworkServiceListRequest
-	8,  // 23: metalstack.api.v2.NetworkService.Delete:input_type -> metalstack.api.v2.NetworkServiceDeleteRequest
-	1,  // 24: metalstack.api.v2.NetworkService.Get:output_type -> metalstack.api.v2.NetworkServiceGetResponse
-	3,  // 25: metalstack.api.v2.NetworkService.Create:output_type -> metalstack.api.v2.NetworkServiceCreateResponse
-	5,  // 26: metalstack.api.v2.NetworkService.Update:output_type -> metalstack.api.v2.NetworkServiceUpdateResponse
-	7,  // 27: metalstack.api.v2.NetworkService.List:output_type -> metalstack.api.v2.NetworkServiceListResponse
-	9,  // 28: metalstack.api.v2.NetworkService.Delete:output_type -> metalstack.api.v2.NetworkServiceDeleteResponse
-	24, // [24:29] is the sub-list for method output_type
-	19, // [19:24] is the sub-list for method input_type
-	19, // [19:19] is the sub-list for extension type_name
-	19, // [19:19] is the sub-list for extension extendee
-	0,  // [0:19] is the sub-list for field type_name
+	12, // 4: metalstack.api.v2.NetworkServiceCreateRequest.options:type_name -> metalstack.api.v2.NetworkOptions
+	10, // 5: metalstack.api.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
+	10, // 6: metalstack.api.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
+	11, // 7: metalstack.api.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
+	10, // 8: metalstack.api.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
+	10, // 9: metalstack.api.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
+	19, // 10: metalstack.api.v2.Network.meta:type_name -> metalstack.api.v2.Meta
+	13, // 11: metalstack.api.v2.Network.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	12, // 12: metalstack.api.v2.Network.options:type_name -> metalstack.api.v2.NetworkOptions
+	14, // 13: metalstack.api.v2.Network.consumption:type_name -> metalstack.api.v2.NetworkConsumption
+	18, // 14: metalstack.api.v2.NetworkQuery.address_family:type_name -> metalstack.api.v2.IPAddressFamily
+	17, // 15: metalstack.api.v2.NetworkQuery.labels:type_name -> metalstack.api.v2.Labels
+	16, // 16: metalstack.api.v2.NetworkQuery.options:type_name -> metalstack.api.v2.NetworkQuery.Options
+	18, // 17: metalstack.api.v2.ChildPrefixLength.address_family:type_name -> metalstack.api.v2.IPAddressFamily
+	15, // 18: metalstack.api.v2.NetworkConsumption.ipv4:type_name -> metalstack.api.v2.NetworkUsage
+	15, // 19: metalstack.api.v2.NetworkConsumption.ipv6:type_name -> metalstack.api.v2.NetworkUsage
+	0,  // 20: metalstack.api.v2.NetworkService.Get:input_type -> metalstack.api.v2.NetworkServiceGetRequest
+	2,  // 21: metalstack.api.v2.NetworkService.Create:input_type -> metalstack.api.v2.NetworkServiceCreateRequest
+	4,  // 22: metalstack.api.v2.NetworkService.Update:input_type -> metalstack.api.v2.NetworkServiceUpdateRequest
+	6,  // 23: metalstack.api.v2.NetworkService.List:input_type -> metalstack.api.v2.NetworkServiceListRequest
+	8,  // 24: metalstack.api.v2.NetworkService.Delete:input_type -> metalstack.api.v2.NetworkServiceDeleteRequest
+	1,  // 25: metalstack.api.v2.NetworkService.Get:output_type -> metalstack.api.v2.NetworkServiceGetResponse
+	3,  // 26: metalstack.api.v2.NetworkService.Create:output_type -> metalstack.api.v2.NetworkServiceCreateResponse
+	5,  // 27: metalstack.api.v2.NetworkService.Update:output_type -> metalstack.api.v2.NetworkServiceUpdateResponse
+	7,  // 28: metalstack.api.v2.NetworkService.List:output_type -> metalstack.api.v2.NetworkServiceListResponse
+	9,  // 29: metalstack.api.v2.NetworkService.Delete:output_type -> metalstack.api.v2.NetworkServiceDeleteResponse
+	25, // [25:30] is the sub-list for method output_type
+	20, // [20:25] is the sub-list for method input_type
+	20, // [20:20] is the sub-list for extension type_name
+	20, // [20:20] is the sub-list for extension extendee
+	0,  // [0:20] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_network_proto_init() }
