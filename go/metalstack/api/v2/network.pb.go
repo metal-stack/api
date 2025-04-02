@@ -655,7 +655,7 @@ type Network struct {
 	// Parent NetworkId points to the id of the parent network if any
 	ParentNetworkId *string `protobuf:"bytes,13,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
 	// AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-	AdditionalAnnouncebleCidrs []string `protobuf:"bytes,14,rep,name=additional_announceble_cidrs,json=additionalAnnouncebleCidrs,proto3" json:"additional_announceble_cidrs,omitempty"`
+	AdditionalAnnouncableCidrs []string `protobuf:"bytes,14,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
 	// Consumption of ips and prefixes in this networks
 	Consumption   *NetworkConsumption `protobuf:"bytes,15,opt,name=consumption,proto3" json:"consumption,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -776,9 +776,9 @@ func (x *Network) GetParentNetworkId() string {
 	return ""
 }
 
-func (x *Network) GetAdditionalAnnouncebleCidrs() []string {
+func (x *Network) GetAdditionalAnnouncableCidrs() []string {
 	if x != nil {
-		return x.AdditionalAnnouncebleCidrs
+		return x.AdditionalAnnouncableCidrs
 	}
 	return nil
 }
@@ -1361,11 +1361,11 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x03vrf\x18\f \x01(\rH\x04R\x03vrf\x88\x01\x01\x12;\n" +
 	"\x11parent_network_id\x18\r \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x0fparentNetworkId\x88\x01\x01\x12@\n" +
-	"\x1cadditional_announceble_cidrs\x18\x0e \x03(\tR\x1aadditionalAnnouncebleCidrs\x12G\n" +
+	"\x1cadditional_announcable_cidrs\x18\x0e \x03(\tR\x1aadditionalAnnouncableCidrs\x12G\n" +
 	"\vconsumption\x18\x0f \x01(\v2%.metalstack.api.v2.NetworkConsumptionR\vconsumption:\xd5\x02\xbaH\xd1\x02\x1aN\n" +
 	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
 	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())\x1a\x8a\x01\n" +
-	"\x1cadditional_announceble_cidrs\x120given additional_announceble_cidrs must be valid\x1a8this.additional_announceble_cidrs.all(m, m.isIpPrefix())B\a\n" +
+	"\x1cadditional_announcable_cidrs\x120given additional_announcable_cidrs must be valid\x1a8this.additional_announcable_cidrs.all(m, m.isIpPrefix())B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
 	"\n" +
