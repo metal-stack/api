@@ -218,12 +218,12 @@ message Network {
     max_len: 128
   }];
   option (buf.validate.message).cel = {
-    id: "additional_announceble_cidrs"
-    message: "given additional_announceble_cidrs must be valid"
-    expression: "this.additional_announceble_cidrs.all(m, m.isIpPrefix())"
+    id: "additional_announcable_cidrs"
+    message: "given additional_announcable_cidrs must be valid"
+    expression: "this.additional_announcable_cidrs.all(m, m.isIpPrefix())"
   };
   // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-  repeated string additional_announceble_cidrs = 14;
+  repeated string additional_announcable_cidrs = 14;
   // Consumption of ips and prefixes in this networks
   NetworkConsumption consumption = 15;
 }
