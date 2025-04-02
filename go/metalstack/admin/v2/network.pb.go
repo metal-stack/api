@@ -50,8 +50,8 @@ type NetworkServiceCreateRequest struct {
 	Vrf *uint32 `protobuf:"varint,12,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// Parent NetworkId points to the id of the parent network if any
 	ParentNetworkId *string `protobuf:"bytes,14,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
-	// AdditionalAnnounceableCidrs will be added to the allow list on the switch which prefixes might be announced
-	AdditionalAnnounceableCidrs []string `protobuf:"bytes,15,rep,name=additional_announceable_cidrs,json=additionalAnnounceableCidrs,proto3" json:"additional_announceable_cidrs,omitempty"`
+	// AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
+	AdditionalAnnouncableCidrs []string `protobuf:"bytes,15,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
 	// AddressFamily to create, defaults to the same as the parent
 	AddressFamily *v2.IPAddressFamily `protobuf:"varint,16,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -172,9 +172,9 @@ func (x *NetworkServiceCreateRequest) GetParentNetworkId() string {
 	return ""
 }
 
-func (x *NetworkServiceCreateRequest) GetAdditionalAnnounceableCidrs() []string {
+func (x *NetworkServiceCreateRequest) GetAdditionalAnnouncableCidrs() []string {
 	if x != nil {
-		return x.AdditionalAnnounceableCidrs
+		return x.AdditionalAnnouncableCidrs
 	}
 	return nil
 }
@@ -521,7 +521,7 @@ var File_metalstack_admin_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1ametalstack/api/v2/ip.proto\x1a\x1fmetalstack/api/v2/network.proto\"\xda\t\n" +
+	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1ametalstack/api/v2/ip.proto\x1a\x1fmetalstack/api/v2/network.proto\"\xd5\t\n" +
 	"\x1bNetworkServiceCreateRequest\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
@@ -540,12 +540,12 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\aoptions\x18\v \x01(\v2!.metalstack.api.v2.NetworkOptionsR\aoptions\x12\x15\n" +
 	"\x03vrf\x18\f \x01(\rH\x06R\x03vrf\x88\x01\x01\x12;\n" +
 	"\x11parent_network_id\x18\x0e \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\aR\x0fparentNetworkId\x88\x01\x01\x12B\n" +
-	"\x1dadditional_announceable_cidrs\x18\x0f \x03(\tR\x1badditionalAnnounceableCidrs\x12X\n" +
-	"\x0eaddress_family\x18\x10 \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\bR\raddressFamily\x88\x01\x01:\xd8\x02\xbaH\xd4\x02\x1aN\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\aR\x0fparentNetworkId\x88\x01\x01\x12@\n" +
+	"\x1cadditional_announcable_cidrs\x18\x0f \x03(\tR\x1aadditionalAnnouncableCidrs\x12X\n" +
+	"\x0eaddress_family\x18\x10 \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\bR\raddressFamily\x88\x01\x01:\xd5\x02\xbaH\xd1\x02\x1aN\n" +
 	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
-	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())\x1a\x8d\x01\n" +
-	"\x1dadditional_announceable_cidrs\x121given additional_announceable_cidrs must be valid\x1a9this.additional_announceable_cidrs.all(m, m.isIpPrefix())B\x05\n" +
+	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())\x1a\x8a\x01\n" +
+	"\x1cadditional_announcable_cidrs\x120given additional_announcable_cidrs must be valid\x1a8this.additional_announcable_cidrs.all(m, m.isIpPrefix())B\x05\n" +
 	"\x03_idB\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
