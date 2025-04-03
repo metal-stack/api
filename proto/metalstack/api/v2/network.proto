@@ -25,11 +25,16 @@ service NetworkService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // List all networks
+  // List all project networks
   rpc List(NetworkServiceListRequest) returns (NetworkServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // ListBaseNetworks all unscoped networks
+  rpc ListBaseNetworks(NetworkServiceListBaseNetworksRequest) returns (NetworkServiceListBaseNetworksResponse) {
+    option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
   // Delete a network
@@ -145,6 +150,18 @@ message NetworkServiceListRequest {
 
 // NetworkServiceListResponse
 message NetworkServiceListResponse {
+  // Networks are the requested networks
+  repeated Network networks = 1;
+}
+
+// NetworkServiceListRequest
+message NetworkServiceListBaseNetworksRequest {
+  // Query which specifies which networks to return
+  NetworkQuery query = 2;
+}
+
+// NetworkServiceListResponse
+message NetworkServiceListBaseNetworksResponse {
   // Networks are the requested networks
   repeated Network networks = 1;
 }

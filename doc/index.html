@@ -656,6 +656,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.NetworkServiceListBaseNetworksRequest"><span class="badge">M</span>NetworkServiceListBaseNetworksRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.NetworkServiceListBaseNetworksResponse"><span class="badge">M</span>NetworkServiceListBaseNetworksResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.NetworkServiceListRequest"><span class="badge">M</span>NetworkServiceListRequest</a>
                 </li>
               
@@ -4910,6 +4918,54 @@ TODO is this really required here </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.NetworkServiceListBaseNetworksRequest">NetworkServiceListBaseNetworksRequest</h3>
+        <p>NetworkServiceListRequest</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.NetworkQuery">NetworkQuery</a></td>
+                  <td></td>
+                  <td><p>Query which specifies which networks to return </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.NetworkServiceListBaseNetworksResponse">NetworkServiceListBaseNetworksResponse</h3>
+        <p>NetworkServiceListResponse</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>networks</td>
+                  <td><a href="#metalstack.api.v2.Network">Network</a></td>
+                  <td>repeated</td>
+                  <td><p>Networks are the requested networks </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.NetworkServiceListRequest">NetworkServiceListRequest</h3>
         <p>NetworkServiceListRequest</p>
 
@@ -5127,7 +5183,14 @@ FIXME which fields should be updateable ? </p></td>
                 <td>List</td>
                 <td><a href="#metalstack.api.v2.NetworkServiceListRequest">NetworkServiceListRequest</a></td>
                 <td><a href="#metalstack.api.v2.NetworkServiceListResponse">NetworkServiceListResponse</a></td>
-                <td><p>List all networks</p></td>
+                <td><p>List all project networks</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListBaseNetworks</td>
+                <td><a href="#metalstack.api.v2.NetworkServiceListBaseNetworksRequest">NetworkServiceListBaseNetworksRequest</a></td>
+                <td><a href="#metalstack.api.v2.NetworkServiceListBaseNetworksResponse">NetworkServiceListBaseNetworksResponse</a></td>
+                <td><p>ListBaseNetworks all unscoped networks</p></td>
               </tr>
             
               <tr>
