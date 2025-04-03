@@ -41,6 +41,9 @@ const (
 	NetworkServiceUpdateProcedure = "/metalstack.api.v2.NetworkService/Update"
 	// NetworkServiceListProcedure is the fully-qualified name of the NetworkService's List RPC.
 	NetworkServiceListProcedure = "/metalstack.api.v2.NetworkService/List"
+	// NetworkServiceListBaseNetworksProcedure is the fully-qualified name of the NetworkService's
+	// ListBaseNetworks RPC.
+	NetworkServiceListBaseNetworksProcedure = "/metalstack.api.v2.NetworkService/ListBaseNetworks"
 	// NetworkServiceDeleteProcedure is the fully-qualified name of the NetworkService's Delete RPC.
 	NetworkServiceDeleteProcedure = "/metalstack.api.v2.NetworkService/Delete"
 )
@@ -53,8 +56,10 @@ type NetworkServiceClient interface {
 	Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error)
 	// Update a network
 	Update(context.Context, *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error)
-	// List all networks
+	// List all project networks
 	List(context.Context, *connect.Request[v2.NetworkServiceListRequest]) (*connect.Response[v2.NetworkServiceListResponse], error)
+	// ListBaseNetworks all unscoped networks
+	ListBaseNetworks(context.Context, *connect.Request[v2.NetworkServiceListBaseNetworksRequest]) (*connect.Response[v2.NetworkServiceListBaseNetworksResponse], error)
 	// Delete a network
 	Delete(context.Context, *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error)
 }
@@ -94,6 +99,12 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(networkServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
+		listBaseNetworks: connect.NewClient[v2.NetworkServiceListBaseNetworksRequest, v2.NetworkServiceListBaseNetworksResponse](
+			httpClient,
+			baseURL+NetworkServiceListBaseNetworksProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("ListBaseNetworks")),
+			connect.WithClientOptions(opts...),
+		),
 		delete: connect.NewClient[v2.NetworkServiceDeleteRequest, v2.NetworkServiceDeleteResponse](
 			httpClient,
 			baseURL+NetworkServiceDeleteProcedure,
@@ -105,11 +116,12 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // networkServiceClient implements NetworkServiceClient.
 type networkServiceClient struct {
-	get    *connect.Client[v2.NetworkServiceGetRequest, v2.NetworkServiceGetResponse]
-	create *connect.Client[v2.NetworkServiceCreateRequest, v2.NetworkServiceCreateResponse]
-	update *connect.Client[v2.NetworkServiceUpdateRequest, v2.NetworkServiceUpdateResponse]
-	list   *connect.Client[v2.NetworkServiceListRequest, v2.NetworkServiceListResponse]
-	delete *connect.Client[v2.NetworkServiceDeleteRequest, v2.NetworkServiceDeleteResponse]
+	get              *connect.Client[v2.NetworkServiceGetRequest, v2.NetworkServiceGetResponse]
+	create           *connect.Client[v2.NetworkServiceCreateRequest, v2.NetworkServiceCreateResponse]
+	update           *connect.Client[v2.NetworkServiceUpdateRequest, v2.NetworkServiceUpdateResponse]
+	list             *connect.Client[v2.NetworkServiceListRequest, v2.NetworkServiceListResponse]
+	listBaseNetworks *connect.Client[v2.NetworkServiceListBaseNetworksRequest, v2.NetworkServiceListBaseNetworksResponse]
+	delete           *connect.Client[v2.NetworkServiceDeleteRequest, v2.NetworkServiceDeleteResponse]
 }
 
 // Get calls metalstack.api.v2.NetworkService.Get.
@@ -132,6 +144,11 @@ func (c *networkServiceClient) List(ctx context.Context, req *connect.Request[v2
 	return c.list.CallUnary(ctx, req)
 }
 
+// ListBaseNetworks calls metalstack.api.v2.NetworkService.ListBaseNetworks.
+func (c *networkServiceClient) ListBaseNetworks(ctx context.Context, req *connect.Request[v2.NetworkServiceListBaseNetworksRequest]) (*connect.Response[v2.NetworkServiceListBaseNetworksResponse], error) {
+	return c.listBaseNetworks.CallUnary(ctx, req)
+}
+
 // Delete calls metalstack.api.v2.NetworkService.Delete.
 func (c *networkServiceClient) Delete(ctx context.Context, req *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error) {
 	return c.delete.CallUnary(ctx, req)
@@ -145,8 +162,10 @@ type NetworkServiceHandler interface {
 	Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error)
 	// Update a network
 	Update(context.Context, *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error)
-	// List all networks
+	// List all project networks
 	List(context.Context, *connect.Request[v2.NetworkServiceListRequest]) (*connect.Response[v2.NetworkServiceListResponse], error)
+	// ListBaseNetworks all unscoped networks
+	ListBaseNetworks(context.Context, *connect.Request[v2.NetworkServiceListBaseNetworksRequest]) (*connect.Response[v2.NetworkServiceListBaseNetworksResponse], error)
 	// Delete a network
 	Delete(context.Context, *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error)
 }
@@ -182,6 +201,12 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 		connect.WithSchema(networkServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
+	networkServiceListBaseNetworksHandler := connect.NewUnaryHandler(
+		NetworkServiceListBaseNetworksProcedure,
+		svc.ListBaseNetworks,
+		connect.WithSchema(networkServiceMethods.ByName("ListBaseNetworks")),
+		connect.WithHandlerOptions(opts...),
+	)
 	networkServiceDeleteHandler := connect.NewUnaryHandler(
 		NetworkServiceDeleteProcedure,
 		svc.Delete,
@@ -198,6 +223,8 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 			networkServiceUpdateHandler.ServeHTTP(w, r)
 		case NetworkServiceListProcedure:
 			networkServiceListHandler.ServeHTTP(w, r)
+		case NetworkServiceListBaseNetworksProcedure:
+			networkServiceListBaseNetworksHandler.ServeHTTP(w, r)
 		case NetworkServiceDeleteProcedure:
 			networkServiceDeleteHandler.ServeHTTP(w, r)
 		default:
@@ -223,6 +250,10 @@ func (UnimplementedNetworkServiceHandler) Update(context.Context, *connect.Reque
 
 func (UnimplementedNetworkServiceHandler) List(context.Context, *connect.Request[v2.NetworkServiceListRequest]) (*connect.Response[v2.NetworkServiceListResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.NetworkService.List is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) ListBaseNetworks(context.Context, *connect.Request[v2.NetworkServiceListBaseNetworksRequest]) (*connect.Response[v2.NetworkServiceListBaseNetworksResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.NetworkService.ListBaseNetworks is not implemented"))
 }
 
 func (UnimplementedNetworkServiceHandler) Delete(context.Context, *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error) {
