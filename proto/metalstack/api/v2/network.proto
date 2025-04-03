@@ -96,7 +96,7 @@ message NetworkServiceCreateRequest {
   // TODO is this really required here
   repeated string destination_prefixes = 9;
   // Options of this network
-  metalstack.api.v2.NetworkOptions options = 10;
+  NetworkOptions options = 10;
 }
 
 // NetworkServiceCreateResponse
@@ -305,6 +305,7 @@ message NetworkOptions {
   // Underlay indicates that this network is a underlay network
   bool underlay = 4;
   // VrfShared indicates if this network shares the vrf id with other networks
+  // FIXME should only possible in the create request and not in the response, see: https://github.com/metal-stack/metal-api/issues/73
   bool vrf_shared = 5;
 }
 

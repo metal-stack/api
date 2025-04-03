@@ -947,6 +947,7 @@ type NetworkOptions struct {
 	// Underlay indicates that this network is a underlay network
 	Underlay bool `protobuf:"varint,4,opt,name=underlay,proto3" json:"underlay,omitempty"`
 	// VrfShared indicates if this network shares the vrf id with other networks
+	// FIXME should only possible in the create request and not in the response, see: https://github.com/metal-stack/metal-api/issues/73
 	VrfShared     bool `protobuf:"varint,5,opt,name=vrf_shared,json=vrfShared,proto3" json:"vrf_shared,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
