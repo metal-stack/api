@@ -37,10 +37,8 @@ type Project struct {
 	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
 	// Tenant this project belongs to
 	Tenant string `protobuf:"bytes,5,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// IsDefaultProject is true if this is the default project of the tenant.
-	IsDefaultProject bool `protobuf:"varint,6,opt,name=is_default_project,json=isDefaultProject,proto3" json:"is_default_project,omitempty"`
 	// AvatarUrl of the Project
-	AvatarUrl     *string `protobuf:"bytes,7,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
+	AvatarUrl     *string `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -108,13 +106,6 @@ func (x *Project) GetTenant() string {
 		return x.Tenant
 	}
 	return ""
-}
-
-func (x *Project) GetIsDefaultProject() bool {
-	if x != nil {
-		return x.IsDefaultProject
-	}
-	return false
 }
 
 func (x *Project) GetAvatarUrl() string {
@@ -1536,16 +1527,15 @@ var File_metalstack_api_v2_project_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/project.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\"\xf9\x01\n" +
+	"\x1fmetalstack/api/v2/project.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\"\xcb\x01\n" +
 	"\aProject\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x12\x16\n" +
-	"\x06tenant\x18\x05 \x01(\tR\x06tenant\x12,\n" +
-	"\x12is_default_project\x18\x06 \x01(\bR\x10isDefaultProject\x12\"\n" +
+	"\x06tenant\x18\x05 \x01(\tR\x06tenant\x12\"\n" +
 	"\n" +
-	"avatar_url\x18\a \x01(\tH\x00R\tavatarUrl\x88\x01\x01B\r\n" +
+	"avatar_url\x18\x06 \x01(\tH\x00R\tavatarUrl\x88\x01\x01B\r\n" +
 	"\v_avatar_url\"\xcb\x01\n" +
 	"\rProjectMember\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12<\n" +

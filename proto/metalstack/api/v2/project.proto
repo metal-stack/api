@@ -87,10 +87,8 @@ message Project {
   string description = 4;
   // Tenant this project belongs to
   string tenant = 5;
-  // IsDefaultProject is true if this is the default project of the tenant.
-  bool is_default_project = 6;
   // AvatarUrl of the Project
-  optional string avatar_url = 7;
+  optional string avatar_url = 6;
 }
 
 // ProjectMember defines a user that participates at a project
