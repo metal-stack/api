@@ -265,7 +265,7 @@ type NetworkServiceCreateRequest struct {
 	// Parent NetworkId points to the id of the parent network if any
 	ParentNetworkId *string `protobuf:"bytes,6,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
 	// Bitlength per addressfamily
-	Length []*ChildPrefixLength `protobuf:"bytes,7,rep,name=length,proto3" json:"length,omitempty"`
+	Length *ChildPrefixLength `protobuf:"bytes,7,opt,name=length,proto3" json:"length,omitempty"`
 	// AddressFamily to create, defaults to the same as the parent
 	AddressFamily *IPAddressFamily `protobuf:"varint,8,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -344,7 +344,7 @@ func (x *NetworkServiceCreateRequest) GetParentNetworkId() string {
 	return ""
 }
 
-func (x *NetworkServiceCreateRequest) GetLength() []*ChildPrefixLength {
+func (x *NetworkServiceCreateRequest) GetLength() *ChildPrefixLength {
 	if x != nil {
 		return x.Length
 	}
@@ -1366,7 +1366,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12;\n" +
 	"\x11parent_network_id\x18\x06 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x0fparentNetworkId\x88\x01\x01\x12<\n" +
-	"\x06length\x18\a \x03(\v2$.metalstack.api.v2.ChildPrefixLengthR\x06length\x12X\n" +
+	"\x06length\x18\a \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x06length\x12X\n" +
 	"\x0eaddress_family\x18\b \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\x04R\raddressFamily\x88\x01\x01B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
