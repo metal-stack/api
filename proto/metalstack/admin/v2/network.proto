@@ -56,8 +56,10 @@ message NetworkServiceCreateRequest {
   }];
   // Project where this network belongs to
   optional string project = 5 [(buf.validate.field).string.uuid = true];
+  // Type of the network to create
+  metalstack.api.v2.NetworkType type = 6 [(buf.validate.field).enum.defined_only = true];
   // Labels on this network
-  optional metalstack.api.v2.Labels labels = 6;
+  optional metalstack.api.v2.Labels labels = 7;
   option (buf.validate.message).cel = {
     id: "prefixes"
     message: "given prefixes must be valid"
@@ -73,11 +75,13 @@ message NetworkServiceCreateRequest {
   // Destination Prefixes in this network
   repeated string destination_prefixes = 9;
   // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
-  repeated metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
-  // Options of this network
-  metalstack.api.v2.NetworkOptions options = 11;
+  metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
+  // Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request
+  metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
+  // NATType of this network
+  optional metalstack.api.v2.NATType nat_type = 12 [(buf.validate.field).enum.defined_only = true];
   // Vrf ID of this network
-  optional uint32 vrf = 12;
+  optional uint32 vrf = 13;
   // Parent NetworkId points to the id of the parent network if any
   optional string parent_network_id = 14 [(buf.validate.field).string = {
     min_len: 2
@@ -96,9 +100,53 @@ message NetworkServiceCreateRequest {
 
 // NetworkServiceUpdateRequest is the request payload for a network update request
 message NetworkServiceUpdateRequest {
-  // Network the network
-  metalstack.api.v2.Network network = 1;
-  // Force update
+  // Id of this network
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Name of this network
+  optional string name = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this network
+  optional string description = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Labels on this network
+  optional metalstack.api.v2.Labels labels = 7;
+
+  option (buf.validate.message).cel = {
+    id: "prefixes"
+    message: "given prefixes must be valid"
+    expression: "this.prefixes.all(m, m.isIpPrefix())"
+  };
+  // Prefixes in this network
+  repeated string prefixes = 8;
+  option (buf.validate.message).cel = {
+    id: "destination_prefixes"
+    message: "given destination_prefixes must be valid"
+    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
+  };
+  // Destination Prefixes in this network
+  repeated string destination_prefixes = 9;
+  // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+  optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
+  // Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request
+  optional metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
+  // NATType of this network
+  optional metalstack.api.v2.NATType nat_type = 13 [(buf.validate.field).enum.defined_only = true];
+  option (buf.validate.message).cel = {
+    id: "additional_announcable_cidrs"
+    message: "given additional_announcable_cidrs must be valid"
+    expression: "this.additional_announcable_cidrs.all(m, m.isIpPrefix())"
+  };
+  // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
+  repeated string additional_announcable_cidrs = 16;
+
+  // Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact.
   bool force = 2;
 }
 

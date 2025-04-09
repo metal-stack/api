@@ -6,7 +6,7 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/ip.proto";
 
-// NetworkService serves network address related functions
+// NetworkService serves network address related functions for end users, e.g. with project scope
 service NetworkService {
   // Get a network
   rpc Get(NetworkServiceGetRequest) returns (NetworkServiceGetResponse) {
@@ -15,7 +15,7 @@ service NetworkService {
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Create a network
+  // Create a child network from a super network.
   rpc Create(NetworkServiceCreateRequest) returns (NetworkServiceCreateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
@@ -80,7 +80,6 @@ message NetworkServiceCreateRequest {
     min_len: 2
     max_len: 128
   }];
-
   // Labels on this network
   Labels labels = 5;
   // Parent NetworkId points to the id of the parent network if any
@@ -92,16 +91,6 @@ message NetworkServiceCreateRequest {
   repeated ChildPrefixLength length = 7;
   // AddressFamily to create, defaults to the same as the parent
   optional IPAddressFamily address_family = 8 [(buf.validate.field).enum.defined_only = true];
-  option (buf.validate.message).cel = {
-    id: "destination_prefixes"
-    message: "given destination_prefixes must be valid"
-    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
-  };
-  // Destination Prefixes in this network
-  // TODO is this really required here
-  repeated string destination_prefixes = 9;
-  // Options of this network
-  NetworkOptions options = 10;
 }
 
 // NetworkServiceCreateResponse
@@ -130,8 +119,7 @@ message NetworkServiceUpdateRequest {
     max_len: 128
   }];
   // Labels on this network
-  Labels labels = 5;
-  // FIXME which fields should be updateable ?
+  optional Labels labels = 5;
 }
 
 // NetworkServiceUpdateResponse
@@ -224,13 +212,17 @@ message Network {
   // Destination Prefixes in this network
   repeated string destination_prefixes = 9;
   // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
-  repeated ChildPrefixLength default_child_prefix_length = 10;
-  // Options of this network
-  NetworkOptions options = 11;
+  ChildPrefixLength default_child_prefix_length = 10;
+  // Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request
+  ChildPrefixLength min_child_prefix_length = 11;
+  // Type of the network
+  optional NetworkType type = 12 [(buf.validate.field).enum.defined_only = true];
+  // NATType of this network
+  optional NATType nat_type = 13 [(buf.validate.field).enum.defined_only = true];
   // Vrf ID of this network
-  optional uint32 vrf = 12;
+  optional uint32 vrf = 14;
   // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 13 [(buf.validate.field).string = {
+  optional string parent_network_id = 15 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
@@ -240,9 +232,9 @@ message Network {
     expression: "this.additional_announcable_cidrs.all(m, m.isIpPrefix())"
   };
   // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-  repeated string additional_announcable_cidrs = 14;
+  repeated string additional_announcable_cidrs = 16;
   // Consumption of ips and prefixes in this networks
-  NetworkConsumption consumption = 15;
+  NetworkConsumption consumption = 17;
 }
 
 // NetworkQuery defines which networks to query
@@ -292,64 +284,76 @@ message NetworkQuery {
   }];
   // Addressfamily to query
   optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
+  // Typ of the network to query for
+  optional NetworkType type = 11 [(buf.validate.field).enum.defined_only = true];
+  // NATType configured
+  optional NATType nat_type = 12 [(buf.validate.field).enum.defined_only = true];
   // Labels on this network
-  Labels labels = 11;
-  // NetworkOptions to query for
-  message Options {
-    // Shared indicates if this network could be shared between projects
-    optional bool shared = 1;
-    // Nat defines that outgoing traffic is natted
-    optional bool nat = 2;
-    // PrivateSuper indicates that this network serves a super network for project networks
-    optional bool private_super = 3;
-    // Underlay indicates that this network is a underlay network
-    optional bool underlay = 4;
-    // VrfShared indicates if this network shares the vrf id with other networks
-    optional bool vrf_shared = 5;
-  }
-  // Options to query for
-  Options options = 12;
+  Labels labels = 13;
 }
 
-// NetworkOptions
-message NetworkOptions {
-  // Shared indicates if this network could be shared between projects
-  bool shared = 1;
-  // Nat defines that outgoing traffic is natted
-  bool nat = 2;
-  // PrivateSuper indicates that this network serves a super network for project networks
-  bool private_super = 3;
-  // Underlay indicates that this network is a underlay network
-  bool underlay = 4;
-  // VrfShared indicates if this network shares the vrf id with other networks
-  // FIXME should only possible in the create request and not in the response, see: https://github.com/metal-stack/metal-api/issues/73
-  bool vrf_shared = 5;
+// NATType defines how and if outgoing traffic is translated
+enum NATType {
+  // NAT_TYPE_UNSPECIFIED indicates a unspecified nat type
+  NAT_TYPE_UNSPECIFIED = 0;
+  // NAT_TYPE_NONE indicates that no nat is configured
+  NAT_TYPE_NONE = 1 [(enum_string_value) = "none"];
+  // NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip
+  NAT_TYPE_IPV4_MASQUERADE = 2 [(enum_string_value) = "ipv4-masquerade"];
+}
+
+// NetworkType indicates the purpose of the network, it cannot be changed after creation
+enum NetworkType {
+  // NETWORK_TYPE_UNSPECIFIED indicates a unknown network type
+  NETWORK_TYPE_UNSPECIFIED = 0;
+  // NETWORK_TYPE_SHARED indicates a shared network where multiple projects can allocate ips, it offers connectivity to external networks
+  NETWORK_TYPE_SHARED = 1 [(enum_string_value) = "shared"];
+  // NETWORK_TYPE_UNDERLAY indicates a underlay network
+  NETWORK_TYPE_UNDERLAY = 2 [(enum_string_value) = "underlay"];
+
+  // NETWORK_TYPE_SUPER_VRF_SHARED indicates a super network which is only used to create networks which share the same vrf
+  NETWORK_TYPE_SUPER_VRF_SHARED = 3 [(enum_string_value) = "super-vrf-shared"];
+  // NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks
+  NETWORK_TYPE_VRF_SHARED = 4 [(enum_string_value) = "vrf-shared"];
+
+  // NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks from
+  NETWORK_TYPE_PRIVATE_SUPER = 5 [(enum_string_value) = "private-super"];
+  // NETWORK_TYPE_PRIVATE indicates a private network of a project. Connectivity to external networks is not possible.
+  NETWORK_TYPE_PRIVATE = 6 [(enum_string_value) = "private"];
+  // NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects. Connectivity to external networks is not possible.
+  NETWORK_TYPE_PRIVATE_SHARED = 7 [(enum_string_value) = "private-shared"];
 }
 
 // ChildPrefixLength
 message ChildPrefixLength {
-  // AddressFamily of this network
-  IPAddressFamily address_family = 1 [(buf.validate.field).enum.defined_only = true];
-  // Bit Length of this network in this addressfamily
-  uint32 length = 2;
+  // IPv4 bit Length of this network in this addressfamily
+  optional uint32 ipv4 = 1 [(buf.validate.field).uint32 = {
+    gt: 0
+    lte: 32
+  }];
+  // IPv6 bit Length of this network in this addressfamily
+  optional uint32 ipv6 = 2 [(buf.validate.field).uint32 = {
+    gt: 0
+    lte: 128
+  }];
 }
 
-// NetworkConsumption
+// NetworkConsumption contains ip and prefix usage by addressfamily
 message NetworkConsumption {
-  // ip and prefix consumption in the ipv4 addressfamily
+  // IPv4 network usage
   NetworkUsage ipv4 = 1;
-  // ip and prefix consumption in the ipv6 addressfamily
+  // IPv6 network usage
   NetworkUsage ipv6 = 2;
 }
 
 // NetworkUsage reports core metrics about available and used IPs or Prefixes in a Network.
 message NetworkUsage {
   // the total available IPs
-  uint64 available_ips = 1;
+  uint64 available_ips = 2;
   // the total used IPs
-  uint64 used_ips = 2;
+  uint64 used_ips = 3;
   // the total available 2 bit Prefixes
-  uint64 available_prefixes = 3;
+  uint64 available_prefixes = 4;
   // the total used Prefixes
-  uint64 used_prefixes = 4;
+  uint64 used_prefixes = 5;
 }

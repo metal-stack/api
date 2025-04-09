@@ -620,15 +620,7 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.NetworkOptions"><span class="badge">M</span>NetworkOptions</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.NetworkQuery"><span class="badge">M</span>NetworkQuery</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.NetworkQuery.Options"><span class="badge">M</span>NetworkQuery.Options</a>
                 </li>
               
                 <li>
@@ -683,6 +675,14 @@
                   <a href="#metalstack.api.v2.NetworkUsage"><span class="badge">M</span>NetworkUsage</a>
                 </li>
               
+              
+                <li>
+                  <a href="#metalstack.api.v2.NATType"><span class="badge">E</span>NATType</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.NetworkType"><span class="badge">E</span>NetworkType</a>
+                </li>
               
               
               
@@ -4324,17 +4324,17 @@ should contain os and major.minor then latest patch version of this os is return
             <tbody>
               
                 <tr>
-                  <td>address_family</td>
-                  <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
-                  <td></td>
-                  <td><p>AddressFamily of this network </p></td>
+                  <td>ipv4</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td>optional</td>
+                  <td><p>IPv4 bit Length of this network in this addressfamily </p></td>
                 </tr>
               
                 <tr>
-                  <td>length</td>
+                  <td>ipv6</td>
                   <td><a href="#uint32">uint32</a></td>
-                  <td></td>
-                  <td><p>Bit Length of this network in this addressfamily </p></td>
+                  <td>optional</td>
+                  <td><p>IPv6 bit Length of this network in this addressfamily </p></td>
                 </tr>
               
             </tbody>
@@ -4413,15 +4413,29 @@ should contain os and major.minor then latest patch version of this os is return
                 <tr>
                   <td>default_child_prefix_length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">ChildPrefixLength</a></td>
-                  <td>repeated</td>
+                  <td></td>
                   <td><p>Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request </p></td>
                 </tr>
               
                 <tr>
-                  <td>options</td>
-                  <td><a href="#metalstack.api.v2.NetworkOptions">NetworkOptions</a></td>
+                  <td>min_child_prefix_length</td>
+                  <td><a href="#metalstack.api.v2.ChildPrefixLength">ChildPrefixLength</a></td>
                   <td></td>
-                  <td><p>Options of this network </p></td>
+                  <td><p>Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#metalstack.api.v2.NetworkType">NetworkType</a></td>
+                  <td>optional</td>
+                  <td><p>Type of the network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nat_type</td>
+                  <td><a href="#metalstack.api.v2.NATType">NATType</a></td>
+                  <td>optional</td>
+                  <td><p>NATType of this network </p></td>
                 </tr>
               
                 <tr>
@@ -4460,7 +4474,7 @@ should contain os and major.minor then latest patch version of this os is return
         
       
         <h3 id="metalstack.api.v2.NetworkConsumption">NetworkConsumption</h3>
-        <p>NetworkConsumption</p>
+        <p>NetworkConsumption contains ip and prefix usage by addressfamily</p>
 
         
           <table class="field-table">
@@ -4473,67 +4487,14 @@ should contain os and major.minor then latest patch version of this os is return
                   <td>ipv4</td>
                   <td><a href="#metalstack.api.v2.NetworkUsage">NetworkUsage</a></td>
                   <td></td>
-                  <td><p>ip and prefix consumption in the ipv4 addressfamily </p></td>
+                  <td><p>IPv4 network usage </p></td>
                 </tr>
               
                 <tr>
                   <td>ipv6</td>
                   <td><a href="#metalstack.api.v2.NetworkUsage">NetworkUsage</a></td>
                   <td></td>
-                  <td><p>ip and prefix consumption in the ipv6 addressfamily </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.NetworkOptions">NetworkOptions</h3>
-        <p>NetworkOptions</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>shared</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Shared indicates if this network could be shared between projects </p></td>
-                </tr>
-              
-                <tr>
-                  <td>nat</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Nat defines that outgoing traffic is natted </p></td>
-                </tr>
-              
-                <tr>
-                  <td>private_super</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>PrivateSuper indicates that this network serves a super network for project networks </p></td>
-                </tr>
-              
-                <tr>
-                  <td>underlay</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Underlay indicates that this network is a underlay network </p></td>
-                </tr>
-              
-                <tr>
-                  <td>vrf_shared</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>VrfShared indicates if this network shares the vrf id with other networks
-FIXME should only possible in the create request and not in the response, see: https://github.com/metal-stack/metal-api/issues/73 </p></td>
+                  <td><p>IPv6 network usage </p></td>
                 </tr>
               
             </tbody>
@@ -4624,69 +4585,24 @@ FIXME should only possible in the create request and not in the response, see: h
                 </tr>
               
                 <tr>
+                  <td>type</td>
+                  <td><a href="#metalstack.api.v2.NetworkType">NetworkType</a></td>
+                  <td>optional</td>
+                  <td><p>Typ of the network to query for </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nat_type</td>
+                  <td><a href="#metalstack.api.v2.NATType">NATType</a></td>
+                  <td>optional</td>
+                  <td><p>NATType configured </p></td>
+                </tr>
+              
+                <tr>
                   <td>labels</td>
                   <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
                   <td></td>
                   <td><p>Labels on this network </p></td>
-                </tr>
-              
-                <tr>
-                  <td>options</td>
-                  <td><a href="#metalstack.api.v2.NetworkQuery.Options">NetworkQuery.Options</a></td>
-                  <td></td>
-                  <td><p>Options to query for </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.NetworkQuery.Options">NetworkQuery.Options</h3>
-        <p>NetworkOptions to query for</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>shared</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td>optional</td>
-                  <td><p>Shared indicates if this network could be shared between projects </p></td>
-                </tr>
-              
-                <tr>
-                  <td>nat</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td>optional</td>
-                  <td><p>Nat defines that outgoing traffic is natted </p></td>
-                </tr>
-              
-                <tr>
-                  <td>private_super</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td>optional</td>
-                  <td><p>PrivateSuper indicates that this network serves a super network for project networks </p></td>
-                </tr>
-              
-                <tr>
-                  <td>underlay</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td>optional</td>
-                  <td><p>Underlay indicates that this network is a underlay network </p></td>
-                </tr>
-              
-                <tr>
-                  <td>vrf_shared</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td>optional</td>
-                  <td><p>VrfShared indicates if this network shares the vrf id with other networks </p></td>
                 </tr>
               
             </tbody>
@@ -4760,21 +4676,6 @@ FIXME should only possible in the create request and not in the response, see: h
                   <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
                   <td>optional</td>
                   <td><p>AddressFamily to create, defaults to the same as the parent </p></td>
-                </tr>
-              
-                <tr>
-                  <td>destination_prefixes</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Destination Prefixes in this network
-TODO is this really required here </p></td>
-                </tr>
-              
-                <tr>
-                  <td>options</td>
-                  <td><a href="#metalstack.api.v2.NetworkOptions">NetworkOptions</a></td>
-                  <td></td>
-                  <td><p>Options of this network </p></td>
                 </tr>
               
             </tbody>
@@ -5062,10 +4963,8 @@ TODO is this really required here </p></td>
                 <tr>
                   <td>labels</td>
                   <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
-                  <td></td>
-                  <td><p>Labels on this network
-
-FIXME which fields should be updateable ? </p></td>
+                  <td>optional</td>
+                  <td><p>Labels on this network </p></td>
                 </tr>
               
             </tbody>
@@ -5146,12 +5045,100 @@ FIXME which fields should be updateable ? </p></td>
       
 
       
+        <h3 id="metalstack.api.v2.NATType">NATType</h3>
+        <p>NATType defines how and if outgoing traffic is translated</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>NAT_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>NAT_TYPE_UNSPECIFIED indicates a unspecified nat type</p></td>
+              </tr>
+            
+              <tr>
+                <td>NAT_TYPE_NONE</td>
+                <td>1</td>
+                <td><p>NAT_TYPE_NONE indicates that no nat is configured</p></td>
+              </tr>
+            
+              <tr>
+                <td>NAT_TYPE_IPV4_MASQUERADE</td>
+                <td>2</td>
+                <td><p>NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.NetworkType">NetworkType</h3>
+        <p>NetworkType indicates the purpose of the network, it cannot be changed after creation</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>NETWORK_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>NETWORK_TYPE_UNSPECIFIED indicates a unknown network type</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_TYPE_SHARED</td>
+                <td>1</td>
+                <td><p>NETWORK_TYPE_SHARED indicates a shared network where multiple projects can allocate ips, it offers connectivity to external networks</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_TYPE_UNDERLAY</td>
+                <td>2</td>
+                <td><p>NETWORK_TYPE_UNDERLAY indicates a underlay network</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_TYPE_SUPER_VRF_SHARED</td>
+                <td>3</td>
+                <td><p>NETWORK_TYPE_SUPER_VRF_SHARED indicates a super network which is only used to create networks which share the same vrf</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_TYPE_VRF_SHARED</td>
+                <td>4</td>
+                <td><p>NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_TYPE_PRIVATE_SUPER</td>
+                <td>5</td>
+                <td><p>NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks from</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_TYPE_PRIVATE</td>
+                <td>6</td>
+                <td><p>NETWORK_TYPE_PRIVATE indicates a private network of a project. Connectivity to external networks is not possible.</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_TYPE_PRIVATE_SHARED</td>
+                <td>7</td>
+                <td><p>NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects. Connectivity to external networks is not possible.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
 
       
 
       
         <h3 id="metalstack.api.v2.NetworkService">NetworkService</h3>
-        <p>NetworkService serves network address related functions</p>
+        <p>NetworkService serves network address related functions for end users, e.g. with project scope</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -5169,7 +5156,7 @@ FIXME which fields should be updateable ? </p></td>
                 <td>Create</td>
                 <td><a href="#metalstack.api.v2.NetworkServiceCreateRequest">NetworkServiceCreateRequest</a></td>
                 <td><a href="#metalstack.api.v2.NetworkServiceCreateResponse">NetworkServiceCreateResponse</a></td>
-                <td><p>Create a network</p></td>
+                <td><p>Create a child network from a super network.</p></td>
               </tr>
             
               <tr>
@@ -5258,6 +5245,13 @@ FIXME which fields should be updateable ? </p></td>
                 </tr>
               
                 <tr>
+                  <td>type</td>
+                  <td><a href="#metalstack.api.v2.NetworkType">metalstack.api.v2.NetworkType</a></td>
+                  <td></td>
+                  <td><p>Type of the network to create </p></td>
+                </tr>
+              
+                <tr>
                   <td>labels</td>
                   <td><a href="#metalstack.api.v2.Labels">metalstack.api.v2.Labels</a></td>
                   <td>optional</td>
@@ -5281,15 +5275,22 @@ FIXME which fields should be updateable ? </p></td>
                 <tr>
                   <td>default_child_prefix_length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">metalstack.api.v2.ChildPrefixLength</a></td>
-                  <td>repeated</td>
+                  <td></td>
                   <td><p>Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request </p></td>
                 </tr>
               
                 <tr>
-                  <td>options</td>
-                  <td><a href="#metalstack.api.v2.NetworkOptions">metalstack.api.v2.NetworkOptions</a></td>
+                  <td>min_child_prefix_length</td>
+                  <td><a href="#metalstack.api.v2.ChildPrefixLength">metalstack.api.v2.ChildPrefixLength</a></td>
                   <td></td>
-                  <td><p>Options of this network </p></td>
+                  <td><p>Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nat_type</td>
+                  <td><a href="#metalstack.api.v2.NATType">metalstack.api.v2.NATType</a></td>
+                  <td>optional</td>
+                  <td><p>NATType of this network </p></td>
                 </tr>
               
                 <tr>
@@ -5458,17 +5459,80 @@ FIXME which fields should be updateable ? </p></td>
             <tbody>
               
                 <tr>
-                  <td>network</td>
-                  <td><a href="#metalstack.api.v2.Network">metalstack.api.v2.Network</a></td>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Network the network </p></td>
+                  <td><p>Id of this network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">metalstack.api.v2.Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels on this network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>prefixes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Prefixes in this network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>destination_prefixes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Destination Prefixes in this network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>default_child_prefix_length</td>
+                  <td><a href="#metalstack.api.v2.ChildPrefixLength">metalstack.api.v2.ChildPrefixLength</a></td>
+                  <td>optional</td>
+                  <td><p>Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>min_child_prefix_length</td>
+                  <td><a href="#metalstack.api.v2.ChildPrefixLength">metalstack.api.v2.ChildPrefixLength</a></td>
+                  <td>optional</td>
+                  <td><p>Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nat_type</td>
+                  <td><a href="#metalstack.api.v2.NATType">metalstack.api.v2.NATType</a></td>
+                  <td>optional</td>
+                  <td><p>NATType of this network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>additional_announcable_cidrs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced </p></td>
                 </tr>
               
                 <tr>
                   <td>force</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>Force update </p></td>
+                  <td><p>Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact. </p></td>
                 </tr>
               
             </tbody>

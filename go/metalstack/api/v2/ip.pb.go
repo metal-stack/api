@@ -1061,15 +1061,16 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x15IPServiceListResponse\x12'\n" +
 	"\x03ips\x18\x01 \x03(\v2\x15.metalstack.api.v2.IPR\x03ips\"@\n" +
 	"\x17IPServiceDeleteResponse\x12%\n" +
-	"\x02ip\x18\x01 \x01(\v2\x15.metalstack.api.v2.IPR\x02ip*L\n" +
+	"\x02ip\x18\x01 \x01(\v2\x15.metalstack.api.v2.IPR\x02ip*g\n" +
 	"\x06IPType\x12\x17\n" +
-	"\x13IP_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
-	"\x11IP_TYPE_EPHEMERAL\x10\x01\x12\x12\n" +
-	"\x0eIP_TYPE_STATIC\x10\x02*h\n" +
+	"\x13IP_TYPE_UNSPECIFIED\x10\x00\x12$\n" +
+	"\x11IP_TYPE_EPHEMERAL\x10\x01\x1a\r\x82\xb2\x19\tephemeral\x12\x1e\n" +
+	"\x0eIP_TYPE_STATIC\x10\x02\x1a\n" +
+	"\x82\xb2\x19\x06static*|\n" +
 	"\x0fIPAddressFamily\x12!\n" +
-	"\x1dIP_ADDRESS_FAMILY_UNSPECIFIED\x10\x00\x12\x18\n" +
-	"\x14IP_ADDRESS_FAMILY_V4\x10\x01\x12\x18\n" +
-	"\x14IP_ADDRESS_FAMILY_V6\x10\x022\x93\x04\n" +
+	"\x1dIP_ADDRESS_FAMILY_UNSPECIFIED\x10\x00\x12\"\n" +
+	"\x14IP_ADDRESS_FAMILY_V4\x10\x01\x1a\b\x82\xb2\x19\x04ipv4\x12\"\n" +
+	"\x14IP_ADDRESS_FAMILY_V6\x10\x02\x1a\b\x82\xb2\x19\x04ipv62\x93\x04\n" +
 	"\tIPService\x12c\n" +
 	"\x03Get\x12&.metalstack.api.v2.IPServiceGetRequest\x1a'.metalstack.api.v2.IPServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12g\n" +
 	"\x06Create\x12).metalstack.api.v2.IPServiceCreateRequest\x1a*.metalstack.api.v2.IPServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12g\n" +

@@ -19,7 +19,7 @@ func TestValidateNetwork(t *testing.T) {
 			name: "Valid NetworkCreateRequest minimal config",
 			msg: &adminv2.NetworkServiceCreateRequest{
 				Id:       proto.String("internet"),
-				Options:  &apiv2.NetworkOptions{Shared: true},
+				NatType:  apiv2.NATType_NAT_TYPE_IPV4_MASQUERADE.Enum(),
 				Prefixes: []string{"1.2.0.0/16"},
 			},
 			wantErr: false,
@@ -28,7 +28,7 @@ func TestValidateNetwork(t *testing.T) {
 			name: "InValid NetworkCreateRequest prefixes malformed",
 			msg: &adminv2.NetworkServiceCreateRequest{
 				Id:                  proto.String("internet"),
-				Options:             &apiv2.NetworkOptions{Shared: true},
+				NatType:             apiv2.NATType_NAT_TYPE_IPV4_MASQUERADE.Enum(),
 				Prefixes:            []string{"1.2.3.4.5/99"},
 				DestinationPrefixes: []string{"0.0.0.0.0/0"},
 			},

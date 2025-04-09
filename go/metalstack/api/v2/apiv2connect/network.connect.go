@@ -52,7 +52,7 @@ const (
 type NetworkServiceClient interface {
 	// Get a network
 	Get(context.Context, *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error)
-	// Create a network
+	// Create a child network from a super network.
 	Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error)
 	// Update a network
 	Update(context.Context, *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error)
@@ -158,7 +158,7 @@ func (c *networkServiceClient) Delete(ctx context.Context, req *connect.Request[
 type NetworkServiceHandler interface {
 	// Get a network
 	Get(context.Context, *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error)
-	// Create a network
+	// Create a child network from a super network.
 	Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error)
 	// Update a network
 	Update(context.Context, *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error)
