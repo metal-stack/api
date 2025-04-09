@@ -1030,7 +1030,7 @@ type NetworkQuery struct {
 	ParentNetworkId *string `protobuf:"bytes,9,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
 	// Addressfamily to query
 	AddressFamily *IPAddressFamily `protobuf:"varint,10,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
-	// Typ of the network to query for
+	// Type of the network to query for
 	Type *NetworkType `protobuf:"varint,11,opt,name=type,proto3,enum=metalstack.api.v2.NetworkType,oneof" json:"type,omitempty"`
 	// NATType configured
 	NatType *NATType `protobuf:"varint,12,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`

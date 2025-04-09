@@ -284,7 +284,7 @@ message NetworkQuery {
   }];
   // Addressfamily to query
   optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
-  // Typ of the network to query for
+  // Type of the network to query for
   optional NetworkType type = 11 [(buf.validate.field).enum.defined_only = true];
   // NATType configured
   optional NATType nat_type = 12 [(buf.validate.field).enum.defined_only = true];
