@@ -89,12 +89,16 @@ const (
 	NetworkType_NETWORK_TYPE_SUPER_VRF_SHARED NetworkType = 3
 	// NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks
 	NetworkType_NETWORK_TYPE_VRF_SHARED NetworkType = 4
-	// NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks from
+	// NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks
 	NetworkType_NETWORK_TYPE_PRIVATE_SUPER NetworkType = 5
+	// NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks.
+	// All private networks from the same project have distinct prefixes.
+	// Prefixes from different projects will have distinct prefixes by project only.
+	NetworkType_NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED NetworkType = 6
 	// NETWORK_TYPE_PRIVATE indicates a private network of a project. Connectivity to external networks is not possible.
-	NetworkType_NETWORK_TYPE_PRIVATE NetworkType = 6
+	NetworkType_NETWORK_TYPE_PRIVATE NetworkType = 7
 	// NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects. Connectivity to external networks is not possible.
-	NetworkType_NETWORK_TYPE_PRIVATE_SHARED NetworkType = 7
+	NetworkType_NETWORK_TYPE_PRIVATE_SHARED NetworkType = 8
 )
 
 // Enum value maps for NetworkType.
@@ -106,18 +110,20 @@ var (
 		3: "NETWORK_TYPE_SUPER_VRF_SHARED",
 		4: "NETWORK_TYPE_VRF_SHARED",
 		5: "NETWORK_TYPE_PRIVATE_SUPER",
-		6: "NETWORK_TYPE_PRIVATE",
-		7: "NETWORK_TYPE_PRIVATE_SHARED",
+		6: "NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED",
+		7: "NETWORK_TYPE_PRIVATE",
+		8: "NETWORK_TYPE_PRIVATE_SHARED",
 	}
 	NetworkType_value = map[string]int32{
-		"NETWORK_TYPE_UNSPECIFIED":      0,
-		"NETWORK_TYPE_SHARED":           1,
-		"NETWORK_TYPE_UNDERLAY":         2,
-		"NETWORK_TYPE_SUPER_VRF_SHARED": 3,
-		"NETWORK_TYPE_VRF_SHARED":       4,
-		"NETWORK_TYPE_PRIVATE_SUPER":    5,
-		"NETWORK_TYPE_PRIVATE":          6,
-		"NETWORK_TYPE_PRIVATE_SHARED":   7,
+		"NETWORK_TYPE_UNSPECIFIED":              0,
+		"NETWORK_TYPE_SHARED":                   1,
+		"NETWORK_TYPE_UNDERLAY":                 2,
+		"NETWORK_TYPE_SUPER_VRF_SHARED":         3,
+		"NETWORK_TYPE_VRF_SHARED":               4,
+		"NETWORK_TYPE_PRIVATE_SUPER":            5,
+		"NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED": 6,
+		"NETWORK_TYPE_PRIVATE":                  7,
+		"NETWORK_TYPE_PRIVATE_SHARED":           8,
 	}
 )
 
@@ -1493,7 +1499,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\aNATType\x12\x18\n" +
 	"\x14NAT_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\rNAT_TYPE_NONE\x10\x01\x1a\b\x82\xb2\x19\x04none\x121\n" +
-	"\x18NAT_TYPE_IPV4_MASQUERADE\x10\x02\x1a\x13\x82\xb2\x19\x0fipv4-masquerade*\xee\x02\n" +
+	"\x18NAT_TYPE_IPV4_MASQUERADE\x10\x02\x1a\x13\x82\xb2\x19\x0fipv4-masquerade*\xb7\x03\n" +
 	"\vNetworkType\x12\x1c\n" +
 	"\x18NETWORK_TYPE_UNSPECIFIED\x10\x00\x12#\n" +
 	"\x13NETWORK_TYPE_SHARED\x10\x01\x1a\n" +
@@ -1502,9 +1508,10 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x1dNETWORK_TYPE_SUPER_VRF_SHARED\x10\x03\x1a\x14\x82\xb2\x19\x10super-vrf-shared\x12+\n" +
 	"\x17NETWORK_TYPE_VRF_SHARED\x10\x04\x1a\x0e\x82\xb2\x19\n" +
 	"vrf-shared\x121\n" +
-	"\x1aNETWORK_TYPE_PRIVATE_SUPER\x10\x05\x1a\x11\x82\xb2\x19\rprivate-super\x12%\n" +
-	"\x14NETWORK_TYPE_PRIVATE\x10\x06\x1a\v\x82\xb2\x19\aprivate\x123\n" +
-	"\x1bNETWORK_TYPE_PRIVATE_SHARED\x10\a\x1a\x12\x82\xb2\x19\x0eprivate-shared2\xde\x05\n" +
+	"\x1aNETWORK_TYPE_PRIVATE_SUPER\x10\x05\x1a\x11\x82\xb2\x19\rprivate-super\x12G\n" +
+	"%NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED\x10\x06\x1a\x1c\x82\xb2\x19\x18private-super-namespaced\x12%\n" +
+	"\x14NETWORK_TYPE_PRIVATE\x10\a\x1a\v\x82\xb2\x19\aprivate\x123\n" +
+	"\x1bNETWORK_TYPE_PRIVATE_SHARED\x10\b\x1a\x12\x82\xb2\x19\x0eprivate-shared2\xde\x05\n" +
 	"\x0eNetworkService\x12m\n" +
 	"\x03Get\x12+.metalstack.api.v2.NetworkServiceGetRequest\x1a,.metalstack.api.v2.NetworkServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
 	"\x06Create\x12..metalstack.api.v2.NetworkServiceCreateRequest\x1a/.metalstack.api.v2.NetworkServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12q\n" +

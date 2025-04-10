@@ -316,12 +316,16 @@ enum NetworkType {
   // NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks
   NETWORK_TYPE_VRF_SHARED = 4 [(enum_string_value) = "vrf-shared"];
 
-  // NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks from
+  // NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks
   NETWORK_TYPE_PRIVATE_SUPER = 5 [(enum_string_value) = "private-super"];
+  // NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks.
+  // All private networks from the same project have distinct prefixes.
+  // Prefixes from different projects will have distinct prefixes by project only.
+  NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED = 6 [(enum_string_value) = "private-super-namespaced"];
   // NETWORK_TYPE_PRIVATE indicates a private network of a project. Connectivity to external networks is not possible.
-  NETWORK_TYPE_PRIVATE = 6 [(enum_string_value) = "private"];
+  NETWORK_TYPE_PRIVATE = 7 [(enum_string_value) = "private"];
   // NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects. Connectivity to external networks is not possible.
-  NETWORK_TYPE_PRIVATE_SHARED = 7 [(enum_string_value) = "private-shared"];
+  NETWORK_TYPE_PRIVATE_SHARED = 8 [(enum_string_value) = "private-shared"];
 }
 
 // ChildPrefixLength

@@ -5115,18 +5115,26 @@ should contain os and major.minor then latest patch version of this os is return
               <tr>
                 <td>NETWORK_TYPE_PRIVATE_SUPER</td>
                 <td>5</td>
-                <td><p>NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks from</p></td>
+                <td><p>NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED</td>
+                <td>6</td>
+                <td><p>NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks.
+All private networks from the same project have distinct prefixes.
+Prefixes from different projects will have distinct prefixes by project only.</p></td>
               </tr>
             
               <tr>
                 <td>NETWORK_TYPE_PRIVATE</td>
-                <td>6</td>
+                <td>7</td>
                 <td><p>NETWORK_TYPE_PRIVATE indicates a private network of a project. Connectivity to external networks is not possible.</p></td>
               </tr>
             
               <tr>
                 <td>NETWORK_TYPE_PRIVATE_SHARED</td>
-                <td>7</td>
+                <td>8</td>
                 <td><p>NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects. Connectivity to external networks is not possible.</p></td>
               </tr>
             
