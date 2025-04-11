@@ -468,7 +468,10 @@ type Meta struct {
 	// CreatedAt is the date when this ip was created
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// UpdatedAt is the date when this ip was updated
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Generation identifies the last updated time as uuidv7 field
+	// must be part of the update request to ensure optimistic locking
+	Generation    *string `protobuf:"bytes,4,opt,name=generation,proto3,oneof" json:"generation,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -522,6 +525,13 @@ func (x *Meta) GetUpdatedAt() *timestamppb.Timestamp {
 		return x.UpdatedAt
 	}
 	return nil
+}
+
+func (x *Meta) GetGeneration() string {
+	if x != nil && x.Generation != nil {
+		return *x.Generation
+	}
+	return ""
 }
 
 var file_metalstack_api_v2_common_proto_extTypes = []protoimpl.ExtensionInfo{
@@ -633,14 +643,18 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\x06labels\x18\x01 \x03(\v2%.metalstack.api.v2.Labels.LabelsEntryB\x18\xbaH\x15\x9a\x01\x12\"\ar\x05\x10\x01\x18\x80\x02*\ar\x05\x10\x00\x18\x80\x02R\x06labels\x1a9\n" +
 	"\vLabelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xbf\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xfd\x01\n" +
 	"\x04Meta\x126\n" +
 	"\x06labels\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsH\x00R\x06labels\x88\x01\x01\x129\n" +
 	"\n" +
 	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\t\n" +
-	"\a_labels*\x87\x01\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12-\n" +
+	"\n" +
+	"generation\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x01R\n" +
+	"generation\x88\x01\x01B\t\n" +
+	"\a_labelsB\r\n" +
+	"\v_generation*\x87\x01\n" +
 	"\n" +
 	"TenantRole\x12\x1b\n" +
 	"\x17TENANT_ROLE_UNSPECIFIED\x10\x00\x12\x15\n" +

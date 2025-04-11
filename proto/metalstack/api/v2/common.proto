@@ -134,4 +134,7 @@ message Meta {
   google.protobuf.Timestamp created_at = 2;
   // UpdatedAt is the date when this ip was updated
   google.protobuf.Timestamp updated_at = 3;
+  // Generation identifies the last updated time as uuidv7 field
+  // must be part of the update request to ensure optimistic locking
+  optional string generation = 4 [(buf.validate.field).string.uuid = true];
 }
