@@ -94,8 +94,10 @@ message NetworkServiceCreateRequest {
   };
   // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
   repeated string additional_announcable_cidrs = 15;
+  // Bitlength per addressfamily
+  optional metalstack.api.v2.ChildPrefixLength length = 16;
   // AddressFamily to create, defaults to the same as the parent
-  optional metalstack.api.v2.IPAddressFamily address_family = 16 [(buf.validate.field).enum.defined_only = true];
+  optional metalstack.api.v2.IPAddressFamily address_family = 17 [(buf.validate.field).enum.defined_only = true];
 }
 
 // NetworkServiceUpdateRequest is the request payload for a network update request

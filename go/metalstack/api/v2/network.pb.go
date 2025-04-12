@@ -271,7 +271,7 @@ type NetworkServiceCreateRequest struct {
 	// Parent NetworkId points to the id of the parent network if any
 	ParentNetworkId *string `protobuf:"bytes,6,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
 	// Bitlength per addressfamily
-	Length *ChildPrefixLength `protobuf:"bytes,7,opt,name=length,proto3" json:"length,omitempty"`
+	Length *ChildPrefixLength `protobuf:"bytes,7,opt,name=length,proto3,oneof" json:"length,omitempty"`
 	// AddressFamily to create, defaults to the same as the parent
 	AddressFamily *IPAddressFamily `protobuf:"varint,8,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1360,7 +1360,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xa0\x04\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xb0\x04\n" +
 	"\x1bNetworkServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -1371,14 +1371,15 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\tpartition\x88\x01\x01\x121\n" +
 	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12;\n" +
 	"\x11parent_network_id\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x0fparentNetworkId\x88\x01\x01\x12<\n" +
-	"\x06length\x18\a \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x06length\x12X\n" +
-	"\x0eaddress_family\x18\b \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\x04R\raddressFamily\x88\x01\x01B\a\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x0fparentNetworkId\x88\x01\x01\x12A\n" +
+	"\x06length\x18\a \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\x04R\x06length\x88\x01\x01\x12X\n" +
+	"\x0eaddress_family\x18\b \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\raddressFamily\x88\x01\x01B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
 	"\n" +
 	"_partitionB\x14\n" +
-	"\x12_parent_network_idB\x11\n" +
+	"\x12_parent_network_idB\t\n" +
+	"\a_lengthB\x11\n" +
 	"\x0f_address_family\"T\n" +
 	"\x1cNetworkServiceCreateResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\x91\x02\n" +

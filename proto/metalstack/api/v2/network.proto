@@ -88,7 +88,7 @@ message NetworkServiceCreateRequest {
     max_len: 128
   }];
   // Bitlength per addressfamily
-  ChildPrefixLength length = 7;
+  optional ChildPrefixLength length = 7;
   // AddressFamily to create, defaults to the same as the parent
   optional IPAddressFamily address_family = 8 [(buf.validate.field).enum.defined_only = true];
 }
