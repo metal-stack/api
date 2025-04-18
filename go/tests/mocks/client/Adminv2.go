@@ -73,6 +73,26 @@ func (_m *Adminv2) Image() adminv2connect.ImageServiceClient {
 	return r0
 }
 
+// Network provides a mock function with no fields
+func (_m *Adminv2) Network() adminv2connect.NetworkServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Network")
+	}
+
+	var r0 adminv2connect.NetworkServiceClient
+	if rf, ok := ret.Get(0).(func() adminv2connect.NetworkServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.NetworkServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Partition provides a mock function with no fields
 func (_m *Adminv2) Partition() adminv2connect.PartitionServiceClient {
 	ret := _m.Called()

@@ -31,6 +31,6 @@ jobs:
         cache: false
 
     - name: Lint
-      uses: golangci/golangci-lint-action@v6
+      uses: golangci/golangci-lint-action@v7
       with:
-        args: -p bugs -p unused -D protogetter --timeout=5m
+        args: -D protogetter --timeout=5m
