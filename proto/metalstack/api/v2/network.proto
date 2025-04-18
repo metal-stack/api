@@ -313,7 +313,7 @@ enum NetworkType {
 
   // NETWORK_TYPE_SUPER_VRF_SHARED indicates a super network which is only used to create networks which share the same vrf
   NETWORK_TYPE_SUPER_VRF_SHARED = 3 [(enum_string_value) = "super-vrf-shared"];
-  // NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks
+  // NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks, created from a super vrf shared
   NETWORK_TYPE_VRF_SHARED = 4 [(enum_string_value) = "vrf-shared"];
 
   // NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks
