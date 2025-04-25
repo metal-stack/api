@@ -87,7 +87,7 @@ const (
 	NetworkType_NETWORK_TYPE_UNDERLAY NetworkType = 2
 	// NETWORK_TYPE_SUPER_VRF_SHARED indicates a super network which is only used to create networks which share the same vrf
 	NetworkType_NETWORK_TYPE_SUPER_VRF_SHARED NetworkType = 3
-	// NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks
+	// NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks, created from a super vrf shared
 	NetworkType_NETWORK_TYPE_VRF_SHARED NetworkType = 4
 	// NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks
 	NetworkType_NETWORK_TYPE_PRIVATE_SUPER NetworkType = 5
