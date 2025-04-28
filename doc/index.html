@@ -5076,7 +5076,7 @@ should contain os and major.minor then latest patch version of this os is return
               <tr>
                 <td>NAT_TYPE_IPV4_MASQUERADE</td>
                 <td>2</td>
-                <td><p>NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip</p></td>
+                <td><p>NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network</p></td>
               </tr>
             
           </tbody>
@@ -5099,13 +5099,15 @@ should contain os and major.minor then latest patch version of this os is return
               <tr>
                 <td>NETWORK_TYPE_SHARED</td>
                 <td>1</td>
-                <td><p>NETWORK_TYPE_SHARED indicates a shared network where multiple projects can allocate ips, it offers connectivity to external networks</p></td>
+                <td><p>NETWORK_TYPE_SHARED indicates a shared network where multiple projects can allocate ips, it offers connectivity to external networks
+In most cases this is the internet network or a network which offers connectivity to legacy datacenter networks.</p></td>
               </tr>
             
               <tr>
                 <td>NETWORK_TYPE_UNDERLAY</td>
                 <td>2</td>
-                <td><p>NETWORK_TYPE_UNDERLAY indicates a underlay network</p></td>
+                <td><p>NETWORK_TYPE_UNDERLAY indicates a underlay network
+The underlay network connects all switches and the firewalls to build a EVPN dataplane</p></td>
               </tr>
             
               <tr>
@@ -5117,33 +5119,40 @@ should contain os and major.minor then latest patch version of this os is return
               <tr>
                 <td>NETWORK_TYPE_VRF_SHARED</td>
                 <td>4</td>
-                <td><p>NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks, created from a super vrf shared</p></td>
+                <td><p>NETWORK_TYPE_VRF_SHARED indicates that this network shares VRF with other networks, created from a super vrf shared</p></td>
               </tr>
             
               <tr>
                 <td>NETWORK_TYPE_PRIVATE_SUPER</td>
                 <td>5</td>
-                <td><p>NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks</p></td>
+                <td><p>NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks
+The partition of such a network is mandatory.</p></td>
               </tr>
             
               <tr>
                 <td>NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED</td>
                 <td>6</td>
-                <td><p>NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks.
-All private networks from the same project have distinct prefixes.
-Prefixes from different projects will have distinct prefixes by project only.</p></td>
+                <td><p>NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED indicates a super network which is only used to create private networks.
+A network namespace will be created for every project. Private networks per project will have distinct, e.g. different prefixes.
+Prefix allocation will start again with the same base cidr for every project / namespace.
+This will allow the creation of much more private networks from a given super network size
+The partition of such a network must not be given.</p></td>
               </tr>
             
               <tr>
                 <td>NETWORK_TYPE_PRIVATE</td>
                 <td>7</td>
-                <td><p>NETWORK_TYPE_PRIVATE indicates a private network of a project. Connectivity to external networks is not possible.</p></td>
+                <td><p>NETWORK_TYPE_PRIVATE indicates a private network of a project.
+Connectivity to external networks is not possible without going through a additional firewall in this network which creates connectivity to other networks.
+Such a network will be created either from a private super, or private super namespaced.</p></td>
               </tr>
             
               <tr>
                 <td>NETWORK_TYPE_PRIVATE_SHARED</td>
                 <td>8</td>
-                <td><p>NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects. Connectivity to external networks is not possible.</p></td>
+                <td><p>NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects.
+Connectivity to external networks is not possible, as for normal private networks.
+These networks are usually used to provide connectivity to shared services which are created in private networks, e.g. storage.</p></td>
               </tr>
             
           </tbody>

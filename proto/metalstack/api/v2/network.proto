@@ -298,7 +298,7 @@ enum NATType {
   NAT_TYPE_UNSPECIFIED = 0;
   // NAT_TYPE_NONE indicates that no nat is configured
   NAT_TYPE_NONE = 1 [(enum_string_value) = "none"];
-  // NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip
+  // NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network
   NAT_TYPE_IPV4_MASQUERADE = 2 [(enum_string_value) = "ipv4-masquerade"];
 }
 
@@ -307,24 +307,33 @@ enum NetworkType {
   // NETWORK_TYPE_UNSPECIFIED indicates a unknown network type
   NETWORK_TYPE_UNSPECIFIED = 0;
   // NETWORK_TYPE_SHARED indicates a shared network where multiple projects can allocate ips, it offers connectivity to external networks
+  // In most cases this is the internet network or a network which offers connectivity to legacy datacenter networks.
   NETWORK_TYPE_SHARED = 1 [(enum_string_value) = "shared"];
   // NETWORK_TYPE_UNDERLAY indicates a underlay network
+  // The underlay network connects all switches and the firewalls to build a EVPN dataplane
   NETWORK_TYPE_UNDERLAY = 2 [(enum_string_value) = "underlay"];
 
   // NETWORK_TYPE_SUPER_VRF_SHARED indicates a super network which is only used to create networks which share the same vrf
   NETWORK_TYPE_SUPER_VRF_SHARED = 3 [(enum_string_value) = "super-vrf-shared"];
-  // NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks, created from a super vrf shared
+  // NETWORK_TYPE_VRF_SHARED indicates that this network shares VRF with other networks, created from a super vrf shared
   NETWORK_TYPE_VRF_SHARED = 4 [(enum_string_value) = "vrf-shared"];
 
   // NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks
+  // The partition of such a network is mandatory.
   NETWORK_TYPE_PRIVATE_SUPER = 5 [(enum_string_value) = "private-super"];
-  // NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks.
-  // All private networks from the same project have distinct prefixes.
-  // Prefixes from different projects will have distinct prefixes by project only.
+  // NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED indicates a super network which is only used to create private networks.
+  // A network namespace will be created for every project. Private networks per project will have distinct, e.g. different prefixes.
+  // Prefix allocation will start again with the same base cidr for every project / namespace.
+  // This will allow the creation of much more private networks from a given super network size
+  // The partition of such a network must not be given.
   NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED = 6 [(enum_string_value) = "private-super-namespaced"];
-  // NETWORK_TYPE_PRIVATE indicates a private network of a project. Connectivity to external networks is not possible.
+  // NETWORK_TYPE_PRIVATE indicates a private network of a project.
+  // Connectivity to external networks is not possible without going through a additional firewall in this network which creates connectivity to other networks.
+  // Such a network will be created either from a private super, or private super namespaced.
   NETWORK_TYPE_PRIVATE = 7 [(enum_string_value) = "private"];
-  // NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects. Connectivity to external networks is not possible.
+  // NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects.
+  // Connectivity to external networks is not possible, as for normal private networks.
+  // These networks are usually used to provide connectivity to shared services which are created in private networks, e.g. storage.
   NETWORK_TYPE_PRIVATE_SHARED = 8 [(enum_string_value) = "private-shared"];
 }
 

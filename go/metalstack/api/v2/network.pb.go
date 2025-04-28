@@ -30,7 +30,7 @@ const (
 	NATType_NAT_TYPE_UNSPECIFIED NATType = 0
 	// NAT_TYPE_NONE indicates that no nat is configured
 	NATType_NAT_TYPE_NONE NATType = 1
-	// NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip
+	// NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network
 	NATType_NAT_TYPE_IPV4_MASQUERADE NATType = 2
 )
 
@@ -82,22 +82,31 @@ const (
 	// NETWORK_TYPE_UNSPECIFIED indicates a unknown network type
 	NetworkType_NETWORK_TYPE_UNSPECIFIED NetworkType = 0
 	// NETWORK_TYPE_SHARED indicates a shared network where multiple projects can allocate ips, it offers connectivity to external networks
+	// In most cases this is the internet network or a network which offers connectivity to legacy datacenter networks.
 	NetworkType_NETWORK_TYPE_SHARED NetworkType = 1
 	// NETWORK_TYPE_UNDERLAY indicates a underlay network
+	// The underlay network connects all switches and the firewalls to build a EVPN dataplane
 	NetworkType_NETWORK_TYPE_UNDERLAY NetworkType = 2
 	// NETWORK_TYPE_SUPER_VRF_SHARED indicates a super network which is only used to create networks which share the same vrf
 	NetworkType_NETWORK_TYPE_SUPER_VRF_SHARED NetworkType = 3
-	// NETWORK_TYPE_PRIVATE_SHARED_VRF indicates that this network shares VRF with other networks, created from a super vrf shared
+	// NETWORK_TYPE_VRF_SHARED indicates that this network shares VRF with other networks, created from a super vrf shared
 	NetworkType_NETWORK_TYPE_VRF_SHARED NetworkType = 4
 	// NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks
+	// The partition of such a network is mandatory.
 	NetworkType_NETWORK_TYPE_PRIVATE_SUPER NetworkType = 5
-	// NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks.
-	// All private networks from the same project have distinct prefixes.
-	// Prefixes from different projects will have distinct prefixes by project only.
+	// NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED indicates a super network which is only used to create private networks.
+	// A network namespace will be created for every project. Private networks per project will have distinct, e.g. different prefixes.
+	// Prefix allocation will start again with the same base cidr for every project / namespace.
+	// This will allow the creation of much more private networks from a given super network size
+	// The partition of such a network must not be given.
 	NetworkType_NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED NetworkType = 6
-	// NETWORK_TYPE_PRIVATE indicates a private network of a project. Connectivity to external networks is not possible.
+	// NETWORK_TYPE_PRIVATE indicates a private network of a project.
+	// Connectivity to external networks is not possible without going through a additional firewall in this network which creates connectivity to other networks.
+	// Such a network will be created either from a private super, or private super namespaced.
 	NetworkType_NETWORK_TYPE_PRIVATE NetworkType = 7
-	// NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects. Connectivity to external networks is not possible.
+	// NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects.
+	// Connectivity to external networks is not possible, as for normal private networks.
+	// These networks are usually used to provide connectivity to shared services which are created in private networks, e.g. storage.
 	NetworkType_NETWORK_TYPE_PRIVATE_SHARED NetworkType = 8
 )
 
