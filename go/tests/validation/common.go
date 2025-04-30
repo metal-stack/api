@@ -3,7 +3,7 @@ package validation
 import (
 	"testing"
 
-	"github.com/bufbuild/protovalidate-go"
+	"buf.build/go/protovalidate"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/proto"
 )
