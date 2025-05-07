@@ -431,15 +431,16 @@ const file_metalstack_api_v2_health_proto_rawDesc = "" +
 	"\x1aSERVICE_STATUS_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\x17SERVICE_STATUS_DEGRADED\x10\x01\x12\x1c\n" +
 	"\x18SERVICE_STATUS_UNHEALTHY\x10\x02\x12\x1a\n" +
-	"\x16SERVICE_STATUS_HEALTHY\x10\x03*\x9b\x01\n" +
+	"\x16SERVICE_STATUS_HEALTHY\x10\x03*\xe6\x01\n" +
 	"\aService\x12\x17\n" +
-	"\x13SERVICE_UNSPECIFIED\x10\x00\x12\x10\n" +
-	"\fSERVICE_IPAM\x10\x01\x12\x13\n" +
-	"\x0fSERVICE_RETHINK\x10\x02\x12\x16\n" +
-	"\x12SERVICE_MASTERDATA\x10\x03\x12\x14\n" +
-	"\x10SERVICE_MACHINES\x10\x04\x12\x11\n" +
-	"\rSERVICE_AUDIT\x10\x05\x12\x0f\n" +
-	"\vSERVICE_VPN\x10\x062y\n" +
+	"\x13SERVICE_UNSPECIFIED\x10\x00\x12\x1a\n" +
+	"\fSERVICE_IPAM\x10\x01\x1a\b\x82\xb2\x19\x04ipam\x12\"\n" +
+	"\x0fSERVICE_RETHINK\x10\x02\x1a\r\x82\xb2\x19\trethinkdb\x12&\n" +
+	"\x12SERVICE_MASTERDATA\x10\x03\x1a\x0e\x82\xb2\x19\n" +
+	"masterdata\x12\"\n" +
+	"\x10SERVICE_MACHINES\x10\x04\x1a\f\x82\xb2\x19\bmachines\x12\x1c\n" +
+	"\rSERVICE_AUDIT\x10\x05\x1a\t\x82\xb2\x19\x05audit\x12\x18\n" +
+	"\vSERVICE_VPN\x10\x06\x1a\a\x82\xb2\x19\x03vpn2y\n" +
 	"\rHealthService\x12h\n" +
 	"\x03Get\x12*.metalstack.api.v2.HealthServiceGetRequest\x1a+.metalstack.api.v2.HealthServiceGetResponse\"\b\xd8\xf3\x18\x01\xe0\xf3\x18\x02B\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vHealthProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
