@@ -88,12 +88,14 @@ const (
 	Service_SERVICE_IPAM Service = 1
 	// SERVICE_RETHINK the rethinkdb
 	Service_SERVICE_RETHINK Service = 2
+	// SERVICE_MASTERDATA the masterdata-api
+	Service_SERVICE_MASTERDATA Service = 3
 	// SERVICE_MACHINES the machine service
-	Service_SERVICE_MACHINES Service = 3
+	Service_SERVICE_MACHINES Service = 4
 	// SERVICE_AUDIT the auditing
-	Service_SERVICE_AUDIT Service = 4
+	Service_SERVICE_AUDIT Service = 5
 	// SERVICE_VPN the vpn service
-	Service_SERVICE_VPN Service = 5
+	Service_SERVICE_VPN Service = 6
 )
 
 // Enum value maps for Service.
@@ -102,17 +104,19 @@ var (
 		0: "SERVICE_UNSPECIFIED",
 		1: "SERVICE_IPAM",
 		2: "SERVICE_RETHINK",
-		3: "SERVICE_MACHINES",
-		4: "SERVICE_AUDIT",
-		5: "SERVICE_VPN",
+		3: "SERVICE_MASTERDATA",
+		4: "SERVICE_MACHINES",
+		5: "SERVICE_AUDIT",
+		6: "SERVICE_VPN",
 	}
 	Service_value = map[string]int32{
 		"SERVICE_UNSPECIFIED": 0,
 		"SERVICE_IPAM":        1,
 		"SERVICE_RETHINK":     2,
-		"SERVICE_MACHINES":    3,
-		"SERVICE_AUDIT":       4,
-		"SERVICE_VPN":         5,
+		"SERVICE_MASTERDATA":  3,
+		"SERVICE_MACHINES":    4,
+		"SERVICE_AUDIT":       5,
+		"SERVICE_VPN":         6,
 	}
 )
 
@@ -427,14 +431,15 @@ const file_metalstack_api_v2_health_proto_rawDesc = "" +
 	"\x1aSERVICE_STATUS_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\x17SERVICE_STATUS_DEGRADED\x10\x01\x12\x1c\n" +
 	"\x18SERVICE_STATUS_UNHEALTHY\x10\x02\x12\x1a\n" +
-	"\x16SERVICE_STATUS_HEALTHY\x10\x03*\x83\x01\n" +
+	"\x16SERVICE_STATUS_HEALTHY\x10\x03*\x9b\x01\n" +
 	"\aService\x12\x17\n" +
 	"\x13SERVICE_UNSPECIFIED\x10\x00\x12\x10\n" +
 	"\fSERVICE_IPAM\x10\x01\x12\x13\n" +
-	"\x0fSERVICE_RETHINK\x10\x02\x12\x14\n" +
-	"\x10SERVICE_MACHINES\x10\x03\x12\x11\n" +
-	"\rSERVICE_AUDIT\x10\x04\x12\x0f\n" +
-	"\vSERVICE_VPN\x10\x052y\n" +
+	"\x0fSERVICE_RETHINK\x10\x02\x12\x16\n" +
+	"\x12SERVICE_MASTERDATA\x10\x03\x12\x14\n" +
+	"\x10SERVICE_MACHINES\x10\x04\x12\x11\n" +
+	"\rSERVICE_AUDIT\x10\x05\x12\x0f\n" +
+	"\vSERVICE_VPN\x10\x062y\n" +
 	"\rHealthService\x12h\n" +
 	"\x03Get\x12*.metalstack.api.v2.HealthServiceGetRequest\x1a+.metalstack.api.v2.HealthServiceGetResponse\"\b\xd8\xf3\x18\x01\xe0\xf3\x18\x02B\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vHealthProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"

@@ -33,12 +33,14 @@ enum Service {
   SERVICE_IPAM = 1;
   // SERVICE_RETHINK the rethinkdb
   SERVICE_RETHINK = 2;
+  // SERVICE_MASTERDATA the masterdata-api
+  SERVICE_MASTERDATA = 3;
   // SERVICE_MACHINES the machine service
-  SERVICE_MACHINES = 3;
+  SERVICE_MACHINES = 4;
   // SERVICE_AUDIT the auditing
-  SERVICE_AUDIT = 4;
+  SERVICE_AUDIT = 5;
   // SERVICE_VPN the vpn service
-  SERVICE_VPN = 5;
+  SERVICE_VPN = 6;
 }
 
 // Health reports the health status of all services
