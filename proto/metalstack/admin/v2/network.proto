@@ -117,8 +117,8 @@ message NetworkServiceUpdateRequest {
     min_len: 2
     max_len: 128
   }];
-  // Labels on this network
-  optional metalstack.api.v2.Labels labels = 7;
+  // Labels to update on this network
+  optional metalstack.api.v2.UpdateLabels labels = 7;
 
   option (buf.validate.message).cel = {
     id: "prefixes"

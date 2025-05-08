@@ -222,8 +222,8 @@ type NetworkServiceUpdateRequest struct {
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of this network
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Labels on this network
-	Labels *v2.Labels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	// Labels to update on this network
+	Labels *v2.UpdateLabels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	// Prefixes in this network
 	Prefixes []string `protobuf:"bytes,8,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
 	// Destination Prefixes in this network
@@ -293,7 +293,7 @@ func (x *NetworkServiceUpdateRequest) GetDescription() string {
 	return ""
 }
 
-func (x *NetworkServiceUpdateRequest) GetLabels() *v2.Labels {
+func (x *NetworkServiceUpdateRequest) GetLabels() *v2.UpdateLabels {
 	if x != nil {
 		return x.Labels
 	}
@@ -670,15 +670,15 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x04_vrfB\x14\n" +
 	"\x12_parent_network_idB\t\n" +
 	"\a_lengthB\x11\n" +
-	"\x0f_address_family\"\xc7\b\n" +
+	"\x0f_address_family\"\xcd\b\n" +
 	"\x1bNetworkServiceUpdateRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12#\n" +
 	"\x04name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x126\n" +
-	"\x06labels\x18\a \x01(\v2\x19.metalstack.api.v2.LabelsH\x02R\x06labels\x88\x01\x01\x12\x1a\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12<\n" +
+	"\x06labels\x18\a \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x02R\x06labels\x88\x01\x01\x12\x1a\n" +
 	"\bprefixes\x18\b \x03(\tR\bprefixes\x121\n" +
 	"\x14destination_prefixes\x18\t \x03(\tR\x13destinationPrefixes\x12h\n" +
 	"\x1bdefault_child_prefix_length\x18\n" +
@@ -744,8 +744,9 @@ var file_metalstack_admin_v2_network_proto_goTypes = []any{
 	(*v2.ChildPrefixLength)(nil),         // 10: metalstack.api.v2.ChildPrefixLength
 	(v2.NATType)(0),                      // 11: metalstack.api.v2.NATType
 	(v2.IPAddressFamily)(0),              // 12: metalstack.api.v2.IPAddressFamily
-	(*v2.NetworkQuery)(nil),              // 13: metalstack.api.v2.NetworkQuery
-	(*v2.Network)(nil),                   // 14: metalstack.api.v2.Network
+	(*v2.UpdateLabels)(nil),              // 13: metalstack.api.v2.UpdateLabels
+	(*v2.NetworkQuery)(nil),              // 14: metalstack.api.v2.NetworkQuery
+	(*v2.Network)(nil),                   // 15: metalstack.api.v2.Network
 }
 var file_metalstack_admin_v2_network_proto_depIdxs = []int32{
 	8,  // 0: metalstack.admin.v2.NetworkServiceCreateRequest.type:type_name -> metalstack.api.v2.NetworkType
@@ -755,15 +756,15 @@ var file_metalstack_admin_v2_network_proto_depIdxs = []int32{
 	11, // 4: metalstack.admin.v2.NetworkServiceCreateRequest.nat_type:type_name -> metalstack.api.v2.NATType
 	10, // 5: metalstack.admin.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
 	12, // 6: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.IPAddressFamily
-	9,  // 7: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.Labels
+	13, // 7: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	10, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
 	10, // 9: metalstack.admin.v2.NetworkServiceUpdateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
 	11, // 10: metalstack.admin.v2.NetworkServiceUpdateRequest.nat_type:type_name -> metalstack.api.v2.NATType
-	13, // 11: metalstack.admin.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
-	14, // 12: metalstack.admin.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
-	14, // 13: metalstack.admin.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
-	14, // 14: metalstack.admin.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
-	14, // 15: metalstack.admin.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
+	14, // 11: metalstack.admin.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
+	15, // 12: metalstack.admin.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
+	15, // 13: metalstack.admin.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
+	15, // 14: metalstack.admin.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
+	15, // 15: metalstack.admin.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
 	0,  // 16: metalstack.admin.v2.NetworkService.Create:input_type -> metalstack.admin.v2.NetworkServiceCreateRequest
 	1,  // 17: metalstack.admin.v2.NetworkService.Update:input_type -> metalstack.admin.v2.NetworkServiceUpdateRequest
 	2,  // 18: metalstack.admin.v2.NetworkService.Delete:input_type -> metalstack.admin.v2.NetworkServiceDeleteRequest
