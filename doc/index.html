@@ -194,6 +194,10 @@
                   <a href="#metalstack.api.v2.Paging"><span class="badge">M</span>Paging</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.UpdateLabels"><span class="badge">M</span>UpdateLabels</a>
+                </li>
+              
               
                 <li>
                   <a href="#metalstack.api.v2.AdminRole"><span class="badge">E</span>AdminRole</a>
@@ -1536,6 +1540,37 @@ the list response contains then the page number for the next page. </p></td>
                   <td><a href="#uint64">uint64</a></td>
                   <td>optional</td>
                   <td><p>Count is the number of results returned per page, if not given server side defaults apply </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.UpdateLabels">UpdateLabels</h3>
+        <p>UpdateLabels is a message to update labels</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>update</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td></td>
+                  <td><p>Update labels. New ones will be added, existing ones overwritten </p></td>
+                </tr>
+              
+                <tr>
+                  <td>remove</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Remove labels by key </p></td>
                 </tr>
               
             </tbody>
@@ -4016,7 +4051,7 @@ should contain os and major.minor then latest patch version of this os is return
               
                 <tr>
                   <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">UpdateLabels</a></td>
                   <td>optional</td>
                   <td><p>Labels on this ip </p></td>
                 </tr>
@@ -4970,7 +5005,7 @@ should contain os and major.minor then latest patch version of this os is return
               
                 <tr>
                   <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">UpdateLabels</a></td>
                   <td>optional</td>
                   <td><p>Labels on this network </p></td>
                 </tr>

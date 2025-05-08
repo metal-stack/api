@@ -119,7 +119,7 @@ message NetworkServiceUpdateRequest {
     max_len: 128
   }];
   // Labels on this network
-  optional Labels labels = 5;
+  optional UpdateLabels labels = 5;
 }
 
 // NetworkServiceUpdateResponse

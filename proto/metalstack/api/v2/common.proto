@@ -138,3 +138,11 @@ message Meta {
   // must be part of the update request to ensure optimistic locking
   optional string generation = 4 [(buf.validate.field).string.uuid = true];
 }
+
+// UpdateLabels is a message to update labels
+message UpdateLabels {
+  // Update labels. New ones will be added, existing ones overwritten
+  Labels update = 1;
+  // Remove labels by key
+  repeated string remove = 2;
+}

@@ -424,7 +424,7 @@ type IPServiceUpdateRequest struct {
 	// Type of this ip
 	Type *IPType `protobuf:"varint,5,opt,name=type,proto3,enum=metalstack.api.v2.IPType,oneof" json:"type,omitempty"`
 	// Labels on this ip
-	Labels        *Labels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	Labels        *UpdateLabels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -494,7 +494,7 @@ func (x *IPServiceUpdateRequest) GetType() IPType {
 	return IPType_IP_TYPE_UNSPECIFIED
 }
 
-func (x *IPServiceUpdateRequest) GetLabels() *Labels {
+func (x *IPServiceUpdateRequest) GetLabels() *UpdateLabels {
 	if x != nil {
 		return x.Labels
 	}
@@ -1006,15 +1006,15 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\v_machine_idB\t\n" +
 	"\a_labelsB\a\n" +
 	"\x05_typeB\x11\n" +
-	"\x0f_address_family\"\xce\x02\n" +
+	"\x0f_address_family\"\xd4\x02\n" +
 	"\x16IPServiceUpdateRequest\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x04name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x12/\n" +
 	"\vdescription\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12<\n" +
-	"\x04type\x18\x05 \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\x04type\x88\x01\x01\x126\n" +
-	"\x06labels\x18\x06 \x01(\v2\x19.metalstack.api.v2.LabelsH\x03R\x06labels\x88\x01\x01B\a\n" +
+	"\x04type\x18\x05 \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\x04type\x88\x01\x01\x12<\n" +
+	"\x06labels\x18\x06 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x03R\x06labels\x88\x01\x01B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\a\n" +
 	"\x05_typeB\t\n" +
@@ -1110,6 +1110,7 @@ var file_metalstack_api_v2_ip_proto_goTypes = []any{
 	(*IPServiceDeleteResponse)(nil), // 13: metalstack.api.v2.IPServiceDeleteResponse
 	(*Meta)(nil),                    // 14: metalstack.api.v2.Meta
 	(*Labels)(nil),                  // 15: metalstack.api.v2.Labels
+	(*UpdateLabels)(nil),            // 16: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_api_v2_ip_proto_depIdxs = []int32{
 	14, // 0: metalstack.api.v2.IP.meta:type_name -> metalstack.api.v2.Meta
@@ -1118,7 +1119,7 @@ var file_metalstack_api_v2_ip_proto_depIdxs = []int32{
 	0,  // 3: metalstack.api.v2.IPServiceCreateRequest.type:type_name -> metalstack.api.v2.IPType
 	1,  // 4: metalstack.api.v2.IPServiceCreateRequest.address_family:type_name -> metalstack.api.v2.IPAddressFamily
 	0,  // 5: metalstack.api.v2.IPServiceUpdateRequest.type:type_name -> metalstack.api.v2.IPType
-	15, // 6: metalstack.api.v2.IPServiceUpdateRequest.labels:type_name -> metalstack.api.v2.Labels
+	16, // 6: metalstack.api.v2.IPServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	7,  // 7: metalstack.api.v2.IPServiceListRequest.query:type_name -> metalstack.api.v2.IPQuery
 	15, // 8: metalstack.api.v2.IPQuery.labels:type_name -> metalstack.api.v2.Labels
 	0,  // 9: metalstack.api.v2.IPQuery.type:type_name -> metalstack.api.v2.IPType

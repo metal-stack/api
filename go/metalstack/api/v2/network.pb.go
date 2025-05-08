@@ -431,7 +431,7 @@ type NetworkServiceUpdateRequest struct {
 	// Description of this network
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Labels on this network
-	Labels        *Labels `protobuf:"bytes,5,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	Labels        *UpdateLabels `protobuf:"bytes,5,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -494,7 +494,7 @@ func (x *NetworkServiceUpdateRequest) GetDescription() string {
 	return ""
 }
 
-func (x *NetworkServiceUpdateRequest) GetLabels() *Labels {
+func (x *NetworkServiceUpdateRequest) GetLabels() *UpdateLabels {
 	if x != nil {
 		return x.Labels
 	}
@@ -1391,7 +1391,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\a_lengthB\x11\n" +
 	"\x0f_address_family\"T\n" +
 	"\x1cNetworkServiceCreateResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\x91\x02\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\x97\x02\n" +
 	"\x1bNetworkServiceUpdateRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
@@ -1399,8 +1399,8 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x04name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x126\n" +
-	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsH\x02R\x06labels\x88\x01\x01B\a\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12<\n" +
+	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x02R\x06labels\x88\x01\x01B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\t\n" +
 	"\a_labels\"T\n" +
@@ -1567,7 +1567,8 @@ var file_metalstack_api_v2_network_proto_goTypes = []any{
 	(*NetworkUsage)(nil),                           // 18: metalstack.api.v2.NetworkUsage
 	(*Labels)(nil),                                 // 19: metalstack.api.v2.Labels
 	(IPAddressFamily)(0),                           // 20: metalstack.api.v2.IPAddressFamily
-	(*Meta)(nil),                                   // 21: metalstack.api.v2.Meta
+	(*UpdateLabels)(nil),                           // 21: metalstack.api.v2.UpdateLabels
+	(*Meta)(nil),                                   // 22: metalstack.api.v2.Meta
 }
 var file_metalstack_api_v2_network_proto_depIdxs = []int32{
 	14, // 0: metalstack.api.v2.NetworkServiceGetResponse.network:type_name -> metalstack.api.v2.Network
@@ -1575,14 +1576,14 @@ var file_metalstack_api_v2_network_proto_depIdxs = []int32{
 	16, // 2: metalstack.api.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
 	20, // 3: metalstack.api.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.IPAddressFamily
 	14, // 4: metalstack.api.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
-	19, // 5: metalstack.api.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.Labels
+	21, // 5: metalstack.api.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	14, // 6: metalstack.api.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
 	15, // 7: metalstack.api.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
 	14, // 8: metalstack.api.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
 	15, // 9: metalstack.api.v2.NetworkServiceListBaseNetworksRequest.query:type_name -> metalstack.api.v2.NetworkQuery
 	14, // 10: metalstack.api.v2.NetworkServiceListBaseNetworksResponse.networks:type_name -> metalstack.api.v2.Network
 	14, // 11: metalstack.api.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
-	21, // 12: metalstack.api.v2.Network.meta:type_name -> metalstack.api.v2.Meta
+	22, // 12: metalstack.api.v2.Network.meta:type_name -> metalstack.api.v2.Meta
 	16, // 13: metalstack.api.v2.Network.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
 	16, // 14: metalstack.api.v2.Network.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
 	1,  // 15: metalstack.api.v2.Network.type:type_name -> metalstack.api.v2.NetworkType

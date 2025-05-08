@@ -136,7 +136,7 @@ message IPServiceUpdateRequest {
   // Type of this ip
   optional IPType type = 5 [(buf.validate.field).enum.defined_only = true];
   // Labels on this ip
-  optional Labels labels = 6;
+  optional UpdateLabels labels = 6;
 }
 
 // IPServiceListRequest is the request payload for a ip list request
