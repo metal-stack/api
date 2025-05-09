@@ -64,7 +64,7 @@ tenant-super-namespaced-network             10.0.0.0/16         ""
 
 # Meeting Minutes 2nd Call
 
-- Check if is possible to create a Internet access network for single customer usage with specified destination prefixes 
+- Check if is possible to create a Internet access network for single customer usage with specified destination prefixes
 
 
 ```proto
@@ -81,27 +81,31 @@ enum NetworkType {
   NETWORK_TYPE_UNDERLAY = 2 [(enum_string_value) = "underlay"];
 
   // NETWORK_TYPE_SUPER indicates a super network which is only used to create child networks
-  // The partition of such a network is mandatory.
   // If the vrf id is given, child networks will inherit this vrf.
   // If the vrf id is nil in this network, child vrf is taken from the pool.
+  // If the partition is given, child networks inherit the partition.
+  // If the partition is nil, child networks also do not have a partition (i.e. requires vrf is distributed across all partitions).
   // For child creation destination prefixes will be inherited
   // If this is project scoped, child project must match, otherwise can be freely specified.
   NETWORK_TYPE_SUPER = 3 [(enum_string_value) = "super"];
   // NETWORK_TYPE_SUPER_NAMESPACED indicates a super network which is only used to create child networks.
-  // A network namespace will be created for every project. Child networks per project will have distinct, e.g. different prefixes.
+  // All rules from NETWORK_TYPE_SUPER apply for them as well.
+  // In addition, a network namespace will be created for every project. Child networks per project will have disjunct prefixes.
   // Prefix allocation will start again with the same base cidr for every project / namespace.
-  // This will allow the creation of much more child networks from a given super network size
-  // The partition of such a network must not be given.
+  // This will allow the creation of much more child networks from a given super network size.
   NETWORK_TYPE_SUPER_NAMESPACED = 4 [(enum_string_value) = "super-namespaced"];
+
   // NETWORK_TYPE_CHILD indicates a child network of a project.
-  // Connectivity to external networks is not possible without going through a additional firewall in this network which creates connectivity to other networks.
+  // This is the only network type that can be created by a user.
+  // Connectivity to external networks is not possible without going through an additional firewall in this network which creates connectivity to other networks.
   // Such a network will be created either from a super, or super namespaced.
   NETWORK_TYPE_CHILD = 5 [(enum_string_value) = "child"];
   // NETWORK_TYPE_CHILD_SHARED indicates a child network of a project which allows the allocation of ips from different projects.
   // Connectivity to external networks is not possible, as for normal child networks.
   // These networks are usually used to provide connectivity to shared services which are created in child networks, e.g. storage.
+  // With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.
   NETWORK_TYPE_CHILD_SHARED = 6 [(enum_string_value) = "child-shared"];
 }
-``` 
+```
 
 Please validate these enums with the given use-cases above.
