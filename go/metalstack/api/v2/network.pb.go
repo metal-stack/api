@@ -856,6 +856,9 @@ type Network struct {
 	Partition *string `protobuf:"bytes,5,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	// Project where this network belongs to
 	Project *string `protobuf:"bytes,6,opt,name=project,proto3,oneof" json:"project,omitempty"`
+	// Namespace if specified, this network is namespaced and can therefore overlap with others
+	// Will be equal with project most of the time
+	Namespace *string `protobuf:"bytes,7,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	// Prefixes in this network
 	Prefixes []string `protobuf:"bytes,8,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
 	// Destination Prefixes in this network
@@ -948,6 +951,13 @@ func (x *Network) GetPartition() string {
 func (x *Network) GetProject() string {
 	if x != nil && x.Project != nil {
 		return *x.Project
+	}
+	return ""
+}
+
+func (x *Network) GetNamespace() string {
+	if x != nil && x.Namespace != nil {
+		return *x.Namespace
 	}
 	return ""
 }
@@ -1420,7 +1430,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"T\n" +
 	"\x1cNetworkServiceDeleteResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xba\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xf5\n" +
 	"\n" +
 	"\aNetwork\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
@@ -1432,17 +1442,18 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12-\n" +
 	"\tpartition\x18\x05 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\tpartition\x88\x01\x01\x12'\n" +
-	"\aproject\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x03R\aproject\x88\x01\x01\x12\x1a\n" +
+	"\aproject\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x03R\aproject\x88\x01\x01\x12+\n" +
+	"\tnamespace\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x04R\tnamespace\x88\x01\x01\x12\x1a\n" +
 	"\bprefixes\x18\b \x03(\tR\bprefixes\x121\n" +
 	"\x14destination_prefixes\x18\t \x03(\tR\x13destinationPrefixes\x12c\n" +
 	"\x1bdefault_child_prefix_length\x18\n" +
 	" \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x18defaultChildPrefixLength\x12[\n" +
 	"\x17min_child_prefix_length\x18\v \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x14minChildPrefixLength\x12A\n" +
-	"\x04type\x18\f \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x04R\x04type\x88\x01\x01\x12D\n" +
-	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\anatType\x88\x01\x01\x12\x15\n" +
-	"\x03vrf\x18\x0e \x01(\rH\x06R\x03vrf\x88\x01\x01\x12;\n" +
+	"\x04type\x18\f \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\x04type\x88\x01\x01\x12D\n" +
+	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\anatType\x88\x01\x01\x12\x15\n" +
+	"\x03vrf\x18\x0e \x01(\rH\aR\x03vrf\x88\x01\x01\x12;\n" +
 	"\x11parent_network_id\x18\x0f \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\aR\x0fparentNetworkId\x88\x01\x01\x12@\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\bR\x0fparentNetworkId\x88\x01\x01\x12@\n" +
 	"\x1cadditional_announcable_cidrs\x18\x10 \x03(\tR\x1aadditionalAnnouncableCidrs\x12G\n" +
 	"\vconsumption\x18\x11 \x01(\v2%.metalstack.api.v2.NetworkConsumptionR\vconsumption:\xd5\x02\xbaH\xd1\x02\x1aN\n" +
 	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
@@ -1453,7 +1464,9 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\n" +
 	"_partitionB\n" +
 	"\n" +
-	"\b_projectB\a\n" +
+	"\b_projectB\f\n" +
+	"\n" +
+	"_namespaceB\a\n" +
 	"\x05_typeB\v\n" +
 	"\t_nat_typeB\x06\n" +
 	"\x04_vrfB\x14\n" +

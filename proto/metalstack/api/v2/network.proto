@@ -197,6 +197,9 @@ message Network {
   }];
   // Project where this network belongs to
   optional string project = 6 [(buf.validate.field).string.uuid = true];
+  // Namespace if specified, this network is namespaced and can therefore overlap with others
+  // Will be equal with project most of the time
+  optional string namespace = 7 [(buf.validate.field).string.uuid = true];
   option (buf.validate.message).cel = {
     id: "prefixes"
     message: "given prefixes must be valid"
