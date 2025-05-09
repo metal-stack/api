@@ -5140,62 +5140,59 @@ Will be equal with project most of the time </p></td>
               </tr>
             
               <tr>
-                <td>NETWORK_TYPE_SHARED</td>
+                <td>NETWORK_TYPE_EXTERNAL</td>
                 <td>1</td>
-                <td><p>NETWORK_TYPE_SHARED indicates a shared network where multiple projects can allocate ips, it offers connectivity to external networks
-In most cases this is the internet network or a network which offers connectivity to legacy datacenter networks.</p></td>
+                <td><p>NETWORK_TYPE_EXTERNAL indicates network where multiple projects can allocate ips, it offers connectivity to external networks
+In most cases this is the internet network or a network which offers connectivity to legacy datacenter networks.
+If it is not project scoped everyone can allocate Ips in this network, otherwise only from the same project ip allocation is possible.</p></td>
               </tr>
             
               <tr>
                 <td>NETWORK_TYPE_UNDERLAY</td>
                 <td>2</td>
                 <td><p>NETWORK_TYPE_UNDERLAY indicates a underlay network
-The underlay network connects all switches and the firewalls to build a EVPN dataplane</p></td>
+The underlay network connects all switches and the firewalls to build a EVPN dataplane
+It is not project scoped. Is part of the dataplane and reserved for administrative purposes.</p></td>
               </tr>
             
               <tr>
-                <td>NETWORK_TYPE_SUPER_VRF_SHARED</td>
+                <td>NETWORK_TYPE_SUPER</td>
                 <td>3</td>
-                <td><p>NETWORK_TYPE_SUPER_VRF_SHARED indicates a super network which is only used to create networks which share the same vrf</p></td>
+                <td><p>NETWORK_TYPE_SUPER indicates a super network which is only used to create child networks
+If the vrf id is given, child networks will inherit this vrf.
+If the vrf id is nil in this network, child vrf is taken from the pool.
+If the partition is given, child networks inherit the partition.
+If the partition is nil, child networks also do not have a partition (i.e. requires vrf is distributed across all partitions).
+For child creation destination prefixes will be inherited
+If this is project scoped, child project must match, otherwise can be freely specified.</p></td>
               </tr>
             
               <tr>
-                <td>NETWORK_TYPE_VRF_SHARED</td>
+                <td>NETWORK_TYPE_SUPER_NAMESPACED</td>
                 <td>4</td>
-                <td><p>NETWORK_TYPE_VRF_SHARED indicates that this network shares VRF with other networks, created from a super vrf shared</p></td>
-              </tr>
-            
-              <tr>
-                <td>NETWORK_TYPE_PRIVATE_SUPER</td>
-                <td>5</td>
-                <td><p>NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks
-The partition of such a network is mandatory.</p></td>
-              </tr>
-            
-              <tr>
-                <td>NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED</td>
-                <td>6</td>
-                <td><p>NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED indicates a super network which is only used to create private networks.
-A network namespace will be created for every project. Private networks per project will have distinct, e.g. different prefixes.
+                <td><p>NETWORK_TYPE_SUPER_NAMESPACED indicates a super network which is only used to create child networks.
+All rules from NETWORK_TYPE_SUPER apply for them as well.
+In addition, a network namespace will be created for every project. Child networks per project will have disjunct prefixes.
 Prefix allocation will start again with the same base cidr for every project / namespace.
-This will allow the creation of much more private networks from a given super network size
-The partition of such a network must not be given.</p></td>
+This will allow the creation of much more child networks from a given super network size.</p></td>
               </tr>
             
               <tr>
-                <td>NETWORK_TYPE_PRIVATE</td>
-                <td>7</td>
-                <td><p>NETWORK_TYPE_PRIVATE indicates a private network of a project.
-Connectivity to external networks is not possible without going through a additional firewall in this network which creates connectivity to other networks.
-Such a network will be created either from a private super, or private super namespaced.</p></td>
+                <td>NETWORK_TYPE_CHILD</td>
+                <td>5</td>
+                <td><p>NETWORK_TYPE_CHILD indicates a child network of a project.
+This is the only network type that can be created by a user.
+Connectivity to external networks is not possible without going through an additional firewall in this network which creates connectivity to other networks.
+Such a network will be created either from a super, or super namespaced.</p></td>
               </tr>
             
               <tr>
-                <td>NETWORK_TYPE_PRIVATE_SHARED</td>
-                <td>8</td>
-                <td><p>NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects.
-Connectivity to external networks is not possible, as for normal private networks.
-These networks are usually used to provide connectivity to shared services which are created in private networks, e.g. storage.</p></td>
+                <td>NETWORK_TYPE_CHILD_SHARED</td>
+                <td>6</td>
+                <td><p>NETWORK_TYPE_CHILD_SHARED indicates a child network of a project which allows the allocation of ips from different projects.
+Connectivity to external networks is not possible, as for normal child networks.
+These networks are usually used to provide connectivity to shared services which are created in child networks, e.g. storage.
+With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.</p></td>
               </tr>
             
           </tbody>

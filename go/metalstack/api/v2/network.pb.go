@@ -81,58 +81,59 @@ type NetworkType int32
 const (
 	// NETWORK_TYPE_UNSPECIFIED indicates a unknown network type
 	NetworkType_NETWORK_TYPE_UNSPECIFIED NetworkType = 0
-	// NETWORK_TYPE_SHARED indicates a shared network where multiple projects can allocate ips, it offers connectivity to external networks
+	// NETWORK_TYPE_EXTERNAL indicates network where multiple projects can allocate ips, it offers connectivity to external networks
 	// In most cases this is the internet network or a network which offers connectivity to legacy datacenter networks.
-	NetworkType_NETWORK_TYPE_SHARED NetworkType = 1
+	// If it is not project scoped everyone can allocate Ips in this network, otherwise only from the same project ip allocation is possible.
+	NetworkType_NETWORK_TYPE_EXTERNAL NetworkType = 1
 	// NETWORK_TYPE_UNDERLAY indicates a underlay network
 	// The underlay network connects all switches and the firewalls to build a EVPN dataplane
+	// It is not project scoped. Is part of the dataplane and reserved for administrative purposes.
 	NetworkType_NETWORK_TYPE_UNDERLAY NetworkType = 2
-	// NETWORK_TYPE_SUPER_VRF_SHARED indicates a super network which is only used to create networks which share the same vrf
-	NetworkType_NETWORK_TYPE_SUPER_VRF_SHARED NetworkType = 3
-	// NETWORK_TYPE_VRF_SHARED indicates that this network shares VRF with other networks, created from a super vrf shared
-	NetworkType_NETWORK_TYPE_VRF_SHARED NetworkType = 4
-	// NETWORK_TYPE_PRIVATE_SUPER indicates a super network which is only used to create private networks
-	// The partition of such a network is mandatory.
-	NetworkType_NETWORK_TYPE_PRIVATE_SUPER NetworkType = 5
-	// NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED indicates a super network which is only used to create private networks.
-	// A network namespace will be created for every project. Private networks per project will have distinct, e.g. different prefixes.
+	// NETWORK_TYPE_SUPER indicates a super network which is only used to create child networks
+	// If the vrf id is given, child networks will inherit this vrf.
+	// If the vrf id is nil in this network, child vrf is taken from the pool.
+	// If the partition is given, child networks inherit the partition.
+	// If the partition is nil, child networks also do not have a partition (i.e. requires vrf is distributed across all partitions).
+	// For child creation destination prefixes will be inherited
+	// If this is project scoped, child project must match, otherwise can be freely specified.
+	NetworkType_NETWORK_TYPE_SUPER NetworkType = 3
+	// NETWORK_TYPE_SUPER_NAMESPACED indicates a super network which is only used to create child networks.
+	// All rules from NETWORK_TYPE_SUPER apply for them as well.
+	// In addition, a network namespace will be created for every project. Child networks per project will have disjunct prefixes.
 	// Prefix allocation will start again with the same base cidr for every project / namespace.
-	// This will allow the creation of much more private networks from a given super network size
-	// The partition of such a network must not be given.
-	NetworkType_NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED NetworkType = 6
-	// NETWORK_TYPE_PRIVATE indicates a private network of a project.
-	// Connectivity to external networks is not possible without going through a additional firewall in this network which creates connectivity to other networks.
-	// Such a network will be created either from a private super, or private super namespaced.
-	NetworkType_NETWORK_TYPE_PRIVATE NetworkType = 7
-	// NETWORK_TYPE_PRIVATE_SHARED indicates a private network of a project which allows the allocation of ips from different projects.
-	// Connectivity to external networks is not possible, as for normal private networks.
-	// These networks are usually used to provide connectivity to shared services which are created in private networks, e.g. storage.
-	NetworkType_NETWORK_TYPE_PRIVATE_SHARED NetworkType = 8
+	// This will allow the creation of much more child networks from a given super network size.
+	NetworkType_NETWORK_TYPE_SUPER_NAMESPACED NetworkType = 4
+	// NETWORK_TYPE_CHILD indicates a child network of a project.
+	// This is the only network type that can be created by a user.
+	// Connectivity to external networks is not possible without going through an additional firewall in this network which creates connectivity to other networks.
+	// Such a network will be created either from a super, or super namespaced.
+	NetworkType_NETWORK_TYPE_CHILD NetworkType = 5
+	// NETWORK_TYPE_CHILD_SHARED indicates a child network of a project which allows the allocation of ips from different projects.
+	// Connectivity to external networks is not possible, as for normal child networks.
+	// These networks are usually used to provide connectivity to shared services which are created in child networks, e.g. storage.
+	// With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.
+	NetworkType_NETWORK_TYPE_CHILD_SHARED NetworkType = 6
 )
 
 // Enum value maps for NetworkType.
 var (
 	NetworkType_name = map[int32]string{
 		0: "NETWORK_TYPE_UNSPECIFIED",
-		1: "NETWORK_TYPE_SHARED",
+		1: "NETWORK_TYPE_EXTERNAL",
 		2: "NETWORK_TYPE_UNDERLAY",
-		3: "NETWORK_TYPE_SUPER_VRF_SHARED",
-		4: "NETWORK_TYPE_VRF_SHARED",
-		5: "NETWORK_TYPE_PRIVATE_SUPER",
-		6: "NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED",
-		7: "NETWORK_TYPE_PRIVATE",
-		8: "NETWORK_TYPE_PRIVATE_SHARED",
+		3: "NETWORK_TYPE_SUPER",
+		4: "NETWORK_TYPE_SUPER_NAMESPACED",
+		5: "NETWORK_TYPE_CHILD",
+		6: "NETWORK_TYPE_CHILD_SHARED",
 	}
 	NetworkType_value = map[string]int32{
-		"NETWORK_TYPE_UNSPECIFIED":              0,
-		"NETWORK_TYPE_SHARED":                   1,
-		"NETWORK_TYPE_UNDERLAY":                 2,
-		"NETWORK_TYPE_SUPER_VRF_SHARED":         3,
-		"NETWORK_TYPE_VRF_SHARED":               4,
-		"NETWORK_TYPE_PRIVATE_SUPER":            5,
-		"NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED": 6,
-		"NETWORK_TYPE_PRIVATE":                  7,
-		"NETWORK_TYPE_PRIVATE_SHARED":           8,
+		"NETWORK_TYPE_UNSPECIFIED":      0,
+		"NETWORK_TYPE_EXTERNAL":         1,
+		"NETWORK_TYPE_UNDERLAY":         2,
+		"NETWORK_TYPE_SUPER":            3,
+		"NETWORK_TYPE_SUPER_NAMESPACED": 4,
+		"NETWORK_TYPE_CHILD":            5,
+		"NETWORK_TYPE_CHILD_SHARED":     6,
 	}
 )
 
@@ -1522,19 +1523,15 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\aNATType\x12\x18\n" +
 	"\x14NAT_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\rNAT_TYPE_NONE\x10\x01\x1a\b\x82\xb2\x19\x04none\x121\n" +
-	"\x18NAT_TYPE_IPV4_MASQUERADE\x10\x02\x1a\x13\x82\xb2\x19\x0fipv4-masquerade*\xb7\x03\n" +
+	"\x18NAT_TYPE_IPV4_MASQUERADE\x10\x02\x1a\x13\x82\xb2\x19\x0fipv4-masquerade*\xad\x02\n" +
 	"\vNetworkType\x12\x1c\n" +
-	"\x18NETWORK_TYPE_UNSPECIFIED\x10\x00\x12#\n" +
-	"\x13NETWORK_TYPE_SHARED\x10\x01\x1a\n" +
-	"\x82\xb2\x19\x06shared\x12'\n" +
-	"\x15NETWORK_TYPE_UNDERLAY\x10\x02\x1a\f\x82\xb2\x19\bunderlay\x127\n" +
-	"\x1dNETWORK_TYPE_SUPER_VRF_SHARED\x10\x03\x1a\x14\x82\xb2\x19\x10super-vrf-shared\x12+\n" +
-	"\x17NETWORK_TYPE_VRF_SHARED\x10\x04\x1a\x0e\x82\xb2\x19\n" +
-	"vrf-shared\x121\n" +
-	"\x1aNETWORK_TYPE_PRIVATE_SUPER\x10\x05\x1a\x11\x82\xb2\x19\rprivate-super\x12G\n" +
-	"%NETWORK_TYPE_PRIVATE_SUPER_NAMESPACED\x10\x06\x1a\x1c\x82\xb2\x19\x18private-super-namespaced\x12%\n" +
-	"\x14NETWORK_TYPE_PRIVATE\x10\a\x1a\v\x82\xb2\x19\aprivate\x123\n" +
-	"\x1bNETWORK_TYPE_PRIVATE_SHARED\x10\b\x1a\x12\x82\xb2\x19\x0eprivate-shared2\xde\x05\n" +
+	"\x18NETWORK_TYPE_UNSPECIFIED\x10\x00\x12'\n" +
+	"\x15NETWORK_TYPE_EXTERNAL\x10\x01\x1a\f\x82\xb2\x19\bexternal\x12'\n" +
+	"\x15NETWORK_TYPE_UNDERLAY\x10\x02\x1a\f\x82\xb2\x19\bunderlay\x12!\n" +
+	"\x12NETWORK_TYPE_SUPER\x10\x03\x1a\t\x82\xb2\x19\x05super\x127\n" +
+	"\x1dNETWORK_TYPE_SUPER_NAMESPACED\x10\x04\x1a\x14\x82\xb2\x19\x10super-namespaced\x12!\n" +
+	"\x12NETWORK_TYPE_CHILD\x10\x05\x1a\t\x82\xb2\x19\x05child\x12/\n" +
+	"\x19NETWORK_TYPE_CHILD_SHARED\x10\x06\x1a\x10\x82\xb2\x19\fchild-shared2\xde\x05\n" +
 	"\x0eNetworkService\x12m\n" +
 	"\x03Get\x12+.metalstack.api.v2.NetworkServiceGetRequest\x1a,.metalstack.api.v2.NetworkServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
 	"\x06Create\x12..metalstack.api.v2.NetworkServiceCreateRequest\x1a/.metalstack.api.v2.NetworkServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12q\n" +

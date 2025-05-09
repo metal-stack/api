@@ -9,9 +9,9 @@ import (
 )
 
 func TestGetEnum(t *testing.T) {
-	got, err := GetEnum[apiv2.NetworkType]("shared")
+	got, err := GetEnum[apiv2.NetworkType]("external")
 	require.NoError(t, err)
-	require.Equal(t, got, apiv2.NetworkType_NETWORK_TYPE_SHARED)
+	require.Equal(t, got, apiv2.NetworkType_NETWORK_TYPE_EXTERNAL)
 
 	got2, err := GetEnum[apiv2.Format]("ext4")
 	require.NoError(t, err)
@@ -24,10 +24,10 @@ func TestGetEnum(t *testing.T) {
 }
 
 func TestGetStringValue(t *testing.T) {
-	got, err := GetStringValue(apiv2.NetworkType_NETWORK_TYPE_SHARED)
+	got, err := GetStringValue(protoreflect.Enum(apiv2.NetworkType_NETWORK_TYPE_EXTERNAL))
 	require.NoError(t, err)
 	require.NotNil(t, got)
-	require.Equal(t, "shared", *got)
+	require.Equal(t, "external", *got)
 
 	got, err = GetStringValue(apiv2.Format_FORMAT_EXT4)
 	require.NoError(t, err)
