@@ -3,7 +3,7 @@ package validation
 import (
 	"testing"
 
-	"github.com/bufbuild/protovalidate-go"
+	"buf.build/go/protovalidate"
 	"github.com/metal-stack/api/go/enum"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/stretchr/testify/require"
@@ -51,15 +51,18 @@ func TestGetStringValue(t *testing.T) {
 
 	value, err := enum.GetStringValue(apiv2.Format_FORMAT_EXT4)
 	require.NoError(t, err)
-	require.Equal(t, "ext4", value)
+	ext4 := "ext4"
+	require.Equal(t, &ext4, value)
 
 	value, err = enum.GetStringValue(apiv2.LVMType_LVM_TYPE_LINEAR)
 	require.NoError(t, err)
-	require.Equal(t, "linear", value)
+	linear := "linear"
+	require.Equal(t, &linear, value)
 
 	value, err = enum.GetStringValue(apiv2.GPTType_GPT_TYPE_BOOT)
 	require.NoError(t, err)
-	require.Equal(t, "ef00", value)
+	ef := "ef00"
+	require.Equal(t, &ef, value)
 
 	_, err = enum.GetStringValue(apiv2.Format_FORMAT_UNSPECIFIED)
 	require.Error(t, err)
