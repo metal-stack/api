@@ -24,7 +24,7 @@ List of possible use cases:
     the switch VNI and Loopback ips are actually manually allocated by the ansible deployment
 - Admin creates a super network for a partition (should be possible without partition for zonal support)
   - only project scoped child network allocation is possible, no ip address allocation
-  - In Addition to defaultchildprefixlength a max childprefixlength per AF should be possible
+  - In Addition to defaultchildprefixlength a min childprefixlength per AF should be possible
 - Admin creates a external network, either internet or other campus networks where communication must be possible
   - Only project scoped ip address allocation is possible, no child networks
 - Admin creates a external super network which is used for project scoped child networks and inherit vrfShared
