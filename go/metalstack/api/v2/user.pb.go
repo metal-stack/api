@@ -38,10 +38,8 @@ type User struct {
 	Projects []*Project `protobuf:"bytes,9,rep,name=projects,proto3" json:"projects,omitempty"`
 	// DefaultTenant this user belongs to
 	DefaultTenant *Tenant `protobuf:"bytes,10,opt,name=default_tenant,json=defaultTenant,proto3" json:"default_tenant,omitempty"`
-	// DefaultProject this user belongs to
-	DefaultProject *Project `protobuf:"bytes,11,opt,name=default_project,json=defaultProject,proto3" json:"default_project,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
@@ -119,13 +117,6 @@ func (x *User) GetProjects() []*Project {
 func (x *User) GetDefaultTenant() *Tenant {
 	if x != nil {
 		return x.DefaultTenant
-	}
-	return nil
-}
-
-func (x *User) GetDefaultProject() *Project {
-	if x != nil {
-		return x.DefaultProject
 	}
 	return nil
 }
@@ -217,7 +208,7 @@ var File_metalstack_api_v2_user_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_user_proto_rawDesc = "" +
 	"\n" +
-	"\x1cmetalstack/api/v2/user.proto\x12\x11metalstack.api.v2\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/project.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xd9\x02\n" +
+	"\x1cmetalstack/api/v2/user.proto\x12\x11metalstack.api.v2\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/project.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\x94\x02\n" +
 	"\x04User\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
@@ -227,8 +218,7 @@ const file_metalstack_api_v2_user_proto_rawDesc = "" +
 	"\atenants\x18\b \x03(\v2\x19.metalstack.api.v2.TenantR\atenants\x126\n" +
 	"\bprojects\x18\t \x03(\v2\x1a.metalstack.api.v2.ProjectR\bprojects\x12@\n" +
 	"\x0edefault_tenant\x18\n" +
-	" \x01(\v2\x19.metalstack.api.v2.TenantR\rdefaultTenant\x12C\n" +
-	"\x0fdefault_project\x18\v \x01(\v2\x1a.metalstack.api.v2.ProjectR\x0edefaultProject\"\x17\n" +
+	" \x01(\v2\x19.metalstack.api.v2.TenantR\rdefaultTenant\"\x17\n" +
 	"\x15UserServiceGetRequest\"E\n" +
 	"\x16UserServiceGetResponse\x12+\n" +
 	"\x04user\x18\x01 \x01(\v2\x17.metalstack.api.v2.UserR\x04user2s\n" +
@@ -260,15 +250,14 @@ var file_metalstack_api_v2_user_proto_depIdxs = []int32{
 	3, // 0: metalstack.api.v2.User.tenants:type_name -> metalstack.api.v2.Tenant
 	4, // 1: metalstack.api.v2.User.projects:type_name -> metalstack.api.v2.Project
 	3, // 2: metalstack.api.v2.User.default_tenant:type_name -> metalstack.api.v2.Tenant
-	4, // 3: metalstack.api.v2.User.default_project:type_name -> metalstack.api.v2.Project
-	0, // 4: metalstack.api.v2.UserServiceGetResponse.user:type_name -> metalstack.api.v2.User
-	1, // 5: metalstack.api.v2.UserService.Get:input_type -> metalstack.api.v2.UserServiceGetRequest
-	2, // 6: metalstack.api.v2.UserService.Get:output_type -> metalstack.api.v2.UserServiceGetResponse
-	6, // [6:7] is the sub-list for method output_type
-	5, // [5:6] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	0, // 3: metalstack.api.v2.UserServiceGetResponse.user:type_name -> metalstack.api.v2.User
+	1, // 4: metalstack.api.v2.UserService.Get:input_type -> metalstack.api.v2.UserServiceGetRequest
+	2, // 5: metalstack.api.v2.UserService.Get:output_type -> metalstack.api.v2.UserServiceGetResponse
+	5, // [5:6] is the sub-list for method output_type
+	4, // [4:5] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_user_proto_init() }

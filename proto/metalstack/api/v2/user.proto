@@ -31,8 +31,6 @@ message User {
   repeated Project projects = 9;
   // DefaultTenant this user belongs to
   Tenant default_tenant = 10;
-  // DefaultProject this user belongs to
-  Project default_project = 11;
 }
 
 // UserServiceGetRequest is the request to get the user
