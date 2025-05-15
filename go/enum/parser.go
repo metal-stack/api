@@ -18,7 +18,10 @@ func GetStringValue[E protoreflect.Enum](e E) (*string, error) {
 
 	// Check if the option is present
 	if opts != nil && proto.HasExtension(opts, apiv2.E_EnumStringValue) {
-		stringValue := proto.GetExtension(opts, apiv2.E_EnumStringValue).(string)
+		stringValue, ok := proto.GetExtension(opts, apiv2.E_EnumStringValue).(string)
+		if !ok {
+			return nil, fmt.Errorf("cast to stringvalue not possible: %v", e)
+		}
 		return &stringValue, nil
 	}
 
@@ -53,7 +56,10 @@ func GetEnum[E protoreflect.Enum](s string) (e E, err error) {
 
 		// Check if the option is present
 		if opts != nil && proto.HasExtension(opts, apiv2.E_EnumStringValue) {
-			stringValue := proto.GetExtension(opts, apiv2.E_EnumStringValue).(string)
+			stringValue, ok := proto.GetExtension(opts, apiv2.E_EnumStringValue).(string)
+			if !ok {
+				return realE, fmt.Errorf("cast to stringvalue not possible: %v", e)
+			}
 			if stringValue == s {
 				return targetEnum.New(protoreflect.EnumNumber(i)).(E), nil
 			}
