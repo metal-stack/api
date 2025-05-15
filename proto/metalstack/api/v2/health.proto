@@ -30,15 +30,17 @@ enum Service {
   // SERVICE_UNSPECIFIED is a unknown service
   SERVICE_UNSPECIFIED = 0;
   // SERVICE_IPAM the ipam service
-  SERVICE_IPAM = 1;
+  SERVICE_IPAM = 1 [(enum_string_value) = "ipam"];
   // SERVICE_RETHINK the rethinkdb
-  SERVICE_RETHINK = 2;
+  SERVICE_RETHINK = 2 [(enum_string_value) = "rethinkdb"];
+  // SERVICE_MASTERDATA the masterdata-api
+  SERVICE_MASTERDATA = 3 [(enum_string_value) = "masterdata"];
   // SERVICE_MACHINES the machine service
-  SERVICE_MACHINES = 3;
+  SERVICE_MACHINES = 4 [(enum_string_value) = "machines"];
   // SERVICE_AUDIT the auditing
-  SERVICE_AUDIT = 4;
+  SERVICE_AUDIT = 5 [(enum_string_value) = "audit"];
   // SERVICE_VPN the vpn service
-  SERVICE_VPN = 5;
+  SERVICE_VPN = 6 [(enum_string_value) = "vpn"];
 }
 
 // Health reports the health status of all services

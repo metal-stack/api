@@ -468,7 +468,10 @@ type Meta struct {
 	// CreatedAt is the date when this ip was created
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// UpdatedAt is the date when this ip was updated
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Generation identifies the last updated time as uuidv7 field
+	// must be part of the update request to ensure optimistic locking
+	Generation    *string `protobuf:"bytes,4,opt,name=generation,proto3,oneof" json:"generation,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -520,6 +523,68 @@ func (x *Meta) GetCreatedAt() *timestamppb.Timestamp {
 func (x *Meta) GetUpdatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *Meta) GetGeneration() string {
+	if x != nil && x.Generation != nil {
+		return *x.Generation
+	}
+	return ""
+}
+
+// UpdateLabels is a message to update labels
+type UpdateLabels struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Update labels. New ones will be added, existing ones overwritten
+	Update *Labels `protobuf:"bytes,1,opt,name=update,proto3" json:"update,omitempty"`
+	// Remove labels by key
+	Remove        []string `protobuf:"bytes,2,rep,name=remove,proto3" json:"remove,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateLabels) Reset() {
+	*x = UpdateLabels{}
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateLabels) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateLabels) ProtoMessage() {}
+
+func (x *UpdateLabels) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateLabels.ProtoReflect.Descriptor instead.
+func (*UpdateLabels) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *UpdateLabels) GetUpdate() *Labels {
+	if x != nil {
+		return x.Update
+	}
+	return nil
+}
+
+func (x *UpdateLabels) GetRemove() []string {
+	if x != nil {
+		return x.Remove
 	}
 	return nil
 }
@@ -633,14 +698,21 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\x06labels\x18\x01 \x03(\v2%.metalstack.api.v2.Labels.LabelsEntryB\x18\xbaH\x15\x9a\x01\x12\"\ar\x05\x10\x01\x18\x80\x02*\ar\x05\x10\x00\x18\x80\x02R\x06labels\x1a9\n" +
 	"\vLabelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xbf\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xfd\x01\n" +
 	"\x04Meta\x126\n" +
 	"\x06labels\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsH\x00R\x06labels\x88\x01\x01\x129\n" +
 	"\n" +
 	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\t\n" +
-	"\a_labels*\x87\x01\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12-\n" +
+	"\n" +
+	"generation\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x01R\n" +
+	"generation\x88\x01\x01B\t\n" +
+	"\a_labelsB\r\n" +
+	"\v_generation\"Y\n" +
+	"\fUpdateLabels\x121\n" +
+	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12\x16\n" +
+	"\x06remove\x18\x02 \x03(\tR\x06remove*\x87\x01\n" +
 	"\n" +
 	"TenantRole\x12\x1b\n" +
 	"\x17TENANT_ROLE_UNSPECIFIED\x10\x00\x12\x15\n" +
@@ -696,7 +768,7 @@ func file_metalstack_api_v2_common_proto_rawDescGZIP() []byte {
 }
 
 var file_metalstack_api_v2_common_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_metalstack_api_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_metalstack_api_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(TenantRole)(0),                       // 0: metalstack.api.v2.TenantRole
 	(ProjectRole)(0),                      // 1: metalstack.api.v2.ProjectRole
@@ -707,34 +779,36 @@ var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(*Paging)(nil),                        // 6: metalstack.api.v2.Paging
 	(*Labels)(nil),                        // 7: metalstack.api.v2.Labels
 	(*Meta)(nil),                          // 8: metalstack.api.v2.Meta
-	nil,                                   // 9: metalstack.api.v2.Labels.LabelsEntry
-	(*timestamppb.Timestamp)(nil),         // 10: google.protobuf.Timestamp
-	(*descriptorpb.MethodOptions)(nil),    // 11: google.protobuf.MethodOptions
-	(*descriptorpb.EnumValueOptions)(nil), // 12: google.protobuf.EnumValueOptions
+	(*UpdateLabels)(nil),                  // 9: metalstack.api.v2.UpdateLabels
+	nil,                                   // 10: metalstack.api.v2.Labels.LabelsEntry
+	(*timestamppb.Timestamp)(nil),         // 11: google.protobuf.Timestamp
+	(*descriptorpb.MethodOptions)(nil),    // 12: google.protobuf.MethodOptions
+	(*descriptorpb.EnumValueOptions)(nil), // 13: google.protobuf.EnumValueOptions
 }
 var file_metalstack_api_v2_common_proto_depIdxs = []int32{
-	9,  // 0: metalstack.api.v2.Labels.labels:type_name -> metalstack.api.v2.Labels.LabelsEntry
+	10, // 0: metalstack.api.v2.Labels.labels:type_name -> metalstack.api.v2.Labels.LabelsEntry
 	7,  // 1: metalstack.api.v2.Meta.labels:type_name -> metalstack.api.v2.Labels
-	10, // 2: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
-	10, // 3: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
-	11, // 4: metalstack.api.v2.tenant_roles:extendee -> google.protobuf.MethodOptions
-	11, // 5: metalstack.api.v2.project_roles:extendee -> google.protobuf.MethodOptions
-	11, // 6: metalstack.api.v2.admin_roles:extendee -> google.protobuf.MethodOptions
-	11, // 7: metalstack.api.v2.visibility:extendee -> google.protobuf.MethodOptions
-	11, // 8: metalstack.api.v2.auditing:extendee -> google.protobuf.MethodOptions
-	11, // 9: metalstack.api.v2.infra_roles:extendee -> google.protobuf.MethodOptions
-	12, // 10: metalstack.api.v2.enum_string_value:extendee -> google.protobuf.EnumValueOptions
-	0,  // 11: metalstack.api.v2.tenant_roles:type_name -> metalstack.api.v2.TenantRole
-	1,  // 12: metalstack.api.v2.project_roles:type_name -> metalstack.api.v2.ProjectRole
-	2,  // 13: metalstack.api.v2.admin_roles:type_name -> metalstack.api.v2.AdminRole
-	4,  // 14: metalstack.api.v2.visibility:type_name -> metalstack.api.v2.Visibility
-	5,  // 15: metalstack.api.v2.auditing:type_name -> metalstack.api.v2.Auditing
-	3,  // 16: metalstack.api.v2.infra_roles:type_name -> metalstack.api.v2.InfraRole
-	17, // [17:17] is the sub-list for method output_type
-	17, // [17:17] is the sub-list for method input_type
-	11, // [11:17] is the sub-list for extension type_name
-	4,  // [4:11] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	11, // 2: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
+	11, // 3: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
+	7,  // 4: metalstack.api.v2.UpdateLabels.update:type_name -> metalstack.api.v2.Labels
+	12, // 5: metalstack.api.v2.tenant_roles:extendee -> google.protobuf.MethodOptions
+	12, // 6: metalstack.api.v2.project_roles:extendee -> google.protobuf.MethodOptions
+	12, // 7: metalstack.api.v2.admin_roles:extendee -> google.protobuf.MethodOptions
+	12, // 8: metalstack.api.v2.visibility:extendee -> google.protobuf.MethodOptions
+	12, // 9: metalstack.api.v2.auditing:extendee -> google.protobuf.MethodOptions
+	12, // 10: metalstack.api.v2.infra_roles:extendee -> google.protobuf.MethodOptions
+	13, // 11: metalstack.api.v2.enum_string_value:extendee -> google.protobuf.EnumValueOptions
+	0,  // 12: metalstack.api.v2.tenant_roles:type_name -> metalstack.api.v2.TenantRole
+	1,  // 13: metalstack.api.v2.project_roles:type_name -> metalstack.api.v2.ProjectRole
+	2,  // 14: metalstack.api.v2.admin_roles:type_name -> metalstack.api.v2.AdminRole
+	4,  // 15: metalstack.api.v2.visibility:type_name -> metalstack.api.v2.Visibility
+	5,  // 16: metalstack.api.v2.auditing:type_name -> metalstack.api.v2.Auditing
+	3,  // 17: metalstack.api.v2.infra_roles:type_name -> metalstack.api.v2.InfraRole
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	12, // [12:18] is the sub-list for extension type_name
+	5,  // [5:12] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_common_proto_init() }
@@ -750,7 +824,7 @@ func file_metalstack_api_v2_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_common_proto_rawDesc), len(file_metalstack_api_v2_common_proto_rawDesc)),
 			NumEnums:      6,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 7,
 			NumServices:   0,
 		},
