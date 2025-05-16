@@ -323,6 +323,8 @@ enum NetworkType {
   // If the vrf id is nil in this network, child vrf is taken from the pool.
   // If the partition is given, child networks inherit the partition.
   // If the partition is nil, child networks also do not have a partition (i.e. requires vrf is distributed across all partitions).
+  // If the partition is given, only one super network in that partition can be created.
+  // If the partition is nil, multiple super networks can exist. Then, for child network creation either network id or a label selector must be specified.
   // For child creation destination prefixes will be inherited
   // If this is project scoped, child project must match, otherwise can be freely specified.
   NETWORK_TYPE_SUPER = 3 [(enum_string_value) = "super"];
