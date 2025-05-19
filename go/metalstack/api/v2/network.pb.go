@@ -94,6 +94,8 @@ const (
 	// If the vrf id is nil in this network, child vrf is taken from the pool.
 	// If the partition is given, child networks inherit the partition.
 	// If the partition is nil, child networks also do not have a partition (i.e. requires vrf is distributed across all partitions).
+	// If the partition is given, only one super network in that partition can be created.
+	// If the partition is nil, multiple super networks can exist. Then, for child network creation either network id or a label selector must be specified.
 	// For child creation destination prefixes will be inherited
 	// If this is project scoped, child project must match, otherwise can be freely specified.
 	NetworkType_NETWORK_TYPE_SUPER NetworkType = 3
@@ -652,6 +654,8 @@ func (x *NetworkServiceListResponse) GetNetworks() []*Network {
 // NetworkServiceListRequest
 type NetworkServiceListBaseNetworksRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// Project of the base networks to list
+	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// Query which specifies which networks to return
 	Query         *NetworkQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -686,6 +690,13 @@ func (x *NetworkServiceListBaseNetworksRequest) ProtoReflect() protoreflect.Mess
 // Deprecated: Use NetworkServiceListBaseNetworksRequest.ProtoReflect.Descriptor instead.
 func (*NetworkServiceListBaseNetworksRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *NetworkServiceListBaseNetworksRequest) GetProject() string {
+	if x != nil {
+		return x.Project
+	}
+	return ""
 }
 
 func (x *NetworkServiceListBaseNetworksRequest) GetQuery() *NetworkQuery {
@@ -1421,8 +1432,9 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x125\n" +
 	"\x05query\x18\x02 \x01(\v2\x1f.metalstack.api.v2.NetworkQueryR\x05query\"T\n" +
 	"\x1aNetworkServiceListResponse\x126\n" +
-	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"^\n" +
-	"%NetworkServiceListBaseNetworksRequest\x125\n" +
+	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"\x82\x01\n" +
+	"%NetworkServiceListBaseNetworksRequest\x12\"\n" +
+	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x125\n" +
 	"\x05query\x18\x02 \x01(\v2\x1f.metalstack.api.v2.NetworkQueryR\x05query\"`\n" +
 	"&NetworkServiceListBaseNetworksResponse\x126\n" +
 	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"]\n" +
@@ -1531,13 +1543,13 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x12NETWORK_TYPE_SUPER\x10\x03\x1a\t\x82\xb2\x19\x05super\x127\n" +
 	"\x1dNETWORK_TYPE_SUPER_NAMESPACED\x10\x04\x1a\x14\x82\xb2\x19\x10super-namespaced\x12!\n" +
 	"\x12NETWORK_TYPE_CHILD\x10\x05\x1a\t\x82\xb2\x19\x05child\x12/\n" +
-	"\x19NETWORK_TYPE_CHILD_SHARED\x10\x06\x1a\x10\x82\xb2\x19\fchild-shared2\xde\x05\n" +
+	"\x19NETWORK_TYPE_CHILD_SHARED\x10\x06\x1a\x10\x82\xb2\x19\fchild-shared2\xe1\x05\n" +
 	"\x0eNetworkService\x12m\n" +
 	"\x03Get\x12+.metalstack.api.v2.NetworkServiceGetRequest\x1a,.metalstack.api.v2.NetworkServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
 	"\x06Create\x12..metalstack.api.v2.NetworkServiceCreateRequest\x1a/.metalstack.api.v2.NetworkServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12q\n" +
 	"\x06Update\x12..metalstack.api.v2.NetworkServiceUpdateRequest\x1a/.metalstack.api.v2.NetworkServiceUpdateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12p\n" +
-	"\x04List\x12,.metalstack.api.v2.NetworkServiceListRequest\x1a-.metalstack.api.v2.NetworkServiceListResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12\x91\x01\n" +
-	"\x10ListBaseNetworks\x128.metalstack.api.v2.NetworkServiceListBaseNetworksRequest\x1a9.metalstack.api.v2.NetworkServiceListBaseNetworksResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12q\n" +
+	"\x04List\x12,.metalstack.api.v2.NetworkServiceListRequest\x1a-.metalstack.api.v2.NetworkServiceListResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12\x94\x01\n" +
+	"\x10ListBaseNetworks\x128.metalstack.api.v2.NetworkServiceListBaseNetworksRequest\x1a9.metalstack.api.v2.NetworkServiceListBaseNetworksResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
 	"\x06Delete\x12..metalstack.api.v2.NetworkServiceDeleteRequest\x1a/.metalstack.api.v2.NetworkServiceDeleteResponse\"\x06\xca\xf3\x18\x02\x01\x02B\xc2\x01\n" +
 	"\x15com.metalstack.api.v2B\fNetworkProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 

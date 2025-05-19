@@ -9,6 +9,12 @@ import "metalstack/api/v2/network.proto";
 
 // NetworkService serves network address related functions
 service NetworkService {
+  // Get a network
+  rpc Get(NetworkServiceGetRequest) returns (NetworkServiceGetResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
   // Create a network
   rpc Create(NetworkServiceCreateRequest) returns (NetworkServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
@@ -30,6 +36,21 @@ service NetworkService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
+}
+
+// NetworkServiceGetRequest
+message NetworkServiceGetRequest {
+  // ID of the network to get
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// NetworkServiceGetResponse
+message NetworkServiceGetResponse {
+  // Network which was requested to get
+  metalstack.api.v2.Network network = 1;
 }
 
 // NetworkServiceCreateRequest

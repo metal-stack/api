@@ -76,6 +76,36 @@ func (_m *NetworkServiceHandler) Delete(_a0 context.Context, _a1 *connect.Reques
 	return r0, r1
 }
 
+// Get provides a mock function with given fields: _a0, _a1
+func (_m *NetworkServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[adminv2.NetworkServiceGetRequest]) (*connect.Response[adminv2.NetworkServiceGetResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Get")
+	}
+
+	var r0 *connect.Response[adminv2.NetworkServiceGetResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceGetRequest]) (*connect.Response[adminv2.NetworkServiceGetResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceGetRequest]) *connect.Response[adminv2.NetworkServiceGetResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv2.NetworkServiceGetResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.NetworkServiceGetRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // List provides a mock function with given fields: _a0, _a1
 func (_m *NetworkServiceHandler) List(_a0 context.Context, _a1 *connect.Request[adminv2.NetworkServiceListRequest]) (*connect.Response[adminv2.NetworkServiceListResponse], error) {
 	ret := _m.Called(_a0, _a1)

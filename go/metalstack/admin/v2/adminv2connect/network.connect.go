@@ -33,6 +33,8 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// NetworkServiceGetProcedure is the fully-qualified name of the NetworkService's Get RPC.
+	NetworkServiceGetProcedure = "/metalstack.admin.v2.NetworkService/Get"
 	// NetworkServiceCreateProcedure is the fully-qualified name of the NetworkService's Create RPC.
 	NetworkServiceCreateProcedure = "/metalstack.admin.v2.NetworkService/Create"
 	// NetworkServiceUpdateProcedure is the fully-qualified name of the NetworkService's Update RPC.
@@ -45,6 +47,8 @@ const (
 
 // NetworkServiceClient is a client for the metalstack.admin.v2.NetworkService service.
 type NetworkServiceClient interface {
+	// Get a network
+	Get(context.Context, *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error)
 	// Create a network
 	Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error)
 	// Update a network
@@ -66,6 +70,12 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	networkServiceMethods := v2.File_metalstack_admin_v2_network_proto.Services().ByName("NetworkService").Methods()
 	return &networkServiceClient{
+		get: connect.NewClient[v2.NetworkServiceGetRequest, v2.NetworkServiceGetResponse](
+			httpClient,
+			baseURL+NetworkServiceGetProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("Get")),
+			connect.WithClientOptions(opts...),
+		),
 		create: connect.NewClient[v2.NetworkServiceCreateRequest, v2.NetworkServiceCreateResponse](
 			httpClient,
 			baseURL+NetworkServiceCreateProcedure,
@@ -95,10 +105,16 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // networkServiceClient implements NetworkServiceClient.
 type networkServiceClient struct {
+	get    *connect.Client[v2.NetworkServiceGetRequest, v2.NetworkServiceGetResponse]
 	create *connect.Client[v2.NetworkServiceCreateRequest, v2.NetworkServiceCreateResponse]
 	update *connect.Client[v2.NetworkServiceUpdateRequest, v2.NetworkServiceUpdateResponse]
 	delete *connect.Client[v2.NetworkServiceDeleteRequest, v2.NetworkServiceDeleteResponse]
 	list   *connect.Client[v2.NetworkServiceListRequest, v2.NetworkServiceListResponse]
+}
+
+// Get calls metalstack.admin.v2.NetworkService.Get.
+func (c *networkServiceClient) Get(ctx context.Context, req *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error) {
+	return c.get.CallUnary(ctx, req)
 }
 
 // Create calls metalstack.admin.v2.NetworkService.Create.
@@ -123,6 +139,8 @@ func (c *networkServiceClient) List(ctx context.Context, req *connect.Request[v2
 
 // NetworkServiceHandler is an implementation of the metalstack.admin.v2.NetworkService service.
 type NetworkServiceHandler interface {
+	// Get a network
+	Get(context.Context, *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error)
 	// Create a network
 	Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error)
 	// Update a network
@@ -140,6 +158,12 @@ type NetworkServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	networkServiceMethods := v2.File_metalstack_admin_v2_network_proto.Services().ByName("NetworkService").Methods()
+	networkServiceGetHandler := connect.NewUnaryHandler(
+		NetworkServiceGetProcedure,
+		svc.Get,
+		connect.WithSchema(networkServiceMethods.ByName("Get")),
+		connect.WithHandlerOptions(opts...),
+	)
 	networkServiceCreateHandler := connect.NewUnaryHandler(
 		NetworkServiceCreateProcedure,
 		svc.Create,
@@ -166,6 +190,8 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 	)
 	return "/metalstack.admin.v2.NetworkService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case NetworkServiceGetProcedure:
+			networkServiceGetHandler.ServeHTTP(w, r)
 		case NetworkServiceCreateProcedure:
 			networkServiceCreateHandler.ServeHTTP(w, r)
 		case NetworkServiceUpdateProcedure:
@@ -182,6 +208,10 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 
 // UnimplementedNetworkServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedNetworkServiceHandler struct{}
+
+func (UnimplementedNetworkServiceHandler) Get(context.Context, *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.Get is not implemented"))
+}
 
 func (UnimplementedNetworkServiceHandler) Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.Create is not implemented"))

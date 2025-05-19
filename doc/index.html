@@ -719,6 +719,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.admin.v2.NetworkServiceGetRequest"><span class="badge">M</span>NetworkServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.NetworkServiceGetResponse"><span class="badge">M</span>NetworkServiceGetResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.NetworkServiceListRequest"><span class="badge">M</span>NetworkServiceListRequest</a>
                 </li>
               
@@ -4881,6 +4889,13 @@ Will be equal with project most of the time </p></td>
             <tbody>
               
                 <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project of the base networks to list </p></td>
+                </tr>
+              
+                <tr>
                   <td>query</td>
                   <td><a href="#metalstack.api.v2.NetworkQuery">NetworkQuery</a></td>
                   <td></td>
@@ -5163,6 +5178,8 @@ If the vrf id is given, child networks will inherit this vrf.
 If the vrf id is nil in this network, child vrf is taken from the pool.
 If the partition is given, child networks inherit the partition.
 If the partition is nil, child networks also do not have a partition (i.e. requires vrf is distributed across all partitions).
+If the partition is given, only one super network in that partition can be created.
+If the partition is nil, multiple super networks can exist. Then, for child network creation either network id or a label selector must be specified.
 For child creation destination prefixes will be inherited
 If this is project scoped, child project must match, otherwise can be freely specified.</p></td>
               </tr>
@@ -5472,6 +5489,54 @@ With this approach the number of hops can be reduced to the bare minimum in orde
 
         
       
+        <h3 id="metalstack.admin.v2.NetworkServiceGetRequest">NetworkServiceGetRequest</h3>
+        <p>NetworkServiceGetRequest</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID of the network to get </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.NetworkServiceGetResponse">NetworkServiceGetResponse</h3>
+        <p>NetworkServiceGetResponse</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#metalstack.api.v2.Network">metalstack.api.v2.Network</a></td>
+                  <td></td>
+                  <td><p>Network which was requested to get </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.NetworkServiceListRequest">NetworkServiceListRequest</h3>
         <p>NetworkServiceListRequest</p>
 
@@ -5651,6 +5716,13 @@ With this approach the number of hops can be reduced to the bare minimum in orde
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
           </thead>
           <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.admin.v2.NetworkServiceGetRequest">NetworkServiceGetRequest</a></td>
+                <td><a href="#metalstack.admin.v2.NetworkServiceGetResponse">NetworkServiceGetResponse</a></td>
+                <td><p>Get a network</p></td>
+              </tr>
             
               <tr>
                 <td>Create</td>

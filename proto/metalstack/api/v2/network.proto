@@ -34,7 +34,9 @@ service NetworkService {
   }
   // ListBaseNetworks all unscoped networks
   rpc ListBaseNetworks(NetworkServiceListBaseNetworksRequest) returns (NetworkServiceListBaseNetworksResponse) {
-    option (visibility) = VISIBILITY_SELF;
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
   // Delete a network
@@ -144,6 +146,8 @@ message NetworkServiceListResponse {
 
 // NetworkServiceListRequest
 message NetworkServiceListBaseNetworksRequest {
+  // Project of the base networks to list
+  string project = 1 [(buf.validate.field).string.uuid = true];
   // Query which specifies which networks to return
   NetworkQuery query = 2;
 }

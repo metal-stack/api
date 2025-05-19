@@ -23,6 +23,98 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// NetworkServiceGetRequest
+type NetworkServiceGetRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the network to get
+	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkServiceGetRequest) Reset() {
+	*x = NetworkServiceGetRequest{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceGetRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceGetRequest) ProtoMessage() {}
+
+func (x *NetworkServiceGetRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceGetRequest.ProtoReflect.Descriptor instead.
+func (*NetworkServiceGetRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *NetworkServiceGetRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+// NetworkServiceGetResponse
+type NetworkServiceGetResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Network which was requested to get
+	Network       *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkServiceGetResponse) Reset() {
+	*x = NetworkServiceGetResponse{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceGetResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceGetResponse) ProtoMessage() {}
+
+func (x *NetworkServiceGetResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceGetResponse.ProtoReflect.Descriptor instead.
+func (*NetworkServiceGetResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *NetworkServiceGetResponse) GetNetwork() *v2.Network {
+	if x != nil {
+		return x.Network
+	}
+	return nil
+}
+
 // NetworkServiceCreateRequest
 type NetworkServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -66,7 +158,7 @@ type NetworkServiceCreateRequest struct {
 
 func (x *NetworkServiceCreateRequest) Reset() {
 	*x = NetworkServiceCreateRequest{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[0]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -78,7 +170,7 @@ func (x *NetworkServiceCreateRequest) String() string {
 func (*NetworkServiceCreateRequest) ProtoMessage() {}
 
 func (x *NetworkServiceCreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[0]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -91,7 +183,7 @@ func (x *NetworkServiceCreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceCreateRequest.ProtoReflect.Descriptor instead.
 func (*NetworkServiceCreateRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{0}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *NetworkServiceCreateRequest) GetId() string {
@@ -244,7 +336,7 @@ type NetworkServiceUpdateRequest struct {
 
 func (x *NetworkServiceUpdateRequest) Reset() {
 	*x = NetworkServiceUpdateRequest{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[1]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -256,7 +348,7 @@ func (x *NetworkServiceUpdateRequest) String() string {
 func (*NetworkServiceUpdateRequest) ProtoMessage() {}
 
 func (x *NetworkServiceUpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[1]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -269,7 +361,7 @@ func (x *NetworkServiceUpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceUpdateRequest.ProtoReflect.Descriptor instead.
 func (*NetworkServiceUpdateRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{1}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *NetworkServiceUpdateRequest) GetId() string {
@@ -360,7 +452,7 @@ type NetworkServiceDeleteRequest struct {
 
 func (x *NetworkServiceDeleteRequest) Reset() {
 	*x = NetworkServiceDeleteRequest{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[2]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -372,7 +464,7 @@ func (x *NetworkServiceDeleteRequest) String() string {
 func (*NetworkServiceDeleteRequest) ProtoMessage() {}
 
 func (x *NetworkServiceDeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[2]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -385,7 +477,7 @@ func (x *NetworkServiceDeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceDeleteRequest.ProtoReflect.Descriptor instead.
 func (*NetworkServiceDeleteRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{2}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *NetworkServiceDeleteRequest) GetId() string {
@@ -406,7 +498,7 @@ type NetworkServiceListRequest struct {
 
 func (x *NetworkServiceListRequest) Reset() {
 	*x = NetworkServiceListRequest{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[3]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -418,7 +510,7 @@ func (x *NetworkServiceListRequest) String() string {
 func (*NetworkServiceListRequest) ProtoMessage() {}
 
 func (x *NetworkServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[3]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -431,7 +523,7 @@ func (x *NetworkServiceListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceListRequest.ProtoReflect.Descriptor instead.
 func (*NetworkServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{3}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *NetworkServiceListRequest) GetQuery() *v2.NetworkQuery {
@@ -452,7 +544,7 @@ type NetworkServiceCreateResponse struct {
 
 func (x *NetworkServiceCreateResponse) Reset() {
 	*x = NetworkServiceCreateResponse{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[4]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -464,7 +556,7 @@ func (x *NetworkServiceCreateResponse) String() string {
 func (*NetworkServiceCreateResponse) ProtoMessage() {}
 
 func (x *NetworkServiceCreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[4]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -477,7 +569,7 @@ func (x *NetworkServiceCreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceCreateResponse.ProtoReflect.Descriptor instead.
 func (*NetworkServiceCreateResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{4}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *NetworkServiceCreateResponse) GetNetwork() *v2.Network {
@@ -498,7 +590,7 @@ type NetworkServiceUpdateResponse struct {
 
 func (x *NetworkServiceUpdateResponse) Reset() {
 	*x = NetworkServiceUpdateResponse{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[5]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -510,7 +602,7 @@ func (x *NetworkServiceUpdateResponse) String() string {
 func (*NetworkServiceUpdateResponse) ProtoMessage() {}
 
 func (x *NetworkServiceUpdateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[5]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -523,7 +615,7 @@ func (x *NetworkServiceUpdateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceUpdateResponse.ProtoReflect.Descriptor instead.
 func (*NetworkServiceUpdateResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{5}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *NetworkServiceUpdateResponse) GetNetwork() *v2.Network {
@@ -544,7 +636,7 @@ type NetworkServiceDeleteResponse struct {
 
 func (x *NetworkServiceDeleteResponse) Reset() {
 	*x = NetworkServiceDeleteResponse{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[6]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -556,7 +648,7 @@ func (x *NetworkServiceDeleteResponse) String() string {
 func (*NetworkServiceDeleteResponse) ProtoMessage() {}
 
 func (x *NetworkServiceDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[6]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -569,7 +661,7 @@ func (x *NetworkServiceDeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceDeleteResponse.ProtoReflect.Descriptor instead.
 func (*NetworkServiceDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{6}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *NetworkServiceDeleteResponse) GetNetwork() *v2.Network {
@@ -590,7 +682,7 @@ type NetworkServiceListResponse struct {
 
 func (x *NetworkServiceListResponse) Reset() {
 	*x = NetworkServiceListResponse{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[7]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -602,7 +694,7 @@ func (x *NetworkServiceListResponse) String() string {
 func (*NetworkServiceListResponse) ProtoMessage() {}
 
 func (x *NetworkServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[7]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -615,7 +707,7 @@ func (x *NetworkServiceListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceListResponse.ProtoReflect.Descriptor instead.
 func (*NetworkServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{7}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *NetworkServiceListResponse) GetNetworks() []*v2.Network {
@@ -629,7 +721,12 @@ var File_metalstack_admin_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1ametalstack/api/v2/ip.proto\x1a\x1fmetalstack/api/v2/network.proto\"\xd4\v\n" +
+	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1ametalstack/api/v2/ip.proto\x1a\x1fmetalstack/api/v2/network.proto\"6\n" +
+	"\x18NetworkServiceGetRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"Q\n" +
+	"\x19NetworkServiceGetResponse\x124\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xd4\v\n" +
 	"\x1bNetworkServiceCreateRequest\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
@@ -708,8 +805,10 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x1cNetworkServiceDeleteResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"T\n" +
 	"\x1aNetworkServiceListResponse\x126\n" +
-	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks2\xf3\x03\n" +
-	"\x0eNetworkService\x12x\n" +
+	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks2\xe5\x04\n" +
+	"\x0eNetworkService\x12p\n" +
+	"\x03Get\x12-.metalstack.admin.v2.NetworkServiceGetRequest\x1a..metalstack.admin.v2.NetworkServiceGetResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12x\n" +
 	"\x06Create\x120.metalstack.admin.v2.NetworkServiceCreateRequest\x1a1.metalstack.admin.v2.NetworkServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12x\n" +
 	"\x06Update\x120.metalstack.admin.v2.NetworkServiceUpdateRequest\x1a1.metalstack.admin.v2.NetworkServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12x\n" +
 	"\x06Delete\x120.metalstack.admin.v2.NetworkServiceDeleteRequest\x1a1.metalstack.admin.v2.NetworkServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12s\n" +
@@ -729,55 +828,60 @@ func file_metalstack_admin_v2_network_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_network_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_network_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_metalstack_admin_v2_network_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_metalstack_admin_v2_network_proto_goTypes = []any{
-	(*NetworkServiceCreateRequest)(nil),  // 0: metalstack.admin.v2.NetworkServiceCreateRequest
-	(*NetworkServiceUpdateRequest)(nil),  // 1: metalstack.admin.v2.NetworkServiceUpdateRequest
-	(*NetworkServiceDeleteRequest)(nil),  // 2: metalstack.admin.v2.NetworkServiceDeleteRequest
-	(*NetworkServiceListRequest)(nil),    // 3: metalstack.admin.v2.NetworkServiceListRequest
-	(*NetworkServiceCreateResponse)(nil), // 4: metalstack.admin.v2.NetworkServiceCreateResponse
-	(*NetworkServiceUpdateResponse)(nil), // 5: metalstack.admin.v2.NetworkServiceUpdateResponse
-	(*NetworkServiceDeleteResponse)(nil), // 6: metalstack.admin.v2.NetworkServiceDeleteResponse
-	(*NetworkServiceListResponse)(nil),   // 7: metalstack.admin.v2.NetworkServiceListResponse
-	(v2.NetworkType)(0),                  // 8: metalstack.api.v2.NetworkType
-	(*v2.Labels)(nil),                    // 9: metalstack.api.v2.Labels
-	(*v2.ChildPrefixLength)(nil),         // 10: metalstack.api.v2.ChildPrefixLength
-	(v2.NATType)(0),                      // 11: metalstack.api.v2.NATType
-	(v2.IPAddressFamily)(0),              // 12: metalstack.api.v2.IPAddressFamily
-	(*v2.UpdateLabels)(nil),              // 13: metalstack.api.v2.UpdateLabels
-	(*v2.NetworkQuery)(nil),              // 14: metalstack.api.v2.NetworkQuery
-	(*v2.Network)(nil),                   // 15: metalstack.api.v2.Network
+	(*NetworkServiceGetRequest)(nil),     // 0: metalstack.admin.v2.NetworkServiceGetRequest
+	(*NetworkServiceGetResponse)(nil),    // 1: metalstack.admin.v2.NetworkServiceGetResponse
+	(*NetworkServiceCreateRequest)(nil),  // 2: metalstack.admin.v2.NetworkServiceCreateRequest
+	(*NetworkServiceUpdateRequest)(nil),  // 3: metalstack.admin.v2.NetworkServiceUpdateRequest
+	(*NetworkServiceDeleteRequest)(nil),  // 4: metalstack.admin.v2.NetworkServiceDeleteRequest
+	(*NetworkServiceListRequest)(nil),    // 5: metalstack.admin.v2.NetworkServiceListRequest
+	(*NetworkServiceCreateResponse)(nil), // 6: metalstack.admin.v2.NetworkServiceCreateResponse
+	(*NetworkServiceUpdateResponse)(nil), // 7: metalstack.admin.v2.NetworkServiceUpdateResponse
+	(*NetworkServiceDeleteResponse)(nil), // 8: metalstack.admin.v2.NetworkServiceDeleteResponse
+	(*NetworkServiceListResponse)(nil),   // 9: metalstack.admin.v2.NetworkServiceListResponse
+	(*v2.Network)(nil),                   // 10: metalstack.api.v2.Network
+	(v2.NetworkType)(0),                  // 11: metalstack.api.v2.NetworkType
+	(*v2.Labels)(nil),                    // 12: metalstack.api.v2.Labels
+	(*v2.ChildPrefixLength)(nil),         // 13: metalstack.api.v2.ChildPrefixLength
+	(v2.NATType)(0),                      // 14: metalstack.api.v2.NATType
+	(v2.IPAddressFamily)(0),              // 15: metalstack.api.v2.IPAddressFamily
+	(*v2.UpdateLabels)(nil),              // 16: metalstack.api.v2.UpdateLabels
+	(*v2.NetworkQuery)(nil),              // 17: metalstack.api.v2.NetworkQuery
 }
 var file_metalstack_admin_v2_network_proto_depIdxs = []int32{
-	8,  // 0: metalstack.admin.v2.NetworkServiceCreateRequest.type:type_name -> metalstack.api.v2.NetworkType
-	9,  // 1: metalstack.admin.v2.NetworkServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
-	10, // 2: metalstack.admin.v2.NetworkServiceCreateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	10, // 3: metalstack.admin.v2.NetworkServiceCreateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	11, // 4: metalstack.admin.v2.NetworkServiceCreateRequest.nat_type:type_name -> metalstack.api.v2.NATType
-	10, // 5: metalstack.admin.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
-	12, // 6: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.IPAddressFamily
-	13, // 7: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
-	10, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	10, // 9: metalstack.admin.v2.NetworkServiceUpdateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	11, // 10: metalstack.admin.v2.NetworkServiceUpdateRequest.nat_type:type_name -> metalstack.api.v2.NATType
-	14, // 11: metalstack.admin.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
-	15, // 12: metalstack.admin.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
-	15, // 13: metalstack.admin.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
-	15, // 14: metalstack.admin.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
-	15, // 15: metalstack.admin.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
-	0,  // 16: metalstack.admin.v2.NetworkService.Create:input_type -> metalstack.admin.v2.NetworkServiceCreateRequest
-	1,  // 17: metalstack.admin.v2.NetworkService.Update:input_type -> metalstack.admin.v2.NetworkServiceUpdateRequest
-	2,  // 18: metalstack.admin.v2.NetworkService.Delete:input_type -> metalstack.admin.v2.NetworkServiceDeleteRequest
-	3,  // 19: metalstack.admin.v2.NetworkService.List:input_type -> metalstack.admin.v2.NetworkServiceListRequest
-	4,  // 20: metalstack.admin.v2.NetworkService.Create:output_type -> metalstack.admin.v2.NetworkServiceCreateResponse
-	5,  // 21: metalstack.admin.v2.NetworkService.Update:output_type -> metalstack.admin.v2.NetworkServiceUpdateResponse
-	6,  // 22: metalstack.admin.v2.NetworkService.Delete:output_type -> metalstack.admin.v2.NetworkServiceDeleteResponse
-	7,  // 23: metalstack.admin.v2.NetworkService.List:output_type -> metalstack.admin.v2.NetworkServiceListResponse
-	20, // [20:24] is the sub-list for method output_type
-	16, // [16:20] is the sub-list for method input_type
-	16, // [16:16] is the sub-list for extension type_name
-	16, // [16:16] is the sub-list for extension extendee
-	0,  // [0:16] is the sub-list for field type_name
+	10, // 0: metalstack.admin.v2.NetworkServiceGetResponse.network:type_name -> metalstack.api.v2.Network
+	11, // 1: metalstack.admin.v2.NetworkServiceCreateRequest.type:type_name -> metalstack.api.v2.NetworkType
+	12, // 2: metalstack.admin.v2.NetworkServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	13, // 3: metalstack.admin.v2.NetworkServiceCreateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	13, // 4: metalstack.admin.v2.NetworkServiceCreateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	14, // 5: metalstack.admin.v2.NetworkServiceCreateRequest.nat_type:type_name -> metalstack.api.v2.NATType
+	13, // 6: metalstack.admin.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
+	15, // 7: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.IPAddressFamily
+	16, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	13, // 9: metalstack.admin.v2.NetworkServiceUpdateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	13, // 10: metalstack.admin.v2.NetworkServiceUpdateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	14, // 11: metalstack.admin.v2.NetworkServiceUpdateRequest.nat_type:type_name -> metalstack.api.v2.NATType
+	17, // 12: metalstack.admin.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
+	10, // 13: metalstack.admin.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
+	10, // 14: metalstack.admin.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
+	10, // 15: metalstack.admin.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
+	10, // 16: metalstack.admin.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
+	0,  // 17: metalstack.admin.v2.NetworkService.Get:input_type -> metalstack.admin.v2.NetworkServiceGetRequest
+	2,  // 18: metalstack.admin.v2.NetworkService.Create:input_type -> metalstack.admin.v2.NetworkServiceCreateRequest
+	3,  // 19: metalstack.admin.v2.NetworkService.Update:input_type -> metalstack.admin.v2.NetworkServiceUpdateRequest
+	4,  // 20: metalstack.admin.v2.NetworkService.Delete:input_type -> metalstack.admin.v2.NetworkServiceDeleteRequest
+	5,  // 21: metalstack.admin.v2.NetworkService.List:input_type -> metalstack.admin.v2.NetworkServiceListRequest
+	1,  // 22: metalstack.admin.v2.NetworkService.Get:output_type -> metalstack.admin.v2.NetworkServiceGetResponse
+	6,  // 23: metalstack.admin.v2.NetworkService.Create:output_type -> metalstack.admin.v2.NetworkServiceCreateResponse
+	7,  // 24: metalstack.admin.v2.NetworkService.Update:output_type -> metalstack.admin.v2.NetworkServiceUpdateResponse
+	8,  // 25: metalstack.admin.v2.NetworkService.Delete:output_type -> metalstack.admin.v2.NetworkServiceDeleteResponse
+	9,  // 26: metalstack.admin.v2.NetworkService.List:output_type -> metalstack.admin.v2.NetworkServiceListResponse
+	22, // [22:27] is the sub-list for method output_type
+	17, // [17:22] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_network_proto_init() }
@@ -785,15 +889,15 @@ func file_metalstack_admin_v2_network_proto_init() {
 	if File_metalstack_admin_v2_network_proto != nil {
 		return
 	}
-	file_metalstack_admin_v2_network_proto_msgTypes[0].OneofWrappers = []any{}
-	file_metalstack_admin_v2_network_proto_msgTypes[1].OneofWrappers = []any{}
+	file_metalstack_admin_v2_network_proto_msgTypes[2].OneofWrappers = []any{}
+	file_metalstack_admin_v2_network_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_network_proto_rawDesc), len(file_metalstack_admin_v2_network_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
