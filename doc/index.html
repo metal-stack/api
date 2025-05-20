@@ -3653,7 +3653,7 @@ should contain os and major.minor then latest patch version of this os is return
                   <td>namespace</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Namespace if specified, this ip is from a namespaced network and can therefore overlap with others
+                  <td><p>Namespace if specified this ip is from a namespaced network and can therefore overlap with others
 Will be equal with project most of the time </p></td>
                 </tr>
               
@@ -3932,6 +3932,20 @@ Will be equal with project most of the time </p></td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Project of the ip </p></td>
+                </tr>
+              
+                <tr>
+                  <td>namespace</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Namespace can be specified to get the ip of a namespace. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Uuid of the ip to describe </p></td>
                 </tr>
               
             </tbody>

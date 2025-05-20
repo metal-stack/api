@@ -147,7 +147,7 @@ type IP struct {
 	Project string `protobuf:"bytes,7,opt,name=project,proto3" json:"project,omitempty"`
 	// Type of this ip
 	Type IPType `protobuf:"varint,8,opt,name=type,proto3,enum=metalstack.api.v2.IPType" json:"type,omitempty"`
-	// Namespace if specified, this ip is from a namespaced network and can therefore overlap with others
+	// Namespace if specified this ip is from a namespaced network and can therefore overlap with others
 	// Will be equal with project most of the time
 	Namespace     *string `protobuf:"bytes,9,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -253,7 +253,11 @@ type IPServiceGetRequest struct {
 	// IP of the ip to get
 	Ip string `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
 	// Project of the ip
-	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Namespace can be specified to get the ip of a namespace.
+	Namespace *string `protobuf:"bytes,3,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
+	// Uuid of the ip to describe
+	Uuid          *string `protobuf:"bytes,4,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -298,6 +302,20 @@ func (x *IPServiceGetRequest) GetIp() string {
 func (x *IPServiceGetRequest) GetProject() string {
 	if x != nil {
 		return x.Project
+	}
+	return ""
+}
+
+func (x *IPServiceGetRequest) GetNamespace() string {
+	if x != nil && x.Namespace != nil {
+		return *x.Namespace
+	}
+	return ""
+}
+
+func (x *IPServiceGetRequest) GetUuid() string {
+	if x != nil && x.Uuid != nil {
+		return *x.Uuid
 	}
 	return ""
 }
@@ -996,10 +1014,15 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x04type\x18\b \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12+\n" +
 	"\tnamespace\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\tnamespace\x88\x01\x01B\f\n" +
 	"\n" +
-	"_namespace\"R\n" +
+	"_namespace\"\xb9\x01\n" +
 	"\x13IPServiceGetRequest\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12\"\n" +
-	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\xaa\x04\n" +
+	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12+\n" +
+	"\tnamespace\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\tnamespace\x88\x01\x01\x12!\n" +
+	"\x04uuid\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x01R\x04uuid\x88\x01\x01B\f\n" +
+	"\n" +
+	"_namespaceB\a\n" +
+	"\x05_uuid\"\xaa\x04\n" +
 	"\x16IPServiceCreateRequest\x12$\n" +
 	"\anetwork\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\anetwork\x12\"\n" +
@@ -1166,6 +1189,7 @@ func file_metalstack_api_v2_ip_proto_init() {
 	}
 	file_metalstack_api_v2_common_proto_init()
 	file_metalstack_api_v2_ip_proto_msgTypes[0].OneofWrappers = []any{}
+	file_metalstack_api_v2_ip_proto_msgTypes[1].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[3].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[5].OneofWrappers = []any{}

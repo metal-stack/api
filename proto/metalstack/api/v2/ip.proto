@@ -93,6 +93,10 @@ message IPServiceGetRequest {
   string ip = 1 [(buf.validate.field).string.ip = true];
   // Project of the ip
   string project = 2 [(buf.validate.field).string.uuid = true];
+  // Namespace can be specified to get the ip of a namespace.
+  optional string namespace = 3 [(buf.validate.field).string.uuid = true];
+  // Uuid of the ip to describe
+  optional string uuid = 4 [(buf.validate.field).string.uuid = true];
 }
 
 // IPServiceCreateRequest is the request payload for a ip create request
