@@ -607,6 +607,8 @@ type IPQuery struct {
 	Type *IPType `protobuf:"varint,9,opt,name=type,proto3,enum=metalstack.api.v2.IPType,oneof" json:"type,omitempty"`
 	// Addressfamily of the IPs to list, defaults to all addressfamilies
 	AddressFamily *IPAddressFamily `protobuf:"varint,10,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
+	// Namespace can be specified to get the ip of a namespace.
+	Namespace     *string `protobuf:"bytes,11,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -709,6 +711,13 @@ func (x *IPQuery) GetAddressFamily() IPAddressFamily {
 		return *x.AddressFamily
 	}
 	return IPAddressFamily_IP_ADDRESS_FAMILY_UNSPECIFIED
+}
+
+func (x *IPQuery) GetNamespace() string {
+	if x != nil && x.Namespace != nil {
+		return *x.Namespace
+	}
+	return ""
 }
 
 // IPServiceDeleteRequest is the request payload for a ip delete request
@@ -1057,7 +1066,7 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\a_labels\"l\n" +
 	"\x14IPServiceListRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x120\n" +
-	"\x05query\x18\x02 \x01(\v2\x1a.metalstack.api.v2.IPQueryR\x05query\"\xfb\x04\n" +
+	"\x05query\x18\x02 \x01(\v2\x1a.metalstack.api.v2.IPQueryR\x05query\"\xb6\x05\n" +
 	"\aIPQuery\x12\x1c\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01H\x00R\x02ip\x88\x01\x01\x12)\n" +
 	"\anetwork\x18\x02 \x01(\tB\n" +
@@ -1072,7 +1081,9 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x06labels\x18\b \x01(\v2\x19.metalstack.api.v2.LabelsH\aR\x06labels\x88\x01\x01\x12<\n" +
 	"\x04type\x18\t \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\bR\x04type\x88\x01\x01\x12X\n" +
 	"\x0eaddress_family\x18\n" +
-	" \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\tR\raddressFamily\x88\x01\x01B\x05\n" +
+	" \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\tR\raddressFamily\x88\x01\x01\x12+\n" +
+	"\tnamespace\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\n" +
+	"R\tnamespace\x88\x01\x01B\x05\n" +
 	"\x03_ipB\n" +
 	"\n" +
 	"\b_networkB\n" +
@@ -1084,7 +1095,9 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x13_parent_prefix_cidrB\t\n" +
 	"\a_labelsB\a\n" +
 	"\x05_typeB\x11\n" +
-	"\x0f_address_family\"U\n" +
+	"\x0f_address_familyB\f\n" +
+	"\n" +
+	"_namespace\"U\n" +
 	"\x16IPServiceDeleteRequest\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"=\n" +

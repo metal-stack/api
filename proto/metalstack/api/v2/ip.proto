@@ -182,6 +182,8 @@ message IPQuery {
   optional IPType type = 9 [(buf.validate.field).enum.defined_only = true];
   // Addressfamily of the IPs to list, defaults to all addressfamilies
   optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
+  // Namespace can be specified to get the ip of a namespace.
+  optional string namespace = 11 [(buf.validate.field).string.uuid = true];
 }
 
 // IPServiceDeleteRequest is the request payload for a ip delete request
