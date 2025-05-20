@@ -255,9 +255,7 @@ type IPServiceGetRequest struct {
 	// Project of the ip
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	// Namespace can be specified to get the ip of a namespace.
-	Namespace *string `protobuf:"bytes,3,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
-	// Uuid of the ip to describe
-	Uuid          *string `protobuf:"bytes,4,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
+	Namespace     *string `protobuf:"bytes,3,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -309,13 +307,6 @@ func (x *IPServiceGetRequest) GetProject() string {
 func (x *IPServiceGetRequest) GetNamespace() string {
 	if x != nil && x.Namespace != nil {
 		return *x.Namespace
-	}
-	return ""
-}
-
-func (x *IPServiceGetRequest) GetUuid() string {
-	if x != nil && x.Uuid != nil {
-		return *x.Uuid
 	}
 	return ""
 }
@@ -1023,15 +1014,13 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x04type\x18\b \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12+\n" +
 	"\tnamespace\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\tnamespace\x88\x01\x01B\f\n" +
 	"\n" +
-	"_namespace\"\xb9\x01\n" +
+	"_namespace\"\x8d\x01\n" +
 	"\x13IPServiceGetRequest\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12+\n" +
-	"\tnamespace\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\tnamespace\x88\x01\x01\x12!\n" +
-	"\x04uuid\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x01R\x04uuid\x88\x01\x01B\f\n" +
+	"\tnamespace\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\tnamespace\x88\x01\x01B\f\n" +
 	"\n" +
-	"_namespaceB\a\n" +
-	"\x05_uuid\"\xaa\x04\n" +
+	"_namespace\"\xaa\x04\n" +
 	"\x16IPServiceCreateRequest\x12$\n" +
 	"\anetwork\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\anetwork\x12\"\n" +
