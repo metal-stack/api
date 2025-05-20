@@ -82,6 +82,9 @@ message IP {
   string project = 7 [(buf.validate.field).string.uuid = true];
   // Type of this ip
   IPType type = 8 [(buf.validate.field).enum.defined_only = true];
+  // Namespace if specified this ip is from a namespaced network and can therefore overlap with others
+  // Will be equal with project most of the time
+  optional string namespace = 9 [(buf.validate.field).string.uuid = true];
 }
 
 // IPServiceGetRequest is the request payload for a ip get request

@@ -146,7 +146,10 @@ type IP struct {
 	// Project where this ip address belongs to
 	Project string `protobuf:"bytes,7,opt,name=project,proto3" json:"project,omitempty"`
 	// Type of this ip
-	Type          IPType `protobuf:"varint,8,opt,name=type,proto3,enum=metalstack.api.v2.IPType" json:"type,omitempty"`
+	Type IPType `protobuf:"varint,8,opt,name=type,proto3,enum=metalstack.api.v2.IPType" json:"type,omitempty"`
+	// Namespace if specified, this ip is from a namespaced network and can therefore overlap with others
+	// Will be equal with project most of the time
+	Namespace     *string `protobuf:"bytes,9,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -235,6 +238,13 @@ func (x *IP) GetType() IPType {
 		return x.Type
 	}
 	return IPType_IP_TYPE_UNSPECIFIED
+}
+
+func (x *IP) GetNamespace() string {
+	if x != nil && x.Namespace != nil {
+		return *x.Namespace
+	}
+	return ""
 }
 
 // IPServiceGetRequest is the request payload for a ip get request
@@ -972,7 +982,7 @@ var File_metalstack_api_v2_ip_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\n" +
-	"\x1ametalstack/api/v2/ip.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"\xb7\x02\n" +
+	"\x1ametalstack/api/v2/ip.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"\xf2\x02\n" +
 	"\x02IP\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x17\n" +
@@ -983,7 +993,10 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\anetwork\x18\x06 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\anetwork\x12\"\n" +
 	"\aproject\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x127\n" +
-	"\x04type\x18\b \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\"R\n" +
+	"\x04type\x18\b \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12+\n" +
+	"\tnamespace\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\tnamespace\x88\x01\x01B\f\n" +
+	"\n" +
+	"_namespace\"R\n" +
 	"\x13IPServiceGetRequest\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\xaa\x04\n" +
@@ -1152,6 +1165,7 @@ func file_metalstack_api_v2_ip_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
+	file_metalstack_api_v2_ip_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[3].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[5].OneofWrappers = []any{}
