@@ -268,35 +268,37 @@ message NetworkQuery {
   }];
   // Project where this network belongs to
   optional string project = 5 [(buf.validate.field).string.uuid = true];
+  // Namespace where this network belongs to
+  optional string namespace = 6 [(buf.validate.field).string.uuid = true];
   option (buf.validate.message).cel = {
     id: "prefixes"
     message: "given prefixes must be valid"
     expression: "this.prefixes.all(m, m.isIpPrefix())"
   };
   // Prefixes in this network
-  repeated string prefixes = 6;
+  repeated string prefixes = 7;
   option (buf.validate.message).cel = {
     id: "destination_prefixes"
     message: "given destination_prefixes must be valid"
     expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
   };
   // Destination Prefixes in this network
-  repeated string destination_prefixes = 7;
+  repeated string destination_prefixes = 8;
   // Vrf ID of this network
-  optional uint32 vrf = 8;
+  optional uint32 vrf = 9;
   // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 9 [(buf.validate.field).string = {
+  optional string parent_network_id = 10 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Addressfamily to query
-  optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
+  optional IPAddressFamily address_family = 11 [(buf.validate.field).enum.defined_only = true];
   // Type of the network to query for
-  optional NetworkType type = 11 [(buf.validate.field).enum.defined_only = true];
+  optional NetworkType type = 12 [(buf.validate.field).enum.defined_only = true];
   // NATType configured
-  optional NATType nat_type = 12 [(buf.validate.field).enum.defined_only = true];
+  optional NATType nat_type = 13 [(buf.validate.field).enum.defined_only = true];
   // Labels on this network
-  Labels labels = 13;
+  Labels labels = 14;
 }
 
 // NATType defines how and if outgoing traffic is translated

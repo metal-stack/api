@@ -1057,22 +1057,24 @@ type NetworkQuery struct {
 	Partition *string `protobuf:"bytes,4,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	// Project where this network belongs to
 	Project *string `protobuf:"bytes,5,opt,name=project,proto3,oneof" json:"project,omitempty"`
+	// Namespace where this network belongs to
+	Namespace *string `protobuf:"bytes,6,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	// Prefixes in this network
-	Prefixes []string `protobuf:"bytes,6,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
+	Prefixes []string `protobuf:"bytes,7,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
 	// Destination Prefixes in this network
-	DestinationPrefixes []string `protobuf:"bytes,7,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
+	DestinationPrefixes []string `protobuf:"bytes,8,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
 	// Vrf ID of this network
-	Vrf *uint32 `protobuf:"varint,8,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
+	Vrf *uint32 `protobuf:"varint,9,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// Parent NetworkId points to the id of the parent network if any
-	ParentNetworkId *string `protobuf:"bytes,9,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
+	ParentNetworkId *string `protobuf:"bytes,10,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
 	// Addressfamily to query
-	AddressFamily *IPAddressFamily `protobuf:"varint,10,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
+	AddressFamily *IPAddressFamily `protobuf:"varint,11,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
 	// Type of the network to query for
-	Type *NetworkType `protobuf:"varint,11,opt,name=type,proto3,enum=metalstack.api.v2.NetworkType,oneof" json:"type,omitempty"`
+	Type *NetworkType `protobuf:"varint,12,opt,name=type,proto3,enum=metalstack.api.v2.NetworkType,oneof" json:"type,omitempty"`
 	// NATType configured
-	NatType *NATType `protobuf:"varint,12,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
+	NatType *NATType `protobuf:"varint,13,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
 	// Labels on this network
-	Labels        *Labels `protobuf:"bytes,13,opt,name=labels,proto3" json:"labels,omitempty"`
+	Labels        *Labels `protobuf:"bytes,14,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1138,6 +1140,13 @@ func (x *NetworkQuery) GetPartition() string {
 func (x *NetworkQuery) GetProject() string {
 	if x != nil && x.Project != nil {
 		return *x.Project
+	}
+	return ""
+}
+
+func (x *NetworkQuery) GetNamespace() string {
+	if x != nil && x.Namespace != nil {
+		return *x.Namespace
 	}
 	return ""
 }
@@ -1483,7 +1492,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x05_typeB\v\n" +
 	"\t_nat_typeB\x06\n" +
 	"\x04_vrfB\x14\n" +
-	"\x12_parent_network_id\"\xe4\a\n" +
+	"\x12_parent_network_id\"\x9f\b\n" +
 	"\fNetworkQuery\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
@@ -1493,17 +1502,19 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\vdescription\x88\x01\x01\x12-\n" +
 	"\tpartition\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\tpartition\x88\x01\x01\x12'\n" +
-	"\aproject\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x04R\aproject\x88\x01\x01\x12\x1a\n" +
-	"\bprefixes\x18\x06 \x03(\tR\bprefixes\x121\n" +
-	"\x14destination_prefixes\x18\a \x03(\tR\x13destinationPrefixes\x12\x15\n" +
-	"\x03vrf\x18\b \x01(\rH\x05R\x03vrf\x88\x01\x01\x12;\n" +
-	"\x11parent_network_id\x18\t \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x06R\x0fparentNetworkId\x88\x01\x01\x12X\n" +
-	"\x0eaddress_family\x18\n" +
-	" \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\aR\raddressFamily\x88\x01\x01\x12A\n" +
-	"\x04type\x18\v \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\bR\x04type\x88\x01\x01\x12D\n" +
-	"\bnat_type\x18\f \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\tR\anatType\x88\x01\x01\x121\n" +
-	"\x06labels\x18\r \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels:\xc8\x01\xbaH\xc4\x01\x1aN\n" +
+	"\aproject\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x04R\aproject\x88\x01\x01\x12+\n" +
+	"\tnamespace\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x05R\tnamespace\x88\x01\x01\x12\x1a\n" +
+	"\bprefixes\x18\a \x03(\tR\bprefixes\x121\n" +
+	"\x14destination_prefixes\x18\b \x03(\tR\x13destinationPrefixes\x12\x15\n" +
+	"\x03vrf\x18\t \x01(\rH\x06R\x03vrf\x88\x01\x01\x12;\n" +
+	"\x11parent_network_id\x18\n" +
+	" \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\aR\x0fparentNetworkId\x88\x01\x01\x12X\n" +
+	"\x0eaddress_family\x18\v \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\bR\raddressFamily\x88\x01\x01\x12A\n" +
+	"\x04type\x18\f \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\tR\x04type\x88\x01\x01\x12D\n" +
+	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\n" +
+	"R\anatType\x88\x01\x01\x121\n" +
+	"\x06labels\x18\x0e \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels:\xc8\x01\xbaH\xc4\x01\x1aN\n" +
 	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
 	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())B\x05\n" +
 	"\x03_idB\a\n" +
@@ -1512,7 +1523,9 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\n" +
 	"_partitionB\n" +
 	"\n" +
-	"\b_projectB\x06\n" +
+	"\b_projectB\f\n" +
+	"\n" +
+	"_namespaceB\x06\n" +
 	"\x04_vrfB\x14\n" +
 	"\x12_parent_network_idB\x11\n" +
 	"\x0f_address_familyB\a\n" +
