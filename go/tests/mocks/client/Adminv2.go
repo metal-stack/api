@@ -113,6 +113,26 @@ func (_m *Adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return r0
 }
 
+// Size provides a mock function with no fields
+func (_m *Adminv2) Size() adminv2connect.SizeServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Size")
+	}
+
+	var r0 adminv2connect.SizeServiceClient
+	if rf, ok := ret.Get(0).(func() adminv2connect.SizeServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.SizeServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Tenant provides a mock function with no fields
 func (_m *Adminv2) Tenant() adminv2connect.TenantServiceClient {
 	ret := _m.Called()
