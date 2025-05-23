@@ -146,7 +146,10 @@ type IP struct {
 	// Project where this ip address belongs to
 	Project string `protobuf:"bytes,7,opt,name=project,proto3" json:"project,omitempty"`
 	// Type of this ip
-	Type          IPType `protobuf:"varint,8,opt,name=type,proto3,enum=metalstack.api.v2.IPType" json:"type,omitempty"`
+	Type IPType `protobuf:"varint,8,opt,name=type,proto3,enum=metalstack.api.v2.IPType" json:"type,omitempty"`
+	// Namespace if specified this ip is from a namespaced network and can therefore overlap with others
+	// Will be equal with project most of the time
+	Namespace     *string `protobuf:"bytes,9,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -237,13 +240,22 @@ func (x *IP) GetType() IPType {
 	return IPType_IP_TYPE_UNSPECIFIED
 }
 
+func (x *IP) GetNamespace() string {
+	if x != nil && x.Namespace != nil {
+		return *x.Namespace
+	}
+	return ""
+}
+
 // IPServiceGetRequest is the request payload for a ip get request
 type IPServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// IP of the ip to get
 	Ip string `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
 	// Project of the ip
-	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Namespace can be specified to get the ip of a namespace.
+	Namespace     *string `protobuf:"bytes,3,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -288,6 +300,13 @@ func (x *IPServiceGetRequest) GetIp() string {
 func (x *IPServiceGetRequest) GetProject() string {
 	if x != nil {
 		return x.Project
+	}
+	return ""
+}
+
+func (x *IPServiceGetRequest) GetNamespace() string {
+	if x != nil && x.Namespace != nil {
+		return *x.Namespace
 	}
 	return ""
 }
@@ -424,7 +443,7 @@ type IPServiceUpdateRequest struct {
 	// Type of this ip
 	Type *IPType `protobuf:"varint,5,opt,name=type,proto3,enum=metalstack.api.v2.IPType,oneof" json:"type,omitempty"`
 	// Labels on this ip
-	Labels        *Labels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	Labels        *UpdateLabels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -494,7 +513,7 @@ func (x *IPServiceUpdateRequest) GetType() IPType {
 	return IPType_IP_TYPE_UNSPECIFIED
 }
 
-func (x *IPServiceUpdateRequest) GetLabels() *Labels {
+func (x *IPServiceUpdateRequest) GetLabels() *UpdateLabels {
 	if x != nil {
 		return x.Labels
 	}
@@ -579,6 +598,8 @@ type IPQuery struct {
 	Type *IPType `protobuf:"varint,9,opt,name=type,proto3,enum=metalstack.api.v2.IPType,oneof" json:"type,omitempty"`
 	// Addressfamily of the IPs to list, defaults to all addressfamilies
 	AddressFamily *IPAddressFamily `protobuf:"varint,10,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
+	// Namespace can be specified to get the ip of a namespace.
+	Namespace     *string `protobuf:"bytes,11,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -681,6 +702,13 @@ func (x *IPQuery) GetAddressFamily() IPAddressFamily {
 		return *x.AddressFamily
 	}
 	return IPAddressFamily_IP_ADDRESS_FAMILY_UNSPECIFIED
+}
+
+func (x *IPQuery) GetNamespace() string {
+	if x != nil && x.Namespace != nil {
+		return *x.Namespace
+	}
+	return ""
 }
 
 // IPServiceDeleteRequest is the request payload for a ip delete request
@@ -972,7 +1000,7 @@ var File_metalstack_api_v2_ip_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\n" +
-	"\x1ametalstack/api/v2/ip.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"\xb7\x02\n" +
+	"\x1ametalstack/api/v2/ip.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"\xf2\x02\n" +
 	"\x02IP\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x17\n" +
@@ -983,10 +1011,16 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\anetwork\x18\x06 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\anetwork\x12\"\n" +
 	"\aproject\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x127\n" +
-	"\x04type\x18\b \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\"R\n" +
+	"\x04type\x18\b \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12+\n" +
+	"\tnamespace\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\tnamespace\x88\x01\x01B\f\n" +
+	"\n" +
+	"_namespace\"\x8d\x01\n" +
 	"\x13IPServiceGetRequest\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12\"\n" +
-	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\xaa\x04\n" +
+	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12+\n" +
+	"\tnamespace\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\tnamespace\x88\x01\x01B\f\n" +
+	"\n" +
+	"_namespace\"\xaa\x04\n" +
 	"\x16IPServiceCreateRequest\x12$\n" +
 	"\anetwork\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\anetwork\x12\"\n" +
@@ -1006,22 +1040,22 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\v_machine_idB\t\n" +
 	"\a_labelsB\a\n" +
 	"\x05_typeB\x11\n" +
-	"\x0f_address_family\"\xce\x02\n" +
+	"\x0f_address_family\"\xd4\x02\n" +
 	"\x16IPServiceUpdateRequest\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x04name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x12/\n" +
 	"\vdescription\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12<\n" +
-	"\x04type\x18\x05 \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\x04type\x88\x01\x01\x126\n" +
-	"\x06labels\x18\x06 \x01(\v2\x19.metalstack.api.v2.LabelsH\x03R\x06labels\x88\x01\x01B\a\n" +
+	"\x04type\x18\x05 \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\x04type\x88\x01\x01\x12<\n" +
+	"\x06labels\x18\x06 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x03R\x06labels\x88\x01\x01B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\a\n" +
 	"\x05_typeB\t\n" +
 	"\a_labels\"l\n" +
 	"\x14IPServiceListRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x120\n" +
-	"\x05query\x18\x02 \x01(\v2\x1a.metalstack.api.v2.IPQueryR\x05query\"\xfb\x04\n" +
+	"\x05query\x18\x02 \x01(\v2\x1a.metalstack.api.v2.IPQueryR\x05query\"\xb6\x05\n" +
 	"\aIPQuery\x12\x1c\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01H\x00R\x02ip\x88\x01\x01\x12)\n" +
 	"\anetwork\x18\x02 \x01(\tB\n" +
@@ -1036,7 +1070,9 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x06labels\x18\b \x01(\v2\x19.metalstack.api.v2.LabelsH\aR\x06labels\x88\x01\x01\x12<\n" +
 	"\x04type\x18\t \x01(\x0e2\x19.metalstack.api.v2.IPTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\bR\x04type\x88\x01\x01\x12X\n" +
 	"\x0eaddress_family\x18\n" +
-	" \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\tR\raddressFamily\x88\x01\x01B\x05\n" +
+	" \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\tR\raddressFamily\x88\x01\x01\x12+\n" +
+	"\tnamespace\x18\v \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\n" +
+	"R\tnamespace\x88\x01\x01B\x05\n" +
 	"\x03_ipB\n" +
 	"\n" +
 	"\b_networkB\n" +
@@ -1048,7 +1084,9 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x13_parent_prefix_cidrB\t\n" +
 	"\a_labelsB\a\n" +
 	"\x05_typeB\x11\n" +
-	"\x0f_address_family\"U\n" +
+	"\x0f_address_familyB\f\n" +
+	"\n" +
+	"_namespace\"U\n" +
 	"\x16IPServiceDeleteRequest\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"=\n" +
@@ -1061,15 +1099,16 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x15IPServiceListResponse\x12'\n" +
 	"\x03ips\x18\x01 \x03(\v2\x15.metalstack.api.v2.IPR\x03ips\"@\n" +
 	"\x17IPServiceDeleteResponse\x12%\n" +
-	"\x02ip\x18\x01 \x01(\v2\x15.metalstack.api.v2.IPR\x02ip*L\n" +
+	"\x02ip\x18\x01 \x01(\v2\x15.metalstack.api.v2.IPR\x02ip*g\n" +
 	"\x06IPType\x12\x17\n" +
-	"\x13IP_TYPE_UNSPECIFIED\x10\x00\x12\x15\n" +
-	"\x11IP_TYPE_EPHEMERAL\x10\x01\x12\x12\n" +
-	"\x0eIP_TYPE_STATIC\x10\x02*h\n" +
+	"\x13IP_TYPE_UNSPECIFIED\x10\x00\x12$\n" +
+	"\x11IP_TYPE_EPHEMERAL\x10\x01\x1a\r\x82\xb2\x19\tephemeral\x12\x1e\n" +
+	"\x0eIP_TYPE_STATIC\x10\x02\x1a\n" +
+	"\x82\xb2\x19\x06static*|\n" +
 	"\x0fIPAddressFamily\x12!\n" +
-	"\x1dIP_ADDRESS_FAMILY_UNSPECIFIED\x10\x00\x12\x18\n" +
-	"\x14IP_ADDRESS_FAMILY_V4\x10\x01\x12\x18\n" +
-	"\x14IP_ADDRESS_FAMILY_V6\x10\x022\x93\x04\n" +
+	"\x1dIP_ADDRESS_FAMILY_UNSPECIFIED\x10\x00\x12\"\n" +
+	"\x14IP_ADDRESS_FAMILY_V4\x10\x01\x1a\b\x82\xb2\x19\x04ipv4\x12\"\n" +
+	"\x14IP_ADDRESS_FAMILY_V6\x10\x02\x1a\b\x82\xb2\x19\x04ipv62\x93\x04\n" +
 	"\tIPService\x12c\n" +
 	"\x03Get\x12&.metalstack.api.v2.IPServiceGetRequest\x1a'.metalstack.api.v2.IPServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12g\n" +
 	"\x06Create\x12).metalstack.api.v2.IPServiceCreateRequest\x1a*.metalstack.api.v2.IPServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12g\n" +
@@ -1109,6 +1148,7 @@ var file_metalstack_api_v2_ip_proto_goTypes = []any{
 	(*IPServiceDeleteResponse)(nil), // 13: metalstack.api.v2.IPServiceDeleteResponse
 	(*Meta)(nil),                    // 14: metalstack.api.v2.Meta
 	(*Labels)(nil),                  // 15: metalstack.api.v2.Labels
+	(*UpdateLabels)(nil),            // 16: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_api_v2_ip_proto_depIdxs = []int32{
 	14, // 0: metalstack.api.v2.IP.meta:type_name -> metalstack.api.v2.Meta
@@ -1117,7 +1157,7 @@ var file_metalstack_api_v2_ip_proto_depIdxs = []int32{
 	0,  // 3: metalstack.api.v2.IPServiceCreateRequest.type:type_name -> metalstack.api.v2.IPType
 	1,  // 4: metalstack.api.v2.IPServiceCreateRequest.address_family:type_name -> metalstack.api.v2.IPAddressFamily
 	0,  // 5: metalstack.api.v2.IPServiceUpdateRequest.type:type_name -> metalstack.api.v2.IPType
-	15, // 6: metalstack.api.v2.IPServiceUpdateRequest.labels:type_name -> metalstack.api.v2.Labels
+	16, // 6: metalstack.api.v2.IPServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	7,  // 7: metalstack.api.v2.IPServiceListRequest.query:type_name -> metalstack.api.v2.IPQuery
 	15, // 8: metalstack.api.v2.IPQuery.labels:type_name -> metalstack.api.v2.Labels
 	0,  // 9: metalstack.api.v2.IPQuery.type:type_name -> metalstack.api.v2.IPType
@@ -1150,6 +1190,8 @@ func file_metalstack_api_v2_ip_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
+	file_metalstack_api_v2_ip_proto_msgTypes[0].OneofWrappers = []any{}
+	file_metalstack_api_v2_ip_proto_msgTypes[1].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[3].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[5].OneofWrappers = []any{}

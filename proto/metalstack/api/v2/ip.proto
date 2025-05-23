@@ -43,9 +43,9 @@ enum IPType {
   // IP_TYPE_UNSPECIFIED is not specified
   IP_TYPE_UNSPECIFIED = 0;
   // IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage
-  IP_TYPE_EPHEMERAL = 1;
+  IP_TYPE_EPHEMERAL = 1 [(enum_string_value) = "ephemeral"];
   // IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly
-  IP_TYPE_STATIC = 2;
+  IP_TYPE_STATIC = 2 [(enum_string_value) = "static"];
 }
 
 // IPAddressFamily defines either IPv4 or IPv6 Addressfamily
@@ -53,9 +53,9 @@ enum IPAddressFamily {
   // IP_ADDRESS_FAMILY_UNSPECIFIED is not specified
   IP_ADDRESS_FAMILY_UNSPECIFIED = 0;
   // IP_ADDRESS_FAMILY_V4 defines a IPv4 address
-  IP_ADDRESS_FAMILY_V4 = 1;
+  IP_ADDRESS_FAMILY_V4 = 1 [(enum_string_value) = "ipv4"];
   // IP_ADDRESS_FAMILY_V6 defines a IPv6 address
-  IP_ADDRESS_FAMILY_V6 = 2;
+  IP_ADDRESS_FAMILY_V6 = 2 [(enum_string_value) = "ipv6"];
 }
 
 // IP is a ip address which can be used as loadbalancer addresses
@@ -82,6 +82,9 @@ message IP {
   string project = 7 [(buf.validate.field).string.uuid = true];
   // Type of this ip
   IPType type = 8 [(buf.validate.field).enum.defined_only = true];
+  // Namespace if specified this ip is from a namespaced network and can therefore overlap with others
+  // Will be equal with project most of the time
+  optional string namespace = 9 [(buf.validate.field).string.uuid = true];
 }
 
 // IPServiceGetRequest is the request payload for a ip get request
@@ -90,6 +93,8 @@ message IPServiceGetRequest {
   string ip = 1 [(buf.validate.field).string.ip = true];
   // Project of the ip
   string project = 2 [(buf.validate.field).string.uuid = true];
+  // Namespace can be specified to get the ip of a namespace.
+  optional string namespace = 3 [(buf.validate.field).string.uuid = true];
 }
 
 // IPServiceCreateRequest is the request payload for a ip create request
@@ -136,7 +141,7 @@ message IPServiceUpdateRequest {
   // Type of this ip
   optional IPType type = 5 [(buf.validate.field).enum.defined_only = true];
   // Labels on this ip
-  optional Labels labels = 6;
+  optional UpdateLabels labels = 6;
 }
 
 // IPServiceListRequest is the request payload for a ip list request
@@ -175,6 +180,8 @@ message IPQuery {
   optional IPType type = 9 [(buf.validate.field).enum.defined_only = true];
   // Addressfamily of the IPs to list, defaults to all addressfamilies
   optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
+  // Namespace can be specified to get the ip of a namespace.
+  optional string namespace = 11 [(buf.validate.field).string.uuid = true];
 }
 
 // IPServiceDeleteRequest is the request payload for a ip delete request

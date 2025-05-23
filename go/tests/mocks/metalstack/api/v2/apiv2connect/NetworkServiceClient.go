@@ -136,6 +136,36 @@ func (_m *NetworkServiceClient) List(_a0 context.Context, _a1 *connect.Request[a
 	return r0, r1
 }
 
+// ListBaseNetworks provides a mock function with given fields: _a0, _a1
+func (_m *NetworkServiceClient) ListBaseNetworks(_a0 context.Context, _a1 *connect.Request[apiv2.NetworkServiceListBaseNetworksRequest]) (*connect.Response[apiv2.NetworkServiceListBaseNetworksResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListBaseNetworks")
+	}
+
+	var r0 *connect.Response[apiv2.NetworkServiceListBaseNetworksResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.NetworkServiceListBaseNetworksRequest]) (*connect.Response[apiv2.NetworkServiceListBaseNetworksResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.NetworkServiceListBaseNetworksRequest]) *connect.Response[apiv2.NetworkServiceListBaseNetworksResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv2.NetworkServiceListBaseNetworksResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.NetworkServiceListBaseNetworksRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // Update provides a mock function with given fields: _a0, _a1
 func (_m *NetworkServiceClient) Update(_a0 context.Context, _a1 *connect.Request[apiv2.NetworkServiceUpdateRequest]) (*connect.Response[apiv2.NetworkServiceUpdateResponse], error) {
 	ret := _m.Called(_a0, _a1)
