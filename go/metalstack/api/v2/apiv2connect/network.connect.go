@@ -58,7 +58,7 @@ type NetworkServiceClient interface {
 	Update(context.Context, *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error)
 	// List all project networks
 	List(context.Context, *connect.Request[v2.NetworkServiceListRequest]) (*connect.Response[v2.NetworkServiceListResponse], error)
-	// ListBaseNetworks all unscoped networks
+	// ListBaseNetworks all base networks that can be used for either child network or ip allocation
 	ListBaseNetworks(context.Context, *connect.Request[v2.NetworkServiceListBaseNetworksRequest]) (*connect.Response[v2.NetworkServiceListBaseNetworksResponse], error)
 	// Delete a network
 	Delete(context.Context, *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error)
@@ -164,7 +164,7 @@ type NetworkServiceHandler interface {
 	Update(context.Context, *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error)
 	// List all project networks
 	List(context.Context, *connect.Request[v2.NetworkServiceListRequest]) (*connect.Response[v2.NetworkServiceListResponse], error)
-	// ListBaseNetworks all unscoped networks
+	// ListBaseNetworks all base networks that can be used for either child network or ip allocation
 	ListBaseNetworks(context.Context, *connect.Request[v2.NetworkServiceListBaseNetworksRequest]) (*connect.Response[v2.NetworkServiceListBaseNetworksResponse], error)
 	// Delete a network
 	Delete(context.Context, *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error)

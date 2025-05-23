@@ -4,7 +4,6 @@ package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
-import "metalstack/api/v2/ip.proto";
 import "metalstack/api/v2/network.proto";
 
 // NetworkService serves network address related functions
@@ -81,44 +80,44 @@ message NetworkServiceCreateRequest {
   metalstack.api.v2.NetworkType type = 6 [(buf.validate.field).enum.defined_only = true];
   // Labels on this network
   optional metalstack.api.v2.Labels labels = 7;
+  // Prefixes in this network
+  repeated string prefixes = 8;
   option (buf.validate.message).cel = {
     id: "prefixes"
     message: "given prefixes must be valid"
     expression: "this.prefixes.all(m, m.isIpPrefix())"
   };
-  // Prefixes in this network
-  repeated string prefixes = 8;
+  // Destination Prefixes in this network
+  repeated string destination_prefixes = 9;
   option (buf.validate.message).cel = {
     id: "destination_prefixes"
     message: "given destination_prefixes must be valid"
     expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
   };
-  // Destination Prefixes in this network
-  repeated string destination_prefixes = 9;
-  // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+  // Default Child Prefix length defines the bitlength of a child network created per addressfamily, if not specified during the allocate request
   metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
-  // Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request
+  // Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
   metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
   // NATType of this network
   optional metalstack.api.v2.NATType nat_type = 12 [(buf.validate.field).enum.defined_only = true];
-  // Vrf ID of this network
+  // VRF of this network has this VNI.
   optional uint32 vrf = 13;
   // Parent NetworkId points to the id of the parent network if any
   optional string parent_network_id = 14 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
+  // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
+  repeated string additional_announcable_cidrs = 15;
   option (buf.validate.message).cel = {
     id: "additional_announcable_cidrs"
     message: "given additional_announcable_cidrs must be valid"
     expression: "this.additional_announcable_cidrs.all(m, m.isIpPrefix())"
   };
-  // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-  repeated string additional_announcable_cidrs = 15;
-  // Bitlength per addressfamily
+  // Length per addressfamily
   optional metalstack.api.v2.ChildPrefixLength length = 16;
   // AddressFamily to create, defaults to the same as the parent
-  optional metalstack.api.v2.IPAddressFamily address_family = 17 [(buf.validate.field).enum.defined_only = true];
+  optional metalstack.api.v2.NetworkAddressFamily address_family = 17 [(buf.validate.field).enum.defined_only = true];
 }
 
 // NetworkServiceUpdateRequest is the request payload for a network update request
@@ -141,33 +140,33 @@ message NetworkServiceUpdateRequest {
   // Labels to update on this network
   optional metalstack.api.v2.UpdateLabels labels = 7;
 
+  // Prefixes in this network
+  repeated string prefixes = 8;
   option (buf.validate.message).cel = {
     id: "prefixes"
     message: "given prefixes must be valid"
     expression: "this.prefixes.all(m, m.isIpPrefix())"
   };
-  // Prefixes in this network
-  repeated string prefixes = 8;
+  // Destination Prefixes in this network
+  repeated string destination_prefixes = 9;
   option (buf.validate.message).cel = {
     id: "destination_prefixes"
     message: "given destination_prefixes must be valid"
     expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
   };
-  // Destination Prefixes in this network
-  repeated string destination_prefixes = 9;
-  // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+  // Default Child Prefix length defines the bit length of a child network created per addressfamily, of not specified during the allocate request
   optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
-  // Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request
+  // Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
   optional metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
   // NATType of this network
   optional metalstack.api.v2.NATType nat_type = 13 [(buf.validate.field).enum.defined_only = true];
+  // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
+  repeated string additional_announcable_cidrs = 16;
   option (buf.validate.message).cel = {
     id: "additional_announcable_cidrs"
     message: "given additional_announcable_cidrs must be valid"
     expression: "this.additional_announcable_cidrs.all(m, m.isIpPrefix())"
   };
-  // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-  repeated string additional_announcable_cidrs = 16;
 
   // Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact.
   bool force = 2;

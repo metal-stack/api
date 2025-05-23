@@ -136,22 +136,22 @@ type NetworkServiceCreateRequest struct {
 	Prefixes []string `protobuf:"bytes,8,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
 	// Destination Prefixes in this network
 	DestinationPrefixes []string `protobuf:"bytes,9,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
-	// Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+	// Default Child Prefix length defines the bitlength of a child network created per addressfamily, if not specified during the allocate request
 	DefaultChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,10,opt,name=default_child_prefix_length,json=defaultChildPrefixLength,proto3" json:"default_child_prefix_length,omitempty"`
-	// Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request
+	// Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
 	MinChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,11,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3" json:"min_child_prefix_length,omitempty"`
 	// NATType of this network
 	NatType *v2.NATType `protobuf:"varint,12,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
-	// Vrf ID of this network
+	// VRF of this network has this VNI.
 	Vrf *uint32 `protobuf:"varint,13,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// Parent NetworkId points to the id of the parent network if any
 	ParentNetworkId *string `protobuf:"bytes,14,opt,name=parent_network_id,json=parentNetworkId,proto3,oneof" json:"parent_network_id,omitempty"`
 	// AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
 	AdditionalAnnouncableCidrs []string `protobuf:"bytes,15,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
-	// Bitlength per addressfamily
+	// Length per addressfamily
 	Length *v2.ChildPrefixLength `protobuf:"bytes,16,opt,name=length,proto3,oneof" json:"length,omitempty"`
 	// AddressFamily to create, defaults to the same as the parent
-	AddressFamily *v2.IPAddressFamily `protobuf:"varint,17,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
+	AddressFamily *v2.NetworkAddressFamily `protobuf:"varint,17,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.NetworkAddressFamily,oneof" json:"address_family,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -298,11 +298,11 @@ func (x *NetworkServiceCreateRequest) GetLength() *v2.ChildPrefixLength {
 	return nil
 }
 
-func (x *NetworkServiceCreateRequest) GetAddressFamily() v2.IPAddressFamily {
+func (x *NetworkServiceCreateRequest) GetAddressFamily() v2.NetworkAddressFamily {
 	if x != nil && x.AddressFamily != nil {
 		return *x.AddressFamily
 	}
-	return v2.IPAddressFamily(0)
+	return v2.NetworkAddressFamily(0)
 }
 
 // NetworkServiceUpdateRequest is the request payload for a network update request
@@ -320,9 +320,9 @@ type NetworkServiceUpdateRequest struct {
 	Prefixes []string `protobuf:"bytes,8,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
 	// Destination Prefixes in this network
 	DestinationPrefixes []string `protobuf:"bytes,9,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
-	// Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+	// Default Child Prefix length defines the bit length of a child network created per addressfamily, of not specified during the allocate request
 	DefaultChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,10,opt,name=default_child_prefix_length,json=defaultChildPrefixLength,proto3,oneof" json:"default_child_prefix_length,omitempty"`
-	// Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request
+	// Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
 	MinChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,11,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3,oneof" json:"min_child_prefix_length,omitempty"`
 	// NATType of this network
 	NatType *v2.NATType `protobuf:"varint,13,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
@@ -721,12 +721,12 @@ var File_metalstack_admin_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1ametalstack/api/v2/ip.proto\x1a\x1fmetalstack/api/v2/network.proto\"6\n" +
+	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\"6\n" +
 	"\x18NetworkServiceGetRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xd4\v\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xd9\v\n" +
 	"\x1bNetworkServiceCreateRequest\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
@@ -749,8 +749,8 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x11parent_network_id\x18\x0e \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\bR\x0fparentNetworkId\x88\x01\x01\x12@\n" +
 	"\x1cadditional_announcable_cidrs\x18\x0f \x03(\tR\x1aadditionalAnnouncableCidrs\x12A\n" +
-	"\x06length\x18\x10 \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\tR\x06length\x88\x01\x01\x12X\n" +
-	"\x0eaddress_family\x18\x11 \x01(\x0e2\".metalstack.api.v2.IPAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\n" +
+	"\x06length\x18\x10 \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\tR\x06length\x88\x01\x01\x12]\n" +
+	"\x0eaddress_family\x18\x11 \x01(\x0e2'.metalstack.api.v2.NetworkAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\n" +
 	"R\raddressFamily\x88\x01\x01:\xd5\x02\xbaH\xd1\x02\x1aN\n" +
 	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
 	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())\x1a\x8a\x01\n" +
@@ -845,7 +845,7 @@ var file_metalstack_admin_v2_network_proto_goTypes = []any{
 	(*v2.Labels)(nil),                    // 12: metalstack.api.v2.Labels
 	(*v2.ChildPrefixLength)(nil),         // 13: metalstack.api.v2.ChildPrefixLength
 	(v2.NATType)(0),                      // 14: metalstack.api.v2.NATType
-	(v2.IPAddressFamily)(0),              // 15: metalstack.api.v2.IPAddressFamily
+	(v2.NetworkAddressFamily)(0),         // 15: metalstack.api.v2.NetworkAddressFamily
 	(*v2.UpdateLabels)(nil),              // 16: metalstack.api.v2.UpdateLabels
 	(*v2.NetworkQuery)(nil),              // 17: metalstack.api.v2.NetworkQuery
 }
@@ -857,7 +857,7 @@ var file_metalstack_admin_v2_network_proto_depIdxs = []int32{
 	13, // 4: metalstack.admin.v2.NetworkServiceCreateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
 	14, // 5: metalstack.admin.v2.NetworkServiceCreateRequest.nat_type:type_name -> metalstack.api.v2.NATType
 	13, // 6: metalstack.admin.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
-	15, // 7: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.IPAddressFamily
+	15, // 7: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.NetworkAddressFamily
 	16, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	13, // 9: metalstack.admin.v2.NetworkServiceUpdateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
 	13, // 10: metalstack.admin.v2.NetworkServiceUpdateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength

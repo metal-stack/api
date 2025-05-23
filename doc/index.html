@@ -685,6 +685,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.NetworkAddressFamily"><span class="badge">E</span>NetworkAddressFamily</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.NetworkType"><span class="badge">E</span>NetworkType</a>
                 </li>
               
@@ -4400,14 +4404,14 @@ Will be equal with project most of the time </p></td>
                   <td>ipv4</td>
                   <td><a href="#uint32">uint32</a></td>
                   <td>optional</td>
-                  <td><p>IPv4 bit Length of this network in this addressfamily </p></td>
+                  <td><p>IPv4 bit length of this network in this addressfamily </p></td>
                 </tr>
               
                 <tr>
                   <td>ipv6</td>
                   <td><a href="#uint32">uint32</a></td>
                   <td>optional</td>
-                  <td><p>IPv6 bit Length of this network in this addressfamily </p></td>
+                  <td><p>IPv6 bit length of this network in this addressfamily </p></td>
                 </tr>
               
             </tbody>
@@ -4438,7 +4442,7 @@ Will be equal with project most of the time </p></td>
                   <td>meta</td>
                   <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
                   <td></td>
-                  <td><p>Meta for this ip </p></td>
+                  <td><p>Meta for this network </p></td>
                 </tr>
               
                 <tr>
@@ -4502,7 +4506,7 @@ Will be equal with project most of the time </p></td>
                   <td>min_child_prefix_length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">ChildPrefixLength</a></td>
                   <td></td>
-                  <td><p>Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request </p></td>
+                  <td><p>Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length </p></td>
                 </tr>
               
                 <tr>
@@ -4523,7 +4527,7 @@ Will be equal with project most of the time </p></td>
                   <td>vrf</td>
                   <td><a href="#uint32">uint32</a></td>
                   <td>optional</td>
-                  <td><p>Vrf ID of this network </p></td>
+                  <td><p>VRF of this network has this VNI. </p></td>
                 </tr>
               
                 <tr>
@@ -4575,7 +4579,7 @@ Will be equal with project most of the time </p></td>
                   <td>ipv6</td>
                   <td><a href="#metalstack.api.v2.NetworkUsage">NetworkUsage</a></td>
                   <td></td>
-                  <td><p>IPv6 network usage </p></td>
+                  <td><p>IPv6 network usage, this can be approximated for high numbers </p></td>
                 </tr>
               
             </tbody>
@@ -4655,7 +4659,7 @@ Will be equal with project most of the time </p></td>
                   <td>vrf</td>
                   <td><a href="#uint32">uint32</a></td>
                   <td>optional</td>
-                  <td><p>Vrf ID of this network </p></td>
+                  <td><p>VRF of this network has this VNI. </p></td>
                 </tr>
               
                 <tr>
@@ -4667,7 +4671,7 @@ Will be equal with project most of the time </p></td>
               
                 <tr>
                   <td>address_family</td>
-                  <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
+                  <td><a href="#metalstack.api.v2.NetworkAddressFamily">NetworkAddressFamily</a></td>
                   <td>optional</td>
                   <td><p>Addressfamily to query </p></td>
                 </tr>
@@ -4756,12 +4760,12 @@ Will be equal with project most of the time </p></td>
                   <td>length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">ChildPrefixLength</a></td>
                   <td>optional</td>
-                  <td><p>Bitlength per addressfamily </p></td>
+                  <td><p>Length per addressfamily </p></td>
                 </tr>
               
                 <tr>
                   <td>address_family</td>
-                  <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
+                  <td><a href="#metalstack.api.v2.NetworkAddressFamily">NetworkAddressFamily</a></td>
                   <td>optional</td>
                   <td><p>AddressFamily to create, defaults to the same as the parent </p></td>
                 </tr>
@@ -5169,6 +5173,41 @@ Will be equal with project most of the time </p></td>
           </tbody>
         </table>
       
+        <h3 id="metalstack.api.v2.NetworkAddressFamily">NetworkAddressFamily</h3>
+        <p>NetworkAddressFamily defines the address family of a network</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>NETWORK_ADDRESS_FAMILY_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>NETWORK_ADDRESS_FAMILY_UNSPECIFIED is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_ADDRESS_FAMILY_V4</td>
+                <td>1</td>
+                <td><p>NETWORK_ADDRESS_FAMILY_V4 defines a network with IPv4 address prefixes</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_ADDRESS_FAMILY_V6</td>
+                <td>2</td>
+                <td><p>NETWORK_ADDRESS_FAMILY_V6 defines a network with IPv6 address prefixes</p></td>
+              </tr>
+            
+              <tr>
+                <td>NETWORK_ADDRESS_FAMILY_DUAL_STACK</td>
+                <td>3</td>
+                <td><p>NETWORK_ADDRESS_FAMILY_DUAL_STACK defines a network with both IPv4 and IPv6 address prefixes</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
         <h3 id="metalstack.api.v2.NetworkType">NetworkType</h3>
         <p>NetworkType indicates the purpose of the network, it cannot be changed after creation</p>
         <table class="enum-table">
@@ -5186,7 +5225,7 @@ Will be equal with project most of the time </p></td>
               <tr>
                 <td>NETWORK_TYPE_EXTERNAL</td>
                 <td>1</td>
-                <td><p>NETWORK_TYPE_EXTERNAL indicates network where multiple projects can allocate ips, it offers connectivity to external networks
+                <td><p>NETWORK_TYPE_EXTERNAL indicates network where multiple projects can allocate ips, it offers connectivity to other external networks
 In most cases this is the internet network or a network which offers connectivity to legacy datacenter networks.
 If it is not project scoped everyone can allocate Ips in this network, otherwise only from the same project ip allocation is possible.</p></td>
               </tr>
@@ -5208,9 +5247,9 @@ If the vrf id is nil in this network, child vrf is taken from the pool.
 If the partition is given, child networks inherit the partition.
 If the partition is nil, child networks also do not have a partition (i.e. requires vrf is distributed across all partitions).
 If the partition is given, only one super network in that partition can be created.
-If the partition is nil, multiple super networks can exist. Then, for child network creation either network id or a label selector must be specified.
+If the partition is nil, multiple super networks can exist. Then, for child network creation the network id must be specified (base networks can be queried by label selector).
 For child creation destination prefixes will be inherited
-If this is project scoped, child project must match, otherwise can be freely specified.</p></td>
+If this is project scoped, the child project must match, otherwise can be freely specified.</p></td>
               </tr>
             
               <tr>
@@ -5288,7 +5327,7 @@ With this approach the number of hops can be reduced to the bare minimum in orde
                 <td>ListBaseNetworks</td>
                 <td><a href="#metalstack.api.v2.NetworkServiceListBaseNetworksRequest">NetworkServiceListBaseNetworksRequest</a></td>
                 <td><a href="#metalstack.api.v2.NetworkServiceListBaseNetworksResponse">NetworkServiceListBaseNetworksResponse</a></td>
-                <td><p>ListBaseNetworks all unscoped networks</p></td>
+                <td><p>ListBaseNetworks all base networks that can be used for either child network or ip allocation</p></td>
               </tr>
             
               <tr>
@@ -5387,14 +5426,14 @@ With this approach the number of hops can be reduced to the bare minimum in orde
                   <td>default_child_prefix_length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">metalstack.api.v2.ChildPrefixLength</a></td>
                   <td></td>
-                  <td><p>Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request </p></td>
+                  <td><p>Default Child Prefix length defines the bitlength of a child network created per addressfamily, if not specified during the allocate request </p></td>
                 </tr>
               
                 <tr>
                   <td>min_child_prefix_length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">metalstack.api.v2.ChildPrefixLength</a></td>
                   <td></td>
-                  <td><p>Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request </p></td>
+                  <td><p>Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length </p></td>
                 </tr>
               
                 <tr>
@@ -5408,7 +5447,7 @@ With this approach the number of hops can be reduced to the bare minimum in orde
                   <td>vrf</td>
                   <td><a href="#uint32">uint32</a></td>
                   <td>optional</td>
-                  <td><p>Vrf ID of this network </p></td>
+                  <td><p>VRF of this network has this VNI. </p></td>
                 </tr>
               
                 <tr>
@@ -5429,12 +5468,12 @@ With this approach the number of hops can be reduced to the bare minimum in orde
                   <td>length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">metalstack.api.v2.ChildPrefixLength</a></td>
                   <td>optional</td>
-                  <td><p>Bitlength per addressfamily </p></td>
+                  <td><p>Length per addressfamily </p></td>
                 </tr>
               
                 <tr>
                   <td>address_family</td>
-                  <td><a href="#metalstack.api.v2.IPAddressFamily">metalstack.api.v2.IPAddressFamily</a></td>
+                  <td><a href="#metalstack.api.v2.NetworkAddressFamily">metalstack.api.v2.NetworkAddressFamily</a></td>
                   <td>optional</td>
                   <td><p>AddressFamily to create, defaults to the same as the parent </p></td>
                 </tr>
@@ -5670,14 +5709,14 @@ With this approach the number of hops can be reduced to the bare minimum in orde
                   <td>default_child_prefix_length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">metalstack.api.v2.ChildPrefixLength</a></td>
                   <td>optional</td>
-                  <td><p>Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request </p></td>
+                  <td><p>Default Child Prefix length defines the bit length of a child network created per addressfamily, of not specified during the allocate request </p></td>
                 </tr>
               
                 <tr>
                   <td>min_child_prefix_length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">metalstack.api.v2.ChildPrefixLength</a></td>
                   <td>optional</td>
-                  <td><p>Min Child Prefix length defines the min bitlength of a child network created per addressfamily during a allocate request </p></td>
+                  <td><p>Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length </p></td>
                 </tr>
               
                 <tr>
