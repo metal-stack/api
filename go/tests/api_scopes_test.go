@@ -20,6 +20,7 @@ type (
 	project    struct{}
 	admin      struct{}
 	infra      struct{}
+	machine    struct{}
 	visibility struct{}
 )
 
@@ -53,6 +54,14 @@ func (infra) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []strin
 	scopes = getScopes(methodOpts, []string{
 		v2.InfraRole_INFRA_ROLE_EDITOR.String(),
 		v2.InfraRole_INFRA_ROLE_VIEWER.String(),
+	})
+	return
+}
+
+func (machine) Get(methodOpts []*descriptorpb.UninterpretedOption) (scopes []string) {
+	scopes = getScopes(methodOpts, []string{
+		v2.MachineRole_MACHINE_ROLE_EDITOR.String(),
+		v2.MachineRole_MACHINE_ROLE_VIEWER.String(),
 	})
 	return
 }
@@ -110,10 +119,10 @@ func Test_APIScopes(t *testing.T) {
 
 	errs := errors.Join(
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Get\" has apiv2.ProjectRole but request payload \"WrongProjectServiceGetRequest\" does not have a project field"),
-		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
+		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.MachineRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Update\" can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.ProjectRole ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Delete\" can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.Visibility ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
-		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Charge\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
+		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Charge\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.MachineRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
 	)
 
 	require.Equal(t, err, errs)
@@ -125,17 +134,19 @@ func validateProto(root string) error {
 		pr v2.ProjectRole
 		ar v2.AdminRole
 		ir v2.InfraRole
+		mr v2.MachineRole
 		vr v2.Visibility
 
 		trs = fmt.Sprintf("%T", tr)
 		prs = fmt.Sprintf("%T", pr)
 		ars = fmt.Sprintf("%T", ar)
 		irs = fmt.Sprintf("%T", ir)
+		mrs = fmt.Sprintf("%T", mr)
 		vrs = fmt.Sprintf("%T", vr)
 
 		// add all *rs from above here
 		scopeKeys = []string{
-			trs, prs, ars, irs, vrs,
+			trs, prs, ars, irs, mrs, vrs,
 		}
 	)
 	slices.Sort(scopeKeys)
@@ -161,6 +172,7 @@ func validateProto(root string) error {
 						prs: project{}.Get(methodOpts),
 						ars: admin{}.Get(methodOpts),
 						irs: infra{}.Get(methodOpts),
+						mrs: machine{}.Get(methodOpts),
 						vrs: visibility{}.Get(methodOpts),
 					}
 					allScopeNames = func() (names []string) {
@@ -199,6 +211,24 @@ func validateProto(root string) error {
 						}
 						if !projectFound {
 							errs = append(errs, fmt.Errorf("api service method: %q has %s but request payload %q does not have a project field", methodName, prs, projectRequest))
+						}
+					}
+					if name == mrs && len(s) > 0 {
+						machineIdFound := false
+						machineRequest := ""
+						for _, mt := range fd.GetMessageType() {
+							if mt.GetName() != method.GetInputType() {
+								continue
+							}
+							for _, field := range mt.GetField() {
+								if field.GetName() == "uuid" {
+									machineIdFound = true
+								}
+							}
+							machineRequest = mt.GetName()
+						}
+						if !machineIdFound {
+							errs = append(errs, fmt.Errorf("api service method: %q has %s but request payload %q does not have a uuid field", methodName, mrs, machineRequest))
 						}
 					}
 				}
