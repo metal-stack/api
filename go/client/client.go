@@ -70,10 +70,12 @@ type (
 
 	Infrav2 interface {
 		BMC() infrav2connect.BMCServiceClient
+		Boot() infrav2connect.BootServiceClient
 	}
 
 	infrav2 struct {
-		bmcservice infrav2connect.BMCServiceClient
+		bmcservice  infrav2connect.BMCServiceClient
+		bootservice infrav2connect.BootServiceClient
 	}
 )
 
@@ -256,10 +258,18 @@ func (c client) Infrav2() Infrav2 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		bootservice: infrav2connect.NewBootServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 	}
 	return a
 }
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Boot() infrav2connect.BootServiceClient {
+	return c.bootservice
 }

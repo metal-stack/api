@@ -212,6 +212,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineRole"><span class="badge">E</span>MachineRole</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.ProjectRole"><span class="badge">E</span>ProjectRole</a>
                 </li>
               
@@ -223,6 +227,10 @@
                   <a href="#metalstack.api.v2.Visibility"><span class="badge">E</span>Visibility</a>
                 </li>
               
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fcommon.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
               
                 <li>
                   <a href="#metalstack%2fapi%2fv2%2fcommon.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
@@ -1416,6 +1424,113 @@
             </ul>
           </li>
         
+          
+          <li>
+            <a href="#metalstack%2finfra%2fv2%2fboot.proto">metalstack/infra/v2/boot.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootInfo"><span class="badge">M</span>BootInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceAbortReinstallRequest"><span class="badge">M</span>BootServiceAbortReinstallRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceAbortReinstallResponse"><span class="badge">M</span>BootServiceAbortReinstallResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceBootRequest"><span class="badge">M</span>BootServiceBootRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceBootResponse"><span class="badge">M</span>BootServiceBootResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceDhcpRequest"><span class="badge">M</span>BootServiceDhcpRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceDhcpResponse"><span class="badge">M</span>BootServiceDhcpResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceRegisterRequest"><span class="badge">M</span>BootServiceRegisterRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceRegisterResponse"><span class="badge">M</span>BootServiceRegisterResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceReportRequest"><span class="badge">M</span>BootServiceReportRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceReportResponse"><span class="badge">M</span>BootServiceReportResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceSuperUserPasswordRequest"><span class="badge">M</span>BootServiceSuperUserPasswordRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceSuperUserPasswordResponse"><span class="badge">M</span>BootServiceSuperUserPasswordResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceWaitRequest"><span class="badge">M</span>BootServiceWaitRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceWaitResponse"><span class="badge">M</span>BootServiceWaitResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.MachineBIOS"><span class="badge">M</span>MachineBIOS</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.MachineBlockDevice"><span class="badge">M</span>MachineBlockDevice</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.MachineCPU"><span class="badge">M</span>MachineCPU</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.MachineFRU"><span class="badge">M</span>MachineFRU</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.MachineGPU"><span class="badge">M</span>MachineGPU</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.MachineHardware"><span class="badge">M</span>MachineHardware</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.MachineIPMI"><span class="badge">M</span>MachineIPMI</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.MachineNic"><span class="badge">M</span>MachineNic</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootService"><span class="badge">S</span>BootService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
         <li><a href="#scalar-value-types">Scalar Value Types</a></li>
       </ul>
     </div>
@@ -1681,6 +1796,35 @@ the list response contains then the page number for the next page. </p></td>
           </tbody>
         </table>
       
+        <h3 id="metalstack.api.v2.MachineRole">MachineRole</h3>
+        <p>MachineRole specifies what role a microservice needs to call this machine service</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MACHINE_ROLE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>MACHINE_ROLE_UNSPECIFIED is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ROLE_EDITOR</td>
+                <td>1</td>
+                <td><p>MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ROLE_VIEWER</td>
+                <td>2</td>
+                <td><p>MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
         <h3 id="metalstack.api.v2.ProjectRole">ProjectRole</h3>
         <p>ProjectRole specifies what role a logged in user needs to call this project scoped service</p>
         <table class="enum-table">
@@ -1827,6 +1971,14 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
                 <td>51005</td>
                 <td><p>InfraRoles are used to define which infra role a microservice must provide to call this method</p></td>
+              </tr>
+            
+              <tr>
+                <td>machine_roles</td>
+                <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
+                <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
+                <td>51006</td>
+                <td><p>MachineRole are used to define which infra role a microservice must provide to call this method</p></td>
               </tr>
             
               <tr>
@@ -10138,6 +10290,967 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.infra.v2.UpdateBMCInfoRequest">UpdateBMCInfoRequest</a></td>
                 <td><a href="#metalstack.infra.v2.UpdateBMCInfoResponse">UpdateBMCInfoResponse</a></td>
                 <td><p>UpdateBMCInfo</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/infra/v2/boot.proto">metalstack/infra/v2/boot.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.infra.v2.BootInfo">BootInfo</h3>
+        <p>BootInfo contains calculated values of a allocation</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Image which is going to be installed </p></td>
+                </tr>
+              
+                <tr>
+                  <td>primary_disk</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>PrimaryDisk the machine boots from </p></td>
+                </tr>
+              
+                <tr>
+                  <td>os_partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>OSPartition where the operating system is stored </p></td>
+                </tr>
+              
+                <tr>
+                  <td>initrd</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Initrd the name of the initial ram disk </p></td>
+                </tr>
+              
+                <tr>
+                  <td>cmdline</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Cmdline of the kernel </p></td>
+                </tr>
+              
+                <tr>
+                  <td>kernel</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Kernel to boot from </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bootloader_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>BootloadID which is used to boot </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceAbortReinstallRequest">BootServiceAbortReinstallRequest</h3>
+        <p>BootServiceAbortReinstallRequest is called if the reinstallation failed and must aborted</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>primary_disk_wiped</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>PrimaryDiskWiped is set to true if the primary disk was wiped </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceAbortReinstallResponse">BootServiceAbortReinstallResponse</h3>
+        <p>BootServiceAbortReinstallResponse response if a reinstall abort command was called</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>boot_info</td>
+                  <td><a href="#metalstack.infra.v2.BootInfo">BootInfo</a></td>
+                  <td></td>
+                  <td><p>BootInfo contains details to the boot </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceBootRequest">BootServiceBootRequest</h3>
+        <p>BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>mac</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Mac address of the machein </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition where this machine is located </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceBootResponse">BootServiceBootResponse</h3>
+        <p>BootServiceBootResponse contains additional infos which are required to boot a machine</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>kernel</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Kernel is the url to the linux kernel to boot </p></td>
+                </tr>
+              
+                <tr>
+                  <td>init_ram_disks</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Initial ram disk is the url to the initial ram disk to boot </p></td>
+                </tr>
+              
+                <tr>
+                  <td>cmdline</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>CMDLine contains kernel command line parameters to boot </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceDhcpRequest">BootServiceDhcpRequest</h3>
+        <p>BootServiceDhcpRequest is called once a machine issues a dhcp request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceDhcpResponse">BootServiceDhcpResponse</h3>
+        <p>BootServiceDhcpResponse contains the response to a dhcp request</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceRegisterRequest">BootServiceRegisterRequest</h3>
+        <p>BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hardware</td>
+                  <td><a href="#metalstack.infra.v2.MachineHardware">MachineHardware</a></td>
+                  <td></td>
+                  <td><p>Hardware details of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bios</td>
+                  <td><a href="#metalstack.infra.v2.MachineBIOS">MachineBIOS</a></td>
+                  <td></td>
+                  <td><p>Bios details of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ipmi</td>
+                  <td><a href="#metalstack.infra.v2.MachineIPMI">MachineIPMI</a></td>
+                  <td></td>
+                  <td><p>IPMI details of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tags</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Tags of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>metal_hammer_version</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>MetalHammer version this machine was bootet into </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition where this machine is located </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceRegisterResponse">BootServiceRegisterResponse</h3>
+        <p>BootServiceRegisterResponse response to a BootServiceRegisterResponse request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size is the calculated size from given hardware details </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition of this machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceReportRequest">BootServiceReportRequest</h3>
+        <p>BootServiceReportRequest is sent from metal-hammer to the api to report the outcome of the register</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine to boot </p></td>
+                </tr>
+              
+                <tr>
+                  <td>console_password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Console_Password </p></td>
+                </tr>
+              
+                <tr>
+                  <td>boot_info</td>
+                  <td><a href="#metalstack.infra.v2.BootInfo">BootInfo</a></td>
+                  <td></td>
+                  <td><p>BootInfo contains all details which are the result of registration and allocation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>success</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Success is set to true of the allocation succeeded </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Message contains additional information if installation failed </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceReportResponse">BootServiceReportResponse</h3>
+        <p>BootServiceReportRequest is the response to a BootServiceReportRequest</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceSuperUserPasswordRequest">BootServiceSuperUserPasswordRequest</h3>
+        <p>BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of this machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceSuperUserPasswordResponse">BootServiceSuperUserPasswordResponse</h3>
+        <p>BootServiceSuperUserPasswordResponse the super user password is returned</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>feature_disabled</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>FeatureDisable FIXME </p></td>
+                </tr>
+              
+                <tr>
+                  <td>super_user_password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>SuperUserPassword is the password of the superuser on the ipmi device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceWaitRequest">BootServiceWaitRequest</h3>
+        <p>BootServiceWaitRequest is called when a machine was registered and is waiting for allocation</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of this machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceWaitResponse">BootServiceWaitResponse</h3>
+        <p>BootServiceWaitResponse response to a wait request</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.infra.v2.MachineBIOS">MachineBIOS</h3>
+        <p>MachineBIOS describes details of the machine bios</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>version</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Version of the bios </p></td>
+                </tr>
+              
+                <tr>
+                  <td>vendor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Vendor of the bios </p></td>
+                </tr>
+              
+                <tr>
+                  <td>date</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Date of the bios </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.MachineBlockDevice">MachineBlockDevice</h3>
+        <p>MachineBlockDevice defines a disk built into a machine</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of this device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Size in bytes of this device </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.MachineCPU">MachineCPU</h3>
+        <p>MachineCPU describes a physical CPU</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>vendor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Vendor of this cpu </p></td>
+                </tr>
+              
+                <tr>
+                  <td>model</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Model of this cpu </p></td>
+                </tr>
+              
+                <tr>
+                  <td>cores</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td></td>
+                  <td><p>Cores in this cpu </p></td>
+                </tr>
+              
+                <tr>
+                  <td>threads</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td></td>
+                  <td><p>Threads total in this cpu </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.MachineFRU">MachineFRU</h3>
+        <p>MachineFRU describes details to the machine which are required in case of a necessary replacement</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>chassis_part_number</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ChassisPartNumber is the part number of the machine chassis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>chassis_part_serial</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ChassisPartSerial is the serial number of the machine chassis </p></td>
+                </tr>
+              
+                <tr>
+                  <td>board_mfg</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>BoardMFG is the short description of the mainboard </p></td>
+                </tr>
+              
+                <tr>
+                  <td>board_mfg_serial</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>BoardSerial is the serial number of the mainboard </p></td>
+                </tr>
+              
+                <tr>
+                  <td>board_part_number</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>BoardPartNumber is the part number of the mainboard </p></td>
+                </tr>
+              
+                <tr>
+                  <td>product_manufacturer</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ProductManufacturer is the manufacturer of the machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>product_part_number</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ProductPartNumber is the part number of the machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>product_serial</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ProductSerial is the serial number of the machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.MachineGPU">MachineGPU</h3>
+        <p>MachineGPU describes a physical GPU</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>vendor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Vendor of this gpu </p></td>
+                </tr>
+              
+                <tr>
+                  <td>model</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Model of this gpu </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.MachineHardware">MachineHardware</h3>
+        <p>MachineHardware contains hardware details of this machine</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>memory</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Memory in bytes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>disks</td>
+                  <td><a href="#metalstack.infra.v2.MachineBlockDevice">MachineBlockDevice</a></td>
+                  <td>repeated</td>
+                  <td><p>Disks which are built into this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nics</td>
+                  <td><a href="#metalstack.infra.v2.MachineNic">MachineNic</a></td>
+                  <td>repeated</td>
+                  <td><p>Nics are network interface cards built into this machein </p></td>
+                </tr>
+              
+                <tr>
+                  <td>cpus</td>
+                  <td><a href="#metalstack.infra.v2.MachineCPU">MachineCPU</a></td>
+                  <td>repeated</td>
+                  <td><p>CPUs in this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>gpus</td>
+                  <td><a href="#metalstack.infra.v2.MachineGPU">MachineGPU</a></td>
+                  <td>repeated</td>
+                  <td><p>GPUs in this machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.MachineIPMI">MachineIPMI</h3>
+        <p>MachineIPMI describe details of the ipmi or out of band device</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address of this ipmi device from outside </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mac</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Mac address of the network interface of this ipmi device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User of this ipmi device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Password of this ipmi device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>interface</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Interface of this ipmi device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fru</td>
+                  <td><a href="#metalstack.infra.v2.MachineFRU">MachineFRU</a></td>
+                  <td></td>
+                  <td><p>FRU field replaceable unit details for this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bmc_version</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>BMCVersion of this ipmi device </p></td>
+                </tr>
+              
+                <tr>
+                  <td>power_state</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>PowerState of this machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.MachineNic">MachineNic</h3>
+        <p>MachineNIC describes a network interface card</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>mac</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Mac address of this network card </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name in the os of this network card, e.g. eth0 </p></td>
+                </tr>
+              
+                <tr>
+                  <td>vendor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Vendor of this network card </p></td>
+                </tr>
+              
+                <tr>
+                  <td>model</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Model of this network card </p></td>
+                </tr>
+              
+                <tr>
+                  <td>speed</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Speed in bits/second of this network card </p></td>
+                </tr>
+              
+                <tr>
+                  <td>neighbors</td>
+                  <td><a href="#metalstack.infra.v2.MachineNic">MachineNic</a></td>
+                  <td>repeated</td>
+                  <td><p>Neighbors connected to this network card </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hostname</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Hostname FIXME clarify usage </p></td>
+                </tr>
+              
+                <tr>
+                  <td>identifier</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier of this network card </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.infra.v2.BootService">BootService</h3>
+        <p>BootService is used for all boot related requests, either pixiecore or metal-hammer</p><p>Pixiecore</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Dhcp</td>
+                <td><a href="#metalstack.infra.v2.BootServiceDhcpRequest">BootServiceDhcpRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceDhcpResponse">BootServiceDhcpResponse</a></td>
+                <td><p>Dhcp is the first dhcp request (option 97). A ProvisioningEventPXEBooting is fired</p></td>
+              </tr>
+            
+              <tr>
+                <td>Boot</td>
+                <td><a href="#metalstack.infra.v2.BootServiceBootRequest">BootServiceBootRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceBootResponse">BootServiceBootResponse</a></td>
+                <td><p>Boot is called from pixie once the machine got the first dhcp response and ipxie asks for subsequent kernel and initrd</p></td>
+              </tr>
+            
+              <tr>
+                <td>SuperUserPassword</td>
+                <td><a href="#metalstack.infra.v2.BootServiceSuperUserPasswordRequest">BootServiceSuperUserPasswordRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceSuperUserPasswordResponse">BootServiceSuperUserPasswordResponse</a></td>
+                <td><p>SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-api and configure the bmc accordingly</p></td>
+              </tr>
+            
+              <tr>
+                <td>Register</td>
+                <td><a href="#metalstack.infra.v2.BootServiceRegisterRequest">BootServiceRegisterRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceRegisterResponse">BootServiceRegisterResponse</a></td>
+                <td><p>Register is called from metal-hammer after hardware inventory is finished, tells metal-api all glory details about that machine</p></td>
+              </tr>
+            
+              <tr>
+                <td>Wait</td>
+                <td><a href="#metalstack.infra.v2.BootServiceWaitRequest">BootServiceWaitRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceWaitResponse">BootServiceWaitResponse</a> stream</td>
+                <td><p>Wait is a hanging call that waits until the machine gets allocated by a user</p></td>
+              </tr>
+            
+              <tr>
+                <td>Report</td>
+                <td><a href="#metalstack.infra.v2.BootServiceReportRequest">BootServiceReportRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceReportResponse">BootServiceReportResponse</a></td>
+                <td><p>Report tells metal-api installation was either successful or failed</p></td>
+              </tr>
+            
+              <tr>
+                <td>AbortReinstall</td>
+                <td><a href="#metalstack.infra.v2.BootServiceAbortReinstallRequest">BootServiceAbortReinstallRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceAbortReinstallResponse">BootServiceAbortReinstallResponse</a></td>
+                <td><p>If reinstall failed and tell metal-api to restore to previous state</p></td>
               </tr>
             
           </tbody>
