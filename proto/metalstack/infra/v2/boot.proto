@@ -41,6 +41,10 @@ service BootService {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
+
+  // FIXME after wait finished a MachineServiceGetRequest is required which must be possible with a machine_role_viewer
+  // This should be part of machine.proto
+
   // Report tells metal-api installation was either successful or failed
   rpc Report(BootServiceReportRequest) returns (BootServiceReportResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
