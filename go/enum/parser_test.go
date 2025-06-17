@@ -38,4 +38,16 @@ func TestGetStringValue(t *testing.T) {
 	require.Error(t, err)
 	require.EqualError(t, err, "unable to fetch stringvalue from FORMAT_UNSPECIFIED")
 	require.Nil(t, got)
+
+	var e *apiv2.Format
+	got, err = GetStringValue(e)
+	require.Error(t, err)
+	require.EqualError(t, err, "given enum is a nil pointer")
+	require.Nil(t, got)
+
+	e = apiv2.Format_FORMAT_EXT3.Enum()
+	got, err = GetStringValue(e)
+	require.NoError(t, err)
+	require.NotNil(t, got)
+	require.Equal(t, "ext3", *got)
 }
