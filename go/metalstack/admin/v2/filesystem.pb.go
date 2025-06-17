@@ -118,8 +118,10 @@ func (x *FilesystemServiceCreateResponse) GetFilesystemLayout() *v2.FilesystemLa
 // FilesystemServiceUpdateRequest
 type FilesystemServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of the filesystemLayout to update
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// FilesystemLayout the filesystemlayout
-	FilesystemLayout *v2.FilesystemLayout `protobuf:"bytes,1,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
+	FilesystemLayout *v2.FilesystemLayout `protobuf:"bytes,2,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -152,6 +154,13 @@ func (x *FilesystemServiceUpdateRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use FilesystemServiceUpdateRequest.ProtoReflect.Descriptor instead.
 func (*FilesystemServiceUpdateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_filesystem_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *FilesystemServiceUpdateRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *FilesystemServiceUpdateRequest) GetFilesystemLayout() *v2.FilesystemLayout {
@@ -307,9 +316,11 @@ const file_metalstack_admin_v2_filesystem_proto_rawDesc = "" +
 	"\x1eFilesystemServiceCreateRequest\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
 	"\x1fFilesystemServiceCreateResponse\x12P\n" +
-	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"r\n" +
-	"\x1eFilesystemServiceUpdateRequest\x12P\n" +
-	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
+	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\x8e\x01\n" +
+	"\x1eFilesystemServiceUpdateRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12P\n" +
+	"\x11filesystem_layout\x18\x02 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
 	"\x1fFilesystemServiceUpdateResponse\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"<\n" +
 	"\x1eFilesystemServiceDeleteRequest\x12\x1a\n" +

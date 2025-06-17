@@ -2831,6 +2831,13 @@ having a direct membership within the tenant.</p></td>
             <tbody>
               
                 <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the filesystemLayout to update </p></td>
+                </tr>
+              
+                <tr>
                   <td>filesystem_layout</td>
                   <td><a href="#metalstack.api.v2.FilesystemLayout">metalstack.api.v2.FilesystemLayout</a></td>
                   <td></td>
@@ -3448,6 +3455,13 @@ should contain os and major.minor then latest patch version of this os is return
             <tbody>
               
                 <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the imageLayout to update </p></td>
+                </tr>
+              
+                <tr>
                   <td>image</td>
                   <td><a href="#metalstack.api.v2.Image">metalstack.api.v2.Image</a></td>
                   <td></td>
@@ -4049,7 +4063,7 @@ Will be equal with project most of the time </p></td>
             <tbody>
               
                 <tr>
-                  <td>ip</td>
+                  <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Ip the ip to update </p></td>
@@ -6415,6 +6429,13 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
             <tbody>
               
                 <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>The id of the partition to update </p></td>
+                </tr>
+              
+                <tr>
                   <td>partition</td>
                   <td><a href="#metalstack.api.v2.Partition">metalstack.api.v2.Partition</a></td>
                   <td></td>
@@ -7288,10 +7309,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>login</td>
+                  <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Login of the tenant </p></td>
+                  <td><p>Login of the tenant to update </p></td>
                 </tr>
               
                 <tr>
@@ -8109,7 +8130,7 @@ for which the methods should be allowed </p></td>
             <tbody>
               
                 <tr>
-                  <td>uuid</td>
+                  <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Uuid of the token to update </p></td>
@@ -9698,10 +9719,17 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id is the uuid of the project to update, must be equal to project </p></td>
+                </tr>
+              
+                <tr>
                   <td>project</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Project is the uuid of the project to get </p></td>
+                  <td><p>Project is the uuid of the project to update </p></td>
                 </tr>
               
                 <tr>

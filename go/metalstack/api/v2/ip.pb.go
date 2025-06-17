@@ -433,7 +433,7 @@ func (x *IPServiceCreateRequest) GetAddressFamily() IPAddressFamily {
 type IPServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Ip the ip to update
-	Ip string `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Project of the ip
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	// Name of this ip
@@ -478,9 +478,9 @@ func (*IPServiceUpdateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_ip_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *IPServiceUpdateRequest) GetIp() string {
+func (x *IPServiceUpdateRequest) GetId() string {
 	if x != nil {
-		return x.Ip
+		return x.Id
 	}
 	return ""
 }
@@ -1042,7 +1042,7 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x05_typeB\x11\n" +
 	"\x0f_address_family\"\xd4\x02\n" +
 	"\x16IPServiceUpdateRequest\x12\x17\n" +
-	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12\"\n" +
+	"\x02id\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02id\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x04name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x12/\n" +

@@ -576,7 +576,7 @@ func (*TokenServiceRevokeResponse) Descriptor() ([]byte, []int) {
 type TokenServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the token to update
-	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Description is a user given description of this token.
 	Description *string `protobuf:"bytes,2,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Permissions is a list of service methods this token can be used for
@@ -621,9 +621,9 @@ func (*TokenServiceUpdateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_token_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *TokenServiceUpdateRequest) GetUuid() string {
+func (x *TokenServiceUpdateRequest) GetId() string {
 	if x != nil {
-		return x.Uuid
+		return x.Id
 	}
 	return ""
 }
@@ -859,9 +859,9 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"9\n" +
 	"\x19TokenServiceRevokeRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x1c\n" +
-	"\x1aTokenServiceRevokeResponse\"\xe2\x06\n" +
-	"\x19TokenServiceUpdateRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x121\n" +
+	"\x1aTokenServiceRevokeResponse\"\xde\x06\n" +
+	"\x19TokenServiceUpdateRequest\x12\x18\n" +
+	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x121\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x02H\x00R\vdescription\x88\x01\x01\x12E\n" +
 	"\vpermissions\x18\x03 \x03(\v2#.metalstack.api.v2.MethodPermissionR\vpermissions\x12\xc1\x01\n" +

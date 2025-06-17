@@ -44,8 +44,13 @@ message ImageServiceCreateResponse {
 
 // ImageServiceUpdateRequest
 message ImageServiceUpdateRequest {
+  // Id of the imageLayout to update
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Image is the image
-  metalstack.api.v2.Image image = 1;
+  metalstack.api.v2.Image image = 2;
 }
 
 // ImageServiceUpdateResponse

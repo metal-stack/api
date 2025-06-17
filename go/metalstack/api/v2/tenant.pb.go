@@ -500,8 +500,8 @@ func (x *TenantServiceCreateRequest) GetPhoneNumber() string {
 // TenantServiceUpdateRequest is the request payload of the tenant update request
 type TenantServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
-	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
+	// Login of the tenant to update
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Name of the tenant
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Email of the tenant
@@ -544,9 +544,9 @@ func (*TenantServiceUpdateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_tenant_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *TenantServiceUpdateRequest) GetLogin() string {
+func (x *TenantServiceUpdateRequest) GetId() string {
 	if x != nil {
-		return x.Login
+		return x.Id
 	}
 	return ""
 }
@@ -1600,9 +1600,9 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\f_descriptionB\b\n" +
 	"\x06_emailB\r\n" +
 	"\v_avatar_urlB\x0f\n" +
-	"\r_phone_number\"\x83\x02\n" +
-	"\x1aTenantServiceUpdateRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\"\n" +
+	"\r_phone_number\"\xfd\x01\n" +
+	"\x1aTenantServiceUpdateRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\"\n" +
 	"\x04name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@H\x00R\x04name\x88\x01\x01\x12\"\n" +
 	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x04 \x01(\tB\n" +

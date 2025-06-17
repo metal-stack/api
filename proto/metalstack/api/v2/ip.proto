@@ -128,7 +128,7 @@ message IPServiceCreateRequest {
 // IPServiceUpdateRequest is the request payload for a ip update request
 message IPServiceUpdateRequest {
   // Ip the ip to update
-  string ip = 1 [(buf.validate.field).string.ip = true];
+  string id = 1 [(buf.validate.field).string.ip = true];
   // Project of the ip
   string project = 2 [(buf.validate.field).string.uuid = true];
   // Name of this ip
