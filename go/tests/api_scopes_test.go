@@ -114,7 +114,7 @@ func Test_APIScopes(t *testing.T) {
 	errs := errors.Join(
 		errors.New("api service method: /metalstack.api.v2.WrongProjectService/Get has apiv2.ProjectRole but request payload WrongProjectServiceGetRequest does not have a project field"),
 		errors.New("api service method: /metalstack.api.v2.WrongProjectService/List has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
-		errors.New("api service method: /metalstack.api.v2.WrongProjectService/Update does not have a getid field, request payload WrongProjectServiceUpdateRequest"),
+		errors.New("api service method: /metalstack.api.v2.WrongProjectService/Update does not have a id field, request payload WrongProjectServiceUpdateRequest"),
 		errors.New("api service method: /metalstack.api.v2.WrongProjectService/Update can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.ProjectRole ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
 		errors.New("api service method: /metalstack.api.v2.WrongProjectService/Delete can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.Visibility ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
 		errors.New("api service method: /metalstack.api.v2.WrongProjectService/Charge has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
@@ -199,7 +199,7 @@ func validateProto(root string) error {
 						}
 						updateRequest = mt.GetName()
 						if !isUpdateRequest {
-							errs = append(errs, fmt.Errorf("api service method: %s does not have a getid field, request payload %s", methodName, updateRequest))
+							errs = append(errs, fmt.Errorf("api service method: %s does not have a id field, request payload %s", methodName, updateRequest))
 						}
 					}
 				}
