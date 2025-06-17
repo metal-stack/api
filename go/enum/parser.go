@@ -2,6 +2,7 @@ package enum
 
 import (
 	"fmt"
+	"reflect"
 
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"google.golang.org/protobuf/proto"
@@ -11,6 +12,11 @@ import (
 
 // GetStringValue from a enum if the Enum is annotated with a enum_string_value
 func GetStringValue[E protoreflect.Enum](e E) (*string, error) {
+	if reflect.ValueOf(e).Kind() == reflect.Pointer {
+		if reflect.ValueOf(e).IsNil() {
+			return nil, fmt.Errorf("given enum is a nil pointer")
+		}
+	}
 	value := e.Descriptor().Values().Get(int(e.Number()))
 
 	// Retrieve custom options
