@@ -109,6 +109,7 @@ func Test_APIScopes(t *testing.T) {
 	err = validateProto("./testproto")
 
 	errs := errors.Join(
+		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Add\" has apiv2.TenantRole but request payload \"WrongProjectServiceAddRequest\" does not have a login field"),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Get\" has apiv2.ProjectRole but request payload \"WrongProjectServiceGetRequest\" does not have a project field"),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Update\" can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.ProjectRole ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
@@ -176,14 +177,15 @@ func validateProto(root string) error {
 
 				for _, name := range scopeKeys {
 					s := scopes[name]
-					if len(s) > 0 {
-						if methodScope != "" {
-							errs = append(errs, fmt.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s))
-						}
-						methodScope = fmt.Sprintf("%s (%s)", name, s)
+					if len(s) == 0 {
+						continue
 					}
+					if methodScope != "" {
+						errs = append(errs, fmt.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s))
+					}
+					methodScope = fmt.Sprintf("%s (%s)", name, s)
 
-					if name == prs && len(s) > 0 {
+					if name == prs {
 						projectFound := false
 						projectRequest := ""
 						for _, mt := range fd.GetMessageType() {
@@ -199,6 +201,24 @@ func validateProto(root string) error {
 						}
 						if !projectFound {
 							errs = append(errs, fmt.Errorf("api service method: %q has %s but request payload %q does not have a project field", methodName, prs, projectRequest))
+						}
+					}
+					if name == trs {
+						tenantFound := false
+						tenantRequest := ""
+						for _, mt := range fd.GetMessageType() {
+							if mt.GetName() != method.GetInputType() {
+								continue
+							}
+							for _, field := range mt.GetField() {
+								if field.GetName() == "login" {
+									tenantFound = true
+								}
+							}
+							tenantRequest = mt.GetName()
+						}
+						if !tenantFound {
+							errs = append(errs, fmt.Errorf("api service method: %q has %s but request payload %q does not have a login field", methodName, trs, tenantRequest))
 						}
 					}
 				}
