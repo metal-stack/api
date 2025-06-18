@@ -325,8 +325,8 @@ type Switch struct {
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Rack ID if the switch resides in a rack
 	RackId *string `protobuf:"bytes,3,opt,name=rack_id,json=rackId,proto3,oneof" json:"rack_id,omitempty"`
-	// Partition ID of the partition the switch belongs to
-	PartitionId string `protobuf:"bytes,4,opt,name=partition_id,json=partitionId,proto3" json:"partition_id,omitempty"`
+	// Partition the switch belongs to
+	Partition string `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"`
 	// Type signifies what role a switch has, e.g. whether it is a leaf switch, or a spine, etc.
 	Type SwitchType `protobuf:"varint,5,opt,name=type,proto3,enum=metalstack.api.v2.SwitchType" json:"type,omitempty"`
 	// Replace mode is used to mark a switch ready for replacement
@@ -394,9 +394,9 @@ func (x *Switch) GetRackId() string {
 	return ""
 }
 
-func (x *Switch) GetPartitionId() string {
+func (x *Switch) GetPartition() string {
 	if x != nil {
-		return x.PartitionId
+		return x.Partition
 	}
 	return ""
 }
@@ -766,15 +766,15 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"\xa0\x04\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"\x9b\x04\n" +
 	"\x06Switch\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12,\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vdescription\x12(\n" +
 	"\arack_id\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x06rackId\x88\x01\x01\x12-\n" +
-	"\fpartition_id\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vpartitionId\x12;\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x06rackId\x88\x01\x01\x12(\n" +
+	"\tpartition\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\x12;\n" +
 	"\x04type\x18\x05 \x01(\x0e2\x1d.metalstack.api.v2.SwitchTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12Q\n" +
 	"\freplace_mode\x18\x06 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
 	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x123\n" +

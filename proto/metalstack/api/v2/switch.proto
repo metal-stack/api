@@ -24,8 +24,8 @@ message Switch {
     min_len: 2
     max_len: 128
   }];
-  // Partition ID of the partition the switch belongs to
-  string partition_id = 4 [(buf.validate.field).string = {
+  // Partition the switch belongs to
+  string partition = 4 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
