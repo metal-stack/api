@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
 import "metalstack/api/v2/common.proto";
 
 // Switch represents a network switch
@@ -127,7 +128,7 @@ message SwitchBGPPortState {
   // BGP state of the connection on this port
   BGPState bgp_state = 4 [(buf.validate.field).enum.defined_only = true];
   // BGP timer up established reports the uptime of this port's BGP connection
-  uint64 bgp_timer_up_established = 5;
+  google.protobuf.Duration bgp_timer_up_established = 5;
   // Sent prefix counter counts the prefixes sent by the switch on this port
   uint64 sent_prefix_counter = 6;
   // Accepted prefix counter counts the prefixes received on this port
