@@ -189,14 +189,15 @@ func validateProto(root string) error {
 
 				for _, name := range scopeKeys {
 					s := scopes[name]
-					if len(s) > 0 {
-						if methodScope != "" {
-							errs = append(errs, fmt.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s))
-						}
-						methodScope = fmt.Sprintf("%s (%s)", name, s)
+					if len(s) == 0 {
+						continue
 					}
+					if methodScope != "" {
+						errs = append(errs, fmt.Errorf("api service method: %q can not have %s and %s (%s) at the same time. only one scope is allowed.", methodName, methodScope, name, s))
+					}
+					methodScope = fmt.Sprintf("%s (%s)", name, s)
 
-					if name == prs && len(s) > 0 {
+					if name == prs {
 						projectFound := false
 						projectRequest := ""
 						for _, mt := range fd.GetMessageType() {
