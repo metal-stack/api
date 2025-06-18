@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
 
 // Switch represents a network switch
 message Switch {
@@ -76,7 +77,7 @@ message SwitchNic {
     max_len: 128
   }];
   // MAC address of the port
-  string mac_address = 3 [(validate.rules).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
+  string mac_address = 3 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
   // VRF name if the port is bound in one
   optional string vrf = 4 [(buf.validate.field).string = {
     min_len: 2
@@ -100,7 +101,7 @@ message BGPFilter {
     expression: "this.cidrs.all(m, m.isIpPrefix())"
   };
   // VNIs for which to allow BGP
-  repeated string vnis = 2 [(buf.validate.field).string = {
+  repeated string vnis = 2 [(buf.validate.field).repeated.items.string = {
     min_len: 2
     max_len: 128
   }];
@@ -174,7 +175,7 @@ enum SwitchOSVendor {
 // SwitchPortStatus specifies the state of a switch port
 enum SwitchPortStatus {
   // SWITCH_PORT_STATUS_UNSPECIFIED is not specified
-  SWITCH_PORT_STATUS_UNSPECIFED = 0;
+  SWITCH_PORT_STATUS_UNSPECIFIED = 0;
   // SWITCH_PORT_STATUS_UP means this port is up
   SWITCH_PORT_STATUS_UP = 1 [(enum_string_value) = "up"];
   // SWITCH_PORT_STATUS_DOWN means this port is down

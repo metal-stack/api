@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package metalstack.infra.v2;
 
+import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/switch.proto";
 
 // SwitchService serves switch related functions
 service SwitchService {
@@ -41,7 +43,7 @@ message SwitchServiceReportBGPRoutesRequest {
     max_len: 128
   }];
   // BGP routes collected on the switch
-  repeated BGPRoute bgpRoutes = 2;
+  repeated BGPRoute bgp_routes = 2;
 }
 
 // SwitchServiceReportBGPRoutesResponse
