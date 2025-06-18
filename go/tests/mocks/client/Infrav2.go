@@ -32,6 +32,26 @@ func (_m *Infrav2) BMC() infrav2connect.BMCServiceClient {
 	return r0
 }
 
+// Switch provides a mock function with no fields
+func (_m *Infrav2) Switch() infrav2connect.SwitchServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Switch")
+	}
+
+	var r0 infrav2connect.SwitchServiceClient
+	if rf, ok := ret.Get(0).(func() infrav2connect.SwitchServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(infrav2connect.SwitchServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // NewInfrav2 creates a new instance of Infrav2. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewInfrav2(t interface {
