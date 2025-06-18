@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/size.proto";
+
+// SizeService serves size related functions
+service SizeService {
+  // Create a size
+  rpc Create(SizeServiceCreateRequest) returns (SizeServiceCreateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  // Delete a size
+  rpc Delete(SizeServiceDeleteRequest) returns (SizeServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+}
+
+// SizeServiceCreateRequest is the request payload for a size create request
+message SizeServiceCreateRequest {
+  // Size is the size to create
+  metalstack.api.v2.Size size = 1;
+}
+
+// SizeServiceGetResponse is the response payload for a size create request
+message SizeServiceCreateResponse {
+  // Size the size
+  metalstack.api.v2.Size size = 1;
+}
+
+// SizeServiceDeleteRequest is the request payload for a size delete request
+message SizeServiceDeleteRequest {
+  // ID of the size to delete
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// SizeServiceDeleteResponse is the response payload for a size delete request
+message SizeServiceDeleteResponse {
+  // Size the size
+  metalstack.api.v2.Size size = 1;
+}
