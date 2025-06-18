@@ -32,6 +32,26 @@ func (_m *Infrav2) BMC() infrav2connect.BMCServiceClient {
 	return r0
 }
 
+// Boot provides a mock function with no fields
+func (_m *Infrav2) Boot() infrav2connect.BootServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Boot")
+	}
+
+	var r0 infrav2connect.BootServiceClient
+	if rf, ok := ret.Get(0).(func() infrav2connect.BootServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(infrav2connect.BootServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // NewInfrav2 creates a new instance of Infrav2. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewInfrav2(t interface {
