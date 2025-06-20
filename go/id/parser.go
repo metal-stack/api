@@ -9,7 +9,7 @@ import (
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
-func Get[M protoreflect.Message](m M) (string, error) {
+func Get[M proto.Message](m M) (string, error) {
 	var primaryKey string
 
 	if reflect.ValueOf(m).Kind() == reflect.Pointer {
@@ -22,16 +22,17 @@ func Get[M protoreflect.Message](m M) (string, error) {
 		value protoreflect.Value
 		field protoreflect.FieldDescriptor
 	)
-	field = m.Descriptor().Fields().ByTextName("id")
+	pm := m.ProtoReflect()
+	field = pm.Descriptor().Fields().ByTextName("id")
 	if field == nil {
-		m.Range(func(fd protoreflect.FieldDescriptor, v protoreflect.Value) bool {
+		pm.Range(func(fd protoreflect.FieldDescriptor, v protoreflect.Value) bool {
 			if fd.Kind() != protoreflect.StringKind {
 				return false
 			}
 			opts := fd.Options()
 			if opts != nil && proto.HasExtension(opts, apiv2.E_TreatAsId) {
 				// FIXME ensure in api_scopes_test only one tread_as_id annotation per message
-				value = m.Get(fd)
+				value = pm.Get(fd)
 				field = fd
 				return false
 			}
@@ -41,7 +42,7 @@ func Get[M protoreflect.Message](m M) (string, error) {
 	if field == nil {
 		return primaryKey, fmt.Errorf("unable to fetch primaryKey from %v", m)
 	}
-	value = m.Get(field)
+	value = pm.Get(field)
 	primaryKey = value.String()
 	return primaryKey, nil
 }

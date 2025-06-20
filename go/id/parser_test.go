@@ -5,7 +5,7 @@ import (
 
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/stretchr/testify/require"
-	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/proto"
 )
 
 func TestGet(t *testing.T) {
@@ -21,23 +21,23 @@ func TestGet(t *testing.T) {
 	}
 	tests := []struct {
 		name    string
-		m       protoreflect.Message
+		m       proto.Message
 		want    string
 		wantErr bool
 	}{
 		{
 			name: "network",
-			m:    nur.ProtoReflect(),
+			m:    nur,
 			want: "internet",
 		},
 		{
 			name: "tenant",
-			m:    tur.ProtoReflect(),
+			m:    tur,
 			want: "john@google",
 		},
 		{
 			name: "project",
-			m:    pur.ProtoReflect(),
+			m:    pur,
 			want: "p1",
 		},
 	}
@@ -60,7 +60,7 @@ func BenchmarkGet(b *testing.B) {
 		Login: "john@google",
 	}
 	for b.Loop() {
-		got, err := Get(tur.ProtoReflect())
+		got, err := Get(tur)
 		require.NoError(b, err)
 		require.NotNil(b, got)
 	}
