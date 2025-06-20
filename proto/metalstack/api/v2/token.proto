@@ -162,7 +162,10 @@ message TokenServiceRevokeResponse {}
 // TokenServiceUpdateRequest is the request payload of a token update request
 message TokenServiceUpdateRequest {
   // Uuid of the token to update
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  string uuid = 1 [
+    (buf.validate.field).string.uuid = true,
+    (treat_as_id) = true
+  ];
   // Description is a user given description of this token.
   optional string description = 2 [(buf.validate.field).string = {
     min_len: 2

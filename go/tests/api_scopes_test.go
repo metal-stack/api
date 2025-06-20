@@ -175,6 +175,49 @@ func validateProto(root string) error {
 				// Sort all to have stable results
 				slices.Sort(allScopeNames)
 
+				for _, mt := range fd.GetMessageType() {
+					if mt.GetName() != method.GetInputType() {
+						continue
+					}
+					var (
+						isUpdateRequest bool
+						updateRequest   string
+					)
+					if strings.Contains(mt.GetName(), "UpdateRequest") {
+						treatAsIdCount := 0
+						for _, field := range mt.GetField() {
+							if field.GetName() == "id" {
+								isUpdateRequest = true
+							}
+
+							opts := field.Options
+							if opts != nil {
+								for _, opt := range opts.UninterpretedOption {
+									for _, namePart := range opt.Name {
+										if !*namePart.IsExtension {
+											continue
+										}
+										if *namePart.NamePart != "treat_as_id" {
+											continue
+										}
+										if *opt.IdentifierValue == "true" {
+											isUpdateRequest = true
+											treatAsIdCount++
+										}
+									}
+								}
+							}
+						}
+						updateRequest = mt.GetName()
+						if treatAsIdCount > 1 {
+							errs = append(errs, fmt.Errorf("api service method: %s have more than one treat_as_id annotation %s", methodName, updateRequest))
+						}
+						if !isUpdateRequest {
+							errs = append(errs, fmt.Errorf("api service method: %s does not have a id field or annotated another field with treat_as_id, request payload %s", methodName, updateRequest))
+						}
+					}
+				}
+
 				for _, name := range scopeKeys {
 					s := scopes[name]
 					if len(s) == 0 {
