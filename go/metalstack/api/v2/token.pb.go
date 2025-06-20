@@ -859,9 +859,9 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"9\n" +
 	"\x19TokenServiceRevokeRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x1c\n" +
-	"\x1aTokenServiceRevokeResponse\"\xe2\x06\n" +
-	"\x19TokenServiceUpdateRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x121\n" +
+	"\x1aTokenServiceRevokeResponse\"\xe6\x06\n" +
+	"\x19TokenServiceUpdateRequest\x12 \n" +
+	"\x04uuid\x18\x01 \x01(\tB\f\xbaH\x05r\x03\xb0\x01\x01\xc0\xf0\x19\x01R\x04uuid\x121\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x02H\x00R\vdescription\x88\x01\x01\x12E\n" +
 	"\vpermissions\x18\x03 \x03(\v2#.metalstack.api.v2.MethodPermissionR\vpermissions\x12\xc1\x01\n" +

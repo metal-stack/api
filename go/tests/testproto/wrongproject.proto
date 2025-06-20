@@ -49,7 +49,7 @@ message WrongProjectServiceListResponse {
 }
 
 message WrongProjectServiceUpdateRequest {
-    string uuid = 1;
+    string uuid = 1 [(treat_as_id) = true];
     string project = 2;
 }
 message WrongProjectServiceUpdateResponse {

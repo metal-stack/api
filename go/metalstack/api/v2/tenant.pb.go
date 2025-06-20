@@ -1600,9 +1600,9 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\f_descriptionB\b\n" +
 	"\x06_emailB\r\n" +
 	"\v_avatar_urlB\x0f\n" +
-	"\r_phone_number\"\x83\x02\n" +
-	"\x1aTenantServiceUpdateRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\"\n" +
+	"\r_phone_number\"\x89\x02\n" +
+	"\x1aTenantServiceUpdateRequest\x12\x1a\n" +
+	"\x05login\x18\x01 \x01(\tB\x04\xc0\xf0\x19\x01R\x05login\x12\"\n" +
 	"\x04name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@H\x00R\x04name\x88\x01\x01\x12\"\n" +
 	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x04 \x01(\tB\n" +

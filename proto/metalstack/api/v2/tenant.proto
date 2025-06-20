@@ -170,7 +170,7 @@ message TenantServiceCreateRequest {
 // TenantServiceUpdateRequest is the request payload of the tenant update request
 message TenantServiceUpdateRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(treat_as_id) = true];
   // Name of the tenant
   optional string name = 2 [(buf.validate.field).string = {
     min_len: 2
