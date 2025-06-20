@@ -204,7 +204,10 @@ message ProjectServiceDeleteResponse {
 // ProjectServiceUpdateRequest is the request payload to update a project
 message ProjectServiceUpdateRequest {
   // Project is the uuid of the project to get
-  string project = 1 [(buf.validate.field).string.uuid = true];
+  string project = 1 [
+    (buf.validate.field).string.uuid = true,
+    (treat_as_id) = true
+  ];
   // Name of this project unique per tenant
   optional string name = 2 [(buf.validate.field).string = {
     min_len: 2

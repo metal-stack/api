@@ -1652,9 +1652,9 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	" TenantServiceInviteDeleteRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x16\n" +
 	"\x06secret\x18\x02 \x01(\tR\x06secret\"#\n" +
-	"!TenantServiceInviteDeleteResponse\"\x92\x01\n" +
-	" TenantServiceUpdateMemberRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1b\n" +
+	"!TenantServiceInviteDeleteResponse\"\x98\x01\n" +
+	" TenantServiceUpdateMemberRequest\x12\x1a\n" +
+	"\x05login\x18\x01 \x01(\tB\x04\xc0\xf0\x19\x01R\x05login\x12\x1b\n" +
 	"\tmember_id\x18\x02 \x01(\tR\bmemberId\x12;\n" +
 	"\x04role\x18\x03 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"i\n" +
 	"!TenantServiceUpdateMemberResponse\x12D\n" +

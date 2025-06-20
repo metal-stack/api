@@ -1585,9 +1585,9 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\x1bProjectServiceDeleteRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"T\n" +
 	"\x1cProjectServiceDeleteResponse\x124\n" +
-	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\xe4\x01\n" +
-	"\x1bProjectServiceUpdateRequest\x12\"\n" +
-	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\"\n" +
+	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\xe8\x01\n" +
+	"\x1bProjectServiceUpdateRequest\x12&\n" +
+	"\aproject\x18\x01 \x01(\tB\f\xbaH\x05r\x03\xb0\x01\x01\xc0\xf0\x19\x01R\aproject\x12\"\n" +
 	"\x04name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@H\x00R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x01R\vdescription\x88\x01\x01\x12\"\n" +

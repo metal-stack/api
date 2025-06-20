@@ -304,7 +304,7 @@ message TenantServiceInviteDeleteResponse {}
 // TenantServiceUpdateMemberRequest is used to update a member from a tenant
 message TenantServiceUpdateMemberRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(treat_as_id) = true];
   // MemberID is the id of the member to update in this tenant
   string member_id = 2;
   // Role of this user in this tenant

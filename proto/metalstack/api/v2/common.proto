@@ -98,6 +98,12 @@ extend google.protobuf.EnumValueOptions {
   string enum_string_value = 52000;
 }
 
+// StringValueOptions can be used to define options on string values
+extend google.protobuf.FieldOptions {
+  // TreatAsId if defined this field is treated as primary key of this entity
+  bool treat_as_id = 53000;
+}
+
 // Paging defines paging for methods with a lot of results
 message Paging {
   // Page is used for pagination, if unset only the first page is returned,
