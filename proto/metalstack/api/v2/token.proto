@@ -230,7 +230,13 @@ message TokenServiceGetResponse {
 
 // TokenServiceRefreshRequest is the request payload of a token refresh request
 // Permissions, Roles and Expiration duration and all other properties are inherited from the calling token.
-message TokenServiceRefreshRequest {}
+message TokenServiceRefreshRequest {
+  // Expires gives the duration since now, after which this token can not be used anymore
+  google.protobuf.Duration expires = 4 [(buf.validate.field).duration = {
+    lt: {seconds: 31536001}
+    gte: {seconds: 600}
+  }];
+}
 
 // TokenServiceRefreshResponse is the response payload of a token refresh request
 message TokenServiceRefreshResponse {
