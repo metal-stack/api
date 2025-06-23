@@ -90,6 +90,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		roles = permissions.Roles{
 			Admin:   permissions.Admin{},
 			Infra:   permissions.Infra{},
+			Machine: permissions.Machine{},
 			Tenant:  permissions.Tenant{},
 			Project: permissions.Project{},
 		}
@@ -103,6 +104,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			Self:    map[string]bool{},
 			Admin:   map[string]bool{},
 			Infra:   map[string]bool{},
+			Machine: map[string]bool{},
 			Tenant:  map[string]bool{},
 			Project: map[string]bool{},
 		}
@@ -181,6 +183,15 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 							roles.Infra[v1.InfraRole_INFRA_ROLE_VIEWER.String()] = append(roles.Admin[v1.InfraRole_INFRA_ROLE_VIEWER.String()], methodName)
 							visibility.Infra[methodName] = true
 						case v1.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
+							// noop
+						// Machine
+						case v1.MachineRole_MACHINE_ROLE_EDITOR.String():
+							roles.Infra[v1.MachineRole_MACHINE_ROLE_EDITOR.String()] = append(roles.Admin[v1.MachineRole_MACHINE_ROLE_EDITOR.String()], methodName)
+							visibility.Machine[methodName] = true
+						case v1.MachineRole_MACHINE_ROLE_VIEWER.String():
+							roles.Infra[v1.MachineRole_MACHINE_ROLE_VIEWER.String()] = append(roles.Admin[v1.MachineRole_MACHINE_ROLE_VIEWER.String()], methodName)
+							visibility.Machine[methodName] = true
+						case v1.MachineRole_MACHINE_ROLE_UNSPECIFIED.String():
 							// noop
 						// Visibility
 						case v1.Visibility_VISIBILITY_PUBLIC.String():
