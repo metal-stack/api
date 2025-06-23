@@ -57,6 +57,7 @@ func TestGet(t *testing.T) {
 
 func BenchmarkGet(b *testing.B) {
 	tur := &apiv2.TenantServiceUpdateMemberRequest{
+		Role:  apiv2.TenantRole_TENANT_ROLE_EDITOR,
 		Login: "john@google",
 	}
 	for b.Loop() {
