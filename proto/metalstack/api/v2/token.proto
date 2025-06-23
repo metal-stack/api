@@ -29,6 +29,10 @@ service TokenService {
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
+  // Refresh a token, this will create a new token with the exact same permissions as the calling token contains
+  rpc Refresh(TokenServiceRefreshRequest) returns (TokenServiceRefreshResponse) {
+    option (visibility) = VISIBILITY_SELF;
+  }
 }
 
 // Token is a jwt authentication token to access the api
@@ -222,4 +226,16 @@ message TokenServiceGetRequest {
 message TokenServiceGetResponse {
   // Token is the token
   Token token = 1;
+}
+
+// TokenServiceRefreshRequest is the request payload of a token refresh request
+// Permissions, Roles and Expiration duration and all other properties are inherited from the calling token.
+message TokenServiceRefreshRequest {}
+
+// TokenServiceRefreshResponse is the response payload of a token refresh request
+message TokenServiceRefreshResponse {
+  // Token which was refreshed
+  Token token = 1;
+  // Secret is the body if the jwt token, should be used in api requests as bearer token
+  string secret = 2;
 }
