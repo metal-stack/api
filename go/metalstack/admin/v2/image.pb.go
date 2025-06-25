@@ -118,8 +118,10 @@ func (x *ImageServiceCreateResponse) GetImage() *v2.Image {
 // ImageServiceUpdateRequest
 type ImageServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the image to update
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Image is the image
-	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
+	Image         *v2.Image `protobuf:"bytes,2,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -152,6 +154,13 @@ func (x *ImageServiceUpdateRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ImageServiceUpdateRequest.ProtoReflect.Descriptor instead.
 func (*ImageServiceUpdateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_image_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ImageServiceUpdateRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *ImageServiceUpdateRequest) GetImage() *v2.Image {
@@ -399,9 +408,11 @@ const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\x19ImageServiceCreateRequest\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
 	"\x1aImageServiceCreateResponse\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"K\n" +
-	"\x19ImageServiceUpdateRequest\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
+	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"g\n" +
+	"\x19ImageServiceUpdateRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12.\n" +
+	"\x05image\x18\x02 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
 	"\x1aImageServiceUpdateResponse\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"7\n" +
 	"\x19ImageServiceDeleteRequest\x12\x1a\n" +
