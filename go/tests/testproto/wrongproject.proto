@@ -24,6 +24,9 @@ service WrongProjectService {
   rpc Charge(WrongProjectServiceChargeRequest) returns (WrongProjectServiceChargeResponse) {
     option (chargeable) = CHARGEABLE_TRUE;
   }
+  rpc AlsoUpdate(WrongProjectServiceAlsoUpdateRequest) returns (WrongProjectServiceAlsoUpdateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+  }
 }
 
 message WrongProjectServiceAddRequest {
@@ -53,6 +56,15 @@ message WrongProjectServiceUpdateRequest {
     string project = 2;
 }
 message WrongProjectServiceUpdateResponse {
+    string uuid = 1;
+}
+
+message WrongProjectServiceAlsoUpdateRequest {
+    string id = 1;
+    string uuid = 2 [(treat_as_id) = true];
+    string project = 3;
+}
+message WrongProjectServiceAlsoUpdateResponse {
     string uuid = 1;
 }
 

@@ -45,11 +45,11 @@ func TestGet(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := Get(tt.m)
 			if (err != nil) != tt.wantErr {
-				t.Errorf("GetPrimaryKey() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("Get() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 			if got != tt.want {
-				t.Errorf("GetPrimaryKey() = %v, want %v", got, tt.want)
+				t.Errorf("Get() = %v, want %v", got, tt.want)
 			}
 		})
 	}
