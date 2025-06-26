@@ -106,6 +106,36 @@ func (_m *TokenServiceClient) List(_a0 context.Context, _a1 *connect.Request[api
 	return r0, r1
 }
 
+// Refresh provides a mock function with given fields: _a0, _a1
+func (_m *TokenServiceClient) Refresh(_a0 context.Context, _a1 *connect.Request[apiv2.TokenServiceRefreshRequest]) (*connect.Response[apiv2.TokenServiceRefreshResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Refresh")
+	}
+
+	var r0 *connect.Response[apiv2.TokenServiceRefreshResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TokenServiceRefreshRequest]) (*connect.Response[apiv2.TokenServiceRefreshResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TokenServiceRefreshRequest]) *connect.Response[apiv2.TokenServiceRefreshResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[apiv2.TokenServiceRefreshResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TokenServiceRefreshRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // Revoke provides a mock function with given fields: _a0, _a1
 func (_m *TokenServiceClient) Revoke(_a0 context.Context, _a1 *connect.Request[apiv2.TokenServiceRevokeRequest]) (*connect.Response[apiv2.TokenServiceRevokeResponse], error) {
 	ret := _m.Called(_a0, _a1)
