@@ -1,19 +1,34 @@
-#!/usr/bin/env python
-
-from google.protobuf.duration_pb2 import Duration
+# client.py
+from connecpy.context import ClientContext
+from connecpy.exceptions import ConnecpyServerException
 import os
-import sonora.client
-import ip_pb2_grpc, ip_pb2
+import sys
+# setting path
+sys.path.append('../../python')
+import metalstack.api.v2.ip_connecpy as ip_connecpy
+import metalstack.api.v2.ip_pb2 as ip_pb2
 
-# TODO set Token in header?
-
+timeout_s = 5
 baseurl = os.environ['METAL_APISERVER_URL']
 token = os.environ['API_TOKEN']
 project = os.environ['PROJECT_ID']
 
-with sonora.client.insecure_web_channel(baseurl) as c:
-    x = ip_pb2_grpc.IPServiceStub(c)
-    d = Duration(seconds=1)
+def main():
+    with ip_connecpy.IPServiceClient(baseurl, timeout=timeout_s) as client:
+        try:
+            response = client.List(
+                ctx=ClientContext(),
+                request=ip_pb2.IPServiceListRequest(project=project),
+                headers={
+                    "Authorization": "Bearer " + token,
+                }
+            )
+            for ip in response.ips:
+                print(ip.ip, ip.name, ip.project, ip.network)
+            # print(response)
+        except ConnecpyServerException as e:
+            print(e.code, e.message, e.to_dict())
 
-    r = x.List(ip_pb2.IPServiceListRequest(project=project))
-    print(r)
+
+if __name__ == "__main__":
+    main()
