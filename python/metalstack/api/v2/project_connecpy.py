@@ -11,23 +11,22 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.project_pb2 as _pb2
+import metalstack.api.v2.project_pb2 as metalstack_dot_api_dot_v2_dot_project__pb2
 
 
 class ProjectService(Protocol):
-    async def List(self, req: _pb2.ProjectServiceListRequest, ctx: ServiceContext) -> _pb2.ProjectServiceListResponse: ...
-    async def Get(self, req: _pb2.ProjectServiceGetRequest, ctx: ServiceContext) -> _pb2.ProjectServiceGetResponse: ...
-    async def Create(self, req: _pb2.ProjectServiceCreateRequest, ctx: ServiceContext) -> _pb2.ProjectServiceCreateResponse: ...
-    async def Delete(self, req: _pb2.ProjectServiceDeleteRequest, ctx: ServiceContext) -> _pb2.ProjectServiceDeleteResponse: ...
-    async def Update(self, req: _pb2.ProjectServiceUpdateRequest, ctx: ServiceContext) -> _pb2.ProjectServiceUpdateResponse: ...
-    async def RemoveMember(self, req: _pb2.ProjectServiceRemoveMemberRequest, ctx: ServiceContext) -> _pb2.ProjectServiceRemoveMemberResponse: ...
-    async def UpdateMember(self, req: _pb2.ProjectServiceUpdateMemberRequest, ctx: ServiceContext) -> _pb2.ProjectServiceUpdateMemberResponse: ...
-    async def Invite(self, req: _pb2.ProjectServiceInviteRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInviteResponse: ...
-    async def InviteAccept(self, req: _pb2.ProjectServiceInviteAcceptRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInviteAcceptResponse: ...
-    async def InviteDelete(self, req: _pb2.ProjectServiceInviteDeleteRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInviteDeleteResponse: ...
-    async def InvitesList(self, req: _pb2.ProjectServiceInvitesListRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInvitesListResponse: ...
-    async def InviteGet(self, req: _pb2.ProjectServiceInviteGetRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInviteGetResponse: ...
+    async def List(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse: ...
+    async def Get(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse: ...
+    async def Create(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse: ...
+    async def Delete(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse: ...
+    async def Update(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse: ...
+    async def RemoveMember(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse: ...
+    async def UpdateMember(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse: ...
+    async def Invite(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse: ...
+    async def InviteAccept(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse: ...
+    async def InviteDelete(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse: ...
+    async def InvitesList(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse: ...
+    async def InviteGet(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse: ...
 
 
 class ProjectServiceServer(ConnecpyServer):
@@ -35,100 +34,100 @@ class ProjectServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.ProjectService"
         self._endpoints = {
-            "List": Endpoint[_pb2.ProjectServiceListRequest, _pb2.ProjectServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse](
                 service_name="ProjectService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.ProjectServiceListRequest,
-                output=_pb2.ProjectServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Get": Endpoint[_pb2.ProjectServiceGetRequest, _pb2.ProjectServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse](
                 service_name="ProjectService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.ProjectServiceGetRequest,
-                output=_pb2.ProjectServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "Create": Endpoint[_pb2.ProjectServiceCreateRequest, _pb2.ProjectServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse](
                 service_name="ProjectService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.ProjectServiceCreateRequest,
-                output=_pb2.ProjectServiceCreateResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.ProjectServiceDeleteRequest, _pb2.ProjectServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse](
                 service_name="ProjectService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.ProjectServiceDeleteRequest,
-                output=_pb2.ProjectServiceDeleteResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.ProjectServiceUpdateRequest, _pb2.ProjectServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse](
                 service_name="ProjectService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.ProjectServiceUpdateRequest,
-                output=_pb2.ProjectServiceUpdateResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "RemoveMember": Endpoint[_pb2.ProjectServiceRemoveMemberRequest, _pb2.ProjectServiceRemoveMemberResponse](
+            "RemoveMember": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse](
                 service_name="ProjectService",
                 name="RemoveMember",
                 function=getattr(service, "RemoveMember"),
-                input=_pb2.ProjectServiceRemoveMemberRequest,
-                output=_pb2.ProjectServiceRemoveMemberResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse,
                 allowed_methods=("POST",),
             ),
-            "UpdateMember": Endpoint[_pb2.ProjectServiceUpdateMemberRequest, _pb2.ProjectServiceUpdateMemberResponse](
+            "UpdateMember": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse](
                 service_name="ProjectService",
                 name="UpdateMember",
                 function=getattr(service, "UpdateMember"),
-                input=_pb2.ProjectServiceUpdateMemberRequest,
-                output=_pb2.ProjectServiceUpdateMemberResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse,
                 allowed_methods=("POST",),
             ),
-            "Invite": Endpoint[_pb2.ProjectServiceInviteRequest, _pb2.ProjectServiceInviteResponse](
+            "Invite": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse](
                 service_name="ProjectService",
                 name="Invite",
                 function=getattr(service, "Invite"),
-                input=_pb2.ProjectServiceInviteRequest,
-                output=_pb2.ProjectServiceInviteResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteAccept": Endpoint[_pb2.ProjectServiceInviteAcceptRequest, _pb2.ProjectServiceInviteAcceptResponse](
+            "InviteAccept": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse](
                 service_name="ProjectService",
                 name="InviteAccept",
                 function=getattr(service, "InviteAccept"),
-                input=_pb2.ProjectServiceInviteAcceptRequest,
-                output=_pb2.ProjectServiceInviteAcceptResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteDelete": Endpoint[_pb2.ProjectServiceInviteDeleteRequest, _pb2.ProjectServiceInviteDeleteResponse](
+            "InviteDelete": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse](
                 service_name="ProjectService",
                 name="InviteDelete",
                 function=getattr(service, "InviteDelete"),
-                input=_pb2.ProjectServiceInviteDeleteRequest,
-                output=_pb2.ProjectServiceInviteDeleteResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "InvitesList": Endpoint[_pb2.ProjectServiceInvitesListRequest, _pb2.ProjectServiceInvitesListResponse](
+            "InvitesList": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse](
                 service_name="ProjectService",
                 name="InvitesList",
                 function=getattr(service, "InvitesList"),
-                input=_pb2.ProjectServiceInvitesListRequest,
-                output=_pb2.ProjectServiceInvitesListResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteGet": Endpoint[_pb2.ProjectServiceInviteGetRequest, _pb2.ProjectServiceInviteGetResponse](
+            "InviteGet": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse](
                 service_name="ProjectService",
                 name="InviteGet",
                 function=getattr(service, "InviteGet"),
-                input=_pb2.ProjectServiceInviteGetRequest,
-                output=_pb2.ProjectServiceInviteGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -138,18 +137,18 @@ class ProjectServiceServer(ConnecpyServer):
 
 
 class ProjectServiceSync(Protocol):
-    def List(self, req: _pb2.ProjectServiceListRequest, ctx: ServiceContext) -> _pb2.ProjectServiceListResponse: ...
-    def Get(self, req: _pb2.ProjectServiceGetRequest, ctx: ServiceContext) -> _pb2.ProjectServiceGetResponse: ...
-    def Create(self, req: _pb2.ProjectServiceCreateRequest, ctx: ServiceContext) -> _pb2.ProjectServiceCreateResponse: ...
-    def Delete(self, req: _pb2.ProjectServiceDeleteRequest, ctx: ServiceContext) -> _pb2.ProjectServiceDeleteResponse: ...
-    def Update(self, req: _pb2.ProjectServiceUpdateRequest, ctx: ServiceContext) -> _pb2.ProjectServiceUpdateResponse: ...
-    def RemoveMember(self, req: _pb2.ProjectServiceRemoveMemberRequest, ctx: ServiceContext) -> _pb2.ProjectServiceRemoveMemberResponse: ...
-    def UpdateMember(self, req: _pb2.ProjectServiceUpdateMemberRequest, ctx: ServiceContext) -> _pb2.ProjectServiceUpdateMemberResponse: ...
-    def Invite(self, req: _pb2.ProjectServiceInviteRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInviteResponse: ...
-    def InviteAccept(self, req: _pb2.ProjectServiceInviteAcceptRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInviteAcceptResponse: ...
-    def InviteDelete(self, req: _pb2.ProjectServiceInviteDeleteRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInviteDeleteResponse: ...
-    def InvitesList(self, req: _pb2.ProjectServiceInvitesListRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInvitesListResponse: ...
-    def InviteGet(self, req: _pb2.ProjectServiceInviteGetRequest, ctx: ServiceContext) -> _pb2.ProjectServiceInviteGetResponse: ...
+    def List(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse: ...
+    def Get(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse: ...
+    def Create(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse: ...
+    def Delete(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse: ...
+    def Update(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse: ...
+    def RemoveMember(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse: ...
+    def UpdateMember(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse: ...
+    def Invite(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse: ...
+    def InviteAccept(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse: ...
+    def InviteDelete(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse: ...
+    def InvitesList(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse: ...
+    def InviteGet(self, req: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse: ...
 
 
 class ProjectServiceServerSync(ConnecpyServer):
@@ -157,100 +156,100 @@ class ProjectServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.ProjectService"
         self._endpoints = {
-            "List": Endpoint[_pb2.ProjectServiceListRequest, _pb2.ProjectServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse](
                 service_name="ProjectService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.ProjectServiceListRequest,
-                output=_pb2.ProjectServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Get": Endpoint[_pb2.ProjectServiceGetRequest, _pb2.ProjectServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse](
                 service_name="ProjectService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.ProjectServiceGetRequest,
-                output=_pb2.ProjectServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "Create": Endpoint[_pb2.ProjectServiceCreateRequest, _pb2.ProjectServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse](
                 service_name="ProjectService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.ProjectServiceCreateRequest,
-                output=_pb2.ProjectServiceCreateResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.ProjectServiceDeleteRequest, _pb2.ProjectServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse](
                 service_name="ProjectService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.ProjectServiceDeleteRequest,
-                output=_pb2.ProjectServiceDeleteResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.ProjectServiceUpdateRequest, _pb2.ProjectServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse](
                 service_name="ProjectService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.ProjectServiceUpdateRequest,
-                output=_pb2.ProjectServiceUpdateResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "RemoveMember": Endpoint[_pb2.ProjectServiceRemoveMemberRequest, _pb2.ProjectServiceRemoveMemberResponse](
+            "RemoveMember": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse](
                 service_name="ProjectService",
                 name="RemoveMember",
                 function=getattr(service, "RemoveMember"),
-                input=_pb2.ProjectServiceRemoveMemberRequest,
-                output=_pb2.ProjectServiceRemoveMemberResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse,
                 allowed_methods=("POST",),
             ),
-            "UpdateMember": Endpoint[_pb2.ProjectServiceUpdateMemberRequest, _pb2.ProjectServiceUpdateMemberResponse](
+            "UpdateMember": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse](
                 service_name="ProjectService",
                 name="UpdateMember",
                 function=getattr(service, "UpdateMember"),
-                input=_pb2.ProjectServiceUpdateMemberRequest,
-                output=_pb2.ProjectServiceUpdateMemberResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse,
                 allowed_methods=("POST",),
             ),
-            "Invite": Endpoint[_pb2.ProjectServiceInviteRequest, _pb2.ProjectServiceInviteResponse](
+            "Invite": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse](
                 service_name="ProjectService",
                 name="Invite",
                 function=getattr(service, "Invite"),
-                input=_pb2.ProjectServiceInviteRequest,
-                output=_pb2.ProjectServiceInviteResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteAccept": Endpoint[_pb2.ProjectServiceInviteAcceptRequest, _pb2.ProjectServiceInviteAcceptResponse](
+            "InviteAccept": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse](
                 service_name="ProjectService",
                 name="InviteAccept",
                 function=getattr(service, "InviteAccept"),
-                input=_pb2.ProjectServiceInviteAcceptRequest,
-                output=_pb2.ProjectServiceInviteAcceptResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteDelete": Endpoint[_pb2.ProjectServiceInviteDeleteRequest, _pb2.ProjectServiceInviteDeleteResponse](
+            "InviteDelete": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse](
                 service_name="ProjectService",
                 name="InviteDelete",
                 function=getattr(service, "InviteDelete"),
-                input=_pb2.ProjectServiceInviteDeleteRequest,
-                output=_pb2.ProjectServiceInviteDeleteResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "InvitesList": Endpoint[_pb2.ProjectServiceInvitesListRequest, _pb2.ProjectServiceInvitesListResponse](
+            "InvitesList": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse](
                 service_name="ProjectService",
                 name="InvitesList",
                 function=getattr(service, "InvitesList"),
-                input=_pb2.ProjectServiceInvitesListRequest,
-                output=_pb2.ProjectServiceInvitesListResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteGet": Endpoint[_pb2.ProjectServiceInviteGetRequest, _pb2.ProjectServiceInviteGetResponse](
+            "InviteGet": Endpoint[metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetRequest, metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse](
                 service_name="ProjectService",
                 name="InviteGet",
                 function=getattr(service, "InviteGet"),
-                input=_pb2.ProjectServiceInviteGetRequest,
-                output=_pb2.ProjectServiceInviteGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -262,216 +261,216 @@ class ProjectServiceServerSync(ConnecpyServer):
 class ProjectServiceClient(ConnecpyClient):
     def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListRequest,
         *,
-        request: _pb2.ProjectServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse,
             method=method,
             **kwargs,
         )
 
     def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetRequest,
         *,
-        request: _pb2.ProjectServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse,
             method=method,
             **kwargs,
         )
 
     def Create(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
         *,
-        request: _pb2.ProjectServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceCreateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceCreateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse,
             method=method,
             **kwargs,
         )
 
     def Delete(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteRequest,
         *,
-        request: _pb2.ProjectServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceDeleteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceDeleteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse,
             method=method,
             **kwargs,
         )
 
     def Update(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest,
         *,
-        request: _pb2.ProjectServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceUpdateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceUpdateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse,
             method=method,
             **kwargs,
         )
 
     def RemoveMember(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
         *,
-        request: _pb2.ProjectServiceRemoveMemberRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceRemoveMemberResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/RemoveMember",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceRemoveMemberResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse,
             method=method,
             **kwargs,
         )
 
     def UpdateMember(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberRequest,
         *,
-        request: _pb2.ProjectServiceUpdateMemberRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceUpdateMemberResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/UpdateMember",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceUpdateMemberResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse,
             method=method,
             **kwargs,
         )
 
     def Invite(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteRequest,
         *,
-        request: _pb2.ProjectServiceInviteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceInviteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Invite",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInviteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse,
             method=method,
             **kwargs,
         )
 
     def InviteAccept(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptRequest,
         *,
-        request: _pb2.ProjectServiceInviteAcceptRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceInviteAcceptResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/InviteAccept",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInviteAcceptResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse,
             method=method,
             **kwargs,
         )
 
     def InviteDelete(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteRequest,
         *,
-        request: _pb2.ProjectServiceInviteDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceInviteDeleteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/InviteDelete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInviteDeleteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse,
             method=method,
             **kwargs,
         )
 
     def InvitesList(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListRequest,
         *,
-        request: _pb2.ProjectServiceInvitesListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceInvitesListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/InvitesList",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInvitesListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse,
             method=method,
             **kwargs,
         )
 
     def InviteGet(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetRequest,
         *,
-        request: _pb2.ProjectServiceInviteGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ProjectServiceInviteGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/InviteGet",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInviteGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse,
             method=method,
             **kwargs,
         )
@@ -480,19 +479,19 @@ class ProjectServiceClient(ConnecpyClient):
 class AsyncProjectServiceClient(AsyncConnecpyClient):
     async def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListRequest,
         *,
-        request: _pb2.ProjectServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -500,19 +499,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetRequest,
         *,
-        request: _pb2.ProjectServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceGetResponse,
             method=method,
             session=session,
             **kwargs,
@@ -520,19 +519,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def Create(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
         *,
-        request: _pb2.ProjectServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceCreateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceCreateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceCreateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -540,19 +539,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def Delete(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteRequest,
         *,
-        request: _pb2.ProjectServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceDeleteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceDeleteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceDeleteResponse,
             method=method,
             session=session,
             **kwargs,
@@ -560,19 +559,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def Update(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest,
         *,
-        request: _pb2.ProjectServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceUpdateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceUpdateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -580,19 +579,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def RemoveMember(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
         *,
-        request: _pb2.ProjectServiceRemoveMemberRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceRemoveMemberResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/RemoveMember",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceRemoveMemberResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse,
             method=method,
             session=session,
             **kwargs,
@@ -600,19 +599,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def UpdateMember(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberRequest,
         *,
-        request: _pb2.ProjectServiceUpdateMemberRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceUpdateMemberResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/UpdateMember",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceUpdateMemberResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateMemberResponse,
             method=method,
             session=session,
             **kwargs,
@@ -620,19 +619,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def Invite(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteRequest,
         *,
-        request: _pb2.ProjectServiceInviteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceInviteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/Invite",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInviteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteResponse,
             method=method,
             session=session,
             **kwargs,
@@ -640,19 +639,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def InviteAccept(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptRequest,
         *,
-        request: _pb2.ProjectServiceInviteAcceptRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceInviteAcceptResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/InviteAccept",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInviteAcceptResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteAcceptResponse,
             method=method,
             session=session,
             **kwargs,
@@ -660,19 +659,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def InviteDelete(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteRequest,
         *,
-        request: _pb2.ProjectServiceInviteDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceInviteDeleteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/InviteDelete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInviteDeleteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteDeleteResponse,
             method=method,
             session=session,
             **kwargs,
@@ -680,19 +679,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def InvitesList(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListRequest,
         *,
-        request: _pb2.ProjectServiceInvitesListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceInvitesListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/InvitesList",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInvitesListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInvitesListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -700,19 +699,19 @@ class AsyncProjectServiceClient(AsyncConnecpyClient):
 
     async def InviteGet(
         self,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetRequest,
         *,
-        request: _pb2.ProjectServiceInviteGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ProjectServiceInviteGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ProjectService/InviteGet",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ProjectServiceInviteGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceInviteGetResponse,
             method=method,
             session=session,
             **kwargs,

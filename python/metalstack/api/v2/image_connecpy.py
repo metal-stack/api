@@ -11,14 +11,13 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.image_pb2 as _pb2
+import metalstack.api.v2.image_pb2 as metalstack_dot_api_dot_v2_dot_image__pb2
 
 
 class ImageService(Protocol):
-    async def Get(self, req: _pb2.ImageServiceGetRequest, ctx: ServiceContext) -> _pb2.ImageServiceGetResponse: ...
-    async def List(self, req: _pb2.ImageServiceListRequest, ctx: ServiceContext) -> _pb2.ImageServiceListResponse: ...
-    async def Latest(self, req: _pb2.ImageServiceLatestRequest, ctx: ServiceContext) -> _pb2.ImageServiceLatestResponse: ...
+    async def Get(self, req: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse: ...
+    async def List(self, req: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse: ...
+    async def Latest(self, req: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse: ...
 
 
 class ImageServiceServer(ConnecpyServer):
@@ -26,28 +25,28 @@ class ImageServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.ImageService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.ImageServiceGetRequest, _pb2.ImageServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetRequest, metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse](
                 service_name="ImageService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.ImageServiceGetRequest,
-                output=_pb2.ImageServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.ImageServiceListRequest, _pb2.ImageServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListRequest, metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse](
                 service_name="ImageService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.ImageServiceListRequest,
-                output=_pb2.ImageServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Latest": Endpoint[_pb2.ImageServiceLatestRequest, _pb2.ImageServiceLatestResponse](
+            "Latest": Endpoint[metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestRequest, metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse](
                 service_name="ImageService",
                 name="Latest",
                 function=getattr(service, "Latest"),
-                input=_pb2.ImageServiceLatestRequest,
-                output=_pb2.ImageServiceLatestResponse,
+                input=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestRequest,
+                output=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -57,9 +56,9 @@ class ImageServiceServer(ConnecpyServer):
 
 
 class ImageServiceSync(Protocol):
-    def Get(self, req: _pb2.ImageServiceGetRequest, ctx: ServiceContext) -> _pb2.ImageServiceGetResponse: ...
-    def List(self, req: _pb2.ImageServiceListRequest, ctx: ServiceContext) -> _pb2.ImageServiceListResponse: ...
-    def Latest(self, req: _pb2.ImageServiceLatestRequest, ctx: ServiceContext) -> _pb2.ImageServiceLatestResponse: ...
+    def Get(self, req: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse: ...
+    def List(self, req: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse: ...
+    def Latest(self, req: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse: ...
 
 
 class ImageServiceServerSync(ConnecpyServer):
@@ -67,28 +66,28 @@ class ImageServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.ImageService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.ImageServiceGetRequest, _pb2.ImageServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetRequest, metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse](
                 service_name="ImageService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.ImageServiceGetRequest,
-                output=_pb2.ImageServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.ImageServiceListRequest, _pb2.ImageServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListRequest, metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse](
                 service_name="ImageService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.ImageServiceListRequest,
-                output=_pb2.ImageServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Latest": Endpoint[_pb2.ImageServiceLatestRequest, _pb2.ImageServiceLatestResponse](
+            "Latest": Endpoint[metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestRequest, metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse](
                 service_name="ImageService",
                 name="Latest",
                 function=getattr(service, "Latest"),
-                input=_pb2.ImageServiceLatestRequest,
-                output=_pb2.ImageServiceLatestResponse,
+                input=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestRequest,
+                output=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -100,54 +99,54 @@ class ImageServiceServerSync(ConnecpyServer):
 class ImageServiceClient(ConnecpyClient):
     def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetRequest,
         *,
-        request: _pb2.ImageServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ImageServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ImageService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse,
             method=method,
             **kwargs,
         )
 
     def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListRequest,
         *,
-        request: _pb2.ImageServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ImageServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ImageService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse,
             method=method,
             **kwargs,
         )
 
     def Latest(
         self,
+        request: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestRequest,
         *,
-        request: _pb2.ImageServiceLatestRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ImageServiceLatestResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ImageService/Latest",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceLatestResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse,
             method=method,
             **kwargs,
         )
@@ -156,19 +155,19 @@ class ImageServiceClient(ConnecpyClient):
 class AsyncImageServiceClient(AsyncConnecpyClient):
     async def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetRequest,
         *,
-        request: _pb2.ImageServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ImageServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ImageService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceGetResponse,
             method=method,
             session=session,
             **kwargs,
@@ -176,19 +175,19 @@ class AsyncImageServiceClient(AsyncConnecpyClient):
 
     async def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListRequest,
         *,
-        request: _pb2.ImageServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ImageServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ImageService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -196,19 +195,19 @@ class AsyncImageServiceClient(AsyncConnecpyClient):
 
     async def Latest(
         self,
+        request: metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestRequest,
         *,
-        request: _pb2.ImageServiceLatestRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ImageServiceLatestResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.ImageService/Latest",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceLatestResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_image__pb2.ImageServiceLatestResponse,
             method=method,
             session=session,
             **kwargs,

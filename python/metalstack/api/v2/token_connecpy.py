@@ -11,16 +11,15 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.token_pb2 as _pb2
+import metalstack.api.v2.token_pb2 as metalstack_dot_api_dot_v2_dot_token__pb2
 
 
 class TokenService(Protocol):
-    async def Get(self, req: _pb2.TokenServiceGetRequest, ctx: ServiceContext) -> _pb2.TokenServiceGetResponse: ...
-    async def Create(self, req: _pb2.TokenServiceCreateRequest, ctx: ServiceContext) -> _pb2.TokenServiceCreateResponse: ...
-    async def Update(self, req: _pb2.TokenServiceUpdateRequest, ctx: ServiceContext) -> _pb2.TokenServiceUpdateResponse: ...
-    async def List(self, req: _pb2.TokenServiceListRequest, ctx: ServiceContext) -> _pb2.TokenServiceListResponse: ...
-    async def Revoke(self, req: _pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> _pb2.TokenServiceRevokeResponse: ...
+    async def Get(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse: ...
+    async def Create(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse: ...
+    async def Update(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse: ...
+    async def List(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse: ...
+    async def Revoke(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse: ...
 
 
 class TokenServiceServer(ConnecpyServer):
@@ -28,44 +27,44 @@ class TokenServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.TokenService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.TokenServiceGetRequest, _pb2.TokenServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse](
                 service_name="TokenService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.TokenServiceGetRequest,
-                output=_pb2.TokenServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "Create": Endpoint[_pb2.TokenServiceCreateRequest, _pb2.TokenServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse](
                 service_name="TokenService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.TokenServiceCreateRequest,
-                output=_pb2.TokenServiceCreateResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.TokenServiceUpdateRequest, _pb2.TokenServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse](
                 service_name="TokenService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.TokenServiceUpdateRequest,
-                output=_pb2.TokenServiceUpdateResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.TokenServiceListRequest, _pb2.TokenServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse](
                 service_name="TokenService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.TokenServiceListRequest,
-                output=_pb2.TokenServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Revoke": Endpoint[_pb2.TokenServiceRevokeRequest, _pb2.TokenServiceRevokeResponse](
+            "Revoke": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse](
                 service_name="TokenService",
                 name="Revoke",
                 function=getattr(service, "Revoke"),
-                input=_pb2.TokenServiceRevokeRequest,
-                output=_pb2.TokenServiceRevokeResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -75,11 +74,11 @@ class TokenServiceServer(ConnecpyServer):
 
 
 class TokenServiceSync(Protocol):
-    def Get(self, req: _pb2.TokenServiceGetRequest, ctx: ServiceContext) -> _pb2.TokenServiceGetResponse: ...
-    def Create(self, req: _pb2.TokenServiceCreateRequest, ctx: ServiceContext) -> _pb2.TokenServiceCreateResponse: ...
-    def Update(self, req: _pb2.TokenServiceUpdateRequest, ctx: ServiceContext) -> _pb2.TokenServiceUpdateResponse: ...
-    def List(self, req: _pb2.TokenServiceListRequest, ctx: ServiceContext) -> _pb2.TokenServiceListResponse: ...
-    def Revoke(self, req: _pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> _pb2.TokenServiceRevokeResponse: ...
+    def Get(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse: ...
+    def Create(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse: ...
+    def Update(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse: ...
+    def List(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse: ...
+    def Revoke(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse: ...
 
 
 class TokenServiceServerSync(ConnecpyServer):
@@ -87,44 +86,44 @@ class TokenServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.TokenService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.TokenServiceGetRequest, _pb2.TokenServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse](
                 service_name="TokenService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.TokenServiceGetRequest,
-                output=_pb2.TokenServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "Create": Endpoint[_pb2.TokenServiceCreateRequest, _pb2.TokenServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse](
                 service_name="TokenService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.TokenServiceCreateRequest,
-                output=_pb2.TokenServiceCreateResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.TokenServiceUpdateRequest, _pb2.TokenServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse](
                 service_name="TokenService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.TokenServiceUpdateRequest,
-                output=_pb2.TokenServiceUpdateResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.TokenServiceListRequest, _pb2.TokenServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse](
                 service_name="TokenService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.TokenServiceListRequest,
-                output=_pb2.TokenServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Revoke": Endpoint[_pb2.TokenServiceRevokeRequest, _pb2.TokenServiceRevokeResponse](
+            "Revoke": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse](
                 service_name="TokenService",
                 name="Revoke",
                 function=getattr(service, "Revoke"),
-                input=_pb2.TokenServiceRevokeRequest,
-                output=_pb2.TokenServiceRevokeResponse,
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -136,90 +135,90 @@ class TokenServiceServerSync(ConnecpyServer):
 class TokenServiceClient(ConnecpyClient):
     def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetRequest,
         *,
-        request: _pb2.TokenServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TokenServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse,
             method=method,
             **kwargs,
         )
 
     def Create(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
         *,
-        request: _pb2.TokenServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TokenServiceCreateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceCreateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse,
             method=method,
             **kwargs,
         )
 
     def Update(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest,
         *,
-        request: _pb2.TokenServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TokenServiceUpdateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceUpdateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse,
             method=method,
             **kwargs,
         )
 
     def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest,
         *,
-        request: _pb2.TokenServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TokenServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse,
             method=method,
             **kwargs,
         )
 
     def Revoke(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
         *,
-        request: _pb2.TokenServiceRevokeRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TokenServiceRevokeResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Revoke",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceRevokeResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
             method=method,
             **kwargs,
         )
@@ -228,19 +227,19 @@ class TokenServiceClient(ConnecpyClient):
 class AsyncTokenServiceClient(AsyncConnecpyClient):
     async def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetRequest,
         *,
-        request: _pb2.TokenServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TokenServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceGetResponse,
             method=method,
             session=session,
             **kwargs,
@@ -248,19 +247,19 @@ class AsyncTokenServiceClient(AsyncConnecpyClient):
 
     async def Create(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
         *,
-        request: _pb2.TokenServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TokenServiceCreateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceCreateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceCreateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -268,19 +267,19 @@ class AsyncTokenServiceClient(AsyncConnecpyClient):
 
     async def Update(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest,
         *,
-        request: _pb2.TokenServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TokenServiceUpdateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceUpdateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -288,19 +287,19 @@ class AsyncTokenServiceClient(AsyncConnecpyClient):
 
     async def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest,
         *,
-        request: _pb2.TokenServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TokenServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -308,19 +307,19 @@ class AsyncTokenServiceClient(AsyncConnecpyClient):
 
     async def Revoke(
         self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
         *,
-        request: _pb2.TokenServiceRevokeRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TokenServiceRevokeResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Revoke",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceRevokeResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
             method=method,
             session=session,
             **kwargs,

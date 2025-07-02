@@ -11,12 +11,11 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.infra.v2.bmc_pb2 as _pb2
+import metalstack.infra.v2.bmc_pb2 as metalstack_dot_infra_dot_v2_dot_bmc__pb2
 
 
 class BMCService(Protocol):
-    async def UpdateBMCInfo(self, req: _pb2.UpdateBMCInfoRequest, ctx: ServiceContext) -> _pb2.UpdateBMCInfoResponse: ...
+    async def UpdateBMCInfo(self, req: metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse: ...
 
 
 class BMCServiceServer(ConnecpyServer):
@@ -24,12 +23,12 @@ class BMCServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.infra.v2.BMCService"
         self._endpoints = {
-            "UpdateBMCInfo": Endpoint[_pb2.UpdateBMCInfoRequest, _pb2.UpdateBMCInfoResponse](
+            "UpdateBMCInfo": Endpoint[metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest, metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse](
                 service_name="BMCService",
                 name="UpdateBMCInfo",
                 function=getattr(service, "UpdateBMCInfo"),
-                input=_pb2.UpdateBMCInfoRequest,
-                output=_pb2.UpdateBMCInfoResponse,
+                input=metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest,
+                output=metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -39,7 +38,7 @@ class BMCServiceServer(ConnecpyServer):
 
 
 class BMCServiceSync(Protocol):
-    def UpdateBMCInfo(self, req: _pb2.UpdateBMCInfoRequest, ctx: ServiceContext) -> _pb2.UpdateBMCInfoResponse: ...
+    def UpdateBMCInfo(self, req: metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse: ...
 
 
 class BMCServiceServerSync(ConnecpyServer):
@@ -47,12 +46,12 @@ class BMCServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.infra.v2.BMCService"
         self._endpoints = {
-            "UpdateBMCInfo": Endpoint[_pb2.UpdateBMCInfoRequest, _pb2.UpdateBMCInfoResponse](
+            "UpdateBMCInfo": Endpoint[metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest, metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse](
                 service_name="BMCService",
                 name="UpdateBMCInfo",
                 function=getattr(service, "UpdateBMCInfo"),
-                input=_pb2.UpdateBMCInfoRequest,
-                output=_pb2.UpdateBMCInfoResponse,
+                input=metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest,
+                output=metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -64,18 +63,18 @@ class BMCServiceServerSync(ConnecpyServer):
 class BMCServiceClient(ConnecpyClient):
     def UpdateBMCInfo(
         self,
+        request: metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest,
         *,
-        request: _pb2.UpdateBMCInfoRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.UpdateBMCInfoResponse:
+    ) -> metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.infra.v2.BMCService/UpdateBMCInfo",
             ctx=ctx,
             request=request,
-            response_class=_pb2.UpdateBMCInfoResponse,
+            response_class=metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse,
             method=method,
             **kwargs,
         )
@@ -84,19 +83,19 @@ class BMCServiceClient(ConnecpyClient):
 class AsyncBMCServiceClient(AsyncConnecpyClient):
     async def UpdateBMCInfo(
         self,
+        request: metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest,
         *,
-        request: _pb2.UpdateBMCInfoRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.UpdateBMCInfoResponse:
+    ) -> metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.infra.v2.BMCService/UpdateBMCInfo",
             ctx=ctx,
             request=request,
-            response_class=_pb2.UpdateBMCInfoResponse,
+            response_class=metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse,
             method=method,
             session=session,
             **kwargs,

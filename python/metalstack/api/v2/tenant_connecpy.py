@@ -11,23 +11,22 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.tenant_pb2 as _pb2
+import metalstack.api.v2.tenant_pb2 as metalstack_dot_api_dot_v2_dot_tenant__pb2
 
 
 class TenantService(Protocol):
-    async def Create(self, req: _pb2.TenantServiceCreateRequest, ctx: ServiceContext) -> _pb2.TenantServiceCreateResponse: ...
-    async def List(self, req: _pb2.TenantServiceListRequest, ctx: ServiceContext) -> _pb2.TenantServiceListResponse: ...
-    async def Get(self, req: _pb2.TenantServiceGetRequest, ctx: ServiceContext) -> _pb2.TenantServiceGetResponse: ...
-    async def Update(self, req: _pb2.TenantServiceUpdateRequest, ctx: ServiceContext) -> _pb2.TenantServiceUpdateResponse: ...
-    async def Delete(self, req: _pb2.TenantServiceDeleteRequest, ctx: ServiceContext) -> _pb2.TenantServiceDeleteResponse: ...
-    async def RemoveMember(self, req: _pb2.TenantServiceRemoveMemberRequest, ctx: ServiceContext) -> _pb2.TenantServiceRemoveMemberResponse: ...
-    async def UpdateMember(self, req: _pb2.TenantServiceUpdateMemberRequest, ctx: ServiceContext) -> _pb2.TenantServiceUpdateMemberResponse: ...
-    async def Invite(self, req: _pb2.TenantServiceInviteRequest, ctx: ServiceContext) -> _pb2.TenantServiceInviteResponse: ...
-    async def InviteAccept(self, req: _pb2.TenantServiceInviteAcceptRequest, ctx: ServiceContext) -> _pb2.TenantServiceInviteAcceptResponse: ...
-    async def InviteDelete(self, req: _pb2.TenantServiceInviteDeleteRequest, ctx: ServiceContext) -> _pb2.TenantServiceInviteDeleteResponse: ...
-    async def InvitesList(self, req: _pb2.TenantServiceInvitesListRequest, ctx: ServiceContext) -> _pb2.TenantServiceInvitesListResponse: ...
-    async def InviteGet(self, req: _pb2.TenantServiceInviteGetRequest, ctx: ServiceContext) -> _pb2.TenantServiceInviteGetResponse: ...
+    async def Create(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse: ...
+    async def List(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse: ...
+    async def Get(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse: ...
+    async def Update(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse: ...
+    async def Delete(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse: ...
+    async def RemoveMember(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse: ...
+    async def UpdateMember(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse: ...
+    async def Invite(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse: ...
+    async def InviteAccept(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse: ...
+    async def InviteDelete(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse: ...
+    async def InvitesList(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse: ...
+    async def InviteGet(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse: ...
 
 
 class TenantServiceServer(ConnecpyServer):
@@ -35,100 +34,100 @@ class TenantServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.TenantService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.TenantServiceCreateRequest, _pb2.TenantServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse](
                 service_name="TenantService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.TenantServiceCreateRequest,
-                output=_pb2.TenantServiceCreateResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.TenantServiceListRequest, _pb2.TenantServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse](
                 service_name="TenantService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.TenantServiceListRequest,
-                output=_pb2.TenantServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Get": Endpoint[_pb2.TenantServiceGetRequest, _pb2.TenantServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse](
                 service_name="TenantService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.TenantServiceGetRequest,
-                output=_pb2.TenantServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.TenantServiceUpdateRequest, _pb2.TenantServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse](
                 service_name="TenantService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.TenantServiceUpdateRequest,
-                output=_pb2.TenantServiceUpdateResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.TenantServiceDeleteRequest, _pb2.TenantServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse](
                 service_name="TenantService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.TenantServiceDeleteRequest,
-                output=_pb2.TenantServiceDeleteResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "RemoveMember": Endpoint[_pb2.TenantServiceRemoveMemberRequest, _pb2.TenantServiceRemoveMemberResponse](
+            "RemoveMember": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse](
                 service_name="TenantService",
                 name="RemoveMember",
                 function=getattr(service, "RemoveMember"),
-                input=_pb2.TenantServiceRemoveMemberRequest,
-                output=_pb2.TenantServiceRemoveMemberResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse,
                 allowed_methods=("POST",),
             ),
-            "UpdateMember": Endpoint[_pb2.TenantServiceUpdateMemberRequest, _pb2.TenantServiceUpdateMemberResponse](
+            "UpdateMember": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse](
                 service_name="TenantService",
                 name="UpdateMember",
                 function=getattr(service, "UpdateMember"),
-                input=_pb2.TenantServiceUpdateMemberRequest,
-                output=_pb2.TenantServiceUpdateMemberResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse,
                 allowed_methods=("POST",),
             ),
-            "Invite": Endpoint[_pb2.TenantServiceInviteRequest, _pb2.TenantServiceInviteResponse](
+            "Invite": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse](
                 service_name="TenantService",
                 name="Invite",
                 function=getattr(service, "Invite"),
-                input=_pb2.TenantServiceInviteRequest,
-                output=_pb2.TenantServiceInviteResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteAccept": Endpoint[_pb2.TenantServiceInviteAcceptRequest, _pb2.TenantServiceInviteAcceptResponse](
+            "InviteAccept": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse](
                 service_name="TenantService",
                 name="InviteAccept",
                 function=getattr(service, "InviteAccept"),
-                input=_pb2.TenantServiceInviteAcceptRequest,
-                output=_pb2.TenantServiceInviteAcceptResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteDelete": Endpoint[_pb2.TenantServiceInviteDeleteRequest, _pb2.TenantServiceInviteDeleteResponse](
+            "InviteDelete": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse](
                 service_name="TenantService",
                 name="InviteDelete",
                 function=getattr(service, "InviteDelete"),
-                input=_pb2.TenantServiceInviteDeleteRequest,
-                output=_pb2.TenantServiceInviteDeleteResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "InvitesList": Endpoint[_pb2.TenantServiceInvitesListRequest, _pb2.TenantServiceInvitesListResponse](
+            "InvitesList": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse](
                 service_name="TenantService",
                 name="InvitesList",
                 function=getattr(service, "InvitesList"),
-                input=_pb2.TenantServiceInvitesListRequest,
-                output=_pb2.TenantServiceInvitesListResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteGet": Endpoint[_pb2.TenantServiceInviteGetRequest, _pb2.TenantServiceInviteGetResponse](
+            "InviteGet": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse](
                 service_name="TenantService",
                 name="InviteGet",
                 function=getattr(service, "InviteGet"),
-                input=_pb2.TenantServiceInviteGetRequest,
-                output=_pb2.TenantServiceInviteGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -138,18 +137,18 @@ class TenantServiceServer(ConnecpyServer):
 
 
 class TenantServiceSync(Protocol):
-    def Create(self, req: _pb2.TenantServiceCreateRequest, ctx: ServiceContext) -> _pb2.TenantServiceCreateResponse: ...
-    def List(self, req: _pb2.TenantServiceListRequest, ctx: ServiceContext) -> _pb2.TenantServiceListResponse: ...
-    def Get(self, req: _pb2.TenantServiceGetRequest, ctx: ServiceContext) -> _pb2.TenantServiceGetResponse: ...
-    def Update(self, req: _pb2.TenantServiceUpdateRequest, ctx: ServiceContext) -> _pb2.TenantServiceUpdateResponse: ...
-    def Delete(self, req: _pb2.TenantServiceDeleteRequest, ctx: ServiceContext) -> _pb2.TenantServiceDeleteResponse: ...
-    def RemoveMember(self, req: _pb2.TenantServiceRemoveMemberRequest, ctx: ServiceContext) -> _pb2.TenantServiceRemoveMemberResponse: ...
-    def UpdateMember(self, req: _pb2.TenantServiceUpdateMemberRequest, ctx: ServiceContext) -> _pb2.TenantServiceUpdateMemberResponse: ...
-    def Invite(self, req: _pb2.TenantServiceInviteRequest, ctx: ServiceContext) -> _pb2.TenantServiceInviteResponse: ...
-    def InviteAccept(self, req: _pb2.TenantServiceInviteAcceptRequest, ctx: ServiceContext) -> _pb2.TenantServiceInviteAcceptResponse: ...
-    def InviteDelete(self, req: _pb2.TenantServiceInviteDeleteRequest, ctx: ServiceContext) -> _pb2.TenantServiceInviteDeleteResponse: ...
-    def InvitesList(self, req: _pb2.TenantServiceInvitesListRequest, ctx: ServiceContext) -> _pb2.TenantServiceInvitesListResponse: ...
-    def InviteGet(self, req: _pb2.TenantServiceInviteGetRequest, ctx: ServiceContext) -> _pb2.TenantServiceInviteGetResponse: ...
+    def Create(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse: ...
+    def List(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse: ...
+    def Get(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse: ...
+    def Update(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse: ...
+    def Delete(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse: ...
+    def RemoveMember(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse: ...
+    def UpdateMember(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse: ...
+    def Invite(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse: ...
+    def InviteAccept(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse: ...
+    def InviteDelete(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse: ...
+    def InvitesList(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse: ...
+    def InviteGet(self, req: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse: ...
 
 
 class TenantServiceServerSync(ConnecpyServer):
@@ -157,100 +156,100 @@ class TenantServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.TenantService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.TenantServiceCreateRequest, _pb2.TenantServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse](
                 service_name="TenantService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.TenantServiceCreateRequest,
-                output=_pb2.TenantServiceCreateResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.TenantServiceListRequest, _pb2.TenantServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse](
                 service_name="TenantService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.TenantServiceListRequest,
-                output=_pb2.TenantServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Get": Endpoint[_pb2.TenantServiceGetRequest, _pb2.TenantServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse](
                 service_name="TenantService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.TenantServiceGetRequest,
-                output=_pb2.TenantServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.TenantServiceUpdateRequest, _pb2.TenantServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse](
                 service_name="TenantService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.TenantServiceUpdateRequest,
-                output=_pb2.TenantServiceUpdateResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.TenantServiceDeleteRequest, _pb2.TenantServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse](
                 service_name="TenantService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.TenantServiceDeleteRequest,
-                output=_pb2.TenantServiceDeleteResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "RemoveMember": Endpoint[_pb2.TenantServiceRemoveMemberRequest, _pb2.TenantServiceRemoveMemberResponse](
+            "RemoveMember": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse](
                 service_name="TenantService",
                 name="RemoveMember",
                 function=getattr(service, "RemoveMember"),
-                input=_pb2.TenantServiceRemoveMemberRequest,
-                output=_pb2.TenantServiceRemoveMemberResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse,
                 allowed_methods=("POST",),
             ),
-            "UpdateMember": Endpoint[_pb2.TenantServiceUpdateMemberRequest, _pb2.TenantServiceUpdateMemberResponse](
+            "UpdateMember": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse](
                 service_name="TenantService",
                 name="UpdateMember",
                 function=getattr(service, "UpdateMember"),
-                input=_pb2.TenantServiceUpdateMemberRequest,
-                output=_pb2.TenantServiceUpdateMemberResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse,
                 allowed_methods=("POST",),
             ),
-            "Invite": Endpoint[_pb2.TenantServiceInviteRequest, _pb2.TenantServiceInviteResponse](
+            "Invite": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse](
                 service_name="TenantService",
                 name="Invite",
                 function=getattr(service, "Invite"),
-                input=_pb2.TenantServiceInviteRequest,
-                output=_pb2.TenantServiceInviteResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteAccept": Endpoint[_pb2.TenantServiceInviteAcceptRequest, _pb2.TenantServiceInviteAcceptResponse](
+            "InviteAccept": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse](
                 service_name="TenantService",
                 name="InviteAccept",
                 function=getattr(service, "InviteAccept"),
-                input=_pb2.TenantServiceInviteAcceptRequest,
-                output=_pb2.TenantServiceInviteAcceptResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteDelete": Endpoint[_pb2.TenantServiceInviteDeleteRequest, _pb2.TenantServiceInviteDeleteResponse](
+            "InviteDelete": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse](
                 service_name="TenantService",
                 name="InviteDelete",
                 function=getattr(service, "InviteDelete"),
-                input=_pb2.TenantServiceInviteDeleteRequest,
-                output=_pb2.TenantServiceInviteDeleteResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "InvitesList": Endpoint[_pb2.TenantServiceInvitesListRequest, _pb2.TenantServiceInvitesListResponse](
+            "InvitesList": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse](
                 service_name="TenantService",
                 name="InvitesList",
                 function=getattr(service, "InvitesList"),
-                input=_pb2.TenantServiceInvitesListRequest,
-                output=_pb2.TenantServiceInvitesListResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse,
                 allowed_methods=("POST",),
             ),
-            "InviteGet": Endpoint[_pb2.TenantServiceInviteGetRequest, _pb2.TenantServiceInviteGetResponse](
+            "InviteGet": Endpoint[metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetRequest, metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse](
                 service_name="TenantService",
                 name="InviteGet",
                 function=getattr(service, "InviteGet"),
-                input=_pb2.TenantServiceInviteGetRequest,
-                output=_pb2.TenantServiceInviteGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -262,216 +261,216 @@ class TenantServiceServerSync(ConnecpyServer):
 class TenantServiceClient(ConnecpyClient):
     def Create(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest,
         *,
-        request: _pb2.TenantServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceCreateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceCreateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse,
             method=method,
             **kwargs,
         )
 
     def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListRequest,
         *,
-        request: _pb2.TenantServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse,
             method=method,
             **kwargs,
         )
 
     def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetRequest,
         *,
-        request: _pb2.TenantServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse,
             method=method,
             **kwargs,
         )
 
     def Update(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateRequest,
         *,
-        request: _pb2.TenantServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceUpdateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceUpdateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse,
             method=method,
             **kwargs,
         )
 
     def Delete(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest,
         *,
-        request: _pb2.TenantServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceDeleteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceDeleteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse,
             method=method,
             **kwargs,
         )
 
     def RemoveMember(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest,
         *,
-        request: _pb2.TenantServiceRemoveMemberRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceRemoveMemberResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/RemoveMember",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceRemoveMemberResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse,
             method=method,
             **kwargs,
         )
 
     def UpdateMember(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest,
         *,
-        request: _pb2.TenantServiceUpdateMemberRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceUpdateMemberResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/UpdateMember",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceUpdateMemberResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse,
             method=method,
             **kwargs,
         )
 
     def Invite(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteRequest,
         *,
-        request: _pb2.TenantServiceInviteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceInviteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Invite",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInviteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse,
             method=method,
             **kwargs,
         )
 
     def InviteAccept(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptRequest,
         *,
-        request: _pb2.TenantServiceInviteAcceptRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceInviteAcceptResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/InviteAccept",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInviteAcceptResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse,
             method=method,
             **kwargs,
         )
 
     def InviteDelete(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteRequest,
         *,
-        request: _pb2.TenantServiceInviteDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceInviteDeleteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/InviteDelete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInviteDeleteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse,
             method=method,
             **kwargs,
         )
 
     def InvitesList(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListRequest,
         *,
-        request: _pb2.TenantServiceInvitesListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceInvitesListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/InvitesList",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInvitesListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse,
             method=method,
             **kwargs,
         )
 
     def InviteGet(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetRequest,
         *,
-        request: _pb2.TenantServiceInviteGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceInviteGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/InviteGet",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInviteGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse,
             method=method,
             **kwargs,
         )
@@ -480,19 +479,19 @@ class TenantServiceClient(ConnecpyClient):
 class AsyncTenantServiceClient(AsyncConnecpyClient):
     async def Create(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest,
         *,
-        request: _pb2.TenantServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceCreateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceCreateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -500,19 +499,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListRequest,
         *,
-        request: _pb2.TenantServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -520,19 +519,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetRequest,
         *,
-        request: _pb2.TenantServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceGetResponse,
             method=method,
             session=session,
             **kwargs,
@@ -540,19 +539,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def Update(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateRequest,
         *,
-        request: _pb2.TenantServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceUpdateResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceUpdateResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -560,19 +559,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def Delete(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest,
         *,
-        request: _pb2.TenantServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceDeleteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceDeleteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse,
             method=method,
             session=session,
             **kwargs,
@@ -580,19 +579,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def RemoveMember(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest,
         *,
-        request: _pb2.TenantServiceRemoveMemberRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceRemoveMemberResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/RemoveMember",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceRemoveMemberResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse,
             method=method,
             session=session,
             **kwargs,
@@ -600,19 +599,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def UpdateMember(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest,
         *,
-        request: _pb2.TenantServiceUpdateMemberRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceUpdateMemberResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/UpdateMember",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceUpdateMemberResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse,
             method=method,
             session=session,
             **kwargs,
@@ -620,19 +619,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def Invite(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteRequest,
         *,
-        request: _pb2.TenantServiceInviteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceInviteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/Invite",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInviteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteResponse,
             method=method,
             session=session,
             **kwargs,
@@ -640,19 +639,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def InviteAccept(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptRequest,
         *,
-        request: _pb2.TenantServiceInviteAcceptRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceInviteAcceptResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/InviteAccept",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInviteAcceptResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteAcceptResponse,
             method=method,
             session=session,
             **kwargs,
@@ -660,19 +659,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def InviteDelete(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteRequest,
         *,
-        request: _pb2.TenantServiceInviteDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceInviteDeleteResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/InviteDelete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInviteDeleteResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteDeleteResponse,
             method=method,
             session=session,
             **kwargs,
@@ -680,19 +679,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def InvitesList(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListRequest,
         *,
-        request: _pb2.TenantServiceInvitesListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceInvitesListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/InvitesList",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInvitesListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInvitesListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -700,19 +699,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def InviteGet(
         self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetRequest,
         *,
-        request: _pb2.TenantServiceInviteGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceInviteGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.TenantService/InviteGet",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceInviteGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceInviteGetResponse,
             method=method,
             session=session,
             **kwargs,

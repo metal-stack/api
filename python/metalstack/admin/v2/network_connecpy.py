@@ -11,16 +11,15 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.admin.v2.network_pb2 as _pb2
+import metalstack.admin.v2.network_pb2 as metalstack_dot_admin_dot_v2_dot_network__pb2
 
 
 class NetworkService(Protocol):
-    async def Get(self, req: _pb2.NetworkServiceGetRequest, ctx: ServiceContext) -> _pb2.NetworkServiceGetResponse: ...
-    async def Create(self, req: _pb2.NetworkServiceCreateRequest, ctx: ServiceContext) -> _pb2.NetworkServiceCreateResponse: ...
-    async def Update(self, req: _pb2.NetworkServiceUpdateRequest, ctx: ServiceContext) -> _pb2.NetworkServiceUpdateResponse: ...
-    async def Delete(self, req: _pb2.NetworkServiceDeleteRequest, ctx: ServiceContext) -> _pb2.NetworkServiceDeleteResponse: ...
-    async def List(self, req: _pb2.NetworkServiceListRequest, ctx: ServiceContext) -> _pb2.NetworkServiceListResponse: ...
+    async def Get(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse: ...
+    async def Create(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse: ...
+    async def Update(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse: ...
+    async def Delete(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse: ...
+    async def List(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse: ...
 
 
 class NetworkServiceServer(ConnecpyServer):
@@ -28,44 +27,44 @@ class NetworkServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.NetworkService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.NetworkServiceGetRequest, _pb2.NetworkServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse](
                 service_name="NetworkService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.NetworkServiceGetRequest,
-                output=_pb2.NetworkServiceGetResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "Create": Endpoint[_pb2.NetworkServiceCreateRequest, _pb2.NetworkServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse](
                 service_name="NetworkService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.NetworkServiceCreateRequest,
-                output=_pb2.NetworkServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.NetworkServiceUpdateRequest, _pb2.NetworkServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse](
                 service_name="NetworkService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.NetworkServiceUpdateRequest,
-                output=_pb2.NetworkServiceUpdateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.NetworkServiceDeleteRequest, _pb2.NetworkServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse](
                 service_name="NetworkService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.NetworkServiceDeleteRequest,
-                output=_pb2.NetworkServiceDeleteResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.NetworkServiceListRequest, _pb2.NetworkServiceListResponse](
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse](
                 service_name="NetworkService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.NetworkServiceListRequest,
-                output=_pb2.NetworkServiceListResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -75,11 +74,11 @@ class NetworkServiceServer(ConnecpyServer):
 
 
 class NetworkServiceSync(Protocol):
-    def Get(self, req: _pb2.NetworkServiceGetRequest, ctx: ServiceContext) -> _pb2.NetworkServiceGetResponse: ...
-    def Create(self, req: _pb2.NetworkServiceCreateRequest, ctx: ServiceContext) -> _pb2.NetworkServiceCreateResponse: ...
-    def Update(self, req: _pb2.NetworkServiceUpdateRequest, ctx: ServiceContext) -> _pb2.NetworkServiceUpdateResponse: ...
-    def Delete(self, req: _pb2.NetworkServiceDeleteRequest, ctx: ServiceContext) -> _pb2.NetworkServiceDeleteResponse: ...
-    def List(self, req: _pb2.NetworkServiceListRequest, ctx: ServiceContext) -> _pb2.NetworkServiceListResponse: ...
+    def Get(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse: ...
+    def Create(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse: ...
+    def Update(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse: ...
+    def Delete(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse: ...
+    def List(self, req: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse: ...
 
 
 class NetworkServiceServerSync(ConnecpyServer):
@@ -87,44 +86,44 @@ class NetworkServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.NetworkService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.NetworkServiceGetRequest, _pb2.NetworkServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse](
                 service_name="NetworkService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.NetworkServiceGetRequest,
-                output=_pb2.NetworkServiceGetResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "Create": Endpoint[_pb2.NetworkServiceCreateRequest, _pb2.NetworkServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse](
                 service_name="NetworkService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.NetworkServiceCreateRequest,
-                output=_pb2.NetworkServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.NetworkServiceUpdateRequest, _pb2.NetworkServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse](
                 service_name="NetworkService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.NetworkServiceUpdateRequest,
-                output=_pb2.NetworkServiceUpdateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.NetworkServiceDeleteRequest, _pb2.NetworkServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse](
                 service_name="NetworkService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.NetworkServiceDeleteRequest,
-                output=_pb2.NetworkServiceDeleteResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.NetworkServiceListRequest, _pb2.NetworkServiceListResponse](
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest, metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse](
                 service_name="NetworkService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.NetworkServiceListRequest,
-                output=_pb2.NetworkServiceListResponse,
+                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -136,90 +135,90 @@ class NetworkServiceServerSync(ConnecpyServer):
 class NetworkServiceClient(ConnecpyClient):
     def Get(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetRequest,
         *,
-        request: _pb2.NetworkServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.NetworkServiceGetResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceGetResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse,
             method=method,
             **kwargs,
         )
 
     def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateRequest,
         *,
-        request: _pb2.NetworkServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.NetworkServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse,
             method=method,
             **kwargs,
         )
 
     def Update(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateRequest,
         *,
-        request: _pb2.NetworkServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.NetworkServiceUpdateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceUpdateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse,
             method=method,
             **kwargs,
         )
 
     def Delete(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest,
         *,
-        request: _pb2.NetworkServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.NetworkServiceDeleteResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceDeleteResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse,
             method=method,
             **kwargs,
         )
 
     def List(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest,
         *,
-        request: _pb2.NetworkServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.NetworkServiceListResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceListResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse,
             method=method,
             **kwargs,
         )
@@ -228,19 +227,19 @@ class NetworkServiceClient(ConnecpyClient):
 class AsyncNetworkServiceClient(AsyncConnecpyClient):
     async def Get(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetRequest,
         *,
-        request: _pb2.NetworkServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.NetworkServiceGetResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceGetResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceGetResponse,
             method=method,
             session=session,
             **kwargs,
@@ -248,19 +247,19 @@ class AsyncNetworkServiceClient(AsyncConnecpyClient):
 
     async def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateRequest,
         *,
-        request: _pb2.NetworkServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.NetworkServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceCreateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -268,19 +267,19 @@ class AsyncNetworkServiceClient(AsyncConnecpyClient):
 
     async def Update(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateRequest,
         *,
-        request: _pb2.NetworkServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.NetworkServiceUpdateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceUpdateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceUpdateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -288,19 +287,19 @@ class AsyncNetworkServiceClient(AsyncConnecpyClient):
 
     async def Delete(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest,
         *,
-        request: _pb2.NetworkServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.NetworkServiceDeleteResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceDeleteResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse,
             method=method,
             session=session,
             **kwargs,
@@ -308,19 +307,19 @@ class AsyncNetworkServiceClient(AsyncConnecpyClient):
 
     async def List(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest,
         *,
-        request: _pb2.NetworkServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.NetworkServiceListResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.NetworkService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.NetworkServiceListResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse,
             method=method,
             session=session,
             **kwargs,

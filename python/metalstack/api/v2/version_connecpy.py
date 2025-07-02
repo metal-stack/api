@@ -11,12 +11,11 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.version_pb2 as _pb2
+import metalstack.api.v2.version_pb2 as metalstack_dot_api_dot_v2_dot_version__pb2
 
 
 class VersionService(Protocol):
-    async def Get(self, req: _pb2.VersionServiceGetRequest, ctx: ServiceContext) -> _pb2.VersionServiceGetResponse: ...
+    async def Get(self, req: metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse: ...
 
 
 class VersionServiceServer(ConnecpyServer):
@@ -24,12 +23,12 @@ class VersionServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.VersionService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.VersionServiceGetRequest, _pb2.VersionServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetRequest, metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse](
                 service_name="VersionService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.VersionServiceGetRequest,
-                output=_pb2.VersionServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -39,7 +38,7 @@ class VersionServiceServer(ConnecpyServer):
 
 
 class VersionServiceSync(Protocol):
-    def Get(self, req: _pb2.VersionServiceGetRequest, ctx: ServiceContext) -> _pb2.VersionServiceGetResponse: ...
+    def Get(self, req: metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse: ...
 
 
 class VersionServiceServerSync(ConnecpyServer):
@@ -47,12 +46,12 @@ class VersionServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.VersionService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.VersionServiceGetRequest, _pb2.VersionServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetRequest, metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse](
                 service_name="VersionService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.VersionServiceGetRequest,
-                output=_pb2.VersionServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -64,18 +63,18 @@ class VersionServiceServerSync(ConnecpyServer):
 class VersionServiceClient(ConnecpyClient):
     def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetRequest,
         *,
-        request: _pb2.VersionServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.VersionServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.VersionService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.VersionServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse,
             method=method,
             **kwargs,
         )
@@ -84,19 +83,19 @@ class VersionServiceClient(ConnecpyClient):
 class AsyncVersionServiceClient(AsyncConnecpyClient):
     async def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetRequest,
         *,
-        request: _pb2.VersionServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.VersionServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.VersionService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.VersionServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_version__pb2.VersionServiceGetResponse,
             method=method,
             session=session,
             **kwargs,

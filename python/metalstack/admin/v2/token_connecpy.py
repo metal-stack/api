@@ -11,13 +11,12 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.admin.v2.token_pb2 as _pb2
+import metalstack.admin.v2.token_pb2 as metalstack_dot_admin_dot_v2_dot_token__pb2
 
 
 class TokenService(Protocol):
-    async def List(self, req: _pb2.TokenServiceListRequest, ctx: ServiceContext) -> _pb2.TokenServiceListResponse: ...
-    async def Revoke(self, req: _pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> _pb2.TokenServiceRevokeResponse: ...
+    async def List(self, req: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse: ...
+    async def Revoke(self, req: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse: ...
 
 
 class TokenServiceServer(ConnecpyServer):
@@ -25,20 +24,20 @@ class TokenServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.TokenService"
         self._endpoints = {
-            "List": Endpoint[_pb2.TokenServiceListRequest, _pb2.TokenServiceListResponse](
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest, metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse](
                 service_name="TokenService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.TokenServiceListRequest,
-                output=_pb2.TokenServiceListResponse,
+                input=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Revoke": Endpoint[_pb2.TokenServiceRevokeRequest, _pb2.TokenServiceRevokeResponse](
+            "Revoke": Endpoint[metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse](
                 service_name="TokenService",
                 name="Revoke",
                 function=getattr(service, "Revoke"),
-                input=_pb2.TokenServiceRevokeRequest,
-                output=_pb2.TokenServiceRevokeResponse,
+                input=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
+                output=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -48,8 +47,8 @@ class TokenServiceServer(ConnecpyServer):
 
 
 class TokenServiceSync(Protocol):
-    def List(self, req: _pb2.TokenServiceListRequest, ctx: ServiceContext) -> _pb2.TokenServiceListResponse: ...
-    def Revoke(self, req: _pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> _pb2.TokenServiceRevokeResponse: ...
+    def List(self, req: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse: ...
+    def Revoke(self, req: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse: ...
 
 
 class TokenServiceServerSync(ConnecpyServer):
@@ -57,20 +56,20 @@ class TokenServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.TokenService"
         self._endpoints = {
-            "List": Endpoint[_pb2.TokenServiceListRequest, _pb2.TokenServiceListResponse](
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest, metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse](
                 service_name="TokenService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.TokenServiceListRequest,
-                output=_pb2.TokenServiceListResponse,
+                input=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Revoke": Endpoint[_pb2.TokenServiceRevokeRequest, _pb2.TokenServiceRevokeResponse](
+            "Revoke": Endpoint[metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse](
                 service_name="TokenService",
                 name="Revoke",
                 function=getattr(service, "Revoke"),
-                input=_pb2.TokenServiceRevokeRequest,
-                output=_pb2.TokenServiceRevokeResponse,
+                input=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
+                output=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -82,36 +81,36 @@ class TokenServiceServerSync(ConnecpyServer):
 class TokenServiceClient(ConnecpyClient):
     def List(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest,
         *,
-        request: _pb2.TokenServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TokenServiceListResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.TokenService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceListResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse,
             method=method,
             **kwargs,
         )
 
     def Revoke(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
         *,
-        request: _pb2.TokenServiceRevokeRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TokenServiceRevokeResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.TokenService/Revoke",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceRevokeResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
             method=method,
             **kwargs,
         )
@@ -120,19 +119,19 @@ class TokenServiceClient(ConnecpyClient):
 class AsyncTokenServiceClient(AsyncConnecpyClient):
     async def List(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest,
         *,
-        request: _pb2.TokenServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TokenServiceListResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.TokenService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceListResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -140,19 +139,19 @@ class AsyncTokenServiceClient(AsyncConnecpyClient):
 
     async def Revoke(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
         *,
-        request: _pb2.TokenServiceRevokeRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TokenServiceRevokeResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.TokenService/Revoke",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TokenServiceRevokeResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
             method=method,
             session=session,
             **kwargs,

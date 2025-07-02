@@ -11,15 +11,14 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.filesystem_pb2 as _pb2
+import metalstack.api.v2.filesystem_pb2 as metalstack_dot_api_dot_v2_dot_filesystem__pb2
 
 
 class FilesystemService(Protocol):
-    async def Get(self, req: _pb2.FilesystemServiceGetRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceGetResponse: ...
-    async def List(self, req: _pb2.FilesystemServiceListRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceListResponse: ...
-    async def Try(self, req: _pb2.FilesystemServiceTryRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceTryResponse: ...
-    async def Match(self, req: _pb2.FilesystemServiceMatchRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceMatchResponse: ...
+    async def Get(self, req: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse: ...
+    async def List(self, req: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse: ...
+    async def Try(self, req: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse: ...
+    async def Match(self, req: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse: ...
 
 
 class FilesystemServiceServer(ConnecpyServer):
@@ -27,36 +26,36 @@ class FilesystemServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.FilesystemService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.FilesystemServiceGetRequest, _pb2.FilesystemServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetRequest, metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse](
                 service_name="FilesystemService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.FilesystemServiceGetRequest,
-                output=_pb2.FilesystemServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.FilesystemServiceListRequest, _pb2.FilesystemServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest, metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse](
                 service_name="FilesystemService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.FilesystemServiceListRequest,
-                output=_pb2.FilesystemServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Try": Endpoint[_pb2.FilesystemServiceTryRequest, _pb2.FilesystemServiceTryResponse](
+            "Try": Endpoint[metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest, metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse](
                 service_name="FilesystemService",
                 name="Try",
                 function=getattr(service, "Try"),
-                input=_pb2.FilesystemServiceTryRequest,
-                output=_pb2.FilesystemServiceTryResponse,
+                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
+                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse,
                 allowed_methods=("POST",),
             ),
-            "Match": Endpoint[_pb2.FilesystemServiceMatchRequest, _pb2.FilesystemServiceMatchResponse](
+            "Match": Endpoint[metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse](
                 service_name="FilesystemService",
                 name="Match",
                 function=getattr(service, "Match"),
-                input=_pb2.FilesystemServiceMatchRequest,
-                output=_pb2.FilesystemServiceMatchResponse,
+                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
+                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -66,10 +65,10 @@ class FilesystemServiceServer(ConnecpyServer):
 
 
 class FilesystemServiceSync(Protocol):
-    def Get(self, req: _pb2.FilesystemServiceGetRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceGetResponse: ...
-    def List(self, req: _pb2.FilesystemServiceListRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceListResponse: ...
-    def Try(self, req: _pb2.FilesystemServiceTryRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceTryResponse: ...
-    def Match(self, req: _pb2.FilesystemServiceMatchRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceMatchResponse: ...
+    def Get(self, req: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse: ...
+    def List(self, req: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse: ...
+    def Try(self, req: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse: ...
+    def Match(self, req: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse: ...
 
 
 class FilesystemServiceServerSync(ConnecpyServer):
@@ -77,36 +76,36 @@ class FilesystemServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.FilesystemService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.FilesystemServiceGetRequest, _pb2.FilesystemServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetRequest, metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse](
                 service_name="FilesystemService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.FilesystemServiceGetRequest,
-                output=_pb2.FilesystemServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.FilesystemServiceListRequest, _pb2.FilesystemServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest, metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse](
                 service_name="FilesystemService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.FilesystemServiceListRequest,
-                output=_pb2.FilesystemServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Try": Endpoint[_pb2.FilesystemServiceTryRequest, _pb2.FilesystemServiceTryResponse](
+            "Try": Endpoint[metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest, metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse](
                 service_name="FilesystemService",
                 name="Try",
                 function=getattr(service, "Try"),
-                input=_pb2.FilesystemServiceTryRequest,
-                output=_pb2.FilesystemServiceTryResponse,
+                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
+                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse,
                 allowed_methods=("POST",),
             ),
-            "Match": Endpoint[_pb2.FilesystemServiceMatchRequest, _pb2.FilesystemServiceMatchResponse](
+            "Match": Endpoint[metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse](
                 service_name="FilesystemService",
                 name="Match",
                 function=getattr(service, "Match"),
-                input=_pb2.FilesystemServiceMatchRequest,
-                output=_pb2.FilesystemServiceMatchResponse,
+                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
+                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -118,72 +117,72 @@ class FilesystemServiceServerSync(ConnecpyServer):
 class FilesystemServiceClient(ConnecpyClient):
     def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetRequest,
         *,
-        request: _pb2.FilesystemServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.FilesystemServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.FilesystemService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse,
             method=method,
             **kwargs,
         )
 
     def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest,
         *,
-        request: _pb2.FilesystemServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.FilesystemServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.FilesystemService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse,
             method=method,
             **kwargs,
         )
 
     def Try(
         self,
+        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
         *,
-        request: _pb2.FilesystemServiceTryRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.FilesystemServiceTryResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.FilesystemService/Try",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceTryResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse,
             method=method,
             **kwargs,
         )
 
     def Match(
         self,
+        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
         *,
-        request: _pb2.FilesystemServiceMatchRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.FilesystemServiceMatchResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.FilesystemService/Match",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceMatchResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
             method=method,
             **kwargs,
         )
@@ -192,19 +191,19 @@ class FilesystemServiceClient(ConnecpyClient):
 class AsyncFilesystemServiceClient(AsyncConnecpyClient):
     async def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetRequest,
         *,
-        request: _pb2.FilesystemServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.FilesystemServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.FilesystemService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse,
             method=method,
             session=session,
             **kwargs,
@@ -212,19 +211,19 @@ class AsyncFilesystemServiceClient(AsyncConnecpyClient):
 
     async def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest,
         *,
-        request: _pb2.FilesystemServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.FilesystemServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.FilesystemService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -232,19 +231,19 @@ class AsyncFilesystemServiceClient(AsyncConnecpyClient):
 
     async def Try(
         self,
+        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
         *,
-        request: _pb2.FilesystemServiceTryRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.FilesystemServiceTryResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.FilesystemService/Try",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceTryResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse,
             method=method,
             session=session,
             **kwargs,
@@ -252,19 +251,19 @@ class AsyncFilesystemServiceClient(AsyncConnecpyClient):
 
     async def Match(
         self,
+        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
         *,
-        request: _pb2.FilesystemServiceMatchRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.FilesystemServiceMatchResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.FilesystemService/Match",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceMatchResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
             method=method,
             session=session,
             **kwargs,

@@ -11,14 +11,13 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.admin.v2.filesystem_pb2 as _pb2
+import metalstack.admin.v2.filesystem_pb2 as metalstack_dot_admin_dot_v2_dot_filesystem__pb2
 
 
 class FilesystemService(Protocol):
-    async def Create(self, req: _pb2.FilesystemServiceCreateRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceCreateResponse: ...
-    async def Update(self, req: _pb2.FilesystemServiceUpdateRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceUpdateResponse: ...
-    async def Delete(self, req: _pb2.FilesystemServiceDeleteRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceDeleteResponse: ...
+    async def Create(self, req: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse: ...
+    async def Update(self, req: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse: ...
+    async def Delete(self, req: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse: ...
 
 
 class FilesystemServiceServer(ConnecpyServer):
@@ -26,28 +25,28 @@ class FilesystemServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.FilesystemService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.FilesystemServiceCreateRequest, _pb2.FilesystemServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse](
                 service_name="FilesystemService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.FilesystemServiceCreateRequest,
-                output=_pb2.FilesystemServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.FilesystemServiceUpdateRequest, _pb2.FilesystemServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse](
                 service_name="FilesystemService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.FilesystemServiceUpdateRequest,
-                output=_pb2.FilesystemServiceUpdateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.FilesystemServiceDeleteRequest, _pb2.FilesystemServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse](
                 service_name="FilesystemService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.FilesystemServiceDeleteRequest,
-                output=_pb2.FilesystemServiceDeleteResponse,
+                input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -57,9 +56,9 @@ class FilesystemServiceServer(ConnecpyServer):
 
 
 class FilesystemServiceSync(Protocol):
-    def Create(self, req: _pb2.FilesystemServiceCreateRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceCreateResponse: ...
-    def Update(self, req: _pb2.FilesystemServiceUpdateRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceUpdateResponse: ...
-    def Delete(self, req: _pb2.FilesystemServiceDeleteRequest, ctx: ServiceContext) -> _pb2.FilesystemServiceDeleteResponse: ...
+    def Create(self, req: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse: ...
+    def Update(self, req: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse: ...
+    def Delete(self, req: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse: ...
 
 
 class FilesystemServiceServerSync(ConnecpyServer):
@@ -67,28 +66,28 @@ class FilesystemServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.FilesystemService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.FilesystemServiceCreateRequest, _pb2.FilesystemServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse](
                 service_name="FilesystemService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.FilesystemServiceCreateRequest,
-                output=_pb2.FilesystemServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.FilesystemServiceUpdateRequest, _pb2.FilesystemServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse](
                 service_name="FilesystemService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.FilesystemServiceUpdateRequest,
-                output=_pb2.FilesystemServiceUpdateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.FilesystemServiceDeleteRequest, _pb2.FilesystemServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse](
                 service_name="FilesystemService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.FilesystemServiceDeleteRequest,
-                output=_pb2.FilesystemServiceDeleteResponse,
+                input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -100,54 +99,54 @@ class FilesystemServiceServerSync(ConnecpyServer):
 class FilesystemServiceClient(ConnecpyClient):
     def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateRequest,
         *,
-        request: _pb2.FilesystemServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.FilesystemServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.FilesystemService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse,
             method=method,
             **kwargs,
         )
 
     def Update(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateRequest,
         *,
-        request: _pb2.FilesystemServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.FilesystemServiceUpdateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.FilesystemService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceUpdateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse,
             method=method,
             **kwargs,
         )
 
     def Delete(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest,
         *,
-        request: _pb2.FilesystemServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.FilesystemServiceDeleteResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.FilesystemService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceDeleteResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse,
             method=method,
             **kwargs,
         )
@@ -156,19 +155,19 @@ class FilesystemServiceClient(ConnecpyClient):
 class AsyncFilesystemServiceClient(AsyncConnecpyClient):
     async def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateRequest,
         *,
-        request: _pb2.FilesystemServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.FilesystemServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.FilesystemService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -176,19 +175,19 @@ class AsyncFilesystemServiceClient(AsyncConnecpyClient):
 
     async def Update(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateRequest,
         *,
-        request: _pb2.FilesystemServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.FilesystemServiceUpdateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.FilesystemService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceUpdateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -196,19 +195,19 @@ class AsyncFilesystemServiceClient(AsyncConnecpyClient):
 
     async def Delete(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest,
         *,
-        request: _pb2.FilesystemServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.FilesystemServiceDeleteResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.FilesystemService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.FilesystemServiceDeleteResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse,
             method=method,
             session=session,
             **kwargs,

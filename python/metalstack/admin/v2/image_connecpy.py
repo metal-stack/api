@@ -11,15 +11,14 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.admin.v2.image_pb2 as _pb2
+import metalstack.admin.v2.image_pb2 as metalstack_dot_admin_dot_v2_dot_image__pb2
 
 
 class ImageService(Protocol):
-    async def Create(self, req: _pb2.ImageServiceCreateRequest, ctx: ServiceContext) -> _pb2.ImageServiceCreateResponse: ...
-    async def Update(self, req: _pb2.ImageServiceUpdateRequest, ctx: ServiceContext) -> _pb2.ImageServiceUpdateResponse: ...
-    async def Delete(self, req: _pb2.ImageServiceDeleteRequest, ctx: ServiceContext) -> _pb2.ImageServiceDeleteResponse: ...
-    async def Usage(self, req: _pb2.ImageServiceUsageRequest, ctx: ServiceContext) -> _pb2.ImageServiceUsageResponse: ...
+    async def Create(self, req: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse: ...
+    async def Update(self, req: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse: ...
+    async def Delete(self, req: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse: ...
+    async def Usage(self, req: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse: ...
 
 
 class ImageServiceServer(ConnecpyServer):
@@ -27,36 +26,36 @@ class ImageServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.ImageService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.ImageServiceCreateRequest, _pb2.ImageServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse](
                 service_name="ImageService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.ImageServiceCreateRequest,
-                output=_pb2.ImageServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.ImageServiceUpdateRequest, _pb2.ImageServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse](
                 service_name="ImageService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.ImageServiceUpdateRequest,
-                output=_pb2.ImageServiceUpdateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.ImageServiceDeleteRequest, _pb2.ImageServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse](
                 service_name="ImageService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.ImageServiceDeleteRequest,
-                output=_pb2.ImageServiceDeleteResponse,
+                input=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "Usage": Endpoint[_pb2.ImageServiceUsageRequest, _pb2.ImageServiceUsageResponse](
+            "Usage": Endpoint[metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageRequest, metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse](
                 service_name="ImageService",
                 name="Usage",
                 function=getattr(service, "Usage"),
-                input=_pb2.ImageServiceUsageRequest,
-                output=_pb2.ImageServiceUsageResponse,
+                input=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageRequest,
+                output=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -66,10 +65,10 @@ class ImageServiceServer(ConnecpyServer):
 
 
 class ImageServiceSync(Protocol):
-    def Create(self, req: _pb2.ImageServiceCreateRequest, ctx: ServiceContext) -> _pb2.ImageServiceCreateResponse: ...
-    def Update(self, req: _pb2.ImageServiceUpdateRequest, ctx: ServiceContext) -> _pb2.ImageServiceUpdateResponse: ...
-    def Delete(self, req: _pb2.ImageServiceDeleteRequest, ctx: ServiceContext) -> _pb2.ImageServiceDeleteResponse: ...
-    def Usage(self, req: _pb2.ImageServiceUsageRequest, ctx: ServiceContext) -> _pb2.ImageServiceUsageResponse: ...
+    def Create(self, req: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse: ...
+    def Update(self, req: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse: ...
+    def Delete(self, req: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse: ...
+    def Usage(self, req: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse: ...
 
 
 class ImageServiceServerSync(ConnecpyServer):
@@ -77,36 +76,36 @@ class ImageServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.ImageService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.ImageServiceCreateRequest, _pb2.ImageServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse](
                 service_name="ImageService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.ImageServiceCreateRequest,
-                output=_pb2.ImageServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.ImageServiceUpdateRequest, _pb2.ImageServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse](
                 service_name="ImageService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.ImageServiceUpdateRequest,
-                output=_pb2.ImageServiceUpdateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.ImageServiceDeleteRequest, _pb2.ImageServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse](
                 service_name="ImageService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.ImageServiceDeleteRequest,
-                output=_pb2.ImageServiceDeleteResponse,
+                input=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "Usage": Endpoint[_pb2.ImageServiceUsageRequest, _pb2.ImageServiceUsageResponse](
+            "Usage": Endpoint[metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageRequest, metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse](
                 service_name="ImageService",
                 name="Usage",
                 function=getattr(service, "Usage"),
-                input=_pb2.ImageServiceUsageRequest,
-                output=_pb2.ImageServiceUsageResponse,
+                input=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageRequest,
+                output=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -118,72 +117,72 @@ class ImageServiceServerSync(ConnecpyServer):
 class ImageServiceClient(ConnecpyClient):
     def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateRequest,
         *,
-        request: _pb2.ImageServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ImageServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.ImageService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse,
             method=method,
             **kwargs,
         )
 
     def Update(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateRequest,
         *,
-        request: _pb2.ImageServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ImageServiceUpdateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.ImageService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceUpdateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse,
             method=method,
             **kwargs,
         )
 
     def Delete(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteRequest,
         *,
-        request: _pb2.ImageServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ImageServiceDeleteResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.ImageService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceDeleteResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse,
             method=method,
             **kwargs,
         )
 
     def Usage(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageRequest,
         *,
-        request: _pb2.ImageServiceUsageRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.ImageServiceUsageResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.ImageService/Usage",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceUsageResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse,
             method=method,
             **kwargs,
         )
@@ -192,19 +191,19 @@ class ImageServiceClient(ConnecpyClient):
 class AsyncImageServiceClient(AsyncConnecpyClient):
     async def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateRequest,
         *,
-        request: _pb2.ImageServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ImageServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.ImageService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceCreateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -212,19 +211,19 @@ class AsyncImageServiceClient(AsyncConnecpyClient):
 
     async def Update(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateRequest,
         *,
-        request: _pb2.ImageServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ImageServiceUpdateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.ImageService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceUpdateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUpdateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -232,19 +231,19 @@ class AsyncImageServiceClient(AsyncConnecpyClient):
 
     async def Delete(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteRequest,
         *,
-        request: _pb2.ImageServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ImageServiceDeleteResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.ImageService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceDeleteResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceDeleteResponse,
             method=method,
             session=session,
             **kwargs,
@@ -252,19 +251,19 @@ class AsyncImageServiceClient(AsyncConnecpyClient):
 
     async def Usage(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageRequest,
         *,
-        request: _pb2.ImageServiceUsageRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.ImageServiceUsageResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.ImageService/Usage",
             ctx=ctx,
             request=request,
-            response_class=_pb2.ImageServiceUsageResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_image__pb2.ImageServiceUsageResponse,
             method=method,
             session=session,
             **kwargs,

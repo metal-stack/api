@@ -11,13 +11,12 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.admin.v2.ip_pb2 as _pb2
+import metalstack.admin.v2.ip_pb2 as metalstack_dot_admin_dot_v2_dot_ip__pb2
 
 
 class IPService(Protocol):
-    async def List(self, req: _pb2.IPServiceListRequest, ctx: ServiceContext) -> _pb2.IPServiceListResponse: ...
-    async def Issues(self, req: _pb2.IPServiceIssuesRequest, ctx: ServiceContext) -> _pb2.IPServiceIssuesResponse: ...
+    async def List(self, req: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse: ...
+    async def Issues(self, req: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse: ...
 
 
 class IPServiceServer(ConnecpyServer):
@@ -25,20 +24,20 @@ class IPServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.IPService"
         self._endpoints = {
-            "List": Endpoint[_pb2.IPServiceListRequest, _pb2.IPServiceListResponse](
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest, metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse](
                 service_name="IPService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.IPServiceListRequest,
-                output=_pb2.IPServiceListResponse,
+                input=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Issues": Endpoint[_pb2.IPServiceIssuesRequest, _pb2.IPServiceIssuesResponse](
+            "Issues": Endpoint[metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest, metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse](
                 service_name="IPService",
                 name="Issues",
                 function=getattr(service, "Issues"),
-                input=_pb2.IPServiceIssuesRequest,
-                output=_pb2.IPServiceIssuesResponse,
+                input=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
+                output=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -48,8 +47,8 @@ class IPServiceServer(ConnecpyServer):
 
 
 class IPServiceSync(Protocol):
-    def List(self, req: _pb2.IPServiceListRequest, ctx: ServiceContext) -> _pb2.IPServiceListResponse: ...
-    def Issues(self, req: _pb2.IPServiceIssuesRequest, ctx: ServiceContext) -> _pb2.IPServiceIssuesResponse: ...
+    def List(self, req: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse: ...
+    def Issues(self, req: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse: ...
 
 
 class IPServiceServerSync(ConnecpyServer):
@@ -57,20 +56,20 @@ class IPServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.IPService"
         self._endpoints = {
-            "List": Endpoint[_pb2.IPServiceListRequest, _pb2.IPServiceListResponse](
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest, metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse](
                 service_name="IPService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.IPServiceListRequest,
-                output=_pb2.IPServiceListResponse,
+                input=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "Issues": Endpoint[_pb2.IPServiceIssuesRequest, _pb2.IPServiceIssuesResponse](
+            "Issues": Endpoint[metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest, metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse](
                 service_name="IPService",
                 name="Issues",
                 function=getattr(service, "Issues"),
-                input=_pb2.IPServiceIssuesRequest,
-                output=_pb2.IPServiceIssuesResponse,
+                input=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
+                output=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -82,36 +81,36 @@ class IPServiceServerSync(ConnecpyServer):
 class IPServiceClient(ConnecpyClient):
     def List(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest,
         *,
-        request: _pb2.IPServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.IPServiceListResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.IPService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.IPServiceListResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse,
             method=method,
             **kwargs,
         )
 
     def Issues(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
         *,
-        request: _pb2.IPServiceIssuesRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.IPServiceIssuesResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.IPService/Issues",
             ctx=ctx,
             request=request,
-            response_class=_pb2.IPServiceIssuesResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse,
             method=method,
             **kwargs,
         )
@@ -120,19 +119,19 @@ class IPServiceClient(ConnecpyClient):
 class AsyncIPServiceClient(AsyncConnecpyClient):
     async def List(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest,
         *,
-        request: _pb2.IPServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.IPServiceListResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.IPService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.IPServiceListResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -140,19 +139,19 @@ class AsyncIPServiceClient(AsyncConnecpyClient):
 
     async def Issues(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
         *,
-        request: _pb2.IPServiceIssuesRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.IPServiceIssuesResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.IPService/Issues",
             ctx=ctx,
             request=request,
-            response_class=_pb2.IPServiceIssuesResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse,
             method=method,
             session=session,
             **kwargs,

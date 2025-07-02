@@ -11,13 +11,12 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.admin.v2.tenant_pb2 as _pb2
+import metalstack.admin.v2.tenant_pb2 as metalstack_dot_admin_dot_v2_dot_tenant__pb2
 
 
 class TenantService(Protocol):
-    async def Create(self, req: _pb2.TenantServiceCreateRequest, ctx: ServiceContext) -> _pb2.TenantServiceCreateResponse: ...
-    async def List(self, req: _pb2.TenantServiceListRequest, ctx: ServiceContext) -> _pb2.TenantServiceListResponse: ...
+    async def Create(self, req: metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse: ...
+    async def List(self, req: metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse: ...
 
 
 class TenantServiceServer(ConnecpyServer):
@@ -25,20 +24,20 @@ class TenantServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.TenantService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.TenantServiceCreateRequest, _pb2.TenantServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse](
                 service_name="TenantService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.TenantServiceCreateRequest,
-                output=_pb2.TenantServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.TenantServiceListRequest, _pb2.TenantServiceListResponse](
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListRequest, metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse](
                 service_name="TenantService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.TenantServiceListRequest,
-                output=_pb2.TenantServiceListResponse,
+                input=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -48,8 +47,8 @@ class TenantServiceServer(ConnecpyServer):
 
 
 class TenantServiceSync(Protocol):
-    def Create(self, req: _pb2.TenantServiceCreateRequest, ctx: ServiceContext) -> _pb2.TenantServiceCreateResponse: ...
-    def List(self, req: _pb2.TenantServiceListRequest, ctx: ServiceContext) -> _pb2.TenantServiceListResponse: ...
+    def Create(self, req: metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse: ...
+    def List(self, req: metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse: ...
 
 
 class TenantServiceServerSync(ConnecpyServer):
@@ -57,20 +56,20 @@ class TenantServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.TenantService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.TenantServiceCreateRequest, _pb2.TenantServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse](
                 service_name="TenantService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.TenantServiceCreateRequest,
-                output=_pb2.TenantServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.TenantServiceListRequest, _pb2.TenantServiceListResponse](
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListRequest, metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse](
                 service_name="TenantService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.TenantServiceListRequest,
-                output=_pb2.TenantServiceListResponse,
+                input=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -82,36 +81,36 @@ class TenantServiceServerSync(ConnecpyServer):
 class TenantServiceClient(ConnecpyClient):
     def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest,
         *,
-        request: _pb2.TenantServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.TenantService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse,
             method=method,
             **kwargs,
         )
 
     def List(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListRequest,
         *,
-        request: _pb2.TenantServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.TenantServiceListResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.TenantService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceListResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse,
             method=method,
             **kwargs,
         )
@@ -120,19 +119,19 @@ class TenantServiceClient(ConnecpyClient):
 class AsyncTenantServiceClient(AsyncConnecpyClient):
     async def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateRequest,
         *,
-        request: _pb2.TenantServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.TenantService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceCreateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -140,19 +139,19 @@ class AsyncTenantServiceClient(AsyncConnecpyClient):
 
     async def List(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListRequest,
         *,
-        request: _pb2.TenantServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.TenantServiceListResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.TenantService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.TenantServiceListResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_tenant__pb2.TenantServiceListResponse,
             method=method,
             session=session,
             **kwargs,

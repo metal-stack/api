@@ -11,12 +11,11 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.user_pb2 as _pb2
+import metalstack.api.v2.user_pb2 as metalstack_dot_api_dot_v2_dot_user__pb2
 
 
 class UserService(Protocol):
-    async def Get(self, req: _pb2.UserServiceGetRequest, ctx: ServiceContext) -> _pb2.UserServiceGetResponse: ...
+    async def Get(self, req: metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse: ...
 
 
 class UserServiceServer(ConnecpyServer):
@@ -24,12 +23,12 @@ class UserServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.UserService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.UserServiceGetRequest, _pb2.UserServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetRequest, metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse](
                 service_name="UserService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.UserServiceGetRequest,
-                output=_pb2.UserServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -39,7 +38,7 @@ class UserServiceServer(ConnecpyServer):
 
 
 class UserServiceSync(Protocol):
-    def Get(self, req: _pb2.UserServiceGetRequest, ctx: ServiceContext) -> _pb2.UserServiceGetResponse: ...
+    def Get(self, req: metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse: ...
 
 
 class UserServiceServerSync(ConnecpyServer):
@@ -47,12 +46,12 @@ class UserServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.UserService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.UserServiceGetRequest, _pb2.UserServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetRequest, metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse](
                 service_name="UserService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.UserServiceGetRequest,
-                output=_pb2.UserServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -64,18 +63,18 @@ class UserServiceServerSync(ConnecpyServer):
 class UserServiceClient(ConnecpyClient):
     def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetRequest,
         *,
-        request: _pb2.UserServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.UserServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.UserService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.UserServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse,
             method=method,
             **kwargs,
         )
@@ -84,19 +83,19 @@ class UserServiceClient(ConnecpyClient):
 class AsyncUserServiceClient(AsyncConnecpyClient):
     async def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetRequest,
         *,
-        request: _pb2.UserServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.UserServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.UserService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.UserServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_user__pb2.UserServiceGetResponse,
             method=method,
             session=session,
             **kwargs,

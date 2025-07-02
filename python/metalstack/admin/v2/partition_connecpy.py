@@ -11,15 +11,14 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.admin.v2.partition_pb2 as _pb2
+import metalstack.admin.v2.partition_pb2 as metalstack_dot_admin_dot_v2_dot_partition__pb2
 
 
 class PartitionService(Protocol):
-    async def Create(self, req: _pb2.PartitionServiceCreateRequest, ctx: ServiceContext) -> _pb2.PartitionServiceCreateResponse: ...
-    async def Update(self, req: _pb2.PartitionServiceUpdateRequest, ctx: ServiceContext) -> _pb2.PartitionServiceUpdateResponse: ...
-    async def Delete(self, req: _pb2.PartitionServiceDeleteRequest, ctx: ServiceContext) -> _pb2.PartitionServiceDeleteResponse: ...
-    async def Capacity(self, req: _pb2.PartitionServiceCapacityRequest, ctx: ServiceContext) -> _pb2.PartitionServiceCapacityResponse: ...
+    async def Create(self, req: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse: ...
+    async def Update(self, req: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse: ...
+    async def Delete(self, req: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse: ...
+    async def Capacity(self, req: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse: ...
 
 
 class PartitionServiceServer(ConnecpyServer):
@@ -27,36 +26,36 @@ class PartitionServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.PartitionService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.PartitionServiceCreateRequest, _pb2.PartitionServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse](
                 service_name="PartitionService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.PartitionServiceCreateRequest,
-                output=_pb2.PartitionServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.PartitionServiceUpdateRequest, _pb2.PartitionServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse](
                 service_name="PartitionService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.PartitionServiceUpdateRequest,
-                output=_pb2.PartitionServiceUpdateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.PartitionServiceDeleteRequest, _pb2.PartitionServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse](
                 service_name="PartitionService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.PartitionServiceDeleteRequest,
-                output=_pb2.PartitionServiceDeleteResponse,
+                input=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "Capacity": Endpoint[_pb2.PartitionServiceCapacityRequest, _pb2.PartitionServiceCapacityResponse](
+            "Capacity": Endpoint[metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityRequest, metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse](
                 service_name="PartitionService",
                 name="Capacity",
                 function=getattr(service, "Capacity"),
-                input=_pb2.PartitionServiceCapacityRequest,
-                output=_pb2.PartitionServiceCapacityResponse,
+                input=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityRequest,
+                output=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -66,10 +65,10 @@ class PartitionServiceServer(ConnecpyServer):
 
 
 class PartitionServiceSync(Protocol):
-    def Create(self, req: _pb2.PartitionServiceCreateRequest, ctx: ServiceContext) -> _pb2.PartitionServiceCreateResponse: ...
-    def Update(self, req: _pb2.PartitionServiceUpdateRequest, ctx: ServiceContext) -> _pb2.PartitionServiceUpdateResponse: ...
-    def Delete(self, req: _pb2.PartitionServiceDeleteRequest, ctx: ServiceContext) -> _pb2.PartitionServiceDeleteResponse: ...
-    def Capacity(self, req: _pb2.PartitionServiceCapacityRequest, ctx: ServiceContext) -> _pb2.PartitionServiceCapacityResponse: ...
+    def Create(self, req: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse: ...
+    def Update(self, req: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse: ...
+    def Delete(self, req: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse: ...
+    def Capacity(self, req: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse: ...
 
 
 class PartitionServiceServerSync(ConnecpyServer):
@@ -77,36 +76,36 @@ class PartitionServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.PartitionService"
         self._endpoints = {
-            "Create": Endpoint[_pb2.PartitionServiceCreateRequest, _pb2.PartitionServiceCreateResponse](
+            "Create": Endpoint[metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateRequest, metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse](
                 service_name="PartitionService",
                 name="Create",
                 function=getattr(service, "Create"),
-                input=_pb2.PartitionServiceCreateRequest,
-                output=_pb2.PartitionServiceCreateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse,
                 allowed_methods=("POST",),
             ),
-            "Update": Endpoint[_pb2.PartitionServiceUpdateRequest, _pb2.PartitionServiceUpdateResponse](
+            "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse](
                 service_name="PartitionService",
                 name="Update",
                 function=getattr(service, "Update"),
-                input=_pb2.PartitionServiceUpdateRequest,
-                output=_pb2.PartitionServiceUpdateResponse,
+                input=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
-            "Delete": Endpoint[_pb2.PartitionServiceDeleteRequest, _pb2.PartitionServiceDeleteResponse](
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse](
                 service_name="PartitionService",
                 name="Delete",
                 function=getattr(service, "Delete"),
-                input=_pb2.PartitionServiceDeleteRequest,
-                output=_pb2.PartitionServiceDeleteResponse,
+                input=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse,
                 allowed_methods=("POST",),
             ),
-            "Capacity": Endpoint[_pb2.PartitionServiceCapacityRequest, _pb2.PartitionServiceCapacityResponse](
+            "Capacity": Endpoint[metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityRequest, metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse](
                 service_name="PartitionService",
                 name="Capacity",
                 function=getattr(service, "Capacity"),
-                input=_pb2.PartitionServiceCapacityRequest,
-                output=_pb2.PartitionServiceCapacityResponse,
+                input=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityRequest,
+                output=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -118,72 +117,72 @@ class PartitionServiceServerSync(ConnecpyServer):
 class PartitionServiceClient(ConnecpyClient):
     def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateRequest,
         *,
-        request: _pb2.PartitionServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.PartitionServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.PartitionService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse,
             method=method,
             **kwargs,
         )
 
     def Update(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateRequest,
         *,
-        request: _pb2.PartitionServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.PartitionServiceUpdateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.PartitionService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceUpdateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse,
             method=method,
             **kwargs,
         )
 
     def Delete(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteRequest,
         *,
-        request: _pb2.PartitionServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.PartitionServiceDeleteResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.PartitionService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceDeleteResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse,
             method=method,
             **kwargs,
         )
 
     def Capacity(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityRequest,
         *,
-        request: _pb2.PartitionServiceCapacityRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.PartitionServiceCapacityResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.PartitionService/Capacity",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceCapacityResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse,
             method=method,
             **kwargs,
         )
@@ -192,19 +191,19 @@ class PartitionServiceClient(ConnecpyClient):
 class AsyncPartitionServiceClient(AsyncConnecpyClient):
     async def Create(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateRequest,
         *,
-        request: _pb2.PartitionServiceCreateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.PartitionServiceCreateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.PartitionService/Create",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceCreateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCreateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -212,19 +211,19 @@ class AsyncPartitionServiceClient(AsyncConnecpyClient):
 
     async def Update(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateRequest,
         *,
-        request: _pb2.PartitionServiceUpdateRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.PartitionServiceUpdateResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.PartitionService/Update",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceUpdateResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceUpdateResponse,
             method=method,
             session=session,
             **kwargs,
@@ -232,19 +231,19 @@ class AsyncPartitionServiceClient(AsyncConnecpyClient):
 
     async def Delete(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteRequest,
         *,
-        request: _pb2.PartitionServiceDeleteRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.PartitionServiceDeleteResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.PartitionService/Delete",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceDeleteResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceDeleteResponse,
             method=method,
             session=session,
             **kwargs,
@@ -252,19 +251,19 @@ class AsyncPartitionServiceClient(AsyncConnecpyClient):
 
     async def Capacity(
         self,
+        request: metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityRequest,
         *,
-        request: _pb2.PartitionServiceCapacityRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.PartitionServiceCapacityResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.admin.v2.PartitionService/Capacity",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceCapacityResponse,
+            response_class=metalstack_dot_admin_dot_v2_dot_partition__pb2.PartitionServiceCapacityResponse,
             method=method,
             session=session,
             **kwargs,

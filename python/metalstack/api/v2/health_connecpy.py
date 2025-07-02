@@ -11,12 +11,11 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.health_pb2 as _pb2
+import metalstack.api.v2.health_pb2 as metalstack_dot_api_dot_v2_dot_health__pb2
 
 
 class HealthService(Protocol):
-    async def Get(self, req: _pb2.HealthServiceGetRequest, ctx: ServiceContext) -> _pb2.HealthServiceGetResponse: ...
+    async def Get(self, req: metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse: ...
 
 
 class HealthServiceServer(ConnecpyServer):
@@ -24,12 +23,12 @@ class HealthServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.HealthService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.HealthServiceGetRequest, _pb2.HealthServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetRequest, metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse](
                 service_name="HealthService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.HealthServiceGetRequest,
-                output=_pb2.HealthServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -39,7 +38,7 @@ class HealthServiceServer(ConnecpyServer):
 
 
 class HealthServiceSync(Protocol):
-    def Get(self, req: _pb2.HealthServiceGetRequest, ctx: ServiceContext) -> _pb2.HealthServiceGetResponse: ...
+    def Get(self, req: metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse: ...
 
 
 class HealthServiceServerSync(ConnecpyServer):
@@ -47,12 +46,12 @@ class HealthServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.HealthService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.HealthServiceGetRequest, _pb2.HealthServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetRequest, metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse](
                 service_name="HealthService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.HealthServiceGetRequest,
-                output=_pb2.HealthServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -64,18 +63,18 @@ class HealthServiceServerSync(ConnecpyServer):
 class HealthServiceClient(ConnecpyClient):
     def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetRequest,
         *,
-        request: _pb2.HealthServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.HealthServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.HealthService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.HealthServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse,
             method=method,
             **kwargs,
         )
@@ -84,19 +83,19 @@ class HealthServiceClient(ConnecpyClient):
 class AsyncHealthServiceClient(AsyncConnecpyClient):
     async def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetRequest,
         *,
-        request: _pb2.HealthServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.HealthServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.HealthService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.HealthServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_health__pb2.HealthServiceGetResponse,
             method=method,
             session=session,
             **kwargs,

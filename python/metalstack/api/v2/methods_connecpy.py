@@ -11,13 +11,12 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.methods_pb2 as _pb2
+import metalstack.api.v2.methods_pb2 as metalstack_dot_api_dot_v2_dot_methods__pb2
 
 
 class MethodService(Protocol):
-    async def List(self, req: _pb2.MethodServiceListRequest, ctx: ServiceContext) -> _pb2.MethodServiceListResponse: ...
-    async def TokenScopedList(self, req: _pb2.MethodServiceTokenScopedListRequest, ctx: ServiceContext) -> _pb2.MethodServiceTokenScopedListResponse: ...
+    async def List(self, req: metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse: ...
+    async def TokenScopedList(self, req: metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse: ...
 
 
 class MethodServiceServer(ConnecpyServer):
@@ -25,20 +24,20 @@ class MethodServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.MethodService"
         self._endpoints = {
-            "List": Endpoint[_pb2.MethodServiceListRequest, _pb2.MethodServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest, metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse](
                 service_name="MethodService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.MethodServiceListRequest,
-                output=_pb2.MethodServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "TokenScopedList": Endpoint[_pb2.MethodServiceTokenScopedListRequest, _pb2.MethodServiceTokenScopedListResponse](
+            "TokenScopedList": Endpoint[metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest, metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse](
                 service_name="MethodService",
                 name="TokenScopedList",
                 function=getattr(service, "TokenScopedList"),
-                input=_pb2.MethodServiceTokenScopedListRequest,
-                output=_pb2.MethodServiceTokenScopedListResponse,
+                input=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest,
+                output=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -48,8 +47,8 @@ class MethodServiceServer(ConnecpyServer):
 
 
 class MethodServiceSync(Protocol):
-    def List(self, req: _pb2.MethodServiceListRequest, ctx: ServiceContext) -> _pb2.MethodServiceListResponse: ...
-    def TokenScopedList(self, req: _pb2.MethodServiceTokenScopedListRequest, ctx: ServiceContext) -> _pb2.MethodServiceTokenScopedListResponse: ...
+    def List(self, req: metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse: ...
+    def TokenScopedList(self, req: metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse: ...
 
 
 class MethodServiceServerSync(ConnecpyServer):
@@ -57,20 +56,20 @@ class MethodServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.MethodService"
         self._endpoints = {
-            "List": Endpoint[_pb2.MethodServiceListRequest, _pb2.MethodServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest, metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse](
                 service_name="MethodService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.MethodServiceListRequest,
-                output=_pb2.MethodServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse,
                 allowed_methods=("POST",),
             ),
-            "TokenScopedList": Endpoint[_pb2.MethodServiceTokenScopedListRequest, _pb2.MethodServiceTokenScopedListResponse](
+            "TokenScopedList": Endpoint[metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest, metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse](
                 service_name="MethodService",
                 name="TokenScopedList",
                 function=getattr(service, "TokenScopedList"),
-                input=_pb2.MethodServiceTokenScopedListRequest,
-                output=_pb2.MethodServiceTokenScopedListResponse,
+                input=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest,
+                output=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -82,36 +81,36 @@ class MethodServiceServerSync(ConnecpyServer):
 class MethodServiceClient(ConnecpyClient):
     def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest,
         *,
-        request: _pb2.MethodServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.MethodServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.MethodService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.MethodServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse,
             method=method,
             **kwargs,
         )
 
     def TokenScopedList(
         self,
+        request: metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest,
         *,
-        request: _pb2.MethodServiceTokenScopedListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.MethodServiceTokenScopedListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.MethodService/TokenScopedList",
             ctx=ctx,
             request=request,
-            response_class=_pb2.MethodServiceTokenScopedListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse,
             method=method,
             **kwargs,
         )
@@ -120,19 +119,19 @@ class MethodServiceClient(ConnecpyClient):
 class AsyncMethodServiceClient(AsyncConnecpyClient):
     async def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest,
         *,
-        request: _pb2.MethodServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.MethodServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.MethodService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.MethodServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse,
             method=method,
             session=session,
             **kwargs,
@@ -140,19 +139,19 @@ class AsyncMethodServiceClient(AsyncConnecpyClient):
 
     async def TokenScopedList(
         self,
+        request: metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest,
         *,
-        request: _pb2.MethodServiceTokenScopedListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.MethodServiceTokenScopedListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.MethodService/TokenScopedList",
             ctx=ctx,
             request=request,
-            response_class=_pb2.MethodServiceTokenScopedListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse,
             method=method,
             session=session,
             **kwargs,

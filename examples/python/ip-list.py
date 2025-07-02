@@ -25,7 +25,6 @@ def main():
             )
             for ip in response.ips:
                 print(ip.ip, ip.name, ip.project, ip.network)
-            # print(response)
         except ConnecpyServerException as e:
             print(e.code, e.message, e.to_dict())
 

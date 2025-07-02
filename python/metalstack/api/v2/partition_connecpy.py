@@ -11,13 +11,12 @@ from connecpy.base import Endpoint
 from connecpy.server import ConnecpyServer
 from connecpy.client import ConnecpyClient
 from connecpy.context import ClientContext, ServiceContext
-
-import metalstack.api.v2.partition_pb2 as _pb2
+import metalstack.api.v2.partition_pb2 as metalstack_dot_api_dot_v2_dot_partition__pb2
 
 
 class PartitionService(Protocol):
-    async def Get(self, req: _pb2.PartitionServiceGetRequest, ctx: ServiceContext) -> _pb2.PartitionServiceGetResponse: ...
-    async def List(self, req: _pb2.PartitionServiceListRequest, ctx: ServiceContext) -> _pb2.PartitionServiceListResponse: ...
+    async def Get(self, req: metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse: ...
+    async def List(self, req: metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse: ...
 
 
 class PartitionServiceServer(ConnecpyServer):
@@ -25,20 +24,20 @@ class PartitionServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.PartitionService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.PartitionServiceGetRequest, _pb2.PartitionServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetRequest, metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse](
                 service_name="PartitionService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.PartitionServiceGetRequest,
-                output=_pb2.PartitionServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.PartitionServiceListRequest, _pb2.PartitionServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListRequest, metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse](
                 service_name="PartitionService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.PartitionServiceListRequest,
-                output=_pb2.PartitionServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -48,8 +47,8 @@ class PartitionServiceServer(ConnecpyServer):
 
 
 class PartitionServiceSync(Protocol):
-    def Get(self, req: _pb2.PartitionServiceGetRequest, ctx: ServiceContext) -> _pb2.PartitionServiceGetResponse: ...
-    def List(self, req: _pb2.PartitionServiceListRequest, ctx: ServiceContext) -> _pb2.PartitionServiceListResponse: ...
+    def Get(self, req: metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse: ...
+    def List(self, req: metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse: ...
 
 
 class PartitionServiceServerSync(ConnecpyServer):
@@ -57,20 +56,20 @@ class PartitionServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.api.v2.PartitionService"
         self._endpoints = {
-            "Get": Endpoint[_pb2.PartitionServiceGetRequest, _pb2.PartitionServiceGetResponse](
+            "Get": Endpoint[metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetRequest, metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse](
                 service_name="PartitionService",
                 name="Get",
                 function=getattr(service, "Get"),
-                input=_pb2.PartitionServiceGetRequest,
-                output=_pb2.PartitionServiceGetResponse,
+                input=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetRequest,
+                output=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse,
                 allowed_methods=("POST",),
             ),
-            "List": Endpoint[_pb2.PartitionServiceListRequest, _pb2.PartitionServiceListResponse](
+            "List": Endpoint[metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListRequest, metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse](
                 service_name="PartitionService",
                 name="List",
                 function=getattr(service, "List"),
-                input=_pb2.PartitionServiceListRequest,
-                output=_pb2.PartitionServiceListResponse,
+                input=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListRequest,
+                output=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -82,36 +81,36 @@ class PartitionServiceServerSync(ConnecpyServer):
 class PartitionServiceClient(ConnecpyClient):
     def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetRequest,
         *,
-        request: _pb2.PartitionServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.PartitionServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.PartitionService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse,
             method=method,
             **kwargs,
         )
 
     def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListRequest,
         *,
-        request: _pb2.PartitionServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> _pb2.PartitionServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse:
         method = "POST"
         return self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.PartitionService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse,
             method=method,
             **kwargs,
         )
@@ -120,19 +119,19 @@ class PartitionServiceClient(ConnecpyClient):
 class AsyncPartitionServiceClient(AsyncConnecpyClient):
     async def Get(
         self,
+        request: metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetRequest,
         *,
-        request: _pb2.PartitionServiceGetRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.PartitionServiceGetResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.PartitionService/Get",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceGetResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceGetResponse,
             method=method,
             session=session,
             **kwargs,
@@ -140,19 +139,19 @@ class AsyncPartitionServiceClient(AsyncConnecpyClient):
 
     async def List(
         self,
+        request: metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListRequest,
         *,
-        request: _pb2.PartitionServiceListRequest,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> _pb2.PartitionServiceListResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse:
         method = "POST"
         return await self._make_request(
             url=f"{server_path_prefix}/metalstack.api.v2.PartitionService/List",
             ctx=ctx,
             request=request,
-            response_class=_pb2.PartitionServiceListResponse,
+            response_class=metalstack_dot_api_dot_v2_dot_partition__pb2.PartitionServiceListResponse,
             method=method,
             session=session,
             **kwargs,
