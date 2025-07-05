@@ -17,6 +17,8 @@ type (
 		UserAgent string
 		// TokenRenewal defines if and how the token should be renewed
 		TokenRenewal *TokenRenewal
+
+		Transport http.RoundTripper
 	}
 
 	TokenRenewal struct {
@@ -35,10 +37,15 @@ type (
 // PersistTokenFn is called after a new token was issued.
 
 func (d *DialConfig) HttpClient() *http.Client {
+	transport := http.DefaultTransport
+	if d.Transport != nil {
+		transport = d.Transport
+	}
+
 	return &http.Client{
 		Transport: &AddHeaderTransport{
 			debug: d.Debug,
-			t:     http.DefaultTransport,
+			t:     transport,
 			token: d.Token,
 		},
 	}

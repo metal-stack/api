@@ -806,6 +806,7 @@ func (x *TokenServiceGetResponse) GetToken() *Token {
 type TokenServiceRefreshRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Expires gives the duration since now, after which this token can not be used anymore
+	// The expiration duration must not exceed the duration of the existing token (exp - iat)
 	Expires       *durationpb.Duration `protobuf:"bytes,4,opt,name=expires,proto3" json:"expires,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
