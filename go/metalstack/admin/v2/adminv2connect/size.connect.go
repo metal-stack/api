@@ -35,6 +35,8 @@ const (
 const (
 	// SizeServiceCreateProcedure is the fully-qualified name of the SizeService's Create RPC.
 	SizeServiceCreateProcedure = "/metalstack.admin.v2.SizeService/Create"
+	// SizeServiceUpdateProcedure is the fully-qualified name of the SizeService's Update RPC.
+	SizeServiceUpdateProcedure = "/metalstack.admin.v2.SizeService/Update"
 	// SizeServiceDeleteProcedure is the fully-qualified name of the SizeService's Delete RPC.
 	SizeServiceDeleteProcedure = "/metalstack.admin.v2.SizeService/Delete"
 )
@@ -43,6 +45,8 @@ const (
 type SizeServiceClient interface {
 	// Create a size
 	Create(context.Context, *connect.Request[v2.SizeServiceCreateRequest]) (*connect.Response[v2.SizeServiceCreateResponse], error)
+	// Update a size
+	Update(context.Context, *connect.Request[v2.SizeServiceUpdateRequest]) (*connect.Response[v2.SizeServiceUpdateResponse], error)
 	// Delete a size
 	Delete(context.Context, *connect.Request[v2.SizeServiceDeleteRequest]) (*connect.Response[v2.SizeServiceDeleteResponse], error)
 }
@@ -64,6 +68,12 @@ func NewSizeServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(sizeServiceMethods.ByName("Create")),
 			connect.WithClientOptions(opts...),
 		),
+		update: connect.NewClient[v2.SizeServiceUpdateRequest, v2.SizeServiceUpdateResponse](
+			httpClient,
+			baseURL+SizeServiceUpdateProcedure,
+			connect.WithSchema(sizeServiceMethods.ByName("Update")),
+			connect.WithClientOptions(opts...),
+		),
 		delete: connect.NewClient[v2.SizeServiceDeleteRequest, v2.SizeServiceDeleteResponse](
 			httpClient,
 			baseURL+SizeServiceDeleteProcedure,
@@ -76,12 +86,18 @@ func NewSizeServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 // sizeServiceClient implements SizeServiceClient.
 type sizeServiceClient struct {
 	create *connect.Client[v2.SizeServiceCreateRequest, v2.SizeServiceCreateResponse]
+	update *connect.Client[v2.SizeServiceUpdateRequest, v2.SizeServiceUpdateResponse]
 	delete *connect.Client[v2.SizeServiceDeleteRequest, v2.SizeServiceDeleteResponse]
 }
 
 // Create calls metalstack.admin.v2.SizeService.Create.
 func (c *sizeServiceClient) Create(ctx context.Context, req *connect.Request[v2.SizeServiceCreateRequest]) (*connect.Response[v2.SizeServiceCreateResponse], error) {
 	return c.create.CallUnary(ctx, req)
+}
+
+// Update calls metalstack.admin.v2.SizeService.Update.
+func (c *sizeServiceClient) Update(ctx context.Context, req *connect.Request[v2.SizeServiceUpdateRequest]) (*connect.Response[v2.SizeServiceUpdateResponse], error) {
+	return c.update.CallUnary(ctx, req)
 }
 
 // Delete calls metalstack.admin.v2.SizeService.Delete.
@@ -93,6 +109,8 @@ func (c *sizeServiceClient) Delete(ctx context.Context, req *connect.Request[v2.
 type SizeServiceHandler interface {
 	// Create a size
 	Create(context.Context, *connect.Request[v2.SizeServiceCreateRequest]) (*connect.Response[v2.SizeServiceCreateResponse], error)
+	// Update a size
+	Update(context.Context, *connect.Request[v2.SizeServiceUpdateRequest]) (*connect.Response[v2.SizeServiceUpdateResponse], error)
 	// Delete a size
 	Delete(context.Context, *connect.Request[v2.SizeServiceDeleteRequest]) (*connect.Response[v2.SizeServiceDeleteResponse], error)
 }
@@ -110,6 +128,12 @@ func NewSizeServiceHandler(svc SizeServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(sizeServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
+	sizeServiceUpdateHandler := connect.NewUnaryHandler(
+		SizeServiceUpdateProcedure,
+		svc.Update,
+		connect.WithSchema(sizeServiceMethods.ByName("Update")),
+		connect.WithHandlerOptions(opts...),
+	)
 	sizeServiceDeleteHandler := connect.NewUnaryHandler(
 		SizeServiceDeleteProcedure,
 		svc.Delete,
@@ -120,6 +144,8 @@ func NewSizeServiceHandler(svc SizeServiceHandler, opts ...connect.HandlerOption
 		switch r.URL.Path {
 		case SizeServiceCreateProcedure:
 			sizeServiceCreateHandler.ServeHTTP(w, r)
+		case SizeServiceUpdateProcedure:
+			sizeServiceUpdateHandler.ServeHTTP(w, r)
 		case SizeServiceDeleteProcedure:
 			sizeServiceDeleteHandler.ServeHTTP(w, r)
 		default:
@@ -133,6 +159,10 @@ type UnimplementedSizeServiceHandler struct{}
 
 func (UnimplementedSizeServiceHandler) Create(context.Context, *connect.Request[v2.SizeServiceCreateRequest]) (*connect.Response[v2.SizeServiceCreateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeService.Create is not implemented"))
+}
+
+func (UnimplementedSizeServiceHandler) Update(context.Context, *connect.Request[v2.SizeServiceUpdateRequest]) (*connect.Response[v2.SizeServiceUpdateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeService.Update is not implemented"))
 }
 
 func (UnimplementedSizeServiceHandler) Delete(context.Context, *connect.Request[v2.SizeServiceDeleteRequest]) (*connect.Response[v2.SizeServiceDeleteResponse], error) {

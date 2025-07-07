@@ -922,6 +922,14 @@
                   <a href="#metalstack.admin.v2.SizeServiceDeleteResponse"><span class="badge">M</span>SizeServiceDeleteResponse</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.admin.v2.SizeServiceUpdateRequest"><span class="badge">M</span>SizeServiceUpdateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeServiceUpdateResponse"><span class="badge">M</span>SizeServiceUpdateResponse</a>
+                </li>
+              
               
               
               
@@ -6992,6 +7000,54 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.SizeServiceUpdateRequest">SizeServiceUpdateRequest</h3>
+        <p>SizeServiceUpdateRequest is the request payload for a size update request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#metalstack.api.v2.Size">metalstack.api.v2.Size</a></td>
+                  <td></td>
+                  <td><p>Size is the size to create </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeServiceUpdateResponse">SizeServiceUpdateResponse</h3>
+        <p>SizeServiceUpdateResponse is the response payload for a size update request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#metalstack.api.v2.Size">metalstack.api.v2.Size</a></td>
+                  <td></td>
+                  <td><p>Size the size </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
 
@@ -7011,6 +7067,13 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                 <td><a href="#metalstack.admin.v2.SizeServiceCreateRequest">SizeServiceCreateRequest</a></td>
                 <td><a href="#metalstack.admin.v2.SizeServiceCreateResponse">SizeServiceCreateResponse</a></td>
                 <td><p>Create a size</p></td>
+              </tr>
+            
+              <tr>
+                <td>Update</td>
+                <td><a href="#metalstack.admin.v2.SizeServiceUpdateRequest">SizeServiceUpdateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeServiceUpdateResponse">SizeServiceUpdateResponse</a></td>
+                <td><p>Update a size</p></td>
               </tr>
             
               <tr>

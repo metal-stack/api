@@ -115,6 +115,98 @@ func (x *SizeServiceCreateResponse) GetSize() *v2.Size {
 	return nil
 }
 
+// SizeServiceUpdateRequest is the request payload for a size update request
+type SizeServiceUpdateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Size is the size to create
+	Size          *v2.Size `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SizeServiceUpdateRequest) Reset() {
+	*x = SizeServiceUpdateRequest{}
+	mi := &file_metalstack_admin_v2_size_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SizeServiceUpdateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SizeServiceUpdateRequest) ProtoMessage() {}
+
+func (x *SizeServiceUpdateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_size_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SizeServiceUpdateRequest.ProtoReflect.Descriptor instead.
+func (*SizeServiceUpdateRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_size_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SizeServiceUpdateRequest) GetSize() *v2.Size {
+	if x != nil {
+		return x.Size
+	}
+	return nil
+}
+
+// SizeServiceUpdateResponse is the response payload for a size update request
+type SizeServiceUpdateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Size the size
+	Size          *v2.Size `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SizeServiceUpdateResponse) Reset() {
+	*x = SizeServiceUpdateResponse{}
+	mi := &file_metalstack_admin_v2_size_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SizeServiceUpdateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SizeServiceUpdateResponse) ProtoMessage() {}
+
+func (x *SizeServiceUpdateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_size_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SizeServiceUpdateResponse.ProtoReflect.Descriptor instead.
+func (*SizeServiceUpdateResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_size_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SizeServiceUpdateResponse) GetSize() *v2.Size {
+	if x != nil {
+		return x.Size
+	}
+	return nil
+}
+
 // SizeServiceDeleteRequest is the request payload for a size delete request
 type SizeServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -126,7 +218,7 @@ type SizeServiceDeleteRequest struct {
 
 func (x *SizeServiceDeleteRequest) Reset() {
 	*x = SizeServiceDeleteRequest{}
-	mi := &file_metalstack_admin_v2_size_proto_msgTypes[2]
+	mi := &file_metalstack_admin_v2_size_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -138,7 +230,7 @@ func (x *SizeServiceDeleteRequest) String() string {
 func (*SizeServiceDeleteRequest) ProtoMessage() {}
 
 func (x *SizeServiceDeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_size_proto_msgTypes[2]
+	mi := &file_metalstack_admin_v2_size_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -151,7 +243,7 @@ func (x *SizeServiceDeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SizeServiceDeleteRequest.ProtoReflect.Descriptor instead.
 func (*SizeServiceDeleteRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_size_proto_rawDescGZIP(), []int{2}
+	return file_metalstack_admin_v2_size_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SizeServiceDeleteRequest) GetId() string {
@@ -172,7 +264,7 @@ type SizeServiceDeleteResponse struct {
 
 func (x *SizeServiceDeleteResponse) Reset() {
 	*x = SizeServiceDeleteResponse{}
-	mi := &file_metalstack_admin_v2_size_proto_msgTypes[3]
+	mi := &file_metalstack_admin_v2_size_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -184,7 +276,7 @@ func (x *SizeServiceDeleteResponse) String() string {
 func (*SizeServiceDeleteResponse) ProtoMessage() {}
 
 func (x *SizeServiceDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_size_proto_msgTypes[3]
+	mi := &file_metalstack_admin_v2_size_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -197,7 +289,7 @@ func (x *SizeServiceDeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SizeServiceDeleteResponse.ProtoReflect.Descriptor instead.
 func (*SizeServiceDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_size_proto_rawDescGZIP(), []int{3}
+	return file_metalstack_admin_v2_size_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SizeServiceDeleteResponse) GetSize() *v2.Size {
@@ -215,14 +307,19 @@ const file_metalstack_admin_v2_size_proto_rawDesc = "" +
 	"\x18SizeServiceCreateRequest\x12+\n" +
 	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"H\n" +
 	"\x19SizeServiceCreateResponse\x12+\n" +
+	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"G\n" +
+	"\x18SizeServiceUpdateRequest\x12+\n" +
+	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"H\n" +
+	"\x19SizeServiceUpdateResponse\x12+\n" +
 	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"6\n" +
 	"\x18SizeServiceDeleteRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"H\n" +
 	"\x19SizeServiceDeleteResponse\x12+\n" +
-	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size2\xef\x01\n" +
+	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size2\xe0\x02\n" +
 	"\vSizeService\x12o\n" +
 	"\x06Create\x12-.metalstack.admin.v2.SizeServiceCreateRequest\x1a..metalstack.admin.v2.SizeServiceCreateResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12o\n" +
+	"\x06Update\x12-.metalstack.admin.v2.SizeServiceUpdateRequest\x1a..metalstack.admin.v2.SizeServiceUpdateResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12o\n" +
 	"\x06Delete\x12-.metalstack.admin.v2.SizeServiceDeleteRequest\x1a..metalstack.admin.v2.SizeServiceDeleteResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xcd\x01\n" +
 	"\x17com.metalstack.admin.v2B\tSizeProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
@@ -238,27 +335,33 @@ func file_metalstack_admin_v2_size_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_size_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_size_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_metalstack_admin_v2_size_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_metalstack_admin_v2_size_proto_goTypes = []any{
 	(*SizeServiceCreateRequest)(nil),  // 0: metalstack.admin.v2.SizeServiceCreateRequest
 	(*SizeServiceCreateResponse)(nil), // 1: metalstack.admin.v2.SizeServiceCreateResponse
-	(*SizeServiceDeleteRequest)(nil),  // 2: metalstack.admin.v2.SizeServiceDeleteRequest
-	(*SizeServiceDeleteResponse)(nil), // 3: metalstack.admin.v2.SizeServiceDeleteResponse
-	(*v2.Size)(nil),                   // 4: metalstack.api.v2.Size
+	(*SizeServiceUpdateRequest)(nil),  // 2: metalstack.admin.v2.SizeServiceUpdateRequest
+	(*SizeServiceUpdateResponse)(nil), // 3: metalstack.admin.v2.SizeServiceUpdateResponse
+	(*SizeServiceDeleteRequest)(nil),  // 4: metalstack.admin.v2.SizeServiceDeleteRequest
+	(*SizeServiceDeleteResponse)(nil), // 5: metalstack.admin.v2.SizeServiceDeleteResponse
+	(*v2.Size)(nil),                   // 6: metalstack.api.v2.Size
 }
 var file_metalstack_admin_v2_size_proto_depIdxs = []int32{
-	4, // 0: metalstack.admin.v2.SizeServiceCreateRequest.size:type_name -> metalstack.api.v2.Size
-	4, // 1: metalstack.admin.v2.SizeServiceCreateResponse.size:type_name -> metalstack.api.v2.Size
-	4, // 2: metalstack.admin.v2.SizeServiceDeleteResponse.size:type_name -> metalstack.api.v2.Size
-	0, // 3: metalstack.admin.v2.SizeService.Create:input_type -> metalstack.admin.v2.SizeServiceCreateRequest
-	2, // 4: metalstack.admin.v2.SizeService.Delete:input_type -> metalstack.admin.v2.SizeServiceDeleteRequest
-	1, // 5: metalstack.admin.v2.SizeService.Create:output_type -> metalstack.admin.v2.SizeServiceCreateResponse
-	3, // 6: metalstack.admin.v2.SizeService.Delete:output_type -> metalstack.admin.v2.SizeServiceDeleteResponse
-	5, // [5:7] is the sub-list for method output_type
-	3, // [3:5] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	6, // 0: metalstack.admin.v2.SizeServiceCreateRequest.size:type_name -> metalstack.api.v2.Size
+	6, // 1: metalstack.admin.v2.SizeServiceCreateResponse.size:type_name -> metalstack.api.v2.Size
+	6, // 2: metalstack.admin.v2.SizeServiceUpdateRequest.size:type_name -> metalstack.api.v2.Size
+	6, // 3: metalstack.admin.v2.SizeServiceUpdateResponse.size:type_name -> metalstack.api.v2.Size
+	6, // 4: metalstack.admin.v2.SizeServiceDeleteResponse.size:type_name -> metalstack.api.v2.Size
+	0, // 5: metalstack.admin.v2.SizeService.Create:input_type -> metalstack.admin.v2.SizeServiceCreateRequest
+	2, // 6: metalstack.admin.v2.SizeService.Update:input_type -> metalstack.admin.v2.SizeServiceUpdateRequest
+	4, // 7: metalstack.admin.v2.SizeService.Delete:input_type -> metalstack.admin.v2.SizeServiceDeleteRequest
+	1, // 8: metalstack.admin.v2.SizeService.Create:output_type -> metalstack.admin.v2.SizeServiceCreateResponse
+	3, // 9: metalstack.admin.v2.SizeService.Update:output_type -> metalstack.admin.v2.SizeServiceUpdateResponse
+	5, // 10: metalstack.admin.v2.SizeService.Delete:output_type -> metalstack.admin.v2.SizeServiceDeleteResponse
+	8, // [8:11] is the sub-list for method output_type
+	5, // [5:8] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_size_proto_init() }
@@ -272,7 +375,7 @@ func file_metalstack_admin_v2_size_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_size_proto_rawDesc), len(file_metalstack_admin_v2_size_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

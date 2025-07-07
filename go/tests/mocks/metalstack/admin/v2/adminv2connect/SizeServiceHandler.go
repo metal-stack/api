@@ -76,6 +76,36 @@ func (_m *SizeServiceHandler) Delete(_a0 context.Context, _a1 *connect.Request[a
 	return r0, r1
 }
 
+// Update provides a mock function with given fields: _a0, _a1
+func (_m *SizeServiceHandler) Update(_a0 context.Context, _a1 *connect.Request[adminv2.SizeServiceUpdateRequest]) (*connect.Response[adminv2.SizeServiceUpdateResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Update")
+	}
+
+	var r0 *connect.Response[adminv2.SizeServiceUpdateResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SizeServiceUpdateRequest]) (*connect.Response[adminv2.SizeServiceUpdateResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SizeServiceUpdateRequest]) *connect.Response[adminv2.SizeServiceUpdateResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv2.SizeServiceUpdateResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SizeServiceUpdateRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // NewSizeServiceHandler creates a new instance of SizeServiceHandler. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewSizeServiceHandler(t interface {

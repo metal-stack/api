@@ -13,6 +13,11 @@ service SizeService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
+  // Update a size
+  rpc Update(SizeServiceUpdateRequest) returns (SizeServiceUpdateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
   // Delete a size
   rpc Delete(SizeServiceDeleteRequest) returns (SizeServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
@@ -28,6 +33,18 @@ message SizeServiceCreateRequest {
 
 // SizeServiceGetResponse is the response payload for a size create request
 message SizeServiceCreateResponse {
+  // Size the size
+  metalstack.api.v2.Size size = 1;
+}
+
+// SizeServiceUpdateRequest is the request payload for a size update request
+message SizeServiceUpdateRequest {
+  // Size is the size to create
+  metalstack.api.v2.Size size = 1;
+}
+
+// SizeServiceUpdateResponse is the response payload for a size update request
+message SizeServiceUpdateResponse {
   // Size the size
   metalstack.api.v2.Size size = 1;
 }
