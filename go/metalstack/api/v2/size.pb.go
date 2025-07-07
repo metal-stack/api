@@ -359,7 +359,7 @@ type SizeConstraint struct {
 	// Max the maximum value of the constraint
 	Max uint64 `protobuf:"varint,3,opt,name=max,proto3" json:"max,omitempty"`
 	// Identifier glob pattern which matches to the given type, for example gpu pci id
-	Identifier    string `protobuf:"bytes,4,opt,name=identifier,proto3" json:"identifier,omitempty"`
+	Identifier    *string `protobuf:"bytes,4,opt,name=identifier,proto3,oneof" json:"identifier,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -416,8 +416,8 @@ func (x *SizeConstraint) GetMax() uint64 {
 }
 
 func (x *SizeConstraint) GetIdentifier() string {
-	if x != nil {
-		return x.Identifier
+	if x != nil && x.Identifier != nil {
+		return *x.Identifier
 	}
 	return ""
 }
@@ -510,14 +510,16 @@ const file_metalstack_api_v2_size_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12C\n" +
 	"\vconstraints\x18\x06 \x03(\v2!.metalstack.api.v2.SizeConstraintR\vconstraintsB\a\n" +
 	"\x05_nameB\x0e\n" +
-	"\f_description\"\x99\x01\n" +
+	"\f_description\"\xb9\x01\n" +
 	"\x0eSizeConstraint\x12C\n" +
 	"\x04type\x18\x01 \x01(\x0e2%.metalstack.api.v2.SizeConstraintTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12\x10\n" +
 	"\x03min\x18\x02 \x01(\x04R\x03min\x12\x10\n" +
-	"\x03max\x18\x03 \x01(\x04R\x03max\x12\x1e\n" +
+	"\x03max\x18\x03 \x01(\x04R\x03max\x12/\n" +
 	"\n" +
-	"identifier\x18\x04 \x01(\tR\n" +
-	"identifier\"\xa4\x01\n" +
+	"identifier\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x00\x18\x80\x01H\x00R\n" +
+	"identifier\x88\x01\x01B\r\n" +
+	"\v_identifier\"\xa4\x01\n" +
 	"\tSizeQuery\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
@@ -590,6 +592,7 @@ func file_metalstack_api_v2_size_proto_init() {
 	}
 	file_metalstack_api_v2_common_proto_init()
 	file_metalstack_api_v2_size_proto_msgTypes[4].OneofWrappers = []any{}
+	file_metalstack_api_v2_size_proto_msgTypes[5].OneofWrappers = []any{}
 	file_metalstack_api_v2_size_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

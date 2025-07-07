@@ -78,7 +78,10 @@ message SizeConstraint {
   // Max the maximum value of the constraint
   uint64 max = 3;
   // Identifier glob pattern which matches to the given type, for example gpu pci id
-  string identifier = 4;
+  optional string identifier = 4 [(buf.validate.field).string = {
+    min_len: 0
+    max_len: 128
+  }];
 }
 
 // SizeConstraintType defines the property for which a constraint is defined
