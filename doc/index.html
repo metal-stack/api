@@ -7018,10 +7018,38 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
             <tbody>
               
                 <tr>
-                  <td>size</td>
-                  <td><a href="#metalstack.api.v2.Size">metalstack.api.v2.Size</a></td>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Size is the size to create </p></td>
+                  <td><p>Id of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>constraints</td>
+                  <td><a href="#metalstack.api.v2.SizeConstraint">metalstack.api.v2.SizeConstraint</a></td>
+                  <td>repeated</td>
+                  <td><p>Constraints which must match that a specific machine is considered of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">metalstack.api.v2.UpdateLabels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels to update on this size </p></td>
                 </tr>
               
             </tbody>

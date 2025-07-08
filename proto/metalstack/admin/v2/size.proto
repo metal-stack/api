@@ -39,8 +39,25 @@ message SizeServiceCreateResponse {
 
 // SizeServiceUpdateRequest is the request payload for a size update request
 message SizeServiceUpdateRequest {
-  // Size is the size to create
-  metalstack.api.v2.Size size = 1;
+  // Id of this size
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Name of this size
+  optional string name = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this size
+  optional string description = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Constraints which must match that a specific machine is considered of this size
+  repeated metalstack.api.v2.SizeConstraint constraints = 6;
+  // Labels to update on this size
+  optional metalstack.api.v2.UpdateLabels labels = 7;
 }
 
 // SizeServiceUpdateResponse is the response payload for a size update request
