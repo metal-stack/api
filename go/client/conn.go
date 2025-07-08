@@ -19,6 +19,8 @@ type (
 		TokenRenewal *TokenRenewal
 
 		Transport http.RoundTripper
+
+		expiresAt time.Time
 	}
 
 	TokenRenewal struct {

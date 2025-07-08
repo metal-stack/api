@@ -2,7 +2,12 @@
 package client
 
 import (
+	"errors"
+	"fmt"
+
 	compress "github.com/klauspost/connect-compress/v2"
+
+	"github.com/golang-jwt/jwt/v5"
 
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
@@ -77,10 +82,19 @@ type (
 	}
 )
 
-func New(config DialConfig) Client {
+func New(config DialConfig) (Client, error) {
+	parsed, err := jwt.Parse(config.Token, nil)
+	if err != nil && !errors.Is(err, jwt.ErrTokenUnverifiable) {
+		return nil, fmt.Errorf("unable to parse token:%w", err)
+	}
+	expiresAt, err := parsed.Claims.GetExpirationTime()
+	if err != nil {
+		return nil, fmt.Errorf("unable to extract expiresAt from token:%w", err)
+	}
+	config.expiresAt = expiresAt.Time
 	return &client{
 		config: config,
-	}
+	}, nil
 }
 
 func (c client) Adminv2() Adminv2 {

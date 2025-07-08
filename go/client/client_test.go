@@ -2,11 +2,16 @@ package client_test
 
 import (
 	"context"
+	"crypto/ecdsa"
+	"crypto/elliptic"
+	"crypto/rand"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 
 	"connectrpc.com/connect"
+	"github.com/golang-jwt/jwt/v5"
 	"github.com/metal-stack/api/go/client"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
@@ -23,12 +28,25 @@ func Test_Client(t *testing.T) {
 		server.Close()
 	}()
 
+	key, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+	require.NoError(t, err)
+
+	claims := &jwt.RegisteredClaims{
+		ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour)),
+		Issuer:    "test",
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodES256, claims)
+	tokenString, err := token.SignedString(key)
+	require.NoError(t, err)
+
 	server.Client()
-	c := client.New(client.DialConfig{
+	c, err := client.New(client.DialConfig{
 		BaseURL:   server.URL,
-		Token:     "",
+		Token:     tokenString,
 		Transport: server.Client().Transport,
 	})
+	require.NoError(t, err)
 	v, err := c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
 	require.NoError(t, err)
 	require.NotNil(t, v)
