@@ -51,6 +51,8 @@ func Test_Client(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, v)
 	require.Equal(t, "1.0", v.Msg.Version.Version)
+
+	// TODO test token refresh
 }
 
 type mockService struct {
