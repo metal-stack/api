@@ -2,12 +2,7 @@
 package client
 
 import (
-	"errors"
-	"fmt"
-	
 	compress "github.com/klauspost/connect-compress/v2"
-
-	"github.com/golang-jwt/jwt/v5"
 
 {{ range $name, $api := . -}}
 	"github.com/metal-stack/api/go{{ $api.Path }}/{{ $api.Name }}connect"
@@ -40,15 +35,11 @@ type (
 )
 
 func New(config DialConfig) (Client, error) {
-	parsed, err := jwt.Parse(config.Token, nil)
-	if err != nil && !errors.Is(err, jwt.ErrTokenUnverifiable) {
-		return nil, fmt.Errorf("unable to parse token:%w", err)
-	}
-	expiresAt, err := parsed.Claims.GetExpirationTime()
+	exp, err := getExpiresAt(config.Token)
 	if err != nil {
-		return nil, fmt.Errorf("unable to extract expiresAt from token:%w", err)
+		return nil, err
 	}
-	config.expiresAt = expiresAt.Time
+	config.expiresAt = *exp
 	return &client{
 		config: config,
 	},nil
@@ -56,6 +47,7 @@ func New(config DialConfig) (Client, error) {
 
 {{ range $name, $api := . -}}
 func (c client) {{ $name | title }}() {{ $name | title }} {
+	c.renewToken()
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
 	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(

@@ -2,12 +2,7 @@
 package client
 
 import (
-	"errors"
-	"fmt"
-
 	compress "github.com/klauspost/connect-compress/v2"
-
-	"github.com/golang-jwt/jwt/v5"
 
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
@@ -83,21 +78,18 @@ type (
 )
 
 func New(config DialConfig) (Client, error) {
-	parsed, err := jwt.Parse(config.Token, nil)
-	if err != nil && !errors.Is(err, jwt.ErrTokenUnverifiable) {
-		return nil, fmt.Errorf("unable to parse token:%w", err)
-	}
-	expiresAt, err := parsed.Claims.GetExpirationTime()
+	exp, err := getExpiresAt(config.Token)
 	if err != nil {
-		return nil, fmt.Errorf("unable to extract expiresAt from token:%w", err)
+		return nil, err
 	}
-	config.expiresAt = expiresAt.Time
+	config.expiresAt = *exp
 	return &client{
 		config: config,
 	}, nil
 }
 
 func (c client) Adminv2() Adminv2 {
+	c.renewToken()
 	a := &adminv2{
 		filesystemservice: adminv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
@@ -161,6 +153,7 @@ func (c *adminv2) Token() adminv2connect.TokenServiceClient {
 }
 
 func (c client) Apiv2() Apiv2 {
+	c.renewToken()
 	a := &apiv2{
 		filesystemservice: apiv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
@@ -264,6 +257,7 @@ func (c *apiv2) Version() apiv2connect.VersionServiceClient {
 }
 
 func (c client) Infrav2() Infrav2 {
+	c.renewToken()
 	a := &infrav2{
 		bmcservice: infrav2connect.NewBMCServiceClient(
 			c.config.HttpClient(),
