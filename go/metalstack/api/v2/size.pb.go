@@ -349,10 +349,10 @@ func (x *Size) GetConstraints() []*SizeConstraint {
 	return nil
 }
 
-// SIzeConstraint defines the boundaries for certain type of machine property which must match to identify this machine as this size.
+// SizeConstraint defines the boundaries for certain type of machine property which must match to identify this machine as this size.
 type SizeConstraint struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Type  a machine matches to a size in order to make them easier to categorize
+	// Type a machine matches to a size in order to make them easier to categorize
 	Type SizeConstraintType `protobuf:"varint,1,opt,name=type,proto3,enum=metalstack.api.v2.SizeConstraintType" json:"type,omitempty"`
 	// Min the minimum value of the constraint
 	Min uint64 `protobuf:"varint,2,opt,name=min,proto3" json:"min,omitempty"`

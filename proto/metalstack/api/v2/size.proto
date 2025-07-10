@@ -69,9 +69,9 @@ message Size {
   repeated SizeConstraint constraints = 6;
 }
 
-// SIzeConstraint defines the boundaries for certain type of machine property which must match to identify this machine as this size.
+// SizeConstraint defines the boundaries for certain type of machine property which must match to identify this machine as this size.
 message SizeConstraint {
-  // Type  a machine matches to a size in order to make them easier to categorize
+  // Type a machine matches to a size in order to make them easier to categorize
   SizeConstraintType type = 1 [(buf.validate.field).enum.defined_only = true];
   // Min the minimum value of the constraint
   uint64 min = 2;
