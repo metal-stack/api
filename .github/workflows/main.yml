@@ -53,6 +53,12 @@ jobs:
         python -m pip install setuptools wheel
         python setup.py sdist bdist_wheel
 
+    - name: Make tag
+      run: |
+        [ "${GITHUB_EVENT_NAME}" == 'pull_request' ] && echo "tag=v0.0.0-pull-request.${{ github.event.number }}" >> $GITHUB_ENV || true
+        [ "${GITHUB_EVENT_NAME}" == 'release' ] && echo "tag=${GITHUB_REF##*/}" >> $GITHUB_ENV || true
+        [ "${GITHUB_EVENT_NAME}" == 'push' ] && echo "tag=v0.0.0-${GITHUB_REF##*/}" >> $GITHUB_ENV || true
+
     - name: Publish to Test PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
@@ -60,3 +66,15 @@ jobs:
         repository-url: https://test.pypi.org/legacy/
         skip-existing: true
         packages-dir: python/dist
+      env:
+        VERSION: ${{ env.tag }}
+      if: ${{ github.event_name != 'release' }}
+
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.pypi_password }}
+        packages-dir: python/dist
+      env:
+        VERSION: ${{ env.tag }}
+      if: ${{ github.event_name == 'release' }}
