@@ -57,6 +57,6 @@ jobs:
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         password: ${{ secrets.test_pypi_password }}
-        repository_url: https://test.pypi.org/legacy/
-        skip_existing: true
-        packages_dir: python
+        repository-url: https://test.pypi.org/legacy/
+        skip-existing: true
+        packages-dir: python/dist
