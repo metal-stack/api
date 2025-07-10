@@ -1,0 +1,23 @@
+---
+# we will provide dedicated modules soon, the following would also work though:
+
+- hosts: localhost
+  tasks:
+  - name: List all ips in a project
+    ansible.builtin.uri:
+      url:  "{{ lookup('ansible.builtin.env', 'METAL_APISERVER_URL') }}/metalstack.api.v2.IPService/List"
+      method: POST
+      body_format: json
+      status_code: [200, 202]
+      return_content: true
+      headers:
+        Content-Type: application/json
+        Authorization: Bearer {{ lookup('ansible.builtin.env', 'API_TOKEN') }}
+      body:
+        project: "{{ lookup('ansible.builtin.env', 'PROJECT_ID') }}"
+    register: result
+
+  - name: Display ips
+    ansible.builtin.debug:
+      msg: "{{ item.name }} - {{ item.uuid }}"
+    loop: "{{ result.json.ips }}"
