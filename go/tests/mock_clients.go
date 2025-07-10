@@ -37,6 +37,7 @@ type (
 		ipservice         *adminv2mocks.IPServiceClient
 		networkservice    *adminv2mocks.NetworkServiceClient
 		partitionservice  *adminv2mocks.PartitionServiceClient
+		sizeservice       *adminv2mocks.SizeServiceClient
 		tenantservice     *adminv2mocks.TenantServiceClient
 		tokenservice      *adminv2mocks.TokenServiceClient
 	}
@@ -47,6 +48,7 @@ type (
 		IP         func(m *mock.Mock)
 		Network    func(m *mock.Mock)
 		Partition  func(m *mock.Mock)
+		Size       func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
 	}
@@ -59,6 +61,7 @@ type (
 		networkservice    *apiv2mocks.NetworkServiceClient
 		partitionservice  *apiv2mocks.PartitionServiceClient
 		projectservice    *apiv2mocks.ProjectServiceClient
+		sizeservice       *apiv2mocks.SizeServiceClient
 		tenantservice     *apiv2mocks.TenantServiceClient
 		tokenservice      *apiv2mocks.TokenServiceClient
 		userservice       *apiv2mocks.UserServiceClient
@@ -74,6 +77,7 @@ type (
 		Network    func(m *mock.Mock)
 		Partition  func(m *mock.Mock)
 		Project    func(m *mock.Mock)
+		Size       func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
 		User       func(m *mock.Mock)
@@ -123,6 +127,7 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		ipservice:         adminv2mocks.NewIPServiceClient(t),
 		networkservice:    adminv2mocks.NewNetworkServiceClient(t),
 		partitionservice:  adminv2mocks.NewPartitionServiceClient(t),
+		sizeservice:       adminv2mocks.NewSizeServiceClient(t),
 		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
 		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
 	}
@@ -142,6 +147,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		}
 		if fns.Partition != nil {
 			fns.Partition(&a.partitionservice.Mock)
+		}
+		if fns.Size != nil {
+			fns.Size(&a.sizeservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -170,6 +178,9 @@ func (c *adminv2) Network() adminv2connect.NetworkServiceClient {
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice
 }
+func (c *adminv2) Size() adminv2connect.SizeServiceClient {
+	return c.sizeservice
+}
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice
 }
@@ -191,6 +202,7 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		networkservice:    apiv2mocks.NewNetworkServiceClient(t),
 		partitionservice:  apiv2mocks.NewPartitionServiceClient(t),
 		projectservice:    apiv2mocks.NewProjectServiceClient(t),
+		sizeservice:       apiv2mocks.NewSizeServiceClient(t),
 		tenantservice:     apiv2mocks.NewTenantServiceClient(t),
 		tokenservice:      apiv2mocks.NewTokenServiceClient(t),
 		userservice:       apiv2mocks.NewUserServiceClient(t),
@@ -221,6 +233,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		}
 		if fns.Project != nil {
 			fns.Project(&a.projectservice.Mock)
+		}
+		if fns.Size != nil {
+			fns.Size(&a.sizeservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -263,6 +278,9 @@ func (c *apiv2) Partition() apiv2connect.PartitionServiceClient {
 }
 func (c *apiv2) Project() apiv2connect.ProjectServiceClient {
 	return c.projectservice
+}
+func (c *apiv2) Size() apiv2connect.SizeServiceClient {
+	return c.sizeservice
 }
 func (c *apiv2) Tenant() apiv2connect.TenantServiceClient {
 	return c.tenantservice

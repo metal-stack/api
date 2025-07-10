@@ -864,6 +864,92 @@
         
           
           <li>
+            <a href="#metalstack%2fapi%2fv2%2fsize.proto">metalstack/api/v2/size.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.api.v2.Size"><span class="badge">M</span>Size</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeConstraint"><span class="badge">M</span>SizeConstraint</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeQuery"><span class="badge">M</span>SizeQuery</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeServiceGetRequest"><span class="badge">M</span>SizeServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeServiceGetResponse"><span class="badge">M</span>SizeServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeServiceListRequest"><span class="badge">M</span>SizeServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeServiceListResponse"><span class="badge">M</span>SizeServiceListResponse</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeConstraintType"><span class="badge">E</span>SizeConstraintType</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeService"><span class="badge">S</span>SizeService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fadmin%2fv2%2fsize.proto">metalstack/admin/v2/size.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeServiceCreateRequest"><span class="badge">M</span>SizeServiceCreateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeServiceCreateResponse"><span class="badge">M</span>SizeServiceCreateResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeServiceDeleteRequest"><span class="badge">M</span>SizeServiceDeleteRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeServiceDeleteResponse"><span class="badge">M</span>SizeServiceDeleteResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeServiceUpdateRequest"><span class="badge">M</span>SizeServiceUpdateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeServiceUpdateResponse"><span class="badge">M</span>SizeServiceUpdateResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeService"><span class="badge">S</span>SizeService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2fapi%2fv2%2ftenant.proto">metalstack/api/v2/tenant.proto</a>
             <ul>
               
@@ -6644,6 +6730,544 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                 <td><a href="#metalstack.admin.v2.PartitionServiceCapacityRequest">PartitionServiceCapacityRequest</a></td>
                 <td><a href="#metalstack.admin.v2.PartitionServiceCapacityResponse">PartitionServiceCapacityResponse</a></td>
                 <td><p>Capacity of a partitions</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/api/v2/size.proto">metalstack/api/v2/size.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.api.v2.Size">Size</h3>
+        <p>Size</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this ip </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>constraints</td>
+                  <td><a href="#metalstack.api.v2.SizeConstraint">SizeConstraint</a></td>
+                  <td>repeated</td>
+                  <td><p>Constraints which must match that a specific machine is considered of this size </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeConstraint">SizeConstraint</h3>
+        <p>SizeConstraint defines the boundaries for certain type of machine property which must match to identify this machine as this size.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#metalstack.api.v2.SizeConstraintType">SizeConstraintType</a></td>
+                  <td></td>
+                  <td><p>Type a machine matches to a size in order to make them easier to categorize </p></td>
+                </tr>
+              
+                <tr>
+                  <td>min</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Min the minimum value of the constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>max</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Max the maximum value of the constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>identifier</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Identifier glob pattern which matches to the given type, for example gpu pci id </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeQuery">SizeQuery</h3>
+        <p>SizeQuery is used to search sizes</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ID of the size to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of the size to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of the size to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td></td>
+                  <td><p>Labels on this network </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeServiceGetRequest">SizeServiceGetRequest</h3>
+        <p>SizeServiceGetRequest is the request payload for a size get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID of the size to get </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeServiceGetResponse">SizeServiceGetResponse</h3>
+        <p>SizeServiceGetResponse is the response payload for a size get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#metalstack.api.v2.Size">Size</a></td>
+                  <td></td>
+                  <td><p>Size the size </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeServiceListRequest">SizeServiceListRequest</h3>
+        <p>SizeServiceListRequest is the request payload for a size list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.SizeQuery">SizeQuery</a></td>
+                  <td></td>
+                  <td><p>Query for sizes </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeServiceListResponse">SizeServiceListResponse</h3>
+        <p>SizeServiceListResponse is the response payload for a size list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>sizes</td>
+                  <td><a href="#metalstack.api.v2.Size">Size</a></td>
+                  <td>repeated</td>
+                  <td><p>Sizes the sizes </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="metalstack.api.v2.SizeConstraintType">SizeConstraintType</h3>
+        <p>SizeConstraintType defines the property for which a constraint is defined</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SIZE_CONSTRAINT_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>SIZE_CONSTRAINT_TYPE_UNSPECIFIED type is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>SIZE_CONSTRAINT_TYPE_CORES</td>
+                <td>1</td>
+                <td><p>SIZE_CONSTRAINT_TYPE_CORES defines the number of cores as property</p></td>
+              </tr>
+            
+              <tr>
+                <td>SIZE_CONSTRAINT_TYPE_MEMORY</td>
+                <td>2</td>
+                <td><p>SIZE_CONSTRAINT_TYPE_MEMORY defines the amount of memory as property</p></td>
+              </tr>
+            
+              <tr>
+                <td>SIZE_CONSTRAINT_TYPE_STORAGE</td>
+                <td>3</td>
+                <td><p>SIZE_CONSTRAINT_TYPE_STORAGE defines the amount of storage as property</p></td>
+              </tr>
+            
+              <tr>
+                <td>SIZE_CONSTRAINT_TYPE_GPU</td>
+                <td>4</td>
+                <td><p>SIZE_CONSTRAINT_TYPE_GPU defines the number of gpus as property</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="metalstack.api.v2.SizeService">SizeService</h3>
+        <p>SizeService serves size related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.api.v2.SizeServiceGetRequest">SizeServiceGetRequest</a></td>
+                <td><a href="#metalstack.api.v2.SizeServiceGetResponse">SizeServiceGetResponse</a></td>
+                <td><p>Get a size</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.api.v2.SizeServiceListRequest">SizeServiceListRequest</a></td>
+                <td><a href="#metalstack.api.v2.SizeServiceListResponse">SizeServiceListResponse</a></td>
+                <td><p>List all sizes</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/admin/v2/size.proto">metalstack/admin/v2/size.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.admin.v2.SizeServiceCreateRequest">SizeServiceCreateRequest</h3>
+        <p>SizeServiceCreateRequest is the request payload for a size create request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#metalstack.api.v2.Size">metalstack.api.v2.Size</a></td>
+                  <td></td>
+                  <td><p>Size is the size to create </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeServiceCreateResponse">SizeServiceCreateResponse</h3>
+        <p>SizeServiceGetResponse is the response payload for a size create request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#metalstack.api.v2.Size">metalstack.api.v2.Size</a></td>
+                  <td></td>
+                  <td><p>Size the size </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeServiceDeleteRequest">SizeServiceDeleteRequest</h3>
+        <p>SizeServiceDeleteRequest is the request payload for a size delete request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID of the size to delete </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeServiceDeleteResponse">SizeServiceDeleteResponse</h3>
+        <p>SizeServiceDeleteResponse is the response payload for a size delete request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#metalstack.api.v2.Size">metalstack.api.v2.Size</a></td>
+                  <td></td>
+                  <td><p>Size the size </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeServiceUpdateRequest">SizeServiceUpdateRequest</h3>
+        <p>SizeServiceUpdateRequest is the request payload for a size update request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>constraints</td>
+                  <td><a href="#metalstack.api.v2.SizeConstraint">metalstack.api.v2.SizeConstraint</a></td>
+                  <td>repeated</td>
+                  <td><p>Constraints which must match that a specific machine is considered of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">metalstack.api.v2.UpdateLabels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels to update on this size </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeServiceUpdateResponse">SizeServiceUpdateResponse</h3>
+        <p>SizeServiceUpdateResponse is the response payload for a size update request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#metalstack.api.v2.Size">metalstack.api.v2.Size</a></td>
+                  <td></td>
+                  <td><p>Size the size </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.admin.v2.SizeService">SizeService</h3>
+        <p>SizeService serves size related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Create</td>
+                <td><a href="#metalstack.admin.v2.SizeServiceCreateRequest">SizeServiceCreateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeServiceCreateResponse">SizeServiceCreateResponse</a></td>
+                <td><p>Create a size</p></td>
+              </tr>
+            
+              <tr>
+                <td>Update</td>
+                <td><a href="#metalstack.admin.v2.SizeServiceUpdateRequest">SizeServiceUpdateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeServiceUpdateResponse">SizeServiceUpdateResponse</a></td>
+                <td><p>Update a size</p></td>
+              </tr>
+            
+              <tr>
+                <td>Delete</td>
+                <td><a href="#metalstack.admin.v2.SizeServiceDeleteRequest">SizeServiceDeleteRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeServiceDeleteResponse">SizeServiceDeleteResponse</a></td>
+                <td><p>Delete a size</p></td>
               </tr>
             
           </tbody>
