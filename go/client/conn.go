@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"log/slog"
 	"net/http"
 	"net/http/httputil"
 	"time"
@@ -14,7 +15,7 @@ import (
 	api "github.com/metal-stack/api/go/metalstack/api/v2"
 )
 
-var defaultReplaceBefore = time.Minute
+const defaultReplaceBefore = time.Minute
 
 type (
 	// DialConfig is the configuration to create a api-server connection
@@ -29,13 +30,15 @@ type (
 
 		Transport http.RoundTripper
 
+		Log *slog.Logger
+
 		expiresAt time.Time
 	}
 
 	TokenRenewal struct {
 		// ReplaceBefore replaces the token with a new one if existing token only has this duration left until expiresAt
 		// defaults to 1 minute if not specified
-		ReplaceBefore *time.Duration
+		ReplaceBefore time.Duration
 		// PersistTokenFn is called to persist the newly fetched token
 		// token will not be persisted if not specified
 		PersistTokenFn PersistTokenFn
@@ -55,8 +58,8 @@ func (d *DialConfig) HttpClient() *http.Client {
 		transport = d.Transport
 	}
 
-	if d.TokenRenewal != nil && d.TokenRenewal.ReplaceBefore == nil {
-		d.TokenRenewal.ReplaceBefore = &defaultReplaceBefore
+	if d.TokenRenewal != nil && d.TokenRenewal.ReplaceBefore == 0 {
+		d.TokenRenewal.ReplaceBefore = defaultReplaceBefore
 	}
 
 	return &http.Client{
@@ -68,49 +71,66 @@ func (d *DialConfig) HttpClient() *http.Client {
 	}
 }
 
-func getExpiresAt(token string) (*time.Time, error) {
+func getExpiresAt(token string) (time.Time, error) {
 	parsed, err := jwt.Parse(token, nil)
 	if err != nil && !errors.Is(err, jwt.ErrTokenUnverifiable) {
-		return nil, fmt.Errorf("unable to parse token:%w", err)
+		return time.Time{}, fmt.Errorf("unable to parse token:%w", err)
 	}
 	expiresAt, err := parsed.Claims.GetExpirationTime()
 	if err != nil {
-		return nil, fmt.Errorf("unable to extract expiresAt from token:%w", err)
+		return time.Time{}, fmt.Errorf("unable to extract expiresAt from token:%w", err)
 	}
-	return &expiresAt.Time, nil
+	return expiresAt.Time, nil
 }
 
-func (c client) renewToken() {
+func (c *client) renewToken() {
 	if c.config.TokenRenewal == nil {
 		return
 	}
 	if c.config.expiresAt.IsZero() {
 		return
 	}
-	if time.Since(c.config.expiresAt).Abs() > *c.config.TokenRenewal.ReplaceBefore {
-		return
+	if c.config.Log == nil {
+		c.config.Log = slog.Default()
 	}
+	ticker := time.NewTicker(c.config.TokenRenewal.ReplaceBefore / 2)
+	defer ticker.Stop()
+	done := make(chan bool)
+	for {
+		select {
+		case <-done:
+			return
+		case <-ticker.C:
+			if time.Since(c.config.expiresAt) <= -c.config.TokenRenewal.ReplaceBefore {
+				continue
+			}
 
-	resp, err := c.Apiv2().Token().Refresh(context.Background(), connect.NewRequest(&api.TokenServiceRefreshRequest{}))
-	if err != nil {
-		// TODO howto handle errors
-		fmt.Printf("unable to refresh token:%v\n", err)
-	}
-	token := resp.Msg.Secret
-	exp, err := getExpiresAt(token)
-	if err != nil {
-		fmt.Printf("unable to parse token:%v\n", err)
-	}
-	c.config.Token = token
-	c.config.expiresAt = *exp
+			resp, err := c.Apiv2().Token().Refresh(context.Background(), connect.NewRequest(&api.TokenServiceRefreshRequest{}))
+			if err != nil {
+				c.config.Log.Error("unable to refresh token", "error", err)
+				continue
+			}
+			token := resp.Msg.Secret
+			exp, err := getExpiresAt(token)
+			if err != nil {
+				c.config.Log.Error("unable to parse token", "error", err)
+				continue
+			}
+			c.Lock()
+			defer c.Unlock()
+			c.config.Token = token
+			c.config.expiresAt = exp
 
-	if c.config.TokenRenewal.PersistTokenFn == nil {
-		return
-	}
+			if c.config.TokenRenewal.PersistTokenFn == nil {
+				return
+			}
 
-	err = c.config.TokenRenewal.PersistTokenFn(token)
-	if err != nil {
-		fmt.Printf("unable to persist token:%v\n", err)
+			err = c.config.TokenRenewal.PersistTokenFn(token)
+			if err != nil {
+				c.config.Log.Error("unable to persist token", "error", err)
+				continue
+			}
+		}
 	}
 }
 

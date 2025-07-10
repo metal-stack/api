@@ -39,7 +39,7 @@ func New(config DialConfig) (Client, error) {
 	if err != nil {
 		return nil, err
 	}
-	config.expiresAt = *exp
+	config.expiresAt = exp
 	return &client{
 		config: config,
 	},nil
@@ -47,7 +47,6 @@ func New(config DialConfig) (Client, error) {
 
 {{ range $name, $api := . -}}
 func (c client) {{ $name | title }}() {{ $name | title }} {
-	c.renewToken()
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
 	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(
