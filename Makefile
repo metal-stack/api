@@ -14,7 +14,9 @@ release: proto generate test
 .PHONY: proto
 proto: protolint protoc-gen-connecpy
 	$(MAKE) -C go clean
+	$(MAKE) -C python clean
 	$(MAKE) -C proto protoc
+	$(MAKE) -C python generate
 
 .PHONY: protolint
 protolint:
@@ -31,4 +33,5 @@ test:
 .PHONY: protoc-gen-connecpy
 protoc-gen-connecpy: $(PROTOC_GEN_CONNECPY)
 $(PROTOC_GEN_CONNECPY): $(LOCALBIN)
+	mkdir -p bin
 	GOBIN=$(LOCALBIN) go install github.com/i2y/connecpy/protoc-gen-connecpy@$(PROTOC_GEN_CONNECPY_VERSION)

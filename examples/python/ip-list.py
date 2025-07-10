@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 
-# client.py
 from connecpy.context import ClientContext
 from connecpy.exceptions import ConnecpyServerException
 import os
-# import sys
 
 from metalstack.api.v2 import ip_pb2, ip_connecpy
 

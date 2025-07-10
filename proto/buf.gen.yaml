@@ -12,13 +12,14 @@ managed:
     - file_option: go_package_prefix
       value: github.com/metal-stack/api/go
 plugins:
+  # go
   - remote: buf.build/protocolbuffers/go:v1.36.6
     out: ../go
     opt: paths=source_relative
   - remote: buf.build/connectrpc/go:v1.18.1
     out: ../go
     opt: paths=source_relative
-  # Create python client
+  # python
   - remote: buf.build/protocolbuffers/python:v31.1
     out: ../python
   - remote: buf.build/grpc/python:v1.73.0
@@ -27,5 +28,6 @@ plugins:
     out: ../python
   - local: ../bin/protoc-gen-connecpy
     out: ../python
+  # docs
   - remote: buf.build/community/pseudomuto-doc:v1.5.1
     out: ../doc
