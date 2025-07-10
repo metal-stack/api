@@ -1,12 +1,12 @@
+#!/usr/bin/env python
+
 # client.py
 from connecpy.context import ClientContext
 from connecpy.exceptions import ConnecpyServerException
 import os
-import sys
-# setting path
-sys.path.append('../../python')
-import metalstack.api.v2.ip_connecpy as ip_connecpy
-import metalstack.api.v2.ip_pb2 as ip_pb2
+# import sys
+
+from metalstack.api.v2 import ip_pb2, ip_connecpy
 
 timeout_s = 5
 baseurl = os.environ['METAL_APISERVER_URL']

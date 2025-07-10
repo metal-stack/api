@@ -14,8 +14,8 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build:
-    name: Build
+  go:
+    name: Go
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
@@ -34,3 +34,29 @@ jobs:
       uses: golangci/golangci-lint-action@v8
       with:
         args: -D protogetter --timeout=5m
+
+  python:
+    name: Python
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.13"
+
+    - name: Package
+      run: |
+        cd python
+        python -m pip install setuptools wheel
+        python setup.py sdist bdist_wheel
+
+    - name: Publish to Test PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.test_pypi_password }}
+        repository_url: https://test.pypi.org/legacy/
+        skip_existing: true
+        packages_dir: python
