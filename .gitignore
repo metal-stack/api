@@ -37,3 +37,7 @@ var/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+
+# see python README.md why this is required:
+go/buf/
+go/tests/mocks/buf
