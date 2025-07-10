@@ -10,7 +10,8 @@ REQUIRES = [
 setup(
     name=NAME,
     version=os.environ.get("VERSION", "v0.0.1"),
-    description="Python API client for metal-stack api (v2)",
+    description="Python API client for metal-stack api",
+    long_description="Python API client for metal-stack api that implements the v2 api and deprecates metal_python.",
     author="metal-stack authors",
     url="https://github.com/metal-stack/api",
     keywords=["metal-stack", "metal-apiserver"],
