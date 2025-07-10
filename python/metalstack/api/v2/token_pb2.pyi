@@ -173,3 +173,17 @@ class TokenServiceGetResponse(_message.Message):
     TOKEN_FIELD_NUMBER: _ClassVar[int]
     token: Token
     def __init__(self, token: _Optional[_Union[Token, _Mapping]] = ...) -> None: ...
+
+class TokenServiceRefreshRequest(_message.Message):
+    __slots__ = ("expires",)
+    EXPIRES_FIELD_NUMBER: _ClassVar[int]
+    expires: _duration_pb2.Duration
+    def __init__(self, expires: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+
+class TokenServiceRefreshResponse(_message.Message):
+    __slots__ = ("token", "secret")
+    TOKEN_FIELD_NUMBER: _ClassVar[int]
+    SECRET_FIELD_NUMBER: _ClassVar[int]
+    token: Token
+    secret: str
+    def __init__(self, token: _Optional[_Union[Token, _Mapping]] = ..., secret: _Optional[str] = ...) -> None: ...
