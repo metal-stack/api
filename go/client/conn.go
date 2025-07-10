@@ -15,7 +15,7 @@ import (
 	api "github.com/metal-stack/api/go/metalstack/api/v2"
 )
 
-const defaultReplaceBefore = time.Minute
+const defaultReplaceBefore = time.Hour
 
 type (
 	// DialConfig is the configuration to create a api-server connection
@@ -37,7 +37,7 @@ type (
 
 	TokenRenewal struct {
 		// ReplaceBefore replaces the token with a new one if existing token only has this duration left until expiresAt
-		// defaults to 1 minute if not specified
+		// defaults to 1 hour if not specified
 		ReplaceBefore time.Duration
 		// PersistTokenFn is called to persist the newly fetched token
 		// token will not be persisted if not specified

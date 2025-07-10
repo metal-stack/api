@@ -56,18 +56,16 @@ func Test_Client(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, v)
 	require.Equal(t, "1.0", v.Msg.Version.Version)
-
-	// TODO test token refresh
+	require.False(t, ts.wasCalled)
 
 	time.Sleep(300 * time.Millisecond)
-
 	v, err = c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
 	require.NoError(t, err)
 	require.NotNil(t, v)
 	require.Equal(t, "1.0", v.Msg.Version.Version)
+	require.False(t, ts.wasCalled)
 
 	time.Sleep(1 * time.Second)
-
 	v, err = c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
 	require.NoError(t, err)
 	require.NotNil(t, v)
