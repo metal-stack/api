@@ -173,6 +173,26 @@ func (_m *Apiv2) Project() apiv2connect.ProjectServiceClient {
 	return r0
 }
 
+// Size provides a mock function with no fields
+func (_m *Apiv2) Size() apiv2connect.SizeServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Size")
+	}
+
+	var r0 apiv2connect.SizeServiceClient
+	if rf, ok := ret.Get(0).(func() apiv2connect.SizeServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv2connect.SizeServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Tenant provides a mock function with no fields
 func (_m *Apiv2) Tenant() apiv2connect.TenantServiceClient {
 	ret := _m.Called()
