@@ -1,0 +1,120 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+
+// SizeService serves size related functions
+service SizeService {
+  // Get a size
+  rpc Get(SizeServiceGetRequest) returns (SizeServiceGetResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // List all sizes
+  rpc List(SizeServiceListRequest) returns (SizeServiceListResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// SizeServiceGetRequest is the request payload for a size get request
+message SizeServiceGetRequest {
+  // ID of the size to get
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// SizeServiceListRequest is the request payload for a size list request
+message SizeServiceListRequest {
+  // Query for sizes
+  SizeQuery query = 1;
+}
+
+// SizeServiceGetResponse is the response payload for a size get request
+message SizeServiceGetResponse {
+  // Size the size
+  Size size = 1;
+}
+
+// SizeServiceListResponse is the response payload for a size list request
+message SizeServiceListResponse {
+  // Sizes the sizes
+  repeated Size sizes = 1;
+}
+
+// Size
+message Size {
+  // Id of this size
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Meta for this ip
+  Meta meta = 2;
+  // Name of this size
+  optional string name = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this size
+  optional string description = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Constraints which must match that a specific machine is considered of this size
+  repeated SizeConstraint constraints = 6;
+}
+
+// SizeConstraint defines the boundaries for certain type of machine property which must match to identify this machine as this size.
+message SizeConstraint {
+  // Type a machine matches to a size in order to make them easier to categorize
+  SizeConstraintType type = 1 [(buf.validate.field).enum.defined_only = true];
+  // Min the minimum value of the constraint
+  uint64 min = 2;
+  // Max the maximum value of the constraint
+  uint64 max = 3;
+  // Identifier glob pattern which matches to the given type, for example gpu pci id
+  optional string identifier = 4 [(buf.validate.field).string = {
+    min_len: 0
+    max_len: 128
+  }];
+}
+
+// SizeConstraintType defines the property for which a constraint is defined
+enum SizeConstraintType {
+  // SIZE_CONSTRAINT_TYPE_UNSPECIFIED type is not specified
+  SIZE_CONSTRAINT_TYPE_UNSPECIFIED = 0;
+  // SIZE_CONSTRAINT_TYPE_CORES defines the number of cores as property
+  SIZE_CONSTRAINT_TYPE_CORES = 1 [(enum_string_value) = "cores"];
+  // SIZE_CONSTRAINT_TYPE_MEMORY defines the amount of memory as property
+  SIZE_CONSTRAINT_TYPE_MEMORY = 2 [(enum_string_value) = "memory"];
+  // SIZE_CONSTRAINT_TYPE_STORAGE defines the amount of storage as property
+  SIZE_CONSTRAINT_TYPE_STORAGE = 3 [(enum_string_value) = "storage"];
+  // SIZE_CONSTRAINT_TYPE_GPU defines the number of gpus as property
+  SIZE_CONSTRAINT_TYPE_GPU = 4 [(enum_string_value) = "gpu"];
+}
+
+// SizeQuery is used to search sizes
+message SizeQuery {
+  // ID of the size to get
+  optional string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Name of the size to query
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of the size to query
+  optional string description = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Labels on this network
+  Labels labels = 4;
+}
