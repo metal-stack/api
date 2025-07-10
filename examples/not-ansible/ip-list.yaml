@@ -1,4 +1,6 @@
 ---
+# we will provide dedicated modules soon, the following would also work though:
+
 - hosts: localhost
   tasks:
   - name: List all ips in a project
@@ -11,7 +13,7 @@
       headers:
         Content-Type: application/json
         Authorization: Bearer {{ lookup('ansible.builtin.env', 'API_TOKEN') }}
-      body: 
+      body:
         project: "{{ lookup('ansible.builtin.env', 'PROJECT_ID') }}"
     register: result
 
@@ -19,4 +21,3 @@
     ansible.builtin.debug:
       msg: "{{ item.name }} - {{ item.uuid }}"
     loop: "{{ result.json.ips }}"
-  

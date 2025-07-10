@@ -13,16 +13,13 @@ export METAL_APISERVER_URL=metal-apiserver url
 Then you can execute them as following:
 
 ```bash
-Golang:
+# Golang:
 go run go/ip-list.go
 
-Ansible:
-ansible-playbook ansible/ip-list.yaml
-
-Curl:
+# Curl:
 sh curl/ip-list.sh
 
-Python:
+# Python:
 python python/ip-list.py
 ```
 
