@@ -18,7 +18,7 @@ type (
 {{ end }}
 	}
 	client struct {
-		config DialConfig
+		config *DialConfig
 
 		sync.Mutex
 	}
@@ -38,12 +38,11 @@ type (
 {{ end }}
 )
 
-func New(config DialConfig) (Client, error) {
-	exp, err := getExpiresAt(config.Token)
+func New(config *DialConfig) (Client, error) {
+	err := config.parse()
 	if err != nil {
 		return nil, err
 	}
-	config.expiresAt = exp
 	c := &client{
 		config: config,
 	}

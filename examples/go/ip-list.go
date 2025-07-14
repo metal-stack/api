@@ -16,7 +16,7 @@ func main() {
 	project := os.Getenv("PROJECT_ID")
 	baseurl := os.Getenv("METAL_APISERVER_URL")
 
-	c, err := client.New(client.DialConfig{
+	c, err := client.New(&client.DialConfig{
 		BaseURL: baseurl,
 		Token:   token,
 	})

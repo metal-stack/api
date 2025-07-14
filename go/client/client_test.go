@@ -38,7 +38,7 @@ func Test_Client(t *testing.T) {
 	log := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
 
 	server.Client()
-	c, err := client.New(client.DialConfig{
+	c, err := client.New(&client.DialConfig{
 		BaseURL:   server.URL,
 		Token:     tokenString,
 		Transport: server.Client().Transport,

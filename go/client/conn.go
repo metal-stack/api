@@ -71,16 +71,17 @@ func (d *DialConfig) HttpClient() *http.Client {
 	}
 }
 
-func getExpiresAt(token string) (time.Time, error) {
-	parsed, err := jwt.Parse(token, nil)
+func (dc *DialConfig) parse() error {
+	parsed, err := jwt.Parse(dc.Token, nil)
 	if err != nil && !errors.Is(err, jwt.ErrTokenUnverifiable) {
-		return time.Time{}, fmt.Errorf("unable to parse token:%w", err)
+		return fmt.Errorf("unable to parse token:%w", err)
 	}
 	expiresAt, err := parsed.Claims.GetExpirationTime()
 	if err != nil {
-		return time.Time{}, fmt.Errorf("unable to extract expiresAt from token:%w", err)
+		return fmt.Errorf("unable to extract expiresAt from token:%w", err)
 	}
-	return expiresAt.Time, nil
+	dc.expiresAt = expiresAt.Time
+	return nil
 }
 
 func (c *client) renewToken() {
@@ -110,22 +111,20 @@ func (c *client) renewToken() {
 				c.config.Log.Error("unable to refresh token", "error", err)
 				continue
 			}
-			token := resp.Msg.Secret
-			exp, err := getExpiresAt(token)
+			c.config.Token = resp.Msg.Secret
+			err = c.config.parse()
 			if err != nil {
 				c.config.Log.Error("unable to parse token", "error", err)
 				continue
 			}
 			c.Lock()
 			defer c.Unlock()
-			c.config.Token = token
-			c.config.expiresAt = exp
 
 			if c.config.TokenRenewal.PersistTokenFn == nil {
 				return
 			}
 
-			err = c.config.TokenRenewal.PersistTokenFn(token)
+			err = c.config.TokenRenewal.PersistTokenFn(c.config.Token)
 			if err != nil {
 				c.config.Log.Error("unable to persist token", "error", err)
 				continue
