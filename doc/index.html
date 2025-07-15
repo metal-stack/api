@@ -13449,27 +13449,9 @@ for which the methods should be allowed </p></td>
         
       
         <h3 id="metalstack.api.v2.TokenServiceRefreshRequest">TokenServiceRefreshRequest</h3>
-        <p>TokenServiceRefreshRequest is the request payload of a token refresh request</p><p>Permissions, Roles and Expiration duration and all other properties are inherited from the calling token.</p>
+        <p>TokenServiceRefreshRequest is the request payload of a token refresh request</p><p>Permissions, Roles and Expiration duration and all other properties are inherited from the calling token.</p><p>The expiration duration will be calculated from the existing token (exp - iat)</p>
 
         
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>expires</td>
-                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
-                  <td></td>
-                  <td><p>Expires gives the duration since now, after which this token can not be used anymore
-The expiration duration must not exceed the duration of the existing token (exp - iat) </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
 
         
       
