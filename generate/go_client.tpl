@@ -47,7 +47,7 @@ func New(config *DialConfig) (Client, error) {
 		config: config,
 	}
 
-	go c.renewToken()
+	go c.startTokenRenewal()
 
 	return c, nil
 }

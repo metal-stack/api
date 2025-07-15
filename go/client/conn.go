@@ -47,11 +47,6 @@ type (
 	PersistTokenFn func(token string) error
 )
 
-// TODO implement token refresh call based on the distance to expiresAt of the current token.
-// The token must be parsed to known the exp timestamp.
-// Token refresh is either called on interval if given, or on every request a cache is asked.
-// PersistTokenFn is called after a new token was issued.
-
 func (d *DialConfig) HttpClient() *http.Client {
 	transport := http.DefaultTransport
 	if d.Transport != nil {
@@ -84,7 +79,7 @@ func (dc *DialConfig) parse() error {
 	return nil
 }
 
-func (c *client) renewToken() {
+func (c *client) startTokenRenewal() {
 	if c.config.TokenRenewal == nil {
 		return
 	}
@@ -106,14 +101,14 @@ func (c *client) renewToken() {
 				continue
 			}
 
+			c.Lock()
+			defer c.Unlock()
+
 			resp, err := c.Apiv2().Token().Refresh(context.Background(), connect.NewRequest(&api.TokenServiceRefreshRequest{}))
 			if err != nil {
 				c.config.Log.Error("unable to refresh token", "error", err)
 				continue
 			}
-
-			c.Lock()
-			defer c.Unlock()
 
 			c.config.Token = resp.Msg.Secret
 			err = c.config.parse()

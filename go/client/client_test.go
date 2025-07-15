@@ -23,9 +23,12 @@ import (
 )
 
 func Test_Client(t *testing.T) {
-	vs := &mockVersionService{}
-	ts := &mockTokenService{}
-	mux := http.NewServeMux()
+	var (
+		vs  = &mockVersionService{}
+		ts  = &mockTokenService{}
+		mux = http.NewServeMux()
+	)
+
 	mux.Handle(apiv2connect.NewVersionServiceHandler(vs))
 	mux.Handle(apiv2connect.NewTokenServiceHandler(ts))
 	server := httptest.NewTLSServer(mux)
@@ -39,7 +42,6 @@ func Test_Client(t *testing.T) {
 
 	log := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
 
-	server.Client()
 	c, err := client.New(&client.DialConfig{
 		BaseURL:   server.URL,
 		Token:     tokenString,
@@ -77,7 +79,6 @@ func Test_Client(t *testing.T) {
 
 	require.True(t, ts.wasCalled)
 	require.NotEqual(t, tokenString, vs.token, "token must have changed")
-
 }
 
 func generateToken(duration time.Duration) (string, error) {
