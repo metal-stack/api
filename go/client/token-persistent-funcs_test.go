@@ -39,7 +39,12 @@ func TestNewFilesystemTokenPersiter(t *testing.T) {
 	tokenDir, err := os.MkdirTemp("/tmp", "token-")
 	require.NoError(t, err)
 	tokenPath := path.Join(tokenDir, "token")
-	filesystemPersister := client.NewFilesystemTokenPersiter(tokenPath)
+
+	_, err = os.OpenFile(tokenPath, os.O_RDONLY|os.O_CREATE, 0600)
+	require.NoError(t, err)
+
+	filesystemPersister, err := client.NewFilesystemTokenPersiter(tokenPath)
+	require.NoError(t, err)
 
 	c, err := client.New(&client.DialConfig{
 		BaseURL:   server.URL,
@@ -47,7 +52,7 @@ func TestNewFilesystemTokenPersiter(t *testing.T) {
 		Transport: server.Client().Transport,
 		TokenRenewal: &client.TokenRenewal{
 			ReplaceBefore:  100 * time.Millisecond,
-			PersistTokenFn: filesystemPersister.Persist,
+			PersistTokenFn: filesystemPersister,
 		},
 		Log: log,
 	})
