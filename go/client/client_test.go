@@ -5,10 +5,12 @@ import (
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
+	"fmt"
 	"log/slog"
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"strings"
 	"testing"
 	"time"
 
@@ -57,6 +59,7 @@ func Test_Client(t *testing.T) {
 	require.NotNil(t, v)
 	require.Equal(t, "1.0", v.Msg.Version.Version)
 	require.False(t, ts.wasCalled)
+	require.Equal(t, tokenString, vs.token)
 
 	time.Sleep(300 * time.Millisecond)
 	v, err = c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
@@ -64,6 +67,7 @@ func Test_Client(t *testing.T) {
 	require.NotNil(t, v)
 	require.Equal(t, "1.0", v.Msg.Version.Version)
 	require.False(t, ts.wasCalled)
+	require.Equal(t, tokenString, vs.token)
 
 	time.Sleep(1 * time.Second)
 	v, err = c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
@@ -72,6 +76,8 @@ func Test_Client(t *testing.T) {
 	require.Equal(t, "1.0", v.Msg.Version.Version)
 
 	require.True(t, ts.wasCalled)
+	require.NotEqual(t, tokenString, vs.token, "token must have changed")
+
 }
 
 func generateToken(duration time.Duration) (string, error) {
@@ -94,9 +100,18 @@ func generateToken(duration time.Duration) (string, error) {
 }
 
 type mockVersionService struct {
+	token string
 }
 
 func (m *mockVersionService) Get(ctx context.Context, req *connect.Request[apiv2.VersionServiceGetRequest]) (*connect.Response[apiv2.VersionServiceGetResponse], error) {
+	authHeader := req.Header().Get("Authorization")
+	_, token, found := strings.Cut(authHeader, "Bearer ")
+
+	if !found {
+		return nil, fmt.Errorf("unable to extract token from header:%s", authHeader)
+	}
+
+	m.token = token
 	return connect.NewResponse(&apiv2.VersionServiceGetResponse{Version: &apiv2.Version{Version: "1.0"}}), nil
 }
 
@@ -120,7 +135,7 @@ func (m *mockTokenService) List(context.Context, *connect.Request[apiv2.TokenSer
 }
 
 // Refresh implements apiv2connect.TokenServiceHandler.
-func (m *mockTokenService) Refresh(context.Context, *connect.Request[apiv2.TokenServiceRefreshRequest]) (*connect.Response[apiv2.TokenServiceRefreshResponse], error) {
+func (m *mockTokenService) Refresh(ctx context.Context, _ *connect.Request[apiv2.TokenServiceRefreshRequest]) (*connect.Response[apiv2.TokenServiceRefreshResponse], error) {
 	token, err := generateToken(2 * time.Second)
 	if err != nil {
 		return nil, err
