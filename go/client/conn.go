@@ -111,14 +111,16 @@ func (c *client) renewToken() {
 				c.config.Log.Error("unable to refresh token", "error", err)
 				continue
 			}
+
+			c.Lock()
+			defer c.Unlock()
+
 			c.config.Token = resp.Msg.Secret
 			err = c.config.parse()
 			if err != nil {
 				c.config.Log.Error("unable to parse token", "error", err)
 				continue
 			}
-			c.Lock()
-			defer c.Unlock()
 
 			if c.config.TokenRenewal.PersistTokenFn == nil {
 				return
