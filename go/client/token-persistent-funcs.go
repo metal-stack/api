@@ -11,17 +11,17 @@ type (
 	}
 )
 
-func NewFilesystemTokenPersiter(tokenPath string) (PersistTokenFn, error) {
-	fileInfo, err := os.Stat(tokenPath)
+func NewFilesystemTokenPersiter(tokenFile string) (PersistTokenFn, error) {
+	fileInfo, err := os.Stat(tokenFile)
 	if err != nil {
-		return nil, fmt.Errorf("unable to stat tokenpath:%w", err)
+		return nil, fmt.Errorf("unable to stat tokenfile:%w", err)
 	}
 	mode := fileInfo.Mode()
 	if mode&os.ModePerm == os.ModePerm {
-		return nil, fmt.Errorf("tokenpath %s is not writable", tokenPath)
+		return nil, fmt.Errorf("tokenfile %s is not writable", tokenFile)
 	}
 	f := &filesystem{
-		tokenPath: tokenPath,
+		tokenPath: tokenFile,
 	}
 	return f.persist, nil
 }
