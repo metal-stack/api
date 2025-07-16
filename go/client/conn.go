@@ -127,6 +127,7 @@ func (c *client) renewTokenIfNeeded(replaceBefore time.Duration) error {
 	if time.Until(c.config.expiresAt) > replaceBefore {
 		return nil
 	}
+	c.config.Log.Info("call token refresh, current token expires soon", "expires", c.config.expiresAt.String())
 
 	c.Lock()
 	defer c.Unlock()
@@ -150,6 +151,8 @@ func (c *client) renewTokenIfNeeded(replaceBefore time.Duration) error {
 	if err != nil {
 		return fmt.Errorf("unable to persist token %w", err)
 	}
+
+	c.config.Log.Info("token refreshed, new token expires in", "expires", c.config.expiresAt.String())
 	return nil
 }
 
