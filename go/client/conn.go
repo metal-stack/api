@@ -67,6 +67,9 @@ func (d *DialConfig) HttpClient() *http.Client {
 }
 
 func (dc *DialConfig) parse() error {
+	if dc.Token == "" {
+		return nil
+	}
 	parsed, err := jwt.Parse(dc.Token, nil)
 	if err != nil && !errors.Is(err, jwt.ErrTokenUnverifiable) {
 		return fmt.Errorf("unable to parse token:%w", err)
@@ -75,7 +78,9 @@ func (dc *DialConfig) parse() error {
 	if err != nil {
 		return fmt.Errorf("unable to extract expiresAt from token:%w", err)
 	}
-	dc.expiresAt = expiresAt.Time
+	if expiresAt != nil {
+		dc.expiresAt = expiresAt.Time
+	}
 	return nil
 }
 
