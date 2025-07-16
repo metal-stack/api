@@ -97,7 +97,7 @@ func (c *client) startTokenRenewal() {
 		case <-done:
 			return
 		case <-ticker.C:
-			if time.Since(c.config.expiresAt) <= -c.config.TokenRenewal.ReplaceBefore {
+			if time.Until(c.config.expiresAt) > c.config.TokenRenewal.ReplaceBefore {
 				continue
 			}
 
