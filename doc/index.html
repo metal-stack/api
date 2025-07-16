@@ -1315,6 +1315,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.TokenServiceRefreshRequest"><span class="badge">M</span>TokenServiceRefreshRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TokenServiceRefreshResponse"><span class="badge">M</span>TokenServiceRefreshResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.TokenServiceRevokeRequest"><span class="badge">M</span>TokenServiceRevokeRequest</a>
                 </li>
               
@@ -13592,6 +13600,44 @@ for which the methods should be allowed </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.TokenServiceRefreshRequest">TokenServiceRefreshRequest</h3>
+        <p>TokenServiceRefreshRequest is the request payload of a token refresh request</p><p>Permissions, Roles and Expiration duration and all other properties are inherited from the calling token.</p><p>The expiration duration will be calculated from the existing token (exp - iat)</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.api.v2.TokenServiceRefreshResponse">TokenServiceRefreshResponse</h3>
+        <p>TokenServiceRefreshResponse is the response payload of a token refresh request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#metalstack.api.v2.Token">Token</a></td>
+                  <td></td>
+                  <td><p>Token which was refreshed </p></td>
+                </tr>
+              
+                <tr>
+                  <td>secret</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Secret is the body if the jwt token, should be used in api requests as bearer token </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.TokenServiceRevokeRequest">TokenServiceRevokeRequest</h3>
         <p>TokenServiceRevokeRequest is the request payload of a token revoke request</p>
 
@@ -13844,6 +13890,13 @@ for which the methods should be allowed </p></td>
                 <td><a href="#metalstack.api.v2.TokenServiceRevokeRequest">TokenServiceRevokeRequest</a></td>
                 <td><a href="#metalstack.api.v2.TokenServiceRevokeResponse">TokenServiceRevokeResponse</a></td>
                 <td><p>Revoke a token, no further usage is possible afterwards</p></td>
+              </tr>
+            
+              <tr>
+                <td>Refresh</td>
+                <td><a href="#metalstack.api.v2.TokenServiceRefreshRequest">TokenServiceRefreshRequest</a></td>
+                <td><a href="#metalstack.api.v2.TokenServiceRefreshResponse">TokenServiceRefreshResponse</a></td>
+                <td><p>Refresh a token, this will create a new token with the exact same permissions as the calling token contains</p></td>
               </tr>
             
           </tbody>

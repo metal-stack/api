@@ -173,3 +173,15 @@ class TokenServiceGetResponse(_message.Message):
     TOKEN_FIELD_NUMBER: _ClassVar[int]
     token: Token
     def __init__(self, token: _Optional[_Union[Token, _Mapping]] = ...) -> None: ...
+
+class TokenServiceRefreshRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class TokenServiceRefreshResponse(_message.Message):
+    __slots__ = ("token", "secret")
+    TOKEN_FIELD_NUMBER: _ClassVar[int]
+    SECRET_FIELD_NUMBER: _ClassVar[int]
+    token: Token
+    secret: str
+    def __init__(self, token: _Optional[_Union[Token, _Mapping]] = ..., secret: _Optional[str] = ...) -> None: ...
