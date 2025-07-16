@@ -20,6 +20,7 @@ class TokenService(Protocol):
     async def Update(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse: ...
     async def List(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse: ...
     async def Revoke(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse: ...
+    async def Refresh(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse: ...
 
 
 class TokenServiceServer(ConnecpyServer):
@@ -67,6 +68,14 @@ class TokenServiceServer(ConnecpyServer):
                 output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
                 allowed_methods=("POST",),
             ),
+            "Refresh": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse](
+                service_name="TokenService",
+                name="Refresh",
+                function=getattr(service, "Refresh"),
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse,
+                allowed_methods=("POST",),
+            ),
         }
 
     def serviceName(self):
@@ -79,6 +88,7 @@ class TokenServiceSync(Protocol):
     def Update(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceUpdateResponse: ...
     def List(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceListResponse: ...
     def Revoke(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse: ...
+    def Refresh(self, req: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest, ctx: ServiceContext) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse: ...
 
 
 class TokenServiceServerSync(ConnecpyServer):
@@ -124,6 +134,14 @@ class TokenServiceServerSync(ConnecpyServer):
                 function=getattr(service, "Revoke"),
                 input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
                 output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
+                allowed_methods=("POST",),
+            ),
+            "Refresh": Endpoint[metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest, metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse](
+                service_name="TokenService",
+                name="Refresh",
+                function=getattr(service, "Refresh"),
+                input=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest,
+                output=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -219,6 +237,24 @@ class TokenServiceClient(ConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def Refresh(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Refresh",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse,
             method=method,
             **kwargs,
         )
@@ -320,6 +356,26 @@ class AsyncTokenServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def Refresh(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/metalstack.api.v2.TokenService/Refresh",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse,
             method=method,
             session=session,
             **kwargs,
