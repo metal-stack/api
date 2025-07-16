@@ -2,6 +2,8 @@
 package client
 
 import (
+	"sync"
+
 	compress "github.com/klauspost/connect-compress/v2"
 
 {{ range $name, $api := . -}}
@@ -16,7 +18,9 @@ type (
 {{ end }}
 	}
 	client struct {
-		config DialConfig
+		config *DialConfig
+
+		sync.Mutex
 	}
 {{ range $name, $api := . -}}
 	{{ $name | title }} interface {
@@ -34,14 +38,22 @@ type (
 {{ end }}
 )
 
-func New(config DialConfig) Client {
-	return &client{
+func New(config *DialConfig) (Client, error) {
+	err := config.parse()
+	if err != nil {
+		return nil, err
+	}
+	c := &client{
 		config: config,
 	}
+
+	go c.startTokenRenewal()
+
+	return c, nil
 }
 
 {{ range $name, $api := . -}}
-func (c client) {{ $name | title }}() {{ $name | title }} {
+func (c *client) {{ $name | title }}() {{ $name | title }} {
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
 	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(

@@ -40,6 +40,11 @@ class TokenServiceStub(object):
                 request_serializer=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest.SerializeToString,
                 response_deserializer=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse.FromString,
                 _registered_method=True)
+        self.Refresh = channel.unary_unary(
+                '/metalstack.api.v2.TokenService/Refresh',
+                request_serializer=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest.SerializeToString,
+                response_deserializer=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse.FromString,
+                _registered_method=True)
 
 
 class TokenServiceServicer(object):
@@ -81,6 +86,13 @@ class TokenServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Refresh(self, request, context):
+        """Refresh a token, this will create a new token with the exact same permissions as the calling token contains
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TokenServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -108,6 +120,11 @@ def add_TokenServiceServicer_to_server(servicer, server):
                     servicer.Revoke,
                     request_deserializer=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest.FromString,
                     response_serializer=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse.SerializeToString,
+            ),
+            'Refresh': grpc.unary_unary_rpc_method_handler(
+                    servicer.Refresh,
+                    request_deserializer=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest.FromString,
+                    response_serializer=metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -246,6 +263,33 @@ class TokenService(object):
             '/metalstack.api.v2.TokenService/Revoke',
             metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeRequest.SerializeToString,
             metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRevokeResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Refresh(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/metalstack.api.v2.TokenService/Refresh',
+            metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshRequest.SerializeToString,
+            metalstack_dot_api_dot_v2_dot_token__pb2.TokenServiceRefreshResponse.FromString,
             options,
             channel_credentials,
             insecure,
