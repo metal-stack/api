@@ -2,6 +2,8 @@
 package client
 
 import (
+	"sync"
+
 	compress "github.com/klauspost/connect-compress/v2"
 
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
@@ -16,7 +18,9 @@ type (
 		Infrav2() Infrav2
 	}
 	client struct {
-		config DialConfig
+		config *DialConfig
+
+		sync.Mutex
 	}
 	Adminv2 interface {
 		Filesystem() adminv2connect.FilesystemServiceClient
@@ -83,13 +87,21 @@ type (
 	}
 )
 
-func New(config DialConfig) Client {
-	return &client{
+func New(config *DialConfig) (Client, error) {
+	err := config.parse()
+	if err != nil {
+		return nil, err
+	}
+	c := &client{
 		config: config,
 	}
+
+	go c.startTokenRenewal()
+
+	return c, nil
 }
 
-func (c client) Adminv2() Adminv2 {
+func (c *client) Adminv2() Adminv2 {
 	a := &adminv2{
 		filesystemservice: adminv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
@@ -160,7 +172,7 @@ func (c *adminv2) Token() adminv2connect.TokenServiceClient {
 	return c.tokenservice
 }
 
-func (c client) Apiv2() Apiv2 {
+func (c *client) Apiv2() Apiv2 {
 	a := &apiv2{
 		filesystemservice: apiv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
@@ -271,7 +283,7 @@ func (c *apiv2) Version() apiv2connect.VersionServiceClient {
 	return c.versionservice
 }
 
-func (c client) Infrav2() Infrav2 {
+func (c *client) Infrav2() Infrav2 {
 	a := &infrav2{
 		bmcservice: infrav2connect.NewBMCServiceClient(
 			c.config.HttpClient(),

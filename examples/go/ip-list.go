@@ -16,10 +16,13 @@ func main() {
 	project := os.Getenv("PROJECT_ID")
 	baseurl := os.Getenv("METAL_APISERVER_URL")
 
-	c := client.New(client.DialConfig{
+	c, err := client.New(&client.DialConfig{
 		BaseURL: baseurl,
 		Token:   token,
 	})
+	if err != nil {
+		panic(err)
+	}
 
 	ctx := context.Background()
 	resp, err := c.Apiv2().IP().List(ctx, connect.NewRequest(&apiv2.IPServiceListRequest{
