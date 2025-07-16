@@ -15,7 +15,7 @@ import (
 	api "github.com/metal-stack/api/go/metalstack/api/v2"
 )
 
-const defaultReplaceBefore = time.Hour
+const tokenRenewChecksDuringLifetime = 4
 
 type (
 	// DialConfig is the configuration to create a api-server connection
@@ -33,12 +33,10 @@ type (
 		Log *slog.Logger
 
 		expiresAt time.Time
+		issuedAt  time.Time
 	}
 
 	TokenRenewal struct {
-		// ReplaceBefore replaces the token with a new one if existing token only has this duration left until expiresAt
-		// defaults to 1 hour if not specified
-		ReplaceBefore time.Duration
 		// PersistTokenFn is called to persist the newly fetched token
 		// token will not be persisted if not specified
 		PersistTokenFn PersistTokenFn
@@ -51,10 +49,6 @@ func (d *DialConfig) HttpClient() *http.Client {
 	transport := http.DefaultTransport
 	if d.Transport != nil {
 		transport = d.Transport
-	}
-
-	if d.TokenRenewal != nil && d.TokenRenewal.ReplaceBefore == 0 {
-		d.TokenRenewal.ReplaceBefore = defaultReplaceBefore
 	}
 
 	return &http.Client{
@@ -81,6 +75,17 @@ func (dc *DialConfig) parse() error {
 	if expiresAt != nil {
 		dc.expiresAt = expiresAt.Time
 	}
+
+	issuedAt, err := parsed.Claims.GetIssuedAt()
+	if err != nil {
+		return fmt.Errorf("unable to extract issuedAt from token:%w", err)
+	}
+	if issuedAt != nil {
+		dc.issuedAt = issuedAt.Time
+	}
+	if dc.issuedAt.IsZero() {
+		dc.issuedAt = time.Now()
+	}
 	return nil
 }
 
@@ -94,7 +99,15 @@ func (c *client) startTokenRenewal() {
 	if c.config.Log == nil {
 		c.config.Log = slog.Default()
 	}
-	ticker := time.NewTicker(c.config.TokenRenewal.ReplaceBefore / 2)
+
+	replaceBefore := c.config.expiresAt.Sub(c.config.issuedAt) / tokenRenewChecksDuringLifetime
+
+	err := c.renewTokenIfNeeded(replaceBefore)
+	if err != nil {
+		c.config.Log.Error("unable to renew token", "error", err)
+	}
+
+	ticker := time.NewTicker(replaceBefore)
 	defer ticker.Stop()
 	done := make(chan bool)
 	for {
@@ -102,37 +115,42 @@ func (c *client) startTokenRenewal() {
 		case <-done:
 			return
 		case <-ticker.C:
-			if time.Until(c.config.expiresAt) > c.config.TokenRenewal.ReplaceBefore {
-				continue
-			}
-
-			c.Lock()
-			defer c.Unlock()
-
-			resp, err := c.Apiv2().Token().Refresh(context.Background(), connect.NewRequest(&api.TokenServiceRefreshRequest{}))
+			err := c.renewTokenIfNeeded(replaceBefore)
 			if err != nil {
-				c.config.Log.Error("unable to refresh token", "error", err)
-				continue
-			}
-
-			c.config.Token = resp.Msg.Secret
-			err = c.config.parse()
-			if err != nil {
-				c.config.Log.Error("unable to parse token", "error", err)
-				continue
-			}
-
-			if c.config.TokenRenewal.PersistTokenFn == nil {
-				return
-			}
-
-			err = c.config.TokenRenewal.PersistTokenFn(c.config.Token)
-			if err != nil {
-				c.config.Log.Error("unable to persist token", "error", err)
-				continue
+				c.config.Log.Error("unable to renew token", "error", err)
 			}
 		}
 	}
+}
+
+func (c *client) renewTokenIfNeeded(replaceBefore time.Duration) error {
+	if time.Until(c.config.expiresAt) > replaceBefore {
+		return nil
+	}
+
+	c.Lock()
+	defer c.Unlock()
+
+	resp, err := c.Apiv2().Token().Refresh(context.Background(), connect.NewRequest(&api.TokenServiceRefreshRequest{}))
+	if err != nil {
+		return fmt.Errorf("unable to refresh token %w", err)
+	}
+
+	c.config.Token = resp.Msg.Secret
+	err = c.config.parse()
+	if err != nil {
+		return fmt.Errorf("unable to parse token %w", err)
+	}
+
+	if c.config.TokenRenewal.PersistTokenFn == nil {
+		return nil
+	}
+
+	err = c.config.TokenRenewal.PersistTokenFn(c.config.Token)
+	if err != nil {
+		return fmt.Errorf("unable to persist token %w", err)
+	}
+	return nil
 }
 
 type AddHeaderTransport struct {
