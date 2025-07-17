@@ -47,7 +47,6 @@ func Test_Client(t *testing.T) {
 		Token:     tokenString,
 		Transport: server.Client().Transport,
 		TokenRenewal: &client.TokenRenewal{
-			ReplaceBefore: 100 * time.Millisecond,
 			PersistTokenFn: func(token string) error {
 				t.Log("token persisted:", token)
 				return nil
