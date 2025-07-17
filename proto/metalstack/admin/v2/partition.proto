@@ -39,8 +39,13 @@ message PartitionServiceCreateRequest {
 
 // PartitionServiceUpdateRequest is the request payload for a partition update request
 message PartitionServiceUpdateRequest {
+  // ID of the partition to update
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Partition the partition
-  metalstack.api.v2.Partition partition = 1;
+  metalstack.api.v2.Partition partition = 2;
 }
 
 // PartitionServiceDeleteRequest is the request payload for a partition delete request

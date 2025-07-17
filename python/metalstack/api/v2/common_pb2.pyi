@@ -85,6 +85,8 @@ INFRA_ROLES_FIELD_NUMBER: _ClassVar[int]
 infra_roles: _descriptor.FieldDescriptor
 ENUM_STRING_VALUE_FIELD_NUMBER: _ClassVar[int]
 enum_string_value: _descriptor.FieldDescriptor
+TREAT_AS_ID_FIELD_NUMBER: _ClassVar[int]
+treat_as_id: _descriptor.FieldDescriptor
 
 class Paging(_message.Message):
     __slots__ = ("page", "count")

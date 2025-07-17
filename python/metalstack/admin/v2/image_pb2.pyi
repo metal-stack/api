@@ -22,10 +22,12 @@ class ImageServiceCreateResponse(_message.Message):
     def __init__(self, image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ...) -> None: ...
 
 class ImageServiceUpdateRequest(_message.Message):
-    __slots__ = ("image",)
+    __slots__ = ("id", "image")
+    ID_FIELD_NUMBER: _ClassVar[int]
     IMAGE_FIELD_NUMBER: _ClassVar[int]
+    id: str
     image: _image_pb2.Image
-    def __init__(self, image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ...) -> None: ...
 
 class ImageServiceUpdateResponse(_message.Message):
     __slots__ = ("image",)

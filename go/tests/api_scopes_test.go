@@ -115,6 +115,7 @@ func Test_APIScopes(t *testing.T) {
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Update\" can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.ProjectRole ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Delete\" can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.Visibility ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Charge\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
+		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/AlsoUpdate\" have id field and one or more treat_as_id annotation WrongProjectServiceAlsoUpdateRequest"),
 	)
 
 	require.Equal(t, err, errs)
@@ -174,6 +175,56 @@ func validateProto(root string) error {
 
 				// Sort all to have stable results
 				slices.Sort(allScopeNames)
+
+				for _, mt := range fd.GetMessageType() {
+					if mt.GetName() != method.GetInputType() {
+						continue
+					}
+					var (
+						isUpdateRequest bool
+						updateRequest   string
+					)
+					if strings.Contains(mt.GetName(), "UpdateRequest") {
+						var (
+							treatAsIdCount = 0
+							hasIdField     bool
+						)
+						for _, field := range mt.GetField() {
+							if field.GetName() == "id" {
+								isUpdateRequest = true
+								hasIdField = true
+							}
+
+							opts := field.Options
+							if opts != nil {
+								for _, opt := range opts.UninterpretedOption {
+									for _, namePart := range opt.Name {
+										if !*namePart.IsExtension {
+											continue
+										}
+										if *namePart.NamePart != "treat_as_id" {
+											continue
+										}
+										if *opt.IdentifierValue == "true" {
+											isUpdateRequest = true
+											treatAsIdCount++
+										}
+									}
+								}
+							}
+						}
+						updateRequest = mt.GetName()
+						if treatAsIdCount > 1 {
+							errs = append(errs, fmt.Errorf("api service method: %q have more than one treat_as_id annotation %s", methodName, updateRequest))
+						}
+						if treatAsIdCount > 0 && hasIdField {
+							errs = append(errs, fmt.Errorf("api service method: %q have id field and one or more treat_as_id annotation %s", methodName, updateRequest))
+						}
+						if !isUpdateRequest {
+							errs = append(errs, fmt.Errorf("api service method: %q does not have a id field or annotated another field with treat_as_id, request payload %s", methodName, updateRequest))
+						}
+					}
+				}
 
 				for _, name := range scopeKeys {
 					s := scopes[name]

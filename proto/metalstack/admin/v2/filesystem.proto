@@ -39,8 +39,13 @@ message FilesystemServiceCreateResponse {
 
 // FilesystemServiceUpdateRequest
 message FilesystemServiceUpdateRequest {
+  // ID of the filesystem to update
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // FilesystemLayout the filesystemlayout
-  metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
+  metalstack.api.v2.FilesystemLayout filesystem_layout = 2;
 }
 
 // FilesystemServiceUpdateResponse
