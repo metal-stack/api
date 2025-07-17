@@ -300,7 +300,8 @@ type MethodPermission struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Subject maybe either the project or the tenant
 	// for which the methods should be allowed
-	Subject string `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	// if left empty this methodpermission is used to define a permission for self and public methods
+	Subject *string `protobuf:"bytes,1,opt,name=subject,proto3,oneof" json:"subject,omitempty"`
 	// Methods which should be accessible
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -338,8 +339,8 @@ func (*MethodPermission) Descriptor() ([]byte, []int) {
 }
 
 func (x *MethodPermission) GetSubject() string {
-	if x != nil {
-		return x.Subject
+	if x != nil && x.Subject != nil {
+		return *x.Subject
 	}
 	return ""
 }
@@ -940,11 +941,13 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x10TenantRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x123\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleR\x05value:\x028\x01B\r\n" +
-	"\v_admin_role\"]\n" +
-	"\x10MethodPermission\x12$\n" +
+	"\v_admin_role\"n\n" +
+	"\x10MethodPermission\x12)\n" +
 	"\asubject\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x02R\asubject\x12#\n" +
-	"\amethods\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\amethods\"d\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x02H\x00R\asubject\x88\x01\x01\x12#\n" +
+	"\amethods\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\amethodsB\n" +
+	"\n" +
+	"\b_subject\"d\n" +
 	"\x1aTokenServiceCreateResponse\x12.\n" +
 	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n" +
 	"\x06secret\x18\x02 \x01(\tR\x06secret\"\x19\n" +
@@ -1094,6 +1097,7 @@ func file_metalstack_api_v2_token_proto_init() {
 	file_metalstack_api_v2_common_proto_init()
 	file_metalstack_api_v2_token_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_token_proto_msgTypes[1].OneofWrappers = []any{}
+	file_metalstack_api_v2_token_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_token_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
