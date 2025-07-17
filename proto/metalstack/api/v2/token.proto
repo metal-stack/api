@@ -129,7 +129,8 @@ message TokenServiceCreateRequest {
 message MethodPermission {
   // Subject maybe either the project or the tenant
   // for which the methods should be allowed
-  string subject = 1 [(buf.validate.field).string = {
+  // if left empty this methodpermission is used to define a permission for self and public methods
+  optional string subject = 1 [(buf.validate.field).string = {
     min_len: 2
     max_len: 256
   }];
