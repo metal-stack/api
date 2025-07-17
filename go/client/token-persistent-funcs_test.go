@@ -51,7 +51,6 @@ func TestNewFilesystemTokenPersiter(t *testing.T) {
 		Token:     tokenString,
 		Transport: server.Client().Transport,
 		TokenRenewal: &client.TokenRenewal{
-			ReplaceBefore:  100 * time.Millisecond,
 			PersistTokenFn: filesystemPersister,
 		},
 		Log: log,
