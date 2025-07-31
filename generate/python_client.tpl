@@ -11,6 +11,32 @@ from metalstack.{{ $name | trimSuffix "v2" }}.v2 import {{ $svc | trimSuffix "Se
 {{ end }}
 {{ end }}
 
+class Driver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+{{ range $name, $api := . }}
+    def {{ $name | trimSuffix "v2" | lower }}(self):
+        return {{ $name | trimSuffix "v2" | title }}Driver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+{{ end }}
+
+{{ range $name, $api := . -}}
+
+class {{ $name | trimSuffix "v2" | title }}Driver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+
+{{ range $svc := $api.Services }}
+    @contextmanager
+    def {{ $svc | trimSuffix "Service" | lower }}(self):
+        with {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy.{{ $svc }}Client(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+{{ end }}
+{{ end }}
+
 class ClientWrapper:
     def __init__(self, client, token):
         self._client = client
@@ -27,20 +53,3 @@ class ClientWrapper:
                 return attr(*args, **kwargs)
             return wrapper
         return attr
-
-{{ range $name, $api := . -}}
-
-class {{ $name | trimSuffix "v2" | title }}Driver:
-    def __init__(self, baseurl: str, token: str, timeout: int = 10):
-        self.baseurl = baseurl
-        self.token = token
-        self.timeout = timeout
-
-{{ range $svc := $api.Services }}
-    @contextmanager
-    def {{ $svc | trimSuffix "Service" | lower }}(self):
-        with {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy.{{ $svc }}Client(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-{{ end }}
-{{ end }}

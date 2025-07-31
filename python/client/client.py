@@ -53,6 +53,155 @@ from metalstack.infra.v2 import bmc_connecpy as infra_bmc_connecpy
 
 
 
+class Driver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+
+    def admin(self):
+        return AdminDriver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+
+    def api(self):
+        return ApiDriver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+
+    def infra(self):
+        return InfraDriver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+
+
+class AdminDriver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+
+
+    @contextmanager
+    def filesystem(self):
+        with admin_filesystem_connecpy.FilesystemServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def image(self):
+        with admin_image_connecpy.ImageServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def ip(self):
+        with admin_ip_connecpy.IPServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def network(self):
+        with admin_network_connecpy.NetworkServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def partition(self):
+        with admin_partition_connecpy.PartitionServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def size(self):
+        with admin_size_connecpy.SizeServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def tenant(self):
+        with admin_tenant_connecpy.TenantServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def token(self):
+        with admin_token_connecpy.TokenServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+class ApiDriver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+
+
+    @contextmanager
+    def filesystem(self):
+        with api_filesystem_connecpy.FilesystemServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def health(self):
+        with api_health_connecpy.HealthServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def image(self):
+        with api_image_connecpy.ImageServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def ip(self):
+        with api_ip_connecpy.IPServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def method(self):
+        with api_method_connecpy.MethodServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def network(self):
+        with api_network_connecpy.NetworkServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def partition(self):
+        with api_partition_connecpy.PartitionServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def project(self):
+        with api_project_connecpy.ProjectServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def size(self):
+        with api_size_connecpy.SizeServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def tenant(self):
+        with api_tenant_connecpy.TenantServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def token(self):
+        with api_token_connecpy.TokenServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def user(self):
+        with api_user_connecpy.UserServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+    @contextmanager
+    def version(self):
+        with api_version_connecpy.VersionServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+class InfraDriver:
+    def __init__(self, baseurl: str, token: str, timeout: int = 10):
+        self.baseurl = baseurl
+        self.token = token
+        self.timeout = timeout
+
+
+    @contextmanager
+    def bmc(self):
+        with infra_bmc_connecpy.BMCServiceClient(self.baseurl, timeout=self.timeout) as client:
+           yield ClientWrapper(client, self.token)
+
+
+
 class ClientWrapper:
     def __init__(self, client, token):
         self._client = client
@@ -69,158 +218,3 @@ class ClientWrapper:
                 return attr(*args, **kwargs)
             return wrapper
         return attr
-
-class AdminDriver:
-    def __init__(self, baseurl: str, token: str, timeout: int = 10):
-        self.baseurl = baseurl
-        self.token = token
-        self.timeout = timeout
-
-
-    @contextmanager
-    def filesystem(self):
-        with admin_filesystem_connecpy.FilesystemServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def image(self):
-        with admin_image_connecpy.ImageServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def ip(self):
-        with admin_ip_connecpy.IPServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def network(self):
-        with admin_network_connecpy.NetworkServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def partition(self):
-        with admin_partition_connecpy.PartitionServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def size(self):
-        with admin_size_connecpy.SizeServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def tenant(self):
-        with admin_tenant_connecpy.TenantServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def token(self):
-        with admin_token_connecpy.TokenServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-class ApiDriver:
-    def __init__(self, baseurl: str, token: str, timeout: int = 10):
-        self.baseurl = baseurl
-        self.token = token
-        self.timeout = timeout
-
-
-    @contextmanager
-    def filesystem(self):
-        with api_filesystem_connecpy.FilesystemServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def health(self):
-        with api_health_connecpy.HealthServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def image(self):
-        with api_image_connecpy.ImageServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def ip(self):
-        with api_ip_connecpy.IPServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def method(self):
-        with api_method_connecpy.MethodServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def network(self):
-        with api_network_connecpy.NetworkServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def partition(self):
-        with api_partition_connecpy.PartitionServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def project(self):
-        with api_project_connecpy.ProjectServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def size(self):
-        with api_size_connecpy.SizeServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def tenant(self):
-        with api_tenant_connecpy.TenantServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def token(self):
-        with api_token_connecpy.TokenServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def user(self):
-        with api_user_connecpy.UserServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-    @contextmanager
-    def version(self):
-        with api_version_connecpy.VersionServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-class InfraDriver:
-    def __init__(self, baseurl: str, token: str, timeout: int = 10):
-        self.baseurl = baseurl
-        self.token = token
-        self.timeout = timeout
-
-
-    @contextmanager
-    def bmc(self):
-        with infra_bmc_connecpy.BMCServiceClient(self.baseurl, timeout=self.timeout) as client:
-           yield ClientWrapper(client, self.token)
-
-
-
