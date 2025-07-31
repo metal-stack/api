@@ -17,6 +17,7 @@ class ClientWrapper:
         attr = getattr(self._client, name)
         if callable(attr):
             def wrapper(*args, **kwargs):
+                kwargs.setdefault("ctx", ClientContext())
                 headers = kwargs.get("headers", {})
                 headers.setdefault("Authorization", "Bearer " + self._token)
                 kwargs["headers"] = headers
@@ -40,22 +41,17 @@ class ServiceDriver:
         with network_connecpy.NetworkServiceClient(self.baseurl, timeout=self.timeout) as client:
             yield ClientWrapper(client, self.token)
 
-    def list_ips(self, project: str):
-        try:
-            with self.ip() as client:
-                response = client.List(
-                    ctx=ClientContext(),
-                    request=ip_pb2.IPServiceListRequest(project=project),
-                )
-                return response.ips
-        except ConnecpyServerException as e:
-            print("Error listing IPs:", e.code, e.message)
-            return []
-
 
 # Example usage
 def main():
     driver = ServiceDriver(baseurl="https://example.com", token="your_token", timeout=10)
-    ips = driver.list_ips(project="project_id")
-    for ip in ips:
-        print(ip.ip, ip.name, ip.project, ip.network)
+    try:
+        with driver.ip() as client:
+            response = client.List(
+                request=ip_pb2.IPServiceListRequest(project="project_id"),
+            )
+            for ip in response:
+                print(ip.ip, ip.name, ip.project, ip.network)
+    except ConnecpyServerException as e:
+        print("Error listing IPs:", e.code, e.message)
+        return []
