@@ -5,6 +5,8 @@ from connecpy.exceptions import ConnecpyServerException
 import os
 
 from metalstack.api.v2 import ip_pb2, ip_connecpy
+from client import Driver
+
 
 timeout_s = 5
 baseurl = os.environ['METAL_APISERVER_URL']
@@ -12,6 +14,7 @@ token = os.environ['API_TOKEN']
 project = os.environ['PROJECT_ID']
 
 def main():
+    # Usage Sample without driver
     with ip_connecpy.IPServiceClient(baseurl, timeout=timeout_s) as client:
         try:
             response = client.List(
@@ -26,6 +29,18 @@ def main():
         except ConnecpyServerException as e:
             print(e.code, e.message, e.to_dict())
 
+
+    # Usage Sample with driver
+    driver = Driver(baseurl=baseurl, token=token, timeout=timeout_s)
+    with driver.api().ip() as client:
+        try:
+            response = client.List(
+                request=ip_pb2.IPServiceListRequest(project="project_id"),
+            )
+            for ip in response:
+                print(ip.ip, ip.name, ip.project, ip.network)
+        except ConnecpyServerException as e:
+            print(e.code, e.message, e.to_dict())
 
 if __name__ == "__main__":
     main()
