@@ -1,5 +1,4 @@
 from contextlib import contextmanager
-from typing import Optional
 
 from metalstack.api.v2 import ip_pb2, ip_connecpy, network_pb2, network_connecpy
 
