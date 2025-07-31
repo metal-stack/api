@@ -1,12 +1,15 @@
+# Code generated generate_clients.go. DO NOT EDIT.
+
 from contextlib import contextmanager
 from connecpy.context import ClientContext
 from connecpy.exceptions import ConnecpyServerException
 
-from metalstack.api.v2 import ip_pb2, ip_connecpy
-from metalstack.api.v2 import network_pb2, network_connecpy
-
-
-
+{{ range $name, $api := . -}}
+{{ range $svc := $api.Services -}}
+from metalstack.{{ $name | trimSuffix "v2" }}.v2 import {{ $svc | trimSuffix "Service" | lower }}_pb2 as {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_pb2
+from metalstack.{{ $name | trimSuffix "v2" }}.v2 import {{ $svc | trimSuffix "Service" | lower }}_connecpy as {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy
+{{ end }}
+{{ end }}
 
 class ClientWrapper:
     def __init__(self, client, token):
@@ -25,33 +28,19 @@ class ClientWrapper:
             return wrapper
         return attr
 
-class ServiceDriver:
+{{ range $name, $api := . -}}
+
+class {{ $name | trimSuffix "v2" | title }}Driver:
     def __init__(self, baseurl: str, token: str, timeout: int = 10):
         self.baseurl = baseurl
         self.token = token
         self.timeout = timeout
 
+{{ range $svc := $api.Services }}
     @contextmanager
-    def ip(self):
-        with ip_connecpy.IPServiceClient(self.baseurl, timeout=self.timeout) as client:
+    def {{ $svc | trimSuffix "Service" | lower }}(self):
+        with {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy.{{ $svc }}Client(self.baseurl, timeout=self.timeout) as client:
            yield ClientWrapper(client, self.token)
 
-    @contextmanager
-    def network(self):
-        with network_connecpy.NetworkServiceClient(self.baseurl, timeout=self.timeout) as client:
-            yield ClientWrapper(client, self.token)
-
-
-# Example usage
-def main():
-    driver = ServiceDriver(baseurl="https://example.com", token="your_token", timeout=10)
-    try:
-        with driver.ip() as client:
-            response = client.List(
-                request=ip_pb2.IPServiceListRequest(project="project_id"),
-            )
-            for ip in response:
-                print(ip.ip, ip.name, ip.project, ip.network)
-    except ConnecpyServerException as e:
-        print("Error listing IPs:", e.code, e.message)
-        return []
+{{ end }}
+{{ end }}
