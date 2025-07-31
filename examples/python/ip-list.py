@@ -5,7 +5,7 @@ from connecpy.exceptions import ConnecpyServerException
 import os
 
 from metalstack.api.v2 import network_pb2, ip_pb2, ip_connecpy
-from client import client as cli
+from client import client as apiclient
 
 
 timeout_s = 5
@@ -32,9 +32,10 @@ def main():
 
 
     # Usage Sample with driver
+    driver = apiclient.Driver(baseurl=baseurl, token=token, timeout=timeout_s)
+    
     print()
     print("ips with driver")
-    driver = cli.Driver(baseurl=baseurl, token=token, timeout=timeout_s)
     with driver.api().ip() as client:
         try:
             response = client.List(
