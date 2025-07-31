@@ -4,52 +4,30 @@ from contextlib import contextmanager
 from connecpy.context import ClientContext
 from connecpy.exceptions import ConnecpyServerException
 
-from metalstack.admin.v2 import filesystem_pb2 as admin_filesystem_pb2
-from metalstack.admin.v2 import filesystem_connecpy as admin_filesystem_connecpy
-from metalstack.admin.v2 import image_pb2 as admin_image_pb2
-from metalstack.admin.v2 import image_connecpy as admin_image_connecpy
-from metalstack.admin.v2 import ip_pb2 as admin_ip_pb2
-from metalstack.admin.v2 import ip_connecpy as admin_ip_connecpy
-from metalstack.admin.v2 import network_pb2 as admin_network_pb2
-from metalstack.admin.v2 import network_connecpy as admin_network_connecpy
-from metalstack.admin.v2 import partition_pb2 as admin_partition_pb2
-from metalstack.admin.v2 import partition_connecpy as admin_partition_connecpy
-from metalstack.admin.v2 import size_pb2 as admin_size_pb2
-from metalstack.admin.v2 import size_connecpy as admin_size_connecpy
-from metalstack.admin.v2 import tenant_pb2 as admin_tenant_pb2
-from metalstack.admin.v2 import tenant_connecpy as admin_tenant_connecpy
-from metalstack.admin.v2 import token_pb2 as admin_token_pb2
-from metalstack.admin.v2 import token_connecpy as admin_token_connecpy
+import metalstack.admin.v2.filesystem_connecpy as admin_filesystem_connecpy
+import metalstack.admin.v2.image_connecpy as admin_image_connecpy
+import metalstack.admin.v2.ip_connecpy as admin_ip_connecpy
+import metalstack.admin.v2.network_connecpy as admin_network_connecpy
+import metalstack.admin.v2.partition_connecpy as admin_partition_connecpy
+import metalstack.admin.v2.size_connecpy as admin_size_connecpy
+import metalstack.admin.v2.tenant_connecpy as admin_tenant_connecpy
+import metalstack.admin.v2.token_connecpy as admin_token_connecpy
 
-from metalstack.api.v2 import filesystem_pb2 as api_filesystem_pb2
-from metalstack.api.v2 import filesystem_connecpy as api_filesystem_connecpy
-from metalstack.api.v2 import health_pb2 as api_health_pb2
-from metalstack.api.v2 import health_connecpy as api_health_connecpy
-from metalstack.api.v2 import image_pb2 as api_image_pb2
-from metalstack.api.v2 import image_connecpy as api_image_connecpy
-from metalstack.api.v2 import ip_pb2 as api_ip_pb2
-from metalstack.api.v2 import ip_connecpy as api_ip_connecpy
-from metalstack.api.v2 import method_pb2 as api_method_pb2
-from metalstack.api.v2 import method_connecpy as api_method_connecpy
-from metalstack.api.v2 import network_pb2 as api_network_pb2
-from metalstack.api.v2 import network_connecpy as api_network_connecpy
-from metalstack.api.v2 import partition_pb2 as api_partition_pb2
-from metalstack.api.v2 import partition_connecpy as api_partition_connecpy
-from metalstack.api.v2 import project_pb2 as api_project_pb2
-from metalstack.api.v2 import project_connecpy as api_project_connecpy
-from metalstack.api.v2 import size_pb2 as api_size_pb2
-from metalstack.api.v2 import size_connecpy as api_size_connecpy
-from metalstack.api.v2 import tenant_pb2 as api_tenant_pb2
-from metalstack.api.v2 import tenant_connecpy as api_tenant_connecpy
-from metalstack.api.v2 import token_pb2 as api_token_pb2
-from metalstack.api.v2 import token_connecpy as api_token_connecpy
-from metalstack.api.v2 import user_pb2 as api_user_pb2
-from metalstack.api.v2 import user_connecpy as api_user_connecpy
-from metalstack.api.v2 import version_pb2 as api_version_pb2
-from metalstack.api.v2 import version_connecpy as api_version_connecpy
+import metalstack.api.v2.filesystem_connecpy as api_filesystem_connecpy
+import metalstack.api.v2.health_connecpy as api_health_connecpy
+import metalstack.api.v2.image_connecpy as api_image_connecpy
+import metalstack.api.v2.ip_connecpy as api_ip_connecpy
+import metalstack.api.v2.method_connecpy as api_method_connecpy
+import metalstack.api.v2.network_connecpy as api_network_connecpy
+import metalstack.api.v2.partition_connecpy as api_partition_connecpy
+import metalstack.api.v2.project_connecpy as api_project_connecpy
+import metalstack.api.v2.size_connecpy as api_size_connecpy
+import metalstack.api.v2.tenant_connecpy as api_tenant_connecpy
+import metalstack.api.v2.token_connecpy as api_token_connecpy
+import metalstack.api.v2.user_connecpy as api_user_connecpy
+import metalstack.api.v2.version_connecpy as api_version_connecpy
 
-from metalstack.infra.v2 import bmc_pb2 as infra_bmc_pb2
-from metalstack.infra.v2 import bmc_connecpy as infra_bmc_connecpy
+import metalstack.infra.v2.bmc_connecpy as infra_bmc_connecpy
 
 
 

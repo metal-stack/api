@@ -6,8 +6,7 @@ from connecpy.exceptions import ConnecpyServerException
 
 {{ range $name, $api := . -}}
 {{ range $svc := $api.Services -}}
-from metalstack.{{ $name | trimSuffix "v2" }}.v2 import {{ $svc | trimSuffix "Service" | lower }}_pb2 as {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_pb2
-from metalstack.{{ $name | trimSuffix "v2" }}.v2 import {{ $svc | trimSuffix "Service" | lower }}_connecpy as {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy
+import metalstack.{{ $name | trimSuffix "v2" }}.v2.{{ $svc | trimSuffix "Service" | lower }}_connecpy as {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy
 {{ end }}
 {{ end }}
 
