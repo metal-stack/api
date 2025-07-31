@@ -4,7 +4,7 @@ from connecpy.context import ClientContext
 from connecpy.exceptions import ConnecpyServerException
 import os
 
-from metalstack.api.v2 import ip_pb2, ip_connecpy
+from metalstack.api.v2 import network_pb2, ip_pb2, ip_connecpy
 from client import client as cli
 
 
@@ -15,6 +15,7 @@ project = os.environ['PROJECT_ID']
 
 def main():
     # Usage Sample without driver
+    print("ips with direct client")
     with ip_connecpy.IPServiceClient(baseurl, timeout=timeout_s) as client:
         try:
             response = client.List(
@@ -31,6 +32,8 @@ def main():
 
 
     # Usage Sample with driver
+    print()
+    print("ips with driver")
     driver = cli.Driver(baseurl=baseurl, token=token, timeout=timeout_s)
     with driver.api().ip() as client:
         try:
@@ -42,5 +45,16 @@ def main():
         except ConnecpyServerException as e:
             print(e.code, e.message, e.to_dict())
 
+    print()
+    print("networks with admin driver")
+    with driver.admin().network() as client:
+        try:
+            response = client.List(
+                request=network_pb2.NetworkServiceListRequest(),
+            )
+            for nw in response.networks:
+                print(nw.id, nw.name, nw.project)
+        except ConnecpyServerException as e:
+            print(e.code, e.message, e.to_dict())
 if __name__ == "__main__":
     main()
