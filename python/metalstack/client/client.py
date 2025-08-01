@@ -2,7 +2,6 @@
 
 from contextlib import contextmanager
 from connecpy.context import ClientContext
-from connecpy.exceptions import ConnecpyServerException
 
 import metalstack.admin.v2.filesystem_connecpy as admin_filesystem_connecpy
 import metalstack.admin.v2.image_connecpy as admin_image_connecpy

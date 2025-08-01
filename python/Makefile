@@ -1,6 +1,8 @@
 .PHONY: clean
 clean:
-	rm -rf metalstack
+	rm -rf metalstack/admin
+	rm -rf metalstack/api
+	rm -rf metalstack/infra
 
 .PHONY: generate
 generate:

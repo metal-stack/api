@@ -73,7 +73,7 @@ func main() {
 		panic(err)
 	}
 
-	err = writePythonTemplate("../python/client/client.py", pythonClientTpl, svcs)
+	err = writePythonTemplate("../python/metalstack/client/client.py", pythonClientTpl, svcs)
 	if err != nil {
 		panic(err)
 	}
