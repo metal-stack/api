@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from metalstack.api.v2 import methods_pb2 as metalstack_dot_api_dot_v2_dot_methods__pb2
+from metalstack.api.v2 import method_pb2 as metalstack_dot_api_dot_v2_dot_method__pb2
 
 
 class MethodServiceStub(object):
@@ -18,13 +18,13 @@ class MethodServiceStub(object):
         """
         self.List = channel.unary_unary(
                 '/metalstack.api.v2.MethodService/List',
-                request_serializer=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest.SerializeToString,
-                response_deserializer=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse.FromString,
+                request_serializer=metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceListRequest.SerializeToString,
+                response_deserializer=metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceListResponse.FromString,
                 _registered_method=True)
         self.TokenScopedList = channel.unary_unary(
                 '/metalstack.api.v2.MethodService/TokenScopedList',
-                request_serializer=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest.SerializeToString,
-                response_deserializer=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse.FromString,
+                request_serializer=metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceTokenScopedListRequest.SerializeToString,
+                response_deserializer=metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceTokenScopedListResponse.FromString,
                 _registered_method=True)
 
 
@@ -52,13 +52,13 @@ def add_MethodServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'List': grpc.unary_unary_rpc_method_handler(
                     servicer.List,
-                    request_deserializer=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest.FromString,
-                    response_serializer=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse.SerializeToString,
+                    request_deserializer=metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceListRequest.FromString,
+                    response_serializer=metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceListResponse.SerializeToString,
             ),
             'TokenScopedList': grpc.unary_unary_rpc_method_handler(
                     servicer.TokenScopedList,
-                    request_deserializer=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest.FromString,
-                    response_serializer=metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse.SerializeToString,
+                    request_deserializer=metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceTokenScopedListRequest.FromString,
+                    response_serializer=metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceTokenScopedListResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -88,8 +88,8 @@ class MethodService(object):
             request,
             target,
             '/metalstack.api.v2.MethodService/List',
-            metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListRequest.SerializeToString,
-            metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceListResponse.FromString,
+            metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceListRequest.SerializeToString,
+            metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceListResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -115,8 +115,8 @@ class MethodService(object):
             request,
             target,
             '/metalstack.api.v2.MethodService/TokenScopedList',
-            metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListRequest.SerializeToString,
-            metalstack_dot_api_dot_v2_dot_methods__pb2.MethodServiceTokenScopedListResponse.FromString,
+            metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceTokenScopedListRequest.SerializeToString,
+            metalstack_dot_api_dot_v2_dot_method__pb2.MethodServiceTokenScopedListResponse.FromString,
             options,
             channel_credentials,
             insecure,

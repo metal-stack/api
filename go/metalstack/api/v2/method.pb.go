@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        (unknown)
-// source: metalstack/api/v2/methods.proto
+// source: metalstack/api/v2/method.proto
 
 package apiv2
 
@@ -31,7 +31,7 @@ type MethodServiceListRequest struct {
 
 func (x *MethodServiceListRequest) Reset() {
 	*x = MethodServiceListRequest{}
-	mi := &file_metalstack_api_v2_methods_proto_msgTypes[0]
+	mi := &file_metalstack_api_v2_method_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *MethodServiceListRequest) String() string {
 func (*MethodServiceListRequest) ProtoMessage() {}
 
 func (x *MethodServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_methods_proto_msgTypes[0]
+	mi := &file_metalstack_api_v2_method_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *MethodServiceListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MethodServiceListRequest.ProtoReflect.Descriptor instead.
 func (*MethodServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_methods_proto_rawDescGZIP(), []int{0}
+	return file_metalstack_api_v2_method_proto_rawDescGZIP(), []int{0}
 }
 
 // MethodServiceListResponse is the response payload with all public visible methods
@@ -70,7 +70,7 @@ type MethodServiceListResponse struct {
 
 func (x *MethodServiceListResponse) Reset() {
 	*x = MethodServiceListResponse{}
-	mi := &file_metalstack_api_v2_methods_proto_msgTypes[1]
+	mi := &file_metalstack_api_v2_method_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -82,7 +82,7 @@ func (x *MethodServiceListResponse) String() string {
 func (*MethodServiceListResponse) ProtoMessage() {}
 
 func (x *MethodServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_methods_proto_msgTypes[1]
+	mi := &file_metalstack_api_v2_method_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -95,7 +95,7 @@ func (x *MethodServiceListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MethodServiceListResponse.ProtoReflect.Descriptor instead.
 func (*MethodServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_methods_proto_rawDescGZIP(), []int{1}
+	return file_metalstack_api_v2_method_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *MethodServiceListResponse) GetMethods() []string {
@@ -114,7 +114,7 @@ type MethodServiceTokenScopedListRequest struct {
 
 func (x *MethodServiceTokenScopedListRequest) Reset() {
 	*x = MethodServiceTokenScopedListRequest{}
-	mi := &file_metalstack_api_v2_methods_proto_msgTypes[2]
+	mi := &file_metalstack_api_v2_method_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -126,7 +126,7 @@ func (x *MethodServiceTokenScopedListRequest) String() string {
 func (*MethodServiceTokenScopedListRequest) ProtoMessage() {}
 
 func (x *MethodServiceTokenScopedListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_methods_proto_msgTypes[2]
+	mi := &file_metalstack_api_v2_method_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -139,7 +139,7 @@ func (x *MethodServiceTokenScopedListRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use MethodServiceTokenScopedListRequest.ProtoReflect.Descriptor instead.
 func (*MethodServiceTokenScopedListRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_methods_proto_rawDescGZIP(), []int{2}
+	return file_metalstack_api_v2_method_proto_rawDescGZIP(), []int{2}
 }
 
 // MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
@@ -159,7 +159,7 @@ type MethodServiceTokenScopedListResponse struct {
 
 func (x *MethodServiceTokenScopedListResponse) Reset() {
 	*x = MethodServiceTokenScopedListResponse{}
-	mi := &file_metalstack_api_v2_methods_proto_msgTypes[3]
+	mi := &file_metalstack_api_v2_method_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -171,7 +171,7 @@ func (x *MethodServiceTokenScopedListResponse) String() string {
 func (*MethodServiceTokenScopedListResponse) ProtoMessage() {}
 
 func (x *MethodServiceTokenScopedListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_methods_proto_msgTypes[3]
+	mi := &file_metalstack_api_v2_method_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -184,7 +184,7 @@ func (x *MethodServiceTokenScopedListResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use MethodServiceTokenScopedListResponse.ProtoReflect.Descriptor instead.
 func (*MethodServiceTokenScopedListResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_methods_proto_rawDescGZIP(), []int{3}
+	return file_metalstack_api_v2_method_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *MethodServiceTokenScopedListResponse) GetPermissions() []*MethodPermission {
@@ -215,11 +215,11 @@ func (x *MethodServiceTokenScopedListResponse) GetAdminRole() AdminRole {
 	return AdminRole_ADMIN_ROLE_UNSPECIFIED
 }
 
-var File_metalstack_api_v2_methods_proto protoreflect.FileDescriptor
+var File_metalstack_api_v2_method_proto protoreflect.FileDescriptor
 
-const file_metalstack_api_v2_methods_proto_rawDesc = "" +
+const file_metalstack_api_v2_method_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/methods.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/token.proto\"\x1a\n" +
+	"\x1emetalstack/api/v2/method.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/token.proto\"\x1a\n" +
 	"\x18MethodServiceListRequest\"5\n" +
 	"\x19MethodServiceListResponse\x12\x18\n" +
 	"\amethods\x18\x01 \x03(\tR\amethods\"%\n" +
@@ -239,23 +239,23 @@ const file_metalstack_api_v2_methods_proto_rawDesc = "" +
 	"\v_admin_role2\x83\x02\n" +
 	"\rMethodService\x12g\n" +
 	"\x04List\x12+.metalstack.api.v2.MethodServiceListRequest\x1a,.metalstack.api.v2.MethodServiceListResponse\"\x04\xd8\xf3\x18\x01\x12\x88\x01\n" +
-	"\x0fTokenScopedList\x126.metalstack.api.v2.MethodServiceTokenScopedListRequest\x1a7.metalstack.api.v2.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x03B\xc2\x01\n" +
-	"\x15com.metalstack.api.v2B\fMethodsProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
+	"\x0fTokenScopedList\x126.metalstack.api.v2.MethodServiceTokenScopedListRequest\x1a7.metalstack.api.v2.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x03B\xc1\x01\n" +
+	"\x15com.metalstack.api.v2B\vMethodProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (
-	file_metalstack_api_v2_methods_proto_rawDescOnce sync.Once
-	file_metalstack_api_v2_methods_proto_rawDescData []byte
+	file_metalstack_api_v2_method_proto_rawDescOnce sync.Once
+	file_metalstack_api_v2_method_proto_rawDescData []byte
 )
 
-func file_metalstack_api_v2_methods_proto_rawDescGZIP() []byte {
-	file_metalstack_api_v2_methods_proto_rawDescOnce.Do(func() {
-		file_metalstack_api_v2_methods_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_methods_proto_rawDesc), len(file_metalstack_api_v2_methods_proto_rawDesc)))
+func file_metalstack_api_v2_method_proto_rawDescGZIP() []byte {
+	file_metalstack_api_v2_method_proto_rawDescOnce.Do(func() {
+		file_metalstack_api_v2_method_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_method_proto_rawDesc), len(file_metalstack_api_v2_method_proto_rawDesc)))
 	})
-	return file_metalstack_api_v2_methods_proto_rawDescData
+	return file_metalstack_api_v2_method_proto_rawDescData
 }
 
-var file_metalstack_api_v2_methods_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_metalstack_api_v2_methods_proto_goTypes = []any{
+var file_metalstack_api_v2_method_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_metalstack_api_v2_method_proto_goTypes = []any{
 	(*MethodServiceListRequest)(nil),             // 0: metalstack.api.v2.MethodServiceListRequest
 	(*MethodServiceListResponse)(nil),            // 1: metalstack.api.v2.MethodServiceListResponse
 	(*MethodServiceTokenScopedListRequest)(nil),  // 2: metalstack.api.v2.MethodServiceTokenScopedListRequest
@@ -267,7 +267,7 @@ var file_metalstack_api_v2_methods_proto_goTypes = []any{
 	(ProjectRole)(0),         // 8: metalstack.api.v2.ProjectRole
 	(TenantRole)(0),          // 9: metalstack.api.v2.TenantRole
 }
-var file_metalstack_api_v2_methods_proto_depIdxs = []int32{
+var file_metalstack_api_v2_method_proto_depIdxs = []int32{
 	6, // 0: metalstack.api.v2.MethodServiceTokenScopedListResponse.permissions:type_name -> metalstack.api.v2.MethodPermission
 	4, // 1: metalstack.api.v2.MethodServiceTokenScopedListResponse.project_roles:type_name -> metalstack.api.v2.MethodServiceTokenScopedListResponse.ProjectRolesEntry
 	5, // 2: metalstack.api.v2.MethodServiceTokenScopedListResponse.tenant_roles:type_name -> metalstack.api.v2.MethodServiceTokenScopedListResponse.TenantRolesEntry
@@ -285,29 +285,29 @@ var file_metalstack_api_v2_methods_proto_depIdxs = []int32{
 	0, // [0:6] is the sub-list for field type_name
 }
 
-func init() { file_metalstack_api_v2_methods_proto_init() }
-func file_metalstack_api_v2_methods_proto_init() {
-	if File_metalstack_api_v2_methods_proto != nil {
+func init() { file_metalstack_api_v2_method_proto_init() }
+func file_metalstack_api_v2_method_proto_init() {
+	if File_metalstack_api_v2_method_proto != nil {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
 	file_metalstack_api_v2_token_proto_init()
-	file_metalstack_api_v2_methods_proto_msgTypes[3].OneofWrappers = []any{}
+	file_metalstack_api_v2_method_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_methods_proto_rawDesc), len(file_metalstack_api_v2_methods_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_method_proto_rawDesc), len(file_metalstack_api_v2_method_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_metalstack_api_v2_methods_proto_goTypes,
-		DependencyIndexes: file_metalstack_api_v2_methods_proto_depIdxs,
-		MessageInfos:      file_metalstack_api_v2_methods_proto_msgTypes,
+		GoTypes:           file_metalstack_api_v2_method_proto_goTypes,
+		DependencyIndexes: file_metalstack_api_v2_method_proto_depIdxs,
+		MessageInfos:      file_metalstack_api_v2_method_proto_msgTypes,
 	}.Build()
-	File_metalstack_api_v2_methods_proto = out.File
-	file_metalstack_api_v2_methods_proto_goTypes = nil
-	file_metalstack_api_v2_methods_proto_depIdxs = nil
+	File_metalstack_api_v2_method_proto = out.File
+	file_metalstack_api_v2_method_proto_goTypes = nil
+	file_metalstack_api_v2_method_proto_depIdxs = nil
 }
