@@ -1,61 +1,34 @@
 #!/usr/bin/env python
 
-from connecpy.context import ClientContext
-from connecpy.exceptions import ConnecpyServerException
 import os
+import sys
 
-from metalstack.api.v2 import network_pb2, ip_pb2, ip_connecpy
+from connecpy.exceptions import ConnecpyServerException
+
 from metalstack.client import client as apiclient
-
+from metalstack.api.v2 import ip_pb2
+from metalstack.admin.v2 import network_pb2
 
 timeout_s = 5
 baseurl = os.environ['METAL_APISERVER_URL']
 token = os.environ['API_TOKEN']
 project = os.environ['PROJECT_ID']
 
-def main():
-    # Usage Sample without driver
-    print("ips with direct client")
-    with ip_connecpy.IPServiceClient(baseurl, timeout=timeout_s) as client:
-        try:
-            response = client.List(
-                ctx=ClientContext(),
-                request=ip_pb2.IPServiceListRequest(project=project),
-                headers={
-                    "Authorization": "Bearer " + token,
-                }
-            )
-            for ip in response.ips:
-                print(ip.ip, ip.name, ip.project, ip.network)
-        except ConnecpyServerException as e:
-            print(e.code, e.message, e.to_dict())
+client = apiclient.Client(baseurl=baseurl, token=token, timeout=timeout_s)
+
+try:
+    resp = client.apiv2().ip().List(request=ip_pb2.IPServiceListRequest(
+        project="e8602646-8515-4793-b3d8-78cce1e1d7f2"))
+except ConnecpyServerException as e:
+    print(e.code, e.message, e.to_dict())
+    sys.exit(1)
 
 
-    # Usage Sample with driver
-    driver = apiclient.Driver(baseurl=baseurl, token=token, timeout=timeout_s)
+for ip in resp.ips:
+    print(ip.ip, ip.name, ip.project, ip.network)
 
-    print()
-    print("ips with driver")
-    with driver.apiv2().ip() as client:
-        try:
-            response = client.List(
-                request=ip_pb2.IPServiceListRequest(project=project),
-            )
-            for ip in response.ips:
-                print(ip.ip, ip.name, ip.project, ip.network)
-        except ConnecpyServerException as e:
-            print(e.code, e.message, e.to_dict())
+resp = client.adminv2().network().List(
+    request=network_pb2.NetworkServiceListRequest())
 
-    print()
-    print("networks with admin driver")
-    with driver.adminv2().network() as client:
-        try:
-            response = client.List(
-                request=network_pb2.NetworkServiceListRequest(),
-            )
-            for nw in response.networks:
-                print(nw.id, nw.name, nw.project)
-        except ConnecpyServerException as e:
-            print(e.code, e.message, e.to_dict())
-if __name__ == "__main__":
-    main()
+for nw in resp.networks:
+    print(nw.id, nw.name, nw.project)
