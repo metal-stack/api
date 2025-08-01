@@ -36,7 +36,7 @@ def main():
 
     print()
     print("ips with driver")
-    with driver.api().ip() as client:
+    with driver.apiv2().ip() as client:
         try:
             response = client.List(
                 request=ip_pb2.IPServiceListRequest(project=project),
@@ -48,7 +48,7 @@ def main():
 
     print()
     print("networks with admin driver")
-    with driver.admin().network() as client:
+    with driver.adminv2().network() as client:
         try:
             response = client.List(
                 request=network_pb2.NetworkServiceListRequest(),

@@ -36,17 +36,17 @@ class Driver:
         self.token = token
         self.timeout = timeout
 
-    def admin(self):
-        return AdminDriver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+    def adminv2(self):
+        return Adminv2(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
 
-    def api(self):
-        return ApiDriver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+    def apiv2(self):
+        return Apiv2(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
 
-    def infra(self):
-        return InfraDriver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+    def infrav2(self):
+        return Infrav2(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
 
 
-class AdminDriver:
+class Adminv2:
     def __init__(self, baseurl: str, token: str, timeout: int = 10):
         self.baseurl = baseurl
         self.token = token
@@ -93,7 +93,7 @@ class AdminDriver:
         with admin_token_connecpy.TokenServiceClient(self.baseurl, timeout=self.timeout) as client:
            yield ClientWrapper(client, self.token)
 
-class ApiDriver:
+class Apiv2:
     def __init__(self, baseurl: str, token: str, timeout: int = 10):
         self.baseurl = baseurl
         self.token = token
@@ -165,7 +165,7 @@ class ApiDriver:
         with api_version_connecpy.VersionServiceClient(self.baseurl, timeout=self.timeout) as client:
            yield ClientWrapper(client, self.token)
 
-class InfraDriver:
+class Infrav2:
     def __init__(self, baseurl: str, token: str, timeout: int = 10):
         self.baseurl = baseurl
         self.token = token

@@ -15,12 +15,12 @@ class Driver:
         self.token = token
         self.timeout = timeout
 {{ range $name, $api := . }}
-    def {{ $name | trimSuffix "v2" | lower }}(self):
-        return {{ $name | trimSuffix "v2" | title }}Driver(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
+    def {{ $name | lower }}(self):
+        return {{ $name | title }}(baseurl=self.baseurl, token=self.token, timeout=self.timeout)
 {{ end }}
 
 {{ range $name, $api := . -}}
-class {{ $name | trimSuffix "v2" | title }}Driver:
+class {{ $name | title }}:
     def __init__(self, baseurl: str, token: str, timeout: int = 10):
         self.baseurl = baseurl
         self.token = token
