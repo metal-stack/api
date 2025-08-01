@@ -9,7 +9,6 @@ import metalstack.admin.v2.network_connecpy as api_network_connecpy
 class Client:
     def __init__(self, baseurl: str, token: str, timeout: int = 10):
         self.baseurl = baseurl
-        self.timeout = timeout
 
         headers = {}
         if token:
@@ -18,25 +17,23 @@ class Client:
         self._session = httpx.Client(headers=headers, timeout=timeout)
 
     def apiv2(self):
-        return _Apiv2(baseurl=self.baseurl, session=self._session)
+        return self._Apiv2(baseurl=self.baseurl, session=self._session)
 
     def adminv2(self):
-        return _Adminv2(baseurl=self.baseurl, session=self._session)
+        return self._Adminv2(baseurl=self.baseurl, session=self._session)
 
+    class _Apiv2:
+        def __init__(self, baseurl: str, session=None):
+            self._baseurl = baseurl
+            self._session = session
 
-class _Apiv2:
-    def __init__(self, baseurl: str, session=None):
-        self._baseurl = baseurl
-        self._session = session
+        def ip(self):
+            return api_ip_connecpy.IPServiceClient(self._baseurl, session=self._session)
 
-    def ip(self):
-        return api_ip_connecpy.IPServiceClient(self._baseurl, session=self._session)
+    class _Adminv2:
+        def __init__(self, baseurl: str, session=None):
+            self._baseurl = baseurl
+            self._session = session
 
-
-class _Adminv2:
-    def __init__(self, baseurl: str, session=None):
-        self._baseurl = baseurl
-        self._session = session
-
-    def network(self):
-        return api_network_connecpy.NetworkServiceClient(self._baseurl, session=self._session)
+        def network(self):
+            return api_network_connecpy.NetworkServiceClient(self._baseurl, session=self._session)
