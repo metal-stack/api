@@ -1460,6 +1460,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineAllocationQuery"><span class="badge">M</span>MachineAllocationQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineBios"><span class="badge">M</span>MachineBios</a>
                 </li>
               
@@ -1472,7 +1476,23 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineDiskQuery"><span class="badge">M</span>MachineDiskQuery</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MachineFRUQuery"><span class="badge">M</span>MachineFRUQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineHardware"><span class="badge">M</span>MachineHardware</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MachineHardwareQuery"><span class="badge">M</span>MachineHardwareQuery</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MachineIPMIQuery"><span class="badge">M</span>MachineIPMIQuery</a>
                 </li>
               
                 <li>
@@ -1480,7 +1500,15 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineNetworkQuery"><span class="badge">M</span>MachineNetworkQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineNic"><span class="badge">M</span>MachineNic</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MachineNicQuery"><span class="badge">M</span>MachineNicQuery</a>
                 </li>
               
                 <li>
@@ -14627,6 +14655,72 @@ for which the methods should be allowed </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.MachineAllocationQuery">MachineAllocationQuery</h3>
+        <p>MachineAllocationQuery allocation specific query parameters</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>UUID of the allocation of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Image of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hostname</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Hostname of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>role</td>
+                  <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
+                  <td>optional</td>
+                  <td><p>Role of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>succeeded</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>Succeeded search for machine with succeeded allocation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.MachineBios">MachineBios</h3>
         <p>MachineBios contains BIOS details of this machine</p>
 
@@ -14727,6 +14821,110 @@ for which the methods should be allowed </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.MachineDiskQuery">MachineDiskQuery</h3>
+        <p>MachineDiskQuery disk specific machine queries</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>names</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Names of disks in this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>sizes</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td>repeated</td>
+                  <td><p>Sizes of disks in this machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MachineFRUQuery">MachineFRUQuery</h3>
+        <p>MachineFRUQuery machine fru specific machine queries</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>chassis_part_number</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ChassisPartNumber of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>chassis_part_serial</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ChassisPartSerial of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>board_mfg</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>BoardMFG of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>board_serial</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>BoardSerial of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>board_part_number</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>BoardPartNumber of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>product_manufacturer</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ProductManufacturer of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>product_part_number</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ProductPartNumber of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>product_serial</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ProductSerial of this machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.MachineHardware">MachineHardware</h3>
         <p>MachineHardware contains hardware details</p>
 
@@ -14777,6 +14975,82 @@ for which the methods should be allowed </p></td>
                   <td><a href="#metalstack.api.v2.MachineNic">MachineNic</a></td>
                   <td>repeated</td>
                   <td><p>Nics the list of network interfaces of this machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MachineHardwareQuery">MachineHardwareQuery</h3>
+        <p>MachineHardwareQuery machine hardware specific machine queries</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>memory</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td>optional</td>
+                  <td><p>Memory the total memory of the machine in bytes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>cpu_cores</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td>optional</td>
+                  <td><p>CPUCores the number of cpu cores </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MachineIPMIQuery">MachineIPMIQuery</h3>
+        <p>MachineIPMIQuery machine ipmi specific machine queries</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Address of the ipmi system of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mac</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Mac of the ipmi system of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>User of the ipmi system of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>interface</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Interface of the ipmi system of this machine </p></td>
                 </tr>
               
             </tbody>
@@ -14859,6 +15133,65 @@ for which the methods should be allowed </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.MachineNetworkQuery">MachineNetworkQuery</h3>
+        <p>MachineNetworkQuery network specific machine queries</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>networks</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Networks this machine is connected to </p></td>
+                </tr>
+              
+                <tr>
+                  <td>prefixes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Prefixes this machine is connected to </p></td>
+                </tr>
+              
+                <tr>
+                  <td>destination_prefixes</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>DestinationPrefixes this machine is connected to </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ips</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>IPs this machine has </p></td>
+                </tr>
+              
+                <tr>
+                  <td>vrfs</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td>repeated</td>
+                  <td><p>VRFs this machine is connected to </p></td>
+                </tr>
+              
+                <tr>
+                  <td>asns</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td>repeated</td>
+                  <td><p>ASNs this machine is connected to </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.MachineNic">MachineNic</h3>
         <p>MachineNic contains details of a network interface of this machine</p>
 
@@ -14895,6 +15228,65 @@ for which the methods should be allowed </p></td>
                   <td><a href="#metalstack.api.v2.MachineNic">MachineNic</a></td>
                   <td>repeated</td>
                   <td><p>Neighbors the neighbors visible to this network interface </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MachineNicQuery">MachineNicQuery</h3>
+        <p>MachineNicQuery nic specific machine queries</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>macs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Macs this machine nic has </p></td>
+                </tr>
+              
+                <tr>
+                  <td>names</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Names this machine nic has </p></td>
+                </tr>
+              
+                <tr>
+                  <td>vrfs</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td>repeated</td>
+                  <td><p>VRFs this machine nic has </p></td>
+                </tr>
+              
+                <tr>
+                  <td>neighbor_macs</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>NeighborMacs this machine nic has </p></td>
+                </tr>
+              
+                <tr>
+                  <td>neighbor_names</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>NeighborNames this machine nic has </p></td>
+                </tr>
+              
+                <tr>
+                  <td>neighbor_vrfs</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td>repeated</td>
+                  <td><p>NeighborVRFs this machine nic has </p></td>
                 </tr>
               
             </tbody>
@@ -14943,9 +15335,110 @@ for which the methods should be allowed </p></td>
         
       
         <h3 id="metalstack.api.v2.MachineQuery">MachineQuery</h3>
-        <p>MachineQuery contains fields which can be specified to list specific machines.</p><p>TODO implement</p>
+        <p>MachineQuery contains fields which can be specified to list specific machines.</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>UUID of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Partition of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Size of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rack</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Rack of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>allocation</td>
+                  <td><a href="#metalstack.api.v2.MachineAllocationQuery">MachineAllocationQuery</a></td>
+                  <td>optional</td>
+                  <td><p>Allocation specific machine queries </p></td>
+                </tr>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#metalstack.api.v2.MachineNetworkQuery">MachineNetworkQuery</a></td>
+                  <td>optional</td>
+                  <td><p>Network specific machine queries </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nic</td>
+                  <td><a href="#metalstack.api.v2.MachineNicQuery">MachineNicQuery</a></td>
+                  <td>optional</td>
+                  <td><p>Nic specific machine queries </p></td>
+                </tr>
+              
+                <tr>
+                  <td>disk</td>
+                  <td><a href="#metalstack.api.v2.MachineDiskQuery">MachineDiskQuery</a></td>
+                  <td>optional</td>
+                  <td><p>Disk specific machine queries </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ipmi</td>
+                  <td><a href="#metalstack.api.v2.MachineIPMIQuery">MachineIPMIQuery</a></td>
+                  <td>optional</td>
+                  <td><p>IPMI specific machine queries </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fru</td>
+                  <td><a href="#metalstack.api.v2.MachineFRUQuery">MachineFRUQuery</a></td>
+                  <td>optional</td>
+                  <td><p>FRU specific machine queries </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hardware</td>
+                  <td><a href="#metalstack.api.v2.MachineHardwareQuery">MachineHardwareQuery</a></td>
+                  <td>optional</td>
+                  <td><p>Hardware specific machine query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#metalstack.api.v2.MachineState">MachineState</a></td>
+                  <td>optional</td>
+                  <td><p>State this machine has </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       

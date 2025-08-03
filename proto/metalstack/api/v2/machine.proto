@@ -454,5 +454,149 @@ enum MachineRole {
 
 // MachineQuery contains fields which can be specified to list specific machines.
 message MachineQuery {
-  // TODO implement
+  // UUID of the machine to get
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Name of the machine to get
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Partition of the machine to get
+  optional string partition = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Size of the machine to get
+  optional string size = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Rack of the machine to get
+  optional string rack = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Allocation specific machine queries
+  optional MachineAllocationQuery allocation = 6;
+  // Network specific machine queries
+  optional MachineNetworkQuery network = 7;
+  // Nic specific machine queries
+  optional MachineNicQuery nic = 8;
+  // Disk specific machine queries
+  optional MachineDiskQuery disk = 9;
+  // IPMI specific machine queries
+  optional MachineIPMIQuery ipmi = 10;
+  // FRU specific machine queries
+  optional MachineFRUQuery fru = 11;
+  // Hardware specific machine query
+  optional MachineHardwareQuery hardware = 12;
+  // State this machine has
+  optional MachineState state = 13;
+}
+
+// MachineAllocationQuery allocation specific query parameters
+message MachineAllocationQuery {
+  // UUID of the allocation of the machine to get
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Name of the machine to get
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Project of the machine to get
+  optional string project = 3 [(buf.validate.field).string.uuid = true];
+  // Image of the machine to get
+  optional string image = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Hostname of the machine to get
+  optional string hostname = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Role of this machine
+  optional MachineRole role = 6;
+  // Succeeded search for machine with succeeded allocation
+  optional bool succeeded = 7;
+}
+
+// MachineNetworkQuery network specific machine queries
+message MachineNetworkQuery {
+  // Networks this machine is connected to
+  repeated string networks = 1;
+  // Prefixes this machine is connected to
+  repeated string prefixes = 2;
+  // DestinationPrefixes this machine is connected to
+  repeated string destination_prefixes = 3;
+  // IPs this machine has
+  repeated string ips = 4;
+  // VRFs this machine is connected to
+  repeated uint64 vrfs = 5;
+  // ASNs this machine is connected to
+  repeated uint64 asns = 6;
+}
+
+// MachineNicQuery nic specific machine queries
+message MachineNicQuery {
+  // Macs this machine nic has
+  repeated string macs = 1;
+  // Names this machine nic has
+  repeated string names = 2;
+  // VRFs this machine nic has
+  repeated uint64 vrfs = 3;
+  // NeighborMacs this machine nic has
+  repeated string neighbor_macs = 4;
+  // NeighborNames this machine nic has
+  repeated string neighbor_names = 5;
+  // NeighborVRFs this machine nic has
+  repeated uint64 neighbor_vrfs = 6;
+}
+
+// MachineDiskQuery disk specific machine queries
+message MachineDiskQuery {
+  // Names of disks in this machine
+  repeated string names = 1;
+  // Sizes of disks in this machine
+  repeated uint64 sizes = 2;
+}
+
+// MachineIPMIQuery machine ipmi specific machine queries
+message MachineIPMIQuery {
+  // Address of the ipmi system of this machine
+  optional string address = 1;
+  // Mac of the ipmi system of this machine
+  optional string mac = 2;
+  // User of the ipmi system of this machine
+  optional string user = 3;
+  // Interface of the ipmi system of this machine
+  optional string interface = 4;
+}
+
+// MachineFRUQuery machine fru specific machine queries
+message MachineFRUQuery {
+  // ChassisPartNumber of this machine
+  optional string chassis_part_number = 1;
+  // ChassisPartSerial of this machine
+  optional string chassis_part_serial = 2;
+  // BoardMFG of this machine
+  optional string board_mfg = 3;
+  // BoardSerial of this machine
+  optional string board_serial = 4;
+  // BoardPartNumber of this machine
+  optional string board_part_number = 5;
+  // ProductManufacturer of this machine
+  optional string product_manufacturer = 6;
+  // ProductPartNumber of this machine
+  optional string product_part_number = 7;
+  // ProductSerial of this machine
+  optional string product_serial = 8;
+}
+
+// MachineHardwareQuery machine hardware specific machine queries
+message MachineHardwareQuery {
+  // Memory the total memory of the machine in bytes
+  optional uint64 memory = 1;
+  // CPUCores the number of cpu cores
+  optional uint32 cpu_cores = 2;
 }

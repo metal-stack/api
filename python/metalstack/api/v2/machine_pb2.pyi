@@ -372,5 +372,129 @@ class MachineVPN(_message.Message):
     def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: bool = ...) -> None: ...
 
 class MachineQuery(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("uuid", "name", "partition", "size", "rack", "allocation", "network", "nic", "disk", "ipmi", "fru", "hardware", "state")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    SIZE_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
+    ALLOCATION_FIELD_NUMBER: _ClassVar[int]
+    NETWORK_FIELD_NUMBER: _ClassVar[int]
+    NIC_FIELD_NUMBER: _ClassVar[int]
+    DISK_FIELD_NUMBER: _ClassVar[int]
+    IPMI_FIELD_NUMBER: _ClassVar[int]
+    FRU_FIELD_NUMBER: _ClassVar[int]
+    HARDWARE_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    name: str
+    partition: str
+    size: str
+    rack: str
+    allocation: MachineAllocationQuery
+    network: MachineNetworkQuery
+    nic: MachineNicQuery
+    disk: MachineDiskQuery
+    ipmi: MachineIPMIQuery
+    fru: MachineFRUQuery
+    hardware: MachineHardwareQuery
+    state: MachineState
+    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., ipmi: _Optional[_Union[MachineIPMIQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ...) -> None: ...
+
+class MachineAllocationQuery(_message.Message):
+    __slots__ = ("uuid", "name", "project", "image", "hostname", "role", "succeeded")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    IMAGE_FIELD_NUMBER: _ClassVar[int]
+    HOSTNAME_FIELD_NUMBER: _ClassVar[int]
+    ROLE_FIELD_NUMBER: _ClassVar[int]
+    SUCCEEDED_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    name: str
+    project: str
+    image: str
+    hostname: str
+    role: MachineRole
+    succeeded: bool
+    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[str] = ..., hostname: _Optional[str] = ..., role: _Optional[_Union[MachineRole, str]] = ..., succeeded: bool = ...) -> None: ...
+
+class MachineNetworkQuery(_message.Message):
+    __slots__ = ("networks", "prefixes", "destination_prefixes", "ips", "vrfs", "asns")
+    NETWORKS_FIELD_NUMBER: _ClassVar[int]
+    PREFIXES_FIELD_NUMBER: _ClassVar[int]
+    DESTINATION_PREFIXES_FIELD_NUMBER: _ClassVar[int]
+    IPS_FIELD_NUMBER: _ClassVar[int]
+    VRFS_FIELD_NUMBER: _ClassVar[int]
+    ASNS_FIELD_NUMBER: _ClassVar[int]
+    networks: _containers.RepeatedScalarFieldContainer[str]
+    prefixes: _containers.RepeatedScalarFieldContainer[str]
+    destination_prefixes: _containers.RepeatedScalarFieldContainer[str]
+    ips: _containers.RepeatedScalarFieldContainer[str]
+    vrfs: _containers.RepeatedScalarFieldContainer[int]
+    asns: _containers.RepeatedScalarFieldContainer[int]
+    def __init__(self, networks: _Optional[_Iterable[str]] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., ips: _Optional[_Iterable[str]] = ..., vrfs: _Optional[_Iterable[int]] = ..., asns: _Optional[_Iterable[int]] = ...) -> None: ...
+
+class MachineNicQuery(_message.Message):
+    __slots__ = ("macs", "names", "vrfs", "neighbor_macs", "neighbor_names", "neighbor_vrfs")
+    MACS_FIELD_NUMBER: _ClassVar[int]
+    NAMES_FIELD_NUMBER: _ClassVar[int]
+    VRFS_FIELD_NUMBER: _ClassVar[int]
+    NEIGHBOR_MACS_FIELD_NUMBER: _ClassVar[int]
+    NEIGHBOR_NAMES_FIELD_NUMBER: _ClassVar[int]
+    NEIGHBOR_VRFS_FIELD_NUMBER: _ClassVar[int]
+    macs: _containers.RepeatedScalarFieldContainer[str]
+    names: _containers.RepeatedScalarFieldContainer[str]
+    vrfs: _containers.RepeatedScalarFieldContainer[int]
+    neighbor_macs: _containers.RepeatedScalarFieldContainer[str]
+    neighbor_names: _containers.RepeatedScalarFieldContainer[str]
+    neighbor_vrfs: _containers.RepeatedScalarFieldContainer[int]
+    def __init__(self, macs: _Optional[_Iterable[str]] = ..., names: _Optional[_Iterable[str]] = ..., vrfs: _Optional[_Iterable[int]] = ..., neighbor_macs: _Optional[_Iterable[str]] = ..., neighbor_names: _Optional[_Iterable[str]] = ..., neighbor_vrfs: _Optional[_Iterable[int]] = ...) -> None: ...
+
+class MachineDiskQuery(_message.Message):
+    __slots__ = ("names", "sizes")
+    NAMES_FIELD_NUMBER: _ClassVar[int]
+    SIZES_FIELD_NUMBER: _ClassVar[int]
+    names: _containers.RepeatedScalarFieldContainer[str]
+    sizes: _containers.RepeatedScalarFieldContainer[int]
+    def __init__(self, names: _Optional[_Iterable[str]] = ..., sizes: _Optional[_Iterable[int]] = ...) -> None: ...
+
+class MachineIPMIQuery(_message.Message):
+    __slots__ = ("address", "mac", "user", "interface")
+    ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    MAC_FIELD_NUMBER: _ClassVar[int]
+    USER_FIELD_NUMBER: _ClassVar[int]
+    INTERFACE_FIELD_NUMBER: _ClassVar[int]
+    address: str
+    mac: str
+    user: str
+    interface: str
+    def __init__(self, address: _Optional[str] = ..., mac: _Optional[str] = ..., user: _Optional[str] = ..., interface: _Optional[str] = ...) -> None: ...
+
+class MachineFRUQuery(_message.Message):
+    __slots__ = ("chassis_part_number", "chassis_part_serial", "board_mfg", "board_serial", "board_part_number", "product_manufacturer", "product_part_number", "product_serial")
+    CHASSIS_PART_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    CHASSIS_PART_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    BOARD_MFG_FIELD_NUMBER: _ClassVar[int]
+    BOARD_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    BOARD_PART_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_MANUFACTURER_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_PART_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    chassis_part_number: str
+    chassis_part_serial: str
+    board_mfg: str
+    board_serial: str
+    board_part_number: str
+    product_manufacturer: str
+    product_part_number: str
+    product_serial: str
+    def __init__(self, chassis_part_number: _Optional[str] = ..., chassis_part_serial: _Optional[str] = ..., board_mfg: _Optional[str] = ..., board_serial: _Optional[str] = ..., board_part_number: _Optional[str] = ..., product_manufacturer: _Optional[str] = ..., product_part_number: _Optional[str] = ..., product_serial: _Optional[str] = ...) -> None: ...
+
+class MachineHardwareQuery(_message.Message):
+    __slots__ = ("memory", "cpu_cores")
+    MEMORY_FIELD_NUMBER: _ClassVar[int]
+    CPU_CORES_FIELD_NUMBER: _ClassVar[int]
+    memory: int
+    cpu_cores: int
+    def __init__(self, memory: _Optional[int] = ..., cpu_cores: _Optional[int] = ...) -> None: ...
