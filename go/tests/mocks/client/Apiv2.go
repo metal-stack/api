@@ -93,6 +93,26 @@ func (_m *Apiv2) Image() apiv2connect.ImageServiceClient {
 	return r0
 }
 
+// Machine provides a mock function with no fields
+func (_m *Apiv2) Machine() apiv2connect.MachineServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Machine")
+	}
+
+	var r0 apiv2connect.MachineServiceClient
+	if rf, ok := ret.Get(0).(func() apiv2connect.MachineServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv2connect.MachineServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Method provides a mock function with no fields
 func (_m *Apiv2) Method() apiv2connect.MethodServiceClient {
 	ret := _m.Called()

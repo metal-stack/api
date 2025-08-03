@@ -1,0 +1,458 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/filesystem.proto";
+import "metalstack/api/v2/image.proto";
+import "metalstack/api/v2/network.proto";
+import "metalstack/api/v2/partition.proto";
+import "metalstack/api/v2/size.proto";
+
+// MachineService serves machine related functions
+service MachineService {
+  // Get a machine
+  rpc Get(MachineServiceGetRequest) returns (MachineServiceGetResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Create a machine
+  rpc Create(MachineServiceCreateRequest) returns (MachineServiceCreateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  // Update a machine
+  rpc Update(MachineServiceUpdateRequest) returns (MachineServiceUpdateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  // List all machine
+  rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Delete a machine
+  rpc Delete(MachineServiceDeleteRequest) returns (MachineServiceDeleteResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+}
+
+// ------------------------ Service Messages ----------------------------------
+
+// MachineServiceGetRequest is the request payload for a machine get request
+message MachineServiceGetRequest {
+  // UUID of the machine to get
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceGetResponse is the request payload for a machine get response
+message MachineServiceGetResponse {
+  // Machine is the machine requested
+  Machine machine = 1;
+}
+
+// MachineServiceCreateRequest is the request payload for a machine create request
+message MachineServiceCreateRequest {
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceCreateResponse is the request payload for a machine create response
+message MachineServiceCreateResponse {}
+
+// MachineServiceUpdateRequest is the request payload for a machine update request
+message MachineServiceUpdateRequest {
+  // UUID of the machine to modify
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceUpdateResponse is the request payload for a machine update response
+message MachineServiceUpdateResponse {}
+
+// MachineServiceListRequest is the request payload for a machine list request
+message MachineServiceListRequest {
+  // Project of the machines to list
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // Query to list one ore more machines
+  MachineQuery query = 2;
+}
+
+// MachineServiceListResponse is the request payload for a machine list response
+message MachineServiceListResponse {
+  // Machines are the machines requested by a list request
+  repeated Machine machines = 1;
+}
+
+// MachineServiceDeleteRequest is the request payload for a machine delete request
+message MachineServiceDeleteRequest {
+  // UUID of the machine to delete
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceDeleteResponse is the request payload for a machine delete response
+message MachineServiceDeleteResponse {}
+
+// --------------- Types ----------------------------------------------------------
+
+// Machine represents a physical bare metal machine.
+message Machine {
+  // UUID of this machine
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Meta for this machine
+  Meta meta = 2;
+  // Partition where this machine resides
+  Partition partition = 3;
+  // Rack where this machine is located
+  string rack = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Size of this machine
+  Size size = 5;
+  // Hardware specs of this machine
+  MachineHardware hardware = 6;
+  // Bios details for this machine
+  MachineBios bios = 7;
+  // Allocation details
+  MachineAllocation allocation = 8;
+  // State of this machine
+  MachineState state = 9;
+  // LEDState indicates the state of the indicator LED on this machine
+  MachineChassisIdentifyLEDState led_state = 10;
+  // Liveliness of this machine
+  MachineLiveliness liveliness = 11;
+  // MachineRecentProvisioningEvents contains the recent provisioning events
+  MachineRecentProvisioningEvents recent_provisioning_events = 12;
+}
+
+// MachineAllocation contains properties if this machine is allocated
+message MachineAllocation {
+  // UUID of this machine allocation
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Meta for this machine allocation
+  Meta meta = 2;
+  // Name of this allocation
+  string name = 3 [(buf.validate.field).string = {max_len: 128}];
+  // Description of this allocation
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Created By indicates who created this machine allocation
+  string created_by = 5 [(buf.validate.field).string = {max_len: 128}];
+  // Project of the allocation
+  string project = 6 [(buf.validate.field).string.uuid = true];
+  // Image to be used to install on this machine
+  Image image = 7;
+  // FilesystemLayout to create on the disks
+  FilesystemLayout filesystem_layout = 8;
+  // MachineNetworks this machine should be attached to
+  repeated MachineNetwork machine_networks = 9;
+  // Hostname of the allocated machine
+  string hostname = 10 [(buf.validate.field).string = {max_len: 128}];
+  // SSHPublicKeys which should be installed on this machine
+  repeated string ssh_public_keys = 11;
+  // Userdata contains instructions required to bootstrap the machine
+  string userdata = 12;
+
+  // BootInfo contains details which are required the machine from disk // FIXME is this still required
+  BootInfo boot_info = 13;
+  // Role defines if this is machine or a firewall
+  MachineRole role = 14;
+  // FirewallRules to be applied if this is a firewall
+  FirewallRules firewall_rules = 15;
+  // DNSServers for this machine
+  repeated DNSServer dns_server = 16 [(buf.validate.field).repeated.max_items = 3];
+  // NTPServers for this machine
+  repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
+  // VPN connection configuration
+  MachineVPN vpn = 18;
+
+  // FIXME
+  // Succeeded        bool                      `json:"succeeded" description:"if the allocation of the machine was successful, this is set to true"`
+  // Reinstall        bool                      `json:"reinstall" description:"indicates whether to reinstall the machine"`
+}
+
+// FirewallRules can be defined during firewall allocation
+message FirewallRules {
+  // Egress list of egress rules to be deployed during firewall allocation
+  repeated FirewallEgressRule egress = 1;
+  // Ingress list of ingress rules to be deployed during firewall allocation
+  repeated FirewallIngressRule ingress = 2;
+}
+
+// FirewallEgressRule defines rules for outgoing traffic
+message FirewallEgressRule {
+  // Protocol the protocol for the rule, defaults to tcp
+  IPProtocol protocol = 1;
+  // Ports the ports affected by this rule
+  repeated int32 ports = 2;
+  // To the destination cidrs affected by this rule
+  repeated string to = 3;
+  // Comment for this rule
+  string comment = 4;
+}
+
+// FirewallIngressRule defines rules for incoming traffic
+message FirewallIngressRule {
+  // Protocol the protocol for the rule, defaults to tcp
+  IPProtocol protocol = 1;
+  // Ports the ports affected by this rule
+  repeated int32 ports = 2;
+  // To the destination cidrs affected by this rule
+  repeated string to = 3;
+  // From the source cidrs affected by this rule
+  repeated string from = 4;
+  // Comment for this rule
+  string comment = 5;
+}
+
+// IPProtocol defines tcp|udp
+enum IPProtocol {
+  // IP_PROTOCOL_UNSPECIFIED is not specified
+  IP_PROTOCOL_UNSPECIFIED = 0;
+  // IP_PROTOCOL_TCP is tcp
+  IP_PROTOCOL_TCP = 1;
+  // IP_PROTOCOL_UDP is udp
+  IP_PROTOCOL_UDP = 2;
+}
+
+// MachineNetwork contains details which network should be created on a allocated machine
+message MachineNetwork {
+  // Network the networkID of the allocated machine in this vrf
+  string network = 1;
+  // Prefixes the prefixes of this network
+  repeated string prefixes = 2;
+  // IPs the ip addresses of the allocated machine in this vrf
+  repeated string ips = 3;
+  // DestinationPrefixes prefixes that are reachable within this network
+  repeated string destination_prefixes = 4;
+  // NetworkType the type of network of this vrf
+  NetworkType network_type = 5;
+  // NatType what type of nat if any should be used
+  NATType nat_type = 6;
+  // VRF the vrf id
+  uint64 vrf = 7;
+  // ASN the autonomous system number for this network
+  uint64 asn = 8;
+
+  // FIXME i think we do not need to cary over these deprecated fields because the metal-hammer consumes the allocation
+  // and writes from there /etc/metal/install.yaml which then gets processed by install.go
+  // metal-hammer can be adopted to write in the original format.
+
+  // Nat if set to true, packets leaving this network get masqueraded behind interface ip
+  // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
+  // bool nat = 9;
+  // Private indicates whether this network is the private network of this machine
+  // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
+  // bool private = 10 [deprecated = true];
+  // Underlay if set to true, this network can be used for underlay communication
+  // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
+  // bool underlay = 11 [deprecated = true];
+
+  // NetworkID           string   `json:"networkid" description:"the networkID of the allocated machine in this vrf"`
+  // Prefixes            []string `json:"prefixes" description:"the prefixes of this network"`
+  // IPs                 []string `json:"ips" description:"the ip addresses of the allocated machine in this vrf"`
+  // DestinationPrefixes []string `json:"destinationprefixes" modelDescription:"prefixes that are reachable within this network" description:"the destination prefixes of this network"`
+  // NetworkType         string   `json:"networktype" description:"the network type, types can be looked up in the network package of metal-lib"`
+  // Vrf                 uint     `json:"vrf" description:"the vrf of the allocated machine"`
+  // // Attention, uint32 is converted to integer by swagger which is int32 which is to small to hold a asn
+  // ASN int64 `json:"asn" description:"ASN number for this network in the bgp configuration"`
+  // Nat bool  `json:"nat" description:"if set to true, packets leaving this network get masqueraded behind interface ip"`
+  // // Private flag to indicate this is a private network
+  // //
+  // // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
+  // Private bool `json:"private" description:"indicates whether this network is the private network of this machine"`
+  // // Underlay flag to indicate this is a underlay network
+  // //
+  // // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
+  // Underlay bool `json:"underlay" description:"if set to true, this network can be used for underlay communication"`
+}
+
+// MachineHardware contains hardware details
+message MachineHardware {
+  // Memory the total memory of the machine in bytes
+  uint64 memory = 1;
+  // CPUCores the number of cpu cores
+  uint32 cpu_cores = 2;
+  // Disks the list of block devices of this machine
+  repeated MachineBlockDevice disks = 3;
+  // CPUs the cpu details
+  repeated MetalCPU cpus = 4;
+  // GPUs the gpu details
+  repeated MetalGPU gpus = 5;
+  // Nics the list of network interfaces of this machine
+  repeated MachineNic nics = 6;
+}
+
+// MetalCPU contains details of a cpu in this machine
+message MetalCPU {
+  // Vendor of this cpu
+  string vendor = 1;
+  // Model of this cpu
+  string model = 2;
+  // Cores of this cpu
+  uint32 cores = 3;
+  // Threads of this cpu
+  uint32 threads = 4;
+}
+
+// MetalGPU contains details of a gpu in this machine
+message MetalGPU {
+  // Vendor of this gpu
+  string vendor = 1;
+  // Model of this gpu
+  string model = 2;
+}
+
+// MachineNic contains details of a network interface of this machine
+message MachineNic {
+  // Mac the macaddress of this interface
+  string mac = 1;
+  // Name of this interface
+  string name = 2;
+  // Identifier the unique identifier of this network interface
+  string identifier = 3;
+  // Neighbors the neighbors visible to this network interface
+  repeated MachineNic neighbors = 4;
+}
+
+// MachineBlockDevice contains details of a block device of this machine
+message MachineBlockDevice {
+  // Name of this block device
+  string name = 1;
+  // Size of this block device in bytes
+  uint64 size = 2;
+}
+
+// MachineState details about the machine state
+message MachineStateDetails {
+  // State the state of this machine. empty means available for all
+  MachineState state = 1;
+  // Description a description why this machine is in the given state
+  string description = 2;
+  // Issuer the user that changed the state
+  string issuer = 3;
+  // MetalHammerVersion the version of metal hammer which put the machine in waiting state
+  string metal_hammer_version = 4;
+}
+
+// MachineState defines if the machine was locked or reserved from a operator
+enum MachineState {
+  // MACHINE_STATE_UNSPECIFIED is not specified
+  MACHINE_STATE_UNSPECIFIED = 0;
+  // MACHINE_STATE_RESERVED this machine is reserved
+  MACHINE_STATE_RESERVED = 1;
+  // MACHINE_STATE_LOCKED this machine is locked
+  MACHINE_STATE_LOCKED = 2;
+  // MACHINE_STATE_LOCKED this machine is available for all
+  MACHINE_STATE_AVAILABLE = 3;
+}
+
+// MachineChassisIdentifyLEDState describes the identifier led state
+message MachineChassisIdentifyLEDState {
+  // Value the state of this chassis identify LED. empty means LED-OFF
+  string value = 1;
+  // Description a description why this chassis identify LED is in the given state
+  string description = 2;
+}
+
+// MachineBios contains BIOS details of this machine
+message MachineBios {
+  // Version the bios version
+  string version = 1;
+  // Vendor the bios vendor
+  string vendor = 2;
+  // Date the bios date as string because every vendor has different ideas howto describe the date
+  string date = 3;
+}
+
+// MachineRecentProvisioningEvents the recent provisioning events for this machine
+message MachineRecentProvisioningEvents {
+  // Events the log of recent machine provisioning events
+  repeated MachineProvisioningEvent events = 1;
+  // LastEventTime the time where the last event was received
+  google.protobuf.Timestamp last_event_time = 2;
+  // LastErrorEvent the last erroneous event received
+  MachineProvisioningEvent last_error_event = 3;
+  // State can be either CrashLoop, FailedReclaim or something else
+  // FIXME can this be a slice
+  MachineProvisioningEventState state = 4;
+}
+
+// MachineProvisioningEventState possible event states
+enum MachineProvisioningEventState {
+  // MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
+  MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0;
+  // MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop
+  MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP = 1;
+  // MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim
+  MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2;
+  // FIXME do we need more states here
+}
+
+// MachineProvisioningEvent is a event which has occurred during provisioning
+message MachineProvisioningEvent {
+  // Time the time that this event was received
+  google.protobuf.Timestamp time = 1;
+  // Event the event emitted by the machine
+  string event = 2;
+  // Message an additional message to add to the event
+  string message = 3;
+}
+
+// BootInfo
+// FIXME is only used for reinstall, can be removed ?
+message BootInfo {
+  // ImageID      string `json:"image_id" description:"the ID of the current image"`
+  // PrimaryDisk  string `json:"primary_disk" description:"the primary disk"`
+  // OSPartition  string `json:"os_partition" description:"the partition containing the OS"`
+  // Initrd       string `json:"initrd" description:"the initrd image"`
+  // Cmdline      string `json:"cmdline" description:"the cmdline"`
+  // Kernel       string `json:"kernel" description:"the kernel"`
+  // BootloaderID string `json:"bootloaderid" description:"the bootloader ID"`
+}
+
+// MachineVPN contains configuration data for the VPN connection
+message MachineVPN {
+  // Address of VPN control plane
+  string control_plane_address = 1;
+  // Auth key used to connect to VPN
+  string auth_key = 2;
+  // Connected indicate if this machine is connected to the VPN
+  bool connected = 3;
+}
+
+// MachineLiveliness specifies the liveliness of a machine
+enum MachineLiveliness {
+  // MACHINE_LIVELINESS_UNSPECIFIED is not defined
+  MACHINE_LIVELINESS_UNSPECIFIED = 0;
+  // MACHINE_LIVELINESS_ALIVE liveliness is alive
+  MACHINE_LIVELINESS_ALIVE = 1;
+  // MACHINE_LIVELINESS_DEAD liveliness is dead
+  MACHINE_LIVELINESS_DEAD = 2;
+  // MACHINE_LIVELINESS_UNKNOWN liveliness is unknown
+  MACHINE_LIVELINESS_UNKNOWN = 3;
+}
+
+// MachineRole defines if this is a machine or a firewall
+enum MachineRole {
+  // MACHINE_ROLE_UNSPECIFIED is unspecified
+  MACHINE_ROLE_UNSPECIFIED = 0;
+  // MACHINE_ROLE_MACHINE is a machine
+  MACHINE_ROLE_MACHINE = 1;
+  // MACHINE_ROLE_FIREWALL is a firewall
+  MACHINE_ROLE_FIREWALL = 2;
+}
+
+// MachineQuery contains fields which can be specified to list specific machines.
+message MachineQuery {
+  // TODO implement
+}
