@@ -250,20 +250,18 @@ class MachineNetwork(_message.Message):
     def __init__(self, network: _Optional[str] = ..., prefixes: _Optional[_Iterable[str]] = ..., ips: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., network_type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., asn: _Optional[int] = ...) -> None: ...
 
 class MachineHardware(_message.Message):
-    __slots__ = ("memory", "cpu_cores", "disks", "cpus", "gpus", "nics")
+    __slots__ = ("memory", "disks", "cpus", "gpus", "nics")
     MEMORY_FIELD_NUMBER: _ClassVar[int]
-    CPU_CORES_FIELD_NUMBER: _ClassVar[int]
     DISKS_FIELD_NUMBER: _ClassVar[int]
     CPUS_FIELD_NUMBER: _ClassVar[int]
     GPUS_FIELD_NUMBER: _ClassVar[int]
     NICS_FIELD_NUMBER: _ClassVar[int]
     memory: int
-    cpu_cores: int
     disks: _containers.RepeatedCompositeFieldContainer[MachineBlockDevice]
     cpus: _containers.RepeatedCompositeFieldContainer[MetalCPU]
     gpus: _containers.RepeatedCompositeFieldContainer[MetalGPU]
     nics: _containers.RepeatedCompositeFieldContainer[MachineNic]
-    def __init__(self, memory: _Optional[int] = ..., cpu_cores: _Optional[int] = ..., disks: _Optional[_Iterable[_Union[MachineBlockDevice, _Mapping]]] = ..., cpus: _Optional[_Iterable[_Union[MetalCPU, _Mapping]]] = ..., gpus: _Optional[_Iterable[_Union[MetalGPU, _Mapping]]] = ..., nics: _Optional[_Iterable[_Union[MachineNic, _Mapping]]] = ...) -> None: ...
+    def __init__(self, memory: _Optional[int] = ..., disks: _Optional[_Iterable[_Union[MachineBlockDevice, _Mapping]]] = ..., cpus: _Optional[_Iterable[_Union[MetalCPU, _Mapping]]] = ..., gpus: _Optional[_Iterable[_Union[MetalGPU, _Mapping]]] = ..., nics: _Optional[_Iterable[_Union[MachineNic, _Mapping]]] = ...) -> None: ...
 
 class MetalCPU(_message.Message):
     __slots__ = ("vendor", "model", "cores", "threads")

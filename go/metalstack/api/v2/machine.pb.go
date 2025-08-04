@@ -1433,8 +1433,6 @@ type MachineHardware struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Memory the total memory of the machine in bytes
 	Memory uint64 `protobuf:"varint,1,opt,name=memory,proto3" json:"memory,omitempty"`
-	// CPUCores the number of cpu cores
-	CpuCores uint32 `protobuf:"varint,2,opt,name=cpu_cores,json=cpuCores,proto3" json:"cpu_cores,omitempty"`
 	// Disks the list of block devices of this machine
 	Disks []*MachineBlockDevice `protobuf:"bytes,3,rep,name=disks,proto3" json:"disks,omitempty"`
 	// CPUs the cpu details
@@ -1480,13 +1478,6 @@ func (*MachineHardware) Descriptor() ([]byte, []int) {
 func (x *MachineHardware) GetMemory() uint64 {
 	if x != nil {
 		return x.Memory
-	}
-	return 0
-}
-
-func (x *MachineHardware) GetCpuCores() uint32 {
-	if x != nil {
-		return x.CpuCores
 	}
 	return 0
 }
@@ -3034,10 +3025,9 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\fnetwork_type\x18\x05 \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeR\vnetworkType\x125\n" +
 	"\bnat_type\x18\x06 \x01(\x0e2\x1a.metalstack.api.v2.NATTypeR\anatType\x12\x10\n" +
 	"\x03vrf\x18\a \x01(\x04R\x03vrf\x12\x10\n" +
-	"\x03asn\x18\b \x01(\x04R\x03asn\"\x98\x02\n" +
+	"\x03asn\x18\b \x01(\x04R\x03asn\"\xfb\x01\n" +
 	"\x0fMachineHardware\x12\x16\n" +
-	"\x06memory\x18\x01 \x01(\x04R\x06memory\x12\x1b\n" +
-	"\tcpu_cores\x18\x02 \x01(\rR\bcpuCores\x12;\n" +
+	"\x06memory\x18\x01 \x01(\x04R\x06memory\x12;\n" +
 	"\x05disks\x18\x03 \x03(\v2%.metalstack.api.v2.MachineBlockDeviceR\x05disks\x12/\n" +
 	"\x04cpus\x18\x04 \x03(\v2\x1b.metalstack.api.v2.MetalCPUR\x04cpus\x12/\n" +
 	"\x04gpus\x18\x05 \x03(\v2\x1b.metalstack.api.v2.MetalGPUR\x04gpus\x121\n" +

@@ -280,8 +280,6 @@ message MachineNetwork {
 message MachineHardware {
   // Memory the total memory of the machine in bytes
   uint64 memory = 1;
-  // CPUCores the number of cpu cores
-  uint32 cpu_cores = 2;
   // Disks the list of block devices of this machine
   repeated MachineBlockDevice disks = 3;
   // CPUs the cpu details
