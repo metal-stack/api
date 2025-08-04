@@ -126,7 +126,7 @@ message Machine {
   // Allocation details
   MachineAllocation allocation = 8;
   // State of this machine
-  MachineState state = 9;
+  MachineStateDetails state = 9;
   // LEDState indicates the state of the indicator LED on this machine
   MachineChassisIdentifyLEDState led_state = 10;
   // Liveliness of this machine

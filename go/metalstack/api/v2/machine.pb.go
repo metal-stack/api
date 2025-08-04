@@ -785,7 +785,7 @@ type Machine struct {
 	// Allocation details
 	Allocation *MachineAllocation `protobuf:"bytes,8,opt,name=allocation,proto3" json:"allocation,omitempty"`
 	// State of this machine
-	State MachineState `protobuf:"varint,9,opt,name=state,proto3,enum=metalstack.api.v2.MachineState" json:"state,omitempty"`
+	State *MachineStateDetails `protobuf:"bytes,9,opt,name=state,proto3" json:"state,omitempty"`
 	// LEDState indicates the state of the indicator LED on this machine
 	LedState *MachineChassisIdentifyLEDState `protobuf:"bytes,10,opt,name=led_state,json=ledState,proto3" json:"led_state,omitempty"`
 	// Liveliness of this machine
@@ -882,11 +882,11 @@ func (x *Machine) GetAllocation() *MachineAllocation {
 	return nil
 }
 
-func (x *Machine) GetState() MachineState {
+func (x *Machine) GetState() *MachineStateDetails {
 	if x != nil {
 		return x.State
 	}
-	return MachineState_MACHINE_STATE_UNSPECIFIED
+	return nil
 }
 
 func (x *Machine) GetLedState() *MachineChassisIdentifyLEDState {
@@ -2960,7 +2960,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x1bMachineServiceDeleteRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\x1e\n" +
-	"\x1cMachineServiceDeleteResponse\"\xd4\x05\n" +
+	"\x1cMachineServiceDeleteResponse\"\xdb\x05\n" +
 	"\aMachine\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12:\n" +
@@ -2971,8 +2971,8 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04bios\x18\a \x01(\v2\x1e.metalstack.api.v2.MachineBiosR\x04bios\x12D\n" +
 	"\n" +
 	"allocation\x18\b \x01(\v2$.metalstack.api.v2.MachineAllocationR\n" +
-	"allocation\x125\n" +
-	"\x05state\x18\t \x01(\x0e2\x1f.metalstack.api.v2.MachineStateR\x05state\x12N\n" +
+	"allocation\x12<\n" +
+	"\x05state\x18\t \x01(\v2&.metalstack.api.v2.MachineStateDetailsR\x05state\x12N\n" +
 	"\tled_state\x18\n" +
 	" \x01(\v21.metalstack.api.v2.MachineChassisIdentifyLEDStateR\bledState\x12D\n" +
 	"\n" +
@@ -3300,7 +3300,7 @@ var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	21, // 6: metalstack.api.v2.Machine.hardware:type_name -> metalstack.api.v2.MachineHardware
 	28, // 7: metalstack.api.v2.Machine.bios:type_name -> metalstack.api.v2.MachineBios
 	16, // 8: metalstack.api.v2.Machine.allocation:type_name -> metalstack.api.v2.MachineAllocation
-	1,  // 9: metalstack.api.v2.Machine.state:type_name -> metalstack.api.v2.MachineState
+	26, // 9: metalstack.api.v2.Machine.state:type_name -> metalstack.api.v2.MachineStateDetails
 	27, // 10: metalstack.api.v2.Machine.led_state:type_name -> metalstack.api.v2.MachineChassisIdentifyLEDState
 	3,  // 11: metalstack.api.v2.Machine.liveliness:type_name -> metalstack.api.v2.MachineLiveliness
 	29, // 12: metalstack.api.v2.Machine.recent_provisioning_events:type_name -> metalstack.api.v2.MachineRecentProvisioningEvents

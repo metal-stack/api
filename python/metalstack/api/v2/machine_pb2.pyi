@@ -150,11 +150,11 @@ class Machine(_message.Message):
     hardware: MachineHardware
     bios: MachineBios
     allocation: MachineAllocation
-    state: MachineState
+    state: MachineStateDetails
     led_state: MachineChassisIdentifyLEDState
     liveliness: MachineLiveliness
     recent_provisioning_events: MachineRecentProvisioningEvents
-    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ..., rack: _Optional[str] = ..., size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocation, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., liveliness: _Optional[_Union[MachineLiveliness, str]] = ..., recent_provisioning_events: _Optional[_Union[MachineRecentProvisioningEvents, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ..., rack: _Optional[str] = ..., size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocation, _Mapping]] = ..., state: _Optional[_Union[MachineStateDetails, _Mapping]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., liveliness: _Optional[_Union[MachineLiveliness, str]] = ..., recent_provisioning_events: _Optional[_Union[MachineRecentProvisioningEvents, _Mapping]] = ...) -> None: ...
 
 class MachineAllocation(_message.Message):
     __slots__ = ("uuid", "meta", "name", "description", "created_by", "project", "image", "filesystem_layout", "machine_networks", "hostname", "ssh_public_keys", "userdata", "boot_info", "role", "firewall_rules", "dns_server", "ntp_server", "vpn")
