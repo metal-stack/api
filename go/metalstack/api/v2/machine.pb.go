@@ -3188,30 +3188,31 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\tcpu_cores\x18\x02 \x01(\rH\x01R\bcpuCores\x88\x01\x01B\t\n" +
 	"\a_memoryB\f\n" +
 	"\n" +
-	"_cpu_cores*S\n" +
+	"_cpu_cores*e\n" +
 	"\n" +
 	"IPProtocol\x12\x1b\n" +
-	"\x17IP_PROTOCOL_UNSPECIFIED\x10\x00\x12\x13\n" +
-	"\x0fIP_PROTOCOL_TCP\x10\x01\x12\x13\n" +
-	"\x0fIP_PROTOCOL_UDP\x10\x02*\x80\x01\n" +
+	"\x17IP_PROTOCOL_UNSPECIFIED\x10\x00\x12\x1c\n" +
+	"\x0fIP_PROTOCOL_TCP\x10\x01\x1a\a\x82\xb2\x19\x03tcp\x12\x1c\n" +
+	"\x0fIP_PROTOCOL_UDP\x10\x02\x1a\a\x82\xb2\x19\x03udp*\xa9\x01\n" +
 	"\fMachineState\x12\x1d\n" +
-	"\x19MACHINE_STATE_UNSPECIFIED\x10\x00\x12\x1a\n" +
-	"\x16MACHINE_STATE_RESERVED\x10\x01\x12\x18\n" +
-	"\x14MACHINE_STATE_LOCKED\x10\x02\x12\x1b\n" +
-	"\x17MACHINE_STATE_AVAILABLE\x10\x03*\xb6\x01\n" +
+	"\x19MACHINE_STATE_UNSPECIFIED\x10\x00\x12(\n" +
+	"\x16MACHINE_STATE_RESERVED\x10\x01\x1a\f\x82\xb2\x19\breserved\x12$\n" +
+	"\x14MACHINE_STATE_LOCKED\x10\x02\x1a\n" +
+	"\x82\xb2\x19\x06locked\x12*\n" +
+	"\x17MACHINE_STATE_AVAILABLE\x10\x03\x1a\r\x82\xb2\x19\tavailable*\xd9\x01\n" +
 	"\x1dMachineProvisioningEventState\x120\n" +
-	",MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED\x10\x00\x12.\n" +
-	"*MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP\x10\x01\x123\n" +
-	"/MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM\x10\x02*\x92\x01\n" +
+	",MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED\x10\x00\x12=\n" +
+	"*MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP\x10\x01\x1a\r\x82\xb2\x19\tcrashloop\x12G\n" +
+	"/MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM\x10\x02\x1a\x12\x82\xb2\x19\x0efailed-reclaim*\xb4\x01\n" +
 	"\x11MachineLiveliness\x12\"\n" +
-	"\x1eMACHINE_LIVELINESS_UNSPECIFIED\x10\x00\x12\x1c\n" +
-	"\x18MACHINE_LIVELINESS_ALIVE\x10\x01\x12\x1b\n" +
-	"\x17MACHINE_LIVELINESS_DEAD\x10\x02\x12\x1e\n" +
-	"\x1aMACHINE_LIVELINESS_UNKNOWN\x10\x03*`\n" +
+	"\x1eMACHINE_LIVELINESS_UNSPECIFIED\x10\x00\x12'\n" +
+	"\x18MACHINE_LIVELINESS_ALIVE\x10\x01\x1a\t\x82\xb2\x19\x05alive\x12%\n" +
+	"\x17MACHINE_LIVELINESS_DEAD\x10\x02\x1a\b\x82\xb2\x19\x04dead\x12+\n" +
+	"\x1aMACHINE_LIVELINESS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknown*{\n" +
 	"\vMachineRole\x12\x1c\n" +
-	"\x18MACHINE_ROLE_UNSPECIFIED\x10\x00\x12\x18\n" +
-	"\x14MACHINE_ROLE_MACHINE\x10\x01\x12\x19\n" +
-	"\x15MACHINE_ROLE_FIREWALL\x10\x022\xca\x04\n" +
+	"\x18MACHINE_ROLE_UNSPECIFIED\x10\x00\x12%\n" +
+	"\x14MACHINE_ROLE_MACHINE\x10\x01\x1a\v\x82\xb2\x19\amachine\x12'\n" +
+	"\x15MACHINE_ROLE_FIREWALL\x10\x02\x1a\f\x82\xb2\x19\bfirewall2\xca\x04\n" +
 	"\x0eMachineService\x12m\n" +
 	"\x03Get\x12+.metalstack.api.v2.MachineServiceGetRequest\x1a,.metalstack.api.v2.MachineServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
 	"\x06Create\x12..metalstack.api.v2.MachineServiceCreateRequest\x1a/.metalstack.api.v2.MachineServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12q\n" +

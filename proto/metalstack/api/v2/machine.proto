@@ -219,9 +219,9 @@ enum IPProtocol {
   // IP_PROTOCOL_UNSPECIFIED is not specified
   IP_PROTOCOL_UNSPECIFIED = 0;
   // IP_PROTOCOL_TCP is tcp
-  IP_PROTOCOL_TCP = 1;
+  IP_PROTOCOL_TCP = 1 [(enum_string_value) = "tcp"];
   // IP_PROTOCOL_UDP is udp
-  IP_PROTOCOL_UDP = 2;
+  IP_PROTOCOL_UDP = 2 [(enum_string_value) = "udp"];
 }
 
 // MachineNetwork contains details which network should be created on a allocated machine
@@ -349,11 +349,11 @@ enum MachineState {
   // MACHINE_STATE_UNSPECIFIED is not specified
   MACHINE_STATE_UNSPECIFIED = 0;
   // MACHINE_STATE_RESERVED this machine is reserved
-  MACHINE_STATE_RESERVED = 1;
+  MACHINE_STATE_RESERVED = 1 [(enum_string_value) = "reserved"];
   // MACHINE_STATE_LOCKED this machine is locked
-  MACHINE_STATE_LOCKED = 2;
+  MACHINE_STATE_LOCKED = 2 [(enum_string_value) = "locked"];
   // MACHINE_STATE_LOCKED this machine is available for all
-  MACHINE_STATE_AVAILABLE = 3;
+  MACHINE_STATE_AVAILABLE = 3 [(enum_string_value) = "available"];
 }
 
 // MachineChassisIdentifyLEDState describes the identifier led state
@@ -392,9 +392,9 @@ enum MachineProvisioningEventState {
   // MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
   MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0;
   // MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop
-  MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP = 1;
+  MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP = 1 [(enum_string_value) = "crashloop"];
   // MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim
-  MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2;
+  MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2 [(enum_string_value) = "failed-reclaim"];
   // FIXME do we need more states here
 }
 
@@ -435,11 +435,11 @@ enum MachineLiveliness {
   // MACHINE_LIVELINESS_UNSPECIFIED is not defined
   MACHINE_LIVELINESS_UNSPECIFIED = 0;
   // MACHINE_LIVELINESS_ALIVE liveliness is alive
-  MACHINE_LIVELINESS_ALIVE = 1;
+  MACHINE_LIVELINESS_ALIVE = 1 [(enum_string_value) = "alive"];
   // MACHINE_LIVELINESS_DEAD liveliness is dead
-  MACHINE_LIVELINESS_DEAD = 2;
+  MACHINE_LIVELINESS_DEAD = 2 [(enum_string_value) = "dead"];
   // MACHINE_LIVELINESS_UNKNOWN liveliness is unknown
-  MACHINE_LIVELINESS_UNKNOWN = 3;
+  MACHINE_LIVELINESS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
 }
 
 // MachineRole defines if this is a machine or a firewall
@@ -447,9 +447,9 @@ enum MachineRole {
   // MACHINE_ROLE_UNSPECIFIED is unspecified
   MACHINE_ROLE_UNSPECIFIED = 0;
   // MACHINE_ROLE_MACHINE is a machine
-  MACHINE_ROLE_MACHINE = 1;
+  MACHINE_ROLE_MACHINE = 1 [(enum_string_value) = "machine"];
   // MACHINE_ROLE_FIREWALL is a firewall
-  MACHINE_ROLE_FIREWALL = 2;
+  MACHINE_ROLE_FIREWALL = 2 [(enum_string_value) = "firewall"];
 }
 
 // MachineQuery contains fields which can be specified to list specific machines.
