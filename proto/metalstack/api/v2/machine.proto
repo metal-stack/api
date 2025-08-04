@@ -476,22 +476,24 @@ message MachineQuery {
     min_len: 2
     max_len: 128
   }];
+  // Labels for which this machine should get filtered
+  optional Labels labels = 6;
   // Allocation specific machine queries
-  optional MachineAllocationQuery allocation = 6;
+  optional MachineAllocationQuery allocation = 7;
   // Network specific machine queries
-  optional MachineNetworkQuery network = 7;
+  optional MachineNetworkQuery network = 8;
   // Nic specific machine queries
-  optional MachineNicQuery nic = 8;
+  optional MachineNicQuery nic = 9;
   // Disk specific machine queries
-  optional MachineDiskQuery disk = 9;
+  optional MachineDiskQuery disk = 10;
   // IPMI specific machine queries
-  optional MachineIPMIQuery ipmi = 10;
+  optional MachineIPMIQuery ipmi = 11;
   // FRU specific machine queries
-  optional MachineFRUQuery fru = 11;
+  optional MachineFRUQuery fru = 12;
   // Hardware specific machine query
-  optional MachineHardwareQuery hardware = 12;
+  optional MachineHardwareQuery hardware = 13;
   // State this machine has
-  optional MachineState state = 13;
+  optional MachineState state = 14;
 }
 
 // MachineAllocationQuery allocation specific query parameters

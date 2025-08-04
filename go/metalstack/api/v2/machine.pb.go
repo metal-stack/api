@@ -2220,22 +2220,24 @@ type MachineQuery struct {
 	Size *string `protobuf:"bytes,4,opt,name=size,proto3,oneof" json:"size,omitempty"`
 	// Rack of the machine to get
 	Rack *string `protobuf:"bytes,5,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
+	// Labels for which this machine should get filtered
+	Labels *Labels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	// Allocation specific machine queries
-	Allocation *MachineAllocationQuery `protobuf:"bytes,6,opt,name=allocation,proto3,oneof" json:"allocation,omitempty"`
+	Allocation *MachineAllocationQuery `protobuf:"bytes,7,opt,name=allocation,proto3,oneof" json:"allocation,omitempty"`
 	// Network specific machine queries
-	Network *MachineNetworkQuery `protobuf:"bytes,7,opt,name=network,proto3,oneof" json:"network,omitempty"`
+	Network *MachineNetworkQuery `protobuf:"bytes,8,opt,name=network,proto3,oneof" json:"network,omitempty"`
 	// Nic specific machine queries
-	Nic *MachineNicQuery `protobuf:"bytes,8,opt,name=nic,proto3,oneof" json:"nic,omitempty"`
+	Nic *MachineNicQuery `protobuf:"bytes,9,opt,name=nic,proto3,oneof" json:"nic,omitempty"`
 	// Disk specific machine queries
-	Disk *MachineDiskQuery `protobuf:"bytes,9,opt,name=disk,proto3,oneof" json:"disk,omitempty"`
+	Disk *MachineDiskQuery `protobuf:"bytes,10,opt,name=disk,proto3,oneof" json:"disk,omitempty"`
 	// IPMI specific machine queries
-	Ipmi *MachineIPMIQuery `protobuf:"bytes,10,opt,name=ipmi,proto3,oneof" json:"ipmi,omitempty"`
+	Ipmi *MachineIPMIQuery `protobuf:"bytes,11,opt,name=ipmi,proto3,oneof" json:"ipmi,omitempty"`
 	// FRU specific machine queries
-	Fru *MachineFRUQuery `protobuf:"bytes,11,opt,name=fru,proto3,oneof" json:"fru,omitempty"`
+	Fru *MachineFRUQuery `protobuf:"bytes,12,opt,name=fru,proto3,oneof" json:"fru,omitempty"`
 	// Hardware specific machine query
-	Hardware *MachineHardwareQuery `protobuf:"bytes,12,opt,name=hardware,proto3,oneof" json:"hardware,omitempty"`
+	Hardware *MachineHardwareQuery `protobuf:"bytes,13,opt,name=hardware,proto3,oneof" json:"hardware,omitempty"`
 	// State this machine has
-	State         *MachineState `protobuf:"varint,13,opt,name=state,proto3,enum=metalstack.api.v2.MachineState,oneof" json:"state,omitempty"`
+	State         *MachineState `protobuf:"varint,14,opt,name=state,proto3,enum=metalstack.api.v2.MachineState,oneof" json:"state,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2303,6 +2305,13 @@ func (x *MachineQuery) GetRack() string {
 		return *x.Rack
 	}
 	return ""
+}
+
+func (x *MachineQuery) GetLabels() *Labels {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
 }
 
 func (x *MachineQuery) GetAllocation() *MachineAllocationQuery {
@@ -3079,7 +3088,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"MachineVPN\x122\n" +
 	"\x15control_plane_address\x18\x01 \x01(\tR\x13controlPlaneAddress\x12\x19\n" +
 	"\bauth_key\x18\x02 \x01(\tR\aauthKey\x12\x1c\n" +
-	"\tconnected\x18\x03 \x01(\bR\tconnected\"\xe4\x06\n" +
+	"\tconnected\x18\x03 \x01(\bR\tconnected\"\xa7\a\n" +
 	"\fMachineQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12#\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -3089,25 +3098,27 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04size\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x04size\x88\x01\x01\x12#\n" +
 	"\x04rack\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x04rack\x88\x01\x01\x12N\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x04rack\x88\x01\x01\x126\n" +
+	"\x06labels\x18\x06 \x01(\v2\x19.metalstack.api.v2.LabelsH\x05R\x06labels\x88\x01\x01\x12N\n" +
 	"\n" +
-	"allocation\x18\x06 \x01(\v2).metalstack.api.v2.MachineAllocationQueryH\x05R\n" +
+	"allocation\x18\a \x01(\v2).metalstack.api.v2.MachineAllocationQueryH\x06R\n" +
 	"allocation\x88\x01\x01\x12E\n" +
-	"\anetwork\x18\a \x01(\v2&.metalstack.api.v2.MachineNetworkQueryH\x06R\anetwork\x88\x01\x01\x129\n" +
-	"\x03nic\x18\b \x01(\v2\".metalstack.api.v2.MachineNicQueryH\aR\x03nic\x88\x01\x01\x12<\n" +
-	"\x04disk\x18\t \x01(\v2#.metalstack.api.v2.MachineDiskQueryH\bR\x04disk\x88\x01\x01\x12<\n" +
-	"\x04ipmi\x18\n" +
-	" \x01(\v2#.metalstack.api.v2.MachineIPMIQueryH\tR\x04ipmi\x88\x01\x01\x129\n" +
-	"\x03fru\x18\v \x01(\v2\".metalstack.api.v2.MachineFRUQueryH\n" +
-	"R\x03fru\x88\x01\x01\x12H\n" +
-	"\bhardware\x18\f \x01(\v2'.metalstack.api.v2.MachineHardwareQueryH\vR\bhardware\x88\x01\x01\x12:\n" +
-	"\x05state\x18\r \x01(\x0e2\x1f.metalstack.api.v2.MachineStateH\fR\x05state\x88\x01\x01B\a\n" +
+	"\anetwork\x18\b \x01(\v2&.metalstack.api.v2.MachineNetworkQueryH\aR\anetwork\x88\x01\x01\x129\n" +
+	"\x03nic\x18\t \x01(\v2\".metalstack.api.v2.MachineNicQueryH\bR\x03nic\x88\x01\x01\x12<\n" +
+	"\x04disk\x18\n" +
+	" \x01(\v2#.metalstack.api.v2.MachineDiskQueryH\tR\x04disk\x88\x01\x01\x12<\n" +
+	"\x04ipmi\x18\v \x01(\v2#.metalstack.api.v2.MachineIPMIQueryH\n" +
+	"R\x04ipmi\x88\x01\x01\x129\n" +
+	"\x03fru\x18\f \x01(\v2\".metalstack.api.v2.MachineFRUQueryH\vR\x03fru\x88\x01\x01\x12H\n" +
+	"\bhardware\x18\r \x01(\v2'.metalstack.api.v2.MachineHardwareQueryH\fR\bhardware\x88\x01\x01\x12:\n" +
+	"\x05state\x18\x0e \x01(\x0e2\x1f.metalstack.api.v2.MachineStateH\rR\x05state\x88\x01\x01B\a\n" +
 	"\x05_uuidB\a\n" +
 	"\x05_nameB\f\n" +
 	"\n" +
 	"_partitionB\a\n" +
 	"\x05_sizeB\a\n" +
-	"\x05_rackB\r\n" +
+	"\x05_rackB\t\n" +
+	"\a_labelsB\r\n" +
 	"\v_allocationB\n" +
 	"\n" +
 	"\b_networkB\x06\n" +
@@ -3287,6 +3298,7 @@ var file_metalstack_api_v2_machine_proto_goTypes = []any{
 	(NetworkType)(0),                        // 48: metalstack.api.v2.NetworkType
 	(NATType)(0),                            // 49: metalstack.api.v2.NATType
 	(*timestamppb.Timestamp)(nil),           // 50: google.protobuf.Timestamp
+	(*Labels)(nil),                          // 51: metalstack.api.v2.Labels
 }
 var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	15, // 0: metalstack.api.v2.MachineServiceGetResponse.machine:type_name -> metalstack.api.v2.Machine
@@ -3329,30 +3341,31 @@ var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	30, // 37: metalstack.api.v2.MachineRecentProvisioningEvents.last_error_event:type_name -> metalstack.api.v2.MachineProvisioningEvent
 	2,  // 38: metalstack.api.v2.MachineRecentProvisioningEvents.state:type_name -> metalstack.api.v2.MachineProvisioningEventState
 	50, // 39: metalstack.api.v2.MachineProvisioningEvent.time:type_name -> google.protobuf.Timestamp
-	34, // 40: metalstack.api.v2.MachineQuery.allocation:type_name -> metalstack.api.v2.MachineAllocationQuery
-	35, // 41: metalstack.api.v2.MachineQuery.network:type_name -> metalstack.api.v2.MachineNetworkQuery
-	36, // 42: metalstack.api.v2.MachineQuery.nic:type_name -> metalstack.api.v2.MachineNicQuery
-	37, // 43: metalstack.api.v2.MachineQuery.disk:type_name -> metalstack.api.v2.MachineDiskQuery
-	38, // 44: metalstack.api.v2.MachineQuery.ipmi:type_name -> metalstack.api.v2.MachineIPMIQuery
-	39, // 45: metalstack.api.v2.MachineQuery.fru:type_name -> metalstack.api.v2.MachineFRUQuery
-	40, // 46: metalstack.api.v2.MachineQuery.hardware:type_name -> metalstack.api.v2.MachineHardwareQuery
-	1,  // 47: metalstack.api.v2.MachineQuery.state:type_name -> metalstack.api.v2.MachineState
-	4,  // 48: metalstack.api.v2.MachineAllocationQuery.role:type_name -> metalstack.api.v2.MachineRole
-	5,  // 49: metalstack.api.v2.MachineService.Get:input_type -> metalstack.api.v2.MachineServiceGetRequest
-	7,  // 50: metalstack.api.v2.MachineService.Create:input_type -> metalstack.api.v2.MachineServiceCreateRequest
-	9,  // 51: metalstack.api.v2.MachineService.Update:input_type -> metalstack.api.v2.MachineServiceUpdateRequest
-	11, // 52: metalstack.api.v2.MachineService.List:input_type -> metalstack.api.v2.MachineServiceListRequest
-	13, // 53: metalstack.api.v2.MachineService.Delete:input_type -> metalstack.api.v2.MachineServiceDeleteRequest
-	6,  // 54: metalstack.api.v2.MachineService.Get:output_type -> metalstack.api.v2.MachineServiceGetResponse
-	8,  // 55: metalstack.api.v2.MachineService.Create:output_type -> metalstack.api.v2.MachineServiceCreateResponse
-	10, // 56: metalstack.api.v2.MachineService.Update:output_type -> metalstack.api.v2.MachineServiceUpdateResponse
-	12, // 57: metalstack.api.v2.MachineService.List:output_type -> metalstack.api.v2.MachineServiceListResponse
-	14, // 58: metalstack.api.v2.MachineService.Delete:output_type -> metalstack.api.v2.MachineServiceDeleteResponse
-	54, // [54:59] is the sub-list for method output_type
-	49, // [49:54] is the sub-list for method input_type
-	49, // [49:49] is the sub-list for extension type_name
-	49, // [49:49] is the sub-list for extension extendee
-	0,  // [0:49] is the sub-list for field type_name
+	51, // 40: metalstack.api.v2.MachineQuery.labels:type_name -> metalstack.api.v2.Labels
+	34, // 41: metalstack.api.v2.MachineQuery.allocation:type_name -> metalstack.api.v2.MachineAllocationQuery
+	35, // 42: metalstack.api.v2.MachineQuery.network:type_name -> metalstack.api.v2.MachineNetworkQuery
+	36, // 43: metalstack.api.v2.MachineQuery.nic:type_name -> metalstack.api.v2.MachineNicQuery
+	37, // 44: metalstack.api.v2.MachineQuery.disk:type_name -> metalstack.api.v2.MachineDiskQuery
+	38, // 45: metalstack.api.v2.MachineQuery.ipmi:type_name -> metalstack.api.v2.MachineIPMIQuery
+	39, // 46: metalstack.api.v2.MachineQuery.fru:type_name -> metalstack.api.v2.MachineFRUQuery
+	40, // 47: metalstack.api.v2.MachineQuery.hardware:type_name -> metalstack.api.v2.MachineHardwareQuery
+	1,  // 48: metalstack.api.v2.MachineQuery.state:type_name -> metalstack.api.v2.MachineState
+	4,  // 49: metalstack.api.v2.MachineAllocationQuery.role:type_name -> metalstack.api.v2.MachineRole
+	5,  // 50: metalstack.api.v2.MachineService.Get:input_type -> metalstack.api.v2.MachineServiceGetRequest
+	7,  // 51: metalstack.api.v2.MachineService.Create:input_type -> metalstack.api.v2.MachineServiceCreateRequest
+	9,  // 52: metalstack.api.v2.MachineService.Update:input_type -> metalstack.api.v2.MachineServiceUpdateRequest
+	11, // 53: metalstack.api.v2.MachineService.List:input_type -> metalstack.api.v2.MachineServiceListRequest
+	13, // 54: metalstack.api.v2.MachineService.Delete:input_type -> metalstack.api.v2.MachineServiceDeleteRequest
+	6,  // 55: metalstack.api.v2.MachineService.Get:output_type -> metalstack.api.v2.MachineServiceGetResponse
+	8,  // 56: metalstack.api.v2.MachineService.Create:output_type -> metalstack.api.v2.MachineServiceCreateResponse
+	10, // 57: metalstack.api.v2.MachineService.Update:output_type -> metalstack.api.v2.MachineServiceUpdateResponse
+	12, // 58: metalstack.api.v2.MachineService.List:output_type -> metalstack.api.v2.MachineServiceListResponse
+	14, // 59: metalstack.api.v2.MachineService.Delete:output_type -> metalstack.api.v2.MachineServiceDeleteResponse
+	55, // [55:60] is the sub-list for method output_type
+	50, // [50:55] is the sub-list for method input_type
+	50, // [50:50] is the sub-list for extension type_name
+	50, // [50:50] is the sub-list for extension extendee
+	0,  // [0:50] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_machine_proto_init() }
