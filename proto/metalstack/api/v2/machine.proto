@@ -345,7 +345,7 @@ message MachineStateDetails {
 // MachineState defines if the machine was locked or reserved from a operator
 enum MachineState {
   // MACHINE_STATE_UNSPECIFIED is not specified
-  MACHINE_STATE_UNSPECIFIED = 0;
+  MACHINE_STATE_UNSPECIFIED = 0 [(enum_string_value) = ""];
   // MACHINE_STATE_RESERVED this machine is reserved
   MACHINE_STATE_RESERVED = 1 [(enum_string_value) = "reserved"];
   // MACHINE_STATE_LOCKED this machine is locked
@@ -388,7 +388,7 @@ message MachineRecentProvisioningEvents {
 // MachineProvisioningEventState possible event states
 enum MachineProvisioningEventState {
   // MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
-  MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0;
+  MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0 [(enum_string_value) = ""];
   // MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop
   MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP = 1 [(enum_string_value) = "crashloop"];
   // MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim
@@ -431,7 +431,7 @@ message MachineVPN {
 // MachineLiveliness specifies the liveliness of a machine
 enum MachineLiveliness {
   // MACHINE_LIVELINESS_UNSPECIFIED is not defined
-  MACHINE_LIVELINESS_UNSPECIFIED = 0;
+  MACHINE_LIVELINESS_UNSPECIFIED = 0 [(enum_string_value) = ""];
   // MACHINE_LIVELINESS_ALIVE liveliness is alive
   MACHINE_LIVELINESS_ALIVE = 1 [(enum_string_value) = "alive"];
   // MACHINE_LIVELINESS_DEAD liveliness is dead
@@ -443,7 +443,7 @@ enum MachineLiveliness {
 // MachineRole defines if this is a machine or a firewall
 enum MachineRole {
   // MACHINE_ROLE_UNSPECIFIED is unspecified
-  MACHINE_ROLE_UNSPECIFIED = 0;
+  MACHINE_ROLE_UNSPECIFIED = 0 [(enum_string_value) = ""];
   // MACHINE_ROLE_MACHINE is a machine
   MACHINE_ROLE_MACHINE = 1 [(enum_string_value) = "machine"];
   // MACHINE_ROLE_FIREWALL is a firewall

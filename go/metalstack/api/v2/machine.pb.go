@@ -3194,24 +3194,24 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"IPProtocol\x12\x1b\n" +
 	"\x17IP_PROTOCOL_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x0fIP_PROTOCOL_TCP\x10\x01\x1a\a\x82\xb2\x19\x03tcp\x12\x1c\n" +
-	"\x0fIP_PROTOCOL_UDP\x10\x02\x1a\a\x82\xb2\x19\x03udp*\xa9\x01\n" +
-	"\fMachineState\x12\x1d\n" +
-	"\x19MACHINE_STATE_UNSPECIFIED\x10\x00\x12(\n" +
+	"\x0fIP_PROTOCOL_UDP\x10\x02\x1a\a\x82\xb2\x19\x03udp*\xaf\x01\n" +
+	"\fMachineState\x12#\n" +
+	"\x19MACHINE_STATE_UNSPECIFIED\x10\x00\x1a\x04\x82\xb2\x19\x00\x12(\n" +
 	"\x16MACHINE_STATE_RESERVED\x10\x01\x1a\f\x82\xb2\x19\breserved\x12$\n" +
 	"\x14MACHINE_STATE_LOCKED\x10\x02\x1a\n" +
 	"\x82\xb2\x19\x06locked\x12*\n" +
-	"\x17MACHINE_STATE_AVAILABLE\x10\x03\x1a\r\x82\xb2\x19\tavailable*\xd9\x01\n" +
-	"\x1dMachineProvisioningEventState\x120\n" +
-	",MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED\x10\x00\x12=\n" +
+	"\x17MACHINE_STATE_AVAILABLE\x10\x03\x1a\r\x82\xb2\x19\tavailable*\xdf\x01\n" +
+	"\x1dMachineProvisioningEventState\x126\n" +
+	",MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED\x10\x00\x1a\x04\x82\xb2\x19\x00\x12=\n" +
 	"*MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP\x10\x01\x1a\r\x82\xb2\x19\tcrashloop\x12G\n" +
-	"/MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM\x10\x02\x1a\x12\x82\xb2\x19\x0efailed-reclaim*\xb4\x01\n" +
-	"\x11MachineLiveliness\x12\"\n" +
-	"\x1eMACHINE_LIVELINESS_UNSPECIFIED\x10\x00\x12'\n" +
+	"/MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM\x10\x02\x1a\x12\x82\xb2\x19\x0efailed-reclaim*\xba\x01\n" +
+	"\x11MachineLiveliness\x12(\n" +
+	"\x1eMACHINE_LIVELINESS_UNSPECIFIED\x10\x00\x1a\x04\x82\xb2\x19\x00\x12'\n" +
 	"\x18MACHINE_LIVELINESS_ALIVE\x10\x01\x1a\t\x82\xb2\x19\x05alive\x12%\n" +
 	"\x17MACHINE_LIVELINESS_DEAD\x10\x02\x1a\b\x82\xb2\x19\x04dead\x12+\n" +
-	"\x1aMACHINE_LIVELINESS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknown*{\n" +
-	"\vMachineRole\x12\x1c\n" +
-	"\x18MACHINE_ROLE_UNSPECIFIED\x10\x00\x12%\n" +
+	"\x1aMACHINE_LIVELINESS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknown*\x81\x01\n" +
+	"\vMachineRole\x12\"\n" +
+	"\x18MACHINE_ROLE_UNSPECIFIED\x10\x00\x1a\x04\x82\xb2\x19\x00\x12%\n" +
 	"\x14MACHINE_ROLE_MACHINE\x10\x01\x1a\v\x82\xb2\x19\amachine\x12'\n" +
 	"\x15MACHINE_ROLE_FIREWALL\x10\x02\x1a\f\x82\xb2\x19\bfirewall2\xca\x04\n" +
 	"\x0eMachineService\x12m\n" +
