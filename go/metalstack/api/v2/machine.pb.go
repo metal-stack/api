@@ -488,7 +488,7 @@ type MachineServiceUpdateRequest struct {
 	// Project of the machine
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	// Description of this machine allocation
-	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Labels to update on this machine allocation
 	Labels *UpdateLabels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	// SSHPublicKeys which should be update of this machine allocation
@@ -542,8 +542,8 @@ func (x *MachineServiceUpdateRequest) GetProject() string {
 }
 
 func (x *MachineServiceUpdateRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
@@ -2992,13 +2992,14 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"A\n" +
 	"\x1bMachineServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\x1e\n" +
-	"\x1cMachineServiceCreateResponse\"\xfc\x01\n" +
+	"\x1cMachineServiceCreateResponse\"\x91\x02\n" +
 	"\x1bMachineServiceUpdateRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
-	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12*\n" +
-	"\vdescription\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\vdescription\x12<\n" +
-	"\x06labels\x18\x06 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x00R\x06labels\x88\x01\x01\x12&\n" +
-	"\x0fssh_public_keys\x18\v \x03(\tR\rsshPublicKeysB\t\n" +
+	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12/\n" +
+	"\vdescription\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x00R\vdescription\x88\x01\x01\x12<\n" +
+	"\x06labels\x18\x06 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01\x12&\n" +
+	"\x0fssh_public_keys\x18\v \x03(\tR\rsshPublicKeysB\x0e\n" +
+	"\f_descriptionB\t\n" +
 	"\a_labels\"T\n" +
 	"\x1cMachineServiceUpdateResponse\x124\n" +
 	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"v\n" +
