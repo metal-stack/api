@@ -15698,6 +15698,27 @@ FIXME can this be a slice </p></td>
                   <td><p>Project of the machine </p></td>
                 </tr>
               
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Description of this machine allocation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">UpdateLabels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels to update on this machine allocation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ssh_public_keys</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>SSHPublicKeys which should be update of this machine allocation </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -15709,6 +15730,23 @@ FIXME can this be a slice </p></td>
         <p>MachineServiceUpdateResponse is the request payload for a machine update response</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>machine</td>
+                  <td><a href="#metalstack.api.v2.Machine">Machine</a></td>
+                  <td></td>
+                  <td><p>Machine which was updated </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       

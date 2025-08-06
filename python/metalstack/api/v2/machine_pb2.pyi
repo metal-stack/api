@@ -91,16 +91,24 @@ class MachineServiceCreateResponse(_message.Message):
     def __init__(self) -> None: ...
 
 class MachineServiceUpdateRequest(_message.Message):
-    __slots__ = ("uuid", "project")
+    __slots__ = ("uuid", "project", "description", "labels", "ssh_public_keys")
     UUID_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
+    SSH_PUBLIC_KEYS_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     project: str
-    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
+    description: str
+    labels: _common_pb2.UpdateLabels
+    ssh_public_keys: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ..., description: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class MachineServiceUpdateResponse(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("machine",)
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    machine: Machine
+    def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceListRequest(_message.Message):
     __slots__ = ("project", "query")

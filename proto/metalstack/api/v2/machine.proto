@@ -75,10 +75,19 @@ message MachineServiceUpdateRequest {
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the machine
   string project = 2 [(buf.validate.field).string.uuid = true];
+  // Description of this machine allocation
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Labels to update on this machine allocation
+  optional UpdateLabels labels = 6;
+  // SSHPublicKeys which should be update of this machine allocation
+  repeated string ssh_public_keys = 11;
 }
 
 // MachineServiceUpdateResponse is the request payload for a machine update response
-message MachineServiceUpdateResponse {}
+message MachineServiceUpdateResponse {
+  // Machine which was updated
+  Machine machine = 1;
+}
 
 // MachineServiceListRequest is the request payload for a machine list request
 message MachineServiceListRequest {
