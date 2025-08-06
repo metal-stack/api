@@ -2372,12 +2372,14 @@ type MachineAllocationQuery struct {
 	Project *string `protobuf:"bytes,3,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	// Image of the machine to get
 	Image *string `protobuf:"bytes,4,opt,name=image,proto3,oneof" json:"image,omitempty"`
+	// FilesystemLayout of the machine to get
+	FilesystemLayout *string `protobuf:"bytes,5,opt,name=filesystem_layout,json=filesystemLayout,proto3,oneof" json:"filesystem_layout,omitempty"`
 	// Hostname of the machine to get
-	Hostname *string `protobuf:"bytes,5,opt,name=hostname,proto3,oneof" json:"hostname,omitempty"`
+	Hostname *string `protobuf:"bytes,6,opt,name=hostname,proto3,oneof" json:"hostname,omitempty"`
 	// Role of this machine
-	Role *MachineRole `protobuf:"varint,6,opt,name=role,proto3,enum=metalstack.api.v2.MachineRole,oneof" json:"role,omitempty"`
+	Role *MachineRole `protobuf:"varint,7,opt,name=role,proto3,enum=metalstack.api.v2.MachineRole,oneof" json:"role,omitempty"`
 	// Succeeded search for machine with succeeded allocation
-	Succeeded     *bool `protobuf:"varint,7,opt,name=succeeded,proto3,oneof" json:"succeeded,omitempty"`
+	Succeeded     *bool `protobuf:"varint,8,opt,name=succeeded,proto3,oneof" json:"succeeded,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2436,6 +2438,13 @@ func (x *MachineAllocationQuery) GetProject() string {
 func (x *MachineAllocationQuery) GetImage() string {
 	if x != nil && x.Image != nil {
 		return *x.Image
+	}
+	return ""
+}
+
+func (x *MachineAllocationQuery) GetFilesystemLayout() string {
+	if x != nil && x.FilesystemLayout != nil {
+		return *x.FilesystemLayout
 	}
 	return ""
 }
@@ -3117,23 +3126,26 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x05_ipmiB\x06\n" +
 	"\x04_fruB\v\n" +
 	"\t_hardwareB\b\n" +
-	"\x06_state\"\x85\x03\n" +
+	"\x06_state\"\xd9\x03\n" +
 	"\x16MachineAllocationQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12#\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x04name\x88\x01\x01\x12'\n" +
 	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x02R\aproject\x88\x01\x01\x12%\n" +
 	"\x05image\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x05image\x88\x01\x01\x12+\n" +
-	"\bhostname\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\bhostname\x88\x01\x01\x127\n" +
-	"\x04role\x18\x06 \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleH\x05R\x04role\x88\x01\x01\x12!\n" +
-	"\tsucceeded\x18\a \x01(\bH\x06R\tsucceeded\x88\x01\x01B\a\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x05image\x88\x01\x01\x12<\n" +
+	"\x11filesystem_layout\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x10filesystemLayout\x88\x01\x01\x12+\n" +
+	"\bhostname\x18\x06 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\bhostname\x88\x01\x01\x127\n" +
+	"\x04role\x18\a \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleH\x06R\x04role\x88\x01\x01\x12!\n" +
+	"\tsucceeded\x18\b \x01(\bH\aR\tsucceeded\x88\x01\x01B\a\n" +
 	"\x05_uuidB\a\n" +
 	"\x05_nameB\n" +
 	"\n" +
 	"\b_projectB\b\n" +
-	"\x06_imageB\v\n" +
+	"\x06_imageB\x14\n" +
+	"\x12_filesystem_layoutB\v\n" +
 	"\t_hostnameB\a\n" +
 	"\x05_roleB\f\n" +
 	"\n" +

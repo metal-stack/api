@@ -510,15 +510,20 @@ message MachineAllocationQuery {
     min_len: 2
     max_len: 128
   }];
+  // FilesystemLayout of the machine to get
+  optional string filesystem_layout = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Hostname of the machine to get
-  optional string hostname = 5 [(buf.validate.field).string = {
+  optional string hostname = 6 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Role of this machine
-  optional MachineRole role = 6;
+  optional MachineRole role = 7;
   // Succeeded search for machine with succeeded allocation
-  optional bool succeeded = 7;
+  optional bool succeeded = 8;
 }
 
 // MachineNetworkQuery network specific machine queries
