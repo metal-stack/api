@@ -27,6 +27,7 @@ import metalstack.api.v2.user_connecpy as api_user_connecpy
 import metalstack.api.v2.version_connecpy as api_version_connecpy
 
 import metalstack.infra.v2.bmc_connecpy as infra_bmc_connecpy
+import metalstack.infra.v2.switch_connecpy as infra_switch_connecpy
 
 
 
@@ -140,5 +141,8 @@ class Client:
 
         def bmc(self):
             return infra_bmc_connecpy.BMCServiceClient(address=self._baseurl, session=self._session)
+
+        def switch(self):
+            return infra_switch_connecpy.SwitchServiceClient(address=self._baseurl, session=self._session)
 
 

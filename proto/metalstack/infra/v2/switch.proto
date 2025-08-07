@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package metalstack.infra.v2;
+
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/switch.proto";
+
+// SwitchService serves switch related functions
+service SwitchService {
+  // Register a switch
+  rpc Register(SwitchServiceRegisterRequest) returns (SwitchServiceRegisterResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// SwitchServiceRegisterRequest
+message SwitchServiceRegisterRequest {
+  // Switch to register
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceRegisterResponse
+message SwitchServiceRegisterResponse {
+  // Switch that was registered
+  metalstack.api.v2.Switch switch = 1;
+}
