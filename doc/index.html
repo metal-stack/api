@@ -14302,7 +14302,7 @@ for which the methods should be allowed </p></td>
               
                 <tr>
                   <td>ports</td>
-                  <td><a href="#int32">int32</a></td>
+                  <td><a href="#uint32">uint32</a></td>
                   <td>repeated</td>
                   <td><p>Ports the ports affected by this rule </p></td>
                 </tr>
@@ -14347,7 +14347,7 @@ for which the methods should be allowed </p></td>
               
                 <tr>
                   <td>ports</td>
-                  <td><a href="#int32">int32</a></td>
+                  <td><a href="#uint32">uint32</a></td>
                   <td>repeated</td>
                   <td><p>Ports the ports affected by this rule </p></td>
                 </tr>
@@ -14579,10 +14579,10 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
-                  <td>machine_networks</td>
+                  <td>networks</td>
                   <td><a href="#metalstack.api.v2.MachineNetwork">MachineNetwork</a></td>
                   <td>repeated</td>
-                  <td><p>MachineNetworks this machine should be attached to </p></td>
+                  <td><p>Networks this machine should be attached to </p></td>
                 </tr>
               
                 <tr>
@@ -14603,7 +14603,9 @@ for which the methods should be allowed </p></td>
                   <td>userdata</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Userdata contains instructions required to bootstrap the machine </p></td>
+                  <td><p>Userdata contains instructions required to bootstrap the machine
+AWS limits the max userdata size to 16k, lets allow twice as much
+TODO must be enforced in the create request </p></td>
                 </tr>
               
                 <tr>
@@ -15085,17 +15087,17 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
-                  <td>ips</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>IPs the ip addresses of the allocated machine in this vrf </p></td>
-                </tr>
-              
-                <tr>
                   <td>destination_prefixes</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
                   <td><p>DestinationPrefixes prefixes that are reachable within this network </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ips</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>IPs the ip addresses of the allocated machine in this vrf </p></td>
                 </tr>
               
                 <tr>

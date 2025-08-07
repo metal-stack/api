@@ -165,7 +165,7 @@ class Machine(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ..., rack: _Optional[str] = ..., size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocation, _Mapping]] = ..., state: _Optional[_Union[MachineStateDetails, _Mapping]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., liveliness: _Optional[_Union[MachineLiveliness, str]] = ..., recent_provisioning_events: _Optional[_Union[MachineRecentProvisioningEvents, _Mapping]] = ...) -> None: ...
 
 class MachineAllocation(_message.Message):
-    __slots__ = ("uuid", "meta", "name", "description", "created_by", "project", "image", "filesystem_layout", "machine_networks", "hostname", "ssh_public_keys", "userdata", "boot_info", "role", "firewall_rules", "dns_server", "ntp_server", "vpn")
+    __slots__ = ("uuid", "meta", "name", "description", "created_by", "project", "image", "filesystem_layout", "networks", "hostname", "ssh_public_keys", "userdata", "boot_info", "role", "firewall_rules", "dns_server", "ntp_server", "vpn")
     UUID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -174,7 +174,7 @@ class MachineAllocation(_message.Message):
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     IMAGE_FIELD_NUMBER: _ClassVar[int]
     FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
-    MACHINE_NETWORKS_FIELD_NUMBER: _ClassVar[int]
+    NETWORKS_FIELD_NUMBER: _ClassVar[int]
     HOSTNAME_FIELD_NUMBER: _ClassVar[int]
     SSH_PUBLIC_KEYS_FIELD_NUMBER: _ClassVar[int]
     USERDATA_FIELD_NUMBER: _ClassVar[int]
@@ -192,7 +192,7 @@ class MachineAllocation(_message.Message):
     project: str
     image: _image_pb2.Image
     filesystem_layout: _filesystem_pb2.FilesystemLayout
-    machine_networks: _containers.RepeatedCompositeFieldContainer[MachineNetwork]
+    networks: _containers.RepeatedCompositeFieldContainer[MachineNetwork]
     hostname: str
     ssh_public_keys: _containers.RepeatedScalarFieldContainer[str]
     userdata: str
@@ -202,7 +202,7 @@ class MachineAllocation(_message.Message):
     dns_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.DNSServer]
     ntp_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.NTPServer]
     vpn: MachineVPN
-    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., created_by: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ..., machine_networks: _Optional[_Iterable[_Union[MachineNetwork, _Mapping]]] = ..., hostname: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., boot_info: _Optional[_Union[BootInfo, _Mapping]] = ..., role: _Optional[_Union[MachineRole, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ..., dns_server: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., created_by: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineNetwork, _Mapping]]] = ..., hostname: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., boot_info: _Optional[_Union[BootInfo, _Mapping]] = ..., role: _Optional[_Union[MachineRole, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ..., dns_server: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ...) -> None: ...
 
 class FirewallRules(_message.Message):
     __slots__ = ("egress", "ingress")
@@ -238,24 +238,24 @@ class FirewallIngressRule(_message.Message):
     def __init__(self, protocol: _Optional[_Union[IPProtocol, str]] = ..., ports: _Optional[_Iterable[int]] = ..., to: _Optional[_Iterable[str]] = ..., comment: _Optional[str] = ..., **kwargs) -> None: ...
 
 class MachineNetwork(_message.Message):
-    __slots__ = ("network", "prefixes", "ips", "destination_prefixes", "network_type", "nat_type", "vrf", "asn")
+    __slots__ = ("network", "prefixes", "destination_prefixes", "ips", "network_type", "nat_type", "vrf", "asn")
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     PREFIXES_FIELD_NUMBER: _ClassVar[int]
-    IPS_FIELD_NUMBER: _ClassVar[int]
     DESTINATION_PREFIXES_FIELD_NUMBER: _ClassVar[int]
+    IPS_FIELD_NUMBER: _ClassVar[int]
     NETWORK_TYPE_FIELD_NUMBER: _ClassVar[int]
     NAT_TYPE_FIELD_NUMBER: _ClassVar[int]
     VRF_FIELD_NUMBER: _ClassVar[int]
     ASN_FIELD_NUMBER: _ClassVar[int]
     network: str
     prefixes: _containers.RepeatedScalarFieldContainer[str]
-    ips: _containers.RepeatedScalarFieldContainer[str]
     destination_prefixes: _containers.RepeatedScalarFieldContainer[str]
+    ips: _containers.RepeatedScalarFieldContainer[str]
     network_type: _network_pb2.NetworkType
     nat_type: _network_pb2.NATType
     vrf: int
     asn: int
-    def __init__(self, network: _Optional[str] = ..., prefixes: _Optional[_Iterable[str]] = ..., ips: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., network_type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., asn: _Optional[int] = ...) -> None: ...
+    def __init__(self, network: _Optional[str] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., ips: _Optional[_Iterable[str]] = ..., network_type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., asn: _Optional[int] = ...) -> None: ...
 
 class MachineHardware(_message.Message):
     __slots__ = ("memory", "disks", "cpus", "gpus", "nics")

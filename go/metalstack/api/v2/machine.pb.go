@@ -965,13 +965,15 @@ type MachineAllocation struct {
 	Image *Image `protobuf:"bytes,7,opt,name=image,proto3" json:"image,omitempty"`
 	// FilesystemLayout to create on the disks
 	FilesystemLayout *FilesystemLayout `protobuf:"bytes,8,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
-	// MachineNetworks this machine should be attached to
-	MachineNetworks []*MachineNetwork `protobuf:"bytes,9,rep,name=machine_networks,json=machineNetworks,proto3" json:"machine_networks,omitempty"`
+	// Networks this machine should be attached to
+	Networks []*MachineNetwork `protobuf:"bytes,9,rep,name=networks,proto3" json:"networks,omitempty"`
 	// Hostname of the allocated machine
 	Hostname string `protobuf:"bytes,10,opt,name=hostname,proto3" json:"hostname,omitempty"`
 	// SSHPublicKeys which should be installed on this machine
 	SshPublicKeys []string `protobuf:"bytes,11,rep,name=ssh_public_keys,json=sshPublicKeys,proto3" json:"ssh_public_keys,omitempty"`
 	// Userdata contains instructions required to bootstrap the machine
+	// AWS limits the max userdata size to 16k, lets allow twice as much
+	// TODO must be enforced in the create request
 	Userdata string `protobuf:"bytes,12,opt,name=userdata,proto3" json:"userdata,omitempty"`
 	// BootInfo contains details which are required the machine from disk // FIXME is this still required
 	BootInfo *BootInfo `protobuf:"bytes,13,opt,name=boot_info,json=bootInfo,proto3" json:"boot_info,omitempty"`
@@ -1075,9 +1077,9 @@ func (x *MachineAllocation) GetFilesystemLayout() *FilesystemLayout {
 	return nil
 }
 
-func (x *MachineAllocation) GetMachineNetworks() []*MachineNetwork {
+func (x *MachineAllocation) GetNetworks() []*MachineNetwork {
 	if x != nil {
-		return x.MachineNetworks
+		return x.Networks
 	}
 	return nil
 }
@@ -1206,7 +1208,7 @@ type FirewallEgressRule struct {
 	// Protocol the protocol for the rule, defaults to tcp
 	Protocol IPProtocol `protobuf:"varint,1,opt,name=protocol,proto3,enum=metalstack.api.v2.IPProtocol" json:"protocol,omitempty"`
 	// Ports the ports affected by this rule
-	Ports []int32 `protobuf:"varint,2,rep,packed,name=ports,proto3" json:"ports,omitempty"`
+	Ports []uint32 `protobuf:"varint,2,rep,packed,name=ports,proto3" json:"ports,omitempty"`
 	// To the destination cidrs affected by this rule
 	To []string `protobuf:"bytes,3,rep,name=to,proto3" json:"to,omitempty"`
 	// Comment for this rule
@@ -1252,7 +1254,7 @@ func (x *FirewallEgressRule) GetProtocol() IPProtocol {
 	return IPProtocol_IP_PROTOCOL_UNSPECIFIED
 }
 
-func (x *FirewallEgressRule) GetPorts() []int32 {
+func (x *FirewallEgressRule) GetPorts() []uint32 {
 	if x != nil {
 		return x.Ports
 	}
@@ -1279,7 +1281,7 @@ type FirewallIngressRule struct {
 	// Protocol the protocol for the rule, defaults to tcp
 	Protocol IPProtocol `protobuf:"varint,1,opt,name=protocol,proto3,enum=metalstack.api.v2.IPProtocol" json:"protocol,omitempty"`
 	// Ports the ports affected by this rule
-	Ports []int32 `protobuf:"varint,2,rep,packed,name=ports,proto3" json:"ports,omitempty"`
+	Ports []uint32 `protobuf:"varint,2,rep,packed,name=ports,proto3" json:"ports,omitempty"`
 	// To the destination cidrs affected by this rule
 	To []string `protobuf:"bytes,3,rep,name=to,proto3" json:"to,omitempty"`
 	// From the source cidrs affected by this rule
@@ -1327,7 +1329,7 @@ func (x *FirewallIngressRule) GetProtocol() IPProtocol {
 	return IPProtocol_IP_PROTOCOL_UNSPECIFIED
 }
 
-func (x *FirewallIngressRule) GetPorts() []int32 {
+func (x *FirewallIngressRule) GetPorts() []uint32 {
 	if x != nil {
 		return x.Ports
 	}
@@ -1362,10 +1364,10 @@ type MachineNetwork struct {
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	// Prefixes the prefixes of this network
 	Prefixes []string `protobuf:"bytes,2,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
-	// IPs the ip addresses of the allocated machine in this vrf
-	Ips []string `protobuf:"bytes,3,rep,name=ips,proto3" json:"ips,omitempty"`
 	// DestinationPrefixes prefixes that are reachable within this network
-	DestinationPrefixes []string `protobuf:"bytes,4,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
+	DestinationPrefixes []string `protobuf:"bytes,3,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
+	// IPs the ip addresses of the allocated machine in this vrf
+	Ips []string `protobuf:"bytes,4,rep,name=ips,proto3" json:"ips,omitempty"`
 	// NetworkType the type of network of this vrf
 	NetworkType NetworkType `protobuf:"varint,5,opt,name=network_type,json=networkType,proto3,enum=metalstack.api.v2.NetworkType" json:"network_type,omitempty"`
 	// NatType what type of nat if any should be used
@@ -1422,16 +1424,16 @@ func (x *MachineNetwork) GetPrefixes() []string {
 	return nil
 }
 
-func (x *MachineNetwork) GetIps() []string {
+func (x *MachineNetwork) GetDestinationPrefixes() []string {
 	if x != nil {
-		return x.Ips
+		return x.DestinationPrefixes
 	}
 	return nil
 }
 
-func (x *MachineNetwork) GetDestinationPrefixes() []string {
+func (x *MachineNetwork) GetIps() []string {
 	if x != nil {
-		return x.DestinationPrefixes
+		return x.Ips
 	}
 	return nil
 }
@@ -2992,13 +2994,13 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"A\n" +
 	"\x1bMachineServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\x1e\n" +
-	"\x1cMachineServiceCreateResponse\"\x91\x02\n" +
+	"\x1cMachineServiceCreateResponse\"\xa4\x02\n" +
 	"\x1bMachineServiceUpdateRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12/\n" +
 	"\vdescription\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x00R\vdescription\x88\x01\x01\x12<\n" +
-	"\x06labels\x18\x06 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01\x12&\n" +
-	"\x0fssh_public_keys\x18\v \x03(\tR\rsshPublicKeysB\x0e\n" +
+	"\x06labels\x18\x06 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01\x129\n" +
+	"\x0fssh_public_keys\x18\v \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeysB\x0e\n" +
 	"\f_descriptionB\t\n" +
 	"\a_labels\"T\n" +
 	"\x1cMachineServiceUpdateResponse\x124\n" +
@@ -3011,7 +3013,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x1bMachineServiceDeleteRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\x1e\n" +
-	"\x1cMachineServiceDeleteResponse\"\xdb\x05\n" +
+	"\x1cMachineServiceDeleteResponse\"\xe5\x05\n" +
 	"\aMachine\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12:\n" +
@@ -3025,11 +3027,11 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"allocation\x12<\n" +
 	"\x05state\x18\t \x01(\v2&.metalstack.api.v2.MachineStateDetailsR\x05state\x12N\n" +
 	"\tled_state\x18\n" +
-	" \x01(\v21.metalstack.api.v2.MachineChassisIdentifyLEDStateR\bledState\x12D\n" +
+	" \x01(\v21.metalstack.api.v2.MachineChassisIdentifyLEDStateR\bledState\x12N\n" +
 	"\n" +
-	"liveliness\x18\v \x01(\x0e2$.metalstack.api.v2.MachineLivelinessR\n" +
+	"liveliness\x18\v \x01(\x0e2$.metalstack.api.v2.MachineLivelinessB\b\xbaH\x05\x82\x01\x02\x10\x01R\n" +
 	"liveliness\x12p\n" +
-	"\x1arecent_provisioning_events\x18\f \x01(\v22.metalstack.api.v2.MachineRecentProvisioningEventsR\x18recentProvisioningEvents\"\xa5\a\n" +
+	"\x1arecent_provisioning_events\x18\f \x01(\v22.metalstack.api.v2.MachineRecentProvisioningEventsR\x18recentProvisioningEvents\"\xbe\a\n" +
 	"\x11MachineAllocation\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x1c\n" +
@@ -3039,14 +3041,14 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"created_by\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\tcreatedBy\x12\"\n" +
 	"\aproject\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12.\n" +
 	"\x05image\x18\a \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\x12P\n" +
-	"\x11filesystem_layout\x18\b \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\x12L\n" +
-	"\x10machine_networks\x18\t \x03(\v2!.metalstack.api.v2.MachineNetworkR\x0fmachineNetworks\x12$\n" +
+	"\x11filesystem_layout\x18\b \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\x12=\n" +
+	"\bnetworks\x18\t \x03(\v2!.metalstack.api.v2.MachineNetworkR\bnetworks\x12$\n" +
 	"\bhostname\x18\n" +
-	" \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\bhostname\x12&\n" +
-	"\x0fssh_public_keys\x18\v \x03(\tR\rsshPublicKeys\x12\x1a\n" +
-	"\buserdata\x18\f \x01(\tR\buserdata\x128\n" +
-	"\tboot_info\x18\r \x01(\v2\x1b.metalstack.api.v2.BootInfoR\bbootInfo\x122\n" +
-	"\x04role\x18\x0e \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleR\x04role\x12G\n" +
+	" \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\bhostname\x129\n" +
+	"\x0fssh_public_keys\x18\v \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x12%\n" +
+	"\buserdata\x18\f \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80\x02R\buserdata\x128\n" +
+	"\tboot_info\x18\r \x01(\v2\x1b.metalstack.api.v2.BootInfoR\bbootInfo\x12<\n" +
+	"\x04role\x18\x0e \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x12G\n" +
 	"\x0efirewall_rules\x18\x0f \x01(\v2 .metalstack.api.v2.FirewallRulesR\rfirewallRules\x12E\n" +
 	"\n" +
 	"dns_server\x18\x10 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12E\n" +
@@ -3056,25 +3058,32 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x03vpn\x18\x12 \x01(\v2\x1d.metalstack.api.v2.MachineVPNR\x03vpn\"\x90\x01\n" +
 	"\rFirewallRules\x12=\n" +
 	"\x06egress\x18\x01 \x03(\v2%.metalstack.api.v2.FirewallEgressRuleR\x06egress\x12@\n" +
-	"\aingress\x18\x02 \x03(\v2&.metalstack.api.v2.FirewallIngressRuleR\aingress\"\x8f\x01\n" +
-	"\x12FirewallEgressRule\x129\n" +
-	"\bprotocol\x18\x01 \x01(\x0e2\x1d.metalstack.api.v2.IPProtocolR\bprotocol\x12\x14\n" +
-	"\x05ports\x18\x02 \x03(\x05R\x05ports\x12\x0e\n" +
-	"\x02to\x18\x03 \x03(\tR\x02to\x12\x18\n" +
-	"\acomment\x18\x04 \x01(\tR\acomment\"\xa4\x01\n" +
-	"\x13FirewallIngressRule\x129\n" +
-	"\bprotocol\x18\x01 \x01(\x0e2\x1d.metalstack.api.v2.IPProtocolR\bprotocol\x12\x14\n" +
-	"\x05ports\x18\x02 \x03(\x05R\x05ports\x12\x0e\n" +
-	"\x02to\x18\x03 \x03(\tR\x02to\x12\x12\n" +
-	"\x04from\x18\x04 \x03(\tR\x04from\x12\x18\n" +
-	"\acomment\x18\x05 \x01(\tR\acomment\"\xa9\x02\n" +
+	"\aingress\x18\x02 \x03(\v2&.metalstack.api.v2.FirewallIngressRuleR\aingress\"\x87\x02\n" +
+	"\x12FirewallEgressRule\x12C\n" +
+	"\bprotocol\x18\x01 \x01(\x0e2\x1d.metalstack.api.v2.IPProtocolB\b\xbaH\x05\x82\x01\x02\x10\x01R\bprotocol\x12$\n" +
+	"\x05ports\x18\x02 \x03(\rB\x0e\xbaH\v\x92\x01\b\"\x06*\x04\x18\xfc\xff\x03R\x05ports\x12S\n" +
+	"\x02to\x18\x03 \x03(\tBC\xbaH@\x92\x01=\";\xba\x018\n" +
+	"\bvalid_to\x12\x19to prefixes must be valid\x1a\x11this.isIpPrefix()R\x02to\x121\n" +
+	"\acomment\x18\x04 \x01(\tB\x17\xbaH\x14\xd8\x01\x01r\x0f\x18d2\v^[a-z_ -]*$R\acomment\"\xe5\x02\n" +
+	"\x13FirewallIngressRule\x12C\n" +
+	"\bprotocol\x18\x01 \x01(\x0e2\x1d.metalstack.api.v2.IPProtocolB\b\xbaH\x05\x82\x01\x02\x10\x01R\bprotocol\x12$\n" +
+	"\x05ports\x18\x02 \x03(\rB\x0e\xbaH\v\x92\x01\b\"\x06*\x04\x18\xfc\xff\x03R\x05ports\x12S\n" +
+	"\x02to\x18\x03 \x03(\tBC\xbaH@\x92\x01=\";\xba\x018\n" +
+	"\bvalid_to\x12\x19to prefixes must be valid\x1a\x11this.isIpPrefix()R\x02to\x12[\n" +
+	"\x04from\x18\x04 \x03(\tBG\xbaHD\x92\x01A\"?\xba\x01<\n" +
+	"\n" +
+	"valid_from\x12\x1bfrom prefixes must be valid\x1a\x11this.isIpPrefix()R\x04from\x121\n" +
+	"\acomment\x18\x05 \x01(\tB\x17\xbaH\x14\xd8\x01\x01r\x0f\x18d2\v^[a-z_ -]*$R\acomment\"\x9e\x04\n" +
 	"\x0eMachineNetwork\x12\x18\n" +
-	"\anetwork\x18\x01 \x01(\tR\anetwork\x12\x1a\n" +
-	"\bprefixes\x18\x02 \x03(\tR\bprefixes\x12\x10\n" +
-	"\x03ips\x18\x03 \x03(\tR\x03ips\x121\n" +
-	"\x14destination_prefixes\x18\x04 \x03(\tR\x13destinationPrefixes\x12A\n" +
-	"\fnetwork_type\x18\x05 \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeR\vnetworkType\x125\n" +
-	"\bnat_type\x18\x06 \x01(\x0e2\x1a.metalstack.api.v2.NATTypeR\anatType\x12\x10\n" +
+	"\anetwork\x18\x01 \x01(\tR\anetwork\x12b\n" +
+	"\bprefixes\x18\x02 \x03(\tBF\xbaHC\x92\x01@\">\xba\x01;\n" +
+	"\x0evalid_prefixes\x12\x16prefixes must be valid\x1a\x11this.isIpPrefix()R\bprefixes\x12\x91\x01\n" +
+	"\x14destination_prefixes\x18\x03 \x03(\tB^\xbaH[\x92\x01X\"V\xba\x01S\n" +
+	"\x1avalid_destination_prefixes\x12\"destination_prefixes must be valid\x1a\x11this.isIpPrefix()R\x13destinationPrefixes\x12H\n" +
+	"\x03ips\x18\x04 \x03(\tB6\xbaH3\x92\x010\".\xba\x01+\n" +
+	"\tvalid_ips\x12\x11ips must be valid\x1a\vthis.isIp()R\x03ips\x12K\n" +
+	"\fnetwork_type\x18\x05 \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vnetworkType\x12?\n" +
+	"\bnat_type\x18\x06 \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\anatType\x12\x10\n" +
 	"\x03vrf\x18\a \x01(\x04R\x03vrf\x12\x10\n" +
 	"\x03asn\x18\b \x01(\x04R\x03asn\"\xfb\x01\n" +
 	"\x0fMachineHardware\x12\x16\n" +
@@ -3101,9 +3110,9 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\tneighbors\x18\x04 \x03(\v2\x1d.metalstack.api.v2.MachineNicR\tneighbors\"<\n" +
 	"\x12MachineBlockDevice\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x12\n" +
-	"\x04size\x18\x02 \x01(\x04R\x04size\"\xb8\x01\n" +
-	"\x13MachineStateDetails\x125\n" +
-	"\x05state\x18\x01 \x01(\x0e2\x1f.metalstack.api.v2.MachineStateR\x05state\x12 \n" +
+	"\x04size\x18\x02 \x01(\x04R\x04size\"\xc2\x01\n" +
+	"\x13MachineStateDetails\x12?\n" +
+	"\x05state\x18\x01 \x01(\x0e2\x1f.metalstack.api.v2.MachineStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05state\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x16\n" +
 	"\x06issuer\x18\x03 \x01(\tR\x06issuer\x120\n" +
 	"\x14metal_hammer_version\x18\x04 \x01(\tR\x12metalHammerVersion\"X\n" +
@@ -3113,12 +3122,12 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\vMachineBios\x12\x18\n" +
 	"\aversion\x18\x01 \x01(\tR\aversion\x12\x16\n" +
 	"\x06vendor\x18\x02 \x01(\tR\x06vendor\x12\x12\n" +
-	"\x04date\x18\x03 \x01(\tR\x04date\"\xc9\x02\n" +
+	"\x04date\x18\x03 \x01(\tR\x04date\"\xd3\x02\n" +
 	"\x1fMachineRecentProvisioningEvents\x12C\n" +
 	"\x06events\x18\x01 \x03(\v2+.metalstack.api.v2.MachineProvisioningEventR\x06events\x12B\n" +
 	"\x0flast_event_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\rlastEventTime\x12U\n" +
-	"\x10last_error_event\x18\x03 \x01(\v2+.metalstack.api.v2.MachineProvisioningEventR\x0elastErrorEvent\x12F\n" +
-	"\x05state\x18\x04 \x01(\x0e20.metalstack.api.v2.MachineProvisioningEventStateR\x05state\"z\n" +
+	"\x10last_error_event\x18\x03 \x01(\v2+.metalstack.api.v2.MachineProvisioningEventR\x0elastErrorEvent\x12P\n" +
+	"\x05state\x18\x04 \x01(\x0e20.metalstack.api.v2.MachineProvisioningEventStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05state\"z\n" +
 	"\x18MachineProvisioningEvent\x12.\n" +
 	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x12\x14\n" +
 	"\x05event\x18\x02 \x01(\tR\x05event\x12\x18\n" +
@@ -3168,7 +3177,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x05_ipmiB\x06\n" +
 	"\x04_fruB\v\n" +
 	"\t_hardwareB\b\n" +
-	"\x06_state\"\xd9\x03\n" +
+	"\x06_state\"\xe3\x03\n" +
 	"\x16MachineAllocationQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12#\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
@@ -3179,8 +3188,8 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x11filesystem_layout\x18\x05 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x10filesystemLayout\x88\x01\x01\x12+\n" +
 	"\bhostname\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\bhostname\x88\x01\x01\x127\n" +
-	"\x04role\x18\a \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleH\x06R\x04role\x88\x01\x01\x12!\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\bhostname\x88\x01\x01\x12A\n" +
+	"\x04role\x18\a \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\x04role\x88\x01\x01\x12!\n" +
 	"\tsucceeded\x18\b \x01(\bH\aR\tsucceeded\x88\x01\x01B\a\n" +
 	"\x05_uuidB\a\n" +
 	"\x05_nameB\n" +
@@ -3191,12 +3200,15 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\t_hostnameB\a\n" +
 	"\x05_roleB\f\n" +
 	"\n" +
-	"_succeeded\"\xba\x01\n" +
+	"_succeeded\"\x9b\x03\n" +
 	"\x13MachineNetworkQuery\x12\x1a\n" +
-	"\bnetworks\x18\x01 \x03(\tR\bnetworks\x12\x1a\n" +
-	"\bprefixes\x18\x02 \x03(\tR\bprefixes\x121\n" +
-	"\x14destination_prefixes\x18\x03 \x03(\tR\x13destinationPrefixes\x12\x10\n" +
-	"\x03ips\x18\x04 \x03(\tR\x03ips\x12\x12\n" +
+	"\bnetworks\x18\x01 \x03(\tR\bnetworks\x12b\n" +
+	"\bprefixes\x18\x02 \x03(\tBF\xbaHC\x92\x01@\">\xba\x01;\n" +
+	"\x0evalid_prefixes\x12\x16prefixes must be valid\x1a\x11this.isIpPrefix()R\bprefixes\x12\x91\x01\n" +
+	"\x14destination_prefixes\x18\x03 \x03(\tB^\xbaH[\x92\x01X\"V\xba\x01S\n" +
+	"\x1avalid_destination_prefixes\x12\"destination_prefixes must be valid\x1a\x11this.isIpPrefix()R\x13destinationPrefixes\x12H\n" +
+	"\x03ips\x18\x04 \x03(\tB6\xbaH3\x92\x010\".\xba\x01+\n" +
+	"\tvalid_ips\x12\x11ips must be valid\x1a\vthis.isIp()R\x03ips\x12\x12\n" +
 	"\x04vrfs\x18\x05 \x03(\x04R\x04vrfs\x12\x12\n" +
 	"\x04asns\x18\x06 \x03(\x04R\x04asns\"\xc0\x01\n" +
 	"\x0fMachineNicQuery\x12\x12\n" +
@@ -3364,7 +3376,7 @@ var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	42, // 15: metalstack.api.v2.MachineAllocation.meta:type_name -> metalstack.api.v2.Meta
 	45, // 16: metalstack.api.v2.MachineAllocation.image:type_name -> metalstack.api.v2.Image
 	46, // 17: metalstack.api.v2.MachineAllocation.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	20, // 18: metalstack.api.v2.MachineAllocation.machine_networks:type_name -> metalstack.api.v2.MachineNetwork
+	20, // 18: metalstack.api.v2.MachineAllocation.networks:type_name -> metalstack.api.v2.MachineNetwork
 	31, // 19: metalstack.api.v2.MachineAllocation.boot_info:type_name -> metalstack.api.v2.BootInfo
 	4,  // 20: metalstack.api.v2.MachineAllocation.role:type_name -> metalstack.api.v2.MachineRole
 	17, // 21: metalstack.api.v2.MachineAllocation.firewall_rules:type_name -> metalstack.api.v2.FirewallRules

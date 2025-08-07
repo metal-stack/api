@@ -80,7 +80,22 @@ message MachineServiceUpdateRequest {
   // Labels to update on this machine allocation
   optional UpdateLabels labels = 6;
   // SSHPublicKeys which should be update of this machine allocation
-  repeated string ssh_public_keys = 11;
+  repeated string ssh_public_keys = 11 [(buf.validate.field).repeated = {
+    // At most 50 keys can be store.
+    // A lower bound can be set similarly with `min_items`.
+    max_items: 50
+    // `items` validate each value in this `repeated` field.
+    items: {
+      // `string` has string-specific rules for each value in the `repeated` field.
+      // The set of rules allowed here is the same as that of a string field.
+      string: {
+        // Each key must not be empty
+        min_len: 1
+        // Each key can contain at most 8192 characters.
+        max_len: 8192
+      }
+    }
+  }];
 }
 
 // MachineServiceUpdateResponse is the request payload for a machine update response
@@ -139,7 +154,7 @@ message Machine {
   // LEDState indicates the state of the indicator LED on this machine
   MachineChassisIdentifyLEDState led_state = 10;
   // Liveliness of this machine
-  MachineLiveliness liveliness = 11;
+  MachineLiveliness liveliness = 11 [(buf.validate.field).enum.defined_only = true];
   // MachineRecentProvisioningEvents contains the recent provisioning events
   MachineRecentProvisioningEvents recent_provisioning_events = 12;
 }
@@ -162,19 +177,36 @@ message MachineAllocation {
   Image image = 7;
   // FilesystemLayout to create on the disks
   FilesystemLayout filesystem_layout = 8;
-  // MachineNetworks this machine should be attached to
-  repeated MachineNetwork machine_networks = 9;
+  // Networks this machine should be attached to
+  repeated MachineNetwork networks = 9;
   // Hostname of the allocated machine
   string hostname = 10 [(buf.validate.field).string = {max_len: 128}];
   // SSHPublicKeys which should be installed on this machine
-  repeated string ssh_public_keys = 11;
+  repeated string ssh_public_keys = 11 [(buf.validate.field).repeated = {
+    // At most 50 keys can be store.
+    // A lower bound can be set similarly with `min_items`.
+    max_items: 50
+    // `items` validate each value in this `repeated` field.
+    items: {
+      // `string` has string-specific rules for each value in the `repeated` field.
+      // The set of rules allowed here is the same as that of a string field.
+      string: {
+        // Each key must not be empty
+        min_len: 1
+        // Each key can contain at most 8192 characters.
+        max_len: 8192
+      }
+    }
+  }];
   // Userdata contains instructions required to bootstrap the machine
-  string userdata = 12;
+  // AWS limits the max userdata size to 16k, lets allow twice as much
+  // TODO must be enforced in the create request
+  string userdata = 12 [(buf.validate.field).string = {max_len: 32768}];
 
   // BootInfo contains details which are required the machine from disk // FIXME is this still required
   BootInfo boot_info = 13;
   // Role defines if this is machine or a firewall
-  MachineRole role = 14;
+  MachineRole role = 14 [(buf.validate.field).enum.defined_only = true];
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 15;
   // DNSServers for this machine
@@ -200,27 +232,71 @@ message FirewallRules {
 // FirewallEgressRule defines rules for outgoing traffic
 message FirewallEgressRule {
   // Protocol the protocol for the rule, defaults to tcp
-  IPProtocol protocol = 1;
+  IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
   // Ports the ports affected by this rule
-  repeated int32 ports = 2;
+  repeated uint32 ports = 2 [(buf.validate.field).repeated = {
+    items: {
+      uint32: {lte: 65532}
+    }
+  }];
   // To the destination cidrs affected by this rule
-  repeated string to = 3;
+  repeated string to = 3 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_to"
+        message: "to prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
   // Comment for this rule
-  string comment = 4;
+  string comment = 4 [(buf.validate.field) = {
+    string: {
+      pattern: "^[a-z_ -]*$"
+      max_len: 100
+    }
+    ignore: IGNORE_IF_ZERO_VALUE
+  }];
 }
 
 // FirewallIngressRule defines rules for incoming traffic
 message FirewallIngressRule {
   // Protocol the protocol for the rule, defaults to tcp
-  IPProtocol protocol = 1;
+  IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
   // Ports the ports affected by this rule
-  repeated int32 ports = 2;
+  repeated uint32 ports = 2 [(buf.validate.field).repeated = {
+    items: {
+      uint32: {lte: 65532}
+    }
+  }];
   // To the destination cidrs affected by this rule
-  repeated string to = 3;
+  repeated string to = 3 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_to"
+        message: "to prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
   // From the source cidrs affected by this rule
-  repeated string from = 4;
+  repeated string from = 4 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_from"
+        message: "from prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
   // Comment for this rule
-  string comment = 5;
+  string comment = 5 [(buf.validate.field) = {
+    string: {
+      pattern: "^[a-z_ -]*$"
+      max_len: 100
+    }
+    ignore: IGNORE_IF_ZERO_VALUE
+  }];
 }
 
 // IPProtocol defines tcp|udp
@@ -238,15 +314,39 @@ message MachineNetwork {
   // Network the networkID of the allocated machine in this vrf
   string network = 1;
   // Prefixes the prefixes of this network
-  repeated string prefixes = 2;
-  // IPs the ip addresses of the allocated machine in this vrf
-  repeated string ips = 3;
+  repeated string prefixes = 2 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_prefixes"
+        message: "prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
   // DestinationPrefixes prefixes that are reachable within this network
-  repeated string destination_prefixes = 4;
+  repeated string destination_prefixes = 3 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_destination_prefixes"
+        message: "destination_prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
+  // IPs the ip addresses of the allocated machine in this vrf
+  repeated string ips = 4 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_ips"
+        message: "ips must be valid"
+        expression: "this.isIp()"
+      }
+    }
+  }];
   // NetworkType the type of network of this vrf
-  NetworkType network_type = 5;
+  NetworkType network_type = 5 [(buf.validate.field).enum.defined_only = true];
   // NatType what type of nat if any should be used
-  NATType nat_type = 6;
+  NATType nat_type = 6 [(buf.validate.field).enum.defined_only = true];
   // VRF the vrf id
   uint64 vrf = 7;
   // ASN the autonomous system number for this network
@@ -342,7 +442,7 @@ message MachineBlockDevice {
 // MachineState details about the machine state
 message MachineStateDetails {
   // State the state of this machine. empty means available for all
-  MachineState state = 1;
+  MachineState state = 1 [(buf.validate.field).enum.defined_only = true];
   // Description a description why this machine is in the given state
   string description = 2;
   // Issuer the user that changed the state
@@ -391,7 +491,7 @@ message MachineRecentProvisioningEvents {
   MachineProvisioningEvent last_error_event = 3;
   // State can be either CrashLoop, FailedReclaim or something else
   // FIXME can this be a slice
-  MachineProvisioningEventState state = 4;
+  MachineProvisioningEventState state = 4 [(buf.validate.field).enum.defined_only = true];
 }
 
 // MachineProvisioningEventState possible event states
@@ -530,7 +630,7 @@ message MachineAllocationQuery {
     max_len: 128
   }];
   // Role of this machine
-  optional MachineRole role = 7;
+  optional MachineRole role = 7 [(buf.validate.field).enum.defined_only = true];
   // Succeeded search for machine with succeeded allocation
   optional bool succeeded = 8;
 }
@@ -540,11 +640,35 @@ message MachineNetworkQuery {
   // Networks this machine is connected to
   repeated string networks = 1;
   // Prefixes this machine is connected to
-  repeated string prefixes = 2;
+  repeated string prefixes = 2 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_prefixes"
+        message: "prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
   // DestinationPrefixes this machine is connected to
-  repeated string destination_prefixes = 3;
+  repeated string destination_prefixes = 3 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_destination_prefixes"
+        message: "destination_prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
   // IPs this machine has
-  repeated string ips = 4;
+  repeated string ips = 4 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_ips"
+        message: "ips must be valid"
+        expression: "this.isIp()"
+      }
+    }
+  }];
   // VRFs this machine is connected to
   repeated uint64 vrfs = 5;
   // ASNs this machine is connected to
