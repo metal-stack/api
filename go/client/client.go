@@ -2,6 +2,8 @@
 package client
 
 import (
+	"sync"
+
 	compress "github.com/klauspost/connect-compress/v2"
 
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
@@ -16,7 +18,9 @@ type (
 		Infrav2() Infrav2
 	}
 	client struct {
-		config DialConfig
+		config *DialConfig
+
+		sync.Mutex
 	}
 	Adminv2 interface {
 		Filesystem() adminv2connect.FilesystemServiceClient
@@ -24,6 +28,7 @@ type (
 		IP() adminv2connect.IPServiceClient
 		Network() adminv2connect.NetworkServiceClient
 		Partition() adminv2connect.PartitionServiceClient
+		Size() adminv2connect.SizeServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
 	}
@@ -34,6 +39,7 @@ type (
 		ipservice         adminv2connect.IPServiceClient
 		networkservice    adminv2connect.NetworkServiceClient
 		partitionservice  adminv2connect.PartitionServiceClient
+		sizeservice       adminv2connect.SizeServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
 		tokenservice      adminv2connect.TokenServiceClient
 	}
@@ -47,6 +53,7 @@ type (
 		Network() apiv2connect.NetworkServiceClient
 		Partition() apiv2connect.PartitionServiceClient
 		Project() apiv2connect.ProjectServiceClient
+		Size() apiv2connect.SizeServiceClient
 		Tenant() apiv2connect.TenantServiceClient
 		Token() apiv2connect.TokenServiceClient
 		User() apiv2connect.UserServiceClient
@@ -62,6 +69,7 @@ type (
 		networkservice    apiv2connect.NetworkServiceClient
 		partitionservice  apiv2connect.PartitionServiceClient
 		projectservice    apiv2connect.ProjectServiceClient
+		sizeservice       apiv2connect.SizeServiceClient
 		tenantservice     apiv2connect.TenantServiceClient
 		tokenservice      apiv2connect.TokenServiceClient
 		userservice       apiv2connect.UserServiceClient
@@ -79,13 +87,21 @@ type (
 	}
 )
 
-func New(config DialConfig) Client {
-	return &client{
+func New(config *DialConfig) (Client, error) {
+	err := config.parse()
+	if err != nil {
+		return nil, err
+	}
+	c := &client{
 		config: config,
 	}
+
+	go c.startTokenRenewal()
+
+	return c, nil
 }
 
-func (c client) Adminv2() Adminv2 {
+func (c *client) Adminv2() Adminv2 {
 	a := &adminv2{
 		filesystemservice: adminv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
@@ -108,6 +124,11 @@ func (c client) Adminv2() Adminv2 {
 			compress.WithAll(compress.LevelBalanced),
 		),
 		partitionservice: adminv2connect.NewPartitionServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		sizeservice: adminv2connect.NewSizeServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
@@ -141,6 +162,9 @@ func (c *adminv2) Network() adminv2connect.NetworkServiceClient {
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice
 }
+func (c *adminv2) Size() adminv2connect.SizeServiceClient {
+	return c.sizeservice
+}
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice
 }
@@ -148,7 +172,7 @@ func (c *adminv2) Token() adminv2connect.TokenServiceClient {
 	return c.tokenservice
 }
 
-func (c client) Apiv2() Apiv2 {
+func (c *client) Apiv2() Apiv2 {
 	a := &apiv2{
 		filesystemservice: apiv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
@@ -186,6 +210,11 @@ func (c client) Apiv2() Apiv2 {
 			compress.WithAll(compress.LevelBalanced),
 		),
 		projectservice: apiv2connect.NewProjectServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
+		sizeservice: apiv2connect.NewSizeServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
@@ -238,6 +267,9 @@ func (c *apiv2) Partition() apiv2connect.PartitionServiceClient {
 func (c *apiv2) Project() apiv2connect.ProjectServiceClient {
 	return c.projectservice
 }
+func (c *apiv2) Size() apiv2connect.SizeServiceClient {
+	return c.sizeservice
+}
 func (c *apiv2) Tenant() apiv2connect.TenantServiceClient {
 	return c.tenantservice
 }
@@ -251,7 +283,7 @@ func (c *apiv2) Version() apiv2connect.VersionServiceClient {
 	return c.versionservice
 }
 
-func (c client) Infrav2() Infrav2 {
+func (c *client) Infrav2() Infrav2 {
 	a := &infrav2{
 		bmcservice: infrav2connect.NewBMCServiceClient(
 			c.config.HttpClient(),

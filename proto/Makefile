@@ -1,5 +1,5 @@
 MAKEFLAGS += --no-print-directory
-BUF_VERSION := 1.54.0
+BUF_VERSION := 1.55.1
 
 _buf:
 	docker run --rm \
@@ -16,4 +16,4 @@ protolint:
 
 .PHONY: protoc
 protoc:
-	@$(MAKE)	_buf	CMD="generate -v"
+	@$(MAKE)	_buf	CMD="generate -v --include-imports"

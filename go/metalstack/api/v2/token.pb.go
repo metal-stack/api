@@ -801,6 +801,100 @@ func (x *TokenServiceGetResponse) GetToken() *Token {
 	return nil
 }
 
+// TokenServiceRefreshRequest is the request payload of a token refresh request
+// Permissions, Roles and Expiration duration and all other properties are inherited from the calling token.
+// The expiration duration will be calculated from the existing token (exp - iat)
+type TokenServiceRefreshRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TokenServiceRefreshRequest) Reset() {
+	*x = TokenServiceRefreshRequest{}
+	mi := &file_metalstack_api_v2_token_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TokenServiceRefreshRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TokenServiceRefreshRequest) ProtoMessage() {}
+
+func (x *TokenServiceRefreshRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_token_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TokenServiceRefreshRequest.ProtoReflect.Descriptor instead.
+func (*TokenServiceRefreshRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_token_proto_rawDescGZIP(), []int{12}
+}
+
+// TokenServiceRefreshResponse is the response payload of a token refresh request
+type TokenServiceRefreshResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Token which was refreshed
+	Token *Token `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	// Secret is the body if the jwt token, should be used in api requests as bearer token
+	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TokenServiceRefreshResponse) Reset() {
+	*x = TokenServiceRefreshResponse{}
+	mi := &file_metalstack_api_v2_token_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TokenServiceRefreshResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TokenServiceRefreshResponse) ProtoMessage() {}
+
+func (x *TokenServiceRefreshResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_token_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TokenServiceRefreshResponse.ProtoReflect.Descriptor instead.
+func (*TokenServiceRefreshResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_token_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *TokenServiceRefreshResponse) GetToken() *Token {
+	if x != nil {
+		return x.Token
+	}
+	return nil
+}
+
+func (x *TokenServiceRefreshResponse) GetSecret() string {
+	if x != nil {
+		return x.Secret
+	}
+	return ""
+}
+
 var File_metalstack_api_v2_token_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_token_proto_rawDesc = "" +
@@ -884,17 +978,22 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x16TokenServiceGetRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"I\n" +
 	"\x17TokenServiceGetResponse\x12.\n" +
-	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token*S\n" +
+	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\"\x1c\n" +
+	"\x1aTokenServiceRefreshRequest\"e\n" +
+	"\x1bTokenServiceRefreshResponse\x12.\n" +
+	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n" +
+	"\x06secret\x18\x02 \x01(\tR\x06secret*S\n" +
 	"\tTokenType\x12\x1a\n" +
 	"\x16TOKEN_TYPE_UNSPECIFIED\x10\x00\x12\x12\n" +
 	"\x0eTOKEN_TYPE_API\x10\x01\x12\x16\n" +
-	"\x12TOKEN_TYPE_CONSOLE\x10\x022\xa0\x04\n" +
+	"\x12TOKEN_TYPE_CONSOLE\x10\x022\x90\x05\n" +
 	"\fTokenService\x12b\n" +
 	"\x03Get\x12).metalstack.api.v2.TokenServiceGetRequest\x1a*.metalstack.api.v2.TokenServiceGetResponse\"\x04\xd8\xf3\x18\x03\x12k\n" +
 	"\x06Create\x12,.metalstack.api.v2.TokenServiceCreateRequest\x1a-.metalstack.api.v2.TokenServiceCreateResponse\"\x04\xd8\xf3\x18\x03\x12k\n" +
 	"\x06Update\x12,.metalstack.api.v2.TokenServiceUpdateRequest\x1a-.metalstack.api.v2.TokenServiceUpdateResponse\"\x04\xd8\xf3\x18\x03\x12e\n" +
 	"\x04List\x12*.metalstack.api.v2.TokenServiceListRequest\x1a+.metalstack.api.v2.TokenServiceListResponse\"\x04\xd8\xf3\x18\x03\x12k\n" +
-	"\x06Revoke\x12,.metalstack.api.v2.TokenServiceRevokeRequest\x1a-.metalstack.api.v2.TokenServiceRevokeResponse\"\x04\xd8\xf3\x18\x03B\xc0\x01\n" +
+	"\x06Revoke\x12,.metalstack.api.v2.TokenServiceRevokeRequest\x1a-.metalstack.api.v2.TokenServiceRevokeResponse\"\x04\xd8\xf3\x18\x03\x12n\n" +
+	"\aRefresh\x12-.metalstack.api.v2.TokenServiceRefreshRequest\x1a..metalstack.api.v2.TokenServiceRefreshResponse\"\x04\xd8\xf3\x18\x03B\xc0\x01\n" +
 	"\x15com.metalstack.api.v2B\n" +
 	"TokenProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
@@ -911,75 +1010,80 @@ func file_metalstack_api_v2_token_proto_rawDescGZIP() []byte {
 }
 
 var file_metalstack_api_v2_token_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_metalstack_api_v2_token_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_metalstack_api_v2_token_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_metalstack_api_v2_token_proto_goTypes = []any{
-	(TokenType)(0),                     // 0: metalstack.api.v2.TokenType
-	(*Token)(nil),                      // 1: metalstack.api.v2.Token
-	(*TokenServiceCreateRequest)(nil),  // 2: metalstack.api.v2.TokenServiceCreateRequest
-	(*MethodPermission)(nil),           // 3: metalstack.api.v2.MethodPermission
-	(*TokenServiceCreateResponse)(nil), // 4: metalstack.api.v2.TokenServiceCreateResponse
-	(*TokenServiceListRequest)(nil),    // 5: metalstack.api.v2.TokenServiceListRequest
-	(*TokenServiceListResponse)(nil),   // 6: metalstack.api.v2.TokenServiceListResponse
-	(*TokenServiceRevokeRequest)(nil),  // 7: metalstack.api.v2.TokenServiceRevokeRequest
-	(*TokenServiceRevokeResponse)(nil), // 8: metalstack.api.v2.TokenServiceRevokeResponse
-	(*TokenServiceUpdateRequest)(nil),  // 9: metalstack.api.v2.TokenServiceUpdateRequest
-	(*TokenServiceUpdateResponse)(nil), // 10: metalstack.api.v2.TokenServiceUpdateResponse
-	(*TokenServiceGetRequest)(nil),     // 11: metalstack.api.v2.TokenServiceGetRequest
-	(*TokenServiceGetResponse)(nil),    // 12: metalstack.api.v2.TokenServiceGetResponse
-	nil,                                // 13: metalstack.api.v2.Token.ProjectRolesEntry
-	nil,                                // 14: metalstack.api.v2.Token.TenantRolesEntry
-	nil,                                // 15: metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry
-	nil,                                // 16: metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry
-	nil,                                // 17: metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry
-	nil,                                // 18: metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry
-	(*timestamppb.Timestamp)(nil),      // 19: google.protobuf.Timestamp
-	(AdminRole)(0),                     // 20: metalstack.api.v2.AdminRole
-	(*durationpb.Duration)(nil),        // 21: google.protobuf.Duration
-	(ProjectRole)(0),                   // 22: metalstack.api.v2.ProjectRole
-	(TenantRole)(0),                    // 23: metalstack.api.v2.TenantRole
+	(TokenType)(0),                      // 0: metalstack.api.v2.TokenType
+	(*Token)(nil),                       // 1: metalstack.api.v2.Token
+	(*TokenServiceCreateRequest)(nil),   // 2: metalstack.api.v2.TokenServiceCreateRequest
+	(*MethodPermission)(nil),            // 3: metalstack.api.v2.MethodPermission
+	(*TokenServiceCreateResponse)(nil),  // 4: metalstack.api.v2.TokenServiceCreateResponse
+	(*TokenServiceListRequest)(nil),     // 5: metalstack.api.v2.TokenServiceListRequest
+	(*TokenServiceListResponse)(nil),    // 6: metalstack.api.v2.TokenServiceListResponse
+	(*TokenServiceRevokeRequest)(nil),   // 7: metalstack.api.v2.TokenServiceRevokeRequest
+	(*TokenServiceRevokeResponse)(nil),  // 8: metalstack.api.v2.TokenServiceRevokeResponse
+	(*TokenServiceUpdateRequest)(nil),   // 9: metalstack.api.v2.TokenServiceUpdateRequest
+	(*TokenServiceUpdateResponse)(nil),  // 10: metalstack.api.v2.TokenServiceUpdateResponse
+	(*TokenServiceGetRequest)(nil),      // 11: metalstack.api.v2.TokenServiceGetRequest
+	(*TokenServiceGetResponse)(nil),     // 12: metalstack.api.v2.TokenServiceGetResponse
+	(*TokenServiceRefreshRequest)(nil),  // 13: metalstack.api.v2.TokenServiceRefreshRequest
+	(*TokenServiceRefreshResponse)(nil), // 14: metalstack.api.v2.TokenServiceRefreshResponse
+	nil,                                 // 15: metalstack.api.v2.Token.ProjectRolesEntry
+	nil,                                 // 16: metalstack.api.v2.Token.TenantRolesEntry
+	nil,                                 // 17: metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry
+	nil,                                 // 18: metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry
+	nil,                                 // 19: metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry
+	nil,                                 // 20: metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry
+	(*timestamppb.Timestamp)(nil),       // 21: google.protobuf.Timestamp
+	(AdminRole)(0),                      // 22: metalstack.api.v2.AdminRole
+	(*durationpb.Duration)(nil),         // 23: google.protobuf.Duration
+	(ProjectRole)(0),                    // 24: metalstack.api.v2.ProjectRole
+	(TenantRole)(0),                     // 25: metalstack.api.v2.TenantRole
 }
 var file_metalstack_api_v2_token_proto_depIdxs = []int32{
 	3,  // 0: metalstack.api.v2.Token.permissions:type_name -> metalstack.api.v2.MethodPermission
-	19, // 1: metalstack.api.v2.Token.expires:type_name -> google.protobuf.Timestamp
-	19, // 2: metalstack.api.v2.Token.issued_at:type_name -> google.protobuf.Timestamp
+	21, // 1: metalstack.api.v2.Token.expires:type_name -> google.protobuf.Timestamp
+	21, // 2: metalstack.api.v2.Token.issued_at:type_name -> google.protobuf.Timestamp
 	0,  // 3: metalstack.api.v2.Token.token_type:type_name -> metalstack.api.v2.TokenType
-	13, // 4: metalstack.api.v2.Token.project_roles:type_name -> metalstack.api.v2.Token.ProjectRolesEntry
-	14, // 5: metalstack.api.v2.Token.tenant_roles:type_name -> metalstack.api.v2.Token.TenantRolesEntry
-	20, // 6: metalstack.api.v2.Token.admin_role:type_name -> metalstack.api.v2.AdminRole
+	15, // 4: metalstack.api.v2.Token.project_roles:type_name -> metalstack.api.v2.Token.ProjectRolesEntry
+	16, // 5: metalstack.api.v2.Token.tenant_roles:type_name -> metalstack.api.v2.Token.TenantRolesEntry
+	22, // 6: metalstack.api.v2.Token.admin_role:type_name -> metalstack.api.v2.AdminRole
 	3,  // 7: metalstack.api.v2.TokenServiceCreateRequest.permissions:type_name -> metalstack.api.v2.MethodPermission
-	21, // 8: metalstack.api.v2.TokenServiceCreateRequest.expires:type_name -> google.protobuf.Duration
-	15, // 9: metalstack.api.v2.TokenServiceCreateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry
-	16, // 10: metalstack.api.v2.TokenServiceCreateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry
-	20, // 11: metalstack.api.v2.TokenServiceCreateRequest.admin_role:type_name -> metalstack.api.v2.AdminRole
+	23, // 8: metalstack.api.v2.TokenServiceCreateRequest.expires:type_name -> google.protobuf.Duration
+	17, // 9: metalstack.api.v2.TokenServiceCreateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry
+	18, // 10: metalstack.api.v2.TokenServiceCreateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry
+	22, // 11: metalstack.api.v2.TokenServiceCreateRequest.admin_role:type_name -> metalstack.api.v2.AdminRole
 	1,  // 12: metalstack.api.v2.TokenServiceCreateResponse.token:type_name -> metalstack.api.v2.Token
 	1,  // 13: metalstack.api.v2.TokenServiceListResponse.tokens:type_name -> metalstack.api.v2.Token
 	3,  // 14: metalstack.api.v2.TokenServiceUpdateRequest.permissions:type_name -> metalstack.api.v2.MethodPermission
-	17, // 15: metalstack.api.v2.TokenServiceUpdateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry
-	18, // 16: metalstack.api.v2.TokenServiceUpdateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry
-	20, // 17: metalstack.api.v2.TokenServiceUpdateRequest.admin_role:type_name -> metalstack.api.v2.AdminRole
+	19, // 15: metalstack.api.v2.TokenServiceUpdateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry
+	20, // 16: metalstack.api.v2.TokenServiceUpdateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry
+	22, // 17: metalstack.api.v2.TokenServiceUpdateRequest.admin_role:type_name -> metalstack.api.v2.AdminRole
 	1,  // 18: metalstack.api.v2.TokenServiceUpdateResponse.token:type_name -> metalstack.api.v2.Token
 	1,  // 19: metalstack.api.v2.TokenServiceGetResponse.token:type_name -> metalstack.api.v2.Token
-	22, // 20: metalstack.api.v2.Token.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
-	23, // 21: metalstack.api.v2.Token.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
-	22, // 22: metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
-	23, // 23: metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
-	22, // 24: metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
-	23, // 25: metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
-	11, // 26: metalstack.api.v2.TokenService.Get:input_type -> metalstack.api.v2.TokenServiceGetRequest
-	2,  // 27: metalstack.api.v2.TokenService.Create:input_type -> metalstack.api.v2.TokenServiceCreateRequest
-	9,  // 28: metalstack.api.v2.TokenService.Update:input_type -> metalstack.api.v2.TokenServiceUpdateRequest
-	5,  // 29: metalstack.api.v2.TokenService.List:input_type -> metalstack.api.v2.TokenServiceListRequest
-	7,  // 30: metalstack.api.v2.TokenService.Revoke:input_type -> metalstack.api.v2.TokenServiceRevokeRequest
-	12, // 31: metalstack.api.v2.TokenService.Get:output_type -> metalstack.api.v2.TokenServiceGetResponse
-	4,  // 32: metalstack.api.v2.TokenService.Create:output_type -> metalstack.api.v2.TokenServiceCreateResponse
-	10, // 33: metalstack.api.v2.TokenService.Update:output_type -> metalstack.api.v2.TokenServiceUpdateResponse
-	6,  // 34: metalstack.api.v2.TokenService.List:output_type -> metalstack.api.v2.TokenServiceListResponse
-	8,  // 35: metalstack.api.v2.TokenService.Revoke:output_type -> metalstack.api.v2.TokenServiceRevokeResponse
-	31, // [31:36] is the sub-list for method output_type
-	26, // [26:31] is the sub-list for method input_type
-	26, // [26:26] is the sub-list for extension type_name
-	26, // [26:26] is the sub-list for extension extendee
-	0,  // [0:26] is the sub-list for field type_name
+	1,  // 20: metalstack.api.v2.TokenServiceRefreshResponse.token:type_name -> metalstack.api.v2.Token
+	24, // 21: metalstack.api.v2.Token.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
+	25, // 22: metalstack.api.v2.Token.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
+	24, // 23: metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
+	25, // 24: metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
+	24, // 25: metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
+	25, // 26: metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
+	11, // 27: metalstack.api.v2.TokenService.Get:input_type -> metalstack.api.v2.TokenServiceGetRequest
+	2,  // 28: metalstack.api.v2.TokenService.Create:input_type -> metalstack.api.v2.TokenServiceCreateRequest
+	9,  // 29: metalstack.api.v2.TokenService.Update:input_type -> metalstack.api.v2.TokenServiceUpdateRequest
+	5,  // 30: metalstack.api.v2.TokenService.List:input_type -> metalstack.api.v2.TokenServiceListRequest
+	7,  // 31: metalstack.api.v2.TokenService.Revoke:input_type -> metalstack.api.v2.TokenServiceRevokeRequest
+	13, // 32: metalstack.api.v2.TokenService.Refresh:input_type -> metalstack.api.v2.TokenServiceRefreshRequest
+	12, // 33: metalstack.api.v2.TokenService.Get:output_type -> metalstack.api.v2.TokenServiceGetResponse
+	4,  // 34: metalstack.api.v2.TokenService.Create:output_type -> metalstack.api.v2.TokenServiceCreateResponse
+	10, // 35: metalstack.api.v2.TokenService.Update:output_type -> metalstack.api.v2.TokenServiceUpdateResponse
+	6,  // 36: metalstack.api.v2.TokenService.List:output_type -> metalstack.api.v2.TokenServiceListResponse
+	8,  // 37: metalstack.api.v2.TokenService.Revoke:output_type -> metalstack.api.v2.TokenServiceRevokeResponse
+	14, // 38: metalstack.api.v2.TokenService.Refresh:output_type -> metalstack.api.v2.TokenServiceRefreshResponse
+	33, // [33:39] is the sub-list for method output_type
+	27, // [27:33] is the sub-list for method input_type
+	27, // [27:27] is the sub-list for extension type_name
+	27, // [27:27] is the sub-list for extension extendee
+	0,  // [0:27] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_token_proto_init() }
@@ -997,7 +1101,7 @@ func file_metalstack_api_v2_token_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_token_proto_rawDesc), len(file_metalstack_api_v2_token_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   18,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
