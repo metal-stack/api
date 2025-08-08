@@ -70,16 +70,18 @@ message MachineServiceCreateRequest {
   // Name of this machine
   string name = 3 [(buf.validate.field).string = {max_len: 128}];
   // Description for this machine
-  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  string description = 4 [(buf.validate.field).string = {max_len: 256}];
   // Hostname the hostname for the allocated machine (defaults to metal)
-  optional string hostname = 5 [(buf.validate.field).string = {max_len: 128}];
+  optional string hostname = 5 [(buf.validate.field).string.hostname = true];
   // Partition the partition id to assign this machine to
-  string partition = 6;
+  string partition = 6 [(buf.validate.field).string = {max_len: 128}];
   // Size of the machine to create
-  string size = 7;
+  string size = 7 [(buf.validate.field).string = {max_len: 128}];
   // Image which should be installed on this machine
-  string image = 8;
+  string image = 8 [(buf.validate.field).string = {max_len: 128}];
   // FilesystemLayout which should be applied for the operating system installation
+  // Is defaulted by a lookup at the available fsls for this size and image.
+  // Can be specified to test new fsls during development of fsls
   optional string filesystem_layout = 9;
   // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
   repeated string ssh_public_keys = 10 [(buf.validate.field).repeated = {
@@ -100,7 +102,6 @@ message MachineServiceCreateRequest {
   }];
   // Userdata contains instructions required to bootstrap the machine
   // AWS limits the max userdata size to 16k, lets allow twice as much
-  // TODO must be enforced in the create request
   optional string userdata = 11 [(buf.validate.field).string = {max_len: 32768}];
   // Labels to be attached to this machine allocation
   Labels labels = 12;
@@ -123,10 +124,10 @@ message MachineServiceCreateRequest {
   repeated DNSServer dns_server = 16 [(buf.validate.field).repeated.max_items = 3];
   // NTPServer the ntp servers used for the machine
   repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
-
-  // TODO should we add the Firewalls here as well together with the MachineRole to be able to create firewall with this request ?
-  // The only difference between machine create and firewall create is the presence of firewalll rules and a different creation logic in the apiserver.
-  // We could still have a FirewallService.Create which simply accepts this message ?
+  // Role defines if this is machine or a firewall
+  MachineRole role = 18 [(buf.validate.field).enum.defined_only = true];
+  // FirewallRules to be applied if this is a firewall
+  FirewallRules firewall_rules = 19;
 }
 
 // MachineServiceCreateResponse is the request payload for a machine create response
@@ -241,9 +242,9 @@ message MachineCondition {
   // State the state of this machine. empty means available for all
   MachineState state = 1 [(buf.validate.field).enum.defined_only = true];
   // Description a description why this machine is in the given state
-  string description = 2;
+  string description = 2 [(buf.validate.field).string = {max_len: 256}];
   // Issuer the user that changed the state
-  string issuer = 3;
+  string issuer = 3 [(buf.validate.field).string = {max_len: 256}];
 }
 
 // MachineAllocation contains properties if this machine is allocated
@@ -267,7 +268,7 @@ message MachineAllocation {
   // Networks this machine should be attached to
   repeated MachineNetwork networks = 9;
   // Hostname of the allocated machine
-  string hostname = 10 [(buf.validate.field).string = {max_len: 128}];
+  string hostname = 10 [(buf.validate.field).string.hostname = true];
   // SSHPublicKeys which should be installed on this machine
   repeated string ssh_public_keys = 11 [(buf.validate.field).repeated = {
     // At most 50 keys can be store.
@@ -285,36 +286,28 @@ message MachineAllocation {
       }
     }
   }];
-  // Userdata contains instructions required to bootstrap the machine
+  // Userdata contains instructions required to bootstrap the machine.
   // AWS limits the max userdata size to 16k, lets allow twice as much
-  // TODO must be enforced in the create request
   string userdata = 12 [(buf.validate.field).string = {max_len: 32768}];
-
-  // BootInfo contains details which are required the machine from disk // FIXME is this still required
-  BootInfo boot_info = 13;
   // Role defines if this is machine or a firewall
-  MachineRole role = 14 [(buf.validate.field).enum.defined_only = true];
+  MachineRole role = 13 [(buf.validate.field).enum.defined_only = true];
   // FirewallRules to be applied if this is a firewall
-  FirewallRules firewall_rules = 15;
+  FirewallRules firewall_rules = 14;
   // DNSServers for this machine
-  repeated DNSServer dns_server = 16 [(buf.validate.field).repeated.max_items = 3];
+  repeated DNSServer dns_server = 15 [(buf.validate.field).repeated.max_items = 3];
   // NTPServers for this machine
-  repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
+  repeated NTPServer ntp_server = 16 [(buf.validate.field).repeated.max_items = 10];
   // VPN connection configuration
-  MachineVPN vpn = 18;
-
-  // FIXME
-  // Succeeded        bool                      `json:"succeeded" description:"if the allocation of the machine was successful, this is set to true"`
-  // Reinstall        bool                      `json:"reinstall" description:"indicates whether to reinstall the machine"`
+  MachineVPN vpn = 17;
 }
 
 // MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired
 message MachineAllocationNetwork {
   // Network the id of the network that this machine will be placed in
   string network = 1;
-  // AutoAcquireIp will automatically acquire an ip in this network if set to true, default is true
-  // FIXME If default is true, should we name it accordingly? Like no_auto_acquire_ip
-  optional bool auto_acquire_ip = 2;
+  // NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
+  // By default one ip address is acquired per network for the machine
+  optional bool no_auto_acquire_ip = 2;
 }
 
 // FirewallRules can be defined during firewall allocation
@@ -446,39 +439,7 @@ message MachineNetwork {
   // VRF the vrf id
   uint64 vrf = 7;
   // ASN the autonomous system number for this network
-  uint64 asn = 8;
-
-  // FIXME i think we do not need to cary over these deprecated fields because the metal-hammer consumes the allocation
-  // and writes from there /etc/metal/install.yaml which then gets processed by install.go
-  // metal-hammer can be adopted to write in the original format.
-
-  // Nat if set to true, packets leaving this network get masqueraded behind interface ip
-  // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
-  // bool nat = 9;
-  // Private indicates whether this network is the private network of this machine
-  // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
-  // bool private = 10 [deprecated = true];
-  // Underlay if set to true, this network can be used for underlay communication
-  // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
-  // bool underlay = 11 [deprecated = true];
-
-  // NetworkID           string   `json:"networkid" description:"the networkID of the allocated machine in this vrf"`
-  // Prefixes            []string `json:"prefixes" description:"the prefixes of this network"`
-  // IPs                 []string `json:"ips" description:"the ip addresses of the allocated machine in this vrf"`
-  // DestinationPrefixes []string `json:"destinationprefixes" modelDescription:"prefixes that are reachable within this network" description:"the destination prefixes of this network"`
-  // NetworkType         string   `json:"networktype" description:"the network type, types can be looked up in the network package of metal-lib"`
-  // Vrf                 uint     `json:"vrf" description:"the vrf of the allocated machine"`
-  // // Attention, uint32 is converted to integer by swagger which is int32 which is to small to hold a asn
-  // ASN int64 `json:"asn" description:"ASN number for this network in the bgp configuration"`
-  // Nat bool  `json:"nat" description:"if set to true, packets leaving this network get masqueraded behind interface ip"`
-  // // Private flag to indicate this is a private network
-  // //
-  // // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
-  // Private bool `json:"private" description:"indicates whether this network is the private network of this machine"`
-  // // Underlay flag to indicate this is a underlay network
-  // //
-  // // Deprecated: can be removed once old machine images without NetworkType are not supported anymore
-  // Underlay bool `json:"underlay" description:"if set to true, this network can be used for underlay communication"`
+  uint32 asn = 8;
 }
 
 // MachineHardware contains hardware details
@@ -498,9 +459,9 @@ message MachineHardware {
 // MetalCPU contains details of a cpu in this machine
 message MetalCPU {
   // Vendor of this cpu
-  string vendor = 1;
+  string vendor = 1 [(buf.validate.field).string = {max_len: 256}];
   // Model of this cpu
-  string model = 2;
+  string model = 2 [(buf.validate.field).string = {max_len: 256}];
   // Cores of this cpu
   uint32 cores = 3;
   // Threads of this cpu
@@ -510,19 +471,22 @@ message MetalCPU {
 // MetalGPU contains details of a gpu in this machine
 message MetalGPU {
   // Vendor of this gpu
-  string vendor = 1;
+  string vendor = 1 [(buf.validate.field).string = {max_len: 256}];
   // Model of this gpu
-  string model = 2;
+  string model = 2 [(buf.validate.field).string = {max_len: 256}];
 }
 
 // MachineNic contains details of a network interface of this machine
 message MachineNic {
   // Mac the macaddress of this interface
-  string mac = 1;
+  string mac = 1 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
   // Name of this interface
-  string name = 2;
+  string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
   // Identifier the unique identifier of this network interface
-  string identifier = 3;
+  string identifier = 3 [(buf.validate.field).string = {max_len: 128}];
   // Neighbors the neighbors visible to this network interface
   repeated MachineNic neighbors = 4;
 }
@@ -530,7 +494,7 @@ message MachineNic {
 // MachineBlockDevice contains details of a block device of this machine
 message MachineBlockDevice {
   // Name of this block device
-  string name = 1;
+  string name = 1 [(buf.validate.field).string = {max_len: 128}];
   // Size of this block device in bytes
   uint64 size = 2;
 }
@@ -550,19 +514,19 @@ enum MachineState {
 // MachineChassisIdentifyLEDState describes the identifier led state
 message MachineChassisIdentifyLEDState {
   // Value the state of this chassis identify LED. empty means LED-OFF
-  string value = 1;
+  string value = 1 [(buf.validate.field).string = {max_len: 128}];
   // Description a description why this chassis identify LED is in the given state
-  string description = 2;
+  string description = 2 [(buf.validate.field).string = {max_len: 256}];
 }
 
 // MachineBios contains BIOS details of this machine
 message MachineBios {
   // Version the bios version
-  string version = 1;
+  string version = 1 [(buf.validate.field).string = {max_len: 256}];
   // Vendor the bios vendor
-  string vendor = 2;
+  string vendor = 2 [(buf.validate.field).string = {max_len: 256}];
   // Date the bios date as string because every vendor has different ideas howto describe the date
-  string date = 3;
+  string date = 3 [(buf.validate.field).string = {max_len: 256}];
 }
 
 // MachineRecentProvisioningEvents the recent provisioning events for this machine
@@ -574,7 +538,6 @@ message MachineRecentProvisioningEvents {
   // LastErrorEvent the last erroneous event received
   MachineProvisioningEvent last_error_event = 3;
   // State can be either CrashLoop, FailedReclaim or something else
-  // FIXME can this be a slice
   MachineProvisioningEventState state = 4 [(buf.validate.field).enum.defined_only = true];
 }
 
@@ -586,7 +549,6 @@ enum MachineProvisioningEventState {
   MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP = 1 [(enum_string_value) = "crashloop"];
   // MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim
   MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2 [(enum_string_value) = "failed-reclaim"];
-  // FIXME do we need more states here
 }
 
 // MachineProvisioningEvent is a event which has occurred during provisioning
@@ -599,18 +561,6 @@ message MachineProvisioningEvent {
   string message = 3;
 }
 
-// BootInfo
-// FIXME is only used for reinstall, can be removed ?
-message BootInfo {
-  // ImageID      string `json:"image_id" description:"the ID of the current image"`
-  // PrimaryDisk  string `json:"primary_disk" description:"the primary disk"`
-  // OSPartition  string `json:"os_partition" description:"the partition containing the OS"`
-  // Initrd       string `json:"initrd" description:"the initrd image"`
-  // Cmdline      string `json:"cmdline" description:"the cmdline"`
-  // Kernel       string `json:"kernel" description:"the kernel"`
-  // BootloaderID string `json:"bootloaderid" description:"the bootloader ID"`
-}
-
 // MachineVPN contains configuration data for the VPN connection
 message MachineVPN {
   // Address of VPN control plane
@@ -619,6 +569,7 @@ message MachineVPN {
   string auth_key = 2;
   // Connected indicate if this machine is connected to the VPN
   bool connected = 3;
+  // TODO add machine ips
 }
 
 // MachineLiveliness specifies the liveliness of a machine
@@ -715,8 +666,6 @@ message MachineAllocationQuery {
   }];
   // Role of this machine
   optional MachineRole role = 7 [(buf.validate.field).enum.defined_only = true];
-  // Succeeded search for machine with succeeded allocation
-  optional bool succeeded = 8;
 }
 
 // MachineNetworkQuery network specific machine queries
@@ -756,7 +705,7 @@ message MachineNetworkQuery {
   // VRFs this machine is connected to
   repeated uint64 vrfs = 5;
   // ASNs this machine is connected to
-  repeated uint64 asns = 6;
+  repeated uint32 asns = 6;
 }
 
 // MachineNicQuery nic specific machine queries

@@ -76,7 +76,7 @@ message SwitchNic {
     max_len: 128
   }];
   // MAC address of the port
-  string mac_address = 3 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
+  string mac = 3 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
   // VRF name if the port is bound in one
   optional string vrf = 4 [(buf.validate.field).string = {
     min_len: 2

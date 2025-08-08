@@ -1436,10 +1436,6 @@
             <ul>
               
                 <li>
-                  <a href="#metalstack.api.v2.BootInfo"><span class="badge">M</span>BootInfo</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.FirewallEgressRule"><span class="badge">M</span>FirewallEgressRule</a>
                 </li>
               
@@ -14354,13 +14350,6 @@ for which the methods should be allowed </p></td>
       <p></p>
 
       
-        <h3 id="metalstack.api.v2.BootInfo">BootInfo</h3>
-        <p>BootInfo</p><p>FIXME is only used for reinstall, can be removed ?</p><p>ImageID      string `json:"image_id" description:"the ID of the current image"`</p><p>PrimaryDisk  string `json:"primary_disk" description:"the primary disk"`</p><p>OSPartition  string `json:"os_partition" description:"the partition containing the OS"`</p><p>Initrd       string `json:"initrd" description:"the initrd image"`</p><p>Cmdline      string `json:"cmdline" description:"the cmdline"`</p><p>Kernel       string `json:"kernel" description:"the kernel"`</p><p>BootloaderID string `json:"bootloaderid" description:"the bootloader ID"`</p>
-
-        
-
-        
-      
         <h3 id="metalstack.api.v2.FirewallEgressRule">FirewallEgressRule</h3>
         <p>FirewallEgressRule defines rules for outgoing traffic</p>
 
@@ -14667,16 +14656,8 @@ for which the methods should be allowed </p></td>
                   <td>userdata</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Userdata contains instructions required to bootstrap the machine
-AWS limits the max userdata size to 16k, lets allow twice as much
-TODO must be enforced in the create request </p></td>
-                </tr>
-              
-                <tr>
-                  <td>boot_info</td>
-                  <td><a href="#metalstack.api.v2.BootInfo">BootInfo</a></td>
-                  <td></td>
-                  <td><p>BootInfo contains details which are required the machine from disk // FIXME is this still required </p></td>
+                  <td><p>Userdata contains instructions required to bootstrap the machine.
+AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
                 </tr>
               
                 <tr>
@@ -14739,11 +14720,11 @@ TODO must be enforced in the create request </p></td>
                 </tr>
               
                 <tr>
-                  <td>auto_acquire_ip</td>
+                  <td>no_auto_acquire_ip</td>
                   <td><a href="#bool">bool</a></td>
                   <td>optional</td>
-                  <td><p>AutoAcquireIp will automatically acquire an ip in this network if set to true, default is true
-FIXME If default is true, should we name it accordingly? Like no_auto_acquire_ip </p></td>
+                  <td><p>NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
+By default one ip address is acquired per network for the machine </p></td>
                 </tr>
               
             </tbody>
@@ -14810,13 +14791,6 @@ FIXME If default is true, should we name it accordingly? Like no_auto_acquire_ip
                   <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
                   <td>optional</td>
                   <td><p>Role of this machine </p></td>
-                </tr>
-              
-                <tr>
-                  <td>succeeded</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td>optional</td>
-                  <td><p>Succeeded search for machine with succeeded allocation </p></td>
                 </tr>
               
             </tbody>
@@ -15257,7 +15231,7 @@ FIXME If default is true, should we name it accordingly? Like no_auto_acquire_ip
               
                 <tr>
                   <td>asn</td>
-                  <td><a href="#uint64">uint64</a></td>
+                  <td><a href="#uint32">uint32</a></td>
                   <td></td>
                   <td><p>ASN the autonomous system number for this network </p></td>
                 </tr>
@@ -15316,7 +15290,7 @@ FIXME If default is true, should we name it accordingly? Like no_auto_acquire_ip
               
                 <tr>
                   <td>asns</td>
-                  <td><a href="#uint64">uint64</a></td>
+                  <td><a href="#uint32">uint32</a></td>
                   <td>repeated</td>
                   <td><p>ASNs this machine is connected to </p></td>
                 </tr>
@@ -15620,8 +15594,7 @@ FIXME If default is true, should we name it accordingly? Like no_auto_acquire_ip
                   <td>state</td>
                   <td><a href="#metalstack.api.v2.MachineProvisioningEventState">MachineProvisioningEventState</a></td>
                   <td></td>
-                  <td><p>State can be either CrashLoop, FailedReclaim or something else
-FIXME can this be a slice </p></td>
+                  <td><p>State can be either CrashLoop, FailedReclaim or something else </p></td>
                 </tr>
               
             </tbody>
@@ -15702,7 +15675,9 @@ this field overrules size and partition </p></td>
                   <td>filesystem_layout</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>FilesystemLayout which should be applied for the operating system installation </p></td>
+                  <td><p>FilesystemLayout which should be applied for the operating system installation
+Is defaulted by a lookup at the available fsls for this size and image.
+Can be specified to test new fsls during development of fsls </p></td>
                 </tr>
               
                 <tr>
@@ -15717,8 +15692,7 @@ this field overrules size and partition </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Userdata contains instructions required to bootstrap the machine
-AWS limits the max userdata size to 16k, lets allow twice as much
-TODO must be enforced in the create request </p></td>
+AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
                 </tr>
               
                 <tr>
@@ -15762,6 +15736,20 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                   <td><a href="#metalstack.api.v2.NTPServer">NTPServer</a></td>
                   <td>repeated</td>
                   <td><p>NTPServer the ntp servers used for the machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>role</td>
+                  <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
+                  <td></td>
+                  <td><p>Role defines if this is machine or a firewall </p></td>
+                </tr>
+              
+                <tr>
+                  <td>firewall_rules</td>
+                  <td><a href="#metalstack.api.v2.FirewallRules">FirewallRules</a></td>
+                  <td></td>
+                  <td><p>FirewallRules to be applied if this is a firewall </p></td>
                 </tr>
               
             </tbody>
@@ -16109,7 +16097,9 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                   <td>connected</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>Connected indicate if this machine is connected to the VPN </p></td>
+                  <td><p>Connected indicate if this machine is connected to the VPN
+
+TODO add machine ips </p></td>
                 </tr>
               
             </tbody>
@@ -16284,9 +16274,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
               <tr>
                 <td>MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM</td>
                 <td>2</td>
-                <td><p>MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim
-
-FIXME do we need more states here</p></td>
+                <td><p>MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim</p></td>
               </tr>
             
           </tbody>
@@ -17741,7 +17729,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>mac_address</td>
+                  <td>mac</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>MAC address of the port </p></td>
