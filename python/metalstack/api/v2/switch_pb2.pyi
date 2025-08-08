@@ -39,6 +39,15 @@ class SwitchPortStatus(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SWITCH_PORT_STATUS_UNSPECIFIED: _ClassVar[SwitchPortStatus]
     SWITCH_PORT_STATUS_UP: _ClassVar[SwitchPortStatus]
     SWITCH_PORT_STATUS_DOWN: _ClassVar[SwitchPortStatus]
+
+class SwitchType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    SWITCH_TYPE_UNSPECIFIED: _ClassVar[SwitchType]
+    SWITCH_TYPE_LEAF: _ClassVar[SwitchType]
+    SWITCH_TYPE_EXIT: _ClassVar[SwitchType]
+    SWITCH_TYPE_SPINE: _ClassVar[SwitchType]
+    SWITCH_TYPE_MGMTLEAF: _ClassVar[SwitchType]
+    SWITCH_TYPE_MGMTSPINE: _ClassVar[SwitchType]
 BGP_STATE_UNSPECIFIED: BGPState
 BGP_STATE_IDLE: BGPState
 BGP_STATE_CONNECT: BGPState
@@ -55,13 +64,20 @@ SWITCH_OS_VENDOR_SONIC: SwitchOSVendor
 SWITCH_PORT_STATUS_UNSPECIFIED: SwitchPortStatus
 SWITCH_PORT_STATUS_UP: SwitchPortStatus
 SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
+SWITCH_TYPE_UNSPECIFIED: SwitchType
+SWITCH_TYPE_LEAF: SwitchType
+SWITCH_TYPE_EXIT: SwitchType
+SWITCH_TYPE_SPINE: SwitchType
+SWITCH_TYPE_MGMTLEAF: SwitchType
+SWITCH_TYPE_MGMTSPINE: SwitchType
 
 class Switch(_message.Message):
-    __slots__ = ("id", "description", "rack_id", "partition", "replace_mode", "management_ip", "management_user", "console_command", "switch_nics")
+    __slots__ = ("id", "description", "rack_id", "partition", "type", "replace_mode", "management_ip", "management_user", "console_command", "switch_nics")
     ID_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     RACK_ID_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
+    TYPE_FIELD_NUMBER: _ClassVar[int]
     REPLACE_MODE_FIELD_NUMBER: _ClassVar[int]
     MANAGEMENT_IP_FIELD_NUMBER: _ClassVar[int]
     MANAGEMENT_USER_FIELD_NUMBER: _ClassVar[int]
@@ -71,12 +87,13 @@ class Switch(_message.Message):
     description: str
     rack_id: str
     partition: str
+    type: SwitchType
     replace_mode: SwitchReplaceMode
     management_ip: str
     management_user: str
     console_command: str
     switch_nics: _containers.RepeatedCompositeFieldContainer[SwitchNic]
-    def __init__(self, id: _Optional[str] = ..., description: _Optional[str] = ..., rack_id: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., switch_nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., description: _Optional[str] = ..., rack_id: _Optional[str] = ..., partition: _Optional[str] = ..., type: _Optional[_Union[SwitchType, str]] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., switch_nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ...) -> None: ...
 
 class SwitchOS(_message.Message):
     __slots__ = ("vendor", "version", "metal_core_version")

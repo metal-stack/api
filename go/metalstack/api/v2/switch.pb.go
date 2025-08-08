@@ -327,7 +327,7 @@ type Switch struct {
 	RackId *string `protobuf:"bytes,3,opt,name=rack_id,json=rackId,proto3,oneof" json:"rack_id,omitempty"`
 	// Partition the switch belongs to
 	Partition string `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"`
-	// Type signifies what role a switch has, e.g. whether it is a leaf switch, or a spine, etc.
+	// Type is the role of the switch
 	Type SwitchType `protobuf:"varint,5,opt,name=type,proto3,enum=metalstack.api.v2.SwitchType" json:"type,omitempty"`
 	// Replace mode is used to mark a switch ready for replacement
 	ReplaceMode SwitchReplaceMode `protobuf:"varint,6,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode" json:"replace_mode,omitempty"`

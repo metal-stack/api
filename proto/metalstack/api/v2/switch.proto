@@ -29,6 +29,7 @@ message Switch {
     min_len: 2
     max_len: 128
   }];
+  // Type is the role of the switch
   SwitchType type = 5 [(buf.validate.field).enum.defined_only = true];
   // Replace mode is used to mark a switch ready for replacement
   SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
