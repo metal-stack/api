@@ -1,0 +1,798 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/filesystem.proto";
+import "metalstack/api/v2/image.proto";
+import "metalstack/api/v2/network.proto";
+import "metalstack/api/v2/partition.proto";
+import "metalstack/api/v2/size.proto";
+
+// MachineService serves machine related functions
+service MachineService {
+  // Get a machine
+  rpc Get(MachineServiceGetRequest) returns (MachineServiceGetResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Create a machine
+  rpc Create(MachineServiceCreateRequest) returns (MachineServiceCreateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  // Update a machine
+  rpc Update(MachineServiceUpdateRequest) returns (MachineServiceUpdateResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  // List all machine
+  rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Delete a machine
+  rpc Delete(MachineServiceDeleteRequest) returns (MachineServiceDeleteResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+}
+
+// ------------------------ Service Messages ----------------------------------
+
+// MachineServiceGetRequest is the request payload for a machine get request
+message MachineServiceGetRequest {
+  // UUID of the machine to get
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceGetResponse is the request payload for a machine get response
+message MachineServiceGetResponse {
+  // Machine is the machine requested
+  Machine machine = 1;
+}
+
+// MachineServiceCreateRequest is the request payload for a machine create request
+message MachineServiceCreateRequest {
+  // Project of the machine
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
+  // this field overrules size and partition
+  optional string uuid = 2 [(buf.validate.field).string.uuid = true];
+  // Name of this machine
+  string name = 3 [(buf.validate.field).string = {max_len: 128}];
+  // Description for this machine
+  string description = 4 [(buf.validate.field).string = {max_len: 256}];
+  // Hostname the hostname for the allocated machine (defaults to metal)
+  optional string hostname = 5 [(buf.validate.field).string.hostname = true];
+  // Partition the partition id to assign this machine to
+  string partition = 6 [(buf.validate.field).string = {max_len: 128}];
+  // Size of the machine to create
+  string size = 7 [(buf.validate.field).string = {max_len: 128}];
+  // Image which should be installed on this machine
+  string image = 8 [(buf.validate.field).string = {max_len: 128}];
+  // FilesystemLayout which should be applied for the operating system installation
+  // Is defaulted by a lookup at the available fsls for this size and image.
+  // Can be specified to test new fsls during development of fsls
+  optional string filesystem_layout = 9;
+  // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
+  repeated string ssh_public_keys = 10 [(buf.validate.field).repeated = {
+    // At most 50 keys can be store.
+    // A lower bound can be set similarly with `min_items`.
+    max_items: 50
+    // `items` validate each value in this `repeated` field.
+    items: {
+      // `string` has string-specific rules for each value in the `repeated` field.
+      // The set of rules allowed here is the same as that of a string field.
+      string: {
+        // Each key must not be empty
+        min_len: 1
+        // Each key can contain at most 8192 characters.
+        max_len: 8192
+      }
+    }
+  }];
+  // Userdata contains instructions required to bootstrap the machine
+  // AWS limits the max userdata size to 16k, lets allow twice as much
+  optional string userdata = 11 [(buf.validate.field).string = {max_len: 32768}];
+  // Labels to be attached to this machine allocation
+  Labels labels = 12;
+  // Networks the networks that this machine will be placed in.
+  repeated MachineAllocationNetwork networks = 13;
+  // IPs to to attach to this machine additionally
+  repeated string ips = 14 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_ips"
+        message: "ips must be valid"
+        expression: "this.isIp()"
+      }
+    }
+  }];
+  // PlacementTags by default machines are spread across the racks inside a partition for every project.
+  // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
+  repeated string placement_tags = 15;
+  // DNSServer the dns servers used for the machine
+  repeated DNSServer dns_server = 16 [(buf.validate.field).repeated.max_items = 3];
+  // NTPServer the ntp servers used for the machine
+  repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
+  // Role defines if this is machine or a firewall
+  MachineRole role = 18 [(buf.validate.field).enum.defined_only = true];
+  // FirewallRules to be applied if this is a firewall
+  FirewallRules firewall_rules = 19;
+}
+
+// MachineServiceCreateResponse is the request payload for a machine create response
+message MachineServiceCreateResponse {
+  // Machine which was created
+  Machine machine = 1;
+}
+
+// MachineServiceUpdateRequest is the request payload for a machine update request
+message MachineServiceUpdateRequest {
+  // UUID of the machine to modify
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+  // Description of this machine allocation
+  optional string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Labels to update on this machine allocation
+  optional UpdateLabels labels = 6;
+  // SSHPublicKeys which should be update of this machine allocation
+  repeated string ssh_public_keys = 11 [(buf.validate.field).repeated = {
+    // At most 50 keys can be store.
+    // A lower bound can be set similarly with `min_items`.
+    max_items: 50
+    // `items` validate each value in this `repeated` field.
+    items: {
+      // `string` has string-specific rules for each value in the `repeated` field.
+      // The set of rules allowed here is the same as that of a string field.
+      string: {
+        // Each key must not be empty
+        min_len: 1
+        // Each key can contain at most 8192 characters.
+        max_len: 8192
+      }
+    }
+  }];
+}
+
+// MachineServiceUpdateResponse is the request payload for a machine update response
+message MachineServiceUpdateResponse {
+  // Machine which was updated
+  Machine machine = 1;
+}
+
+// MachineServiceListRequest is the request payload for a machine list request
+message MachineServiceListRequest {
+  // Project of the machines to list
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // Query to list one ore more machines
+  MachineQuery query = 2;
+}
+
+// MachineServiceListResponse is the request payload for a machine list response
+message MachineServiceListResponse {
+  // Machines are the machines requested by a list request
+  repeated Machine machines = 1;
+}
+
+// MachineServiceDeleteRequest is the request payload for a machine delete request
+message MachineServiceDeleteRequest {
+  // UUID of the machine to delete
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceDeleteResponse is the request payload for a machine delete response
+message MachineServiceDeleteResponse {
+  // Machine which was deleteds
+  Machine machine = 1;
+}
+
+// --------------- Types ----------------------------------------------------------
+
+// Machine represents a physical bare metal machine.
+message Machine {
+  // UUID of this machine
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Meta for this machine
+  Meta meta = 2;
+  // Partition where this machine resides
+  Partition partition = 3;
+  // Rack where this machine is located
+  string rack = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Size of this machine
+  Size size = 5;
+  // Hardware specs of this machine
+  MachineHardware hardware = 6;
+  // Bios details for this machine
+  MachineBios bios = 7;
+  // Allocation details
+  MachineAllocation allocation = 8;
+  // Status contains several status details related to this machine
+  MachineStatus status = 9;
+  // MachineRecentProvisioningEvents contains the recent provisioning events
+  MachineRecentProvisioningEvents recent_provisioning_events = 10;
+}
+
+// MachineStatus contains several status details related to this machine
+message MachineStatus {
+  // Condition describes the availability
+  MachineCondition condition = 1;
+  // LEDState indicates the state of the indicator LED on this machine
+  MachineChassisIdentifyLEDState led_state = 2;
+  // Liveliness of this machine
+  MachineLiveliness liveliness = 3 [(buf.validate.field).enum.defined_only = true];
+  // MetalHammerVersion the version of metal hammer which put the machine in waiting state
+  string metal_hammer_version = 4;
+}
+
+// MachineCondition describes the availability of this machine
+message MachineCondition {
+  // State the state of this machine. empty means available for all
+  MachineState state = 1 [(buf.validate.field).enum.defined_only = true];
+  // Description a description why this machine is in the given state
+  string description = 2 [(buf.validate.field).string = {max_len: 256}];
+  // Issuer the user that changed the state
+  string issuer = 3 [(buf.validate.field).string = {max_len: 256}];
+}
+
+// MachineAllocation contains properties if this machine is allocated
+message MachineAllocation {
+  // UUID of this machine allocation
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Meta for this machine allocation
+  Meta meta = 2;
+  // Name of this allocation
+  string name = 3 [(buf.validate.field).string = {max_len: 128}];
+  // Description of this allocation
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Created By indicates who created this machine allocation
+  string created_by = 5 [(buf.validate.field).string = {max_len: 128}];
+  // Project of the allocation
+  string project = 6 [(buf.validate.field).string.uuid = true];
+  // Image to be used to install on this machine
+  Image image = 7;
+  // FilesystemLayout to create on the disks
+  FilesystemLayout filesystem_layout = 8;
+  // Networks this machine should be attached to
+  repeated MachineNetwork networks = 9;
+  // Hostname of the allocated machine
+  string hostname = 10 [(buf.validate.field).string.hostname = true];
+  // SSHPublicKeys which should be installed on this machine
+  repeated string ssh_public_keys = 11 [(buf.validate.field).repeated = {
+    // At most 50 keys can be store.
+    // A lower bound can be set similarly with `min_items`.
+    max_items: 50
+    // `items` validate each value in this `repeated` field.
+    items: {
+      // `string` has string-specific rules for each value in the `repeated` field.
+      // The set of rules allowed here is the same as that of a string field.
+      string: {
+        // Each key must not be empty
+        min_len: 1
+        // Each key can contain at most 8192 characters.
+        max_len: 8192
+      }
+    }
+  }];
+  // Userdata contains instructions required to bootstrap the machine.
+  // AWS limits the max userdata size to 16k, lets allow twice as much
+  string userdata = 12 [(buf.validate.field).string = {max_len: 32768}];
+  // Role defines if this is machine or a firewall
+  MachineRole role = 13 [(buf.validate.field).enum.defined_only = true];
+  // FirewallRules to be applied if this is a firewall
+  FirewallRules firewall_rules = 14;
+  // DNSServers for this machine
+  repeated DNSServer dns_server = 15 [(buf.validate.field).repeated.max_items = 3];
+  // NTPServers for this machine
+  repeated NTPServer ntp_server = 16 [(buf.validate.field).repeated.max_items = 10];
+  // VPN connection configuration
+  MachineVPN vpn = 17;
+}
+
+// MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired
+message MachineAllocationNetwork {
+  // Network the id of the network that this machine will be placed in
+  string network = 1;
+  // NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
+  // By default one ip address is acquired per network for the machine
+  optional bool no_auto_acquire_ip = 2;
+}
+
+// FirewallRules can be defined during firewall allocation
+message FirewallRules {
+  // Egress list of egress rules to be deployed during firewall allocation
+  repeated FirewallEgressRule egress = 1;
+  // Ingress list of ingress rules to be deployed during firewall allocation
+  repeated FirewallIngressRule ingress = 2;
+}
+
+// FirewallEgressRule defines rules for outgoing traffic
+message FirewallEgressRule {
+  // Protocol the protocol for the rule, defaults to tcp
+  IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
+  // Ports the ports affected by this rule
+  repeated uint32 ports = 2 [(buf.validate.field).repeated = {
+    items: {
+      uint32: {lte: 65532}
+    }
+  }];
+  // To the destination cidrs affected by this rule
+  repeated string to = 3 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_to"
+        message: "to prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
+  // Comment for this rule
+  string comment = 4 [(buf.validate.field) = {
+    string: {
+      pattern: "^[a-z_ -]*$"
+      max_len: 100
+    }
+    ignore: IGNORE_IF_ZERO_VALUE
+  }];
+}
+
+// FirewallIngressRule defines rules for incoming traffic
+message FirewallIngressRule {
+  // Protocol the protocol for the rule, defaults to tcp
+  IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
+  // Ports the ports affected by this rule
+  repeated uint32 ports = 2 [(buf.validate.field).repeated = {
+    items: {
+      uint32: {lte: 65532}
+    }
+  }];
+  // To the destination cidrs affected by this rule
+  repeated string to = 3 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_to"
+        message: "to prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
+  // From the source cidrs affected by this rule
+  repeated string from = 4 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_from"
+        message: "from prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
+  // Comment for this rule
+  string comment = 5 [(buf.validate.field) = {
+    string: {
+      pattern: "^[a-z_ -]*$"
+      max_len: 100
+    }
+    ignore: IGNORE_IF_ZERO_VALUE
+  }];
+}
+
+// IPProtocol defines tcp|udp
+enum IPProtocol {
+  // IP_PROTOCOL_UNSPECIFIED is not specified
+  IP_PROTOCOL_UNSPECIFIED = 0;
+  // IP_PROTOCOL_TCP is tcp
+  IP_PROTOCOL_TCP = 1 [(enum_string_value) = "tcp"];
+  // IP_PROTOCOL_UDP is udp
+  IP_PROTOCOL_UDP = 2 [(enum_string_value) = "udp"];
+}
+
+// MachineNetwork contains details which network should be created on a allocated machine
+message MachineNetwork {
+  // Network the networkID of the allocated machine in this vrf
+  string network = 1;
+  // Prefixes the prefixes of this network
+  repeated string prefixes = 2 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_prefixes"
+        message: "prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
+  // DestinationPrefixes prefixes that are reachable within this network
+  repeated string destination_prefixes = 3 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_destination_prefixes"
+        message: "destination_prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
+  // IPs the ip addresses of the allocated machine in this vrf
+  repeated string ips = 4 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_ips"
+        message: "ips must be valid"
+        expression: "this.isIp()"
+      }
+    }
+  }];
+  // NetworkType the type of network of this vrf
+  NetworkType network_type = 5 [(buf.validate.field).enum.defined_only = true];
+  // NatType what type of nat if any should be used
+  NATType nat_type = 6 [(buf.validate.field).enum.defined_only = true];
+  // VRF the vrf id
+  uint64 vrf = 7;
+  // ASN the autonomous system number for this network
+  uint32 asn = 8;
+}
+
+// MachineHardware contains hardware details
+message MachineHardware {
+  // Memory the total memory of the machine in bytes
+  uint64 memory = 1;
+  // Disks the list of block devices of this machine
+  repeated MachineBlockDevice disks = 3;
+  // CPUs the cpu details
+  repeated MetalCPU cpus = 4;
+  // GPUs the gpu details
+  repeated MetalGPU gpus = 5;
+  // Nics the list of network interfaces of this machine
+  repeated MachineNic nics = 6;
+}
+
+// MetalCPU contains details of a cpu in this machine
+message MetalCPU {
+  // Vendor of this cpu
+  string vendor = 1 [(buf.validate.field).string = {max_len: 256}];
+  // Model of this cpu
+  string model = 2 [(buf.validate.field).string = {max_len: 256}];
+  // Cores of this cpu
+  uint32 cores = 3;
+  // Threads of this cpu
+  uint32 threads = 4;
+}
+
+// MetalGPU contains details of a gpu in this machine
+message MetalGPU {
+  // Vendor of this gpu
+  string vendor = 1 [(buf.validate.field).string = {max_len: 256}];
+  // Model of this gpu
+  string model = 2 [(buf.validate.field).string = {max_len: 256}];
+}
+
+// MachineNic contains details of a network interface of this machine
+message MachineNic {
+  // Mac the macaddress of this interface
+  string mac = 1 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
+  // Name of this interface
+  string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Identifier the unique identifier of this network interface
+  string identifier = 3 [(buf.validate.field).string = {max_len: 128}];
+  // Neighbors the neighbors visible to this network interface
+  repeated MachineNic neighbors = 4;
+}
+
+// MachineBlockDevice contains details of a block device of this machine
+message MachineBlockDevice {
+  // Name of this block device
+  string name = 1 [(buf.validate.field).string = {max_len: 128}];
+  // Size of this block device in bytes
+  uint64 size = 2;
+}
+
+// MachineState defines if the machine was locked or reserved from a operator
+enum MachineState {
+  // MACHINE_STATE_UNSPECIFIED is not specified
+  MACHINE_STATE_UNSPECIFIED = 0 [(enum_string_value) = ""];
+  // MACHINE_STATE_RESERVED this machine is reserved
+  MACHINE_STATE_RESERVED = 1 [(enum_string_value) = "reserved"];
+  // MACHINE_STATE_LOCKED this machine is locked
+  MACHINE_STATE_LOCKED = 2 [(enum_string_value) = "locked"];
+  // MACHINE_STATE_LOCKED this machine is available for all
+  MACHINE_STATE_AVAILABLE = 3 [(enum_string_value) = "available"];
+}
+
+// MachineChassisIdentifyLEDState describes the identifier led state
+message MachineChassisIdentifyLEDState {
+  // Value the state of this chassis identify LED. empty means LED-OFF
+  string value = 1 [(buf.validate.field).string = {max_len: 128}];
+  // Description a description why this chassis identify LED is in the given state
+  string description = 2 [(buf.validate.field).string = {max_len: 256}];
+}
+
+// MachineBios contains BIOS details of this machine
+message MachineBios {
+  // Version the bios version
+  string version = 1 [(buf.validate.field).string = {max_len: 256}];
+  // Vendor the bios vendor
+  string vendor = 2 [(buf.validate.field).string = {max_len: 256}];
+  // Date the bios date as string because every vendor has different ideas howto describe the date
+  string date = 3 [(buf.validate.field).string = {max_len: 256}];
+}
+
+// MachineRecentProvisioningEvents the recent provisioning events for this machine
+message MachineRecentProvisioningEvents {
+  // Events the log of recent machine provisioning events
+  repeated MachineProvisioningEvent events = 1;
+  // LastEventTime the time where the last event was received
+  google.protobuf.Timestamp last_event_time = 2;
+  // LastErrorEvent the last erroneous event received
+  MachineProvisioningEvent last_error_event = 3;
+  // State can be either CrashLoop, FailedReclaim or something else
+  MachineProvisioningEventState state = 4 [(buf.validate.field).enum.defined_only = true];
+}
+
+// MachineProvisioningEventState possible event states
+enum MachineProvisioningEventState {
+  // MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
+  MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0 [(enum_string_value) = ""];
+  // MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop
+  MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP = 1 [(enum_string_value) = "crashloop"];
+  // MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim
+  MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2 [(enum_string_value) = "failed-reclaim"];
+}
+
+// MachineProvisioningEvent is a event which has occurred during provisioning
+message MachineProvisioningEvent {
+  // Time the time that this event was received
+  google.protobuf.Timestamp time = 1;
+  // Event the event emitted by the machine
+  string event = 2;
+  // Message an additional message to add to the event
+  string message = 3;
+}
+
+// MachineVPN contains configuration data for the VPN connection
+message MachineVPN {
+  // Address of VPN control plane
+  string control_plane_address = 1;
+  // Auth key used to connect to VPN
+  string auth_key = 2;
+  // Connected indicate if this machine is connected to the VPN
+  bool connected = 3;
+  // TODO add machine ips
+}
+
+// MachineLiveliness specifies the liveliness of a machine
+enum MachineLiveliness {
+  // MACHINE_LIVELINESS_UNSPECIFIED is not defined
+  MACHINE_LIVELINESS_UNSPECIFIED = 0 [(enum_string_value) = ""];
+  // MACHINE_LIVELINESS_ALIVE liveliness is alive
+  MACHINE_LIVELINESS_ALIVE = 1 [(enum_string_value) = "alive"];
+  // MACHINE_LIVELINESS_DEAD liveliness is dead
+  MACHINE_LIVELINESS_DEAD = 2 [(enum_string_value) = "dead"];
+  // MACHINE_LIVELINESS_UNKNOWN liveliness is unknown
+  MACHINE_LIVELINESS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
+}
+
+// MachineRole defines if this is a machine or a firewall
+enum MachineRole {
+  // MACHINE_ROLE_UNSPECIFIED is unspecified
+  MACHINE_ROLE_UNSPECIFIED = 0 [(enum_string_value) = ""];
+  // MACHINE_ROLE_MACHINE is a machine
+  MACHINE_ROLE_MACHINE = 1 [(enum_string_value) = "machine"];
+  // MACHINE_ROLE_FIREWALL is a firewall
+  MACHINE_ROLE_FIREWALL = 2 [(enum_string_value) = "firewall"];
+}
+
+// MachineQuery contains fields which can be specified to list specific machines.
+message MachineQuery {
+  // UUID of the machine to get
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Name of the machine to get
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Partition of the machine to get
+  optional string partition = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Size of the machine to get
+  optional string size = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Rack of the machine to get
+  optional string rack = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Labels for which this machine should get filtered
+  optional Labels labels = 6;
+  // Allocation specific machine queries
+  optional MachineAllocationQuery allocation = 7;
+  // Network specific machine queries
+  optional MachineNetworkQuery network = 8;
+  // Nic specific machine queries
+  optional MachineNicQuery nic = 9;
+  // Disk specific machine queries
+  optional MachineDiskQuery disk = 10;
+  // IPMI specific machine queries
+  optional MachineIPMIQuery ipmi = 11;
+  // FRU specific machine queries
+  optional MachineFRUQuery fru = 12;
+  // Hardware specific machine query
+  optional MachineHardwareQuery hardware = 13;
+  // State this machine has
+  optional MachineState state = 14;
+}
+
+// MachineAllocationQuery allocation specific query parameters
+message MachineAllocationQuery {
+  // UUID of the allocation of the machine to get
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Name of the machine to get
+  optional string name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Project of the machine to get
+  optional string project = 3 [(buf.validate.field).string.uuid = true];
+  // Image of the machine to get
+  optional string image = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // FilesystemLayout of the machine to get
+  optional string filesystem_layout = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Hostname of the machine to get
+  optional string hostname = 6 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Role of this machine
+  optional MachineRole role = 7 [(buf.validate.field).enum.defined_only = true];
+}
+
+// MachineNetworkQuery network specific machine queries
+message MachineNetworkQuery {
+  // Networks this machine is connected to
+  repeated string networks = 1;
+  // Prefixes this machine is connected to
+  repeated string prefixes = 2 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_prefixes"
+        message: "prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
+  // DestinationPrefixes this machine is connected to
+  repeated string destination_prefixes = 3 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_destination_prefixes"
+        message: "destination_prefixes must be valid"
+        expression: "this.isIpPrefix()"
+      }
+    }
+  }];
+  // IPs this machine has
+  repeated string ips = 4 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_ips"
+        message: "ips must be valid"
+        expression: "this.isIp()"
+      }
+    }
+  }];
+  // VRFs this machine is connected to
+  repeated uint64 vrfs = 5;
+  // ASNs this machine is connected to
+  repeated uint32 asns = 6;
+}
+
+// MachineNicQuery nic specific machine queries
+message MachineNicQuery {
+  // Macs this machine nic has
+  repeated string macs = 1 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
+    }
+  }];
+  // Names this machine nic has
+  repeated string names = 2 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {max_len: 128}
+    }
+  }];
+  // VRFs this machine nic has
+  repeated uint64 vrfs = 3 [(buf.validate.field).repeated = {max_items: 100}];
+  // NeighborMacs this machine nic has
+  repeated string neighbor_macs = 4 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
+    }
+  }];
+  // NeighborNames this machine nic has
+  repeated string neighbor_names = 5 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {max_len: 128}
+    }
+  }];
+  // NeighborVRFs this machine nic has
+  repeated uint64 neighbor_vrfs = 6 [(buf.validate.field).repeated = {max_items: 100}];
+}
+
+// MachineDiskQuery disk specific machine queries
+message MachineDiskQuery {
+  // Names of disks in this machine
+  repeated string names = 1 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {max_len: 128}
+    }
+  }];
+  // Sizes of disks in this machine
+  repeated uint64 sizes = 2 [(buf.validate.field).repeated = {max_items: 100}];
+}
+
+// MachineIPMIQuery machine ipmi specific machine queries
+message MachineIPMIQuery {
+  // Address of the ipmi system of this machine
+  optional string address = 1 [(buf.validate.field).string.ip = true];
+  // Mac of the ipmi system of this machine
+  optional string mac = 2 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
+  // User of the ipmi system of this machine
+  optional string user = 3 [(buf.validate.field).string = {max_len: 128}];
+  // Interface of the ipmi system of this machine
+  optional string interface = 4 [(buf.validate.field).string = {max_len: 128}];
+}
+
+// MachineFRUQuery machine fru specific machine queries
+message MachineFRUQuery {
+  // ChassisPartNumber of this machine
+  optional string chassis_part_number = 1 [(buf.validate.field).string = {max_len: 128}];
+  // ChassisPartSerial of this machine
+  optional string chassis_part_serial = 2 [(buf.validate.field).string = {max_len: 128}];
+  // BoardMFG of this machine
+  optional string board_mfg = 3 [(buf.validate.field).string = {max_len: 128}];
+  // BoardSerial of this machine
+  optional string board_serial = 4 [(buf.validate.field).string = {max_len: 128}];
+  // BoardPartNumber of this machine
+  optional string board_part_number = 5 [(buf.validate.field).string = {max_len: 128}];
+  // ProductManufacturer of this machine
+  optional string product_manufacturer = 6 [(buf.validate.field).string = {max_len: 128}];
+  // ProductPartNumber of this machine
+  optional string product_part_number = 7 [(buf.validate.field).string = {max_len: 128}];
+  // ProductSerial of this machine
+  optional string product_serial = 8 [(buf.validate.field).string = {max_len: 128}];
+}
+
+// MachineHardwareQuery machine hardware specific machine queries
+message MachineHardwareQuery {
+  // Memory the total memory of the machine in bytes
+  optional uint64 memory = 1;
+  // CPUCores the number of cpu cores
+  optional uint32 cpu_cores = 2;
+}
