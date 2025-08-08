@@ -20,6 +20,11 @@ class SwitchServiceStub(object):
                 request_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest.SerializeToString,
                 response_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse.FromString,
                 _registered_method=True)
+        self.ReportBGPRoutes = channel.unary_unary(
+                '/metalstack.infra.v2.SwitchService/ReportBGPRoutes',
+                request_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest.SerializeToString,
+                response_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse.FromString,
+                _registered_method=True)
 
 
 class SwitchServiceServicer(object):
@@ -33,6 +38,13 @@ class SwitchServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ReportBGPRoutes(self, request, context):
+        """Report BGP routes of a switch
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_SwitchServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -40,6 +52,11 @@ def add_SwitchServiceServicer_to_server(servicer, server):
                     servicer.Register,
                     request_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest.FromString,
                     response_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse.SerializeToString,
+            ),
+            'ReportBGPRoutes': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReportBGPRoutes,
+                    request_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest.FromString,
+                    response_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -70,6 +87,33 @@ class SwitchService(object):
             '/metalstack.infra.v2.SwitchService/Register',
             metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest.SerializeToString,
             metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ReportBGPRoutes(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/metalstack.infra.v2.SwitchService/ReportBGPRoutes',
+            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest.SerializeToString,
+            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse.FromString,
             options,
             channel_credentials,
             insecure,

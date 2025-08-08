@@ -81,10 +81,10 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: Infra{
 				"INFRA_ROLE_EDITOR": []string{
-					"/metalstack.infra.v2.SwitchService/Register",
+					"/metalstack.infra.v2.SwitchService/ReportBGPRoutes",
 				},
 				"INFRA_ROLE_VIEWER": []string{
-					"/metalstack.infra.v2.SwitchService/Register",
+					"/metalstack.infra.v2.SwitchService/ReportBGPRoutes",
 				},
 			},
 			Tenant: Tenant{
@@ -261,6 +261,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.VersionService/Get":              true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      true,
 			"/metalstack.infra.v2.SwitchService/Register":        true,
+			"/metalstack.infra.v2.SwitchService/ReportBGPRoutes": true,
 		},
 		Visibility: Visibility{
 			Public: map[string]bool{
@@ -326,8 +327,9 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.admin.v2.TokenService/Revoke":       true,
 			},
 			Infra: map[string]bool{
-				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
-				"/metalstack.infra.v2.SwitchService/Register":   true,
+				"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      true,
+				"/metalstack.infra.v2.SwitchService/Register":        true,
+				"/metalstack.infra.v2.SwitchService/ReportBGPRoutes": true,
 			},
 			Tenant: map[string]bool{
 				"/metalstack.api.v2.ProjectService/Create":      true,
@@ -457,6 +459,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.VersionService/Get":              false,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      false,
 			"/metalstack.infra.v2.SwitchService/Register":        false,
+			"/metalstack.infra.v2.SwitchService/ReportBGPRoutes": false,
 		},
 	}
 }

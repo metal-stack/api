@@ -29,6 +29,8 @@ message Switch {
     min_len: 2
     max_len: 128
   }];
+  // Type is the role of the switch
+  SwitchType type = 5 [(buf.validate.field).enum.defined_only = true];
   // Replace mode is used to mark a switch ready for replacement
   SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
   // Management IP is the switch's IP for management access
@@ -179,4 +181,20 @@ enum SwitchPortStatus {
   SWITCH_PORT_STATUS_UP = 1 [(enum_string_value) = "up"];
   // SWITCH_PORT_STATUS_DOWN means this port is down
   SWITCH_PORT_STATUS_DOWN = 2 [(enum_string_value) = "down"];
+}
+
+// SwitchType represents the role of a switch
+enum SwitchType {
+  // SWITCH_TYPE_UNSPECIFIED is not specified
+  SWITCH_TYPE_UNSPECIFIED = 0;
+  // SWITCH_TYPE_LEAF is a leaf switch
+  SWITCH_TYPE_LEAF = 1 [(enum_string_value) = "leaf"];
+  // SWITCH_TYPE_EXIT is an exit switch
+  SWITCH_TYPE_EXIT = 2 [(enum_string_value) = "exit"];
+  // SWITCH_TYPE_SPINE is a spine switch
+  SWITCH_TYPE_SPINE = 3 [(enum_string_value) = "spine"];
+  // SWITCH_TYPE_MGMTLEAF is a special type of leaf used only for management tasks
+  SWITCH_TYPE_MGMTLEAF = 4 [(enum_string_value) = "mgmtleaf"];
+  // SWITCH_TYPE_MGMTSPINE is a special type of spine used only for management tasks
+  SWITCH_TYPE_MGMTSPINE = 5 [(enum_string_value) = "mgmtspine"];
 }
