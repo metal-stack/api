@@ -81,14 +81,48 @@ class MachineServiceGetResponse(_message.Message):
     def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceCreateRequest(_message.Message):
-    __slots__ = ("project",)
+    __slots__ = ("project", "uuid", "name", "description", "hostname", "partition", "size", "image", "filesystem_layout", "ssh_public_keys", "userdata", "labels", "networks", "ips", "placement_tags", "dns_server", "ntp_server")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    HOSTNAME_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    SIZE_FIELD_NUMBER: _ClassVar[int]
+    IMAGE_FIELD_NUMBER: _ClassVar[int]
+    FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
+    SSH_PUBLIC_KEYS_FIELD_NUMBER: _ClassVar[int]
+    USERDATA_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
+    NETWORKS_FIELD_NUMBER: _ClassVar[int]
+    IPS_FIELD_NUMBER: _ClassVar[int]
+    PLACEMENT_TAGS_FIELD_NUMBER: _ClassVar[int]
+    DNS_SERVER_FIELD_NUMBER: _ClassVar[int]
+    NTP_SERVER_FIELD_NUMBER: _ClassVar[int]
     project: str
-    def __init__(self, project: _Optional[str] = ...) -> None: ...
+    uuid: str
+    name: str
+    description: str
+    hostname: str
+    partition: str
+    size: str
+    image: str
+    filesystem_layout: str
+    ssh_public_keys: _containers.RepeatedScalarFieldContainer[str]
+    userdata: str
+    labels: _common_pb2.Labels
+    networks: _containers.RepeatedCompositeFieldContainer[MachineAllocationNetwork]
+    ips: _containers.RepeatedScalarFieldContainer[str]
+    placement_tags: _containers.RepeatedScalarFieldContainer[str]
+    dns_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.DNSServer]
+    ntp_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.NTPServer]
+    def __init__(self, project: _Optional[str] = ..., uuid: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., hostname: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineAllocationNetwork, _Mapping]]] = ..., ips: _Optional[_Iterable[str]] = ..., placement_tags: _Optional[_Iterable[str]] = ..., dns_server: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ...) -> None: ...
 
 class MachineServiceCreateResponse(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("machine",)
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    machine: Machine
+    def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceUpdateRequest(_message.Message):
     __slots__ = ("uuid", "project", "description", "labels", "ssh_public_keys")
@@ -133,11 +167,13 @@ class MachineServiceDeleteRequest(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
 
 class MachineServiceDeleteResponse(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("machine",)
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    machine: Machine
+    def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
 class Machine(_message.Message):
-    __slots__ = ("uuid", "meta", "partition", "rack", "size", "hardware", "bios", "allocation", "state", "led_state", "liveliness", "recent_provisioning_events")
+    __slots__ = ("uuid", "meta", "partition", "rack", "size", "hardware", "bios", "allocation", "status", "recent_provisioning_events")
     UUID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
@@ -146,9 +182,7 @@ class Machine(_message.Message):
     HARDWARE_FIELD_NUMBER: _ClassVar[int]
     BIOS_FIELD_NUMBER: _ClassVar[int]
     ALLOCATION_FIELD_NUMBER: _ClassVar[int]
-    STATE_FIELD_NUMBER: _ClassVar[int]
-    LED_STATE_FIELD_NUMBER: _ClassVar[int]
-    LIVELINESS_FIELD_NUMBER: _ClassVar[int]
+    STATUS_FIELD_NUMBER: _ClassVar[int]
     RECENT_PROVISIONING_EVENTS_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     meta: _common_pb2.Meta
@@ -158,11 +192,31 @@ class Machine(_message.Message):
     hardware: MachineHardware
     bios: MachineBios
     allocation: MachineAllocation
-    state: MachineStateDetails
+    status: MachineStatus
+    recent_provisioning_events: MachineRecentProvisioningEvents
+    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ..., rack: _Optional[str] = ..., size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocation, _Mapping]] = ..., status: _Optional[_Union[MachineStatus, _Mapping]] = ..., recent_provisioning_events: _Optional[_Union[MachineRecentProvisioningEvents, _Mapping]] = ...) -> None: ...
+
+class MachineStatus(_message.Message):
+    __slots__ = ("condition", "led_state", "liveliness", "metal_hammer_version")
+    CONDITION_FIELD_NUMBER: _ClassVar[int]
+    LED_STATE_FIELD_NUMBER: _ClassVar[int]
+    LIVELINESS_FIELD_NUMBER: _ClassVar[int]
+    METAL_HAMMER_VERSION_FIELD_NUMBER: _ClassVar[int]
+    condition: MachineCondition
     led_state: MachineChassisIdentifyLEDState
     liveliness: MachineLiveliness
-    recent_provisioning_events: MachineRecentProvisioningEvents
-    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ..., rack: _Optional[str] = ..., size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocation, _Mapping]] = ..., state: _Optional[_Union[MachineStateDetails, _Mapping]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., liveliness: _Optional[_Union[MachineLiveliness, str]] = ..., recent_provisioning_events: _Optional[_Union[MachineRecentProvisioningEvents, _Mapping]] = ...) -> None: ...
+    metal_hammer_version: str
+    def __init__(self, condition: _Optional[_Union[MachineCondition, _Mapping]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., liveliness: _Optional[_Union[MachineLiveliness, str]] = ..., metal_hammer_version: _Optional[str] = ...) -> None: ...
+
+class MachineCondition(_message.Message):
+    __slots__ = ("state", "description", "issuer")
+    STATE_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    ISSUER_FIELD_NUMBER: _ClassVar[int]
+    state: MachineState
+    description: str
+    issuer: str
+    def __init__(self, state: _Optional[_Union[MachineState, str]] = ..., description: _Optional[str] = ..., issuer: _Optional[str] = ...) -> None: ...
 
 class MachineAllocation(_message.Message):
     __slots__ = ("uuid", "meta", "name", "description", "created_by", "project", "image", "filesystem_layout", "networks", "hostname", "ssh_public_keys", "userdata", "boot_info", "role", "firewall_rules", "dns_server", "ntp_server", "vpn")
@@ -203,6 +257,14 @@ class MachineAllocation(_message.Message):
     ntp_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.NTPServer]
     vpn: MachineVPN
     def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., created_by: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineNetwork, _Mapping]]] = ..., hostname: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., boot_info: _Optional[_Union[BootInfo, _Mapping]] = ..., role: _Optional[_Union[MachineRole, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ..., dns_server: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ...) -> None: ...
+
+class MachineAllocationNetwork(_message.Message):
+    __slots__ = ("network", "auto_acquire_ip")
+    NETWORK_FIELD_NUMBER: _ClassVar[int]
+    AUTO_ACQUIRE_IP_FIELD_NUMBER: _ClassVar[int]
+    network: str
+    auto_acquire_ip: bool
+    def __init__(self, network: _Optional[str] = ..., auto_acquire_ip: bool = ...) -> None: ...
 
 class FirewallRules(_message.Message):
     __slots__ = ("egress", "ingress")
@@ -310,18 +372,6 @@ class MachineBlockDevice(_message.Message):
     name: str
     size: int
     def __init__(self, name: _Optional[str] = ..., size: _Optional[int] = ...) -> None: ...
-
-class MachineStateDetails(_message.Message):
-    __slots__ = ("state", "description", "issuer", "metal_hammer_version")
-    STATE_FIELD_NUMBER: _ClassVar[int]
-    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
-    ISSUER_FIELD_NUMBER: _ClassVar[int]
-    METAL_HAMMER_VERSION_FIELD_NUMBER: _ClassVar[int]
-    state: MachineState
-    description: str
-    issuer: str
-    metal_hammer_version: str
-    def __init__(self, state: _Optional[_Union[MachineState, str]] = ..., description: _Optional[str] = ..., issuer: _Optional[str] = ..., metal_hammer_version: _Optional[str] = ...) -> None: ...
 
 class MachineChassisIdentifyLEDState(_message.Message):
     __slots__ = ("value", "description")

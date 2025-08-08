@@ -63,11 +63,77 @@ message MachineServiceGetResponse {
 // MachineServiceCreateRequest is the request payload for a machine create request
 message MachineServiceCreateRequest {
   // Project of the machine
-  string project = 2 [(buf.validate.field).string.uuid = true];
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
+  // this field overrules size and partition
+  optional string uuid = 2 [(buf.validate.field).string.uuid = true];
+  // Name of this machine
+  string name = 3 [(buf.validate.field).string = {max_len: 128}];
+  // Description for this machine
+  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Hostname the hostname for the allocated machine (defaults to metal)
+  optional string hostname = 5 [(buf.validate.field).string = {max_len: 128}];
+  // Partition the partition id to assign this machine to
+  string partition = 6;
+  // Size of the machine to create
+  string size = 7;
+  // Image which should be installed on this machine
+  string image = 8;
+  // FilesystemLayout which should be applied for the operating system installation
+  optional string filesystem_layout = 9;
+  // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
+  repeated string ssh_public_keys = 10 [(buf.validate.field).repeated = {
+    // At most 50 keys can be store.
+    // A lower bound can be set similarly with `min_items`.
+    max_items: 50
+    // `items` validate each value in this `repeated` field.
+    items: {
+      // `string` has string-specific rules for each value in the `repeated` field.
+      // The set of rules allowed here is the same as that of a string field.
+      string: {
+        // Each key must not be empty
+        min_len: 1
+        // Each key can contain at most 8192 characters.
+        max_len: 8192
+      }
+    }
+  }];
+  // Userdata contains instructions required to bootstrap the machine
+  // AWS limits the max userdata size to 16k, lets allow twice as much
+  // TODO must be enforced in the create request
+  optional string userdata = 11 [(buf.validate.field).string = {max_len: 32768}];
+  // Labels to be attached to this machine allocation
+  Labels labels = 12;
+  // Networks the networks that this machine will be placed in.
+  repeated MachineAllocationNetwork networks = 13;
+  // IPs to to attach to this machine additionally
+  repeated string ips = 14 [(buf.validate.field).repeated = {
+    items: {
+      cel: {
+        id: "valid_ips"
+        message: "ips must be valid"
+        expression: "this.isIp()"
+      }
+    }
+  }];
+  // PlacementTags by default machines are spread across the racks inside a partition for every project.
+  // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
+  repeated string placement_tags = 15;
+  // DNSServer the dns servers used for the machine
+  repeated DNSServer dns_server = 16 [(buf.validate.field).repeated.max_items = 3];
+  // NTPServer the ntp servers used for the machine
+  repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
+
+  // TODO should we add the Firewalls here as well together with the MachineRole to be able to create firewall with this request ?
+  // The only difference between machine create and firewall create is the presence of firewalll rules and a different creation logic in the apiserver.
+  // We could still have a FirewallService.Create which simply accepts this message ?
 }
 
 // MachineServiceCreateResponse is the request payload for a machine create response
-message MachineServiceCreateResponse {}
+message MachineServiceCreateResponse {
+  // Machine which was created
+  Machine machine = 1;
+}
 
 // MachineServiceUpdateRequest is the request payload for a machine update request
 message MachineServiceUpdateRequest {
@@ -127,7 +193,10 @@ message MachineServiceDeleteRequest {
 }
 
 // MachineServiceDeleteResponse is the request payload for a machine delete response
-message MachineServiceDeleteResponse {}
+message MachineServiceDeleteResponse {
+  // Machine which was deleteds
+  Machine machine = 1;
+}
 
 // --------------- Types ----------------------------------------------------------
 
@@ -149,14 +218,32 @@ message Machine {
   MachineBios bios = 7;
   // Allocation details
   MachineAllocation allocation = 8;
-  // State of this machine
-  MachineStateDetails state = 9;
-  // LEDState indicates the state of the indicator LED on this machine
-  MachineChassisIdentifyLEDState led_state = 10;
-  // Liveliness of this machine
-  MachineLiveliness liveliness = 11 [(buf.validate.field).enum.defined_only = true];
+  // Status contains several status details related to this machine
+  MachineStatus status = 9;
   // MachineRecentProvisioningEvents contains the recent provisioning events
-  MachineRecentProvisioningEvents recent_provisioning_events = 12;
+  MachineRecentProvisioningEvents recent_provisioning_events = 10;
+}
+
+// MachineStatus contains several status details related to this machine
+message MachineStatus {
+  // Condition describes the availability
+  MachineCondition condition = 1;
+  // LEDState indicates the state of the indicator LED on this machine
+  MachineChassisIdentifyLEDState led_state = 2;
+  // Liveliness of this machine
+  MachineLiveliness liveliness = 3 [(buf.validate.field).enum.defined_only = true];
+  // MetalHammerVersion the version of metal hammer which put the machine in waiting state
+  string metal_hammer_version = 4;
+}
+
+// MachineCondition describes the availability of this machine
+message MachineCondition {
+  // State the state of this machine. empty means available for all
+  MachineState state = 1 [(buf.validate.field).enum.defined_only = true];
+  // Description a description why this machine is in the given state
+  string description = 2;
+  // Issuer the user that changed the state
+  string issuer = 3;
 }
 
 // MachineAllocation contains properties if this machine is allocated
@@ -219,6 +306,15 @@ message MachineAllocation {
   // FIXME
   // Succeeded        bool                      `json:"succeeded" description:"if the allocation of the machine was successful, this is set to true"`
   // Reinstall        bool                      `json:"reinstall" description:"indicates whether to reinstall the machine"`
+}
+
+// MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired
+message MachineAllocationNetwork {
+  // Network the id of the network that this machine will be placed in
+  string network = 1;
+  // AutoAcquireIp will automatically acquire an ip in this network if set to true, default is true
+  // FIXME If default is true, should we name it accordingly? Like no_auto_acquire_ip
+  optional bool auto_acquire_ip = 2;
 }
 
 // FirewallRules can be defined during firewall allocation
@@ -437,18 +533,6 @@ message MachineBlockDevice {
   string name = 1;
   // Size of this block device in bytes
   uint64 size = 2;
-}
-
-// MachineState details about the machine state
-message MachineStateDetails {
-  // State the state of this machine. empty means available for all
-  MachineState state = 1 [(buf.validate.field).enum.defined_only = true];
-  // Description a description why this machine is in the given state
-  string description = 2;
-  // Issuer the user that changed the state
-  string issuer = 3;
-  // MetalHammerVersion the version of metal hammer which put the machine in waiting state
-  string metal_hammer_version = 4;
 }
 
 // MachineState defines if the machine was locked or reserved from a operator
@@ -678,57 +762,82 @@ message MachineNetworkQuery {
 // MachineNicQuery nic specific machine queries
 message MachineNicQuery {
   // Macs this machine nic has
-  repeated string macs = 1;
+  repeated string macs = 1 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
+    }
+  }];
   // Names this machine nic has
-  repeated string names = 2;
+  repeated string names = 2 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {max_len: 128}
+    }
+  }];
   // VRFs this machine nic has
-  repeated uint64 vrfs = 3;
+  repeated uint64 vrfs = 3 [(buf.validate.field).repeated = {max_items: 100}];
   // NeighborMacs this machine nic has
-  repeated string neighbor_macs = 4;
+  repeated string neighbor_macs = 4 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
+    }
+  }];
   // NeighborNames this machine nic has
-  repeated string neighbor_names = 5;
+  repeated string neighbor_names = 5 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {max_len: 128}
+    }
+  }];
   // NeighborVRFs this machine nic has
-  repeated uint64 neighbor_vrfs = 6;
+  repeated uint64 neighbor_vrfs = 6 [(buf.validate.field).repeated = {max_items: 100}];
 }
 
 // MachineDiskQuery disk specific machine queries
 message MachineDiskQuery {
   // Names of disks in this machine
-  repeated string names = 1;
+  repeated string names = 1 [(buf.validate.field).repeated = {
+    max_items: 100
+    items: {
+      string: {max_len: 128}
+    }
+  }];
   // Sizes of disks in this machine
-  repeated uint64 sizes = 2;
+  repeated uint64 sizes = 2 [(buf.validate.field).repeated = {max_items: 100}];
 }
 
 // MachineIPMIQuery machine ipmi specific machine queries
 message MachineIPMIQuery {
   // Address of the ipmi system of this machine
-  optional string address = 1;
+  optional string address = 1 [(buf.validate.field).string.ip = true];
   // Mac of the ipmi system of this machine
-  optional string mac = 2;
+  optional string mac = 2 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
   // User of the ipmi system of this machine
-  optional string user = 3;
+  optional string user = 3 [(buf.validate.field).string = {max_len: 128}];
   // Interface of the ipmi system of this machine
-  optional string interface = 4;
+  optional string interface = 4 [(buf.validate.field).string = {max_len: 128}];
 }
 
 // MachineFRUQuery machine fru specific machine queries
 message MachineFRUQuery {
   // ChassisPartNumber of this machine
-  optional string chassis_part_number = 1;
+  optional string chassis_part_number = 1 [(buf.validate.field).string = {max_len: 128}];
   // ChassisPartSerial of this machine
-  optional string chassis_part_serial = 2;
+  optional string chassis_part_serial = 2 [(buf.validate.field).string = {max_len: 128}];
   // BoardMFG of this machine
-  optional string board_mfg = 3;
+  optional string board_mfg = 3 [(buf.validate.field).string = {max_len: 128}];
   // BoardSerial of this machine
-  optional string board_serial = 4;
+  optional string board_serial = 4 [(buf.validate.field).string = {max_len: 128}];
   // BoardPartNumber of this machine
-  optional string board_part_number = 5;
+  optional string board_part_number = 5 [(buf.validate.field).string = {max_len: 128}];
   // ProductManufacturer of this machine
-  optional string product_manufacturer = 6;
+  optional string product_manufacturer = 6 [(buf.validate.field).string = {max_len: 128}];
   // ProductPartNumber of this machine
-  optional string product_part_number = 7;
+  optional string product_part_number = 7 [(buf.validate.field).string = {max_len: 128}];
   // ProductSerial of this machine
-  optional string product_serial = 8;
+  optional string product_serial = 8 [(buf.validate.field).string = {max_len: 128}];
 }
 
 // MachineHardwareQuery machine hardware specific machine queries

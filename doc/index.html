@@ -1460,6 +1460,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineAllocationNetwork"><span class="badge">M</span>MachineAllocationNetwork</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineAllocationQuery"><span class="badge">M</span>MachineAllocationQuery</a>
                 </li>
               
@@ -1473,6 +1477,10 @@
               
                 <li>
                   <a href="#metalstack.api.v2.MachineChassisIdentifyLEDState"><span class="badge">M</span>MachineChassisIdentifyLEDState</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MachineCondition"><span class="badge">M</span>MachineCondition</a>
                 </li>
               
                 <li>
@@ -1564,7 +1572,7 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.MachineStateDetails"><span class="badge">M</span>MachineStateDetails</a>
+                  <a href="#metalstack.api.v2.MachineStatus"><span class="badge">M</span>MachineStatus</a>
                 </li>
               
                 <li>
@@ -14548,24 +14556,10 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
-                  <td>state</td>
-                  <td><a href="#metalstack.api.v2.MachineStateDetails">MachineStateDetails</a></td>
+                  <td>status</td>
+                  <td><a href="#metalstack.api.v2.MachineStatus">MachineStatus</a></td>
                   <td></td>
-                  <td><p>State of this machine </p></td>
-                </tr>
-              
-                <tr>
-                  <td>led_state</td>
-                  <td><a href="#metalstack.api.v2.MachineChassisIdentifyLEDState">MachineChassisIdentifyLEDState</a></td>
-                  <td></td>
-                  <td><p>LEDState indicates the state of the indicator LED on this machine </p></td>
-                </tr>
-              
-                <tr>
-                  <td>liveliness</td>
-                  <td><a href="#metalstack.api.v2.MachineLiveliness">MachineLiveliness</a></td>
-                  <td></td>
-                  <td><p>Liveliness of this machine </p></td>
+                  <td><p>Status contains several status details related to this machine </p></td>
                 </tr>
               
                 <tr>
@@ -14718,6 +14712,38 @@ TODO must be enforced in the create request </p></td>
                   <td><a href="#metalstack.api.v2.MachineVPN">MachineVPN</a></td>
                   <td></td>
                   <td><p>VPN connection configuration </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MachineAllocationNetwork">MachineAllocationNetwork</h3>
+        <p>MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Network the id of the network that this machine will be placed in </p></td>
+                </tr>
+              
+                <tr>
+                  <td>auto_acquire_ip</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>AutoAcquireIp will automatically acquire an ip in this network if set to true, default is true
+FIXME If default is true, should we name it accordingly? Like no_auto_acquire_ip </p></td>
                 </tr>
               
             </tbody>
@@ -14891,6 +14917,44 @@ TODO must be enforced in the create request </p></td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Description a description why this chassis identify LED is in the given state </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MachineCondition">MachineCondition</h3>
+        <p>MachineCondition describes the availability of this machine</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#metalstack.api.v2.MachineState">MachineState</a></td>
+                  <td></td>
+                  <td><p>State the state of this machine. empty means available for all </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Description a description why this machine is in the given state </p></td>
+                </tr>
+              
+                <tr>
+                  <td>issuer</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Issuer the user that changed the state </p></td>
                 </tr>
               
             </tbody>
@@ -15584,6 +15648,122 @@ FIXME can this be a slice </p></td>
                   <td><p>Project of the machine </p></td>
                 </tr>
               
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
+this field overrules size and partition </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Description for this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hostname</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Hostname the hostname for the allocated machine (defaults to metal) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition the partition id to assign this machine to </p></td>
+                </tr>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size of the machine to create </p></td>
+                </tr>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Image which should be installed on this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>filesystem_layout</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>FilesystemLayout which should be applied for the operating system installation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ssh_public_keys</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh </p></td>
+                </tr>
+              
+                <tr>
+                  <td>userdata</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Userdata contains instructions required to bootstrap the machine
+AWS limits the max userdata size to 16k, lets allow twice as much
+TODO must be enforced in the create request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td></td>
+                  <td><p>Labels to be attached to this machine allocation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>networks</td>
+                  <td><a href="#metalstack.api.v2.MachineAllocationNetwork">MachineAllocationNetwork</a></td>
+                  <td>repeated</td>
+                  <td><p>Networks the networks that this machine will be placed in. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ips</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>IPs to to attach to this machine additionally </p></td>
+                </tr>
+              
+                <tr>
+                  <td>placement_tags</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>PlacementTags by default machines are spread across the racks inside a partition for every project.
+if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dns_server</td>
+                  <td><a href="#metalstack.api.v2.DNSServer">DNSServer</a></td>
+                  <td>repeated</td>
+                  <td><p>DNSServer the dns servers used for the machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ntp_server</td>
+                  <td><a href="#metalstack.api.v2.NTPServer">NTPServer</a></td>
+                  <td>repeated</td>
+                  <td><p>NTPServer the ntp servers used for the machine </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -15595,6 +15775,23 @@ FIXME can this be a slice </p></td>
         <p>MachineServiceCreateResponse is the request payload for a machine create response</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>machine</td>
+                  <td><a href="#metalstack.api.v2.Machine">Machine</a></td>
+                  <td></td>
+                  <td><p>Machine which was created </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -15633,6 +15830,23 @@ FIXME can this be a slice </p></td>
         <p>MachineServiceDeleteResponse is the request payload for a machine delete response</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>machine</td>
+                  <td><a href="#metalstack.api.v2.Machine">Machine</a></td>
+                  <td></td>
+                  <td><p>Machine which was deleteds </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -15822,8 +16036,8 @@ FIXME can this be a slice </p></td>
 
         
       
-        <h3 id="metalstack.api.v2.MachineStateDetails">MachineStateDetails</h3>
-        <p>MachineState details about the machine state</p>
+        <h3 id="metalstack.api.v2.MachineStatus">MachineStatus</h3>
+        <p>MachineStatus contains several status details related to this machine</p>
 
         
           <table class="field-table">
@@ -15833,24 +16047,24 @@ FIXME can this be a slice </p></td>
             <tbody>
               
                 <tr>
-                  <td>state</td>
-                  <td><a href="#metalstack.api.v2.MachineState">MachineState</a></td>
+                  <td>condition</td>
+                  <td><a href="#metalstack.api.v2.MachineCondition">MachineCondition</a></td>
                   <td></td>
-                  <td><p>State the state of this machine. empty means available for all </p></td>
+                  <td><p>Condition describes the availability </p></td>
                 </tr>
               
                 <tr>
-                  <td>description</td>
-                  <td><a href="#string">string</a></td>
+                  <td>led_state</td>
+                  <td><a href="#metalstack.api.v2.MachineChassisIdentifyLEDState">MachineChassisIdentifyLEDState</a></td>
                   <td></td>
-                  <td><p>Description a description why this machine is in the given state </p></td>
+                  <td><p>LEDState indicates the state of the indicator LED on this machine </p></td>
                 </tr>
               
                 <tr>
-                  <td>issuer</td>
-                  <td><a href="#string">string</a></td>
+                  <td>liveliness</td>
+                  <td><a href="#metalstack.api.v2.MachineLiveliness">MachineLiveliness</a></td>
                   <td></td>
-                  <td><p>Issuer the user that changed the state </p></td>
+                  <td><p>Liveliness of this machine </p></td>
                 </tr>
               
                 <tr>
