@@ -21,10 +21,12 @@ class FilesystemServiceCreateResponse(_message.Message):
     def __init__(self, filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ...) -> None: ...
 
 class FilesystemServiceUpdateRequest(_message.Message):
-    __slots__ = ("filesystem_layout",)
+    __slots__ = ("id", "filesystem_layout")
+    ID_FIELD_NUMBER: _ClassVar[int]
     FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
+    id: str
     filesystem_layout: _filesystem_pb2.FilesystemLayout
-    def __init__(self, filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ...) -> None: ...
 
 class FilesystemServiceUpdateResponse(_message.Message):
     __slots__ = ("filesystem_layout",)
