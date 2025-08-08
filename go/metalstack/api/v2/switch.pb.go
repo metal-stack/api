@@ -515,7 +515,7 @@ type SwitchNic struct {
 	// Identifier of the port
 	Identifier string `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
 	// MAC address of the port
-	MacAddress string `protobuf:"bytes,3,opt,name=mac_address,json=macAddress,proto3" json:"mac_address,omitempty"`
+	Mac string `protobuf:"bytes,3,opt,name=mac,proto3" json:"mac,omitempty"`
 	// VRF name if the port is bound in one
 	Vrf *string `protobuf:"bytes,4,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// Actual port status
@@ -572,9 +572,9 @@ func (x *SwitchNic) GetIdentifier() string {
 	return ""
 }
 
-func (x *SwitchNic) GetMacAddress() string {
+func (x *SwitchNic) GetMac() string {
 	if x != nil {
-		return x.MacAddress
+		return x.Mac
 	}
 	return ""
 }
@@ -792,16 +792,15 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\aversion\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aversion\x128\n" +
 	"\x12metal_core_version\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x10metalCoreVersion\"\xd1\x03\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x10metalCoreVersion\"\xc2\x03\n" +
 	"\tSwitchNic\x12\x1e\n" +
 	"\x04name\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04name\x12*\n" +
 	"\n" +
 	"identifier\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\n" +
-	"identifier\x12P\n" +
-	"\vmac_address\x18\x03 \x01(\tB/\xbaH,r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$R\n" +
-	"macAddress\x12!\n" +
+	"identifier\x12A\n" +
+	"\x03mac\x18\x03 \x01(\tB/\xbaH,r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$R\x03mac\x12!\n" +
 	"\x03vrf\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x03vrf\x88\x01\x01\x12E\n" +
 	"\x06actual\x18\x05 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06actual\x12@\n" +

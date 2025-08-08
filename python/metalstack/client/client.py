@@ -15,6 +15,7 @@ import metalstack.api.v2.filesystem_connecpy as api_filesystem_connecpy
 import metalstack.api.v2.health_connecpy as api_health_connecpy
 import metalstack.api.v2.image_connecpy as api_image_connecpy
 import metalstack.api.v2.ip_connecpy as api_ip_connecpy
+import metalstack.api.v2.machine_connecpy as api_machine_connecpy
 import metalstack.api.v2.method_connecpy as api_method_connecpy
 import metalstack.api.v2.network_connecpy as api_network_connecpy
 import metalstack.api.v2.partition_connecpy as api_partition_connecpy
@@ -100,6 +101,9 @@ class Client:
 
         def ip(self):
             return api_ip_connecpy.IPServiceClient(address=self._baseurl, session=self._session)
+
+        def machine(self):
+            return api_machine_connecpy.MachineServiceClient(address=self._baseurl, session=self._session)
 
         def method(self):
             return api_method_connecpy.MethodServiceClient(address=self._baseurl, session=self._session)

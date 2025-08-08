@@ -106,22 +106,22 @@ class SwitchOS(_message.Message):
     def __init__(self, vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., version: _Optional[str] = ..., metal_core_version: _Optional[str] = ...) -> None: ...
 
 class SwitchNic(_message.Message):
-    __slots__ = ("name", "identifier", "mac_address", "vrf", "actual", "bgp_filter", "bgp_port_state")
+    __slots__ = ("name", "identifier", "mac", "vrf", "actual", "bgp_filter", "bgp_port_state")
     NAME_FIELD_NUMBER: _ClassVar[int]
     IDENTIFIER_FIELD_NUMBER: _ClassVar[int]
-    MAC_ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    MAC_FIELD_NUMBER: _ClassVar[int]
     VRF_FIELD_NUMBER: _ClassVar[int]
     ACTUAL_FIELD_NUMBER: _ClassVar[int]
     BGP_FILTER_FIELD_NUMBER: _ClassVar[int]
     BGP_PORT_STATE_FIELD_NUMBER: _ClassVar[int]
     name: str
     identifier: str
-    mac_address: str
+    mac: str
     vrf: str
     actual: SwitchPortStatus
     bgp_filter: BGPFilter
     bgp_port_state: SwitchBGPPortState
-    def __init__(self, name: _Optional[str] = ..., identifier: _Optional[str] = ..., mac_address: _Optional[str] = ..., vrf: _Optional[str] = ..., actual: _Optional[_Union[SwitchPortStatus, str]] = ..., bgp_filter: _Optional[_Union[BGPFilter, _Mapping]] = ..., bgp_port_state: _Optional[_Union[SwitchBGPPortState, _Mapping]] = ...) -> None: ...
+    def __init__(self, name: _Optional[str] = ..., identifier: _Optional[str] = ..., mac: _Optional[str] = ..., vrf: _Optional[str] = ..., actual: _Optional[_Union[SwitchPortStatus, str]] = ..., bgp_filter: _Optional[_Union[BGPFilter, _Mapping]] = ..., bgp_port_state: _Optional[_Union[SwitchBGPPortState, _Mapping]] = ...) -> None: ...
 
 class BGPFilter(_message.Message):
     __slots__ = ("cidrs", "vnis")
