@@ -22,7 +22,7 @@ class NetworkServiceGetResponse(_message.Message):
     def __init__(self, network: _Optional[_Union[_network_pb2.Network, _Mapping]] = ...) -> None: ...
 
 class NetworkServiceCreateRequest(_message.Message):
-    __slots__ = ("id", "name", "description", "partition", "project", "type", "labels", "prefixes", "destination_prefixes", "default_child_prefix_length", "min_child_prefix_length", "nat_type", "vrf", "parent_network_id", "additional_announcable_cidrs", "length", "address_family")
+    __slots__ = ("id", "name", "description", "partition", "project", "type", "labels", "prefixes", "destination_prefixes", "default_child_prefix_length", "min_child_prefix_length", "nat_type", "vrf", "parent_network", "additional_announcable_cidrs", "length", "address_family")
     ID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
@@ -36,7 +36,7 @@ class NetworkServiceCreateRequest(_message.Message):
     MIN_CHILD_PREFIX_LENGTH_FIELD_NUMBER: _ClassVar[int]
     NAT_TYPE_FIELD_NUMBER: _ClassVar[int]
     VRF_FIELD_NUMBER: _ClassVar[int]
-    PARENT_NETWORK_ID_FIELD_NUMBER: _ClassVar[int]
+    PARENT_NETWORK_FIELD_NUMBER: _ClassVar[int]
     ADDITIONAL_ANNOUNCABLE_CIDRS_FIELD_NUMBER: _ClassVar[int]
     LENGTH_FIELD_NUMBER: _ClassVar[int]
     ADDRESS_FAMILY_FIELD_NUMBER: _ClassVar[int]
@@ -53,11 +53,11 @@ class NetworkServiceCreateRequest(_message.Message):
     min_child_prefix_length: _network_pb2.ChildPrefixLength
     nat_type: _network_pb2.NATType
     vrf: int
-    parent_network_id: str
+    parent_network: str
     additional_announcable_cidrs: _containers.RepeatedScalarFieldContainer[str]
     length: _network_pb2.ChildPrefixLength
     address_family: _network_pb2.NetworkAddressFamily
-    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., partition: _Optional[str] = ..., project: _Optional[str] = ..., type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., default_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., min_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., parent_network_id: _Optional[str] = ..., additional_announcable_cidrs: _Optional[_Iterable[str]] = ..., length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., address_family: _Optional[_Union[_network_pb2.NetworkAddressFamily, str]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., partition: _Optional[str] = ..., project: _Optional[str] = ..., type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., default_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., min_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., parent_network: _Optional[str] = ..., additional_announcable_cidrs: _Optional[_Iterable[str]] = ..., length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., address_family: _Optional[_Union[_network_pb2.NetworkAddressFamily, str]] = ...) -> None: ...
 
 class NetworkServiceUpdateRequest(_message.Message):
     __slots__ = ("id", "name", "description", "labels", "prefixes", "destination_prefixes", "default_child_prefix_length", "min_child_prefix_length", "nat_type", "additional_announcable_cidrs", "force")

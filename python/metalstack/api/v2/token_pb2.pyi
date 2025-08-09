@@ -23,7 +23,7 @@ TOKEN_TYPE_API: TokenType
 TOKEN_TYPE_CONSOLE: TokenType
 
 class Token(_message.Message):
-    __slots__ = ("uuid", "user_id", "description", "permissions", "expires", "issued_at", "token_type", "project_roles", "tenant_roles", "admin_role")
+    __slots__ = ("uuid", "user", "description", "permissions", "expires", "issued_at", "token_type", "project_roles", "tenant_roles", "admin_role")
     class ProjectRolesEntry(_message.Message):
         __slots__ = ("key", "value")
         KEY_FIELD_NUMBER: _ClassVar[int]
@@ -39,7 +39,7 @@ class Token(_message.Message):
         value: _common_pb2.TenantRole
         def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[_common_pb2.TenantRole, str]] = ...) -> None: ...
     UUID_FIELD_NUMBER: _ClassVar[int]
-    USER_ID_FIELD_NUMBER: _ClassVar[int]
+    USER_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     PERMISSIONS_FIELD_NUMBER: _ClassVar[int]
     EXPIRES_FIELD_NUMBER: _ClassVar[int]
@@ -49,7 +49,7 @@ class Token(_message.Message):
     TENANT_ROLES_FIELD_NUMBER: _ClassVar[int]
     ADMIN_ROLE_FIELD_NUMBER: _ClassVar[int]
     uuid: str
-    user_id: str
+    user: str
     description: str
     permissions: _containers.RepeatedCompositeFieldContainer[MethodPermission]
     expires: _timestamp_pb2.Timestamp
@@ -58,7 +58,7 @@ class Token(_message.Message):
     project_roles: _containers.ScalarMap[str, _common_pb2.ProjectRole]
     tenant_roles: _containers.ScalarMap[str, _common_pb2.TenantRole]
     admin_role: _common_pb2.AdminRole
-    def __init__(self, uuid: _Optional[str] = ..., user_id: _Optional[str] = ..., description: _Optional[str] = ..., permissions: _Optional[_Iterable[_Union[MethodPermission, _Mapping]]] = ..., expires: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., issued_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., token_type: _Optional[_Union[TokenType, str]] = ..., project_roles: _Optional[_Mapping[str, _common_pb2.ProjectRole]] = ..., tenant_roles: _Optional[_Mapping[str, _common_pb2.TenantRole]] = ..., admin_role: _Optional[_Union[_common_pb2.AdminRole, str]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., user: _Optional[str] = ..., description: _Optional[str] = ..., permissions: _Optional[_Iterable[_Union[MethodPermission, _Mapping]]] = ..., expires: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., issued_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., token_type: _Optional[_Union[TokenType, str]] = ..., project_roles: _Optional[_Mapping[str, _common_pb2.ProjectRole]] = ..., tenant_roles: _Optional[_Mapping[str, _common_pb2.TenantRole]] = ..., admin_role: _Optional[_Union[_common_pb2.AdminRole, str]] = ...) -> None: ...
 
 class TokenServiceCreateRequest(_message.Message):
     __slots__ = ("description", "permissions", "expires", "project_roles", "tenant_roles", "admin_role")

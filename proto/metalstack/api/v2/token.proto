@@ -39,8 +39,8 @@ service TokenService {
 message Token {
   // Uuid of the jwt token, used to reference it by revoke
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // UserId who created this token
-  string user_id = 2 [(buf.validate.field).string = {
+  // User who created this token
+  string user = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 512
   }];

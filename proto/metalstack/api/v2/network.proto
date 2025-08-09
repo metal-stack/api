@@ -83,8 +83,8 @@ message NetworkServiceCreateRequest {
   }];
   // Labels on this network
   Labels labels = 5;
-  // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 6 [(buf.validate.field).string = {
+  // Parent Network points to the id of the parent network if any
+  optional string parent_network = 6 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
@@ -227,8 +227,8 @@ message Network {
   optional NATType nat_type = 13 [(buf.validate.field).enum.defined_only = true];
   // VRF of this network has this VNI.
   optional uint32 vrf = 14;
-  // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 15 [(buf.validate.field).string = {
+  // Parent Network points to the id of the parent network if any
+  optional string parent_network = 15 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
@@ -285,8 +285,8 @@ message NetworkQuery {
   };
   // VRF of this network has this VNI.
   optional uint32 vrf = 9;
-  // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 10 [(buf.validate.field).string = {
+  // Parent Network points to the id of the parent network if any
+  optional string parent_network = 10 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];

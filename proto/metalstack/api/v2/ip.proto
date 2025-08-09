@@ -115,8 +115,8 @@ message IPServiceCreateRequest {
   optional string description = 4 [(buf.validate.field).string = {max_len: 128}];
   // IP if given try to create this ip if still available
   optional string ip = 5 [(buf.validate.field).string.ip = true];
-  // MachineId for which this ip should get created
-  optional string machine_id = 6 [(buf.validate.field).string.uuid = true];
+  // Machine for which this ip should get created
+  optional string machine = 6 [(buf.validate.field).string.uuid = true];
   // Labels to put onto the ip
   optional Labels labels = 7;
   // Type of the IP, ether ephemeral (default), or static
@@ -170,8 +170,8 @@ message IPQuery {
   }];
   // Uuid for which this ips should get filtered
   optional string uuid = 5 [(buf.validate.field).string.uuid = true];
-  // MachineId for which this ips should get filtered
-  optional string machine_id = 6 [(buf.validate.field).string.uuid = true];
+  // Machine for which this ips should get filtered
+  optional string machine = 6 [(buf.validate.field).string.uuid = true];
   // ParentPrefixCidr for which this ips should get filtered
   optional string parent_prefix_cidr = 7 [(buf.validate.field).string.ip = true];
   // Labels for which this ips should get filtered

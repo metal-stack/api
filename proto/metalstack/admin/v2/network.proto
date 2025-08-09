@@ -102,8 +102,8 @@ message NetworkServiceCreateRequest {
   optional metalstack.api.v2.NATType nat_type = 12 [(buf.validate.field).enum.defined_only = true];
   // VRF of this network has this VNI.
   optional uint32 vrf = 13;
-  // Parent NetworkId points to the id of the parent network if any
-  optional string parent_network_id = 14 [(buf.validate.field).string = {
+  // Parent Network points to the id of the parent network if any
+  optional string parent_network = 14 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
