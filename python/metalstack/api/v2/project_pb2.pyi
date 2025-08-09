@@ -176,26 +176,26 @@ class ProjectServiceInviteGetResponse(_message.Message):
     def __init__(self, invite: _Optional[_Union[ProjectInvite, _Mapping]] = ...) -> None: ...
 
 class ProjectServiceRemoveMemberRequest(_message.Message):
-    __slots__ = ("project", "member_id")
+    __slots__ = ("project", "member")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
-    MEMBER_ID_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
     project: str
-    member_id: str
-    def __init__(self, project: _Optional[str] = ..., member_id: _Optional[str] = ...) -> None: ...
+    member: str
+    def __init__(self, project: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
 
 class ProjectServiceRemoveMemberResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
 
 class ProjectServiceUpdateMemberRequest(_message.Message):
-    __slots__ = ("project", "member_id", "role")
+    __slots__ = ("project", "member", "role")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
-    MEMBER_ID_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
     ROLE_FIELD_NUMBER: _ClassVar[int]
     project: str
-    member_id: str
+    member: str
     role: _common_pb2.ProjectRole
-    def __init__(self, project: _Optional[str] = ..., member_id: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ...) -> None: ...
+    def __init__(self, project: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ...) -> None: ...
 
 class ProjectServiceUpdateMemberResponse(_message.Message):
     __slots__ = ("project_member",)
