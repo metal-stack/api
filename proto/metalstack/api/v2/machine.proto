@@ -125,7 +125,7 @@ message MachineServiceCreateRequest {
   // NTPServer the ntp servers used for the machine
   repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
   // AllocationType of this machine
-  optional MachineAllocationType allocation_type = 18 [(buf.validate.field).enum.defined_only = true];
+  MachineAllocationType allocation_type = 18 [(buf.validate.field).enum.defined_only = true];
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 19;
 }
@@ -290,7 +290,7 @@ message MachineAllocation {
   // AWS limits the max userdata size to 16k, lets allow twice as much
   string userdata = 12 [(buf.validate.field).string = {max_len: 32768}];
   // AllocationType of this machine
-  optional MachineAllocationType allocation_type = 13 [(buf.validate.field).enum.defined_only = true];
+  MachineAllocationType allocation_type = 13 [(buf.validate.field).enum.defined_only = true];
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 14;
   // DNSServers for this machine
