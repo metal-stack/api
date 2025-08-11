@@ -21,7 +21,6 @@ class BootService(Protocol):
     async def Register(self, req: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceRegisterRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceRegisterResponse: ...
     async def Wait(self, req: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceWaitRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceWaitResponse: ...
     async def Report(self, req: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportResponse: ...
-    async def AbortReinstall(self, req: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse: ...
 
 
 class BootServiceServer(ConnecpyServer):
@@ -77,14 +76,6 @@ class BootServiceServer(ConnecpyServer):
                 output=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportResponse,
                 allowed_methods=("POST",),
             ),
-            "AbortReinstall": Endpoint[metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest, metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse](
-                service_name="BootService",
-                name="AbortReinstall",
-                function=getattr(service, "AbortReinstall"),
-                input=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest,
-                output=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse,
-                allowed_methods=("POST",),
-            ),
         }
 
     def serviceName(self):
@@ -98,7 +89,6 @@ class BootServiceSync(Protocol):
     def Register(self, req: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceRegisterRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceRegisterResponse: ...
     def Wait(self, req: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceWaitRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceWaitResponse: ...
     def Report(self, req: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportResponse: ...
-    def AbortReinstall(self, req: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse: ...
 
 
 class BootServiceServerSync(ConnecpyServer):
@@ -152,14 +142,6 @@ class BootServiceServerSync(ConnecpyServer):
                 function=getattr(service, "Report"),
                 input=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportRequest,
                 output=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportResponse,
-                allowed_methods=("POST",),
-            ),
-            "AbortReinstall": Endpoint[metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest, metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse](
-                service_name="BootService",
-                name="AbortReinstall",
-                function=getattr(service, "AbortReinstall"),
-                input=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest,
-                output=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -273,24 +255,6 @@ class BootServiceClient(ConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportResponse,
-            method=method,
-            **kwargs,
-        )
-
-    def AbortReinstall(
-        self,
-        request: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        **kwargs,
-    ) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse:
-        method = "POST"
-        return self._make_request(
-            url=f"{server_path_prefix}/metalstack.infra.v2.BootService/AbortReinstall",
-            ctx=ctx,
-            request=request,
-            response_class=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse,
             method=method,
             **kwargs,
         )
@@ -412,26 +376,6 @@ class AsyncBootServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportResponse,
-            method=method,
-            session=session,
-            **kwargs,
-        )
-
-    async def AbortReinstall(
-        self,
-        request: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest,
-        *,
-        ctx: Optional[ClientContext] = None,
-        server_path_prefix: str = "",
-        session: Union[httpx.AsyncClient, None] = None,
-        **kwargs,
-    ) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse:
-        method = "POST"
-        return await self._make_request(
-            url=f"{server_path_prefix}/metalstack.infra.v2.BootService/AbortReinstall",
-            ctx=ctx,
-            request=request,
-            response_class=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse,
             method=method,
             session=session,
             **kwargs,

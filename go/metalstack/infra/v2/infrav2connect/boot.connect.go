@@ -46,9 +46,6 @@ const (
 	BootServiceWaitProcedure = "/metalstack.infra.v2.BootService/Wait"
 	// BootServiceReportProcedure is the fully-qualified name of the BootService's Report RPC.
 	BootServiceReportProcedure = "/metalstack.infra.v2.BootService/Report"
-	// BootServiceAbortReinstallProcedure is the fully-qualified name of the BootService's
-	// AbortReinstall RPC.
-	BootServiceAbortReinstallProcedure = "/metalstack.infra.v2.BootService/AbortReinstall"
 )
 
 // BootServiceClient is a client for the metalstack.infra.v2.BootService service.
@@ -65,8 +62,6 @@ type BootServiceClient interface {
 	Wait(context.Context, *connect.Request[v2.BootServiceWaitRequest]) (*connect.ServerStreamForClient[v2.BootServiceWaitResponse], error)
 	// Report tells metal-api installation was either successful or failed
 	Report(context.Context, *connect.Request[v2.BootServiceReportRequest]) (*connect.Response[v2.BootServiceReportResponse], error)
-	// If reinstall failed and tell metal-api to restore to previous state
-	AbortReinstall(context.Context, *connect.Request[v2.BootServiceAbortReinstallRequest]) (*connect.Response[v2.BootServiceAbortReinstallResponse], error)
 }
 
 // NewBootServiceClient constructs a client for the metalstack.infra.v2.BootService service. By
@@ -116,12 +111,6 @@ func NewBootServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(bootServiceMethods.ByName("Report")),
 			connect.WithClientOptions(opts...),
 		),
-		abortReinstall: connect.NewClient[v2.BootServiceAbortReinstallRequest, v2.BootServiceAbortReinstallResponse](
-			httpClient,
-			baseURL+BootServiceAbortReinstallProcedure,
-			connect.WithSchema(bootServiceMethods.ByName("AbortReinstall")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
@@ -133,7 +122,6 @@ type bootServiceClient struct {
 	register          *connect.Client[v2.BootServiceRegisterRequest, v2.BootServiceRegisterResponse]
 	wait              *connect.Client[v2.BootServiceWaitRequest, v2.BootServiceWaitResponse]
 	report            *connect.Client[v2.BootServiceReportRequest, v2.BootServiceReportResponse]
-	abortReinstall    *connect.Client[v2.BootServiceAbortReinstallRequest, v2.BootServiceAbortReinstallResponse]
 }
 
 // Dhcp calls metalstack.infra.v2.BootService.Dhcp.
@@ -166,11 +154,6 @@ func (c *bootServiceClient) Report(ctx context.Context, req *connect.Request[v2.
 	return c.report.CallUnary(ctx, req)
 }
 
-// AbortReinstall calls metalstack.infra.v2.BootService.AbortReinstall.
-func (c *bootServiceClient) AbortReinstall(ctx context.Context, req *connect.Request[v2.BootServiceAbortReinstallRequest]) (*connect.Response[v2.BootServiceAbortReinstallResponse], error) {
-	return c.abortReinstall.CallUnary(ctx, req)
-}
-
 // BootServiceHandler is an implementation of the metalstack.infra.v2.BootService service.
 type BootServiceHandler interface {
 	// Dhcp is the first dhcp request (option 97). A ProvisioningEventPXEBooting is fired
@@ -185,8 +168,6 @@ type BootServiceHandler interface {
 	Wait(context.Context, *connect.Request[v2.BootServiceWaitRequest], *connect.ServerStream[v2.BootServiceWaitResponse]) error
 	// Report tells metal-api installation was either successful or failed
 	Report(context.Context, *connect.Request[v2.BootServiceReportRequest]) (*connect.Response[v2.BootServiceReportResponse], error)
-	// If reinstall failed and tell metal-api to restore to previous state
-	AbortReinstall(context.Context, *connect.Request[v2.BootServiceAbortReinstallRequest]) (*connect.Response[v2.BootServiceAbortReinstallResponse], error)
 }
 
 // NewBootServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -232,12 +213,6 @@ func NewBootServiceHandler(svc BootServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(bootServiceMethods.ByName("Report")),
 		connect.WithHandlerOptions(opts...),
 	)
-	bootServiceAbortReinstallHandler := connect.NewUnaryHandler(
-		BootServiceAbortReinstallProcedure,
-		svc.AbortReinstall,
-		connect.WithSchema(bootServiceMethods.ByName("AbortReinstall")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/metalstack.infra.v2.BootService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case BootServiceDhcpProcedure:
@@ -252,8 +227,6 @@ func NewBootServiceHandler(svc BootServiceHandler, opts ...connect.HandlerOption
 			bootServiceWaitHandler.ServeHTTP(w, r)
 		case BootServiceReportProcedure:
 			bootServiceReportHandler.ServeHTTP(w, r)
-		case BootServiceAbortReinstallProcedure:
-			bootServiceAbortReinstallHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -285,8 +258,4 @@ func (UnimplementedBootServiceHandler) Wait(context.Context, *connect.Request[v2
 
 func (UnimplementedBootServiceHandler) Report(context.Context, *connect.Request[v2.BootServiceReportRequest]) (*connect.Response[v2.BootServiceReportResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Report is not implemented"))
-}
-
-func (UnimplementedBootServiceHandler) AbortReinstall(context.Context, *connect.Request[v2.BootServiceAbortReinstallRequest]) (*connect.Response[v2.BootServiceAbortReinstallResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.AbortReinstall is not implemented"))
 }

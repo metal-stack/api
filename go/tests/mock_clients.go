@@ -57,6 +57,7 @@ type (
 		healthservice     *apiv2mocks.HealthServiceClient
 		imageservice      *apiv2mocks.ImageServiceClient
 		ipservice         *apiv2mocks.IPServiceClient
+		machineservice    *apiv2mocks.MachineServiceClient
 		methodservice     *apiv2mocks.MethodServiceClient
 		networkservice    *apiv2mocks.NetworkServiceClient
 		partitionservice  *apiv2mocks.PartitionServiceClient
@@ -73,6 +74,7 @@ type (
 		Health     func(m *mock.Mock)
 		Image      func(m *mock.Mock)
 		IP         func(m *mock.Mock)
+		Machine    func(m *mock.Mock)
 		Method     func(m *mock.Mock)
 		Network    func(m *mock.Mock)
 		Partition  func(m *mock.Mock)
@@ -84,13 +86,15 @@ type (
 		Version    func(m *mock.Mock)
 	}
 	infrav2 struct {
-		bmcservice  *infrav2mocks.BMCServiceClient
-		bootservice *infrav2mocks.BootServiceClient
+		bmcservice    *infrav2mocks.BMCServiceClient
+		bootservice   *infrav2mocks.BootServiceClient
+		switchservice *infrav2mocks.SwitchServiceClient
 	}
 
 	Infrav2MockFns struct {
-		BMC  func(m *mock.Mock)
-		Boot func(m *mock.Mock)
+		BMC    func(m *mock.Mock)
+		Boot   func(m *mock.Mock)
+		Switch func(m *mock.Mock)
 	}
 )
 
@@ -198,6 +202,7 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		healthservice:     apiv2mocks.NewHealthServiceClient(t),
 		imageservice:      apiv2mocks.NewImageServiceClient(t),
 		ipservice:         apiv2mocks.NewIPServiceClient(t),
+		machineservice:    apiv2mocks.NewMachineServiceClient(t),
 		methodservice:     apiv2mocks.NewMethodServiceClient(t),
 		networkservice:    apiv2mocks.NewNetworkServiceClient(t),
 		partitionservice:  apiv2mocks.NewPartitionServiceClient(t),
@@ -221,6 +226,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		}
 		if fns.IP != nil {
 			fns.IP(&a.ipservice.Mock)
+		}
+		if fns.Machine != nil {
+			fns.Machine(&a.machineservice.Mock)
 		}
 		if fns.Method != nil {
 			fns.Method(&a.methodservice.Mock)
@@ -267,6 +275,9 @@ func (c *apiv2) Image() apiv2connect.ImageServiceClient {
 func (c *apiv2) IP() apiv2connect.IPServiceClient {
 	return c.ipservice
 }
+func (c *apiv2) Machine() apiv2connect.MachineServiceClient {
+	return c.machineservice
+}
 func (c *apiv2) Method() apiv2connect.MethodServiceClient {
 	return c.methodservice
 }
@@ -301,8 +312,9 @@ func (w wrapper) Infrav2(fns *Infrav2MockFns) *infrav2 {
 
 func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 	a := &infrav2{
-		bmcservice:  infrav2mocks.NewBMCServiceClient(t),
-		bootservice: infrav2mocks.NewBootServiceClient(t),
+		bmcservice:    infrav2mocks.NewBMCServiceClient(t),
+		bootservice:   infrav2mocks.NewBootServiceClient(t),
+		switchservice: infrav2mocks.NewSwitchServiceClient(t),
 	}
 
 	if fns != nil {
@@ -311,6 +323,9 @@ func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 		}
 		if fns.Boot != nil {
 			fns.Boot(&a.bootservice.Mock)
+		}
+		if fns.Switch != nil {
+			fns.Switch(&a.switchservice.Mock)
 		}
 
 	}
@@ -323,4 +338,7 @@ func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 }
 func (c *infrav2) Boot() infrav2connect.BootServiceClient {
 	return c.bootservice
+}
+func (c *infrav2) Switch() infrav2connect.SwitchServiceClient {
+	return c.switchservice
 }

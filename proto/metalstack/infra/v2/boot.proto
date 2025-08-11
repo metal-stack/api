@@ -4,6 +4,7 @@ package metalstack.infra.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/machine.proto";
 
 // BootService is used for all boot related requests, either pixiecore or metal-hammer
 service BootService {
@@ -48,12 +49,6 @@ service BootService {
 
   // Report tells metal-api installation was either successful or failed
   rpc Report(BootServiceReportRequest) returns (BootServiceReportResponse) {
-    option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
-    option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_VIEWER;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
-  }
-  // If reinstall failed and tell metal-api to restore to previous state
-  rpc AbortReinstall(BootServiceAbortReinstallRequest) returns (BootServiceAbortReinstallResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
@@ -109,11 +104,11 @@ message BootServiceRegisterRequest {
   // UUID of this machine
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Hardware details of this machine
-  MachineHardware hardware = 2;
+  metalstack.api.v2.MachineHardware hardware = 2;
   // Bios details of this machine
-  MachineBIOS bios = 3;
+  metalstack.api.v2.MachineBios bios = 3;
   // IPMI details of this machine
-  MachineIPMI ipmi = 4;
+  metalstack.api.v2.MachineIPMI ipmi = 4;
   // Tags of this machine
   repeated string tags = 5;
   // MetalHammer version this machine was bootet into
@@ -153,201 +148,6 @@ message BootServiceWaitRequest {
 // BootServiceWaitResponse response to a wait request
 message BootServiceWaitResponse {}
 
-// MachineHardware contains hardware details of this machine
-message MachineHardware {
-  // Memory in bytes
-  uint64 memory = 1;
-  // Disks which are built into this machine
-  repeated MachineBlockDevice disks = 3;
-  // Nics are network interface cards built into this machein
-  repeated MachineNic nics = 4;
-  // CPUs in this machine
-  repeated MachineCPU cpus = 5;
-  // GPUs in this machine
-  repeated MachineGPU gpus = 6;
-}
-
-// MachineCPU describes a physical CPU
-message MachineCPU {
-  // Vendor of this cpu
-  string vendor = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Model of this cpu
-  string model = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Cores in this cpu
-  uint32 cores = 3;
-  // Threads total in this cpu
-  uint32 threads = 4;
-}
-
-// MachineGPU describes a physical GPU
-message MachineGPU {
-  // Vendor of this gpu
-  string vendor = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Model of this gpu
-  string model = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
-// MachineNIC describes a network interface card
-message MachineNic {
-  // Mac address of this network card
-  string mac = 1 [(buf.validate.field).cel = {
-    id: "mac"
-    message: "mac must be a valid mac address"
-    expression: "this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')"
-  }];
-  // Name in the os of this network card, e.g. eth0
-  string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Vendor of this network card
-  string vendor = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Model of this network card
-  string model = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Speed in bits/second of this network card
-  uint64 speed = 5;
-  // Neighbors connected to this network card
-  repeated MachineNic neighbors = 6;
-  // Hostname FIXME clarify usage
-  string hostname = 7 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Identifier of this network card
-  string identifier = 8 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
-// MachineBlockDevice defines a disk built into a machine
-message MachineBlockDevice {
-  // Name of this device
-  string name = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Size in bytes of this device
-  uint64 size = 2;
-}
-
-// MachineBIOS describes details of the machine bios
-message MachineBIOS {
-  // Version of the bios
-  string version = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Vendor of the bios
-  string vendor = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Date of the bios
-  string date = 3;
-}
-
-// MachineIPMI describe details of the ipmi or out of band device
-message MachineIPMI {
-  // Address of this ipmi device from outside
-  string address = 1 [(buf.validate.field).string.ip = true];
-  // Mac address of the network interface of this ipmi device
-  string mac = 2 [(buf.validate.field).cel = {
-    id: "mac"
-    message: "mac must be a valid mac address"
-    expression: "this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')"
-  }];
-  // User of this ipmi device
-  string user = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Password of this ipmi device
-  string password = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Interface of this ipmi device
-  string interface = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // FRU field replaceable unit details for this machine
-  MachineFRU fru = 6;
-  // BMCVersion of this ipmi device
-  string bmc_version = 7 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // PowerState of this machine
-  string power_state = 8 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
-// MachineFRU describes details to the machine which are required in case of a necessary replacement
-message MachineFRU {
-  // ChassisPartNumber is the part number of the machine chassis
-  optional string chassis_part_number = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // ChassisPartSerial is the serial number of the machine chassis
-  optional string chassis_part_serial = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // BoardMFG is the short description of the mainboard
-  optional string board_mfg = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // BoardSerial is the serial number of the mainboard
-  optional string board_mfg_serial = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // BoardPartNumber is the part number of the mainboard
-  optional string board_part_number = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // ProductManufacturer is the manufacturer of the machine
-  optional string product_manufacturer = 6 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // ProductPartNumber is the part number of the machine
-  optional string product_part_number = 7 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // ProductSerial is the serial number of the machine
-  optional string product_serial = 8 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
 // BootServiceReportRequest is sent from metal-hammer to the api to report the outcome of the register
 message BootServiceReportRequest {
   // UUID of the machine to boot
@@ -357,8 +157,6 @@ message BootServiceReportRequest {
     min_len: 2
     max_len: 128
   }];
-  // BootInfo contains all details which are the result of registration and allocation
-  BootInfo boot_info = 3;
   // Success is set to true of the allocation succeeded
   bool success = 4;
   // Message contains additional information if installation failed
@@ -370,59 +168,6 @@ message BootServiceReportRequest {
 
 // BootServiceReportRequest is the response to a BootServiceReportRequest
 message BootServiceReportResponse {}
-
-// BootInfo contains calculated values of a allocation
-message BootInfo {
-  // Image which is going to be installed
-  string image_id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // PrimaryDisk the machine boots from
-  string primary_disk = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // OSPartition where the operating system is stored
-  string os_partition = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Initrd the name of the initial ram disk
-  string initrd = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Cmdline of the kernel
-  string cmdline = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Kernel to boot from
-  string kernel = 6 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // BootloadID which is used to boot
-  string bootloader_id = 8 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-}
-
-// BootServiceAbortReinstallRequest is called if the reinstallation failed and must aborted
-message BootServiceAbortReinstallRequest {
-  // UUID of this machine
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // PrimaryDiskWiped is set to true if the primary disk was wiped
-  bool primary_disk_wiped = 2;
-}
-
-// BootServiceAbortReinstallResponse response if a reinstall abort command was called
-message BootServiceAbortReinstallResponse {
-  // BootInfo contains details to the boot
-  BootInfo boot_info = 1;
-}
 
 // BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser
 message BootServiceSuperUserPasswordRequest {

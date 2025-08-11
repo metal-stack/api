@@ -46,11 +46,6 @@ class BootServiceStub(object):
                 request_serializer=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportRequest.SerializeToString,
                 response_deserializer=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportResponse.FromString,
                 _registered_method=True)
-        self.AbortReinstall = channel.unary_unary(
-                '/metalstack.infra.v2.BootService/AbortReinstall',
-                request_serializer=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest.SerializeToString,
-                response_deserializer=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse.FromString,
-                _registered_method=True)
 
 
 class BootServiceServicer(object):
@@ -105,13 +100,6 @@ class BootServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def AbortReinstall(self, request, context):
-        """If reinstall failed and tell metal-api to restore to previous state
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
 
 def add_BootServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -144,11 +132,6 @@ def add_BootServiceServicer_to_server(servicer, server):
                     servicer.Report,
                     request_deserializer=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportRequest.FromString,
                     response_serializer=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportResponse.SerializeToString,
-            ),
-            'AbortReinstall': grpc.unary_unary_rpc_method_handler(
-                    servicer.AbortReinstall,
-                    request_deserializer=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest.FromString,
-                    response_serializer=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -315,33 +298,6 @@ class BootService(object):
             '/metalstack.infra.v2.BootService/Report',
             metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportRequest.SerializeToString,
             metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceReportResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def AbortReinstall(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/metalstack.infra.v2.BootService/AbortReinstall',
-            metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallRequest.SerializeToString,
-            metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceAbortReinstallResponse.FromString,
             options,
             channel_credentials,
             insecure,

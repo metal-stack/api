@@ -8,7 +8,7 @@ package infrav2
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "github.com/metal-stack/api/go/metalstack/api/v2"
+	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -231,11 +231,11 @@ type BootServiceRegisterRequest struct {
 	// UUID of this machine
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Hardware details of this machine
-	Hardware *MachineHardware `protobuf:"bytes,2,opt,name=hardware,proto3" json:"hardware,omitempty"`
+	Hardware *v2.MachineHardware `protobuf:"bytes,2,opt,name=hardware,proto3" json:"hardware,omitempty"`
 	// Bios details of this machine
-	Bios *MachineBIOS `protobuf:"bytes,3,opt,name=bios,proto3" json:"bios,omitempty"`
+	Bios *v2.MachineBios `protobuf:"bytes,3,opt,name=bios,proto3" json:"bios,omitempty"`
 	// IPMI details of this machine
-	Ipmi *MachineIPMI `protobuf:"bytes,4,opt,name=ipmi,proto3" json:"ipmi,omitempty"`
+	Ipmi *v2.MachineIPMI `protobuf:"bytes,4,opt,name=ipmi,proto3" json:"ipmi,omitempty"`
 	// Tags of this machine
 	Tags []string `protobuf:"bytes,5,rep,name=tags,proto3" json:"tags,omitempty"`
 	// MetalHammer version this machine was bootet into
@@ -283,21 +283,21 @@ func (x *BootServiceRegisterRequest) GetUuid() string {
 	return ""
 }
 
-func (x *BootServiceRegisterRequest) GetHardware() *MachineHardware {
+func (x *BootServiceRegisterRequest) GetHardware() *v2.MachineHardware {
 	if x != nil {
 		return x.Hardware
 	}
 	return nil
 }
 
-func (x *BootServiceRegisterRequest) GetBios() *MachineBIOS {
+func (x *BootServiceRegisterRequest) GetBios() *v2.MachineBios {
 	if x != nil {
 		return x.Bios
 	}
 	return nil
 }
 
-func (x *BootServiceRegisterRequest) GetIpmi() *MachineIPMI {
+func (x *BootServiceRegisterRequest) GetIpmi() *v2.MachineIPMI {
 	if x != nil {
 		return x.Ipmi
 	}
@@ -472,662 +472,6 @@ func (*BootServiceWaitResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{7}
 }
 
-// MachineHardware contains hardware details of this machine
-type MachineHardware struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Memory in bytes
-	Memory uint64 `protobuf:"varint,1,opt,name=memory,proto3" json:"memory,omitempty"`
-	// Disks which are built into this machine
-	Disks []*MachineBlockDevice `protobuf:"bytes,3,rep,name=disks,proto3" json:"disks,omitempty"`
-	// Nics are network interface cards built into this machein
-	Nics []*MachineNic `protobuf:"bytes,4,rep,name=nics,proto3" json:"nics,omitempty"`
-	// CPUs in this machine
-	Cpus []*MachineCPU `protobuf:"bytes,5,rep,name=cpus,proto3" json:"cpus,omitempty"`
-	// GPUs in this machine
-	Gpus          []*MachineGPU `protobuf:"bytes,6,rep,name=gpus,proto3" json:"gpus,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MachineHardware) Reset() {
-	*x = MachineHardware{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MachineHardware) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MachineHardware) ProtoMessage() {}
-
-func (x *MachineHardware) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MachineHardware.ProtoReflect.Descriptor instead.
-func (*MachineHardware) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *MachineHardware) GetMemory() uint64 {
-	if x != nil {
-		return x.Memory
-	}
-	return 0
-}
-
-func (x *MachineHardware) GetDisks() []*MachineBlockDevice {
-	if x != nil {
-		return x.Disks
-	}
-	return nil
-}
-
-func (x *MachineHardware) GetNics() []*MachineNic {
-	if x != nil {
-		return x.Nics
-	}
-	return nil
-}
-
-func (x *MachineHardware) GetCpus() []*MachineCPU {
-	if x != nil {
-		return x.Cpus
-	}
-	return nil
-}
-
-func (x *MachineHardware) GetGpus() []*MachineGPU {
-	if x != nil {
-		return x.Gpus
-	}
-	return nil
-}
-
-// MachineCPU describes a physical CPU
-type MachineCPU struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Vendor of this cpu
-	Vendor string `protobuf:"bytes,1,opt,name=vendor,proto3" json:"vendor,omitempty"`
-	// Model of this cpu
-	Model string `protobuf:"bytes,2,opt,name=model,proto3" json:"model,omitempty"`
-	// Cores in this cpu
-	Cores uint32 `protobuf:"varint,3,opt,name=cores,proto3" json:"cores,omitempty"`
-	// Threads total in this cpu
-	Threads       uint32 `protobuf:"varint,4,opt,name=threads,proto3" json:"threads,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MachineCPU) Reset() {
-	*x = MachineCPU{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MachineCPU) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MachineCPU) ProtoMessage() {}
-
-func (x *MachineCPU) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MachineCPU.ProtoReflect.Descriptor instead.
-func (*MachineCPU) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *MachineCPU) GetVendor() string {
-	if x != nil {
-		return x.Vendor
-	}
-	return ""
-}
-
-func (x *MachineCPU) GetModel() string {
-	if x != nil {
-		return x.Model
-	}
-	return ""
-}
-
-func (x *MachineCPU) GetCores() uint32 {
-	if x != nil {
-		return x.Cores
-	}
-	return 0
-}
-
-func (x *MachineCPU) GetThreads() uint32 {
-	if x != nil {
-		return x.Threads
-	}
-	return 0
-}
-
-// MachineGPU describes a physical GPU
-type MachineGPU struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Vendor of this gpu
-	Vendor string `protobuf:"bytes,1,opt,name=vendor,proto3" json:"vendor,omitempty"`
-	// Model of this gpu
-	Model         string `protobuf:"bytes,2,opt,name=model,proto3" json:"model,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MachineGPU) Reset() {
-	*x = MachineGPU{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[10]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MachineGPU) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MachineGPU) ProtoMessage() {}
-
-func (x *MachineGPU) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[10]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MachineGPU.ProtoReflect.Descriptor instead.
-func (*MachineGPU) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *MachineGPU) GetVendor() string {
-	if x != nil {
-		return x.Vendor
-	}
-	return ""
-}
-
-func (x *MachineGPU) GetModel() string {
-	if x != nil {
-		return x.Model
-	}
-	return ""
-}
-
-// MachineNIC describes a network interface card
-type MachineNic struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Mac address of this network card
-	Mac string `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
-	// Name in the os of this network card, e.g. eth0
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// Vendor of this network card
-	Vendor string `protobuf:"bytes,3,opt,name=vendor,proto3" json:"vendor,omitempty"`
-	// Model of this network card
-	Model string `protobuf:"bytes,4,opt,name=model,proto3" json:"model,omitempty"`
-	// Speed in bits/second of this network card
-	Speed uint64 `protobuf:"varint,5,opt,name=speed,proto3" json:"speed,omitempty"`
-	// Neighbors connected to this network card
-	Neighbors []*MachineNic `protobuf:"bytes,6,rep,name=neighbors,proto3" json:"neighbors,omitempty"`
-	// Hostname FIXME clarify usage
-	Hostname string `protobuf:"bytes,7,opt,name=hostname,proto3" json:"hostname,omitempty"`
-	// Identifier of this network card
-	Identifier    string `protobuf:"bytes,8,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MachineNic) Reset() {
-	*x = MachineNic{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[11]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MachineNic) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MachineNic) ProtoMessage() {}
-
-func (x *MachineNic) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[11]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MachineNic.ProtoReflect.Descriptor instead.
-func (*MachineNic) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *MachineNic) GetMac() string {
-	if x != nil {
-		return x.Mac
-	}
-	return ""
-}
-
-func (x *MachineNic) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *MachineNic) GetVendor() string {
-	if x != nil {
-		return x.Vendor
-	}
-	return ""
-}
-
-func (x *MachineNic) GetModel() string {
-	if x != nil {
-		return x.Model
-	}
-	return ""
-}
-
-func (x *MachineNic) GetSpeed() uint64 {
-	if x != nil {
-		return x.Speed
-	}
-	return 0
-}
-
-func (x *MachineNic) GetNeighbors() []*MachineNic {
-	if x != nil {
-		return x.Neighbors
-	}
-	return nil
-}
-
-func (x *MachineNic) GetHostname() string {
-	if x != nil {
-		return x.Hostname
-	}
-	return ""
-}
-
-func (x *MachineNic) GetIdentifier() string {
-	if x != nil {
-		return x.Identifier
-	}
-	return ""
-}
-
-// MachineBlockDevice defines a disk built into a machine
-type MachineBlockDevice struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of this device
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Size in bytes of this device
-	Size          uint64 `protobuf:"varint,2,opt,name=size,proto3" json:"size,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MachineBlockDevice) Reset() {
-	*x = MachineBlockDevice{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MachineBlockDevice) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MachineBlockDevice) ProtoMessage() {}
-
-func (x *MachineBlockDevice) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MachineBlockDevice.ProtoReflect.Descriptor instead.
-func (*MachineBlockDevice) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *MachineBlockDevice) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *MachineBlockDevice) GetSize() uint64 {
-	if x != nil {
-		return x.Size
-	}
-	return 0
-}
-
-// MachineBIOS describes details of the machine bios
-type MachineBIOS struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Version of the bios
-	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
-	// Vendor of the bios
-	Vendor string `protobuf:"bytes,2,opt,name=vendor,proto3" json:"vendor,omitempty"`
-	// Date of the bios
-	Date          string `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MachineBIOS) Reset() {
-	*x = MachineBIOS{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MachineBIOS) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MachineBIOS) ProtoMessage() {}
-
-func (x *MachineBIOS) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MachineBIOS.ProtoReflect.Descriptor instead.
-func (*MachineBIOS) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *MachineBIOS) GetVersion() string {
-	if x != nil {
-		return x.Version
-	}
-	return ""
-}
-
-func (x *MachineBIOS) GetVendor() string {
-	if x != nil {
-		return x.Vendor
-	}
-	return ""
-}
-
-func (x *MachineBIOS) GetDate() string {
-	if x != nil {
-		return x.Date
-	}
-	return ""
-}
-
-// MachineIPMI describe details of the ipmi or out of band device
-type MachineIPMI struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Address of this ipmi device from outside
-	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	// Mac address of the network interface of this ipmi device
-	Mac string `protobuf:"bytes,2,opt,name=mac,proto3" json:"mac,omitempty"`
-	// User of this ipmi device
-	User string `protobuf:"bytes,3,opt,name=user,proto3" json:"user,omitempty"`
-	// Password of this ipmi device
-	Password string `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
-	// Interface of this ipmi device
-	Interface string `protobuf:"bytes,5,opt,name=interface,proto3" json:"interface,omitempty"`
-	// FRU field replaceable unit details for this machine
-	Fru *MachineFRU `protobuf:"bytes,6,opt,name=fru,proto3" json:"fru,omitempty"`
-	// BMCVersion of this ipmi device
-	BmcVersion string `protobuf:"bytes,7,opt,name=bmc_version,json=bmcVersion,proto3" json:"bmc_version,omitempty"`
-	// PowerState of this machine
-	PowerState    string `protobuf:"bytes,8,opt,name=power_state,json=powerState,proto3" json:"power_state,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MachineIPMI) Reset() {
-	*x = MachineIPMI{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MachineIPMI) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MachineIPMI) ProtoMessage() {}
-
-func (x *MachineIPMI) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MachineIPMI.ProtoReflect.Descriptor instead.
-func (*MachineIPMI) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *MachineIPMI) GetAddress() string {
-	if x != nil {
-		return x.Address
-	}
-	return ""
-}
-
-func (x *MachineIPMI) GetMac() string {
-	if x != nil {
-		return x.Mac
-	}
-	return ""
-}
-
-func (x *MachineIPMI) GetUser() string {
-	if x != nil {
-		return x.User
-	}
-	return ""
-}
-
-func (x *MachineIPMI) GetPassword() string {
-	if x != nil {
-		return x.Password
-	}
-	return ""
-}
-
-func (x *MachineIPMI) GetInterface() string {
-	if x != nil {
-		return x.Interface
-	}
-	return ""
-}
-
-func (x *MachineIPMI) GetFru() *MachineFRU {
-	if x != nil {
-		return x.Fru
-	}
-	return nil
-}
-
-func (x *MachineIPMI) GetBmcVersion() string {
-	if x != nil {
-		return x.BmcVersion
-	}
-	return ""
-}
-
-func (x *MachineIPMI) GetPowerState() string {
-	if x != nil {
-		return x.PowerState
-	}
-	return ""
-}
-
-// MachineFRU describes details to the machine which are required in case of a necessary replacement
-type MachineFRU struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// ChassisPartNumber is the part number of the machine chassis
-	ChassisPartNumber *string `protobuf:"bytes,1,opt,name=chassis_part_number,json=chassisPartNumber,proto3,oneof" json:"chassis_part_number,omitempty"`
-	// ChassisPartSerial is the serial number of the machine chassis
-	ChassisPartSerial *string `protobuf:"bytes,2,opt,name=chassis_part_serial,json=chassisPartSerial,proto3,oneof" json:"chassis_part_serial,omitempty"`
-	// BoardMFG is the short description of the mainboard
-	BoardMfg *string `protobuf:"bytes,3,opt,name=board_mfg,json=boardMfg,proto3,oneof" json:"board_mfg,omitempty"`
-	// BoardSerial is the serial number of the mainboard
-	BoardMfgSerial *string `protobuf:"bytes,4,opt,name=board_mfg_serial,json=boardMfgSerial,proto3,oneof" json:"board_mfg_serial,omitempty"`
-	// BoardPartNumber is the part number of the mainboard
-	BoardPartNumber *string `protobuf:"bytes,5,opt,name=board_part_number,json=boardPartNumber,proto3,oneof" json:"board_part_number,omitempty"`
-	// ProductManufacturer is the manufacturer of the machine
-	ProductManufacturer *string `protobuf:"bytes,6,opt,name=product_manufacturer,json=productManufacturer,proto3,oneof" json:"product_manufacturer,omitempty"`
-	// ProductPartNumber is the part number of the machine
-	ProductPartNumber *string `protobuf:"bytes,7,opt,name=product_part_number,json=productPartNumber,proto3,oneof" json:"product_part_number,omitempty"`
-	// ProductSerial is the serial number of the machine
-	ProductSerial *string `protobuf:"bytes,8,opt,name=product_serial,json=productSerial,proto3,oneof" json:"product_serial,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MachineFRU) Reset() {
-	*x = MachineFRU{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MachineFRU) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MachineFRU) ProtoMessage() {}
-
-func (x *MachineFRU) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MachineFRU.ProtoReflect.Descriptor instead.
-func (*MachineFRU) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *MachineFRU) GetChassisPartNumber() string {
-	if x != nil && x.ChassisPartNumber != nil {
-		return *x.ChassisPartNumber
-	}
-	return ""
-}
-
-func (x *MachineFRU) GetChassisPartSerial() string {
-	if x != nil && x.ChassisPartSerial != nil {
-		return *x.ChassisPartSerial
-	}
-	return ""
-}
-
-func (x *MachineFRU) GetBoardMfg() string {
-	if x != nil && x.BoardMfg != nil {
-		return *x.BoardMfg
-	}
-	return ""
-}
-
-func (x *MachineFRU) GetBoardMfgSerial() string {
-	if x != nil && x.BoardMfgSerial != nil {
-		return *x.BoardMfgSerial
-	}
-	return ""
-}
-
-func (x *MachineFRU) GetBoardPartNumber() string {
-	if x != nil && x.BoardPartNumber != nil {
-		return *x.BoardPartNumber
-	}
-	return ""
-}
-
-func (x *MachineFRU) GetProductManufacturer() string {
-	if x != nil && x.ProductManufacturer != nil {
-		return *x.ProductManufacturer
-	}
-	return ""
-}
-
-func (x *MachineFRU) GetProductPartNumber() string {
-	if x != nil && x.ProductPartNumber != nil {
-		return *x.ProductPartNumber
-	}
-	return ""
-}
-
-func (x *MachineFRU) GetProductSerial() string {
-	if x != nil && x.ProductSerial != nil {
-		return *x.ProductSerial
-	}
-	return ""
-}
-
 // BootServiceReportRequest is sent from metal-hammer to the api to report the outcome of the register
 type BootServiceReportRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1135,8 +479,6 @@ type BootServiceReportRequest struct {
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Console_Password
 	ConsolePassword string `protobuf:"bytes,2,opt,name=console_password,json=consolePassword,proto3" json:"console_password,omitempty"`
-	// BootInfo contains all details which are the result of registration and allocation
-	BootInfo *BootInfo `protobuf:"bytes,3,opt,name=boot_info,json=bootInfo,proto3" json:"boot_info,omitempty"`
 	// Success is set to true of the allocation succeeded
 	Success bool `protobuf:"varint,4,opt,name=success,proto3" json:"success,omitempty"`
 	// Message contains additional information if installation failed
@@ -1147,7 +489,7 @@ type BootServiceReportRequest struct {
 
 func (x *BootServiceReportRequest) Reset() {
 	*x = BootServiceReportRequest{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[16]
+	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1159,7 +501,7 @@ func (x *BootServiceReportRequest) String() string {
 func (*BootServiceReportRequest) ProtoMessage() {}
 
 func (x *BootServiceReportRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[16]
+	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1172,7 +514,7 @@ func (x *BootServiceReportRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BootServiceReportRequest.ProtoReflect.Descriptor instead.
 func (*BootServiceReportRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{16}
+	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *BootServiceReportRequest) GetUuid() string {
@@ -1187,13 +529,6 @@ func (x *BootServiceReportRequest) GetConsolePassword() string {
 		return x.ConsolePassword
 	}
 	return ""
-}
-
-func (x *BootServiceReportRequest) GetBootInfo() *BootInfo {
-	if x != nil {
-		return x.BootInfo
-	}
-	return nil
 }
 
 func (x *BootServiceReportRequest) GetSuccess() bool {
@@ -1219,7 +554,7 @@ type BootServiceReportResponse struct {
 
 func (x *BootServiceReportResponse) Reset() {
 	*x = BootServiceReportResponse{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[17]
+	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1231,7 +566,7 @@ func (x *BootServiceReportResponse) String() string {
 func (*BootServiceReportResponse) ProtoMessage() {}
 
 func (x *BootServiceReportResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[17]
+	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1244,208 +579,7 @@ func (x *BootServiceReportResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BootServiceReportResponse.ProtoReflect.Descriptor instead.
 func (*BootServiceReportResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{17}
-}
-
-// BootInfo contains calculated values of a allocation
-type BootInfo struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image which is going to be installed
-	ImageId string `protobuf:"bytes,1,opt,name=image_id,json=imageId,proto3" json:"image_id,omitempty"`
-	// PrimaryDisk the machine boots from
-	PrimaryDisk string `protobuf:"bytes,2,opt,name=primary_disk,json=primaryDisk,proto3" json:"primary_disk,omitempty"`
-	// OSPartition where the operating system is stored
-	OsPartition string `protobuf:"bytes,3,opt,name=os_partition,json=osPartition,proto3" json:"os_partition,omitempty"`
-	// Initrd the name of the initial ram disk
-	Initrd string `protobuf:"bytes,4,opt,name=initrd,proto3" json:"initrd,omitempty"`
-	// Cmdline of the kernel
-	Cmdline string `protobuf:"bytes,5,opt,name=cmdline,proto3" json:"cmdline,omitempty"`
-	// Kernel to boot from
-	Kernel string `protobuf:"bytes,6,opt,name=kernel,proto3" json:"kernel,omitempty"`
-	// BootloadID which is used to boot
-	BootloaderId  string `protobuf:"bytes,8,opt,name=bootloader_id,json=bootloaderId,proto3" json:"bootloader_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *BootInfo) Reset() {
-	*x = BootInfo{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[18]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *BootInfo) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*BootInfo) ProtoMessage() {}
-
-func (x *BootInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[18]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use BootInfo.ProtoReflect.Descriptor instead.
-func (*BootInfo) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *BootInfo) GetImageId() string {
-	if x != nil {
-		return x.ImageId
-	}
-	return ""
-}
-
-func (x *BootInfo) GetPrimaryDisk() string {
-	if x != nil {
-		return x.PrimaryDisk
-	}
-	return ""
-}
-
-func (x *BootInfo) GetOsPartition() string {
-	if x != nil {
-		return x.OsPartition
-	}
-	return ""
-}
-
-func (x *BootInfo) GetInitrd() string {
-	if x != nil {
-		return x.Initrd
-	}
-	return ""
-}
-
-func (x *BootInfo) GetCmdline() string {
-	if x != nil {
-		return x.Cmdline
-	}
-	return ""
-}
-
-func (x *BootInfo) GetKernel() string {
-	if x != nil {
-		return x.Kernel
-	}
-	return ""
-}
-
-func (x *BootInfo) GetBootloaderId() string {
-	if x != nil {
-		return x.BootloaderId
-	}
-	return ""
-}
-
-// BootServiceAbortReinstallRequest is called if the reinstallation failed and must aborted
-type BootServiceAbortReinstallRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of this machine
-	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// PrimaryDiskWiped is set to true if the primary disk was wiped
-	PrimaryDiskWiped bool `protobuf:"varint,2,opt,name=primary_disk_wiped,json=primaryDiskWiped,proto3" json:"primary_disk_wiped,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
-}
-
-func (x *BootServiceAbortReinstallRequest) Reset() {
-	*x = BootServiceAbortReinstallRequest{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *BootServiceAbortReinstallRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*BootServiceAbortReinstallRequest) ProtoMessage() {}
-
-func (x *BootServiceAbortReinstallRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use BootServiceAbortReinstallRequest.ProtoReflect.Descriptor instead.
-func (*BootServiceAbortReinstallRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *BootServiceAbortReinstallRequest) GetUuid() string {
-	if x != nil {
-		return x.Uuid
-	}
-	return ""
-}
-
-func (x *BootServiceAbortReinstallRequest) GetPrimaryDiskWiped() bool {
-	if x != nil {
-		return x.PrimaryDiskWiped
-	}
-	return false
-}
-
-// BootServiceAbortReinstallResponse response if a reinstall abort command was called
-type BootServiceAbortReinstallResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// BootInfo contains details to the boot
-	BootInfo      *BootInfo `protobuf:"bytes,1,opt,name=boot_info,json=bootInfo,proto3" json:"boot_info,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *BootServiceAbortReinstallResponse) Reset() {
-	*x = BootServiceAbortReinstallResponse{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *BootServiceAbortReinstallResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*BootServiceAbortReinstallResponse) ProtoMessage() {}
-
-func (x *BootServiceAbortReinstallResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use BootServiceAbortReinstallResponse.ProtoReflect.Descriptor instead.
-func (*BootServiceAbortReinstallResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *BootServiceAbortReinstallResponse) GetBootInfo() *BootInfo {
-	if x != nil {
-		return x.BootInfo
-	}
-	return nil
+	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{9}
 }
 
 // BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser
@@ -1459,7 +593,7 @@ type BootServiceSuperUserPasswordRequest struct {
 
 func (x *BootServiceSuperUserPasswordRequest) Reset() {
 	*x = BootServiceSuperUserPasswordRequest{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[21]
+	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1471,7 +605,7 @@ func (x *BootServiceSuperUserPasswordRequest) String() string {
 func (*BootServiceSuperUserPasswordRequest) ProtoMessage() {}
 
 func (x *BootServiceSuperUserPasswordRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[21]
+	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1484,7 +618,7 @@ func (x *BootServiceSuperUserPasswordRequest) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use BootServiceSuperUserPasswordRequest.ProtoReflect.Descriptor instead.
 func (*BootServiceSuperUserPasswordRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{21}
+	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *BootServiceSuperUserPasswordRequest) GetUuid() string {
@@ -1507,7 +641,7 @@ type BootServiceSuperUserPasswordResponse struct {
 
 func (x *BootServiceSuperUserPasswordResponse) Reset() {
 	*x = BootServiceSuperUserPasswordResponse{}
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[22]
+	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1519,7 +653,7 @@ func (x *BootServiceSuperUserPasswordResponse) String() string {
 func (*BootServiceSuperUserPasswordResponse) ProtoMessage() {}
 
 func (x *BootServiceSuperUserPasswordResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[22]
+	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1532,7 +666,7 @@ func (x *BootServiceSuperUserPasswordResponse) ProtoReflect() protoreflect.Messa
 
 // Deprecated: Use BootServiceSuperUserPasswordResponse.ProtoReflect.Descriptor instead.
 func (*BootServiceSuperUserPasswordResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{22}
+	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *BootServiceSuperUserPasswordResponse) GetFeatureDisabled() bool {
@@ -1553,7 +687,7 @@ var File_metalstack_infra_v2_boot_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"6\n" +
+	"\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"6\n" +
 	"\x16BootServiceDhcpRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x19\n" +
 	"\x17BootServiceDhcpResponse\"\xc6\x01\n" +
@@ -1569,12 +703,12 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\acmdline\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\acmdline\x88\x01\x01B\n" +
 	"\n" +
-	"\b_cmdline\"\xe9\x02\n" +
+	"\b_cmdline\"\xe3\x02\n" +
 	"\x1aBootServiceRegisterRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12@\n" +
-	"\bhardware\x18\x02 \x01(\v2$.metalstack.infra.v2.MachineHardwareR\bhardware\x124\n" +
-	"\x04bios\x18\x03 \x01(\v2 .metalstack.infra.v2.MachineBIOSR\x04bios\x124\n" +
-	"\x04ipmi\x18\x04 \x01(\v2 .metalstack.infra.v2.MachineIPMIR\x04ipmi\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12>\n" +
+	"\bhardware\x18\x02 \x01(\v2\".metalstack.api.v2.MachineHardwareR\bhardware\x122\n" +
+	"\x04bios\x18\x03 \x01(\v2\x1e.metalstack.api.v2.MachineBiosR\x04bios\x122\n" +
+	"\x04ipmi\x18\x04 \x01(\v2\x1e.metalstack.api.v2.MachineIPMIR\x04ipmi\x12\x12\n" +
 	"\x04tags\x18\x05 \x03(\tR\x04tags\x12<\n" +
 	"\x14metal_hammer_version\x18\x06 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x12metalHammerVersion\x12-\n" +
@@ -1588,134 +722,21 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vpartitionId\"6\n" +
 	"\x16BootServiceWaitRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x19\n" +
-	"\x17BootServiceWaitResponse\"\x87\x02\n" +
-	"\x0fMachineHardware\x12\x16\n" +
-	"\x06memory\x18\x01 \x01(\x04R\x06memory\x12=\n" +
-	"\x05disks\x18\x03 \x03(\v2'.metalstack.infra.v2.MachineBlockDeviceR\x05disks\x123\n" +
-	"\x04nics\x18\x04 \x03(\v2\x1f.metalstack.infra.v2.MachineNicR\x04nics\x123\n" +
-	"\x04cpus\x18\x05 \x03(\v2\x1f.metalstack.infra.v2.MachineCPUR\x04cpus\x123\n" +
-	"\x04gpus\x18\x06 \x03(\v2\x1f.metalstack.infra.v2.MachineGPUR\x04gpus\"\x82\x01\n" +
-	"\n" +
-	"MachineCPU\x12\"\n" +
-	"\x06vendor\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x06vendor\x12 \n" +
-	"\x05model\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05model\x12\x14\n" +
-	"\x05cores\x18\x03 \x01(\rR\x05cores\x12\x18\n" +
-	"\athreads\x18\x04 \x01(\rR\athreads\"R\n" +
-	"\n" +
-	"MachineGPU\x12\"\n" +
-	"\x06vendor\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x06vendor\x12 \n" +
-	"\x05model\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05model\"\x9a\x03\n" +
-	"\n" +
-	"MachineNic\x12}\n" +
-	"\x03mac\x18\x01 \x01(\tBk\xbaHh\xba\x01e\n" +
-	"\x03mac\x12\x1fmac must be a valid mac address\x1a=this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')R\x03mac\x12\x1e\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04name\x12\"\n" +
-	"\x06vendor\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x06vendor\x12 \n" +
-	"\x05model\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05model\x12\x14\n" +
-	"\x05speed\x18\x05 \x01(\x04R\x05speed\x12=\n" +
-	"\tneighbors\x18\x06 \x03(\v2\x1f.metalstack.infra.v2.MachineNicR\tneighbors\x12&\n" +
-	"\bhostname\x18\a \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\bhostname\x12*\n" +
-	"\n" +
-	"identifier\x18\b \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\n" +
-	"identifier\"H\n" +
-	"\x12MachineBlockDevice\x12\x1e\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04name\x12\x12\n" +
-	"\x04size\x18\x02 \x01(\x04R\x04size\"k\n" +
-	"\vMachineBIOS\x12$\n" +
-	"\aversion\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aversion\x12\"\n" +
-	"\x06vendor\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x06vendor\x12\x12\n" +
-	"\x04date\x18\x03 \x01(\tR\x04date\"\xae\x03\n" +
-	"\vMachineIPMI\x12!\n" +
-	"\aaddress\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\aaddress\x12}\n" +
-	"\x03mac\x18\x02 \x01(\tBk\xbaHh\xba\x01e\n" +
-	"\x03mac\x12\x1fmac must be a valid mac address\x1a=this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')R\x03mac\x12\x1e\n" +
-	"\x04user\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04user\x12&\n" +
-	"\bpassword\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\bpassword\x12(\n" +
-	"\tinterface\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tinterface\x121\n" +
-	"\x03fru\x18\x06 \x01(\v2\x1f.metalstack.infra.v2.MachineFRUR\x03fru\x12+\n" +
-	"\vbmc_version\x18\a \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\n" +
-	"bmcVersion\x12+\n" +
-	"\vpower_state\x18\b \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\n" +
-	"powerState\"\x9e\x05\n" +
-	"\n" +
-	"MachineFRU\x12?\n" +
-	"\x13chassis_part_number\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x11chassisPartNumber\x88\x01\x01\x12?\n" +
-	"\x13chassis_part_serial\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x11chassisPartSerial\x88\x01\x01\x12,\n" +
-	"\tboard_mfg\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\bboardMfg\x88\x01\x01\x129\n" +
-	"\x10board_mfg_serial\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x0eboardMfgSerial\x88\x01\x01\x12;\n" +
-	"\x11board_part_number\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x0fboardPartNumber\x88\x01\x01\x12B\n" +
-	"\x14product_manufacturer\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x13productManufacturer\x88\x01\x01\x12?\n" +
-	"\x13product_part_number\x18\a \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x06R\x11productPartNumber\x88\x01\x01\x126\n" +
-	"\x0eproduct_serial\x18\b \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\aR\rproductSerial\x88\x01\x01B\x16\n" +
-	"\x14_chassis_part_numberB\x16\n" +
-	"\x14_chassis_part_serialB\f\n" +
-	"\n" +
-	"_board_mfgB\x13\n" +
-	"\x11_board_mfg_serialB\x14\n" +
-	"\x12_board_part_numberB\x17\n" +
-	"\x15_product_manufacturerB\x16\n" +
-	"\x14_product_part_numberB\x11\n" +
-	"\x0f_product_serial\"\xeb\x01\n" +
+	"\x17BootServiceWaitResponse\"\xaf\x01\n" +
 	"\x18BootServiceReportRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x125\n" +
 	"\x10console_password\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0fconsolePassword\x12:\n" +
-	"\tboot_info\x18\x03 \x01(\v2\x1d.metalstack.infra.v2.BootInfoR\bbootInfo\x12\x18\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0fconsolePassword\x12\x18\n" +
 	"\asuccess\x18\x04 \x01(\bR\asuccess\x12$\n" +
 	"\amessage\x18\x05 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x04R\amessage\"\x1b\n" +
-	"\x19BootServiceReportResponse\"\xae\x02\n" +
-	"\bBootInfo\x12%\n" +
-	"\bimage_id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aimageId\x12-\n" +
-	"\fprimary_disk\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vprimaryDisk\x12-\n" +
-	"\fos_partition\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vosPartition\x12\"\n" +
-	"\x06initrd\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x06initrd\x12$\n" +
-	"\acmdline\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\acmdline\x12\"\n" +
-	"\x06kernel\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x06kernel\x12/\n" +
-	"\rbootloader_id\x18\b \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\fbootloaderId\"n\n" +
-	" BootServiceAbortReinstallRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12,\n" +
-	"\x12primary_disk_wiped\x18\x02 \x01(\bR\x10primaryDiskWiped\"_\n" +
-	"!BootServiceAbortReinstallResponse\x12:\n" +
-	"\tboot_info\x18\x01 \x01(\v2\x1d.metalstack.infra.v2.BootInfoR\bbootInfo\"C\n" +
+	"\x19BootServiceReportResponse\"C\n" +
 	"#BootServiceSuperUserPasswordRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x8d\x01\n" +
 	"$BootServiceSuperUserPasswordResponse\x12)\n" +
 	"\x10feature_disabled\x18\x01 \x01(\bR\x0ffeatureDisabled\x12:\n" +
 	"\x13super_user_password\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\xf1\x06\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\xe3\x05\n" +
 	"\vBootService\x12m\n" +
 	"\x04Dhcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\n" +
 	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12m\n" +
@@ -1728,8 +749,6 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\x04Wait\x12+.metalstack.infra.v2.BootServiceWaitRequest\x1a,.metalstack.infra.v2.BootServiceWaitResponse\"\n" +
 	"\xe0\xf3\x18\x02\xf2\xf3\x18\x02\x01\x020\x01\x12s\n" +
 	"\x06Report\x12-.metalstack.infra.v2.BootServiceReportRequest\x1a..metalstack.infra.v2.BootServiceReportResponse\"\n" +
-	"\xe0\xf3\x18\x02\xf2\xf3\x18\x02\x01\x02\x12\x8b\x01\n" +
-	"\x0eAbortReinstall\x125.metalstack.infra.v2.BootServiceAbortReinstallRequest\x1a6.metalstack.infra.v2.BootServiceAbortReinstallResponse\"\n" +
 	"\xe0\xf3\x18\x02\xf2\xf3\x18\x02\x01\x02B\xcd\x01\n" +
 	"\x17com.metalstack.infra.v2B\tBootProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
@@ -1745,7 +764,7 @@ func file_metalstack_infra_v2_boot_proto_rawDescGZIP() []byte {
 	return file_metalstack_infra_v2_boot_proto_rawDescData
 }
 
-var file_metalstack_infra_v2_boot_proto_msgTypes = make([]protoimpl.MessageInfo, 23)
+var file_metalstack_infra_v2_boot_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_metalstack_infra_v2_boot_proto_goTypes = []any{
 	(*BootServiceDhcpRequest)(nil),               // 0: metalstack.infra.v2.BootServiceDhcpRequest
 	(*BootServiceDhcpResponse)(nil),              // 1: metalstack.infra.v2.BootServiceDhcpResponse
@@ -1755,53 +774,35 @@ var file_metalstack_infra_v2_boot_proto_goTypes = []any{
 	(*BootServiceRegisterResponse)(nil),          // 5: metalstack.infra.v2.BootServiceRegisterResponse
 	(*BootServiceWaitRequest)(nil),               // 6: metalstack.infra.v2.BootServiceWaitRequest
 	(*BootServiceWaitResponse)(nil),              // 7: metalstack.infra.v2.BootServiceWaitResponse
-	(*MachineHardware)(nil),                      // 8: metalstack.infra.v2.MachineHardware
-	(*MachineCPU)(nil),                           // 9: metalstack.infra.v2.MachineCPU
-	(*MachineGPU)(nil),                           // 10: metalstack.infra.v2.MachineGPU
-	(*MachineNic)(nil),                           // 11: metalstack.infra.v2.MachineNic
-	(*MachineBlockDevice)(nil),                   // 12: metalstack.infra.v2.MachineBlockDevice
-	(*MachineBIOS)(nil),                          // 13: metalstack.infra.v2.MachineBIOS
-	(*MachineIPMI)(nil),                          // 14: metalstack.infra.v2.MachineIPMI
-	(*MachineFRU)(nil),                           // 15: metalstack.infra.v2.MachineFRU
-	(*BootServiceReportRequest)(nil),             // 16: metalstack.infra.v2.BootServiceReportRequest
-	(*BootServiceReportResponse)(nil),            // 17: metalstack.infra.v2.BootServiceReportResponse
-	(*BootInfo)(nil),                             // 18: metalstack.infra.v2.BootInfo
-	(*BootServiceAbortReinstallRequest)(nil),     // 19: metalstack.infra.v2.BootServiceAbortReinstallRequest
-	(*BootServiceAbortReinstallResponse)(nil),    // 20: metalstack.infra.v2.BootServiceAbortReinstallResponse
-	(*BootServiceSuperUserPasswordRequest)(nil),  // 21: metalstack.infra.v2.BootServiceSuperUserPasswordRequest
-	(*BootServiceSuperUserPasswordResponse)(nil), // 22: metalstack.infra.v2.BootServiceSuperUserPasswordResponse
+	(*BootServiceReportRequest)(nil),             // 8: metalstack.infra.v2.BootServiceReportRequest
+	(*BootServiceReportResponse)(nil),            // 9: metalstack.infra.v2.BootServiceReportResponse
+	(*BootServiceSuperUserPasswordRequest)(nil),  // 10: metalstack.infra.v2.BootServiceSuperUserPasswordRequest
+	(*BootServiceSuperUserPasswordResponse)(nil), // 11: metalstack.infra.v2.BootServiceSuperUserPasswordResponse
+	(*v2.MachineHardware)(nil),                   // 12: metalstack.api.v2.MachineHardware
+	(*v2.MachineBios)(nil),                       // 13: metalstack.api.v2.MachineBios
+	(*v2.MachineIPMI)(nil),                       // 14: metalstack.api.v2.MachineIPMI
 }
 var file_metalstack_infra_v2_boot_proto_depIdxs = []int32{
-	8,  // 0: metalstack.infra.v2.BootServiceRegisterRequest.hardware:type_name -> metalstack.infra.v2.MachineHardware
-	13, // 1: metalstack.infra.v2.BootServiceRegisterRequest.bios:type_name -> metalstack.infra.v2.MachineBIOS
-	14, // 2: metalstack.infra.v2.BootServiceRegisterRequest.ipmi:type_name -> metalstack.infra.v2.MachineIPMI
-	12, // 3: metalstack.infra.v2.MachineHardware.disks:type_name -> metalstack.infra.v2.MachineBlockDevice
-	11, // 4: metalstack.infra.v2.MachineHardware.nics:type_name -> metalstack.infra.v2.MachineNic
-	9,  // 5: metalstack.infra.v2.MachineHardware.cpus:type_name -> metalstack.infra.v2.MachineCPU
-	10, // 6: metalstack.infra.v2.MachineHardware.gpus:type_name -> metalstack.infra.v2.MachineGPU
-	11, // 7: metalstack.infra.v2.MachineNic.neighbors:type_name -> metalstack.infra.v2.MachineNic
-	15, // 8: metalstack.infra.v2.MachineIPMI.fru:type_name -> metalstack.infra.v2.MachineFRU
-	18, // 9: metalstack.infra.v2.BootServiceReportRequest.boot_info:type_name -> metalstack.infra.v2.BootInfo
-	18, // 10: metalstack.infra.v2.BootServiceAbortReinstallResponse.boot_info:type_name -> metalstack.infra.v2.BootInfo
-	0,  // 11: metalstack.infra.v2.BootService.Dhcp:input_type -> metalstack.infra.v2.BootServiceDhcpRequest
-	2,  // 12: metalstack.infra.v2.BootService.Boot:input_type -> metalstack.infra.v2.BootServiceBootRequest
-	21, // 13: metalstack.infra.v2.BootService.SuperUserPassword:input_type -> metalstack.infra.v2.BootServiceSuperUserPasswordRequest
-	4,  // 14: metalstack.infra.v2.BootService.Register:input_type -> metalstack.infra.v2.BootServiceRegisterRequest
-	6,  // 15: metalstack.infra.v2.BootService.Wait:input_type -> metalstack.infra.v2.BootServiceWaitRequest
-	16, // 16: metalstack.infra.v2.BootService.Report:input_type -> metalstack.infra.v2.BootServiceReportRequest
-	19, // 17: metalstack.infra.v2.BootService.AbortReinstall:input_type -> metalstack.infra.v2.BootServiceAbortReinstallRequest
-	1,  // 18: metalstack.infra.v2.BootService.Dhcp:output_type -> metalstack.infra.v2.BootServiceDhcpResponse
-	3,  // 19: metalstack.infra.v2.BootService.Boot:output_type -> metalstack.infra.v2.BootServiceBootResponse
-	22, // 20: metalstack.infra.v2.BootService.SuperUserPassword:output_type -> metalstack.infra.v2.BootServiceSuperUserPasswordResponse
-	5,  // 21: metalstack.infra.v2.BootService.Register:output_type -> metalstack.infra.v2.BootServiceRegisterResponse
-	7,  // 22: metalstack.infra.v2.BootService.Wait:output_type -> metalstack.infra.v2.BootServiceWaitResponse
-	17, // 23: metalstack.infra.v2.BootService.Report:output_type -> metalstack.infra.v2.BootServiceReportResponse
-	20, // 24: metalstack.infra.v2.BootService.AbortReinstall:output_type -> metalstack.infra.v2.BootServiceAbortReinstallResponse
-	18, // [18:25] is the sub-list for method output_type
-	11, // [11:18] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	12, // 0: metalstack.infra.v2.BootServiceRegisterRequest.hardware:type_name -> metalstack.api.v2.MachineHardware
+	13, // 1: metalstack.infra.v2.BootServiceRegisterRequest.bios:type_name -> metalstack.api.v2.MachineBios
+	14, // 2: metalstack.infra.v2.BootServiceRegisterRequest.ipmi:type_name -> metalstack.api.v2.MachineIPMI
+	0,  // 3: metalstack.infra.v2.BootService.Dhcp:input_type -> metalstack.infra.v2.BootServiceDhcpRequest
+	2,  // 4: metalstack.infra.v2.BootService.Boot:input_type -> metalstack.infra.v2.BootServiceBootRequest
+	10, // 5: metalstack.infra.v2.BootService.SuperUserPassword:input_type -> metalstack.infra.v2.BootServiceSuperUserPasswordRequest
+	4,  // 6: metalstack.infra.v2.BootService.Register:input_type -> metalstack.infra.v2.BootServiceRegisterRequest
+	6,  // 7: metalstack.infra.v2.BootService.Wait:input_type -> metalstack.infra.v2.BootServiceWaitRequest
+	8,  // 8: metalstack.infra.v2.BootService.Report:input_type -> metalstack.infra.v2.BootServiceReportRequest
+	1,  // 9: metalstack.infra.v2.BootService.Dhcp:output_type -> metalstack.infra.v2.BootServiceDhcpResponse
+	3,  // 10: metalstack.infra.v2.BootService.Boot:output_type -> metalstack.infra.v2.BootServiceBootResponse
+	11, // 11: metalstack.infra.v2.BootService.SuperUserPassword:output_type -> metalstack.infra.v2.BootServiceSuperUserPasswordResponse
+	5,  // 12: metalstack.infra.v2.BootService.Register:output_type -> metalstack.infra.v2.BootServiceRegisterResponse
+	7,  // 13: metalstack.infra.v2.BootService.Wait:output_type -> metalstack.infra.v2.BootServiceWaitResponse
+	9,  // 14: metalstack.infra.v2.BootService.Report:output_type -> metalstack.infra.v2.BootServiceReportResponse
+	9,  // [9:15] is the sub-list for method output_type
+	3,  // [3:9] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_infra_v2_boot_proto_init() }
@@ -1810,14 +811,13 @@ func file_metalstack_infra_v2_boot_proto_init() {
 		return
 	}
 	file_metalstack_infra_v2_boot_proto_msgTypes[3].OneofWrappers = []any{}
-	file_metalstack_infra_v2_boot_proto_msgTypes[15].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_infra_v2_boot_proto_rawDesc), len(file_metalstack_infra_v2_boot_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   23,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
