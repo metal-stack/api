@@ -1589,15 +1589,15 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineAllocationType"><span class="badge">E</span>MachineAllocationType</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineLiveliness"><span class="badge">E</span>MachineLiveliness</a>
                 </li>
               
                 <li>
                   <a href="#metalstack.api.v2.MachineProvisioningEventState"><span class="badge">E</span>MachineProvisioningEventState</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.MachineRole"><span class="badge">E</span>MachineRole</a>
                 </li>
               
                 <li>
@@ -14661,10 +14661,10 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
                 </tr>
               
                 <tr>
-                  <td>role</td>
-                  <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
-                  <td></td>
-                  <td><p>Role defines if this is machine or a firewall </p></td>
+                  <td>allocation_type</td>
+                  <td><a href="#metalstack.api.v2.MachineAllocationType">MachineAllocationType</a></td>
+                  <td>optional</td>
+                  <td><p>AllocationType of this machine </p></td>
                 </tr>
               
                 <tr>
@@ -14787,10 +14787,10 @@ By default one ip address is acquired per network for the machine </p></td>
                 </tr>
               
                 <tr>
-                  <td>role</td>
-                  <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
+                  <td>allocation_type</td>
+                  <td><a href="#metalstack.api.v2.MachineAllocationType">MachineAllocationType</a></td>
                   <td>optional</td>
-                  <td><p>Role of this machine </p></td>
+                  <td><p>AllocationType of this machine </p></td>
                 </tr>
               
             </tbody>
@@ -15334,6 +15334,27 @@ By default one ip address is acquired per network for the machine </p></td>
                 </tr>
               
                 <tr>
+                  <td>vendor</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Vendor of this network card </p></td>
+                </tr>
+              
+                <tr>
+                  <td>model</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Model of this network card </p></td>
+                </tr>
+              
+                <tr>
+                  <td>speed</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Speed in bits/second of this network card </p></td>
+                </tr>
+              
+                <tr>
                   <td>neighbors</td>
                   <td><a href="#metalstack.api.v2.MachineNic">MachineNic</a></td>
                   <td>repeated</td>
@@ -15739,10 +15760,10 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                 </tr>
               
                 <tr>
-                  <td>role</td>
-                  <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
-                  <td></td>
-                  <td><p>Role defines if this is machine or a firewall </p></td>
+                  <td>allocation_type</td>
+                  <td><a href="#metalstack.api.v2.MachineAllocationType">MachineAllocationType</a></td>
+                  <td>optional</td>
+                  <td><p>AllocationType of this machine </p></td>
                 </tr>
               
                 <tr>
@@ -16216,6 +16237,35 @@ TODO add machine ips </p></td>
           </tbody>
         </table>
       
+        <h3 id="metalstack.api.v2.MachineAllocationType">MachineAllocationType</h3>
+        <p>MachineAllocationType defines if this is a machine or a firewall</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MACHINE_ALLOCATION_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ALLOCATION_TYPE_MACHINE</td>
+                <td>1</td>
+                <td><p>MACHINE_ALLOCATION_TYPE_MACHINE is a machine</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ALLOCATION_TYPE_FIREWALL</td>
+                <td>2</td>
+                <td><p>MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
         <h3 id="metalstack.api.v2.MachineLiveliness">MachineLiveliness</h3>
         <p>MachineLiveliness specifies the liveliness of a machine</p>
         <table class="enum-table">
@@ -16275,35 +16325,6 @@ TODO add machine ips </p></td>
                 <td>MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM</td>
                 <td>2</td>
                 <td><p>MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim</p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-      
-        <h3 id="metalstack.api.v2.MachineRole">MachineRole</h3>
-        <p>MachineRole defines if this is a machine or a firewall</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>MACHINE_ROLE_UNSPECIFIED</td>
-                <td>0</td>
-                <td><p>MACHINE_ROLE_UNSPECIFIED is unspecified</p></td>
-              </tr>
-            
-              <tr>
-                <td>MACHINE_ROLE_MACHINE</td>
-                <td>1</td>
-                <td><p>MACHINE_ROLE_MACHINE is a machine</p></td>
-              </tr>
-            
-              <tr>
-                <td>MACHINE_ROLE_FIREWALL</td>
-                <td>2</td>
-                <td><p>MACHINE_ROLE_FIREWALL is a firewall</p></td>
               </tr>
             
           </tbody>
