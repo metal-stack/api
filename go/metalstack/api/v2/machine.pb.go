@@ -440,7 +440,7 @@ type MachineServiceCreateRequest struct {
 	// NTPServer the ntp servers used for the machine
 	NtpServer []*NTPServer `protobuf:"bytes,17,rep,name=ntp_server,json=ntpServer,proto3" json:"ntp_server,omitempty"`
 	// AllocationType of this machine
-	AllocationType *MachineAllocationType `protobuf:"varint,18,opt,name=allocation_type,json=allocationType,proto3,enum=metalstack.api.v2.MachineAllocationType,oneof" json:"allocation_type,omitempty"`
+	AllocationType MachineAllocationType `protobuf:"varint,18,opt,name=allocation_type,json=allocationType,proto3,enum=metalstack.api.v2.MachineAllocationType" json:"allocation_type,omitempty"`
 	// FirewallRules to be applied if this is a firewall
 	FirewallRules *FirewallRules `protobuf:"bytes,19,opt,name=firewall_rules,json=firewallRules,proto3" json:"firewall_rules,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -597,8 +597,8 @@ func (x *MachineServiceCreateRequest) GetNtpServer() []*NTPServer {
 }
 
 func (x *MachineServiceCreateRequest) GetAllocationType() MachineAllocationType {
-	if x != nil && x.AllocationType != nil {
-		return *x.AllocationType
+	if x != nil {
+		return x.AllocationType
 	}
 	return MachineAllocationType_MACHINE_ALLOCATION_TYPE_UNSPECIFIED
 }
@@ -1279,7 +1279,7 @@ type MachineAllocation struct {
 	// AWS limits the max userdata size to 16k, lets allow twice as much
 	Userdata string `protobuf:"bytes,12,opt,name=userdata,proto3" json:"userdata,omitempty"`
 	// AllocationType of this machine
-	AllocationType *MachineAllocationType `protobuf:"varint,13,opt,name=allocation_type,json=allocationType,proto3,enum=metalstack.api.v2.MachineAllocationType,oneof" json:"allocation_type,omitempty"`
+	AllocationType MachineAllocationType `protobuf:"varint,13,opt,name=allocation_type,json=allocationType,proto3,enum=metalstack.api.v2.MachineAllocationType" json:"allocation_type,omitempty"`
 	// FirewallRules to be applied if this is a firewall
 	FirewallRules *FirewallRules `protobuf:"bytes,14,opt,name=firewall_rules,json=firewallRules,proto3" json:"firewall_rules,omitempty"`
 	// DNSServers for this machine
@@ -1407,8 +1407,8 @@ func (x *MachineAllocation) GetUserdata() string {
 }
 
 func (x *MachineAllocation) GetAllocationType() MachineAllocationType {
-	if x != nil && x.AllocationType != nil {
-		return *x.AllocationType
+	if x != nil {
+		return x.AllocationType
 	}
 	return MachineAllocationType_MACHINE_ALLOCATION_TYPE_UNSPECIFIED
 }
@@ -3247,7 +3247,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xca\b\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xb1\b\n" +
 	"\x1bMachineServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12!\n" +
 	"\x04uuid\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12\x1c\n" +
@@ -3270,14 +3270,13 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"dns_server\x18\x10 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12E\n" +
 	"\n" +
 	"ntp_server\x18\x11 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
-	"R\tntpServer\x12`\n" +
-	"\x0fallocation_type\x18\x12 \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x04R\x0eallocationType\x88\x01\x01\x12G\n" +
+	"R\tntpServer\x12[\n" +
+	"\x0fallocation_type\x18\x12 \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0eallocationType\x12G\n" +
 	"\x0efirewall_rules\x18\x13 \x01(\v2 .metalstack.api.v2.FirewallRulesR\rfirewallRulesB\a\n" +
 	"\x05_uuidB\v\n" +
 	"\t_hostnameB\x14\n" +
 	"\x12_filesystem_layoutB\v\n" +
-	"\t_userdataB\x12\n" +
-	"\x10_allocation_type\"T\n" +
+	"\t_userdata\"T\n" +
 	"\x1cMachineServiceCreateResponse\x124\n" +
 	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xa4\x02\n" +
 	"\x1bMachineServiceUpdateRequest\x12\x1c\n" +
@@ -3324,7 +3323,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x10MachineCondition\x12?\n" +
 	"\x05state\x18\x01 \x01(\x0e2\x1f.metalstack.api.v2.MachineStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05state\x12*\n" +
 	"\vdescription\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\vdescription\x12 \n" +
-	"\x06issuer\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06issuer\"\xbb\a\n" +
+	"\x06issuer\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06issuer\"\xa2\a\n" +
 	"\x11MachineAllocation\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x1c\n" +
@@ -3339,16 +3338,15 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\bhostname\x18\n" +
 	" \x01(\tB\a\xbaH\x04r\x02h\x01R\bhostname\x129\n" +
 	"\x0fssh_public_keys\x18\v \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x12%\n" +
-	"\buserdata\x18\f \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80\x02R\buserdata\x12`\n" +
-	"\x0fallocation_type\x18\r \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x0eallocationType\x88\x01\x01\x12G\n" +
+	"\buserdata\x18\f \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80\x02R\buserdata\x12[\n" +
+	"\x0fallocation_type\x18\r \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0eallocationType\x12G\n" +
 	"\x0efirewall_rules\x18\x0e \x01(\v2 .metalstack.api.v2.FirewallRulesR\rfirewallRules\x12E\n" +
 	"\n" +
 	"dns_server\x18\x0f \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12E\n" +
 	"\n" +
 	"ntp_server\x18\x10 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
 	"R\tntpServer\x12/\n" +
-	"\x03vpn\x18\x11 \x01(\v2\x1d.metalstack.api.v2.MachineVPNR\x03vpnB\x12\n" +
-	"\x10_allocation_type\"}\n" +
+	"\x03vpn\x18\x11 \x01(\v2\x1d.metalstack.api.v2.MachineVPNR\x03vpn\"}\n" +
 	"\x18MachineAllocationNetwork\x12\x18\n" +
 	"\anetwork\x18\x01 \x01(\tR\anetwork\x120\n" +
 	"\x12no_auto_acquire_ip\x18\x02 \x01(\bH\x00R\x0fnoAutoAcquireIp\x88\x01\x01B\x15\n" +
@@ -3740,7 +3738,6 @@ func file_metalstack_api_v2_machine_proto_init() {
 	file_metalstack_api_v2_size_proto_init()
 	file_metalstack_api_v2_machine_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[4].OneofWrappers = []any{}
-	file_metalstack_api_v2_machine_proto_msgTypes[13].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[14].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[29].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[30].OneofWrappers = []any{}
