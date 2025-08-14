@@ -168,9 +168,9 @@ enum SwitchOSVendor {
   // SWITCH_OS_VENDOR_UNSPECIFIED is not specified
   SWITCH_OS_VENDOR_UNSPECIFIED = 0;
   // SWITCH_OS_VENDOR_CUMULUS means this switch is running on Cumulus Linux
-  SWITCH_OS_VENDOR_CUMULUS = 1 [(enum_string_value) = "cumulus"];
+  SWITCH_OS_VENDOR_CUMULUS = 1 [(enum_string_value) = "Cumulus"];
   // SWITCH_OS_VENDOR_SONIC means this switch is running on SONiC NOS
-  SWITCH_OS_VENDOR_SONIC = 2 [(enum_string_value) = "sonic"];
+  SWITCH_OS_VENDOR_SONIC = 2 [(enum_string_value) = "SONiC"];
 }
 
 // SwitchPortStatus specifies the state of a switch port

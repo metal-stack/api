@@ -776,8 +776,8 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x1fSWITCH_REPLACE_MODE_OPERATIONAL\x10\x02\x1a\x0f\x82\xb2\x19\voperational*\x84\x01\n" +
 	"\x0eSwitchOSVendor\x12 \n" +
 	"\x1cSWITCH_OS_VENDOR_UNSPECIFIED\x10\x00\x12)\n" +
-	"\x18SWITCH_OS_VENDOR_CUMULUS\x10\x01\x1a\v\x82\xb2\x19\acumulus\x12%\n" +
-	"\x16SWITCH_OS_VENDOR_SONIC\x10\x02\x1a\t\x82\xb2\x19\x05sonic*\x80\x01\n" +
+	"\x18SWITCH_OS_VENDOR_CUMULUS\x10\x01\x1a\v\x82\xb2\x19\aCumulus\x12%\n" +
+	"\x16SWITCH_OS_VENDOR_SONIC\x10\x02\x1a\t\x82\xb2\x19\x05SONiC*\x80\x01\n" +
 	"\x10SwitchPortStatus\x12\"\n" +
 	"\x1eSWITCH_PORT_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x15SWITCH_PORT_STATUS_UP\x10\x01\x1a\x06\x82\xb2\x19\x02up\x12%\n" +
