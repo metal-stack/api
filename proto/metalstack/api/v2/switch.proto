@@ -43,8 +43,8 @@ message Switch {
     min_len: 2
     max_len: 128
   }];
-  // Switch NICs are the front panel ports of the switch
-  repeated SwitchNic switch_nics = 10;
+  // Nics are the front panel ports of the switch
+  repeated Nic nics = 10;
   // Switch OS is the OS running on the switch
   SwitchOS os = 11;
 }
@@ -65,8 +65,8 @@ message SwitchOS {
   }];
 }
 
-// SwitchNic represents a front panel port and its configuration
-message SwitchNic {
+// Nic represents a front panel port and its configuration
+message Nic {
   // Name of the switch port
   string name = 1 [(buf.validate.field).string = {
     min_len: 2
