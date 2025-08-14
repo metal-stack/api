@@ -45,6 +45,8 @@ message Switch {
   }];
   // Switch NICs are the front panel ports of the switch
   repeated SwitchNic switch_nics = 10;
+  // Switch OS is the OS running on the switch
+  SwitchOS os = 11;
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch

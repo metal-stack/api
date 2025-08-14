@@ -271,7 +271,9 @@ type Switch struct {
 	// Console command is the command for accessing the switch's console
 	ConsoleCommand string `protobuf:"bytes,9,opt,name=console_command,json=consoleCommand,proto3" json:"console_command,omitempty"`
 	// Switch NICs are the front panel ports of the switch
-	SwitchNics    []*SwitchNic `protobuf:"bytes,10,rep,name=switch_nics,json=switchNics,proto3" json:"switch_nics,omitempty"`
+	SwitchNics []*SwitchNic `protobuf:"bytes,10,rep,name=switch_nics,json=switchNics,proto3" json:"switch_nics,omitempty"`
+	// Switch OS is the OS running on the switch
+	Os            *SwitchOS `protobuf:"bytes,11,opt,name=os,proto3" json:"os,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -365,6 +367,13 @@ func (x *Switch) GetConsoleCommand() string {
 func (x *Switch) GetSwitchNics() []*SwitchNic {
 	if x != nil {
 		return x.SwitchNics
+	}
+	return nil
+}
+
+func (x *Switch) GetOs() *SwitchOS {
+	if x != nil {
+		return x.Os
 	}
 	return nil
 }
@@ -692,7 +701,7 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"\xde\x03\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"\x8b\x04\n" +
 	"\x06Switch\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12,\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
@@ -709,7 +718,8 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0econsoleCommand\x12=\n" +
 	"\vswitch_nics\x18\n" +
 	" \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\n" +
-	"switchNicsB\n" +
+	"switchNics\x12+\n" +
+	"\x02os\x18\v \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02osB\n" +
 	"\n" +
 	"\b_rack_id\"\xaf\x01\n" +
 	"\bSwitchOS\x12C\n" +
@@ -803,17 +813,18 @@ var file_metalstack_api_v2_switch_proto_goTypes = []any{
 var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	1, // 0: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
 	6, // 1: metalstack.api.v2.Switch.switch_nics:type_name -> metalstack.api.v2.SwitchNic
-	2, // 2: metalstack.api.v2.SwitchOS.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
-	3, // 3: metalstack.api.v2.SwitchNic.actual:type_name -> metalstack.api.v2.SwitchPortStatus
-	7, // 4: metalstack.api.v2.SwitchNic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
-	8, // 5: metalstack.api.v2.SwitchNic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
-	0, // 6: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
-	9, // 7: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Duration
-	8, // [8:8] is the sub-list for method output_type
-	8, // [8:8] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	5, // 2: metalstack.api.v2.Switch.os:type_name -> metalstack.api.v2.SwitchOS
+	2, // 3: metalstack.api.v2.SwitchOS.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
+	3, // 4: metalstack.api.v2.SwitchNic.actual:type_name -> metalstack.api.v2.SwitchPortStatus
+	7, // 5: metalstack.api.v2.SwitchNic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
+	8, // 6: metalstack.api.v2.SwitchNic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
+	0, // 7: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
+	9, // 8: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Duration
+	9, // [9:9] is the sub-list for method output_type
+	9, // [9:9] is the sub-list for method input_type
+	9, // [9:9] is the sub-list for extension type_name
+	9, // [9:9] is the sub-list for extension extendee
+	0, // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_switch_proto_init() }
