@@ -1789,6 +1789,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.NicState"><span class="badge">M</span>NicState</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.Switch"><span class="badge">M</span>Switch</a>
                 </li>
               
@@ -17618,10 +17622,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>actual</td>
-                  <td><a href="#metalstack.api.v2.SwitchPortStatus">SwitchPortStatus</a></td>
-                  <td></td>
-                  <td><p>Actual port status </p></td>
+                  <td>state</td>
+                  <td><a href="#metalstack.api.v2.NicState">NicState</a></td>
+                  <td>optional</td>
+                  <td><p>NicState describes the current state of the switch port </p></td>
                 </tr>
               
                 <tr>
@@ -17636,6 +17640,37 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><a href="#metalstack.api.v2.SwitchBGPPortState">SwitchBGPPortState</a></td>
                   <td>optional</td>
                   <td><p>BGP port state represents the current BGP status of the port </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.NicState">NicState</h3>
+        <p>NicState represents the current state of a switch port</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>desired</td>
+                  <td><a href="#metalstack.api.v2.SwitchPortStatus">SwitchPortStatus</a></td>
+                  <td></td>
+                  <td><p>Desired is the desired port state </p></td>
+                </tr>
+              
+                <tr>
+                  <td>actual</td>
+                  <td><a href="#metalstack.api.v2.SwitchPortStatus">SwitchPortStatus</a></td>
+                  <td></td>
+                  <td><p>Actual is the actual port state </p></td>
                 </tr>
               
             </tbody>

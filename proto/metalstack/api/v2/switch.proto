@@ -84,8 +84,8 @@ message Nic {
     min_len: 2
     max_len: 128
   }];
-  // Actual port status
-  SwitchPortStatus actual = 5 [(buf.validate.field).enum.defined_only = true];
+  // NicState describes the current state of the switch port
+  optional NicState state = 5;
   // BGP filter optionally configured on a port
   optional BGPFilter bgp_filter = 6;
   // BGP port state represents the current BGP status of the port
@@ -133,6 +133,14 @@ message SwitchBGPPortState {
   uint64 sent_prefix_counter = 6;
   // Accepted prefix counter counts the prefixes received on this port
   uint64 accepted_prefix_counter = 7;
+}
+
+// NicState represents the current state of a switch port
+message NicState {
+  // Desired is the desired port state
+  SwitchPortStatus desired = 1 [(buf.validate.field).enum.defined_only = true];
+  // Actual is the actual port state
+  SwitchPortStatus actual = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
 // BGPState represents the state of a BGP session

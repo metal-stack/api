@@ -91,22 +91,22 @@ class SwitchOS(_message.Message):
     def __init__(self, vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., version: _Optional[str] = ..., metal_core_version: _Optional[str] = ...) -> None: ...
 
 class Nic(_message.Message):
-    __slots__ = ("name", "identifier", "mac", "vrf", "actual", "bgp_filter", "bgp_port_state")
+    __slots__ = ("name", "identifier", "mac", "vrf", "state", "bgp_filter", "bgp_port_state")
     NAME_FIELD_NUMBER: _ClassVar[int]
     IDENTIFIER_FIELD_NUMBER: _ClassVar[int]
     MAC_FIELD_NUMBER: _ClassVar[int]
     VRF_FIELD_NUMBER: _ClassVar[int]
-    ACTUAL_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
     BGP_FILTER_FIELD_NUMBER: _ClassVar[int]
     BGP_PORT_STATE_FIELD_NUMBER: _ClassVar[int]
     name: str
     identifier: str
     mac: str
     vrf: str
-    actual: SwitchPortStatus
+    state: NicState
     bgp_filter: BGPFilter
     bgp_port_state: SwitchBGPPortState
-    def __init__(self, name: _Optional[str] = ..., identifier: _Optional[str] = ..., mac: _Optional[str] = ..., vrf: _Optional[str] = ..., actual: _Optional[_Union[SwitchPortStatus, str]] = ..., bgp_filter: _Optional[_Union[BGPFilter, _Mapping]] = ..., bgp_port_state: _Optional[_Union[SwitchBGPPortState, _Mapping]] = ...) -> None: ...
+    def __init__(self, name: _Optional[str] = ..., identifier: _Optional[str] = ..., mac: _Optional[str] = ..., vrf: _Optional[str] = ..., state: _Optional[_Union[NicState, _Mapping]] = ..., bgp_filter: _Optional[_Union[BGPFilter, _Mapping]] = ..., bgp_port_state: _Optional[_Union[SwitchBGPPortState, _Mapping]] = ...) -> None: ...
 
 class BGPFilter(_message.Message):
     __slots__ = ("cidrs", "vnis")
@@ -133,3 +133,11 @@ class SwitchBGPPortState(_message.Message):
     sent_prefix_counter: int
     accepted_prefix_counter: int
     def __init__(self, neighbor: _Optional[str] = ..., peer_group: _Optional[str] = ..., vrf_name: _Optional[str] = ..., bgp_state: _Optional[_Union[BGPState, str]] = ..., bgp_timer_up_established: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., sent_prefix_counter: _Optional[int] = ..., accepted_prefix_counter: _Optional[int] = ...) -> None: ...
+
+class NicState(_message.Message):
+    __slots__ = ("desired", "actual")
+    DESIRED_FIELD_NUMBER: _ClassVar[int]
+    ACTUAL_FIELD_NUMBER: _ClassVar[int]
+    desired: SwitchPortStatus
+    actual: SwitchPortStatus
+    def __init__(self, desired: _Optional[_Union[SwitchPortStatus, str]] = ..., actual: _Optional[_Union[SwitchPortStatus, str]] = ...) -> None: ...
