@@ -178,7 +178,7 @@ class Disk(_message.Message):
     device: str
     partitions: _containers.RepeatedCompositeFieldContainer[DiskPartition]
     wipe_on_reinstall: bool
-    def __init__(self, device: _Optional[str] = ..., partitions: _Optional[_Iterable[_Union[DiskPartition, _Mapping]]] = ..., wipe_on_reinstall: bool = ...) -> None: ...
+    def __init__(self, device: _Optional[str] = ..., partitions: _Optional[_Iterable[_Union[DiskPartition, _Mapping]]] = ..., wipe_on_reinstall: _Optional[bool] = ...) -> None: ...
 
 class Raid(_message.Message):
     __slots__ = ("array_name", "devices", "level", "create_options", "spares")

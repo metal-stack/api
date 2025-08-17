@@ -26,6 +26,7 @@ type (
 		Filesystem() adminv2connect.FilesystemServiceClient
 		Image() adminv2connect.ImageServiceClient
 		IP() adminv2connect.IPServiceClient
+		Machine() adminv2connect.MachineServiceClient
 		Network() adminv2connect.NetworkServiceClient
 		Partition() adminv2connect.PartitionServiceClient
 		Size() adminv2connect.SizeServiceClient
@@ -37,6 +38,7 @@ type (
 		filesystemservice adminv2connect.FilesystemServiceClient
 		imageservice      adminv2connect.ImageServiceClient
 		ipservice         adminv2connect.IPServiceClient
+		machineservice    adminv2connect.MachineServiceClient
 		networkservice    adminv2connect.NetworkServiceClient
 		partitionservice  adminv2connect.PartitionServiceClient
 		sizeservice       adminv2connect.SizeServiceClient
@@ -120,6 +122,11 @@ func (c *client) Adminv2() Adminv2 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		machineservice: adminv2connect.NewMachineServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		networkservice: adminv2connect.NewNetworkServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -157,6 +164,9 @@ func (c *adminv2) Image() adminv2connect.ImageServiceClient {
 }
 func (c *adminv2) IP() adminv2connect.IPServiceClient {
 	return c.ipservice
+}
+func (c *adminv2) Machine() adminv2connect.MachineServiceClient {
+	return c.machineservice
 }
 func (c *adminv2) Network() adminv2connect.NetworkServiceClient {
 	return c.networkservice

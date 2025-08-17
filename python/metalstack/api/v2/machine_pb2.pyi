@@ -266,7 +266,7 @@ class MachineAllocationNetwork(_message.Message):
     NO_AUTO_ACQUIRE_IP_FIELD_NUMBER: _ClassVar[int]
     network: str
     no_auto_acquire_ip: bool
-    def __init__(self, network: _Optional[str] = ..., no_auto_acquire_ip: bool = ...) -> None: ...
+    def __init__(self, network: _Optional[str] = ..., no_auto_acquire_ip: _Optional[bool] = ...) -> None: ...
 
 class FirewallRules(_message.Message):
     __slots__ = ("egress", "ingress")
@@ -429,7 +429,7 @@ class MachineVPN(_message.Message):
     control_plane_address: str
     auth_key: str
     connected: bool
-    def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: bool = ...) -> None: ...
+    def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ...) -> None: ...
 
 class MachineQuery(_message.Message):
     __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "ipmi", "fru", "hardware", "state")
