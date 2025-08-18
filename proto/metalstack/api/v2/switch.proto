@@ -30,23 +30,23 @@ message Switch {
     max_len: 128
   }];
   // Replace mode is used to mark a switch ready for replacement
-  SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
+  SwitchReplaceMode replace_mode = 5 [(buf.validate.field).enum.defined_only = true];
   // Management IP is the switch's IP for management access
-  string management_ip = 7 [(buf.validate.field).string.ip = true];
+  string management_ip = 6 [(buf.validate.field).string.ip = true];
   // Management user is the user name to use for management access
-  string management_user = 8 [(buf.validate.field).string = {
+  string management_user = 7 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Console command is the command for accessing the switch's console
-  string console_command = 9 [(buf.validate.field).string = {
+  string console_command = 8 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Nics are the front panel ports of the switch
-  repeated Nic nics = 10;
+  repeated Nic nics = 9;
   // Switch OS is the OS running on the switch
-  SwitchOS os = 11;
+  SwitchOS os = 10;
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch
@@ -141,6 +141,33 @@ message NicState {
   SwitchPortStatus desired = 1 [(buf.validate.field).enum.defined_only = true];
   // Actual is the actual port state
   SwitchPortStatus actual = 2 [(buf.validate.field).enum.defined_only = true];
+}
+
+// SwitchQuery can be used to query a switch or a list of switches
+message SwitchQuery {
+  // Id of the switch to list
+  optional string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    min_len: 2
+    max_len: 128
+  }];
+  // Partition of the switches to list
+  optional string partition = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Rack of the switches to list
+  optional string rack_id = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Vendor of the switch OS by which to filter the switches
+  optional SwitchOSVendor vendor = 4 [(buf.validate.field).enum.defined_only = true];
+  // Version of the OS by which to filter the switches
+  optional string version = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
 }
 
 // BGPState represents the state of a BGP session

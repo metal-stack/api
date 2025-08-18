@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/switch.proto";
+
+// SwitchService serves switch related functions
+service SwitchService {
+  // Update a switch
+  rpc Update(SwitchServiceUpdateRequest) returns (SwitchServiceUpdateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+}
+
+// SwitchServiceUpdateRequest
+message SwitchServiceUpdateRequest {
+  // ID of the switch
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of the switch
+  string description = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Rack ID if the switch resides in a rack
+  optional string rack_id = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Replace mode is used to mark a switch ready for replacement
+  metalstack.api.v2.SwitchReplaceMode replace_mode = 4 [(buf.validate.field).enum.defined_only = true];
+  // Management IP is the switch's IP for management access
+  string management_ip = 5 [(buf.validate.field).string.ip = true];
+  // Management user is the user name to use for management access
+  string management_user = 6 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Console command is the command for accessing the switch's console
+  string console_command = 7 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Nics are the front panel ports of the switch
+  repeated metalstack.api.v2.Nic nics = 8;
+  // Switch OS is the OS running on the switch
+  metalstack.api.v2.SwitchOS os = 9;
+}
+
+// SwitchServiceUpdateResponse
+message SwitchServiceUpdateResponse {
+  // Switch that was updated
+  metalstack.api.v2.Switch switch = 1;
+}

@@ -13,6 +13,7 @@ func GetServices() []string {
 		"metalstack.admin.v2.NetworkService",
 		"metalstack.admin.v2.PartitionService",
 		"metalstack.admin.v2.SizeService",
+		"metalstack.admin.v2.SwitchService",
 		"metalstack.admin.v2.TenantService",
 		"metalstack.admin.v2.TokenService",
 		"metalstack.api.v2.FilesystemService",
@@ -60,6 +61,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.admin.v2.SizeService/Create",
 					"/metalstack.admin.v2.SizeService/Update",
 					"/metalstack.admin.v2.SizeService/Delete",
+					"/metalstack.admin.v2.SwitchService/Update",
 					"/metalstack.admin.v2.TenantService/Create",
 					"/metalstack.admin.v2.TenantService/List",
 					"/metalstack.admin.v2.TokenService/List",
@@ -81,10 +83,10 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: Infra{
 				"INFRA_ROLE_EDITOR": []string{
-					"/metalstack.infra.v2.SwitchService/Register",
+					"/metalstack.infra.v2.SwitchService/Create",
 				},
 				"INFRA_ROLE_VIEWER": []string{
-					"/metalstack.infra.v2.SwitchService/Register",
+					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
 				},
 			},
 			Tenant: Tenant{
@@ -193,6 +195,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.admin.v2.SizeService/Create":            true,
 			"/metalstack.admin.v2.SizeService/Delete":            true,
 			"/metalstack.admin.v2.SizeService/Update":            true,
+			"/metalstack.admin.v2.SwitchService/Update":          true,
 			"/metalstack.admin.v2.TenantService/Create":          true,
 			"/metalstack.admin.v2.TenantService/List":            true,
 			"/metalstack.admin.v2.TokenService/List":             true,
@@ -260,7 +263,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      true,
-			"/metalstack.infra.v2.SwitchService/Register":        true,
+			"/metalstack.infra.v2.SwitchService/Create":          true,
 		},
 		Visibility: Visibility{
 			Public: map[string]bool{
@@ -320,6 +323,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.admin.v2.SizeService/Create":        true,
 				"/metalstack.admin.v2.SizeService/Delete":        true,
 				"/metalstack.admin.v2.SizeService/Update":        true,
+				"/metalstack.admin.v2.SwitchService/Update":      true,
 				"/metalstack.admin.v2.TenantService/Create":      true,
 				"/metalstack.admin.v2.TenantService/List":        true,
 				"/metalstack.admin.v2.TokenService/List":         true,
@@ -327,7 +331,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: map[string]bool{
 				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
-				"/metalstack.infra.v2.SwitchService/Register":   true,
+				"/metalstack.infra.v2.SwitchService/Create":     true,
 			},
 			Tenant: map[string]bool{
 				"/metalstack.api.v2.ProjectService/Create":      true,
@@ -389,6 +393,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.admin.v2.SizeService/Create":            true,
 			"/metalstack.admin.v2.SizeService/Delete":            true,
 			"/metalstack.admin.v2.SizeService/Update":            true,
+			"/metalstack.admin.v2.SwitchService/Update":          true,
 			"/metalstack.admin.v2.TenantService/Create":          true,
 			"/metalstack.admin.v2.TenantService/List":            true,
 			"/metalstack.admin.v2.TokenService/List":             true,
@@ -456,7 +461,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              false,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      false,
-			"/metalstack.infra.v2.SwitchService/Register":        false,
+			"/metalstack.infra.v2.SwitchService/Create":          false,
 		},
 	}
 }

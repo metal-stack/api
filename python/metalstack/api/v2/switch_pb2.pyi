@@ -141,3 +141,17 @@ class NicState(_message.Message):
     desired: SwitchPortStatus
     actual: SwitchPortStatus
     def __init__(self, desired: _Optional[_Union[SwitchPortStatus, str]] = ..., actual: _Optional[_Union[SwitchPortStatus, str]] = ...) -> None: ...
+
+class SwitchQuery(_message.Message):
+    __slots__ = ("id", "partition", "rack_id", "vendor", "version")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    RACK_ID_FIELD_NUMBER: _ClassVar[int]
+    VENDOR_FIELD_NUMBER: _ClassVar[int]
+    VERSION_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    partition: str
+    rack_id: str
+    vendor: SwitchOSVendor
+    version: str
+    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack_id: _Optional[str] = ..., vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., version: _Optional[str] = ...) -> None: ...

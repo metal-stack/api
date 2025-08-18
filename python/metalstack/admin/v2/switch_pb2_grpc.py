@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from metalstack.infra.v2 import switch_pb2 as metalstack_dot_infra_dot_v2_dot_switch__pb2
+from metalstack.admin.v2 import switch_pb2 as metalstack_dot_admin_dot_v2_dot_switch__pb2
 
 
 class SwitchServiceStub(object):
@@ -15,10 +15,10 @@ class SwitchServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Create = channel.unary_unary(
-                '/metalstack.infra.v2.SwitchService/Create',
-                request_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest.SerializeToString,
-                response_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse.FromString,
+        self.Update = channel.unary_unary(
+                '/metalstack.admin.v2.SwitchService/Update',
+                request_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest.SerializeToString,
+                response_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse.FromString,
                 _registered_method=True)
 
 
@@ -26,8 +26,8 @@ class SwitchServiceServicer(object):
     """SwitchService serves switch related functions
     """
 
-    def Create(self, request, context):
-        """Create a switch
+    def Update(self, request, context):
+        """Update a switch
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -36,16 +36,16 @@ class SwitchServiceServicer(object):
 
 def add_SwitchServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Create': grpc.unary_unary_rpc_method_handler(
-                    servicer.Create,
-                    request_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest.FromString,
-                    response_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse.SerializeToString,
+            'Update': grpc.unary_unary_rpc_method_handler(
+                    servicer.Update,
+                    request_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest.FromString,
+                    response_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'metalstack.infra.v2.SwitchService', rpc_method_handlers)
+            'metalstack.admin.v2.SwitchService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('metalstack.infra.v2.SwitchService', rpc_method_handlers)
+    server.add_registered_method_handlers('metalstack.admin.v2.SwitchService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -54,7 +54,7 @@ class SwitchService(object):
     """
 
     @staticmethod
-    def Create(request,
+    def Update(request,
             target,
             options=(),
             channel_credentials=None,
@@ -67,9 +67,9 @@ class SwitchService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/metalstack.infra.v2.SwitchService/Create',
-            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest.SerializeToString,
-            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse.FromString,
+            '/metalstack.admin.v2.SwitchService/Update',
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest.SerializeToString,
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -38,6 +38,7 @@ type (
 		networkservice    *adminv2mocks.NetworkServiceClient
 		partitionservice  *adminv2mocks.PartitionServiceClient
 		sizeservice       *adminv2mocks.SizeServiceClient
+		switchservice     *adminv2mocks.SwitchServiceClient
 		tenantservice     *adminv2mocks.TenantServiceClient
 		tokenservice      *adminv2mocks.TokenServiceClient
 	}
@@ -49,6 +50,7 @@ type (
 		Network    func(m *mock.Mock)
 		Partition  func(m *mock.Mock)
 		Size       func(m *mock.Mock)
+		Switch     func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
 	}
@@ -130,6 +132,7 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		networkservice:    adminv2mocks.NewNetworkServiceClient(t),
 		partitionservice:  adminv2mocks.NewPartitionServiceClient(t),
 		sizeservice:       adminv2mocks.NewSizeServiceClient(t),
+		switchservice:     adminv2mocks.NewSwitchServiceClient(t),
 		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
 		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
 	}
@@ -152,6 +155,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		}
 		if fns.Size != nil {
 			fns.Size(&a.sizeservice.Mock)
+		}
+		if fns.Switch != nil {
+			fns.Switch(&a.switchservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -182,6 +188,9 @@ func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 }
 func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 	return c.sizeservice
+}
+func (c *adminv2) Switch() adminv2connect.SwitchServiceClient {
+	return c.switchservice
 }
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice
