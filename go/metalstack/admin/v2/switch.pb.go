@@ -213,21 +213,21 @@ type SwitchServiceUpdateRequest struct {
 	// ID of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Description of the switch.
-	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Description *string `protobuf:"bytes,2,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Rack ID if the switch resides in a rack.
 	RackId *string `protobuf:"bytes,3,opt,name=rack_id,json=rackId,proto3,oneof" json:"rack_id,omitempty"`
 	// Replace mode is used to mark a switch ready for replacement.
-	ReplaceMode v2.SwitchReplaceMode `protobuf:"varint,4,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode" json:"replace_mode,omitempty"`
+	ReplaceMode *v2.SwitchReplaceMode `protobuf:"varint,4,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode,oneof" json:"replace_mode,omitempty"`
 	// Management IP is the switch's IP for management access.
-	ManagementIp string `protobuf:"bytes,5,opt,name=management_ip,json=managementIp,proto3" json:"management_ip,omitempty"`
+	ManagementIp *string `protobuf:"bytes,5,opt,name=management_ip,json=managementIp,proto3,oneof" json:"management_ip,omitempty"`
 	// Management user is the user name to use for management access.
-	ManagementUser string `protobuf:"bytes,6,opt,name=management_user,json=managementUser,proto3" json:"management_user,omitempty"`
+	ManagementUser *string `protobuf:"bytes,6,opt,name=management_user,json=managementUser,proto3,oneof" json:"management_user,omitempty"`
 	// Console command is the command for accessing the switch's console.
-	ConsoleCommand string `protobuf:"bytes,7,opt,name=console_command,json=consoleCommand,proto3" json:"console_command,omitempty"`
+	ConsoleCommand *string `protobuf:"bytes,7,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
 	// Nics are the front panel ports of the switch.
 	Nics []*v2.Nic `protobuf:"bytes,8,rep,name=nics,proto3" json:"nics,omitempty"`
 	// Switch OS is the OS running on the switch.
-	Os            *v2.SwitchOS `protobuf:"bytes,9,opt,name=os,proto3" json:"os,omitempty"`
+	Os            *v2.SwitchOS `protobuf:"bytes,9,opt,name=os,proto3,oneof" json:"os,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -270,8 +270,8 @@ func (x *SwitchServiceUpdateRequest) GetId() string {
 }
 
 func (x *SwitchServiceUpdateRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
@@ -284,29 +284,29 @@ func (x *SwitchServiceUpdateRequest) GetRackId() string {
 }
 
 func (x *SwitchServiceUpdateRequest) GetReplaceMode() v2.SwitchReplaceMode {
-	if x != nil {
-		return x.ReplaceMode
+	if x != nil && x.ReplaceMode != nil {
+		return *x.ReplaceMode
 	}
 	return v2.SwitchReplaceMode(0)
 }
 
 func (x *SwitchServiceUpdateRequest) GetManagementIp() string {
-	if x != nil {
-		return x.ManagementIp
+	if x != nil && x.ManagementIp != nil {
+		return *x.ManagementIp
 	}
 	return ""
 }
 
 func (x *SwitchServiceUpdateRequest) GetManagementUser() string {
-	if x != nil {
-		return x.ManagementUser
+	if x != nil && x.ManagementUser != nil {
+		return *x.ManagementUser
 	}
 	return ""
 }
 
 func (x *SwitchServiceUpdateRequest) GetConsoleCommand() string {
-	if x != nil {
-		return x.ConsoleCommand
+	if x != nil && x.ConsoleCommand != nil {
+		return *x.ConsoleCommand
 	}
 	return ""
 }
@@ -686,23 +686,29 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x18SwitchServiceListRequest\x124\n" +
 	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n" +
 	"\x19SwitchServiceListResponse\x125\n" +
-	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xe2\x03\n" +
+	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xe2\x04\n" +
 	"\x1aSwitchServiceUpdateRequest\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12,\n" +
+	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x121\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vdescription\x12(\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\vdescription\x88\x01\x01\x12(\n" +
 	"\arack_id\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x06rackId\x88\x01\x01\x12Q\n" +
-	"\freplace_mode\x18\x04 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
-	"\rmanagement_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x123\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x06rackId\x88\x01\x01\x12V\n" +
+	"\freplace_mode\x18\x04 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\vreplaceMode\x88\x01\x01\x121\n" +
+	"\rmanagement_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02p\x01H\x03R\fmanagementIp\x88\x01\x01\x128\n" +
 	"\x0fmanagement_user\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0emanagementUser\x123\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x0emanagementUser\x88\x01\x01\x128\n" +
 	"\x0fconsole_command\x18\a \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0econsoleCommand\x12*\n" +
-	"\x04nics\x18\b \x03(\v2\x16.metalstack.api.v2.NicR\x04nics\x12+\n" +
-	"\x02os\x18\t \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02osB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x0econsoleCommand\x88\x01\x01\x12*\n" +
+	"\x04nics\x18\b \x03(\v2\x16.metalstack.api.v2.NicR\x04nics\x120\n" +
+	"\x02os\x18\t \x01(\v2\x1b.metalstack.api.v2.SwitchOSH\x06R\x02os\x88\x01\x01B\x0e\n" +
+	"\f_descriptionB\n" +
 	"\n" +
-	"\b_rack_id\"P\n" +
+	"\b_rack_idB\x0f\n" +
+	"\r_replace_modeB\x10\n" +
+	"\x0e_management_ipB\x12\n" +
+	"\x10_management_userB\x12\n" +
+	"\x10_console_commandB\x05\n" +
+	"\x03_os\"P\n" +
 	"\x1bSwitchServiceUpdateResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\":\n" +
 	"\x1aSwitchServiceDeleteRequest\x12\x1c\n" +
