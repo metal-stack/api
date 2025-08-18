@@ -68,7 +68,7 @@ class MachineServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def List(self, request, context):
-        """List all machine
+        """List all machines
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

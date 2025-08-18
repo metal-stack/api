@@ -30,7 +30,7 @@ service MachineService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // List all machine
+  // List all machines
   rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
@@ -124,8 +124,8 @@ message MachineServiceCreateRequest {
   repeated DNSServer dns_server = 16 [(buf.validate.field).repeated.max_items = 3];
   // NTPServer the ntp servers used for the machine
   repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
-  // Role defines if this is machine or a firewall
-  MachineRole role = 18 [(buf.validate.field).enum.defined_only = true];
+  // AllocationType of this machine
+  MachineAllocationType allocation_type = 18 [(buf.validate.field).enum.defined_only = true];
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 19;
 }
@@ -289,8 +289,8 @@ message MachineAllocation {
   // Userdata contains instructions required to bootstrap the machine.
   // AWS limits the max userdata size to 16k, lets allow twice as much
   string userdata = 12 [(buf.validate.field).string = {max_len: 32768}];
-  // Role defines if this is machine or a firewall
-  MachineRole role = 13 [(buf.validate.field).enum.defined_only = true];
+  // AllocationType of this machine
+  MachineAllocationType allocation_type = 13 [(buf.validate.field).enum.defined_only = true];
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 14;
   // DNSServers for this machine
@@ -487,8 +487,14 @@ message MachineNic {
   }];
   // Identifier the unique identifier of this network interface
   string identifier = 3 [(buf.validate.field).string = {max_len: 128}];
+  // Vendor of this network card
+  string vendor = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Model of this network card
+  string model = 5 [(buf.validate.field).string = {max_len: 128}];
+  // Speed in bits/second of this network card
+  uint64 speed = 6;
   // Neighbors the neighbors visible to this network interface
-  repeated MachineNic neighbors = 4;
+  repeated MachineNic neighbors = 7;
 }
 
 // MachineBlockDevice contains details of a block device of this machine
@@ -551,12 +557,40 @@ enum MachineProvisioningEventState {
   MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2 [(enum_string_value) = "failed-reclaim"];
 }
 
+// MachineProvisioningEventType defines in which phase the machine actually is
+enum MachineProvisioningEventType {
+  // MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified
+  MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
+  // MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive
+  MACHINE_PROVISIONING_EVENT_TYPE_ALIVE = 1 [(enum_string_value) = "Alive"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_CRASHED machine crashed
+  MACHINE_PROVISIONING_EVENT_TYPE_CRASHED = 2 [(enum_string_value) = "Crashed"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING machine is pxe booting into metal-hammer
+  MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING = 3 [(enum_string_value) = "PXE Booting"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT machine got a reboot instruction
+  MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT = 4 [(enum_string_value) = "Planned Reboot"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PREPARING metal-hammer is preparing the machine
+  MACHINE_PROVISIONING_EVENT_TYPE_PREPARING = 5 [(enum_string_value) = "Preparing"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING metal-hammer registers machine at the apiserver
+  MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING = 6 [(enum_string_value) = "Registering"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_WAITING machine is waiting for installation
+  MACHINE_PROVISIONING_EVENT_TYPE_WAITING = 7 [(enum_string_value) = "Waiting"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING metal-hammer is installing the desired os
+  MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING = 8 [(enum_string_value) = "Installing"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL metal-hammer completed installation and boots into target os
+  MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL = 9 [(enum_string_value) = "Booting New Kernel"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME machine is installed and phones home
+  MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME = 10 [(enum_string_value) = "Phoned Home"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM machine is not allocated, but phones home
+  MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11 [(enum_string_value) = "Machine Reclaim"];
+}
+
 // MachineProvisioningEvent is a event which has occurred during provisioning
 message MachineProvisioningEvent {
   // Time the time that this event was received
   google.protobuf.Timestamp time = 1;
   // Event the event emitted by the machine
-  string event = 2;
+  MachineProvisioningEventType event = 2;
   // Message an additional message to add to the event
   string message = 3;
 }
@@ -584,14 +618,14 @@ enum MachineLiveliness {
   MACHINE_LIVELINESS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
 }
 
-// MachineRole defines if this is a machine or a firewall
-enum MachineRole {
-  // MACHINE_ROLE_UNSPECIFIED is unspecified
-  MACHINE_ROLE_UNSPECIFIED = 0 [(enum_string_value) = ""];
-  // MACHINE_ROLE_MACHINE is a machine
-  MACHINE_ROLE_MACHINE = 1 [(enum_string_value) = "machine"];
-  // MACHINE_ROLE_FIREWALL is a firewall
-  MACHINE_ROLE_FIREWALL = 2 [(enum_string_value) = "firewall"];
+// MachineAllocationType defines if this is a machine or a firewall
+enum MachineAllocationType {
+  // MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified
+  MACHINE_ALLOCATION_TYPE_UNSPECIFIED = 0 [(enum_string_value) = ""];
+  // MACHINE_ALLOCATION_TYPE_MACHINE is a machine
+  MACHINE_ALLOCATION_TYPE_MACHINE = 1 [(enum_string_value) = "machine"];
+  // MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall
+  MACHINE_ALLOCATION_TYPE_FIREWALL = 2 [(enum_string_value) = "firewall"];
 }
 
 // MachineQuery contains fields which can be specified to list specific machines.
@@ -664,8 +698,8 @@ message MachineAllocationQuery {
     min_len: 2
     max_len: 128
   }];
-  // Role of this machine
-  optional MachineRole role = 7 [(buf.validate.field).enum.defined_only = true];
+  // AllocationType of this machine
+  optional MachineAllocationType allocation_type = 7 [(buf.validate.field).enum.defined_only = true];
 }
 
 // MachineNetworkQuery network specific machine queries

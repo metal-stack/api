@@ -37,7 +37,7 @@ class ProjectMember(_message.Message):
     role: _common_pb2.ProjectRole
     inherited_membership: bool
     created_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ..., inherited_membership: bool = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ..., inherited_membership: _Optional[bool] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class ProjectInvite(_message.Message):
     __slots__ = ("secret", "project", "role", "joined", "project_name", "tenant", "tenant_name", "expires_at", "joined_at")
@@ -59,7 +59,7 @@ class ProjectInvite(_message.Message):
     tenant_name: str
     expires_at: _timestamp_pb2.Timestamp
     joined_at: _timestamp_pb2.Timestamp
-    def __init__(self, secret: _Optional[str] = ..., project: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ..., joined: bool = ..., project_name: _Optional[str] = ..., tenant: _Optional[str] = ..., tenant_name: _Optional[str] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., joined_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, secret: _Optional[str] = ..., project: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ..., joined: _Optional[bool] = ..., project_name: _Optional[str] = ..., tenant: _Optional[str] = ..., tenant_name: _Optional[str] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., joined_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class ProjectServiceListRequest(_message.Message):
     __slots__ = ("name", "tenant")

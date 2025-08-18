@@ -36,6 +36,21 @@ class MachineProvisioningEventState(int, metaclass=_enum_type_wrapper.EnumTypeWr
     MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP: _ClassVar[MachineProvisioningEventState]
     MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM: _ClassVar[MachineProvisioningEventState]
 
+class MachineProvisioningEventType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_ALIVE: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_CRASHED: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_PREPARING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_WAITING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM: _ClassVar[MachineProvisioningEventType]
+
 class MachineLiveliness(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
     MACHINE_LIVELINESS_UNSPECIFIED: _ClassVar[MachineLiveliness]
@@ -43,11 +58,11 @@ class MachineLiveliness(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     MACHINE_LIVELINESS_DEAD: _ClassVar[MachineLiveliness]
     MACHINE_LIVELINESS_UNKNOWN: _ClassVar[MachineLiveliness]
 
-class MachineRole(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+class MachineAllocationType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
-    MACHINE_ROLE_UNSPECIFIED: _ClassVar[MachineRole]
-    MACHINE_ROLE_MACHINE: _ClassVar[MachineRole]
-    MACHINE_ROLE_FIREWALL: _ClassVar[MachineRole]
+    MACHINE_ALLOCATION_TYPE_UNSPECIFIED: _ClassVar[MachineAllocationType]
+    MACHINE_ALLOCATION_TYPE_MACHINE: _ClassVar[MachineAllocationType]
+    MACHINE_ALLOCATION_TYPE_FIREWALL: _ClassVar[MachineAllocationType]
 IP_PROTOCOL_UNSPECIFIED: IPProtocol
 IP_PROTOCOL_TCP: IPProtocol
 IP_PROTOCOL_UDP: IPProtocol
@@ -58,13 +73,25 @@ MACHINE_STATE_AVAILABLE: MachineState
 MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED: MachineProvisioningEventState
 MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP: MachineProvisioningEventState
 MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM: MachineProvisioningEventState
+MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_ALIVE: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_CRASHED: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_PREPARING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_WAITING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM: MachineProvisioningEventType
 MACHINE_LIVELINESS_UNSPECIFIED: MachineLiveliness
 MACHINE_LIVELINESS_ALIVE: MachineLiveliness
 MACHINE_LIVELINESS_DEAD: MachineLiveliness
 MACHINE_LIVELINESS_UNKNOWN: MachineLiveliness
-MACHINE_ROLE_UNSPECIFIED: MachineRole
-MACHINE_ROLE_MACHINE: MachineRole
-MACHINE_ROLE_FIREWALL: MachineRole
+MACHINE_ALLOCATION_TYPE_UNSPECIFIED: MachineAllocationType
+MACHINE_ALLOCATION_TYPE_MACHINE: MachineAllocationType
+MACHINE_ALLOCATION_TYPE_FIREWALL: MachineAllocationType
 
 class MachineServiceGetRequest(_message.Message):
     __slots__ = ("uuid", "project")
@@ -81,7 +108,7 @@ class MachineServiceGetResponse(_message.Message):
     def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceCreateRequest(_message.Message):
-    __slots__ = ("project", "uuid", "name", "description", "hostname", "partition", "size", "image", "filesystem_layout", "ssh_public_keys", "userdata", "labels", "networks", "ips", "placement_tags", "dns_server", "ntp_server", "role", "firewall_rules")
+    __slots__ = ("project", "uuid", "name", "description", "hostname", "partition", "size", "image", "filesystem_layout", "ssh_public_keys", "userdata", "labels", "networks", "ips", "placement_tags", "dns_server", "ntp_server", "allocation_type", "firewall_rules")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     UUID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -99,7 +126,7 @@ class MachineServiceCreateRequest(_message.Message):
     PLACEMENT_TAGS_FIELD_NUMBER: _ClassVar[int]
     DNS_SERVER_FIELD_NUMBER: _ClassVar[int]
     NTP_SERVER_FIELD_NUMBER: _ClassVar[int]
-    ROLE_FIELD_NUMBER: _ClassVar[int]
+    ALLOCATION_TYPE_FIELD_NUMBER: _ClassVar[int]
     FIREWALL_RULES_FIELD_NUMBER: _ClassVar[int]
     project: str
     uuid: str
@@ -118,9 +145,9 @@ class MachineServiceCreateRequest(_message.Message):
     placement_tags: _containers.RepeatedScalarFieldContainer[str]
     dns_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.DNSServer]
     ntp_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.NTPServer]
-    role: MachineRole
+    allocation_type: MachineAllocationType
     firewall_rules: FirewallRules
-    def __init__(self, project: _Optional[str] = ..., uuid: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., hostname: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineAllocationNetwork, _Mapping]]] = ..., ips: _Optional[_Iterable[str]] = ..., placement_tags: _Optional[_Iterable[str]] = ..., dns_server: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., role: _Optional[_Union[MachineRole, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ...) -> None: ...
+    def __init__(self, project: _Optional[str] = ..., uuid: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., hostname: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineAllocationNetwork, _Mapping]]] = ..., ips: _Optional[_Iterable[str]] = ..., placement_tags: _Optional[_Iterable[str]] = ..., dns_server: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ...) -> None: ...
 
 class MachineServiceCreateResponse(_message.Message):
     __slots__ = ("machine",)
@@ -223,7 +250,7 @@ class MachineCondition(_message.Message):
     def __init__(self, state: _Optional[_Union[MachineState, str]] = ..., description: _Optional[str] = ..., issuer: _Optional[str] = ...) -> None: ...
 
 class MachineAllocation(_message.Message):
-    __slots__ = ("uuid", "meta", "name", "description", "created_by", "project", "image", "filesystem_layout", "networks", "hostname", "ssh_public_keys", "userdata", "role", "firewall_rules", "dns_server", "ntp_server", "vpn")
+    __slots__ = ("uuid", "meta", "name", "description", "created_by", "project", "image", "filesystem_layout", "networks", "hostname", "ssh_public_keys", "userdata", "allocation_type", "firewall_rules", "dns_server", "ntp_server", "vpn")
     UUID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -236,7 +263,7 @@ class MachineAllocation(_message.Message):
     HOSTNAME_FIELD_NUMBER: _ClassVar[int]
     SSH_PUBLIC_KEYS_FIELD_NUMBER: _ClassVar[int]
     USERDATA_FIELD_NUMBER: _ClassVar[int]
-    ROLE_FIELD_NUMBER: _ClassVar[int]
+    ALLOCATION_TYPE_FIELD_NUMBER: _ClassVar[int]
     FIREWALL_RULES_FIELD_NUMBER: _ClassVar[int]
     DNS_SERVER_FIELD_NUMBER: _ClassVar[int]
     NTP_SERVER_FIELD_NUMBER: _ClassVar[int]
@@ -253,12 +280,12 @@ class MachineAllocation(_message.Message):
     hostname: str
     ssh_public_keys: _containers.RepeatedScalarFieldContainer[str]
     userdata: str
-    role: MachineRole
+    allocation_type: MachineAllocationType
     firewall_rules: FirewallRules
     dns_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.DNSServer]
     ntp_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.NTPServer]
     vpn: MachineVPN
-    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., created_by: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineNetwork, _Mapping]]] = ..., hostname: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., role: _Optional[_Union[MachineRole, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ..., dns_server: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., created_by: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineNetwork, _Mapping]]] = ..., hostname: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ..., dns_server: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ...) -> None: ...
 
 class MachineAllocationNetwork(_message.Message):
     __slots__ = ("network", "no_auto_acquire_ip")
@@ -266,7 +293,7 @@ class MachineAllocationNetwork(_message.Message):
     NO_AUTO_ACQUIRE_IP_FIELD_NUMBER: _ClassVar[int]
     network: str
     no_auto_acquire_ip: bool
-    def __init__(self, network: _Optional[str] = ..., no_auto_acquire_ip: bool = ...) -> None: ...
+    def __init__(self, network: _Optional[str] = ..., no_auto_acquire_ip: _Optional[bool] = ...) -> None: ...
 
 class FirewallRules(_message.Message):
     __slots__ = ("egress", "ingress")
@@ -356,16 +383,22 @@ class MetalGPU(_message.Message):
     def __init__(self, vendor: _Optional[str] = ..., model: _Optional[str] = ...) -> None: ...
 
 class MachineNic(_message.Message):
-    __slots__ = ("mac", "name", "identifier", "neighbors")
+    __slots__ = ("mac", "name", "identifier", "vendor", "model", "speed", "neighbors")
     MAC_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     IDENTIFIER_FIELD_NUMBER: _ClassVar[int]
+    VENDOR_FIELD_NUMBER: _ClassVar[int]
+    MODEL_FIELD_NUMBER: _ClassVar[int]
+    SPEED_FIELD_NUMBER: _ClassVar[int]
     NEIGHBORS_FIELD_NUMBER: _ClassVar[int]
     mac: str
     name: str
     identifier: str
+    vendor: str
+    model: str
+    speed: int
     neighbors: _containers.RepeatedCompositeFieldContainer[MachineNic]
-    def __init__(self, mac: _Optional[str] = ..., name: _Optional[str] = ..., identifier: _Optional[str] = ..., neighbors: _Optional[_Iterable[_Union[MachineNic, _Mapping]]] = ...) -> None: ...
+    def __init__(self, mac: _Optional[str] = ..., name: _Optional[str] = ..., identifier: _Optional[str] = ..., vendor: _Optional[str] = ..., model: _Optional[str] = ..., speed: _Optional[int] = ..., neighbors: _Optional[_Iterable[_Union[MachineNic, _Mapping]]] = ...) -> None: ...
 
 class MachineBlockDevice(_message.Message):
     __slots__ = ("name", "size")
@@ -411,9 +444,9 @@ class MachineProvisioningEvent(_message.Message):
     EVENT_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     time: _timestamp_pb2.Timestamp
-    event: str
+    event: MachineProvisioningEventType
     message: str
-    def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., event: _Optional[str] = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., event: _Optional[_Union[MachineProvisioningEventType, str]] = ..., message: _Optional[str] = ...) -> None: ...
 
 class MachineVPN(_message.Message):
     __slots__ = ("control_plane_address", "auth_key", "connected")
@@ -423,7 +456,7 @@ class MachineVPN(_message.Message):
     control_plane_address: str
     auth_key: str
     connected: bool
-    def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: bool = ...) -> None: ...
+    def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ...) -> None: ...
 
 class MachineQuery(_message.Message):
     __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "ipmi", "fru", "hardware", "state")
@@ -458,22 +491,22 @@ class MachineQuery(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., ipmi: _Optional[_Union[MachineIPMIQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ...) -> None: ...
 
 class MachineAllocationQuery(_message.Message):
-    __slots__ = ("uuid", "name", "project", "image", "filesystem_layout", "hostname", "role")
+    __slots__ = ("uuid", "name", "project", "image", "filesystem_layout", "hostname", "allocation_type")
     UUID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     IMAGE_FIELD_NUMBER: _ClassVar[int]
     FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
     HOSTNAME_FIELD_NUMBER: _ClassVar[int]
-    ROLE_FIELD_NUMBER: _ClassVar[int]
+    ALLOCATION_TYPE_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     name: str
     project: str
     image: str
     filesystem_layout: str
     hostname: str
-    role: MachineRole
-    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., hostname: _Optional[str] = ..., role: _Optional[_Union[MachineRole, str]] = ...) -> None: ...
+    allocation_type: MachineAllocationType
+    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., hostname: _Optional[str] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ...) -> None: ...
 
 class MachineNetworkQuery(_message.Message):
     __slots__ = ("networks", "prefixes", "destination_prefixes", "ips", "vrfs", "asns")
