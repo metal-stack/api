@@ -67,6 +67,7 @@ type (
 		partitionservice  *apiv2mocks.PartitionServiceClient
 		projectservice    *apiv2mocks.ProjectServiceClient
 		sizeservice       *apiv2mocks.SizeServiceClient
+		switchservice     *apiv2mocks.SwitchServiceClient
 		tenantservice     *apiv2mocks.TenantServiceClient
 		tokenservice      *apiv2mocks.TokenServiceClient
 		userservice       *apiv2mocks.UserServiceClient
@@ -84,6 +85,7 @@ type (
 		Partition  func(m *mock.Mock)
 		Project    func(m *mock.Mock)
 		Size       func(m *mock.Mock)
+		Switch     func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
 		User       func(m *mock.Mock)
@@ -224,6 +226,7 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		partitionservice:  apiv2mocks.NewPartitionServiceClient(t),
 		projectservice:    apiv2mocks.NewProjectServiceClient(t),
 		sizeservice:       apiv2mocks.NewSizeServiceClient(t),
+		switchservice:     apiv2mocks.NewSwitchServiceClient(t),
 		tenantservice:     apiv2mocks.NewTenantServiceClient(t),
 		tokenservice:      apiv2mocks.NewTokenServiceClient(t),
 		userservice:       apiv2mocks.NewUserServiceClient(t),
@@ -260,6 +263,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		}
 		if fns.Size != nil {
 			fns.Size(&a.sizeservice.Mock)
+		}
+		if fns.Switch != nil {
+			fns.Switch(&a.switchservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -308,6 +314,9 @@ func (c *apiv2) Project() apiv2connect.ProjectServiceClient {
 }
 func (c *apiv2) Size() apiv2connect.SizeServiceClient {
 	return c.sizeservice
+}
+func (c *apiv2) Switch() apiv2connect.SwitchServiceClient {
+	return c.switchservice
 }
 func (c *apiv2) Tenant() apiv2connect.TenantServiceClient {
 	return c.tenantservice

@@ -1350,6 +1350,22 @@
                   <a href="#metalstack.api.v2.SwitchQuery"><span class="badge">M</span>SwitchQuery</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.SwitchServiceGetRequest"><span class="badge">M</span>SwitchServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SwitchServiceGetResponse"><span class="badge">M</span>SwitchServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SwitchServiceListRequest"><span class="badge">M</span>SwitchServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SwitchServiceListResponse"><span class="badge">M</span>SwitchServiceListResponse</a>
+                </li>
+              
               
                 <li>
                   <a href="#metalstack.api.v2.BGPState"><span class="badge">E</span>BGPState</a>
@@ -1369,6 +1385,10 @@
               
               
               
+                <li>
+                  <a href="#metalstack.api.v2.SwitchService"><span class="badge">S</span>SwitchService</a>
+                </li>
+              
             </ul>
           </li>
         
@@ -1376,6 +1396,30 @@
           <li>
             <a href="#metalstack%2fadmin%2fv2%2fswitch.proto">metalstack/admin/v2/switch.proto</a>
             <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceDeleteRequest"><span class="badge">M</span>SwitchServiceDeleteRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceDeleteResponse"><span class="badge">M</span>SwitchServiceDeleteResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceMigrateRequest"><span class="badge">M</span>SwitchServiceMigrateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceMigrateResponse"><span class="badge">M</span>SwitchServiceMigrateResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServicePortRequest"><span class="badge">M</span>SwitchServicePortRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServicePortResponse"><span class="badge">M</span>SwitchServicePortResponse</a>
+                </li>
               
                 <li>
                   <a href="#metalstack.admin.v2.SwitchServiceUpdateRequest"><span class="badge">M</span>SwitchServiceUpdateRequest</a>
@@ -7376,10 +7420,10 @@ having a direct membership within the tenant.</p></td>
                 </tr>
               
                 <tr>
-                  <td>filesystem_layout_id</td>
+                  <td>filesystem_layout</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>FilesystemLayoutId to check </p></td>
+                  <td><p>FilesystemLayout to check </p></td>
                 </tr>
               
             </tbody>
@@ -8805,10 +8849,10 @@ Will be equal with project most of the time </p></td>
                 </tr>
               
                 <tr>
-                  <td>machine_id</td>
+                  <td>machine</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>MachineId for which this ips should get filtered </p></td>
+                  <td><p>Machine for which this ips should get filtered </p></td>
                 </tr>
               
                 <tr>
@@ -8899,10 +8943,10 @@ Will be equal with project most of the time </p></td>
                 </tr>
               
                 <tr>
-                  <td>machine_id</td>
+                  <td>machine</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>MachineId for which this ip should get created </p></td>
+                  <td><p>Machine for which this ip should get created </p></td>
                 </tr>
               
                 <tr>
@@ -9622,10 +9666,10 @@ Will be equal with project most of the time </p></td>
                 </tr>
               
                 <tr>
-                  <td>parent_network_id</td>
+                  <td>parent_network</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Parent NetworkId points to the id of the parent network if any </p></td>
+                  <td><p>Parent Network points to the id of the parent network if any </p></td>
                 </tr>
               
                 <tr>
@@ -9754,10 +9798,10 @@ Will be equal with project most of the time </p></td>
                 </tr>
               
                 <tr>
-                  <td>parent_network_id</td>
+                  <td>parent_network</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Parent NetworkId points to the id of the parent network if any </p></td>
+                  <td><p>Parent Network points to the id of the parent network if any </p></td>
                 </tr>
               
                 <tr>
@@ -9841,10 +9885,10 @@ Will be equal with project most of the time </p></td>
                 </tr>
               
                 <tr>
-                  <td>parent_network_id</td>
+                  <td>parent_network</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Parent NetworkId points to the id of the parent network if any </p></td>
+                  <td><p>Parent Network points to the id of the parent network if any </p></td>
                 </tr>
               
                 <tr>
@@ -13467,10 +13511,10 @@ TODO add machine ips </p></td>
                 </tr>
               
                 <tr>
-                  <td>parent_network_id</td>
+                  <td>parent_network</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Parent NetworkId points to the id of the parent network if any </p></td>
+                  <td><p>Parent Network points to the id of the parent network if any </p></td>
                 </tr>
               
                 <tr>
@@ -14429,7 +14473,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
 
       
         <h3 id="metalstack.api.v2.BGPFilter">BGPFilter</h3>
-        <p>BGP filter can be used to restrict BGP based on CIDRs and VNIs</p>
+        <p>BGPFilter can be used to restrict BGP based on CIDRs and VNIs.</p>
 
         
           <table class="field-table">
@@ -14442,14 +14486,14 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>cidrs</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>CIDRs for which to allow BGP </p></td>
+                  <td><p>Cidrs for which to allow BGP. </p></td>
                 </tr>
               
                 <tr>
                   <td>vnis</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>VNIs for which to allow BGP </p></td>
+                  <td><p>Vnis for which to allow BGP. </p></td>
                 </tr>
               
             </tbody>
@@ -14460,7 +14504,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
         
       
         <h3 id="metalstack.api.v2.Nic">Nic</h3>
-        <p>Nic represents a front panel port and its configuration</p>
+        <p>Nic represents a front panel port and its configuration.</p>
 
         
           <table class="field-table">
@@ -14473,49 +14517,49 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Name of the switch port </p></td>
+                  <td><p>Name of the switch port. </p></td>
                 </tr>
               
                 <tr>
                   <td>identifier</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Identifier of the port </p></td>
+                  <td><p>Identifier of the port. </p></td>
                 </tr>
               
                 <tr>
                   <td>mac</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>MAC address of the port </p></td>
+                  <td><p>Mac address of the port. </p></td>
                 </tr>
               
                 <tr>
                   <td>vrf</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>VRF name if the port is bound in one </p></td>
+                  <td><p>Vrf name if the port is bound in one. </p></td>
                 </tr>
               
                 <tr>
                   <td>state</td>
                   <td><a href="#metalstack.api.v2.NicState">NicState</a></td>
                   <td>optional</td>
-                  <td><p>NicState describes the current state of the switch port </p></td>
+                  <td><p>NicState describes the current state of the switch port. </p></td>
                 </tr>
               
                 <tr>
                   <td>bgp_filter</td>
                   <td><a href="#metalstack.api.v2.BGPFilter">BGPFilter</a></td>
                   <td>optional</td>
-                  <td><p>BGP filter optionally configured on a port </p></td>
+                  <td><p>BGPFilter optionally configured on a port. </p></td>
                 </tr>
               
                 <tr>
                   <td>bgp_port_state</td>
                   <td><a href="#metalstack.api.v2.SwitchBGPPortState">SwitchBGPPortState</a></td>
                   <td>optional</td>
-                  <td><p>BGP port state represents the current BGP status of the port </p></td>
+                  <td><p>BGPPortState represents the current BGP status of the port. </p></td>
                 </tr>
               
             </tbody>
@@ -14526,7 +14570,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
         
       
         <h3 id="metalstack.api.v2.NicState">NicState</h3>
-        <p>NicState represents the current state of a switch port</p>
+        <p>NicState represents the current state of a switch port.</p>
 
         
           <table class="field-table">
@@ -14539,14 +14583,14 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>desired</td>
                   <td><a href="#metalstack.api.v2.SwitchPortStatus">SwitchPortStatus</a></td>
                   <td></td>
-                  <td><p>Desired is the desired port state </p></td>
+                  <td><p>Desired is the desired port state. </p></td>
                 </tr>
               
                 <tr>
                   <td>actual</td>
                   <td><a href="#metalstack.api.v2.SwitchPortStatus">SwitchPortStatus</a></td>
                   <td></td>
-                  <td><p>Actual is the actual port state </p></td>
+                  <td><p>Actual is the actual port state. </p></td>
                 </tr>
               
             </tbody>
@@ -14557,7 +14601,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
         
       
         <h3 id="metalstack.api.v2.Switch">Switch</h3>
-        <p>Switch represents a network switch</p>
+        <p>Switch represents a network switch.</p>
 
         
           <table class="field-table">
@@ -14570,70 +14614,70 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>ID of the switch </p></td>
+                  <td><p>Id of the switch. </p></td>
                 </tr>
               
                 <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Description of the switch </p></td>
+                  <td><p>Description of the switch. </p></td>
                 </tr>
               
                 <tr>
                   <td>rack_id</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Rack ID if the switch resides in a rack </p></td>
+                  <td><p>RackId if the switch resides in a rack. </p></td>
                 </tr>
               
                 <tr>
                   <td>partition</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Partition the switch belongs to </p></td>
+                  <td><p>Partition the switch belongs to. </p></td>
                 </tr>
               
                 <tr>
                   <td>replace_mode</td>
                   <td><a href="#metalstack.api.v2.SwitchReplaceMode">SwitchReplaceMode</a></td>
                   <td></td>
-                  <td><p>Replace mode is used to mark a switch ready for replacement </p></td>
+                  <td><p>ReplaceMode is used to mark a switch ready for replacement. </p></td>
                 </tr>
               
                 <tr>
                   <td>management_ip</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Management IP is the switch&#39;s IP for management access </p></td>
+                  <td><p>ManagementIp is the switch&#39;s IP for management access. </p></td>
                 </tr>
               
                 <tr>
                   <td>management_user</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Management user is the user name to use for management access </p></td>
+                  <td><p>ManagementUser is the user name to use for management access. </p></td>
                 </tr>
               
                 <tr>
                   <td>console_command</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Console command is the command for accessing the switch&#39;s console </p></td>
+                  <td><p>ConsoleCommand is the command for accessing the switch&#39;s console. </p></td>
                 </tr>
               
                 <tr>
                   <td>nics</td>
                   <td><a href="#metalstack.api.v2.Nic">Nic</a></td>
                   <td>repeated</td>
-                  <td><p>Nics are the front panel ports of the switch </p></td>
+                  <td><p>Nics are the front panel ports of the switch. </p></td>
                 </tr>
               
                 <tr>
                   <td>os</td>
                   <td><a href="#metalstack.api.v2.SwitchOS">SwitchOS</a></td>
                   <td></td>
-                  <td><p>Switch OS is the OS running on the switch </p></td>
+                  <td><p>SwitchOs is the OS running on the switch. </p></td>
                 </tr>
               
             </tbody>
@@ -14644,7 +14688,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
         
       
         <h3 id="metalstack.api.v2.SwitchBGPPortState">SwitchBGPPortState</h3>
-        <p>SwitchBGPPortState holds information about the BGP state of a port</p>
+        <p>SwitchBGPPortState holds information about the BGP state of a port.</p>
 
         
           <table class="field-table">
@@ -14657,49 +14701,49 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>neighbor</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Neighbor of this port </p></td>
+                  <td><p>Neighbor of this port. </p></td>
                 </tr>
               
                 <tr>
                   <td>peer_group</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Peer group of this port </p></td>
+                  <td><p>PeerGroup of this port. </p></td>
                 </tr>
               
                 <tr>
                   <td>vrf_name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>VRF name of the VRF this port is bound to </p></td>
+                  <td><p>VrfName of the VRF this port is bound to. </p></td>
                 </tr>
               
                 <tr>
                   <td>bgp_state</td>
                   <td><a href="#metalstack.api.v2.BGPState">BGPState</a></td>
                   <td></td>
-                  <td><p>BGP state of the connection on this port </p></td>
+                  <td><p>BGPState of the connection on this port. </p></td>
                 </tr>
               
                 <tr>
                   <td>bgp_timer_up_established</td>
                   <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
                   <td></td>
-                  <td><p>BGP timer up established reports the uptime of this port&#39;s BGP connection </p></td>
+                  <td><p>BGPTimerUpEstablished reports the uptime of this port&#39;s BGP connection. </p></td>
                 </tr>
               
                 <tr>
                   <td>sent_prefix_counter</td>
                   <td><a href="#uint64">uint64</a></td>
                   <td></td>
-                  <td><p>Sent prefix counter counts the prefixes sent by the switch on this port </p></td>
+                  <td><p>SentPrefixCounter counts the prefixes sent by the switch on this port. </p></td>
                 </tr>
               
                 <tr>
                   <td>accepted_prefix_counter</td>
                   <td><a href="#uint64">uint64</a></td>
                   <td></td>
-                  <td><p>Accepted prefix counter counts the prefixes received on this port </p></td>
+                  <td><p>AcceptedPrefixCounter counts the prefixes received on this port. </p></td>
                 </tr>
               
             </tbody>
@@ -14710,7 +14754,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
         
       
         <h3 id="metalstack.api.v2.SwitchOS">SwitchOS</h3>
-        <p>SwitchOS holds information about the NOS and versions running on the switch</p>
+        <p>SwitchOS holds information about the NOS and versions running on the switch.</p>
 
         
           <table class="field-table">
@@ -14723,21 +14767,21 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>vendor</td>
                   <td><a href="#metalstack.api.v2.SwitchOSVendor">SwitchOSVendor</a></td>
                   <td></td>
-                  <td><p>Switch OS vendor identifies what NOS distribution is running on the switch, e.g. SONiC </p></td>
+                  <td><p>Vendor identifies what NOS distribution is running on the switch, e.g. SONiC. </p></td>
                 </tr>
               
                 <tr>
                   <td>version</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Version specifies what NOS version is currently installed on the switch </p></td>
+                  <td><p>Version specifies what NOS version is currently installed on the switch. </p></td>
                 </tr>
               
                 <tr>
                   <td>metal_core_version</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Metal core version is the currently running version of the metal-core </p></td>
+                  <td><p>MetalCoreVersion is the currently running version of the metal-core. </p></td>
                 </tr>
               
             </tbody>
@@ -14748,7 +14792,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
         
       
         <h3 id="metalstack.api.v2.SwitchQuery">SwitchQuery</h3>
-        <p>SwitchQuery can be used to query a switch or a list of switches</p>
+        <p>SwitchQuery can be used to query a switch or a list of switches.</p>
 
         
           <table class="field-table">
@@ -14761,35 +14805,131 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Id of the switch to list </p></td>
+                  <td><p>Id of the switch to list. </p></td>
                 </tr>
               
                 <tr>
                   <td>partition</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Partition of the switches to list </p></td>
+                  <td><p>Partition of the switches to list. </p></td>
                 </tr>
               
                 <tr>
-                  <td>rack_id</td>
+                  <td>rack</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Rack of the switches to list </p></td>
+                  <td><p>Rack of the switches to list. </p></td>
                 </tr>
               
                 <tr>
-                  <td>vendor</td>
+                  <td>os_vendor</td>
                   <td><a href="#metalstack.api.v2.SwitchOSVendor">SwitchOSVendor</a></td>
                   <td>optional</td>
-                  <td><p>Vendor of the switch OS by which to filter the switches </p></td>
+                  <td><p>OsVendor of the switch OS by which to filter the switches. </p></td>
                 </tr>
               
                 <tr>
-                  <td>version</td>
+                  <td>os_version</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Version of the OS by which to filter the switches </p></td>
+                  <td><p>OsVersion of the OS by which to filter the switches. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</h3>
+        <p>SwitchServiceGetRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the switch to get. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</h3>
+        <p>SwitchServiceGetResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switch</td>
+                  <td><a href="#metalstack.api.v2.Switch">Switch</a></td>
+                  <td></td>
+                  <td><p>Switch that was requested. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SwitchServiceListRequest">SwitchServiceListRequest</h3>
+        <p>SwitchServiceListRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.SwitchQuery">SwitchQuery</a></td>
+                  <td></td>
+                  <td><p>Query to filter the results. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SwitchServiceListResponse">SwitchServiceListResponse</h3>
+        <p>SwitchServiceListResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switches</td>
+                  <td><a href="#metalstack.api.v2.Switch">Switch</a></td>
+                  <td>repeated</td>
+                  <td><p>Switches that match the request query. </p></td>
                 </tr>
               
             </tbody>
@@ -14802,7 +14942,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
 
       
         <h3 id="metalstack.api.v2.BGPState">BGPState</h3>
-        <p>BGPState represents the state of a BGP session</p>
+        <p>BGPState represents the state of a BGP session.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -14812,50 +14952,50 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
               <tr>
                 <td>BGP_STATE_UNSPECIFIED</td>
                 <td>0</td>
-                <td><p>BGP_STATE_UNSPECIFIED is not specified</p></td>
+                <td><p>BGP_STATE_UNSPECIFIED is not specified.</p></td>
               </tr>
             
               <tr>
                 <td>BGP_STATE_IDLE</td>
                 <td>1</td>
-                <td><p>BGP_STATE_IDLE is the Idle state of a BGP session</p></td>
+                <td><p>BGP_STATE_IDLE is the Idle state of a BGP session.</p></td>
               </tr>
             
               <tr>
                 <td>BGP_STATE_CONNECT</td>
                 <td>2</td>
-                <td><p>BGP_STATE_CONNECT is the Connect state of a BGP session</p></td>
+                <td><p>BGP_STATE_CONNECT is the Connect state of a BGP session.</p></td>
               </tr>
             
               <tr>
                 <td>BGP_STATE_ACTIVE</td>
                 <td>3</td>
-                <td><p>BGP_STATE_ACTIVE is the Active state of a BGP session</p></td>
+                <td><p>BGP_STATE_ACTIVE is the Active state of a BGP session.</p></td>
               </tr>
             
               <tr>
                 <td>BGP_STATE_OPEN_SENT</td>
                 <td>4</td>
-                <td><p>BGP_STATE_OPEN_SENT is the OpenSent state of a BGP session</p></td>
+                <td><p>BGP_STATE_OPEN_SENT is the OpenSent state of a BGP session.</p></td>
               </tr>
             
               <tr>
                 <td>BGP_STATE_OPEN_CONFIRM</td>
                 <td>5</td>
-                <td><p>BGP_STATE_OPEN_CONFIRM is the OpenConfirm state of a BGP session</p></td>
+                <td><p>BGP_STATE_OPEN_CONFIRM is the OpenConfirm state of a BGP session.</p></td>
               </tr>
             
               <tr>
                 <td>BGP_STATE_ESTABLISHED</td>
                 <td>6</td>
-                <td><p>BGP_STATE_ESTABLISHED is the Established state of a BGP session</p></td>
+                <td><p>BGP_STATE_ESTABLISHED is the Established state of a BGP session.</p></td>
               </tr>
             
           </tbody>
         </table>
       
         <h3 id="metalstack.api.v2.SwitchOSVendor">SwitchOSVendor</h3>
-        <p>SwitchOSVendor represents a NOS distribution</p>
+        <p>SwitchOSVendor represents a NOS distribution.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -14865,26 +15005,26 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
               <tr>
                 <td>SWITCH_OS_VENDOR_UNSPECIFIED</td>
                 <td>0</td>
-                <td><p>SWITCH_OS_VENDOR_UNSPECIFIED is not specified</p></td>
+                <td><p>SWITCH_OS_VENDOR_UNSPECIFIED is not specified.</p></td>
               </tr>
             
               <tr>
                 <td>SWITCH_OS_VENDOR_CUMULUS</td>
                 <td>1</td>
-                <td><p>SWITCH_OS_VENDOR_CUMULUS means this switch is running on Cumulus Linux</p></td>
+                <td><p>SWITCH_OS_VENDOR_CUMULUS means this switch is running on Cumulus Linux.</p></td>
               </tr>
             
               <tr>
                 <td>SWITCH_OS_VENDOR_SONIC</td>
                 <td>2</td>
-                <td><p>SWITCH_OS_VENDOR_SONIC means this switch is running on SONiC NOS</p></td>
+                <td><p>SWITCH_OS_VENDOR_SONIC means this switch is running on SONiC NOS.</p></td>
               </tr>
             
           </tbody>
         </table>
       
         <h3 id="metalstack.api.v2.SwitchPortStatus">SwitchPortStatus</h3>
-        <p>SwitchPortStatus specifies the state of a switch port</p>
+        <p>SwitchPortStatus specifies the state of a switch port.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -14894,26 +15034,26 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
               <tr>
                 <td>SWITCH_PORT_STATUS_UNSPECIFIED</td>
                 <td>0</td>
-                <td><p>SWITCH_PORT_STATUS_UNSPECIFIED is not specified</p></td>
+                <td><p>SWITCH_PORT_STATUS_UNSPECIFIED is not specified.</p></td>
               </tr>
             
               <tr>
                 <td>SWITCH_PORT_STATUS_UP</td>
                 <td>1</td>
-                <td><p>SWITCH_PORT_STATUS_UP means this port is up</p></td>
+                <td><p>SWITCH_PORT_STATUS_UP means this port is up.</p></td>
               </tr>
             
               <tr>
                 <td>SWITCH_PORT_STATUS_DOWN</td>
                 <td>2</td>
-                <td><p>SWITCH_PORT_STATUS_DOWN means this port is down</p></td>
+                <td><p>SWITCH_PORT_STATUS_DOWN means this port is down.</p></td>
               </tr>
             
           </tbody>
         </table>
       
         <h3 id="metalstack.api.v2.SwitchReplaceMode">SwitchReplaceMode</h3>
-        <p>SwitchReplaceMode is used to mark a switch ready for replacement</p>
+        <p>SwitchReplaceMode is used to mark a switch ready for replacement.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -14923,19 +15063,19 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
               <tr>
                 <td>SWITCH_REPLACE_MODE_UNSPECIFIED</td>
                 <td>0</td>
-                <td><p>SWITCH_REPLACE_MODE_UNSPECIFIED is not specified</p></td>
+                <td><p>SWITCH_REPLACE_MODE_UNSPECIFIED is not specified.</p></td>
               </tr>
             
               <tr>
                 <td>SWITCH_REPLACE_MODE_REPLACE</td>
                 <td>1</td>
-                <td><p>SWITCH_REPLACE_MODE_REPLACE means this switch is waiting to be replaced</p></td>
+                <td><p>SWITCH_REPLACE_MODE_REPLACE means this switch is waiting to be replaced.</p></td>
               </tr>
             
               <tr>
                 <td>SWITCH_REPLACE_MODE_OPERATIONAL</td>
                 <td>2</td>
-                <td><p>SWITCH_REPLACE_MODE_OPERATIONAL means this switch is operational and cannot be replaced</p></td>
+                <td><p>SWITCH_REPLACE_MODE_OPERATIONAL means this switch is operational and cannot be replaced.</p></td>
               </tr>
             
           </tbody>
@@ -14945,6 +15085,32 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
       
 
       
+        <h3 id="metalstack.api.v2.SwitchService">SwitchService</h3>
+        <p>SwitchService serves switch related informational functions.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.api.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</a></td>
+                <td><a href="#metalstack.api.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</a></td>
+                <td><p>Get a switch by ID.</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.api.v2.SwitchServiceListRequest">SwitchServiceListRequest</a></td>
+                <td><a href="#metalstack.api.v2.SwitchServiceListResponse">SwitchServiceListResponse</a></td>
+                <td><p>List switches.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
     
       
       <div class="file-heading">
@@ -14953,8 +15119,8 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
       <p></p>
 
       
-        <h3 id="metalstack.admin.v2.SwitchServiceUpdateRequest">SwitchServiceUpdateRequest</h3>
-        <p>SwitchServiceUpdateRequest</p>
+        <h3 id="metalstack.admin.v2.SwitchServiceDeleteRequest">SwitchServiceDeleteRequest</h3>
+        <p>SwitchServiceDeleteRequest.</p>
 
         
           <table class="field-table">
@@ -14967,63 +15133,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>ID of the switch </p></td>
-                </tr>
-              
-                <tr>
-                  <td>description</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Description of the switch </p></td>
-                </tr>
-              
-                <tr>
-                  <td>rack_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Rack ID if the switch resides in a rack </p></td>
-                </tr>
-              
-                <tr>
-                  <td>replace_mode</td>
-                  <td><a href="#metalstack.api.v2.SwitchReplaceMode">metalstack.api.v2.SwitchReplaceMode</a></td>
-                  <td></td>
-                  <td><p>Replace mode is used to mark a switch ready for replacement </p></td>
-                </tr>
-              
-                <tr>
-                  <td>management_ip</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Management IP is the switch&#39;s IP for management access </p></td>
-                </tr>
-              
-                <tr>
-                  <td>management_user</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Management user is the user name to use for management access </p></td>
-                </tr>
-              
-                <tr>
-                  <td>console_command</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Console command is the command for accessing the switch&#39;s console </p></td>
-                </tr>
-              
-                <tr>
-                  <td>nics</td>
-                  <td><a href="#metalstack.api.v2.Nic">metalstack.api.v2.Nic</a></td>
-                  <td>repeated</td>
-                  <td><p>Nics are the front panel ports of the switch </p></td>
-                </tr>
-              
-                <tr>
-                  <td>os</td>
-                  <td><a href="#metalstack.api.v2.SwitchOS">metalstack.api.v2.SwitchOS</a></td>
-                  <td></td>
-                  <td><p>Switch OS is the OS running on the switch </p></td>
+                  <td><p>Id of the switch. </p></td>
                 </tr>
               
             </tbody>
@@ -15033,8 +15143,8 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
 
         
       
-        <h3 id="metalstack.admin.v2.SwitchServiceUpdateResponse">SwitchServiceUpdateResponse</h3>
-        <p>SwitchServiceUpdateResponse</p>
+        <h3 id="metalstack.admin.v2.SwitchServiceDeleteResponse">SwitchServiceDeleteResponse</h3>
+        <p>SwitchServiceDeleteResponse.</p>
 
         
           <table class="field-table">
@@ -15047,7 +15157,228 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>switch</td>
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
                   <td></td>
-                  <td><p>Switch that was updated </p></td>
+                  <td><p>Switch that has been deleted. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceMigrateRequest">SwitchServiceMigrateRequest</h3>
+        <p>SwitchServiceMigrateRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>old_switch</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>OldSwitch which to migrate away from. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>new_switch</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>NewSwitch which to migrate to. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceMigrateResponse">SwitchServiceMigrateResponse</h3>
+        <p>SwitchServiceMigrateResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switch</td>
+                  <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
+                  <td></td>
+                  <td><p>Switch that was migrated to. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServicePortRequest">SwitchServicePortRequest</h3>
+        <p>SwitchServicePortRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nic_name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>NicName of the port whose status should be changed. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#metalstack.api.v2.SwitchPortStatus">metalstack.api.v2.SwitchPortStatus</a></td>
+                  <td></td>
+                  <td><p>Status that the port should have. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServicePortResponse">SwitchServicePortResponse</h3>
+        <p>SwitchServicePortResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switch</td>
+                  <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
+                  <td></td>
+                  <td><p>Switch after the port status toggle.. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceUpdateRequest">SwitchServiceUpdateRequest</h3>
+        <p>SwitchServiceUpdateRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Description of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rack_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Rack ID if the switch resides in a rack. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>replace_mode</td>
+                  <td><a href="#metalstack.api.v2.SwitchReplaceMode">metalstack.api.v2.SwitchReplaceMode</a></td>
+                  <td></td>
+                  <td><p>Replace mode is used to mark a switch ready for replacement. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>management_ip</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Management IP is the switch&#39;s IP for management access. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>management_user</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Management user is the user name to use for management access. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>console_command</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Console command is the command for accessing the switch&#39;s console. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nics</td>
+                  <td><a href="#metalstack.api.v2.Nic">metalstack.api.v2.Nic</a></td>
+                  <td>repeated</td>
+                  <td><p>Nics are the front panel ports of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>os</td>
+                  <td><a href="#metalstack.api.v2.SwitchOS">metalstack.api.v2.SwitchOS</a></td>
+                  <td></td>
+                  <td><p>Switch OS is the OS running on the switch. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceUpdateResponse">SwitchServiceUpdateResponse</h3>
+        <p>SwitchServiceUpdateResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switch</td>
+                  <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
+                  <td></td>
+                  <td><p>Switch that was updated. </p></td>
                 </tr>
               
             </tbody>
@@ -15064,7 +15395,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
 
       
         <h3 id="metalstack.admin.v2.SwitchService">SwitchService</h3>
-        <p>SwitchService serves switch related functions</p>
+        <p>SwitchService serves switch related functions.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -15075,7 +15406,28 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                 <td>Update</td>
                 <td><a href="#metalstack.admin.v2.SwitchServiceUpdateRequest">SwitchServiceUpdateRequest</a></td>
                 <td><a href="#metalstack.admin.v2.SwitchServiceUpdateResponse">SwitchServiceUpdateResponse</a></td>
-                <td><p>Update a switch</p></td>
+                <td><p>Update a switch.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Delete</td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceDeleteRequest">SwitchServiceDeleteRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceDeleteResponse">SwitchServiceDeleteResponse</a></td>
+                <td><p>Delete a switch.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Migrate</td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceMigrateRequest">SwitchServiceMigrateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceMigrateResponse">SwitchServiceMigrateResponse</a></td>
+                <td><p>Migrate a switch.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Port</td>
+                <td><a href="#metalstack.admin.v2.SwitchServicePortRequest">SwitchServicePortRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SwitchServicePortResponse">SwitchServicePortResponse</a></td>
+                <td><p>Port set the port status of a switch port.</p></td>
               </tr>
             
           </tbody>
@@ -15261,10 +15613,10 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                 </tr>
               
                 <tr>
-                  <td>project_ids</td>
+                  <td>projects</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>ProjectIds for the projects in which a user is a direct member </p></td>
+                  <td><p>Projects for the projects in which a user is a direct member </p></td>
                 </tr>
               
                 <tr>
@@ -15779,10 +16131,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>member_id</td>
+                  <td>member</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>MemberID is the id of the member to remove from this tenant </p></td>
+                  <td><p>Member is the id of the member to remove from this tenant </p></td>
                 </tr>
               
             </tbody>
@@ -15817,10 +16169,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>member_id</td>
+                  <td>member</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>MemberID is the id of the member to update in this tenant </p></td>
+                  <td><p>Member is the id of the member to update in this tenant </p></td>
                 </tr>
               
                 <tr>
@@ -16289,10 +16641,10 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
-                  <td>user_id</td>
+                  <td>user</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>UserId who created this token </p></td>
+                  <td><p>User who created this token </p></td>
                 </tr>
               
                 <tr>
@@ -16973,10 +17325,10 @@ for which the methods should be allowed </p></td>
             <tbody>
               
                 <tr>
-                  <td>user_id</td>
+                  <td>user</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>UserId is the id of the user for which the tokens should be listed </p></td>
+                  <td><p>User is the id of the user for which the tokens should be listed </p></td>
                 </tr>
               
             </tbody>
@@ -17028,10 +17380,10 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
-                  <td>user_id</td>
+                  <td>user</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>UserId is the id of the user for which the token should be revoked </p></td>
+                  <td><p>User is the id of the user for which the token should be revoked </p></td>
                 </tr>
               
             </tbody>
@@ -18234,10 +18586,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>member_id</td>
+                  <td>member</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>MemberID is the id of the member to remove from this project </p></td>
+                  <td><p>Member is the id of the member to remove from this project </p></td>
                 </tr>
               
             </tbody>
@@ -18272,10 +18624,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>member_id</td>
+                  <td>member</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>MemberID is the id of the member to remove from this project </p></td>
+                  <td><p>Member is the id of the member to remove from this project </p></td>
                 </tr>
               
                 <tr>

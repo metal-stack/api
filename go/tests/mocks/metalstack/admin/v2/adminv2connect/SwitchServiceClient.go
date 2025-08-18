@@ -16,6 +16,96 @@ type SwitchServiceClient struct {
 	mock.Mock
 }
 
+// Delete provides a mock function with given fields: _a0, _a1
+func (_m *SwitchServiceClient) Delete(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceDeleteRequest]) (*connect.Response[adminv2.SwitchServiceDeleteResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Delete")
+	}
+
+	var r0 *connect.Response[adminv2.SwitchServiceDeleteResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceDeleteRequest]) (*connect.Response[adminv2.SwitchServiceDeleteResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceDeleteRequest]) *connect.Response[adminv2.SwitchServiceDeleteResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServiceDeleteResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServiceDeleteRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// Migrate provides a mock function with given fields: _a0, _a1
+func (_m *SwitchServiceClient) Migrate(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceMigrateRequest]) (*connect.Response[adminv2.SwitchServiceMigrateResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Migrate")
+	}
+
+	var r0 *connect.Response[adminv2.SwitchServiceMigrateResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceMigrateRequest]) (*connect.Response[adminv2.SwitchServiceMigrateResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceMigrateRequest]) *connect.Response[adminv2.SwitchServiceMigrateResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServiceMigrateResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServiceMigrateRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// Port provides a mock function with given fields: _a0, _a1
+func (_m *SwitchServiceClient) Port(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServicePortRequest]) (*connect.Response[adminv2.SwitchServicePortResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Port")
+	}
+
+	var r0 *connect.Response[adminv2.SwitchServicePortResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServicePortRequest]) (*connect.Response[adminv2.SwitchServicePortResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServicePortRequest]) *connect.Response[adminv2.SwitchServicePortResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServicePortResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServicePortRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // Update provides a mock function with given fields: _a0, _a1
 func (_m *SwitchServiceClient) Update(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceUpdateRequest]) (*connect.Response[adminv2.SwitchServiceUpdateResponse], error) {
 	ret := _m.Called(_a0, _a1)

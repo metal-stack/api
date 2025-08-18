@@ -35,12 +35,24 @@ const (
 const (
 	// SwitchServiceUpdateProcedure is the fully-qualified name of the SwitchService's Update RPC.
 	SwitchServiceUpdateProcedure = "/metalstack.admin.v2.SwitchService/Update"
+	// SwitchServiceDeleteProcedure is the fully-qualified name of the SwitchService's Delete RPC.
+	SwitchServiceDeleteProcedure = "/metalstack.admin.v2.SwitchService/Delete"
+	// SwitchServiceMigrateProcedure is the fully-qualified name of the SwitchService's Migrate RPC.
+	SwitchServiceMigrateProcedure = "/metalstack.admin.v2.SwitchService/Migrate"
+	// SwitchServicePortProcedure is the fully-qualified name of the SwitchService's Port RPC.
+	SwitchServicePortProcedure = "/metalstack.admin.v2.SwitchService/Port"
 )
 
 // SwitchServiceClient is a client for the metalstack.admin.v2.SwitchService service.
 type SwitchServiceClient interface {
-	// Update a switch
+	// Update a switch.
 	Update(context.Context, *connect.Request[v2.SwitchServiceUpdateRequest]) (*connect.Response[v2.SwitchServiceUpdateResponse], error)
+	// Delete a switch.
+	Delete(context.Context, *connect.Request[v2.SwitchServiceDeleteRequest]) (*connect.Response[v2.SwitchServiceDeleteResponse], error)
+	// Migrate a switch.
+	Migrate(context.Context, *connect.Request[v2.SwitchServiceMigrateRequest]) (*connect.Response[v2.SwitchServiceMigrateResponse], error)
+	// Port set the port status of a switch port.
+	Port(context.Context, *connect.Request[v2.SwitchServicePortRequest]) (*connect.Response[v2.SwitchServicePortResponse], error)
 }
 
 // NewSwitchServiceClient constructs a client for the metalstack.admin.v2.SwitchService service. By
@@ -60,12 +72,33 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(switchServiceMethods.ByName("Update")),
 			connect.WithClientOptions(opts...),
 		),
+		delete: connect.NewClient[v2.SwitchServiceDeleteRequest, v2.SwitchServiceDeleteResponse](
+			httpClient,
+			baseURL+SwitchServiceDeleteProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("Delete")),
+			connect.WithClientOptions(opts...),
+		),
+		migrate: connect.NewClient[v2.SwitchServiceMigrateRequest, v2.SwitchServiceMigrateResponse](
+			httpClient,
+			baseURL+SwitchServiceMigrateProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("Migrate")),
+			connect.WithClientOptions(opts...),
+		),
+		port: connect.NewClient[v2.SwitchServicePortRequest, v2.SwitchServicePortResponse](
+			httpClient,
+			baseURL+SwitchServicePortProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("Port")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // switchServiceClient implements SwitchServiceClient.
 type switchServiceClient struct {
-	update *connect.Client[v2.SwitchServiceUpdateRequest, v2.SwitchServiceUpdateResponse]
+	update  *connect.Client[v2.SwitchServiceUpdateRequest, v2.SwitchServiceUpdateResponse]
+	delete  *connect.Client[v2.SwitchServiceDeleteRequest, v2.SwitchServiceDeleteResponse]
+	migrate *connect.Client[v2.SwitchServiceMigrateRequest, v2.SwitchServiceMigrateResponse]
+	port    *connect.Client[v2.SwitchServicePortRequest, v2.SwitchServicePortResponse]
 }
 
 // Update calls metalstack.admin.v2.SwitchService.Update.
@@ -73,10 +106,31 @@ func (c *switchServiceClient) Update(ctx context.Context, req *connect.Request[v
 	return c.update.CallUnary(ctx, req)
 }
 
+// Delete calls metalstack.admin.v2.SwitchService.Delete.
+func (c *switchServiceClient) Delete(ctx context.Context, req *connect.Request[v2.SwitchServiceDeleteRequest]) (*connect.Response[v2.SwitchServiceDeleteResponse], error) {
+	return c.delete.CallUnary(ctx, req)
+}
+
+// Migrate calls metalstack.admin.v2.SwitchService.Migrate.
+func (c *switchServiceClient) Migrate(ctx context.Context, req *connect.Request[v2.SwitchServiceMigrateRequest]) (*connect.Response[v2.SwitchServiceMigrateResponse], error) {
+	return c.migrate.CallUnary(ctx, req)
+}
+
+// Port calls metalstack.admin.v2.SwitchService.Port.
+func (c *switchServiceClient) Port(ctx context.Context, req *connect.Request[v2.SwitchServicePortRequest]) (*connect.Response[v2.SwitchServicePortResponse], error) {
+	return c.port.CallUnary(ctx, req)
+}
+
 // SwitchServiceHandler is an implementation of the metalstack.admin.v2.SwitchService service.
 type SwitchServiceHandler interface {
-	// Update a switch
+	// Update a switch.
 	Update(context.Context, *connect.Request[v2.SwitchServiceUpdateRequest]) (*connect.Response[v2.SwitchServiceUpdateResponse], error)
+	// Delete a switch.
+	Delete(context.Context, *connect.Request[v2.SwitchServiceDeleteRequest]) (*connect.Response[v2.SwitchServiceDeleteResponse], error)
+	// Migrate a switch.
+	Migrate(context.Context, *connect.Request[v2.SwitchServiceMigrateRequest]) (*connect.Response[v2.SwitchServiceMigrateResponse], error)
+	// Port set the port status of a switch port.
+	Port(context.Context, *connect.Request[v2.SwitchServicePortRequest]) (*connect.Response[v2.SwitchServicePortResponse], error)
 }
 
 // NewSwitchServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -92,10 +146,34 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(switchServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
+	switchServiceDeleteHandler := connect.NewUnaryHandler(
+		SwitchServiceDeleteProcedure,
+		svc.Delete,
+		connect.WithSchema(switchServiceMethods.ByName("Delete")),
+		connect.WithHandlerOptions(opts...),
+	)
+	switchServiceMigrateHandler := connect.NewUnaryHandler(
+		SwitchServiceMigrateProcedure,
+		svc.Migrate,
+		connect.WithSchema(switchServiceMethods.ByName("Migrate")),
+		connect.WithHandlerOptions(opts...),
+	)
+	switchServicePortHandler := connect.NewUnaryHandler(
+		SwitchServicePortProcedure,
+		svc.Port,
+		connect.WithSchema(switchServiceMethods.ByName("Port")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.SwitchService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case SwitchServiceUpdateProcedure:
 			switchServiceUpdateHandler.ServeHTTP(w, r)
+		case SwitchServiceDeleteProcedure:
+			switchServiceDeleteHandler.ServeHTTP(w, r)
+		case SwitchServiceMigrateProcedure:
+			switchServiceMigrateHandler.ServeHTTP(w, r)
+		case SwitchServicePortProcedure:
+			switchServicePortHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -107,4 +185,16 @@ type UnimplementedSwitchServiceHandler struct{}
 
 func (UnimplementedSwitchServiceHandler) Update(context.Context, *connect.Request[v2.SwitchServiceUpdateRequest]) (*connect.Response[v2.SwitchServiceUpdateResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SwitchService.Update is not implemented"))
+}
+
+func (UnimplementedSwitchServiceHandler) Delete(context.Context, *connect.Request[v2.SwitchServiceDeleteRequest]) (*connect.Response[v2.SwitchServiceDeleteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SwitchService.Delete is not implemented"))
+}
+
+func (UnimplementedSwitchServiceHandler) Migrate(context.Context, *connect.Request[v2.SwitchServiceMigrateRequest]) (*connect.Response[v2.SwitchServiceMigrateResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SwitchService.Migrate is not implemented"))
+}
+
+func (UnimplementedSwitchServiceHandler) Port(context.Context, *connect.Request[v2.SwitchServicePortRequest]) (*connect.Response[v2.SwitchServicePortResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SwitchService.Port is not implemented"))
 }

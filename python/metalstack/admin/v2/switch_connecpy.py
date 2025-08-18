@@ -16,6 +16,9 @@ import metalstack.admin.v2.switch_pb2 as metalstack_dot_admin_dot_v2_dot_switch_
 
 class SwitchService(Protocol):
     async def Update(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse: ...
+    async def Delete(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse: ...
+    async def Migrate(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse: ...
+    async def Port(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse: ...
 
 
 class SwitchServiceServer(ConnecpyServer):
@@ -31,6 +34,30 @@ class SwitchServiceServer(ConnecpyServer):
                 output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse,
                 allowed_methods=("POST",),
             ),
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse](
+                service_name="SwitchService",
+                name="Delete",
+                function=getattr(service, "Delete"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse,
+                allowed_methods=("POST",),
+            ),
+            "Migrate": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse](
+                service_name="SwitchService",
+                name="Migrate",
+                function=getattr(service, "Migrate"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse,
+                allowed_methods=("POST",),
+            ),
+            "Port": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse](
+                service_name="SwitchService",
+                name="Port",
+                function=getattr(service, "Port"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse,
+                allowed_methods=("POST",),
+            ),
         }
 
     def serviceName(self):
@@ -39,6 +66,9 @@ class SwitchServiceServer(ConnecpyServer):
 
 class SwitchServiceSync(Protocol):
     def Update(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse: ...
+    def Delete(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse: ...
+    def Migrate(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse: ...
+    def Port(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse: ...
 
 
 class SwitchServiceServerSync(ConnecpyServer):
@@ -52,6 +82,30 @@ class SwitchServiceServerSync(ConnecpyServer):
                 function=getattr(service, "Update"),
                 input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest,
                 output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse,
+                allowed_methods=("POST",),
+            ),
+            "Delete": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse](
+                service_name="SwitchService",
+                name="Delete",
+                function=getattr(service, "Delete"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse,
+                allowed_methods=("POST",),
+            ),
+            "Migrate": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse](
+                service_name="SwitchService",
+                name="Migrate",
+                function=getattr(service, "Migrate"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse,
+                allowed_methods=("POST",),
+            ),
+            "Port": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse](
+                service_name="SwitchService",
+                name="Port",
+                function=getattr(service, "Port"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -79,6 +133,60 @@ class SwitchServiceClient(ConnecpyClient):
             **kwargs,
         )
 
+    def Delete(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/Delete",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def Migrate(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/Migrate",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def Port(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/Port",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse,
+            method=method,
+            **kwargs,
+        )
+
 
 class AsyncSwitchServiceClient(AsyncConnecpyClient):
     async def Update(
@@ -96,6 +204,66 @@ class AsyncSwitchServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def Delete(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/Delete",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def Migrate(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/Migrate",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def Port(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/Port",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse,
             method=method,
             session=session,
             **kwargs,

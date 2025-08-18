@@ -6,7 +6,7 @@ from metalstack.admin.v2 import switch_pb2 as metalstack_dot_admin_dot_v2_dot_sw
 
 
 class SwitchServiceStub(object):
-    """SwitchService serves switch related functions
+    """SwitchService serves switch related functions.
     """
 
     def __init__(self, channel):
@@ -20,14 +20,50 @@ class SwitchServiceStub(object):
                 request_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest.SerializeToString,
                 response_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse.FromString,
                 _registered_method=True)
+        self.Delete = channel.unary_unary(
+                '/metalstack.admin.v2.SwitchService/Delete',
+                request_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest.SerializeToString,
+                response_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse.FromString,
+                _registered_method=True)
+        self.Migrate = channel.unary_unary(
+                '/metalstack.admin.v2.SwitchService/Migrate',
+                request_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest.SerializeToString,
+                response_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse.FromString,
+                _registered_method=True)
+        self.Port = channel.unary_unary(
+                '/metalstack.admin.v2.SwitchService/Port',
+                request_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest.SerializeToString,
+                response_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse.FromString,
+                _registered_method=True)
 
 
 class SwitchServiceServicer(object):
-    """SwitchService serves switch related functions
+    """SwitchService serves switch related functions.
     """
 
     def Update(self, request, context):
-        """Update a switch
+        """Update a switch.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Delete(self, request, context):
+        """Delete a switch.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Migrate(self, request, context):
+        """Migrate a switch.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Port(self, request, context):
+        """Port set the port status of a switch port.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -41,6 +77,21 @@ def add_SwitchServiceServicer_to_server(servicer, server):
                     request_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest.FromString,
                     response_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse.SerializeToString,
             ),
+            'Delete': grpc.unary_unary_rpc_method_handler(
+                    servicer.Delete,
+                    request_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest.FromString,
+                    response_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse.SerializeToString,
+            ),
+            'Migrate': grpc.unary_unary_rpc_method_handler(
+                    servicer.Migrate,
+                    request_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest.FromString,
+                    response_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse.SerializeToString,
+            ),
+            'Port': grpc.unary_unary_rpc_method_handler(
+                    servicer.Port,
+                    request_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest.FromString,
+                    response_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'metalstack.admin.v2.SwitchService', rpc_method_handlers)
@@ -50,7 +101,7 @@ def add_SwitchServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class SwitchService(object):
-    """SwitchService serves switch related functions
+    """SwitchService serves switch related functions.
     """
 
     @staticmethod
@@ -70,6 +121,87 @@ class SwitchService(object):
             '/metalstack.admin.v2.SwitchService/Update',
             metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest.SerializeToString,
             metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Delete(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/metalstack.admin.v2.SwitchService/Delete',
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest.SerializeToString,
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Migrate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/metalstack.admin.v2.SwitchService/Migrate',
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest.SerializeToString,
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Port(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/metalstack.admin.v2.SwitchService/Port',
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest.SerializeToString,
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse.FromString,
             options,
             channel_credentials,
             insecure,

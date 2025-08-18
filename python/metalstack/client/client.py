@@ -23,6 +23,7 @@ import metalstack.api.v2.network_connecpy as api_network_connecpy
 import metalstack.api.v2.partition_connecpy as api_partition_connecpy
 import metalstack.api.v2.project_connecpy as api_project_connecpy
 import metalstack.api.v2.size_connecpy as api_size_connecpy
+import metalstack.api.v2.switch_connecpy as api_switch_connecpy
 import metalstack.api.v2.tenant_connecpy as api_tenant_connecpy
 import metalstack.api.v2.token_connecpy as api_token_connecpy
 import metalstack.api.v2.user_connecpy as api_user_connecpy
@@ -127,6 +128,9 @@ class Client:
 
         def size(self):
             return api_size_connecpy.SizeServiceClient(address=self._baseurl, session=self._session)
+
+        def switch(self):
+            return api_switch_connecpy.SwitchServiceClient(address=self._baseurl, session=self._session)
 
         def tenant(self):
             return api_tenant_connecpy.TenantServiceClient(address=self._baseurl, session=self._session)

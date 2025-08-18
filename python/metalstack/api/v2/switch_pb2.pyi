@@ -56,6 +56,30 @@ SWITCH_PORT_STATUS_UNSPECIFIED: SwitchPortStatus
 SWITCH_PORT_STATUS_UP: SwitchPortStatus
 SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
 
+class SwitchServiceGetRequest(_message.Message):
+    __slots__ = ("id",)
+    ID_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    def __init__(self, id: _Optional[str] = ...) -> None: ...
+
+class SwitchServiceGetResponse(_message.Message):
+    __slots__ = ("switch",)
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    switch: Switch
+    def __init__(self, switch: _Optional[_Union[Switch, _Mapping]] = ...) -> None: ...
+
+class SwitchServiceListRequest(_message.Message):
+    __slots__ = ("query",)
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: SwitchQuery
+    def __init__(self, query: _Optional[_Union[SwitchQuery, _Mapping]] = ...) -> None: ...
+
+class SwitchServiceListResponse(_message.Message):
+    __slots__ = ("switches",)
+    SWITCHES_FIELD_NUMBER: _ClassVar[int]
+    switches: _containers.RepeatedCompositeFieldContainer[Switch]
+    def __init__(self, switches: _Optional[_Iterable[_Union[Switch, _Mapping]]] = ...) -> None: ...
+
 class Switch(_message.Message):
     __slots__ = ("id", "description", "rack_id", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os")
     ID_FIELD_NUMBER: _ClassVar[int]
@@ -143,15 +167,15 @@ class NicState(_message.Message):
     def __init__(self, desired: _Optional[_Union[SwitchPortStatus, str]] = ..., actual: _Optional[_Union[SwitchPortStatus, str]] = ...) -> None: ...
 
 class SwitchQuery(_message.Message):
-    __slots__ = ("id", "partition", "rack_id", "vendor", "version")
+    __slots__ = ("id", "partition", "rack", "os_vendor", "os_version")
     ID_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
-    RACK_ID_FIELD_NUMBER: _ClassVar[int]
-    VENDOR_FIELD_NUMBER: _ClassVar[int]
-    VERSION_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
+    OS_VENDOR_FIELD_NUMBER: _ClassVar[int]
+    OS_VERSION_FIELD_NUMBER: _ClassVar[int]
     id: str
     partition: str
-    rack_id: str
-    vendor: SwitchOSVendor
-    version: str
-    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack_id: _Optional[str] = ..., vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., version: _Optional[str] = ...) -> None: ...
+    rack: str
+    os_vendor: SwitchOSVendor
+    os_version: str
+    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., os_vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., os_version: _Optional[str] = ...) -> None: ...

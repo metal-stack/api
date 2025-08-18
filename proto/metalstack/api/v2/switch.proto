@@ -10,16 +10,12 @@ import "metalstack/api/v2/common.proto";
 service SwitchService {
   // Get a switch by ID.
   rpc Get(SwitchServiceGetRequest) returns (SwitchServiceGetResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (project_roles) = PROJECT_ROLE_EDITOR;
-    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
   // List switches.
   rpc List(SwitchServiceListRequest) returns (SwitchServiceListResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (project_roles) = PROJECT_ROLE_EDITOR;
-    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }

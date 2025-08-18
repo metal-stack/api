@@ -36,3 +36,45 @@ class SwitchServiceUpdateResponse(_message.Message):
     SWITCH_FIELD_NUMBER: _ClassVar[int]
     switch: _switch_pb2.Switch
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+
+class SwitchServiceDeleteRequest(_message.Message):
+    __slots__ = ("id",)
+    ID_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    def __init__(self, id: _Optional[str] = ...) -> None: ...
+
+class SwitchServiceDeleteResponse(_message.Message):
+    __slots__ = ("switch",)
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    switch: _switch_pb2.Switch
+    def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+
+class SwitchServiceMigrateRequest(_message.Message):
+    __slots__ = ("old_switch", "new_switch")
+    OLD_SWITCH_FIELD_NUMBER: _ClassVar[int]
+    NEW_SWITCH_FIELD_NUMBER: _ClassVar[int]
+    old_switch: str
+    new_switch: str
+    def __init__(self, old_switch: _Optional[str] = ..., new_switch: _Optional[str] = ...) -> None: ...
+
+class SwitchServiceMigrateResponse(_message.Message):
+    __slots__ = ("switch",)
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    switch: _switch_pb2.Switch
+    def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+
+class SwitchServicePortRequest(_message.Message):
+    __slots__ = ("id", "nic_name", "status")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    NIC_NAME_FIELD_NUMBER: _ClassVar[int]
+    STATUS_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    nic_name: str
+    status: _switch_pb2.SwitchPortStatus
+    def __init__(self, id: _Optional[str] = ..., nic_name: _Optional[str] = ..., status: _Optional[_Union[_switch_pb2.SwitchPortStatus, str]] = ...) -> None: ...
+
+class SwitchServicePortResponse(_message.Message):
+    __slots__ = ("switch",)
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    switch: _switch_pb2.Switch
+    def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...

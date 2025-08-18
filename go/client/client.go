@@ -59,6 +59,7 @@ type (
 		Partition() apiv2connect.PartitionServiceClient
 		Project() apiv2connect.ProjectServiceClient
 		Size() apiv2connect.SizeServiceClient
+		Switch() apiv2connect.SwitchServiceClient
 		Tenant() apiv2connect.TenantServiceClient
 		Token() apiv2connect.TokenServiceClient
 		User() apiv2connect.UserServiceClient
@@ -76,6 +77,7 @@ type (
 		partitionservice  apiv2connect.PartitionServiceClient
 		projectservice    apiv2connect.ProjectServiceClient
 		sizeservice       apiv2connect.SizeServiceClient
+		switchservice     apiv2connect.SwitchServiceClient
 		tenantservice     apiv2connect.TenantServiceClient
 		tokenservice      apiv2connect.TokenServiceClient
 		userservice       apiv2connect.UserServiceClient
@@ -246,6 +248,11 @@ func (c *client) Apiv2() Apiv2 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		switchservice: apiv2connect.NewSwitchServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		tenantservice: apiv2connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -299,6 +306,9 @@ func (c *apiv2) Project() apiv2connect.ProjectServiceClient {
 }
 func (c *apiv2) Size() apiv2connect.SizeServiceClient {
 	return c.sizeservice
+}
+func (c *apiv2) Switch() apiv2connect.SwitchServiceClient {
+	return c.switchservice
 }
 func (c *apiv2) Tenant() apiv2connect.TenantServiceClient {
 	return c.tenantservice
