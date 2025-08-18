@@ -1129,6 +1129,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineProvisioningEventType"><span class="badge">E</span>MachineProvisioningEventType</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineState"><span class="badge">E</span>MachineState</a>
                 </li>
               
@@ -12133,7 +12137,7 @@ By default one ip address is acquired per network for the machine </p></td>
               
                 <tr>
                   <td>event</td>
-                  <td><a href="#string">string</a></td>
+                  <td><a href="#metalstack.api.v2.MachineProvisioningEventType">MachineProvisioningEventType</a></td>
                   <td></td>
                   <td><p>Event the event emitted by the machine </p></td>
                 </tr>
@@ -13012,6 +13016,89 @@ TODO add machine ips </p></td>
                 <td>MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM</td>
                 <td>2</td>
                 <td><p>MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.MachineProvisioningEventType">MachineProvisioningEventType</h3>
+        <p>MachineProvisioningEventType defines in which phase the machine actually is</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_ALIVE</td>
+                <td>1</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_CRASHED</td>
+                <td>2</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_CRASHED machine crashed</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING</td>
+                <td>3</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING machine is pxe booting into metal-hammer</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT</td>
+                <td>4</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT machine got a reboot instruction</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_PREPARING</td>
+                <td>5</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_PREPARING metal-hammer is preparing the machine</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING</td>
+                <td>6</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING metal-hammer registers machine at the apiserver</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_WAITING</td>
+                <td>7</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_WAITING machine is waiting for installation</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING</td>
+                <td>8</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING metal-hammer is installing the desired os</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL</td>
+                <td>9</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL metal-hammer completed installation and boots into target os</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME</td>
+                <td>10</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME machine is installed and phones home</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM</td>
+                <td>11</td>
+                <td><p>MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM machine is not allocated, but phones home</p></td>
               </tr>
             
           </tbody>

@@ -36,6 +36,21 @@ class MachineProvisioningEventState(int, metaclass=_enum_type_wrapper.EnumTypeWr
     MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP: _ClassVar[MachineProvisioningEventState]
     MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM: _ClassVar[MachineProvisioningEventState]
 
+class MachineProvisioningEventType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_ALIVE: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_CRASHED: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_PREPARING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_WAITING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME: _ClassVar[MachineProvisioningEventType]
+    MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM: _ClassVar[MachineProvisioningEventType]
+
 class MachineLiveliness(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
     MACHINE_LIVELINESS_UNSPECIFIED: _ClassVar[MachineLiveliness]
@@ -58,6 +73,18 @@ MACHINE_STATE_AVAILABLE: MachineState
 MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED: MachineProvisioningEventState
 MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP: MachineProvisioningEventState
 MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM: MachineProvisioningEventState
+MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_ALIVE: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_CRASHED: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_PREPARING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_WAITING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME: MachineProvisioningEventType
+MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM: MachineProvisioningEventType
 MACHINE_LIVELINESS_UNSPECIFIED: MachineLiveliness
 MACHINE_LIVELINESS_ALIVE: MachineLiveliness
 MACHINE_LIVELINESS_DEAD: MachineLiveliness
@@ -417,9 +444,9 @@ class MachineProvisioningEvent(_message.Message):
     EVENT_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     time: _timestamp_pb2.Timestamp
-    event: str
+    event: MachineProvisioningEventType
     message: str
-    def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., event: _Optional[str] = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., event: _Optional[_Union[MachineProvisioningEventType, str]] = ..., message: _Optional[str] = ...) -> None: ...
 
 class MachineVPN(_message.Message):
     __slots__ = ("control_plane_address", "auth_key", "connected")

@@ -557,12 +557,40 @@ enum MachineProvisioningEventState {
   MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2 [(enum_string_value) = "failed-reclaim"];
 }
 
+// MachineProvisioningEventType defines in which phase the machine actually is
+enum MachineProvisioningEventType {
+  // MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified
+  MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
+  // MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive
+  MACHINE_PROVISIONING_EVENT_TYPE_ALIVE = 1 [(enum_string_value) = "Alive"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_CRASHED machine crashed
+  MACHINE_PROVISIONING_EVENT_TYPE_CRASHED = 2 [(enum_string_value) = "Crashed"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING machine is pxe booting into metal-hammer
+  MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING = 3 [(enum_string_value) = "PXE Booting"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT machine got a reboot instruction
+  MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT = 4 [(enum_string_value) = "Planned Reboot"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PREPARING metal-hammer is preparing the machine
+  MACHINE_PROVISIONING_EVENT_TYPE_PREPARING = 5 [(enum_string_value) = "Preparing"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING metal-hammer registers machine at the apiserver
+  MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING = 6 [(enum_string_value) = "Registering"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_WAITING machine is waiting for installation
+  MACHINE_PROVISIONING_EVENT_TYPE_WAITING = 7 [(enum_string_value) = "Waiting"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING metal-hammer is installing the desired os
+  MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING = 8 [(enum_string_value) = "Installing"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL metal-hammer completed installation and boots into target os
+  MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL = 9 [(enum_string_value) = "Booting New Kernel"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME machine is installed and phones home
+  MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME = 10 [(enum_string_value) = "Phoned Home"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM machine is not allocated, but phones home
+  MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11 [(enum_string_value) = "Machine Reclaim"];
+}
+
 // MachineProvisioningEvent is a event which has occurred during provisioning
 message MachineProvisioningEvent {
   // Time the time that this event was received
   google.protobuf.Timestamp time = 1;
   // Event the event emitted by the machine
-  string event = 2;
+  MachineProvisioningEventType event = 2;
   // Message an additional message to add to the event
   string message = 3;
 }
