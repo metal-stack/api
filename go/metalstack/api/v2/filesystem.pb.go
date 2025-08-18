@@ -506,10 +506,10 @@ type FilesystemServiceMatchRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine to check
 	Machine string `protobuf:"bytes,1,opt,name=machine,proto3" json:"machine,omitempty"`
-	// FilesystemLayoutId to check
-	FilesystemLayoutId string `protobuf:"bytes,2,opt,name=filesystem_layout_id,json=filesystemLayoutId,proto3" json:"filesystem_layout_id,omitempty"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
+	// FilesystemLayout to check
+	FilesystemLayout string `protobuf:"bytes,2,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *FilesystemServiceMatchRequest) Reset() {
@@ -549,9 +549,9 @@ func (x *FilesystemServiceMatchRequest) GetMachine() string {
 	return ""
 }
 
-func (x *FilesystemServiceMatchRequest) GetFilesystemLayoutId() string {
+func (x *FilesystemServiceMatchRequest) GetFilesystemLayout() string {
 	if x != nil {
-		return x.FilesystemLayoutId
+		return x.FilesystemLayout
 	}
 	return ""
 }
@@ -1315,11 +1315,11 @@ const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\x04size\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04size\x12 \n" +
 	"\x05image\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05image\"\x81\x01\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05image\"|\n" +
 	"\x1dFilesystemServiceMatchRequest\x12\"\n" +
-	"\amachine\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\amachine\x12<\n" +
-	"\x14filesystem_layout_id\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x12filesystemLayoutId\"p\n" +
+	"\amachine\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\amachine\x127\n" +
+	"\x11filesystem_layout\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x10filesystemLayout\"p\n" +
 	"\x1cFilesystemServiceTryResponse\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"r\n" +
 	"\x1eFilesystemServiceMatchResponse\x12P\n" +

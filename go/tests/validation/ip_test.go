@@ -144,7 +144,7 @@ func TestValidateIP(t *testing.T) {
 			msg: &apiv2.IPServiceCreateRequest{
 				Network:   "Internet",
 				Project:   "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
-				MachineId: proto.String("57cd8678-9ff0-4f8c-a34a-43d8f16caacf"),
+				Machine: proto.String("57cd8678-9ff0-4f8c-a34a-43d8f16caacf"),
 			},
 			wantErr: false,
 		},

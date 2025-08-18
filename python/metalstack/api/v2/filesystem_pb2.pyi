@@ -92,12 +92,12 @@ class FilesystemServiceTryRequest(_message.Message):
     def __init__(self, size: _Optional[str] = ..., image: _Optional[str] = ...) -> None: ...
 
 class FilesystemServiceMatchRequest(_message.Message):
-    __slots__ = ("machine", "filesystem_layout_id")
+    __slots__ = ("machine", "filesystem_layout")
     MACHINE_FIELD_NUMBER: _ClassVar[int]
-    FILESYSTEM_LAYOUT_ID_FIELD_NUMBER: _ClassVar[int]
+    FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
     machine: str
-    filesystem_layout_id: str
-    def __init__(self, machine: _Optional[str] = ..., filesystem_layout_id: _Optional[str] = ...) -> None: ...
+    filesystem_layout: str
+    def __init__(self, machine: _Optional[str] = ..., filesystem_layout: _Optional[str] = ...) -> None: ...
 
 class FilesystemServiceTryResponse(_message.Message):
     __slots__ = ("filesystem_layout",)
