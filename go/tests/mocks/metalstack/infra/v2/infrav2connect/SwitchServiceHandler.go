@@ -47,6 +47,36 @@ func (_m *SwitchServiceHandler) Register(_a0 context.Context, _a1 *connect.Reque
 	return r0, r1
 }
 
+// ReportBGPRoutes provides a mock function with given fields: _a0, _a1
+func (_m *SwitchServiceHandler) ReportBGPRoutes(_a0 context.Context, _a1 *connect.Request[infrav2.SwitchServiceReportBGPRoutesRequest]) (*connect.Response[infrav2.SwitchServiceReportBGPRoutesResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ReportBGPRoutes")
+	}
+
+	var r0 *connect.Response[infrav2.SwitchServiceReportBGPRoutesResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceReportBGPRoutesRequest]) (*connect.Response[infrav2.SwitchServiceReportBGPRoutesResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceReportBGPRoutesRequest]) *connect.Response[infrav2.SwitchServiceReportBGPRoutesResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[infrav2.SwitchServiceReportBGPRoutesResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.SwitchServiceReportBGPRoutesRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // NewSwitchServiceHandler creates a new instance of SwitchServiceHandler. It also registers a testing interface on the mock and a cleanup function to assert the mocks expectations.
 // The first argument is typically a *testing.T value.
 func NewSwitchServiceHandler(t interface {

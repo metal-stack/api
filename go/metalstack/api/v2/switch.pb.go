@@ -251,6 +251,71 @@ func (SwitchPortStatus) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{3}
 }
 
+// SwitchType represents the role of a switch
+type SwitchType int32
+
+const (
+	// SWITCH_TYPE_UNSPECIFIED is not specified
+	SwitchType_SWITCH_TYPE_UNSPECIFIED SwitchType = 0
+	// SWITCH_TYPE_LEAF is a leaf switch
+	SwitchType_SWITCH_TYPE_LEAF SwitchType = 1
+	// SWITCH_TYPE_EXIT is an exit switch
+	SwitchType_SWITCH_TYPE_EXIT SwitchType = 2
+	// SWITCH_TYPE_SPINE is a spine switch
+	SwitchType_SWITCH_TYPE_SPINE SwitchType = 3
+	// SWITCH_TYPE_MGMTLEAF is a special type of leaf used only for management tasks
+	SwitchType_SWITCH_TYPE_MGMTLEAF SwitchType = 4
+	// SWITCH_TYPE_MGMTSPINE is a special type of spine used only for management tasks
+	SwitchType_SWITCH_TYPE_MGMTSPINE SwitchType = 5
+)
+
+// Enum value maps for SwitchType.
+var (
+	SwitchType_name = map[int32]string{
+		0: "SWITCH_TYPE_UNSPECIFIED",
+		1: "SWITCH_TYPE_LEAF",
+		2: "SWITCH_TYPE_EXIT",
+		3: "SWITCH_TYPE_SPINE",
+		4: "SWITCH_TYPE_MGMTLEAF",
+		5: "SWITCH_TYPE_MGMTSPINE",
+	}
+	SwitchType_value = map[string]int32{
+		"SWITCH_TYPE_UNSPECIFIED": 0,
+		"SWITCH_TYPE_LEAF":        1,
+		"SWITCH_TYPE_EXIT":        2,
+		"SWITCH_TYPE_SPINE":       3,
+		"SWITCH_TYPE_MGMTLEAF":    4,
+		"SWITCH_TYPE_MGMTSPINE":   5,
+	}
+)
+
+func (x SwitchType) Enum() *SwitchType {
+	p := new(SwitchType)
+	*p = x
+	return p
+}
+
+func (x SwitchType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SwitchType) Descriptor() protoreflect.EnumDescriptor {
+	return file_metalstack_api_v2_switch_proto_enumTypes[4].Descriptor()
+}
+
+func (SwitchType) Type() protoreflect.EnumType {
+	return &file_metalstack_api_v2_switch_proto_enumTypes[4]
+}
+
+func (x SwitchType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SwitchType.Descriptor instead.
+func (SwitchType) EnumDescriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{4}
+}
+
 // Switch represents a network switch
 type Switch struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -262,6 +327,8 @@ type Switch struct {
 	RackId *string `protobuf:"bytes,3,opt,name=rack_id,json=rackId,proto3,oneof" json:"rack_id,omitempty"`
 	// Partition the switch belongs to
 	Partition string `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"`
+	// Type is the role of the switch
+	Type SwitchType `protobuf:"varint,5,opt,name=type,proto3,enum=metalstack.api.v2.SwitchType" json:"type,omitempty"`
 	// Replace mode is used to mark a switch ready for replacement
 	ReplaceMode SwitchReplaceMode `protobuf:"varint,6,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode" json:"replace_mode,omitempty"`
 	// Management IP is the switch's IP for management access
@@ -332,6 +399,13 @@ func (x *Switch) GetPartition() string {
 		return x.Partition
 	}
 	return ""
+}
+
+func (x *Switch) GetType() SwitchType {
+	if x != nil {
+		return x.Type
+	}
+	return SwitchType_SWITCH_TYPE_UNSPECIFIED
 }
 
 func (x *Switch) GetReplaceMode() SwitchReplaceMode {
@@ -692,7 +766,7 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"\xde\x03\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"\x9b\x04\n" +
 	"\x06Switch\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12,\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
@@ -700,7 +774,8 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\arack_id\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x06rackId\x88\x01\x01\x12(\n" +
 	"\tpartition\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\x12Q\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\x12;\n" +
+	"\x04type\x18\x05 \x01(\x0e2\x1d.metalstack.api.v2.SwitchTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12Q\n" +
 	"\freplace_mode\x18\x06 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
 	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x123\n" +
 	"\x0fmanagement_user\x18\b \x01(\tB\n" +
@@ -771,7 +846,15 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x10SwitchPortStatus\x12\"\n" +
 	"\x1eSWITCH_PORT_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x15SWITCH_PORT_STATUS_UP\x10\x01\x1a\x06\x82\xb2\x19\x02up\x12%\n" +
-	"\x17SWITCH_PORT_STATUS_DOWN\x10\x02\x1a\b\x82\xb2\x19\x04downB\xc1\x01\n" +
+	"\x17SWITCH_PORT_STATUS_DOWN\x10\x02\x1a\b\x82\xb2\x19\x04down*\xdd\x01\n" +
+	"\n" +
+	"SwitchType\x12\x1b\n" +
+	"\x17SWITCH_TYPE_UNSPECIFIED\x10\x00\x12\x1e\n" +
+	"\x10SWITCH_TYPE_LEAF\x10\x01\x1a\b\x82\xb2\x19\x04leaf\x12\x1e\n" +
+	"\x10SWITCH_TYPE_EXIT\x10\x02\x1a\b\x82\xb2\x19\x04exit\x12 \n" +
+	"\x11SWITCH_TYPE_SPINE\x10\x03\x1a\t\x82\xb2\x19\x05spine\x12&\n" +
+	"\x14SWITCH_TYPE_MGMTLEAF\x10\x04\x1a\f\x82\xb2\x19\bmgmtleaf\x12(\n" +
+	"\x15SWITCH_TYPE_MGMTSPINE\x10\x05\x1a\r\x82\xb2\x19\tmgmtspineB\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vSwitchProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (
@@ -786,34 +869,36 @@ func file_metalstack_api_v2_switch_proto_rawDescGZIP() []byte {
 	return file_metalstack_api_v2_switch_proto_rawDescData
 }
 
-var file_metalstack_api_v2_switch_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_metalstack_api_v2_switch_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
 var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_metalstack_api_v2_switch_proto_goTypes = []any{
 	(BGPState)(0),               // 0: metalstack.api.v2.BGPState
 	(SwitchReplaceMode)(0),      // 1: metalstack.api.v2.SwitchReplaceMode
 	(SwitchOSVendor)(0),         // 2: metalstack.api.v2.SwitchOSVendor
 	(SwitchPortStatus)(0),       // 3: metalstack.api.v2.SwitchPortStatus
-	(*Switch)(nil),              // 4: metalstack.api.v2.Switch
-	(*SwitchOS)(nil),            // 5: metalstack.api.v2.SwitchOS
-	(*SwitchNic)(nil),           // 6: metalstack.api.v2.SwitchNic
-	(*BGPFilter)(nil),           // 7: metalstack.api.v2.BGPFilter
-	(*SwitchBGPPortState)(nil),  // 8: metalstack.api.v2.SwitchBGPPortState
-	(*durationpb.Duration)(nil), // 9: google.protobuf.Duration
+	(SwitchType)(0),             // 4: metalstack.api.v2.SwitchType
+	(*Switch)(nil),              // 5: metalstack.api.v2.Switch
+	(*SwitchOS)(nil),            // 6: metalstack.api.v2.SwitchOS
+	(*SwitchNic)(nil),           // 7: metalstack.api.v2.SwitchNic
+	(*BGPFilter)(nil),           // 8: metalstack.api.v2.BGPFilter
+	(*SwitchBGPPortState)(nil),  // 9: metalstack.api.v2.SwitchBGPPortState
+	(*durationpb.Duration)(nil), // 10: google.protobuf.Duration
 }
 var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
-	1, // 0: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
-	6, // 1: metalstack.api.v2.Switch.switch_nics:type_name -> metalstack.api.v2.SwitchNic
-	2, // 2: metalstack.api.v2.SwitchOS.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
-	3, // 3: metalstack.api.v2.SwitchNic.actual:type_name -> metalstack.api.v2.SwitchPortStatus
-	7, // 4: metalstack.api.v2.SwitchNic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
-	8, // 5: metalstack.api.v2.SwitchNic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
-	0, // 6: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
-	9, // 7: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Duration
-	8, // [8:8] is the sub-list for method output_type
-	8, // [8:8] is the sub-list for method input_type
-	8, // [8:8] is the sub-list for extension type_name
-	8, // [8:8] is the sub-list for extension extendee
-	0, // [0:8] is the sub-list for field type_name
+	4,  // 0: metalstack.api.v2.Switch.type:type_name -> metalstack.api.v2.SwitchType
+	1,  // 1: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
+	7,  // 2: metalstack.api.v2.Switch.switch_nics:type_name -> metalstack.api.v2.SwitchNic
+	2,  // 3: metalstack.api.v2.SwitchOS.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
+	3,  // 4: metalstack.api.v2.SwitchNic.actual:type_name -> metalstack.api.v2.SwitchPortStatus
+	8,  // 5: metalstack.api.v2.SwitchNic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
+	9,  // 6: metalstack.api.v2.SwitchNic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
+	0,  // 7: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
+	10, // 8: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Duration
+	9,  // [9:9] is the sub-list for method output_type
+	9,  // [9:9] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_switch_proto_init() }
@@ -829,7 +914,7 @@ func file_metalstack_api_v2_switch_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_switch_proto_rawDesc), len(file_metalstack_api_v2_switch_proto_rawDesc)),
-			NumEnums:      4,
+			NumEnums:      5,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,

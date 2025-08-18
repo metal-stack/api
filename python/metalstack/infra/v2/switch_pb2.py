@@ -22,11 +22,12 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
 from metalstack.api.v2 import switch_pb2 as metalstack_dot_api_dot_v2_dot_switch__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n metalstack/infra/v2/switch.proto\x12\x13metalstack.infra.v2\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"Q\n\x1cSwitchServiceRegisterRequest\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"R\n\x1dSwitchServiceRegisterResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch2\x8e\x01\n\rSwitchService\x12}\n\x08Register\x12\x31.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a\x32.metalstack.infra.v2.SwitchServiceRegisterResponse\"\n\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x42\xcf\x01\n\x17\x63om.metalstack.infra.v2B\x0bSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n metalstack/infra/v2/switch.proto\x12\x13metalstack.infra.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"Q\n\x1cSwitchServiceRegisterRequest\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"R\n\x1dSwitchServiceRegisterResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"\x8e\x01\n#SwitchServiceReportBGPRoutesRequest\x12)\n\tswitch_id\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\x08switchId\x12<\n\nbgp_routes\x18\x02 \x03(\x0b\x32\x1d.metalstack.infra.v2.BGPRouteR\tbgpRoutes\"&\n$SwitchServiceReportBGPRoutesResponse\"c\n\x08\x42GPRoute\x12\x12\n\x04\x63idr\x18\x01 \x01(\tR\x04\x63idr:C\xbaH@\x1a>\n\x04\x63idr\x12\x1e\x63idr must be a valid ip prefix\x1a\x16this.cidr.isIpPrefix()2\xa3\x02\n\rSwitchService\x12}\n\x08Register\x12\x31.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a\x32.metalstack.infra.v2.SwitchServiceRegisterResponse\"\n\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12\x92\x01\n\x0fReportBGPRoutes\x12\x38.metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest\x1a\x39.metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse\"\n\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x42\xcf\x01\n\x17\x63om.metalstack.infra.v2B\x0bSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,12 +35,24 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.infra.v2.switch_
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.infra.v2B\013SwitchProtoP\001Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\242\002\003MIX\252\002\023Metalstack.Infra.V2\312\002\023Metalstack\\Infra\\V2\342\002\037Metalstack\\Infra\\V2\\GPBMetadata\352\002\025Metalstack::Infra::V2'
+  _globals['_SWITCHSERVICEREPORTBGPROUTESREQUEST'].fields_by_name['switch_id']._loaded_options = None
+  _globals['_SWITCHSERVICEREPORTBGPROUTESREQUEST'].fields_by_name['switch_id']._serialized_options = b'\272H\tr\007\020\002\030\200\001h\001'
+  _globals['_BGPROUTE']._loaded_options = None
+  _globals['_BGPROUTE']._serialized_options = b'\272H@\032>\n\004cidr\022\036cidr must be a valid ip prefix\032\026this.cidr.isIpPrefix()'
   _globals['_SWITCHSERVICE'].methods_by_name['Register']._loaded_options = None
   _globals['_SWITCHSERVICE'].methods_by_name['Register']._serialized_options = b'\340\363\030\002\352\363\030\002\001\002'
-  _globals['_SWITCHSERVICEREGISTERREQUEST']._serialized_start=121
-  _globals['_SWITCHSERVICEREGISTERREQUEST']._serialized_end=202
-  _globals['_SWITCHSERVICEREGISTERRESPONSE']._serialized_start=204
-  _globals['_SWITCHSERVICEREGISTERRESPONSE']._serialized_end=286
-  _globals['_SWITCHSERVICE']._serialized_start=289
-  _globals['_SWITCHSERVICE']._serialized_end=431
+  _globals['_SWITCHSERVICE'].methods_by_name['ReportBGPRoutes']._loaded_options = None
+  _globals['_SWITCHSERVICE'].methods_by_name['ReportBGPRoutes']._serialized_options = b'\340\363\030\002\352\363\030\002\001\002'
+  _globals['_SWITCHSERVICEREGISTERREQUEST']._serialized_start=150
+  _globals['_SWITCHSERVICEREGISTERREQUEST']._serialized_end=231
+  _globals['_SWITCHSERVICEREGISTERRESPONSE']._serialized_start=233
+  _globals['_SWITCHSERVICEREGISTERRESPONSE']._serialized_end=315
+  _globals['_SWITCHSERVICEREPORTBGPROUTESREQUEST']._serialized_start=318
+  _globals['_SWITCHSERVICEREPORTBGPROUTESREQUEST']._serialized_end=460
+  _globals['_SWITCHSERVICEREPORTBGPROUTESRESPONSE']._serialized_start=462
+  _globals['_SWITCHSERVICEREPORTBGPROUTESRESPONSE']._serialized_end=500
+  _globals['_BGPROUTE']._serialized_start=502
+  _globals['_BGPROUTE']._serialized_end=601
+  _globals['_SWITCHSERVICE']._serialized_start=604
+  _globals['_SWITCHSERVICE']._serialized_end=895
 # @@protoc_insertion_point(module_scope)

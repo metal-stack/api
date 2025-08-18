@@ -16,6 +16,7 @@ import metalstack.infra.v2.switch_pb2 as metalstack_dot_infra_dot_v2_dot_switch_
 
 class SwitchService(Protocol):
     async def Register(self, req: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse: ...
+    async def ReportBGPRoutes(self, req: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse: ...
 
 
 class SwitchServiceServer(ConnecpyServer):
@@ -31,6 +32,14 @@ class SwitchServiceServer(ConnecpyServer):
                 output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse,
                 allowed_methods=("POST",),
             ),
+            "ReportBGPRoutes": Endpoint[metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest, metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse](
+                service_name="SwitchService",
+                name="ReportBGPRoutes",
+                function=getattr(service, "ReportBGPRoutes"),
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse,
+                allowed_methods=("POST",),
+            ),
         }
 
     def serviceName(self):
@@ -39,6 +48,7 @@ class SwitchServiceServer(ConnecpyServer):
 
 class SwitchServiceSync(Protocol):
     def Register(self, req: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse: ...
+    def ReportBGPRoutes(self, req: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse: ...
 
 
 class SwitchServiceServerSync(ConnecpyServer):
@@ -52,6 +62,14 @@ class SwitchServiceServerSync(ConnecpyServer):
                 function=getattr(service, "Register"),
                 input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest,
                 output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse,
+                allowed_methods=("POST",),
+            ),
+            "ReportBGPRoutes": Endpoint[metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest, metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse](
+                service_name="SwitchService",
+                name="ReportBGPRoutes",
+                function=getattr(service, "ReportBGPRoutes"),
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -79,6 +97,24 @@ class SwitchServiceClient(ConnecpyClient):
             **kwargs,
         )
 
+    def ReportBGPRoutes(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/metalstack.infra.v2.SwitchService/ReportBGPRoutes",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse,
+            method=method,
+            **kwargs,
+        )
+
 
 class AsyncSwitchServiceClient(AsyncConnecpyClient):
     async def Register(
@@ -96,6 +132,26 @@ class AsyncSwitchServiceClient(AsyncConnecpyClient):
             ctx=ctx,
             request=request,
             response_class=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def ReportBGPRoutes(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/metalstack.infra.v2.SwitchService/ReportBGPRoutes",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse,
             method=method,
             session=session,
             **kwargs,
