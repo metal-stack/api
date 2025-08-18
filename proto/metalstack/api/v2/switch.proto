@@ -61,8 +61,8 @@ message Switch {
     min_len: 2
     max_len: 128
   }];
-  // RackId if the switch resides in a rack.
-  optional string rack_id = 3 [(buf.validate.field).string = {
+  // Rack ID if the switch resides in a rack
+  optional string rack = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];

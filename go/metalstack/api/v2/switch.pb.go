@@ -442,8 +442,8 @@ type Switch struct {
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Description of the switch.
 	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	// RackId if the switch resides in a rack.
-	RackId *string `protobuf:"bytes,3,opt,name=rack_id,json=rackId,proto3,oneof" json:"rack_id,omitempty"`
+	// Rack ID if the switch resides in a rack
+	Rack *string `protobuf:"bytes,3,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
 	// Partition the switch belongs to.
 	Partition string `protobuf:"bytes,4,opt,name=partition,proto3" json:"partition,omitempty"`
 	// ReplaceMode is used to mark a switch ready for replacement.
@@ -506,9 +506,9 @@ func (x *Switch) GetDescription() string {
 	return ""
 }
 
-func (x *Switch) GetRackId() string {
-	if x != nil && x.RackId != nil {
-		return *x.RackId
+func (x *Switch) GetRack() string {
+	if x != nil && x.Rack != nil {
+		return *x.Rack
 	}
 	return ""
 }
@@ -1030,13 +1030,13 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x18SwitchServiceListRequest\x124\n" +
 	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n" +
 	"\x19SwitchServiceListResponse\x125\n" +
-	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xf8\x03\n" +
+	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xf0\x03\n" +
 	"\x06Switch\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12,\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vdescription\x12(\n" +
-	"\arack_id\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x06rackId\x88\x01\x01\x12(\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vdescription\x12#\n" +
+	"\x04rack\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04rack\x88\x01\x01\x12(\n" +
 	"\tpartition\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\x12Q\n" +
 	"\freplace_mode\x18\x05 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
@@ -1047,9 +1047,8 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0econsoleCommand\x12*\n" +
 	"\x04nics\x18\t \x03(\v2\x16.metalstack.api.v2.NicR\x04nics\x12+\n" +
 	"\x02os\x18\n" +
-	" \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02osB\n" +
-	"\n" +
-	"\b_rack_id\"\xaf\x01\n" +
+	" \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02osB\a\n" +
+	"\x05_rack\"\xaf\x01\n" +
 	"\bSwitchOS\x12C\n" +
 	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06vendor\x12$\n" +
 	"\aversion\x18\x02 \x01(\tB\n" +
