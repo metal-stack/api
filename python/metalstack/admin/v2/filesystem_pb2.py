@@ -27,7 +27,7 @@ from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common
 from metalstack.api.v2 import filesystem_pb2 as metalstack_dot_api_dot_v2_dot_filesystem__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\"r\n\x1e\x46ilesystemServiceCreateRequest\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"s\n\x1f\x46ilesystemServiceCreateResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"r\n\x1e\x46ilesystemServiceUpdateRequest\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"s\n\x1f\x46ilesystemServiceUpdateResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"<\n\x1e\x46ilesystemServiceDeleteRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"s\n\x1f\x46ilesystemServiceDeleteResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout2\x93\x03\n\x11\x46ilesystemService\x12~\n\x06\x43reate\x12\x33.metalstack.admin.v2.FilesystemServiceCreateRequest\x1a\x34.metalstack.admin.v2.FilesystemServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12~\n\x06Update\x12\x33.metalstack.admin.v2.FilesystemServiceUpdateRequest\x1a\x34.metalstack.admin.v2.FilesystemServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12~\n\x06\x44\x65lete\x12\x33.metalstack.admin.v2.FilesystemServiceDeleteRequest\x1a\x34.metalstack.admin.v2.FilesystemServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x42\xd3\x01\n\x17\x63om.metalstack.admin.v2B\x0f\x46ilesystemProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\"r\n\x1e\x46ilesystemServiceCreateRequest\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"s\n\x1f\x46ilesystemServiceCreateResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"\x8e\x01\n\x1e\x46ilesystemServiceUpdateRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\x12P\n\x11\x66ilesystem_layout\x18\x02 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"s\n\x1f\x46ilesystemServiceUpdateResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"<\n\x1e\x46ilesystemServiceDeleteRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"s\n\x1f\x46ilesystemServiceDeleteResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout2\x93\x03\n\x11\x46ilesystemService\x12~\n\x06\x43reate\x12\x33.metalstack.admin.v2.FilesystemServiceCreateRequest\x1a\x34.metalstack.admin.v2.FilesystemServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12~\n\x06Update\x12\x33.metalstack.admin.v2.FilesystemServiceUpdateRequest\x1a\x34.metalstack.admin.v2.FilesystemServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12~\n\x06\x44\x65lete\x12\x33.metalstack.admin.v2.FilesystemServiceDeleteRequest\x1a\x34.metalstack.admin.v2.FilesystemServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x42\xd3\x01\n\x17\x63om.metalstack.admin.v2B\x0f\x46ilesystemProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,6 +35,8 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.admin.v2.filesys
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.admin.v2B\017FilesystemProtoP\001Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\242\002\003MAX\252\002\023Metalstack.Admin.V2\312\002\023Metalstack\\Admin\\V2\342\002\037Metalstack\\Admin\\V2\\GPBMetadata\352\002\025Metalstack::Admin::V2'
+  _globals['_FILESYSTEMSERVICEUPDATEREQUEST'].fields_by_name['id']._loaded_options = None
+  _globals['_FILESYSTEMSERVICEUPDATEREQUEST'].fields_by_name['id']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
   _globals['_FILESYSTEMSERVICEDELETEREQUEST'].fields_by_name['id']._loaded_options = None
   _globals['_FILESYSTEMSERVICEDELETEREQUEST'].fields_by_name['id']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
   _globals['_FILESYSTEMSERVICE'].methods_by_name['Create']._loaded_options = None
@@ -47,14 +49,14 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_FILESYSTEMSERVICECREATEREQUEST']._serialized_end=272
   _globals['_FILESYSTEMSERVICECREATERESPONSE']._serialized_start=274
   _globals['_FILESYSTEMSERVICECREATERESPONSE']._serialized_end=389
-  _globals['_FILESYSTEMSERVICEUPDATEREQUEST']._serialized_start=391
-  _globals['_FILESYSTEMSERVICEUPDATEREQUEST']._serialized_end=505
-  _globals['_FILESYSTEMSERVICEUPDATERESPONSE']._serialized_start=507
-  _globals['_FILESYSTEMSERVICEUPDATERESPONSE']._serialized_end=622
-  _globals['_FILESYSTEMSERVICEDELETEREQUEST']._serialized_start=624
-  _globals['_FILESYSTEMSERVICEDELETEREQUEST']._serialized_end=684
-  _globals['_FILESYSTEMSERVICEDELETERESPONSE']._serialized_start=686
-  _globals['_FILESYSTEMSERVICEDELETERESPONSE']._serialized_end=801
-  _globals['_FILESYSTEMSERVICE']._serialized_start=804
-  _globals['_FILESYSTEMSERVICE']._serialized_end=1207
+  _globals['_FILESYSTEMSERVICEUPDATEREQUEST']._serialized_start=392
+  _globals['_FILESYSTEMSERVICEUPDATEREQUEST']._serialized_end=534
+  _globals['_FILESYSTEMSERVICEUPDATERESPONSE']._serialized_start=536
+  _globals['_FILESYSTEMSERVICEUPDATERESPONSE']._serialized_end=651
+  _globals['_FILESYSTEMSERVICEDELETEREQUEST']._serialized_start=653
+  _globals['_FILESYSTEMSERVICEDELETEREQUEST']._serialized_end=713
+  _globals['_FILESYSTEMSERVICEDELETERESPONSE']._serialized_start=715
+  _globals['_FILESYSTEMSERVICEDELETERESPONSE']._serialized_end=830
+  _globals['_FILESYSTEMSERVICE']._serialized_start=833
+  _globals['_FILESYSTEMSERVICE']._serialized_end=1236
 # @@protoc_insertion_point(module_scope)

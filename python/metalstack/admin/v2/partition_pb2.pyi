@@ -16,10 +16,12 @@ class PartitionServiceCreateRequest(_message.Message):
     def __init__(self, partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ...) -> None: ...
 
 class PartitionServiceUpdateRequest(_message.Message):
-    __slots__ = ("partition",)
+    __slots__ = ("id", "partition")
+    ID_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
+    id: str
     partition: _partition_pb2.Partition
-    def __init__(self, partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ...) -> None: ...
 
 class PartitionServiceDeleteRequest(_message.Message):
     __slots__ = ("id",)

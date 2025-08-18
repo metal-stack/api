@@ -646,6 +646,14 @@ var file_metalstack_api_v2_common_proto_extTypes = []protoimpl.ExtensionInfo{
 		Tag:           "bytes,52000,opt,name=enum_string_value",
 		Filename:      "metalstack/api/v2/common.proto",
 	},
+	{
+		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         53000,
+		Name:          "metalstack.api.v2.treat_as_id",
+		Tag:           "varint,53000,opt,name=treat_as_id",
+		Filename:      "metalstack/api/v2/common.proto",
+	},
 }
 
 // Extension fields to descriptorpb.MethodOptions.
@@ -682,6 +690,14 @@ var (
 	//
 	// optional string enum_string_value = 52000;
 	E_EnumStringValue = &file_metalstack_api_v2_common_proto_extTypes[6]
+)
+
+// Extension fields to descriptorpb.FieldOptions.
+var (
+	// TreatAsId if defined this field is treated as primary key of this entity
+	//
+	// optional bool treat_as_id = 53000;
+	E_TreatAsId = &file_metalstack_api_v2_common_proto_extTypes[7]
 )
 
 var File_metalstack_api_v2_common_proto protoreflect.FileDescriptor
@@ -752,7 +768,8 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\bauditing\x12\x1e.google.protobuf.MethodOptions\x18\xbc\x8e\x03 \x01(\x0e2\x1b.metalstack.api.v2.AuditingR\bauditing:_\n" +
 	"\vinfra_roles\x12\x1e.google.protobuf.MethodOptions\x18\xbd\x8e\x03 \x03(\x0e2\x1c.metalstack.api.v2.InfraRoleR\n" +
 	"infraRoles:O\n" +
-	"\x11enum_string_value\x12!.google.protobuf.EnumValueOptions\x18\xa0\x96\x03 \x01(\tR\x0fenumStringValueB\xc1\x01\n" +
+	"\x11enum_string_value\x12!.google.protobuf.EnumValueOptions\x18\xa0\x96\x03 \x01(\tR\x0fenumStringValue:?\n" +
+	"\vtreat_as_id\x12\x1d.google.protobuf.FieldOptions\x18\x88\x9e\x03 \x01(\bR\ttreatAsIdB\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vCommonProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (
@@ -784,6 +801,7 @@ var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(*timestamppb.Timestamp)(nil),         // 11: google.protobuf.Timestamp
 	(*descriptorpb.MethodOptions)(nil),    // 12: google.protobuf.MethodOptions
 	(*descriptorpb.EnumValueOptions)(nil), // 13: google.protobuf.EnumValueOptions
+	(*descriptorpb.FieldOptions)(nil),     // 14: google.protobuf.FieldOptions
 }
 var file_metalstack_api_v2_common_proto_depIdxs = []int32{
 	10, // 0: metalstack.api.v2.Labels.labels:type_name -> metalstack.api.v2.Labels.LabelsEntry
@@ -798,16 +816,17 @@ var file_metalstack_api_v2_common_proto_depIdxs = []int32{
 	12, // 9: metalstack.api.v2.auditing:extendee -> google.protobuf.MethodOptions
 	12, // 10: metalstack.api.v2.infra_roles:extendee -> google.protobuf.MethodOptions
 	13, // 11: metalstack.api.v2.enum_string_value:extendee -> google.protobuf.EnumValueOptions
-	0,  // 12: metalstack.api.v2.tenant_roles:type_name -> metalstack.api.v2.TenantRole
-	1,  // 13: metalstack.api.v2.project_roles:type_name -> metalstack.api.v2.ProjectRole
-	2,  // 14: metalstack.api.v2.admin_roles:type_name -> metalstack.api.v2.AdminRole
-	4,  // 15: metalstack.api.v2.visibility:type_name -> metalstack.api.v2.Visibility
-	5,  // 16: metalstack.api.v2.auditing:type_name -> metalstack.api.v2.Auditing
-	3,  // 17: metalstack.api.v2.infra_roles:type_name -> metalstack.api.v2.InfraRole
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	12, // [12:18] is the sub-list for extension type_name
-	5,  // [5:12] is the sub-list for extension extendee
+	14, // 12: metalstack.api.v2.treat_as_id:extendee -> google.protobuf.FieldOptions
+	0,  // 13: metalstack.api.v2.tenant_roles:type_name -> metalstack.api.v2.TenantRole
+	1,  // 14: metalstack.api.v2.project_roles:type_name -> metalstack.api.v2.ProjectRole
+	2,  // 15: metalstack.api.v2.admin_roles:type_name -> metalstack.api.v2.AdminRole
+	4,  // 16: metalstack.api.v2.visibility:type_name -> metalstack.api.v2.Visibility
+	5,  // 17: metalstack.api.v2.auditing:type_name -> metalstack.api.v2.Auditing
+	3,  // 18: metalstack.api.v2.infra_roles:type_name -> metalstack.api.v2.InfraRole
+	19, // [19:19] is the sub-list for method output_type
+	19, // [19:19] is the sub-list for method input_type
+	13, // [13:19] is the sub-list for extension type_name
+	5,  // [5:13] is the sub-list for extension extendee
 	0,  // [0:5] is the sub-list for field type_name
 }
 
@@ -825,7 +844,7 @@ func file_metalstack_api_v2_common_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_common_proto_rawDesc), len(file_metalstack_api_v2_common_proto_rawDesc)),
 			NumEnums:      6,
 			NumMessages:   5,
-			NumExtensions: 7,
+			NumExtensions: 8,
 			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_common_proto_goTypes,

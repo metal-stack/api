@@ -72,8 +72,10 @@ func (x *PartitionServiceCreateRequest) GetPartition() *v2.Partition {
 // PartitionServiceUpdateRequest is the request payload for a partition update request
 type PartitionServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// ID of the partition to update
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Partition the partition
-	Partition     *v2.Partition `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
+	Partition     *v2.Partition `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -106,6 +108,13 @@ func (x *PartitionServiceUpdateRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use PartitionServiceUpdateRequest.ProtoReflect.Descriptor instead.
 func (*PartitionServiceUpdateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_partition_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *PartitionServiceUpdateRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *PartitionServiceUpdateRequest) GetPartition() *v2.Partition {
@@ -544,9 +553,11 @@ const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\n" +
 	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\"[\n" +
 	"\x1dPartitionServiceCreateRequest\x12:\n" +
-	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"[\n" +
-	"\x1dPartitionServiceUpdateRequest\x12:\n" +
-	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\";\n" +
+	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"w\n" +
+	"\x1dPartitionServiceUpdateRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12:\n" +
+	"\tpartition\x18\x02 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\";\n" +
 	"\x1dPartitionServiceDeleteRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"\\\n" +
