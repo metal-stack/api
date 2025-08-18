@@ -6,54 +6,127 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/switch.proto";
 
-// SwitchService serves switch related functions
+// SwitchService serves switch related functions.
 service SwitchService {
-  // Update a switch
+  // Update a switch.
   rpc Update(SwitchServiceUpdateRequest) returns (SwitchServiceUpdateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // Delete a switch.
+  rpc Delete(SwitchServiceDeleteRequest) returns (SwitchServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // Migrate a switch.
+  rpc Migrate(SwitchServiceMigrateRequest) returns (SwitchServiceMigrateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // Port set the port status of a switch port.
+  rpc Port(SwitchServicePortRequest) returns (SwitchServicePortResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
   }
 }
 
-// SwitchServiceUpdateRequest
+// SwitchServiceUpdateRequest.
 message SwitchServiceUpdateRequest {
-  // ID of the switch
+  // ID of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     min_len: 2
     max_len: 128
   }];
-  // Description of the switch
+  // Description of the switch.
   string description = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Rack ID if the switch resides in a rack
+  // Rack ID if the switch resides in a rack.
   optional string rack_id = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Replace mode is used to mark a switch ready for replacement
+  // Replace mode is used to mark a switch ready for replacement.
   metalstack.api.v2.SwitchReplaceMode replace_mode = 4 [(buf.validate.field).enum.defined_only = true];
-  // Management IP is the switch's IP for management access
+  // Management IP is the switch's IP for management access.
   string management_ip = 5 [(buf.validate.field).string.ip = true];
-  // Management user is the user name to use for management access
+  // Management user is the user name to use for management access.
   string management_user = 6 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Console command is the command for accessing the switch's console
+  // Console command is the command for accessing the switch's console.
   string console_command = 7 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Nics are the front panel ports of the switch
+  // Nics are the front panel ports of the switch.
   repeated metalstack.api.v2.Nic nics = 8;
-  // Switch OS is the OS running on the switch
+  // Switch OS is the OS running on the switch.
   metalstack.api.v2.SwitchOS os = 9;
 }
 
-// SwitchServiceUpdateResponse
+// SwitchServiceUpdateResponse.
 message SwitchServiceUpdateResponse {
-  // Switch that was updated
+  // Switch that was updated.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceDeleteRequest.
+message SwitchServiceDeleteRequest {
+  // Id of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// SwitchServiceDeleteResponse.
+message SwitchServiceDeleteResponse {
+  // Switch that has been deleted.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceMigrateRequest.
+message SwitchServiceMigrateRequest {
+  // OldSwitch which to migrate away from.
+  string old_switch = 1 [(buf.validate.field).string = {
+    hostname: true
+    min_len: 2
+    max_len: 128
+  }];
+  // NewSwitch which to migrate to.
+  string new_switch = 2 [(buf.validate.field).string = {
+    hostname: true
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// SwitchServiceMigrateResponse.
+message SwitchServiceMigrateResponse {
+  // Switch that was migrated to.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServicePortRequest.
+message SwitchServicePortRequest {
+  // Id of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    min_len: 2
+    max_len: 128
+  }];
+  // NicName of the port whose status should be changed.
+  string nic_name = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Status that the port should have.
+  metalstack.api.v2.SwitchPortStatus status = 3;
+}
+
+// SwitchServicePortResponse.
+message SwitchServicePortResponse {
+  // Switch after the port status toggle..
   metalstack.api.v2.Switch switch = 1;
 }
