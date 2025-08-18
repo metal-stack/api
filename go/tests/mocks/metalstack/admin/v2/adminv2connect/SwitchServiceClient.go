@@ -46,6 +46,66 @@ func (_m *SwitchServiceClient) Delete(_a0 context.Context, _a1 *connect.Request[
 	return r0, r1
 }
 
+// Get provides a mock function with given fields: _a0, _a1
+func (_m *SwitchServiceClient) Get(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceGetRequest]) (*connect.Response[adminv2.SwitchServiceGetResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Get")
+	}
+
+	var r0 *connect.Response[adminv2.SwitchServiceGetResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceGetRequest]) (*connect.Response[adminv2.SwitchServiceGetResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceGetRequest]) *connect.Response[adminv2.SwitchServiceGetResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServiceGetResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServiceGetRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// List provides a mock function with given fields: _a0, _a1
+func (_m *SwitchServiceClient) List(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceListRequest]) (*connect.Response[adminv2.SwitchServiceListResponse], error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for List")
+	}
+
+	var r0 *connect.Response[adminv2.SwitchServiceListResponse]
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceListRequest]) (*connect.Response[adminv2.SwitchServiceListResponse], error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceListRequest]) *connect.Response[adminv2.SwitchServiceListResponse]); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServiceListResponse])
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServiceListRequest]) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // Migrate provides a mock function with given fields: _a0, _a1
 func (_m *SwitchServiceClient) Migrate(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceMigrateRequest]) (*connect.Response[adminv2.SwitchServiceMigrateResponse], error) {
 	ret := _m.Called(_a0, _a1)

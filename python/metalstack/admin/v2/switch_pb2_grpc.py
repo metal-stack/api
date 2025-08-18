@@ -15,6 +15,16 @@ class SwitchServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.Get = channel.unary_unary(
+                '/metalstack.admin.v2.SwitchService/Get',
+                request_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest.SerializeToString,
+                response_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse.FromString,
+                _registered_method=True)
+        self.List = channel.unary_unary(
+                '/metalstack.admin.v2.SwitchService/List',
+                request_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest.SerializeToString,
+                response_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse.FromString,
+                _registered_method=True)
         self.Update = channel.unary_unary(
                 '/metalstack.admin.v2.SwitchService/Update',
                 request_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest.SerializeToString,
@@ -40,6 +50,20 @@ class SwitchServiceStub(object):
 class SwitchServiceServicer(object):
     """SwitchService serves switch related functions.
     """
+
+    def Get(self, request, context):
+        """Get a switch by ID.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def List(self, request, context):
+        """List switches.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def Update(self, request, context):
         """Update a switch.
@@ -72,6 +96,16 @@ class SwitchServiceServicer(object):
 
 def add_SwitchServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'Get': grpc.unary_unary_rpc_method_handler(
+                    servicer.Get,
+                    request_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest.FromString,
+                    response_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse.SerializeToString,
+            ),
+            'List': grpc.unary_unary_rpc_method_handler(
+                    servicer.List,
+                    request_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest.FromString,
+                    response_serializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse.SerializeToString,
+            ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
                     request_deserializer=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest.FromString,
@@ -103,6 +137,60 @@ def add_SwitchServiceServicer_to_server(servicer, server):
 class SwitchService(object):
     """SwitchService serves switch related functions.
     """
+
+    @staticmethod
+    def Get(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/metalstack.admin.v2.SwitchService/Get',
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest.SerializeToString,
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def List(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/metalstack.admin.v2.SwitchService/List',
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest.SerializeToString,
+            metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
 
     @staticmethod
     def Update(request,

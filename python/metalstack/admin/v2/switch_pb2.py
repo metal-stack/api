@@ -27,7 +27,7 @@ from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common
 from metalstack.api.v2 import switch_pb2 as metalstack_dot_api_dot_v2_dot_switch__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n metalstack/admin/v2/switch.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"\xe2\x03\n\x1aSwitchServiceUpdateRequest\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\x02id\x12,\n\x0b\x64\x65scription\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0b\x64\x65scription\x12(\n\x07rack_id\x18\x03 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x00R\x06rackId\x88\x01\x01\x12Q\n\x0creplace_mode\x18\x04 \x01(\x0e\x32$.metalstack.api.v2.SwitchReplaceModeB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x0breplaceMode\x12,\n\rmanagement_ip\x18\x05 \x01(\tB\x07\xbaH\x04r\x02p\x01R\x0cmanagementIp\x12\x33\n\x0fmanagement_user\x18\x06 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0emanagementUser\x12\x33\n\x0f\x63onsole_command\x18\x07 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0e\x63onsoleCommand\x12*\n\x04nics\x18\x08 \x03(\x0b\x32\x16.metalstack.api.v2.NicR\x04nics\x12+\n\x02os\x18\t \x01(\x0b\x32\x1b.metalstack.api.v2.SwitchOSR\x02osB\n\n\x08_rack_id\"P\n\x1bSwitchServiceUpdateResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\":\n\x1aSwitchServiceDeleteRequest\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\x02id\"P\n\x1bSwitchServiceDeleteResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"w\n\x1bSwitchServiceMigrateRequest\x12+\n\nold_switch\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\toldSwitch\x12+\n\nnew_switch\x18\x02 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\tnewSwitch\"Q\n\x1cSwitchServiceMigrateResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"\x9c\x01\n\x18SwitchServicePortRequest\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\x02id\x12%\n\x08nic_name\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x07nicName\x12;\n\x06status\x18\x03 \x01(\x0e\x32#.metalstack.api.v2.SwitchPortStatusR\x06status\"N\n\x19SwitchServicePortResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch2\xdc\x03\n\rSwitchService\x12r\n\x06Update\x12/.metalstack.admin.v2.SwitchServiceUpdateRequest\x1a\x30.metalstack.admin.v2.SwitchServiceUpdateResponse\"\x05\xd2\xf3\x18\x01\x01\x12r\n\x06\x44\x65lete\x12/.metalstack.admin.v2.SwitchServiceDeleteRequest\x1a\x30.metalstack.admin.v2.SwitchServiceDeleteResponse\"\x05\xd2\xf3\x18\x01\x01\x12u\n\x07Migrate\x12\x30.metalstack.admin.v2.SwitchServiceMigrateRequest\x1a\x31.metalstack.admin.v2.SwitchServiceMigrateResponse\"\x05\xd2\xf3\x18\x01\x01\x12l\n\x04Port\x12-.metalstack.admin.v2.SwitchServicePortRequest\x1a..metalstack.admin.v2.SwitchServicePortResponse\"\x05\xd2\xf3\x18\x01\x01\x42\xcf\x01\n\x17\x63om.metalstack.admin.v2B\x0bSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n metalstack/admin/v2/switch.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"7\n\x17SwitchServiceGetRequest\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\x02id\"M\n\x18SwitchServiceGetResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"P\n\x18SwitchServiceListRequest\x12\x34\n\x05query\x18\x01 \x01(\x0b\x32\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n\x19SwitchServiceListResponse\x12\x35\n\x08switches\x18\x01 \x03(\x0b\x32\x19.metalstack.api.v2.SwitchR\x08switches\"\xe2\x03\n\x1aSwitchServiceUpdateRequest\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\x02id\x12,\n\x0b\x64\x65scription\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0b\x64\x65scription\x12(\n\x07rack_id\x18\x03 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x00R\x06rackId\x88\x01\x01\x12Q\n\x0creplace_mode\x18\x04 \x01(\x0e\x32$.metalstack.api.v2.SwitchReplaceModeB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x0breplaceMode\x12,\n\rmanagement_ip\x18\x05 \x01(\tB\x07\xbaH\x04r\x02p\x01R\x0cmanagementIp\x12\x33\n\x0fmanagement_user\x18\x06 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0emanagementUser\x12\x33\n\x0f\x63onsole_command\x18\x07 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0e\x63onsoleCommand\x12*\n\x04nics\x18\x08 \x03(\x0b\x32\x16.metalstack.api.v2.NicR\x04nics\x12+\n\x02os\x18\t \x01(\x0b\x32\x1b.metalstack.api.v2.SwitchOSR\x02osB\n\n\x08_rack_id\"P\n\x1bSwitchServiceUpdateResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\":\n\x1aSwitchServiceDeleteRequest\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\x02id\"P\n\x1bSwitchServiceDeleteResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"w\n\x1bSwitchServiceMigrateRequest\x12+\n\nold_switch\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\toldSwitch\x12+\n\nnew_switch\x18\x02 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\tnewSwitch\"Q\n\x1cSwitchServiceMigrateResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"\x9c\x01\n\x18SwitchServicePortRequest\x12\x1c\n\x02id\x18\x01 \x01(\tB\x0c\xbaH\tr\x07\x10\x02\x18\x80\x01h\x01R\x02id\x12%\n\x08nic_name\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x07nicName\x12;\n\x06status\x18\x03 \x01(\x0e\x32#.metalstack.api.v2.SwitchPortStatusR\x06status\"N\n\x19SwitchServicePortResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch2\xbf\x05\n\rSwitchService\x12n\n\x03Get\x12,.metalstack.admin.v2.SwitchServiceGetRequest\x1a-.metalstack.admin.v2.SwitchServiceGetResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12q\n\x04List\x12-.metalstack.admin.v2.SwitchServiceListRequest\x1a..metalstack.admin.v2.SwitchServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12r\n\x06Update\x12/.metalstack.admin.v2.SwitchServiceUpdateRequest\x1a\x30.metalstack.admin.v2.SwitchServiceUpdateResponse\"\x05\xd2\xf3\x18\x01\x01\x12r\n\x06\x44\x65lete\x12/.metalstack.admin.v2.SwitchServiceDeleteRequest\x1a\x30.metalstack.admin.v2.SwitchServiceDeleteResponse\"\x05\xd2\xf3\x18\x01\x01\x12u\n\x07Migrate\x12\x30.metalstack.admin.v2.SwitchServiceMigrateRequest\x1a\x31.metalstack.admin.v2.SwitchServiceMigrateResponse\"\x05\xd2\xf3\x18\x01\x01\x12l\n\x04Port\x12-.metalstack.admin.v2.SwitchServicePortRequest\x1a..metalstack.admin.v2.SwitchServicePortResponse\"\x05\xd2\xf3\x18\x01\x01\x42\xcf\x01\n\x17\x63om.metalstack.admin.v2B\x0bSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,6 +35,8 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.admin.v2.switch_
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.admin.v2B\013SwitchProtoP\001Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\242\002\003MAX\252\002\023Metalstack.Admin.V2\312\002\023Metalstack\\Admin\\V2\342\002\037Metalstack\\Admin\\V2\\GPBMetadata\352\002\025Metalstack::Admin::V2'
+  _globals['_SWITCHSERVICEGETREQUEST'].fields_by_name['id']._loaded_options = None
+  _globals['_SWITCHSERVICEGETREQUEST'].fields_by_name['id']._serialized_options = b'\272H\tr\007\020\002\030\200\001h\001'
   _globals['_SWITCHSERVICEUPDATEREQUEST'].fields_by_name['id']._loaded_options = None
   _globals['_SWITCHSERVICEUPDATEREQUEST'].fields_by_name['id']._serialized_options = b'\272H\tr\007\020\002\030\200\001h\001'
   _globals['_SWITCHSERVICEUPDATEREQUEST'].fields_by_name['description']._loaded_options = None
@@ -59,6 +61,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_SWITCHSERVICEPORTREQUEST'].fields_by_name['id']._serialized_options = b'\272H\tr\007\020\002\030\200\001h\001'
   _globals['_SWITCHSERVICEPORTREQUEST'].fields_by_name['nic_name']._loaded_options = None
   _globals['_SWITCHSERVICEPORTREQUEST'].fields_by_name['nic_name']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
+  _globals['_SWITCHSERVICE'].methods_by_name['Get']._loaded_options = None
+  _globals['_SWITCHSERVICE'].methods_by_name['Get']._serialized_options = b'\322\363\030\002\001\002\340\363\030\002'
+  _globals['_SWITCHSERVICE'].methods_by_name['List']._loaded_options = None
+  _globals['_SWITCHSERVICE'].methods_by_name['List']._serialized_options = b'\322\363\030\002\001\002\340\363\030\002'
   _globals['_SWITCHSERVICE'].methods_by_name['Update']._loaded_options = None
   _globals['_SWITCHSERVICE'].methods_by_name['Update']._serialized_options = b'\322\363\030\001\001'
   _globals['_SWITCHSERVICE'].methods_by_name['Delete']._loaded_options = None
@@ -67,22 +73,30 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_SWITCHSERVICE'].methods_by_name['Migrate']._serialized_options = b'\322\363\030\001\001'
   _globals['_SWITCHSERVICE'].methods_by_name['Port']._loaded_options = None
   _globals['_SWITCHSERVICE'].methods_by_name['Port']._serialized_options = b'\322\363\030\001\001'
-  _globals['_SWITCHSERVICEUPDATEREQUEST']._serialized_start=151
-  _globals['_SWITCHSERVICEUPDATEREQUEST']._serialized_end=633
-  _globals['_SWITCHSERVICEUPDATERESPONSE']._serialized_start=635
-  _globals['_SWITCHSERVICEUPDATERESPONSE']._serialized_end=715
-  _globals['_SWITCHSERVICEDELETEREQUEST']._serialized_start=717
-  _globals['_SWITCHSERVICEDELETEREQUEST']._serialized_end=775
-  _globals['_SWITCHSERVICEDELETERESPONSE']._serialized_start=777
-  _globals['_SWITCHSERVICEDELETERESPONSE']._serialized_end=857
-  _globals['_SWITCHSERVICEMIGRATEREQUEST']._serialized_start=859
-  _globals['_SWITCHSERVICEMIGRATEREQUEST']._serialized_end=978
-  _globals['_SWITCHSERVICEMIGRATERESPONSE']._serialized_start=980
-  _globals['_SWITCHSERVICEMIGRATERESPONSE']._serialized_end=1061
-  _globals['_SWITCHSERVICEPORTREQUEST']._serialized_start=1064
-  _globals['_SWITCHSERVICEPORTREQUEST']._serialized_end=1220
-  _globals['_SWITCHSERVICEPORTRESPONSE']._serialized_start=1222
-  _globals['_SWITCHSERVICEPORTRESPONSE']._serialized_end=1300
-  _globals['_SWITCHSERVICE']._serialized_start=1303
-  _globals['_SWITCHSERVICE']._serialized_end=1779
+  _globals['_SWITCHSERVICEGETREQUEST']._serialized_start=150
+  _globals['_SWITCHSERVICEGETREQUEST']._serialized_end=205
+  _globals['_SWITCHSERVICEGETRESPONSE']._serialized_start=207
+  _globals['_SWITCHSERVICEGETRESPONSE']._serialized_end=284
+  _globals['_SWITCHSERVICELISTREQUEST']._serialized_start=286
+  _globals['_SWITCHSERVICELISTREQUEST']._serialized_end=366
+  _globals['_SWITCHSERVICELISTRESPONSE']._serialized_start=368
+  _globals['_SWITCHSERVICELISTRESPONSE']._serialized_end=450
+  _globals['_SWITCHSERVICEUPDATEREQUEST']._serialized_start=453
+  _globals['_SWITCHSERVICEUPDATEREQUEST']._serialized_end=935
+  _globals['_SWITCHSERVICEUPDATERESPONSE']._serialized_start=937
+  _globals['_SWITCHSERVICEUPDATERESPONSE']._serialized_end=1017
+  _globals['_SWITCHSERVICEDELETEREQUEST']._serialized_start=1019
+  _globals['_SWITCHSERVICEDELETEREQUEST']._serialized_end=1077
+  _globals['_SWITCHSERVICEDELETERESPONSE']._serialized_start=1079
+  _globals['_SWITCHSERVICEDELETERESPONSE']._serialized_end=1159
+  _globals['_SWITCHSERVICEMIGRATEREQUEST']._serialized_start=1161
+  _globals['_SWITCHSERVICEMIGRATEREQUEST']._serialized_end=1280
+  _globals['_SWITCHSERVICEMIGRATERESPONSE']._serialized_start=1282
+  _globals['_SWITCHSERVICEMIGRATERESPONSE']._serialized_end=1363
+  _globals['_SWITCHSERVICEPORTREQUEST']._serialized_start=1366
+  _globals['_SWITCHSERVICEPORTREQUEST']._serialized_end=1522
+  _globals['_SWITCHSERVICEPORTRESPONSE']._serialized_start=1524
+  _globals['_SWITCHSERVICEPORTRESPONSE']._serialized_end=1602
+  _globals['_SWITCHSERVICE']._serialized_start=1605
+  _globals['_SWITCHSERVICE']._serialized_end=2308
 # @@protoc_insertion_point(module_scope)

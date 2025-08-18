@@ -1350,22 +1350,6 @@
                   <a href="#metalstack.api.v2.SwitchQuery"><span class="badge">M</span>SwitchQuery</a>
                 </li>
               
-                <li>
-                  <a href="#metalstack.api.v2.SwitchServiceGetRequest"><span class="badge">M</span>SwitchServiceGetRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.SwitchServiceGetResponse"><span class="badge">M</span>SwitchServiceGetResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.SwitchServiceListRequest"><span class="badge">M</span>SwitchServiceListRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.SwitchServiceListResponse"><span class="badge">M</span>SwitchServiceListResponse</a>
-                </li>
-              
               
                 <li>
                   <a href="#metalstack.api.v2.BGPState"><span class="badge">E</span>BGPState</a>
@@ -1385,10 +1369,6 @@
               
               
               
-                <li>
-                  <a href="#metalstack.api.v2.SwitchService"><span class="badge">S</span>SwitchService</a>
-                </li>
-              
             </ul>
           </li>
         
@@ -1403,6 +1383,22 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.SwitchServiceDeleteResponse"><span class="badge">M</span>SwitchServiceDeleteResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceGetRequest"><span class="badge">M</span>SwitchServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceGetResponse"><span class="badge">M</span>SwitchServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceListRequest"><span class="badge">M</span>SwitchServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceListResponse"><span class="badge">M</span>SwitchServiceListResponse</a>
                 </li>
               
                 <li>
@@ -14843,102 +14839,6 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
 
         
       
-        <h3 id="metalstack.api.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</h3>
-        <p>SwitchServiceGetRequest.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Id of the switch to get. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</h3>
-        <p>SwitchServiceGetResponse.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>switch</td>
-                  <td><a href="#metalstack.api.v2.Switch">Switch</a></td>
-                  <td></td>
-                  <td><p>Switch that was requested. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.SwitchServiceListRequest">SwitchServiceListRequest</h3>
-        <p>SwitchServiceListRequest.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>query</td>
-                  <td><a href="#metalstack.api.v2.SwitchQuery">SwitchQuery</a></td>
-                  <td></td>
-                  <td><p>Query to filter the results. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.SwitchServiceListResponse">SwitchServiceListResponse</h3>
-        <p>SwitchServiceListResponse.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>switches</td>
-                  <td><a href="#metalstack.api.v2.Switch">Switch</a></td>
-                  <td>repeated</td>
-                  <td><p>Switches that match the request query. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
 
       
         <h3 id="metalstack.api.v2.BGPState">BGPState</h3>
@@ -15085,32 +14985,6 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
       
 
       
-        <h3 id="metalstack.api.v2.SwitchService">SwitchService</h3>
-        <p>SwitchService serves switch related informational functions.</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>Get</td>
-                <td><a href="#metalstack.api.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</a></td>
-                <td><a href="#metalstack.api.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</a></td>
-                <td><p>Get a switch by ID.</p></td>
-              </tr>
-            
-              <tr>
-                <td>List</td>
-                <td><a href="#metalstack.api.v2.SwitchServiceListRequest">SwitchServiceListRequest</a></td>
-                <td><a href="#metalstack.api.v2.SwitchServiceListResponse">SwitchServiceListResponse</a></td>
-                <td><p>List switches.</p></td>
-              </tr>
-            
-          </tbody>
-        </table>
-
-        
     
       
       <div class="file-heading">
@@ -15158,6 +15032,102 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
                   <td></td>
                   <td><p>Switch that has been deleted. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</h3>
+        <p>SwitchServiceGetRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the switch to get. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</h3>
+        <p>SwitchServiceGetResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switch</td>
+                  <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
+                  <td></td>
+                  <td><p>Switch that was requested. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceListRequest">SwitchServiceListRequest</h3>
+        <p>SwitchServiceListRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.SwitchQuery">metalstack.api.v2.SwitchQuery</a></td>
+                  <td></td>
+                  <td><p>Query to filter the results. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceListResponse">SwitchServiceListResponse</h3>
+        <p>SwitchServiceListResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switches</td>
+                  <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
+                  <td>repeated</td>
+                  <td><p>Switches that match the request query. </p></td>
                 </tr>
               
             </tbody>
@@ -15401,6 +15371,20 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
           </thead>
           <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</a></td>
+                <td><p>Get a switch by ID.</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceListRequest">SwitchServiceListRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceListResponse">SwitchServiceListResponse</a></td>
+                <td><p>List switches.</p></td>
+              </tr>
             
               <tr>
                 <td>Update</td>

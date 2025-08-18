@@ -15,6 +15,8 @@ import metalstack.admin.v2.switch_pb2 as metalstack_dot_admin_dot_v2_dot_switch_
 
 
 class SwitchService(Protocol):
+    async def Get(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse: ...
+    async def List(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse: ...
     async def Update(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse: ...
     async def Delete(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse: ...
     async def Migrate(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse: ...
@@ -26,6 +28,22 @@ class SwitchServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.SwitchService"
         self._endpoints = {
+            "Get": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse](
+                service_name="SwitchService",
+                name="Get",
+                function=getattr(service, "Get"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse,
+                allowed_methods=("POST",),
+            ),
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse](
+                service_name="SwitchService",
+                name="List",
+                function=getattr(service, "List"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse,
+                allowed_methods=("POST",),
+            ),
             "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse](
                 service_name="SwitchService",
                 name="Update",
@@ -65,6 +83,8 @@ class SwitchServiceServer(ConnecpyServer):
 
 
 class SwitchServiceSync(Protocol):
+    def Get(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse: ...
+    def List(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse: ...
     def Update(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse: ...
     def Delete(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceDeleteResponse: ...
     def Migrate(self, req: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest, ctx: ServiceContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse: ...
@@ -76,6 +96,22 @@ class SwitchServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.admin.v2.SwitchService"
         self._endpoints = {
+            "Get": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse](
+                service_name="SwitchService",
+                name="Get",
+                function=getattr(service, "Get"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse,
+                allowed_methods=("POST",),
+            ),
+            "List": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse](
+                service_name="SwitchService",
+                name="List",
+                function=getattr(service, "List"),
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse,
+                allowed_methods=("POST",),
+            ),
             "Update": Endpoint[metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest, metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateResponse](
                 service_name="SwitchService",
                 name="Update",
@@ -115,6 +151,42 @@ class SwitchServiceServerSync(ConnecpyServer):
 
 
 class SwitchServiceClient(ConnecpyClient):
+    def Get(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/Get",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse,
+            method=method,
+            **kwargs,
+        )
+
+    def List(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse:
+        method = "POST"
+        return self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/List",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse,
+            method=method,
+            **kwargs,
+        )
+
     def Update(
         self,
         request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest,
@@ -189,6 +261,46 @@ class SwitchServiceClient(ConnecpyClient):
 
 
 class AsyncSwitchServiceClient(AsyncConnecpyClient):
+    async def Get(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/Get",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
+    async def List(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListRequest,
+        *,
+        ctx: Optional[ClientContext] = None,
+        server_path_prefix: str = "",
+        session: Union[httpx.AsyncClient, None] = None,
+        **kwargs,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse:
+        method = "POST"
+        return await self._make_request(
+            url=f"{server_path_prefix}/metalstack.admin.v2.SwitchService/List",
+            ctx=ctx,
+            request=request,
+            response_class=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceListResponse,
+            method=method,
+            session=session,
+            **kwargs,
+        )
+
     async def Update(
         self,
         request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceUpdateRequest,

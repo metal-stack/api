@@ -56,30 +56,6 @@ SWITCH_PORT_STATUS_UNSPECIFIED: SwitchPortStatus
 SWITCH_PORT_STATUS_UP: SwitchPortStatus
 SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
 
-class SwitchServiceGetRequest(_message.Message):
-    __slots__ = ("id",)
-    ID_FIELD_NUMBER: _ClassVar[int]
-    id: str
-    def __init__(self, id: _Optional[str] = ...) -> None: ...
-
-class SwitchServiceGetResponse(_message.Message):
-    __slots__ = ("switch",)
-    SWITCH_FIELD_NUMBER: _ClassVar[int]
-    switch: Switch
-    def __init__(self, switch: _Optional[_Union[Switch, _Mapping]] = ...) -> None: ...
-
-class SwitchServiceListRequest(_message.Message):
-    __slots__ = ("query",)
-    QUERY_FIELD_NUMBER: _ClassVar[int]
-    query: SwitchQuery
-    def __init__(self, query: _Optional[_Union[SwitchQuery, _Mapping]] = ...) -> None: ...
-
-class SwitchServiceListResponse(_message.Message):
-    __slots__ = ("switches",)
-    SWITCHES_FIELD_NUMBER: _ClassVar[int]
-    switches: _containers.RepeatedCompositeFieldContainer[Switch]
-    def __init__(self, switches: _Optional[_Iterable[_Union[Switch, _Mapping]]] = ...) -> None: ...
-
 class Switch(_message.Message):
     __slots__ = ("id", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os")
     ID_FIELD_NUMBER: _ClassVar[int]

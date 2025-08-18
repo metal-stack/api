@@ -251,190 +251,6 @@ func (SwitchPortStatus) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{3}
 }
 
-// SwitchServiceGetRequest.
-type SwitchServiceGetRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the switch to get.
-	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SwitchServiceGetRequest) Reset() {
-	*x = SwitchServiceGetRequest{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SwitchServiceGetRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SwitchServiceGetRequest) ProtoMessage() {}
-
-func (x *SwitchServiceGetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SwitchServiceGetRequest.ProtoReflect.Descriptor instead.
-func (*SwitchServiceGetRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *SwitchServiceGetRequest) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-// SwitchServiceGetResponse.
-type SwitchServiceGetResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switch that was requested.
-	Switch        *Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SwitchServiceGetResponse) Reset() {
-	*x = SwitchServiceGetResponse{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SwitchServiceGetResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SwitchServiceGetResponse) ProtoMessage() {}
-
-func (x *SwitchServiceGetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SwitchServiceGetResponse.ProtoReflect.Descriptor instead.
-func (*SwitchServiceGetResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *SwitchServiceGetResponse) GetSwitch() *Switch {
-	if x != nil {
-		return x.Switch
-	}
-	return nil
-}
-
-// SwitchServiceListRequest.
-type SwitchServiceListRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query to filter the results.
-	Query         *SwitchQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SwitchServiceListRequest) Reset() {
-	*x = SwitchServiceListRequest{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SwitchServiceListRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SwitchServiceListRequest) ProtoMessage() {}
-
-func (x *SwitchServiceListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SwitchServiceListRequest.ProtoReflect.Descriptor instead.
-func (*SwitchServiceListRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *SwitchServiceListRequest) GetQuery() *SwitchQuery {
-	if x != nil {
-		return x.Query
-	}
-	return nil
-}
-
-// SwitchServiceListResponse.
-type SwitchServiceListResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switches that match the request query.
-	Switches      []*Switch `protobuf:"bytes,1,rep,name=switches,proto3" json:"switches,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SwitchServiceListResponse) Reset() {
-	*x = SwitchServiceListResponse{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SwitchServiceListResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SwitchServiceListResponse) ProtoMessage() {}
-
-func (x *SwitchServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SwitchServiceListResponse.ProtoReflect.Descriptor instead.
-func (*SwitchServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *SwitchServiceListResponse) GetSwitches() []*Switch {
-	if x != nil {
-		return x.Switches
-	}
-	return nil
-}
-
 // Switch represents a network switch.
 type Switch struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -464,7 +280,7 @@ type Switch struct {
 
 func (x *Switch) Reset() {
 	*x = Switch{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[4]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -476,7 +292,7 @@ func (x *Switch) String() string {
 func (*Switch) ProtoMessage() {}
 
 func (x *Switch) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[4]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -489,7 +305,7 @@ func (x *Switch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Switch.ProtoReflect.Descriptor instead.
 func (*Switch) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{4}
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Switch) GetId() string {
@@ -577,7 +393,7 @@ type SwitchOS struct {
 
 func (x *SwitchOS) Reset() {
 	*x = SwitchOS{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[5]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -589,7 +405,7 @@ func (x *SwitchOS) String() string {
 func (*SwitchOS) ProtoMessage() {}
 
 func (x *SwitchOS) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[5]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -602,7 +418,7 @@ func (x *SwitchOS) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwitchOS.ProtoReflect.Descriptor instead.
 func (*SwitchOS) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{5}
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *SwitchOS) GetVendor() SwitchOSVendor {
@@ -649,7 +465,7 @@ type Nic struct {
 
 func (x *Nic) Reset() {
 	*x = Nic{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[6]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +477,7 @@ func (x *Nic) String() string {
 func (*Nic) ProtoMessage() {}
 
 func (x *Nic) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[6]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +490,7 @@ func (x *Nic) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Nic.ProtoReflect.Descriptor instead.
 func (*Nic) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{6}
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Nic) GetName() string {
@@ -739,7 +555,7 @@ type BGPFilter struct {
 
 func (x *BGPFilter) Reset() {
 	*x = BGPFilter{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[7]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -751,7 +567,7 @@ func (x *BGPFilter) String() string {
 func (*BGPFilter) ProtoMessage() {}
 
 func (x *BGPFilter) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[7]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -764,7 +580,7 @@ func (x *BGPFilter) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BGPFilter.ProtoReflect.Descriptor instead.
 func (*BGPFilter) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{7}
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *BGPFilter) GetCidrs() []string {
@@ -804,7 +620,7 @@ type SwitchBGPPortState struct {
 
 func (x *SwitchBGPPortState) Reset() {
 	*x = SwitchBGPPortState{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[8]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -816,7 +632,7 @@ func (x *SwitchBGPPortState) String() string {
 func (*SwitchBGPPortState) ProtoMessage() {}
 
 func (x *SwitchBGPPortState) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[8]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -829,7 +645,7 @@ func (x *SwitchBGPPortState) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwitchBGPPortState.ProtoReflect.Descriptor instead.
 func (*SwitchBGPPortState) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{8}
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SwitchBGPPortState) GetNeighbor() string {
@@ -894,7 +710,7 @@ type NicState struct {
 
 func (x *NicState) Reset() {
 	*x = NicState{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[9]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -906,7 +722,7 @@ func (x *NicState) String() string {
 func (*NicState) ProtoMessage() {}
 
 func (x *NicState) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[9]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -919,7 +735,7 @@ func (x *NicState) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NicState.ProtoReflect.Descriptor instead.
 func (*NicState) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{9}
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *NicState) GetDesired() SwitchPortStatus {
@@ -955,7 +771,7 @@ type SwitchQuery struct {
 
 func (x *SwitchQuery) Reset() {
 	*x = SwitchQuery{}
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[10]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -967,7 +783,7 @@ func (x *SwitchQuery) String() string {
 func (*SwitchQuery) ProtoMessage() {}
 
 func (x *SwitchQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_switch_proto_msgTypes[10]
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -980,7 +796,7 @@ func (x *SwitchQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwitchQuery.ProtoReflect.Descriptor instead.
 func (*SwitchQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{10}
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *SwitchQuery) GetId() string {
@@ -1022,15 +838,7 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"7\n" +
-	"\x17SwitchServiceGetRequest\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\"M\n" +
-	"\x18SwitchServiceGetResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"P\n" +
-	"\x18SwitchServiceListRequest\x124\n" +
-	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n" +
-	"\x19SwitchServiceListResponse\x125\n" +
-	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xf0\x03\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"\xf0\x03\n" +
 	"\x06Switch\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12,\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
@@ -1129,10 +937,7 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x10SwitchPortStatus\x12\"\n" +
 	"\x1eSWITCH_PORT_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x15SWITCH_PORT_STATUS_UP\x10\x01\x1a\x06\x82\xb2\x19\x02up\x12%\n" +
-	"\x17SWITCH_PORT_STATUS_DOWN\x10\x02\x1a\b\x82\xb2\x19\x04down2\xe6\x01\n" +
-	"\rSwitchService\x12h\n" +
-	"\x03Get\x12*.metalstack.api.v2.SwitchServiceGetRequest\x1a+.metalstack.api.v2.SwitchServiceGetResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12k\n" +
-	"\x04List\x12+.metalstack.api.v2.SwitchServiceListRequest\x1a,.metalstack.api.v2.SwitchServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02B\xc1\x01\n" +
+	"\x17SWITCH_PORT_STATUS_DOWN\x10\x02\x1a\b\x82\xb2\x19\x04downB\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vSwitchProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (
@@ -1148,50 +953,39 @@ func file_metalstack_api_v2_switch_proto_rawDescGZIP() []byte {
 }
 
 var file_metalstack_api_v2_switch_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_metalstack_api_v2_switch_proto_goTypes = []any{
-	(BGPState)(0),                     // 0: metalstack.api.v2.BGPState
-	(SwitchReplaceMode)(0),            // 1: metalstack.api.v2.SwitchReplaceMode
-	(SwitchOSVendor)(0),               // 2: metalstack.api.v2.SwitchOSVendor
-	(SwitchPortStatus)(0),             // 3: metalstack.api.v2.SwitchPortStatus
-	(*SwitchServiceGetRequest)(nil),   // 4: metalstack.api.v2.SwitchServiceGetRequest
-	(*SwitchServiceGetResponse)(nil),  // 5: metalstack.api.v2.SwitchServiceGetResponse
-	(*SwitchServiceListRequest)(nil),  // 6: metalstack.api.v2.SwitchServiceListRequest
-	(*SwitchServiceListResponse)(nil), // 7: metalstack.api.v2.SwitchServiceListResponse
-	(*Switch)(nil),                    // 8: metalstack.api.v2.Switch
-	(*SwitchOS)(nil),                  // 9: metalstack.api.v2.SwitchOS
-	(*Nic)(nil),                       // 10: metalstack.api.v2.Nic
-	(*BGPFilter)(nil),                 // 11: metalstack.api.v2.BGPFilter
-	(*SwitchBGPPortState)(nil),        // 12: metalstack.api.v2.SwitchBGPPortState
-	(*NicState)(nil),                  // 13: metalstack.api.v2.NicState
-	(*SwitchQuery)(nil),               // 14: metalstack.api.v2.SwitchQuery
-	(*durationpb.Duration)(nil),       // 15: google.protobuf.Duration
+	(BGPState)(0),               // 0: metalstack.api.v2.BGPState
+	(SwitchReplaceMode)(0),      // 1: metalstack.api.v2.SwitchReplaceMode
+	(SwitchOSVendor)(0),         // 2: metalstack.api.v2.SwitchOSVendor
+	(SwitchPortStatus)(0),       // 3: metalstack.api.v2.SwitchPortStatus
+	(*Switch)(nil),              // 4: metalstack.api.v2.Switch
+	(*SwitchOS)(nil),            // 5: metalstack.api.v2.SwitchOS
+	(*Nic)(nil),                 // 6: metalstack.api.v2.Nic
+	(*BGPFilter)(nil),           // 7: metalstack.api.v2.BGPFilter
+	(*SwitchBGPPortState)(nil),  // 8: metalstack.api.v2.SwitchBGPPortState
+	(*NicState)(nil),            // 9: metalstack.api.v2.NicState
+	(*SwitchQuery)(nil),         // 10: metalstack.api.v2.SwitchQuery
+	(*durationpb.Duration)(nil), // 11: google.protobuf.Duration
 }
 var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
-	8,  // 0: metalstack.api.v2.SwitchServiceGetResponse.switch:type_name -> metalstack.api.v2.Switch
-	14, // 1: metalstack.api.v2.SwitchServiceListRequest.query:type_name -> metalstack.api.v2.SwitchQuery
-	8,  // 2: metalstack.api.v2.SwitchServiceListResponse.switches:type_name -> metalstack.api.v2.Switch
-	1,  // 3: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
-	10, // 4: metalstack.api.v2.Switch.nics:type_name -> metalstack.api.v2.Nic
-	9,  // 5: metalstack.api.v2.Switch.os:type_name -> metalstack.api.v2.SwitchOS
-	2,  // 6: metalstack.api.v2.SwitchOS.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
-	13, // 7: metalstack.api.v2.Nic.state:type_name -> metalstack.api.v2.NicState
-	11, // 8: metalstack.api.v2.Nic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
-	12, // 9: metalstack.api.v2.Nic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
-	0,  // 10: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
-	15, // 11: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Duration
-	3,  // 12: metalstack.api.v2.NicState.desired:type_name -> metalstack.api.v2.SwitchPortStatus
-	3,  // 13: metalstack.api.v2.NicState.actual:type_name -> metalstack.api.v2.SwitchPortStatus
-	2,  // 14: metalstack.api.v2.SwitchQuery.os_vendor:type_name -> metalstack.api.v2.SwitchOSVendor
-	4,  // 15: metalstack.api.v2.SwitchService.Get:input_type -> metalstack.api.v2.SwitchServiceGetRequest
-	6,  // 16: metalstack.api.v2.SwitchService.List:input_type -> metalstack.api.v2.SwitchServiceListRequest
-	5,  // 17: metalstack.api.v2.SwitchService.Get:output_type -> metalstack.api.v2.SwitchServiceGetResponse
-	7,  // 18: metalstack.api.v2.SwitchService.List:output_type -> metalstack.api.v2.SwitchServiceListResponse
-	17, // [17:19] is the sub-list for method output_type
-	15, // [15:17] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	1,  // 0: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
+	6,  // 1: metalstack.api.v2.Switch.nics:type_name -> metalstack.api.v2.Nic
+	5,  // 2: metalstack.api.v2.Switch.os:type_name -> metalstack.api.v2.SwitchOS
+	2,  // 3: metalstack.api.v2.SwitchOS.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
+	9,  // 4: metalstack.api.v2.Nic.state:type_name -> metalstack.api.v2.NicState
+	7,  // 5: metalstack.api.v2.Nic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
+	8,  // 6: metalstack.api.v2.Nic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
+	0,  // 7: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
+	11, // 8: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Duration
+	3,  // 9: metalstack.api.v2.NicState.desired:type_name -> metalstack.api.v2.SwitchPortStatus
+	3,  // 10: metalstack.api.v2.NicState.actual:type_name -> metalstack.api.v2.SwitchPortStatus
+	2,  // 11: metalstack.api.v2.SwitchQuery.os_vendor:type_name -> metalstack.api.v2.SwitchOSVendor
+	12, // [12:12] is the sub-list for method output_type
+	12, // [12:12] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_switch_proto_init() }
@@ -1200,18 +994,18 @@ func file_metalstack_api_v2_switch_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
-	file_metalstack_api_v2_switch_proto_msgTypes[4].OneofWrappers = []any{}
+	file_metalstack_api_v2_switch_proto_msgTypes[0].OneofWrappers = []any{}
+	file_metalstack_api_v2_switch_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[6].OneofWrappers = []any{}
-	file_metalstack_api_v2_switch_proto_msgTypes[10].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_switch_proto_rawDesc), len(file_metalstack_api_v2_switch_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   11,
+			NumMessages:   7,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_switch_proto_goTypes,
 		DependencyIndexes: file_metalstack_api_v2_switch_proto_depIdxs,
