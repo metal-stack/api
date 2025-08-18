@@ -73,6 +73,26 @@ func (_m *Adminv2) Image() adminv2connect.ImageServiceClient {
 	return r0
 }
 
+// Machine provides a mock function with no fields
+func (_m *Adminv2) Machine() adminv2connect.MachineServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Machine")
+	}
+
+	var r0 adminv2connect.MachineServiceClient
+	if rf, ok := ret.Get(0).(func() adminv2connect.MachineServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.MachineServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Network provides a mock function with no fields
 func (_m *Adminv2) Network() adminv2connect.NetworkServiceClient {
 	ret := _m.Called()

@@ -53,7 +53,7 @@ type MachineServiceClient interface {
 	Create(context.Context, *connect.Request[v2.MachineServiceCreateRequest]) (*connect.Response[v2.MachineServiceCreateResponse], error)
 	// Update a machine
 	Update(context.Context, *connect.Request[v2.MachineServiceUpdateRequest]) (*connect.Response[v2.MachineServiceUpdateResponse], error)
-	// List all machine
+	// List all machines
 	List(context.Context, *connect.Request[v2.MachineServiceListRequest]) (*connect.Response[v2.MachineServiceListResponse], error)
 	// Delete a machine
 	Delete(context.Context, *connect.Request[v2.MachineServiceDeleteRequest]) (*connect.Response[v2.MachineServiceDeleteResponse], error)
@@ -145,7 +145,7 @@ type MachineServiceHandler interface {
 	Create(context.Context, *connect.Request[v2.MachineServiceCreateRequest]) (*connect.Response[v2.MachineServiceCreateResponse], error)
 	// Update a machine
 	Update(context.Context, *connect.Request[v2.MachineServiceUpdateRequest]) (*connect.Response[v2.MachineServiceUpdateResponse], error)
-	// List all machine
+	// List all machines
 	List(context.Context, *connect.Request[v2.MachineServiceListRequest]) (*connect.Response[v2.MachineServiceListResponse], error)
 	// Delete a machine
 	Delete(context.Context, *connect.Request[v2.MachineServiceDeleteRequest]) (*connect.Response[v2.MachineServiceDeleteResponse], error)
