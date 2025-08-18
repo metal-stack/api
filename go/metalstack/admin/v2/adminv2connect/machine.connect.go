@@ -43,7 +43,7 @@ const (
 type MachineServiceClient interface {
 	// Get a machine
 	Get(context.Context, *connect.Request[v2.MachineServiceGetRequest]) (*connect.Response[v2.MachineServiceGetResponse], error)
-	// List all machine
+	// List all machines
 	List(context.Context, *connect.Request[v2.MachineServiceListRequest]) (*connect.Response[v2.MachineServiceListResponse], error)
 }
 
@@ -93,7 +93,7 @@ func (c *machineServiceClient) List(ctx context.Context, req *connect.Request[v2
 type MachineServiceHandler interface {
 	// Get a machine
 	Get(context.Context, *connect.Request[v2.MachineServiceGetRequest]) (*connect.Response[v2.MachineServiceGetResponse], error)
-	// List all machine
+	// List all machines
 	List(context.Context, *connect.Request[v2.MachineServiceListRequest]) (*connect.Response[v2.MachineServiceListResponse], error)
 }
 

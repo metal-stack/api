@@ -30,7 +30,7 @@ service MachineService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // List all machine
+  // List all machines
   rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
