@@ -8,6 +8,18 @@ import "metalstack/api/v2/switch.proto";
 
 // SwitchService serves switch related functions.
 service SwitchService {
+  // Get a switch by ID.
+  rpc Get(SwitchServiceGetRequest) returns (SwitchServiceGetResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // List switches.
+  rpc List(SwitchServiceListRequest) returns (SwitchServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
   // Update a switch.
   rpc Update(SwitchServiceUpdateRequest) returns (SwitchServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
@@ -24,6 +36,34 @@ service SwitchService {
   rpc Port(SwitchServicePortRequest) returns (SwitchServicePortResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+}
+
+// SwitchServiceGetRequest.
+message SwitchServiceGetRequest {
+  // Id of the switch to get.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// SwitchServiceGetResponse.
+message SwitchServiceGetResponse {
+  // Switch that was requested.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceListRequest.
+message SwitchServiceListRequest {
+  // Query to filter the results.
+  metalstack.api.v2.SwitchQuery query = 1;
+}
+
+// SwitchServiceListResponse.
+message SwitchServiceListResponse {
+  // Switches that match the request query.
+  repeated metalstack.api.v2.Switch switches = 1;
 }
 
 // SwitchServiceUpdateRequest.
