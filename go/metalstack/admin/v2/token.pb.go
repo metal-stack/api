@@ -26,8 +26,8 @@ const (
 // TokenServiceListRequest is the request payload for the token list request
 type TokenServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UserId is the id of the user for which the tokens should be listed
-	UserId        *string `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3,oneof" json:"user_id,omitempty"`
+	// User is the id of the user for which the tokens should be listed
+	User          *string `protobuf:"bytes,1,opt,name=user,proto3,oneof" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -62,9 +62,9 @@ func (*TokenServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_token_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TokenServiceListRequest) GetUserId() string {
-	if x != nil && x.UserId != nil {
-		return *x.UserId
+func (x *TokenServiceListRequest) GetUser() string {
+	if x != nil && x.User != nil {
+		return *x.User
 	}
 	return ""
 }
@@ -120,8 +120,8 @@ type TokenServiceRevokeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid is the uuid of the token which should be revoked
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// UserId is the id of the user for which the token should be revoked
-	UserId        string `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	// User is the id of the user for which the token should be revoked
+	User          string `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -163,9 +163,9 @@ func (x *TokenServiceRevokeRequest) GetUuid() string {
 	return ""
 }
 
-func (x *TokenServiceRevokeRequest) GetUserId() string {
+func (x *TokenServiceRevokeRequest) GetUser() string {
 	if x != nil {
-		return x.UserId
+		return x.User
 	}
 	return ""
 }
@@ -211,17 +211,16 @@ var File_metalstack_admin_v2_token_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_token_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/admin/v2/token.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/token.proto\"C\n" +
-	"\x17TokenServiceListRequest\x12\x1c\n" +
-	"\auser_id\x18\x01 \x01(\tH\x00R\x06userId\x88\x01\x01B\n" +
-	"\n" +
-	"\b_user_id\"L\n" +
+	"\x1fmetalstack/admin/v2/token.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/token.proto\";\n" +
+	"\x17TokenServiceListRequest\x12\x17\n" +
+	"\x04user\x18\x01 \x01(\tH\x00R\x04user\x88\x01\x01B\a\n" +
+	"\x05_user\"L\n" +
 	"\x18TokenServiceListResponse\x120\n" +
-	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"^\n" +
+	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"Y\n" +
 	"\x19TokenServiceRevokeRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12#\n" +
-	"\auser_id\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04R\x06userId\"\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n" +
+	"\x04user\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x04R\x04user\"\x1c\n" +
 	"\x1aTokenServiceRevokeResponse2\xed\x01\n" +
 	"\fTokenService\x12k\n" +
 	"\x04List\x12,.metalstack.admin.v2.TokenServiceListRequest\x1a-.metalstack.admin.v2.TokenServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12p\n" +
