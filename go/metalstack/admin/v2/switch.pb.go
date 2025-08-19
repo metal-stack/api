@@ -225,7 +225,7 @@ type SwitchServiceUpdateRequest struct {
 	// Console command is the command for accessing the switch's console.
 	ConsoleCommand *string `protobuf:"bytes,7,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
 	// Nics are the front panel ports of the switch.
-	Nics []*v2.Nic `protobuf:"bytes,8,rep,name=nics,proto3" json:"nics,omitempty"`
+	Nics []*v2.SwitchNic `protobuf:"bytes,8,rep,name=nics,proto3" json:"nics,omitempty"`
 	// Switch OS is the OS running on the switch.
 	Os            *v2.SwitchOS `protobuf:"bytes,9,opt,name=os,proto3,oneof" json:"os,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -311,7 +311,7 @@ func (x *SwitchServiceUpdateRequest) GetConsoleCommand() string {
 	return ""
 }
 
-func (x *SwitchServiceUpdateRequest) GetNics() []*v2.Nic {
+func (x *SwitchServiceUpdateRequest) GetNics() []*v2.SwitchNic {
 	if x != nil {
 		return x.Nics
 	}
@@ -686,7 +686,7 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x18SwitchServiceListRequest\x124\n" +
 	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n" +
 	"\x19SwitchServiceListResponse\x125\n" +
-	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xe2\x04\n" +
+	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xe8\x04\n" +
 	"\x1aSwitchServiceUpdateRequest\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x121\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
@@ -698,8 +698,8 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x0fmanagement_user\x18\x06 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x0emanagementUser\x88\x01\x01\x128\n" +
 	"\x0fconsole_command\x18\a \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x0econsoleCommand\x88\x01\x01\x12*\n" +
-	"\x04nics\x18\b \x03(\v2\x16.metalstack.api.v2.NicR\x04nics\x120\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x0econsoleCommand\x88\x01\x01\x120\n" +
+	"\x04nics\x18\b \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x120\n" +
 	"\x02os\x18\t \x01(\v2\x1b.metalstack.api.v2.SwitchOSH\x06R\x02os\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\n" +
 	"\n" +
@@ -769,7 +769,7 @@ var file_metalstack_admin_v2_switch_proto_goTypes = []any{
 	(*v2.Switch)(nil),                    // 12: metalstack.api.v2.Switch
 	(*v2.SwitchQuery)(nil),               // 13: metalstack.api.v2.SwitchQuery
 	(v2.SwitchReplaceMode)(0),            // 14: metalstack.api.v2.SwitchReplaceMode
-	(*v2.Nic)(nil),                       // 15: metalstack.api.v2.Nic
+	(*v2.SwitchNic)(nil),                 // 15: metalstack.api.v2.SwitchNic
 	(*v2.SwitchOS)(nil),                  // 16: metalstack.api.v2.SwitchOS
 	(v2.SwitchPortStatus)(0),             // 17: metalstack.api.v2.SwitchPortStatus
 }
@@ -778,7 +778,7 @@ var file_metalstack_admin_v2_switch_proto_depIdxs = []int32{
 	13, // 1: metalstack.admin.v2.SwitchServiceListRequest.query:type_name -> metalstack.api.v2.SwitchQuery
 	12, // 2: metalstack.admin.v2.SwitchServiceListResponse.switches:type_name -> metalstack.api.v2.Switch
 	14, // 3: metalstack.admin.v2.SwitchServiceUpdateRequest.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
-	15, // 4: metalstack.admin.v2.SwitchServiceUpdateRequest.nics:type_name -> metalstack.api.v2.Nic
+	15, // 4: metalstack.admin.v2.SwitchServiceUpdateRequest.nics:type_name -> metalstack.api.v2.SwitchNic
 	16, // 5: metalstack.admin.v2.SwitchServiceUpdateRequest.os:type_name -> metalstack.api.v2.SwitchOS
 	12, // 6: metalstack.admin.v2.SwitchServiceUpdateResponse.switch:type_name -> metalstack.api.v2.Switch
 	12, // 7: metalstack.admin.v2.SwitchServiceDeleteResponse.switch:type_name -> metalstack.api.v2.Switch

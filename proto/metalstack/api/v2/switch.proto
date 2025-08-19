@@ -44,7 +44,7 @@ message Switch {
     max_len: 128
   }];
   // Nics are the front panel ports of the switch.
-  repeated Nic nics = 9;
+  repeated SwitchNic nics = 9;
   // SwitchOs is the OS running on the switch.
   SwitchOS os = 10;
 }
@@ -65,8 +65,8 @@ message SwitchOS {
   }];
 }
 
-// Nic represents a front panel port and its configuration.
-message Nic {
+// SwitchNic represents a front panel port and its configuration.
+message SwitchNic {
   // Name of the switch port.
   string name = 1 [(buf.validate.field).string = {
     min_len: 2

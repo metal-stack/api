@@ -76,9 +76,9 @@ class Switch(_message.Message):
     management_ip: str
     management_user: str
     console_command: str
-    nics: _containers.RepeatedCompositeFieldContainer[Nic]
+    nics: _containers.RepeatedCompositeFieldContainer[SwitchNic]
     os: SwitchOS
-    def __init__(self, id: _Optional[str] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[Nic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ...) -> None: ...
 
 class SwitchOS(_message.Message):
     __slots__ = ("vendor", "version", "metal_core_version")
@@ -90,7 +90,7 @@ class SwitchOS(_message.Message):
     metal_core_version: str
     def __init__(self, vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., version: _Optional[str] = ..., metal_core_version: _Optional[str] = ...) -> None: ...
 
-class Nic(_message.Message):
+class SwitchNic(_message.Message):
     __slots__ = ("name", "identifier", "mac", "vrf", "state", "bgp_filter", "bgp_port_state")
     NAME_FIELD_NUMBER: _ClassVar[int]
     IDENTIFIER_FIELD_NUMBER: _ClassVar[int]

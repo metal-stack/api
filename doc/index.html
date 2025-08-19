@@ -1327,10 +1327,6 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.Nic"><span class="badge">M</span>Nic</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.NicState"><span class="badge">M</span>NicState</a>
                 </li>
               
@@ -1340,6 +1336,10 @@
               
                 <li>
                   <a href="#metalstack.api.v2.SwitchBGPPortState"><span class="badge">M</span>SwitchBGPPortState</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SwitchNic"><span class="badge">M</span>SwitchNic</a>
                 </li>
               
                 <li>
@@ -14499,72 +14499,6 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
 
         
       
-        <h3 id="metalstack.api.v2.Nic">Nic</h3>
-        <p>Nic represents a front panel port and its configuration.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Name of the switch port. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>identifier</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Identifier of the port. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>mac</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Mac address of the port. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>vrf</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Vrf name if the port is bound in one. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#metalstack.api.v2.NicState">NicState</a></td>
-                  <td>optional</td>
-                  <td><p>NicState describes the current state of the switch port. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>bgp_filter</td>
-                  <td><a href="#metalstack.api.v2.BGPFilter">BGPFilter</a></td>
-                  <td>optional</td>
-                  <td><p>BGPFilter optionally configured on a port. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>bgp_port_state</td>
-                  <td><a href="#metalstack.api.v2.SwitchBGPPortState">SwitchBGPPortState</a></td>
-                  <td>optional</td>
-                  <td><p>BGPPortState represents the current BGP status of the port. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="metalstack.api.v2.NicState">NicState</h3>
         <p>NicState represents the current state of a switch port.</p>
 
@@ -14664,7 +14598,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
               
                 <tr>
                   <td>nics</td>
-                  <td><a href="#metalstack.api.v2.Nic">Nic</a></td>
+                  <td><a href="#metalstack.api.v2.SwitchNic">SwitchNic</a></td>
                   <td>repeated</td>
                   <td><p>Nics are the front panel ports of the switch. </p></td>
                 </tr>
@@ -14740,6 +14674,72 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td><a href="#uint64">uint64</a></td>
                   <td></td>
                   <td><p>AcceptedPrefixCounter counts the prefixes received on this port. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SwitchNic">SwitchNic</h3>
+        <p>SwitchNic represents a front panel port and its configuration.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the switch port. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>identifier</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier of the port. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mac</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Mac address of the port. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>vrf</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Vrf name if the port is bound in one. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#metalstack.api.v2.NicState">NicState</a></td>
+                  <td>optional</td>
+                  <td><p>NicState describes the current state of the switch port. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bgp_filter</td>
+                  <td><a href="#metalstack.api.v2.BGPFilter">BGPFilter</a></td>
+                  <td>optional</td>
+                  <td><p>BGPFilter optionally configured on a port. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bgp_port_state</td>
+                  <td><a href="#metalstack.api.v2.SwitchBGPPortState">SwitchBGPPortState</a></td>
+                  <td>optional</td>
+                  <td><p>BGPPortState represents the current BGP status of the port. </p></td>
                 </tr>
               
             </tbody>
@@ -15315,7 +15315,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
               
                 <tr>
                   <td>nics</td>
-                  <td><a href="#metalstack.api.v2.Nic">metalstack.api.v2.Nic</a></td>
+                  <td><a href="#metalstack.api.v2.SwitchNic">metalstack.api.v2.SwitchNic</a></td>
                   <td>repeated</td>
                   <td><p>Nics are the front panel ports of the switch. </p></td>
                 </tr>

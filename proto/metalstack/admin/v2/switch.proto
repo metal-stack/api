@@ -99,7 +99,7 @@ message SwitchServiceUpdateRequest {
     max_len: 128
   }];
   // Nics are the front panel ports of the switch.
-  repeated metalstack.api.v2.Nic nics = 8;
+  repeated metalstack.api.v2.SwitchNic nics = 8;
   // Switch OS is the OS running on the switch.
   optional metalstack.api.v2.SwitchOS os = 9;
 }
