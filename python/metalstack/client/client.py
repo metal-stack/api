@@ -5,6 +5,7 @@ import httpx
 import metalstack.admin.v2.filesystem_connecpy as admin_filesystem_connecpy
 import metalstack.admin.v2.image_connecpy as admin_image_connecpy
 import metalstack.admin.v2.ip_connecpy as admin_ip_connecpy
+import metalstack.admin.v2.machine_connecpy as admin_machine_connecpy
 import metalstack.admin.v2.network_connecpy as admin_network_connecpy
 import metalstack.admin.v2.partition_connecpy as admin_partition_connecpy
 import metalstack.admin.v2.size_connecpy as admin_size_connecpy
@@ -68,6 +69,9 @@ class Client:
 
         def ip(self):
             return admin_ip_connecpy.IPServiceClient(address=self._baseurl, session=self._session)
+
+        def machine(self):
+            return admin_machine_connecpy.MachineServiceClient(address=self._baseurl, session=self._session)
 
         def network(self):
             return admin_network_connecpy.NetworkServiceClient(address=self._baseurl, session=self._session)

@@ -92,12 +92,12 @@ class FilesystemServiceTryRequest(_message.Message):
     def __init__(self, size: _Optional[str] = ..., image: _Optional[str] = ...) -> None: ...
 
 class FilesystemServiceMatchRequest(_message.Message):
-    __slots__ = ("machine", "filesystem_layout_id")
+    __slots__ = ("machine", "filesystem_layout")
     MACHINE_FIELD_NUMBER: _ClassVar[int]
-    FILESYSTEM_LAYOUT_ID_FIELD_NUMBER: _ClassVar[int]
+    FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
     machine: str
-    filesystem_layout_id: str
-    def __init__(self, machine: _Optional[str] = ..., filesystem_layout_id: _Optional[str] = ...) -> None: ...
+    filesystem_layout: str
+    def __init__(self, machine: _Optional[str] = ..., filesystem_layout: _Optional[str] = ...) -> None: ...
 
 class FilesystemServiceTryResponse(_message.Message):
     __slots__ = ("filesystem_layout",)
@@ -178,7 +178,7 @@ class Disk(_message.Message):
     device: str
     partitions: _containers.RepeatedCompositeFieldContainer[DiskPartition]
     wipe_on_reinstall: bool
-    def __init__(self, device: _Optional[str] = ..., partitions: _Optional[_Iterable[_Union[DiskPartition, _Mapping]]] = ..., wipe_on_reinstall: bool = ...) -> None: ...
+    def __init__(self, device: _Optional[str] = ..., partitions: _Optional[_Iterable[_Union[DiskPartition, _Mapping]]] = ..., wipe_on_reinstall: _Optional[bool] = ...) -> None: ...
 
 class Raid(_message.Message):
     __slots__ = ("array_name", "devices", "level", "create_options", "spares")

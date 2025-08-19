@@ -85,7 +85,7 @@ class BootServiceReportRequest(_message.Message):
     console_password: str
     success: bool
     message: str
-    def __init__(self, uuid: _Optional[str] = ..., console_password: _Optional[str] = ..., success: bool = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., console_password: _Optional[str] = ..., success: _Optional[bool] = ..., message: _Optional[str] = ...) -> None: ...
 
 class BootServiceReportResponse(_message.Message):
     __slots__ = ()
@@ -103,4 +103,4 @@ class BootServiceSuperUserPasswordResponse(_message.Message):
     SUPER_USER_PASSWORD_FIELD_NUMBER: _ClassVar[int]
     feature_disabled: bool
     super_user_password: str
-    def __init__(self, feature_disabled: bool = ..., super_user_password: _Optional[str] = ...) -> None: ...
+    def __init__(self, feature_disabled: _Optional[bool] = ..., super_user_password: _Optional[str] = ...) -> None: ...

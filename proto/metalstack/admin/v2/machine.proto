@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/machine.proto";
+
+// MachineService serves machine related functions
+service MachineService {
+  // Get a machine
+  rpc Get(MachineServiceGetRequest) returns (MachineServiceGetResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // List all machines
+  rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// ------------------------ Service Messages ----------------------------------
+
+// MachineServiceGetRequest is the request payload for a machine get request
+message MachineServiceGetRequest {
+  // UUID of the machine to get
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceGetResponse is the request payload for a machine get response
+message MachineServiceGetResponse {
+  // Machine is the machine requested
+  metalstack.api.v2.Machine machine = 1;
+}
+
+// MachineServiceListRequest is the request payload for a machine list request
+message MachineServiceListRequest {
+  // Query to list one ore more machines
+  metalstack.api.v2.MachineQuery query = 1;
+}
+
+// MachineServiceListResponse is the request payload for a machine list response
+message MachineServiceListResponse {
+  // Machines are the machines requested by a list request
+  repeated metalstack.api.v2.Machine machines = 1;
+}
