@@ -225,9 +225,7 @@ type SwitchServiceUpdateRequest struct {
 	// Console command is the command for accessing the switch's console.
 	ConsoleCommand *string `protobuf:"bytes,7,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
 	// Nics are the front panel ports of the switch.
-	Nics []*v2.SwitchNic `protobuf:"bytes,8,rep,name=nics,proto3" json:"nics,omitempty"`
-	// Switch OS is the OS running on the switch.
-	Os            *v2.SwitchOS `protobuf:"bytes,9,opt,name=os,proto3,oneof" json:"os,omitempty"`
+	Nics          []*v2.SwitchNic `protobuf:"bytes,8,rep,name=nics,proto3" json:"nics,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -314,13 +312,6 @@ func (x *SwitchServiceUpdateRequest) GetConsoleCommand() string {
 func (x *SwitchServiceUpdateRequest) GetNics() []*v2.SwitchNic {
 	if x != nil {
 		return x.Nics
-	}
-	return nil
-}
-
-func (x *SwitchServiceUpdateRequest) GetOs() *v2.SwitchOS {
-	if x != nil {
-		return x.Os
 	}
 	return nil
 }
@@ -686,7 +677,7 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x18SwitchServiceListRequest\x124\n" +
 	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n" +
 	"\x19SwitchServiceListResponse\x125\n" +
-	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xe8\x04\n" +
+	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xaf\x04\n" +
 	"\x1aSwitchServiceUpdateRequest\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x121\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
@@ -699,16 +690,14 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x0emanagementUser\x88\x01\x01\x128\n" +
 	"\x0fconsole_command\x18\a \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x0econsoleCommand\x88\x01\x01\x120\n" +
-	"\x04nics\x18\b \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x120\n" +
-	"\x02os\x18\t \x01(\v2\x1b.metalstack.api.v2.SwitchOSH\x06R\x02os\x88\x01\x01B\x0e\n" +
+	"\x04nics\x18\b \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nicsB\x0e\n" +
 	"\f_descriptionB\n" +
 	"\n" +
 	"\b_rack_idB\x0f\n" +
 	"\r_replace_modeB\x10\n" +
 	"\x0e_management_ipB\x12\n" +
 	"\x10_management_userB\x12\n" +
-	"\x10_console_commandB\x05\n" +
-	"\x03_os\"P\n" +
+	"\x10_console_command\"P\n" +
 	"\x1bSwitchServiceUpdateResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\":\n" +
 	"\x1aSwitchServiceDeleteRequest\x12\x1c\n" +
@@ -770,8 +759,7 @@ var file_metalstack_admin_v2_switch_proto_goTypes = []any{
 	(*v2.SwitchQuery)(nil),               // 13: metalstack.api.v2.SwitchQuery
 	(v2.SwitchReplaceMode)(0),            // 14: metalstack.api.v2.SwitchReplaceMode
 	(*v2.SwitchNic)(nil),                 // 15: metalstack.api.v2.SwitchNic
-	(*v2.SwitchOS)(nil),                  // 16: metalstack.api.v2.SwitchOS
-	(v2.SwitchPortStatus)(0),             // 17: metalstack.api.v2.SwitchPortStatus
+	(v2.SwitchPortStatus)(0),             // 16: metalstack.api.v2.SwitchPortStatus
 }
 var file_metalstack_admin_v2_switch_proto_depIdxs = []int32{
 	12, // 0: metalstack.admin.v2.SwitchServiceGetResponse.switch:type_name -> metalstack.api.v2.Switch
@@ -779,29 +767,28 @@ var file_metalstack_admin_v2_switch_proto_depIdxs = []int32{
 	12, // 2: metalstack.admin.v2.SwitchServiceListResponse.switches:type_name -> metalstack.api.v2.Switch
 	14, // 3: metalstack.admin.v2.SwitchServiceUpdateRequest.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
 	15, // 4: metalstack.admin.v2.SwitchServiceUpdateRequest.nics:type_name -> metalstack.api.v2.SwitchNic
-	16, // 5: metalstack.admin.v2.SwitchServiceUpdateRequest.os:type_name -> metalstack.api.v2.SwitchOS
-	12, // 6: metalstack.admin.v2.SwitchServiceUpdateResponse.switch:type_name -> metalstack.api.v2.Switch
-	12, // 7: metalstack.admin.v2.SwitchServiceDeleteResponse.switch:type_name -> metalstack.api.v2.Switch
-	12, // 8: metalstack.admin.v2.SwitchServiceMigrateResponse.switch:type_name -> metalstack.api.v2.Switch
-	17, // 9: metalstack.admin.v2.SwitchServicePortRequest.status:type_name -> metalstack.api.v2.SwitchPortStatus
-	12, // 10: metalstack.admin.v2.SwitchServicePortResponse.switch:type_name -> metalstack.api.v2.Switch
-	0,  // 11: metalstack.admin.v2.SwitchService.Get:input_type -> metalstack.admin.v2.SwitchServiceGetRequest
-	2,  // 12: metalstack.admin.v2.SwitchService.List:input_type -> metalstack.admin.v2.SwitchServiceListRequest
-	4,  // 13: metalstack.admin.v2.SwitchService.Update:input_type -> metalstack.admin.v2.SwitchServiceUpdateRequest
-	6,  // 14: metalstack.admin.v2.SwitchService.Delete:input_type -> metalstack.admin.v2.SwitchServiceDeleteRequest
-	8,  // 15: metalstack.admin.v2.SwitchService.Migrate:input_type -> metalstack.admin.v2.SwitchServiceMigrateRequest
-	10, // 16: metalstack.admin.v2.SwitchService.Port:input_type -> metalstack.admin.v2.SwitchServicePortRequest
-	1,  // 17: metalstack.admin.v2.SwitchService.Get:output_type -> metalstack.admin.v2.SwitchServiceGetResponse
-	3,  // 18: metalstack.admin.v2.SwitchService.List:output_type -> metalstack.admin.v2.SwitchServiceListResponse
-	5,  // 19: metalstack.admin.v2.SwitchService.Update:output_type -> metalstack.admin.v2.SwitchServiceUpdateResponse
-	7,  // 20: metalstack.admin.v2.SwitchService.Delete:output_type -> metalstack.admin.v2.SwitchServiceDeleteResponse
-	9,  // 21: metalstack.admin.v2.SwitchService.Migrate:output_type -> metalstack.admin.v2.SwitchServiceMigrateResponse
-	11, // 22: metalstack.admin.v2.SwitchService.Port:output_type -> metalstack.admin.v2.SwitchServicePortResponse
-	17, // [17:23] is the sub-list for method output_type
-	11, // [11:17] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	12, // 5: metalstack.admin.v2.SwitchServiceUpdateResponse.switch:type_name -> metalstack.api.v2.Switch
+	12, // 6: metalstack.admin.v2.SwitchServiceDeleteResponse.switch:type_name -> metalstack.api.v2.Switch
+	12, // 7: metalstack.admin.v2.SwitchServiceMigrateResponse.switch:type_name -> metalstack.api.v2.Switch
+	16, // 8: metalstack.admin.v2.SwitchServicePortRequest.status:type_name -> metalstack.api.v2.SwitchPortStatus
+	12, // 9: metalstack.admin.v2.SwitchServicePortResponse.switch:type_name -> metalstack.api.v2.Switch
+	0,  // 10: metalstack.admin.v2.SwitchService.Get:input_type -> metalstack.admin.v2.SwitchServiceGetRequest
+	2,  // 11: metalstack.admin.v2.SwitchService.List:input_type -> metalstack.admin.v2.SwitchServiceListRequest
+	4,  // 12: metalstack.admin.v2.SwitchService.Update:input_type -> metalstack.admin.v2.SwitchServiceUpdateRequest
+	6,  // 13: metalstack.admin.v2.SwitchService.Delete:input_type -> metalstack.admin.v2.SwitchServiceDeleteRequest
+	8,  // 14: metalstack.admin.v2.SwitchService.Migrate:input_type -> metalstack.admin.v2.SwitchServiceMigrateRequest
+	10, // 15: metalstack.admin.v2.SwitchService.Port:input_type -> metalstack.admin.v2.SwitchServicePortRequest
+	1,  // 16: metalstack.admin.v2.SwitchService.Get:output_type -> metalstack.admin.v2.SwitchServiceGetResponse
+	3,  // 17: metalstack.admin.v2.SwitchService.List:output_type -> metalstack.admin.v2.SwitchServiceListResponse
+	5,  // 18: metalstack.admin.v2.SwitchService.Update:output_type -> metalstack.admin.v2.SwitchServiceUpdateResponse
+	7,  // 19: metalstack.admin.v2.SwitchService.Delete:output_type -> metalstack.admin.v2.SwitchServiceDeleteResponse
+	9,  // 20: metalstack.admin.v2.SwitchService.Migrate:output_type -> metalstack.admin.v2.SwitchServiceMigrateResponse
+	11, // 21: metalstack.admin.v2.SwitchService.Port:output_type -> metalstack.admin.v2.SwitchServicePortResponse
+	16, // [16:22] is the sub-list for method output_type
+	10, // [10:16] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_switch_proto_init() }
