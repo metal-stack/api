@@ -758,24 +758,20 @@ message MachineNicQuery {
       string: {max_len: 128}
     }
   }];
-  // VRFs this machine nic has
-  repeated uint64 vrfs = 3 [(buf.validate.field).repeated = {max_items: 100}];
   // NeighborMacs this machine nic has
-  repeated string neighbor_macs = 4 [(buf.validate.field).repeated = {
+  repeated string neighbor_macs = 3 [(buf.validate.field).repeated = {
     max_items: 100
     items: {
       string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
     }
   }];
   // NeighborNames this machine nic has
-  repeated string neighbor_names = 5 [(buf.validate.field).repeated = {
+  repeated string neighbor_names = 4 [(buf.validate.field).repeated = {
     max_items: 100
     items: {
       string: {max_len: 128}
     }
   }];
-  // NeighborVRFs this machine nic has
-  repeated uint64 neighbor_vrfs = 6 [(buf.validate.field).repeated = {max_items: 100}];
 }
 
 // MachineDiskQuery disk specific machine queries

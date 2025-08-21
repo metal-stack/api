@@ -2951,14 +2951,10 @@ type MachineNicQuery struct {
 	Macs []string `protobuf:"bytes,1,rep,name=macs,proto3" json:"macs,omitempty"`
 	// Names this machine nic has
 	Names []string `protobuf:"bytes,2,rep,name=names,proto3" json:"names,omitempty"`
-	// VRFs this machine nic has
-	Vrfs []uint64 `protobuf:"varint,3,rep,packed,name=vrfs,proto3" json:"vrfs,omitempty"`
 	// NeighborMacs this machine nic has
-	NeighborMacs []string `protobuf:"bytes,4,rep,name=neighbor_macs,json=neighborMacs,proto3" json:"neighbor_macs,omitempty"`
+	NeighborMacs []string `protobuf:"bytes,3,rep,name=neighbor_macs,json=neighborMacs,proto3" json:"neighbor_macs,omitempty"`
 	// NeighborNames this machine nic has
-	NeighborNames []string `protobuf:"bytes,5,rep,name=neighbor_names,json=neighborNames,proto3" json:"neighbor_names,omitempty"`
-	// NeighborVRFs this machine nic has
-	NeighborVrfs  []uint64 `protobuf:"varint,6,rep,packed,name=neighbor_vrfs,json=neighborVrfs,proto3" json:"neighbor_vrfs,omitempty"`
+	NeighborNames []string `protobuf:"bytes,4,rep,name=neighbor_names,json=neighborNames,proto3" json:"neighbor_names,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3007,13 +3003,6 @@ func (x *MachineNicQuery) GetNames() []string {
 	return nil
 }
 
-func (x *MachineNicQuery) GetVrfs() []uint64 {
-	if x != nil {
-		return x.Vrfs
-	}
-	return nil
-}
-
 func (x *MachineNicQuery) GetNeighborMacs() []string {
 	if x != nil {
 		return x.NeighborMacs
@@ -3024,13 +3013,6 @@ func (x *MachineNicQuery) GetNeighborMacs() []string {
 func (x *MachineNicQuery) GetNeighborNames() []string {
 	if x != nil {
 		return x.NeighborNames
-	}
-	return nil
-}
-
-func (x *MachineNicQuery) GetNeighborVrfs() []uint64 {
-	if x != nil {
-		return x.NeighborVrfs
 	}
 	return nil
 }
@@ -3588,14 +3570,12 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x03ips\x18\x04 \x03(\tB6\xbaH3\x92\x010\".\xba\x01+\n" +
 	"\tvalid_ips\x12\x11ips must be valid\x1a\vthis.isIp()R\x03ips\x12\x12\n" +
 	"\x04vrfs\x18\x05 \x03(\x04R\x04vrfs\x12\x12\n" +
-	"\x04asns\x18\x06 \x03(\rR\x04asns\"\xe6\x02\n" +
+	"\x04asns\x18\x06 \x03(\rR\x04asns\"\x99\x02\n" +
 	"\x0fMachineNicQuery\x12J\n" +
 	"\x04macs\x18\x01 \x03(\tB6\xbaH3\x92\x010\x10d\",r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$R\x04macs\x12%\n" +
-	"\x05names\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\x10d\"\x05r\x03\x18\x80\x01R\x05names\x12\x1c\n" +
-	"\x04vrfs\x18\x03 \x03(\x04B\b\xbaH\x05\x92\x01\x02\x10dR\x04vrfs\x12[\n" +
-	"\rneighbor_macs\x18\x04 \x03(\tB6\xbaH3\x92\x010\x10d\",r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$R\fneighborMacs\x126\n" +
-	"\x0eneighbor_names\x18\x05 \x03(\tB\x0f\xbaH\f\x92\x01\t\x10d\"\x05r\x03\x18\x80\x01R\rneighborNames\x12-\n" +
-	"\rneighbor_vrfs\x18\x06 \x03(\x04B\b\xbaH\x05\x92\x01\x02\x10dR\fneighborVrfs\"Y\n" +
+	"\x05names\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\x10d\"\x05r\x03\x18\x80\x01R\x05names\x12[\n" +
+	"\rneighbor_macs\x18\x03 \x03(\tB6\xbaH3\x92\x010\x10d\",r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$R\fneighborMacs\x126\n" +
+	"\x0eneighbor_names\x18\x04 \x03(\tB\x0f\xbaH\f\x92\x01\t\x10d\"\x05r\x03\x18\x80\x01R\rneighborNames\"Y\n" +
 	"\x10MachineDiskQuery\x12%\n" +
 	"\x05names\x18\x01 \x03(\tB\x0f\xbaH\f\x92\x01\t\x10d\"\x05r\x03\x18\x80\x01R\x05names\x12\x1e\n" +
 	"\x05sizes\x18\x02 \x03(\x04B\b\xbaH\x05\x92\x01\x02\x10dR\x05sizes\"\xfd\x01\n" +

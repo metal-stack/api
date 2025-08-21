@@ -525,20 +525,16 @@ class MachineNetworkQuery(_message.Message):
     def __init__(self, networks: _Optional[_Iterable[str]] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., ips: _Optional[_Iterable[str]] = ..., vrfs: _Optional[_Iterable[int]] = ..., asns: _Optional[_Iterable[int]] = ...) -> None: ...
 
 class MachineNicQuery(_message.Message):
-    __slots__ = ("macs", "names", "vrfs", "neighbor_macs", "neighbor_names", "neighbor_vrfs")
+    __slots__ = ("macs", "names", "neighbor_macs", "neighbor_names")
     MACS_FIELD_NUMBER: _ClassVar[int]
     NAMES_FIELD_NUMBER: _ClassVar[int]
-    VRFS_FIELD_NUMBER: _ClassVar[int]
     NEIGHBOR_MACS_FIELD_NUMBER: _ClassVar[int]
     NEIGHBOR_NAMES_FIELD_NUMBER: _ClassVar[int]
-    NEIGHBOR_VRFS_FIELD_NUMBER: _ClassVar[int]
     macs: _containers.RepeatedScalarFieldContainer[str]
     names: _containers.RepeatedScalarFieldContainer[str]
-    vrfs: _containers.RepeatedScalarFieldContainer[int]
     neighbor_macs: _containers.RepeatedScalarFieldContainer[str]
     neighbor_names: _containers.RepeatedScalarFieldContainer[str]
-    neighbor_vrfs: _containers.RepeatedScalarFieldContainer[int]
-    def __init__(self, macs: _Optional[_Iterable[str]] = ..., names: _Optional[_Iterable[str]] = ..., vrfs: _Optional[_Iterable[int]] = ..., neighbor_macs: _Optional[_Iterable[str]] = ..., neighbor_names: _Optional[_Iterable[str]] = ..., neighbor_vrfs: _Optional[_Iterable[int]] = ...) -> None: ...
+    def __init__(self, macs: _Optional[_Iterable[str]] = ..., names: _Optional[_Iterable[str]] = ..., neighbor_macs: _Optional[_Iterable[str]] = ..., neighbor_names: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class MachineDiskQuery(_message.Message):
     __slots__ = ("names", "sizes")
