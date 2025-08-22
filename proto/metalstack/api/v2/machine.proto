@@ -541,6 +541,89 @@ message MachineBios {
   string date = 3 [(buf.validate.field).string = {max_len: 256}];
 }
 
+// MachineIPMI describe details of the ipmi or out of band device
+message MachineIPMI {
+  // Address of this ipmi device from outside
+  string address = 1 [(buf.validate.field).string.ip = true];
+  // Mac address of the network interface of this ipmi device
+  string mac = 2 [(buf.validate.field).cel = {
+    id: "mac"
+    message: "mac must be a valid mac address"
+    expression: "this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')"
+  }];
+  // User of this ipmi device
+  string user = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Password of this ipmi device
+  string password = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Interface of this ipmi device
+  string interface = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // FRU field replaceable unit details for this machine
+  MachineFRU fru = 6;
+  // BMCVersion of this ipmi device
+  string bmc_version = 7 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // PowerState of this machine
+  string power_state = 8 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
+// MachineFRU describes details to the machine which are required in case of a necessary replacement
+message MachineFRU {
+  // ChassisPartNumber is the part number of the machine chassis
+  optional string chassis_part_number = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // ChassisPartSerial is the serial number of the machine chassis
+  optional string chassis_part_serial = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // BoardMFG is the short description of the mainboard
+  optional string board_mfg = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // BoardSerial is the serial number of the mainboard
+  optional string board_mfg_serial = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // BoardPartNumber is the part number of the mainboard
+  optional string board_part_number = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // ProductManufacturer is the manufacturer of the machine
+  optional string product_manufacturer = 6 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // ProductPartNumber is the part number of the machine
+  optional string product_part_number = 7 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // ProductSerial is the serial number of the machine
+  optional string product_serial = 8 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+}
+
 // MachineRecentProvisioningEvents the recent provisioning events for this machine
 message MachineRecentProvisioningEvents {
   // Events the log of recent machine provisioning events

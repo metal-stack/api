@@ -32,6 +32,26 @@ func (_m *Infrav2) BMC() infrav2connect.BMCServiceClient {
 	return r0
 }
 
+// Boot provides a mock function with no fields
+func (_m *Infrav2) Boot() infrav2connect.BootServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Boot")
+	}
+
+	var r0 infrav2connect.BootServiceClient
+	if rf, ok := ret.Get(0).(func() infrav2connect.BootServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(infrav2connect.BootServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Switch provides a mock function with no fields
 func (_m *Infrav2) Switch() infrav2connect.SwitchServiceClient {
 	ret := _m.Called()

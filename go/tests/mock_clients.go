@@ -89,11 +89,13 @@ type (
 	}
 	infrav2 struct {
 		bmcservice    *infrav2mocks.BMCServiceClient
+		bootservice   *infrav2mocks.BootServiceClient
 		switchservice *infrav2mocks.SwitchServiceClient
 	}
 
 	Infrav2MockFns struct {
 		BMC    func(m *mock.Mock)
+		Boot   func(m *mock.Mock)
 		Switch func(m *mock.Mock)
 	}
 )
@@ -320,12 +322,16 @@ func (w wrapper) Infrav2(fns *Infrav2MockFns) *infrav2 {
 func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 	a := &infrav2{
 		bmcservice:    infrav2mocks.NewBMCServiceClient(t),
+		bootservice:   infrav2mocks.NewBootServiceClient(t),
 		switchservice: infrav2mocks.NewSwitchServiceClient(t),
 	}
 
 	if fns != nil {
 		if fns.BMC != nil {
 			fns.BMC(&a.bmcservice.Mock)
+		}
+		if fns.Boot != nil {
+			fns.Boot(&a.bootservice.Mock)
 		}
 		if fns.Switch != nil {
 			fns.Switch(&a.switchservice.Mock)
@@ -338,6 +344,9 @@ func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Boot() infrav2connect.BootServiceClient {
+	return c.bootservice
 }
 func (c *infrav2) Switch() infrav2connect.SwitchServiceClient {
 	return c.switchservice

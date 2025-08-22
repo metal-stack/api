@@ -82,11 +82,13 @@ type (
 
 	Infrav2 interface {
 		BMC() infrav2connect.BMCServiceClient
+		Boot() infrav2connect.BootServiceClient
 		Switch() infrav2connect.SwitchServiceClient
 	}
 
 	infrav2 struct {
 		bmcservice    infrav2connect.BMCServiceClient
+		bootservice   infrav2connect.BootServiceClient
 		switchservice infrav2connect.SwitchServiceClient
 	}
 )
@@ -310,6 +312,11 @@ func (c *client) Infrav2() Infrav2 {
 			c.config.BaseURL,
 			compress.WithAll(compress.LevelBalanced),
 		),
+		bootservice: infrav2connect.NewBootServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			compress.WithAll(compress.LevelBalanced),
+		),
 		switchservice: infrav2connect.NewSwitchServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -321,6 +328,9 @@ func (c *client) Infrav2() Infrav2 {
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Boot() infrav2connect.BootServiceClient {
+	return c.bootservice
 }
 func (c *infrav2) Switch() infrav2connect.SwitchServiceClient {
 	return c.switchservice

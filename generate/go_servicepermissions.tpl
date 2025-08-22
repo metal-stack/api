@@ -34,6 +34,15 @@ func GetServicePermissions() *ServicePermissions {
 					},
 				{{- end }}
 			},
+			Machine:   Machine{
+				{{- range $role, $methods := .Roles.Infra }}
+					"{{ $role }}": []string{
+						{{- range $method := $methods }}
+							"{{ $method }}",
+						{{- end }}
+					},
+				{{- end }}
+			},
 			Tenant:  Tenant{
 				{{- range $role, $methods := .Roles.Tenant }}
 					"{{ $role }}": []string{
@@ -79,6 +88,11 @@ func GetServicePermissions() *ServicePermissions {
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
+			Machine:    map[string]bool{
+{{- range $key, $value := .Visibility.Machine }}
+	"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
 			Tenant:    map[string]bool{
 {{- range $key, $value := .Visibility.Tenant }}
 	"{{ $key }}": {{ $value }} ,
@@ -118,6 +132,11 @@ func IsInfraScope(req connect.AnyRequest) bool {
 	return ok
 }
 
+func IsMachineScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Machine[req.Spec().Procedure]
+	return ok
+}
+
 func IsTenantScope(req connect.AnyRequest) bool {
 	_, ok := GetServicePermissions().Visibility.Tenant[req.Spec().Procedure]
 	return ok
@@ -151,6 +170,17 @@ func GetProjectFromRequest(req connect.AnyRequest) (string, bool) {
 	switch rq := req.Any().(type) {
 	case interface{ GetProject() string }:
 		return rq.GetProject(), true
+	}
+	return "", false
+}
+
+func GetMachineIdFromRequest(req connect.AnyRequest) (string, bool) {
+	if !IsMachineScope(req) {
+		return "", false
+	}
+	switch rq := req.Any().(type) {
+	case interface{ GetUuid() string }:
+		return rq.GetUuid(), true
 	}
 	return "", false
 }
