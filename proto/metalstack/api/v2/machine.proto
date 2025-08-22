@@ -126,6 +126,12 @@ message MachineServiceCreateRequest {
   repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
   // AllocationType of this machine
   MachineAllocationType allocation_type = 18 [(buf.validate.field).enum.defined_only = true];
+  // FirewallSpec provides firewall specific parameters if allocationType is firewall
+  FirewallSpec firewall_spec = 19;
+}
+
+// FirewallSpec contains firewall specific firewall creation parameters
+message FirewallSpec {
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 19;
 }
