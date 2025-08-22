@@ -126,6 +126,12 @@ message MachineServiceCreateRequest {
   repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
   // AllocationType of this machine
   MachineAllocationType allocation_type = 18 [(buf.validate.field).enum.defined_only = true];
+  // FirewallSpec provides firewall specific parameters if allocationType is firewall
+  FirewallSpec firewall_spec = 19;
+}
+
+// FirewallSpec contains firewall specific firewall creation parameters
+message FirewallSpec {
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 19;
 }
@@ -783,6 +789,8 @@ message MachineAllocationQuery {
   }];
   // AllocationType of this machine
   optional MachineAllocationType allocation_type = 7 [(buf.validate.field).enum.defined_only = true];
+  // Labels for which this machine allocation should get filtered
+  optional Labels labels = 8;
 }
 
 // MachineNetworkQuery network specific machine queries
@@ -841,24 +849,20 @@ message MachineNicQuery {
       string: {max_len: 128}
     }
   }];
-  // VRFs this machine nic has
-  repeated uint64 vrfs = 3 [(buf.validate.field).repeated = {max_items: 100}];
   // NeighborMacs this machine nic has
-  repeated string neighbor_macs = 4 [(buf.validate.field).repeated = {
+  repeated string neighbor_macs = 3 [(buf.validate.field).repeated = {
     max_items: 100
     items: {
       string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
     }
   }];
   // NeighborNames this machine nic has
-  repeated string neighbor_names = 5 [(buf.validate.field).repeated = {
+  repeated string neighbor_names = 4 [(buf.validate.field).repeated = {
     max_items: 100
     items: {
       string: {max_len: 128}
     }
   }];
-  // NeighborVRFs this machine nic has
-  repeated uint64 neighbor_vrfs = 6 [(buf.validate.field).repeated = {max_items: 100}];
 }
 
 // MachineDiskQuery disk specific machine queries

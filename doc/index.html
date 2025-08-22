@@ -984,6 +984,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.FirewallSpec"><span class="badge">M</span>FirewallSpec</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.Machine"><span class="badge">M</span>Machine</a>
                 </li>
               
@@ -11285,6 +11289,30 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.FirewallSpec">FirewallSpec</h3>
+        <p>FirewallSpec contains firewall specific firewall creation parameters</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>firewall_rules</td>
+                  <td><a href="#metalstack.api.v2.FirewallRules">FirewallRules</a></td>
+                  <td></td>
+                  <td><p>FirewallRules to be applied if this is a firewall </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.Machine">Machine</h3>
         <p>Machine represents a physical bare metal machine.</p>
 
@@ -11598,6 +11626,13 @@ By default one ip address is acquired per network for the machine </p></td>
                   <td><a href="#metalstack.api.v2.MachineAllocationType">MachineAllocationType</a></td>
                   <td>optional</td>
                   <td><p>AllocationType of this machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels for which this machine allocation should get filtered </p></td>
                 </tr>
               
             </tbody>
@@ -12346,13 +12381,6 @@ By default one ip address is acquired per network for the machine </p></td>
                 </tr>
               
                 <tr>
-                  <td>vrfs</td>
-                  <td><a href="#uint64">uint64</a></td>
-                  <td>repeated</td>
-                  <td><p>VRFs this machine nic has </p></td>
-                </tr>
-              
-                <tr>
                   <td>neighbor_macs</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
@@ -12364,13 +12392,6 @@ By default one ip address is acquired per network for the machine </p></td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
                   <td><p>NeighborNames this machine nic has </p></td>
-                </tr>
-              
-                <tr>
-                  <td>neighbor_vrfs</td>
-                  <td><a href="#uint64">uint64</a></td>
-                  <td>repeated</td>
-                  <td><p>NeighborVRFs this machine nic has </p></td>
                 </tr>
               
             </tbody>
@@ -12720,10 +12741,10 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                 </tr>
               
                 <tr>
-                  <td>firewall_rules</td>
-                  <td><a href="#metalstack.api.v2.FirewallRules">FirewallRules</a></td>
+                  <td>firewall_spec</td>
+                  <td><a href="#metalstack.api.v2.FirewallSpec">FirewallSpec</a></td>
                   <td></td>
-                  <td><p>FirewallRules to be applied if this is a firewall </p></td>
+                  <td><p>FirewallSpec provides firewall specific parameters if allocationType is firewall </p></td>
                 </tr>
               
             </tbody>
@@ -13523,6 +13544,14 @@ TODO add machine ips </p></td>
                   <td><a href="#metalstack.api.v2.MachineQuery">metalstack.api.v2.MachineQuery</a></td>
                   <td></td>
                   <td><p>Query to list one ore more machines </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition for which machines should be listed, could be left empty if only one partition is present
+otherwise an error is thrown that the partition must be specified </p></td>
                 </tr>
               
             </tbody>
