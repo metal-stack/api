@@ -119,7 +119,10 @@ func (x *MachineServiceGetResponse) GetMachine() *v2.Machine {
 type MachineServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Query to list one ore more machines
-	Query         *v2.MachineQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	Query *v2.MachineQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	// Partition for which machines should be listed, could be left empty if only one partition is present
+	// otherwise an error is thrown that the partition must be specified
+	Partition     string `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -159,6 +162,13 @@ func (x *MachineServiceListRequest) GetQuery() *v2.MachineQuery {
 		return x.Query
 	}
 	return nil
+}
+
+func (x *MachineServiceListRequest) GetPartition() string {
+	if x != nil {
+		return x.Partition
+	}
+	return ""
 }
 
 // MachineServiceListResponse is the request payload for a machine list response
@@ -215,9 +225,10 @@ const file_metalstack_admin_v2_machine_proto_rawDesc = "" +
 	"\x18MachineServiceGetRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"R\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"z\n" +
 	"\x19MachineServiceListRequest\x125\n" +
-	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\x05query\"T\n" +
+	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\x05query\x12&\n" +
+	"\tpartition\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\tpartition\"T\n" +
 	"\x1aMachineServiceListResponse\x126\n" +
 	"\bmachines\x18\x01 \x03(\v2\x1a.metalstack.api.v2.MachineR\bmachines2\xf7\x01\n" +
 	"\x0eMachineService\x12p\n" +
