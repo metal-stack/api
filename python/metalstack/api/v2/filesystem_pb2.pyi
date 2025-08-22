@@ -171,14 +171,12 @@ class Filesystem(_message.Message):
     def __init__(self, device: _Optional[str] = ..., format: _Optional[_Union[Format, str]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., path: _Optional[str] = ..., label: _Optional[str] = ..., mount_options: _Optional[_Iterable[str]] = ..., create_options: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class Disk(_message.Message):
-    __slots__ = ("device", "partitions", "wipe_on_reinstall")
+    __slots__ = ("device", "partitions")
     DEVICE_FIELD_NUMBER: _ClassVar[int]
     PARTITIONS_FIELD_NUMBER: _ClassVar[int]
-    WIPE_ON_REINSTALL_FIELD_NUMBER: _ClassVar[int]
     device: str
     partitions: _containers.RepeatedCompositeFieldContainer[DiskPartition]
-    wipe_on_reinstall: bool
-    def __init__(self, device: _Optional[str] = ..., partitions: _Optional[_Iterable[_Union[DiskPartition, _Mapping]]] = ..., wipe_on_reinstall: _Optional[bool] = ...) -> None: ...
+    def __init__(self, device: _Optional[str] = ..., partitions: _Optional[_Iterable[_Union[DiskPartition, _Mapping]]] = ...) -> None: ...
 
 class Raid(_message.Message):
     __slots__ = ("array_name", "devices", "level", "create_options", "spares")
