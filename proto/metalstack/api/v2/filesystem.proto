@@ -203,8 +203,6 @@ message Disk {
   }];
   // Partitions list of partitions to create on this disk
   repeated DiskPartition partitions = 2;
-  // WipeOnReinstall if set to true, this disk will be wiped before reinstallation
-  bool wipe_on_reinstall = 3;
 }
 
 // Raid
