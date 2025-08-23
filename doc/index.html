@@ -1940,6 +1940,45 @@
         
           
           <li>
+            <a href="#metalstack%2finfra%2fv2%2fevent.proto">metalstack/infra/v2/event.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.EventServiceSendMultiRequest"><span class="badge">M</span>EventServiceSendMultiRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.EventServiceSendMultiRequest.EventsEntry"><span class="badge">M</span>EventServiceSendMultiRequest.EventsEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.EventServiceSendMultiResponse"><span class="badge">M</span>EventServiceSendMultiResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.EventServiceSendRequest"><span class="badge">M</span>EventServiceSendRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.EventServiceSendResponse"><span class="badge">M</span>EventServiceSendResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.MachineProvisioningEvent"><span class="badge">M</span>MachineProvisioningEvent</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.infra.v2.EventService"><span class="badge">S</span>EventService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2finfra%2fv2%2fswitch.proto">metalstack/infra/v2/switch.proto</a>
             <ul>
               
@@ -18538,6 +18577,184 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.infra.v2.UpdateBMCInfoRequest">UpdateBMCInfoRequest</a></td>
                 <td><a href="#metalstack.infra.v2.UpdateBMCInfoResponse">UpdateBMCInfoResponse</a></td>
                 <td><p>UpdateBMCInfo</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/infra/v2/event.proto">metalstack/infra/v2/event.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.infra.v2.EventServiceSendMultiRequest">EventServiceSendMultiRequest</h3>
+        <p>EventServiceSendMultiRequest contains events for many machines</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>events</td>
+                  <td><a href="#metalstack.infra.v2.EventServiceSendMultiRequest.EventsEntry">EventServiceSendMultiRequest.EventsEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>Events of many machines </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.EventServiceSendMultiRequest.EventsEntry">EventServiceSendMultiRequest.EventsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.infra.v2.MachineProvisioningEvent">MachineProvisioningEvent</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.EventServiceSendMultiResponse">EventServiceSendMultiResponse</h3>
+        <p>EventServiceSendMultiResponse is returned after events have been sent</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.infra.v2.EventServiceSendRequest">EventServiceSendRequest</h3>
+        <p>EventServiceSendRequest</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine of the event </p></td>
+                </tr>
+              
+                <tr>
+                  <td>event</td>
+                  <td><a href="#metalstack.infra.v2.MachineProvisioningEvent">MachineProvisioningEvent</a></td>
+                  <td></td>
+                  <td><p>Event details </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.EventServiceSendResponse">EventServiceSendResponse</h3>
+        <p>EventServiceSendResponse is the response of a single event sent</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.infra.v2.MachineProvisioningEvent">MachineProvisioningEvent</h3>
+        <p>MachineProvisioningEvent describes a event for a single machine</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>timestamp when the event occurred </p></td>
+                </tr>
+              
+                <tr>
+                  <td>event</td>
+                  <td><a href="#metalstack.api.v2.MachineProvisioningEventType">metalstack.api.v2.MachineProvisioningEventType</a></td>
+                  <td></td>
+                  <td><p>the event type </p></td>
+                </tr>
+              
+                <tr>
+                  <td>message</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>an additional message describing the event more detailed </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.infra.v2.EventService">EventService</h3>
+        <p>EventService is used to send machine related events</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Send</td>
+                <td><a href="#metalstack.infra.v2.EventServiceSendRequest">EventServiceSendRequest</a></td>
+                <td><a href="#metalstack.infra.v2.EventServiceSendResponse">EventServiceSendResponse</a></td>
+                <td><p>Send an event of a single machine to the api</p></td>
+              </tr>
+            
+              <tr>
+                <td>SendMulti</td>
+                <td><a href="#metalstack.infra.v2.EventServiceSendMultiRequest">EventServiceSendMultiRequest</a></td>
+                <td><a href="#metalstack.infra.v2.EventServiceSendMultiResponse">EventServiceSendMultiResponse</a></td>
+                <td><p>SendMulti sends events of a bunch of machines in one request to the api</p></td>
               </tr>
             
           </tbody>
