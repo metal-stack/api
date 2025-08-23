@@ -31,6 +31,7 @@ func GetServices() []string {
 		"metalstack.api.v2.UserService",
 		"metalstack.api.v2.VersionService",
 		"metalstack.infra.v2.BMCService",
+		"metalstack.infra.v2.EventService",
 		"metalstack.infra.v2.SwitchService",
 	}
 }
@@ -267,6 +268,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      true,
+			"/metalstack.infra.v2.EventService/Send":             true,
+			"/metalstack.infra.v2.EventService/SendMulti":        true,
 			"/metalstack.infra.v2.SwitchService/Register":        true,
 		},
 		Visibility: Visibility{
@@ -336,6 +339,8 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: map[string]bool{
 				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
+				"/metalstack.infra.v2.EventService/Send":        true,
+				"/metalstack.infra.v2.EventService/SendMulti":   true,
 				"/metalstack.infra.v2.SwitchService/Register":   true,
 			},
 			Tenant: map[string]bool{
@@ -467,6 +472,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              false,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      false,
+			"/metalstack.infra.v2.EventService/Send":             false,
+			"/metalstack.infra.v2.EventService/SendMulti":        false,
 			"/metalstack.infra.v2.SwitchService/Register":        false,
 		},
 	}

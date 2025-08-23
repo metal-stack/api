@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package metalstack.infra.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/machine.proto";
+
+// EventService is used to send machine related events
+service EventService {
+  // Send an event of a single machine to the api
+  rpc Send(EventServiceSendRequest) returns (EventServiceSendResponse) {
+    // FIXME must be MACHINE_ROLE_EDITOR, comes with boot-service
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+
+  // SendMulti sends events of a bunch of machines in one request to the api
+  rpc SendMulti(EventServiceSendMultiRequest) returns (EventServiceSendMultiResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// EventServiceSendRequest
+message EventServiceSendRequest {
+  // UUID of the machine of the event
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Event details
+  MachineProvisioningEvent event = 2;
+}
+
+// EventServiceSendResponse is the response of a single event sent
+message EventServiceSendResponse {}
+
+// EventServiceSendMultiRequest contains events for many machines
+message EventServiceSendMultiRequest {
+  // Events of many machines
+  map<string, MachineProvisioningEvent> events = 1;
+}
+
+// EventServiceSendMultiResponse is returned after events have been sent
+message EventServiceSendMultiResponse {}
+
+// MachineProvisioningEvent describes a event for a single machine
+message MachineProvisioningEvent {
+  // timestamp when the event occurred
+  google.protobuf.Timestamp time = 1;
+  // the event type
+  metalstack.api.v2.MachineProvisioningEventType event = 2 [(buf.validate.field).enum.defined_only = true];
+  // an additional message describing the event more detailed
+  string message = 3 [(buf.validate.field).string.max_len = 256];
+}
