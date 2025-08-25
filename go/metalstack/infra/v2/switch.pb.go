@@ -22,8 +22,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// SwitchServiceCreateRequest
-type SwitchServiceCreateRequest struct {
+// SwitchServiceRegisterRequest
+type SwitchServiceRegisterRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Switch to register
 	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
@@ -31,20 +31,20 @@ type SwitchServiceCreateRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SwitchServiceCreateRequest) Reset() {
-	*x = SwitchServiceCreateRequest{}
+func (x *SwitchServiceRegisterRequest) Reset() {
+	*x = SwitchServiceRegisterRequest{}
 	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SwitchServiceCreateRequest) String() string {
+func (x *SwitchServiceRegisterRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SwitchServiceCreateRequest) ProtoMessage() {}
+func (*SwitchServiceRegisterRequest) ProtoMessage() {}
 
-func (x *SwitchServiceCreateRequest) ProtoReflect() protoreflect.Message {
+func (x *SwitchServiceRegisterRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -56,20 +56,20 @@ func (x *SwitchServiceCreateRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SwitchServiceCreateRequest.ProtoReflect.Descriptor instead.
-func (*SwitchServiceCreateRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use SwitchServiceRegisterRequest.ProtoReflect.Descriptor instead.
+func (*SwitchServiceRegisterRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *SwitchServiceCreateRequest) GetSwitch() *v2.Switch {
+func (x *SwitchServiceRegisterRequest) GetSwitch() *v2.Switch {
 	if x != nil {
 		return x.Switch
 	}
 	return nil
 }
 
-// SwitchServiceCreateResponse
-type SwitchServiceCreateResponse struct {
+// SwitchServiceRegisterResponse
+type SwitchServiceRegisterResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Switch that was registered
 	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
@@ -77,20 +77,20 @@ type SwitchServiceCreateResponse struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SwitchServiceCreateResponse) Reset() {
-	*x = SwitchServiceCreateResponse{}
+func (x *SwitchServiceRegisterResponse) Reset() {
+	*x = SwitchServiceRegisterResponse{}
 	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SwitchServiceCreateResponse) String() string {
+func (x *SwitchServiceRegisterResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SwitchServiceCreateResponse) ProtoMessage() {}
+func (*SwitchServiceRegisterResponse) ProtoMessage() {}
 
-func (x *SwitchServiceCreateResponse) ProtoReflect() protoreflect.Message {
+func (x *SwitchServiceRegisterResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -102,12 +102,12 @@ func (x *SwitchServiceCreateResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SwitchServiceCreateResponse.ProtoReflect.Descriptor instead.
-func (*SwitchServiceCreateResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use SwitchServiceRegisterResponse.ProtoReflect.Descriptor instead.
+func (*SwitchServiceRegisterResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *SwitchServiceCreateResponse) GetSwitch() *v2.Switch {
+func (x *SwitchServiceRegisterResponse) GetSwitch() *v2.Switch {
 	if x != nil {
 		return x.Switch
 	}
@@ -118,13 +118,13 @@ var File_metalstack_infra_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/infra/v2/switch.proto\x12\x13metalstack.infra.v2\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"O\n" +
-	"\x1aSwitchServiceCreateRequest\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"P\n" +
-	"\x1bSwitchServiceCreateResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch2\x87\x01\n" +
-	"\rSwitchService\x12v\n" +
-	"\x06Create\x12/.metalstack.infra.v2.SwitchServiceCreateRequest\x1a0.metalstack.infra.v2.SwitchServiceCreateResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xcf\x01\n" +
+	" metalstack/infra/v2/switch.proto\x12\x13metalstack.infra.v2\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"Q\n" +
+	"\x1cSwitchServiceRegisterRequest\x121\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"R\n" +
+	"\x1dSwitchServiceRegisterResponse\x121\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch2\x8d\x01\n" +
+	"\rSwitchService\x12|\n" +
+	"\bRegister\x121.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a2.metalstack.infra.v2.SwitchServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xcf\x01\n" +
 	"\x17com.metalstack.infra.v2B\vSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
 var (
@@ -141,15 +141,15 @@ func file_metalstack_infra_v2_switch_proto_rawDescGZIP() []byte {
 
 var file_metalstack_infra_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_metalstack_infra_v2_switch_proto_goTypes = []any{
-	(*SwitchServiceCreateRequest)(nil),  // 0: metalstack.infra.v2.SwitchServiceCreateRequest
-	(*SwitchServiceCreateResponse)(nil), // 1: metalstack.infra.v2.SwitchServiceCreateResponse
-	(*v2.Switch)(nil),                   // 2: metalstack.api.v2.Switch
+	(*SwitchServiceRegisterRequest)(nil),  // 0: metalstack.infra.v2.SwitchServiceRegisterRequest
+	(*SwitchServiceRegisterResponse)(nil), // 1: metalstack.infra.v2.SwitchServiceRegisterResponse
+	(*v2.Switch)(nil),                     // 2: metalstack.api.v2.Switch
 }
 var file_metalstack_infra_v2_switch_proto_depIdxs = []int32{
-	2, // 0: metalstack.infra.v2.SwitchServiceCreateRequest.switch:type_name -> metalstack.api.v2.Switch
-	2, // 1: metalstack.infra.v2.SwitchServiceCreateResponse.switch:type_name -> metalstack.api.v2.Switch
-	0, // 2: metalstack.infra.v2.SwitchService.Create:input_type -> metalstack.infra.v2.SwitchServiceCreateRequest
-	1, // 3: metalstack.infra.v2.SwitchService.Create:output_type -> metalstack.infra.v2.SwitchServiceCreateResponse
+	2, // 0: metalstack.infra.v2.SwitchServiceRegisterRequest.switch:type_name -> metalstack.api.v2.Switch
+	2, // 1: metalstack.infra.v2.SwitchServiceRegisterResponse.switch:type_name -> metalstack.api.v2.Switch
+	0, // 2: metalstack.infra.v2.SwitchService.Register:input_type -> metalstack.infra.v2.SwitchServiceRegisterRequest
+	1, // 3: metalstack.infra.v2.SwitchService.Register:output_type -> metalstack.infra.v2.SwitchServiceRegisterResponse
 	3, // [3:4] is the sub-list for method output_type
 	2, // [2:3] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

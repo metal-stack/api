@@ -15,7 +15,7 @@ import metalstack.infra.v2.switch_pb2 as metalstack_dot_infra_dot_v2_dot_switch_
 
 
 class SwitchService(Protocol):
-    async def Create(self, req: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse: ...
+    async def Register(self, req: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse: ...
 
 
 class SwitchServiceServer(ConnecpyServer):
@@ -23,12 +23,12 @@ class SwitchServiceServer(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.infra.v2.SwitchService"
         self._endpoints = {
-            "Create": Endpoint[metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest, metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse](
+            "Register": Endpoint[metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse](
                 service_name="SwitchService",
-                name="Create",
-                function=getattr(service, "Create"),
-                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest,
-                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse,
+                name="Register",
+                function=getattr(service, "Register"),
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -38,7 +38,7 @@ class SwitchServiceServer(ConnecpyServer):
 
 
 class SwitchServiceSync(Protocol):
-    def Create(self, req: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse: ...
+    def Register(self, req: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: ServiceContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse: ...
 
 
 class SwitchServiceServerSync(ConnecpyServer):
@@ -46,12 +46,12 @@ class SwitchServiceServerSync(ConnecpyServer):
         super().__init__()
         self._prefix = f"{server_path_prefix}/metalstack.infra.v2.SwitchService"
         self._endpoints = {
-            "Create": Endpoint[metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest, metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse](
+            "Register": Endpoint[metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse](
                 service_name="SwitchService",
-                name="Create",
-                function=getattr(service, "Create"),
-                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest,
-                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse,
+                name="Register",
+                function=getattr(service, "Register"),
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse,
                 allowed_methods=("POST",),
             ),
         }
@@ -61,41 +61,41 @@ class SwitchServiceServerSync(ConnecpyServer):
 
 
 class SwitchServiceClient(ConnecpyClient):
-    def Create(
+    def Register(
         self,
-        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest,
         *,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         **kwargs,
-    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse:
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
         method = "POST"
         return self._make_request(
-            url=f"{server_path_prefix}/metalstack.infra.v2.SwitchService/Create",
+            url=f"{server_path_prefix}/metalstack.infra.v2.SwitchService/Register",
             ctx=ctx,
             request=request,
-            response_class=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse,
+            response_class=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse,
             method=method,
             **kwargs,
         )
 
 
 class AsyncSwitchServiceClient(AsyncConnecpyClient):
-    async def Create(
+    async def Register(
         self,
-        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest,
         *,
         ctx: Optional[ClientContext] = None,
         server_path_prefix: str = "",
         session: Union[httpx.AsyncClient, None] = None,
         **kwargs,
-    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse:
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
         method = "POST"
         return await self._make_request(
-            url=f"{server_path_prefix}/metalstack.infra.v2.SwitchService/Create",
+            url=f"{server_path_prefix}/metalstack.infra.v2.SwitchService/Register",
             ctx=ctx,
             request=request,
-            response_class=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse,
+            response_class=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse,
             method=method,
             session=session,
             **kwargs,

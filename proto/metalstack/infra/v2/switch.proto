@@ -7,21 +7,21 @@ import "metalstack/api/v2/switch.proto";
 
 // SwitchService serves switch related functions
 service SwitchService {
-  // Create a switch
-  rpc Create(SwitchServiceCreateRequest) returns (SwitchServiceCreateResponse) {
+  // Register a switch
+  rpc Register(SwitchServiceRegisterRequest) returns (SwitchServiceRegisterResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
 }
 
-// SwitchServiceCreateRequest
-message SwitchServiceCreateRequest {
+// SwitchServiceRegisterRequest
+message SwitchServiceRegisterRequest {
   // Switch to register
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServiceCreateResponse
-message SwitchServiceCreateResponse {
+// SwitchServiceRegisterResponse
+message SwitchServiceRegisterResponse {
   // Switch that was registered
   metalstack.api.v2.Switch switch = 1;
 }

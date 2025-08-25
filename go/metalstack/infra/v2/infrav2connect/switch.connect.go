@@ -33,14 +33,14 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// SwitchServiceCreateProcedure is the fully-qualified name of the SwitchService's Create RPC.
-	SwitchServiceCreateProcedure = "/metalstack.infra.v2.SwitchService/Create"
+	// SwitchServiceRegisterProcedure is the fully-qualified name of the SwitchService's Register RPC.
+	SwitchServiceRegisterProcedure = "/metalstack.infra.v2.SwitchService/Register"
 )
 
 // SwitchServiceClient is a client for the metalstack.infra.v2.SwitchService service.
 type SwitchServiceClient interface {
-	// Create a switch
-	Create(context.Context, *connect.Request[v2.SwitchServiceCreateRequest]) (*connect.Response[v2.SwitchServiceCreateResponse], error)
+	// Register a switch
+	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
 }
 
 // NewSwitchServiceClient constructs a client for the metalstack.infra.v2.SwitchService service. By
@@ -54,10 +54,10 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	switchServiceMethods := v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods()
 	return &switchServiceClient{
-		create: connect.NewClient[v2.SwitchServiceCreateRequest, v2.SwitchServiceCreateResponse](
+		register: connect.NewClient[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse](
 			httpClient,
-			baseURL+SwitchServiceCreateProcedure,
-			connect.WithSchema(switchServiceMethods.ByName("Create")),
+			baseURL+SwitchServiceRegisterProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("Register")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -65,18 +65,18 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // switchServiceClient implements SwitchServiceClient.
 type switchServiceClient struct {
-	create *connect.Client[v2.SwitchServiceCreateRequest, v2.SwitchServiceCreateResponse]
+	register *connect.Client[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse]
 }
 
-// Create calls metalstack.infra.v2.SwitchService.Create.
-func (c *switchServiceClient) Create(ctx context.Context, req *connect.Request[v2.SwitchServiceCreateRequest]) (*connect.Response[v2.SwitchServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+// Register calls metalstack.infra.v2.SwitchService.Register.
+func (c *switchServiceClient) Register(ctx context.Context, req *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error) {
+	return c.register.CallUnary(ctx, req)
 }
 
 // SwitchServiceHandler is an implementation of the metalstack.infra.v2.SwitchService service.
 type SwitchServiceHandler interface {
-	// Create a switch
-	Create(context.Context, *connect.Request[v2.SwitchServiceCreateRequest]) (*connect.Response[v2.SwitchServiceCreateResponse], error)
+	// Register a switch
+	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
 }
 
 // NewSwitchServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -86,16 +86,16 @@ type SwitchServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	switchServiceMethods := v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods()
-	switchServiceCreateHandler := connect.NewUnaryHandler(
-		SwitchServiceCreateProcedure,
-		svc.Create,
-		connect.WithSchema(switchServiceMethods.ByName("Create")),
+	switchServiceRegisterHandler := connect.NewUnaryHandler(
+		SwitchServiceRegisterProcedure,
+		svc.Register,
+		connect.WithSchema(switchServiceMethods.ByName("Register")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/metalstack.infra.v2.SwitchService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case SwitchServiceCreateProcedure:
-			switchServiceCreateHandler.ServeHTTP(w, r)
+		case SwitchServiceRegisterProcedure:
+			switchServiceRegisterHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -105,6 +105,6 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 // UnimplementedSwitchServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSwitchServiceHandler struct{}
 
-func (UnimplementedSwitchServiceHandler) Create(context.Context, *connect.Request[v2.SwitchServiceCreateRequest]) (*connect.Response[v2.SwitchServiceCreateResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Create is not implemented"))
+func (UnimplementedSwitchServiceHandler) Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Register is not implemented"))
 }

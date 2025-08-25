@@ -7,13 +7,13 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
-class SwitchServiceCreateRequest(_message.Message):
+class SwitchServiceRegisterRequest(_message.Message):
     __slots__ = ("switch",)
     SWITCH_FIELD_NUMBER: _ClassVar[int]
     switch: _switch_pb2.Switch
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
 
-class SwitchServiceCreateResponse(_message.Message):
+class SwitchServiceRegisterResponse(_message.Message):
     __slots__ = ("switch",)
     SWITCH_FIELD_NUMBER: _ClassVar[int]
     switch: _switch_pb2.Switch

@@ -17,28 +17,28 @@ type SwitchServiceClient struct {
 	mock.Mock
 }
 
-// Create provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceClient) Create(_a0 context.Context, _a1 *connect.Request[infrav2.SwitchServiceCreateRequest]) (*connect.Response[infrav2.SwitchServiceCreateResponse], error) {
+// Register provides a mock function with given fields: _a0, _a1
+func (_m *SwitchServiceClient) Register(_a0 context.Context, _a1 *connect.Request[infrav2.SwitchServiceRegisterRequest]) (*connect.Response[infrav2.SwitchServiceRegisterResponse], error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
-		panic("no return value specified for Create")
+		panic("no return value specified for Register")
 	}
 
-	var r0 *connect.Response[infrav2.SwitchServiceCreateResponse]
+	var r0 *connect.Response[infrav2.SwitchServiceRegisterResponse]
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceCreateRequest]) (*connect.Response[infrav2.SwitchServiceCreateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceRegisterRequest]) (*connect.Response[infrav2.SwitchServiceRegisterResponse], error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceCreateRequest]) *connect.Response[infrav2.SwitchServiceCreateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceRegisterRequest]) *connect.Response[infrav2.SwitchServiceRegisterResponse]); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.SwitchServiceCreateResponse])
+			r0 = ret.Get(0).(*connect.Response[infrav2.SwitchServiceRegisterResponse])
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.SwitchServiceCreateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.SwitchServiceRegisterRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

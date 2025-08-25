@@ -15,10 +15,10 @@ class SwitchServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Create = channel.unary_unary(
-                '/metalstack.infra.v2.SwitchService/Create',
-                request_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest.SerializeToString,
-                response_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse.FromString,
+        self.Register = channel.unary_unary(
+                '/metalstack.infra.v2.SwitchService/Register',
+                request_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest.SerializeToString,
+                response_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse.FromString,
                 _registered_method=True)
 
 
@@ -26,8 +26,8 @@ class SwitchServiceServicer(object):
     """SwitchService serves switch related functions
     """
 
-    def Create(self, request, context):
-        """Create a switch
+    def Register(self, request, context):
+        """Register a switch
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -36,10 +36,10 @@ class SwitchServiceServicer(object):
 
 def add_SwitchServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Create': grpc.unary_unary_rpc_method_handler(
-                    servicer.Create,
-                    request_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest.FromString,
-                    response_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse.SerializeToString,
+            'Register': grpc.unary_unary_rpc_method_handler(
+                    servicer.Register,
+                    request_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest.FromString,
+                    response_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -54,7 +54,7 @@ class SwitchService(object):
     """
 
     @staticmethod
-    def Create(request,
+    def Register(request,
             target,
             options=(),
             channel_credentials=None,
@@ -67,9 +67,9 @@ class SwitchService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/metalstack.infra.v2.SwitchService/Create',
-            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateRequest.SerializeToString,
-            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceCreateResponse.FromString,
+            '/metalstack.infra.v2.SwitchService/Register',
+            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest.SerializeToString,
+            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse.FromString,
             options,
             channel_credentials,
             insecure,
