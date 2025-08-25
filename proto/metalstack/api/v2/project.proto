@@ -129,13 +129,15 @@ message ProjectInvite {
 
 // ProjectServiceListRequest is the request payload to list all projects
 message ProjectServiceListRequest {
-  // Name list only projects with this name
-  optional string name = 1 [(buf.validate.field).string = {
+  // Id lists only projects with this id
+  optional string id = 1;
+  // Name lists only projects with this name
+  optional string name = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Tenant list only projects of this tenant
-  optional string tenant = 2 [(buf.validate.field).string = {
+  // Tenant lists only projects of this tenant
+  optional string tenant = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];

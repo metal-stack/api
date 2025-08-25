@@ -311,10 +311,12 @@ func (x *ProjectInvite) GetJoinedAt() *timestamppb.Timestamp {
 // ProjectServiceListRequest is the request payload to list all projects
 type ProjectServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name list only projects with this name
-	Name *string `protobuf:"bytes,1,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Tenant list only projects of this tenant
-	Tenant        *string `protobuf:"bytes,2,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
+	// Id lists only projects with this id
+	Id *string `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	// Name lists only projects with this name
+	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	// Tenant lists only projects of this tenant
+	Tenant        *string `protobuf:"bytes,3,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -347,6 +349,13 @@ func (x *ProjectServiceListRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ProjectServiceListRequest.ProtoReflect.Descriptor instead.
 func (*ProjectServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ProjectServiceListRequest) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
 }
 
 func (x *ProjectServiceListRequest) GetName() string {
@@ -1574,12 +1583,14 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\n" +
 	"expires_at\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x127\n" +
-	"\tjoined_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\"}\n" +
-	"\x19ProjectServiceListRequest\x12#\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x12'\n" +
-	"\x06tenant\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x06tenant\x88\x01\x01B\a\n" +
+	"\tjoined_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\"\x99\x01\n" +
+	"\x19ProjectServiceListRequest\x12\x13\n" +
+	"\x02id\x18\x01 \x01(\tH\x00R\x02id\x88\x01\x01\x12#\n" +
+	"\x04name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x04name\x88\x01\x01\x12'\n" +
+	"\x06tenant\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\x06tenant\x88\x01\x01B\x05\n" +
+	"\x03_idB\a\n" +
 	"\x05_nameB\t\n" +
 	"\a_tenant\"T\n" +
 	"\x1aProjectServiceListResponse\x126\n" +
