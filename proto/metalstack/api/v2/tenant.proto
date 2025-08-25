@@ -165,6 +165,8 @@ message TenantServiceCreateRequest {
   optional string avatar_url = 4;
   // PhoneNumber of the tenant
   optional string phone_number = 5;
+  // Labels on the tenant
+  Labels labels = 6;
 }
 
 // TenantServiceUpdateRequest is the request payload of the tenant update request
@@ -185,6 +187,8 @@ message TenantServiceUpdateRequest {
   }];
   // AvatarUrl of the tenant
   optional string avatar_url = 5;
+  // Labels on the tenant
+  optional UpdateLabels labels = 6;
 }
 
 // TenantServiceDeleteRequest is the request payload of the tenant delete request
