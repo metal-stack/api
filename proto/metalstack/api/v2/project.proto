@@ -79,7 +79,7 @@ service ProjectService {
 message Project {
   // Uuid of this project
   string uuid = 1;
-  // Meta for this ip
+  // Meta for this project
   Meta meta = 2;
   // Name of this project must be unique per tenant
   string name = 3;

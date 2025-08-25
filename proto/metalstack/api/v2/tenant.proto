@@ -82,7 +82,7 @@ service TenantService {
 message Tenant {
   // Login of the tenant
   string login = 1;
-  // Meta for this ip
+  // Meta for this tenant
   Meta meta = 2;
   // Name of the tenant
   string name = 3;

@@ -29,7 +29,7 @@ type Project struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of this project
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Meta for this ip
+	// Meta for this project
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	// Name of this project must be unique per tenant
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`

@@ -28,7 +28,7 @@ type Tenant struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login of the tenant
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Meta for this ip
+	// Meta for this tenant
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	// Name of the tenant
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
