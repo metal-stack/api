@@ -33,9 +33,7 @@ type TenantServiceCreateRequest struct {
 	// Email of the tenant, if not set will be inherited from the creator
 	Email *string `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
 	// AvatarUrl of the tenant
-	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// PhoneNumber of the tenant
-	PhoneNumber   *string `protobuf:"bytes,5,opt,name=phone_number,json=phoneNumber,proto3,oneof" json:"phone_number,omitempty"`
+	AvatarUrl     *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -94,13 +92,6 @@ func (x *TenantServiceCreateRequest) GetEmail() string {
 func (x *TenantServiceCreateRequest) GetAvatarUrl() string {
 	if x != nil && x.AvatarUrl != nil {
 		return *x.AvatarUrl
-	}
-	return ""
-}
-
-func (x *TenantServiceCreateRequest) GetPhoneNumber() string {
-	if x != nil && x.PhoneNumber != nil {
-		return *x.PhoneNumber
 	}
 	return ""
 }
@@ -283,19 +274,17 @@ var File_metalstack_admin_v2_tenant_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\x98\x02\n" +
+	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xdf\x01\n" +
 	"\x1aTenantServiceCreateRequest\x12\x1d\n" +
 	"\x04name\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@R\x04name\x121\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x00R\vdescription\x88\x01\x01\x12\"\n" +
 	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"avatar_url\x18\x04 \x01(\tH\x02R\tavatarUrl\x88\x01\x01\x12&\n" +
-	"\fphone_number\x18\x05 \x01(\tH\x03R\vphoneNumber\x88\x01\x01B\x0e\n" +
+	"avatar_url\x18\x04 \x01(\tH\x02R\tavatarUrl\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\b\n" +
 	"\x06_emailB\r\n" +
-	"\v_avatar_urlB\x0f\n" +
-	"\r_phone_number\"P\n" +
+	"\v_avatar_url\"P\n" +
 	"\x1bTenantServiceCreateResponse\x121\n" +
 	"\x06tenant\x18\x01 \x01(\v2\x19.metalstack.api.v2.TenantR\x06tenant\"\xb9\x01\n" +
 	"\x18TenantServiceListRequest\x12\x19\n" +
