@@ -163,10 +163,8 @@ message TenantServiceCreateRequest {
   optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant
   optional string avatar_url = 4;
-  // PhoneNumber of the tenant
-  optional string phone_number = 5;
   // Labels on the tenant
-  Labels labels = 6;
+  Labels labels = 5;
 }
 
 // TenantServiceUpdateRequest is the request payload of the tenant update request
