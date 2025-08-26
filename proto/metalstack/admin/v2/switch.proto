@@ -101,7 +101,7 @@ message SwitchServiceUpdateRequest {
   // Nics are the front panel ports of the switch.
   repeated metalstack.api.v2.SwitchNic nics = 8;
   // SwitchOs is the OS running on the switch.
-  metalstack.api.v2.SwitchOS os = 9;
+  optional metalstack.api.v2.SwitchOS os = 9;
 }
 
 // SwitchServiceUpdateResponse.

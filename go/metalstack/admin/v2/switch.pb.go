@@ -227,7 +227,7 @@ type SwitchServiceUpdateRequest struct {
 	// Nics are the front panel ports of the switch.
 	Nics []*v2.SwitchNic `protobuf:"bytes,8,rep,name=nics,proto3" json:"nics,omitempty"`
 	// SwitchOs is the OS running on the switch.
-	Os            *v2.SwitchOS `protobuf:"bytes,9,opt,name=os,proto3" json:"os,omitempty"`
+	Os            *v2.SwitchOS `protobuf:"bytes,9,opt,name=os,proto3,oneof" json:"os,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -686,7 +686,7 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x18SwitchServiceListRequest\x124\n" +
 	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n" +
 	"\x19SwitchServiceListResponse\x125\n" +
-	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xdc\x04\n" +
+	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xe8\x04\n" +
 	"\x1aSwitchServiceUpdateRequest\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x121\n" +
 	"\vdescription\x18\x02 \x01(\tB\n" +
@@ -699,15 +699,16 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x0emanagementUser\x88\x01\x01\x128\n" +
 	"\x0fconsole_command\x18\a \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x0econsoleCommand\x88\x01\x01\x120\n" +
-	"\x04nics\x18\b \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x12+\n" +
-	"\x02os\x18\t \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02osB\x0e\n" +
+	"\x04nics\x18\b \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x120\n" +
+	"\x02os\x18\t \x01(\v2\x1b.metalstack.api.v2.SwitchOSH\x06R\x02os\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\n" +
 	"\n" +
 	"\b_rack_idB\x0f\n" +
 	"\r_replace_modeB\x10\n" +
 	"\x0e_management_ipB\x12\n" +
 	"\x10_management_userB\x12\n" +
-	"\x10_console_command\"P\n" +
+	"\x10_console_commandB\x05\n" +
+	"\x03_os\"P\n" +
 	"\x1bSwitchServiceUpdateResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\":\n" +
 	"\x1aSwitchServiceDeleteRequest\x12\x1c\n" +
