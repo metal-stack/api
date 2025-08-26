@@ -34,7 +34,7 @@ class SwitchServiceListResponse(_message.Message):
     def __init__(self, switches: _Optional[_Iterable[_Union[_switch_pb2.Switch, _Mapping]]] = ...) -> None: ...
 
 class SwitchServiceUpdateRequest(_message.Message):
-    __slots__ = ("id", "description", "rack_id", "replace_mode", "management_ip", "management_user", "console_command", "nics")
+    __slots__ = ("id", "description", "rack_id", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os")
     ID_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     RACK_ID_FIELD_NUMBER: _ClassVar[int]
@@ -43,6 +43,7 @@ class SwitchServiceUpdateRequest(_message.Message):
     MANAGEMENT_USER_FIELD_NUMBER: _ClassVar[int]
     CONSOLE_COMMAND_FIELD_NUMBER: _ClassVar[int]
     NICS_FIELD_NUMBER: _ClassVar[int]
+    OS_FIELD_NUMBER: _ClassVar[int]
     id: str
     description: str
     rack_id: str
@@ -51,7 +52,8 @@ class SwitchServiceUpdateRequest(_message.Message):
     management_user: str
     console_command: str
     nics: _containers.RepeatedCompositeFieldContainer[_switch_pb2.SwitchNic]
-    def __init__(self, id: _Optional[str] = ..., description: _Optional[str] = ..., rack_id: _Optional[str] = ..., replace_mode: _Optional[_Union[_switch_pb2.SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[_switch_pb2.SwitchNic, _Mapping]]] = ...) -> None: ...
+    os: _switch_pb2.SwitchOS
+    def __init__(self, id: _Optional[str] = ..., description: _Optional[str] = ..., rack_id: _Optional[str] = ..., replace_mode: _Optional[_Union[_switch_pb2.SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[_switch_pb2.SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[_switch_pb2.SwitchOS, _Mapping]] = ...) -> None: ...
 
 class SwitchServiceUpdateResponse(_message.Message):
     __slots__ = ("switch",)
