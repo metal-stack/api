@@ -17,12 +17,6 @@ service FilesystemService {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Try a filesystems
-  rpc Try(FilesystemServiceTryRequest) returns (FilesystemServiceTryResponse) {
-    option (visibility) = VISIBILITY_SELF;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
-
   // Match a filesystems
   rpc Match(FilesystemServiceMatchRequest) returns (FilesystemServiceMatchResponse) {
     option (visibility) = VISIBILITY_SELF;
@@ -60,8 +54,20 @@ message FilesystemServiceListResponse {
   repeated FilesystemLayout filesystem_layouts = 1;
 }
 
-// FilesystemServiceTryRequest
-message FilesystemServiceTryRequest {
+// FilesystemServiceMatchRequest
+message FilesystemServiceMatchRequest {
+  // Match either size and image to a filesystemlayout
+  // or if a machine matches to a filesystemlayout
+  oneof match {
+    // SizeAndImage
+    MatchImageAndSize size_and_image = 1;
+    // MachineAndFilesystemlayout
+    MatchMachine machine_and_filesystemlayout = 2;
+  }
+}
+
+// MatchImageAndSize
+message MatchImageAndSize {
   // Size, machine size to try
   string size = 1 [(buf.validate.field).string = {
     min_len: 2
@@ -74,8 +80,8 @@ message FilesystemServiceTryRequest {
   }];
 }
 
-// FilesystemServiceMatchRequest
-message FilesystemServiceMatchRequest {
+// MatchMachine
+message MatchMachine {
   // Machine to check
   string machine = 1 [(buf.validate.field).string.uuid = true];
   // FilesystemLayout to check
