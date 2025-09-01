@@ -5,7 +5,7 @@ BUILDDATE := $(shell date -Iseconds)
 VERSION := $(or ${VERSION},$(shell git describe --tags --exact-match 2> /dev/null || git symbolic-ref -q --short HEAD || git rev-parse --short HEAD))
 LOCALBIN ?= $(shell pwd)/bin
 PROTOC_GEN_CONNECPY ?= $(LOCALBIN)/protoc-gen-connecpy
-PROTOC_GEN_CONNECPY_VERSION ?= latest
+PROTOC_GEN_CONNECPY_VERSION ?= 2.3.0
 
 all: proto generate test
 
@@ -32,5 +32,7 @@ test:
 
 .PHONY: protoc-gen-connecpy
 protoc-gen-connecpy:
-# 	mkdir -p $(LOCALBIN)
-# 	GOBIN=$(LOCALBIN) go install github.com/i2y/connecpy/protoc-gen-connecpy@$(PROTOC_GEN_CONNECPY_VERSION)
+	mkdir -p $(LOCALBIN)
+	rm -f $(LOCALBIN)/protoc-gen-connecpy
+	curl -s -L https://github.com/i2y/connecpy/releases/download/v$(PROTOC_GEN_CONNECPY_VERSION)/protoc-gen-connecpy_$(PROTOC_GEN_CONNECPY_VERSION)_linux_amd64.tar.gz | tar -xzf - protoc-gen-connecpy
+	mv protoc-gen-connecpy $(LOCALBIN)/protoc-gen-connecpy
