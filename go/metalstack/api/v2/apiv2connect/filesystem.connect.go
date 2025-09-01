@@ -37,8 +37,6 @@ const (
 	FilesystemServiceGetProcedure = "/metalstack.api.v2.FilesystemService/Get"
 	// FilesystemServiceListProcedure is the fully-qualified name of the FilesystemService's List RPC.
 	FilesystemServiceListProcedure = "/metalstack.api.v2.FilesystemService/List"
-	// FilesystemServiceTryProcedure is the fully-qualified name of the FilesystemService's Try RPC.
-	FilesystemServiceTryProcedure = "/metalstack.api.v2.FilesystemService/Try"
 	// FilesystemServiceMatchProcedure is the fully-qualified name of the FilesystemService's Match RPC.
 	FilesystemServiceMatchProcedure = "/metalstack.api.v2.FilesystemService/Match"
 )
@@ -49,8 +47,6 @@ type FilesystemServiceClient interface {
 	Get(context.Context, *connect.Request[v2.FilesystemServiceGetRequest]) (*connect.Response[v2.FilesystemServiceGetResponse], error)
 	// List all filesystems
 	List(context.Context, *connect.Request[v2.FilesystemServiceListRequest]) (*connect.Response[v2.FilesystemServiceListResponse], error)
-	// Try a filesystems
-	Try(context.Context, *connect.Request[v2.FilesystemServiceTryRequest]) (*connect.Response[v2.FilesystemServiceTryResponse], error)
 	// Match a filesystems
 	Match(context.Context, *connect.Request[v2.FilesystemServiceMatchRequest]) (*connect.Response[v2.FilesystemServiceMatchResponse], error)
 }
@@ -78,12 +74,6 @@ func NewFilesystemServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			connect.WithSchema(filesystemServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
-		try: connect.NewClient[v2.FilesystemServiceTryRequest, v2.FilesystemServiceTryResponse](
-			httpClient,
-			baseURL+FilesystemServiceTryProcedure,
-			connect.WithSchema(filesystemServiceMethods.ByName("Try")),
-			connect.WithClientOptions(opts...),
-		),
 		match: connect.NewClient[v2.FilesystemServiceMatchRequest, v2.FilesystemServiceMatchResponse](
 			httpClient,
 			baseURL+FilesystemServiceMatchProcedure,
@@ -97,7 +87,6 @@ func NewFilesystemServiceClient(httpClient connect.HTTPClient, baseURL string, o
 type filesystemServiceClient struct {
 	get   *connect.Client[v2.FilesystemServiceGetRequest, v2.FilesystemServiceGetResponse]
 	list  *connect.Client[v2.FilesystemServiceListRequest, v2.FilesystemServiceListResponse]
-	try   *connect.Client[v2.FilesystemServiceTryRequest, v2.FilesystemServiceTryResponse]
 	match *connect.Client[v2.FilesystemServiceMatchRequest, v2.FilesystemServiceMatchResponse]
 }
 
@@ -111,11 +100,6 @@ func (c *filesystemServiceClient) List(ctx context.Context, req *connect.Request
 	return c.list.CallUnary(ctx, req)
 }
 
-// Try calls metalstack.api.v2.FilesystemService.Try.
-func (c *filesystemServiceClient) Try(ctx context.Context, req *connect.Request[v2.FilesystemServiceTryRequest]) (*connect.Response[v2.FilesystemServiceTryResponse], error) {
-	return c.try.CallUnary(ctx, req)
-}
-
 // Match calls metalstack.api.v2.FilesystemService.Match.
 func (c *filesystemServiceClient) Match(ctx context.Context, req *connect.Request[v2.FilesystemServiceMatchRequest]) (*connect.Response[v2.FilesystemServiceMatchResponse], error) {
 	return c.match.CallUnary(ctx, req)
@@ -127,8 +111,6 @@ type FilesystemServiceHandler interface {
 	Get(context.Context, *connect.Request[v2.FilesystemServiceGetRequest]) (*connect.Response[v2.FilesystemServiceGetResponse], error)
 	// List all filesystems
 	List(context.Context, *connect.Request[v2.FilesystemServiceListRequest]) (*connect.Response[v2.FilesystemServiceListResponse], error)
-	// Try a filesystems
-	Try(context.Context, *connect.Request[v2.FilesystemServiceTryRequest]) (*connect.Response[v2.FilesystemServiceTryResponse], error)
 	// Match a filesystems
 	Match(context.Context, *connect.Request[v2.FilesystemServiceMatchRequest]) (*connect.Response[v2.FilesystemServiceMatchResponse], error)
 }
@@ -152,12 +134,6 @@ func NewFilesystemServiceHandler(svc FilesystemServiceHandler, opts ...connect.H
 		connect.WithSchema(filesystemServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
-	filesystemServiceTryHandler := connect.NewUnaryHandler(
-		FilesystemServiceTryProcedure,
-		svc.Try,
-		connect.WithSchema(filesystemServiceMethods.ByName("Try")),
-		connect.WithHandlerOptions(opts...),
-	)
 	filesystemServiceMatchHandler := connect.NewUnaryHandler(
 		FilesystemServiceMatchProcedure,
 		svc.Match,
@@ -170,8 +146,6 @@ func NewFilesystemServiceHandler(svc FilesystemServiceHandler, opts ...connect.H
 			filesystemServiceGetHandler.ServeHTTP(w, r)
 		case FilesystemServiceListProcedure:
 			filesystemServiceListHandler.ServeHTTP(w, r)
-		case FilesystemServiceTryProcedure:
-			filesystemServiceTryHandler.ServeHTTP(w, r)
 		case FilesystemServiceMatchProcedure:
 			filesystemServiceMatchHandler.ServeHTTP(w, r)
 		default:
@@ -189,10 +163,6 @@ func (UnimplementedFilesystemServiceHandler) Get(context.Context, *connect.Reque
 
 func (UnimplementedFilesystemServiceHandler) List(context.Context, *connect.Request[v2.FilesystemServiceListRequest]) (*connect.Response[v2.FilesystemServiceListResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.FilesystemService.List is not implemented"))
-}
-
-func (UnimplementedFilesystemServiceHandler) Try(context.Context, *connect.Request[v2.FilesystemServiceTryRequest]) (*connect.Response[v2.FilesystemServiceTryResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.FilesystemService.Try is not implemented"))
 }
 
 func (UnimplementedFilesystemServiceHandler) Match(context.Context, *connect.Request[v2.FilesystemServiceMatchRequest]) (*connect.Response[v2.FilesystemServiceMatchResponse], error) {

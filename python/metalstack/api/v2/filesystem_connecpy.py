@@ -22,9 +22,6 @@ class FilesystemService(Protocol):
     async def list(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse:
         raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
 
-    async def try(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse:
-        raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
-
     async def match(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
         raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
 
@@ -52,16 +49,6 @@ class FilesystemServiceASGIApplication(ConnecpyASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.list,
-                ),
-                "/metalstack.api.v2.FilesystemService/Try": Endpoint.unary(
-                    method=MethodInfo(
-                        name="Try",
-                        service_name="metalstack.api.v2.FilesystemService",
-                        input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
-                        output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.try,
                 ),
                 "/metalstack.api.v2.FilesystemService/Match": Endpoint.unary(
                     method=MethodInfo(
@@ -125,26 +112,6 @@ class FilesystemServiceClient(ConnecpyClient):
             timeout_ms=timeout_ms,
         )
 
-    async def try(
-        self,
-        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse:
-        return await self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="Try",
-                service_name="metalstack.api.v2.FilesystemService",
-                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
-                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
     async def match(
         self,
         request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
@@ -170,8 +137,6 @@ class FilesystemServiceSync(Protocol):
     def get(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceGetResponse:
         raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
     def list(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse:
-        raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
-    def try(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse:
         raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
     def match(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
         raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
@@ -200,16 +165,6 @@ class FilesystemServiceWSGIApplication(ConnecpyWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.list,
-                ),
-                "/metalstack.api.v2.FilesystemService/Try": EndpointSync.unary(
-                    method=MethodInfo(
-                        name="Try",
-                        service_name="metalstack.api.v2.FilesystemService",
-                        input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
-                        output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.try,
                 ),
                 "/metalstack.api.v2.FilesystemService/Match": EndpointSync.unary(
                     method=MethodInfo(
@@ -267,26 +222,6 @@ class FilesystemServiceClientSync(ConnecpyClientSync):
                 service_name="metalstack.api.v2.FilesystemService",
                 input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest,
                 output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-    def try(
-        self,
-        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse:
-        return self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="Try",
-                service_name="metalstack.api.v2.FilesystemService",
-                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryRequest,
-                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceTryResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
