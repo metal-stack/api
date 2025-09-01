@@ -3,7 +3,7 @@
 import os
 import sys
 
-from connecpy.exceptions import ConnecpyServerException
+from connecpy.exceptions import ConnecpyException
 
 from metalstack.client import client as apiclient
 from metalstack.api.v2 import ip_pb2
@@ -19,7 +19,7 @@ client = apiclient.Client(baseurl=baseurl, token=token, timeout=timeout_s)
 try:
     resp = client.apiv2().ip().List(request=ip_pb2.IPServiceListRequest(
         project=project))
-except ConnecpyServerException as e:
+except ConnecpyException as e:
     print(e.code, e.message, e.to_dict())
     sys.exit(1)
 

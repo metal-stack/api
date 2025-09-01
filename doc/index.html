@@ -15469,7 +15469,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>meta</td>
                   <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
                   <td></td>
-                  <td><p>Meta for this ip </p></td>
+                  <td><p>Meta for this tenant </p></td>
                 </tr>
               
                 <tr>
@@ -15678,10 +15678,10 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                 </tr>
               
                 <tr>
-                  <td>phone_number</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>PhoneNumber of the tenant </p></td>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td></td>
+                  <td><p>Labels on the tenant </p></td>
                 </tr>
               
             </tbody>
@@ -16264,6 +16264,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><p>AvatarUrl of the tenant </p></td>
                 </tr>
               
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">UpdateLabels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels on the tenant </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -16441,13 +16448,6 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>AvatarUrl of the tenant </p></td>
-                </tr>
-              
-                <tr>
-                  <td>phone_number</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>PhoneNumber of the tenant </p></td>
                 </tr>
               
             </tbody>
@@ -17935,7 +17935,7 @@ for which the methods should be allowed </p></td>
                   <td>meta</td>
                   <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
                   <td></td>
-                  <td><p>Meta for this ip </p></td>
+                  <td><p>Meta for this project </p></td>
                 </tr>
               
                 <tr>
@@ -18137,6 +18137,13 @@ TODO: is login really a good name? </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Avatar URL of the project </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td></td>
+                  <td><p>Labels on the project </p></td>
                 </tr>
               
             </tbody>
@@ -18530,17 +18537,24 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Id lists only projects with this id </p></td>
+                </tr>
+              
+                <tr>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Name list only projects with this name </p></td>
+                  <td><p>Name lists only projects with this name </p></td>
                 </tr>
               
                 <tr>
                   <td>tenant</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Tenant list only projects of this tenant </p></td>
+                  <td><p>Tenant lists only projects of this tenant </p></td>
                 </tr>
               
             </tbody>
@@ -18710,6 +18724,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Avatar URL of the project </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">UpdateLabels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels on this project </p></td>
                 </tr>
               
             </tbody>
