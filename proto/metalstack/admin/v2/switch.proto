@@ -118,6 +118,8 @@ message SwitchServiceDeleteRequest {
     min_len: 2
     max_len: 128
   }];
+  // Force will allow switch deletion despite existing machine connections.
+  bool force = 2;
 }
 
 // SwitchServiceDeleteResponse.

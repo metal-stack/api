@@ -375,7 +375,9 @@ func (x *SwitchServiceUpdateResponse) GetSwitch() *v2.Switch {
 type SwitchServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of the switch.
-	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Force will allow switch deletion despite existing machine connections.
+	Force         bool `protobuf:"varint,2,opt,name=force,proto3" json:"force,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -415,6 +417,13 @@ func (x *SwitchServiceDeleteRequest) GetId() string {
 		return x.Id
 	}
 	return ""
+}
+
+func (x *SwitchServiceDeleteRequest) GetForce() bool {
+	if x != nil {
+		return x.Force
+	}
+	return false
 }
 
 // SwitchServiceDeleteResponse.
@@ -710,9 +719,10 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x10_console_commandB\x05\n" +
 	"\x03_os\"P\n" +
 	"\x1bSwitchServiceUpdateResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\":\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"P\n" +
 	"\x1aSwitchServiceDeleteRequest\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\"P\n" +
+	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12\x14\n" +
+	"\x05force\x18\x02 \x01(\bR\x05force\"P\n" +
 	"\x1bSwitchServiceDeleteResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"w\n" +
 	"\x1bSwitchServiceMigrateRequest\x12+\n" +

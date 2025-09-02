@@ -62,10 +62,12 @@ class SwitchServiceUpdateResponse(_message.Message):
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
 
 class SwitchServiceDeleteRequest(_message.Message):
-    __slots__ = ("id",)
+    __slots__ = ("id", "force")
     ID_FIELD_NUMBER: _ClassVar[int]
+    FORCE_FIELD_NUMBER: _ClassVar[int]
     id: str
-    def __init__(self, id: _Optional[str] = ...) -> None: ...
+    force: bool
+    def __init__(self, id: _Optional[str] = ..., force: _Optional[bool] = ...) -> None: ...
 
 class SwitchServiceDeleteResponse(_message.Message):
     __slots__ = ("switch",)
