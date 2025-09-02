@@ -591,8 +591,10 @@ type ImageQuery struct {
 	Feature *ImageFeature `protobuf:"varint,6,opt,name=feature,proto3,enum=metalstack.api.v2.ImageFeature,oneof" json:"feature,omitempty"`
 	// Classification of the image to query
 	Classification *ImageClassification `protobuf:"varint,7,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification,oneof" json:"classification,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	// Labels lists only images containing the given labels
+	Labels        *Labels `protobuf:"bytes,8,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ImageQuery) Reset() {
@@ -674,6 +676,13 @@ func (x *ImageQuery) GetClassification() ImageClassification {
 	return ImageClassification_IMAGE_CLASSIFICATION_UNSPECIFIED
 }
 
+func (x *ImageQuery) GetLabels() *Labels {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
+}
+
 var File_metalstack_api_v2_image_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_image_proto_rawDesc = "" +
@@ -712,7 +721,7 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\n" +
 	"ImageUsage\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\x12\x17\n" +
-	"\aused_by\x18\x02 \x03(\tR\x06usedBy\"\xcc\x03\n" +
+	"\aused_by\x18\x02 \x03(\tR\x06usedBy\"\x8f\x04\n" +
 	"\n" +
 	"ImageQuery\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
@@ -726,7 +735,8 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\vdescription\x18\x05 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\vdescription\x88\x01\x01\x12H\n" +
 	"\afeature\x18\x06 \x01(\x0e2\x1f.metalstack.api.v2.ImageFeatureB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\afeature\x88\x01\x01\x12]\n" +
-	"\x0eclassification\x18\a \x01(\x0e2&.metalstack.api.v2.ImageClassificationB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\x0eclassification\x88\x01\x01B\x05\n" +
+	"\x0eclassification\x18\a \x01(\x0e2&.metalstack.api.v2.ImageClassificationB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\x0eclassification\x88\x01\x01\x126\n" +
+	"\x06labels\x18\b \x01(\v2\x19.metalstack.api.v2.LabelsH\aR\x06labels\x88\x01\x01B\x05\n" +
 	"\x03_idB\x05\n" +
 	"\x03_osB\n" +
 	"\n" +
@@ -735,7 +745,8 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\f_descriptionB\n" +
 	"\n" +
 	"\b_featureB\x11\n" +
-	"\x0f_classification*\x7f\n" +
+	"\x0f_classificationB\t\n" +
+	"\a_labels*\x7f\n" +
 	"\fImageFeature\x12\x1d\n" +
 	"\x19IMAGE_FEATURE_UNSPECIFIED\x10\x00\x12&\n" +
 	"\x15IMAGE_FEATURE_MACHINE\x10\x01\x1a\v\x82\xb2\x19\amachine\x12(\n" +
@@ -781,6 +792,7 @@ var file_metalstack_api_v2_image_proto_goTypes = []any{
 	(*ImageQuery)(nil),                 // 10: metalstack.api.v2.ImageQuery
 	(*Meta)(nil),                       // 11: metalstack.api.v2.Meta
 	(*timestamppb.Timestamp)(nil),      // 12: google.protobuf.Timestamp
+	(*Labels)(nil),                     // 13: metalstack.api.v2.Labels
 }
 var file_metalstack_api_v2_image_proto_depIdxs = []int32{
 	10, // 0: metalstack.api.v2.ImageServiceListRequest.query:type_name -> metalstack.api.v2.ImageQuery
@@ -794,17 +806,18 @@ var file_metalstack_api_v2_image_proto_depIdxs = []int32{
 	8,  // 8: metalstack.api.v2.ImageUsage.image:type_name -> metalstack.api.v2.Image
 	0,  // 9: metalstack.api.v2.ImageQuery.feature:type_name -> metalstack.api.v2.ImageFeature
 	1,  // 10: metalstack.api.v2.ImageQuery.classification:type_name -> metalstack.api.v2.ImageClassification
-	2,  // 11: metalstack.api.v2.ImageService.Get:input_type -> metalstack.api.v2.ImageServiceGetRequest
-	3,  // 12: metalstack.api.v2.ImageService.List:input_type -> metalstack.api.v2.ImageServiceListRequest
-	4,  // 13: metalstack.api.v2.ImageService.Latest:input_type -> metalstack.api.v2.ImageServiceLatestRequest
-	5,  // 14: metalstack.api.v2.ImageService.Get:output_type -> metalstack.api.v2.ImageServiceGetResponse
-	6,  // 15: metalstack.api.v2.ImageService.List:output_type -> metalstack.api.v2.ImageServiceListResponse
-	7,  // 16: metalstack.api.v2.ImageService.Latest:output_type -> metalstack.api.v2.ImageServiceLatestResponse
-	14, // [14:17] is the sub-list for method output_type
-	11, // [11:14] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	13, // 11: metalstack.api.v2.ImageQuery.labels:type_name -> metalstack.api.v2.Labels
+	2,  // 12: metalstack.api.v2.ImageService.Get:input_type -> metalstack.api.v2.ImageServiceGetRequest
+	3,  // 13: metalstack.api.v2.ImageService.List:input_type -> metalstack.api.v2.ImageServiceListRequest
+	4,  // 14: metalstack.api.v2.ImageService.Latest:input_type -> metalstack.api.v2.ImageServiceLatestRequest
+	5,  // 15: metalstack.api.v2.ImageService.Get:output_type -> metalstack.api.v2.ImageServiceGetResponse
+	6,  // 16: metalstack.api.v2.ImageService.List:output_type -> metalstack.api.v2.ImageServiceListResponse
+	7,  // 17: metalstack.api.v2.ImageService.Latest:output_type -> metalstack.api.v2.ImageServiceLatestResponse
+	15, // [15:18] is the sub-list for method output_type
+	12, // [12:15] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_image_proto_init() }

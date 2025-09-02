@@ -153,6 +153,9 @@ message ImageQuery {
 
   // Classification of the image to query
   optional ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
+
+  // Labels lists only images containing the given labels
+  optional Labels labels = 8;
 }
 
 // ImageFeature
