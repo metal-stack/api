@@ -31,6 +31,6 @@ class Client:
 
 {{ range $svc := $api.Services }}
         def {{ $svc | trimSuffix "Service" | lower }}(self):
-            return {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy.{{ $svc }}Client(address=self._baseurl, session=self._session)
+            return {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connecpy.{{ $svc }}ClientSync(address=self._baseurl, session=self._session)
 {{ end }}
 {{ end }}

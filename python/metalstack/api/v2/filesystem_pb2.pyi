@@ -83,7 +83,15 @@ class FilesystemServiceListResponse(_message.Message):
     filesystem_layouts: _containers.RepeatedCompositeFieldContainer[FilesystemLayout]
     def __init__(self, filesystem_layouts: _Optional[_Iterable[_Union[FilesystemLayout, _Mapping]]] = ...) -> None: ...
 
-class FilesystemServiceTryRequest(_message.Message):
+class FilesystemServiceMatchRequest(_message.Message):
+    __slots__ = ("size_and_image", "machine_and_filesystemlayout")
+    SIZE_AND_IMAGE_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_AND_FILESYSTEMLAYOUT_FIELD_NUMBER: _ClassVar[int]
+    size_and_image: MatchImageAndSize
+    machine_and_filesystemlayout: MatchMachine
+    def __init__(self, size_and_image: _Optional[_Union[MatchImageAndSize, _Mapping]] = ..., machine_and_filesystemlayout: _Optional[_Union[MatchMachine, _Mapping]] = ...) -> None: ...
+
+class MatchImageAndSize(_message.Message):
     __slots__ = ("size", "image")
     SIZE_FIELD_NUMBER: _ClassVar[int]
     IMAGE_FIELD_NUMBER: _ClassVar[int]
@@ -91,19 +99,13 @@ class FilesystemServiceTryRequest(_message.Message):
     image: str
     def __init__(self, size: _Optional[str] = ..., image: _Optional[str] = ...) -> None: ...
 
-class FilesystemServiceMatchRequest(_message.Message):
+class MatchMachine(_message.Message):
     __slots__ = ("machine", "filesystem_layout")
     MACHINE_FIELD_NUMBER: _ClassVar[int]
     FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
     machine: str
     filesystem_layout: str
     def __init__(self, machine: _Optional[str] = ..., filesystem_layout: _Optional[str] = ...) -> None: ...
-
-class FilesystemServiceTryResponse(_message.Message):
-    __slots__ = ("filesystem_layout",)
-    FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
-    filesystem_layout: FilesystemLayout
-    def __init__(self, filesystem_layout: _Optional[_Union[FilesystemLayout, _Mapping]] = ...) -> None: ...
 
 class FilesystemServiceMatchResponse(_message.Message):
     __slots__ = ("filesystem_layout",)

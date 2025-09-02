@@ -469,15 +469,15 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.FilesystemServiceTryRequest"><span class="badge">M</span>FilesystemServiceTryRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.FilesystemServiceTryResponse"><span class="badge">M</span>FilesystemServiceTryResponse</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.LogicalVolume"><span class="badge">M</span>LogicalVolume</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MatchImageAndSize"><span class="badge">M</span>MatchImageAndSize</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MatchMachine"><span class="badge">M</span>MatchMachine</a>
                 </li>
               
                 <li>
@@ -7406,17 +7406,17 @@ having a direct membership within the tenant.</p></td>
             <tbody>
               
                 <tr>
-                  <td>machine</td>
-                  <td><a href="#string">string</a></td>
+                  <td>size_and_image</td>
+                  <td><a href="#metalstack.api.v2.MatchImageAndSize">MatchImageAndSize</a></td>
                   <td></td>
-                  <td><p>Machine to check </p></td>
+                  <td><p>SizeAndImage </p></td>
                 </tr>
               
                 <tr>
-                  <td>filesystem_layout</td>
-                  <td><a href="#string">string</a></td>
+                  <td>machine_and_filesystemlayout</td>
+                  <td><a href="#metalstack.api.v2.MatchMachine">MatchMachine</a></td>
                   <td></td>
-                  <td><p>FilesystemLayout to check </p></td>
+                  <td><p>MachineAndFilesystemlayout </p></td>
                 </tr>
               
             </tbody>
@@ -7428,61 +7428,6 @@ having a direct membership within the tenant.</p></td>
       
         <h3 id="metalstack.api.v2.FilesystemServiceMatchResponse">FilesystemServiceMatchResponse</h3>
         <p>FilesystemServiceMatchResponse</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>filesystem_layout</td>
-                  <td><a href="#metalstack.api.v2.FilesystemLayout">FilesystemLayout</a></td>
-                  <td></td>
-                  <td><p>FilesystemLayout the filesystemlayout </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.FilesystemServiceTryRequest">FilesystemServiceTryRequest</h3>
-        <p>FilesystemServiceTryRequest</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>size</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Size, machine size to try </p></td>
-                </tr>
-              
-                <tr>
-                  <td>image</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Image machine image to try </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.FilesystemServiceTryResponse">FilesystemServiceTryResponse</h3>
-        <p>FilesystemServiceTryResponse</p>
 
         
           <table class="field-table">
@@ -7541,6 +7486,68 @@ having a direct membership within the tenant.</p></td>
                   <td><a href="#metalstack.api.v2.LVMType">LVMType</a></td>
                   <td></td>
                   <td><p>LVMType the type of this logical volume can be either linear|striped|raid1 </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MatchImageAndSize">MatchImageAndSize</h3>
+        <p>MatchImageAndSize</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size, machine size to try </p></td>
+                </tr>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Image machine image to try </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MatchMachine">MatchMachine</h3>
+        <p>MatchMachine</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>machine</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Machine to check </p></td>
+                </tr>
+              
+                <tr>
+                  <td>filesystem_layout</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>FilesystemLayout to check </p></td>
                 </tr>
               
             </tbody>
@@ -7824,13 +7831,6 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#metalstack.api.v2.FilesystemServiceListRequest">FilesystemServiceListRequest</a></td>
                 <td><a href="#metalstack.api.v2.FilesystemServiceListResponse">FilesystemServiceListResponse</a></td>
                 <td><p>List all filesystems</p></td>
-              </tr>
-            
-              <tr>
-                <td>Try</td>
-                <td><a href="#metalstack.api.v2.FilesystemServiceTryRequest">FilesystemServiceTryRequest</a></td>
-                <td><a href="#metalstack.api.v2.FilesystemServiceTryResponse">FilesystemServiceTryResponse</a></td>
-                <td><p>Try a filesystems</p></td>
               </tr>
             
               <tr>
