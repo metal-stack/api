@@ -91,12 +91,6 @@ message MatchMachine {
   }];
 }
 
-// FilesystemServiceTryResponse
-message FilesystemServiceTryResponse {
-  // FilesystemLayout the filesystemlayout
-  FilesystemLayout filesystem_layout = 1;
-}
-
 // FilesystemServiceMatchResponse
 message FilesystemServiceMatchResponse {
   // FilesystemLayout the filesystemlayout
