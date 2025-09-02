@@ -107,12 +107,6 @@ class MatchMachine(_message.Message):
     filesystem_layout: str
     def __init__(self, machine: _Optional[str] = ..., filesystem_layout: _Optional[str] = ...) -> None: ...
 
-class FilesystemServiceTryResponse(_message.Message):
-    __slots__ = ("filesystem_layout",)
-    FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
-    filesystem_layout: FilesystemLayout
-    def __init__(self, filesystem_layout: _Optional[_Union[FilesystemLayout, _Mapping]] = ...) -> None: ...
-
 class FilesystemServiceMatchResponse(_message.Message):
     __slots__ = ("filesystem_layout",)
     FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]

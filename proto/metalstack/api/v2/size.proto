@@ -115,6 +115,6 @@ message SizeQuery {
     min_len: 2
     max_len: 128
   }];
-  // Labels on this network
-  Labels labels = 4;
+  // Labels lists only sizes containing the given labels
+  optional Labels labels = 4;
 }

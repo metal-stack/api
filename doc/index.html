@@ -477,10 +477,6 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.FilesystemServiceTryResponse"><span class="badge">M</span>FilesystemServiceTryResponse</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.LogicalVolume"><span class="badge">M</span>LogicalVolume</a>
                 </li>
               
@@ -7499,30 +7495,6 @@ having a direct membership within the tenant.</p></td>
 
         
       
-        <h3 id="metalstack.api.v2.FilesystemServiceTryResponse">FilesystemServiceTryResponse</h3>
-        <p>FilesystemServiceTryResponse</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>filesystem_layout</td>
-                  <td><a href="#metalstack.api.v2.FilesystemLayout">FilesystemLayout</a></td>
-                  <td></td>
-                  <td><p>FilesystemLayout the filesystemlayout </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="metalstack.api.v2.LogicalVolume">LogicalVolume</h3>
         <p>LogicalVolume</p>
 
@@ -8246,6 +8218,13 @@ having a direct membership within the tenant.</p></td>
                   <td><a href="#metalstack.api.v2.ImageClassification">ImageClassification</a></td>
                   <td>optional</td>
                   <td><p>Classification of the image to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only images containing the given labels </p></td>
                 </tr>
               
             </tbody>
@@ -9894,7 +9873,7 @@ Will be equal with project most of the time </p></td>
                 <tr>
                   <td>labels</td>
                   <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>Labels on this network </p></td>
                 </tr>
               
@@ -10720,6 +10699,13 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td><p>ID of the partition to get </p></td>
                 </tr>
               
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only partitions containing the given labels </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -10994,8 +10980,8 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                 <tr>
                   <td>labels</td>
                   <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
-                  <td></td>
-                  <td><p>Labels on this network </p></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only sizes containing the given labels </p></td>
                 </tr>
               
             </tbody>
@@ -15349,6 +15335,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><p>Name filters tenants by name </p></td>
                 </tr>
               
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only projects containing the given labels </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -17816,6 +17809,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Tenant lists only projects of this tenant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only projects containing the given labels </p></td>
                 </tr>
               
             </tbody>

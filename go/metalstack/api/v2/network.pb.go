@@ -1131,7 +1131,7 @@ type NetworkQuery struct {
 	// NATType configured
 	NatType *NATType `protobuf:"varint,13,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
 	// Labels on this network
-	Labels        *Labels `protobuf:"bytes,14,opt,name=labels,proto3" json:"labels,omitempty"`
+	Labels        *Labels `protobuf:"bytes,14,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1549,7 +1549,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x05_typeB\v\n" +
 	"\t_nat_typeB\x06\n" +
 	"\x04_vrfB\x11\n" +
-	"\x0f_parent_network\"\x9c\b\n" +
+	"\x0f_parent_network\"\xac\b\n" +
 	"\fNetworkQuery\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
@@ -1570,8 +1570,8 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x0eaddress_family\x18\v \x01(\x0e2'.metalstack.api.v2.NetworkAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\bR\raddressFamily\x88\x01\x01\x12A\n" +
 	"\x04type\x18\f \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\tR\x04type\x88\x01\x01\x12D\n" +
 	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\n" +
-	"R\anatType\x88\x01\x01\x121\n" +
-	"\x06labels\x18\x0e \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels:\xc8\x01\xbaH\xc4\x01\x1aN\n" +
+	"R\anatType\x88\x01\x01\x126\n" +
+	"\x06labels\x18\x0e \x01(\v2\x19.metalstack.api.v2.LabelsH\vR\x06labels\x88\x01\x01:\xc8\x01\xbaH\xc4\x01\x1aN\n" +
 	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
 	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())B\x05\n" +
 	"\x03_idB\a\n" +
@@ -1587,7 +1587,8 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x0f_parent_networkB\x11\n" +
 	"\x0f_address_familyB\a\n" +
 	"\x05_typeB\v\n" +
-	"\t_nat_type\"n\n" +
+	"\t_nat_typeB\t\n" +
+	"\a_labels\"n\n" +
 	"\x11ChildPrefixLength\x12\"\n" +
 	"\x04ipv4\x18\x01 \x01(\rB\t\xbaH\x06*\x04\x18  \x00H\x00R\x04ipv4\x88\x01\x01\x12#\n" +
 	"\x04ipv6\x18\x02 \x01(\rB\n" +

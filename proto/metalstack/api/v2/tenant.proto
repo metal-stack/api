@@ -139,6 +139,8 @@ message TenantServiceListRequest {
     min_len: 2
     max_len: 64
   }];
+  // Labels lists only projects containing the given labels
+  optional Labels labels = 3;
 }
 
 // TenantServiceGetRequest is the request payload of the tenant get request

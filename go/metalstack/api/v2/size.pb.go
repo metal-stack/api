@@ -431,8 +431,8 @@ type SizeQuery struct {
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of the size to query
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Labels on this network
-	Labels        *Labels `protobuf:"bytes,4,opt,name=labels,proto3" json:"labels,omitempty"`
+	// Labels lists only sizes containing the given labels
+	Labels        *Labels `protobuf:"bytes,4,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -528,18 +528,19 @@ const file_metalstack_api_v2_size_proto_rawDesc = "" +
 	"identifier\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x00\x18\x80\x01H\x00R\n" +
 	"identifier\x88\x01\x01B\r\n" +
-	"\v_identifier\"\xd7\x01\n" +
+	"\v_identifier\"\xe7\x01\n" +
 	"\tSizeQuery\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\vdescription\x88\x01\x01\x121\n" +
-	"\x06labels\x18\x04 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labelsB\x05\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\vdescription\x88\x01\x01\x126\n" +
+	"\x06labels\x18\x04 \x01(\v2\x19.metalstack.api.v2.LabelsH\x03R\x06labels\x88\x01\x01B\x05\n" +
 	"\x03_idB\a\n" +
 	"\x05_nameB\x0e\n" +
-	"\f_description*\xe8\x01\n" +
+	"\f_descriptionB\t\n" +
+	"\a_labels*\xe8\x01\n" +
 	"\x12SizeConstraintType\x12$\n" +
 	" SIZE_CONSTRAINT_TYPE_UNSPECIFIED\x10\x00\x12)\n" +
 	"\x1aSIZE_CONSTRAINT_TYPE_CORES\x10\x01\x1a\t\x82\xb2\x19\x05cores\x12+\n" +

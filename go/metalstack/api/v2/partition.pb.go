@@ -127,7 +127,9 @@ func (x *Partition) GetMgmtServiceAddresses() []string {
 type PartitionQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the partition to get
-	Id            *string `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	Id *string `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	// Labels lists only partitions containing the given labels
+	Labels        *Labels `protobuf:"bytes,2,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -167,6 +169,13 @@ func (x *PartitionQuery) GetId() string {
 		return *x.Id
 	}
 	return ""
+}
+
+func (x *PartitionQuery) GetLabels() *Labels {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
 }
 
 // PartitionBootConfiguration defines how metal-hammer boots
@@ -525,11 +534,13 @@ const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"\n" +
 	"ntp_server\x18\x06 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
 	"R\tntpServer\x124\n" +
-	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\"8\n" +
+	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\"{\n" +
 	"\x0ePartitionQuery\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01B\x05\n" +
-	"\x03_id\"\xee\x01\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x126\n" +
+	"\x06labels\x18\x02 \x01(\v2\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01B\x05\n" +
+	"\x03_idB\t\n" +
+	"\a_labels\"\xee\x01\n" +
 	"\x1aPartitionBootConfiguration\x12U\n" +
 	"\timage_url\x18\x01 \x01(\tB8\xbaH5\xba\x012\n" +
 	"\tvalid_url\x12\x17url must be a valid URI\x1a\fthis.isUri()R\bimageUrl\x12W\n" +
@@ -581,24 +592,26 @@ var file_metalstack_api_v2_partition_proto_goTypes = []any{
 	(*PartitionServiceGetResponse)(nil),  // 7: metalstack.api.v2.PartitionServiceGetResponse
 	(*PartitionServiceListResponse)(nil), // 8: metalstack.api.v2.PartitionServiceListResponse
 	(*Meta)(nil),                         // 9: metalstack.api.v2.Meta
+	(*Labels)(nil),                       // 10: metalstack.api.v2.Labels
 }
 var file_metalstack_api_v2_partition_proto_depIdxs = []int32{
-	9, // 0: metalstack.api.v2.Partition.meta:type_name -> metalstack.api.v2.Meta
-	2, // 1: metalstack.api.v2.Partition.boot_configuration:type_name -> metalstack.api.v2.PartitionBootConfiguration
-	3, // 2: metalstack.api.v2.Partition.dns_server:type_name -> metalstack.api.v2.DNSServer
-	4, // 3: metalstack.api.v2.Partition.ntp_server:type_name -> metalstack.api.v2.NTPServer
-	1, // 4: metalstack.api.v2.PartitionServiceListRequest.query:type_name -> metalstack.api.v2.PartitionQuery
-	0, // 5: metalstack.api.v2.PartitionServiceGetResponse.partition:type_name -> metalstack.api.v2.Partition
-	0, // 6: metalstack.api.v2.PartitionServiceListResponse.partitions:type_name -> metalstack.api.v2.Partition
-	5, // 7: metalstack.api.v2.PartitionService.Get:input_type -> metalstack.api.v2.PartitionServiceGetRequest
-	6, // 8: metalstack.api.v2.PartitionService.List:input_type -> metalstack.api.v2.PartitionServiceListRequest
-	7, // 9: metalstack.api.v2.PartitionService.Get:output_type -> metalstack.api.v2.PartitionServiceGetResponse
-	8, // 10: metalstack.api.v2.PartitionService.List:output_type -> metalstack.api.v2.PartitionServiceListResponse
-	9, // [9:11] is the sub-list for method output_type
-	7, // [7:9] is the sub-list for method input_type
-	7, // [7:7] is the sub-list for extension type_name
-	7, // [7:7] is the sub-list for extension extendee
-	0, // [0:7] is the sub-list for field type_name
+	9,  // 0: metalstack.api.v2.Partition.meta:type_name -> metalstack.api.v2.Meta
+	2,  // 1: metalstack.api.v2.Partition.boot_configuration:type_name -> metalstack.api.v2.PartitionBootConfiguration
+	3,  // 2: metalstack.api.v2.Partition.dns_server:type_name -> metalstack.api.v2.DNSServer
+	4,  // 3: metalstack.api.v2.Partition.ntp_server:type_name -> metalstack.api.v2.NTPServer
+	10, // 4: metalstack.api.v2.PartitionQuery.labels:type_name -> metalstack.api.v2.Labels
+	1,  // 5: metalstack.api.v2.PartitionServiceListRequest.query:type_name -> metalstack.api.v2.PartitionQuery
+	0,  // 6: metalstack.api.v2.PartitionServiceGetResponse.partition:type_name -> metalstack.api.v2.Partition
+	0,  // 7: metalstack.api.v2.PartitionServiceListResponse.partitions:type_name -> metalstack.api.v2.Partition
+	5,  // 8: metalstack.api.v2.PartitionService.Get:input_type -> metalstack.api.v2.PartitionServiceGetRequest
+	6,  // 9: metalstack.api.v2.PartitionService.List:input_type -> metalstack.api.v2.PartitionServiceListRequest
+	7,  // 10: metalstack.api.v2.PartitionService.Get:output_type -> metalstack.api.v2.PartitionServiceGetResponse
+	8,  // 11: metalstack.api.v2.PartitionService.List:output_type -> metalstack.api.v2.PartitionServiceListResponse
+	10, // [10:12] is the sub-list for method output_type
+	8,  // [8:10] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_partition_proto_init() }
