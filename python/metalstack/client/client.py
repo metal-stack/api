@@ -148,7 +148,7 @@ class Client:
             return infra_bmc_connecpy.BMCServiceClientSync(address=self._baseurl, session=self._session)
 
         def boot(self):
-            return infra_boot_connecpy.BootServiceClient(address=self._baseurl, session=self._session)
+            return infra_boot_connecpy.BootServiceClientSync(address=self._baseurl, session=self._session)
 
         def switch(self):
             return infra_switch_connecpy.SwitchServiceClientSync(address=self._baseurl, session=self._session)
