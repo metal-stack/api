@@ -645,52 +645,6 @@ func (x *MatchMachine) GetFilesystemLayout() string {
 	return ""
 }
 
-// FilesystemServiceTryResponse
-type FilesystemServiceTryResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// FilesystemLayout the filesystemlayout
-	FilesystemLayout *FilesystemLayout `protobuf:"bytes,1,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
-}
-
-func (x *FilesystemServiceTryResponse) Reset() {
-	*x = FilesystemServiceTryResponse{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *FilesystemServiceTryResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*FilesystemServiceTryResponse) ProtoMessage() {}
-
-func (x *FilesystemServiceTryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use FilesystemServiceTryResponse.ProtoReflect.Descriptor instead.
-func (*FilesystemServiceTryResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *FilesystemServiceTryResponse) GetFilesystemLayout() *FilesystemLayout {
-	if x != nil {
-		return x.FilesystemLayout
-	}
-	return nil
-}
-
 // FilesystemServiceMatchResponse
 type FilesystemServiceMatchResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -702,7 +656,7 @@ type FilesystemServiceMatchResponse struct {
 
 func (x *FilesystemServiceMatchResponse) Reset() {
 	*x = FilesystemServiceMatchResponse{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[8]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -714,7 +668,7 @@ func (x *FilesystemServiceMatchResponse) String() string {
 func (*FilesystemServiceMatchResponse) ProtoMessage() {}
 
 func (x *FilesystemServiceMatchResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[8]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -727,7 +681,7 @@ func (x *FilesystemServiceMatchResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilesystemServiceMatchResponse.ProtoReflect.Descriptor instead.
 func (*FilesystemServiceMatchResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{8}
+	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *FilesystemServiceMatchResponse) GetFilesystemLayout() *FilesystemLayout {
@@ -766,7 +720,7 @@ type FilesystemLayout struct {
 
 func (x *FilesystemLayout) Reset() {
 	*x = FilesystemLayout{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[9]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -778,7 +732,7 @@ func (x *FilesystemLayout) String() string {
 func (*FilesystemLayout) ProtoMessage() {}
 
 func (x *FilesystemLayout) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[9]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -791,7 +745,7 @@ func (x *FilesystemLayout) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilesystemLayout.ProtoReflect.Descriptor instead.
 func (*FilesystemLayout) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{9}
+	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *FilesystemLayout) GetId() string {
@@ -877,7 +831,7 @@ type FilesystemLayoutConstraints struct {
 
 func (x *FilesystemLayoutConstraints) Reset() {
 	*x = FilesystemLayoutConstraints{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[10]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -889,7 +843,7 @@ func (x *FilesystemLayoutConstraints) String() string {
 func (*FilesystemLayoutConstraints) ProtoMessage() {}
 
 func (x *FilesystemLayoutConstraints) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[10]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -902,7 +856,7 @@ func (x *FilesystemLayoutConstraints) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilesystemLayoutConstraints.ProtoReflect.Descriptor instead.
 func (*FilesystemLayoutConstraints) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{10}
+	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *FilesystemLayoutConstraints) GetSizes() []string {
@@ -944,7 +898,7 @@ type Filesystem struct {
 
 func (x *Filesystem) Reset() {
 	*x = Filesystem{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[11]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -956,7 +910,7 @@ func (x *Filesystem) String() string {
 func (*Filesystem) ProtoMessage() {}
 
 func (x *Filesystem) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[11]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -969,7 +923,7 @@ func (x *Filesystem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Filesystem.ProtoReflect.Descriptor instead.
 func (*Filesystem) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{11}
+	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *Filesystem) GetDevice() string {
@@ -1041,7 +995,7 @@ type Disk struct {
 
 func (x *Disk) Reset() {
 	*x = Disk{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[12]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1053,7 +1007,7 @@ func (x *Disk) String() string {
 func (*Disk) ProtoMessage() {}
 
 func (x *Disk) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[12]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1066,7 +1020,7 @@ func (x *Disk) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Disk.ProtoReflect.Descriptor instead.
 func (*Disk) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{12}
+	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *Disk) GetDevice() string {
@@ -1102,7 +1056,7 @@ type Raid struct {
 
 func (x *Raid) Reset() {
 	*x = Raid{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[13]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1114,7 +1068,7 @@ func (x *Raid) String() string {
 func (*Raid) ProtoMessage() {}
 
 func (x *Raid) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[13]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1127,7 +1081,7 @@ func (x *Raid) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Raid.ProtoReflect.Descriptor instead.
 func (*Raid) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{13}
+	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *Raid) GetArrayName() string {
@@ -1182,7 +1136,7 @@ type DiskPartition struct {
 
 func (x *DiskPartition) Reset() {
 	*x = DiskPartition{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[14]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1194,7 +1148,7 @@ func (x *DiskPartition) String() string {
 func (*DiskPartition) ProtoMessage() {}
 
 func (x *DiskPartition) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[14]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1207,7 +1161,7 @@ func (x *DiskPartition) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DiskPartition.ProtoReflect.Descriptor instead.
 func (*DiskPartition) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{14}
+	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *DiskPartition) GetNumber() uint32 {
@@ -1253,7 +1207,7 @@ type VolumeGroup struct {
 
 func (x *VolumeGroup) Reset() {
 	*x = VolumeGroup{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[15]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1265,7 +1219,7 @@ func (x *VolumeGroup) String() string {
 func (*VolumeGroup) ProtoMessage() {}
 
 func (x *VolumeGroup) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[15]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1278,7 +1232,7 @@ func (x *VolumeGroup) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VolumeGroup.ProtoReflect.Descriptor instead.
 func (*VolumeGroup) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{15}
+	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *VolumeGroup) GetName() string {
@@ -1319,7 +1273,7 @@ type LogicalVolume struct {
 
 func (x *LogicalVolume) Reset() {
 	*x = LogicalVolume{}
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[16]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1331,7 +1285,7 @@ func (x *LogicalVolume) String() string {
 func (*LogicalVolume) ProtoMessage() {}
 
 func (x *LogicalVolume) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[16]
+	mi := &file_metalstack_api_v2_filesystem_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1344,7 +1298,7 @@ func (x *LogicalVolume) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LogicalVolume.ProtoReflect.Descriptor instead.
 func (*LogicalVolume) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{16}
+	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *LogicalVolume) GetName() string {
@@ -1403,9 +1357,7 @@ const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\fMatchMachine\x12\"\n" +
 	"\amachine\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\amachine\x127\n" +
 	"\x11filesystem_layout\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x10filesystemLayout\"p\n" +
-	"\x1cFilesystemServiceTryResponse\x12P\n" +
-	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"r\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x10filesystemLayout\"r\n" +
 	"\x1eFilesystemServiceMatchResponse\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xcb\x04\n" +
 	"\x10FilesystemLayout\x12\x1a\n" +
@@ -1525,7 +1477,7 @@ func file_metalstack_api_v2_filesystem_proto_rawDescGZIP() []byte {
 }
 
 var file_metalstack_api_v2_filesystem_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_metalstack_api_v2_filesystem_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_metalstack_api_v2_filesystem_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_metalstack_api_v2_filesystem_proto_goTypes = []any{
 	(LVMType)(0),                           // 0: metalstack.api.v2.LVMType
 	(Format)(0),                            // 1: metalstack.api.v2.Format
@@ -1538,50 +1490,48 @@ var file_metalstack_api_v2_filesystem_proto_goTypes = []any{
 	(*FilesystemServiceMatchRequest)(nil),  // 8: metalstack.api.v2.FilesystemServiceMatchRequest
 	(*MatchImageAndSize)(nil),              // 9: metalstack.api.v2.MatchImageAndSize
 	(*MatchMachine)(nil),                   // 10: metalstack.api.v2.MatchMachine
-	(*FilesystemServiceTryResponse)(nil),   // 11: metalstack.api.v2.FilesystemServiceTryResponse
-	(*FilesystemServiceMatchResponse)(nil), // 12: metalstack.api.v2.FilesystemServiceMatchResponse
-	(*FilesystemLayout)(nil),               // 13: metalstack.api.v2.FilesystemLayout
-	(*FilesystemLayoutConstraints)(nil),    // 14: metalstack.api.v2.FilesystemLayoutConstraints
-	(*Filesystem)(nil),                     // 15: metalstack.api.v2.Filesystem
-	(*Disk)(nil),                           // 16: metalstack.api.v2.Disk
-	(*Raid)(nil),                           // 17: metalstack.api.v2.Raid
-	(*DiskPartition)(nil),                  // 18: metalstack.api.v2.DiskPartition
-	(*VolumeGroup)(nil),                    // 19: metalstack.api.v2.VolumeGroup
-	(*LogicalVolume)(nil),                  // 20: metalstack.api.v2.LogicalVolume
-	nil,                                    // 21: metalstack.api.v2.FilesystemLayoutConstraints.ImagesEntry
-	(*Meta)(nil),                           // 22: metalstack.api.v2.Meta
+	(*FilesystemServiceMatchResponse)(nil), // 11: metalstack.api.v2.FilesystemServiceMatchResponse
+	(*FilesystemLayout)(nil),               // 12: metalstack.api.v2.FilesystemLayout
+	(*FilesystemLayoutConstraints)(nil),    // 13: metalstack.api.v2.FilesystemLayoutConstraints
+	(*Filesystem)(nil),                     // 14: metalstack.api.v2.Filesystem
+	(*Disk)(nil),                           // 15: metalstack.api.v2.Disk
+	(*Raid)(nil),                           // 16: metalstack.api.v2.Raid
+	(*DiskPartition)(nil),                  // 17: metalstack.api.v2.DiskPartition
+	(*VolumeGroup)(nil),                    // 18: metalstack.api.v2.VolumeGroup
+	(*LogicalVolume)(nil),                  // 19: metalstack.api.v2.LogicalVolume
+	nil,                                    // 20: metalstack.api.v2.FilesystemLayoutConstraints.ImagesEntry
+	(*Meta)(nil),                           // 21: metalstack.api.v2.Meta
 }
 var file_metalstack_api_v2_filesystem_proto_depIdxs = []int32{
-	13, // 0: metalstack.api.v2.FilesystemServiceGetResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	13, // 1: metalstack.api.v2.FilesystemServiceListResponse.filesystem_layouts:type_name -> metalstack.api.v2.FilesystemLayout
+	12, // 0: metalstack.api.v2.FilesystemServiceGetResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
+	12, // 1: metalstack.api.v2.FilesystemServiceListResponse.filesystem_layouts:type_name -> metalstack.api.v2.FilesystemLayout
 	9,  // 2: metalstack.api.v2.FilesystemServiceMatchRequest.size_and_image:type_name -> metalstack.api.v2.MatchImageAndSize
 	10, // 3: metalstack.api.v2.FilesystemServiceMatchRequest.machine_and_filesystemlayout:type_name -> metalstack.api.v2.MatchMachine
-	13, // 4: metalstack.api.v2.FilesystemServiceTryResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	13, // 5: metalstack.api.v2.FilesystemServiceMatchResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	22, // 6: metalstack.api.v2.FilesystemLayout.meta:type_name -> metalstack.api.v2.Meta
-	15, // 7: metalstack.api.v2.FilesystemLayout.filesystems:type_name -> metalstack.api.v2.Filesystem
-	16, // 8: metalstack.api.v2.FilesystemLayout.disks:type_name -> metalstack.api.v2.Disk
-	17, // 9: metalstack.api.v2.FilesystemLayout.raid:type_name -> metalstack.api.v2.Raid
-	19, // 10: metalstack.api.v2.FilesystemLayout.volume_groups:type_name -> metalstack.api.v2.VolumeGroup
-	20, // 11: metalstack.api.v2.FilesystemLayout.logical_volumes:type_name -> metalstack.api.v2.LogicalVolume
-	14, // 12: metalstack.api.v2.FilesystemLayout.constraints:type_name -> metalstack.api.v2.FilesystemLayoutConstraints
-	21, // 13: metalstack.api.v2.FilesystemLayoutConstraints.images:type_name -> metalstack.api.v2.FilesystemLayoutConstraints.ImagesEntry
-	1,  // 14: metalstack.api.v2.Filesystem.format:type_name -> metalstack.api.v2.Format
-	18, // 15: metalstack.api.v2.Disk.partitions:type_name -> metalstack.api.v2.DiskPartition
-	3,  // 16: metalstack.api.v2.Raid.level:type_name -> metalstack.api.v2.RaidLevel
-	2,  // 17: metalstack.api.v2.DiskPartition.gpt_type:type_name -> metalstack.api.v2.GPTType
-	0,  // 18: metalstack.api.v2.LogicalVolume.lvm_type:type_name -> metalstack.api.v2.LVMType
-	4,  // 19: metalstack.api.v2.FilesystemService.Get:input_type -> metalstack.api.v2.FilesystemServiceGetRequest
-	5,  // 20: metalstack.api.v2.FilesystemService.List:input_type -> metalstack.api.v2.FilesystemServiceListRequest
-	8,  // 21: metalstack.api.v2.FilesystemService.Match:input_type -> metalstack.api.v2.FilesystemServiceMatchRequest
-	6,  // 22: metalstack.api.v2.FilesystemService.Get:output_type -> metalstack.api.v2.FilesystemServiceGetResponse
-	7,  // 23: metalstack.api.v2.FilesystemService.List:output_type -> metalstack.api.v2.FilesystemServiceListResponse
-	12, // 24: metalstack.api.v2.FilesystemService.Match:output_type -> metalstack.api.v2.FilesystemServiceMatchResponse
-	22, // [22:25] is the sub-list for method output_type
-	19, // [19:22] is the sub-list for method input_type
-	19, // [19:19] is the sub-list for extension type_name
-	19, // [19:19] is the sub-list for extension extendee
-	0,  // [0:19] is the sub-list for field type_name
+	12, // 4: metalstack.api.v2.FilesystemServiceMatchResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
+	21, // 5: metalstack.api.v2.FilesystemLayout.meta:type_name -> metalstack.api.v2.Meta
+	14, // 6: metalstack.api.v2.FilesystemLayout.filesystems:type_name -> metalstack.api.v2.Filesystem
+	15, // 7: metalstack.api.v2.FilesystemLayout.disks:type_name -> metalstack.api.v2.Disk
+	16, // 8: metalstack.api.v2.FilesystemLayout.raid:type_name -> metalstack.api.v2.Raid
+	18, // 9: metalstack.api.v2.FilesystemLayout.volume_groups:type_name -> metalstack.api.v2.VolumeGroup
+	19, // 10: metalstack.api.v2.FilesystemLayout.logical_volumes:type_name -> metalstack.api.v2.LogicalVolume
+	13, // 11: metalstack.api.v2.FilesystemLayout.constraints:type_name -> metalstack.api.v2.FilesystemLayoutConstraints
+	20, // 12: metalstack.api.v2.FilesystemLayoutConstraints.images:type_name -> metalstack.api.v2.FilesystemLayoutConstraints.ImagesEntry
+	1,  // 13: metalstack.api.v2.Filesystem.format:type_name -> metalstack.api.v2.Format
+	17, // 14: metalstack.api.v2.Disk.partitions:type_name -> metalstack.api.v2.DiskPartition
+	3,  // 15: metalstack.api.v2.Raid.level:type_name -> metalstack.api.v2.RaidLevel
+	2,  // 16: metalstack.api.v2.DiskPartition.gpt_type:type_name -> metalstack.api.v2.GPTType
+	0,  // 17: metalstack.api.v2.LogicalVolume.lvm_type:type_name -> metalstack.api.v2.LVMType
+	4,  // 18: metalstack.api.v2.FilesystemService.Get:input_type -> metalstack.api.v2.FilesystemServiceGetRequest
+	5,  // 19: metalstack.api.v2.FilesystemService.List:input_type -> metalstack.api.v2.FilesystemServiceListRequest
+	8,  // 20: metalstack.api.v2.FilesystemService.Match:input_type -> metalstack.api.v2.FilesystemServiceMatchRequest
+	6,  // 21: metalstack.api.v2.FilesystemService.Get:output_type -> metalstack.api.v2.FilesystemServiceGetResponse
+	7,  // 22: metalstack.api.v2.FilesystemService.List:output_type -> metalstack.api.v2.FilesystemServiceListResponse
+	11, // 23: metalstack.api.v2.FilesystemService.Match:output_type -> metalstack.api.v2.FilesystemServiceMatchResponse
+	21, // [21:24] is the sub-list for method output_type
+	18, // [18:21] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_filesystem_proto_init() }
@@ -1595,16 +1545,16 @@ func file_metalstack_api_v2_filesystem_proto_init() {
 		(*FilesystemServiceMatchRequest_SizeAndImage)(nil),
 		(*FilesystemServiceMatchRequest_MachineAndFilesystemlayout)(nil),
 	}
-	file_metalstack_api_v2_filesystem_proto_msgTypes[9].OneofWrappers = []any{}
-	file_metalstack_api_v2_filesystem_proto_msgTypes[11].OneofWrappers = []any{}
-	file_metalstack_api_v2_filesystem_proto_msgTypes[14].OneofWrappers = []any{}
+	file_metalstack_api_v2_filesystem_proto_msgTypes[8].OneofWrappers = []any{}
+	file_metalstack_api_v2_filesystem_proto_msgTypes[10].OneofWrappers = []any{}
+	file_metalstack_api_v2_filesystem_proto_msgTypes[13].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_filesystem_proto_rawDesc), len(file_metalstack_api_v2_filesystem_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   18,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

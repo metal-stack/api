@@ -17,7 +17,7 @@ project = os.environ['PROJECT_ID']
 client = apiclient.Client(baseurl=baseurl, token=token, timeout=timeout_s)
 
 try:
-    resp = client.apiv2().ip().List(request=ip_pb2.IPServiceListRequest(
+    resp = client.apiv2().ip().list(request=ip_pb2.IPServiceListRequest(
         project=project))
 except ConnecpyException as e:
     print(e.code, e.message, e.to_dict())
@@ -27,7 +27,7 @@ except ConnecpyException as e:
 for ip in resp.ips:
     print(ip.ip, ip.name, ip.project, ip.network)
 
-resp = client.adminv2().network().List(
+resp = client.adminv2().network().list(
     request=network_pb2.NetworkServiceListRequest())
 
 for nw in resp.networks:
