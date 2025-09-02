@@ -83,7 +83,7 @@ class Client:
             return admin_size_connecpy.SizeServiceClientSync(address=self._baseurl, session=self._session)
 
         def switch(self):
-            return admin_switch_connecpy.SwitchServiceClient(address=self._baseurl, session=self._session)
+            return admin_switch_connecpy.SwitchServiceClientSync(address=self._baseurl, session=self._session)
 
         def tenant(self):
             return admin_tenant_connecpy.TenantServiceClientSync(address=self._baseurl, session=self._session)
