@@ -27,10 +27,12 @@ class Partition(_message.Message):
     def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., boot_configuration: _Optional[_Union[PartitionBootConfiguration, _Mapping]] = ..., dns_server: _Optional[_Iterable[_Union[DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[NTPServer, _Mapping]]] = ..., mgmt_service_addresses: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class PartitionQuery(_message.Message):
-    __slots__ = ("id",)
+    __slots__ = ("id", "labels")
     ID_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     id: str
-    def __init__(self, id: _Optional[str] = ...) -> None: ...
+    labels: _common_pb2.Labels
+    def __init__(self, id: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class PartitionBootConfiguration(_message.Message):
     __slots__ = ("image_url", "kernel_url", "commandline")

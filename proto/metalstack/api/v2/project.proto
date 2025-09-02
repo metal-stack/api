@@ -141,6 +141,8 @@ message ProjectServiceListRequest {
     min_len: 2
     max_len: 128
   }];
+  // Labels lists only projects containing the given labels
+  optional Labels labels = 6;
 }
 
 // ProjectServiceListResponse is the response payload to list all projects

@@ -48,6 +48,8 @@ message PartitionQuery {
     min_len: 2
     max_len: 128
   }];
+  // Labels lists only partitions containing the given labels
+  optional Labels labels = 2;
 }
 
 // PartitionBootConfiguration defines how metal-hammer boots
