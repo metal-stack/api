@@ -62,31 +62,31 @@ class Client:
 
 
         def filesystem(self):
-            return admin_filesystem_connecpy.FilesystemServiceClient(address=self._baseurl, session=self._session)
+            return admin_filesystem_connecpy.FilesystemServiceClientSync(address=self._baseurl, session=self._session)
 
         def image(self):
-            return admin_image_connecpy.ImageServiceClient(address=self._baseurl, session=self._session)
+            return admin_image_connecpy.ImageServiceClientSync(address=self._baseurl, session=self._session)
 
         def ip(self):
-            return admin_ip_connecpy.IPServiceClient(address=self._baseurl, session=self._session)
+            return admin_ip_connecpy.IPServiceClientSync(address=self._baseurl, session=self._session)
 
         def machine(self):
-            return admin_machine_connecpy.MachineServiceClient(address=self._baseurl, session=self._session)
+            return admin_machine_connecpy.MachineServiceClientSync(address=self._baseurl, session=self._session)
 
         def network(self):
-            return admin_network_connecpy.NetworkServiceClient(address=self._baseurl, session=self._session)
+            return admin_network_connecpy.NetworkServiceClientSync(address=self._baseurl, session=self._session)
 
         def partition(self):
-            return admin_partition_connecpy.PartitionServiceClient(address=self._baseurl, session=self._session)
+            return admin_partition_connecpy.PartitionServiceClientSync(address=self._baseurl, session=self._session)
 
         def size(self):
-            return admin_size_connecpy.SizeServiceClient(address=self._baseurl, session=self._session)
+            return admin_size_connecpy.SizeServiceClientSync(address=self._baseurl, session=self._session)
 
         def tenant(self):
-            return admin_tenant_connecpy.TenantServiceClient(address=self._baseurl, session=self._session)
+            return admin_tenant_connecpy.TenantServiceClientSync(address=self._baseurl, session=self._session)
 
         def token(self):
-            return admin_token_connecpy.TokenServiceClient(address=self._baseurl, session=self._session)
+            return admin_token_connecpy.TokenServiceClientSync(address=self._baseurl, session=self._session)
 
 
     class _Apiv2:
@@ -96,46 +96,46 @@ class Client:
 
 
         def filesystem(self):
-            return api_filesystem_connecpy.FilesystemServiceClient(address=self._baseurl, session=self._session)
+            return api_filesystem_connecpy.FilesystemServiceClientSync(address=self._baseurl, session=self._session)
 
         def health(self):
-            return api_health_connecpy.HealthServiceClient(address=self._baseurl, session=self._session)
+            return api_health_connecpy.HealthServiceClientSync(address=self._baseurl, session=self._session)
 
         def image(self):
-            return api_image_connecpy.ImageServiceClient(address=self._baseurl, session=self._session)
+            return api_image_connecpy.ImageServiceClientSync(address=self._baseurl, session=self._session)
 
         def ip(self):
-            return api_ip_connecpy.IPServiceClient(address=self._baseurl, session=self._session)
+            return api_ip_connecpy.IPServiceClientSync(address=self._baseurl, session=self._session)
 
         def machine(self):
-            return api_machine_connecpy.MachineServiceClient(address=self._baseurl, session=self._session)
+            return api_machine_connecpy.MachineServiceClientSync(address=self._baseurl, session=self._session)
 
         def method(self):
-            return api_method_connecpy.MethodServiceClient(address=self._baseurl, session=self._session)
+            return api_method_connecpy.MethodServiceClientSync(address=self._baseurl, session=self._session)
 
         def network(self):
-            return api_network_connecpy.NetworkServiceClient(address=self._baseurl, session=self._session)
+            return api_network_connecpy.NetworkServiceClientSync(address=self._baseurl, session=self._session)
 
         def partition(self):
-            return api_partition_connecpy.PartitionServiceClient(address=self._baseurl, session=self._session)
+            return api_partition_connecpy.PartitionServiceClientSync(address=self._baseurl, session=self._session)
 
         def project(self):
-            return api_project_connecpy.ProjectServiceClient(address=self._baseurl, session=self._session)
+            return api_project_connecpy.ProjectServiceClientSync(address=self._baseurl, session=self._session)
 
         def size(self):
-            return api_size_connecpy.SizeServiceClient(address=self._baseurl, session=self._session)
+            return api_size_connecpy.SizeServiceClientSync(address=self._baseurl, session=self._session)
 
         def tenant(self):
-            return api_tenant_connecpy.TenantServiceClient(address=self._baseurl, session=self._session)
+            return api_tenant_connecpy.TenantServiceClientSync(address=self._baseurl, session=self._session)
 
         def token(self):
-            return api_token_connecpy.TokenServiceClient(address=self._baseurl, session=self._session)
+            return api_token_connecpy.TokenServiceClientSync(address=self._baseurl, session=self._session)
 
         def user(self):
-            return api_user_connecpy.UserServiceClient(address=self._baseurl, session=self._session)
+            return api_user_connecpy.UserServiceClientSync(address=self._baseurl, session=self._session)
 
         def version(self):
-            return api_version_connecpy.VersionServiceClient(address=self._baseurl, session=self._session)
+            return api_version_connecpy.VersionServiceClientSync(address=self._baseurl, session=self._session)
 
 
     class _Infrav2:
@@ -145,12 +145,12 @@ class Client:
 
 
         def bmc(self):
-            return infra_bmc_connecpy.BMCServiceClient(address=self._baseurl, session=self._session)
+            return infra_bmc_connecpy.BMCServiceClientSync(address=self._baseurl, session=self._session)
 
         def boot(self):
             return infra_boot_connecpy.BootServiceClient(address=self._baseurl, session=self._session)
 
         def switch(self):
-            return infra_switch_connecpy.SwitchServiceClient(address=self._baseurl, session=self._session)
+            return infra_switch_connecpy.SwitchServiceClientSync(address=self._baseurl, session=self._session)
 
 
