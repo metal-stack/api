@@ -97,7 +97,7 @@ class ImageUsage(_message.Message):
     def __init__(self, image: _Optional[_Union[Image, _Mapping]] = ..., used_by: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class ImageQuery(_message.Message):
-    __slots__ = ("id", "os", "version", "name", "description", "feature", "classification")
+    __slots__ = ("id", "os", "version", "name", "description", "feature", "classification", "labels")
     ID_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
     VERSION_FIELD_NUMBER: _ClassVar[int]
@@ -105,6 +105,7 @@ class ImageQuery(_message.Message):
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     FEATURE_FIELD_NUMBER: _ClassVar[int]
     CLASSIFICATION_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     id: str
     os: str
     version: str
@@ -112,4 +113,5 @@ class ImageQuery(_message.Message):
     description: str
     feature: ImageFeature
     classification: ImageClassification
-    def __init__(self, id: _Optional[str] = ..., os: _Optional[str] = ..., version: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., feature: _Optional[_Union[ImageFeature, str]] = ..., classification: _Optional[_Union[ImageClassification, str]] = ...) -> None: ...
+    labels: _common_pb2.Labels
+    def __init__(self, id: _Optional[str] = ..., os: _Optional[str] = ..., version: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., feature: _Optional[_Union[ImageFeature, str]] = ..., classification: _Optional[_Union[ImageClassification, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...

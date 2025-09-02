@@ -62,14 +62,16 @@ class ProjectInvite(_message.Message):
     def __init__(self, secret: _Optional[str] = ..., project: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ..., joined: _Optional[bool] = ..., project_name: _Optional[str] = ..., tenant: _Optional[str] = ..., tenant_name: _Optional[str] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., joined_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class ProjectServiceListRequest(_message.Message):
-    __slots__ = ("id", "name", "tenant")
+    __slots__ = ("id", "name", "tenant", "labels")
     ID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     TENANT_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     id: str
     name: str
     tenant: str
-    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., tenant: _Optional[str] = ...) -> None: ...
+    labels: _common_pb2.Labels
+    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., tenant: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class ProjectServiceListResponse(_message.Message):
     __slots__ = ("projects",)

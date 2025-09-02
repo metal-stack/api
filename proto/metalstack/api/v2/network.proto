@@ -297,7 +297,7 @@ message NetworkQuery {
   // NATType configured
   optional NATType nat_type = 13 [(buf.validate.field).enum.defined_only = true];
   // Labels on this network
-  Labels labels = 14;
+  optional Labels labels = 14;
 }
 
 // ChildPrefixLength
