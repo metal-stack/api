@@ -52,6 +52,26 @@ func (_m *Infrav2) Boot() infrav2connect.BootServiceClient {
 	return r0
 }
 
+// Event provides a mock function with no fields
+func (_m *Infrav2) Event() infrav2connect.EventServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Event")
+	}
+
+	var r0 infrav2connect.EventServiceClient
+	if rf, ok := ret.Get(0).(func() infrav2connect.EventServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(infrav2connect.EventServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Switch provides a mock function with no fields
 func (_m *Infrav2) Switch() infrav2connect.SwitchServiceClient {
 	ret := _m.Called()

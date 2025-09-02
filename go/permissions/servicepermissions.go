@@ -32,6 +32,7 @@ func GetServices() []string {
 		"metalstack.api.v2.VersionService",
 		"metalstack.infra.v2.BMCService",
 		"metalstack.infra.v2.BootService",
+		"metalstack.infra.v2.EventService",
 		"metalstack.infra.v2.SwitchService",
 	}
 }
@@ -93,10 +94,10 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.infra.v2.SwitchService/Register",
 				},
 				"MACHINE_ROLE_EDITOR": []string{
-					"/metalstack.infra.v2.BootService/Report",
+					"/metalstack.infra.v2.EventService/Send",
 				},
 				"MACHINE_ROLE_VIEWER": []string{
-					"/metalstack.infra.v2.BootService/Report",
+					"/metalstack.infra.v2.EventService/Send",
 				},
 			},
 			Machine: Machine{
@@ -107,10 +108,10 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.infra.v2.SwitchService/Register",
 				},
 				"MACHINE_ROLE_EDITOR": []string{
-					"/metalstack.infra.v2.BootService/Report",
+					"/metalstack.infra.v2.EventService/Send",
 				},
 				"MACHINE_ROLE_VIEWER": []string{
-					"/metalstack.infra.v2.BootService/Report",
+					"/metalstack.infra.v2.EventService/Send",
 				},
 			},
 			Tenant: Tenant{
@@ -293,6 +294,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.infra.v2.BootService/Report":            true,
 			"/metalstack.infra.v2.BootService/SuperUserPassword": true,
 			"/metalstack.infra.v2.BootService/Wait":              true,
+			"/metalstack.infra.v2.EventService/Send":             true,
+			"/metalstack.infra.v2.EventService/SendMulti":        true,
 			"/metalstack.infra.v2.SwitchService/Register":        true,
 		},
 		Visibility: Visibility{
@@ -363,6 +366,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
 				"/metalstack.infra.v2.BootService/Boot":         true,
 				"/metalstack.infra.v2.BootService/Dhcp":         true,
+				"/metalstack.infra.v2.EventService/SendMulti":   true,
 				"/metalstack.infra.v2.SwitchService/Register":   true,
 			},
 			Machine: map[string]bool{
@@ -370,6 +374,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.infra.v2.BootService/Report":            true,
 				"/metalstack.infra.v2.BootService/SuperUserPassword": true,
 				"/metalstack.infra.v2.BootService/Wait":              true,
+				"/metalstack.infra.v2.EventService/Send":             true,
 			},
 			Tenant: map[string]bool{
 				"/metalstack.api.v2.ProjectService/Create":      true,
@@ -505,6 +510,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.infra.v2.BootService/Report":            false,
 			"/metalstack.infra.v2.BootService/SuperUserPassword": false,
 			"/metalstack.infra.v2.BootService/Wait":              false,
+			"/metalstack.infra.v2.EventService/Send":             false,
+			"/metalstack.infra.v2.EventService/SendMulti":        false,
 			"/metalstack.infra.v2.SwitchService/Register":        false,
 		},
 	}

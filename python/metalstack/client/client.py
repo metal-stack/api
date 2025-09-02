@@ -29,6 +29,7 @@ import metalstack.api.v2.version_connecpy as api_version_connecpy
 
 import metalstack.infra.v2.bmc_connecpy as infra_bmc_connecpy
 import metalstack.infra.v2.boot_connecpy as infra_boot_connecpy
+import metalstack.infra.v2.event_connecpy as infra_event_connecpy
 import metalstack.infra.v2.switch_connecpy as infra_switch_connecpy
 
 
@@ -149,6 +150,9 @@ class Client:
 
         def boot(self):
             return infra_boot_connecpy.BootServiceClientSync(address=self._baseurl, session=self._session)
+
+        def event(self):
+            return infra_event_connecpy.EventServiceClientSync(address=self._baseurl, session=self._session)
 
         def switch(self):
             return infra_switch_connecpy.SwitchServiceClientSync(address=self._baseurl, session=self._session)
