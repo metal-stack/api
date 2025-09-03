@@ -162,15 +162,15 @@ message SwitchQuery {
     max_len: 128
   }];
   // Switch OS specific queries.
-  optional SwitchOSQuery switch_os = 4;
+  optional SwitchOSQuery os = 4;
 }
 
 // SwitchOSQuery holds OS specific query parameters.
 message SwitchOSQuery {
   // OsVendor of the switch OS by which to filter the switches.
-  optional SwitchOSVendor os_vendor = 1 [(buf.validate.field).enum.defined_only = true];
+  optional SwitchOSVendor vendor = 1 [(buf.validate.field).enum.defined_only = true];
   // OsVersion of the OS by which to filter the switches.
-  optional string os_version = 2 [(buf.validate.field).string = {
+  optional string version = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];

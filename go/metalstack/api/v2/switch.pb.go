@@ -762,7 +762,7 @@ type SwitchQuery struct {
 	// Rack of the switches to list.
 	Rack *string `protobuf:"bytes,3,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
 	// Switch OS specific queries.
-	SwitchOs      *SwitchOSQuery `protobuf:"bytes,4,opt,name=switch_os,json=switchOs,proto3,oneof" json:"switch_os,omitempty"`
+	Os            *SwitchOSQuery `protobuf:"bytes,4,opt,name=os,proto3,oneof" json:"os,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -818,9 +818,9 @@ func (x *SwitchQuery) GetRack() string {
 	return ""
 }
 
-func (x *SwitchQuery) GetSwitchOs() *SwitchOSQuery {
+func (x *SwitchQuery) GetOs() *SwitchOSQuery {
 	if x != nil {
-		return x.SwitchOs
+		return x.Os
 	}
 	return nil
 }
@@ -829,9 +829,9 @@ func (x *SwitchQuery) GetSwitchOs() *SwitchOSQuery {
 type SwitchOSQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// OsVendor of the switch OS by which to filter the switches.
-	OsVendor *SwitchOSVendor `protobuf:"varint,1,opt,name=os_vendor,json=osVendor,proto3,enum=metalstack.api.v2.SwitchOSVendor,oneof" json:"os_vendor,omitempty"`
+	Vendor *SwitchOSVendor `protobuf:"varint,1,opt,name=vendor,proto3,enum=metalstack.api.v2.SwitchOSVendor,oneof" json:"vendor,omitempty"`
 	// OsVersion of the OS by which to filter the switches.
-	OsVersion     *string `protobuf:"bytes,2,opt,name=os_version,json=osVersion,proto3,oneof" json:"os_version,omitempty"`
+	Version       *string `protobuf:"bytes,2,opt,name=version,proto3,oneof" json:"version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -866,16 +866,16 @@ func (*SwitchOSQuery) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *SwitchOSQuery) GetOsVendor() SwitchOSVendor {
-	if x != nil && x.OsVendor != nil {
-		return *x.OsVendor
+func (x *SwitchOSQuery) GetVendor() SwitchOSVendor {
+	if x != nil && x.Vendor != nil {
+		return *x.Vendor
 	}
 	return SwitchOSVendor_SWITCH_OS_VENDOR_UNSPECIFIED
 }
 
-func (x *SwitchOSQuery) GetOsVersion() string {
-	if x != nil && x.OsVersion != nil {
-		return *x.OsVersion
+func (x *SwitchOSQuery) GetVersion() string {
+	if x != nil && x.Version != nil {
+		return *x.Version
 	}
 	return ""
 }
@@ -945,28 +945,26 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x17accepted_prefix_counter\x18\a \x01(\x04R\x15acceptedPrefixCounter\"\x9a\x01\n" +
 	"\bNicState\x12G\n" +
 	"\adesired\x18\x01 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\adesired\x12E\n" +
-	"\x06actual\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06actual\"\xf4\x01\n" +
+	"\x06actual\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06actual\"\xe0\x01\n" +
 	"\vSwitchQuery\x12!\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01H\x00R\x02id\x88\x01\x01\x12-\n" +
 	"\tpartition\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\tpartition\x88\x01\x01\x12#\n" +
 	"\x04rack\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\x04rack\x88\x01\x01\x12B\n" +
-	"\tswitch_os\x18\x04 \x01(\v2 .metalstack.api.v2.SwitchOSQueryH\x03R\bswitchOs\x88\x01\x01B\x05\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\x04rack\x88\x01\x01\x125\n" +
+	"\x02os\x18\x04 \x01(\v2 .metalstack.api.v2.SwitchOSQueryH\x03R\x02os\x88\x01\x01B\x05\n" +
 	"\x03_idB\f\n" +
 	"\n" +
 	"_partitionB\a\n" +
-	"\x05_rackB\f\n" +
+	"\x05_rackB\x05\n" +
+	"\x03_os\"\x9b\x01\n" +
+	"\rSwitchOSQuery\x12H\n" +
+	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x06vendor\x88\x01\x01\x12)\n" +
+	"\aversion\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\aversion\x88\x01\x01B\t\n" +
+	"\a_vendorB\n" +
 	"\n" +
-	"_switch_os\"\xab\x01\n" +
-	"\rSwitchOSQuery\x12M\n" +
-	"\tos_vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\bosVendor\x88\x01\x01\x12.\n" +
-	"\n" +
-	"os_version\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\tosVersion\x88\x01\x01B\f\n" +
-	"\n" +
-	"_os_vendorB\r\n" +
-	"\v_os_version*\x8b\x02\n" +
+	"\b_version*\x8b\x02\n" +
 	"\bBGPState\x12\x19\n" +
 	"\x15BGP_STATE_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x0eBGP_STATE_IDLE\x10\x01\x1a\b\x82\xb2\x19\x04idle\x12\"\n" +
@@ -1031,8 +1029,8 @@ var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	12, // 8: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Duration
 	3,  // 9: metalstack.api.v2.NicState.desired:type_name -> metalstack.api.v2.SwitchPortStatus
 	3,  // 10: metalstack.api.v2.NicState.actual:type_name -> metalstack.api.v2.SwitchPortStatus
-	11, // 11: metalstack.api.v2.SwitchQuery.switch_os:type_name -> metalstack.api.v2.SwitchOSQuery
-	2,  // 12: metalstack.api.v2.SwitchOSQuery.os_vendor:type_name -> metalstack.api.v2.SwitchOSVendor
+	11, // 11: metalstack.api.v2.SwitchQuery.os:type_name -> metalstack.api.v2.SwitchOSQuery
+	2,  // 12: metalstack.api.v2.SwitchOSQuery.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
 	13, // [13:13] is the sub-list for method output_type
 	13, // [13:13] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
