@@ -10,10 +10,12 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class BootServiceDhcpRequest(_message.Message):
-    __slots__ = ("uuid",)
+    __slots__ = ("uuid", "partition_id")
     UUID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_ID_FIELD_NUMBER: _ClassVar[int]
     uuid: str
-    def __init__(self, uuid: _Optional[str] = ...) -> None: ...
+    partition_id: str
+    def __init__(self, uuid: _Optional[str] = ..., partition_id: _Optional[str] = ...) -> None: ...
 
 class BootServiceDhcpResponse(_message.Message):
     __slots__ = ()

@@ -27,7 +27,9 @@ const (
 type BootServiceDhcpRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine
-	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Partition where this machine is located
+	PartitionId   string `protobuf:"bytes,2,opt,name=partition_id,json=partitionId,proto3" json:"partition_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -65,6 +67,13 @@ func (*BootServiceDhcpRequest) Descriptor() ([]byte, []int) {
 func (x *BootServiceDhcpRequest) GetUuid() string {
 	if x != nil {
 		return x.Uuid
+	}
+	return ""
+}
+
+func (x *BootServiceDhcpRequest) GetPartitionId() string {
+	if x != nil {
+		return x.PartitionId
 	}
 	return ""
 }
@@ -687,9 +696,11 @@ var File_metalstack_infra_v2_boot_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"6\n" +
+	"\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"e\n" +
 	"\x16BootServiceDhcpRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x19\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12-\n" +
+	"\fpartition_id\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vpartitionId\"\x19\n" +
 	"\x17BootServiceDhcpResponse\"\xc6\x01\n" +
 	"\x16BootServiceBootRequest\x12}\n" +
 	"\x03mac\x18\x01 \x01(\tBk\xbaHh\xba\x01e\n" +

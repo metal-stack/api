@@ -59,6 +59,11 @@ service BootService {
 message BootServiceDhcpRequest {
   // UUID of the machine
   string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Partition where this machine is located
+  string partition_id = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
 }
 
 // BootServiceDhcpResponse contains the response to a dhcp request
