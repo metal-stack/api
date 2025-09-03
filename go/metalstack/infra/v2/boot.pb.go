@@ -29,7 +29,7 @@ type BootServiceDhcpRequest struct {
 	// UUID of the machine
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Partition where this machine is located
-	PartitionId   string `protobuf:"bytes,2,opt,name=partition_id,json=partitionId,proto3" json:"partition_id,omitempty"`
+	Partition     string `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -71,9 +71,9 @@ func (x *BootServiceDhcpRequest) GetUuid() string {
 	return ""
 }
 
-func (x *BootServiceDhcpRequest) GetPartitionId() string {
+func (x *BootServiceDhcpRequest) GetPartition() string {
 	if x != nil {
-		return x.PartitionId
+		return x.Partition
 	}
 	return ""
 }
@@ -121,7 +121,7 @@ type BootServiceBootRequest struct {
 	// Mac address of the machine
 	Mac string `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Partition where this machine is located
-	PartitionId   string `protobuf:"bytes,2,opt,name=partition_id,json=partitionId,proto3" json:"partition_id,omitempty"`
+	Partition     string `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -163,9 +163,9 @@ func (x *BootServiceBootRequest) GetMac() string {
 	return ""
 }
 
-func (x *BootServiceBootRequest) GetPartitionId() string {
+func (x *BootServiceBootRequest) GetPartition() string {
 	if x != nil {
-		return x.PartitionId
+		return x.Partition
 	}
 	return ""
 }
@@ -250,7 +250,7 @@ type BootServiceRegisterRequest struct {
 	// MetalHammer version this machine was bootet into
 	MetalHammerVersion string `protobuf:"bytes,6,opt,name=metal_hammer_version,json=metalHammerVersion,proto3" json:"metal_hammer_version,omitempty"`
 	// Partition where this machine is located
-	PartitionId   string `protobuf:"bytes,7,opt,name=partition_id,json=partitionId,proto3" json:"partition_id,omitempty"`
+	Partition     string `protobuf:"bytes,7,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -327,9 +327,9 @@ func (x *BootServiceRegisterRequest) GetMetalHammerVersion() string {
 	return ""
 }
 
-func (x *BootServiceRegisterRequest) GetPartitionId() string {
+func (x *BootServiceRegisterRequest) GetPartition() string {
 	if x != nil {
-		return x.PartitionId
+		return x.Partition
 	}
 	return ""
 }
@@ -342,7 +342,7 @@ type BootServiceRegisterResponse struct {
 	// Size is the calculated size from given hardware details
 	Size string `protobuf:"bytes,2,opt,name=size,proto3" json:"size,omitempty"`
 	// Partition of this machine
-	PartitionId   string `protobuf:"bytes,3,opt,name=partition_id,json=partitionId,proto3" json:"partition_id,omitempty"`
+	Partition     string `protobuf:"bytes,3,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -391,9 +391,9 @@ func (x *BootServiceRegisterResponse) GetSize() string {
 	return ""
 }
 
-func (x *BootServiceRegisterResponse) GetPartitionId() string {
+func (x *BootServiceRegisterResponse) GetPartition() string {
 	if x != nil {
-		return x.PartitionId
+		return x.Partition
 	}
 	return ""
 }
@@ -696,17 +696,17 @@ var File_metalstack_infra_v2_boot_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"e\n" +
+	"\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"`\n" +
 	"\x16BootServiceDhcpRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12-\n" +
-	"\fpartition_id\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vpartitionId\"\x19\n" +
-	"\x17BootServiceDhcpResponse\"\xc6\x01\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12(\n" +
+	"\tpartition\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\"\x19\n" +
+	"\x17BootServiceDhcpResponse\"\xc1\x01\n" +
 	"\x16BootServiceBootRequest\x12}\n" +
 	"\x03mac\x18\x01 \x01(\tBk\xbaHh\xba\x01e\n" +
-	"\x03mac\x12\x1fmac must be a valid mac address\x1a=this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')R\x03mac\x12-\n" +
-	"\fpartition_id\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vpartitionId\"\xd2\x01\n" +
+	"\x03mac\x12\x1fmac must be a valid mac address\x1a=this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')R\x03mac\x12(\n" +
+	"\tpartition\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\"\xd2\x01\n" +
 	"\x17BootServiceBootResponse\x12Z\n" +
 	"\x06kernel\x18\x01 \x01(\tBB\xbaH?\xba\x01<\n" +
 	"\x10valid_kernel_uri\x12\x1akernel must be a valid URI\x1a\fthis.isUri()R\x06kernel\x12$\n" +
@@ -714,7 +714,7 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\acmdline\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\acmdline\x88\x01\x01B\n" +
 	"\n" +
-	"\b_cmdline\"\xe3\x02\n" +
+	"\b_cmdline\"\xde\x02\n" +
 	"\x1aBootServiceRegisterRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12>\n" +
 	"\bhardware\x18\x02 \x01(\v2\".metalstack.api.v2.MachineHardwareR\bhardware\x122\n" +
@@ -722,15 +722,15 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\x04ipmi\x18\x04 \x01(\v2\x1e.metalstack.api.v2.MachineIPMIR\x04ipmi\x12\x12\n" +
 	"\x04tags\x18\x05 \x03(\tR\x04tags\x12<\n" +
 	"\x14metal_hammer_version\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x12metalHammerVersion\x12-\n" +
-	"\fpartition_id\x18\a \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vpartitionId\"\x8a\x01\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x12metalHammerVersion\x12(\n" +
+	"\tpartition\x18\a \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\"\x85\x01\n" +
 	"\x1bBootServiceRegisterResponse\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n" +
 	"\x04size\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04size\x12-\n" +
-	"\fpartition_id\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vpartitionId\"6\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04size\x12(\n" +
+	"\tpartition\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\"6\n" +
 	"\x16BootServiceWaitRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x19\n" +
 	"\x17BootServiceWaitResponse\"\xaf\x01\n" +

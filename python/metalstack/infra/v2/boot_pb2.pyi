@@ -10,24 +10,24 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class BootServiceDhcpRequest(_message.Message):
-    __slots__ = ("uuid", "partition_id")
+    __slots__ = ("uuid", "partition")
     UUID_FIELD_NUMBER: _ClassVar[int]
-    PARTITION_ID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
     uuid: str
-    partition_id: str
-    def __init__(self, uuid: _Optional[str] = ..., partition_id: _Optional[str] = ...) -> None: ...
+    partition: str
+    def __init__(self, uuid: _Optional[str] = ..., partition: _Optional[str] = ...) -> None: ...
 
 class BootServiceDhcpResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
 
 class BootServiceBootRequest(_message.Message):
-    __slots__ = ("mac", "partition_id")
+    __slots__ = ("mac", "partition")
     MAC_FIELD_NUMBER: _ClassVar[int]
-    PARTITION_ID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
     mac: str
-    partition_id: str
-    def __init__(self, mac: _Optional[str] = ..., partition_id: _Optional[str] = ...) -> None: ...
+    partition: str
+    def __init__(self, mac: _Optional[str] = ..., partition: _Optional[str] = ...) -> None: ...
 
 class BootServiceBootResponse(_message.Message):
     __slots__ = ("kernel", "init_ram_disks", "cmdline")
@@ -40,32 +40,32 @@ class BootServiceBootResponse(_message.Message):
     def __init__(self, kernel: _Optional[str] = ..., init_ram_disks: _Optional[_Iterable[str]] = ..., cmdline: _Optional[str] = ...) -> None: ...
 
 class BootServiceRegisterRequest(_message.Message):
-    __slots__ = ("uuid", "hardware", "bios", "ipmi", "tags", "metal_hammer_version", "partition_id")
+    __slots__ = ("uuid", "hardware", "bios", "ipmi", "tags", "metal_hammer_version", "partition")
     UUID_FIELD_NUMBER: _ClassVar[int]
     HARDWARE_FIELD_NUMBER: _ClassVar[int]
     BIOS_FIELD_NUMBER: _ClassVar[int]
     IPMI_FIELD_NUMBER: _ClassVar[int]
     TAGS_FIELD_NUMBER: _ClassVar[int]
     METAL_HAMMER_VERSION_FIELD_NUMBER: _ClassVar[int]
-    PARTITION_ID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     hardware: _machine_pb2.MachineHardware
     bios: _machine_pb2.MachineBios
     ipmi: _machine_pb2.MachineIPMI
     tags: _containers.RepeatedScalarFieldContainer[str]
     metal_hammer_version: str
-    partition_id: str
-    def __init__(self, uuid: _Optional[str] = ..., hardware: _Optional[_Union[_machine_pb2.MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[_machine_pb2.MachineBios, _Mapping]] = ..., ipmi: _Optional[_Union[_machine_pb2.MachineIPMI, _Mapping]] = ..., tags: _Optional[_Iterable[str]] = ..., metal_hammer_version: _Optional[str] = ..., partition_id: _Optional[str] = ...) -> None: ...
+    partition: str
+    def __init__(self, uuid: _Optional[str] = ..., hardware: _Optional[_Union[_machine_pb2.MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[_machine_pb2.MachineBios, _Mapping]] = ..., ipmi: _Optional[_Union[_machine_pb2.MachineIPMI, _Mapping]] = ..., tags: _Optional[_Iterable[str]] = ..., metal_hammer_version: _Optional[str] = ..., partition: _Optional[str] = ...) -> None: ...
 
 class BootServiceRegisterResponse(_message.Message):
-    __slots__ = ("uuid", "size", "partition_id")
+    __slots__ = ("uuid", "size", "partition")
     UUID_FIELD_NUMBER: _ClassVar[int]
     SIZE_FIELD_NUMBER: _ClassVar[int]
-    PARTITION_ID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     size: str
-    partition_id: str
-    def __init__(self, uuid: _Optional[str] = ..., size: _Optional[str] = ..., partition_id: _Optional[str] = ...) -> None: ...
+    partition: str
+    def __init__(self, uuid: _Optional[str] = ..., size: _Optional[str] = ..., partition: _Optional[str] = ...) -> None: ...
 
 class BootServiceWaitRequest(_message.Message):
     __slots__ = ("uuid",)

@@ -60,7 +60,7 @@ message BootServiceDhcpRequest {
   // UUID of the machine
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Partition where this machine is located
-  string partition_id = 2 [(buf.validate.field).string = {
+  string partition = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
@@ -78,7 +78,7 @@ message BootServiceBootRequest {
     expression: "this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')"
   }];
   // Partition where this machine is located
-  string partition_id = 2 [(buf.validate.field).string = {
+  string partition = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
@@ -122,7 +122,7 @@ message BootServiceRegisterRequest {
     max_len: 128
   }];
   // Partition where this machine is located
-  string partition_id = 7 [(buf.validate.field).string = {
+  string partition = 7 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
@@ -138,7 +138,7 @@ message BootServiceRegisterResponse {
     max_len: 128
   }];
   // Partition of this machine
-  string partition_id = 3 [(buf.validate.field).string = {
+  string partition = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];

@@ -16,16 +16,16 @@ func TestValidateBoot(t *testing.T) {
 		{
 			name: "Valid BootServiceBootRequest",
 			msg: &infrav2.BootServiceBootRequest{
-				PartitionId: "partition-1",
-				Mac:         "00:00:00:00:00:01",
+				Partition: "partition-1",
+				Mac:       "00:00:00:00:00:01",
 			},
 			wantErr: false,
 		},
 		{
 			name: "InValid BootServiceBootRequest",
 			msg: &infrav2.BootServiceBootRequest{
-				PartitionId: "p1",
-				Mac:         "X0-00:00:00:00:00:01",
+				Partition: "p1",
+				Mac:       "X0-00:00:00:00:00:01",
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
