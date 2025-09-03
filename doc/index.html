@@ -1351,6 +1351,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.SwitchOSQuery"><span class="badge">M</span>SwitchOSQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.SwitchQuery"><span class="badge">M</span>SwitchQuery</a>
                 </li>
               
@@ -14809,6 +14813,37 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.SwitchOSQuery">SwitchOSQuery</h3>
+        <p>SwitchOSQuery holds OS specific query parameters.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>os_vendor</td>
+                  <td><a href="#metalstack.api.v2.SwitchOSVendor">SwitchOSVendor</a></td>
+                  <td>optional</td>
+                  <td><p>OsVendor of the switch OS by which to filter the switches. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>os_version</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>OsVersion of the OS by which to filter the switches. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.SwitchQuery">SwitchQuery</h3>
         <p>SwitchQuery can be used to query a switch or a list of switches.</p>
 
@@ -14841,17 +14876,10 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                 </tr>
               
                 <tr>
-                  <td>os_vendor</td>
-                  <td><a href="#metalstack.api.v2.SwitchOSVendor">SwitchOSVendor</a></td>
+                  <td>switch_os</td>
+                  <td><a href="#metalstack.api.v2.SwitchOSQuery">SwitchOSQuery</a></td>
                   <td>optional</td>
-                  <td><p>OsVendor of the switch OS by which to filter the switches. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>os_version</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>OsVersion of the OS by which to filter the switches. </p></td>
+                  <td><p>Switch OS specific queries. </p></td>
                 </tr>
               
             </tbody>

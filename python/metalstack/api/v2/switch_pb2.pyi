@@ -143,15 +143,21 @@ class NicState(_message.Message):
     def __init__(self, desired: _Optional[_Union[SwitchPortStatus, str]] = ..., actual: _Optional[_Union[SwitchPortStatus, str]] = ...) -> None: ...
 
 class SwitchQuery(_message.Message):
-    __slots__ = ("id", "partition", "rack", "os_vendor", "os_version")
+    __slots__ = ("id", "partition", "rack", "switch_os")
     ID_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
-    OS_VENDOR_FIELD_NUMBER: _ClassVar[int]
-    OS_VERSION_FIELD_NUMBER: _ClassVar[int]
+    SWITCH_OS_FIELD_NUMBER: _ClassVar[int]
     id: str
     partition: str
     rack: str
+    switch_os: SwitchOSQuery
+    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., switch_os: _Optional[_Union[SwitchOSQuery, _Mapping]] = ...) -> None: ...
+
+class SwitchOSQuery(_message.Message):
+    __slots__ = ("os_vendor", "os_version")
+    OS_VENDOR_FIELD_NUMBER: _ClassVar[int]
+    OS_VERSION_FIELD_NUMBER: _ClassVar[int]
     os_vendor: SwitchOSVendor
     os_version: str
-    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., os_vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., os_version: _Optional[str] = ...) -> None: ...
+    def __init__(self, os_vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., os_version: _Optional[str] = ...) -> None: ...
