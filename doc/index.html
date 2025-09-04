@@ -1505,6 +1505,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.Token.InfraRolesEntry"><span class="badge">M</span>Token.InfraRolesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.Token.MachineRolesEntry"><span class="badge">M</span>Token.MachineRolesEntry</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.Token.ProjectRolesEntry"><span class="badge">M</span>Token.ProjectRolesEntry</a>
                 </li>
               
@@ -1514,6 +1522,14 @@
               
                 <li>
                   <a href="#metalstack.api.v2.TokenServiceCreateRequest"><span class="badge">M</span>TokenServiceCreateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TokenServiceCreateRequest.InfraRolesEntry"><span class="badge">M</span>TokenServiceCreateRequest.InfraRolesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntry"><span class="badge">M</span>TokenServiceCreateRequest.MachineRolesEntry</a>
                 </li>
               
                 <li>
@@ -1562,6 +1578,14 @@
               
                 <li>
                   <a href="#metalstack.api.v2.TokenServiceUpdateRequest"><span class="badge">M</span>TokenServiceUpdateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TokenServiceUpdateRequest.InfraRolesEntry"><span class="badge">M</span>TokenServiceUpdateRequest.InfraRolesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntry"><span class="badge">M</span>TokenServiceUpdateRequest.MachineRolesEntry</a>
                 </li>
               
                 <li>
@@ -15996,10 +16020,86 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
+                  <td>machine_roles</td>
+                  <td><a href="#metalstack.api.v2.Token.MachineRolesEntry">Token.MachineRolesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>MachineRoles associates a machine uuid with the corresponding role of the token owner </p></td>
+                </tr>
+              
+                <tr>
+                  <td>infra_roles</td>
+                  <td><a href="#metalstack.api.v2.Token.InfraRolesEntry">Token.InfraRolesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>InfraRoles associates a infra service with the corresponding role of the token owner </p></td>
+                </tr>
+              
+                <tr>
                   <td>admin_role</td>
                   <td><a href="#metalstack.api.v2.AdminRole">AdminRole</a></td>
                   <td>optional</td>
                   <td><p>AdminRole defines the admin role of the token owner </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.Token.InfraRolesEntry">Token.InfraRolesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.api.v2.InfraRole">InfraRole</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.Token.MachineRolesEntry">Token.MachineRolesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -16117,10 +16217,86 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
+                  <td>machine_roles</td>
+                  <td><a href="#metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntry">TokenServiceCreateRequest.MachineRolesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>MachineRoles associates a machine uuid with the corresponding role of the token owner </p></td>
+                </tr>
+              
+                <tr>
+                  <td>infra_roles</td>
+                  <td><a href="#metalstack.api.v2.TokenServiceCreateRequest.InfraRolesEntry">TokenServiceCreateRequest.InfraRolesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>InfraRoles associates a infra service with the corresponding role of the token owner </p></td>
+                </tr>
+              
+                <tr>
                   <td>admin_role</td>
                   <td><a href="#metalstack.api.v2.AdminRole">AdminRole</a></td>
                   <td>optional</td>
                   <td><p>AdminRole defines the admin role of the token owner </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.TokenServiceCreateRequest.InfraRolesEntry">TokenServiceCreateRequest.InfraRolesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.api.v2.InfraRole">InfraRole</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntry">TokenServiceCreateRequest.MachineRolesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>
@@ -16417,10 +16593,86 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
+                  <td>machine_roles</td>
+                  <td><a href="#metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntry">TokenServiceUpdateRequest.MachineRolesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>MachineRoles associates a machine uuid with the corresponding role of the token owner </p></td>
+                </tr>
+              
+                <tr>
+                  <td>infra_roles</td>
+                  <td><a href="#metalstack.api.v2.TokenServiceUpdateRequest.InfraRolesEntry">TokenServiceUpdateRequest.InfraRolesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>InfraRoles associates a infra service with the corresponding role of the token owner </p></td>
+                </tr>
+              
+                <tr>
                   <td>admin_role</td>
                   <td><a href="#metalstack.api.v2.AdminRole">AdminRole</a></td>
                   <td>optional</td>
                   <td><p>AdminRole defines the admin role of the token owner </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.TokenServiceUpdateRequest.InfraRolesEntry">TokenServiceUpdateRequest.InfraRolesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.api.v2.InfraRole">InfraRole</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntry">TokenServiceUpdateRequest.MachineRolesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
+                  <td></td>
+                  <td><p> </p></td>
                 </tr>
               
             </tbody>

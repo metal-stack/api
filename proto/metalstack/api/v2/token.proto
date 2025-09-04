@@ -61,8 +61,12 @@ message Token {
   map<string, ProjectRole> project_roles = 9;
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 10;
+  // MachineRoles associates a machine uuid with the corresponding role of the token owner
+  map<string, MachineRole> machine_roles = 11;
+  // InfraRoles associates a infra service with the corresponding role of the token owner
+  map<string, InfraRole> infra_roles = 12;
   // AdminRole defines the admin role of the token owner
-  optional AdminRole admin_role = 11 [(buf.validate.field).enum.defined_only = true];
+  optional AdminRole admin_role = 13 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TokenType specifies different use cases of tokens
@@ -121,8 +125,37 @@ message TokenServiceCreateRequest {
       }
     }
   }];
+  // MachineRoles associates a machine uuid with the corresponding role of the token owner
+  map<string, MachineRole> machine_roles = 7 [(buf.validate.field).map = {
+    keys: {
+      string: {uuid: true}
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "tenant role must be specified"
+        expression: "this >= 0 && this <= 4"
+      }
+    }
+  }];
+  // InfraRoles associates a infra service with the corresponding role of the token owner
+  map<string, InfraRole> infra_roles = 8 [(buf.validate.field).map = {
+    keys: {
+      string: {
+        min_len: 3
+        max_len: 128
+      }
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "tenant role must be specified"
+        expression: "this >= 0 && this <= 4"
+      }
+    }
+  }];
   // AdminRole defines the admin role of the token owner
-  optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
+  optional AdminRole admin_role = 9 [(buf.validate.field).enum.defined_only = true];
 }
 
 // MethodPermission is a mapping from a subject/project to a service method
@@ -206,8 +239,37 @@ message TokenServiceUpdateRequest {
       }
     }
   }];
+  // MachineRoles associates a machine uuid with the corresponding role of the token owner
+  map<string, MachineRole> machine_roles = 6 [(buf.validate.field).map = {
+    keys: {
+      string: {uuid: true}
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "tenant role must be specified"
+        expression: "this >= 0 && this <= 4"
+      }
+    }
+  }];
+  // InfraRoles associates a infra service with the corresponding role of the token owner
+  map<string, InfraRole> infra_roles = 7 [(buf.validate.field).map = {
+    keys: {
+      string: {
+        min_len: 3
+        max_len: 128
+      }
+    }
+    values: {
+      cel: {
+        id: "role-specified"
+        message: "tenant role must be specified"
+        expression: "this >= 0 && this <= 4"
+      }
+    }
+  }];
   // AdminRole defines the admin role of the token owner
-  optional AdminRole admin_role = 6 [(buf.validate.field).enum.defined_only = true];
+  optional AdminRole admin_role = 8 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TokenServiceUpdateResponse is the response payload of a token update request
