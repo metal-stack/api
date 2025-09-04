@@ -35,7 +35,7 @@ func GetServicePermissions() *ServicePermissions {
 				{{- end }}
 			},
 			Machine:   Machine{
-				{{- range $role, $methods := .Roles.Infra }}
+				{{- range $role, $methods := .Roles.Machine }}
 					"{{ $role }}": []string{
 						{{- range $method := $methods }}
 							"{{ $method }}",

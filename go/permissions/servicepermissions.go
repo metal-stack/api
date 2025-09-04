@@ -88,29 +88,33 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: Infra{
 				"INFRA_ROLE_EDITOR": []string{
+					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
+					"/metalstack.infra.v2.BootService/Dhcp",
+					"/metalstack.infra.v2.BootService/Boot",
+					"/metalstack.infra.v2.EventService/SendMulti",
 					"/metalstack.infra.v2.SwitchService/Register",
 				},
 				"INFRA_ROLE_VIEWER": []string{
+					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
+					"/metalstack.infra.v2.BootService/Dhcp",
+					"/metalstack.infra.v2.BootService/Boot",
+					"/metalstack.infra.v2.EventService/SendMulti",
 					"/metalstack.infra.v2.SwitchService/Register",
-				},
-				"MACHINE_ROLE_EDITOR": []string{
-					"/metalstack.infra.v2.EventService/Send",
-				},
-				"MACHINE_ROLE_VIEWER": []string{
-					"/metalstack.infra.v2.EventService/Send",
 				},
 			},
 			Machine: Machine{
-				"INFRA_ROLE_EDITOR": []string{
-					"/metalstack.infra.v2.SwitchService/Register",
-				},
-				"INFRA_ROLE_VIEWER": []string{
-					"/metalstack.infra.v2.SwitchService/Register",
-				},
 				"MACHINE_ROLE_EDITOR": []string{
+					"/metalstack.infra.v2.BootService/SuperUserPassword",
+					"/metalstack.infra.v2.BootService/Register",
+					"/metalstack.infra.v2.BootService/Wait",
+					"/metalstack.infra.v2.BootService/Report",
 					"/metalstack.infra.v2.EventService/Send",
 				},
 				"MACHINE_ROLE_VIEWER": []string{
+					"/metalstack.infra.v2.BootService/SuperUserPassword",
+					"/metalstack.infra.v2.BootService/Register",
+					"/metalstack.infra.v2.BootService/Wait",
+					"/metalstack.infra.v2.BootService/Report",
 					"/metalstack.infra.v2.EventService/Send",
 				},
 			},
