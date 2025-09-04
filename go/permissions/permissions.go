@@ -28,7 +28,7 @@ type (
 type Roles struct {
 	Admin   Admin   `json:"admin,omitempty"`
 	Infra   Infra   `json:"infra,omitempty"`
-	Machine Machine `json:"Machine,omitempty"`
+	Machine Machine `json:"machine,omitempty"`
 	Tenant  Tenant  `json:"tenant,omitempty"`
 	Project Project `json:"project,omitempty"`
 }
