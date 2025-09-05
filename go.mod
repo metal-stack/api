@@ -1,6 +1,6 @@
 module github.com/metal-stack/api
 
-go 1.24.0
+go 1.25
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.8-20250717185734-6c6e0d3c608e.1
