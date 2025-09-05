@@ -16023,14 +16023,16 @@ for which the methods should be allowed </p></td>
                   <td>machine_roles</td>
                   <td><a href="#metalstack.api.v2.Token.MachineRolesEntry">Token.MachineRolesEntry</a></td>
                   <td>repeated</td>
-                  <td><p>MachineRoles associates a machine uuid with the corresponding role of the token owner </p></td>
+                  <td><p>MachineRoles associates a machine uuid with the corresponding role of the token owner
+TODO: decide if we need this map from machine.uuid-&gt;role, we could instead use the subject in the token instead </p></td>
                 </tr>
               
                 <tr>
                   <td>infra_roles</td>
                   <td><a href="#metalstack.api.v2.Token.InfraRolesEntry">Token.InfraRolesEntry</a></td>
                   <td>repeated</td>
-                  <td><p>InfraRoles associates a infra service with the corresponding role of the token owner </p></td>
+                  <td><p>InfraRoles associates a infra service with the corresponding role of the token owner
+TODO: decide if we need this map from service.name-&gt;role, we could instead use the subject in the token instead </p></td>
                 </tr>
               
                 <tr>

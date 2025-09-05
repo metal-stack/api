@@ -99,8 +99,10 @@ type Token struct {
 	// TenantRoles associates a tenant id with the corresponding role of the token owner
 	TenantRoles map[string]TenantRole `protobuf:"bytes,10,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
 	// MachineRoles associates a machine uuid with the corresponding role of the token owner
+	// TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead
 	MachineRoles map[string]MachineRole `protobuf:"bytes,11,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
 	// InfraRoles associates a infra service with the corresponding role of the token owner
+	// TODO: decide if we need this map from service.name->role, we could instead use the subject in the token instead
 	InfraRoles map[string]InfraRole `protobuf:"bytes,12,rep,name=infra_roles,json=infraRoles,proto3" json:"infra_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.InfraRole"`
 	// AdminRole defines the admin role of the token owner
 	AdminRole     *AdminRole `protobuf:"varint,13,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`

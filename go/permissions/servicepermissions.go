@@ -111,10 +111,6 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.infra.v2.EventService/Send",
 				},
 				"MACHINE_ROLE_VIEWER": []string{
-					"/metalstack.infra.v2.BootService/SuperUserPassword",
-					"/metalstack.infra.v2.BootService/Register",
-					"/metalstack.infra.v2.BootService/Wait",
-					"/metalstack.infra.v2.BootService/Report",
 					"/metalstack.infra.v2.EventService/Send",
 				},
 			},

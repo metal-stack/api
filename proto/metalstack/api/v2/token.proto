@@ -62,8 +62,10 @@ message Token {
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 10;
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
+  // TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead
   map<string, MachineRole> machine_roles = 11;
   // InfraRoles associates a infra service with the corresponding role of the token owner
+  // TODO: decide if we need this map from service.name->role, we could instead use the subject in the token instead
   map<string, InfraRole> infra_roles = 12;
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 13 [(buf.validate.field).enum.defined_only = true];

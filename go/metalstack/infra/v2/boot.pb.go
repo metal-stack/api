@@ -747,20 +747,16 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"$BootServiceSuperUserPasswordResponse\x12)\n" +
 	"\x10feature_disabled\x18\x01 \x01(\bR\x0ffeatureDisabled\x12:\n" +
 	"\x13super_user_password\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\xe3\x05\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\xdf\x05\n" +
 	"\vBootService\x12m\n" +
 	"\x04Dhcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\n" +
 	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12m\n" +
 	"\x04Boot\x12+.metalstack.infra.v2.BootServiceBootRequest\x1a,.metalstack.infra.v2.BootServiceBootResponse\"\n" +
-	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12\x94\x01\n" +
-	"\x11SuperUserPassword\x128.metalstack.infra.v2.BootServiceSuperUserPasswordRequest\x1a9.metalstack.infra.v2.BootServiceSuperUserPasswordResponse\"\n" +
-	"\xe0\xf3\x18\x02\xf2\xf3\x18\x02\x01\x02\x12y\n" +
-	"\bRegister\x12/.metalstack.infra.v2.BootServiceRegisterRequest\x1a0.metalstack.infra.v2.BootServiceRegisterResponse\"\n" +
-	"\xe0\xf3\x18\x02\xf2\xf3\x18\x02\x01\x02\x12o\n" +
-	"\x04Wait\x12+.metalstack.infra.v2.BootServiceWaitRequest\x1a,.metalstack.infra.v2.BootServiceWaitResponse\"\n" +
-	"\xe0\xf3\x18\x02\xf2\xf3\x18\x02\x01\x020\x01\x12s\n" +
-	"\x06Report\x12-.metalstack.infra.v2.BootServiceReportRequest\x1a..metalstack.infra.v2.BootServiceReportResponse\"\n" +
-	"\xe0\xf3\x18\x02\xf2\xf3\x18\x02\x01\x02B\xcd\x01\n" +
+	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12\x93\x01\n" +
+	"\x11SuperUserPassword\x128.metalstack.infra.v2.BootServiceSuperUserPasswordRequest\x1a9.metalstack.infra.v2.BootServiceSuperUserPasswordResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01\x12x\n" +
+	"\bRegister\x12/.metalstack.infra.v2.BootServiceRegisterRequest\x1a0.metalstack.infra.v2.BootServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01\x12n\n" +
+	"\x04Wait\x12+.metalstack.infra.v2.BootServiceWaitRequest\x1a,.metalstack.infra.v2.BootServiceWaitResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x010\x01\x12r\n" +
+	"\x06Report\x12-.metalstack.infra.v2.BootServiceReportRequest\x1a..metalstack.infra.v2.BootServiceReportResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01B\xcd\x01\n" +
 	"\x17com.metalstack.infra.v2B\tBootProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
 var (
