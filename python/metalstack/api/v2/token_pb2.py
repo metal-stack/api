@@ -28,7 +28,7 @@ from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/api/v2/token.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\"\xb5\x06\n\x05Token\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n\x04user\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x04R\x04user\x12,\n\x0b\x64\x65scription\x18\x03 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x02R\x0b\x64\x65scription\x12P\n\x0bpermissions\x18\x04 \x03(\x0b\x32#.metalstack.api.v2.MethodPermissionB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\x0bpermissions\x12\x34\n\x07\x65xpires\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x07\x65xpires\x12\x37\n\tissued_at\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x08issuedAt\x12\x45\n\ntoken_type\x18\x08 \x01(\x0e\x32\x1c.metalstack.api.v2.TokenTypeB\x08\xbaH\x05\x82\x01\x02\x10\x01R\ttokenType\x12O\n\rproject_roles\x18\t \x03(\x0b\x32*.metalstack.api.v2.Token.ProjectRolesEntryR\x0cprojectRoles\x12L\n\x0ctenant_roles\x18\n \x03(\x0b\x32).metalstack.api.v2.Token.TenantRolesEntryR\x0btenantRoles\x12J\n\nadmin_role\x18\x0b \x01(\x0e\x32\x1c.metalstack.api.v2.AdminRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x1a_\n\x11ProjectRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x34\n\x05value\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x02\x38\x01\x1a]\n\x10TenantRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x33\n\x05value\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleR\x05value:\x02\x38\x01\x42\r\n\x0b_admin_role\"\x82\x07\n\x19TokenServiceCreateRequest\x12,\n\x0b\x64\x65scription\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x02R\x0b\x64\x65scription\x12O\n\x0bpermissions\x18\x02 \x03(\x0b\x32#.metalstack.api.v2.MethodPermissionB\x08\xbaH\x05\x92\x01\x02\x10\x64R\x0bpermissions\x12G\n\x07\x65xpires\x18\x04 \x01(\x0b\x32\x19.google.protobuf.DurationB\x12\xbaH\x0f\xaa\x01\x0c\x1a\x05\x08\x81\xe7\x84\x0f\x32\x03\x08\xd8\x04R\x07\x65xpires\x12\xc1\x01\n\rproject_roles\x18\x05 \x03(\x0b\x32>.metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntryB\\\xbaHY\x9a\x01V\"\x07r\x05\x10\x03\x18\x80\x01*K\xba\x01H\n\x0erole-specified\x12\x1eproject role must be specified\x1a\x16this >= 0 && this <= 3R\x0cprojectRoles\x12\xbd\x01\n\x0ctenant_roles\x18\x06 \x03(\x0b\x32=.metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntryB[\xbaHX\x9a\x01U\"\x07r\x05\x10\x03\x18\x80\x01*J\xba\x01G\n\x0erole-specified\x12\x1dtenant role must be specified\x1a\x16this >= 0 && this <= 4R\x0btenantRoles\x12J\n\nadmin_role\x18\x07 \x01(\x0e\x32\x1c.metalstack.api.v2.AdminRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x1a_\n\x11ProjectRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x34\n\x05value\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x02\x38\x01\x1a]\n\x10TenantRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x33\n\x05value\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleR\x05value:\x02\x38\x01\x42\r\n\x0b_admin_role\"]\n\x10MethodPermission\x12$\n\x07subject\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x02R\x07subject\x12#\n\x07methods\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\x07methods\"d\n\x1aTokenServiceCreateResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n\x06secret\x18\x02 \x01(\tR\x06secret\"\x19\n\x17TokenServiceListRequest\"L\n\x18TokenServiceListResponse\x12\x30\n\x06tokens\x18\x01 \x03(\x0b\x32\x18.metalstack.api.v2.TokenR\x06tokens\"9\n\x19TokenServiceRevokeRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x1c\n\x1aTokenServiceRevokeResponse\"\xe2\x06\n\x19TokenServiceUpdateRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x31\n\x0b\x64\x65scription\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x02H\x00R\x0b\x64\x65scription\x88\x01\x01\x12\x45\n\x0bpermissions\x18\x03 \x03(\x0b\x32#.metalstack.api.v2.MethodPermissionR\x0bpermissions\x12\xc1\x01\n\rproject_roles\x18\x04 \x03(\x0b\x32>.metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntryB\\\xbaHY\x9a\x01V\"\x07r\x05\x10\x03\x18\x80\x01*K\xba\x01H\n\x0erole-specified\x12\x1eproject role must be specified\x1a\x16this >= 0 && this <= 3R\x0cprojectRoles\x12\xbd\x01\n\x0ctenant_roles\x18\x05 \x03(\x0b\x32=.metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntryB[\xbaHX\x9a\x01U\"\x07r\x05\x10\x03\x18\x80\x01*J\xba\x01G\n\x0erole-specified\x12\x1dtenant role must be specified\x1a\x16this >= 0 && this <= 4R\x0btenantRoles\x12J\n\nadmin_role\x18\x06 \x01(\x0e\x32\x1c.metalstack.api.v2.AdminRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tadminRole\x88\x01\x01\x1a_\n\x11ProjectRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x34\n\x05value\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x02\x38\x01\x1a]\n\x10TenantRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x33\n\x05value\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleR\x05value:\x02\x38\x01\x42\x0e\n\x0c_descriptionB\r\n\x0b_admin_role\"L\n\x1aTokenServiceUpdateResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\"6\n\x16TokenServiceGetRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"I\n\x17TokenServiceGetResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\"\x1c\n\x1aTokenServiceRefreshRequest\"e\n\x1bTokenServiceRefreshResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n\x06secret\x18\x02 \x01(\tR\x06secret*S\n\tTokenType\x12\x1a\n\x16TOKEN_TYPE_UNSPECIFIED\x10\x00\x12\x12\n\x0eTOKEN_TYPE_API\x10\x01\x12\x16\n\x12TOKEN_TYPE_CONSOLE\x10\x02\x32\x90\x05\n\x0cTokenService\x12\x62\n\x03Get\x12).metalstack.api.v2.TokenServiceGetRequest\x1a*.metalstack.api.v2.TokenServiceGetResponse\"\x04\xd8\xf3\x18\x03\x12k\n\x06\x43reate\x12,.metalstack.api.v2.TokenServiceCreateRequest\x1a-.metalstack.api.v2.TokenServiceCreateResponse\"\x04\xd8\xf3\x18\x03\x12k\n\x06Update\x12,.metalstack.api.v2.TokenServiceUpdateRequest\x1a-.metalstack.api.v2.TokenServiceUpdateResponse\"\x04\xd8\xf3\x18\x03\x12\x65\n\x04List\x12*.metalstack.api.v2.TokenServiceListRequest\x1a+.metalstack.api.v2.TokenServiceListResponse\"\x04\xd8\xf3\x18\x03\x12k\n\x06Revoke\x12,.metalstack.api.v2.TokenServiceRevokeRequest\x1a-.metalstack.api.v2.TokenServiceRevokeResponse\"\x04\xd8\xf3\x18\x03\x12n\n\x07Refresh\x12-.metalstack.api.v2.TokenServiceRefreshRequest\x1a..metalstack.api.v2.TokenServiceRefreshResponse\"\x04\xd8\xf3\x18\x03\x42\xc0\x01\n\x15\x63om.metalstack.api.v2B\nTokenProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/api/v2/token.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\"\x8f\t\n\x05Token\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n\x04user\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x04R\x04user\x12,\n\x0b\x64\x65scription\x18\x03 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x02R\x0b\x64\x65scription\x12P\n\x0bpermissions\x18\x04 \x03(\x0b\x32#.metalstack.api.v2.MethodPermissionB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\x0bpermissions\x12\x34\n\x07\x65xpires\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x07\x65xpires\x12\x37\n\tissued_at\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x08issuedAt\x12\x45\n\ntoken_type\x18\x08 \x01(\x0e\x32\x1c.metalstack.api.v2.TokenTypeB\x08\xbaH\x05\x82\x01\x02\x10\x01R\ttokenType\x12O\n\rproject_roles\x18\t \x03(\x0b\x32*.metalstack.api.v2.Token.ProjectRolesEntryR\x0cprojectRoles\x12L\n\x0ctenant_roles\x18\n \x03(\x0b\x32).metalstack.api.v2.Token.TenantRolesEntryR\x0btenantRoles\x12O\n\rmachine_roles\x18\x0b \x03(\x0b\x32*.metalstack.api.v2.Token.MachineRolesEntryR\x0cmachineRoles\x12I\n\x0binfra_roles\x18\x0c \x03(\x0b\x32(.metalstack.api.v2.Token.InfraRolesEntryR\ninfraRoles\x12J\n\nadmin_role\x18\r \x01(\x0e\x32\x1c.metalstack.api.v2.AdminRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x1a_\n\x11ProjectRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x34\n\x05value\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x02\x38\x01\x1a]\n\x10TenantRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x33\n\x05value\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleR\x05value:\x02\x38\x01\x1a_\n\x11MachineRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x34\n\x05value\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.MachineRoleR\x05value:\x02\x38\x01\x1a[\n\x0fInfraRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x32\n\x05value\x18\x02 \x01(\x0e\x32\x1c.metalstack.api.v2.InfraRoleR\x05value:\x02\x38\x01\x42\r\n\x0b_admin_role\"\xbe\x0b\n\x19TokenServiceCreateRequest\x12,\n\x0b\x64\x65scription\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x02R\x0b\x64\x65scription\x12O\n\x0bpermissions\x18\x02 \x03(\x0b\x32#.metalstack.api.v2.MethodPermissionB\x08\xbaH\x05\x92\x01\x02\x10\x64R\x0bpermissions\x12G\n\x07\x65xpires\x18\x04 \x01(\x0b\x32\x19.google.protobuf.DurationB\x12\xbaH\x0f\xaa\x01\x0c\x1a\x05\x08\x81\xe7\x84\x0f\x32\x03\x08\xd8\x04R\x07\x65xpires\x12\xc1\x01\n\rproject_roles\x18\x05 \x03(\x0b\x32>.metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntryB\\\xbaHY\x9a\x01V\"\x07r\x05\x10\x03\x18\x80\x01*K\xba\x01H\n\x0erole-specified\x12\x1eproject role must be specified\x1a\x16this >= 0 && this <= 3R\x0cprojectRoles\x12\xbd\x01\n\x0ctenant_roles\x18\x06 \x03(\x0b\x32=.metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntryB[\xbaHX\x9a\x01U\"\x07r\x05\x10\x03\x18\x80\x01*J\xba\x01G\n\x0erole-specified\x12\x1dtenant role must be specified\x1a\x16this >= 0 && this <= 4R\x0btenantRoles\x12\xbe\x01\n\rmachine_roles\x18\x07 \x03(\x0b\x32>.metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntryBY\xbaHV\x9a\x01S\"\x05r\x03\xb0\x01\x01*J\xba\x01G\n\x0erole-specified\x12\x1dtenant role must be specified\x1a\x16this >= 0 && this <= 4R\x0cmachineRoles\x12\xba\x01\n\x0binfra_roles\x18\x08 \x03(\x0b\x32<.metalstack.api.v2.TokenServiceCreateRequest.InfraRolesEntryB[\xbaHX\x9a\x01U\"\x07r\x05\x10\x03\x18\x80\x01*J\xba\x01G\n\x0erole-specified\x12\x1dtenant role must be specified\x1a\x16this >= 0 && this <= 4R\ninfraRoles\x12J\n\nadmin_role\x18\t \x01(\x0e\x32\x1c.metalstack.api.v2.AdminRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x1a_\n\x11ProjectRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x34\n\x05value\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x02\x38\x01\x1a]\n\x10TenantRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x33\n\x05value\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleR\x05value:\x02\x38\x01\x1a_\n\x11MachineRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x34\n\x05value\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.MachineRoleR\x05value:\x02\x38\x01\x1a[\n\x0fInfraRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x32\n\x05value\x18\x02 \x01(\x0e\x32\x1c.metalstack.api.v2.InfraRoleR\x05value:\x02\x38\x01\x42\r\n\x0b_admin_role\"]\n\x10MethodPermission\x12$\n\x07subject\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x02R\x07subject\x12#\n\x07methods\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\x07methods\"d\n\x1aTokenServiceCreateResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n\x06secret\x18\x02 \x01(\tR\x06secret\"\x19\n\x17TokenServiceListRequest\"L\n\x18TokenServiceListResponse\x12\x30\n\x06tokens\x18\x01 \x03(\x0b\x32\x18.metalstack.api.v2.TokenR\x06tokens\"9\n\x19TokenServiceRevokeRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x1c\n\x1aTokenServiceRevokeResponse\"\x9e\x0b\n\x19TokenServiceUpdateRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x31\n\x0b\x64\x65scription\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x02H\x00R\x0b\x64\x65scription\x88\x01\x01\x12\x45\n\x0bpermissions\x18\x03 \x03(\x0b\x32#.metalstack.api.v2.MethodPermissionR\x0bpermissions\x12\xc1\x01\n\rproject_roles\x18\x04 \x03(\x0b\x32>.metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntryB\\\xbaHY\x9a\x01V\"\x07r\x05\x10\x03\x18\x80\x01*K\xba\x01H\n\x0erole-specified\x12\x1eproject role must be specified\x1a\x16this >= 0 && this <= 3R\x0cprojectRoles\x12\xbd\x01\n\x0ctenant_roles\x18\x05 \x03(\x0b\x32=.metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntryB[\xbaHX\x9a\x01U\"\x07r\x05\x10\x03\x18\x80\x01*J\xba\x01G\n\x0erole-specified\x12\x1dtenant role must be specified\x1a\x16this >= 0 && this <= 4R\x0btenantRoles\x12\xbe\x01\n\rmachine_roles\x18\x06 \x03(\x0b\x32>.metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntryBY\xbaHV\x9a\x01S\"\x05r\x03\xb0\x01\x01*J\xba\x01G\n\x0erole-specified\x12\x1dtenant role must be specified\x1a\x16this >= 0 && this <= 4R\x0cmachineRoles\x12\xba\x01\n\x0binfra_roles\x18\x07 \x03(\x0b\x32<.metalstack.api.v2.TokenServiceUpdateRequest.InfraRolesEntryB[\xbaHX\x9a\x01U\"\x07r\x05\x10\x03\x18\x80\x01*J\xba\x01G\n\x0erole-specified\x12\x1dtenant role must be specified\x1a\x16this >= 0 && this <= 4R\ninfraRoles\x12J\n\nadmin_role\x18\x08 \x01(\x0e\x32\x1c.metalstack.api.v2.AdminRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tadminRole\x88\x01\x01\x1a_\n\x11ProjectRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x34\n\x05value\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x02\x38\x01\x1a]\n\x10TenantRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x33\n\x05value\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleR\x05value:\x02\x38\x01\x1a_\n\x11MachineRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x34\n\x05value\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.MachineRoleR\x05value:\x02\x38\x01\x1a[\n\x0fInfraRolesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x32\n\x05value\x18\x02 \x01(\x0e\x32\x1c.metalstack.api.v2.InfraRoleR\x05value:\x02\x38\x01\x42\x0e\n\x0c_descriptionB\r\n\x0b_admin_role\"L\n\x1aTokenServiceUpdateResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\"6\n\x16TokenServiceGetRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"I\n\x17TokenServiceGetResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\"\x1c\n\x1aTokenServiceRefreshRequest\"e\n\x1bTokenServiceRefreshResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n\x06secret\x18\x02 \x01(\tR\x06secret*S\n\tTokenType\x12\x1a\n\x16TOKEN_TYPE_UNSPECIFIED\x10\x00\x12\x12\n\x0eTOKEN_TYPE_API\x10\x01\x12\x16\n\x12TOKEN_TYPE_CONSOLE\x10\x02\x32\x90\x05\n\x0cTokenService\x12\x62\n\x03Get\x12).metalstack.api.v2.TokenServiceGetRequest\x1a*.metalstack.api.v2.TokenServiceGetResponse\"\x04\xd8\xf3\x18\x03\x12k\n\x06\x43reate\x12,.metalstack.api.v2.TokenServiceCreateRequest\x1a-.metalstack.api.v2.TokenServiceCreateResponse\"\x04\xd8\xf3\x18\x03\x12k\n\x06Update\x12,.metalstack.api.v2.TokenServiceUpdateRequest\x1a-.metalstack.api.v2.TokenServiceUpdateResponse\"\x04\xd8\xf3\x18\x03\x12\x65\n\x04List\x12*.metalstack.api.v2.TokenServiceListRequest\x1a+.metalstack.api.v2.TokenServiceListResponse\"\x04\xd8\xf3\x18\x03\x12k\n\x06Revoke\x12,.metalstack.api.v2.TokenServiceRevokeRequest\x1a-.metalstack.api.v2.TokenServiceRevokeResponse\"\x04\xd8\xf3\x18\x03\x12n\n\x07Refresh\x12-.metalstack.api.v2.TokenServiceRefreshRequest\x1a..metalstack.api.v2.TokenServiceRefreshResponse\"\x04\xd8\xf3\x18\x03\x42\xc0\x01\n\x15\x63om.metalstack.api.v2B\nTokenProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -40,6 +40,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TOKEN_PROJECTROLESENTRY']._serialized_options = b'8\001'
   _globals['_TOKEN_TENANTROLESENTRY']._loaded_options = None
   _globals['_TOKEN_TENANTROLESENTRY']._serialized_options = b'8\001'
+  _globals['_TOKEN_MACHINEROLESENTRY']._loaded_options = None
+  _globals['_TOKEN_MACHINEROLESENTRY']._serialized_options = b'8\001'
+  _globals['_TOKEN_INFRAROLESENTRY']._loaded_options = None
+  _globals['_TOKEN_INFRAROLESENTRY']._serialized_options = b'8\001'
   _globals['_TOKEN'].fields_by_name['uuid']._loaded_options = None
   _globals['_TOKEN'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
   _globals['_TOKEN'].fields_by_name['user']._loaded_options = None
@@ -56,6 +60,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TOKENSERVICECREATEREQUEST_PROJECTROLESENTRY']._serialized_options = b'8\001'
   _globals['_TOKENSERVICECREATEREQUEST_TENANTROLESENTRY']._loaded_options = None
   _globals['_TOKENSERVICECREATEREQUEST_TENANTROLESENTRY']._serialized_options = b'8\001'
+  _globals['_TOKENSERVICECREATEREQUEST_MACHINEROLESENTRY']._loaded_options = None
+  _globals['_TOKENSERVICECREATEREQUEST_MACHINEROLESENTRY']._serialized_options = b'8\001'
+  _globals['_TOKENSERVICECREATEREQUEST_INFRAROLESENTRY']._loaded_options = None
+  _globals['_TOKENSERVICECREATEREQUEST_INFRAROLESENTRY']._serialized_options = b'8\001'
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['description']._loaded_options = None
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['description']._serialized_options = b'\272H\007r\005\020\002\030\200\002'
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['permissions']._loaded_options = None
@@ -66,6 +74,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['project_roles']._serialized_options = b'\272HY\232\001V\"\007r\005\020\003\030\200\001*K\272\001H\n\016role-specified\022\036project role must be specified\032\026this >= 0 && this <= 3'
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['tenant_roles']._loaded_options = None
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['tenant_roles']._serialized_options = b'\272HX\232\001U\"\007r\005\020\003\030\200\001*J\272\001G\n\016role-specified\022\035tenant role must be specified\032\026this >= 0 && this <= 4'
+  _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['machine_roles']._loaded_options = None
+  _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['machine_roles']._serialized_options = b'\272HV\232\001S\"\005r\003\260\001\001*J\272\001G\n\016role-specified\022\035tenant role must be specified\032\026this >= 0 && this <= 4'
+  _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['infra_roles']._loaded_options = None
+  _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['infra_roles']._serialized_options = b'\272HX\232\001U\"\007r\005\020\003\030\200\001*J\272\001G\n\016role-specified\022\035tenant role must be specified\032\026this >= 0 && this <= 4'
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['admin_role']._loaded_options = None
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['admin_role']._serialized_options = b'\272H\005\202\001\002\020\001'
   _globals['_METHODPERMISSION'].fields_by_name['subject']._loaded_options = None
@@ -78,6 +90,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TOKENSERVICEUPDATEREQUEST_PROJECTROLESENTRY']._serialized_options = b'8\001'
   _globals['_TOKENSERVICEUPDATEREQUEST_TENANTROLESENTRY']._loaded_options = None
   _globals['_TOKENSERVICEUPDATEREQUEST_TENANTROLESENTRY']._serialized_options = b'8\001'
+  _globals['_TOKENSERVICEUPDATEREQUEST_MACHINEROLESENTRY']._loaded_options = None
+  _globals['_TOKENSERVICEUPDATEREQUEST_MACHINEROLESENTRY']._serialized_options = b'8\001'
+  _globals['_TOKENSERVICEUPDATEREQUEST_INFRAROLESENTRY']._loaded_options = None
+  _globals['_TOKENSERVICEUPDATEREQUEST_INFRAROLESENTRY']._serialized_options = b'8\001'
   _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['uuid']._loaded_options = None
   _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
   _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['description']._loaded_options = None
@@ -86,6 +102,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['project_roles']._serialized_options = b'\272HY\232\001V\"\007r\005\020\003\030\200\001*K\272\001H\n\016role-specified\022\036project role must be specified\032\026this >= 0 && this <= 3'
   _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['tenant_roles']._loaded_options = None
   _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['tenant_roles']._serialized_options = b'\272HX\232\001U\"\007r\005\020\003\030\200\001*J\272\001G\n\016role-specified\022\035tenant role must be specified\032\026this >= 0 && this <= 4'
+  _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['machine_roles']._loaded_options = None
+  _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['machine_roles']._serialized_options = b'\272HV\232\001S\"\005r\003\260\001\001*J\272\001G\n\016role-specified\022\035tenant role must be specified\032\026this >= 0 && this <= 4'
+  _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['infra_roles']._loaded_options = None
+  _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['infra_roles']._serialized_options = b'\272HX\232\001U\"\007r\005\020\003\030\200\001*J\272\001G\n\016role-specified\022\035tenant role must be specified\032\026this >= 0 && this <= 4'
   _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['admin_role']._loaded_options = None
   _globals['_TOKENSERVICEUPDATEREQUEST'].fields_by_name['admin_role']._serialized_options = b'\272H\005\202\001\002\020\001'
   _globals['_TOKENSERVICEGETREQUEST'].fields_by_name['uuid']._loaded_options = None
@@ -102,48 +122,60 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TOKENSERVICE'].methods_by_name['Revoke']._serialized_options = b'\330\363\030\003'
   _globals['_TOKENSERVICE'].methods_by_name['Refresh']._loaded_options = None
   _globals['_TOKENSERVICE'].methods_by_name['Refresh']._serialized_options = b'\330\363\030\003'
-  _globals['_TOKENTYPE']._serialized_start=3505
-  _globals['_TOKENTYPE']._serialized_end=3588
+  _globals['_TOKENTYPE']._serialized_start=4995
+  _globals['_TOKENTYPE']._serialized_end=5078
   _globals['_TOKEN']._serialized_start=179
-  _globals['_TOKEN']._serialized_end=1000
-  _globals['_TOKEN_PROJECTROLESENTRY']._serialized_start=795
-  _globals['_TOKEN_PROJECTROLESENTRY']._serialized_end=890
-  _globals['_TOKEN_TENANTROLESENTRY']._serialized_start=892
-  _globals['_TOKEN_TENANTROLESENTRY']._serialized_end=985
-  _globals['_TOKENSERVICECREATEREQUEST']._serialized_start=1003
-  _globals['_TOKENSERVICECREATEREQUEST']._serialized_end=1901
-  _globals['_TOKENSERVICECREATEREQUEST_PROJECTROLESENTRY']._serialized_start=795
-  _globals['_TOKENSERVICECREATEREQUEST_PROJECTROLESENTRY']._serialized_end=890
-  _globals['_TOKENSERVICECREATEREQUEST_TENANTROLESENTRY']._serialized_start=892
-  _globals['_TOKENSERVICECREATEREQUEST_TENANTROLESENTRY']._serialized_end=985
-  _globals['_METHODPERMISSION']._serialized_start=1903
-  _globals['_METHODPERMISSION']._serialized_end=1996
-  _globals['_TOKENSERVICECREATERESPONSE']._serialized_start=1998
-  _globals['_TOKENSERVICECREATERESPONSE']._serialized_end=2098
-  _globals['_TOKENSERVICELISTREQUEST']._serialized_start=2100
-  _globals['_TOKENSERVICELISTREQUEST']._serialized_end=2125
-  _globals['_TOKENSERVICELISTRESPONSE']._serialized_start=2127
-  _globals['_TOKENSERVICELISTRESPONSE']._serialized_end=2203
-  _globals['_TOKENSERVICEREVOKEREQUEST']._serialized_start=2205
-  _globals['_TOKENSERVICEREVOKEREQUEST']._serialized_end=2262
-  _globals['_TOKENSERVICEREVOKERESPONSE']._serialized_start=2264
-  _globals['_TOKENSERVICEREVOKERESPONSE']._serialized_end=2292
-  _globals['_TOKENSERVICEUPDATEREQUEST']._serialized_start=2295
-  _globals['_TOKENSERVICEUPDATEREQUEST']._serialized_end=3161
-  _globals['_TOKENSERVICEUPDATEREQUEST_PROJECTROLESENTRY']._serialized_start=795
-  _globals['_TOKENSERVICEUPDATEREQUEST_PROJECTROLESENTRY']._serialized_end=890
-  _globals['_TOKENSERVICEUPDATEREQUEST_TENANTROLESENTRY']._serialized_start=892
-  _globals['_TOKENSERVICEUPDATEREQUEST_TENANTROLESENTRY']._serialized_end=985
-  _globals['_TOKENSERVICEUPDATERESPONSE']._serialized_start=3163
-  _globals['_TOKENSERVICEUPDATERESPONSE']._serialized_end=3239
-  _globals['_TOKENSERVICEGETREQUEST']._serialized_start=3241
-  _globals['_TOKENSERVICEGETREQUEST']._serialized_end=3295
-  _globals['_TOKENSERVICEGETRESPONSE']._serialized_start=3297
-  _globals['_TOKENSERVICEGETRESPONSE']._serialized_end=3370
-  _globals['_TOKENSERVICEREFRESHREQUEST']._serialized_start=3372
-  _globals['_TOKENSERVICEREFRESHREQUEST']._serialized_end=3400
-  _globals['_TOKENSERVICEREFRESHRESPONSE']._serialized_start=3402
-  _globals['_TOKENSERVICEREFRESHRESPONSE']._serialized_end=3503
-  _globals['_TOKENSERVICE']._serialized_start=3591
-  _globals['_TOKENSERVICE']._serialized_end=4247
+  _globals['_TOKEN']._serialized_end=1346
+  _globals['_TOKEN_PROJECTROLESENTRY']._serialized_start=951
+  _globals['_TOKEN_PROJECTROLESENTRY']._serialized_end=1046
+  _globals['_TOKEN_TENANTROLESENTRY']._serialized_start=1048
+  _globals['_TOKEN_TENANTROLESENTRY']._serialized_end=1141
+  _globals['_TOKEN_MACHINEROLESENTRY']._serialized_start=1143
+  _globals['_TOKEN_MACHINEROLESENTRY']._serialized_end=1238
+  _globals['_TOKEN_INFRAROLESENTRY']._serialized_start=1240
+  _globals['_TOKEN_INFRAROLESENTRY']._serialized_end=1331
+  _globals['_TOKENSERVICECREATEREQUEST']._serialized_start=1349
+  _globals['_TOKENSERVICECREATEREQUEST']._serialized_end=2819
+  _globals['_TOKENSERVICECREATEREQUEST_PROJECTROLESENTRY']._serialized_start=951
+  _globals['_TOKENSERVICECREATEREQUEST_PROJECTROLESENTRY']._serialized_end=1046
+  _globals['_TOKENSERVICECREATEREQUEST_TENANTROLESENTRY']._serialized_start=1048
+  _globals['_TOKENSERVICECREATEREQUEST_TENANTROLESENTRY']._serialized_end=1141
+  _globals['_TOKENSERVICECREATEREQUEST_MACHINEROLESENTRY']._serialized_start=1143
+  _globals['_TOKENSERVICECREATEREQUEST_MACHINEROLESENTRY']._serialized_end=1238
+  _globals['_TOKENSERVICECREATEREQUEST_INFRAROLESENTRY']._serialized_start=1240
+  _globals['_TOKENSERVICECREATEREQUEST_INFRAROLESENTRY']._serialized_end=1331
+  _globals['_METHODPERMISSION']._serialized_start=2821
+  _globals['_METHODPERMISSION']._serialized_end=2914
+  _globals['_TOKENSERVICECREATERESPONSE']._serialized_start=2916
+  _globals['_TOKENSERVICECREATERESPONSE']._serialized_end=3016
+  _globals['_TOKENSERVICELISTREQUEST']._serialized_start=3018
+  _globals['_TOKENSERVICELISTREQUEST']._serialized_end=3043
+  _globals['_TOKENSERVICELISTRESPONSE']._serialized_start=3045
+  _globals['_TOKENSERVICELISTRESPONSE']._serialized_end=3121
+  _globals['_TOKENSERVICEREVOKEREQUEST']._serialized_start=3123
+  _globals['_TOKENSERVICEREVOKEREQUEST']._serialized_end=3180
+  _globals['_TOKENSERVICEREVOKERESPONSE']._serialized_start=3182
+  _globals['_TOKENSERVICEREVOKERESPONSE']._serialized_end=3210
+  _globals['_TOKENSERVICEUPDATEREQUEST']._serialized_start=3213
+  _globals['_TOKENSERVICEUPDATEREQUEST']._serialized_end=4651
+  _globals['_TOKENSERVICEUPDATEREQUEST_PROJECTROLESENTRY']._serialized_start=951
+  _globals['_TOKENSERVICEUPDATEREQUEST_PROJECTROLESENTRY']._serialized_end=1046
+  _globals['_TOKENSERVICEUPDATEREQUEST_TENANTROLESENTRY']._serialized_start=1048
+  _globals['_TOKENSERVICEUPDATEREQUEST_TENANTROLESENTRY']._serialized_end=1141
+  _globals['_TOKENSERVICEUPDATEREQUEST_MACHINEROLESENTRY']._serialized_start=1143
+  _globals['_TOKENSERVICEUPDATEREQUEST_MACHINEROLESENTRY']._serialized_end=1238
+  _globals['_TOKENSERVICEUPDATEREQUEST_INFRAROLESENTRY']._serialized_start=1240
+  _globals['_TOKENSERVICEUPDATEREQUEST_INFRAROLESENTRY']._serialized_end=1331
+  _globals['_TOKENSERVICEUPDATERESPONSE']._serialized_start=4653
+  _globals['_TOKENSERVICEUPDATERESPONSE']._serialized_end=4729
+  _globals['_TOKENSERVICEGETREQUEST']._serialized_start=4731
+  _globals['_TOKENSERVICEGETREQUEST']._serialized_end=4785
+  _globals['_TOKENSERVICEGETRESPONSE']._serialized_start=4787
+  _globals['_TOKENSERVICEGETRESPONSE']._serialized_end=4860
+  _globals['_TOKENSERVICEREFRESHREQUEST']._serialized_start=4862
+  _globals['_TOKENSERVICEREFRESHREQUEST']._serialized_end=4890
+  _globals['_TOKENSERVICEREFRESHRESPONSE']._serialized_start=4892
+  _globals['_TOKENSERVICEREFRESHRESPONSE']._serialized_end=4993
+  _globals['_TOKENSERVICE']._serialized_start=5081
+  _globals['_TOKENSERVICE']._serialized_end=5737
 # @@protoc_insertion_point(module_scope)
