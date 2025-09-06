@@ -91,10 +91,7 @@ class BootServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def Report(self, request, context):
-        """FIXME after wait finished a MachineServiceGetRequest is required which must be possible with a machine_role_viewer
-        This should be part of machine.proto
-
-        Report tells metal-api installation was either successful or failed
+        """Report tells metal-api installation was either successful or failed
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

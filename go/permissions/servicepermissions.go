@@ -96,7 +96,6 @@ func GetServicePermissions() *ServicePermissions {
 				},
 				"INFRA_ROLE_VIEWER": []string{
 					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
-					"/metalstack.infra.v2.BootService/Dhcp",
 					"/metalstack.infra.v2.BootService/Boot",
 					"/metalstack.infra.v2.EventService/SendMulti",
 					"/metalstack.infra.v2.SwitchService/Register",

@@ -759,10 +759,9 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"$BootServiceSuperUserPasswordResponse\x12)\n" +
 	"\x10feature_disabled\x18\x01 \x01(\bR\x0ffeatureDisabled\x12:\n" +
 	"\x13super_user_password\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\xdf\x05\n" +
-	"\vBootService\x12m\n" +
-	"\x04Dhcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\n" +
-	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12m\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\xde\x05\n" +
+	"\vBootService\x12l\n" +
+	"\x04Dhcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12m\n" +
 	"\x04Boot\x12+.metalstack.infra.v2.BootServiceBootRequest\x1a,.metalstack.infra.v2.BootServiceBootResponse\"\n" +
 	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12\x93\x01\n" +
 	"\x11SuperUserPassword\x128.metalstack.infra.v2.BootServiceSuperUserPasswordRequest\x1a9.metalstack.infra.v2.BootServiceSuperUserPasswordResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01\x12x\n" +
