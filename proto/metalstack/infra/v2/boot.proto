@@ -147,7 +147,10 @@ message BootServiceWaitRequest {
 }
 
 // BootServiceWaitResponse response to a wait request
-message BootServiceWaitResponse {}
+message BootServiceWaitResponse {
+  // Allocation contains the machine.allocation to actually install the machine
+  metalstack.api.v2.MachineAllocation allocation = 1;
+}
 
 // BootServiceReportRequest is sent from metal-hammer to the api to report the outcome of the register
 message BootServiceReportRequest {
