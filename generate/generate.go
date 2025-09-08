@@ -141,8 +141,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						}
 						auditable[methodName] = true
 
-						role := *methodOpt.IdentifierValue
-						switch role {
+						switch role := *methodOpt.IdentifierValue; role {
 						// Tenant
 						case v1.TenantRole_TENANT_ROLE_OWNER.String(), v1.TenantRole_TENANT_ROLE_EDITOR.String(), v1.TenantRole_TENANT_ROLE_VIEWER.String(), v1.TenantRole_TENANT_ROLE_GUEST.String():
 							roles.Tenant[role] = append(roles.Tenant[role], methodName)
