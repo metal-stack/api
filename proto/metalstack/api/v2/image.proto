@@ -148,14 +148,23 @@ message ImageQuery {
     min_len: 2
     max_len: 128
   }];
+  // Url of the image to query
+  optional string url = 6 [(buf.validate.field).cel = {
+    id: "valid_url"
+    message: "url must be a valid URI"
+    // `isUri` validates that a string is an absolute URI.
+    // This expression validates that the uri field is an absolute URI.
+    // Note: to allow relative URI, use `isUriRef`.
+    expression: "this.isUri()"
+  }];
   // Feature of the image to query
-  optional ImageFeature feature = 6 [(buf.validate.field).enum.defined_only = true];
+  optional ImageFeature feature = 7 [(buf.validate.field).enum.defined_only = true];
 
   // Classification of the image to query
-  optional ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
+  optional ImageClassification classification = 8 [(buf.validate.field).enum.defined_only = true];
 
   // Labels lists only images containing the given labels
-  optional Labels labels = 8;
+  optional Labels labels = 9;
 }
 
 // ImageFeature
