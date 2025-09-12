@@ -1,4 +1,7 @@
+import datetime
+
 from buf.validate import validate_pb2 as _validate_pb2
+from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
@@ -87,18 +90,20 @@ class NetworkServiceCreateResponse(_message.Message):
     def __init__(self, network: _Optional[_Union[Network, _Mapping]] = ...) -> None: ...
 
 class NetworkServiceUpdateRequest(_message.Message):
-    __slots__ = ("id", "project", "name", "description", "labels")
+    __slots__ = ("id", "updated_at", "project", "name", "description", "labels")
     ID_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     id: str
+    updated_at: _timestamp_pb2.Timestamp
     project: str
     name: str
     description: str
     labels: _common_pb2.UpdateLabels
-    def __init__(self, id: _Optional[str] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
 
 class NetworkServiceUpdateResponse(_message.Message):
     __slots__ = ("network",)

@@ -1,4 +1,7 @@
+import datetime
+
 from buf.validate import validate_pb2 as _validate_pb2
+from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import size_pb2 as _size_pb2
 from google.protobuf.internal import containers as _containers
@@ -22,18 +25,20 @@ class SizeServiceCreateResponse(_message.Message):
     def __init__(self, size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ...) -> None: ...
 
 class SizeServiceUpdateRequest(_message.Message):
-    __slots__ = ("id", "name", "description", "constraints", "labels")
+    __slots__ = ("id", "updated_at", "name", "description", "constraints", "labels")
     ID_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     CONSTRAINTS_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     id: str
+    updated_at: _timestamp_pb2.Timestamp
     name: str
     description: str
     constraints: _containers.RepeatedCompositeFieldContainer[_size_pb2.SizeConstraint]
     labels: _common_pb2.UpdateLabels
-    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., constraints: _Optional[_Iterable[_Union[_size_pb2.SizeConstraint, _Mapping]]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., constraints: _Optional[_Iterable[_Union[_size_pb2.SizeConstraint, _Mapping]]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
 
 class SizeServiceUpdateResponse(_message.Message):
     __slots__ = ("size",)

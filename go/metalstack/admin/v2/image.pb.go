@@ -11,6 +11,7 @@ import (
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -118,8 +119,23 @@ func (x *ImageServiceCreateResponse) GetImage() *v2.Image {
 // ImageServiceUpdateRequest
 type ImageServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image is the image
-	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
+	// Id of this image
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// UpdatedAt is the date when this entity was updated
+	// must be part of the update request to ensure optimistic locking
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// URL where this image is located
+	Url *string `protobuf:"bytes,3,opt,name=url,proto3,oneof" json:"url,omitempty"`
+	// Name of this imageLayout
+	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	// Description of this imageLayout
+	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	// Features of this image
+	Features []v2.ImageFeature `protobuf:"varint,6,rep,packed,name=features,proto3,enum=metalstack.api.v2.ImageFeature" json:"features,omitempty"`
+	// Classification of this image
+	Classification v2.ImageClassification `protobuf:"varint,7,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification" json:"classification,omitempty"`
+	// ExpiresAt usage is not possible after this date
+	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -154,9 +170,58 @@ func (*ImageServiceUpdateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_image_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ImageServiceUpdateRequest) GetImage() *v2.Image {
+func (x *ImageServiceUpdateRequest) GetId() string {
 	if x != nil {
-		return x.Image
+		return x.Id
+	}
+	return ""
+}
+
+func (x *ImageServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *ImageServiceUpdateRequest) GetUrl() string {
+	if x != nil && x.Url != nil {
+		return *x.Url
+	}
+	return ""
+}
+
+func (x *ImageServiceUpdateRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *ImageServiceUpdateRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *ImageServiceUpdateRequest) GetFeatures() []v2.ImageFeature {
+	if x != nil {
+		return x.Features
+	}
+	return nil
+}
+
+func (x *ImageServiceUpdateRequest) GetClassification() v2.ImageClassification {
+	if x != nil {
+		return x.Classification
+	}
+	return v2.ImageClassification(0)
+}
+
+func (x *ImageServiceUpdateRequest) GetExpiresAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ExpiresAt
 	}
 	return nil
 }
@@ -395,13 +460,30 @@ var File_metalstack_admin_v2_image_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/admin/v2/image.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/image.proto\"K\n" +
+	"\x1fmetalstack/admin/v2/image.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/image.proto\"K\n" +
 	"\x19ImageServiceCreateRequest\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
 	"\x1aImageServiceCreateResponse\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"K\n" +
-	"\x19ImageServiceUpdateRequest\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
+	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\xd7\x04\n" +
+	"\x19ImageServiceUpdateRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x129\n" +
+	"\n" +
+	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12O\n" +
+	"\x03url\x18\x03 \x01(\tB8\xbaH5\xba\x012\n" +
+	"\tvalid_url\x12\x17url must be a valid URI\x1a\fthis.isUri()H\x00R\x03url\x88\x01\x01\x12#\n" +
+	"\x04name\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x04name\x88\x01\x01\x121\n" +
+	"\vdescription\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\vdescription\x88\x01\x01\x12\x83\x01\n" +
+	"\bfeatures\x18\x06 \x03(\x0e2\x1f.metalstack.api.v2.ImageFeatureBF\xbaHC\x92\x01@\b\x01\"<\xba\x019\n" +
+	"\bfeatures\x12\x15feature must be valid\x1a\x16this >= 0 && this <= 2R\bfeatures\x12X\n" +
+	"\x0eclassification\x18\a \x01(\x0e2&.metalstack.api.v2.ImageClassificationB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0eclassification\x129\n" +
+	"\n" +
+	"expires_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAtB\x06\n" +
+	"\x04_urlB\a\n" +
+	"\x05_nameB\x0e\n" +
+	"\f_description\"L\n" +
 	"\x1aImageServiceUpdateResponse\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"7\n" +
 	"\x19ImageServiceDeleteRequest\x12\x1a\n" +
@@ -445,30 +527,36 @@ var file_metalstack_admin_v2_image_proto_goTypes = []any{
 	(*ImageServiceUsageRequest)(nil),   // 6: metalstack.admin.v2.ImageServiceUsageRequest
 	(*ImageServiceUsageResponse)(nil),  // 7: metalstack.admin.v2.ImageServiceUsageResponse
 	(*v2.Image)(nil),                   // 8: metalstack.api.v2.Image
-	(*v2.ImageQuery)(nil),              // 9: metalstack.api.v2.ImageQuery
-	(*v2.ImageUsage)(nil),              // 10: metalstack.api.v2.ImageUsage
+	(*timestamppb.Timestamp)(nil),      // 9: google.protobuf.Timestamp
+	(v2.ImageFeature)(0),               // 10: metalstack.api.v2.ImageFeature
+	(v2.ImageClassification)(0),        // 11: metalstack.api.v2.ImageClassification
+	(*v2.ImageQuery)(nil),              // 12: metalstack.api.v2.ImageQuery
+	(*v2.ImageUsage)(nil),              // 13: metalstack.api.v2.ImageUsage
 }
 var file_metalstack_admin_v2_image_proto_depIdxs = []int32{
 	8,  // 0: metalstack.admin.v2.ImageServiceCreateRequest.image:type_name -> metalstack.api.v2.Image
 	8,  // 1: metalstack.admin.v2.ImageServiceCreateResponse.image:type_name -> metalstack.api.v2.Image
-	8,  // 2: metalstack.admin.v2.ImageServiceUpdateRequest.image:type_name -> metalstack.api.v2.Image
-	8,  // 3: metalstack.admin.v2.ImageServiceUpdateResponse.image:type_name -> metalstack.api.v2.Image
-	8,  // 4: metalstack.admin.v2.ImageServiceDeleteResponse.image:type_name -> metalstack.api.v2.Image
-	9,  // 5: metalstack.admin.v2.ImageServiceUsageRequest.query:type_name -> metalstack.api.v2.ImageQuery
-	10, // 6: metalstack.admin.v2.ImageServiceUsageResponse.image_usage:type_name -> metalstack.api.v2.ImageUsage
-	0,  // 7: metalstack.admin.v2.ImageService.Create:input_type -> metalstack.admin.v2.ImageServiceCreateRequest
-	2,  // 8: metalstack.admin.v2.ImageService.Update:input_type -> metalstack.admin.v2.ImageServiceUpdateRequest
-	4,  // 9: metalstack.admin.v2.ImageService.Delete:input_type -> metalstack.admin.v2.ImageServiceDeleteRequest
-	6,  // 10: metalstack.admin.v2.ImageService.Usage:input_type -> metalstack.admin.v2.ImageServiceUsageRequest
-	1,  // 11: metalstack.admin.v2.ImageService.Create:output_type -> metalstack.admin.v2.ImageServiceCreateResponse
-	3,  // 12: metalstack.admin.v2.ImageService.Update:output_type -> metalstack.admin.v2.ImageServiceUpdateResponse
-	5,  // 13: metalstack.admin.v2.ImageService.Delete:output_type -> metalstack.admin.v2.ImageServiceDeleteResponse
-	7,  // 14: metalstack.admin.v2.ImageService.Usage:output_type -> metalstack.admin.v2.ImageServiceUsageResponse
-	11, // [11:15] is the sub-list for method output_type
-	7,  // [7:11] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	9,  // 2: metalstack.admin.v2.ImageServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	10, // 3: metalstack.admin.v2.ImageServiceUpdateRequest.features:type_name -> metalstack.api.v2.ImageFeature
+	11, // 4: metalstack.admin.v2.ImageServiceUpdateRequest.classification:type_name -> metalstack.api.v2.ImageClassification
+	9,  // 5: metalstack.admin.v2.ImageServiceUpdateRequest.expires_at:type_name -> google.protobuf.Timestamp
+	8,  // 6: metalstack.admin.v2.ImageServiceUpdateResponse.image:type_name -> metalstack.api.v2.Image
+	8,  // 7: metalstack.admin.v2.ImageServiceDeleteResponse.image:type_name -> metalstack.api.v2.Image
+	12, // 8: metalstack.admin.v2.ImageServiceUsageRequest.query:type_name -> metalstack.api.v2.ImageQuery
+	13, // 9: metalstack.admin.v2.ImageServiceUsageResponse.image_usage:type_name -> metalstack.api.v2.ImageUsage
+	0,  // 10: metalstack.admin.v2.ImageService.Create:input_type -> metalstack.admin.v2.ImageServiceCreateRequest
+	2,  // 11: metalstack.admin.v2.ImageService.Update:input_type -> metalstack.admin.v2.ImageServiceUpdateRequest
+	4,  // 12: metalstack.admin.v2.ImageService.Delete:input_type -> metalstack.admin.v2.ImageServiceDeleteRequest
+	6,  // 13: metalstack.admin.v2.ImageService.Usage:input_type -> metalstack.admin.v2.ImageServiceUsageRequest
+	1,  // 14: metalstack.admin.v2.ImageService.Create:output_type -> metalstack.admin.v2.ImageServiceCreateResponse
+	3,  // 15: metalstack.admin.v2.ImageService.Update:output_type -> metalstack.admin.v2.ImageServiceUpdateResponse
+	5,  // 16: metalstack.admin.v2.ImageService.Delete:output_type -> metalstack.admin.v2.ImageServiceDeleteResponse
+	7,  // 17: metalstack.admin.v2.ImageService.Usage:output_type -> metalstack.admin.v2.ImageServiceUsageResponse
+	14, // [14:18] is the sub-list for method output_type
+	10, // [10:14] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_image_proto_init() }
@@ -476,6 +564,7 @@ func file_metalstack_admin_v2_image_proto_init() {
 	if File_metalstack_admin_v2_image_proto != nil {
 		return
 	}
+	file_metalstack_admin_v2_image_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

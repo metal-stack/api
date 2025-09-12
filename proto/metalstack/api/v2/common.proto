@@ -130,13 +130,13 @@ message Labels {
 message Meta {
   // Tags on this entity
   optional Labels labels = 1;
-  // CreatedAt is the date when this ip was created
+  // CreatedAt is the date when this entity was created
   google.protobuf.Timestamp created_at = 2;
-  // UpdatedAt is the date when this ip was updated
-  google.protobuf.Timestamp updated_at = 3;
-  // Generation identifies the last updated time as uuidv7 field
+  // UpdatedAt is the date when this entity was updated
   // must be part of the update request to ensure optimistic locking
-  optional string generation = 4 [(buf.validate.field).string.uuid = true];
+  google.protobuf.Timestamp updated_at = 3;
+  // Generation identifies how often this entity was modified since creation.
+  uint64 generation = 4;
 }
 
 // UpdateLabels is a message to update labels

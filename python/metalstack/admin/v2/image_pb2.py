@@ -23,11 +23,12 @@ _sym_db = _symbol_database.Default()
 
 
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
 from metalstack.api.v2 import image_pb2 as metalstack_dot_api_dot_v2_dot_image__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fmetalstack/admin/v2/image.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/image.proto\"K\n\x19ImageServiceCreateRequest\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"L\n\x1aImageServiceCreateResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"K\n\x19ImageServiceUpdateRequest\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"L\n\x1aImageServiceUpdateResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"7\n\x19ImageServiceDeleteRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"L\n\x1aImageServiceDeleteResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"O\n\x18ImageServiceUsageRequest\x12\x33\n\x05query\x18\x01 \x01(\x0b\x32\x1d.metalstack.api.v2.ImageQueryR\x05query\"[\n\x19ImageServiceUsageResponse\x12>\n\x0bimage_usage\x18\x01 \x03(\x0b\x32\x1d.metalstack.api.v2.ImageUsageR\nimageUsage2\xe0\x03\n\x0cImageService\x12t\n\x06\x43reate\x12..metalstack.admin.v2.ImageServiceCreateRequest\x1a/.metalstack.admin.v2.ImageServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n\x06Update\x12..metalstack.admin.v2.ImageServiceUpdateRequest\x1a/.metalstack.admin.v2.ImageServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n\x06\x44\x65lete\x12..metalstack.admin.v2.ImageServiceDeleteRequest\x1a/.metalstack.admin.v2.ImageServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12n\n\x05Usage\x12-.metalstack.admin.v2.ImageServiceUsageRequest\x1a..metalstack.admin.v2.ImageServiceUsageResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x42\xce\x01\n\x17\x63om.metalstack.admin.v2B\nImageProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fmetalstack/admin/v2/image.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/image.proto\"K\n\x19ImageServiceCreateRequest\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"L\n\x1aImageServiceCreateResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"\xd7\x04\n\x19ImageServiceUpdateRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\x12\x39\n\nupdated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tupdatedAt\x12O\n\x03url\x18\x03 \x01(\tB8\xbaH5\xba\x01\x32\n\tvalid_url\x12\x17url must be a valid URI\x1a\x0cthis.isUri()H\x00R\x03url\x88\x01\x01\x12#\n\x04name\x18\x04 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x01R\x04name\x88\x01\x01\x12\x31\n\x0b\x64\x65scription\x18\x05 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x02R\x0b\x64\x65scription\x88\x01\x01\x12\x83\x01\n\x08\x66\x65\x61tures\x18\x06 \x03(\x0e\x32\x1f.metalstack.api.v2.ImageFeatureBF\xbaHC\x92\x01@\x08\x01\"<\xba\x01\x39\n\x08\x66\x65\x61tures\x12\x15\x66\x65\x61ture must be valid\x1a\x16this >= 0 && this <= 2R\x08\x66\x65\x61tures\x12X\n\x0e\x63lassification\x18\x07 \x01(\x0e\x32&.metalstack.api.v2.ImageClassificationB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x0e\x63lassification\x12\x39\n\nexpires_at\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\texpiresAtB\x06\n\x04_urlB\x07\n\x05_nameB\x0e\n\x0c_description\"L\n\x1aImageServiceUpdateResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"7\n\x19ImageServiceDeleteRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"L\n\x1aImageServiceDeleteResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"O\n\x18ImageServiceUsageRequest\x12\x33\n\x05query\x18\x01 \x01(\x0b\x32\x1d.metalstack.api.v2.ImageQueryR\x05query\"[\n\x19ImageServiceUsageResponse\x12>\n\x0bimage_usage\x18\x01 \x03(\x0b\x32\x1d.metalstack.api.v2.ImageUsageR\nimageUsage2\xe0\x03\n\x0cImageService\x12t\n\x06\x43reate\x12..metalstack.admin.v2.ImageServiceCreateRequest\x1a/.metalstack.admin.v2.ImageServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n\x06Update\x12..metalstack.admin.v2.ImageServiceUpdateRequest\x1a/.metalstack.admin.v2.ImageServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n\x06\x44\x65lete\x12..metalstack.admin.v2.ImageServiceDeleteRequest\x1a/.metalstack.admin.v2.ImageServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12n\n\x05Usage\x12-.metalstack.admin.v2.ImageServiceUsageRequest\x1a..metalstack.admin.v2.ImageServiceUsageResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x42\xce\x01\n\x17\x63om.metalstack.admin.v2B\nImageProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,6 +36,18 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.admin.v2.image_p
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.admin.v2B\nImageProtoP\001Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\242\002\003MAX\252\002\023Metalstack.Admin.V2\312\002\023Metalstack\\Admin\\V2\342\002\037Metalstack\\Admin\\V2\\GPBMetadata\352\002\025Metalstack::Admin::V2'
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['id']._loaded_options = None
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['id']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['url']._loaded_options = None
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['url']._serialized_options = b'\272H5\272\0012\n\tvalid_url\022\027url must be a valid URI\032\014this.isUri()'
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['name']._loaded_options = None
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['name']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['description']._loaded_options = None
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['description']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['features']._loaded_options = None
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['features']._serialized_options = b'\272HC\222\001@\010\001\"<\272\0019\n\010features\022\025feature must be valid\032\026this >= 0 && this <= 2'
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['classification']._loaded_options = None
+  _globals['_IMAGESERVICEUPDATEREQUEST'].fields_by_name['classification']._serialized_options = b'\272H\005\202\001\002\020\001'
   _globals['_IMAGESERVICEDELETEREQUEST'].fields_by_name['id']._loaded_options = None
   _globals['_IMAGESERVICEDELETEREQUEST'].fields_by_name['id']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
   _globals['_IMAGESERVICE'].methods_by_name['Create']._loaded_options = None
@@ -45,22 +58,22 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_IMAGESERVICE'].methods_by_name['Delete']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
   _globals['_IMAGESERVICE'].methods_by_name['Usage']._loaded_options = None
   _globals['_IMAGESERVICE'].methods_by_name['Usage']._serialized_options = b'\322\363\030\002\001\002'
-  _globals['_IMAGESERVICECREATEREQUEST']._serialized_start=148
-  _globals['_IMAGESERVICECREATEREQUEST']._serialized_end=223
-  _globals['_IMAGESERVICECREATERESPONSE']._serialized_start=225
-  _globals['_IMAGESERVICECREATERESPONSE']._serialized_end=301
-  _globals['_IMAGESERVICEUPDATEREQUEST']._serialized_start=303
-  _globals['_IMAGESERVICEUPDATEREQUEST']._serialized_end=378
-  _globals['_IMAGESERVICEUPDATERESPONSE']._serialized_start=380
-  _globals['_IMAGESERVICEUPDATERESPONSE']._serialized_end=456
-  _globals['_IMAGESERVICEDELETEREQUEST']._serialized_start=458
-  _globals['_IMAGESERVICEDELETEREQUEST']._serialized_end=513
-  _globals['_IMAGESERVICEDELETERESPONSE']._serialized_start=515
-  _globals['_IMAGESERVICEDELETERESPONSE']._serialized_end=591
-  _globals['_IMAGESERVICEUSAGEREQUEST']._serialized_start=593
-  _globals['_IMAGESERVICEUSAGEREQUEST']._serialized_end=672
-  _globals['_IMAGESERVICEUSAGERESPONSE']._serialized_start=674
-  _globals['_IMAGESERVICEUSAGERESPONSE']._serialized_end=765
-  _globals['_IMAGESERVICE']._serialized_start=768
-  _globals['_IMAGESERVICE']._serialized_end=1248
+  _globals['_IMAGESERVICECREATEREQUEST']._serialized_start=181
+  _globals['_IMAGESERVICECREATEREQUEST']._serialized_end=256
+  _globals['_IMAGESERVICECREATERESPONSE']._serialized_start=258
+  _globals['_IMAGESERVICECREATERESPONSE']._serialized_end=334
+  _globals['_IMAGESERVICEUPDATEREQUEST']._serialized_start=337
+  _globals['_IMAGESERVICEUPDATEREQUEST']._serialized_end=936
+  _globals['_IMAGESERVICEUPDATERESPONSE']._serialized_start=938
+  _globals['_IMAGESERVICEUPDATERESPONSE']._serialized_end=1014
+  _globals['_IMAGESERVICEDELETEREQUEST']._serialized_start=1016
+  _globals['_IMAGESERVICEDELETEREQUEST']._serialized_end=1071
+  _globals['_IMAGESERVICEDELETERESPONSE']._serialized_start=1073
+  _globals['_IMAGESERVICEDELETERESPONSE']._serialized_end=1149
+  _globals['_IMAGESERVICEUSAGEREQUEST']._serialized_start=1151
+  _globals['_IMAGESERVICEUSAGEREQUEST']._serialized_end=1230
+  _globals['_IMAGESERVICEUSAGERESPONSE']._serialized_start=1232
+  _globals['_IMAGESERVICEUSAGERESPONSE']._serialized_end=1323
+  _globals['_IMAGESERVICE']._serialized_start=1326
+  _globals['_IMAGESERVICE']._serialized_end=1806
 # @@protoc_insertion_point(module_scope)
