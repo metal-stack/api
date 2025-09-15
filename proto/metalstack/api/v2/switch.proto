@@ -47,6 +47,8 @@ message Switch {
   repeated SwitchNic nics = 9;
   // SwitchOs is the OS running on the switch.
   SwitchOS os = 10;
+  // MachineConnections map machines to the nics they are connected to.
+  repeated MachineConnection machine_connections = 11;
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.
@@ -141,6 +143,14 @@ message NicState {
   SwitchPortStatus desired = 1 [(buf.validate.field).enum.defined_only = true];
   // Actual is the actual port state.
   SwitchPortStatus actual = 2 [(buf.validate.field).enum.defined_only = true];
+}
+
+// MachineConnection associates a machine with the corresponding switch nic.
+message MachineConnection {
+  // MachineId of the machine connected to the nic.
+  string machine_id = 1;
+  // Nic the machine is connected to.
+  SwitchNic nic = 2;
 }
 
 // SwitchQuery can be used to query a switch or a list of switches.

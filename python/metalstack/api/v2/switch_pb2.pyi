@@ -57,7 +57,7 @@ SWITCH_PORT_STATUS_UP: SwitchPortStatus
 SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
 
 class Switch(_message.Message):
-    __slots__ = ("id", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os")
+    __slots__ = ("id", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections")
     ID_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
@@ -68,6 +68,7 @@ class Switch(_message.Message):
     CONSOLE_COMMAND_FIELD_NUMBER: _ClassVar[int]
     NICS_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
     id: str
     description: str
     rack: str
@@ -78,7 +79,8 @@ class Switch(_message.Message):
     console_command: str
     nics: _containers.RepeatedCompositeFieldContainer[SwitchNic]
     os: SwitchOS
-    def __init__(self, id: _Optional[str] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ...) -> None: ...
+    machine_connections: _containers.RepeatedCompositeFieldContainer[MachineConnection]
+    def __init__(self, id: _Optional[str] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ...) -> None: ...
 
 class SwitchOS(_message.Message):
     __slots__ = ("vendor", "version", "metal_core_version")
@@ -141,6 +143,14 @@ class NicState(_message.Message):
     desired: SwitchPortStatus
     actual: SwitchPortStatus
     def __init__(self, desired: _Optional[_Union[SwitchPortStatus, str]] = ..., actual: _Optional[_Union[SwitchPortStatus, str]] = ...) -> None: ...
+
+class MachineConnection(_message.Message):
+    __slots__ = ("machine_id", "nic")
+    MACHINE_ID_FIELD_NUMBER: _ClassVar[int]
+    NIC_FIELD_NUMBER: _ClassVar[int]
+    machine_id: str
+    nic: SwitchNic
+    def __init__(self, machine_id: _Optional[str] = ..., nic: _Optional[_Union[SwitchNic, _Mapping]] = ...) -> None: ...
 
 class SwitchQuery(_message.Message):
     __slots__ = ("id", "partition", "rack", "os")
