@@ -11,6 +11,7 @@ import (
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -118,10 +119,29 @@ func (x *FilesystemServiceCreateResponse) GetFilesystemLayout() *v2.FilesystemLa
 // FilesystemServiceUpdateRequest
 type FilesystemServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// FilesystemLayout the filesystemlayout
-	FilesystemLayout *v2.FilesystemLayout `protobuf:"bytes,1,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	// Id of this filesystemLayout
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// UpdatedAt is the date when this entity was updated
+	// must be part of the update request to ensure optimistic locking
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Name of this filesystemLayout
+	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	// Description of this filesystemLayout
+	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	// Filesystems is a list of filesystems to create on a machine
+	Filesystems []*v2.Filesystem `protobuf:"bytes,5,rep,name=filesystems,proto3" json:"filesystems,omitempty"`
+	// Disks list of disks that belong to this layout
+	Disks []*v2.Disk `protobuf:"bytes,6,rep,name=disks,proto3" json:"disks,omitempty"`
+	// raid arrays to create
+	Raid []*v2.Raid `protobuf:"bytes,7,rep,name=raid,proto3" json:"raid,omitempty"`
+	// VolumeGroups list of volumegroups to create
+	VolumeGroups []*v2.VolumeGroup `protobuf:"bytes,8,rep,name=volume_groups,json=volumeGroups,proto3" json:"volume_groups,omitempty"`
+	// LogicalVolumes list of logicalvolumes to create
+	LogicalVolumes []*v2.LogicalVolume `protobuf:"bytes,9,rep,name=logical_volumes,json=logicalVolumes,proto3" json:"logical_volumes,omitempty"`
+	// Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
+	Constraints   *v2.FilesystemLayoutConstraints `protobuf:"bytes,10,opt,name=constraints,proto3" json:"constraints,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *FilesystemServiceUpdateRequest) Reset() {
@@ -154,9 +174,72 @@ func (*FilesystemServiceUpdateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_filesystem_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *FilesystemServiceUpdateRequest) GetFilesystemLayout() *v2.FilesystemLayout {
+func (x *FilesystemServiceUpdateRequest) GetId() string {
 	if x != nil {
-		return x.FilesystemLayout
+		return x.Id
+	}
+	return ""
+}
+
+func (x *FilesystemServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *FilesystemServiceUpdateRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *FilesystemServiceUpdateRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *FilesystemServiceUpdateRequest) GetFilesystems() []*v2.Filesystem {
+	if x != nil {
+		return x.Filesystems
+	}
+	return nil
+}
+
+func (x *FilesystemServiceUpdateRequest) GetDisks() []*v2.Disk {
+	if x != nil {
+		return x.Disks
+	}
+	return nil
+}
+
+func (x *FilesystemServiceUpdateRequest) GetRaid() []*v2.Raid {
+	if x != nil {
+		return x.Raid
+	}
+	return nil
+}
+
+func (x *FilesystemServiceUpdateRequest) GetVolumeGroups() []*v2.VolumeGroup {
+	if x != nil {
+		return x.VolumeGroups
+	}
+	return nil
+}
+
+func (x *FilesystemServiceUpdateRequest) GetLogicalVolumes() []*v2.LogicalVolume {
+	if x != nil {
+		return x.LogicalVolumes
+	}
+	return nil
+}
+
+func (x *FilesystemServiceUpdateRequest) GetConstraints() *v2.FilesystemLayoutConstraints {
+	if x != nil {
+		return x.Constraints
 	}
 	return nil
 }
@@ -303,13 +386,29 @@ var File_metalstack_admin_v2_filesystem_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_filesystem_proto_rawDesc = "" +
 	"\n" +
-	"$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\"r\n" +
+	"$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\"r\n" +
 	"\x1eFilesystemServiceCreateRequest\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
 	"\x1fFilesystemServiceCreateResponse\x12P\n" +
-	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"r\n" +
-	"\x1eFilesystemServiceUpdateRequest\x12P\n" +
-	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
+	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xe7\x04\n" +
+	"\x1eFilesystemServiceUpdateRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x129\n" +
+	"\n" +
+	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12#\n" +
+	"\x04name\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
+	"\vdescription\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12?\n" +
+	"\vfilesystems\x18\x05 \x03(\v2\x1d.metalstack.api.v2.FilesystemR\vfilesystems\x12-\n" +
+	"\x05disks\x18\x06 \x03(\v2\x17.metalstack.api.v2.DiskR\x05disks\x12+\n" +
+	"\x04raid\x18\a \x03(\v2\x17.metalstack.api.v2.RaidR\x04raid\x12C\n" +
+	"\rvolume_groups\x18\b \x03(\v2\x1e.metalstack.api.v2.VolumeGroupR\fvolumeGroups\x12I\n" +
+	"\x0flogical_volumes\x18\t \x03(\v2 .metalstack.api.v2.LogicalVolumeR\x0elogicalVolumes\x12P\n" +
+	"\vconstraints\x18\n" +
+	" \x01(\v2..metalstack.api.v2.FilesystemLayoutConstraintsR\vconstraintsB\a\n" +
+	"\x05_nameB\x0e\n" +
+	"\f_description\"s\n" +
 	"\x1fFilesystemServiceUpdateResponse\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"<\n" +
 	"\x1eFilesystemServiceDeleteRequest\x12\x1a\n" +
@@ -344,24 +443,37 @@ var file_metalstack_admin_v2_filesystem_proto_goTypes = []any{
 	(*FilesystemServiceDeleteRequest)(nil),  // 4: metalstack.admin.v2.FilesystemServiceDeleteRequest
 	(*FilesystemServiceDeleteResponse)(nil), // 5: metalstack.admin.v2.FilesystemServiceDeleteResponse
 	(*v2.FilesystemLayout)(nil),             // 6: metalstack.api.v2.FilesystemLayout
+	(*timestamppb.Timestamp)(nil),           // 7: google.protobuf.Timestamp
+	(*v2.Filesystem)(nil),                   // 8: metalstack.api.v2.Filesystem
+	(*v2.Disk)(nil),                         // 9: metalstack.api.v2.Disk
+	(*v2.Raid)(nil),                         // 10: metalstack.api.v2.Raid
+	(*v2.VolumeGroup)(nil),                  // 11: metalstack.api.v2.VolumeGroup
+	(*v2.LogicalVolume)(nil),                // 12: metalstack.api.v2.LogicalVolume
+	(*v2.FilesystemLayoutConstraints)(nil),  // 13: metalstack.api.v2.FilesystemLayoutConstraints
 }
 var file_metalstack_admin_v2_filesystem_proto_depIdxs = []int32{
-	6, // 0: metalstack.admin.v2.FilesystemServiceCreateRequest.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	6, // 1: metalstack.admin.v2.FilesystemServiceCreateResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	6, // 2: metalstack.admin.v2.FilesystemServiceUpdateRequest.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	6, // 3: metalstack.admin.v2.FilesystemServiceUpdateResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	6, // 4: metalstack.admin.v2.FilesystemServiceDeleteResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	0, // 5: metalstack.admin.v2.FilesystemService.Create:input_type -> metalstack.admin.v2.FilesystemServiceCreateRequest
-	2, // 6: metalstack.admin.v2.FilesystemService.Update:input_type -> metalstack.admin.v2.FilesystemServiceUpdateRequest
-	4, // 7: metalstack.admin.v2.FilesystemService.Delete:input_type -> metalstack.admin.v2.FilesystemServiceDeleteRequest
-	1, // 8: metalstack.admin.v2.FilesystemService.Create:output_type -> metalstack.admin.v2.FilesystemServiceCreateResponse
-	3, // 9: metalstack.admin.v2.FilesystemService.Update:output_type -> metalstack.admin.v2.FilesystemServiceUpdateResponse
-	5, // 10: metalstack.admin.v2.FilesystemService.Delete:output_type -> metalstack.admin.v2.FilesystemServiceDeleteResponse
-	8, // [8:11] is the sub-list for method output_type
-	5, // [5:8] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	6,  // 0: metalstack.admin.v2.FilesystemServiceCreateRequest.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
+	6,  // 1: metalstack.admin.v2.FilesystemServiceCreateResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
+	7,  // 2: metalstack.admin.v2.FilesystemServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	8,  // 3: metalstack.admin.v2.FilesystemServiceUpdateRequest.filesystems:type_name -> metalstack.api.v2.Filesystem
+	9,  // 4: metalstack.admin.v2.FilesystemServiceUpdateRequest.disks:type_name -> metalstack.api.v2.Disk
+	10, // 5: metalstack.admin.v2.FilesystemServiceUpdateRequest.raid:type_name -> metalstack.api.v2.Raid
+	11, // 6: metalstack.admin.v2.FilesystemServiceUpdateRequest.volume_groups:type_name -> metalstack.api.v2.VolumeGroup
+	12, // 7: metalstack.admin.v2.FilesystemServiceUpdateRequest.logical_volumes:type_name -> metalstack.api.v2.LogicalVolume
+	13, // 8: metalstack.admin.v2.FilesystemServiceUpdateRequest.constraints:type_name -> metalstack.api.v2.FilesystemLayoutConstraints
+	6,  // 9: metalstack.admin.v2.FilesystemServiceUpdateResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
+	6,  // 10: metalstack.admin.v2.FilesystemServiceDeleteResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
+	0,  // 11: metalstack.admin.v2.FilesystemService.Create:input_type -> metalstack.admin.v2.FilesystemServiceCreateRequest
+	2,  // 12: metalstack.admin.v2.FilesystemService.Update:input_type -> metalstack.admin.v2.FilesystemServiceUpdateRequest
+	4,  // 13: metalstack.admin.v2.FilesystemService.Delete:input_type -> metalstack.admin.v2.FilesystemServiceDeleteRequest
+	1,  // 14: metalstack.admin.v2.FilesystemService.Create:output_type -> metalstack.admin.v2.FilesystemServiceCreateResponse
+	3,  // 15: metalstack.admin.v2.FilesystemService.Update:output_type -> metalstack.admin.v2.FilesystemServiceUpdateResponse
+	5,  // 16: metalstack.admin.v2.FilesystemService.Delete:output_type -> metalstack.admin.v2.FilesystemServiceDeleteResponse
+	14, // [14:17] is the sub-list for method output_type
+	11, // [11:14] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_filesystem_proto_init() }
@@ -369,6 +481,7 @@ func file_metalstack_admin_v2_filesystem_proto_init() {
 	if File_metalstack_admin_v2_filesystem_proto != nil {
 		return
 	}
+	file_metalstack_admin_v2_filesystem_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

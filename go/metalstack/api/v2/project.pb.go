@@ -754,14 +754,17 @@ type ProjectServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project to get
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
+	// UpdatedAt is the date when this entity was updated
+	// must be part of the update request to ensure optimistic locking
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Name of this project unique per tenant
-	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of this project
-	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Avatar URL of the project
-	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
+	AvatarUrl *string `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
 	// Labels on this project
-	Labels        *UpdateLabels `protobuf:"bytes,5,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	Labels        *UpdateLabels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -801,6 +804,13 @@ func (x *ProjectServiceUpdateRequest) GetProject() string {
 		return x.Project
 	}
 	return ""
+}
+
+func (x *ProjectServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
 }
 
 func (x *ProjectServiceUpdateRequest) GetName() string {
@@ -1626,15 +1636,17 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\x1bProjectServiceDeleteRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"T\n" +
 	"\x1cProjectServiceDeleteResponse\x124\n" +
-	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\xad\x02\n" +
+	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\xe8\x02\n" +
 	"\x1bProjectServiceUpdateRequest\x12\"\n" +
-	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\"\n" +
-	"\x04name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@H\x00R\x04name\x88\x01\x01\x121\n" +
-	"\vdescription\x18\x03 \x01(\tB\n" +
+	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x129\n" +
+	"\n" +
+	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\"\n" +
+	"\x04name\x18\x03 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@H\x00R\x04name\x88\x01\x01\x121\n" +
+	"\vdescription\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x01R\vdescription\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"avatar_url\x18\x04 \x01(\tH\x02R\tavatarUrl\x88\x01\x01\x12<\n" +
-	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x03R\x06labels\x88\x01\x01B\a\n" +
+	"avatar_url\x18\x05 \x01(\tH\x02R\tavatarUrl\x88\x01\x01\x12<\n" +
+	"\x06labels\x18\x06 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x03R\x06labels\x88\x01\x01B\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\r\n" +
 	"\v_avatar_urlB\t\n" +
@@ -1751,43 +1763,44 @@ var file_metalstack_api_v2_project_proto_depIdxs = []int32{
 	30, // 10: metalstack.api.v2.ProjectServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
 	0,  // 11: metalstack.api.v2.ProjectServiceCreateResponse.project:type_name -> metalstack.api.v2.Project
 	0,  // 12: metalstack.api.v2.ProjectServiceDeleteResponse.project:type_name -> metalstack.api.v2.Project
-	31, // 13: metalstack.api.v2.ProjectServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
-	0,  // 14: metalstack.api.v2.ProjectServiceUpdateResponse.project:type_name -> metalstack.api.v2.Project
-	28, // 15: metalstack.api.v2.ProjectServiceInviteRequest.role:type_name -> metalstack.api.v2.ProjectRole
-	2,  // 16: metalstack.api.v2.ProjectServiceInviteResponse.invite:type_name -> metalstack.api.v2.ProjectInvite
-	2,  // 17: metalstack.api.v2.ProjectServiceInvitesListResponse.invites:type_name -> metalstack.api.v2.ProjectInvite
-	2,  // 18: metalstack.api.v2.ProjectServiceInviteGetResponse.invite:type_name -> metalstack.api.v2.ProjectInvite
-	28, // 19: metalstack.api.v2.ProjectServiceUpdateMemberRequest.role:type_name -> metalstack.api.v2.ProjectRole
-	1,  // 20: metalstack.api.v2.ProjectServiceUpdateMemberResponse.project_member:type_name -> metalstack.api.v2.ProjectMember
-	3,  // 21: metalstack.api.v2.ProjectService.List:input_type -> metalstack.api.v2.ProjectServiceListRequest
-	5,  // 22: metalstack.api.v2.ProjectService.Get:input_type -> metalstack.api.v2.ProjectServiceGetRequest
-	7,  // 23: metalstack.api.v2.ProjectService.Create:input_type -> metalstack.api.v2.ProjectServiceCreateRequest
-	9,  // 24: metalstack.api.v2.ProjectService.Delete:input_type -> metalstack.api.v2.ProjectServiceDeleteRequest
-	11, // 25: metalstack.api.v2.ProjectService.Update:input_type -> metalstack.api.v2.ProjectServiceUpdateRequest
-	19, // 26: metalstack.api.v2.ProjectService.RemoveMember:input_type -> metalstack.api.v2.ProjectServiceRemoveMemberRequest
-	21, // 27: metalstack.api.v2.ProjectService.UpdateMember:input_type -> metalstack.api.v2.ProjectServiceUpdateMemberRequest
-	13, // 28: metalstack.api.v2.ProjectService.Invite:input_type -> metalstack.api.v2.ProjectServiceInviteRequest
-	23, // 29: metalstack.api.v2.ProjectService.InviteAccept:input_type -> metalstack.api.v2.ProjectServiceInviteAcceptRequest
-	25, // 30: metalstack.api.v2.ProjectService.InviteDelete:input_type -> metalstack.api.v2.ProjectServiceInviteDeleteRequest
-	15, // 31: metalstack.api.v2.ProjectService.InvitesList:input_type -> metalstack.api.v2.ProjectServiceInvitesListRequest
-	17, // 32: metalstack.api.v2.ProjectService.InviteGet:input_type -> metalstack.api.v2.ProjectServiceInviteGetRequest
-	4,  // 33: metalstack.api.v2.ProjectService.List:output_type -> metalstack.api.v2.ProjectServiceListResponse
-	6,  // 34: metalstack.api.v2.ProjectService.Get:output_type -> metalstack.api.v2.ProjectServiceGetResponse
-	8,  // 35: metalstack.api.v2.ProjectService.Create:output_type -> metalstack.api.v2.ProjectServiceCreateResponse
-	10, // 36: metalstack.api.v2.ProjectService.Delete:output_type -> metalstack.api.v2.ProjectServiceDeleteResponse
-	12, // 37: metalstack.api.v2.ProjectService.Update:output_type -> metalstack.api.v2.ProjectServiceUpdateResponse
-	20, // 38: metalstack.api.v2.ProjectService.RemoveMember:output_type -> metalstack.api.v2.ProjectServiceRemoveMemberResponse
-	22, // 39: metalstack.api.v2.ProjectService.UpdateMember:output_type -> metalstack.api.v2.ProjectServiceUpdateMemberResponse
-	14, // 40: metalstack.api.v2.ProjectService.Invite:output_type -> metalstack.api.v2.ProjectServiceInviteResponse
-	24, // 41: metalstack.api.v2.ProjectService.InviteAccept:output_type -> metalstack.api.v2.ProjectServiceInviteAcceptResponse
-	26, // 42: metalstack.api.v2.ProjectService.InviteDelete:output_type -> metalstack.api.v2.ProjectServiceInviteDeleteResponse
-	16, // 43: metalstack.api.v2.ProjectService.InvitesList:output_type -> metalstack.api.v2.ProjectServiceInvitesListResponse
-	18, // 44: metalstack.api.v2.ProjectService.InviteGet:output_type -> metalstack.api.v2.ProjectServiceInviteGetResponse
-	33, // [33:45] is the sub-list for method output_type
-	21, // [21:33] is the sub-list for method input_type
-	21, // [21:21] is the sub-list for extension type_name
-	21, // [21:21] is the sub-list for extension extendee
-	0,  // [0:21] is the sub-list for field type_name
+	29, // 13: metalstack.api.v2.ProjectServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	31, // 14: metalstack.api.v2.ProjectServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	0,  // 15: metalstack.api.v2.ProjectServiceUpdateResponse.project:type_name -> metalstack.api.v2.Project
+	28, // 16: metalstack.api.v2.ProjectServiceInviteRequest.role:type_name -> metalstack.api.v2.ProjectRole
+	2,  // 17: metalstack.api.v2.ProjectServiceInviteResponse.invite:type_name -> metalstack.api.v2.ProjectInvite
+	2,  // 18: metalstack.api.v2.ProjectServiceInvitesListResponse.invites:type_name -> metalstack.api.v2.ProjectInvite
+	2,  // 19: metalstack.api.v2.ProjectServiceInviteGetResponse.invite:type_name -> metalstack.api.v2.ProjectInvite
+	28, // 20: metalstack.api.v2.ProjectServiceUpdateMemberRequest.role:type_name -> metalstack.api.v2.ProjectRole
+	1,  // 21: metalstack.api.v2.ProjectServiceUpdateMemberResponse.project_member:type_name -> metalstack.api.v2.ProjectMember
+	3,  // 22: metalstack.api.v2.ProjectService.List:input_type -> metalstack.api.v2.ProjectServiceListRequest
+	5,  // 23: metalstack.api.v2.ProjectService.Get:input_type -> metalstack.api.v2.ProjectServiceGetRequest
+	7,  // 24: metalstack.api.v2.ProjectService.Create:input_type -> metalstack.api.v2.ProjectServiceCreateRequest
+	9,  // 25: metalstack.api.v2.ProjectService.Delete:input_type -> metalstack.api.v2.ProjectServiceDeleteRequest
+	11, // 26: metalstack.api.v2.ProjectService.Update:input_type -> metalstack.api.v2.ProjectServiceUpdateRequest
+	19, // 27: metalstack.api.v2.ProjectService.RemoveMember:input_type -> metalstack.api.v2.ProjectServiceRemoveMemberRequest
+	21, // 28: metalstack.api.v2.ProjectService.UpdateMember:input_type -> metalstack.api.v2.ProjectServiceUpdateMemberRequest
+	13, // 29: metalstack.api.v2.ProjectService.Invite:input_type -> metalstack.api.v2.ProjectServiceInviteRequest
+	23, // 30: metalstack.api.v2.ProjectService.InviteAccept:input_type -> metalstack.api.v2.ProjectServiceInviteAcceptRequest
+	25, // 31: metalstack.api.v2.ProjectService.InviteDelete:input_type -> metalstack.api.v2.ProjectServiceInviteDeleteRequest
+	15, // 32: metalstack.api.v2.ProjectService.InvitesList:input_type -> metalstack.api.v2.ProjectServiceInvitesListRequest
+	17, // 33: metalstack.api.v2.ProjectService.InviteGet:input_type -> metalstack.api.v2.ProjectServiceInviteGetRequest
+	4,  // 34: metalstack.api.v2.ProjectService.List:output_type -> metalstack.api.v2.ProjectServiceListResponse
+	6,  // 35: metalstack.api.v2.ProjectService.Get:output_type -> metalstack.api.v2.ProjectServiceGetResponse
+	8,  // 36: metalstack.api.v2.ProjectService.Create:output_type -> metalstack.api.v2.ProjectServiceCreateResponse
+	10, // 37: metalstack.api.v2.ProjectService.Delete:output_type -> metalstack.api.v2.ProjectServiceDeleteResponse
+	12, // 38: metalstack.api.v2.ProjectService.Update:output_type -> metalstack.api.v2.ProjectServiceUpdateResponse
+	20, // 39: metalstack.api.v2.ProjectService.RemoveMember:output_type -> metalstack.api.v2.ProjectServiceRemoveMemberResponse
+	22, // 40: metalstack.api.v2.ProjectService.UpdateMember:output_type -> metalstack.api.v2.ProjectServiceUpdateMemberResponse
+	14, // 41: metalstack.api.v2.ProjectService.Invite:output_type -> metalstack.api.v2.ProjectServiceInviteResponse
+	24, // 42: metalstack.api.v2.ProjectService.InviteAccept:output_type -> metalstack.api.v2.ProjectServiceInviteAcceptResponse
+	26, // 43: metalstack.api.v2.ProjectService.InviteDelete:output_type -> metalstack.api.v2.ProjectServiceInviteDeleteResponse
+	16, // 44: metalstack.api.v2.ProjectService.InvitesList:output_type -> metalstack.api.v2.ProjectServiceInvitesListResponse
+	18, // 45: metalstack.api.v2.ProjectService.InviteGet:output_type -> metalstack.api.v2.ProjectServiceInviteGetResponse
+	34, // [34:46] is the sub-list for method output_type
+	22, // [22:34] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_project_proto_init() }

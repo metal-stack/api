@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/network.proto";
 
@@ -127,6 +128,9 @@ message NetworkServiceUpdateRequest {
     min_len: 2
     max_len: 128
   }];
+  // UpdatedAt is the date when this entity was updated
+  // must be part of the update request to ensure optimistic locking
+  google.protobuf.Timestamp updated_at = 2;
   // Name of this network
   optional string name = 3 [(buf.validate.field).string = {
     min_len: 2
@@ -138,17 +142,17 @@ message NetworkServiceUpdateRequest {
     max_len: 128
   }];
   // Labels to update on this network
-  optional metalstack.api.v2.UpdateLabels labels = 7;
+  optional metalstack.api.v2.UpdateLabels labels = 5;
 
   // Prefixes in this network
-  repeated string prefixes = 8;
+  repeated string prefixes = 6;
   option (buf.validate.message).cel = {
     id: "prefixes"
     message: "given prefixes must be valid"
     expression: "this.prefixes.all(m, m.isIpPrefix())"
   };
   // Destination Prefixes in this network
-  repeated string destination_prefixes = 9;
+  repeated string destination_prefixes = 7;
   option (buf.validate.message).cel = {
     id: "destination_prefixes"
     message: "given destination_prefixes must be valid"
@@ -169,7 +173,7 @@ message NetworkServiceUpdateRequest {
   };
 
   // Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact.
-  bool force = 2;
+  bool force = 20;
 }
 
 // NetworkServiceDeleteRequest is the request payload for a network delete request

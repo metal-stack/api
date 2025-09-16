@@ -53,7 +53,7 @@ message Size {
     min_len: 2
     max_len: 128
   }];
-  // Meta for this ip
+  // Meta for this size
   Meta meta = 2;
   // Name of this size
   optional string name = 4 [(buf.validate.field).string = {
