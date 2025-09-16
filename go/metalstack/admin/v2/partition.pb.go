@@ -11,6 +11,7 @@ import (
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -72,8 +73,24 @@ func (x *PartitionServiceCreateRequest) GetPartition() *v2.Partition {
 // PartitionServiceUpdateRequest is the request payload for a partition update request
 type PartitionServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Partition the partition
-	Partition     *v2.Partition `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
+	// ID of this partition
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// UpdatedAt is the date when this entity was updated
+	// must be part of the update request to ensure optimistic locking
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Description of this partition
+	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	// PartitionBootConfiguration defines how metal-hammer boots
+	BootConfiguration *v2.PartitionBootConfiguration `protobuf:"bytes,4,opt,name=boot_configuration,json=bootConfiguration,proto3" json:"boot_configuration,omitempty"`
+	// DNSServers for this partition
+	DnsServer []*v2.DNSServer `protobuf:"bytes,5,rep,name=dns_server,json=dnsServer,proto3" json:"dns_server,omitempty"`
+	// NTPServers for this partition
+	NtpServer []*v2.NTPServer `protobuf:"bytes,6,rep,name=ntp_server,json=ntpServer,proto3" json:"ntp_server,omitempty"`
+	// ManagementServiceAddresses defines where the management is reachable
+	// should be in the form <ip|host>:<port>
+	MgmtServiceAddresses []string `protobuf:"bytes,7,rep,name=mgmt_service_addresses,json=mgmtServiceAddresses,proto3" json:"mgmt_service_addresses,omitempty"`
+	// Labels to update on this network
+	Labels        *v2.UpdateLabels `protobuf:"bytes,8,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -108,9 +125,58 @@ func (*PartitionServiceUpdateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_partition_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *PartitionServiceUpdateRequest) GetPartition() *v2.Partition {
+func (x *PartitionServiceUpdateRequest) GetId() string {
 	if x != nil {
-		return x.Partition
+		return x.Id
+	}
+	return ""
+}
+
+func (x *PartitionServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *PartitionServiceUpdateRequest) GetDescription() string {
+	if x != nil && x.Description != nil {
+		return *x.Description
+	}
+	return ""
+}
+
+func (x *PartitionServiceUpdateRequest) GetBootConfiguration() *v2.PartitionBootConfiguration {
+	if x != nil {
+		return x.BootConfiguration
+	}
+	return nil
+}
+
+func (x *PartitionServiceUpdateRequest) GetDnsServer() []*v2.DNSServer {
+	if x != nil {
+		return x.DnsServer
+	}
+	return nil
+}
+
+func (x *PartitionServiceUpdateRequest) GetNtpServer() []*v2.NTPServer {
+	if x != nil {
+		return x.NtpServer
+	}
+	return nil
+}
+
+func (x *PartitionServiceUpdateRequest) GetMgmtServiceAddresses() []string {
+	if x != nil {
+		return x.MgmtServiceAddresses
+	}
+	return nil
+}
+
+func (x *PartitionServiceUpdateRequest) GetLabels() *v2.UpdateLabels {
+	if x != nil {
+		return x.Labels
 	}
 	return nil
 }
@@ -542,11 +608,25 @@ var File_metalstack_admin_v2_partition_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\n" +
-	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\"[\n" +
+	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\"[\n" +
 	"\x1dPartitionServiceCreateRequest\x12:\n" +
-	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"[\n" +
-	"\x1dPartitionServiceUpdateRequest\x12:\n" +
-	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\";\n" +
+	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xa2\x04\n" +
+	"\x1dPartitionServiceUpdateRequest\x12\x1a\n" +
+	"\x02id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x129\n" +
+	"\n" +
+	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12/\n" +
+	"\vdescription\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x00R\vdescription\x88\x01\x01\x12\\\n" +
+	"\x12boot_configuration\x18\x04 \x01(\v2-.metalstack.api.v2.PartitionBootConfigurationR\x11bootConfiguration\x12E\n" +
+	"\n" +
+	"dns_server\x18\x05 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12E\n" +
+	"\n" +
+	"ntp_server\x18\x06 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
+	"R\tntpServer\x124\n" +
+	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\x12<\n" +
+	"\x06labels\x18\b \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01B\x0e\n" +
+	"\f_descriptionB\t\n" +
+	"\a_labels\";\n" +
 	"\x1dPartitionServiceDeleteRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"\\\n" +
@@ -615,26 +695,35 @@ var file_metalstack_admin_v2_partition_proto_goTypes = []any{
 	(*PartitionServiceCapacityRequest)(nil),  // 6: metalstack.admin.v2.PartitionServiceCapacityRequest
 	(*PartitionServiceCapacityResponse)(nil), // 7: metalstack.admin.v2.PartitionServiceCapacityResponse
 	(*v2.Partition)(nil),                     // 8: metalstack.api.v2.Partition
+	(*timestamppb.Timestamp)(nil),            // 9: google.protobuf.Timestamp
+	(*v2.PartitionBootConfiguration)(nil),    // 10: metalstack.api.v2.PartitionBootConfiguration
+	(*v2.DNSServer)(nil),                     // 11: metalstack.api.v2.DNSServer
+	(*v2.NTPServer)(nil),                     // 12: metalstack.api.v2.NTPServer
+	(*v2.UpdateLabels)(nil),                  // 13: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_admin_v2_partition_proto_depIdxs = []int32{
-	8, // 0: metalstack.admin.v2.PartitionServiceCreateRequest.partition:type_name -> metalstack.api.v2.Partition
-	8, // 1: metalstack.admin.v2.PartitionServiceUpdateRequest.partition:type_name -> metalstack.api.v2.Partition
-	8, // 2: metalstack.admin.v2.PartitionServiceCreateResponse.partition:type_name -> metalstack.api.v2.Partition
-	8, // 3: metalstack.admin.v2.PartitionServiceUpdateResponse.partition:type_name -> metalstack.api.v2.Partition
-	8, // 4: metalstack.admin.v2.PartitionServiceDeleteResponse.partition:type_name -> metalstack.api.v2.Partition
-	0, // 5: metalstack.admin.v2.PartitionService.Create:input_type -> metalstack.admin.v2.PartitionServiceCreateRequest
-	1, // 6: metalstack.admin.v2.PartitionService.Update:input_type -> metalstack.admin.v2.PartitionServiceUpdateRequest
-	2, // 7: metalstack.admin.v2.PartitionService.Delete:input_type -> metalstack.admin.v2.PartitionServiceDeleteRequest
-	6, // 8: metalstack.admin.v2.PartitionService.Capacity:input_type -> metalstack.admin.v2.PartitionServiceCapacityRequest
-	3, // 9: metalstack.admin.v2.PartitionService.Create:output_type -> metalstack.admin.v2.PartitionServiceCreateResponse
-	4, // 10: metalstack.admin.v2.PartitionService.Update:output_type -> metalstack.admin.v2.PartitionServiceUpdateResponse
-	5, // 11: metalstack.admin.v2.PartitionService.Delete:output_type -> metalstack.admin.v2.PartitionServiceDeleteResponse
-	7, // 12: metalstack.admin.v2.PartitionService.Capacity:output_type -> metalstack.admin.v2.PartitionServiceCapacityResponse
-	9, // [9:13] is the sub-list for method output_type
-	5, // [5:9] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	8,  // 0: metalstack.admin.v2.PartitionServiceCreateRequest.partition:type_name -> metalstack.api.v2.Partition
+	9,  // 1: metalstack.admin.v2.PartitionServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	10, // 2: metalstack.admin.v2.PartitionServiceUpdateRequest.boot_configuration:type_name -> metalstack.api.v2.PartitionBootConfiguration
+	11, // 3: metalstack.admin.v2.PartitionServiceUpdateRequest.dns_server:type_name -> metalstack.api.v2.DNSServer
+	12, // 4: metalstack.admin.v2.PartitionServiceUpdateRequest.ntp_server:type_name -> metalstack.api.v2.NTPServer
+	13, // 5: metalstack.admin.v2.PartitionServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	8,  // 6: metalstack.admin.v2.PartitionServiceCreateResponse.partition:type_name -> metalstack.api.v2.Partition
+	8,  // 7: metalstack.admin.v2.PartitionServiceUpdateResponse.partition:type_name -> metalstack.api.v2.Partition
+	8,  // 8: metalstack.admin.v2.PartitionServiceDeleteResponse.partition:type_name -> metalstack.api.v2.Partition
+	0,  // 9: metalstack.admin.v2.PartitionService.Create:input_type -> metalstack.admin.v2.PartitionServiceCreateRequest
+	1,  // 10: metalstack.admin.v2.PartitionService.Update:input_type -> metalstack.admin.v2.PartitionServiceUpdateRequest
+	2,  // 11: metalstack.admin.v2.PartitionService.Delete:input_type -> metalstack.admin.v2.PartitionServiceDeleteRequest
+	6,  // 12: metalstack.admin.v2.PartitionService.Capacity:input_type -> metalstack.admin.v2.PartitionServiceCapacityRequest
+	3,  // 13: metalstack.admin.v2.PartitionService.Create:output_type -> metalstack.admin.v2.PartitionServiceCreateResponse
+	4,  // 14: metalstack.admin.v2.PartitionService.Update:output_type -> metalstack.admin.v2.PartitionServiceUpdateResponse
+	5,  // 15: metalstack.admin.v2.PartitionService.Delete:output_type -> metalstack.admin.v2.PartitionServiceDeleteResponse
+	7,  // 16: metalstack.admin.v2.PartitionService.Capacity:output_type -> metalstack.admin.v2.PartitionServiceCapacityResponse
+	13, // [13:17] is the sub-list for method output_type
+	9,  // [9:13] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_partition_proto_init() }
@@ -642,6 +731,7 @@ func file_metalstack_admin_v2_partition_proto_init() {
 	if File_metalstack_admin_v2_partition_proto != nil {
 		return
 	}
+	file_metalstack_admin_v2_partition_proto_msgTypes[1].OneofWrappers = []any{}
 	file_metalstack_admin_v2_partition_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

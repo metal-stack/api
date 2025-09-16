@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 
 // IPService serves ip address related functions
@@ -129,19 +130,22 @@ message IPServiceCreateRequest {
 message IPServiceUpdateRequest {
   // Ip the ip to update
   string ip = 1 [(buf.validate.field).string.ip = true];
-  // Project of the ip
-  string project = 2 [(buf.validate.field).string.uuid = true];
+  // UpdatedAt is the date when this entity was updated
+  // must be part of the update request to ensure optimistic locking
+  google.protobuf.Timestamp updated_at = 2;
+  // Project id of the ip
+  string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this ip
-  optional string name = 3 [(buf.validate.field).string = {
+  optional string name = 4 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Description of this ip
-  optional string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  optional string description = 5 [(buf.validate.field).string = {max_len: 128}];
   // Type of this ip
-  optional IPType type = 5 [(buf.validate.field).enum.defined_only = true];
+  optional IPType type = 6 [(buf.validate.field).enum.defined_only = true];
   // Labels on this ip
-  optional UpdateLabels labels = 6;
+  optional UpdateLabels labels = 7;
 }
 
 // IPServiceListRequest is the request payload for a ip list request

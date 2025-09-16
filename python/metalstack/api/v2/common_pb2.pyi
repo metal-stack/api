@@ -105,18 +105,6 @@ class Paging(_message.Message):
     count: int
     def __init__(self, page: _Optional[int] = ..., count: _Optional[int] = ...) -> None: ...
 
-class Meta(_message.Message):
-    __slots__ = ("labels", "created_at", "updated_at", "generation")
-    LABELS_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
-    GENERATION_FIELD_NUMBER: _ClassVar[int]
-    labels: Labels
-    created_at: _timestamp_pb2.Timestamp
-    updated_at: _timestamp_pb2.Timestamp
-    generation: str
-    def __init__(self, labels: _Optional[_Union[Labels, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., generation: _Optional[str] = ...) -> None: ...
-
 class Labels(_message.Message):
     __slots__ = ("labels",)
     class LabelsEntry(_message.Message):
@@ -129,6 +117,18 @@ class Labels(_message.Message):
     LABELS_FIELD_NUMBER: _ClassVar[int]
     labels: _containers.ScalarMap[str, str]
     def __init__(self, labels: _Optional[_Mapping[str, str]] = ...) -> None: ...
+
+class Meta(_message.Message):
+    __slots__ = ("labels", "created_at", "updated_at", "generation")
+    LABELS_FIELD_NUMBER: _ClassVar[int]
+    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    GENERATION_FIELD_NUMBER: _ClassVar[int]
+    labels: Labels
+    created_at: _timestamp_pb2.Timestamp
+    updated_at: _timestamp_pb2.Timestamp
+    generation: int
+    def __init__(self, labels: _Optional[_Union[Labels, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., generation: _Optional[int] = ...) -> None: ...
 
 class UpdateLabels(_message.Message):
     __slots__ = ("update", "remove")

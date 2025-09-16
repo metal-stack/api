@@ -173,22 +173,25 @@ message TenantServiceCreateRequest {
 message TenantServiceUpdateRequest {
   // Login of the tenant
   string login = 1;
+  // UpdatedAt is the date when this entity was updated
+  // must be part of the update request to ensure optimistic locking
+  google.protobuf.Timestamp updated_at = 2;
   // Name of the tenant
-  optional string name = 2 [(buf.validate.field).string = {
+  optional string name = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 64
   }];
   // Email of the tenant
-  optional string email = 3 [(buf.validate.field).string.email = true];
+  optional string email = 4 [(buf.validate.field).string.email = true];
   // Description of this tenant
-  optional string description = 4 [(buf.validate.field).string = {
+  optional string description = 5 [(buf.validate.field).string = {
     min_len: 2
     max_len: 512
   }];
   // AvatarUrl of the tenant
-  optional string avatar_url = 5;
+  optional string avatar_url = 6;
   // Labels on the tenant
-  optional UpdateLabels labels = 6;
+  optional UpdateLabels labels = 7;
 }
 
 // TenantServiceDeleteRequest is the request payload of the tenant delete request

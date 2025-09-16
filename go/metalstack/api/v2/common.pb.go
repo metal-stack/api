@@ -467,25 +467,71 @@ func (x *Paging) GetCount() uint64 {
 	return 0
 }
 
+// Labels define additional information to a entity
+type Labels struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Labels consists labels
+	Labels        map[string]string `protobuf:"bytes,1,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Labels) Reset() {
+	*x = Labels{}
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Labels) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Labels) ProtoMessage() {}
+
+func (x *Labels) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Labels.ProtoReflect.Descriptor instead.
+func (*Labels) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Labels) GetLabels() map[string]string {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
+}
+
 // Meta of a message
 type Meta struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Tags on this entity
 	Labels *Labels `protobuf:"bytes,1,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
-	// CreatedAt is the date when this ip was created
+	// CreatedAt is the date when this entity was created
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	// UpdatedAt is the date when this ip was updated
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	// Generation identifies the last updated time as uuidv7 field
+	// UpdatedAt is the date when this entity was updated
 	// must be part of the update request to ensure optimistic locking
-	Generation    *string `protobuf:"bytes,4,opt,name=generation,proto3,oneof" json:"generation,omitempty"`
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// Generation identifies how often this entity was modified since creation.
+	Generation    uint64 `protobuf:"varint,4,opt,name=generation,proto3" json:"generation,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Meta) Reset() {
 	*x = Meta{}
-	mi := &file_metalstack_api_v2_common_proto_msgTypes[1]
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -497,7 +543,7 @@ func (x *Meta) String() string {
 func (*Meta) ProtoMessage() {}
 
 func (x *Meta) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_common_proto_msgTypes[1]
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -510,7 +556,7 @@ func (x *Meta) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Meta.ProtoReflect.Descriptor instead.
 func (*Meta) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{1}
+	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Meta) GetLabels() *Labels {
@@ -534,57 +580,11 @@ func (x *Meta) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-func (x *Meta) GetGeneration() string {
-	if x != nil && x.Generation != nil {
-		return *x.Generation
-	}
-	return ""
-}
-
-// Labels define additional information to a entity
-type Labels struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Labels consists labels
-	Labels        map[string]string `protobuf:"bytes,1,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Labels) Reset() {
-	*x = Labels{}
-	mi := &file_metalstack_api_v2_common_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Labels) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Labels) ProtoMessage() {}
-
-func (x *Labels) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_common_proto_msgTypes[2]
+func (x *Meta) GetGeneration() uint64 {
 	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
+		return x.Generation
 	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Labels.ProtoReflect.Descriptor instead.
-func (*Labels) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *Labels) GetLabels() map[string]string {
-	if x != nil {
-		return x.Labels
-	}
-	return nil
+	return 0
 }
 
 // UpdateLabels is a message to update labels
@@ -758,23 +758,22 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\x04page\x18\x01 \x01(\x04H\x00R\x04page\x88\x01\x01\x12\x19\n" +
 	"\x05count\x18\x02 \x01(\x04H\x01R\x05count\x88\x01\x01B\a\n" +
 	"\x05_pageB\b\n" +
-	"\x06_count\"\xfd\x01\n" +
+	"\x06_count\"\x9c\x01\n" +
+	"\x06Labels\x12W\n" +
+	"\x06labels\x18\x01 \x03(\v2%.metalstack.api.v2.Labels.LabelsEntryB\x18\xbaH\x15\x9a\x01\x12\"\ar\x05\x10\x01\x18\x80\x02*\ar\x05\x10\x00\x18\x80\x02R\x06labels\x1a9\n" +
+	"\vLabelsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xdf\x01\n" +
 	"\x04Meta\x126\n" +
 	"\x06labels\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsH\x00R\x06labels\x88\x01\x01\x129\n" +
 	"\n" +
 	"created_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12-\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1e\n" +
 	"\n" +
-	"generation\x18\x04 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x01R\n" +
-	"generation\x88\x01\x01B\t\n" +
-	"\a_labelsB\r\n" +
-	"\v_generation\"\x9c\x01\n" +
-	"\x06Labels\x12W\n" +
-	"\x06labels\x18\x01 \x03(\v2%.metalstack.api.v2.Labels.LabelsEntryB\x18\xbaH\x15\x9a\x01\x12\"\ar\x05\x10\x01\x18\x80\x02*\ar\x05\x10\x00\x18\x80\x02R\x06labels\x1a9\n" +
-	"\vLabelsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"Y\n" +
+	"generation\x18\x04 \x01(\x04R\n" +
+	"generationB\t\n" +
+	"\a_labels\"Y\n" +
 	"\fUpdateLabels\x121\n" +
 	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12\x16\n" +
 	"\x06remove\x18\x02 \x03(\tR\x06remove*\x87\x01\n" +
@@ -848,8 +847,8 @@ var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(Visibility)(0),                       // 5: metalstack.api.v2.Visibility
 	(Auditing)(0),                         // 6: metalstack.api.v2.Auditing
 	(*Paging)(nil),                        // 7: metalstack.api.v2.Paging
-	(*Meta)(nil),                          // 8: metalstack.api.v2.Meta
-	(*Labels)(nil),                        // 9: metalstack.api.v2.Labels
+	(*Labels)(nil),                        // 8: metalstack.api.v2.Labels
+	(*Meta)(nil),                          // 9: metalstack.api.v2.Meta
 	(*UpdateLabels)(nil),                  // 10: metalstack.api.v2.UpdateLabels
 	nil,                                   // 11: metalstack.api.v2.Labels.LabelsEntry
 	(*timestamppb.Timestamp)(nil),         // 12: google.protobuf.Timestamp
@@ -857,11 +856,11 @@ var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(*descriptorpb.EnumValueOptions)(nil), // 14: google.protobuf.EnumValueOptions
 }
 var file_metalstack_api_v2_common_proto_depIdxs = []int32{
-	9,  // 0: metalstack.api.v2.Meta.labels:type_name -> metalstack.api.v2.Labels
-	12, // 1: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
-	12, // 2: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
-	11, // 3: metalstack.api.v2.Labels.labels:type_name -> metalstack.api.v2.Labels.LabelsEntry
-	9,  // 4: metalstack.api.v2.UpdateLabels.update:type_name -> metalstack.api.v2.Labels
+	11, // 0: metalstack.api.v2.Labels.labels:type_name -> metalstack.api.v2.Labels.LabelsEntry
+	8,  // 1: metalstack.api.v2.Meta.labels:type_name -> metalstack.api.v2.Labels
+	12, // 2: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
+	12, // 3: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
+	8,  // 4: metalstack.api.v2.UpdateLabels.update:type_name -> metalstack.api.v2.Labels
 	13, // 5: metalstack.api.v2.tenant_roles:extendee -> google.protobuf.MethodOptions
 	13, // 6: metalstack.api.v2.project_roles:extendee -> google.protobuf.MethodOptions
 	13, // 7: metalstack.api.v2.admin_roles:extendee -> google.protobuf.MethodOptions
@@ -890,7 +889,7 @@ func file_metalstack_api_v2_common_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_msgTypes[0].OneofWrappers = []any{}
-	file_metalstack_api_v2_common_proto_msgTypes[1].OneofWrappers = []any{}
+	file_metalstack_api_v2_common_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

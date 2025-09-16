@@ -162,18 +162,20 @@ class MachineServiceCreateResponse(_message.Message):
     def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceUpdateRequest(_message.Message):
-    __slots__ = ("uuid", "project", "description", "labels", "ssh_public_keys")
+    __slots__ = ("uuid", "updated_at", "project", "description", "labels", "ssh_public_keys")
     UUID_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     SSH_PUBLIC_KEYS_FIELD_NUMBER: _ClassVar[int]
     uuid: str
+    updated_at: _timestamp_pb2.Timestamp
     project: str
     description: str
     labels: _common_pb2.UpdateLabels
     ssh_public_keys: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ..., description: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., project: _Optional[str] = ..., description: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class MachineServiceUpdateResponse(_message.Message):
     __slots__ = ("machine",)

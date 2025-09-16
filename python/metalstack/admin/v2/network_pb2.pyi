@@ -1,4 +1,7 @@
+import datetime
+
 from buf.validate import validate_pb2 as _validate_pb2
+from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import network_pb2 as _network_pb2
 from google.protobuf.internal import containers as _containers
@@ -60,8 +63,9 @@ class NetworkServiceCreateRequest(_message.Message):
     def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., partition: _Optional[str] = ..., project: _Optional[str] = ..., type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., default_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., min_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., parent_network: _Optional[str] = ..., additional_announcable_cidrs: _Optional[_Iterable[str]] = ..., length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., address_family: _Optional[_Union[_network_pb2.NetworkAddressFamily, str]] = ...) -> None: ...
 
 class NetworkServiceUpdateRequest(_message.Message):
-    __slots__ = ("id", "name", "description", "labels", "prefixes", "destination_prefixes", "default_child_prefix_length", "min_child_prefix_length", "nat_type", "additional_announcable_cidrs", "force")
+    __slots__ = ("id", "updated_at", "name", "description", "labels", "prefixes", "destination_prefixes", "default_child_prefix_length", "min_child_prefix_length", "nat_type", "additional_announcable_cidrs", "force")
     ID_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
@@ -73,6 +77,7 @@ class NetworkServiceUpdateRequest(_message.Message):
     ADDITIONAL_ANNOUNCABLE_CIDRS_FIELD_NUMBER: _ClassVar[int]
     FORCE_FIELD_NUMBER: _ClassVar[int]
     id: str
+    updated_at: _timestamp_pb2.Timestamp
     name: str
     description: str
     labels: _common_pb2.UpdateLabels
@@ -83,7 +88,7 @@ class NetworkServiceUpdateRequest(_message.Message):
     nat_type: _network_pb2.NATType
     additional_announcable_cidrs: _containers.RepeatedScalarFieldContainer[str]
     force: bool
-    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., default_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., min_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., additional_announcable_cidrs: _Optional[_Iterable[str]] = ..., force: _Optional[bool] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., default_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., min_child_prefix_length: _Optional[_Union[_network_pb2.ChildPrefixLength, _Mapping]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., additional_announcable_cidrs: _Optional[_Iterable[str]] = ..., force: _Optional[bool] = ...) -> None: ...
 
 class NetworkServiceDeleteRequest(_message.Message):
     __slots__ = ("id",)

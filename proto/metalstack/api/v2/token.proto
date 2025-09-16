@@ -202,15 +202,18 @@ message TokenServiceRevokeResponse {}
 message TokenServiceUpdateRequest {
   // Uuid of the token to update
   string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // UpdatedAt is the date when this entity was updated
+  // must be part of the update request to ensure optimistic locking
+  google.protobuf.Timestamp updated_at = 2;
   // Description is a user given description of this token.
-  optional string description = 2 [(buf.validate.field).string = {
+  optional string description = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 256
   }];
   // Permissions is a list of service methods this token can be used for
-  repeated MethodPermission permissions = 3;
+  repeated MethodPermission permissions = 4;
   // ProjectRoles associates a project id with the corresponding role of the token owner
-  map<string, ProjectRole> project_roles = 4 [(buf.validate.field).map = {
+  map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
     keys: {
       string: {
         min_len: 3
@@ -226,7 +229,7 @@ message TokenServiceUpdateRequest {
     }
   }];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
-  map<string, TenantRole> tenant_roles = 5 [(buf.validate.field).map = {
+  map<string, TenantRole> tenant_roles = 6 [(buf.validate.field).map = {
     keys: {
       string: {
         min_len: 3
@@ -242,7 +245,7 @@ message TokenServiceUpdateRequest {
     }
   }];
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
-  map<string, MachineRole> machine_roles = 6 [(buf.validate.field).map = {
+  map<string, MachineRole> machine_roles = 7 [(buf.validate.field).map = {
     keys: {
       string: {uuid: true}
     }
@@ -255,7 +258,7 @@ message TokenServiceUpdateRequest {
     }
   }];
   // InfraRoles associates a infra service with the corresponding role of the token owner
-  map<string, InfraRole> infra_roles = 7 [(buf.validate.field).map = {
+  map<string, InfraRole> infra_roles = 8 [(buf.validate.field).map = {
     keys: {
       string: {
         min_len: 3
@@ -271,7 +274,7 @@ message TokenServiceUpdateRequest {
     }
   }];
   // AdminRole defines the admin role of the token owner
-  optional AdminRole admin_role = 8 [(buf.validate.field).enum.defined_only = true];
+  optional AdminRole admin_role = 9 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TokenServiceUpdateResponse is the response payload of a token update request
