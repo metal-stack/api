@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/filesystem.proto";
 
@@ -39,8 +40,36 @@ message FilesystemServiceCreateResponse {
 
 // FilesystemServiceUpdateRequest
 message FilesystemServiceUpdateRequest {
-  // FilesystemLayout the filesystemlayout
-  metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
+  // Id of this filesystemLayout
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // UpdatedAt is the date when this entity was updated
+  // must be part of the update request to ensure optimistic locking
+  google.protobuf.Timestamp updated_at = 2;
+  // Name of this filesystemLayout
+  optional string name = 3 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this filesystemLayout
+  optional string description = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Filesystems is a list of filesystems to create on a machine
+  repeated metalstack.api.v2.Filesystem filesystems = 5;
+  // Disks list of disks that belong to this layout
+  repeated metalstack.api.v2.Disk disks = 6;
+  // raid arrays to create
+  repeated metalstack.api.v2.Raid raid = 7;
+  // VolumeGroups list of volumegroups to create
+  repeated metalstack.api.v2.VolumeGroup volume_groups = 8;
+  // LogicalVolumes list of logicalvolumes to create
+  repeated metalstack.api.v2.LogicalVolume logical_volumes = 9;
+  // Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
+  metalstack.api.v2.FilesystemLayoutConstraints constraints = 10;
 }
 
 // FilesystemServiceUpdateResponse

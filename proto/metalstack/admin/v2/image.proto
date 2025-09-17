@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/image.proto";
 
@@ -44,8 +45,51 @@ message ImageServiceCreateResponse {
 
 // ImageServiceUpdateRequest
 message ImageServiceUpdateRequest {
-  // Image is the image
-  metalstack.api.v2.Image image = 1;
+  // Id of this image
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // UpdatedAt is the date when this entity was updated
+  // must be part of the update request to ensure optimistic locking
+  google.protobuf.Timestamp updated_at = 2;
+  // URL where this image is located
+  optional string url = 3 [(buf.validate.field).cel = {
+    id: "valid_url"
+    message: "url must be a valid URI"
+    // `isUri` validates that a string is an absolute URI.
+    // This expression validates that the uri field is an absolute URI.
+    // Note: to allow relative URI, use `isUriRef`.
+    expression: "this.isUri()"
+  }];
+  // Name of this imageLayout
+  optional string name = 4 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Description of this imageLayout
+  optional string description = 5 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Features of this image
+  repeated metalstack.api.v2.ImageFeature features = 6 [(buf.validate.field).repeated = {
+    min_items: 1
+    items: {
+      cel: [
+        {
+          id: "features"
+          message: "feature must be valid"
+          expression: "this >= 0 && this <= 2"
+        }
+      ]
+    }
+  }];
+  // Classification of this image
+  metalstack.api.v2.ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
+
+  // ExpiresAt usage is not possible after this date
+  google.protobuf.Timestamp expires_at = 8;
 }
 
 // ImageServiceUpdateResponse

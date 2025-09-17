@@ -3037,7 +3037,8 @@ ignores rules on those fields if no value is set. `required` ensures that
 the fields are set and valid.
 
 Fields that don&#39;t track presence are always validated by Protovalidate,
-whether they are set or not. It is not necessary to add `required`:
+whether they are set or not. It is not necessary to add `required`. It
+can be added to indicate that the field cannot be the zero value.
 
 ```proto
 syntax=&#34;proto3&#34;;
@@ -3048,8 +3049,13 @@ message FieldsWithoutPresence {
     (buf.validate.field).string.email = true
   ];
   // `repeated.min_items` always applies, even to an empty list.
-  repeated string labels = 4 [
+  repeated string labels = 2 [
     (buf.validate.field).repeated.min_items = 1
+  ];
+  // `required`, for fields that don&#39;t track presence, indicates
+  // the value of the field can&#39;t be the zero value.
+  int32 zero_value_not_allowed = 3 [
+    (buf.validate.field).required = true
   ];
 }
 ```
@@ -6462,7 +6468,8 @@ message MyMessage {
   // The field&#39;s rules will always be ignored, including any validations
   // on value&#39;s fields.
   MyOtherMessage value = 1 [
-    (buf.validate.field).ignore = IGNORE_ALWAYS];
+    (buf.validate.field).ignore = IGNORE_ALWAYS
+  ];
 }
 ```</p></td>
               </tr>
@@ -6647,22 +6654,22 @@ no validation is performed against a oneof.</p></td>
                   <td>created_at</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>CreatedAt is the date when this ip was created </p></td>
+                  <td><p>CreatedAt is the date when this entity was created </p></td>
                 </tr>
               
                 <tr>
                   <td>updated_at</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this ip was updated </p></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
                 </tr>
               
                 <tr>
                   <td>generation</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Generation identifies the last updated time as uuidv7 field
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Generation identifies how often this entity was modified since creation. </p></td>
                 </tr>
               
             </tbody>
@@ -7179,7 +7186,7 @@ having a direct membership within the tenant.</p></td>
                   <td>meta</td>
                   <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
                   <td></td>
-                  <td><p>Meta for this ip </p></td>
+                  <td><p>Meta for this filesystemLayout </p></td>
                 </tr>
               
                 <tr>
@@ -7967,10 +7974,74 @@ having a direct membership within the tenant.</p></td>
             <tbody>
               
                 <tr>
-                  <td>filesystem_layout</td>
-                  <td><a href="#metalstack.api.v2.FilesystemLayout">metalstack.api.v2.FilesystemLayout</a></td>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>FilesystemLayout the filesystemlayout </p></td>
+                  <td><p>Id of this filesystemLayout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this filesystemLayout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this filesystemLayout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>filesystems</td>
+                  <td><a href="#metalstack.api.v2.Filesystem">metalstack.api.v2.Filesystem</a></td>
+                  <td>repeated</td>
+                  <td><p>Filesystems is a list of filesystems to create on a machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>disks</td>
+                  <td><a href="#metalstack.api.v2.Disk">metalstack.api.v2.Disk</a></td>
+                  <td>repeated</td>
+                  <td><p>Disks list of disks that belong to this layout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>raid</td>
+                  <td><a href="#metalstack.api.v2.Raid">metalstack.api.v2.Raid</a></td>
+                  <td>repeated</td>
+                  <td><p>raid arrays to create </p></td>
+                </tr>
+              
+                <tr>
+                  <td>volume_groups</td>
+                  <td><a href="#metalstack.api.v2.VolumeGroup">metalstack.api.v2.VolumeGroup</a></td>
+                  <td>repeated</td>
+                  <td><p>VolumeGroups list of volumegroups to create </p></td>
+                </tr>
+              
+                <tr>
+                  <td>logical_volumes</td>
+                  <td><a href="#metalstack.api.v2.LogicalVolume">metalstack.api.v2.LogicalVolume</a></td>
+                  <td>repeated</td>
+                  <td><p>LogicalVolumes list of logicalvolumes to create </p></td>
+                </tr>
+              
+                <tr>
+                  <td>constraints</td>
+                  <td><a href="#metalstack.api.v2.FilesystemLayoutConstraints">metalstack.api.v2.FilesystemLayoutConstraints</a></td>
+                  <td></td>
+                  <td><p>Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts </p></td>
                 </tr>
               
             </tbody>
@@ -8598,10 +8669,60 @@ should contain os and major.minor then latest patch version of this os is return
             <tbody>
               
                 <tr>
-                  <td>image</td>
-                  <td><a href="#metalstack.api.v2.Image">metalstack.api.v2.Image</a></td>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Image is the image </p></td>
+                  <td><p>Id of this image </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
+                </tr>
+              
+                <tr>
+                  <td>url</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>URL where this image is located </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this imageLayout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this imageLayout </p></td>
+                </tr>
+              
+                <tr>
+                  <td>features</td>
+                  <td><a href="#metalstack.api.v2.ImageFeature">metalstack.api.v2.ImageFeature</a></td>
+                  <td>repeated</td>
+                  <td><p>Features of this image </p></td>
+                </tr>
+              
+                <tr>
+                  <td>classification</td>
+                  <td><a href="#metalstack.api.v2.ImageClassification">metalstack.api.v2.ImageClassification</a></td>
+                  <td></td>
+                  <td><p>Classification of this image </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expires_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>ExpiresAt usage is not possible after this date </p></td>
                 </tr>
               
             </tbody>
@@ -9206,10 +9327,18 @@ Will be equal with project most of the time </p></td>
                 </tr>
               
                 <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
+                </tr>
+              
+                <tr>
                   <td>project</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Project of the ip </p></td>
+                  <td><p>Project id of the ip </p></td>
                 </tr>
               
                 <tr>
@@ -10189,6 +10318,14 @@ Will be equal with project most of the time </p></td>
                 </tr>
               
                 <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
+                </tr>
+              
+                <tr>
                   <td>project</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
@@ -10840,7 +10977,7 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>meta</td>
                   <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
                   <td></td>
-                  <td><p>Meta for this ip </p></td>
+                  <td><p>Meta for this size </p></td>
                 </tr>
               
                 <tr>
@@ -12792,6 +12929,14 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                 </tr>
               
                 <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
+                </tr>
+              
+                <tr>
                   <td>project</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
@@ -13778,6 +13923,14 @@ otherwise an error is thrown that the partition must be specified </p></td>
                 </tr>
               
                 <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
+                </tr>
+              
+                <tr>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
@@ -14209,10 +14362,61 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
             <tbody>
               
                 <tr>
-                  <td>partition</td>
-                  <td><a href="#metalstack.api.v2.Partition">metalstack.api.v2.Partition</a></td>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Partition the partition </p></td>
+                  <td><p>ID of this partition </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this partition </p></td>
+                </tr>
+              
+                <tr>
+                  <td>boot_configuration</td>
+                  <td><a href="#metalstack.api.v2.PartitionBootConfiguration">metalstack.api.v2.PartitionBootConfiguration</a></td>
+                  <td></td>
+                  <td><p>PartitionBootConfiguration defines how metal-hammer boots </p></td>
+                </tr>
+              
+                <tr>
+                  <td>dns_server</td>
+                  <td><a href="#metalstack.api.v2.DNSServer">metalstack.api.v2.DNSServer</a></td>
+                  <td>repeated</td>
+                  <td><p>DNSServers for this partition </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ntp_server</td>
+                  <td><a href="#metalstack.api.v2.NTPServer">metalstack.api.v2.NTPServer</a></td>
+                  <td>repeated</td>
+                  <td><p>NTPServers for this partition </p></td>
+                </tr>
+              
+                <tr>
+                  <td>mgmt_service_addresses</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>ManagementServiceAddresses defines where the management is reachable
+should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">metalstack.api.v2.UpdateLabels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels to update on this network </p></td>
                 </tr>
               
             </tbody>
@@ -14411,6 +14615,14 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Id of this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
                 </tr>
               
                 <tr>
@@ -16342,6 +16554,14 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
+                </tr>
+              
+                <tr>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
@@ -17198,6 +17418,14 @@ for which the methods should be allowed </p></td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Uuid of the token to update </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
                 </tr>
               
                 <tr>
@@ -18815,6 +19043,14 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Project is the uuid of the project to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
                 </tr>
               
                 <tr>

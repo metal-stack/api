@@ -104,7 +104,7 @@ message FilesystemLayout {
     min_len: 2
     max_len: 128
   }];
-  // Meta for this ip
+  // Meta for this filesystemLayout
   Meta meta = 2;
   // Name of this filesystemLayout
   optional string name = 3 [(buf.validate.field).string = {

@@ -51,6 +51,7 @@ message WrongProjectServiceListResponse {
 message WrongProjectServiceUpdateRequest {
     string uuid = 1;
     string project = 2;
+    metalstack.api.v2.Meta meta = 3;
 }
 message WrongProjectServiceUpdateResponse {
     string uuid = 1;
