@@ -14,41 +14,43 @@ message Switch {
     min_len: 2
     max_len: 128
   }];
+  // Meta for this switch
+  Meta meta = 2;
   // Description of the switch.
-  string description = 2 [(buf.validate.field).string = {
+  string description = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Rack ID if the switch resides in a rack
-  optional string rack = 3 [(buf.validate.field).string = {
+  optional string rack = 4 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Partition the switch belongs to.
-  string partition = 4 [(buf.validate.field).string = {
+  string partition = 5 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // ReplaceMode is used to mark a switch ready for replacement.
-  SwitchReplaceMode replace_mode = 5 [(buf.validate.field).enum.defined_only = true];
+  SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
   // ManagementIp is the switch's IP for management access.
-  string management_ip = 6 [(buf.validate.field).string.ip = true];
+  string management_ip = 7 [(buf.validate.field).string.ip = true];
   // ManagementUser is the user name to use for management access.
-  string management_user = 7 [(buf.validate.field).string = {
+  string management_user = 8 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // ConsoleCommand is the command for accessing the switch's console.
-  string console_command = 8 [(buf.validate.field).string = {
+  string console_command = 9 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Nics are the front panel ports of the switch.
-  repeated SwitchNic nics = 9;
+  repeated SwitchNic nics = 10;
   // SwitchOs is the OS running on the switch.
-  SwitchOS os = 10;
+  SwitchOS os = 11;
   // MachineConnections map machines to the nics they are connected to.
-  repeated MachineConnection machine_connections = 11;
+  repeated MachineConnection machine_connections = 12;
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.

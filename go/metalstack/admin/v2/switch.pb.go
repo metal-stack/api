@@ -11,6 +11,7 @@ import (
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -212,22 +213,25 @@ type SwitchServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// UpdatedAt is the date when this entity was updated
+	// must be part of the update request to ensure optimistic locking
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Description of the switch.
-	Description *string `protobuf:"bytes,2,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Rack ID if the switch resides in a rack.
-	RackId *string `protobuf:"bytes,3,opt,name=rack_id,json=rackId,proto3,oneof" json:"rack_id,omitempty"`
+	RackId *string `protobuf:"bytes,4,opt,name=rack_id,json=rackId,proto3,oneof" json:"rack_id,omitempty"`
 	// Replace mode is used to mark a switch ready for replacement.
-	ReplaceMode *v2.SwitchReplaceMode `protobuf:"varint,4,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode,oneof" json:"replace_mode,omitempty"`
+	ReplaceMode *v2.SwitchReplaceMode `protobuf:"varint,5,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode,oneof" json:"replace_mode,omitempty"`
 	// Management IP is the switch's IP for management access.
-	ManagementIp *string `protobuf:"bytes,5,opt,name=management_ip,json=managementIp,proto3,oneof" json:"management_ip,omitempty"`
+	ManagementIp *string `protobuf:"bytes,6,opt,name=management_ip,json=managementIp,proto3,oneof" json:"management_ip,omitempty"`
 	// Management user is the user name to use for management access.
-	ManagementUser *string `protobuf:"bytes,6,opt,name=management_user,json=managementUser,proto3,oneof" json:"management_user,omitempty"`
+	ManagementUser *string `protobuf:"bytes,7,opt,name=management_user,json=managementUser,proto3,oneof" json:"management_user,omitempty"`
 	// Console command is the command for accessing the switch's console.
-	ConsoleCommand *string `protobuf:"bytes,7,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
+	ConsoleCommand *string `protobuf:"bytes,8,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
 	// Nics are the front panel ports of the switch.
-	Nics []*v2.SwitchNic `protobuf:"bytes,8,rep,name=nics,proto3" json:"nics,omitempty"`
+	Nics []*v2.SwitchNic `protobuf:"bytes,9,rep,name=nics,proto3" json:"nics,omitempty"`
 	// SwitchOs is the OS running on the switch.
-	Os            *v2.SwitchOS `protobuf:"bytes,9,opt,name=os,proto3,oneof" json:"os,omitempty"`
+	Os            *v2.SwitchOS `protobuf:"bytes,10,opt,name=os,proto3,oneof" json:"os,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -267,6 +271,13 @@ func (x *SwitchServiceUpdateRequest) GetId() string {
 		return x.Id
 	}
 	return ""
+}
+
+func (x *SwitchServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
 }
 
 func (x *SwitchServiceUpdateRequest) GetDescription() string {
@@ -687,7 +698,7 @@ var File_metalstack_admin_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/admin/v2/switch.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"7\n" +
+	" metalstack/admin/v2/switch.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"7\n" +
 	"\x17SwitchServiceGetRequest\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\"M\n" +
 	"\x18SwitchServiceGetResponse\x121\n" +
@@ -695,21 +706,24 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x18SwitchServiceListRequest\x124\n" +
 	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n" +
 	"\x19SwitchServiceListResponse\x125\n" +
-	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xe8\x04\n" +
+	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xa3\x05\n" +
 	"\x1aSwitchServiceUpdateRequest\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x121\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
+	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x129\n" +
+	"\n" +
+	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x121\n" +
+	"\vdescription\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\vdescription\x88\x01\x01\x12(\n" +
-	"\arack_id\x18\x03 \x01(\tB\n" +
+	"\arack_id\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x06rackId\x88\x01\x01\x12V\n" +
-	"\freplace_mode\x18\x04 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\vreplaceMode\x88\x01\x01\x121\n" +
-	"\rmanagement_ip\x18\x05 \x01(\tB\a\xbaH\x04r\x02p\x01H\x03R\fmanagementIp\x88\x01\x01\x128\n" +
-	"\x0fmanagement_user\x18\x06 \x01(\tB\n" +
+	"\freplace_mode\x18\x05 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\vreplaceMode\x88\x01\x01\x121\n" +
+	"\rmanagement_ip\x18\x06 \x01(\tB\a\xbaH\x04r\x02p\x01H\x03R\fmanagementIp\x88\x01\x01\x128\n" +
+	"\x0fmanagement_user\x18\a \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x0emanagementUser\x88\x01\x01\x128\n" +
-	"\x0fconsole_command\x18\a \x01(\tB\n" +
+	"\x0fconsole_command\x18\b \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x0econsoleCommand\x88\x01\x01\x120\n" +
-	"\x04nics\x18\b \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x120\n" +
-	"\x02os\x18\t \x01(\v2\x1b.metalstack.api.v2.SwitchOSH\x06R\x02os\x88\x01\x01B\x0e\n" +
+	"\x04nics\x18\t \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x120\n" +
+	"\x02os\x18\n" +
+	" \x01(\v2\x1b.metalstack.api.v2.SwitchOSH\x06R\x02os\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\n" +
 	"\n" +
 	"\b_rack_idB\x0f\n" +
@@ -778,40 +792,42 @@ var file_metalstack_admin_v2_switch_proto_goTypes = []any{
 	(*SwitchServicePortResponse)(nil),    // 11: metalstack.admin.v2.SwitchServicePortResponse
 	(*v2.Switch)(nil),                    // 12: metalstack.api.v2.Switch
 	(*v2.SwitchQuery)(nil),               // 13: metalstack.api.v2.SwitchQuery
-	(v2.SwitchReplaceMode)(0),            // 14: metalstack.api.v2.SwitchReplaceMode
-	(*v2.SwitchNic)(nil),                 // 15: metalstack.api.v2.SwitchNic
-	(*v2.SwitchOS)(nil),                  // 16: metalstack.api.v2.SwitchOS
-	(v2.SwitchPortStatus)(0),             // 17: metalstack.api.v2.SwitchPortStatus
+	(*timestamppb.Timestamp)(nil),        // 14: google.protobuf.Timestamp
+	(v2.SwitchReplaceMode)(0),            // 15: metalstack.api.v2.SwitchReplaceMode
+	(*v2.SwitchNic)(nil),                 // 16: metalstack.api.v2.SwitchNic
+	(*v2.SwitchOS)(nil),                  // 17: metalstack.api.v2.SwitchOS
+	(v2.SwitchPortStatus)(0),             // 18: metalstack.api.v2.SwitchPortStatus
 }
 var file_metalstack_admin_v2_switch_proto_depIdxs = []int32{
 	12, // 0: metalstack.admin.v2.SwitchServiceGetResponse.switch:type_name -> metalstack.api.v2.Switch
 	13, // 1: metalstack.admin.v2.SwitchServiceListRequest.query:type_name -> metalstack.api.v2.SwitchQuery
 	12, // 2: metalstack.admin.v2.SwitchServiceListResponse.switches:type_name -> metalstack.api.v2.Switch
-	14, // 3: metalstack.admin.v2.SwitchServiceUpdateRequest.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
-	15, // 4: metalstack.admin.v2.SwitchServiceUpdateRequest.nics:type_name -> metalstack.api.v2.SwitchNic
-	16, // 5: metalstack.admin.v2.SwitchServiceUpdateRequest.os:type_name -> metalstack.api.v2.SwitchOS
-	12, // 6: metalstack.admin.v2.SwitchServiceUpdateResponse.switch:type_name -> metalstack.api.v2.Switch
-	12, // 7: metalstack.admin.v2.SwitchServiceDeleteResponse.switch:type_name -> metalstack.api.v2.Switch
-	12, // 8: metalstack.admin.v2.SwitchServiceMigrateResponse.switch:type_name -> metalstack.api.v2.Switch
-	17, // 9: metalstack.admin.v2.SwitchServicePortRequest.status:type_name -> metalstack.api.v2.SwitchPortStatus
-	12, // 10: metalstack.admin.v2.SwitchServicePortResponse.switch:type_name -> metalstack.api.v2.Switch
-	0,  // 11: metalstack.admin.v2.SwitchService.Get:input_type -> metalstack.admin.v2.SwitchServiceGetRequest
-	2,  // 12: metalstack.admin.v2.SwitchService.List:input_type -> metalstack.admin.v2.SwitchServiceListRequest
-	4,  // 13: metalstack.admin.v2.SwitchService.Update:input_type -> metalstack.admin.v2.SwitchServiceUpdateRequest
-	6,  // 14: metalstack.admin.v2.SwitchService.Delete:input_type -> metalstack.admin.v2.SwitchServiceDeleteRequest
-	8,  // 15: metalstack.admin.v2.SwitchService.Migrate:input_type -> metalstack.admin.v2.SwitchServiceMigrateRequest
-	10, // 16: metalstack.admin.v2.SwitchService.Port:input_type -> metalstack.admin.v2.SwitchServicePortRequest
-	1,  // 17: metalstack.admin.v2.SwitchService.Get:output_type -> metalstack.admin.v2.SwitchServiceGetResponse
-	3,  // 18: metalstack.admin.v2.SwitchService.List:output_type -> metalstack.admin.v2.SwitchServiceListResponse
-	5,  // 19: metalstack.admin.v2.SwitchService.Update:output_type -> metalstack.admin.v2.SwitchServiceUpdateResponse
-	7,  // 20: metalstack.admin.v2.SwitchService.Delete:output_type -> metalstack.admin.v2.SwitchServiceDeleteResponse
-	9,  // 21: metalstack.admin.v2.SwitchService.Migrate:output_type -> metalstack.admin.v2.SwitchServiceMigrateResponse
-	11, // 22: metalstack.admin.v2.SwitchService.Port:output_type -> metalstack.admin.v2.SwitchServicePortResponse
-	17, // [17:23] is the sub-list for method output_type
-	11, // [11:17] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	14, // 3: metalstack.admin.v2.SwitchServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	15, // 4: metalstack.admin.v2.SwitchServiceUpdateRequest.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
+	16, // 5: metalstack.admin.v2.SwitchServiceUpdateRequest.nics:type_name -> metalstack.api.v2.SwitchNic
+	17, // 6: metalstack.admin.v2.SwitchServiceUpdateRequest.os:type_name -> metalstack.api.v2.SwitchOS
+	12, // 7: metalstack.admin.v2.SwitchServiceUpdateResponse.switch:type_name -> metalstack.api.v2.Switch
+	12, // 8: metalstack.admin.v2.SwitchServiceDeleteResponse.switch:type_name -> metalstack.api.v2.Switch
+	12, // 9: metalstack.admin.v2.SwitchServiceMigrateResponse.switch:type_name -> metalstack.api.v2.Switch
+	18, // 10: metalstack.admin.v2.SwitchServicePortRequest.status:type_name -> metalstack.api.v2.SwitchPortStatus
+	12, // 11: metalstack.admin.v2.SwitchServicePortResponse.switch:type_name -> metalstack.api.v2.Switch
+	0,  // 12: metalstack.admin.v2.SwitchService.Get:input_type -> metalstack.admin.v2.SwitchServiceGetRequest
+	2,  // 13: metalstack.admin.v2.SwitchService.List:input_type -> metalstack.admin.v2.SwitchServiceListRequest
+	4,  // 14: metalstack.admin.v2.SwitchService.Update:input_type -> metalstack.admin.v2.SwitchServiceUpdateRequest
+	6,  // 15: metalstack.admin.v2.SwitchService.Delete:input_type -> metalstack.admin.v2.SwitchServiceDeleteRequest
+	8,  // 16: metalstack.admin.v2.SwitchService.Migrate:input_type -> metalstack.admin.v2.SwitchServiceMigrateRequest
+	10, // 17: metalstack.admin.v2.SwitchService.Port:input_type -> metalstack.admin.v2.SwitchServicePortRequest
+	1,  // 18: metalstack.admin.v2.SwitchService.Get:output_type -> metalstack.admin.v2.SwitchServiceGetResponse
+	3,  // 19: metalstack.admin.v2.SwitchService.List:output_type -> metalstack.admin.v2.SwitchServiceListResponse
+	5,  // 20: metalstack.admin.v2.SwitchService.Update:output_type -> metalstack.admin.v2.SwitchServiceUpdateResponse
+	7,  // 21: metalstack.admin.v2.SwitchService.Delete:output_type -> metalstack.admin.v2.SwitchServiceDeleteResponse
+	9,  // 22: metalstack.admin.v2.SwitchService.Migrate:output_type -> metalstack.admin.v2.SwitchServiceMigrateResponse
+	11, // 23: metalstack.admin.v2.SwitchService.Port:output_type -> metalstack.admin.v2.SwitchServicePortResponse
+	18, // [18:24] is the sub-list for method output_type
+	12, // [12:18] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_switch_proto_init() }
