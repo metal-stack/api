@@ -154,7 +154,7 @@ message UpdateMeta {
   google.protobuf.Timestamp updated_at = 1;
 
   // LockingStrategy to be used for this update request
-  OptimisticLockingStrategy locking_strategy = 2;
+  OptimisticLockingStrategy locking_strategy = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
 // OptimisticLockingStrategy defines how optimistic locking should be handled.

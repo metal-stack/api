@@ -822,12 +822,12 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\a_labels\"Y\n" +
 	"\fUpdateLabels\x121\n" +
 	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12\x16\n" +
-	"\x06remove\x18\x02 \x03(\tR\x06remove\"\xa0\x01\n" +
+	"\x06remove\x18\x02 \x03(\tR\x06remove\"\xaa\x01\n" +
 	"\n" +
 	"UpdateMeta\x129\n" +
 	"\n" +
-	"updated_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12W\n" +
-	"\x10locking_strategy\x18\x02 \x01(\x0e2,.metalstack.api.v2.OptimisticLockingStrategyR\x0flockingStrategy*\x87\x01\n" +
+	"updated_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12a\n" +
+	"\x10locking_strategy\x18\x02 \x01(\x0e2,.metalstack.api.v2.OptimisticLockingStrategyB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0flockingStrategy*\x87\x01\n" +
 	"\n" +
 	"TenantRole\x12\x1b\n" +
 	"\x17TENANT_ROLE_UNSPECIFIED\x10\x00\x12\x15\n" +
