@@ -153,6 +153,26 @@ func (_m *Adminv2) Size() adminv2connect.SizeServiceClient {
 	return r0
 }
 
+// Switch provides a mock function with no fields
+func (_m *Adminv2) Switch() adminv2connect.SwitchServiceClient {
+	ret := _m.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Switch")
+	}
+
+	var r0 adminv2connect.SwitchServiceClient
+	if rf, ok := ret.Get(0).(func() adminv2connect.SwitchServiceClient); ok {
+		r0 = rf()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.SwitchServiceClient)
+		}
+	}
+
+	return r0
+}
+
 // Tenant provides a mock function with no fields
 func (_m *Adminv2) Tenant() adminv2connect.TenantServiceClient {
 	ret := _m.Called()

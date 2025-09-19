@@ -9,6 +9,7 @@ import metalstack.admin.v2.machine_connecpy as admin_machine_connecpy
 import metalstack.admin.v2.network_connecpy as admin_network_connecpy
 import metalstack.admin.v2.partition_connecpy as admin_partition_connecpy
 import metalstack.admin.v2.size_connecpy as admin_size_connecpy
+import metalstack.admin.v2.switch_connecpy as admin_switch_connecpy
 import metalstack.admin.v2.tenant_connecpy as admin_tenant_connecpy
 import metalstack.admin.v2.token_connecpy as admin_token_connecpy
 
@@ -80,6 +81,9 @@ class Client:
 
         def size(self):
             return admin_size_connecpy.SizeServiceClientSync(address=self._baseurl, session=self._session)
+
+        def switch(self):
+            return admin_switch_connecpy.SwitchServiceClientSync(address=self._baseurl, session=self._session)
 
         def tenant(self):
             return admin_tenant_connecpy.TenantServiceClientSync(address=self._baseurl, session=self._session)
