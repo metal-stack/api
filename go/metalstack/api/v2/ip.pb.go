@@ -10,7 +10,6 @@ import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -435,9 +434,8 @@ type IPServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Ip the ip to update
 	Ip string `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Project id of the ip
 	Project string `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
 	// Name of this ip
@@ -489,9 +487,9 @@ func (x *IPServiceUpdateRequest) GetIp() string {
 	return ""
 }
 
-func (x *IPServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+func (x *IPServiceUpdateRequest) GetUpdateMeta() *UpdateMeta {
 	if x != nil {
-		return x.UpdatedAt
+		return x.UpdateMeta
 	}
 	return nil
 }
@@ -1011,7 +1009,7 @@ var File_metalstack_api_v2_ip_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\n" +
-	"\x1ametalstack/api/v2/ip.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\"\xf2\x02\n" +
+	"\x1ametalstack/api/v2/ip.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"\xf2\x02\n" +
 	"\x02IP\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x17\n" +
@@ -1051,11 +1049,11 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\b_machineB\t\n" +
 	"\a_labelsB\a\n" +
 	"\x05_typeB\x11\n" +
-	"\x0f_address_family\"\x8f\x03\n" +
+	"\x0f_address_family\"\x9c\x03\n" +
 	"\x16IPServiceUpdateRequest\x12\x17\n" +
-	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x129\n" +
-	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\"\n" +
+	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12F\n" +
+	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"updateMeta\x12\"\n" +
 	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x04name\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x12/\n" +
@@ -1161,7 +1159,7 @@ var file_metalstack_api_v2_ip_proto_goTypes = []any{
 	(*IPServiceDeleteResponse)(nil), // 13: metalstack.api.v2.IPServiceDeleteResponse
 	(*Meta)(nil),                    // 14: metalstack.api.v2.Meta
 	(*Labels)(nil),                  // 15: metalstack.api.v2.Labels
-	(*timestamppb.Timestamp)(nil),   // 16: google.protobuf.Timestamp
+	(*UpdateMeta)(nil),              // 16: metalstack.api.v2.UpdateMeta
 	(*UpdateLabels)(nil),            // 17: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_api_v2_ip_proto_depIdxs = []int32{
@@ -1170,7 +1168,7 @@ var file_metalstack_api_v2_ip_proto_depIdxs = []int32{
 	15, // 2: metalstack.api.v2.IPServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
 	0,  // 3: metalstack.api.v2.IPServiceCreateRequest.type:type_name -> metalstack.api.v2.IPType
 	1,  // 4: metalstack.api.v2.IPServiceCreateRequest.address_family:type_name -> metalstack.api.v2.IPAddressFamily
-	16, // 5: metalstack.api.v2.IPServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	16, // 5: metalstack.api.v2.IPServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
 	0,  // 6: metalstack.api.v2.IPServiceUpdateRequest.type:type_name -> metalstack.api.v2.IPType
 	17, // 7: metalstack.api.v2.IPServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	7,  // 8: metalstack.api.v2.IPServiceListRequest.query:type_name -> metalstack.api.v2.IPQuery

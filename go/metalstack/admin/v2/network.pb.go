@@ -11,7 +11,6 @@ import (
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -311,9 +310,8 @@ type NetworkServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this network
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Name of this network
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of this network
@@ -375,9 +373,9 @@ func (x *NetworkServiceUpdateRequest) GetId() string {
 	return ""
 }
 
-func (x *NetworkServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+func (x *NetworkServiceUpdateRequest) GetUpdateMeta() *v2.UpdateMeta {
 	if x != nil {
-		return x.UpdatedAt
+		return x.UpdateMeta
 	}
 	return nil
 }
@@ -732,7 +730,7 @@ var File_metalstack_admin_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\"6\n" +
+	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\"6\n" +
 	"\x18NetworkServiceGetRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"Q\n" +
@@ -778,12 +776,12 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x04_vrfB\x11\n" +
 	"\x0f_parent_networkB\t\n" +
 	"\a_lengthB\x11\n" +
-	"\x0f_address_family\"\x88\t\n" +
+	"\x0f_address_family\"\x95\t\n" +
 	"\x1bNetworkServiceUpdateRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x129\n" +
-	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12#\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
+	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"updateMeta\x12#\n" +
 	"\x04name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
@@ -859,7 +857,7 @@ var file_metalstack_admin_v2_network_proto_goTypes = []any{
 	(*v2.ChildPrefixLength)(nil),         // 13: metalstack.api.v2.ChildPrefixLength
 	(v2.NATType)(0),                      // 14: metalstack.api.v2.NATType
 	(v2.NetworkAddressFamily)(0),         // 15: metalstack.api.v2.NetworkAddressFamily
-	(*timestamppb.Timestamp)(nil),        // 16: google.protobuf.Timestamp
+	(*v2.UpdateMeta)(nil),                // 16: metalstack.api.v2.UpdateMeta
 	(*v2.UpdateLabels)(nil),              // 17: metalstack.api.v2.UpdateLabels
 	(*v2.NetworkQuery)(nil),              // 18: metalstack.api.v2.NetworkQuery
 }
@@ -872,7 +870,7 @@ var file_metalstack_admin_v2_network_proto_depIdxs = []int32{
 	14, // 5: metalstack.admin.v2.NetworkServiceCreateRequest.nat_type:type_name -> metalstack.api.v2.NATType
 	13, // 6: metalstack.admin.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
 	15, // 7: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.NetworkAddressFamily
-	16, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	16, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
 	17, // 9: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	13, // 10: metalstack.admin.v2.NetworkServiceUpdateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
 	13, // 11: metalstack.admin.v2.NetworkServiceUpdateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength

@@ -411,6 +411,61 @@ func (Auditing) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{6}
 }
 
+// OptimisticLockingStrategy defines how optimistic locking should be handled.
+// It defaults to client side, which requires the UpdatedAt timestamp to be provided
+type OptimisticLockingStrategy int32
+
+const (
+	// OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side
+	OptimisticLockingStrategy_OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED OptimisticLockingStrategy = 0
+	// OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified
+	OptimisticLockingStrategy_OPTIMISTIC_LOCKING_STRATEGY_CLIENT OptimisticLockingStrategy = 1
+	// OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt
+	// and fetches the most recent entity before updating with the given values with the update request
+	OptimisticLockingStrategy_OPTIMISTIC_LOCKING_STRATEGY_SERVER OptimisticLockingStrategy = 2
+)
+
+// Enum value maps for OptimisticLockingStrategy.
+var (
+	OptimisticLockingStrategy_name = map[int32]string{
+		0: "OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED",
+		1: "OPTIMISTIC_LOCKING_STRATEGY_CLIENT",
+		2: "OPTIMISTIC_LOCKING_STRATEGY_SERVER",
+	}
+	OptimisticLockingStrategy_value = map[string]int32{
+		"OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED": 0,
+		"OPTIMISTIC_LOCKING_STRATEGY_CLIENT":      1,
+		"OPTIMISTIC_LOCKING_STRATEGY_SERVER":      2,
+	}
+)
+
+func (x OptimisticLockingStrategy) Enum() *OptimisticLockingStrategy {
+	p := new(OptimisticLockingStrategy)
+	*p = x
+	return p
+}
+
+func (x OptimisticLockingStrategy) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (OptimisticLockingStrategy) Descriptor() protoreflect.EnumDescriptor {
+	return file_metalstack_api_v2_common_proto_enumTypes[7].Descriptor()
+}
+
+func (OptimisticLockingStrategy) Type() protoreflect.EnumType {
+	return &file_metalstack_api_v2_common_proto_enumTypes[7]
+}
+
+func (x OptimisticLockingStrategy) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use OptimisticLockingStrategy.Descriptor instead.
+func (OptimisticLockingStrategy) EnumDescriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{7}
+}
+
 // Paging defines paging for methods with a lot of results
 type Paging struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -642,6 +697,62 @@ func (x *UpdateLabels) GetRemove() []string {
 	return nil
 }
 
+// UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled
+type UpdateMeta struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UpdatedAt is the date when this entity was updated
+	// must be part of the update request to ensure optimistic locking
+	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// LockingStrategy to be used for this update request
+	LockingStrategy OptimisticLockingStrategy `protobuf:"varint,2,opt,name=locking_strategy,json=lockingStrategy,proto3,enum=metalstack.api.v2.OptimisticLockingStrategy" json:"locking_strategy,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *UpdateMeta) Reset() {
+	*x = UpdateMeta{}
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateMeta) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateMeta) ProtoMessage() {}
+
+func (x *UpdateMeta) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateMeta.ProtoReflect.Descriptor instead.
+func (*UpdateMeta) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateMeta) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *UpdateMeta) GetLockingStrategy() OptimisticLockingStrategy {
+	if x != nil {
+		return x.LockingStrategy
+	}
+	return OptimisticLockingStrategy_OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED
+}
+
 var file_metalstack_api_v2_common_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*descriptorpb.MethodOptions)(nil),
@@ -776,7 +887,12 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\a_labels\"Y\n" +
 	"\fUpdateLabels\x121\n" +
 	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12\x16\n" +
-	"\x06remove\x18\x02 \x03(\tR\x06remove*\x87\x01\n" +
+	"\x06remove\x18\x02 \x03(\tR\x06remove\"\xaa\x01\n" +
+	"\n" +
+	"UpdateMeta\x129\n" +
+	"\n" +
+	"updated_at\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12a\n" +
+	"\x10locking_strategy\x18\x02 \x01(\x0e2,.metalstack.api.v2.OptimisticLockingStrategyB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0flockingStrategy*\x87\x01\n" +
 	"\n" +
 	"TenantRole\x12\x1b\n" +
 	"\x17TENANT_ROLE_UNSPECIFIED\x10\x00\x12\x15\n" +
@@ -809,7 +925,11 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\bAuditing\x12\x18\n" +
 	"\x14AUDITING_UNSPECIFIED\x10\x00\x12\x15\n" +
 	"\x11AUDITING_INCLUDED\x10\x01\x12\x15\n" +
-	"\x11AUDITING_EXCLUDED\x10\x02:b\n" +
+	"\x11AUDITING_EXCLUDED\x10\x02*\x98\x01\n" +
+	"\x19OptimisticLockingStrategy\x12+\n" +
+	"'OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED\x10\x00\x12&\n" +
+	"\"OPTIMISTIC_LOCKING_STRATEGY_CLIENT\x10\x01\x12&\n" +
+	"\"OPTIMISTIC_LOCKING_STRATEGY_SERVER\x10\x02:b\n" +
 	"\ftenant_roles\x12\x1e.google.protobuf.MethodOptions\x18\xb8\x8e\x03 \x03(\x0e2\x1d.metalstack.api.v2.TenantRoleR\vtenantRoles:e\n" +
 	"\rproject_roles\x12\x1e.google.protobuf.MethodOptions\x18\xb9\x8e\x03 \x03(\x0e2\x1e.metalstack.api.v2.ProjectRoleR\fprojectRoles:_\n" +
 	"\vadmin_roles\x12\x1e.google.protobuf.MethodOptions\x18\xba\x8e\x03 \x03(\x0e2\x1c.metalstack.api.v2.AdminRoleR\n" +
@@ -836,8 +956,8 @@ func file_metalstack_api_v2_common_proto_rawDescGZIP() []byte {
 	return file_metalstack_api_v2_common_proto_rawDescData
 }
 
-var file_metalstack_api_v2_common_proto_enumTypes = make([]protoimpl.EnumInfo, 7)
-var file_metalstack_api_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_metalstack_api_v2_common_proto_enumTypes = make([]protoimpl.EnumInfo, 8)
+var file_metalstack_api_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(TenantRole)(0),                       // 0: metalstack.api.v2.TenantRole
 	(ProjectRole)(0),                      // 1: metalstack.api.v2.ProjectRole
@@ -846,41 +966,45 @@ var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(MachineRole)(0),                      // 4: metalstack.api.v2.MachineRole
 	(Visibility)(0),                       // 5: metalstack.api.v2.Visibility
 	(Auditing)(0),                         // 6: metalstack.api.v2.Auditing
-	(*Paging)(nil),                        // 7: metalstack.api.v2.Paging
-	(*Labels)(nil),                        // 8: metalstack.api.v2.Labels
-	(*Meta)(nil),                          // 9: metalstack.api.v2.Meta
-	(*UpdateLabels)(nil),                  // 10: metalstack.api.v2.UpdateLabels
-	nil,                                   // 11: metalstack.api.v2.Labels.LabelsEntry
-	(*timestamppb.Timestamp)(nil),         // 12: google.protobuf.Timestamp
-	(*descriptorpb.MethodOptions)(nil),    // 13: google.protobuf.MethodOptions
-	(*descriptorpb.EnumValueOptions)(nil), // 14: google.protobuf.EnumValueOptions
+	(OptimisticLockingStrategy)(0),        // 7: metalstack.api.v2.OptimisticLockingStrategy
+	(*Paging)(nil),                        // 8: metalstack.api.v2.Paging
+	(*Labels)(nil),                        // 9: metalstack.api.v2.Labels
+	(*Meta)(nil),                          // 10: metalstack.api.v2.Meta
+	(*UpdateLabels)(nil),                  // 11: metalstack.api.v2.UpdateLabels
+	(*UpdateMeta)(nil),                    // 12: metalstack.api.v2.UpdateMeta
+	nil,                                   // 13: metalstack.api.v2.Labels.LabelsEntry
+	(*timestamppb.Timestamp)(nil),         // 14: google.protobuf.Timestamp
+	(*descriptorpb.MethodOptions)(nil),    // 15: google.protobuf.MethodOptions
+	(*descriptorpb.EnumValueOptions)(nil), // 16: google.protobuf.EnumValueOptions
 }
 var file_metalstack_api_v2_common_proto_depIdxs = []int32{
-	11, // 0: metalstack.api.v2.Labels.labels:type_name -> metalstack.api.v2.Labels.LabelsEntry
-	8,  // 1: metalstack.api.v2.Meta.labels:type_name -> metalstack.api.v2.Labels
-	12, // 2: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
-	12, // 3: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
-	8,  // 4: metalstack.api.v2.UpdateLabels.update:type_name -> metalstack.api.v2.Labels
-	13, // 5: metalstack.api.v2.tenant_roles:extendee -> google.protobuf.MethodOptions
-	13, // 6: metalstack.api.v2.project_roles:extendee -> google.protobuf.MethodOptions
-	13, // 7: metalstack.api.v2.admin_roles:extendee -> google.protobuf.MethodOptions
-	13, // 8: metalstack.api.v2.visibility:extendee -> google.protobuf.MethodOptions
-	13, // 9: metalstack.api.v2.auditing:extendee -> google.protobuf.MethodOptions
-	13, // 10: metalstack.api.v2.infra_roles:extendee -> google.protobuf.MethodOptions
-	13, // 11: metalstack.api.v2.machine_roles:extendee -> google.protobuf.MethodOptions
-	14, // 12: metalstack.api.v2.enum_string_value:extendee -> google.protobuf.EnumValueOptions
-	0,  // 13: metalstack.api.v2.tenant_roles:type_name -> metalstack.api.v2.TenantRole
-	1,  // 14: metalstack.api.v2.project_roles:type_name -> metalstack.api.v2.ProjectRole
-	2,  // 15: metalstack.api.v2.admin_roles:type_name -> metalstack.api.v2.AdminRole
-	5,  // 16: metalstack.api.v2.visibility:type_name -> metalstack.api.v2.Visibility
-	6,  // 17: metalstack.api.v2.auditing:type_name -> metalstack.api.v2.Auditing
-	3,  // 18: metalstack.api.v2.infra_roles:type_name -> metalstack.api.v2.InfraRole
-	4,  // 19: metalstack.api.v2.machine_roles:type_name -> metalstack.api.v2.MachineRole
-	20, // [20:20] is the sub-list for method output_type
-	20, // [20:20] is the sub-list for method input_type
-	13, // [13:20] is the sub-list for extension type_name
-	5,  // [5:13] is the sub-list for extension extendee
-	0,  // [0:5] is the sub-list for field type_name
+	13, // 0: metalstack.api.v2.Labels.labels:type_name -> metalstack.api.v2.Labels.LabelsEntry
+	9,  // 1: metalstack.api.v2.Meta.labels:type_name -> metalstack.api.v2.Labels
+	14, // 2: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
+	14, // 3: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
+	9,  // 4: metalstack.api.v2.UpdateLabels.update:type_name -> metalstack.api.v2.Labels
+	14, // 5: metalstack.api.v2.UpdateMeta.updated_at:type_name -> google.protobuf.Timestamp
+	7,  // 6: metalstack.api.v2.UpdateMeta.locking_strategy:type_name -> metalstack.api.v2.OptimisticLockingStrategy
+	15, // 7: metalstack.api.v2.tenant_roles:extendee -> google.protobuf.MethodOptions
+	15, // 8: metalstack.api.v2.project_roles:extendee -> google.protobuf.MethodOptions
+	15, // 9: metalstack.api.v2.admin_roles:extendee -> google.protobuf.MethodOptions
+	15, // 10: metalstack.api.v2.visibility:extendee -> google.protobuf.MethodOptions
+	15, // 11: metalstack.api.v2.auditing:extendee -> google.protobuf.MethodOptions
+	15, // 12: metalstack.api.v2.infra_roles:extendee -> google.protobuf.MethodOptions
+	15, // 13: metalstack.api.v2.machine_roles:extendee -> google.protobuf.MethodOptions
+	16, // 14: metalstack.api.v2.enum_string_value:extendee -> google.protobuf.EnumValueOptions
+	0,  // 15: metalstack.api.v2.tenant_roles:type_name -> metalstack.api.v2.TenantRole
+	1,  // 16: metalstack.api.v2.project_roles:type_name -> metalstack.api.v2.ProjectRole
+	2,  // 17: metalstack.api.v2.admin_roles:type_name -> metalstack.api.v2.AdminRole
+	5,  // 18: metalstack.api.v2.visibility:type_name -> metalstack.api.v2.Visibility
+	6,  // 19: metalstack.api.v2.auditing:type_name -> metalstack.api.v2.Auditing
+	3,  // 20: metalstack.api.v2.infra_roles:type_name -> metalstack.api.v2.InfraRole
+	4,  // 21: metalstack.api.v2.machine_roles:type_name -> metalstack.api.v2.MachineRole
+	22, // [22:22] is the sub-list for method output_type
+	22, // [22:22] is the sub-list for method input_type
+	15, // [15:22] is the sub-list for extension type_name
+	7,  // [7:15] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_common_proto_init() }
@@ -895,8 +1019,8 @@ func file_metalstack_api_v2_common_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_common_proto_rawDesc), len(file_metalstack_api_v2_common_proto_rawDesc)),
-			NumEnums:      7,
-			NumMessages:   5,
+			NumEnums:      8,
+			NumMessages:   6,
 			NumExtensions: 8,
 			NumServices:   0,
 		},
