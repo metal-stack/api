@@ -11,7 +11,6 @@ import (
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -121,9 +120,8 @@ type FilesystemServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this filesystemLayout
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Name of this filesystemLayout
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of this filesystemLayout
@@ -181,9 +179,9 @@ func (x *FilesystemServiceUpdateRequest) GetId() string {
 	return ""
 }
 
-func (x *FilesystemServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+func (x *FilesystemServiceUpdateRequest) GetUpdateMeta() *v2.UpdateMeta {
 	if x != nil {
-		return x.UpdatedAt
+		return x.UpdateMeta
 	}
 	return nil
 }
@@ -386,16 +384,16 @@ var File_metalstack_admin_v2_filesystem_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_filesystem_proto_rawDesc = "" +
 	"\n" +
-	"$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\"r\n" +
+	"$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\"r\n" +
 	"\x1eFilesystemServiceCreateRequest\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
 	"\x1fFilesystemServiceCreateResponse\x12P\n" +
-	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xe7\x04\n" +
+	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xf4\x04\n" +
 	"\x1eFilesystemServiceUpdateRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x129\n" +
-	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12#\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
+	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"updateMeta\x12#\n" +
 	"\x04name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
@@ -443,7 +441,7 @@ var file_metalstack_admin_v2_filesystem_proto_goTypes = []any{
 	(*FilesystemServiceDeleteRequest)(nil),  // 4: metalstack.admin.v2.FilesystemServiceDeleteRequest
 	(*FilesystemServiceDeleteResponse)(nil), // 5: metalstack.admin.v2.FilesystemServiceDeleteResponse
 	(*v2.FilesystemLayout)(nil),             // 6: metalstack.api.v2.FilesystemLayout
-	(*timestamppb.Timestamp)(nil),           // 7: google.protobuf.Timestamp
+	(*v2.UpdateMeta)(nil),                   // 7: metalstack.api.v2.UpdateMeta
 	(*v2.Filesystem)(nil),                   // 8: metalstack.api.v2.Filesystem
 	(*v2.Disk)(nil),                         // 9: metalstack.api.v2.Disk
 	(*v2.Raid)(nil),                         // 10: metalstack.api.v2.Raid
@@ -454,7 +452,7 @@ var file_metalstack_admin_v2_filesystem_proto_goTypes = []any{
 var file_metalstack_admin_v2_filesystem_proto_depIdxs = []int32{
 	6,  // 0: metalstack.admin.v2.FilesystemServiceCreateRequest.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
 	6,  // 1: metalstack.admin.v2.FilesystemServiceCreateResponse.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
-	7,  // 2: metalstack.admin.v2.FilesystemServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	7,  // 2: metalstack.admin.v2.FilesystemServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
 	8,  // 3: metalstack.admin.v2.FilesystemServiceUpdateRequest.filesystems:type_name -> metalstack.api.v2.Filesystem
 	9,  // 4: metalstack.admin.v2.FilesystemServiceUpdateRequest.disks:type_name -> metalstack.api.v2.Disk
 	10, // 5: metalstack.admin.v2.FilesystemServiceUpdateRequest.raid:type_name -> metalstack.api.v2.Raid

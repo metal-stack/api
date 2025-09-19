@@ -146,9 +146,8 @@ message MachineServiceCreateResponse {
 message MachineServiceUpdateRequest {
   // UUID of the machine to modify
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // UpdatedAt is the date when this entity was updated
-  // must be part of the update request to ensure optimistic locking
-  google.protobuf.Timestamp updated_at = 2;
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Project of the machine
   string project = 3 [(buf.validate.field).string.uuid = true];
   // Description of this machine allocation

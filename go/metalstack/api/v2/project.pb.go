@@ -754,9 +754,8 @@ type ProjectServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project to get
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Name of this project unique per tenant
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of this project
@@ -806,9 +805,9 @@ func (x *ProjectServiceUpdateRequest) GetProject() string {
 	return ""
 }
 
-func (x *ProjectServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+func (x *ProjectServiceUpdateRequest) GetUpdateMeta() *UpdateMeta {
 	if x != nil {
-		return x.UpdatedAt
+		return x.UpdateMeta
 	}
 	return nil
 }
@@ -1636,11 +1635,11 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\x1bProjectServiceDeleteRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"T\n" +
 	"\x1cProjectServiceDeleteResponse\x124\n" +
-	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\xe8\x02\n" +
+	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\xf5\x02\n" +
 	"\x1bProjectServiceUpdateRequest\x12\"\n" +
-	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x129\n" +
-	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\"\n" +
+	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12F\n" +
+	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"updateMeta\x12\"\n" +
 	"\x04name\x18\x03 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@H\x00R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x01R\vdescription\x88\x01\x01\x12\"\n" +
@@ -1747,7 +1746,8 @@ var file_metalstack_api_v2_project_proto_goTypes = []any{
 	(ProjectRole)(0),              // 28: metalstack.api.v2.ProjectRole
 	(*timestamppb.Timestamp)(nil), // 29: google.protobuf.Timestamp
 	(*Labels)(nil),                // 30: metalstack.api.v2.Labels
-	(*UpdateLabels)(nil),          // 31: metalstack.api.v2.UpdateLabels
+	(*UpdateMeta)(nil),            // 31: metalstack.api.v2.UpdateMeta
+	(*UpdateLabels)(nil),          // 32: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_api_v2_project_proto_depIdxs = []int32{
 	27, // 0: metalstack.api.v2.Project.meta:type_name -> metalstack.api.v2.Meta
@@ -1763,8 +1763,8 @@ var file_metalstack_api_v2_project_proto_depIdxs = []int32{
 	30, // 10: metalstack.api.v2.ProjectServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
 	0,  // 11: metalstack.api.v2.ProjectServiceCreateResponse.project:type_name -> metalstack.api.v2.Project
 	0,  // 12: metalstack.api.v2.ProjectServiceDeleteResponse.project:type_name -> metalstack.api.v2.Project
-	29, // 13: metalstack.api.v2.ProjectServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
-	31, // 14: metalstack.api.v2.ProjectServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	31, // 13: metalstack.api.v2.ProjectServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	32, // 14: metalstack.api.v2.ProjectServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	0,  // 15: metalstack.api.v2.ProjectServiceUpdateResponse.project:type_name -> metalstack.api.v2.Project
 	28, // 16: metalstack.api.v2.ProjectServiceInviteRequest.role:type_name -> metalstack.api.v2.ProjectRole
 	2,  // 17: metalstack.api.v2.ProjectServiceInviteResponse.invite:type_name -> metalstack.api.v2.ProjectInvite

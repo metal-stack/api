@@ -11,7 +11,6 @@ import (
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -121,9 +120,8 @@ type SizeServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this size
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Name of this size
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of this size
@@ -173,9 +171,9 @@ func (x *SizeServiceUpdateRequest) GetId() string {
 	return ""
 }
 
-func (x *SizeServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+func (x *SizeServiceUpdateRequest) GetUpdateMeta() *v2.UpdateMeta {
 	if x != nil {
-		return x.UpdatedAt
+		return x.UpdateMeta
 	}
 	return nil
 }
@@ -350,16 +348,16 @@ var File_metalstack_admin_v2_size_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_size_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/admin/v2/size.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1cmetalstack/api/v2/size.proto\"G\n" +
+	"\x1emetalstack/admin/v2/size.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1cmetalstack/api/v2/size.proto\"G\n" +
 	"\x18SizeServiceCreateRequest\x12+\n" +
 	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"H\n" +
 	"\x19SizeServiceCreateResponse\x12+\n" +
-	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"\xf0\x02\n" +
+	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"\xfd\x02\n" +
 	"\x18SizeServiceUpdateRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x129\n" +
-	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12#\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
+	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"updateMeta\x12#\n" +
 	"\x04name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
@@ -403,14 +401,14 @@ var file_metalstack_admin_v2_size_proto_goTypes = []any{
 	(*SizeServiceDeleteRequest)(nil),  // 4: metalstack.admin.v2.SizeServiceDeleteRequest
 	(*SizeServiceDeleteResponse)(nil), // 5: metalstack.admin.v2.SizeServiceDeleteResponse
 	(*v2.Size)(nil),                   // 6: metalstack.api.v2.Size
-	(*timestamppb.Timestamp)(nil),     // 7: google.protobuf.Timestamp
+	(*v2.UpdateMeta)(nil),             // 7: metalstack.api.v2.UpdateMeta
 	(*v2.SizeConstraint)(nil),         // 8: metalstack.api.v2.SizeConstraint
 	(*v2.UpdateLabels)(nil),           // 9: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_admin_v2_size_proto_depIdxs = []int32{
 	6,  // 0: metalstack.admin.v2.SizeServiceCreateRequest.size:type_name -> metalstack.api.v2.Size
 	6,  // 1: metalstack.admin.v2.SizeServiceCreateResponse.size:type_name -> metalstack.api.v2.Size
-	7,  // 2: metalstack.admin.v2.SizeServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	7,  // 2: metalstack.admin.v2.SizeServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
 	8,  // 3: metalstack.admin.v2.SizeServiceUpdateRequest.constraints:type_name -> metalstack.api.v2.SizeConstraint
 	9,  // 4: metalstack.admin.v2.SizeServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	6,  // 5: metalstack.admin.v2.SizeServiceUpdateResponse.size:type_name -> metalstack.api.v2.Size
