@@ -511,9 +511,8 @@ type TenantServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login of the tenant
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Name of the tenant
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Email of the tenant
@@ -565,9 +564,9 @@ func (x *TenantServiceUpdateRequest) GetLogin() string {
 	return ""
 }
 
-func (x *TenantServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+func (x *TenantServiceUpdateRequest) GetUpdateMeta() *UpdateMeta {
 	if x != nil {
-		return x.UpdatedAt
+		return x.UpdateMeta
 	}
 	return nil
 }
@@ -1628,11 +1627,11 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labelsB\x0e\n" +
 	"\f_descriptionB\b\n" +
 	"\x06_emailB\r\n" +
-	"\v_avatar_url\"\x87\x03\n" +
+	"\v_avatar_url\"\x94\x03\n" +
 	"\x1aTenantServiceUpdateRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\x129\n" +
-	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\"\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\x12F\n" +
+	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"updateMeta\x12\"\n" +
 	"\x04name\x18\x03 \x01(\tB\t\xbaH\x06r\x04\x10\x02\x18@H\x00R\x04name\x88\x01\x01\x12\"\n" +
 	"\x05email\x18\x04 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x05 \x01(\tB\n" +
@@ -1753,7 +1752,8 @@ var file_metalstack_api_v2_tenant_proto_goTypes = []any{
 	(TenantRole)(0),               // 28: metalstack.api.v2.TenantRole
 	(*timestamppb.Timestamp)(nil), // 29: google.protobuf.Timestamp
 	(*Labels)(nil),                // 30: metalstack.api.v2.Labels
-	(*UpdateLabels)(nil),          // 31: metalstack.api.v2.UpdateLabels
+	(*UpdateMeta)(nil),            // 31: metalstack.api.v2.UpdateMeta
+	(*UpdateLabels)(nil),          // 32: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_api_v2_tenant_proto_depIdxs = []int32{
 	27, // 0: metalstack.api.v2.Tenant.meta:type_name -> metalstack.api.v2.Meta
@@ -1764,8 +1764,8 @@ var file_metalstack_api_v2_tenant_proto_depIdxs = []int32{
 	29, // 5: metalstack.api.v2.TenantInvite.joined_at:type_name -> google.protobuf.Timestamp
 	30, // 6: metalstack.api.v2.TenantServiceListRequest.labels:type_name -> metalstack.api.v2.Labels
 	30, // 7: metalstack.api.v2.TenantServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
-	29, // 8: metalstack.api.v2.TenantServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
-	31, // 9: metalstack.api.v2.TenantServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	31, // 8: metalstack.api.v2.TenantServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	32, // 9: metalstack.api.v2.TenantServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	0,  // 10: metalstack.api.v2.TenantServiceGetResponse.tenant:type_name -> metalstack.api.v2.Tenant
 	1,  // 11: metalstack.api.v2.TenantServiceGetResponse.tenant_members:type_name -> metalstack.api.v2.TenantMember
 	0,  // 12: metalstack.api.v2.TenantServiceListResponse.tenants:type_name -> metalstack.api.v2.Tenant

@@ -11,7 +11,6 @@ import (
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -75,9 +74,8 @@ type PartitionServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of this partition
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Description of this partition
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// PartitionBootConfiguration defines how metal-hammer boots
@@ -132,9 +130,9 @@ func (x *PartitionServiceUpdateRequest) GetId() string {
 	return ""
 }
 
-func (x *PartitionServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+func (x *PartitionServiceUpdateRequest) GetUpdateMeta() *v2.UpdateMeta {
 	if x != nil {
-		return x.UpdatedAt
+		return x.UpdateMeta
 	}
 	return nil
 }
@@ -608,14 +606,14 @@ var File_metalstack_admin_v2_partition_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\n" +
-	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\"[\n" +
+	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\"[\n" +
 	"\x1dPartitionServiceCreateRequest\x12:\n" +
-	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xa2\x04\n" +
+	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xaf\x04\n" +
 	"\x1dPartitionServiceUpdateRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x129\n" +
-	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12/\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
+	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"updateMeta\x12/\n" +
 	"\vdescription\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x00R\vdescription\x88\x01\x01\x12\\\n" +
 	"\x12boot_configuration\x18\x04 \x01(\v2-.metalstack.api.v2.PartitionBootConfigurationR\x11bootConfiguration\x12E\n" +
 	"\n" +
@@ -695,7 +693,7 @@ var file_metalstack_admin_v2_partition_proto_goTypes = []any{
 	(*PartitionServiceCapacityRequest)(nil),  // 6: metalstack.admin.v2.PartitionServiceCapacityRequest
 	(*PartitionServiceCapacityResponse)(nil), // 7: metalstack.admin.v2.PartitionServiceCapacityResponse
 	(*v2.Partition)(nil),                     // 8: metalstack.api.v2.Partition
-	(*timestamppb.Timestamp)(nil),            // 9: google.protobuf.Timestamp
+	(*v2.UpdateMeta)(nil),                    // 9: metalstack.api.v2.UpdateMeta
 	(*v2.PartitionBootConfiguration)(nil),    // 10: metalstack.api.v2.PartitionBootConfiguration
 	(*v2.DNSServer)(nil),                     // 11: metalstack.api.v2.DNSServer
 	(*v2.NTPServer)(nil),                     // 12: metalstack.api.v2.NTPServer
@@ -703,7 +701,7 @@ var file_metalstack_admin_v2_partition_proto_goTypes = []any{
 }
 var file_metalstack_admin_v2_partition_proto_depIdxs = []int32{
 	8,  // 0: metalstack.admin.v2.PartitionServiceCreateRequest.partition:type_name -> metalstack.api.v2.Partition
-	9,  // 1: metalstack.admin.v2.PartitionServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	9,  // 1: metalstack.admin.v2.PartitionServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
 	10, // 2: metalstack.admin.v2.PartitionServiceUpdateRequest.boot_configuration:type_name -> metalstack.api.v2.PartitionBootConfiguration
 	11, // 3: metalstack.admin.v2.PartitionServiceUpdateRequest.dns_server:type_name -> metalstack.api.v2.DNSServer
 	12, // 4: metalstack.admin.v2.PartitionServiceUpdateRequest.ntp_server:type_name -> metalstack.api.v2.NTPServer

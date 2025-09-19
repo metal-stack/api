@@ -3,7 +3,6 @@ syntax = "proto3";
 package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
-import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/network.proto";
 
@@ -128,9 +127,8 @@ message NetworkServiceUpdateRequest {
     min_len: 2
     max_len: 128
   }];
-  // UpdatedAt is the date when this entity was updated
-  // must be part of the update request to ensure optimistic locking
-  google.protobuf.Timestamp updated_at = 2;
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of this network
   optional string name = 3 [(buf.validate.field).string = {
     min_len: 2

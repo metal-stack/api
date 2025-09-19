@@ -796,9 +796,8 @@ type MachineServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to modify
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Project of the machine
 	Project string `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
 	// Description of this machine allocation
@@ -848,9 +847,9 @@ func (x *MachineServiceUpdateRequest) GetUuid() string {
 	return ""
 }
 
-func (x *MachineServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+func (x *MachineServiceUpdateRequest) GetUpdateMeta() *UpdateMeta {
 	if x != nil {
-		return x.UpdatedAt
+		return x.UpdateMeta
 	}
 	return nil
 }
@@ -3416,11 +3415,11 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\fFirewallSpec\x12G\n" +
 	"\x0efirewall_rules\x18\x13 \x01(\v2 .metalstack.api.v2.FirewallRulesR\rfirewallRules\"T\n" +
 	"\x1cMachineServiceCreateResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xdf\x02\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xec\x02\n" +
 	"\x1bMachineServiceUpdateRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x129\n" +
-	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\"\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12F\n" +
+	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"updateMeta\x12\"\n" +
 	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12/\n" +
 	"\vdescription\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x00R\vdescription\x88\x01\x01\x12<\n" +
 	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01\x129\n" +
@@ -3794,7 +3793,7 @@ var file_metalstack_api_v2_machine_proto_goTypes = []any{
 	(*Labels)(nil),                          // 44: metalstack.api.v2.Labels
 	(*DNSServer)(nil),                       // 45: metalstack.api.v2.DNSServer
 	(*NTPServer)(nil),                       // 46: metalstack.api.v2.NTPServer
-	(*timestamppb.Timestamp)(nil),           // 47: google.protobuf.Timestamp
+	(*UpdateMeta)(nil),                      // 47: metalstack.api.v2.UpdateMeta
 	(*UpdateLabels)(nil),                    // 48: metalstack.api.v2.UpdateLabels
 	(*Meta)(nil),                            // 49: metalstack.api.v2.Meta
 	(*Partition)(nil),                       // 50: metalstack.api.v2.Partition
@@ -3803,6 +3802,7 @@ var file_metalstack_api_v2_machine_proto_goTypes = []any{
 	(*FilesystemLayout)(nil),                // 53: metalstack.api.v2.FilesystemLayout
 	(NetworkType)(0),                        // 54: metalstack.api.v2.NetworkType
 	(NATType)(0),                            // 55: metalstack.api.v2.NATType
+	(*timestamppb.Timestamp)(nil),           // 56: google.protobuf.Timestamp
 }
 var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	17, // 0: metalstack.api.v2.MachineServiceGetResponse.machine:type_name -> metalstack.api.v2.Machine
@@ -3814,7 +3814,7 @@ var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	9,  // 6: metalstack.api.v2.MachineServiceCreateRequest.firewall_spec:type_name -> metalstack.api.v2.FirewallSpec
 	22, // 7: metalstack.api.v2.FirewallSpec.firewall_rules:type_name -> metalstack.api.v2.FirewallRules
 	17, // 8: metalstack.api.v2.MachineServiceCreateResponse.machine:type_name -> metalstack.api.v2.Machine
-	47, // 9: metalstack.api.v2.MachineServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	47, // 9: metalstack.api.v2.MachineServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
 	48, // 10: metalstack.api.v2.MachineServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	17, // 11: metalstack.api.v2.MachineServiceUpdateResponse.machine:type_name -> metalstack.api.v2.Machine
 	36, // 12: metalstack.api.v2.MachineServiceListRequest.query:type_name -> metalstack.api.v2.MachineQuery
@@ -3853,10 +3853,10 @@ var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	29, // 45: metalstack.api.v2.MachineHardware.nics:type_name -> metalstack.api.v2.MachineNic
 	29, // 46: metalstack.api.v2.MachineNic.neighbors:type_name -> metalstack.api.v2.MachineNic
 	34, // 47: metalstack.api.v2.MachineRecentProvisioningEvents.events:type_name -> metalstack.api.v2.MachineProvisioningEvent
-	47, // 48: metalstack.api.v2.MachineRecentProvisioningEvents.last_event_time:type_name -> google.protobuf.Timestamp
+	56, // 48: metalstack.api.v2.MachineRecentProvisioningEvents.last_event_time:type_name -> google.protobuf.Timestamp
 	34, // 49: metalstack.api.v2.MachineRecentProvisioningEvents.last_error_event:type_name -> metalstack.api.v2.MachineProvisioningEvent
 	2,  // 50: metalstack.api.v2.MachineRecentProvisioningEvents.state:type_name -> metalstack.api.v2.MachineProvisioningEventState
-	47, // 51: metalstack.api.v2.MachineProvisioningEvent.time:type_name -> google.protobuf.Timestamp
+	56, // 51: metalstack.api.v2.MachineProvisioningEvent.time:type_name -> google.protobuf.Timestamp
 	3,  // 52: metalstack.api.v2.MachineProvisioningEvent.event:type_name -> metalstack.api.v2.MachineProvisioningEventType
 	44, // 53: metalstack.api.v2.MachineQuery.labels:type_name -> metalstack.api.v2.Labels
 	37, // 54: metalstack.api.v2.MachineQuery.allocation:type_name -> metalstack.api.v2.MachineAllocationQuery

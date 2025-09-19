@@ -50,9 +50,8 @@ message ImageServiceUpdateRequest {
     min_len: 2
     max_len: 128
   }];
-  // UpdatedAt is the date when this entity was updated
-  // must be part of the update request to ensure optimistic locking
-  google.protobuf.Timestamp updated_at = 2;
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // URL where this image is located
   optional string url = 3 [(buf.validate.field).cel = {
     id: "valid_url"

@@ -211,9 +211,8 @@ message ProjectServiceDeleteResponse {
 message ProjectServiceUpdateRequest {
   // Project is the uuid of the project to get
   string project = 1 [(buf.validate.field).string.uuid = true];
-  // UpdatedAt is the date when this entity was updated
-  // must be part of the update request to ensure optimistic locking
-  google.protobuf.Timestamp updated_at = 2;
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of this project unique per tenant
   optional string name = 3 [(buf.validate.field).string = {
     min_len: 2

@@ -167,9 +167,8 @@ message TokenServiceRevokeResponse {}
 message TokenServiceUpdateRequest {
   // Uuid of the token to update
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // UpdatedAt is the date when this entity was updated
-  // must be part of the update request to ensure optimistic locking
-  google.protobuf.Timestamp updated_at = 2;
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Description is a user given description of this token.
   optional string description = 3 [(buf.validate.field).string = {
     min_len: 2

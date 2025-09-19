@@ -1,7 +1,4 @@
-import datetime
-
 from buf.validate import validate_pb2 as _validate_pb2
-from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
@@ -85,22 +82,22 @@ class IPServiceCreateRequest(_message.Message):
     def __init__(self, network: _Optional[str] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., ip: _Optional[str] = ..., machine: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., type: _Optional[_Union[IPType, str]] = ..., address_family: _Optional[_Union[IPAddressFamily, str]] = ...) -> None: ...
 
 class IPServiceUpdateRequest(_message.Message):
-    __slots__ = ("ip", "updated_at", "project", "name", "description", "type", "labels")
+    __slots__ = ("ip", "update_meta", "project", "name", "description", "type", "labels")
     IP_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    UPDATE_META_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     ip: str
-    updated_at: _timestamp_pb2.Timestamp
+    update_meta: _common_pb2.UpdateMeta
     project: str
     name: str
     description: str
     type: IPType
     labels: _common_pb2.UpdateLabels
-    def __init__(self, ip: _Optional[str] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., type: _Optional[_Union[IPType, str]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
+    def __init__(self, ip: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., type: _Optional[_Union[IPType, str]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
 
 class IPServiceListRequest(_message.Message):
     __slots__ = ("project", "query")

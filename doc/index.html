@@ -357,6 +357,10 @@
                   <a href="#metalstack.api.v2.UpdateLabels"><span class="badge">M</span>UpdateLabels</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.UpdateMeta"><span class="badge">M</span>UpdateMeta</a>
+                </li>
+              
               
                 <li>
                   <a href="#metalstack.api.v2.AdminRole"><span class="badge">E</span>AdminRole</a>
@@ -368,6 +372,10 @@
               
                 <li>
                   <a href="#metalstack.api.v2.InfraRole"><span class="badge">E</span>InfraRole</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.OptimisticLockingStrategy"><span class="badge">E</span>OptimisticLockingStrategy</a>
                 </li>
               
                 <li>
@@ -6663,6 +6671,38 @@ the list response contains then the page number for the next page. </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.UpdateMeta">UpdateMeta</h3>
+        <p>UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>updated_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>UpdatedAt is the date when this entity was updated
+must be part of the update request to ensure optimistic locking </p></td>
+                </tr>
+              
+                <tr>
+                  <td>locking_strategy</td>
+                  <td><a href="#metalstack.api.v2.OptimisticLockingStrategy">OptimisticLockingStrategy</a></td>
+                  <td></td>
+                  <td><p>LockingStrategy to be used for this update request </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
         <h3 id="metalstack.api.v2.AdminRole">AdminRole</h3>
@@ -6747,6 +6787,36 @@ the list response contains then the page number for the next page. </p></td>
                 <td>INFRA_ROLE_VIEWER</td>
                 <td>2</td>
                 <td><p>INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.OptimisticLockingStrategy">OptimisticLockingStrategy</h3>
+        <p>OptimisticLockingStrategy defines how optimistic locking should be handled.</p><p>It defaults to client side, which requires the UpdatedAt timestamp to be provided</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side</p></td>
+              </tr>
+            
+              <tr>
+                <td>OPTIMISTIC_LOCKING_STRATEGY_CLIENT</td>
+                <td>1</td>
+                <td><p>OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>OPTIMISTIC_LOCKING_STRATEGY_SERVER</td>
+                <td>2</td>
+                <td><p>OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt
+and fetches the most recent entity before updating with the given values with the update request</p></td>
               </tr>
             
           </tbody>
@@ -7902,11 +7972,10 @@ having a direct membership within the tenant.</p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">metalstack.api.v2.UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -8597,11 +8666,10 @@ should contain os and major.minor then latest patch version of this os is return
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">metalstack.api.v2.UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -9248,11 +9316,10 @@ Will be equal with project most of the time </p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -10239,11 +10306,10 @@ Will be equal with project most of the time </p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -12850,11 +12916,10 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -13844,11 +13909,10 @@ otherwise an error is thrown that the partition must be specified </p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">metalstack.api.v2.UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -14290,11 +14354,10 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">metalstack.api.v2.UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -14539,11 +14602,10 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">metalstack.api.v2.UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -15448,11 +15510,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -16315,11 +16376,10 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>
@@ -17940,11 +18000,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
                 </tr>
               
                 <tr>

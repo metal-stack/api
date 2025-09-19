@@ -1,7 +1,4 @@
-import datetime
-
 from buf.validate import validate_pb2 as _validate_pb2
-from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import filesystem_pb2 as _filesystem_pb2
 from google.protobuf.internal import containers as _containers
@@ -25,9 +22,9 @@ class FilesystemServiceCreateResponse(_message.Message):
     def __init__(self, filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ...) -> None: ...
 
 class FilesystemServiceUpdateRequest(_message.Message):
-    __slots__ = ("id", "updated_at", "name", "description", "filesystems", "disks", "raid", "volume_groups", "logical_volumes", "constraints")
+    __slots__ = ("id", "update_meta", "name", "description", "filesystems", "disks", "raid", "volume_groups", "logical_volumes", "constraints")
     ID_FIELD_NUMBER: _ClassVar[int]
-    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    UPDATE_META_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     FILESYSTEMS_FIELD_NUMBER: _ClassVar[int]
@@ -37,7 +34,7 @@ class FilesystemServiceUpdateRequest(_message.Message):
     LOGICAL_VOLUMES_FIELD_NUMBER: _ClassVar[int]
     CONSTRAINTS_FIELD_NUMBER: _ClassVar[int]
     id: str
-    updated_at: _timestamp_pb2.Timestamp
+    update_meta: _common_pb2.UpdateMeta
     name: str
     description: str
     filesystems: _containers.RepeatedCompositeFieldContainer[_filesystem_pb2.Filesystem]
@@ -46,7 +43,7 @@ class FilesystemServiceUpdateRequest(_message.Message):
     volume_groups: _containers.RepeatedCompositeFieldContainer[_filesystem_pb2.VolumeGroup]
     logical_volumes: _containers.RepeatedCompositeFieldContainer[_filesystem_pb2.LogicalVolume]
     constraints: _filesystem_pb2.FilesystemLayoutConstraints
-    def __init__(self, id: _Optional[str] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., filesystems: _Optional[_Iterable[_Union[_filesystem_pb2.Filesystem, _Mapping]]] = ..., disks: _Optional[_Iterable[_Union[_filesystem_pb2.Disk, _Mapping]]] = ..., raid: _Optional[_Iterable[_Union[_filesystem_pb2.Raid, _Mapping]]] = ..., volume_groups: _Optional[_Iterable[_Union[_filesystem_pb2.VolumeGroup, _Mapping]]] = ..., logical_volumes: _Optional[_Iterable[_Union[_filesystem_pb2.LogicalVolume, _Mapping]]] = ..., constraints: _Optional[_Union[_filesystem_pb2.FilesystemLayoutConstraints, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., filesystems: _Optional[_Iterable[_Union[_filesystem_pb2.Filesystem, _Mapping]]] = ..., disks: _Optional[_Iterable[_Union[_filesystem_pb2.Disk, _Mapping]]] = ..., raid: _Optional[_Iterable[_Union[_filesystem_pb2.Raid, _Mapping]]] = ..., volume_groups: _Optional[_Iterable[_Union[_filesystem_pb2.VolumeGroup, _Mapping]]] = ..., logical_volumes: _Optional[_Iterable[_Union[_filesystem_pb2.LogicalVolume, _Mapping]]] = ..., constraints: _Optional[_Union[_filesystem_pb2.FilesystemLayoutConstraints, _Mapping]] = ...) -> None: ...
 
 class FilesystemServiceUpdateResponse(_message.Message):
     __slots__ = ("filesystem_layout",)
