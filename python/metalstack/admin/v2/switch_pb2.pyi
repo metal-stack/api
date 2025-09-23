@@ -37,8 +37,9 @@ class SwitchServiceListResponse(_message.Message):
     def __init__(self, switches: _Optional[_Iterable[_Union[_switch_pb2.Switch, _Mapping]]] = ...) -> None: ...
 
 class SwitchServiceUpdateRequest(_message.Message):
-    __slots__ = ("id", "updated_at", "description", "rack_id", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os")
+    __slots__ = ("id", "update_meta", "updated_at", "description", "rack_id", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os")
     ID_FIELD_NUMBER: _ClassVar[int]
+    UPDATE_META_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     RACK_ID_FIELD_NUMBER: _ClassVar[int]
@@ -49,6 +50,7 @@ class SwitchServiceUpdateRequest(_message.Message):
     NICS_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
     id: str
+    update_meta: _common_pb2.UpdateMeta
     updated_at: _timestamp_pb2.Timestamp
     description: str
     rack_id: str
@@ -58,7 +60,7 @@ class SwitchServiceUpdateRequest(_message.Message):
     console_command: str
     nics: _containers.RepeatedCompositeFieldContainer[_switch_pb2.SwitchNic]
     os: _switch_pb2.SwitchOS
-    def __init__(self, id: _Optional[str] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., description: _Optional[str] = ..., rack_id: _Optional[str] = ..., replace_mode: _Optional[_Union[_switch_pb2.SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[_switch_pb2.SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[_switch_pb2.SwitchOS, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., description: _Optional[str] = ..., rack_id: _Optional[str] = ..., replace_mode: _Optional[_Union[_switch_pb2.SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[_switch_pb2.SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[_switch_pb2.SwitchOS, _Mapping]] = ...) -> None: ...
 
 class SwitchServiceUpdateResponse(_message.Message):
     __slots__ = ("switch",)

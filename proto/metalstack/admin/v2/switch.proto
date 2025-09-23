@@ -75,37 +75,39 @@ message SwitchServiceUpdateRequest {
     min_len: 2
     max_len: 128
   }];
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // UpdatedAt is the date when this entity was updated
   // must be part of the update request to ensure optimistic locking
-  google.protobuf.Timestamp updated_at = 2;
+  google.protobuf.Timestamp updated_at = 3;
   // Description of the switch.
-  optional string description = 3 [(buf.validate.field).string = {
+  optional string description = 4 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Rack ID if the switch resides in a rack.
-  optional string rack_id = 4 [(buf.validate.field).string = {
+  optional string rack_id = 5 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Replace mode is used to mark a switch ready for replacement.
-  optional metalstack.api.v2.SwitchReplaceMode replace_mode = 5 [(buf.validate.field).enum.defined_only = true];
+  optional metalstack.api.v2.SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
   // Management IP is the switch's IP for management access.
-  optional string management_ip = 6 [(buf.validate.field).string.ip = true];
+  optional string management_ip = 7 [(buf.validate.field).string.ip = true];
   // Management user is the user name to use for management access.
-  optional string management_user = 7 [(buf.validate.field).string = {
+  optional string management_user = 8 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Console command is the command for accessing the switch's console.
-  optional string console_command = 8 [(buf.validate.field).string = {
+  optional string console_command = 9 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Nics are the front panel ports of the switch.
-  repeated metalstack.api.v2.SwitchNic nics = 9;
+  repeated metalstack.api.v2.SwitchNic nics = 10;
   // SwitchOs is the OS running on the switch.
-  optional metalstack.api.v2.SwitchOS os = 10;
+  optional metalstack.api.v2.SwitchOS os = 11;
 }
 
 // SwitchServiceUpdateResponse.
