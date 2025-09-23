@@ -50,6 +50,12 @@ class Auditing(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     AUDITING_UNSPECIFIED: _ClassVar[Auditing]
     AUDITING_INCLUDED: _ClassVar[Auditing]
     AUDITING_EXCLUDED: _ClassVar[Auditing]
+
+class OptimisticLockingStrategy(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED: _ClassVar[OptimisticLockingStrategy]
+    OPTIMISTIC_LOCKING_STRATEGY_CLIENT: _ClassVar[OptimisticLockingStrategy]
+    OPTIMISTIC_LOCKING_STRATEGY_SERVER: _ClassVar[OptimisticLockingStrategy]
 TENANT_ROLE_UNSPECIFIED: TenantRole
 TENANT_ROLE_OWNER: TenantRole
 TENANT_ROLE_EDITOR: TenantRole
@@ -71,6 +77,9 @@ VISIBILITY_SELF: Visibility
 AUDITING_UNSPECIFIED: Auditing
 AUDITING_INCLUDED: Auditing
 AUDITING_EXCLUDED: Auditing
+OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED: OptimisticLockingStrategy
+OPTIMISTIC_LOCKING_STRATEGY_CLIENT: OptimisticLockingStrategy
+OPTIMISTIC_LOCKING_STRATEGY_SERVER: OptimisticLockingStrategy
 TENANT_ROLES_FIELD_NUMBER: _ClassVar[int]
 tenant_roles: _descriptor.FieldDescriptor
 PROJECT_ROLES_FIELD_NUMBER: _ClassVar[int]
@@ -126,3 +135,11 @@ class UpdateLabels(_message.Message):
     update: Labels
     remove: _containers.RepeatedScalarFieldContainer[str]
     def __init__(self, update: _Optional[_Union[Labels, _Mapping]] = ..., remove: _Optional[_Iterable[str]] = ...) -> None: ...
+
+class UpdateMeta(_message.Message):
+    __slots__ = ("updated_at", "locking_strategy")
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    LOCKING_STRATEGY_FIELD_NUMBER: _ClassVar[int]
+    updated_at: _timestamp_pb2.Timestamp
+    locking_strategy: OptimisticLockingStrategy
+    def __init__(self, updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., locking_strategy: _Optional[_Union[OptimisticLockingStrategy, str]] = ...) -> None: ...

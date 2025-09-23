@@ -121,9 +121,8 @@ type ImageServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this image
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
-	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// URL where this image is located
 	Url *string `protobuf:"bytes,3,opt,name=url,proto3,oneof" json:"url,omitempty"`
 	// Name of this imageLayout
@@ -177,9 +176,9 @@ func (x *ImageServiceUpdateRequest) GetId() string {
 	return ""
 }
 
-func (x *ImageServiceUpdateRequest) GetUpdatedAt() *timestamppb.Timestamp {
+func (x *ImageServiceUpdateRequest) GetUpdateMeta() *v2.UpdateMeta {
 	if x != nil {
-		return x.UpdatedAt
+		return x.UpdateMeta
 	}
 	return nil
 }
@@ -464,12 +463,12 @@ const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\x19ImageServiceCreateRequest\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
 	"\x1aImageServiceCreateResponse\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\xd7\x04\n" +
+	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\xe4\x04\n" +
 	"\x19ImageServiceUpdateRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x129\n" +
-	"\n" +
-	"updated_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12O\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
+	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
+	"updateMeta\x12O\n" +
 	"\x03url\x18\x03 \x01(\tB8\xbaH5\xba\x012\n" +
 	"\tvalid_url\x12\x17url must be a valid URI\x1a\fthis.isUri()H\x00R\x03url\x88\x01\x01\x12#\n" +
 	"\x04name\x18\x04 \x01(\tB\n" +
@@ -527,23 +526,24 @@ var file_metalstack_admin_v2_image_proto_goTypes = []any{
 	(*ImageServiceUsageRequest)(nil),   // 6: metalstack.admin.v2.ImageServiceUsageRequest
 	(*ImageServiceUsageResponse)(nil),  // 7: metalstack.admin.v2.ImageServiceUsageResponse
 	(*v2.Image)(nil),                   // 8: metalstack.api.v2.Image
-	(*timestamppb.Timestamp)(nil),      // 9: google.protobuf.Timestamp
+	(*v2.UpdateMeta)(nil),              // 9: metalstack.api.v2.UpdateMeta
 	(v2.ImageFeature)(0),               // 10: metalstack.api.v2.ImageFeature
 	(v2.ImageClassification)(0),        // 11: metalstack.api.v2.ImageClassification
-	(*v2.ImageQuery)(nil),              // 12: metalstack.api.v2.ImageQuery
-	(*v2.ImageUsage)(nil),              // 13: metalstack.api.v2.ImageUsage
+	(*timestamppb.Timestamp)(nil),      // 12: google.protobuf.Timestamp
+	(*v2.ImageQuery)(nil),              // 13: metalstack.api.v2.ImageQuery
+	(*v2.ImageUsage)(nil),              // 14: metalstack.api.v2.ImageUsage
 }
 var file_metalstack_admin_v2_image_proto_depIdxs = []int32{
 	8,  // 0: metalstack.admin.v2.ImageServiceCreateRequest.image:type_name -> metalstack.api.v2.Image
 	8,  // 1: metalstack.admin.v2.ImageServiceCreateResponse.image:type_name -> metalstack.api.v2.Image
-	9,  // 2: metalstack.admin.v2.ImageServiceUpdateRequest.updated_at:type_name -> google.protobuf.Timestamp
+	9,  // 2: metalstack.admin.v2.ImageServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
 	10, // 3: metalstack.admin.v2.ImageServiceUpdateRequest.features:type_name -> metalstack.api.v2.ImageFeature
 	11, // 4: metalstack.admin.v2.ImageServiceUpdateRequest.classification:type_name -> metalstack.api.v2.ImageClassification
-	9,  // 5: metalstack.admin.v2.ImageServiceUpdateRequest.expires_at:type_name -> google.protobuf.Timestamp
+	12, // 5: metalstack.admin.v2.ImageServiceUpdateRequest.expires_at:type_name -> google.protobuf.Timestamp
 	8,  // 6: metalstack.admin.v2.ImageServiceUpdateResponse.image:type_name -> metalstack.api.v2.Image
 	8,  // 7: metalstack.admin.v2.ImageServiceDeleteResponse.image:type_name -> metalstack.api.v2.Image
-	12, // 8: metalstack.admin.v2.ImageServiceUsageRequest.query:type_name -> metalstack.api.v2.ImageQuery
-	13, // 9: metalstack.admin.v2.ImageServiceUsageResponse.image_usage:type_name -> metalstack.api.v2.ImageUsage
+	13, // 8: metalstack.admin.v2.ImageServiceUsageRequest.query:type_name -> metalstack.api.v2.ImageQuery
+	14, // 9: metalstack.admin.v2.ImageServiceUsageResponse.image_usage:type_name -> metalstack.api.v2.ImageUsage
 	0,  // 10: metalstack.admin.v2.ImageService.Create:input_type -> metalstack.admin.v2.ImageServiceCreateRequest
 	2,  // 11: metalstack.admin.v2.ImageService.Update:input_type -> metalstack.admin.v2.ImageServiceUpdateRequest
 	4,  // 12: metalstack.admin.v2.ImageService.Delete:input_type -> metalstack.admin.v2.ImageServiceDeleteRequest
