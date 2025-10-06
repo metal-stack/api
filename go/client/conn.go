@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"connectrpc.com/connect"
-
 	"github.com/golang-jwt/jwt/v5"
 	api "github.com/metal-stack/api/go/metalstack/api/v2"
 )
@@ -132,12 +131,12 @@ func (c *client) renewTokenIfNeeded(replaceBefore time.Duration) error {
 	c.Lock()
 	defer c.Unlock()
 
-	resp, err := c.Apiv2().Token().Refresh(context.Background(), connect.NewRequest(&api.TokenServiceRefreshRequest{}))
+	resp, err := c.Apiv2().Token().Refresh(context.Background(), &api.TokenServiceRefreshRequest{})
 	if err != nil {
 		return fmt.Errorf("unable to refresh token %w", err)
 	}
 
-	c.config.Token = resp.Msg.Secret
+	c.config.Token = resp.Secret
 	err = c.config.parse()
 	if err != nil {
 		return fmt.Errorf("unable to parse token %w", err)
@@ -164,7 +163,9 @@ type AddHeaderTransport struct {
 }
 
 func (a *AddHeaderTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	req.Header.Add("Authorization", "Bearer "+a.token)
+
+	_, callInfo := connect.NewClientContext(req.Context())
+	callInfo.RequestHeader().Add("Authorization", "Bearer "+a.token)
 
 	if a.debug {
 		reqDump, err := httputil.DumpRequestOut(req, true)

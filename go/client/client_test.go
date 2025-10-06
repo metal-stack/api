@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"connectrpc.com/connect"
+	"github.com/davecgh/go-spew/spew"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/metal-stack/api/go/client"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
@@ -55,26 +56,26 @@ func Test_Client(t *testing.T) {
 		Log: log,
 	})
 	require.NoError(t, err)
-	v, err := c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
+	v, err := c.Apiv2().Version().Get(t.Context(), &apiv2.VersionServiceGetRequest{})
 	require.NoError(t, err)
 	require.NotNil(t, v)
-	require.Equal(t, "1.0", v.Msg.Version.Version)
+	require.Equal(t, "1.0", v.Version.Version)
 	require.False(t, ts.wasCalled)
 	require.Equal(t, tokenString, vs.token)
 
 	time.Sleep(300 * time.Millisecond)
-	v, err = c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
+	v, err = c.Apiv2().Version().Get(t.Context(), &apiv2.VersionServiceGetRequest{})
 	require.NoError(t, err)
 	require.NotNil(t, v)
-	require.Equal(t, "1.0", v.Msg.Version.Version)
+	require.Equal(t, "1.0", v.Version.Version)
 	require.False(t, ts.wasCalled)
 	require.Equal(t, tokenString, vs.token)
 
 	time.Sleep(1 * time.Second)
-	v, err = c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
+	v, err = c.Apiv2().Version().Get(t.Context(), &apiv2.VersionServiceGetRequest{})
 	require.NoError(t, err)
 	require.NotNil(t, v)
-	require.Equal(t, "1.0", v.Msg.Version.Version)
+	require.Equal(t, "1.0", v.Version.Version)
 
 	require.True(t, ts.wasCalled)
 	require.NotEqual(t, tokenString, vs.token, "token must have changed")
@@ -103,8 +104,13 @@ type mockVersionService struct {
 	token string
 }
 
-func (m *mockVersionService) Get(ctx context.Context, req *connect.Request[apiv2.VersionServiceGetRequest]) (*connect.Response[apiv2.VersionServiceGetResponse], error) {
-	authHeader := req.Header().Get("Authorization")
+func (m *mockVersionService) Get(ctx context.Context, req *apiv2.VersionServiceGetRequest) (*apiv2.VersionServiceGetResponse, error) {
+	callinfo, _ := connect.CallInfoForHandlerContext(ctx)
+
+	spew.Dump(callinfo.RequestHeader())
+
+	authHeader := callinfo.RequestHeader().Get("Authorization")
+
 	_, token, found := strings.Cut(authHeader, "Bearer ")
 
 	if !found {
@@ -112,7 +118,7 @@ func (m *mockVersionService) Get(ctx context.Context, req *connect.Request[apiv2
 	}
 
 	m.token = token
-	return connect.NewResponse(&apiv2.VersionServiceGetResponse{Version: &apiv2.Version{Version: "1.0"}}), nil
+	return &apiv2.VersionServiceGetResponse{Version: &apiv2.Version{Version: "1.0"}}, nil
 }
 
 type mockTokenService struct {
@@ -120,36 +126,36 @@ type mockTokenService struct {
 }
 
 // Create implements apiv2connect.TokenServiceHandler.
-func (m *mockTokenService) Create(context.Context, *connect.Request[apiv2.TokenServiceCreateRequest]) (*connect.Response[apiv2.TokenServiceCreateResponse], error) {
+func (m *mockTokenService) Create(context.Context, *apiv2.TokenServiceCreateRequest) (*apiv2.TokenServiceCreateResponse, error) {
 	panic("unimplemented")
 }
 
 // Get implements apiv2connect.TokenServiceHandler.
-func (m *mockTokenService) Get(context.Context, *connect.Request[apiv2.TokenServiceGetRequest]) (*connect.Response[apiv2.TokenServiceGetResponse], error) {
+func (m *mockTokenService) Get(context.Context, *apiv2.TokenServiceGetRequest) (*apiv2.TokenServiceGetResponse, error) {
 	panic("unimplemented")
 }
 
 // List implements apiv2connect.TokenServiceHandler.
-func (m *mockTokenService) List(context.Context, *connect.Request[apiv2.TokenServiceListRequest]) (*connect.Response[apiv2.TokenServiceListResponse], error) {
+func (m *mockTokenService) List(context.Context, *apiv2.TokenServiceListRequest) (*apiv2.TokenServiceListResponse, error) {
 	panic("unimplemented")
 }
 
 // Refresh implements apiv2connect.TokenServiceHandler.
-func (m *mockTokenService) Refresh(ctx context.Context, _ *connect.Request[apiv2.TokenServiceRefreshRequest]) (*connect.Response[apiv2.TokenServiceRefreshResponse], error) {
+func (m *mockTokenService) Refresh(ctx context.Context, _ *apiv2.TokenServiceRefreshRequest) (*apiv2.TokenServiceRefreshResponse, error) {
 	token, err := generateToken(2 * time.Second)
 	if err != nil {
 		return nil, err
 	}
 	m.wasCalled = true
-	return connect.NewResponse(&apiv2.TokenServiceRefreshResponse{Token: &apiv2.Token{}, Secret: token}), nil
+	return &apiv2.TokenServiceRefreshResponse{Token: &apiv2.Token{}, Secret: token}, nil
 }
 
 // Revoke implements apiv2connect.TokenServiceHandler.
-func (m *mockTokenService) Revoke(context.Context, *connect.Request[apiv2.TokenServiceRevokeRequest]) (*connect.Response[apiv2.TokenServiceRevokeResponse], error) {
+func (m *mockTokenService) Revoke(context.Context, *apiv2.TokenServiceRevokeRequest) (*apiv2.TokenServiceRevokeResponse, error) {
 	panic("unimplemented")
 }
 
 // Update implements apiv2connect.TokenServiceHandler.
-func (m *mockTokenService) Update(context.Context, *connect.Request[apiv2.TokenServiceUpdateRequest]) (*connect.Response[apiv2.TokenServiceUpdateResponse], error) {
+func (m *mockTokenService) Update(context.Context, *apiv2.TokenServiceUpdateRequest) (*apiv2.TokenServiceUpdateResponse, error) {
 	panic("unimplemented")
 }

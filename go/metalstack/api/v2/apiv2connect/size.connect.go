@@ -42,9 +42,9 @@ const (
 // SizeServiceClient is a client for the metalstack.api.v2.SizeService service.
 type SizeServiceClient interface {
 	// Get a size
-	Get(context.Context, *connect.Request[v2.SizeServiceGetRequest]) (*connect.Response[v2.SizeServiceGetResponse], error)
+	Get(context.Context, *v2.SizeServiceGetRequest) (*v2.SizeServiceGetResponse, error)
 	// List all sizes
-	List(context.Context, *connect.Request[v2.SizeServiceListRequest]) (*connect.Response[v2.SizeServiceListResponse], error)
+	List(context.Context, *v2.SizeServiceListRequest) (*v2.SizeServiceListResponse, error)
 }
 
 // NewSizeServiceClient constructs a client for the metalstack.api.v2.SizeService service. By
@@ -80,21 +80,29 @@ type sizeServiceClient struct {
 }
 
 // Get calls metalstack.api.v2.SizeService.Get.
-func (c *sizeServiceClient) Get(ctx context.Context, req *connect.Request[v2.SizeServiceGetRequest]) (*connect.Response[v2.SizeServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *sizeServiceClient) Get(ctx context.Context, req *v2.SizeServiceGetRequest) (*v2.SizeServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.api.v2.SizeService.List.
-func (c *sizeServiceClient) List(ctx context.Context, req *connect.Request[v2.SizeServiceListRequest]) (*connect.Response[v2.SizeServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *sizeServiceClient) List(ctx context.Context, req *v2.SizeServiceListRequest) (*v2.SizeServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // SizeServiceHandler is an implementation of the metalstack.api.v2.SizeService service.
 type SizeServiceHandler interface {
 	// Get a size
-	Get(context.Context, *connect.Request[v2.SizeServiceGetRequest]) (*connect.Response[v2.SizeServiceGetResponse], error)
+	Get(context.Context, *v2.SizeServiceGetRequest) (*v2.SizeServiceGetResponse, error)
 	// List all sizes
-	List(context.Context, *connect.Request[v2.SizeServiceListRequest]) (*connect.Response[v2.SizeServiceListResponse], error)
+	List(context.Context, *v2.SizeServiceListRequest) (*v2.SizeServiceListResponse, error)
 }
 
 // NewSizeServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -104,13 +112,13 @@ type SizeServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSizeServiceHandler(svc SizeServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	sizeServiceMethods := v2.File_metalstack_api_v2_size_proto.Services().ByName("SizeService").Methods()
-	sizeServiceGetHandler := connect.NewUnaryHandler(
+	sizeServiceGetHandler := connect.NewUnaryHandlerSimple(
 		SizeServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(sizeServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
-	sizeServiceListHandler := connect.NewUnaryHandler(
+	sizeServiceListHandler := connect.NewUnaryHandlerSimple(
 		SizeServiceListProcedure,
 		svc.List,
 		connect.WithSchema(sizeServiceMethods.ByName("List")),
@@ -131,10 +139,10 @@ func NewSizeServiceHandler(svc SizeServiceHandler, opts ...connect.HandlerOption
 // UnimplementedSizeServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSizeServiceHandler struct{}
 
-func (UnimplementedSizeServiceHandler) Get(context.Context, *connect.Request[v2.SizeServiceGetRequest]) (*connect.Response[v2.SizeServiceGetResponse], error) {
+func (UnimplementedSizeServiceHandler) Get(context.Context, *v2.SizeServiceGetRequest) (*v2.SizeServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.SizeService.Get is not implemented"))
 }
 
-func (UnimplementedSizeServiceHandler) List(context.Context, *connect.Request[v2.SizeServiceListRequest]) (*connect.Response[v2.SizeServiceListResponse], error) {
+func (UnimplementedSizeServiceHandler) List(context.Context, *v2.SizeServiceListRequest) (*v2.SizeServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.SizeService.List is not implemented"))
 }

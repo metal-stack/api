@@ -3,10 +3,9 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-
 	context "context"
+
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type ImageServiceClient struct {
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *ImageServiceClient) Get(_a0 context.Context, _a1 *connect.Request[apiv2.ImageServiceGetRequest]) (*connect.Response[apiv2.ImageServiceGetResponse], error) {
+func (_m *ImageServiceClient) Get(_a0 context.Context, _a1 *apiv2.ImageServiceGetRequest) (*apiv2.ImageServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[apiv2.ImageServiceGetResponse]
+	var r0 *apiv2.ImageServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.ImageServiceGetRequest]) (*connect.Response[apiv2.ImageServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ImageServiceGetRequest) (*apiv2.ImageServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.ImageServiceGetRequest]) *connect.Response[apiv2.ImageServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ImageServiceGetRequest) *apiv2.ImageServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.ImageServiceGetResponse])
+			r0 = ret.Get(0).(*apiv2.ImageServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.ImageServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.ImageServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *ImageServiceClient) Get(_a0 context.Context, _a1 *connect.Request[apiv
 }
 
 // Latest provides a mock function with given fields: _a0, _a1
-func (_m *ImageServiceClient) Latest(_a0 context.Context, _a1 *connect.Request[apiv2.ImageServiceLatestRequest]) (*connect.Response[apiv2.ImageServiceLatestResponse], error) {
+func (_m *ImageServiceClient) Latest(_a0 context.Context, _a1 *apiv2.ImageServiceLatestRequest) (*apiv2.ImageServiceLatestResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Latest")
 	}
 
-	var r0 *connect.Response[apiv2.ImageServiceLatestResponse]
+	var r0 *apiv2.ImageServiceLatestResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.ImageServiceLatestRequest]) (*connect.Response[apiv2.ImageServiceLatestResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ImageServiceLatestRequest) (*apiv2.ImageServiceLatestResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.ImageServiceLatestRequest]) *connect.Response[apiv2.ImageServiceLatestResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ImageServiceLatestRequest) *apiv2.ImageServiceLatestResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.ImageServiceLatestResponse])
+			r0 = ret.Get(0).(*apiv2.ImageServiceLatestResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.ImageServiceLatestRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.ImageServiceLatestRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -77,27 +76,27 @@ func (_m *ImageServiceClient) Latest(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *ImageServiceClient) List(_a0 context.Context, _a1 *connect.Request[apiv2.ImageServiceListRequest]) (*connect.Response[apiv2.ImageServiceListResponse], error) {
+func (_m *ImageServiceClient) List(_a0 context.Context, _a1 *apiv2.ImageServiceListRequest) (*apiv2.ImageServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[apiv2.ImageServiceListResponse]
+	var r0 *apiv2.ImageServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.ImageServiceListRequest]) (*connect.Response[apiv2.ImageServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ImageServiceListRequest) (*apiv2.ImageServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.ImageServiceListRequest]) *connect.Response[apiv2.ImageServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ImageServiceListRequest) *apiv2.ImageServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.ImageServiceListResponse])
+			r0 = ret.Get(0).(*apiv2.ImageServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.ImageServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.ImageServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

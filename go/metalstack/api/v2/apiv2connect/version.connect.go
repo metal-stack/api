@@ -40,7 +40,7 @@ const (
 // VersionServiceClient is a client for the metalstack.api.v2.VersionService service.
 type VersionServiceClient interface {
 	// Get the version
-	Get(context.Context, *connect.Request[v2.VersionServiceGetRequest]) (*connect.Response[v2.VersionServiceGetResponse], error)
+	Get(context.Context, *v2.VersionServiceGetRequest) (*v2.VersionServiceGetResponse, error)
 }
 
 // NewVersionServiceClient constructs a client for the metalstack.api.v2.VersionService service. By
@@ -69,14 +69,18 @@ type versionServiceClient struct {
 }
 
 // Get calls metalstack.api.v2.VersionService.Get.
-func (c *versionServiceClient) Get(ctx context.Context, req *connect.Request[v2.VersionServiceGetRequest]) (*connect.Response[v2.VersionServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *versionServiceClient) Get(ctx context.Context, req *v2.VersionServiceGetRequest) (*v2.VersionServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // VersionServiceHandler is an implementation of the metalstack.api.v2.VersionService service.
 type VersionServiceHandler interface {
 	// Get the version
-	Get(context.Context, *connect.Request[v2.VersionServiceGetRequest]) (*connect.Response[v2.VersionServiceGetResponse], error)
+	Get(context.Context, *v2.VersionServiceGetRequest) (*v2.VersionServiceGetResponse, error)
 }
 
 // NewVersionServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -86,7 +90,7 @@ type VersionServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVersionServiceHandler(svc VersionServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	versionServiceMethods := v2.File_metalstack_api_v2_version_proto.Services().ByName("VersionService").Methods()
-	versionServiceGetHandler := connect.NewUnaryHandler(
+	versionServiceGetHandler := connect.NewUnaryHandlerSimple(
 		VersionServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(versionServiceMethods.ByName("Get")),
@@ -105,6 +109,6 @@ func NewVersionServiceHandler(svc VersionServiceHandler, opts ...connect.Handler
 // UnimplementedVersionServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVersionServiceHandler struct{}
 
-func (UnimplementedVersionServiceHandler) Get(context.Context, *connect.Request[v2.VersionServiceGetRequest]) (*connect.Response[v2.VersionServiceGetResponse], error) {
+func (UnimplementedVersionServiceHandler) Get(context.Context, *v2.VersionServiceGetRequest) (*v2.VersionServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.VersionService.Get is not implemented"))
 }

@@ -3,10 +3,9 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-
 	context "context"
+
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type FilesystemServiceHandler struct {
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *FilesystemServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[apiv2.FilesystemServiceGetRequest]) (*connect.Response[apiv2.FilesystemServiceGetResponse], error) {
+func (_m *FilesystemServiceHandler) Get(_a0 context.Context, _a1 *apiv2.FilesystemServiceGetRequest) (*apiv2.FilesystemServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[apiv2.FilesystemServiceGetResponse]
+	var r0 *apiv2.FilesystemServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.FilesystemServiceGetRequest]) (*connect.Response[apiv2.FilesystemServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.FilesystemServiceGetRequest) (*apiv2.FilesystemServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.FilesystemServiceGetRequest]) *connect.Response[apiv2.FilesystemServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.FilesystemServiceGetRequest) *apiv2.FilesystemServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.FilesystemServiceGetResponse])
+			r0 = ret.Get(0).(*apiv2.FilesystemServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.FilesystemServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.FilesystemServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *FilesystemServiceHandler) Get(_a0 context.Context, _a1 *connect.Reques
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *FilesystemServiceHandler) List(_a0 context.Context, _a1 *connect.Request[apiv2.FilesystemServiceListRequest]) (*connect.Response[apiv2.FilesystemServiceListResponse], error) {
+func (_m *FilesystemServiceHandler) List(_a0 context.Context, _a1 *apiv2.FilesystemServiceListRequest) (*apiv2.FilesystemServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[apiv2.FilesystemServiceListResponse]
+	var r0 *apiv2.FilesystemServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.FilesystemServiceListRequest]) (*connect.Response[apiv2.FilesystemServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.FilesystemServiceListRequest) (*apiv2.FilesystemServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.FilesystemServiceListRequest]) *connect.Response[apiv2.FilesystemServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.FilesystemServiceListRequest) *apiv2.FilesystemServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.FilesystemServiceListResponse])
+			r0 = ret.Get(0).(*apiv2.FilesystemServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.FilesystemServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.FilesystemServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -77,27 +76,27 @@ func (_m *FilesystemServiceHandler) List(_a0 context.Context, _a1 *connect.Reque
 }
 
 // Match provides a mock function with given fields: _a0, _a1
-func (_m *FilesystemServiceHandler) Match(_a0 context.Context, _a1 *connect.Request[apiv2.FilesystemServiceMatchRequest]) (*connect.Response[apiv2.FilesystemServiceMatchResponse], error) {
+func (_m *FilesystemServiceHandler) Match(_a0 context.Context, _a1 *apiv2.FilesystemServiceMatchRequest) (*apiv2.FilesystemServiceMatchResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Match")
 	}
 
-	var r0 *connect.Response[apiv2.FilesystemServiceMatchResponse]
+	var r0 *apiv2.FilesystemServiceMatchResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.FilesystemServiceMatchRequest]) (*connect.Response[apiv2.FilesystemServiceMatchResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.FilesystemServiceMatchRequest) (*apiv2.FilesystemServiceMatchResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.FilesystemServiceMatchRequest]) *connect.Response[apiv2.FilesystemServiceMatchResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.FilesystemServiceMatchRequest) *apiv2.FilesystemServiceMatchResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.FilesystemServiceMatchResponse])
+			r0 = ret.Get(0).(*apiv2.FilesystemServiceMatchResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.FilesystemServiceMatchRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.FilesystemServiceMatchRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

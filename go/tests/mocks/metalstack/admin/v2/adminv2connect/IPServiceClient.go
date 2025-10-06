@@ -3,10 +3,9 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-
 	context "context"
+
+	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type IPServiceClient struct {
 }
 
 // Issues provides a mock function with given fields: _a0, _a1
-func (_m *IPServiceClient) Issues(_a0 context.Context, _a1 *connect.Request[adminv2.IPServiceIssuesRequest]) (*connect.Response[adminv2.IPServiceIssuesResponse], error) {
+func (_m *IPServiceClient) Issues(_a0 context.Context, _a1 *adminv2.IPServiceIssuesRequest) (*adminv2.IPServiceIssuesResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Issues")
 	}
 
-	var r0 *connect.Response[adminv2.IPServiceIssuesResponse]
+	var r0 *adminv2.IPServiceIssuesResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.IPServiceIssuesRequest]) (*connect.Response[adminv2.IPServiceIssuesResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.IPServiceIssuesRequest) (*adminv2.IPServiceIssuesResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.IPServiceIssuesRequest]) *connect.Response[adminv2.IPServiceIssuesResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.IPServiceIssuesRequest) *adminv2.IPServiceIssuesResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.IPServiceIssuesResponse])
+			r0 = ret.Get(0).(*adminv2.IPServiceIssuesResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.IPServiceIssuesRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.IPServiceIssuesRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *IPServiceClient) Issues(_a0 context.Context, _a1 *connect.Request[admi
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *IPServiceClient) List(_a0 context.Context, _a1 *connect.Request[adminv2.IPServiceListRequest]) (*connect.Response[adminv2.IPServiceListResponse], error) {
+func (_m *IPServiceClient) List(_a0 context.Context, _a1 *adminv2.IPServiceListRequest) (*adminv2.IPServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[adminv2.IPServiceListResponse]
+	var r0 *adminv2.IPServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.IPServiceListRequest]) (*connect.Response[adminv2.IPServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.IPServiceListRequest) (*adminv2.IPServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.IPServiceListRequest]) *connect.Response[adminv2.IPServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.IPServiceListRequest) *adminv2.IPServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.IPServiceListResponse])
+			r0 = ret.Get(0).(*adminv2.IPServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.IPServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.IPServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

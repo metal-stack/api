@@ -40,7 +40,7 @@ const (
 // SwitchServiceClient is a client for the metalstack.infra.v2.SwitchService service.
 type SwitchServiceClient interface {
 	// Register a switch
-	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
+	Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error)
 }
 
 // NewSwitchServiceClient constructs a client for the metalstack.infra.v2.SwitchService service. By
@@ -69,14 +69,18 @@ type switchServiceClient struct {
 }
 
 // Register calls metalstack.infra.v2.SwitchService.Register.
-func (c *switchServiceClient) Register(ctx context.Context, req *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error) {
-	return c.register.CallUnary(ctx, req)
+func (c *switchServiceClient) Register(ctx context.Context, req *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error) {
+	response, err := c.register.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // SwitchServiceHandler is an implementation of the metalstack.infra.v2.SwitchService service.
 type SwitchServiceHandler interface {
 	// Register a switch
-	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
+	Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error)
 }
 
 // NewSwitchServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -86,7 +90,7 @@ type SwitchServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	switchServiceMethods := v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods()
-	switchServiceRegisterHandler := connect.NewUnaryHandler(
+	switchServiceRegisterHandler := connect.NewUnaryHandlerSimple(
 		SwitchServiceRegisterProcedure,
 		svc.Register,
 		connect.WithSchema(switchServiceMethods.ByName("Register")),
@@ -105,6 +109,6 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 // UnimplementedSwitchServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSwitchServiceHandler struct{}
 
-func (UnimplementedSwitchServiceHandler) Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error) {
+func (UnimplementedSwitchServiceHandler) Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Register is not implemented"))
 }

@@ -3,10 +3,9 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-
 	context "context"
+
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type TenantServiceClient struct {
 }
 
 // Create provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) Create(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceCreateRequest]) (*connect.Response[apiv2.TenantServiceCreateResponse], error) {
+func (_m *TenantServiceClient) Create(_a0 context.Context, _a1 *apiv2.TenantServiceCreateRequest) (*apiv2.TenantServiceCreateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Create")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceCreateResponse]
+	var r0 *apiv2.TenantServiceCreateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceCreateRequest]) (*connect.Response[apiv2.TenantServiceCreateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceCreateRequest) (*apiv2.TenantServiceCreateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceCreateRequest]) *connect.Response[apiv2.TenantServiceCreateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceCreateRequest) *apiv2.TenantServiceCreateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceCreateResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceCreateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceCreateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceCreateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *TenantServiceClient) Create(_a0 context.Context, _a1 *connect.Request[
 }
 
 // Delete provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) Delete(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceDeleteRequest]) (*connect.Response[apiv2.TenantServiceDeleteResponse], error) {
+func (_m *TenantServiceClient) Delete(_a0 context.Context, _a1 *apiv2.TenantServiceDeleteRequest) (*apiv2.TenantServiceDeleteResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Delete")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceDeleteResponse]
+	var r0 *apiv2.TenantServiceDeleteResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceDeleteRequest]) (*connect.Response[apiv2.TenantServiceDeleteResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceDeleteRequest) (*apiv2.TenantServiceDeleteResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceDeleteRequest]) *connect.Response[apiv2.TenantServiceDeleteResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceDeleteRequest) *apiv2.TenantServiceDeleteResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceDeleteResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceDeleteResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceDeleteRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceDeleteRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -77,27 +76,27 @@ func (_m *TenantServiceClient) Delete(_a0 context.Context, _a1 *connect.Request[
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) Get(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceGetRequest]) (*connect.Response[apiv2.TenantServiceGetResponse], error) {
+func (_m *TenantServiceClient) Get(_a0 context.Context, _a1 *apiv2.TenantServiceGetRequest) (*apiv2.TenantServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceGetResponse]
+	var r0 *apiv2.TenantServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceGetRequest]) (*connect.Response[apiv2.TenantServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceGetRequest) (*apiv2.TenantServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceGetRequest]) *connect.Response[apiv2.TenantServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceGetRequest) *apiv2.TenantServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceGetResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -107,27 +106,27 @@ func (_m *TenantServiceClient) Get(_a0 context.Context, _a1 *connect.Request[api
 }
 
 // Invite provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) Invite(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceInviteRequest]) (*connect.Response[apiv2.TenantServiceInviteResponse], error) {
+func (_m *TenantServiceClient) Invite(_a0 context.Context, _a1 *apiv2.TenantServiceInviteRequest) (*apiv2.TenantServiceInviteResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Invite")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceInviteResponse]
+	var r0 *apiv2.TenantServiceInviteResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteRequest]) (*connect.Response[apiv2.TenantServiceInviteResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInviteRequest) (*apiv2.TenantServiceInviteResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteRequest]) *connect.Response[apiv2.TenantServiceInviteResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInviteRequest) *apiv2.TenantServiceInviteResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceInviteResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceInviteResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceInviteRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -137,27 +136,27 @@ func (_m *TenantServiceClient) Invite(_a0 context.Context, _a1 *connect.Request[
 }
 
 // InviteAccept provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) InviteAccept(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceInviteAcceptRequest]) (*connect.Response[apiv2.TenantServiceInviteAcceptResponse], error) {
+func (_m *TenantServiceClient) InviteAccept(_a0 context.Context, _a1 *apiv2.TenantServiceInviteAcceptRequest) (*apiv2.TenantServiceInviteAcceptResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for InviteAccept")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceInviteAcceptResponse]
+	var r0 *apiv2.TenantServiceInviteAcceptResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteAcceptRequest]) (*connect.Response[apiv2.TenantServiceInviteAcceptResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInviteAcceptRequest) (*apiv2.TenantServiceInviteAcceptResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteAcceptRequest]) *connect.Response[apiv2.TenantServiceInviteAcceptResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInviteAcceptRequest) *apiv2.TenantServiceInviteAcceptResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceInviteAcceptResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceInviteAcceptResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteAcceptRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceInviteAcceptRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -167,27 +166,27 @@ func (_m *TenantServiceClient) InviteAccept(_a0 context.Context, _a1 *connect.Re
 }
 
 // InviteDelete provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) InviteDelete(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceInviteDeleteRequest]) (*connect.Response[apiv2.TenantServiceInviteDeleteResponse], error) {
+func (_m *TenantServiceClient) InviteDelete(_a0 context.Context, _a1 *apiv2.TenantServiceInviteDeleteRequest) (*apiv2.TenantServiceInviteDeleteResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for InviteDelete")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceInviteDeleteResponse]
+	var r0 *apiv2.TenantServiceInviteDeleteResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteDeleteRequest]) (*connect.Response[apiv2.TenantServiceInviteDeleteResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInviteDeleteRequest) (*apiv2.TenantServiceInviteDeleteResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteDeleteRequest]) *connect.Response[apiv2.TenantServiceInviteDeleteResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInviteDeleteRequest) *apiv2.TenantServiceInviteDeleteResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceInviteDeleteResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceInviteDeleteResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteDeleteRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceInviteDeleteRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -197,27 +196,27 @@ func (_m *TenantServiceClient) InviteDelete(_a0 context.Context, _a1 *connect.Re
 }
 
 // InviteGet provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) InviteGet(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceInviteGetRequest]) (*connect.Response[apiv2.TenantServiceInviteGetResponse], error) {
+func (_m *TenantServiceClient) InviteGet(_a0 context.Context, _a1 *apiv2.TenantServiceInviteGetRequest) (*apiv2.TenantServiceInviteGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for InviteGet")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceInviteGetResponse]
+	var r0 *apiv2.TenantServiceInviteGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteGetRequest]) (*connect.Response[apiv2.TenantServiceInviteGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInviteGetRequest) (*apiv2.TenantServiceInviteGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteGetRequest]) *connect.Response[apiv2.TenantServiceInviteGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInviteGetRequest) *apiv2.TenantServiceInviteGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceInviteGetResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceInviteGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceInviteGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceInviteGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -227,27 +226,27 @@ func (_m *TenantServiceClient) InviteGet(_a0 context.Context, _a1 *connect.Reque
 }
 
 // InvitesList provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) InvitesList(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceInvitesListRequest]) (*connect.Response[apiv2.TenantServiceInvitesListResponse], error) {
+func (_m *TenantServiceClient) InvitesList(_a0 context.Context, _a1 *apiv2.TenantServiceInvitesListRequest) (*apiv2.TenantServiceInvitesListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for InvitesList")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceInvitesListResponse]
+	var r0 *apiv2.TenantServiceInvitesListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInvitesListRequest]) (*connect.Response[apiv2.TenantServiceInvitesListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInvitesListRequest) (*apiv2.TenantServiceInvitesListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceInvitesListRequest]) *connect.Response[apiv2.TenantServiceInvitesListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceInvitesListRequest) *apiv2.TenantServiceInvitesListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceInvitesListResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceInvitesListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceInvitesListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceInvitesListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -257,27 +256,27 @@ func (_m *TenantServiceClient) InvitesList(_a0 context.Context, _a1 *connect.Req
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) List(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceListRequest]) (*connect.Response[apiv2.TenantServiceListResponse], error) {
+func (_m *TenantServiceClient) List(_a0 context.Context, _a1 *apiv2.TenantServiceListRequest) (*apiv2.TenantServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceListResponse]
+	var r0 *apiv2.TenantServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceListRequest]) (*connect.Response[apiv2.TenantServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceListRequest) (*apiv2.TenantServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceListRequest]) *connect.Response[apiv2.TenantServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceListRequest) *apiv2.TenantServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceListResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -287,27 +286,27 @@ func (_m *TenantServiceClient) List(_a0 context.Context, _a1 *connect.Request[ap
 }
 
 // RemoveMember provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) RemoveMember(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceRemoveMemberRequest]) (*connect.Response[apiv2.TenantServiceRemoveMemberResponse], error) {
+func (_m *TenantServiceClient) RemoveMember(_a0 context.Context, _a1 *apiv2.TenantServiceRemoveMemberRequest) (*apiv2.TenantServiceRemoveMemberResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RemoveMember")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceRemoveMemberResponse]
+	var r0 *apiv2.TenantServiceRemoveMemberResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceRemoveMemberRequest]) (*connect.Response[apiv2.TenantServiceRemoveMemberResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceRemoveMemberRequest) (*apiv2.TenantServiceRemoveMemberResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceRemoveMemberRequest]) *connect.Response[apiv2.TenantServiceRemoveMemberResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceRemoveMemberRequest) *apiv2.TenantServiceRemoveMemberResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceRemoveMemberResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceRemoveMemberResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceRemoveMemberRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceRemoveMemberRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -317,27 +316,27 @@ func (_m *TenantServiceClient) RemoveMember(_a0 context.Context, _a1 *connect.Re
 }
 
 // Update provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) Update(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceUpdateRequest]) (*connect.Response[apiv2.TenantServiceUpdateResponse], error) {
+func (_m *TenantServiceClient) Update(_a0 context.Context, _a1 *apiv2.TenantServiceUpdateRequest) (*apiv2.TenantServiceUpdateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Update")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceUpdateResponse]
+	var r0 *apiv2.TenantServiceUpdateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceUpdateRequest]) (*connect.Response[apiv2.TenantServiceUpdateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceUpdateRequest) (*apiv2.TenantServiceUpdateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceUpdateRequest]) *connect.Response[apiv2.TenantServiceUpdateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceUpdateRequest) *apiv2.TenantServiceUpdateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceUpdateResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceUpdateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceUpdateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceUpdateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -347,27 +346,27 @@ func (_m *TenantServiceClient) Update(_a0 context.Context, _a1 *connect.Request[
 }
 
 // UpdateMember provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) UpdateMember(_a0 context.Context, _a1 *connect.Request[apiv2.TenantServiceUpdateMemberRequest]) (*connect.Response[apiv2.TenantServiceUpdateMemberResponse], error) {
+func (_m *TenantServiceClient) UpdateMember(_a0 context.Context, _a1 *apiv2.TenantServiceUpdateMemberRequest) (*apiv2.TenantServiceUpdateMemberResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateMember")
 	}
 
-	var r0 *connect.Response[apiv2.TenantServiceUpdateMemberResponse]
+	var r0 *apiv2.TenantServiceUpdateMemberResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceUpdateMemberRequest]) (*connect.Response[apiv2.TenantServiceUpdateMemberResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceUpdateMemberRequest) (*apiv2.TenantServiceUpdateMemberResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.TenantServiceUpdateMemberRequest]) *connect.Response[apiv2.TenantServiceUpdateMemberResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceUpdateMemberRequest) *apiv2.TenantServiceUpdateMemberResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.TenantServiceUpdateMemberResponse])
+			r0 = ret.Get(0).(*apiv2.TenantServiceUpdateMemberResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.TenantServiceUpdateMemberRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceUpdateMemberRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

@@ -48,15 +48,15 @@ const (
 // IPServiceClient is a client for the metalstack.api.v2.IPService service.
 type IPServiceClient interface {
 	// Get a ip
-	Get(context.Context, *connect.Request[v2.IPServiceGetRequest]) (*connect.Response[v2.IPServiceGetResponse], error)
+	Get(context.Context, *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error)
 	// Create a ip
-	Create(context.Context, *connect.Request[v2.IPServiceCreateRequest]) (*connect.Response[v2.IPServiceCreateResponse], error)
+	Create(context.Context, *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error)
 	// Update a ip
-	Update(context.Context, *connect.Request[v2.IPServiceUpdateRequest]) (*connect.Response[v2.IPServiceUpdateResponse], error)
+	Update(context.Context, *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error)
 	// List all ips
-	List(context.Context, *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error)
+	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
 	// Delete a ip
-	Delete(context.Context, *connect.Request[v2.IPServiceDeleteRequest]) (*connect.Response[v2.IPServiceDeleteResponse], error)
+	Delete(context.Context, *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error)
 }
 
 // NewIPServiceClient constructs a client for the metalstack.api.v2.IPService service. By default,
@@ -113,42 +113,62 @@ type iPServiceClient struct {
 }
 
 // Get calls metalstack.api.v2.IPService.Get.
-func (c *iPServiceClient) Get(ctx context.Context, req *connect.Request[v2.IPServiceGetRequest]) (*connect.Response[v2.IPServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *iPServiceClient) Get(ctx context.Context, req *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Create calls metalstack.api.v2.IPService.Create.
-func (c *iPServiceClient) Create(ctx context.Context, req *connect.Request[v2.IPServiceCreateRequest]) (*connect.Response[v2.IPServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+func (c *iPServiceClient) Create(ctx context.Context, req *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Update calls metalstack.api.v2.IPService.Update.
-func (c *iPServiceClient) Update(ctx context.Context, req *connect.Request[v2.IPServiceUpdateRequest]) (*connect.Response[v2.IPServiceUpdateResponse], error) {
-	return c.update.CallUnary(ctx, req)
+func (c *iPServiceClient) Update(ctx context.Context, req *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error) {
+	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.api.v2.IPService.List.
-func (c *iPServiceClient) List(ctx context.Context, req *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *iPServiceClient) List(ctx context.Context, req *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Delete calls metalstack.api.v2.IPService.Delete.
-func (c *iPServiceClient) Delete(ctx context.Context, req *connect.Request[v2.IPServiceDeleteRequest]) (*connect.Response[v2.IPServiceDeleteResponse], error) {
-	return c.delete.CallUnary(ctx, req)
+func (c *iPServiceClient) Delete(ctx context.Context, req *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // IPServiceHandler is an implementation of the metalstack.api.v2.IPService service.
 type IPServiceHandler interface {
 	// Get a ip
-	Get(context.Context, *connect.Request[v2.IPServiceGetRequest]) (*connect.Response[v2.IPServiceGetResponse], error)
+	Get(context.Context, *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error)
 	// Create a ip
-	Create(context.Context, *connect.Request[v2.IPServiceCreateRequest]) (*connect.Response[v2.IPServiceCreateResponse], error)
+	Create(context.Context, *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error)
 	// Update a ip
-	Update(context.Context, *connect.Request[v2.IPServiceUpdateRequest]) (*connect.Response[v2.IPServiceUpdateResponse], error)
+	Update(context.Context, *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error)
 	// List all ips
-	List(context.Context, *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error)
+	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
 	// Delete a ip
-	Delete(context.Context, *connect.Request[v2.IPServiceDeleteRequest]) (*connect.Response[v2.IPServiceDeleteResponse], error)
+	Delete(context.Context, *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error)
 }
 
 // NewIPServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -158,31 +178,31 @@ type IPServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	iPServiceMethods := v2.File_metalstack_api_v2_ip_proto.Services().ByName("IPService").Methods()
-	iPServiceGetHandler := connect.NewUnaryHandler(
+	iPServiceGetHandler := connect.NewUnaryHandlerSimple(
 		IPServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(iPServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
-	iPServiceCreateHandler := connect.NewUnaryHandler(
+	iPServiceCreateHandler := connect.NewUnaryHandlerSimple(
 		IPServiceCreateProcedure,
 		svc.Create,
 		connect.WithSchema(iPServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
-	iPServiceUpdateHandler := connect.NewUnaryHandler(
+	iPServiceUpdateHandler := connect.NewUnaryHandlerSimple(
 		IPServiceUpdateProcedure,
 		svc.Update,
 		connect.WithSchema(iPServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
-	iPServiceListHandler := connect.NewUnaryHandler(
+	iPServiceListHandler := connect.NewUnaryHandlerSimple(
 		IPServiceListProcedure,
 		svc.List,
 		connect.WithSchema(iPServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
-	iPServiceDeleteHandler := connect.NewUnaryHandler(
+	iPServiceDeleteHandler := connect.NewUnaryHandlerSimple(
 		IPServiceDeleteProcedure,
 		svc.Delete,
 		connect.WithSchema(iPServiceMethods.ByName("Delete")),
@@ -209,22 +229,22 @@ func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (s
 // UnimplementedIPServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedIPServiceHandler struct{}
 
-func (UnimplementedIPServiceHandler) Get(context.Context, *connect.Request[v2.IPServiceGetRequest]) (*connect.Response[v2.IPServiceGetResponse], error) {
+func (UnimplementedIPServiceHandler) Get(context.Context, *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.Get is not implemented"))
 }
 
-func (UnimplementedIPServiceHandler) Create(context.Context, *connect.Request[v2.IPServiceCreateRequest]) (*connect.Response[v2.IPServiceCreateResponse], error) {
+func (UnimplementedIPServiceHandler) Create(context.Context, *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.Create is not implemented"))
 }
 
-func (UnimplementedIPServiceHandler) Update(context.Context, *connect.Request[v2.IPServiceUpdateRequest]) (*connect.Response[v2.IPServiceUpdateResponse], error) {
+func (UnimplementedIPServiceHandler) Update(context.Context, *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.Update is not implemented"))
 }
 
-func (UnimplementedIPServiceHandler) List(context.Context, *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error) {
+func (UnimplementedIPServiceHandler) List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.List is not implemented"))
 }
 
-func (UnimplementedIPServiceHandler) Delete(context.Context, *connect.Request[v2.IPServiceDeleteRequest]) (*connect.Response[v2.IPServiceDeleteResponse], error) {
+func (UnimplementedIPServiceHandler) Delete(context.Context, *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.Delete is not implemented"))
 }

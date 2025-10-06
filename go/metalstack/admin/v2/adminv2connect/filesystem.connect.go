@@ -47,11 +47,11 @@ const (
 // FilesystemServiceClient is a client for the metalstack.admin.v2.FilesystemService service.
 type FilesystemServiceClient interface {
 	// Create a filesystem
-	Create(context.Context, *connect.Request[v2.FilesystemServiceCreateRequest]) (*connect.Response[v2.FilesystemServiceCreateResponse], error)
+	Create(context.Context, *v2.FilesystemServiceCreateRequest) (*v2.FilesystemServiceCreateResponse, error)
 	// Update a filesystem
-	Update(context.Context, *connect.Request[v2.FilesystemServiceUpdateRequest]) (*connect.Response[v2.FilesystemServiceUpdateResponse], error)
+	Update(context.Context, *v2.FilesystemServiceUpdateRequest) (*v2.FilesystemServiceUpdateResponse, error)
 	// Delete a filesystem
-	Delete(context.Context, *connect.Request[v2.FilesystemServiceDeleteRequest]) (*connect.Response[v2.FilesystemServiceDeleteResponse], error)
+	Delete(context.Context, *v2.FilesystemServiceDeleteRequest) (*v2.FilesystemServiceDeleteResponse, error)
 }
 
 // NewFilesystemServiceClient constructs a client for the metalstack.admin.v2.FilesystemService
@@ -94,29 +94,41 @@ type filesystemServiceClient struct {
 }
 
 // Create calls metalstack.admin.v2.FilesystemService.Create.
-func (c *filesystemServiceClient) Create(ctx context.Context, req *connect.Request[v2.FilesystemServiceCreateRequest]) (*connect.Response[v2.FilesystemServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+func (c *filesystemServiceClient) Create(ctx context.Context, req *v2.FilesystemServiceCreateRequest) (*v2.FilesystemServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Update calls metalstack.admin.v2.FilesystemService.Update.
-func (c *filesystemServiceClient) Update(ctx context.Context, req *connect.Request[v2.FilesystemServiceUpdateRequest]) (*connect.Response[v2.FilesystemServiceUpdateResponse], error) {
-	return c.update.CallUnary(ctx, req)
+func (c *filesystemServiceClient) Update(ctx context.Context, req *v2.FilesystemServiceUpdateRequest) (*v2.FilesystemServiceUpdateResponse, error) {
+	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Delete calls metalstack.admin.v2.FilesystemService.Delete.
-func (c *filesystemServiceClient) Delete(ctx context.Context, req *connect.Request[v2.FilesystemServiceDeleteRequest]) (*connect.Response[v2.FilesystemServiceDeleteResponse], error) {
-	return c.delete.CallUnary(ctx, req)
+func (c *filesystemServiceClient) Delete(ctx context.Context, req *v2.FilesystemServiceDeleteRequest) (*v2.FilesystemServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // FilesystemServiceHandler is an implementation of the metalstack.admin.v2.FilesystemService
 // service.
 type FilesystemServiceHandler interface {
 	// Create a filesystem
-	Create(context.Context, *connect.Request[v2.FilesystemServiceCreateRequest]) (*connect.Response[v2.FilesystemServiceCreateResponse], error)
+	Create(context.Context, *v2.FilesystemServiceCreateRequest) (*v2.FilesystemServiceCreateResponse, error)
 	// Update a filesystem
-	Update(context.Context, *connect.Request[v2.FilesystemServiceUpdateRequest]) (*connect.Response[v2.FilesystemServiceUpdateResponse], error)
+	Update(context.Context, *v2.FilesystemServiceUpdateRequest) (*v2.FilesystemServiceUpdateResponse, error)
 	// Delete a filesystem
-	Delete(context.Context, *connect.Request[v2.FilesystemServiceDeleteRequest]) (*connect.Response[v2.FilesystemServiceDeleteResponse], error)
+	Delete(context.Context, *v2.FilesystemServiceDeleteRequest) (*v2.FilesystemServiceDeleteResponse, error)
 }
 
 // NewFilesystemServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -126,19 +138,19 @@ type FilesystemServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewFilesystemServiceHandler(svc FilesystemServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	filesystemServiceMethods := v2.File_metalstack_admin_v2_filesystem_proto.Services().ByName("FilesystemService").Methods()
-	filesystemServiceCreateHandler := connect.NewUnaryHandler(
+	filesystemServiceCreateHandler := connect.NewUnaryHandlerSimple(
 		FilesystemServiceCreateProcedure,
 		svc.Create,
 		connect.WithSchema(filesystemServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
-	filesystemServiceUpdateHandler := connect.NewUnaryHandler(
+	filesystemServiceUpdateHandler := connect.NewUnaryHandlerSimple(
 		FilesystemServiceUpdateProcedure,
 		svc.Update,
 		connect.WithSchema(filesystemServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
-	filesystemServiceDeleteHandler := connect.NewUnaryHandler(
+	filesystemServiceDeleteHandler := connect.NewUnaryHandlerSimple(
 		FilesystemServiceDeleteProcedure,
 		svc.Delete,
 		connect.WithSchema(filesystemServiceMethods.ByName("Delete")),
@@ -161,14 +173,14 @@ func NewFilesystemServiceHandler(svc FilesystemServiceHandler, opts ...connect.H
 // UnimplementedFilesystemServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedFilesystemServiceHandler struct{}
 
-func (UnimplementedFilesystemServiceHandler) Create(context.Context, *connect.Request[v2.FilesystemServiceCreateRequest]) (*connect.Response[v2.FilesystemServiceCreateResponse], error) {
+func (UnimplementedFilesystemServiceHandler) Create(context.Context, *v2.FilesystemServiceCreateRequest) (*v2.FilesystemServiceCreateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.FilesystemService.Create is not implemented"))
 }
 
-func (UnimplementedFilesystemServiceHandler) Update(context.Context, *connect.Request[v2.FilesystemServiceUpdateRequest]) (*connect.Response[v2.FilesystemServiceUpdateResponse], error) {
+func (UnimplementedFilesystemServiceHandler) Update(context.Context, *v2.FilesystemServiceUpdateRequest) (*v2.FilesystemServiceUpdateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.FilesystemService.Update is not implemented"))
 }
 
-func (UnimplementedFilesystemServiceHandler) Delete(context.Context, *connect.Request[v2.FilesystemServiceDeleteRequest]) (*connect.Response[v2.FilesystemServiceDeleteResponse], error) {
+func (UnimplementedFilesystemServiceHandler) Delete(context.Context, *v2.FilesystemServiceDeleteRequest) (*v2.FilesystemServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.FilesystemService.Delete is not implemented"))
 }

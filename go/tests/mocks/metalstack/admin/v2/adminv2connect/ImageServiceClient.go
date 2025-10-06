@@ -3,10 +3,9 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-
 	context "context"
+
+	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type ImageServiceClient struct {
 }
 
 // Create provides a mock function with given fields: _a0, _a1
-func (_m *ImageServiceClient) Create(_a0 context.Context, _a1 *connect.Request[adminv2.ImageServiceCreateRequest]) (*connect.Response[adminv2.ImageServiceCreateResponse], error) {
+func (_m *ImageServiceClient) Create(_a0 context.Context, _a1 *adminv2.ImageServiceCreateRequest) (*adminv2.ImageServiceCreateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Create")
 	}
 
-	var r0 *connect.Response[adminv2.ImageServiceCreateResponse]
+	var r0 *adminv2.ImageServiceCreateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceCreateRequest]) (*connect.Response[adminv2.ImageServiceCreateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.ImageServiceCreateRequest) (*adminv2.ImageServiceCreateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceCreateRequest]) *connect.Response[adminv2.ImageServiceCreateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.ImageServiceCreateRequest) *adminv2.ImageServiceCreateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.ImageServiceCreateResponse])
+			r0 = ret.Get(0).(*adminv2.ImageServiceCreateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.ImageServiceCreateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.ImageServiceCreateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *ImageServiceClient) Create(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // Delete provides a mock function with given fields: _a0, _a1
-func (_m *ImageServiceClient) Delete(_a0 context.Context, _a1 *connect.Request[adminv2.ImageServiceDeleteRequest]) (*connect.Response[adminv2.ImageServiceDeleteResponse], error) {
+func (_m *ImageServiceClient) Delete(_a0 context.Context, _a1 *adminv2.ImageServiceDeleteRequest) (*adminv2.ImageServiceDeleteResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Delete")
 	}
 
-	var r0 *connect.Response[adminv2.ImageServiceDeleteResponse]
+	var r0 *adminv2.ImageServiceDeleteResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceDeleteRequest]) (*connect.Response[adminv2.ImageServiceDeleteResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.ImageServiceDeleteRequest) (*adminv2.ImageServiceDeleteResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceDeleteRequest]) *connect.Response[adminv2.ImageServiceDeleteResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.ImageServiceDeleteRequest) *adminv2.ImageServiceDeleteResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.ImageServiceDeleteResponse])
+			r0 = ret.Get(0).(*adminv2.ImageServiceDeleteResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.ImageServiceDeleteRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.ImageServiceDeleteRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -77,27 +76,27 @@ func (_m *ImageServiceClient) Delete(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // Update provides a mock function with given fields: _a0, _a1
-func (_m *ImageServiceClient) Update(_a0 context.Context, _a1 *connect.Request[adminv2.ImageServiceUpdateRequest]) (*connect.Response[adminv2.ImageServiceUpdateResponse], error) {
+func (_m *ImageServiceClient) Update(_a0 context.Context, _a1 *adminv2.ImageServiceUpdateRequest) (*adminv2.ImageServiceUpdateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Update")
 	}
 
-	var r0 *connect.Response[adminv2.ImageServiceUpdateResponse]
+	var r0 *adminv2.ImageServiceUpdateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceUpdateRequest]) (*connect.Response[adminv2.ImageServiceUpdateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.ImageServiceUpdateRequest) (*adminv2.ImageServiceUpdateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceUpdateRequest]) *connect.Response[adminv2.ImageServiceUpdateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.ImageServiceUpdateRequest) *adminv2.ImageServiceUpdateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.ImageServiceUpdateResponse])
+			r0 = ret.Get(0).(*adminv2.ImageServiceUpdateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.ImageServiceUpdateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.ImageServiceUpdateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -107,27 +106,27 @@ func (_m *ImageServiceClient) Update(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // Usage provides a mock function with given fields: _a0, _a1
-func (_m *ImageServiceClient) Usage(_a0 context.Context, _a1 *connect.Request[adminv2.ImageServiceUsageRequest]) (*connect.Response[adminv2.ImageServiceUsageResponse], error) {
+func (_m *ImageServiceClient) Usage(_a0 context.Context, _a1 *adminv2.ImageServiceUsageRequest) (*adminv2.ImageServiceUsageResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Usage")
 	}
 
-	var r0 *connect.Response[adminv2.ImageServiceUsageResponse]
+	var r0 *adminv2.ImageServiceUsageResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceUsageRequest]) (*connect.Response[adminv2.ImageServiceUsageResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.ImageServiceUsageRequest) (*adminv2.ImageServiceUsageResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.ImageServiceUsageRequest]) *connect.Response[adminv2.ImageServiceUsageResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.ImageServiceUsageRequest) *adminv2.ImageServiceUsageResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.ImageServiceUsageResponse])
+			r0 = ret.Get(0).(*adminv2.ImageServiceUsageResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.ImageServiceUsageRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.ImageServiceUsageRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
