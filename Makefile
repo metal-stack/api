@@ -12,7 +12,7 @@ all: proto generate test
 release: proto generate test
 
 .PHONY: proto
-proto: protolint protoc-gen-connecpy
+proto: protolint
 	$(MAKE) -C go clean
 	$(MAKE) -C python clean
 	$(MAKE) -C proto protoc
@@ -29,10 +29,3 @@ generate:
 .PHONY: test
 test:
 	$(MAKE) -C go test
-
-.PHONY: protoc-gen-connecpy
-protoc-gen-connecpy:
-	mkdir -p $(LOCALBIN)
-	rm -f $(LOCALBIN)/protoc-gen-connecpy
-	curl -s -L https://github.com/i2y/connecpy/releases/download/v$(PROTOC_GEN_CONNECPY_VERSION)/protoc-gen-connecpy_$(PROTOC_GEN_CONNECPY_VERSION)_linux_amd64.tar.gz | tar -xzf - protoc-gen-connecpy
-	mv protoc-gen-connecpy $(LOCALBIN)/protoc-gen-connecpy
