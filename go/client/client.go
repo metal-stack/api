@@ -2,8 +2,11 @@
 package client
 
 import (
+	"context"
 	"sync"
 
+	"connectrpc.com/connect"
+	"github.com/davecgh/go-spew/spew"
 	compress "github.com/klauspost/connect-compress/v2"
 
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
@@ -20,6 +23,7 @@ type (
 	client struct {
 		config *DialConfig
 
+		authInterceptor connect.Interceptor
 		sync.Mutex
 	}
 	Adminv2 interface {
@@ -96,8 +100,28 @@ func New(config *DialConfig) (Client, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	authInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
+		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
+			newCtx, callInfo := connect.NewClientContext(ctx)
+			callInfo.RequestHeader().Add("Authorization", "Bearer "+config.Token)
+
+			config.Log.Info("authinterceptor", "req procedure", request.Spec().Procedure)
+			config.Log.Info("authinterceptor", "request", request.Any())
+			spew.Dump(callInfo.RequestHeader())
+
+			spew.Dump(newCtx)
+			response, err := next(newCtx, request)
+			if err != nil {
+				return nil, err
+			}
+			return response, err
+		})
+	})
+
 	c := &client{
-		config: config,
+		config:          config,
+		authInterceptor: authInterceptor,
 	}
 
 	go c.startTokenRenewal()
@@ -110,6 +134,7 @@ func (c *client) Adminv2() Adminv2 {
 		filesystemservice: adminv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.authInterceptor),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		imageservice: adminv2connect.NewImageServiceClient(
@@ -244,6 +269,7 @@ func (c *client) Apiv2() Apiv2 {
 		tokenservice: apiv2connect.NewTokenServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.authInterceptor),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		userservice: apiv2connect.NewUserServiceClient(
@@ -254,6 +280,7 @@ func (c *client) Apiv2() Apiv2 {
 		versionservice: apiv2connect.NewVersionServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.authInterceptor),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
