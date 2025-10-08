@@ -2,8 +2,10 @@
 package client
 
 import (
+	"context"
 	"sync"
 
+	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
 
 {{ range $name, $api := . -}}
@@ -19,6 +21,8 @@ type (
 	}
 	client struct {
 		config *DialConfig
+
+		interceptors []connect.Interceptor
 
 		sync.Mutex
 	}
@@ -43,9 +47,38 @@ func New(config *DialConfig) (Client, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	c := &client{
-		config: config,
+		config:       config,
+		interceptors: []connect.Interceptor{},
 	}
+
+	authInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
+		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
+			request.Header().Add("Authorization", "Bearer "+config.Token)
+			return next(ctx, request)
+		})
+	})
+
+	loggingInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
+		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
+			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
+			response, err := next(ctx, request)
+			if err != nil {
+				return nil, err
+			}
+			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
+			return response, err
+		})
+	})
+
+	if config.Token != "" {
+		c.interceptors = append(c.interceptors, authInterceptor)
+	}
+	if config.Debug {
+		c.interceptors = append(c.interceptors, loggingInterceptor)
+	}
+	c.interceptors = append(c.interceptors, config.Interceptors...)
 
 	go c.startTokenRenewal()
 
@@ -59,6 +92,7 @@ func (c *client) {{ $name | title }}() {{ $name | title }} {
 	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(
 		c.config.HttpClient(),
 		c.config.BaseURL,
+		connect.WithInterceptors(c.interceptors...),
 		compress.WithAll(compress.LevelBalanced),
 	),
 {{ end }}
