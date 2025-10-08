@@ -15,7 +15,6 @@ import (
 	"time"
 
 	"connectrpc.com/connect"
-	"github.com/davecgh/go-spew/spew"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/metal-stack/api/go/client"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
@@ -106,9 +105,6 @@ type mockVersionService struct {
 
 func (m *mockVersionService) Get(ctx context.Context, req *apiv2.VersionServiceGetRequest) (*apiv2.VersionServiceGetResponse, error) {
 	callinfo, _ := connect.CallInfoForHandlerContext(ctx)
-
-	spew.Dump(callinfo.RequestHeader())
-
 	authHeader := callinfo.RequestHeader().Get("Authorization")
 
 	_, token, found := strings.Cut(authHeader, "Bearer ")
