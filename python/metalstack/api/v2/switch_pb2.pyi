@@ -1,7 +1,7 @@
 import datetime
 
 from buf.validate import validate_pb2 as _validate_pb2
-from google.protobuf import duration_pb2 as _duration_pb2
+from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
@@ -133,10 +133,10 @@ class SwitchBGPPortState(_message.Message):
     peer_group: str
     vrf_name: str
     bgp_state: BGPState
-    bgp_timer_up_established: _duration_pb2.Duration
+    bgp_timer_up_established: _timestamp_pb2.Timestamp
     sent_prefix_counter: int
     accepted_prefix_counter: int
-    def __init__(self, neighbor: _Optional[str] = ..., peer_group: _Optional[str] = ..., vrf_name: _Optional[str] = ..., bgp_state: _Optional[_Union[BGPState, str]] = ..., bgp_timer_up_established: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., sent_prefix_counter: _Optional[int] = ..., accepted_prefix_counter: _Optional[int] = ...) -> None: ...
+    def __init__(self, neighbor: _Optional[str] = ..., peer_group: _Optional[str] = ..., vrf_name: _Optional[str] = ..., bgp_state: _Optional[_Union[BGPState, str]] = ..., bgp_timer_up_established: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., sent_prefix_counter: _Optional[int] = ..., accepted_prefix_counter: _Optional[int] = ...) -> None: ...
 
 class NicState(_message.Message):
     __slots__ = ("desired", "actual")

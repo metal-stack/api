@@ -10,7 +10,7 @@ import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -626,8 +626,8 @@ type SwitchBGPPortState struct {
 	VrfName string `protobuf:"bytes,3,opt,name=vrf_name,json=vrfName,proto3" json:"vrf_name,omitempty"`
 	// BGPState of the connection on this port.
 	BgpState BGPState `protobuf:"varint,4,opt,name=bgp_state,json=bgpState,proto3,enum=metalstack.api.v2.BGPState" json:"bgp_state,omitempty"`
-	// BGPTimerUpEstablished reports the uptime of this port's BGP connection.
-	BgpTimerUpEstablished *durationpb.Duration `protobuf:"bytes,5,opt,name=bgp_timer_up_established,json=bgpTimerUpEstablished,proto3" json:"bgp_timer_up_established,omitempty"`
+	// BGPTimerUpEstablished reports when this port's BGP connection was established.
+	BgpTimerUpEstablished *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=bgp_timer_up_established,json=bgpTimerUpEstablished,proto3" json:"bgp_timer_up_established,omitempty"`
 	// SentPrefixCounter counts the prefixes sent by the switch on this port.
 	SentPrefixCounter uint64 `protobuf:"varint,6,opt,name=sent_prefix_counter,json=sentPrefixCounter,proto3" json:"sent_prefix_counter,omitempty"`
 	// AcceptedPrefixCounter counts the prefixes received on this port.
@@ -694,7 +694,7 @@ func (x *SwitchBGPPortState) GetBgpState() BGPState {
 	return BGPState_BGP_STATE_UNSPECIFIED
 }
 
-func (x *SwitchBGPPortState) GetBgpTimerUpEstablished() *durationpb.Duration {
+func (x *SwitchBGPPortState) GetBgpTimerUpEstablished() *timestamppb.Timestamp {
 	if x != nil {
 		return x.BgpTimerUpEstablished
 	}
@@ -957,7 +957,7 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"\xfa\x04\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\"\xfa\x04\n" +
 	"\x06Switch\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12,\n" +
@@ -1005,7 +1005,7 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\tBGPFilter\x12\x14\n" +
 	"\x05cidrs\x18\x01 \x03(\tR\x05cidrs\x12#\n" +
 	"\x04vnis\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\"\ar\x05\x10\x02\x18\x80\x01R\x04vnis:J\xbaHG\x1aE\n" +
-	"\x05cidrs\x12\x19given cidrs must be valid\x1a!this.cidrs.all(m, m.isIpPrefix())\"\x8e\x03\n" +
+	"\x05cidrs\x12\x19given cidrs must be valid\x1a!this.cidrs.all(m, m.isIpPrefix())\"\x8f\x03\n" +
 	"\x12SwitchBGPPortState\x12&\n" +
 	"\bneighbor\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\bneighbor\x12)\n" +
@@ -1014,8 +1014,8 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpeerGroup\x12%\n" +
 	"\bvrf_name\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\avrfName\x12B\n" +
-	"\tbgp_state\x18\x04 \x01(\x0e2\x1b.metalstack.api.v2.BGPStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\bbgpState\x12R\n" +
-	"\x18bgp_timer_up_established\x18\x05 \x01(\v2\x19.google.protobuf.DurationR\x15bgpTimerUpEstablished\x12.\n" +
+	"\tbgp_state\x18\x04 \x01(\x0e2\x1b.metalstack.api.v2.BGPStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\bbgpState\x12S\n" +
+	"\x18bgp_timer_up_established\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\x15bgpTimerUpEstablished\x12.\n" +
 	"\x13sent_prefix_counter\x18\x06 \x01(\x04R\x11sentPrefixCounter\x126\n" +
 	"\x17accepted_prefix_counter\x18\a \x01(\x04R\x15acceptedPrefixCounter\"\x9a\x01\n" +
 	"\bNicState\x12G\n" +
@@ -1082,21 +1082,21 @@ func file_metalstack_api_v2_switch_proto_rawDescGZIP() []byte {
 var file_metalstack_api_v2_switch_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
 var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_metalstack_api_v2_switch_proto_goTypes = []any{
-	(BGPState)(0),               // 0: metalstack.api.v2.BGPState
-	(SwitchReplaceMode)(0),      // 1: metalstack.api.v2.SwitchReplaceMode
-	(SwitchOSVendor)(0),         // 2: metalstack.api.v2.SwitchOSVendor
-	(SwitchPortStatus)(0),       // 3: metalstack.api.v2.SwitchPortStatus
-	(*Switch)(nil),              // 4: metalstack.api.v2.Switch
-	(*SwitchOS)(nil),            // 5: metalstack.api.v2.SwitchOS
-	(*SwitchNic)(nil),           // 6: metalstack.api.v2.SwitchNic
-	(*BGPFilter)(nil),           // 7: metalstack.api.v2.BGPFilter
-	(*SwitchBGPPortState)(nil),  // 8: metalstack.api.v2.SwitchBGPPortState
-	(*NicState)(nil),            // 9: metalstack.api.v2.NicState
-	(*MachineConnection)(nil),   // 10: metalstack.api.v2.MachineConnection
-	(*SwitchQuery)(nil),         // 11: metalstack.api.v2.SwitchQuery
-	(*SwitchOSQuery)(nil),       // 12: metalstack.api.v2.SwitchOSQuery
-	(*Meta)(nil),                // 13: metalstack.api.v2.Meta
-	(*durationpb.Duration)(nil), // 14: google.protobuf.Duration
+	(BGPState)(0),                 // 0: metalstack.api.v2.BGPState
+	(SwitchReplaceMode)(0),        // 1: metalstack.api.v2.SwitchReplaceMode
+	(SwitchOSVendor)(0),           // 2: metalstack.api.v2.SwitchOSVendor
+	(SwitchPortStatus)(0),         // 3: metalstack.api.v2.SwitchPortStatus
+	(*Switch)(nil),                // 4: metalstack.api.v2.Switch
+	(*SwitchOS)(nil),              // 5: metalstack.api.v2.SwitchOS
+	(*SwitchNic)(nil),             // 6: metalstack.api.v2.SwitchNic
+	(*BGPFilter)(nil),             // 7: metalstack.api.v2.BGPFilter
+	(*SwitchBGPPortState)(nil),    // 8: metalstack.api.v2.SwitchBGPPortState
+	(*NicState)(nil),              // 9: metalstack.api.v2.NicState
+	(*MachineConnection)(nil),     // 10: metalstack.api.v2.MachineConnection
+	(*SwitchQuery)(nil),           // 11: metalstack.api.v2.SwitchQuery
+	(*SwitchOSQuery)(nil),         // 12: metalstack.api.v2.SwitchOSQuery
+	(*Meta)(nil),                  // 13: metalstack.api.v2.Meta
+	(*timestamppb.Timestamp)(nil), // 14: google.protobuf.Timestamp
 }
 var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	13, // 0: metalstack.api.v2.Switch.meta:type_name -> metalstack.api.v2.Meta
@@ -1109,7 +1109,7 @@ var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	7,  // 7: metalstack.api.v2.SwitchNic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
 	8,  // 8: metalstack.api.v2.SwitchNic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
 	0,  // 9: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
-	14, // 10: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Duration
+	14, // 10: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Timestamp
 	3,  // 11: metalstack.api.v2.NicState.desired:type_name -> metalstack.api.v2.SwitchPortStatus
 	3,  // 12: metalstack.api.v2.NicState.actual:type_name -> metalstack.api.v2.SwitchPortStatus
 	6,  // 13: metalstack.api.v2.MachineConnection.nic:type_name -> metalstack.api.v2.SwitchNic
