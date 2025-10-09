@@ -760,7 +760,7 @@ message MachineNicQuery {
     max_items: 100
     unique: true
     items: {
-      string: {macaddress: true}
+      string: {[metalstack.api.v2.macaddress]: true}
     }
   }];
   // Names this machine nic has
@@ -776,7 +776,7 @@ message MachineNicQuery {
     max_items: 100
     unique: true
     items: {
-      string: {macaddress: true}
+      string: {[metalstack.api.v2.macaddress]: true}
     }
   }];
   // NeighborNames this machine nic has

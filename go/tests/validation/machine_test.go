@@ -20,7 +20,7 @@ func TestValidateMachine(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
- - mac: this string must be a valid macaddress [string.macaddress]`,
+ - macs[0]: this string must be a valid macaddress [string.macaddress]`,
 		},
 		{
 			name: "MachineNicQuery with invalid and valid MACs mixed",
@@ -29,7 +29,7 @@ func TestValidateMachine(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
- - mac: this string must be a valid macaddress [string.macaddress]`,
+ - macs[0]: this string must be a valid macaddress [string.macaddress]`,
 		},
 		{
 			name: "MachineNicQuery with valid MACs mixed",

@@ -7,6 +7,7 @@ from metalstack.api.v2 import filesystem_pb2 as _filesystem_pb2
 from metalstack.api.v2 import image_pb2 as _image_pb2
 from metalstack.api.v2 import network_pb2 as _network_pb2
 from metalstack.api.v2 import partition_pb2 as _partition_pb2
+from metalstack.api.v2 import predefined_string_rules_pb2 as _predefined_string_rules_pb2
 from metalstack.api.v2 import size_pb2 as _size_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper

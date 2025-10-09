@@ -3377,7 +3377,7 @@ var File_metalstack_api_v2_machine_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/machine.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\x1a\x1dmetalstack/api/v2/image.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a!metalstack/api/v2/partition.proto\x1a\x1cmetalstack/api/v2/size.proto\"\\\n" +
+	"\x1fmetalstack/api/v2/machine.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\x1a\x1dmetalstack/api/v2/image.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a!metalstack/api/v2/partition.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"\\\n" +
 	"\x18MachineServiceGetRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
@@ -3533,10 +3533,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\athreads\x18\x04 \x01(\rR\athreads\"L\n" +
 	"\bMetalGPU\x12 \n" +
 	"\x06vendor\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06vendor\x12\x1e\n" +
-	"\x05model\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x05model\"\xae\x02\n" +
+	"\x05model\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x05model\"\x8a\x02\n" +
 	"\n" +
-	"MachineNic\x12A\n" +
-	"\x03mac\x18\x01 \x01(\tB/\xbaH,r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$R\x03mac\x12\x1e\n" +
+	"MachineNic\x12\x1d\n" +
+	"\x03mac\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x03mac\x12\x1e\n" +
 	"\x04name\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04name\x12(\n" +
 	"\n" +
@@ -3640,18 +3640,18 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x03ips\x18\x04 \x03(\tB6\xbaH3\x92\x010\".\xba\x01+\n" +
 	"\tvalid_ips\x12\x11ips must be valid\x1a\vthis.isIp()R\x03ips\x12\x12\n" +
 	"\x04vrfs\x18\x05 \x03(\x04R\x04vrfs\x12\x12\n" +
-	"\x04asns\x18\x06 \x03(\rR\x04asns\"\x99\x02\n" +
-	"\x0fMachineNicQuery\x12J\n" +
-	"\x04macs\x18\x01 \x03(\tB6\xbaH3\x92\x010\x10d\",r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$R\x04macs\x12%\n" +
-	"\x05names\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\x10d\"\x05r\x03\x18\x80\x01R\x05names\x12[\n" +
-	"\rneighbor_macs\x18\x03 \x03(\tB6\xbaH3\x92\x010\x10d\",r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$R\fneighborMacs\x126\n" +
-	"\x0eneighbor_names\x18\x04 \x03(\tB\x0f\xbaH\f\x92\x01\t\x10d\"\x05r\x03\x18\x80\x01R\rneighborNames\"Y\n" +
+	"\x04asns\x18\x06 \x03(\rR\x04asns\"\xd9\x01\n" +
+	"\x0fMachineNicQuery\x12(\n" +
+	"\x04macs\x18\x01 \x03(\tB\x14\xbaH\x11\x92\x01\x0e\x10d\x18\x01\"\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04macs\x12'\n" +
+	"\x05names\x18\x02 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x10d\x18\x01\"\x05r\x03\x18\x80\x01R\x05names\x129\n" +
+	"\rneighbor_macs\x18\x03 \x03(\tB\x14\xbaH\x11\x92\x01\x0e\x10d\x18\x01\"\br\x06\xc0\xb3\xae\xb1\x02\x01R\fneighborMacs\x128\n" +
+	"\x0eneighbor_names\x18\x04 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x10d\x18\x01\"\x05r\x03\x18\x80\x01R\rneighborNames\"Y\n" +
 	"\x10MachineDiskQuery\x12%\n" +
 	"\x05names\x18\x01 \x03(\tB\x0f\xbaH\f\x92\x01\t\x10d\"\x05r\x03\x18\x80\x01R\x05names\x12\x1e\n" +
-	"\x05sizes\x18\x02 \x03(\x04B\b\xbaH\x05\x92\x01\x02\x10dR\x05sizes\"\xfd\x01\n" +
+	"\x05sizes\x18\x02 \x03(\x04B\b\xbaH\x05\x92\x01\x02\x10dR\x05sizes\"\xd9\x01\n" +
 	"\x10MachineIPMIQuery\x12&\n" +
-	"\aaddress\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01H\x00R\aaddress\x88\x01\x01\x12F\n" +
-	"\x03mac\x18\x02 \x01(\tB/\xbaH,r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$H\x01R\x03mac\x88\x01\x01\x12!\n" +
+	"\aaddress\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01H\x00R\aaddress\x88\x01\x01\x12\"\n" +
+	"\x03mac\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x03mac\x88\x01\x01\x12!\n" +
 	"\x04user\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x02R\x04user\x88\x01\x01\x12+\n" +
 	"\tinterface\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x03R\tinterface\x88\x01\x01B\n" +
 	"\n" +
@@ -3896,6 +3896,7 @@ func file_metalstack_api_v2_machine_proto_init() {
 	file_metalstack_api_v2_image_proto_init()
 	file_metalstack_api_v2_network_proto_init()
 	file_metalstack_api_v2_partition_proto_init()
+	file_metalstack_api_v2_predefined_string_rules_proto_init()
 	file_metalstack_api_v2_size_proto_init()
 	file_metalstack_api_v2_machine_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[5].OneofWrappers = []any{}
