@@ -68,17 +68,11 @@ message NetworkServiceCreateRequest {
   // Project where this network belongs to
   string project = 1 [(buf.validate.field).string.uuid = true];
   // Name of this network
-  optional string name = 2 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this network will be created
-  optional string partition = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 4 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Labels on this network
   Labels labels = 5;
   // Parent Network points to the id of the parent network if any
@@ -110,12 +104,9 @@ message NetworkServiceUpdateRequest {
   // Project of the network
   string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this network
-  optional string name = 4 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Labels on this network
   optional UpdateLabels labels = 6;
 }
@@ -181,17 +172,11 @@ message Network {
   // Meta for this network
   Meta meta = 2;
   // Name of this network
-  optional string name = 3 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this network will be created
-  optional string partition = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 5 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Project where this network belongs to
   optional string project = 6 [(buf.validate.field).string.uuid = true];
   // Namespace if specified, this network is namespaced and can therefore overlap with others
@@ -245,17 +230,11 @@ message NetworkQuery {
     max_len: 128
   }];
   // Name of this network
-  optional string name = 2 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this network will be created
-  optional string partition = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 4 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Project where this network belongs to
   optional string project = 5 [(buf.validate.field).string.uuid = true];
   // Namespace where this network belongs to

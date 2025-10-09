@@ -86,11 +86,11 @@ message Tenant {
   // Meta for this tenant
   Meta meta = 2;
   // Name of the tenant
-  string name = 3 [(buf.validate.field).string.(is_name) = true];
+  string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Email of the tenant
   string email = 4;
   // Description of this tenant
-  string description = 5;
+  string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // AvatarUrl of the tenant
   string avatar_url = 6;
   // CreatedBy stores who created this tenant
@@ -136,7 +136,7 @@ message TenantServiceListRequest {
   // Id filters tenants by id
   optional string id = 1;
   // Name filters tenants by name
-  optional string name = 2 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Labels lists only projects containing the given labels
   optional Labels labels = 3;
 }
@@ -150,12 +150,9 @@ message TenantServiceGetRequest {
 // TenantServiceCreateRequest is the request payload of the tenant create request
 message TenantServiceCreateRequest {
   // Name of this tenant
-  string name = 1 [(buf.validate.field).string.(is_name) = true];
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this tenant
-  optional string description = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  optional string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Email of the tenant, if not set will be inherited from the creator
   optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant
@@ -171,14 +168,11 @@ message TenantServiceUpdateRequest {
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of the tenant
-  optional string name = 3 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Email of the tenant
   optional string email = 4 [(buf.validate.field).string.email = true];
   // Description of this tenant
-  optional string description = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // AvatarUrl of the tenant
   optional string avatar_url = 6;
   // Labels on the tenant

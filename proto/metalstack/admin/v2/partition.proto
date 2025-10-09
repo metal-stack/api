@@ -5,6 +5,7 @@ package metalstack.admin.v2;
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/partition.proto";
+import "metalstack/api/v2/predefined_string_rules.proto";
 
 // PartitionService serves partition address related functions
 service PartitionService {
@@ -47,7 +48,7 @@ message PartitionServiceUpdateRequest {
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Description of this partition
-  optional string description = 3 [(buf.validate.field).string = {max_len: 128}];
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // PartitionBootConfiguration defines how metal-hammer boots
   metalstack.api.v2.PartitionBootConfiguration boot_configuration = 4;
   // DNSServers for this partition

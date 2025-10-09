@@ -63,15 +63,9 @@ message NetworkServiceCreateRequest {
   // Name of this network
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this network will be created
-  optional string partition = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 4 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Project where this network belongs to
   optional string project = 5 [(buf.validate.field).string.uuid = true];
   // Type of the network to create
@@ -130,10 +124,7 @@ message NetworkServiceUpdateRequest {
   // Name of this network
   optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Labels to update on this network
   optional metalstack.api.v2.UpdateLabels labels = 5;
 

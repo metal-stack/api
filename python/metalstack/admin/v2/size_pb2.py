@@ -28,7 +28,7 @@ from metalstack.api.v2 import predefined_string_rules_pb2 as metalstack_dot_api_
 from metalstack.api.v2 import size_pb2 as metalstack_dot_api_dot_v2_dot_size__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1emetalstack/admin/v2/size.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"G\n\x18SizeServiceCreateRequest\x12+\n\x04size\x18\x01 \x01(\x0b\x32\x17.metalstack.api.v2.SizeR\x04size\"H\n\x19SizeServiceCreateResponse\x12+\n\x04size\x18\x01 \x01(\x0b\x32\x17.metalstack.api.v2.SizeR\x04size\"\xfe\x02\n\x18SizeServiceUpdateRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\x12\x46\n\x0bupdate_meta\x18\x02 \x01(\x0b\x32\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\nupdateMeta\x12$\n\x04name\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x12\x31\n\x0b\x64\x65scription\x18\x04 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x01R\x0b\x64\x65scription\x88\x01\x01\x12\x43\n\x0b\x63onstraints\x18\x05 \x03(\x0b\x32!.metalstack.api.v2.SizeConstraintR\x0b\x63onstraints\x12<\n\x06labels\x18\x06 \x01(\x0b\x32\x1f.metalstack.api.v2.UpdateLabelsH\x02R\x06labels\x88\x01\x01\x42\x07\n\x05_nameB\x0e\n\x0c_descriptionB\t\n\x07_labels\"H\n\x19SizeServiceUpdateResponse\x12+\n\x04size\x18\x01 \x01(\x0b\x32\x17.metalstack.api.v2.SizeR\x04size\"6\n\x18SizeServiceDeleteRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"H\n\x19SizeServiceDeleteResponse\x12+\n\x04size\x18\x01 \x01(\x0b\x32\x17.metalstack.api.v2.SizeR\x04size2\xe0\x02\n\x0bSizeService\x12o\n\x06\x43reate\x12-.metalstack.admin.v2.SizeServiceCreateRequest\x1a..metalstack.admin.v2.SizeServiceCreateResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12o\n\x06Update\x12-.metalstack.admin.v2.SizeServiceUpdateRequest\x1a..metalstack.admin.v2.SizeServiceUpdateResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12o\n\x06\x44\x65lete\x12-.metalstack.admin.v2.SizeServiceDeleteRequest\x1a..metalstack.admin.v2.SizeServiceDeleteResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x42\xcd\x01\n\x17\x63om.metalstack.admin.v2B\tSizeProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1emetalstack/admin/v2/size.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"G\n\x18SizeServiceCreateRequest\x12+\n\x04size\x18\x01 \x01(\x0b\x32\x17.metalstack.api.v2.SizeR\x04size\"H\n\x19SizeServiceCreateResponse\x12+\n\x04size\x18\x01 \x01(\x0b\x32\x17.metalstack.api.v2.SizeR\x04size\"\xff\x02\n\x18SizeServiceUpdateRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\x12\x46\n\x0bupdate_meta\x18\x02 \x01(\x0b\x32\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\nupdateMeta\x12$\n\x04name\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x12\x32\n\x0b\x64\x65scription\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x01R\x0b\x64\x65scription\x88\x01\x01\x12\x43\n\x0b\x63onstraints\x18\x05 \x03(\x0b\x32!.metalstack.api.v2.SizeConstraintR\x0b\x63onstraints\x12<\n\x06labels\x18\x06 \x01(\x0b\x32\x1f.metalstack.api.v2.UpdateLabelsH\x02R\x06labels\x88\x01\x01\x42\x07\n\x05_nameB\x0e\n\x0c_descriptionB\t\n\x07_labels\"H\n\x19SizeServiceUpdateResponse\x12+\n\x04size\x18\x01 \x01(\x0b\x32\x17.metalstack.api.v2.SizeR\x04size\"6\n\x18SizeServiceDeleteRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"H\n\x19SizeServiceDeleteResponse\x12+\n\x04size\x18\x01 \x01(\x0b\x32\x17.metalstack.api.v2.SizeR\x04size2\xe0\x02\n\x0bSizeService\x12o\n\x06\x43reate\x12-.metalstack.admin.v2.SizeServiceCreateRequest\x1a..metalstack.admin.v2.SizeServiceCreateResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12o\n\x06Update\x12-.metalstack.admin.v2.SizeServiceUpdateRequest\x1a..metalstack.admin.v2.SizeServiceUpdateResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12o\n\x06\x44\x65lete\x12-.metalstack.admin.v2.SizeServiceDeleteRequest\x1a..metalstack.admin.v2.SizeServiceDeleteResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x42\xcd\x01\n\x17\x63om.metalstack.admin.v2B\tSizeProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -43,7 +43,7 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_SIZESERVICEUPDATEREQUEST'].fields_by_name['name']._loaded_options = None
   _globals['_SIZESERVICEUPDATEREQUEST'].fields_by_name['name']._serialized_options = b'\272H\010r\006\300\263\256\261\002\001'
   _globals['_SIZESERVICEUPDATEREQUEST'].fields_by_name['description']._loaded_options = None
-  _globals['_SIZESERVICEUPDATEREQUEST'].fields_by_name['description']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
+  _globals['_SIZESERVICEUPDATEREQUEST'].fields_by_name['description']._serialized_options = b'\272H\010r\006\310\263\256\261\002\001'
   _globals['_SIZESERVICEDELETEREQUEST'].fields_by_name['id']._loaded_options = None
   _globals['_SIZESERVICEDELETEREQUEST'].fields_by_name['id']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
   _globals['_SIZESERVICE'].methods_by_name['Create']._loaded_options = None
@@ -57,13 +57,13 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_SIZESERVICECREATERESPONSE']._serialized_start=268
   _globals['_SIZESERVICECREATERESPONSE']._serialized_end=340
   _globals['_SIZESERVICEUPDATEREQUEST']._serialized_start=343
-  _globals['_SIZESERVICEUPDATEREQUEST']._serialized_end=725
-  _globals['_SIZESERVICEUPDATERESPONSE']._serialized_start=727
-  _globals['_SIZESERVICEUPDATERESPONSE']._serialized_end=799
-  _globals['_SIZESERVICEDELETEREQUEST']._serialized_start=801
-  _globals['_SIZESERVICEDELETEREQUEST']._serialized_end=855
-  _globals['_SIZESERVICEDELETERESPONSE']._serialized_start=857
-  _globals['_SIZESERVICEDELETERESPONSE']._serialized_end=929
-  _globals['_SIZESERVICE']._serialized_start=932
-  _globals['_SIZESERVICE']._serialized_end=1284
+  _globals['_SIZESERVICEUPDATEREQUEST']._serialized_end=726
+  _globals['_SIZESERVICEUPDATERESPONSE']._serialized_start=728
+  _globals['_SIZESERVICEUPDATERESPONSE']._serialized_end=800
+  _globals['_SIZESERVICEDELETEREQUEST']._serialized_start=802
+  _globals['_SIZESERVICEDELETEREQUEST']._serialized_end=856
+  _globals['_SIZESERVICEDELETERESPONSE']._serialized_start=858
+  _globals['_SIZESERVICEDELETERESPONSE']._serialized_end=930
+  _globals['_SIZESERVICE']._serialized_start=933
+  _globals['_SIZESERVICE']._serialized_end=1285
 # @@protoc_insertion_point(module_scope)

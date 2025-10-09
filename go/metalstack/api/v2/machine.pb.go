@@ -497,7 +497,7 @@ type MachineServiceCreateRequest struct {
 	// Name of this machine
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Description for this machine
-	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
+	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Hostname the hostname for the allocated machine (defaults to metal)
 	Hostname *string `protobuf:"bytes,5,opt,name=hostname,proto3,oneof" json:"hostname,omitempty"`
 	// Partition the partition id to assign this machine to
@@ -588,8 +588,8 @@ func (x *MachineServiceCreateRequest) GetName() string {
 }
 
 func (x *MachineServiceCreateRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
+	if x != nil && x.Description != nil {
+		return *x.Description
 	}
 	return ""
 }
@@ -3382,20 +3382,20 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xb1\b\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xcc\b\n" +
 	"\x1bMachineServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12!\n" +
 	"\x04uuid\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12\x1f\n" +
-	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12*\n" +
-	"\vdescription\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\vdescription\x12(\n" +
-	"\bhostname\x18\x05 \x01(\tB\a\xbaH\x04r\x02h\x01H\x01R\bhostname\x88\x01\x01\x12&\n" +
-	"\tpartition\x18\x06 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\tpartition\x12\x1c\n" +
+	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x122\n" +
+	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12(\n" +
+	"\bhostname\x18\x05 \x01(\tB\a\xbaH\x04r\x02h\x01H\x02R\bhostname\x88\x01\x01\x12)\n" +
+	"\tpartition\x18\x06 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12\x1c\n" +
 	"\x04size\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x04size\x12\x1e\n" +
 	"\x05image\x18\b \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x05image\x120\n" +
-	"\x11filesystem_layout\x18\t \x01(\tH\x02R\x10filesystemLayout\x88\x01\x01\x129\n" +
+	"\x11filesystem_layout\x18\t \x01(\tH\x03R\x10filesystemLayout\x88\x01\x01\x129\n" +
 	"\x0fssh_public_keys\x18\n" +
 	" \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x12*\n" +
-	"\buserdata\x18\v \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80\x02H\x03R\buserdata\x88\x01\x01\x121\n" +
+	"\buserdata\x18\v \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80\x02H\x04R\buserdata\x88\x01\x01\x121\n" +
 	"\x06labels\x18\f \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12G\n" +
 	"\bnetworks\x18\r \x03(\v2+.metalstack.api.v2.MachineAllocationNetworkR\bnetworks\x12H\n" +
 	"\x03ips\x18\x0e \x03(\tB6\xbaH3\x92\x010\".\xba\x01+\n" +
@@ -3408,20 +3408,21 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"R\tntpServer\x12[\n" +
 	"\x0fallocation_type\x18\x12 \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0eallocationType\x12D\n" +
 	"\rfirewall_spec\x18\x13 \x01(\v2\x1f.metalstack.api.v2.FirewallSpecR\ffirewallSpecB\a\n" +
-	"\x05_uuidB\v\n" +
+	"\x05_uuidB\x0e\n" +
+	"\f_descriptionB\v\n" +
 	"\t_hostnameB\x14\n" +
 	"\x12_filesystem_layoutB\v\n" +
 	"\t_userdata\"W\n" +
 	"\fFirewallSpec\x12G\n" +
 	"\x0efirewall_rules\x18\x13 \x01(\v2 .metalstack.api.v2.FirewallRulesR\rfirewallRules\"T\n" +
 	"\x1cMachineServiceCreateResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xec\x02\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xef\x02\n" +
 	"\x1bMachineServiceUpdateRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
 	"updateMeta\x12\"\n" +
-	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12/\n" +
-	"\vdescription\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x00R\vdescription\x88\x01\x01\x12<\n" +
+	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x122\n" +
+	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12<\n" +
 	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01\x129\n" +
 	"\x0fssh_public_keys\x18\x06 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeysB\x0e\n" +
 	"\f_descriptionB\t\n" +
@@ -3458,16 +3459,16 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\n" +
 	"liveliness\x18\x03 \x01(\x0e2$.metalstack.api.v2.MachineLivelinessB\b\xbaH\x05\x82\x01\x02\x10\x01R\n" +
 	"liveliness\x120\n" +
-	"\x14metal_hammer_version\x18\x04 \x01(\tR\x12metalHammerVersion\"\xa1\x01\n" +
+	"\x14metal_hammer_version\x18\x04 \x01(\tR\x12metalHammerVersion\"\xa4\x01\n" +
 	"\x10MachineCondition\x12?\n" +
-	"\x05state\x18\x01 \x01(\x0e2\x1f.metalstack.api.v2.MachineStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05state\x12*\n" +
-	"\vdescription\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\vdescription\x12 \n" +
-	"\x06issuer\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06issuer\"\xa5\a\n" +
+	"\x05state\x18\x01 \x01(\x0e2\x1f.metalstack.api.v2.MachineStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05state\x12-\n" +
+	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12 \n" +
+	"\x06issuer\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06issuer\"\xa8\a\n" +
 	"\x11MachineAllocation\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x1f\n" +
-	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12*\n" +
-	"\vdescription\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\vdescription\x12'\n" +
+	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12-\n" +
+	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12'\n" +
 	"\n" +
 	"created_by\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\tcreatedBy\x12\"\n" +
 	"\aproject\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12.\n" +
@@ -3547,10 +3548,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\tneighbors\x18\a \x03(\v2\x1d.metalstack.api.v2.MachineNicR\tneighbors\"I\n" +
 	"\x12MachineBlockDevice\x12\x1f\n" +
 	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12\x12\n" +
-	"\x04size\x18\x02 \x01(\x04R\x04size\"l\n" +
+	"\x04size\x18\x02 \x01(\x04R\x04size\"o\n" +
 	"\x1eMachineChassisIdentifyLEDState\x12\x1e\n" +
-	"\x05value\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x05value\x12*\n" +
-	"\vdescription\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\vdescription\"q\n" +
+	"\x05value\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x05value\x12-\n" +
+	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\"q\n" +
 	"\vMachineBios\x12\"\n" +
 	"\aversion\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\aversion\x12 \n" +
 	"\x06vendor\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06vendor\x12\x1c\n" +

@@ -24,9 +24,10 @@ _sym_db = _symbol_database.Default()
 
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
+from metalstack.api.v2 import predefined_string_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__string__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"\xa2\x03\n\tPartition\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\x12+\n\x04meta\x18\x02 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\x12*\n\x0b\x64\x65scription\x18\x03 \x01(\tB\x08\xbaH\x05r\x03\x18\x80\x01R\x0b\x64\x65scription\x12\\\n\x12\x62oot_configuration\x18\x04 \x01(\x0b\x32-.metalstack.api.v2.PartitionBootConfigurationR\x11\x62ootConfiguration\x12\x45\n\ndns_server\x18\x05 \x03(\x0b\x32\x1c.metalstack.api.v2.DNSServerB\x08\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12\x45\n\nntp_server\x18\x06 \x03(\x0b\x32\x1c.metalstack.api.v2.NTPServerB\x08\xbaH\x05\x92\x01\x02\x10\nR\tntpServer\x12\x34\n\x16mgmt_service_addresses\x18\x07 \x03(\tR\x14mgmtServiceAddresses\"{\n\x0ePartitionQuery\x12\x1f\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12\x36\n\x06labels\x18\x02 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01\x42\x05\n\x03_idB\t\n\x07_labels\"\xee\x01\n\x1aPartitionBootConfiguration\x12U\n\timage_url\x18\x01 \x01(\tB8\xbaH5\xba\x01\x32\n\tvalid_url\x12\x17url must be a valid URI\x1a\x0cthis.isUri()R\x08imageUrl\x12W\n\nkernel_url\x18\x02 \x01(\tB8\xbaH5\xba\x01\x32\n\tvalid_url\x12\x17url must be a valid URI\x1a\x0cthis.isUri()R\tkernelUrl\x12 \n\x0b\x63ommandline\x18\x03 \x01(\tR\x0b\x63ommandline\"$\n\tDNSServer\x12\x17\n\x02ip\x18\x01 \x01(\tB\x07\xbaH\x04r\x02p\x01R\x02ip\"/\n\tNTPServer\x12\"\n\x07\x61\x64\x64ress\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\x18\x80\x02R\x07\x61\x64\x64ress\"8\n\x1aPartitionServiceGetRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"V\n\x1bPartitionServiceListRequest\x12\x37\n\x05query\x18\x01 \x01(\x0b\x32!.metalstack.api.v2.PartitionQueryR\x05query\"Y\n\x1bPartitionServiceGetResponse\x12:\n\tpartition\x18\x01 \x01(\x0b\x32\x1c.metalstack.api.v2.PartitionR\tpartition\"\\\n\x1cPartitionServiceListResponse\x12<\n\npartitions\x18\x01 \x03(\x0b\x32\x1c.metalstack.api.v2.PartitionR\npartitions2\xf5\x01\n\x10PartitionService\x12n\n\x03Get\x12-.metalstack.api.v2.PartitionServiceGetRequest\x1a..metalstack.api.v2.PartitionServiceGetResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12q\n\x04List\x12..metalstack.api.v2.PartitionServiceListRequest\x1a/.metalstack.api.v2.PartitionServiceListResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x42\xc4\x01\n\x15\x63om.metalstack.api.v2B\x0ePartitionProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"\xa5\x03\n\tPartition\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\x12+\n\x04meta\x18\x02 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\x12-\n\x0b\x64\x65scription\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x0b\x64\x65scription\x12\\\n\x12\x62oot_configuration\x18\x04 \x01(\x0b\x32-.metalstack.api.v2.PartitionBootConfigurationR\x11\x62ootConfiguration\x12\x45\n\ndns_server\x18\x05 \x03(\x0b\x32\x1c.metalstack.api.v2.DNSServerB\x08\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12\x45\n\nntp_server\x18\x06 \x03(\x0b\x32\x1c.metalstack.api.v2.NTPServerB\x08\xbaH\x05\x92\x01\x02\x10\nR\tntpServer\x12\x34\n\x16mgmt_service_addresses\x18\x07 \x03(\tR\x14mgmtServiceAddresses\"{\n\x0ePartitionQuery\x12\x1f\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12\x36\n\x06labels\x18\x02 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01\x42\x05\n\x03_idB\t\n\x07_labels\"\xee\x01\n\x1aPartitionBootConfiguration\x12U\n\timage_url\x18\x01 \x01(\tB8\xbaH5\xba\x01\x32\n\tvalid_url\x12\x17url must be a valid URI\x1a\x0cthis.isUri()R\x08imageUrl\x12W\n\nkernel_url\x18\x02 \x01(\tB8\xbaH5\xba\x01\x32\n\tvalid_url\x12\x17url must be a valid URI\x1a\x0cthis.isUri()R\tkernelUrl\x12 \n\x0b\x63ommandline\x18\x03 \x01(\tR\x0b\x63ommandline\"$\n\tDNSServer\x12\x17\n\x02ip\x18\x01 \x01(\tB\x07\xbaH\x04r\x02p\x01R\x02ip\"/\n\tNTPServer\x12\"\n\x07\x61\x64\x64ress\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\x18\x80\x02R\x07\x61\x64\x64ress\"8\n\x1aPartitionServiceGetRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"V\n\x1bPartitionServiceListRequest\x12\x37\n\x05query\x18\x01 \x01(\x0b\x32!.metalstack.api.v2.PartitionQueryR\x05query\"Y\n\x1bPartitionServiceGetResponse\x12:\n\tpartition\x18\x01 \x01(\x0b\x32\x1c.metalstack.api.v2.PartitionR\tpartition\"\\\n\x1cPartitionServiceListResponse\x12<\n\npartitions\x18\x01 \x03(\x0b\x32\x1c.metalstack.api.v2.PartitionR\npartitions2\xf5\x01\n\x10PartitionService\x12n\n\x03Get\x12-.metalstack.api.v2.PartitionServiceGetRequest\x1a..metalstack.api.v2.PartitionServiceGetResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12q\n\x04List\x12..metalstack.api.v2.PartitionServiceListRequest\x1a/.metalstack.api.v2.PartitionServiceListResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x42\xc4\x01\n\x15\x63om.metalstack.api.v2B\x0ePartitionProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -37,7 +38,7 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_PARTITION'].fields_by_name['id']._loaded_options = None
   _globals['_PARTITION'].fields_by_name['id']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
   _globals['_PARTITION'].fields_by_name['description']._loaded_options = None
-  _globals['_PARTITION'].fields_by_name['description']._serialized_options = b'\272H\005r\003\030\200\001'
+  _globals['_PARTITION'].fields_by_name['description']._serialized_options = b'\272H\010r\006\310\263\256\261\002\001'
   _globals['_PARTITION'].fields_by_name['dns_server']._loaded_options = None
   _globals['_PARTITION'].fields_by_name['dns_server']._serialized_options = b'\272H\005\222\001\002\020\003'
   _globals['_PARTITION'].fields_by_name['ntp_server']._loaded_options = None
@@ -58,24 +59,24 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_PARTITIONSERVICE'].methods_by_name['Get']._serialized_options = b'\330\363\030\003\340\363\030\002'
   _globals['_PARTITIONSERVICE'].methods_by_name['List']._loaded_options = None
   _globals['_PARTITIONSERVICE'].methods_by_name['List']._serialized_options = b'\330\363\030\003\340\363\030\002'
-  _globals['_PARTITION']._serialized_start=118
-  _globals['_PARTITION']._serialized_end=536
-  _globals['_PARTITIONQUERY']._serialized_start=538
-  _globals['_PARTITIONQUERY']._serialized_end=661
-  _globals['_PARTITIONBOOTCONFIGURATION']._serialized_start=664
-  _globals['_PARTITIONBOOTCONFIGURATION']._serialized_end=902
-  _globals['_DNSSERVER']._serialized_start=904
-  _globals['_DNSSERVER']._serialized_end=940
-  _globals['_NTPSERVER']._serialized_start=942
-  _globals['_NTPSERVER']._serialized_end=989
-  _globals['_PARTITIONSERVICEGETREQUEST']._serialized_start=991
-  _globals['_PARTITIONSERVICEGETREQUEST']._serialized_end=1047
-  _globals['_PARTITIONSERVICELISTREQUEST']._serialized_start=1049
-  _globals['_PARTITIONSERVICELISTREQUEST']._serialized_end=1135
-  _globals['_PARTITIONSERVICEGETRESPONSE']._serialized_start=1137
-  _globals['_PARTITIONSERVICEGETRESPONSE']._serialized_end=1226
-  _globals['_PARTITIONSERVICELISTRESPONSE']._serialized_start=1228
-  _globals['_PARTITIONSERVICELISTRESPONSE']._serialized_end=1320
-  _globals['_PARTITIONSERVICE']._serialized_start=1323
-  _globals['_PARTITIONSERVICE']._serialized_end=1568
+  _globals['_PARTITION']._serialized_start=167
+  _globals['_PARTITION']._serialized_end=588
+  _globals['_PARTITIONQUERY']._serialized_start=590
+  _globals['_PARTITIONQUERY']._serialized_end=713
+  _globals['_PARTITIONBOOTCONFIGURATION']._serialized_start=716
+  _globals['_PARTITIONBOOTCONFIGURATION']._serialized_end=954
+  _globals['_DNSSERVER']._serialized_start=956
+  _globals['_DNSSERVER']._serialized_end=992
+  _globals['_NTPSERVER']._serialized_start=994
+  _globals['_NTPSERVER']._serialized_end=1041
+  _globals['_PARTITIONSERVICEGETREQUEST']._serialized_start=1043
+  _globals['_PARTITIONSERVICEGETREQUEST']._serialized_end=1099
+  _globals['_PARTITIONSERVICELISTREQUEST']._serialized_start=1101
+  _globals['_PARTITIONSERVICELISTREQUEST']._serialized_end=1187
+  _globals['_PARTITIONSERVICEGETRESPONSE']._serialized_start=1189
+  _globals['_PARTITIONSERVICEGETRESPONSE']._serialized_end=1278
+  _globals['_PARTITIONSERVICELISTRESPONSE']._serialized_start=1280
+  _globals['_PARTITIONSERVICELISTRESPONSE']._serialized_end=1372
+  _globals['_PARTITIONSERVICE']._serialized_start=1375
+  _globals['_PARTITIONSERVICE']._serialized_end=1620
 # @@protoc_insertion_point(module_scope)

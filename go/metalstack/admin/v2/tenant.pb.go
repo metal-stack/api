@@ -274,11 +274,10 @@ var File_metalstack_admin_v2_tenant_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xe1\x01\n" +
+	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xe2\x01\n" +
 	"\x1aTenantServiceCreateRequest\x12\x1f\n" +
-	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x121\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x00R\vdescription\x88\x01\x01\x12\"\n" +
+	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x122\n" +
+	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12\"\n" +
 	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x12\"\n" +
 	"\n" +
 	"avatar_url\x18\x04 \x01(\tH\x02R\tavatarUrl\x88\x01\x01B\x0e\n" +

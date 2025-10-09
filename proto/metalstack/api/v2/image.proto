@@ -85,12 +85,9 @@ message Image {
     expression: "this.isUri()"
   }];
   // Name of this imageLayout
-  optional string name = 4 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this imageLayout
-  optional string description = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Features of this image
   repeated ImageFeature features = 6 [(buf.validate.field).repeated = {
     min_items: 1
@@ -137,12 +134,9 @@ message ImageQuery {
     max_len: 128
   }];
   // Name of the image to query
-  optional string name = 4 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of the image to query
-  optional string description = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Url of the image to query
   optional string url = 6 [(buf.validate.field).cel = {
     id: "valid_url"

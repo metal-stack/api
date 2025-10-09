@@ -522,12 +522,12 @@ var File_metalstack_api_v2_partition_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"\xa2\x03\n" +
+	"!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"\xa5\x03\n" +
 	"\tPartition\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12+\n" +
-	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12*\n" +
-	"\vdescription\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\vdescription\x12\\\n" +
+	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12-\n" +
+	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12\\\n" +
 	"\x12boot_configuration\x18\x04 \x01(\v2-.metalstack.api.v2.PartitionBootConfigurationR\x11bootConfiguration\x12E\n" +
 	"\n" +
 	"dns_server\x18\x05 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12E\n" +
@@ -620,6 +620,7 @@ func file_metalstack_api_v2_partition_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
+	file_metalstack_api_v2_predefined_string_rules_proto_init()
 	file_metalstack_api_v2_partition_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

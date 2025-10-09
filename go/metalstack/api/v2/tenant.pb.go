@@ -1577,13 +1577,13 @@ var File_metalstack_api_v2_tenant_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/tenant.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"\xe2\x01\n" +
+	"\x1emetalstack/api/v2/tenant.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"\xef\x01\n" +
 	"\x06Tenant\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x1f\n" +
 	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12\x14\n" +
-	"\x05email\x18\x04 \x01(\tR\x05email\x12 \n" +
-	"\vdescription\x18\x05 \x01(\tR\vdescription\x12\x1d\n" +
+	"\x05email\x18\x04 \x01(\tR\x05email\x12-\n" +
+	"\vdescription\x18\x05 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12\x1d\n" +
 	"\n" +
 	"avatar_url\x18\x06 \x01(\tR\tavatarUrl\x12\x1d\n" +
 	"\n" +
@@ -1616,26 +1616,24 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\x05_nameB\t\n" +
 	"\a_labels\"/\n" +
 	"\x17TenantServiceGetRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\"\x94\x02\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\"\x95\x02\n" +
 	"\x1aTenantServiceCreateRequest\x12\x1f\n" +
-	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x121\n" +
-	"\vdescription\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x00R\vdescription\x88\x01\x01\x12\"\n" +
+	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x122\n" +
+	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12\"\n" +
 	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x12\"\n" +
 	"\n" +
 	"avatar_url\x18\x04 \x01(\tH\x02R\tavatarUrl\x88\x01\x01\x121\n" +
 	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labelsB\x0e\n" +
 	"\f_descriptionB\b\n" +
 	"\x06_emailB\r\n" +
-	"\v_avatar_url\"\x96\x03\n" +
+	"\v_avatar_url\"\x97\x03\n" +
 	"\x1aTenantServiceUpdateRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
 	"updateMeta\x12$\n" +
 	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x12\"\n" +
-	"\x05email\x18\x04 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x121\n" +
-	"\vdescription\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x02R\vdescription\x88\x01\x01\x12\"\n" +
+	"\x05email\x18\x04 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x122\n" +
+	"\vdescription\x18\x05 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x02R\vdescription\x88\x01\x01\x12\"\n" +
 	"\n" +
 	"avatar_url\x18\x06 \x01(\tH\x03R\tavatarUrl\x88\x01\x01\x12<\n" +
 	"\x06labels\x18\a \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x04R\x06labels\x88\x01\x01B\a\n" +

@@ -122,7 +122,7 @@ type MachineServiceListRequest struct {
 	Query *v2.MachineQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	// Partition for which machines should be listed, could be left empty if only one partition is present
 	// otherwise an error is thrown that the partition must be specified
-	Partition     string `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
+	Partition     *string `protobuf:"bytes,2,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -165,8 +165,8 @@ func (x *MachineServiceListRequest) GetQuery() *v2.MachineQuery {
 }
 
 func (x *MachineServiceListRequest) GetPartition() string {
-	if x != nil {
-		return x.Partition
+	if x != nil && x.Partition != nil {
+		return *x.Partition
 	}
 	return ""
 }
@@ -221,14 +221,16 @@ var File_metalstack_admin_v2_machine_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_machine_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/machine.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"8\n" +
+	"!metalstack/admin/v2/machine.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"8\n" +
 	"\x18MachineServiceGetRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"z\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\x90\x01\n" +
 	"\x19MachineServiceListRequest\x125\n" +
-	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\x05query\x12&\n" +
-	"\tpartition\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\tpartition\"T\n" +
+	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\x05query\x12.\n" +
+	"\tpartition\x18\x02 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x00R\tpartition\x88\x01\x01B\f\n" +
+	"\n" +
+	"_partition\"T\n" +
 	"\x1aMachineServiceListResponse\x126\n" +
 	"\bmachines\x18\x01 \x03(\v2\x1a.metalstack.api.v2.MachineR\bmachines2\xf7\x01\n" +
 	"\x0eMachineService\x12p\n" +
@@ -279,6 +281,7 @@ func file_metalstack_admin_v2_machine_proto_init() {
 	if File_metalstack_admin_v2_machine_proto != nil {
 		return
 	}
+	file_metalstack_admin_v2_machine_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

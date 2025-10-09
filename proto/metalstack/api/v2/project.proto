@@ -83,9 +83,9 @@ message Project {
   // Meta for this project
   Meta meta = 2;
   // Name of this project must be unique per tenant
-  string name = 3 [(buf.validate.field).string.(is_name) = true];
+  string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this project
-  string description = 4;
+  string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Tenant this project belongs to
   string tenant = 5;
   // AvatarUrl of the Project
@@ -133,7 +133,7 @@ message ProjectServiceListRequest {
   // Id lists only projects with this id
   optional string id = 1;
   // Name lists only projects with this name
-  optional string name = 2 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Tenant lists only projects of this tenant
   optional string tenant = 3 [(buf.validate.field).string = {
     min_len: 2
@@ -172,12 +172,9 @@ message ProjectServiceCreateRequest {
     max_len: 128
   }];
   // Name of this project, unique per tenant
-  string name = 2 [(buf.validate.field).string.(is_name) = true];
+  string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this project
-  string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Avatar URL of the project
   optional string avatar_url = 4;
   // Labels on the project
@@ -209,12 +206,9 @@ message ProjectServiceUpdateRequest {
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of this project unique per tenant
-  optional string name = 3 [(buf.validate.field).string.(is_name) = true];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this project
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Avatar URL of the project
   optional string avatar_url = 5;
   // Labels on this project

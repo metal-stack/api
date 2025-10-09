@@ -25,10 +25,7 @@ message TenantServiceCreateRequest {
   // Name of this tenant
   string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this tenant
-  optional string description = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  optional string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Email of the tenant, if not set will be inherited from the creator
   optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant

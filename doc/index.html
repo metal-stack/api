@@ -442,6 +442,10 @@
                   <a href="#metalstack%2fapi%2fv2%2fpredefined_string_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_string_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
               
             </ul>
           </li>
@@ -7058,6 +7062,14 @@ having a direct membership within the tenant.</p></td>
               </tr>
             
               <tr>
+                <td>is_partition</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048954</td>
+                <td><p>IsPartition returns true if partition field satisfies our requirements</p></td>
+              </tr>
+            
+              <tr>
                 <td>macaddress</td>
                 <td><a href="#bool">bool</a></td>
                 <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
@@ -12660,7 +12672,7 @@ this field overrules size and partition </p></td>
                 <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>Description for this machine </p></td>
                 </tr>
               
@@ -13582,7 +13594,7 @@ TODO add machine ips </p></td>
                 <tr>
                   <td>partition</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>Partition for which machines should be listed, could be left empty if only one partition is present
 otherwise an error is thrown that the partition must be specified </p></td>
                 </tr>

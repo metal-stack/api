@@ -16,20 +16,14 @@ message Switch {
     max_len: 128
   }];
   // Description of the switch
-  string description = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Rack ID if the switch resides in a rack
   optional string rack = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Partition the switch belongs to
-  string partition = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string partition = 4 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Replace mode is used to mark a switch ready for replacement
   SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
   // Management IP is the switch's IP for management access
@@ -67,7 +61,7 @@ message SwitchOS {
 // SwitchNic represents a front panel port and its configuration
 message SwitchNic {
   // Name of the switch port
-  string name = 1 [(buf.validate.field).string.(is_name) = true];
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Identifier of the port
   string identifier = 2 [(buf.validate.field).string = {
     min_len: 2

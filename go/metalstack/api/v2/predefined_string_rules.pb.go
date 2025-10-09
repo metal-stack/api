@@ -46,6 +46,14 @@ var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.
 		Tag:           "varint,80048953,opt,name=is_description",
 		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
 	},
+	{
+		ExtendedType:  (*validate.StringRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80048954,
+		Name:          "metalstack.api.v2.is_partition",
+		Tag:           "varint,80048954,opt,name=is_partition",
+		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+	},
 }
 
 // Extension fields to validate.StringRules.
@@ -62,6 +70,10 @@ var (
 	//
 	// optional bool is_description = 80048953;
 	E_IsDescription = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[2]
+	// IsPartition returns true if partition field satisfies our requirements
+	//
+	// optional bool is_partition = 80048954;
+	E_IsPartition = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[3]
 )
 
 var File_metalstack_api_v2_predefined_string_rules_proto protoreflect.FileDescriptor
@@ -79,7 +91,10 @@ const file_metalstack_api_v2_predefined_string_rules_proto_rawDesc = "" +
 	"\x0estring.is_name\x12#must be within 2 and 128 characters\x1a&this.size() >= 2 && this.size() <= 128R\x06isName:\xae\x01\n" +
 	"\x0eis_description\x12\x19.buf.validate.StringRules\x18\xb9\xe6\x95& \x01(\bBi\xc2Hf\n" +
 	"d\n" +
-	"\x15string.is_description\x12#must be within 2 and 256 characters\x1a&this.size() >= 2 && this.size() <= 256R\risDescriptionB\xd0\x01\n" +
+	"\x15string.is_description\x12#must be within 2 and 256 characters\x1a&this.size() >= 2 && this.size() <= 256R\risDescription:\xa8\x01\n" +
+	"\fis_partition\x12\x19.buf.validate.StringRules\x18\xba\xe6\x95& \x01(\bBg\xc2Hd\n" +
+	"b\n" +
+	"\x13string.is_partition\x12#must be within 2 and 128 characters\x1a&this.size() >= 2 && this.size() <= 128R\visPartitionB\xd0\x01\n" +
 	"\x15com.metalstack.api.v2B\x1aPredefinedStringRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2"
 
 var file_metalstack_api_v2_predefined_string_rules_proto_goTypes = []any{
@@ -89,10 +104,11 @@ var file_metalstack_api_v2_predefined_string_rules_proto_depIdxs = []int32{
 	0, // 0: metalstack.api.v2.macaddress:extendee -> buf.validate.StringRules
 	0, // 1: metalstack.api.v2.is_name:extendee -> buf.validate.StringRules
 	0, // 2: metalstack.api.v2.is_description:extendee -> buf.validate.StringRules
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	0, // [0:3] is the sub-list for extension extendee
+	0, // 3: metalstack.api.v2.is_partition:extendee -> buf.validate.StringRules
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	0, // [0:4] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
 }
 
@@ -108,7 +124,7 @@ func file_metalstack_api_v2_predefined_string_rules_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_predefined_string_rules_proto_rawDesc), len(file_metalstack_api_v2_predefined_string_rules_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   0,
-			NumExtensions: 3,
+			NumExtensions: 4,
 			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_predefined_string_rules_proto_goTypes,

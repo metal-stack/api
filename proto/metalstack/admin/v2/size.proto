@@ -50,10 +50,7 @@ message SizeServiceUpdateRequest {
   // Name of this size
   optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this size
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Constraints which must match that a specific machine is considered of this size
   repeated metalstack.api.v2.SizeConstraint constraints = 5;
   // Labels to update on this size
