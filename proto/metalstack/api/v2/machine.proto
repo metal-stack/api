@@ -69,7 +69,7 @@ message MachineServiceCreateRequest {
   // this field overrules size and partition
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // Name of this machine
-  string name = 3 [(buf.validate.field).string = {max_len: 128}];
+  string name = 3 [(buf.validate.field).string.(is_name) = true];
   // Description for this machine
   string description = 4 [(buf.validate.field).string = {max_len: 256}];
   // Hostname the hostname for the allocated machine (defaults to metal)
@@ -263,7 +263,7 @@ message MachineAllocation {
   // Meta for this machine allocation
   Meta meta = 2;
   // Name of this allocation
-  string name = 3 [(buf.validate.field).string = {max_len: 128}];
+  string name = 3 [(buf.validate.field).string.(is_name) = true];
   // Description of this allocation
   string description = 4 [(buf.validate.field).string = {max_len: 128}];
   // Created By indicates who created this machine allocation
@@ -490,10 +490,7 @@ message MachineNic {
   // Mac the macaddress of this interface
   string mac = 1 [(buf.validate.field).string.(macaddress) = true];
   // Name of this interface
-  string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 2 [(buf.validate.field).string.(is_name) = true];
   // Identifier the unique identifier of this network interface
   string identifier = 3 [(buf.validate.field).string = {max_len: 128}];
   // Vendor of this network card
@@ -509,7 +506,7 @@ message MachineNic {
 // MachineBlockDevice contains details of a block device of this machine
 message MachineBlockDevice {
   // Name of this block device
-  string name = 1 [(buf.validate.field).string = {max_len: 128}];
+  string name = 1 [(buf.validate.field).string.(is_name) = true];
   // Size of this block device in bytes
   uint64 size = 2;
 }
@@ -642,10 +639,7 @@ message MachineQuery {
   // UUID of the machine to get
   optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Name of the machine to get
-  optional string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 2 [(buf.validate.field).string.(is_name) = true];
   // Partition of the machine to get
   optional string partition = 3 [(buf.validate.field).string = {
     min_len: 2
@@ -686,10 +680,7 @@ message MachineAllocationQuery {
   // UUID of the allocation of the machine to get
   optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Name of the machine to get
-  optional string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 2 [(buf.validate.field).string.(is_name) = true];
   // Project of the machine to get
   optional string project = 3 [(buf.validate.field).string.uuid = true];
   // Image of the machine to get

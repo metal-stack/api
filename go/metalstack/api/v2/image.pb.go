@@ -696,7 +696,7 @@ var File_metalstack_api_v2_image_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/api/v2/image.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\"4\n" +
+	"\x1dmetalstack/api/v2/image.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"4\n" +
 	"\x16ImageServiceGetRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"N\n" +
@@ -709,15 +709,14 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\x18ImageServiceListResponse\x120\n" +
 	"\x06images\x18\x01 \x03(\v2\x18.metalstack.api.v2.ImageR\x06images\"L\n" +
 	"\x1aImageServiceLatestResponse\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\xa8\x04\n" +
+	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\xa9\x04\n" +
 	"\x05Image\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12J\n" +
 	"\x03url\x18\x03 \x01(\tB8\xbaH5\xba\x012\n" +
-	"\tvalid_url\x12\x17url must be a valid URI\x1a\fthis.isUri()R\x03url\x12#\n" +
-	"\x04name\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
+	"\tvalid_url\x12\x17url must be a valid URI\x1a\fthis.isUri()R\x03url\x12$\n" +
+	"\x04name\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x05 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12\x83\x01\n" +
 	"\bfeatures\x18\x06 \x03(\x0e2\x1f.metalstack.api.v2.ImageFeatureBF\xbaHC\x92\x01@\b\x01\"<\xba\x019\n" +
@@ -730,7 +729,7 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\n" +
 	"ImageUsage\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\x12\x17\n" +
-	"\aused_by\x18\x02 \x03(\tR\x06usedBy\"\xe8\x04\n" +
+	"\aused_by\x18\x02 \x03(\tR\x06usedBy\"\xe9\x04\n" +
 	"\n" +
 	"ImageQuery\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
@@ -738,9 +737,8 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\x02os\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x02os\x88\x01\x01\x12)\n" +
 	"\aversion\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\x01H\x02R\aversion\x88\x01\x01\x12#\n" +
-	"\x04name\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x04name\x88\x01\x01\x121\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x01H\x02R\aversion\x88\x01\x01\x12$\n" +
+	"\x04name\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x03R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x05 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\vdescription\x88\x01\x01\x12O\n" +
 	"\x03url\x18\x06 \x01(\tB8\xbaH5\xba\x012\n" +
@@ -838,6 +836,7 @@ func file_metalstack_api_v2_image_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
+	file_metalstack_api_v2_predefined_string_rules_proto_init()
 	file_metalstack_api_v2_image_proto_msgTypes[6].OneofWrappers = []any{}
 	file_metalstack_api_v2_image_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}

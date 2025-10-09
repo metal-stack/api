@@ -4,6 +4,8 @@ package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
 
+// See https://protovalidate.com/schemas/predefined-rules/
+
 extend buf.validate.StringRules {
   // Macaddress returns true if the given string is a valid macadress
   optional bool macaddress = 80048951 [(buf.validate.predefined).cel = {
@@ -14,13 +16,13 @@ extend buf.validate.StringRules {
   // IsName returns true if name field satisfies our requirements
   optional bool is_name = 80048952 [(buf.validate.predefined).cel = {
     id: "string.is_name"
-    message: "name must be within 2 and 128 characters"
+    message: "must be within 2 and 128 characters"
     expression: "this.size() >= 2 && this.size() <= 128"
   }];
   // IsDescription returns true if description field satisfies our requirements
   optional bool is_description = 80048953 [(buf.validate.predefined).cel = {
     id: "string.is_description"
-    message: "description must be within 2 and 256 characters"
+    message: "must be within 2 and 256 characters"
     expression: "this.size() >= 2 && this.size() <= 256"
   }];
 }

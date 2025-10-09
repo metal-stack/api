@@ -4,6 +4,7 @@ package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_string_rules.proto";
 
 // IPService serves ip address related functions
 service IPService {
@@ -67,10 +68,7 @@ message IP {
   // Ip is either ipv4 or ipv6 address
   string ip = 3 [(buf.validate.field).string.ip = true];
   // Name of this ip
-  string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 4 [(buf.validate.field).string.(is_name) = true];
   // Description of this ip
   string description = 5 [(buf.validate.field).string = {max_len: 128}];
   // Network is the network this ip belongs to
@@ -107,10 +105,7 @@ message IPServiceCreateRequest {
   // Project of the ip
   string project = 2 [(buf.validate.field).string.uuid = true];
   // Name of the ip
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 3 [(buf.validate.field).string.(is_name) = true];
   // Description of the ip
   optional string description = 4 [(buf.validate.field).string = {max_len: 128}];
   // IP if given try to create this ip if still available
@@ -134,10 +129,7 @@ message IPServiceUpdateRequest {
   // Project id of the ip
   string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this ip
-  optional string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 4 [(buf.validate.field).string.(is_name) = true];
   // Description of this ip
   optional string description = 5 [(buf.validate.field).string = {max_len: 128}];
   // Type of this ip
@@ -166,10 +158,7 @@ message IPQuery {
   // Project of the ips to list
   optional string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this ip
-  optional string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 4 [(buf.validate.field).string.(is_name) = true];
   // Uuid for which this ips should get filtered
   optional string uuid = 5 [(buf.validate.field).string.uuid = true];
   // Machine for which this ips should get filtered

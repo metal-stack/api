@@ -68,7 +68,7 @@ func TestValidateFilesystem(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
- - name: name must be within 2 and 128 characters [string.is_name]`},
+ - name: must be within 2 and 128 characters [string.is_name]`},
 	}
 
 	validateProtos(t, tests, validator)

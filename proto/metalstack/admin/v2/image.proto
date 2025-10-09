@@ -6,6 +6,7 @@ import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/image.proto";
+import "metalstack/api/v2/predefined_string_rules.proto";
 
 // ImageService serves image related functions
 service ImageService {
@@ -62,10 +63,7 @@ message ImageServiceUpdateRequest {
     expression: "this.isUri()"
   }];
   // Name of this imageLayout
-  optional string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this imageLayout
   optional string description = 5 [(buf.validate.field).string = {
     min_len: 2

@@ -67,10 +67,7 @@ message SwitchOS {
 // SwitchNic represents a front panel port and its configuration
 message SwitchNic {
   // Name of the switch port
-  string name = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 1 [(buf.validate.field).string.(is_name) = true];
   // Identifier of the port
   string identifier = 2 [(buf.validate.field).string = {
     min_len: 2

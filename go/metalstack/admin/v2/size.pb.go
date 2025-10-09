@@ -348,18 +348,17 @@ var File_metalstack_admin_v2_size_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_size_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/admin/v2/size.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1cmetalstack/api/v2/size.proto\"G\n" +
+	"\x1emetalstack/admin/v2/size.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"G\n" +
 	"\x18SizeServiceCreateRequest\x12+\n" +
 	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"H\n" +
 	"\x19SizeServiceCreateResponse\x12+\n" +
-	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"\xfd\x02\n" +
+	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"\xfe\x02\n" +
 	"\x18SizeServiceUpdateRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"updateMeta\x12#\n" +
-	"\x04name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
+	"updateMeta\x12$\n" +
+	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x121\n" +
 	"\vdescription\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12C\n" +
 	"\vconstraints\x18\x05 \x03(\v2!.metalstack.api.v2.SizeConstraintR\vconstraints\x12<\n" +

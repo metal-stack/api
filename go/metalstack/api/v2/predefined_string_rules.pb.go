@@ -73,13 +73,13 @@ const file_metalstack_api_v2_predefined_string_rules_proto_rawDesc = "" +
 	"macaddress\x12\x19.buf.validate.StringRules\x18\xb7\xe6\x95& \x01(\bBz\xc2Hw\n" +
 	"u\n" +
 	"\x11string.macaddress\x12&this string must be a valid macaddress\x1a8this.matches('^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$')R\n" +
-	"macaddress:\x9e\x01\n" +
-	"\ais_name\x12\x19.buf.validate.StringRules\x18\xb8\xe6\x95& \x01(\bBg\xc2Hd\n" +
-	"b\n" +
-	"\x0estring.is_name\x12(name must be within 2 and 128 characters\x1a&this.size() >= 2 && this.size() <= 128R\x06isName:\xba\x01\n" +
-	"\x0eis_description\x12\x19.buf.validate.StringRules\x18\xb9\xe6\x95& \x01(\bBu\xc2Hr\n" +
-	"p\n" +
-	"\x15string.is_description\x12/description must be within 2 and 256 characters\x1a&this.size() >= 2 && this.size() <= 256R\risDescriptionB\xd0\x01\n" +
+	"macaddress:\x99\x01\n" +
+	"\ais_name\x12\x19.buf.validate.StringRules\x18\xb8\xe6\x95& \x01(\bBb\xc2H_\n" +
+	"]\n" +
+	"\x0estring.is_name\x12#must be within 2 and 128 characters\x1a&this.size() >= 2 && this.size() <= 128R\x06isName:\xae\x01\n" +
+	"\x0eis_description\x12\x19.buf.validate.StringRules\x18\xb9\xe6\x95& \x01(\bBi\xc2Hf\n" +
+	"d\n" +
+	"\x15string.is_description\x12#must be within 2 and 256 characters\x1a&this.size() >= 2 && this.size() <= 256R\risDescriptionB\xd0\x01\n" +
 	"\x15com.metalstack.api.v2B\x1aPredefinedStringRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2"
 
 var file_metalstack_api_v2_predefined_string_rules_proto_goTypes = []any{

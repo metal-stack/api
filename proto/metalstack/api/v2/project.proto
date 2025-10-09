@@ -5,6 +5,7 @@ package metalstack.api.v2;
 import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_string_rules.proto";
 
 // ProjectService serves project related functions
 service ProjectService {
@@ -82,7 +83,7 @@ message Project {
   // Meta for this project
   Meta meta = 2;
   // Name of this project must be unique per tenant
-  string name = 3;
+  string name = 3 [(buf.validate.field).string.(is_name) = true];
   // Description of this project
   string description = 4;
   // Tenant this project belongs to
@@ -132,10 +133,7 @@ message ProjectServiceListRequest {
   // Id lists only projects with this id
   optional string id = 1;
   // Name lists only projects with this name
-  optional string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 2 [(buf.validate.field).string.(is_name) = true];
   // Tenant lists only projects of this tenant
   optional string tenant = 3 [(buf.validate.field).string = {
     min_len: 2
@@ -174,10 +172,7 @@ message ProjectServiceCreateRequest {
     max_len: 128
   }];
   // Name of this project, unique per tenant
-  string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 64
-  }];
+  string name = 2 [(buf.validate.field).string.(is_name) = true];
   // Description of this project
   string description = 3 [(buf.validate.field).string = {
     min_len: 2
@@ -214,10 +209,7 @@ message ProjectServiceUpdateRequest {
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of this project unique per tenant
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 64
-  }];
+  optional string name = 3 [(buf.validate.field).string.(is_name) = true];
   // Description of this project
   optional string description = 4 [(buf.validate.field).string = {
     min_len: 2
