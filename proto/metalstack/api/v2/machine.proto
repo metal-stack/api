@@ -9,6 +9,7 @@ import "metalstack/api/v2/filesystem.proto";
 import "metalstack/api/v2/image.proto";
 import "metalstack/api/v2/network.proto";
 import "metalstack/api/v2/partition.proto";
+import "metalstack/api/v2/predefined_string_rules.proto";
 import "metalstack/api/v2/size.proto";
 
 // MachineService serves machine related functions
@@ -487,7 +488,7 @@ message MetalGPU {
 // MachineNic contains details of a network interface of this machine
 message MachineNic {
   // Mac the macaddress of this interface
-  string mac = 1 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
+  string mac = 1 [(buf.validate.field).string.(macaddress) = true];
   // Name of this interface
   string name = 2 [(buf.validate.field).string = {
     min_len: 2
@@ -757,13 +758,15 @@ message MachineNicQuery {
   // Macs this machine nic has
   repeated string macs = 1 [(buf.validate.field).repeated = {
     max_items: 100
+    unique: true
     items: {
-      string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
+      string: {macaddress: true}
     }
   }];
   // Names this machine nic has
   repeated string names = 2 [(buf.validate.field).repeated = {
     max_items: 100
+    unique: true
     items: {
       string: {max_len: 128}
     }
@@ -771,13 +774,15 @@ message MachineNicQuery {
   // NeighborMacs this machine nic has
   repeated string neighbor_macs = 3 [(buf.validate.field).repeated = {
     max_items: 100
+    unique: true
     items: {
-      string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
+      string: {macaddress: true}
     }
   }];
   // NeighborNames this machine nic has
   repeated string neighbor_names = 4 [(buf.validate.field).repeated = {
     max_items: 100
+    unique: true
     items: {
       string: {max_len: 128}
     }
@@ -802,7 +807,7 @@ message MachineIPMIQuery {
   // Address of the ipmi system of this machine
   optional string address = 1 [(buf.validate.field).string.ip = true];
   // Mac of the ipmi system of this machine
-  optional string mac = 2 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
+  optional string mac = 2 [(buf.validate.field).string.(macaddress) = true];
   // User of the ipmi system of this machine
   optional string user = 3 [(buf.validate.field).string = {max_len: 128}];
   // Interface of the ipmi system of this machine
