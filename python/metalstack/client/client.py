@@ -2,33 +2,33 @@
 
 import httpx
 
-import metalstack.admin.v2.filesystem_connecpy as admin_filesystem_connecpy
-import metalstack.admin.v2.image_connecpy as admin_image_connecpy
-import metalstack.admin.v2.ip_connecpy as admin_ip_connecpy
-import metalstack.admin.v2.machine_connecpy as admin_machine_connecpy
-import metalstack.admin.v2.network_connecpy as admin_network_connecpy
-import metalstack.admin.v2.partition_connecpy as admin_partition_connecpy
-import metalstack.admin.v2.size_connecpy as admin_size_connecpy
-import metalstack.admin.v2.tenant_connecpy as admin_tenant_connecpy
-import metalstack.admin.v2.token_connecpy as admin_token_connecpy
+import metalstack.admin.v2.filesystem_connect as admin_filesystem_connect
+import metalstack.admin.v2.image_connect as admin_image_connect
+import metalstack.admin.v2.ip_connect as admin_ip_connect
+import metalstack.admin.v2.machine_connect as admin_machine_connect
+import metalstack.admin.v2.network_connect as admin_network_connect
+import metalstack.admin.v2.partition_connect as admin_partition_connect
+import metalstack.admin.v2.size_connect as admin_size_connect
+import metalstack.admin.v2.tenant_connect as admin_tenant_connect
+import metalstack.admin.v2.token_connect as admin_token_connect
 
-import metalstack.api.v2.filesystem_connecpy as api_filesystem_connecpy
-import metalstack.api.v2.health_connecpy as api_health_connecpy
-import metalstack.api.v2.image_connecpy as api_image_connecpy
-import metalstack.api.v2.ip_connecpy as api_ip_connecpy
-import metalstack.api.v2.machine_connecpy as api_machine_connecpy
-import metalstack.api.v2.method_connecpy as api_method_connecpy
-import metalstack.api.v2.network_connecpy as api_network_connecpy
-import metalstack.api.v2.partition_connecpy as api_partition_connecpy
-import metalstack.api.v2.project_connecpy as api_project_connecpy
-import metalstack.api.v2.size_connecpy as api_size_connecpy
-import metalstack.api.v2.tenant_connecpy as api_tenant_connecpy
-import metalstack.api.v2.token_connecpy as api_token_connecpy
-import metalstack.api.v2.user_connecpy as api_user_connecpy
-import metalstack.api.v2.version_connecpy as api_version_connecpy
+import metalstack.api.v2.filesystem_connect as api_filesystem_connect
+import metalstack.api.v2.health_connect as api_health_connect
+import metalstack.api.v2.image_connect as api_image_connect
+import metalstack.api.v2.ip_connect as api_ip_connect
+import metalstack.api.v2.machine_connect as api_machine_connect
+import metalstack.api.v2.method_connect as api_method_connect
+import metalstack.api.v2.network_connect as api_network_connect
+import metalstack.api.v2.partition_connect as api_partition_connect
+import metalstack.api.v2.project_connect as api_project_connect
+import metalstack.api.v2.size_connect as api_size_connect
+import metalstack.api.v2.tenant_connect as api_tenant_connect
+import metalstack.api.v2.token_connect as api_token_connect
+import metalstack.api.v2.user_connect as api_user_connect
+import metalstack.api.v2.version_connect as api_version_connect
 
-import metalstack.infra.v2.bmc_connecpy as infra_bmc_connecpy
-import metalstack.infra.v2.switch_connecpy as infra_switch_connecpy
+import metalstack.infra.v2.bmc_connect as infra_bmc_connect
+import metalstack.infra.v2.switch_connect as infra_switch_connect
 
 
 
@@ -61,31 +61,31 @@ class Client:
 
 
         def filesystem(self):
-            return admin_filesystem_connecpy.FilesystemServiceClientSync(address=self._baseurl, session=self._session)
+            return admin_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, session=self._session)
 
         def image(self):
-            return admin_image_connecpy.ImageServiceClientSync(address=self._baseurl, session=self._session)
+            return admin_image_connect.ImageServiceClientSync(address=self._baseurl, session=self._session)
 
         def ip(self):
-            return admin_ip_connecpy.IPServiceClientSync(address=self._baseurl, session=self._session)
+            return admin_ip_connect.IPServiceClientSync(address=self._baseurl, session=self._session)
 
         def machine(self):
-            return admin_machine_connecpy.MachineServiceClientSync(address=self._baseurl, session=self._session)
+            return admin_machine_connect.MachineServiceClientSync(address=self._baseurl, session=self._session)
 
         def network(self):
-            return admin_network_connecpy.NetworkServiceClientSync(address=self._baseurl, session=self._session)
+            return admin_network_connect.NetworkServiceClientSync(address=self._baseurl, session=self._session)
 
         def partition(self):
-            return admin_partition_connecpy.PartitionServiceClientSync(address=self._baseurl, session=self._session)
+            return admin_partition_connect.PartitionServiceClientSync(address=self._baseurl, session=self._session)
 
         def size(self):
-            return admin_size_connecpy.SizeServiceClientSync(address=self._baseurl, session=self._session)
+            return admin_size_connect.SizeServiceClientSync(address=self._baseurl, session=self._session)
 
         def tenant(self):
-            return admin_tenant_connecpy.TenantServiceClientSync(address=self._baseurl, session=self._session)
+            return admin_tenant_connect.TenantServiceClientSync(address=self._baseurl, session=self._session)
 
         def token(self):
-            return admin_token_connecpy.TokenServiceClientSync(address=self._baseurl, session=self._session)
+            return admin_token_connect.TokenServiceClientSync(address=self._baseurl, session=self._session)
 
 
     class _Apiv2:
@@ -95,46 +95,46 @@ class Client:
 
 
         def filesystem(self):
-            return api_filesystem_connecpy.FilesystemServiceClientSync(address=self._baseurl, session=self._session)
+            return api_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, session=self._session)
 
         def health(self):
-            return api_health_connecpy.HealthServiceClientSync(address=self._baseurl, session=self._session)
+            return api_health_connect.HealthServiceClientSync(address=self._baseurl, session=self._session)
 
         def image(self):
-            return api_image_connecpy.ImageServiceClientSync(address=self._baseurl, session=self._session)
+            return api_image_connect.ImageServiceClientSync(address=self._baseurl, session=self._session)
 
         def ip(self):
-            return api_ip_connecpy.IPServiceClientSync(address=self._baseurl, session=self._session)
+            return api_ip_connect.IPServiceClientSync(address=self._baseurl, session=self._session)
 
         def machine(self):
-            return api_machine_connecpy.MachineServiceClientSync(address=self._baseurl, session=self._session)
+            return api_machine_connect.MachineServiceClientSync(address=self._baseurl, session=self._session)
 
         def method(self):
-            return api_method_connecpy.MethodServiceClientSync(address=self._baseurl, session=self._session)
+            return api_method_connect.MethodServiceClientSync(address=self._baseurl, session=self._session)
 
         def network(self):
-            return api_network_connecpy.NetworkServiceClientSync(address=self._baseurl, session=self._session)
+            return api_network_connect.NetworkServiceClientSync(address=self._baseurl, session=self._session)
 
         def partition(self):
-            return api_partition_connecpy.PartitionServiceClientSync(address=self._baseurl, session=self._session)
+            return api_partition_connect.PartitionServiceClientSync(address=self._baseurl, session=self._session)
 
         def project(self):
-            return api_project_connecpy.ProjectServiceClientSync(address=self._baseurl, session=self._session)
+            return api_project_connect.ProjectServiceClientSync(address=self._baseurl, session=self._session)
 
         def size(self):
-            return api_size_connecpy.SizeServiceClientSync(address=self._baseurl, session=self._session)
+            return api_size_connect.SizeServiceClientSync(address=self._baseurl, session=self._session)
 
         def tenant(self):
-            return api_tenant_connecpy.TenantServiceClientSync(address=self._baseurl, session=self._session)
+            return api_tenant_connect.TenantServiceClientSync(address=self._baseurl, session=self._session)
 
         def token(self):
-            return api_token_connecpy.TokenServiceClientSync(address=self._baseurl, session=self._session)
+            return api_token_connect.TokenServiceClientSync(address=self._baseurl, session=self._session)
 
         def user(self):
-            return api_user_connecpy.UserServiceClientSync(address=self._baseurl, session=self._session)
+            return api_user_connect.UserServiceClientSync(address=self._baseurl, session=self._session)
 
         def version(self):
-            return api_version_connecpy.VersionServiceClientSync(address=self._baseurl, session=self._session)
+            return api_version_connect.VersionServiceClientSync(address=self._baseurl, session=self._session)
 
 
     class _Infrav2:
@@ -144,9 +144,9 @@ class Client:
 
 
         def bmc(self):
-            return infra_bmc_connecpy.BMCServiceClientSync(address=self._baseurl, session=self._session)
+            return infra_bmc_connect.BMCServiceClientSync(address=self._baseurl, session=self._session)
 
         def switch(self):
-            return infra_switch_connecpy.SwitchServiceClientSync(address=self._baseurl, session=self._session)
+            return infra_switch_connect.SwitchServiceClientSync(address=self._baseurl, session=self._session)
 
 
