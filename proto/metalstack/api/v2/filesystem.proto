@@ -4,6 +4,7 @@ package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_string_rules.proto";
 
 // FilesystemService serves filesystem related functions
 service FilesystemService {
@@ -107,15 +108,9 @@ message FilesystemLayout {
   // Meta for this filesystemLayout
   Meta meta = 2;
   // Name of this filesystemLayout
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 3 [(buf.validate.field).string.(is_name) = true];
   // Description of this filesystemLayout
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(is_description) = true];
   // Filesystems is a list of filesystems to create on a machine
   repeated Filesystem filesystems = 5;
   // Disks list of disks that belong to this layout

@@ -1333,7 +1333,7 @@ var File_metalstack_api_v2_filesystem_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\n" +
-	"\"metalstack/api/v2/filesystem.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"9\n" +
+	"\"metalstack/api/v2/filesystem.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"9\n" +
 	"\x1bFilesystemServiceGetRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"F\n" +
@@ -1359,15 +1359,13 @@ const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\x11filesystem_layout\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x10filesystemLayout\"r\n" +
 	"\x1eFilesystemServiceMatchResponse\x12P\n" +
-	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xcb\x04\n" +
+	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xcd\x04\n" +
 	"\x10FilesystemLayout\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12+\n" +
-	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12#\n" +
-	"\x04name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
-	"\vdescription\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12?\n" +
+	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12$\n" +
+	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
+	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12?\n" +
 	"\vfilesystems\x18\x05 \x03(\v2\x1d.metalstack.api.v2.FilesystemR\vfilesystems\x12-\n" +
 	"\x05disks\x18\x06 \x03(\v2\x17.metalstack.api.v2.DiskR\x05disks\x12+\n" +
 	"\x04raid\x18\a \x03(\v2\x17.metalstack.api.v2.RaidR\x04raid\x12C\n" +
@@ -1540,6 +1538,7 @@ func file_metalstack_api_v2_filesystem_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
+	file_metalstack_api_v2_predefined_string_rules_proto_init()
 	file_metalstack_api_v2_filesystem_proto_msgTypes[1].OneofWrappers = []any{}
 	file_metalstack_api_v2_filesystem_proto_msgTypes[4].OneofWrappers = []any{
 		(*FilesystemServiceMatchRequest_SizeAndImage)(nil),

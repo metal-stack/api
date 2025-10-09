@@ -5,3 +5,7 @@ from typing import ClassVar as _ClassVar
 DESCRIPTOR: _descriptor.FileDescriptor
 MACADDRESS_FIELD_NUMBER: _ClassVar[int]
 macaddress: _descriptor.FieldDescriptor
+IS_NAME_FIELD_NUMBER: _ClassVar[int]
+is_name: _descriptor.FieldDescriptor
+IS_DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+is_description: _descriptor.FieldDescriptor

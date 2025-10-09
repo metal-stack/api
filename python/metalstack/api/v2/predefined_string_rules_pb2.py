@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n/metalstack/api/v2/predefined_string_rules.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto:\xb8\x01\n\nmacaddress\x12\x19.buf.validate.StringRules\x18\xb8\xe6\x95& \x01(\x08\x42z\xc2Hw\nu\n\x11string.macaddress\x12&this string must be a valid macaddress\x1a\x38this.matches(\'^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$\')R\nmacaddressB\xd0\x01\n\x15\x63om.metalstack.api.v2B\x1aPredefinedStringRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n/metalstack/api/v2/predefined_string_rules.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto:\xb8\x01\n\nmacaddress\x12\x19.buf.validate.StringRules\x18\xb7\xe6\x95& \x01(\x08\x42z\xc2Hw\nu\n\x11string.macaddress\x12&this string must be a valid macaddress\x1a\x38this.matches(\'^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$\')R\nmacaddress:\x9e\x01\n\x07is_name\x12\x19.buf.validate.StringRules\x18\xb8\xe6\x95& \x01(\x08\x42g\xc2Hd\nb\n\x0estring.is_name\x12(name must be within 2 and 128 characters\x1a&this.size() >= 2 && this.size() <= 128R\x06isName:\xba\x01\n\x0eis_description\x12\x19.buf.validate.StringRules\x18\xb9\xe6\x95& \x01(\x08\x42u\xc2Hr\np\n\x15string.is_description\x12/description must be within 2 and 256 characters\x1a&this.size() >= 2 && this.size() <= 256R\risDescriptionB\xd0\x01\n\x15\x63om.metalstack.api.v2B\x1aPredefinedStringRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,4 +35,8 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._serialized_options = b'\n\025com.metalstack.api.v2B\032PredefinedStringRulesProtoP\001Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\242\002\003MAX\252\002\021Metalstack.Api.V2\312\002\021Metalstack\\Api\\V2\342\002\035Metalstack\\Api\\V2\\GPBMetadata\352\002\023Metalstack::Api::V2'
   _globals['macaddress']._loaded_options = None
   _globals['macaddress']._serialized_options = b'\302Hw\nu\n\021string.macaddress\022&this string must be a valid macaddress\0328this.matches(\'^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$\')'
+  _globals['is_name']._loaded_options = None
+  _globals['is_name']._serialized_options = b'\302Hd\nb\n\016string.is_name\022(name must be within 2 and 128 characters\032&this.size() >= 2 && this.size() <= 128'
+  _globals['is_description']._loaded_options = None
+  _globals['is_description']._serialized_options = b'\302Hr\np\n\025string.is_description\022/description must be within 2 and 256 characters\032&this.size() >= 2 && this.size() <= 256'
 # @@protoc_insertion_point(module_scope)

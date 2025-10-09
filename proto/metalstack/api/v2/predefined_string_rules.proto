@@ -6,9 +6,21 @@ import "buf/validate/validate.proto";
 
 extend buf.validate.StringRules {
   // Macaddress returns true if the given string is a valid macadress
-  optional bool macaddress = 80048952 [(buf.validate.predefined).cel = {
+  optional bool macaddress = 80048951 [(buf.validate.predefined).cel = {
     id: "string.macaddress"
     message: "this string must be a valid macaddress"
     expression: "this.matches('^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$')"
+  }];
+  // IsName returns true if name field satisfies our requirements
+  optional bool is_name = 80048952 [(buf.validate.predefined).cel = {
+    id: "string.is_name"
+    message: "name must be within 2 and 128 characters"
+    expression: "this.size() >= 2 && this.size() <= 128"
+  }];
+  // IsDescription returns true if description field satisfies our requirements
+  optional bool is_description = 80048953 [(buf.validate.predefined).cel = {
+    id: "string.is_description"
+    message: "description must be within 2 and 256 characters"
+    expression: "this.size() >= 2 && this.size() <= 256"
   }];
 }

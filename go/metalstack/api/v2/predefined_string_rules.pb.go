@@ -25,9 +25,25 @@ var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.
 	{
 		ExtendedType:  (*validate.StringRules)(nil),
 		ExtensionType: (*bool)(nil),
-		Field:         80048952,
+		Field:         80048951,
 		Name:          "metalstack.api.v2.macaddress",
-		Tag:           "varint,80048952,opt,name=macaddress",
+		Tag:           "varint,80048951,opt,name=macaddress",
+		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+	},
+	{
+		ExtendedType:  (*validate.StringRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80048952,
+		Name:          "metalstack.api.v2.is_name",
+		Tag:           "varint,80048952,opt,name=is_name",
+		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+	},
+	{
+		ExtendedType:  (*validate.StringRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80048953,
+		Name:          "metalstack.api.v2.is_description",
+		Tag:           "varint,80048953,opt,name=is_description",
 		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
 	},
 }
@@ -36,8 +52,16 @@ var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.
 var (
 	// Macaddress returns true if the given string is a valid macadress
 	//
-	// optional bool macaddress = 80048952;
+	// optional bool macaddress = 80048951;
 	E_Macaddress = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[0]
+	// IsName returns true if name field satisfies our requirements
+	//
+	// optional bool is_name = 80048952;
+	E_IsName = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[1]
+	// IsDescription returns true if description field satisfies our requirements
+	//
+	// optional bool is_description = 80048953;
+	E_IsDescription = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[2]
 )
 
 var File_metalstack_api_v2_predefined_string_rules_proto protoreflect.FileDescriptor
@@ -46,10 +70,16 @@ const file_metalstack_api_v2_predefined_string_rules_proto_rawDesc = "" +
 	"\n" +
 	"/metalstack/api/v2/predefined_string_rules.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto:\xb8\x01\n" +
 	"\n" +
-	"macaddress\x12\x19.buf.validate.StringRules\x18\xb8\xe6\x95& \x01(\bBz\xc2Hw\n" +
+	"macaddress\x12\x19.buf.validate.StringRules\x18\xb7\xe6\x95& \x01(\bBz\xc2Hw\n" +
 	"u\n" +
 	"\x11string.macaddress\x12&this string must be a valid macaddress\x1a8this.matches('^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$')R\n" +
-	"macaddressB\xd0\x01\n" +
+	"macaddress:\x9e\x01\n" +
+	"\ais_name\x12\x19.buf.validate.StringRules\x18\xb8\xe6\x95& \x01(\bBg\xc2Hd\n" +
+	"b\n" +
+	"\x0estring.is_name\x12(name must be within 2 and 128 characters\x1a&this.size() >= 2 && this.size() <= 128R\x06isName:\xba\x01\n" +
+	"\x0eis_description\x12\x19.buf.validate.StringRules\x18\xb9\xe6\x95& \x01(\bBu\xc2Hr\n" +
+	"p\n" +
+	"\x15string.is_description\x12/description must be within 2 and 256 characters\x1a&this.size() >= 2 && this.size() <= 256R\risDescriptionB\xd0\x01\n" +
 	"\x15com.metalstack.api.v2B\x1aPredefinedStringRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2"
 
 var file_metalstack_api_v2_predefined_string_rules_proto_goTypes = []any{
@@ -57,10 +87,12 @@ var file_metalstack_api_v2_predefined_string_rules_proto_goTypes = []any{
 }
 var file_metalstack_api_v2_predefined_string_rules_proto_depIdxs = []int32{
 	0, // 0: metalstack.api.v2.macaddress:extendee -> buf.validate.StringRules
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	0, // [0:1] is the sub-list for extension extendee
+	0, // 1: metalstack.api.v2.is_name:extendee -> buf.validate.StringRules
+	0, // 2: metalstack.api.v2.is_description:extendee -> buf.validate.StringRules
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	0, // [0:3] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
 }
 
@@ -76,7 +108,7 @@ func file_metalstack_api_v2_predefined_string_rules_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_predefined_string_rules_proto_rawDesc), len(file_metalstack_api_v2_predefined_string_rules_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   0,
-			NumExtensions: 1,
+			NumExtensions: 3,
 			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_predefined_string_rules_proto_goTypes,
