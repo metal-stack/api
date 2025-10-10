@@ -1,0 +1,75 @@
+package validation
+
+import (
+	"testing"
+
+	"buf.build/go/protovalidate"
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
+	"github.com/stretchr/testify/require"
+	"google.golang.org/protobuf/proto"
+)
+
+func TestValidateSwitch(t *testing.T) {
+	validator, err := protovalidate.New()
+	require.NoError(t, err)
+
+	tests := prototests{
+		{
+			name: "SwitchNic with invalid MAC",
+			msg: &apiv2.SwitchNic{
+				Name:       "eth0",
+				Identifier: "swp1",
+				Mac:        "abc",
+				Vrf:        proto.String("10"),
+			},
+			wantErr: true,
+			wantErrorMessage: `validation error:
+ - mac: this string must be a valid macaddress [string.macaddress]`,
+		},
+		{
+			name: "SwitchNic with valid lowercase MAC",
+			msg: &apiv2.SwitchNic{
+				Name:       "eth0",
+				Identifier: "swp1",
+				Mac:        "00:80:41:ae:fd:7e",
+				Vrf:        proto.String("10"),
+			},
+			wantErr: false,
+		},
+		{
+			name: "SwitchNic with valid uppercase MAC",
+			msg: &apiv2.SwitchNic{
+				Name:       "eth0",
+				Identifier: "swp1",
+				Mac:        "00:80:41:AE:FD:7E",
+				Vrf:        proto.String("10"),
+			},
+			wantErr: false,
+		},
+		{
+			name: "Switch with valid id",
+			msg: &apiv2.Switch{
+				Id:             "leaf01",
+				Partition:      "p1",
+				ManagementIp:   "1.2.3.4",
+				ManagementUser: "admin",
+				ConsoleCommand: "ssh",
+			},
+			wantErr: false,
+		},
+		{
+			name: "Switch with invalid id",
+			msg: &apiv2.Switch{
+				Id:             "_1",
+				Partition:      "p1",
+				ManagementIp:   "1.2.3.4",
+				ManagementUser: "admin",
+				ConsoleCommand: "ssh",
+			},
+			wantErr: true,
+			wantErrorMessage: `validation error:
+ - id: value must be a valid hostname [string.hostname]`,
+		},
+	}
+	validateProtos(t, tests, validator)
+}

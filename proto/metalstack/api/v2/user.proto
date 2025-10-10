@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package metalstack.api.v2;
 
+import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/project.proto";
 import "metalstack/api/v2/tenant.proto";
 
@@ -20,7 +22,7 @@ message User {
   // Login the login at the provider
   string login = 1;
   // Name of the user
-  string name = 2;
+  string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Email of the user
   string email = 3;
   // AvatarUrl of the user

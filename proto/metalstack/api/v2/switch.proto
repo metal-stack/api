@@ -3,102 +3,79 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
-import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
-// Switch represents a network switch
+// Switch represents a network switch.
 message Switch {
-  // ID of the switch
+  // Id of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
-    min_len: 2
-    max_len: 128
+    [metalstack.api.v2.is_name]: true
   }];
-  // Description of the switch
-  string description = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Rack ID if the switch resides in a rack
-  optional string rack = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Partition the switch belongs to
-  string partition = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Replace mode is used to mark a switch ready for replacement
+  // Meta for this switch.
+  Meta meta = 2;
+  // Description of the switch.
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Rack ID if the switch resides in a rack.
+  optional string rack = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Partition the switch belongs to.
+  string partition = 5 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  // ReplaceMode is used to mark a switch ready for replacement.
   SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
-  // Management IP is the switch's IP for management access
+  // ManagementIp is the switch's IP for management access.
   string management_ip = 7 [(buf.validate.field).string.ip = true];
-  // Management user is the user name to use for management access
+  // ManagementUser is the user name to use for management access.
   string management_user = 8 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Console command is the command for accessing the switch's console
+  // ConsoleCommand is the command for accessing the switch's console.
   string console_command = 9 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Switch NICs are the front panel ports of the switch
-  repeated SwitchNic switch_nics = 10;
+  // Nics are the front panel ports of the switch.
+  repeated SwitchNic nics = 10;
+  // SwitchOs is the OS running on the switch.
+  SwitchOS os = 11;
+  // MachineConnections map machines to the nics they are connected to.
+  repeated MachineConnection machine_connections = 12;
 }
 
-// SwitchOS holds information about the NOS and versions running on the switch
+// SwitchOS holds information about the NOS and versions running on the switch.
 message SwitchOS {
-  // Switch OS vendor identifies what NOS distribution is running on the switch, e.g. SONiC
+  // Vendor identifies what NOS distribution is running on the switch, e.g. SONiC.
   SwitchOSVendor vendor = 1 [(buf.validate.field).enum.defined_only = true];
-  // Version specifies what NOS version is currently installed on the switch
-  string version = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Metal core version is the currently running version of the metal-core
-  string metal_core_version = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  // Version specifies what NOS version is currently installed on the switch.
+  string version = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // MetalCoreVersion is the currently running version of the metal-core.
+  string metal_core_version = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// SwitchNic represents a front panel port and its configuration
+// SwitchNic represents a front panel port and its configuration.
 message SwitchNic {
   // Name of the switch port
-  string name = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Identifier of the port
-  string identifier = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string identifier = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // MAC address of the port
-  string mac = 3 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
+  string mac = 3 [(buf.validate.field).string.(macaddress) = true];
   // VRF name if the port is bound in one
-  optional string vrf = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Actual port status
-  SwitchPortStatus actual = 5 [(buf.validate.field).enum.defined_only = true];
-  // BGP filter optionally configured on a port
+  optional string vrf = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // NicState describes the current state of the switch port.
+  optional NicState state = 5;
+  // BGPFilter optionally configured on a port.
   optional BGPFilter bgp_filter = 6;
-  // BGP port state represents the current BGP status of the port
+  // BGPPortState represents the current BGP status of the port.
   optional SwitchBGPPortState bgp_port_state = 7;
 }
 
-// BGP filter can be used to restrict BGP based on CIDRs and VNIs
+// BGPFilter can be used to restrict BGP based on CIDRs and VNIs.
 message BGPFilter {
   // CIDRs for which to allow BGP
-  repeated string cidrs = 1;
-  option (buf.validate.message).cel = {
-    id: "cidrs"
-    message: "given cidrs must be valid"
-    expression: "this.cidrs.all(m, m.isIpPrefix())"
-  };
+  repeated string cidrs = 1 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // VNIs for which to allow BGP
   repeated string vnis = 2 [(buf.validate.field).repeated.items.string = {
     min_len: 2
@@ -106,77 +83,109 @@ message BGPFilter {
   }];
 }
 
-// SwitchBGPPortState holds information about the BGP state of a port
+// SwitchBGPPortState holds information about the BGP state of a port.
 message SwitchBGPPortState {
-  // Neighbor of this port
-  string neighbor = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Peer group of this port
-  string peer_group = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // VRF name of the VRF this port is bound to
-  string vrf_name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // BGP state of the connection on this port
+  // Neighbor of this port.
+  string neighbor = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // PeerGroup of this port.
+  string peer_group = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // VrfName of the VRF this port is bound to.
+  string vrf_name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // BgpState of the connection on this port.
   BGPState bgp_state = 4 [(buf.validate.field).enum.defined_only = true];
-  // BGP timer up established reports the uptime of this port's BGP connection
-  google.protobuf.Duration bgp_timer_up_established = 5;
-  // Sent prefix counter counts the prefixes sent by the switch on this port
+  // BgpTimerUpEstablished reports when this port's BGP connection was established.
+  google.protobuf.Timestamp bgp_timer_up_established = 5;
+  // SentPrefixCounter counts the prefixes sent by the switch on this port.
   uint64 sent_prefix_counter = 6;
-  // Accepted prefix counter counts the prefixes received on this port
+  // AcceptedPrefixCounter counts the prefixes received on this port.
   uint64 accepted_prefix_counter = 7;
 }
 
-// BGPState represents the state of a BGP session
+// NicState represents the current state of a switch port.
+message NicState {
+  // Desired is the desired port state.
+  SwitchPortStatus desired = 1 [(buf.validate.field).enum.defined_only = true];
+  // Actual is the actual port state.
+  SwitchPortStatus actual = 2 [(buf.validate.field).enum.defined_only = true];
+}
+
+// MachineConnection associates a machine with the corresponding switch nic.
+message MachineConnection {
+  // MachineId of the machine connected to the nic.
+  string machine_id = 1;
+  // Nic the machine is connected to.
+  SwitchNic nic = 2;
+}
+
+// SwitchQuery can be used to query a switch or a list of switches.
+message SwitchQuery {
+  // Id of the switch to list.
+  optional string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+  // Partition of the switches to list.
+  optional string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  // Rack of the switches to list.
+  optional string rack = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Switch OS specific queries.
+  optional SwitchOSQuery os = 4;
+}
+
+// SwitchOSQuery holds OS specific query parameters.
+message SwitchOSQuery {
+  // OsVendor of the switch OS by which to filter the switches.
+  optional SwitchOSVendor vendor = 1 [(buf.validate.field).enum.defined_only = true];
+  // OsVersion of the OS by which to filter the switches.
+  optional string version = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+}
+
+// BGPState represents the state of a BGP session.
 enum BGPState {
-  // BGP_STATE_UNSPECIFIED is not specified
+  // BGP_STATE_UNSPECIFIED is not specified.
   BGP_STATE_UNSPECIFIED = 0;
-  // BGP_STATE_IDLE is the Idle state of a BGP session
+  // BGP_STATE_IDLE is the Idle state of a BGP session.
   BGP_STATE_IDLE = 1 [(enum_string_value) = "idle"];
-  // BGP_STATE_CONNECT is the Connect state of a BGP session
+  // BGP_STATE_CONNECT is the Connect state of a BGP session.
   BGP_STATE_CONNECT = 2 [(enum_string_value) = "connect"];
-  // BGP_STATE_ACTIVE is the Active state of a BGP session
+  // BGP_STATE_ACTIVE is the Active state of a BGP session.
   BGP_STATE_ACTIVE = 3 [(enum_string_value) = "active"];
-  // BGP_STATE_OPEN_SENT is the OpenSent state of a BGP session
+  // BGP_STATE_OPEN_SENT is the OpenSent state of a BGP session.
   BGP_STATE_OPEN_SENT = 4 [(enum_string_value) = "open-sent"];
-  // BGP_STATE_OPEN_CONFIRM is the OpenConfirm state of a BGP session
+  // BGP_STATE_OPEN_CONFIRM is the OpenConfirm state of a BGP session.
   BGP_STATE_OPEN_CONFIRM = 5 [(enum_string_value) = "open-confirm"];
-  // BGP_STATE_ESTABLISHED is the Established state of a BGP session
+  // BGP_STATE_ESTABLISHED is the Established state of a BGP session.
   BGP_STATE_ESTABLISHED = 6 [(enum_string_value) = "established"];
 }
 
-// SwitchReplaceMode is used to mark a switch ready for replacement
+// SwitchReplaceMode is used to mark a switch ready for replacement.
 enum SwitchReplaceMode {
-  // SWITCH_REPLACE_MODE_UNSPECIFIED is not specified
+  // SWITCH_REPLACE_MODE_UNSPECIFIED is not specified.
   SWITCH_REPLACE_MODE_UNSPECIFIED = 0;
-  // SWITCH_REPLACE_MODE_REPLACE means this switch is waiting to be replaced
+  // SWITCH_REPLACE_MODE_REPLACE means this switch is waiting to be replaced.
   SWITCH_REPLACE_MODE_REPLACE = 1 [(enum_string_value) = "replace"];
-  // SWITCH_REPLACE_MODE_OPERATIONAL means this switch is operational and cannot be replaced
+  // SWITCH_REPLACE_MODE_OPERATIONAL means this switch is operational and cannot be replaced.
   SWITCH_REPLACE_MODE_OPERATIONAL = 2 [(enum_string_value) = "operational"];
 }
 
-// SwitchOSVendor represents a NOS distribution
+// SwitchOSVendor represents a NOS distribution.
 enum SwitchOSVendor {
-  // SWITCH_OS_VENDOR_UNSPECIFIED is not specified
+  // SWITCH_OS_VENDOR_UNSPECIFIED is not specified.
   SWITCH_OS_VENDOR_UNSPECIFIED = 0;
-  // SWITCH_OS_VENDOR_CUMULUS means this switch is running on Cumulus Linux
-  SWITCH_OS_VENDOR_CUMULUS = 1 [(enum_string_value) = "cumulus"];
-  // SWITCH_OS_VENDOR_SONIC means this switch is running on SONiC NOS
-  SWITCH_OS_VENDOR_SONIC = 2 [(enum_string_value) = "sonic"];
+  // SWITCH_OS_VENDOR_CUMULUS means this switch is running on Cumulus Linux.
+  SWITCH_OS_VENDOR_CUMULUS = 1 [(enum_string_value) = "Cumulus"];
+  // SWITCH_OS_VENDOR_SONIC means this switch is running on SONiC NOS.
+  SWITCH_OS_VENDOR_SONIC = 2 [(enum_string_value) = "SONiC"];
 }
 
-// SwitchPortStatus specifies the state of a switch port
+// SwitchPortStatus specifies the state of a switch port.
 enum SwitchPortStatus {
-  // SWITCH_PORT_STATUS_UNSPECIFIED is not specified
+  // SWITCH_PORT_STATUS_UNSPECIFIED is not specified.
   SWITCH_PORT_STATUS_UNSPECIFIED = 0;
-  // SWITCH_PORT_STATUS_UP means this port is up
+  // SWITCH_PORT_STATUS_UP means this port is up.
   SWITCH_PORT_STATUS_UP = 1 [(enum_string_value) = "up"];
-  // SWITCH_PORT_STATUS_DOWN means this port is down
+  // SWITCH_PORT_STATUS_DOWN means this port is down.
   SWITCH_PORT_STATUS_DOWN = 2 [(enum_string_value) = "down"];
+  // SWITCH_PORT_STATUS_UNKNOWN means the status of this port is unknown.
+  SWITCH_PORT_STATUS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
 }

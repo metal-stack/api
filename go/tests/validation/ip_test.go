@@ -23,52 +23,56 @@ func TestValidateIP(t *testing.T) {
 			wantErrorMessage: `validation error:
  - uuid: value must be a valid UUID [string.uuid]
  - ip: value is empty, which is not a valid IP address [string.ip_empty]
- - name: value length must be at least 2 characters [string.min_len]
+ - name: must be within 2 and 128 characters [string.is_name]
  - network: value length must be at least 2 characters [string.min_len]
  - project: value is empty, which is not a valid UUID [string.uuid_empty]`,
 		},
 		{
 			name: "Invalid IP, but valid uuid",
 			msg: &apiv2.IP{
-				Uuid: "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
+				Uuid:        "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
+				Description: "A IP",
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
  - ip: value is empty, which is not a valid IP address [string.ip_empty]
- - name: value length must be at least 2 characters [string.min_len]
+ - name: must be within 2 and 128 characters [string.is_name]
  - network: value length must be at least 2 characters [string.min_len]
  - project: value is empty, which is not a valid UUID [string.uuid_empty]`,
 		},
 		{
 			name: "Invalid IP, but valid uuid and ipv4",
 			msg: &apiv2.IP{
-				Uuid: "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
-				Ip:   "1.2.3.4",
+				Uuid:        "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
+				Ip:          "1.2.3.4",
+				Description: "A IP",
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
- - name: value length must be at least 2 characters [string.min_len]
+ - name: must be within 2 and 128 characters [string.is_name]
  - network: value length must be at least 2 characters [string.min_len]
  - project: value is empty, which is not a valid UUID [string.uuid_empty]`,
 		},
 		{
 			name: "Invalid IP, but valid uuid and ipv6",
 			msg: &apiv2.IP{
-				Uuid: "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
-				Ip:   "fe80:db8::1",
+				Uuid:        "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
+				Ip:          "fe80:db8::1",
+				Description: "A IP",
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
- - name: value length must be at least 2 characters [string.min_len]
+ - name: must be within 2 and 128 characters [string.is_name]
  - network: value length must be at least 2 characters [string.min_len]
  - project: value is empty, which is not a valid UUID [string.uuid_empty]`,
 		},
 		{
 			name: "Invalid IP, but valid uuid, name and ipv6",
 			msg: &apiv2.IP{
-				Uuid: "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
-				Name: "Test IPv6",
-				Ip:   "fe80:db8::1",
+				Uuid:        "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
+				Name:        "Test IPv6",
+				Ip:          "fe80:db8::1",
+				Description: "A IP",
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
@@ -78,10 +82,11 @@ func TestValidateIP(t *testing.T) {
 		{
 			name: "Invalid IP, but valid uuid, name, network and ipv6",
 			msg: &apiv2.IP{
-				Uuid:    "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
-				Name:    "Test IPv6",
-				Ip:      "fe80:db8::1",
-				Network: "Internet",
+				Uuid:        "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
+				Name:        "Test IPv6",
+				Ip:          "fe80:db8::1",
+				Network:     "Internet",
+				Description: "A IP",
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
@@ -90,12 +95,13 @@ func TestValidateIP(t *testing.T) {
 		{
 			name: "Invalid IP with invalid type",
 			msg: &apiv2.IP{
-				Uuid:    "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
-				Name:    "Test IPv6",
-				Ip:      "fe80:db8::1",
-				Network: "Internet",
-				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
-				Type:    apiv2.IPType(99),
+				Uuid:        "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
+				Name:        "Test IPv6",
+				Ip:          "fe80:db8::1",
+				Network:     "Internet",
+				Project:     "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
+				Type:        apiv2.IPType(99),
+				Description: "A IP",
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
@@ -104,12 +110,13 @@ func TestValidateIP(t *testing.T) {
 		{
 			name: "Valid IP",
 			msg: &apiv2.IP{
-				Uuid:    "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
-				Name:    "Test IPv6",
-				Ip:      "fe80:db8::1",
-				Network: "Internet",
-				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
-				Type:    apiv2.IPType_IP_TYPE_EPHEMERAL,
+				Uuid:        "e266fcc6-f6de-4ee1-ba26-baa17bf47b13",
+				Name:        "Test IPv6",
+				Ip:          "fe80:db8::1",
+				Network:     "Internet",
+				Project:     "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
+				Type:        apiv2.IPType_IP_TYPE_EPHEMERAL,
+				Description: "A IP",
 			},
 			wantErr: false,
 		},
@@ -142,8 +149,8 @@ func TestValidateIP(t *testing.T) {
 		{
 			name: "Valid IPServiceCreateRequest",
 			msg: &apiv2.IPServiceCreateRequest{
-				Network:   "Internet",
-				Project:   "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
+				Network: "Internet",
+				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
 				Machine: proto.String("57cd8678-9ff0-4f8c-a34a-43d8f16caacf"),
 			},
 			wantErr: false,
@@ -157,7 +164,7 @@ func TestValidateIP(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
- - name: value length must be at least 2 characters [string.min_len]`,
+ - name: must be within 2 and 128 characters [string.is_name]`,
 		},
 	}
 

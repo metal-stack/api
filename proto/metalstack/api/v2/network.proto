@@ -4,6 +4,7 @@ package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // NetworkService serves network address related functions for end users, e.g. with project scope
 service NetworkService {
@@ -67,27 +68,15 @@ message NetworkServiceCreateRequest {
   // Project where this network belongs to
   string project = 1 [(buf.validate.field).string.uuid = true];
   // Name of this network
-  optional string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this network will be created
-  optional string partition = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 4 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Labels on this network
   Labels labels = 5;
   // Parent Network points to the id of the parent network if any
-  optional string parent_network = 6 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string parent_network = 6 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Length per addressfamily
   optional ChildPrefixLength length = 7;
   // AddressFamily to create, defaults to the same as the parent
@@ -103,24 +92,15 @@ message NetworkServiceCreateResponse {
 // NetworkServiceUpdateRequest
 message NetworkServiceUpdateRequest {
   // ID of the network to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Project of the network
   string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this network
-  optional string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Labels on this network
   optional UpdateLabels labels = 6;
 }
@@ -162,10 +142,7 @@ message NetworkServiceListBaseNetworksResponse {
 // NetworkServiceDeleteRequest
 message NetworkServiceDeleteRequest {
   // ID of the network to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project of the network
   string project = 2 [(buf.validate.field).string.uuid = true];
 }
@@ -179,46 +156,24 @@ message NetworkServiceDeleteResponse {
 // Network
 message Network {
   // Id of this network
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Meta for this network
   Meta meta = 2;
   // Name of this network
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this network will be created
-  optional string partition = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 5 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Project where this network belongs to
   optional string project = 6 [(buf.validate.field).string.uuid = true];
   // Namespace if specified, this network is namespaced and can therefore overlap with others
   // Will be equal with project most of the time
   optional string namespace = 7 [(buf.validate.field).string.uuid = true];
   // Prefixes in this network
-  repeated string prefixes = 8;
-  option (buf.validate.message).cel = {
-    id: "prefixes"
-    message: "given prefixes must be valid"
-    expression: "this.prefixes.all(m, m.isIpPrefix())"
-  };
+  repeated string prefixes = 8 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Destination Prefixes in this network
-  repeated string destination_prefixes = 9;
-  option (buf.validate.message).cel = {
-    id: "destination_prefixes"
-    message: "given destination_prefixes must be valid"
-    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
-  };
+  repeated string destination_prefixes = 9 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
   ChildPrefixLength default_child_prefix_length = 10;
   // Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
@@ -230,17 +185,9 @@ message Network {
   // VRF of this network has this VNI.
   optional uint32 vrf = 14;
   // Parent Network points to the id of the parent network if any
-  optional string parent_network = 15 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string parent_network = 15 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-  repeated string additional_announcable_cidrs = 16;
-  option (buf.validate.message).cel = {
-    id: "additional_announcable_cidrs"
-    message: "given additional_announcable_cidrs must be valid"
-    expression: "this.additional_announcable_cidrs.all(m, m.isIpPrefix())"
-  };
+  repeated string additional_announcable_cidrs = 16 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Consumption of ips and prefixes in this networks
   NetworkConsumption consumption = 17;
 }
@@ -253,45 +200,23 @@ message NetworkQuery {
     max_len: 128
   }];
   // Name of this network
-  optional string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
-  optional string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this network will be created
-  optional string partition = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 4 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Project where this network belongs to
   optional string project = 5 [(buf.validate.field).string.uuid = true];
   // Namespace where this network belongs to
   optional string namespace = 6 [(buf.validate.field).string.uuid = true];
   // Prefixes in this network
-  repeated string prefixes = 7;
-  option (buf.validate.message).cel = {
-    id: "prefixes"
-    message: "given prefixes must be valid"
-    expression: "this.prefixes.all(m, m.isIpPrefix())"
-  };
+  repeated string prefixes = 7 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Destination Prefixes in this network
-  repeated string destination_prefixes = 8;
-  option (buf.validate.message).cel = {
-    id: "destination_prefixes"
-    message: "given destination_prefixes must be valid"
-    expression: "this.destination_prefixes.all(m, m.isIpPrefix())"
-  };
+  repeated string destination_prefixes = 8 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // VRF of this network has this VNI.
   optional uint32 vrf = 9;
   // Parent Network points to the id of the parent network if any
-  optional string parent_network = 10 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string parent_network = 10 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Addressfamily to query
   optional NetworkAddressFamily address_family = 11 [(buf.validate.field).enum.defined_only = true];
   // Type of the network to query for

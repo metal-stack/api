@@ -4,6 +4,7 @@ package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // PartitionService serves partition address related functions
 service PartitionService {
@@ -29,7 +30,7 @@ message Partition {
   // Meta for this ip
   Meta meta = 2;
   // Description of this partition
-  string description = 3 [(buf.validate.field).string = {max_len: 128}];
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // PartitionBootConfiguration defines how metal-hammer boots
   PartitionBootConfiguration boot_configuration = 4;
   // DNSServers for this partition

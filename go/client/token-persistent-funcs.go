@@ -11,7 +11,7 @@ type (
 	}
 )
 
-func NewFilesystemTokenPersiter(tokenFile string) (PersistTokenFn, error) {
+func NewFilesystemTokenPersister(tokenFile string) (PersistTokenFn, error) {
 	fileInfo, err := os.Stat(tokenFile)
 	if err != nil {
 		return nil, fmt.Errorf("unable to stat tokenfile:%w", err)

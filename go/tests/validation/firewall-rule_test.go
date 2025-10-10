@@ -25,7 +25,7 @@ func TestValidateFirewallRules(t *testing.T) {
 			wantErrorMessage: `validation error:
  - protocol: value must be one of the defined enum values [enum.defined_only]
  - ports[0]: value must be less than or equal to 65532 [uint32.lte]
- - to[0]: to prefixes must be valid [valid_to]`,
+ - to: given prefixes must be valid [repeated.prefixes]`,
 		},
 		{
 			name: "Invalid Rule with invalid comment",
