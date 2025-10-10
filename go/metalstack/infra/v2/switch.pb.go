@@ -121,7 +121,7 @@ type SwitchServiceNotifyRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Duration of the sync.
 	Duration *durationpb.Duration `protobuf:"bytes,1,opt,name=duration,proto3" json:"duration,omitempty"`
-	// Error if any occured during the sync.
+	// Error if any occurred during the sync.
 	Error *string `protobuf:"bytes,2,opt,name=error,proto3,oneof" json:"error,omitempty"`
 	// PortStates maps port identifiers to the respective port's operational state.
 	PortStates map[string]v2.SwitchPortStatus `protobuf:"bytes,3,rep,name=port_states,json=portStates,proto3" json:"port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.SwitchPortStatus"`
