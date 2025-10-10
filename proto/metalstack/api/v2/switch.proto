@@ -186,4 +186,6 @@ enum SwitchPortStatus {
   SWITCH_PORT_STATUS_UP = 1 [(enum_string_value) = "up"];
   // SWITCH_PORT_STATUS_DOWN means this port is down.
   SWITCH_PORT_STATUS_DOWN = 2 [(enum_string_value) = "down"];
+  // SWITCH_PORT_STATUS_UNKNOWN means the status of this port is unknown.
+  SWITCH_PORT_STATUS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
 }
