@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
-	"net/http/httputil"
 	"time"
 
 	"connectrpc.com/connect"
@@ -22,7 +21,9 @@ type (
 	DialConfig struct {
 		BaseURL string
 		Token   string
-		Debug   bool
+
+		// Optional client Interceptors 
+		Interceptors []connect.Interceptor
 
 		UserAgent string
 		// TokenRenewal defines if and how the token should be renewed
@@ -52,11 +53,7 @@ func (d *DialConfig) HttpClient() *http.Client {
 	}
 
 	return &http.Client{
-		Transport: &AddHeaderTransport{
-			debug: d.Debug,
-			t:     transport,
-			token: d.Token,
-		},
+		Transport: transport,
 	}
 }
 
@@ -154,37 +151,4 @@ func (c *client) renewTokenIfNeeded(replaceBefore time.Duration) error {
 
 	c.config.Log.Info("token refreshed, new token expires in", "expires", c.config.expiresAt.String())
 	return nil
-}
-
-type AddHeaderTransport struct {
-	debug bool
-
-	token string
-	t     http.RoundTripper
-}
-
-func (a *AddHeaderTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	req.Header.Add("Authorization", "Bearer "+a.token)
-
-	if a.debug {
-		reqDump, err := httputil.DumpRequestOut(req, true)
-		if err != nil {
-			fmt.Printf("DEBUG ERROR: %s\n", err)
-		} else {
-			fmt.Printf("DEBUG REQUEST:\n%s\n", string(reqDump))
-		}
-	}
-
-	resp, err := a.t.RoundTrip(req)
-
-	if a.debug && resp != nil {
-		respDump, err := httputil.DumpResponse(resp, true)
-		if err != nil {
-			fmt.Printf("DEBUG ERROR: %s\n", err)
-		} else {
-			fmt.Printf("DEBUG RESPONSE:\n%s\n", string(respDump))
-		}
-	}
-
-	return resp, err
 }
