@@ -185,6 +185,7 @@ func (c *client) Adminv2() Adminv2 {
 		switchservice: adminv2connect.NewSwitchServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tenantservice: adminv2connect.NewTenantServiceClient(
