@@ -4,8 +4,6 @@ GITVERSION := $(shell git describe --long --all)
 BUILDDATE := $(shell date -Iseconds)
 VERSION := $(or ${VERSION},$(shell git describe --tags --exact-match 2> /dev/null || git symbolic-ref -q --short HEAD || git rev-parse --short HEAD))
 LOCALBIN ?= $(shell pwd)/bin
-PROTOC_GEN_CONNECPY ?= $(LOCALBIN)/protoc-gen-connecpy
-PROTOC_GEN_CONNECPY_VERSION ?= 2.3.0
 
 all: proto generate test
 
