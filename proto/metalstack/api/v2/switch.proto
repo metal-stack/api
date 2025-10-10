@@ -85,12 +85,7 @@ message SwitchNic {
 // BGP filter can be used to restrict BGP based on CIDRs and VNIs
 message BGPFilter {
   // CIDRs for which to allow BGP
-  repeated string cidrs = 1;
-  option (buf.validate.message).cel = {
-    id: "cidrs"
-    message: "given cidrs must be valid"
-    expression: "this.cidrs.all(m, m.isIpPrefix())"
-  };
+  repeated string cidrs = 1 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // VNIs for which to allow BGP
   repeated string vnis = 2 [(buf.validate.field).repeated.items.string = {
     min_len: 2

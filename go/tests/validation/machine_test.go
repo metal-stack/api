@@ -38,6 +38,22 @@ func TestValidateMachine(t *testing.T) {
 			},
 			wantErr: false,
 		},
+		{
+			name: "MachineNetworkQuery with valid IPs",
+			msg: &apiv2.MachineNetworkQuery{
+				Ips: []string{"1.2.3.4"},
+			},
+			wantErr: false,
+		},
+		{
+			name: "MachineNetworkQuery with invalid IPs",
+			msg: &apiv2.MachineNetworkQuery{
+				Ips: []string{"1.2.3.4.5"},
+			},
+			wantErr: true,
+			wantErrorMessage: `validation error:
+ - ips: given ips must be valid [repeated.ips]`,
+		},
 	}
 	validateProtos(t, tests, validator)
 }

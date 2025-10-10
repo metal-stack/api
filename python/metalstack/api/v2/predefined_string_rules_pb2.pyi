@@ -11,3 +11,9 @@ IS_DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
 is_description: _descriptor.FieldDescriptor
 IS_PARTITION_FIELD_NUMBER: _ClassVar[int]
 is_partition: _descriptor.FieldDescriptor
+IS_PREFIX_FIELD_NUMBER: _ClassVar[int]
+is_prefix: _descriptor.FieldDescriptor
+PREFIXES_FIELD_NUMBER: _ClassVar[int]
+prefixes: _descriptor.FieldDescriptor
+IPS_FIELD_NUMBER: _ClassVar[int]
+ips: _descriptor.FieldDescriptor

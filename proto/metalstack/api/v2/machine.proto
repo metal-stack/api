@@ -109,15 +109,7 @@ message MachineServiceCreateRequest {
   // Networks the networks that this machine will be placed in.
   repeated MachineAllocationNetwork networks = 13;
   // IPs to to attach to this machine additionally
-  repeated string ips = 14 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_ips"
-        message: "ips must be valid"
-        expression: "this.isIp()"
-      }
-    }
-  }];
+  repeated string ips = 14 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
   // PlacementTags by default machines are spread across the racks inside a partition for every project.
   // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
   repeated string placement_tags = 15;
@@ -338,15 +330,7 @@ message FirewallEgressRule {
     }
   }];
   // To the destination cidrs affected by this rule
-  repeated string to = 3 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_to"
-        message: "to prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string to = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Comment for this rule
   string comment = 4 [(buf.validate.field) = {
     string: {
@@ -368,25 +352,9 @@ message FirewallIngressRule {
     }
   }];
   // To the destination cidrs affected by this rule
-  repeated string to = 3 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_to"
-        message: "to prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string to = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // From the source cidrs affected by this rule
-  repeated string from = 4 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_from"
-        message: "from prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string from = 4 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Comment for this rule
   string comment = 5 [(buf.validate.field) = {
     string: {
@@ -412,35 +380,11 @@ message MachineNetwork {
   // Network the networkID of the allocated machine in this vrf
   string network = 1;
   // Prefixes the prefixes of this network
-  repeated string prefixes = 2 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_prefixes"
-        message: "prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string prefixes = 2 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // DestinationPrefixes prefixes that are reachable within this network
-  repeated string destination_prefixes = 3 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_destination_prefixes"
-        message: "destination_prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string destination_prefixes = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // IPs the ip addresses of the allocated machine in this vrf
-  repeated string ips = 4 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_ips"
-        message: "ips must be valid"
-        expression: "this.isIp()"
-      }
-    }
-  }];
+  repeated string ips = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
   // NetworkType the type of network of this vrf
   NetworkType network_type = 5 [(buf.validate.field).enum.defined_only = true];
   // NatType what type of nat if any should be used
@@ -709,35 +653,11 @@ message MachineNetworkQuery {
   // Networks this machine is connected to
   repeated string networks = 1;
   // Prefixes this machine is connected to
-  repeated string prefixes = 2 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_prefixes"
-        message: "prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string prefixes = 2 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // DestinationPrefixes this machine is connected to
-  repeated string destination_prefixes = 3 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_destination_prefixes"
-        message: "destination_prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string destination_prefixes = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // IPs this machine has
-  repeated string ips = 4 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_ips"
-        message: "ips must be valid"
-        expression: "this.isIp()"
-      }
-    }
-  }];
+  repeated string ips = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
   // VRFs this machine is connected to
   repeated uint64 vrfs = 5;
   // ASNs this machine is connected to

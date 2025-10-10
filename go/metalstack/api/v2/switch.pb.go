@@ -730,11 +730,10 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x0ebgp_port_state\x18\a \x01(\v2%.metalstack.api.v2.SwitchBGPPortStateH\x02R\fbgpPortState\x88\x01\x01B\x06\n" +
 	"\x04_vrfB\r\n" +
 	"\v_bgp_filterB\x11\n" +
-	"\x0f_bgp_port_state\"\x92\x01\n" +
-	"\tBGPFilter\x12\x14\n" +
-	"\x05cidrs\x18\x01 \x03(\tR\x05cidrs\x12#\n" +
-	"\x04vnis\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\"\ar\x05\x10\x02\x18\x80\x01R\x04vnis:J\xbaHG\x1aE\n" +
-	"\x05cidrs\x12\x19given cidrs must be valid\x1a!this.cidrs.all(m, m.isIpPrefix())\"\x8e\x03\n" +
+	"\x0f_bgp_port_state\"T\n" +
+	"\tBGPFilter\x12\"\n" +
+	"\x05cidrs\x18\x01 \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\x05cidrs\x12#\n" +
+	"\x04vnis\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\"\ar\x05\x10\x02\x18\x80\x01R\x04vnis\"\x8e\x03\n" +
 	"\x12SwitchBGPPortState\x12&\n" +
 	"\bneighbor\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\bneighbor\x12)\n" +
