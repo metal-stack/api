@@ -130,7 +130,9 @@ func New(config *DialConfig) (Client, error) {
 	if config.Token != "" {
 		c.interceptors = append(c.interceptors, authInterceptor)
 	}
-	c.interceptors = append(c.interceptors, loggingInterceptor)
+	if config.Log != nil {
+		c.interceptors = append(c.interceptors, loggingInterceptor)
+	}
 	c.interceptors = append(c.interceptors, config.Interceptors...)
 
 	go c.startTokenRenewal()
