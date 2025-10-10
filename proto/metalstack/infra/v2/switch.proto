@@ -2,26 +2,67 @@ syntax = "proto3";
 
 package metalstack.infra.v2;
 
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/switch.proto";
 
-// SwitchService serves switch related functions
+// SwitchService serves switch related functions.
 service SwitchService {
-  // Register a switch
+  // Register a switch.
   rpc Register(SwitchServiceRegisterRequest) returns (SwitchServiceRegisterResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // Notify a switch.
+  rpc Notify(SwitchServiceNotifyRequest) returns (SwitchServiceNotifyResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
 }
 
-// SwitchServiceRegisterRequest
+// SwitchServiceRegisterRequest.
 message SwitchServiceRegisterRequest {
-  // Switch to register
+  // Switch to register.
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServiceRegisterResponse
+// SwitchServiceRegisterResponse.
 message SwitchServiceRegisterResponse {
-  // Switch that was registered
+  // Switch that was registered.
   metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceNotifyRequest.
+message SwitchServiceNotifyRequest {
+  // Duration of the sync.
+  google.protobuf.Duration duration = 1;
+  // Error if any occured during the sync.
+  optional string error = 2;
+  // PortStates maps port identifiers to the respective port's operational state.
+  map<string, metalstack.api.v2.SwitchPortStatus> port_states = 3;
+  // BgpPortStates maps port identifiers to the respective port's BGP state.
+  map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 4;
+}
+
+// SwitchServiceNotifyResponse.
+message SwitchServiceNotifyResponse {
+  // Id of the switch.
+  string id = 1;
+  // Description of the switch.
+  string description = 2;
+  // LastSync holds information about the last sync.
+  SwitchSync last_sync = 3;
+  // LastSyncError holds information about the last erroneous sync.
+  SwitchSync last_sync_error = 4;
+}
+
+// SwitchSync summarizes information about a switch sync.
+message SwitchSync {
+  // Time of the sync.
+  google.protobuf.Timestamp time = 1;
+  // Duration of the sync.
+  google.protobuf.Duration duration = 2;
+  // Error if any occured.
+  optional string error = 3;
 }

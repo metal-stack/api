@@ -2031,11 +2031,31 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceNotifyRequest"><span class="badge">M</span>SwitchServiceNotifyRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntry"><span class="badge">M</span>SwitchServiceNotifyRequest.BgpPortStatesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntry"><span class="badge">M</span>SwitchServiceNotifyRequest.PortStatesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceNotifyResponse"><span class="badge">M</span>SwitchServiceNotifyResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.infra.v2.SwitchServiceRegisterRequest"><span class="badge">M</span>SwitchServiceRegisterRequest</a>
                 </li>
               
                 <li>
                   <a href="#metalstack.infra.v2.SwitchServiceRegisterResponse"><span class="badge">M</span>SwitchServiceRegisterResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.SwitchSync"><span class="badge">M</span>SwitchSync</a>
                 </li>
               
               
@@ -14907,7 +14927,7 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>meta</td>
                   <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
                   <td></td>
-                  <td><p>Meta for this switch </p></td>
+                  <td><p>Meta for this switch. </p></td>
                 </tr>
               
                 <tr>
@@ -14921,7 +14941,7 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>rack</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Rack ID if the switch resides in a rack </p></td>
+                  <td><p>Rack ID if the switch resides in a rack. </p></td>
                 </tr>
               
                 <tr>
@@ -15676,15 +15696,15 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>update_meta</td>
                   <td><a href="#metalstack.api.v2.UpdateMeta">metalstack.api.v2.UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request. </p></td>
                 </tr>
               
                 <tr>
                   <td>updated_at</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated
-must be part of the update request to ensure optimistic locking </p></td>
+                  <td><p>UpdatedAt is the date when this entity was updated.
+must be part of the update request to ensure optimistic locking. </p></td>
                 </tr>
               
                 <tr>
@@ -19589,8 +19609,160 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
       <p></p>
 
       
+        <h3 id="metalstack.infra.v2.SwitchServiceNotifyRequest">SwitchServiceNotifyRequest</h3>
+        <p>SwitchServiceNotifyRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>duration</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>Duration of the sync. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>error</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Error if any occured during the sync. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>port_states</td>
+                  <td><a href="#metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntry">SwitchServiceNotifyRequest.PortStatesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>PortStates maps port identifiers to the respective port&#39;s operational state. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bgp_port_states</td>
+                  <td><a href="#metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntry">SwitchServiceNotifyRequest.BgpPortStatesEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>BgpPortStates maps port identifiers to the respective port&#39;s BGP state. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntry">SwitchServiceNotifyRequest.BgpPortStatesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.api.v2.SwitchBGPPortState">metalstack.api.v2.SwitchBGPPortState</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntry">SwitchServiceNotifyRequest.PortStatesEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.api.v2.SwitchPortStatus">metalstack.api.v2.SwitchPortStatus</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.SwitchServiceNotifyResponse">SwitchServiceNotifyResponse</h3>
+        <p>SwitchServiceNotifyResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Description of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_sync</td>
+                  <td><a href="#metalstack.infra.v2.SwitchSync">SwitchSync</a></td>
+                  <td></td>
+                  <td><p>LastSync holds information about the last sync. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_sync_error</td>
+                  <td><a href="#metalstack.infra.v2.SwitchSync">SwitchSync</a></td>
+                  <td></td>
+                  <td><p>LastSyncError holds information about the last erroneous sync. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.infra.v2.SwitchServiceRegisterRequest">SwitchServiceRegisterRequest</h3>
-        <p>SwitchServiceRegisterRequest</p>
+        <p>SwitchServiceRegisterRequest.</p>
 
         
           <table class="field-table">
@@ -19603,7 +19775,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td>switch</td>
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
                   <td></td>
-                  <td><p>Switch to register </p></td>
+                  <td><p>Switch to register. </p></td>
                 </tr>
               
             </tbody>
@@ -19614,7 +19786,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
         
       
         <h3 id="metalstack.infra.v2.SwitchServiceRegisterResponse">SwitchServiceRegisterResponse</h3>
-        <p>SwitchServiceRegisterResponse</p>
+        <p>SwitchServiceRegisterResponse.</p>
 
         
           <table class="field-table">
@@ -19627,7 +19799,45 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td>switch</td>
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
                   <td></td>
-                  <td><p>Switch that was registered </p></td>
+                  <td><p>Switch that was registered. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.SwitchSync">SwitchSync</h3>
+        <p>SwitchSync summarizes information about a switch sync.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Time of the sync. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>duration</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>Duration of the sync. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>error</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Error if any occured. </p></td>
                 </tr>
               
             </tbody>
@@ -19644,7 +19854,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
       
         <h3 id="metalstack.infra.v2.SwitchService">SwitchService</h3>
-        <p>SwitchService serves switch related functions</p>
+        <p>SwitchService serves switch related functions.</p>
         <table class="enum-table">
           <thead>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
@@ -19655,7 +19865,14 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td>Register</td>
                 <td><a href="#metalstack.infra.v2.SwitchServiceRegisterRequest">SwitchServiceRegisterRequest</a></td>
                 <td><a href="#metalstack.infra.v2.SwitchServiceRegisterResponse">SwitchServiceRegisterResponse</a></td>
-                <td><p>Register a switch</p></td>
+                <td><p>Register a switch.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Notify</td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceNotifyRequest">SwitchServiceNotifyRequest</a></td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceNotifyResponse">SwitchServiceNotifyResponse</a></td>
+                <td><p>Notify a switch.</p></td>
               </tr>
             
           </tbody>

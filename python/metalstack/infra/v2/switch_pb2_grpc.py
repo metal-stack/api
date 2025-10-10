@@ -6,7 +6,7 @@ from metalstack.infra.v2 import switch_pb2 as metalstack_dot_infra_dot_v2_dot_sw
 
 
 class SwitchServiceStub(object):
-    """SwitchService serves switch related functions
+    """SwitchService serves switch related functions.
     """
 
     def __init__(self, channel):
@@ -20,14 +20,26 @@ class SwitchServiceStub(object):
                 request_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest.SerializeToString,
                 response_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse.FromString,
                 _registered_method=True)
+        self.Notify = channel.unary_unary(
+                '/metalstack.infra.v2.SwitchService/Notify',
+                request_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest.SerializeToString,
+                response_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse.FromString,
+                _registered_method=True)
 
 
 class SwitchServiceServicer(object):
-    """SwitchService serves switch related functions
+    """SwitchService serves switch related functions.
     """
 
     def Register(self, request, context):
-        """Register a switch
+        """Register a switch.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Notify(self, request, context):
+        """Notify a switch.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -41,6 +53,11 @@ def add_SwitchServiceServicer_to_server(servicer, server):
                     request_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest.FromString,
                     response_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse.SerializeToString,
             ),
+            'Notify': grpc.unary_unary_rpc_method_handler(
+                    servicer.Notify,
+                    request_deserializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest.FromString,
+                    response_serializer=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'metalstack.infra.v2.SwitchService', rpc_method_handlers)
@@ -50,7 +67,7 @@ def add_SwitchServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class SwitchService(object):
-    """SwitchService serves switch related functions
+    """SwitchService serves switch related functions.
     """
 
     @staticmethod
@@ -70,6 +87,33 @@ class SwitchService(object):
             '/metalstack.infra.v2.SwitchService/Register',
             metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest.SerializeToString,
             metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Notify(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/metalstack.infra.v2.SwitchService/Notify',
+            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest.SerializeToString,
+            metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse.FromString,
             options,
             channel_credentials,
             insecure,

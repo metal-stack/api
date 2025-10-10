@@ -256,11 +256,11 @@ type Switch struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Meta for this switch
+	// Meta for this switch.
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	// Description of the switch.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// Rack ID if the switch resides in a rack
+	// Rack ID if the switch resides in a rack.
 	Rack *string `protobuf:"bytes,4,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
 	// Partition the switch belongs to.
 	Partition string `protobuf:"bytes,5,opt,name=partition,proto3" json:"partition,omitempty"`

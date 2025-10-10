@@ -19,6 +19,9 @@ class SwitchService(Protocol):
     async def register(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
         raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def notify(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse:
+        raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class SwitchServiceASGIApplication(ConnecpyASGIApplication):
     def __init__(self, service: SwitchService, *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None):
@@ -33,6 +36,16 @@ class SwitchServiceASGIApplication(ConnecpyASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.register,
+                ),
+                "/metalstack.infra.v2.SwitchService/Notify": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Notify",
+                        service_name="metalstack.infra.v2.SwitchService",
+                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.notify,
                 ),
             },
             interceptors=interceptors,
@@ -66,9 +79,31 @@ class SwitchServiceClient(ConnecpyClient):
             timeout_ms=timeout_ms,
         )
 
+    async def notify(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Notify",
+                service_name="metalstack.infra.v2.SwitchService",
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 class SwitchServiceSync(Protocol):
     def register(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
+        raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
+    def notify(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse:
         raise ConnecpyException(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -85,6 +120,16 @@ class SwitchServiceWSGIApplication(ConnecpyWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.register,
+                ),
+                "/metalstack.infra.v2.SwitchService/Notify": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Notify",
+                        service_name="metalstack.infra.v2.SwitchService",
+                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.notify,
                 ),
             },
             interceptors=interceptors,
@@ -112,6 +157,26 @@ class SwitchServiceClientSync(ConnecpyClientSync):
                 service_name="metalstack.infra.v2.SwitchService",
                 input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest,
                 output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def notify(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Notify",
+                service_name="metalstack.infra.v2.SwitchService",
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

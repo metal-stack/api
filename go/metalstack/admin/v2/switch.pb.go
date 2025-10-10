@@ -213,10 +213,10 @@ type SwitchServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// UpdatedAt is the date when this entity was updated
-	// must be part of the update request to ensure optimistic locking
+	// UpdatedAt is the date when this entity was updated.
+	// must be part of the update request to ensure optimistic locking.
 	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Description of the switch.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`

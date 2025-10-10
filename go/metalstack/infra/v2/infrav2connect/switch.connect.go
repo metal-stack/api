@@ -35,12 +35,16 @@ const (
 const (
 	// SwitchServiceRegisterProcedure is the fully-qualified name of the SwitchService's Register RPC.
 	SwitchServiceRegisterProcedure = "/metalstack.infra.v2.SwitchService/Register"
+	// SwitchServiceNotifyProcedure is the fully-qualified name of the SwitchService's Notify RPC.
+	SwitchServiceNotifyProcedure = "/metalstack.infra.v2.SwitchService/Notify"
 )
 
 // SwitchServiceClient is a client for the metalstack.infra.v2.SwitchService service.
 type SwitchServiceClient interface {
-	// Register a switch
+	// Register a switch.
 	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
+	// Notify a switch.
+	Notify(context.Context, *connect.Request[v2.SwitchServiceNotifyRequest]) (*connect.Response[v2.SwitchServiceNotifyResponse], error)
 }
 
 // NewSwitchServiceClient constructs a client for the metalstack.infra.v2.SwitchService service. By
@@ -60,12 +64,19 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(switchServiceMethods.ByName("Register")),
 			connect.WithClientOptions(opts...),
 		),
+		notify: connect.NewClient[v2.SwitchServiceNotifyRequest, v2.SwitchServiceNotifyResponse](
+			httpClient,
+			baseURL+SwitchServiceNotifyProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("Notify")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // switchServiceClient implements SwitchServiceClient.
 type switchServiceClient struct {
 	register *connect.Client[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse]
+	notify   *connect.Client[v2.SwitchServiceNotifyRequest, v2.SwitchServiceNotifyResponse]
 }
 
 // Register calls metalstack.infra.v2.SwitchService.Register.
@@ -73,10 +84,17 @@ func (c *switchServiceClient) Register(ctx context.Context, req *connect.Request
 	return c.register.CallUnary(ctx, req)
 }
 
+// Notify calls metalstack.infra.v2.SwitchService.Notify.
+func (c *switchServiceClient) Notify(ctx context.Context, req *connect.Request[v2.SwitchServiceNotifyRequest]) (*connect.Response[v2.SwitchServiceNotifyResponse], error) {
+	return c.notify.CallUnary(ctx, req)
+}
+
 // SwitchServiceHandler is an implementation of the metalstack.infra.v2.SwitchService service.
 type SwitchServiceHandler interface {
-	// Register a switch
+	// Register a switch.
 	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
+	// Notify a switch.
+	Notify(context.Context, *connect.Request[v2.SwitchServiceNotifyRequest]) (*connect.Response[v2.SwitchServiceNotifyResponse], error)
 }
 
 // NewSwitchServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -92,10 +110,18 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(switchServiceMethods.ByName("Register")),
 		connect.WithHandlerOptions(opts...),
 	)
+	switchServiceNotifyHandler := connect.NewUnaryHandler(
+		SwitchServiceNotifyProcedure,
+		svc.Notify,
+		connect.WithSchema(switchServiceMethods.ByName("Notify")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.infra.v2.SwitchService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case SwitchServiceRegisterProcedure:
 			switchServiceRegisterHandler.ServeHTTP(w, r)
+		case SwitchServiceNotifyProcedure:
+			switchServiceNotifyHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -107,4 +133,8 @@ type UnimplementedSwitchServiceHandler struct{}
 
 func (UnimplementedSwitchServiceHandler) Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Register is not implemented"))
+}
+
+func (UnimplementedSwitchServiceHandler) Notify(context.Context, *connect.Request[v2.SwitchServiceNotifyRequest]) (*connect.Response[v2.SwitchServiceNotifyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Notify is not implemented"))
 }
