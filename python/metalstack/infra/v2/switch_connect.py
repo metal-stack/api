@@ -19,7 +19,7 @@ class SwitchService(Protocol):
     async def register(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
-    async def notify(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse:
+    async def heartbeat(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -37,15 +37,15 @@ class SwitchServiceASGIApplication(ConnectASGIApplication):
                     ),
                     function=service.register,
                 ),
-                "/metalstack.infra.v2.SwitchService/Notify": Endpoint.unary(
+                "/metalstack.infra.v2.SwitchService/Heartbeat": Endpoint.unary(
                     method=MethodInfo(
-                        name="Notify",
+                        name="Heartbeat",
                         service_name="metalstack.infra.v2.SwitchService",
-                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
-                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse,
+                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=service.notify,
+                    function=service.heartbeat,
                 ),
             },
             interceptors=interceptors,
@@ -79,20 +79,20 @@ class SwitchServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
-    async def notify(
+    async def heartbeat(
         self,
-        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
         *,
         headers: Headers | Mapping[str, str] | None = None,
         timeout_ms: int | None = None,
-    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse:
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
         return await self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="Notify",
+                name="Heartbeat",
                 service_name="metalstack.infra.v2.SwitchService",
-                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
-                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse,
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
@@ -103,7 +103,7 @@ class SwitchServiceClient(ConnectClient):
 class SwitchServiceSync(Protocol):
     def register(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-    def notify(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse:
+    def heartbeat(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -121,15 +121,15 @@ class SwitchServiceWSGIApplication(ConnectWSGIApplication):
                     ),
                     function=service.register,
                 ),
-                "/metalstack.infra.v2.SwitchService/Notify": EndpointSync.unary(
+                "/metalstack.infra.v2.SwitchService/Heartbeat": EndpointSync.unary(
                     method=MethodInfo(
-                        name="Notify",
+                        name="Heartbeat",
                         service_name="metalstack.infra.v2.SwitchService",
-                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
-                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse,
+                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=service.notify,
+                    function=service.heartbeat,
                 ),
             },
             interceptors=interceptors,
@@ -163,20 +163,20 @@ class SwitchServiceClientSync(ConnectClientSync):
             timeout_ms=timeout_ms,
         )
 
-    def notify(
+    def heartbeat(
         self,
-        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
         *,
         headers: Headers | Mapping[str, str] | None = None,
         timeout_ms: int | None = None,
-    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse:
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
         return self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="Notify",
+                name="Heartbeat",
                 service_name="metalstack.infra.v2.SwitchService",
-                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyRequest,
-                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceNotifyResponse,
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

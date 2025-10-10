@@ -17,28 +17,28 @@ type SwitchServiceClient struct {
 	mock.Mock
 }
 
-// Notify provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceClient) Notify(_a0 context.Context, _a1 *connect.Request[infrav2.SwitchServiceNotifyRequest]) (*connect.Response[infrav2.SwitchServiceNotifyResponse], error) {
+// Heartbeat provides a mock function with given fields: _a0, _a1
+func (_m *SwitchServiceClient) Heartbeat(_a0 context.Context, _a1 *connect.Request[infrav2.SwitchServiceHeartbeatRequest]) (*connect.Response[infrav2.SwitchServiceHeartbeatResponse], error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
-		panic("no return value specified for Notify")
+		panic("no return value specified for Heartbeat")
 	}
 
-	var r0 *connect.Response[infrav2.SwitchServiceNotifyResponse]
+	var r0 *connect.Response[infrav2.SwitchServiceHeartbeatResponse]
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceNotifyRequest]) (*connect.Response[infrav2.SwitchServiceNotifyResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceHeartbeatRequest]) (*connect.Response[infrav2.SwitchServiceHeartbeatResponse], error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceNotifyRequest]) *connect.Response[infrav2.SwitchServiceNotifyResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceHeartbeatRequest]) *connect.Response[infrav2.SwitchServiceHeartbeatResponse]); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.SwitchServiceNotifyResponse])
+			r0 = ret.Get(0).(*connect.Response[infrav2.SwitchServiceHeartbeatResponse])
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.SwitchServiceNotifyRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.SwitchServiceHeartbeatRequest]) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

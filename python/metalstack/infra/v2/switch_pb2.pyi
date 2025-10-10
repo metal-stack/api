@@ -24,7 +24,7 @@ class SwitchServiceRegisterResponse(_message.Message):
     switch: _switch_pb2.Switch
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
 
-class SwitchServiceNotifyRequest(_message.Message):
+class SwitchServiceHeartbeatRequest(_message.Message):
     __slots__ = ("duration", "error", "port_states", "bgp_port_states")
     class PortStatesEntry(_message.Message):
         __slots__ = ("key", "value")
@@ -50,17 +50,15 @@ class SwitchServiceNotifyRequest(_message.Message):
     bgp_port_states: _containers.MessageMap[str, _switch_pb2.SwitchBGPPortState]
     def __init__(self, duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ..., port_states: _Optional[_Mapping[str, _switch_pb2.SwitchPortStatus]] = ..., bgp_port_states: _Optional[_Mapping[str, _switch_pb2.SwitchBGPPortState]] = ...) -> None: ...
 
-class SwitchServiceNotifyResponse(_message.Message):
-    __slots__ = ("id", "description", "last_sync", "last_sync_error")
+class SwitchServiceHeartbeatResponse(_message.Message):
+    __slots__ = ("id", "last_sync", "last_sync_error")
     ID_FIELD_NUMBER: _ClassVar[int]
-    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     LAST_SYNC_FIELD_NUMBER: _ClassVar[int]
     LAST_SYNC_ERROR_FIELD_NUMBER: _ClassVar[int]
     id: str
-    description: str
     last_sync: SwitchSync
     last_sync_error: SwitchSync
-    def __init__(self, id: _Optional[str] = ..., description: _Optional[str] = ..., last_sync: _Optional[_Union[SwitchSync, _Mapping]] = ..., last_sync_error: _Optional[_Union[SwitchSync, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., last_sync: _Optional[_Union[SwitchSync, _Mapping]] = ..., last_sync_error: _Optional[_Union[SwitchSync, _Mapping]] = ...) -> None: ...
 
 class SwitchSync(_message.Message):
     __slots__ = ("time", "duration", "error")

@@ -129,9 +129,9 @@ message SwitchBGPPortState {
     min_len: 2
     max_len: 128
   }];
-  // BGPState of the connection on this port.
+  // BgpState of the connection on this port.
   BGPState bgp_state = 4 [(buf.validate.field).enum.defined_only = true];
-  // BGPTimerUpEstablished reports when this port's BGP connection was established.
+  // BgpTimerUpEstablished reports when this port's BGP connection was established.
   google.protobuf.Timestamp bgp_timer_up_established = 5;
   // SentPrefixCounter counts the prefixes sent by the switch on this port.
   uint64 sent_prefix_counter = 6;

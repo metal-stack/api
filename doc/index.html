@@ -1872,19 +1872,19 @@
             <ul>
               
                 <li>
-                  <a href="#metalstack.infra.v2.SwitchServiceNotifyRequest"><span class="badge">M</span>SwitchServiceNotifyRequest</a>
+                  <a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest"><span class="badge">M</span>SwitchServiceHeartbeatRequest</a>
                 </li>
               
                 <li>
-                  <a href="#metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntry"><span class="badge">M</span>SwitchServiceNotifyRequest.BgpPortStatesEntry</a>
+                  <a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry"><span class="badge">M</span>SwitchServiceHeartbeatRequest.BgpPortStatesEntry</a>
                 </li>
               
                 <li>
-                  <a href="#metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntry"><span class="badge">M</span>SwitchServiceNotifyRequest.PortStatesEntry</a>
+                  <a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry"><span class="badge">M</span>SwitchServiceHeartbeatRequest.PortStatesEntry</a>
                 </li>
               
                 <li>
-                  <a href="#metalstack.infra.v2.SwitchServiceNotifyResponse"><span class="badge">M</span>SwitchServiceNotifyResponse</a>
+                  <a href="#metalstack.infra.v2.SwitchServiceHeartbeatResponse"><span class="badge">M</span>SwitchServiceHeartbeatResponse</a>
                 </li>
               
                 <li>
@@ -10357,14 +10357,14 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>bgp_state</td>
                   <td><a href="#metalstack.api.v2.BGPState">BGPState</a></td>
                   <td></td>
-                  <td><p>BGPState of the connection on this port. </p></td>
+                  <td><p>BgpState of the connection on this port. </p></td>
                 </tr>
               
                 <tr>
                   <td>bgp_timer_up_established</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>BGPTimerUpEstablished reports when this port&#39;s BGP connection was established. </p></td>
+                  <td><p>BgpTimerUpEstablished reports when this port&#39;s BGP connection was established. </p></td>
                 </tr>
               
                 <tr>
@@ -14924,8 +14924,8 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
       <p></p>
 
       
-        <h3 id="metalstack.infra.v2.SwitchServiceNotifyRequest">SwitchServiceNotifyRequest</h3>
-        <p>SwitchServiceNotifyRequest.</p>
+        <h3 id="metalstack.infra.v2.SwitchServiceHeartbeatRequest">SwitchServiceHeartbeatRequest</h3>
+        <p>SwitchServiceHeartbeatRequest.</p>
 
         
           <table class="field-table">
@@ -14950,14 +14950,14 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
               
                 <tr>
                   <td>port_states</td>
-                  <td><a href="#metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntry">SwitchServiceNotifyRequest.PortStatesEntry</a></td>
+                  <td><a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry">SwitchServiceHeartbeatRequest.PortStatesEntry</a></td>
                   <td>repeated</td>
                   <td><p>PortStates maps port identifiers to the respective port&#39;s operational state. </p></td>
                 </tr>
               
                 <tr>
                   <td>bgp_port_states</td>
-                  <td><a href="#metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntry">SwitchServiceNotifyRequest.BgpPortStatesEntry</a></td>
+                  <td><a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry">SwitchServiceHeartbeatRequest.BgpPortStatesEntry</a></td>
                   <td>repeated</td>
                   <td><p>BgpPortStates maps port identifiers to the respective port&#39;s BGP state. </p></td>
                 </tr>
@@ -14969,7 +14969,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
-        <h3 id="metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntry">SwitchServiceNotifyRequest.BgpPortStatesEntry</h3>
+        <h3 id="metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry">SwitchServiceHeartbeatRequest.BgpPortStatesEntry</h3>
         <p></p>
 
         
@@ -15000,7 +15000,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
-        <h3 id="metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntry">SwitchServiceNotifyRequest.PortStatesEntry</h3>
+        <h3 id="metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry">SwitchServiceHeartbeatRequest.PortStatesEntry</h3>
         <p></p>
 
         
@@ -15031,8 +15031,8 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
-        <h3 id="metalstack.infra.v2.SwitchServiceNotifyResponse">SwitchServiceNotifyResponse</h3>
-        <p>SwitchServiceNotifyResponse.</p>
+        <h3 id="metalstack.infra.v2.SwitchServiceHeartbeatResponse">SwitchServiceHeartbeatResponse</h3>
+        <p>SwitchServiceHeartbeatResponse.</p>
 
         
           <table class="field-table">
@@ -15046,13 +15046,6 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Id of the switch. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>description</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Description of the switch. </p></td>
                 </tr>
               
                 <tr>
@@ -15184,10 +15177,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
               </tr>
             
               <tr>
-                <td>Notify</td>
-                <td><a href="#metalstack.infra.v2.SwitchServiceNotifyRequest">SwitchServiceNotifyRequest</a></td>
-                <td><a href="#metalstack.infra.v2.SwitchServiceNotifyResponse">SwitchServiceNotifyResponse</a></td>
-                <td><p>Notify a switch.</p></td>
+                <td>Heartbeat</td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest">SwitchServiceHeartbeatRequest</a></td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceHeartbeatResponse">SwitchServiceHeartbeatResponse</a></td>
+                <td><p>Heartbeat a switch.</p></td>
               </tr>
             
           </tbody>

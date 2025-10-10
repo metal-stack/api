@@ -624,9 +624,9 @@ type SwitchBGPPortState struct {
 	PeerGroup string `protobuf:"bytes,2,opt,name=peer_group,json=peerGroup,proto3" json:"peer_group,omitempty"`
 	// VrfName of the VRF this port is bound to.
 	VrfName string `protobuf:"bytes,3,opt,name=vrf_name,json=vrfName,proto3" json:"vrf_name,omitempty"`
-	// BGPState of the connection on this port.
+	// BgpState of the connection on this port.
 	BgpState BGPState `protobuf:"varint,4,opt,name=bgp_state,json=bgpState,proto3,enum=metalstack.api.v2.BGPState" json:"bgp_state,omitempty"`
-	// BGPTimerUpEstablished reports when this port's BGP connection was established.
+	// BgpTimerUpEstablished reports when this port's BGP connection was established.
 	BgpTimerUpEstablished *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=bgp_timer_up_established,json=bgpTimerUpEstablished,proto3" json:"bgp_timer_up_established,omitempty"`
 	// SentPrefixCounter counts the prefixes sent by the switch on this port.
 	SentPrefixCounter uint64 `protobuf:"varint,6,opt,name=sent_prefix_counter,json=sentPrefixCounter,proto3" json:"sent_prefix_counter,omitempty"`

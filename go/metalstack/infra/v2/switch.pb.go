@@ -116,8 +116,8 @@ func (x *SwitchServiceRegisterResponse) GetSwitch() *v2.Switch {
 	return nil
 }
 
-// SwitchServiceNotifyRequest.
-type SwitchServiceNotifyRequest struct {
+// SwitchServiceHeartbeatRequest.
+type SwitchServiceHeartbeatRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Duration of the sync.
 	Duration *durationpb.Duration `protobuf:"bytes,1,opt,name=duration,proto3" json:"duration,omitempty"`
@@ -131,20 +131,20 @@ type SwitchServiceNotifyRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SwitchServiceNotifyRequest) Reset() {
-	*x = SwitchServiceNotifyRequest{}
+func (x *SwitchServiceHeartbeatRequest) Reset() {
+	*x = SwitchServiceHeartbeatRequest{}
 	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SwitchServiceNotifyRequest) String() string {
+func (x *SwitchServiceHeartbeatRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SwitchServiceNotifyRequest) ProtoMessage() {}
+func (*SwitchServiceHeartbeatRequest) ProtoMessage() {}
 
-func (x *SwitchServiceNotifyRequest) ProtoReflect() protoreflect.Message {
+func (x *SwitchServiceHeartbeatRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -156,68 +156,66 @@ func (x *SwitchServiceNotifyRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SwitchServiceNotifyRequest.ProtoReflect.Descriptor instead.
-func (*SwitchServiceNotifyRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use SwitchServiceHeartbeatRequest.ProtoReflect.Descriptor instead.
+func (*SwitchServiceHeartbeatRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *SwitchServiceNotifyRequest) GetDuration() *durationpb.Duration {
+func (x *SwitchServiceHeartbeatRequest) GetDuration() *durationpb.Duration {
 	if x != nil {
 		return x.Duration
 	}
 	return nil
 }
 
-func (x *SwitchServiceNotifyRequest) GetError() string {
+func (x *SwitchServiceHeartbeatRequest) GetError() string {
 	if x != nil && x.Error != nil {
 		return *x.Error
 	}
 	return ""
 }
 
-func (x *SwitchServiceNotifyRequest) GetPortStates() map[string]v2.SwitchPortStatus {
+func (x *SwitchServiceHeartbeatRequest) GetPortStates() map[string]v2.SwitchPortStatus {
 	if x != nil {
 		return x.PortStates
 	}
 	return nil
 }
 
-func (x *SwitchServiceNotifyRequest) GetBgpPortStates() map[string]*v2.SwitchBGPPortState {
+func (x *SwitchServiceHeartbeatRequest) GetBgpPortStates() map[string]*v2.SwitchBGPPortState {
 	if x != nil {
 		return x.BgpPortStates
 	}
 	return nil
 }
 
-// SwitchServiceNotifyResponse.
-type SwitchServiceNotifyResponse struct {
+// SwitchServiceHeartbeatResponse.
+type SwitchServiceHeartbeatResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Description of the switch.
-	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// LastSync holds information about the last sync.
-	LastSync *SwitchSync `protobuf:"bytes,3,opt,name=last_sync,json=lastSync,proto3" json:"last_sync,omitempty"`
+	LastSync *SwitchSync `protobuf:"bytes,2,opt,name=last_sync,json=lastSync,proto3" json:"last_sync,omitempty"`
 	// LastSyncError holds information about the last erroneous sync.
-	LastSyncError *SwitchSync `protobuf:"bytes,4,opt,name=last_sync_error,json=lastSyncError,proto3" json:"last_sync_error,omitempty"`
+	LastSyncError *SwitchSync `protobuf:"bytes,3,opt,name=last_sync_error,json=lastSyncError,proto3" json:"last_sync_error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *SwitchServiceNotifyResponse) Reset() {
-	*x = SwitchServiceNotifyResponse{}
+func (x *SwitchServiceHeartbeatResponse) Reset() {
+	*x = SwitchServiceHeartbeatResponse{}
 	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *SwitchServiceNotifyResponse) String() string {
+func (x *SwitchServiceHeartbeatResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SwitchServiceNotifyResponse) ProtoMessage() {}
+func (*SwitchServiceHeartbeatResponse) ProtoMessage() {}
 
-func (x *SwitchServiceNotifyResponse) ProtoReflect() protoreflect.Message {
+func (x *SwitchServiceHeartbeatResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -229,33 +227,26 @@ func (x *SwitchServiceNotifyResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SwitchServiceNotifyResponse.ProtoReflect.Descriptor instead.
-func (*SwitchServiceNotifyResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use SwitchServiceHeartbeatResponse.ProtoReflect.Descriptor instead.
+func (*SwitchServiceHeartbeatResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *SwitchServiceNotifyResponse) GetId() string {
+func (x *SwitchServiceHeartbeatResponse) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *SwitchServiceNotifyResponse) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *SwitchServiceNotifyResponse) GetLastSync() *SwitchSync {
+func (x *SwitchServiceHeartbeatResponse) GetLastSync() *SwitchSync {
 	if x != nil {
 		return x.LastSync
 	}
 	return nil
 }
 
-func (x *SwitchServiceNotifyResponse) GetLastSyncError() *SwitchSync {
+func (x *SwitchServiceHeartbeatResponse) GetLastSyncError() *SwitchSync {
 	if x != nil {
 		return x.LastSyncError
 	}
@@ -334,34 +325,33 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\x1cSwitchServiceRegisterRequest\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"R\n" +
 	"\x1dSwitchServiceRegisterResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\x93\x04\n" +
-	"\x1aSwitchServiceNotifyRequest\x125\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\x9c\x04\n" +
+	"\x1dSwitchServiceHeartbeatRequest\x125\n" +
 	"\bduration\x18\x01 \x01(\v2\x19.google.protobuf.DurationR\bduration\x12\x19\n" +
-	"\x05error\x18\x02 \x01(\tH\x00R\x05error\x88\x01\x01\x12`\n" +
-	"\vport_states\x18\x03 \x03(\v2?.metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntryR\n" +
-	"portStates\x12j\n" +
-	"\x0fbgp_port_states\x18\x04 \x03(\v2B.metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntryR\rbgpPortStates\x1ab\n" +
+	"\x05error\x18\x02 \x01(\tH\x00R\x05error\x88\x01\x01\x12c\n" +
+	"\vport_states\x18\x03 \x03(\v2B.metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntryR\n" +
+	"portStates\x12m\n" +
+	"\x0fbgp_port_states\x18\x04 \x03(\v2E.metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntryR\rbgpPortStates\x1ab\n" +
 	"\x0fPortStatesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x129\n" +
 	"\x05value\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusR\x05value:\x028\x01\x1ag\n" +
 	"\x12BgpPortStatesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12;\n" +
 	"\x05value\x18\x02 \x01(\v2%.metalstack.api.v2.SwitchBGPPortStateR\x05value:\x028\x01B\b\n" +
-	"\x06_error\"\xd6\x01\n" +
-	"\x1bSwitchServiceNotifyResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
-	"\vdescription\x18\x02 \x01(\tR\vdescription\x12<\n" +
-	"\tlast_sync\x18\x03 \x01(\v2\x1f.metalstack.infra.v2.SwitchSyncR\blastSync\x12G\n" +
-	"\x0flast_sync_error\x18\x04 \x01(\v2\x1f.metalstack.infra.v2.SwitchSyncR\rlastSyncError\"\x98\x01\n" +
+	"\x06_error\"\xb7\x01\n" +
+	"\x1eSwitchServiceHeartbeatResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12<\n" +
+	"\tlast_sync\x18\x02 \x01(\v2\x1f.metalstack.infra.v2.SwitchSyncR\blastSync\x12G\n" +
+	"\x0flast_sync_error\x18\x03 \x01(\v2\x1f.metalstack.infra.v2.SwitchSyncR\rlastSyncError\"\x98\x01\n" +
 	"\n" +
 	"SwitchSync\x12.\n" +
 	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x125\n" +
 	"\bduration\x18\x02 \x01(\v2\x19.google.protobuf.DurationR\bduration\x12\x19\n" +
 	"\x05error\x18\x03 \x01(\tH\x00R\x05error\x88\x01\x01B\b\n" +
-	"\x06_error2\x85\x02\n" +
+	"\x06_error2\x8e\x02\n" +
 	"\rSwitchService\x12|\n" +
-	"\bRegister\x121.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a2.metalstack.infra.v2.SwitchServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12v\n" +
-	"\x06Notify\x12/.metalstack.infra.v2.SwitchServiceNotifyRequest\x1a0.metalstack.infra.v2.SwitchServiceNotifyResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xcf\x01\n" +
+	"\bRegister\x121.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a2.metalstack.infra.v2.SwitchServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x7f\n" +
+	"\tHeartbeat\x122.metalstack.infra.v2.SwitchServiceHeartbeatRequest\x1a3.metalstack.infra.v2.SwitchServiceHeartbeatResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xcf\x01\n" +
 	"\x17com.metalstack.infra.v2B\vSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
 var (
@@ -378,35 +368,35 @@ func file_metalstack_infra_v2_switch_proto_rawDescGZIP() []byte {
 
 var file_metalstack_infra_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_metalstack_infra_v2_switch_proto_goTypes = []any{
-	(*SwitchServiceRegisterRequest)(nil),  // 0: metalstack.infra.v2.SwitchServiceRegisterRequest
-	(*SwitchServiceRegisterResponse)(nil), // 1: metalstack.infra.v2.SwitchServiceRegisterResponse
-	(*SwitchServiceNotifyRequest)(nil),    // 2: metalstack.infra.v2.SwitchServiceNotifyRequest
-	(*SwitchServiceNotifyResponse)(nil),   // 3: metalstack.infra.v2.SwitchServiceNotifyResponse
-	(*SwitchSync)(nil),                    // 4: metalstack.infra.v2.SwitchSync
-	nil,                                   // 5: metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntry
-	nil,                                   // 6: metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntry
-	(*v2.Switch)(nil),                     // 7: metalstack.api.v2.Switch
-	(*durationpb.Duration)(nil),           // 8: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil),         // 9: google.protobuf.Timestamp
-	(v2.SwitchPortStatus)(0),              // 10: metalstack.api.v2.SwitchPortStatus
-	(*v2.SwitchBGPPortState)(nil),         // 11: metalstack.api.v2.SwitchBGPPortState
+	(*SwitchServiceRegisterRequest)(nil),   // 0: metalstack.infra.v2.SwitchServiceRegisterRequest
+	(*SwitchServiceRegisterResponse)(nil),  // 1: metalstack.infra.v2.SwitchServiceRegisterResponse
+	(*SwitchServiceHeartbeatRequest)(nil),  // 2: metalstack.infra.v2.SwitchServiceHeartbeatRequest
+	(*SwitchServiceHeartbeatResponse)(nil), // 3: metalstack.infra.v2.SwitchServiceHeartbeatResponse
+	(*SwitchSync)(nil),                     // 4: metalstack.infra.v2.SwitchSync
+	nil,                                    // 5: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
+	nil,                                    // 6: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
+	(*v2.Switch)(nil),                      // 7: metalstack.api.v2.Switch
+	(*durationpb.Duration)(nil),            // 8: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),          // 9: google.protobuf.Timestamp
+	(v2.SwitchPortStatus)(0),               // 10: metalstack.api.v2.SwitchPortStatus
+	(*v2.SwitchBGPPortState)(nil),          // 11: metalstack.api.v2.SwitchBGPPortState
 }
 var file_metalstack_infra_v2_switch_proto_depIdxs = []int32{
 	7,  // 0: metalstack.infra.v2.SwitchServiceRegisterRequest.switch:type_name -> metalstack.api.v2.Switch
 	7,  // 1: metalstack.infra.v2.SwitchServiceRegisterResponse.switch:type_name -> metalstack.api.v2.Switch
-	8,  // 2: metalstack.infra.v2.SwitchServiceNotifyRequest.duration:type_name -> google.protobuf.Duration
-	5,  // 3: metalstack.infra.v2.SwitchServiceNotifyRequest.port_states:type_name -> metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntry
-	6,  // 4: metalstack.infra.v2.SwitchServiceNotifyRequest.bgp_port_states:type_name -> metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntry
-	4,  // 5: metalstack.infra.v2.SwitchServiceNotifyResponse.last_sync:type_name -> metalstack.infra.v2.SwitchSync
-	4,  // 6: metalstack.infra.v2.SwitchServiceNotifyResponse.last_sync_error:type_name -> metalstack.infra.v2.SwitchSync
+	8,  // 2: metalstack.infra.v2.SwitchServiceHeartbeatRequest.duration:type_name -> google.protobuf.Duration
+	5,  // 3: metalstack.infra.v2.SwitchServiceHeartbeatRequest.port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
+	6,  // 4: metalstack.infra.v2.SwitchServiceHeartbeatRequest.bgp_port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
+	4,  // 5: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync:type_name -> metalstack.infra.v2.SwitchSync
+	4,  // 6: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync_error:type_name -> metalstack.infra.v2.SwitchSync
 	9,  // 7: metalstack.infra.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
 	8,  // 8: metalstack.infra.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
-	10, // 9: metalstack.infra.v2.SwitchServiceNotifyRequest.PortStatesEntry.value:type_name -> metalstack.api.v2.SwitchPortStatus
-	11, // 10: metalstack.infra.v2.SwitchServiceNotifyRequest.BgpPortStatesEntry.value:type_name -> metalstack.api.v2.SwitchBGPPortState
+	10, // 9: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry.value:type_name -> metalstack.api.v2.SwitchPortStatus
+	11, // 10: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry.value:type_name -> metalstack.api.v2.SwitchBGPPortState
 	0,  // 11: metalstack.infra.v2.SwitchService.Register:input_type -> metalstack.infra.v2.SwitchServiceRegisterRequest
-	2,  // 12: metalstack.infra.v2.SwitchService.Notify:input_type -> metalstack.infra.v2.SwitchServiceNotifyRequest
+	2,  // 12: metalstack.infra.v2.SwitchService.Heartbeat:input_type -> metalstack.infra.v2.SwitchServiceHeartbeatRequest
 	1,  // 13: metalstack.infra.v2.SwitchService.Register:output_type -> metalstack.infra.v2.SwitchServiceRegisterResponse
-	3,  // 14: metalstack.infra.v2.SwitchService.Notify:output_type -> metalstack.infra.v2.SwitchServiceNotifyResponse
+	3,  // 14: metalstack.infra.v2.SwitchService.Heartbeat:output_type -> metalstack.infra.v2.SwitchServiceHeartbeatResponse
 	13, // [13:15] is the sub-list for method output_type
 	11, // [11:13] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name

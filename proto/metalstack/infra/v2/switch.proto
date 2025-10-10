@@ -14,8 +14,8 @@ service SwitchService {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Notify a switch.
-  rpc Notify(SwitchServiceNotifyRequest) returns (SwitchServiceNotifyResponse) {
+  // Heartbeat a switch.
+  rpc Heartbeat(SwitchServiceHeartbeatRequest) returns (SwitchServiceHeartbeatResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
@@ -33,8 +33,8 @@ message SwitchServiceRegisterResponse {
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServiceNotifyRequest.
-message SwitchServiceNotifyRequest {
+// SwitchServiceHeartbeatRequest.
+message SwitchServiceHeartbeatRequest {
   // Duration of the sync.
   google.protobuf.Duration duration = 1;
   // Error if any occurred during the sync.
@@ -45,16 +45,14 @@ message SwitchServiceNotifyRequest {
   map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 4;
 }
 
-// SwitchServiceNotifyResponse.
-message SwitchServiceNotifyResponse {
+// SwitchServiceHeartbeatResponse.
+message SwitchServiceHeartbeatResponse {
   // Id of the switch.
   string id = 1;
-  // Description of the switch.
-  string description = 2;
   // LastSync holds information about the last sync.
-  SwitchSync last_sync = 3;
+  SwitchSync last_sync = 2;
   // LastSyncError holds information about the last erroneous sync.
-  SwitchSync last_sync_error = 4;
+  SwitchSync last_sync_error = 3;
 }
 
 // SwitchSync summarizes information about a switch sync.

@@ -95,7 +95,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: Infra{
 				"INFRA_ROLE_EDITOR": []string{
-					"/metalstack.infra.v2.SwitchService/Notify",
+					"/metalstack.infra.v2.SwitchService/Heartbeat",
 				},
 				"INFRA_ROLE_VIEWER": []string{
 					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
@@ -281,7 +281,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      true,
-			"/metalstack.infra.v2.SwitchService/Notify":          true,
+			"/metalstack.infra.v2.SwitchService/Heartbeat":       true,
 			"/metalstack.infra.v2.SwitchService/Register":        true,
 		},
 		Visibility: Visibility{
@@ -356,7 +356,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: map[string]bool{
 				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
-				"/metalstack.infra.v2.SwitchService/Notify":     true,
+				"/metalstack.infra.v2.SwitchService/Heartbeat":  true,
 				"/metalstack.infra.v2.SwitchService/Register":   true,
 			},
 			Tenant: map[string]bool{
@@ -493,7 +493,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              false,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      false,
-			"/metalstack.infra.v2.SwitchService/Notify":          false,
+			"/metalstack.infra.v2.SwitchService/Heartbeat":       false,
 			"/metalstack.infra.v2.SwitchService/Register":        false,
 		},
 	}

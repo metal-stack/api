@@ -35,16 +35,16 @@ const (
 const (
 	// SwitchServiceRegisterProcedure is the fully-qualified name of the SwitchService's Register RPC.
 	SwitchServiceRegisterProcedure = "/metalstack.infra.v2.SwitchService/Register"
-	// SwitchServiceNotifyProcedure is the fully-qualified name of the SwitchService's Notify RPC.
-	SwitchServiceNotifyProcedure = "/metalstack.infra.v2.SwitchService/Notify"
+	// SwitchServiceHeartbeatProcedure is the fully-qualified name of the SwitchService's Heartbeat RPC.
+	SwitchServiceHeartbeatProcedure = "/metalstack.infra.v2.SwitchService/Heartbeat"
 )
 
 // SwitchServiceClient is a client for the metalstack.infra.v2.SwitchService service.
 type SwitchServiceClient interface {
 	// Register a switch.
 	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
-	// Notify a switch.
-	Notify(context.Context, *connect.Request[v2.SwitchServiceNotifyRequest]) (*connect.Response[v2.SwitchServiceNotifyResponse], error)
+	// Heartbeat a switch.
+	Heartbeat(context.Context, *connect.Request[v2.SwitchServiceHeartbeatRequest]) (*connect.Response[v2.SwitchServiceHeartbeatResponse], error)
 }
 
 // NewSwitchServiceClient constructs a client for the metalstack.infra.v2.SwitchService service. By
@@ -64,10 +64,10 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(switchServiceMethods.ByName("Register")),
 			connect.WithClientOptions(opts...),
 		),
-		notify: connect.NewClient[v2.SwitchServiceNotifyRequest, v2.SwitchServiceNotifyResponse](
+		heartbeat: connect.NewClient[v2.SwitchServiceHeartbeatRequest, v2.SwitchServiceHeartbeatResponse](
 			httpClient,
-			baseURL+SwitchServiceNotifyProcedure,
-			connect.WithSchema(switchServiceMethods.ByName("Notify")),
+			baseURL+SwitchServiceHeartbeatProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("Heartbeat")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -75,8 +75,8 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // switchServiceClient implements SwitchServiceClient.
 type switchServiceClient struct {
-	register *connect.Client[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse]
-	notify   *connect.Client[v2.SwitchServiceNotifyRequest, v2.SwitchServiceNotifyResponse]
+	register  *connect.Client[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse]
+	heartbeat *connect.Client[v2.SwitchServiceHeartbeatRequest, v2.SwitchServiceHeartbeatResponse]
 }
 
 // Register calls metalstack.infra.v2.SwitchService.Register.
@@ -84,17 +84,17 @@ func (c *switchServiceClient) Register(ctx context.Context, req *connect.Request
 	return c.register.CallUnary(ctx, req)
 }
 
-// Notify calls metalstack.infra.v2.SwitchService.Notify.
-func (c *switchServiceClient) Notify(ctx context.Context, req *connect.Request[v2.SwitchServiceNotifyRequest]) (*connect.Response[v2.SwitchServiceNotifyResponse], error) {
-	return c.notify.CallUnary(ctx, req)
+// Heartbeat calls metalstack.infra.v2.SwitchService.Heartbeat.
+func (c *switchServiceClient) Heartbeat(ctx context.Context, req *connect.Request[v2.SwitchServiceHeartbeatRequest]) (*connect.Response[v2.SwitchServiceHeartbeatResponse], error) {
+	return c.heartbeat.CallUnary(ctx, req)
 }
 
 // SwitchServiceHandler is an implementation of the metalstack.infra.v2.SwitchService service.
 type SwitchServiceHandler interface {
 	// Register a switch.
 	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
-	// Notify a switch.
-	Notify(context.Context, *connect.Request[v2.SwitchServiceNotifyRequest]) (*connect.Response[v2.SwitchServiceNotifyResponse], error)
+	// Heartbeat a switch.
+	Heartbeat(context.Context, *connect.Request[v2.SwitchServiceHeartbeatRequest]) (*connect.Response[v2.SwitchServiceHeartbeatResponse], error)
 }
 
 // NewSwitchServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -110,18 +110,18 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(switchServiceMethods.ByName("Register")),
 		connect.WithHandlerOptions(opts...),
 	)
-	switchServiceNotifyHandler := connect.NewUnaryHandler(
-		SwitchServiceNotifyProcedure,
-		svc.Notify,
-		connect.WithSchema(switchServiceMethods.ByName("Notify")),
+	switchServiceHeartbeatHandler := connect.NewUnaryHandler(
+		SwitchServiceHeartbeatProcedure,
+		svc.Heartbeat,
+		connect.WithSchema(switchServiceMethods.ByName("Heartbeat")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/metalstack.infra.v2.SwitchService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case SwitchServiceRegisterProcedure:
 			switchServiceRegisterHandler.ServeHTTP(w, r)
-		case SwitchServiceNotifyProcedure:
-			switchServiceNotifyHandler.ServeHTTP(w, r)
+		case SwitchServiceHeartbeatProcedure:
+			switchServiceHeartbeatHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -135,6 +135,6 @@ func (UnimplementedSwitchServiceHandler) Register(context.Context, *connect.Requ
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Register is not implemented"))
 }
 
-func (UnimplementedSwitchServiceHandler) Notify(context.Context, *connect.Request[v2.SwitchServiceNotifyRequest]) (*connect.Response[v2.SwitchServiceNotifyResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Notify is not implemented"))
+func (UnimplementedSwitchServiceHandler) Heartbeat(context.Context, *connect.Request[v2.SwitchServiceHeartbeatRequest]) (*connect.Response[v2.SwitchServiceHeartbeatResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Heartbeat is not implemented"))
 }
