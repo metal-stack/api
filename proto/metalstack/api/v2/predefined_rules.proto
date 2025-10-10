@@ -1,0 +1,55 @@
+syntax = "proto2";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+
+// See https://protovalidate.com/schemas/predefined-rules/
+
+extend buf.validate.StringRules {
+  // Macaddress returns true if the given string is a valid macadress
+  optional bool macaddress = 80048951 [(buf.validate.predefined).cel = {
+    id: "string.macaddress"
+    message: "this string must be a valid macaddress"
+    expression: "this.matches('^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$')"
+  }];
+  // IsName returns true if name field satisfies our requirements
+  optional bool is_name = 80048952 [(buf.validate.predefined).cel = {
+    id: "string.is_name"
+    message: "must be within 2 and 128 characters"
+    expression: "this.size() >= 2 && this.size() <= 128"
+  }];
+  // IsDescription returns true if description field satisfies our requirements
+  optional bool is_description = 80048953 [(buf.validate.predefined).cel = {
+    id: "string.is_description"
+    message: "must be shorter than 256 characters"
+    expression: "this.size() <= 256"
+  }];
+  // IsPartition returns true if partition field satisfies our requirements
+  optional bool is_partition = 80048954 [(buf.validate.predefined).cel = {
+    id: "string.is_partition"
+    message: "must be within 2 and 128 characters"
+    expression: "this.size() >= 2 && this.size() <= 128"
+  }];
+  // IsPrefix validates if the given string is a valid prefix
+  optional bool is_prefix = 80048955 [(buf.validate.predefined).cel = {
+    id: "string.prefixes"
+    message: "given prefixes must be valid"
+    expression: "this.isIpPrefix()"
+  }];
+}
+
+extend buf.validate.RepeatedRules {
+  // Prefixes validates if a slice of prefixes in string form are valid
+  optional bool prefixes = 80048956 [(buf.validate.predefined).cel = {
+    id: "repeated.prefixes"
+    message: "given prefixes must be valid"
+    expression: "this.all(m, m.isIpPrefix())"
+  }];
+  // Ips validates if a slice of ips in string form are valid
+  optional bool ips = 80048957 [(buf.validate.predefined).cel = {
+    id: "repeated.ips"
+    message: "given ips must be valid"
+    expression: "this.all(m, m.isIp())"
+  }];
+}

@@ -34,6 +34,7 @@ type (
 		Network() adminv2connect.NetworkServiceClient
 		Partition() adminv2connect.PartitionServiceClient
 		Size() adminv2connect.SizeServiceClient
+		Switch() adminv2connect.SwitchServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
 	}
@@ -46,6 +47,7 @@ type (
 		networkservice    adminv2connect.NetworkServiceClient
 		partitionservice  adminv2connect.PartitionServiceClient
 		sizeservice       adminv2connect.SizeServiceClient
+		switchservice     adminv2connect.SwitchServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
 		tokenservice      adminv2connect.TokenServiceClient
 	}
@@ -109,21 +111,26 @@ func New(config *DialConfig) (Client, error) {
 	authInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
 		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
 			request.Header().Add("Authorization", "Bearer "+config.Token)
-			if config.Debug {
-				config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
-			}
+			return next(ctx, request)
+		})
+	})
+
+	loggingInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
+		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
+			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
 			response, err := next(ctx, request)
 			if err != nil {
 				return nil, err
 			}
-			if config.Debug {
-				config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
-			}
+			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
 			return response, err
 		})
 	})
 
-	c.interceptors = append(c.interceptors, authInterceptor)
+	if config.Token != "" {
+		c.interceptors = append(c.interceptors, authInterceptor)
+	}
+	c.interceptors = append(c.interceptors, loggingInterceptor)
 	c.interceptors = append(c.interceptors, config.Interceptors...)
 
 	go c.startTokenRenewal()
@@ -175,6 +182,12 @@ func (c *client) Adminv2() Adminv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		switchservice: adminv2connect.NewSwitchServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		tenantservice: adminv2connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -211,6 +224,9 @@ func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 }
 func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 	return c.sizeservice
+}
+func (c *adminv2) Switch() adminv2connect.SwitchServiceClient {
+	return c.switchservice
 }
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice

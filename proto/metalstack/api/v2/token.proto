@@ -6,6 +6,7 @@ import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // TokenService serves token related functions
 service TokenService {
@@ -45,10 +46,7 @@ message Token {
     max_len: 512
   }];
   // Description is a user given description of this token.
-  string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 256
-  }];
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 4 [(buf.validate.field).repeated.max_items = 500];
   // Expires gives the date in the future after which this token can not be used anymore
@@ -78,10 +76,7 @@ enum TokenType {
 // TokenServiceCreateRequest is the request payload to create a token
 message TokenServiceCreateRequest {
   // Description of the token
-  string description = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 256
-  }];
+  string description = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 2 [(buf.validate.field).repeated.max_items = 100];
   // Expires gives the duration since now, after which this token can not be used anymore
@@ -170,10 +165,7 @@ message TokenServiceUpdateRequest {
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Description is a user given description of this token.
-  optional string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 256
-  }];
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 4;
   // ProjectRoles associates a project id with the corresponding role of the token owner

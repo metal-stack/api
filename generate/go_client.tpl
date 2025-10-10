@@ -56,21 +56,26 @@ func New(config *DialConfig) (Client, error) {
 	authInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
 		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
 			request.Header().Add("Authorization", "Bearer "+config.Token)
-			if config.Debug {
-				config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
-			}
+			return next(ctx, request)
+		})
+	})
+
+	loggingInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
+		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
+			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
 			response, err := next(ctx, request)
 			if err != nil {
 				return nil, err
 			}
-			if config.Debug {
-				config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
-			}
+			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
 			return response, err
 		})
 	})
 
-	c.interceptors = append(c.interceptors, authInterceptor)
+	if config.Token != "" {
+		c.interceptors = append(c.interceptors, authInterceptor)
+	}
+	c.interceptors = append(c.interceptors, loggingInterceptor)
 	c.interceptors = append(c.interceptors, config.Interceptors...)
 
 	go c.startTokenRenewal()

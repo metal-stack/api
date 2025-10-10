@@ -42,7 +42,7 @@ func TestNewFilesystemTokenPersiter(t *testing.T) {
 	_, err = os.OpenFile(tokenPath, os.O_RDONLY|os.O_CREATE, 0600)
 	require.NoError(t, err)
 
-	filesystemPersister, err := client.NewFilesystemTokenPersiter(tokenPath)
+	filesystemPersister, err := client.NewFilesystemTokenPersister(tokenPath)
 	require.NoError(t, err)
 
 	c, err := client.New(&client.DialConfig{
