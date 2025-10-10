@@ -21,7 +21,6 @@ func TestValidateSwitch(t *testing.T) {
 				Identifier: "swp1",
 				Mac:        "abc",
 				Vrf:        proto.String("10"),
-				Actual:     apiv2.SwitchPortStatus_SWITCH_PORT_STATUS_UP,
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
@@ -34,7 +33,6 @@ func TestValidateSwitch(t *testing.T) {
 				Identifier: "swp1",
 				Mac:        "00:80:41:ae:fd:7e",
 				Vrf:        proto.String("10"),
-				Actual:     apiv2.SwitchPortStatus_SWITCH_PORT_STATUS_UP,
 			},
 			wantErr: false,
 		},
@@ -45,9 +43,32 @@ func TestValidateSwitch(t *testing.T) {
 				Identifier: "swp1",
 				Mac:        "00:80:41:AE:FD:7E",
 				Vrf:        proto.String("10"),
-				Actual:     apiv2.SwitchPortStatus_SWITCH_PORT_STATUS_UP,
 			},
 			wantErr: false,
+		},
+		{
+			name: "Switch with valid id",
+			msg: &apiv2.Switch{
+				Id:             "leaf01",
+				Partition:      "p1",
+				ManagementIp:   "1.2.3.4",
+				ManagementUser: "admin",
+				ConsoleCommand: "ssh",
+			},
+			wantErr: false,
+		},
+		{
+			name: "Switch with invalid id",
+			msg: &apiv2.Switch{
+				Id:             "_1",
+				Partition:      "p1",
+				ManagementIp:   "1.2.3.4",
+				ManagementUser: "admin",
+				ConsoleCommand: "ssh",
+			},
+			wantErr: true,
+			wantErrorMessage: `validation error:
+ - id: value must be a valid hostname [string.hostname]`,
 		},
 	}
 	validateProtos(t, tests, validator)

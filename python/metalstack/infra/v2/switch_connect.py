@@ -19,6 +19,9 @@ class SwitchService(Protocol):
     async def register(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def heartbeat(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class SwitchServiceASGIApplication(ConnectASGIApplication):
     def __init__(self, service: SwitchService, *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -33,6 +36,16 @@ class SwitchServiceASGIApplication(ConnectASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.register,
+                ),
+                "/metalstack.infra.v2.SwitchService/Heartbeat": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Heartbeat",
+                        service_name="metalstack.infra.v2.SwitchService",
+                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.heartbeat,
                 ),
             },
             interceptors=interceptors,
@@ -66,9 +79,31 @@ class SwitchServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def heartbeat(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Heartbeat",
+                service_name="metalstack.infra.v2.SwitchService",
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 class SwitchServiceSync(Protocol):
     def register(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def heartbeat(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -85,6 +120,16 @@ class SwitchServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.register,
+                ),
+                "/metalstack.infra.v2.SwitchService/Heartbeat": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Heartbeat",
+                        service_name="metalstack.infra.v2.SwitchService",
+                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.heartbeat,
                 ),
             },
             interceptors=interceptors,
@@ -112,6 +157,26 @@ class SwitchServiceClientSync(ConnectClientSync):
                 service_name="metalstack.infra.v2.SwitchService",
                 input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest,
                 output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def heartbeat(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Heartbeat",
+                service_name="metalstack.infra.v2.SwitchService",
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
