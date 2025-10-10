@@ -52,8 +52,7 @@ func Test_Client(t *testing.T) {
 				return nil
 			},
 		},
-		Log:   log,
-		Debug: true,
+		Log: log,
 	})
 	require.NoError(t, err)
 	v, err := c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))

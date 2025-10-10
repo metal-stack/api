@@ -21,7 +21,6 @@ type (
 	DialConfig struct {
 		BaseURL string
 		Token   string
-		Debug   bool
 
 		// Optional client Interceptors 
 		Interceptors []connect.Interceptor
