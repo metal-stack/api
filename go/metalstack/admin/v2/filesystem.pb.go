@@ -384,20 +384,18 @@ var File_metalstack_admin_v2_filesystem_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_filesystem_proto_rawDesc = "" +
 	"\n" +
-	"$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\"r\n" +
+	"$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\x1a(metalstack/api/v2/predefined_rules.proto\"r\n" +
 	"\x1eFilesystemServiceCreateRequest\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
 	"\x1fFilesystemServiceCreateResponse\x12P\n" +
-	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xf4\x04\n" +
+	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xf6\x04\n" +
 	"\x1eFilesystemServiceUpdateRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"updateMeta\x12#\n" +
-	"\x04name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
-	"\vdescription\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12?\n" +
+	"updateMeta\x12$\n" +
+	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
+	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12?\n" +
 	"\vfilesystems\x18\x05 \x03(\v2\x1d.metalstack.api.v2.FilesystemR\vfilesystems\x12-\n" +
 	"\x05disks\x18\x06 \x03(\v2\x17.metalstack.api.v2.DiskR\x05disks\x12+\n" +
 	"\x04raid\x18\a \x03(\v2\x17.metalstack.api.v2.RaidR\x04raid\x12C\n" +

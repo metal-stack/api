@@ -4,6 +4,7 @@ package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/tenant.proto";
 
 // TenantService serves tenant related functions
@@ -22,15 +23,9 @@ service TenantService {
 // TenantServiceCreateRequest is the request payload of the tenant create request
 message TenantServiceCreateRequest {
   // Name of this tenant
-  string name = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 64
-  }];
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this tenant
-  optional string description = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  optional string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Email of the tenant, if not set will be inherited from the creator
   optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant
@@ -48,7 +43,7 @@ message TenantServiceListRequest {
   // Login of the tenant to list
   optional string login = 1;
   // Name of the tenant to list
-  optional string name = 2;
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Email of the tenant to list
   optional string email = 3;
   // Paging details for the list request

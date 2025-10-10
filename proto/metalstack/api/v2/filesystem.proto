@@ -4,6 +4,7 @@ package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // FilesystemService serves filesystem related functions
 service FilesystemService {
@@ -107,15 +108,9 @@ message FilesystemLayout {
   // Meta for this filesystemLayout
   Meta meta = 2;
   // Name of this filesystemLayout
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this filesystemLayout
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Filesystems is a list of filesystems to create on a machine
   repeated Filesystem filesystems = 5;
   // Disks list of disks that belong to this layout
@@ -151,15 +146,9 @@ message Filesystem {
     (buf.validate.field).required = true
   ];
   // Name of this filesystem
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this filesystem
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Path the mountpoint where this filesystem should be mounted on
   optional string path = 5 [(buf.validate.field).string = {
     min_len: 2
@@ -249,10 +238,7 @@ message DiskPartition {
 // VolumeGroup
 message VolumeGroup {
   // Name the name of the resulting volume group
-  string name = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Devices list of devices to form the volume group from
   repeated string devices = 2;
   // Tags list of tags to add to the volume group
@@ -262,10 +248,7 @@ message VolumeGroup {
 // LogicalVolume
 message LogicalVolume {
   // Name the name of the logical volume
-  string name = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // VolumeGroup the name of the volume group where to create the logical volume onto
   string volume_group = 2 [(buf.validate.field).string = {
     min_len: 2

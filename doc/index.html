@@ -266,6 +266,45 @@
         
           
           <li>
+            <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto">metalstack/api/v2/predefined_rules.proto</a>
+            <ul>
+              
+              
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2fapi%2fv2%2ffilesystem.proto">metalstack/api/v2/filesystem.proto</a>
             <ul>
               
@@ -2406,6 +2445,86 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
                 <td>51003</td>
                 <td><p>Visibility defines the visibility of this method, this is used to have public or self visible methods</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/api/v2/predefined_rules.proto">metalstack/api/v2/predefined_rules.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+
+      
+
+      
+        <h3 id="metalstack/api/v2/predefined_rules.proto-extensions">File-level Extensions</h3>
+        <table class="extension-table">
+          <thead>
+            <tr><td>Extension</td><td>Type</td><td>Base</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>ips</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.RepeatedRules">.buf.validate.RepeatedRules</a></td>
+                <td>80048957</td>
+                <td><p>Ips validates if a slice of ips in string form are valid</p></td>
+              </tr>
+            
+              <tr>
+                <td>prefixes</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.RepeatedRules">.buf.validate.RepeatedRules</a></td>
+                <td>80048956</td>
+                <td><p>Prefixes validates if a slice of prefixes in string form are valid</p></td>
+              </tr>
+            
+              <tr>
+                <td>is_description</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048953</td>
+                <td><p>IsDescription returns true if description field satisfies our requirements</p></td>
+              </tr>
+            
+              <tr>
+                <td>is_name</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048952</td>
+                <td><p>IsName returns true if name field satisfies our requirements</p></td>
+              </tr>
+            
+              <tr>
+                <td>is_partition</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048954</td>
+                <td><p>IsPartition returns true if partition field satisfies our requirements</p></td>
+              </tr>
+            
+              <tr>
+                <td>is_prefix</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048955</td>
+                <td><p>IsPrefix validates if the given string is a valid prefix</p></td>
+              </tr>
+            
+              <tr>
+                <td>macaddress</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048951</td>
+                <td><p>Macaddress returns true if the given string is a valid macadress</p></td>
               </tr>
             
           </tbody>
@@ -8003,7 +8122,7 @@ this field overrules size and partition </p></td>
                 <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>Description for this machine </p></td>
                 </tr>
               
@@ -8925,7 +9044,7 @@ TODO add machine ips </p></td>
                 <tr>
                   <td>partition</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>Partition for which machines should be listed, could be left empty if only one partition is present
 otherwise an error is thrown that the partition must be specified </p></td>
                 </tr>
@@ -10142,14 +10261,14 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>cidrs</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>Cidrs for which to allow BGP. </p></td>
+                  <td><p>CIDRs for which to allow BGP </p></td>
                 </tr>
               
                 <tr>
                   <td>vnis</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>Vnis for which to allow BGP. </p></td>
+                  <td><p>VNIs for which to allow BGP </p></td>
                 </tr>
               
             </tbody>
@@ -10402,28 +10521,28 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Name of the switch port. </p></td>
+                  <td><p>Name of the switch port </p></td>
                 </tr>
               
                 <tr>
                   <td>identifier</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Identifier of the port. </p></td>
+                  <td><p>Identifier of the port </p></td>
                 </tr>
               
                 <tr>
                   <td>mac</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Mac address of the port. </p></td>
+                  <td><p>MAC address of the port </p></td>
                 </tr>
               
                 <tr>
                   <td>vrf</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Vrf name if the port is bound in one. </p></td>
+                  <td><p>VRF name if the port is bound in one </p></td>
                 </tr>
               
                 <tr>

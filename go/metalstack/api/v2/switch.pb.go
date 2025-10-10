@@ -463,13 +463,13 @@ func (x *SwitchOS) GetMetalCoreVersion() string {
 // SwitchNic represents a front panel port and its configuration.
 type SwitchNic struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the switch port.
+	// Name of the switch port
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Identifier of the port.
+	// Identifier of the port
 	Identifier string `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	// Mac address of the port.
+	// MAC address of the port
 	Mac string `protobuf:"bytes,3,opt,name=mac,proto3" json:"mac,omitempty"`
-	// Vrf name if the port is bound in one.
+	// VRF name if the port is bound in one
 	Vrf *string `protobuf:"bytes,4,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// NicState describes the current state of the switch port.
 	State *NicState `protobuf:"bytes,5,opt,name=state,proto3,oneof" json:"state,omitempty"`
@@ -563,9 +563,9 @@ func (x *SwitchNic) GetBgpPortState() *SwitchBGPPortState {
 // BGPFilter can be used to restrict BGP based on CIDRs and VNIs.
 type BGPFilter struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Cidrs for which to allow BGP.
+	// CIDRs for which to allow BGP
 	Cidrs []string `protobuf:"bytes,1,rep,name=cidrs,proto3" json:"cidrs,omitempty"`
-	// Vnis for which to allow BGP.
+	// VNIs for which to allow BGP
 	Vnis          []string `protobuf:"bytes,2,rep,name=vnis,proto3" json:"vnis,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -957,16 +957,14 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\"\xfa\x04\n" +
-	"\x06Switch\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12+\n" +
-	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12,\n" +
-	"\vdescription\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vdescription\x12#\n" +
-	"\x04rack\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04rack\x88\x01\x01\x12(\n" +
-	"\tpartition\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\x12Q\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xfe\x04\n" +
+	"\x06Switch\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12+\n" +
+	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12-\n" +
+	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12$\n" +
+	"\x04rack\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04rack\x88\x01\x01\x12)\n" +
+	"\tpartition\x18\x05 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12Q\n" +
 	"\freplace_mode\x18\x06 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
 	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x123\n" +
 	"\x0fmanagement_user\x18\b \x01(\tB\n" +
@@ -977,23 +975,18 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	" \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x12+\n" +
 	"\x02os\x18\v \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02os\x12U\n" +
 	"\x13machine_connections\x18\f \x03(\v2$.metalstack.api.v2.MachineConnectionR\x12machineConnectionsB\a\n" +
-	"\x05_rack\"\xaf\x01\n" +
+	"\x05_rack\"\xb1\x01\n" +
 	"\bSwitchOS\x12C\n" +
-	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06vendor\x12$\n" +
-	"\aversion\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\aversion\x128\n" +
-	"\x12metal_core_version\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x10metalCoreVersion\"\xbd\x03\n" +
-	"\tSwitchNic\x12\x1e\n" +
-	"\x04name\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04name\x12*\n" +
+	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06vendor\x12%\n" +
+	"\aversion\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\aversion\x129\n" +
+	"\x12metal_core_version\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x10metalCoreVersion\"\x9c\x03\n" +
+	"\tSwitchNic\x12\x1f\n" +
+	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12+\n" +
 	"\n" +
-	"identifier\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\n" +
-	"identifier\x12A\n" +
-	"\x03mac\x18\x03 \x01(\tB/\xbaH,r*2(^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$R\x03mac\x12!\n" +
-	"\x03vrf\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x03vrf\x88\x01\x01\x126\n" +
+	"identifier\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\n" +
+	"identifier\x12\x1d\n" +
+	"\x03mac\x18\x03 \x01(\tB\v\xbaH\br\x06\xb8\xb3\xae\xb1\x02\x01R\x03mac\x12\"\n" +
+	"\x03vrf\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x03vrf\x88\x01\x01\x126\n" +
 	"\x05state\x18\x05 \x01(\v2\x1b.metalstack.api.v2.NicStateH\x01R\x05state\x88\x01\x01\x12@\n" +
 	"\n" +
 	"bgp_filter\x18\x06 \x01(\v2\x1c.metalstack.api.v2.BGPFilterH\x02R\tbgpFilter\x88\x01\x01\x12P\n" +
@@ -1001,19 +994,15 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x04_vrfB\b\n" +
 	"\x06_stateB\r\n" +
 	"\v_bgp_filterB\x11\n" +
-	"\x0f_bgp_port_state\"\x92\x01\n" +
-	"\tBGPFilter\x12\x14\n" +
-	"\x05cidrs\x18\x01 \x03(\tR\x05cidrs\x12#\n" +
-	"\x04vnis\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\"\ar\x05\x10\x02\x18\x80\x01R\x04vnis:J\xbaHG\x1aE\n" +
-	"\x05cidrs\x12\x19given cidrs must be valid\x1a!this.cidrs.all(m, m.isIpPrefix())\"\x8f\x03\n" +
-	"\x12SwitchBGPPortState\x12&\n" +
-	"\bneighbor\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\bneighbor\x12)\n" +
+	"\x0f_bgp_port_state\"T\n" +
+	"\tBGPFilter\x12\"\n" +
+	"\x05cidrs\x18\x01 \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\x05cidrs\x12#\n" +
+	"\x04vnis\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\"\ar\x05\x10\x02\x18\x80\x01R\x04vnis\"\x92\x03\n" +
+	"\x12SwitchBGPPortState\x12'\n" +
+	"\bneighbor\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\bneighbor\x12*\n" +
 	"\n" +
-	"peer_group\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpeerGroup\x12%\n" +
-	"\bvrf_name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\avrfName\x12B\n" +
+	"peer_group\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\tpeerGroup\x12&\n" +
+	"\bvrf_name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\avrfName\x12B\n" +
 	"\tbgp_state\x18\x04 \x01(\x0e2\x1b.metalstack.api.v2.BGPStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\bbgpState\x12S\n" +
 	"\x18bgp_timer_up_established\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\x15bgpTimerUpEstablished\x12.\n" +
 	"\x13sent_prefix_counter\x18\x06 \x01(\x04R\x11sentPrefixCounter\x126\n" +
@@ -1024,23 +1013,21 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x11MachineConnection\x12\x1d\n" +
 	"\n" +
 	"machine_id\x18\x01 \x01(\tR\tmachineId\x12.\n" +
-	"\x03nic\x18\x02 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\"\xe0\x01\n" +
-	"\vSwitchQuery\x12!\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01H\x00R\x02id\x88\x01\x01\x12-\n" +
-	"\tpartition\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\tpartition\x88\x01\x01\x12#\n" +
-	"\x04rack\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\x04rack\x88\x01\x01\x125\n" +
+	"\x03nic\x18\x02 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\"\xe3\x01\n" +
+	"\vSwitchQuery\x12\"\n" +
+	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01H\x00R\x02id\x88\x01\x01\x12.\n" +
+	"\tpartition\x18\x02 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x01R\tpartition\x88\x01\x01\x12$\n" +
+	"\x04rack\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x02R\x04rack\x88\x01\x01\x125\n" +
 	"\x02os\x18\x04 \x01(\v2 .metalstack.api.v2.SwitchOSQueryH\x03R\x02os\x88\x01\x01B\x05\n" +
 	"\x03_idB\f\n" +
 	"\n" +
 	"_partitionB\a\n" +
 	"\x05_rackB\x05\n" +
-	"\x03_os\"\x9b\x01\n" +
+	"\x03_os\"\x9c\x01\n" +
 	"\rSwitchOSQuery\x12H\n" +
-	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x06vendor\x88\x01\x01\x12)\n" +
-	"\aversion\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\aversion\x88\x01\x01B\t\n" +
+	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x06vendor\x88\x01\x01\x12*\n" +
+	"\aversion\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\aversion\x88\x01\x01B\t\n" +
 	"\a_vendorB\n" +
 	"\n" +
 	"\b_version*\x8b\x02\n" +
@@ -1128,6 +1115,7 @@ func file_metalstack_api_v2_switch_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_switch_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[7].OneofWrappers = []any{}

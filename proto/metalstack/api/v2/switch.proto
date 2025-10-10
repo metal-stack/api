@@ -5,32 +5,23 @@ package metalstack.api.v2;
 import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // Switch represents a network switch.
 message Switch {
   // Id of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
-    min_len: 2
-    max_len: 128
+    [metalstack.api.v2.is_name]: true
   }];
   // Meta for this switch.
   Meta meta = 2;
   // Description of the switch.
-  string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Rack ID if the switch resides in a rack.
-  optional string rack = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string rack = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Partition the switch belongs to.
-  string partition = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string partition = 5 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // ReplaceMode is used to mark a switch ready for replacement.
   SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
   // ManagementIp is the switch's IP for management access.
@@ -58,36 +49,21 @@ message SwitchOS {
   // Vendor identifies what NOS distribution is running on the switch, e.g. SONiC.
   SwitchOSVendor vendor = 1 [(buf.validate.field).enum.defined_only = true];
   // Version specifies what NOS version is currently installed on the switch.
-  string version = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string version = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // MetalCoreVersion is the currently running version of the metal-core.
-  string metal_core_version = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string metal_core_version = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // SwitchNic represents a front panel port and its configuration.
 message SwitchNic {
-  // Name of the switch port.
-  string name = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Identifier of the port.
-  string identifier = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Mac address of the port.
-  string mac = 3 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
-  // Vrf name if the port is bound in one.
-  optional string vrf = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  // Name of the switch port
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Identifier of the port
+  string identifier = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // MAC address of the port
+  string mac = 3 [(buf.validate.field).string.(macaddress) = true];
+  // VRF name if the port is bound in one
+  optional string vrf = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // NicState describes the current state of the switch port.
   optional NicState state = 5;
   // BGPFilter optionally configured on a port.
@@ -98,14 +74,9 @@ message SwitchNic {
 
 // BGPFilter can be used to restrict BGP based on CIDRs and VNIs.
 message BGPFilter {
-  // Cidrs for which to allow BGP.
-  repeated string cidrs = 1;
-  option (buf.validate.message).cel = {
-    id: "cidrs"
-    message: "given cidrs must be valid"
-    expression: "this.cidrs.all(m, m.isIpPrefix())"
-  };
-  // Vnis for which to allow BGP.
+  // CIDRs for which to allow BGP
+  repeated string cidrs = 1 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
+  // VNIs for which to allow BGP
   repeated string vnis = 2 [(buf.validate.field).repeated.items.string = {
     min_len: 2
     max_len: 128
@@ -115,20 +86,11 @@ message BGPFilter {
 // SwitchBGPPortState holds information about the BGP state of a port.
 message SwitchBGPPortState {
   // Neighbor of this port.
-  string neighbor = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string neighbor = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // PeerGroup of this port.
-  string peer_group = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string peer_group = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // VrfName of the VRF this port is bound to.
-  string vrf_name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string vrf_name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // BgpState of the connection on this port.
   BGPState bgp_state = 4 [(buf.validate.field).enum.defined_only = true];
   // BgpTimerUpEstablished reports when this port's BGP connection was established.
@@ -160,19 +122,12 @@ message SwitchQuery {
   // Id of the switch to list.
   optional string id = 1 [(buf.validate.field).string = {
     hostname: true
-    min_len: 2
-    max_len: 128
+    [metalstack.api.v2.is_name]: true
   }];
   // Partition of the switches to list.
-  optional string partition = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Rack of the switches to list.
-  optional string rack = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string rack = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Switch OS specific queries.
   optional SwitchOSQuery os = 4;
 }
@@ -182,10 +137,7 @@ message SwitchOSQuery {
   // OsVendor of the switch OS by which to filter the switches.
   optional SwitchOSVendor vendor = 1 [(buf.validate.field).enum.defined_only = true];
   // OsVersion of the OS by which to filter the switches.
-  optional string version = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string version = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // BGPState represents the state of a BGP session.

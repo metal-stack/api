@@ -34,8 +34,27 @@ func TestValidateNetwork(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
- - given prefixes must be valid [prefixes]
- - given destination_prefixes must be valid [destination_prefixes]`,
+ - prefixes: given prefixes must be valid [repeated.prefixes]
+ - destination_prefixes: given prefixes must be valid [repeated.prefixes]`,
+		},
+		{
+			name: "Valid Network minimal config",
+			msg: &apiv2.Network{
+				Id:       "internet",
+				Prefixes: []string{"1.2.0.0/16"},
+			},
+			wantErr: false,
+		},
+		{
+			name: "InValid Network minimal config",
+			msg: &apiv2.Network{
+				Id:                  "internet",
+				Prefixes:            []string{"1.2.3.4.5/99"},
+				DestinationPrefixes: []string{"0.0.0.0.0/0"}},
+			wantErr: true,
+			wantErrorMessage: `validation error:
+ - prefixes: given prefixes must be valid [repeated.prefixes]
+ - destination_prefixes: given prefixes must be valid [repeated.prefixes]`,
 		},
 	}
 	validateProtos(t, tests, validator)

@@ -707,31 +707,29 @@ var File_metalstack_admin_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/admin/v2/switch.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"7\n" +
-	"\x17SwitchServiceGetRequest\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\"M\n" +
+	" metalstack/admin/v2/switch.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/switch.proto\"8\n" +
+	"\x17SwitchServiceGetRequest\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\"M\n" +
 	"\x18SwitchServiceGetResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"P\n" +
 	"\x18SwitchServiceListRequest\x124\n" +
 	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n" +
 	"\x19SwitchServiceListResponse\x125\n" +
-	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xeb\x05\n" +
-	"\x1aSwitchServiceUpdateRequest\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12F\n" +
+	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xf0\x05\n" +
+	"\x1aSwitchServiceUpdateRequest\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
 	"updateMeta\x129\n" +
 	"\n" +
-	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x121\n" +
-	"\vdescription\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\vdescription\x88\x01\x01\x12(\n" +
-	"\arack_id\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x06rackId\x88\x01\x01\x12V\n" +
+	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x122\n" +
+	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12)\n" +
+	"\arack_id\x18\x05 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x06rackId\x88\x01\x01\x12V\n" +
 	"\freplace_mode\x18\x06 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\vreplaceMode\x88\x01\x01\x121\n" +
-	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01H\x03R\fmanagementIp\x88\x01\x01\x128\n" +
-	"\x0fmanagement_user\x18\b \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x0emanagementUser\x88\x01\x01\x128\n" +
-	"\x0fconsole_command\x18\t \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\x0econsoleCommand\x88\x01\x01\x120\n" +
+	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01H\x03R\fmanagementIp\x88\x01\x01\x129\n" +
+	"\x0fmanagement_user\x18\b \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x04R\x0emanagementUser\x88\x01\x01\x129\n" +
+	"\x0fconsole_command\x18\t \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x05R\x0econsoleCommand\x88\x01\x01\x120\n" +
 	"\x04nics\x18\n" +
 	" \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x120\n" +
 	"\x02os\x18\v \x01(\v2\x1b.metalstack.api.v2.SwitchOSH\x06R\x02os\x88\x01\x01B\x0e\n" +
@@ -744,23 +742,26 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x10_console_commandB\x05\n" +
 	"\x03_os\"P\n" +
 	"\x1bSwitchServiceUpdateResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"P\n" +
-	"\x1aSwitchServiceDeleteRequest\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12\x14\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"Q\n" +
+	"\x1aSwitchServiceDeleteRequest\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12\x14\n" +
 	"\x05force\x18\x02 \x01(\bR\x05force\"P\n" +
 	"\x1bSwitchServiceDeleteResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"w\n" +
-	"\x1bSwitchServiceMigrateRequest\x12+\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"y\n" +
+	"\x1bSwitchServiceMigrateRequest\x12,\n" +
 	"\n" +
-	"old_switch\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\toldSwitch\x12+\n" +
+	"old_switch\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\toldSwitch\x12,\n" +
 	"\n" +
-	"new_switch\x18\x02 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\tnewSwitch\"Q\n" +
+	"new_switch\x18\x02 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\tnewSwitch\"Q\n" +
 	"\x1cSwitchServiceMigrateResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xa6\x01\n" +
-	"\x18SwitchServicePortRequest\x12\x1c\n" +
-	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12%\n" +
-	"\bnic_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\anicName\x12E\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xa8\x01\n" +
+	"\x18SwitchServicePortRequest\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12&\n" +
+	"\bnic_name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anicName\x12E\n" +
 	"\x06status\x18\x03 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status\"N\n" +
 	"\x19SwitchServicePortResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch2\xbf\x05\n" +
