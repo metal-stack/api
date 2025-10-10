@@ -24,7 +24,6 @@ func TestValidateIP(t *testing.T) {
  - uuid: value must be a valid UUID [string.uuid]
  - ip: value is empty, which is not a valid IP address [string.ip_empty]
  - name: must be within 2 and 128 characters [string.is_name]
- - description: must be within 2 and 256 characters [string.is_description]
  - network: value length must be at least 2 characters [string.min_len]
  - project: value is empty, which is not a valid UUID [string.uuid_empty]`,
 		},

@@ -22,8 +22,8 @@ extend buf.validate.StringRules {
   // IsDescription returns true if description field satisfies our requirements
   optional bool is_description = 80048953 [(buf.validate.predefined).cel = {
     id: "string.is_description"
-    message: "must be within 2 and 256 characters"
-    expression: "this.size() >= 2 && this.size() <= 256"
+    message: "must be shorter than 256 characters"
+    expression: "this.size() <= 256"
   }];
   // IsPartition returns true if partition field satisfies our requirements
   optional bool is_partition = 80048954 [(buf.validate.predefined).cel = {

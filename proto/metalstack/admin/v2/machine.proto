@@ -43,7 +43,7 @@ message MachineServiceListRequest {
   metalstack.api.v2.MachineQuery query = 1;
   // Partition for which machines should be listed, could be left empty if only one partition is present
   // otherwise an error is thrown that the partition must be specified
-  optional string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
 // MachineServiceListResponse is the request payload for a machine list response
