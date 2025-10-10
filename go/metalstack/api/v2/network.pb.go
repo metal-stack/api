@@ -1460,7 +1460,7 @@ var File_metalstack_api_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/network.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"Z\n" +
+	"\x1fmetalstack/api/v2/network.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"Z\n" +
 	"\x18NetworkServiceGetRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
@@ -1709,7 +1709,7 @@ func file_metalstack_api_v2_network_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
-	file_metalstack_api_v2_predefined_string_rules_proto_init()
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_network_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_network_proto_msgTypes[4].OneofWrappers = []any{}
 	file_metalstack_api_v2_network_proto_msgTypes[12].OneofWrappers = []any{}

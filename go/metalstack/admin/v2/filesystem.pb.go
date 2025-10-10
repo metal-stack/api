@@ -384,7 +384,7 @@ var File_metalstack_admin_v2_filesystem_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_filesystem_proto_rawDesc = "" +
 	"\n" +
-	"$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"r\n" +
+	"$metalstack/admin/v2/filesystem.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\x1a(metalstack/api/v2/predefined_rules.proto\"r\n" +
 	"\x1eFilesystemServiceCreateRequest\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
 	"\x1fFilesystemServiceCreateResponse\x12P\n" +

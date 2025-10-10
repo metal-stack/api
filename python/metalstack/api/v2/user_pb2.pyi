@@ -1,6 +1,6 @@
 from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
-from metalstack.api.v2 import predefined_string_rules_pb2 as _predefined_string_rules_pb2
+from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import project_pb2 as _project_pb2
 from metalstack.api.v2 import tenant_pb2 as _tenant_pb2
 from google.protobuf.internal import containers as _containers

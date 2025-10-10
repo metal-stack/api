@@ -1009,7 +1009,7 @@ var File_metalstack_api_v2_ip_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\n" +
-	"\x1ametalstack/api/v2/ip.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"\xf6\x02\n" +
+	"\x1ametalstack/api/v2/ip.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xf6\x02\n" +
 	"\x02IP\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x17\n" +
@@ -1199,7 +1199,7 @@ func file_metalstack_api_v2_ip_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
-	file_metalstack_api_v2_predefined_string_rules_proto_init()
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_ip_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[1].OneofWrappers = []any{}
 	file_metalstack_api_v2_ip_proto_msgTypes[2].OneofWrappers = []any{}

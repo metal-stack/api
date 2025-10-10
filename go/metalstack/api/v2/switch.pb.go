@@ -692,7 +692,7 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"\xd8\x03\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xd8\x03\n" +
 	"\x06Switch\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12-\n" +
 	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12#\n" +
@@ -817,7 +817,7 @@ func file_metalstack_api_v2_switch_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
-	file_metalstack_api_v2_predefined_string_rules_proto_init()
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_switch_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}

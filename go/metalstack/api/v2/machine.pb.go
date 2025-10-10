@@ -3377,7 +3377,7 @@ var File_metalstack_api_v2_machine_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/machine.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\x1a\x1dmetalstack/api/v2/image.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a!metalstack/api/v2/partition.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"\\\n" +
+	"\x1fmetalstack/api/v2/machine.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\x1a\x1dmetalstack/api/v2/image.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a!metalstack/api/v2/partition.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"\\\n" +
 	"\x18MachineServiceGetRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
@@ -3883,7 +3883,7 @@ func file_metalstack_api_v2_machine_proto_init() {
 	file_metalstack_api_v2_image_proto_init()
 	file_metalstack_api_v2_network_proto_init()
 	file_metalstack_api_v2_partition_proto_init()
-	file_metalstack_api_v2_predefined_string_rules_proto_init()
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_size_proto_init()
 	file_metalstack_api_v2_machine_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[5].OneofWrappers = []any{}

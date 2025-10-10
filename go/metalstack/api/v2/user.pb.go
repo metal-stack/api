@@ -209,7 +209,7 @@ var File_metalstack_api_v2_user_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_user_proto_rawDesc = "" +
 	"\n" +
-	"\x1cmetalstack/api/v2/user.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\x1a\x1fmetalstack/api/v2/project.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xa1\x02\n" +
+	"\x1cmetalstack/api/v2/user.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1fmetalstack/api/v2/project.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xa1\x02\n" +
 	"\x04User\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x1f\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12\x14\n" +
@@ -267,7 +267,7 @@ func file_metalstack_api_v2_user_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
-	file_metalstack_api_v2_predefined_string_rules_proto_init()
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_project_proto_init()
 	file_metalstack_api_v2_tenant_proto_init()
 	type x struct{}

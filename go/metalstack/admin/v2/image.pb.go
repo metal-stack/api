@@ -459,7 +459,7 @@ var File_metalstack_admin_v2_image_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/admin/v2/image.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/image.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"K\n" +
+	"\x1fmetalstack/admin/v2/image.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/image.proto\x1a(metalstack/api/v2/predefined_rules.proto\"K\n" +
 	"\x19ImageServiceCreateRequest\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
 	"\x1aImageServiceCreateResponse\x12.\n" +

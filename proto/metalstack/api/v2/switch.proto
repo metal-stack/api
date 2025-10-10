@@ -5,7 +5,7 @@ package metalstack.api.v2;
 import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "metalstack/api/v2/common.proto";
-import "metalstack/api/v2/predefined_string_rules.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // Switch represents a network switch
 message Switch {

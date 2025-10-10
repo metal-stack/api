@@ -1577,7 +1577,7 @@ var File_metalstack_api_v2_tenant_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/tenant.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"\xef\x01\n" +
+	"\x1emetalstack/api/v2/tenant.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xef\x01\n" +
 	"\x06Tenant\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x1f\n" +
@@ -1813,7 +1813,7 @@ func file_metalstack_api_v2_tenant_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
-	file_metalstack_api_v2_predefined_string_rules_proto_init()
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_tenant_proto_msgTypes[3].OneofWrappers = []any{}
 	file_metalstack_api_v2_tenant_proto_msgTypes[5].OneofWrappers = []any{}
 	file_metalstack_api_v2_tenant_proto_msgTypes[6].OneofWrappers = []any{}

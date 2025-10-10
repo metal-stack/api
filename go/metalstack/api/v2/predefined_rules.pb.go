@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.9
 // 	protoc        (unknown)
-// source: metalstack/api/v2/predefined_string_rules.proto
+// source: metalstack/api/v2/predefined_rules.proto
 
 package apiv2
 
@@ -21,14 +21,14 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.ExtensionInfo{
+var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*validate.StringRules)(nil),
 		ExtensionType: (*bool)(nil),
 		Field:         80048951,
 		Name:          "metalstack.api.v2.macaddress",
 		Tag:           "varint,80048951,opt,name=macaddress",
-		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
 		ExtendedType:  (*validate.StringRules)(nil),
@@ -36,7 +36,7 @@ var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.
 		Field:         80048952,
 		Name:          "metalstack.api.v2.is_name",
 		Tag:           "varint,80048952,opt,name=is_name",
-		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
 		ExtendedType:  (*validate.StringRules)(nil),
@@ -44,7 +44,7 @@ var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.
 		Field:         80048953,
 		Name:          "metalstack.api.v2.is_description",
 		Tag:           "varint,80048953,opt,name=is_description",
-		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
 		ExtendedType:  (*validate.StringRules)(nil),
@@ -52,7 +52,7 @@ var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.
 		Field:         80048954,
 		Name:          "metalstack.api.v2.is_partition",
 		Tag:           "varint,80048954,opt,name=is_partition",
-		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
 		ExtendedType:  (*validate.StringRules)(nil),
@@ -60,7 +60,7 @@ var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.
 		Field:         80048955,
 		Name:          "metalstack.api.v2.is_prefix",
 		Tag:           "varint,80048955,opt,name=is_prefix",
-		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
 		ExtendedType:  (*validate.RepeatedRules)(nil),
@@ -68,7 +68,7 @@ var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.
 		Field:         80048956,
 		Name:          "metalstack.api.v2.prefixes",
 		Tag:           "varint,80048956,opt,name=prefixes",
-		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
 		ExtendedType:  (*validate.RepeatedRules)(nil),
@@ -76,7 +76,7 @@ var file_metalstack_api_v2_predefined_string_rules_proto_extTypes = []protoimpl.
 		Field:         80048957,
 		Name:          "metalstack.api.v2.ips",
 		Tag:           "varint,80048957,opt,name=ips",
-		Filename:      "metalstack/api/v2/predefined_string_rules.proto",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 }
 
@@ -85,23 +85,23 @@ var (
 	// Macaddress returns true if the given string is a valid macadress
 	//
 	// optional bool macaddress = 80048951;
-	E_Macaddress = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[0]
+	E_Macaddress = &file_metalstack_api_v2_predefined_rules_proto_extTypes[0]
 	// IsName returns true if name field satisfies our requirements
 	//
 	// optional bool is_name = 80048952;
-	E_IsName = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[1]
+	E_IsName = &file_metalstack_api_v2_predefined_rules_proto_extTypes[1]
 	// IsDescription returns true if description field satisfies our requirements
 	//
 	// optional bool is_description = 80048953;
-	E_IsDescription = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[2]
+	E_IsDescription = &file_metalstack_api_v2_predefined_rules_proto_extTypes[2]
 	// IsPartition returns true if partition field satisfies our requirements
 	//
 	// optional bool is_partition = 80048954;
-	E_IsPartition = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[3]
+	E_IsPartition = &file_metalstack_api_v2_predefined_rules_proto_extTypes[3]
 	// IsPrefix validates if the given string is a valid prefix
 	//
 	// optional bool is_prefix = 80048955;
-	E_IsPrefix = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[4]
+	E_IsPrefix = &file_metalstack_api_v2_predefined_rules_proto_extTypes[4]
 )
 
 // Extension fields to validate.RepeatedRules.
@@ -109,18 +109,18 @@ var (
 	// Prefixes validates if a slice of prefixes in string form are valid
 	//
 	// optional bool prefixes = 80048956;
-	E_Prefixes = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[5]
+	E_Prefixes = &file_metalstack_api_v2_predefined_rules_proto_extTypes[5]
 	// Ips validates if a slice of ips in string form are valid
 	//
 	// optional bool ips = 80048957;
-	E_Ips = &file_metalstack_api_v2_predefined_string_rules_proto_extTypes[6]
+	E_Ips = &file_metalstack_api_v2_predefined_rules_proto_extTypes[6]
 )
 
-var File_metalstack_api_v2_predefined_string_rules_proto protoreflect.FileDescriptor
+var File_metalstack_api_v2_predefined_rules_proto protoreflect.FileDescriptor
 
-const file_metalstack_api_v2_predefined_string_rules_proto_rawDesc = "" +
+const file_metalstack_api_v2_predefined_rules_proto_rawDesc = "" +
 	"\n" +
-	"/metalstack/api/v2/predefined_string_rules.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto:\xb8\x01\n" +
+	"(metalstack/api/v2/predefined_rules.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto:\xb8\x01\n" +
 	"\n" +
 	"macaddress\x12\x19.buf.validate.StringRules\x18\xb7\xe6\x95& \x01(\bBz\xc2Hw\n" +
 	"u\n" +
@@ -143,14 +143,14 @@ const file_metalstack_api_v2_predefined_string_rules_proto_rawDesc = "" +
 	"\x11repeated.prefixes\x12\x1cgiven prefixes must be valid\x1a\x1bthis.all(m, m.isIpPrefix())R\bprefixes:u\n" +
 	"\x03ips\x12\x1b.buf.validate.RepeatedRules\x18\xbd\xe6\x95& \x01(\bBC\xc2H@\n" +
 	">\n" +
-	"\frepeated.ips\x12\x17given ips must be valid\x1a\x15this.all(m, m.isIp())R\x03ipsB\xd0\x01\n" +
-	"\x15com.metalstack.api.v2B\x1aPredefinedStringRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2"
+	"\frepeated.ips\x12\x17given ips must be valid\x1a\x15this.all(m, m.isIp())R\x03ipsB\xca\x01\n" +
+	"\x15com.metalstack.api.v2B\x14PredefinedRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2"
 
-var file_metalstack_api_v2_predefined_string_rules_proto_goTypes = []any{
+var file_metalstack_api_v2_predefined_rules_proto_goTypes = []any{
 	(*validate.StringRules)(nil),   // 0: buf.validate.StringRules
 	(*validate.RepeatedRules)(nil), // 1: buf.validate.RepeatedRules
 }
-var file_metalstack_api_v2_predefined_string_rules_proto_depIdxs = []int32{
+var file_metalstack_api_v2_predefined_rules_proto_depIdxs = []int32{
 	0, // 0: metalstack.api.v2.macaddress:extendee -> buf.validate.StringRules
 	0, // 1: metalstack.api.v2.is_name:extendee -> buf.validate.StringRules
 	0, // 2: metalstack.api.v2.is_description:extendee -> buf.validate.StringRules
@@ -165,26 +165,26 @@ var file_metalstack_api_v2_predefined_string_rules_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_metalstack_api_v2_predefined_string_rules_proto_init() }
-func file_metalstack_api_v2_predefined_string_rules_proto_init() {
-	if File_metalstack_api_v2_predefined_string_rules_proto != nil {
+func init() { file_metalstack_api_v2_predefined_rules_proto_init() }
+func file_metalstack_api_v2_predefined_rules_proto_init() {
+	if File_metalstack_api_v2_predefined_rules_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_predefined_string_rules_proto_rawDesc), len(file_metalstack_api_v2_predefined_string_rules_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_predefined_rules_proto_rawDesc), len(file_metalstack_api_v2_predefined_rules_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   0,
 			NumExtensions: 7,
 			NumServices:   0,
 		},
-		GoTypes:           file_metalstack_api_v2_predefined_string_rules_proto_goTypes,
-		DependencyIndexes: file_metalstack_api_v2_predefined_string_rules_proto_depIdxs,
-		ExtensionInfos:    file_metalstack_api_v2_predefined_string_rules_proto_extTypes,
+		GoTypes:           file_metalstack_api_v2_predefined_rules_proto_goTypes,
+		DependencyIndexes: file_metalstack_api_v2_predefined_rules_proto_depIdxs,
+		ExtensionInfos:    file_metalstack_api_v2_predefined_rules_proto_extTypes,
 	}.Build()
-	File_metalstack_api_v2_predefined_string_rules_proto = out.File
-	file_metalstack_api_v2_predefined_string_rules_proto_goTypes = nil
-	file_metalstack_api_v2_predefined_string_rules_proto_depIdxs = nil
+	File_metalstack_api_v2_predefined_rules_proto = out.File
+	file_metalstack_api_v2_predefined_rules_proto_goTypes = nil
+	file_metalstack_api_v2_predefined_rules_proto_depIdxs = nil
 }

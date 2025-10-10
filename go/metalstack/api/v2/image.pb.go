@@ -696,7 +696,7 @@ var File_metalstack_api_v2_image_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/api/v2/image.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"4\n" +
+	"\x1dmetalstack/api/v2/image.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"4\n" +
 	"\x16ImageServiceGetRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"N\n" +
@@ -834,7 +834,7 @@ func file_metalstack_api_v2_image_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
-	file_metalstack_api_v2_predefined_string_rules_proto_init()
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_image_proto_msgTypes[6].OneofWrappers = []any{}
 	file_metalstack_api_v2_image_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}

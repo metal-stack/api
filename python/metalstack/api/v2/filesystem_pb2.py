@@ -24,10 +24,10 @@ _sym_db = _symbol_database.Default()
 
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
-from metalstack.api.v2 import predefined_string_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__string__rules__pb2
+from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"metalstack/api/v2/filesystem.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"9\n\x1b\x46ilesystemServiceGetRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"F\n\x1c\x46ilesystemServiceListRequest\x12\x1f\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x42\x05\n\x03_id\"p\n\x1c\x46ilesystemServiceGetResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"s\n\x1d\x46ilesystemServiceListResponse\x12R\n\x12\x66ilesystem_layouts\x18\x01 \x03(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x11\x66ilesystemLayouts\"\xdb\x01\n\x1d\x46ilesystemServiceMatchRequest\x12L\n\x0esize_and_image\x18\x01 \x01(\x0b\x32$.metalstack.api.v2.MatchImageAndSizeH\x00R\x0csizeAndImage\x12\x63\n\x1cmachine_and_filesystemlayout\x18\x02 \x01(\x0b\x32\x1f.metalstack.api.v2.MatchMachineH\x00R\x1amachineAndFilesystemlayoutB\x07\n\x05match\"U\n\x11MatchImageAndSize\x12\x1e\n\x04size\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x04size\x12 \n\x05image\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x05image\"k\n\x0cMatchMachine\x12\"\n\x07machine\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07machine\x12\x37\n\x11\x66ilesystem_layout\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x10\x66ilesystemLayout\"r\n\x1e\x46ilesystemServiceMatchResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"\xcd\x04\n\x10\x46ilesystemLayout\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\x12+\n\x04meta\x18\x02 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\x12$\n\x04name\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x12\x32\n\x0b\x64\x65scription\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x01R\x0b\x64\x65scription\x88\x01\x01\x12?\n\x0b\x66ilesystems\x18\x05 \x03(\x0b\x32\x1d.metalstack.api.v2.FilesystemR\x0b\x66ilesystems\x12-\n\x05\x64isks\x18\x06 \x03(\x0b\x32\x17.metalstack.api.v2.DiskR\x05\x64isks\x12+\n\x04raid\x18\x07 \x03(\x0b\x32\x17.metalstack.api.v2.RaidR\x04raid\x12\x43\n\rvolume_groups\x18\x08 \x03(\x0b\x32\x1e.metalstack.api.v2.VolumeGroupR\x0cvolumeGroups\x12I\n\x0flogical_volumes\x18\t \x03(\x0b\x32 .metalstack.api.v2.LogicalVolumeR\x0elogicalVolumes\x12P\n\x0b\x63onstraints\x18\n \x01(\x0b\x32..metalstack.api.v2.FilesystemLayoutConstraintsR\x0b\x63onstraintsB\x07\n\x05_nameB\x0e\n\x0c_description\"\xc2\x01\n\x1b\x46ilesystemLayoutConstraints\x12\x14\n\x05sizes\x18\x01 \x03(\tR\x05sizes\x12R\n\x06images\x18\x02 \x03(\x0b\x32:.metalstack.api.v2.FilesystemLayoutConstraints.ImagesEntryR\x06images\x1a\x39\n\x0bImagesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xb8\x03\n\nFilesystem\x12\"\n\x06\x64\x65vice\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x06\x64\x65vice\x12>\n\x06\x66ormat\x18\x02 \x01(\x0e\x32\x19.metalstack.api.v2.FormatB\x0b\xbaH\x08\x82\x01\x02\x10\x01\xc8\x01\x01R\x06\x66ormat\x12$\n\x04name\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x12\x32\n\x0b\x64\x65scription\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x01R\x0b\x64\x65scription\x88\x01\x01\x12#\n\x04path\x18\x05 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80 H\x02R\x04path\x88\x01\x01\x12%\n\x05label\x18\x06 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x03R\x05label\x88\x01\x01\x12\x38\n\rmount_options\x18\x07 \x03(\tB\x13\xbaH\x10\x92\x01\r\x10 \x18\x01\"\x07r\x05\x10\x01\x18\x80\x01R\x0cmountOptions\x12:\n\x0e\x63reate_options\x18\x08 \x03(\tB\x13\xbaH\x10\x92\x01\r\x10 \x18\x01\"\x07r\x05\x10\x01\x18\x80\x01R\rcreateOptionsB\x07\n\x05_nameB\x0e\n\x0c_descriptionB\x07\n\x05_pathB\x08\n\x06_label\"l\n\x04\x44isk\x12\"\n\x06\x64\x65vice\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x06\x64\x65vice\x12@\n\npartitions\x18\x02 \x03(\x0b\x32 .metalstack.api.v2.DiskPartitionR\npartitions\"\xd4\x01\n\x04Raid\x12\x1d\n\narray_name\x18\x01 \x01(\tR\tarrayName\x12\x18\n\x07\x64\x65vices\x18\x02 \x03(\tR\x07\x64\x65vices\x12?\n\x05level\x18\x03 \x01(\x0e\x32\x1c.metalstack.api.v2.RaidLevelB\x0b\xbaH\x08\x82\x01\x02\x10\x01\xc8\x01\x01R\x05level\x12:\n\x0e\x63reate_options\x18\x04 \x03(\tB\x13\xbaH\x10\x92\x01\r\x10 \x18\x01\"\x07r\x05\x10\x01\x18\x80\x01R\rcreateOptions\x12\x16\n\x06spares\x18\x05 \x01(\x05R\x06spares\"\xb6\x01\n\rDiskPartition\x12\x16\n\x06number\x18\x01 \x01(\rR\x06number\x12\x19\n\x05label\x18\x02 \x01(\tH\x00R\x05label\x88\x01\x01\x12\x12\n\x04size\x18\x03 \x01(\x04R\x04size\x12G\n\x08gpt_type\x18\x04 \x01(\x0e\x32\x1a.metalstack.api.v2.GPTTypeB\x0b\xbaH\x08\x82\x01\x02\x10\x01\xc8\x01\x01H\x01R\x07gptType\x88\x01\x01\x42\x08\n\x06_labelB\x0b\n\t_gpt_type\"\\\n\x0bVolumeGroup\x12\x1f\n\x04name\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12\x18\n\x07\x64\x65vices\x18\x02 \x03(\tR\x07\x64\x65vices\x12\x12\n\x04tags\x18\x03 \x03(\tR\x04tags\"\xb4\x01\n\rLogicalVolume\x12\x1f\n\x04name\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12-\n\x0cvolume_group\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0bvolumeGroup\x12\x12\n\x04size\x18\x03 \x01(\x04R\x04size\x12?\n\x08lvm_type\x18\x04 \x01(\x0e\x32\x1a.metalstack.api.v2.LVMTypeB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x07lvmType*\x86\x01\n\x07LVMType\x12\x18\n\x14LVM_TYPE_UNSPECIFIED\x10\x00\x12\x1f\n\x0fLVM_TYPE_LINEAR\x10\x01\x1a\n\x82\xb2\x19\x06linear\x12!\n\x10LVM_TYPE_STRIPED\x10\x02\x1a\x0b\x82\xb2\x19\x07striped\x12\x1d\n\x0eLVM_TYPE_RAID1\x10\x03\x1a\t\x82\xb2\x19\x05raid1*\xc4\x01\n\x06\x46ormat\x12\x16\n\x12\x46ORMAT_UNSPECIFIED\x10\x00\x12\x19\n\x0b\x46ORMAT_VFAT\x10\x01\x1a\x08\x82\xb2\x19\x04vfat\x12\x19\n\x0b\x46ORMAT_EXT3\x10\x02\x1a\x08\x82\xb2\x19\x04\x65xt3\x12\x19\n\x0b\x46ORMAT_EXT4\x10\x03\x1a\x08\x82\xb2\x19\x04\x65xt4\x12\x19\n\x0b\x46ORMAT_SWAP\x10\x04\x1a\x08\x82\xb2\x19\x04swap\x12\x1b\n\x0c\x46ORMAT_TMPFS\x10\x05\x1a\t\x82\xb2\x19\x05tmpfs\x12\x19\n\x0b\x46ORMAT_NONE\x10\x06\x1a\x08\x82\xb2\x19\x04none*\xa3\x01\n\x07GPTType\x12\x18\n\x14GPT_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n\rGPT_TYPE_BOOT\x10\x01\x1a\x08\x82\xb2\x19\x04\x65\x66\x30\x30\x12\x1c\n\x0eGPT_TYPE_LINUX\x10\x02\x1a\x08\x82\xb2\x19\x04\x38\x33\x30\x30\x12!\n\x13GPT_TYPE_LINUX_RAID\x10\x03\x1a\x08\x82\xb2\x19\x04\x66\x64\x30\x30\x12 \n\x12GPT_TYPE_LINUX_LVM\x10\x04\x1a\x08\x82\xb2\x19\x04\x38\x65\x30\x30*K\n\tRaidLevel\x12\x1a\n\x16RAID_LEVEL_UNSPECIFIED\x10\x00\x12\x10\n\x0cRAID_LEVEL_0\x10\x01\x12\x10\n\x0cRAID_LEVEL_1\x10\x02\x32\xf2\x02\n\x11\x46ilesystemService\x12p\n\x03Get\x12..metalstack.api.v2.FilesystemServiceGetRequest\x1a/.metalstack.api.v2.FilesystemServiceGetResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12s\n\x04List\x12/.metalstack.api.v2.FilesystemServiceListRequest\x1a\x30.metalstack.api.v2.FilesystemServiceListResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12v\n\x05Match\x12\x30.metalstack.api.v2.FilesystemServiceMatchRequest\x1a\x31.metalstack.api.v2.FilesystemServiceMatchResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x42\xc5\x01\n\x15\x63om.metalstack.api.v2B\x0f\x46ilesystemProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"metalstack/api/v2/filesystem.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"9\n\x1b\x46ilesystemServiceGetRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"F\n\x1c\x46ilesystemServiceListRequest\x12\x1f\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x42\x05\n\x03_id\"p\n\x1c\x46ilesystemServiceGetResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"s\n\x1d\x46ilesystemServiceListResponse\x12R\n\x12\x66ilesystem_layouts\x18\x01 \x03(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x11\x66ilesystemLayouts\"\xdb\x01\n\x1d\x46ilesystemServiceMatchRequest\x12L\n\x0esize_and_image\x18\x01 \x01(\x0b\x32$.metalstack.api.v2.MatchImageAndSizeH\x00R\x0csizeAndImage\x12\x63\n\x1cmachine_and_filesystemlayout\x18\x02 \x01(\x0b\x32\x1f.metalstack.api.v2.MatchMachineH\x00R\x1amachineAndFilesystemlayoutB\x07\n\x05match\"U\n\x11MatchImageAndSize\x12\x1e\n\x04size\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x04size\x12 \n\x05image\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x05image\"k\n\x0cMatchMachine\x12\"\n\x07machine\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07machine\x12\x37\n\x11\x66ilesystem_layout\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x10\x66ilesystemLayout\"r\n\x1e\x46ilesystemServiceMatchResponse\x12P\n\x11\x66ilesystem_layout\x18\x01 \x01(\x0b\x32#.metalstack.api.v2.FilesystemLayoutR\x10\x66ilesystemLayout\"\xcd\x04\n\x10\x46ilesystemLayout\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\x12+\n\x04meta\x18\x02 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\x12$\n\x04name\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x12\x32\n\x0b\x64\x65scription\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x01R\x0b\x64\x65scription\x88\x01\x01\x12?\n\x0b\x66ilesystems\x18\x05 \x03(\x0b\x32\x1d.metalstack.api.v2.FilesystemR\x0b\x66ilesystems\x12-\n\x05\x64isks\x18\x06 \x03(\x0b\x32\x17.metalstack.api.v2.DiskR\x05\x64isks\x12+\n\x04raid\x18\x07 \x03(\x0b\x32\x17.metalstack.api.v2.RaidR\x04raid\x12\x43\n\rvolume_groups\x18\x08 \x03(\x0b\x32\x1e.metalstack.api.v2.VolumeGroupR\x0cvolumeGroups\x12I\n\x0flogical_volumes\x18\t \x03(\x0b\x32 .metalstack.api.v2.LogicalVolumeR\x0elogicalVolumes\x12P\n\x0b\x63onstraints\x18\n \x01(\x0b\x32..metalstack.api.v2.FilesystemLayoutConstraintsR\x0b\x63onstraintsB\x07\n\x05_nameB\x0e\n\x0c_description\"\xc2\x01\n\x1b\x46ilesystemLayoutConstraints\x12\x14\n\x05sizes\x18\x01 \x03(\tR\x05sizes\x12R\n\x06images\x18\x02 \x03(\x0b\x32:.metalstack.api.v2.FilesystemLayoutConstraints.ImagesEntryR\x06images\x1a\x39\n\x0bImagesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xb8\x03\n\nFilesystem\x12\"\n\x06\x64\x65vice\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x06\x64\x65vice\x12>\n\x06\x66ormat\x18\x02 \x01(\x0e\x32\x19.metalstack.api.v2.FormatB\x0b\xbaH\x08\x82\x01\x02\x10\x01\xc8\x01\x01R\x06\x66ormat\x12$\n\x04name\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x12\x32\n\x0b\x64\x65scription\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x01R\x0b\x64\x65scription\x88\x01\x01\x12#\n\x04path\x18\x05 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80 H\x02R\x04path\x88\x01\x01\x12%\n\x05label\x18\x06 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x03R\x05label\x88\x01\x01\x12\x38\n\rmount_options\x18\x07 \x03(\tB\x13\xbaH\x10\x92\x01\r\x10 \x18\x01\"\x07r\x05\x10\x01\x18\x80\x01R\x0cmountOptions\x12:\n\x0e\x63reate_options\x18\x08 \x03(\tB\x13\xbaH\x10\x92\x01\r\x10 \x18\x01\"\x07r\x05\x10\x01\x18\x80\x01R\rcreateOptionsB\x07\n\x05_nameB\x0e\n\x0c_descriptionB\x07\n\x05_pathB\x08\n\x06_label\"l\n\x04\x44isk\x12\"\n\x06\x64\x65vice\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x06\x64\x65vice\x12@\n\npartitions\x18\x02 \x03(\x0b\x32 .metalstack.api.v2.DiskPartitionR\npartitions\"\xd4\x01\n\x04Raid\x12\x1d\n\narray_name\x18\x01 \x01(\tR\tarrayName\x12\x18\n\x07\x64\x65vices\x18\x02 \x03(\tR\x07\x64\x65vices\x12?\n\x05level\x18\x03 \x01(\x0e\x32\x1c.metalstack.api.v2.RaidLevelB\x0b\xbaH\x08\x82\x01\x02\x10\x01\xc8\x01\x01R\x05level\x12:\n\x0e\x63reate_options\x18\x04 \x03(\tB\x13\xbaH\x10\x92\x01\r\x10 \x18\x01\"\x07r\x05\x10\x01\x18\x80\x01R\rcreateOptions\x12\x16\n\x06spares\x18\x05 \x01(\x05R\x06spares\"\xb6\x01\n\rDiskPartition\x12\x16\n\x06number\x18\x01 \x01(\rR\x06number\x12\x19\n\x05label\x18\x02 \x01(\tH\x00R\x05label\x88\x01\x01\x12\x12\n\x04size\x18\x03 \x01(\x04R\x04size\x12G\n\x08gpt_type\x18\x04 \x01(\x0e\x32\x1a.metalstack.api.v2.GPTTypeB\x0b\xbaH\x08\x82\x01\x02\x10\x01\xc8\x01\x01H\x01R\x07gptType\x88\x01\x01\x42\x08\n\x06_labelB\x0b\n\t_gpt_type\"\\\n\x0bVolumeGroup\x12\x1f\n\x04name\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12\x18\n\x07\x64\x65vices\x18\x02 \x03(\tR\x07\x64\x65vices\x12\x12\n\x04tags\x18\x03 \x03(\tR\x04tags\"\xb4\x01\n\rLogicalVolume\x12\x1f\n\x04name\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12-\n\x0cvolume_group\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0bvolumeGroup\x12\x12\n\x04size\x18\x03 \x01(\x04R\x04size\x12?\n\x08lvm_type\x18\x04 \x01(\x0e\x32\x1a.metalstack.api.v2.LVMTypeB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x07lvmType*\x86\x01\n\x07LVMType\x12\x18\n\x14LVM_TYPE_UNSPECIFIED\x10\x00\x12\x1f\n\x0fLVM_TYPE_LINEAR\x10\x01\x1a\n\x82\xb2\x19\x06linear\x12!\n\x10LVM_TYPE_STRIPED\x10\x02\x1a\x0b\x82\xb2\x19\x07striped\x12\x1d\n\x0eLVM_TYPE_RAID1\x10\x03\x1a\t\x82\xb2\x19\x05raid1*\xc4\x01\n\x06\x46ormat\x12\x16\n\x12\x46ORMAT_UNSPECIFIED\x10\x00\x12\x19\n\x0b\x46ORMAT_VFAT\x10\x01\x1a\x08\x82\xb2\x19\x04vfat\x12\x19\n\x0b\x46ORMAT_EXT3\x10\x02\x1a\x08\x82\xb2\x19\x04\x65xt3\x12\x19\n\x0b\x46ORMAT_EXT4\x10\x03\x1a\x08\x82\xb2\x19\x04\x65xt4\x12\x19\n\x0b\x46ORMAT_SWAP\x10\x04\x1a\x08\x82\xb2\x19\x04swap\x12\x1b\n\x0c\x46ORMAT_TMPFS\x10\x05\x1a\t\x82\xb2\x19\x05tmpfs\x12\x19\n\x0b\x46ORMAT_NONE\x10\x06\x1a\x08\x82\xb2\x19\x04none*\xa3\x01\n\x07GPTType\x12\x18\n\x14GPT_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n\rGPT_TYPE_BOOT\x10\x01\x1a\x08\x82\xb2\x19\x04\x65\x66\x30\x30\x12\x1c\n\x0eGPT_TYPE_LINUX\x10\x02\x1a\x08\x82\xb2\x19\x04\x38\x33\x30\x30\x12!\n\x13GPT_TYPE_LINUX_RAID\x10\x03\x1a\x08\x82\xb2\x19\x04\x66\x64\x30\x30\x12 \n\x12GPT_TYPE_LINUX_LVM\x10\x04\x1a\x08\x82\xb2\x19\x04\x38\x65\x30\x30*K\n\tRaidLevel\x12\x1a\n\x16RAID_LEVEL_UNSPECIFIED\x10\x00\x12\x10\n\x0cRAID_LEVEL_0\x10\x01\x12\x10\n\x0cRAID_LEVEL_1\x10\x02\x32\xf2\x02\n\x11\x46ilesystemService\x12p\n\x03Get\x12..metalstack.api.v2.FilesystemServiceGetRequest\x1a/.metalstack.api.v2.FilesystemServiceGetResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12s\n\x04List\x12/.metalstack.api.v2.FilesystemServiceListRequest\x1a\x30.metalstack.api.v2.FilesystemServiceListResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12v\n\x05Match\x12\x30.metalstack.api.v2.FilesystemServiceMatchRequest\x1a\x31.metalstack.api.v2.FilesystemServiceMatchResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x42\xc5\x01\n\x15\x63om.metalstack.api.v2B\x0f\x46ilesystemProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -119,48 +119,48 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_FILESYSTEMSERVICE'].methods_by_name['List']._serialized_options = b'\330\363\030\003\340\363\030\002'
   _globals['_FILESYSTEMSERVICE'].methods_by_name['Match']._loaded_options = None
   _globals['_FILESYSTEMSERVICE'].methods_by_name['Match']._serialized_options = b'\330\363\030\003\340\363\030\002'
-  _globals['_LVMTYPE']._serialized_start=3083
-  _globals['_LVMTYPE']._serialized_end=3217
-  _globals['_FORMAT']._serialized_start=3220
-  _globals['_FORMAT']._serialized_end=3416
-  _globals['_GPTTYPE']._serialized_start=3419
-  _globals['_GPTTYPE']._serialized_end=3582
-  _globals['_RAIDLEVEL']._serialized_start=3584
-  _globals['_RAIDLEVEL']._serialized_end=3659
-  _globals['_FILESYSTEMSERVICEGETREQUEST']._serialized_start=167
-  _globals['_FILESYSTEMSERVICEGETREQUEST']._serialized_end=224
-  _globals['_FILESYSTEMSERVICELISTREQUEST']._serialized_start=226
-  _globals['_FILESYSTEMSERVICELISTREQUEST']._serialized_end=296
-  _globals['_FILESYSTEMSERVICEGETRESPONSE']._serialized_start=298
-  _globals['_FILESYSTEMSERVICEGETRESPONSE']._serialized_end=410
-  _globals['_FILESYSTEMSERVICELISTRESPONSE']._serialized_start=412
-  _globals['_FILESYSTEMSERVICELISTRESPONSE']._serialized_end=527
-  _globals['_FILESYSTEMSERVICEMATCHREQUEST']._serialized_start=530
-  _globals['_FILESYSTEMSERVICEMATCHREQUEST']._serialized_end=749
-  _globals['_MATCHIMAGEANDSIZE']._serialized_start=751
-  _globals['_MATCHIMAGEANDSIZE']._serialized_end=836
-  _globals['_MATCHMACHINE']._serialized_start=838
-  _globals['_MATCHMACHINE']._serialized_end=945
-  _globals['_FILESYSTEMSERVICEMATCHRESPONSE']._serialized_start=947
-  _globals['_FILESYSTEMSERVICEMATCHRESPONSE']._serialized_end=1061
-  _globals['_FILESYSTEMLAYOUT']._serialized_start=1064
-  _globals['_FILESYSTEMLAYOUT']._serialized_end=1653
-  _globals['_FILESYSTEMLAYOUTCONSTRAINTS']._serialized_start=1656
-  _globals['_FILESYSTEMLAYOUTCONSTRAINTS']._serialized_end=1850
-  _globals['_FILESYSTEMLAYOUTCONSTRAINTS_IMAGESENTRY']._serialized_start=1793
-  _globals['_FILESYSTEMLAYOUTCONSTRAINTS_IMAGESENTRY']._serialized_end=1850
-  _globals['_FILESYSTEM']._serialized_start=1853
-  _globals['_FILESYSTEM']._serialized_end=2293
-  _globals['_DISK']._serialized_start=2295
-  _globals['_DISK']._serialized_end=2403
-  _globals['_RAID']._serialized_start=2406
-  _globals['_RAID']._serialized_end=2618
-  _globals['_DISKPARTITION']._serialized_start=2621
-  _globals['_DISKPARTITION']._serialized_end=2803
-  _globals['_VOLUMEGROUP']._serialized_start=2805
-  _globals['_VOLUMEGROUP']._serialized_end=2897
-  _globals['_LOGICALVOLUME']._serialized_start=2900
-  _globals['_LOGICALVOLUME']._serialized_end=3080
-  _globals['_FILESYSTEMSERVICE']._serialized_start=3662
-  _globals['_FILESYSTEMSERVICE']._serialized_end=4032
+  _globals['_LVMTYPE']._serialized_start=3076
+  _globals['_LVMTYPE']._serialized_end=3210
+  _globals['_FORMAT']._serialized_start=3213
+  _globals['_FORMAT']._serialized_end=3409
+  _globals['_GPTTYPE']._serialized_start=3412
+  _globals['_GPTTYPE']._serialized_end=3575
+  _globals['_RAIDLEVEL']._serialized_start=3577
+  _globals['_RAIDLEVEL']._serialized_end=3652
+  _globals['_FILESYSTEMSERVICEGETREQUEST']._serialized_start=160
+  _globals['_FILESYSTEMSERVICEGETREQUEST']._serialized_end=217
+  _globals['_FILESYSTEMSERVICELISTREQUEST']._serialized_start=219
+  _globals['_FILESYSTEMSERVICELISTREQUEST']._serialized_end=289
+  _globals['_FILESYSTEMSERVICEGETRESPONSE']._serialized_start=291
+  _globals['_FILESYSTEMSERVICEGETRESPONSE']._serialized_end=403
+  _globals['_FILESYSTEMSERVICELISTRESPONSE']._serialized_start=405
+  _globals['_FILESYSTEMSERVICELISTRESPONSE']._serialized_end=520
+  _globals['_FILESYSTEMSERVICEMATCHREQUEST']._serialized_start=523
+  _globals['_FILESYSTEMSERVICEMATCHREQUEST']._serialized_end=742
+  _globals['_MATCHIMAGEANDSIZE']._serialized_start=744
+  _globals['_MATCHIMAGEANDSIZE']._serialized_end=829
+  _globals['_MATCHMACHINE']._serialized_start=831
+  _globals['_MATCHMACHINE']._serialized_end=938
+  _globals['_FILESYSTEMSERVICEMATCHRESPONSE']._serialized_start=940
+  _globals['_FILESYSTEMSERVICEMATCHRESPONSE']._serialized_end=1054
+  _globals['_FILESYSTEMLAYOUT']._serialized_start=1057
+  _globals['_FILESYSTEMLAYOUT']._serialized_end=1646
+  _globals['_FILESYSTEMLAYOUTCONSTRAINTS']._serialized_start=1649
+  _globals['_FILESYSTEMLAYOUTCONSTRAINTS']._serialized_end=1843
+  _globals['_FILESYSTEMLAYOUTCONSTRAINTS_IMAGESENTRY']._serialized_start=1786
+  _globals['_FILESYSTEMLAYOUTCONSTRAINTS_IMAGESENTRY']._serialized_end=1843
+  _globals['_FILESYSTEM']._serialized_start=1846
+  _globals['_FILESYSTEM']._serialized_end=2286
+  _globals['_DISK']._serialized_start=2288
+  _globals['_DISK']._serialized_end=2396
+  _globals['_RAID']._serialized_start=2399
+  _globals['_RAID']._serialized_end=2611
+  _globals['_DISKPARTITION']._serialized_start=2614
+  _globals['_DISKPARTITION']._serialized_end=2796
+  _globals['_VOLUMEGROUP']._serialized_start=2798
+  _globals['_VOLUMEGROUP']._serialized_end=2890
+  _globals['_LOGICALVOLUME']._serialized_start=2893
+  _globals['_LOGICALVOLUME']._serialized_end=3073
+  _globals['_FILESYSTEMSERVICE']._serialized_start=3655
+  _globals['_FILESYSTEMSERVICE']._serialized_end=4025
 # @@protoc_insertion_point(module_scope)

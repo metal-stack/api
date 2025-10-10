@@ -348,7 +348,7 @@ var File_metalstack_admin_v2_size_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_size_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/admin/v2/size.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"G\n" +
+	"\x1emetalstack/admin/v2/size.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"G\n" +
 	"\x18SizeServiceCreateRequest\x12+\n" +
 	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"H\n" +
 	"\x19SizeServiceCreateResponse\x12+\n" +

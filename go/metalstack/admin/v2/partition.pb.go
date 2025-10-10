@@ -606,7 +606,7 @@ var File_metalstack_admin_v2_partition_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\n" +
-	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"[\n" +
+	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\x1a(metalstack/api/v2/predefined_rules.proto\"[\n" +
 	"\x1dPartitionServiceCreateRequest\x12:\n" +
 	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xb2\x04\n" +
 	"\x1dPartitionServiceUpdateRequest\x12\x1a\n" +

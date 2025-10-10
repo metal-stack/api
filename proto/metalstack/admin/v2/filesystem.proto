@@ -5,7 +5,7 @@ package metalstack.admin.v2;
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/filesystem.proto";
-import "metalstack/api/v2/predefined_string_rules.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // FilesystemService serves filesystem related functions
 service FilesystemService {

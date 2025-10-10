@@ -221,7 +221,7 @@ var File_metalstack_admin_v2_machine_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_machine_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/machine.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a/metalstack/api/v2/predefined_string_rules.proto\"8\n" +
+	"!metalstack/admin/v2/machine.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"8\n" +
 	"\x18MachineServiceGetRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +

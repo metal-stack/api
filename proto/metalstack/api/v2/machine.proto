@@ -9,7 +9,7 @@ import "metalstack/api/v2/filesystem.proto";
 import "metalstack/api/v2/image.proto";
 import "metalstack/api/v2/network.proto";
 import "metalstack/api/v2/partition.proto";
-import "metalstack/api/v2/predefined_string_rules.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/size.proto";
 
 // MachineService serves machine related functions

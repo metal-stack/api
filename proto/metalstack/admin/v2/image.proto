@@ -6,7 +6,7 @@ import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/image.proto";
-import "metalstack/api/v2/predefined_string_rules.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // ImageService serves image related functions
 service ImageService {
