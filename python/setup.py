@@ -4,7 +4,8 @@ import os
 NAME = "metal-stack-api"
 
 REQUIRES = [
-    "connecpy>=1.5.2",
+    "connect-python>=0.5.0",
+    "protovalidate>=1.0.0",
 ]
 
 setup(
