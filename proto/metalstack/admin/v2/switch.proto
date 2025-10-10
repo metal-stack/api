@@ -170,7 +170,7 @@ message SwitchServicePortRequest {
     max_len: 128
   }];
   // Status that the port should have.
-  metalstack.api.v2.SwitchPortStatus status = 3;
+  metalstack.api.v2.SwitchPortStatus status = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
 // SwitchServicePortResponse.

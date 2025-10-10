@@ -756,12 +756,12 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\n" +
 	"new_switch\x18\x02 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\tnewSwitch\"Q\n" +
 	"\x1cSwitchServiceMigrateResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\x9c\x01\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xa6\x01\n" +
 	"\x18SwitchServicePortRequest\x12\x1c\n" +
 	"\x02id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\x02id\x12%\n" +
 	"\bnic_name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\anicName\x12;\n" +
-	"\x06status\x18\x03 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusR\x06status\"N\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\anicName\x12E\n" +
+	"\x06status\x18\x03 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status\"N\n" +
 	"\x19SwitchServicePortResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch2\xbf\x05\n" +
 	"\rSwitchService\x12n\n" +
