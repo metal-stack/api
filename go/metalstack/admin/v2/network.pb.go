@@ -730,40 +730,33 @@ var File_metalstack_admin_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\"6\n" +
+	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a(metalstack/api/v2/predefined_rules.proto\"6\n" +
 	"\x18NetworkServiceGetRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xd1\v\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xa7\t\n" +
 	"\x1bNetworkServiceCreateRequest\x12\x1f\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
-	"\x04name\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x04name\x88\x01\x01\x121\n" +
-	"\vdescription\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\vdescription\x88\x01\x01\x12-\n" +
-	"\tpartition\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\tpartition\x88\x01\x01\x12'\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12$\n" +
+	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x122\n" +
+	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x02R\vdescription\x88\x01\x01\x12.\n" +
+	"\tpartition\x18\x04 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x03R\tpartition\x88\x01\x01\x12'\n" +
 	"\aproject\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x04R\aproject\x88\x01\x01\x12<\n" +
 	"\x04type\x18\x06 \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x126\n" +
-	"\x06labels\x18\a \x01(\v2\x19.metalstack.api.v2.LabelsH\x05R\x06labels\x88\x01\x01\x12\x1a\n" +
-	"\bprefixes\x18\b \x03(\tR\bprefixes\x121\n" +
-	"\x14destination_prefixes\x18\t \x03(\tR\x13destinationPrefixes\x12c\n" +
+	"\x06labels\x18\a \x01(\v2\x19.metalstack.api.v2.LabelsH\x05R\x06labels\x88\x01\x01\x12(\n" +
+	"\bprefixes\x18\b \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\bprefixes\x12?\n" +
+	"\x14destination_prefixes\x18\t \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\x13destinationPrefixes\x12c\n" +
 	"\x1bdefault_child_prefix_length\x18\n" +
 	" \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x18defaultChildPrefixLength\x12[\n" +
 	"\x17min_child_prefix_length\x18\v \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x14minChildPrefixLength\x12D\n" +
 	"\bnat_type\x18\f \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\anatType\x88\x01\x01\x12\x15\n" +
-	"\x03vrf\x18\r \x01(\rH\aR\x03vrf\x88\x01\x01\x126\n" +
-	"\x0eparent_network\x18\x0e \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\bR\rparentNetwork\x88\x01\x01\x12@\n" +
-	"\x1cadditional_announcable_cidrs\x18\x0f \x03(\tR\x1aadditionalAnnouncableCidrs\x12A\n" +
+	"\x03vrf\x18\r \x01(\rH\aR\x03vrf\x88\x01\x01\x127\n" +
+	"\x0eparent_network\x18\x0e \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\bR\rparentNetwork\x88\x01\x01\x12N\n" +
+	"\x1cadditional_announcable_cidrs\x18\x0f \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\x1aadditionalAnnouncableCidrs\x12A\n" +
 	"\x06length\x18\x10 \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\tR\x06length\x88\x01\x01\x12]\n" +
 	"\x0eaddress_family\x18\x11 \x01(\x0e2'.metalstack.api.v2.NetworkAddressFamilyB\b\xbaH\x05\x82\x01\x02\x10\x01H\n" +
-	"R\raddressFamily\x88\x01\x01:\xd5\x02\xbaH\xd1\x02\x1aN\n" +
-	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
-	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())\x1a\x8a\x01\n" +
-	"\x1cadditional_announcable_cidrs\x120given additional_announcable_cidrs must be valid\x1a8this.additional_announcable_cidrs.all(m, m.isIpPrefix())B\x05\n" +
+	"R\raddressFamily\x88\x01\x01B\x05\n" +
 	"\x03_idB\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
@@ -776,28 +769,22 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x04_vrfB\x11\n" +
 	"\x0f_parent_networkB\t\n" +
 	"\a_lengthB\x11\n" +
-	"\x0f_address_family\"\x95\t\n" +
-	"\x1bNetworkServiceUpdateRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
+	"\x0f_address_family\"\xea\x06\n" +
+	"\x1bNetworkServiceUpdateRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"updateMeta\x12#\n" +
-	"\x04name\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x04name\x88\x01\x01\x121\n" +
-	"\vdescription\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\vdescription\x88\x01\x01\x12<\n" +
-	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x02R\x06labels\x88\x01\x01\x12\x1a\n" +
-	"\bprefixes\x18\x06 \x03(\tR\bprefixes\x121\n" +
-	"\x14destination_prefixes\x18\a \x03(\tR\x13destinationPrefixes\x12h\n" +
+	"updateMeta\x12$\n" +
+	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
+	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12<\n" +
+	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x02R\x06labels\x88\x01\x01\x12(\n" +
+	"\bprefixes\x18\x06 \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\bprefixes\x12?\n" +
+	"\x14destination_prefixes\x18\a \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\x13destinationPrefixes\x12h\n" +
 	"\x1bdefault_child_prefix_length\x18\n" +
 	" \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\x03R\x18defaultChildPrefixLength\x88\x01\x01\x12`\n" +
 	"\x17min_child_prefix_length\x18\v \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\x04R\x14minChildPrefixLength\x88\x01\x01\x12D\n" +
-	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\anatType\x88\x01\x01\x12@\n" +
-	"\x1cadditional_announcable_cidrs\x18\x10 \x03(\tR\x1aadditionalAnnouncableCidrs\x12\x14\n" +
-	"\x05force\x18\x14 \x01(\bR\x05force:\xd5\x02\xbaH\xd1\x02\x1aN\n" +
-	"\bprefixes\x12\x1cgiven prefixes must be valid\x1a$this.prefixes.all(m, m.isIpPrefix())\x1ar\n" +
-	"\x14destination_prefixes\x12(given destination_prefixes must be valid\x1a0this.destination_prefixes.all(m, m.isIpPrefix())\x1a\x8a\x01\n" +
-	"\x1cadditional_announcable_cidrs\x120given additional_announcable_cidrs must be valid\x1a8this.additional_announcable_cidrs.all(m, m.isIpPrefix())B\a\n" +
+	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\anatType\x88\x01\x01\x12N\n" +
+	"\x1cadditional_announcable_cidrs\x18\x10 \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\x1aadditionalAnnouncableCidrs\x12\x14\n" +
+	"\x05force\x18\x14 \x01(\bR\x05forceB\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\t\n" +
 	"\a_labelsB\x1e\n" +
