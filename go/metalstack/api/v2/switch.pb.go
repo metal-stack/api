@@ -208,6 +208,8 @@ const (
 	SwitchPortStatus_SWITCH_PORT_STATUS_UP SwitchPortStatus = 1
 	// SWITCH_PORT_STATUS_DOWN means this port is down.
 	SwitchPortStatus_SWITCH_PORT_STATUS_DOWN SwitchPortStatus = 2
+	// SWITCH_PORT_STATUS_UNKNOWN means the status of this port is unknown.
+	SwitchPortStatus_SWITCH_PORT_STATUS_UNKNOWN SwitchPortStatus = 3
 )
 
 // Enum value maps for SwitchPortStatus.
@@ -216,11 +218,13 @@ var (
 		0: "SWITCH_PORT_STATUS_UNSPECIFIED",
 		1: "SWITCH_PORT_STATUS_UP",
 		2: "SWITCH_PORT_STATUS_DOWN",
+		3: "SWITCH_PORT_STATUS_UNKNOWN",
 	}
 	SwitchPortStatus_value = map[string]int32{
 		"SWITCH_PORT_STATUS_UNSPECIFIED": 0,
 		"SWITCH_PORT_STATUS_UP":          1,
 		"SWITCH_PORT_STATUS_DOWN":        2,
+		"SWITCH_PORT_STATUS_UNKNOWN":     3,
 	}
 )
 
@@ -1047,11 +1051,12 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x0eSwitchOSVendor\x12 \n" +
 	"\x1cSWITCH_OS_VENDOR_UNSPECIFIED\x10\x00\x12)\n" +
 	"\x18SWITCH_OS_VENDOR_CUMULUS\x10\x01\x1a\v\x82\xb2\x19\aCumulus\x12%\n" +
-	"\x16SWITCH_OS_VENDOR_SONIC\x10\x02\x1a\t\x82\xb2\x19\x05SONiC*\x80\x01\n" +
+	"\x16SWITCH_OS_VENDOR_SONIC\x10\x02\x1a\t\x82\xb2\x19\x05SONiC*\xad\x01\n" +
 	"\x10SwitchPortStatus\x12\"\n" +
 	"\x1eSWITCH_PORT_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x15SWITCH_PORT_STATUS_UP\x10\x01\x1a\x06\x82\xb2\x19\x02up\x12%\n" +
-	"\x17SWITCH_PORT_STATUS_DOWN\x10\x02\x1a\b\x82\xb2\x19\x04downB\xc1\x01\n" +
+	"\x17SWITCH_PORT_STATUS_DOWN\x10\x02\x1a\b\x82\xb2\x19\x04down\x12+\n" +
+	"\x1aSWITCH_PORT_STATUS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknownB\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vSwitchProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

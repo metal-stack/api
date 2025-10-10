@@ -40,6 +40,7 @@ class SwitchPortStatus(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SWITCH_PORT_STATUS_UNSPECIFIED: _ClassVar[SwitchPortStatus]
     SWITCH_PORT_STATUS_UP: _ClassVar[SwitchPortStatus]
     SWITCH_PORT_STATUS_DOWN: _ClassVar[SwitchPortStatus]
+    SWITCH_PORT_STATUS_UNKNOWN: _ClassVar[SwitchPortStatus]
 BGP_STATE_UNSPECIFIED: BGPState
 BGP_STATE_IDLE: BGPState
 BGP_STATE_CONNECT: BGPState
@@ -56,6 +57,7 @@ SWITCH_OS_VENDOR_SONIC: SwitchOSVendor
 SWITCH_PORT_STATUS_UNSPECIFIED: SwitchPortStatus
 SWITCH_PORT_STATUS_UP: SwitchPortStatus
 SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
+SWITCH_PORT_STATUS_UNKNOWN: SwitchPortStatus
 
 class Switch(_message.Message):
     __slots__ = ("id", "meta", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections")
