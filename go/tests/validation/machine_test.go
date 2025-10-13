@@ -3,15 +3,10 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"github.com/stretchr/testify/require"
 )
 
 func TestValidateMachine(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "MachineNicQuery with invalid MACs",
@@ -55,5 +50,5 @@ func TestValidateMachine(t *testing.T) {
  - ips: given ips must be valid [repeated.ips]`,
 		},
 	}
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }

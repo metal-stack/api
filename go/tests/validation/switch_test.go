@@ -3,16 +3,11 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
 )
 
 func TestValidateSwitch(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "SwitchNic with invalid MAC",
@@ -71,5 +66,5 @@ func TestValidateSwitch(t *testing.T) {
  - id: value must be a valid hostname [string.hostname]`,
 		},
 	}
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }

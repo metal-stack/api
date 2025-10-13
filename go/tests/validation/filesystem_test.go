@@ -3,7 +3,6 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
 	"github.com/metal-stack/api/go/enum"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/stretchr/testify/require"
@@ -11,9 +10,6 @@ import (
 )
 
 func TestValidateFilesystem(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "Valid Filesystem minimal config",
@@ -71,7 +67,7 @@ func TestValidateFilesystem(t *testing.T) {
  - name: must be within 2 and 128 characters [string.is_name]`},
 	}
 
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }
 
 func TestGetStringValue(t *testing.T) {
