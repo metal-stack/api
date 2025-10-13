@@ -3,17 +3,12 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
 	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
 )
 
 func TestValidateNetwork(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "Valid NetworkCreateRequest minimal config",
@@ -57,5 +52,5 @@ func TestValidateNetwork(t *testing.T) {
  - destination_prefixes: given prefixes must be valid [repeated.prefixes]`,
 		},
 	}
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }
