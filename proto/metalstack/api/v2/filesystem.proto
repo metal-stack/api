@@ -151,7 +151,7 @@ message Filesystem {
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Path the mountpoint where this filesystem should be mounted on
   optional string path = 5 [(buf.validate.field).string = {
-    min_len: 2
+    min_len: 1
     max_len: 4096
   }];
   // Label optional label for this this filesystem

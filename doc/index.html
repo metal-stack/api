@@ -10414,14 +10414,14 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                 <tr>
                   <td>management_user</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>ManagementUser is the user name to use for management access. </p></td>
                 </tr>
               
                 <tr>
                   <td>console_command</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>ConsoleCommand is the command for accessing the switch&#39;s console. </p></td>
                 </tr>
               
@@ -12972,7 +12972,8 @@ for which the methods should be allowed </p></td>
                   <td>update_meta</td>
                   <td><a href="#metalstack.api.v2.UpdateMeta">UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request
+TokenUpdate is not guarded with optlock in the backend </p></td>
                 </tr>
               
                 <tr>

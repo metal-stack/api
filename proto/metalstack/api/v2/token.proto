@@ -87,10 +87,7 @@ message TokenServiceCreateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
     keys: {
-      string: {
-        min_len: 3
-        max_len: 128
-      }
+      string: {uuid: true}
     }
     values: {
       enum: {defined_only: true}
@@ -155,7 +152,8 @@ message TokenServiceUpdateRequest {
   // Uuid of the token to update
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request
-  UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
+  // TokenUpdate is not guarded with optlock in the backend
+  UpdateMeta update_meta = 2 [(buf.validate.field).required = false];
   // Description is a user given description of this token.
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
@@ -163,10 +161,7 @@ message TokenServiceUpdateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
     keys: {
-      string: {
-        min_len: 3
-        max_len: 128
-      }
+      string: {uuid: true}
     }
     values: {
       enum: {defined_only: true}
