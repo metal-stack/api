@@ -63,6 +63,14 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
+		ExtendedType:  (*validate.StringRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80048956,
+		Name:          "metalstack.api.v2.is_uri",
+		Tag:           "varint,80048956,opt,name=is_uri",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
 		ExtendedType:  (*validate.RepeatedRules)(nil),
 		ExtensionType: (*bool)(nil),
 		Field:         80048956,
@@ -102,6 +110,10 @@ var (
 	//
 	// optional bool is_prefix = 80048955;
 	E_IsPrefix = &file_metalstack_api_v2_predefined_rules_proto_extTypes[4]
+	// IsUri validates if the given string is a valid URI
+	//
+	// optional bool is_uri = 80048956;
+	E_IsUri = &file_metalstack_api_v2_predefined_rules_proto_extTypes[5]
 )
 
 // Extension fields to validate.RepeatedRules.
@@ -109,11 +121,11 @@ var (
 	// Prefixes validates if a slice of prefixes in string form are valid
 	//
 	// optional bool prefixes = 80048956;
-	E_Prefixes = &file_metalstack_api_v2_predefined_rules_proto_extTypes[5]
+	E_Prefixes = &file_metalstack_api_v2_predefined_rules_proto_extTypes[6]
 	// Ips validates if a slice of ips in string form are valid
 	//
 	// optional bool ips = 80048957;
-	E_Ips = &file_metalstack_api_v2_predefined_rules_proto_extTypes[6]
+	E_Ips = &file_metalstack_api_v2_predefined_rules_proto_extTypes[7]
 )
 
 var File_metalstack_api_v2_predefined_rules_proto protoreflect.FileDescriptor
@@ -137,7 +149,11 @@ const file_metalstack_api_v2_predefined_rules_proto_rawDesc = "" +
 	"\x13string.is_partition\x12#must be within 2 and 128 characters\x1a&this.size() >= 2 && this.size() <= 128R\visPartition:\x82\x01\n" +
 	"\tis_prefix\x12\x19.buf.validate.StringRules\x18\xbb\xe6\x95& \x01(\bBG\xc2HD\n" +
 	"B\n" +
-	"\x0fstring.prefixes\x12\x1cgiven prefixes must be valid\x1a\x11this.isIpPrefix()R\bisPrefix:\x8f\x01\n" +
+	"\x0fstring.prefixes\x12\x1cgiven prefixes must be valid\x1a\x11this.isIpPrefix()R\bisPrefix:m\n" +
+	"\x06is_uri\x12\x19.buf.validate.StringRules\x18\xbc\xe6\x95& \x01(\bB8\xc2H5\n" +
+	"3\n" +
+	"\n" +
+	"string.uri\x12\x17given uri must be valid\x1a\fthis.isUri()R\x05isUri:\x8f\x01\n" +
 	"\bprefixes\x12\x1b.buf.validate.RepeatedRules\x18\xbc\xe6\x95& \x01(\bBS\xc2HP\n" +
 	"N\n" +
 	"\x11repeated.prefixes\x12\x1cgiven prefixes must be valid\x1a\x1bthis.all(m, m.isIpPrefix())R\bprefixes:u\n" +
@@ -156,12 +172,13 @@ var file_metalstack_api_v2_predefined_rules_proto_depIdxs = []int32{
 	0, // 2: metalstack.api.v2.is_description:extendee -> buf.validate.StringRules
 	0, // 3: metalstack.api.v2.is_partition:extendee -> buf.validate.StringRules
 	0, // 4: metalstack.api.v2.is_prefix:extendee -> buf.validate.StringRules
-	1, // 5: metalstack.api.v2.prefixes:extendee -> buf.validate.RepeatedRules
-	1, // 6: metalstack.api.v2.ips:extendee -> buf.validate.RepeatedRules
-	7, // [7:7] is the sub-list for method output_type
-	7, // [7:7] is the sub-list for method input_type
-	7, // [7:7] is the sub-list for extension type_name
-	0, // [0:7] is the sub-list for extension extendee
+	0, // 5: metalstack.api.v2.is_uri:extendee -> buf.validate.StringRules
+	1, // 6: metalstack.api.v2.prefixes:extendee -> buf.validate.RepeatedRules
+	1, // 7: metalstack.api.v2.ips:extendee -> buf.validate.RepeatedRules
+	8, // [8:8] is the sub-list for method output_type
+	8, // [8:8] is the sub-list for method input_type
+	8, // [8:8] is the sub-list for extension type_name
+	0, // [0:8] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
 }
 
@@ -177,7 +194,7 @@ func file_metalstack_api_v2_predefined_rules_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_predefined_rules_proto_rawDesc), len(file_metalstack_api_v2_predefined_rules_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   0,
-			NumExtensions: 7,
+			NumExtensions: 8,
 			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_predefined_rules_proto_goTypes,

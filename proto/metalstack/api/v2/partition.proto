@@ -56,23 +56,9 @@ message PartitionQuery {
 // PartitionBootConfiguration defines how metal-hammer boots
 message PartitionBootConfiguration {
   // ImageURL the url to download the initrd for the boot image
-  string image_url = 1 [(buf.validate.field).cel = {
-    id: "valid_url"
-    message: "url must be a valid URI"
-    // `isUri` validates that a string is an absolute URI.
-    // This expression validates that the uri field is an absolute URI.
-    // Note: to allow relative URI, use `isUriRef`.
-    expression: "this.isUri()"
-  }];
+  string image_url = 1 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // KernelURL the url to download the kernel for the boot image
-  string kernel_url = 2 [(buf.validate.field).cel = {
-    id: "valid_url"
-    message: "url must be a valid URI"
-    // `isUri` validates that a string is an absolute URI.
-    // This expression validates that the uri field is an absolute URI.
-    // Note: to allow relative URI, use `isUriRef`.
-    expression: "this.isUri()"
-  }];
+  string kernel_url = 2 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // Commandline the cmdline to the kernel for the boot image
   string commandline = 3;
 }
