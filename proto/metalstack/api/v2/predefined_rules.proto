@@ -37,6 +37,12 @@ extend buf.validate.StringRules {
     message: "given prefixes must be valid"
     expression: "this.isIpPrefix()"
   }];
+  // IsUri validates if the given string is a valid URI
+  optional bool is_uri = 80048956 [(buf.validate.predefined).cel = {
+    id: "string.uri"
+    message: "given uri must be valid"
+    expression: "this.isUri()"
+  }];
 }
 
 extend buf.validate.RepeatedRules {

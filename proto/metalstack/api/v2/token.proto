@@ -93,11 +93,7 @@ message TokenServiceCreateRequest {
       }
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "project role must be specified"
-        expression: "this >= 0 && this <= 3"
-      }
+      enum: {defined_only: true}
     }
   }];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
@@ -109,11 +105,7 @@ message TokenServiceCreateRequest {
       }
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "tenant role must be specified"
-        expression: "this >= 0 && this <= 4"
-      }
+      enum: {defined_only: true}
     }
   }];
   // AdminRole defines the admin role of the token owner
@@ -177,11 +169,7 @@ message TokenServiceUpdateRequest {
       }
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "project role must be specified"
-        expression: "this >= 0 && this <= 3"
-      }
+      enum: {defined_only: true}
     }
   }];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
@@ -193,11 +181,7 @@ message TokenServiceUpdateRequest {
       }
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "tenant role must be specified"
-        expression: "this >= 0 && this <= 4"
-      }
+      enum: {defined_only: true}
     }
   }];
   // AdminRole defines the admin role of the token owner

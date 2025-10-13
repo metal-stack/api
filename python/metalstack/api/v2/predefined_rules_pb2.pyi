@@ -13,6 +13,8 @@ IS_PARTITION_FIELD_NUMBER: _ClassVar[int]
 is_partition: _descriptor.FieldDescriptor
 IS_PREFIX_FIELD_NUMBER: _ClassVar[int]
 is_prefix: _descriptor.FieldDescriptor
+IS_URI_FIELD_NUMBER: _ClassVar[int]
+is_uri: _descriptor.FieldDescriptor
 PREFIXES_FIELD_NUMBER: _ClassVar[int]
 prefixes: _descriptor.FieldDescriptor
 IPS_FIELD_NUMBER: _ClassVar[int]
