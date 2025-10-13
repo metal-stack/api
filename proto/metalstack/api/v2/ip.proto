@@ -164,7 +164,7 @@ message IPQuery {
   // Machine for which this ips should get filtered
   optional string machine = 6 [(buf.validate.field).string.uuid = true];
   // ParentPrefixCidr for which this ips should get filtered
-  optional string parent_prefix_cidr = 7 [(buf.validate.field).string.ip = true];
+  optional string parent_prefix_cidr = 7 [(buf.validate.field).string.ip_prefix = true];
   // Labels for which this ips should get filtered
   optional Labels labels = 8;
   // Static if set to true, this will be a Static ip

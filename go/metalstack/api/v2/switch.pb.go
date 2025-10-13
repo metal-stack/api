@@ -273,9 +273,9 @@ type Switch struct {
 	// ManagementIp is the switch's IP for management access.
 	ManagementIp string `protobuf:"bytes,7,opt,name=management_ip,json=managementIp,proto3" json:"management_ip,omitempty"`
 	// ManagementUser is the user name to use for management access.
-	ManagementUser string `protobuf:"bytes,8,opt,name=management_user,json=managementUser,proto3" json:"management_user,omitempty"`
+	ManagementUser *string `protobuf:"bytes,8,opt,name=management_user,json=managementUser,proto3,oneof" json:"management_user,omitempty"`
 	// ConsoleCommand is the command for accessing the switch's console.
-	ConsoleCommand string `protobuf:"bytes,9,opt,name=console_command,json=consoleCommand,proto3" json:"console_command,omitempty"`
+	ConsoleCommand *string `protobuf:"bytes,9,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
 	// Nics are the front panel ports of the switch.
 	Nics []*SwitchNic `protobuf:"bytes,10,rep,name=nics,proto3" json:"nics,omitempty"`
 	// SwitchOs is the OS running on the switch.
@@ -366,15 +366,15 @@ func (x *Switch) GetManagementIp() string {
 }
 
 func (x *Switch) GetManagementUser() string {
-	if x != nil {
-		return x.ManagementUser
+	if x != nil && x.ManagementUser != nil {
+		return *x.ManagementUser
 	}
 	return ""
 }
 
 func (x *Switch) GetConsoleCommand() string {
-	if x != nil {
-		return x.ConsoleCommand
+	if x != nil && x.ConsoleCommand != nil {
+		return *x.ConsoleCommand
 	}
 	return ""
 }
@@ -961,7 +961,7 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xfe\x04\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xb0\x05\n" +
 	"\x06Switch\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12+\n" +
@@ -970,16 +970,18 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x04rack\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04rack\x88\x01\x01\x12)\n" +
 	"\tpartition\x18\x05 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12Q\n" +
 	"\freplace_mode\x18\x06 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
-	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x123\n" +
+	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x128\n" +
 	"\x0fmanagement_user\x18\b \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0emanagementUser\x123\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x0emanagementUser\x88\x01\x01\x128\n" +
 	"\x0fconsole_command\x18\t \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0econsoleCommand\x120\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\x0econsoleCommand\x88\x01\x01\x120\n" +
 	"\x04nics\x18\n" +
 	" \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x12+\n" +
 	"\x02os\x18\v \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02os\x12U\n" +
 	"\x13machine_connections\x18\f \x03(\v2$.metalstack.api.v2.MachineConnectionR\x12machineConnectionsB\a\n" +
-	"\x05_rack\"\xb1\x01\n" +
+	"\x05_rackB\x12\n" +
+	"\x10_management_userB\x12\n" +
+	"\x10_console_command\"\xb1\x01\n" +
 	"\bSwitchOS\x12C\n" +
 	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06vendor\x12%\n" +
 	"\aversion\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\aversion\x129\n" +
