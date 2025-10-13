@@ -7,6 +7,7 @@
 package infrav2
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -119,14 +120,16 @@ func (x *SwitchServiceRegisterResponse) GetSwitch() *v2.Switch {
 // SwitchServiceHeartbeatRequest.
 type SwitchServiceHeartbeatRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of the switch.
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Duration of the sync.
-	Duration *durationpb.Duration `protobuf:"bytes,1,opt,name=duration,proto3" json:"duration,omitempty"`
+	Duration *durationpb.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
 	// Error if any occurred during the sync.
-	Error *string `protobuf:"bytes,2,opt,name=error,proto3,oneof" json:"error,omitempty"`
+	Error *string `protobuf:"bytes,3,opt,name=error,proto3,oneof" json:"error,omitempty"`
 	// PortStates maps port identifiers to the respective port's operational state.
-	PortStates map[string]v2.SwitchPortStatus `protobuf:"bytes,3,rep,name=port_states,json=portStates,proto3" json:"port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.SwitchPortStatus"`
+	PortStates map[string]v2.SwitchPortStatus `protobuf:"bytes,4,rep,name=port_states,json=portStates,proto3" json:"port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.SwitchPortStatus"`
 	// BgpPortStates maps port identifiers to the respective port's BGP state.
-	BgpPortStates map[string]*v2.SwitchBGPPortState `protobuf:"bytes,4,rep,name=bgp_port_states,json=bgpPortStates,proto3" json:"bgp_port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	BgpPortStates map[string]*v2.SwitchBGPPortState `protobuf:"bytes,5,rep,name=bgp_port_states,json=bgpPortStates,proto3" json:"bgp_port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -159,6 +162,13 @@ func (x *SwitchServiceHeartbeatRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SwitchServiceHeartbeatRequest.ProtoReflect.Descriptor instead.
 func (*SwitchServiceHeartbeatRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SwitchServiceHeartbeatRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
 }
 
 func (x *SwitchServiceHeartbeatRequest) GetDuration() *durationpb.Duration {
@@ -321,17 +331,19 @@ var File_metalstack_infra_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/infra/v2/switch.proto\x12\x13metalstack.infra.v2\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1emetalstack/api/v2/switch.proto\"Q\n" +
+	" metalstack/infra/v2/switch.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/switch.proto\"Q\n" +
 	"\x1cSwitchServiceRegisterRequest\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"R\n" +
 	"\x1dSwitchServiceRegisterResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\x9c\x04\n" +
-	"\x1dSwitchServiceHeartbeatRequest\x125\n" +
-	"\bduration\x18\x01 \x01(\v2\x19.google.protobuf.DurationR\bduration\x12\x19\n" +
-	"\x05error\x18\x02 \x01(\tH\x00R\x05error\x88\x01\x01\x12c\n" +
-	"\vport_states\x18\x03 \x03(\v2B.metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntryR\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xbb\x04\n" +
+	"\x1dSwitchServiceHeartbeatRequest\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x125\n" +
+	"\bduration\x18\x02 \x01(\v2\x19.google.protobuf.DurationR\bduration\x12\x19\n" +
+	"\x05error\x18\x03 \x01(\tH\x00R\x05error\x88\x01\x01\x12c\n" +
+	"\vport_states\x18\x04 \x03(\v2B.metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntryR\n" +
 	"portStates\x12m\n" +
-	"\x0fbgp_port_states\x18\x04 \x03(\v2E.metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntryR\rbgpPortStates\x1ab\n" +
+	"\x0fbgp_port_states\x18\x05 \x03(\v2E.metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntryR\rbgpPortStates\x1ab\n" +
 	"\x0fPortStatesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x129\n" +
 	"\x05value\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusR\x05value:\x028\x01\x1ag\n" +

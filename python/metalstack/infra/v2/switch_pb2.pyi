@@ -1,8 +1,10 @@
 import datetime
 
+from buf.validate import validate_pb2 as _validate_pb2
 from google.protobuf import duration_pb2 as _duration_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import switch_pb2 as _switch_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
@@ -25,7 +27,7 @@ class SwitchServiceRegisterResponse(_message.Message):
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
 
 class SwitchServiceHeartbeatRequest(_message.Message):
-    __slots__ = ("duration", "error", "port_states", "bgp_port_states")
+    __slots__ = ("id", "duration", "error", "port_states", "bgp_port_states")
     class PortStatesEntry(_message.Message):
         __slots__ = ("key", "value")
         KEY_FIELD_NUMBER: _ClassVar[int]
@@ -40,15 +42,17 @@ class SwitchServiceHeartbeatRequest(_message.Message):
         key: str
         value: _switch_pb2.SwitchBGPPortState
         def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[_switch_pb2.SwitchBGPPortState, _Mapping]] = ...) -> None: ...
+    ID_FIELD_NUMBER: _ClassVar[int]
     DURATION_FIELD_NUMBER: _ClassVar[int]
     ERROR_FIELD_NUMBER: _ClassVar[int]
     PORT_STATES_FIELD_NUMBER: _ClassVar[int]
     BGP_PORT_STATES_FIELD_NUMBER: _ClassVar[int]
+    id: str
     duration: _duration_pb2.Duration
     error: str
     port_states: _containers.ScalarMap[str, _switch_pb2.SwitchPortStatus]
     bgp_port_states: _containers.MessageMap[str, _switch_pb2.SwitchBGPPortState]
-    def __init__(self, duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ..., port_states: _Optional[_Mapping[str, _switch_pb2.SwitchPortStatus]] = ..., bgp_port_states: _Optional[_Mapping[str, _switch_pb2.SwitchBGPPortState]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ..., port_states: _Optional[_Mapping[str, _switch_pb2.SwitchPortStatus]] = ..., bgp_port_states: _Optional[_Mapping[str, _switch_pb2.SwitchBGPPortState]] = ...) -> None: ...
 
 class SwitchServiceHeartbeatResponse(_message.Message):
     __slots__ = ("id", "last_sync", "last_sync_error")
