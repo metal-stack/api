@@ -45,10 +45,12 @@ message Token {
     min_len: 2
     max_len: 512
   }];
+  // Meta for this token
+  Meta meta = 3;
   // Description is a user given description of this token.
-  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
-  repeated MethodPermission permissions = 4 [(buf.validate.field).repeated.max_items = 500];
+  repeated MethodPermission permissions = 5 [(buf.validate.field).repeated.max_items = 500];
   // Expires gives the date in the future after which this token can not be used anymore
   google.protobuf.Timestamp expires = 6;
   // IssuedAt gives the date when this token was created
@@ -75,8 +77,8 @@ enum TokenType {
   TOKEN_TYPE_UNSPECIFIED = 0;
   // TOKEN_TYPE_API is a token for api usage
   TOKEN_TYPE_API = 1;
-  // TOKEN_TYPE_CONSOLE is a token for console or web ui usage
-  TOKEN_TYPE_CONSOLE = 2;
+  // TOKEN_TYPE_USER is a token to access the api with cli, a web application or other user induced actions.
+  TOKEN_TYPE_USER = 2;
 }
 
 // TokenServiceCreateRequest is the request payload to create a token
@@ -93,17 +95,10 @@ message TokenServiceCreateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
     keys: {
-      string: {
-        min_len: 3
-        max_len: 128
-      }
+      string: {uuid: true}
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "project role must be specified"
-        expression: "this >= 0 && this <= 3"
-      }
+      enum: {defined_only: true}
     }
   }];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
@@ -115,11 +110,7 @@ message TokenServiceCreateRequest {
       }
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "tenant role must be specified"
-        expression: "this >= 0 && this <= 4"
-      }
+      enum: {defined_only: true}
     }
   }];
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
@@ -128,11 +119,7 @@ message TokenServiceCreateRequest {
       string: {uuid: true}
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "tenant role must be specified"
-        expression: "this >= 0 && this <= 4"
-      }
+      enum: {defined_only: true}
     }
   }];
   // InfraRoles associates a infra service with the corresponding role of the token owner
@@ -144,15 +131,13 @@ message TokenServiceCreateRequest {
       }
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "tenant role must be specified"
-        expression: "this >= 0 && this <= 4"
-      }
+      enum: {defined_only: true}
     }
   }];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 9 [(buf.validate.field).enum.defined_only = true];
+  // Labels on this token
+  Labels labels = 10;
 }
 
 // MethodPermission is a mapping from a subject/project to a service method
@@ -198,7 +183,8 @@ message TokenServiceUpdateRequest {
   // Uuid of the token to update
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request
-  UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
+  // TokenUpdate is not guarded with optlock in the backend
+  UpdateMeta update_meta = 2 [(buf.validate.field).required = false];
   // Description is a user given description of this token.
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
@@ -206,17 +192,10 @@ message TokenServiceUpdateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
     keys: {
-      string: {
-        min_len: 3
-        max_len: 128
-      }
+      string: {uuid: true}
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "project role must be specified"
-        expression: "this >= 0 && this <= 3"
-      }
+      enum: {defined_only: true}
     }
   }];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
@@ -228,11 +207,7 @@ message TokenServiceUpdateRequest {
       }
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "tenant role must be specified"
-        expression: "this >= 0 && this <= 4"
-      }
+      enum: {defined_only: true}
     }
   }];
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
@@ -241,11 +216,7 @@ message TokenServiceUpdateRequest {
       string: {uuid: true}
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "tenant role must be specified"
-        expression: "this >= 0 && this <= 4"
-      }
+      enum: {defined_only: true}
     }
   }];
   // InfraRoles associates a infra service with the corresponding role of the token owner
@@ -257,15 +228,13 @@ message TokenServiceUpdateRequest {
       }
     }
     values: {
-      cel: {
-        id: "role-specified"
-        message: "tenant role must be specified"
-        expression: "this >= 0 && this <= 4"
-      }
+      enum: {defined_only: true}
     }
   }];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 9 [(buf.validate.field).enum.defined_only = true];
+  // Labels on this token
+  UpdateLabels labels = 10;
 }
 
 // TokenServiceUpdateResponse is the response payload of a token update request

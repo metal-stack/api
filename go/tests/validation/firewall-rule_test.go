@@ -3,15 +3,10 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"github.com/stretchr/testify/require"
 )
 
 func TestValidateFirewallRules(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "Invalid Rule with valid comment",
@@ -40,5 +35,5 @@ func TestValidateFirewallRules(t *testing.T) {
 		},
 	}
 
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }

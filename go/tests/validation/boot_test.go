@@ -3,15 +3,10 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
 	infrav2 "github.com/metal-stack/api/go/metalstack/infra/v2"
-	"github.com/stretchr/testify/require"
 )
 
 func TestValidateBoot(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "Valid BootServiceBootRequest",
@@ -29,8 +24,8 @@ func TestValidateBoot(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
- - mac: mac must be a valid mac address [mac]`,
+ - mac: this string must be a valid macaddress [string.macaddress]`,
 		},
 	}
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }

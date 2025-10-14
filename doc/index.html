@@ -307,6 +307,10 @@
                   <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
               
             </ul>
           </li>
@@ -2053,6 +2057,14 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceGetRequest"><span class="badge">M</span>SwitchServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceGetResponse"><span class="badge">M</span>SwitchServiceGetResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest"><span class="badge">M</span>SwitchServiceHeartbeatRequest</a>
                 </li>
               
@@ -2696,6 +2708,14 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
                 <td>80048955</td>
                 <td><p>IsPrefix validates if the given string is a valid prefix</p></td>
+              </tr>
+            
+              <tr>
+                <td>is_uri</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048956</td>
+                <td><p>IsUri validates if the given string is a valid URI</p></td>
               </tr>
             
               <tr>
@@ -10727,14 +10747,14 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                 <tr>
                   <td>management_user</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>ManagementUser is the user name to use for management access. </p></td>
                 </tr>
               
                 <tr>
                   <td>console_command</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>ConsoleCommand is the command for accessing the switch&#39;s console. </p></td>
                 </tr>
               
@@ -12840,6 +12860,13 @@ for which the methods should be allowed </p></td>
                 </tr>
               
                 <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this token </p></td>
+                </tr>
+              
+                <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
@@ -13106,6 +13133,13 @@ TODO: decide if we need this map from service.name-&gt;role, we could instead us
                   <td><a href="#metalstack.api.v2.AdminRole">AdminRole</a></td>
                   <td>optional</td>
                   <td><p>AdminRole defines the admin role of the token owner </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td></td>
+                  <td><p>Labels on this token </p></td>
                 </tr>
               
             </tbody>
@@ -13439,7 +13473,8 @@ TODO: decide if we need this map from service.name-&gt;role, we could instead us
                   <td>update_meta</td>
                   <td><a href="#metalstack.api.v2.UpdateMeta">UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request
+TokenUpdate is not guarded with optlock in the backend </p></td>
                 </tr>
               
                 <tr>
@@ -13489,6 +13524,13 @@ TODO: decide if we need this map from service.name-&gt;role, we could instead us
                   <td><a href="#metalstack.api.v2.AdminRole">AdminRole</a></td>
                   <td>optional</td>
                   <td><p>AdminRole defines the admin role of the token owner </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">UpdateLabels</a></td>
+                  <td></td>
+                  <td><p>Labels on this token </p></td>
                 </tr>
               
             </tbody>
@@ -13669,9 +13711,9 @@ TODO: decide if we need this map from service.name-&gt;role, we could instead us
               </tr>
             
               <tr>
-                <td>TOKEN_TYPE_CONSOLE</td>
+                <td>TOKEN_TYPE_USER</td>
                 <td>2</td>
-                <td><p>TOKEN_TYPE_CONSOLE is a token for console or web ui usage</p></td>
+                <td><p>TOKEN_TYPE_USER is a token to access the api with cli, a web application or other user induced actions.</p></td>
               </tr>
             
           </tbody>
@@ -16209,6 +16251,54 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
       <p></p>
 
       
+        <h3 id="metalstack.infra.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</h3>
+        <p>SwitchServiceGetRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the switch. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</h3>
+        <p>SwitchServiceGetResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switch</td>
+                  <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
+                  <td></td>
+                  <td><p>Switch that was requested. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.infra.v2.SwitchServiceHeartbeatRequest">SwitchServiceHeartbeatRequest</h3>
         <p>SwitchServiceHeartbeatRequest.</p>
 
@@ -16218,6 +16308,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
               <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
             </thead>
             <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the switch. </p></td>
+                </tr>
               
                 <tr>
                   <td>duration</td>
@@ -16453,6 +16550,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
           </thead>
           <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</a></td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</a></td>
+                <td><p>Get a switch by ID.</p></td>
+              </tr>
             
               <tr>
                 <td>Register</td>

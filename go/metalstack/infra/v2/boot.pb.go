@@ -705,41 +705,32 @@ var File_metalstack_infra_v2_boot_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"`\n" +
+	"\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"a\n" +
 	"\x16BootServiceDhcpRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12(\n" +
-	"\tpartition\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\"\x19\n" +
-	"\x17BootServiceDhcpResponse\"\xc1\x01\n" +
-	"\x16BootServiceBootRequest\x12}\n" +
-	"\x03mac\x18\x01 \x01(\tBk\xbaHh\xba\x01e\n" +
-	"\x03mac\x12\x1fmac must be a valid mac address\x1a=this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')R\x03mac\x12(\n" +
-	"\tpartition\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\"\xd2\x01\n" +
-	"\x17BootServiceBootResponse\x12Z\n" +
-	"\x06kernel\x18\x01 \x01(\tBB\xbaH?\xba\x01<\n" +
-	"\x10valid_kernel_uri\x12\x1akernel must be a valid URI\x1a\fthis.isUri()R\x06kernel\x12$\n" +
-	"\x0einit_ram_disks\x18\x02 \x03(\tR\finitRamDisks\x12)\n" +
-	"\acmdline\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\acmdline\x88\x01\x01B\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12)\n" +
+	"\tpartition\x18\x02 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\"\x19\n" +
+	"\x17BootServiceDhcpResponse\"b\n" +
+	"\x16BootServiceBootRequest\x12\x1d\n" +
+	"\x03mac\x18\x01 \x01(\tB\v\xbaH\br\x06\xb8\xb3\xae\xb1\x02\x01R\x03mac\x12)\n" +
+	"\tpartition\x18\x02 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\"\x9c\x01\n" +
+	"\x17BootServiceBootResponse\x12#\n" +
+	"\x06kernel\x18\x01 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01R\x06kernel\x12$\n" +
+	"\x0einit_ram_disks\x18\x02 \x03(\tR\finitRamDisks\x12*\n" +
+	"\acmdline\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\acmdline\x88\x01\x01B\n" +
 	"\n" +
-	"\b_cmdline\"\xde\x02\n" +
+	"\b_cmdline\"\xe0\x02\n" +
 	"\x1aBootServiceRegisterRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12>\n" +
 	"\bhardware\x18\x02 \x01(\v2\".metalstack.api.v2.MachineHardwareR\bhardware\x122\n" +
 	"\x04bios\x18\x03 \x01(\v2\x1e.metalstack.api.v2.MachineBiosR\x04bios\x122\n" +
 	"\x04ipmi\x18\x04 \x01(\v2\x1e.metalstack.api.v2.MachineIPMIR\x04ipmi\x12\x12\n" +
-	"\x04tags\x18\x05 \x03(\tR\x04tags\x12<\n" +
-	"\x14metal_hammer_version\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x12metalHammerVersion\x12(\n" +
-	"\tpartition\x18\a \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\"\x85\x01\n" +
+	"\x04tags\x18\x05 \x03(\tR\x04tags\x12=\n" +
+	"\x14metal_hammer_version\x18\x06 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x12metalHammerVersion\x12)\n" +
+	"\tpartition\x18\a \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\"\x87\x01\n" +
 	"\x1bBootServiceRegisterResponse\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n" +
-	"\x04size\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04size\x12(\n" +
-	"\tpartition\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\tpartition\"6\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n" +
+	"\x04size\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x04size\x12)\n" +
+	"\tpartition\x18\x03 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\"6\n" +
 	"\x16BootServiceWaitRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"_\n" +
 	"\x17BootServiceWaitResponse\x12D\n" +

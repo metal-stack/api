@@ -5,6 +5,7 @@ package metalstack.infra.v2;
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/machine.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // BootService is used for all boot related requests, either pixiecore or metal-hammer
 service BootService {
@@ -52,10 +53,7 @@ message BootServiceDhcpRequest {
   // UUID of the machine
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Partition where this machine is located
-  string partition = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
 // BootServiceDhcpResponse contains the response to a dhcp request
@@ -64,36 +62,19 @@ message BootServiceDhcpResponse {}
 // BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac
 message BootServiceBootRequest {
   // Mac address of the machine
-  string mac = 1 [(buf.validate.field).cel = {
-    id: "mac"
-    message: "mac must be a valid mac address"
-    expression: "this.matches('^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$')"
-  }];
+  string mac = 1 [(buf.validate.field).string.(metalstack.api.v2.macaddress) = true];
   // Partition where this machine is located
-  string partition = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
 // BootServiceBootResponse contains additional infos which are required to boot a machine
 message BootServiceBootResponse {
   // Kernel is the url to the linux kernel to boot
-  string kernel = 1 [(buf.validate.field).cel = {
-    id: "valid_kernel_uri"
-    message: "kernel must be a valid URI"
-    // `isUri` validates that a string is an absolute URI.
-    // This expression validates that the uri field is an absolute URI.
-    // Note: to allow relative URI, use `isUriRef`.
-    expression: "this.isUri()"
-  }];
+  string kernel = 1 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // Initial ram disk is the url to the initial ram disk to boot
   repeated string init_ram_disks = 2;
   // CMDLine contains kernel command line parameters to boot
-  optional string cmdline = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string cmdline = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
 // BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible
@@ -109,15 +90,9 @@ message BootServiceRegisterRequest {
   // Tags of this machine
   repeated string tags = 5;
   // MetalHammer version this machine was bootet into
-  string metal_hammer_version = 6 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string metal_hammer_version = 6 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this machine is located
-  string partition = 7 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string partition = 7 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
 // BootServiceRegisterResponse response to a BootServiceRegisterResponse request
@@ -125,15 +100,9 @@ message BootServiceRegisterResponse {
   // UUID of this machine
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Size is the calculated size from given hardware details
-  string size = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string size = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition of this machine
-  string partition = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string partition = 3 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
 // BootServiceWaitRequest is called when a machine was registered and is waiting for allocation

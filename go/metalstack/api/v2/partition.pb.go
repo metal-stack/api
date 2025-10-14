@@ -522,10 +522,9 @@ var File_metalstack_api_v2_partition_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xa5\x03\n" +
-	"\tPartition\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12+\n" +
+	"!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xa6\x03\n" +
+	"\tPartition\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12-\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12\\\n" +
 	"\x12boot_configuration\x18\x04 \x01(\v2-.metalstack.api.v2.PartitionBootConfigurationR\x11bootConfiguration\x12E\n" +
@@ -534,27 +533,23 @@ const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"\n" +
 	"ntp_server\x18\x06 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
 	"R\tntpServer\x124\n" +
-	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\"{\n" +
-	"\x0ePartitionQuery\x12\x1f\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x126\n" +
+	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\"|\n" +
+	"\x0ePartitionQuery\x12 \n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x00R\x02id\x88\x01\x01\x126\n" +
 	"\x06labels\x18\x02 \x01(\v2\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01B\x05\n" +
 	"\x03_idB\t\n" +
-	"\a_labels\"\xee\x01\n" +
-	"\x1aPartitionBootConfiguration\x12U\n" +
-	"\timage_url\x18\x01 \x01(\tB8\xbaH5\xba\x012\n" +
-	"\tvalid_url\x12\x17url must be a valid URI\x1a\fthis.isUri()R\bimageUrl\x12W\n" +
+	"\a_labels\"\x94\x01\n" +
+	"\x1aPartitionBootConfiguration\x12(\n" +
+	"\timage_url\x18\x01 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01R\bimageUrl\x12*\n" +
 	"\n" +
-	"kernel_url\x18\x02 \x01(\tB8\xbaH5\xba\x012\n" +
-	"\tvalid_url\x12\x17url must be a valid URI\x1a\fthis.isUri()R\tkernelUrl\x12 \n" +
+	"kernel_url\x18\x02 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01R\tkernelUrl\x12 \n" +
 	"\vcommandline\x18\x03 \x01(\tR\vcommandline\"$\n" +
 	"\tDNSServer\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\"/\n" +
 	"\tNTPServer\x12\"\n" +
-	"\aaddress\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\aaddress\"8\n" +
-	"\x1aPartitionServiceGetRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"V\n" +
+	"\aaddress\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\aaddress\"9\n" +
+	"\x1aPartitionServiceGetRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\"V\n" +
 	"\x1bPartitionServiceListRequest\x127\n" +
 	"\x05query\x18\x01 \x01(\v2!.metalstack.api.v2.PartitionQueryR\x05query\"Y\n" +
 	"\x1bPartitionServiceGetResponse\x12:\n" +

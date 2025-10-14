@@ -54,7 +54,10 @@ message NetworkServiceGetRequest {
     max_len: 128
   }];
   // Project of the network
-  string project = 2 [(buf.validate.field).string.uuid = true];
+  string project = 2 [
+    (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE,
+    (buf.validate.field).string.uuid = true
+  ];
 }
 
 // NetworkServiceGetResponse
@@ -114,7 +117,10 @@ message NetworkServiceUpdateResponse {
 // NetworkServiceListRequest
 message NetworkServiceListRequest {
   // Project of the networks to list
-  string project = 1 [(buf.validate.field).string.uuid = true];
+  string project = 1 [
+    (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE,
+    (buf.validate.field).string.uuid = true
+  ];
   // Query which specifies which networks to return
   NetworkQuery query = 2;
 }
@@ -128,7 +134,10 @@ message NetworkServiceListResponse {
 // NetworkServiceListRequest
 message NetworkServiceListBaseNetworksRequest {
   // Project of the base networks to list
-  string project = 1 [(buf.validate.field).string.uuid = true];
+  string project = 1 [
+    (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE,
+    (buf.validate.field).string.uuid = true
+  ];
   // Query which specifies which networks to return
   NetworkQuery query = 2;
 }

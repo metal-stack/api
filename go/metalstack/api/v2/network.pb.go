@@ -1460,11 +1460,11 @@ var File_metalstack_api_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/network.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"Z\n" +
+	"\x1fmetalstack/api/v2/network.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"]\n" +
 	"\x18NetworkServiceGetRequest\x12\x1a\n" +
 	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12\"\n" +
-	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12%\n" +
+	"\aproject\x18\x02 \x01(\tB\v\xbaH\b\xd8\x01\x01r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xb1\x04\n" +
 	"\x1bNetworkServiceCreateRequest\x12\"\n" +
@@ -1497,14 +1497,14 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\f_descriptionB\t\n" +
 	"\a_labels\"T\n" +
 	"\x1cNetworkServiceUpdateResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"v\n" +
-	"\x19NetworkServiceListRequest\x12\"\n" +
-	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x125\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"y\n" +
+	"\x19NetworkServiceListRequest\x12%\n" +
+	"\aproject\x18\x01 \x01(\tB\v\xbaH\b\xd8\x01\x01r\x03\xb0\x01\x01R\aproject\x125\n" +
 	"\x05query\x18\x02 \x01(\v2\x1f.metalstack.api.v2.NetworkQueryR\x05query\"T\n" +
 	"\x1aNetworkServiceListResponse\x126\n" +
-	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"\x82\x01\n" +
-	"%NetworkServiceListBaseNetworksRequest\x12\"\n" +
-	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x125\n" +
+	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"\x85\x01\n" +
+	"%NetworkServiceListBaseNetworksRequest\x12%\n" +
+	"\aproject\x18\x01 \x01(\tB\v\xbaH\b\xd8\x01\x01r\x03\xb0\x01\x01R\aproject\x125\n" +
 	"\x05query\x18\x02 \x01(\v2\x1f.metalstack.api.v2.NetworkQueryR\x05query\"`\n" +
 	"&NetworkServiceListBaseNetworksResponse\x126\n" +
 	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"^\n" +

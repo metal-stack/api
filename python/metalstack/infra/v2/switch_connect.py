@@ -16,6 +16,9 @@ import metalstack.infra.v2.switch_pb2 as metalstack_dot_infra_dot_v2_dot_switch_
 
 
 class SwitchService(Protocol):
+    async def get(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
     async def register(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
@@ -27,6 +30,16 @@ class SwitchServiceASGIApplication(ConnectASGIApplication):
     def __init__(self, service: SwitchService, *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
         super().__init__(
             endpoints={
+                "/metalstack.infra.v2.SwitchService/Get": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Get",
+                        service_name="metalstack.infra.v2.SwitchService",
+                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.get,
+                ),
                 "/metalstack.infra.v2.SwitchService/Register": Endpoint.unary(
                     method=MethodInfo(
                         name="Register",
@@ -59,6 +72,26 @@ class SwitchServiceASGIApplication(ConnectASGIApplication):
 
 
 class SwitchServiceClient(ConnectClient):
+    async def get(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Get",
+                service_name="metalstack.infra.v2.SwitchService",
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
     async def register(
         self,
         request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest,
@@ -101,6 +134,8 @@ class SwitchServiceClient(ConnectClient):
 
 
 class SwitchServiceSync(Protocol):
+    def get(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def register(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def heartbeat(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
@@ -111,6 +146,16 @@ class SwitchServiceWSGIApplication(ConnectWSGIApplication):
     def __init__(self, service: SwitchServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
         super().__init__(
             endpoints={
+                "/metalstack.infra.v2.SwitchService/Get": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Get",
+                        service_name="metalstack.infra.v2.SwitchService",
+                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.get,
+                ),
                 "/metalstack.infra.v2.SwitchService/Register": EndpointSync.unary(
                     method=MethodInfo(
                         name="Register",
@@ -143,6 +188,26 @@ class SwitchServiceWSGIApplication(ConnectWSGIApplication):
 
 
 class SwitchServiceClientSync(ConnectClientSync):
+    def get(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Get",
+                service_name="metalstack.infra.v2.SwitchService",
+                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetRequest,
+                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
     def register(
         self,
         request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest,
