@@ -11,6 +11,11 @@ import "metalstack/api/v2/switch.proto";
 
 // SwitchService serves switch related functions.
 service SwitchService {
+  // Get a switch by ID.
+  rpc Get(SwitchServiceGetRequest) returns (SwitchServiceGetResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
   // Register a switch.
   rpc Register(SwitchServiceRegisterRequest) returns (SwitchServiceRegisterResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
@@ -21,6 +26,21 @@ service SwitchService {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
+}
+
+// SwitchServiceGetRequest.
+message SwitchServiceGetRequest {
+  // Id of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+}
+
+// SwitchServiceGetResponse.
+message SwitchServiceGetResponse {
+  // Switch that was requested.
+  metalstack.api.v2.Switch switch = 1;
 }
 
 // SwitchServiceRegisterRequest.

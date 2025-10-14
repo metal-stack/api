@@ -14,6 +14,18 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
+class SwitchServiceGetRequest(_message.Message):
+    __slots__ = ("id",)
+    ID_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    def __init__(self, id: _Optional[str] = ...) -> None: ...
+
+class SwitchServiceGetResponse(_message.Message):
+    __slots__ = ("switch",)
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    switch: _switch_pb2.Switch
+    def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+
 class SwitchServiceRegisterRequest(_message.Message):
     __slots__ = ("switch",)
     SWITCH_FIELD_NUMBER: _ClassVar[int]

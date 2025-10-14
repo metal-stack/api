@@ -1915,6 +1915,14 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceGetRequest"><span class="badge">M</span>SwitchServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceGetResponse"><span class="badge">M</span>SwitchServiceGetResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest"><span class="badge">M</span>SwitchServiceHeartbeatRequest</a>
                 </li>
               
@@ -15054,6 +15062,54 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
       <p></p>
 
       
+        <h3 id="metalstack.infra.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</h3>
+        <p>SwitchServiceGetRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the switch. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</h3>
+        <p>SwitchServiceGetResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switch</td>
+                  <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
+                  <td></td>
+                  <td><p>Switch that was requested. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.infra.v2.SwitchServiceHeartbeatRequest">SwitchServiceHeartbeatRequest</h3>
         <p>SwitchServiceHeartbeatRequest.</p>
 
@@ -15305,6 +15361,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
           </thead>
           <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</a></td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceGetResponse">SwitchServiceGetResponse</a></td>
+                <td><p>Get a switch by ID.</p></td>
+              </tr>
             
               <tr>
                 <td>Register</td>
