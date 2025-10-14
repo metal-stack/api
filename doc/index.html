@@ -299,6 +299,10 @@
                   <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
               
             </ul>
           </li>
@@ -2517,6 +2521,14 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
                 <td>80048955</td>
                 <td><p>IsPrefix validates if the given string is a valid prefix</p></td>
+              </tr>
+            
+              <tr>
+                <td>is_uri</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048956</td>
+                <td><p>IsUri validates if the given string is a valid URI</p></td>
               </tr>
             
               <tr>
@@ -10402,14 +10414,14 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                 <tr>
                   <td>management_user</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>ManagementUser is the user name to use for management access. </p></td>
                 </tr>
               
                 <tr>
                   <td>console_command</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
+                  <td>optional</td>
                   <td><p>ConsoleCommand is the command for accessing the switch&#39;s console. </p></td>
                 </tr>
               
@@ -10797,6 +10809,12 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                 <td><p>SWITCH_PORT_STATUS_DOWN means this port is down.</p></td>
               </tr>
             
+              <tr>
+                <td>SWITCH_PORT_STATUS_UNKNOWN</td>
+                <td>3</td>
+                <td><p>SWITCH_PORT_STATUS_UNKNOWN means the status of this port is unknown.</p></td>
+              </tr>
+            
           </tbody>
         </table>
       
@@ -11146,13 +11164,6 @@ must be part of the update request to ensure optimistic locking. </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Description of the switch. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>rack_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Rack ID if the switch resides in a rack. </p></td>
                 </tr>
               
                 <tr>
@@ -12961,7 +12972,8 @@ for which the methods should be allowed </p></td>
                   <td>update_meta</td>
                   <td><a href="#metalstack.api.v2.UpdateMeta">UpdateMeta</a></td>
                   <td></td>
-                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request
+TokenUpdate is not guarded with optlock in the backend </p></td>
                 </tr>
               
                 <tr>

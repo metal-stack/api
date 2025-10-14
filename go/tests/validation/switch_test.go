@@ -3,16 +3,11 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"github.com/stretchr/testify/require"
 	"google.golang.org/protobuf/proto"
 )
 
 func TestValidateSwitch(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "SwitchNic with invalid MAC",
@@ -52,8 +47,8 @@ func TestValidateSwitch(t *testing.T) {
 				Id:             "leaf01",
 				Partition:      "p1",
 				ManagementIp:   "1.2.3.4",
-				ManagementUser: "admin",
-				ConsoleCommand: "ssh",
+				ManagementUser: proto.String("admin"),
+				ConsoleCommand: proto.String("ssh"),
 			},
 			wantErr: false,
 		},
@@ -63,13 +58,13 @@ func TestValidateSwitch(t *testing.T) {
 				Id:             "_1",
 				Partition:      "p1",
 				ManagementIp:   "1.2.3.4",
-				ManagementUser: "admin",
-				ConsoleCommand: "ssh",
+				ManagementUser: proto.String("admin"),
+				ConsoleCommand: proto.String("ssh"),
 			},
 			wantErr: true,
 			wantErrorMessage: `validation error:
  - id: value must be a valid hostname [string.hostname]`,
 		},
 	}
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }
