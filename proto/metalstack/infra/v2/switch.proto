@@ -2,13 +2,20 @@ syntax = "proto3";
 
 package metalstack.infra.v2;
 
+import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/switch.proto";
 
 // SwitchService serves switch related functions.
 service SwitchService {
+  // Get a switch by ID.
+  rpc Get(SwitchServiceGetRequest) returns (SwitchServiceGetResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
   // Register a switch.
   rpc Register(SwitchServiceRegisterRequest) returns (SwitchServiceRegisterResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
@@ -19,6 +26,21 @@ service SwitchService {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
+}
+
+// SwitchServiceGetRequest.
+message SwitchServiceGetRequest {
+  // Id of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+}
+
+// SwitchServiceGetResponse.
+message SwitchServiceGetResponse {
+  // Switch that was requested.
+  metalstack.api.v2.Switch switch = 1;
 }
 
 // SwitchServiceRegisterRequest.
@@ -35,14 +57,19 @@ message SwitchServiceRegisterResponse {
 
 // SwitchServiceHeartbeatRequest.
 message SwitchServiceHeartbeatRequest {
+  // Id of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
   // Duration of the sync.
-  google.protobuf.Duration duration = 1;
+  google.protobuf.Duration duration = 2;
   // Error if any occurred during the sync.
-  optional string error = 2;
+  optional string error = 3;
   // PortStates maps port identifiers to the respective port's operational state.
-  map<string, metalstack.api.v2.SwitchPortStatus> port_states = 3;
+  map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
   // BgpPortStates maps port identifiers to the respective port's BGP state.
-  map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 4;
+  map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
 }
 
 // SwitchServiceHeartbeatResponse.

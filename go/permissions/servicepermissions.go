@@ -281,6 +281,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      true,
+			"/metalstack.infra.v2.SwitchService/Get":             true,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":       true,
 			"/metalstack.infra.v2.SwitchService/Register":        true,
 		},
@@ -356,6 +357,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: map[string]bool{
 				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
+				"/metalstack.infra.v2.SwitchService/Get":        true,
 				"/metalstack.infra.v2.SwitchService/Heartbeat":  true,
 				"/metalstack.infra.v2.SwitchService/Register":   true,
 			},
@@ -493,6 +495,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              false,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      false,
+			"/metalstack.infra.v2.SwitchService/Get":             false,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":       false,
 			"/metalstack.infra.v2.SwitchService/Register":        false,
 		},
