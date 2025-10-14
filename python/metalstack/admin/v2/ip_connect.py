@@ -19,9 +19,6 @@ class IPService(Protocol):
     async def list(self, request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
-    async def issues(self, request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-
 
 class IPServiceASGIApplication(ConnectASGIApplication):
     def __init__(self, service: IPService, *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -36,16 +33,6 @@ class IPServiceASGIApplication(ConnectASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.list,
-                ),
-                "/metalstack.admin.v2.IPService/Issues": Endpoint.unary(
-                    method=MethodInfo(
-                        name="Issues",
-                        service_name="metalstack.admin.v2.IPService",
-                        input=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.issues,
                 ),
             },
             interceptors=interceptors,
@@ -79,31 +66,9 @@ class IPServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
-    async def issues(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse:
-        return await self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="Issues",
-                service_name="metalstack.admin.v2.IPService",
-                input=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
-                output=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
 
 class IPServiceSync(Protocol):
     def list(self, request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-    def issues(self, request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -120,16 +85,6 @@ class IPServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.list,
-                ),
-                "/metalstack.admin.v2.IPService/Issues": EndpointSync.unary(
-                    method=MethodInfo(
-                        name="Issues",
-                        service_name="metalstack.admin.v2.IPService",
-                        input=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.issues,
                 ),
             },
             interceptors=interceptors,
@@ -157,26 +112,6 @@ class IPServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.IPService",
                 input=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest,
                 output=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-    def issues(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse:
-        return self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="Issues",
-                service_name="metalstack.admin.v2.IPService",
-                input=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesRequest,
-                output=metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceIssuesResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
