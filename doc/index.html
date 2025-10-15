@@ -636,18 +636,6 @@
             <ul>
               
                 <li>
-                  <a href="#metalstack.admin.v2.IPIssue"><span class="badge">M</span>IPIssue</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.admin.v2.IPServiceIssuesRequest"><span class="badge">M</span>IPServiceIssuesRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.admin.v2.IPServiceIssuesResponse"><span class="badge">M</span>IPServiceIssuesResponse</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.admin.v2.IPServiceListRequest"><span class="badge">M</span>IPServiceListRequest</a>
                 </li>
               
@@ -5239,68 +5227,6 @@ Will be equal with project most of the time </p></td>
       <p></p>
 
       
-        <h3 id="metalstack.admin.v2.IPIssue">IPIssue</h3>
-        <p>IPIssue</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>description</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Description of the issue with this ip </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ip</td>
-                  <td><a href="#metalstack.api.v2.IP">metalstack.api.v2.IP</a></td>
-                  <td></td>
-                  <td><p>IP is the ip with the issue </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.admin.v2.IPServiceIssuesRequest">IPServiceIssuesRequest</h3>
-        <p>IPServiceIssuesRequest</p><p>No arguments actually</p>
-
-        
-
-        
-      
-        <h3 id="metalstack.admin.v2.IPServiceIssuesResponse">IPServiceIssuesResponse</h3>
-        <p>IPServiceIssuesResponse</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>issues</td>
-                  <td><a href="#metalstack.admin.v2.IPIssue">IPIssue</a></td>
-                  <td>repeated</td>
-                  <td><p>Issues with ips </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="metalstack.admin.v2.IPServiceListRequest">IPServiceListRequest</h3>
         <p>IPServiceListRequest</p>
 
@@ -5368,13 +5294,6 @@ Will be equal with project most of the time </p></td>
                 <td><a href="#metalstack.admin.v2.IPServiceListRequest">IPServiceListRequest</a></td>
                 <td><a href="#metalstack.admin.v2.IPServiceListResponse">IPServiceListResponse</a></td>
                 <td><p>List all ips</p></td>
-              </tr>
-            
-              <tr>
-                <td>Issues</td>
-                <td><a href="#metalstack.admin.v2.IPServiceIssuesRequest">IPServiceIssuesRequest</a></td>
-                <td><a href="#metalstack.admin.v2.IPServiceIssuesResponse">IPServiceIssuesResponse</a></td>
-                <td><p>Show issues with ips</p></td>
               </tr>
             
           </tbody>
