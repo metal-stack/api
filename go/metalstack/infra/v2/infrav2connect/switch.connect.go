@@ -33,6 +33,8 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// SwitchServiceGetProcedure is the fully-qualified name of the SwitchService's Get RPC.
+	SwitchServiceGetProcedure = "/metalstack.infra.v2.SwitchService/Get"
 	// SwitchServiceRegisterProcedure is the fully-qualified name of the SwitchService's Register RPC.
 	SwitchServiceRegisterProcedure = "/metalstack.infra.v2.SwitchService/Register"
 	// SwitchServiceHeartbeatProcedure is the fully-qualified name of the SwitchService's Heartbeat RPC.
@@ -41,6 +43,8 @@ const (
 
 // SwitchServiceClient is a client for the metalstack.infra.v2.SwitchService service.
 type SwitchServiceClient interface {
+	// Get a switch by ID.
+	Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
 	// Register a switch.
 	Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error)
 	// Heartbeat a switch.
@@ -58,6 +62,12 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	switchServiceMethods := v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods()
 	return &switchServiceClient{
+		get: connect.NewClient[v2.SwitchServiceGetRequest, v2.SwitchServiceGetResponse](
+			httpClient,
+			baseURL+SwitchServiceGetProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("Get")),
+			connect.WithClientOptions(opts...),
+		),
 		register: connect.NewClient[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse](
 			httpClient,
 			baseURL+SwitchServiceRegisterProcedure,
@@ -75,8 +85,18 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // switchServiceClient implements SwitchServiceClient.
 type switchServiceClient struct {
+	get       *connect.Client[v2.SwitchServiceGetRequest, v2.SwitchServiceGetResponse]
 	register  *connect.Client[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse]
 	heartbeat *connect.Client[v2.SwitchServiceHeartbeatRequest, v2.SwitchServiceHeartbeatResponse]
+}
+
+// Get calls metalstack.infra.v2.SwitchService.Get.
+func (c *switchServiceClient) Get(ctx context.Context, req *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Register calls metalstack.infra.v2.SwitchService.Register.
@@ -99,6 +119,8 @@ func (c *switchServiceClient) Heartbeat(ctx context.Context, req *v2.SwitchServi
 
 // SwitchServiceHandler is an implementation of the metalstack.infra.v2.SwitchService service.
 type SwitchServiceHandler interface {
+	// Get a switch by ID.
+	Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
 	// Register a switch.
 	Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error)
 	// Heartbeat a switch.
@@ -112,6 +134,12 @@ type SwitchServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	switchServiceMethods := v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods()
+	switchServiceGetHandler := connect.NewUnaryHandlerSimple(
+		SwitchServiceGetProcedure,
+		svc.Get,
+		connect.WithSchema(switchServiceMethods.ByName("Get")),
+		connect.WithHandlerOptions(opts...),
+	)
 	switchServiceRegisterHandler := connect.NewUnaryHandlerSimple(
 		SwitchServiceRegisterProcedure,
 		svc.Register,
@@ -126,6 +154,8 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 	)
 	return "/metalstack.infra.v2.SwitchService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case SwitchServiceGetProcedure:
+			switchServiceGetHandler.ServeHTTP(w, r)
 		case SwitchServiceRegisterProcedure:
 			switchServiceRegisterHandler.ServeHTTP(w, r)
 		case SwitchServiceHeartbeatProcedure:
@@ -138,6 +168,10 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 
 // UnimplementedSwitchServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSwitchServiceHandler struct{}
+
+func (UnimplementedSwitchServiceHandler) Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Get is not implemented"))
+}
 
 func (UnimplementedSwitchServiceHandler) Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Register is not implemented"))

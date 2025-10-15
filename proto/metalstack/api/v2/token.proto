@@ -45,10 +45,12 @@ message Token {
     min_len: 2
     max_len: 512
   }];
+  // Meta for this token
+  Meta meta = 3;
   // Description is a user given description of this token.
-  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
-  repeated MethodPermission permissions = 4 [(buf.validate.field).repeated.max_items = 500];
+  repeated MethodPermission permissions = 5 [(buf.validate.field).repeated.max_items = 500];
   // Expires gives the date in the future after which this token can not be used anymore
   google.protobuf.Timestamp expires = 6;
   // IssuedAt gives the date when this token was created
@@ -69,8 +71,8 @@ enum TokenType {
   TOKEN_TYPE_UNSPECIFIED = 0;
   // TOKEN_TYPE_API is a token for api usage
   TOKEN_TYPE_API = 1;
-  // TOKEN_TYPE_CONSOLE is a token for console or web ui usage
-  TOKEN_TYPE_CONSOLE = 2;
+  // TOKEN_TYPE_USER is a token to access the api with cli, a web application or other user induced actions.
+  TOKEN_TYPE_USER = 2;
 }
 
 // TokenServiceCreateRequest is the request payload to create a token
@@ -107,6 +109,8 @@ message TokenServiceCreateRequest {
   }];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
+  // Labels on this token
+  Labels labels = 8;
 }
 
 // MethodPermission is a mapping from a subject/project to a service method
@@ -181,6 +185,8 @@ message TokenServiceUpdateRequest {
   }];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
+  // Labels on this token
+  UpdateLabels labels = 8;
 }
 
 // TokenServiceUpdateResponse is the response payload of a token update request

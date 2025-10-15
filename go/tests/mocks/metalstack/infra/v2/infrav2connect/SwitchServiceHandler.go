@@ -14,6 +14,36 @@ type SwitchServiceHandler struct {
 	mock.Mock
 }
 
+// Get provides a mock function with given fields: _a0, _a1
+func (_m *SwitchServiceHandler) Get(_a0 context.Context, _a1 *infrav2.SwitchServiceGetRequest) (*infrav2.SwitchServiceGetResponse, error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Get")
+	}
+
+	var r0 *infrav2.SwitchServiceGetResponse
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.SwitchServiceGetRequest) (*infrav2.SwitchServiceGetResponse, error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.SwitchServiceGetRequest) *infrav2.SwitchServiceGetResponse); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*infrav2.SwitchServiceGetResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.SwitchServiceGetRequest) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // Heartbeat provides a mock function with given fields: _a0, _a1
 func (_m *SwitchServiceHandler) Heartbeat(_a0 context.Context, _a1 *infrav2.SwitchServiceHeartbeatRequest) (*infrav2.SwitchServiceHeartbeatResponse, error) {
 	ret := _m.Called(_a0, _a1)
