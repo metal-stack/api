@@ -12,6 +12,7 @@ import (
 	"os"
 	"strings"
 	"testing"
+
 	"time"
 
 	"connectrpc.com/connect"
@@ -27,6 +28,7 @@ func Test_Client(t *testing.T) {
 		vs  = &mockVersionService{}
 		ts  = &mockTokenService{}
 		mux = http.NewServeMux()
+		log = slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
 	)
 
 	mux.Handle(apiv2connect.NewVersionServiceHandler(vs))
@@ -39,8 +41,6 @@ func Test_Client(t *testing.T) {
 
 	tokenString, err := generateToken(1 * time.Second)
 	require.NoError(t, err)
-
-	log := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
 
 	c, err := client.New(&client.DialConfig{
 		BaseURL:   server.URL,

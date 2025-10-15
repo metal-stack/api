@@ -19,21 +19,3 @@ class IPServiceListResponse(_message.Message):
     IPS_FIELD_NUMBER: _ClassVar[int]
     ips: _containers.RepeatedCompositeFieldContainer[_ip_pb2.IP]
     def __init__(self, ips: _Optional[_Iterable[_Union[_ip_pb2.IP, _Mapping]]] = ...) -> None: ...
-
-class IPServiceIssuesRequest(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
-
-class IPServiceIssuesResponse(_message.Message):
-    __slots__ = ("issues",)
-    ISSUES_FIELD_NUMBER: _ClassVar[int]
-    issues: _containers.RepeatedCompositeFieldContainer[IPIssue]
-    def __init__(self, issues: _Optional[_Iterable[_Union[IPIssue, _Mapping]]] = ...) -> None: ...
-
-class IPIssue(_message.Message):
-    __slots__ = ("description", "ip")
-    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
-    IP_FIELD_NUMBER: _ClassVar[int]
-    description: str
-    ip: _ip_pb2.IP
-    def __init__(self, description: _Optional[str] = ..., ip: _Optional[_Union[_ip_pb2.IP, _Mapping]] = ...) -> None: ...
