@@ -3,10 +3,9 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-
 	context "context"
+
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type PartitionServiceHandler struct {
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *PartitionServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[apiv2.PartitionServiceGetRequest]) (*connect.Response[apiv2.PartitionServiceGetResponse], error) {
+func (_m *PartitionServiceHandler) Get(_a0 context.Context, _a1 *apiv2.PartitionServiceGetRequest) (*apiv2.PartitionServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[apiv2.PartitionServiceGetResponse]
+	var r0 *apiv2.PartitionServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.PartitionServiceGetRequest]) (*connect.Response[apiv2.PartitionServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.PartitionServiceGetRequest) (*apiv2.PartitionServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.PartitionServiceGetRequest]) *connect.Response[apiv2.PartitionServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.PartitionServiceGetRequest) *apiv2.PartitionServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.PartitionServiceGetResponse])
+			r0 = ret.Get(0).(*apiv2.PartitionServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.PartitionServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.PartitionServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *PartitionServiceHandler) Get(_a0 context.Context, _a1 *connect.Request
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *PartitionServiceHandler) List(_a0 context.Context, _a1 *connect.Request[apiv2.PartitionServiceListRequest]) (*connect.Response[apiv2.PartitionServiceListResponse], error) {
+func (_m *PartitionServiceHandler) List(_a0 context.Context, _a1 *apiv2.PartitionServiceListRequest) (*apiv2.PartitionServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[apiv2.PartitionServiceListResponse]
+	var r0 *apiv2.PartitionServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.PartitionServiceListRequest]) (*connect.Response[apiv2.PartitionServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.PartitionServiceListRequest) (*apiv2.PartitionServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.PartitionServiceListRequest]) *connect.Response[apiv2.PartitionServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.PartitionServiceListRequest) *apiv2.PartitionServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.PartitionServiceListResponse])
+			r0 = ret.Get(0).(*apiv2.PartitionServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.PartitionServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.PartitionServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

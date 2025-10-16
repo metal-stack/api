@@ -5,10 +5,7 @@ package infrav2connect
 import (
 	context "context"
 
-	connect "connectrpc.com/connect"
-
 	infrav2 "github.com/metal-stack/api/go/metalstack/infra/v2"
-
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -18,27 +15,27 @@ type SwitchServiceClient struct {
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceClient) Get(_a0 context.Context, _a1 *connect.Request[infrav2.SwitchServiceGetRequest]) (*connect.Response[infrav2.SwitchServiceGetResponse], error) {
+func (_m *SwitchServiceClient) Get(_a0 context.Context, _a1 *infrav2.SwitchServiceGetRequest) (*infrav2.SwitchServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[infrav2.SwitchServiceGetResponse]
+	var r0 *infrav2.SwitchServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceGetRequest]) (*connect.Response[infrav2.SwitchServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.SwitchServiceGetRequest) (*infrav2.SwitchServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceGetRequest]) *connect.Response[infrav2.SwitchServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.SwitchServiceGetRequest) *infrav2.SwitchServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.SwitchServiceGetResponse])
+			r0 = ret.Get(0).(*infrav2.SwitchServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.SwitchServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.SwitchServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -48,27 +45,27 @@ func (_m *SwitchServiceClient) Get(_a0 context.Context, _a1 *connect.Request[inf
 }
 
 // Heartbeat provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceClient) Heartbeat(_a0 context.Context, _a1 *connect.Request[infrav2.SwitchServiceHeartbeatRequest]) (*connect.Response[infrav2.SwitchServiceHeartbeatResponse], error) {
+func (_m *SwitchServiceClient) Heartbeat(_a0 context.Context, _a1 *infrav2.SwitchServiceHeartbeatRequest) (*infrav2.SwitchServiceHeartbeatResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Heartbeat")
 	}
 
-	var r0 *connect.Response[infrav2.SwitchServiceHeartbeatResponse]
+	var r0 *infrav2.SwitchServiceHeartbeatResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceHeartbeatRequest]) (*connect.Response[infrav2.SwitchServiceHeartbeatResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.SwitchServiceHeartbeatRequest) (*infrav2.SwitchServiceHeartbeatResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceHeartbeatRequest]) *connect.Response[infrav2.SwitchServiceHeartbeatResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.SwitchServiceHeartbeatRequest) *infrav2.SwitchServiceHeartbeatResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.SwitchServiceHeartbeatResponse])
+			r0 = ret.Get(0).(*infrav2.SwitchServiceHeartbeatResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.SwitchServiceHeartbeatRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.SwitchServiceHeartbeatRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -78,27 +75,27 @@ func (_m *SwitchServiceClient) Heartbeat(_a0 context.Context, _a1 *connect.Reque
 }
 
 // Register provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceClient) Register(_a0 context.Context, _a1 *connect.Request[infrav2.SwitchServiceRegisterRequest]) (*connect.Response[infrav2.SwitchServiceRegisterResponse], error) {
+func (_m *SwitchServiceClient) Register(_a0 context.Context, _a1 *infrav2.SwitchServiceRegisterRequest) (*infrav2.SwitchServiceRegisterResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Register")
 	}
 
-	var r0 *connect.Response[infrav2.SwitchServiceRegisterResponse]
+	var r0 *infrav2.SwitchServiceRegisterResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceRegisterRequest]) (*connect.Response[infrav2.SwitchServiceRegisterResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.SwitchServiceRegisterRequest) (*infrav2.SwitchServiceRegisterResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.SwitchServiceRegisterRequest]) *connect.Response[infrav2.SwitchServiceRegisterResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.SwitchServiceRegisterRequest) *infrav2.SwitchServiceRegisterResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.SwitchServiceRegisterResponse])
+			r0 = ret.Get(0).(*infrav2.SwitchServiceRegisterResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.SwitchServiceRegisterRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.SwitchServiceRegisterRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

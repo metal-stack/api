@@ -3,10 +3,9 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-
 	context "context"
+
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type MethodServiceHandler struct {
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *MethodServiceHandler) List(_a0 context.Context, _a1 *connect.Request[apiv2.MethodServiceListRequest]) (*connect.Response[apiv2.MethodServiceListResponse], error) {
+func (_m *MethodServiceHandler) List(_a0 context.Context, _a1 *apiv2.MethodServiceListRequest) (*apiv2.MethodServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[apiv2.MethodServiceListResponse]
+	var r0 *apiv2.MethodServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MethodServiceListRequest]) (*connect.Response[apiv2.MethodServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MethodServiceListRequest) (*apiv2.MethodServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MethodServiceListRequest]) *connect.Response[apiv2.MethodServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MethodServiceListRequest) *apiv2.MethodServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.MethodServiceListResponse])
+			r0 = ret.Get(0).(*apiv2.MethodServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.MethodServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.MethodServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *MethodServiceHandler) List(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // TokenScopedList provides a mock function with given fields: _a0, _a1
-func (_m *MethodServiceHandler) TokenScopedList(_a0 context.Context, _a1 *connect.Request[apiv2.MethodServiceTokenScopedListRequest]) (*connect.Response[apiv2.MethodServiceTokenScopedListResponse], error) {
+func (_m *MethodServiceHandler) TokenScopedList(_a0 context.Context, _a1 *apiv2.MethodServiceTokenScopedListRequest) (*apiv2.MethodServiceTokenScopedListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for TokenScopedList")
 	}
 
-	var r0 *connect.Response[apiv2.MethodServiceTokenScopedListResponse]
+	var r0 *apiv2.MethodServiceTokenScopedListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MethodServiceTokenScopedListRequest]) (*connect.Response[apiv2.MethodServiceTokenScopedListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MethodServiceTokenScopedListRequest) (*apiv2.MethodServiceTokenScopedListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MethodServiceTokenScopedListRequest]) *connect.Response[apiv2.MethodServiceTokenScopedListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MethodServiceTokenScopedListRequest) *apiv2.MethodServiceTokenScopedListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.MethodServiceTokenScopedListResponse])
+			r0 = ret.Get(0).(*apiv2.MethodServiceTokenScopedListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.MethodServiceTokenScopedListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.MethodServiceTokenScopedListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

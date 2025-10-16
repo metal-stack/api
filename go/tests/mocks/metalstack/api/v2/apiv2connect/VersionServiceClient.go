@@ -3,10 +3,9 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-
 	context "context"
+
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type VersionServiceClient struct {
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *VersionServiceClient) Get(_a0 context.Context, _a1 *connect.Request[apiv2.VersionServiceGetRequest]) (*connect.Response[apiv2.VersionServiceGetResponse], error) {
+func (_m *VersionServiceClient) Get(_a0 context.Context, _a1 *apiv2.VersionServiceGetRequest) (*apiv2.VersionServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[apiv2.VersionServiceGetResponse]
+	var r0 *apiv2.VersionServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.VersionServiceGetRequest]) (*connect.Response[apiv2.VersionServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.VersionServiceGetRequest) (*apiv2.VersionServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.VersionServiceGetRequest]) *connect.Response[apiv2.VersionServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.VersionServiceGetRequest) *apiv2.VersionServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.VersionServiceGetResponse])
+			r0 = ret.Get(0).(*apiv2.VersionServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.VersionServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.VersionServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

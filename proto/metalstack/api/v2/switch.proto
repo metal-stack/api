@@ -104,7 +104,7 @@ message SwitchBGPPortState {
 // NicState represents the current state of a switch port.
 message NicState {
   // Desired is the desired port state.
-  SwitchPortStatus desired = 1 [(buf.validate.field).enum.defined_only = true];
+  optional SwitchPortStatus desired = 1 [(buf.validate.field).enum.defined_only = true];
   // Actual is the actual port state.
   SwitchPortStatus actual = 2 [(buf.validate.field).enum.defined_only = true];
 }

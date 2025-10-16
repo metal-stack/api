@@ -44,11 +44,11 @@ const (
 // FilesystemServiceClient is a client for the metalstack.api.v2.FilesystemService service.
 type FilesystemServiceClient interface {
 	// Get a filesystem
-	Get(context.Context, *connect.Request[v2.FilesystemServiceGetRequest]) (*connect.Response[v2.FilesystemServiceGetResponse], error)
+	Get(context.Context, *v2.FilesystemServiceGetRequest) (*v2.FilesystemServiceGetResponse, error)
 	// List all filesystems
-	List(context.Context, *connect.Request[v2.FilesystemServiceListRequest]) (*connect.Response[v2.FilesystemServiceListResponse], error)
+	List(context.Context, *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error)
 	// Match a filesystems
-	Match(context.Context, *connect.Request[v2.FilesystemServiceMatchRequest]) (*connect.Response[v2.FilesystemServiceMatchResponse], error)
+	Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error)
 }
 
 // NewFilesystemServiceClient constructs a client for the metalstack.api.v2.FilesystemService
@@ -91,28 +91,40 @@ type filesystemServiceClient struct {
 }
 
 // Get calls metalstack.api.v2.FilesystemService.Get.
-func (c *filesystemServiceClient) Get(ctx context.Context, req *connect.Request[v2.FilesystemServiceGetRequest]) (*connect.Response[v2.FilesystemServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *filesystemServiceClient) Get(ctx context.Context, req *v2.FilesystemServiceGetRequest) (*v2.FilesystemServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.api.v2.FilesystemService.List.
-func (c *filesystemServiceClient) List(ctx context.Context, req *connect.Request[v2.FilesystemServiceListRequest]) (*connect.Response[v2.FilesystemServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *filesystemServiceClient) List(ctx context.Context, req *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Match calls metalstack.api.v2.FilesystemService.Match.
-func (c *filesystemServiceClient) Match(ctx context.Context, req *connect.Request[v2.FilesystemServiceMatchRequest]) (*connect.Response[v2.FilesystemServiceMatchResponse], error) {
-	return c.match.CallUnary(ctx, req)
+func (c *filesystemServiceClient) Match(ctx context.Context, req *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error) {
+	response, err := c.match.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // FilesystemServiceHandler is an implementation of the metalstack.api.v2.FilesystemService service.
 type FilesystemServiceHandler interface {
 	// Get a filesystem
-	Get(context.Context, *connect.Request[v2.FilesystemServiceGetRequest]) (*connect.Response[v2.FilesystemServiceGetResponse], error)
+	Get(context.Context, *v2.FilesystemServiceGetRequest) (*v2.FilesystemServiceGetResponse, error)
 	// List all filesystems
-	List(context.Context, *connect.Request[v2.FilesystemServiceListRequest]) (*connect.Response[v2.FilesystemServiceListResponse], error)
+	List(context.Context, *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error)
 	// Match a filesystems
-	Match(context.Context, *connect.Request[v2.FilesystemServiceMatchRequest]) (*connect.Response[v2.FilesystemServiceMatchResponse], error)
+	Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error)
 }
 
 // NewFilesystemServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -122,19 +134,19 @@ type FilesystemServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewFilesystemServiceHandler(svc FilesystemServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	filesystemServiceMethods := v2.File_metalstack_api_v2_filesystem_proto.Services().ByName("FilesystemService").Methods()
-	filesystemServiceGetHandler := connect.NewUnaryHandler(
+	filesystemServiceGetHandler := connect.NewUnaryHandlerSimple(
 		FilesystemServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(filesystemServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
-	filesystemServiceListHandler := connect.NewUnaryHandler(
+	filesystemServiceListHandler := connect.NewUnaryHandlerSimple(
 		FilesystemServiceListProcedure,
 		svc.List,
 		connect.WithSchema(filesystemServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
-	filesystemServiceMatchHandler := connect.NewUnaryHandler(
+	filesystemServiceMatchHandler := connect.NewUnaryHandlerSimple(
 		FilesystemServiceMatchProcedure,
 		svc.Match,
 		connect.WithSchema(filesystemServiceMethods.ByName("Match")),
@@ -157,14 +169,14 @@ func NewFilesystemServiceHandler(svc FilesystemServiceHandler, opts ...connect.H
 // UnimplementedFilesystemServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedFilesystemServiceHandler struct{}
 
-func (UnimplementedFilesystemServiceHandler) Get(context.Context, *connect.Request[v2.FilesystemServiceGetRequest]) (*connect.Response[v2.FilesystemServiceGetResponse], error) {
+func (UnimplementedFilesystemServiceHandler) Get(context.Context, *v2.FilesystemServiceGetRequest) (*v2.FilesystemServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.FilesystemService.Get is not implemented"))
 }
 
-func (UnimplementedFilesystemServiceHandler) List(context.Context, *connect.Request[v2.FilesystemServiceListRequest]) (*connect.Response[v2.FilesystemServiceListResponse], error) {
+func (UnimplementedFilesystemServiceHandler) List(context.Context, *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.FilesystemService.List is not implemented"))
 }
 
-func (UnimplementedFilesystemServiceHandler) Match(context.Context, *connect.Request[v2.FilesystemServiceMatchRequest]) (*connect.Response[v2.FilesystemServiceMatchResponse], error) {
+func (UnimplementedFilesystemServiceHandler) Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.FilesystemService.Match is not implemented"))
 }

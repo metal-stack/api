@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"connectrpc.com/connect"
-
 	"github.com/golang-jwt/jwt/v5"
 	api "github.com/metal-stack/api/go/metalstack/api/v2"
 )
@@ -22,7 +21,7 @@ type (
 		BaseURL string
 		Token   string
 
-		// Optional client Interceptors 
+		// Optional client Interceptors
 		Interceptors []connect.Interceptor
 
 		UserAgent string
@@ -129,12 +128,12 @@ func (c *client) renewTokenIfNeeded(replaceBefore time.Duration) error {
 	c.Lock()
 	defer c.Unlock()
 
-	resp, err := c.Apiv2().Token().Refresh(context.Background(), connect.NewRequest(&api.TokenServiceRefreshRequest{}))
+	resp, err := c.Apiv2().Token().Refresh(context.Background(), &api.TokenServiceRefreshRequest{})
 	if err != nil {
 		return fmt.Errorf("unable to refresh token %w", err)
 	}
 
-	c.config.Token = resp.Msg.Secret
+	c.config.Token = resp.Secret
 	err = c.config.parse()
 	if err != nil {
 		return fmt.Errorf("unable to parse token %w", err)

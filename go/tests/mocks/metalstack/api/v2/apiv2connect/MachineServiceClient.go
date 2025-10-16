@@ -3,10 +3,9 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-
 	context "context"
+
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type MachineServiceClient struct {
 }
 
 // Create provides a mock function with given fields: _a0, _a1
-func (_m *MachineServiceClient) Create(_a0 context.Context, _a1 *connect.Request[apiv2.MachineServiceCreateRequest]) (*connect.Response[apiv2.MachineServiceCreateResponse], error) {
+func (_m *MachineServiceClient) Create(_a0 context.Context, _a1 *apiv2.MachineServiceCreateRequest) (*apiv2.MachineServiceCreateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Create")
 	}
 
-	var r0 *connect.Response[apiv2.MachineServiceCreateResponse]
+	var r0 *apiv2.MachineServiceCreateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceCreateRequest]) (*connect.Response[apiv2.MachineServiceCreateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceCreateRequest) (*apiv2.MachineServiceCreateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceCreateRequest]) *connect.Response[apiv2.MachineServiceCreateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceCreateRequest) *apiv2.MachineServiceCreateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.MachineServiceCreateResponse])
+			r0 = ret.Get(0).(*apiv2.MachineServiceCreateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.MachineServiceCreateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.MachineServiceCreateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *MachineServiceClient) Create(_a0 context.Context, _a1 *connect.Request
 }
 
 // Delete provides a mock function with given fields: _a0, _a1
-func (_m *MachineServiceClient) Delete(_a0 context.Context, _a1 *connect.Request[apiv2.MachineServiceDeleteRequest]) (*connect.Response[apiv2.MachineServiceDeleteResponse], error) {
+func (_m *MachineServiceClient) Delete(_a0 context.Context, _a1 *apiv2.MachineServiceDeleteRequest) (*apiv2.MachineServiceDeleteResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Delete")
 	}
 
-	var r0 *connect.Response[apiv2.MachineServiceDeleteResponse]
+	var r0 *apiv2.MachineServiceDeleteResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceDeleteRequest]) (*connect.Response[apiv2.MachineServiceDeleteResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceDeleteRequest) (*apiv2.MachineServiceDeleteResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceDeleteRequest]) *connect.Response[apiv2.MachineServiceDeleteResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceDeleteRequest) *apiv2.MachineServiceDeleteResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.MachineServiceDeleteResponse])
+			r0 = ret.Get(0).(*apiv2.MachineServiceDeleteResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.MachineServiceDeleteRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.MachineServiceDeleteRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -77,27 +76,27 @@ func (_m *MachineServiceClient) Delete(_a0 context.Context, _a1 *connect.Request
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *MachineServiceClient) Get(_a0 context.Context, _a1 *connect.Request[apiv2.MachineServiceGetRequest]) (*connect.Response[apiv2.MachineServiceGetResponse], error) {
+func (_m *MachineServiceClient) Get(_a0 context.Context, _a1 *apiv2.MachineServiceGetRequest) (*apiv2.MachineServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[apiv2.MachineServiceGetResponse]
+	var r0 *apiv2.MachineServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceGetRequest]) (*connect.Response[apiv2.MachineServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceGetRequest) (*apiv2.MachineServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceGetRequest]) *connect.Response[apiv2.MachineServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceGetRequest) *apiv2.MachineServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.MachineServiceGetResponse])
+			r0 = ret.Get(0).(*apiv2.MachineServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.MachineServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.MachineServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -107,27 +106,27 @@ func (_m *MachineServiceClient) Get(_a0 context.Context, _a1 *connect.Request[ap
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *MachineServiceClient) List(_a0 context.Context, _a1 *connect.Request[apiv2.MachineServiceListRequest]) (*connect.Response[apiv2.MachineServiceListResponse], error) {
+func (_m *MachineServiceClient) List(_a0 context.Context, _a1 *apiv2.MachineServiceListRequest) (*apiv2.MachineServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[apiv2.MachineServiceListResponse]
+	var r0 *apiv2.MachineServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceListRequest]) (*connect.Response[apiv2.MachineServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceListRequest) (*apiv2.MachineServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceListRequest]) *connect.Response[apiv2.MachineServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceListRequest) *apiv2.MachineServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.MachineServiceListResponse])
+			r0 = ret.Get(0).(*apiv2.MachineServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.MachineServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.MachineServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -137,27 +136,27 @@ func (_m *MachineServiceClient) List(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // Update provides a mock function with given fields: _a0, _a1
-func (_m *MachineServiceClient) Update(_a0 context.Context, _a1 *connect.Request[apiv2.MachineServiceUpdateRequest]) (*connect.Response[apiv2.MachineServiceUpdateResponse], error) {
+func (_m *MachineServiceClient) Update(_a0 context.Context, _a1 *apiv2.MachineServiceUpdateRequest) (*apiv2.MachineServiceUpdateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Update")
 	}
 
-	var r0 *connect.Response[apiv2.MachineServiceUpdateResponse]
+	var r0 *apiv2.MachineServiceUpdateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceUpdateRequest]) (*connect.Response[apiv2.MachineServiceUpdateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceUpdateRequest) (*apiv2.MachineServiceUpdateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.MachineServiceUpdateRequest]) *connect.Response[apiv2.MachineServiceUpdateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.MachineServiceUpdateRequest) *apiv2.MachineServiceUpdateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.MachineServiceUpdateResponse])
+			r0 = ret.Get(0).(*apiv2.MachineServiceUpdateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.MachineServiceUpdateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.MachineServiceUpdateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

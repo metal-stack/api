@@ -42,9 +42,9 @@ const (
 // TenantServiceClient is a client for the metalstack.admin.v2.TenantService service.
 type TenantServiceClient interface {
 	// Create a tenant
-	Create(context.Context, *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error)
+	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// List all tenants
-	List(context.Context, *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error)
+	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
 }
 
 // NewTenantServiceClient constructs a client for the metalstack.admin.v2.TenantService service. By
@@ -80,21 +80,29 @@ type tenantServiceClient struct {
 }
 
 // Create calls metalstack.admin.v2.TenantService.Create.
-func (c *tenantServiceClient) Create(ctx context.Context, req *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+func (c *tenantServiceClient) Create(ctx context.Context, req *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.admin.v2.TenantService.List.
-func (c *tenantServiceClient) List(ctx context.Context, req *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *tenantServiceClient) List(ctx context.Context, req *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // TenantServiceHandler is an implementation of the metalstack.admin.v2.TenantService service.
 type TenantServiceHandler interface {
 	// Create a tenant
-	Create(context.Context, *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error)
+	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// List all tenants
-	List(context.Context, *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error)
+	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -104,13 +112,13 @@ type TenantServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	tenantServiceMethods := v2.File_metalstack_admin_v2_tenant_proto.Services().ByName("TenantService").Methods()
-	tenantServiceCreateHandler := connect.NewUnaryHandler(
+	tenantServiceCreateHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceCreateProcedure,
 		svc.Create,
 		connect.WithSchema(tenantServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceListHandler := connect.NewUnaryHandler(
+	tenantServiceListHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceListProcedure,
 		svc.List,
 		connect.WithSchema(tenantServiceMethods.ByName("List")),
@@ -131,10 +139,10 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 // UnimplementedTenantServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTenantServiceHandler struct{}
 
-func (UnimplementedTenantServiceHandler) Create(context.Context, *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error) {
+func (UnimplementedTenantServiceHandler) Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TenantService.Create is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) List(context.Context, *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error) {
+func (UnimplementedTenantServiceHandler) List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TenantService.List is not implemented"))
 }

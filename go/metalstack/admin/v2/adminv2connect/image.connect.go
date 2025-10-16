@@ -46,13 +46,13 @@ const (
 // ImageServiceClient is a client for the metalstack.admin.v2.ImageService service.
 type ImageServiceClient interface {
 	// Create a image
-	Create(context.Context, *connect.Request[v2.ImageServiceCreateRequest]) (*connect.Response[v2.ImageServiceCreateResponse], error)
+	Create(context.Context, *v2.ImageServiceCreateRequest) (*v2.ImageServiceCreateResponse, error)
 	// Update a image
-	Update(context.Context, *connect.Request[v2.ImageServiceUpdateRequest]) (*connect.Response[v2.ImageServiceUpdateResponse], error)
+	Update(context.Context, *v2.ImageServiceUpdateRequest) (*v2.ImageServiceUpdateResponse, error)
 	// Delete a image
-	Delete(context.Context, *connect.Request[v2.ImageServiceDeleteRequest]) (*connect.Response[v2.ImageServiceDeleteResponse], error)
+	Delete(context.Context, *v2.ImageServiceDeleteRequest) (*v2.ImageServiceDeleteResponse, error)
 	// Usage of images
-	Usage(context.Context, *connect.Request[v2.ImageServiceUsageRequest]) (*connect.Response[v2.ImageServiceUsageResponse], error)
+	Usage(context.Context, *v2.ImageServiceUsageRequest) (*v2.ImageServiceUsageResponse, error)
 }
 
 // NewImageServiceClient constructs a client for the metalstack.admin.v2.ImageService service. By
@@ -102,35 +102,51 @@ type imageServiceClient struct {
 }
 
 // Create calls metalstack.admin.v2.ImageService.Create.
-func (c *imageServiceClient) Create(ctx context.Context, req *connect.Request[v2.ImageServiceCreateRequest]) (*connect.Response[v2.ImageServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+func (c *imageServiceClient) Create(ctx context.Context, req *v2.ImageServiceCreateRequest) (*v2.ImageServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Update calls metalstack.admin.v2.ImageService.Update.
-func (c *imageServiceClient) Update(ctx context.Context, req *connect.Request[v2.ImageServiceUpdateRequest]) (*connect.Response[v2.ImageServiceUpdateResponse], error) {
-	return c.update.CallUnary(ctx, req)
+func (c *imageServiceClient) Update(ctx context.Context, req *v2.ImageServiceUpdateRequest) (*v2.ImageServiceUpdateResponse, error) {
+	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Delete calls metalstack.admin.v2.ImageService.Delete.
-func (c *imageServiceClient) Delete(ctx context.Context, req *connect.Request[v2.ImageServiceDeleteRequest]) (*connect.Response[v2.ImageServiceDeleteResponse], error) {
-	return c.delete.CallUnary(ctx, req)
+func (c *imageServiceClient) Delete(ctx context.Context, req *v2.ImageServiceDeleteRequest) (*v2.ImageServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Usage calls metalstack.admin.v2.ImageService.Usage.
-func (c *imageServiceClient) Usage(ctx context.Context, req *connect.Request[v2.ImageServiceUsageRequest]) (*connect.Response[v2.ImageServiceUsageResponse], error) {
-	return c.usage.CallUnary(ctx, req)
+func (c *imageServiceClient) Usage(ctx context.Context, req *v2.ImageServiceUsageRequest) (*v2.ImageServiceUsageResponse, error) {
+	response, err := c.usage.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // ImageServiceHandler is an implementation of the metalstack.admin.v2.ImageService service.
 type ImageServiceHandler interface {
 	// Create a image
-	Create(context.Context, *connect.Request[v2.ImageServiceCreateRequest]) (*connect.Response[v2.ImageServiceCreateResponse], error)
+	Create(context.Context, *v2.ImageServiceCreateRequest) (*v2.ImageServiceCreateResponse, error)
 	// Update a image
-	Update(context.Context, *connect.Request[v2.ImageServiceUpdateRequest]) (*connect.Response[v2.ImageServiceUpdateResponse], error)
+	Update(context.Context, *v2.ImageServiceUpdateRequest) (*v2.ImageServiceUpdateResponse, error)
 	// Delete a image
-	Delete(context.Context, *connect.Request[v2.ImageServiceDeleteRequest]) (*connect.Response[v2.ImageServiceDeleteResponse], error)
+	Delete(context.Context, *v2.ImageServiceDeleteRequest) (*v2.ImageServiceDeleteResponse, error)
 	// Usage of images
-	Usage(context.Context, *connect.Request[v2.ImageServiceUsageRequest]) (*connect.Response[v2.ImageServiceUsageResponse], error)
+	Usage(context.Context, *v2.ImageServiceUsageRequest) (*v2.ImageServiceUsageResponse, error)
 }
 
 // NewImageServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -140,25 +156,25 @@ type ImageServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewImageServiceHandler(svc ImageServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	imageServiceMethods := v2.File_metalstack_admin_v2_image_proto.Services().ByName("ImageService").Methods()
-	imageServiceCreateHandler := connect.NewUnaryHandler(
+	imageServiceCreateHandler := connect.NewUnaryHandlerSimple(
 		ImageServiceCreateProcedure,
 		svc.Create,
 		connect.WithSchema(imageServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
-	imageServiceUpdateHandler := connect.NewUnaryHandler(
+	imageServiceUpdateHandler := connect.NewUnaryHandlerSimple(
 		ImageServiceUpdateProcedure,
 		svc.Update,
 		connect.WithSchema(imageServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
-	imageServiceDeleteHandler := connect.NewUnaryHandler(
+	imageServiceDeleteHandler := connect.NewUnaryHandlerSimple(
 		ImageServiceDeleteProcedure,
 		svc.Delete,
 		connect.WithSchema(imageServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
-	imageServiceUsageHandler := connect.NewUnaryHandler(
+	imageServiceUsageHandler := connect.NewUnaryHandlerSimple(
 		ImageServiceUsageProcedure,
 		svc.Usage,
 		connect.WithSchema(imageServiceMethods.ByName("Usage")),
@@ -183,18 +199,18 @@ func NewImageServiceHandler(svc ImageServiceHandler, opts ...connect.HandlerOpti
 // UnimplementedImageServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedImageServiceHandler struct{}
 
-func (UnimplementedImageServiceHandler) Create(context.Context, *connect.Request[v2.ImageServiceCreateRequest]) (*connect.Response[v2.ImageServiceCreateResponse], error) {
+func (UnimplementedImageServiceHandler) Create(context.Context, *v2.ImageServiceCreateRequest) (*v2.ImageServiceCreateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ImageService.Create is not implemented"))
 }
 
-func (UnimplementedImageServiceHandler) Update(context.Context, *connect.Request[v2.ImageServiceUpdateRequest]) (*connect.Response[v2.ImageServiceUpdateResponse], error) {
+func (UnimplementedImageServiceHandler) Update(context.Context, *v2.ImageServiceUpdateRequest) (*v2.ImageServiceUpdateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ImageService.Update is not implemented"))
 }
 
-func (UnimplementedImageServiceHandler) Delete(context.Context, *connect.Request[v2.ImageServiceDeleteRequest]) (*connect.Response[v2.ImageServiceDeleteResponse], error) {
+func (UnimplementedImageServiceHandler) Delete(context.Context, *v2.ImageServiceDeleteRequest) (*v2.ImageServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ImageService.Delete is not implemented"))
 }
 
-func (UnimplementedImageServiceHandler) Usage(context.Context, *connect.Request[v2.ImageServiceUsageRequest]) (*connect.Response[v2.ImageServiceUsageResponse], error) {
+func (UnimplementedImageServiceHandler) Usage(context.Context, *v2.ImageServiceUsageRequest) (*v2.ImageServiceUsageResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ImageService.Usage is not implemented"))
 }

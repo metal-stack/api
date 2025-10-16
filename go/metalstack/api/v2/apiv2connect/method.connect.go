@@ -43,9 +43,9 @@ const (
 // MethodServiceClient is a client for the metalstack.api.v2.MethodService service.
 type MethodServiceClient interface {
 	// List all public visible methods
-	List(context.Context, *connect.Request[v2.MethodServiceListRequest]) (*connect.Response[v2.MethodServiceListResponse], error)
+	List(context.Context, *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error)
 	// TokenScopedList all methods callable with the token present in the request
-	TokenScopedList(context.Context, *connect.Request[v2.MethodServiceTokenScopedListRequest]) (*connect.Response[v2.MethodServiceTokenScopedListResponse], error)
+	TokenScopedList(context.Context, *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error)
 }
 
 // NewMethodServiceClient constructs a client for the metalstack.api.v2.MethodService service. By
@@ -81,21 +81,29 @@ type methodServiceClient struct {
 }
 
 // List calls metalstack.api.v2.MethodService.List.
-func (c *methodServiceClient) List(ctx context.Context, req *connect.Request[v2.MethodServiceListRequest]) (*connect.Response[v2.MethodServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *methodServiceClient) List(ctx context.Context, req *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // TokenScopedList calls metalstack.api.v2.MethodService.TokenScopedList.
-func (c *methodServiceClient) TokenScopedList(ctx context.Context, req *connect.Request[v2.MethodServiceTokenScopedListRequest]) (*connect.Response[v2.MethodServiceTokenScopedListResponse], error) {
-	return c.tokenScopedList.CallUnary(ctx, req)
+func (c *methodServiceClient) TokenScopedList(ctx context.Context, req *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error) {
+	response, err := c.tokenScopedList.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // MethodServiceHandler is an implementation of the metalstack.api.v2.MethodService service.
 type MethodServiceHandler interface {
 	// List all public visible methods
-	List(context.Context, *connect.Request[v2.MethodServiceListRequest]) (*connect.Response[v2.MethodServiceListResponse], error)
+	List(context.Context, *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error)
 	// TokenScopedList all methods callable with the token present in the request
-	TokenScopedList(context.Context, *connect.Request[v2.MethodServiceTokenScopedListRequest]) (*connect.Response[v2.MethodServiceTokenScopedListResponse], error)
+	TokenScopedList(context.Context, *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error)
 }
 
 // NewMethodServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -105,13 +113,13 @@ type MethodServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewMethodServiceHandler(svc MethodServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	methodServiceMethods := v2.File_metalstack_api_v2_method_proto.Services().ByName("MethodService").Methods()
-	methodServiceListHandler := connect.NewUnaryHandler(
+	methodServiceListHandler := connect.NewUnaryHandlerSimple(
 		MethodServiceListProcedure,
 		svc.List,
 		connect.WithSchema(methodServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
-	methodServiceTokenScopedListHandler := connect.NewUnaryHandler(
+	methodServiceTokenScopedListHandler := connect.NewUnaryHandlerSimple(
 		MethodServiceTokenScopedListProcedure,
 		svc.TokenScopedList,
 		connect.WithSchema(methodServiceMethods.ByName("TokenScopedList")),
@@ -132,10 +140,10 @@ func NewMethodServiceHandler(svc MethodServiceHandler, opts ...connect.HandlerOp
 // UnimplementedMethodServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedMethodServiceHandler struct{}
 
-func (UnimplementedMethodServiceHandler) List(context.Context, *connect.Request[v2.MethodServiceListRequest]) (*connect.Response[v2.MethodServiceListResponse], error) {
+func (UnimplementedMethodServiceHandler) List(context.Context, *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MethodService.List is not implemented"))
 }
 
-func (UnimplementedMethodServiceHandler) TokenScopedList(context.Context, *connect.Request[v2.MethodServiceTokenScopedListRequest]) (*connect.Response[v2.MethodServiceTokenScopedListResponse], error) {
+func (UnimplementedMethodServiceHandler) TokenScopedList(context.Context, *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MethodService.TokenScopedList is not implemented"))
 }

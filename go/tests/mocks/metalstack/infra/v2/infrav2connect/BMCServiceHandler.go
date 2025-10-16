@@ -5,10 +5,7 @@ package infrav2connect
 import (
 	context "context"
 
-	connect "connectrpc.com/connect"
-
 	infrav2 "github.com/metal-stack/api/go/metalstack/infra/v2"
-
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -18,27 +15,27 @@ type BMCServiceHandler struct {
 }
 
 // UpdateBMCInfo provides a mock function with given fields: _a0, _a1
-func (_m *BMCServiceHandler) UpdateBMCInfo(_a0 context.Context, _a1 *connect.Request[infrav2.UpdateBMCInfoRequest]) (*connect.Response[infrav2.UpdateBMCInfoResponse], error) {
+func (_m *BMCServiceHandler) UpdateBMCInfo(_a0 context.Context, _a1 *infrav2.UpdateBMCInfoRequest) (*infrav2.UpdateBMCInfoResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateBMCInfo")
 	}
 
-	var r0 *connect.Response[infrav2.UpdateBMCInfoResponse]
+	var r0 *infrav2.UpdateBMCInfoResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.UpdateBMCInfoRequest]) (*connect.Response[infrav2.UpdateBMCInfoResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.UpdateBMCInfoRequest) (*infrav2.UpdateBMCInfoResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.UpdateBMCInfoRequest]) *connect.Response[infrav2.UpdateBMCInfoResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.UpdateBMCInfoRequest) *infrav2.UpdateBMCInfoResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.UpdateBMCInfoResponse])
+			r0 = ret.Get(0).(*infrav2.UpdateBMCInfoResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.UpdateBMCInfoRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.UpdateBMCInfoRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
