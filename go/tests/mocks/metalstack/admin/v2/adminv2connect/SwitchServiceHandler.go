@@ -3,10 +3,9 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-
 	context "context"
+
+	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type SwitchServiceHandler struct {
 }
 
 // Delete provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceHandler) Delete(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceDeleteRequest]) (*connect.Response[adminv2.SwitchServiceDeleteResponse], error) {
+func (_m *SwitchServiceHandler) Delete(_a0 context.Context, _a1 *adminv2.SwitchServiceDeleteRequest) (*adminv2.SwitchServiceDeleteResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Delete")
 	}
 
-	var r0 *connect.Response[adminv2.SwitchServiceDeleteResponse]
+	var r0 *adminv2.SwitchServiceDeleteResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceDeleteRequest]) (*connect.Response[adminv2.SwitchServiceDeleteResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceDeleteRequest) (*adminv2.SwitchServiceDeleteResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceDeleteRequest]) *connect.Response[adminv2.SwitchServiceDeleteResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceDeleteRequest) *adminv2.SwitchServiceDeleteResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServiceDeleteResponse])
+			r0 = ret.Get(0).(*adminv2.SwitchServiceDeleteResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServiceDeleteRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.SwitchServiceDeleteRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *SwitchServiceHandler) Delete(_a0 context.Context, _a1 *connect.Request
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceGetRequest]) (*connect.Response[adminv2.SwitchServiceGetResponse], error) {
+func (_m *SwitchServiceHandler) Get(_a0 context.Context, _a1 *adminv2.SwitchServiceGetRequest) (*adminv2.SwitchServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[adminv2.SwitchServiceGetResponse]
+	var r0 *adminv2.SwitchServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceGetRequest]) (*connect.Response[adminv2.SwitchServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceGetRequest) (*adminv2.SwitchServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceGetRequest]) *connect.Response[adminv2.SwitchServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceGetRequest) *adminv2.SwitchServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServiceGetResponse])
+			r0 = ret.Get(0).(*adminv2.SwitchServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.SwitchServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -77,27 +76,27 @@ func (_m *SwitchServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[ad
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceHandler) List(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceListRequest]) (*connect.Response[adminv2.SwitchServiceListResponse], error) {
+func (_m *SwitchServiceHandler) List(_a0 context.Context, _a1 *adminv2.SwitchServiceListRequest) (*adminv2.SwitchServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[adminv2.SwitchServiceListResponse]
+	var r0 *adminv2.SwitchServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceListRequest]) (*connect.Response[adminv2.SwitchServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceListRequest) (*adminv2.SwitchServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceListRequest]) *connect.Response[adminv2.SwitchServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceListRequest) *adminv2.SwitchServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServiceListResponse])
+			r0 = ret.Get(0).(*adminv2.SwitchServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.SwitchServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -107,27 +106,27 @@ func (_m *SwitchServiceHandler) List(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // Migrate provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceHandler) Migrate(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceMigrateRequest]) (*connect.Response[adminv2.SwitchServiceMigrateResponse], error) {
+func (_m *SwitchServiceHandler) Migrate(_a0 context.Context, _a1 *adminv2.SwitchServiceMigrateRequest) (*adminv2.SwitchServiceMigrateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Migrate")
 	}
 
-	var r0 *connect.Response[adminv2.SwitchServiceMigrateResponse]
+	var r0 *adminv2.SwitchServiceMigrateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceMigrateRequest]) (*connect.Response[adminv2.SwitchServiceMigrateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceMigrateRequest) (*adminv2.SwitchServiceMigrateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceMigrateRequest]) *connect.Response[adminv2.SwitchServiceMigrateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceMigrateRequest) *adminv2.SwitchServiceMigrateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServiceMigrateResponse])
+			r0 = ret.Get(0).(*adminv2.SwitchServiceMigrateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServiceMigrateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.SwitchServiceMigrateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -137,27 +136,27 @@ func (_m *SwitchServiceHandler) Migrate(_a0 context.Context, _a1 *connect.Reques
 }
 
 // Port provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceHandler) Port(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServicePortRequest]) (*connect.Response[adminv2.SwitchServicePortResponse], error) {
+func (_m *SwitchServiceHandler) Port(_a0 context.Context, _a1 *adminv2.SwitchServicePortRequest) (*adminv2.SwitchServicePortResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Port")
 	}
 
-	var r0 *connect.Response[adminv2.SwitchServicePortResponse]
+	var r0 *adminv2.SwitchServicePortResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServicePortRequest]) (*connect.Response[adminv2.SwitchServicePortResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServicePortRequest) (*adminv2.SwitchServicePortResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServicePortRequest]) *connect.Response[adminv2.SwitchServicePortResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServicePortRequest) *adminv2.SwitchServicePortResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServicePortResponse])
+			r0 = ret.Get(0).(*adminv2.SwitchServicePortResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServicePortRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.SwitchServicePortRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -167,27 +166,27 @@ func (_m *SwitchServiceHandler) Port(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // Update provides a mock function with given fields: _a0, _a1
-func (_m *SwitchServiceHandler) Update(_a0 context.Context, _a1 *connect.Request[adminv2.SwitchServiceUpdateRequest]) (*connect.Response[adminv2.SwitchServiceUpdateResponse], error) {
+func (_m *SwitchServiceHandler) Update(_a0 context.Context, _a1 *adminv2.SwitchServiceUpdateRequest) (*adminv2.SwitchServiceUpdateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Update")
 	}
 
-	var r0 *connect.Response[adminv2.SwitchServiceUpdateResponse]
+	var r0 *adminv2.SwitchServiceUpdateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceUpdateRequest]) (*connect.Response[adminv2.SwitchServiceUpdateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceUpdateRequest) (*adminv2.SwitchServiceUpdateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SwitchServiceUpdateRequest]) *connect.Response[adminv2.SwitchServiceUpdateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceUpdateRequest) *adminv2.SwitchServiceUpdateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.SwitchServiceUpdateResponse])
+			r0 = ret.Get(0).(*adminv2.SwitchServiceUpdateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SwitchServiceUpdateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.SwitchServiceUpdateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

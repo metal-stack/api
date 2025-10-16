@@ -48,15 +48,15 @@ const (
 // NetworkServiceClient is a client for the metalstack.admin.v2.NetworkService service.
 type NetworkServiceClient interface {
 	// Get a network
-	Get(context.Context, *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error)
+	Get(context.Context, *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error)
 	// Create a network
-	Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error)
+	Create(context.Context, *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error)
 	// Update a network
-	Update(context.Context, *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error)
+	Update(context.Context, *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error)
 	// Delete a network
-	Delete(context.Context, *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error)
+	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 	// List all networks
-	List(context.Context, *connect.Request[v2.NetworkServiceListRequest]) (*connect.Response[v2.NetworkServiceListResponse], error)
+	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
 }
 
 // NewNetworkServiceClient constructs a client for the metalstack.admin.v2.NetworkService service.
@@ -113,42 +113,62 @@ type networkServiceClient struct {
 }
 
 // Get calls metalstack.admin.v2.NetworkService.Get.
-func (c *networkServiceClient) Get(ctx context.Context, req *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *networkServiceClient) Get(ctx context.Context, req *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Create calls metalstack.admin.v2.NetworkService.Create.
-func (c *networkServiceClient) Create(ctx context.Context, req *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+func (c *networkServiceClient) Create(ctx context.Context, req *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Update calls metalstack.admin.v2.NetworkService.Update.
-func (c *networkServiceClient) Update(ctx context.Context, req *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error) {
-	return c.update.CallUnary(ctx, req)
+func (c *networkServiceClient) Update(ctx context.Context, req *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error) {
+	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Delete calls metalstack.admin.v2.NetworkService.Delete.
-func (c *networkServiceClient) Delete(ctx context.Context, req *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error) {
-	return c.delete.CallUnary(ctx, req)
+func (c *networkServiceClient) Delete(ctx context.Context, req *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.admin.v2.NetworkService.List.
-func (c *networkServiceClient) List(ctx context.Context, req *connect.Request[v2.NetworkServiceListRequest]) (*connect.Response[v2.NetworkServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *networkServiceClient) List(ctx context.Context, req *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // NetworkServiceHandler is an implementation of the metalstack.admin.v2.NetworkService service.
 type NetworkServiceHandler interface {
 	// Get a network
-	Get(context.Context, *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error)
+	Get(context.Context, *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error)
 	// Create a network
-	Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error)
+	Create(context.Context, *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error)
 	// Update a network
-	Update(context.Context, *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error)
+	Update(context.Context, *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error)
 	// Delete a network
-	Delete(context.Context, *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error)
+	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 	// List all networks
-	List(context.Context, *connect.Request[v2.NetworkServiceListRequest]) (*connect.Response[v2.NetworkServiceListResponse], error)
+	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
 }
 
 // NewNetworkServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -158,31 +178,31 @@ type NetworkServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	networkServiceMethods := v2.File_metalstack_admin_v2_network_proto.Services().ByName("NetworkService").Methods()
-	networkServiceGetHandler := connect.NewUnaryHandler(
+	networkServiceGetHandler := connect.NewUnaryHandlerSimple(
 		NetworkServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(networkServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceCreateHandler := connect.NewUnaryHandler(
+	networkServiceCreateHandler := connect.NewUnaryHandlerSimple(
 		NetworkServiceCreateProcedure,
 		svc.Create,
 		connect.WithSchema(networkServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceUpdateHandler := connect.NewUnaryHandler(
+	networkServiceUpdateHandler := connect.NewUnaryHandlerSimple(
 		NetworkServiceUpdateProcedure,
 		svc.Update,
 		connect.WithSchema(networkServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceDeleteHandler := connect.NewUnaryHandler(
+	networkServiceDeleteHandler := connect.NewUnaryHandlerSimple(
 		NetworkServiceDeleteProcedure,
 		svc.Delete,
 		connect.WithSchema(networkServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
-	networkServiceListHandler := connect.NewUnaryHandler(
+	networkServiceListHandler := connect.NewUnaryHandlerSimple(
 		NetworkServiceListProcedure,
 		svc.List,
 		connect.WithSchema(networkServiceMethods.ByName("List")),
@@ -209,22 +229,22 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 // UnimplementedNetworkServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedNetworkServiceHandler struct{}
 
-func (UnimplementedNetworkServiceHandler) Get(context.Context, *connect.Request[v2.NetworkServiceGetRequest]) (*connect.Response[v2.NetworkServiceGetResponse], error) {
+func (UnimplementedNetworkServiceHandler) Get(context.Context, *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.Get is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) Create(context.Context, *connect.Request[v2.NetworkServiceCreateRequest]) (*connect.Response[v2.NetworkServiceCreateResponse], error) {
+func (UnimplementedNetworkServiceHandler) Create(context.Context, *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.Create is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) Update(context.Context, *connect.Request[v2.NetworkServiceUpdateRequest]) (*connect.Response[v2.NetworkServiceUpdateResponse], error) {
+func (UnimplementedNetworkServiceHandler) Update(context.Context, *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.Update is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) Delete(context.Context, *connect.Request[v2.NetworkServiceDeleteRequest]) (*connect.Response[v2.NetworkServiceDeleteResponse], error) {
+func (UnimplementedNetworkServiceHandler) Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.Delete is not implemented"))
 }
 
-func (UnimplementedNetworkServiceHandler) List(context.Context, *connect.Request[v2.NetworkServiceListRequest]) (*connect.Response[v2.NetworkServiceListResponse], error) {
+func (UnimplementedNetworkServiceHandler) List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.List is not implemented"))
 }

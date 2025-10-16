@@ -40,7 +40,7 @@ const (
 // HealthServiceClient is a client for the metalstack.api.v2.HealthService service.
 type HealthServiceClient interface {
 	// Get the health of the platform
-	Get(context.Context, *connect.Request[v2.HealthServiceGetRequest]) (*connect.Response[v2.HealthServiceGetResponse], error)
+	Get(context.Context, *v2.HealthServiceGetRequest) (*v2.HealthServiceGetResponse, error)
 }
 
 // NewHealthServiceClient constructs a client for the metalstack.api.v2.HealthService service. By
@@ -69,14 +69,18 @@ type healthServiceClient struct {
 }
 
 // Get calls metalstack.api.v2.HealthService.Get.
-func (c *healthServiceClient) Get(ctx context.Context, req *connect.Request[v2.HealthServiceGetRequest]) (*connect.Response[v2.HealthServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *healthServiceClient) Get(ctx context.Context, req *v2.HealthServiceGetRequest) (*v2.HealthServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // HealthServiceHandler is an implementation of the metalstack.api.v2.HealthService service.
 type HealthServiceHandler interface {
 	// Get the health of the platform
-	Get(context.Context, *connect.Request[v2.HealthServiceGetRequest]) (*connect.Response[v2.HealthServiceGetResponse], error)
+	Get(context.Context, *v2.HealthServiceGetRequest) (*v2.HealthServiceGetResponse, error)
 }
 
 // NewHealthServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -86,7 +90,7 @@ type HealthServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewHealthServiceHandler(svc HealthServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	healthServiceMethods := v2.File_metalstack_api_v2_health_proto.Services().ByName("HealthService").Methods()
-	healthServiceGetHandler := connect.NewUnaryHandler(
+	healthServiceGetHandler := connect.NewUnaryHandlerSimple(
 		HealthServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(healthServiceMethods.ByName("Get")),
@@ -105,6 +109,6 @@ func NewHealthServiceHandler(svc HealthServiceHandler, opts ...connect.HandlerOp
 // UnimplementedHealthServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedHealthServiceHandler struct{}
 
-func (UnimplementedHealthServiceHandler) Get(context.Context, *connect.Request[v2.HealthServiceGetRequest]) (*connect.Response[v2.HealthServiceGetResponse], error) {
+func (UnimplementedHealthServiceHandler) Get(context.Context, *v2.HealthServiceGetRequest) (*v2.HealthServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.HealthService.Get is not implemented"))
 }

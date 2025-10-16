@@ -3,10 +3,9 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-
 	context "context"
+
+	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type TokenServiceHandler struct {
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *TokenServiceHandler) List(_a0 context.Context, _a1 *connect.Request[adminv2.TokenServiceListRequest]) (*connect.Response[adminv2.TokenServiceListResponse], error) {
+func (_m *TokenServiceHandler) List(_a0 context.Context, _a1 *adminv2.TokenServiceListRequest) (*adminv2.TokenServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[adminv2.TokenServiceListResponse]
+	var r0 *adminv2.TokenServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.TokenServiceListRequest]) (*connect.Response[adminv2.TokenServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.TokenServiceListRequest) (*adminv2.TokenServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.TokenServiceListRequest]) *connect.Response[adminv2.TokenServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.TokenServiceListRequest) *adminv2.TokenServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.TokenServiceListResponse])
+			r0 = ret.Get(0).(*adminv2.TokenServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.TokenServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.TokenServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *TokenServiceHandler) List(_a0 context.Context, _a1 *connect.Request[ad
 }
 
 // Revoke provides a mock function with given fields: _a0, _a1
-func (_m *TokenServiceHandler) Revoke(_a0 context.Context, _a1 *connect.Request[adminv2.TokenServiceRevokeRequest]) (*connect.Response[adminv2.TokenServiceRevokeResponse], error) {
+func (_m *TokenServiceHandler) Revoke(_a0 context.Context, _a1 *adminv2.TokenServiceRevokeRequest) (*adminv2.TokenServiceRevokeResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Revoke")
 	}
 
-	var r0 *connect.Response[adminv2.TokenServiceRevokeResponse]
+	var r0 *adminv2.TokenServiceRevokeResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.TokenServiceRevokeRequest]) (*connect.Response[adminv2.TokenServiceRevokeResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.TokenServiceRevokeRequest) (*adminv2.TokenServiceRevokeResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.TokenServiceRevokeRequest]) *connect.Response[adminv2.TokenServiceRevokeResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.TokenServiceRevokeRequest) *adminv2.TokenServiceRevokeResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.TokenServiceRevokeResponse])
+			r0 = ret.Get(0).(*adminv2.TokenServiceRevokeResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.TokenServiceRevokeRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.TokenServiceRevokeRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

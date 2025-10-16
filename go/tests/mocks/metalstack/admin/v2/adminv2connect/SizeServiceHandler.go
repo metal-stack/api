@@ -3,10 +3,9 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-
 	context "context"
+
+	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type SizeServiceHandler struct {
 }
 
 // Create provides a mock function with given fields: _a0, _a1
-func (_m *SizeServiceHandler) Create(_a0 context.Context, _a1 *connect.Request[adminv2.SizeServiceCreateRequest]) (*connect.Response[adminv2.SizeServiceCreateResponse], error) {
+func (_m *SizeServiceHandler) Create(_a0 context.Context, _a1 *adminv2.SizeServiceCreateRequest) (*adminv2.SizeServiceCreateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Create")
 	}
 
-	var r0 *connect.Response[adminv2.SizeServiceCreateResponse]
+	var r0 *adminv2.SizeServiceCreateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SizeServiceCreateRequest]) (*connect.Response[adminv2.SizeServiceCreateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SizeServiceCreateRequest) (*adminv2.SizeServiceCreateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SizeServiceCreateRequest]) *connect.Response[adminv2.SizeServiceCreateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SizeServiceCreateRequest) *adminv2.SizeServiceCreateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.SizeServiceCreateResponse])
+			r0 = ret.Get(0).(*adminv2.SizeServiceCreateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SizeServiceCreateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.SizeServiceCreateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *SizeServiceHandler) Create(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // Delete provides a mock function with given fields: _a0, _a1
-func (_m *SizeServiceHandler) Delete(_a0 context.Context, _a1 *connect.Request[adminv2.SizeServiceDeleteRequest]) (*connect.Response[adminv2.SizeServiceDeleteResponse], error) {
+func (_m *SizeServiceHandler) Delete(_a0 context.Context, _a1 *adminv2.SizeServiceDeleteRequest) (*adminv2.SizeServiceDeleteResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Delete")
 	}
 
-	var r0 *connect.Response[adminv2.SizeServiceDeleteResponse]
+	var r0 *adminv2.SizeServiceDeleteResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SizeServiceDeleteRequest]) (*connect.Response[adminv2.SizeServiceDeleteResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SizeServiceDeleteRequest) (*adminv2.SizeServiceDeleteResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SizeServiceDeleteRequest]) *connect.Response[adminv2.SizeServiceDeleteResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SizeServiceDeleteRequest) *adminv2.SizeServiceDeleteResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.SizeServiceDeleteResponse])
+			r0 = ret.Get(0).(*adminv2.SizeServiceDeleteResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SizeServiceDeleteRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.SizeServiceDeleteRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -77,27 +76,27 @@ func (_m *SizeServiceHandler) Delete(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // Update provides a mock function with given fields: _a0, _a1
-func (_m *SizeServiceHandler) Update(_a0 context.Context, _a1 *connect.Request[adminv2.SizeServiceUpdateRequest]) (*connect.Response[adminv2.SizeServiceUpdateResponse], error) {
+func (_m *SizeServiceHandler) Update(_a0 context.Context, _a1 *adminv2.SizeServiceUpdateRequest) (*adminv2.SizeServiceUpdateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Update")
 	}
 
-	var r0 *connect.Response[adminv2.SizeServiceUpdateResponse]
+	var r0 *adminv2.SizeServiceUpdateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SizeServiceUpdateRequest]) (*connect.Response[adminv2.SizeServiceUpdateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SizeServiceUpdateRequest) (*adminv2.SizeServiceUpdateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.SizeServiceUpdateRequest]) *connect.Response[adminv2.SizeServiceUpdateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.SizeServiceUpdateRequest) *adminv2.SizeServiceUpdateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.SizeServiceUpdateResponse])
+			r0 = ret.Get(0).(*adminv2.SizeServiceUpdateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.SizeServiceUpdateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.SizeServiceUpdateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

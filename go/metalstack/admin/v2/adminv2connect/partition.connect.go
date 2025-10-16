@@ -47,13 +47,13 @@ const (
 // PartitionServiceClient is a client for the metalstack.admin.v2.PartitionService service.
 type PartitionServiceClient interface {
 	// Create a partition
-	Create(context.Context, *connect.Request[v2.PartitionServiceCreateRequest]) (*connect.Response[v2.PartitionServiceCreateResponse], error)
+	Create(context.Context, *v2.PartitionServiceCreateRequest) (*v2.PartitionServiceCreateResponse, error)
 	// Update a partition
-	Update(context.Context, *connect.Request[v2.PartitionServiceUpdateRequest]) (*connect.Response[v2.PartitionServiceUpdateResponse], error)
+	Update(context.Context, *v2.PartitionServiceUpdateRequest) (*v2.PartitionServiceUpdateResponse, error)
 	// Delete a partition
-	Delete(context.Context, *connect.Request[v2.PartitionServiceDeleteRequest]) (*connect.Response[v2.PartitionServiceDeleteResponse], error)
+	Delete(context.Context, *v2.PartitionServiceDeleteRequest) (*v2.PartitionServiceDeleteResponse, error)
 	// Capacity of a partitions
-	Capacity(context.Context, *connect.Request[v2.PartitionServiceCapacityRequest]) (*connect.Response[v2.PartitionServiceCapacityResponse], error)
+	Capacity(context.Context, *v2.PartitionServiceCapacityRequest) (*v2.PartitionServiceCapacityResponse, error)
 }
 
 // NewPartitionServiceClient constructs a client for the metalstack.admin.v2.PartitionService
@@ -103,35 +103,51 @@ type partitionServiceClient struct {
 }
 
 // Create calls metalstack.admin.v2.PartitionService.Create.
-func (c *partitionServiceClient) Create(ctx context.Context, req *connect.Request[v2.PartitionServiceCreateRequest]) (*connect.Response[v2.PartitionServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+func (c *partitionServiceClient) Create(ctx context.Context, req *v2.PartitionServiceCreateRequest) (*v2.PartitionServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Update calls metalstack.admin.v2.PartitionService.Update.
-func (c *partitionServiceClient) Update(ctx context.Context, req *connect.Request[v2.PartitionServiceUpdateRequest]) (*connect.Response[v2.PartitionServiceUpdateResponse], error) {
-	return c.update.CallUnary(ctx, req)
+func (c *partitionServiceClient) Update(ctx context.Context, req *v2.PartitionServiceUpdateRequest) (*v2.PartitionServiceUpdateResponse, error) {
+	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Delete calls metalstack.admin.v2.PartitionService.Delete.
-func (c *partitionServiceClient) Delete(ctx context.Context, req *connect.Request[v2.PartitionServiceDeleteRequest]) (*connect.Response[v2.PartitionServiceDeleteResponse], error) {
-	return c.delete.CallUnary(ctx, req)
+func (c *partitionServiceClient) Delete(ctx context.Context, req *v2.PartitionServiceDeleteRequest) (*v2.PartitionServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Capacity calls metalstack.admin.v2.PartitionService.Capacity.
-func (c *partitionServiceClient) Capacity(ctx context.Context, req *connect.Request[v2.PartitionServiceCapacityRequest]) (*connect.Response[v2.PartitionServiceCapacityResponse], error) {
-	return c.capacity.CallUnary(ctx, req)
+func (c *partitionServiceClient) Capacity(ctx context.Context, req *v2.PartitionServiceCapacityRequest) (*v2.PartitionServiceCapacityResponse, error) {
+	response, err := c.capacity.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // PartitionServiceHandler is an implementation of the metalstack.admin.v2.PartitionService service.
 type PartitionServiceHandler interface {
 	// Create a partition
-	Create(context.Context, *connect.Request[v2.PartitionServiceCreateRequest]) (*connect.Response[v2.PartitionServiceCreateResponse], error)
+	Create(context.Context, *v2.PartitionServiceCreateRequest) (*v2.PartitionServiceCreateResponse, error)
 	// Update a partition
-	Update(context.Context, *connect.Request[v2.PartitionServiceUpdateRequest]) (*connect.Response[v2.PartitionServiceUpdateResponse], error)
+	Update(context.Context, *v2.PartitionServiceUpdateRequest) (*v2.PartitionServiceUpdateResponse, error)
 	// Delete a partition
-	Delete(context.Context, *connect.Request[v2.PartitionServiceDeleteRequest]) (*connect.Response[v2.PartitionServiceDeleteResponse], error)
+	Delete(context.Context, *v2.PartitionServiceDeleteRequest) (*v2.PartitionServiceDeleteResponse, error)
 	// Capacity of a partitions
-	Capacity(context.Context, *connect.Request[v2.PartitionServiceCapacityRequest]) (*connect.Response[v2.PartitionServiceCapacityResponse], error)
+	Capacity(context.Context, *v2.PartitionServiceCapacityRequest) (*v2.PartitionServiceCapacityResponse, error)
 }
 
 // NewPartitionServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -141,25 +157,25 @@ type PartitionServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewPartitionServiceHandler(svc PartitionServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	partitionServiceMethods := v2.File_metalstack_admin_v2_partition_proto.Services().ByName("PartitionService").Methods()
-	partitionServiceCreateHandler := connect.NewUnaryHandler(
+	partitionServiceCreateHandler := connect.NewUnaryHandlerSimple(
 		PartitionServiceCreateProcedure,
 		svc.Create,
 		connect.WithSchema(partitionServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
-	partitionServiceUpdateHandler := connect.NewUnaryHandler(
+	partitionServiceUpdateHandler := connect.NewUnaryHandlerSimple(
 		PartitionServiceUpdateProcedure,
 		svc.Update,
 		connect.WithSchema(partitionServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
-	partitionServiceDeleteHandler := connect.NewUnaryHandler(
+	partitionServiceDeleteHandler := connect.NewUnaryHandlerSimple(
 		PartitionServiceDeleteProcedure,
 		svc.Delete,
 		connect.WithSchema(partitionServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
-	partitionServiceCapacityHandler := connect.NewUnaryHandler(
+	partitionServiceCapacityHandler := connect.NewUnaryHandlerSimple(
 		PartitionServiceCapacityProcedure,
 		svc.Capacity,
 		connect.WithSchema(partitionServiceMethods.ByName("Capacity")),
@@ -184,18 +200,18 @@ func NewPartitionServiceHandler(svc PartitionServiceHandler, opts ...connect.Han
 // UnimplementedPartitionServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedPartitionServiceHandler struct{}
 
-func (UnimplementedPartitionServiceHandler) Create(context.Context, *connect.Request[v2.PartitionServiceCreateRequest]) (*connect.Response[v2.PartitionServiceCreateResponse], error) {
+func (UnimplementedPartitionServiceHandler) Create(context.Context, *v2.PartitionServiceCreateRequest) (*v2.PartitionServiceCreateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.PartitionService.Create is not implemented"))
 }
 
-func (UnimplementedPartitionServiceHandler) Update(context.Context, *connect.Request[v2.PartitionServiceUpdateRequest]) (*connect.Response[v2.PartitionServiceUpdateResponse], error) {
+func (UnimplementedPartitionServiceHandler) Update(context.Context, *v2.PartitionServiceUpdateRequest) (*v2.PartitionServiceUpdateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.PartitionService.Update is not implemented"))
 }
 
-func (UnimplementedPartitionServiceHandler) Delete(context.Context, *connect.Request[v2.PartitionServiceDeleteRequest]) (*connect.Response[v2.PartitionServiceDeleteResponse], error) {
+func (UnimplementedPartitionServiceHandler) Delete(context.Context, *v2.PartitionServiceDeleteRequest) (*v2.PartitionServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.PartitionService.Delete is not implemented"))
 }
 
-func (UnimplementedPartitionServiceHandler) Capacity(context.Context, *connect.Request[v2.PartitionServiceCapacityRequest]) (*connect.Response[v2.PartitionServiceCapacityResponse], error) {
+func (UnimplementedPartitionServiceHandler) Capacity(context.Context, *v2.PartitionServiceCapacityRequest) (*v2.PartitionServiceCapacityResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.PartitionService.Capacity is not implemented"))
 }

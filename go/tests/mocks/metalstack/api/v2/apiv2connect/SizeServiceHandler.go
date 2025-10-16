@@ -3,10 +3,9 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-
 	context "context"
+
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type SizeServiceHandler struct {
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *SizeServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[apiv2.SizeServiceGetRequest]) (*connect.Response[apiv2.SizeServiceGetResponse], error) {
+func (_m *SizeServiceHandler) Get(_a0 context.Context, _a1 *apiv2.SizeServiceGetRequest) (*apiv2.SizeServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[apiv2.SizeServiceGetResponse]
+	var r0 *apiv2.SizeServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.SizeServiceGetRequest]) (*connect.Response[apiv2.SizeServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.SizeServiceGetRequest) (*apiv2.SizeServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.SizeServiceGetRequest]) *connect.Response[apiv2.SizeServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.SizeServiceGetRequest) *apiv2.SizeServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.SizeServiceGetResponse])
+			r0 = ret.Get(0).(*apiv2.SizeServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.SizeServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.SizeServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *SizeServiceHandler) Get(_a0 context.Context, _a1 *connect.Request[apiv
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *SizeServiceHandler) List(_a0 context.Context, _a1 *connect.Request[apiv2.SizeServiceListRequest]) (*connect.Response[apiv2.SizeServiceListResponse], error) {
+func (_m *SizeServiceHandler) List(_a0 context.Context, _a1 *apiv2.SizeServiceListRequest) (*apiv2.SizeServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[apiv2.SizeServiceListResponse]
+	var r0 *apiv2.SizeServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.SizeServiceListRequest]) (*connect.Response[apiv2.SizeServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.SizeServiceListRequest) (*apiv2.SizeServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[apiv2.SizeServiceListRequest]) *connect.Response[apiv2.SizeServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.SizeServiceListRequest) *apiv2.SizeServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[apiv2.SizeServiceListResponse])
+			r0 = ret.Get(0).(*apiv2.SizeServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[apiv2.SizeServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.SizeServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

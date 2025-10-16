@@ -40,7 +40,7 @@ const (
 // IPServiceClient is a client for the metalstack.admin.v2.IPService service.
 type IPServiceClient interface {
 	// List all ips
-	List(context.Context, *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error)
+	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
 }
 
 // NewIPServiceClient constructs a client for the metalstack.admin.v2.IPService service. By default,
@@ -69,14 +69,18 @@ type iPServiceClient struct {
 }
 
 // List calls metalstack.admin.v2.IPService.List.
-func (c *iPServiceClient) List(ctx context.Context, req *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *iPServiceClient) List(ctx context.Context, req *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // IPServiceHandler is an implementation of the metalstack.admin.v2.IPService service.
 type IPServiceHandler interface {
 	// List all ips
-	List(context.Context, *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error)
+	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
 }
 
 // NewIPServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -86,7 +90,7 @@ type IPServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	iPServiceMethods := v2.File_metalstack_admin_v2_ip_proto.Services().ByName("IPService").Methods()
-	iPServiceListHandler := connect.NewUnaryHandler(
+	iPServiceListHandler := connect.NewUnaryHandlerSimple(
 		IPServiceListProcedure,
 		svc.List,
 		connect.WithSchema(iPServiceMethods.ByName("List")),
@@ -105,6 +109,6 @@ func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (s
 // UnimplementedIPServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedIPServiceHandler struct{}
 
-func (UnimplementedIPServiceHandler) List(context.Context, *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error) {
+func (UnimplementedIPServiceHandler) List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.IPService.List is not implemented"))
 }

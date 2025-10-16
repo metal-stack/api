@@ -41,7 +41,7 @@ const (
 // BMCServiceClient is a client for the metalstack.infra.v2.BMCService service.
 type BMCServiceClient interface {
 	// UpdateBMCInfo
-	UpdateBMCInfo(context.Context, *connect.Request[v2.UpdateBMCInfoRequest]) (*connect.Response[v2.UpdateBMCInfoResponse], error)
+	UpdateBMCInfo(context.Context, *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error)
 }
 
 // NewBMCServiceClient constructs a client for the metalstack.infra.v2.BMCService service. By
@@ -70,14 +70,18 @@ type bMCServiceClient struct {
 }
 
 // UpdateBMCInfo calls metalstack.infra.v2.BMCService.UpdateBMCInfo.
-func (c *bMCServiceClient) UpdateBMCInfo(ctx context.Context, req *connect.Request[v2.UpdateBMCInfoRequest]) (*connect.Response[v2.UpdateBMCInfoResponse], error) {
-	return c.updateBMCInfo.CallUnary(ctx, req)
+func (c *bMCServiceClient) UpdateBMCInfo(ctx context.Context, req *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error) {
+	response, err := c.updateBMCInfo.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // BMCServiceHandler is an implementation of the metalstack.infra.v2.BMCService service.
 type BMCServiceHandler interface {
 	// UpdateBMCInfo
-	UpdateBMCInfo(context.Context, *connect.Request[v2.UpdateBMCInfoRequest]) (*connect.Response[v2.UpdateBMCInfoResponse], error)
+	UpdateBMCInfo(context.Context, *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error)
 }
 
 // NewBMCServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -87,7 +91,7 @@ type BMCServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewBMCServiceHandler(svc BMCServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	bMCServiceMethods := v2.File_metalstack_infra_v2_bmc_proto.Services().ByName("BMCService").Methods()
-	bMCServiceUpdateBMCInfoHandler := connect.NewUnaryHandler(
+	bMCServiceUpdateBMCInfoHandler := connect.NewUnaryHandlerSimple(
 		BMCServiceUpdateBMCInfoProcedure,
 		svc.UpdateBMCInfo,
 		connect.WithSchema(bMCServiceMethods.ByName("UpdateBMCInfo")),
@@ -106,6 +110,6 @@ func NewBMCServiceHandler(svc BMCServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedBMCServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedBMCServiceHandler struct{}
 
-func (UnimplementedBMCServiceHandler) UpdateBMCInfo(context.Context, *connect.Request[v2.UpdateBMCInfoRequest]) (*connect.Response[v2.UpdateBMCInfoResponse], error) {
+func (UnimplementedBMCServiceHandler) UpdateBMCInfo(context.Context, *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BMCService.UpdateBMCInfo is not implemented"))
 }

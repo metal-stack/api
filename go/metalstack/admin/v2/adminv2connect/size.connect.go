@@ -44,11 +44,11 @@ const (
 // SizeServiceClient is a client for the metalstack.admin.v2.SizeService service.
 type SizeServiceClient interface {
 	// Create a size
-	Create(context.Context, *connect.Request[v2.SizeServiceCreateRequest]) (*connect.Response[v2.SizeServiceCreateResponse], error)
+	Create(context.Context, *v2.SizeServiceCreateRequest) (*v2.SizeServiceCreateResponse, error)
 	// Update a size
-	Update(context.Context, *connect.Request[v2.SizeServiceUpdateRequest]) (*connect.Response[v2.SizeServiceUpdateResponse], error)
+	Update(context.Context, *v2.SizeServiceUpdateRequest) (*v2.SizeServiceUpdateResponse, error)
 	// Delete a size
-	Delete(context.Context, *connect.Request[v2.SizeServiceDeleteRequest]) (*connect.Response[v2.SizeServiceDeleteResponse], error)
+	Delete(context.Context, *v2.SizeServiceDeleteRequest) (*v2.SizeServiceDeleteResponse, error)
 }
 
 // NewSizeServiceClient constructs a client for the metalstack.admin.v2.SizeService service. By
@@ -91,28 +91,40 @@ type sizeServiceClient struct {
 }
 
 // Create calls metalstack.admin.v2.SizeService.Create.
-func (c *sizeServiceClient) Create(ctx context.Context, req *connect.Request[v2.SizeServiceCreateRequest]) (*connect.Response[v2.SizeServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+func (c *sizeServiceClient) Create(ctx context.Context, req *v2.SizeServiceCreateRequest) (*v2.SizeServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Update calls metalstack.admin.v2.SizeService.Update.
-func (c *sizeServiceClient) Update(ctx context.Context, req *connect.Request[v2.SizeServiceUpdateRequest]) (*connect.Response[v2.SizeServiceUpdateResponse], error) {
-	return c.update.CallUnary(ctx, req)
+func (c *sizeServiceClient) Update(ctx context.Context, req *v2.SizeServiceUpdateRequest) (*v2.SizeServiceUpdateResponse, error) {
+	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Delete calls metalstack.admin.v2.SizeService.Delete.
-func (c *sizeServiceClient) Delete(ctx context.Context, req *connect.Request[v2.SizeServiceDeleteRequest]) (*connect.Response[v2.SizeServiceDeleteResponse], error) {
-	return c.delete.CallUnary(ctx, req)
+func (c *sizeServiceClient) Delete(ctx context.Context, req *v2.SizeServiceDeleteRequest) (*v2.SizeServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // SizeServiceHandler is an implementation of the metalstack.admin.v2.SizeService service.
 type SizeServiceHandler interface {
 	// Create a size
-	Create(context.Context, *connect.Request[v2.SizeServiceCreateRequest]) (*connect.Response[v2.SizeServiceCreateResponse], error)
+	Create(context.Context, *v2.SizeServiceCreateRequest) (*v2.SizeServiceCreateResponse, error)
 	// Update a size
-	Update(context.Context, *connect.Request[v2.SizeServiceUpdateRequest]) (*connect.Response[v2.SizeServiceUpdateResponse], error)
+	Update(context.Context, *v2.SizeServiceUpdateRequest) (*v2.SizeServiceUpdateResponse, error)
 	// Delete a size
-	Delete(context.Context, *connect.Request[v2.SizeServiceDeleteRequest]) (*connect.Response[v2.SizeServiceDeleteResponse], error)
+	Delete(context.Context, *v2.SizeServiceDeleteRequest) (*v2.SizeServiceDeleteResponse, error)
 }
 
 // NewSizeServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -122,19 +134,19 @@ type SizeServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSizeServiceHandler(svc SizeServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	sizeServiceMethods := v2.File_metalstack_admin_v2_size_proto.Services().ByName("SizeService").Methods()
-	sizeServiceCreateHandler := connect.NewUnaryHandler(
+	sizeServiceCreateHandler := connect.NewUnaryHandlerSimple(
 		SizeServiceCreateProcedure,
 		svc.Create,
 		connect.WithSchema(sizeServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
-	sizeServiceUpdateHandler := connect.NewUnaryHandler(
+	sizeServiceUpdateHandler := connect.NewUnaryHandlerSimple(
 		SizeServiceUpdateProcedure,
 		svc.Update,
 		connect.WithSchema(sizeServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
-	sizeServiceDeleteHandler := connect.NewUnaryHandler(
+	sizeServiceDeleteHandler := connect.NewUnaryHandlerSimple(
 		SizeServiceDeleteProcedure,
 		svc.Delete,
 		connect.WithSchema(sizeServiceMethods.ByName("Delete")),
@@ -157,14 +169,14 @@ func NewSizeServiceHandler(svc SizeServiceHandler, opts ...connect.HandlerOption
 // UnimplementedSizeServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSizeServiceHandler struct{}
 
-func (UnimplementedSizeServiceHandler) Create(context.Context, *connect.Request[v2.SizeServiceCreateRequest]) (*connect.Response[v2.SizeServiceCreateResponse], error) {
+func (UnimplementedSizeServiceHandler) Create(context.Context, *v2.SizeServiceCreateRequest) (*v2.SizeServiceCreateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeService.Create is not implemented"))
 }
 
-func (UnimplementedSizeServiceHandler) Update(context.Context, *connect.Request[v2.SizeServiceUpdateRequest]) (*connect.Response[v2.SizeServiceUpdateResponse], error) {
+func (UnimplementedSizeServiceHandler) Update(context.Context, *v2.SizeServiceUpdateRequest) (*v2.SizeServiceUpdateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeService.Update is not implemented"))
 }
 
-func (UnimplementedSizeServiceHandler) Delete(context.Context, *connect.Request[v2.SizeServiceDeleteRequest]) (*connect.Response[v2.SizeServiceDeleteResponse], error) {
+func (UnimplementedSizeServiceHandler) Delete(context.Context, *v2.SizeServiceDeleteRequest) (*v2.SizeServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeService.Delete is not implemented"))
 }

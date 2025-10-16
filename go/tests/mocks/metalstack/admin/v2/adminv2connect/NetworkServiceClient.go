@@ -3,10 +3,9 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
-	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-
 	context "context"
+
+	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 
 	mock "github.com/stretchr/testify/mock"
 )
@@ -17,27 +16,27 @@ type NetworkServiceClient struct {
 }
 
 // Create provides a mock function with given fields: _a0, _a1
-func (_m *NetworkServiceClient) Create(_a0 context.Context, _a1 *connect.Request[adminv2.NetworkServiceCreateRequest]) (*connect.Response[adminv2.NetworkServiceCreateResponse], error) {
+func (_m *NetworkServiceClient) Create(_a0 context.Context, _a1 *adminv2.NetworkServiceCreateRequest) (*adminv2.NetworkServiceCreateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Create")
 	}
 
-	var r0 *connect.Response[adminv2.NetworkServiceCreateResponse]
+	var r0 *adminv2.NetworkServiceCreateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceCreateRequest]) (*connect.Response[adminv2.NetworkServiceCreateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceCreateRequest) (*adminv2.NetworkServiceCreateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceCreateRequest]) *connect.Response[adminv2.NetworkServiceCreateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceCreateRequest) *adminv2.NetworkServiceCreateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.NetworkServiceCreateResponse])
+			r0 = ret.Get(0).(*adminv2.NetworkServiceCreateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.NetworkServiceCreateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.NetworkServiceCreateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -47,27 +46,27 @@ func (_m *NetworkServiceClient) Create(_a0 context.Context, _a1 *connect.Request
 }
 
 // Delete provides a mock function with given fields: _a0, _a1
-func (_m *NetworkServiceClient) Delete(_a0 context.Context, _a1 *connect.Request[adminv2.NetworkServiceDeleteRequest]) (*connect.Response[adminv2.NetworkServiceDeleteResponse], error) {
+func (_m *NetworkServiceClient) Delete(_a0 context.Context, _a1 *adminv2.NetworkServiceDeleteRequest) (*adminv2.NetworkServiceDeleteResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Delete")
 	}
 
-	var r0 *connect.Response[adminv2.NetworkServiceDeleteResponse]
+	var r0 *adminv2.NetworkServiceDeleteResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceDeleteRequest]) (*connect.Response[adminv2.NetworkServiceDeleteResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceDeleteRequest) (*adminv2.NetworkServiceDeleteResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceDeleteRequest]) *connect.Response[adminv2.NetworkServiceDeleteResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceDeleteRequest) *adminv2.NetworkServiceDeleteResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.NetworkServiceDeleteResponse])
+			r0 = ret.Get(0).(*adminv2.NetworkServiceDeleteResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.NetworkServiceDeleteRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.NetworkServiceDeleteRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -77,27 +76,27 @@ func (_m *NetworkServiceClient) Delete(_a0 context.Context, _a1 *connect.Request
 }
 
 // Get provides a mock function with given fields: _a0, _a1
-func (_m *NetworkServiceClient) Get(_a0 context.Context, _a1 *connect.Request[adminv2.NetworkServiceGetRequest]) (*connect.Response[adminv2.NetworkServiceGetResponse], error) {
+func (_m *NetworkServiceClient) Get(_a0 context.Context, _a1 *adminv2.NetworkServiceGetRequest) (*adminv2.NetworkServiceGetResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Get")
 	}
 
-	var r0 *connect.Response[adminv2.NetworkServiceGetResponse]
+	var r0 *adminv2.NetworkServiceGetResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceGetRequest]) (*connect.Response[adminv2.NetworkServiceGetResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceGetRequest) (*adminv2.NetworkServiceGetResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceGetRequest]) *connect.Response[adminv2.NetworkServiceGetResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceGetRequest) *adminv2.NetworkServiceGetResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.NetworkServiceGetResponse])
+			r0 = ret.Get(0).(*adminv2.NetworkServiceGetResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.NetworkServiceGetRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.NetworkServiceGetRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -107,27 +106,27 @@ func (_m *NetworkServiceClient) Get(_a0 context.Context, _a1 *connect.Request[ad
 }
 
 // List provides a mock function with given fields: _a0, _a1
-func (_m *NetworkServiceClient) List(_a0 context.Context, _a1 *connect.Request[adminv2.NetworkServiceListRequest]) (*connect.Response[adminv2.NetworkServiceListResponse], error) {
+func (_m *NetworkServiceClient) List(_a0 context.Context, _a1 *adminv2.NetworkServiceListRequest) (*adminv2.NetworkServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for List")
 	}
 
-	var r0 *connect.Response[adminv2.NetworkServiceListResponse]
+	var r0 *adminv2.NetworkServiceListResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceListRequest]) (*connect.Response[adminv2.NetworkServiceListResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceListRequest) (*adminv2.NetworkServiceListResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceListRequest]) *connect.Response[adminv2.NetworkServiceListResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceListRequest) *adminv2.NetworkServiceListResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.NetworkServiceListResponse])
+			r0 = ret.Get(0).(*adminv2.NetworkServiceListResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.NetworkServiceListRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.NetworkServiceListRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -137,27 +136,27 @@ func (_m *NetworkServiceClient) List(_a0 context.Context, _a1 *connect.Request[a
 }
 
 // Update provides a mock function with given fields: _a0, _a1
-func (_m *NetworkServiceClient) Update(_a0 context.Context, _a1 *connect.Request[adminv2.NetworkServiceUpdateRequest]) (*connect.Response[adminv2.NetworkServiceUpdateResponse], error) {
+func (_m *NetworkServiceClient) Update(_a0 context.Context, _a1 *adminv2.NetworkServiceUpdateRequest) (*adminv2.NetworkServiceUpdateResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Update")
 	}
 
-	var r0 *connect.Response[adminv2.NetworkServiceUpdateResponse]
+	var r0 *adminv2.NetworkServiceUpdateResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceUpdateRequest]) (*connect.Response[adminv2.NetworkServiceUpdateResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceUpdateRequest) (*adminv2.NetworkServiceUpdateResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[adminv2.NetworkServiceUpdateRequest]) *connect.Response[adminv2.NetworkServiceUpdateResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.NetworkServiceUpdateRequest) *adminv2.NetworkServiceUpdateResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[adminv2.NetworkServiceUpdateResponse])
+			r0 = ret.Get(0).(*adminv2.NetworkServiceUpdateResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[adminv2.NetworkServiceUpdateRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.NetworkServiceUpdateRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
