@@ -18,27 +18,27 @@ type BootServiceHandler struct {
 }
 
 // Boot provides a mock function with given fields: _a0, _a1
-func (_m *BootServiceHandler) Boot(_a0 context.Context, _a1 *connect.Request[infrav2.BootServiceBootRequest]) (*connect.Response[infrav2.BootServiceBootResponse], error) {
+func (_m *BootServiceHandler) Boot(_a0 context.Context, _a1 *infrav2.BootServiceBootRequest) (*infrav2.BootServiceBootResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Boot")
 	}
 
-	var r0 *connect.Response[infrav2.BootServiceBootResponse]
+	var r0 *infrav2.BootServiceBootResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceBootRequest]) (*connect.Response[infrav2.BootServiceBootResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceBootRequest) (*infrav2.BootServiceBootResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceBootRequest]) *connect.Response[infrav2.BootServiceBootResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceBootRequest) *infrav2.BootServiceBootResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.BootServiceBootResponse])
+			r0 = ret.Get(0).(*infrav2.BootServiceBootResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.BootServiceBootRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.BootServiceBootRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -48,27 +48,27 @@ func (_m *BootServiceHandler) Boot(_a0 context.Context, _a1 *connect.Request[inf
 }
 
 // Dhcp provides a mock function with given fields: _a0, _a1
-func (_m *BootServiceHandler) Dhcp(_a0 context.Context, _a1 *connect.Request[infrav2.BootServiceDhcpRequest]) (*connect.Response[infrav2.BootServiceDhcpResponse], error) {
+func (_m *BootServiceHandler) Dhcp(_a0 context.Context, _a1 *infrav2.BootServiceDhcpRequest) (*infrav2.BootServiceDhcpResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Dhcp")
 	}
 
-	var r0 *connect.Response[infrav2.BootServiceDhcpResponse]
+	var r0 *infrav2.BootServiceDhcpResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceDhcpRequest]) (*connect.Response[infrav2.BootServiceDhcpResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceDhcpRequest) (*infrav2.BootServiceDhcpResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceDhcpRequest]) *connect.Response[infrav2.BootServiceDhcpResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceDhcpRequest) *infrav2.BootServiceDhcpResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.BootServiceDhcpResponse])
+			r0 = ret.Get(0).(*infrav2.BootServiceDhcpResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.BootServiceDhcpRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.BootServiceDhcpRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -78,27 +78,27 @@ func (_m *BootServiceHandler) Dhcp(_a0 context.Context, _a1 *connect.Request[inf
 }
 
 // Register provides a mock function with given fields: _a0, _a1
-func (_m *BootServiceHandler) Register(_a0 context.Context, _a1 *connect.Request[infrav2.BootServiceRegisterRequest]) (*connect.Response[infrav2.BootServiceRegisterResponse], error) {
+func (_m *BootServiceHandler) Register(_a0 context.Context, _a1 *infrav2.BootServiceRegisterRequest) (*infrav2.BootServiceRegisterResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Register")
 	}
 
-	var r0 *connect.Response[infrav2.BootServiceRegisterResponse]
+	var r0 *infrav2.BootServiceRegisterResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceRegisterRequest]) (*connect.Response[infrav2.BootServiceRegisterResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceRegisterRequest) (*infrav2.BootServiceRegisterResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceRegisterRequest]) *connect.Response[infrav2.BootServiceRegisterResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceRegisterRequest) *infrav2.BootServiceRegisterResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.BootServiceRegisterResponse])
+			r0 = ret.Get(0).(*infrav2.BootServiceRegisterResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.BootServiceRegisterRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.BootServiceRegisterRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -108,27 +108,27 @@ func (_m *BootServiceHandler) Register(_a0 context.Context, _a1 *connect.Request
 }
 
 // Report provides a mock function with given fields: _a0, _a1
-func (_m *BootServiceHandler) Report(_a0 context.Context, _a1 *connect.Request[infrav2.BootServiceReportRequest]) (*connect.Response[infrav2.BootServiceReportResponse], error) {
+func (_m *BootServiceHandler) Report(_a0 context.Context, _a1 *infrav2.BootServiceReportRequest) (*infrav2.BootServiceReportResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Report")
 	}
 
-	var r0 *connect.Response[infrav2.BootServiceReportResponse]
+	var r0 *infrav2.BootServiceReportResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceReportRequest]) (*connect.Response[infrav2.BootServiceReportResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceReportRequest) (*infrav2.BootServiceReportResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceReportRequest]) *connect.Response[infrav2.BootServiceReportResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceReportRequest) *infrav2.BootServiceReportResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.BootServiceReportResponse])
+			r0 = ret.Get(0).(*infrav2.BootServiceReportResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.BootServiceReportRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.BootServiceReportRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -138,27 +138,27 @@ func (_m *BootServiceHandler) Report(_a0 context.Context, _a1 *connect.Request[i
 }
 
 // SuperUserPassword provides a mock function with given fields: _a0, _a1
-func (_m *BootServiceHandler) SuperUserPassword(_a0 context.Context, _a1 *connect.Request[infrav2.BootServiceSuperUserPasswordRequest]) (*connect.Response[infrav2.BootServiceSuperUserPasswordResponse], error) {
+func (_m *BootServiceHandler) SuperUserPassword(_a0 context.Context, _a1 *infrav2.BootServiceSuperUserPasswordRequest) (*infrav2.BootServiceSuperUserPasswordResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for SuperUserPassword")
 	}
 
-	var r0 *connect.Response[infrav2.BootServiceSuperUserPasswordResponse]
+	var r0 *infrav2.BootServiceSuperUserPasswordResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceSuperUserPasswordRequest]) (*connect.Response[infrav2.BootServiceSuperUserPasswordResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceSuperUserPasswordRequest) (*infrav2.BootServiceSuperUserPasswordResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceSuperUserPasswordRequest]) *connect.Response[infrav2.BootServiceSuperUserPasswordResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceSuperUserPasswordRequest) *infrav2.BootServiceSuperUserPasswordResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.BootServiceSuperUserPasswordResponse])
+			r0 = ret.Get(0).(*infrav2.BootServiceSuperUserPasswordResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.BootServiceSuperUserPasswordRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.BootServiceSuperUserPasswordRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -168,7 +168,7 @@ func (_m *BootServiceHandler) SuperUserPassword(_a0 context.Context, _a1 *connec
 }
 
 // Wait provides a mock function with given fields: _a0, _a1, _a2
-func (_m *BootServiceHandler) Wait(_a0 context.Context, _a1 *connect.Request[infrav2.BootServiceWaitRequest], _a2 *connect.ServerStream[infrav2.BootServiceWaitResponse]) error {
+func (_m *BootServiceHandler) Wait(_a0 context.Context, _a1 *infrav2.BootServiceWaitRequest, _a2 *connect.ServerStream[infrav2.BootServiceWaitResponse]) error {
 	ret := _m.Called(_a0, _a1, _a2)
 
 	if len(ret) == 0 {
@@ -176,7 +176,7 @@ func (_m *BootServiceHandler) Wait(_a0 context.Context, _a1 *connect.Request[inf
 	}
 
 	var r0 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.BootServiceWaitRequest], *connect.ServerStream[infrav2.BootServiceWaitResponse]) error); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceWaitRequest, *connect.ServerStream[infrav2.BootServiceWaitResponse]) error); ok {
 		r0 = rf(_a0, _a1, _a2)
 	} else {
 		r0 = ret.Error(0)

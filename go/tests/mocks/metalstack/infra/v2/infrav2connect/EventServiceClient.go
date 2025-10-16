@@ -5,10 +5,7 @@ package infrav2connect
 import (
 	context "context"
 
-	connect "connectrpc.com/connect"
-
 	infrav2 "github.com/metal-stack/api/go/metalstack/infra/v2"
-
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -18,27 +15,27 @@ type EventServiceClient struct {
 }
 
 // Send provides a mock function with given fields: _a0, _a1
-func (_m *EventServiceClient) Send(_a0 context.Context, _a1 *connect.Request[infrav2.EventServiceSendRequest]) (*connect.Response[infrav2.EventServiceSendResponse], error) {
+func (_m *EventServiceClient) Send(_a0 context.Context, _a1 *infrav2.EventServiceSendRequest) (*infrav2.EventServiceSendResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Send")
 	}
 
-	var r0 *connect.Response[infrav2.EventServiceSendResponse]
+	var r0 *infrav2.EventServiceSendResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.EventServiceSendRequest]) (*connect.Response[infrav2.EventServiceSendResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.EventServiceSendRequest) (*infrav2.EventServiceSendResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.EventServiceSendRequest]) *connect.Response[infrav2.EventServiceSendResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.EventServiceSendRequest) *infrav2.EventServiceSendResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.EventServiceSendResponse])
+			r0 = ret.Get(0).(*infrav2.EventServiceSendResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.EventServiceSendRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.EventServiceSendRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
@@ -48,27 +45,27 @@ func (_m *EventServiceClient) Send(_a0 context.Context, _a1 *connect.Request[inf
 }
 
 // SendMulti provides a mock function with given fields: _a0, _a1
-func (_m *EventServiceClient) SendMulti(_a0 context.Context, _a1 *connect.Request[infrav2.EventServiceSendMultiRequest]) (*connect.Response[infrav2.EventServiceSendMultiResponse], error) {
+func (_m *EventServiceClient) SendMulti(_a0 context.Context, _a1 *infrav2.EventServiceSendMultiRequest) (*infrav2.EventServiceSendMultiResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
 		panic("no return value specified for SendMulti")
 	}
 
-	var r0 *connect.Response[infrav2.EventServiceSendMultiResponse]
+	var r0 *infrav2.EventServiceSendMultiResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.EventServiceSendMultiRequest]) (*connect.Response[infrav2.EventServiceSendMultiResponse], error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.EventServiceSendMultiRequest) (*infrav2.EventServiceSendMultiResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *connect.Request[infrav2.EventServiceSendMultiRequest]) *connect.Response[infrav2.EventServiceSendMultiResponse]); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *infrav2.EventServiceSendMultiRequest) *infrav2.EventServiceSendMultiResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*connect.Response[infrav2.EventServiceSendMultiResponse])
+			r0 = ret.Get(0).(*infrav2.EventServiceSendMultiResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *connect.Request[infrav2.EventServiceSendMultiRequest]) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *infrav2.EventServiceSendMultiRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

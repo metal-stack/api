@@ -42,9 +42,9 @@ const (
 // EventServiceClient is a client for the metalstack.infra.v2.EventService service.
 type EventServiceClient interface {
 	// Send an event of a single machine to the api
-	Send(context.Context, *connect.Request[v2.EventServiceSendRequest]) (*connect.Response[v2.EventServiceSendResponse], error)
+	Send(context.Context, *v2.EventServiceSendRequest) (*v2.EventServiceSendResponse, error)
 	// SendMulti sends events of a bunch of machines in one request to the api
-	SendMulti(context.Context, *connect.Request[v2.EventServiceSendMultiRequest]) (*connect.Response[v2.EventServiceSendMultiResponse], error)
+	SendMulti(context.Context, *v2.EventServiceSendMultiRequest) (*v2.EventServiceSendMultiResponse, error)
 }
 
 // NewEventServiceClient constructs a client for the metalstack.infra.v2.EventService service. By
@@ -80,21 +80,29 @@ type eventServiceClient struct {
 }
 
 // Send calls metalstack.infra.v2.EventService.Send.
-func (c *eventServiceClient) Send(ctx context.Context, req *connect.Request[v2.EventServiceSendRequest]) (*connect.Response[v2.EventServiceSendResponse], error) {
-	return c.send.CallUnary(ctx, req)
+func (c *eventServiceClient) Send(ctx context.Context, req *v2.EventServiceSendRequest) (*v2.EventServiceSendResponse, error) {
+	response, err := c.send.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // SendMulti calls metalstack.infra.v2.EventService.SendMulti.
-func (c *eventServiceClient) SendMulti(ctx context.Context, req *connect.Request[v2.EventServiceSendMultiRequest]) (*connect.Response[v2.EventServiceSendMultiResponse], error) {
-	return c.sendMulti.CallUnary(ctx, req)
+func (c *eventServiceClient) SendMulti(ctx context.Context, req *v2.EventServiceSendMultiRequest) (*v2.EventServiceSendMultiResponse, error) {
+	response, err := c.sendMulti.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // EventServiceHandler is an implementation of the metalstack.infra.v2.EventService service.
 type EventServiceHandler interface {
 	// Send an event of a single machine to the api
-	Send(context.Context, *connect.Request[v2.EventServiceSendRequest]) (*connect.Response[v2.EventServiceSendResponse], error)
+	Send(context.Context, *v2.EventServiceSendRequest) (*v2.EventServiceSendResponse, error)
 	// SendMulti sends events of a bunch of machines in one request to the api
-	SendMulti(context.Context, *connect.Request[v2.EventServiceSendMultiRequest]) (*connect.Response[v2.EventServiceSendMultiResponse], error)
+	SendMulti(context.Context, *v2.EventServiceSendMultiRequest) (*v2.EventServiceSendMultiResponse, error)
 }
 
 // NewEventServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -104,13 +112,13 @@ type EventServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewEventServiceHandler(svc EventServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	eventServiceMethods := v2.File_metalstack_infra_v2_event_proto.Services().ByName("EventService").Methods()
-	eventServiceSendHandler := connect.NewUnaryHandler(
+	eventServiceSendHandler := connect.NewUnaryHandlerSimple(
 		EventServiceSendProcedure,
 		svc.Send,
 		connect.WithSchema(eventServiceMethods.ByName("Send")),
 		connect.WithHandlerOptions(opts...),
 	)
-	eventServiceSendMultiHandler := connect.NewUnaryHandler(
+	eventServiceSendMultiHandler := connect.NewUnaryHandlerSimple(
 		EventServiceSendMultiProcedure,
 		svc.SendMulti,
 		connect.WithSchema(eventServiceMethods.ByName("SendMulti")),
@@ -131,10 +139,10 @@ func NewEventServiceHandler(svc EventServiceHandler, opts ...connect.HandlerOpti
 // UnimplementedEventServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedEventServiceHandler struct{}
 
-func (UnimplementedEventServiceHandler) Send(context.Context, *connect.Request[v2.EventServiceSendRequest]) (*connect.Response[v2.EventServiceSendResponse], error) {
+func (UnimplementedEventServiceHandler) Send(context.Context, *v2.EventServiceSendRequest) (*v2.EventServiceSendResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.EventService.Send is not implemented"))
 }
 
-func (UnimplementedEventServiceHandler) SendMulti(context.Context, *connect.Request[v2.EventServiceSendMultiRequest]) (*connect.Response[v2.EventServiceSendMultiResponse], error) {
+func (UnimplementedEventServiceHandler) SendMulti(context.Context, *v2.EventServiceSendMultiRequest) (*v2.EventServiceSendMultiResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.EventService.SendMulti is not implemented"))
 }

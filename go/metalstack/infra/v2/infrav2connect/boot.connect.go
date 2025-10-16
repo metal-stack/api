@@ -51,17 +51,17 @@ const (
 // BootServiceClient is a client for the metalstack.infra.v2.BootService service.
 type BootServiceClient interface {
 	// Dhcp is the first dhcp request (option 97). A ProvisioningEventPXEBooting is fired
-	Dhcp(context.Context, *connect.Request[v2.BootServiceDhcpRequest]) (*connect.Response[v2.BootServiceDhcpResponse], error)
+	Dhcp(context.Context, *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error)
 	// Boot is called from pixie once the machine got the first dhcp response and ipxie asks for subsequent kernel and initrd
-	Boot(context.Context, *connect.Request[v2.BootServiceBootRequest]) (*connect.Response[v2.BootServiceBootResponse], error)
+	Boot(context.Context, *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error)
 	// SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-api and configure the bmc accordingly
-	SuperUserPassword(context.Context, *connect.Request[v2.BootServiceSuperUserPasswordRequest]) (*connect.Response[v2.BootServiceSuperUserPasswordResponse], error)
+	SuperUserPassword(context.Context, *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error)
 	// Register is called from metal-hammer after hardware inventory is finished, tells metal-api all glory details about that machine
-	Register(context.Context, *connect.Request[v2.BootServiceRegisterRequest]) (*connect.Response[v2.BootServiceRegisterResponse], error)
+	Register(context.Context, *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error)
 	// Wait is a hanging call that waits until the machine gets allocated by a user
-	Wait(context.Context, *connect.Request[v2.BootServiceWaitRequest]) (*connect.ServerStreamForClient[v2.BootServiceWaitResponse], error)
+	Wait(context.Context, *v2.BootServiceWaitRequest) (*connect.ServerStreamForClient[v2.BootServiceWaitResponse], error)
 	// Report tells metal-api installation was either successful or failed
-	Report(context.Context, *connect.Request[v2.BootServiceReportRequest]) (*connect.Response[v2.BootServiceReportResponse], error)
+	Report(context.Context, *v2.BootServiceReportRequest) (*v2.BootServiceReportResponse, error)
 }
 
 // NewBootServiceClient constructs a client for the metalstack.infra.v2.BootService service. By
@@ -125,49 +125,69 @@ type bootServiceClient struct {
 }
 
 // Dhcp calls metalstack.infra.v2.BootService.Dhcp.
-func (c *bootServiceClient) Dhcp(ctx context.Context, req *connect.Request[v2.BootServiceDhcpRequest]) (*connect.Response[v2.BootServiceDhcpResponse], error) {
-	return c.dhcp.CallUnary(ctx, req)
+func (c *bootServiceClient) Dhcp(ctx context.Context, req *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error) {
+	response, err := c.dhcp.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Boot calls metalstack.infra.v2.BootService.Boot.
-func (c *bootServiceClient) Boot(ctx context.Context, req *connect.Request[v2.BootServiceBootRequest]) (*connect.Response[v2.BootServiceBootResponse], error) {
-	return c.boot.CallUnary(ctx, req)
+func (c *bootServiceClient) Boot(ctx context.Context, req *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error) {
+	response, err := c.boot.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // SuperUserPassword calls metalstack.infra.v2.BootService.SuperUserPassword.
-func (c *bootServiceClient) SuperUserPassword(ctx context.Context, req *connect.Request[v2.BootServiceSuperUserPasswordRequest]) (*connect.Response[v2.BootServiceSuperUserPasswordResponse], error) {
-	return c.superUserPassword.CallUnary(ctx, req)
+func (c *bootServiceClient) SuperUserPassword(ctx context.Context, req *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error) {
+	response, err := c.superUserPassword.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Register calls metalstack.infra.v2.BootService.Register.
-func (c *bootServiceClient) Register(ctx context.Context, req *connect.Request[v2.BootServiceRegisterRequest]) (*connect.Response[v2.BootServiceRegisterResponse], error) {
-	return c.register.CallUnary(ctx, req)
+func (c *bootServiceClient) Register(ctx context.Context, req *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error) {
+	response, err := c.register.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Wait calls metalstack.infra.v2.BootService.Wait.
-func (c *bootServiceClient) Wait(ctx context.Context, req *connect.Request[v2.BootServiceWaitRequest]) (*connect.ServerStreamForClient[v2.BootServiceWaitResponse], error) {
-	return c.wait.CallServerStream(ctx, req)
+func (c *bootServiceClient) Wait(ctx context.Context, req *v2.BootServiceWaitRequest) (*connect.ServerStreamForClient[v2.BootServiceWaitResponse], error) {
+	return c.wait.CallServerStream(ctx, connect.NewRequest(req))
 }
 
 // Report calls metalstack.infra.v2.BootService.Report.
-func (c *bootServiceClient) Report(ctx context.Context, req *connect.Request[v2.BootServiceReportRequest]) (*connect.Response[v2.BootServiceReportResponse], error) {
-	return c.report.CallUnary(ctx, req)
+func (c *bootServiceClient) Report(ctx context.Context, req *v2.BootServiceReportRequest) (*v2.BootServiceReportResponse, error) {
+	response, err := c.report.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // BootServiceHandler is an implementation of the metalstack.infra.v2.BootService service.
 type BootServiceHandler interface {
 	// Dhcp is the first dhcp request (option 97). A ProvisioningEventPXEBooting is fired
-	Dhcp(context.Context, *connect.Request[v2.BootServiceDhcpRequest]) (*connect.Response[v2.BootServiceDhcpResponse], error)
+	Dhcp(context.Context, *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error)
 	// Boot is called from pixie once the machine got the first dhcp response and ipxie asks for subsequent kernel and initrd
-	Boot(context.Context, *connect.Request[v2.BootServiceBootRequest]) (*connect.Response[v2.BootServiceBootResponse], error)
+	Boot(context.Context, *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error)
 	// SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-api and configure the bmc accordingly
-	SuperUserPassword(context.Context, *connect.Request[v2.BootServiceSuperUserPasswordRequest]) (*connect.Response[v2.BootServiceSuperUserPasswordResponse], error)
+	SuperUserPassword(context.Context, *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error)
 	// Register is called from metal-hammer after hardware inventory is finished, tells metal-api all glory details about that machine
-	Register(context.Context, *connect.Request[v2.BootServiceRegisterRequest]) (*connect.Response[v2.BootServiceRegisterResponse], error)
+	Register(context.Context, *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error)
 	// Wait is a hanging call that waits until the machine gets allocated by a user
-	Wait(context.Context, *connect.Request[v2.BootServiceWaitRequest], *connect.ServerStream[v2.BootServiceWaitResponse]) error
+	Wait(context.Context, *v2.BootServiceWaitRequest, *connect.ServerStream[v2.BootServiceWaitResponse]) error
 	// Report tells metal-api installation was either successful or failed
-	Report(context.Context, *connect.Request[v2.BootServiceReportRequest]) (*connect.Response[v2.BootServiceReportResponse], error)
+	Report(context.Context, *v2.BootServiceReportRequest) (*v2.BootServiceReportResponse, error)
 }
 
 // NewBootServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -177,37 +197,37 @@ type BootServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewBootServiceHandler(svc BootServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	bootServiceMethods := v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods()
-	bootServiceDhcpHandler := connect.NewUnaryHandler(
+	bootServiceDhcpHandler := connect.NewUnaryHandlerSimple(
 		BootServiceDhcpProcedure,
 		svc.Dhcp,
 		connect.WithSchema(bootServiceMethods.ByName("Dhcp")),
 		connect.WithHandlerOptions(opts...),
 	)
-	bootServiceBootHandler := connect.NewUnaryHandler(
+	bootServiceBootHandler := connect.NewUnaryHandlerSimple(
 		BootServiceBootProcedure,
 		svc.Boot,
 		connect.WithSchema(bootServiceMethods.ByName("Boot")),
 		connect.WithHandlerOptions(opts...),
 	)
-	bootServiceSuperUserPasswordHandler := connect.NewUnaryHandler(
+	bootServiceSuperUserPasswordHandler := connect.NewUnaryHandlerSimple(
 		BootServiceSuperUserPasswordProcedure,
 		svc.SuperUserPassword,
 		connect.WithSchema(bootServiceMethods.ByName("SuperUserPassword")),
 		connect.WithHandlerOptions(opts...),
 	)
-	bootServiceRegisterHandler := connect.NewUnaryHandler(
+	bootServiceRegisterHandler := connect.NewUnaryHandlerSimple(
 		BootServiceRegisterProcedure,
 		svc.Register,
 		connect.WithSchema(bootServiceMethods.ByName("Register")),
 		connect.WithHandlerOptions(opts...),
 	)
-	bootServiceWaitHandler := connect.NewServerStreamHandler(
+	bootServiceWaitHandler := connect.NewServerStreamHandlerSimple(
 		BootServiceWaitProcedure,
 		svc.Wait,
 		connect.WithSchema(bootServiceMethods.ByName("Wait")),
 		connect.WithHandlerOptions(opts...),
 	)
-	bootServiceReportHandler := connect.NewUnaryHandler(
+	bootServiceReportHandler := connect.NewUnaryHandlerSimple(
 		BootServiceReportProcedure,
 		svc.Report,
 		connect.WithSchema(bootServiceMethods.ByName("Report")),
@@ -236,26 +256,26 @@ func NewBootServiceHandler(svc BootServiceHandler, opts ...connect.HandlerOption
 // UnimplementedBootServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedBootServiceHandler struct{}
 
-func (UnimplementedBootServiceHandler) Dhcp(context.Context, *connect.Request[v2.BootServiceDhcpRequest]) (*connect.Response[v2.BootServiceDhcpResponse], error) {
+func (UnimplementedBootServiceHandler) Dhcp(context.Context, *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Dhcp is not implemented"))
 }
 
-func (UnimplementedBootServiceHandler) Boot(context.Context, *connect.Request[v2.BootServiceBootRequest]) (*connect.Response[v2.BootServiceBootResponse], error) {
+func (UnimplementedBootServiceHandler) Boot(context.Context, *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Boot is not implemented"))
 }
 
-func (UnimplementedBootServiceHandler) SuperUserPassword(context.Context, *connect.Request[v2.BootServiceSuperUserPasswordRequest]) (*connect.Response[v2.BootServiceSuperUserPasswordResponse], error) {
+func (UnimplementedBootServiceHandler) SuperUserPassword(context.Context, *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.SuperUserPassword is not implemented"))
 }
 
-func (UnimplementedBootServiceHandler) Register(context.Context, *connect.Request[v2.BootServiceRegisterRequest]) (*connect.Response[v2.BootServiceRegisterResponse], error) {
+func (UnimplementedBootServiceHandler) Register(context.Context, *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Register is not implemented"))
 }
 
-func (UnimplementedBootServiceHandler) Wait(context.Context, *connect.Request[v2.BootServiceWaitRequest], *connect.ServerStream[v2.BootServiceWaitResponse]) error {
+func (UnimplementedBootServiceHandler) Wait(context.Context, *v2.BootServiceWaitRequest, *connect.ServerStream[v2.BootServiceWaitResponse]) error {
 	return connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Wait is not implemented"))
 }
 
-func (UnimplementedBootServiceHandler) Report(context.Context, *connect.Request[v2.BootServiceReportRequest]) (*connect.Response[v2.BootServiceReportResponse], error) {
+func (UnimplementedBootServiceHandler) Report(context.Context, *v2.BootServiceReportRequest) (*v2.BootServiceReportResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Report is not implemented"))
 }
