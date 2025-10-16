@@ -53,6 +53,8 @@ message MachineServiceGetRequest {
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Project of the machine
   string project = 2 [(buf.validate.field).string.uuid = true];
+  // Complete fetches all transitive entities as well which might be expensive.
+  bool complete = 3;
 }
 
 // MachineServiceGetResponse is the request payload for a machine get response
@@ -178,6 +180,8 @@ message MachineServiceListRequest {
   string project = 1 [(buf.validate.field).string.uuid = true];
   // Query to list one ore more machines
   MachineQuery query = 2;
+  // Complete fetches all transitive entities as well which might be expensive.
+  bool complete = 3;
 }
 
 // MachineServiceListResponse is the request payload for a machine list response
