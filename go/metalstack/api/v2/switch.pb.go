@@ -723,7 +723,7 @@ func (x *SwitchBGPPortState) GetAcceptedPrefixCounter() uint64 {
 type NicState struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Desired is the desired port state.
-	Desired SwitchPortStatus `protobuf:"varint,1,opt,name=desired,proto3,enum=metalstack.api.v2.SwitchPortStatus" json:"desired,omitempty"`
+	Desired *SwitchPortStatus `protobuf:"varint,1,opt,name=desired,proto3,enum=metalstack.api.v2.SwitchPortStatus,oneof" json:"desired,omitempty"`
 	// Actual is the actual port state.
 	Actual        SwitchPortStatus `protobuf:"varint,2,opt,name=actual,proto3,enum=metalstack.api.v2.SwitchPortStatus" json:"actual,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -761,8 +761,8 @@ func (*NicState) Descriptor() ([]byte, []int) {
 }
 
 func (x *NicState) GetDesired() SwitchPortStatus {
-	if x != nil {
-		return x.Desired
+	if x != nil && x.Desired != nil {
+		return *x.Desired
 	}
 	return SwitchPortStatus_SWITCH_PORT_STATUS_UNSPECIFIED
 }
@@ -1012,10 +1012,12 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\tbgp_state\x18\x04 \x01(\x0e2\x1b.metalstack.api.v2.BGPStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\bbgpState\x12S\n" +
 	"\x18bgp_timer_up_established\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\x15bgpTimerUpEstablished\x12.\n" +
 	"\x13sent_prefix_counter\x18\x06 \x01(\x04R\x11sentPrefixCounter\x126\n" +
-	"\x17accepted_prefix_counter\x18\a \x01(\x04R\x15acceptedPrefixCounter\"\x9a\x01\n" +
-	"\bNicState\x12G\n" +
-	"\adesired\x18\x01 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\adesired\x12E\n" +
-	"\x06actual\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06actual\"b\n" +
+	"\x17accepted_prefix_counter\x18\a \x01(\x04R\x15acceptedPrefixCounter\"\xab\x01\n" +
+	"\bNicState\x12L\n" +
+	"\adesired\x18\x01 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\adesired\x88\x01\x01\x12E\n" +
+	"\x06actual\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06actualB\n" +
+	"\n" +
+	"\b_desired\"b\n" +
 	"\x11MachineConnection\x12\x1d\n" +
 	"\n" +
 	"machine_id\x18\x01 \x01(\tR\tmachineId\x12.\n" +
@@ -1125,6 +1127,7 @@ func file_metalstack_api_v2_switch_proto_init() {
 	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_switch_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[2].OneofWrappers = []any{}
+	file_metalstack_api_v2_switch_proto_msgTypes[5].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[7].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
