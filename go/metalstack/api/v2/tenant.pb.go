@@ -1234,7 +1234,7 @@ func (x *TenantServiceRemoveMemberRequest) GetMember() string {
 }
 
 // TenantServiceLeaveTenantRequest is used to leave a tenant
-type TenantServiceLeaveTenantRequest struct {
+type TenantServiceLeaveRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login of the tenant
 	Login         string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
@@ -1242,20 +1242,20 @@ type TenantServiceLeaveTenantRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TenantServiceLeaveTenantRequest) Reset() {
-	*x = TenantServiceLeaveTenantRequest{}
+func (x *TenantServiceLeaveRequest) Reset() {
+	*x = TenantServiceLeaveRequest{}
 	mi := &file_metalstack_api_v2_tenant_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TenantServiceLeaveTenantRequest) String() string {
+func (x *TenantServiceLeaveRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TenantServiceLeaveTenantRequest) ProtoMessage() {}
+func (*TenantServiceLeaveRequest) ProtoMessage() {}
 
-func (x *TenantServiceLeaveTenantRequest) ProtoReflect() protoreflect.Message {
+func (x *TenantServiceLeaveRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_api_v2_tenant_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1267,12 +1267,12 @@ func (x *TenantServiceLeaveTenantRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TenantServiceLeaveTenantRequest.ProtoReflect.Descriptor instead.
-func (*TenantServiceLeaveTenantRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use TenantServiceLeaveRequest.ProtoReflect.Descriptor instead.
+func (*TenantServiceLeaveRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_tenant_proto_rawDescGZIP(), []int{20}
 }
 
-func (x *TenantServiceLeaveTenantRequest) GetLogin() string {
+func (x *TenantServiceLeaveRequest) GetLogin() string {
 	if x != nil {
 		return x.Login
 	}
@@ -1280,26 +1280,26 @@ func (x *TenantServiceLeaveTenantRequest) GetLogin() string {
 }
 
 // TenantServiceLeaveTenantResponse is the response payload to a leave tenant request
-type TenantServiceLeaveTenantResponse struct {
+type TenantServiceLeaveResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TenantServiceLeaveTenantResponse) Reset() {
-	*x = TenantServiceLeaveTenantResponse{}
+func (x *TenantServiceLeaveResponse) Reset() {
+	*x = TenantServiceLeaveResponse{}
 	mi := &file_metalstack_api_v2_tenant_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TenantServiceLeaveTenantResponse) String() string {
+func (x *TenantServiceLeaveResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TenantServiceLeaveTenantResponse) ProtoMessage() {}
+func (*TenantServiceLeaveResponse) ProtoMessage() {}
 
-func (x *TenantServiceLeaveTenantResponse) ProtoReflect() protoreflect.Message {
+func (x *TenantServiceLeaveResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_api_v2_tenant_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1311,8 +1311,8 @@ func (x *TenantServiceLeaveTenantResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TenantServiceLeaveTenantResponse.ProtoReflect.Descriptor instead.
-func (*TenantServiceLeaveTenantResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use TenantServiceLeaveResponse.ProtoReflect.Descriptor instead.
+func (*TenantServiceLeaveResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_tenant_proto_rawDescGZIP(), []int{21}
 }
 
@@ -1753,10 +1753,10 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\x06invite\x18\x01 \x01(\v2\x1f.metalstack.api.v2.TenantInviteR\x06invite\"P\n" +
 	" TenantServiceRemoveMemberRequest\x12\x14\n" +
 	"\x05login\x18\x01 \x01(\tR\x05login\x12\x16\n" +
-	"\x06member\x18\x02 \x01(\tR\x06member\"7\n" +
-	"\x1fTenantServiceLeaveTenantRequest\x12\x14\n" +
-	"\x05login\x18\x01 \x01(\tR\x05login\"\"\n" +
-	" TenantServiceLeaveTenantResponse\"#\n" +
+	"\x06member\x18\x02 \x01(\tR\x06member\"1\n" +
+	"\x19TenantServiceLeaveRequest\x12\x14\n" +
+	"\x05login\x18\x01 \x01(\tR\x05login\"\x1c\n" +
+	"\x1aTenantServiceLeaveResponse\"#\n" +
 	"!TenantServiceRemoveMemberResponse\":\n" +
 	" TenantServiceInviteAcceptRequest\x12\x16\n" +
 	"\x06secret\x18\x01 \x01(\tR\x06secret\"\\\n" +
@@ -1773,7 +1773,7 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\x06member\x18\x02 \x01(\tR\x06member\x12;\n" +
 	"\x04role\x18\x03 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"i\n" +
 	"!TenantServiceUpdateMemberResponse\x12D\n" +
-	"\rtenant_member\x18\x01 \x01(\v2\x1f.metalstack.api.v2.TenantMemberR\ftenantMember2\xda\f\n" +
+	"\rtenant_member\x18\x01 \x01(\v2\x1f.metalstack.api.v2.TenantMemberR\ftenantMember2\xc7\f\n" +
 	"\rTenantService\x12q\n" +
 	"\x06Create\x12-.metalstack.api.v2.TenantServiceCreateRequest\x1a..metalstack.api.v2.TenantServiceCreateResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x01\x12k\n" +
 	"\x04List\x12+.metalstack.api.v2.TenantServiceListRequest\x1a,.metalstack.api.v2.TenantServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12l\n" +
@@ -1781,8 +1781,8 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\x06Update\x12-.metalstack.api.v2.TenantServiceUpdateRequest\x1a..metalstack.api.v2.TenantServiceUpdateResponse\"\n" +
 	"\xc2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12s\n" +
 	"\x06Delete\x12-.metalstack.api.v2.TenantServiceDeleteRequest\x1a..metalstack.api.v2.TenantServiceDeleteResponse\"\n" +
-	"\xc2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12\x81\x01\n" +
-	"\vLeaveTenant\x122.metalstack.api.v2.TenantServiceLeaveTenantRequest\x1a3.metalstack.api.v2.TenantServiceLeaveTenantResponse\"\t\xc2\xf3\x18\x01\x03\xe0\xf3\x18\x01\x12\x84\x01\n" +
+	"\xc2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12o\n" +
+	"\x05Leave\x12,.metalstack.api.v2.TenantServiceLeaveRequest\x1a-.metalstack.api.v2.TenantServiceLeaveResponse\"\t\xc2\xf3\x18\x01\x03\xe0\xf3\x18\x01\x12\x84\x01\n" +
 	"\fRemoveMember\x123.metalstack.api.v2.TenantServiceRemoveMemberRequest\x1a4.metalstack.api.v2.TenantServiceRemoveMemberResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x84\x01\n" +
 	"\fUpdateMember\x123.metalstack.api.v2.TenantServiceUpdateMemberRequest\x1a4.metalstack.api.v2.TenantServiceUpdateMemberResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12r\n" +
 	"\x06Invite\x12-.metalstack.api.v2.TenantServiceInviteRequest\x1a..metalstack.api.v2.TenantServiceInviteResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x83\x01\n" +
@@ -1826,8 +1826,8 @@ var file_metalstack_api_v2_tenant_proto_goTypes = []any{
 	(*TenantServiceInviteGetRequest)(nil),     // 17: metalstack.api.v2.TenantServiceInviteGetRequest
 	(*TenantServiceInviteGetResponse)(nil),    // 18: metalstack.api.v2.TenantServiceInviteGetResponse
 	(*TenantServiceRemoveMemberRequest)(nil),  // 19: metalstack.api.v2.TenantServiceRemoveMemberRequest
-	(*TenantServiceLeaveTenantRequest)(nil),   // 20: metalstack.api.v2.TenantServiceLeaveTenantRequest
-	(*TenantServiceLeaveTenantResponse)(nil),  // 21: metalstack.api.v2.TenantServiceLeaveTenantResponse
+	(*TenantServiceLeaveRequest)(nil),         // 20: metalstack.api.v2.TenantServiceLeaveRequest
+	(*TenantServiceLeaveResponse)(nil),        // 21: metalstack.api.v2.TenantServiceLeaveResponse
 	(*TenantServiceRemoveMemberResponse)(nil), // 22: metalstack.api.v2.TenantServiceRemoveMemberResponse
 	(*TenantServiceInviteAcceptRequest)(nil),  // 23: metalstack.api.v2.TenantServiceInviteAcceptRequest
 	(*TenantServiceInviteAcceptResponse)(nil), // 24: metalstack.api.v2.TenantServiceInviteAcceptResponse
@@ -1870,7 +1870,7 @@ var file_metalstack_api_v2_tenant_proto_depIdxs = []int32{
 	4,  // 24: metalstack.api.v2.TenantService.Get:input_type -> metalstack.api.v2.TenantServiceGetRequest
 	6,  // 25: metalstack.api.v2.TenantService.Update:input_type -> metalstack.api.v2.TenantServiceUpdateRequest
 	7,  // 26: metalstack.api.v2.TenantService.Delete:input_type -> metalstack.api.v2.TenantServiceDeleteRequest
-	20, // 27: metalstack.api.v2.TenantService.LeaveTenant:input_type -> metalstack.api.v2.TenantServiceLeaveTenantRequest
+	20, // 27: metalstack.api.v2.TenantService.Leave:input_type -> metalstack.api.v2.TenantServiceLeaveRequest
 	19, // 28: metalstack.api.v2.TenantService.RemoveMember:input_type -> metalstack.api.v2.TenantServiceRemoveMemberRequest
 	27, // 29: metalstack.api.v2.TenantService.UpdateMember:input_type -> metalstack.api.v2.TenantServiceUpdateMemberRequest
 	13, // 30: metalstack.api.v2.TenantService.Invite:input_type -> metalstack.api.v2.TenantServiceInviteRequest
@@ -1883,7 +1883,7 @@ var file_metalstack_api_v2_tenant_proto_depIdxs = []int32{
 	8,  // 37: metalstack.api.v2.TenantService.Get:output_type -> metalstack.api.v2.TenantServiceGetResponse
 	11, // 38: metalstack.api.v2.TenantService.Update:output_type -> metalstack.api.v2.TenantServiceUpdateResponse
 	12, // 39: metalstack.api.v2.TenantService.Delete:output_type -> metalstack.api.v2.TenantServiceDeleteResponse
-	21, // 40: metalstack.api.v2.TenantService.LeaveTenant:output_type -> metalstack.api.v2.TenantServiceLeaveTenantResponse
+	21, // 40: metalstack.api.v2.TenantService.Leave:output_type -> metalstack.api.v2.TenantServiceLeaveResponse
 	22, // 41: metalstack.api.v2.TenantService.RemoveMember:output_type -> metalstack.api.v2.TenantServiceRemoveMemberResponse
 	28, // 42: metalstack.api.v2.TenantService.UpdateMember:output_type -> metalstack.api.v2.TenantServiceUpdateMemberResponse
 	14, // 43: metalstack.api.v2.TenantService.Invite:output_type -> metalstack.api.v2.TenantServiceInviteResponse

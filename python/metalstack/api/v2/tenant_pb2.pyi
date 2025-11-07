@@ -196,13 +196,13 @@ class TenantServiceRemoveMemberRequest(_message.Message):
     member: str
     def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
 
-class TenantServiceLeaveTenantRequest(_message.Message):
+class TenantServiceLeaveRequest(_message.Message):
     __slots__ = ("login",)
     LOGIN_FIELD_NUMBER: _ClassVar[int]
     login: str
     def __init__(self, login: _Optional[str] = ...) -> None: ...
 
-class TenantServiceLeaveTenantResponse(_message.Message):
+class TenantServiceLeaveResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
 

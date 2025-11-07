@@ -255,28 +255,28 @@ func (_m *TenantServiceClient) InvitesList(_a0 context.Context, _a1 *apiv2.Tenan
 	return r0, r1
 }
 
-// LeaveTenant provides a mock function with given fields: _a0, _a1
-func (_m *TenantServiceClient) LeaveTenant(_a0 context.Context, _a1 *apiv2.TenantServiceLeaveTenantRequest) (*apiv2.TenantServiceLeaveTenantResponse, error) {
+// Leave provides a mock function with given fields: _a0, _a1
+func (_m *TenantServiceClient) Leave(_a0 context.Context, _a1 *apiv2.TenantServiceLeaveRequest) (*apiv2.TenantServiceLeaveResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
-		panic("no return value specified for LeaveTenant")
+		panic("no return value specified for Leave")
 	}
 
-	var r0 *apiv2.TenantServiceLeaveTenantResponse
+	var r0 *apiv2.TenantServiceLeaveResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceLeaveTenantRequest) (*apiv2.TenantServiceLeaveTenantResponse, error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceLeaveRequest) (*apiv2.TenantServiceLeaveResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceLeaveTenantRequest) *apiv2.TenantServiceLeaveTenantResponse); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceLeaveRequest) *apiv2.TenantServiceLeaveResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*apiv2.TenantServiceLeaveTenantResponse)
+			r0 = ret.Get(0).(*apiv2.TenantServiceLeaveResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceLeaveTenantRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceLeaveRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)
