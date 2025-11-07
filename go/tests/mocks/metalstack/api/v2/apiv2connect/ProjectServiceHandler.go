@@ -255,28 +255,28 @@ func (_m *ProjectServiceHandler) InvitesList(_a0 context.Context, _a1 *apiv2.Pro
 	return r0, r1
 }
 
-// LeaveProject provides a mock function with given fields: _a0, _a1
-func (_m *ProjectServiceHandler) LeaveProject(_a0 context.Context, _a1 *apiv2.ProjectServiceLeaveProjectRequest) (*apiv2.ProjectServiceLeaveProjectResponse, error) {
+// Leave provides a mock function with given fields: _a0, _a1
+func (_m *ProjectServiceHandler) Leave(_a0 context.Context, _a1 *apiv2.ProjectServiceLeaveRequest) (*apiv2.ProjectServiceLeaveResponse, error) {
 	ret := _m.Called(_a0, _a1)
 
 	if len(ret) == 0 {
-		panic("no return value specified for LeaveProject")
+		panic("no return value specified for Leave")
 	}
 
-	var r0 *apiv2.ProjectServiceLeaveProjectResponse
+	var r0 *apiv2.ProjectServiceLeaveResponse
 	var r1 error
-	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ProjectServiceLeaveProjectRequest) (*apiv2.ProjectServiceLeaveProjectResponse, error)); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ProjectServiceLeaveRequest) (*apiv2.ProjectServiceLeaveResponse, error)); ok {
 		return rf(_a0, _a1)
 	}
-	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ProjectServiceLeaveProjectRequest) *apiv2.ProjectServiceLeaveProjectResponse); ok {
+	if rf, ok := ret.Get(0).(func(context.Context, *apiv2.ProjectServiceLeaveRequest) *apiv2.ProjectServiceLeaveResponse); ok {
 		r0 = rf(_a0, _a1)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*apiv2.ProjectServiceLeaveProjectResponse)
+			r0 = ret.Get(0).(*apiv2.ProjectServiceLeaveResponse)
 		}
 	}
 
-	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.ProjectServiceLeaveProjectRequest) error); ok {
+	if rf, ok := ret.Get(1).(func(context.Context, *apiv2.ProjectServiceLeaveRequest) error); ok {
 		r1 = rf(_a0, _a1)
 	} else {
 		r1 = ret.Error(1)

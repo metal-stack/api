@@ -31,7 +31,7 @@ class ProjectService(Protocol):
     async def update(self, request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
-    async def leave_project(self, request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectResponse:
+    async def leave(self, request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
     async def remove_member(self, request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse:
@@ -110,15 +110,15 @@ class ProjectServiceASGIApplication(ConnectASGIApplication):
                     ),
                     function=service.update,
                 ),
-                "/metalstack.api.v2.ProjectService/LeaveProject": Endpoint.unary(
+                "/metalstack.api.v2.ProjectService/Leave": Endpoint.unary(
                     method=MethodInfo(
-                        name="LeaveProject",
+                        name="Leave",
                         service_name="metalstack.api.v2.ProjectService",
-                        input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectRequest,
-                        output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectResponse,
+                        input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveRequest,
+                        output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=service.leave_project,
+                    function=service.leave,
                 ),
                 "/metalstack.api.v2.ProjectService/RemoveMember": Endpoint.unary(
                     method=MethodInfo(
@@ -302,20 +302,20 @@ class ProjectServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
-    async def leave_project(
+    async def leave(
         self,
-        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectRequest,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveRequest,
         *,
         headers: Headers | Mapping[str, str] | None = None,
         timeout_ms: int | None = None,
-    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveResponse:
         return await self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="LeaveProject",
+                name="Leave",
                 service_name="metalstack.api.v2.ProjectService",
-                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectRequest,
-                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
@@ -474,7 +474,7 @@ class ProjectServiceSync(Protocol):
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def update(self, request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceUpdateResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-    def leave_project(self, request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectResponse:
+    def leave(self, request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def remove_member(self, request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
@@ -546,15 +546,15 @@ class ProjectServiceWSGIApplication(ConnectWSGIApplication):
                     ),
                     function=service.update,
                 ),
-                "/metalstack.api.v2.ProjectService/LeaveProject": EndpointSync.unary(
+                "/metalstack.api.v2.ProjectService/Leave": EndpointSync.unary(
                     method=MethodInfo(
-                        name="LeaveProject",
+                        name="Leave",
                         service_name="metalstack.api.v2.ProjectService",
-                        input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectRequest,
-                        output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectResponse,
+                        input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveRequest,
+                        output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=service.leave_project,
+                    function=service.leave,
                 ),
                 "/metalstack.api.v2.ProjectService/RemoveMember": EndpointSync.unary(
                     method=MethodInfo(
@@ -738,20 +738,20 @@ class ProjectServiceClientSync(ConnectClientSync):
             timeout_ms=timeout_ms,
         )
 
-    def leave_project(
+    def leave(
         self,
-        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectRequest,
+        request: metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveRequest,
         *,
         headers: Headers | Mapping[str, str] | None = None,
         timeout_ms: int | None = None,
-    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectResponse:
+    ) -> metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveResponse:
         return self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="LeaveProject",
+                name="Leave",
                 service_name="metalstack.api.v2.ProjectService",
-                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectRequest,
-                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveProjectResponse,
+                input=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveRequest,
+                output=metalstack_dot_api_dot_v2_dot_project__pb2.ProjectServiceLeaveResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

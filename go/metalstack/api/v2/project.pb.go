@@ -1173,8 +1173,8 @@ func (x *ProjectServiceInviteGetResponse) GetInvite() *ProjectInvite {
 	return nil
 }
 
-// ProjectServiceLeaveProjectRequest is used to leave a project
-type ProjectServiceLeaveProjectRequest struct {
+// ProjectServiceLeaveRequest is used to leave a project
+type ProjectServiceLeaveRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project
 	Project       string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
@@ -1182,20 +1182,20 @@ type ProjectServiceLeaveProjectRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ProjectServiceLeaveProjectRequest) Reset() {
-	*x = ProjectServiceLeaveProjectRequest{}
+func (x *ProjectServiceLeaveRequest) Reset() {
+	*x = ProjectServiceLeaveRequest{}
 	mi := &file_metalstack_api_v2_project_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ProjectServiceLeaveProjectRequest) String() string {
+func (x *ProjectServiceLeaveRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ProjectServiceLeaveProjectRequest) ProtoMessage() {}
+func (*ProjectServiceLeaveRequest) ProtoMessage() {}
 
-func (x *ProjectServiceLeaveProjectRequest) ProtoReflect() protoreflect.Message {
+func (x *ProjectServiceLeaveRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_api_v2_project_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1207,39 +1207,39 @@ func (x *ProjectServiceLeaveProjectRequest) ProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ProjectServiceLeaveProjectRequest.ProtoReflect.Descriptor instead.
-func (*ProjectServiceLeaveProjectRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ProjectServiceLeaveRequest.ProtoReflect.Descriptor instead.
+func (*ProjectServiceLeaveRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{19}
 }
 
-func (x *ProjectServiceLeaveProjectRequest) GetProject() string {
+func (x *ProjectServiceLeaveRequest) GetProject() string {
 	if x != nil {
 		return x.Project
 	}
 	return ""
 }
 
-// ProjectServiceLeaveProjectResponse is the response payload to a leave project request
-type ProjectServiceLeaveProjectResponse struct {
+// ProjectServiceLeaveResponse is the response payload to a leave project request
+type ProjectServiceLeaveResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ProjectServiceLeaveProjectResponse) Reset() {
-	*x = ProjectServiceLeaveProjectResponse{}
+func (x *ProjectServiceLeaveResponse) Reset() {
+	*x = ProjectServiceLeaveResponse{}
 	mi := &file_metalstack_api_v2_project_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ProjectServiceLeaveProjectResponse) String() string {
+func (x *ProjectServiceLeaveResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ProjectServiceLeaveProjectResponse) ProtoMessage() {}
+func (*ProjectServiceLeaveResponse) ProtoMessage() {}
 
-func (x *ProjectServiceLeaveProjectResponse) ProtoReflect() protoreflect.Message {
+func (x *ProjectServiceLeaveResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_api_v2_project_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1251,8 +1251,8 @@ func (x *ProjectServiceLeaveProjectResponse) ProtoReflect() protoreflect.Message
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ProjectServiceLeaveProjectResponse.ProtoReflect.Descriptor instead.
-func (*ProjectServiceLeaveProjectResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ProjectServiceLeaveResponse.ProtoReflect.Descriptor instead.
+func (*ProjectServiceLeaveResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{20}
 }
 
@@ -1744,10 +1744,10 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\x1eProjectServiceInviteGetRequest\x12\x16\n" +
 	"\x06secret\x18\x01 \x01(\tR\x06secret\"[\n" +
 	"\x1fProjectServiceInviteGetResponse\x128\n" +
-	"\x06invite\x18\x01 \x01(\v2 .metalstack.api.v2.ProjectInviteR\x06invite\"G\n" +
-	"!ProjectServiceLeaveProjectRequest\x12\"\n" +
-	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"$\n" +
-	"\"ProjectServiceLeaveProjectResponse\"_\n" +
+	"\x06invite\x18\x01 \x01(\v2 .metalstack.api.v2.ProjectInviteR\x06invite\"@\n" +
+	"\x1aProjectServiceLeaveRequest\x12\"\n" +
+	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\x1d\n" +
+	"\x1bProjectServiceLeaveResponse\"_\n" +
 	"!ProjectServiceRemoveMemberRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x16\n" +
 	"\x06member\x18\x02 \x01(\tR\x06member\"$\n" +
@@ -1766,7 +1766,7 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"!ProjectServiceInviteDeleteRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x16\n" +
 	"\x06secret\x18\x02 \x01(\tR\x06secret\"$\n" +
-	"\"ProjectServiceInviteDeleteResponse2\xf8\f\n" +
+	"\"ProjectServiceInviteDeleteResponse2\xe2\f\n" +
 	"\x0eProjectService\x12m\n" +
 	"\x04List\x12,.metalstack.api.v2.ProjectServiceListRequest\x1a-.metalstack.api.v2.ProjectServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12m\n" +
 	"\x03Get\x12+.metalstack.api.v2.ProjectServiceGetRequest\x1a,.metalstack.api.v2.ProjectServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12u\n" +
@@ -1774,8 +1774,8 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\xc2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12t\n" +
 	"\x06Delete\x12..metalstack.api.v2.ProjectServiceDeleteRequest\x1a/.metalstack.api.v2.ProjectServiceDeleteResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12u\n" +
 	"\x06Update\x12..metalstack.api.v2.ProjectServiceUpdateRequest\x1a/.metalstack.api.v2.ProjectServiceUpdateResponse\"\n" +
-	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12\x86\x01\n" +
-	"\fLeaveProject\x124.metalstack.api.v2.ProjectServiceLeaveProjectRequest\x1a5.metalstack.api.v2.ProjectServiceLeaveProjectResponse\"\t\xca\xf3\x18\x01\x03\xe0\xf3\x18\x01\x12\x86\x01\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12q\n" +
+	"\x05Leave\x12-.metalstack.api.v2.ProjectServiceLeaveRequest\x1a..metalstack.api.v2.ProjectServiceLeaveResponse\"\t\xca\xf3\x18\x01\x03\xe0\xf3\x18\x01\x12\x86\x01\n" +
 	"\fRemoveMember\x124.metalstack.api.v2.ProjectServiceRemoveMemberRequest\x1a5.metalstack.api.v2.ProjectServiceRemoveMemberResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x86\x01\n" +
 	"\fUpdateMember\x124.metalstack.api.v2.ProjectServiceUpdateMemberRequest\x1a5.metalstack.api.v2.ProjectServiceUpdateMemberResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n" +
 	"\x06Invite\x12..metalstack.api.v2.ProjectServiceInviteRequest\x1a/.metalstack.api.v2.ProjectServiceInviteResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x85\x01\n" +
@@ -1818,8 +1818,8 @@ var file_metalstack_api_v2_project_proto_goTypes = []any{
 	(*ProjectServiceInvitesListResponse)(nil),  // 16: metalstack.api.v2.ProjectServiceInvitesListResponse
 	(*ProjectServiceInviteGetRequest)(nil),     // 17: metalstack.api.v2.ProjectServiceInviteGetRequest
 	(*ProjectServiceInviteGetResponse)(nil),    // 18: metalstack.api.v2.ProjectServiceInviteGetResponse
-	(*ProjectServiceLeaveProjectRequest)(nil),  // 19: metalstack.api.v2.ProjectServiceLeaveProjectRequest
-	(*ProjectServiceLeaveProjectResponse)(nil), // 20: metalstack.api.v2.ProjectServiceLeaveProjectResponse
+	(*ProjectServiceLeaveRequest)(nil),         // 19: metalstack.api.v2.ProjectServiceLeaveRequest
+	(*ProjectServiceLeaveResponse)(nil),        // 20: metalstack.api.v2.ProjectServiceLeaveResponse
 	(*ProjectServiceRemoveMemberRequest)(nil),  // 21: metalstack.api.v2.ProjectServiceRemoveMemberRequest
 	(*ProjectServiceRemoveMemberResponse)(nil), // 22: metalstack.api.v2.ProjectServiceRemoveMemberResponse
 	(*ProjectServiceUpdateMemberRequest)(nil),  // 23: metalstack.api.v2.ProjectServiceUpdateMemberRequest
@@ -1863,7 +1863,7 @@ var file_metalstack_api_v2_project_proto_depIdxs = []int32{
 	7,  // 24: metalstack.api.v2.ProjectService.Create:input_type -> metalstack.api.v2.ProjectServiceCreateRequest
 	9,  // 25: metalstack.api.v2.ProjectService.Delete:input_type -> metalstack.api.v2.ProjectServiceDeleteRequest
 	11, // 26: metalstack.api.v2.ProjectService.Update:input_type -> metalstack.api.v2.ProjectServiceUpdateRequest
-	19, // 27: metalstack.api.v2.ProjectService.LeaveProject:input_type -> metalstack.api.v2.ProjectServiceLeaveProjectRequest
+	19, // 27: metalstack.api.v2.ProjectService.Leave:input_type -> metalstack.api.v2.ProjectServiceLeaveRequest
 	21, // 28: metalstack.api.v2.ProjectService.RemoveMember:input_type -> metalstack.api.v2.ProjectServiceRemoveMemberRequest
 	23, // 29: metalstack.api.v2.ProjectService.UpdateMember:input_type -> metalstack.api.v2.ProjectServiceUpdateMemberRequest
 	13, // 30: metalstack.api.v2.ProjectService.Invite:input_type -> metalstack.api.v2.ProjectServiceInviteRequest
@@ -1876,7 +1876,7 @@ var file_metalstack_api_v2_project_proto_depIdxs = []int32{
 	8,  // 37: metalstack.api.v2.ProjectService.Create:output_type -> metalstack.api.v2.ProjectServiceCreateResponse
 	10, // 38: metalstack.api.v2.ProjectService.Delete:output_type -> metalstack.api.v2.ProjectServiceDeleteResponse
 	12, // 39: metalstack.api.v2.ProjectService.Update:output_type -> metalstack.api.v2.ProjectServiceUpdateResponse
-	20, // 40: metalstack.api.v2.ProjectService.LeaveProject:output_type -> metalstack.api.v2.ProjectServiceLeaveProjectResponse
+	20, // 40: metalstack.api.v2.ProjectService.Leave:output_type -> metalstack.api.v2.ProjectServiceLeaveResponse
 	22, // 41: metalstack.api.v2.ProjectService.RemoveMember:output_type -> metalstack.api.v2.ProjectServiceRemoveMemberResponse
 	24, // 42: metalstack.api.v2.ProjectService.UpdateMember:output_type -> metalstack.api.v2.ProjectServiceUpdateMemberResponse
 	14, // 43: metalstack.api.v2.ProjectService.Invite:output_type -> metalstack.api.v2.ProjectServiceInviteResponse
