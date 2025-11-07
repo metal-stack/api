@@ -186,6 +186,16 @@ class ProjectServiceInviteGetResponse(_message.Message):
     invite: ProjectInvite
     def __init__(self, invite: _Optional[_Union[ProjectInvite, _Mapping]] = ...) -> None: ...
 
+class ProjectServiceLeaveProjectRequest(_message.Message):
+    __slots__ = ("project",)
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    project: str
+    def __init__(self, project: _Optional[str] = ...) -> None: ...
+
+class ProjectServiceLeaveProjectResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
 class ProjectServiceRemoveMemberRequest(_message.Message):
     __slots__ = ("project", "member")
     PROJECT_FIELD_NUMBER: _ClassVar[int]

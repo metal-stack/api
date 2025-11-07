@@ -1779,6 +1779,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.ProjectServiceLeaveProjectRequest"><span class="badge">M</span>ProjectServiceLeaveProjectRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ProjectServiceLeaveProjectResponse"><span class="badge">M</span>ProjectServiceLeaveProjectResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.ProjectServiceListRequest"><span class="badge">M</span>ProjectServiceListRequest</a>
                 </li>
               
@@ -14355,6 +14363,37 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.ProjectServiceLeaveProjectRequest">ProjectServiceLeaveProjectRequest</h3>
+        <p>ProjectServiceRemoveMemberRequest is used to remove a member from a project</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project is the uuid of the project </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.ProjectServiceLeaveProjectResponse">ProjectServiceLeaveProjectResponse</h3>
+        <p>ProjectServiceRemoveMemberResponse is the response payload to a remove member request</p>
+
+        
+
+        
+      
         <h3 id="metalstack.api.v2.ProjectServiceListRequest">ProjectServiceListRequest</h3>
         <p>ProjectServiceListRequest is the request payload to list all projects</p>
 
@@ -14654,6 +14693,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.api.v2.ProjectServiceUpdateRequest">ProjectServiceUpdateRequest</a></td>
                 <td><a href="#metalstack.api.v2.ProjectServiceUpdateResponse">ProjectServiceUpdateResponse</a></td>
                 <td><p>Update a project</p></td>
+              </tr>
+            
+              <tr>
+                <td>LeaveProject</td>
+                <td><a href="#metalstack.api.v2.ProjectServiceLeaveProjectRequest">ProjectServiceLeaveProjectRequest</a></td>
+                <td><a href="#metalstack.api.v2.ProjectServiceLeaveProjectResponse">ProjectServiceLeaveProjectResponse</a></td>
+                <td><p>Leave project</p></td>
               </tr>
             
               <tr>
