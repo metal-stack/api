@@ -1409,6 +1409,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.TenantServiceLeaveTenantRequest"><span class="badge">M</span>TenantServiceLeaveTenantRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TenantServiceLeaveTenantResponse"><span class="badge">M</span>TenantServiceLeaveTenantResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.TenantServiceListRequest"><span class="badge">M</span>TenantServiceListRequest</a>
                 </li>
               
@@ -11858,6 +11866,37 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.TenantServiceLeaveTenantRequest">TenantServiceLeaveTenantRequest</h3>
+        <p>TenantServiceLeaveTenantRequest is used to leave a tenant</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.TenantServiceLeaveTenantResponse">TenantServiceLeaveTenantResponse</h3>
+        <p>TenantServiceLeaveTenantResponse is the response payload to a leave tenant request</p>
+
+        
+
+        
+      
         <h3 id="metalstack.api.v2.TenantServiceListRequest">TenantServiceListRequest</h3>
         <p>TenantServiceListRequest is the request payload of the tenant list request</p>
 
@@ -12157,6 +12196,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.api.v2.TenantServiceDeleteRequest">TenantServiceDeleteRequest</a></td>
                 <td><a href="#metalstack.api.v2.TenantServiceDeleteResponse">TenantServiceDeleteResponse</a></td>
                 <td><p>Delete a tenant</p></td>
+              </tr>
+            
+              <tr>
+                <td>LeaveTenant</td>
+                <td><a href="#metalstack.api.v2.TenantServiceLeaveTenantRequest">TenantServiceLeaveTenantRequest</a></td>
+                <td><a href="#metalstack.api.v2.TenantServiceLeaveTenantResponse">TenantServiceLeaveTenantResponse</a></td>
+                <td><p>LeaveTenant remove a member of a tenant</p></td>
               </tr>
             
               <tr>
@@ -14364,7 +14410,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
         
       
         <h3 id="metalstack.api.v2.ProjectServiceLeaveProjectRequest">ProjectServiceLeaveProjectRequest</h3>
-        <p>ProjectServiceRemoveMemberRequest is used to remove a member from a project</p>
+        <p>ProjectServiceLeaveProjectRequest is used to leave a project</p>
 
         
           <table class="field-table">
@@ -14388,7 +14434,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
         
       
         <h3 id="metalstack.api.v2.ProjectServiceLeaveProjectResponse">ProjectServiceLeaveProjectResponse</h3>
-        <p>ProjectServiceRemoveMemberResponse is the response payload to a remove member request</p>
+        <p>ProjectServiceLeaveProjectResponse is the response payload to a leave project request</p>
 
         
 

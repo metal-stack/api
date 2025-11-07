@@ -1173,7 +1173,7 @@ func (x *ProjectServiceInviteGetResponse) GetInvite() *ProjectInvite {
 	return nil
 }
 
-// ProjectServiceRemoveMemberRequest is used to remove a member from a project
+// ProjectServiceLeaveProjectRequest is used to leave a project
 type ProjectServiceLeaveProjectRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project
@@ -1219,7 +1219,7 @@ func (x *ProjectServiceLeaveProjectRequest) GetProject() string {
 	return ""
 }
 
-// ProjectServiceRemoveMemberResponse is the response payload to a remove member request
+// ProjectServiceLeaveProjectResponse is the response payload to a leave project request
 type ProjectServiceLeaveProjectResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields

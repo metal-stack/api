@@ -122,6 +122,7 @@ func GetServicePermissions() *ServicePermissions {
 				},
 				"TENANT_ROLE_VIEWER": []string{
 					"/metalstack.api.v2.TenantService/Get",
+					"/metalstack.api.v2.TenantService/LeaveTenant",
 				},
 			},
 			Project: Project{
@@ -267,6 +268,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.TenantService/InviteDelete":      true,
 			"/metalstack.api.v2.TenantService/InviteGet":         true,
 			"/metalstack.api.v2.TenantService/InvitesList":       true,
+			"/metalstack.api.v2.TenantService/LeaveTenant":       true,
 			"/metalstack.api.v2.TenantService/List":              true,
 			"/metalstack.api.v2.TenantService/RemoveMember":      true,
 			"/metalstack.api.v2.TenantService/Update":            true,
@@ -366,6 +368,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.api.v2.TenantService/Invite":       true,
 				"/metalstack.api.v2.TenantService/InviteDelete": true,
 				"/metalstack.api.v2.TenantService/InvitesList":  true,
+				"/metalstack.api.v2.TenantService/LeaveTenant":  true,
 				"/metalstack.api.v2.TenantService/RemoveMember": true,
 				"/metalstack.api.v2.TenantService/Update":       true,
 				"/metalstack.api.v2.TenantService/UpdateMember": true,
@@ -481,6 +484,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.TenantService/InviteDelete":      true,
 			"/metalstack.api.v2.TenantService/InviteGet":         false,
 			"/metalstack.api.v2.TenantService/InvitesList":       false,
+			"/metalstack.api.v2.TenantService/LeaveTenant":       true,
 			"/metalstack.api.v2.TenantService/List":              false,
 			"/metalstack.api.v2.TenantService/RemoveMember":      true,
 			"/metalstack.api.v2.TenantService/Update":            true,

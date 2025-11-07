@@ -40,6 +40,12 @@ service TenantService {
     option (auditing) = AUDITING_INCLUDED;
   }
 
+  // LeaveTenant remove a member of a tenant
+  rpc LeaveTenant(TenantServiceLeaveTenantRequest) returns (TenantServiceLeaveTenantResponse) {
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+
   // RemoveMember remove a member of a tenant
   rpc RemoveMember(TenantServiceRemoveMemberRequest) returns (TenantServiceRemoveMemberResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
@@ -264,6 +270,15 @@ message TenantServiceRemoveMemberRequest {
   // Member is the id of the member to remove from this tenant
   string member = 2;
 }
+
+// TenantServiceLeaveTenantRequest is used to leave a tenant
+message TenantServiceLeaveTenantRequest {
+  // Login of the tenant
+  string login = 1;
+}
+
+// TenantServiceLeaveTenantResponse is the response payload to a leave tenant request
+message TenantServiceLeaveTenantResponse {}
 
 // TenantServiceRemoveMemberResponse is the response payload to a remove member request
 message TenantServiceRemoveMemberResponse {}
