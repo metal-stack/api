@@ -1,0 +1,517 @@
+package permissions
+
+import (
+	"context"
+	"errors"
+	"log/slog"
+	"testing"
+
+	"github.com/google/go-cmp/cmp"
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
+	"github.com/stretchr/testify/require"
+)
+
+func Test_opa_getTokenPermissions(t *testing.T) {
+	tests := []struct {
+		name               string
+		token              *apiv2.Token
+		projectsAndTenants *ProjectsAndTenants
+		want               tokenPermissions
+		wantErr            error
+	}{
+		{
+			name:    "unknown admin role",
+			token:   &apiv2.Token{AdminRole: apiv2.AdminRole_ADMIN_ROLE_UNSPECIFIED.Enum()},
+			wantErr: errors.New("given admin role:ADMIN_ROLE_UNSPECIFIED is not valid"),
+		},
+		{
+			name: "admin role editor",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				AdminRole: apiv2.AdminRole_ADMIN_ROLE_EDITOR.Enum(),
+			},
+			want: tokenPermissions{
+				"/metalstack.admin.v2.FilesystemService/Create":      map[string]bool{"*": true},
+				"/metalstack.admin.v2.FilesystemService/Delete":      map[string]bool{"*": true},
+				"/metalstack.admin.v2.FilesystemService/Update":      map[string]bool{"*": true},
+				"/metalstack.admin.v2.IPService/List":                map[string]bool{"*": true},
+				"/metalstack.admin.v2.ImageService/Create":           map[string]bool{"*": true},
+				"/metalstack.admin.v2.ImageService/Delete":           map[string]bool{"*": true},
+				"/metalstack.admin.v2.ImageService/Update":           map[string]bool{"*": true},
+				"/metalstack.admin.v2.ImageService/Usage":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.MachineService/Get":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.MachineService/List":           map[string]bool{"*": true},
+				"/metalstack.admin.v2.NetworkService/Create":         map[string]bool{"*": true},
+				"/metalstack.admin.v2.NetworkService/Delete":         map[string]bool{"*": true},
+				"/metalstack.admin.v2.NetworkService/Get":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.NetworkService/List":           map[string]bool{"*": true},
+				"/metalstack.admin.v2.NetworkService/Update":         map[string]bool{"*": true},
+				"/metalstack.admin.v2.PartitionService/Capacity":     map[string]bool{"*": true},
+				"/metalstack.admin.v2.PartitionService/Create":       map[string]bool{"*": true},
+				"/metalstack.admin.v2.PartitionService/Delete":       map[string]bool{"*": true},
+				"/metalstack.admin.v2.PartitionService/Update":       map[string]bool{"*": true},
+				"/metalstack.admin.v2.SizeService/Create":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.SizeService/Delete":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.SizeService/Update":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.SwitchService/Delete":          map[string]bool{"*": true},
+				"/metalstack.admin.v2.SwitchService/Get":             map[string]bool{"*": true},
+				"/metalstack.admin.v2.SwitchService/List":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.SwitchService/Migrate":         map[string]bool{"*": true},
+				"/metalstack.admin.v2.SwitchService/Port":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.SwitchService/Update":          map[string]bool{"*": true},
+				"/metalstack.admin.v2.TenantService/Create":          map[string]bool{"*": true},
+				"/metalstack.admin.v2.TenantService/List":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.TokenService/List":             map[string]bool{"*": true},
+				"/metalstack.admin.v2.TokenService/Revoke":           map[string]bool{"*": true},
+				"/metalstack.api.v2.FilesystemService/Get":           map[string]bool{"*": true},
+				"/metalstack.api.v2.FilesystemService/List":          map[string]bool{"*": true},
+				"/metalstack.api.v2.FilesystemService/Match":         map[string]bool{"*": true},
+				"/metalstack.api.v2.HealthService/Get":               map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/Create":                map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/Delete":                map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/Get":                   map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/List":                  map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/Update":                map[string]bool{"*": true},
+				"/metalstack.api.v2.ImageService/Get":                map[string]bool{"*": true},
+				"/metalstack.api.v2.ImageService/Latest":             map[string]bool{"*": true},
+				"/metalstack.api.v2.ImageService/List":               map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/Create":           map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/Delete":           map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/Get":              map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/List":             map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/Update":           map[string]bool{"*": true},
+				"/metalstack.api.v2.MethodService/List":              map[string]bool{"*": true},
+				"/metalstack.api.v2.MethodService/TokenScopedList":   map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/Create":           map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/Delete":           map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/Get":              map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/List":             map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/ListBaseNetworks": map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/Update":           map[string]bool{"*": true},
+				"/metalstack.api.v2.PartitionService/Get":            map[string]bool{"*": true},
+				"/metalstack.api.v2.PartitionService/List":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Create":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Delete":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Get":              map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Invite":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/InviteAccept":     map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/InviteDelete":     map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/InviteGet":        map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/InvitesList":      map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/List":             map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/RemoveMember":     map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Update":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/UpdateMember":     map[string]bool{"*": true},
+				"/metalstack.api.v2.SizeService/Get":                 map[string]bool{"*": true},
+				"/metalstack.api.v2.SizeService/List":                map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Create":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Delete":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Get":               map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Invite":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/InviteAccept":      map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/InviteDelete":      map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/InviteGet":         map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/InvitesList":       map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/List":              map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/RemoveMember":      map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Update":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/UpdateMember":      map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Create":             map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Get":                map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/List":               map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Refresh":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Revoke":             map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Update":             map[string]bool{"*": true},
+				"/metalstack.api.v2.UserService/Get":                 map[string]bool{"*": true},
+				"/metalstack.api.v2.VersionService/Get":              map[string]bool{"*": true},
+				"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      map[string]bool{"*": true},
+				"/metalstack.infra.v2.SwitchService/Get":             map[string]bool{"*": true},
+				"/metalstack.infra.v2.SwitchService/Heartbeat":       map[string]bool{"*": true},
+				"/metalstack.infra.v2.SwitchService/Register":        map[string]bool{"*": true},
+			},
+			wantErr: nil,
+		},
+		{
+			name: "admin role viewer",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				AdminRole: apiv2.AdminRole_ADMIN_ROLE_VIEWER.Enum(),
+			},
+			want: tokenPermissions{
+				"/metalstack.admin.v2.IPService/List":                map[string]bool{"*": true},
+				"/metalstack.admin.v2.ImageService/Usage":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.MachineService/Get":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.MachineService/List":           map[string]bool{"*": true},
+				"/metalstack.admin.v2.NetworkService/Get":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.NetworkService/List":           map[string]bool{"*": true},
+				"/metalstack.admin.v2.PartitionService/Capacity":     map[string]bool{"*": true},
+				"/metalstack.admin.v2.SwitchService/Get":             map[string]bool{"*": true},
+				"/metalstack.admin.v2.SwitchService/List":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.TenantService/List":            map[string]bool{"*": true},
+				"/metalstack.admin.v2.TokenService/List":             map[string]bool{"*": true},
+				"/metalstack.api.v2.FilesystemService/Get":           map[string]bool{"*": true},
+				"/metalstack.api.v2.FilesystemService/List":          map[string]bool{"*": true},
+				"/metalstack.api.v2.FilesystemService/Match":         map[string]bool{"*": true},
+				"/metalstack.api.v2.HealthService/Get":               map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/Create":                map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/Delete":                map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/Get":                   map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/List":                  map[string]bool{"*": true},
+				"/metalstack.api.v2.IPService/Update":                map[string]bool{"*": true},
+				"/metalstack.api.v2.ImageService/Get":                map[string]bool{"*": true},
+				"/metalstack.api.v2.ImageService/Latest":             map[string]bool{"*": true},
+				"/metalstack.api.v2.ImageService/List":               map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/Create":           map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/Delete":           map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/Get":              map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/List":             map[string]bool{"*": true},
+				"/metalstack.api.v2.MachineService/Update":           map[string]bool{"*": true},
+				"/metalstack.api.v2.MethodService/List":              map[string]bool{"*": true},
+				"/metalstack.api.v2.MethodService/TokenScopedList":   map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/Create":           map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/Delete":           map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/Get":              map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/List":             map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/ListBaseNetworks": map[string]bool{"*": true},
+				"/metalstack.api.v2.NetworkService/Update":           map[string]bool{"*": true},
+				"/metalstack.api.v2.PartitionService/Get":            map[string]bool{"*": true},
+				"/metalstack.api.v2.PartitionService/List":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Create":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Delete":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Get":              map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Invite":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/InviteAccept":     map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/InviteDelete":     map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/InviteGet":        map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/InvitesList":      map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/List":             map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/RemoveMember":     map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/Update":           map[string]bool{"*": true},
+				"/metalstack.api.v2.ProjectService/UpdateMember":     map[string]bool{"*": true},
+				"/metalstack.api.v2.SizeService/Get":                 map[string]bool{"*": true},
+				"/metalstack.api.v2.SizeService/List":                map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Create":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Delete":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Get":               map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Invite":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/InviteAccept":      map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/InviteDelete":      map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/InviteGet":         map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/InvitesList":       map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/List":              map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/RemoveMember":      map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/Update":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TenantService/UpdateMember":      map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Create":             map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Get":                map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/List":               map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Refresh":            map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Revoke":             map[string]bool{"*": true},
+				"/metalstack.api.v2.TokenService/Update":             map[string]bool{"*": true},
+				"/metalstack.api.v2.UserService/Get":                 map[string]bool{"*": true},
+				"/metalstack.api.v2.VersionService/Get":              map[string]bool{"*": true},
+				"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      map[string]bool{"*": true},
+				"/metalstack.infra.v2.SwitchService/Get":             map[string]bool{"*": true},
+				"/metalstack.infra.v2.SwitchService/Heartbeat":       map[string]bool{"*": true},
+				"/metalstack.infra.v2.SwitchService/Register":        map[string]bool{"*": true},
+			},
+			wantErr: nil,
+		},
+		{
+			name: "only permissions",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				Permissions: []*apiv2.MethodPermission{
+					{Subject: "a", Methods: []string{"/metalstack.api.v2.IPService/Create"}},
+					{Subject: "a", Methods: []string{"/metalstack.api.v2.IPService/Delete"}},
+					{Subject: "b", Methods: []string{"/metalstack.api.v2.IPService/Delete"}},
+				},
+			},
+			want: tokenPermissions{
+				"/metalstack.api.v2.IPService/Create": map[string]bool{"a": true},
+				"/metalstack.api.v2.IPService/Delete": map[string]bool{"a": true, "b": true},
+			},
+		},
+		{
+			name: "tenant roles, token type api",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				TenantRoles: map[string]apiv2.TenantRole{
+					"a": apiv2.TenantRole_TENANT_ROLE_GUEST,
+					"b": apiv2.TenantRole_TENANT_ROLE_EDITOR,
+					"c": apiv2.TenantRole_TENANT_ROLE_OWNER,
+				},
+			},
+			want: tokenPermissions{
+				"/metalstack.api.v2.ProjectService/Create":      map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.TenantService/Get":          map[string]bool{"b": true, "a": true, "c": true},
+				"/metalstack.api.v2.TenantService/Update":       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.TenantService/Delete":       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.TenantService/RemoveMember": map[string]bool{"c": true},
+				"/metalstack.api.v2.TenantService/UpdateMember": map[string]bool{"c": true},
+				"/metalstack.api.v2.TenantService/Invite":       map[string]bool{"c": true},
+				"/metalstack.api.v2.TenantService/InviteDelete": map[string]bool{"c": true},
+				"/metalstack.api.v2.TenantService/InvitesList":  map[string]bool{"c": true},
+			},
+		},
+		{
+			name: "tenant roles, token type user",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_USER,
+			},
+			projectsAndTenants: &ProjectsAndTenants{
+				TenantRoles: map[string]apiv2.TenantRole{
+					"a": apiv2.TenantRole_TENANT_ROLE_GUEST,
+					"b": apiv2.TenantRole_TENANT_ROLE_EDITOR,
+					"c": apiv2.TenantRole_TENANT_ROLE_OWNER,
+				},
+			},
+			want: tokenPermissions{
+				"/grpc.reflection.v1.ServerReflection/ServerReflectionInfo":      {"*": true},
+				"/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": {"*": true},
+				"/metalstack.api.v2.FilesystemService/Get":                       {"*": true},
+				"/metalstack.api.v2.FilesystemService/List":                      {"*": true},
+				"/metalstack.api.v2.FilesystemService/Match":                     {"*": true},
+				"/metalstack.api.v2.HealthService/Get":                           {"*": true},
+				"/metalstack.api.v2.ImageService/Get":                            {"*": true},
+				"/metalstack.api.v2.ImageService/Latest":                         {"*": true},
+				"/metalstack.api.v2.ImageService/List":                           {"*": true},
+				"/metalstack.api.v2.MethodService/List":                          {"*": true},
+				"/metalstack.api.v2.MethodService/TokenScopedList":               {"*": true},
+				"/metalstack.api.v2.PartitionService/Get":                        {"*": true},
+				"/metalstack.api.v2.PartitionService/List":                       {"*": true},
+				"/metalstack.api.v2.ProjectService/Create":                       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.ProjectService/InviteAccept":                 {"*": true},
+				"/metalstack.api.v2.ProjectService/InviteGet":                    {"*": true},
+				"/metalstack.api.v2.ProjectService/List":                         {"*": true},
+				"/metalstack.api.v2.SizeService/Get":                             {"*": true},
+				"/metalstack.api.v2.SizeService/List":                            {"*": true},
+				"/metalstack.api.v2.TenantService/Create":                        {"*": true},
+				"/metalstack.api.v2.TenantService/Get":                           map[string]bool{"b": true, "a": true, "c": true},
+				"/metalstack.api.v2.TenantService/Update":                        map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.TenantService/Delete":                        map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.TenantService/RemoveMember":                  map[string]bool{"c": true},
+				"/metalstack.api.v2.TenantService/UpdateMember":                  map[string]bool{"c": true},
+				"/metalstack.api.v2.TenantService/Invite":                        map[string]bool{"c": true},
+				"/metalstack.api.v2.TenantService/InviteAccept":                  {"*": true},
+				"/metalstack.api.v2.TenantService/InviteDelete":                  map[string]bool{"c": true},
+				"/metalstack.api.v2.TenantService/InviteGet":                     {"*": true},
+				"/metalstack.api.v2.TenantService/InvitesList":                   map[string]bool{"c": true},
+				"/metalstack.api.v2.TenantService/List":                          {"*": true},
+				"/metalstack.api.v2.TokenService/Create":                         {"*": true},
+				"/metalstack.api.v2.TokenService/Get":                            {"*": true},
+				"/metalstack.api.v2.TokenService/List":                           {"*": true},
+				"/metalstack.api.v2.TokenService/Refresh":                        {"*": true},
+				"/metalstack.api.v2.TokenService/Revoke":                         {"*": true},
+				"/metalstack.api.v2.TokenService/Update":                         {"*": true},
+				"/metalstack.api.v2.UserService/Get":                             {"*": true},
+				"/metalstack.api.v2.VersionService/Get":                          {"*": true},
+			},
+		},
+		{
+			name: "project roles, token type api",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				ProjectRoles: map[string]apiv2.ProjectRole{
+					"a": apiv2.ProjectRole_PROJECT_ROLE_VIEWER,
+					"b": apiv2.ProjectRole_PROJECT_ROLE_EDITOR,
+					"c": apiv2.ProjectRole_PROJECT_ROLE_OWNER,
+				},
+			},
+			want: tokenPermissions{
+				"/metalstack.api.v2.IPService/Get":                   map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.IPService/Create":                map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.IPService/Update":                map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.IPService/List":                  map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.IPService/Delete":                map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.MachineService/Get":              map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.MachineService/Create":           map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.MachineService/Update":           map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.MachineService/List":             map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.MachineService/Delete":           map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/Get":              map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/Create":           map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/Update":           map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/List":             map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/ListBaseNetworks": map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/Delete":           map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.ProjectService/Get":              map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.ProjectService/Delete":           map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/Update":           map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.ProjectService/RemoveMember":     map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/UpdateMember":     map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/Invite":           map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/InviteDelete":     map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/InvitesList":      map[string]bool{"c": true},
+			},
+		},
+		{
+			name: "project roles with user token",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_USER,
+				User:      "user-a",
+			},
+			projectsAndTenants: &ProjectsAndTenants{
+				ProjectRoles: map[string]apiv2.ProjectRole{
+					"a": apiv2.ProjectRole_PROJECT_ROLE_VIEWER,
+					"b": apiv2.ProjectRole_PROJECT_ROLE_EDITOR,
+					"c": apiv2.ProjectRole_PROJECT_ROLE_OWNER,
+				},
+			},
+			want: tokenPermissions{
+				"/grpc.reflection.v1.ServerReflection/ServerReflectionInfo":      {"*": true},
+				"/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": {"*": true},
+				"/metalstack.api.v2.FilesystemService/Get":                       {"*": true},
+				"/metalstack.api.v2.FilesystemService/List":                      {"*": true},
+				"/metalstack.api.v2.FilesystemService/Match":                     {"*": true},
+				"/metalstack.api.v2.HealthService/Get":                           {"*": true},
+				"/metalstack.api.v2.IPService/Get":                               map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.IPService/Create":                            map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.IPService/Update":                            map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.IPService/List":                              map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.IPService/Delete":                            map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.ImageService/Get":                            {"*": true},
+				"/metalstack.api.v2.ImageService/Latest":                         {"*": true},
+				"/metalstack.api.v2.ImageService/List":                           {"*": true},
+				"/metalstack.api.v2.MachineService/Get":                          map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.MachineService/Create":                       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.MachineService/Update":                       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.MachineService/List":                         map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.MachineService/Delete":                       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.MethodService/List":                          {"*": true},
+				"/metalstack.api.v2.MethodService/TokenScopedList":               {"*": true},
+				"/metalstack.api.v2.NetworkService/Get":                          map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/Create":                       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/Update":                       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/List":                         map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/ListBaseNetworks":             map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.NetworkService/Delete":                       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.PartitionService/Get":                        {"*": true},
+				"/metalstack.api.v2.PartitionService/List":                       {"*": true},
+				"/metalstack.api.v2.ProjectService/Get":                          map[string]bool{"a": true, "b": true, "c": true},
+				"/metalstack.api.v2.ProjectService/Delete":                       map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/Update":                       map[string]bool{"b": true, "c": true},
+				"/metalstack.api.v2.ProjectService/RemoveMember":                 map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/UpdateMember":                 map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/Invite":                       map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/InviteAccept":                 {"*": true},
+				"/metalstack.api.v2.ProjectService/InviteDelete":                 map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/InviteGet":                    {"*": true},
+				"/metalstack.api.v2.ProjectService/InvitesList":                  map[string]bool{"c": true},
+				"/metalstack.api.v2.ProjectService/List":                         {"*": true},
+				"/metalstack.api.v2.SizeService/Get":                             {"*": true},
+				"/metalstack.api.v2.SizeService/List":                            {"*": true},
+				"/metalstack.api.v2.TenantService/Create":                        {"*": true},
+				"/metalstack.api.v2.TenantService/InviteAccept":                  {"*": true},
+				"/metalstack.api.v2.TenantService/InviteGet":                     {"*": true},
+				"/metalstack.api.v2.TenantService/List":                          {"*": true},
+				"/metalstack.api.v2.TokenService/Create":                         {"*": true},
+				"/metalstack.api.v2.TokenService/Get":                            {"*": true},
+				"/metalstack.api.v2.TokenService/List":                           {"*": true},
+				"/metalstack.api.v2.TokenService/Refresh":                        {"*": true},
+				"/metalstack.api.v2.TokenService/Revoke":                         {"*": true},
+				"/metalstack.api.v2.TokenService/Update":                         {"*": true},
+				"/metalstack.api.v2.UserService/Get":                             {"*": true},
+				"/metalstack.api.v2.VersionService/Get":                          {"*": true},
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			a := &authorizer{
+				log: slog.Default(),
+			}
+			a.projectsAndTenantsGetter = func(ctx context.Context, userId string) (*ProjectsAndTenants, error) {
+				if tt.projectsAndTenants == nil {
+					return &ProjectsAndTenants{}, nil
+				}
+				return tt.projectsAndTenants, nil
+			}
+
+			got, gotErr := a.getTokenPermissions(t.Context(), tt.token)
+			if diff := cmp.Diff(got, tt.want); diff != "" {
+				t.Errorf("diff = %s", diff)
+			}
+
+			if tt.wantErr != nil {
+				require.EqualError(t, gotErr, tt.wantErr.Error())
+			} else {
+				require.NoError(t, gotErr)
+			}
+		})
+	}
+}
+
+func Test_authorizer_Allowed(t *testing.T) {
+	tests := []struct {
+		name               string
+		token              *apiv2.Token
+		projectsAndTenants *ProjectsAndTenants
+		adminSubjects      []string
+		method             string
+		subject            string
+		wantErr            error
+	}{
+		{
+			name:    "nil token",
+			token:   nil,
+			wantErr: errors.New("unauthenticated: no permissions found in token"),
+		},
+		{
+			name: "one permission, api token",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				Permissions: []*apiv2.MethodPermission{
+					{Subject: "project-a", Methods: []string{"/metalstack.api.v2.IPService/Get"}},
+				},
+			},
+			method:  "/metalstack.api.v2.IPService/Get",
+			subject: "project-a",
+			wantErr: nil,
+		},
+		{
+			name: "one permission, api token, access not allowed",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				Permissions: []*apiv2.MethodPermission{
+					{Subject: "project-a", Methods: []string{"/metalstack.api.v2.IPService/Get"}},
+				},
+			},
+			method:  "/metalstack.api.v2.IPService/Create",
+			subject: "project-a",
+			wantErr: errors.New("unauthenticated: access to:\"/metalstack.api.v2.IPService/Create\" is not allowed because it is not part of the token permissions"),
+		},
+		{
+			name: "one permission, api token, access not allowed",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				Permissions: []*apiv2.MethodPermission{
+					{Subject: "project-a", Methods: []string{"/metalstack.api.v2.IPService/Get"}},
+				},
+			},
+			method:  "/metalstack.api.v2.IPService/Get",
+			subject: "project-b",
+			wantErr: errors.New("unauthenticated: access to:\"/metalstack.api.v2.IPService/Get\" with subject:\"project-b\" is not allowed because it is not part of the token permissions"),
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			a := &authorizer{
+				log:           slog.Default(),
+				adminSubjects: tt.adminSubjects,
+			}
+			a.projectsAndTenantsGetter = func(ctx context.Context, userId string) (*ProjectsAndTenants, error) {
+				if tt.projectsAndTenants == nil {
+					return &ProjectsAndTenants{}, nil
+				}
+				return tt.projectsAndTenants, nil
+			}
+
+			gotErr := a.Allowed(t.Context(), tt.token, tt.method, tt.subject)
+
+			if tt.wantErr != nil {
+				require.EqualError(t, gotErr, tt.wantErr.Error())
+			}
+		})
+	}
+}
