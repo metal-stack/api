@@ -12,17 +12,14 @@ service SizeService {
   // Create a size
   rpc Create(SizeServiceCreateRequest) returns (SizeServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
   // Update a size
   rpc Update(SizeServiceUpdateRequest) returns (SizeServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
   // Delete a size
   rpc Delete(SizeServiceDeleteRequest) returns (SizeServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 
