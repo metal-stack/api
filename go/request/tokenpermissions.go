@@ -3,7 +3,6 @@ package request
 import (
 	"context"
 	"fmt"
-	"slices"
 
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/metal-stack/api/go/permissions"
@@ -15,51 +14,47 @@ type (
 	// The subject will be set to "*" in case of admin roles.
 	// This works because a certain method can either be tenant or project scoped.
 	// Therefore a single subject is enough to decide
+	//
+	// eg. map[method]map[subject]
 	tokenPermissions map[string]map[string]bool
 )
 
 func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token) (tokenPermissions, error) {
-	tp := tokenPermissions{}
-	if token == nil {
-		return nil, nil
-	}
-
 	var (
-		projectRoles       map[string]apiv2.ProjectRole
-		tenantRoles        map[string]apiv2.TenantRole
+		tp                 = tokenPermissions{}
 		adminRole          *apiv2.AdminRole
 		servicePermissions = permissions.GetServicePermissions()
 	)
 
-	pat, err := a.projectsAndTenantsGetter(ctx, token.User)
-	if err != nil {
-		return nil, err
-	}
-
-	projectRoles = pat.ProjectRoles
-	tenantRoles = pat.TenantRoles
-	a.log.Debug("decide", "adminsubjects", a.adminSubjects, "user", token.User)
-	if slices.Contains(a.adminSubjects, token.User) {
-		// we do not store admin roles in the masterdata-api, but we can use this from the static configuration passed to the api-server
-		adminRole = token.AdminRole
+	if token == nil {
+		for method := range servicePermissions.Visibility.Public {
+			if _, ok := tp[method]; !ok {
+				tp[method] = map[string]bool{}
+			}
+			tp[method]["*"] = true
+		}
+		return tp, nil
 	}
 
 	if token.TokenType == apiv2.TokenType_TOKEN_TYPE_USER {
+		pat, err := a.projectsAndTenantsGetter(ctx, token.User)
+		if err != nil {
+			return nil, err
+		}
 		// as we do not store roles in the user token, we set the roles from the information in the masterdata-db
-		token.ProjectRoles = projectRoles
-		token.TenantRoles = tenantRoles
+		token.ProjectRoles = pat.ProjectRoles
+		token.TenantRoles = pat.TenantRoles
 		token.AdminRole = adminRole
 		// user tokens should never have permissions cause they are not stored in the masterdata-db
 		token.Permissions = nil
 	}
 
-	// Admin Roles
+	// Admin Roles have precedence
 	if token.AdminRole != nil {
 		var allMethods []string
 		for method := range servicePermissions.Methods {
 			allMethods = append(allMethods, method)
 		}
-		slices.Sort(allMethods)
 
 		switch *token.AdminRole {
 		case apiv2.AdminRole_ADMIN_ROLE_EDITOR:
@@ -70,15 +65,20 @@ func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token
 			return tp, nil
 
 		case apiv2.AdminRole_ADMIN_ROLE_VIEWER:
-			adminEditorMethods := servicePermissions.Roles.Admin[apiv2.AdminRole_ADMIN_ROLE_EDITOR.Enum().String()]
-			adminViewerMethods := servicePermissions.Roles.Admin[apiv2.AdminRole_ADMIN_ROLE_VIEWER.Enum().String()]
-			nonViewerMethods := slices.DeleteFunc(adminEditorMethods, func(method string) bool {
-				return slices.Contains(adminViewerMethods, method)
-			})
-			remainingMethods := slices.DeleteFunc(allMethods, func(method string) bool {
-				return slices.Contains(nonViewerMethods, method)
-			})
-			for _, method := range remainingMethods {
+			var (
+				adminViewerMethods []string
+			)
+
+			adminViewerMethods = append(adminViewerMethods,
+				servicePermissions.Roles.Tenant[apiv2.TenantRole_TENANT_ROLE_VIEWER.String()]...)
+			adminViewerMethods = append(adminViewerMethods,
+				servicePermissions.Roles.Project[apiv2.ProjectRole_PROJECT_ROLE_VIEWER.String()]...)
+			adminViewerMethods = append(adminViewerMethods,
+				servicePermissions.Roles.Admin[apiv2.AdminRole_ADMIN_ROLE_VIEWER.String()]...)
+			adminViewerMethods = append(adminViewerMethods, publicMethods()...)
+			adminViewerMethods = append(adminViewerMethods, selfMethods()...)
+
+			for _, method := range adminViewerMethods {
 				tp[method] = map[string]bool{"*": true}
 			}
 			// Do not return here because it might be that some permissions are granted later
@@ -142,4 +142,20 @@ func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token
 	// TODO infra
 
 	return tp, nil
+}
+
+func publicMethods() []string {
+	var m []string
+	for method := range permissions.GetServicePermissions().Visibility.Public {
+		m = append(m, method)
+	}
+	return m
+}
+
+func selfMethods() []string {
+	var m []string
+	for method := range permissions.GetServicePermissions().Visibility.Self {
+		m = append(m, method)
+	}
+	return m
 }

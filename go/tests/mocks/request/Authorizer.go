@@ -16,12 +16,12 @@ type Authorizer struct {
 	mock.Mock
 }
 
-// Allowed provides a mock function with given fields: ctx, token, req
-func (_m *Authorizer) Allowed(ctx context.Context, token *apiv2.Token, req connect.AnyRequest) error {
+// Authorize provides a mock function with given fields: ctx, token, req
+func (_m *Authorizer) Authorize(ctx context.Context, token *apiv2.Token, req connect.AnyRequest) error {
 	ret := _m.Called(ctx, token, req)
 
 	if len(ret) == 0 {
-		panic("no return value specified for Allowed")
+		panic("no return value specified for Authorize")
 	}
 
 	var r0 error

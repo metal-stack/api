@@ -27,28 +27,26 @@ type (
 
 	authorizer struct {
 		log                      *slog.Logger
-		adminSubjects            []string
 		projectsAndTenantsGetter func(ctx context.Context, userId string) (*ProjectsAndTenants, error)
 	}
 
 	// Authorizer provides methods to authorize requests with a given token
 	Authorizer interface {
-		// Allowed checks if with the given token the request is allowed.
+		// Authorize checks if with the given token the request is allowed.
 		// If the access is not allowed, a PermissionDenied Error is returned with a proper error message.
 		// req is only fully populated after a intercepter call.
-		Allowed(ctx context.Context, token *apiv2.Token, req connect.AnyRequest) error
+		Authorize(ctx context.Context, token *apiv2.Token, req connect.AnyRequest) error
 	}
 )
 
 func NewAuthorizer(log *slog.Logger, adminSubjects []string, patg projectsAndTenantsGetter) Authorizer {
 	return &authorizer{
 		log:                      log,
-		adminSubjects:            adminSubjects,
 		projectsAndTenantsGetter: patg,
 	}
 }
 
-func (a *authorizer) Allowed(ctx context.Context, token *apiv2.Token, req connect.AnyRequest) error {
+func (a *authorizer) Authorize(ctx context.Context, token *apiv2.Token, req connect.AnyRequest) error {
 	var (
 		method  = req.Spec().Procedure
 		subject string
@@ -57,12 +55,12 @@ func (a *authorizer) Allowed(ctx context.Context, token *apiv2.Token, req connec
 		return connect.NewError(connect.CodeInternal, fmt.Errorf("request is nil"))
 	}
 
-	a.log.Info("allowed", "req", req.Spec())
-
 	if permissions.IsProjectScope(req) {
 		project, ok := permissions.GetProjectFromRequest(req)
 		if ok {
 			subject = project
+		} else {
+			// Should we error out here
 		}
 	}
 
@@ -70,14 +68,17 @@ func (a *authorizer) Allowed(ctx context.Context, token *apiv2.Token, req connec
 		tenant, ok := permissions.GetTenantFromRequest(req)
 		if ok {
 			subject = tenant
+		} else {
+			// Should we error out here
 		}
 	}
 
-	return a.allowed(ctx, token, method, subject)
+	a.log.Info("authorize", "token", token, "method", method, "subject", subject)
+
+	return a.authorize(ctx, token, method, subject)
 }
 
-// Allowed implements Authorizer.
-func (a *authorizer) allowed(ctx context.Context, token *apiv2.Token, method string, subject string) error {
+func (a *authorizer) authorize(ctx context.Context, token *apiv2.Token, method string, subject string) error {
 	permissions, err := a.getTokenPermissions(ctx, token)
 	if err != nil {
 		return connect.NewError(connect.CodeInternal, err)

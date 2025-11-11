@@ -19,15 +19,21 @@ func Test_authorizer_allowed(t *testing.T) {
 		name               string
 		token              *apiv2.Token
 		projectsAndTenants *ProjectsAndTenants
-		adminSubjects      []string
 		method             string
 		subject            string
 		wantErr            error
 	}{
 		{
-			name:    "nil token",
+			name:    "nil token, access to public endpoint allowed",
 			token:   nil,
-			wantErr: errors.New("permission_denied: no permissions found in token"),
+			method:  "/metalstack.api.v2.VersionService/Get",
+			wantErr: nil,
+		},
+		{
+			name:    "nil token, access to non public endpoint is not allowed",
+			token:   nil,
+			method:  "/metalstack.api.v2.PartitionService/List",
+			wantErr: errors.New("permission_denied: access to:\"/metalstack.api.v2.PartitionService/List\" is not allowed because it is not part of the token permissions"),
 		},
 		{
 			name: "one permission, api token",
@@ -123,8 +129,7 @@ func Test_authorizer_allowed(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := &authorizer{
-				log:           slog.Default(),
-				adminSubjects: tt.adminSubjects,
+				log: slog.Default(),
 			}
 			a.projectsAndTenantsGetter = func(ctx context.Context, userId string) (*ProjectsAndTenants, error) {
 				if tt.projectsAndTenants == nil {
@@ -133,7 +138,7 @@ func Test_authorizer_allowed(t *testing.T) {
 				return tt.projectsAndTenants, nil
 			}
 
-			gotErr := a.allowed(t.Context(), tt.token, tt.method, tt.subject)
+			gotErr := a.authorize(t.Context(), tt.token, tt.method, tt.subject)
 
 			if tt.wantErr != nil {
 				require.EqualError(t, gotErr, tt.wantErr.Error())
@@ -199,8 +204,7 @@ func Test_authorizer_Allowed(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			a := &authorizer{
-				log:           slog.Default(),
-				adminSubjects: tt.adminSubjects,
+				log: slog.Default(),
 			}
 			a.projectsAndTenantsGetter = func(ctx context.Context, userId string) (*ProjectsAndTenants, error) {
 				if tt.projectsAndTenants == nil {
@@ -212,7 +216,7 @@ func Test_authorizer_Allowed(t *testing.T) {
 			client := apiv2connect.NewIPServiceClient(server.Client(), server.URL, connect.WithInterceptors(connect.UnaryInterceptorFunc(
 				func(next connect.UnaryFunc) connect.UnaryFunc {
 					return connect.UnaryFunc(func(ctx context.Context, req connect.AnyRequest) (connect.AnyResponse, error) {
-						gotErr := a.Allowed(t.Context(), tt.token, req)
+						gotErr := a.Authorize(t.Context(), tt.token, req)
 						if tt.wantErr != nil {
 							require.EqualError(t, gotErr, tt.wantErr.Error())
 						} else if gotErr != nil {

@@ -11,8 +11,7 @@ import (
 
 func Benchmark_allow(b *testing.B) {
 	a := &authorizer{
-		log:           slog.Default(),
-		adminSubjects: []string{},
+		log: slog.Default(),
 	}
 	a.projectsAndTenantsGetter = func(ctx context.Context, userId string) (*ProjectsAndTenants, error) {
 		return &ProjectsAndTenants{}, nil
@@ -27,7 +26,7 @@ func Benchmark_allow(b *testing.B) {
 		}
 		message := "/metalstack.api.v2.IPService/Get"
 		subject := "project-a"
-		err := a.allowed(b.Context(), token, message, subject)
+		err := a.authorize(b.Context(), token, message, subject)
 		require.NoError(b, err)
 	}
 }
