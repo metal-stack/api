@@ -1,17 +1,13 @@
-package permissions
+package request
 
 import (
 	"context"
 	"errors"
 	"log/slog"
-	"net/http"
-	"net/http/httptest"
 	"testing"
 
-	"connectrpc.com/connect"
 	"github.com/google/go-cmp/cmp"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
 	"github.com/stretchr/testify/require"
 )
 
@@ -442,167 +438,6 @@ func Test_opa_getTokenPermissions(t *testing.T) {
 			} else {
 				require.NoError(t, gotErr)
 			}
-		})
-	}
-}
-
-func Test_authorizer_allowed(t *testing.T) {
-	tests := []struct {
-		name               string
-		token              *apiv2.Token
-		projectsAndTenants *ProjectsAndTenants
-		adminSubjects      []string
-		method             string
-		subject            string
-		wantErr            error
-	}{
-		{
-			name:    "nil token",
-			token:   nil,
-			wantErr: errors.New("permission_denied: no permissions found in token"),
-		},
-		{
-			name: "one permission, api token",
-			token: &apiv2.Token{
-				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
-				Permissions: []*apiv2.MethodPermission{
-					{Subject: "project-a", Methods: []string{"/metalstack.api.v2.IPService/Get"}},
-				},
-			},
-			method:  "/metalstack.api.v2.IPService/Get",
-			subject: "project-a",
-			wantErr: nil,
-		},
-		{
-			name: "one permission, api token, access not allowed",
-			token: &apiv2.Token{
-				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
-				Permissions: []*apiv2.MethodPermission{
-					{Subject: "project-a", Methods: []string{"/metalstack.api.v2.IPService/Get"}},
-				},
-			},
-			method:  "/metalstack.api.v2.IPService/Create",
-			subject: "project-a",
-			wantErr: errors.New("permission_denied: access to:\"/metalstack.api.v2.IPService/Create\" is not allowed because it is not part of the token permissions"),
-		},
-		{
-			name: "one permission, api token, access not allowed",
-			token: &apiv2.Token{
-				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
-				Permissions: []*apiv2.MethodPermission{
-					{Subject: "project-a", Methods: []string{"/metalstack.api.v2.IPService/Get"}},
-				},
-			},
-			method:  "/metalstack.api.v2.IPService/Get",
-			subject: "project-b",
-			wantErr: errors.New("permission_denied: access to:\"/metalstack.api.v2.IPService/Get\" with subject:\"project-b\" is not allowed because it is not part of the token permissions"),
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			a := &authorizer{
-				log:           slog.Default(),
-				adminSubjects: tt.adminSubjects,
-			}
-			a.projectsAndTenantsGetter = func(ctx context.Context, userId string) (*ProjectsAndTenants, error) {
-				if tt.projectsAndTenants == nil {
-					return &ProjectsAndTenants{}, nil
-				}
-				return tt.projectsAndTenants, nil
-			}
-
-			gotErr := a.allowed(t.Context(), tt.token, tt.method, tt.subject)
-
-			if tt.wantErr != nil {
-				require.EqualError(t, gotErr, tt.wantErr.Error())
-			} else if gotErr != nil {
-				require.Empty(t, gotErr)
-			}
-		})
-	}
-}
-
-func Test_authorizer_Allowed(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.Handle(apiv2connect.NewIPServiceHandler(apiv2connect.UnimplementedIPServiceHandler{}))
-	server := httptest.NewTLSServer(mux)
-	server.EnableHTTP2 = true
-	defer func() {
-		server.Close()
-	}()
-
-	tests := []struct {
-		name               string
-		token              *apiv2.Token
-		projectsAndTenants *ProjectsAndTenants
-		adminSubjects      []string
-		req                *connect.Request[apiv2.IPServiceGetRequest]
-		callFn             func()
-		wantErr            error
-	}{
-		{
-			name: "one permission, api token",
-			token: &apiv2.Token{
-				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
-				Permissions: []*apiv2.MethodPermission{
-					{Subject: "project-a", Methods: []string{"/metalstack.api.v2.IPService/Get"}},
-				},
-			},
-			req:     connect.NewRequest(&apiv2.IPServiceGetRequest{Project: "project-a"}),
-			wantErr: nil,
-		},
-		{
-			name: "one permission, api token, access not allowed",
-			token: &apiv2.Token{
-				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
-				Permissions: []*apiv2.MethodPermission{
-					{Subject: "project-a", Methods: []string{"/metalstack.api.v2.IPService/Create"}},
-				},
-			},
-			req:     connect.NewRequest(&apiv2.IPServiceGetRequest{Project: "project-a"}),
-			wantErr: errors.New("permission_denied: access to:\"/metalstack.api.v2.IPService/Get\" is not allowed because it is not part of the token permissions"),
-		},
-		{
-			name: "one permission, api token, access not allowed",
-			token: &apiv2.Token{
-				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
-				Permissions: []*apiv2.MethodPermission{
-					{Subject: "project-a", Methods: []string{"/metalstack.api.v2.IPService/Get"}},
-				},
-			},
-			req:     connect.NewRequest(&apiv2.IPServiceGetRequest{Project: "project-b"}),
-			wantErr: errors.New("permission_denied: access to:\"/metalstack.api.v2.IPService/Get\" with subject:\"project-b\" is not allowed because it is not part of the token permissions"),
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			a := &authorizer{
-				log:           slog.Default(),
-				adminSubjects: tt.adminSubjects,
-			}
-			a.projectsAndTenantsGetter = func(ctx context.Context, userId string) (*ProjectsAndTenants, error) {
-				if tt.projectsAndTenants == nil {
-					return &ProjectsAndTenants{}, nil
-				}
-				return tt.projectsAndTenants, nil
-			}
-
-			client := apiv2connect.NewIPServiceClient(server.Client(), server.URL, connect.WithInterceptors(connect.UnaryInterceptorFunc(
-				func(next connect.UnaryFunc) connect.UnaryFunc {
-					return connect.UnaryFunc(func(ctx context.Context, req connect.AnyRequest) (connect.AnyResponse, error) {
-						gotErr := a.Allowed(t.Context(), tt.token, req)
-						if tt.wantErr != nil {
-							require.EqualError(t, gotErr, tt.wantErr.Error())
-						} else if gotErr != nil {
-							require.Empty(t, gotErr)
-						}
-						return next(ctx, req)
-					})
-				},
-			)))
-
-			// Swallow response and error, comparison is done inside the interceptor
-			_, _ = client.Get(t.Context(), tt.req.Msg)
 		})
 	}
 }
