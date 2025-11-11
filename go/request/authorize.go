@@ -60,7 +60,7 @@ func (a *authorizer) Authorize(ctx context.Context, token *apiv2.Token, req conn
 		if ok {
 			subject = project
 		} else {
-			// Should we error out here
+			return connect.NewError(connect.CodeInvalidArgument, errors.New("no project found in project scoped request"))
 		}
 	}
 
@@ -69,7 +69,7 @@ func (a *authorizer) Authorize(ctx context.Context, token *apiv2.Token, req conn
 		if ok {
 			subject = tenant
 		} else {
-			// Should we error out here
+			return connect.NewError(connect.CodeInvalidArgument, errors.New("no tenant found in tenant scoped request"))
 		}
 	}
 
