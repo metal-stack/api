@@ -19,6 +19,8 @@ type (
 	tokenPermissions map[string]map[string]bool
 )
 
+const anySubject = "*"
+
 func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token) (tokenPermissions, error) {
 	var (
 		tp                 = tokenPermissions{}
@@ -31,7 +33,7 @@ func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token
 			if _, ok := tp[method]; !ok {
 				tp[method] = map[string]bool{}
 			}
-			tp[method]["*"] = true
+			tp[method][anySubject] = true
 		}
 		return tp, nil
 	}
@@ -59,7 +61,7 @@ func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token
 		switch *token.AdminRole {
 		case apiv2.AdminRole_ADMIN_ROLE_EDITOR:
 			for _, method := range allMethods {
-				tp[method] = map[string]bool{"*": true}
+				tp[method] = map[string]bool{anySubject: true}
 			}
 			// Return here because all methods are allowed with all permissions
 			return tp, nil
@@ -79,7 +81,7 @@ func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token
 			adminViewerMethods = append(adminViewerMethods, selfMethods()...)
 
 			for _, method := range adminViewerMethods {
-				tp[method] = map[string]bool{"*": true}
+				tp[method] = map[string]bool{anySubject: true}
 			}
 			// Do not return here because it might be that some permissions are granted later
 
@@ -127,7 +129,7 @@ func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token
 			if _, ok := tp[method]; !ok {
 				tp[method] = map[string]bool{}
 			}
-			tp[method]["*"] = true
+			tp[method][anySubject] = true
 		}
 
 		for method := range servicePermissions.Visibility.Self {
@@ -135,7 +137,7 @@ func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token
 				tp[method] = map[string]bool{}
 			}
 			// Subjects of self service must also be validated inside the service implementation
-			tp[method]["*"] = true
+			tp[method][anySubject] = true
 		}
 	}
 
