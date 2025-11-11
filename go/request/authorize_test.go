@@ -11,6 +11,7 @@ import (
 	"connectrpc.com/connect"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
+	"github.com/metal-stack/api/go/metalstack/infra/v2/infrav2connect"
 	"github.com/stretchr/testify/require"
 )
 
@@ -45,6 +46,17 @@ func Test_authorizer_allowed(t *testing.T) {
 			},
 			method:  "/metalstack.api.v2.IPService/Get",
 			subject: "project-a",
+			wantErr: nil,
+		},
+		{
+			name: "one infra permission, api token",
+			token: &apiv2.Token{
+				Permissions: []*apiv2.MethodPermission{
+					{Subject: "*", Methods: []string{infrav2connect.SwitchServiceRegisterProcedure}},
+				},
+			},
+			method:  "/metalstack.infra.v2.SwitchService/Register",
+			subject: "switch01",
 			wantErr: nil,
 		},
 		{

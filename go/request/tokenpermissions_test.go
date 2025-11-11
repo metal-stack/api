@@ -8,6 +8,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
+	"github.com/metal-stack/api/go/metalstack/infra/v2/infrav2connect"
 	"github.com/stretchr/testify/require"
 )
 
@@ -202,6 +203,7 @@ func Test_opa_getTokenPermissions(t *testing.T) {
 				"/metalstack.api.v2.TokenService/Update":                         {"*": true},
 				"/metalstack.api.v2.UserService/Get":                             {"*": true},
 				"/metalstack.api.v2.VersionService/Get":                          {"*": true},
+				"/metalstack.infra.v2.BMCService/UpdateBMCInfo":                  {"*": true},
 			},
 			wantErr: nil,
 		},
@@ -218,6 +220,17 @@ func Test_opa_getTokenPermissions(t *testing.T) {
 			want: tokenPermissions{
 				"/metalstack.api.v2.IPService/Create": {"a": true},
 				"/metalstack.api.v2.IPService/Delete": {"a": true, "b": true},
+			},
+		},
+		{
+			name: "infra permissions",
+			token: &apiv2.Token{
+				Permissions: []*apiv2.MethodPermission{
+					{Subject: "*", Methods: []string{infrav2connect.SwitchServiceRegisterProcedure}},
+				},
+			},
+			want: tokenPermissions{
+				"/metalstack.infra.v2.SwitchService/Register": {"*": true},
 			},
 		},
 		{

@@ -77,6 +77,8 @@ func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token
 				servicePermissions.Roles.Project[apiv2.ProjectRole_PROJECT_ROLE_VIEWER.String()]...)
 			adminViewerMethods = append(adminViewerMethods,
 				servicePermissions.Roles.Admin[apiv2.AdminRole_ADMIN_ROLE_VIEWER.String()]...)
+			adminViewerMethods = append(adminViewerMethods,
+				servicePermissions.Roles.Infra[apiv2.InfraRole_INFRA_ROLE_VIEWER.String()]...)
 			adminViewerMethods = append(adminViewerMethods, publicMethods()...)
 			adminViewerMethods = append(adminViewerMethods, selfMethods()...)
 
@@ -141,7 +143,7 @@ func (a *authorizer) getTokenPermissions(ctx context.Context, token *apiv2.Token
 		}
 	}
 
-	// TODO infra
+	// TODO infra roles not yet possible in a token
 
 	return tp, nil
 }
