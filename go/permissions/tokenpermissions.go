@@ -38,8 +38,9 @@ type (
 	// Authorizer provides methods to authorize requests with a given token
 	Authorizer interface {
 		// Allowed checks if with the given token, access to method with this subject is allowed.
-		// If the access is not allowed, a ErrPermissionDenied is returned with a proper error message.
-		Allowed(ctx context.Context, token *apiv2.Token, method, subject string) error
+		// If the access is not allowed, a PermissionDenied Error is returned with a proper error message.
+		// req is only fully populated after a intercepter call.
+		Allowed(ctx context.Context, token *apiv2.Token, req connect.AnyRequest) error
 	}
 )
 
@@ -51,19 +52,47 @@ func NewAuthorizer(log *slog.Logger, adminSubjects []string, patg projectsAndTen
 	}
 }
 
+func (a *authorizer) Allowed(ctx context.Context, token *apiv2.Token, req connect.AnyRequest) error {
+	var (
+		method  = req.Spec().Procedure
+		subject string
+	)
+	if req == nil {
+		return connect.NewError(connect.CodeInternal, fmt.Errorf("request is nil"))
+	}
+
+	a.log.Info("allowed", "req", req.Spec())
+
+	if IsProjectScope(req) {
+		project, ok := GetProjectFromRequest(req)
+		if ok {
+			subject = project
+		}
+	}
+
+	if IsTenantScope(req) {
+		tenant, ok := GetTenantFromRequest(req)
+		if ok {
+			subject = tenant
+		}
+	}
+
+	return a.allowed(ctx, token, method, subject)
+}
+
 // Allowed implements Authorizer.
-func (a *authorizer) Allowed(ctx context.Context, token *apiv2.Token, method string, subject string) error {
+func (a *authorizer) allowed(ctx context.Context, token *apiv2.Token, method string, subject string) error {
 	permissions, err := a.getTokenPermissions(ctx, token)
 	if err != nil {
 		return connect.NewError(connect.CodeInternal, err)
 	}
 	if permissions == nil {
-		return connect.NewError(connect.CodeUnauthenticated, errors.New("no permissions found in token"))
+		return connect.NewError(connect.CodePermissionDenied, errors.New("no permissions found in token"))
 	}
 
 	subjects, ok := permissions[method]
 	if !ok {
-		return connect.NewError(connect.CodeUnauthenticated, fmt.Errorf("access to:%q is not allowed because it is not part of the token permissions", method))
+		return connect.NewError(connect.CodePermissionDenied, fmt.Errorf("access to:%q is not allowed because it is not part of the token permissions", method))
 	}
 
 	if _, allSubjectsAllowed := subjects["*"]; allSubjectsAllowed {
@@ -72,7 +101,7 @@ func (a *authorizer) Allowed(ctx context.Context, token *apiv2.Token, method str
 	}
 
 	if _, subjectAllowed := subjects[subject]; !subjectAllowed {
-		return connect.NewError(connect.CodeUnauthenticated, fmt.Errorf("access to:%q with subject:%q is not allowed because it is not part of the token permissions", method, subject))
+		return connect.NewError(connect.CodePermissionDenied, fmt.Errorf("access to:%q with subject:%q is not allowed because it is not part of the token permissions", method, subject))
 	}
 
 	return nil
