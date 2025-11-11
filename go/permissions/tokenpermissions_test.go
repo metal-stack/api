@@ -524,9 +524,7 @@ func Test_authorizer_allowed(t *testing.T) {
 
 func Test_authorizer_Allowed(t *testing.T) {
 	mux := http.NewServeMux()
-	mux.Handle(apiv2connect.NewIPServiceHandler(
-		ipServer{},
-	))
+	mux.Handle(apiv2connect.NewIPServiceHandler(apiv2connect.UnimplementedIPServiceHandler{}))
 	server := httptest.NewTLSServer(mux)
 	server.EnableHTTP2 = true
 	defer func() {
@@ -607,8 +605,4 @@ func Test_authorizer_Allowed(t *testing.T) {
 			_, _ = client.Get(t.Context(), tt.req.Msg)
 		})
 	}
-}
-
-type ipServer struct {
-	apiv2connect.UnimplementedIPServiceHandler
 }
