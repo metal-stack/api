@@ -603,7 +603,8 @@ func Test_authorizer_Allowed(t *testing.T) {
 				},
 			)))
 
-			client.Get(t.Context(), tt.req.Msg)
+			// Swallow response and error, comparison is done inside the interceptor
+			_, _ = client.Get(t.Context(), tt.req.Msg)
 		})
 	}
 }
