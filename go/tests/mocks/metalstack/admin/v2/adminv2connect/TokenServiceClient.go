@@ -15,6 +15,36 @@ type TokenServiceClient struct {
 	mock.Mock
 }
 
+// Create provides a mock function with given fields: _a0, _a1
+func (_m *TokenServiceClient) Create(_a0 context.Context, _a1 *adminv2.TokenServiceCreateRequest) (*adminv2.TokenServiceCreateResponse, error) {
+	ret := _m.Called(_a0, _a1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Create")
+	}
+
+	var r0 *adminv2.TokenServiceCreateResponse
+	var r1 error
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.TokenServiceCreateRequest) (*adminv2.TokenServiceCreateResponse, error)); ok {
+		return rf(_a0, _a1)
+	}
+	if rf, ok := ret.Get(0).(func(context.Context, *adminv2.TokenServiceCreateRequest) *adminv2.TokenServiceCreateResponse); ok {
+		r0 = rf(_a0, _a1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.TokenServiceCreateResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(context.Context, *adminv2.TokenServiceCreateRequest) error); ok {
+		r1 = rf(_a0, _a1)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // List provides a mock function with given fields: _a0, _a1
 func (_m *TokenServiceClient) List(_a0 context.Context, _a1 *adminv2.TokenServiceListRequest) (*adminv2.TokenServiceListResponse, error) {
 	ret := _m.Called(_a0, _a1)

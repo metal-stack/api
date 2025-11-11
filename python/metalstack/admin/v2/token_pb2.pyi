@@ -32,3 +32,19 @@ class TokenServiceRevokeRequest(_message.Message):
 class TokenServiceRevokeResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
+
+class TokenServiceCreateRequest(_message.Message):
+    __slots__ = ("user", "token")
+    USER_FIELD_NUMBER: _ClassVar[int]
+    TOKEN_FIELD_NUMBER: _ClassVar[int]
+    user: str
+    token: _token_pb2.Token
+    def __init__(self, user: _Optional[str] = ..., token: _Optional[_Union[_token_pb2.Token, _Mapping]] = ...) -> None: ...
+
+class TokenServiceCreateResponse(_message.Message):
+    __slots__ = ("token", "secret")
+    TOKEN_FIELD_NUMBER: _ClassVar[int]
+    SECRET_FIELD_NUMBER: _ClassVar[int]
+    token: _token_pb2.Token
+    secret: str
+    def __init__(self, token: _Optional[_Union[_token_pb2.Token, _Mapping]] = ..., secret: _Optional[str] = ...) -> None: ...
