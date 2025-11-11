@@ -1586,6 +1586,14 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.admin.v2.TokenServiceCreateRequest"><span class="badge">M</span>TokenServiceCreateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TokenServiceCreateResponse"><span class="badge">M</span>TokenServiceCreateResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.TokenServiceListRequest"><span class="badge">M</span>TokenServiceListRequest</a>
                 </li>
               
@@ -13149,6 +13157,68 @@ TokenUpdate is not guarded with optlock in the backend </p></td>
       <p></p>
 
       
+        <h3 id="metalstack.admin.v2.TokenServiceCreateRequest">TokenServiceCreateRequest</h3>
+        <p>TokenServiceCreateRequest is the request payload to create a token</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>user</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>User this token should be created for, if omitted, user is derived from caller </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#metalstack.api.v2.Token">metalstack.api.v2.Token</a></td>
+                  <td></td>
+                  <td><p>Token which was should be created </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TokenServiceCreateResponse">TokenServiceCreateResponse</h3>
+        <p>TokenServiceCreateResponse is the response payload of a token create request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#metalstack.api.v2.Token">metalstack.api.v2.Token</a></td>
+                  <td></td>
+                  <td><p>Token which was created </p></td>
+                </tr>
+              
+                <tr>
+                  <td>secret</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Secret is the body if the jwt token, should be used in api requests as bearer token </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.TokenServiceListRequest">TokenServiceListRequest</h3>
         <p>TokenServiceListRequest is the request payload for the token list request</p>
 
@@ -13261,6 +13331,13 @@ TokenUpdate is not guarded with optlock in the backend </p></td>
                 <td><a href="#metalstack.admin.v2.TokenServiceRevokeRequest">TokenServiceRevokeRequest</a></td>
                 <td><a href="#metalstack.admin.v2.TokenServiceRevokeResponse">TokenServiceRevokeResponse</a></td>
                 <td><p>Revoke a token</p></td>
+              </tr>
+            
+              <tr>
+                <td>Create</td>
+                <td><a href="#metalstack.admin.v2.TokenServiceCreateRequest">TokenServiceCreateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.TokenServiceCreateResponse">TokenServiceCreateResponse</a></td>
+                <td><p>Create a token to authenticate against the platform, the secret will be only visible in the response</p></td>
               </tr>
             
           </tbody>
