@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
+	"github.com/stretchr/testify/require"
 )
 
 func Benchmark_allow(b *testing.B) {
@@ -26,6 +27,7 @@ func Benchmark_allow(b *testing.B) {
 		}
 		message := "/metalstack.api.v2.IPService/Get"
 		subject := "project-a"
-		a.allowed(b.Context(), token, message, subject)
+		err := a.allowed(b.Context(), token, message, subject)
+		require.NoError(b, err)
 	}
 }
