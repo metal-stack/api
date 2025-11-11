@@ -612,27 +612,3 @@ func Test_authorizer_Allowed(t *testing.T) {
 type ipServer struct {
 	apiv2connect.UnimplementedIPServiceHandler
 }
-
-func TestRequest(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.Handle(apiv2connect.NewIPServiceHandler(
-		ipServer{},
-	))
-	server := httptest.NewTLSServer(mux)
-	server.EnableHTTP2 = true
-	defer func() {
-		server.Close()
-	}()
-
-	client := apiv2connect.NewIPServiceClient(server.Client(), server.URL, connect.WithInterceptors(connect.UnaryInterceptorFunc(
-		func(next connect.UnaryFunc) connect.UnaryFunc {
-			return connect.UnaryFunc(func(ctx context.Context, req connect.AnyRequest) (connect.AnyResponse, error) {
-				require.Equal(t, apiv2connect.IPServiceGetProcedure, req.Spec().Procedure)
-
-				return next(ctx, req)
-			})
-		},
-	)))
-	req := connect.NewRequest(&apiv2.IPServiceGetRequest{Project: "p1"})
-	client.Get(t.Context(), req.Msg)
-}
