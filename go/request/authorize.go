@@ -39,7 +39,7 @@ type (
 	}
 )
 
-func NewAuthorizer(log *slog.Logger, adminSubjects []string, patg projectsAndTenantsGetter) Authorizer {
+func NewAuthorizer(log *slog.Logger, patg projectsAndTenantsGetter) Authorizer {
 	return &authorizer{
 		log:                      log,
 		projectsAndTenantsGetter: patg,
