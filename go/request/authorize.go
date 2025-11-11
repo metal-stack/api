@@ -12,6 +12,8 @@ import (
 )
 
 type (
+
+	// ProjectAndTenants contains the content of a user token stored in the database if any.
 	ProjectsAndTenants struct {
 		Projects      []*apiv2.Project
 		Tenants       []*apiv2.Tenant
@@ -20,6 +22,7 @@ type (
 		TenantRoles   map[string]apiv2.TenantRole
 	}
 
+	// helper to be able to test user token content fetched from the database
 	projectsAndTenantsGetter func(ctx context.Context, userId string) (*ProjectsAndTenants, error)
 
 	authorizer struct {
@@ -30,7 +33,7 @@ type (
 
 	// Authorizer provides methods to authorize requests with a given token
 	Authorizer interface {
-		// Allowed checks if with the given token, access to method with this subject is allowed.
+		// Allowed checks if with the given token the request is allowed.
 		// If the access is not allowed, a PermissionDenied Error is returned with a proper error message.
 		// req is only fully populated after a intercepter call.
 		Allowed(ctx context.Context, token *apiv2.Token, req connect.AnyRequest) error

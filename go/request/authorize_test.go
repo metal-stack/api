@@ -65,6 +65,60 @@ func Test_authorizer_allowed(t *testing.T) {
 			subject: "project-b",
 			wantErr: errors.New("permission_denied: access to:\"/metalstack.api.v2.IPService/Get\" with subject:\"project-b\" is not allowed because it is not part of the token permissions"),
 		},
+		{
+			name: "admin editor access",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				AdminRole: apiv2.AdminRole_ADMIN_ROLE_EDITOR.Enum(),
+			},
+			method:  "/metalstack.api.v2.IPService/Get",
+			subject: "project-b",
+			wantErr: nil,
+		},
+		{
+			name: "admin viewer access",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				AdminRole: apiv2.AdminRole_ADMIN_ROLE_VIEWER.Enum(),
+			},
+			method:  "/metalstack.api.v2.IPService/Get",
+			subject: "project-b",
+			wantErr: nil,
+		},
+		{
+			name: "user token, tenant owner with inherited project viewer",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_USER,
+				TenantRoles: map[string]apiv2.TenantRole{
+					"tenant-a": apiv2.TenantRole_TENANT_ROLE_OWNER,
+				},
+			},
+			method:  "/metalstack.api.v2.IPService/Get",
+			subject: "project-b",
+			projectsAndTenants: &ProjectsAndTenants{
+				ProjectRoles: map[string]apiv2.ProjectRole{
+					"project-b": apiv2.ProjectRole_PROJECT_ROLE_EDITOR,
+				},
+			},
+			wantErr: nil,
+		},
+		{
+			name: "api token, tenant owner with inherited project viewer",
+			token: &apiv2.Token{
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+				TenantRoles: map[string]apiv2.TenantRole{
+					"tenant-a": apiv2.TenantRole_TENANT_ROLE_OWNER,
+				},
+			},
+			method:  "/metalstack.api.v2.IPService/Get",
+			subject: "project-b",
+			projectsAndTenants: &ProjectsAndTenants{
+				ProjectRoles: map[string]apiv2.ProjectRole{
+					"project-b": apiv2.ProjectRole_PROJECT_ROLE_EDITOR,
+				},
+			},
+			wantErr: errors.New(`permission_denied: access to:"/metalstack.api.v2.IPService/Get" is not allowed because it is not part of the token permissions`),
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
