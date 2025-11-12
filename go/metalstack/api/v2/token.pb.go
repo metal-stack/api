@@ -77,7 +77,16 @@ func (TokenType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_token_proto_rawDescGZIP(), []int{0}
 }
 
-// Token is a jwt authentication token to access the api
+// Token generates a jwt authentication token to access the api
+//
+// # There are two different types of tokens, api- and user- tokens
+//
+// A user token is used to authenticate end user requests for example from a cli.
+// The configured roles and permissions in a user token are expanded in the api server
+// based on the memberships in other projects and tenants based on the role granted there.
+//
+// The api token should be used to authenticate services.
+// In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
 type Token struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the jwt token, used to reference it by revoke

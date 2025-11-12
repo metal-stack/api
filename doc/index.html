@@ -12438,7 +12438,7 @@ for which the methods should be allowed </p></td>
         
       
         <h3 id="metalstack.api.v2.Token">Token</h3>
-        <p>Token is a jwt authentication token to access the api</p>
+        <p>Token generates a jwt authentication token to access the api</p><p>There are two different types of tokens, api- and user- tokens</p><p>A user token is used to authenticate end user requests for example from a cli.</p><p>The configured roles and permissions in a user token are expanded in the api server</p><p>based on the memberships in other projects and tenants based on the role granted there.</p><p>The api token should be used to authenticate services.</p><p>In contrast to a user token, the api token permissions and roles apply as configured during the token create process.</p>
 
         
           <table class="field-table">
@@ -13114,7 +13114,8 @@ TokenUpdate is not guarded with optlock in the backend </p></td>
                 <td>Create</td>
                 <td><a href="#metalstack.api.v2.TokenServiceCreateRequest">TokenServiceCreateRequest</a></td>
                 <td><a href="#metalstack.api.v2.TokenServiceCreateResponse">TokenServiceCreateResponse</a></td>
-                <td><p>Create a token to authenticate against the platform, the secret will be only visible in the response</p></td>
+                <td><p>Create a token to authenticate against the platform, the secret will be only visible in the response.
+This endpoint is not suitable to create tokens with admin roles, use the adminv2 token create service instead.</p></td>
               </tr>
             
               <tr>
@@ -13337,7 +13338,8 @@ TokenUpdate is not guarded with optlock in the backend </p></td>
                 <td>Create</td>
                 <td><a href="#metalstack.admin.v2.TokenServiceCreateRequest">TokenServiceCreateRequest</a></td>
                 <td><a href="#metalstack.admin.v2.TokenServiceCreateResponse">TokenServiceCreateResponse</a></td>
-                <td><p>Create a token to authenticate against the platform, the secret will be only visible in the response</p></td>
+                <td><p>Create a token to authenticate against the platform, the secret will be only visible in the response.
+This service is suitable to create tokens with admin permissions.</p></td>
               </tr>
             
           </tbody>

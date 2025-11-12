@@ -14,7 +14,8 @@ service TokenService {
   rpc Get(TokenServiceGetRequest) returns (TokenServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
-  // Create a token to authenticate against the platform, the secret will be only visible in the response
+  // Create a token to authenticate against the platform, the secret will be only visible in the response.
+  // This endpoint is not suitable to create tokens with admin roles, use the adminv2 token create service instead.
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
@@ -36,7 +37,16 @@ service TokenService {
   }
 }
 
-// Token is a jwt authentication token to access the api
+// Token generates a jwt authentication token to access the api
+//
+// There are two different types of tokens, api- and user- tokens
+//
+// A user token is used to authenticate end user requests for example from a cli.
+// The configured roles and permissions in a user token are expanded in the api server
+// based on the memberships in other projects and tenants based on the role granted there.
+//
+// The api token should be used to authenticate services.
+// In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
 message Token {
   // Uuid of the jwt token, used to reference it by revoke
   string uuid = 1 [(buf.validate.field).string.uuid = true];
