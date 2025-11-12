@@ -15,7 +15,6 @@ service TokenService {
     option (visibility) = VISIBILITY_SELF;
   }
   // Create a token to authenticate against the platform, the secret will be only visible in the response.
-  // This endpoint is not suitable to create tokens with admin roles, use the adminv2 token create service instead.
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
@@ -42,8 +41,10 @@ service TokenService {
 // There are two different types of tokens, api- and user- tokens
 //
 // A user token is used to authenticate end user requests for example from a cli.
-// The configured roles and permissions in a user token are expanded in the api server
+// The configured roles in a user token are expanded in the api server
 // based on the memberships in other projects and tenants based on the role granted there.
+// User tokens will never contain permissions.
+// Permissions are always derived from the tenant and project roles and memberships.
 //
 // The api token should be used to authenticate services.
 // In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
@@ -128,7 +129,7 @@ message MethodPermission {
   // Subject maybe either the project or the tenant
   // for which the methods should be allowed
   string subject = 1 [(buf.validate.field).string = {
-    min_len: 2
+    min_len: 1
     max_len: 256
   }];
   // Methods which should be accessible

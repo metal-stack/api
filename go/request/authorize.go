@@ -73,12 +73,12 @@ func (a *authorizer) Authorize(ctx context.Context, token *apiv2.Token, req conn
 		}
 	}
 
-	a.log.Info("authorize", "token", token, "method", method, "subject", subject)
-
 	return a.authorize(ctx, token, method, subject)
 }
 
 func (a *authorizer) authorize(ctx context.Context, token *apiv2.Token, method string, subject string) error {
+	a.log.Info("authorize", "token", token, "method", method, "subject", subject)
+
 	permissions, err := a.getTokenPermissions(ctx, token)
 	if err != nil {
 		return connect.NewError(connect.CodeInternal, err)
@@ -86,6 +86,8 @@ func (a *authorizer) authorize(ctx context.Context, token *apiv2.Token, method s
 	if permissions == nil {
 		return connect.NewError(connect.CodePermissionDenied, errors.New("no permissions found in token"))
 	}
+
+	a.log.Debug("authorize", "permissions", permissions, "method", method, "subject", subject)
 
 	subjects, ok := permissions[method]
 	if !ok {

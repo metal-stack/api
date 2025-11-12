@@ -49,6 +49,7 @@ type TokenServiceClient interface {
 	Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error)
 	// Create a token to authenticate against the platform, the secret will be only visible in the response.
 	// This service is suitable to create tokens with admin permissions.
+	// It is required to have admin privileges to call this service.
 	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
 }
 
@@ -126,6 +127,7 @@ type TokenServiceHandler interface {
 	Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error)
 	// Create a token to authenticate against the platform, the secret will be only visible in the response.
 	// This service is suitable to create tokens with admin permissions.
+	// It is required to have admin privileges to call this service.
 	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
 }
 

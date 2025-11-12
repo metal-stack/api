@@ -82,8 +82,10 @@ func (TokenType) EnumDescriptor() ([]byte, []int) {
 // # There are two different types of tokens, api- and user- tokens
 //
 // A user token is used to authenticate end user requests for example from a cli.
-// The configured roles and permissions in a user token are expanded in the api server
+// The configured roles in a user token are expanded in the api server
 // based on the memberships in other projects and tenants based on the role granted there.
+// User tokens will never contain permissions.
+// Permissions are always derived from the tenant and project roles and memberships.
 //
 // The api token should be used to authenticate services.
 // In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
@@ -987,7 +989,7 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\v_admin_role\"]\n" +
 	"\x10MethodPermission\x12$\n" +
 	"\asubject\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x02R\asubject\x12#\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\asubject\x12#\n" +
 	"\amethods\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\amethods\"d\n" +
 	"\x1aTokenServiceCreateResponse\x12.\n" +
 	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n" +
