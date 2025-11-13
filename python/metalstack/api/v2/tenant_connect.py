@@ -31,6 +31,9 @@ class TenantService(Protocol):
     async def delete(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def leave(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
     async def remove_member(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
@@ -106,6 +109,16 @@ class TenantServiceASGIApplication(ConnectASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.delete,
+                ),
+                "/metalstack.api.v2.TenantService/Leave": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Leave",
+                        service_name="metalstack.api.v2.TenantService",
+                        input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest,
+                        output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.leave,
                 ),
                 "/metalstack.api.v2.TenantService/RemoveMember": Endpoint.unary(
                     method=MethodInfo(
@@ -289,6 +302,26 @@ class TenantServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def leave(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Leave",
+                service_name="metalstack.api.v2.TenantService",
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
     async def remove_member(
         self,
         request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest,
@@ -441,6 +474,8 @@ class TenantServiceSync(Protocol):
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def delete(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def leave(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def remove_member(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def update_member(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse:
@@ -510,6 +545,16 @@ class TenantServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.delete,
+                ),
+                "/metalstack.api.v2.TenantService/Leave": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Leave",
+                        service_name="metalstack.api.v2.TenantService",
+                        input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest,
+                        output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.leave,
                 ),
                 "/metalstack.api.v2.TenantService/RemoveMember": EndpointSync.unary(
                     method=MethodInfo(
@@ -687,6 +732,26 @@ class TenantServiceClientSync(ConnectClientSync):
                 service_name="metalstack.api.v2.TenantService",
                 input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteRequest,
                 output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceDeleteResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def leave(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Leave",
+                service_name="metalstack.api.v2.TenantService",
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

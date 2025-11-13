@@ -1173,6 +1173,89 @@ func (x *ProjectServiceInviteGetResponse) GetInvite() *ProjectInvite {
 	return nil
 }
 
+// ProjectServiceLeaveRequest is used to leave a project
+type ProjectServiceLeaveRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Project is the uuid of the project
+	Project       string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProjectServiceLeaveRequest) Reset() {
+	*x = ProjectServiceLeaveRequest{}
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProjectServiceLeaveRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProjectServiceLeaveRequest) ProtoMessage() {}
+
+func (x *ProjectServiceLeaveRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProjectServiceLeaveRequest.ProtoReflect.Descriptor instead.
+func (*ProjectServiceLeaveRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *ProjectServiceLeaveRequest) GetProject() string {
+	if x != nil {
+		return x.Project
+	}
+	return ""
+}
+
+// ProjectServiceLeaveResponse is the response payload to a leave project request
+type ProjectServiceLeaveResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProjectServiceLeaveResponse) Reset() {
+	*x = ProjectServiceLeaveResponse{}
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProjectServiceLeaveResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProjectServiceLeaveResponse) ProtoMessage() {}
+
+func (x *ProjectServiceLeaveResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProjectServiceLeaveResponse.ProtoReflect.Descriptor instead.
+func (*ProjectServiceLeaveResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{20}
+}
+
 // ProjectServiceRemoveMemberRequest is used to remove a member from a project
 type ProjectServiceRemoveMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1186,7 +1269,7 @@ type ProjectServiceRemoveMemberRequest struct {
 
 func (x *ProjectServiceRemoveMemberRequest) Reset() {
 	*x = ProjectServiceRemoveMemberRequest{}
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[19]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1198,7 +1281,7 @@ func (x *ProjectServiceRemoveMemberRequest) String() string {
 func (*ProjectServiceRemoveMemberRequest) ProtoMessage() {}
 
 func (x *ProjectServiceRemoveMemberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[19]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1211,7 +1294,7 @@ func (x *ProjectServiceRemoveMemberRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ProjectServiceRemoveMemberRequest.ProtoReflect.Descriptor instead.
 func (*ProjectServiceRemoveMemberRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{19}
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *ProjectServiceRemoveMemberRequest) GetProject() string {
@@ -1237,7 +1320,7 @@ type ProjectServiceRemoveMemberResponse struct {
 
 func (x *ProjectServiceRemoveMemberResponse) Reset() {
 	*x = ProjectServiceRemoveMemberResponse{}
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[20]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1249,7 +1332,7 @@ func (x *ProjectServiceRemoveMemberResponse) String() string {
 func (*ProjectServiceRemoveMemberResponse) ProtoMessage() {}
 
 func (x *ProjectServiceRemoveMemberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[20]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1262,7 +1345,7 @@ func (x *ProjectServiceRemoveMemberResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ProjectServiceRemoveMemberResponse.ProtoReflect.Descriptor instead.
 func (*ProjectServiceRemoveMemberResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{20}
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{22}
 }
 
 // ProjectServiceUpdateMemberRequest is used to update a member of a project
@@ -1280,7 +1363,7 @@ type ProjectServiceUpdateMemberRequest struct {
 
 func (x *ProjectServiceUpdateMemberRequest) Reset() {
 	*x = ProjectServiceUpdateMemberRequest{}
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[21]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1292,7 +1375,7 @@ func (x *ProjectServiceUpdateMemberRequest) String() string {
 func (*ProjectServiceUpdateMemberRequest) ProtoMessage() {}
 
 func (x *ProjectServiceUpdateMemberRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[21]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1305,7 +1388,7 @@ func (x *ProjectServiceUpdateMemberRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ProjectServiceUpdateMemberRequest.ProtoReflect.Descriptor instead.
 func (*ProjectServiceUpdateMemberRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{21}
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ProjectServiceUpdateMemberRequest) GetProject() string {
@@ -1340,7 +1423,7 @@ type ProjectServiceUpdateMemberResponse struct {
 
 func (x *ProjectServiceUpdateMemberResponse) Reset() {
 	*x = ProjectServiceUpdateMemberResponse{}
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[22]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1352,7 +1435,7 @@ func (x *ProjectServiceUpdateMemberResponse) String() string {
 func (*ProjectServiceUpdateMemberResponse) ProtoMessage() {}
 
 func (x *ProjectServiceUpdateMemberResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[22]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1365,7 +1448,7 @@ func (x *ProjectServiceUpdateMemberResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ProjectServiceUpdateMemberResponse.ProtoReflect.Descriptor instead.
 func (*ProjectServiceUpdateMemberResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{22}
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ProjectServiceUpdateMemberResponse) GetProjectMember() *ProjectMember {
@@ -1386,7 +1469,7 @@ type ProjectServiceInviteAcceptRequest struct {
 
 func (x *ProjectServiceInviteAcceptRequest) Reset() {
 	*x = ProjectServiceInviteAcceptRequest{}
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[23]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1398,7 +1481,7 @@ func (x *ProjectServiceInviteAcceptRequest) String() string {
 func (*ProjectServiceInviteAcceptRequest) ProtoMessage() {}
 
 func (x *ProjectServiceInviteAcceptRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[23]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1411,7 +1494,7 @@ func (x *ProjectServiceInviteAcceptRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ProjectServiceInviteAcceptRequest.ProtoReflect.Descriptor instead.
 func (*ProjectServiceInviteAcceptRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{23}
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ProjectServiceInviteAcceptRequest) GetSecret() string {
@@ -1434,7 +1517,7 @@ type ProjectServiceInviteAcceptResponse struct {
 
 func (x *ProjectServiceInviteAcceptResponse) Reset() {
 	*x = ProjectServiceInviteAcceptResponse{}
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[24]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1446,7 +1529,7 @@ func (x *ProjectServiceInviteAcceptResponse) String() string {
 func (*ProjectServiceInviteAcceptResponse) ProtoMessage() {}
 
 func (x *ProjectServiceInviteAcceptResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[24]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1459,7 +1542,7 @@ func (x *ProjectServiceInviteAcceptResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ProjectServiceInviteAcceptResponse.ProtoReflect.Descriptor instead.
 func (*ProjectServiceInviteAcceptResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{24}
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ProjectServiceInviteAcceptResponse) GetProject() string {
@@ -1489,7 +1572,7 @@ type ProjectServiceInviteDeleteRequest struct {
 
 func (x *ProjectServiceInviteDeleteRequest) Reset() {
 	*x = ProjectServiceInviteDeleteRequest{}
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[25]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1501,7 +1584,7 @@ func (x *ProjectServiceInviteDeleteRequest) String() string {
 func (*ProjectServiceInviteDeleteRequest) ProtoMessage() {}
 
 func (x *ProjectServiceInviteDeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[25]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1514,7 +1597,7 @@ func (x *ProjectServiceInviteDeleteRequest) ProtoReflect() protoreflect.Message 
 
 // Deprecated: Use ProjectServiceInviteDeleteRequest.ProtoReflect.Descriptor instead.
 func (*ProjectServiceInviteDeleteRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{25}
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *ProjectServiceInviteDeleteRequest) GetProject() string {
@@ -1540,7 +1623,7 @@ type ProjectServiceInviteDeleteResponse struct {
 
 func (x *ProjectServiceInviteDeleteResponse) Reset() {
 	*x = ProjectServiceInviteDeleteResponse{}
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[26]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1552,7 +1635,7 @@ func (x *ProjectServiceInviteDeleteResponse) String() string {
 func (*ProjectServiceInviteDeleteResponse) ProtoMessage() {}
 
 func (x *ProjectServiceInviteDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_project_proto_msgTypes[26]
+	mi := &file_metalstack_api_v2_project_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1565,7 +1648,7 @@ func (x *ProjectServiceInviteDeleteResponse) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ProjectServiceInviteDeleteResponse.ProtoReflect.Descriptor instead.
 func (*ProjectServiceInviteDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{26}
+	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{28}
 }
 
 var File_metalstack_api_v2_project_proto protoreflect.FileDescriptor
@@ -1661,7 +1744,10 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\x1eProjectServiceInviteGetRequest\x12\x16\n" +
 	"\x06secret\x18\x01 \x01(\tR\x06secret\"[\n" +
 	"\x1fProjectServiceInviteGetResponse\x128\n" +
-	"\x06invite\x18\x01 \x01(\v2 .metalstack.api.v2.ProjectInviteR\x06invite\"_\n" +
+	"\x06invite\x18\x01 \x01(\v2 .metalstack.api.v2.ProjectInviteR\x06invite\"@\n" +
+	"\x1aProjectServiceLeaveRequest\x12\"\n" +
+	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\x1d\n" +
+	"\x1bProjectServiceLeaveResponse\"_\n" +
 	"!ProjectServiceRemoveMemberRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x16\n" +
 	"\x06member\x18\x02 \x01(\tR\x06member\"$\n" +
@@ -1680,7 +1766,7 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"!ProjectServiceInviteDeleteRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x16\n" +
 	"\x06secret\x18\x02 \x01(\tR\x06secret\"$\n" +
-	"\"ProjectServiceInviteDeleteResponse2\xef\v\n" +
+	"\"ProjectServiceInviteDeleteResponse2\xe2\f\n" +
 	"\x0eProjectService\x12m\n" +
 	"\x04List\x12,.metalstack.api.v2.ProjectServiceListRequest\x1a-.metalstack.api.v2.ProjectServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12m\n" +
 	"\x03Get\x12+.metalstack.api.v2.ProjectServiceGetRequest\x1a,.metalstack.api.v2.ProjectServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12u\n" +
@@ -1688,7 +1774,8 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\xc2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12t\n" +
 	"\x06Delete\x12..metalstack.api.v2.ProjectServiceDeleteRequest\x1a/.metalstack.api.v2.ProjectServiceDeleteResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12u\n" +
 	"\x06Update\x12..metalstack.api.v2.ProjectServiceUpdateRequest\x1a/.metalstack.api.v2.ProjectServiceUpdateResponse\"\n" +
-	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12\x86\x01\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12q\n" +
+	"\x05Leave\x12-.metalstack.api.v2.ProjectServiceLeaveRequest\x1a..metalstack.api.v2.ProjectServiceLeaveResponse\"\t\xca\xf3\x18\x01\x03\xe0\xf3\x18\x01\x12\x86\x01\n" +
 	"\fRemoveMember\x124.metalstack.api.v2.ProjectServiceRemoveMemberRequest\x1a5.metalstack.api.v2.ProjectServiceRemoveMemberResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x86\x01\n" +
 	"\fUpdateMember\x124.metalstack.api.v2.ProjectServiceUpdateMemberRequest\x1a5.metalstack.api.v2.ProjectServiceUpdateMemberResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n" +
 	"\x06Invite\x12..metalstack.api.v2.ProjectServiceInviteRequest\x1a/.metalstack.api.v2.ProjectServiceInviteResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x85\x01\n" +
@@ -1710,7 +1797,7 @@ func file_metalstack_api_v2_project_proto_rawDescGZIP() []byte {
 	return file_metalstack_api_v2_project_proto_rawDescData
 }
 
-var file_metalstack_api_v2_project_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_metalstack_api_v2_project_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_metalstack_api_v2_project_proto_goTypes = []any{
 	(*Project)(nil),                            // 0: metalstack.api.v2.Project
 	(*ProjectMember)(nil),                      // 1: metalstack.api.v2.ProjectMember
@@ -1731,70 +1818,74 @@ var file_metalstack_api_v2_project_proto_goTypes = []any{
 	(*ProjectServiceInvitesListResponse)(nil),  // 16: metalstack.api.v2.ProjectServiceInvitesListResponse
 	(*ProjectServiceInviteGetRequest)(nil),     // 17: metalstack.api.v2.ProjectServiceInviteGetRequest
 	(*ProjectServiceInviteGetResponse)(nil),    // 18: metalstack.api.v2.ProjectServiceInviteGetResponse
-	(*ProjectServiceRemoveMemberRequest)(nil),  // 19: metalstack.api.v2.ProjectServiceRemoveMemberRequest
-	(*ProjectServiceRemoveMemberResponse)(nil), // 20: metalstack.api.v2.ProjectServiceRemoveMemberResponse
-	(*ProjectServiceUpdateMemberRequest)(nil),  // 21: metalstack.api.v2.ProjectServiceUpdateMemberRequest
-	(*ProjectServiceUpdateMemberResponse)(nil), // 22: metalstack.api.v2.ProjectServiceUpdateMemberResponse
-	(*ProjectServiceInviteAcceptRequest)(nil),  // 23: metalstack.api.v2.ProjectServiceInviteAcceptRequest
-	(*ProjectServiceInviteAcceptResponse)(nil), // 24: metalstack.api.v2.ProjectServiceInviteAcceptResponse
-	(*ProjectServiceInviteDeleteRequest)(nil),  // 25: metalstack.api.v2.ProjectServiceInviteDeleteRequest
-	(*ProjectServiceInviteDeleteResponse)(nil), // 26: metalstack.api.v2.ProjectServiceInviteDeleteResponse
-	(*Meta)(nil),                  // 27: metalstack.api.v2.Meta
-	(ProjectRole)(0),              // 28: metalstack.api.v2.ProjectRole
-	(*timestamppb.Timestamp)(nil), // 29: google.protobuf.Timestamp
-	(*Labels)(nil),                // 30: metalstack.api.v2.Labels
-	(*UpdateMeta)(nil),            // 31: metalstack.api.v2.UpdateMeta
-	(*UpdateLabels)(nil),          // 32: metalstack.api.v2.UpdateLabels
+	(*ProjectServiceLeaveRequest)(nil),         // 19: metalstack.api.v2.ProjectServiceLeaveRequest
+	(*ProjectServiceLeaveResponse)(nil),        // 20: metalstack.api.v2.ProjectServiceLeaveResponse
+	(*ProjectServiceRemoveMemberRequest)(nil),  // 21: metalstack.api.v2.ProjectServiceRemoveMemberRequest
+	(*ProjectServiceRemoveMemberResponse)(nil), // 22: metalstack.api.v2.ProjectServiceRemoveMemberResponse
+	(*ProjectServiceUpdateMemberRequest)(nil),  // 23: metalstack.api.v2.ProjectServiceUpdateMemberRequest
+	(*ProjectServiceUpdateMemberResponse)(nil), // 24: metalstack.api.v2.ProjectServiceUpdateMemberResponse
+	(*ProjectServiceInviteAcceptRequest)(nil),  // 25: metalstack.api.v2.ProjectServiceInviteAcceptRequest
+	(*ProjectServiceInviteAcceptResponse)(nil), // 26: metalstack.api.v2.ProjectServiceInviteAcceptResponse
+	(*ProjectServiceInviteDeleteRequest)(nil),  // 27: metalstack.api.v2.ProjectServiceInviteDeleteRequest
+	(*ProjectServiceInviteDeleteResponse)(nil), // 28: metalstack.api.v2.ProjectServiceInviteDeleteResponse
+	(*Meta)(nil),                  // 29: metalstack.api.v2.Meta
+	(ProjectRole)(0),              // 30: metalstack.api.v2.ProjectRole
+	(*timestamppb.Timestamp)(nil), // 31: google.protobuf.Timestamp
+	(*Labels)(nil),                // 32: metalstack.api.v2.Labels
+	(*UpdateMeta)(nil),            // 33: metalstack.api.v2.UpdateMeta
+	(*UpdateLabels)(nil),          // 34: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_api_v2_project_proto_depIdxs = []int32{
-	27, // 0: metalstack.api.v2.Project.meta:type_name -> metalstack.api.v2.Meta
-	28, // 1: metalstack.api.v2.ProjectMember.role:type_name -> metalstack.api.v2.ProjectRole
-	29, // 2: metalstack.api.v2.ProjectMember.created_at:type_name -> google.protobuf.Timestamp
-	28, // 3: metalstack.api.v2.ProjectInvite.role:type_name -> metalstack.api.v2.ProjectRole
-	29, // 4: metalstack.api.v2.ProjectInvite.expires_at:type_name -> google.protobuf.Timestamp
-	29, // 5: metalstack.api.v2.ProjectInvite.joined_at:type_name -> google.protobuf.Timestamp
-	30, // 6: metalstack.api.v2.ProjectServiceListRequest.labels:type_name -> metalstack.api.v2.Labels
+	29, // 0: metalstack.api.v2.Project.meta:type_name -> metalstack.api.v2.Meta
+	30, // 1: metalstack.api.v2.ProjectMember.role:type_name -> metalstack.api.v2.ProjectRole
+	31, // 2: metalstack.api.v2.ProjectMember.created_at:type_name -> google.protobuf.Timestamp
+	30, // 3: metalstack.api.v2.ProjectInvite.role:type_name -> metalstack.api.v2.ProjectRole
+	31, // 4: metalstack.api.v2.ProjectInvite.expires_at:type_name -> google.protobuf.Timestamp
+	31, // 5: metalstack.api.v2.ProjectInvite.joined_at:type_name -> google.protobuf.Timestamp
+	32, // 6: metalstack.api.v2.ProjectServiceListRequest.labels:type_name -> metalstack.api.v2.Labels
 	0,  // 7: metalstack.api.v2.ProjectServiceListResponse.projects:type_name -> metalstack.api.v2.Project
 	0,  // 8: metalstack.api.v2.ProjectServiceGetResponse.project:type_name -> metalstack.api.v2.Project
 	1,  // 9: metalstack.api.v2.ProjectServiceGetResponse.project_members:type_name -> metalstack.api.v2.ProjectMember
-	30, // 10: metalstack.api.v2.ProjectServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	32, // 10: metalstack.api.v2.ProjectServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
 	0,  // 11: metalstack.api.v2.ProjectServiceCreateResponse.project:type_name -> metalstack.api.v2.Project
 	0,  // 12: metalstack.api.v2.ProjectServiceDeleteResponse.project:type_name -> metalstack.api.v2.Project
-	31, // 13: metalstack.api.v2.ProjectServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	32, // 14: metalstack.api.v2.ProjectServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	33, // 13: metalstack.api.v2.ProjectServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	34, // 14: metalstack.api.v2.ProjectServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	0,  // 15: metalstack.api.v2.ProjectServiceUpdateResponse.project:type_name -> metalstack.api.v2.Project
-	28, // 16: metalstack.api.v2.ProjectServiceInviteRequest.role:type_name -> metalstack.api.v2.ProjectRole
+	30, // 16: metalstack.api.v2.ProjectServiceInviteRequest.role:type_name -> metalstack.api.v2.ProjectRole
 	2,  // 17: metalstack.api.v2.ProjectServiceInviteResponse.invite:type_name -> metalstack.api.v2.ProjectInvite
 	2,  // 18: metalstack.api.v2.ProjectServiceInvitesListResponse.invites:type_name -> metalstack.api.v2.ProjectInvite
 	2,  // 19: metalstack.api.v2.ProjectServiceInviteGetResponse.invite:type_name -> metalstack.api.v2.ProjectInvite
-	28, // 20: metalstack.api.v2.ProjectServiceUpdateMemberRequest.role:type_name -> metalstack.api.v2.ProjectRole
+	30, // 20: metalstack.api.v2.ProjectServiceUpdateMemberRequest.role:type_name -> metalstack.api.v2.ProjectRole
 	1,  // 21: metalstack.api.v2.ProjectServiceUpdateMemberResponse.project_member:type_name -> metalstack.api.v2.ProjectMember
 	3,  // 22: metalstack.api.v2.ProjectService.List:input_type -> metalstack.api.v2.ProjectServiceListRequest
 	5,  // 23: metalstack.api.v2.ProjectService.Get:input_type -> metalstack.api.v2.ProjectServiceGetRequest
 	7,  // 24: metalstack.api.v2.ProjectService.Create:input_type -> metalstack.api.v2.ProjectServiceCreateRequest
 	9,  // 25: metalstack.api.v2.ProjectService.Delete:input_type -> metalstack.api.v2.ProjectServiceDeleteRequest
 	11, // 26: metalstack.api.v2.ProjectService.Update:input_type -> metalstack.api.v2.ProjectServiceUpdateRequest
-	19, // 27: metalstack.api.v2.ProjectService.RemoveMember:input_type -> metalstack.api.v2.ProjectServiceRemoveMemberRequest
-	21, // 28: metalstack.api.v2.ProjectService.UpdateMember:input_type -> metalstack.api.v2.ProjectServiceUpdateMemberRequest
-	13, // 29: metalstack.api.v2.ProjectService.Invite:input_type -> metalstack.api.v2.ProjectServiceInviteRequest
-	23, // 30: metalstack.api.v2.ProjectService.InviteAccept:input_type -> metalstack.api.v2.ProjectServiceInviteAcceptRequest
-	25, // 31: metalstack.api.v2.ProjectService.InviteDelete:input_type -> metalstack.api.v2.ProjectServiceInviteDeleteRequest
-	15, // 32: metalstack.api.v2.ProjectService.InvitesList:input_type -> metalstack.api.v2.ProjectServiceInvitesListRequest
-	17, // 33: metalstack.api.v2.ProjectService.InviteGet:input_type -> metalstack.api.v2.ProjectServiceInviteGetRequest
-	4,  // 34: metalstack.api.v2.ProjectService.List:output_type -> metalstack.api.v2.ProjectServiceListResponse
-	6,  // 35: metalstack.api.v2.ProjectService.Get:output_type -> metalstack.api.v2.ProjectServiceGetResponse
-	8,  // 36: metalstack.api.v2.ProjectService.Create:output_type -> metalstack.api.v2.ProjectServiceCreateResponse
-	10, // 37: metalstack.api.v2.ProjectService.Delete:output_type -> metalstack.api.v2.ProjectServiceDeleteResponse
-	12, // 38: metalstack.api.v2.ProjectService.Update:output_type -> metalstack.api.v2.ProjectServiceUpdateResponse
-	20, // 39: metalstack.api.v2.ProjectService.RemoveMember:output_type -> metalstack.api.v2.ProjectServiceRemoveMemberResponse
-	22, // 40: metalstack.api.v2.ProjectService.UpdateMember:output_type -> metalstack.api.v2.ProjectServiceUpdateMemberResponse
-	14, // 41: metalstack.api.v2.ProjectService.Invite:output_type -> metalstack.api.v2.ProjectServiceInviteResponse
-	24, // 42: metalstack.api.v2.ProjectService.InviteAccept:output_type -> metalstack.api.v2.ProjectServiceInviteAcceptResponse
-	26, // 43: metalstack.api.v2.ProjectService.InviteDelete:output_type -> metalstack.api.v2.ProjectServiceInviteDeleteResponse
-	16, // 44: metalstack.api.v2.ProjectService.InvitesList:output_type -> metalstack.api.v2.ProjectServiceInvitesListResponse
-	18, // 45: metalstack.api.v2.ProjectService.InviteGet:output_type -> metalstack.api.v2.ProjectServiceInviteGetResponse
-	34, // [34:46] is the sub-list for method output_type
-	22, // [22:34] is the sub-list for method input_type
+	19, // 27: metalstack.api.v2.ProjectService.Leave:input_type -> metalstack.api.v2.ProjectServiceLeaveRequest
+	21, // 28: metalstack.api.v2.ProjectService.RemoveMember:input_type -> metalstack.api.v2.ProjectServiceRemoveMemberRequest
+	23, // 29: metalstack.api.v2.ProjectService.UpdateMember:input_type -> metalstack.api.v2.ProjectServiceUpdateMemberRequest
+	13, // 30: metalstack.api.v2.ProjectService.Invite:input_type -> metalstack.api.v2.ProjectServiceInviteRequest
+	25, // 31: metalstack.api.v2.ProjectService.InviteAccept:input_type -> metalstack.api.v2.ProjectServiceInviteAcceptRequest
+	27, // 32: metalstack.api.v2.ProjectService.InviteDelete:input_type -> metalstack.api.v2.ProjectServiceInviteDeleteRequest
+	15, // 33: metalstack.api.v2.ProjectService.InvitesList:input_type -> metalstack.api.v2.ProjectServiceInvitesListRequest
+	17, // 34: metalstack.api.v2.ProjectService.InviteGet:input_type -> metalstack.api.v2.ProjectServiceInviteGetRequest
+	4,  // 35: metalstack.api.v2.ProjectService.List:output_type -> metalstack.api.v2.ProjectServiceListResponse
+	6,  // 36: metalstack.api.v2.ProjectService.Get:output_type -> metalstack.api.v2.ProjectServiceGetResponse
+	8,  // 37: metalstack.api.v2.ProjectService.Create:output_type -> metalstack.api.v2.ProjectServiceCreateResponse
+	10, // 38: metalstack.api.v2.ProjectService.Delete:output_type -> metalstack.api.v2.ProjectServiceDeleteResponse
+	12, // 39: metalstack.api.v2.ProjectService.Update:output_type -> metalstack.api.v2.ProjectServiceUpdateResponse
+	20, // 40: metalstack.api.v2.ProjectService.Leave:output_type -> metalstack.api.v2.ProjectServiceLeaveResponse
+	22, // 41: metalstack.api.v2.ProjectService.RemoveMember:output_type -> metalstack.api.v2.ProjectServiceRemoveMemberResponse
+	24, // 42: metalstack.api.v2.ProjectService.UpdateMember:output_type -> metalstack.api.v2.ProjectServiceUpdateMemberResponse
+	14, // 43: metalstack.api.v2.ProjectService.Invite:output_type -> metalstack.api.v2.ProjectServiceInviteResponse
+	26, // 44: metalstack.api.v2.ProjectService.InviteAccept:output_type -> metalstack.api.v2.ProjectServiceInviteAcceptResponse
+	28, // 45: metalstack.api.v2.ProjectService.InviteDelete:output_type -> metalstack.api.v2.ProjectServiceInviteDeleteResponse
+	16, // 46: metalstack.api.v2.ProjectService.InvitesList:output_type -> metalstack.api.v2.ProjectServiceInvitesListResponse
+	18, // 47: metalstack.api.v2.ProjectService.InviteGet:output_type -> metalstack.api.v2.ProjectServiceInviteGetResponse
+	35, // [35:48] is the sub-list for method output_type
+	22, // [22:35] is the sub-list for method input_type
 	22, // [22:22] is the sub-list for extension type_name
 	22, // [22:22] is the sub-list for extension extendee
 	0,  // [0:22] is the sub-list for field type_name
@@ -1817,7 +1908,7 @@ func file_metalstack_api_v2_project_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_project_proto_rawDesc), len(file_metalstack_api_v2_project_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   27,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
