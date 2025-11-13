@@ -1,9 +1,9 @@
 .PHONY: generate
 generate: go-mocks
 	# we remove files explicitly to ensure files really get generated
-# 	rm -f ../go/permissions/servicepermissions.go
-# 	rm -f ../go/client/client.go
-# 	rm -f ../go/tests/mock_clients.go
+	rm -f ../go/permissions/servicepermissions.go
+	rm -f ../go/client/client.go
+	rm -f ../go/tests/mock_clients.go
 
 	go run ./generate.go
 
