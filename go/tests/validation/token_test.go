@@ -48,6 +48,40 @@ func TestValidateToken(t *testing.T) {
 			wantErrorMessage: `validation error:
  - project_roles["00000000-0000-0000-0000-000000000000"]: value must be one of the defined enum values [enum.defined_only]`,
 		},
+		{
+			name: "InValid Token, user token with permissions",
+			msg: &apiv2.Token{
+				Uuid:        "00000000-0000-0000-0000-000000000000",
+				User:        "user-a",
+				Description: "B Token",
+				Permissions: []*apiv2.MethodPermission{
+					{
+						Subject: "project-a",
+						Methods: []string{"/metalstack.admin.v2.IPService/List"},
+					},
+				},
+				TokenType: apiv2.TokenType_TOKEN_TYPE_USER,
+			},
+			wantErr: true,
+			wantErrorMessage: `validation error:
+ - token type user must not have permissions [token.permissions.usertoken]`,
+		},
+		{
+			name: "Valid Token, api token with permissions",
+			msg: &apiv2.Token{
+				Uuid:        "00000000-0000-0000-0000-000000000000",
+				User:        "user-a",
+				Description: "B Token",
+				Permissions: []*apiv2.MethodPermission{
+					{
+						Subject: "project-a",
+						Methods: []string{"/metalstack.admin.v2.IPService/List"},
+					},
+				},
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+			},
+			wantErr: false,
+		},
 	}
 
 	validateProtos(t, tests)

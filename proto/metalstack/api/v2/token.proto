@@ -49,6 +49,12 @@ service TokenService {
 // The api token should be used to authenticate services.
 // In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
 message Token {
+  // Message level validation, can be developed using https://protovalidate.com/playground
+  option (buf.validate.message).cel = {
+    id: "token.permissions.usertoken"
+    message: "token type user must not have permissions"
+    expression: "(this.token_type == 2 && this.permissions.size() == 0) || this.token_type != 2"
+  };
   // Uuid of the jwt token, used to reference it by revoke
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // User who created this token
