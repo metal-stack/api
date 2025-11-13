@@ -81,7 +81,7 @@ func Test_authorizer_allowed(t *testing.T) {
 			},
 			method:  "/metalstack.api.v2.IPService/Get",
 			subject: "project-b",
-			wantErr: errors.New("permission_denied: access to:\"/metalstack.api.v2.IPService/Get\" with subject:\"project-b\" is not allowed because it is not part of the token permissions"),
+			wantErr: errors.New("permission_denied: access to:\"/metalstack.api.v2.IPService/Get\" with subject:\"project-b\" is not allowed because it is not part of the token permissions, allowed subjects are:[\"project-a\"]"),
 		},
 		{
 			name: "admin editor access",

@@ -329,6 +329,10 @@ type MethodPermission struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Subject maybe either the project or the tenant
 	// for which the methods should be allowed
+	//
+	// asterisk (*) could be specified to match any subject
+	// empty string ("") could be specified if only request should match which do not have a subject required, e.g. partition list
+	// otherwise either a projectid or a tenant login should be specified
 	Subject string `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
 	// Methods which should be accessible
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
@@ -986,10 +990,9 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x10TenantRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x123\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleR\x05value:\x028\x01B\r\n" +
-	"\v_admin_role\"]\n" +
-	"\x10MethodPermission\x12$\n" +
-	"\asubject\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\asubject\x12#\n" +
+	"\v_admin_role\"[\n" +
+	"\x10MethodPermission\x12\"\n" +
+	"\asubject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\asubject\x12#\n" +
 	"\amethods\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\amethods\"d\n" +
 	"\x1aTokenServiceCreateResponse\x12.\n" +
 	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n" +
