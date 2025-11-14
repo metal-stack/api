@@ -22,6 +22,9 @@ class TokenService(Protocol):
     async def revoke(self, request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def create(self, request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class TokenServiceASGIApplication(ConnectASGIApplication):
     def __init__(self, service: TokenService, *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -46,6 +49,16 @@ class TokenServiceASGIApplication(ConnectASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.revoke,
+                ),
+                "/metalstack.admin.v2.TokenService/Create": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Create",
+                        service_name="metalstack.admin.v2.TokenService",
+                        input=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.create,
                 ),
             },
             interceptors=interceptors,
@@ -99,11 +112,33 @@ class TokenServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def create(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Create",
+                service_name="metalstack.admin.v2.TokenService",
+                input=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 class TokenServiceSync(Protocol):
     def list(self, request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def revoke(self, request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def create(self, request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -130,6 +165,16 @@ class TokenServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.revoke,
+                ),
+                "/metalstack.admin.v2.TokenService/Create": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Create",
+                        service_name="metalstack.admin.v2.TokenService",
+                        input=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.create,
                 ),
             },
             interceptors=interceptors,
@@ -177,6 +222,26 @@ class TokenServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.TokenService",
                 input=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeRequest,
                 output=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceRevokeResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def create(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Create",
+                service_name="metalstack.admin.v2.TokenService",
+                input=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceCreateResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

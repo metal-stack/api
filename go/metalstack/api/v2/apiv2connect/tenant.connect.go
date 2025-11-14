@@ -43,6 +43,8 @@ const (
 	TenantServiceUpdateProcedure = "/metalstack.api.v2.TenantService/Update"
 	// TenantServiceDeleteProcedure is the fully-qualified name of the TenantService's Delete RPC.
 	TenantServiceDeleteProcedure = "/metalstack.api.v2.TenantService/Delete"
+	// TenantServiceLeaveProcedure is the fully-qualified name of the TenantService's Leave RPC.
+	TenantServiceLeaveProcedure = "/metalstack.api.v2.TenantService/Leave"
 	// TenantServiceRemoveMemberProcedure is the fully-qualified name of the TenantService's
 	// RemoveMember RPC.
 	TenantServiceRemoveMemberProcedure = "/metalstack.api.v2.TenantService/RemoveMember"
@@ -76,6 +78,8 @@ type TenantServiceClient interface {
 	Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error)
 	// Delete a tenant
 	Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error)
+	// Leave remove a member of a tenant
+	Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error)
 	// RemoveMember remove a member of a tenant
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 	// UpdateMember update a member of a tenant
@@ -133,6 +137,12 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(tenantServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
+		leave: connect.NewClient[v2.TenantServiceLeaveRequest, v2.TenantServiceLeaveResponse](
+			httpClient,
+			baseURL+TenantServiceLeaveProcedure,
+			connect.WithSchema(tenantServiceMethods.ByName("Leave")),
+			connect.WithClientOptions(opts...),
+		),
 		removeMember: connect.NewClient[v2.TenantServiceRemoveMemberRequest, v2.TenantServiceRemoveMemberResponse](
 			httpClient,
 			baseURL+TenantServiceRemoveMemberProcedure,
@@ -185,6 +195,7 @@ type tenantServiceClient struct {
 	get          *connect.Client[v2.TenantServiceGetRequest, v2.TenantServiceGetResponse]
 	update       *connect.Client[v2.TenantServiceUpdateRequest, v2.TenantServiceUpdateResponse]
 	delete       *connect.Client[v2.TenantServiceDeleteRequest, v2.TenantServiceDeleteResponse]
+	leave        *connect.Client[v2.TenantServiceLeaveRequest, v2.TenantServiceLeaveResponse]
 	removeMember *connect.Client[v2.TenantServiceRemoveMemberRequest, v2.TenantServiceRemoveMemberResponse]
 	updateMember *connect.Client[v2.TenantServiceUpdateMemberRequest, v2.TenantServiceUpdateMemberResponse]
 	invite       *connect.Client[v2.TenantServiceInviteRequest, v2.TenantServiceInviteResponse]
@@ -233,6 +244,15 @@ func (c *tenantServiceClient) Update(ctx context.Context, req *v2.TenantServiceU
 // Delete calls metalstack.api.v2.TenantService.Delete.
 func (c *tenantServiceClient) Delete(ctx context.Context, req *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error) {
 	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// Leave calls metalstack.api.v2.TenantService.Leave.
+func (c *tenantServiceClient) Leave(ctx context.Context, req *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error) {
+	response, err := c.leave.CallUnary(ctx, connect.NewRequest(req))
 	if response != nil {
 		return response.Msg, err
 	}
@@ -314,6 +334,8 @@ type TenantServiceHandler interface {
 	Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error)
 	// Delete a tenant
 	Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error)
+	// Leave remove a member of a tenant
+	Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error)
 	// RemoveMember remove a member of a tenant
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 	// UpdateMember update a member of a tenant
@@ -365,6 +387,12 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 		TenantServiceDeleteProcedure,
 		svc.Delete,
 		connect.WithSchema(tenantServiceMethods.ByName("Delete")),
+		connect.WithHandlerOptions(opts...),
+	)
+	tenantServiceLeaveHandler := connect.NewUnaryHandlerSimple(
+		TenantServiceLeaveProcedure,
+		svc.Leave,
+		connect.WithSchema(tenantServiceMethods.ByName("Leave")),
 		connect.WithHandlerOptions(opts...),
 	)
 	tenantServiceRemoveMemberHandler := connect.NewUnaryHandlerSimple(
@@ -421,6 +449,8 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 			tenantServiceUpdateHandler.ServeHTTP(w, r)
 		case TenantServiceDeleteProcedure:
 			tenantServiceDeleteHandler.ServeHTTP(w, r)
+		case TenantServiceLeaveProcedure:
+			tenantServiceLeaveHandler.ServeHTTP(w, r)
 		case TenantServiceRemoveMemberProcedure:
 			tenantServiceRemoveMemberHandler.ServeHTTP(w, r)
 		case TenantServiceUpdateMemberProcedure:
@@ -462,6 +492,10 @@ func (UnimplementedTenantServiceHandler) Update(context.Context, *v2.TenantServi
 
 func (UnimplementedTenantServiceHandler) Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Delete is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Leave is not implemented"))
 }
 
 func (UnimplementedTenantServiceHandler) RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error) {

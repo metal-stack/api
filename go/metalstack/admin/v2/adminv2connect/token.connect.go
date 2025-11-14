@@ -37,6 +37,8 @@ const (
 	TokenServiceListProcedure = "/metalstack.admin.v2.TokenService/List"
 	// TokenServiceRevokeProcedure is the fully-qualified name of the TokenService's Revoke RPC.
 	TokenServiceRevokeProcedure = "/metalstack.admin.v2.TokenService/Revoke"
+	// TokenServiceCreateProcedure is the fully-qualified name of the TokenService's Create RPC.
+	TokenServiceCreateProcedure = "/metalstack.admin.v2.TokenService/Create"
 )
 
 // TokenServiceClient is a client for the metalstack.admin.v2.TokenService service.
@@ -45,6 +47,9 @@ type TokenServiceClient interface {
 	List(context.Context, *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error)
 	// Revoke a token
 	Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error)
+	// Create a token to authenticate against the platform, the secret will be only visible in the response.
+	// This service is suitable to create tokens for other users instead of deriving users from tokens directly.
+	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
 }
 
 // NewTokenServiceClient constructs a client for the metalstack.admin.v2.TokenService service. By
@@ -70,6 +75,12 @@ func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 			connect.WithSchema(tokenServiceMethods.ByName("Revoke")),
 			connect.WithClientOptions(opts...),
 		),
+		create: connect.NewClient[v2.TokenServiceCreateRequest, v2.TokenServiceCreateResponse](
+			httpClient,
+			baseURL+TokenServiceCreateProcedure,
+			connect.WithSchema(tokenServiceMethods.ByName("Create")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -77,6 +88,7 @@ func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts .
 type tokenServiceClient struct {
 	list   *connect.Client[v2.TokenServiceListRequest, v2.TokenServiceListResponse]
 	revoke *connect.Client[v2.TokenServiceRevokeRequest, v2.TokenServiceRevokeResponse]
+	create *connect.Client[v2.TokenServiceCreateRequest, v2.TokenServiceCreateResponse]
 }
 
 // List calls metalstack.admin.v2.TokenService.List.
@@ -97,12 +109,24 @@ func (c *tokenServiceClient) Revoke(ctx context.Context, req *v2.TokenServiceRev
 	return nil, err
 }
 
+// Create calls metalstack.admin.v2.TokenService.Create.
+func (c *tokenServiceClient) Create(ctx context.Context, req *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // TokenServiceHandler is an implementation of the metalstack.admin.v2.TokenService service.
 type TokenServiceHandler interface {
 	// List tokens
 	List(context.Context, *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error)
 	// Revoke a token
 	Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error)
+	// Create a token to authenticate against the platform, the secret will be only visible in the response.
+	// This service is suitable to create tokens for other users instead of deriving users from tokens directly.
+	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
 }
 
 // NewTokenServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -124,12 +148,20 @@ func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOpti
 		connect.WithSchema(tokenServiceMethods.ByName("Revoke")),
 		connect.WithHandlerOptions(opts...),
 	)
+	tokenServiceCreateHandler := connect.NewUnaryHandlerSimple(
+		TokenServiceCreateProcedure,
+		svc.Create,
+		connect.WithSchema(tokenServiceMethods.ByName("Create")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.TokenService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case TokenServiceListProcedure:
 			tokenServiceListHandler.ServeHTTP(w, r)
 		case TokenServiceRevokeProcedure:
 			tokenServiceRevokeHandler.ServeHTTP(w, r)
+		case TokenServiceCreateProcedure:
+			tokenServiceCreateHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -145,4 +177,8 @@ func (UnimplementedTokenServiceHandler) List(context.Context, *v2.TokenServiceLi
 
 func (UnimplementedTokenServiceHandler) Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TokenService.Revoke is not implemented"))
+}
+
+func (UnimplementedTokenServiceHandler) Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TokenService.Create is not implemented"))
 }

@@ -38,6 +38,11 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (auditing) = AUDITING_INCLUDED;
   }
+  // Leave project
+  rpc Leave(ProjectServiceLeaveRequest) returns (ProjectServiceLeaveResponse) {
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
   // RemoveMember remove a user from a project
   rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -261,6 +266,15 @@ message ProjectServiceInviteGetResponse {
   // Invite is the invite
   ProjectInvite invite = 1;
 }
+
+// ProjectServiceLeaveRequest is used to leave a project
+message ProjectServiceLeaveRequest {
+  // Project is the uuid of the project
+  string project = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// ProjectServiceLeaveResponse is the response payload to a leave project request
+message ProjectServiceLeaveResponse {}
 
 // ProjectServiceRemoveMemberRequest is used to remove a member from a project
 message ProjectServiceRemoveMemberRequest {

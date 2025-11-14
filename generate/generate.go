@@ -101,7 +101,11 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			Tenant:  permissions.Tenant{},
 			Project: permissions.Project{},
 		}
-		methods    = permissions.Methods{}
+		methods = permissions.Methods{
+			// Allow service reflection to list available methods
+			serverReflectionInfov1alpha1: true,
+			serverReflectionInfo:         true,
+		}
 		visibility = permissions.Visibility{
 			Public: map[string]bool{
 				// Allow service reflection to list available methods
@@ -161,8 +165,11 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
 							// noop
 						// Infra
-						case v1.InfraRole_INFRA_ROLE_EDITOR.String(), v1.InfraRole_INFRA_ROLE_VIEWER.String():
-							roles.Infra[role] = append(roles.Infra[role], methodName)
+						case v1.InfraRole_INFRA_ROLE_EDITOR.String():
+							roles.Infra[v1.InfraRole_INFRA_ROLE_EDITOR.String()] = append(roles.Infra[v1.InfraRole_INFRA_ROLE_EDITOR.String()], methodName)
+							visibility.Infra[methodName] = true
+						case v1.InfraRole_INFRA_ROLE_VIEWER.String():
+							roles.Infra[v1.InfraRole_INFRA_ROLE_VIEWER.String()] = append(roles.Infra[v1.InfraRole_INFRA_ROLE_VIEWER.String()], methodName)
 							visibility.Infra[methodName] = true
 						case v1.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
 							// noop

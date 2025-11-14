@@ -51,7 +51,7 @@ const (
 type TokenServiceClient interface {
 	// Get a token
 	Get(context.Context, *v2.TokenServiceGetRequest) (*v2.TokenServiceGetResponse, error)
-	// Create a token to authenticate against the platform, the secret will be only visible in the response
+	// Create a token to authenticate against the platform, the secret will be only visible in the response.
 	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
 	// Update a token
 	Update(context.Context, *v2.TokenServiceUpdateRequest) (*v2.TokenServiceUpdateResponse, error)
@@ -181,7 +181,7 @@ func (c *tokenServiceClient) Refresh(ctx context.Context, req *v2.TokenServiceRe
 type TokenServiceHandler interface {
 	// Get a token
 	Get(context.Context, *v2.TokenServiceGetRequest) (*v2.TokenServiceGetResponse, error)
-	// Create a token to authenticate against the platform, the secret will be only visible in the response
+	// Create a token to authenticate against the platform, the secret will be only visible in the response.
 	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
 	// Update a token
 	Update(context.Context, *v2.TokenServiceUpdateRequest) (*v2.TokenServiceUpdateResponse, error)
