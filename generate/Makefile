@@ -4,7 +4,6 @@ generate: go-mocks
 	rm -f ../go/permissions/servicepermissions.go
 	rm -f ../go/client/client.go
 	rm -f ../go/tests/mock_clients.go
-	rm -f ../js/permissions/servicepermissions.json
 
 	go run ./generate.go
 

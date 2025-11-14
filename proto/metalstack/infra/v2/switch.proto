@@ -14,6 +14,7 @@ service SwitchService {
   // Get a switch by ID.
   rpc Get(SwitchServiceGetRequest) returns (SwitchServiceGetResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
   // Register a switch.

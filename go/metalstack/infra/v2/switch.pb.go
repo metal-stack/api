@@ -457,9 +457,10 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x125\n" +
 	"\bduration\x18\x02 \x01(\v2\x19.google.protobuf.DurationR\bduration\x12\x19\n" +
 	"\x05error\x18\x03 \x01(\tH\x00R\x05error\x88\x01\x01B\b\n" +
-	"\x06_error2\xfd\x02\n" +
-	"\rSwitchService\x12m\n" +
-	"\x03Get\x12,.metalstack.infra.v2.SwitchServiceGetRequest\x1a-.metalstack.infra.v2.SwitchServiceGetResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12|\n" +
+	"\x06_error2\xfe\x02\n" +
+	"\rSwitchService\x12n\n" +
+	"\x03Get\x12,.metalstack.infra.v2.SwitchServiceGetRequest\x1a-.metalstack.infra.v2.SwitchServiceGetResponse\"\n" +
+	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12|\n" +
 	"\bRegister\x121.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a2.metalstack.infra.v2.SwitchServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x7f\n" +
 	"\tHeartbeat\x122.metalstack.infra.v2.SwitchServiceHeartbeatRequest\x1a3.metalstack.infra.v2.SwitchServiceHeartbeatResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xcf\x01\n" +
 	"\x17com.metalstack.infra.v2B\vSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"

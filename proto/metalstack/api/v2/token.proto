@@ -14,7 +14,7 @@ service TokenService {
   rpc Get(TokenServiceGetRequest) returns (TokenServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
-  // Create a token to authenticate against the platform, the secret will be only visible in the response
+  // Create a token to authenticate against the platform, the secret will be only visible in the response.
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
@@ -36,8 +36,25 @@ service TokenService {
   }
 }
 
-// Token is a jwt authentication token to access the api
+// Token generates a jwt authentication token to access the api
+//
+// There are two different types of tokens, api- and user- tokens
+//
+// A user token is used to authenticate end user requests for example from a cli.
+// The configured roles in a user token are expanded in the api server
+// based on the memberships in other projects and tenants based on the role granted there.
+// User tokens will never contain permissions.
+// Permissions are always derived from the tenant and project roles and memberships.
+//
+// The api token should be used to authenticate services.
+// In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
 message Token {
+  // Message level validation, can be developed using https://protovalidate.com/playground
+  option (buf.validate.message).cel = {
+    id: "token.permissions.usertoken"
+    message: "token type user must not have permissions"
+    expression: "(this.token_type == 2 && this.permissions.size() == 0) || this.token_type != 2"
+  };
   // Uuid of the jwt token, used to reference it by revoke
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // User who created this token
@@ -63,6 +80,8 @@ message Token {
   map<string, TenantRole> tenant_roles = 10;
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 11 [(buf.validate.field).enum.defined_only = true];
+  // InfraRole defines the infrastructure role of the token owner
+  optional InfraRole infra_role = 12 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TokenType specifies different use cases of tokens
@@ -109,18 +128,21 @@ message TokenServiceCreateRequest {
   }];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
+  // InfraRole defines the infrastructure role of the token owner
+  optional InfraRole infra_role = 8 [(buf.validate.field).enum.defined_only = true];
   // Labels on this token
-  Labels labels = 8;
+  Labels labels = 9;
 }
 
 // MethodPermission is a mapping from a subject/project to a service method
 message MethodPermission {
   // Subject maybe either the project or the tenant
   // for which the methods should be allowed
-  string subject = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 256
-  }];
+  //
+  // asterisk (*) can be specified to match any subject
+  // empty string ("") can be specified for requests that do not require a subject, e.g. partition list
+  // otherwise either a projectid or a tenant login should be specified
+  string subject = 1 [(buf.validate.field).string = {max_len: 256}];
   // Methods which should be accessible
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
@@ -185,8 +207,10 @@ message TokenServiceUpdateRequest {
   }];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
+  // InfraRole defines the infrastructure role of the token owner
+  optional InfraRole infra_role = 8 [(buf.validate.field).enum.defined_only = true];
   // Labels on this token
-  UpdateLabels labels = 8;
+  UpdateLabels labels = 9;
 }
 
 // TokenServiceUpdateResponse is the response payload of a token update request
