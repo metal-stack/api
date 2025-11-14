@@ -91,10 +91,13 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: Infra{
 				"INFRA_ROLE_EDITOR": []string{
+					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
+					"/metalstack.infra.v2.SwitchService/Get",
+					"/metalstack.infra.v2.SwitchService/Register",
 					"/metalstack.infra.v2.SwitchService/Heartbeat",
 				},
 				"INFRA_ROLE_VIEWER": []string{
-					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
+					"/metalstack.infra.v2.SwitchService/Get",
 				},
 			},
 			Tenant: Tenant{

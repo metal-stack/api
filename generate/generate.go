@@ -181,10 +181,10 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 							// noop
 						// Infra
 						case v1.InfraRole_INFRA_ROLE_EDITOR.String():
-							roles.Infra[v1.InfraRole_INFRA_ROLE_EDITOR.String()] = append(roles.Admin[v1.InfraRole_INFRA_ROLE_EDITOR.String()], methodName)
+							roles.Infra[v1.InfraRole_INFRA_ROLE_EDITOR.String()] = append(roles.Infra[v1.InfraRole_INFRA_ROLE_EDITOR.String()], methodName)
 							visibility.Infra[methodName] = true
 						case v1.InfraRole_INFRA_ROLE_VIEWER.String():
-							roles.Infra[v1.InfraRole_INFRA_ROLE_VIEWER.String()] = append(roles.Admin[v1.InfraRole_INFRA_ROLE_VIEWER.String()], methodName)
+							roles.Infra[v1.InfraRole_INFRA_ROLE_VIEWER.String()] = append(roles.Infra[v1.InfraRole_INFRA_ROLE_VIEWER.String()], methodName)
 							visibility.Infra[methodName] = true
 						case v1.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
 							// noop
