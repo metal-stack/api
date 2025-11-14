@@ -348,8 +348,8 @@ type MethodPermission struct {
 	// Subject maybe either the project or the tenant
 	// for which the methods should be allowed
 	//
-	// asterisk (*) could be specified to match any subject
-	// empty string ("") could be specified if only request should match which do not have a subject required, e.g. partition list
+	// asterisk (*) can be specified to match any subject
+	// empty string ("") can be specified for requests that do not require a subject, e.g. partition list
 	// otherwise either a projectid or a tenant login should be specified
 	Subject string `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
 	// Methods which should be accessible
