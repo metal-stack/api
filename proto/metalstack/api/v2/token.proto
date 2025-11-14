@@ -80,6 +80,8 @@ message Token {
   map<string, TenantRole> tenant_roles = 10;
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 11 [(buf.validate.field).enum.defined_only = true];
+  // InfraRole defines the infrastructure role of the token owner
+  optional InfraRole infra_role = 12 [(buf.validate.field).enum.defined_only = true];
 }
 
 // TokenType specifies different use cases of tokens
@@ -126,8 +128,10 @@ message TokenServiceCreateRequest {
   }];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
+  // InfraRole defines the infrastructure role of the token owner
+  optional InfraRole infra_role = 8 [(buf.validate.field).enum.defined_only = true];
   // Labels on this token
-  Labels labels = 8;
+  Labels labels = 9;
 }
 
 // MethodPermission is a mapping from a subject/project to a service method
@@ -203,8 +207,10 @@ message TokenServiceUpdateRequest {
   }];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
+  // InfraRole defines the infrastructure role of the token owner
+  optional InfraRole infra_role = 8 [(buf.validate.field).enum.defined_only = true];
   // Labels on this token
-  UpdateLabels labels = 8;
+  UpdateLabels labels = 9;
 }
 
 // TokenServiceUpdateResponse is the response payload of a token update request
