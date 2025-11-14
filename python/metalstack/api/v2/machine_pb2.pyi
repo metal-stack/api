@@ -95,12 +95,14 @@ MACHINE_ALLOCATION_TYPE_MACHINE: MachineAllocationType
 MACHINE_ALLOCATION_TYPE_FIREWALL: MachineAllocationType
 
 class MachineServiceGetRequest(_message.Message):
-    __slots__ = ("uuid", "project")
+    __slots__ = ("uuid", "project", "complete")
     UUID_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
+    COMPLETE_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     project: str
-    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
+    complete: bool
+    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ..., complete: _Optional[bool] = ...) -> None: ...
 
 class MachineServiceGetResponse(_message.Message):
     __slots__ = ("machine",)
@@ -185,12 +187,14 @@ class MachineServiceUpdateResponse(_message.Message):
     def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceListRequest(_message.Message):
-    __slots__ = ("project", "query")
+    __slots__ = ("project", "query", "complete")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     QUERY_FIELD_NUMBER: _ClassVar[int]
+    COMPLETE_FIELD_NUMBER: _ClassVar[int]
     project: str
     query: MachineQuery
-    def __init__(self, project: _Optional[str] = ..., query: _Optional[_Union[MachineQuery, _Mapping]] = ...) -> None: ...
+    complete: bool
+    def __init__(self, project: _Optional[str] = ..., query: _Optional[_Union[MachineQuery, _Mapping]] = ..., complete: _Optional[bool] = ...) -> None: ...
 
 class MachineServiceListResponse(_message.Message):
     __slots__ = ("machines",)

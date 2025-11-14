@@ -11,10 +11,12 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class MachineServiceGetRequest(_message.Message):
-    __slots__ = ("uuid",)
+    __slots__ = ("uuid", "complete")
     UUID_FIELD_NUMBER: _ClassVar[int]
+    COMPLETE_FIELD_NUMBER: _ClassVar[int]
     uuid: str
-    def __init__(self, uuid: _Optional[str] = ...) -> None: ...
+    complete: bool
+    def __init__(self, uuid: _Optional[str] = ..., complete: _Optional[bool] = ...) -> None: ...
 
 class MachineServiceGetResponse(_message.Message):
     __slots__ = ("machine",)
@@ -23,12 +25,14 @@ class MachineServiceGetResponse(_message.Message):
     def __init__(self, machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceListRequest(_message.Message):
-    __slots__ = ("query", "partition")
+    __slots__ = ("query", "partition", "complete")
     QUERY_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
+    COMPLETE_FIELD_NUMBER: _ClassVar[int]
     query: _machine_pb2.MachineQuery
     partition: str
-    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineQuery, _Mapping]] = ..., partition: _Optional[str] = ...) -> None: ...
+    complete: bool
+    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineQuery, _Mapping]] = ..., partition: _Optional[str] = ..., complete: _Optional[bool] = ...) -> None: ...
 
 class MachineServiceListResponse(_message.Message):
     __slots__ = ("machines",)

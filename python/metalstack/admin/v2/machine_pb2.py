@@ -28,7 +28,7 @@ from metalstack.api.v2 import machine_pb2 as metalstack_dot_api_dot_v2_dot_machi
 from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!metalstack/admin/v2/machine.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"8\n\x18MachineServiceGetRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"Q\n\x19MachineServiceGetResponse\x12\x34\n\x07machine\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.MachineR\x07machine\"\x90\x01\n\x19MachineServiceListRequest\x12\x35\n\x05query\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.MachineQueryR\x05query\x12.\n\tpartition\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01H\x00R\tpartition\x88\x01\x01\x42\x0c\n\n_partition\"T\n\x1aMachineServiceListResponse\x12\x36\n\x08machines\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.MachineR\x08machines2\xf7\x01\n\x0eMachineService\x12p\n\x03Get\x12-.metalstack.admin.v2.MachineServiceGetRequest\x1a..metalstack.admin.v2.MachineServiceGetResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12s\n\x04List\x12..metalstack.admin.v2.MachineServiceListRequest\x1a/.metalstack.admin.v2.MachineServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x42\xd0\x01\n\x17\x63om.metalstack.admin.v2B\x0cMachineProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!metalstack/admin/v2/machine.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"T\n\x18MachineServiceGetRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1a\n\x08\x63omplete\x18\x02 \x01(\x08R\x08\x63omplete\"Q\n\x19MachineServiceGetResponse\x12\x34\n\x07machine\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.MachineR\x07machine\"\xac\x01\n\x19MachineServiceListRequest\x12\x35\n\x05query\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.MachineQueryR\x05query\x12.\n\tpartition\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01H\x00R\tpartition\x88\x01\x01\x12\x1a\n\x08\x63omplete\x18\x03 \x01(\x08R\x08\x63ompleteB\x0c\n\n_partition\"T\n\x1aMachineServiceListResponse\x12\x36\n\x08machines\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.MachineR\x08machines2\xf7\x01\n\x0eMachineService\x12p\n\x03Get\x12-.metalstack.admin.v2.MachineServiceGetRequest\x1a..metalstack.admin.v2.MachineServiceGetResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12s\n\x04List\x12..metalstack.admin.v2.MachineServiceListRequest\x1a/.metalstack.admin.v2.MachineServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x42\xd0\x01\n\x17\x63om.metalstack.admin.v2B\x0cMachineProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -45,13 +45,13 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_MACHINESERVICE'].methods_by_name['List']._loaded_options = None
   _globals['_MACHINESERVICE'].methods_by_name['List']._serialized_options = b'\322\363\030\002\001\002\340\363\030\002'
   _globals['_MACHINESERVICEGETREQUEST']._serialized_start=194
-  _globals['_MACHINESERVICEGETREQUEST']._serialized_end=250
-  _globals['_MACHINESERVICEGETRESPONSE']._serialized_start=252
-  _globals['_MACHINESERVICEGETRESPONSE']._serialized_end=333
-  _globals['_MACHINESERVICELISTREQUEST']._serialized_start=336
-  _globals['_MACHINESERVICELISTREQUEST']._serialized_end=480
-  _globals['_MACHINESERVICELISTRESPONSE']._serialized_start=482
-  _globals['_MACHINESERVICELISTRESPONSE']._serialized_end=566
-  _globals['_MACHINESERVICE']._serialized_start=569
-  _globals['_MACHINESERVICE']._serialized_end=816
+  _globals['_MACHINESERVICEGETREQUEST']._serialized_end=278
+  _globals['_MACHINESERVICEGETRESPONSE']._serialized_start=280
+  _globals['_MACHINESERVICEGETRESPONSE']._serialized_end=361
+  _globals['_MACHINESERVICELISTREQUEST']._serialized_start=364
+  _globals['_MACHINESERVICELISTREQUEST']._serialized_end=536
+  _globals['_MACHINESERVICELISTRESPONSE']._serialized_start=538
+  _globals['_MACHINESERVICELISTRESPONSE']._serialized_end=622
+  _globals['_MACHINESERVICE']._serialized_start=625
+  _globals['_MACHINESERVICE']._serialized_end=872
 # @@protoc_insertion_point(module_scope)
