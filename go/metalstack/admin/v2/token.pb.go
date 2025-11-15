@@ -212,10 +212,10 @@ type TokenServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// User this token should be created for, if omitted, user is derived from caller
 	User *string `protobuf:"bytes,1,opt,name=user,proto3,oneof" json:"user,omitempty"`
-	// Token which was should be created
-	Token         *v2.Token `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	// TokenCreateRequest which should be created
+	TokenCreateRequest *v2.TokenServiceCreateRequest `protobuf:"bytes,2,opt,name=token_create_request,json=tokenCreateRequest,proto3" json:"token_create_request,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *TokenServiceCreateRequest) Reset() {
@@ -255,9 +255,9 @@ func (x *TokenServiceCreateRequest) GetUser() string {
 	return ""
 }
 
-func (x *TokenServiceCreateRequest) GetToken() *v2.Token {
+func (x *TokenServiceCreateRequest) GetTokenCreateRequest() *v2.TokenServiceCreateRequest {
 	if x != nil {
-		return x.Token
+		return x.TokenCreateRequest
 	}
 	return nil
 }
@@ -331,11 +331,11 @@ const file_metalstack_admin_v2_token_proto_rawDesc = "" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n" +
 	"\x04user\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x04R\x04user\"\x1c\n" +
-	"\x1aTokenServiceRevokeResponse\"y\n" +
+	"\x1aTokenServiceRevokeResponse\"\xa9\x01\n" +
 	"\x19TokenServiceCreateRequest\x12#\n" +
 	"\x04user\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x00R\x04user\x88\x01\x01\x12.\n" +
-	"\x05token\x18\x02 \x01(\v2\x18.metalstack.api.v2.TokenR\x05tokenB\a\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x00R\x04user\x88\x01\x01\x12^\n" +
+	"\x14token_create_request\x18\x02 \x01(\v2,.metalstack.api.v2.TokenServiceCreateRequestR\x12tokenCreateRequestB\a\n" +
 	"\x05_user\"d\n" +
 	"\x1aTokenServiceCreateResponse\x12.\n" +
 	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n" +
@@ -361,17 +361,18 @@ func file_metalstack_admin_v2_token_proto_rawDescGZIP() []byte {
 
 var file_metalstack_admin_v2_token_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_metalstack_admin_v2_token_proto_goTypes = []any{
-	(*TokenServiceListRequest)(nil),    // 0: metalstack.admin.v2.TokenServiceListRequest
-	(*TokenServiceListResponse)(nil),   // 1: metalstack.admin.v2.TokenServiceListResponse
-	(*TokenServiceRevokeRequest)(nil),  // 2: metalstack.admin.v2.TokenServiceRevokeRequest
-	(*TokenServiceRevokeResponse)(nil), // 3: metalstack.admin.v2.TokenServiceRevokeResponse
-	(*TokenServiceCreateRequest)(nil),  // 4: metalstack.admin.v2.TokenServiceCreateRequest
-	(*TokenServiceCreateResponse)(nil), // 5: metalstack.admin.v2.TokenServiceCreateResponse
-	(*v2.Token)(nil),                   // 6: metalstack.api.v2.Token
+	(*TokenServiceListRequest)(nil),      // 0: metalstack.admin.v2.TokenServiceListRequest
+	(*TokenServiceListResponse)(nil),     // 1: metalstack.admin.v2.TokenServiceListResponse
+	(*TokenServiceRevokeRequest)(nil),    // 2: metalstack.admin.v2.TokenServiceRevokeRequest
+	(*TokenServiceRevokeResponse)(nil),   // 3: metalstack.admin.v2.TokenServiceRevokeResponse
+	(*TokenServiceCreateRequest)(nil),    // 4: metalstack.admin.v2.TokenServiceCreateRequest
+	(*TokenServiceCreateResponse)(nil),   // 5: metalstack.admin.v2.TokenServiceCreateResponse
+	(*v2.Token)(nil),                     // 6: metalstack.api.v2.Token
+	(*v2.TokenServiceCreateRequest)(nil), // 7: metalstack.api.v2.TokenServiceCreateRequest
 }
 var file_metalstack_admin_v2_token_proto_depIdxs = []int32{
 	6, // 0: metalstack.admin.v2.TokenServiceListResponse.tokens:type_name -> metalstack.api.v2.Token
-	6, // 1: metalstack.admin.v2.TokenServiceCreateRequest.token:type_name -> metalstack.api.v2.Token
+	7, // 1: metalstack.admin.v2.TokenServiceCreateRequest.token_create_request:type_name -> metalstack.api.v2.TokenServiceCreateRequest
 	6, // 2: metalstack.admin.v2.TokenServiceCreateResponse.token:type_name -> metalstack.api.v2.Token
 	0, // 3: metalstack.admin.v2.TokenService.List:input_type -> metalstack.admin.v2.TokenServiceListRequest
 	2, // 4: metalstack.admin.v2.TokenService.Revoke:input_type -> metalstack.admin.v2.TokenServiceRevokeRequest
