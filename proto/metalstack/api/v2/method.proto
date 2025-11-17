@@ -41,4 +41,6 @@ message MethodServiceTokenScopedListResponse {
   map<string, TenantRole> tenant_roles = 4;
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 5 [(buf.validate.field).enum.defined_only = true];
+  // InfraRole defines the infrastructure role of the token owner
+  optional InfraRole infra_role = 6 [(buf.validate.field).enum.defined_only = true];
 }
