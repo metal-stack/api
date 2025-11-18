@@ -7,7 +7,7 @@ import (
 	apiclient "github.com/metal-stack/api/go/client"
 {{ range $name, $api := . -}}
 	"github.com/metal-stack/api/go{{ $api.Path }}/{{ $api.Name }}connect"
-	{{ $name }}mocks "github.com/metal-stack/api/go/tests/mocks{{ $api.Path }}/{{ $api.Name }}connect"
+	{{ $name }}mocks "github.com/metal-stack/api/go/tests/mocks/{{ $api.Name }}connect"
 {{ end }}
 	"github.com/stretchr/testify/mock"
 )

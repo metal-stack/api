@@ -8,9 +8,9 @@ import (
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
 	"github.com/metal-stack/api/go/metalstack/infra/v2/infrav2connect"
-	adminv2mocks "github.com/metal-stack/api/go/tests/mocks/metalstack/admin/v2/adminv2connect"
-	apiv2mocks "github.com/metal-stack/api/go/tests/mocks/metalstack/api/v2/apiv2connect"
-	infrav2mocks "github.com/metal-stack/api/go/tests/mocks/metalstack/infra/v2/infrav2connect"
+	adminv2mocks "github.com/metal-stack/api/go/tests/mocks/adminv2connect"
+	apiv2mocks "github.com/metal-stack/api/go/tests/mocks/apiv2connect"
+	infrav2mocks "github.com/metal-stack/api/go/tests/mocks/infrav2connect"
 
 	"github.com/stretchr/testify/mock"
 )

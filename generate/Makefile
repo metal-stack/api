@@ -14,6 +14,7 @@ go-mocks:
 
 	docker run --rm \
 		--user $$(id -u):$$(id -g) \
+		--tmpfs /.cache \
 		-w /work \
-		-v $(PWD):/work \
-		vektra/mockery:v2.53.5 --keeptree --inpackage --dir go --output go/tests/mocks --all --log-level debug
+		-v ${PWD}:/work \
+		vektra/mockery:v3.6.1
