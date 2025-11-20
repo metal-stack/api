@@ -4,7 +4,7 @@ go 1.25
 
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.10-20250912141014-52f32327d4b0.1
-	buf.build/go/protovalidate v1.0.0
+	buf.build/go/protovalidate v1.0.1
 	connectrpc.com/connect v1.19.1
 	github.com/bufbuild/protocompile v0.14.1
 	github.com/go-task/slim-sprig/v3 v3.0.0
@@ -26,7 +26,7 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/stoewer/go-strcase v1.3.1 // indirect
 	github.com/stretchr/objx v0.5.3 // indirect
-	golang.org/x/exp v0.0.0-20251023183803-a4bb9ffd2546 // indirect
+	golang.org/x/exp v0.0.0-20251113190631-e25ba8c21ef6 // indirect
 	golang.org/x/text v0.31.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20251111163417-95abcf5c77ba // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20251111163417-95abcf5c77ba // indirect
