@@ -14,7 +14,7 @@ go-mocks:
 
 	docker run --rm \
 		--user $$(id -u):$$(id -g) \
-		--tmpfs /.cache \
+		--tmpfs /.cache:uid=$$(id -u),gid=$$(id -g) \
 		-w /work \
 		-v ${PWD}:/work \
 		vektra/mockery:v3.6.1

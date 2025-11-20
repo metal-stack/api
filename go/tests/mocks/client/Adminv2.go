@@ -2,7 +2,7 @@
 // github.com/vektra/mockery
 // template: testify
 
-package mocks
+package client
 
 import (
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
