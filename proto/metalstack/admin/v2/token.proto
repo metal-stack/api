@@ -57,8 +57,8 @@ message TokenServiceCreateRequest {
     min_len: 2
     max_len: 512
   }];
-  // Token which was should be created
-  metalstack.api.v2.Token token = 2;
+  // TokenCreateRequest which should be created
+  metalstack.api.v2.TokenServiceCreateRequest token_create_request = 2;
 }
 
 // TokenServiceCreateResponse is the response payload of a token create request

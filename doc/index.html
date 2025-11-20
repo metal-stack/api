@@ -13254,10 +13254,10 @@ TokenUpdate is not guarded with optlock in the backend </p></td>
                 </tr>
               
                 <tr>
-                  <td>token</td>
-                  <td><a href="#metalstack.api.v2.Token">metalstack.api.v2.Token</a></td>
+                  <td>token_create_request</td>
+                  <td><a href="#metalstack.api.v2.TokenServiceCreateRequest">metalstack.api.v2.TokenServiceCreateRequest</a></td>
                   <td></td>
-                  <td><p>Token which was should be created </p></td>
+                  <td><p>TokenCreateRequest which should be created </p></td>
                 </tr>
               
             </tbody>
@@ -13789,6 +13789,13 @@ This service is suitable to create tokens for other users instead of deriving us
                   <td><a href="#metalstack.api.v2.AdminRole">AdminRole</a></td>
                   <td>optional</td>
                   <td><p>AdminRole defines the admin role of the token owner </p></td>
+                </tr>
+              
+                <tr>
+                  <td>infra_role</td>
+                  <td><a href="#metalstack.api.v2.InfraRole">InfraRole</a></td>
+                  <td>optional</td>
+                  <td><p>InfraRole defines the infrastructure role of the token owner </p></td>
                 </tr>
               
             </tbody>
