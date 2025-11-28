@@ -8,6 +8,7 @@ import metalstack.admin.v2.ip_connect as admin_ip_connect
 import metalstack.admin.v2.machine_connect as admin_machine_connect
 import metalstack.admin.v2.network_connect as admin_network_connect
 import metalstack.admin.v2.partition_connect as admin_partition_connect
+import metalstack.admin.v2.project_connect as admin_project_connect
 import metalstack.admin.v2.size_connect as admin_size_connect
 import metalstack.admin.v2.switch_connect as admin_switch_connect
 import metalstack.admin.v2.tenant_connect as admin_tenant_connect
@@ -78,6 +79,9 @@ class Client:
 
         def partition(self):
             return admin_partition_connect.PartitionServiceClientSync(address=self._baseurl, session=self._session)
+
+        def project(self):
+            return admin_project_connect.ProjectServiceClientSync(address=self._baseurl, session=self._session)
 
         def size(self):
             return admin_size_connect.SizeServiceClientSync(address=self._baseurl, session=self._session)
