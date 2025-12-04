@@ -294,6 +294,300 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.infra.v2.SwitchService/Heartbeat":                   true,
 			"/metalstack.infra.v2.SwitchService/Register":                    true,
 		},
+		MethodRoles: map[string][]string{
+			"/metalstack.admin.v2.FilesystemService/Create": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.FilesystemService/Delete": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.FilesystemService/Update": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.IPService/List": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.ImageService/Create": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.ImageService/Delete": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.ImageService/Update": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.ImageService/Usage": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.MachineService/Get": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.MachineService/List": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.NetworkService/Create": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.NetworkService/Delete": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.NetworkService/Get": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.NetworkService/List": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.NetworkService/Update": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.PartitionService/Capacity": {
+				"ADMIN_ROLE_VIEWER",
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.PartitionService/Create": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.PartitionService/Delete": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.PartitionService/Update": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.ProjectService/List": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.SizeService/Create": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.SizeService/Delete": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.SizeService/Update": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.SwitchService/Delete": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.SwitchService/Get": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.SwitchService/List": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.SwitchService/Migrate": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.SwitchService/Port": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.SwitchService/Update": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.TenantService/Create": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.TenantService/List": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.TokenService/Create": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.admin.v2.TokenService/List": {
+				"ADMIN_ROLE_EDITOR",
+				"ADMIN_ROLE_VIEWER",
+			},
+			"/metalstack.admin.v2.TokenService/Revoke": {
+				"ADMIN_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.FilesystemService/Get":   {},
+			"/metalstack.api.v2.FilesystemService/List":  {},
+			"/metalstack.api.v2.FilesystemService/Match": {},
+			"/metalstack.api.v2.HealthService/Get":       {},
+			"/metalstack.api.v2.IPService/Create": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.IPService/Delete": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.IPService/Get": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+				"PROJECT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.IPService/List": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+				"PROJECT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.IPService/Update": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.ImageService/Get":    {},
+			"/metalstack.api.v2.ImageService/Latest": {},
+			"/metalstack.api.v2.ImageService/List":   {},
+			"/metalstack.api.v2.MachineService/Create": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.MachineService/Delete": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.MachineService/Get": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+				"PROJECT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.MachineService/List": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+				"PROJECT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.MachineService/Update": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.MethodService/List":            {},
+			"/metalstack.api.v2.MethodService/TokenScopedList": {},
+			"/metalstack.api.v2.NetworkService/Create": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.NetworkService/Delete": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.NetworkService/Get": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+				"PROJECT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.NetworkService/List": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+				"PROJECT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.NetworkService/ListBaseNetworks": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+				"PROJECT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.NetworkService/Update": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.PartitionService/Get":  {},
+			"/metalstack.api.v2.PartitionService/List": {},
+			"/metalstack.api.v2.ProjectService/Create": {
+				"TENANT_ROLE_OWNER",
+				"TENANT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.ProjectService/Delete": {
+				"PROJECT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.ProjectService/Get": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+				"PROJECT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.ProjectService/Invite": {
+				"PROJECT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.ProjectService/InviteAccept": {},
+			"/metalstack.api.v2.ProjectService/InviteDelete": {
+				"PROJECT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.ProjectService/InviteGet": {},
+			"/metalstack.api.v2.ProjectService/InvitesList": {
+				"PROJECT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.ProjectService/Leave": {
+				"PROJECT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.ProjectService/List": {},
+			"/metalstack.api.v2.ProjectService/RemoveMember": {
+				"PROJECT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.ProjectService/Update": {
+				"PROJECT_ROLE_OWNER",
+				"PROJECT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.ProjectService/UpdateMember": {
+				"PROJECT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.SizeService/Get":      {},
+			"/metalstack.api.v2.SizeService/List":     {},
+			"/metalstack.api.v2.TenantService/Create": {},
+			"/metalstack.api.v2.TenantService/Delete": {
+				"TENANT_ROLE_OWNER",
+				"TENANT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.TenantService/Get": {
+				"TENANT_ROLE_OWNER",
+				"TENANT_ROLE_EDITOR",
+				"TENANT_ROLE_VIEWER",
+				"TENANT_ROLE_GUEST",
+			},
+			"/metalstack.api.v2.TenantService/Invite": {
+				"TENANT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.TenantService/InviteAccept": {},
+			"/metalstack.api.v2.TenantService/InviteDelete": {
+				"TENANT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.TenantService/InviteGet": {},
+			"/metalstack.api.v2.TenantService/InvitesList": {
+				"TENANT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.TenantService/Leave": {
+				"TENANT_ROLE_VIEWER",
+			},
+			"/metalstack.api.v2.TenantService/List": {},
+			"/metalstack.api.v2.TenantService/RemoveMember": {
+				"TENANT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.TenantService/Update": {
+				"TENANT_ROLE_OWNER",
+				"TENANT_ROLE_EDITOR",
+			},
+			"/metalstack.api.v2.TenantService/UpdateMember": {
+				"TENANT_ROLE_OWNER",
+			},
+			"/metalstack.api.v2.TokenService/Create":  {},
+			"/metalstack.api.v2.TokenService/Get":     {},
+			"/metalstack.api.v2.TokenService/List":    {},
+			"/metalstack.api.v2.TokenService/Refresh": {},
+			"/metalstack.api.v2.TokenService/Revoke":  {},
+			"/metalstack.api.v2.TokenService/Update":  {},
+			"/metalstack.api.v2.UserService/Get":      {},
+			"/metalstack.api.v2.VersionService/Get":   {},
+			"/metalstack.infra.v2.BMCService/UpdateBMCInfo": {
+				"INFRA_ROLE_EDITOR",
+			},
+			"/metalstack.infra.v2.SwitchService/Get": {
+				"INFRA_ROLE_EDITOR",
+				"INFRA_ROLE_VIEWER",
+			},
+			"/metalstack.infra.v2.SwitchService/Heartbeat": {
+				"INFRA_ROLE_EDITOR",
+			},
+			"/metalstack.infra.v2.SwitchService/Register": {
+				"INFRA_ROLE_EDITOR",
+			},
+		},
 		Visibility: Visibility{
 			Public: map[string]bool{
 				"/grpc.reflection.v1.ServerReflection/ServerReflectionInfo":      true,

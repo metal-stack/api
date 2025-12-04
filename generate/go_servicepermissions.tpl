@@ -58,6 +58,15 @@ func GetServicePermissions() *ServicePermissions {
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 		},
+		MethodRoles: map[string][]string{
+{{- range $method, $roles := .MethodRoles }}
+	"{{ $method }}": {
+{{- range $role := $roles }}
+	"{{ $role }}" ,
+{{- end }}
+	} ,
+{{- end }}
+		},
 		Visibility: Visibility{
 			Public:  map[string]bool{
 {{- range $key, $value := .Visibility.Public }}

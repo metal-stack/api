@@ -105,7 +105,8 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			serverReflectionInfov1alpha1: true,
 			serverReflectionInfo:         true,
 		}
-		visibility = permissions.Visibility{
+		methodRoles = permissions.MethodRoles{}
+		visibility  = permissions.Visibility{
 			Public: map[string]bool{
 				// Allow service reflection to list available methods
 				serverReflectionInfov1alpha1: true,
@@ -136,6 +137,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			for _, method := range serviceDesc.GetMethod() {
 				methodName := fmt.Sprintf("/%s.%s/%s", *fd.Package, *serviceDesc.Name, *method.Name)
 				methodOpts := method.Options.GetUninterpretedOption()
+				methodRoles[methodName] = []string{}
 				for _, methodOpt := range methodOpts {
 					for _, namePart := range methodOpt.Name {
 						if !*namePart.IsExtension {
@@ -143,49 +145,60 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						}
 						auditable[methodName] = true
 						// Tenant
-						switch *methodOpt.IdentifierValue {
+						switch role := *methodOpt.IdentifierValue; role {
 						case v1.TenantRole_TENANT_ROLE_OWNER.String():
-							roles.Tenant[v1.TenantRole_TENANT_ROLE_OWNER.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_OWNER.String()], methodName)
+							roles.Tenant[role] = append(roles.Tenant[role], methodName)
 							visibility.Tenant[methodName] = true
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.TenantRole_TENANT_ROLE_EDITOR.String():
-							roles.Tenant[v1.TenantRole_TENANT_ROLE_EDITOR.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_EDITOR.String()], methodName)
+							roles.Tenant[role] = append(roles.Tenant[role], methodName)
 							visibility.Tenant[methodName] = true
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.TenantRole_TENANT_ROLE_VIEWER.String():
-							roles.Tenant[v1.TenantRole_TENANT_ROLE_VIEWER.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_VIEWER.String()], methodName)
+							roles.Tenant[role] = append(roles.Tenant[role], methodName)
 							visibility.Tenant[methodName] = true
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.TenantRole_TENANT_ROLE_GUEST.String():
-							roles.Tenant[v1.TenantRole_TENANT_ROLE_GUEST.String()] = append(roles.Tenant[v1.TenantRole_TENANT_ROLE_GUEST.String()], methodName)
+							roles.Tenant[role] = append(roles.Tenant[role], methodName)
 							visibility.Tenant[methodName] = true
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Project
 						case v1.ProjectRole_PROJECT_ROLE_OWNER.String():
-							roles.Project[v1.ProjectRole_PROJECT_ROLE_OWNER.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_OWNER.String()], methodName)
+							roles.Project[role] = append(roles.Project[role], methodName)
 							visibility.Project[methodName] = true
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.ProjectRole_PROJECT_ROLE_EDITOR.String():
 							visibility.Project[methodName] = true
-							roles.Project[v1.ProjectRole_PROJECT_ROLE_EDITOR.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_EDITOR.String()], methodName)
+							roles.Project[role] = append(roles.Project[role], methodName)
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.ProjectRole_PROJECT_ROLE_VIEWER.String():
 							visibility.Project[methodName] = true
-							roles.Project[v1.ProjectRole_PROJECT_ROLE_VIEWER.String()] = append(roles.Project[v1.ProjectRole_PROJECT_ROLE_VIEWER.String()], methodName)
+							roles.Project[role] = append(roles.Project[role], methodName)
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Admin
 						case v1.AdminRole_ADMIN_ROLE_EDITOR.String():
-							roles.Admin[v1.AdminRole_ADMIN_ROLE_EDITOR.String()] = append(roles.Admin[v1.AdminRole_ADMIN_ROLE_EDITOR.String()], methodName)
+							roles.Admin[role] = append(roles.Admin[role], methodName)
 							visibility.Admin[methodName] = true
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.AdminRole_ADMIN_ROLE_VIEWER.String():
-							roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()] = append(roles.Admin[v1.AdminRole_ADMIN_ROLE_VIEWER.String()], methodName)
+							roles.Admin[role] = append(roles.Admin[role], methodName)
 							visibility.Admin[methodName] = true
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
 							// noop
 						// Infra
 						case v1.InfraRole_INFRA_ROLE_EDITOR.String():
-							roles.Infra[v1.InfraRole_INFRA_ROLE_EDITOR.String()] = append(roles.Infra[v1.InfraRole_INFRA_ROLE_EDITOR.String()], methodName)
+							roles.Infra[role] = append(roles.Infra[role], methodName)
 							visibility.Infra[methodName] = true
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.InfraRole_INFRA_ROLE_VIEWER.String():
-							roles.Infra[v1.InfraRole_INFRA_ROLE_VIEWER.String()] = append(roles.Infra[v1.InfraRole_INFRA_ROLE_VIEWER.String()], methodName)
+							roles.Infra[role] = append(roles.Infra[role], methodName)
 							visibility.Infra[methodName] = true
+							methodRoles[methodName] = append(methodRoles[methodName], role)
 						case v1.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
 							// noop
 						// Visibility
@@ -215,11 +228,12 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 	}
 	slices.Sort(services)
 	sp := &permissions.ServicePermissions{
-		Roles:      roles,
-		Methods:    methods,
-		Visibility: visibility,
-		Auditable:  auditable,
-		Services:   services,
+		Roles:       roles,
+		Methods:     methods,
+		Visibility:  visibility,
+		Auditable:   auditable,
+		Services:    services,
+		MethodRoles: methodRoles,
 	}
 
 	return sp, nil

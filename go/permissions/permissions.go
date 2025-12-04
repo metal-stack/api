@@ -6,14 +6,16 @@ import (
 
 type (
 	ServicePermissions struct {
-		Roles      Roles      `json:"roles"`
-		Methods    Methods    `json:"methods"`
-		Visibility Visibility `json:"visibility"`
-		Auditable  Auditable  `json:"auditable,omitempty"`
-		Services   []string   `json:"services,omitempty"`
+		Roles       Roles       `json:"roles"`
+		Methods     Methods     `json:"methods"`
+		Visibility  Visibility  `json:"visibility"`
+		Auditable   Auditable   `json:"auditable,omitempty"`
+		Services    []string    `json:"services,omitempty"`
+		MethodRoles MethodRoles `json:"methodroles,omitempty"`
 	}
 
-	Methods map[string]bool
+	Methods     map[string]bool
+	MethodRoles map[string][]string
 
 	Chargeable map[string]bool
 	Auditable  map[string]bool
@@ -23,7 +25,6 @@ type (
 	Tenant  map[string][]string
 	Project map[string][]string
 
-	// Roles
 	Roles struct {
 		Admin   Admin   `json:"admin,omitempty"`
 		Infra   Infra   `json:"infra,omitempty"`
