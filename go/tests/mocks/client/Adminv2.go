@@ -312,6 +312,52 @@ func (_c *Adminv2_Partition_Call) RunAndReturn(run func() adminv2connect.Partiti
 	return _c
 }
 
+// Project provides a mock function for the type Adminv2
+func (_mock *Adminv2) Project() adminv2connect.ProjectServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Project")
+	}
+
+	var r0 adminv2connect.ProjectServiceClient
+	if returnFunc, ok := ret.Get(0).(func() adminv2connect.ProjectServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.ProjectServiceClient)
+		}
+	}
+	return r0
+}
+
+// Adminv2_Project_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Project'
+type Adminv2_Project_Call struct {
+	*mock.Call
+}
+
+// Project is a helper method to define mock.On call
+func (_e *Adminv2_Expecter) Project() *Adminv2_Project_Call {
+	return &Adminv2_Project_Call{Call: _e.mock.On("Project")}
+}
+
+func (_c *Adminv2_Project_Call) Run(run func()) *Adminv2_Project_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Adminv2_Project_Call) Return(projectServiceClient adminv2connect.ProjectServiceClient) *Adminv2_Project_Call {
+	_c.Call.Return(projectServiceClient)
+	return _c
+}
+
+func (_c *Adminv2_Project_Call) RunAndReturn(run func() adminv2connect.ProjectServiceClient) *Adminv2_Project_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Size provides a mock function for the type Adminv2
 func (_mock *Adminv2) Size() adminv2connect.SizeServiceClient {
 	ret := _mock.Called()
