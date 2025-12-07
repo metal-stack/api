@@ -33,6 +33,7 @@ type (
 		Machine() adminv2connect.MachineServiceClient
 		Network() adminv2connect.NetworkServiceClient
 		Partition() adminv2connect.PartitionServiceClient
+		Project() adminv2connect.ProjectServiceClient
 		Size() adminv2connect.SizeServiceClient
 		Switch() adminv2connect.SwitchServiceClient
 		Tenant() adminv2connect.TenantServiceClient
@@ -46,6 +47,7 @@ type (
 		machineservice    adminv2connect.MachineServiceClient
 		networkservice    adminv2connect.NetworkServiceClient
 		partitionservice  adminv2connect.PartitionServiceClient
+		projectservice    adminv2connect.ProjectServiceClient
 		sizeservice       adminv2connect.SizeServiceClient
 		switchservice     adminv2connect.SwitchServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
@@ -182,6 +184,12 @@ func (c *client) Adminv2() Adminv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		projectservice: adminv2connect.NewProjectServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		sizeservice: adminv2connect.NewSizeServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -227,6 +235,9 @@ func (c *adminv2) Network() adminv2connect.NetworkServiceClient {
 }
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice
+}
+func (c *adminv2) Project() adminv2connect.ProjectServiceClient {
+	return c.projectservice
 }
 func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 	return c.sizeservice
