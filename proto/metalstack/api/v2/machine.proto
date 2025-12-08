@@ -553,7 +553,8 @@ message MachineVPN {
   string auth_key = 2;
   // Connected indicate if this machine is connected to the VPN
   bool connected = 3;
-  // TODO add machine ips
+  // IPs of the machine connected to the vpn
+  repeated string ips = 5 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
 // MachineLiveliness specifies the liveliness of a machine

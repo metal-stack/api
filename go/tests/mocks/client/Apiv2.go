@@ -634,6 +634,52 @@ func (_c *Apiv2_User_Call) RunAndReturn(run func() apiv2connect.UserServiceClien
 	return _c
 }
 
+// VPN provides a mock function for the type Apiv2
+func (_mock *Apiv2) VPN() apiv2connect.VPNServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for VPN")
+	}
+
+	var r0 apiv2connect.VPNServiceClient
+	if returnFunc, ok := ret.Get(0).(func() apiv2connect.VPNServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv2connect.VPNServiceClient)
+		}
+	}
+	return r0
+}
+
+// Apiv2_VPN_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VPN'
+type Apiv2_VPN_Call struct {
+	*mock.Call
+}
+
+// VPN is a helper method to define mock.On call
+func (_e *Apiv2_Expecter) VPN() *Apiv2_VPN_Call {
+	return &Apiv2_VPN_Call{Call: _e.mock.On("VPN")}
+}
+
+func (_c *Apiv2_VPN_Call) Run(run func()) *Apiv2_VPN_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Apiv2_VPN_Call) Return(vPNServiceClient apiv2connect.VPNServiceClient) *Apiv2_VPN_Call {
+	_c.Call.Return(vPNServiceClient)
+	return _c
+}
+
+func (_c *Apiv2_VPN_Call) RunAndReturn(run func() apiv2connect.VPNServiceClient) *Apiv2_VPN_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Version provides a mock function for the type Apiv2
 func (_mock *Apiv2) Version() apiv2connect.VersionServiceClient {
 	ret := _mock.Called()

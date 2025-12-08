@@ -28,6 +28,7 @@ import metalstack.api.v2.tenant_connect as api_tenant_connect
 import metalstack.api.v2.token_connect as api_token_connect
 import metalstack.api.v2.user_connect as api_user_connect
 import metalstack.api.v2.version_connect as api_version_connect
+import metalstack.api.v2.vpn_connect as api_vpn_connect
 
 import metalstack.infra.v2.bmc_connect as infra_bmc_connect
 import metalstack.infra.v2.switch_connect as infra_switch_connect
@@ -143,6 +144,9 @@ class Client:
 
         def version(self):
             return api_version_connect.VersionServiceClientSync(address=self._baseurl, session=self._session)
+
+        def vpn(self):
+            return api_vpn_connect.VPNServiceClientSync(address=self._baseurl, session=self._session)
 
 
     class _Infrav2:

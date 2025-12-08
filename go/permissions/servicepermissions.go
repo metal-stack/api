@@ -31,6 +31,7 @@ func GetServices() []string {
 		"metalstack.api.v2.TenantService",
 		"metalstack.api.v2.TokenService",
 		"metalstack.api.v2.UserService",
+		"metalstack.api.v2.VPNService",
 		"metalstack.api.v2.VersionService",
 		"metalstack.infra.v2.BMCService",
 		"metalstack.infra.v2.SwitchService",
@@ -149,6 +150,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.api.v2.NetworkService/Delete",
 					"/metalstack.api.v2.ProjectService/Get",
 					"/metalstack.api.v2.ProjectService/Update",
+					"/metalstack.api.v2.VPNService/Authkey",
 				},
 				"PROJECT_ROLE_OWNER": []string{
 					"/metalstack.api.v2.IPService/Get",
@@ -175,6 +177,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.api.v2.ProjectService/Invite",
 					"/metalstack.api.v2.ProjectService/InviteDelete",
 					"/metalstack.api.v2.ProjectService/InvitesList",
+					"/metalstack.api.v2.VPNService/Authkey",
 				},
 				"PROJECT_ROLE_VIEWER": []string{
 					"/metalstack.api.v2.IPService/Get",
@@ -288,6 +291,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.TokenService/Revoke":                         true,
 			"/metalstack.api.v2.TokenService/Update":                         true,
 			"/metalstack.api.v2.UserService/Get":                             true,
+			"/metalstack.api.v2.VPNService/Authkey":                          true,
 			"/metalstack.api.v2.VersionService/Get":                          true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":                  true,
 			"/metalstack.infra.v2.SwitchService/Get":                         true,
@@ -409,6 +413,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.api.v2.ProjectService/RemoveMember":     true,
 				"/metalstack.api.v2.ProjectService/Update":           true,
 				"/metalstack.api.v2.ProjectService/UpdateMember":     true,
+				"/metalstack.api.v2.VPNService/Authkey":              true,
 			},
 		},
 		Auditable: map[string]bool{
@@ -508,6 +513,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.TokenService/Revoke":             true,
 			"/metalstack.api.v2.TokenService/Update":             true,
 			"/metalstack.api.v2.UserService/Get":                 true,
+			"/metalstack.api.v2.VPNService/Authkey":              true,
 			"/metalstack.api.v2.VersionService/Get":              false,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      false,
 			"/metalstack.infra.v2.SwitchService/Get":             false,

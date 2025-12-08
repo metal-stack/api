@@ -1923,6 +1923,29 @@
         
           
           <li>
+            <a href="#metalstack%2fapi%2fv2%2fvpn.proto">metalstack/api/v2/vpn.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.api.v2.VPNServiceAuthkeyRequest"><span class="badge">M</span>VPNServiceAuthkeyRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.VPNServiceAuthkeyResponse"><span class="badge">M</span>VPNServiceAuthkeyResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.VPNService"><span class="badge">S</span>VPNService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2finfra%2fv2%2fbmc.proto">metalstack/infra/v2/bmc.proto</a>
             <ul>
               
@@ -8573,9 +8596,14 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                   <td>connected</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>Connected indicate if this machine is connected to the VPN
-
-TODO add machine ips </p></td>
+                  <td><p>Connected indicate if this machine is connected to the VPN </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ips</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>IPs of the machine connected to the vpn </p></td>
                 </tr>
               
             </tbody>
@@ -15255,6 +15283,109 @@ This service is suitable to create tokens for other users instead of deriving us
                 <td><a href="#metalstack.api.v2.VersionServiceGetRequest">VersionServiceGetRequest</a></td>
                 <td><a href="#metalstack.api.v2.VersionServiceGetResponse">VersionServiceGetResponse</a></td>
                 <td><p>Get the version</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/api/v2/vpn.proto">metalstack/api/v2/vpn.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.api.v2.VPNServiceAuthkeyRequest">VPNServiceAuthkeyRequest</h3>
+        <p>VPNServiceAuthkeyRequest is the request payload for a vpn authkey request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project for which a vpn authkey should be generated. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ephemeral</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Ephemeral defines if the authkey should be ephemeral. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expires</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>Expires defines the duration after which the authkey expires. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.VPNServiceAuthkeyResponse">VPNServiceAuthkeyResponse</h3>
+        <p>VPNServiceAuthkeyResponse is the request payload for a authkey response</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address is the address of the vpn control plane. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>authkey</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Authkey is the key to connect to the vpn at the given address.
+This key can only be seen once. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.api.v2.VPNService">VPNService</h3>
+        <p>VPNService serves vpn related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Authkey</td>
+                <td><a href="#metalstack.api.v2.VPNServiceAuthkeyRequest">VPNServiceAuthkeyRequest</a></td>
+                <td><a href="#metalstack.api.v2.VPNServiceAuthkeyResponse">VPNServiceAuthkeyResponse</a></td>
+                <td><p>AuthKey generates a authkey for a project to join a machine to the project vpn</p></td>
               </tr>
             
           </tbody>

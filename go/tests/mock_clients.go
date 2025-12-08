@@ -73,6 +73,7 @@ type (
 		tokenservice      *apiv2mocks.TokenServiceClient
 		userservice       *apiv2mocks.UserServiceClient
 		versionservice    *apiv2mocks.VersionServiceClient
+		vpnservice        *apiv2mocks.VPNServiceClient
 	}
 
 	Apiv2MockFns struct {
@@ -90,6 +91,7 @@ type (
 		Token      func(m *mock.Mock)
 		User       func(m *mock.Mock)
 		Version    func(m *mock.Mock)
+		VPN        func(m *mock.Mock)
 	}
 	infrav2 struct {
 		bmcservice    *infrav2mocks.BMCServiceClient
@@ -237,6 +239,7 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		tokenservice:      apiv2mocks.NewTokenServiceClient(t),
 		userservice:       apiv2mocks.NewUserServiceClient(t),
 		versionservice:    apiv2mocks.NewVersionServiceClient(t),
+		vpnservice:        apiv2mocks.NewVPNServiceClient(t),
 	}
 
 	if fns != nil {
@@ -281,6 +284,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		}
 		if fns.Version != nil {
 			fns.Version(&a.versionservice.Mock)
+		}
+		if fns.VPN != nil {
+			fns.VPN(&a.vpnservice.Mock)
 		}
 
 	}
@@ -329,6 +335,9 @@ func (c *apiv2) User() apiv2connect.UserServiceClient {
 }
 func (c *apiv2) Version() apiv2connect.VersionServiceClient {
 	return c.versionservice
+}
+func (c *apiv2) VPN() apiv2connect.VPNServiceClient {
+	return c.vpnservice
 }
 
 func (w wrapper) Infrav2(fns *Infrav2MockFns) *infrav2 {

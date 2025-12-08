@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
+import "metalstack/api/v2/common.proto";
+
+// VPNService serves vpn related functions
+service VPNService {
+  // AuthKey generates a authkey for a project to join a machine to the project vpn
+  rpc Authkey(VPNServiceAuthkeyRequest) returns (VPNServiceAuthkeyResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+}
+
+// ------------------------ Service Messages ----------------------------------
+
+// VPNServiceAuthkeyRequest is the request payload for a vpn authkey request.
+message VPNServiceAuthkeyRequest {
+  // Project for which a vpn authkey should be generated.
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // Ephemeral defines if the authkey should be ephemeral.
+  bool ephemeral = 2;
+  // Expires defines the duration after which the authkey expires.
+  google.protobuf.Duration expires = 3;
+}
+
+// VPNServiceAuthkeyResponse is the request payload for a authkey response
+message VPNServiceAuthkeyResponse {
+  // Address is the address of the vpn control plane.
+  string address = 1;
+  // Authkey is the key to connect to the vpn at the given address.
+  // This key can only be seen once.
+  string authkey = 2;
+}

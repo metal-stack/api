@@ -458,14 +458,16 @@ class MachineProvisioningEvent(_message.Message):
     def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., event: _Optional[_Union[MachineProvisioningEventType, str]] = ..., message: _Optional[str] = ...) -> None: ...
 
 class MachineVPN(_message.Message):
-    __slots__ = ("control_plane_address", "auth_key", "connected")
+    __slots__ = ("control_plane_address", "auth_key", "connected", "ips")
     CONTROL_PLANE_ADDRESS_FIELD_NUMBER: _ClassVar[int]
     AUTH_KEY_FIELD_NUMBER: _ClassVar[int]
     CONNECTED_FIELD_NUMBER: _ClassVar[int]
+    IPS_FIELD_NUMBER: _ClassVar[int]
     control_plane_address: str
     auth_key: str
     connected: bool
-    def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ...) -> None: ...
+    ips: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ..., ips: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class MachineQuery(_message.Message):
     __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "ipmi", "fru", "hardware", "state")
