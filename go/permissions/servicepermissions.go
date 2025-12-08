@@ -33,6 +33,7 @@ func GetServices() []string {
 		"metalstack.api.v2.UserService",
 		"metalstack.api.v2.VersionService",
 		"metalstack.infra.v2.BMCService",
+		"metalstack.infra.v2.EventService",
 		"metalstack.infra.v2.SwitchService",
 	}
 }

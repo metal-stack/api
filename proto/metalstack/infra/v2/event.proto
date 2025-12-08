@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package metalstack.infra.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+
+// EventService serves event related functions.
+service EventService {
+  // Send a series of machine provisioning events.
+  rpc Send(EventServiceSendRequest) returns (EventServiceSendResponse) {}
+}
+
+// EventServiceSendRequest.
+message EventServiceSendRequest {
+  // Events grouped by machine IDs.
+  map<string, MachineProvisioningEvent> events = 1;
+}
+
+// EventServiceSendResponse.
+message EventServiceSendResponse {
+  // Events counts the number of events successfully stored in the database.
+  uint64 events = 1;
+  // Failed contains IDs of all machines whose events could not be stored in the database.
+  repeated string failed = 2;
+}
+
+// MachineProvisioningEvent contains details about an event.
+message MachineProvisioningEvent {
+  // Time the event occurred at.
+  google.protobuf.Timestamp time = 1;
+  // Event that occurred.
+  ProvisioningEventType event = 2 [(buf.validate.field).enum.defined_only = true];
+  // Message describing the event in more detail.
+  string message = 3;
+}
+
+// ProvisioningEventType is a short description of a machine event.
+enum ProvisioningEventType {
+  // PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified.
+  PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
+  // PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago.
+  PROVISIONING_EVENT_TYPE_ALIVE = 1 [(metalstack.api.v2.enum_string_value) = "Alive"];
+  // PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine's lifecycle.
+  PROVISIONING_EVENT_TYPE_CRASHED = 2 [(metalstack.api.v2.enum_string_value) = "Crashed"];
+  // PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE.
+  PROVISIONING_EVENT_TYPE_PXE_BOOTING = 3 [(metalstack.api.v2.enum_string_value) = "PXE Booting"];
+  // PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot.
+  PROVISIONING_EVENT_TYPE_PLANNED_REBOOT = 4 [(metalstack.api.v2.enum_string_value) = "Planned Reboot"];
+  // PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started.
+  PROVISIONING_EVENT_TYPE_PREPARING = 5 [(metalstack.api.v2.enum_string_value) = "Preparing"];
+  // PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API.
+  PROVISIONING_EVENT_TYPE_REGISTERING = 6 [(metalstack.api.v2.enum_string_value) = "Registering"];
+  // PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation.
+  PROVISIONING_EVENT_TYPE_WAITING = 7 [(metalstack.api.v2.enum_string_value) = "Waiting"];
+  // PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed.
+  PROVISIONING_EVENT_TYPE_INSTALLING = 8 [(metalstack.api.v2.enum_string_value) = "Installing"];
+  // PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS.
+  PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL = 9 [(metalstack.api.v2.enum_string_value) = "Booting New Kernel"];
+  // PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness.
+  PROVISIONING_EVENT_TYPE_PHONED_HOME = 10 [(metalstack.api.v2.enum_string_value) = "Phoned Home"];
+  // PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines.
+  PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11 [(metalstack.api.v2.enum_string_value) = "Machine Reclaim"];
+}
