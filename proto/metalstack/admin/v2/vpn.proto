@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package metalstack.api.v2;
+package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
@@ -10,8 +10,7 @@ import "metalstack/api/v2/common.proto";
 service VPNService {
   // AuthKey generates a authkey for a project to join a machine to the project vpn
   rpc Authkey(VPNServiceAuthkeyRequest) returns (VPNServiceAuthkeyResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
   }
 }
 

@@ -2,12 +2,12 @@
 // github.com/vektra/mockery
 // template: testify
 
-package apiv2connect
+package adminv2connect
 
 import (
 	"context"
 
-	"github.com/metal-stack/api/go/metalstack/api/v2"
+	"github.com/metal-stack/api/go/metalstack/admin/v2"
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -39,26 +39,26 @@ func (_m *VPNServiceHandler) EXPECT() *VPNServiceHandler_Expecter {
 }
 
 // Authkey provides a mock function for the type VPNServiceHandler
-func (_mock *VPNServiceHandler) Authkey(context1 context.Context, vPNServiceAuthkeyRequest *apiv2.VPNServiceAuthkeyRequest) (*apiv2.VPNServiceAuthkeyResponse, error) {
+func (_mock *VPNServiceHandler) Authkey(context1 context.Context, vPNServiceAuthkeyRequest *adminv2.VPNServiceAuthkeyRequest) (*adminv2.VPNServiceAuthkeyResponse, error) {
 	ret := _mock.Called(context1, vPNServiceAuthkeyRequest)
 
 	if len(ret) == 0 {
 		panic("no return value specified for Authkey")
 	}
 
-	var r0 *apiv2.VPNServiceAuthkeyResponse
+	var r0 *adminv2.VPNServiceAuthkeyResponse
 	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *apiv2.VPNServiceAuthkeyRequest) (*apiv2.VPNServiceAuthkeyResponse, error)); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.VPNServiceAuthkeyRequest) (*adminv2.VPNServiceAuthkeyResponse, error)); ok {
 		return returnFunc(context1, vPNServiceAuthkeyRequest)
 	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *apiv2.VPNServiceAuthkeyRequest) *apiv2.VPNServiceAuthkeyResponse); ok {
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.VPNServiceAuthkeyRequest) *adminv2.VPNServiceAuthkeyResponse); ok {
 		r0 = returnFunc(context1, vPNServiceAuthkeyRequest)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*apiv2.VPNServiceAuthkeyResponse)
+			r0 = ret.Get(0).(*adminv2.VPNServiceAuthkeyResponse)
 		}
 	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *apiv2.VPNServiceAuthkeyRequest) error); ok {
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.VPNServiceAuthkeyRequest) error); ok {
 		r1 = returnFunc(context1, vPNServiceAuthkeyRequest)
 	} else {
 		r1 = ret.Error(1)
@@ -73,20 +73,20 @@ type VPNServiceHandler_Authkey_Call struct {
 
 // Authkey is a helper method to define mock.On call
 //   - context1 context.Context
-//   - vPNServiceAuthkeyRequest *apiv2.VPNServiceAuthkeyRequest
+//   - vPNServiceAuthkeyRequest *adminv2.VPNServiceAuthkeyRequest
 func (_e *VPNServiceHandler_Expecter) Authkey(context1 interface{}, vPNServiceAuthkeyRequest interface{}) *VPNServiceHandler_Authkey_Call {
 	return &VPNServiceHandler_Authkey_Call{Call: _e.mock.On("Authkey", context1, vPNServiceAuthkeyRequest)}
 }
 
-func (_c *VPNServiceHandler_Authkey_Call) Run(run func(context1 context.Context, vPNServiceAuthkeyRequest *apiv2.VPNServiceAuthkeyRequest)) *VPNServiceHandler_Authkey_Call {
+func (_c *VPNServiceHandler_Authkey_Call) Run(run func(context1 context.Context, vPNServiceAuthkeyRequest *adminv2.VPNServiceAuthkeyRequest)) *VPNServiceHandler_Authkey_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 *apiv2.VPNServiceAuthkeyRequest
+		var arg1 *adminv2.VPNServiceAuthkeyRequest
 		if args[1] != nil {
-			arg1 = args[1].(*apiv2.VPNServiceAuthkeyRequest)
+			arg1 = args[1].(*adminv2.VPNServiceAuthkeyRequest)
 		}
 		run(
 			arg0,
@@ -96,12 +96,12 @@ func (_c *VPNServiceHandler_Authkey_Call) Run(run func(context1 context.Context,
 	return _c
 }
 
-func (_c *VPNServiceHandler_Authkey_Call) Return(vPNServiceAuthkeyResponse *apiv2.VPNServiceAuthkeyResponse, err error) *VPNServiceHandler_Authkey_Call {
+func (_c *VPNServiceHandler_Authkey_Call) Return(vPNServiceAuthkeyResponse *adminv2.VPNServiceAuthkeyResponse, err error) *VPNServiceHandler_Authkey_Call {
 	_c.Call.Return(vPNServiceAuthkeyResponse, err)
 	return _c
 }
 
-func (_c *VPNServiceHandler_Authkey_Call) RunAndReturn(run func(context1 context.Context, vPNServiceAuthkeyRequest *apiv2.VPNServiceAuthkeyRequest) (*apiv2.VPNServiceAuthkeyResponse, error)) *VPNServiceHandler_Authkey_Call {
+func (_c *VPNServiceHandler_Authkey_Call) RunAndReturn(run func(context1 context.Context, vPNServiceAuthkeyRequest *adminv2.VPNServiceAuthkeyRequest) (*adminv2.VPNServiceAuthkeyResponse, error)) *VPNServiceHandler_Authkey_Call {
 	_c.Call.Return(run)
 	return _c
 }

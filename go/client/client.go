@@ -38,6 +38,7 @@ type (
 		Switch() adminv2connect.SwitchServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
+		VPN() adminv2connect.VPNServiceClient
 	}
 
 	adminv2 struct {
@@ -52,6 +53,7 @@ type (
 		switchservice     adminv2connect.SwitchServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
 		tokenservice      adminv2connect.TokenServiceClient
+		vpnservice        adminv2connect.VPNServiceClient
 	}
 
 	Apiv2 interface {
@@ -69,7 +71,6 @@ type (
 		Token() apiv2connect.TokenServiceClient
 		User() apiv2connect.UserServiceClient
 		Version() apiv2connect.VersionServiceClient
-		VPN() apiv2connect.VPNServiceClient
 	}
 
 	apiv2 struct {
@@ -87,7 +88,6 @@ type (
 		tokenservice      apiv2connect.TokenServiceClient
 		userservice       apiv2connect.UserServiceClient
 		versionservice    apiv2connect.VersionServiceClient
-		vpnservice        apiv2connect.VPNServiceClient
 	}
 
 	Infrav2 interface {
@@ -212,6 +212,12 @@ func (c *client) Adminv2() Adminv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		vpnservice: adminv2connect.NewVPNServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 	}
 	return a
 }
@@ -248,6 +254,9 @@ func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 }
 func (c *adminv2) Token() adminv2connect.TokenServiceClient {
 	return c.tokenservice
+}
+func (c *adminv2) VPN() adminv2connect.VPNServiceClient {
+	return c.vpnservice
 }
 
 func (c *client) Apiv2() Apiv2 {
@@ -336,12 +345,6 @@ func (c *client) Apiv2() Apiv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
-		vpnservice: apiv2connect.NewVPNServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
 	}
 	return a
 }
@@ -387,9 +390,6 @@ func (c *apiv2) User() apiv2connect.UserServiceClient {
 }
 func (c *apiv2) Version() apiv2connect.VersionServiceClient {
 	return c.versionservice
-}
-func (c *apiv2) VPN() apiv2connect.VPNServiceClient {
-	return c.vpnservice
 }
 
 func (c *client) Infrav2() Infrav2 {
