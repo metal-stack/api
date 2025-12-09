@@ -309,9 +309,9 @@ const file_metalstack_infra_v2_event_proto_rawDesc = "" +
 	"*PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL\x10\t\x1a\x16\x82\xb2\x19\x12Booting New Kernel\x128\n" +
 	"#PROVISIONING_EVENT_TYPE_PHONED_HOME\x10\n" +
 	"\x1a\x0f\x82\xb2\x19\vPhoned Home\x12@\n" +
-	"'PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM\x10\v\x1a\x13\x82\xb2\x19\x0fMachine Reclaim2u\n" +
-	"\fEventService\x12e\n" +
-	"\x04Send\x12,.metalstack.infra.v2.EventServiceSendRequest\x1a-.metalstack.infra.v2.EventServiceSendResponse\"\x00B\xce\x01\n" +
+	"'PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM\x10\v\x1a\x13\x82\xb2\x19\x0fMachine Reclaim2~\n" +
+	"\fEventService\x12n\n" +
+	"\x04Send\x12,.metalstack.infra.v2.EventServiceSendRequest\x1a-.metalstack.infra.v2.EventServiceSendResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xce\x01\n" +
 	"\x17com.metalstack.infra.v2B\n" +
 	"EventProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
