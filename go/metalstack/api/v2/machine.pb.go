@@ -391,7 +391,9 @@ type MachineServiceGetRequest struct {
 	// UUID of the machine to get
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Project of the machine
-	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
+	// Complete fetches all transitive entities as well which might be expensive.
+	Complete      bool `protobuf:"varint,3,opt,name=complete,proto3" json:"complete,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -438,6 +440,13 @@ func (x *MachineServiceGetRequest) GetProject() string {
 		return x.Project
 	}
 	return ""
+}
+
+func (x *MachineServiceGetRequest) GetComplete() bool {
+	if x != nil {
+		return x.Complete
+	}
+	return false
 }
 
 // MachineServiceGetResponse is the request payload for a machine get response
@@ -934,7 +943,9 @@ type MachineServiceListRequest struct {
 	// Project of the machines to list
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// Query to list one ore more machines
-	Query         *MachineQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
+	Query *MachineQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
+	// Complete fetches all transitive entities as well which might be expensive.
+	Complete      bool `protobuf:"varint,3,opt,name=complete,proto3" json:"complete,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -981,6 +992,13 @@ func (x *MachineServiceListRequest) GetQuery() *MachineQuery {
 		return x.Query
 	}
 	return nil
+}
+
+func (x *MachineServiceListRequest) GetComplete() bool {
+	if x != nil {
+		return x.Complete
+	}
+	return false
 }
 
 // MachineServiceListResponse is the request payload for a machine list response
@@ -3377,10 +3395,11 @@ var File_metalstack_api_v2_machine_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/machine.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\x1a\x1dmetalstack/api/v2/image.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a!metalstack/api/v2/partition.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"\\\n" +
+	"\x1fmetalstack/api/v2/machine.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\"metalstack/api/v2/filesystem.proto\x1a\x1dmetalstack/api/v2/image.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a!metalstack/api/v2/partition.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1cmetalstack/api/v2/size.proto\"x\n" +
 	"\x18MachineServiceGetRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
-	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
+	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x1a\n" +
+	"\bcomplete\x18\x03 \x01(\bR\bcomplete\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +
 	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xa2\b\n" +
 	"\x1bMachineServiceCreateRequest\x12\"\n" +
@@ -3427,10 +3446,11 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\f_descriptionB\t\n" +
 	"\a_labels\"T\n" +
 	"\x1cMachineServiceUpdateResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"v\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\x92\x01\n" +
 	"\x19MachineServiceListRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x125\n" +
-	"\x05query\x18\x02 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\x05query\"T\n" +
+	"\x05query\x18\x02 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\x05query\x12\x1a\n" +
+	"\bcomplete\x18\x03 \x01(\bR\bcomplete\"T\n" +
 	"\x1aMachineServiceListResponse\x126\n" +
 	"\bmachines\x18\x01 \x03(\v2\x1a.metalstack.api.v2.MachineR\bmachines\"_\n" +
 	"\x1bMachineServiceDeleteRequest\x12\x1c\n" +

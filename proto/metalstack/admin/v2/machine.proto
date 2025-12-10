@@ -29,6 +29,8 @@ service MachineService {
 message MachineServiceGetRequest {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Complete fetches all transitive entities as well which might be expensive.
+  bool complete = 2;
 }
 
 // MachineServiceGetResponse is the request payload for a machine get response
@@ -44,6 +46,8 @@ message MachineServiceListRequest {
   // Partition for which machines should be listed, could be left empty if only one partition is present
   // otherwise an error is thrown that the partition must be specified
   optional string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  // Complete fetches all transitive entities as well which might be expensive.
+  bool complete = 3;
 }
 
 // MachineServiceListResponse is the request payload for a machine list response
