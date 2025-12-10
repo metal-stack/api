@@ -17,10 +17,10 @@ func TestValidateFirewallRules(t *testing.T) {
 				Comment:  "a rule",
 			},
 			wantErr: true,
-			wantErrorMessage: `validation error:
- - protocol: value must be one of the defined enum values [enum.defined_only]
- - ports[0]: value must be less than or equal to 65532 [uint32.lte]
- - to: given prefixes must be valid [repeated.prefixes]`,
+			wantErrorMessage: `validation errors:
+ - protocol: value must be one of the defined enum values
+ - ports[0]: value must be less than or equal to 65532
+ - to: given prefixes must be valid`,
 		},
 		{
 			name: "Invalid Rule with invalid comment",
@@ -31,7 +31,7 @@ func TestValidateFirewallRules(t *testing.T) {
 				Comment:  "a # invalid 3 rule",
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error:\n - comment: value does not match regex pattern `^[a-z_ -]*$` [string.pattern]",
+			wantErrorMessage: "validation error: comment: value does not match regex pattern `^[a-z_ -]*$`",
 		},
 	}
 

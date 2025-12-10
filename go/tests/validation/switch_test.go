@@ -17,9 +17,8 @@ func TestValidateSwitch(t *testing.T) {
 				Mac:        "abc",
 				Vrf:        proto.String("10"),
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - mac: this string must be a valid macaddress [string.macaddress]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: mac: this string must be a valid macaddress`,
 		},
 		{
 			name: "SwitchNic with valid lowercase MAC",
@@ -61,9 +60,8 @@ func TestValidateSwitch(t *testing.T) {
 				ManagementUser: proto.String("admin"),
 				ConsoleCommand: proto.String("ssh"),
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - id: value must be a valid hostname [string.hostname]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: id: value must be a valid hostname`,
 		},
 	}
 	validateProtos(t, tests)

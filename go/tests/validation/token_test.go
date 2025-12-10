@@ -32,9 +32,9 @@ func TestValidateToken(t *testing.T) {
 				},
 			},
 			wantErr: true,
-			wantErrorMessage: `validation error:
- - project_roles["p42"]: value must be a valid UUID [string.uuid]
- - project_roles["p42"]: value must be one of the defined enum values [enum.defined_only]`,
+			wantErrorMessage: `validation errors:
+ - project_roles["p42"]: value must be a valid UUID
+ - project_roles["p42"]: value must be one of the defined enum values`,
 		},
 		{
 			name: "InValid Token Create Request",
@@ -44,9 +44,8 @@ func TestValidateToken(t *testing.T) {
 					"00000000-0000-0000-0000-000000000000": 5,
 				},
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - project_roles["00000000-0000-0000-0000-000000000000"]: value must be one of the defined enum values [enum.defined_only]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: project_roles["00000000-0000-0000-0000-000000000000"]: value must be one of the defined enum values`,
 		},
 		{
 			name: "InValid Token, user token with permissions",
@@ -62,9 +61,8 @@ func TestValidateToken(t *testing.T) {
 				},
 				TokenType: apiv2.TokenType_TOKEN_TYPE_USER,
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - token type user must not have permissions [token.permissions.usertoken]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: token type user must not have permissions`,
 		},
 		{
 			name: "Valid Token, api token with permissions",
