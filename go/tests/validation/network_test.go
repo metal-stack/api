@@ -28,9 +28,9 @@ func TestValidateNetwork(t *testing.T) {
 				DestinationPrefixes: []string{"0.0.0.0.0/0"},
 			},
 			wantErr: true,
-			wantErrorMessage: `validation error:
- - prefixes: given prefixes must be valid [repeated.prefixes]
- - destination_prefixes: given prefixes must be valid [repeated.prefixes]`,
+			wantErrorMessage: `validation errors:
+ - prefixes: given prefixes must be valid
+ - destination_prefixes: given prefixes must be valid`,
 		},
 		{
 			name: "Valid Network minimal config",
@@ -47,9 +47,9 @@ func TestValidateNetwork(t *testing.T) {
 				Prefixes:            []string{"1.2.3.4.5/99"},
 				DestinationPrefixes: []string{"0.0.0.0.0/0"}},
 			wantErr: true,
-			wantErrorMessage: `validation error:
- - prefixes: given prefixes must be valid [repeated.prefixes]
- - destination_prefixes: given prefixes must be valid [repeated.prefixes]`,
+			wantErrorMessage: `validation errors:
+ - prefixes: given prefixes must be valid
+ - destination_prefixes: given prefixes must be valid`,
 		},
 	}
 	validateProtos(t, tests)

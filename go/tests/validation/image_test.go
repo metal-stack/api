@@ -27,9 +27,8 @@ func TestValidateImage(t *testing.T) {
 				Url:      "not-a-uri",
 				Features: []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE},
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - url: given uri must be valid [string.uri]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: url: given uri must be valid`,
 		},
 		{
 			name: "Invalid Image, no features",
@@ -38,9 +37,8 @@ func TestValidateImage(t *testing.T) {
 				Url:      "http://download.org/debian:12.0",
 				Features: []apiv2.ImageFeature{3},
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - features[0]: value must be one of the defined enum values [enum.defined_only]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: features[0]: value must be one of the defined enum values`,
 		},
 		{
 			name: "Valid ImageUpdate minimal config",
@@ -62,9 +60,8 @@ func TestValidateImage(t *testing.T) {
 				Features:       []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE, apiv2.ImageFeature_IMAGE_FEATURE_MACHINE},
 				Classification: apiv2.ImageClassification_IMAGE_CLASSIFICATION_PREVIEW,
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - features: repeated value must contain unique items [repeated.unique]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: features: repeated value must contain unique items`,
 		},
 		{
 			name: "InValid ImageUpdate invalid Features",
@@ -75,9 +72,8 @@ func TestValidateImage(t *testing.T) {
 				Features:       []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE, 3},
 				Classification: apiv2.ImageClassification_IMAGE_CLASSIFICATION_PREVIEW,
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - features[1]: value must be one of the defined enum values [enum.defined_only]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: features[1]: value must be one of the defined enum values`,
 		},
 	}
 
