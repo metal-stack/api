@@ -2835,7 +2835,9 @@ type MachineAllocationQuery struct {
 	// AllocationType of this machine
 	AllocationType *MachineAllocationType `protobuf:"varint,7,opt,name=allocation_type,json=allocationType,proto3,enum=metalstack.api.v2.MachineAllocationType,oneof" json:"allocation_type,omitempty"`
 	// Labels for which this machine allocation should get filtered
-	Labels        *Labels `protobuf:"bytes,8,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	Labels *Labels `protobuf:"bytes,8,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	// VPN query if this machine has a vpn configuration
+	Vpn           *MachineVPN `protobuf:"bytes,9,opt,name=vpn,proto3,oneof" json:"vpn,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2922,6 +2924,13 @@ func (x *MachineAllocationQuery) GetAllocationType() MachineAllocationType {
 func (x *MachineAllocationQuery) GetLabels() *Labels {
 	if x != nil {
 		return x.Labels
+	}
+	return nil
+}
+
+func (x *MachineAllocationQuery) GetVpn() *MachineVPN {
+	if x != nil {
+		return x.Vpn
 	}
 	return nil
 }
@@ -3609,7 +3618,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x05_ipmiB\x06\n" +
 	"\x04_fruB\v\n" +
 	"\t_hardwareB\b\n" +
-	"\x06_state\"\xa0\x04\n" +
+	"\x06_state\"\xde\x04\n" +
 	"\x16MachineAllocationQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12'\n" +
@@ -3621,7 +3630,8 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\bhostname\x18\x06 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\bhostname\x88\x01\x01\x12`\n" +
 	"\x0fallocation_type\x18\a \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\x0eallocationType\x88\x01\x01\x126\n" +
-	"\x06labels\x18\b \x01(\v2\x19.metalstack.api.v2.LabelsH\aR\x06labels\x88\x01\x01B\a\n" +
+	"\x06labels\x18\b \x01(\v2\x19.metalstack.api.v2.LabelsH\aR\x06labels\x88\x01\x01\x124\n" +
+	"\x03vpn\x18\t \x01(\v2\x1d.metalstack.api.v2.MachineVPNH\bR\x03vpn\x88\x01\x01B\a\n" +
 	"\x05_uuidB\a\n" +
 	"\x05_nameB\n" +
 	"\n" +
@@ -3630,7 +3640,8 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x12_filesystem_layoutB\v\n" +
 	"\t_hostnameB\x12\n" +
 	"\x10_allocation_typeB\t\n" +
-	"\a_labels\"\xe4\x01\n" +
+	"\a_labelsB\x06\n" +
+	"\x04_vpn\"\xe4\x01\n" +
 	"\x13MachineNetworkQuery\x12\x1a\n" +
 	"\bnetworks\x18\x01 \x03(\tR\bnetworks\x12(\n" +
 	"\bprefixes\x18\x02 \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\bprefixes\x12?\n" +
@@ -3866,21 +3877,22 @@ var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	1,  // 61: metalstack.api.v2.MachineQuery.state:type_name -> metalstack.api.v2.MachineState
 	5,  // 62: metalstack.api.v2.MachineAllocationQuery.allocation_type:type_name -> metalstack.api.v2.MachineAllocationType
 	44, // 63: metalstack.api.v2.MachineAllocationQuery.labels:type_name -> metalstack.api.v2.Labels
-	6,  // 64: metalstack.api.v2.MachineService.Get:input_type -> metalstack.api.v2.MachineServiceGetRequest
-	8,  // 65: metalstack.api.v2.MachineService.Create:input_type -> metalstack.api.v2.MachineServiceCreateRequest
-	11, // 66: metalstack.api.v2.MachineService.Update:input_type -> metalstack.api.v2.MachineServiceUpdateRequest
-	13, // 67: metalstack.api.v2.MachineService.List:input_type -> metalstack.api.v2.MachineServiceListRequest
-	15, // 68: metalstack.api.v2.MachineService.Delete:input_type -> metalstack.api.v2.MachineServiceDeleteRequest
-	7,  // 69: metalstack.api.v2.MachineService.Get:output_type -> metalstack.api.v2.MachineServiceGetResponse
-	10, // 70: metalstack.api.v2.MachineService.Create:output_type -> metalstack.api.v2.MachineServiceCreateResponse
-	12, // 71: metalstack.api.v2.MachineService.Update:output_type -> metalstack.api.v2.MachineServiceUpdateResponse
-	14, // 72: metalstack.api.v2.MachineService.List:output_type -> metalstack.api.v2.MachineServiceListResponse
-	16, // 73: metalstack.api.v2.MachineService.Delete:output_type -> metalstack.api.v2.MachineServiceDeleteResponse
-	69, // [69:74] is the sub-list for method output_type
-	64, // [64:69] is the sub-list for method input_type
-	64, // [64:64] is the sub-list for extension type_name
-	64, // [64:64] is the sub-list for extension extendee
-	0,  // [0:64] is the sub-list for field type_name
+	35, // 64: metalstack.api.v2.MachineAllocationQuery.vpn:type_name -> metalstack.api.v2.MachineVPN
+	6,  // 65: metalstack.api.v2.MachineService.Get:input_type -> metalstack.api.v2.MachineServiceGetRequest
+	8,  // 66: metalstack.api.v2.MachineService.Create:input_type -> metalstack.api.v2.MachineServiceCreateRequest
+	11, // 67: metalstack.api.v2.MachineService.Update:input_type -> metalstack.api.v2.MachineServiceUpdateRequest
+	13, // 68: metalstack.api.v2.MachineService.List:input_type -> metalstack.api.v2.MachineServiceListRequest
+	15, // 69: metalstack.api.v2.MachineService.Delete:input_type -> metalstack.api.v2.MachineServiceDeleteRequest
+	7,  // 70: metalstack.api.v2.MachineService.Get:output_type -> metalstack.api.v2.MachineServiceGetResponse
+	10, // 71: metalstack.api.v2.MachineService.Create:output_type -> metalstack.api.v2.MachineServiceCreateResponse
+	12, // 72: metalstack.api.v2.MachineService.Update:output_type -> metalstack.api.v2.MachineServiceUpdateResponse
+	14, // 73: metalstack.api.v2.MachineService.List:output_type -> metalstack.api.v2.MachineServiceListResponse
+	16, // 74: metalstack.api.v2.MachineService.Delete:output_type -> metalstack.api.v2.MachineServiceDeleteResponse
+	70, // [70:75] is the sub-list for method output_type
+	65, // [65:70] is the sub-list for method input_type
+	65, // [65:65] is the sub-list for extension type_name
+	65, // [65:65] is the sub-list for extension extendee
+	0,  // [0:65] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_machine_proto_init() }

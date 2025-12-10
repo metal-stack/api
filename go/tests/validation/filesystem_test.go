@@ -25,9 +25,9 @@ func TestValidateFilesystem(t *testing.T) {
 				Device: "/",
 			},
 			wantErr: true,
-			wantErrorMessage: `validation error:
- - device: value length must be at least 2 characters [string.min_len]
- - format: value is required [required]`,
+			wantErrorMessage: `validation errors:
+ - device: value length must be at least 2 characters
+ - format: value is required`,
 		},
 		{
 			name: "Invalid Filesystem, device to short, format invalid",
@@ -35,9 +35,8 @@ func TestValidateFilesystem(t *testing.T) {
 				Device: "/dev/sda3",
 				Format: apiv2.Format(99),
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - format: value must be one of the defined enum values [enum.defined_only]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: format: value must be one of the defined enum values`,
 		},
 		{
 			name: "Valid FilesystemLayout minimal config",
@@ -62,9 +61,8 @@ func TestValidateFilesystem(t *testing.T) {
 				Name:        proto.String("c"),
 				Description: proto.String("c1-large"),
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - name: must be within 2 and 128 characters [string.is_name]`},
+			wantErr:          true,
+			wantErrorMessage: `validation error: name: must be within 2 and 128 characters`},
 	}
 
 	validateProtos(t, tests)

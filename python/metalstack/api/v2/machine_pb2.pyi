@@ -502,7 +502,7 @@ class MachineQuery(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., ipmi: _Optional[_Union[MachineIPMIQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ...) -> None: ...
 
 class MachineAllocationQuery(_message.Message):
-    __slots__ = ("uuid", "name", "project", "image", "filesystem_layout", "hostname", "allocation_type", "labels")
+    __slots__ = ("uuid", "name", "project", "image", "filesystem_layout", "hostname", "allocation_type", "labels", "vpn")
     UUID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
@@ -511,6 +511,7 @@ class MachineAllocationQuery(_message.Message):
     HOSTNAME_FIELD_NUMBER: _ClassVar[int]
     ALLOCATION_TYPE_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
+    VPN_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     name: str
     project: str
@@ -519,7 +520,8 @@ class MachineAllocationQuery(_message.Message):
     hostname: str
     allocation_type: MachineAllocationType
     labels: _common_pb2.Labels
-    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., hostname: _Optional[str] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
+    vpn: MachineVPN
+    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., hostname: _Optional[str] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ...) -> None: ...
 
 class MachineNetworkQuery(_message.Message):
     __slots__ = ("networks", "prefixes", "destination_prefixes", "ips", "vrfs", "asns")
