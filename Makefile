@@ -5,9 +5,9 @@ BUILDDATE := $(shell date -Iseconds)
 VERSION := $(or ${VERSION},$(shell git describe --tags --exact-match 2> /dev/null || git symbolic-ref -q --short HEAD || git rev-parse --short HEAD))
 LOCALBIN ?= $(shell pwd)/bin
 
-all: proto generate test
+all: proto generate test build
 
-release: proto generate test
+release: proto generate test build
 
 .PHONY: proto
 proto: protolint
@@ -27,3 +27,7 @@ generate:
 .PHONY: test
 test:
 	$(MAKE) -C go test
+
+.PHONY: build
+build:
+	make -C js build VERSION=$(VERSION)
