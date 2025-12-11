@@ -2186,7 +2186,9 @@ type MachineNic struct {
 	// Speed in bits/second of this network card
 	Speed uint64 `protobuf:"varint,6,opt,name=speed,proto3" json:"speed,omitempty"`
 	// Neighbors the neighbors visible to this network interface
-	Neighbors     []*MachineNic `protobuf:"bytes,7,rep,name=neighbors,proto3" json:"neighbors,omitempty"`
+	Neighbors []*MachineNic `protobuf:"bytes,7,rep,name=neighbors,proto3" json:"neighbors,omitempty"`
+	// Hostname the nic belongs to
+	Hostname      string `protobuf:"bytes,8,opt,name=hostname,proto3" json:"hostname,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2268,6 +2270,13 @@ func (x *MachineNic) GetNeighbors() []*MachineNic {
 		return x.Neighbors
 	}
 	return nil
+}
+
+func (x *MachineNic) GetHostname() string {
+	if x != nil {
+		return x.Hostname
+	}
+	return ""
 }
 
 // MachineBlockDevice contains details of a block device of this machine
@@ -3526,7 +3535,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\athreads\x18\x04 \x01(\rR\athreads\"L\n" +
 	"\bMetalGPU\x12 \n" +
 	"\x06vendor\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06vendor\x12\x1e\n" +
-	"\x05model\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x05model\"\x8b\x02\n" +
+	"\x05model\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x05model\"\xa7\x02\n" +
 	"\n" +
 	"MachineNic\x12\x1d\n" +
 	"\x03mac\x18\x01 \x01(\tB\v\xbaH\br\x06\xb8\xb3\xae\xb1\x02\x01R\x03mac\x12\x1f\n" +
@@ -3537,7 +3546,8 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x06vendor\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x06vendor\x12\x1e\n" +
 	"\x05model\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x05model\x12\x14\n" +
 	"\x05speed\x18\x06 \x01(\x04R\x05speed\x12;\n" +
-	"\tneighbors\x18\a \x03(\v2\x1d.metalstack.api.v2.MachineNicR\tneighbors\"I\n" +
+	"\tneighbors\x18\a \x03(\v2\x1d.metalstack.api.v2.MachineNicR\tneighbors\x12\x1a\n" +
+	"\bhostname\x18\b \x01(\tR\bhostname\"I\n" +
 	"\x12MachineBlockDevice\x12\x1f\n" +
 	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12\x12\n" +
 	"\x04size\x18\x02 \x01(\x04R\x04size\"o\n" +
