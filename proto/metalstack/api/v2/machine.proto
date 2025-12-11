@@ -445,6 +445,8 @@ message MachineNic {
   uint64 speed = 6;
   // Neighbors the neighbors visible to this network interface
   repeated MachineNic neighbors = 7;
+  // Hostname the nic belongs to
+  string hostname = 8;
 }
 
 // MachineBlockDevice contains details of a block device of this machine
