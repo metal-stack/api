@@ -34,6 +34,7 @@ func GetServices() []string {
 		"metalstack.api.v2.UserService",
 		"metalstack.api.v2.VersionService",
 		"metalstack.infra.v2.BMCService",
+		"metalstack.infra.v2.EventService",
 		"metalstack.infra.v2.SwitchService",
 	}
 }
@@ -97,6 +98,7 @@ func GetServicePermissions() *ServicePermissions {
 			Infra: Infra{
 				"INFRA_ROLE_EDITOR": []string{
 					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
+					"/metalstack.infra.v2.EventService/Send",
 					"/metalstack.infra.v2.SwitchService/Get",
 					"/metalstack.infra.v2.SwitchService/Register",
 					"/metalstack.infra.v2.SwitchService/Heartbeat",
@@ -293,6 +295,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                             true,
 			"/metalstack.api.v2.VersionService/Get":                          true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":                  true,
+			"/metalstack.infra.v2.EventService/Send":                         true,
 			"/metalstack.infra.v2.SwitchService/Get":                         true,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":                   true,
 			"/metalstack.infra.v2.SwitchService/Register":                    true,
@@ -371,6 +374,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: map[string]bool{
 				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
+				"/metalstack.infra.v2.EventService/Send":        true,
 				"/metalstack.infra.v2.SwitchService/Get":        true,
 				"/metalstack.infra.v2.SwitchService/Heartbeat":  true,
 				"/metalstack.infra.v2.SwitchService/Register":   true,
@@ -515,6 +519,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              false,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      false,
+			"/metalstack.infra.v2.EventService/Send":             false,
 			"/metalstack.infra.v2.SwitchService/Get":             false,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":       false,
 			"/metalstack.infra.v2.SwitchService/Register":        false,

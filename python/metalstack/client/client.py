@@ -31,6 +31,7 @@ import metalstack.api.v2.user_connect as api_user_connect
 import metalstack.api.v2.version_connect as api_version_connect
 
 import metalstack.infra.v2.bmc_connect as infra_bmc_connect
+import metalstack.infra.v2.event_connect as infra_event_connect
 import metalstack.infra.v2.switch_connect as infra_switch_connect
 
 
@@ -157,6 +158,9 @@ class Client:
 
         def bmc(self):
             return infra_bmc_connect.BMCServiceClientSync(address=self._baseurl, session=self._session)
+
+        def event(self):
+            return infra_event_connect.EventServiceClientSync(address=self._baseurl, session=self._session)
 
         def switch(self):
             return infra_switch_connect.SwitchServiceClientSync(address=self._baseurl, session=self._session)

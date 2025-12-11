@@ -392,7 +392,7 @@ class MetalGPU(_message.Message):
     def __init__(self, vendor: _Optional[str] = ..., model: _Optional[str] = ...) -> None: ...
 
 class MachineNic(_message.Message):
-    __slots__ = ("mac", "name", "identifier", "vendor", "model", "speed", "neighbors")
+    __slots__ = ("mac", "name", "identifier", "vendor", "model", "speed", "neighbors", "hostname")
     MAC_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     IDENTIFIER_FIELD_NUMBER: _ClassVar[int]
@@ -400,6 +400,7 @@ class MachineNic(_message.Message):
     MODEL_FIELD_NUMBER: _ClassVar[int]
     SPEED_FIELD_NUMBER: _ClassVar[int]
     NEIGHBORS_FIELD_NUMBER: _ClassVar[int]
+    HOSTNAME_FIELD_NUMBER: _ClassVar[int]
     mac: str
     name: str
     identifier: str
@@ -407,7 +408,8 @@ class MachineNic(_message.Message):
     model: str
     speed: int
     neighbors: _containers.RepeatedCompositeFieldContainer[MachineNic]
-    def __init__(self, mac: _Optional[str] = ..., name: _Optional[str] = ..., identifier: _Optional[str] = ..., vendor: _Optional[str] = ..., model: _Optional[str] = ..., speed: _Optional[int] = ..., neighbors: _Optional[_Iterable[_Union[MachineNic, _Mapping]]] = ...) -> None: ...
+    hostname: str
+    def __init__(self, mac: _Optional[str] = ..., name: _Optional[str] = ..., identifier: _Optional[str] = ..., vendor: _Optional[str] = ..., model: _Optional[str] = ..., speed: _Optional[int] = ..., neighbors: _Optional[_Iterable[_Union[MachineNic, _Mapping]]] = ..., hostname: _Optional[str] = ...) -> None: ...
 
 class MachineBlockDevice(_message.Message):
     __slots__ = ("name", "size")
