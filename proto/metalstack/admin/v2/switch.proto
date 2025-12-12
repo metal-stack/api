@@ -93,6 +93,8 @@ message SwitchServiceUpdateRequest {
   repeated metalstack.api.v2.SwitchNic nics = 9;
   // SwitchOs is the OS running on the switch.
   optional metalstack.api.v2.SwitchOS os = 10;
+  // MachineConnections map machines to the nics they are connected to.
+  repeated metalstack.api.v2.MachineConnection machine_connections = 11;
 }
 
 // SwitchServiceUpdateResponse.
