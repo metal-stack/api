@@ -333,24 +333,24 @@ type Switch struct {
 	Rack *string `protobuf:"bytes,4,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
 	// Partition the switch belongs to.
 	Partition string `protobuf:"bytes,5,opt,name=partition,proto3" json:"partition,omitempty"`
-	// Type is the role of the switch.
-	Type SwitchType `protobuf:"varint,6,opt,name=type,proto3,enum=metalstack.api.v2.SwitchType" json:"type,omitempty"`
 	// ReplaceMode is used to mark a switch ready for replacement.
-	ReplaceMode SwitchReplaceMode `protobuf:"varint,7,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode" json:"replace_mode,omitempty"`
+	ReplaceMode SwitchReplaceMode `protobuf:"varint,6,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode" json:"replace_mode,omitempty"`
 	// ManagementIp is the switch's IP for management access.
-	ManagementIp string `protobuf:"bytes,8,opt,name=management_ip,json=managementIp,proto3" json:"management_ip,omitempty"`
+	ManagementIp string `protobuf:"bytes,7,opt,name=management_ip,json=managementIp,proto3" json:"management_ip,omitempty"`
 	// ManagementUser is the user name to use for management access.
-	ManagementUser *string `protobuf:"bytes,9,opt,name=management_user,json=managementUser,proto3,oneof" json:"management_user,omitempty"`
+	ManagementUser *string `protobuf:"bytes,8,opt,name=management_user,json=managementUser,proto3,oneof" json:"management_user,omitempty"`
 	// ConsoleCommand is the command for accessing the switch's console.
-	ConsoleCommand *string `protobuf:"bytes,10,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
+	ConsoleCommand *string `protobuf:"bytes,9,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
 	// Nics are the front panel ports of the switch.
-	Nics []*SwitchNic `protobuf:"bytes,11,rep,name=nics,proto3" json:"nics,omitempty"`
+	Nics []*SwitchNic `protobuf:"bytes,10,rep,name=nics,proto3" json:"nics,omitempty"`
 	// SwitchOs is the OS running on the switch.
-	Os *SwitchOS `protobuf:"bytes,12,opt,name=os,proto3" json:"os,omitempty"`
+	Os *SwitchOS `protobuf:"bytes,11,opt,name=os,proto3" json:"os,omitempty"`
 	// MachineConnections map machines to the nics they are connected to.
-	MachineConnections []*MachineConnection `protobuf:"bytes,13,rep,name=machine_connections,json=machineConnections,proto3" json:"machine_connections,omitempty"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
+	MachineConnections []*MachineConnection `protobuf:"bytes,12,rep,name=machine_connections,json=machineConnections,proto3" json:"machine_connections,omitempty"`
+	// Type is the role of the switch.
+	Type          SwitchType `protobuf:"varint,13,opt,name=type,proto3,enum=metalstack.api.v2.SwitchType" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Switch) Reset() {
@@ -418,13 +418,6 @@ func (x *Switch) GetPartition() string {
 	return ""
 }
 
-func (x *Switch) GetType() SwitchType {
-	if x != nil {
-		return x.Type
-	}
-	return SwitchType_SWITCH_TYPE_UNSPECIFIED
-}
-
 func (x *Switch) GetReplaceMode() SwitchReplaceMode {
 	if x != nil {
 		return x.ReplaceMode
@@ -472,6 +465,13 @@ func (x *Switch) GetMachineConnections() []*MachineConnection {
 		return x.MachineConnections
 	}
 	return nil
+}
+
+func (x *Switch) GetType() SwitchType {
+	if x != nil {
+		return x.Type
+	}
+	return SwitchType_SWITCH_TYPE_UNSPECIFIED
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.
@@ -1043,18 +1043,18 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\vdescription\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vdescription\x12$\n" +
 	"\x04rack\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04rack\x88\x01\x01\x12)\n" +
-	"\tpartition\x18\x05 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12;\n" +
-	"\x04type\x18\x06 \x01(\x0e2\x1d.metalstack.api.v2.SwitchTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12Q\n" +
-	"\freplace_mode\x18\a \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
-	"\rmanagement_ip\x18\b \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x128\n" +
-	"\x0fmanagement_user\x18\t \x01(\tB\n" +
+	"\tpartition\x18\x05 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12Q\n" +
+	"\freplace_mode\x18\x06 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
+	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x128\n" +
+	"\x0fmanagement_user\x18\b \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x0emanagementUser\x88\x01\x01\x128\n" +
-	"\x0fconsole_command\x18\n" +
-	" \x01(\tB\n" +
+	"\x0fconsole_command\x18\t \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\x0econsoleCommand\x88\x01\x01\x120\n" +
-	"\x04nics\x18\v \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x12+\n" +
-	"\x02os\x18\f \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02os\x12U\n" +
-	"\x13machine_connections\x18\r \x03(\v2$.metalstack.api.v2.MachineConnectionR\x12machineConnectionsB\a\n" +
+	"\x04nics\x18\n" +
+	" \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x12+\n" +
+	"\x02os\x18\v \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02os\x12U\n" +
+	"\x13machine_connections\x18\f \x03(\v2$.metalstack.api.v2.MachineConnectionR\x12machineConnections\x12;\n" +
+	"\x04type\x18\r \x01(\x0e2\x1d.metalstack.api.v2.SwitchTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04typeB\a\n" +
 	"\x05_rackB\x12\n" +
 	"\x10_management_userB\x12\n" +
 	"\x10_console_command\"\xb1\x01\n" +
@@ -1181,11 +1181,11 @@ var file_metalstack_api_v2_switch_proto_goTypes = []any{
 }
 var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	14, // 0: metalstack.api.v2.Switch.meta:type_name -> metalstack.api.v2.Meta
-	4,  // 1: metalstack.api.v2.Switch.type:type_name -> metalstack.api.v2.SwitchType
-	1,  // 2: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
-	7,  // 3: metalstack.api.v2.Switch.nics:type_name -> metalstack.api.v2.SwitchNic
-	6,  // 4: metalstack.api.v2.Switch.os:type_name -> metalstack.api.v2.SwitchOS
-	11, // 5: metalstack.api.v2.Switch.machine_connections:type_name -> metalstack.api.v2.MachineConnection
+	1,  // 1: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
+	7,  // 2: metalstack.api.v2.Switch.nics:type_name -> metalstack.api.v2.SwitchNic
+	6,  // 3: metalstack.api.v2.Switch.os:type_name -> metalstack.api.v2.SwitchOS
+	11, // 4: metalstack.api.v2.Switch.machine_connections:type_name -> metalstack.api.v2.MachineConnection
+	4,  // 5: metalstack.api.v2.Switch.type:type_name -> metalstack.api.v2.SwitchType
 	2,  // 6: metalstack.api.v2.SwitchOS.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
 	10, // 7: metalstack.api.v2.SwitchNic.state:type_name -> metalstack.api.v2.NicState
 	8,  // 8: metalstack.api.v2.SwitchNic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter

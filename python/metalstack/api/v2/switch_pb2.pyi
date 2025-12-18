@@ -75,13 +75,12 @@ SWITCH_TYPE_MGMTLEAF: SwitchType
 SWITCH_TYPE_MGMTSPINE: SwitchType
 
 class Switch(_message.Message):
-    __slots__ = ("id", "meta", "description", "rack", "partition", "type", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections")
+    __slots__ = ("id", "meta", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections", "type")
     ID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
-    TYPE_FIELD_NUMBER: _ClassVar[int]
     REPLACE_MODE_FIELD_NUMBER: _ClassVar[int]
     MANAGEMENT_IP_FIELD_NUMBER: _ClassVar[int]
     MANAGEMENT_USER_FIELD_NUMBER: _ClassVar[int]
@@ -89,12 +88,12 @@ class Switch(_message.Message):
     NICS_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
     MACHINE_CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
+    TYPE_FIELD_NUMBER: _ClassVar[int]
     id: str
     meta: _common_pb2.Meta
     description: str
     rack: str
     partition: str
-    type: SwitchType
     replace_mode: SwitchReplaceMode
     management_ip: str
     management_user: str
@@ -102,7 +101,8 @@ class Switch(_message.Message):
     nics: _containers.RepeatedCompositeFieldContainer[SwitchNic]
     os: SwitchOS
     machine_connections: _containers.RepeatedCompositeFieldContainer[MachineConnection]
-    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., type: _Optional[_Union[SwitchType, str]] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ...) -> None: ...
+    type: SwitchType
+    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ..., type: _Optional[_Union[SwitchType, str]] = ...) -> None: ...
 
 class SwitchOS(_message.Message):
     __slots__ = ("vendor", "version", "metal_core_version")

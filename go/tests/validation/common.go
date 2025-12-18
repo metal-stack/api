@@ -27,7 +27,7 @@ func validateProtos(t *testing.T, tests prototests) {
 				t.Errorf("validate error = %v, wantErr %v", err, tt.wantErr)
 			}
 			if err != nil && tt.wantErr {
-				if diff := cmp.Diff(err.Error(), tt.wantErrorMessage); diff != "" {
+				if diff := cmp.Diff(tt.wantErrorMessage, err.Error()); diff != "" {
 					t.Errorf("validate error = %v, diff %v", err, diff)
 				}
 			}

@@ -25,28 +25,28 @@ message Switch {
   optional string rack = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Partition the switch belongs to.
   string partition = 5 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // Type is the role of the switch.
-  SwitchType type = 6 [(buf.validate.field).enum.defined_only = true];
   // ReplaceMode is used to mark a switch ready for replacement.
-  SwitchReplaceMode replace_mode = 7 [(buf.validate.field).enum.defined_only = true];
+  SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
   // ManagementIp is the switch's IP for management access.
-  string management_ip = 8 [(buf.validate.field).string.ip = true];
+  string management_ip = 7 [(buf.validate.field).string.ip = true];
   // ManagementUser is the user name to use for management access.
-  optional string management_user = 9 [(buf.validate.field).string = {
+  optional string management_user = 8 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // ConsoleCommand is the command for accessing the switch's console.
-  optional string console_command = 10 [(buf.validate.field).string = {
+  optional string console_command = 9 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Nics are the front panel ports of the switch.
-  repeated SwitchNic nics = 11;
+  repeated SwitchNic nics = 10;
   // SwitchOs is the OS running on the switch.
-  SwitchOS os = 12;
+  SwitchOS os = 11;
   // MachineConnections map machines to the nics they are connected to.
-  repeated MachineConnection machine_connections = 13;
+  repeated MachineConnection machine_connections = 12;
+  // Type is the role of the switch.
+  SwitchType type = 13 [(buf.validate.field).enum.defined_only = true];
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.

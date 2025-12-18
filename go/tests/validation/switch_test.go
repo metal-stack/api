@@ -3,15 +3,10 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"github.com/stretchr/testify/require"
 )
 
 func TestValidateMACAddress(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "Valid MAC address",
@@ -30,7 +25,7 @@ func TestValidateMACAddress(t *testing.T) {
 				Identifier: "Eth1/1",
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error:\n - mac: value does not match regex pattern `^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$` [string.pattern]",
+			wantErrorMessage: "validation error: mac: this string must be a valid macaddress",
 		},
 		{
 			name: "Too short",
@@ -40,7 +35,7 @@ func TestValidateMACAddress(t *testing.T) {
 				Identifier: "Eth1/1",
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error:\n - mac: value does not match regex pattern `^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$` [string.pattern]",
+			wantErrorMessage: "validation error: mac: this string must be a valid macaddress",
 		},
 		{
 			name: "Invalid separator",
@@ -50,7 +45,7 @@ func TestValidateMACAddress(t *testing.T) {
 				Identifier: "Eth1/1",
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error:\n - mac: value does not match regex pattern `^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$` [string.pattern]",
+			wantErrorMessage: "validation error: mac: this string must be a valid macaddress",
 		},
 		{
 			name: "Invalid character",
@@ -60,7 +55,7 @@ func TestValidateMACAddress(t *testing.T) {
 				Identifier: "Eth1/1",
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error:\n - mac: value does not match regex pattern `^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$` [string.pattern]",
+			wantErrorMessage: "validation error: mac: this string must be a valid macaddress",
 		},
 		{
 			name: "Uppercase and lowercase allowed",
@@ -70,9 +65,9 @@ func TestValidateMACAddress(t *testing.T) {
 				Identifier: "Eth1/1",
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error:\n - mac: value does not match regex pattern `^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$` [string.pattern]",
+			wantErrorMessage: "validation error: mac: this string must be a valid macaddress",
 		},
 	}
 
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }
