@@ -1,0 +1,820 @@
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import type { Labels, Meta, UpdateLabels, UpdateMeta } from "./common_pb";
+import type { Message } from "@bufbuild/protobuf";
+/**
+ * Describes the file metalstack/api/v2/network.proto.
+ */
+export declare const file_metalstack_api_v2_network: GenFile;
+/**
+ * NetworkServiceGetRequest
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceGetRequest
+ */
+export type NetworkServiceGetRequest = Message<"metalstack.api.v2.NetworkServiceGetRequest"> & {
+    /**
+     * ID of the network to get
+     *
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * Project of the network
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceGetRequest.
+ * Use `create(NetworkServiceGetRequestSchema)` to create a new message.
+ */
+export declare const NetworkServiceGetRequestSchema: GenMessage<NetworkServiceGetRequest>;
+/**
+ * NetworkServiceGetResponse
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceGetResponse
+ */
+export type NetworkServiceGetResponse = Message<"metalstack.api.v2.NetworkServiceGetResponse"> & {
+    /**
+     * Network which was requested to get
+     *
+     * @generated from field: metalstack.api.v2.Network network = 1;
+     */
+    network?: Network;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceGetResponse.
+ * Use `create(NetworkServiceGetResponseSchema)` to create a new message.
+ */
+export declare const NetworkServiceGetResponseSchema: GenMessage<NetworkServiceGetResponse>;
+/**
+ * NetworkServiceCreateRequest
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceCreateRequest
+ */
+export type NetworkServiceCreateRequest = Message<"metalstack.api.v2.NetworkServiceCreateRequest"> & {
+    /**
+     * Project where this network belongs to
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    /**
+     * Name of this network
+     *
+     * @generated from field: optional string name = 2;
+     */
+    name?: string;
+    /**
+     * Description of this network
+     *
+     * @generated from field: optional string description = 3;
+     */
+    description?: string;
+    /**
+     * Partition where this network will be created
+     *
+     * @generated from field: optional string partition = 4;
+     */
+    partition?: string;
+    /**
+     * Labels on this network
+     *
+     * @generated from field: metalstack.api.v2.Labels labels = 5;
+     */
+    labels?: Labels;
+    /**
+     * Parent Network points to the id of the parent network if any
+     *
+     * @generated from field: optional string parent_network = 6;
+     */
+    parentNetwork?: string;
+    /**
+     * Length per addressfamily
+     *
+     * @generated from field: optional metalstack.api.v2.ChildPrefixLength length = 7;
+     */
+    length?: ChildPrefixLength;
+    /**
+     * AddressFamily to create, defaults to the same as the parent
+     *
+     * @generated from field: optional metalstack.api.v2.NetworkAddressFamily address_family = 8;
+     */
+    addressFamily?: NetworkAddressFamily;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceCreateRequest.
+ * Use `create(NetworkServiceCreateRequestSchema)` to create a new message.
+ */
+export declare const NetworkServiceCreateRequestSchema: GenMessage<NetworkServiceCreateRequest>;
+/**
+ * NetworkServiceCreateResponse
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceCreateResponse
+ */
+export type NetworkServiceCreateResponse = Message<"metalstack.api.v2.NetworkServiceCreateResponse"> & {
+    /**
+     * Network is the created network
+     *
+     * @generated from field: metalstack.api.v2.Network network = 1;
+     */
+    network?: Network;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceCreateResponse.
+ * Use `create(NetworkServiceCreateResponseSchema)` to create a new message.
+ */
+export declare const NetworkServiceCreateResponseSchema: GenMessage<NetworkServiceCreateResponse>;
+/**
+ * NetworkServiceUpdateRequest
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceUpdateRequest
+ */
+export type NetworkServiceUpdateRequest = Message<"metalstack.api.v2.NetworkServiceUpdateRequest"> & {
+    /**
+     * ID of the network to get
+     *
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * UpdateMeta contains the timestamp and strategy to be used in this update request
+     *
+     * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
+     */
+    updateMeta?: UpdateMeta;
+    /**
+     * Project of the network
+     *
+     * @generated from field: string project = 3;
+     */
+    project: string;
+    /**
+     * Name of this network
+     *
+     * @generated from field: optional string name = 4;
+     */
+    name?: string;
+    /**
+     * Description of this network
+     *
+     * @generated from field: optional string description = 5;
+     */
+    description?: string;
+    /**
+     * Labels on this network
+     *
+     * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 6;
+     */
+    labels?: UpdateLabels;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceUpdateRequest.
+ * Use `create(NetworkServiceUpdateRequestSchema)` to create a new message.
+ */
+export declare const NetworkServiceUpdateRequestSchema: GenMessage<NetworkServiceUpdateRequest>;
+/**
+ * NetworkServiceUpdateResponse
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceUpdateResponse
+ */
+export type NetworkServiceUpdateResponse = Message<"metalstack.api.v2.NetworkServiceUpdateResponse"> & {
+    /**
+     * Network is the updated network
+     *
+     * @generated from field: metalstack.api.v2.Network network = 1;
+     */
+    network?: Network;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceUpdateResponse.
+ * Use `create(NetworkServiceUpdateResponseSchema)` to create a new message.
+ */
+export declare const NetworkServiceUpdateResponseSchema: GenMessage<NetworkServiceUpdateResponse>;
+/**
+ * NetworkServiceListRequest
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceListRequest
+ */
+export type NetworkServiceListRequest = Message<"metalstack.api.v2.NetworkServiceListRequest"> & {
+    /**
+     * Project of the networks to list
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    /**
+     * Query which specifies which networks to return
+     *
+     * @generated from field: metalstack.api.v2.NetworkQuery query = 2;
+     */
+    query?: NetworkQuery;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceListRequest.
+ * Use `create(NetworkServiceListRequestSchema)` to create a new message.
+ */
+export declare const NetworkServiceListRequestSchema: GenMessage<NetworkServiceListRequest>;
+/**
+ * NetworkServiceListResponse
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceListResponse
+ */
+export type NetworkServiceListResponse = Message<"metalstack.api.v2.NetworkServiceListResponse"> & {
+    /**
+     * Networks are the requested networks
+     *
+     * @generated from field: repeated metalstack.api.v2.Network networks = 1;
+     */
+    networks: Network[];
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceListResponse.
+ * Use `create(NetworkServiceListResponseSchema)` to create a new message.
+ */
+export declare const NetworkServiceListResponseSchema: GenMessage<NetworkServiceListResponse>;
+/**
+ * NetworkServiceListRequest
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceListBaseNetworksRequest
+ */
+export type NetworkServiceListBaseNetworksRequest = Message<"metalstack.api.v2.NetworkServiceListBaseNetworksRequest"> & {
+    /**
+     * Project of the base networks to list
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    /**
+     * Query which specifies which networks to return
+     *
+     * @generated from field: metalstack.api.v2.NetworkQuery query = 2;
+     */
+    query?: NetworkQuery;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceListBaseNetworksRequest.
+ * Use `create(NetworkServiceListBaseNetworksRequestSchema)` to create a new message.
+ */
+export declare const NetworkServiceListBaseNetworksRequestSchema: GenMessage<NetworkServiceListBaseNetworksRequest>;
+/**
+ * NetworkServiceListResponse
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceListBaseNetworksResponse
+ */
+export type NetworkServiceListBaseNetworksResponse = Message<"metalstack.api.v2.NetworkServiceListBaseNetworksResponse"> & {
+    /**
+     * Networks are the requested networks
+     *
+     * @generated from field: repeated metalstack.api.v2.Network networks = 1;
+     */
+    networks: Network[];
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceListBaseNetworksResponse.
+ * Use `create(NetworkServiceListBaseNetworksResponseSchema)` to create a new message.
+ */
+export declare const NetworkServiceListBaseNetworksResponseSchema: GenMessage<NetworkServiceListBaseNetworksResponse>;
+/**
+ * NetworkServiceDeleteRequest
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceDeleteRequest
+ */
+export type NetworkServiceDeleteRequest = Message<"metalstack.api.v2.NetworkServiceDeleteRequest"> & {
+    /**
+     * ID of the network to get
+     *
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * Project of the network
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceDeleteRequest.
+ * Use `create(NetworkServiceDeleteRequestSchema)` to create a new message.
+ */
+export declare const NetworkServiceDeleteRequestSchema: GenMessage<NetworkServiceDeleteRequest>;
+/**
+ * NetworkServiceDeleteResponse
+ *
+ * @generated from message metalstack.api.v2.NetworkServiceDeleteResponse
+ */
+export type NetworkServiceDeleteResponse = Message<"metalstack.api.v2.NetworkServiceDeleteResponse"> & {
+    /**
+     * Network is the deleted network
+     *
+     * @generated from field: metalstack.api.v2.Network network = 1;
+     */
+    network?: Network;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkServiceDeleteResponse.
+ * Use `create(NetworkServiceDeleteResponseSchema)` to create a new message.
+ */
+export declare const NetworkServiceDeleteResponseSchema: GenMessage<NetworkServiceDeleteResponse>;
+/**
+ * Network
+ *
+ * @generated from message metalstack.api.v2.Network
+ */
+export type Network = Message<"metalstack.api.v2.Network"> & {
+    /**
+     * Id of this network
+     *
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * Meta for this network
+     *
+     * @generated from field: metalstack.api.v2.Meta meta = 2;
+     */
+    meta?: Meta;
+    /**
+     * Name of this network
+     *
+     * @generated from field: optional string name = 3;
+     */
+    name?: string;
+    /**
+     * Description of this network
+     *
+     * @generated from field: optional string description = 4;
+     */
+    description?: string;
+    /**
+     * Partition where this network will be created
+     *
+     * @generated from field: optional string partition = 5;
+     */
+    partition?: string;
+    /**
+     * Project where this network belongs to
+     *
+     * @generated from field: optional string project = 6;
+     */
+    project?: string;
+    /**
+     * Namespace if specified, this network is namespaced and can therefore overlap with others
+     * Will be equal with project most of the time
+     *
+     * @generated from field: optional string namespace = 7;
+     */
+    namespace?: string;
+    /**
+     * Prefixes in this network
+     *
+     * @generated from field: repeated string prefixes = 8;
+     */
+    prefixes: string[];
+    /**
+     * Destination Prefixes in this network
+     *
+     * @generated from field: repeated string destination_prefixes = 9;
+     */
+    destinationPrefixes: string[];
+    /**
+     * Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+     *
+     * @generated from field: metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
+     */
+    defaultChildPrefixLength?: ChildPrefixLength;
+    /**
+     * Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
+     *
+     * @generated from field: metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
+     */
+    minChildPrefixLength?: ChildPrefixLength;
+    /**
+     * Type of the network
+     *
+     * @generated from field: optional metalstack.api.v2.NetworkType type = 12;
+     */
+    type?: NetworkType;
+    /**
+     * NATType of this network
+     *
+     * @generated from field: optional metalstack.api.v2.NATType nat_type = 13;
+     */
+    natType?: NATType;
+    /**
+     * VRF of this network has this VNI.
+     *
+     * @generated from field: optional uint32 vrf = 14;
+     */
+    vrf?: number;
+    /**
+     * Parent Network points to the id of the parent network if any
+     *
+     * @generated from field: optional string parent_network = 15;
+     */
+    parentNetwork?: string;
+    /**
+     * AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
+     *
+     * @generated from field: repeated string additional_announcable_cidrs = 16;
+     */
+    additionalAnnouncableCidrs: string[];
+    /**
+     * Consumption of ips and prefixes in this networks
+     *
+     * @generated from field: metalstack.api.v2.NetworkConsumption consumption = 17;
+     */
+    consumption?: NetworkConsumption;
+};
+/**
+ * Describes the message metalstack.api.v2.Network.
+ * Use `create(NetworkSchema)` to create a new message.
+ */
+export declare const NetworkSchema: GenMessage<Network>;
+/**
+ * NetworkQuery defines which networks to query
+ *
+ * @generated from message metalstack.api.v2.NetworkQuery
+ */
+export type NetworkQuery = Message<"metalstack.api.v2.NetworkQuery"> & {
+    /**
+     * Id of the network to query
+     *
+     * @generated from field: optional string id = 1;
+     */
+    id?: string;
+    /**
+     * Name of this network
+     *
+     * @generated from field: optional string name = 2;
+     */
+    name?: string;
+    /**
+     * Description of this network
+     *
+     * @generated from field: optional string description = 3;
+     */
+    description?: string;
+    /**
+     * Partition where this network will be created
+     *
+     * @generated from field: optional string partition = 4;
+     */
+    partition?: string;
+    /**
+     * Project where this network belongs to
+     *
+     * @generated from field: optional string project = 5;
+     */
+    project?: string;
+    /**
+     * Namespace where this network belongs to
+     *
+     * @generated from field: optional string namespace = 6;
+     */
+    namespace?: string;
+    /**
+     * Prefixes in this network
+     *
+     * @generated from field: repeated string prefixes = 7;
+     */
+    prefixes: string[];
+    /**
+     * Destination Prefixes in this network
+     *
+     * @generated from field: repeated string destination_prefixes = 8;
+     */
+    destinationPrefixes: string[];
+    /**
+     * VRF of this network has this VNI.
+     *
+     * @generated from field: optional uint32 vrf = 9;
+     */
+    vrf?: number;
+    /**
+     * Parent Network points to the id of the parent network if any
+     *
+     * @generated from field: optional string parent_network = 10;
+     */
+    parentNetwork?: string;
+    /**
+     * Addressfamily to query
+     *
+     * @generated from field: optional metalstack.api.v2.NetworkAddressFamily address_family = 11;
+     */
+    addressFamily?: NetworkAddressFamily;
+    /**
+     * Type of the network to query for
+     *
+     * @generated from field: optional metalstack.api.v2.NetworkType type = 12;
+     */
+    type?: NetworkType;
+    /**
+     * NATType configured
+     *
+     * @generated from field: optional metalstack.api.v2.NATType nat_type = 13;
+     */
+    natType?: NATType;
+    /**
+     * Labels on this network
+     *
+     * @generated from field: optional metalstack.api.v2.Labels labels = 14;
+     */
+    labels?: Labels;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkQuery.
+ * Use `create(NetworkQuerySchema)` to create a new message.
+ */
+export declare const NetworkQuerySchema: GenMessage<NetworkQuery>;
+/**
+ * ChildPrefixLength
+ *
+ * @generated from message metalstack.api.v2.ChildPrefixLength
+ */
+export type ChildPrefixLength = Message<"metalstack.api.v2.ChildPrefixLength"> & {
+    /**
+     * IPv4 bit length of this network in this addressfamily
+     *
+     * @generated from field: optional uint32 ipv4 = 1;
+     */
+    ipv4?: number;
+    /**
+     * IPv6 bit length of this network in this addressfamily
+     *
+     * @generated from field: optional uint32 ipv6 = 2;
+     */
+    ipv6?: number;
+};
+/**
+ * Describes the message metalstack.api.v2.ChildPrefixLength.
+ * Use `create(ChildPrefixLengthSchema)` to create a new message.
+ */
+export declare const ChildPrefixLengthSchema: GenMessage<ChildPrefixLength>;
+/**
+ * NetworkConsumption contains ip and prefix usage by addressfamily
+ *
+ * @generated from message metalstack.api.v2.NetworkConsumption
+ */
+export type NetworkConsumption = Message<"metalstack.api.v2.NetworkConsumption"> & {
+    /**
+     * IPv4 network usage
+     *
+     * @generated from field: metalstack.api.v2.NetworkUsage ipv4 = 1;
+     */
+    ipv4?: NetworkUsage;
+    /**
+     * IPv6 network usage, this can be approximated for high numbers
+     *
+     * @generated from field: metalstack.api.v2.NetworkUsage ipv6 = 2;
+     */
+    ipv6?: NetworkUsage;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkConsumption.
+ * Use `create(NetworkConsumptionSchema)` to create a new message.
+ */
+export declare const NetworkConsumptionSchema: GenMessage<NetworkConsumption>;
+/**
+ * NetworkUsage reports core metrics about available and used IPs or Prefixes in a Network.
+ *
+ * @generated from message metalstack.api.v2.NetworkUsage
+ */
+export type NetworkUsage = Message<"metalstack.api.v2.NetworkUsage"> & {
+    /**
+     * the total available IPs
+     *
+     * @generated from field: uint64 available_ips = 2;
+     */
+    availableIps: bigint;
+    /**
+     * the total used IPs
+     *
+     * @generated from field: uint64 used_ips = 3;
+     */
+    usedIps: bigint;
+    /**
+     * the total available 2 bit Prefixes
+     *
+     * @generated from field: uint64 available_prefixes = 4;
+     */
+    availablePrefixes: bigint;
+    /**
+     * the total used Prefixes
+     *
+     * @generated from field: uint64 used_prefixes = 5;
+     */
+    usedPrefixes: bigint;
+};
+/**
+ * Describes the message metalstack.api.v2.NetworkUsage.
+ * Use `create(NetworkUsageSchema)` to create a new message.
+ */
+export declare const NetworkUsageSchema: GenMessage<NetworkUsage>;
+/**
+ * NATType defines how and if outgoing traffic is translated
+ *
+ * @generated from enum metalstack.api.v2.NATType
+ */
+export declare enum NATType {
+    /**
+     * NAT_TYPE_UNSPECIFIED indicates a unspecified nat type
+     *
+     * @generated from enum value: NAT_TYPE_UNSPECIFIED = 0;
+     */
+    NAT_TYPE_UNSPECIFIED = 0,
+    /**
+     * NAT_TYPE_NONE indicates that no nat is configured
+     *
+     * @generated from enum value: NAT_TYPE_NONE = 1;
+     */
+    NAT_TYPE_NONE = 1,
+    /**
+     * NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network
+     *
+     * @generated from enum value: NAT_TYPE_IPV4_MASQUERADE = 2;
+     */
+    NAT_TYPE_IPV4_MASQUERADE = 2
+}
+/**
+ * Describes the enum metalstack.api.v2.NATType.
+ */
+export declare const NATTypeSchema: GenEnum<NATType>;
+/**
+ * NetworkType indicates the purpose of the network, it cannot be changed after creation
+ *
+ * @generated from enum metalstack.api.v2.NetworkType
+ */
+export declare enum NetworkType {
+    /**
+     * NETWORK_TYPE_UNSPECIFIED indicates a unknown network type
+     *
+     * @generated from enum value: NETWORK_TYPE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * NETWORK_TYPE_EXTERNAL indicates network where multiple projects can allocate ips, it offers connectivity to other external networks
+     * In most cases this is the internet network or a network which offers connectivity to legacy datacenter networks.
+     * If it is not project scoped everyone can allocate Ips in this network, otherwise only from the same project ip allocation is possible.
+     *
+     * @generated from enum value: NETWORK_TYPE_EXTERNAL = 1;
+     */
+    EXTERNAL = 1,
+    /**
+     * NETWORK_TYPE_UNDERLAY indicates a underlay network
+     * The underlay network connects all switches and the firewalls to build a EVPN dataplane
+     * It is not project scoped. Is part of the dataplane and reserved for administrative purposes.
+     *
+     * @generated from enum value: NETWORK_TYPE_UNDERLAY = 2;
+     */
+    UNDERLAY = 2,
+    /**
+     * NETWORK_TYPE_SUPER indicates a super network which is only used to create child networks
+     * If the vrf id is given, child networks will inherit this vrf.
+     * If the vrf id is nil in this network, child vrf is taken from the pool.
+     * If the partition is given, child networks inherit the partition.
+     * If the partition is nil, child networks also do not have a partition (i.e. requires vrf is distributed across all partitions).
+     * If the partition is given, only one super network in that partition can be created.
+     * If the partition is nil, multiple super networks can exist. Then, for child network creation the network id must be specified (base networks can be queried by label selector).
+     * For child creation destination prefixes will be inherited
+     * If this is project scoped, the child project must match, otherwise can be freely specified.
+     *
+     * @generated from enum value: NETWORK_TYPE_SUPER = 3;
+     */
+    SUPER = 3,
+    /**
+     * NETWORK_TYPE_SUPER_NAMESPACED indicates a super network which is only used to create child networks.
+     * All rules from NETWORK_TYPE_SUPER apply for them as well.
+     * In addition, a network namespace will be created for every project. Child networks per project will have disjunct prefixes.
+     * Prefix allocation will start again with the same base cidr for every project / namespace.
+     * This will allow the creation of much more child networks from a given super network size.
+     *
+     * @generated from enum value: NETWORK_TYPE_SUPER_NAMESPACED = 4;
+     */
+    SUPER_NAMESPACED = 4,
+    /**
+     * NETWORK_TYPE_CHILD indicates a child network of a project.
+     * This is the only network type that can be created by a user.
+     * Connectivity to external networks is not possible without going through an additional firewall in this network which creates connectivity to other networks.
+     * Such a network will be created either from a super, or super namespaced.
+     *
+     * @generated from enum value: NETWORK_TYPE_CHILD = 5;
+     */
+    CHILD = 5,
+    /**
+     * NETWORK_TYPE_CHILD_SHARED indicates a child network of a project which allows the allocation of ips from different projects.
+     * Connectivity to external networks is not possible, as for normal child networks.
+     * These networks are usually used to provide connectivity to shared services which are created in child networks, e.g. storage.
+     * With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.
+     *
+     * @generated from enum value: NETWORK_TYPE_CHILD_SHARED = 6;
+     */
+    CHILD_SHARED = 6
+}
+/**
+ * Describes the enum metalstack.api.v2.NetworkType.
+ */
+export declare const NetworkTypeSchema: GenEnum<NetworkType>;
+/**
+ * NetworkAddressFamily defines the address family of a network
+ *
+ * @generated from enum metalstack.api.v2.NetworkAddressFamily
+ */
+export declare enum NetworkAddressFamily {
+    /**
+     * NETWORK_ADDRESS_FAMILY_UNSPECIFIED is not specified
+     *
+     * @generated from enum value: NETWORK_ADDRESS_FAMILY_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * NETWORK_ADDRESS_FAMILY_V4 defines a network with IPv4 address prefixes
+     *
+     * @generated from enum value: NETWORK_ADDRESS_FAMILY_V4 = 1;
+     */
+    V4 = 1,
+    /**
+     * NETWORK_ADDRESS_FAMILY_V6 defines a network with IPv6 address prefixes
+     *
+     * @generated from enum value: NETWORK_ADDRESS_FAMILY_V6 = 2;
+     */
+    V6 = 2,
+    /**
+     * NETWORK_ADDRESS_FAMILY_DUAL_STACK defines a network with both IPv4 and IPv6 address prefixes
+     *
+     * @generated from enum value: NETWORK_ADDRESS_FAMILY_DUAL_STACK = 3;
+     */
+    DUAL_STACK = 3
+}
+/**
+ * Describes the enum metalstack.api.v2.NetworkAddressFamily.
+ */
+export declare const NetworkAddressFamilySchema: GenEnum<NetworkAddressFamily>;
+/**
+ * NetworkService serves network address related functions for end users, e.g. with project scope
+ *
+ * @generated from service metalstack.api.v2.NetworkService
+ */
+export declare const NetworkService: GenService<{
+    /**
+     * Get a network
+     *
+     * @generated from rpc metalstack.api.v2.NetworkService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof NetworkServiceGetRequestSchema;
+        output: typeof NetworkServiceGetResponseSchema;
+    };
+    /**
+     * Create a child network from a super network.
+     *
+     * @generated from rpc metalstack.api.v2.NetworkService.Create
+     */
+    create: {
+        methodKind: "unary";
+        input: typeof NetworkServiceCreateRequestSchema;
+        output: typeof NetworkServiceCreateResponseSchema;
+    };
+    /**
+     * Update a network
+     *
+     * @generated from rpc metalstack.api.v2.NetworkService.Update
+     */
+    update: {
+        methodKind: "unary";
+        input: typeof NetworkServiceUpdateRequestSchema;
+        output: typeof NetworkServiceUpdateResponseSchema;
+    };
+    /**
+     * List all project networks
+     *
+     * @generated from rpc metalstack.api.v2.NetworkService.List
+     */
+    list: {
+        methodKind: "unary";
+        input: typeof NetworkServiceListRequestSchema;
+        output: typeof NetworkServiceListResponseSchema;
+    };
+    /**
+     * ListBaseNetworks all base networks that can be used for either child network or ip allocation
+     *
+     * @generated from rpc metalstack.api.v2.NetworkService.ListBaseNetworks
+     */
+    listBaseNetworks: {
+        methodKind: "unary";
+        input: typeof NetworkServiceListBaseNetworksRequestSchema;
+        output: typeof NetworkServiceListBaseNetworksResponseSchema;
+    };
+    /**
+     * Delete a network
+     *
+     * @generated from rpc metalstack.api.v2.NetworkService.Delete
+     */
+    delete: {
+        methodKind: "unary";
+        input: typeof NetworkServiceDeleteRequestSchema;
+        output: typeof NetworkServiceDeleteResponseSchema;
+    };
+}>;
