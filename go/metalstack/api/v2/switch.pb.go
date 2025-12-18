@@ -1035,13 +1035,12 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xec\x05\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xed\x05\n" +
 	"\x06Switch\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12+\n" +
-	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12,\n" +
-	"\vdescription\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\vdescription\x12$\n" +
+	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12-\n" +
+	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12$\n" +
 	"\x04rack\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04rack\x88\x01\x01\x12)\n" +
 	"\tpartition\x18\x05 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12Q\n" +
 	"\freplace_mode\x18\x06 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +

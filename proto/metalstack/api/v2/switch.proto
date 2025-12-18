@@ -17,10 +17,7 @@ message Switch {
   // Meta for this switch.
   Meta meta = 2;
   // Description of the switch.
-  string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Rack ID if the switch resides in a rack.
   optional string rack = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Partition the switch belongs to.
