@@ -1,5 +1,6 @@
 from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
@@ -60,13 +61,13 @@ class IPServiceGetRequest(_message.Message):
     def __init__(self, ip: _Optional[str] = ..., project: _Optional[str] = ..., namespace: _Optional[str] = ...) -> None: ...
 
 class IPServiceCreateRequest(_message.Message):
-    __slots__ = ("network", "project", "name", "description", "ip", "machine_id", "labels", "type", "address_family")
+    __slots__ = ("network", "project", "name", "description", "ip", "machine", "labels", "type", "address_family")
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     IP_FIELD_NUMBER: _ClassVar[int]
-    MACHINE_ID_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     ADDRESS_FAMILY_FIELD_NUMBER: _ClassVar[int]
@@ -75,27 +76,29 @@ class IPServiceCreateRequest(_message.Message):
     name: str
     description: str
     ip: str
-    machine_id: str
+    machine: str
     labels: _common_pb2.Labels
     type: IPType
     address_family: IPAddressFamily
-    def __init__(self, network: _Optional[str] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., ip: _Optional[str] = ..., machine_id: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., type: _Optional[_Union[IPType, str]] = ..., address_family: _Optional[_Union[IPAddressFamily, str]] = ...) -> None: ...
+    def __init__(self, network: _Optional[str] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., ip: _Optional[str] = ..., machine: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., type: _Optional[_Union[IPType, str]] = ..., address_family: _Optional[_Union[IPAddressFamily, str]] = ...) -> None: ...
 
 class IPServiceUpdateRequest(_message.Message):
-    __slots__ = ("ip", "project", "name", "description", "type", "labels")
+    __slots__ = ("ip", "update_meta", "project", "name", "description", "type", "labels")
     IP_FIELD_NUMBER: _ClassVar[int]
+    UPDATE_META_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     ip: str
+    update_meta: _common_pb2.UpdateMeta
     project: str
     name: str
     description: str
     type: IPType
     labels: _common_pb2.UpdateLabels
-    def __init__(self, ip: _Optional[str] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., type: _Optional[_Union[IPType, str]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
+    def __init__(self, ip: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., type: _Optional[_Union[IPType, str]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
 
 class IPServiceListRequest(_message.Message):
     __slots__ = ("project", "query")
@@ -106,13 +109,13 @@ class IPServiceListRequest(_message.Message):
     def __init__(self, project: _Optional[str] = ..., query: _Optional[_Union[IPQuery, _Mapping]] = ...) -> None: ...
 
 class IPQuery(_message.Message):
-    __slots__ = ("ip", "network", "project", "name", "uuid", "machine_id", "parent_prefix_cidr", "labels", "type", "address_family", "namespace")
+    __slots__ = ("ip", "network", "project", "name", "uuid", "machine", "parent_prefix_cidr", "labels", "type", "address_family", "namespace")
     IP_FIELD_NUMBER: _ClassVar[int]
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     UUID_FIELD_NUMBER: _ClassVar[int]
-    MACHINE_ID_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
     PARENT_PREFIX_CIDR_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
@@ -123,13 +126,13 @@ class IPQuery(_message.Message):
     project: str
     name: str
     uuid: str
-    machine_id: str
+    machine: str
     parent_prefix_cidr: str
     labels: _common_pb2.Labels
     type: IPType
     address_family: IPAddressFamily
     namespace: str
-    def __init__(self, ip: _Optional[str] = ..., network: _Optional[str] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., uuid: _Optional[str] = ..., machine_id: _Optional[str] = ..., parent_prefix_cidr: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., type: _Optional[_Union[IPType, str]] = ..., address_family: _Optional[_Union[IPAddressFamily, str]] = ..., namespace: _Optional[str] = ...) -> None: ...
+    def __init__(self, ip: _Optional[str] = ..., network: _Optional[str] = ..., project: _Optional[str] = ..., name: _Optional[str] = ..., uuid: _Optional[str] = ..., machine: _Optional[str] = ..., parent_prefix_cidr: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., type: _Optional[_Union[IPType, str]] = ..., address_family: _Optional[_Union[IPAddressFamily, str]] = ..., namespace: _Optional[str] = ...) -> None: ...
 
 class IPServiceDeleteRequest(_message.Message):
     __slots__ = ("ip", "project")

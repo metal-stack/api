@@ -1,5 +1,6 @@
 from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import tenant_pb2 as _tenant_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
@@ -10,18 +11,16 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class TenantServiceCreateRequest(_message.Message):
-    __slots__ = ("name", "description", "email", "avatar_url", "phone_number")
+    __slots__ = ("name", "description", "email", "avatar_url")
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     EMAIL_FIELD_NUMBER: _ClassVar[int]
     AVATAR_URL_FIELD_NUMBER: _ClassVar[int]
-    PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
     name: str
     description: str
     email: str
     avatar_url: str
-    phone_number: str
-    def __init__(self, name: _Optional[str] = ..., description: _Optional[str] = ..., email: _Optional[str] = ..., avatar_url: _Optional[str] = ..., phone_number: _Optional[str] = ...) -> None: ...
+    def __init__(self, name: _Optional[str] = ..., description: _Optional[str] = ..., email: _Optional[str] = ..., avatar_url: _Optional[str] = ...) -> None: ...
 
 class TenantServiceCreateResponse(_message.Message):
     __slots__ = ("tenant",)

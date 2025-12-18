@@ -48,15 +48,15 @@ const (
 // MachineServiceClient is a client for the metalstack.api.v2.MachineService service.
 type MachineServiceClient interface {
 	// Get a machine
-	Get(context.Context, *connect.Request[v2.MachineServiceGetRequest]) (*connect.Response[v2.MachineServiceGetResponse], error)
+	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
 	// Create a machine
-	Create(context.Context, *connect.Request[v2.MachineServiceCreateRequest]) (*connect.Response[v2.MachineServiceCreateResponse], error)
+	Create(context.Context, *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error)
 	// Update a machine
-	Update(context.Context, *connect.Request[v2.MachineServiceUpdateRequest]) (*connect.Response[v2.MachineServiceUpdateResponse], error)
-	// List all machine
-	List(context.Context, *connect.Request[v2.MachineServiceListRequest]) (*connect.Response[v2.MachineServiceListResponse], error)
+	Update(context.Context, *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error)
+	// List all machines
+	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
 	// Delete a machine
-	Delete(context.Context, *connect.Request[v2.MachineServiceDeleteRequest]) (*connect.Response[v2.MachineServiceDeleteResponse], error)
+	Delete(context.Context, *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error)
 }
 
 // NewMachineServiceClient constructs a client for the metalstack.api.v2.MachineService service. By
@@ -113,42 +113,62 @@ type machineServiceClient struct {
 }
 
 // Get calls metalstack.api.v2.MachineService.Get.
-func (c *machineServiceClient) Get(ctx context.Context, req *connect.Request[v2.MachineServiceGetRequest]) (*connect.Response[v2.MachineServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *machineServiceClient) Get(ctx context.Context, req *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Create calls metalstack.api.v2.MachineService.Create.
-func (c *machineServiceClient) Create(ctx context.Context, req *connect.Request[v2.MachineServiceCreateRequest]) (*connect.Response[v2.MachineServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+func (c *machineServiceClient) Create(ctx context.Context, req *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Update calls metalstack.api.v2.MachineService.Update.
-func (c *machineServiceClient) Update(ctx context.Context, req *connect.Request[v2.MachineServiceUpdateRequest]) (*connect.Response[v2.MachineServiceUpdateResponse], error) {
-	return c.update.CallUnary(ctx, req)
+func (c *machineServiceClient) Update(ctx context.Context, req *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error) {
+	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.api.v2.MachineService.List.
-func (c *machineServiceClient) List(ctx context.Context, req *connect.Request[v2.MachineServiceListRequest]) (*connect.Response[v2.MachineServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *machineServiceClient) List(ctx context.Context, req *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Delete calls metalstack.api.v2.MachineService.Delete.
-func (c *machineServiceClient) Delete(ctx context.Context, req *connect.Request[v2.MachineServiceDeleteRequest]) (*connect.Response[v2.MachineServiceDeleteResponse], error) {
-	return c.delete.CallUnary(ctx, req)
+func (c *machineServiceClient) Delete(ctx context.Context, req *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // MachineServiceHandler is an implementation of the metalstack.api.v2.MachineService service.
 type MachineServiceHandler interface {
 	// Get a machine
-	Get(context.Context, *connect.Request[v2.MachineServiceGetRequest]) (*connect.Response[v2.MachineServiceGetResponse], error)
+	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
 	// Create a machine
-	Create(context.Context, *connect.Request[v2.MachineServiceCreateRequest]) (*connect.Response[v2.MachineServiceCreateResponse], error)
+	Create(context.Context, *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error)
 	// Update a machine
-	Update(context.Context, *connect.Request[v2.MachineServiceUpdateRequest]) (*connect.Response[v2.MachineServiceUpdateResponse], error)
-	// List all machine
-	List(context.Context, *connect.Request[v2.MachineServiceListRequest]) (*connect.Response[v2.MachineServiceListResponse], error)
+	Update(context.Context, *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error)
+	// List all machines
+	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
 	// Delete a machine
-	Delete(context.Context, *connect.Request[v2.MachineServiceDeleteRequest]) (*connect.Response[v2.MachineServiceDeleteResponse], error)
+	Delete(context.Context, *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error)
 }
 
 // NewMachineServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -158,31 +178,31 @@ type MachineServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	machineServiceMethods := v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods()
-	machineServiceGetHandler := connect.NewUnaryHandler(
+	machineServiceGetHandler := connect.NewUnaryHandlerSimple(
 		MachineServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(machineServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
-	machineServiceCreateHandler := connect.NewUnaryHandler(
+	machineServiceCreateHandler := connect.NewUnaryHandlerSimple(
 		MachineServiceCreateProcedure,
 		svc.Create,
 		connect.WithSchema(machineServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
-	machineServiceUpdateHandler := connect.NewUnaryHandler(
+	machineServiceUpdateHandler := connect.NewUnaryHandlerSimple(
 		MachineServiceUpdateProcedure,
 		svc.Update,
 		connect.WithSchema(machineServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
-	machineServiceListHandler := connect.NewUnaryHandler(
+	machineServiceListHandler := connect.NewUnaryHandlerSimple(
 		MachineServiceListProcedure,
 		svc.List,
 		connect.WithSchema(machineServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
-	machineServiceDeleteHandler := connect.NewUnaryHandler(
+	machineServiceDeleteHandler := connect.NewUnaryHandlerSimple(
 		MachineServiceDeleteProcedure,
 		svc.Delete,
 		connect.WithSchema(machineServiceMethods.ByName("Delete")),
@@ -209,22 +229,22 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 // UnimplementedMachineServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedMachineServiceHandler struct{}
 
-func (UnimplementedMachineServiceHandler) Get(context.Context, *connect.Request[v2.MachineServiceGetRequest]) (*connect.Response[v2.MachineServiceGetResponse], error) {
+func (UnimplementedMachineServiceHandler) Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.Get is not implemented"))
 }
 
-func (UnimplementedMachineServiceHandler) Create(context.Context, *connect.Request[v2.MachineServiceCreateRequest]) (*connect.Response[v2.MachineServiceCreateResponse], error) {
+func (UnimplementedMachineServiceHandler) Create(context.Context, *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.Create is not implemented"))
 }
 
-func (UnimplementedMachineServiceHandler) Update(context.Context, *connect.Request[v2.MachineServiceUpdateRequest]) (*connect.Response[v2.MachineServiceUpdateResponse], error) {
+func (UnimplementedMachineServiceHandler) Update(context.Context, *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.Update is not implemented"))
 }
 
-func (UnimplementedMachineServiceHandler) List(context.Context, *connect.Request[v2.MachineServiceListRequest]) (*connect.Response[v2.MachineServiceListResponse], error) {
+func (UnimplementedMachineServiceHandler) List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.List is not implemented"))
 }
 
-func (UnimplementedMachineServiceHandler) Delete(context.Context, *connect.Request[v2.MachineServiceDeleteRequest]) (*connect.Response[v2.MachineServiceDeleteResponse], error) {
+func (UnimplementedMachineServiceHandler) Delete(context.Context, *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.Delete is not implemented"))
 }

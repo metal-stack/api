@@ -42,9 +42,9 @@ const (
 // PartitionServiceClient is a client for the metalstack.api.v2.PartitionService service.
 type PartitionServiceClient interface {
 	// Get a partition
-	Get(context.Context, *connect.Request[v2.PartitionServiceGetRequest]) (*connect.Response[v2.PartitionServiceGetResponse], error)
+	Get(context.Context, *v2.PartitionServiceGetRequest) (*v2.PartitionServiceGetResponse, error)
 	// List all partitions
-	List(context.Context, *connect.Request[v2.PartitionServiceListRequest]) (*connect.Response[v2.PartitionServiceListResponse], error)
+	List(context.Context, *v2.PartitionServiceListRequest) (*v2.PartitionServiceListResponse, error)
 }
 
 // NewPartitionServiceClient constructs a client for the metalstack.api.v2.PartitionService service.
@@ -80,21 +80,29 @@ type partitionServiceClient struct {
 }
 
 // Get calls metalstack.api.v2.PartitionService.Get.
-func (c *partitionServiceClient) Get(ctx context.Context, req *connect.Request[v2.PartitionServiceGetRequest]) (*connect.Response[v2.PartitionServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *partitionServiceClient) Get(ctx context.Context, req *v2.PartitionServiceGetRequest) (*v2.PartitionServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.api.v2.PartitionService.List.
-func (c *partitionServiceClient) List(ctx context.Context, req *connect.Request[v2.PartitionServiceListRequest]) (*connect.Response[v2.PartitionServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *partitionServiceClient) List(ctx context.Context, req *v2.PartitionServiceListRequest) (*v2.PartitionServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // PartitionServiceHandler is an implementation of the metalstack.api.v2.PartitionService service.
 type PartitionServiceHandler interface {
 	// Get a partition
-	Get(context.Context, *connect.Request[v2.PartitionServiceGetRequest]) (*connect.Response[v2.PartitionServiceGetResponse], error)
+	Get(context.Context, *v2.PartitionServiceGetRequest) (*v2.PartitionServiceGetResponse, error)
 	// List all partitions
-	List(context.Context, *connect.Request[v2.PartitionServiceListRequest]) (*connect.Response[v2.PartitionServiceListResponse], error)
+	List(context.Context, *v2.PartitionServiceListRequest) (*v2.PartitionServiceListResponse, error)
 }
 
 // NewPartitionServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -104,13 +112,13 @@ type PartitionServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewPartitionServiceHandler(svc PartitionServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	partitionServiceMethods := v2.File_metalstack_api_v2_partition_proto.Services().ByName("PartitionService").Methods()
-	partitionServiceGetHandler := connect.NewUnaryHandler(
+	partitionServiceGetHandler := connect.NewUnaryHandlerSimple(
 		PartitionServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(partitionServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
-	partitionServiceListHandler := connect.NewUnaryHandler(
+	partitionServiceListHandler := connect.NewUnaryHandlerSimple(
 		PartitionServiceListProcedure,
 		svc.List,
 		connect.WithSchema(partitionServiceMethods.ByName("List")),
@@ -131,10 +139,10 @@ func NewPartitionServiceHandler(svc PartitionServiceHandler, opts ...connect.Han
 // UnimplementedPartitionServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedPartitionServiceHandler struct{}
 
-func (UnimplementedPartitionServiceHandler) Get(context.Context, *connect.Request[v2.PartitionServiceGetRequest]) (*connect.Response[v2.PartitionServiceGetResponse], error) {
+func (UnimplementedPartitionServiceHandler) Get(context.Context, *v2.PartitionServiceGetRequest) (*v2.PartitionServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.PartitionService.Get is not implemented"))
 }
 
-func (UnimplementedPartitionServiceHandler) List(context.Context, *connect.Request[v2.PartitionServiceListRequest]) (*connect.Response[v2.PartitionServiceListResponse], error) {
+func (UnimplementedPartitionServiceHandler) List(context.Context, *v2.PartitionServiceListRequest) (*v2.PartitionServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.PartitionService.List is not implemented"))
 }

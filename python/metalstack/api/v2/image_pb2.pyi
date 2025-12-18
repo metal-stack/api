@@ -3,6 +3,7 @@ import datetime
 from buf.validate import validate_pb2 as _validate_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
@@ -97,19 +98,23 @@ class ImageUsage(_message.Message):
     def __init__(self, image: _Optional[_Union[Image, _Mapping]] = ..., used_by: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class ImageQuery(_message.Message):
-    __slots__ = ("id", "os", "version", "name", "description", "feature", "classification")
+    __slots__ = ("id", "os", "version", "name", "description", "url", "feature", "classification", "labels")
     ID_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
     VERSION_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    URL_FIELD_NUMBER: _ClassVar[int]
     FEATURE_FIELD_NUMBER: _ClassVar[int]
     CLASSIFICATION_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     id: str
     os: str
     version: str
     name: str
     description: str
+    url: str
     feature: ImageFeature
     classification: ImageClassification
-    def __init__(self, id: _Optional[str] = ..., os: _Optional[str] = ..., version: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., feature: _Optional[_Union[ImageFeature, str]] = ..., classification: _Optional[_Union[ImageClassification, str]] = ...) -> None: ...
+    labels: _common_pb2.Labels
+    def __init__(self, id: _Optional[str] = ..., os: _Optional[str] = ..., version: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., url: _Optional[str] = ..., feature: _Optional[_Union[ImageFeature, str]] = ..., classification: _Optional[_Union[ImageClassification, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...

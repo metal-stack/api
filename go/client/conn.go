@@ -6,11 +6,9 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
-	"net/http/httputil"
 	"time"
 
 	"connectrpc.com/connect"
-
 	"github.com/golang-jwt/jwt/v5"
 	api "github.com/metal-stack/api/go/metalstack/api/v2"
 )
@@ -22,7 +20,9 @@ type (
 	DialConfig struct {
 		BaseURL string
 		Token   string
-		Debug   bool
+
+		// Optional client Interceptors
+		Interceptors []connect.Interceptor
 
 		UserAgent string
 		// TokenRenewal defines if and how the token should be renewed
@@ -52,11 +52,7 @@ func (d *DialConfig) HttpClient() *http.Client {
 	}
 
 	return &http.Client{
-		Transport: &AddHeaderTransport{
-			debug: d.Debug,
-			t:     transport,
-			token: d.Token,
-		},
+		Transport: transport,
 	}
 }
 
@@ -132,12 +128,12 @@ func (c *client) renewTokenIfNeeded(replaceBefore time.Duration) error {
 	c.Lock()
 	defer c.Unlock()
 
-	resp, err := c.Apiv2().Token().Refresh(context.Background(), connect.NewRequest(&api.TokenServiceRefreshRequest{}))
+	resp, err := c.Apiv2().Token().Refresh(context.Background(), &api.TokenServiceRefreshRequest{})
 	if err != nil {
 		return fmt.Errorf("unable to refresh token %w", err)
 	}
 
-	c.config.Token = resp.Msg.Secret
+	c.config.Token = resp.Secret
 	err = c.config.parse()
 	if err != nil {
 		return fmt.Errorf("unable to parse token %w", err)
@@ -154,37 +150,4 @@ func (c *client) renewTokenIfNeeded(replaceBefore time.Duration) error {
 
 	c.config.Log.Info("token refreshed, new token expires in", "expires", c.config.expiresAt.String())
 	return nil
-}
-
-type AddHeaderTransport struct {
-	debug bool
-
-	token string
-	t     http.RoundTripper
-}
-
-func (a *AddHeaderTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	req.Header.Add("Authorization", "Bearer "+a.token)
-
-	if a.debug {
-		reqDump, err := httputil.DumpRequestOut(req, true)
-		if err != nil {
-			fmt.Printf("DEBUG ERROR: %s\n", err)
-		} else {
-			fmt.Printf("DEBUG REQUEST:\n%s\n", string(reqDump))
-		}
-	}
-
-	resp, err := a.t.RoundTrip(req)
-
-	if a.debug && resp != nil {
-		respDump, err := httputil.DumpResponse(resp, true)
-		if err != nil {
-			fmt.Printf("DEBUG ERROR: %s\n", err)
-		} else {
-			fmt.Printf("DEBUG RESPONSE:\n%s\n", string(respDump))
-		}
-	}
-
-	return resp, err
 }

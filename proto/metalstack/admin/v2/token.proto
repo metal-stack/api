@@ -17,12 +17,17 @@ service TokenService {
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
   }
+  // Create a token to authenticate against the platform, the secret will be only visible in the response.
+  // This service is suitable to create tokens for other users instead of deriving users from tokens directly.
+  rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
 }
 
 // TokenServiceListRequest is the request payload for the token list request
 message TokenServiceListRequest {
-  // UserId is the id of the user for which the tokens should be listed
-  optional string user_id = 1;
+  // User is the id of the user for which the tokens should be listed
+  optional string user = 1;
 }
 
 // TokenServiceListResponse is the response payload for the token list request
@@ -35,8 +40,8 @@ message TokenServiceListResponse {
 message TokenServiceRevokeRequest {
   // Uuid is the uuid of the token which should be revoked
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // UserId is the id of the user for which the token should be revoked
-  string user_id = 2 [(buf.validate.field).string = {
+  // User is the id of the user for which the token should be revoked
+  string user = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 512
   }];
@@ -44,3 +49,22 @@ message TokenServiceRevokeRequest {
 
 // TokenServiceRevokeResponse is the response payload for the token revoke request
 message TokenServiceRevokeResponse {}
+
+// TokenServiceCreateRequest is the request payload to create a token
+message TokenServiceCreateRequest {
+  // User this token should be created for, if omitted, user is derived from caller
+  optional string user = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 512
+  }];
+  // TokenCreateRequest which should be created
+  metalstack.api.v2.TokenServiceCreateRequest token_create_request = 2;
+}
+
+// TokenServiceCreateResponse is the response payload of a token create request
+message TokenServiceCreateResponse {
+  // Token which was created
+  metalstack.api.v2.Token token = 1;
+  // Secret is the body if the jwt token, should be used in api requests as bearer token
+  string secret = 2;
+}

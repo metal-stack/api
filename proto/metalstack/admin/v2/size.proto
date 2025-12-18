@@ -4,6 +4,7 @@ package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/size.proto";
 
 // SizeService serves size related functions
@@ -11,17 +12,14 @@ service SizeService {
   // Create a size
   rpc Create(SizeServiceCreateRequest) returns (SizeServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
   // Update a size
   rpc Update(SizeServiceUpdateRequest) returns (SizeServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
   // Delete a size
   rpc Delete(SizeServiceDeleteRequest) returns (SizeServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 
@@ -44,20 +42,16 @@ message SizeServiceUpdateRequest {
     min_len: 2
     max_len: 128
   }];
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of this size
-  optional string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this size
-  optional string description = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Constraints which must match that a specific machine is considered of this size
-  repeated metalstack.api.v2.SizeConstraint constraints = 6;
+  repeated metalstack.api.v2.SizeConstraint constraints = 5;
   // Labels to update on this size
-  optional metalstack.api.v2.UpdateLabels labels = 7;
+  optional metalstack.api.v2.UpdateLabels labels = 6;
 }
 
 // SizeServiceUpdateResponse is the response payload for a size update request

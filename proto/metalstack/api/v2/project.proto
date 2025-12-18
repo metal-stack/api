@@ -5,6 +5,7 @@ package metalstack.api.v2;
 import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // ProjectService serves project related functions
 service ProjectService {
@@ -35,6 +36,11 @@ service ProjectService {
   rpc Update(ProjectServiceUpdateRequest) returns (ProjectServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // Leave project
+  rpc Leave(ProjectServiceLeaveRequest) returns (ProjectServiceLeaveResponse) {
+    option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_INCLUDED;
   }
   // RemoveMember remove a user from a project
@@ -79,12 +85,12 @@ service ProjectService {
 message Project {
   // Uuid of this project
   string uuid = 1;
-  // Meta for this ip
+  // Meta for this project
   Meta meta = 2;
   // Name of this project must be unique per tenant
-  string name = 3;
+  string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this project
-  string description = 4;
+  string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Tenant this project belongs to
   string tenant = 5;
   // AvatarUrl of the Project
@@ -129,16 +135,17 @@ message ProjectInvite {
 
 // ProjectServiceListRequest is the request payload to list all projects
 message ProjectServiceListRequest {
-  // Name list only projects with this name
-  optional string name = 1 [(buf.validate.field).string = {
+  // Id lists only projects with this id
+  optional string id = 1;
+  // Name lists only projects with this name
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Tenant lists only projects of this tenant
+  optional string tenant = 3 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Tenant list only projects of this tenant
-  optional string tenant = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  // Labels lists only projects containing the given labels
+  optional Labels labels = 6;
 }
 
 // ProjectServiceListResponse is the response payload to list all projects
@@ -170,17 +177,13 @@ message ProjectServiceCreateRequest {
     max_len: 128
   }];
   // Name of this project, unique per tenant
-  string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 64
-  }];
+  string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this project
-  string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Avatar URL of the project
   optional string avatar_url = 4;
+  // Labels on the project
+  Labels labels = 5;
 }
 
 // ProjectServiceCreateResponse is the response payload of creation of a project
@@ -205,18 +208,16 @@ message ProjectServiceDeleteResponse {
 message ProjectServiceUpdateRequest {
   // Project is the uuid of the project to get
   string project = 1 [(buf.validate.field).string.uuid = true];
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of this project unique per tenant
-  optional string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 64
-  }];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this project
-  optional string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Avatar URL of the project
-  optional string avatar_url = 4;
+  optional string avatar_url = 5;
+  // Labels on this project
+  optional UpdateLabels labels = 6;
 }
 
 // ProjectServiceUpdateResponse is the response payload to update a project
@@ -266,12 +267,21 @@ message ProjectServiceInviteGetResponse {
   ProjectInvite invite = 1;
 }
 
+// ProjectServiceLeaveRequest is used to leave a project
+message ProjectServiceLeaveRequest {
+  // Project is the uuid of the project
+  string project = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// ProjectServiceLeaveResponse is the response payload to a leave project request
+message ProjectServiceLeaveResponse {}
+
 // ProjectServiceRemoveMemberRequest is used to remove a member from a project
 message ProjectServiceRemoveMemberRequest {
   // Project is the uuid of the project
   string project = 1 [(buf.validate.field).string.uuid = true];
-  // MemberID is the id of the member to remove from this project
-  string member_id = 2;
+  // Member is the id of the member to remove from this project
+  string member = 2;
 }
 
 // ProjectServiceRemoveMemberResponse is the response payload to a remove member request
@@ -281,8 +291,8 @@ message ProjectServiceRemoveMemberResponse {}
 message ProjectServiceUpdateMemberRequest {
   // Project is the uuid of the project
   string project = 1 [(buf.validate.field).string.uuid = true];
-  // MemberID is the id of the member to remove from this project
-  string member_id = 2;
+  // Member is the id of the member to remove from this project
+  string member = 2;
   // Role is the role in this project the user will get after the update
   ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }

@@ -112,6 +112,7 @@ func Test_APIScopes(t *testing.T) {
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Add\" has apiv2.TenantRole but request payload \"WrongProjectServiceAddRequest\" does not have a login field"),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Get\" has apiv2.ProjectRole but request payload \"WrongProjectServiceGetRequest\" does not have a project field"),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/List\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
+		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Update\" does not have a update_meta field in WrongProjectServiceUpdateRequest"),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Update\" can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.ProjectRole ([PROJECT_ROLE_OWNER]) at the same time. only one scope is allowed."),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Delete\" can not have apiv2.AdminRole ([ADMIN_ROLE_VIEWER]) and apiv2.Visibility ([VISIBILITY_PUBLIC]) at the same time. only one scope is allowed."),
 		errors.New("api service method: \"/metalstack.api.v2.WrongProjectService/Charge\" has no scope defined. one scope needs to be defined though. use one of the following scopes: [apiv2.AdminRole apiv2.InfraRole apiv2.ProjectRole apiv2.TenantRole apiv2.Visibility]"),
@@ -174,6 +175,29 @@ func validateProto(root string) error {
 
 				// Sort all to have stable results
 				slices.Sort(allScopeNames)
+
+				for _, mt := range fd.GetMessageType() {
+					if mt.GetName() != method.GetInputType() {
+						continue
+					}
+					var (
+						updateRequest string
+					)
+					if strings.Contains(mt.GetName(), "UpdateRequest") {
+						var (
+							hasUpdatedAtField bool
+						)
+						for _, field := range mt.GetField() {
+							if field.GetName() == "update_meta" {
+								hasUpdatedAtField = true
+							}
+						}
+						updateRequest = mt.GetName()
+						if !hasUpdatedAtField {
+							errs = append(errs, fmt.Errorf("api service method: %q does not have a update_meta field in %s", methodName, updateRequest))
+						}
+					}
+				}
 
 				for _, name := range scopeKeys {
 					s := scopes[name]

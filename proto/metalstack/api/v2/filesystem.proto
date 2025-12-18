@@ -4,6 +4,7 @@ package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // FilesystemService serves filesystem related functions
 service FilesystemService {
@@ -17,12 +18,6 @@ service FilesystemService {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Try a filesystems
-  rpc Try(FilesystemServiceTryRequest) returns (FilesystemServiceTryResponse) {
-    option (visibility) = VISIBILITY_SELF;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
-
   // Match a filesystems
   rpc Match(FilesystemServiceMatchRequest) returns (FilesystemServiceMatchResponse) {
     option (visibility) = VISIBILITY_SELF;
@@ -60,8 +55,20 @@ message FilesystemServiceListResponse {
   repeated FilesystemLayout filesystem_layouts = 1;
 }
 
-// FilesystemServiceTryRequest
-message FilesystemServiceTryRequest {
+// FilesystemServiceMatchRequest
+message FilesystemServiceMatchRequest {
+  // Match either size and image to a filesystemlayout
+  // or if a machine matches to a filesystemlayout
+  oneof match {
+    // SizeAndImage
+    MatchImageAndSize size_and_image = 1;
+    // MachineAndFilesystemlayout
+    MatchMachine machine_and_filesystemlayout = 2;
+  }
+}
+
+// MatchImageAndSize
+message MatchImageAndSize {
   // Size, machine size to try
   string size = 1 [(buf.validate.field).string = {
     min_len: 2
@@ -74,21 +81,15 @@ message FilesystemServiceTryRequest {
   }];
 }
 
-// FilesystemServiceMatchRequest
-message FilesystemServiceMatchRequest {
+// MatchMachine
+message MatchMachine {
   // Machine to check
   string machine = 1 [(buf.validate.field).string.uuid = true];
-  // FilesystemLayoutId to check
-  string filesystem_layout_id = 2 [(buf.validate.field).string = {
+  // FilesystemLayout to check
+  string filesystem_layout = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-}
-
-// FilesystemServiceTryResponse
-message FilesystemServiceTryResponse {
-  // FilesystemLayout the filesystemlayout
-  FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemServiceMatchResponse
@@ -104,18 +105,12 @@ message FilesystemLayout {
     min_len: 2
     max_len: 128
   }];
-  // Meta for this ip
+  // Meta for this filesystemLayout
   Meta meta = 2;
   // Name of this filesystemLayout
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this filesystemLayout
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Filesystems is a list of filesystems to create on a machine
   repeated Filesystem filesystems = 5;
   // Disks list of disks that belong to this layout
@@ -151,18 +146,12 @@ message Filesystem {
     (buf.validate.field).required = true
   ];
   // Name of this filesystem
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this filesystem
-  optional string description = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Path the mountpoint where this filesystem should be mounted on
   optional string path = 5 [(buf.validate.field).string = {
-    min_len: 2
+    min_len: 1
     max_len: 4096
   }];
   // Label optional label for this this filesystem
@@ -203,8 +192,6 @@ message Disk {
   }];
   // Partitions list of partitions to create on this disk
   repeated DiskPartition partitions = 2;
-  // WipeOnReinstall if set to true, this disk will be wiped before reinstallation
-  bool wipe_on_reinstall = 3;
 }
 
 // Raid
@@ -251,10 +238,7 @@ message DiskPartition {
 // VolumeGroup
 message VolumeGroup {
   // Name the name of the resulting volume group
-  string name = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Devices list of devices to form the volume group from
   repeated string devices = 2;
   // Tags list of tags to add to the volume group
@@ -264,10 +248,7 @@ message VolumeGroup {
 // LogicalVolume
 message LogicalVolume {
   // Name the name of the logical volume
-  string name = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // VolumeGroup the name of the volume group where to create the logical volume onto
   string volume_group = 2 [(buf.validate.field).string = {
     min_len: 2

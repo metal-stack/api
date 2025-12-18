@@ -3,8 +3,10 @@ syntax = "proto3";
 package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/image.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // ImageService serves image related functions
 service ImageService {
@@ -44,8 +46,31 @@ message ImageServiceCreateResponse {
 
 // ImageServiceUpdateRequest
 message ImageServiceUpdateRequest {
-  // Image is the image
-  metalstack.api.v2.Image image = 1;
+  // Id of this image
+  string id = 1 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
+  // URL where this image is located
+  optional string url = 3 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
+  // Name of this imageLayout
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Description of this imageLayout
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Features of this image
+  repeated metalstack.api.v2.ImageFeature features = 6 [(buf.validate.field).repeated = {
+    unique: true
+    items: {
+      enum: {defined_only: true}
+    }
+  }];
+  // Classification of this image
+  metalstack.api.v2.ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
+
+  // ExpiresAt usage is not possible after this date
+  google.protobuf.Timestamp expires_at = 8;
 }
 
 // ImageServiceUpdateResponse

@@ -2,8 +2,10 @@
 package client
 
 import (
+	"context"
 	"sync"
 
+	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
 
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
@@ -20,15 +22,20 @@ type (
 	client struct {
 		config *DialConfig
 
+		interceptors []connect.Interceptor
+
 		sync.Mutex
 	}
 	Adminv2 interface {
 		Filesystem() adminv2connect.FilesystemServiceClient
 		Image() adminv2connect.ImageServiceClient
 		IP() adminv2connect.IPServiceClient
+		Machine() adminv2connect.MachineServiceClient
 		Network() adminv2connect.NetworkServiceClient
 		Partition() adminv2connect.PartitionServiceClient
+		Project() adminv2connect.ProjectServiceClient
 		Size() adminv2connect.SizeServiceClient
+		Switch() adminv2connect.SwitchServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
 	}
@@ -37,9 +44,12 @@ type (
 		filesystemservice adminv2connect.FilesystemServiceClient
 		imageservice      adminv2connect.ImageServiceClient
 		ipservice         adminv2connect.IPServiceClient
+		machineservice    adminv2connect.MachineServiceClient
 		networkservice    adminv2connect.NetworkServiceClient
 		partitionservice  adminv2connect.PartitionServiceClient
+		projectservice    adminv2connect.ProjectServiceClient
 		sizeservice       adminv2connect.SizeServiceClient
+		switchservice     adminv2connect.SwitchServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
 		tokenservice      adminv2connect.TokenServiceClient
 	}
@@ -80,11 +90,13 @@ type (
 
 	Infrav2 interface {
 		BMC() infrav2connect.BMCServiceClient
+		Event() infrav2connect.EventServiceClient
 		Switch() infrav2connect.SwitchServiceClient
 	}
 
 	infrav2 struct {
 		bmcservice    infrav2connect.BMCServiceClient
+		eventservice  infrav2connect.EventServiceClient
 		switchservice infrav2connect.SwitchServiceClient
 	}
 )
@@ -94,9 +106,38 @@ func New(config *DialConfig) (Client, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	c := &client{
-		config: config,
+		config:       config,
+		interceptors: []connect.Interceptor{},
 	}
+
+	authInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
+		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
+			request.Header().Add("Authorization", "Bearer "+config.Token)
+			return next(ctx, request)
+		})
+	})
+
+	loggingInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
+		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
+			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
+			response, err := next(ctx, request)
+			if err != nil {
+				return nil, err
+			}
+			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
+			return response, err
+		})
+	})
+
+	if config.Token != "" {
+		c.interceptors = append(c.interceptors, authInterceptor)
+	}
+	if config.Log != nil {
+		c.interceptors = append(c.interceptors, loggingInterceptor)
+	}
+	c.interceptors = append(c.interceptors, config.Interceptors...)
 
 	go c.startTokenRenewal()
 
@@ -108,41 +149,67 @@ func (c *client) Adminv2() Adminv2 {
 		filesystemservice: adminv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		imageservice: adminv2connect.NewImageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		ipservice: adminv2connect.NewIPServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		machineservice: adminv2connect.NewMachineServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		networkservice: adminv2connect.NewNetworkServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		partitionservice: adminv2connect.NewPartitionServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		projectservice: adminv2connect.NewProjectServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		sizeservice: adminv2connect.NewSizeServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		switchservice: adminv2connect.NewSwitchServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tenantservice: adminv2connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tokenservice: adminv2connect.NewTokenServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
@@ -158,14 +225,23 @@ func (c *adminv2) Image() adminv2connect.ImageServiceClient {
 func (c *adminv2) IP() adminv2connect.IPServiceClient {
 	return c.ipservice
 }
+func (c *adminv2) Machine() adminv2connect.MachineServiceClient {
+	return c.machineservice
+}
 func (c *adminv2) Network() adminv2connect.NetworkServiceClient {
 	return c.networkservice
 }
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice
 }
+func (c *adminv2) Project() adminv2connect.ProjectServiceClient {
+	return c.projectservice
+}
 func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 	return c.sizeservice
+}
+func (c *adminv2) Switch() adminv2connect.SwitchServiceClient {
+	return c.switchservice
 }
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice
@@ -179,71 +255,85 @@ func (c *client) Apiv2() Apiv2 {
 		filesystemservice: apiv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		healthservice: apiv2connect.NewHealthServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		imageservice: apiv2connect.NewImageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		ipservice: apiv2connect.NewIPServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		machineservice: apiv2connect.NewMachineServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		methodservice: apiv2connect.NewMethodServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		networkservice: apiv2connect.NewNetworkServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		partitionservice: apiv2connect.NewPartitionServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		projectservice: apiv2connect.NewProjectServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		sizeservice: apiv2connect.NewSizeServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tenantservice: apiv2connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tokenservice: apiv2connect.NewTokenServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		userservice: apiv2connect.NewUserServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		versionservice: apiv2connect.NewVersionServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
@@ -298,11 +388,19 @@ func (c *client) Infrav2() Infrav2 {
 		bmcservice: infrav2connect.NewBMCServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		eventservice: infrav2connect.NewEventServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 		switchservice: infrav2connect.NewSwitchServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
 	}
@@ -311,6 +409,9 @@ func (c *client) Infrav2() Infrav2 {
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Event() infrav2connect.EventServiceClient {
+	return c.eventservice
 }
 func (c *infrav2) Switch() infrav2connect.SwitchServiceClient {
 	return c.switchservice

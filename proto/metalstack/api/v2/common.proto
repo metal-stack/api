@@ -130,13 +130,13 @@ message Labels {
 message Meta {
   // Tags on this entity
   optional Labels labels = 1;
-  // CreatedAt is the date when this ip was created
+  // CreatedAt is the date when this entity was created
   google.protobuf.Timestamp created_at = 2;
-  // UpdatedAt is the date when this ip was updated
-  google.protobuf.Timestamp updated_at = 3;
-  // Generation identifies the last updated time as uuidv7 field
+  // UpdatedAt is the date when this entity was updated
   // must be part of the update request to ensure optimistic locking
-  optional string generation = 4 [(buf.validate.field).string.uuid = true];
+  google.protobuf.Timestamp updated_at = 3;
+  // Generation identifies how often this entity was modified since creation.
+  uint64 generation = 4;
 }
 
 // UpdateLabels is a message to update labels
@@ -145,4 +145,26 @@ message UpdateLabels {
   Labels update = 1;
   // Remove labels by key
   repeated string remove = 2;
+}
+
+// UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled
+message UpdateMeta {
+  // UpdatedAt is the date when this entity was updated
+  // must be part of the update request to ensure optimistic locking
+  google.protobuf.Timestamp updated_at = 1;
+
+  // LockingStrategy to be used for this update request
+  OptimisticLockingStrategy locking_strategy = 2 [(buf.validate.field).enum.defined_only = true];
+}
+
+// OptimisticLockingStrategy defines how optimistic locking should be handled.
+// It defaults to client side, which requires the UpdatedAt timestamp to be provided
+enum OptimisticLockingStrategy {
+  // OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side
+  OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED = 0;
+  // OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified
+  OPTIMISTIC_LOCKING_STRATEGY_CLIENT = 1;
+  // OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt
+  // and fetches the most recent entity before updating with the given values with the update request
+  OPTIMISTIC_LOCKING_STRATEGY_SERVER = 2;
 }

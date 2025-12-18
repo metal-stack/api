@@ -4,6 +4,7 @@ package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // SizeService serves size related functions
 service SizeService {
@@ -53,18 +54,12 @@ message Size {
     min_len: 2
     max_len: 128
   }];
-  // Meta for this ip
+  // Meta for this size
   Meta meta = 2;
   // Name of this size
-  optional string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this size
-  optional string description = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Constraints which must match that a specific machine is considered of this size
   repeated SizeConstraint constraints = 6;
 }
@@ -106,15 +101,9 @@ message SizeQuery {
     max_len: 128
   }];
   // Name of the size to query
-  optional string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of the size to query
-  optional string description = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
-  // Labels on this network
-  Labels labels = 4;
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Labels lists only sizes containing the given labels
+  optional Labels labels = 4;
 }

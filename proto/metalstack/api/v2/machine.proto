@@ -9,6 +9,7 @@ import "metalstack/api/v2/filesystem.proto";
 import "metalstack/api/v2/image.proto";
 import "metalstack/api/v2/network.proto";
 import "metalstack/api/v2/partition.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/size.proto";
 
 // MachineService serves machine related functions
@@ -30,7 +31,7 @@ service MachineService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // List all machine
+  // List all machines
   rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
@@ -68,13 +69,13 @@ message MachineServiceCreateRequest {
   // this field overrules size and partition
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // Name of this machine
-  string name = 3 [(buf.validate.field).string = {max_len: 128}];
+  string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description for this machine
-  string description = 4 [(buf.validate.field).string = {max_len: 256}];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Hostname the hostname for the allocated machine (defaults to metal)
   optional string hostname = 5 [(buf.validate.field).string.hostname = true];
   // Partition the partition id to assign this machine to
-  string partition = 6 [(buf.validate.field).string = {max_len: 128}];
+  string partition = 6 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Size of the machine to create
   string size = 7 [(buf.validate.field).string = {max_len: 128}];
   // Image which should be installed on this machine
@@ -108,15 +109,7 @@ message MachineServiceCreateRequest {
   // Networks the networks that this machine will be placed in.
   repeated MachineAllocationNetwork networks = 13;
   // IPs to to attach to this machine additionally
-  repeated string ips = 14 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_ips"
-        message: "ips must be valid"
-        expression: "this.isIp()"
-      }
-    }
-  }];
+  repeated string ips = 14 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
   // PlacementTags by default machines are spread across the racks inside a partition for every project.
   // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
   repeated string placement_tags = 15;
@@ -126,6 +119,12 @@ message MachineServiceCreateRequest {
   repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
   // AllocationType of this machine
   MachineAllocationType allocation_type = 18 [(buf.validate.field).enum.defined_only = true];
+  // FirewallSpec provides firewall specific parameters if allocationType is firewall
+  FirewallSpec firewall_spec = 19;
+}
+
+// FirewallSpec contains firewall specific firewall creation parameters
+message FirewallSpec {
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 19;
 }
@@ -140,14 +139,16 @@ message MachineServiceCreateResponse {
 message MachineServiceUpdateRequest {
   // UUID of the machine to modify
   string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Project of the machine
-  string project = 2 [(buf.validate.field).string.uuid = true];
+  string project = 3 [(buf.validate.field).string.uuid = true];
   // Description of this machine allocation
-  optional string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Labels to update on this machine allocation
-  optional UpdateLabels labels = 6;
+  optional UpdateLabels labels = 5;
   // SSHPublicKeys which should be update of this machine allocation
-  repeated string ssh_public_keys = 11 [(buf.validate.field).repeated = {
+  repeated string ssh_public_keys = 6 [(buf.validate.field).repeated = {
     // At most 50 keys can be store.
     // A lower bound can be set similarly with `min_items`.
     max_items: 50
@@ -242,7 +243,7 @@ message MachineCondition {
   // State the state of this machine. empty means available for all
   MachineState state = 1 [(buf.validate.field).enum.defined_only = true];
   // Description a description why this machine is in the given state
-  string description = 2 [(buf.validate.field).string = {max_len: 256}];
+  string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Issuer the user that changed the state
   string issuer = 3 [(buf.validate.field).string = {max_len: 256}];
 }
@@ -254,9 +255,9 @@ message MachineAllocation {
   // Meta for this machine allocation
   Meta meta = 2;
   // Name of this allocation
-  string name = 3 [(buf.validate.field).string = {max_len: 128}];
+  string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this allocation
-  string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Created By indicates who created this machine allocation
   string created_by = 5 [(buf.validate.field).string = {max_len: 128}];
   // Project of the allocation
@@ -329,15 +330,7 @@ message FirewallEgressRule {
     }
   }];
   // To the destination cidrs affected by this rule
-  repeated string to = 3 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_to"
-        message: "to prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string to = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Comment for this rule
   string comment = 4 [(buf.validate.field) = {
     string: {
@@ -359,25 +352,9 @@ message FirewallIngressRule {
     }
   }];
   // To the destination cidrs affected by this rule
-  repeated string to = 3 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_to"
-        message: "to prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string to = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // From the source cidrs affected by this rule
-  repeated string from = 4 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_from"
-        message: "from prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string from = 4 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Comment for this rule
   string comment = 5 [(buf.validate.field) = {
     string: {
@@ -403,35 +380,11 @@ message MachineNetwork {
   // Network the networkID of the allocated machine in this vrf
   string network = 1;
   // Prefixes the prefixes of this network
-  repeated string prefixes = 2 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_prefixes"
-        message: "prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string prefixes = 2 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // DestinationPrefixes prefixes that are reachable within this network
-  repeated string destination_prefixes = 3 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_destination_prefixes"
-        message: "destination_prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string destination_prefixes = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // IPs the ip addresses of the allocated machine in this vrf
-  repeated string ips = 4 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_ips"
-        message: "ips must be valid"
-        expression: "this.isIp()"
-      }
-    }
-  }];
+  repeated string ips = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
   // NetworkType the type of network of this vrf
   NetworkType network_type = 5 [(buf.validate.field).enum.defined_only = true];
   // NatType what type of nat if any should be used
@@ -479,12 +432,9 @@ message MetalGPU {
 // MachineNic contains details of a network interface of this machine
 message MachineNic {
   // Mac the macaddress of this interface
-  string mac = 1 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
+  string mac = 1 [(buf.validate.field).string.(macaddress) = true];
   // Name of this interface
-  string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Identifier the unique identifier of this network interface
   string identifier = 3 [(buf.validate.field).string = {max_len: 128}];
   // Vendor of this network card
@@ -495,12 +445,14 @@ message MachineNic {
   uint64 speed = 6;
   // Neighbors the neighbors visible to this network interface
   repeated MachineNic neighbors = 7;
+  // Hostname the nic belongs to
+  string hostname = 8;
 }
 
 // MachineBlockDevice contains details of a block device of this machine
 message MachineBlockDevice {
   // Name of this block device
-  string name = 1 [(buf.validate.field).string = {max_len: 128}];
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Size of this block device in bytes
   uint64 size = 2;
 }
@@ -522,7 +474,7 @@ message MachineChassisIdentifyLEDState {
   // Value the state of this chassis identify LED. empty means LED-OFF
   string value = 1 [(buf.validate.field).string = {max_len: 128}];
   // Description a description why this chassis identify LED is in the given state
-  string description = 2 [(buf.validate.field).string = {max_len: 256}];
+  string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
 // MachineBios contains BIOS details of this machine
@@ -557,12 +509,40 @@ enum MachineProvisioningEventState {
   MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2 [(enum_string_value) = "failed-reclaim"];
 }
 
+// MachineProvisioningEventType defines in which phase the machine actually is
+enum MachineProvisioningEventType {
+  // MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified
+  MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
+  // MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive
+  MACHINE_PROVISIONING_EVENT_TYPE_ALIVE = 1 [(enum_string_value) = "Alive"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_CRASHED machine crashed
+  MACHINE_PROVISIONING_EVENT_TYPE_CRASHED = 2 [(enum_string_value) = "Crashed"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING machine is pxe booting into metal-hammer
+  MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING = 3 [(enum_string_value) = "PXE Booting"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT machine got a reboot instruction
+  MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT = 4 [(enum_string_value) = "Planned Reboot"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PREPARING metal-hammer is preparing the machine
+  MACHINE_PROVISIONING_EVENT_TYPE_PREPARING = 5 [(enum_string_value) = "Preparing"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING metal-hammer registers machine at the apiserver
+  MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING = 6 [(enum_string_value) = "Registering"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_WAITING machine is waiting for installation
+  MACHINE_PROVISIONING_EVENT_TYPE_WAITING = 7 [(enum_string_value) = "Waiting"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING metal-hammer is installing the desired os
+  MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING = 8 [(enum_string_value) = "Installing"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL metal-hammer completed installation and boots into target os
+  MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL = 9 [(enum_string_value) = "Booting New Kernel"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME machine is installed and phones home
+  MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME = 10 [(enum_string_value) = "Phoned Home"];
+  // MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM machine is not allocated, but phones home
+  MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11 [(enum_string_value) = "Machine Reclaim"];
+}
+
 // MachineProvisioningEvent is a event which has occurred during provisioning
 message MachineProvisioningEvent {
   // Time the time that this event was received
   google.protobuf.Timestamp time = 1;
   // Event the event emitted by the machine
-  string event = 2;
+  MachineProvisioningEventType event = 2;
   // Message an additional message to add to the event
   string message = 3;
 }
@@ -605,10 +585,7 @@ message MachineQuery {
   // UUID of the machine to get
   optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Name of the machine to get
-  optional string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Partition of the machine to get
   optional string partition = 3 [(buf.validate.field).string = {
     min_len: 2
@@ -649,10 +626,7 @@ message MachineAllocationQuery {
   // UUID of the allocation of the machine to get
   optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Name of the machine to get
-  optional string name = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project of the machine to get
   optional string project = 3 [(buf.validate.field).string.uuid = true];
   // Image of the machine to get
@@ -672,6 +646,8 @@ message MachineAllocationQuery {
   }];
   // AllocationType of this machine
   optional MachineAllocationType allocation_type = 7 [(buf.validate.field).enum.defined_only = true];
+  // Labels for which this machine allocation should get filtered
+  optional Labels labels = 8;
 }
 
 // MachineNetworkQuery network specific machine queries
@@ -679,35 +655,11 @@ message MachineNetworkQuery {
   // Networks this machine is connected to
   repeated string networks = 1;
   // Prefixes this machine is connected to
-  repeated string prefixes = 2 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_prefixes"
-        message: "prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string prefixes = 2 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // DestinationPrefixes this machine is connected to
-  repeated string destination_prefixes = 3 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_destination_prefixes"
-        message: "destination_prefixes must be valid"
-        expression: "this.isIpPrefix()"
-      }
-    }
-  }];
+  repeated string destination_prefixes = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // IPs this machine has
-  repeated string ips = 4 [(buf.validate.field).repeated = {
-    items: {
-      cel: {
-        id: "valid_ips"
-        message: "ips must be valid"
-        expression: "this.isIp()"
-      }
-    }
-  }];
+  repeated string ips = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
   // VRFs this machine is connected to
   repeated uint64 vrfs = 5;
   // ASNs this machine is connected to
@@ -719,35 +671,35 @@ message MachineNicQuery {
   // Macs this machine nic has
   repeated string macs = 1 [(buf.validate.field).repeated = {
     max_items: 100
+    unique: true
     items: {
-      string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
+      string: {[metalstack.api.v2.macaddress]: true}
     }
   }];
   // Names this machine nic has
   repeated string names = 2 [(buf.validate.field).repeated = {
     max_items: 100
+    unique: true
     items: {
       string: {max_len: 128}
     }
   }];
-  // VRFs this machine nic has
-  repeated uint64 vrfs = 3 [(buf.validate.field).repeated = {max_items: 100}];
   // NeighborMacs this machine nic has
-  repeated string neighbor_macs = 4 [(buf.validate.field).repeated = {
+  repeated string neighbor_macs = 3 [(buf.validate.field).repeated = {
     max_items: 100
+    unique: true
     items: {
-      string: {pattern: "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"}
+      string: {[metalstack.api.v2.macaddress]: true}
     }
   }];
   // NeighborNames this machine nic has
-  repeated string neighbor_names = 5 [(buf.validate.field).repeated = {
+  repeated string neighbor_names = 4 [(buf.validate.field).repeated = {
     max_items: 100
+    unique: true
     items: {
       string: {max_len: 128}
     }
   }];
-  // NeighborVRFs this machine nic has
-  repeated uint64 neighbor_vrfs = 6 [(buf.validate.field).repeated = {max_items: 100}];
 }
 
 // MachineDiskQuery disk specific machine queries
@@ -768,7 +720,7 @@ message MachineIPMIQuery {
   // Address of the ipmi system of this machine
   optional string address = 1 [(buf.validate.field).string.ip = true];
   // Mac of the ipmi system of this machine
-  optional string mac = 2 [(buf.validate.field).string.pattern = "^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$"];
+  optional string mac = 2 [(buf.validate.field).string.(macaddress) = true];
   // User of the ipmi system of this machine
   optional string user = 3 [(buf.validate.field).string = {max_len: 128}];
   // Interface of the ipmi system of this machine

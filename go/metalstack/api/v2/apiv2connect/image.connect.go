@@ -44,11 +44,11 @@ const (
 // ImageServiceClient is a client for the metalstack.api.v2.ImageService service.
 type ImageServiceClient interface {
 	// Get a image
-	Get(context.Context, *connect.Request[v2.ImageServiceGetRequest]) (*connect.Response[v2.ImageServiceGetResponse], error)
+	Get(context.Context, *v2.ImageServiceGetRequest) (*v2.ImageServiceGetResponse, error)
 	// List all images
-	List(context.Context, *connect.Request[v2.ImageServiceListRequest]) (*connect.Response[v2.ImageServiceListResponse], error)
+	List(context.Context, *v2.ImageServiceListRequest) (*v2.ImageServiceListResponse, error)
 	// Latest image for a specific os
-	Latest(context.Context, *connect.Request[v2.ImageServiceLatestRequest]) (*connect.Response[v2.ImageServiceLatestResponse], error)
+	Latest(context.Context, *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error)
 }
 
 // NewImageServiceClient constructs a client for the metalstack.api.v2.ImageService service. By
@@ -91,28 +91,40 @@ type imageServiceClient struct {
 }
 
 // Get calls metalstack.api.v2.ImageService.Get.
-func (c *imageServiceClient) Get(ctx context.Context, req *connect.Request[v2.ImageServiceGetRequest]) (*connect.Response[v2.ImageServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *imageServiceClient) Get(ctx context.Context, req *v2.ImageServiceGetRequest) (*v2.ImageServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.api.v2.ImageService.List.
-func (c *imageServiceClient) List(ctx context.Context, req *connect.Request[v2.ImageServiceListRequest]) (*connect.Response[v2.ImageServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *imageServiceClient) List(ctx context.Context, req *v2.ImageServiceListRequest) (*v2.ImageServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Latest calls metalstack.api.v2.ImageService.Latest.
-func (c *imageServiceClient) Latest(ctx context.Context, req *connect.Request[v2.ImageServiceLatestRequest]) (*connect.Response[v2.ImageServiceLatestResponse], error) {
-	return c.latest.CallUnary(ctx, req)
+func (c *imageServiceClient) Latest(ctx context.Context, req *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error) {
+	response, err := c.latest.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // ImageServiceHandler is an implementation of the metalstack.api.v2.ImageService service.
 type ImageServiceHandler interface {
 	// Get a image
-	Get(context.Context, *connect.Request[v2.ImageServiceGetRequest]) (*connect.Response[v2.ImageServiceGetResponse], error)
+	Get(context.Context, *v2.ImageServiceGetRequest) (*v2.ImageServiceGetResponse, error)
 	// List all images
-	List(context.Context, *connect.Request[v2.ImageServiceListRequest]) (*connect.Response[v2.ImageServiceListResponse], error)
+	List(context.Context, *v2.ImageServiceListRequest) (*v2.ImageServiceListResponse, error)
 	// Latest image for a specific os
-	Latest(context.Context, *connect.Request[v2.ImageServiceLatestRequest]) (*connect.Response[v2.ImageServiceLatestResponse], error)
+	Latest(context.Context, *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error)
 }
 
 // NewImageServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -122,19 +134,19 @@ type ImageServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewImageServiceHandler(svc ImageServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	imageServiceMethods := v2.File_metalstack_api_v2_image_proto.Services().ByName("ImageService").Methods()
-	imageServiceGetHandler := connect.NewUnaryHandler(
+	imageServiceGetHandler := connect.NewUnaryHandlerSimple(
 		ImageServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(imageServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
-	imageServiceListHandler := connect.NewUnaryHandler(
+	imageServiceListHandler := connect.NewUnaryHandlerSimple(
 		ImageServiceListProcedure,
 		svc.List,
 		connect.WithSchema(imageServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
-	imageServiceLatestHandler := connect.NewUnaryHandler(
+	imageServiceLatestHandler := connect.NewUnaryHandlerSimple(
 		ImageServiceLatestProcedure,
 		svc.Latest,
 		connect.WithSchema(imageServiceMethods.ByName("Latest")),
@@ -157,14 +169,14 @@ func NewImageServiceHandler(svc ImageServiceHandler, opts ...connect.HandlerOpti
 // UnimplementedImageServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedImageServiceHandler struct{}
 
-func (UnimplementedImageServiceHandler) Get(context.Context, *connect.Request[v2.ImageServiceGetRequest]) (*connect.Response[v2.ImageServiceGetResponse], error) {
+func (UnimplementedImageServiceHandler) Get(context.Context, *v2.ImageServiceGetRequest) (*v2.ImageServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ImageService.Get is not implemented"))
 }
 
-func (UnimplementedImageServiceHandler) List(context.Context, *connect.Request[v2.ImageServiceListRequest]) (*connect.Response[v2.ImageServiceListResponse], error) {
+func (UnimplementedImageServiceHandler) List(context.Context, *v2.ImageServiceListRequest) (*v2.ImageServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ImageService.List is not implemented"))
 }
 
-func (UnimplementedImageServiceHandler) Latest(context.Context, *connect.Request[v2.ImageServiceLatestRequest]) (*connect.Response[v2.ImageServiceLatestResponse], error) {
+func (UnimplementedImageServiceHandler) Latest(context.Context, *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ImageService.Latest is not implemented"))
 }

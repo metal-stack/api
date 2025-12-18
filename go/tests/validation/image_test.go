@@ -3,15 +3,12 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
+	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"github.com/stretchr/testify/require"
+	"google.golang.org/protobuf/proto"
 )
 
 func TestValidateImage(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "Valid Image minimal config",
@@ -30,9 +27,8 @@ func TestValidateImage(t *testing.T) {
 				Url:      "not-a-uri",
 				Features: []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE},
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - url: url must be a valid URI [valid_url]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: url: given uri must be valid`,
 		},
 		{
 			name: "Invalid Image, no features",
@@ -41,11 +37,45 @@ func TestValidateImage(t *testing.T) {
 				Url:      "http://download.org/debian:12.0",
 				Features: []apiv2.ImageFeature{3},
 			},
-			wantErr: true,
-			wantErrorMessage: `validation error:
- - features[0]: feature must be valid [features]`,
+			wantErr:          true,
+			wantErrorMessage: `validation error: features[0]: value must be one of the defined enum values`,
+		},
+		{
+			name: "Valid ImageUpdate minimal config",
+			msg: &adminv2.ImageServiceUpdateRequest{
+				Id:             "debian:12.0.20250101",
+				Name:           proto.String("debian"),
+				UpdateMeta:     &apiv2.UpdateMeta{},
+				Features:       []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE},
+				Classification: apiv2.ImageClassification_IMAGE_CLASSIFICATION_PREVIEW,
+			},
+			wantErr: false,
+		},
+		{
+			name: "InValid ImageUpdate duplicate Features",
+			msg: &adminv2.ImageServiceUpdateRequest{
+				Id:             "debian:12.0.20250101",
+				Name:           proto.String("debian"),
+				UpdateMeta:     &apiv2.UpdateMeta{},
+				Features:       []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE, apiv2.ImageFeature_IMAGE_FEATURE_MACHINE},
+				Classification: apiv2.ImageClassification_IMAGE_CLASSIFICATION_PREVIEW,
+			},
+			wantErr:          true,
+			wantErrorMessage: `validation error: features: repeated value must contain unique items`,
+		},
+		{
+			name: "InValid ImageUpdate invalid Features",
+			msg: &adminv2.ImageServiceUpdateRequest{
+				Id:             "debian:12.0.20250101",
+				Name:           proto.String("debian"),
+				UpdateMeta:     &apiv2.UpdateMeta{},
+				Features:       []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE, 3},
+				Classification: apiv2.ImageClassification_IMAGE_CLASSIFICATION_PREVIEW,
+			},
+			wantErr:          true,
+			wantErrorMessage: `validation error: features[1]: value must be one of the defined enum values`,
 		},
 	}
 
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }

@@ -3,7 +3,7 @@
 import os
 import sys
 
-from connecpy.exceptions import ConnecpyServerException
+from connectrpc.errors import ConnectError
 
 from metalstack.client import client as apiclient
 from metalstack.api.v2 import ip_pb2
@@ -17,9 +17,9 @@ project = os.environ['PROJECT_ID']
 client = apiclient.Client(baseurl=baseurl, token=token, timeout=timeout_s)
 
 try:
-    resp = client.apiv2().ip().List(request=ip_pb2.IPServiceListRequest(
+    resp = client.apiv2().ip().list(request=ip_pb2.IPServiceListRequest(
         project=project))
-except ConnecpyServerException as e:
+except ConnectError as e:
     print(e.code, e.message, e.to_dict())
     sys.exit(1)
 
@@ -27,7 +27,7 @@ except ConnecpyServerException as e:
 for ip in resp.ips:
     print(ip.ip, ip.name, ip.project, ip.network)
 
-resp = client.adminv2().network().List(
+resp = client.adminv2().network().list(
     request=network_pb2.NetworkServiceListRequest())
 
 for nw in resp.networks:

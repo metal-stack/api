@@ -43,6 +43,8 @@ const (
 	TenantServiceUpdateProcedure = "/metalstack.api.v2.TenantService/Update"
 	// TenantServiceDeleteProcedure is the fully-qualified name of the TenantService's Delete RPC.
 	TenantServiceDeleteProcedure = "/metalstack.api.v2.TenantService/Delete"
+	// TenantServiceLeaveProcedure is the fully-qualified name of the TenantService's Leave RPC.
+	TenantServiceLeaveProcedure = "/metalstack.api.v2.TenantService/Leave"
 	// TenantServiceRemoveMemberProcedure is the fully-qualified name of the TenantService's
 	// RemoveMember RPC.
 	TenantServiceRemoveMemberProcedure = "/metalstack.api.v2.TenantService/RemoveMember"
@@ -67,29 +69,31 @@ const (
 // TenantServiceClient is a client for the metalstack.api.v2.TenantService service.
 type TenantServiceClient interface {
 	// Create a tenant
-	Create(context.Context, *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error)
+	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// List tenants
-	List(context.Context, *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error)
+	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
 	// Get a tenant
-	Get(context.Context, *connect.Request[v2.TenantServiceGetRequest]) (*connect.Response[v2.TenantServiceGetResponse], error)
+	Get(context.Context, *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error)
 	// Update a tenant
-	Update(context.Context, *connect.Request[v2.TenantServiceUpdateRequest]) (*connect.Response[v2.TenantServiceUpdateResponse], error)
+	Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error)
 	// Delete a tenant
-	Delete(context.Context, *connect.Request[v2.TenantServiceDeleteRequest]) (*connect.Response[v2.TenantServiceDeleteResponse], error)
+	Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error)
+	// Leave remove a member of a tenant
+	Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error)
 	// RemoveMember remove a member of a tenant
-	RemoveMember(context.Context, *connect.Request[v2.TenantServiceRemoveMemberRequest]) (*connect.Response[v2.TenantServiceRemoveMemberResponse], error)
+	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 	// UpdateMember update a member of a tenant
-	UpdateMember(context.Context, *connect.Request[v2.TenantServiceUpdateMemberRequest]) (*connect.Response[v2.TenantServiceUpdateMemberResponse], error)
+	UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error)
 	// Invite a user to a tenant
-	Invite(context.Context, *connect.Request[v2.TenantServiceInviteRequest]) (*connect.Response[v2.TenantServiceInviteResponse], error)
+	Invite(context.Context, *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error)
 	// InviteAccept is called from a user to accept an invitation
-	InviteAccept(context.Context, *connect.Request[v2.TenantServiceInviteAcceptRequest]) (*connect.Response[v2.TenantServiceInviteAcceptResponse], error)
+	InviteAccept(context.Context, *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error)
 	// InviteDelete deletes a pending invitation
-	InviteDelete(context.Context, *connect.Request[v2.TenantServiceInviteDeleteRequest]) (*connect.Response[v2.TenantServiceInviteDeleteResponse], error)
+	InviteDelete(context.Context, *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error)
 	// InvitesList list all invites to a tenant
-	InvitesList(context.Context, *connect.Request[v2.TenantServiceInvitesListRequest]) (*connect.Response[v2.TenantServiceInvitesListResponse], error)
+	InvitesList(context.Context, *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error)
 	// InviteGet get an invite
-	InviteGet(context.Context, *connect.Request[v2.TenantServiceInviteGetRequest]) (*connect.Response[v2.TenantServiceInviteGetResponse], error)
+	InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error)
 }
 
 // NewTenantServiceClient constructs a client for the metalstack.api.v2.TenantService service. By
@@ -131,6 +135,12 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			httpClient,
 			baseURL+TenantServiceDeleteProcedure,
 			connect.WithSchema(tenantServiceMethods.ByName("Delete")),
+			connect.WithClientOptions(opts...),
+		),
+		leave: connect.NewClient[v2.TenantServiceLeaveRequest, v2.TenantServiceLeaveResponse](
+			httpClient,
+			baseURL+TenantServiceLeaveProcedure,
+			connect.WithSchema(tenantServiceMethods.ByName("Leave")),
 			connect.WithClientOptions(opts...),
 		),
 		removeMember: connect.NewClient[v2.TenantServiceRemoveMemberRequest, v2.TenantServiceRemoveMemberResponse](
@@ -185,6 +195,7 @@ type tenantServiceClient struct {
 	get          *connect.Client[v2.TenantServiceGetRequest, v2.TenantServiceGetResponse]
 	update       *connect.Client[v2.TenantServiceUpdateRequest, v2.TenantServiceUpdateResponse]
 	delete       *connect.Client[v2.TenantServiceDeleteRequest, v2.TenantServiceDeleteResponse]
+	leave        *connect.Client[v2.TenantServiceLeaveRequest, v2.TenantServiceLeaveResponse]
 	removeMember *connect.Client[v2.TenantServiceRemoveMemberRequest, v2.TenantServiceRemoveMemberResponse]
 	updateMember *connect.Client[v2.TenantServiceUpdateMemberRequest, v2.TenantServiceUpdateMemberResponse]
 	invite       *connect.Client[v2.TenantServiceInviteRequest, v2.TenantServiceInviteResponse]
@@ -195,91 +206,150 @@ type tenantServiceClient struct {
 }
 
 // Create calls metalstack.api.v2.TenantService.Create.
-func (c *tenantServiceClient) Create(ctx context.Context, req *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error) {
-	return c.create.CallUnary(ctx, req)
+func (c *tenantServiceClient) Create(ctx context.Context, req *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.api.v2.TenantService.List.
-func (c *tenantServiceClient) List(ctx context.Context, req *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
+func (c *tenantServiceClient) List(ctx context.Context, req *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Get calls metalstack.api.v2.TenantService.Get.
-func (c *tenantServiceClient) Get(ctx context.Context, req *connect.Request[v2.TenantServiceGetRequest]) (*connect.Response[v2.TenantServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *tenantServiceClient) Get(ctx context.Context, req *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Update calls metalstack.api.v2.TenantService.Update.
-func (c *tenantServiceClient) Update(ctx context.Context, req *connect.Request[v2.TenantServiceUpdateRequest]) (*connect.Response[v2.TenantServiceUpdateResponse], error) {
-	return c.update.CallUnary(ctx, req)
+func (c *tenantServiceClient) Update(ctx context.Context, req *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error) {
+	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Delete calls metalstack.api.v2.TenantService.Delete.
-func (c *tenantServiceClient) Delete(ctx context.Context, req *connect.Request[v2.TenantServiceDeleteRequest]) (*connect.Response[v2.TenantServiceDeleteResponse], error) {
-	return c.delete.CallUnary(ctx, req)
+func (c *tenantServiceClient) Delete(ctx context.Context, req *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// Leave calls metalstack.api.v2.TenantService.Leave.
+func (c *tenantServiceClient) Leave(ctx context.Context, req *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error) {
+	response, err := c.leave.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // RemoveMember calls metalstack.api.v2.TenantService.RemoveMember.
-func (c *tenantServiceClient) RemoveMember(ctx context.Context, req *connect.Request[v2.TenantServiceRemoveMemberRequest]) (*connect.Response[v2.TenantServiceRemoveMemberResponse], error) {
-	return c.removeMember.CallUnary(ctx, req)
+func (c *tenantServiceClient) RemoveMember(ctx context.Context, req *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error) {
+	response, err := c.removeMember.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // UpdateMember calls metalstack.api.v2.TenantService.UpdateMember.
-func (c *tenantServiceClient) UpdateMember(ctx context.Context, req *connect.Request[v2.TenantServiceUpdateMemberRequest]) (*connect.Response[v2.TenantServiceUpdateMemberResponse], error) {
-	return c.updateMember.CallUnary(ctx, req)
+func (c *tenantServiceClient) UpdateMember(ctx context.Context, req *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error) {
+	response, err := c.updateMember.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // Invite calls metalstack.api.v2.TenantService.Invite.
-func (c *tenantServiceClient) Invite(ctx context.Context, req *connect.Request[v2.TenantServiceInviteRequest]) (*connect.Response[v2.TenantServiceInviteResponse], error) {
-	return c.invite.CallUnary(ctx, req)
+func (c *tenantServiceClient) Invite(ctx context.Context, req *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error) {
+	response, err := c.invite.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // InviteAccept calls metalstack.api.v2.TenantService.InviteAccept.
-func (c *tenantServiceClient) InviteAccept(ctx context.Context, req *connect.Request[v2.TenantServiceInviteAcceptRequest]) (*connect.Response[v2.TenantServiceInviteAcceptResponse], error) {
-	return c.inviteAccept.CallUnary(ctx, req)
+func (c *tenantServiceClient) InviteAccept(ctx context.Context, req *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error) {
+	response, err := c.inviteAccept.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // InviteDelete calls metalstack.api.v2.TenantService.InviteDelete.
-func (c *tenantServiceClient) InviteDelete(ctx context.Context, req *connect.Request[v2.TenantServiceInviteDeleteRequest]) (*connect.Response[v2.TenantServiceInviteDeleteResponse], error) {
-	return c.inviteDelete.CallUnary(ctx, req)
+func (c *tenantServiceClient) InviteDelete(ctx context.Context, req *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error) {
+	response, err := c.inviteDelete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // InvitesList calls metalstack.api.v2.TenantService.InvitesList.
-func (c *tenantServiceClient) InvitesList(ctx context.Context, req *connect.Request[v2.TenantServiceInvitesListRequest]) (*connect.Response[v2.TenantServiceInvitesListResponse], error) {
-	return c.invitesList.CallUnary(ctx, req)
+func (c *tenantServiceClient) InvitesList(ctx context.Context, req *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error) {
+	response, err := c.invitesList.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // InviteGet calls metalstack.api.v2.TenantService.InviteGet.
-func (c *tenantServiceClient) InviteGet(ctx context.Context, req *connect.Request[v2.TenantServiceInviteGetRequest]) (*connect.Response[v2.TenantServiceInviteGetResponse], error) {
-	return c.inviteGet.CallUnary(ctx, req)
+func (c *tenantServiceClient) InviteGet(ctx context.Context, req *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error) {
+	response, err := c.inviteGet.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // TenantServiceHandler is an implementation of the metalstack.api.v2.TenantService service.
 type TenantServiceHandler interface {
 	// Create a tenant
-	Create(context.Context, *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error)
+	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// List tenants
-	List(context.Context, *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error)
+	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
 	// Get a tenant
-	Get(context.Context, *connect.Request[v2.TenantServiceGetRequest]) (*connect.Response[v2.TenantServiceGetResponse], error)
+	Get(context.Context, *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error)
 	// Update a tenant
-	Update(context.Context, *connect.Request[v2.TenantServiceUpdateRequest]) (*connect.Response[v2.TenantServiceUpdateResponse], error)
+	Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error)
 	// Delete a tenant
-	Delete(context.Context, *connect.Request[v2.TenantServiceDeleteRequest]) (*connect.Response[v2.TenantServiceDeleteResponse], error)
+	Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error)
+	// Leave remove a member of a tenant
+	Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error)
 	// RemoveMember remove a member of a tenant
-	RemoveMember(context.Context, *connect.Request[v2.TenantServiceRemoveMemberRequest]) (*connect.Response[v2.TenantServiceRemoveMemberResponse], error)
+	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 	// UpdateMember update a member of a tenant
-	UpdateMember(context.Context, *connect.Request[v2.TenantServiceUpdateMemberRequest]) (*connect.Response[v2.TenantServiceUpdateMemberResponse], error)
+	UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error)
 	// Invite a user to a tenant
-	Invite(context.Context, *connect.Request[v2.TenantServiceInviteRequest]) (*connect.Response[v2.TenantServiceInviteResponse], error)
+	Invite(context.Context, *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error)
 	// InviteAccept is called from a user to accept an invitation
-	InviteAccept(context.Context, *connect.Request[v2.TenantServiceInviteAcceptRequest]) (*connect.Response[v2.TenantServiceInviteAcceptResponse], error)
+	InviteAccept(context.Context, *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error)
 	// InviteDelete deletes a pending invitation
-	InviteDelete(context.Context, *connect.Request[v2.TenantServiceInviteDeleteRequest]) (*connect.Response[v2.TenantServiceInviteDeleteResponse], error)
+	InviteDelete(context.Context, *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error)
 	// InvitesList list all invites to a tenant
-	InvitesList(context.Context, *connect.Request[v2.TenantServiceInvitesListRequest]) (*connect.Response[v2.TenantServiceInvitesListResponse], error)
+	InvitesList(context.Context, *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error)
 	// InviteGet get an invite
-	InviteGet(context.Context, *connect.Request[v2.TenantServiceInviteGetRequest]) (*connect.Response[v2.TenantServiceInviteGetResponse], error)
+	InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -289,73 +359,79 @@ type TenantServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	tenantServiceMethods := v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods()
-	tenantServiceCreateHandler := connect.NewUnaryHandler(
+	tenantServiceCreateHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceCreateProcedure,
 		svc.Create,
 		connect.WithSchema(tenantServiceMethods.ByName("Create")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceListHandler := connect.NewUnaryHandler(
+	tenantServiceListHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceListProcedure,
 		svc.List,
 		connect.WithSchema(tenantServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceGetHandler := connect.NewUnaryHandler(
+	tenantServiceGetHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(tenantServiceMethods.ByName("Get")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceUpdateHandler := connect.NewUnaryHandler(
+	tenantServiceUpdateHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceUpdateProcedure,
 		svc.Update,
 		connect.WithSchema(tenantServiceMethods.ByName("Update")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceDeleteHandler := connect.NewUnaryHandler(
+	tenantServiceDeleteHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceDeleteProcedure,
 		svc.Delete,
 		connect.WithSchema(tenantServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceRemoveMemberHandler := connect.NewUnaryHandler(
+	tenantServiceLeaveHandler := connect.NewUnaryHandlerSimple(
+		TenantServiceLeaveProcedure,
+		svc.Leave,
+		connect.WithSchema(tenantServiceMethods.ByName("Leave")),
+		connect.WithHandlerOptions(opts...),
+	)
+	tenantServiceRemoveMemberHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceRemoveMemberProcedure,
 		svc.RemoveMember,
 		connect.WithSchema(tenantServiceMethods.ByName("RemoveMember")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceUpdateMemberHandler := connect.NewUnaryHandler(
+	tenantServiceUpdateMemberHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceUpdateMemberProcedure,
 		svc.UpdateMember,
 		connect.WithSchema(tenantServiceMethods.ByName("UpdateMember")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceInviteHandler := connect.NewUnaryHandler(
+	tenantServiceInviteHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceInviteProcedure,
 		svc.Invite,
 		connect.WithSchema(tenantServiceMethods.ByName("Invite")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceInviteAcceptHandler := connect.NewUnaryHandler(
+	tenantServiceInviteAcceptHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceInviteAcceptProcedure,
 		svc.InviteAccept,
 		connect.WithSchema(tenantServiceMethods.ByName("InviteAccept")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceInviteDeleteHandler := connect.NewUnaryHandler(
+	tenantServiceInviteDeleteHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceInviteDeleteProcedure,
 		svc.InviteDelete,
 		connect.WithSchema(tenantServiceMethods.ByName("InviteDelete")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceInvitesListHandler := connect.NewUnaryHandler(
+	tenantServiceInvitesListHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceInvitesListProcedure,
 		svc.InvitesList,
 		connect.WithSchema(tenantServiceMethods.ByName("InvitesList")),
 		connect.WithHandlerOptions(opts...),
 	)
-	tenantServiceInviteGetHandler := connect.NewUnaryHandler(
+	tenantServiceInviteGetHandler := connect.NewUnaryHandlerSimple(
 		TenantServiceInviteGetProcedure,
 		svc.InviteGet,
 		connect.WithSchema(tenantServiceMethods.ByName("InviteGet")),
@@ -373,6 +449,8 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 			tenantServiceUpdateHandler.ServeHTTP(w, r)
 		case TenantServiceDeleteProcedure:
 			tenantServiceDeleteHandler.ServeHTTP(w, r)
+		case TenantServiceLeaveProcedure:
+			tenantServiceLeaveHandler.ServeHTTP(w, r)
 		case TenantServiceRemoveMemberProcedure:
 			tenantServiceRemoveMemberHandler.ServeHTTP(w, r)
 		case TenantServiceUpdateMemberProcedure:
@@ -396,50 +474,54 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 // UnimplementedTenantServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTenantServiceHandler struct{}
 
-func (UnimplementedTenantServiceHandler) Create(context.Context, *connect.Request[v2.TenantServiceCreateRequest]) (*connect.Response[v2.TenantServiceCreateResponse], error) {
+func (UnimplementedTenantServiceHandler) Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Create is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) List(context.Context, *connect.Request[v2.TenantServiceListRequest]) (*connect.Response[v2.TenantServiceListResponse], error) {
+func (UnimplementedTenantServiceHandler) List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.List is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) Get(context.Context, *connect.Request[v2.TenantServiceGetRequest]) (*connect.Response[v2.TenantServiceGetResponse], error) {
+func (UnimplementedTenantServiceHandler) Get(context.Context, *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Get is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) Update(context.Context, *connect.Request[v2.TenantServiceUpdateRequest]) (*connect.Response[v2.TenantServiceUpdateResponse], error) {
+func (UnimplementedTenantServiceHandler) Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Update is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) Delete(context.Context, *connect.Request[v2.TenantServiceDeleteRequest]) (*connect.Response[v2.TenantServiceDeleteResponse], error) {
+func (UnimplementedTenantServiceHandler) Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Delete is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) RemoveMember(context.Context, *connect.Request[v2.TenantServiceRemoveMemberRequest]) (*connect.Response[v2.TenantServiceRemoveMemberResponse], error) {
+func (UnimplementedTenantServiceHandler) Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Leave is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.RemoveMember is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) UpdateMember(context.Context, *connect.Request[v2.TenantServiceUpdateMemberRequest]) (*connect.Response[v2.TenantServiceUpdateMemberResponse], error) {
+func (UnimplementedTenantServiceHandler) UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.UpdateMember is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) Invite(context.Context, *connect.Request[v2.TenantServiceInviteRequest]) (*connect.Response[v2.TenantServiceInviteResponse], error) {
+func (UnimplementedTenantServiceHandler) Invite(context.Context, *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Invite is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) InviteAccept(context.Context, *connect.Request[v2.TenantServiceInviteAcceptRequest]) (*connect.Response[v2.TenantServiceInviteAcceptResponse], error) {
+func (UnimplementedTenantServiceHandler) InviteAccept(context.Context, *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.InviteAccept is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) InviteDelete(context.Context, *connect.Request[v2.TenantServiceInviteDeleteRequest]) (*connect.Response[v2.TenantServiceInviteDeleteResponse], error) {
+func (UnimplementedTenantServiceHandler) InviteDelete(context.Context, *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.InviteDelete is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) InvitesList(context.Context, *connect.Request[v2.TenantServiceInvitesListRequest]) (*connect.Response[v2.TenantServiceInvitesListResponse], error) {
+func (UnimplementedTenantServiceHandler) InvitesList(context.Context, *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.InvitesList is not implemented"))
 }
 
-func (UnimplementedTenantServiceHandler) InviteGet(context.Context, *connect.Request[v2.TenantServiceInviteGetRequest]) (*connect.Response[v2.TenantServiceInviteGetResponse], error) {
+func (UnimplementedTenantServiceHandler) InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.InviteGet is not implemented"))
 }

@@ -1,6 +1,7 @@
 from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import partition_pb2 as _partition_pb2
+from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -16,10 +17,24 @@ class PartitionServiceCreateRequest(_message.Message):
     def __init__(self, partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ...) -> None: ...
 
 class PartitionServiceUpdateRequest(_message.Message):
-    __slots__ = ("partition",)
-    PARTITION_FIELD_NUMBER: _ClassVar[int]
-    partition: _partition_pb2.Partition
-    def __init__(self, partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ...) -> None: ...
+    __slots__ = ("id", "update_meta", "description", "boot_configuration", "dns_server", "ntp_server", "mgmt_service_addresses", "labels")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    UPDATE_META_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    BOOT_CONFIGURATION_FIELD_NUMBER: _ClassVar[int]
+    DNS_SERVER_FIELD_NUMBER: _ClassVar[int]
+    NTP_SERVER_FIELD_NUMBER: _ClassVar[int]
+    MGMT_SERVICE_ADDRESSES_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    update_meta: _common_pb2.UpdateMeta
+    description: str
+    boot_configuration: _partition_pb2.PartitionBootConfiguration
+    dns_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.DNSServer]
+    ntp_server: _containers.RepeatedCompositeFieldContainer[_partition_pb2.NTPServer]
+    mgmt_service_addresses: _containers.RepeatedScalarFieldContainer[str]
+    labels: _common_pb2.UpdateLabels
+    def __init__(self, id: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., description: _Optional[str] = ..., boot_configuration: _Optional[_Union[_partition_pb2.PartitionBootConfiguration, _Mapping]] = ..., dns_server: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., mgmt_service_addresses: _Optional[_Iterable[str]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
 
 class PartitionServiceDeleteRequest(_message.Message):
     __slots__ = ("id",)

@@ -35,9 +35,12 @@ type (
 		filesystemservice *adminv2mocks.FilesystemServiceClient
 		imageservice      *adminv2mocks.ImageServiceClient
 		ipservice         *adminv2mocks.IPServiceClient
+		machineservice    *adminv2mocks.MachineServiceClient
 		networkservice    *adminv2mocks.NetworkServiceClient
 		partitionservice  *adminv2mocks.PartitionServiceClient
+		projectservice    *adminv2mocks.ProjectServiceClient
 		sizeservice       *adminv2mocks.SizeServiceClient
+		switchservice     *adminv2mocks.SwitchServiceClient
 		tenantservice     *adminv2mocks.TenantServiceClient
 		tokenservice      *adminv2mocks.TokenServiceClient
 	}
@@ -46,9 +49,12 @@ type (
 		Filesystem func(m *mock.Mock)
 		Image      func(m *mock.Mock)
 		IP         func(m *mock.Mock)
+		Machine    func(m *mock.Mock)
 		Network    func(m *mock.Mock)
 		Partition  func(m *mock.Mock)
+		Project    func(m *mock.Mock)
 		Size       func(m *mock.Mock)
+		Switch     func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
 	}
@@ -87,11 +93,13 @@ type (
 	}
 	infrav2 struct {
 		bmcservice    *infrav2mocks.BMCServiceClient
+		eventservice  *infrav2mocks.EventServiceClient
 		switchservice *infrav2mocks.SwitchServiceClient
 	}
 
 	Infrav2MockFns struct {
 		BMC    func(m *mock.Mock)
+		Event  func(m *mock.Mock)
 		Switch func(m *mock.Mock)
 	}
 )
@@ -127,9 +135,12 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		filesystemservice: adminv2mocks.NewFilesystemServiceClient(t),
 		imageservice:      adminv2mocks.NewImageServiceClient(t),
 		ipservice:         adminv2mocks.NewIPServiceClient(t),
+		machineservice:    adminv2mocks.NewMachineServiceClient(t),
 		networkservice:    adminv2mocks.NewNetworkServiceClient(t),
 		partitionservice:  adminv2mocks.NewPartitionServiceClient(t),
+		projectservice:    adminv2mocks.NewProjectServiceClient(t),
 		sizeservice:       adminv2mocks.NewSizeServiceClient(t),
+		switchservice:     adminv2mocks.NewSwitchServiceClient(t),
 		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
 		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
 	}
@@ -144,14 +155,23 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		if fns.IP != nil {
 			fns.IP(&a.ipservice.Mock)
 		}
+		if fns.Machine != nil {
+			fns.Machine(&a.machineservice.Mock)
+		}
 		if fns.Network != nil {
 			fns.Network(&a.networkservice.Mock)
 		}
 		if fns.Partition != nil {
 			fns.Partition(&a.partitionservice.Mock)
 		}
+		if fns.Project != nil {
+			fns.Project(&a.projectservice.Mock)
+		}
 		if fns.Size != nil {
 			fns.Size(&a.sizeservice.Mock)
+		}
+		if fns.Switch != nil {
+			fns.Switch(&a.switchservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -174,14 +194,23 @@ func (c *adminv2) Image() adminv2connect.ImageServiceClient {
 func (c *adminv2) IP() adminv2connect.IPServiceClient {
 	return c.ipservice
 }
+func (c *adminv2) Machine() adminv2connect.MachineServiceClient {
+	return c.machineservice
+}
 func (c *adminv2) Network() adminv2connect.NetworkServiceClient {
 	return c.networkservice
 }
 func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 	return c.partitionservice
 }
+func (c *adminv2) Project() adminv2connect.ProjectServiceClient {
+	return c.projectservice
+}
 func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 	return c.sizeservice
+}
+func (c *adminv2) Switch() adminv2connect.SwitchServiceClient {
+	return c.switchservice
 }
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice
@@ -311,12 +340,16 @@ func (w wrapper) Infrav2(fns *Infrav2MockFns) *infrav2 {
 func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 	a := &infrav2{
 		bmcservice:    infrav2mocks.NewBMCServiceClient(t),
+		eventservice:  infrav2mocks.NewEventServiceClient(t),
 		switchservice: infrav2mocks.NewSwitchServiceClient(t),
 	}
 
 	if fns != nil {
 		if fns.BMC != nil {
 			fns.BMC(&a.bmcservice.Mock)
+		}
+		if fns.Event != nil {
+			fns.Event(&a.eventservice.Mock)
 		}
 		if fns.Switch != nil {
 			fns.Switch(&a.switchservice.Mock)
@@ -329,6 +362,9 @@ func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Event() infrav2connect.EventServiceClient {
+	return c.eventservice
 }
 func (c *infrav2) Switch() infrav2connect.SwitchServiceClient {
 	return c.switchservice

@@ -1,0 +1,160 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+import "metalstack/api/v2/switch.proto";
+
+// SwitchService serves switch related functions.
+service SwitchService {
+  // Get a switch by ID.
+  rpc Get(SwitchServiceGetRequest) returns (SwitchServiceGetResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // List switches.
+  rpc List(SwitchServiceListRequest) returns (SwitchServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // Update a switch.
+  rpc Update(SwitchServiceUpdateRequest) returns (SwitchServiceUpdateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // Delete a switch.
+  rpc Delete(SwitchServiceDeleteRequest) returns (SwitchServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // Migrate a switch.
+  rpc Migrate(SwitchServiceMigrateRequest) returns (SwitchServiceMigrateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // Port set the port status of a switch port.
+  rpc Port(SwitchServicePortRequest) returns (SwitchServicePortResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+}
+
+// SwitchServiceGetRequest.
+message SwitchServiceGetRequest {
+  // Id of the switch to get.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+}
+
+// SwitchServiceGetResponse.
+message SwitchServiceGetResponse {
+  // Switch that was requested.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceListRequest.
+message SwitchServiceListRequest {
+  // Query to filter the results.
+  metalstack.api.v2.SwitchQuery query = 1;
+}
+
+// SwitchServiceListResponse.
+message SwitchServiceListResponse {
+  // Switches that match the request query.
+  repeated metalstack.api.v2.Switch switches = 1;
+}
+
+// SwitchServiceUpdateRequest.
+message SwitchServiceUpdateRequest {
+  // ID of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+  // UpdateMeta contains the timestamp and strategy to be used in this update request.
+  metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
+  // UpdatedAt is the date when this entity was updated.
+  // must be part of the update request to ensure optimistic locking.
+  google.protobuf.Timestamp updated_at = 3;
+  // Description of the switch.
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Replace mode is used to mark a switch ready for replacement.
+  optional metalstack.api.v2.SwitchReplaceMode replace_mode = 5 [(buf.validate.field).enum.defined_only = true];
+  // Management IP is the switch's IP for management access.
+  optional string management_ip = 6 [(buf.validate.field).string.ip = true];
+  // Management user is the user name to use for management access.
+  optional string management_user = 7 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Console command is the command for accessing the switch's console.
+  optional string console_command = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Nics are the front panel ports of the switch.
+  repeated metalstack.api.v2.SwitchNic nics = 9;
+  // SwitchOs is the OS running on the switch.
+  optional metalstack.api.v2.SwitchOS os = 10;
+  // MachineConnections map machines to the nics they are connected to.
+  repeated metalstack.api.v2.MachineConnection machine_connections = 11;
+}
+
+// SwitchServiceUpdateResponse.
+message SwitchServiceUpdateResponse {
+  // Switch that was updated.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceDeleteRequest.
+message SwitchServiceDeleteRequest {
+  // Id of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+  // Force will allow switch deletion despite existing machine connections.
+  bool force = 2;
+}
+
+// SwitchServiceDeleteResponse.
+message SwitchServiceDeleteResponse {
+  // Switch that has been deleted.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceMigrateRequest.
+message SwitchServiceMigrateRequest {
+  // OldSwitch which to migrate away from.
+  string old_switch = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+  // NewSwitch which to migrate to.
+  string new_switch = 2 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+}
+
+// SwitchServiceMigrateResponse.
+message SwitchServiceMigrateResponse {
+  // Switch that was migrated to.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServicePortRequest.
+message SwitchServicePortRequest {
+  // Id of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+  // NicName of the port whose status should be changed.
+  string nic_name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Status that the port should have.
+  metalstack.api.v2.SwitchPortStatus status = 3 [(buf.validate.field).enum.defined_only = true];
+}
+
+// SwitchServicePortResponse.
+message SwitchServicePortResponse {
+  // Switch after the port status toggle..
+  metalstack.api.v2.Switch switch = 1;
+}

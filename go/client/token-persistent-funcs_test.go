@@ -9,7 +9,6 @@ import (
 	"testing"
 	"time"
 
-	"connectrpc.com/connect"
 	"github.com/metal-stack/api/go/client"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
@@ -43,7 +42,7 @@ func TestNewFilesystemTokenPersiter(t *testing.T) {
 	_, err = os.OpenFile(tokenPath, os.O_RDONLY|os.O_CREATE, 0600)
 	require.NoError(t, err)
 
-	filesystemPersister, err := client.NewFilesystemTokenPersiter(tokenPath)
+	filesystemPersister, err := client.NewFilesystemTokenPersister(tokenPath)
 	require.NoError(t, err)
 
 	c, err := client.New(&client.DialConfig{
@@ -56,18 +55,18 @@ func TestNewFilesystemTokenPersiter(t *testing.T) {
 		Log: log,
 	})
 	require.NoError(t, err)
-	v, err := c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
+	v, err := c.Apiv2().Version().Get(t.Context(), &apiv2.VersionServiceGetRequest{})
 	require.NoError(t, err)
 	require.NotNil(t, v)
-	require.Equal(t, "1.0", v.Msg.Version.Version)
+	require.Equal(t, "1.0", v.Version.Version)
 	require.False(t, ts.wasCalled)
 	require.Equal(t, tokenString, vs.token)
 
 	time.Sleep(2 * time.Second)
-	v, err = c.Apiv2().Version().Get(t.Context(), connect.NewRequest(&apiv2.VersionServiceGetRequest{}))
+	v, err = c.Apiv2().Version().Get(t.Context(), &apiv2.VersionServiceGetRequest{})
 	require.NoError(t, err)
 	require.NotNil(t, v)
-	require.Equal(t, "1.0", v.Msg.Version.Version)
+	require.Equal(t, "1.0", v.Version.Version)
 	require.True(t, ts.wasCalled)
 	require.NotEqual(t, tokenString, vs.token, "token must have changed")
 

@@ -1,5 +1,6 @@
 from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
@@ -83,7 +84,15 @@ class FilesystemServiceListResponse(_message.Message):
     filesystem_layouts: _containers.RepeatedCompositeFieldContainer[FilesystemLayout]
     def __init__(self, filesystem_layouts: _Optional[_Iterable[_Union[FilesystemLayout, _Mapping]]] = ...) -> None: ...
 
-class FilesystemServiceTryRequest(_message.Message):
+class FilesystemServiceMatchRequest(_message.Message):
+    __slots__ = ("size_and_image", "machine_and_filesystemlayout")
+    SIZE_AND_IMAGE_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_AND_FILESYSTEMLAYOUT_FIELD_NUMBER: _ClassVar[int]
+    size_and_image: MatchImageAndSize
+    machine_and_filesystemlayout: MatchMachine
+    def __init__(self, size_and_image: _Optional[_Union[MatchImageAndSize, _Mapping]] = ..., machine_and_filesystemlayout: _Optional[_Union[MatchMachine, _Mapping]] = ...) -> None: ...
+
+class MatchImageAndSize(_message.Message):
     __slots__ = ("size", "image")
     SIZE_FIELD_NUMBER: _ClassVar[int]
     IMAGE_FIELD_NUMBER: _ClassVar[int]
@@ -91,19 +100,13 @@ class FilesystemServiceTryRequest(_message.Message):
     image: str
     def __init__(self, size: _Optional[str] = ..., image: _Optional[str] = ...) -> None: ...
 
-class FilesystemServiceMatchRequest(_message.Message):
-    __slots__ = ("machine", "filesystem_layout_id")
+class MatchMachine(_message.Message):
+    __slots__ = ("machine", "filesystem_layout")
     MACHINE_FIELD_NUMBER: _ClassVar[int]
-    FILESYSTEM_LAYOUT_ID_FIELD_NUMBER: _ClassVar[int]
-    machine: str
-    filesystem_layout_id: str
-    def __init__(self, machine: _Optional[str] = ..., filesystem_layout_id: _Optional[str] = ...) -> None: ...
-
-class FilesystemServiceTryResponse(_message.Message):
-    __slots__ = ("filesystem_layout",)
     FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
-    filesystem_layout: FilesystemLayout
-    def __init__(self, filesystem_layout: _Optional[_Union[FilesystemLayout, _Mapping]] = ...) -> None: ...
+    machine: str
+    filesystem_layout: str
+    def __init__(self, machine: _Optional[str] = ..., filesystem_layout: _Optional[str] = ...) -> None: ...
 
 class FilesystemServiceMatchResponse(_message.Message):
     __slots__ = ("filesystem_layout",)
@@ -171,14 +174,12 @@ class Filesystem(_message.Message):
     def __init__(self, device: _Optional[str] = ..., format: _Optional[_Union[Format, str]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., path: _Optional[str] = ..., label: _Optional[str] = ..., mount_options: _Optional[_Iterable[str]] = ..., create_options: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class Disk(_message.Message):
-    __slots__ = ("device", "partitions", "wipe_on_reinstall")
+    __slots__ = ("device", "partitions")
     DEVICE_FIELD_NUMBER: _ClassVar[int]
     PARTITIONS_FIELD_NUMBER: _ClassVar[int]
-    WIPE_ON_REINSTALL_FIELD_NUMBER: _ClassVar[int]
     device: str
     partitions: _containers.RepeatedCompositeFieldContainer[DiskPartition]
-    wipe_on_reinstall: bool
-    def __init__(self, device: _Optional[str] = ..., partitions: _Optional[_Iterable[_Union[DiskPartition, _Mapping]]] = ..., wipe_on_reinstall: bool = ...) -> None: ...
+    def __init__(self, device: _Optional[str] = ..., partitions: _Optional[_Iterable[_Union[DiskPartition, _Mapping]]] = ...) -> None: ...
 
 class Raid(_message.Message):
     __slots__ = ("array_name", "devices", "level", "create_options", "spares")

@@ -33,8 +33,12 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// SwitchServiceGetProcedure is the fully-qualified name of the SwitchService's Get RPC.
+	SwitchServiceGetProcedure = "/metalstack.infra.v2.SwitchService/Get"
 	// SwitchServiceRegisterProcedure is the fully-qualified name of the SwitchService's Register RPC.
 	SwitchServiceRegisterProcedure = "/metalstack.infra.v2.SwitchService/Register"
+	// SwitchServiceHeartbeatProcedure is the fully-qualified name of the SwitchService's Heartbeat RPC.
+	SwitchServiceHeartbeatProcedure = "/metalstack.infra.v2.SwitchService/Heartbeat"
 	// SwitchServiceReportBGPRoutesProcedure is the fully-qualified name of the SwitchService's
 	// ReportBGPRoutes RPC.
 	SwitchServiceReportBGPRoutesProcedure = "/metalstack.infra.v2.SwitchService/ReportBGPRoutes"
@@ -42,10 +46,14 @@ const (
 
 // SwitchServiceClient is a client for the metalstack.infra.v2.SwitchService service.
 type SwitchServiceClient interface {
-	// Register a switch
-	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
-	// Report BGP routes of a switch
-	ReportBGPRoutes(context.Context, *connect.Request[v2.SwitchServiceReportBGPRoutesRequest]) (*connect.Response[v2.SwitchServiceReportBGPRoutesResponse], error)
+	// Get a switch by ID.
+	Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
+	// Register a switch.
+	Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error)
+	// Heartbeat a switch.
+	Heartbeat(context.Context, *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error)
+	// ReportBGPRoutes of a switch
+	ReportBGPRoutes(context.Context, *v2.SwitchServiceReportBGPRoutesRequest) (*v2.SwitchServiceReportBGPRoutesResponse, error)
 }
 
 // NewSwitchServiceClient constructs a client for the metalstack.infra.v2.SwitchService service. By
@@ -59,10 +67,22 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 	baseURL = strings.TrimRight(baseURL, "/")
 	switchServiceMethods := v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods()
 	return &switchServiceClient{
+		get: connect.NewClient[v2.SwitchServiceGetRequest, v2.SwitchServiceGetResponse](
+			httpClient,
+			baseURL+SwitchServiceGetProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("Get")),
+			connect.WithClientOptions(opts...),
+		),
 		register: connect.NewClient[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse](
 			httpClient,
 			baseURL+SwitchServiceRegisterProcedure,
 			connect.WithSchema(switchServiceMethods.ByName("Register")),
+			connect.WithClientOptions(opts...),
+		),
+		heartbeat: connect.NewClient[v2.SwitchServiceHeartbeatRequest, v2.SwitchServiceHeartbeatResponse](
+			httpClient,
+			baseURL+SwitchServiceHeartbeatProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("Heartbeat")),
 			connect.WithClientOptions(opts...),
 		),
 		reportBGPRoutes: connect.NewClient[v2.SwitchServiceReportBGPRoutesRequest, v2.SwitchServiceReportBGPRoutesResponse](
@@ -76,26 +96,58 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 
 // switchServiceClient implements SwitchServiceClient.
 type switchServiceClient struct {
+	get             *connect.Client[v2.SwitchServiceGetRequest, v2.SwitchServiceGetResponse]
 	register        *connect.Client[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse]
+	heartbeat       *connect.Client[v2.SwitchServiceHeartbeatRequest, v2.SwitchServiceHeartbeatResponse]
 	reportBGPRoutes *connect.Client[v2.SwitchServiceReportBGPRoutesRequest, v2.SwitchServiceReportBGPRoutesResponse]
 }
 
+// Get calls metalstack.infra.v2.SwitchService.Get.
+func (c *switchServiceClient) Get(ctx context.Context, req *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // Register calls metalstack.infra.v2.SwitchService.Register.
-func (c *switchServiceClient) Register(ctx context.Context, req *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error) {
-	return c.register.CallUnary(ctx, req)
+func (c *switchServiceClient) Register(ctx context.Context, req *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error) {
+	response, err := c.register.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// Heartbeat calls metalstack.infra.v2.SwitchService.Heartbeat.
+func (c *switchServiceClient) Heartbeat(ctx context.Context, req *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error) {
+	response, err := c.heartbeat.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // ReportBGPRoutes calls metalstack.infra.v2.SwitchService.ReportBGPRoutes.
-func (c *switchServiceClient) ReportBGPRoutes(ctx context.Context, req *connect.Request[v2.SwitchServiceReportBGPRoutesRequest]) (*connect.Response[v2.SwitchServiceReportBGPRoutesResponse], error) {
-	return c.reportBGPRoutes.CallUnary(ctx, req)
+func (c *switchServiceClient) ReportBGPRoutes(ctx context.Context, req *v2.SwitchServiceReportBGPRoutesRequest) (*v2.SwitchServiceReportBGPRoutesResponse, error) {
+	response, err := c.reportBGPRoutes.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // SwitchServiceHandler is an implementation of the metalstack.infra.v2.SwitchService service.
 type SwitchServiceHandler interface {
-	// Register a switch
-	Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error)
-	// Report BGP routes of a switch
-	ReportBGPRoutes(context.Context, *connect.Request[v2.SwitchServiceReportBGPRoutesRequest]) (*connect.Response[v2.SwitchServiceReportBGPRoutesResponse], error)
+	// Get a switch by ID.
+	Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
+	// Register a switch.
+	Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error)
+	// Heartbeat a switch.
+	Heartbeat(context.Context, *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error)
+	// ReportBGPRoutes of a switch
+	ReportBGPRoutes(context.Context, *v2.SwitchServiceReportBGPRoutesRequest) (*v2.SwitchServiceReportBGPRoutesResponse, error)
 }
 
 // NewSwitchServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -105,13 +157,25 @@ type SwitchServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	switchServiceMethods := v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods()
-	switchServiceRegisterHandler := connect.NewUnaryHandler(
+	switchServiceGetHandler := connect.NewUnaryHandlerSimple(
+		SwitchServiceGetProcedure,
+		svc.Get,
+		connect.WithSchema(switchServiceMethods.ByName("Get")),
+		connect.WithHandlerOptions(opts...),
+	)
+	switchServiceRegisterHandler := connect.NewUnaryHandlerSimple(
 		SwitchServiceRegisterProcedure,
 		svc.Register,
 		connect.WithSchema(switchServiceMethods.ByName("Register")),
 		connect.WithHandlerOptions(opts...),
 	)
-	switchServiceReportBGPRoutesHandler := connect.NewUnaryHandler(
+	switchServiceHeartbeatHandler := connect.NewUnaryHandlerSimple(
+		SwitchServiceHeartbeatProcedure,
+		svc.Heartbeat,
+		connect.WithSchema(switchServiceMethods.ByName("Heartbeat")),
+		connect.WithHandlerOptions(opts...),
+	)
+	switchServiceReportBGPRoutesHandler := connect.NewUnaryHandlerSimple(
 		SwitchServiceReportBGPRoutesProcedure,
 		svc.ReportBGPRoutes,
 		connect.WithSchema(switchServiceMethods.ByName("ReportBGPRoutes")),
@@ -119,8 +183,12 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 	)
 	return "/metalstack.infra.v2.SwitchService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case SwitchServiceGetProcedure:
+			switchServiceGetHandler.ServeHTTP(w, r)
 		case SwitchServiceRegisterProcedure:
 			switchServiceRegisterHandler.ServeHTTP(w, r)
+		case SwitchServiceHeartbeatProcedure:
+			switchServiceHeartbeatHandler.ServeHTTP(w, r)
 		case SwitchServiceReportBGPRoutesProcedure:
 			switchServiceReportBGPRoutesHandler.ServeHTTP(w, r)
 		default:
@@ -132,10 +200,18 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 // UnimplementedSwitchServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSwitchServiceHandler struct{}
 
-func (UnimplementedSwitchServiceHandler) Register(context.Context, *connect.Request[v2.SwitchServiceRegisterRequest]) (*connect.Response[v2.SwitchServiceRegisterResponse], error) {
+func (UnimplementedSwitchServiceHandler) Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Get is not implemented"))
+}
+
+func (UnimplementedSwitchServiceHandler) Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Register is not implemented"))
 }
 
-func (UnimplementedSwitchServiceHandler) ReportBGPRoutes(context.Context, *connect.Request[v2.SwitchServiceReportBGPRoutesRequest]) (*connect.Response[v2.SwitchServiceReportBGPRoutesResponse], error) {
+func (UnimplementedSwitchServiceHandler) Heartbeat(context.Context, *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Heartbeat is not implemented"))
+}
+
+func (UnimplementedSwitchServiceHandler) ReportBGPRoutes(context.Context, *v2.SwitchServiceReportBGPRoutesRequest) (*v2.SwitchServiceReportBGPRoutesResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.ReportBGPRoutes is not implemented"))
 }

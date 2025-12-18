@@ -10,10 +10,10 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class TokenServiceListRequest(_message.Message):
-    __slots__ = ("user_id",)
-    USER_ID_FIELD_NUMBER: _ClassVar[int]
-    user_id: str
-    def __init__(self, user_id: _Optional[str] = ...) -> None: ...
+    __slots__ = ("user",)
+    USER_FIELD_NUMBER: _ClassVar[int]
+    user: str
+    def __init__(self, user: _Optional[str] = ...) -> None: ...
 
 class TokenServiceListResponse(_message.Message):
     __slots__ = ("tokens",)
@@ -22,13 +22,29 @@ class TokenServiceListResponse(_message.Message):
     def __init__(self, tokens: _Optional[_Iterable[_Union[_token_pb2.Token, _Mapping]]] = ...) -> None: ...
 
 class TokenServiceRevokeRequest(_message.Message):
-    __slots__ = ("uuid", "user_id")
+    __slots__ = ("uuid", "user")
     UUID_FIELD_NUMBER: _ClassVar[int]
-    USER_ID_FIELD_NUMBER: _ClassVar[int]
+    USER_FIELD_NUMBER: _ClassVar[int]
     uuid: str
-    user_id: str
-    def __init__(self, uuid: _Optional[str] = ..., user_id: _Optional[str] = ...) -> None: ...
+    user: str
+    def __init__(self, uuid: _Optional[str] = ..., user: _Optional[str] = ...) -> None: ...
 
 class TokenServiceRevokeResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
+
+class TokenServiceCreateRequest(_message.Message):
+    __slots__ = ("user", "token_create_request")
+    USER_FIELD_NUMBER: _ClassVar[int]
+    TOKEN_CREATE_REQUEST_FIELD_NUMBER: _ClassVar[int]
+    user: str
+    token_create_request: _token_pb2.TokenServiceCreateRequest
+    def __init__(self, user: _Optional[str] = ..., token_create_request: _Optional[_Union[_token_pb2.TokenServiceCreateRequest, _Mapping]] = ...) -> None: ...
+
+class TokenServiceCreateResponse(_message.Message):
+    __slots__ = ("token", "secret")
+    TOKEN_FIELD_NUMBER: _ClassVar[int]
+    SECRET_FIELD_NUMBER: _ClassVar[int]
+    token: _token_pb2.Token
+    secret: str
+    def __init__(self, token: _Optional[_Union[_token_pb2.Token, _Mapping]] = ..., secret: _Optional[str] = ...) -> None: ...

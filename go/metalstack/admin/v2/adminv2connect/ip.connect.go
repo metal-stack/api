@@ -35,16 +35,12 @@ const (
 const (
 	// IPServiceListProcedure is the fully-qualified name of the IPService's List RPC.
 	IPServiceListProcedure = "/metalstack.admin.v2.IPService/List"
-	// IPServiceIssuesProcedure is the fully-qualified name of the IPService's Issues RPC.
-	IPServiceIssuesProcedure = "/metalstack.admin.v2.IPService/Issues"
 )
 
 // IPServiceClient is a client for the metalstack.admin.v2.IPService service.
 type IPServiceClient interface {
 	// List all ips
-	List(context.Context, *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error)
-	// Show issues with ips
-	Issues(context.Context, *connect.Request[v2.IPServiceIssuesRequest]) (*connect.Response[v2.IPServiceIssuesResponse], error)
+	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
 }
 
 // NewIPServiceClient constructs a client for the metalstack.admin.v2.IPService service. By default,
@@ -64,37 +60,27 @@ func NewIPServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 			connect.WithSchema(iPServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
-		issues: connect.NewClient[v2.IPServiceIssuesRequest, v2.IPServiceIssuesResponse](
-			httpClient,
-			baseURL+IPServiceIssuesProcedure,
-			connect.WithSchema(iPServiceMethods.ByName("Issues")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // iPServiceClient implements IPServiceClient.
 type iPServiceClient struct {
-	list   *connect.Client[v2.IPServiceListRequest, v2.IPServiceListResponse]
-	issues *connect.Client[v2.IPServiceIssuesRequest, v2.IPServiceIssuesResponse]
+	list *connect.Client[v2.IPServiceListRequest, v2.IPServiceListResponse]
 }
 
 // List calls metalstack.admin.v2.IPService.List.
-func (c *iPServiceClient) List(ctx context.Context, req *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error) {
-	return c.list.CallUnary(ctx, req)
-}
-
-// Issues calls metalstack.admin.v2.IPService.Issues.
-func (c *iPServiceClient) Issues(ctx context.Context, req *connect.Request[v2.IPServiceIssuesRequest]) (*connect.Response[v2.IPServiceIssuesResponse], error) {
-	return c.issues.CallUnary(ctx, req)
+func (c *iPServiceClient) List(ctx context.Context, req *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error) {
+	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // IPServiceHandler is an implementation of the metalstack.admin.v2.IPService service.
 type IPServiceHandler interface {
 	// List all ips
-	List(context.Context, *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error)
-	// Show issues with ips
-	Issues(context.Context, *connect.Request[v2.IPServiceIssuesRequest]) (*connect.Response[v2.IPServiceIssuesResponse], error)
+	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
 }
 
 // NewIPServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -104,24 +90,16 @@ type IPServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	iPServiceMethods := v2.File_metalstack_admin_v2_ip_proto.Services().ByName("IPService").Methods()
-	iPServiceListHandler := connect.NewUnaryHandler(
+	iPServiceListHandler := connect.NewUnaryHandlerSimple(
 		IPServiceListProcedure,
 		svc.List,
 		connect.WithSchema(iPServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	iPServiceIssuesHandler := connect.NewUnaryHandler(
-		IPServiceIssuesProcedure,
-		svc.Issues,
-		connect.WithSchema(iPServiceMethods.ByName("Issues")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/metalstack.admin.v2.IPService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case IPServiceListProcedure:
 			iPServiceListHandler.ServeHTTP(w, r)
-		case IPServiceIssuesProcedure:
-			iPServiceIssuesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -131,10 +109,6 @@ func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (s
 // UnimplementedIPServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedIPServiceHandler struct{}
 
-func (UnimplementedIPServiceHandler) List(context.Context, *connect.Request[v2.IPServiceListRequest]) (*connect.Response[v2.IPServiceListResponse], error) {
+func (UnimplementedIPServiceHandler) List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.IPService.List is not implemented"))
-}
-
-func (UnimplementedIPServiceHandler) Issues(context.Context, *connect.Request[v2.IPServiceIssuesRequest]) (*connect.Response[v2.IPServiceIssuesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.IPService.Issues is not implemented"))
 }

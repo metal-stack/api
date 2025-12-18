@@ -4,6 +4,7 @@ package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // IPService serves ip address related functions
 service IPService {
@@ -67,12 +68,9 @@ message IP {
   // Ip is either ipv4 or ipv6 address
   string ip = 3 [(buf.validate.field).string.ip = true];
   // Name of this ip
-  string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this ip
-  string description = 5 [(buf.validate.field).string = {max_len: 128}];
+  string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Network is the network this ip belongs to
   string network = 6 [(buf.validate.field).string = {
     min_len: 2
@@ -107,16 +105,13 @@ message IPServiceCreateRequest {
   // Project of the ip
   string project = 2 [(buf.validate.field).string.uuid = true];
   // Name of the ip
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of the ip
-  optional string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // IP if given try to create this ip if still available
   optional string ip = 5 [(buf.validate.field).string.ip = true];
-  // MachineId for which this ip should get created
-  optional string machine_id = 6 [(buf.validate.field).string.uuid = true];
+  // Machine for which this ip should get created
+  optional string machine = 6 [(buf.validate.field).string.uuid = true];
   // Labels to put onto the ip
   optional Labels labels = 7;
   // Type of the IP, ether ephemeral (default), or static
@@ -129,19 +124,18 @@ message IPServiceCreateRequest {
 message IPServiceUpdateRequest {
   // Ip the ip to update
   string ip = 1 [(buf.validate.field).string.ip = true];
-  // Project of the ip
-  string project = 2 [(buf.validate.field).string.uuid = true];
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
+  // Project id of the ip
+  string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this ip
-  optional string name = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this ip
-  optional string description = 4 [(buf.validate.field).string = {max_len: 128}];
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Type of this ip
-  optional IPType type = 5 [(buf.validate.field).enum.defined_only = true];
+  optional IPType type = 6 [(buf.validate.field).enum.defined_only = true];
   // Labels on this ip
-  optional UpdateLabels labels = 6;
+  optional UpdateLabels labels = 7;
 }
 
 // IPServiceListRequest is the request payload for a ip list request
@@ -164,16 +158,13 @@ message IPQuery {
   // Project of the ips to list
   optional string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this ip
-  optional string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Uuid for which this ips should get filtered
   optional string uuid = 5 [(buf.validate.field).string.uuid = true];
-  // MachineId for which this ips should get filtered
-  optional string machine_id = 6 [(buf.validate.field).string.uuid = true];
+  // Machine for which this ips should get filtered
+  optional string machine = 6 [(buf.validate.field).string.uuid = true];
   // ParentPrefixCidr for which this ips should get filtered
-  optional string parent_prefix_cidr = 7 [(buf.validate.field).string.ip = true];
+  optional string parent_prefix_cidr = 7 [(buf.validate.field).string.ip_prefix = true];
   // Labels for which this ips should get filtered
   optional Labels labels = 8;
   // Static if set to true, this will be a Static ip

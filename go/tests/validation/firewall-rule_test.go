@@ -3,15 +3,10 @@ package validation
 import (
 	"testing"
 
-	"buf.build/go/protovalidate"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"github.com/stretchr/testify/require"
 )
 
 func TestValidateFirewallRules(t *testing.T) {
-	validator, err := protovalidate.New()
-	require.NoError(t, err)
-
 	tests := prototests{
 		{
 			name: "Invalid Rule with valid comment",
@@ -22,10 +17,10 @@ func TestValidateFirewallRules(t *testing.T) {
 				Comment:  "a rule",
 			},
 			wantErr: true,
-			wantErrorMessage: `validation error:
- - protocol: value must be one of the defined enum values [enum.defined_only]
- - ports[0]: value must be less than or equal to 65532 [uint32.lte]
- - to[0]: to prefixes must be valid [valid_to]`,
+			wantErrorMessage: `validation errors:
+ - protocol: value must be one of the defined enum values
+ - ports[0]: value must be less than or equal to 65532
+ - to: given prefixes must be valid`,
 		},
 		{
 			name: "Invalid Rule with invalid comment",
@@ -36,9 +31,9 @@ func TestValidateFirewallRules(t *testing.T) {
 				Comment:  "a # invalid 3 rule",
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error:\n - comment: value does not match regex pattern `^[a-z_ -]*$` [string.pattern]",
+			wantErrorMessage: "validation error: comment: value does not match regex pattern `^[a-z_ -]*$`",
 		},
 	}
 
-	validateProtos(t, tests, validator)
+	validateProtos(t, tests)
 }

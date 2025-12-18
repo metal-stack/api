@@ -5,6 +5,7 @@ package metalstack.api.v2;
 import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // ImageService serves image related functions
 service ImageService {
@@ -75,35 +76,16 @@ message Image {
   // Meta for this ip
   Meta meta = 2;
   // URL where this image is located
-  string url = 3 [(buf.validate.field).cel = {
-    id: "valid_url"
-    message: "url must be a valid URI"
-    // `isUri` validates that a string is an absolute URI.
-    // This expression validates that the uri field is an absolute URI.
-    // Note: to allow relative URI, use `isUriRef`.
-    expression: "this.isUri()"
-  }];
+  string url = 3 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // Name of this imageLayout
-  optional string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this imageLayout
-  optional string description = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Features of this image
   repeated ImageFeature features = 6 [(buf.validate.field).repeated = {
-    min_items: 1
+    unique: true
     items: {
-      cel: [
-        {
-          id: "features"
-          message: "feature must be valid"
-          expression: "this >= 0 && this <= 2"
-        }
-      ]
+      enum: {defined_only: true}
     }
   }];
   // Classification of this image
@@ -139,20 +121,19 @@ message ImageQuery {
     max_len: 128
   }];
   // Name of the image to query
-  optional string name = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of the image to query
-  optional string description = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Url of the image to query
+  optional string url = 6 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // Feature of the image to query
-  optional ImageFeature feature = 6 [(buf.validate.field).enum.defined_only = true];
+  optional ImageFeature feature = 7 [(buf.validate.field).enum.defined_only = true];
 
   // Classification of the image to query
-  optional ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
+  optional ImageClassification classification = 8 [(buf.validate.field).enum.defined_only = true];
+
+  // Labels lists only images containing the given labels
+  optional Labels labels = 9;
 }
 
 // ImageFeature

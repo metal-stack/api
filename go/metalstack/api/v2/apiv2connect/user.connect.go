@@ -40,7 +40,7 @@ const (
 // UserServiceClient is a client for the metalstack.api.v2.UserService service.
 type UserServiceClient interface {
 	// Get a User
-	Get(context.Context, *connect.Request[v2.UserServiceGetRequest]) (*connect.Response[v2.UserServiceGetResponse], error)
+	Get(context.Context, *v2.UserServiceGetRequest) (*v2.UserServiceGetResponse, error)
 }
 
 // NewUserServiceClient constructs a client for the metalstack.api.v2.UserService service. By
@@ -69,14 +69,18 @@ type userServiceClient struct {
 }
 
 // Get calls metalstack.api.v2.UserService.Get.
-func (c *userServiceClient) Get(ctx context.Context, req *connect.Request[v2.UserServiceGetRequest]) (*connect.Response[v2.UserServiceGetResponse], error) {
-	return c.get.CallUnary(ctx, req)
+func (c *userServiceClient) Get(ctx context.Context, req *v2.UserServiceGetRequest) (*v2.UserServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // UserServiceHandler is an implementation of the metalstack.api.v2.UserService service.
 type UserServiceHandler interface {
 	// Get a User
-	Get(context.Context, *connect.Request[v2.UserServiceGetRequest]) (*connect.Response[v2.UserServiceGetResponse], error)
+	Get(context.Context, *v2.UserServiceGetRequest) (*v2.UserServiceGetResponse, error)
 }
 
 // NewUserServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -86,7 +90,7 @@ type UserServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	userServiceMethods := v2.File_metalstack_api_v2_user_proto.Services().ByName("UserService").Methods()
-	userServiceGetHandler := connect.NewUnaryHandler(
+	userServiceGetHandler := connect.NewUnaryHandlerSimple(
 		UserServiceGetProcedure,
 		svc.Get,
 		connect.WithSchema(userServiceMethods.ByName("Get")),
@@ -105,6 +109,6 @@ func NewUserServiceHandler(svc UserServiceHandler, opts ...connect.HandlerOption
 // UnimplementedUserServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedUserServiceHandler struct{}
 
-func (UnimplementedUserServiceHandler) Get(context.Context, *connect.Request[v2.UserServiceGetRequest]) (*connect.Response[v2.UserServiceGetResponse], error) {
+func (UnimplementedUserServiceHandler) Get(context.Context, *v2.UserServiceGetRequest) (*v2.UserServiceGetResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.UserService.Get is not implemented"))
 }

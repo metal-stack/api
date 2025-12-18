@@ -5,7 +5,6 @@ import (
 	"log/slog"
 	"os"
 
-	"connectrpc.com/connect"
 	"github.com/metal-stack/api/go/client"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 )
@@ -25,15 +24,15 @@ func main() {
 	}
 
 	ctx := context.Background()
-	resp, err := c.Apiv2().IP().List(ctx, connect.NewRequest(&apiv2.IPServiceListRequest{
+	resp, err := c.Apiv2().IP().List(ctx, &apiv2.IPServiceListRequest{
 		Project: project,
-	}))
+	})
 
 	if err != nil {
 		panic(err)
 	}
 
-	for _, ip := range resp.Msg.Ips {
+	for _, ip := range resp.Ips {
 		slog.Info("ip", "address", ip.Ip, "id", ip.Uuid, "name", ip.Name)
 	}
 }

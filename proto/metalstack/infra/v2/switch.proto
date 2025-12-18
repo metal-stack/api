@@ -3,59 +3,123 @@ syntax = "proto3";
 package metalstack.infra.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/switch.proto";
 
-// SwitchService serves switch related functions
+// SwitchService serves switch related functions.
 service SwitchService {
-  // Register a switch
-  rpc Register(SwitchServiceRegisterRequest) returns (SwitchServiceRegisterResponse) {
+  // Get a switch by ID.
+  rpc Get(SwitchServiceGetRequest) returns (SwitchServiceGetResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Report BGP routes of a switch
+  // Register a switch.
+  rpc Register(SwitchServiceRegisterRequest) returns (SwitchServiceRegisterResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // Heartbeat a switch.
+  rpc Heartbeat(SwitchServiceHeartbeatRequest) returns (SwitchServiceHeartbeatResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // ReportBGPRoutes of a switch
   rpc ReportBGPRoutes(SwitchServiceReportBGPRoutesRequest) returns (SwitchServiceReportBGPRoutesResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
 }
 
-// SwitchServiceRegisterRequest
+// SwitchServiceGetRequest.
+message SwitchServiceGetRequest {
+  // Id of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+}
+
+// SwitchServiceGetResponse.
+message SwitchServiceGetResponse {
+  // Switch that was requested.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceRegisterRequest.
 message SwitchServiceRegisterRequest {
-  // Switch to register
+  // Switch to register.
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServiceRegisterResponse
+// SwitchServiceRegisterResponse.
 message SwitchServiceRegisterResponse {
-  // Switch that was registered
+  // Switch that was registered.
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServiceReportBGPRoutesRequest
+// SwitchServiceReportBGPRoutesRequest.
 message SwitchServiceReportBGPRoutesRequest {
-  // Switch ID of the switch that reports its routes
+  // Switch ID of the switch that reports its routes.
   string switch_id = 1 [(buf.validate.field).string = {
     hostname: true
     min_len: 2
     max_len: 128
   }];
-  // BGP routes collected on the switch
+  // BGP routes collected on the switch.
   repeated BGPRoute bgp_routes = 2;
 }
 
-// SwitchServiceReportBGPRoutesResponse
+// SwitchServiceReportBGPRoutesResponse.
 message SwitchServiceReportBGPRoutesResponse {}
 
-// BGPRoute represents the route to a prefix
+// BGPRoute represents the route to a prefix.
 message BGPRoute {
-  // CIDR of the network that is routed to
+  // CIDR of the network that is routed to.
   string cidr = 1;
   option (buf.validate.message).cel = {
     id: "cidr"
     message: "cidr must be a valid ip prefix"
     expression: "this.cidr.isIpPrefix()"
   };
+}
+
+// SwitchServiceHeartbeatRequest.
+message SwitchServiceHeartbeatRequest {
+  // Id of the switch.
+  string id = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+  // Duration of the sync.
+  google.protobuf.Duration duration = 2;
+  // Error if any occurred during the sync.
+  optional string error = 3;
+  // PortStates maps port identifiers to the respective port's operational state.
+  map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
+  // BgpPortStates maps port identifiers to the respective port's BGP state.
+  map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
+}
+
+// SwitchServiceHeartbeatResponse.
+message SwitchServiceHeartbeatResponse {
+  // Id of the switch.
+  string id = 1;
+  // LastSync holds information about the last sync.
+  SwitchSync last_sync = 2;
+  // LastSyncError holds information about the last erroneous sync.
+  SwitchSync last_sync_error = 3;
+}
+
+// SwitchSync summarizes information about a switch sync.
+message SwitchSync {
+  // Time of the sync.
+  google.protobuf.Timestamp time = 1;
+  // Duration of the sync.
+  google.protobuf.Duration duration = 2;
+  // Error if any occurred.
+  optional string error = 3;
 }

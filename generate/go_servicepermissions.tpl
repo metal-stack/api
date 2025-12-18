@@ -1,4 +1,4 @@
-// Code generated discover.go. DO NOT EDIT.
+// Code generated generate.go. DO NOT EDIT.
 package permissions
 
 import (
