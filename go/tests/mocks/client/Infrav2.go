@@ -82,6 +82,52 @@ func (_c *Infrav2_BMC_Call) RunAndReturn(run func() infrav2connect.BMCServiceCli
 	return _c
 }
 
+// Event provides a mock function for the type Infrav2
+func (_mock *Infrav2) Event() infrav2connect.EventServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Event")
+	}
+
+	var r0 infrav2connect.EventServiceClient
+	if returnFunc, ok := ret.Get(0).(func() infrav2connect.EventServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(infrav2connect.EventServiceClient)
+		}
+	}
+	return r0
+}
+
+// Infrav2_Event_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Event'
+type Infrav2_Event_Call struct {
+	*mock.Call
+}
+
+// Event is a helper method to define mock.On call
+func (_e *Infrav2_Expecter) Event() *Infrav2_Event_Call {
+	return &Infrav2_Event_Call{Call: _e.mock.On("Event")}
+}
+
+func (_c *Infrav2_Event_Call) Run(run func()) *Infrav2_Event_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Infrav2_Event_Call) Return(eventServiceClient infrav2connect.EventServiceClient) *Infrav2_Event_Call {
+	_c.Call.Return(eventServiceClient)
+	return _c
+}
+
+func (_c *Infrav2_Event_Call) RunAndReturn(run func() infrav2connect.EventServiceClient) *Infrav2_Event_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Switch provides a mock function for the type Infrav2
 func (_mock *Infrav2) Switch() infrav2connect.SwitchServiceClient {
 	ret := _mock.Called()
