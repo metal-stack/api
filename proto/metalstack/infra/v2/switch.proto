@@ -27,6 +27,11 @@ service SwitchService {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
+  // ReportBGPRoutes of a switch
+  rpc ReportBGPRoutes(SwitchServiceReportBGPRoutesRequest) returns (SwitchServiceReportBGPRoutesResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
+  }
 }
 
 // SwitchServiceGetRequest.
@@ -54,6 +59,32 @@ message SwitchServiceRegisterRequest {
 message SwitchServiceRegisterResponse {
   // Switch that was registered.
   metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceReportBGPRoutesRequest.
+message SwitchServiceReportBGPRoutesRequest {
+  // Switch ID of the switch that reports its routes.
+  string switch_id = 1 [(buf.validate.field).string = {
+    hostname: true
+    min_len: 2
+    max_len: 128
+  }];
+  // BGP routes collected on the switch.
+  repeated BGPRoute bgp_routes = 2;
+}
+
+// SwitchServiceReportBGPRoutesResponse.
+message SwitchServiceReportBGPRoutesResponse {}
+
+// BGPRoute represents the route to a prefix.
+message BGPRoute {
+  // CIDR of the network that is routed to.
+  string cidr = 1;
+  option (buf.validate.message).cel = {
+    id: "cidr"
+    message: "cidr must be a valid ip prefix"
+    expression: "this.cidr.isIpPrefix()"
+  };
 }
 
 // SwitchServiceHeartbeatRequest.

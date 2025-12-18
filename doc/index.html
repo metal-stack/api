@@ -1413,6 +1413,10 @@
                   <a href="#metalstack.api.v2.SwitchReplaceMode"><span class="badge">E</span>SwitchReplaceMode</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.SwitchType"><span class="badge">E</span>SwitchType</a>
+                </li>
+              
               
               
             </ul>
@@ -1985,6 +1989,10 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.infra.v2.BGPRoute"><span class="badge">M</span>BGPRoute</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.infra.v2.SwitchServiceGetRequest"><span class="badge">M</span>SwitchServiceGetRequest</a>
                 </li>
               
@@ -2014,6 +2022,14 @@
               
                 <li>
                   <a href="#metalstack.infra.v2.SwitchServiceRegisterResponse"><span class="badge">M</span>SwitchServiceRegisterResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest"><span class="badge">M</span>SwitchServiceReportBGPRoutesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse"><span class="badge">M</span>SwitchServiceReportBGPRoutesResponse</a>
                 </li>
               
                 <li>
@@ -11562,6 +11578,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><p>MachineConnections map machines to the nics they are connected to. </p></td>
                 </tr>
               
+                <tr>
+                  <td>type</td>
+                  <td><a href="#metalstack.api.v2.SwitchType">SwitchType</a></td>
+                  <td></td>
+                  <td><p>Type is the role of the switch. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -11958,6 +11981,53 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td>SWITCH_REPLACE_MODE_OPERATIONAL</td>
                 <td>2</td>
                 <td><p>SWITCH_REPLACE_MODE_OPERATIONAL means this switch is operational and cannot be replaced.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.SwitchType">SwitchType</h3>
+        <p>SwitchType represents the role of a switch</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SWITCH_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>SWITCH_TYPE_UNSPECIFIED is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_TYPE_LEAF</td>
+                <td>1</td>
+                <td><p>SWITCH_TYPE_LEAF is a leaf switch</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_TYPE_EXIT</td>
+                <td>2</td>
+                <td><p>SWITCH_TYPE_EXIT is an exit switch</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_TYPE_SPINE</td>
+                <td>3</td>
+                <td><p>SWITCH_TYPE_SPINE is a spine switch</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_TYPE_MGMTLEAF</td>
+                <td>4</td>
+                <td><p>SWITCH_TYPE_MGMTLEAF is a special type of leaf used only for management tasks</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_TYPE_MGMTSPINE</td>
+                <td>5</td>
+                <td><p>SWITCH_TYPE_MGMTSPINE is a special type of spine used only for management tasks</p></td>
               </tr>
             
           </tbody>
@@ -15605,6 +15675,30 @@ This service is suitable to create tokens for other users instead of deriving us
       <p></p>
 
       
+        <h3 id="metalstack.infra.v2.BGPRoute">BGPRoute</h3>
+        <p>BGPRoute represents the route to a prefix.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>cidr</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>CIDR of the network that is routed to. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.infra.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</h3>
         <p>SwitchServiceGetRequest.</p>
 
@@ -15853,6 +15947,44 @@ This service is suitable to create tokens for other users instead of deriving us
 
         
       
+        <h3 id="metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest">SwitchServiceReportBGPRoutesRequest</h3>
+        <p>SwitchServiceReportBGPRoutesRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switch_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Switch ID of the switch that reports its routes. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bgp_routes</td>
+                  <td><a href="#metalstack.infra.v2.BGPRoute">BGPRoute</a></td>
+                  <td>repeated</td>
+                  <td><p>BGP routes collected on the switch. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse">SwitchServiceReportBGPRoutesResponse</h3>
+        <p>SwitchServiceReportBGPRoutesResponse.</p>
+
+        
+
+        
+      
         <h3 id="metalstack.infra.v2.SwitchSync">SwitchSync</h3>
         <p>SwitchSync summarizes information about a switch sync.</p>
 
@@ -15924,6 +16056,13 @@ This service is suitable to create tokens for other users instead of deriving us
                 <td><a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest">SwitchServiceHeartbeatRequest</a></td>
                 <td><a href="#metalstack.infra.v2.SwitchServiceHeartbeatResponse">SwitchServiceHeartbeatResponse</a></td>
                 <td><p>Heartbeat a switch.</p></td>
+              </tr>
+            
+              <tr>
+                <td>ReportBGPRoutes</td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest">SwitchServiceReportBGPRoutesRequest</a></td>
+                <td><a href="#metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse">SwitchServiceReportBGPRoutesResponse</a></td>
+                <td><p>ReportBGPRoutes of a switch</p></td>
               </tr>
             
           </tbody>
