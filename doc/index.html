@@ -1783,15 +1783,38 @@
         
           
           <li>
+            <a href="#metalstack%2fapi%2fv2%2fvpn.proto">metalstack/api/v2/vpn.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.api.v2.VPNNode"><span class="badge">M</span>VPNNode</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2fadmin%2fv2%2fvpn.proto">metalstack/admin/v2/vpn.proto</a>
             <ul>
               
                 <li>
-                  <a href="#metalstack.admin.v2.VPNServiceAuthkeyRequest"><span class="badge">M</span>VPNServiceAuthkeyRequest</a>
+                  <a href="#metalstack.admin.v2.VPNServiceAuthKeyRequest"><span class="badge">M</span>VPNServiceAuthKeyRequest</a>
                 </li>
               
                 <li>
-                  <a href="#metalstack.admin.v2.VPNServiceAuthkeyResponse"><span class="badge">M</span>VPNServiceAuthkeyResponse</a>
+                  <a href="#metalstack.admin.v2.VPNServiceAuthKeyResponse"><span class="badge">M</span>VPNServiceAuthKeyResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.VPNServiceListNodesRequest"><span class="badge">M</span>VPNServiceListNodesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.VPNServiceListNodesResponse"><span class="badge">M</span>VPNServiceListNodesResponse</a>
                 </li>
               
               
@@ -14634,13 +14657,86 @@ This service is suitable to create tokens for other users instead of deriving us
     
       
       <div class="file-heading">
+        <h2 id="metalstack/api/v2/vpn.proto">metalstack/api/v2/vpn.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.api.v2.VPNNode">VPNNode</h3>
+        <p>VPNNode is a machine connected to the vpn</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Id of this node </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of this node </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project of this node, maps to a project </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ip_addresses</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>IPAddresses of this node in the vpn </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_seen</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>LastSeen timestamp when this node reached out the the control plane </p></td>
+                </tr>
+              
+                <tr>
+                  <td>online</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Online indicates if this node is online </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
         <h2 id="metalstack/admin/v2/vpn.proto">metalstack/admin/v2/vpn.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
-        <h3 id="metalstack.admin.v2.VPNServiceAuthkeyRequest">VPNServiceAuthkeyRequest</h3>
-        <p>VPNServiceAuthkeyRequest is the request payload for a vpn authkey request.</p>
+        <h3 id="metalstack.admin.v2.VPNServiceAuthKeyRequest">VPNServiceAuthKeyRequest</h3>
+        <p>VPNServiceAuthKeyRequest is the request payload for a vpn authkey request.</p>
 
         
           <table class="field-table">
@@ -14677,8 +14773,8 @@ This service is suitable to create tokens for other users instead of deriving us
 
         
       
-        <h3 id="metalstack.admin.v2.VPNServiceAuthkeyResponse">VPNServiceAuthkeyResponse</h3>
-        <p>VPNServiceAuthkeyResponse is the request payload for a authkey response</p>
+        <h3 id="metalstack.admin.v2.VPNServiceAuthKeyResponse">VPNServiceAuthKeyResponse</h3>
+        <p>VPNServiceAuthKeyResponse is the request payload for a authkey response</p>
 
         
           <table class="field-table">
@@ -14695,11 +14791,59 @@ This service is suitable to create tokens for other users instead of deriving us
                 </tr>
               
                 <tr>
-                  <td>authkey</td>
+                  <td>auth_key</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Authkey is the key to connect to the vpn at the given address.
+                  <td><p>AuthKey is the key to connect to the vpn at the given address.
 This key can only be seen once. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.VPNServiceListNodesRequest">VPNServiceListNodesRequest</h3>
+        <p>VPNServiceListNodesRequest is the request payload for a vpn list nodes request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project if given only nodes of this user are returned </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.VPNServiceListNodesResponse">VPNServiceListNodesResponse</h3>
+        <p>VPNServiceListNodesResponse is the response payload for a vpn list nodes request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>nodes</td>
+                  <td><a href="#metalstack.api.v2.VPNNode">metalstack.api.v2.VPNNode</a></td>
+                  <td>repeated</td>
+                  <td><p>Nodes connected to the vpn </p></td>
                 </tr>
               
             </tbody>
@@ -14724,10 +14868,17 @@ This key can only be seen once. </p></td>
           <tbody>
             
               <tr>
-                <td>Authkey</td>
-                <td><a href="#metalstack.admin.v2.VPNServiceAuthkeyRequest">VPNServiceAuthkeyRequest</a></td>
-                <td><a href="#metalstack.admin.v2.VPNServiceAuthkeyResponse">VPNServiceAuthkeyResponse</a></td>
+                <td>AuthKey</td>
+                <td><a href="#metalstack.admin.v2.VPNServiceAuthKeyRequest">VPNServiceAuthKeyRequest</a></td>
+                <td><a href="#metalstack.admin.v2.VPNServiceAuthKeyResponse">VPNServiceAuthKeyResponse</a></td>
                 <td><p>AuthKey generates a authkey for a project to join a machine to the project vpn</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListNodes</td>
+                <td><a href="#metalstack.admin.v2.VPNServiceListNodesRequest">VPNServiceListNodesRequest</a></td>
+                <td><a href="#metalstack.admin.v2.VPNServiceListNodesResponse">VPNServiceListNodesResponse</a></td>
+                <td><p>ListNodes returns a list of machines actually connected to the vpn</p></td>
               </tr>
             
           </tbody>

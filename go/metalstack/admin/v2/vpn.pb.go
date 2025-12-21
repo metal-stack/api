@@ -8,7 +8,7 @@ package adminv2
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "github.com/metal-stack/api/go/metalstack/api/v2"
+	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
@@ -24,8 +24,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// VPNServiceAuthkeyRequest is the request payload for a vpn authkey request.
-type VPNServiceAuthkeyRequest struct {
+// VPNServiceAuthKeyRequest is the request payload for a vpn authkey request.
+type VPNServiceAuthKeyRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project for which a vpn authkey should be generated.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
@@ -37,20 +37,20 @@ type VPNServiceAuthkeyRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VPNServiceAuthkeyRequest) Reset() {
-	*x = VPNServiceAuthkeyRequest{}
+func (x *VPNServiceAuthKeyRequest) Reset() {
+	*x = VPNServiceAuthKeyRequest{}
 	mi := &file_metalstack_admin_v2_vpn_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *VPNServiceAuthkeyRequest) String() string {
+func (x *VPNServiceAuthKeyRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*VPNServiceAuthkeyRequest) ProtoMessage() {}
+func (*VPNServiceAuthKeyRequest) ProtoMessage() {}
 
-func (x *VPNServiceAuthkeyRequest) ProtoReflect() protoreflect.Message {
+func (x *VPNServiceAuthKeyRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_admin_v2_vpn_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -62,58 +62,58 @@ func (x *VPNServiceAuthkeyRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use VPNServiceAuthkeyRequest.ProtoReflect.Descriptor instead.
-func (*VPNServiceAuthkeyRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use VPNServiceAuthKeyRequest.ProtoReflect.Descriptor instead.
+func (*VPNServiceAuthKeyRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_vpn_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *VPNServiceAuthkeyRequest) GetProject() string {
+func (x *VPNServiceAuthKeyRequest) GetProject() string {
 	if x != nil {
 		return x.Project
 	}
 	return ""
 }
 
-func (x *VPNServiceAuthkeyRequest) GetEphemeral() bool {
+func (x *VPNServiceAuthKeyRequest) GetEphemeral() bool {
 	if x != nil {
 		return x.Ephemeral
 	}
 	return false
 }
 
-func (x *VPNServiceAuthkeyRequest) GetExpires() *durationpb.Duration {
+func (x *VPNServiceAuthKeyRequest) GetExpires() *durationpb.Duration {
 	if x != nil {
 		return x.Expires
 	}
 	return nil
 }
 
-// VPNServiceAuthkeyResponse is the request payload for a authkey response
-type VPNServiceAuthkeyResponse struct {
+// VPNServiceAuthKeyResponse is the request payload for a authkey response
+type VPNServiceAuthKeyResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Address is the address of the vpn control plane.
 	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	// Authkey is the key to connect to the vpn at the given address.
+	// AuthKey is the key to connect to the vpn at the given address.
 	// This key can only be seen once.
-	Authkey       string `protobuf:"bytes,2,opt,name=authkey,proto3" json:"authkey,omitempty"`
+	AuthKey       string `protobuf:"bytes,2,opt,name=auth_key,json=authKey,proto3" json:"auth_key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *VPNServiceAuthkeyResponse) Reset() {
-	*x = VPNServiceAuthkeyResponse{}
+func (x *VPNServiceAuthKeyResponse) Reset() {
+	*x = VPNServiceAuthKeyResponse{}
 	mi := &file_metalstack_admin_v2_vpn_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *VPNServiceAuthkeyResponse) String() string {
+func (x *VPNServiceAuthKeyResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*VPNServiceAuthkeyResponse) ProtoMessage() {}
+func (*VPNServiceAuthKeyResponse) ProtoMessage() {}
 
-func (x *VPNServiceAuthkeyResponse) ProtoReflect() protoreflect.Message {
+func (x *VPNServiceAuthKeyResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_admin_v2_vpn_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -125,40 +125,139 @@ func (x *VPNServiceAuthkeyResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use VPNServiceAuthkeyResponse.ProtoReflect.Descriptor instead.
-func (*VPNServiceAuthkeyResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use VPNServiceAuthKeyResponse.ProtoReflect.Descriptor instead.
+func (*VPNServiceAuthKeyResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_vpn_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *VPNServiceAuthkeyResponse) GetAddress() string {
+func (x *VPNServiceAuthKeyResponse) GetAddress() string {
 	if x != nil {
 		return x.Address
 	}
 	return ""
 }
 
-func (x *VPNServiceAuthkeyResponse) GetAuthkey() string {
+func (x *VPNServiceAuthKeyResponse) GetAuthKey() string {
 	if x != nil {
-		return x.Authkey
+		return x.AuthKey
 	}
 	return ""
+}
+
+// VPNServiceListNodesRequest is the request payload for a vpn list nodes request
+type VPNServiceListNodesRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Project if given only nodes of this user are returned
+	Project       *string `protobuf:"bytes,1,opt,name=project,proto3,oneof" json:"project,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VPNServiceListNodesRequest) Reset() {
+	*x = VPNServiceListNodesRequest{}
+	mi := &file_metalstack_admin_v2_vpn_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VPNServiceListNodesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VPNServiceListNodesRequest) ProtoMessage() {}
+
+func (x *VPNServiceListNodesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_vpn_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VPNServiceListNodesRequest.ProtoReflect.Descriptor instead.
+func (*VPNServiceListNodesRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_vpn_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *VPNServiceListNodesRequest) GetProject() string {
+	if x != nil && x.Project != nil {
+		return *x.Project
+	}
+	return ""
+}
+
+// VPNServiceListNodesResponse is the response payload for a vpn list nodes request
+type VPNServiceListNodesResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Nodes connected to the vpn
+	Nodes         []*v2.VPNNode `protobuf:"bytes,1,rep,name=nodes,proto3" json:"nodes,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VPNServiceListNodesResponse) Reset() {
+	*x = VPNServiceListNodesResponse{}
+	mi := &file_metalstack_admin_v2_vpn_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VPNServiceListNodesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VPNServiceListNodesResponse) ProtoMessage() {}
+
+func (x *VPNServiceListNodesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_vpn_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VPNServiceListNodesResponse.ProtoReflect.Descriptor instead.
+func (*VPNServiceListNodesResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_vpn_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *VPNServiceListNodesResponse) GetNodes() []*v2.VPNNode {
+	if x != nil {
+		return x.Nodes
+	}
+	return nil
 }
 
 var File_metalstack_admin_v2_vpn_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_vpn_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/admin/v2/vpn.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\"\x91\x01\n" +
-	"\x18VPNServiceAuthkeyRequest\x12\"\n" +
+	"\x1dmetalstack/admin/v2/vpn.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"\x91\x01\n" +
+	"\x18VPNServiceAuthKeyRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x1c\n" +
 	"\tephemeral\x18\x02 \x01(\bR\tephemeral\x123\n" +
-	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationR\aexpires\"O\n" +
-	"\x19VPNServiceAuthkeyResponse\x12\x18\n" +
-	"\aaddress\x18\x01 \x01(\tR\aaddress\x12\x18\n" +
-	"\aauthkey\x18\x02 \x01(\tR\aauthkey2}\n" +
+	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationR\aexpires\"P\n" +
+	"\x19VPNServiceAuthKeyResponse\x12\x18\n" +
+	"\aaddress\x18\x01 \x01(\tR\aaddress\x12\x19\n" +
+	"\bauth_key\x18\x02 \x01(\tR\aauthKey\"G\n" +
+	"\x1aVPNServiceListNodesRequest\x12\x1d\n" +
+	"\aproject\x18\x01 \x01(\tH\x00R\aproject\x88\x01\x01B\n" +
+	"\n" +
+	"\b_project\"O\n" +
+	"\x1bVPNServiceListNodesResponse\x120\n" +
+	"\x05nodes\x18\x01 \x03(\v2\x1a.metalstack.api.v2.VPNNodeR\x05nodes2\xf5\x01\n" +
 	"\n" +
 	"VPNService\x12o\n" +
-	"\aAuthkey\x12-.metalstack.admin.v2.VPNServiceAuthkeyRequest\x1a..metalstack.admin.v2.VPNServiceAuthkeyResponse\"\x05\xd2\xf3\x18\x01\x01B\xcc\x01\n" +
+	"\aAuthKey\x12-.metalstack.admin.v2.VPNServiceAuthKeyRequest\x1a..metalstack.admin.v2.VPNServiceAuthKeyResponse\"\x05\xd2\xf3\x18\x01\x01\x12v\n" +
+	"\tListNodes\x12/.metalstack.admin.v2.VPNServiceListNodesRequest\x1a0.metalstack.admin.v2.VPNServiceListNodesResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xcc\x01\n" +
 	"\x17com.metalstack.admin.v2B\bVpnProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (
@@ -173,21 +272,27 @@ func file_metalstack_admin_v2_vpn_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_vpn_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_vpn_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_metalstack_admin_v2_vpn_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_metalstack_admin_v2_vpn_proto_goTypes = []any{
-	(*VPNServiceAuthkeyRequest)(nil),  // 0: metalstack.admin.v2.VPNServiceAuthkeyRequest
-	(*VPNServiceAuthkeyResponse)(nil), // 1: metalstack.admin.v2.VPNServiceAuthkeyResponse
-	(*durationpb.Duration)(nil),       // 2: google.protobuf.Duration
+	(*VPNServiceAuthKeyRequest)(nil),    // 0: metalstack.admin.v2.VPNServiceAuthKeyRequest
+	(*VPNServiceAuthKeyResponse)(nil),   // 1: metalstack.admin.v2.VPNServiceAuthKeyResponse
+	(*VPNServiceListNodesRequest)(nil),  // 2: metalstack.admin.v2.VPNServiceListNodesRequest
+	(*VPNServiceListNodesResponse)(nil), // 3: metalstack.admin.v2.VPNServiceListNodesResponse
+	(*durationpb.Duration)(nil),         // 4: google.protobuf.Duration
+	(*v2.VPNNode)(nil),                  // 5: metalstack.api.v2.VPNNode
 }
 var file_metalstack_admin_v2_vpn_proto_depIdxs = []int32{
-	2, // 0: metalstack.admin.v2.VPNServiceAuthkeyRequest.expires:type_name -> google.protobuf.Duration
-	0, // 1: metalstack.admin.v2.VPNService.Authkey:input_type -> metalstack.admin.v2.VPNServiceAuthkeyRequest
-	1, // 2: metalstack.admin.v2.VPNService.Authkey:output_type -> metalstack.admin.v2.VPNServiceAuthkeyResponse
-	2, // [2:3] is the sub-list for method output_type
-	1, // [1:2] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: metalstack.admin.v2.VPNServiceAuthKeyRequest.expires:type_name -> google.protobuf.Duration
+	5, // 1: metalstack.admin.v2.VPNServiceListNodesResponse.nodes:type_name -> metalstack.api.v2.VPNNode
+	0, // 2: metalstack.admin.v2.VPNService.AuthKey:input_type -> metalstack.admin.v2.VPNServiceAuthKeyRequest
+	2, // 3: metalstack.admin.v2.VPNService.ListNodes:input_type -> metalstack.admin.v2.VPNServiceListNodesRequest
+	1, // 4: metalstack.admin.v2.VPNService.AuthKey:output_type -> metalstack.admin.v2.VPNServiceAuthKeyResponse
+	3, // 5: metalstack.admin.v2.VPNService.ListNodes:output_type -> metalstack.admin.v2.VPNServiceListNodesResponse
+	4, // [4:6] is the sub-list for method output_type
+	2, // [2:4] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_vpn_proto_init() }
@@ -195,13 +300,14 @@ func file_metalstack_admin_v2_vpn_proto_init() {
 	if File_metalstack_admin_v2_vpn_proto != nil {
 		return
 	}
+	file_metalstack_admin_v2_vpn_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_vpn_proto_rawDesc), len(file_metalstack_admin_v2_vpn_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

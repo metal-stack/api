@@ -33,14 +33,18 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// VPNServiceAuthkeyProcedure is the fully-qualified name of the VPNService's Authkey RPC.
-	VPNServiceAuthkeyProcedure = "/metalstack.admin.v2.VPNService/Authkey"
+	// VPNServiceAuthKeyProcedure is the fully-qualified name of the VPNService's AuthKey RPC.
+	VPNServiceAuthKeyProcedure = "/metalstack.admin.v2.VPNService/AuthKey"
+	// VPNServiceListNodesProcedure is the fully-qualified name of the VPNService's ListNodes RPC.
+	VPNServiceListNodesProcedure = "/metalstack.admin.v2.VPNService/ListNodes"
 )
 
 // VPNServiceClient is a client for the metalstack.admin.v2.VPNService service.
 type VPNServiceClient interface {
 	// AuthKey generates a authkey for a project to join a machine to the project vpn
-	Authkey(context.Context, *v2.VPNServiceAuthkeyRequest) (*v2.VPNServiceAuthkeyResponse, error)
+	AuthKey(context.Context, *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error)
+	// ListNodes returns a list of machines actually connected to the vpn
+	ListNodes(context.Context, *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error)
 }
 
 // NewVPNServiceClient constructs a client for the metalstack.admin.v2.VPNService service. By
@@ -54,10 +58,16 @@ func NewVPNServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 	baseURL = strings.TrimRight(baseURL, "/")
 	vPNServiceMethods := v2.File_metalstack_admin_v2_vpn_proto.Services().ByName("VPNService").Methods()
 	return &vPNServiceClient{
-		authkey: connect.NewClient[v2.VPNServiceAuthkeyRequest, v2.VPNServiceAuthkeyResponse](
+		authKey: connect.NewClient[v2.VPNServiceAuthKeyRequest, v2.VPNServiceAuthKeyResponse](
 			httpClient,
-			baseURL+VPNServiceAuthkeyProcedure,
-			connect.WithSchema(vPNServiceMethods.ByName("Authkey")),
+			baseURL+VPNServiceAuthKeyProcedure,
+			connect.WithSchema(vPNServiceMethods.ByName("AuthKey")),
+			connect.WithClientOptions(opts...),
+		),
+		listNodes: connect.NewClient[v2.VPNServiceListNodesRequest, v2.VPNServiceListNodesResponse](
+			httpClient,
+			baseURL+VPNServiceListNodesProcedure,
+			connect.WithSchema(vPNServiceMethods.ByName("ListNodes")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -65,12 +75,22 @@ func NewVPNServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 
 // vPNServiceClient implements VPNServiceClient.
 type vPNServiceClient struct {
-	authkey *connect.Client[v2.VPNServiceAuthkeyRequest, v2.VPNServiceAuthkeyResponse]
+	authKey   *connect.Client[v2.VPNServiceAuthKeyRequest, v2.VPNServiceAuthKeyResponse]
+	listNodes *connect.Client[v2.VPNServiceListNodesRequest, v2.VPNServiceListNodesResponse]
 }
 
-// Authkey calls metalstack.admin.v2.VPNService.Authkey.
-func (c *vPNServiceClient) Authkey(ctx context.Context, req *v2.VPNServiceAuthkeyRequest) (*v2.VPNServiceAuthkeyResponse, error) {
-	response, err := c.authkey.CallUnary(ctx, connect.NewRequest(req))
+// AuthKey calls metalstack.admin.v2.VPNService.AuthKey.
+func (c *vPNServiceClient) AuthKey(ctx context.Context, req *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error) {
+	response, err := c.authKey.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// ListNodes calls metalstack.admin.v2.VPNService.ListNodes.
+func (c *vPNServiceClient) ListNodes(ctx context.Context, req *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error) {
+	response, err := c.listNodes.CallUnary(ctx, connect.NewRequest(req))
 	if response != nil {
 		return response.Msg, err
 	}
@@ -80,7 +100,9 @@ func (c *vPNServiceClient) Authkey(ctx context.Context, req *v2.VPNServiceAuthke
 // VPNServiceHandler is an implementation of the metalstack.admin.v2.VPNService service.
 type VPNServiceHandler interface {
 	// AuthKey generates a authkey for a project to join a machine to the project vpn
-	Authkey(context.Context, *v2.VPNServiceAuthkeyRequest) (*v2.VPNServiceAuthkeyResponse, error)
+	AuthKey(context.Context, *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error)
+	// ListNodes returns a list of machines actually connected to the vpn
+	ListNodes(context.Context, *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error)
 }
 
 // NewVPNServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -90,16 +112,24 @@ type VPNServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewVPNServiceHandler(svc VPNServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	vPNServiceMethods := v2.File_metalstack_admin_v2_vpn_proto.Services().ByName("VPNService").Methods()
-	vPNServiceAuthkeyHandler := connect.NewUnaryHandlerSimple(
-		VPNServiceAuthkeyProcedure,
-		svc.Authkey,
-		connect.WithSchema(vPNServiceMethods.ByName("Authkey")),
+	vPNServiceAuthKeyHandler := connect.NewUnaryHandlerSimple(
+		VPNServiceAuthKeyProcedure,
+		svc.AuthKey,
+		connect.WithSchema(vPNServiceMethods.ByName("AuthKey")),
+		connect.WithHandlerOptions(opts...),
+	)
+	vPNServiceListNodesHandler := connect.NewUnaryHandlerSimple(
+		VPNServiceListNodesProcedure,
+		svc.ListNodes,
+		connect.WithSchema(vPNServiceMethods.ByName("ListNodes")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/metalstack.admin.v2.VPNService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case VPNServiceAuthkeyProcedure:
-			vPNServiceAuthkeyHandler.ServeHTTP(w, r)
+		case VPNServiceAuthKeyProcedure:
+			vPNServiceAuthKeyHandler.ServeHTTP(w, r)
+		case VPNServiceListNodesProcedure:
+			vPNServiceListNodesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -109,6 +139,10 @@ func NewVPNServiceHandler(svc VPNServiceHandler, opts ...connect.HandlerOption) 
 // UnimplementedVPNServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVPNServiceHandler struct{}
 
-func (UnimplementedVPNServiceHandler) Authkey(context.Context, *v2.VPNServiceAuthkeyRequest) (*v2.VPNServiceAuthkeyResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.VPNService.Authkey is not implemented"))
+func (UnimplementedVPNServiceHandler) AuthKey(context.Context, *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.VPNService.AuthKey is not implemented"))
+}
+
+func (UnimplementedVPNServiceHandler) ListNodes(context.Context, *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.VPNService.ListNodes is not implemented"))
 }
