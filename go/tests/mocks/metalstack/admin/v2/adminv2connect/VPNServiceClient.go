@@ -105,3 +105,71 @@ func (_c *VPNServiceClient_Authkey_Call) RunAndReturn(run func(context1 context.
 	_c.Call.Return(run)
 	return _c
 }
+
+// ListNodes provides a mock function for the type VPNServiceClient
+func (_mock *VPNServiceClient) ListNodes(context1 context.Context, vPNServiceListNodesRequest *adminv2.VPNServiceListNodesRequest) (*adminv2.VPNServiceListNodesResponse, error) {
+	ret := _mock.Called(context1, vPNServiceListNodesRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListNodes")
+	}
+
+	var r0 *adminv2.VPNServiceListNodesResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.VPNServiceListNodesRequest) (*adminv2.VPNServiceListNodesResponse, error)); ok {
+		return returnFunc(context1, vPNServiceListNodesRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.VPNServiceListNodesRequest) *adminv2.VPNServiceListNodesResponse); ok {
+		r0 = returnFunc(context1, vPNServiceListNodesRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.VPNServiceListNodesResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.VPNServiceListNodesRequest) error); ok {
+		r1 = returnFunc(context1, vPNServiceListNodesRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// VPNServiceClient_ListNodes_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListNodes'
+type VPNServiceClient_ListNodes_Call struct {
+	*mock.Call
+}
+
+// ListNodes is a helper method to define mock.On call
+//   - context1 context.Context
+//   - vPNServiceListNodesRequest *adminv2.VPNServiceListNodesRequest
+func (_e *VPNServiceClient_Expecter) ListNodes(context1 interface{}, vPNServiceListNodesRequest interface{}) *VPNServiceClient_ListNodes_Call {
+	return &VPNServiceClient_ListNodes_Call{Call: _e.mock.On("ListNodes", context1, vPNServiceListNodesRequest)}
+}
+
+func (_c *VPNServiceClient_ListNodes_Call) Run(run func(context1 context.Context, vPNServiceListNodesRequest *adminv2.VPNServiceListNodesRequest)) *VPNServiceClient_ListNodes_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.VPNServiceListNodesRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.VPNServiceListNodesRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *VPNServiceClient_ListNodes_Call) Return(vPNServiceListNodesResponse *adminv2.VPNServiceListNodesResponse, err error) *VPNServiceClient_ListNodes_Call {
+	_c.Call.Return(vPNServiceListNodesResponse, err)
+	return _c
+}
+
+func (_c *VPNServiceClient_ListNodes_Call) RunAndReturn(run func(context1 context.Context, vPNServiceListNodesRequest *adminv2.VPNServiceListNodesRequest) (*adminv2.VPNServiceListNodesResponse, error)) *VPNServiceClient_ListNodes_Call {
+	_c.Call.Return(run)
+	return _c
+}

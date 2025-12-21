@@ -19,6 +19,9 @@ class VPNService(Protocol):
     async def authkey(self, request: metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceAuthkeyRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceAuthkeyResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def list_nodes(self, request: metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class VPNServiceASGIApplication(ConnectASGIApplication):
     def __init__(self, service: VPNService, *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -33,6 +36,16 @@ class VPNServiceASGIApplication(ConnectASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.authkey,
+                ),
+                "/metalstack.admin.v2.VPNService/ListNodes": Endpoint.unary(
+                    method=MethodInfo(
+                        name="ListNodes",
+                        service_name="metalstack.admin.v2.VPNService",
+                        input=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.list_nodes,
                 ),
             },
             interceptors=interceptors,
@@ -66,9 +79,31 @@ class VPNServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def list_nodes(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="ListNodes",
+                service_name="metalstack.admin.v2.VPNService",
+                input=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesRequest,
+                output=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 class VPNServiceSync(Protocol):
     def authkey(self, request: metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceAuthkeyRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceAuthkeyResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def list_nodes(self, request: metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -85,6 +120,16 @@ class VPNServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.authkey,
+                ),
+                "/metalstack.admin.v2.VPNService/ListNodes": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="ListNodes",
+                        service_name="metalstack.admin.v2.VPNService",
+                        input=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.list_nodes,
                 ),
             },
             interceptors=interceptors,
@@ -112,6 +157,26 @@ class VPNServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.VPNService",
                 input=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceAuthkeyRequest,
                 output=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceAuthkeyResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def list_nodes(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="ListNodes",
+                service_name="metalstack.admin.v2.VPNService",
+                input=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesRequest,
+                output=metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceListNodesResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
