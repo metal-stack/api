@@ -93,12 +93,14 @@ type (
 	}
 	infrav2 struct {
 		bmcservice    *infrav2mocks.BMCServiceClient
+		bootservice   *infrav2mocks.BootServiceClient
 		eventservice  *infrav2mocks.EventServiceClient
 		switchservice *infrav2mocks.SwitchServiceClient
 	}
 
 	Infrav2MockFns struct {
 		BMC    func(m *mock.Mock)
+		Boot   func(m *mock.Mock)
 		Event  func(m *mock.Mock)
 		Switch func(m *mock.Mock)
 	}
@@ -340,6 +342,7 @@ func (w wrapper) Infrav2(fns *Infrav2MockFns) *infrav2 {
 func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 	a := &infrav2{
 		bmcservice:    infrav2mocks.NewBMCServiceClient(t),
+		bootservice:   infrav2mocks.NewBootServiceClient(t),
 		eventservice:  infrav2mocks.NewEventServiceClient(t),
 		switchservice: infrav2mocks.NewSwitchServiceClient(t),
 	}
@@ -347,6 +350,9 @@ func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 	if fns != nil {
 		if fns.BMC != nil {
 			fns.BMC(&a.bmcservice.Mock)
+		}
+		if fns.Boot != nil {
+			fns.Boot(&a.bootservice.Mock)
 		}
 		if fns.Event != nil {
 			fns.Event(&a.eventservice.Mock)
@@ -362,6 +368,9 @@ func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Boot() infrav2connect.BootServiceClient {
+	return c.bootservice
 }
 func (c *infrav2) Event() infrav2connect.EventServiceClient {
 	return c.eventservice

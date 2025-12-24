@@ -33,6 +33,7 @@ func GetServices() []string {
 		"metalstack.api.v2.UserService",
 		"metalstack.api.v2.VersionService",
 		"metalstack.infra.v2.BMCService",
+		"metalstack.infra.v2.BootService",
 		"metalstack.infra.v2.EventService",
 		"metalstack.infra.v2.SwitchService",
 	}
@@ -96,13 +97,24 @@ func GetServicePermissions() *ServicePermissions {
 			Infra: Infra{
 				"INFRA_ROLE_EDITOR": []string{
 					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
+					"/metalstack.infra.v2.BootService/Dhcp",
+					"/metalstack.infra.v2.BootService/Boot",
 					"/metalstack.infra.v2.EventService/Send",
 					"/metalstack.infra.v2.SwitchService/Get",
 					"/metalstack.infra.v2.SwitchService/Register",
 					"/metalstack.infra.v2.SwitchService/Heartbeat",
 				},
 				"INFRA_ROLE_VIEWER": []string{
+					"/metalstack.infra.v2.BootService/Boot",
 					"/metalstack.infra.v2.SwitchService/Get",
+				},
+			},
+			Machine: Machine{
+				"MACHINE_ROLE_EDITOR": []string{
+					"/metalstack.infra.v2.BootService/SuperUserPassword",
+					"/metalstack.infra.v2.BootService/Register",
+					"/metalstack.infra.v2.BootService/Wait",
+					"/metalstack.infra.v2.BootService/Report",
 				},
 			},
 			Tenant: Tenant{
@@ -292,6 +304,12 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                             true,
 			"/metalstack.api.v2.VersionService/Get":                          true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":                  true,
+			"/metalstack.infra.v2.BootService/Boot":                          true,
+			"/metalstack.infra.v2.BootService/Dhcp":                          true,
+			"/metalstack.infra.v2.BootService/Register":                      true,
+			"/metalstack.infra.v2.BootService/Report":                        true,
+			"/metalstack.infra.v2.BootService/SuperUserPassword":             true,
+			"/metalstack.infra.v2.BootService/Wait":                          true,
 			"/metalstack.infra.v2.EventService/Send":                         true,
 			"/metalstack.infra.v2.SwitchService/Get":                         true,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":                   true,
@@ -370,10 +388,18 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra: map[string]bool{
 				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
+				"/metalstack.infra.v2.BootService/Boot":         true,
+				"/metalstack.infra.v2.BootService/Dhcp":         true,
 				"/metalstack.infra.v2.EventService/Send":        true,
 				"/metalstack.infra.v2.SwitchService/Get":        true,
 				"/metalstack.infra.v2.SwitchService/Heartbeat":  true,
 				"/metalstack.infra.v2.SwitchService/Register":   true,
+			},
+			Machine: map[string]bool{
+				"/metalstack.infra.v2.BootService/Register":          true,
+				"/metalstack.infra.v2.BootService/Report":            true,
+				"/metalstack.infra.v2.BootService/SuperUserPassword": true,
+				"/metalstack.infra.v2.BootService/Wait":              true,
 			},
 			Tenant: map[string]bool{
 				"/metalstack.api.v2.ProjectService/Create":      true,
@@ -514,6 +540,12 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              false,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      false,
+			"/metalstack.infra.v2.BootService/Boot":              false,
+			"/metalstack.infra.v2.BootService/Dhcp":              false,
+			"/metalstack.infra.v2.BootService/Register":          false,
+			"/metalstack.infra.v2.BootService/Report":            false,
+			"/metalstack.infra.v2.BootService/SuperUserPassword": false,
+			"/metalstack.infra.v2.BootService/Wait":              false,
 			"/metalstack.infra.v2.EventService/Send":             false,
 			"/metalstack.infra.v2.SwitchService/Get":             false,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":       false,
@@ -539,6 +571,11 @@ func IsAdminScope(req connect.AnyRequest) bool {
 
 func IsInfraScope(req connect.AnyRequest) bool {
 	_, ok := GetServicePermissions().Visibility.Infra[req.Spec().Procedure]
+	return ok
+}
+
+func IsMachineScope(req connect.AnyRequest) bool {
+	_, ok := GetServicePermissions().Visibility.Machine[req.Spec().Procedure]
 	return ok
 }
 
@@ -575,6 +612,17 @@ func GetProjectFromRequest(req connect.AnyRequest) (string, bool) {
 	switch rq := req.Any().(type) {
 	case interface{ GetProject() string }:
 		return rq.GetProject(), true
+	}
+	return "", false
+}
+
+func GetMachineIdFromRequest(req connect.AnyRequest) (string, bool) {
+	if !IsMachineScope(req) {
+		return "", false
+	}
+	switch rq := req.Any().(type) {
+	case interface{ GetUuid() string }:
+		return rq.GetUuid(), true
 	}
 	return "", false
 }

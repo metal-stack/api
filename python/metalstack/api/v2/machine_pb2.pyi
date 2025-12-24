@@ -437,6 +437,46 @@ class MachineBios(_message.Message):
     date: str
     def __init__(self, version: _Optional[str] = ..., vendor: _Optional[str] = ..., date: _Optional[str] = ...) -> None: ...
 
+class MachineIPMI(_message.Message):
+    __slots__ = ("address", "mac", "user", "password", "interface", "fru", "bmc_version", "power_state")
+    ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    MAC_FIELD_NUMBER: _ClassVar[int]
+    USER_FIELD_NUMBER: _ClassVar[int]
+    PASSWORD_FIELD_NUMBER: _ClassVar[int]
+    INTERFACE_FIELD_NUMBER: _ClassVar[int]
+    FRU_FIELD_NUMBER: _ClassVar[int]
+    BMC_VERSION_FIELD_NUMBER: _ClassVar[int]
+    POWER_STATE_FIELD_NUMBER: _ClassVar[int]
+    address: str
+    mac: str
+    user: str
+    password: str
+    interface: str
+    fru: MachineFRU
+    bmc_version: str
+    power_state: str
+    def __init__(self, address: _Optional[str] = ..., mac: _Optional[str] = ..., user: _Optional[str] = ..., password: _Optional[str] = ..., interface: _Optional[str] = ..., fru: _Optional[_Union[MachineFRU, _Mapping]] = ..., bmc_version: _Optional[str] = ..., power_state: _Optional[str] = ...) -> None: ...
+
+class MachineFRU(_message.Message):
+    __slots__ = ("chassis_part_number", "chassis_part_serial", "board_mfg", "board_mfg_serial", "board_part_number", "product_manufacturer", "product_part_number", "product_serial")
+    CHASSIS_PART_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    CHASSIS_PART_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    BOARD_MFG_FIELD_NUMBER: _ClassVar[int]
+    BOARD_MFG_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    BOARD_PART_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_MANUFACTURER_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_PART_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    chassis_part_number: str
+    chassis_part_serial: str
+    board_mfg: str
+    board_mfg_serial: str
+    board_part_number: str
+    product_manufacturer: str
+    product_part_number: str
+    product_serial: str
+    def __init__(self, chassis_part_number: _Optional[str] = ..., chassis_part_serial: _Optional[str] = ..., board_mfg: _Optional[str] = ..., board_mfg_serial: _Optional[str] = ..., board_part_number: _Optional[str] = ..., product_manufacturer: _Optional[str] = ..., product_part_number: _Optional[str] = ..., product_serial: _Optional[str] = ...) -> None: ...
+
 class MachineRecentProvisioningEvents(_message.Message):
     __slots__ = ("events", "last_event_time", "last_error_event", "state")
     EVENTS_FIELD_NUMBER: _ClassVar[int]

@@ -480,11 +480,51 @@ message MachineChassisIdentifyLEDState {
 // MachineBios contains BIOS details of this machine
 message MachineBios {
   // Version the bios version
-  string version = 1 [(buf.validate.field).string = {max_len: 256}];
+  string version = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Vendor the bios vendor
-  string vendor = 2 [(buf.validate.field).string = {max_len: 256}];
+  string vendor = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Date the bios date as string because every vendor has different ideas howto describe the date
-  string date = 3 [(buf.validate.field).string = {max_len: 256}];
+  string date = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// MachineIPMI describe details of the ipmi or out of band device
+message MachineIPMI {
+  // Address of this ipmi device from outside
+  string address = 1 [(buf.validate.field).string.ip = true];
+  // Mac address of the network interface of this ipmi device
+  string mac = 2 [(buf.validate.field).string.(macaddress) = true];
+  // User of this ipmi device
+  string user = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Password of this ipmi device
+  string password = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Interface of this ipmi device
+  string interface = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // FRU field replaceable unit details for this machine
+  MachineFRU fru = 6;
+  // BMCVersion of this ipmi device
+  string bmc_version = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // PowerState of this machine
+  string power_state = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// MachineFRU describes details to the machine which are required in case of a necessary replacement
+message MachineFRU {
+  // ChassisPartNumber is the part number of the machine chassis
+  optional string chassis_part_number = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // ChassisPartSerial is the serial number of the machine chassis
+  optional string chassis_part_serial = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // BoardMFG is the short description of the mainboard
+  optional string board_mfg = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // BoardSerial is the serial number of the mainboard
+  optional string board_mfg_serial = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // BoardPartNumber is the part number of the mainboard
+  optional string board_part_number = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // ProductManufacturer is the manufacturer of the machine
+  optional string product_manufacturer = 6 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // ProductPartNumber is the part number of the machine
+  optional string product_part_number = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // ProductSerial is the serial number of the machine
+  optional string product_serial = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
 // MachineRecentProvisioningEvents the recent provisioning events for this machine
