@@ -134,14 +134,17 @@ message TokenServiceCreateRequest {
   // InfraRole defines the infrastructure role of the token owner
   optional InfraRole infra_role = 8 [(buf.validate.field).enum.defined_only = true];
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
-  map<string, MachineRole> machine_roles = 9 [(buf.validate.field).map = {
-    keys: {
-      string: {uuid: true}
-    }
-    values: {
+  map<string, MachineRole> machine_roles = 9 [
+    (buf.validate.field).cel = {
+      id: "machine_roles_keys"
+      message: "map keys must be empty string, '*', or a valid UUID"
+      // UUID regex pattern: 8-4-4-4-12 hex digits
+      expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
+    },
+    (buf.validate.field).map.values = {
       enum: {defined_only: true}
     }
-  }];
+  ];
   // Labels on this token
   Labels labels = 10;
 }
@@ -222,14 +225,17 @@ message TokenServiceUpdateRequest {
   // InfraRole defines the infrastructure role of the token owner
   optional InfraRole infra_role = 8 [(buf.validate.field).enum.defined_only = true];
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
-  map<string, MachineRole> machine_roles = 9 [(buf.validate.field).map = {
-    keys: {
-      string: {uuid: true}
-    }
-    values: {
+  map<string, MachineRole> machine_roles = 9 [
+    (buf.validate.field).cel = {
+      id: "machine_roles_keys"
+      message: "map keys must be empty string, '*', or a valid UUID"
+      // UUID regex pattern: 8-4-4-4-12 hex digits
+      expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
+    },
+    (buf.validate.field).map.values = {
       enum: {defined_only: true}
     }
-  }];
+  ];
   // Labels on this token
   UpdateLabels labels = 10;
 }
