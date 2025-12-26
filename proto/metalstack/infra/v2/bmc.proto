@@ -2,12 +2,20 @@ syntax = "proto3";
 
 package metalstack.infra.v2;
 
+import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/machine.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // BMCService serves bmc related functions
 service BMCService {
   // UpdateBMCInfo
   rpc UpdateBMCInfo(UpdateBMCInfoRequest) returns (UpdateBMCInfoResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // WaitForMachineEvent is called by the metal-bmc and is returned with a bmc command to execute.
+  rpc WaitForMachineEvent(stream WaitForMachineEventRequest) returns (stream WaitForMachineEventResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
@@ -18,3 +26,17 @@ message UpdateBMCInfoRequest {}
 
 // UpdateBMCInfoResponse
 message UpdateBMCInfoResponse {}
+
+// WaitForMachineEventRequest
+message WaitForMachineEventRequest {
+  // Partition the partition id where metal-bmc wants to receive events
+  string partition = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+}
+
+// WaitForMachineEventResponse
+message WaitForMachineEventResponse {
+  // BMCCommand to execute against the bmc of the machine
+  metalstack.api.v2.MachineBMCCommand bmc_command = 1;
+  // MachineIPMI contains connection details of the machine to issue the bmcCommand to
+  metalstack.api.v2.MachineIPMI machine_ipmi = 2;
+}

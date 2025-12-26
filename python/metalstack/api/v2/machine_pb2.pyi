@@ -64,6 +64,20 @@ class MachineAllocationType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     MACHINE_ALLOCATION_TYPE_UNSPECIFIED: _ClassVar[MachineAllocationType]
     MACHINE_ALLOCATION_TYPE_MACHINE: _ClassVar[MachineAllocationType]
     MACHINE_ALLOCATION_TYPE_FIREWALL: _ClassVar[MachineAllocationType]
+
+class MachineBMCCommand(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_BMC_COMMAND_UNSPECIFIED: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_ON: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_OFF: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_RESET: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_CYCLE: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_BOOT_TO_BIOS: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_BOOT_FROM_DISK: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_BOOT_FROM_PXE: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE: _ClassVar[MachineBMCCommand]
 IP_PROTOCOL_UNSPECIFIED: IPProtocol
 IP_PROTOCOL_TCP: IPProtocol
 IP_PROTOCOL_UDP: IPProtocol
@@ -93,6 +107,17 @@ MACHINE_LIVELINESS_UNKNOWN: MachineLiveliness
 MACHINE_ALLOCATION_TYPE_UNSPECIFIED: MachineAllocationType
 MACHINE_ALLOCATION_TYPE_MACHINE: MachineAllocationType
 MACHINE_ALLOCATION_TYPE_FIREWALL: MachineAllocationType
+MACHINE_BMC_COMMAND_UNSPECIFIED: MachineBMCCommand
+MACHINE_BMC_COMMAND_ON: MachineBMCCommand
+MACHINE_BMC_COMMAND_OFF: MachineBMCCommand
+MACHINE_BMC_COMMAND_RESET: MachineBMCCommand
+MACHINE_BMC_COMMAND_CYCLE: MachineBMCCommand
+MACHINE_BMC_COMMAND_BOOT_TO_BIOS: MachineBMCCommand
+MACHINE_BMC_COMMAND_BOOT_FROM_DISK: MachineBMCCommand
+MACHINE_BMC_COMMAND_BOOT_FROM_PXE: MachineBMCCommand
+MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: MachineBMCCommand
+MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: MachineBMCCommand
+MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE: MachineBMCCommand
 
 class MachineServiceGetRequest(_message.Message):
     __slots__ = ("uuid", "project")
@@ -436,6 +461,46 @@ class MachineBios(_message.Message):
     vendor: str
     date: str
     def __init__(self, version: _Optional[str] = ..., vendor: _Optional[str] = ..., date: _Optional[str] = ...) -> None: ...
+
+class MachineIPMI(_message.Message):
+    __slots__ = ("address", "mac", "user", "password", "interface", "fru", "bmc_version", "power_state")
+    ADDRESS_FIELD_NUMBER: _ClassVar[int]
+    MAC_FIELD_NUMBER: _ClassVar[int]
+    USER_FIELD_NUMBER: _ClassVar[int]
+    PASSWORD_FIELD_NUMBER: _ClassVar[int]
+    INTERFACE_FIELD_NUMBER: _ClassVar[int]
+    FRU_FIELD_NUMBER: _ClassVar[int]
+    BMC_VERSION_FIELD_NUMBER: _ClassVar[int]
+    POWER_STATE_FIELD_NUMBER: _ClassVar[int]
+    address: str
+    mac: str
+    user: str
+    password: str
+    interface: str
+    fru: MachineFRU
+    bmc_version: str
+    power_state: str
+    def __init__(self, address: _Optional[str] = ..., mac: _Optional[str] = ..., user: _Optional[str] = ..., password: _Optional[str] = ..., interface: _Optional[str] = ..., fru: _Optional[_Union[MachineFRU, _Mapping]] = ..., bmc_version: _Optional[str] = ..., power_state: _Optional[str] = ...) -> None: ...
+
+class MachineFRU(_message.Message):
+    __slots__ = ("chassis_part_number", "chassis_part_serial", "board_mfg", "board_mfg_serial", "board_part_number", "product_manufacturer", "product_part_number", "product_serial")
+    CHASSIS_PART_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    CHASSIS_PART_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    BOARD_MFG_FIELD_NUMBER: _ClassVar[int]
+    BOARD_MFG_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    BOARD_PART_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_MANUFACTURER_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_PART_NUMBER_FIELD_NUMBER: _ClassVar[int]
+    PRODUCT_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    chassis_part_number: str
+    chassis_part_serial: str
+    board_mfg: str
+    board_mfg_serial: str
+    board_part_number: str
+    product_manufacturer: str
+    product_part_number: str
+    product_serial: str
+    def __init__(self, chassis_part_number: _Optional[str] = ..., chassis_part_serial: _Optional[str] = ..., board_mfg: _Optional[str] = ..., board_mfg_serial: _Optional[str] = ..., board_part_number: _Optional[str] = ..., product_manufacturer: _Optional[str] = ..., product_part_number: _Optional[str] = ..., product_serial: _Optional[str] = ...) -> None: ...
 
 class MachineRecentProvisioningEvents(_message.Message):
     __slots__ = ("events", "last_event_time", "last_error_event", "state")

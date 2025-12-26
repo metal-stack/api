@@ -7,6 +7,7 @@ package infrav2connect
 import (
 	"context"
 
+	"connectrpc.com/connect"
 	"github.com/metal-stack/api/go/metalstack/infra/v2"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -102,6 +103,68 @@ func (_c *BMCServiceClient_UpdateBMCInfo_Call) Return(updateBMCInfoResponse *inf
 }
 
 func (_c *BMCServiceClient_UpdateBMCInfo_Call) RunAndReturn(run func(context1 context.Context, updateBMCInfoRequest *infrav2.UpdateBMCInfoRequest) (*infrav2.UpdateBMCInfoResponse, error)) *BMCServiceClient_UpdateBMCInfo_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// WaitForMachineEvent provides a mock function for the type BMCServiceClient
+func (_mock *BMCServiceClient) WaitForMachineEvent(context1 context.Context) (*connect.BidiStreamForClientSimple[infrav2.WaitForMachineEventRequest, infrav2.WaitForMachineEventResponse], error) {
+	ret := _mock.Called(context1)
+
+	if len(ret) == 0 {
+		panic("no return value specified for WaitForMachineEvent")
+	}
+
+	var r0 *connect.BidiStreamForClientSimple[infrav2.WaitForMachineEventRequest, infrav2.WaitForMachineEventResponse]
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context) (*connect.BidiStreamForClientSimple[infrav2.WaitForMachineEventRequest, infrav2.WaitForMachineEventResponse], error)); ok {
+		return returnFunc(context1)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context) *connect.BidiStreamForClientSimple[infrav2.WaitForMachineEventRequest, infrav2.WaitForMachineEventResponse]); ok {
+		r0 = returnFunc(context1)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*connect.BidiStreamForClientSimple[infrav2.WaitForMachineEventRequest, infrav2.WaitForMachineEventResponse])
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context) error); ok {
+		r1 = returnFunc(context1)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// BMCServiceClient_WaitForMachineEvent_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'WaitForMachineEvent'
+type BMCServiceClient_WaitForMachineEvent_Call struct {
+	*mock.Call
+}
+
+// WaitForMachineEvent is a helper method to define mock.On call
+//   - context1 context.Context
+func (_e *BMCServiceClient_Expecter) WaitForMachineEvent(context1 interface{}) *BMCServiceClient_WaitForMachineEvent_Call {
+	return &BMCServiceClient_WaitForMachineEvent_Call{Call: _e.mock.On("WaitForMachineEvent", context1)}
+}
+
+func (_c *BMCServiceClient_WaitForMachineEvent_Call) Run(run func(context1 context.Context)) *BMCServiceClient_WaitForMachineEvent_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		run(
+			arg0,
+		)
+	})
+	return _c
+}
+
+func (_c *BMCServiceClient_WaitForMachineEvent_Call) Return(bidiStreamForClientSimple *connect.BidiStreamForClientSimple[infrav2.WaitForMachineEventRequest, infrav2.WaitForMachineEventResponse], err error) *BMCServiceClient_WaitForMachineEvent_Call {
+	_c.Call.Return(bidiStreamForClientSimple, err)
+	return _c
+}
+
+func (_c *BMCServiceClient_WaitForMachineEvent_Call) RunAndReturn(run func(context1 context.Context) (*connect.BidiStreamForClientSimple[infrav2.WaitForMachineEventRequest, infrav2.WaitForMachineEventResponse], error)) *BMCServiceClient_WaitForMachineEvent_Call {
 	_c.Call.Return(run)
 	return _c
 }
