@@ -43,6 +43,16 @@ service MachineService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
+  // BMCCommand send a command to the bmc of a machine
+  rpc BMCCommand(MachineServiceBMCCommandRequest) returns (MachineServiceBMCCommandResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  // GetBMC returns the BMC details of a machine
+  rpc GetBMC(MachineServiceGetBMCRequest) returns (MachineServiceGetBMCResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
 }
 
 // ------------------------ Service Messages ----------------------------------
@@ -200,6 +210,35 @@ message MachineServiceDeleteResponse {
   Machine machine = 1;
 }
 
+// MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+message MachineServiceBMCCommandRequest {
+  // UUID of the machine to send the command to
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+  // Command to send to the bmc of the machine
+  MachineBMCCommand command = 3 [(buf.validate.field).enum.defined_only = true];
+}
+
+// MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+message MachineServiceBMCCommandResponse {}
+
+// MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+message MachineServiceGetBMCRequest {
+  // UUID of the machine to get
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+message MachineServiceGetBMCResponse {
+  // UUID of the machine
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // BMC contains the BMC details of this machine
+  MachineBMCReport bmc = 2;
+}
+
 // --------------- Types ----------------------------------------------------------
 
 // Machine represents a physical bare metal machine.
@@ -216,8 +255,6 @@ message Machine {
   Size size = 5;
   // Hardware specs of this machine
   MachineHardware hardware = 6;
-  // Bios details for this machine
-  MachineBios bios = 7;
   // Allocation details
   MachineAllocation allocation = 8;
   // Status contains several status details related to this machine
@@ -477,6 +514,24 @@ message MachineChassisIdentifyLEDState {
   string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
+// MachineBMCReport is sent from the metal-bmc to update bmc and power related details
+message MachineBMCReport {
+  // BMC contains bmc details
+  MachineBMC bmc = 1;
+  // Bios contains bios details
+  MachineBios bios = 2;
+  // Fru containers field replaceable unit details
+  MachineFRU fru = 3;
+  // PowerMetric contains the power statistics of the machine
+  MachinePowerMetric power_metric = 4;
+  // PowerSupplies contains details about all power supplies and their state
+  repeated MachinePowerSupply power_supplies = 5;
+  // LEDState indicates the state of the indicator LED on this machine
+  MachineChassisIdentifyLEDState led_state = 6;
+  // UpdatedAt contains the date when this data was last updated
+  google.protobuf.Timestamp updated_at = 7;
+}
+
 // MachineBios contains BIOS details of this machine
 message MachineBios {
   // Version the bios version
@@ -487,9 +542,9 @@ message MachineBios {
   string date = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// MachineIPMI describe details of the ipmi or out of band device
-message MachineIPMI {
-  // Address of this ipmi device from outside
+// MachineBMC describe details of the ipmi or out of band device
+message MachineBMC {
+  // Address of this ipmi device from outside in the form of <ip or hostname>:<port>
   string address = 1 [(buf.validate.field).string.ip = true];
   // Mac address of the network interface of this ipmi device
   string mac = 2 [(buf.validate.field).string.(macaddress) = true];
@@ -499,10 +554,8 @@ message MachineIPMI {
   string password = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Interface of this ipmi device
   string interface = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // FRU field replaceable unit details for this machine
-  MachineFRU fru = 6;
-  // BMCVersion of this ipmi device
-  string bmc_version = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Version of this bmc device
+  string version = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // PowerState of this machine
   string power_state = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
@@ -525,6 +578,35 @@ message MachineFRU {
   optional string product_part_number = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // ProductSerial is the serial number of the machine
   optional string product_serial = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// MachinePowerMetric contains metrics of the power consumption of a machine
+message MachinePowerMetric {
+  // AverageConsumedWatts shall represent the
+  // average power level that occurred averaged over the last IntervalInMin
+  // minutes.
+  float average_consumed_watts = 1;
+  // IntervalInMin shall represent the time
+  // interval (or window), in minutes, in which the PowerMetrics properties
+  // are measured over.
+  // Should be an integer, but some Dell implementations return as a float.
+  float interval_in_min = 2;
+  // MaxConsumedWatts shall represent the
+  // maximum power level in watts that occurred within the last
+  // IntervalInMin minutes.
+  float max_consumed_watts = 3;
+  // MinConsumedWatts shall represent the
+  // minimum power level in watts that occurred within the last
+  // IntervalInMin minutes.
+  float min_consumed_watts = 4;
+}
+
+// MachinePowerSupply contains details of the power supply of a machine
+message MachinePowerSupply {
+  // health of the powersupply
+  string health = 1;
+  // state of the powersupply
+  string state = 2;
 }
 
 // MachineRecentProvisioningEvents the recent provisioning events for this machine
@@ -620,6 +702,32 @@ enum MachineAllocationType {
   MACHINE_ALLOCATION_TYPE_FIREWALL = 2 [(enum_string_value) = "firewall"];
 }
 
+// MachineBMCCommand defines commands send to the BMC of the machine
+enum MachineBMCCommand {
+  // MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+  MACHINE_BMC_COMMAND_UNSPECIFIED = 0;
+  // MACHINE_BMC_COMMAND_ON Power on the machine
+  MACHINE_BMC_COMMAND_ON = 1 [(enum_string_value) = "on"];
+  // MACHINE_BMC_COMMAND_OFF Power off the machine
+  MACHINE_BMC_COMMAND_OFF = 2 [(enum_string_value) = "off"];
+  // MACHINE_BMC_COMMAND_RESET Power reset the machine
+  MACHINE_BMC_COMMAND_RESET = 3 [(enum_string_value) = "reset"];
+  // MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+  MACHINE_BMC_COMMAND_CYCLE = 4 [(enum_string_value) = "cycle"];
+  // MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios
+  MACHINE_BMC_COMMAND_BOOT_TO_BIOS = 5 [(enum_string_value) = "boot-to-bios"];
+  // MACHINE_BMC_COMMAND_BOOT_FROM_DISK boot the machine from hard disk
+  MACHINE_BMC_COMMAND_BOOT_FROM_DISK = 6 [(enum_string_value) = "boot-from-disk"];
+  // MACHINE_BMC_COMMAND_BOOT_FROM_PXE boot the machine from pxe
+  MACHINE_BMC_COMMAND_BOOT_FROM_PXE = 7 [(enum_string_value) = "boot-from-pxe"];
+  // MACHINE_BMC_COMMAND_IDENTIFY_LED_ON set identify led of the machine chassis to on
+  MACHINE_BMC_COMMAND_IDENTIFY_LED_ON = 8 [(enum_string_value) = "identify-led-on"];
+  // MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off
+  MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9 [(enum_string_value) = "identify-led-off"];
+  // MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE update the bmc firmware of this machine
+  MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE = 10 [(enum_string_value) = "update-bmc-firmware"];
+}
+
 // MachineQuery contains fields which can be specified to list specific machines.
 message MachineQuery {
   // UUID of the machine to get
@@ -651,8 +759,8 @@ message MachineQuery {
   optional MachineNicQuery nic = 9;
   // Disk specific machine queries
   optional MachineDiskQuery disk = 10;
-  // IPMI specific machine queries
-  optional MachineIPMIQuery ipmi = 11;
+  // BMC specific machine queries
+  optional MachineBMCQuery bmc = 11;
   // FRU specific machine queries
   optional MachineFRUQuery fru = 12;
   // Hardware specific machine query
@@ -755,8 +863,8 @@ message MachineDiskQuery {
   repeated uint64 sizes = 2 [(buf.validate.field).repeated = {max_items: 100}];
 }
 
-// MachineIPMIQuery machine ipmi specific machine queries
-message MachineIPMIQuery {
+// MachineBMCQuery machine ipmi or bmc specific machine queries
+message MachineBMCQuery {
   // Address of the ipmi system of this machine
   optional string address = 1 [(buf.validate.field).string.ip = true];
   // Mac of the ipmi system of this machine

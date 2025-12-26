@@ -243,14 +243,16 @@ type BootServiceRegisterRequest struct {
 	Hardware *v2.MachineHardware `protobuf:"bytes,2,opt,name=hardware,proto3" json:"hardware,omitempty"`
 	// Bios details of this machine
 	Bios *v2.MachineBios `protobuf:"bytes,3,opt,name=bios,proto3" json:"bios,omitempty"`
-	// IPMI details of this machine
-	Ipmi *v2.MachineIPMI `protobuf:"bytes,4,opt,name=ipmi,proto3" json:"ipmi,omitempty"`
+	// BMC details of this machine
+	Bmc *v2.MachineBMC `protobuf:"bytes,4,opt,name=bmc,proto3" json:"bmc,omitempty"`
+	// FRU details of this machine
+	Fru *v2.MachineFRU `protobuf:"bytes,5,opt,name=fru,proto3" json:"fru,omitempty"`
 	// Tags of this machine
-	Tags []string `protobuf:"bytes,5,rep,name=tags,proto3" json:"tags,omitempty"`
+	Tags []string `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
 	// MetalHammer version this machine was bootet into
-	MetalHammerVersion string `protobuf:"bytes,6,opt,name=metal_hammer_version,json=metalHammerVersion,proto3" json:"metal_hammer_version,omitempty"`
+	MetalHammerVersion string `protobuf:"bytes,7,opt,name=metal_hammer_version,json=metalHammerVersion,proto3" json:"metal_hammer_version,omitempty"`
 	// Partition where this machine is located
-	Partition     string `protobuf:"bytes,7,opt,name=partition,proto3" json:"partition,omitempty"`
+	Partition     string `protobuf:"bytes,8,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -306,9 +308,16 @@ func (x *BootServiceRegisterRequest) GetBios() *v2.MachineBios {
 	return nil
 }
 
-func (x *BootServiceRegisterRequest) GetIpmi() *v2.MachineIPMI {
+func (x *BootServiceRegisterRequest) GetBmc() *v2.MachineBMC {
 	if x != nil {
-		return x.Ipmi
+		return x.Bmc
+	}
+	return nil
+}
+
+func (x *BootServiceRegisterRequest) GetFru() *v2.MachineFRU {
+	if x != nil {
+		return x.Fru
 	}
 	return nil
 }
@@ -718,15 +727,16 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\x0einit_ram_disks\x18\x02 \x03(\tR\finitRamDisks\x12*\n" +
 	"\acmdline\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\acmdline\x88\x01\x01B\n" +
 	"\n" +
-	"\b_cmdline\"\xe0\x02\n" +
+	"\b_cmdline\"\x8e\x03\n" +
 	"\x1aBootServiceRegisterRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12>\n" +
 	"\bhardware\x18\x02 \x01(\v2\".metalstack.api.v2.MachineHardwareR\bhardware\x122\n" +
-	"\x04bios\x18\x03 \x01(\v2\x1e.metalstack.api.v2.MachineBiosR\x04bios\x122\n" +
-	"\x04ipmi\x18\x04 \x01(\v2\x1e.metalstack.api.v2.MachineIPMIR\x04ipmi\x12\x12\n" +
-	"\x04tags\x18\x05 \x03(\tR\x04tags\x12=\n" +
-	"\x14metal_hammer_version\x18\x06 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x12metalHammerVersion\x12)\n" +
-	"\tpartition\x18\a \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\"\x87\x01\n" +
+	"\x04bios\x18\x03 \x01(\v2\x1e.metalstack.api.v2.MachineBiosR\x04bios\x12/\n" +
+	"\x03bmc\x18\x04 \x01(\v2\x1d.metalstack.api.v2.MachineBMCR\x03bmc\x12/\n" +
+	"\x03fru\x18\x05 \x01(\v2\x1d.metalstack.api.v2.MachineFRUR\x03fru\x12\x12\n" +
+	"\x04tags\x18\x06 \x03(\tR\x04tags\x12=\n" +
+	"\x14metal_hammer_version\x18\a \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x12metalHammerVersion\x12)\n" +
+	"\tpartition\x18\b \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\"\x87\x01\n" +
 	"\x1bBootServiceRegisterResponse\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n" +
 	"\x04size\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x04size\x12)\n" +
@@ -789,31 +799,33 @@ var file_metalstack_infra_v2_boot_proto_goTypes = []any{
 	(*BootServiceSuperUserPasswordResponse)(nil), // 11: metalstack.infra.v2.BootServiceSuperUserPasswordResponse
 	(*v2.MachineHardware)(nil),                   // 12: metalstack.api.v2.MachineHardware
 	(*v2.MachineBios)(nil),                       // 13: metalstack.api.v2.MachineBios
-	(*v2.MachineIPMI)(nil),                       // 14: metalstack.api.v2.MachineIPMI
-	(*v2.MachineAllocation)(nil),                 // 15: metalstack.api.v2.MachineAllocation
+	(*v2.MachineBMC)(nil),                        // 14: metalstack.api.v2.MachineBMC
+	(*v2.MachineFRU)(nil),                        // 15: metalstack.api.v2.MachineFRU
+	(*v2.MachineAllocation)(nil),                 // 16: metalstack.api.v2.MachineAllocation
 }
 var file_metalstack_infra_v2_boot_proto_depIdxs = []int32{
 	12, // 0: metalstack.infra.v2.BootServiceRegisterRequest.hardware:type_name -> metalstack.api.v2.MachineHardware
 	13, // 1: metalstack.infra.v2.BootServiceRegisterRequest.bios:type_name -> metalstack.api.v2.MachineBios
-	14, // 2: metalstack.infra.v2.BootServiceRegisterRequest.ipmi:type_name -> metalstack.api.v2.MachineIPMI
-	15, // 3: metalstack.infra.v2.BootServiceWaitResponse.allocation:type_name -> metalstack.api.v2.MachineAllocation
-	0,  // 4: metalstack.infra.v2.BootService.Dhcp:input_type -> metalstack.infra.v2.BootServiceDhcpRequest
-	2,  // 5: metalstack.infra.v2.BootService.Boot:input_type -> metalstack.infra.v2.BootServiceBootRequest
-	10, // 6: metalstack.infra.v2.BootService.SuperUserPassword:input_type -> metalstack.infra.v2.BootServiceSuperUserPasswordRequest
-	4,  // 7: metalstack.infra.v2.BootService.Register:input_type -> metalstack.infra.v2.BootServiceRegisterRequest
-	6,  // 8: metalstack.infra.v2.BootService.Wait:input_type -> metalstack.infra.v2.BootServiceWaitRequest
-	8,  // 9: metalstack.infra.v2.BootService.Report:input_type -> metalstack.infra.v2.BootServiceReportRequest
-	1,  // 10: metalstack.infra.v2.BootService.Dhcp:output_type -> metalstack.infra.v2.BootServiceDhcpResponse
-	3,  // 11: metalstack.infra.v2.BootService.Boot:output_type -> metalstack.infra.v2.BootServiceBootResponse
-	11, // 12: metalstack.infra.v2.BootService.SuperUserPassword:output_type -> metalstack.infra.v2.BootServiceSuperUserPasswordResponse
-	5,  // 13: metalstack.infra.v2.BootService.Register:output_type -> metalstack.infra.v2.BootServiceRegisterResponse
-	7,  // 14: metalstack.infra.v2.BootService.Wait:output_type -> metalstack.infra.v2.BootServiceWaitResponse
-	9,  // 15: metalstack.infra.v2.BootService.Report:output_type -> metalstack.infra.v2.BootServiceReportResponse
-	10, // [10:16] is the sub-list for method output_type
-	4,  // [4:10] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	14, // 2: metalstack.infra.v2.BootServiceRegisterRequest.bmc:type_name -> metalstack.api.v2.MachineBMC
+	15, // 3: metalstack.infra.v2.BootServiceRegisterRequest.fru:type_name -> metalstack.api.v2.MachineFRU
+	16, // 4: metalstack.infra.v2.BootServiceWaitResponse.allocation:type_name -> metalstack.api.v2.MachineAllocation
+	0,  // 5: metalstack.infra.v2.BootService.Dhcp:input_type -> metalstack.infra.v2.BootServiceDhcpRequest
+	2,  // 6: metalstack.infra.v2.BootService.Boot:input_type -> metalstack.infra.v2.BootServiceBootRequest
+	10, // 7: metalstack.infra.v2.BootService.SuperUserPassword:input_type -> metalstack.infra.v2.BootServiceSuperUserPasswordRequest
+	4,  // 8: metalstack.infra.v2.BootService.Register:input_type -> metalstack.infra.v2.BootServiceRegisterRequest
+	6,  // 9: metalstack.infra.v2.BootService.Wait:input_type -> metalstack.infra.v2.BootServiceWaitRequest
+	8,  // 10: metalstack.infra.v2.BootService.Report:input_type -> metalstack.infra.v2.BootServiceReportRequest
+	1,  // 11: metalstack.infra.v2.BootService.Dhcp:output_type -> metalstack.infra.v2.BootServiceDhcpResponse
+	3,  // 12: metalstack.infra.v2.BootService.Boot:output_type -> metalstack.infra.v2.BootServiceBootResponse
+	11, // 13: metalstack.infra.v2.BootService.SuperUserPassword:output_type -> metalstack.infra.v2.BootServiceSuperUserPasswordResponse
+	5,  // 14: metalstack.infra.v2.BootService.Register:output_type -> metalstack.infra.v2.BootServiceRegisterResponse
+	7,  // 15: metalstack.infra.v2.BootService.Wait:output_type -> metalstack.infra.v2.BootServiceWaitResponse
+	9,  // 16: metalstack.infra.v2.BootService.Report:output_type -> metalstack.infra.v2.BootServiceReportResponse
+	11, // [11:17] is the sub-list for method output_type
+	5,  // [5:11] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_infra_v2_boot_proto_init() }

@@ -64,6 +64,20 @@ class MachineAllocationType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     MACHINE_ALLOCATION_TYPE_UNSPECIFIED: _ClassVar[MachineAllocationType]
     MACHINE_ALLOCATION_TYPE_MACHINE: _ClassVar[MachineAllocationType]
     MACHINE_ALLOCATION_TYPE_FIREWALL: _ClassVar[MachineAllocationType]
+
+class MachineBMCCommand(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_BMC_COMMAND_UNSPECIFIED: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_ON: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_OFF: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_RESET: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_CYCLE: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_BOOT_TO_BIOS: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_BOOT_FROM_DISK: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_BOOT_FROM_PXE: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE: _ClassVar[MachineBMCCommand]
 IP_PROTOCOL_UNSPECIFIED: IPProtocol
 IP_PROTOCOL_TCP: IPProtocol
 IP_PROTOCOL_UDP: IPProtocol
@@ -93,6 +107,17 @@ MACHINE_LIVELINESS_UNKNOWN: MachineLiveliness
 MACHINE_ALLOCATION_TYPE_UNSPECIFIED: MachineAllocationType
 MACHINE_ALLOCATION_TYPE_MACHINE: MachineAllocationType
 MACHINE_ALLOCATION_TYPE_FIREWALL: MachineAllocationType
+MACHINE_BMC_COMMAND_UNSPECIFIED: MachineBMCCommand
+MACHINE_BMC_COMMAND_ON: MachineBMCCommand
+MACHINE_BMC_COMMAND_OFF: MachineBMCCommand
+MACHINE_BMC_COMMAND_RESET: MachineBMCCommand
+MACHINE_BMC_COMMAND_CYCLE: MachineBMCCommand
+MACHINE_BMC_COMMAND_BOOT_TO_BIOS: MachineBMCCommand
+MACHINE_BMC_COMMAND_BOOT_FROM_DISK: MachineBMCCommand
+MACHINE_BMC_COMMAND_BOOT_FROM_PXE: MachineBMCCommand
+MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: MachineBMCCommand
+MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: MachineBMCCommand
+MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE: MachineBMCCommand
 
 class MachineServiceGetRequest(_message.Message):
     __slots__ = ("uuid", "project")
@@ -212,15 +237,44 @@ class MachineServiceDeleteResponse(_message.Message):
     machine: Machine
     def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
+class MachineServiceBMCCommandRequest(_message.Message):
+    __slots__ = ("uuid", "project", "command")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    COMMAND_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    project: str
+    command: MachineBMCCommand
+    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ..., command: _Optional[_Union[MachineBMCCommand, str]] = ...) -> None: ...
+
+class MachineServiceBMCCommandResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class MachineServiceGetBMCRequest(_message.Message):
+    __slots__ = ("uuid", "project")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    project: str
+    def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
+
+class MachineServiceGetBMCResponse(_message.Message):
+    __slots__ = ("uuid", "bmc")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    BMC_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    bmc: MachineBMCReport
+    def __init__(self, uuid: _Optional[str] = ..., bmc: _Optional[_Union[MachineBMCReport, _Mapping]] = ...) -> None: ...
+
 class Machine(_message.Message):
-    __slots__ = ("uuid", "meta", "partition", "rack", "size", "hardware", "bios", "allocation", "status", "recent_provisioning_events")
+    __slots__ = ("uuid", "meta", "partition", "rack", "size", "hardware", "allocation", "status", "recent_provisioning_events")
     UUID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
     SIZE_FIELD_NUMBER: _ClassVar[int]
     HARDWARE_FIELD_NUMBER: _ClassVar[int]
-    BIOS_FIELD_NUMBER: _ClassVar[int]
     ALLOCATION_FIELD_NUMBER: _ClassVar[int]
     STATUS_FIELD_NUMBER: _ClassVar[int]
     RECENT_PROVISIONING_EVENTS_FIELD_NUMBER: _ClassVar[int]
@@ -230,11 +284,10 @@ class Machine(_message.Message):
     rack: str
     size: _size_pb2.Size
     hardware: MachineHardware
-    bios: MachineBios
     allocation: MachineAllocation
     status: MachineStatus
     recent_provisioning_events: MachineRecentProvisioningEvents
-    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ..., rack: _Optional[str] = ..., size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocation, _Mapping]] = ..., status: _Optional[_Union[MachineStatus, _Mapping]] = ..., recent_provisioning_events: _Optional[_Union[MachineRecentProvisioningEvents, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ..., rack: _Optional[str] = ..., size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardware, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocation, _Mapping]] = ..., status: _Optional[_Union[MachineStatus, _Mapping]] = ..., recent_provisioning_events: _Optional[_Union[MachineRecentProvisioningEvents, _Mapping]] = ...) -> None: ...
 
 class MachineStatus(_message.Message):
     __slots__ = ("condition", "led_state", "liveliness", "metal_hammer_version")
@@ -427,6 +480,24 @@ class MachineChassisIdentifyLEDState(_message.Message):
     description: str
     def __init__(self, value: _Optional[str] = ..., description: _Optional[str] = ...) -> None: ...
 
+class MachineBMCReport(_message.Message):
+    __slots__ = ("bmc", "bios", "fru", "power_metric", "power_supplies", "led_state", "updated_at")
+    BMC_FIELD_NUMBER: _ClassVar[int]
+    BIOS_FIELD_NUMBER: _ClassVar[int]
+    FRU_FIELD_NUMBER: _ClassVar[int]
+    POWER_METRIC_FIELD_NUMBER: _ClassVar[int]
+    POWER_SUPPLIES_FIELD_NUMBER: _ClassVar[int]
+    LED_STATE_FIELD_NUMBER: _ClassVar[int]
+    UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    bmc: MachineBMC
+    bios: MachineBios
+    fru: MachineFRU
+    power_metric: MachinePowerMetric
+    power_supplies: _containers.RepeatedCompositeFieldContainer[MachinePowerSupply]
+    led_state: MachineChassisIdentifyLEDState
+    updated_at: _timestamp_pb2.Timestamp
+    def __init__(self, bmc: _Optional[_Union[MachineBMC, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., fru: _Optional[_Union[MachineFRU, _Mapping]] = ..., power_metric: _Optional[_Union[MachinePowerMetric, _Mapping]] = ..., power_supplies: _Optional[_Iterable[_Union[MachinePowerSupply, _Mapping]]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+
 class MachineBios(_message.Message):
     __slots__ = ("version", "vendor", "date")
     VERSION_FIELD_NUMBER: _ClassVar[int]
@@ -437,25 +508,23 @@ class MachineBios(_message.Message):
     date: str
     def __init__(self, version: _Optional[str] = ..., vendor: _Optional[str] = ..., date: _Optional[str] = ...) -> None: ...
 
-class MachineIPMI(_message.Message):
-    __slots__ = ("address", "mac", "user", "password", "interface", "fru", "bmc_version", "power_state")
+class MachineBMC(_message.Message):
+    __slots__ = ("address", "mac", "user", "password", "interface", "version", "power_state")
     ADDRESS_FIELD_NUMBER: _ClassVar[int]
     MAC_FIELD_NUMBER: _ClassVar[int]
     USER_FIELD_NUMBER: _ClassVar[int]
     PASSWORD_FIELD_NUMBER: _ClassVar[int]
     INTERFACE_FIELD_NUMBER: _ClassVar[int]
-    FRU_FIELD_NUMBER: _ClassVar[int]
-    BMC_VERSION_FIELD_NUMBER: _ClassVar[int]
+    VERSION_FIELD_NUMBER: _ClassVar[int]
     POWER_STATE_FIELD_NUMBER: _ClassVar[int]
     address: str
     mac: str
     user: str
     password: str
     interface: str
-    fru: MachineFRU
-    bmc_version: str
+    version: str
     power_state: str
-    def __init__(self, address: _Optional[str] = ..., mac: _Optional[str] = ..., user: _Optional[str] = ..., password: _Optional[str] = ..., interface: _Optional[str] = ..., fru: _Optional[_Union[MachineFRU, _Mapping]] = ..., bmc_version: _Optional[str] = ..., power_state: _Optional[str] = ...) -> None: ...
+    def __init__(self, address: _Optional[str] = ..., mac: _Optional[str] = ..., user: _Optional[str] = ..., password: _Optional[str] = ..., interface: _Optional[str] = ..., version: _Optional[str] = ..., power_state: _Optional[str] = ...) -> None: ...
 
 class MachineFRU(_message.Message):
     __slots__ = ("chassis_part_number", "chassis_part_serial", "board_mfg", "board_mfg_serial", "board_part_number", "product_manufacturer", "product_part_number", "product_serial")
@@ -476,6 +545,26 @@ class MachineFRU(_message.Message):
     product_part_number: str
     product_serial: str
     def __init__(self, chassis_part_number: _Optional[str] = ..., chassis_part_serial: _Optional[str] = ..., board_mfg: _Optional[str] = ..., board_mfg_serial: _Optional[str] = ..., board_part_number: _Optional[str] = ..., product_manufacturer: _Optional[str] = ..., product_part_number: _Optional[str] = ..., product_serial: _Optional[str] = ...) -> None: ...
+
+class MachinePowerMetric(_message.Message):
+    __slots__ = ("average_consumed_watts", "interval_in_min", "max_consumed_watts", "min_consumed_watts")
+    AVERAGE_CONSUMED_WATTS_FIELD_NUMBER: _ClassVar[int]
+    INTERVAL_IN_MIN_FIELD_NUMBER: _ClassVar[int]
+    MAX_CONSUMED_WATTS_FIELD_NUMBER: _ClassVar[int]
+    MIN_CONSUMED_WATTS_FIELD_NUMBER: _ClassVar[int]
+    average_consumed_watts: float
+    interval_in_min: float
+    max_consumed_watts: float
+    min_consumed_watts: float
+    def __init__(self, average_consumed_watts: _Optional[float] = ..., interval_in_min: _Optional[float] = ..., max_consumed_watts: _Optional[float] = ..., min_consumed_watts: _Optional[float] = ...) -> None: ...
+
+class MachinePowerSupply(_message.Message):
+    __slots__ = ("health", "state")
+    HEALTH_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
+    health: str
+    state: str
+    def __init__(self, health: _Optional[str] = ..., state: _Optional[str] = ...) -> None: ...
 
 class MachineRecentProvisioningEvents(_message.Message):
     __slots__ = ("events", "last_event_time", "last_error_event", "state")
@@ -510,7 +599,7 @@ class MachineVPN(_message.Message):
     def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ...) -> None: ...
 
 class MachineQuery(_message.Message):
-    __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "ipmi", "fru", "hardware", "state")
+    __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "bmc", "fru", "hardware", "state")
     UUID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
@@ -521,7 +610,7 @@ class MachineQuery(_message.Message):
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     NIC_FIELD_NUMBER: _ClassVar[int]
     DISK_FIELD_NUMBER: _ClassVar[int]
-    IPMI_FIELD_NUMBER: _ClassVar[int]
+    BMC_FIELD_NUMBER: _ClassVar[int]
     FRU_FIELD_NUMBER: _ClassVar[int]
     HARDWARE_FIELD_NUMBER: _ClassVar[int]
     STATE_FIELD_NUMBER: _ClassVar[int]
@@ -535,11 +624,11 @@ class MachineQuery(_message.Message):
     network: MachineNetworkQuery
     nic: MachineNicQuery
     disk: MachineDiskQuery
-    ipmi: MachineIPMIQuery
+    bmc: MachineBMCQuery
     fru: MachineFRUQuery
     hardware: MachineHardwareQuery
     state: MachineState
-    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., ipmi: _Optional[_Union[MachineIPMIQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., bmc: _Optional[_Union[MachineBMCQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ...) -> None: ...
 
 class MachineAllocationQuery(_message.Message):
     __slots__ = ("uuid", "name", "project", "image", "filesystem_layout", "hostname", "allocation_type", "labels")
@@ -597,7 +686,7 @@ class MachineDiskQuery(_message.Message):
     sizes: _containers.RepeatedScalarFieldContainer[int]
     def __init__(self, names: _Optional[_Iterable[str]] = ..., sizes: _Optional[_Iterable[int]] = ...) -> None: ...
 
-class MachineIPMIQuery(_message.Message):
+class MachineBMCQuery(_message.Message):
     __slots__ = ("address", "mac", "user", "interface")
     ADDRESS_FIELD_NUMBER: _ClassVar[int]
     MAC_FIELD_NUMBER: _ClassVar[int]

@@ -41,22 +41,24 @@ class BootServiceBootResponse(_message.Message):
     def __init__(self, kernel: _Optional[str] = ..., init_ram_disks: _Optional[_Iterable[str]] = ..., cmdline: _Optional[str] = ...) -> None: ...
 
 class BootServiceRegisterRequest(_message.Message):
-    __slots__ = ("uuid", "hardware", "bios", "ipmi", "tags", "metal_hammer_version", "partition")
+    __slots__ = ("uuid", "hardware", "bios", "bmc", "fru", "tags", "metal_hammer_version", "partition")
     UUID_FIELD_NUMBER: _ClassVar[int]
     HARDWARE_FIELD_NUMBER: _ClassVar[int]
     BIOS_FIELD_NUMBER: _ClassVar[int]
-    IPMI_FIELD_NUMBER: _ClassVar[int]
+    BMC_FIELD_NUMBER: _ClassVar[int]
+    FRU_FIELD_NUMBER: _ClassVar[int]
     TAGS_FIELD_NUMBER: _ClassVar[int]
     METAL_HAMMER_VERSION_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     hardware: _machine_pb2.MachineHardware
     bios: _machine_pb2.MachineBios
-    ipmi: _machine_pb2.MachineIPMI
+    bmc: _machine_pb2.MachineBMC
+    fru: _machine_pb2.MachineFRU
     tags: _containers.RepeatedScalarFieldContainer[str]
     metal_hammer_version: str
     partition: str
-    def __init__(self, uuid: _Optional[str] = ..., hardware: _Optional[_Union[_machine_pb2.MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[_machine_pb2.MachineBios, _Mapping]] = ..., ipmi: _Optional[_Union[_machine_pb2.MachineIPMI, _Mapping]] = ..., tags: _Optional[_Iterable[str]] = ..., metal_hammer_version: _Optional[str] = ..., partition: _Optional[str] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., hardware: _Optional[_Union[_machine_pb2.MachineHardware, _Mapping]] = ..., bios: _Optional[_Union[_machine_pb2.MachineBios, _Mapping]] = ..., bmc: _Optional[_Union[_machine_pb2.MachineBMC, _Mapping]] = ..., fru: _Optional[_Union[_machine_pb2.MachineFRU, _Mapping]] = ..., tags: _Optional[_Iterable[str]] = ..., metal_hammer_version: _Optional[str] = ..., partition: _Optional[str] = ...) -> None: ...
 
 class BootServiceRegisterResponse(_message.Message):
     __slots__ = ("uuid", "size", "partition")

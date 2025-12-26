@@ -54,13 +54,13 @@ type BootServiceClient interface {
 	Dhcp(context.Context, *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error)
 	// Boot is called from pixie once the machine got the first dhcp response and ipxie asks for subsequent kernel and initrd
 	Boot(context.Context, *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error)
-	// SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-api and configure the bmc accordingly
+	// SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-apiserver and configure the bmc accordingly
 	SuperUserPassword(context.Context, *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error)
-	// Register is called from metal-hammer after hardware inventory is finished, tells metal-api all glory details about that machine
+	// Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all glory details about that machine
 	Register(context.Context, *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error)
 	// Wait is a hanging call that waits until the machine gets allocated by a user
 	Wait(context.Context, *v2.BootServiceWaitRequest) (*connect.ServerStreamForClient[v2.BootServiceWaitResponse], error)
-	// Report tells metal-api installation was either successful or failed
+	// Report tells metal-apiserver installation was either successful or failed
 	Report(context.Context, *v2.BootServiceReportRequest) (*v2.BootServiceReportResponse, error)
 }
 
@@ -180,13 +180,13 @@ type BootServiceHandler interface {
 	Dhcp(context.Context, *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error)
 	// Boot is called from pixie once the machine got the first dhcp response and ipxie asks for subsequent kernel and initrd
 	Boot(context.Context, *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error)
-	// SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-api and configure the bmc accordingly
+	// SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-apiserver and configure the bmc accordingly
 	SuperUserPassword(context.Context, *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error)
-	// Register is called from metal-hammer after hardware inventory is finished, tells metal-api all glory details about that machine
+	// Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all glory details about that machine
 	Register(context.Context, *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error)
 	// Wait is a hanging call that waits until the machine gets allocated by a user
 	Wait(context.Context, *v2.BootServiceWaitRequest, *connect.ServerStream[v2.BootServiceWaitResponse]) error
-	// Report tells metal-api installation was either successful or failed
+	// Report tells metal-apiserver installation was either successful or failed
 	Report(context.Context, *v2.BootServiceReportRequest) (*v2.BootServiceReportResponse, error)
 }
 

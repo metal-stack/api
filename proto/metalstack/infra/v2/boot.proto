@@ -25,12 +25,12 @@ service BootService {
 
   // Metal Hammer
 
-  // SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-api and configure the bmc accordingly
+  // SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-apiserver and configure the bmc accordingly
   rpc SuperUserPassword(BootServiceSuperUserPasswordRequest) returns (BootServiceSuperUserPasswordResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Register is called from metal-hammer after hardware inventory is finished, tells metal-api all glory details about that machine
+  // Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all glory details about that machine
   rpc Register(BootServiceRegisterRequest) returns (BootServiceRegisterResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
@@ -40,8 +40,7 @@ service BootService {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-
-  // Report tells metal-api installation was either successful or failed
+  // Report tells metal-apiserver installation was either successful or failed
   rpc Report(BootServiceReportRequest) returns (BootServiceReportResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
@@ -85,14 +84,16 @@ message BootServiceRegisterRequest {
   metalstack.api.v2.MachineHardware hardware = 2;
   // Bios details of this machine
   metalstack.api.v2.MachineBios bios = 3;
-  // IPMI details of this machine
-  metalstack.api.v2.MachineIPMI ipmi = 4;
+  // BMC details of this machine
+  metalstack.api.v2.MachineBMC bmc = 4;
+  // FRU details of this machine
+  metalstack.api.v2.MachineFRU fru = 5;
   // Tags of this machine
-  repeated string tags = 5;
+  repeated string tags = 6;
   // MetalHammer version this machine was bootet into
-  string metal_hammer_version = 6 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  string metal_hammer_version = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this machine is located
-  string partition = 7 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  string partition = 8 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
 // BootServiceRegisterResponse response to a BootServiceRegisterResponse request

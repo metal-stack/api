@@ -2,7 +2,10 @@ syntax = "proto3";
 
 package metalstack.infra.v2;
 
+import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/machine.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // BMCService serves bmc related functions
 service BMCService {
@@ -11,10 +14,45 @@ service BMCService {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
+  // WaitForMachineEvent is called by the metal-bmc and is returned with a bmc command to execute.
+  rpc WaitForMachineEvent(WaitForMachineEventRequest) returns (stream WaitForMachineEventResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // UpdateBMCInfoRequest
-message UpdateBMCInfoRequest {}
+message UpdateBMCInfoRequest {
+  // Partition the partition id where metal-bmc wants to receive events
+  string partition = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  // BMCReports contains maps the bmc report per machine uuid
+  map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 2 [(buf.validate.field).map = {
+    keys: {
+      string: {uuid: true}
+    }
+  }];
+}
 
 // UpdateBMCInfoResponse
-message UpdateBMCInfoResponse {}
+message UpdateBMCInfoResponse {
+  // UpdatedMachines is a slice of machine uuids which where updated
+  repeated string updated_machines = 1;
+  // CreatedMachines is a slice of machine uuids which where created
+  repeated string created_machines = 2;
+}
+
+// WaitForMachineEventRequest
+message WaitForMachineEventRequest {
+  // Partition the partition id where metal-bmc wants to receive events
+  string partition = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  // Hostname should be set to the senders hostname, e.g. from the server metal-bmc is running on.
+  string hostname = 2;
+}
+
+// WaitForMachineEventResponse
+message WaitForMachineEventResponse {
+  // BMCCommand to execute against the bmc of the machine
+  metalstack.api.v2.MachineBMCCommand bmc_command = 1;
+  // MachineBMC contains connection details of the machine to issue the bmcCommand to
+  metalstack.api.v2.MachineBMC machine_bmc = 2;
+}

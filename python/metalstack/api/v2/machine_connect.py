@@ -31,6 +31,12 @@ class MachineService(Protocol):
     async def delete(self, request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def b_m_c_command(self, request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
+    async def get_b_m_c(self, request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class MachineServiceASGIApplication(ConnectASGIApplication):
     def __init__(self, service: MachineService, *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -85,6 +91,26 @@ class MachineServiceASGIApplication(ConnectASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.delete,
+                ),
+                "/metalstack.api.v2.MachineService/BMCCommand": Endpoint.unary(
+                    method=MethodInfo(
+                        name="BMCCommand",
+                        service_name="metalstack.api.v2.MachineService",
+                        input=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+                        output=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.b_m_c_command,
+                ),
+                "/metalstack.api.v2.MachineService/GetBMC": Endpoint.unary(
+                    method=MethodInfo(
+                        name="GetBMC",
+                        service_name="metalstack.api.v2.MachineService",
+                        input=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+                        output=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.get_b_m_c,
                 ),
             },
             interceptors=interceptors,
@@ -198,6 +224,46 @@ class MachineServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def b_m_c_command(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="BMCCommand",
+                service_name="metalstack.api.v2.MachineService",
+                input=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+                output=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    async def get_b_m_c(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="GetBMC",
+                service_name="metalstack.api.v2.MachineService",
+                input=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+                output=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 class MachineServiceSync(Protocol):
     def get(self, request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetResponse:
@@ -209,6 +275,10 @@ class MachineServiceSync(Protocol):
     def list(self, request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceListRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def delete(self, request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def b_m_c_command(self, request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def get_b_m_c(self, request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -265,6 +335,26 @@ class MachineServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.delete,
+                ),
+                "/metalstack.api.v2.MachineService/BMCCommand": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="BMCCommand",
+                        service_name="metalstack.api.v2.MachineService",
+                        input=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+                        output=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.b_m_c_command,
+                ),
+                "/metalstack.api.v2.MachineService/GetBMC": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="GetBMC",
+                        service_name="metalstack.api.v2.MachineService",
+                        input=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+                        output=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.get_b_m_c,
                 ),
             },
             interceptors=interceptors,
@@ -372,6 +462,46 @@ class MachineServiceClientSync(ConnectClientSync):
                 service_name="metalstack.api.v2.MachineService",
                 input=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest,
                 output=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def b_m_c_command(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="BMCCommand",
+                service_name="metalstack.api.v2.MachineService",
+                input=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+                output=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def get_b_m_c(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="GetBMC",
+                service_name="metalstack.api.v2.MachineService",
+                input=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+                output=metalstack_dot_api_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
