@@ -1021,6 +1021,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineBMCCommand"><span class="badge">E</span>MachineBMCCommand</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineLiveliness"><span class="badge">E</span>MachineLiveliness</a>
                 </li>
               
@@ -1966,6 +1970,14 @@
                   <a href="#metalstack.infra.v2.UpdateBMCInfoResponse"><span class="badge">M</span>UpdateBMCInfoResponse</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.infra.v2.WaitForMachineEventRequest"><span class="badge">M</span>WaitForMachineEventRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.WaitForMachineEventResponse"><span class="badge">M</span>WaitForMachineEventResponse</a>
+                </li>
+              
               
               
               
@@ -2689,7 +2701,7 @@ having a direct membership within the tenant.</p></td>
                 <td>ips</td>
                 <td><a href="#bool">bool</a></td>
                 <td><a href="#buf.validate.RepeatedRules">.buf.validate.RepeatedRules</a></td>
-                <td>80048957</td>
+                <td>80058952</td>
                 <td><p>Ips validates if a slice of ips in string form are valid</p></td>
               </tr>
             
@@ -2697,7 +2709,7 @@ having a direct membership within the tenant.</p></td>
                 <td>prefixes</td>
                 <td><a href="#bool">bool</a></td>
                 <td><a href="#buf.validate.RepeatedRules">.buf.validate.RepeatedRules</a></td>
-                <td>80048956</td>
+                <td>80058951</td>
                 <td><p>Prefixes validates if a slice of prefixes in string form are valid</p></td>
               </tr>
             
@@ -9036,6 +9048,83 @@ TODO add machine ips </p></td>
                 <td>MACHINE_ALLOCATION_TYPE_FIREWALL</td>
                 <td>2</td>
                 <td><p>MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.MachineBMCCommand">MachineBMCCommand</h3>
+        <p>MachineBMCCommand defines commands send to the BMC of the machine</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>MACHINE_BMC_COMMAND_UNSPECIFIED is not defined</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_ON</td>
+                <td>1</td>
+                <td><p>MACHINE_BMC_COMMAND_ON Power on the machine</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_OFF</td>
+                <td>2</td>
+                <td><p>MACHINE_BMC_COMMAND_OFF Power off the machine</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_RESET</td>
+                <td>3</td>
+                <td><p>MACHINE_BMC_COMMAND_RESET Power reset the machine</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_CYCLE</td>
+                <td>4</td>
+                <td><p>MACHINE_BMC_COMMAND_CYCLE Power cycle the machine</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_BOOT_TO_BIOS</td>
+                <td>5</td>
+                <td><p>MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_BOOT_FROM_DISK</td>
+                <td>6</td>
+                <td><p>MACHINE_BMC_COMMAND_BOOT_FROM_DISK boot the machine from hard disk</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_BOOT_FROM_PXE</td>
+                <td>7</td>
+                <td><p>MACHINE_BMC_COMMAND_BOOT_FROM_PXE boot the machine from pxe</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_IDENTIFY_LED_ON</td>
+                <td>8</td>
+                <td><p>MACHINE_BMC_COMMAND_IDENTIFY_LED_ON set identify led of the machine chassis to on</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF</td>
+                <td>9</td>
+                <td><p>MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE</td>
+                <td>10</td>
+                <td><p>MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE update the bmc firmware of this machine</p></td>
               </tr>
             
           </tbody>
@@ -15763,6 +15852,61 @@ This service is suitable to create tokens for other users instead of deriving us
 
         
       
+        <h3 id="metalstack.infra.v2.WaitForMachineEventRequest">WaitForMachineEventRequest</h3>
+        <p>WaitForMachineEventRequest</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition the partition id where metal-bmc wants to receive events </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.WaitForMachineEventResponse">WaitForMachineEventResponse</h3>
+        <p>WaitForMachineEventResponse</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>bmc_command</td>
+                  <td><a href="#metalstack.api.v2.MachineBMCCommand">metalstack.api.v2.MachineBMCCommand</a></td>
+                  <td></td>
+                  <td><p>BMCCommand to execute against the bmc of the machine </p></td>
+                </tr>
+              
+                <tr>
+                  <td>machine_ipmi</td>
+                  <td><a href="#metalstack.api.v2.MachineIPMI">metalstack.api.v2.MachineIPMI</a></td>
+                  <td></td>
+                  <td><p>MachineIPMI contains connection details of the machine to issue the bmcCommand to </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
 
@@ -15782,6 +15926,13 @@ This service is suitable to create tokens for other users instead of deriving us
                 <td><a href="#metalstack.infra.v2.UpdateBMCInfoRequest">UpdateBMCInfoRequest</a></td>
                 <td><a href="#metalstack.infra.v2.UpdateBMCInfoResponse">UpdateBMCInfoResponse</a></td>
                 <td><p>UpdateBMCInfo</p></td>
+              </tr>
+            
+              <tr>
+                <td>WaitForMachineEvent</td>
+                <td><a href="#metalstack.infra.v2.WaitForMachineEventRequest">WaitForMachineEventRequest</a> stream</td>
+                <td><a href="#metalstack.infra.v2.WaitForMachineEventResponse">WaitForMachineEventResponse</a> stream</td>
+                <td><p>WaitForMachineEvent is called by the metal-bmc and is returned with a bmc command to execute.</p></td>
               </tr>
             
           </tbody>

@@ -64,6 +64,20 @@ class MachineAllocationType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     MACHINE_ALLOCATION_TYPE_UNSPECIFIED: _ClassVar[MachineAllocationType]
     MACHINE_ALLOCATION_TYPE_MACHINE: _ClassVar[MachineAllocationType]
     MACHINE_ALLOCATION_TYPE_FIREWALL: _ClassVar[MachineAllocationType]
+
+class MachineBMCCommand(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_BMC_COMMAND_UNSPECIFIED: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_ON: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_OFF: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_RESET: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_CYCLE: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_BOOT_TO_BIOS: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_BOOT_FROM_DISK: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_BOOT_FROM_PXE: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE: _ClassVar[MachineBMCCommand]
 IP_PROTOCOL_UNSPECIFIED: IPProtocol
 IP_PROTOCOL_TCP: IPProtocol
 IP_PROTOCOL_UDP: IPProtocol
@@ -93,6 +107,17 @@ MACHINE_LIVELINESS_UNKNOWN: MachineLiveliness
 MACHINE_ALLOCATION_TYPE_UNSPECIFIED: MachineAllocationType
 MACHINE_ALLOCATION_TYPE_MACHINE: MachineAllocationType
 MACHINE_ALLOCATION_TYPE_FIREWALL: MachineAllocationType
+MACHINE_BMC_COMMAND_UNSPECIFIED: MachineBMCCommand
+MACHINE_BMC_COMMAND_ON: MachineBMCCommand
+MACHINE_BMC_COMMAND_OFF: MachineBMCCommand
+MACHINE_BMC_COMMAND_RESET: MachineBMCCommand
+MACHINE_BMC_COMMAND_CYCLE: MachineBMCCommand
+MACHINE_BMC_COMMAND_BOOT_TO_BIOS: MachineBMCCommand
+MACHINE_BMC_COMMAND_BOOT_FROM_DISK: MachineBMCCommand
+MACHINE_BMC_COMMAND_BOOT_FROM_PXE: MachineBMCCommand
+MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: MachineBMCCommand
+MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: MachineBMCCommand
+MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE: MachineBMCCommand
 
 class MachineServiceGetRequest(_message.Message):
     __slots__ = ("uuid", "project")

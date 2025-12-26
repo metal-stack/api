@@ -620,6 +620,32 @@ enum MachineAllocationType {
   MACHINE_ALLOCATION_TYPE_FIREWALL = 2 [(enum_string_value) = "firewall"];
 }
 
+// MachineBMCCommand defines commands send to the BMC of the machine
+enum MachineBMCCommand {
+  // MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+  MACHINE_BMC_COMMAND_UNSPECIFIED = 0;
+  // MACHINE_BMC_COMMAND_ON Power on the machine
+  MACHINE_BMC_COMMAND_ON = 1 [(enum_string_value) = "on"];
+  // MACHINE_BMC_COMMAND_OFF Power off the machine
+  MACHINE_BMC_COMMAND_OFF = 2 [(enum_string_value) = "off"];
+  // MACHINE_BMC_COMMAND_RESET Power reset the machine
+  MACHINE_BMC_COMMAND_RESET = 3 [(enum_string_value) = "reset"];
+  // MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+  MACHINE_BMC_COMMAND_CYCLE = 4 [(enum_string_value) = "cycle"];
+  // MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios
+  MACHINE_BMC_COMMAND_BOOT_TO_BIOS = 5 [(enum_string_value) = "boot-to-bios"];
+  // MACHINE_BMC_COMMAND_BOOT_FROM_DISK boot the machine from hard disk
+  MACHINE_BMC_COMMAND_BOOT_FROM_DISK = 6 [(enum_string_value) = "boot-from-disk"];
+  // MACHINE_BMC_COMMAND_BOOT_FROM_PXE boot the machine from pxe
+  MACHINE_BMC_COMMAND_BOOT_FROM_PXE = 7 [(enum_string_value) = "boot-from-pxe"];
+  // MACHINE_BMC_COMMAND_IDENTIFY_LED_ON set identify led of the machine chassis to on
+  MACHINE_BMC_COMMAND_IDENTIFY_LED_ON = 8 [(enum_string_value) = "identify-led-on"];
+  // MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off
+  MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9 [(enum_string_value) = "identify-led-off"];
+  // MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE update the bmc firmware of this machine
+  MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE = 10 [(enum_string_value) = "update-bmc-firmware"];
+}
+
 // MachineQuery contains fields which can be specified to list specific machines.
 message MachineQuery {
   // UUID of the machine to get

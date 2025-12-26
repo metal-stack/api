@@ -22,10 +22,13 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
+from metalstack.api.v2 import machine_pb2 as metalstack_dot_api_dot_v2_dot_machine__pb2
+from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/infra/v2/bmc.proto\x12\x13metalstack.infra.v2\x1a\x1emetalstack/api/v2/common.proto\"\x16\n\x14UpdateBMCInfoRequest\"\x17\n\x15UpdateBMCInfoResponse2\x7f\n\nBMCService\x12q\n\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x42\xcc\x01\n\x17\x63om.metalstack.infra.v2B\x08\x42mcProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/infra/v2/bmc.proto\x12\x13metalstack.infra.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x16\n\x14UpdateBMCInfoRequest\"\x17\n\x15UpdateBMCInfoResponse\"G\n\x1aWaitForMachineEventRequest\x12)\n\tpartition\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"\xa7\x01\n\x1bWaitForMachineEventResponse\x12\x45\n\x0b\x62mc_command\x18\x01 \x01(\x0e\x32$.metalstack.api.v2.MachineBMCCommandR\nbmcCommand\x12\x41\n\x0cmachine_ipmi\x18\x02 \x01(\x0b\x32\x1e.metalstack.api.v2.MachineIPMIR\x0bmachineIpmi2\x89\x02\n\nBMCService\x12q\n\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x87\x01\n\x13WaitForMachineEvent\x12/.metalstack.infra.v2.WaitForMachineEventRequest\x1a\x30.metalstack.infra.v2.WaitForMachineEventResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01(\x01\x30\x01\x42\xcc\x01\n\x17\x63om.metalstack.infra.v2B\x08\x42mcProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,12 +36,20 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.infra.v2.bmc_pb2
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.infra.v2B\010BmcProtoP\001Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\242\002\003MIX\252\002\023Metalstack.Infra.V2\312\002\023Metalstack\\Infra\\V2\342\002\037Metalstack\\Infra\\V2\\GPBMetadata\352\002\025Metalstack::Infra::V2'
+  _globals['_WAITFORMACHINEEVENTREQUEST'].fields_by_name['partition']._loaded_options = None
+  _globals['_WAITFORMACHINEEVENTREQUEST'].fields_by_name['partition']._serialized_options = b'\272H\010r\006\320\263\256\261\002\001'
   _globals['_BMCSERVICE'].methods_by_name['UpdateBMCInfo']._loaded_options = None
   _globals['_BMCSERVICE'].methods_by_name['UpdateBMCInfo']._serialized_options = b'\340\363\030\002\352\363\030\001\001'
-  _globals['_UPDATEBMCINFOREQUEST']._serialized_start=86
-  _globals['_UPDATEBMCINFOREQUEST']._serialized_end=108
-  _globals['_UPDATEBMCINFORESPONSE']._serialized_start=110
-  _globals['_UPDATEBMCINFORESPONSE']._serialized_end=133
-  _globals['_BMCSERVICE']._serialized_start=135
-  _globals['_BMCSERVICE']._serialized_end=262
+  _globals['_BMCSERVICE'].methods_by_name['WaitForMachineEvent']._loaded_options = None
+  _globals['_BMCSERVICE'].methods_by_name['WaitForMachineEvent']._serialized_options = b'\340\363\030\002\352\363\030\001\001'
+  _globals['_UPDATEBMCINFOREQUEST']._serialized_start=190
+  _globals['_UPDATEBMCINFOREQUEST']._serialized_end=212
+  _globals['_UPDATEBMCINFORESPONSE']._serialized_start=214
+  _globals['_UPDATEBMCINFORESPONSE']._serialized_end=237
+  _globals['_WAITFORMACHINEEVENTREQUEST']._serialized_start=239
+  _globals['_WAITFORMACHINEEVENTREQUEST']._serialized_end=310
+  _globals['_WAITFORMACHINEEVENTRESPONSE']._serialized_start=313
+  _globals['_WAITFORMACHINEEVENTRESPONSE']._serialized_end=480
+  _globals['_BMCSERVICE']._serialized_start=483
+  _globals['_BMCSERVICE']._serialized_end=748
 # @@protoc_insertion_point(module_scope)
