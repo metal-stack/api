@@ -38,6 +38,7 @@ type (
 		Switch() adminv2connect.SwitchServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
+		VPN() adminv2connect.VPNServiceClient
 	}
 
 	adminv2 struct {
@@ -52,6 +53,7 @@ type (
 		switchservice     adminv2connect.SwitchServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
 		tokenservice      adminv2connect.TokenServiceClient
+		vpnservice        adminv2connect.VPNServiceClient
 	}
 
 	Apiv2 interface {
@@ -212,6 +214,12 @@ func (c *client) Adminv2() Adminv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		vpnservice: adminv2connect.NewVPNServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 	}
 	return a
 }
@@ -248,6 +256,9 @@ func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 }
 func (c *adminv2) Token() adminv2connect.TokenServiceClient {
 	return c.tokenservice
+}
+func (c *adminv2) VPN() adminv2connect.VPNServiceClient {
+	return c.vpnservice
 }
 
 func (c *client) Apiv2() Apiv2 {

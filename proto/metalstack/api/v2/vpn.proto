@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "google/protobuf/timestamp.proto";
+
+// VPNNode is a machine connected to the vpn
+message VPNNode {
+  // Id of this node
+  uint64 id = 1;
+  // Name of this node
+  string name = 2;
+  // Project of this node, maps to a project
+  string project = 3;
+  // IPAddresses of this node in the vpn
+  repeated string ip_addresses = 4;
+  // LastSeen timestamp when this node reached out the the control plane
+  google.protobuf.Timestamp last_seen = 5;
+  // Online indicates if this node is online
+  bool online = 6;
+}

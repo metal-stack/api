@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/vpn.proto";
+
+// VPNService serves vpn related functions
+service VPNService {
+  // AuthKey generates a authkey for a project to join a machine to the project vpn
+  rpc AuthKey(VPNServiceAuthKeyRequest) returns (VPNServiceAuthKeyResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // ListNodes returns a list of machines actually connected to the vpn
+  rpc ListNodes(VPNServiceListNodesRequest) returns (VPNServiceListNodesResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+}
+
+// ------------------------ Service Messages ----------------------------------
+
+// VPNServiceAuthKeyRequest is the request payload for a vpn authkey request.
+message VPNServiceAuthKeyRequest {
+  // Project for which a vpn authkey should be generated.
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // Ephemeral defines if the authkey should be ephemeral.
+  bool ephemeral = 2;
+  // Expires defines the duration after which the authkey expires.
+  google.protobuf.Duration expires = 3;
+}
+
+// VPNServiceAuthKeyResponse is the request payload for a authkey response
+message VPNServiceAuthKeyResponse {
+  // Address is the address of the vpn control plane.
+  string address = 1;
+  // AuthKey is the key to connect to the vpn at the given address.
+  // This key can only be seen once.
+  string auth_key = 2;
+}
+
+// VPNServiceListNodesRequest is the request payload for a vpn list nodes request
+message VPNServiceListNodesRequest {
+  // Project if given only nodes of this user are returned
+  optional string project = 1;
+}
+
+// VPNServiceListNodesResponse is the response payload for a vpn list nodes request
+message VPNServiceListNodesResponse {
+  // Nodes connected to the vpn
+  repeated metalstack.api.v2.VPNNode nodes = 1;
+}
