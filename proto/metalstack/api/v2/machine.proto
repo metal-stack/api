@@ -677,7 +677,8 @@ message MachineVPN {
   string auth_key = 2;
   // Connected indicate if this machine is connected to the VPN
   bool connected = 3;
-  // TODO add machine ips
+  // IPs of the machine connected to the vpn
+  repeated string ips = 5 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
 // MachineLiveliness specifies the liveliness of a machine
@@ -796,6 +797,8 @@ message MachineAllocationQuery {
   optional MachineAllocationType allocation_type = 7 [(buf.validate.field).enum.defined_only = true];
   // Labels for which this machine allocation should get filtered
   optional Labels labels = 8;
+  // VPN query if this machine has a vpn configuration
+  optional MachineVPN vpn = 9;
 }
 
 // MachineNetworkQuery network specific machine queries

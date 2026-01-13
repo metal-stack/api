@@ -541,3 +541,49 @@ func (_c *Adminv2_Token_Call) RunAndReturn(run func() adminv2connect.TokenServic
 	_c.Call.Return(run)
 	return _c
 }
+
+// VPN provides a mock function for the type Adminv2
+func (_mock *Adminv2) VPN() adminv2connect.VPNServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for VPN")
+	}
+
+	var r0 adminv2connect.VPNServiceClient
+	if returnFunc, ok := ret.Get(0).(func() adminv2connect.VPNServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.VPNServiceClient)
+		}
+	}
+	return r0
+}
+
+// Adminv2_VPN_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'VPN'
+type Adminv2_VPN_Call struct {
+	*mock.Call
+}
+
+// VPN is a helper method to define mock.On call
+func (_e *Adminv2_Expecter) VPN() *Adminv2_VPN_Call {
+	return &Adminv2_VPN_Call{Call: _e.mock.On("VPN")}
+}
+
+func (_c *Adminv2_VPN_Call) Run(run func()) *Adminv2_VPN_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Adminv2_VPN_Call) Return(vPNServiceClient adminv2connect.VPNServiceClient) *Adminv2_VPN_Call {
+	_c.Call.Return(vPNServiceClient)
+	return _c
+}
+
+func (_c *Adminv2_VPN_Call) RunAndReturn(run func() adminv2connect.VPNServiceClient) *Adminv2_VPN_Call {
+	_c.Call.Return(run)
+	return _c
+}

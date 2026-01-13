@@ -13,6 +13,7 @@ import metalstack.admin.v2.size_connect as admin_size_connect
 import metalstack.admin.v2.switch_connect as admin_switch_connect
 import metalstack.admin.v2.tenant_connect as admin_tenant_connect
 import metalstack.admin.v2.token_connect as admin_token_connect
+import metalstack.admin.v2.vpn_connect as admin_vpn_connect
 
 import metalstack.api.v2.filesystem_connect as api_filesystem_connect
 import metalstack.api.v2.health_connect as api_health_connect
@@ -96,6 +97,9 @@ class Client:
 
         def token(self):
             return admin_token_connect.TokenServiceClientSync(address=self._baseurl, session=self._session)
+
+        def vpn(self):
+            return admin_vpn_connect.VPNServiceClientSync(address=self._baseurl, session=self._session)
 
 
     class _Apiv2:

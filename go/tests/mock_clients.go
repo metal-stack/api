@@ -43,6 +43,7 @@ type (
 		switchservice     *adminv2mocks.SwitchServiceClient
 		tenantservice     *adminv2mocks.TenantServiceClient
 		tokenservice      *adminv2mocks.TokenServiceClient
+		vpnservice        *adminv2mocks.VPNServiceClient
 	}
 
 	Adminv2MockFns struct {
@@ -57,6 +58,7 @@ type (
 		Switch     func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
+		VPN        func(m *mock.Mock)
 	}
 	apiv2 struct {
 		filesystemservice *apiv2mocks.FilesystemServiceClient
@@ -145,6 +147,7 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		switchservice:     adminv2mocks.NewSwitchServiceClient(t),
 		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
 		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
+		vpnservice:        adminv2mocks.NewVPNServiceClient(t),
 	}
 
 	if fns != nil {
@@ -180,6 +183,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		}
 		if fns.Token != nil {
 			fns.Token(&a.tokenservice.Mock)
+		}
+		if fns.VPN != nil {
+			fns.VPN(&a.vpnservice.Mock)
 		}
 
 	}
@@ -219,6 +225,9 @@ func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 }
 func (c *adminv2) Token() adminv2connect.TokenServiceClient {
 	return c.tokenservice
+}
+func (c *adminv2) VPN() adminv2connect.VPNServiceClient {
+	return c.vpnservice
 }
 
 func (w wrapper) Apiv2(fns *Apiv2MockFns) *apiv2 {
