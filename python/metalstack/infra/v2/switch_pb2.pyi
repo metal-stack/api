@@ -39,7 +39,7 @@ class SwitchServiceRegisterResponse(_message.Message):
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
 
 class SwitchServiceHeartbeatRequest(_message.Message):
-    __slots__ = ("id", "duration", "error", "port_states", "bgp_port_states", "bgp_routes")
+    __slots__ = ("id", "duration", "error", "port_states", "bgp_port_states", "bgp_routes", "lldp_neighbors")
     class PortStatesEntry(_message.Message):
         __slots__ = ("key", "value")
         KEY_FIELD_NUMBER: _ClassVar[int]
@@ -60,13 +60,15 @@ class SwitchServiceHeartbeatRequest(_message.Message):
     PORT_STATES_FIELD_NUMBER: _ClassVar[int]
     BGP_PORT_STATES_FIELD_NUMBER: _ClassVar[int]
     BGP_ROUTES_FIELD_NUMBER: _ClassVar[int]
+    LLDP_NEIGHBORS_FIELD_NUMBER: _ClassVar[int]
     id: str
     duration: _duration_pb2.Duration
     error: str
     port_states: _containers.ScalarMap[str, _switch_pb2.SwitchPortStatus]
     bgp_port_states: _containers.MessageMap[str, _switch_pb2.SwitchBGPPortState]
     bgp_routes: _containers.RepeatedCompositeFieldContainer[BGPRoute]
-    def __init__(self, id: _Optional[str] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ..., port_states: _Optional[_Mapping[str, _switch_pb2.SwitchPortStatus]] = ..., bgp_port_states: _Optional[_Mapping[str, _switch_pb2.SwitchBGPPortState]] = ..., bgp_routes: _Optional[_Iterable[_Union[BGPRoute, _Mapping]]] = ...) -> None: ...
+    lldp_neighbors: _containers.RepeatedCompositeFieldContainer[LLDPNeighbor]
+    def __init__(self, id: _Optional[str] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ..., port_states: _Optional[_Mapping[str, _switch_pb2.SwitchPortStatus]] = ..., bgp_port_states: _Optional[_Mapping[str, _switch_pb2.SwitchBGPPortState]] = ..., bgp_routes: _Optional[_Iterable[_Union[BGPRoute, _Mapping]]] = ..., lldp_neighbors: _Optional[_Iterable[_Union[LLDPNeighbor, _Mapping]]] = ...) -> None: ...
 
 class SwitchServiceHeartbeatResponse(_message.Message):
     __slots__ = ("id", "last_sync", "last_sync_error")
@@ -93,3 +95,13 @@ class BGPRoute(_message.Message):
     CIDR_FIELD_NUMBER: _ClassVar[int]
     cidr: str
     def __init__(self, cidr: _Optional[str] = ...) -> None: ...
+
+class LLDPNeighbor(_message.Message):
+    __slots__ = ("remote_host", "local_port", "remote_port")
+    REMOTE_HOST_FIELD_NUMBER: _ClassVar[int]
+    LOCAL_PORT_FIELD_NUMBER: _ClassVar[int]
+    REMOTE_PORT_FIELD_NUMBER: _ClassVar[int]
+    remote_host: str
+    local_port: str
+    remote_port: str
+    def __init__(self, remote_host: _Optional[str] = ..., local_port: _Optional[str] = ..., remote_port: _Optional[str] = ...) -> None: ...

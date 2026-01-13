@@ -222,8 +222,10 @@ type SwitchServiceHeartbeatRequest struct {
 	PortStates map[string]v2.SwitchPortStatus `protobuf:"bytes,4,rep,name=port_states,json=portStates,proto3" json:"port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.SwitchPortStatus"`
 	// BgpPortStates maps port identifiers to the respective port's BGP state.
 	BgpPortStates map[string]*v2.SwitchBGPPortState `protobuf:"bytes,5,rep,name=bgp_port_states,json=bgpPortStates,proto3" json:"bgp_port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	// BGP routes collected on the switch.
-	BgpRoutes     []*BGPRoute `protobuf:"bytes,6,rep,name=bgp_routes,json=bgpRoutes,proto3" json:"bgp_routes,omitempty"`
+	// BGPRoutes collected on the switch.
+	BgpRoutes []*BGPRoute `protobuf:"bytes,6,rep,name=bgp_routes,json=bgpRoutes,proto3" json:"bgp_routes,omitempty"`
+	// LLDPNeighbors known to the switch.
+	LldpNeighbors []*LLDPNeighbor `protobuf:"bytes,7,rep,name=lldp_neighbors,json=lldpNeighbors,proto3" json:"lldp_neighbors,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -296,6 +298,13 @@ func (x *SwitchServiceHeartbeatRequest) GetBgpPortStates() map[string]*v2.Switch
 func (x *SwitchServiceHeartbeatRequest) GetBgpRoutes() []*BGPRoute {
 	if x != nil {
 		return x.BgpRoutes
+	}
+	return nil
+}
+
+func (x *SwitchServiceHeartbeatRequest) GetLldpNeighbors() []*LLDPNeighbor {
+	if x != nil {
+		return x.LldpNeighbors
 	}
 	return nil
 }
@@ -474,6 +483,72 @@ func (x *BGPRoute) GetCidr() string {
 	return ""
 }
 
+// LLDPNeighbor contains details about a neighbor learned via LLDP.
+type LLDPNeighbor struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// RemoteHost is the neighbor's name as given via 'System Name TLV' field of a LLDP paket.
+	// Usually this is simply the neighbor's hostname.
+	RemoteHost string `protobuf:"bytes,1,opt,name=remote_host,json=remoteHost,proto3" json:"remote_host,omitempty"`
+	// LocalPort is the name of the local port that is connected to the neighbor.
+	LocalPort string `protobuf:"bytes,2,opt,name=local_port,json=localPort,proto3" json:"local_port,omitempty"`
+	// RemotePort is the neighbor's port name as sent via `Port Description TLV`.
+	// Don't mix it up with `Port ID TLV`.
+	RemotePort    string `protobuf:"bytes,3,opt,name=remote_port,json=remotePort,proto3" json:"remote_port,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LLDPNeighbor) Reset() {
+	*x = LLDPNeighbor{}
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LLDPNeighbor) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LLDPNeighbor) ProtoMessage() {}
+
+func (x *LLDPNeighbor) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LLDPNeighbor.ProtoReflect.Descriptor instead.
+func (*LLDPNeighbor) Descriptor() ([]byte, []int) {
+	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *LLDPNeighbor) GetRemoteHost() string {
+	if x != nil {
+		return x.RemoteHost
+	}
+	return ""
+}
+
+func (x *LLDPNeighbor) GetLocalPort() string {
+	if x != nil {
+		return x.LocalPort
+	}
+	return ""
+}
+
+func (x *LLDPNeighbor) GetRemotePort() string {
+	if x != nil {
+		return x.RemotePort
+	}
+	return ""
+}
+
 var File_metalstack_infra_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
@@ -487,7 +562,7 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\x1cSwitchServiceRegisterRequest\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"R\n" +
 	"\x1dSwitchServiceRegisterResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xf9\x04\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xc3\x05\n" +
 	"\x1dSwitchServiceHeartbeatRequest\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x125\n" +
@@ -497,7 +572,8 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"portStates\x12m\n" +
 	"\x0fbgp_port_states\x18\x05 \x03(\v2E.metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntryR\rbgpPortStates\x12<\n" +
 	"\n" +
-	"bgp_routes\x18\x06 \x03(\v2\x1d.metalstack.infra.v2.BGPRouteR\tbgpRoutes\x1ab\n" +
+	"bgp_routes\x18\x06 \x03(\v2\x1d.metalstack.infra.v2.BGPRouteR\tbgpRoutes\x12H\n" +
+	"\x0elldp_neighbors\x18\a \x03(\v2!.metalstack.infra.v2.LLDPNeighborR\rlldpNeighbors\x1ab\n" +
 	"\x0fPortStatesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x129\n" +
 	"\x05value\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusR\x05value:\x028\x01\x1ag\n" +
@@ -517,7 +593,15 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\x06_error\"c\n" +
 	"\bBGPRoute\x12\x12\n" +
 	"\x04cidr\x18\x01 \x01(\tR\x04cidr:C\xbaH@\x1a>\n" +
-	"\x04cidr\x12\x1ecidr must be a valid ip prefix\x1a\x16this.cidr.isIpPrefix()2\xfe\x02\n" +
+	"\x04cidr\x12\x1ecidr must be a valid ip prefix\x1a\x16this.cidr.isIpPrefix()\"\x98\x01\n" +
+	"\fLLDPNeighbor\x12.\n" +
+	"\vremote_host\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\n" +
+	"remoteHost\x12*\n" +
+	"\n" +
+	"local_port\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\tlocalPort\x12,\n" +
+	"\vremote_port\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\n" +
+	"remotePort2\xfe\x02\n" +
 	"\rSwitchService\x12n\n" +
 	"\x03Get\x12,.metalstack.infra.v2.SwitchServiceGetRequest\x1a-.metalstack.infra.v2.SwitchServiceGetResponse\"\n" +
 	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12|\n" +
@@ -537,7 +621,7 @@ func file_metalstack_infra_v2_switch_proto_rawDescGZIP() []byte {
 	return file_metalstack_infra_v2_switch_proto_rawDescData
 }
 
-var file_metalstack_infra_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_metalstack_infra_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_metalstack_infra_v2_switch_proto_goTypes = []any{
 	(*SwitchServiceGetRequest)(nil),        // 0: metalstack.infra.v2.SwitchServiceGetRequest
 	(*SwitchServiceGetResponse)(nil),       // 1: metalstack.infra.v2.SwitchServiceGetResponse
@@ -547,39 +631,41 @@ var file_metalstack_infra_v2_switch_proto_goTypes = []any{
 	(*SwitchServiceHeartbeatResponse)(nil), // 5: metalstack.infra.v2.SwitchServiceHeartbeatResponse
 	(*SwitchSync)(nil),                     // 6: metalstack.infra.v2.SwitchSync
 	(*BGPRoute)(nil),                       // 7: metalstack.infra.v2.BGPRoute
-	nil,                                    // 8: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
-	nil,                                    // 9: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
-	(*v2.Switch)(nil),                      // 10: metalstack.api.v2.Switch
-	(*durationpb.Duration)(nil),            // 11: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil),          // 12: google.protobuf.Timestamp
-	(v2.SwitchPortStatus)(0),               // 13: metalstack.api.v2.SwitchPortStatus
-	(*v2.SwitchBGPPortState)(nil),          // 14: metalstack.api.v2.SwitchBGPPortState
+	(*LLDPNeighbor)(nil),                   // 8: metalstack.infra.v2.LLDPNeighbor
+	nil,                                    // 9: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
+	nil,                                    // 10: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
+	(*v2.Switch)(nil),                      // 11: metalstack.api.v2.Switch
+	(*durationpb.Duration)(nil),            // 12: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),          // 13: google.protobuf.Timestamp
+	(v2.SwitchPortStatus)(0),               // 14: metalstack.api.v2.SwitchPortStatus
+	(*v2.SwitchBGPPortState)(nil),          // 15: metalstack.api.v2.SwitchBGPPortState
 }
 var file_metalstack_infra_v2_switch_proto_depIdxs = []int32{
-	10, // 0: metalstack.infra.v2.SwitchServiceGetResponse.switch:type_name -> metalstack.api.v2.Switch
-	10, // 1: metalstack.infra.v2.SwitchServiceRegisterRequest.switch:type_name -> metalstack.api.v2.Switch
-	10, // 2: metalstack.infra.v2.SwitchServiceRegisterResponse.switch:type_name -> metalstack.api.v2.Switch
-	11, // 3: metalstack.infra.v2.SwitchServiceHeartbeatRequest.duration:type_name -> google.protobuf.Duration
-	8,  // 4: metalstack.infra.v2.SwitchServiceHeartbeatRequest.port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
-	9,  // 5: metalstack.infra.v2.SwitchServiceHeartbeatRequest.bgp_port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
+	11, // 0: metalstack.infra.v2.SwitchServiceGetResponse.switch:type_name -> metalstack.api.v2.Switch
+	11, // 1: metalstack.infra.v2.SwitchServiceRegisterRequest.switch:type_name -> metalstack.api.v2.Switch
+	11, // 2: metalstack.infra.v2.SwitchServiceRegisterResponse.switch:type_name -> metalstack.api.v2.Switch
+	12, // 3: metalstack.infra.v2.SwitchServiceHeartbeatRequest.duration:type_name -> google.protobuf.Duration
+	9,  // 4: metalstack.infra.v2.SwitchServiceHeartbeatRequest.port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
+	10, // 5: metalstack.infra.v2.SwitchServiceHeartbeatRequest.bgp_port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
 	7,  // 6: metalstack.infra.v2.SwitchServiceHeartbeatRequest.bgp_routes:type_name -> metalstack.infra.v2.BGPRoute
-	6,  // 7: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync:type_name -> metalstack.infra.v2.SwitchSync
-	6,  // 8: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync_error:type_name -> metalstack.infra.v2.SwitchSync
-	12, // 9: metalstack.infra.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
-	11, // 10: metalstack.infra.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
-	13, // 11: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry.value:type_name -> metalstack.api.v2.SwitchPortStatus
-	14, // 12: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry.value:type_name -> metalstack.api.v2.SwitchBGPPortState
-	0,  // 13: metalstack.infra.v2.SwitchService.Get:input_type -> metalstack.infra.v2.SwitchServiceGetRequest
-	2,  // 14: metalstack.infra.v2.SwitchService.Register:input_type -> metalstack.infra.v2.SwitchServiceRegisterRequest
-	4,  // 15: metalstack.infra.v2.SwitchService.Heartbeat:input_type -> metalstack.infra.v2.SwitchServiceHeartbeatRequest
-	1,  // 16: metalstack.infra.v2.SwitchService.Get:output_type -> metalstack.infra.v2.SwitchServiceGetResponse
-	3,  // 17: metalstack.infra.v2.SwitchService.Register:output_type -> metalstack.infra.v2.SwitchServiceRegisterResponse
-	5,  // 18: metalstack.infra.v2.SwitchService.Heartbeat:output_type -> metalstack.infra.v2.SwitchServiceHeartbeatResponse
-	16, // [16:19] is the sub-list for method output_type
-	13, // [13:16] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	8,  // 7: metalstack.infra.v2.SwitchServiceHeartbeatRequest.lldp_neighbors:type_name -> metalstack.infra.v2.LLDPNeighbor
+	6,  // 8: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync:type_name -> metalstack.infra.v2.SwitchSync
+	6,  // 9: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync_error:type_name -> metalstack.infra.v2.SwitchSync
+	13, // 10: metalstack.infra.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
+	12, // 11: metalstack.infra.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
+	14, // 12: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry.value:type_name -> metalstack.api.v2.SwitchPortStatus
+	15, // 13: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry.value:type_name -> metalstack.api.v2.SwitchBGPPortState
+	0,  // 14: metalstack.infra.v2.SwitchService.Get:input_type -> metalstack.infra.v2.SwitchServiceGetRequest
+	2,  // 15: metalstack.infra.v2.SwitchService.Register:input_type -> metalstack.infra.v2.SwitchServiceRegisterRequest
+	4,  // 16: metalstack.infra.v2.SwitchService.Heartbeat:input_type -> metalstack.infra.v2.SwitchServiceHeartbeatRequest
+	1,  // 17: metalstack.infra.v2.SwitchService.Get:output_type -> metalstack.infra.v2.SwitchServiceGetResponse
+	3,  // 18: metalstack.infra.v2.SwitchService.Register:output_type -> metalstack.infra.v2.SwitchServiceRegisterResponse
+	5,  // 19: metalstack.infra.v2.SwitchService.Heartbeat:output_type -> metalstack.infra.v2.SwitchServiceHeartbeatResponse
+	17, // [17:20] is the sub-list for method output_type
+	14, // [14:17] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_infra_v2_switch_proto_init() }
@@ -595,7 +681,7 @@ func file_metalstack_infra_v2_switch_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_infra_v2_switch_proto_rawDesc), len(file_metalstack_infra_v2_switch_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
