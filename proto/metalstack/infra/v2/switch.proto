@@ -71,6 +71,10 @@ message SwitchServiceHeartbeatRequest {
   map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
   // BgpPortStates maps port identifiers to the respective port's BGP state.
   map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
+  // BGPRoutes collected on the switch.
+  repeated BGPRoute bgp_routes = 6;
+  // LLDPNeighbors known to the switch.
+  repeated LLDPNeighbor lldp_neighbors = 7;
 }
 
 // SwitchServiceHeartbeatResponse.
@@ -91,4 +95,30 @@ message SwitchSync {
   google.protobuf.Duration duration = 2;
   // Error if any occurred.
   optional string error = 3;
+}
+
+// BGPRoute represents the route to a prefix.
+message BGPRoute {
+  // CIDR of the network that is routed to.
+  string cidr = 1;
+  option (buf.validate.message).cel = {
+    id: "cidr"
+    message: "cidr must be a valid ip prefix"
+    expression: "this.cidr.isIpPrefix()"
+  };
+}
+
+// LLDPNeighbor contains details about a neighbor learned via LLDP.
+message LLDPNeighbor {
+  // RemoteHost is the neighbor's name as given via 'System Name TLV' field of a LLDP packet.
+  // Usually this is simply the neighbor's hostname.
+  string remote_host = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+  // LocalPort is the name of the local port that is connected to the neighbor.
+  string local_port = 2 [(buf.validate.field).string = {[metalstack.api.v2.is_name]: true}];
+  // RemotePort is the neighbor's port name as sent via `Port Description TLV`.
+  // Don't mix it up with `Port ID TLV`.
+  string remote_port = 3 [(buf.validate.field).string = {[metalstack.api.v2.is_name]: true}];
 }

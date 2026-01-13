@@ -1413,6 +1413,10 @@
                   <a href="#metalstack.api.v2.SwitchReplaceMode"><span class="badge">E</span>SwitchReplaceMode</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.SwitchType"><span class="badge">E</span>SwitchType</a>
+                </li>
+              
               
               
             </ul>
@@ -2029,6 +2033,14 @@
           <li>
             <a href="#metalstack%2finfra%2fv2%2fswitch.proto">metalstack/infra/v2/switch.proto</a>
             <ul>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BGPRoute"><span class="badge">M</span>BGPRoute</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.LLDPNeighbor"><span class="badge">M</span>LLDPNeighbor</a>
+                </li>
               
                 <li>
                   <a href="#metalstack.infra.v2.SwitchServiceGetRequest"><span class="badge">M</span>SwitchServiceGetRequest</a>
@@ -11620,6 +11632,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><p>MachineConnections map machines to the nics they are connected to. </p></td>
                 </tr>
               
+                <tr>
+                  <td>type</td>
+                  <td><a href="#metalstack.api.v2.SwitchType">SwitchType</a></td>
+                  <td></td>
+                  <td><p>Type is the role of the switch. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -12016,6 +12035,47 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td>SWITCH_REPLACE_MODE_OPERATIONAL</td>
                 <td>2</td>
                 <td><p>SWITCH_REPLACE_MODE_OPERATIONAL means this switch is operational and cannot be replaced.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.SwitchType">SwitchType</h3>
+        <p>SwitchType represents the role of a switch.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SWITCH_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>SWITCH_TYPE_UNSPECIFIED is not specified.</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_TYPE_LEAF</td>
+                <td>1</td>
+                <td><p>SWITCH_TYPE_LEAF is a leaf switch.</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_TYPE_EXIT</td>
+                <td>2</td>
+                <td><p>SWITCH_TYPE_EXIT is an exit switch.</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_TYPE_SPINE</td>
+                <td>3</td>
+                <td><p>SWITCH_TYPE_SPINE is a spine switch.</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_TYPE_MGMT</td>
+                <td>4</td>
+                <td><p>SWITCH_TYPE_MGMT is a switch used only for management tasks.</p></td>
               </tr>
             
           </tbody>
@@ -15894,6 +15954,70 @@ This key can only be seen once. </p></td>
       <p></p>
 
       
+        <h3 id="metalstack.infra.v2.BGPRoute">BGPRoute</h3>
+        <p>BGPRoute represents the route to a prefix.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>cidr</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>CIDR of the network that is routed to. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.LLDPNeighbor">LLDPNeighbor</h3>
+        <p>LLDPNeighbor contains details about a neighbor learned via LLDP.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>remote_host</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>RemoteHost is the neighbor&#39;s name as given via &#39;System Name TLV&#39; field of a LLDP packet.
+Usually this is simply the neighbor&#39;s hostname. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>local_port</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>LocalPort is the name of the local port that is connected to the neighbor. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>remote_port</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>RemotePort is the neighbor&#39;s port name as sent via `Port Description TLV`.
+Don&#39;t mix it up with `Port ID TLV`. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.infra.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</h3>
         <p>SwitchServiceGetRequest.</p>
 
@@ -15985,6 +16109,20 @@ This key can only be seen once. </p></td>
                   <td><a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry">SwitchServiceHeartbeatRequest.BgpPortStatesEntry</a></td>
                   <td>repeated</td>
                   <td><p>BgpPortStates maps port identifiers to the respective port&#39;s BGP state. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bgp_routes</td>
+                  <td><a href="#metalstack.infra.v2.BGPRoute">BGPRoute</a></td>
+                  <td>repeated</td>
+                  <td><p>BGPRoutes collected on the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>lldp_neighbors</td>
+                  <td><a href="#metalstack.infra.v2.LLDPNeighbor">LLDPNeighbor</a></td>
+                  <td>repeated</td>
+                  <td><p>LLDPNeighbors known to the switch. </p></td>
                 </tr>
               
             </tbody>

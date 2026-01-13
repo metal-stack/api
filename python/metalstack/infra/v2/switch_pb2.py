@@ -30,7 +30,7 @@ from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_
 from metalstack.api.v2 import switch_pb2 as metalstack_dot_api_dot_v2_dot_switch__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n metalstack/infra/v2/switch.proto\x12\x13metalstack.infra.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/switch.proto\"8\n\x17SwitchServiceGetRequest\x12\x1d\n\x02id\x18\x01 \x01(\tB\r\xbaH\nr\x08h\x01\xc0\xb3\xae\xb1\x02\x01R\x02id\"M\n\x18SwitchServiceGetResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"Q\n\x1cSwitchServiceRegisterRequest\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"R\n\x1dSwitchServiceRegisterResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"\xbb\x04\n\x1dSwitchServiceHeartbeatRequest\x12\x1d\n\x02id\x18\x01 \x01(\tB\r\xbaH\nr\x08h\x01\xc0\xb3\xae\xb1\x02\x01R\x02id\x12\x35\n\x08\x64uration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationR\x08\x64uration\x12\x19\n\x05\x65rror\x18\x03 \x01(\tH\x00R\x05\x65rror\x88\x01\x01\x12\x63\n\x0bport_states\x18\x04 \x03(\x0b\x32\x42.metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntryR\nportStates\x12m\n\x0f\x62gp_port_states\x18\x05 \x03(\x0b\x32\x45.metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntryR\rbgpPortStates\x1a\x62\n\x0fPortStatesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x39\n\x05value\x18\x02 \x01(\x0e\x32#.metalstack.api.v2.SwitchPortStatusR\x05value:\x02\x38\x01\x1ag\n\x12\x42gpPortStatesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12;\n\x05value\x18\x02 \x01(\x0b\x32%.metalstack.api.v2.SwitchBGPPortStateR\x05value:\x02\x38\x01\x42\x08\n\x06_error\"\xb7\x01\n\x1eSwitchServiceHeartbeatResponse\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12<\n\tlast_sync\x18\x02 \x01(\x0b\x32\x1f.metalstack.infra.v2.SwitchSyncR\x08lastSync\x12G\n\x0flast_sync_error\x18\x03 \x01(\x0b\x32\x1f.metalstack.infra.v2.SwitchSyncR\rlastSyncError\"\x98\x01\n\nSwitchSync\x12.\n\x04time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x04time\x12\x35\n\x08\x64uration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationR\x08\x64uration\x12\x19\n\x05\x65rror\x18\x03 \x01(\tH\x00R\x05\x65rror\x88\x01\x01\x42\x08\n\x06_error2\xfe\x02\n\rSwitchService\x12n\n\x03Get\x12,.metalstack.infra.v2.SwitchServiceGetRequest\x1a-.metalstack.infra.v2.SwitchServiceGetResponse\"\n\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12|\n\x08Register\x12\x31.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a\x32.metalstack.infra.v2.SwitchServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x7f\n\tHeartbeat\x12\x32.metalstack.infra.v2.SwitchServiceHeartbeatRequest\x1a\x33.metalstack.infra.v2.SwitchServiceHeartbeatResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x42\xcf\x01\n\x17\x63om.metalstack.infra.v2B\x0bSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n metalstack/infra/v2/switch.proto\x12\x13metalstack.infra.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/switch.proto\"8\n\x17SwitchServiceGetRequest\x12\x1d\n\x02id\x18\x01 \x01(\tB\r\xbaH\nr\x08h\x01\xc0\xb3\xae\xb1\x02\x01R\x02id\"M\n\x18SwitchServiceGetResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"Q\n\x1cSwitchServiceRegisterRequest\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"R\n\x1dSwitchServiceRegisterResponse\x12\x31\n\x06switch\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.SwitchR\x06switch\"\xc3\x05\n\x1dSwitchServiceHeartbeatRequest\x12\x1d\n\x02id\x18\x01 \x01(\tB\r\xbaH\nr\x08h\x01\xc0\xb3\xae\xb1\x02\x01R\x02id\x12\x35\n\x08\x64uration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationR\x08\x64uration\x12\x19\n\x05\x65rror\x18\x03 \x01(\tH\x00R\x05\x65rror\x88\x01\x01\x12\x63\n\x0bport_states\x18\x04 \x03(\x0b\x32\x42.metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntryR\nportStates\x12m\n\x0f\x62gp_port_states\x18\x05 \x03(\x0b\x32\x45.metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntryR\rbgpPortStates\x12<\n\nbgp_routes\x18\x06 \x03(\x0b\x32\x1d.metalstack.infra.v2.BGPRouteR\tbgpRoutes\x12H\n\x0elldp_neighbors\x18\x07 \x03(\x0b\x32!.metalstack.infra.v2.LLDPNeighborR\rlldpNeighbors\x1a\x62\n\x0fPortStatesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x39\n\x05value\x18\x02 \x01(\x0e\x32#.metalstack.api.v2.SwitchPortStatusR\x05value:\x02\x38\x01\x1ag\n\x12\x42gpPortStatesEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12;\n\x05value\x18\x02 \x01(\x0b\x32%.metalstack.api.v2.SwitchBGPPortStateR\x05value:\x02\x38\x01\x42\x08\n\x06_error\"\xb7\x01\n\x1eSwitchServiceHeartbeatResponse\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12<\n\tlast_sync\x18\x02 \x01(\x0b\x32\x1f.metalstack.infra.v2.SwitchSyncR\x08lastSync\x12G\n\x0flast_sync_error\x18\x03 \x01(\x0b\x32\x1f.metalstack.infra.v2.SwitchSyncR\rlastSyncError\"\x98\x01\n\nSwitchSync\x12.\n\x04time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x04time\x12\x35\n\x08\x64uration\x18\x02 \x01(\x0b\x32\x19.google.protobuf.DurationR\x08\x64uration\x12\x19\n\x05\x65rror\x18\x03 \x01(\tH\x00R\x05\x65rror\x88\x01\x01\x42\x08\n\x06_error\"c\n\x08\x42GPRoute\x12\x12\n\x04\x63idr\x18\x01 \x01(\tR\x04\x63idr:C\xbaH@\x1a>\n\x04\x63idr\x12\x1e\x63idr must be a valid ip prefix\x1a\x16this.cidr.isIpPrefix()\"\x98\x01\n\x0cLLDPNeighbor\x12.\n\x0bremote_host\x18\x01 \x01(\tB\r\xbaH\nr\x08h\x01\xc0\xb3\xae\xb1\x02\x01R\nremoteHost\x12*\n\nlocal_port\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\tlocalPort\x12,\n\x0bremote_port\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\nremotePort2\xfe\x02\n\rSwitchService\x12n\n\x03Get\x12,.metalstack.infra.v2.SwitchServiceGetRequest\x1a-.metalstack.infra.v2.SwitchServiceGetResponse\"\n\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12|\n\x08Register\x12\x31.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a\x32.metalstack.infra.v2.SwitchServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x7f\n\tHeartbeat\x12\x32.metalstack.infra.v2.SwitchServiceHeartbeatRequest\x1a\x33.metalstack.infra.v2.SwitchServiceHeartbeatResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x42\xcf\x01\n\x17\x63om.metalstack.infra.v2B\x0bSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -46,6 +46,14 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_SWITCHSERVICEHEARTBEATREQUEST_BGPPORTSTATESENTRY']._serialized_options = b'8\001'
   _globals['_SWITCHSERVICEHEARTBEATREQUEST'].fields_by_name['id']._loaded_options = None
   _globals['_SWITCHSERVICEHEARTBEATREQUEST'].fields_by_name['id']._serialized_options = b'\272H\nr\010h\001\300\263\256\261\002\001'
+  _globals['_BGPROUTE']._loaded_options = None
+  _globals['_BGPROUTE']._serialized_options = b'\272H@\032>\n\004cidr\022\036cidr must be a valid ip prefix\032\026this.cidr.isIpPrefix()'
+  _globals['_LLDPNEIGHBOR'].fields_by_name['remote_host']._loaded_options = None
+  _globals['_LLDPNEIGHBOR'].fields_by_name['remote_host']._serialized_options = b'\272H\nr\010h\001\300\263\256\261\002\001'
+  _globals['_LLDPNEIGHBOR'].fields_by_name['local_port']._loaded_options = None
+  _globals['_LLDPNEIGHBOR'].fields_by_name['local_port']._serialized_options = b'\272H\010r\006\300\263\256\261\002\001'
+  _globals['_LLDPNEIGHBOR'].fields_by_name['remote_port']._loaded_options = None
+  _globals['_LLDPNEIGHBOR'].fields_by_name['remote_port']._serialized_options = b'\272H\010r\006\300\263\256\261\002\001'
   _globals['_SWITCHSERVICE'].methods_by_name['Get']._loaded_options = None
   _globals['_SWITCHSERVICE'].methods_by_name['Get']._serialized_options = b'\340\363\030\002\352\363\030\002\001\002'
   _globals['_SWITCHSERVICE'].methods_by_name['Register']._loaded_options = None
@@ -61,15 +69,19 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_SWITCHSERVICEREGISTERRESPONSE']._serialized_start=477
   _globals['_SWITCHSERVICEREGISTERRESPONSE']._serialized_end=559
   _globals['_SWITCHSERVICEHEARTBEATREQUEST']._serialized_start=562
-  _globals['_SWITCHSERVICEHEARTBEATREQUEST']._serialized_end=1133
-  _globals['_SWITCHSERVICEHEARTBEATREQUEST_PORTSTATESENTRY']._serialized_start=920
-  _globals['_SWITCHSERVICEHEARTBEATREQUEST_PORTSTATESENTRY']._serialized_end=1018
-  _globals['_SWITCHSERVICEHEARTBEATREQUEST_BGPPORTSTATESENTRY']._serialized_start=1020
-  _globals['_SWITCHSERVICEHEARTBEATREQUEST_BGPPORTSTATESENTRY']._serialized_end=1123
-  _globals['_SWITCHSERVICEHEARTBEATRESPONSE']._serialized_start=1136
-  _globals['_SWITCHSERVICEHEARTBEATRESPONSE']._serialized_end=1319
-  _globals['_SWITCHSYNC']._serialized_start=1322
-  _globals['_SWITCHSYNC']._serialized_end=1474
-  _globals['_SWITCHSERVICE']._serialized_start=1477
-  _globals['_SWITCHSERVICE']._serialized_end=1859
+  _globals['_SWITCHSERVICEHEARTBEATREQUEST']._serialized_end=1269
+  _globals['_SWITCHSERVICEHEARTBEATREQUEST_PORTSTATESENTRY']._serialized_start=1056
+  _globals['_SWITCHSERVICEHEARTBEATREQUEST_PORTSTATESENTRY']._serialized_end=1154
+  _globals['_SWITCHSERVICEHEARTBEATREQUEST_BGPPORTSTATESENTRY']._serialized_start=1156
+  _globals['_SWITCHSERVICEHEARTBEATREQUEST_BGPPORTSTATESENTRY']._serialized_end=1259
+  _globals['_SWITCHSERVICEHEARTBEATRESPONSE']._serialized_start=1272
+  _globals['_SWITCHSERVICEHEARTBEATRESPONSE']._serialized_end=1455
+  _globals['_SWITCHSYNC']._serialized_start=1458
+  _globals['_SWITCHSYNC']._serialized_end=1610
+  _globals['_BGPROUTE']._serialized_start=1612
+  _globals['_BGPROUTE']._serialized_end=1711
+  _globals['_LLDPNEIGHBOR']._serialized_start=1714
+  _globals['_LLDPNEIGHBOR']._serialized_end=1866
+  _globals['_SWITCHSERVICE']._serialized_start=1869
+  _globals['_SWITCHSERVICE']._serialized_end=2251
 # @@protoc_insertion_point(module_scope)

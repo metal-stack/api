@@ -42,6 +42,8 @@ message Switch {
   SwitchOS os = 11;
   // MachineConnections map machines to the nics they are connected to.
   repeated MachineConnection machine_connections = 12;
+  // Type is the role of the switch.
+  SwitchType type = 13 [(buf.validate.field).enum.defined_only = true];
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.
@@ -188,4 +190,18 @@ enum SwitchPortStatus {
   SWITCH_PORT_STATUS_DOWN = 2 [(enum_string_value) = "down"];
   // SWITCH_PORT_STATUS_UNKNOWN means the status of this port is unknown.
   SWITCH_PORT_STATUS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
+}
+
+// SwitchType represents the role of a switch.
+enum SwitchType {
+  // SWITCH_TYPE_UNSPECIFIED is not specified.
+  SWITCH_TYPE_UNSPECIFIED = 0;
+  // SWITCH_TYPE_LEAF is a leaf switch.
+  SWITCH_TYPE_LEAF = 1 [(enum_string_value) = "leaf"];
+  // SWITCH_TYPE_EXIT is an exit switch.
+  SWITCH_TYPE_EXIT = 2 [(enum_string_value) = "exit"];
+  // SWITCH_TYPE_SPINE is a spine switch.
+  SWITCH_TYPE_SPINE = 3 [(enum_string_value) = "spine"];
+  // SWITCH_TYPE_MGMT is a switch used only for management tasks.
+  SWITCH_TYPE_MGMT = 4 [(enum_string_value) = "mgmt"];
 }

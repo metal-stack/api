@@ -41,6 +41,14 @@ class SwitchPortStatus(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SWITCH_PORT_STATUS_UP: _ClassVar[SwitchPortStatus]
     SWITCH_PORT_STATUS_DOWN: _ClassVar[SwitchPortStatus]
     SWITCH_PORT_STATUS_UNKNOWN: _ClassVar[SwitchPortStatus]
+
+class SwitchType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    SWITCH_TYPE_UNSPECIFIED: _ClassVar[SwitchType]
+    SWITCH_TYPE_LEAF: _ClassVar[SwitchType]
+    SWITCH_TYPE_EXIT: _ClassVar[SwitchType]
+    SWITCH_TYPE_SPINE: _ClassVar[SwitchType]
+    SWITCH_TYPE_MGMT: _ClassVar[SwitchType]
 BGP_STATE_UNSPECIFIED: BGPState
 BGP_STATE_IDLE: BGPState
 BGP_STATE_CONNECT: BGPState
@@ -58,9 +66,14 @@ SWITCH_PORT_STATUS_UNSPECIFIED: SwitchPortStatus
 SWITCH_PORT_STATUS_UP: SwitchPortStatus
 SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
 SWITCH_PORT_STATUS_UNKNOWN: SwitchPortStatus
+SWITCH_TYPE_UNSPECIFIED: SwitchType
+SWITCH_TYPE_LEAF: SwitchType
+SWITCH_TYPE_EXIT: SwitchType
+SWITCH_TYPE_SPINE: SwitchType
+SWITCH_TYPE_MGMT: SwitchType
 
 class Switch(_message.Message):
-    __slots__ = ("id", "meta", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections")
+    __slots__ = ("id", "meta", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections", "type")
     ID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
@@ -73,6 +86,7 @@ class Switch(_message.Message):
     NICS_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
     MACHINE_CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
+    TYPE_FIELD_NUMBER: _ClassVar[int]
     id: str
     meta: _common_pb2.Meta
     description: str
@@ -85,7 +99,8 @@ class Switch(_message.Message):
     nics: _containers.RepeatedCompositeFieldContainer[SwitchNic]
     os: SwitchOS
     machine_connections: _containers.RepeatedCompositeFieldContainer[MachineConnection]
-    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ...) -> None: ...
+    type: SwitchType
+    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ..., type: _Optional[_Union[SwitchType, str]] = ...) -> None: ...
 
 class SwitchOS(_message.Message):
     __slots__ = ("vendor", "version", "metal_core_version")
