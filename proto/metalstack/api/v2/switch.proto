@@ -192,18 +192,16 @@ enum SwitchPortStatus {
   SWITCH_PORT_STATUS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
 }
 
-// SwitchType represents the role of a switch
+// SwitchType represents the role of a switch.
 enum SwitchType {
-  // SWITCH_TYPE_UNSPECIFIED is not specified
+  // SWITCH_TYPE_UNSPECIFIED is not specified.
   SWITCH_TYPE_UNSPECIFIED = 0;
-  // SWITCH_TYPE_LEAF is a leaf switch
+  // SWITCH_TYPE_LEAF is a leaf switch.
   SWITCH_TYPE_LEAF = 1 [(enum_string_value) = "leaf"];
-  // SWITCH_TYPE_EXIT is an exit switch
+  // SWITCH_TYPE_EXIT is an exit switch.
   SWITCH_TYPE_EXIT = 2 [(enum_string_value) = "exit"];
-  // SWITCH_TYPE_SPINE is a spine switch
+  // SWITCH_TYPE_SPINE is a spine switch.
   SWITCH_TYPE_SPINE = 3 [(enum_string_value) = "spine"];
-  // SWITCH_TYPE_MGMTLEAF is a special type of leaf used only for management tasks
-  SWITCH_TYPE_MGMTLEAF = 4 [(enum_string_value) = "mgmtleaf"];
-  // SWITCH_TYPE_MGMTSPINE is a special type of spine used only for management tasks
-  SWITCH_TYPE_MGMTSPINE = 5 [(enum_string_value) = "mgmtspine"];
+  // SWITCH_TYPE_MGMT is a switch used only for management tasks.
+  SWITCH_TYPE_MGMT = 4 [(enum_string_value) = "mgmt"];
 }

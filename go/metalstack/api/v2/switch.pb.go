@@ -255,22 +255,20 @@ func (SwitchPortStatus) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{3}
 }
 
-// SwitchType represents the role of a switch
+// SwitchType represents the role of a switch.
 type SwitchType int32
 
 const (
-	// SWITCH_TYPE_UNSPECIFIED is not specified
+	// SWITCH_TYPE_UNSPECIFIED is not specified.
 	SwitchType_SWITCH_TYPE_UNSPECIFIED SwitchType = 0
-	// SWITCH_TYPE_LEAF is a leaf switch
+	// SWITCH_TYPE_LEAF is a leaf switch.
 	SwitchType_SWITCH_TYPE_LEAF SwitchType = 1
-	// SWITCH_TYPE_EXIT is an exit switch
+	// SWITCH_TYPE_EXIT is an exit switch.
 	SwitchType_SWITCH_TYPE_EXIT SwitchType = 2
-	// SWITCH_TYPE_SPINE is a spine switch
+	// SWITCH_TYPE_SPINE is a spine switch.
 	SwitchType_SWITCH_TYPE_SPINE SwitchType = 3
-	// SWITCH_TYPE_MGMTLEAF is a special type of leaf used only for management tasks
-	SwitchType_SWITCH_TYPE_MGMTLEAF SwitchType = 4
-	// SWITCH_TYPE_MGMTSPINE is a special type of spine used only for management tasks
-	SwitchType_SWITCH_TYPE_MGMTSPINE SwitchType = 5
+	// SWITCH_TYPE_MGMT is a switch used only for management tasks.
+	SwitchType_SWITCH_TYPE_MGMT SwitchType = 4
 )
 
 // Enum value maps for SwitchType.
@@ -280,16 +278,14 @@ var (
 		1: "SWITCH_TYPE_LEAF",
 		2: "SWITCH_TYPE_EXIT",
 		3: "SWITCH_TYPE_SPINE",
-		4: "SWITCH_TYPE_MGMTLEAF",
-		5: "SWITCH_TYPE_MGMTSPINE",
+		4: "SWITCH_TYPE_MGMT",
 	}
 	SwitchType_value = map[string]int32{
 		"SWITCH_TYPE_UNSPECIFIED": 0,
 		"SWITCH_TYPE_LEAF":        1,
 		"SWITCH_TYPE_EXIT":        2,
 		"SWITCH_TYPE_SPINE":       3,
-		"SWITCH_TYPE_MGMTLEAF":    4,
-		"SWITCH_TYPE_MGMTSPINE":   5,
+		"SWITCH_TYPE_MGMT":        4,
 	}
 )
 
@@ -1135,15 +1131,14 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x1eSWITCH_PORT_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x15SWITCH_PORT_STATUS_UP\x10\x01\x1a\x06\x82\xb2\x19\x02up\x12%\n" +
 	"\x17SWITCH_PORT_STATUS_DOWN\x10\x02\x1a\b\x82\xb2\x19\x04down\x12+\n" +
-	"\x1aSWITCH_PORT_STATUS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknown*\xdd\x01\n" +
+	"\x1aSWITCH_PORT_STATUS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknown*\xab\x01\n" +
 	"\n" +
 	"SwitchType\x12\x1b\n" +
 	"\x17SWITCH_TYPE_UNSPECIFIED\x10\x00\x12\x1e\n" +
 	"\x10SWITCH_TYPE_LEAF\x10\x01\x1a\b\x82\xb2\x19\x04leaf\x12\x1e\n" +
 	"\x10SWITCH_TYPE_EXIT\x10\x02\x1a\b\x82\xb2\x19\x04exit\x12 \n" +
-	"\x11SWITCH_TYPE_SPINE\x10\x03\x1a\t\x82\xb2\x19\x05spine\x12&\n" +
-	"\x14SWITCH_TYPE_MGMTLEAF\x10\x04\x1a\f\x82\xb2\x19\bmgmtleaf\x12(\n" +
-	"\x15SWITCH_TYPE_MGMTSPINE\x10\x05\x1a\r\x82\xb2\x19\tmgmtspineB\xc1\x01\n" +
+	"\x11SWITCH_TYPE_SPINE\x10\x03\x1a\t\x82\xb2\x19\x05spine\x12\x1e\n" +
+	"\x10SWITCH_TYPE_MGMT\x10\x04\x1a\b\x82\xb2\x19\x04mgmtB\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vSwitchProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

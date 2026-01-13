@@ -48,8 +48,7 @@ class SwitchType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SWITCH_TYPE_LEAF: _ClassVar[SwitchType]
     SWITCH_TYPE_EXIT: _ClassVar[SwitchType]
     SWITCH_TYPE_SPINE: _ClassVar[SwitchType]
-    SWITCH_TYPE_MGMTLEAF: _ClassVar[SwitchType]
-    SWITCH_TYPE_MGMTSPINE: _ClassVar[SwitchType]
+    SWITCH_TYPE_MGMT: _ClassVar[SwitchType]
 BGP_STATE_UNSPECIFIED: BGPState
 BGP_STATE_IDLE: BGPState
 BGP_STATE_CONNECT: BGPState
@@ -71,8 +70,7 @@ SWITCH_TYPE_UNSPECIFIED: SwitchType
 SWITCH_TYPE_LEAF: SwitchType
 SWITCH_TYPE_EXIT: SwitchType
 SWITCH_TYPE_SPINE: SwitchType
-SWITCH_TYPE_MGMTLEAF: SwitchType
-SWITCH_TYPE_MGMTSPINE: SwitchType
+SWITCH_TYPE_MGMT: SwitchType
 
 class Switch(_message.Message):
     __slots__ = ("id", "meta", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections", "type")
