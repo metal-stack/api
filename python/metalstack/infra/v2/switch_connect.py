@@ -25,9 +25,6 @@ class SwitchService(Protocol):
     async def heartbeat(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
-    async def report_b_g_p_routes(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-
 
 class SwitchServiceASGIApplication(ConnectASGIApplication):
     def __init__(self, service: SwitchService, *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -62,16 +59,6 @@ class SwitchServiceASGIApplication(ConnectASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.heartbeat,
-                ),
-                "/metalstack.infra.v2.SwitchService/ReportBGPRoutes": Endpoint.unary(
-                    method=MethodInfo(
-                        name="ReportBGPRoutes",
-                        service_name="metalstack.infra.v2.SwitchService",
-                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
-                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.report_b_g_p_routes,
                 ),
             },
             interceptors=interceptors,
@@ -145,26 +132,6 @@ class SwitchServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
-    async def report_b_g_p_routes(
-        self,
-        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse:
-        return await self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="ReportBGPRoutes",
-                service_name="metalstack.infra.v2.SwitchService",
-                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
-                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
 
 class SwitchServiceSync(Protocol):
     def get(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceGetResponse:
@@ -172,8 +139,6 @@ class SwitchServiceSync(Protocol):
     def register(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceRegisterResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def heartbeat(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-    def report_b_g_p_routes(self, request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -210,16 +175,6 @@ class SwitchServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.heartbeat,
-                ),
-                "/metalstack.infra.v2.SwitchService/ReportBGPRoutes": EndpointSync.unary(
-                    method=MethodInfo(
-                        name="ReportBGPRoutes",
-                        service_name="metalstack.infra.v2.SwitchService",
-                        input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
-                        output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.report_b_g_p_routes,
                 ),
             },
             interceptors=interceptors,
@@ -287,26 +242,6 @@ class SwitchServiceClientSync(ConnectClientSync):
                 service_name="metalstack.infra.v2.SwitchService",
                 input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatRequest,
                 output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceHeartbeatResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-    def report_b_g_p_routes(
-        self,
-        request: metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse:
-        return self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="ReportBGPRoutes",
-                service_name="metalstack.infra.v2.SwitchService",
-                input=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesRequest,
-                output=metalstack_dot_infra_dot_v2_dot_switch__pb2.SwitchServiceReportBGPRoutesResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

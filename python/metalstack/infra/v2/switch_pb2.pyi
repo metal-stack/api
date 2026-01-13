@@ -38,26 +38,8 @@ class SwitchServiceRegisterResponse(_message.Message):
     switch: _switch_pb2.Switch
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
 
-class SwitchServiceReportBGPRoutesRequest(_message.Message):
-    __slots__ = ("switch_id", "bgp_routes")
-    SWITCH_ID_FIELD_NUMBER: _ClassVar[int]
-    BGP_ROUTES_FIELD_NUMBER: _ClassVar[int]
-    switch_id: str
-    bgp_routes: _containers.RepeatedCompositeFieldContainer[BGPRoute]
-    def __init__(self, switch_id: _Optional[str] = ..., bgp_routes: _Optional[_Iterable[_Union[BGPRoute, _Mapping]]] = ...) -> None: ...
-
-class SwitchServiceReportBGPRoutesResponse(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
-
-class BGPRoute(_message.Message):
-    __slots__ = ("cidr",)
-    CIDR_FIELD_NUMBER: _ClassVar[int]
-    cidr: str
-    def __init__(self, cidr: _Optional[str] = ...) -> None: ...
-
 class SwitchServiceHeartbeatRequest(_message.Message):
-    __slots__ = ("id", "duration", "error", "port_states", "bgp_port_states")
+    __slots__ = ("id", "duration", "error", "port_states", "bgp_port_states", "bgp_routes")
     class PortStatesEntry(_message.Message):
         __slots__ = ("key", "value")
         KEY_FIELD_NUMBER: _ClassVar[int]
@@ -77,12 +59,14 @@ class SwitchServiceHeartbeatRequest(_message.Message):
     ERROR_FIELD_NUMBER: _ClassVar[int]
     PORT_STATES_FIELD_NUMBER: _ClassVar[int]
     BGP_PORT_STATES_FIELD_NUMBER: _ClassVar[int]
+    BGP_ROUTES_FIELD_NUMBER: _ClassVar[int]
     id: str
     duration: _duration_pb2.Duration
     error: str
     port_states: _containers.ScalarMap[str, _switch_pb2.SwitchPortStatus]
     bgp_port_states: _containers.MessageMap[str, _switch_pb2.SwitchBGPPortState]
-    def __init__(self, id: _Optional[str] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ..., port_states: _Optional[_Mapping[str, _switch_pb2.SwitchPortStatus]] = ..., bgp_port_states: _Optional[_Mapping[str, _switch_pb2.SwitchBGPPortState]] = ...) -> None: ...
+    bgp_routes: _containers.RepeatedCompositeFieldContainer[BGPRoute]
+    def __init__(self, id: _Optional[str] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ..., port_states: _Optional[_Mapping[str, _switch_pb2.SwitchPortStatus]] = ..., bgp_port_states: _Optional[_Mapping[str, _switch_pb2.SwitchBGPPortState]] = ..., bgp_routes: _Optional[_Iterable[_Union[BGPRoute, _Mapping]]] = ...) -> None: ...
 
 class SwitchServiceHeartbeatResponse(_message.Message):
     __slots__ = ("id", "last_sync", "last_sync_error")
@@ -103,3 +87,9 @@ class SwitchSync(_message.Message):
     duration: _duration_pb2.Duration
     error: str
     def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ...) -> None: ...
+
+class BGPRoute(_message.Message):
+    __slots__ = ("cidr",)
+    CIDR_FIELD_NUMBER: _ClassVar[int]
+    cidr: str
+    def __init__(self, cidr: _Optional[str] = ...) -> None: ...

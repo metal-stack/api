@@ -100,11 +100,9 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.infra.v2.SwitchService/Get",
 					"/metalstack.infra.v2.SwitchService/Register",
 					"/metalstack.infra.v2.SwitchService/Heartbeat",
-					"/metalstack.infra.v2.SwitchService/ReportBGPRoutes",
 				},
 				"INFRA_ROLE_VIEWER": []string{
 					"/metalstack.infra.v2.SwitchService/Get",
-					"/metalstack.infra.v2.SwitchService/ReportBGPRoutes",
 				},
 			},
 			Tenant: Tenant{
@@ -298,7 +296,6 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.infra.v2.SwitchService/Get":                         true,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":                   true,
 			"/metalstack.infra.v2.SwitchService/Register":                    true,
-			"/metalstack.infra.v2.SwitchService/ReportBGPRoutes":             true,
 		},
 		Visibility: Visibility{
 			Public: map[string]bool{
@@ -372,12 +369,11 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.admin.v2.TokenService/Revoke":       true,
 			},
 			Infra: map[string]bool{
-				"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      true,
-				"/metalstack.infra.v2.EventService/Send":             true,
-				"/metalstack.infra.v2.SwitchService/Get":             true,
-				"/metalstack.infra.v2.SwitchService/Heartbeat":       true,
-				"/metalstack.infra.v2.SwitchService/Register":        true,
-				"/metalstack.infra.v2.SwitchService/ReportBGPRoutes": true,
+				"/metalstack.infra.v2.BMCService/UpdateBMCInfo": true,
+				"/metalstack.infra.v2.EventService/Send":        true,
+				"/metalstack.infra.v2.SwitchService/Get":        true,
+				"/metalstack.infra.v2.SwitchService/Heartbeat":  true,
+				"/metalstack.infra.v2.SwitchService/Register":   true,
 			},
 			Tenant: map[string]bool{
 				"/metalstack.api.v2.ProjectService/Create":      true,
@@ -522,7 +518,6 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.infra.v2.SwitchService/Get":             false,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":       false,
 			"/metalstack.infra.v2.SwitchService/Register":        false,
-			"/metalstack.infra.v2.SwitchService/ReportBGPRoutes": true,
 		},
 	}
 }

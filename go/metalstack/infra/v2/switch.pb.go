@@ -209,144 +209,6 @@ func (x *SwitchServiceRegisterResponse) GetSwitch() *v2.Switch {
 	return nil
 }
 
-// SwitchServiceReportBGPRoutesRequest.
-type SwitchServiceReportBGPRoutesRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switch ID of the switch that reports its routes.
-	SwitchId string `protobuf:"bytes,1,opt,name=switch_id,json=switchId,proto3" json:"switch_id,omitempty"`
-	// BGP routes collected on the switch.
-	BgpRoutes     []*BGPRoute `protobuf:"bytes,2,rep,name=bgp_routes,json=bgpRoutes,proto3" json:"bgp_routes,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SwitchServiceReportBGPRoutesRequest) Reset() {
-	*x = SwitchServiceReportBGPRoutesRequest{}
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SwitchServiceReportBGPRoutesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SwitchServiceReportBGPRoutesRequest) ProtoMessage() {}
-
-func (x *SwitchServiceReportBGPRoutesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SwitchServiceReportBGPRoutesRequest.ProtoReflect.Descriptor instead.
-func (*SwitchServiceReportBGPRoutesRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *SwitchServiceReportBGPRoutesRequest) GetSwitchId() string {
-	if x != nil {
-		return x.SwitchId
-	}
-	return ""
-}
-
-func (x *SwitchServiceReportBGPRoutesRequest) GetBgpRoutes() []*BGPRoute {
-	if x != nil {
-		return x.BgpRoutes
-	}
-	return nil
-}
-
-// SwitchServiceReportBGPRoutesResponse.
-type SwitchServiceReportBGPRoutesResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SwitchServiceReportBGPRoutesResponse) Reset() {
-	*x = SwitchServiceReportBGPRoutesResponse{}
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SwitchServiceReportBGPRoutesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SwitchServiceReportBGPRoutesResponse) ProtoMessage() {}
-
-func (x *SwitchServiceReportBGPRoutesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SwitchServiceReportBGPRoutesResponse.ProtoReflect.Descriptor instead.
-func (*SwitchServiceReportBGPRoutesResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{5}
-}
-
-// BGPRoute represents the route to a prefix.
-type BGPRoute struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// CIDR of the network that is routed to.
-	Cidr          string `protobuf:"bytes,1,opt,name=cidr,proto3" json:"cidr,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *BGPRoute) Reset() {
-	*x = BGPRoute{}
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *BGPRoute) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*BGPRoute) ProtoMessage() {}
-
-func (x *BGPRoute) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use BGPRoute.ProtoReflect.Descriptor instead.
-func (*BGPRoute) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *BGPRoute) GetCidr() string {
-	if x != nil {
-		return x.Cidr
-	}
-	return ""
-}
-
 // SwitchServiceHeartbeatRequest.
 type SwitchServiceHeartbeatRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -360,13 +222,15 @@ type SwitchServiceHeartbeatRequest struct {
 	PortStates map[string]v2.SwitchPortStatus `protobuf:"bytes,4,rep,name=port_states,json=portStates,proto3" json:"port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.SwitchPortStatus"`
 	// BgpPortStates maps port identifiers to the respective port's BGP state.
 	BgpPortStates map[string]*v2.SwitchBGPPortState `protobuf:"bytes,5,rep,name=bgp_port_states,json=bgpPortStates,proto3" json:"bgp_port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// BGP routes collected on the switch.
+	BgpRoutes     []*BGPRoute `protobuf:"bytes,6,rep,name=bgp_routes,json=bgpRoutes,proto3" json:"bgp_routes,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SwitchServiceHeartbeatRequest) Reset() {
 	*x = SwitchServiceHeartbeatRequest{}
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[7]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -378,7 +242,7 @@ func (x *SwitchServiceHeartbeatRequest) String() string {
 func (*SwitchServiceHeartbeatRequest) ProtoMessage() {}
 
 func (x *SwitchServiceHeartbeatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[7]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -391,7 +255,7 @@ func (x *SwitchServiceHeartbeatRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwitchServiceHeartbeatRequest.ProtoReflect.Descriptor instead.
 func (*SwitchServiceHeartbeatRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{7}
+	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SwitchServiceHeartbeatRequest) GetId() string {
@@ -429,6 +293,13 @@ func (x *SwitchServiceHeartbeatRequest) GetBgpPortStates() map[string]*v2.Switch
 	return nil
 }
 
+func (x *SwitchServiceHeartbeatRequest) GetBgpRoutes() []*BGPRoute {
+	if x != nil {
+		return x.BgpRoutes
+	}
+	return nil
+}
+
 // SwitchServiceHeartbeatResponse.
 type SwitchServiceHeartbeatResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -444,7 +315,7 @@ type SwitchServiceHeartbeatResponse struct {
 
 func (x *SwitchServiceHeartbeatResponse) Reset() {
 	*x = SwitchServiceHeartbeatResponse{}
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[8]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -456,7 +327,7 @@ func (x *SwitchServiceHeartbeatResponse) String() string {
 func (*SwitchServiceHeartbeatResponse) ProtoMessage() {}
 
 func (x *SwitchServiceHeartbeatResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[8]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -469,7 +340,7 @@ func (x *SwitchServiceHeartbeatResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwitchServiceHeartbeatResponse.ProtoReflect.Descriptor instead.
 func (*SwitchServiceHeartbeatResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{8}
+	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SwitchServiceHeartbeatResponse) GetId() string {
@@ -508,7 +379,7 @@ type SwitchSync struct {
 
 func (x *SwitchSync) Reset() {
 	*x = SwitchSync{}
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[9]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -520,7 +391,7 @@ func (x *SwitchSync) String() string {
 func (*SwitchSync) ProtoMessage() {}
 
 func (x *SwitchSync) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[9]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -533,7 +404,7 @@ func (x *SwitchSync) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwitchSync.ProtoReflect.Descriptor instead.
 func (*SwitchSync) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{9}
+	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *SwitchSync) GetTime() *timestamppb.Timestamp {
@@ -557,6 +428,52 @@ func (x *SwitchSync) GetError() string {
 	return ""
 }
 
+// BGPRoute represents the route to a prefix.
+type BGPRoute struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// CIDR of the network that is routed to.
+	Cidr          string `protobuf:"bytes,1,opt,name=cidr,proto3" json:"cidr,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BGPRoute) Reset() {
+	*x = BGPRoute{}
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BGPRoute) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BGPRoute) ProtoMessage() {}
+
+func (x *BGPRoute) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BGPRoute.ProtoReflect.Descriptor instead.
+func (*BGPRoute) Descriptor() ([]byte, []int) {
+	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *BGPRoute) GetCidr() string {
+	if x != nil {
+		return x.Cidr
+	}
+	return ""
+}
+
 var File_metalstack_infra_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
@@ -570,15 +487,7 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\x1cSwitchServiceRegisterRequest\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"R\n" +
 	"\x1dSwitchServiceRegisterResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\x8e\x01\n" +
-	"#SwitchServiceReportBGPRoutesRequest\x12)\n" +
-	"\tswitch_id\x18\x01 \x01(\tB\f\xbaH\tr\a\x10\x02\x18\x80\x01h\x01R\bswitchId\x12<\n" +
-	"\n" +
-	"bgp_routes\x18\x02 \x03(\v2\x1d.metalstack.infra.v2.BGPRouteR\tbgpRoutes\"&\n" +
-	"$SwitchServiceReportBGPRoutesResponse\"c\n" +
-	"\bBGPRoute\x12\x12\n" +
-	"\x04cidr\x18\x01 \x01(\tR\x04cidr:C\xbaH@\x1a>\n" +
-	"\x04cidr\x12\x1ecidr must be a valid ip prefix\x1a\x16this.cidr.isIpPrefix()\"\xbb\x04\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xf9\x04\n" +
 	"\x1dSwitchServiceHeartbeatRequest\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x125\n" +
@@ -586,7 +495,9 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\x05error\x18\x03 \x01(\tH\x00R\x05error\x88\x01\x01\x12c\n" +
 	"\vport_states\x18\x04 \x03(\v2B.metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntryR\n" +
 	"portStates\x12m\n" +
-	"\x0fbgp_port_states\x18\x05 \x03(\v2E.metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntryR\rbgpPortStates\x1ab\n" +
+	"\x0fbgp_port_states\x18\x05 \x03(\v2E.metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntryR\rbgpPortStates\x12<\n" +
+	"\n" +
+	"bgp_routes\x18\x06 \x03(\v2\x1d.metalstack.infra.v2.BGPRouteR\tbgpRoutes\x1ab\n" +
 	"\x0fPortStatesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x129\n" +
 	"\x05value\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusR\x05value:\x028\x01\x1ag\n" +
@@ -603,13 +514,15 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x125\n" +
 	"\bduration\x18\x02 \x01(\v2\x19.google.protobuf.DurationR\bduration\x12\x19\n" +
 	"\x05error\x18\x03 \x01(\tH\x00R\x05error\x88\x01\x01B\b\n" +
-	"\x06_error2\x8f\x04\n" +
+	"\x06_error\"c\n" +
+	"\bBGPRoute\x12\x12\n" +
+	"\x04cidr\x18\x01 \x01(\tR\x04cidr:C\xbaH@\x1a>\n" +
+	"\x04cidr\x12\x1ecidr must be a valid ip prefix\x1a\x16this.cidr.isIpPrefix()2\xfe\x02\n" +
 	"\rSwitchService\x12n\n" +
 	"\x03Get\x12,.metalstack.infra.v2.SwitchServiceGetRequest\x1a-.metalstack.infra.v2.SwitchServiceGetResponse\"\n" +
 	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12|\n" +
 	"\bRegister\x121.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a2.metalstack.infra.v2.SwitchServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x7f\n" +
-	"\tHeartbeat\x122.metalstack.infra.v2.SwitchServiceHeartbeatRequest\x1a3.metalstack.infra.v2.SwitchServiceHeartbeatResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x8e\x01\n" +
-	"\x0fReportBGPRoutes\x128.metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest\x1a9.metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse\"\x06\xea\xf3\x18\x02\x01\x02B\xcf\x01\n" +
+	"\tHeartbeat\x122.metalstack.infra.v2.SwitchServiceHeartbeatRequest\x1a3.metalstack.infra.v2.SwitchServiceHeartbeatResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xcf\x01\n" +
 	"\x17com.metalstack.infra.v2B\vSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
 var (
@@ -624,50 +537,46 @@ func file_metalstack_infra_v2_switch_proto_rawDescGZIP() []byte {
 	return file_metalstack_infra_v2_switch_proto_rawDescData
 }
 
-var file_metalstack_infra_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_metalstack_infra_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_metalstack_infra_v2_switch_proto_goTypes = []any{
-	(*SwitchServiceGetRequest)(nil),              // 0: metalstack.infra.v2.SwitchServiceGetRequest
-	(*SwitchServiceGetResponse)(nil),             // 1: metalstack.infra.v2.SwitchServiceGetResponse
-	(*SwitchServiceRegisterRequest)(nil),         // 2: metalstack.infra.v2.SwitchServiceRegisterRequest
-	(*SwitchServiceRegisterResponse)(nil),        // 3: metalstack.infra.v2.SwitchServiceRegisterResponse
-	(*SwitchServiceReportBGPRoutesRequest)(nil),  // 4: metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest
-	(*SwitchServiceReportBGPRoutesResponse)(nil), // 5: metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse
-	(*BGPRoute)(nil),                             // 6: metalstack.infra.v2.BGPRoute
-	(*SwitchServiceHeartbeatRequest)(nil),        // 7: metalstack.infra.v2.SwitchServiceHeartbeatRequest
-	(*SwitchServiceHeartbeatResponse)(nil),       // 8: metalstack.infra.v2.SwitchServiceHeartbeatResponse
-	(*SwitchSync)(nil),                           // 9: metalstack.infra.v2.SwitchSync
-	nil,                                          // 10: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
-	nil,                                          // 11: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
-	(*v2.Switch)(nil),                            // 12: metalstack.api.v2.Switch
-	(*durationpb.Duration)(nil),                  // 13: google.protobuf.Duration
-	(*timestamppb.Timestamp)(nil),                // 14: google.protobuf.Timestamp
-	(v2.SwitchPortStatus)(0),                     // 15: metalstack.api.v2.SwitchPortStatus
-	(*v2.SwitchBGPPortState)(nil),                // 16: metalstack.api.v2.SwitchBGPPortState
+	(*SwitchServiceGetRequest)(nil),        // 0: metalstack.infra.v2.SwitchServiceGetRequest
+	(*SwitchServiceGetResponse)(nil),       // 1: metalstack.infra.v2.SwitchServiceGetResponse
+	(*SwitchServiceRegisterRequest)(nil),   // 2: metalstack.infra.v2.SwitchServiceRegisterRequest
+	(*SwitchServiceRegisterResponse)(nil),  // 3: metalstack.infra.v2.SwitchServiceRegisterResponse
+	(*SwitchServiceHeartbeatRequest)(nil),  // 4: metalstack.infra.v2.SwitchServiceHeartbeatRequest
+	(*SwitchServiceHeartbeatResponse)(nil), // 5: metalstack.infra.v2.SwitchServiceHeartbeatResponse
+	(*SwitchSync)(nil),                     // 6: metalstack.infra.v2.SwitchSync
+	(*BGPRoute)(nil),                       // 7: metalstack.infra.v2.BGPRoute
+	nil,                                    // 8: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
+	nil,                                    // 9: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
+	(*v2.Switch)(nil),                      // 10: metalstack.api.v2.Switch
+	(*durationpb.Duration)(nil),            // 11: google.protobuf.Duration
+	(*timestamppb.Timestamp)(nil),          // 12: google.protobuf.Timestamp
+	(v2.SwitchPortStatus)(0),               // 13: metalstack.api.v2.SwitchPortStatus
+	(*v2.SwitchBGPPortState)(nil),          // 14: metalstack.api.v2.SwitchBGPPortState
 }
 var file_metalstack_infra_v2_switch_proto_depIdxs = []int32{
-	12, // 0: metalstack.infra.v2.SwitchServiceGetResponse.switch:type_name -> metalstack.api.v2.Switch
-	12, // 1: metalstack.infra.v2.SwitchServiceRegisterRequest.switch:type_name -> metalstack.api.v2.Switch
-	12, // 2: metalstack.infra.v2.SwitchServiceRegisterResponse.switch:type_name -> metalstack.api.v2.Switch
-	6,  // 3: metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest.bgp_routes:type_name -> metalstack.infra.v2.BGPRoute
-	13, // 4: metalstack.infra.v2.SwitchServiceHeartbeatRequest.duration:type_name -> google.protobuf.Duration
-	10, // 5: metalstack.infra.v2.SwitchServiceHeartbeatRequest.port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
-	11, // 6: metalstack.infra.v2.SwitchServiceHeartbeatRequest.bgp_port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
-	9,  // 7: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync:type_name -> metalstack.infra.v2.SwitchSync
-	9,  // 8: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync_error:type_name -> metalstack.infra.v2.SwitchSync
-	14, // 9: metalstack.infra.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
-	13, // 10: metalstack.infra.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
-	15, // 11: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry.value:type_name -> metalstack.api.v2.SwitchPortStatus
-	16, // 12: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry.value:type_name -> metalstack.api.v2.SwitchBGPPortState
+	10, // 0: metalstack.infra.v2.SwitchServiceGetResponse.switch:type_name -> metalstack.api.v2.Switch
+	10, // 1: metalstack.infra.v2.SwitchServiceRegisterRequest.switch:type_name -> metalstack.api.v2.Switch
+	10, // 2: metalstack.infra.v2.SwitchServiceRegisterResponse.switch:type_name -> metalstack.api.v2.Switch
+	11, // 3: metalstack.infra.v2.SwitchServiceHeartbeatRequest.duration:type_name -> google.protobuf.Duration
+	8,  // 4: metalstack.infra.v2.SwitchServiceHeartbeatRequest.port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
+	9,  // 5: metalstack.infra.v2.SwitchServiceHeartbeatRequest.bgp_port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
+	7,  // 6: metalstack.infra.v2.SwitchServiceHeartbeatRequest.bgp_routes:type_name -> metalstack.infra.v2.BGPRoute
+	6,  // 7: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync:type_name -> metalstack.infra.v2.SwitchSync
+	6,  // 8: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync_error:type_name -> metalstack.infra.v2.SwitchSync
+	12, // 9: metalstack.infra.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
+	11, // 10: metalstack.infra.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
+	13, // 11: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry.value:type_name -> metalstack.api.v2.SwitchPortStatus
+	14, // 12: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry.value:type_name -> metalstack.api.v2.SwitchBGPPortState
 	0,  // 13: metalstack.infra.v2.SwitchService.Get:input_type -> metalstack.infra.v2.SwitchServiceGetRequest
 	2,  // 14: metalstack.infra.v2.SwitchService.Register:input_type -> metalstack.infra.v2.SwitchServiceRegisterRequest
-	7,  // 15: metalstack.infra.v2.SwitchService.Heartbeat:input_type -> metalstack.infra.v2.SwitchServiceHeartbeatRequest
-	4,  // 16: metalstack.infra.v2.SwitchService.ReportBGPRoutes:input_type -> metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest
-	1,  // 17: metalstack.infra.v2.SwitchService.Get:output_type -> metalstack.infra.v2.SwitchServiceGetResponse
-	3,  // 18: metalstack.infra.v2.SwitchService.Register:output_type -> metalstack.infra.v2.SwitchServiceRegisterResponse
-	8,  // 19: metalstack.infra.v2.SwitchService.Heartbeat:output_type -> metalstack.infra.v2.SwitchServiceHeartbeatResponse
-	5,  // 20: metalstack.infra.v2.SwitchService.ReportBGPRoutes:output_type -> metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse
-	17, // [17:21] is the sub-list for method output_type
-	13, // [13:17] is the sub-list for method input_type
+	4,  // 15: metalstack.infra.v2.SwitchService.Heartbeat:input_type -> metalstack.infra.v2.SwitchServiceHeartbeatRequest
+	1,  // 16: metalstack.infra.v2.SwitchService.Get:output_type -> metalstack.infra.v2.SwitchServiceGetResponse
+	3,  // 17: metalstack.infra.v2.SwitchService.Register:output_type -> metalstack.infra.v2.SwitchServiceRegisterResponse
+	5,  // 18: metalstack.infra.v2.SwitchService.Heartbeat:output_type -> metalstack.infra.v2.SwitchServiceHeartbeatResponse
+	16, // [16:19] is the sub-list for method output_type
+	13, // [13:16] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name
@@ -678,15 +587,15 @@ func file_metalstack_infra_v2_switch_proto_init() {
 	if File_metalstack_infra_v2_switch_proto != nil {
 		return
 	}
-	file_metalstack_infra_v2_switch_proto_msgTypes[7].OneofWrappers = []any{}
-	file_metalstack_infra_v2_switch_proto_msgTypes[9].OneofWrappers = []any{}
+	file_metalstack_infra_v2_switch_proto_msgTypes[4].OneofWrappers = []any{}
+	file_metalstack_infra_v2_switch_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_infra_v2_switch_proto_rawDesc), len(file_metalstack_infra_v2_switch_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

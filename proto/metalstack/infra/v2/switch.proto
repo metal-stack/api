@@ -27,11 +27,6 @@ service SwitchService {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // ReportBGPRoutes of a switch
-  rpc ReportBGPRoutes(SwitchServiceReportBGPRoutesRequest) returns (SwitchServiceReportBGPRoutesResponse) {
-    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
-    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
-  }
 }
 
 // SwitchServiceGetRequest.
@@ -61,32 +56,6 @@ message SwitchServiceRegisterResponse {
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServiceReportBGPRoutesRequest.
-message SwitchServiceReportBGPRoutesRequest {
-  // Switch ID of the switch that reports its routes.
-  string switch_id = 1 [(buf.validate.field).string = {
-    hostname: true
-    min_len: 2
-    max_len: 128
-  }];
-  // BGP routes collected on the switch.
-  repeated BGPRoute bgp_routes = 2;
-}
-
-// SwitchServiceReportBGPRoutesResponse.
-message SwitchServiceReportBGPRoutesResponse {}
-
-// BGPRoute represents the route to a prefix.
-message BGPRoute {
-  // CIDR of the network that is routed to.
-  string cidr = 1;
-  option (buf.validate.message).cel = {
-    id: "cidr"
-    message: "cidr must be a valid ip prefix"
-    expression: "this.cidr.isIpPrefix()"
-  };
-}
-
 // SwitchServiceHeartbeatRequest.
 message SwitchServiceHeartbeatRequest {
   // Id of the switch.
@@ -102,6 +71,8 @@ message SwitchServiceHeartbeatRequest {
   map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
   // BgpPortStates maps port identifiers to the respective port's BGP state.
   map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
+  // BGP routes collected on the switch.
+  repeated BGPRoute bgp_routes = 6;
 }
 
 // SwitchServiceHeartbeatResponse.
@@ -122,4 +93,15 @@ message SwitchSync {
   google.protobuf.Duration duration = 2;
   // Error if any occurred.
   optional string error = 3;
+}
+
+// BGPRoute represents the route to a prefix.
+message BGPRoute {
+  // CIDR of the network that is routed to.
+  string cidr = 1;
+  option (buf.validate.message).cel = {
+    id: "cidr"
+    message: "cidr must be a valid ip prefix"
+    expression: "this.cidr.isIpPrefix()"
+  };
 }

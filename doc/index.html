@@ -2025,14 +2025,6 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest"><span class="badge">M</span>SwitchServiceReportBGPRoutesRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse"><span class="badge">M</span>SwitchServiceReportBGPRoutesResponse</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.infra.v2.SwitchSync"><span class="badge">M</span>SwitchSync</a>
                 </li>
               
@@ -15792,6 +15784,13 @@ This service is suitable to create tokens for other users instead of deriving us
                   <td><p>BgpPortStates maps port identifiers to the respective port&#39;s BGP state. </p></td>
                 </tr>
               
+                <tr>
+                  <td>bgp_routes</td>
+                  <td><a href="#metalstack.infra.v2.BGPRoute">BGPRoute</a></td>
+                  <td>repeated</td>
+                  <td><p>BGP routes collected on the switch. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -15947,44 +15946,6 @@ This service is suitable to create tokens for other users instead of deriving us
 
         
       
-        <h3 id="metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest">SwitchServiceReportBGPRoutesRequest</h3>
-        <p>SwitchServiceReportBGPRoutesRequest.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>switch_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Switch ID of the switch that reports its routes. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>bgp_routes</td>
-                  <td><a href="#metalstack.infra.v2.BGPRoute">BGPRoute</a></td>
-                  <td>repeated</td>
-                  <td><p>BGP routes collected on the switch. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse">SwitchServiceReportBGPRoutesResponse</h3>
-        <p>SwitchServiceReportBGPRoutesResponse.</p>
-
-        
-
-        
-      
         <h3 id="metalstack.infra.v2.SwitchSync">SwitchSync</h3>
         <p>SwitchSync summarizes information about a switch sync.</p>
 
@@ -16056,13 +16017,6 @@ This service is suitable to create tokens for other users instead of deriving us
                 <td><a href="#metalstack.infra.v2.SwitchServiceHeartbeatRequest">SwitchServiceHeartbeatRequest</a></td>
                 <td><a href="#metalstack.infra.v2.SwitchServiceHeartbeatResponse">SwitchServiceHeartbeatResponse</a></td>
                 <td><p>Heartbeat a switch.</p></td>
-              </tr>
-            
-              <tr>
-                <td>ReportBGPRoutes</td>
-                <td><a href="#metalstack.infra.v2.SwitchServiceReportBGPRoutesRequest">SwitchServiceReportBGPRoutesRequest</a></td>
-                <td><a href="#metalstack.infra.v2.SwitchServiceReportBGPRoutesResponse">SwitchServiceReportBGPRoutesResponse</a></td>
-                <td><p>ReportBGPRoutes of a switch</p></td>
               </tr>
             
           </tbody>
