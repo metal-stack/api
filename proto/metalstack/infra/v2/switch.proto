@@ -110,7 +110,7 @@ message BGPRoute {
 
 // LLDPNeighbor contains details about a neighbor learned via LLDP.
 message LLDPNeighbor {
-  // RemoteHost is the neighbor's name as given via 'System Name TLV' field of a LLDP paket.
+  // RemoteHost is the neighbor's name as given via 'System Name TLV' field of a LLDP packet.
   // Usually this is simply the neighbor's hostname.
   string remote_host = 1 [(buf.validate.field).string = {
     hostname: true

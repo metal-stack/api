@@ -486,7 +486,7 @@ func (x *BGPRoute) GetCidr() string {
 // LLDPNeighbor contains details about a neighbor learned via LLDP.
 type LLDPNeighbor struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// RemoteHost is the neighbor's name as given via 'System Name TLV' field of a LLDP paket.
+	// RemoteHost is the neighbor's name as given via 'System Name TLV' field of a LLDP packet.
 	// Usually this is simply the neighbor's hostname.
 	RemoteHost string `protobuf:"bytes,1,opt,name=remote_host,json=remoteHost,proto3" json:"remote_host,omitempty"`
 	// LocalPort is the name of the local port that is connected to the neighbor.
