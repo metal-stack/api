@@ -7,6 +7,7 @@ require (
 	buf.build/go/protovalidate v1.1.0
 	connectrpc.com/connect v1.19.1
 	github.com/bufbuild/protocompile v0.14.1
+	github.com/davecgh/go-spew v1.1.1
 	github.com/go-task/slim-sprig/v3 v3.0.0
 	github.com/golang-jwt/jwt/v5 v5.3.0
 	github.com/google/go-cmp v0.7.0
@@ -18,7 +19,6 @@ require (
 require (
 	cel.dev/expr v0.25.1 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.1 // indirect
-	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/google/cel-go v0.26.1 // indirect
 	github.com/klauspost/compress v1.18.2 // indirect
 	github.com/kr/pretty v0.3.1 // indirect

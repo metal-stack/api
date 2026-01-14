@@ -96,16 +96,93 @@ func (*UpdateBMCInfoResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_bmc_proto_rawDescGZIP(), []int{1}
 }
 
+// WaitForMachineEventRequest
+type WaitForMachineEventRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WaitForMachineEventRequest) Reset() {
+	*x = WaitForMachineEventRequest{}
+	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WaitForMachineEventRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WaitForMachineEventRequest) ProtoMessage() {}
+
+func (x *WaitForMachineEventRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WaitForMachineEventRequest.ProtoReflect.Descriptor instead.
+func (*WaitForMachineEventRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_infra_v2_bmc_proto_rawDescGZIP(), []int{2}
+}
+
+// WaitForMachineEventResponse
+type WaitForMachineEventResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WaitForMachineEventResponse) Reset() {
+	*x = WaitForMachineEventResponse{}
+	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WaitForMachineEventResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WaitForMachineEventResponse) ProtoMessage() {}
+
+func (x *WaitForMachineEventResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WaitForMachineEventResponse.ProtoReflect.Descriptor instead.
+func (*WaitForMachineEventResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_infra_v2_bmc_proto_rawDescGZIP(), []int{3}
+}
+
 var File_metalstack_infra_v2_bmc_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_bmc_proto_rawDesc = "" +
 	"\n" +
 	"\x1dmetalstack/infra/v2/bmc.proto\x12\x13metalstack.infra.v2\x1a\x1emetalstack/api/v2/common.proto\"\x16\n" +
 	"\x14UpdateBMCInfoRequest\"\x17\n" +
-	"\x15UpdateBMCInfoResponse2\x7f\n" +
+	"\x15UpdateBMCInfoResponse\"\x1c\n" +
+	"\x1aWaitForMachineEventRequest\"\x1d\n" +
+	"\x1bWaitForMachineEventResponse2\x87\x02\n" +
 	"\n" +
 	"BMCService\x12q\n" +
-	"\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xcc\x01\n" +
+	"\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x85\x01\n" +
+	"\x13WaitForMachineEvent\x12/.metalstack.infra.v2.WaitForMachineEventRequest\x1a0.metalstack.infra.v2.WaitForMachineEventResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x010\x01B\xcc\x01\n" +
 	"\x17com.metalstack.infra.v2B\bBmcProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
 var (
@@ -120,16 +197,20 @@ func file_metalstack_infra_v2_bmc_proto_rawDescGZIP() []byte {
 	return file_metalstack_infra_v2_bmc_proto_rawDescData
 }
 
-var file_metalstack_infra_v2_bmc_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_metalstack_infra_v2_bmc_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_metalstack_infra_v2_bmc_proto_goTypes = []any{
-	(*UpdateBMCInfoRequest)(nil),  // 0: metalstack.infra.v2.UpdateBMCInfoRequest
-	(*UpdateBMCInfoResponse)(nil), // 1: metalstack.infra.v2.UpdateBMCInfoResponse
+	(*UpdateBMCInfoRequest)(nil),        // 0: metalstack.infra.v2.UpdateBMCInfoRequest
+	(*UpdateBMCInfoResponse)(nil),       // 1: metalstack.infra.v2.UpdateBMCInfoResponse
+	(*WaitForMachineEventRequest)(nil),  // 2: metalstack.infra.v2.WaitForMachineEventRequest
+	(*WaitForMachineEventResponse)(nil), // 3: metalstack.infra.v2.WaitForMachineEventResponse
 }
 var file_metalstack_infra_v2_bmc_proto_depIdxs = []int32{
 	0, // 0: metalstack.infra.v2.BMCService.UpdateBMCInfo:input_type -> metalstack.infra.v2.UpdateBMCInfoRequest
-	1, // 1: metalstack.infra.v2.BMCService.UpdateBMCInfo:output_type -> metalstack.infra.v2.UpdateBMCInfoResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 1: metalstack.infra.v2.BMCService.WaitForMachineEvent:input_type -> metalstack.infra.v2.WaitForMachineEventRequest
+	1, // 2: metalstack.infra.v2.BMCService.UpdateBMCInfo:output_type -> metalstack.infra.v2.UpdateBMCInfoResponse
+	3, // 3: metalstack.infra.v2.BMCService.WaitForMachineEvent:output_type -> metalstack.infra.v2.WaitForMachineEventResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -146,7 +227,7 @@ func file_metalstack_infra_v2_bmc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_infra_v2_bmc_proto_rawDesc), len(file_metalstack_infra_v2_bmc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
