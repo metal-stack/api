@@ -1396,6 +1396,10 @@
                   <a href="#metalstack.api.v2.SwitchQuery"><span class="badge">M</span>SwitchQuery</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.SwitchSync"><span class="badge">M</span>SwitchSync</a>
+                </li>
+              
               
                 <li>
                   <a href="#metalstack.api.v2.BGPState"><span class="badge">E</span>BGPState</a>
@@ -2060,10 +2064,6 @@
               
                 <li>
                   <a href="#metalstack.infra.v2.SwitchServiceRegisterResponse"><span class="badge">M</span>SwitchServiceRegisterResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.infra.v2.SwitchSync"><span class="badge">M</span>SwitchSync</a>
                 </li>
               
               
@@ -11620,6 +11620,20 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><p>MachineConnections map machines to the nics they are connected to. </p></td>
                 </tr>
               
+                <tr>
+                  <td>last_sync</td>
+                  <td><a href="#metalstack.api.v2.SwitchSync">SwitchSync</a></td>
+                  <td></td>
+                  <td><p>LastSync contains information about the last heartbeat of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_sync_error</td>
+                  <td><a href="#metalstack.api.v2.SwitchSync">SwitchSync</a></td>
+                  <td></td>
+                  <td><p>LastSyncError contains information about the last unsuccessful heartbeat of the switch. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -11864,6 +11878,44 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><a href="#metalstack.api.v2.SwitchOSQuery">SwitchOSQuery</a></td>
                   <td>optional</td>
                   <td><p>Switch OS specific queries. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SwitchSync">SwitchSync</h3>
+        <p>SwitchSync summarizes information about a switch sync.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Time of the sync. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>duration</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>Duration of the sync. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>error</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Error if any occurred. </p></td>
                 </tr>
               
             </tbody>
@@ -16075,14 +16127,14 @@ This key can only be seen once. </p></td>
               
                 <tr>
                   <td>last_sync</td>
-                  <td><a href="#metalstack.infra.v2.SwitchSync">SwitchSync</a></td>
+                  <td><a href="#metalstack.api.v2.SwitchSync">metalstack.api.v2.SwitchSync</a></td>
                   <td></td>
                   <td><p>LastSync holds information about the last sync. </p></td>
                 </tr>
               
                 <tr>
                   <td>last_sync_error</td>
-                  <td><a href="#metalstack.infra.v2.SwitchSync">SwitchSync</a></td>
+                  <td><a href="#metalstack.api.v2.SwitchSync">metalstack.api.v2.SwitchSync</a></td>
                   <td></td>
                   <td><p>LastSyncError holds information about the last erroneous sync. </p></td>
                 </tr>
@@ -16133,44 +16185,6 @@ This key can only be seen once. </p></td>
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
                   <td></td>
                   <td><p>Switch that was registered. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.infra.v2.SwitchSync">SwitchSync</h3>
-        <p>SwitchSync summarizes information about a switch sync.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>Time of the sync. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>duration</td>
-                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
-                  <td></td>
-                  <td><p>Duration of the sync. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>error</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Error if any occurred. </p></td>
                 </tr>
               
             </tbody>
