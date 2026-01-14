@@ -960,6 +960,12 @@ export type MachineNic = Message<"metalstack.api.v2.MachineNic"> & {
      * @generated from field: repeated metalstack.api.v2.MachineNic neighbors = 7;
      */
     neighbors: MachineNic[];
+    /**
+     * Hostname the nic belongs to
+     *
+     * @generated from field: string hostname = 8;
+     */
+    hostname: string;
 };
 /**
  * Describes the message metalstack.api.v2.MachineNic.
