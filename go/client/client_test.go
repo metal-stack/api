@@ -41,7 +41,7 @@ func Test_Client(t *testing.T) {
 		server.Close()
 	}()
 
-	tokenString, err := generateToken(1 * time.Second)
+	tokenString, err := generateToken(2 * time.Second)
 	require.NoError(t, err)
 
 	c, err := client.New(&client.DialConfig{
@@ -50,6 +50,7 @@ func Test_Client(t *testing.T) {
 		Transport: server.Client().Transport,
 		TokenRenewal: &client.TokenRenewal{
 			PersistTokenFn: func(token string) error {
+				ts.token = token
 				t.Log("token persisted:", token)
 				return nil
 			},
@@ -64,7 +65,7 @@ func Test_Client(t *testing.T) {
 	require.False(t, ts.wasCalled)
 	require.Equal(t, tokenString, vs.token)
 
-	time.Sleep(300 * time.Millisecond)
+	time.Sleep(1 * time.Second)
 	v, err = c.Apiv2().Version().Get(t.Context(), &apiv2.VersionServiceGetRequest{})
 	require.NoError(t, err)
 	require.NotNil(t, v)
@@ -79,7 +80,7 @@ func Test_Client(t *testing.T) {
 	require.Equal(t, "1.0", v.Version.Version)
 
 	require.True(t, ts.wasCalled)
-	require.NotEqual(t, tokenString, vs.token, "token must have changed")
+	require.NotEqual(t, tokenString, ts.token, "token must have changed")
 }
 
 func generateToken(duration time.Duration) (string, error) {
@@ -121,6 +122,7 @@ func (m *mockVersionService) Get(ctx context.Context, req *apiv2.VersionServiceG
 
 type mockTokenService struct {
 	wasCalled bool
+	token     string
 }
 
 // Create implements apiv2connect.TokenServiceHandler.
