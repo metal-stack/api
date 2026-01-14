@@ -12,4 +12,6 @@ extend-ignore-re = [
 extend-exclude = [
     "go.mod",
     "go.sum",
+    "*.ts",
+    "*.js"
 ]
