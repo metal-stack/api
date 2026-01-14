@@ -20,6 +20,8 @@ import (
 	"github.com/metal-stack/api/go/client"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
+	infrav2 "github.com/metal-stack/api/go/metalstack/infra/v2"
+	"github.com/metal-stack/api/go/metalstack/infra/v2/infrav2connect"
 	"github.com/stretchr/testify/require"
 )
 
@@ -154,4 +156,75 @@ func (m *mockTokenService) Revoke(context.Context, *apiv2.TokenServiceRevokeRequ
 // Update implements apiv2connect.TokenServiceHandler.
 func (m *mockTokenService) Update(context.Context, *apiv2.TokenServiceUpdateRequest) (*apiv2.TokenServiceUpdateResponse, error) {
 	panic("unimplemented")
+}
+
+func Test_ClientInterceptors(t *testing.T) {
+	var (
+		bs  = &mockBMCService{}
+		mux = http.NewServeMux()
+		log = slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
+		ctx = t.Context()
+	)
+
+	mux.Handle(infrav2connect.NewBMCServiceHandler(bs))
+	server := httptest.NewTLSServer(mux)
+	server.EnableHTTP2 = true
+	defer func() {
+		server.Close()
+	}()
+
+	tokenString, err := generateToken(1 * time.Second)
+	require.NoError(t, err)
+
+	c, err := client.New(&client.DialConfig{
+		BaseURL:   server.URL,
+		Token:     tokenString,
+		Transport: server.Client().Transport,
+		Log:       log,
+	})
+	require.NoError(t, err)
+
+	// Synchronous call has authheader set
+	resp, err := c.Infrav2().BMC().UpdateBMCInfo(ctx, &infrav2.UpdateBMCInfoRequest{})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	require.Equal(t, tokenString, bs.token)
+	bs.token = ""
+
+	// Asynchronous call has authheader set
+	stream, err := c.Infrav2().BMC().WaitForBMCCommand(ctx, &infrav2.WaitForBMCCommandRequest{})
+	require.NoError(t, err)
+	require.NotNil(t, stream)
+	require.Equal(t, tokenString, bs.token)
+}
+
+type mockBMCService struct {
+	token string
+}
+
+func (m *mockBMCService) UpdateBMCInfo(ctx context.Context, _ *infrav2.UpdateBMCInfoRequest) (*infrav2.UpdateBMCInfoResponse, error) {
+	callinfo, _ := connect.CallInfoForHandlerContext(ctx)
+	authHeader := callinfo.RequestHeader().Get("Authorization")
+
+	_, token, found := strings.Cut(authHeader, "Bearer ")
+
+	if !found {
+		return nil, fmt.Errorf("unable to extract token from header:%s", authHeader)
+	}
+	m.token = token
+	return &infrav2.UpdateBMCInfoResponse{}, nil
+}
+
+func (m *mockBMCService) WaitForBMCCommand(ctx context.Context, _ *infrav2.WaitForBMCCommandRequest, stream *connect.ServerStream[infrav2.WaitForBMCCommandResponse]) error {
+	callinfo, _ := connect.CallInfoForHandlerContext(ctx)
+	authHeader := callinfo.RequestHeader().Get("Authorization")
+
+	_, token, found := strings.Cut(authHeader, "Bearer ")
+
+	if !found {
+		return fmt.Errorf("unable to extract token from header:%s", authHeader)
+	}
+
+	m.token = token
+	return stream.Send(&infrav2.WaitForBMCCommandResponse{})
 }

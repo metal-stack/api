@@ -1,6 +1,7 @@
 import datetime
 
 from buf.validate import validate_pb2 as _validate_pb2
+from google.protobuf import duration_pb2 as _duration_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
@@ -60,7 +61,7 @@ SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
 SWITCH_PORT_STATUS_UNKNOWN: SwitchPortStatus
 
 class Switch(_message.Message):
-    __slots__ = ("id", "meta", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections")
+    __slots__ = ("id", "meta", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections", "last_sync", "last_sync_error")
     ID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
@@ -73,6 +74,8 @@ class Switch(_message.Message):
     NICS_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
     MACHINE_CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
+    LAST_SYNC_FIELD_NUMBER: _ClassVar[int]
+    LAST_SYNC_ERROR_FIELD_NUMBER: _ClassVar[int]
     id: str
     meta: _common_pb2.Meta
     description: str
@@ -85,7 +88,9 @@ class Switch(_message.Message):
     nics: _containers.RepeatedCompositeFieldContainer[SwitchNic]
     os: SwitchOS
     machine_connections: _containers.RepeatedCompositeFieldContainer[MachineConnection]
-    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ...) -> None: ...
+    last_sync: SwitchSync
+    last_sync_error: SwitchSync
+    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ..., last_sync: _Optional[_Union[SwitchSync, _Mapping]] = ..., last_sync_error: _Optional[_Union[SwitchSync, _Mapping]] = ...) -> None: ...
 
 class SwitchOS(_message.Message):
     __slots__ = ("vendor", "version", "metal_core_version")
@@ -176,3 +181,13 @@ class SwitchOSQuery(_message.Message):
     vendor: SwitchOSVendor
     version: str
     def __init__(self, vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., version: _Optional[str] = ...) -> None: ...
+
+class SwitchSync(_message.Message):
+    __slots__ = ("time", "duration", "error")
+    TIME_FIELD_NUMBER: _ClassVar[int]
+    DURATION_FIELD_NUMBER: _ClassVar[int]
+    ERROR_FIELD_NUMBER: _ClassVar[int]
+    time: _timestamp_pb2.Timestamp
+    duration: _duration_pb2.Duration
+    error: str
+    def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ...) -> None: ...

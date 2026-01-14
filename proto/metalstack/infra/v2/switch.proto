@@ -4,7 +4,6 @@ package metalstack.infra.v2;
 
 import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
-import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/switch.proto";
@@ -78,17 +77,7 @@ message SwitchServiceHeartbeatResponse {
   // Id of the switch.
   string id = 1;
   // LastSync holds information about the last sync.
-  SwitchSync last_sync = 2;
+  metalstack.api.v2.SwitchSync last_sync = 2;
   // LastSyncError holds information about the last erroneous sync.
-  SwitchSync last_sync_error = 3;
-}
-
-// SwitchSync summarizes information about a switch sync.
-message SwitchSync {
-  // Time of the sync.
-  google.protobuf.Timestamp time = 1;
-  // Duration of the sync.
-  google.protobuf.Duration duration = 2;
-  // Error if any occurred.
-  optional string error = 3;
+  metalstack.api.v2.SwitchSync last_sync_error = 3;
 }

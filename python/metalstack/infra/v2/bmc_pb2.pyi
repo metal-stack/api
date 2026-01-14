@@ -33,18 +33,18 @@ class UpdateBMCInfoResponse(_message.Message):
     created_machines: _containers.RepeatedScalarFieldContainer[str]
     def __init__(self, updated_machines: _Optional[_Iterable[str]] = ..., created_machines: _Optional[_Iterable[str]] = ...) -> None: ...
 
-class WaitForMachineEventRequest(_message.Message):
-    __slots__ = ("partition", "hostname")
+class WaitForBMCCommandRequest(_message.Message):
+    __slots__ = ("partition",)
     PARTITION_FIELD_NUMBER: _ClassVar[int]
-    HOSTNAME_FIELD_NUMBER: _ClassVar[int]
     partition: str
-    hostname: str
-    def __init__(self, partition: _Optional[str] = ..., hostname: _Optional[str] = ...) -> None: ...
+    def __init__(self, partition: _Optional[str] = ...) -> None: ...
 
-class WaitForMachineEventResponse(_message.Message):
-    __slots__ = ("bmc_command", "machine_bmc")
+class WaitForBMCCommandResponse(_message.Message):
+    __slots__ = ("uuid", "bmc_command", "machine_bmc")
+    UUID_FIELD_NUMBER: _ClassVar[int]
     BMC_COMMAND_FIELD_NUMBER: _ClassVar[int]
     MACHINE_BMC_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
     bmc_command: _machine_pb2.MachineBMCCommand
     machine_bmc: _machine_pb2.MachineBMC
-    def __init__(self, bmc_command: _Optional[_Union[_machine_pb2.MachineBMCCommand, str]] = ..., machine_bmc: _Optional[_Union[_machine_pb2.MachineBMC, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., bmc_command: _Optional[_Union[_machine_pb2.MachineBMCCommand, str]] = ..., machine_bmc: _Optional[_Union[_machine_pb2.MachineBMC, _Mapping]] = ...) -> None: ...

@@ -28,7 +28,7 @@ from metalstack.api.v2 import machine_pb2 as metalstack_dot_api_dot_v2_dot_machi
 from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/infra/v2/bmc.proto\x12\x13metalstack.infra.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x90\x02\n\x14UpdateBMCInfoRequest\x12)\n\tpartition\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\x12i\n\x0b\x62mc_reports\x18\x02 \x03(\x0b\x32\x39.metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntryB\r\xbaH\n\x9a\x01\x07\"\x05r\x03\xb0\x01\x01R\nbmcReports\x1a\x62\n\x0f\x42mcReportsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x39\n\x05value\x18\x02 \x01(\x0b\x32#.metalstack.api.v2.MachineBMCReportR\x05value:\x02\x38\x01\"m\n\x15UpdateBMCInfoResponse\x12)\n\x10updated_machines\x18\x01 \x03(\tR\x0fupdatedMachines\x12)\n\x10\x63reated_machines\x18\x02 \x03(\tR\x0f\x63reatedMachines\"c\n\x1aWaitForMachineEventRequest\x12)\n\tpartition\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\x12\x1a\n\x08hostname\x18\x02 \x01(\tR\x08hostname\"\xa4\x01\n\x1bWaitForMachineEventResponse\x12\x45\n\x0b\x62mc_command\x18\x01 \x01(\x0e\x32$.metalstack.api.v2.MachineBMCCommandR\nbmcCommand\x12>\n\x0bmachine_bmc\x18\x02 \x01(\x0b\x32\x1d.metalstack.api.v2.MachineBMCR\nmachineBmc2\x87\x02\n\nBMCService\x12q\n\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x85\x01\n\x13WaitForMachineEvent\x12/.metalstack.infra.v2.WaitForMachineEventRequest\x1a\x30.metalstack.infra.v2.WaitForMachineEventResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x30\x01\x42\xcc\x01\n\x17\x63om.metalstack.infra.v2B\x08\x42mcProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/infra/v2/bmc.proto\x12\x13metalstack.infra.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x90\x02\n\x14UpdateBMCInfoRequest\x12)\n\tpartition\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\x12i\n\x0b\x62mc_reports\x18\x02 \x03(\x0b\x32\x39.metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntryB\r\xbaH\n\x9a\x01\x07\"\x05r\x03\xb0\x01\x01R\nbmcReports\x1a\x62\n\x0f\x42mcReportsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x39\n\x05value\x18\x02 \x01(\x0b\x32#.metalstack.api.v2.MachineBMCReportR\x05value:\x02\x38\x01\"m\n\x15UpdateBMCInfoResponse\x12)\n\x10updated_machines\x18\x01 \x03(\tR\x0fupdatedMachines\x12)\n\x10\x63reated_machines\x18\x02 \x03(\tR\x0f\x63reatedMachines\"E\n\x18WaitForBMCCommandRequest\x12)\n\tpartition\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"\xc0\x01\n\x19WaitForBMCCommandResponse\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x45\n\x0b\x62mc_command\x18\x02 \x01(\x0e\x32$.metalstack.api.v2.MachineBMCCommandR\nbmcCommand\x12>\n\x0bmachine_bmc\x18\x03 \x01(\x0b\x32\x1d.metalstack.api.v2.MachineBMCR\nmachineBmc2\x80\x02\n\nBMCService\x12q\n\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x7f\n\x11WaitForBMCCommand\x12-.metalstack.infra.v2.WaitForBMCCommandRequest\x1a..metalstack.infra.v2.WaitForBMCCommandResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x30\x01\x42\xcc\x01\n\x17\x63om.metalstack.infra.v2B\x08\x42mcProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -42,22 +42,24 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_UPDATEBMCINFOREQUEST'].fields_by_name['partition']._serialized_options = b'\272H\010r\006\320\263\256\261\002\001'
   _globals['_UPDATEBMCINFOREQUEST'].fields_by_name['bmc_reports']._loaded_options = None
   _globals['_UPDATEBMCINFOREQUEST'].fields_by_name['bmc_reports']._serialized_options = b'\272H\n\232\001\007\"\005r\003\260\001\001'
-  _globals['_WAITFORMACHINEEVENTREQUEST'].fields_by_name['partition']._loaded_options = None
-  _globals['_WAITFORMACHINEEVENTREQUEST'].fields_by_name['partition']._serialized_options = b'\272H\010r\006\320\263\256\261\002\001'
+  _globals['_WAITFORBMCCOMMANDREQUEST'].fields_by_name['partition']._loaded_options = None
+  _globals['_WAITFORBMCCOMMANDREQUEST'].fields_by_name['partition']._serialized_options = b'\272H\010r\006\320\263\256\261\002\001'
+  _globals['_WAITFORBMCCOMMANDRESPONSE'].fields_by_name['uuid']._loaded_options = None
+  _globals['_WAITFORBMCCOMMANDRESPONSE'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
   _globals['_BMCSERVICE'].methods_by_name['UpdateBMCInfo']._loaded_options = None
   _globals['_BMCSERVICE'].methods_by_name['UpdateBMCInfo']._serialized_options = b'\340\363\030\002\352\363\030\001\001'
-  _globals['_BMCSERVICE'].methods_by_name['WaitForMachineEvent']._loaded_options = None
-  _globals['_BMCSERVICE'].methods_by_name['WaitForMachineEvent']._serialized_options = b'\340\363\030\002\352\363\030\001\001'
+  _globals['_BMCSERVICE'].methods_by_name['WaitForBMCCommand']._loaded_options = None
+  _globals['_BMCSERVICE'].methods_by_name['WaitForBMCCommand']._serialized_options = b'\340\363\030\002\352\363\030\001\001'
   _globals['_UPDATEBMCINFOREQUEST']._serialized_start=191
   _globals['_UPDATEBMCINFOREQUEST']._serialized_end=463
   _globals['_UPDATEBMCINFOREQUEST_BMCREPORTSENTRY']._serialized_start=365
   _globals['_UPDATEBMCINFOREQUEST_BMCREPORTSENTRY']._serialized_end=463
   _globals['_UPDATEBMCINFORESPONSE']._serialized_start=465
   _globals['_UPDATEBMCINFORESPONSE']._serialized_end=574
-  _globals['_WAITFORMACHINEEVENTREQUEST']._serialized_start=576
-  _globals['_WAITFORMACHINEEVENTREQUEST']._serialized_end=675
-  _globals['_WAITFORMACHINEEVENTRESPONSE']._serialized_start=678
-  _globals['_WAITFORMACHINEEVENTRESPONSE']._serialized_end=842
-  _globals['_BMCSERVICE']._serialized_start=845
-  _globals['_BMCSERVICE']._serialized_end=1108
+  _globals['_WAITFORBMCCOMMANDREQUEST']._serialized_start=576
+  _globals['_WAITFORBMCCOMMANDREQUEST']._serialized_end=645
+  _globals['_WAITFORBMCCOMMANDRESPONSE']._serialized_start=648
+  _globals['_WAITFORBMCCOMMANDRESPONSE']._serialized_end=840
+  _globals['_BMCSERVICE']._serialized_start=843
+  _globals['_BMCSERVICE']._serialized_end=1099
 # @@protoc_insertion_point(module_scope)

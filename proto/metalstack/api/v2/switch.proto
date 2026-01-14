@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
@@ -42,6 +43,10 @@ message Switch {
   SwitchOS os = 11;
   // MachineConnections map machines to the nics they are connected to.
   repeated MachineConnection machine_connections = 12;
+  // LastSync contains information about the last heartbeat of the switch.
+  SwitchSync last_sync = 13;
+  // LastSyncError contains information about the last unsuccessful heartbeat of the switch.
+  SwitchSync last_sync_error = 14;
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.
@@ -138,6 +143,16 @@ message SwitchOSQuery {
   optional SwitchOSVendor vendor = 1 [(buf.validate.field).enum.defined_only = true];
   // OsVersion of the OS by which to filter the switches.
   optional string version = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+}
+
+// SwitchSync summarizes information about a switch sync.
+message SwitchSync {
+  // Time of the sync.
+  google.protobuf.Timestamp time = 1;
+  // Duration of the sync.
+  google.protobuf.Duration duration = 2;
+  // Error if any occurred.
+  optional string error = 3;
 }
 
 // BGPState represents the state of a BGP session.
