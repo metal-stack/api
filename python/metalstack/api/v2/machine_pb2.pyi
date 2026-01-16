@@ -77,7 +77,8 @@ class MachineBMCCommand(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     MACHINE_BMC_COMMAND_BOOT_FROM_PXE: _ClassVar[MachineBMCCommand]
     MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: _ClassVar[MachineBMCCommand]
     MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: _ClassVar[MachineBMCCommand]
-    MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_MACHINE_DELETED: _ClassVar[MachineBMCCommand]
+    MACHINE_BMC_COMMAND_MACHINE_CREATED: _ClassVar[MachineBMCCommand]
 IP_PROTOCOL_UNSPECIFIED: IPProtocol
 IP_PROTOCOL_TCP: IPProtocol
 IP_PROTOCOL_UDP: IPProtocol
@@ -117,7 +118,8 @@ MACHINE_BMC_COMMAND_BOOT_FROM_DISK: MachineBMCCommand
 MACHINE_BMC_COMMAND_BOOT_FROM_PXE: MachineBMCCommand
 MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: MachineBMCCommand
 MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: MachineBMCCommand
-MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE: MachineBMCCommand
+MACHINE_BMC_COMMAND_MACHINE_DELETED: MachineBMCCommand
+MACHINE_BMC_COMMAND_MACHINE_CREATED: MachineBMCCommand
 
 class MachineServiceGetRequest(_message.Message):
     __slots__ = ("uuid", "project")

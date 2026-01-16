@@ -725,8 +725,10 @@ enum MachineBMCCommand {
   MACHINE_BMC_COMMAND_IDENTIFY_LED_ON = 8 [(enum_string_value) = "identify-led-on"];
   // MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off
   MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9 [(enum_string_value) = "identify-led-off"];
-  // MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE update the bmc firmware of this machine
-  MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE = 10 [(enum_string_value) = "update-bmc-firmware"];
+  // MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe
+  MACHINE_BMC_COMMAND_MACHINE_DELETED = 10 [(enum_string_value) = "machine-deleted"];
+  // MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was create set the boot order to boot from disk
+  MACHINE_BMC_COMMAND_MACHINE_CREATED = 11 [(enum_string_value) = "machine-created"];
 }
 
 // MachineQuery contains fields which can be specified to list specific machines.

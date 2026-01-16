@@ -409,8 +409,10 @@ const (
 	MachineBMCCommand_MACHINE_BMC_COMMAND_IDENTIFY_LED_ON MachineBMCCommand = 8
 	// MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off
 	MachineBMCCommand_MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF MachineBMCCommand = 9
-	// MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE update the bmc firmware of this machine
-	MachineBMCCommand_MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE MachineBMCCommand = 10
+	// MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe
+	MachineBMCCommand_MACHINE_BMC_COMMAND_MACHINE_DELETED MachineBMCCommand = 10
+	// MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was create set the boot order to boot from disk
+	MachineBMCCommand_MACHINE_BMC_COMMAND_MACHINE_CREATED MachineBMCCommand = 11
 )
 
 // Enum value maps for MachineBMCCommand.
@@ -426,20 +428,22 @@ var (
 		7:  "MACHINE_BMC_COMMAND_BOOT_FROM_PXE",
 		8:  "MACHINE_BMC_COMMAND_IDENTIFY_LED_ON",
 		9:  "MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF",
-		10: "MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE",
+		10: "MACHINE_BMC_COMMAND_MACHINE_DELETED",
+		11: "MACHINE_BMC_COMMAND_MACHINE_CREATED",
 	}
 	MachineBMCCommand_value = map[string]int32{
-		"MACHINE_BMC_COMMAND_UNSPECIFIED":         0,
-		"MACHINE_BMC_COMMAND_ON":                  1,
-		"MACHINE_BMC_COMMAND_OFF":                 2,
-		"MACHINE_BMC_COMMAND_RESET":               3,
-		"MACHINE_BMC_COMMAND_CYCLE":               4,
-		"MACHINE_BMC_COMMAND_BOOT_TO_BIOS":        5,
-		"MACHINE_BMC_COMMAND_BOOT_FROM_DISK":      6,
-		"MACHINE_BMC_COMMAND_BOOT_FROM_PXE":       7,
-		"MACHINE_BMC_COMMAND_IDENTIFY_LED_ON":     8,
-		"MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF":    9,
-		"MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE": 10,
+		"MACHINE_BMC_COMMAND_UNSPECIFIED":      0,
+		"MACHINE_BMC_COMMAND_ON":               1,
+		"MACHINE_BMC_COMMAND_OFF":              2,
+		"MACHINE_BMC_COMMAND_RESET":            3,
+		"MACHINE_BMC_COMMAND_CYCLE":            4,
+		"MACHINE_BMC_COMMAND_BOOT_TO_BIOS":     5,
+		"MACHINE_BMC_COMMAND_BOOT_FROM_DISK":   6,
+		"MACHINE_BMC_COMMAND_BOOT_FROM_PXE":    7,
+		"MACHINE_BMC_COMMAND_IDENTIFY_LED_ON":  8,
+		"MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF": 9,
+		"MACHINE_BMC_COMMAND_MACHINE_DELETED":  10,
+		"MACHINE_BMC_COMMAND_MACHINE_CREATED":  11,
 	}
 )
 
@@ -4529,7 +4533,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x15MachineAllocationType\x12-\n" +
 	"#MACHINE_ALLOCATION_TYPE_UNSPECIFIED\x10\x00\x1a\x04\x82\xb2\x19\x00\x120\n" +
 	"\x1fMACHINE_ALLOCATION_TYPE_MACHINE\x10\x01\x1a\v\x82\xb2\x19\amachine\x122\n" +
-	" MACHINE_ALLOCATION_TYPE_FIREWALL\x10\x02\x1a\f\x82\xb2\x19\bfirewall*\xc8\x04\n" +
+	" MACHINE_ALLOCATION_TYPE_FIREWALL\x10\x02\x1a\f\x82\xb2\x19\bfirewall*\xfe\x04\n" +
 	"\x11MachineBMCCommand\x12#\n" +
 	"\x1fMACHINE_BMC_COMMAND_UNSPECIFIED\x10\x00\x12\"\n" +
 	"\x16MACHINE_BMC_COMMAND_ON\x10\x01\x1a\x06\x82\xb2\x19\x02on\x12$\n" +
@@ -4540,9 +4544,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\"MACHINE_BMC_COMMAND_BOOT_FROM_DISK\x10\x06\x1a\x12\x82\xb2\x19\x0eboot-from-disk\x128\n" +
 	"!MACHINE_BMC_COMMAND_BOOT_FROM_PXE\x10\a\x1a\x11\x82\xb2\x19\rboot-from-pxe\x12<\n" +
 	"#MACHINE_BMC_COMMAND_IDENTIFY_LED_ON\x10\b\x1a\x13\x82\xb2\x19\x0fidentify-led-on\x12>\n" +
-	"$MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF\x10\t\x1a\x14\x82\xb2\x19\x10identify-led-off\x12D\n" +
-	"'MACHINE_BMC_COMMAND_UPDATE_BMC_FIRMWARE\x10\n" +
-	"\x1a\x17\x82\xb2\x19\x13update-bmc-firmware2\xbc\x06\n" +
+	"$MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF\x10\t\x1a\x14\x82\xb2\x19\x10identify-led-off\x12<\n" +
+	"#MACHINE_BMC_COMMAND_MACHINE_DELETED\x10\n" +
+	"\x1a\x13\x82\xb2\x19\x0fmachine-deleted\x12<\n" +
+	"#MACHINE_BMC_COMMAND_MACHINE_CREATED\x10\v\x1a\x13\x82\xb2\x19\x0fmachine-created2\xbc\x06\n" +
 	"\x0eMachineService\x12m\n" +
 	"\x03Get\x12+.metalstack.api.v2.MachineServiceGetRequest\x1a,.metalstack.api.v2.MachineServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
 	"\x06Create\x12..metalstack.api.v2.MachineServiceCreateRequest\x1a/.metalstack.api.v2.MachineServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12q\n" +
