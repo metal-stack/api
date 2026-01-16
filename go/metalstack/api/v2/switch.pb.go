@@ -1138,9 +1138,9 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x82\xb2\x19\x06Active\x12&\n" +
 	"\x13BGP_STATE_OPEN_SENT\x10\x04\x1a\r\x82\xb2\x19\tOpen-sent\x12,\n" +
 	"\x16BGP_STATE_OPEN_CONFIRM\x10\x05\x1a\x10\x82\xb2\x19\fOpen-confirm\x12*\n" +
-	"\x15BGP_STATE_ESTABLISHED\x10\x06\x1a\x0f\x82\xb2\x19\vEstablished*\x9c\x01\n" +
-	"\x11SwitchReplaceMode\x12#\n" +
-	"\x1fSWITCH_REPLACE_MODE_UNSPECIFIED\x10\x00\x12,\n" +
+	"\x15BGP_STATE_ESTABLISHED\x10\x06\x1a\x0f\x82\xb2\x19\vEstablished*\xa2\x01\n" +
+	"\x11SwitchReplaceMode\x12)\n" +
+	"\x1fSWITCH_REPLACE_MODE_UNSPECIFIED\x10\x00\x1a\x04\x82\xb2\x19\x00\x12,\n" +
 	"\x1bSWITCH_REPLACE_MODE_REPLACE\x10\x01\x1a\v\x82\xb2\x19\areplace\x124\n" +
 	"\x1fSWITCH_REPLACE_MODE_OPERATIONAL\x10\x02\x1a\x0f\x82\xb2\x19\voperational*\x84\x01\n" +
 	"\x0eSwitchOSVendor\x12 \n" +

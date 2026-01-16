@@ -176,7 +176,7 @@ enum BGPState {
 // SwitchReplaceMode is used to mark a switch ready for replacement.
 enum SwitchReplaceMode {
   // SWITCH_REPLACE_MODE_UNSPECIFIED is not specified.
-  SWITCH_REPLACE_MODE_UNSPECIFIED = 0;
+  SWITCH_REPLACE_MODE_UNSPECIFIED = 0 [(enum_string_value) = ""];
   // SWITCH_REPLACE_MODE_REPLACE means this switch is waiting to be replaced.
   SWITCH_REPLACE_MODE_REPLACE = 1 [(enum_string_value) = "replace"];
   // SWITCH_REPLACE_MODE_OPERATIONAL means this switch is operational and cannot be replaced.
