@@ -166,9 +166,9 @@ enum BGPState {
   // BGP_STATE_ACTIVE is the Active state of a BGP session.
   BGP_STATE_ACTIVE = 3 [(enum_string_value) = "Active"];
   // BGP_STATE_OPEN_SENT is the OpenSent state of a BGP session.
-  BGP_STATE_OPEN_SENT = 4 [(enum_string_value) = "Open-sent"];
+  BGP_STATE_OPEN_SENT = 4 [(enum_string_value) = "OpenSent"];
   // BGP_STATE_OPEN_CONFIRM is the OpenConfirm state of a BGP session.
-  BGP_STATE_OPEN_CONFIRM = 5 [(enum_string_value) = "Open-confirm"];
+  BGP_STATE_OPEN_CONFIRM = 5 [(enum_string_value) = "OpenConfirm"];
   // BGP_STATE_ESTABLISHED is the Established state of a BGP session.
   BGP_STATE_ESTABLISHED = 6 [(enum_string_value) = "Established"];
 }
