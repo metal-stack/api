@@ -12,3 +12,11 @@ class UpdateBMCInfoRequest(_message.Message):
 class UpdateBMCInfoResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
+
+class WaitForMachineEventRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class WaitForMachineEventResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...

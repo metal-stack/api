@@ -19,6 +19,9 @@ class BMCService(Protocol):
     async def update_b_m_c_info(self, request: metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    def wait_for_machine_event(self, request: metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventRequest, ctx: RequestContext) -> AsyncIterator[metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventResponse]:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class BMCServiceASGIApplication(ConnectASGIApplication):
     def __init__(self, service: BMCService, *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -33,6 +36,16 @@ class BMCServiceASGIApplication(ConnectASGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.update_b_m_c_info,
+                ),
+                "/metalstack.infra.v2.BMCService/WaitForMachineEvent": Endpoint.server_stream(
+                    method=MethodInfo(
+                        name="WaitForMachineEvent",
+                        service_name="metalstack.infra.v2.BMCService",
+                        input=metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.wait_for_machine_event,
                 ),
             },
             interceptors=interceptors,
@@ -66,9 +79,31 @@ class BMCServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    def wait_for_machine_event(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> AsyncIterator[metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventResponse]:
+        return self.execute_server_stream(
+            request=request,
+            method=MethodInfo(
+                name="WaitForMachineEvent",
+                service_name="metalstack.infra.v2.BMCService",
+                input=metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventRequest,
+                output=metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 class BMCServiceSync(Protocol):
     def update_b_m_c_info(self, request: metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def wait_for_machine_event(self, request: metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventRequest, ctx: RequestContext) -> Iterator[metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventResponse]:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -85,6 +120,16 @@ class BMCServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.update_b_m_c_info,
+                ),
+                "/metalstack.infra.v2.BMCService/WaitForMachineEvent": EndpointSync.server_stream(
+                    method=MethodInfo(
+                        name="WaitForMachineEvent",
+                        service_name="metalstack.infra.v2.BMCService",
+                        input=metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.wait_for_machine_event,
                 ),
             },
             interceptors=interceptors,
@@ -112,6 +157,26 @@ class BMCServiceClientSync(ConnectClientSync):
                 service_name="metalstack.infra.v2.BMCService",
                 input=metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest,
                 output=metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def wait_for_machine_event(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> Iterator[metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventResponse]:
+        return self.execute_server_stream(
+            request=request,
+            method=MethodInfo(
+                name="WaitForMachineEvent",
+                service_name="metalstack.infra.v2.BMCService",
+                input=metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventRequest,
+                output=metalstack_dot_infra_dot_v2_dot_bmc__pb2.WaitForMachineEventResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

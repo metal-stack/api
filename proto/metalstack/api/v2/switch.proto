@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
@@ -42,6 +43,10 @@ message Switch {
   SwitchOS os = 11;
   // MachineConnections map machines to the nics they are connected to.
   repeated MachineConnection machine_connections = 12;
+  // LastSync contains information about the last heartbeat of the switch.
+  SwitchSync last_sync = 13;
+  // LastSyncError contains information about the last unsuccessful heartbeat of the switch.
+  SwitchSync last_sync_error = 14;
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.
@@ -140,28 +145,38 @@ message SwitchOSQuery {
   optional string version = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
+// SwitchSync summarizes information about a switch sync.
+message SwitchSync {
+  // Time of the sync.
+  google.protobuf.Timestamp time = 1;
+  // Duration of the sync.
+  google.protobuf.Duration duration = 2;
+  // Error if any occurred.
+  optional string error = 3;
+}
+
 // BGPState represents the state of a BGP session.
 enum BGPState {
   // BGP_STATE_UNSPECIFIED is not specified.
   BGP_STATE_UNSPECIFIED = 0;
   // BGP_STATE_IDLE is the Idle state of a BGP session.
-  BGP_STATE_IDLE = 1 [(enum_string_value) = "idle"];
+  BGP_STATE_IDLE = 1 [(enum_string_value) = "Idle"];
   // BGP_STATE_CONNECT is the Connect state of a BGP session.
-  BGP_STATE_CONNECT = 2 [(enum_string_value) = "connect"];
+  BGP_STATE_CONNECT = 2 [(enum_string_value) = "Connect"];
   // BGP_STATE_ACTIVE is the Active state of a BGP session.
-  BGP_STATE_ACTIVE = 3 [(enum_string_value) = "active"];
+  BGP_STATE_ACTIVE = 3 [(enum_string_value) = "Active"];
   // BGP_STATE_OPEN_SENT is the OpenSent state of a BGP session.
-  BGP_STATE_OPEN_SENT = 4 [(enum_string_value) = "open-sent"];
+  BGP_STATE_OPEN_SENT = 4 [(enum_string_value) = "OpenSent"];
   // BGP_STATE_OPEN_CONFIRM is the OpenConfirm state of a BGP session.
-  BGP_STATE_OPEN_CONFIRM = 5 [(enum_string_value) = "open-confirm"];
+  BGP_STATE_OPEN_CONFIRM = 5 [(enum_string_value) = "OpenConfirm"];
   // BGP_STATE_ESTABLISHED is the Established state of a BGP session.
-  BGP_STATE_ESTABLISHED = 6 [(enum_string_value) = "established"];
+  BGP_STATE_ESTABLISHED = 6 [(enum_string_value) = "Established"];
 }
 
 // SwitchReplaceMode is used to mark a switch ready for replacement.
 enum SwitchReplaceMode {
   // SWITCH_REPLACE_MODE_UNSPECIFIED is not specified.
-  SWITCH_REPLACE_MODE_UNSPECIFIED = 0;
+  SWITCH_REPLACE_MODE_UNSPECIFIED = 0 [(enum_string_value) = ""];
   // SWITCH_REPLACE_MODE_REPLACE means this switch is waiting to be replaced.
   SWITCH_REPLACE_MODE_REPLACE = 1 [(enum_string_value) = "replace"];
   // SWITCH_REPLACE_MODE_OPERATIONAL means this switch is operational and cannot be replaced.
