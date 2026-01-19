@@ -107,49 +107,49 @@ func (_c *BMCServiceHandler_UpdateBMCInfo_Call) RunAndReturn(run func(context1 c
 	return _c
 }
 
-// WaitForMachineEvent provides a mock function for the type BMCServiceHandler
-func (_mock *BMCServiceHandler) WaitForMachineEvent(context1 context.Context, waitForMachineEventRequest *infrav2.WaitForMachineEventRequest, serverStream *connect.ServerStream[infrav2.WaitForMachineEventResponse]) error {
-	ret := _mock.Called(context1, waitForMachineEventRequest, serverStream)
+// WaitForBMCCommand provides a mock function for the type BMCServiceHandler
+func (_mock *BMCServiceHandler) WaitForBMCCommand(context1 context.Context, waitForBMCCommandRequest *infrav2.WaitForBMCCommandRequest, serverStream *connect.ServerStream[infrav2.WaitForBMCCommandResponse]) error {
+	ret := _mock.Called(context1, waitForBMCCommandRequest, serverStream)
 
 	if len(ret) == 0 {
-		panic("no return value specified for WaitForMachineEvent")
+		panic("no return value specified for WaitForBMCCommand")
 	}
 
 	var r0 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *infrav2.WaitForMachineEventRequest, *connect.ServerStream[infrav2.WaitForMachineEventResponse]) error); ok {
-		r0 = returnFunc(context1, waitForMachineEventRequest, serverStream)
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *infrav2.WaitForBMCCommandRequest, *connect.ServerStream[infrav2.WaitForBMCCommandResponse]) error); ok {
+		r0 = returnFunc(context1, waitForBMCCommandRequest, serverStream)
 	} else {
 		r0 = ret.Error(0)
 	}
 	return r0
 }
 
-// BMCServiceHandler_WaitForMachineEvent_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'WaitForMachineEvent'
-type BMCServiceHandler_WaitForMachineEvent_Call struct {
+// BMCServiceHandler_WaitForBMCCommand_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'WaitForBMCCommand'
+type BMCServiceHandler_WaitForBMCCommand_Call struct {
 	*mock.Call
 }
 
-// WaitForMachineEvent is a helper method to define mock.On call
+// WaitForBMCCommand is a helper method to define mock.On call
 //   - context1 context.Context
-//   - waitForMachineEventRequest *infrav2.WaitForMachineEventRequest
-//   - serverStream *connect.ServerStream[infrav2.WaitForMachineEventResponse]
-func (_e *BMCServiceHandler_Expecter) WaitForMachineEvent(context1 interface{}, waitForMachineEventRequest interface{}, serverStream interface{}) *BMCServiceHandler_WaitForMachineEvent_Call {
-	return &BMCServiceHandler_WaitForMachineEvent_Call{Call: _e.mock.On("WaitForMachineEvent", context1, waitForMachineEventRequest, serverStream)}
+//   - waitForBMCCommandRequest *infrav2.WaitForBMCCommandRequest
+//   - serverStream *connect.ServerStream[infrav2.WaitForBMCCommandResponse]
+func (_e *BMCServiceHandler_Expecter) WaitForBMCCommand(context1 interface{}, waitForBMCCommandRequest interface{}, serverStream interface{}) *BMCServiceHandler_WaitForBMCCommand_Call {
+	return &BMCServiceHandler_WaitForBMCCommand_Call{Call: _e.mock.On("WaitForBMCCommand", context1, waitForBMCCommandRequest, serverStream)}
 }
 
-func (_c *BMCServiceHandler_WaitForMachineEvent_Call) Run(run func(context1 context.Context, waitForMachineEventRequest *infrav2.WaitForMachineEventRequest, serverStream *connect.ServerStream[infrav2.WaitForMachineEventResponse])) *BMCServiceHandler_WaitForMachineEvent_Call {
+func (_c *BMCServiceHandler_WaitForBMCCommand_Call) Run(run func(context1 context.Context, waitForBMCCommandRequest *infrav2.WaitForBMCCommandRequest, serverStream *connect.ServerStream[infrav2.WaitForBMCCommandResponse])) *BMCServiceHandler_WaitForBMCCommand_Call {
 	_c.Call.Run(func(args mock.Arguments) {
 		var arg0 context.Context
 		if args[0] != nil {
 			arg0 = args[0].(context.Context)
 		}
-		var arg1 *infrav2.WaitForMachineEventRequest
+		var arg1 *infrav2.WaitForBMCCommandRequest
 		if args[1] != nil {
-			arg1 = args[1].(*infrav2.WaitForMachineEventRequest)
+			arg1 = args[1].(*infrav2.WaitForBMCCommandRequest)
 		}
-		var arg2 *connect.ServerStream[infrav2.WaitForMachineEventResponse]
+		var arg2 *connect.ServerStream[infrav2.WaitForBMCCommandResponse]
 		if args[2] != nil {
-			arg2 = args[2].(*connect.ServerStream[infrav2.WaitForMachineEventResponse])
+			arg2 = args[2].(*connect.ServerStream[infrav2.WaitForBMCCommandResponse])
 		}
 		run(
 			arg0,
@@ -160,12 +160,12 @@ func (_c *BMCServiceHandler_WaitForMachineEvent_Call) Run(run func(context1 cont
 	return _c
 }
 
-func (_c *BMCServiceHandler_WaitForMachineEvent_Call) Return(err error) *BMCServiceHandler_WaitForMachineEvent_Call {
+func (_c *BMCServiceHandler_WaitForBMCCommand_Call) Return(err error) *BMCServiceHandler_WaitForBMCCommand_Call {
 	_c.Call.Return(err)
 	return _c
 }
 
-func (_c *BMCServiceHandler_WaitForMachineEvent_Call) RunAndReturn(run func(context1 context.Context, waitForMachineEventRequest *infrav2.WaitForMachineEventRequest, serverStream *connect.ServerStream[infrav2.WaitForMachineEventResponse]) error) *BMCServiceHandler_WaitForMachineEvent_Call {
+func (_c *BMCServiceHandler_WaitForBMCCommand_Call) RunAndReturn(run func(context1 context.Context, waitForBMCCommandRequest *infrav2.WaitForBMCCommandRequest, serverStream *connect.ServerStream[infrav2.WaitForBMCCommandResponse]) error) *BMCServiceHandler_WaitForBMCCommand_Call {
 	_c.Call.Return(run)
 	return _c
 }

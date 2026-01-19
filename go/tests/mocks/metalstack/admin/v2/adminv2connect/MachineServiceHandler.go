@@ -38,6 +38,74 @@ func (_m *MachineServiceHandler) EXPECT() *MachineServiceHandler_Expecter {
 	return &MachineServiceHandler_Expecter{mock: &_m.Mock}
 }
 
+// BMCCommand provides a mock function for the type MachineServiceHandler
+func (_mock *MachineServiceHandler) BMCCommand(context1 context.Context, machineServiceBMCCommandRequest *adminv2.MachineServiceBMCCommandRequest) (*adminv2.MachineServiceBMCCommandResponse, error) {
+	ret := _mock.Called(context1, machineServiceBMCCommandRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for BMCCommand")
+	}
+
+	var r0 *adminv2.MachineServiceBMCCommandResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceBMCCommandRequest) (*adminv2.MachineServiceBMCCommandResponse, error)); ok {
+		return returnFunc(context1, machineServiceBMCCommandRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceBMCCommandRequest) *adminv2.MachineServiceBMCCommandResponse); ok {
+		r0 = returnFunc(context1, machineServiceBMCCommandRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.MachineServiceBMCCommandResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.MachineServiceBMCCommandRequest) error); ok {
+		r1 = returnFunc(context1, machineServiceBMCCommandRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MachineServiceHandler_BMCCommand_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'BMCCommand'
+type MachineServiceHandler_BMCCommand_Call struct {
+	*mock.Call
+}
+
+// BMCCommand is a helper method to define mock.On call
+//   - context1 context.Context
+//   - machineServiceBMCCommandRequest *adminv2.MachineServiceBMCCommandRequest
+func (_e *MachineServiceHandler_Expecter) BMCCommand(context1 interface{}, machineServiceBMCCommandRequest interface{}) *MachineServiceHandler_BMCCommand_Call {
+	return &MachineServiceHandler_BMCCommand_Call{Call: _e.mock.On("BMCCommand", context1, machineServiceBMCCommandRequest)}
+}
+
+func (_c *MachineServiceHandler_BMCCommand_Call) Run(run func(context1 context.Context, machineServiceBMCCommandRequest *adminv2.MachineServiceBMCCommandRequest)) *MachineServiceHandler_BMCCommand_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.MachineServiceBMCCommandRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.MachineServiceBMCCommandRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *MachineServiceHandler_BMCCommand_Call) Return(machineServiceBMCCommandResponse *adminv2.MachineServiceBMCCommandResponse, err error) *MachineServiceHandler_BMCCommand_Call {
+	_c.Call.Return(machineServiceBMCCommandResponse, err)
+	return _c
+}
+
+func (_c *MachineServiceHandler_BMCCommand_Call) RunAndReturn(run func(context1 context.Context, machineServiceBMCCommandRequest *adminv2.MachineServiceBMCCommandRequest) (*adminv2.MachineServiceBMCCommandResponse, error)) *MachineServiceHandler_BMCCommand_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Get provides a mock function for the type MachineServiceHandler
 func (_mock *MachineServiceHandler) Get(context1 context.Context, machineServiceGetRequest *adminv2.MachineServiceGetRequest) (*adminv2.MachineServiceGetResponse, error) {
 	ret := _mock.Called(context1, machineServiceGetRequest)
@@ -106,6 +174,74 @@ func (_c *MachineServiceHandler_Get_Call) RunAndReturn(run func(context1 context
 	return _c
 }
 
+// GetBMC provides a mock function for the type MachineServiceHandler
+func (_mock *MachineServiceHandler) GetBMC(context1 context.Context, machineServiceGetBMCRequest *adminv2.MachineServiceGetBMCRequest) (*adminv2.MachineServiceGetBMCResponse, error) {
+	ret := _mock.Called(context1, machineServiceGetBMCRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetBMC")
+	}
+
+	var r0 *adminv2.MachineServiceGetBMCResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceGetBMCRequest) (*adminv2.MachineServiceGetBMCResponse, error)); ok {
+		return returnFunc(context1, machineServiceGetBMCRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceGetBMCRequest) *adminv2.MachineServiceGetBMCResponse); ok {
+		r0 = returnFunc(context1, machineServiceGetBMCRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.MachineServiceGetBMCResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.MachineServiceGetBMCRequest) error); ok {
+		r1 = returnFunc(context1, machineServiceGetBMCRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MachineServiceHandler_GetBMC_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetBMC'
+type MachineServiceHandler_GetBMC_Call struct {
+	*mock.Call
+}
+
+// GetBMC is a helper method to define mock.On call
+//   - context1 context.Context
+//   - machineServiceGetBMCRequest *adminv2.MachineServiceGetBMCRequest
+func (_e *MachineServiceHandler_Expecter) GetBMC(context1 interface{}, machineServiceGetBMCRequest interface{}) *MachineServiceHandler_GetBMC_Call {
+	return &MachineServiceHandler_GetBMC_Call{Call: _e.mock.On("GetBMC", context1, machineServiceGetBMCRequest)}
+}
+
+func (_c *MachineServiceHandler_GetBMC_Call) Run(run func(context1 context.Context, machineServiceGetBMCRequest *adminv2.MachineServiceGetBMCRequest)) *MachineServiceHandler_GetBMC_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.MachineServiceGetBMCRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.MachineServiceGetBMCRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *MachineServiceHandler_GetBMC_Call) Return(machineServiceGetBMCResponse *adminv2.MachineServiceGetBMCResponse, err error) *MachineServiceHandler_GetBMC_Call {
+	_c.Call.Return(machineServiceGetBMCResponse, err)
+	return _c
+}
+
+func (_c *MachineServiceHandler_GetBMC_Call) RunAndReturn(run func(context1 context.Context, machineServiceGetBMCRequest *adminv2.MachineServiceGetBMCRequest) (*adminv2.MachineServiceGetBMCResponse, error)) *MachineServiceHandler_GetBMC_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // List provides a mock function for the type MachineServiceHandler
 func (_mock *MachineServiceHandler) List(context1 context.Context, machineServiceListRequest *adminv2.MachineServiceListRequest) (*adminv2.MachineServiceListResponse, error) {
 	ret := _mock.Called(context1, machineServiceListRequest)
@@ -170,6 +306,74 @@ func (_c *MachineServiceHandler_List_Call) Return(machineServiceListResponse *ad
 }
 
 func (_c *MachineServiceHandler_List_Call) RunAndReturn(run func(context1 context.Context, machineServiceListRequest *adminv2.MachineServiceListRequest) (*adminv2.MachineServiceListResponse, error)) *MachineServiceHandler_List_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListBMC provides a mock function for the type MachineServiceHandler
+func (_mock *MachineServiceHandler) ListBMC(context1 context.Context, machineServiceListBMCRequest *adminv2.MachineServiceListBMCRequest) (*adminv2.MachineServiceListBMCResponse, error) {
+	ret := _mock.Called(context1, machineServiceListBMCRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListBMC")
+	}
+
+	var r0 *adminv2.MachineServiceListBMCResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceListBMCRequest) (*adminv2.MachineServiceListBMCResponse, error)); ok {
+		return returnFunc(context1, machineServiceListBMCRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceListBMCRequest) *adminv2.MachineServiceListBMCResponse); ok {
+		r0 = returnFunc(context1, machineServiceListBMCRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.MachineServiceListBMCResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.MachineServiceListBMCRequest) error); ok {
+		r1 = returnFunc(context1, machineServiceListBMCRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MachineServiceHandler_ListBMC_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListBMC'
+type MachineServiceHandler_ListBMC_Call struct {
+	*mock.Call
+}
+
+// ListBMC is a helper method to define mock.On call
+//   - context1 context.Context
+//   - machineServiceListBMCRequest *adminv2.MachineServiceListBMCRequest
+func (_e *MachineServiceHandler_Expecter) ListBMC(context1 interface{}, machineServiceListBMCRequest interface{}) *MachineServiceHandler_ListBMC_Call {
+	return &MachineServiceHandler_ListBMC_Call{Call: _e.mock.On("ListBMC", context1, machineServiceListBMCRequest)}
+}
+
+func (_c *MachineServiceHandler_ListBMC_Call) Run(run func(context1 context.Context, machineServiceListBMCRequest *adminv2.MachineServiceListBMCRequest)) *MachineServiceHandler_ListBMC_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.MachineServiceListBMCRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.MachineServiceListBMCRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *MachineServiceHandler_ListBMC_Call) Return(machineServiceListBMCResponse *adminv2.MachineServiceListBMCResponse, err error) *MachineServiceHandler_ListBMC_Call {
+	_c.Call.Return(machineServiceListBMCResponse, err)
+	return _c
+}
+
+func (_c *MachineServiceHandler_ListBMC_Call) RunAndReturn(run func(context1 context.Context, machineServiceListBMCRequest *adminv2.MachineServiceListBMCRequest) (*adminv2.MachineServiceListBMCResponse, error)) *MachineServiceHandler_ListBMC_Call {
 	_c.Call.Return(run)
 	return _c
 }

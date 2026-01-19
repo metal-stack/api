@@ -192,7 +192,7 @@ func Test_ClientInterceptors(t *testing.T) {
 	bs.token = ""
 
 	// Asynchronous call has authheader set
-	stream, err := c.Infrav2().BMC().WaitForMachineEvent(ctx, &infrav2.WaitForMachineEventRequest{})
+	stream, err := c.Infrav2().BMC().WaitForBMCCommand(ctx, &infrav2.WaitForBMCCommandRequest{})
 	require.NoError(t, err)
 	require.NotNil(t, stream)
 	require.Equal(t, tokenString, bs.token)
@@ -215,7 +215,7 @@ func (m *mockBMCService) UpdateBMCInfo(ctx context.Context, _ *infrav2.UpdateBMC
 	return &infrav2.UpdateBMCInfoResponse{}, nil
 }
 
-func (m *mockBMCService) WaitForMachineEvent(ctx context.Context, _ *infrav2.WaitForMachineEventRequest, stream *connect.ServerStream[infrav2.WaitForMachineEventResponse]) error {
+func (m *mockBMCService) WaitForBMCCommand(ctx context.Context, _ *infrav2.WaitForBMCCommandRequest, stream *connect.ServerStream[infrav2.WaitForBMCCommandResponse]) error {
 	callinfo, _ := connect.CallInfoForHandlerContext(ctx)
 	authHeader := callinfo.RequestHeader().Get("Authorization")
 
@@ -226,5 +226,5 @@ func (m *mockBMCService) WaitForMachineEvent(ctx context.Context, _ *infrav2.Wai
 	}
 
 	m.token = token
-	return stream.Send(&infrav2.WaitForMachineEventResponse{})
+	return stream.Send(&infrav2.WaitForBMCCommandResponse{})
 }

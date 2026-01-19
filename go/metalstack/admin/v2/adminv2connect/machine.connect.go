@@ -37,6 +37,13 @@ const (
 	MachineServiceGetProcedure = "/metalstack.admin.v2.MachineService/Get"
 	// MachineServiceListProcedure is the fully-qualified name of the MachineService's List RPC.
 	MachineServiceListProcedure = "/metalstack.admin.v2.MachineService/List"
+	// MachineServiceBMCCommandProcedure is the fully-qualified name of the MachineService's BMCCommand
+	// RPC.
+	MachineServiceBMCCommandProcedure = "/metalstack.admin.v2.MachineService/BMCCommand"
+	// MachineServiceGetBMCProcedure is the fully-qualified name of the MachineService's GetBMC RPC.
+	MachineServiceGetBMCProcedure = "/metalstack.admin.v2.MachineService/GetBMC"
+	// MachineServiceListBMCProcedure is the fully-qualified name of the MachineService's ListBMC RPC.
+	MachineServiceListBMCProcedure = "/metalstack.admin.v2.MachineService/ListBMC"
 )
 
 // MachineServiceClient is a client for the metalstack.admin.v2.MachineService service.
@@ -45,6 +52,12 @@ type MachineServiceClient interface {
 	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
 	// List all machines
 	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
+	// BMCCommand send a command to the bmc of a machine
+	BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
+	// GetBMC returns the BMC details of a machine
+	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
+	// ListBMC returns the BMC details of many machines
+	ListBMC(context.Context, *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error)
 }
 
 // NewMachineServiceClient constructs a client for the metalstack.admin.v2.MachineService service.
@@ -70,13 +83,34 @@ func NewMachineServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(machineServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
+		bMCCommand: connect.NewClient[v2.MachineServiceBMCCommandRequest, v2.MachineServiceBMCCommandResponse](
+			httpClient,
+			baseURL+MachineServiceBMCCommandProcedure,
+			connect.WithSchema(machineServiceMethods.ByName("BMCCommand")),
+			connect.WithClientOptions(opts...),
+		),
+		getBMC: connect.NewClient[v2.MachineServiceGetBMCRequest, v2.MachineServiceGetBMCResponse](
+			httpClient,
+			baseURL+MachineServiceGetBMCProcedure,
+			connect.WithSchema(machineServiceMethods.ByName("GetBMC")),
+			connect.WithClientOptions(opts...),
+		),
+		listBMC: connect.NewClient[v2.MachineServiceListBMCRequest, v2.MachineServiceListBMCResponse](
+			httpClient,
+			baseURL+MachineServiceListBMCProcedure,
+			connect.WithSchema(machineServiceMethods.ByName("ListBMC")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // machineServiceClient implements MachineServiceClient.
 type machineServiceClient struct {
-	get  *connect.Client[v2.MachineServiceGetRequest, v2.MachineServiceGetResponse]
-	list *connect.Client[v2.MachineServiceListRequest, v2.MachineServiceListResponse]
+	get        *connect.Client[v2.MachineServiceGetRequest, v2.MachineServiceGetResponse]
+	list       *connect.Client[v2.MachineServiceListRequest, v2.MachineServiceListResponse]
+	bMCCommand *connect.Client[v2.MachineServiceBMCCommandRequest, v2.MachineServiceBMCCommandResponse]
+	getBMC     *connect.Client[v2.MachineServiceGetBMCRequest, v2.MachineServiceGetBMCResponse]
+	listBMC    *connect.Client[v2.MachineServiceListBMCRequest, v2.MachineServiceListBMCResponse]
 }
 
 // Get calls metalstack.admin.v2.MachineService.Get.
@@ -97,12 +131,45 @@ func (c *machineServiceClient) List(ctx context.Context, req *v2.MachineServiceL
 	return nil, err
 }
 
+// BMCCommand calls metalstack.admin.v2.MachineService.BMCCommand.
+func (c *machineServiceClient) BMCCommand(ctx context.Context, req *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error) {
+	response, err := c.bMCCommand.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// GetBMC calls metalstack.admin.v2.MachineService.GetBMC.
+func (c *machineServiceClient) GetBMC(ctx context.Context, req *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error) {
+	response, err := c.getBMC.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// ListBMC calls metalstack.admin.v2.MachineService.ListBMC.
+func (c *machineServiceClient) ListBMC(ctx context.Context, req *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error) {
+	response, err := c.listBMC.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // MachineServiceHandler is an implementation of the metalstack.admin.v2.MachineService service.
 type MachineServiceHandler interface {
 	// Get a machine
 	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
 	// List all machines
 	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
+	// BMCCommand send a command to the bmc of a machine
+	BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
+	// GetBMC returns the BMC details of a machine
+	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
+	// ListBMC returns the BMC details of many machines
+	ListBMC(context.Context, *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error)
 }
 
 // NewMachineServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -124,12 +191,36 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 		connect.WithSchema(machineServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
+	machineServiceBMCCommandHandler := connect.NewUnaryHandlerSimple(
+		MachineServiceBMCCommandProcedure,
+		svc.BMCCommand,
+		connect.WithSchema(machineServiceMethods.ByName("BMCCommand")),
+		connect.WithHandlerOptions(opts...),
+	)
+	machineServiceGetBMCHandler := connect.NewUnaryHandlerSimple(
+		MachineServiceGetBMCProcedure,
+		svc.GetBMC,
+		connect.WithSchema(machineServiceMethods.ByName("GetBMC")),
+		connect.WithHandlerOptions(opts...),
+	)
+	machineServiceListBMCHandler := connect.NewUnaryHandlerSimple(
+		MachineServiceListBMCProcedure,
+		svc.ListBMC,
+		connect.WithSchema(machineServiceMethods.ByName("ListBMC")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.MachineService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case MachineServiceGetProcedure:
 			machineServiceGetHandler.ServeHTTP(w, r)
 		case MachineServiceListProcedure:
 			machineServiceListHandler.ServeHTTP(w, r)
+		case MachineServiceBMCCommandProcedure:
+			machineServiceBMCCommandHandler.ServeHTTP(w, r)
+		case MachineServiceGetBMCProcedure:
+			machineServiceGetBMCHandler.ServeHTTP(w, r)
+		case MachineServiceListBMCProcedure:
+			machineServiceListBMCHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -145,4 +236,16 @@ func (UnimplementedMachineServiceHandler) Get(context.Context, *v2.MachineServic
 
 func (UnimplementedMachineServiceHandler) List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.List is not implemented"))
+}
+
+func (UnimplementedMachineServiceHandler) BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.BMCCommand is not implemented"))
+}
+
+func (UnimplementedMachineServiceHandler) GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.GetBMC is not implemented"))
+}
+
+func (UnimplementedMachineServiceHandler) ListBMC(context.Context, *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.ListBMC is not implemented"))
 }
