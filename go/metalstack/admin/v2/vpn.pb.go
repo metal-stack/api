@@ -12,6 +12,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -95,7 +96,13 @@ type VPNServiceAuthKeyResponse struct {
 	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
 	// AuthKey is the key to connect to the vpn at the given address.
 	// This key can only be seen once.
-	AuthKey       string `protobuf:"bytes,2,opt,name=auth_key,json=authKey,proto3" json:"auth_key,omitempty"`
+	AuthKey string `protobuf:"bytes,2,opt,name=auth_key,json=authKey,proto3" json:"auth_key,omitempty"`
+	// Ephemeral defines if the authkey should be ephemeral.
+	Ephemeral bool `protobuf:"varint,3,opt,name=ephemeral,proto3" json:"ephemeral,omitempty"`
+	// ExpiresAt this key cannot be used after this timestamp.
+	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	// CreatedAt this key was created at this timestamp.
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -142,6 +149,27 @@ func (x *VPNServiceAuthKeyResponse) GetAuthKey() string {
 		return x.AuthKey
 	}
 	return ""
+}
+
+func (x *VPNServiceAuthKeyResponse) GetEphemeral() bool {
+	if x != nil {
+		return x.Ephemeral
+	}
+	return false
+}
+
+func (x *VPNServiceAuthKeyResponse) GetExpiresAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.ExpiresAt
+	}
+	return nil
+}
+
+func (x *VPNServiceAuthKeyResponse) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
 }
 
 // VPNServiceListNodesRequest is the request payload for a vpn list nodes request
@@ -240,14 +268,19 @@ var File_metalstack_admin_v2_vpn_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_vpn_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/admin/v2/vpn.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"\x91\x01\n" +
+	"\x1dmetalstack/admin/v2/vpn.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"\x91\x01\n" +
 	"\x18VPNServiceAuthKeyRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x1c\n" +
 	"\tephemeral\x18\x02 \x01(\bR\tephemeral\x123\n" +
-	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationR\aexpires\"P\n" +
+	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationR\aexpires\"\xe4\x01\n" +
 	"\x19VPNServiceAuthKeyResponse\x12\x18\n" +
 	"\aaddress\x18\x01 \x01(\tR\aaddress\x12\x19\n" +
-	"\bauth_key\x18\x02 \x01(\tR\aauthKey\"G\n" +
+	"\bauth_key\x18\x02 \x01(\tR\aauthKey\x12\x1c\n" +
+	"\tephemeral\x18\x03 \x01(\bR\tephemeral\x129\n" +
+	"\n" +
+	"expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x129\n" +
+	"\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"G\n" +
 	"\x1aVPNServiceListNodesRequest\x12\x1d\n" +
 	"\aproject\x18\x01 \x01(\tH\x00R\aproject\x88\x01\x01B\n" +
 	"\n" +
@@ -279,20 +312,23 @@ var file_metalstack_admin_v2_vpn_proto_goTypes = []any{
 	(*VPNServiceListNodesRequest)(nil),  // 2: metalstack.admin.v2.VPNServiceListNodesRequest
 	(*VPNServiceListNodesResponse)(nil), // 3: metalstack.admin.v2.VPNServiceListNodesResponse
 	(*durationpb.Duration)(nil),         // 4: google.protobuf.Duration
-	(*v2.VPNNode)(nil),                  // 5: metalstack.api.v2.VPNNode
+	(*timestamppb.Timestamp)(nil),       // 5: google.protobuf.Timestamp
+	(*v2.VPNNode)(nil),                  // 6: metalstack.api.v2.VPNNode
 }
 var file_metalstack_admin_v2_vpn_proto_depIdxs = []int32{
 	4, // 0: metalstack.admin.v2.VPNServiceAuthKeyRequest.expires:type_name -> google.protobuf.Duration
-	5, // 1: metalstack.admin.v2.VPNServiceListNodesResponse.nodes:type_name -> metalstack.api.v2.VPNNode
-	0, // 2: metalstack.admin.v2.VPNService.AuthKey:input_type -> metalstack.admin.v2.VPNServiceAuthKeyRequest
-	2, // 3: metalstack.admin.v2.VPNService.ListNodes:input_type -> metalstack.admin.v2.VPNServiceListNodesRequest
-	1, // 4: metalstack.admin.v2.VPNService.AuthKey:output_type -> metalstack.admin.v2.VPNServiceAuthKeyResponse
-	3, // 5: metalstack.admin.v2.VPNService.ListNodes:output_type -> metalstack.admin.v2.VPNServiceListNodesResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	5, // 1: metalstack.admin.v2.VPNServiceAuthKeyResponse.expires_at:type_name -> google.protobuf.Timestamp
+	5, // 2: metalstack.admin.v2.VPNServiceAuthKeyResponse.created_at:type_name -> google.protobuf.Timestamp
+	6, // 3: metalstack.admin.v2.VPNServiceListNodesResponse.nodes:type_name -> metalstack.api.v2.VPNNode
+	0, // 4: metalstack.admin.v2.VPNService.AuthKey:input_type -> metalstack.admin.v2.VPNServiceAuthKeyRequest
+	2, // 5: metalstack.admin.v2.VPNService.ListNodes:input_type -> metalstack.admin.v2.VPNServiceListNodesRequest
+	1, // 6: metalstack.admin.v2.VPNService.AuthKey:output_type -> metalstack.admin.v2.VPNServiceAuthKeyResponse
+	3, // 7: metalstack.admin.v2.VPNService.ListNodes:output_type -> metalstack.admin.v2.VPNServiceListNodesResponse
+	6, // [6:8] is the sub-list for method output_type
+	4, // [4:6] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_vpn_proto_init() }
