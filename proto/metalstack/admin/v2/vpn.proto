@@ -31,6 +31,12 @@ message VPNServiceAuthKeyRequest {
   bool ephemeral = 2;
   // Expires defines the duration after which the authkey expires.
   google.protobuf.Duration expires = 3;
+  // Reason must be provided why access to the vpn is requested
+  // reason is only forwarded to a audit sink
+  string reason = 4 [
+    (buf.validate.field).string.min_len = 10,
+    (buf.validate.field).string.max_len = 512
+  ];
 }
 
 // VPNServiceAuthKeyResponse is the request payload for a authkey response

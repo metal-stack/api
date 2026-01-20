@@ -33,7 +33,10 @@ type VPNServiceAuthKeyRequest struct {
 	// Ephemeral defines if the authkey should be ephemeral.
 	Ephemeral bool `protobuf:"varint,2,opt,name=ephemeral,proto3" json:"ephemeral,omitempty"`
 	// Expires defines the duration after which the authkey expires.
-	Expires       *durationpb.Duration `protobuf:"bytes,3,opt,name=expires,proto3" json:"expires,omitempty"`
+	Expires *durationpb.Duration `protobuf:"bytes,3,opt,name=expires,proto3" json:"expires,omitempty"`
+	// Reason must be provided why access to the vpn is requested
+	// reason is only forwarded to a audit sink
+	Reason        string `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -87,6 +90,13 @@ func (x *VPNServiceAuthKeyRequest) GetExpires() *durationpb.Duration {
 		return x.Expires
 	}
 	return nil
+}
+
+func (x *VPNServiceAuthKeyRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
 }
 
 // VPNServiceAuthKeyResponse is the request payload for a authkey response
@@ -268,11 +278,14 @@ var File_metalstack_admin_v2_vpn_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_vpn_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/admin/v2/vpn.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"\x91\x01\n" +
+	"\x1dmetalstack/admin/v2/vpn.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"\xb5\x01\n" +
 	"\x18VPNServiceAuthKeyRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x1c\n" +
 	"\tephemeral\x18\x02 \x01(\bR\tephemeral\x123\n" +
-	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationR\aexpires\"\xe4\x01\n" +
+	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationR\aexpires\x12\"\n" +
+	"\x06reason\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\n" +
+	"\x18\x80\x04R\x06reason\"\xe4\x01\n" +
 	"\x19VPNServiceAuthKeyResponse\x12\x18\n" +
 	"\aaddress\x18\x01 \x01(\tR\aaddress\x12\x19\n" +
 	"\bauth_key\x18\x02 \x01(\tR\aauthKey\x12\x1c\n" +

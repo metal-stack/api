@@ -14,14 +14,16 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class VPNServiceAuthKeyRequest(_message.Message):
-    __slots__ = ("project", "ephemeral", "expires")
+    __slots__ = ("project", "ephemeral", "expires", "reason")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     EPHEMERAL_FIELD_NUMBER: _ClassVar[int]
     EXPIRES_FIELD_NUMBER: _ClassVar[int]
+    REASON_FIELD_NUMBER: _ClassVar[int]
     project: str
     ephemeral: bool
     expires: _duration_pb2.Duration
-    def __init__(self, project: _Optional[str] = ..., ephemeral: _Optional[bool] = ..., expires: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+    reason: str
+    def __init__(self, project: _Optional[str] = ..., ephemeral: _Optional[bool] = ..., expires: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., reason: _Optional[str] = ...) -> None: ...
 
 class VPNServiceAuthKeyResponse(_message.Message):
     __slots__ = ("address", "auth_key", "ephemeral", "expires_at", "created_at")
