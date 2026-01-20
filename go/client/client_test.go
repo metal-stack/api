@@ -202,6 +202,10 @@ type mockBMCService struct {
 	token string
 }
 
+func (m *mockBMCService) BMCCommandDone(context.Context, *infrav2.BMCCommandDoneRequest) (*infrav2.BMCCommandDoneResponse, error) {
+	panic("unimplemented")
+}
+
 func (m *mockBMCService) UpdateBMCInfo(ctx context.Context, _ *infrav2.UpdateBMCInfoRequest) (*infrav2.UpdateBMCInfoResponse, error) {
 	callinfo, _ := connect.CallInfoForHandlerContext(ctx)
 	authHeader := callinfo.RequestHeader().Get("Authorization")

@@ -107,6 +107,7 @@ func GetServicePermissions() *ServicePermissions {
 				"INFRA_ROLE_EDITOR": []string{
 					"/metalstack.infra.v2.BMCService/UpdateBMCInfo",
 					"/metalstack.infra.v2.BMCService/WaitForBMCCommand",
+					"/metalstack.infra.v2.BMCService/BMCCommandDone",
 					"/metalstack.infra.v2.BootService/Dhcp",
 					"/metalstack.infra.v2.BootService/Boot",
 					"/metalstack.infra.v2.EventService/Send",
@@ -324,6 +325,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.TokenService/Update":                         true,
 			"/metalstack.api.v2.UserService/Get":                             true,
 			"/metalstack.api.v2.VersionService/Get":                          true,
+			"/metalstack.infra.v2.BMCService/BMCCommandDone":                 true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":                  true,
 			"/metalstack.infra.v2.BMCService/WaitForBMCCommand":              true,
 			"/metalstack.infra.v2.BootService/Boot":                          true,
@@ -414,6 +416,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.admin.v2.VPNService/ListNodes":      true,
 			},
 			Infra: map[string]bool{
+				"/metalstack.infra.v2.BMCService/BMCCommandDone":    true,
 				"/metalstack.infra.v2.BMCService/UpdateBMCInfo":     true,
 				"/metalstack.infra.v2.BMCService/WaitForBMCCommand": true,
 				"/metalstack.infra.v2.BootService/Boot":             true,
@@ -576,6 +579,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.api.v2.TokenService/Update":             true,
 			"/metalstack.api.v2.UserService/Get":                 true,
 			"/metalstack.api.v2.VersionService/Get":              false,
+			"/metalstack.infra.v2.BMCService/BMCCommandDone":     true,
 			"/metalstack.infra.v2.BMCService/UpdateBMCInfo":      false,
 			"/metalstack.infra.v2.BMCService/WaitForBMCCommand":  false,
 			"/metalstack.infra.v2.BootService/Boot":              false,

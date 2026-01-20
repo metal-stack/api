@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.infra.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/machine.proto";
 import "metalstack/api/v2/predefined_rules.proto";
@@ -18,6 +19,11 @@ service BMCService {
   rpc WaitForBMCCommand(WaitForBMCCommandRequest) returns (stream WaitForBMCCommandResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // BMCCommandDone must be called from metal-bmc after the command execution
+  rpc BMCCommandDone(BMCCommandDoneRequest) returns (BMCCommandDoneResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
@@ -55,4 +61,19 @@ message WaitForBMCCommandResponse {
   metalstack.api.v2.MachineBMCCommand bmc_command = 2;
   // MachineBMC contains connection details of the machine to issue the bmcCommand to
   metalstack.api.v2.MachineBMC machine_bmc = 3;
+  // CommandId is a unique ID which must be sent back after execution
+  string command_id = 4 [(buf.validate.field).string.uuid = true];
+  // IssuedAt gives the date when this command was created
+  google.protobuf.Timestamp issued_at = 7;
 }
+
+// BMCCommandDoneRequest must be returned after command execution
+message BMCCommandDoneRequest {
+  // CommandId is a unique ID which must be sent back after execution
+  string command_id = 1 [(buf.validate.field).string.uuid = true];
+  // Error of the command execution, nil if it was successful
+  optional string error = 2;
+}
+
+// BMCCommandDoneResponse
+message BMCCommandDoneResponse {}

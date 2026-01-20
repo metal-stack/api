@@ -2069,6 +2069,14 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.infra.v2.BMCCommandDoneRequest"><span class="badge">M</span>BMCCommandDoneRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BMCCommandDoneResponse"><span class="badge">M</span>BMCCommandDoneResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.infra.v2.UpdateBMCInfoRequest"><span class="badge">M</span>UpdateBMCInfoRequest</a>
                 </li>
               
@@ -16689,6 +16697,44 @@ This key can only be seen once. </p></td>
       <p></p>
 
       
+        <h3 id="metalstack.infra.v2.BMCCommandDoneRequest">BMCCommandDoneRequest</h3>
+        <p>BMCCommandDoneRequest must be returned after command execution</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>command_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>CommandId is a unique ID which must be sent back after execution </p></td>
+                </tr>
+              
+                <tr>
+                  <td>error</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Error of the command execution, nil if it was successful </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BMCCommandDoneResponse">BMCCommandDoneResponse</h3>
+        <p>BMCCommandDoneResponse</p>
+
+        
+
+        
+      
         <h3 id="metalstack.infra.v2.UpdateBMCInfoRequest">UpdateBMCInfoRequest</h3>
         <p>UpdateBMCInfoRequest</p>
 
@@ -16837,6 +16883,20 @@ This key can only be seen once. </p></td>
                   <td><p>MachineBMC contains connection details of the machine to issue the bmcCommand to </p></td>
                 </tr>
               
+                <tr>
+                  <td>command_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>CommandId is a unique ID which must be sent back after execution </p></td>
+                </tr>
+              
+                <tr>
+                  <td>issued_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>IssuedAt gives the date when this command was created </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -16870,6 +16930,13 @@ This key can only be seen once. </p></td>
                 <td><a href="#metalstack.infra.v2.WaitForBMCCommandRequest">WaitForBMCCommandRequest</a></td>
                 <td><a href="#metalstack.infra.v2.WaitForBMCCommandResponse">WaitForBMCCommandResponse</a> stream</td>
                 <td><p>WaitForBMCCommand is called by the metal-bmc and is returned with a bmc command to execute.</p></td>
+              </tr>
+            
+              <tr>
+                <td>BMCCommandDone</td>
+                <td><a href="#metalstack.infra.v2.BMCCommandDoneRequest">BMCCommandDoneRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BMCCommandDoneResponse">BMCCommandDoneResponse</a></td>
+                <td><p>BMCCommandDone must be called from metal-bmc after the command execution</p></td>
               </tr>
             
           </tbody>
