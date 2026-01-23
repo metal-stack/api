@@ -5,11 +5,11 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
-import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
-import { file_google_protobuf_duration, file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
+import type { Duration } from "@bufbuild/protobuf/wkt";
+import { file_google_protobuf_duration } from "@bufbuild/protobuf/wkt";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
-import type { Switch, SwitchBGPPortState, SwitchPortStatus } from "../../api/v2/switch_pb";
+import type { Switch, SwitchBGPPortState, SwitchPortStatus, SwitchSync } from "../../api/v2/switch_pb";
 import { file_metalstack_api_v2_switch } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -17,7 +17,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/infra/v2/switch.proto.
  */
 export const file_metalstack_infra_v2_switch: GenFile = /*@__PURE__*/
-  fileDesc("CiBtZXRhbHN0YWNrL2luZnJhL3YyL3N3aXRjaC5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiI0ChdTd2l0Y2hTZXJ2aWNlR2V0UmVxdWVzdBIZCgJpZBgBIAEoCUINukgKcgjAs66xAgFoASJFChhTd2l0Y2hTZXJ2aWNlR2V0UmVzcG9uc2USKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkkKHFN3aXRjaFNlcnZpY2VSZWdpc3RlclJlcXVlc3QSKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkoKHVN3aXRjaFNlcnZpY2VSZWdpc3RlclJlc3BvbnNlEikKBnN3aXRjaBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaCLzAwodU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QSGQoCaWQYASABKAlCDbpICnIIwLOusQIBaAESKwoIZHVyYXRpb24YAiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24SEgoFZXJyb3IYAyABKAlIAIgBARJXCgtwb3J0X3N0YXRlcxgEIAMoCzJCLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuUG9ydFN0YXRlc0VudHJ5El4KD2JncF9wb3J0X3N0YXRlcxgFIAMoCzJFLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuQmdwUG9ydFN0YXRlc0VudHJ5GlYKD1BvcnRTdGF0ZXNFbnRyeRILCgNrZXkYASABKAkSMgoFdmFsdWUYAiABKA4yIy5tZXRhbHN0YWNrLmFwaS52Mi5Td2l0Y2hQb3J0U3RhdHVzOgI4ARpbChJCZ3BQb3J0U3RhdGVzRW50cnkSCwoDa2V5GAEgASgJEjQKBXZhbHVlGAIgASgLMiUubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoQkdQUG9ydFN0YXRlOgI4AUIICgZfZXJyb3IimgEKHlN3aXRjaFNlcnZpY2VIZWFydGJlYXRSZXNwb25zZRIKCgJpZBgBIAEoCRIyCglsYXN0X3N5bmMYAiABKAsyHy5tZXRhbHN0YWNrLmluZnJhLnYyLlN3aXRjaFN5bmMSOAoPbGFzdF9zeW5jX2Vycm9yGAMgASgLMh8ubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTeW5jIoEBCgpTd2l0Y2hTeW5jEigKBHRpbWUYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEisKCGR1cmF0aW9uGAIgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uEhIKBWVycm9yGAMgASgJSACIAQFCCAoGX2Vycm9yMv4CCg1Td2l0Y2hTZXJ2aWNlEm4KA0dldBIsLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUdldFJlcXVlc3QaLS5tZXRhbHN0YWNrLmluZnJhLnYyLlN3aXRjaFNlcnZpY2VHZXRSZXNwb25zZSIK4PMYAurzGAIBAhJ8CghSZWdpc3RlchIxLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZVJlZ2lzdGVyUmVxdWVzdBoyLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZVJlZ2lzdGVyUmVzcG9uc2UiCeDzGALq8xgBARJ/CglIZWFydGJlYXQSMi5tZXRhbHN0YWNrLmluZnJhLnYyLlN3aXRjaFNlcnZpY2VIZWFydGJlYXRSZXF1ZXN0GjMubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlSGVhcnRiZWF0UmVzcG9uc2UiCeDzGALq8xgBAULPAQoXY29tLm1ldGFsc3RhY2suaW5mcmEudjJCC1N3aXRjaFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svaW5mcmEvdjI7aW5mcmF2MqICA01JWKoCE01ldGFsc3RhY2suSW5mcmEuVjLKAhNNZXRhbHN0YWNrXEluZnJhXFYy4gIfTWV0YWxzdGFja1xJbmZyYVxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkluZnJhOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_switch]);
+  fileDesc("CiBtZXRhbHN0YWNrL2luZnJhL3YyL3N3aXRjaC5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiI0ChdTd2l0Y2hTZXJ2aWNlR2V0UmVxdWVzdBIZCgJpZBgBIAEoCUINukgKcgjAs66xAgFoASJFChhTd2l0Y2hTZXJ2aWNlR2V0UmVzcG9uc2USKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkkKHFN3aXRjaFNlcnZpY2VSZWdpc3RlclJlcXVlc3QSKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkoKHVN3aXRjaFNlcnZpY2VSZWdpc3RlclJlc3BvbnNlEikKBnN3aXRjaBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaCLzAwodU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QSGQoCaWQYASABKAlCDbpICnIIwLOusQIBaAESKwoIZHVyYXRpb24YAiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24SEgoFZXJyb3IYAyABKAlIAIgBARJXCgtwb3J0X3N0YXRlcxgEIAMoCzJCLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuUG9ydFN0YXRlc0VudHJ5El4KD2JncF9wb3J0X3N0YXRlcxgFIAMoCzJFLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuQmdwUG9ydFN0YXRlc0VudHJ5GlYKD1BvcnRTdGF0ZXNFbnRyeRILCgNrZXkYASABKAkSMgoFdmFsdWUYAiABKA4yIy5tZXRhbHN0YWNrLmFwaS52Mi5Td2l0Y2hQb3J0U3RhdHVzOgI4ARpbChJCZ3BQb3J0U3RhdGVzRW50cnkSCwoDa2V5GAEgASgJEjQKBXZhbHVlGAIgASgLMiUubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoQkdQUG9ydFN0YXRlOgI4AUIICgZfZXJyb3IilgEKHlN3aXRjaFNlcnZpY2VIZWFydGJlYXRSZXNwb25zZRIKCgJpZBgBIAEoCRIwCglsYXN0X3N5bmMYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5Td2l0Y2hTeW5jEjYKD2xhc3Rfc3luY19lcnJvchgDIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaFN5bmMy/gIKDVN3aXRjaFNlcnZpY2USbgoDR2V0EiwubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlR2V0UmVxdWVzdBotLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUdldFJlc3BvbnNlIgrg8xgC6vMYAgECEnwKCFJlZ2lzdGVyEjEubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlUmVnaXN0ZXJSZXF1ZXN0GjIubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlUmVnaXN0ZXJSZXNwb25zZSIJ4PMYAurzGAEBEn8KCUhlYXJ0YmVhdBIyLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QaMy5tZXRhbHN0YWNrLmluZnJhLnYyLlN3aXRjaFNlcnZpY2VIZWFydGJlYXRSZXNwb25zZSIJ4PMYAurzGAEBQs8BChdjb20ubWV0YWxzdGFjay5pbmZyYS52MkILU3dpdGNoUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_duration, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_switch]);
 
 /**
  * SwitchServiceGetRequest.
@@ -168,14 +168,14 @@ export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.Switch
   /**
    * LastSync holds information about the last sync.
    *
-   * @generated from field: metalstack.infra.v2.SwitchSync last_sync = 2;
+   * @generated from field: metalstack.api.v2.SwitchSync last_sync = 2;
    */
   lastSync?: SwitchSync;
 
   /**
    * LastSyncError holds information about the last erroneous sync.
    *
-   * @generated from field: metalstack.infra.v2.SwitchSync last_sync_error = 3;
+   * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 3;
    */
   lastSyncError?: SwitchSync;
 };
@@ -186,41 +186,6 @@ export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.Switch
  */
 export const SwitchServiceHeartbeatResponseSchema: GenMessage<SwitchServiceHeartbeatResponse> = /*@__PURE__*/
   messageDesc(file_metalstack_infra_v2_switch, 5);
-
-/**
- * SwitchSync summarizes information about a switch sync.
- *
- * @generated from message metalstack.infra.v2.SwitchSync
- */
-export type SwitchSync = Message<"metalstack.infra.v2.SwitchSync"> & {
-  /**
-   * Time of the sync.
-   *
-   * @generated from field: google.protobuf.Timestamp time = 1;
-   */
-  time?: Timestamp;
-
-  /**
-   * Duration of the sync.
-   *
-   * @generated from field: google.protobuf.Duration duration = 2;
-   */
-  duration?: Duration;
-
-  /**
-   * Error if any occurred.
-   *
-   * @generated from field: optional string error = 3;
-   */
-  error?: string;
-};
-
-/**
- * Describes the message metalstack.infra.v2.SwitchSync.
- * Use `create(SwitchSyncSchema)` to create a new message.
- */
-export const SwitchSyncSchema: GenMessage<SwitchSync> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_switch, 6);
 
 /**
  * SwitchService serves switch related functions.

@@ -11,7 +11,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/infra/v2/bmc.proto.
  */
 export const file_metalstack_infra_v2_bmc: GenFile = /*@__PURE__*/
-  fileDesc("Ch1tZXRhbHN0YWNrL2luZnJhL3YyL2JtYy5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiIWChRVcGRhdGVCTUNJbmZvUmVxdWVzdCIXChVVcGRhdGVCTUNJbmZvUmVzcG9uc2UyfwoKQk1DU2VydmljZRJxCg1VcGRhdGVCTUNJbmZvEikubWV0YWxzdGFjay5pbmZyYS52Mi5VcGRhdGVCTUNJbmZvUmVxdWVzdBoqLm1ldGFsc3RhY2suaW5mcmEudjIuVXBkYXRlQk1DSW5mb1Jlc3BvbnNlIgng8xgC6vMYAQFCzAEKF2NvbS5tZXRhbHN0YWNrLmluZnJhLnYyQghCbWNQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2luZnJhL3YyO2luZnJhdjKiAgNNSViqAhNNZXRhbHN0YWNrLkluZnJhLlYyygITTWV0YWxzdGFja1xJbmZyYVxWMuICH01ldGFsc3RhY2tcSW5mcmFcVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpJbmZyYTo6VjJiBnByb3RvMw", [file_metalstack_api_v2_common]);
+  fileDesc("Ch1tZXRhbHN0YWNrL2luZnJhL3YyL2JtYy5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiIWChRVcGRhdGVCTUNJbmZvUmVxdWVzdCIXChVVcGRhdGVCTUNJbmZvUmVzcG9uc2UiHAoaV2FpdEZvck1hY2hpbmVFdmVudFJlcXVlc3QiHQobV2FpdEZvck1hY2hpbmVFdmVudFJlc3BvbnNlMocCCgpCTUNTZXJ2aWNlEnEKDVVwZGF0ZUJNQ0luZm8SKS5tZXRhbHN0YWNrLmluZnJhLnYyLlVwZGF0ZUJNQ0luZm9SZXF1ZXN0GioubWV0YWxzdGFjay5pbmZyYS52Mi5VcGRhdGVCTUNJbmZvUmVzcG9uc2UiCeDzGALq8xgBARKFAQoTV2FpdEZvck1hY2hpbmVFdmVudBIvLm1ldGFsc3RhY2suaW5mcmEudjIuV2FpdEZvck1hY2hpbmVFdmVudFJlcXVlc3QaMC5tZXRhbHN0YWNrLmluZnJhLnYyLldhaXRGb3JNYWNoaW5lRXZlbnRSZXNwb25zZSIJ4PMYAurzGAEBMAFCzAEKF2NvbS5tZXRhbHN0YWNrLmluZnJhLnYyQghCbWNQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2luZnJhL3YyO2luZnJhdjKiAgNNSViqAhNNZXRhbHN0YWNrLkluZnJhLlYyygITTWV0YWxzdGFja1xJbmZyYVxWMuICH01ldGFsc3RhY2tcSW5mcmFcVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpJbmZyYTo6VjJiBnByb3RvMw", [file_metalstack_api_v2_common]);
 
 /**
  * UpdateBMCInfoRequest
@@ -44,6 +44,36 @@ export const UpdateBMCInfoResponseSchema: GenMessage<UpdateBMCInfoResponse> = /*
   messageDesc(file_metalstack_infra_v2_bmc, 1);
 
 /**
+ * WaitForMachineEventRequest
+ *
+ * @generated from message metalstack.infra.v2.WaitForMachineEventRequest
+ */
+export type WaitForMachineEventRequest = Message<"metalstack.infra.v2.WaitForMachineEventRequest"> & {
+};
+
+/**
+ * Describes the message metalstack.infra.v2.WaitForMachineEventRequest.
+ * Use `create(WaitForMachineEventRequestSchema)` to create a new message.
+ */
+export const WaitForMachineEventRequestSchema: GenMessage<WaitForMachineEventRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_infra_v2_bmc, 2);
+
+/**
+ * WaitForMachineEventResponse
+ *
+ * @generated from message metalstack.infra.v2.WaitForMachineEventResponse
+ */
+export type WaitForMachineEventResponse = Message<"metalstack.infra.v2.WaitForMachineEventResponse"> & {
+};
+
+/**
+ * Describes the message metalstack.infra.v2.WaitForMachineEventResponse.
+ * Use `create(WaitForMachineEventResponseSchema)` to create a new message.
+ */
+export const WaitForMachineEventResponseSchema: GenMessage<WaitForMachineEventResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_infra_v2_bmc, 3);
+
+/**
  * BMCService serves bmc related functions
  *
  * @generated from service metalstack.infra.v2.BMCService
@@ -58,6 +88,16 @@ export const BMCService: GenService<{
     methodKind: "unary";
     input: typeof UpdateBMCInfoRequestSchema;
     output: typeof UpdateBMCInfoResponseSchema;
+  },
+  /**
+   * WaitForMachineEvent is called by the metal-bmc and is returned with a bmc command to execute.
+   *
+   * @generated from rpc metalstack.infra.v2.BMCService.WaitForMachineEvent
+   */
+  waitForMachineEvent: {
+    methodKind: "server_streaming";
+    input: typeof WaitForMachineEventRequestSchema;
+    output: typeof WaitForMachineEventResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_infra_v2_bmc, 0);
