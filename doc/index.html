@@ -14819,6 +14819,14 @@ This service is suitable to create tokens for other users instead of deriving us
                   <td><p>Expires defines the duration after which the authkey expires. </p></td>
                 </tr>
               
+                <tr>
+                  <td>reason</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reason must be provided why access to the vpn is requested
+reason is only forwarded to a audit sink </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -14849,6 +14857,27 @@ This service is suitable to create tokens for other users instead of deriving us
                   <td></td>
                   <td><p>AuthKey is the key to connect to the vpn at the given address.
 This key can only be seen once. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ephemeral</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Ephemeral defines if the authkey should be ephemeral. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expires_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>ExpiresAt this key cannot be used after this timestamp. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>CreatedAt this key was created at this timestamp. </p></td>
                 </tr>
               
             </tbody>

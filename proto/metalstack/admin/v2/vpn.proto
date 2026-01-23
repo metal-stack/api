@@ -4,6 +4,7 @@ package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/vpn.proto";
 
@@ -30,6 +31,12 @@ message VPNServiceAuthKeyRequest {
   bool ephemeral = 2;
   // Expires defines the duration after which the authkey expires.
   google.protobuf.Duration expires = 3;
+  // Reason must be provided why access to the vpn is requested
+  // reason is only forwarded to a audit sink
+  string reason = 4 [
+    (buf.validate.field).string.min_len = 10,
+    (buf.validate.field).string.max_len = 512
+  ];
 }
 
 // VPNServiceAuthKeyResponse is the request payload for a authkey response
@@ -39,6 +46,12 @@ message VPNServiceAuthKeyResponse {
   // AuthKey is the key to connect to the vpn at the given address.
   // This key can only be seen once.
   string auth_key = 2;
+  // Ephemeral defines if the authkey should be ephemeral.
+  bool ephemeral = 3;
+  // ExpiresAt this key cannot be used after this timestamp.
+  google.protobuf.Timestamp expires_at = 4;
+  // CreatedAt this key was created at this timestamp.
+  google.protobuf.Timestamp created_at = 5;
 }
 
 // VPNServiceListNodesRequest is the request payload for a vpn list nodes request
