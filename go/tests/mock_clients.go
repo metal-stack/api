@@ -41,6 +41,7 @@ type (
 		projectservice    *adminv2mocks.ProjectServiceClient
 		sizeservice       *adminv2mocks.SizeServiceClient
 		switchservice     *adminv2mocks.SwitchServiceClient
+		taskservice       *adminv2mocks.TaskServiceClient
 		tenantservice     *adminv2mocks.TenantServiceClient
 		tokenservice      *adminv2mocks.TokenServiceClient
 		vpnservice        *adminv2mocks.VPNServiceClient
@@ -56,6 +57,7 @@ type (
 		Project    func(m *mock.Mock)
 		Size       func(m *mock.Mock)
 		Switch     func(m *mock.Mock)
+		Task       func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
 		VPN        func(m *mock.Mock)
@@ -145,6 +147,7 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		projectservice:    adminv2mocks.NewProjectServiceClient(t),
 		sizeservice:       adminv2mocks.NewSizeServiceClient(t),
 		switchservice:     adminv2mocks.NewSwitchServiceClient(t),
+		taskservice:       adminv2mocks.NewTaskServiceClient(t),
 		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
 		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
 		vpnservice:        adminv2mocks.NewVPNServiceClient(t),
@@ -177,6 +180,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		}
 		if fns.Switch != nil {
 			fns.Switch(&a.switchservice.Mock)
+		}
+		if fns.Task != nil {
+			fns.Task(&a.taskservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -219,6 +225,9 @@ func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 }
 func (c *adminv2) Switch() adminv2connect.SwitchServiceClient {
 	return c.switchservice
+}
+func (c *adminv2) Task() adminv2connect.TaskServiceClient {
+	return c.taskservice
 }
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice

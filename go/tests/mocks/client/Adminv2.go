@@ -450,6 +450,52 @@ func (_c *Adminv2_Switch_Call) RunAndReturn(run func() adminv2connect.SwitchServ
 	return _c
 }
 
+// Task provides a mock function for the type Adminv2
+func (_mock *Adminv2) Task() adminv2connect.TaskServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Task")
+	}
+
+	var r0 adminv2connect.TaskServiceClient
+	if returnFunc, ok := ret.Get(0).(func() adminv2connect.TaskServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.TaskServiceClient)
+		}
+	}
+	return r0
+}
+
+// Adminv2_Task_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Task'
+type Adminv2_Task_Call struct {
+	*mock.Call
+}
+
+// Task is a helper method to define mock.On call
+func (_e *Adminv2_Expecter) Task() *Adminv2_Task_Call {
+	return &Adminv2_Task_Call{Call: _e.mock.On("Task")}
+}
+
+func (_c *Adminv2_Task_Call) Run(run func()) *Adminv2_Task_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Adminv2_Task_Call) Return(taskServiceClient adminv2connect.TaskServiceClient) *Adminv2_Task_Call {
+	_c.Call.Return(taskServiceClient)
+	return _c
+}
+
+func (_c *Adminv2_Task_Call) RunAndReturn(run func() adminv2connect.TaskServiceClient) *Adminv2_Task_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Tenant provides a mock function for the type Adminv2
 func (_mock *Adminv2) Tenant() adminv2connect.TenantServiceClient {
 	ret := _mock.Called()

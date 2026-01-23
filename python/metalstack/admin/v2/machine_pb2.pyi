@@ -80,3 +80,19 @@ class MachineServiceListBMCResponse(_message.Message):
     BMC_REPORTS_FIELD_NUMBER: _ClassVar[int]
     bmc_reports: _containers.MessageMap[str, _machine_pb2.MachineBMCReport]
     def __init__(self, bmc_reports: _Optional[_Mapping[str, _machine_pb2.MachineBMCReport]] = ...) -> None: ...
+
+class MachineServiceConsolePasswordRequest(_message.Message):
+    __slots__ = ("uuid", "reason")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    REASON_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    reason: str
+    def __init__(self, uuid: _Optional[str] = ..., reason: _Optional[str] = ...) -> None: ...
+
+class MachineServiceConsolePasswordResponse(_message.Message):
+    __slots__ = ("uuid", "password")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    PASSWORD_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    password: str
+    def __init__(self, uuid: _Optional[str] = ..., password: _Optional[str] = ...) -> None: ...

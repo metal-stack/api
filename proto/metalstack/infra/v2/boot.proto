@@ -19,7 +19,6 @@ service BootService {
   // Boot is called from pixie once the machine got the first dhcp response and ipxie asks for subsequent kernel and initrd
   rpc Boot(BootServiceBootRequest) returns (BootServiceBootResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
-    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
 
@@ -30,7 +29,7 @@ service BootService {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all glory details about that machine
+  // Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all gory details about that machine
   rpc Register(BootServiceRegisterRequest) returns (BootServiceRegisterResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
@@ -40,8 +39,8 @@ service BootService {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Report tells metal-apiserver installation was either successful or failed
-  rpc Report(BootServiceReportRequest) returns (BootServiceReportResponse) {
+  // InstallationSucceeded tells metal-apiserver installation was either successful
+  rpc InstallationSucceeded(BootServiceInstallationSucceededRequest) returns (BootServiceInstallationSucceededResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
@@ -118,26 +117,19 @@ message BootServiceWaitResponse {
   metalstack.api.v2.MachineAllocation allocation = 1;
 }
 
-// BootServiceReportRequest is sent from metal-hammer to the api to report the outcome of the register
-message BootServiceReportRequest {
+// BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded
+message BootServiceInstallationSucceededRequest {
   // UUID of the machine to boot
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Console_Password
+  // ConsolePassword
   string console_password = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Success is set to true of the allocation succeeded
-  bool success = 4;
-  // Message contains additional information if installation failed
-  string message = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
 }
 
-// BootServiceReportRequest is the response to a BootServiceReportRequest
-message BootServiceReportResponse {}
+// BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest
+message BootServiceInstallationSucceededResponse {}
 
 // BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser
 message BootServiceSuperUserPasswordRequest {
@@ -147,7 +139,7 @@ message BootServiceSuperUserPasswordRequest {
 
 // BootServiceSuperUserPasswordResponse the super user password is returned
 message BootServiceSuperUserPasswordResponse {
-  // FeatureDisable FIXME
+  // FeatureDisabled on set the superuserpassword in the bmc if this feature is not disabled.
   bool feature_disabled = 1;
   // SuperUserPassword is the password of the superuser on the ipmi device
   string super_user_password = 2 [(buf.validate.field).string = {

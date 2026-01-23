@@ -516,7 +516,7 @@ message MachineChassisIdentifyLEDState {
 
 // MachineBMCReport is sent from the metal-bmc to update bmc and power related details
 message MachineBMCReport {
-  // BMC contains bmc details
+  // Bmc contains bmc details
   MachineBMC bmc = 1;
   // Bios contains bios details
   MachineBios bios = 2;
@@ -526,7 +526,7 @@ message MachineBMCReport {
   MachinePowerMetric power_metric = 4;
   // PowerSupplies contains details about all power supplies and their state
   repeated MachinePowerSupply power_supplies = 5;
-  // LEDState indicates the state of the indicator LED on this machine
+  // LedState indicates the state of the indicator LED on this machine
   MachineChassisIdentifyLEDState led_state = 6;
   // UpdatedAt contains the date when this data was last updated
   google.protobuf.Timestamp updated_at = 7;
@@ -545,7 +545,7 @@ message MachineBios {
 // MachineBMC describe details of the ipmi or out of band device
 message MachineBMC {
   // Address of this ipmi device from outside in the form of <ip or hostname>:<port>
-  string address = 1 [(buf.validate.field).string.ip = true];
+  string address = 1 [(buf.validate.field).string.host_and_port = true];
   // Mac address of the network interface of this ipmi device
   string mac = 2 [(buf.validate.field).string.(macaddress) = true];
   // User of this ipmi device
@@ -566,9 +566,9 @@ message MachineFRU {
   optional string chassis_part_number = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // ChassisPartSerial is the serial number of the machine chassis
   optional string chassis_part_serial = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // BoardMFG is the short description of the mainboard
+  // BoardMfg is the short description of the mainboard
   optional string board_mfg = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // BoardSerial is the serial number of the mainboard
+  // BoardMfgSerial is the serial number of the mainboard
   optional string board_mfg_serial = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // BoardPartNumber is the part number of the mainboard
   optional string board_part_number = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
@@ -603,9 +603,9 @@ message MachinePowerMetric {
 
 // MachinePowerSupply contains details of the power supply of a machine
 message MachinePowerSupply {
-  // health of the powersupply
+  // Health of the powersupply
   string health = 1;
-  // state of the powersupply
+  // State of the powersupply
   string state = 2;
 }
 
@@ -727,7 +727,7 @@ enum MachineBMCCommand {
   MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9 [(enum_string_value) = "identify-led-off"];
   // MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe
   MACHINE_BMC_COMMAND_MACHINE_DELETED = 10 [(enum_string_value) = "machine-deleted"];
-  // MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was create set the boot order to boot from disk
+  // MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was created to set the boot order to boot from disk
   MACHINE_BMC_COMMAND_MACHINE_CREATED = 11 [(enum_string_value) = "machine-created"];
 }
 
@@ -762,9 +762,9 @@ message MachineQuery {
   optional MachineNicQuery nic = 9;
   // Disk specific machine queries
   optional MachineDiskQuery disk = 10;
-  // BMC specific machine queries
+  // Bmc specific machine queries
   optional MachineBMCQuery bmc = 11;
-  // FRU specific machine queries
+  // Fru specific machine queries
   optional MachineFRUQuery fru = 12;
   // Hardware specific machine query
   optional MachineHardwareQuery hardware = 13;

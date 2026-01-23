@@ -499,35 +499,31 @@ func (x *BootServiceWaitResponse) GetAllocation() *v2.MachineAllocation {
 	return nil
 }
 
-// BootServiceReportRequest is sent from metal-hammer to the api to report the outcome of the register
-type BootServiceReportRequest struct {
+// BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded
+type BootServiceInstallationSucceededRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to boot
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Console_Password
+	// ConsolePassword
 	ConsolePassword string `protobuf:"bytes,2,opt,name=console_password,json=consolePassword,proto3" json:"console_password,omitempty"`
-	// Success is set to true of the allocation succeeded
-	Success bool `protobuf:"varint,4,opt,name=success,proto3" json:"success,omitempty"`
-	// Message contains additional information if installation failed
-	Message       string `protobuf:"bytes,5,opt,name=message,proto3" json:"message,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
-func (x *BootServiceReportRequest) Reset() {
-	*x = BootServiceReportRequest{}
+func (x *BootServiceInstallationSucceededRequest) Reset() {
+	*x = BootServiceInstallationSucceededRequest{}
 	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *BootServiceReportRequest) String() string {
+func (x *BootServiceInstallationSucceededRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*BootServiceReportRequest) ProtoMessage() {}
+func (*BootServiceInstallationSucceededRequest) ProtoMessage() {}
 
-func (x *BootServiceReportRequest) ProtoReflect() protoreflect.Message {
+func (x *BootServiceInstallationSucceededRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -539,60 +535,46 @@ func (x *BootServiceReportRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use BootServiceReportRequest.ProtoReflect.Descriptor instead.
-func (*BootServiceReportRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use BootServiceInstallationSucceededRequest.ProtoReflect.Descriptor instead.
+func (*BootServiceInstallationSucceededRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *BootServiceReportRequest) GetUuid() string {
+func (x *BootServiceInstallationSucceededRequest) GetUuid() string {
 	if x != nil {
 		return x.Uuid
 	}
 	return ""
 }
 
-func (x *BootServiceReportRequest) GetConsolePassword() string {
+func (x *BootServiceInstallationSucceededRequest) GetConsolePassword() string {
 	if x != nil {
 		return x.ConsolePassword
 	}
 	return ""
 }
 
-func (x *BootServiceReportRequest) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *BootServiceReportRequest) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
-// BootServiceReportRequest is the response to a BootServiceReportRequest
-type BootServiceReportResponse struct {
+// BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest
+type BootServiceInstallationSucceededResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *BootServiceReportResponse) Reset() {
-	*x = BootServiceReportResponse{}
+func (x *BootServiceInstallationSucceededResponse) Reset() {
+	*x = BootServiceInstallationSucceededResponse{}
 	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *BootServiceReportResponse) String() string {
+func (x *BootServiceInstallationSucceededResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*BootServiceReportResponse) ProtoMessage() {}
+func (*BootServiceInstallationSucceededResponse) ProtoMessage() {}
 
-func (x *BootServiceReportResponse) ProtoReflect() protoreflect.Message {
+func (x *BootServiceInstallationSucceededResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_infra_v2_boot_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -604,8 +586,8 @@ func (x *BootServiceReportResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use BootServiceReportResponse.ProtoReflect.Descriptor instead.
-func (*BootServiceReportResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use BootServiceInstallationSucceededResponse.ProtoReflect.Descriptor instead.
+func (*BootServiceInstallationSucceededResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{9}
 }
 
@@ -658,7 +640,7 @@ func (x *BootServiceSuperUserPasswordRequest) GetUuid() string {
 // BootServiceSuperUserPasswordResponse the super user password is returned
 type BootServiceSuperUserPasswordResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// FeatureDisable FIXME
+	// FeatureDisabled on set the superuserpassword in the bmc if this feature is not disabled.
 	FeatureDisabled bool `protobuf:"varint,1,opt,name=feature_disabled,json=featureDisabled,proto3" json:"feature_disabled,omitempty"`
 	// SuperUserPassword is the password of the superuser on the ipmi device
 	SuperUserPassword string `protobuf:"bytes,2,opt,name=super_user_password,json=superUserPassword,proto3" json:"super_user_password,omitempty"`
@@ -746,29 +728,25 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\x17BootServiceWaitResponse\x12D\n" +
 	"\n" +
 	"allocation\x18\x01 \x01(\v2$.metalstack.api.v2.MachineAllocationR\n" +
-	"allocation\"\xaf\x01\n" +
-	"\x18BootServiceReportRequest\x12\x1c\n" +
+	"allocation\"~\n" +
+	"'BootServiceInstallationSucceededRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x125\n" +
 	"\x10console_password\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0fconsolePassword\x12\x18\n" +
-	"\asuccess\x18\x04 \x01(\bR\asuccess\x12$\n" +
-	"\amessage\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04R\amessage\"\x1b\n" +
-	"\x19BootServiceReportResponse\"C\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x0fconsolePassword\"*\n" +
+	"(BootServiceInstallationSucceededResponse\"C\n" +
 	"#BootServiceSuperUserPasswordRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x8d\x01\n" +
 	"$BootServiceSuperUserPasswordResponse\x12)\n" +
 	"\x10feature_disabled\x18\x01 \x01(\bR\x0ffeatureDisabled\x12:\n" +
 	"\x13super_user_password\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\xde\x05\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\x8b\x06\n" +
 	"\vBootService\x12l\n" +
-	"\x04Dhcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12m\n" +
-	"\x04Boot\x12+.metalstack.infra.v2.BootServiceBootRequest\x1a,.metalstack.infra.v2.BootServiceBootResponse\"\n" +
-	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12\x93\x01\n" +
+	"\x04Dhcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12l\n" +
+	"\x04Boot\x12+.metalstack.infra.v2.BootServiceBootRequest\x1a,.metalstack.infra.v2.BootServiceBootResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x93\x01\n" +
 	"\x11SuperUserPassword\x128.metalstack.infra.v2.BootServiceSuperUserPasswordRequest\x1a9.metalstack.infra.v2.BootServiceSuperUserPasswordResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01\x12x\n" +
 	"\bRegister\x12/.metalstack.infra.v2.BootServiceRegisterRequest\x1a0.metalstack.infra.v2.BootServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01\x12n\n" +
-	"\x04Wait\x12+.metalstack.infra.v2.BootServiceWaitRequest\x1a,.metalstack.infra.v2.BootServiceWaitResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x010\x01\x12r\n" +
-	"\x06Report\x12-.metalstack.infra.v2.BootServiceReportRequest\x1a..metalstack.infra.v2.BootServiceReportResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01B\xcd\x01\n" +
+	"\x04Wait\x12+.metalstack.infra.v2.BootServiceWaitRequest\x1a,.metalstack.infra.v2.BootServiceWaitResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x010\x01\x12\x9f\x01\n" +
+	"\x15InstallationSucceeded\x12<.metalstack.infra.v2.BootServiceInstallationSucceededRequest\x1a=.metalstack.infra.v2.BootServiceInstallationSucceededResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01B\xcd\x01\n" +
 	"\x17com.metalstack.infra.v2B\tBootProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
 var (
@@ -785,23 +763,23 @@ func file_metalstack_infra_v2_boot_proto_rawDescGZIP() []byte {
 
 var file_metalstack_infra_v2_boot_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_metalstack_infra_v2_boot_proto_goTypes = []any{
-	(*BootServiceDhcpRequest)(nil),               // 0: metalstack.infra.v2.BootServiceDhcpRequest
-	(*BootServiceDhcpResponse)(nil),              // 1: metalstack.infra.v2.BootServiceDhcpResponse
-	(*BootServiceBootRequest)(nil),               // 2: metalstack.infra.v2.BootServiceBootRequest
-	(*BootServiceBootResponse)(nil),              // 3: metalstack.infra.v2.BootServiceBootResponse
-	(*BootServiceRegisterRequest)(nil),           // 4: metalstack.infra.v2.BootServiceRegisterRequest
-	(*BootServiceRegisterResponse)(nil),          // 5: metalstack.infra.v2.BootServiceRegisterResponse
-	(*BootServiceWaitRequest)(nil),               // 6: metalstack.infra.v2.BootServiceWaitRequest
-	(*BootServiceWaitResponse)(nil),              // 7: metalstack.infra.v2.BootServiceWaitResponse
-	(*BootServiceReportRequest)(nil),             // 8: metalstack.infra.v2.BootServiceReportRequest
-	(*BootServiceReportResponse)(nil),            // 9: metalstack.infra.v2.BootServiceReportResponse
-	(*BootServiceSuperUserPasswordRequest)(nil),  // 10: metalstack.infra.v2.BootServiceSuperUserPasswordRequest
-	(*BootServiceSuperUserPasswordResponse)(nil), // 11: metalstack.infra.v2.BootServiceSuperUserPasswordResponse
-	(*v2.MachineHardware)(nil),                   // 12: metalstack.api.v2.MachineHardware
-	(*v2.MachineBios)(nil),                       // 13: metalstack.api.v2.MachineBios
-	(*v2.MachineBMC)(nil),                        // 14: metalstack.api.v2.MachineBMC
-	(*v2.MachineFRU)(nil),                        // 15: metalstack.api.v2.MachineFRU
-	(*v2.MachineAllocation)(nil),                 // 16: metalstack.api.v2.MachineAllocation
+	(*BootServiceDhcpRequest)(nil),                   // 0: metalstack.infra.v2.BootServiceDhcpRequest
+	(*BootServiceDhcpResponse)(nil),                  // 1: metalstack.infra.v2.BootServiceDhcpResponse
+	(*BootServiceBootRequest)(nil),                   // 2: metalstack.infra.v2.BootServiceBootRequest
+	(*BootServiceBootResponse)(nil),                  // 3: metalstack.infra.v2.BootServiceBootResponse
+	(*BootServiceRegisterRequest)(nil),               // 4: metalstack.infra.v2.BootServiceRegisterRequest
+	(*BootServiceRegisterResponse)(nil),              // 5: metalstack.infra.v2.BootServiceRegisterResponse
+	(*BootServiceWaitRequest)(nil),                   // 6: metalstack.infra.v2.BootServiceWaitRequest
+	(*BootServiceWaitResponse)(nil),                  // 7: metalstack.infra.v2.BootServiceWaitResponse
+	(*BootServiceInstallationSucceededRequest)(nil),  // 8: metalstack.infra.v2.BootServiceInstallationSucceededRequest
+	(*BootServiceInstallationSucceededResponse)(nil), // 9: metalstack.infra.v2.BootServiceInstallationSucceededResponse
+	(*BootServiceSuperUserPasswordRequest)(nil),      // 10: metalstack.infra.v2.BootServiceSuperUserPasswordRequest
+	(*BootServiceSuperUserPasswordResponse)(nil),     // 11: metalstack.infra.v2.BootServiceSuperUserPasswordResponse
+	(*v2.MachineHardware)(nil),                       // 12: metalstack.api.v2.MachineHardware
+	(*v2.MachineBios)(nil),                           // 13: metalstack.api.v2.MachineBios
+	(*v2.MachineBMC)(nil),                            // 14: metalstack.api.v2.MachineBMC
+	(*v2.MachineFRU)(nil),                            // 15: metalstack.api.v2.MachineFRU
+	(*v2.MachineAllocation)(nil),                     // 16: metalstack.api.v2.MachineAllocation
 }
 var file_metalstack_infra_v2_boot_proto_depIdxs = []int32{
 	12, // 0: metalstack.infra.v2.BootServiceRegisterRequest.hardware:type_name -> metalstack.api.v2.MachineHardware
@@ -814,13 +792,13 @@ var file_metalstack_infra_v2_boot_proto_depIdxs = []int32{
 	10, // 7: metalstack.infra.v2.BootService.SuperUserPassword:input_type -> metalstack.infra.v2.BootServiceSuperUserPasswordRequest
 	4,  // 8: metalstack.infra.v2.BootService.Register:input_type -> metalstack.infra.v2.BootServiceRegisterRequest
 	6,  // 9: metalstack.infra.v2.BootService.Wait:input_type -> metalstack.infra.v2.BootServiceWaitRequest
-	8,  // 10: metalstack.infra.v2.BootService.Report:input_type -> metalstack.infra.v2.BootServiceReportRequest
+	8,  // 10: metalstack.infra.v2.BootService.InstallationSucceeded:input_type -> metalstack.infra.v2.BootServiceInstallationSucceededRequest
 	1,  // 11: metalstack.infra.v2.BootService.Dhcp:output_type -> metalstack.infra.v2.BootServiceDhcpResponse
 	3,  // 12: metalstack.infra.v2.BootService.Boot:output_type -> metalstack.infra.v2.BootServiceBootResponse
 	11, // 13: metalstack.infra.v2.BootService.SuperUserPassword:output_type -> metalstack.infra.v2.BootServiceSuperUserPasswordResponse
 	5,  // 14: metalstack.infra.v2.BootService.Register:output_type -> metalstack.infra.v2.BootServiceRegisterResponse
 	7,  // 15: metalstack.infra.v2.BootService.Wait:output_type -> metalstack.infra.v2.BootServiceWaitResponse
-	9,  // 16: metalstack.infra.v2.BootService.Report:output_type -> metalstack.infra.v2.BootServiceReportResponse
+	9,  // 16: metalstack.infra.v2.BootService.InstallationSucceeded:output_type -> metalstack.infra.v2.BootServiceInstallationSucceededResponse
 	11, // [11:17] is the sub-list for method output_type
 	5,  // [5:11] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name

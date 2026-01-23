@@ -175,6 +175,74 @@ func (_c *BootServiceClient_Dhcp_Call) RunAndReturn(run func(context1 context.Co
 	return _c
 }
 
+// InstallationSucceeded provides a mock function for the type BootServiceClient
+func (_mock *BootServiceClient) InstallationSucceeded(context1 context.Context, bootServiceInstallationSucceededRequest *infrav2.BootServiceInstallationSucceededRequest) (*infrav2.BootServiceInstallationSucceededResponse, error) {
+	ret := _mock.Called(context1, bootServiceInstallationSucceededRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for InstallationSucceeded")
+	}
+
+	var r0 *infrav2.BootServiceInstallationSucceededResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceInstallationSucceededRequest) (*infrav2.BootServiceInstallationSucceededResponse, error)); ok {
+		return returnFunc(context1, bootServiceInstallationSucceededRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceInstallationSucceededRequest) *infrav2.BootServiceInstallationSucceededResponse); ok {
+		r0 = returnFunc(context1, bootServiceInstallationSucceededRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*infrav2.BootServiceInstallationSucceededResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *infrav2.BootServiceInstallationSucceededRequest) error); ok {
+		r1 = returnFunc(context1, bootServiceInstallationSucceededRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// BootServiceClient_InstallationSucceeded_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'InstallationSucceeded'
+type BootServiceClient_InstallationSucceeded_Call struct {
+	*mock.Call
+}
+
+// InstallationSucceeded is a helper method to define mock.On call
+//   - context1 context.Context
+//   - bootServiceInstallationSucceededRequest *infrav2.BootServiceInstallationSucceededRequest
+func (_e *BootServiceClient_Expecter) InstallationSucceeded(context1 interface{}, bootServiceInstallationSucceededRequest interface{}) *BootServiceClient_InstallationSucceeded_Call {
+	return &BootServiceClient_InstallationSucceeded_Call{Call: _e.mock.On("InstallationSucceeded", context1, bootServiceInstallationSucceededRequest)}
+}
+
+func (_c *BootServiceClient_InstallationSucceeded_Call) Run(run func(context1 context.Context, bootServiceInstallationSucceededRequest *infrav2.BootServiceInstallationSucceededRequest)) *BootServiceClient_InstallationSucceeded_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *infrav2.BootServiceInstallationSucceededRequest
+		if args[1] != nil {
+			arg1 = args[1].(*infrav2.BootServiceInstallationSucceededRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *BootServiceClient_InstallationSucceeded_Call) Return(bootServiceInstallationSucceededResponse *infrav2.BootServiceInstallationSucceededResponse, err error) *BootServiceClient_InstallationSucceeded_Call {
+	_c.Call.Return(bootServiceInstallationSucceededResponse, err)
+	return _c
+}
+
+func (_c *BootServiceClient_InstallationSucceeded_Call) RunAndReturn(run func(context1 context.Context, bootServiceInstallationSucceededRequest *infrav2.BootServiceInstallationSucceededRequest) (*infrav2.BootServiceInstallationSucceededResponse, error)) *BootServiceClient_InstallationSucceeded_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Register provides a mock function for the type BootServiceClient
 func (_mock *BootServiceClient) Register(context1 context.Context, bootServiceRegisterRequest *infrav2.BootServiceRegisterRequest) (*infrav2.BootServiceRegisterResponse, error) {
 	ret := _mock.Called(context1, bootServiceRegisterRequest)
@@ -239,74 +307,6 @@ func (_c *BootServiceClient_Register_Call) Return(bootServiceRegisterResponse *i
 }
 
 func (_c *BootServiceClient_Register_Call) RunAndReturn(run func(context1 context.Context, bootServiceRegisterRequest *infrav2.BootServiceRegisterRequest) (*infrav2.BootServiceRegisterResponse, error)) *BootServiceClient_Register_Call {
-	_c.Call.Return(run)
-	return _c
-}
-
-// Report provides a mock function for the type BootServiceClient
-func (_mock *BootServiceClient) Report(context1 context.Context, bootServiceReportRequest *infrav2.BootServiceReportRequest) (*infrav2.BootServiceReportResponse, error) {
-	ret := _mock.Called(context1, bootServiceReportRequest)
-
-	if len(ret) == 0 {
-		panic("no return value specified for Report")
-	}
-
-	var r0 *infrav2.BootServiceReportResponse
-	var r1 error
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceReportRequest) (*infrav2.BootServiceReportResponse, error)); ok {
-		return returnFunc(context1, bootServiceReportRequest)
-	}
-	if returnFunc, ok := ret.Get(0).(func(context.Context, *infrav2.BootServiceReportRequest) *infrav2.BootServiceReportResponse); ok {
-		r0 = returnFunc(context1, bootServiceReportRequest)
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*infrav2.BootServiceReportResponse)
-		}
-	}
-	if returnFunc, ok := ret.Get(1).(func(context.Context, *infrav2.BootServiceReportRequest) error); ok {
-		r1 = returnFunc(context1, bootServiceReportRequest)
-	} else {
-		r1 = ret.Error(1)
-	}
-	return r0, r1
-}
-
-// BootServiceClient_Report_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Report'
-type BootServiceClient_Report_Call struct {
-	*mock.Call
-}
-
-// Report is a helper method to define mock.On call
-//   - context1 context.Context
-//   - bootServiceReportRequest *infrav2.BootServiceReportRequest
-func (_e *BootServiceClient_Expecter) Report(context1 interface{}, bootServiceReportRequest interface{}) *BootServiceClient_Report_Call {
-	return &BootServiceClient_Report_Call{Call: _e.mock.On("Report", context1, bootServiceReportRequest)}
-}
-
-func (_c *BootServiceClient_Report_Call) Run(run func(context1 context.Context, bootServiceReportRequest *infrav2.BootServiceReportRequest)) *BootServiceClient_Report_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		var arg0 context.Context
-		if args[0] != nil {
-			arg0 = args[0].(context.Context)
-		}
-		var arg1 *infrav2.BootServiceReportRequest
-		if args[1] != nil {
-			arg1 = args[1].(*infrav2.BootServiceReportRequest)
-		}
-		run(
-			arg0,
-			arg1,
-		)
-	})
-	return _c
-}
-
-func (_c *BootServiceClient_Report_Call) Return(bootServiceReportResponse *infrav2.BootServiceReportResponse, err error) *BootServiceClient_Report_Call {
-	_c.Call.Return(bootServiceReportResponse, err)
-	return _c
-}
-
-func (_c *BootServiceClient_Report_Call) RunAndReturn(run func(context1 context.Context, bootServiceReportRequest *infrav2.BootServiceReportRequest) (*infrav2.BootServiceReportResponse, error)) *BootServiceClient_Report_Call {
 	_c.Call.Return(run)
 	return _c
 }

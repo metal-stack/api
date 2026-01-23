@@ -82,19 +82,15 @@ class BootServiceWaitResponse(_message.Message):
     allocation: _machine_pb2.MachineAllocation
     def __init__(self, allocation: _Optional[_Union[_machine_pb2.MachineAllocation, _Mapping]] = ...) -> None: ...
 
-class BootServiceReportRequest(_message.Message):
-    __slots__ = ("uuid", "console_password", "success", "message")
+class BootServiceInstallationSucceededRequest(_message.Message):
+    __slots__ = ("uuid", "console_password")
     UUID_FIELD_NUMBER: _ClassVar[int]
     CONSOLE_PASSWORD_FIELD_NUMBER: _ClassVar[int]
-    SUCCESS_FIELD_NUMBER: _ClassVar[int]
-    MESSAGE_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     console_password: str
-    success: bool
-    message: str
-    def __init__(self, uuid: _Optional[str] = ..., console_password: _Optional[str] = ..., success: _Optional[bool] = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., console_password: _Optional[str] = ...) -> None: ...
 
-class BootServiceReportResponse(_message.Message):
+class BootServiceInstallationSucceededResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
 

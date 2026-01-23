@@ -3,7 +3,6 @@ syntax = "proto3";
 package metalstack.infra.v2;
 
 import "buf/validate/validate.proto";
-import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/machine.proto";
 import "metalstack/api/v2/predefined_rules.proto";
@@ -31,7 +30,7 @@ service BMCService {
 message UpdateBMCInfoRequest {
   // Partition the partition id where metal-bmc wants to receive events
   string partition = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // BMCReports contains maps the bmc report per machine uuid
+  // BmcReports contains maps the bmc report per machine uuid
   map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 2 [(buf.validate.field).map = {
     keys: {
       string: {uuid: true}
@@ -41,9 +40,9 @@ message UpdateBMCInfoRequest {
 
 // UpdateBMCInfoResponse
 message UpdateBMCInfoResponse {
-  // UpdatedMachines is a slice of machine uuids which where updated
+  // UpdatedMachines is a slice of machine uuids which were updated
   repeated string updated_machines = 1;
-  // CreatedMachines is a slice of machine uuids which where created
+  // CreatedMachines is a slice of machine uuids which were created
   repeated string created_machines = 2;
 }
 
@@ -57,20 +56,20 @@ message WaitForBMCCommandRequest {
 message WaitForBMCCommandResponse {
   // UUID of the machine to send the command to
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // BMCCommand to execute against the bmc of the machine
+  // BmcCommand to execute against the bmc of the machine
   metalstack.api.v2.MachineBMCCommand bmc_command = 2;
-  // MachineBMC contains connection details of the machine to issue the bmcCommand to
+  // MachineBmc contains connection details of the machine to issue the bmcCommand to
   metalstack.api.v2.MachineBMC machine_bmc = 3;
   // CommandId is a unique ID which must be sent back after execution
-  string command_id = 4 [(buf.validate.field).string.uuid = true];
-  // IssuedAt gives the date when this command was created
-  google.protobuf.Timestamp issued_at = 7;
+  // it is usually in the form: <machine-uuid>:machine-bmc-command:<command>
+  string command_id = 4;
 }
 
 // BMCCommandDoneRequest must be returned after command execution
 message BMCCommandDoneRequest {
   // CommandId is a unique ID which must be sent back after execution
-  string command_id = 1 [(buf.validate.field).string.uuid = true];
+  // it is usually in the form: <machine-uuid>:machine-bmc-command
+  string command_id = 1;
   // Error of the command execution, nil if it was successful
   optional string error = 2;
 }

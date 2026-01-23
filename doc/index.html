@@ -1091,6 +1091,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.admin.v2.MachineServiceConsolePasswordRequest"><span class="badge">M</span>MachineServiceConsolePasswordRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.MachineServiceConsolePasswordResponse"><span class="badge">M</span>MachineServiceConsolePasswordResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.MachineServiceGetBMCRequest"><span class="badge">M</span>MachineServiceGetBMCRequest</a>
                 </li>
               
@@ -1556,6 +1564,61 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.SwitchService"><span class="badge">S</span>SwitchService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fadmin%2fv2%2ftask.proto">metalstack/admin/v2/task.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskInfo"><span class="badge">M</span>TaskInfo</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskServiceDeleteRequest"><span class="badge">M</span>TaskServiceDeleteRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskServiceDeleteResponse"><span class="badge">M</span>TaskServiceDeleteResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskServiceGetRequest"><span class="badge">M</span>TaskServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskServiceGetResponse"><span class="badge">M</span>TaskServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskServiceListRequest"><span class="badge">M</span>TaskServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskServiceListResponse"><span class="badge">M</span>TaskServiceListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskServiceQueuesRequest"><span class="badge">M</span>TaskServiceQueuesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskServiceQueuesResponse"><span class="badge">M</span>TaskServiceQueuesResponse</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskState"><span class="badge">E</span>TaskState</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TaskService"><span class="badge">S</span>TaskService</a>
                 </li>
               
             </ul>
@@ -2128,19 +2191,19 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.infra.v2.BootServiceInstallationSucceededRequest"><span class="badge">M</span>BootServiceInstallationSucceededRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceInstallationSucceededResponse"><span class="badge">M</span>BootServiceInstallationSucceededResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.infra.v2.BootServiceRegisterRequest"><span class="badge">M</span>BootServiceRegisterRequest</a>
                 </li>
               
                 <li>
                   <a href="#metalstack.infra.v2.BootServiceRegisterResponse"><span class="badge">M</span>BootServiceRegisterResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.infra.v2.BootServiceReportRequest"><span class="badge">M</span>BootServiceReportRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.infra.v2.BootServiceReportResponse"><span class="badge">M</span>BootServiceReportResponse</a>
                 </li>
               
                 <li>
@@ -7680,7 +7743,7 @@ By default one ip address is acquired per network for the machine </p></td>
                   <td>bmc</td>
                   <td><a href="#metalstack.api.v2.MachineBMC">MachineBMC</a></td>
                   <td></td>
-                  <td><p>BMC contains bmc details </p></td>
+                  <td><p>Bmc contains bmc details </p></td>
                 </tr>
               
                 <tr>
@@ -7715,7 +7778,7 @@ By default one ip address is acquired per network for the machine </p></td>
                   <td>led_state</td>
                   <td><a href="#metalstack.api.v2.MachineChassisIdentifyLEDState">MachineChassisIdentifyLEDState</a></td>
                   <td></td>
-                  <td><p>LEDState indicates the state of the indicator LED on this machine </p></td>
+                  <td><p>LedState indicates the state of the indicator LED on this machine </p></td>
                 </tr>
               
                 <tr>
@@ -7929,14 +7992,14 @@ By default one ip address is acquired per network for the machine </p></td>
                   <td>board_mfg</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>BoardMFG is the short description of the mainboard </p></td>
+                  <td><p>BoardMfg is the short description of the mainboard </p></td>
                 </tr>
               
                 <tr>
                   <td>board_mfg_serial</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>BoardSerial is the serial number of the mainboard </p></td>
+                  <td><p>BoardMfgSerial is the serial number of the mainboard </p></td>
                 </tr>
               
                 <tr>
@@ -8448,14 +8511,14 @@ IntervalInMin minutes. </p></td>
                   <td>health</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>health of the powersupply </p></td>
+                  <td><p>Health of the powersupply </p></td>
                 </tr>
               
                 <tr>
                   <td>state</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>state of the powersupply </p></td>
+                  <td><p>State of the powersupply </p></td>
                 </tr>
               
             </tbody>
@@ -8587,14 +8650,14 @@ IntervalInMin minutes. </p></td>
                   <td>bmc</td>
                   <td><a href="#metalstack.api.v2.MachineBMCQuery">MachineBMCQuery</a></td>
                   <td>optional</td>
-                  <td><p>BMC specific machine queries </p></td>
+                  <td><p>Bmc specific machine queries </p></td>
                 </tr>
               
                 <tr>
                   <td>fru</td>
                   <td><a href="#metalstack.api.v2.MachineFRUQuery">MachineFRUQuery</a></td>
                   <td>optional</td>
-                  <td><p>FRU specific machine queries </p></td>
+                  <td><p>Fru specific machine queries </p></td>
                 </tr>
               
                 <tr>
@@ -9500,7 +9563,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
               <tr>
                 <td>MACHINE_BMC_COMMAND_MACHINE_CREATED</td>
                 <td>11</td>
-                <td><p>MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was create set the boot order to boot from disk</p></td>
+                <td><p>MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was created to set the boot order to boot from disk</p></td>
               </tr>
             
           </tbody>
@@ -9799,6 +9862,69 @@ if placement tags are provided, the machine candidate has an additional anti-aff
 
         
       
+        <h3 id="metalstack.admin.v2.MachineServiceConsolePasswordRequest">MachineServiceConsolePasswordRequest</h3>
+        <p>MachineServiceConsolePasswordRequest is the request to get the console password</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reason</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reason must be provided why access to the console is requested.
+Reason is only forwarded to an audit sink </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.MachineServiceConsolePasswordResponse">MachineServiceConsolePasswordResponse</h3>
+        <p>MachineServiceConsolePasswordResponse is the response to the console password request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Password to access the console </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.MachineServiceGetBMCRequest">MachineServiceGetBMCRequest</h3>
         <p>MachineServiceGetBMCRequest is the request payload for a machine getbmc request</p>
 
@@ -9940,7 +10066,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                   <td>bmc_reports</td>
                   <td><a href="#metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry">MachineServiceListBMCResponse.BmcReportsEntry</a></td>
                   <td>repeated</td>
-                  <td><p>BMCReports contains maps the bmc report per machine uuid </p></td>
+                  <td><p>BMCReports maps the bmc report per machine uuid </p></td>
                 </tr>
               
             </tbody>
@@ -10084,6 +10210,13 @@ otherwise an error is thrown that the partition must be specified </p></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceListBMCRequest">MachineServiceListBMCRequest</a></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceListBMCResponse">MachineServiceListBMCResponse</a></td>
                 <td><p>ListBMC returns the BMC details of many machines</p></td>
+              </tr>
+            
+              <tr>
+                <td>ConsolePassword</td>
+                <td><a href="#metalstack.admin.v2.MachineServiceConsolePasswordRequest">MachineServiceConsolePasswordRequest</a></td>
+                <td><a href="#metalstack.admin.v2.MachineServiceConsolePasswordResponse">MachineServiceConsolePasswordResponse</a></td>
+                <td><p>ConsolePassword returns the password to access the serial console of the machine</p></td>
               </tr>
             
           </tbody>
@@ -13420,6 +13553,456 @@ must be part of the update request to ensure optimistic locking. </p></td>
     
       
       <div class="file-heading">
+        <h2 id="metalstack/admin/v2/task.proto">metalstack/admin/v2/task.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.admin.v2.TaskInfo">TaskInfo</h3>
+        <p>TaskInfo contains details of an async task</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID is the identifier of the task. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>queue</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Queue is the name of the queue in which the task belongs. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Type is the type name of the task. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>payload</td>
+                  <td><a href="#bytes">bytes</a></td>
+                  <td></td>
+                  <td><p>Payload is the payload data of the task. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#metalstack.admin.v2.TaskState">TaskState</a></td>
+                  <td></td>
+                  <td><p>State indicates the task state. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>max_retry</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>MaxRetry is the maximum number of times the task can be retried. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>retried</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Retried is the number of times the task has retried so far. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_error</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>LastError is the error message from the last failure. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_failed_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>LastFailedAt is the time time of the last failure if any.
+If the task has no failures, LastFailedAt is zero time (i.e. time.Time{}). </p></td>
+                </tr>
+              
+                <tr>
+                  <td>timeout</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>Timeout is the duration the task can be processed by Handler before being retried, </p></td>
+                </tr>
+              
+                <tr>
+                  <td>deadline</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Deadline is the deadline for the task. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>group</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Group is the name of the group in which the task belongs.
+
+Tasks in the same queue can be grouped together by Group name and will be aggregated into one task
+by a Server processing the queue.
+
+Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>next_process_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>NextProcessAt is the time the task is scheduled to be processed,
+zero if not applicable. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>is_orphaned</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>IsOrphaned describes whether the task is left in active state with no worker processing it.
+An orphaned task indicates that the worker has crashed or experienced network failures and was not able to
+extend its lease on the task.
+
+This task will be recovered by running a server against the queue the task is in.
+This field is only applicable to tasks with TaskStateActive. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>retention</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>Retention is duration of the retention period after the task is successfully processed. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>completed_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>CompletedAt is the time when the task is processed successfully.
+Zero value (i.e. time.Time{}) indicates no value. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>result</td>
+                  <td><a href="#bytes">bytes</a></td>
+                  <td></td>
+                  <td><p>Result holds the result data associated with the task.
+Use ResultWriter to write result data from the Handler. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TaskServiceDeleteRequest">TaskServiceDeleteRequest</h3>
+        <p>TaskServiceDeleteRequest is the message to a delete task request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>task_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>TaskId to cancel </p></td>
+                </tr>
+              
+                <tr>
+                  <td>queue</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Queue where this task was scheduled to </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TaskServiceDeleteResponse">TaskServiceDeleteResponse</h3>
+        <p>TaskServiceDeleteResponse is the response to a task delete request</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.admin.v2.TaskServiceGetRequest">TaskServiceGetRequest</h3>
+        <p>TaskServiceGetRequest is the message to a get task request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>task_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>TaskId to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>queue</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Queue where this task was scheduled to </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TaskServiceGetResponse">TaskServiceGetResponse</h3>
+        <p>TaskServiceGetResponse is the response to a task get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>task</td>
+                  <td><a href="#metalstack.admin.v2.TaskInfo">TaskInfo</a></td>
+                  <td></td>
+                  <td><p>Task contains the task details </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TaskServiceListRequest">TaskServiceListRequest</h3>
+        <p>TaskServiceListRequest is the message to a task list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>queue</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Queue where this tasks should be listed
+will return tasks from all queues if not specified </p></td>
+                </tr>
+              
+                <tr>
+                  <td>count</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td>optional</td>
+                  <td><p>Count of tasks to return </p></td>
+                </tr>
+              
+                <tr>
+                  <td>page</td>
+                  <td><a href="#uint32">uint32</a></td>
+                  <td>optional</td>
+                  <td><p>Page of tasks to return </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TaskServiceListResponse">TaskServiceListResponse</h3>
+        <p>TaskServiceListResponse is the response to a task list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tasks</td>
+                  <td><a href="#metalstack.admin.v2.TaskInfo">TaskInfo</a></td>
+                  <td>repeated</td>
+                  <td><p>Tasks contains the requested list of tasks </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TaskServiceQueuesRequest">TaskServiceQueuesRequest</h3>
+        <p>TaskServiceQueuesRequest is the message to get all queues</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.admin.v2.TaskServiceQueuesResponse">TaskServiceQueuesResponse</h3>
+        <p>TaskServiceQueuesResponse is the response to a queues request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>queues</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Queues configured for the async system </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="metalstack.admin.v2.TaskState">TaskState</h3>
+        <p>TaskState defines the state of the task</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>TASK_STATE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>TASK_STATE_UNSPECIFIED indicates a undefined state</p></td>
+              </tr>
+            
+              <tr>
+                <td>TASK_STATE_ACTIVE</td>
+                <td>1</td>
+                <td><p>TASK_STATE_ACTIVE indicates that the task is currently being processed by Handler.</p></td>
+              </tr>
+            
+              <tr>
+                <td>TASK_STATE_PENDING</td>
+                <td>2</td>
+                <td><p>TASK_STATE_PENDING indicates that the task is ready to be processed by Handler.</p></td>
+              </tr>
+            
+              <tr>
+                <td>TASK_STATE_SCHEDULED</td>
+                <td>3</td>
+                <td><p>TASK_STATE_SCHEDULED indicates that the task is scheduled to be processed some time in the future.</p></td>
+              </tr>
+            
+              <tr>
+                <td>TASK_STATE_RETRY</td>
+                <td>4</td>
+                <td><p>TASK_STATE_RETRY indicates that the task has previously failed and scheduled to be processed some time in the future.</p></td>
+              </tr>
+            
+              <tr>
+                <td>TASK_STATE_ARCHIVED</td>
+                <td>5</td>
+                <td><p>TASK_STATE_ARCHIVED indicates that the task is archived and stored for inspection purposes.</p></td>
+              </tr>
+            
+              <tr>
+                <td>TASK_STATE_COMPLETED</td>
+                <td>6</td>
+                <td><p>TASK_STATE_COMPLETED indicates that the task is processed successfully and retained until the retention TTL expires.</p></td>
+              </tr>
+            
+              <tr>
+                <td>TASK_STATE_AGGREGATING</td>
+                <td>7</td>
+                <td><p>TASK_STATE_AGGREGATING indicates that the task is waiting in a group to be aggregated into one task.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="metalstack.admin.v2.TaskService">TaskService</h3>
+        <p>TaskService provides services to async tasks</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.admin.v2.TaskServiceGetRequest">TaskServiceGetRequest</a></td>
+                <td><a href="#metalstack.admin.v2.TaskServiceGetResponse">TaskServiceGetResponse</a></td>
+                <td><p>Get a specific task</p></td>
+              </tr>
+            
+              <tr>
+                <td>Delete</td>
+                <td><a href="#metalstack.admin.v2.TaskServiceDeleteRequest">TaskServiceDeleteRequest</a></td>
+                <td><a href="#metalstack.admin.v2.TaskServiceDeleteResponse">TaskServiceDeleteResponse</a></td>
+                <td><p>Delete a specific task</p></td>
+              </tr>
+            
+              <tr>
+                <td>Queues</td>
+                <td><a href="#metalstack.admin.v2.TaskServiceQueuesRequest">TaskServiceQueuesRequest</a></td>
+                <td><a href="#metalstack.admin.v2.TaskServiceQueuesResponse">TaskServiceQueuesResponse</a></td>
+                <td><p>Queues returns all configures queues</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.admin.v2.TaskServiceListRequest">TaskServiceListRequest</a></td>
+                <td><a href="#metalstack.admin.v2.TaskServiceListResponse">TaskServiceListResponse</a></td>
+                <td><p>List list all tasks</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
         <h2 id="metalstack/api/v2/tenant.proto">metalstack/api/v2/tenant.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
@@ -15818,6 +16401,14 @@ This service is suitable to create tokens for other users instead of deriving us
                   <td><p>Expires defines the duration after which the authkey expires. </p></td>
                 </tr>
               
+                <tr>
+                  <td>reason</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reason must be provided why access to the vpn is requested
+reason is only forwarded to a audit sink </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -15848,6 +16439,27 @@ This service is suitable to create tokens for other users instead of deriving us
                   <td></td>
                   <td><p>AuthKey is the key to connect to the vpn at the given address.
 This key can only be seen once. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ephemeral</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Ephemeral defines if the authkey should be ephemeral. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expires_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>ExpiresAt this key cannot be used after this timestamp. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>CreatedAt this key was created at this timestamp. </p></td>
                 </tr>
               
             </tbody>
@@ -16711,7 +17323,8 @@ This key can only be seen once. </p></td>
                   <td>command_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>CommandId is a unique ID which must be sent back after execution </p></td>
+                  <td><p>CommandId is a unique ID which must be sent back after execution
+it is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command </p></td>
                 </tr>
               
                 <tr>
@@ -16756,7 +17369,7 @@ This key can only be seen once. </p></td>
                   <td>bmc_reports</td>
                   <td><a href="#metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry">UpdateBMCInfoRequest.BmcReportsEntry</a></td>
                   <td>repeated</td>
-                  <td><p>BMCReports contains maps the bmc report per machine uuid </p></td>
+                  <td><p>BmcReports contains maps the bmc report per machine uuid </p></td>
                 </tr>
               
             </tbody>
@@ -16811,14 +17424,14 @@ This key can only be seen once. </p></td>
                   <td>updated_machines</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>UpdatedMachines is a slice of machine uuids which where updated </p></td>
+                  <td><p>UpdatedMachines is a slice of machine uuids which were updated </p></td>
                 </tr>
               
                 <tr>
                   <td>created_machines</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>CreatedMachines is a slice of machine uuids which where created </p></td>
+                  <td><p>CreatedMachines is a slice of machine uuids which were created </p></td>
                 </tr>
               
             </tbody>
@@ -16873,28 +17486,22 @@ This key can only be seen once. </p></td>
                   <td>bmc_command</td>
                   <td><a href="#metalstack.api.v2.MachineBMCCommand">metalstack.api.v2.MachineBMCCommand</a></td>
                   <td></td>
-                  <td><p>BMCCommand to execute against the bmc of the machine </p></td>
+                  <td><p>BmcCommand to execute against the bmc of the machine </p></td>
                 </tr>
               
                 <tr>
                   <td>machine_bmc</td>
                   <td><a href="#metalstack.api.v2.MachineBMC">metalstack.api.v2.MachineBMC</a></td>
                   <td></td>
-                  <td><p>MachineBMC contains connection details of the machine to issue the bmcCommand to </p></td>
+                  <td><p>MachineBmc contains connection details of the machine to issue the bmcCommand to </p></td>
                 </tr>
               
                 <tr>
                   <td>command_id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>CommandId is a unique ID which must be sent back after execution </p></td>
-                </tr>
-              
-                <tr>
-                  <td>issued_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>IssuedAt gives the date when this command was created </p></td>
+                  <td><p>CommandId is a unique ID which must be sent back after execution
+it is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&gt; </p></td>
                 </tr>
               
             </tbody>
@@ -17058,6 +17665,44 @@ This key can only be seen once. </p></td>
 
         
       
+        <h3 id="metalstack.infra.v2.BootServiceInstallationSucceededRequest">BootServiceInstallationSucceededRequest</h3>
+        <p>BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine to boot </p></td>
+                </tr>
+              
+                <tr>
+                  <td>console_password</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ConsolePassword </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceInstallationSucceededResponse">BootServiceInstallationSucceededResponse</h3>
+        <p>BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest</p>
+
+        
+
+        
+      
         <h3 id="metalstack.infra.v2.BootServiceRegisterRequest">BootServiceRegisterRequest</h3>
         <p>BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible</p>
 
@@ -17169,58 +17814,6 @@ This key can only be seen once. </p></td>
 
         
       
-        <h3 id="metalstack.infra.v2.BootServiceReportRequest">BootServiceReportRequest</h3>
-        <p>BootServiceReportRequest is sent from metal-hammer to the api to report the outcome of the register</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>uuid</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>UUID of the machine to boot </p></td>
-                </tr>
-              
-                <tr>
-                  <td>console_password</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Console_Password </p></td>
-                </tr>
-              
-                <tr>
-                  <td>success</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Success is set to true of the allocation succeeded </p></td>
-                </tr>
-              
-                <tr>
-                  <td>message</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Message contains additional information if installation failed </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.infra.v2.BootServiceReportResponse">BootServiceReportResponse</h3>
-        <p>BootServiceReportRequest is the response to a BootServiceReportRequest</p>
-
-        
-
-        
-      
         <h3 id="metalstack.infra.v2.BootServiceSuperUserPasswordRequest">BootServiceSuperUserPasswordRequest</h3>
         <p>BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser</p>
 
@@ -17259,7 +17852,7 @@ This key can only be seen once. </p></td>
                   <td>feature_disabled</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>FeatureDisable FIXME </p></td>
+                  <td><p>FeatureDisabled on set the superuserpassword in the bmc if this feature is not disabled. </p></td>
                 </tr>
               
                 <tr>
@@ -17363,7 +17956,7 @@ This key can only be seen once. </p></td>
                 <td>Register</td>
                 <td><a href="#metalstack.infra.v2.BootServiceRegisterRequest">BootServiceRegisterRequest</a></td>
                 <td><a href="#metalstack.infra.v2.BootServiceRegisterResponse">BootServiceRegisterResponse</a></td>
-                <td><p>Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all glory details about that machine</p></td>
+                <td><p>Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all gory details about that machine</p></td>
               </tr>
             
               <tr>
@@ -17374,10 +17967,10 @@ This key can only be seen once. </p></td>
               </tr>
             
               <tr>
-                <td>Report</td>
-                <td><a href="#metalstack.infra.v2.BootServiceReportRequest">BootServiceReportRequest</a></td>
-                <td><a href="#metalstack.infra.v2.BootServiceReportResponse">BootServiceReportResponse</a></td>
-                <td><p>Report tells metal-apiserver installation was either successful or failed</p></td>
+                <td>InstallationSucceeded</td>
+                <td><a href="#metalstack.infra.v2.BootServiceInstallationSucceededRequest">BootServiceInstallationSucceededRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceInstallationSucceededResponse">BootServiceInstallationSucceededResponse</a></td>
+                <td><p>InstallationSucceeded tells metal-apiserver installation was either successful</p></td>
               </tr>
             
           </tbody>

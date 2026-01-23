@@ -11,6 +11,7 @@ import metalstack.admin.v2.partition_connect as admin_partition_connect
 import metalstack.admin.v2.project_connect as admin_project_connect
 import metalstack.admin.v2.size_connect as admin_size_connect
 import metalstack.admin.v2.switch_connect as admin_switch_connect
+import metalstack.admin.v2.task_connect as admin_task_connect
 import metalstack.admin.v2.tenant_connect as admin_tenant_connect
 import metalstack.admin.v2.token_connect as admin_token_connect
 import metalstack.admin.v2.vpn_connect as admin_vpn_connect
@@ -91,6 +92,9 @@ class Client:
 
         def switch(self):
             return admin_switch_connect.SwitchServiceClientSync(address=self._baseurl, session=self._session)
+
+        def task(self):
+            return admin_task_connect.TaskServiceClientSync(address=self._baseurl, session=self._session)
 
         def tenant(self):
             return admin_tenant_connect.TenantServiceClientSync(address=self._baseurl, session=self._session)

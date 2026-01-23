@@ -106,6 +106,74 @@ func (_c *MachineServiceClient_BMCCommand_Call) RunAndReturn(run func(context1 c
 	return _c
 }
 
+// ConsolePassword provides a mock function for the type MachineServiceClient
+func (_mock *MachineServiceClient) ConsolePassword(context1 context.Context, machineServiceConsolePasswordRequest *adminv2.MachineServiceConsolePasswordRequest) (*adminv2.MachineServiceConsolePasswordResponse, error) {
+	ret := _mock.Called(context1, machineServiceConsolePasswordRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ConsolePassword")
+	}
+
+	var r0 *adminv2.MachineServiceConsolePasswordResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceConsolePasswordRequest) (*adminv2.MachineServiceConsolePasswordResponse, error)); ok {
+		return returnFunc(context1, machineServiceConsolePasswordRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceConsolePasswordRequest) *adminv2.MachineServiceConsolePasswordResponse); ok {
+		r0 = returnFunc(context1, machineServiceConsolePasswordRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.MachineServiceConsolePasswordResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.MachineServiceConsolePasswordRequest) error); ok {
+		r1 = returnFunc(context1, machineServiceConsolePasswordRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MachineServiceClient_ConsolePassword_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ConsolePassword'
+type MachineServiceClient_ConsolePassword_Call struct {
+	*mock.Call
+}
+
+// ConsolePassword is a helper method to define mock.On call
+//   - context1 context.Context
+//   - machineServiceConsolePasswordRequest *adminv2.MachineServiceConsolePasswordRequest
+func (_e *MachineServiceClient_Expecter) ConsolePassword(context1 interface{}, machineServiceConsolePasswordRequest interface{}) *MachineServiceClient_ConsolePassword_Call {
+	return &MachineServiceClient_ConsolePassword_Call{Call: _e.mock.On("ConsolePassword", context1, machineServiceConsolePasswordRequest)}
+}
+
+func (_c *MachineServiceClient_ConsolePassword_Call) Run(run func(context1 context.Context, machineServiceConsolePasswordRequest *adminv2.MachineServiceConsolePasswordRequest)) *MachineServiceClient_ConsolePassword_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.MachineServiceConsolePasswordRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.MachineServiceConsolePasswordRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *MachineServiceClient_ConsolePassword_Call) Return(machineServiceConsolePasswordResponse *adminv2.MachineServiceConsolePasswordResponse, err error) *MachineServiceClient_ConsolePassword_Call {
+	_c.Call.Return(machineServiceConsolePasswordResponse, err)
+	return _c
+}
+
+func (_c *MachineServiceClient_ConsolePassword_Call) RunAndReturn(run func(context1 context.Context, machineServiceConsolePasswordRequest *adminv2.MachineServiceConsolePasswordRequest) (*adminv2.MachineServiceConsolePasswordResponse, error)) *MachineServiceClient_ConsolePassword_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Get provides a mock function for the type MachineServiceClient
 func (_mock *MachineServiceClient) Get(context1 context.Context, machineServiceGetRequest *adminv2.MachineServiceGetRequest) (*adminv2.MachineServiceGetResponse, error) {
 	ret := _mock.Called(context1, machineServiceGetRequest)

@@ -459,7 +459,7 @@ func (x *MachineServiceListBMCRequest) GetQuery() *v2.MachineBMCQuery {
 // MachineServiceListBMCResponse is the response payload for a machine listbmc request
 type MachineServiceListBMCResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// BMCReports contains maps the bmc report per machine uuid
+	// BMCReports maps the bmc report per machine uuid
 	BmcReports    map[string]*v2.MachineBMCReport `protobuf:"bytes,1,rep,name=bmc_reports,json=bmcReports,proto3" json:"bmc_reports,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -502,6 +502,117 @@ func (x *MachineServiceListBMCResponse) GetBmcReports() map[string]*v2.MachineBM
 	return nil
 }
 
+// MachineServiceConsolePasswordRequest is the request to get the console password
+type MachineServiceConsolePasswordRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of the machine to get
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Reason must be provided why access to the console is requested.
+	// Reason is only forwarded to an audit sink
+	Reason        string `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MachineServiceConsolePasswordRequest) Reset() {
+	*x = MachineServiceConsolePasswordRequest{}
+	mi := &file_metalstack_admin_v2_machine_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MachineServiceConsolePasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MachineServiceConsolePasswordRequest) ProtoMessage() {}
+
+func (x *MachineServiceConsolePasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_machine_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MachineServiceConsolePasswordRequest.ProtoReflect.Descriptor instead.
+func (*MachineServiceConsolePasswordRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_machine_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *MachineServiceConsolePasswordRequest) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+func (x *MachineServiceConsolePasswordRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+// MachineServiceConsolePasswordResponse is the response to the console password request
+type MachineServiceConsolePasswordResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of the machine to get
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Password to access the console
+	Password      string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MachineServiceConsolePasswordResponse) Reset() {
+	*x = MachineServiceConsolePasswordResponse{}
+	mi := &file_metalstack_admin_v2_machine_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MachineServiceConsolePasswordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MachineServiceConsolePasswordResponse) ProtoMessage() {}
+
+func (x *MachineServiceConsolePasswordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_machine_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MachineServiceConsolePasswordResponse.ProtoReflect.Descriptor instead.
+func (*MachineServiceConsolePasswordResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_machine_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *MachineServiceConsolePasswordResponse) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+func (x *MachineServiceConsolePasswordResponse) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
 var File_metalstack_admin_v2_machine_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_machine_proto_rawDesc = "" +
@@ -535,7 +646,15 @@ const file_metalstack_admin_v2_machine_proto_rawDesc = "" +
 	"bmcReports\x1ab\n" +
 	"\x0fBmcReportsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x129\n" +
-	"\x05value\x18\x02 \x01(\v2#.metalstack.api.v2.MachineBMCReportR\x05value:\x028\x012\xeb\x04\n" +
+	"\x05value\x18\x02 \x01(\v2#.metalstack.api.v2.MachineBMCReportR\x05value:\x028\x01\"h\n" +
+	"$MachineServiceConsolePasswordRequest\x12\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
+	"\x06reason\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\n" +
+	"\x18\x80\x04R\x06reason\"a\n" +
+	"%MachineServiceConsolePasswordResponse\x12\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword2\xfe\x05\n" +
 	"\x0eMachineService\x12p\n" +
 	"\x03Get\x12-.metalstack.admin.v2.MachineServiceGetRequest\x1a..metalstack.admin.v2.MachineServiceGetResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12s\n" +
@@ -544,7 +663,8 @@ const file_metalstack_admin_v2_machine_proto_rawDesc = "" +
 	"\n" +
 	"BMCCommand\x124.metalstack.admin.v2.MachineServiceBMCCommandRequest\x1a5.metalstack.admin.v2.MachineServiceBMCCommandResponse\"\x05\xd2\xf3\x18\x01\x01\x12u\n" +
 	"\x06GetBMC\x120.metalstack.admin.v2.MachineServiceGetBMCRequest\x1a1.metalstack.admin.v2.MachineServiceGetBMCResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12x\n" +
-	"\aListBMC\x121.metalstack.admin.v2.MachineServiceListBMCRequest\x1a2.metalstack.admin.v2.MachineServiceListBMCResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xd0\x01\n" +
+	"\aListBMC\x121.metalstack.admin.v2.MachineServiceListBMCRequest\x1a2.metalstack.admin.v2.MachineServiceListBMCResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12\x90\x01\n" +
+	"\x0fConsolePassword\x129.metalstack.admin.v2.MachineServiceConsolePasswordRequest\x1a:.metalstack.admin.v2.MachineServiceConsolePasswordResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xd0\x01\n" +
 	"\x17com.metalstack.admin.v2B\fMachineProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (
@@ -559,46 +679,50 @@ func file_metalstack_admin_v2_machine_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_machine_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_machine_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_metalstack_admin_v2_machine_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_metalstack_admin_v2_machine_proto_goTypes = []any{
-	(*MachineServiceGetRequest)(nil),         // 0: metalstack.admin.v2.MachineServiceGetRequest
-	(*MachineServiceGetResponse)(nil),        // 1: metalstack.admin.v2.MachineServiceGetResponse
-	(*MachineServiceListRequest)(nil),        // 2: metalstack.admin.v2.MachineServiceListRequest
-	(*MachineServiceListResponse)(nil),       // 3: metalstack.admin.v2.MachineServiceListResponse
-	(*MachineServiceBMCCommandRequest)(nil),  // 4: metalstack.admin.v2.MachineServiceBMCCommandRequest
-	(*MachineServiceBMCCommandResponse)(nil), // 5: metalstack.admin.v2.MachineServiceBMCCommandResponse
-	(*MachineServiceGetBMCRequest)(nil),      // 6: metalstack.admin.v2.MachineServiceGetBMCRequest
-	(*MachineServiceGetBMCResponse)(nil),     // 7: metalstack.admin.v2.MachineServiceGetBMCResponse
-	(*MachineServiceListBMCRequest)(nil),     // 8: metalstack.admin.v2.MachineServiceListBMCRequest
-	(*MachineServiceListBMCResponse)(nil),    // 9: metalstack.admin.v2.MachineServiceListBMCResponse
-	nil,                                      // 10: metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry
-	(*v2.Machine)(nil),                       // 11: metalstack.api.v2.Machine
-	(*v2.MachineQuery)(nil),                  // 12: metalstack.api.v2.MachineQuery
-	(v2.MachineBMCCommand)(0),                // 13: metalstack.api.v2.MachineBMCCommand
-	(*v2.MachineBMCReport)(nil),              // 14: metalstack.api.v2.MachineBMCReport
-	(*v2.MachineBMCQuery)(nil),               // 15: metalstack.api.v2.MachineBMCQuery
+	(*MachineServiceGetRequest)(nil),              // 0: metalstack.admin.v2.MachineServiceGetRequest
+	(*MachineServiceGetResponse)(nil),             // 1: metalstack.admin.v2.MachineServiceGetResponse
+	(*MachineServiceListRequest)(nil),             // 2: metalstack.admin.v2.MachineServiceListRequest
+	(*MachineServiceListResponse)(nil),            // 3: metalstack.admin.v2.MachineServiceListResponse
+	(*MachineServiceBMCCommandRequest)(nil),       // 4: metalstack.admin.v2.MachineServiceBMCCommandRequest
+	(*MachineServiceBMCCommandResponse)(nil),      // 5: metalstack.admin.v2.MachineServiceBMCCommandResponse
+	(*MachineServiceGetBMCRequest)(nil),           // 6: metalstack.admin.v2.MachineServiceGetBMCRequest
+	(*MachineServiceGetBMCResponse)(nil),          // 7: metalstack.admin.v2.MachineServiceGetBMCResponse
+	(*MachineServiceListBMCRequest)(nil),          // 8: metalstack.admin.v2.MachineServiceListBMCRequest
+	(*MachineServiceListBMCResponse)(nil),         // 9: metalstack.admin.v2.MachineServiceListBMCResponse
+	(*MachineServiceConsolePasswordRequest)(nil),  // 10: metalstack.admin.v2.MachineServiceConsolePasswordRequest
+	(*MachineServiceConsolePasswordResponse)(nil), // 11: metalstack.admin.v2.MachineServiceConsolePasswordResponse
+	nil,                         // 12: metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry
+	(*v2.Machine)(nil),          // 13: metalstack.api.v2.Machine
+	(*v2.MachineQuery)(nil),     // 14: metalstack.api.v2.MachineQuery
+	(v2.MachineBMCCommand)(0),   // 15: metalstack.api.v2.MachineBMCCommand
+	(*v2.MachineBMCReport)(nil), // 16: metalstack.api.v2.MachineBMCReport
+	(*v2.MachineBMCQuery)(nil),  // 17: metalstack.api.v2.MachineBMCQuery
 }
 var file_metalstack_admin_v2_machine_proto_depIdxs = []int32{
-	11, // 0: metalstack.admin.v2.MachineServiceGetResponse.machine:type_name -> metalstack.api.v2.Machine
-	12, // 1: metalstack.admin.v2.MachineServiceListRequest.query:type_name -> metalstack.api.v2.MachineQuery
-	11, // 2: metalstack.admin.v2.MachineServiceListResponse.machines:type_name -> metalstack.api.v2.Machine
-	13, // 3: metalstack.admin.v2.MachineServiceBMCCommandRequest.command:type_name -> metalstack.api.v2.MachineBMCCommand
-	14, // 4: metalstack.admin.v2.MachineServiceGetBMCResponse.bmc:type_name -> metalstack.api.v2.MachineBMCReport
-	15, // 5: metalstack.admin.v2.MachineServiceListBMCRequest.query:type_name -> metalstack.api.v2.MachineBMCQuery
-	10, // 6: metalstack.admin.v2.MachineServiceListBMCResponse.bmc_reports:type_name -> metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry
-	14, // 7: metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry.value:type_name -> metalstack.api.v2.MachineBMCReport
+	13, // 0: metalstack.admin.v2.MachineServiceGetResponse.machine:type_name -> metalstack.api.v2.Machine
+	14, // 1: metalstack.admin.v2.MachineServiceListRequest.query:type_name -> metalstack.api.v2.MachineQuery
+	13, // 2: metalstack.admin.v2.MachineServiceListResponse.machines:type_name -> metalstack.api.v2.Machine
+	15, // 3: metalstack.admin.v2.MachineServiceBMCCommandRequest.command:type_name -> metalstack.api.v2.MachineBMCCommand
+	16, // 4: metalstack.admin.v2.MachineServiceGetBMCResponse.bmc:type_name -> metalstack.api.v2.MachineBMCReport
+	17, // 5: metalstack.admin.v2.MachineServiceListBMCRequest.query:type_name -> metalstack.api.v2.MachineBMCQuery
+	12, // 6: metalstack.admin.v2.MachineServiceListBMCResponse.bmc_reports:type_name -> metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry
+	16, // 7: metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry.value:type_name -> metalstack.api.v2.MachineBMCReport
 	0,  // 8: metalstack.admin.v2.MachineService.Get:input_type -> metalstack.admin.v2.MachineServiceGetRequest
 	2,  // 9: metalstack.admin.v2.MachineService.List:input_type -> metalstack.admin.v2.MachineServiceListRequest
 	4,  // 10: metalstack.admin.v2.MachineService.BMCCommand:input_type -> metalstack.admin.v2.MachineServiceBMCCommandRequest
 	6,  // 11: metalstack.admin.v2.MachineService.GetBMC:input_type -> metalstack.admin.v2.MachineServiceGetBMCRequest
 	8,  // 12: metalstack.admin.v2.MachineService.ListBMC:input_type -> metalstack.admin.v2.MachineServiceListBMCRequest
-	1,  // 13: metalstack.admin.v2.MachineService.Get:output_type -> metalstack.admin.v2.MachineServiceGetResponse
-	3,  // 14: metalstack.admin.v2.MachineService.List:output_type -> metalstack.admin.v2.MachineServiceListResponse
-	5,  // 15: metalstack.admin.v2.MachineService.BMCCommand:output_type -> metalstack.admin.v2.MachineServiceBMCCommandResponse
-	7,  // 16: metalstack.admin.v2.MachineService.GetBMC:output_type -> metalstack.admin.v2.MachineServiceGetBMCResponse
-	9,  // 17: metalstack.admin.v2.MachineService.ListBMC:output_type -> metalstack.admin.v2.MachineServiceListBMCResponse
-	13, // [13:18] is the sub-list for method output_type
-	8,  // [8:13] is the sub-list for method input_type
+	10, // 13: metalstack.admin.v2.MachineService.ConsolePassword:input_type -> metalstack.admin.v2.MachineServiceConsolePasswordRequest
+	1,  // 14: metalstack.admin.v2.MachineService.Get:output_type -> metalstack.admin.v2.MachineServiceGetResponse
+	3,  // 15: metalstack.admin.v2.MachineService.List:output_type -> metalstack.admin.v2.MachineServiceListResponse
+	5,  // 16: metalstack.admin.v2.MachineService.BMCCommand:output_type -> metalstack.admin.v2.MachineServiceBMCCommandResponse
+	7,  // 17: metalstack.admin.v2.MachineService.GetBMC:output_type -> metalstack.admin.v2.MachineServiceGetBMCResponse
+	9,  // 18: metalstack.admin.v2.MachineService.ListBMC:output_type -> metalstack.admin.v2.MachineServiceListBMCResponse
+	11, // 19: metalstack.admin.v2.MachineService.ConsolePassword:output_type -> metalstack.admin.v2.MachineServiceConsolePasswordResponse
+	14, // [14:20] is the sub-list for method output_type
+	8,  // [8:14] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name
 	8,  // [8:8] is the sub-list for extension extendee
 	0,  // [0:8] is the sub-list for field type_name
@@ -616,7 +740,7 @@ func file_metalstack_admin_v2_machine_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_machine_proto_rawDesc), len(file_metalstack_admin_v2_machine_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -44,6 +44,9 @@ const (
 	MachineServiceGetBMCProcedure = "/metalstack.admin.v2.MachineService/GetBMC"
 	// MachineServiceListBMCProcedure is the fully-qualified name of the MachineService's ListBMC RPC.
 	MachineServiceListBMCProcedure = "/metalstack.admin.v2.MachineService/ListBMC"
+	// MachineServiceConsolePasswordProcedure is the fully-qualified name of the MachineService's
+	// ConsolePassword RPC.
+	MachineServiceConsolePasswordProcedure = "/metalstack.admin.v2.MachineService/ConsolePassword"
 )
 
 // MachineServiceClient is a client for the metalstack.admin.v2.MachineService service.
@@ -58,6 +61,8 @@ type MachineServiceClient interface {
 	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
 	// ListBMC returns the BMC details of many machines
 	ListBMC(context.Context, *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error)
+	// ConsolePassword returns the password to access the serial console of the machine
+	ConsolePassword(context.Context, *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error)
 }
 
 // NewMachineServiceClient constructs a client for the metalstack.admin.v2.MachineService service.
@@ -101,16 +106,23 @@ func NewMachineServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(machineServiceMethods.ByName("ListBMC")),
 			connect.WithClientOptions(opts...),
 		),
+		consolePassword: connect.NewClient[v2.MachineServiceConsolePasswordRequest, v2.MachineServiceConsolePasswordResponse](
+			httpClient,
+			baseURL+MachineServiceConsolePasswordProcedure,
+			connect.WithSchema(machineServiceMethods.ByName("ConsolePassword")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // machineServiceClient implements MachineServiceClient.
 type machineServiceClient struct {
-	get        *connect.Client[v2.MachineServiceGetRequest, v2.MachineServiceGetResponse]
-	list       *connect.Client[v2.MachineServiceListRequest, v2.MachineServiceListResponse]
-	bMCCommand *connect.Client[v2.MachineServiceBMCCommandRequest, v2.MachineServiceBMCCommandResponse]
-	getBMC     *connect.Client[v2.MachineServiceGetBMCRequest, v2.MachineServiceGetBMCResponse]
-	listBMC    *connect.Client[v2.MachineServiceListBMCRequest, v2.MachineServiceListBMCResponse]
+	get             *connect.Client[v2.MachineServiceGetRequest, v2.MachineServiceGetResponse]
+	list            *connect.Client[v2.MachineServiceListRequest, v2.MachineServiceListResponse]
+	bMCCommand      *connect.Client[v2.MachineServiceBMCCommandRequest, v2.MachineServiceBMCCommandResponse]
+	getBMC          *connect.Client[v2.MachineServiceGetBMCRequest, v2.MachineServiceGetBMCResponse]
+	listBMC         *connect.Client[v2.MachineServiceListBMCRequest, v2.MachineServiceListBMCResponse]
+	consolePassword *connect.Client[v2.MachineServiceConsolePasswordRequest, v2.MachineServiceConsolePasswordResponse]
 }
 
 // Get calls metalstack.admin.v2.MachineService.Get.
@@ -158,6 +170,15 @@ func (c *machineServiceClient) ListBMC(ctx context.Context, req *v2.MachineServi
 	return nil, err
 }
 
+// ConsolePassword calls metalstack.admin.v2.MachineService.ConsolePassword.
+func (c *machineServiceClient) ConsolePassword(ctx context.Context, req *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error) {
+	response, err := c.consolePassword.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // MachineServiceHandler is an implementation of the metalstack.admin.v2.MachineService service.
 type MachineServiceHandler interface {
 	// Get a machine
@@ -170,6 +191,8 @@ type MachineServiceHandler interface {
 	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
 	// ListBMC returns the BMC details of many machines
 	ListBMC(context.Context, *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error)
+	// ConsolePassword returns the password to access the serial console of the machine
+	ConsolePassword(context.Context, *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error)
 }
 
 // NewMachineServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -209,6 +232,12 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 		connect.WithSchema(machineServiceMethods.ByName("ListBMC")),
 		connect.WithHandlerOptions(opts...),
 	)
+	machineServiceConsolePasswordHandler := connect.NewUnaryHandlerSimple(
+		MachineServiceConsolePasswordProcedure,
+		svc.ConsolePassword,
+		connect.WithSchema(machineServiceMethods.ByName("ConsolePassword")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.MachineService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case MachineServiceGetProcedure:
@@ -221,6 +250,8 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 			machineServiceGetBMCHandler.ServeHTTP(w, r)
 		case MachineServiceListBMCProcedure:
 			machineServiceListBMCHandler.ServeHTTP(w, r)
+		case MachineServiceConsolePasswordProcedure:
+			machineServiceConsolePasswordHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -248,4 +279,8 @@ func (UnimplementedMachineServiceHandler) GetBMC(context.Context, *v2.MachineSer
 
 func (UnimplementedMachineServiceHandler) ListBMC(context.Context, *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.ListBMC is not implemented"))
+}
+
+func (UnimplementedMachineServiceHandler) ConsolePassword(context.Context, *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.ConsolePassword is not implemented"))
 }

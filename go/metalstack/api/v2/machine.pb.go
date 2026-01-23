@@ -411,7 +411,7 @@ const (
 	MachineBMCCommand_MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF MachineBMCCommand = 9
 	// MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe
 	MachineBMCCommand_MACHINE_BMC_COMMAND_MACHINE_DELETED MachineBMCCommand = 10
-	// MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was create set the boot order to boot from disk
+	// MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was created to set the boot order to boot from disk
 	MachineBMCCommand_MACHINE_BMC_COMMAND_MACHINE_CREATED MachineBMCCommand = 11
 )
 
@@ -2683,7 +2683,7 @@ func (x *MachineChassisIdentifyLEDState) GetDescription() string {
 // MachineBMCReport is sent from the metal-bmc to update bmc and power related details
 type MachineBMCReport struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// BMC contains bmc details
+	// Bmc contains bmc details
 	Bmc *MachineBMC `protobuf:"bytes,1,opt,name=bmc,proto3" json:"bmc,omitempty"`
 	// Bios contains bios details
 	Bios *MachineBios `protobuf:"bytes,2,opt,name=bios,proto3" json:"bios,omitempty"`
@@ -2693,7 +2693,7 @@ type MachineBMCReport struct {
 	PowerMetric *MachinePowerMetric `protobuf:"bytes,4,opt,name=power_metric,json=powerMetric,proto3" json:"power_metric,omitempty"`
 	// PowerSupplies contains details about all power supplies and their state
 	PowerSupplies []*MachinePowerSupply `protobuf:"bytes,5,rep,name=power_supplies,json=powerSupplies,proto3" json:"power_supplies,omitempty"`
-	// LEDState indicates the state of the indicator LED on this machine
+	// LedState indicates the state of the indicator LED on this machine
 	LedState *MachineChassisIdentifyLEDState `protobuf:"bytes,6,opt,name=led_state,json=ledState,proto3" json:"led_state,omitempty"`
 	// UpdatedAt contains the date when this data was last updated
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
@@ -2951,9 +2951,9 @@ type MachineFRU struct {
 	ChassisPartNumber *string `protobuf:"bytes,1,opt,name=chassis_part_number,json=chassisPartNumber,proto3,oneof" json:"chassis_part_number,omitempty"`
 	// ChassisPartSerial is the serial number of the machine chassis
 	ChassisPartSerial *string `protobuf:"bytes,2,opt,name=chassis_part_serial,json=chassisPartSerial,proto3,oneof" json:"chassis_part_serial,omitempty"`
-	// BoardMFG is the short description of the mainboard
+	// BoardMfg is the short description of the mainboard
 	BoardMfg *string `protobuf:"bytes,3,opt,name=board_mfg,json=boardMfg,proto3,oneof" json:"board_mfg,omitempty"`
-	// BoardSerial is the serial number of the mainboard
+	// BoardMfgSerial is the serial number of the mainboard
 	BoardMfgSerial *string `protobuf:"bytes,4,opt,name=board_mfg_serial,json=boardMfgSerial,proto3,oneof" json:"board_mfg_serial,omitempty"`
 	// BoardPartNumber is the part number of the mainboard
 	BoardPartNumber *string `protobuf:"bytes,5,opt,name=board_part_number,json=boardPartNumber,proto3,oneof" json:"board_part_number,omitempty"`
@@ -3138,9 +3138,9 @@ func (x *MachinePowerMetric) GetMinConsumedWatts() float32 {
 // MachinePowerSupply contains details of the power supply of a machine
 type MachinePowerSupply struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// health of the powersupply
+	// Health of the powersupply
 	Health string `protobuf:"bytes,1,opt,name=health,proto3" json:"health,omitempty"`
-	// state of the powersupply
+	// State of the powersupply
 	State         string `protobuf:"bytes,2,opt,name=state,proto3" json:"state,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -3423,9 +3423,9 @@ type MachineQuery struct {
 	Nic *MachineNicQuery `protobuf:"bytes,9,opt,name=nic,proto3,oneof" json:"nic,omitempty"`
 	// Disk specific machine queries
 	Disk *MachineDiskQuery `protobuf:"bytes,10,opt,name=disk,proto3,oneof" json:"disk,omitempty"`
-	// BMC specific machine queries
+	// Bmc specific machine queries
 	Bmc *MachineBMCQuery `protobuf:"bytes,11,opt,name=bmc,proto3,oneof" json:"bmc,omitempty"`
-	// FRU specific machine queries
+	// Fru specific machine queries
 	Fru *MachineFRUQuery `protobuf:"bytes,12,opt,name=fru,proto3,oneof" json:"fru,omitempty"`
 	// Hardware specific machine query
 	Hardware *MachineHardwareQuery `protobuf:"bytes,13,opt,name=hardware,proto3,oneof" json:"hardware,omitempty"`
@@ -4331,10 +4331,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\vMachineBios\x12%\n" +
 	"\aversion\x18\x01 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\aversion\x12#\n" +
 	"\x06vendor\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x06vendor\x12\x1f\n" +
-	"\x04date\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x04date\"\x98\x02\n" +
+	"\x04date\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x04date\"\x99\x02\n" +
 	"\n" +
-	"MachineBMC\x12!\n" +
-	"\aaddress\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\aaddress\x12\x1d\n" +
+	"MachineBMC\x12\"\n" +
+	"\aaddress\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x80\x02\x01R\aaddress\x12\x1d\n" +
 	"\x03mac\x18\x02 \x01(\tB\v\xbaH\br\x06\xb8\xb3\xae\xb1\x02\x01R\x03mac\x12\x1f\n" +
 	"\x04user\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x04user\x12'\n" +
 	"\bpassword\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\bpassword\x12)\n" +

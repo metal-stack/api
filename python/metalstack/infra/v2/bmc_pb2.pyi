@@ -1,7 +1,4 @@
-import datetime
-
 from buf.validate import validate_pb2 as _validate_pb2
-from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import machine_pb2 as _machine_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
@@ -43,18 +40,16 @@ class WaitForBMCCommandRequest(_message.Message):
     def __init__(self, partition: _Optional[str] = ...) -> None: ...
 
 class WaitForBMCCommandResponse(_message.Message):
-    __slots__ = ("uuid", "bmc_command", "machine_bmc", "command_id", "issued_at")
+    __slots__ = ("uuid", "bmc_command", "machine_bmc", "command_id")
     UUID_FIELD_NUMBER: _ClassVar[int]
     BMC_COMMAND_FIELD_NUMBER: _ClassVar[int]
     MACHINE_BMC_FIELD_NUMBER: _ClassVar[int]
     COMMAND_ID_FIELD_NUMBER: _ClassVar[int]
-    ISSUED_AT_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     bmc_command: _machine_pb2.MachineBMCCommand
     machine_bmc: _machine_pb2.MachineBMC
     command_id: str
-    issued_at: _timestamp_pb2.Timestamp
-    def __init__(self, uuid: _Optional[str] = ..., bmc_command: _Optional[_Union[_machine_pb2.MachineBMCCommand, str]] = ..., machine_bmc: _Optional[_Union[_machine_pb2.MachineBMC, _Mapping]] = ..., command_id: _Optional[str] = ..., issued_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., bmc_command: _Optional[_Union[_machine_pb2.MachineBMCCommand, str]] = ..., machine_bmc: _Optional[_Union[_machine_pb2.MachineBMC, _Mapping]] = ..., command_id: _Optional[str] = ...) -> None: ...
 
 class BMCCommandDoneRequest(_message.Message):
     __slots__ = ("command_id", "error")
