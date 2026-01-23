@@ -2,7 +2,6 @@
 package client
 
 import (
-	"context"
 	"sync"
 
 	"connectrpc.com/connect"
@@ -53,33 +52,17 @@ func New(config *DialConfig) (Client, error) {
 		interceptors: []connect.Interceptor{},
 	}
 
-	authInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
-		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-			request.Header().Add("Authorization", "Bearer "+config.Token)
-			return next(ctx, request)
-		})
-	})
-
-	loggingInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
-		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
-			response, err := next(ctx, request)
-			if err != nil {
-				return nil, err
-			}
-			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
-			return response, err
-		})
-	})
-
 	if config.Token != "" {
+		authInterceptor := &authInterceptor{config: config}
 		c.interceptors = append(c.interceptors, authInterceptor)
 	}
 	if config.Log != nil {
+		loggingInterceptor := &loggingInterceptor{config: config}
 		c.interceptors = append(c.interceptors, loggingInterceptor)
 	}
 	c.interceptors = append(c.interceptors, config.Interceptors...)
 
+	// TODO convert to interceptor
 	go c.startTokenRenewal()
 
 	return c, nil

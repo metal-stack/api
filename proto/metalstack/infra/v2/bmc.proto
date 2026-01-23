@@ -11,6 +11,11 @@ service BMCService {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
+  // WaitForMachineEvent is called by the metal-bmc and is returned with a bmc command to execute.
+  rpc WaitForMachineEvent(WaitForMachineEventRequest) returns (stream WaitForMachineEventResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // UpdateBMCInfoRequest
@@ -18,3 +23,9 @@ message UpdateBMCInfoRequest {}
 
 // UpdateBMCInfoResponse
 message UpdateBMCInfoResponse {}
+
+// WaitForMachineEventRequest
+message WaitForMachineEventRequest {}
+
+// WaitForMachineEventResponse
+message WaitForMachineEventResponse {}

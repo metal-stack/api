@@ -1396,6 +1396,10 @@
                   <a href="#metalstack.api.v2.SwitchQuery"><span class="badge">M</span>SwitchQuery</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.SwitchSync"><span class="badge">M</span>SwitchSync</a>
+                </li>
+              
               
                 <li>
                   <a href="#metalstack.api.v2.BGPState"><span class="badge">E</span>BGPState</a>
@@ -1783,6 +1787,52 @@
         
           
           <li>
+            <a href="#metalstack%2fapi%2fv2%2fvpn.proto">metalstack/api/v2/vpn.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.api.v2.VPNNode"><span class="badge">M</span>VPNNode</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fadmin%2fv2%2fvpn.proto">metalstack/admin/v2/vpn.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.VPNServiceAuthKeyRequest"><span class="badge">M</span>VPNServiceAuthKeyRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.VPNServiceAuthKeyResponse"><span class="badge">M</span>VPNServiceAuthKeyResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.VPNServiceListNodesRequest"><span class="badge">M</span>VPNServiceListNodesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.VPNServiceListNodesResponse"><span class="badge">M</span>VPNServiceListNodesResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.admin.v2.VPNService"><span class="badge">S</span>VPNService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2fapi%2fv2%2fhealth.proto">metalstack/api/v2/health.proto</a>
             <ul>
               
@@ -1934,6 +1984,14 @@
                   <a href="#metalstack.infra.v2.UpdateBMCInfoResponse"><span class="badge">M</span>UpdateBMCInfoResponse</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.infra.v2.WaitForMachineEventRequest"><span class="badge">M</span>WaitForMachineEventRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.WaitForMachineEventResponse"><span class="badge">M</span>WaitForMachineEventResponse</a>
+                </li>
+              
               
               
               
@@ -2014,10 +2072,6 @@
               
                 <li>
                   <a href="#metalstack.infra.v2.SwitchServiceRegisterResponse"><span class="badge">M</span>SwitchServiceRegisterResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.infra.v2.SwitchSync"><span class="badge">M</span>SwitchSync</a>
                 </li>
               
               
@@ -7290,6 +7344,13 @@ By default one ip address is acquired per network for the machine </p></td>
                   <td><p>Labels for which this machine allocation should get filtered </p></td>
                 </tr>
               
+                <tr>
+                  <td>vpn</td>
+                  <td><a href="#metalstack.api.v2.MachineVPN">MachineVPN</a></td>
+                  <td>optional</td>
+                  <td><p>VPN query if this machine has a vpn configuration </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -8615,9 +8676,14 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                   <td>connected</td>
                   <td><a href="#bool">bool</a></td>
                   <td></td>
-                  <td><p>Connected indicate if this machine is connected to the VPN
-
-TODO add machine ips </p></td>
+                  <td><p>Connected indicate if this machine is connected to the VPN </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ips</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>IPs of the machine connected to the vpn </p></td>
                 </tr>
               
             </tbody>
@@ -11562,6 +11628,20 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><p>MachineConnections map machines to the nics they are connected to. </p></td>
                 </tr>
               
+                <tr>
+                  <td>last_sync</td>
+                  <td><a href="#metalstack.api.v2.SwitchSync">SwitchSync</a></td>
+                  <td></td>
+                  <td><p>LastSync contains information about the last heartbeat of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_sync_error</td>
+                  <td><a href="#metalstack.api.v2.SwitchSync">SwitchSync</a></td>
+                  <td></td>
+                  <td><p>LastSyncError contains information about the last unsuccessful heartbeat of the switch. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -11806,6 +11886,44 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><a href="#metalstack.api.v2.SwitchOSQuery">SwitchOSQuery</a></td>
                   <td>optional</td>
                   <td><p>Switch OS specific queries. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SwitchSync">SwitchSync</h3>
+        <p>SwitchSync summarizes information about a switch sync.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>time</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Time of the sync. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>duration</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>Duration of the sync. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>error</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Error if any occurred. </p></td>
                 </tr>
               
             </tbody>
@@ -12322,13 +12440,6 @@ must be part of the update request to ensure optimistic locking. </p></td>
                   <td><a href="#metalstack.api.v2.SwitchOS">metalstack.api.v2.SwitchOS</a></td>
                   <td>optional</td>
                   <td><p>SwitchOs is the OS running on the switch. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>machine_connections</td>
-                  <td><a href="#metalstack.api.v2.MachineConnection">metalstack.api.v2.MachineConnection</a></td>
-                  <td>repeated</td>
-                  <td><p>MachineConnections map machines to the nics they are connected to. </p></td>
                 </tr>
               
             </tbody>
@@ -14599,6 +14710,266 @@ This service is suitable to create tokens for other users instead of deriving us
     
       
       <div class="file-heading">
+        <h2 id="metalstack/api/v2/vpn.proto">metalstack/api/v2/vpn.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.api.v2.VPNNode">VPNNode</h3>
+        <p>VPNNode is a machine connected to the vpn</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Id of this node </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of this node </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project of this node, maps to a project </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ip_addresses</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>IPAddresses of this node in the vpn </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_seen</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>LastSeen timestamp when this node reached out the the control plane </p></td>
+                </tr>
+              
+                <tr>
+                  <td>online</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Online indicates if this node is online </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/admin/v2/vpn.proto">metalstack/admin/v2/vpn.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.admin.v2.VPNServiceAuthKeyRequest">VPNServiceAuthKeyRequest</h3>
+        <p>VPNServiceAuthKeyRequest is the request payload for a vpn authkey request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project for which a vpn authkey should be generated. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ephemeral</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Ephemeral defines if the authkey should be ephemeral. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expires</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>Expires defines the duration after which the authkey expires. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reason</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reason must be provided why access to the vpn is requested
+reason is only forwarded to a audit sink </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.VPNServiceAuthKeyResponse">VPNServiceAuthKeyResponse</h3>
+        <p>VPNServiceAuthKeyResponse is the request payload for a authkey response</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>address</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Address is the address of the vpn control plane. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>auth_key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>AuthKey is the key to connect to the vpn at the given address.
+This key can only be seen once. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ephemeral</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Ephemeral defines if the authkey should be ephemeral. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expires_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>ExpiresAt this key cannot be used after this timestamp. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>created_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>CreatedAt this key was created at this timestamp. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.VPNServiceListNodesRequest">VPNServiceListNodesRequest</h3>
+        <p>VPNServiceListNodesRequest is the request payload for a vpn list nodes request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project if given only nodes of this user are returned </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.VPNServiceListNodesResponse">VPNServiceListNodesResponse</h3>
+        <p>VPNServiceListNodesResponse is the response payload for a vpn list nodes request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>nodes</td>
+                  <td><a href="#metalstack.api.v2.VPNNode">metalstack.api.v2.VPNNode</a></td>
+                  <td>repeated</td>
+                  <td><p>Nodes connected to the vpn </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.admin.v2.VPNService">VPNService</h3>
+        <p>VPNService serves vpn related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>AuthKey</td>
+                <td><a href="#metalstack.admin.v2.VPNServiceAuthKeyRequest">VPNServiceAuthKeyRequest</a></td>
+                <td><a href="#metalstack.admin.v2.VPNServiceAuthKeyResponse">VPNServiceAuthKeyResponse</a></td>
+                <td><p>AuthKey generates a authkey for a project to join a machine to the project vpn</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListNodes</td>
+                <td><a href="#metalstack.admin.v2.VPNServiceListNodesRequest">VPNServiceListNodesRequest</a></td>
+                <td><a href="#metalstack.admin.v2.VPNServiceListNodesResponse">VPNServiceListNodesResponse</a></td>
+                <td><p>ListNodes returns a list of machines actually connected to the vpn</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
         <h2 id="metalstack/api/v2/health.proto">metalstack/api/v2/health.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
@@ -15332,6 +15703,20 @@ This service is suitable to create tokens for other users instead of deriving us
 
         
       
+        <h3 id="metalstack.infra.v2.WaitForMachineEventRequest">WaitForMachineEventRequest</h3>
+        <p>WaitForMachineEventRequest</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.infra.v2.WaitForMachineEventResponse">WaitForMachineEventResponse</h3>
+        <p>WaitForMachineEventResponse</p>
+
+        
+
+        
+      
 
       
 
@@ -15351,6 +15736,13 @@ This service is suitable to create tokens for other users instead of deriving us
                 <td><a href="#metalstack.infra.v2.UpdateBMCInfoRequest">UpdateBMCInfoRequest</a></td>
                 <td><a href="#metalstack.infra.v2.UpdateBMCInfoResponse">UpdateBMCInfoResponse</a></td>
                 <td><p>UpdateBMCInfo</p></td>
+              </tr>
+            
+              <tr>
+                <td>WaitForMachineEvent</td>
+                <td><a href="#metalstack.infra.v2.WaitForMachineEventRequest">WaitForMachineEventRequest</a></td>
+                <td><a href="#metalstack.infra.v2.WaitForMachineEventResponse">WaitForMachineEventResponse</a> stream</td>
+                <td><p>WaitForMachineEvent is called by the metal-bmc and is returned with a bmc command to execute.</p></td>
               </tr>
             
           </tbody>
@@ -15786,14 +16178,14 @@ This service is suitable to create tokens for other users instead of deriving us
               
                 <tr>
                   <td>last_sync</td>
-                  <td><a href="#metalstack.infra.v2.SwitchSync">SwitchSync</a></td>
+                  <td><a href="#metalstack.api.v2.SwitchSync">metalstack.api.v2.SwitchSync</a></td>
                   <td></td>
                   <td><p>LastSync holds information about the last sync. </p></td>
                 </tr>
               
                 <tr>
                   <td>last_sync_error</td>
-                  <td><a href="#metalstack.infra.v2.SwitchSync">SwitchSync</a></td>
+                  <td><a href="#metalstack.api.v2.SwitchSync">metalstack.api.v2.SwitchSync</a></td>
                   <td></td>
                   <td><p>LastSyncError holds information about the last erroneous sync. </p></td>
                 </tr>
@@ -15844,44 +16236,6 @@ This service is suitable to create tokens for other users instead of deriving us
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
                   <td></td>
                   <td><p>Switch that was registered. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.infra.v2.SwitchSync">SwitchSync</h3>
-        <p>SwitchSync summarizes information about a switch sync.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>Time of the sync. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>duration</td>
-                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
-                  <td></td>
-                  <td><p>Duration of the sync. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>error</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Error if any occurred. </p></td>
                 </tr>
               
             </tbody>

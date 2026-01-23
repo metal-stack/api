@@ -2,7 +2,6 @@
 package client
 
 import (
-	"context"
 	"sync"
 
 	"connectrpc.com/connect"
@@ -38,6 +37,7 @@ type (
 		Switch() adminv2connect.SwitchServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
+		VPN() adminv2connect.VPNServiceClient
 	}
 
 	adminv2 struct {
@@ -52,6 +52,7 @@ type (
 		switchservice     adminv2connect.SwitchServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
 		tokenservice      adminv2connect.TokenServiceClient
+		vpnservice        adminv2connect.VPNServiceClient
 	}
 
 	Apiv2 interface {
@@ -112,33 +113,17 @@ func New(config *DialConfig) (Client, error) {
 		interceptors: []connect.Interceptor{},
 	}
 
-	authInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
-		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-			request.Header().Add("Authorization", "Bearer "+config.Token)
-			return next(ctx, request)
-		})
-	})
-
-	loggingInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
-		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
-			response, err := next(ctx, request)
-			if err != nil {
-				return nil, err
-			}
-			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
-			return response, err
-		})
-	})
-
 	if config.Token != "" {
+		authInterceptor := &authInterceptor{config: config}
 		c.interceptors = append(c.interceptors, authInterceptor)
 	}
 	if config.Log != nil {
+		loggingInterceptor := &loggingInterceptor{config: config}
 		c.interceptors = append(c.interceptors, loggingInterceptor)
 	}
 	c.interceptors = append(c.interceptors, config.Interceptors...)
 
+	// TODO convert to interceptor
 	go c.startTokenRenewal()
 
 	return c, nil
@@ -212,6 +197,12 @@ func (c *client) Adminv2() Adminv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		vpnservice: adminv2connect.NewVPNServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 	}
 	return a
 }
@@ -248,6 +239,9 @@ func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 }
 func (c *adminv2) Token() adminv2connect.TokenServiceClient {
 	return c.tokenservice
+}
+func (c *adminv2) VPN() adminv2connect.VPNServiceClient {
+	return c.vpnservice
 }
 
 func (c *client) Apiv2() Apiv2 {
