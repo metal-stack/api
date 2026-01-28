@@ -11,6 +11,7 @@ import metalstack.admin.v2.partition_connect as admin_partition_connect
 import metalstack.admin.v2.project_connect as admin_project_connect
 import metalstack.admin.v2.size_connect as admin_size_connect
 import metalstack.admin.v2.switch_connect as admin_switch_connect
+import metalstack.admin.v2.task_connect as admin_task_connect
 import metalstack.admin.v2.tenant_connect as admin_tenant_connect
 import metalstack.admin.v2.token_connect as admin_token_connect
 import metalstack.admin.v2.vpn_connect as admin_vpn_connect
@@ -31,6 +32,7 @@ import metalstack.api.v2.user_connect as api_user_connect
 import metalstack.api.v2.version_connect as api_version_connect
 
 import metalstack.infra.v2.bmc_connect as infra_bmc_connect
+import metalstack.infra.v2.boot_connect as infra_boot_connect
 import metalstack.infra.v2.event_connect as infra_event_connect
 import metalstack.infra.v2.switch_connect as infra_switch_connect
 
@@ -90,6 +92,9 @@ class Client:
 
         def switch(self):
             return admin_switch_connect.SwitchServiceClientSync(address=self._baseurl, session=self._session)
+
+        def task(self):
+            return admin_task_connect.TaskServiceClientSync(address=self._baseurl, session=self._session)
 
         def tenant(self):
             return admin_tenant_connect.TenantServiceClientSync(address=self._baseurl, session=self._session)
@@ -158,6 +163,9 @@ class Client:
 
         def bmc(self):
             return infra_bmc_connect.BMCServiceClientSync(address=self._baseurl, session=self._session)
+
+        def boot(self):
+            return infra_boot_connect.BootServiceClientSync(address=self._baseurl, session=self._session)
 
         def event(self):
             return infra_event_connect.EventServiceClientSync(address=self._baseurl, session=self._session)

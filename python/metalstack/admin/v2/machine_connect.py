@@ -22,6 +22,18 @@ class MachineService(Protocol):
     async def list(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def b_m_c_command(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
+    async def get_b_m_c(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
+    async def list_b_m_c(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
+    async def console_password(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class MachineServiceASGIApplication(ConnectASGIApplication[MachineService]):
     def __init__(self, service: MachineService | AsyncGenerator[MachineService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -47,6 +59,46 @@ class MachineServiceASGIApplication(ConnectASGIApplication[MachineService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.list,
+                ),
+                "/metalstack.admin.v2.MachineService/BMCCommand": Endpoint.unary(
+                    method=MethodInfo(
+                        name="BMCCommand",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.b_m_c_command,
+                ),
+                "/metalstack.admin.v2.MachineService/GetBMC": Endpoint.unary(
+                    method=MethodInfo(
+                        name="GetBMC",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.get_b_m_c,
+                ),
+                "/metalstack.admin.v2.MachineService/ListBMC": Endpoint.unary(
+                    method=MethodInfo(
+                        name="ListBMC",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.list_b_m_c,
+                ),
+                "/metalstack.admin.v2.MachineService/ConsolePassword": Endpoint.unary(
+                    method=MethodInfo(
+                        name="ConsolePassword",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.console_password,
                 ),
             },
             interceptors=interceptors,
@@ -100,11 +152,99 @@ class MachineServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def b_m_c_command(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="BMCCommand",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    async def get_b_m_c(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="GetBMC",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    async def list_b_m_c(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="ListBMC",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    async def console_password(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="ConsolePassword",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 class MachineServiceSync(Protocol):
     def get(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def list(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def b_m_c_command(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def get_b_m_c(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def list_b_m_c(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def console_password(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -131,6 +271,46 @@ class MachineServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.list,
+                ),
+                "/metalstack.admin.v2.MachineService/BMCCommand": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="BMCCommand",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.b_m_c_command,
+                ),
+                "/metalstack.admin.v2.MachineService/GetBMC": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="GetBMC",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.get_b_m_c,
+                ),
+                "/metalstack.admin.v2.MachineService/ListBMC": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="ListBMC",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.list_b_m_c,
+                ),
+                "/metalstack.admin.v2.MachineService/ConsolePassword": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="ConsolePassword",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.console_password,
                 ),
             },
             interceptors=interceptors,
@@ -178,6 +358,86 @@ class MachineServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.MachineService",
                 input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListRequest,
                 output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def b_m_c_command(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="BMCCommand",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def get_b_m_c(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="GetBMC",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def list_b_m_c(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="ListBMC",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def console_password(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="ConsolePassword",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

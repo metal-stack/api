@@ -154,7 +154,9 @@ type MethodServiceTokenScopedListResponse struct {
 	// AdminRole defines the admin role of the token owner
 	AdminRole *AdminRole `protobuf:"varint,5,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
 	// InfraRole defines the infrastructure role of the token owner
-	InfraRole     *InfraRole `protobuf:"varint,6,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
+	InfraRole *InfraRole `protobuf:"varint,6,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
+	// MachineRoles defines the machine roles of the token owner
+	MachineRoles  map[string]MachineRole `protobuf:"bytes,7,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -224,6 +226,13 @@ func (x *MethodServiceTokenScopedListResponse) GetInfraRole() InfraRole {
 	return InfraRole_INFRA_ROLE_UNSPECIFIED
 }
 
+func (x *MethodServiceTokenScopedListResponse) GetMachineRoles() map[string]MachineRole {
+	if x != nil {
+		return x.MachineRoles
+	}
+	return nil
+}
+
 var File_metalstack_api_v2_method_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_method_proto_rawDesc = "" +
@@ -232,7 +241,7 @@ const file_metalstack_api_v2_method_proto_rawDesc = "" +
 	"\x18MethodServiceListRequest\"5\n" +
 	"\x19MethodServiceListResponse\x12\x18\n" +
 	"\amethods\x18\x01 \x03(\tR\amethods\"%\n" +
-	"#MethodServiceTokenScopedListRequest\"\xc0\x05\n" +
+	"#MethodServiceTokenScopedListRequest\"\x91\a\n" +
 	"$MethodServiceTokenScopedListResponse\x12E\n" +
 	"\vpermissions\x18\x01 \x03(\v2#.metalstack.api.v2.MethodPermissionR\vpermissions\x12n\n" +
 	"\rproject_roles\x18\x03 \x03(\v2I.metalstack.api.v2.MethodServiceTokenScopedListResponse.ProjectRolesEntryR\fprojectRoles\x12k\n" +
@@ -240,13 +249,17 @@ const file_metalstack_api_v2_method_proto_rawDesc = "" +
 	"\n" +
 	"admin_role\x18\x05 \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x12J\n" +
 	"\n" +
-	"infra_role\x18\x06 \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x1a_\n" +
+	"infra_role\x18\x06 \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12n\n" +
+	"\rmachine_roles\x18\a \x03(\v2I.metalstack.api.v2.MethodServiceTokenScopedListResponse.MachineRolesEntryR\fmachineRoles\x1a_\n" +
 	"\x11ProjectRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x028\x01\x1a]\n" +
 	"\x10TenantRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x123\n" +
-	"\x05value\x18\x02 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleR\x05value:\x028\x01B\r\n" +
+	"\x05value\x18\x02 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleR\x05value:\x028\x01\x1a_\n" +
+	"\x11MachineRolesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
+	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleR\x05value:\x028\x01B\r\n" +
 	"\v_admin_roleB\r\n" +
 	"\v_infra_role2\x83\x02\n" +
 	"\rMethodService\x12g\n" +
@@ -266,7 +279,7 @@ func file_metalstack_api_v2_method_proto_rawDescGZIP() []byte {
 	return file_metalstack_api_v2_method_proto_rawDescData
 }
 
-var file_metalstack_api_v2_method_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_metalstack_api_v2_method_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_metalstack_api_v2_method_proto_goTypes = []any{
 	(*MethodServiceListRequest)(nil),             // 0: metalstack.api.v2.MethodServiceListRequest
 	(*MethodServiceListResponse)(nil),            // 1: metalstack.api.v2.MethodServiceListResponse
@@ -274,29 +287,33 @@ var file_metalstack_api_v2_method_proto_goTypes = []any{
 	(*MethodServiceTokenScopedListResponse)(nil), // 3: metalstack.api.v2.MethodServiceTokenScopedListResponse
 	nil,                      // 4: metalstack.api.v2.MethodServiceTokenScopedListResponse.ProjectRolesEntry
 	nil,                      // 5: metalstack.api.v2.MethodServiceTokenScopedListResponse.TenantRolesEntry
-	(*MethodPermission)(nil), // 6: metalstack.api.v2.MethodPermission
-	(AdminRole)(0),           // 7: metalstack.api.v2.AdminRole
-	(InfraRole)(0),           // 8: metalstack.api.v2.InfraRole
-	(ProjectRole)(0),         // 9: metalstack.api.v2.ProjectRole
-	(TenantRole)(0),          // 10: metalstack.api.v2.TenantRole
+	nil,                      // 6: metalstack.api.v2.MethodServiceTokenScopedListResponse.MachineRolesEntry
+	(*MethodPermission)(nil), // 7: metalstack.api.v2.MethodPermission
+	(AdminRole)(0),           // 8: metalstack.api.v2.AdminRole
+	(InfraRole)(0),           // 9: metalstack.api.v2.InfraRole
+	(ProjectRole)(0),         // 10: metalstack.api.v2.ProjectRole
+	(TenantRole)(0),          // 11: metalstack.api.v2.TenantRole
+	(MachineRole)(0),         // 12: metalstack.api.v2.MachineRole
 }
 var file_metalstack_api_v2_method_proto_depIdxs = []int32{
-	6,  // 0: metalstack.api.v2.MethodServiceTokenScopedListResponse.permissions:type_name -> metalstack.api.v2.MethodPermission
+	7,  // 0: metalstack.api.v2.MethodServiceTokenScopedListResponse.permissions:type_name -> metalstack.api.v2.MethodPermission
 	4,  // 1: metalstack.api.v2.MethodServiceTokenScopedListResponse.project_roles:type_name -> metalstack.api.v2.MethodServiceTokenScopedListResponse.ProjectRolesEntry
 	5,  // 2: metalstack.api.v2.MethodServiceTokenScopedListResponse.tenant_roles:type_name -> metalstack.api.v2.MethodServiceTokenScopedListResponse.TenantRolesEntry
-	7,  // 3: metalstack.api.v2.MethodServiceTokenScopedListResponse.admin_role:type_name -> metalstack.api.v2.AdminRole
-	8,  // 4: metalstack.api.v2.MethodServiceTokenScopedListResponse.infra_role:type_name -> metalstack.api.v2.InfraRole
-	9,  // 5: metalstack.api.v2.MethodServiceTokenScopedListResponse.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
-	10, // 6: metalstack.api.v2.MethodServiceTokenScopedListResponse.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
-	0,  // 7: metalstack.api.v2.MethodService.List:input_type -> metalstack.api.v2.MethodServiceListRequest
-	2,  // 8: metalstack.api.v2.MethodService.TokenScopedList:input_type -> metalstack.api.v2.MethodServiceTokenScopedListRequest
-	1,  // 9: metalstack.api.v2.MethodService.List:output_type -> metalstack.api.v2.MethodServiceListResponse
-	3,  // 10: metalstack.api.v2.MethodService.TokenScopedList:output_type -> metalstack.api.v2.MethodServiceTokenScopedListResponse
-	9,  // [9:11] is the sub-list for method output_type
-	7,  // [7:9] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	8,  // 3: metalstack.api.v2.MethodServiceTokenScopedListResponse.admin_role:type_name -> metalstack.api.v2.AdminRole
+	9,  // 4: metalstack.api.v2.MethodServiceTokenScopedListResponse.infra_role:type_name -> metalstack.api.v2.InfraRole
+	6,  // 5: metalstack.api.v2.MethodServiceTokenScopedListResponse.machine_roles:type_name -> metalstack.api.v2.MethodServiceTokenScopedListResponse.MachineRolesEntry
+	10, // 6: metalstack.api.v2.MethodServiceTokenScopedListResponse.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
+	11, // 7: metalstack.api.v2.MethodServiceTokenScopedListResponse.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
+	12, // 8: metalstack.api.v2.MethodServiceTokenScopedListResponse.MachineRolesEntry.value:type_name -> metalstack.api.v2.MachineRole
+	0,  // 9: metalstack.api.v2.MethodService.List:input_type -> metalstack.api.v2.MethodServiceListRequest
+	2,  // 10: metalstack.api.v2.MethodService.TokenScopedList:input_type -> metalstack.api.v2.MethodServiceTokenScopedListRequest
+	1,  // 11: metalstack.api.v2.MethodService.List:output_type -> metalstack.api.v2.MethodServiceListResponse
+	3,  // 12: metalstack.api.v2.MethodService.TokenScopedList:output_type -> metalstack.api.v2.MethodServiceTokenScopedListResponse
+	11, // [11:13] is the sub-list for method output_type
+	9,  // [9:11] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_method_proto_init() }
@@ -313,7 +330,7 @@ func file_metalstack_api_v2_method_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_method_proto_rawDesc), len(file_metalstack_api_v2_method_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

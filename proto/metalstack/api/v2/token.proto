@@ -82,6 +82,9 @@ message Token {
   optional AdminRole admin_role = 11 [(buf.validate.field).enum.defined_only = true];
   // InfraRole defines the infrastructure role of the token owner
   optional InfraRole infra_role = 12 [(buf.validate.field).enum.defined_only = true];
+  // MachineRoles associates a machine uuid with the corresponding role of the token owner
+  // TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead
+  map<string, MachineRole> machine_roles = 13;
 }
 
 // TokenType specifies different use cases of tokens
@@ -130,8 +133,20 @@ message TokenServiceCreateRequest {
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
   // InfraRole defines the infrastructure role of the token owner
   optional InfraRole infra_role = 8 [(buf.validate.field).enum.defined_only = true];
+  // MachineRoles associates a machine uuid with the corresponding role of the token owner
+  map<string, MachineRole> machine_roles = 9 [
+    (buf.validate.field).cel = {
+      id: "machine_roles_keys"
+      message: "map keys must be empty string, '*', or a valid UUID"
+      // UUID regex pattern: 8-4-4-4-12 hex digits
+      expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
+    },
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    }
+  ];
   // Labels on this token
-  Labels labels = 9;
+  Labels labels = 10;
 }
 
 // MethodPermission is a mapping from a subject/project to a service method
@@ -209,8 +224,20 @@ message TokenServiceUpdateRequest {
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
   // InfraRole defines the infrastructure role of the token owner
   optional InfraRole infra_role = 8 [(buf.validate.field).enum.defined_only = true];
+  // MachineRoles associates a machine uuid with the corresponding role of the token owner
+  map<string, MachineRole> machine_roles = 9 [
+    (buf.validate.field).cel = {
+      id: "machine_roles_keys"
+      message: "map keys must be empty string, '*', or a valid UUID"
+      // UUID regex pattern: 8-4-4-4-12 hex digits
+      expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
+    },
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    }
+  ];
   // Labels on this token
-  UpdateLabels labels = 9;
+  UpdateLabels labels = 10;
 }
 
 // TokenServiceUpdateResponse is the response payload of a token update request

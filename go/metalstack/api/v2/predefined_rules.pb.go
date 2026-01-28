@@ -73,17 +73,17 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 	{
 		ExtendedType:  (*validate.RepeatedRules)(nil),
 		ExtensionType: (*bool)(nil),
-		Field:         80048956,
+		Field:         80058951,
 		Name:          "metalstack.api.v2.prefixes",
-		Tag:           "varint,80048956,opt,name=prefixes",
+		Tag:           "varint,80058951,opt,name=prefixes",
 		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
 		ExtendedType:  (*validate.RepeatedRules)(nil),
 		ExtensionType: (*bool)(nil),
-		Field:         80048957,
+		Field:         80058952,
 		Name:          "metalstack.api.v2.ips",
-		Tag:           "varint,80048957,opt,name=ips",
+		Tag:           "varint,80058952,opt,name=ips",
 		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 }
@@ -120,11 +120,11 @@ var (
 var (
 	// Prefixes validates if a slice of prefixes in string form are valid
 	//
-	// optional bool prefixes = 80048956;
+	// optional bool prefixes = 80058951;
 	E_Prefixes = &file_metalstack_api_v2_predefined_rules_proto_extTypes[6]
 	// Ips validates if a slice of ips in string form are valid
 	//
-	// optional bool ips = 80048957;
+	// optional bool ips = 80058952;
 	E_Ips = &file_metalstack_api_v2_predefined_rules_proto_extTypes[7]
 )
 
@@ -154,10 +154,10 @@ const file_metalstack_api_v2_predefined_rules_proto_rawDesc = "" +
 	"3\n" +
 	"\n" +
 	"string.uri\x12\x17given uri must be valid\x1a\fthis.isUri()R\x05isUri:\x8f\x01\n" +
-	"\bprefixes\x12\x1b.buf.validate.RepeatedRules\x18\xbc\xe6\x95& \x01(\bBS\xc2HP\n" +
+	"\bprefixes\x12\x1b.buf.validate.RepeatedRules\x18Ǵ\x96& \x01(\bBS\xc2HP\n" +
 	"N\n" +
 	"\x11repeated.prefixes\x12\x1cgiven prefixes must be valid\x1a\x1bthis.all(m, m.isIpPrefix())R\bprefixes:u\n" +
-	"\x03ips\x12\x1b.buf.validate.RepeatedRules\x18\xbd\xe6\x95& \x01(\bBC\xc2H@\n" +
+	"\x03ips\x12\x1b.buf.validate.RepeatedRules\x18ȴ\x96& \x01(\bBC\xc2H@\n" +
 	">\n" +
 	"\frepeated.ips\x12\x17given ips must be valid\x1a\x15this.all(m, m.isIp())R\x03ipsB\xca\x01\n" +
 	"\x15com.metalstack.api.v2B\x14PredefinedRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2"

@@ -41,6 +41,7 @@ type (
 		projectservice    *adminv2mocks.ProjectServiceClient
 		sizeservice       *adminv2mocks.SizeServiceClient
 		switchservice     *adminv2mocks.SwitchServiceClient
+		taskservice       *adminv2mocks.TaskServiceClient
 		tenantservice     *adminv2mocks.TenantServiceClient
 		tokenservice      *adminv2mocks.TokenServiceClient
 		vpnservice        *adminv2mocks.VPNServiceClient
@@ -56,6 +57,7 @@ type (
 		Project    func(m *mock.Mock)
 		Size       func(m *mock.Mock)
 		Switch     func(m *mock.Mock)
+		Task       func(m *mock.Mock)
 		Tenant     func(m *mock.Mock)
 		Token      func(m *mock.Mock)
 		VPN        func(m *mock.Mock)
@@ -95,12 +97,14 @@ type (
 	}
 	infrav2 struct {
 		bmcservice    *infrav2mocks.BMCServiceClient
+		bootservice   *infrav2mocks.BootServiceClient
 		eventservice  *infrav2mocks.EventServiceClient
 		switchservice *infrav2mocks.SwitchServiceClient
 	}
 
 	Infrav2MockFns struct {
 		BMC    func(m *mock.Mock)
+		Boot   func(m *mock.Mock)
 		Event  func(m *mock.Mock)
 		Switch func(m *mock.Mock)
 	}
@@ -143,6 +147,7 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		projectservice:    adminv2mocks.NewProjectServiceClient(t),
 		sizeservice:       adminv2mocks.NewSizeServiceClient(t),
 		switchservice:     adminv2mocks.NewSwitchServiceClient(t),
+		taskservice:       adminv2mocks.NewTaskServiceClient(t),
 		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
 		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
 		vpnservice:        adminv2mocks.NewVPNServiceClient(t),
@@ -175,6 +180,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		}
 		if fns.Switch != nil {
 			fns.Switch(&a.switchservice.Mock)
+		}
+		if fns.Task != nil {
+			fns.Task(&a.taskservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -217,6 +225,9 @@ func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 }
 func (c *adminv2) Switch() adminv2connect.SwitchServiceClient {
 	return c.switchservice
+}
+func (c *adminv2) Task() adminv2connect.TaskServiceClient {
+	return c.taskservice
 }
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice
@@ -349,6 +360,7 @@ func (w wrapper) Infrav2(fns *Infrav2MockFns) *infrav2 {
 func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 	a := &infrav2{
 		bmcservice:    infrav2mocks.NewBMCServiceClient(t),
+		bootservice:   infrav2mocks.NewBootServiceClient(t),
 		eventservice:  infrav2mocks.NewEventServiceClient(t),
 		switchservice: infrav2mocks.NewSwitchServiceClient(t),
 	}
@@ -356,6 +368,9 @@ func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 	if fns != nil {
 		if fns.BMC != nil {
 			fns.BMC(&a.bmcservice.Mock)
+		}
+		if fns.Boot != nil {
+			fns.Boot(&a.bootservice.Mock)
 		}
 		if fns.Event != nil {
 			fns.Event(&a.eventservice.Mock)
@@ -371,6 +386,9 @@ func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Boot() infrav2connect.BootServiceClient {
+	return c.bootservice
 }
 func (c *infrav2) Event() infrav2connect.EventServiceClient {
 	return c.eventservice
