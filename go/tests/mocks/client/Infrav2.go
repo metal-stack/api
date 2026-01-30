@@ -82,6 +82,52 @@ func (_c *Infrav2_BMC_Call) RunAndReturn(run func() infrav2connect.BMCServiceCli
 	return _c
 }
 
+// Boot provides a mock function for the type Infrav2
+func (_mock *Infrav2) Boot() infrav2connect.BootServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Boot")
+	}
+
+	var r0 infrav2connect.BootServiceClient
+	if returnFunc, ok := ret.Get(0).(func() infrav2connect.BootServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(infrav2connect.BootServiceClient)
+		}
+	}
+	return r0
+}
+
+// Infrav2_Boot_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Boot'
+type Infrav2_Boot_Call struct {
+	*mock.Call
+}
+
+// Boot is a helper method to define mock.On call
+func (_e *Infrav2_Expecter) Boot() *Infrav2_Boot_Call {
+	return &Infrav2_Boot_Call{Call: _e.mock.On("Boot")}
+}
+
+func (_c *Infrav2_Boot_Call) Run(run func()) *Infrav2_Boot_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Infrav2_Boot_Call) Return(bootServiceClient infrav2connect.BootServiceClient) *Infrav2_Boot_Call {
+	_c.Call.Return(bootServiceClient)
+	return _c
+}
+
+func (_c *Infrav2_Boot_Call) RunAndReturn(run func() infrav2connect.BootServiceClient) *Infrav2_Boot_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Event provides a mock function for the type Infrav2
 func (_mock *Infrav2) Event() infrav2connect.EventServiceClient {
 	ret := _mock.Called()

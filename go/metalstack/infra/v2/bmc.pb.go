@@ -7,7 +7,8 @@
 package infrav2
 
 import (
-	_ "github.com/metal-stack/api/go/metalstack/api/v2"
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
+	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -24,7 +25,11 @@ const (
 
 // UpdateBMCInfoRequest
 type UpdateBMCInfoRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Partition the partition id where metal-bmc wants to receive events
+	Partition string `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
+	// BmcReports contains maps the bmc report per machine uuid
+	BmcReports    map[string]*v2.MachineBMCReport `protobuf:"bytes,2,rep,name=bmc_reports,json=bmcReports,proto3" json:"bmc_reports,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,11 +64,29 @@ func (*UpdateBMCInfoRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_bmc_proto_rawDescGZIP(), []int{0}
 }
 
+func (x *UpdateBMCInfoRequest) GetPartition() string {
+	if x != nil {
+		return x.Partition
+	}
+	return ""
+}
+
+func (x *UpdateBMCInfoRequest) GetBmcReports() map[string]*v2.MachineBMCReport {
+	if x != nil {
+		return x.BmcReports
+	}
+	return nil
+}
+
 // UpdateBMCInfoResponse
 type UpdateBMCInfoResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UpdatedMachines is a slice of machine uuids which were updated
+	UpdatedMachines []string `protobuf:"bytes,1,rep,name=updated_machines,json=updatedMachines,proto3" json:"updated_machines,omitempty"`
+	// CreatedMachines is a slice of machine uuids which were created
+	CreatedMachines []string `protobuf:"bytes,2,rep,name=created_machines,json=createdMachines,proto3" json:"created_machines,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
 }
 
 func (x *UpdateBMCInfoResponse) Reset() {
@@ -96,27 +119,43 @@ func (*UpdateBMCInfoResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_bmc_proto_rawDescGZIP(), []int{1}
 }
 
-// WaitForMachineEventRequest
-type WaitForMachineEventRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+func (x *UpdateBMCInfoResponse) GetUpdatedMachines() []string {
+	if x != nil {
+		return x.UpdatedMachines
+	}
+	return nil
+}
+
+func (x *UpdateBMCInfoResponse) GetCreatedMachines() []string {
+	if x != nil {
+		return x.CreatedMachines
+	}
+	return nil
+}
+
+// WaitForBMCCommandRequest
+type WaitForBMCCommandRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Partition the partition id where metal-bmc wants to receive bmc commands
+	Partition     string `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *WaitForMachineEventRequest) Reset() {
-	*x = WaitForMachineEventRequest{}
+func (x *WaitForBMCCommandRequest) Reset() {
+	*x = WaitForBMCCommandRequest{}
 	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *WaitForMachineEventRequest) String() string {
+func (x *WaitForBMCCommandRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WaitForMachineEventRequest) ProtoMessage() {}
+func (*WaitForBMCCommandRequest) ProtoMessage() {}
 
-func (x *WaitForMachineEventRequest) ProtoReflect() protoreflect.Message {
+func (x *WaitForBMCCommandRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -128,32 +167,48 @@ func (x *WaitForMachineEventRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WaitForMachineEventRequest.ProtoReflect.Descriptor instead.
-func (*WaitForMachineEventRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use WaitForBMCCommandRequest.ProtoReflect.Descriptor instead.
+func (*WaitForBMCCommandRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_bmc_proto_rawDescGZIP(), []int{2}
 }
 
-// WaitForMachineEventResponse
-type WaitForMachineEventResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+func (x *WaitForBMCCommandRequest) GetPartition() string {
+	if x != nil {
+		return x.Partition
+	}
+	return ""
+}
+
+// WaitForBMCCommandResponse
+type WaitForBMCCommandResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID of the machine to send the command to
+	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// BmcCommand to execute against the bmc of the machine
+	BmcCommand v2.MachineBMCCommand `protobuf:"varint,2,opt,name=bmc_command,json=bmcCommand,proto3,enum=metalstack.api.v2.MachineBMCCommand" json:"bmc_command,omitempty"`
+	// MachineBmc contains connection details of the machine to issue the bmcCommand to
+	MachineBmc *v2.MachineBMC `protobuf:"bytes,3,opt,name=machine_bmc,json=machineBmc,proto3" json:"machine_bmc,omitempty"`
+	// CommandId is a unique ID which must be sent back after execution
+	// it is usually in the form: <machine-uuid>:machine-bmc-command:<command>
+	CommandId     string `protobuf:"bytes,4,opt,name=command_id,json=commandId,proto3" json:"command_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *WaitForMachineEventResponse) Reset() {
-	*x = WaitForMachineEventResponse{}
+func (x *WaitForBMCCommandResponse) Reset() {
+	*x = WaitForBMCCommandResponse{}
 	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *WaitForMachineEventResponse) String() string {
+func (x *WaitForBMCCommandResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*WaitForMachineEventResponse) ProtoMessage() {}
+func (*WaitForBMCCommandResponse) ProtoMessage() {}
 
-func (x *WaitForMachineEventResponse) ProtoReflect() protoreflect.Message {
+func (x *WaitForBMCCommandResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -165,24 +220,169 @@ func (x *WaitForMachineEventResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use WaitForMachineEventResponse.ProtoReflect.Descriptor instead.
-func (*WaitForMachineEventResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use WaitForBMCCommandResponse.ProtoReflect.Descriptor instead.
+func (*WaitForBMCCommandResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_bmc_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *WaitForBMCCommandResponse) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+func (x *WaitForBMCCommandResponse) GetBmcCommand() v2.MachineBMCCommand {
+	if x != nil {
+		return x.BmcCommand
+	}
+	return v2.MachineBMCCommand(0)
+}
+
+func (x *WaitForBMCCommandResponse) GetMachineBmc() *v2.MachineBMC {
+	if x != nil {
+		return x.MachineBmc
+	}
+	return nil
+}
+
+func (x *WaitForBMCCommandResponse) GetCommandId() string {
+	if x != nil {
+		return x.CommandId
+	}
+	return ""
+}
+
+// BMCCommandDoneRequest must be returned after command execution
+type BMCCommandDoneRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// CommandId is a unique ID which must be sent back after execution
+	// it is usually in the form: <machine-uuid>:machine-bmc-command
+	CommandId string `protobuf:"bytes,1,opt,name=command_id,json=commandId,proto3" json:"command_id,omitempty"`
+	// Error of the command execution, nil if it was successful
+	Error         *string `protobuf:"bytes,2,opt,name=error,proto3,oneof" json:"error,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BMCCommandDoneRequest) Reset() {
+	*x = BMCCommandDoneRequest{}
+	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BMCCommandDoneRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BMCCommandDoneRequest) ProtoMessage() {}
+
+func (x *BMCCommandDoneRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BMCCommandDoneRequest.ProtoReflect.Descriptor instead.
+func (*BMCCommandDoneRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_infra_v2_bmc_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *BMCCommandDoneRequest) GetCommandId() string {
+	if x != nil {
+		return x.CommandId
+	}
+	return ""
+}
+
+func (x *BMCCommandDoneRequest) GetError() string {
+	if x != nil && x.Error != nil {
+		return *x.Error
+	}
+	return ""
+}
+
+// BMCCommandDoneResponse
+type BMCCommandDoneResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BMCCommandDoneResponse) Reset() {
+	*x = BMCCommandDoneResponse{}
+	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BMCCommandDoneResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BMCCommandDoneResponse) ProtoMessage() {}
+
+func (x *BMCCommandDoneResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_infra_v2_bmc_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BMCCommandDoneResponse.ProtoReflect.Descriptor instead.
+func (*BMCCommandDoneResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_infra_v2_bmc_proto_rawDescGZIP(), []int{5}
 }
 
 var File_metalstack_infra_v2_bmc_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_bmc_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/infra/v2/bmc.proto\x12\x13metalstack.infra.v2\x1a\x1emetalstack/api/v2/common.proto\"\x16\n" +
-	"\x14UpdateBMCInfoRequest\"\x17\n" +
-	"\x15UpdateBMCInfoResponse\"\x1c\n" +
-	"\x1aWaitForMachineEventRequest\"\x1d\n" +
-	"\x1bWaitForMachineEventResponse2\x87\x02\n" +
+	"\x1dmetalstack/infra/v2/bmc.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x90\x02\n" +
+	"\x14UpdateBMCInfoRequest\x12)\n" +
+	"\tpartition\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12i\n" +
+	"\vbmc_reports\x18\x02 \x03(\v29.metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntryB\r\xbaH\n" +
+	"\x9a\x01\a\"\x05r\x03\xb0\x01\x01R\n" +
+	"bmcReports\x1ab\n" +
+	"\x0fBmcReportsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x129\n" +
+	"\x05value\x18\x02 \x01(\v2#.metalstack.api.v2.MachineBMCReportR\x05value:\x028\x01\"m\n" +
+	"\x15UpdateBMCInfoResponse\x12)\n" +
+	"\x10updated_machines\x18\x01 \x03(\tR\x0fupdatedMachines\x12)\n" +
+	"\x10created_machines\x18\x02 \x03(\tR\x0fcreatedMachines\"E\n" +
+	"\x18WaitForBMCCommandRequest\x12)\n" +
+	"\tpartition\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\"\xdf\x01\n" +
+	"\x19WaitForBMCCommandResponse\x12\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12E\n" +
+	"\vbmc_command\x18\x02 \x01(\x0e2$.metalstack.api.v2.MachineBMCCommandR\n" +
+	"bmcCommand\x12>\n" +
+	"\vmachine_bmc\x18\x03 \x01(\v2\x1d.metalstack.api.v2.MachineBMCR\n" +
+	"machineBmc\x12\x1d\n" +
+	"\n" +
+	"command_id\x18\x04 \x01(\tR\tcommandId\"[\n" +
+	"\x15BMCCommandDoneRequest\x12\x1d\n" +
+	"\n" +
+	"command_id\x18\x01 \x01(\tR\tcommandId\x12\x19\n" +
+	"\x05error\x18\x02 \x01(\tH\x00R\x05error\x88\x01\x01B\b\n" +
+	"\x06_error\"\x18\n" +
+	"\x16BMCCommandDoneResponse2\xf6\x02\n" +
 	"\n" +
 	"BMCService\x12q\n" +
-	"\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x85\x01\n" +
-	"\x13WaitForMachineEvent\x12/.metalstack.infra.v2.WaitForMachineEventRequest\x1a0.metalstack.infra.v2.WaitForMachineEventResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x010\x01B\xcc\x01\n" +
+	"\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x7f\n" +
+	"\x11WaitForBMCCommand\x12-.metalstack.infra.v2.WaitForBMCCommandRequest\x1a..metalstack.infra.v2.WaitForBMCCommandResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x010\x01\x12t\n" +
+	"\x0eBMCCommandDone\x12*.metalstack.infra.v2.BMCCommandDoneRequest\x1a+.metalstack.infra.v2.BMCCommandDoneResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01B\xcc\x01\n" +
 	"\x17com.metalstack.infra.v2B\bBmcProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
 var (
@@ -197,23 +397,35 @@ func file_metalstack_infra_v2_bmc_proto_rawDescGZIP() []byte {
 	return file_metalstack_infra_v2_bmc_proto_rawDescData
 }
 
-var file_metalstack_infra_v2_bmc_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_metalstack_infra_v2_bmc_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_metalstack_infra_v2_bmc_proto_goTypes = []any{
-	(*UpdateBMCInfoRequest)(nil),        // 0: metalstack.infra.v2.UpdateBMCInfoRequest
-	(*UpdateBMCInfoResponse)(nil),       // 1: metalstack.infra.v2.UpdateBMCInfoResponse
-	(*WaitForMachineEventRequest)(nil),  // 2: metalstack.infra.v2.WaitForMachineEventRequest
-	(*WaitForMachineEventResponse)(nil), // 3: metalstack.infra.v2.WaitForMachineEventResponse
+	(*UpdateBMCInfoRequest)(nil),      // 0: metalstack.infra.v2.UpdateBMCInfoRequest
+	(*UpdateBMCInfoResponse)(nil),     // 1: metalstack.infra.v2.UpdateBMCInfoResponse
+	(*WaitForBMCCommandRequest)(nil),  // 2: metalstack.infra.v2.WaitForBMCCommandRequest
+	(*WaitForBMCCommandResponse)(nil), // 3: metalstack.infra.v2.WaitForBMCCommandResponse
+	(*BMCCommandDoneRequest)(nil),     // 4: metalstack.infra.v2.BMCCommandDoneRequest
+	(*BMCCommandDoneResponse)(nil),    // 5: metalstack.infra.v2.BMCCommandDoneResponse
+	nil,                               // 6: metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry
+	(v2.MachineBMCCommand)(0),         // 7: metalstack.api.v2.MachineBMCCommand
+	(*v2.MachineBMC)(nil),             // 8: metalstack.api.v2.MachineBMC
+	(*v2.MachineBMCReport)(nil),       // 9: metalstack.api.v2.MachineBMCReport
 }
 var file_metalstack_infra_v2_bmc_proto_depIdxs = []int32{
-	0, // 0: metalstack.infra.v2.BMCService.UpdateBMCInfo:input_type -> metalstack.infra.v2.UpdateBMCInfoRequest
-	2, // 1: metalstack.infra.v2.BMCService.WaitForMachineEvent:input_type -> metalstack.infra.v2.WaitForMachineEventRequest
-	1, // 2: metalstack.infra.v2.BMCService.UpdateBMCInfo:output_type -> metalstack.infra.v2.UpdateBMCInfoResponse
-	3, // 3: metalstack.infra.v2.BMCService.WaitForMachineEvent:output_type -> metalstack.infra.v2.WaitForMachineEventResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: metalstack.infra.v2.UpdateBMCInfoRequest.bmc_reports:type_name -> metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry
+	7, // 1: metalstack.infra.v2.WaitForBMCCommandResponse.bmc_command:type_name -> metalstack.api.v2.MachineBMCCommand
+	8, // 2: metalstack.infra.v2.WaitForBMCCommandResponse.machine_bmc:type_name -> metalstack.api.v2.MachineBMC
+	9, // 3: metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry.value:type_name -> metalstack.api.v2.MachineBMCReport
+	0, // 4: metalstack.infra.v2.BMCService.UpdateBMCInfo:input_type -> metalstack.infra.v2.UpdateBMCInfoRequest
+	2, // 5: metalstack.infra.v2.BMCService.WaitForBMCCommand:input_type -> metalstack.infra.v2.WaitForBMCCommandRequest
+	4, // 6: metalstack.infra.v2.BMCService.BMCCommandDone:input_type -> metalstack.infra.v2.BMCCommandDoneRequest
+	1, // 7: metalstack.infra.v2.BMCService.UpdateBMCInfo:output_type -> metalstack.infra.v2.UpdateBMCInfoResponse
+	3, // 8: metalstack.infra.v2.BMCService.WaitForBMCCommand:output_type -> metalstack.infra.v2.WaitForBMCCommandResponse
+	5, // 9: metalstack.infra.v2.BMCService.BMCCommandDone:output_type -> metalstack.infra.v2.BMCCommandDoneResponse
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_infra_v2_bmc_proto_init() }
@@ -221,13 +433,14 @@ func file_metalstack_infra_v2_bmc_proto_init() {
 	if File_metalstack_infra_v2_bmc_proto != nil {
 		return
 	}
+	file_metalstack_infra_v2_bmc_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_infra_v2_bmc_proto_rawDesc), len(file_metalstack_infra_v2_bmc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

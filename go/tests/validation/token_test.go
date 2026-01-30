@@ -80,6 +80,44 @@ func TestValidateToken(t *testing.T) {
 			},
 			wantErr: false,
 		},
+		{
+			name: "Valid Token, api token with machineroles",
+			msg: &apiv2.TokenServiceUpdateRequest{
+				Uuid: "00000000-0000-0000-0000-000000000000",
+				MachineRoles: map[string]apiv2.MachineRole{
+					"":                                     apiv2.MachineRole_MACHINE_ROLE_EDITOR,
+					"*":                                    apiv2.MachineRole_MACHINE_ROLE_EDITOR,
+					"00000000-0000-0000-0000-000000000000": apiv2.MachineRole_MACHINE_ROLE_EDITOR,
+				},
+			},
+			wantErr: false,
+		},
+		{
+			name: "InValid Token, api token with machineroles with invalid uuid",
+			msg: &apiv2.TokenServiceUpdateRequest{
+				Uuid: "00000000-0000-0000-0000-000000000000",
+				MachineRoles: map[string]apiv2.MachineRole{
+					"":                                     apiv2.MachineRole_MACHINE_ROLE_EDITOR,
+					"*":                                    apiv2.MachineRole_MACHINE_ROLE_EDITOR,
+					"y0000000-0000-0000-0000-000000000000": apiv2.MachineRole_MACHINE_ROLE_EDITOR,
+				},
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: machine_roles: map keys must be empty string, '*', or a valid UUID",
+		},
+		{
+			name: "InValid Token, api token with machineroles with invalid key",
+			msg: &apiv2.TokenServiceUpdateRequest{
+				Uuid: "00000000-0000-0000-0000-000000000000",
+				MachineRoles: map[string]apiv2.MachineRole{
+					"A":                                    apiv2.MachineRole_MACHINE_ROLE_EDITOR,
+					"*":                                    apiv2.MachineRole_MACHINE_ROLE_EDITOR,
+					"00000000-0000-0000-0000-000000000000": apiv2.MachineRole_MACHINE_ROLE_EDITOR,
+				},
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: machine_roles: map keys must be empty string, '*', or a valid UUID",
+		},
 	}
 
 	validateProtos(t, tests)
