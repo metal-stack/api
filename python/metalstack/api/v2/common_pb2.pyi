@@ -39,6 +39,12 @@ class InfraRole(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     INFRA_ROLE_EDITOR: _ClassVar[InfraRole]
     INFRA_ROLE_VIEWER: _ClassVar[InfraRole]
 
+class MachineRole(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_ROLE_UNSPECIFIED: _ClassVar[MachineRole]
+    MACHINE_ROLE_EDITOR: _ClassVar[MachineRole]
+    MACHINE_ROLE_VIEWER: _ClassVar[MachineRole]
+
 class Visibility(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
     VISIBILITY_UNSPECIFIED: _ClassVar[Visibility]
@@ -71,6 +77,9 @@ ADMIN_ROLE_VIEWER: AdminRole
 INFRA_ROLE_UNSPECIFIED: InfraRole
 INFRA_ROLE_EDITOR: InfraRole
 INFRA_ROLE_VIEWER: InfraRole
+MACHINE_ROLE_UNSPECIFIED: MachineRole
+MACHINE_ROLE_EDITOR: MachineRole
+MACHINE_ROLE_VIEWER: MachineRole
 VISIBILITY_UNSPECIFIED: Visibility
 VISIBILITY_PUBLIC: Visibility
 VISIBILITY_SELF: Visibility
@@ -92,6 +101,8 @@ AUDITING_FIELD_NUMBER: _ClassVar[int]
 auditing: _descriptor.FieldDescriptor
 INFRA_ROLES_FIELD_NUMBER: _ClassVar[int]
 infra_roles: _descriptor.FieldDescriptor
+MACHINE_ROLES_FIELD_NUMBER: _ClassVar[int]
+machine_roles: _descriptor.FieldDescriptor
 ENUM_STRING_VALUE_FIELD_NUMBER: _ClassVar[int]
 enum_string_value: _descriptor.FieldDescriptor
 

@@ -5,8 +5,6 @@ lint:
   use:
     - COMMENTS
     - STANDARD
-  except:
-    - FIELD_NOT_REQUIRED
   disallow_comment_ignores: true
 breaking:
   use:

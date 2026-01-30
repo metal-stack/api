@@ -23,10 +23,7 @@ service PartitionService {
 // Partition is a failure domain with machines and switches
 message Partition {
   // ID of this partition
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Meta for this ip
   Meta meta = 2;
   // Description of this partition
@@ -45,10 +42,7 @@ message Partition {
 // PartitionQuery is used to search partitions
 message PartitionQuery {
   // ID of the partition to get
-  optional string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Labels lists only partitions containing the given labels
   optional Labels labels = 2;
 }
@@ -78,10 +72,7 @@ message NTPServer {
 // PartitionServiceGetRequest is the request payload for a partition get request
 message PartitionServiceGetRequest {
   // ID of the partition to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
 // PartitionServiceListRequest is the request payload for a partition list request

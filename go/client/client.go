@@ -35,6 +35,7 @@ type (
 		Project() adminv2connect.ProjectServiceClient
 		Size() adminv2connect.SizeServiceClient
 		Switch() adminv2connect.SwitchServiceClient
+		Task() adminv2connect.TaskServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
 		VPN() adminv2connect.VPNServiceClient
@@ -50,6 +51,7 @@ type (
 		projectservice    adminv2connect.ProjectServiceClient
 		sizeservice       adminv2connect.SizeServiceClient
 		switchservice     adminv2connect.SwitchServiceClient
+		taskservice       adminv2connect.TaskServiceClient
 		tenantservice     adminv2connect.TenantServiceClient
 		tokenservice      adminv2connect.TokenServiceClient
 		vpnservice        adminv2connect.VPNServiceClient
@@ -91,12 +93,14 @@ type (
 
 	Infrav2 interface {
 		BMC() infrav2connect.BMCServiceClient
+		Boot() infrav2connect.BootServiceClient
 		Event() infrav2connect.EventServiceClient
 		Switch() infrav2connect.SwitchServiceClient
 	}
 
 	infrav2 struct {
 		bmcservice    infrav2connect.BMCServiceClient
+		bootservice   infrav2connect.BootServiceClient
 		eventservice  infrav2connect.EventServiceClient
 		switchservice infrav2connect.SwitchServiceClient
 	}
@@ -185,6 +189,12 @@ func (c *client) Adminv2() Adminv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		taskservice: adminv2connect.NewTaskServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		tenantservice: adminv2connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -233,6 +243,9 @@ func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 }
 func (c *adminv2) Switch() adminv2connect.SwitchServiceClient {
 	return c.switchservice
+}
+func (c *adminv2) Task() adminv2connect.TaskServiceClient {
+	return c.taskservice
 }
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice
@@ -385,6 +398,12 @@ func (c *client) Infrav2() Infrav2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		bootservice: infrav2connect.NewBootServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		eventservice: infrav2connect.NewEventServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -403,6 +422,9 @@ func (c *client) Infrav2() Infrav2 {
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Boot() infrav2connect.BootServiceClient {
+	return c.bootservice
 }
 func (c *infrav2) Event() infrav2connect.EventServiceClient {
 	return c.eventservice

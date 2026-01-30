@@ -46,6 +46,23 @@ func TestValidateMachine(t *testing.T) {
 			wantErr:          true,
 			wantErrorMessage: `validation error: ips: given ips must be valid`,
 		},
+		{
+			name: "MachineBMC address validation",
+			msg: &apiv2.MachineBMC{
+				Address: "192.168.0.1:623",
+				Mac:     "00:00:00:00:00:00",
+			},
+			wantErr: false,
+		},
+		{
+			name: "MachineBMC address validation, port missing",
+			msg: &apiv2.MachineBMC{
+				Address: "192.168.0.1",
+				Mac:     "00:00:00:00:00:00",
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: address: value must be a valid host (hostname or IP address) and port pair",
+		},
 	}
 	validateProtos(t, tests)
 }
