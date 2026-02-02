@@ -177,7 +177,7 @@ message SwitchNicWithMachine {
   // Size of the machine.
   string size = 3;
   // AllocationHostname if machine is allocated.
-  optional string allocation_hostname = 4;
+  string allocation_hostname = 4;
   // VpnConnected indicated whether the machine is connected to a VPN.
   bool vpn_connected = 5;
   // FruProductSerial of the machine.

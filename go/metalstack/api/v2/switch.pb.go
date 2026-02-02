@@ -1123,7 +1123,7 @@ type SwitchNicWithMachine struct {
 	// Size of the machine.
 	Size string `protobuf:"bytes,3,opt,name=size,proto3" json:"size,omitempty"`
 	// AllocationHostname if machine is allocated.
-	AllocationHostname *string `protobuf:"bytes,4,opt,name=allocation_hostname,json=allocationHostname,proto3,oneof" json:"allocation_hostname,omitempty"`
+	AllocationHostname string `protobuf:"bytes,4,opt,name=allocation_hostname,json=allocationHostname,proto3" json:"allocation_hostname,omitempty"`
 	// VpnConnected indicated whether the machine is connected to a VPN.
 	VpnConnected bool `protobuf:"varint,5,opt,name=vpn_connected,json=vpnConnected,proto3" json:"vpn_connected,omitempty"`
 	// FruProductSerial of the machine.
@@ -1196,8 +1196,8 @@ func (x *SwitchNicWithMachine) GetSize() string {
 }
 
 func (x *SwitchNicWithMachine) GetAllocationHostname() string {
-	if x != nil && x.AllocationHostname != nil {
-		return *x.AllocationHostname
+	if x != nil {
+		return x.AllocationHostname
 	}
 	return ""
 }
@@ -1352,12 +1352,12 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
 	"\tpartition\x18\x02 \x01(\tR\tpartition\x12\x12\n" +
 	"\x04rack\x18\x03 \x01(\tR\x04rack\x12I\n" +
-	"\vconnections\x18\x04 \x03(\v2'.metalstack.api.v2.SwitchNicWithMachineR\vconnections\"\xdf\x04\n" +
+	"\vconnections\x18\x04 \x03(\v2'.metalstack.api.v2.SwitchNicWithMachineR\vconnections\"\xc2\x04\n" +
 	"\x14SwitchNicWithMachine\x12.\n" +
 	"\x03nic\x18\x01 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x12\n" +
-	"\x04size\x18\x03 \x01(\tR\x04size\x124\n" +
-	"\x13allocation_hostname\x18\x04 \x01(\tH\x00R\x12allocationHostname\x88\x01\x01\x12#\n" +
+	"\x04size\x18\x03 \x01(\tR\x04size\x12/\n" +
+	"\x13allocation_hostname\x18\x04 \x01(\tR\x12allocationHostname\x12#\n" +
 	"\rvpn_connected\x18\x05 \x01(\bR\fvpnConnected\x12,\n" +
 	"\x12fru_product_serial\x18\x06 \x01(\tR\x10fruProductSerial\x125\n" +
 	"\x17fru_chassis_part_serial\x18\a \x01(\tR\x14fruChassisPartSerial\x12D\n" +
@@ -1368,8 +1368,7 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x0efailed_reclaim\x18\n" +
 	" \x01(\bR\rfailedReclaim\x12\x1c\n" +
 	"\tcrashloop\x18\v \x01(\bR\tcrashloop\x12U\n" +
-	"\x10last_error_event\x18\f \x01(\v2+.metalstack.api.v2.MachineProvisioningEventR\x0elastErrorEventB\x16\n" +
-	"\x14_allocation_hostname*\x89\x02\n" +
+	"\x10last_error_event\x18\f \x01(\v2+.metalstack.api.v2.MachineProvisioningEventR\x0elastErrorEvent*\x89\x02\n" +
 	"\bBGPState\x12\x19\n" +
 	"\x15BGP_STATE_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x0eBGP_STATE_IDLE\x10\x01\x1a\b\x82\xb2\x19\x04Idle\x12\"\n" +
@@ -1479,7 +1478,6 @@ func file_metalstack_api_v2_switch_proto_init() {
 	file_metalstack_api_v2_switch_proto_msgTypes[7].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[8].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[9].OneofWrappers = []any{}
-	file_metalstack_api_v2_switch_proto_msgTypes[11].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
