@@ -200,10 +200,36 @@ class SwitchWithMachines(_message.Message):
         KEY_FIELD_NUMBER: _ClassVar[int]
         VALUE_FIELD_NUMBER: _ClassVar[int]
         key: str
-        value: _machine_pb2.MachineBMCReport
-        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[_machine_pb2.MachineBMCReport, _Mapping]] = ...) -> None: ...
+        value: ConnectedMachine
+        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[ConnectedMachine, _Mapping]] = ...) -> None: ...
     ID_FIELD_NUMBER: _ClassVar[int]
     CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
     id: str
-    connections: _containers.MessageMap[str, _machine_pb2.MachineBMCReport]
-    def __init__(self, id: _Optional[str] = ..., connections: _Optional[_Mapping[str, _machine_pb2.MachineBMCReport]] = ...) -> None: ...
+    connections: _containers.MessageMap[str, ConnectedMachine]
+    def __init__(self, id: _Optional[str] = ..., connections: _Optional[_Mapping[str, ConnectedMachine]] = ...) -> None: ...
+
+class ConnectedMachine(_message.Message):
+    __slots__ = ("uuid", "size", "allocation_hostname", "vpn_connected", "fru_product_serial", "fru_chassis_part_serial", "liveliness", "state", "failed_reclaim", "crashloop", "last_error_event")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    SIZE_FIELD_NUMBER: _ClassVar[int]
+    ALLOCATION_HOSTNAME_FIELD_NUMBER: _ClassVar[int]
+    VPN_CONNECTED_FIELD_NUMBER: _ClassVar[int]
+    FRU_PRODUCT_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    FRU_CHASSIS_PART_SERIAL_FIELD_NUMBER: _ClassVar[int]
+    LIVELINESS_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
+    FAILED_RECLAIM_FIELD_NUMBER: _ClassVar[int]
+    CRASHLOOP_FIELD_NUMBER: _ClassVar[int]
+    LAST_ERROR_EVENT_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    size: str
+    allocation_hostname: str
+    vpn_connected: bool
+    fru_product_serial: str
+    fru_chassis_part_serial: str
+    liveliness: _machine_pb2.MachineLiveliness
+    state: _machine_pb2.MachineState
+    failed_reclaim: bool
+    crashloop: bool
+    last_error_event: _machine_pb2.MachineProvisioningEvent
+    def __init__(self, uuid: _Optional[str] = ..., size: _Optional[str] = ..., allocation_hostname: _Optional[str] = ..., vpn_connected: _Optional[bool] = ..., fru_product_serial: _Optional[str] = ..., fru_chassis_part_serial: _Optional[str] = ..., liveliness: _Optional[_Union[_machine_pb2.MachineLiveliness, str]] = ..., state: _Optional[_Union[_machine_pb2.MachineState, str]] = ..., failed_reclaim: _Optional[bool] = ..., crashloop: _Optional[bool] = ..., last_error_event: _Optional[_Union[_machine_pb2.MachineProvisioningEvent, _Mapping]] = ...) -> None: ...

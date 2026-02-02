@@ -160,8 +160,34 @@ message SwitchSync {
 message SwitchWithMachines {
   // Id of the switch.
   string id = 1;
-  // Connections maps the switch's port names to the connected machine's BMC reports.
-  map<string, metalstack.api.v2.MachineBMCReport> connections = 2;
+  // Connections maps the switch's port names to the connected machine.
+  map<string, ConnectedMachine> connections = 2;
+}
+
+// ConnectedMachine contains information about a connected machine.
+message ConnectedMachine {
+  // Uuid of the machine.
+  string uuid = 1;
+  // Size of the machine.
+  string size = 2;
+  // AllocationHostname if machine is allocated.
+  optional string allocation_hostname = 3;
+  // VpnConnected indicated whether the machine is connected to a VPN.
+  bool vpn_connected = 4;
+  // FruProductSerial of the machine.
+  string fru_product_serial = 5;
+  // FruChassisPartSerial of the machine.
+  string fru_chassis_part_serial = 6;
+  // Liveliness of the machine.
+  metalstack.api.v2.MachineLiveliness liveliness = 7;
+  // State of the machine.
+  metalstack.api.v2.MachineState state = 8;
+  // FailedReclaim is true if the machine failed to return to the waiting machines pool after deletion.
+  bool failed_reclaim = 9;
+  // Crashloop is true if there was an unexpected event in the provisioning cycle.
+  bool crashloop = 10;
+  // LastErrorEvent in case some error happened in the past.
+  metalstack.api.v2.MachineProvisioningEvent last_error_event = 11;
 }
 
 // BGPState represents the state of a BGP session.
