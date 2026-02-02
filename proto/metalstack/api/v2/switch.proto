@@ -160,34 +160,36 @@ message SwitchSync {
 message SwitchWithMachines {
   // Id of the switch.
   string id = 1;
-  // Connections maps the switch's port names to the connected machine.
-  map<string, ConnectedMachine> connections = 2;
+  // Connections associates switch ports with the machines connected to them.
+  repeated SwitchNicWithMachine connections = 2;
 }
 
-// ConnectedMachine contains information about a connected machine.
-message ConnectedMachine {
+// SwitchNicWithMachine associates a switch port with its connected machine.
+message SwitchNicWithMachine {
+  // Nic is the switch nic the machine is connected to.
+  SwitchNic nic = 1;
   // Uuid of the machine.
-  string uuid = 1;
+  string uuid = 2;
   // Size of the machine.
-  string size = 2;
+  string size = 3;
   // AllocationHostname if machine is allocated.
-  optional string allocation_hostname = 3;
+  optional string allocation_hostname = 4;
   // VpnConnected indicated whether the machine is connected to a VPN.
-  bool vpn_connected = 4;
+  bool vpn_connected = 5;
   // FruProductSerial of the machine.
-  string fru_product_serial = 5;
+  string fru_product_serial = 6;
   // FruChassisPartSerial of the machine.
-  string fru_chassis_part_serial = 6;
+  string fru_chassis_part_serial = 7;
   // Liveliness of the machine.
-  metalstack.api.v2.MachineLiveliness liveliness = 7;
+  metalstack.api.v2.MachineLiveliness liveliness = 8;
   // State of the machine.
-  metalstack.api.v2.MachineState state = 8;
+  metalstack.api.v2.MachineState state = 9;
   // FailedReclaim is true if the machine failed to return to the waiting machines pool after deletion.
-  bool failed_reclaim = 9;
+  bool failed_reclaim = 10;
   // Crashloop is true if there was an unexpected event in the provisioning cycle.
-  bool crashloop = 10;
+  bool crashloop = 11;
   // LastErrorEvent in case some error happened in the past.
-  metalstack.api.v2.MachineProvisioningEvent last_error_event = 11;
+  metalstack.api.v2.MachineProvisioningEvent last_error_event = 12;
 }
 
 // BGPState represents the state of a BGP session.

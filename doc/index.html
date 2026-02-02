@@ -1449,10 +1449,6 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.ConnectedMachine"><span class="badge">M</span>ConnectedMachine</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.MachineConnection"><span class="badge">M</span>MachineConnection</a>
                 </li>
               
@@ -1473,6 +1469,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.SwitchNicWithMachine"><span class="badge">M</span>SwitchNicWithMachine</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.SwitchOS"><span class="badge">M</span>SwitchOS</a>
                 </li>
               
@@ -1490,10 +1490,6 @@
               
                 <li>
                   <a href="#metalstack.api.v2.SwitchWithMachines"><span class="badge">M</span>SwitchWithMachines</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.SwitchWithMachines.ConnectionsEntry"><span class="badge">M</span>SwitchWithMachines.ConnectionsEntry</a>
                 </li>
               
               
@@ -12509,100 +12505,6 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
-        <h3 id="metalstack.api.v2.ConnectedMachine">ConnectedMachine</h3>
-        <p>ConnectedMachine contains information about a connected machine.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>uuid</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Uuid of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>size</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Size of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>allocation_hostname</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>AllocationHostname if machine is allocated. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>vpn_connected</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>VpnConnected indicated whether the machine is connected to a VPN. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>fru_product_serial</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>FruProductSerial of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>fru_chassis_part_serial</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>FruChassisPartSerial of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>liveliness</td>
-                  <td><a href="#metalstack.api.v2.MachineLiveliness">MachineLiveliness</a></td>
-                  <td></td>
-                  <td><p>Liveliness of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#metalstack.api.v2.MachineState">MachineState</a></td>
-                  <td></td>
-                  <td><p>State of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>failed_reclaim</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>FailedReclaim is true if the machine failed to return to the waiting machines pool after deletion. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>crashloop</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Crashloop is true if there was an unexpected event in the provisioning cycle. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>last_error_event</td>
-                  <td><a href="#metalstack.api.v2.MachineProvisioningEvent">MachineProvisioningEvent</a></td>
-                  <td></td>
-                  <td><p>LastErrorEvent in case some error happened in the past. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="metalstack.api.v2.MachineConnection">MachineConnection</h3>
         <p>MachineConnection associates a machine with the corresponding switch nic.</p>
 
@@ -12912,6 +12814,107 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.SwitchNicWithMachine">SwitchNicWithMachine</h3>
+        <p>SwitchNicWithMachine associates a switch port with its connected machine.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>nic</td>
+                  <td><a href="#metalstack.api.v2.SwitchNic">SwitchNic</a></td>
+                  <td></td>
+                  <td><p>Nic is the switch nic the machine is connected to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Uuid of the machine. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size of the machine. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>allocation_hostname</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>AllocationHostname if machine is allocated. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>vpn_connected</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>VpnConnected indicated whether the machine is connected to a VPN. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fru_product_serial</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>FruProductSerial of the machine. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fru_chassis_part_serial</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>FruChassisPartSerial of the machine. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>liveliness</td>
+                  <td><a href="#metalstack.api.v2.MachineLiveliness">MachineLiveliness</a></td>
+                  <td></td>
+                  <td><p>Liveliness of the machine. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#metalstack.api.v2.MachineState">MachineState</a></td>
+                  <td></td>
+                  <td><p>State of the machine. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>failed_reclaim</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>FailedReclaim is true if the machine failed to return to the waiting machines pool after deletion. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>crashloop</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Crashloop is true if there was an unexpected event in the provisioning cycle. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_error_event</td>
+                  <td><a href="#metalstack.api.v2.MachineProvisioningEvent">MachineProvisioningEvent</a></td>
+                  <td></td>
+                  <td><p>LastErrorEvent in case some error happened in the past. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.SwitchOS">SwitchOS</h3>
         <p>SwitchOS holds information about the NOS and versions running on the switch.</p>
 
@@ -13083,40 +13086,9 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
               
                 <tr>
                   <td>connections</td>
-                  <td><a href="#metalstack.api.v2.SwitchWithMachines.ConnectionsEntry">SwitchWithMachines.ConnectionsEntry</a></td>
+                  <td><a href="#metalstack.api.v2.SwitchNicWithMachine">SwitchNicWithMachine</a></td>
                   <td>repeated</td>
-                  <td><p>Connections maps the switch&#39;s port names to the connected machine. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.SwitchWithMachines.ConnectionsEntry">SwitchWithMachines.ConnectionsEntry</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>key</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>value</td>
-                  <td><a href="#metalstack.api.v2.ConnectedMachine">ConnectedMachine</a></td>
-                  <td></td>
-                  <td><p> </p></td>
+                  <td><p>Connections associates switch ports with the machines connected to them. </p></td>
                 </tr>
               
             </tbody>
