@@ -1045,8 +1045,12 @@ type SwitchWithMachines struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Partition of the switch.
+	Partition string `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
+	// Rack of the switch.
+	Rack string `protobuf:"bytes,3,opt,name=rack,proto3" json:"rack,omitempty"`
 	// Connections associates switch ports with the machines connected to them.
-	Connections   []*SwitchNicWithMachine `protobuf:"bytes,2,rep,name=connections,proto3" json:"connections,omitempty"`
+	Connections   []*SwitchNicWithMachine `protobuf:"bytes,4,rep,name=connections,proto3" json:"connections,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1084,6 +1088,20 @@ func (*SwitchWithMachines) Descriptor() ([]byte, []int) {
 func (x *SwitchWithMachines) GetId() string {
 	if x != nil {
 		return x.Id
+	}
+	return ""
+}
+
+func (x *SwitchWithMachines) GetPartition() string {
+	if x != nil {
+		return x.Partition
+	}
+	return ""
+}
+
+func (x *SwitchWithMachines) GetRack() string {
+	if x != nil {
+		return x.Rack
 	}
 	return ""
 }
@@ -1329,10 +1347,12 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x125\n" +
 	"\bduration\x18\x02 \x01(\v2\x19.google.protobuf.DurationR\bduration\x12\x19\n" +
 	"\x05error\x18\x03 \x01(\tH\x00R\x05error\x88\x01\x01B\b\n" +
-	"\x06_error\"o\n" +
+	"\x06_error\"\xa1\x01\n" +
 	"\x12SwitchWithMachines\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12I\n" +
-	"\vconnections\x18\x02 \x03(\v2'.metalstack.api.v2.SwitchNicWithMachineR\vconnections\"\xdf\x04\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
+	"\tpartition\x18\x02 \x01(\tR\tpartition\x12\x12\n" +
+	"\x04rack\x18\x03 \x01(\tR\x04rack\x12I\n" +
+	"\vconnections\x18\x04 \x03(\v2'.metalstack.api.v2.SwitchNicWithMachineR\vconnections\"\xdf\x04\n" +
 	"\x14SwitchNicWithMachine\x12.\n" +
 	"\x03nic\x18\x01 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\x12\x12\n" +
 	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x12\n" +

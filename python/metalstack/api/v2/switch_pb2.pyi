@@ -194,12 +194,16 @@ class SwitchSync(_message.Message):
     def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ...) -> None: ...
 
 class SwitchWithMachines(_message.Message):
-    __slots__ = ("id", "connections")
+    __slots__ = ("id", "partition", "rack", "connections")
     ID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
     CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
     id: str
+    partition: str
+    rack: str
     connections: _containers.RepeatedCompositeFieldContainer[SwitchNicWithMachine]
-    def __init__(self, id: _Optional[str] = ..., connections: _Optional[_Iterable[_Union[SwitchNicWithMachine, _Mapping]]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., connections: _Optional[_Iterable[_Union[SwitchNicWithMachine, _Mapping]]] = ...) -> None: ...
 
 class SwitchNicWithMachine(_message.Message):
     __slots__ = ("nic", "uuid", "size", "allocation_hostname", "vpn_connected", "fru_product_serial", "fru_chassis_part_serial", "liveliness", "state", "failed_reclaim", "crashloop", "last_error_event")

@@ -160,8 +160,12 @@ message SwitchSync {
 message SwitchWithMachines {
   // Id of the switch.
   string id = 1;
+  // Partition of the switch.
+  string partition = 2;
+  // Rack of the switch.
+  string rack = 3;
   // Connections associates switch ports with the machines connected to them.
-  repeated SwitchNicWithMachine connections = 2;
+  repeated SwitchNicWithMachine connections = 4;
 }
 
 // SwitchNicWithMachine associates a switch port with its connected machine.
