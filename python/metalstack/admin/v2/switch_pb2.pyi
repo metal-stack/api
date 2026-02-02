@@ -3,6 +3,7 @@ import datetime
 from buf.validate import validate_pb2 as _validate_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import machine_pb2 as _machine_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import switch_pb2 as _switch_pb2
 from google.protobuf.internal import containers as _containers
@@ -110,3 +111,17 @@ class SwitchServicePortResponse(_message.Message):
     SWITCH_FIELD_NUMBER: _ClassVar[int]
     switch: _switch_pb2.Switch
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+
+class SwitchServiceConnectedMachinesRequest(_message.Message):
+    __slots__ = ("query", "machine_query")
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: _switch_pb2.SwitchQuery
+    machine_query: _machine_pb2.MachineQuery
+    def __init__(self, query: _Optional[_Union[_switch_pb2.SwitchQuery, _Mapping]] = ..., machine_query: _Optional[_Union[_machine_pb2.MachineQuery, _Mapping]] = ...) -> None: ...
+
+class SwitchServiceConnectedMachinesResponse(_message.Message):
+    __slots__ = ("switches_with_machines",)
+    SWITCHES_WITH_MACHINES_FIELD_NUMBER: _ClassVar[int]
+    switches_with_machines: _containers.RepeatedCompositeFieldContainer[_switch_pb2.SwitchWithMachines]
+    def __init__(self, switches_with_machines: _Optional[_Iterable[_Union[_switch_pb2.SwitchWithMachines, _Mapping]]] = ...) -> None: ...

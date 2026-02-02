@@ -4,6 +4,7 @@ from buf.validate import validate_pb2 as _validate_pb2
 from google.protobuf import duration_pb2 as _duration_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import machine_pb2 as _machine_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
@@ -191,3 +192,18 @@ class SwitchSync(_message.Message):
     duration: _duration_pb2.Duration
     error: str
     def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ...) -> None: ...
+
+class SwitchWithMachines(_message.Message):
+    __slots__ = ("id", "connections")
+    class ConnectionsEntry(_message.Message):
+        __slots__ = ("key", "value")
+        KEY_FIELD_NUMBER: _ClassVar[int]
+        VALUE_FIELD_NUMBER: _ClassVar[int]
+        key: str
+        value: _machine_pb2.MachineBMCReport
+        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[_machine_pb2.MachineBMCReport, _Mapping]] = ...) -> None: ...
+    ID_FIELD_NUMBER: _ClassVar[int]
+    CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    connections: _containers.MessageMap[str, _machine_pb2.MachineBMCReport]
+    def __init__(self, id: _Optional[str] = ..., connections: _Optional[_Mapping[str, _machine_pb2.MachineBMCReport]] = ...) -> None: ...

@@ -5,6 +5,7 @@ package metalstack.admin.v2;
 import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/machine.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/switch.proto";
 
@@ -37,6 +38,12 @@ service SwitchService {
   // Port set the port status of a switch port.
   rpc Port(SwitchServicePortRequest) returns (SwitchServicePortResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+  }
+  // ConnectedMachines lists all switches with their machine connections.
+  rpc ConnectedMachines(SwitchServiceConnectedMachinesRequest) returns (SwitchServiceConnectedMachinesResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
 }
 
@@ -155,4 +162,18 @@ message SwitchServicePortRequest {
 message SwitchServicePortResponse {
   // Switch after the port status toggle..
   metalstack.api.v2.Switch switch = 1;
+}
+
+// SwitchServiceConnectedMachinesRequest.
+message SwitchServiceConnectedMachinesRequest {
+  // Query to filter the switch results.
+  metalstack.api.v2.SwitchQuery query = 1;
+  // MachineQuery to filter the machine results.
+  metalstack.api.v2.MachineQuery machine_query = 2;
+}
+
+// SwitchServiceConnectedMachinesResponse.
+message SwitchServiceConnectedMachinesResponse {
+  // SwitchesWithMachines contains all switches with their machine connections.
+  repeated metalstack.api.v2.SwitchWithMachines switches_with_machines = 1;
 }
