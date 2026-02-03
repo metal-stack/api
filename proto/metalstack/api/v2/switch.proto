@@ -192,8 +192,8 @@ message SwitchNicWithMachine {
   bool failed_reclaim = 10;
   // Crashloop is true if there was an unexpected event in the provisioning cycle.
   bool crashloop = 11;
-  // LastErrorEvent in case some error happened in the past.
-  metalstack.api.v2.MachineProvisioningEvent last_error_event = 12;
+  // LastErrorEventTime in case some error happened in the past.
+  google.protobuf.Timestamp last_error_event_time = 12;
 }
 
 // BGPState represents the state of a BGP session.

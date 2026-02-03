@@ -206,7 +206,7 @@ class SwitchWithMachines(_message.Message):
     def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., connections: _Optional[_Iterable[_Union[SwitchNicWithMachine, _Mapping]]] = ...) -> None: ...
 
 class SwitchNicWithMachine(_message.Message):
-    __slots__ = ("nic", "uuid", "size", "allocation_hostname", "vpn_connected", "fru_product_serial", "fru_chassis_part_serial", "liveliness", "state", "failed_reclaim", "crashloop", "last_error_event")
+    __slots__ = ("nic", "uuid", "size", "allocation_hostname", "vpn_connected", "fru_product_serial", "fru_chassis_part_serial", "liveliness", "state", "failed_reclaim", "crashloop", "last_error_event_time")
     NIC_FIELD_NUMBER: _ClassVar[int]
     UUID_FIELD_NUMBER: _ClassVar[int]
     SIZE_FIELD_NUMBER: _ClassVar[int]
@@ -218,7 +218,7 @@ class SwitchNicWithMachine(_message.Message):
     STATE_FIELD_NUMBER: _ClassVar[int]
     FAILED_RECLAIM_FIELD_NUMBER: _ClassVar[int]
     CRASHLOOP_FIELD_NUMBER: _ClassVar[int]
-    LAST_ERROR_EVENT_FIELD_NUMBER: _ClassVar[int]
+    LAST_ERROR_EVENT_TIME_FIELD_NUMBER: _ClassVar[int]
     nic: SwitchNic
     uuid: str
     size: str
@@ -230,5 +230,5 @@ class SwitchNicWithMachine(_message.Message):
     state: _machine_pb2.MachineState
     failed_reclaim: bool
     crashloop: bool
-    last_error_event: _machine_pb2.MachineProvisioningEvent
-    def __init__(self, nic: _Optional[_Union[SwitchNic, _Mapping]] = ..., uuid: _Optional[str] = ..., size: _Optional[str] = ..., allocation_hostname: _Optional[str] = ..., vpn_connected: _Optional[bool] = ..., fru_product_serial: _Optional[str] = ..., fru_chassis_part_serial: _Optional[str] = ..., liveliness: _Optional[_Union[_machine_pb2.MachineLiveliness, str]] = ..., state: _Optional[_Union[_machine_pb2.MachineState, str]] = ..., failed_reclaim: _Optional[bool] = ..., crashloop: _Optional[bool] = ..., last_error_event: _Optional[_Union[_machine_pb2.MachineProvisioningEvent, _Mapping]] = ...) -> None: ...
+    last_error_event_time: _timestamp_pb2.Timestamp
+    def __init__(self, nic: _Optional[_Union[SwitchNic, _Mapping]] = ..., uuid: _Optional[str] = ..., size: _Optional[str] = ..., allocation_hostname: _Optional[str] = ..., vpn_connected: _Optional[bool] = ..., fru_product_serial: _Optional[str] = ..., fru_chassis_part_serial: _Optional[str] = ..., liveliness: _Optional[_Union[_machine_pb2.MachineLiveliness, str]] = ..., state: _Optional[_Union[_machine_pb2.MachineState, str]] = ..., failed_reclaim: _Optional[bool] = ..., crashloop: _Optional[bool] = ..., last_error_event_time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
