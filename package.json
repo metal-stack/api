@@ -16,6 +16,8 @@
   "devDependencies": {
     "typescript": "^5.9.3"
   },
-  "files": ["js/*"],
-  "version": "0.0.40-beta.0"
+  "files": [
+    "js/*"
+  ],
+  "version": "0.0.0"
 }
