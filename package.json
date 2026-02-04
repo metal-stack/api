@@ -6,7 +6,7 @@
     "build": "tsc --project js/tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "metal-stack.io",
   "license": "MIT",
   "type": "module",
   "dependencies": {
