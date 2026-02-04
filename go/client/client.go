@@ -2,8 +2,6 @@
 package client
 
 import (
-	"sync"
-
 	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
 
@@ -22,8 +20,6 @@ type (
 		config *DialConfig
 
 		interceptors []connect.Interceptor
-
-		sync.Mutex
 	}
 	Adminv2 interface {
 		Filesystem() adminv2connect.FilesystemServiceClient
@@ -120,15 +116,17 @@ func New(config *DialConfig) (Client, error) {
 	if config.Token != "" {
 		authInterceptor := &authInterceptor{config: config}
 		c.interceptors = append(c.interceptors, authInterceptor)
+
+		if config.TokenRenewal != nil {
+			tokenRenewingInterceptor := &tokenRenewingInterceptor{config: config, client: c}
+			c.interceptors = append(c.interceptors, tokenRenewingInterceptor)
+		}
 	}
 	if config.Log != nil {
 		loggingInterceptor := &loggingInterceptor{config: config}
 		c.interceptors = append(c.interceptors, loggingInterceptor)
 	}
 	c.interceptors = append(c.interceptors, config.Interceptors...)
-
-	// TODO convert to interceptor
-	go c.startTokenRenewal()
 
 	return c, nil
 }

@@ -20,12 +20,17 @@ plugins:
     out: ../go
     opt: paths=source_relative,simple
   # python
-  - remote: buf.build/protocolbuffers/python:v33.4
+  - remote: buf.build/protocolbuffers/python:v33.5
     out: ../python
-  - remote: buf.build/protocolbuffers/pyi:v33.4
+  - remote: buf.build/protocolbuffers/pyi:v33.5
     out: ../python
   - remote: buf.build/connectrpc/python:v0.7.1
     out: ../python
+  # js
+  - remote: buf.build/bufbuild/es:v2.11.0
+    include_imports: true
+    out: ../js
+    opt: target=ts
   # docs
   - remote: buf.build/community/pseudomuto-doc:v1.5.1
     out: ../doc

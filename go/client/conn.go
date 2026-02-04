@@ -1,7 +1,6 @@
 package client
 
 import (
-	"context"
 	"errors"
 	"fmt"
 	"log/slog"
@@ -10,7 +9,6 @@ import (
 
 	"connectrpc.com/connect"
 	"github.com/golang-jwt/jwt/v5"
-	api "github.com/metal-stack/api/go/metalstack/api/v2"
 )
 
 const tokenRenewChecksDuringLifetime = 4
@@ -82,72 +80,5 @@ func (dc *DialConfig) parse() error {
 	if dc.issuedAt.IsZero() {
 		dc.issuedAt = time.Now()
 	}
-	return nil
-}
-
-func (c *client) startTokenRenewal() {
-	if c.config.TokenRenewal == nil {
-		return
-	}
-	if c.config.expiresAt.IsZero() {
-		return
-	}
-	if c.config.Log == nil {
-		c.config.Log = slog.Default()
-	}
-
-	replaceBefore := c.config.expiresAt.Sub(c.config.issuedAt) / tokenRenewChecksDuringLifetime
-
-	err := c.renewTokenIfNeeded(replaceBefore)
-	if err != nil {
-		c.config.Log.Error("unable to renew token", "error", err)
-	}
-
-	ticker := time.NewTicker(replaceBefore)
-	defer ticker.Stop()
-	done := make(chan bool)
-	for {
-		select {
-		case <-done:
-			return
-		case <-ticker.C:
-			err := c.renewTokenIfNeeded(replaceBefore)
-			if err != nil {
-				c.config.Log.Error("unable to renew token", "error", err)
-			}
-		}
-	}
-}
-
-func (c *client) renewTokenIfNeeded(replaceBefore time.Duration) error {
-	if time.Until(c.config.expiresAt) > replaceBefore {
-		return nil
-	}
-	c.config.Log.Info("call token refresh, current token expires soon", "expires", c.config.expiresAt.String())
-
-	c.Lock()
-	defer c.Unlock()
-
-	resp, err := c.Apiv2().Token().Refresh(context.Background(), &api.TokenServiceRefreshRequest{})
-	if err != nil {
-		return fmt.Errorf("unable to refresh token %w", err)
-	}
-
-	c.config.Token = resp.Secret
-	err = c.config.parse()
-	if err != nil {
-		return fmt.Errorf("unable to parse token %w", err)
-	}
-
-	if c.config.TokenRenewal.PersistTokenFn == nil {
-		return nil
-	}
-
-	err = c.config.TokenRenewal.PersistTokenFn(c.config.Token)
-	if err != nil {
-		return fmt.Errorf("unable to persist token %w", err)
-	}
-
-	c.config.Log.Info("token refreshed, new token expires in", "expires", c.config.expiresAt.String())
 	return nil
 }
