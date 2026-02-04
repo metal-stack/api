@@ -37,5 +37,5 @@ jobs:
         run: make build
 
       - name: Publish to npm
-        run: bunx npm publish --provenance # workaround for bun not supporting trusted publishing of npm (https://github.com/oven-sh/bun/issues/15601)
+        run: bunx npm@16.8.0 publish --provenance # workaround for bun not supporting trusted publishing of npm (https://github.com/oven-sh/bun/issues/15601)
         if: github.event_name == 'release'
