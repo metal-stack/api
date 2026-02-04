@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
-import type { Switch, SwitchBGPPortState, SwitchPortStatus } from "../../api/v2/switch_pb";
+import type { Duration } from "@bufbuild/protobuf/wkt";
+import type { Switch, SwitchBGPPortState, SwitchPortStatus, SwitchSync } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/infra/v2/switch.proto.
@@ -139,13 +139,13 @@ export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.Switch
     /**
      * LastSync holds information about the last sync.
      *
-     * @generated from field: metalstack.infra.v2.SwitchSync last_sync = 2;
+     * @generated from field: metalstack.api.v2.SwitchSync last_sync = 2;
      */
     lastSync?: SwitchSync;
     /**
      * LastSyncError holds information about the last erroneous sync.
      *
-     * @generated from field: metalstack.infra.v2.SwitchSync last_sync_error = 3;
+     * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 3;
      */
     lastSyncError?: SwitchSync;
 };
@@ -154,36 +154,6 @@ export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.Switch
  * Use `create(SwitchServiceHeartbeatResponseSchema)` to create a new message.
  */
 export declare const SwitchServiceHeartbeatResponseSchema: GenMessage<SwitchServiceHeartbeatResponse>;
-/**
- * SwitchSync summarizes information about a switch sync.
- *
- * @generated from message metalstack.infra.v2.SwitchSync
- */
-export type SwitchSync = Message<"metalstack.infra.v2.SwitchSync"> & {
-    /**
-     * Time of the sync.
-     *
-     * @generated from field: google.protobuf.Timestamp time = 1;
-     */
-    time?: Timestamp;
-    /**
-     * Duration of the sync.
-     *
-     * @generated from field: google.protobuf.Duration duration = 2;
-     */
-    duration?: Duration;
-    /**
-     * Error if any occurred.
-     *
-     * @generated from field: optional string error = 3;
-     */
-    error?: string;
-};
-/**
- * Describes the message metalstack.infra.v2.SwitchSync.
- * Use `create(SwitchSyncSchema)` to create a new message.
- */
-export declare const SwitchSyncSchema: GenMessage<SwitchSync>;
 /**
  * SwitchService serves switch related functions.
  *

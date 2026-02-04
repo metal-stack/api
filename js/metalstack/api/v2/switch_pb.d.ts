@@ -1,5 +1,5 @@
 import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
-import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Meta } from "./common_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -84,6 +84,18 @@ export type Switch = Message<"metalstack.api.v2.Switch"> & {
      * @generated from field: repeated metalstack.api.v2.MachineConnection machine_connections = 12;
      */
     machineConnections: MachineConnection[];
+    /**
+     * LastSync contains information about the last heartbeat of the switch.
+     *
+     * @generated from field: metalstack.api.v2.SwitchSync last_sync = 13;
+     */
+    lastSync?: SwitchSync;
+    /**
+     * LastSyncError contains information about the last unsuccessful heartbeat of the switch.
+     *
+     * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 14;
+     */
+    lastSyncError?: SwitchSync;
 };
 /**
  * Describes the message metalstack.api.v2.Switch.
@@ -360,6 +372,36 @@ export type SwitchOSQuery = Message<"metalstack.api.v2.SwitchOSQuery"> & {
  * Use `create(SwitchOSQuerySchema)` to create a new message.
  */
 export declare const SwitchOSQuerySchema: GenMessage<SwitchOSQuery>;
+/**
+ * SwitchSync summarizes information about a switch sync.
+ *
+ * @generated from message metalstack.api.v2.SwitchSync
+ */
+export type SwitchSync = Message<"metalstack.api.v2.SwitchSync"> & {
+    /**
+     * Time of the sync.
+     *
+     * @generated from field: google.protobuf.Timestamp time = 1;
+     */
+    time?: Timestamp;
+    /**
+     * Duration of the sync.
+     *
+     * @generated from field: google.protobuf.Duration duration = 2;
+     */
+    duration?: Duration;
+    /**
+     * Error if any occurred.
+     *
+     * @generated from field: optional string error = 3;
+     */
+    error?: string;
+};
+/**
+ * Describes the message metalstack.api.v2.SwitchSync.
+ * Use `create(SwitchSyncSchema)` to create a new message.
+ */
+export declare const SwitchSyncSchema: GenMessage<SwitchSync>;
 /**
  * BGPState represents the state of a BGP session.
  *

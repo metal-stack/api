@@ -35,32 +35,6 @@ jobs:
         with:
           args: -D protogetter --timeout=5m
 
-  js:
-    name: JavaScript
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v5
-
-      - name: setup bun
-        uses: oven-sh/setup-bun@v2
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: build
-        run: make build
-
-      - name: Configure npmrc auth
-        run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_TOKEN }}
-        if: github.event_name == 'release'
-
-      - name: Publish to npm
-        run: bun publish --access public
-        if: github.event_name == 'release'
-
   python:
     name: Python
     runs-on: ubuntu-latest

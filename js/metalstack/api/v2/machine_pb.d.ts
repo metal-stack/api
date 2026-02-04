@@ -1137,11 +1137,15 @@ export type MachineVPN = Message<"metalstack.api.v2.MachineVPN"> & {
     /**
      * Connected indicate if this machine is connected to the VPN
      *
-     * TODO add machine ips
-     *
      * @generated from field: bool connected = 3;
      */
     connected: boolean;
+    /**
+     * IPs of the machine connected to the vpn
+     *
+     * @generated from field: repeated string ips = 5;
+     */
+    ips: string[];
 };
 /**
  * Describes the message metalstack.api.v2.MachineVPN.
@@ -1298,6 +1302,12 @@ export type MachineAllocationQuery = Message<"metalstack.api.v2.MachineAllocatio
      * @generated from field: optional metalstack.api.v2.Labels labels = 8;
      */
     labels?: Labels;
+    /**
+     * VPN query if this machine has a vpn configuration
+     *
+     * @generated from field: optional metalstack.api.v2.MachineVPN vpn = 9;
+     */
+    vpn?: MachineVPN;
 };
 /**
  * Describes the message metalstack.api.v2.MachineAllocationQuery.

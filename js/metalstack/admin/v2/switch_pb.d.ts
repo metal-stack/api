@@ -1,7 +1,7 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { UpdateMeta } from "../../api/v2/common_pb";
-import type { MachineConnection, Switch, SwitchNic, SwitchOS, SwitchPortStatus, SwitchQuery, SwitchReplaceMode } from "../../api/v2/switch_pb";
+import type { Switch, SwitchNic, SwitchOS, SwitchPortStatus, SwitchQuery, SwitchReplaceMode } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/switch.proto.
@@ -146,12 +146,6 @@ export type SwitchServiceUpdateRequest = Message<"metalstack.admin.v2.SwitchServ
      * @generated from field: optional metalstack.api.v2.SwitchOS os = 10;
      */
     os?: SwitchOS;
-    /**
-     * MachineConnections map machines to the nics they are connected to.
-     *
-     * @generated from field: repeated metalstack.api.v2.MachineConnection machine_connections = 11;
-     */
-    machineConnections: MachineConnection[];
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceUpdateRequest.

@@ -27,6 +27,28 @@ export type UpdateBMCInfoResponse = Message<"metalstack.infra.v2.UpdateBMCInfoRe
  */
 export declare const UpdateBMCInfoResponseSchema: GenMessage<UpdateBMCInfoResponse>;
 /**
+ * WaitForMachineEventRequest
+ *
+ * @generated from message metalstack.infra.v2.WaitForMachineEventRequest
+ */
+export type WaitForMachineEventRequest = Message<"metalstack.infra.v2.WaitForMachineEventRequest"> & {};
+/**
+ * Describes the message metalstack.infra.v2.WaitForMachineEventRequest.
+ * Use `create(WaitForMachineEventRequestSchema)` to create a new message.
+ */
+export declare const WaitForMachineEventRequestSchema: GenMessage<WaitForMachineEventRequest>;
+/**
+ * WaitForMachineEventResponse
+ *
+ * @generated from message metalstack.infra.v2.WaitForMachineEventResponse
+ */
+export type WaitForMachineEventResponse = Message<"metalstack.infra.v2.WaitForMachineEventResponse"> & {};
+/**
+ * Describes the message metalstack.infra.v2.WaitForMachineEventResponse.
+ * Use `create(WaitForMachineEventResponseSchema)` to create a new message.
+ */
+export declare const WaitForMachineEventResponseSchema: GenMessage<WaitForMachineEventResponse>;
+/**
  * BMCService serves bmc related functions
  *
  * @generated from service metalstack.infra.v2.BMCService
@@ -41,5 +63,15 @@ export declare const BMCService: GenService<{
         methodKind: "unary";
         input: typeof UpdateBMCInfoRequestSchema;
         output: typeof UpdateBMCInfoResponseSchema;
+    };
+    /**
+     * WaitForMachineEvent is called by the metal-bmc and is returned with a bmc command to execute.
+     *
+     * @generated from rpc metalstack.infra.v2.BMCService.WaitForMachineEvent
+     */
+    waitForMachineEvent: {
+        methodKind: "server_streaming";
+        input: typeof WaitForMachineEventRequestSchema;
+        output: typeof WaitForMachineEventResponseSchema;
     };
 }>;
