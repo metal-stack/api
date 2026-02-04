@@ -14,6 +14,26 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  generate:
+    name: Generate
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v5
+
+    - name: Set up Go
+      uses: actions/setup-go@v6
+      with:
+        go-version-file: 'go.mod'
+        cache: false
+
+    - name: Generate
+      run: make proto generate
+
+    - name: Ensure Git is clean
+      run: |
+        git diff --exit-code --compact-summary
+
   go:
     name: Go
     runs-on: ubuntu-latest
