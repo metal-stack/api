@@ -6,7 +6,7 @@ import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegen
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
-import type { Machine, MachineQuery } from "../../api/v2/machine_pb";
+import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineQuery } from "../../api/v2/machine_pb";
 import { file_metalstack_api_v2_machine } from "../../api/v2/machine_pb";
 import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -15,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/machine.proto.
  */
 export const file_metalstack_admin_v2_machine: GenFile = /*@__PURE__*/
-  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL21hY2hpbmUucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMgoYTWFjaGluZVNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIkgKGU1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUifgoZTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBIuCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeRIjCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBSACIAQFCDAoKX3BhcnRpdGlvbiJKChpNYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZRIsCghtYWNoaW5lcxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUy9wEKDk1hY2hpbmVTZXJ2aWNlEnAKA0dldBItLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VHZXRSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUdldFJlc3BvbnNlIgrS8xgCAQLg8xgCEnMKBExpc3QSLi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdFJlcXVlc3QaLy5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgCQtABChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIMTWFjaGluZVByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL21hY2hpbmUucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMgoYTWFjaGluZVNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIkgKGU1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUifgoZTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBIuCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeRIjCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBSACIAQFCDAoKX3BhcnRpdGlvbiJKChpNYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZRIsCghtYWNoaW5lcxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiegofTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI/Cgdjb21tYW5kGAIgASgOMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ0NvbW1hbmRCCLpIBYIBAhABIiIKIE1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlc3BvbnNlIjUKG01hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJoChxNYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjAKA2JtYxgCIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNSZXBvcnQiUQocTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVxdWVzdBIxCgVxdWVyeRgBIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNRdWVyeSLfAQodTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVzcG9uc2USZgoLYm1jX3JlcG9ydHMYASADKAsyQi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdEJNQ1Jlc3BvbnNlLkJtY1JlcG9ydHNFbnRyeUINukgKmgEHIgVyA7ABARpWCg9CbWNSZXBvcnRzRW50cnkSCwoDa2V5GAEgASgJEjIKBXZhbHVlGAIgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ1JlcG9ydDoCOAEiWgokTWFjaGluZVNlcnZpY2VDb25zb2xlUGFzc3dvcmRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhoKBnJlYXNvbhgCIAEoCUIKukgHcgUQChiABCJRCiVNYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHBhc3N3b3JkGAIgASgJMv4FCg5NYWNoaW5lU2VydmljZRJwCgNHZXQSLS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0UmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VHZXRSZXNwb25zZSIK0vMYAgEC4PMYAhJzCgRMaXN0Ei4ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYAhKAAQoKQk1DQ29tbWFuZBI0Lm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVxdWVzdBo1Lm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVzcG9uc2UiBdLzGAEBEnUKBkdldEJNQxIwLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VHZXRCTUNSZXF1ZXN0GjEubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlIgbS8xgCAQISeAoHTGlzdEJNQxIxLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVxdWVzdBoyLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVzcG9uc2UiBtLzGAIBAhKQAQoPQ29uc29sZVBhc3N3b3JkEjkubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlcXVlc3QaOi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlQ29uc29sZVBhc3N3b3JkUmVzcG9uc2UiBtLzGAIBAkLQAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCDE1hY2hpbmVQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
 
 /**
  * MachineServiceGetRequest is the request payload for a machine get request
@@ -110,6 +110,197 @@ export const MachineServiceListResponseSchema: GenMessage<MachineServiceListResp
   messageDesc(file_metalstack_admin_v2_machine, 3);
 
 /**
+ * MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceBMCCommandRequest
+ */
+export type MachineServiceBMCCommandRequest = Message<"metalstack.admin.v2.MachineServiceBMCCommandRequest"> & {
+  /**
+   * UUID of the machine to send the command to
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Command to send to the bmc of the machine
+   *
+   * @generated from field: metalstack.api.v2.MachineBMCCommand command = 2;
+   */
+  command: MachineBMCCommand;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceBMCCommandRequest.
+ * Use `create(MachineServiceBMCCommandRequestSchema)` to create a new message.
+ */
+export const MachineServiceBMCCommandRequestSchema: GenMessage<MachineServiceBMCCommandRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 4);
+
+/**
+ * MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceBMCCommandResponse
+ */
+export type MachineServiceBMCCommandResponse = Message<"metalstack.admin.v2.MachineServiceBMCCommandResponse"> & {
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceBMCCommandResponse.
+ * Use `create(MachineServiceBMCCommandResponseSchema)` to create a new message.
+ */
+export const MachineServiceBMCCommandResponseSchema: GenMessage<MachineServiceBMCCommandResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 5);
+
+/**
+ * MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceGetBMCRequest
+ */
+export type MachineServiceGetBMCRequest = Message<"metalstack.admin.v2.MachineServiceGetBMCRequest"> & {
+  /**
+   * UUID of the machine to get
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceGetBMCRequest.
+ * Use `create(MachineServiceGetBMCRequestSchema)` to create a new message.
+ */
+export const MachineServiceGetBMCRequestSchema: GenMessage<MachineServiceGetBMCRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 6);
+
+/**
+ * MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceGetBMCResponse
+ */
+export type MachineServiceGetBMCResponse = Message<"metalstack.admin.v2.MachineServiceGetBMCResponse"> & {
+  /**
+   * UUID of the machine
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * BMC contains the BMC details of this machine
+   *
+   * @generated from field: metalstack.api.v2.MachineBMCReport bmc = 2;
+   */
+  bmc?: MachineBMCReport;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceGetBMCResponse.
+ * Use `create(MachineServiceGetBMCResponseSchema)` to create a new message.
+ */
+export const MachineServiceGetBMCResponseSchema: GenMessage<MachineServiceGetBMCResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 7);
+
+/**
+ * MachineServiceListBMCRequest is the request payload for a machine listbmc request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceListBMCRequest
+ */
+export type MachineServiceListBMCRequest = Message<"metalstack.admin.v2.MachineServiceListBMCRequest"> & {
+  /**
+   * Query to list one ore more bmcs of more machines
+   *
+   * @generated from field: metalstack.api.v2.MachineBMCQuery query = 1;
+   */
+  query?: MachineBMCQuery;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceListBMCRequest.
+ * Use `create(MachineServiceListBMCRequestSchema)` to create a new message.
+ */
+export const MachineServiceListBMCRequestSchema: GenMessage<MachineServiceListBMCRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 8);
+
+/**
+ * MachineServiceListBMCResponse is the response payload for a machine listbmc request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceListBMCResponse
+ */
+export type MachineServiceListBMCResponse = Message<"metalstack.admin.v2.MachineServiceListBMCResponse"> & {
+  /**
+   * BMCReports maps the bmc report per machine uuid
+   *
+   * @generated from field: map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 1;
+   */
+  bmcReports: { [key: string]: MachineBMCReport };
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceListBMCResponse.
+ * Use `create(MachineServiceListBMCResponseSchema)` to create a new message.
+ */
+export const MachineServiceListBMCResponseSchema: GenMessage<MachineServiceListBMCResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 9);
+
+/**
+ * MachineServiceConsolePasswordRequest is the request to get the console password
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceConsolePasswordRequest
+ */
+export type MachineServiceConsolePasswordRequest = Message<"metalstack.admin.v2.MachineServiceConsolePasswordRequest"> & {
+  /**
+   * UUID of the machine to get
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Reason must be provided why access to the console is requested.
+   * Reason is only forwarded to an audit sink
+   *
+   * @generated from field: string reason = 2;
+   */
+  reason: string;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceConsolePasswordRequest.
+ * Use `create(MachineServiceConsolePasswordRequestSchema)` to create a new message.
+ */
+export const MachineServiceConsolePasswordRequestSchema: GenMessage<MachineServiceConsolePasswordRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 10);
+
+/**
+ * MachineServiceConsolePasswordResponse is the response to the console password request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceConsolePasswordResponse
+ */
+export type MachineServiceConsolePasswordResponse = Message<"metalstack.admin.v2.MachineServiceConsolePasswordResponse"> & {
+  /**
+   * UUID of the machine to get
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Password to access the console
+   *
+   * @generated from field: string password = 2;
+   */
+  password: string;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceConsolePasswordResponse.
+ * Use `create(MachineServiceConsolePasswordResponseSchema)` to create a new message.
+ */
+export const MachineServiceConsolePasswordResponseSchema: GenMessage<MachineServiceConsolePasswordResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 11);
+
+/**
  * MachineService serves machine related functions
  *
  * @generated from service metalstack.admin.v2.MachineService
@@ -134,6 +325,46 @@ export const MachineService: GenService<{
     methodKind: "unary";
     input: typeof MachineServiceListRequestSchema;
     output: typeof MachineServiceListResponseSchema;
+  },
+  /**
+   * BMCCommand send a command to the bmc of a machine
+   *
+   * @generated from rpc metalstack.admin.v2.MachineService.BMCCommand
+   */
+  bMCCommand: {
+    methodKind: "unary";
+    input: typeof MachineServiceBMCCommandRequestSchema;
+    output: typeof MachineServiceBMCCommandResponseSchema;
+  },
+  /**
+   * GetBMC returns the BMC details of a machine
+   *
+   * @generated from rpc metalstack.admin.v2.MachineService.GetBMC
+   */
+  getBMC: {
+    methodKind: "unary";
+    input: typeof MachineServiceGetBMCRequestSchema;
+    output: typeof MachineServiceGetBMCResponseSchema;
+  },
+  /**
+   * ListBMC returns the BMC details of many machines
+   *
+   * @generated from rpc metalstack.admin.v2.MachineService.ListBMC
+   */
+  listBMC: {
+    methodKind: "unary";
+    input: typeof MachineServiceListBMCRequestSchema;
+    output: typeof MachineServiceListBMCResponseSchema;
+  },
+  /**
+   * ConsolePassword returns the password to access the serial console of the machine
+   *
+   * @generated from rpc metalstack.admin.v2.MachineService.ConsolePassword
+   */
+  consolePassword: {
+    methodKind: "unary";
+    input: typeof MachineServiceConsolePasswordRequestSchema;
+    output: typeof MachineServiceConsolePasswordResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_admin_v2_machine, 0);
