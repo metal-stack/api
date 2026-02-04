@@ -1,3 +1,5 @@
+VERSION_STRIPPED := $(patsubst v%,%,$(VERSION))
+
 .PHONY: install
 install:
 	bun install -dd
@@ -10,7 +12,7 @@ clean:
 build: install
 ifeq ($(CI),true)
 	cd .. &&\
-	yq e -i -o=json ".version=\"$(VERSION)\"" package.json &&\
+	yq e -i -o=json ".version=\"$(VERSION_STRIPPED)\"" package.json &&\
 	yq e -o=json ".version" package.json
 endif
 	cd .. && bun run build
