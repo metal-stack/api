@@ -1040,11 +1040,229 @@ func (x *SwitchSync) GetError() string {
 	return ""
 }
 
+// SwitchWithMachines contains a mapping from switch ports to connected machines.
+type SwitchWithMachines struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Id of the switch.
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	// Partition of the switch.
+	Partition string `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
+	// Rack of the switch.
+	Rack string `protobuf:"bytes,3,opt,name=rack,proto3" json:"rack,omitempty"`
+	// Connections associates switch ports with the machines connected to them.
+	Connections   []*SwitchNicWithMachine `protobuf:"bytes,4,rep,name=connections,proto3" json:"connections,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SwitchWithMachines) Reset() {
+	*x = SwitchWithMachines{}
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SwitchWithMachines) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SwitchWithMachines) ProtoMessage() {}
+
+func (x *SwitchWithMachines) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SwitchWithMachines.ProtoReflect.Descriptor instead.
+func (*SwitchWithMachines) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *SwitchWithMachines) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *SwitchWithMachines) GetPartition() string {
+	if x != nil {
+		return x.Partition
+	}
+	return ""
+}
+
+func (x *SwitchWithMachines) GetRack() string {
+	if x != nil {
+		return x.Rack
+	}
+	return ""
+}
+
+func (x *SwitchWithMachines) GetConnections() []*SwitchNicWithMachine {
+	if x != nil {
+		return x.Connections
+	}
+	return nil
+}
+
+// SwitchNicWithMachine associates a switch port with its connected machine.
+type SwitchNicWithMachine struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Nic is the switch nic the machine is connected to.
+	Nic *SwitchNic `protobuf:"bytes,1,opt,name=nic,proto3" json:"nic,omitempty"`
+	// Uuid of the machine.
+	Uuid string `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	// Size of the machine.
+	Size string `protobuf:"bytes,3,opt,name=size,proto3" json:"size,omitempty"`
+	// AllocationHostname if machine is allocated.
+	AllocationHostname string `protobuf:"bytes,4,opt,name=allocation_hostname,json=allocationHostname,proto3" json:"allocation_hostname,omitempty"`
+	// VpnConnected indicated whether the machine is connected to a VPN.
+	VpnConnected bool `protobuf:"varint,5,opt,name=vpn_connected,json=vpnConnected,proto3" json:"vpn_connected,omitempty"`
+	// FruProductSerial of the machine.
+	FruProductSerial string `protobuf:"bytes,6,opt,name=fru_product_serial,json=fruProductSerial,proto3" json:"fru_product_serial,omitempty"`
+	// FruChassisPartSerial of the machine.
+	FruChassisPartSerial string `protobuf:"bytes,7,opt,name=fru_chassis_part_serial,json=fruChassisPartSerial,proto3" json:"fru_chassis_part_serial,omitempty"`
+	// Liveliness of the machine.
+	Liveliness MachineLiveliness `protobuf:"varint,8,opt,name=liveliness,proto3,enum=metalstack.api.v2.MachineLiveliness" json:"liveliness,omitempty"`
+	// State of the machine.
+	State MachineState `protobuf:"varint,9,opt,name=state,proto3,enum=metalstack.api.v2.MachineState" json:"state,omitempty"`
+	// FailedReclaim is true if the machine failed to return to the waiting machines pool after deletion.
+	FailedReclaim bool `protobuf:"varint,10,opt,name=failed_reclaim,json=failedReclaim,proto3" json:"failed_reclaim,omitempty"`
+	// Crashloop is true if there was an unexpected event in the provisioning cycle.
+	Crashloop bool `protobuf:"varint,11,opt,name=crashloop,proto3" json:"crashloop,omitempty"`
+	// LastErrorEventTime in case some error happened in the past.
+	LastErrorEventTime *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=last_error_event_time,json=lastErrorEventTime,proto3" json:"last_error_event_time,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *SwitchNicWithMachine) Reset() {
+	*x = SwitchNicWithMachine{}
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SwitchNicWithMachine) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SwitchNicWithMachine) ProtoMessage() {}
+
+func (x *SwitchNicWithMachine) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SwitchNicWithMachine.ProtoReflect.Descriptor instead.
+func (*SwitchNicWithMachine) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *SwitchNicWithMachine) GetNic() *SwitchNic {
+	if x != nil {
+		return x.Nic
+	}
+	return nil
+}
+
+func (x *SwitchNicWithMachine) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
+func (x *SwitchNicWithMachine) GetSize() string {
+	if x != nil {
+		return x.Size
+	}
+	return ""
+}
+
+func (x *SwitchNicWithMachine) GetAllocationHostname() string {
+	if x != nil {
+		return x.AllocationHostname
+	}
+	return ""
+}
+
+func (x *SwitchNicWithMachine) GetVpnConnected() bool {
+	if x != nil {
+		return x.VpnConnected
+	}
+	return false
+}
+
+func (x *SwitchNicWithMachine) GetFruProductSerial() string {
+	if x != nil {
+		return x.FruProductSerial
+	}
+	return ""
+}
+
+func (x *SwitchNicWithMachine) GetFruChassisPartSerial() string {
+	if x != nil {
+		return x.FruChassisPartSerial
+	}
+	return ""
+}
+
+func (x *SwitchNicWithMachine) GetLiveliness() MachineLiveliness {
+	if x != nil {
+		return x.Liveliness
+	}
+	return MachineLiveliness_MACHINE_LIVELINESS_UNSPECIFIED
+}
+
+func (x *SwitchNicWithMachine) GetState() MachineState {
+	if x != nil {
+		return x.State
+	}
+	return MachineState_MACHINE_STATE_UNSPECIFIED
+}
+
+func (x *SwitchNicWithMachine) GetFailedReclaim() bool {
+	if x != nil {
+		return x.FailedReclaim
+	}
+	return false
+}
+
+func (x *SwitchNicWithMachine) GetCrashloop() bool {
+	if x != nil {
+		return x.Crashloop
+	}
+	return false
+}
+
+func (x *SwitchNicWithMachine) GetLastErrorEventTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LastErrorEventTime
+	}
+	return nil
+}
+
 var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xb3\x06\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xb3\x06\n" +
 	"\x06Switch\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12+\n" +
@@ -1129,7 +1347,28 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x125\n" +
 	"\bduration\x18\x02 \x01(\v2\x19.google.protobuf.DurationR\bduration\x12\x19\n" +
 	"\x05error\x18\x03 \x01(\tH\x00R\x05error\x88\x01\x01B\b\n" +
-	"\x06_error*\x89\x02\n" +
+	"\x06_error\"\xa1\x01\n" +
+	"\x12SwitchWithMachines\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
+	"\tpartition\x18\x02 \x01(\tR\tpartition\x12\x12\n" +
+	"\x04rack\x18\x03 \x01(\tR\x04rack\x12I\n" +
+	"\vconnections\x18\x04 \x03(\v2'.metalstack.api.v2.SwitchNicWithMachineR\vconnections\"\xba\x04\n" +
+	"\x14SwitchNicWithMachine\x12.\n" +
+	"\x03nic\x18\x01 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\x12\x12\n" +
+	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x12\n" +
+	"\x04size\x18\x03 \x01(\tR\x04size\x12/\n" +
+	"\x13allocation_hostname\x18\x04 \x01(\tR\x12allocationHostname\x12#\n" +
+	"\rvpn_connected\x18\x05 \x01(\bR\fvpnConnected\x12,\n" +
+	"\x12fru_product_serial\x18\x06 \x01(\tR\x10fruProductSerial\x125\n" +
+	"\x17fru_chassis_part_serial\x18\a \x01(\tR\x14fruChassisPartSerial\x12D\n" +
+	"\n" +
+	"liveliness\x18\b \x01(\x0e2$.metalstack.api.v2.MachineLivelinessR\n" +
+	"liveliness\x125\n" +
+	"\x05state\x18\t \x01(\x0e2\x1f.metalstack.api.v2.MachineStateR\x05state\x12%\n" +
+	"\x0efailed_reclaim\x18\n" +
+	" \x01(\bR\rfailedReclaim\x12\x1c\n" +
+	"\tcrashloop\x18\v \x01(\bR\tcrashloop\x12M\n" +
+	"\x15last_error_event_time\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\x12lastErrorEventTime*\x89\x02\n" +
 	"\bBGPState\x12\x19\n" +
 	"\x15BGP_STATE_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x0eBGP_STATE_IDLE\x10\x01\x1a\b\x82\xb2\x19\x04Idle\x12\"\n" +
@@ -1167,7 +1406,7 @@ func file_metalstack_api_v2_switch_proto_rawDescGZIP() []byte {
 }
 
 var file_metalstack_api_v2_switch_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_metalstack_api_v2_switch_proto_goTypes = []any{
 	(BGPState)(0),                 // 0: metalstack.api.v2.BGPState
 	(SwitchReplaceMode)(0),        // 1: metalstack.api.v2.SwitchReplaceMode
@@ -1183,12 +1422,16 @@ var file_metalstack_api_v2_switch_proto_goTypes = []any{
 	(*SwitchQuery)(nil),           // 11: metalstack.api.v2.SwitchQuery
 	(*SwitchOSQuery)(nil),         // 12: metalstack.api.v2.SwitchOSQuery
 	(*SwitchSync)(nil),            // 13: metalstack.api.v2.SwitchSync
-	(*Meta)(nil),                  // 14: metalstack.api.v2.Meta
-	(*timestamppb.Timestamp)(nil), // 15: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),   // 16: google.protobuf.Duration
+	(*SwitchWithMachines)(nil),    // 14: metalstack.api.v2.SwitchWithMachines
+	(*SwitchNicWithMachine)(nil),  // 15: metalstack.api.v2.SwitchNicWithMachine
+	(*Meta)(nil),                  // 16: metalstack.api.v2.Meta
+	(*timestamppb.Timestamp)(nil), // 17: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),   // 18: google.protobuf.Duration
+	(MachineLiveliness)(0),        // 19: metalstack.api.v2.MachineLiveliness
+	(MachineState)(0),             // 20: metalstack.api.v2.MachineState
 }
 var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
-	14, // 0: metalstack.api.v2.Switch.meta:type_name -> metalstack.api.v2.Meta
+	16, // 0: metalstack.api.v2.Switch.meta:type_name -> metalstack.api.v2.Meta
 	1,  // 1: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
 	6,  // 2: metalstack.api.v2.Switch.nics:type_name -> metalstack.api.v2.SwitchNic
 	5,  // 3: metalstack.api.v2.Switch.os:type_name -> metalstack.api.v2.SwitchOS
@@ -1200,19 +1443,24 @@ var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	7,  // 9: metalstack.api.v2.SwitchNic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
 	8,  // 10: metalstack.api.v2.SwitchNic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
 	0,  // 11: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
-	15, // 12: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Timestamp
+	17, // 12: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Timestamp
 	3,  // 13: metalstack.api.v2.NicState.desired:type_name -> metalstack.api.v2.SwitchPortStatus
 	3,  // 14: metalstack.api.v2.NicState.actual:type_name -> metalstack.api.v2.SwitchPortStatus
 	6,  // 15: metalstack.api.v2.MachineConnection.nic:type_name -> metalstack.api.v2.SwitchNic
 	12, // 16: metalstack.api.v2.SwitchQuery.os:type_name -> metalstack.api.v2.SwitchOSQuery
 	2,  // 17: metalstack.api.v2.SwitchOSQuery.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
-	15, // 18: metalstack.api.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
-	16, // 19: metalstack.api.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
-	20, // [20:20] is the sub-list for method output_type
-	20, // [20:20] is the sub-list for method input_type
-	20, // [20:20] is the sub-list for extension type_name
-	20, // [20:20] is the sub-list for extension extendee
-	0,  // [0:20] is the sub-list for field type_name
+	17, // 18: metalstack.api.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
+	18, // 19: metalstack.api.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
+	15, // 20: metalstack.api.v2.SwitchWithMachines.connections:type_name -> metalstack.api.v2.SwitchNicWithMachine
+	6,  // 21: metalstack.api.v2.SwitchNicWithMachine.nic:type_name -> metalstack.api.v2.SwitchNic
+	19, // 22: metalstack.api.v2.SwitchNicWithMachine.liveliness:type_name -> metalstack.api.v2.MachineLiveliness
+	20, // 23: metalstack.api.v2.SwitchNicWithMachine.state:type_name -> metalstack.api.v2.MachineState
+	17, // 24: metalstack.api.v2.SwitchNicWithMachine.last_error_event_time:type_name -> google.protobuf.Timestamp
+	25, // [25:25] is the sub-list for method output_type
+	25, // [25:25] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_switch_proto_init() }
@@ -1221,6 +1469,7 @@ func file_metalstack_api_v2_switch_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
+	file_metalstack_api_v2_machine_proto_init()
 	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_switch_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[2].OneofWrappers = []any{}
@@ -1234,7 +1483,7 @@ func file_metalstack_api_v2_switch_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_switch_proto_rawDesc), len(file_metalstack_api_v2_switch_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

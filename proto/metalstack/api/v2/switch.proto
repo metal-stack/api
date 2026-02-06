@@ -6,6 +6,7 @@ import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/machine.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
 // Switch represents a network switch.
@@ -153,6 +154,46 @@ message SwitchSync {
   google.protobuf.Duration duration = 2;
   // Error if any occurred.
   optional string error = 3;
+}
+
+// SwitchWithMachines contains a mapping from switch ports to connected machines.
+message SwitchWithMachines {
+  // Id of the switch.
+  string id = 1;
+  // Partition of the switch.
+  string partition = 2;
+  // Rack of the switch.
+  string rack = 3;
+  // Connections associates switch ports with the machines connected to them.
+  repeated SwitchNicWithMachine connections = 4;
+}
+
+// SwitchNicWithMachine associates a switch port with its connected machine.
+message SwitchNicWithMachine {
+  // Nic is the switch nic the machine is connected to.
+  SwitchNic nic = 1;
+  // Uuid of the machine.
+  string uuid = 2;
+  // Size of the machine.
+  string size = 3;
+  // AllocationHostname if machine is allocated.
+  string allocation_hostname = 4;
+  // VpnConnected indicated whether the machine is connected to a VPN.
+  bool vpn_connected = 5;
+  // FruProductSerial of the machine.
+  string fru_product_serial = 6;
+  // FruChassisPartSerial of the machine.
+  string fru_chassis_part_serial = 7;
+  // Liveliness of the machine.
+  metalstack.api.v2.MachineLiveliness liveliness = 8;
+  // State of the machine.
+  metalstack.api.v2.MachineState state = 9;
+  // FailedReclaim is true if the machine failed to return to the waiting machines pool after deletion.
+  bool failed_reclaim = 10;
+  // Crashloop is true if there was an unexpected event in the provisioning cycle.
+  bool crashloop = 11;
+  // LastErrorEventTime in case some error happened in the past.
+  google.protobuf.Timestamp last_error_event_time = 12;
 }
 
 // BGPState represents the state of a BGP session.
