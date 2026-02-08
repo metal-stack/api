@@ -29,10 +29,7 @@ service ImageService {
 // ImageServiceGetRequest is the request payload for a image get request
 message ImageServiceGetRequest {
   // ID of the image to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // ImageServiceListRequest is the request payload for a image list request
@@ -69,10 +66,7 @@ message ImageServiceLatestResponse {
 // Image
 message Image {
   // Id of this imageLayout
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Meta for this ip
   Meta meta = 2;
   // URL where this image is located
@@ -106,10 +100,7 @@ message ImageUsage {
 // ImageQuery is used to search images
 message ImageQuery {
   // ID of the image to get
-  optional string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // OS of the image
   optional string os = 2 [(buf.validate.field).string = {
     min_len: 2

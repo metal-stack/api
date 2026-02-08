@@ -545,9 +545,9 @@ const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"kernel_url\x18\x02 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01R\tkernelUrl\x12 \n" +
 	"\vcommandline\x18\x03 \x01(\tR\vcommandline\"$\n" +
 	"\tDNSServer\x12\x17\n" +
-	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\"/\n" +
-	"\tNTPServer\x12\"\n" +
-	"\aaddress\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\aaddress\"9\n" +
+	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\"2\n" +
+	"\tNTPServer\x12%\n" +
+	"\aaddress\x18\x01 \x01(\tB\v\xbaH\br\x06賮\xb1\x02\x01R\aaddress\"9\n" +
 	"\x1aPartitionServiceGetRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\"V\n" +
 	"\x1bPartitionServiceListRequest\x127\n" +
