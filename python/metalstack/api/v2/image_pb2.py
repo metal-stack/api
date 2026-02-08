@@ -28,7 +28,7 @@ from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common
 from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/api/v2/image.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"4\n\x16ImageServiceGetRequest\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\"N\n\x17ImageServiceListRequest\x12\x33\n\x05query\x18\x01 \x01(\x0b\x32\x1d.metalstack.api.v2.ImageQueryR\x05query\"+\n\x19ImageServiceLatestRequest\x12\x0e\n\x02os\x18\x01 \x01(\tR\x02os\"I\n\x17ImageServiceGetResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"L\n\x18ImageServiceListResponse\x12\x30\n\x06images\x18\x01 \x03(\x0b\x32\x18.metalstack.api.v2.ImageR\x06images\"L\n\x1aImageServiceLatestResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"\xc5\x03\n\x05Image\x12\x1a\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x02id\x12+\n\x04meta\x18\x02 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\x12\x1d\n\x03url\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xe0\xb3\xae\xb1\x02\x01R\x03url\x12$\n\x04name\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x12\x32\n\x0b\x64\x65scription\x18\x05 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x01R\x0b\x64\x65scription\x88\x01\x01\x12L\n\x08\x66\x65\x61tures\x18\x06 \x03(\x0e\x32\x1f.metalstack.api.v2.ImageFeatureB\x0f\xbaH\x0c\x92\x01\t\x18\x01\"\x05\x82\x01\x02\x10\x01R\x08\x66\x65\x61tures\x12X\n\x0e\x63lassification\x18\x07 \x01(\x0e\x32&.metalstack.api.v2.ImageClassificationB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x0e\x63lassification\x12\x39\n\nexpires_at\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\texpiresAtB\x07\n\x05_nameB\x0e\n\x0c_description\"U\n\nImageUsage\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\x12\x17\n\x07used_by\x18\x02 \x03(\tR\x06usedBy\"\xbd\x04\n\nImageQuery\x12\x1f\n\x02id\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12\x1f\n\x02os\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x01R\x02os\x88\x01\x01\x12)\n\x07version\x18\x03 \x01(\tB\n\xbaH\x07r\x05\x10\x01\x18\x80\x01H\x02R\x07version\x88\x01\x01\x12$\n\x04name\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x03R\x04name\x88\x01\x01\x12\x32\n\x0b\x64\x65scription\x18\x05 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x04R\x0b\x64\x65scription\x88\x01\x01\x12\"\n\x03url\x18\x06 \x01(\tB\x0b\xbaH\x08r\x06\xe0\xb3\xae\xb1\x02\x01H\x05R\x03url\x88\x01\x01\x12H\n\x07\x66\x65\x61ture\x18\x07 \x01(\x0e\x32\x1f.metalstack.api.v2.ImageFeatureB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x06R\x07\x66\x65\x61ture\x88\x01\x01\x12]\n\x0e\x63lassification\x18\x08 \x01(\x0e\x32&.metalstack.api.v2.ImageClassificationB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x07R\x0e\x63lassification\x88\x01\x01\x12\x36\n\x06labels\x18\t \x01(\x0b\x32\x19.metalstack.api.v2.LabelsH\x08R\x06labels\x88\x01\x01\x42\x05\n\x03_idB\x05\n\x03_osB\n\n\x08_versionB\x07\n\x05_nameB\x0e\n\x0c_descriptionB\x06\n\x04_urlB\n\n\x08_featureB\x11\n\x0f_classificationB\t\n\x07_labels*\x7f\n\x0cImageFeature\x12\x1d\n\x19IMAGE_FEATURE_UNSPECIFIED\x10\x00\x12&\n\x15IMAGE_FEATURE_MACHINE\x10\x01\x1a\x0b\x82\xb2\x19\x07machine\x12(\n\x16IMAGE_FEATURE_FIREWALL\x10\x02\x1a\x0c\x82\xb2\x19\x08\x66irewall*\xd2\x01\n\x13ImageClassification\x12$\n IMAGE_CLASSIFICATION_UNSPECIFIED\x10\x00\x12-\n\x1cIMAGE_CLASSIFICATION_PREVIEW\x10\x01\x1a\x0b\x82\xb2\x19\x07preview\x12\x31\n\x1eIMAGE_CLASSIFICATION_SUPPORTED\x10\x02\x1a\r\x82\xb2\x19\tsupported\x12\x33\n\x1fIMAGE_CLASSIFICATION_DEPRECATED\x10\x03\x1a\x0e\x82\xb2\x19\ndeprecated2\xd2\x02\n\x0cImageService\x12\x66\n\x03Get\x12).metalstack.api.v2.ImageServiceGetRequest\x1a*.metalstack.api.v2.ImageServiceGetResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12i\n\x04List\x12*.metalstack.api.v2.ImageServiceListRequest\x1a+.metalstack.api.v2.ImageServiceListResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12o\n\x06Latest\x12,.metalstack.api.v2.ImageServiceLatestRequest\x1a-.metalstack.api.v2.ImageServiceLatestResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x42\xc0\x01\n\x15\x63om.metalstack.api.v2B\nImageProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/api/v2/image.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"5\n\x16ImageServiceGetRequest\x12\x1b\n\x02id\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"N\n\x17ImageServiceListRequest\x12\x33\n\x05query\x18\x01 \x01(\x0b\x32\x1d.metalstack.api.v2.ImageQueryR\x05query\"+\n\x19ImageServiceLatestRequest\x12\x0e\n\x02os\x18\x01 \x01(\tR\x02os\"I\n\x17ImageServiceGetResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"L\n\x18ImageServiceListResponse\x12\x30\n\x06images\x18\x01 \x03(\x0b\x32\x18.metalstack.api.v2.ImageR\x06images\"L\n\x1aImageServiceLatestResponse\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\"\xc6\x03\n\x05Image\x12\x1b\n\x02id\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12+\n\x04meta\x18\x02 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\x12\x1d\n\x03url\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xe0\xb3\xae\xb1\x02\x01R\x03url\x12$\n\x04name\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x12\x32\n\x0b\x64\x65scription\x18\x05 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x01R\x0b\x64\x65scription\x88\x01\x01\x12L\n\x08\x66\x65\x61tures\x18\x06 \x03(\x0e\x32\x1f.metalstack.api.v2.ImageFeatureB\x0f\xbaH\x0c\x92\x01\t\x18\x01\"\x05\x82\x01\x02\x10\x01R\x08\x66\x65\x61tures\x12X\n\x0e\x63lassification\x18\x07 \x01(\x0e\x32&.metalstack.api.v2.ImageClassificationB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x0e\x63lassification\x12\x39\n\nexpires_at\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\texpiresAtB\x07\n\x05_nameB\x0e\n\x0c_description\"U\n\nImageUsage\x12.\n\x05image\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.ImageR\x05image\x12\x17\n\x07used_by\x18\x02 \x03(\tR\x06usedBy\"\xbe\x04\n\nImageQuery\x12 \n\x02id\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x02id\x88\x01\x01\x12\x1f\n\x02os\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01H\x01R\x02os\x88\x01\x01\x12)\n\x07version\x18\x03 \x01(\tB\n\xbaH\x07r\x05\x10\x01\x18\x80\x01H\x02R\x07version\x88\x01\x01\x12$\n\x04name\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x03R\x04name\x88\x01\x01\x12\x32\n\x0b\x64\x65scription\x18\x05 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x04R\x0b\x64\x65scription\x88\x01\x01\x12\"\n\x03url\x18\x06 \x01(\tB\x0b\xbaH\x08r\x06\xe0\xb3\xae\xb1\x02\x01H\x05R\x03url\x88\x01\x01\x12H\n\x07\x66\x65\x61ture\x18\x07 \x01(\x0e\x32\x1f.metalstack.api.v2.ImageFeatureB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x06R\x07\x66\x65\x61ture\x88\x01\x01\x12]\n\x0e\x63lassification\x18\x08 \x01(\x0e\x32&.metalstack.api.v2.ImageClassificationB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x07R\x0e\x63lassification\x88\x01\x01\x12\x36\n\x06labels\x18\t \x01(\x0b\x32\x19.metalstack.api.v2.LabelsH\x08R\x06labels\x88\x01\x01\x42\x05\n\x03_idB\x05\n\x03_osB\n\n\x08_versionB\x07\n\x05_nameB\x0e\n\x0c_descriptionB\x06\n\x04_urlB\n\n\x08_featureB\x11\n\x0f_classificationB\t\n\x07_labels*\x7f\n\x0cImageFeature\x12\x1d\n\x19IMAGE_FEATURE_UNSPECIFIED\x10\x00\x12&\n\x15IMAGE_FEATURE_MACHINE\x10\x01\x1a\x0b\x82\xb2\x19\x07machine\x12(\n\x16IMAGE_FEATURE_FIREWALL\x10\x02\x1a\x0c\x82\xb2\x19\x08\x66irewall*\xd2\x01\n\x13ImageClassification\x12$\n IMAGE_CLASSIFICATION_UNSPECIFIED\x10\x00\x12-\n\x1cIMAGE_CLASSIFICATION_PREVIEW\x10\x01\x1a\x0b\x82\xb2\x19\x07preview\x12\x31\n\x1eIMAGE_CLASSIFICATION_SUPPORTED\x10\x02\x1a\r\x82\xb2\x19\tsupported\x12\x33\n\x1fIMAGE_CLASSIFICATION_DEPRECATED\x10\x03\x1a\x0e\x82\xb2\x19\ndeprecated2\xd2\x02\n\x0cImageService\x12\x66\n\x03Get\x12).metalstack.api.v2.ImageServiceGetRequest\x1a*.metalstack.api.v2.ImageServiceGetResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12i\n\x04List\x12*.metalstack.api.v2.ImageServiceListRequest\x1a+.metalstack.api.v2.ImageServiceListResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12o\n\x06Latest\x12,.metalstack.api.v2.ImageServiceLatestRequest\x1a-.metalstack.api.v2.ImageServiceLatestResponse\"\x08\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x42\xc0\x01\n\x15\x63om.metalstack.api.v2B\nImageProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -47,9 +47,9 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_IMAGECLASSIFICATION'].values_by_name["IMAGE_CLASSIFICATION_DEPRECATED"]._loaded_options = None
   _globals['_IMAGECLASSIFICATION'].values_by_name["IMAGE_CLASSIFICATION_DEPRECATED"]._serialized_options = b'\202\262\031\ndeprecated'
   _globals['_IMAGESERVICEGETREQUEST'].fields_by_name['id']._loaded_options = None
-  _globals['_IMAGESERVICEGETREQUEST'].fields_by_name['id']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
+  _globals['_IMAGESERVICEGETREQUEST'].fields_by_name['id']._serialized_options = b'\272H\010r\006\300\263\256\261\002\001'
   _globals['_IMAGE'].fields_by_name['id']._loaded_options = None
-  _globals['_IMAGE'].fields_by_name['id']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
+  _globals['_IMAGE'].fields_by_name['id']._serialized_options = b'\272H\010r\006\300\263\256\261\002\001'
   _globals['_IMAGE'].fields_by_name['url']._loaded_options = None
   _globals['_IMAGE'].fields_by_name['url']._serialized_options = b'\272H\010r\006\340\263\256\261\002\001'
   _globals['_IMAGE'].fields_by_name['name']._loaded_options = None
@@ -61,7 +61,7 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_IMAGE'].fields_by_name['classification']._loaded_options = None
   _globals['_IMAGE'].fields_by_name['classification']._serialized_options = b'\272H\005\202\001\002\020\001'
   _globals['_IMAGEQUERY'].fields_by_name['id']._loaded_options = None
-  _globals['_IMAGEQUERY'].fields_by_name['id']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
+  _globals['_IMAGEQUERY'].fields_by_name['id']._serialized_options = b'\272H\010r\006\300\263\256\261\002\001'
   _globals['_IMAGEQUERY'].fields_by_name['os']._loaded_options = None
   _globals['_IMAGEQUERY'].fields_by_name['os']._serialized_options = b'\272H\007r\005\020\002\030\200\001'
   _globals['_IMAGEQUERY'].fields_by_name['version']._loaded_options = None
@@ -82,28 +82,28 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_IMAGESERVICE'].methods_by_name['List']._serialized_options = b'\330\363\030\003\340\363\030\002'
   _globals['_IMAGESERVICE'].methods_by_name['Latest']._loaded_options = None
   _globals['_IMAGESERVICE'].methods_by_name['Latest']._serialized_options = b'\330\363\030\003\340\363\030\002'
-  _globals['_IMAGEFEATURE']._serialized_start=1717
-  _globals['_IMAGEFEATURE']._serialized_end=1844
-  _globals['_IMAGECLASSIFICATION']._serialized_start=1847
-  _globals['_IMAGECLASSIFICATION']._serialized_end=2057
+  _globals['_IMAGEFEATURE']._serialized_start=1720
+  _globals['_IMAGEFEATURE']._serialized_end=1847
+  _globals['_IMAGECLASSIFICATION']._serialized_start=1850
+  _globals['_IMAGECLASSIFICATION']._serialized_end=2060
   _globals['_IMAGESERVICEGETREQUEST']._serialized_start=188
-  _globals['_IMAGESERVICEGETREQUEST']._serialized_end=240
-  _globals['_IMAGESERVICELISTREQUEST']._serialized_start=242
-  _globals['_IMAGESERVICELISTREQUEST']._serialized_end=320
-  _globals['_IMAGESERVICELATESTREQUEST']._serialized_start=322
-  _globals['_IMAGESERVICELATESTREQUEST']._serialized_end=365
-  _globals['_IMAGESERVICEGETRESPONSE']._serialized_start=367
-  _globals['_IMAGESERVICEGETRESPONSE']._serialized_end=440
-  _globals['_IMAGESERVICELISTRESPONSE']._serialized_start=442
-  _globals['_IMAGESERVICELISTRESPONSE']._serialized_end=518
-  _globals['_IMAGESERVICELATESTRESPONSE']._serialized_start=520
-  _globals['_IMAGESERVICELATESTRESPONSE']._serialized_end=596
-  _globals['_IMAGE']._serialized_start=599
-  _globals['_IMAGE']._serialized_end=1052
-  _globals['_IMAGEUSAGE']._serialized_start=1054
-  _globals['_IMAGEUSAGE']._serialized_end=1139
-  _globals['_IMAGEQUERY']._serialized_start=1142
-  _globals['_IMAGEQUERY']._serialized_end=1715
-  _globals['_IMAGESERVICE']._serialized_start=2060
-  _globals['_IMAGESERVICE']._serialized_end=2398
+  _globals['_IMAGESERVICEGETREQUEST']._serialized_end=241
+  _globals['_IMAGESERVICELISTREQUEST']._serialized_start=243
+  _globals['_IMAGESERVICELISTREQUEST']._serialized_end=321
+  _globals['_IMAGESERVICELATESTREQUEST']._serialized_start=323
+  _globals['_IMAGESERVICELATESTREQUEST']._serialized_end=366
+  _globals['_IMAGESERVICEGETRESPONSE']._serialized_start=368
+  _globals['_IMAGESERVICEGETRESPONSE']._serialized_end=441
+  _globals['_IMAGESERVICELISTRESPONSE']._serialized_start=443
+  _globals['_IMAGESERVICELISTRESPONSE']._serialized_end=519
+  _globals['_IMAGESERVICELATESTRESPONSE']._serialized_start=521
+  _globals['_IMAGESERVICELATESTRESPONSE']._serialized_end=597
+  _globals['_IMAGE']._serialized_start=600
+  _globals['_IMAGE']._serialized_end=1054
+  _globals['_IMAGEUSAGE']._serialized_start=1056
+  _globals['_IMAGEUSAGE']._serialized_end=1141
+  _globals['_IMAGEQUERY']._serialized_start=1144
+  _globals['_IMAGEQUERY']._serialized_end=1718
+  _globals['_IMAGESERVICE']._serialized_start=2063
+  _globals['_IMAGESERVICE']._serialized_end=2401
 # @@protoc_insertion_point(module_scope)

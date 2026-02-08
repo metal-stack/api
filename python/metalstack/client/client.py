@@ -10,6 +10,7 @@ import metalstack.admin.v2.network_connect as admin_network_connect
 import metalstack.admin.v2.partition_connect as admin_partition_connect
 import metalstack.admin.v2.project_connect as admin_project_connect
 import metalstack.admin.v2.size_connect as admin_size_connect
+import metalstack.admin.v2.sizereservation_connect as admin_sizereservation_connect
 import metalstack.admin.v2.switch_connect as admin_switch_connect
 import metalstack.admin.v2.task_connect as admin_task_connect
 import metalstack.admin.v2.tenant_connect as admin_tenant_connect
@@ -26,6 +27,7 @@ import metalstack.api.v2.network_connect as api_network_connect
 import metalstack.api.v2.partition_connect as api_partition_connect
 import metalstack.api.v2.project_connect as api_project_connect
 import metalstack.api.v2.size_connect as api_size_connect
+import metalstack.api.v2.sizereservation_connect as api_sizereservation_connect
 import metalstack.api.v2.tenant_connect as api_tenant_connect
 import metalstack.api.v2.token_connect as api_token_connect
 import metalstack.api.v2.user_connect as api_user_connect
@@ -91,6 +93,9 @@ class Client:
         def size(self):
             return admin_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client)
 
+        def sizereservation(self):
+            return admin_sizereservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client)
+
         def switch(self):
             return admin_switch_connect.SwitchServiceClientSync(address=self._baseurl, http_client=self._client)
 
@@ -142,6 +147,9 @@ class Client:
 
         def size(self):
             return api_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client)
+
+        def sizereservation(self):
+            return api_sizereservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client)
 
         def tenant(self):
             return api_tenant_connect.TenantServiceClientSync(address=self._baseurl, http_client=self._client)

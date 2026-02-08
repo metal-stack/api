@@ -352,10 +352,9 @@ const file_metalstack_admin_v2_size_proto_rawDesc = "" +
 	"\x18SizeServiceCreateRequest\x12+\n" +
 	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"H\n" +
 	"\x19SizeServiceCreateResponse\x12+\n" +
-	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"\xff\x02\n" +
-	"\x18SizeServiceUpdateRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
+	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"\x80\x03\n" +
+	"\x18SizeServiceUpdateRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
 	"updateMeta\x12$\n" +
 	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
@@ -366,10 +365,9 @@ const file_metalstack_admin_v2_size_proto_rawDesc = "" +
 	"\f_descriptionB\t\n" +
 	"\a_labels\"H\n" +
 	"\x19SizeServiceUpdateResponse\x12+\n" +
-	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"6\n" +
-	"\x18SizeServiceDeleteRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"H\n" +
+	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\"7\n" +
+	"\x18SizeServiceDeleteRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"H\n" +
 	"\x19SizeServiceDeleteResponse\x12+\n" +
 	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size2\xdd\x02\n" +
 	"\vSizeService\x12n\n" +

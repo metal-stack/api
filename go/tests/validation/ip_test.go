@@ -19,7 +19,7 @@ func TestValidateIP(t *testing.T) {
  - uuid: value must be a valid UUID
  - ip: value is empty, which is not a valid IP address
  - name: must be within 2 and 128 characters
- - network: value length must be at least 2 characters
+ - network: must be within 2 and 128 characters
  - project: value is empty, which is not a valid UUID`,
 		},
 		{
@@ -32,7 +32,7 @@ func TestValidateIP(t *testing.T) {
 			wantErrorMessage: `validation errors:
  - ip: value is empty, which is not a valid IP address
  - name: must be within 2 and 128 characters
- - network: value length must be at least 2 characters
+ - network: must be within 2 and 128 characters
  - project: value is empty, which is not a valid UUID`,
 		},
 		{
@@ -45,7 +45,7 @@ func TestValidateIP(t *testing.T) {
 			wantErr: true,
 			wantErrorMessage: `validation errors:
  - name: must be within 2 and 128 characters
- - network: value length must be at least 2 characters
+ - network: must be within 2 and 128 characters
  - project: value is empty, which is not a valid UUID`,
 		},
 		{
@@ -58,7 +58,7 @@ func TestValidateIP(t *testing.T) {
 			wantErr: true,
 			wantErrorMessage: `validation errors:
  - name: must be within 2 and 128 characters
- - network: value length must be at least 2 characters
+ - network: must be within 2 and 128 characters
  - project: value is empty, which is not a valid UUID`,
 		},
 		{
@@ -71,7 +71,7 @@ func TestValidateIP(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation errors:
- - network: value length must be at least 2 characters
+ - network: must be within 2 and 128 characters
  - project: value is empty, which is not a valid UUID`,
 		},
 		{
@@ -136,7 +136,7 @@ func TestValidateIP(t *testing.T) {
 			msg:     &apiv2.IPServiceCreateRequest{},
 			wantErr: true,
 			wantErrorMessage: `validation errors:
- - network: value length must be at least 2 characters
+ - network: must be within 2 and 128 characters
  - project: value is empty, which is not a valid UUID`,
 		},
 		{

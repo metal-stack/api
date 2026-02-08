@@ -4,6 +4,7 @@ package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/project.proto";
 
 // ProjectService serves project related functions
@@ -19,10 +20,7 @@ service ProjectService {
 // ProjectServiceListRequest is the request payload for the project list request
 message ProjectServiceListRequest {
   // Tenant lists only projects of this tenant
-  optional string tenant = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string tenant = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Labels lists only projects containing the given labels
   optional metalstack.api.v2.Labels labels = 2;
 }
