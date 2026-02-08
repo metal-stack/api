@@ -1333,13 +1333,11 @@ var File_metalstack_api_v2_filesystem_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\n" +
-	"\"metalstack/api/v2/filesystem.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"9\n" +
-	"\x1bFilesystemServiceGetRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"F\n" +
-	"\x1cFilesystemServiceListRequest\x12\x1f\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\"metalstack/api/v2/filesystem.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\":\n" +
+	"\x1bFilesystemServiceGetRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"G\n" +
+	"\x1cFilesystemServiceListRequest\x12 \n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x02id\x88\x01\x01B\x05\n" +
 	"\x03_id\"p\n" +
 	"\x1cFilesystemServiceGetResponse\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
@@ -1348,21 +1346,17 @@ const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\x1dFilesystemServiceMatchRequest\x12L\n" +
 	"\x0esize_and_image\x18\x01 \x01(\v2$.metalstack.api.v2.MatchImageAndSizeH\x00R\fsizeAndImage\x12c\n" +
 	"\x1cmachine_and_filesystemlayout\x18\x02 \x01(\v2\x1f.metalstack.api.v2.MatchMachineH\x00R\x1amachineAndFilesystemlayoutB\a\n" +
-	"\x05match\"U\n" +
-	"\x11MatchImageAndSize\x12\x1e\n" +
-	"\x04size\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x04size\x12 \n" +
-	"\x05image\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x05image\"k\n" +
+	"\x05match\"W\n" +
+	"\x11MatchImageAndSize\x12\x1f\n" +
+	"\x04size\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04size\x12!\n" +
+	"\x05image\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x05image\"l\n" +
 	"\fMatchMachine\x12\"\n" +
-	"\amachine\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\amachine\x127\n" +
-	"\x11filesystem_layout\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x10filesystemLayout\"r\n" +
+	"\amachine\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\amachine\x128\n" +
+	"\x11filesystem_layout\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x10filesystemLayout\"r\n" +
 	"\x1eFilesystemServiceMatchResponse\x12P\n" +
-	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xcd\x04\n" +
-	"\x10FilesystemLayout\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12+\n" +
+	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"\xce\x04\n" +
+	"\x10FilesystemLayout\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12$\n" +
 	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
 	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12?\n" +
@@ -1380,11 +1374,10 @@ const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\x06images\x18\x02 \x03(\v2:.metalstack.api.v2.FilesystemLayoutConstraints.ImagesEntryR\x06images\x1a9\n" +
 	"\vImagesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb8\x03\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb9\x03\n" +
 	"\n" +
-	"Filesystem\x12\"\n" +
-	"\x06device\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x06device\x12>\n" +
+	"Filesystem\x12#\n" +
+	"\x06device\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x06device\x12>\n" +
 	"\x06format\x18\x02 \x01(\x0e2\x19.metalstack.api.v2.FormatB\v\xbaH\b\xc8\x01\x01\x82\x01\x02\x10\x01R\x06format\x12$\n" +
 	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
 	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12#\n" +

@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+import "metalstack/api/v2/size_reservation.proto";
+
+// SizeReservationService serves size reservation related functions
+service SizeReservationService {
+  // Create a size reservation
+  rpc Create(SizeReservationServiceCreateRequest) returns (SizeReservationServiceCreateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Update a size reservation
+  rpc Update(SizeReservationServiceUpdateRequest) returns (SizeReservationServiceUpdateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Delete a size reservation
+  rpc Delete(SizeReservationServiceDeleteRequest) returns (SizeReservationServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // List size reservations
+  rpc List(SizeReservationServiceListRequest) returns (SizeReservationServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// SizeReservationServiceCreateRequest is the request payload for a size reservation create request
+message SizeReservationServiceCreateRequest {
+  // SizeReservation is the size reservation to create
+  metalstack.api.v2.SizeReservation size_reservation = 1;
+}
+
+// SizeReservationServiceCreateResponse is the response payload for a size reservation create request
+message SizeReservationServiceCreateResponse {
+  // SizeReservation the size reservation
+  metalstack.api.v2.SizeReservation size_reservation = 1;
+}
+
+// SizeReservationServiceUpdateRequest is the request payload for a size reservation update request
+message SizeReservationServiceUpdateRequest {
+  // Id of this size reservation
+  string id = 1 [(buf.validate.field).string.uuid = true];
+  // Name of this size reservation
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Description of this size reservation
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  metalstack.api.v2.UpdateMeta update_meta = 4 [(buf.validate.field).required = true];
+  // Partition ids of this size reservation
+  repeated string partitions = 5 [
+    (buf.validate.field).repeated.unique = true,
+    (buf.validate.field).repeated.items.string.(metalstack.api.v2.is_partition) = true
+  ];
+  // Amount of reservations of this size reservation
+  optional int32 amount = 6 [(buf.validate.field).int32.gt = 0];
+  // Labels to update of this size reservation
+  optional metalstack.api.v2.UpdateLabels labels = 7;
+}
+
+// SizeReservationServiceUpdateResponse is the response payload for a size reservation update request
+message SizeReservationServiceUpdateResponse {
+  // SizeReservation the size reservation
+  metalstack.api.v2.SizeReservation size_reservation = 1;
+}
+
+// SizeReservationServiceDeleteRequest is the request payload for a size reservation delete request
+message SizeReservationServiceDeleteRequest {
+  // ID of the size reservation to delete
+  string id = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// SizeReservationServiceDeleteResponse is the response payload for a size reservation delete request
+message SizeReservationServiceDeleteResponse {
+  // SizeReservation the size reservation
+  metalstack.api.v2.SizeReservation size_reservation = 1;
+}
+
+// SizeReservationServiceListRequest is the request payload for a size list request
+message SizeReservationServiceListRequest {
+  // Query for size reservations
+  metalstack.api.v2.SizeReservationQuery query = 1;
+}
+
+// SizeReservationServiceListResponse is the response payload for a size reservation list request
+message SizeReservationServiceListResponse {
+  // Size reservations
+  repeated metalstack.api.v2.SizeReservation size_reservations = 1;
+}

@@ -86,6 +86,7 @@ type PartitionServiceUpdateRequest struct {
 	NtpServer []*v2.NTPServer `protobuf:"bytes,6,rep,name=ntp_server,json=ntpServer,proto3" json:"ntp_server,omitempty"`
 	// ManagementServiceAddresses defines where the management is reachable
 	// should be in the form <ip|host>:<port>
+	// FIXME validation
 	MgmtServiceAddresses []string `protobuf:"bytes,7,rep,name=mgmt_service_addresses,json=mgmtServiceAddresses,proto3" json:"mgmt_service_addresses,omitempty"`
 	// Labels to update on this network
 	Labels        *v2.UpdateLabels `protobuf:"bytes,8,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
@@ -608,10 +609,9 @@ const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\n" +
 	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\x1a(metalstack/api/v2/predefined_rules.proto\"[\n" +
 	"\x1dPartitionServiceCreateRequest\x12:\n" +
-	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xb2\x04\n" +
-	"\x1dPartitionServiceUpdateRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
+	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xb3\x04\n" +
+	"\x1dPartitionServiceUpdateRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
 	"updateMeta\x122\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12\\\n" +
@@ -624,21 +624,18 @@ const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\x12<\n" +
 	"\x06labels\x18\b \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\t\n" +
-	"\a_labels\";\n" +
-	"\x1dPartitionServiceDeleteRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"\\\n" +
+	"\a_labels\"<\n" +
+	"\x1dPartitionServiceDeleteRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\"\\\n" +
 	"\x1ePartitionServiceCreateResponse\x12:\n" +
 	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\\\n" +
 	"\x1ePartitionServiceUpdateResponse\x12:\n" +
 	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\\\n" +
 	"\x1ePartitionServiceDeleteResponse\x12:\n" +
-	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xac\x01\n" +
-	"\x1fPartitionServiceCapacityRequest\x12\x1f\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12#\n" +
-	"\x04size\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x04size\x88\x01\x01\x12'\n" +
+	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xae\x01\n" +
+	"\x1fPartitionServiceCapacityRequest\x12 \n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x00R\x02id\x88\x01\x01\x12$\n" +
+	"\x04size\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04size\x88\x01\x01\x12'\n" +
 	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x02R\aproject\x88\x01\x01B\x05\n" +
 	"\x03_idB\a\n" +
 	"\x05_sizeB\n" +

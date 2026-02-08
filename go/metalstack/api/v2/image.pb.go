@@ -696,10 +696,9 @@ var File_metalstack_api_v2_image_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/api/v2/image.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"4\n" +
-	"\x16ImageServiceGetRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"N\n" +
+	"\x1dmetalstack/api/v2/image.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"5\n" +
+	"\x16ImageServiceGetRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"N\n" +
 	"\x17ImageServiceListRequest\x123\n" +
 	"\x05query\x18\x01 \x01(\v2\x1d.metalstack.api.v2.ImageQueryR\x05query\"+\n" +
 	"\x19ImageServiceLatestRequest\x12\x0e\n" +
@@ -709,10 +708,9 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\x18ImageServiceListResponse\x120\n" +
 	"\x06images\x18\x01 \x03(\v2\x18.metalstack.api.v2.ImageR\x06images\"L\n" +
 	"\x1aImageServiceLatestResponse\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\xc5\x03\n" +
-	"\x05Image\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12+\n" +
+	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\xc6\x03\n" +
+	"\x05Image\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x1d\n" +
 	"\x03url\x18\x03 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01R\x03url\x12$\n" +
 	"\x04name\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
@@ -726,11 +724,10 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\n" +
 	"ImageUsage\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\x12\x17\n" +
-	"\aused_by\x18\x02 \x03(\tR\x06usedBy\"\xbd\x04\n" +
+	"\aused_by\x18\x02 \x03(\tR\x06usedBy\"\xbe\x04\n" +
 	"\n" +
-	"ImageQuery\x12\x1f\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12\x1f\n" +
+	"ImageQuery\x12 \n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x02id\x88\x01\x01\x12\x1f\n" +
 	"\x02os\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x02os\x88\x01\x01\x12)\n" +
 	"\aversion\x18\x03 \x01(\tB\n" +

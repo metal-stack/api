@@ -49,10 +49,7 @@ service NetworkService {
 // NetworkServiceGetRequest
 message NetworkServiceGetRequest {
   // ID of the network to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project of the network
   string project = 2 [
     (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE,
@@ -204,10 +201,7 @@ message Network {
 // NetworkQuery defines which networks to query
 message NetworkQuery {
   // Id of the network to query
-  optional string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Name of this network
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network

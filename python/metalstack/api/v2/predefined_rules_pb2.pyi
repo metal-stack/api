@@ -15,6 +15,8 @@ IS_PREFIX_FIELD_NUMBER: _ClassVar[int]
 is_prefix: _descriptor.FieldDescriptor
 IS_URI_FIELD_NUMBER: _ClassVar[int]
 is_uri: _descriptor.FieldDescriptor
+IS_IP_OR_HOSTNAME_FIELD_NUMBER: _ClassVar[int]
+is_ip_or_hostname: _descriptor.FieldDescriptor
 PREFIXES_FIELD_NUMBER: _ClassVar[int]
 prefixes: _descriptor.FieldDescriptor
 IPS_FIELD_NUMBER: _ClassVar[int]

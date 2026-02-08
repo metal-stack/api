@@ -28,19 +28,13 @@ service FilesystemService {
 // FilesystemServiceGetRequest is the request payload for a filesystem get request
 message FilesystemServiceGetRequest {
   // ID of the filesystem to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // FilesystemServiceListRequest is the request payload for a filesystem list request
 message FilesystemServiceListRequest {
   // ID of the filesystem to get
-  optional string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // FilesystemServiceGetResponse is the response payload for a filesystem get request
@@ -70,15 +64,9 @@ message FilesystemServiceMatchRequest {
 // MatchImageAndSize
 message MatchImageAndSize {
   // Size, machine size to try
-  string size = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Image machine image to try
-  string image = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string image = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // MatchMachine
@@ -86,10 +74,7 @@ message MatchMachine {
   // Machine to check
   string machine = 1 [(buf.validate.field).string.uuid = true];
   // FilesystemLayout to check
-  string filesystem_layout = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string filesystem_layout = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // FilesystemServiceMatchResponse
@@ -101,10 +86,7 @@ message FilesystemServiceMatchResponse {
 // FilesystemLayout
 message FilesystemLayout {
   // Id of this filesystemLayout
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Meta for this filesystemLayout
   Meta meta = 2;
   // Name of this filesystemLayout
@@ -136,10 +118,7 @@ message FilesystemLayoutConstraints {
 // Filesystem
 message Filesystem {
   // Device the underlying device where this filesystem should be created
-  string device = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string device = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Format of the filesystem format
   Format format = 2 [
     (buf.validate.field).enum.defined_only = true,
