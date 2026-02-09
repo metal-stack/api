@@ -1118,30 +1118,12 @@ type SwitchNicWithMachine struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Nic is the switch nic the machine is connected to.
 	Nic *SwitchNic `protobuf:"bytes,1,opt,name=nic,proto3" json:"nic,omitempty"`
-	// Uuid of the machine.
-	Uuid string `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Size of the machine.
-	Size string `protobuf:"bytes,3,opt,name=size,proto3" json:"size,omitempty"`
-	// AllocationHostname if machine is allocated.
-	AllocationHostname string `protobuf:"bytes,4,opt,name=allocation_hostname,json=allocationHostname,proto3" json:"allocation_hostname,omitempty"`
-	// VpnConnected indicated whether the machine is connected to a VPN.
-	VpnConnected bool `protobuf:"varint,5,opt,name=vpn_connected,json=vpnConnected,proto3" json:"vpn_connected,omitempty"`
-	// FruProductSerial of the machine.
-	FruProductSerial string `protobuf:"bytes,6,opt,name=fru_product_serial,json=fruProductSerial,proto3" json:"fru_product_serial,omitempty"`
-	// FruChassisPartSerial of the machine.
-	FruChassisPartSerial string `protobuf:"bytes,7,opt,name=fru_chassis_part_serial,json=fruChassisPartSerial,proto3" json:"fru_chassis_part_serial,omitempty"`
-	// Liveliness of the machine.
-	Liveliness MachineLiveliness `protobuf:"varint,8,opt,name=liveliness,proto3,enum=metalstack.api.v2.MachineLiveliness" json:"liveliness,omitempty"`
-	// State of the machine.
-	State MachineState `protobuf:"varint,9,opt,name=state,proto3,enum=metalstack.api.v2.MachineState" json:"state,omitempty"`
-	// FailedReclaim is true if the machine failed to return to the waiting machines pool after deletion.
-	FailedReclaim bool `protobuf:"varint,10,opt,name=failed_reclaim,json=failedReclaim,proto3" json:"failed_reclaim,omitempty"`
-	// Crashloop is true if there was an unexpected event in the provisioning cycle.
-	Crashloop bool `protobuf:"varint,11,opt,name=crashloop,proto3" json:"crashloop,omitempty"`
-	// LastErrorEventTime in case some error happened in the past.
-	LastErrorEventTime *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=last_error_event_time,json=lastErrorEventTime,proto3" json:"last_error_event_time,omitempty"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
+	// Machine connected to this nic.
+	Machine *Machine `protobuf:"bytes,2,opt,name=machine,proto3" json:"machine,omitempty"`
+	// FRU of the connected machine.
+	Fru           *MachineFRU `protobuf:"bytes,3,opt,name=fru,proto3" json:"fru,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SwitchNicWithMachine) Reset() {
@@ -1181,79 +1163,16 @@ func (x *SwitchNicWithMachine) GetNic() *SwitchNic {
 	return nil
 }
 
-func (x *SwitchNicWithMachine) GetUuid() string {
+func (x *SwitchNicWithMachine) GetMachine() *Machine {
 	if x != nil {
-		return x.Uuid
+		return x.Machine
 	}
-	return ""
+	return nil
 }
 
-func (x *SwitchNicWithMachine) GetSize() string {
+func (x *SwitchNicWithMachine) GetFru() *MachineFRU {
 	if x != nil {
-		return x.Size
-	}
-	return ""
-}
-
-func (x *SwitchNicWithMachine) GetAllocationHostname() string {
-	if x != nil {
-		return x.AllocationHostname
-	}
-	return ""
-}
-
-func (x *SwitchNicWithMachine) GetVpnConnected() bool {
-	if x != nil {
-		return x.VpnConnected
-	}
-	return false
-}
-
-func (x *SwitchNicWithMachine) GetFruProductSerial() string {
-	if x != nil {
-		return x.FruProductSerial
-	}
-	return ""
-}
-
-func (x *SwitchNicWithMachine) GetFruChassisPartSerial() string {
-	if x != nil {
-		return x.FruChassisPartSerial
-	}
-	return ""
-}
-
-func (x *SwitchNicWithMachine) GetLiveliness() MachineLiveliness {
-	if x != nil {
-		return x.Liveliness
-	}
-	return MachineLiveliness_MACHINE_LIVELINESS_UNSPECIFIED
-}
-
-func (x *SwitchNicWithMachine) GetState() MachineState {
-	if x != nil {
-		return x.State
-	}
-	return MachineState_MACHINE_STATE_UNSPECIFIED
-}
-
-func (x *SwitchNicWithMachine) GetFailedReclaim() bool {
-	if x != nil {
-		return x.FailedReclaim
-	}
-	return false
-}
-
-func (x *SwitchNicWithMachine) GetCrashloop() bool {
-	if x != nil {
-		return x.Crashloop
-	}
-	return false
-}
-
-func (x *SwitchNicWithMachine) GetLastErrorEventTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.LastErrorEventTime
+		return x.Fru
 	}
 	return nil
 }
@@ -1352,23 +1271,11 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
 	"\tpartition\x18\x02 \x01(\tR\tpartition\x12\x12\n" +
 	"\x04rack\x18\x03 \x01(\tR\x04rack\x12I\n" +
-	"\vconnections\x18\x04 \x03(\v2'.metalstack.api.v2.SwitchNicWithMachineR\vconnections\"\xba\x04\n" +
+	"\vconnections\x18\x04 \x03(\v2'.metalstack.api.v2.SwitchNicWithMachineR\vconnections\"\xad\x01\n" +
 	"\x14SwitchNicWithMachine\x12.\n" +
-	"\x03nic\x18\x01 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\x12\x12\n" +
-	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x12\x12\n" +
-	"\x04size\x18\x03 \x01(\tR\x04size\x12/\n" +
-	"\x13allocation_hostname\x18\x04 \x01(\tR\x12allocationHostname\x12#\n" +
-	"\rvpn_connected\x18\x05 \x01(\bR\fvpnConnected\x12,\n" +
-	"\x12fru_product_serial\x18\x06 \x01(\tR\x10fruProductSerial\x125\n" +
-	"\x17fru_chassis_part_serial\x18\a \x01(\tR\x14fruChassisPartSerial\x12D\n" +
-	"\n" +
-	"liveliness\x18\b \x01(\x0e2$.metalstack.api.v2.MachineLivelinessR\n" +
-	"liveliness\x125\n" +
-	"\x05state\x18\t \x01(\x0e2\x1f.metalstack.api.v2.MachineStateR\x05state\x12%\n" +
-	"\x0efailed_reclaim\x18\n" +
-	" \x01(\bR\rfailedReclaim\x12\x1c\n" +
-	"\tcrashloop\x18\v \x01(\bR\tcrashloop\x12M\n" +
-	"\x15last_error_event_time\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\x12lastErrorEventTime*\x89\x02\n" +
+	"\x03nic\x18\x01 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\x124\n" +
+	"\amachine\x18\x02 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\x12/\n" +
+	"\x03fru\x18\x03 \x01(\v2\x1d.metalstack.api.v2.MachineFRUR\x03fru*\x89\x02\n" +
 	"\bBGPState\x12\x19\n" +
 	"\x15BGP_STATE_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x0eBGP_STATE_IDLE\x10\x01\x1a\b\x82\xb2\x19\x04Idle\x12\"\n" +
@@ -1427,8 +1334,8 @@ var file_metalstack_api_v2_switch_proto_goTypes = []any{
 	(*Meta)(nil),                  // 16: metalstack.api.v2.Meta
 	(*timestamppb.Timestamp)(nil), // 17: google.protobuf.Timestamp
 	(*durationpb.Duration)(nil),   // 18: google.protobuf.Duration
-	(MachineLiveliness)(0),        // 19: metalstack.api.v2.MachineLiveliness
-	(MachineState)(0),             // 20: metalstack.api.v2.MachineState
+	(*Machine)(nil),               // 19: metalstack.api.v2.Machine
+	(*MachineFRU)(nil),            // 20: metalstack.api.v2.MachineFRU
 }
 var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	16, // 0: metalstack.api.v2.Switch.meta:type_name -> metalstack.api.v2.Meta
@@ -1453,14 +1360,13 @@ var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	18, // 19: metalstack.api.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
 	15, // 20: metalstack.api.v2.SwitchWithMachines.connections:type_name -> metalstack.api.v2.SwitchNicWithMachine
 	6,  // 21: metalstack.api.v2.SwitchNicWithMachine.nic:type_name -> metalstack.api.v2.SwitchNic
-	19, // 22: metalstack.api.v2.SwitchNicWithMachine.liveliness:type_name -> metalstack.api.v2.MachineLiveliness
-	20, // 23: metalstack.api.v2.SwitchNicWithMachine.state:type_name -> metalstack.api.v2.MachineState
-	17, // 24: metalstack.api.v2.SwitchNicWithMachine.last_error_event_time:type_name -> google.protobuf.Timestamp
-	25, // [25:25] is the sub-list for method output_type
-	25, // [25:25] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	19, // 22: metalstack.api.v2.SwitchNicWithMachine.machine:type_name -> metalstack.api.v2.Machine
+	20, // 23: metalstack.api.v2.SwitchNicWithMachine.fru:type_name -> metalstack.api.v2.MachineFRU
+	24, // [24:24] is the sub-list for method output_type
+	24, // [24:24] is the sub-list for method input_type
+	24, // [24:24] is the sub-list for extension type_name
+	24, // [24:24] is the sub-list for extension extendee
+	0,  // [0:24] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_switch_proto_init() }

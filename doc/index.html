@@ -12832,80 +12832,17 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 </tr>
               
                 <tr>
-                  <td>uuid</td>
-                  <td><a href="#string">string</a></td>
+                  <td>machine</td>
+                  <td><a href="#metalstack.api.v2.Machine">Machine</a></td>
                   <td></td>
-                  <td><p>Uuid of the machine. </p></td>
+                  <td><p>Machine connected to this nic. </p></td>
                 </tr>
               
                 <tr>
-                  <td>size</td>
-                  <td><a href="#string">string</a></td>
+                  <td>fru</td>
+                  <td><a href="#metalstack.api.v2.MachineFRU">MachineFRU</a></td>
                   <td></td>
-                  <td><p>Size of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>allocation_hostname</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>AllocationHostname if machine is allocated. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>vpn_connected</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>VpnConnected indicated whether the machine is connected to a VPN. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>fru_product_serial</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>FruProductSerial of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>fru_chassis_part_serial</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>FruChassisPartSerial of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>liveliness</td>
-                  <td><a href="#metalstack.api.v2.MachineLiveliness">MachineLiveliness</a></td>
-                  <td></td>
-                  <td><p>Liveliness of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>state</td>
-                  <td><a href="#metalstack.api.v2.MachineState">MachineState</a></td>
-                  <td></td>
-                  <td><p>State of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>failed_reclaim</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>FailedReclaim is true if the machine failed to return to the waiting machines pool after deletion. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>crashloop</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>Crashloop is true if there was an unexpected event in the provisioning cycle. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>last_error_event_time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>LastErrorEventTime in case some error happened in the past. </p></td>
+                  <td><p>FRU of the connected machine. </p></td>
                 </tr>
               
             </tbody>
