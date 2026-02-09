@@ -34,6 +34,9 @@ class SwitchService(Protocol):
     async def port(self, request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def connected_machines(self, request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class SwitchServiceASGIApplication(ConnectASGIApplication[SwitchService]):
     def __init__(self, service: SwitchService | AsyncGenerator[SwitchService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -99,6 +102,16 @@ class SwitchServiceASGIApplication(ConnectASGIApplication[SwitchService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.port,
+                ),
+                "/metalstack.admin.v2.SwitchService/ConnectedMachines": Endpoint.unary(
+                    method=MethodInfo(
+                        name="ConnectedMachines",
+                        service_name="metalstack.admin.v2.SwitchService",
+                        input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.connected_machines,
                 ),
             },
             interceptors=interceptors,
@@ -232,6 +245,26 @@ class SwitchServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def connected_machines(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="ConnectedMachines",
+                service_name="metalstack.admin.v2.SwitchService",
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 class SwitchServiceSync(Protocol):
     def get(self, request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceGetResponse:
@@ -245,6 +278,8 @@ class SwitchServiceSync(Protocol):
     def migrate(self, request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceMigrateResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def port(self, request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def connected_machines(self, request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -311,6 +346,16 @@ class SwitchServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.port,
+                ),
+                "/metalstack.admin.v2.SwitchService/ConnectedMachines": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="ConnectedMachines",
+                        service_name="metalstack.admin.v2.SwitchService",
+                        input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.connected_machines,
                 ),
             },
             interceptors=interceptors,
@@ -438,6 +483,26 @@ class SwitchServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.SwitchService",
                 input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortRequest,
                 output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServicePortResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def connected_machines(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="ConnectedMachines",
+                service_name="metalstack.admin.v2.SwitchService",
+                input=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesRequest,
+                output=metalstack_dot_admin_dot_v2_dot_switch__pb2.SwitchServiceConnectedMachinesResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

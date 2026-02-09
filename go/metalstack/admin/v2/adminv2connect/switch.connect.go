@@ -45,6 +45,9 @@ const (
 	SwitchServiceMigrateProcedure = "/metalstack.admin.v2.SwitchService/Migrate"
 	// SwitchServicePortProcedure is the fully-qualified name of the SwitchService's Port RPC.
 	SwitchServicePortProcedure = "/metalstack.admin.v2.SwitchService/Port"
+	// SwitchServiceConnectedMachinesProcedure is the fully-qualified name of the SwitchService's
+	// ConnectedMachines RPC.
+	SwitchServiceConnectedMachinesProcedure = "/metalstack.admin.v2.SwitchService/ConnectedMachines"
 )
 
 // SwitchServiceClient is a client for the metalstack.admin.v2.SwitchService service.
@@ -61,6 +64,8 @@ type SwitchServiceClient interface {
 	Migrate(context.Context, *v2.SwitchServiceMigrateRequest) (*v2.SwitchServiceMigrateResponse, error)
 	// Port set the port status of a switch port.
 	Port(context.Context, *v2.SwitchServicePortRequest) (*v2.SwitchServicePortResponse, error)
+	// ConnectedMachines lists all switches with their machine connections.
+	ConnectedMachines(context.Context, *v2.SwitchServiceConnectedMachinesRequest) (*v2.SwitchServiceConnectedMachinesResponse, error)
 }
 
 // NewSwitchServiceClient constructs a client for the metalstack.admin.v2.SwitchService service. By
@@ -110,17 +115,24 @@ func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(switchServiceMethods.ByName("Port")),
 			connect.WithClientOptions(opts...),
 		),
+		connectedMachines: connect.NewClient[v2.SwitchServiceConnectedMachinesRequest, v2.SwitchServiceConnectedMachinesResponse](
+			httpClient,
+			baseURL+SwitchServiceConnectedMachinesProcedure,
+			connect.WithSchema(switchServiceMethods.ByName("ConnectedMachines")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // switchServiceClient implements SwitchServiceClient.
 type switchServiceClient struct {
-	get     *connect.Client[v2.SwitchServiceGetRequest, v2.SwitchServiceGetResponse]
-	list    *connect.Client[v2.SwitchServiceListRequest, v2.SwitchServiceListResponse]
-	update  *connect.Client[v2.SwitchServiceUpdateRequest, v2.SwitchServiceUpdateResponse]
-	delete  *connect.Client[v2.SwitchServiceDeleteRequest, v2.SwitchServiceDeleteResponse]
-	migrate *connect.Client[v2.SwitchServiceMigrateRequest, v2.SwitchServiceMigrateResponse]
-	port    *connect.Client[v2.SwitchServicePortRequest, v2.SwitchServicePortResponse]
+	get               *connect.Client[v2.SwitchServiceGetRequest, v2.SwitchServiceGetResponse]
+	list              *connect.Client[v2.SwitchServiceListRequest, v2.SwitchServiceListResponse]
+	update            *connect.Client[v2.SwitchServiceUpdateRequest, v2.SwitchServiceUpdateResponse]
+	delete            *connect.Client[v2.SwitchServiceDeleteRequest, v2.SwitchServiceDeleteResponse]
+	migrate           *connect.Client[v2.SwitchServiceMigrateRequest, v2.SwitchServiceMigrateResponse]
+	port              *connect.Client[v2.SwitchServicePortRequest, v2.SwitchServicePortResponse]
+	connectedMachines *connect.Client[v2.SwitchServiceConnectedMachinesRequest, v2.SwitchServiceConnectedMachinesResponse]
 }
 
 // Get calls metalstack.admin.v2.SwitchService.Get.
@@ -177,6 +189,15 @@ func (c *switchServiceClient) Port(ctx context.Context, req *v2.SwitchServicePor
 	return nil, err
 }
 
+// ConnectedMachines calls metalstack.admin.v2.SwitchService.ConnectedMachines.
+func (c *switchServiceClient) ConnectedMachines(ctx context.Context, req *v2.SwitchServiceConnectedMachinesRequest) (*v2.SwitchServiceConnectedMachinesResponse, error) {
+	response, err := c.connectedMachines.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // SwitchServiceHandler is an implementation of the metalstack.admin.v2.SwitchService service.
 type SwitchServiceHandler interface {
 	// Get a switch by ID.
@@ -191,6 +212,8 @@ type SwitchServiceHandler interface {
 	Migrate(context.Context, *v2.SwitchServiceMigrateRequest) (*v2.SwitchServiceMigrateResponse, error)
 	// Port set the port status of a switch port.
 	Port(context.Context, *v2.SwitchServicePortRequest) (*v2.SwitchServicePortResponse, error)
+	// ConnectedMachines lists all switches with their machine connections.
+	ConnectedMachines(context.Context, *v2.SwitchServiceConnectedMachinesRequest) (*v2.SwitchServiceConnectedMachinesResponse, error)
 }
 
 // NewSwitchServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -236,6 +259,12 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(switchServiceMethods.ByName("Port")),
 		connect.WithHandlerOptions(opts...),
 	)
+	switchServiceConnectedMachinesHandler := connect.NewUnaryHandlerSimple(
+		SwitchServiceConnectedMachinesProcedure,
+		svc.ConnectedMachines,
+		connect.WithSchema(switchServiceMethods.ByName("ConnectedMachines")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.SwitchService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case SwitchServiceGetProcedure:
@@ -250,6 +279,8 @@ func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOp
 			switchServiceMigrateHandler.ServeHTTP(w, r)
 		case SwitchServicePortProcedure:
 			switchServicePortHandler.ServeHTTP(w, r)
+		case SwitchServiceConnectedMachinesProcedure:
+			switchServiceConnectedMachinesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -281,4 +312,8 @@ func (UnimplementedSwitchServiceHandler) Migrate(context.Context, *v2.SwitchServ
 
 func (UnimplementedSwitchServiceHandler) Port(context.Context, *v2.SwitchServicePortRequest) (*v2.SwitchServicePortResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SwitchService.Port is not implemented"))
+}
+
+func (UnimplementedSwitchServiceHandler) ConnectedMachines(context.Context, *v2.SwitchServiceConnectedMachinesRequest) (*v2.SwitchServiceConnectedMachinesResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SwitchService.ConnectedMachines is not implemented"))
 }

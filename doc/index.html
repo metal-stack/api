@@ -1469,6 +1469,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.SwitchNicWithMachine"><span class="badge">M</span>SwitchNicWithMachine</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.SwitchOS"><span class="badge">M</span>SwitchOS</a>
                 </li>
               
@@ -1482,6 +1486,10 @@
               
                 <li>
                   <a href="#metalstack.api.v2.SwitchSync"><span class="badge">M</span>SwitchSync</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SwitchWithMachines"><span class="badge">M</span>SwitchWithMachines</a>
                 </li>
               
               
@@ -1510,6 +1518,14 @@
           <li>
             <a href="#metalstack%2fadmin%2fv2%2fswitch.proto">metalstack/admin/v2/switch.proto</a>
             <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceConnectedMachinesRequest"><span class="badge">M</span>SwitchServiceConnectedMachinesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SwitchServiceConnectedMachinesResponse"><span class="badge">M</span>SwitchServiceConnectedMachinesResponse</a>
+                </li>
               
                 <li>
                   <a href="#metalstack.admin.v2.SwitchServiceDeleteRequest"><span class="badge">M</span>SwitchServiceDeleteRequest</a>
@@ -12798,6 +12814,44 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.SwitchNicWithMachine">SwitchNicWithMachine</h3>
+        <p>SwitchNicWithMachine associates a switch port with its connected machine.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>nic</td>
+                  <td><a href="#metalstack.api.v2.SwitchNic">SwitchNic</a></td>
+                  <td></td>
+                  <td><p>Nic is the switch nic the machine is connected to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>machine</td>
+                  <td><a href="#metalstack.api.v2.Machine">Machine</a></td>
+                  <td></td>
+                  <td><p>Machine connected to this nic. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>fru</td>
+                  <td><a href="#metalstack.api.v2.MachineFRU">MachineFRU</a></td>
+                  <td></td>
+                  <td><p>FRU of the connected machine. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.SwitchOS">SwitchOS</h3>
         <p>SwitchOS holds information about the NOS and versions running on the switch.</p>
 
@@ -12941,6 +12995,51 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Error if any occurred. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SwitchWithMachines">SwitchWithMachines</h3>
+        <p>SwitchWithMachines contains a mapping from switch ports to connected machines.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rack</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Rack of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>connections</td>
+                  <td><a href="#metalstack.api.v2.SwitchNicWithMachine">SwitchNicWithMachine</a></td>
+                  <td>repeated</td>
+                  <td><p>Connections associates switch ports with the machines connected to them. </p></td>
                 </tr>
               
             </tbody>
@@ -13109,6 +13208,61 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
       </div>
       <p></p>
 
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceConnectedMachinesRequest">SwitchServiceConnectedMachinesRequest</h3>
+        <p>SwitchServiceConnectedMachinesRequest.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.SwitchQuery">metalstack.api.v2.SwitchQuery</a></td>
+                  <td></td>
+                  <td><p>Query to filter the switch results. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>machine_query</td>
+                  <td><a href="#metalstack.api.v2.MachineQuery">metalstack.api.v2.MachineQuery</a></td>
+                  <td></td>
+                  <td><p>MachineQuery to filter the machine results. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SwitchServiceConnectedMachinesResponse">SwitchServiceConnectedMachinesResponse</h3>
+        <p>SwitchServiceConnectedMachinesResponse.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switches_with_machines</td>
+                  <td><a href="#metalstack.api.v2.SwitchWithMachines">metalstack.api.v2.SwitchWithMachines</a></td>
+                  <td>repeated</td>
+                  <td><p>SwitchesWithMachines contains all switches with their machine connections. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="metalstack.admin.v2.SwitchServiceDeleteRequest">SwitchServiceDeleteRequest</h3>
         <p>SwitchServiceDeleteRequest.</p>
@@ -13544,6 +13698,13 @@ must be part of the update request to ensure optimistic locking. </p></td>
                 <td><a href="#metalstack.admin.v2.SwitchServicePortRequest">SwitchServicePortRequest</a></td>
                 <td><a href="#metalstack.admin.v2.SwitchServicePortResponse">SwitchServicePortResponse</a></td>
                 <td><p>Port set the port status of a switch port.</p></td>
+              </tr>
+            
+              <tr>
+                <td>ConnectedMachines</td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceConnectedMachinesRequest">SwitchServiceConnectedMachinesRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SwitchServiceConnectedMachinesResponse">SwitchServiceConnectedMachinesResponse</a></td>
+                <td><p>ConnectedMachines lists all switches with their machine connections.</p></td>
               </tr>
             
           </tbody>
