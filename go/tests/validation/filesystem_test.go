@@ -26,7 +26,7 @@ func TestValidateFilesystem(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation errors:
- - device: value length must be at least 2 characters
+ - device: must be within 2 and 128 characters
  - format: value is required`,
 		},
 		{

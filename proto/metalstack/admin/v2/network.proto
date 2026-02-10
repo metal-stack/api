@@ -41,10 +41,7 @@ service NetworkService {
 // NetworkServiceGetRequest
 message NetworkServiceGetRequest {
   // ID of the network to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // NetworkServiceGetResponse
@@ -56,10 +53,7 @@ message NetworkServiceGetResponse {
 // NetworkServiceCreateRequest
 message NetworkServiceCreateRequest {
   // Id of this network
-  optional string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Name of this network
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this network
@@ -127,10 +121,7 @@ message NetworkServiceUpdateRequest {
 // NetworkServiceDeleteRequest is the request payload for a network delete request
 message NetworkServiceDeleteRequest {
   // ID of the network to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // NetworkServiceListRequest

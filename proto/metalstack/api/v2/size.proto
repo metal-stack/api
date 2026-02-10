@@ -50,10 +50,7 @@ message SizeServiceListResponse {
 // Size
 message Size {
   // Id of this size
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Meta for this size
   Meta meta = 2;
   // Name of this size
@@ -96,10 +93,7 @@ enum SizeConstraintType {
 // SizeQuery is used to search sizes
 message SizeQuery {
   // ID of the size to get
-  optional string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Name of the size to query
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of the size to query

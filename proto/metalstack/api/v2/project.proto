@@ -140,10 +140,7 @@ message ProjectServiceListRequest {
   // Name lists only projects with this name
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Tenant lists only projects of this tenant
-  optional string tenant = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string tenant = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Labels lists only projects containing the given labels
   optional Labels labels = 6;
 }
@@ -172,10 +169,7 @@ message ProjectServiceGetResponse {
 message ProjectServiceCreateRequest {
   // Login is the tenant of this project
   // TODO: is login really a good name?
-  string login = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Name of this project, unique per tenant
   string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this project

@@ -463,10 +463,9 @@ const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\x19ImageServiceCreateRequest\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
 	"\x1aImageServiceCreateResponse\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\x81\x04\n" +
-	"\x19ImageServiceUpdateRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12F\n" +
+	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\x82\x04\n" +
+	"\x19ImageServiceUpdateRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
 	"updateMeta\x12\"\n" +
 	"\x03url\x18\x03 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01H\x00R\x03url\x88\x01\x01\x12$\n" +
@@ -480,10 +479,9 @@ const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\x05_nameB\x0e\n" +
 	"\f_description\"L\n" +
 	"\x1aImageServiceUpdateResponse\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"7\n" +
-	"\x19ImageServiceDeleteRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"L\n" +
+	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"8\n" +
+	"\x19ImageServiceDeleteRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"L\n" +
 	"\x1aImageServiceDeleteResponse\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"O\n" +
 	"\x18ImageServiceUsageRequest\x123\n" +

@@ -41,10 +41,7 @@ message PartitionServiceCreateRequest {
 // PartitionServiceUpdateRequest is the request payload for a partition update request
 message PartitionServiceUpdateRequest {
   // ID of this partition
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Description of this partition
@@ -57,6 +54,7 @@ message PartitionServiceUpdateRequest {
   repeated metalstack.api.v2.NTPServer ntp_server = 6 [(buf.validate.field).repeated.max_items = 10];
   // ManagementServiceAddresses defines where the management is reachable
   // should be in the form <ip|host>:<port>
+  // FIXME validation
   repeated string mgmt_service_addresses = 7;
   // Labels to update on this network
   optional metalstack.api.v2.UpdateLabels labels = 8;
@@ -65,10 +63,7 @@ message PartitionServiceUpdateRequest {
 // PartitionServiceDeleteRequest is the request payload for a partition delete request
 message PartitionServiceDeleteRequest {
   // ID of the partition to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
 // PartitionServiceCreateResponse is the response payload for a partition create request
@@ -92,15 +87,9 @@ message PartitionServiceDeleteResponse {
 // PartitionServiceListRequest is the request payload for a partition capacity request
 message PartitionServiceCapacityRequest {
   // ID of the partition to get
-  optional string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Size of machines to show the capacity
-  optional string size = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string size = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project of machines to show the capacity
   optional string project = 3 [(buf.validate.field).string.uuid = true];
 }

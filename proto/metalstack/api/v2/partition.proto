@@ -66,7 +66,7 @@ message DNSServer {
 // NTPServer
 message NTPServer {
   // Address either as ip or hostname
-  string address = 1 [(buf.validate.field).string = {max_len: 256}];
+  string address = 1 [(buf.validate.field).string.(metalstack.api.v2.is_ip_or_hostname) = true];
 }
 
 // PartitionServiceGetRequest is the request payload for a partition get request

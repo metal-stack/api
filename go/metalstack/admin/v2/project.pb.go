@@ -128,10 +128,9 @@ var File_metalstack_admin_v2_project_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_project_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/project.proto\"\x92\x01\n" +
-	"\x19ProjectServiceListRequest\x12'\n" +
-	"\x06tenant\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x06tenant\x88\x01\x01\x126\n" +
+	"!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1fmetalstack/api/v2/project.proto\"\x93\x01\n" +
+	"\x19ProjectServiceListRequest\x12(\n" +
+	"\x06tenant\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x06tenant\x88\x01\x01\x126\n" +
 	"\x06labels\x18\x02 \x01(\v2\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01B\t\n" +
 	"\a_tenantB\t\n" +
 	"\a_labels\"T\n" +

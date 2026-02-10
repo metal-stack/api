@@ -311,6 +311,10 @@
                   <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
               
             </ul>
           </li>
@@ -1434,6 +1438,92 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.SizeService"><span class="badge">S</span>SizeService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fapi%2fv2%2fsize_reservation.proto">metalstack/api/v2/size_reservation.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeReservation"><span class="badge">M</span>SizeReservation</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeReservationQuery"><span class="badge">M</span>SizeReservationQuery</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeReservationServiceGetRequest"><span class="badge">M</span>SizeReservationServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeReservationServiceGetResponse"><span class="badge">M</span>SizeReservationServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeReservationServiceListRequest"><span class="badge">M</span>SizeReservationServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeReservationServiceListResponse"><span class="badge">M</span>SizeReservationServiceListResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeReservationService"><span class="badge">S</span>SizeReservationService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fadmin%2fv2%2fsize_reservation.proto">metalstack/admin/v2/size_reservation.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeReservationServiceCreateRequest"><span class="badge">M</span>SizeReservationServiceCreateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeReservationServiceCreateResponse"><span class="badge">M</span>SizeReservationServiceCreateResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeReservationServiceDeleteRequest"><span class="badge">M</span>SizeReservationServiceDeleteRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeReservationServiceDeleteResponse"><span class="badge">M</span>SizeReservationServiceDeleteResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeReservationServiceListRequest"><span class="badge">M</span>SizeReservationServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeReservationServiceListResponse"><span class="badge">M</span>SizeReservationServiceListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeReservationServiceUpdateRequest"><span class="badge">M</span>SizeReservationServiceUpdateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeReservationServiceUpdateResponse"><span class="badge">M</span>SizeReservationServiceUpdateResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeReservationService"><span class="badge">S</span>SizeReservationService</a>
                 </li>
               
             </ul>
@@ -2896,6 +2986,14 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
                 <td>80048953</td>
                 <td><p>IsDescription returns true if description field satisfies our requirements</p></td>
+              </tr>
+            
+              <tr>
+                <td>is_ip_or_hostname</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048957</td>
+                <td><p>IsIpOrHostname validates that the given string is either a ip or a hostname</p></td>
               </tr>
             
               <tr>
@@ -11037,7 +11135,8 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
                   <td><p>ManagementServiceAddresses defines where the management is reachable
-should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
+should be in the form &lt;ip|host&gt;:&lt;port&gt;
+FIXME validation </p></td>
                 </tr>
               
                 <tr>
@@ -12444,6 +12543,583 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.admin.v2.SizeServiceDeleteRequest">SizeServiceDeleteRequest</a></td>
                 <td><a href="#metalstack.admin.v2.SizeServiceDeleteResponse">SizeServiceDeleteResponse</a></td>
                 <td><p>Delete a size</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/api/v2/size_reservation.proto">metalstack/api/v2/size_reservation.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.api.v2.SizeReservation">SizeReservation</h3>
+        <p>SizeReservation</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of this size reservation, is generated on creation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Description of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project of the size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size id of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partitions</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Partition ids of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>amount</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>Amount of reservations of this size reservation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeReservationQuery">SizeReservationQuery</h3>
+        <p>SizeReservationQuery is used to search size reservations</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ID of the size reservation to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Size id of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project of the size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Partition of the size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only size reservations containing the given labels </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeReservationServiceGetRequest">SizeReservationServiceGetRequest</h3>
+        <p>SizeReservationServiceGetRequest is the request payload for a size get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID of the size reservation to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project of the size reservation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeReservationServiceGetResponse">SizeReservationServiceGetResponse</h3>
+        <p>SizeReservationServiceGetResponse is the response payload for a size reservation get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_reservation</td>
+                  <td><a href="#metalstack.api.v2.SizeReservation">SizeReservation</a></td>
+                  <td></td>
+                  <td><p>Size reservation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeReservationServiceListRequest">SizeReservationServiceListRequest</h3>
+        <p>SizeReservationServiceListRequest is the request payload for a size list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project of the size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.SizeReservationQuery">SizeReservationQuery</a></td>
+                  <td></td>
+                  <td><p>Query for size reservations </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeReservationServiceListResponse">SizeReservationServiceListResponse</h3>
+        <p>SizeReservationServiceListResponse is the response payload for a size reservation list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_reservations</td>
+                  <td><a href="#metalstack.api.v2.SizeReservation">SizeReservation</a></td>
+                  <td>repeated</td>
+                  <td><p>Size reservations </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.api.v2.SizeReservationService">SizeReservationService</h3>
+        <p>SizeReservationService serves size reservation related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.api.v2.SizeReservationServiceGetRequest">SizeReservationServiceGetRequest</a></td>
+                <td><a href="#metalstack.api.v2.SizeReservationServiceGetResponse">SizeReservationServiceGetResponse</a></td>
+                <td><p>Get a size reservation</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.api.v2.SizeReservationServiceListRequest">SizeReservationServiceListRequest</a></td>
+                <td><a href="#metalstack.api.v2.SizeReservationServiceListResponse">SizeReservationServiceListResponse</a></td>
+                <td><p>List size reservations</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/admin/v2/size_reservation.proto">metalstack/admin/v2/size_reservation.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.admin.v2.SizeReservationServiceCreateRequest">SizeReservationServiceCreateRequest</h3>
+        <p>SizeReservationServiceCreateRequest is the request payload for a size reservation create request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_reservation</td>
+                  <td><a href="#metalstack.api.v2.SizeReservation">metalstack.api.v2.SizeReservation</a></td>
+                  <td></td>
+                  <td><p>SizeReservation is the size reservation to create </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeReservationServiceCreateResponse">SizeReservationServiceCreateResponse</h3>
+        <p>SizeReservationServiceCreateResponse is the response payload for a size reservation create request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_reservation</td>
+                  <td><a href="#metalstack.api.v2.SizeReservation">metalstack.api.v2.SizeReservation</a></td>
+                  <td></td>
+                  <td><p>SizeReservation the size reservation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeReservationServiceDeleteRequest">SizeReservationServiceDeleteRequest</h3>
+        <p>SizeReservationServiceDeleteRequest is the request payload for a size reservation delete request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ID of the size reservation to delete </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeReservationServiceDeleteResponse">SizeReservationServiceDeleteResponse</h3>
+        <p>SizeReservationServiceDeleteResponse is the response payload for a size reservation delete request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_reservation</td>
+                  <td><a href="#metalstack.api.v2.SizeReservation">metalstack.api.v2.SizeReservation</a></td>
+                  <td></td>
+                  <td><p>SizeReservation the size reservation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeReservationServiceListRequest">SizeReservationServiceListRequest</h3>
+        <p>SizeReservationServiceListRequest is the request payload for a size list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.SizeReservationQuery">metalstack.api.v2.SizeReservationQuery</a></td>
+                  <td></td>
+                  <td><p>Query for size reservations </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeReservationServiceListResponse">SizeReservationServiceListResponse</h3>
+        <p>SizeReservationServiceListResponse is the response payload for a size reservation list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_reservations</td>
+                  <td><a href="#metalstack.api.v2.SizeReservation">metalstack.api.v2.SizeReservation</a></td>
+                  <td>repeated</td>
+                  <td><p>Size reservations </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeReservationServiceUpdateRequest">SizeReservationServiceUpdateRequest</h3>
+        <p>SizeReservationServiceUpdateRequest is the request payload for a size reservation update request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">metalstack.api.v2.UpdateMeta</a></td>
+                  <td></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partitions</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Partition ids of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>amount</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>optional</td>
+                  <td><p>Amount of reservations of this size reservation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.UpdateLabels">metalstack.api.v2.UpdateLabels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels to update of this size reservation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeReservationServiceUpdateResponse">SizeReservationServiceUpdateResponse</h3>
+        <p>SizeReservationServiceUpdateResponse is the response payload for a size reservation update request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_reservation</td>
+                  <td><a href="#metalstack.api.v2.SizeReservation">metalstack.api.v2.SizeReservation</a></td>
+                  <td></td>
+                  <td><p>SizeReservation the size reservation </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.admin.v2.SizeReservationService">SizeReservationService</h3>
+        <p>SizeReservationService serves size reservation related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Create</td>
+                <td><a href="#metalstack.admin.v2.SizeReservationServiceCreateRequest">SizeReservationServiceCreateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeReservationServiceCreateResponse">SizeReservationServiceCreateResponse</a></td>
+                <td><p>Create a size reservation</p></td>
+              </tr>
+            
+              <tr>
+                <td>Update</td>
+                <td><a href="#metalstack.admin.v2.SizeReservationServiceUpdateRequest">SizeReservationServiceUpdateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeReservationServiceUpdateResponse">SizeReservationServiceUpdateResponse</a></td>
+                <td><p>Update a size reservation</p></td>
+              </tr>
+            
+              <tr>
+                <td>Delete</td>
+                <td><a href="#metalstack.admin.v2.SizeReservationServiceDeleteRequest">SizeReservationServiceDeleteRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeReservationServiceDeleteResponse">SizeReservationServiceDeleteResponse</a></td>
+                <td><p>Delete a size reservation</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.admin.v2.SizeReservationServiceListRequest">SizeReservationServiceListRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeReservationServiceListResponse">SizeReservationServiceListResponse</a></td>
+                <td><p>List size reservations</p></td>
               </tr>
             
           </tbody>
