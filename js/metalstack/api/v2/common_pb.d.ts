@@ -273,6 +273,35 @@ export declare enum InfraRole {
  */
 export declare const InfraRoleSchema: GenEnum<InfraRole>;
 /**
+ * MachineRole specifies what role a microservice needs to call this machine service
+ *
+ * @generated from enum metalstack.api.v2.MachineRole
+ */
+export declare enum MachineRole {
+    /**
+     * MACHINE_ROLE_UNSPECIFIED is not specified
+     *
+     * @generated from enum value: MACHINE_ROLE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method
+     *
+     * @generated from enum value: MACHINE_ROLE_EDITOR = 1;
+     */
+    EDITOR = 1,
+    /**
+     * MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method
+     *
+     * @generated from enum value: MACHINE_ROLE_VIEWER = 2;
+     */
+    VIEWER = 2
+}
+/**
+ * Describes the enum metalstack.api.v2.MachineRole.
+ */
+export declare const MachineRoleSchema: GenEnum<MachineRole>;
+/**
  * Visibility of a method
  *
  * @generated from enum metalstack.api.v2.Visibility
@@ -399,6 +428,12 @@ export declare const auditing: GenExtension<MethodOptions, Auditing>;
  * @generated from extension: repeated metalstack.api.v2.InfraRole infra_roles = 51005;
  */
 export declare const infra_roles: GenExtension<MethodOptions, InfraRole[]>;
+/**
+ * MachineRole are used to define which infra role a microservice must provide to call this method
+ *
+ * @generated from extension: repeated metalstack.api.v2.MachineRole machine_roles = 51006;
+ */
+export declare const machine_roles: GenExtension<MethodOptions, MachineRole[]>;
 /**
  * StringValue which can be set to a enum
  *

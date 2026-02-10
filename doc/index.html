@@ -1209,6 +1209,14 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.admin.v2.MachineSizeCapacity"><span class="badge">M</span>MachineSizeCapacity</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.PartitionCapacity"><span class="badge">M</span>PartitionCapacity</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.PartitionServiceCapacityRequest"><span class="badge">M</span>PartitionServiceCapacityRequest</a>
                 </li>
               
@@ -10819,46 +10827,8 @@ otherwise an error is thrown that the partition must be specified </p></td>
       <p></p>
 
       
-        <h3 id="metalstack.admin.v2.PartitionServiceCapacityRequest">PartitionServiceCapacityRequest</h3>
-        <p>PartitionServiceListRequest is the request payload for a partition capacity request</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>ID of the partition to get </p></td>
-                </tr>
-              
-                <tr>
-                  <td>size</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Size of machines to show the capacity </p></td>
-                </tr>
-              
-                <tr>
-                  <td>project</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Project of machines to show the capacity </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.admin.v2.PartitionServiceCapacityResponse">PartitionServiceCapacityResponse</h3>
-        <p>PartitionServiceCapacityResponse is the response payload for a partition capacity request</p>
+        <h3 id="metalstack.admin.v2.MachineSizeCapacity">MachineSizeCapacity</h3>
+        <p>ServerCapacity is the capacity of one server type, eg machine size</p>
 
         
           <table class="field-table">
@@ -10973,6 +10943,99 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td><a href="#int64">int64</a></td>
                   <td></td>
                   <td><p>RemainingReservations is the amount of reservations remaining for this size. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.PartitionCapacity">PartitionCapacity</h3>
+        <p>PartitionCapacity is the capacity of one partition</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition of which this capacity is reported. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>machine_size_capacities</td>
+                  <td><a href="#metalstack.admin.v2.MachineSizeCapacity">MachineSizeCapacity</a></td>
+                  <td>repeated</td>
+                  <td><p>MachineSizeCapacities is the capacity per machine size. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.PartitionServiceCapacityRequest">PartitionServiceCapacityRequest</h3>
+        <p>PartitionServiceListRequest is the request payload for a partition capacity request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ID of the partition to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Size of machines to show the capacity </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project of machines to show the capacity </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.PartitionServiceCapacityResponse">PartitionServiceCapacityResponse</h3>
+        <p>PartitionServiceCapacityResponse is the response payload for a partition capacity request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>partition_capacity</td>
+                  <td><a href="#metalstack.admin.v2.PartitionCapacity">PartitionCapacity</a></td>
+                  <td>repeated</td>
+                  <td><p>PartitionCapacity is a capacity report per partition </p></td>
                 </tr>
               
             </tbody>

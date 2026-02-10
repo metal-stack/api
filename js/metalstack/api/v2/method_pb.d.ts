@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { AdminRole, InfraRole, ProjectRole, TenantRole } from "./common_pb";
+import type { AdminRole, InfraRole, MachineRole, ProjectRole, TenantRole } from "./common_pb";
 import type { MethodPermission } from "./token_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -86,6 +86,14 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
      * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 6;
      */
     infraRole?: InfraRole;
+    /**
+     * MachineRoles defines the machine roles of the token owner
+     *
+     * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 7;
+     */
+    machineRoles: {
+        [key: string]: MachineRole;
+    };
 };
 /**
  * Describes the message metalstack.api.v2.MethodServiceTokenScopedListResponse.

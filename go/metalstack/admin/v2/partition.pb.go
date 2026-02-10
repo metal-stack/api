@@ -431,41 +431,10 @@ func (x *PartitionServiceCapacityRequest) GetProject() string {
 // PartitionServiceCapacityResponse is the response payload for a partition capacity request
 type PartitionServiceCapacityResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size is the size id correlating to all counts in this server capacity.
-	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
-	// Total is the total amount of machines for this size.
-	Total int64 `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
-	// PhonedHome is the amount of machines that are currently in the provisioning state "phoned home".
-	PhonedHome int64 `protobuf:"varint,3,opt,name=phoned_home,json=phonedHome,proto3" json:"phoned_home,omitempty"`
-	// Waiting is the amount of machines that are currently in the provisioning state "waiting".
-	Waiting int64 `protobuf:"varint,4,opt,name=waiting,proto3" json:"waiting,omitempty"`
-	// Other is the amount of machines that are neither in the provisioning state waiting nor in phoned home but in another provisioning state.
-	Other int64 `protobuf:"varint,5,opt,name=other,proto3" json:"other,omitempty"`
-	// OtherMachines contains the machine IDs for machines that were classified into "Other".
-	OtherMachines []string `protobuf:"bytes,6,rep,name=other_machines,json=otherMachines,proto3" json:"other_machines,omitempty"`
-	// Allocated is the amount of machines that are currently allocated.
-	Allocated int64 `protobuf:"varint,7,opt,name=allocated,proto3" json:"allocated,omitempty"`
-	// Allocatable is the amount of machines in a partition is the amount of machines that can be allocated.
-	// Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable. Size reservations are not considered in this count.
-	Allocatable int64 `protobuf:"varint,8,opt,name=allocatable,proto3" json:"allocatable,omitempty"`
-	// Free is the amount of machines in a partition that can be freely allocated at any given moment by a project.
-	// Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable due to size reservations.
-	Free int64 `protobuf:"varint,9,opt,name=free,proto3" json:"free,omitempty"`
-	// Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or
-	// not in the machine state "available", e.g. locked or reserved.
-	Unavailable int64 `protobuf:"varint,10,opt,name=unavailable,proto3" json:"unavailable,omitempty"`
-	// Faulty is the amount of machines that are neither allocated nor in the pool of available machines because they report an error.
-	Faulty int64 `protobuf:"varint,11,opt,name=faulty,proto3" json:"faulty,omitempty"`
-	// FaultyMachines contains the machine IDs for machines that were classified into "Faulty".
-	FaultyMachines []string `protobuf:"bytes,12,rep,name=faulty_machines,json=faultyMachines,proto3" json:"faulty_machines,omitempty"`
-	// Reservations is the amount of reservations made for this size.
-	Reservations int64 `protobuf:"varint,13,opt,name=reservations,proto3" json:"reservations,omitempty"`
-	// UsedReservations is the amount of reservations already used up for this size.
-	UsedReservations int64 `protobuf:"varint,14,opt,name=used_reservations,json=usedReservations,proto3" json:"used_reservations,omitempty"`
-	// RemainingReservations is the amount of reservations remaining for this size.
-	RemainingReservations int64 `protobuf:"varint,15,opt,name=remaining_reservations,json=remainingReservations,proto3" json:"remaining_reservations,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	// PartitionCapacity is a capacity report per partition
+	PartitionCapacity []*PartitionCapacity `protobuf:"bytes,1,rep,name=partition_capacity,json=partitionCapacity,proto3" json:"partition_capacity,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *PartitionServiceCapacityResponse) Reset() {
@@ -498,105 +467,237 @@ func (*PartitionServiceCapacityResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_partition_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *PartitionServiceCapacityResponse) GetSize() string {
+func (x *PartitionServiceCapacityResponse) GetPartitionCapacity() []*PartitionCapacity {
+	if x != nil {
+		return x.PartitionCapacity
+	}
+	return nil
+}
+
+// PartitionCapacity is the capacity of one partition
+type PartitionCapacity struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Partition of which this capacity is reported.
+	Partition string `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
+	// MachineSizeCapacities is the capacity per machine size.
+	MachineSizeCapacities []*MachineSizeCapacity `protobuf:"bytes,2,rep,name=machine_size_capacities,json=machineSizeCapacities,proto3" json:"machine_size_capacities,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *PartitionCapacity) Reset() {
+	*x = PartitionCapacity{}
+	mi := &file_metalstack_admin_v2_partition_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PartitionCapacity) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PartitionCapacity) ProtoMessage() {}
+
+func (x *PartitionCapacity) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_partition_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PartitionCapacity.ProtoReflect.Descriptor instead.
+func (*PartitionCapacity) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_partition_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *PartitionCapacity) GetPartition() string {
+	if x != nil {
+		return x.Partition
+	}
+	return ""
+}
+
+func (x *PartitionCapacity) GetMachineSizeCapacities() []*MachineSizeCapacity {
+	if x != nil {
+		return x.MachineSizeCapacities
+	}
+	return nil
+}
+
+// ServerCapacity is the capacity of one server type, eg machine size
+type MachineSizeCapacity struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Size is the size id correlating to all counts in this server capacity.
+	Size string `protobuf:"bytes,2,opt,name=size,proto3" json:"size,omitempty"`
+	// Total is the total amount of machines for this size.
+	Total int64 `protobuf:"varint,3,opt,name=total,proto3" json:"total,omitempty"`
+	// PhonedHome is the amount of machines that are currently in the provisioning state "phoned home".
+	PhonedHome int64 `protobuf:"varint,4,opt,name=phoned_home,json=phonedHome,proto3" json:"phoned_home,omitempty"`
+	// Waiting is the amount of machines that are currently in the provisioning state "waiting".
+	Waiting int64 `protobuf:"varint,5,opt,name=waiting,proto3" json:"waiting,omitempty"`
+	// Other is the amount of machines that are neither in the provisioning state waiting nor in phoned home but in another provisioning state.
+	Other int64 `protobuf:"varint,6,opt,name=other,proto3" json:"other,omitempty"`
+	// OtherMachines contains the machine IDs for machines that were classified into "Other".
+	OtherMachines []string `protobuf:"bytes,7,rep,name=other_machines,json=otherMachines,proto3" json:"other_machines,omitempty"`
+	// Allocated is the amount of machines that are currently allocated.
+	Allocated int64 `protobuf:"varint,8,opt,name=allocated,proto3" json:"allocated,omitempty"`
+	// Allocatable is the amount of machines in a partition is the amount of machines that can be allocated.
+	// Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable. Size reservations are not considered in this count.
+	Allocatable int64 `protobuf:"varint,9,opt,name=allocatable,proto3" json:"allocatable,omitempty"`
+	// Free is the amount of machines in a partition that can be freely allocated at any given moment by a project.
+	// Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable due to size reservations.
+	Free int64 `protobuf:"varint,10,opt,name=free,proto3" json:"free,omitempty"`
+	// Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or
+	// not in the machine state "available", e.g. locked or reserved.
+	Unavailable int64 `protobuf:"varint,11,opt,name=unavailable,proto3" json:"unavailable,omitempty"`
+	// Faulty is the amount of machines that are neither allocated nor in the pool of available machines because they report an error.
+	Faulty int64 `protobuf:"varint,12,opt,name=faulty,proto3" json:"faulty,omitempty"`
+	// FaultyMachines contains the machine IDs for machines that were classified into "Faulty".
+	FaultyMachines []string `protobuf:"bytes,13,rep,name=faulty_machines,json=faultyMachines,proto3" json:"faulty_machines,omitempty"`
+	// Reservations is the amount of reservations made for this size.
+	Reservations int64 `protobuf:"varint,14,opt,name=reservations,proto3" json:"reservations,omitempty"`
+	// UsedReservations is the amount of reservations already used up for this size.
+	UsedReservations int64 `protobuf:"varint,15,opt,name=used_reservations,json=usedReservations,proto3" json:"used_reservations,omitempty"`
+	// RemainingReservations is the amount of reservations remaining for this size.
+	RemainingReservations int64 `protobuf:"varint,16,opt,name=remaining_reservations,json=remainingReservations,proto3" json:"remaining_reservations,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
+}
+
+func (x *MachineSizeCapacity) Reset() {
+	*x = MachineSizeCapacity{}
+	mi := &file_metalstack_admin_v2_partition_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MachineSizeCapacity) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MachineSizeCapacity) ProtoMessage() {}
+
+func (x *MachineSizeCapacity) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_partition_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MachineSizeCapacity.ProtoReflect.Descriptor instead.
+func (*MachineSizeCapacity) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_partition_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *MachineSizeCapacity) GetSize() string {
 	if x != nil {
 		return x.Size
 	}
 	return ""
 }
 
-func (x *PartitionServiceCapacityResponse) GetTotal() int64 {
+func (x *MachineSizeCapacity) GetTotal() int64 {
 	if x != nil {
 		return x.Total
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetPhonedHome() int64 {
+func (x *MachineSizeCapacity) GetPhonedHome() int64 {
 	if x != nil {
 		return x.PhonedHome
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetWaiting() int64 {
+func (x *MachineSizeCapacity) GetWaiting() int64 {
 	if x != nil {
 		return x.Waiting
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetOther() int64 {
+func (x *MachineSizeCapacity) GetOther() int64 {
 	if x != nil {
 		return x.Other
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetOtherMachines() []string {
+func (x *MachineSizeCapacity) GetOtherMachines() []string {
 	if x != nil {
 		return x.OtherMachines
 	}
 	return nil
 }
 
-func (x *PartitionServiceCapacityResponse) GetAllocated() int64 {
+func (x *MachineSizeCapacity) GetAllocated() int64 {
 	if x != nil {
 		return x.Allocated
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetAllocatable() int64 {
+func (x *MachineSizeCapacity) GetAllocatable() int64 {
 	if x != nil {
 		return x.Allocatable
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetFree() int64 {
+func (x *MachineSizeCapacity) GetFree() int64 {
 	if x != nil {
 		return x.Free
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetUnavailable() int64 {
+func (x *MachineSizeCapacity) GetUnavailable() int64 {
 	if x != nil {
 		return x.Unavailable
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetFaulty() int64 {
+func (x *MachineSizeCapacity) GetFaulty() int64 {
 	if x != nil {
 		return x.Faulty
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetFaultyMachines() []string {
+func (x *MachineSizeCapacity) GetFaultyMachines() []string {
 	if x != nil {
 		return x.FaultyMachines
 	}
 	return nil
 }
 
-func (x *PartitionServiceCapacityResponse) GetReservations() int64 {
+func (x *MachineSizeCapacity) GetReservations() int64 {
 	if x != nil {
 		return x.Reservations
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetUsedReservations() int64 {
+func (x *MachineSizeCapacity) GetUsedReservations() int64 {
 	if x != nil {
 		return x.UsedReservations
 	}
 	return 0
 }
 
-func (x *PartitionServiceCapacityResponse) GetRemainingReservations() int64 {
+func (x *MachineSizeCapacity) GetRemainingReservations() int64 {
 	if x != nil {
 		return x.RemainingReservations
 	}
@@ -640,25 +741,30 @@ const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\x03_idB\a\n" +
 	"\x05_sizeB\n" +
 	"\n" +
-	"\b_project\"\x83\x04\n" +
-	" PartitionServiceCapacityResponse\x12\x12\n" +
-	"\x04size\x18\x01 \x01(\tR\x04size\x12\x14\n" +
-	"\x05total\x18\x02 \x01(\x03R\x05total\x12\x1f\n" +
-	"\vphoned_home\x18\x03 \x01(\x03R\n" +
+	"\b_project\"y\n" +
+	" PartitionServiceCapacityResponse\x12U\n" +
+	"\x12partition_capacity\x18\x01 \x03(\v2&.metalstack.admin.v2.PartitionCapacityR\x11partitionCapacity\"\x93\x01\n" +
+	"\x11PartitionCapacity\x12\x1c\n" +
+	"\tpartition\x18\x01 \x01(\tR\tpartition\x12`\n" +
+	"\x17machine_size_capacities\x18\x02 \x03(\v2(.metalstack.admin.v2.MachineSizeCapacityR\x15machineSizeCapacities\"\xf6\x03\n" +
+	"\x13MachineSizeCapacity\x12\x12\n" +
+	"\x04size\x18\x02 \x01(\tR\x04size\x12\x14\n" +
+	"\x05total\x18\x03 \x01(\x03R\x05total\x12\x1f\n" +
+	"\vphoned_home\x18\x04 \x01(\x03R\n" +
 	"phonedHome\x12\x18\n" +
-	"\awaiting\x18\x04 \x01(\x03R\awaiting\x12\x14\n" +
-	"\x05other\x18\x05 \x01(\x03R\x05other\x12%\n" +
-	"\x0eother_machines\x18\x06 \x03(\tR\rotherMachines\x12\x1c\n" +
-	"\tallocated\x18\a \x01(\x03R\tallocated\x12 \n" +
-	"\vallocatable\x18\b \x01(\x03R\vallocatable\x12\x12\n" +
-	"\x04free\x18\t \x01(\x03R\x04free\x12 \n" +
-	"\vunavailable\x18\n" +
-	" \x01(\x03R\vunavailable\x12\x16\n" +
-	"\x06faulty\x18\v \x01(\x03R\x06faulty\x12'\n" +
-	"\x0ffaulty_machines\x18\f \x03(\tR\x0efaultyMachines\x12\"\n" +
-	"\freservations\x18\r \x01(\x03R\freservations\x12+\n" +
-	"\x11used_reservations\x18\x0e \x01(\x03R\x10usedReservations\x125\n" +
-	"\x16remaining_reservations\x18\x0f \x01(\x03R\x15remainingReservations2\x92\x04\n" +
+	"\awaiting\x18\x05 \x01(\x03R\awaiting\x12\x14\n" +
+	"\x05other\x18\x06 \x01(\x03R\x05other\x12%\n" +
+	"\x0eother_machines\x18\a \x03(\tR\rotherMachines\x12\x1c\n" +
+	"\tallocated\x18\b \x01(\x03R\tallocated\x12 \n" +
+	"\vallocatable\x18\t \x01(\x03R\vallocatable\x12\x12\n" +
+	"\x04free\x18\n" +
+	" \x01(\x03R\x04free\x12 \n" +
+	"\vunavailable\x18\v \x01(\x03R\vunavailable\x12\x16\n" +
+	"\x06faulty\x18\f \x01(\x03R\x06faulty\x12'\n" +
+	"\x0ffaulty_machines\x18\r \x03(\tR\x0efaultyMachines\x12\"\n" +
+	"\freservations\x18\x0e \x01(\x03R\freservations\x12+\n" +
+	"\x11used_reservations\x18\x0f \x01(\x03R\x10usedReservations\x125\n" +
+	"\x16remaining_reservations\x18\x10 \x01(\x03R\x15remainingReservations2\x92\x04\n" +
 	"\x10PartitionService\x12|\n" +
 	"\x06Create\x122.metalstack.admin.v2.PartitionServiceCreateRequest\x1a3.metalstack.admin.v2.PartitionServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12|\n" +
 	"\x06Update\x122.metalstack.admin.v2.PartitionServiceUpdateRequest\x1a3.metalstack.admin.v2.PartitionServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12|\n" +
@@ -679,7 +785,7 @@ func file_metalstack_admin_v2_partition_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_partition_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_partition_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_metalstack_admin_v2_partition_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_metalstack_admin_v2_partition_proto_goTypes = []any{
 	(*PartitionServiceCreateRequest)(nil),    // 0: metalstack.admin.v2.PartitionServiceCreateRequest
 	(*PartitionServiceUpdateRequest)(nil),    // 1: metalstack.admin.v2.PartitionServiceUpdateRequest
@@ -689,36 +795,40 @@ var file_metalstack_admin_v2_partition_proto_goTypes = []any{
 	(*PartitionServiceDeleteResponse)(nil),   // 5: metalstack.admin.v2.PartitionServiceDeleteResponse
 	(*PartitionServiceCapacityRequest)(nil),  // 6: metalstack.admin.v2.PartitionServiceCapacityRequest
 	(*PartitionServiceCapacityResponse)(nil), // 7: metalstack.admin.v2.PartitionServiceCapacityResponse
-	(*v2.Partition)(nil),                     // 8: metalstack.api.v2.Partition
-	(*v2.UpdateMeta)(nil),                    // 9: metalstack.api.v2.UpdateMeta
-	(*v2.PartitionBootConfiguration)(nil),    // 10: metalstack.api.v2.PartitionBootConfiguration
-	(*v2.DNSServer)(nil),                     // 11: metalstack.api.v2.DNSServer
-	(*v2.NTPServer)(nil),                     // 12: metalstack.api.v2.NTPServer
-	(*v2.UpdateLabels)(nil),                  // 13: metalstack.api.v2.UpdateLabels
+	(*PartitionCapacity)(nil),                // 8: metalstack.admin.v2.PartitionCapacity
+	(*MachineSizeCapacity)(nil),              // 9: metalstack.admin.v2.MachineSizeCapacity
+	(*v2.Partition)(nil),                     // 10: metalstack.api.v2.Partition
+	(*v2.UpdateMeta)(nil),                    // 11: metalstack.api.v2.UpdateMeta
+	(*v2.PartitionBootConfiguration)(nil),    // 12: metalstack.api.v2.PartitionBootConfiguration
+	(*v2.DNSServer)(nil),                     // 13: metalstack.api.v2.DNSServer
+	(*v2.NTPServer)(nil),                     // 14: metalstack.api.v2.NTPServer
+	(*v2.UpdateLabels)(nil),                  // 15: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_admin_v2_partition_proto_depIdxs = []int32{
-	8,  // 0: metalstack.admin.v2.PartitionServiceCreateRequest.partition:type_name -> metalstack.api.v2.Partition
-	9,  // 1: metalstack.admin.v2.PartitionServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	10, // 2: metalstack.admin.v2.PartitionServiceUpdateRequest.boot_configuration:type_name -> metalstack.api.v2.PartitionBootConfiguration
-	11, // 3: metalstack.admin.v2.PartitionServiceUpdateRequest.dns_server:type_name -> metalstack.api.v2.DNSServer
-	12, // 4: metalstack.admin.v2.PartitionServiceUpdateRequest.ntp_server:type_name -> metalstack.api.v2.NTPServer
-	13, // 5: metalstack.admin.v2.PartitionServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
-	8,  // 6: metalstack.admin.v2.PartitionServiceCreateResponse.partition:type_name -> metalstack.api.v2.Partition
-	8,  // 7: metalstack.admin.v2.PartitionServiceUpdateResponse.partition:type_name -> metalstack.api.v2.Partition
-	8,  // 8: metalstack.admin.v2.PartitionServiceDeleteResponse.partition:type_name -> metalstack.api.v2.Partition
-	0,  // 9: metalstack.admin.v2.PartitionService.Create:input_type -> metalstack.admin.v2.PartitionServiceCreateRequest
-	1,  // 10: metalstack.admin.v2.PartitionService.Update:input_type -> metalstack.admin.v2.PartitionServiceUpdateRequest
-	2,  // 11: metalstack.admin.v2.PartitionService.Delete:input_type -> metalstack.admin.v2.PartitionServiceDeleteRequest
-	6,  // 12: metalstack.admin.v2.PartitionService.Capacity:input_type -> metalstack.admin.v2.PartitionServiceCapacityRequest
-	3,  // 13: metalstack.admin.v2.PartitionService.Create:output_type -> metalstack.admin.v2.PartitionServiceCreateResponse
-	4,  // 14: metalstack.admin.v2.PartitionService.Update:output_type -> metalstack.admin.v2.PartitionServiceUpdateResponse
-	5,  // 15: metalstack.admin.v2.PartitionService.Delete:output_type -> metalstack.admin.v2.PartitionServiceDeleteResponse
-	7,  // 16: metalstack.admin.v2.PartitionService.Capacity:output_type -> metalstack.admin.v2.PartitionServiceCapacityResponse
-	13, // [13:17] is the sub-list for method output_type
-	9,  // [9:13] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	10, // 0: metalstack.admin.v2.PartitionServiceCreateRequest.partition:type_name -> metalstack.api.v2.Partition
+	11, // 1: metalstack.admin.v2.PartitionServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	12, // 2: metalstack.admin.v2.PartitionServiceUpdateRequest.boot_configuration:type_name -> metalstack.api.v2.PartitionBootConfiguration
+	13, // 3: metalstack.admin.v2.PartitionServiceUpdateRequest.dns_server:type_name -> metalstack.api.v2.DNSServer
+	14, // 4: metalstack.admin.v2.PartitionServiceUpdateRequest.ntp_server:type_name -> metalstack.api.v2.NTPServer
+	15, // 5: metalstack.admin.v2.PartitionServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	10, // 6: metalstack.admin.v2.PartitionServiceCreateResponse.partition:type_name -> metalstack.api.v2.Partition
+	10, // 7: metalstack.admin.v2.PartitionServiceUpdateResponse.partition:type_name -> metalstack.api.v2.Partition
+	10, // 8: metalstack.admin.v2.PartitionServiceDeleteResponse.partition:type_name -> metalstack.api.v2.Partition
+	8,  // 9: metalstack.admin.v2.PartitionServiceCapacityResponse.partition_capacity:type_name -> metalstack.admin.v2.PartitionCapacity
+	9,  // 10: metalstack.admin.v2.PartitionCapacity.machine_size_capacities:type_name -> metalstack.admin.v2.MachineSizeCapacity
+	0,  // 11: metalstack.admin.v2.PartitionService.Create:input_type -> metalstack.admin.v2.PartitionServiceCreateRequest
+	1,  // 12: metalstack.admin.v2.PartitionService.Update:input_type -> metalstack.admin.v2.PartitionServiceUpdateRequest
+	2,  // 13: metalstack.admin.v2.PartitionService.Delete:input_type -> metalstack.admin.v2.PartitionServiceDeleteRequest
+	6,  // 14: metalstack.admin.v2.PartitionService.Capacity:input_type -> metalstack.admin.v2.PartitionServiceCapacityRequest
+	3,  // 15: metalstack.admin.v2.PartitionService.Create:output_type -> metalstack.admin.v2.PartitionServiceCreateResponse
+	4,  // 16: metalstack.admin.v2.PartitionService.Update:output_type -> metalstack.admin.v2.PartitionServiceUpdateResponse
+	5,  // 17: metalstack.admin.v2.PartitionService.Delete:output_type -> metalstack.admin.v2.PartitionServiceDeleteResponse
+	7,  // 18: metalstack.admin.v2.PartitionService.Capacity:output_type -> metalstack.admin.v2.PartitionServiceCapacityResponse
+	15, // [15:19] is the sub-list for method output_type
+	11, // [11:15] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_partition_proto_init() }
@@ -734,7 +844,7 @@ func file_metalstack_admin_v2_partition_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_partition_proto_rawDesc), len(file_metalstack_admin_v2_partition_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
