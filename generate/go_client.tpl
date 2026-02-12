@@ -24,13 +24,13 @@ type (
 {{ range $name, $api := . -}}
 	{{ $name | title }} interface {
 {{ range $svc := $api.Services -}}
-	{{ $svc | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc }}Client
+	{{ $svc.Name | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc.Name }}Client
 {{ end }}
 	}
 
     {{ $name }} struct {
 {{ range $svc := $api.Services -}}
-	{{ $svc | lower }} {{ $name }}connect.{{ $svc }}Client
+	{{ $svc.Name | lower }} {{ $name }}connect.{{ $svc.Name }}Client
 {{ end }}
     }
 
@@ -70,7 +70,7 @@ func New(config *DialConfig) (Client, error) {
 func (c *client) {{ $name | title }}() {{ $name | title }} {
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
-	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(
+	{{ $svc.Name | lower }}:  {{ $name }}connect.New{{ $svc.Name }}Client(
 		c.config.HttpClient(),
 		c.config.BaseURL,
 		connect.WithInterceptors(c.interceptors...),
@@ -82,8 +82,8 @@ func (c *client) {{ $name | title }}() {{ $name | title }} {
 }
 
 {{ range $svc := $api.Services -}}
-func (c  *{{ $name }} ) {{ $svc | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc }}Client {
-	return c.{{ $svc | lower }}
+func (c  *{{ $name }} ) {{ $svc.Name | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc.Name }}Client {
+	return c.{{ $svc.Name | lower }}
 }
 {{ end }}
 

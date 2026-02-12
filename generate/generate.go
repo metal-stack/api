@@ -39,8 +39,11 @@ var (
 
 type api struct {
 	Name     string
-	Services []string
-	Path     string
+	Services []struct {
+		Name     string
+		FileName string
+	}
+	Path string
 }
 
 func main() {
@@ -251,7 +254,13 @@ func svcs(root string) (map[string]api, error) {
 			}
 		}
 		for _, serviceDesc := range fd.GetService() {
-			a.Services = append(a.Services, *serviceDesc.Name)
+			a.Services = append(a.Services, struct {
+				Name     string
+				FileName string
+			}{
+				Name:     *serviceDesc.Name,
+				FileName: path.Base(filename),
+			})
 		}
 		result[name] = a
 	}
