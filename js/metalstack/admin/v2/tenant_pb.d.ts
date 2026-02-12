@@ -85,12 +85,6 @@ export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServic
      */
     name?: string;
     /**
-     * Email of the tenant to list
-     *
-     * @generated from field: optional string email = 3;
-     */
-    email?: string;
-    /**
      * Paging details for the list request
      *
      * @generated from field: metalstack.api.v2.Paging paging = 7;

@@ -46,8 +46,6 @@ message TenantServiceListRequest {
   optional string login = 1;
   // Name of the tenant to list
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Email of the tenant to list
-  optional string email = 3;
   // Paging details for the list request
   metalstack.api.v2.Paging paging = 7;
 }

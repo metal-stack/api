@@ -158,8 +158,6 @@ type TenantServiceListRequest struct {
 	Login *string `protobuf:"bytes,1,opt,name=login,proto3,oneof" json:"login,omitempty"`
 	// Name of the tenant to list
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Email of the tenant to list
-	Email *string `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
 	// Paging details for the list request
 	Paging        *v2.Paging `protobuf:"bytes,7,opt,name=paging,proto3" json:"paging,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -206,13 +204,6 @@ func (x *TenantServiceListRequest) GetLogin() string {
 func (x *TenantServiceListRequest) GetName() string {
 	if x != nil && x.Name != nil {
 		return *x.Name
-	}
-	return ""
-}
-
-func (x *TenantServiceListRequest) GetEmail() string {
-	if x != nil && x.Email != nil {
-		return *x.Email
 	}
 	return ""
 }
@@ -295,15 +286,13 @@ const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\x06_emailB\r\n" +
 	"\v_avatar_url\"P\n" +
 	"\x1bTenantServiceCreateResponse\x121\n" +
-	"\x06tenant\x18\x01 \x01(\v2\x19.metalstack.api.v2.TenantR\x06tenant\"\xc6\x01\n" +
+	"\x06tenant\x18\x01 \x01(\v2\x19.metalstack.api.v2.TenantR\x06tenant\"\xa1\x01\n" +
 	"\x18TenantServiceListRequest\x12\x19\n" +
 	"\x05login\x18\x01 \x01(\tH\x00R\x05login\x88\x01\x01\x12$\n" +
-	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12\x19\n" +
-	"\x05email\x18\x03 \x01(\tH\x02R\x05email\x88\x01\x01\x121\n" +
+	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x121\n" +
 	"\x06paging\x18\a \x01(\v2\x19.metalstack.api.v2.PagingR\x06pagingB\b\n" +
 	"\x06_loginB\a\n" +
-	"\x05_nameB\b\n" +
-	"\x06_email\"\x80\x01\n" +
+	"\x05_name\"\x80\x01\n" +
 	"\x19TenantServiceListResponse\x123\n" +
 	"\atenants\x18\x01 \x03(\v2\x19.metalstack.api.v2.TenantR\atenants\x12 \n" +
 	"\tnext_page\x18\x02 \x01(\x04H\x00R\bnextPage\x88\x01\x01B\f\n" +
