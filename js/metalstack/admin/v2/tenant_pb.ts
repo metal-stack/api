@@ -5,7 +5,7 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
-import type { Paging } from "../../api/v2/common_pb";
+import type { Labels, Paging } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
 import type { Tenant } from "../../api/v2/tenant_pb";
@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/tenant.proto.
  */
 export const file_metalstack_admin_v2_tenant: GenFile = /*@__PURE__*/
-  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiK9AQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgbAs66xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIXCgphdmF0YXJfdXJsGAQgASgJSAKIAQFCDgoMX2Rlc2NyaXB0aW9uQggKBl9lbWFpbEINCgtfYXZhdGFyX3VybCJIChtUZW5hbnRTZXJ2aWNlQ3JlYXRlUmVzcG9uc2USKQoGdGVuYW50GAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50IqoBChhUZW5hbnRTZXJ2aWNlTGlzdFJlcXVlc3QSEgoFbG9naW4YASABKAlIAIgBARIeCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECAUgBiAEBEhIKBWVtYWlsGAMgASgJSAKIAQESKQoGcGFnaW5nGAcgASgLMhkubWV0YWxzdGFjay5hcGkudjIuUGFnaW5nQggKBl9sb2dpbkIHCgVfbmFtZUIICgZfZW1haWwibQoZVGVuYW50U2VydmljZUxpc3RSZXNwb25zZRIqCgd0ZW5hbnRzGAEgAygLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50EhYKCW5leHRfcGFnZRgCIAEoBEgAiAEBQgwKCl9uZXh0X3BhZ2Uy8gEKDVRlbmFudFNlcnZpY2UScgoGQ3JlYXRlEi8ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlQ3JlYXRlUmVxdWVzdBowLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlIgXS8xgBARJtCgRMaXN0Ei0ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlTGlzdFJlcXVlc3QaLi5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VMaXN0UmVzcG9uc2UiBtLzGAIBAkLPAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCC1RlbmFudFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
+  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiLoAQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgbAs66xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIXCgphdmF0YXJfdXJsGAQgASgJSAKIAQESKQoGbGFiZWxzGAUgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzQg4KDF9kZXNjcmlwdGlvbkIICgZfZW1haWxCDQoLX2F2YXRhcl91cmwiSAobVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlEikKBnRlbmFudBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudCKMAQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0EhIKBWxvZ2luGAEgASgJSACIAQESHgoEbmFtZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIpCgZwYWdpbmcYByABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5QYWdpbmdCCAoGX2xvZ2luQgcKBV9uYW1lIm0KGVRlbmFudFNlcnZpY2VMaXN0UmVzcG9uc2USKgoHdGVuYW50cxgBIAMoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudBIWCgluZXh0X3BhZ2UYAiABKARIAIgBAUIMCgpfbmV4dF9wYWdlMvIBCg1UZW5hbnRTZXJ2aWNlEnIKBkNyZWF0ZRIvLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QaMC5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZSIF0vMYAQESbQoETGlzdBItLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlTGlzdFJlc3BvbnNlIgbS8xgCAQJCzwEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgtUZW5hbnRQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
 
 /**
  * TenantServiceCreateRequest is the request payload of the tenant create request
@@ -51,6 +51,13 @@ export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServ
    * @generated from field: optional string avatar_url = 4;
    */
   avatarUrl?: string;
+
+  /**
+   * Labels on the tenant
+   *
+   * @generated from field: metalstack.api.v2.Labels labels = 5;
+   */
+  labels?: Labels;
 };
 
 /**
@@ -100,13 +107,6 @@ export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServic
    * @generated from field: optional string name = 2;
    */
   name?: string;
-
-  /**
-   * Email of the tenant to list
-   *
-   * @generated from field: optional string email = 3;
-   */
-  email?: string;
 
   /**
    * Paging details for the list request
