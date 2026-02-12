@@ -71,6 +71,20 @@ class PartitionServiceCapacityRequest(_message.Message):
     def __init__(self, id: _Optional[str] = ..., size: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
 
 class PartitionServiceCapacityResponse(_message.Message):
+    __slots__ = ("partition_capacity",)
+    PARTITION_CAPACITY_FIELD_NUMBER: _ClassVar[int]
+    partition_capacity: _containers.RepeatedCompositeFieldContainer[PartitionCapacity]
+    def __init__(self, partition_capacity: _Optional[_Iterable[_Union[PartitionCapacity, _Mapping]]] = ...) -> None: ...
+
+class PartitionCapacity(_message.Message):
+    __slots__ = ("partition", "machine_size_capacities")
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_SIZE_CAPACITIES_FIELD_NUMBER: _ClassVar[int]
+    partition: str
+    machine_size_capacities: _containers.RepeatedCompositeFieldContainer[MachineSizeCapacity]
+    def __init__(self, partition: _Optional[str] = ..., machine_size_capacities: _Optional[_Iterable[_Union[MachineSizeCapacity, _Mapping]]] = ...) -> None: ...
+
+class MachineSizeCapacity(_message.Message):
     __slots__ = ("size", "total", "phoned_home", "waiting", "other", "other_machines", "allocated", "allocatable", "free", "unavailable", "faulty", "faulty_machines", "reservations", "used_reservations", "remaining_reservations")
     SIZE_FIELD_NUMBER: _ClassVar[int]
     TOTAL_FIELD_NUMBER: _ClassVar[int]

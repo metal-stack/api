@@ -1,6 +1,6 @@
 import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
-import type { AdminRole, InfraRole, Labels, Meta, ProjectRole, TenantRole, UpdateLabels, UpdateMeta } from "./common_pb";
+import type { AdminRole, InfraRole, Labels, MachineRole, Meta, ProjectRole, TenantRole, UpdateLabels, UpdateMeta } from "./common_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/api/v2/token.proto.
@@ -99,6 +99,15 @@ export type Token = Message<"metalstack.api.v2.Token"> & {
      * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 12;
      */
     infraRole?: InfraRole;
+    /**
+     * MachineRoles associates a machine uuid with the corresponding role of the token owner
+     * TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead
+     *
+     * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 13;
+     */
+    machineRoles: {
+        [key: string]: MachineRole;
+    };
 };
 /**
  * Describes the message metalstack.api.v2.Token.
@@ -158,9 +167,17 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
      */
     infraRole?: InfraRole;
     /**
+     * MachineRoles associates a machine uuid with the corresponding role of the token owner
+     *
+     * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 9;
+     */
+    machineRoles: {
+        [key: string]: MachineRole;
+    };
+    /**
      * Labels on this token
      *
-     * @generated from field: metalstack.api.v2.Labels labels = 9;
+     * @generated from field: metalstack.api.v2.Labels labels = 10;
      */
     labels?: Labels;
 };
@@ -340,9 +357,17 @@ export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceU
      */
     infraRole?: InfraRole;
     /**
+     * MachineRoles associates a machine uuid with the corresponding role of the token owner
+     *
+     * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 9;
+     */
+    machineRoles: {
+        [key: string]: MachineRole;
+    };
+    /**
      * Labels on this token
      *
-     * @generated from field: metalstack.api.v2.UpdateLabels labels = 9;
+     * @generated from field: metalstack.api.v2.UpdateLabels labels = 10;
      */
     labels?: UpdateLabels;
 };

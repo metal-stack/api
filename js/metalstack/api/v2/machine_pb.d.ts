@@ -371,6 +371,95 @@ export type MachineServiceDeleteResponse = Message<"metalstack.api.v2.MachineSer
  */
 export declare const MachineServiceDeleteResponseSchema: GenMessage<MachineServiceDeleteResponse>;
 /**
+ * MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+ *
+ * @generated from message metalstack.api.v2.MachineServiceBMCCommandRequest
+ */
+export type MachineServiceBMCCommandRequest = Message<"metalstack.api.v2.MachineServiceBMCCommandRequest"> & {
+    /**
+     * UUID of the machine to send the command to
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Project of the machine
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+    /**
+     * Command to send to the bmc of the machine
+     *
+     * @generated from field: metalstack.api.v2.MachineBMCCommand command = 3;
+     */
+    command: MachineBMCCommand;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineServiceBMCCommandRequest.
+ * Use `create(MachineServiceBMCCommandRequestSchema)` to create a new message.
+ */
+export declare const MachineServiceBMCCommandRequestSchema: GenMessage<MachineServiceBMCCommandRequest>;
+/**
+ * MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+ *
+ * @generated from message metalstack.api.v2.MachineServiceBMCCommandResponse
+ */
+export type MachineServiceBMCCommandResponse = Message<"metalstack.api.v2.MachineServiceBMCCommandResponse"> & {};
+/**
+ * Describes the message metalstack.api.v2.MachineServiceBMCCommandResponse.
+ * Use `create(MachineServiceBMCCommandResponseSchema)` to create a new message.
+ */
+export declare const MachineServiceBMCCommandResponseSchema: GenMessage<MachineServiceBMCCommandResponse>;
+/**
+ * MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+ *
+ * @generated from message metalstack.api.v2.MachineServiceGetBMCRequest
+ */
+export type MachineServiceGetBMCRequest = Message<"metalstack.api.v2.MachineServiceGetBMCRequest"> & {
+    /**
+     * UUID of the machine to get
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Project of the machine
+     *
+     * @generated from field: string project = 2;
+     */
+    project: string;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineServiceGetBMCRequest.
+ * Use `create(MachineServiceGetBMCRequestSchema)` to create a new message.
+ */
+export declare const MachineServiceGetBMCRequestSchema: GenMessage<MachineServiceGetBMCRequest>;
+/**
+ * MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+ *
+ * @generated from message metalstack.api.v2.MachineServiceGetBMCResponse
+ */
+export type MachineServiceGetBMCResponse = Message<"metalstack.api.v2.MachineServiceGetBMCResponse"> & {
+    /**
+     * UUID of the machine
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * BMC contains the BMC details of this machine
+     *
+     * @generated from field: metalstack.api.v2.MachineBMCReport bmc = 2;
+     */
+    bmc?: MachineBMCReport;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineServiceGetBMCResponse.
+ * Use `create(MachineServiceGetBMCResponseSchema)` to create a new message.
+ */
+export declare const MachineServiceGetBMCResponseSchema: GenMessage<MachineServiceGetBMCResponse>;
+/**
  * Machine represents a physical bare metal machine.
  *
  * @generated from message metalstack.api.v2.Machine
@@ -412,12 +501,6 @@ export type Machine = Message<"metalstack.api.v2.Machine"> & {
      * @generated from field: metalstack.api.v2.MachineHardware hardware = 6;
      */
     hardware?: MachineHardware;
-    /**
-     * Bios details for this machine
-     *
-     * @generated from field: metalstack.api.v2.MachineBios bios = 7;
-     */
-    bios?: MachineBios;
     /**
      * Allocation details
      *
@@ -1021,6 +1104,60 @@ export type MachineChassisIdentifyLEDState = Message<"metalstack.api.v2.MachineC
  */
 export declare const MachineChassisIdentifyLEDStateSchema: GenMessage<MachineChassisIdentifyLEDState>;
 /**
+ * MachineBMCReport is sent from the metal-bmc to update bmc and power related details
+ *
+ * @generated from message metalstack.api.v2.MachineBMCReport
+ */
+export type MachineBMCReport = Message<"metalstack.api.v2.MachineBMCReport"> & {
+    /**
+     * Bmc contains bmc details
+     *
+     * @generated from field: metalstack.api.v2.MachineBMC bmc = 1;
+     */
+    bmc?: MachineBMC;
+    /**
+     * Bios contains bios details
+     *
+     * @generated from field: metalstack.api.v2.MachineBios bios = 2;
+     */
+    bios?: MachineBios;
+    /**
+     * Fru containers field replaceable unit details
+     *
+     * @generated from field: metalstack.api.v2.MachineFRU fru = 3;
+     */
+    fru?: MachineFRU;
+    /**
+     * PowerMetric contains the power statistics of the machine
+     *
+     * @generated from field: metalstack.api.v2.MachinePowerMetric power_metric = 4;
+     */
+    powerMetric?: MachinePowerMetric;
+    /**
+     * PowerSupplies contains details about all power supplies and their state
+     *
+     * @generated from field: repeated metalstack.api.v2.MachinePowerSupply power_supplies = 5;
+     */
+    powerSupplies: MachinePowerSupply[];
+    /**
+     * LedState indicates the state of the indicator LED on this machine
+     *
+     * @generated from field: metalstack.api.v2.MachineChassisIdentifyLEDState led_state = 6;
+     */
+    ledState?: MachineChassisIdentifyLEDState;
+    /**
+     * UpdatedAt contains the date when this data was last updated
+     *
+     * @generated from field: google.protobuf.Timestamp updated_at = 7;
+     */
+    updatedAt?: Timestamp;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineBMCReport.
+ * Use `create(MachineBMCReportSchema)` to create a new message.
+ */
+export declare const MachineBMCReportSchema: GenMessage<MachineBMCReport>;
+/**
  * MachineBios contains BIOS details of this machine
  *
  * @generated from message metalstack.api.v2.MachineBios
@@ -1050,6 +1187,189 @@ export type MachineBios = Message<"metalstack.api.v2.MachineBios"> & {
  * Use `create(MachineBiosSchema)` to create a new message.
  */
 export declare const MachineBiosSchema: GenMessage<MachineBios>;
+/**
+ * MachineBMC describe details of the ipmi or out of band device
+ *
+ * @generated from message metalstack.api.v2.MachineBMC
+ */
+export type MachineBMC = Message<"metalstack.api.v2.MachineBMC"> & {
+    /**
+     * Address of this ipmi device from outside in the form of <ip or hostname>:<port>
+     *
+     * @generated from field: string address = 1;
+     */
+    address: string;
+    /**
+     * Mac address of the network interface of this ipmi device
+     *
+     * @generated from field: string mac = 2;
+     */
+    mac: string;
+    /**
+     * User of this ipmi device
+     *
+     * @generated from field: string user = 3;
+     */
+    user: string;
+    /**
+     * Password of this ipmi device
+     *
+     * @generated from field: string password = 4;
+     */
+    password: string;
+    /**
+     * Interface of this ipmi device
+     *
+     * @generated from field: string interface = 5;
+     */
+    interface: string;
+    /**
+     * Version of this bmc device
+     *
+     * @generated from field: string version = 7;
+     */
+    version: string;
+    /**
+     * PowerState of this machine
+     *
+     * @generated from field: string power_state = 8;
+     */
+    powerState: string;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineBMC.
+ * Use `create(MachineBMCSchema)` to create a new message.
+ */
+export declare const MachineBMCSchema: GenMessage<MachineBMC>;
+/**
+ * MachineFRU describes details to the machine which are required in case of a necessary replacement
+ *
+ * @generated from message metalstack.api.v2.MachineFRU
+ */
+export type MachineFRU = Message<"metalstack.api.v2.MachineFRU"> & {
+    /**
+     * ChassisPartNumber is the part number of the machine chassis
+     *
+     * @generated from field: optional string chassis_part_number = 1;
+     */
+    chassisPartNumber?: string;
+    /**
+     * ChassisPartSerial is the serial number of the machine chassis
+     *
+     * @generated from field: optional string chassis_part_serial = 2;
+     */
+    chassisPartSerial?: string;
+    /**
+     * BoardMfg is the short description of the mainboard
+     *
+     * @generated from field: optional string board_mfg = 3;
+     */
+    boardMfg?: string;
+    /**
+     * BoardMfgSerial is the serial number of the mainboard
+     *
+     * @generated from field: optional string board_mfg_serial = 4;
+     */
+    boardMfgSerial?: string;
+    /**
+     * BoardPartNumber is the part number of the mainboard
+     *
+     * @generated from field: optional string board_part_number = 5;
+     */
+    boardPartNumber?: string;
+    /**
+     * ProductManufacturer is the manufacturer of the machine
+     *
+     * @generated from field: optional string product_manufacturer = 6;
+     */
+    productManufacturer?: string;
+    /**
+     * ProductPartNumber is the part number of the machine
+     *
+     * @generated from field: optional string product_part_number = 7;
+     */
+    productPartNumber?: string;
+    /**
+     * ProductSerial is the serial number of the machine
+     *
+     * @generated from field: optional string product_serial = 8;
+     */
+    productSerial?: string;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineFRU.
+ * Use `create(MachineFRUSchema)` to create a new message.
+ */
+export declare const MachineFRUSchema: GenMessage<MachineFRU>;
+/**
+ * MachinePowerMetric contains metrics of the power consumption of a machine
+ *
+ * @generated from message metalstack.api.v2.MachinePowerMetric
+ */
+export type MachinePowerMetric = Message<"metalstack.api.v2.MachinePowerMetric"> & {
+    /**
+     * AverageConsumedWatts shall represent the
+     * average power level that occurred averaged over the last IntervalInMin
+     * minutes.
+     *
+     * @generated from field: float average_consumed_watts = 1;
+     */
+    averageConsumedWatts: number;
+    /**
+     * IntervalInMin shall represent the time
+     * interval (or window), in minutes, in which the PowerMetrics properties
+     * are measured over.
+     * Should be an integer, but some Dell implementations return as a float.
+     *
+     * @generated from field: float interval_in_min = 2;
+     */
+    intervalInMin: number;
+    /**
+     * MaxConsumedWatts shall represent the
+     * maximum power level in watts that occurred within the last
+     * IntervalInMin minutes.
+     *
+     * @generated from field: float max_consumed_watts = 3;
+     */
+    maxConsumedWatts: number;
+    /**
+     * MinConsumedWatts shall represent the
+     * minimum power level in watts that occurred within the last
+     * IntervalInMin minutes.
+     *
+     * @generated from field: float min_consumed_watts = 4;
+     */
+    minConsumedWatts: number;
+};
+/**
+ * Describes the message metalstack.api.v2.MachinePowerMetric.
+ * Use `create(MachinePowerMetricSchema)` to create a new message.
+ */
+export declare const MachinePowerMetricSchema: GenMessage<MachinePowerMetric>;
+/**
+ * MachinePowerSupply contains details of the power supply of a machine
+ *
+ * @generated from message metalstack.api.v2.MachinePowerSupply
+ */
+export type MachinePowerSupply = Message<"metalstack.api.v2.MachinePowerSupply"> & {
+    /**
+     * Health of the powersupply
+     *
+     * @generated from field: string health = 1;
+     */
+    health: string;
+    /**
+     * State of the powersupply
+     *
+     * @generated from field: string state = 2;
+     */
+    state: string;
+};
+/**
+ * Describes the message metalstack.api.v2.MachinePowerSupply.
+ * Use `create(MachinePowerSupplySchema)` to create a new message.
+ */
+export declare const MachinePowerSupplySchema: GenMessage<MachinePowerSupply>;
 /**
  * MachineRecentProvisioningEvents the recent provisioning events for this machine
  *
@@ -1219,13 +1539,13 @@ export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
      */
     disk?: MachineDiskQuery;
     /**
-     * IPMI specific machine queries
+     * Bmc specific machine queries
      *
-     * @generated from field: optional metalstack.api.v2.MachineIPMIQuery ipmi = 11;
+     * @generated from field: optional metalstack.api.v2.MachineBMCQuery bmc = 11;
      */
-    ipmi?: MachineIPMIQuery;
+    bmc?: MachineBMCQuery;
     /**
-     * FRU specific machine queries
+     * Fru specific machine queries
      *
      * @generated from field: optional metalstack.api.v2.MachineFRUQuery fru = 12;
      */
@@ -1423,11 +1743,11 @@ export type MachineDiskQuery = Message<"metalstack.api.v2.MachineDiskQuery"> & {
  */
 export declare const MachineDiskQuerySchema: GenMessage<MachineDiskQuery>;
 /**
- * MachineIPMIQuery machine ipmi specific machine queries
+ * MachineBMCQuery machine ipmi or bmc specific machine queries
  *
- * @generated from message metalstack.api.v2.MachineIPMIQuery
+ * @generated from message metalstack.api.v2.MachineBMCQuery
  */
-export type MachineIPMIQuery = Message<"metalstack.api.v2.MachineIPMIQuery"> & {
+export type MachineBMCQuery = Message<"metalstack.api.v2.MachineBMCQuery"> & {
     /**
      * Address of the ipmi system of this machine
      *
@@ -1454,10 +1774,10 @@ export type MachineIPMIQuery = Message<"metalstack.api.v2.MachineIPMIQuery"> & {
     interface?: string;
 };
 /**
- * Describes the message metalstack.api.v2.MachineIPMIQuery.
- * Use `create(MachineIPMIQuerySchema)` to create a new message.
+ * Describes the message metalstack.api.v2.MachineBMCQuery.
+ * Use `create(MachineBMCQuerySchema)` to create a new message.
  */
-export declare const MachineIPMIQuerySchema: GenMessage<MachineIPMIQuery>;
+export declare const MachineBMCQuerySchema: GenMessage<MachineBMCQuery>;
 /**
  * MachineFRUQuery machine fru specific machine queries
  *
@@ -1783,6 +2103,89 @@ export declare enum MachineAllocationType {
  */
 export declare const MachineAllocationTypeSchema: GenEnum<MachineAllocationType>;
 /**
+ * MachineBMCCommand defines commands send to the BMC of the machine
+ *
+ * @generated from enum metalstack.api.v2.MachineBMCCommand
+ */
+export declare enum MachineBMCCommand {
+    /**
+     * MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_UNSPECIFIED = 0;
+     */
+    MACHINE_BMC_COMMAND_UNSPECIFIED = 0,
+    /**
+     * MACHINE_BMC_COMMAND_ON Power on the machine
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_ON = 1;
+     */
+    MACHINE_BMC_COMMAND_ON = 1,
+    /**
+     * MACHINE_BMC_COMMAND_OFF Power off the machine
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_OFF = 2;
+     */
+    MACHINE_BMC_COMMAND_OFF = 2,
+    /**
+     * MACHINE_BMC_COMMAND_RESET Power reset the machine
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_RESET = 3;
+     */
+    MACHINE_BMC_COMMAND_RESET = 3,
+    /**
+     * MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_CYCLE = 4;
+     */
+    MACHINE_BMC_COMMAND_CYCLE = 4,
+    /**
+     * MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_BOOT_TO_BIOS = 5;
+     */
+    MACHINE_BMC_COMMAND_BOOT_TO_BIOS = 5,
+    /**
+     * MACHINE_BMC_COMMAND_BOOT_FROM_DISK boot the machine from hard disk
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_BOOT_FROM_DISK = 6;
+     */
+    MACHINE_BMC_COMMAND_BOOT_FROM_DISK = 6,
+    /**
+     * MACHINE_BMC_COMMAND_BOOT_FROM_PXE boot the machine from pxe
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_BOOT_FROM_PXE = 7;
+     */
+    MACHINE_BMC_COMMAND_BOOT_FROM_PXE = 7,
+    /**
+     * MACHINE_BMC_COMMAND_IDENTIFY_LED_ON set identify led of the machine chassis to on
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_IDENTIFY_LED_ON = 8;
+     */
+    MACHINE_BMC_COMMAND_IDENTIFY_LED_ON = 8,
+    /**
+     * MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9;
+     */
+    MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9,
+    /**
+     * MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_MACHINE_DELETED = 10;
+     */
+    MACHINE_BMC_COMMAND_MACHINE_DELETED = 10,
+    /**
+     * MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was created to set the boot order to boot from disk
+     *
+     * @generated from enum value: MACHINE_BMC_COMMAND_MACHINE_CREATED = 11;
+     */
+    MACHINE_BMC_COMMAND_MACHINE_CREATED = 11
+}
+/**
+ * Describes the enum metalstack.api.v2.MachineBMCCommand.
+ */
+export declare const MachineBMCCommandSchema: GenEnum<MachineBMCCommand>;
+/**
  * MachineService serves machine related functions
  *
  * @generated from service metalstack.api.v2.MachineService
@@ -1837,5 +2240,25 @@ export declare const MachineService: GenService<{
         methodKind: "unary";
         input: typeof MachineServiceDeleteRequestSchema;
         output: typeof MachineServiceDeleteResponseSchema;
+    };
+    /**
+     * BMCCommand send a command to the bmc of a machine
+     *
+     * @generated from rpc metalstack.api.v2.MachineService.BMCCommand
+     */
+    bMCCommand: {
+        methodKind: "unary";
+        input: typeof MachineServiceBMCCommandRequestSchema;
+        output: typeof MachineServiceBMCCommandResponseSchema;
+    };
+    /**
+     * GetBMC returns the BMC details of a machine
+     *
+     * @generated from rpc metalstack.api.v2.MachineService.GetBMC
+     */
+    getBMC: {
+        methodKind: "unary";
+        input: typeof MachineServiceGetBMCRequestSchema;
+        output: typeof MachineServiceGetBMCResponseSchema;
     };
 }>;

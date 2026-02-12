@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/partition.proto.
  */
 export const file_metalstack_admin_v2_partition: GenFile = /*@__PURE__*/
-  fileDesc("CiNtZXRhbHN0YWNrL2FkbWluL3YyL3BhcnRpdGlvbi5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiJQCh1QYXJ0aXRpb25TZXJ2aWNlQ3JlYXRlUmVxdWVzdBIvCglwYXJ0aXRpb24YASABKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb24izwMKHVBhcnRpdGlvblNlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBtCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIlCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgFIAIgBARJJChJib290X2NvbmZpZ3VyYXRpb24YBCABKAsyLS5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb25Cb290Q29uZmlndXJhdGlvbhI6CgpkbnNfc2VydmVyGAUgAygLMhwubWV0YWxzdGFjay5hcGkudjIuRE5TU2VydmVyQgi6SAWSAQIQAxI6CgpudHBfc2VydmVyGAYgAygLMhwubWV0YWxzdGFjay5hcGkudjIuTlRQU2VydmVyQgi6SAWSAQIQChIeChZtZ210X3NlcnZpY2VfYWRkcmVzc2VzGAcgAygJEjQKBmxhYmVscxgIIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gBiAEBQg4KDF9kZXNjcmlwdGlvbkIJCgdfbGFiZWxzIjgKHVBhcnRpdGlvblNlcnZpY2VEZWxldGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBtCzrrECASJRCh5QYXJ0aXRpb25TZXJ2aWNlQ3JlYXRlUmVzcG9uc2USLwoJcGFydGl0aW9uGAEgASgLMhwubWV0YWxzdGFjay5hcGkudjIuUGFydGl0aW9uIlEKHlBhcnRpdGlvblNlcnZpY2VVcGRhdGVSZXNwb25zZRIvCglwYXJ0aXRpb24YASABKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb24iUQoeUGFydGl0aW9uU2VydmljZURlbGV0ZVJlc3BvbnNlEi8KCXBhcnRpdGlvbhgBIAEoCzIcLm1ldGFsc3RhY2suYXBpLnYyLlBhcnRpdGlvbiKbAQofUGFydGl0aW9uU2VydmljZUNhcGFjaXR5UmVxdWVzdBIcCgJpZBgBIAEoCUILukgIcgbQs66xAgFIAIgBARIeCgRzaXplGAIgASgJQgu6SAhyBsCzrrECAUgBiAEBEh4KB3Byb2plY3QYAyABKAlCCLpIBXIDsAEBSAKIAQFCBQoDX2lkQgcKBV9zaXplQgoKCF9wcm9qZWN0ItECCiBQYXJ0aXRpb25TZXJ2aWNlQ2FwYWNpdHlSZXNwb25zZRIMCgRzaXplGAEgASgJEg0KBXRvdGFsGAIgASgDEhMKC3Bob25lZF9ob21lGAMgASgDEg8KB3dhaXRpbmcYBCABKAMSDQoFb3RoZXIYBSABKAMSFgoOb3RoZXJfbWFjaGluZXMYBiADKAkSEQoJYWxsb2NhdGVkGAcgASgDEhMKC2FsbG9jYXRhYmxlGAggASgDEgwKBGZyZWUYCSABKAMSEwoLdW5hdmFpbGFibGUYCiABKAMSDgoGZmF1bHR5GAsgASgDEhcKD2ZhdWx0eV9tYWNoaW5lcxgMIAMoCRIUCgxyZXNlcnZhdGlvbnMYDSABKAMSGQoRdXNlZF9yZXNlcnZhdGlvbnMYDiABKAMSHgoWcmVtYWluaW5nX3Jlc2VydmF0aW9ucxgPIAEoAzKSBAoQUGFydGl0aW9uU2VydmljZRJ8CgZDcmVhdGUSMi5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VDcmVhdGVSZXF1ZXN0GjMubWV0YWxzdGFjay5hZG1pbi52Mi5QYXJ0aXRpb25TZXJ2aWNlQ3JlYXRlUmVzcG9uc2UiCdLzGAEB4PMYARJ8CgZVcGRhdGUSMi5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VVcGRhdGVSZXF1ZXN0GjMubWV0YWxzdGFjay5hZG1pbi52Mi5QYXJ0aXRpb25TZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCdLzGAEB4PMYARJ8CgZEZWxldGUSMi5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VEZWxldGVSZXF1ZXN0GjMubWV0YWxzdGFjay5hZG1pbi52Mi5QYXJ0aXRpb25TZXJ2aWNlRGVsZXRlUmVzcG9uc2UiCdLzGAEB4PMYARKDAQoIQ2FwYWNpdHkSNC5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VDYXBhY2l0eVJlcXVlc3QaNS5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VDYXBhY2l0eVJlc3BvbnNlIgrS8xgCAgHg8xgCQtIBChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIOUGFydGl0aW9uUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hZG1pbi92MjthZG1pbnYyogIDTUFYqgITTWV0YWxzdGFjay5BZG1pbi5WMsoCE01ldGFsc3RhY2tcQWRtaW5cVjLiAh9NZXRhbHN0YWNrXEFkbWluXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6QWRtaW46OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_partition, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("CiNtZXRhbHN0YWNrL2FkbWluL3YyL3BhcnRpdGlvbi5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiJQCh1QYXJ0aXRpb25TZXJ2aWNlQ3JlYXRlUmVxdWVzdBIvCglwYXJ0aXRpb24YASABKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb24izwMKHVBhcnRpdGlvblNlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBtCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIlCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgFIAIgBARJJChJib290X2NvbmZpZ3VyYXRpb24YBCABKAsyLS5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb25Cb290Q29uZmlndXJhdGlvbhI6CgpkbnNfc2VydmVyGAUgAygLMhwubWV0YWxzdGFjay5hcGkudjIuRE5TU2VydmVyQgi6SAWSAQIQAxI6CgpudHBfc2VydmVyGAYgAygLMhwubWV0YWxzdGFjay5hcGkudjIuTlRQU2VydmVyQgi6SAWSAQIQChIeChZtZ210X3NlcnZpY2VfYWRkcmVzc2VzGAcgAygJEjQKBmxhYmVscxgIIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gBiAEBQg4KDF9kZXNjcmlwdGlvbkIJCgdfbGFiZWxzIjgKHVBhcnRpdGlvblNlcnZpY2VEZWxldGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBtCzrrECASJRCh5QYXJ0aXRpb25TZXJ2aWNlQ3JlYXRlUmVzcG9uc2USLwoJcGFydGl0aW9uGAEgASgLMhwubWV0YWxzdGFjay5hcGkudjIuUGFydGl0aW9uIlEKHlBhcnRpdGlvblNlcnZpY2VVcGRhdGVSZXNwb25zZRIvCglwYXJ0aXRpb24YASABKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb24iUQoeUGFydGl0aW9uU2VydmljZURlbGV0ZVJlc3BvbnNlEi8KCXBhcnRpdGlvbhgBIAEoCzIcLm1ldGFsc3RhY2suYXBpLnYyLlBhcnRpdGlvbiKbAQofUGFydGl0aW9uU2VydmljZUNhcGFjaXR5UmVxdWVzdBIcCgJpZBgBIAEoCUILukgIcgbQs66xAgFIAIgBARIeCgRzaXplGAIgASgJQgu6SAhyBsCzrrECAUgBiAEBEh4KB3Byb2plY3QYAyABKAlCCLpIBXIDsAEBSAKIAQFCBQoDX2lkQgcKBV9zaXplQgoKCF9wcm9qZWN0ImYKIFBhcnRpdGlvblNlcnZpY2VDYXBhY2l0eVJlc3BvbnNlEkIKEnBhcnRpdGlvbl9jYXBhY2l0eRgBIAMoCzImLm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uQ2FwYWNpdHkicQoRUGFydGl0aW9uQ2FwYWNpdHkSEQoJcGFydGl0aW9uGAEgASgJEkkKF21hY2hpbmVfc2l6ZV9jYXBhY2l0aWVzGAIgAygLMigubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2l6ZUNhcGFjaXR5IsQCChNNYWNoaW5lU2l6ZUNhcGFjaXR5EgwKBHNpemUYAiABKAkSDQoFdG90YWwYAyABKAMSEwoLcGhvbmVkX2hvbWUYBCABKAMSDwoHd2FpdGluZxgFIAEoAxINCgVvdGhlchgGIAEoAxIWCg5vdGhlcl9tYWNoaW5lcxgHIAMoCRIRCglhbGxvY2F0ZWQYCCABKAMSEwoLYWxsb2NhdGFibGUYCSABKAMSDAoEZnJlZRgKIAEoAxITCgt1bmF2YWlsYWJsZRgLIAEoAxIOCgZmYXVsdHkYDCABKAMSFwoPZmF1bHR5X21hY2hpbmVzGA0gAygJEhQKDHJlc2VydmF0aW9ucxgOIAEoAxIZChF1c2VkX3Jlc2VydmF0aW9ucxgPIAEoAxIeChZyZW1haW5pbmdfcmVzZXJ2YXRpb25zGBAgASgDMpIEChBQYXJ0aXRpb25TZXJ2aWNlEnwKBkNyZWF0ZRIyLm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZUNyZWF0ZVJlcXVlc3QaMy5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnwKBlVwZGF0ZRIyLm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZVVwZGF0ZVJlcXVlc3QaMy5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VVcGRhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnwKBkRlbGV0ZRIyLm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZURlbGV0ZVJlcXVlc3QaMy5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VEZWxldGVSZXNwb25zZSIJ0vMYAQHg8xgBEoMBCghDYXBhY2l0eRI0Lm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZUNhcGFjaXR5UmVxdWVzdBo1Lm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZUNhcGFjaXR5UmVzcG9uc2UiCtLzGAICAeDzGAJC0gEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQg5QYXJ0aXRpb25Qcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_partition, file_metalstack_api_v2_predefined_rules]);
 
 /**
  * PartitionServiceCreateRequest is the request payload for a partition create request
@@ -237,112 +237,11 @@ export const PartitionServiceCapacityRequestSchema: GenMessage<PartitionServiceC
  */
 export type PartitionServiceCapacityResponse = Message<"metalstack.admin.v2.PartitionServiceCapacityResponse"> & {
   /**
-   * Size is the size id correlating to all counts in this server capacity.
+   * PartitionCapacity is a capacity report per partition
    *
-   * @generated from field: string size = 1;
+   * @generated from field: repeated metalstack.admin.v2.PartitionCapacity partition_capacity = 1;
    */
-  size: string;
-
-  /**
-   * Total is the total amount of machines for this size.
-   *
-   * @generated from field: int64 total = 2;
-   */
-  total: bigint;
-
-  /**
-   * PhonedHome is the amount of machines that are currently in the provisioning state "phoned home".
-   *
-   * @generated from field: int64 phoned_home = 3;
-   */
-  phonedHome: bigint;
-
-  /**
-   * Waiting is the amount of machines that are currently in the provisioning state "waiting".
-   *
-   * @generated from field: int64 waiting = 4;
-   */
-  waiting: bigint;
-
-  /**
-   * Other is the amount of machines that are neither in the provisioning state waiting nor in phoned home but in another provisioning state.
-   *
-   * @generated from field: int64 other = 5;
-   */
-  other: bigint;
-
-  /**
-   * OtherMachines contains the machine IDs for machines that were classified into "Other".
-   *
-   * @generated from field: repeated string other_machines = 6;
-   */
-  otherMachines: string[];
-
-  /**
-   * Allocated is the amount of machines that are currently allocated.
-   *
-   * @generated from field: int64 allocated = 7;
-   */
-  allocated: bigint;
-
-  /**
-   * Allocatable is the amount of machines in a partition is the amount of machines that can be allocated.
-   * Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable. Size reservations are not considered in this count.
-   *
-   * @generated from field: int64 allocatable = 8;
-   */
-  allocatable: bigint;
-
-  /**
-   * Free is the amount of machines in a partition that can be freely allocated at any given moment by a project.
-   * Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable due to size reservations.
-   *
-   * @generated from field: int64 free = 9;
-   */
-  free: bigint;
-
-  /**
-   * Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or
-   * not in the machine state "available", e.g. locked or reserved.
-   *
-   * @generated from field: int64 unavailable = 10;
-   */
-  unavailable: bigint;
-
-  /**
-   * Faulty is the amount of machines that are neither allocated nor in the pool of available machines because they report an error.
-   *
-   * @generated from field: int64 faulty = 11;
-   */
-  faulty: bigint;
-
-  /**
-   * FaultyMachines contains the machine IDs for machines that were classified into "Faulty".
-   *
-   * @generated from field: repeated string faulty_machines = 12;
-   */
-  faultyMachines: string[];
-
-  /**
-   * Reservations is the amount of reservations made for this size.
-   *
-   * @generated from field: int64 reservations = 13;
-   */
-  reservations: bigint;
-
-  /**
-   * UsedReservations is the amount of reservations already used up for this size.
-   *
-   * @generated from field: int64 used_reservations = 14;
-   */
-  usedReservations: bigint;
-
-  /**
-   * RemainingReservations is the amount of reservations remaining for this size.
-   *
-   * @generated from field: int64 remaining_reservations = 15;
-   */
-  remainingReservations: bigint;
+  partitionCapacity: PartitionCapacity[];
 };
 
 /**
@@ -351,6 +250,156 @@ export type PartitionServiceCapacityResponse = Message<"metalstack.admin.v2.Part
  */
 export const PartitionServiceCapacityResponseSchema: GenMessage<PartitionServiceCapacityResponse> = /*@__PURE__*/
   messageDesc(file_metalstack_admin_v2_partition, 7);
+
+/**
+ * PartitionCapacity is the capacity of one partition
+ *
+ * @generated from message metalstack.admin.v2.PartitionCapacity
+ */
+export type PartitionCapacity = Message<"metalstack.admin.v2.PartitionCapacity"> & {
+  /**
+   * Partition of which this capacity is reported.
+   *
+   * @generated from field: string partition = 1;
+   */
+  partition: string;
+
+  /**
+   * MachineSizeCapacities is the capacity per machine size.
+   *
+   * @generated from field: repeated metalstack.admin.v2.MachineSizeCapacity machine_size_capacities = 2;
+   */
+  machineSizeCapacities: MachineSizeCapacity[];
+};
+
+/**
+ * Describes the message metalstack.admin.v2.PartitionCapacity.
+ * Use `create(PartitionCapacitySchema)` to create a new message.
+ */
+export const PartitionCapacitySchema: GenMessage<PartitionCapacity> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_partition, 8);
+
+/**
+ * ServerCapacity is the capacity of one server type, eg machine size
+ *
+ * @generated from message metalstack.admin.v2.MachineSizeCapacity
+ */
+export type MachineSizeCapacity = Message<"metalstack.admin.v2.MachineSizeCapacity"> & {
+  /**
+   * Size is the size id correlating to all counts in this server capacity.
+   *
+   * @generated from field: string size = 2;
+   */
+  size: string;
+
+  /**
+   * Total is the total amount of machines for this size.
+   *
+   * @generated from field: int64 total = 3;
+   */
+  total: bigint;
+
+  /**
+   * PhonedHome is the amount of machines that are currently in the provisioning state "phoned home".
+   *
+   * @generated from field: int64 phoned_home = 4;
+   */
+  phonedHome: bigint;
+
+  /**
+   * Waiting is the amount of machines that are currently in the provisioning state "waiting".
+   *
+   * @generated from field: int64 waiting = 5;
+   */
+  waiting: bigint;
+
+  /**
+   * Other is the amount of machines that are neither in the provisioning state waiting nor in phoned home but in another provisioning state.
+   *
+   * @generated from field: int64 other = 6;
+   */
+  other: bigint;
+
+  /**
+   * OtherMachines contains the machine IDs for machines that were classified into "Other".
+   *
+   * @generated from field: repeated string other_machines = 7;
+   */
+  otherMachines: string[];
+
+  /**
+   * Allocated is the amount of machines that are currently allocated.
+   *
+   * @generated from field: int64 allocated = 8;
+   */
+  allocated: bigint;
+
+  /**
+   * Allocatable is the amount of machines in a partition is the amount of machines that can be allocated.
+   * Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable. Size reservations are not considered in this count.
+   *
+   * @generated from field: int64 allocatable = 9;
+   */
+  allocatable: bigint;
+
+  /**
+   * Free is the amount of machines in a partition that can be freely allocated at any given moment by a project.
+   * Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable due to size reservations.
+   *
+   * @generated from field: int64 free = 10;
+   */
+  free: bigint;
+
+  /**
+   * Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or
+   * not in the machine state "available", e.g. locked or reserved.
+   *
+   * @generated from field: int64 unavailable = 11;
+   */
+  unavailable: bigint;
+
+  /**
+   * Faulty is the amount of machines that are neither allocated nor in the pool of available machines because they report an error.
+   *
+   * @generated from field: int64 faulty = 12;
+   */
+  faulty: bigint;
+
+  /**
+   * FaultyMachines contains the machine IDs for machines that were classified into "Faulty".
+   *
+   * @generated from field: repeated string faulty_machines = 13;
+   */
+  faultyMachines: string[];
+
+  /**
+   * Reservations is the amount of reservations made for this size.
+   *
+   * @generated from field: int64 reservations = 14;
+   */
+  reservations: bigint;
+
+  /**
+   * UsedReservations is the amount of reservations already used up for this size.
+   *
+   * @generated from field: int64 used_reservations = 15;
+   */
+  usedReservations: bigint;
+
+  /**
+   * RemainingReservations is the amount of reservations remaining for this size.
+   *
+   * @generated from field: int64 remaining_reservations = 16;
+   */
+  remainingReservations: bigint;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineSizeCapacity.
+ * Use `create(MachineSizeCapacitySchema)` to create a new message.
+ */
+export const MachineSizeCapacitySchema: GenMessage<MachineSizeCapacity> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_partition, 9);
 
 /**
  * PartitionService serves partition address related functions
