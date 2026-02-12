@@ -1,0 +1,22 @@
+{
+  "name": "metal-stack-api-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "@metal-stack/api example",
+  "main": "ip-list.ts",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "ip-list": "npm run build && node ./ip-list.js"
+  },
+  "author": "metal-stack",
+  "license": "MIT",
+  "dependencies": {
+    "@connectrpc/connect": "^2.1.1",
+    "@connectrpc/connect-web": "^2.1.1",
+    "@metal-stack/api": "^0.0.47"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.3",
+    "typescript": "^5.9.3"
+  }
+}
