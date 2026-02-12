@@ -33,7 +33,9 @@ type TenantServiceCreateRequest struct {
 	// Email of the tenant, if not set will be inherited from the creator
 	Email *string `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
 	// AvatarUrl of the tenant
-	AvatarUrl     *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
+	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
+	// Labels on the tenant
+	Labels        *v2.Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -94,6 +96,13 @@ func (x *TenantServiceCreateRequest) GetAvatarUrl() string {
 		return *x.AvatarUrl
 	}
 	return ""
+}
+
+func (x *TenantServiceCreateRequest) GetLabels() *v2.Labels {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
 }
 
 // TenantServiceCreateResponse is the response payload of the tenant create request
@@ -274,13 +283,14 @@ var File_metalstack_admin_v2_tenant_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xe2\x01\n" +
+	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\x95\x02\n" +
 	"\x1aTenantServiceCreateRequest\x12\x1f\n" +
 	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x122\n" +
 	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12\"\n" +
 	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"avatar_url\x18\x04 \x01(\tH\x02R\tavatarUrl\x88\x01\x01B\x0e\n" +
+	"avatar_url\x18\x04 \x01(\tH\x02R\tavatarUrl\x88\x01\x01\x121\n" +
+	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labelsB\x0e\n" +
 	"\f_descriptionB\b\n" +
 	"\x06_emailB\r\n" +
 	"\v_avatar_url\"P\n" +
@@ -322,22 +332,24 @@ var file_metalstack_admin_v2_tenant_proto_goTypes = []any{
 	(*TenantServiceCreateResponse)(nil), // 1: metalstack.admin.v2.TenantServiceCreateResponse
 	(*TenantServiceListRequest)(nil),    // 2: metalstack.admin.v2.TenantServiceListRequest
 	(*TenantServiceListResponse)(nil),   // 3: metalstack.admin.v2.TenantServiceListResponse
-	(*v2.Tenant)(nil),                   // 4: metalstack.api.v2.Tenant
-	(*v2.Paging)(nil),                   // 5: metalstack.api.v2.Paging
+	(*v2.Labels)(nil),                   // 4: metalstack.api.v2.Labels
+	(*v2.Tenant)(nil),                   // 5: metalstack.api.v2.Tenant
+	(*v2.Paging)(nil),                   // 6: metalstack.api.v2.Paging
 }
 var file_metalstack_admin_v2_tenant_proto_depIdxs = []int32{
-	4, // 0: metalstack.admin.v2.TenantServiceCreateResponse.tenant:type_name -> metalstack.api.v2.Tenant
-	5, // 1: metalstack.admin.v2.TenantServiceListRequest.paging:type_name -> metalstack.api.v2.Paging
-	4, // 2: metalstack.admin.v2.TenantServiceListResponse.tenants:type_name -> metalstack.api.v2.Tenant
-	0, // 3: metalstack.admin.v2.TenantService.Create:input_type -> metalstack.admin.v2.TenantServiceCreateRequest
-	2, // 4: metalstack.admin.v2.TenantService.List:input_type -> metalstack.admin.v2.TenantServiceListRequest
-	1, // 5: metalstack.admin.v2.TenantService.Create:output_type -> metalstack.admin.v2.TenantServiceCreateResponse
-	3, // 6: metalstack.admin.v2.TenantService.List:output_type -> metalstack.admin.v2.TenantServiceListResponse
-	5, // [5:7] is the sub-list for method output_type
-	3, // [3:5] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: metalstack.admin.v2.TenantServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	5, // 1: metalstack.admin.v2.TenantServiceCreateResponse.tenant:type_name -> metalstack.api.v2.Tenant
+	6, // 2: metalstack.admin.v2.TenantServiceListRequest.paging:type_name -> metalstack.api.v2.Paging
+	5, // 3: metalstack.admin.v2.TenantServiceListResponse.tenants:type_name -> metalstack.api.v2.Tenant
+	0, // 4: metalstack.admin.v2.TenantService.Create:input_type -> metalstack.admin.v2.TenantServiceCreateRequest
+	2, // 5: metalstack.admin.v2.TenantService.List:input_type -> metalstack.admin.v2.TenantServiceListRequest
+	1, // 6: metalstack.admin.v2.TenantService.Create:output_type -> metalstack.admin.v2.TenantServiceCreateResponse
+	3, // 7: metalstack.admin.v2.TenantService.List:output_type -> metalstack.admin.v2.TenantServiceListResponse
+	6, // [6:8] is the sub-list for method output_type
+	4, // [4:6] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_tenant_proto_init() }

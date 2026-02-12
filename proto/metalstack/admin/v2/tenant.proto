@@ -30,6 +30,8 @@ message TenantServiceCreateRequest {
   optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant
   optional string avatar_url = 4;
+  // Labels on the tenant
+  metalstack.api.v2.Labels labels = 5;
 }
 
 // TenantServiceCreateResponse is the response payload of the tenant create request
