@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package metalstack.infra.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+import "metalstack/api/v2/version.proto";
+
+// ComponentService serves component, e.g. microservices related functions.
+service ComponentService {
+  // Ping must be called from every connected microservice in a recurring manner
+  // to get visibility of all required microservices.
+  rpc Ping(ComponentServicePingRequest) returns (ComponentServicePingResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// ComponentServicePingRequest is sent from a microservice to report its state regularly
+message ComponentServicePingRequest {
+  // Type defines which service is actually pinging
+  ComponentType type = 1 [(buf.validate.field).enum.defined_only = true];
+  // Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
+  // micro_service and identifier guarantee uniqueness.
+  string identifier = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // StartedAt is the timestamp this service was started
+  google.protobuf.Timestamp started_at = 3 [(buf.validate.field).timestamp.lt_now = true];
+  // Version of this service
+  metalstack.api.v2.Version version = 4;
+}
+
+// ComponentServicePingResponse is the response to a ping request
+message ComponentServicePingResponse {}
+
+// ComponentType defines which service is actually pinging
+enum ComponentType {
+  // COMPONENT_TYPE_UNSPECIFIED is unspecified
+  COMPONENT_TYPE_UNSPECIFIED = 0 [(metalstack.api.v2.enum_string_value) = "unspecified"];
+  // COMPONENT_TYPE_PIXIECORE is pixiecore
+  COMPONENT_TYPE_PIXIECORE = 1 [(metalstack.api.v2.enum_string_value) = "pixiecore"];
+  // COMPONENT_TYPE_METAL_CORE is metal-core
+  COMPONENT_TYPE_METAL_CORE = 2 [(metalstack.api.v2.enum_string_value) = "metal-core"];
+  // COMPONENT_TYPE_METAL_BMC is metal-bmc
+  COMPONENT_TYPE_METAL_BMC = 3 [(metalstack.api.v2.enum_string_value) = "metal-bmc"];
+  // COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync
+  COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC = 4 [(metalstack.api.v2.enum_string_value) = "metal-image-cache-sync"];
+  // COMPONENT_TYPE_METAL_CONSOLE is metal-console
+  COMPONENT_TYPE_METAL_CONSOLE = 5 [(metalstack.api.v2.enum_string_value) = "metal-console"];
+  // COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter
+  COMPONENT_TYPE_METAL_METRICS_EXPORTER = 6 [(metalstack.api.v2.enum_string_value) = "metal-metrics-exporter"];
+  // TODO what about gepm, ccm, etc. I would allow them to call this service but would not introduce
+  // enums for all of them as they are not strictly metal-stack components.
+}

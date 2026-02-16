@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+import "metalstack/api/v2/token.proto";
+import "metalstack/api/v2/version.proto";
+import "metalstack/infra/v2/component.proto";
+
+// ComponentService serves microservice related functions
+service ComponentService {
+  // List all components with their status
+  rpc List(ComponentServiceListRequest) returns (ComponentServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// ComponentServiceListRequest
+message ComponentServiceListRequest {}
+
+// ComponentServiceListResponse
+message ComponentServiceListResponse {
+  // Components
+  repeated Component components = 1;
+}
+
+// Component represents a microservice connected to our apiserver
+message Component {
+  // UUID identifies this component event
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Type defines which service is actually pinging
+  metalstack.infra.v2.ComponentType type = 2 [(buf.validate.field).enum.defined_only = true];
+  // Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
+  // micro_service and identifier guarantee uniqueness.
+  string identifier = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // StartedAt is the timestamp this service was started
+  google.protobuf.Timestamp started_at = 4;
+  // Version of this service
+  metalstack.api.v2.Version version = 5;
+  // Token is the token which is actually used by this microservice.
+  metalstack.api.v2.Token token = 6;
+}

@@ -22,6 +22,7 @@ type (
 		interceptors []connect.Interceptor
 	}
 	Adminv2 interface {
+		Component() adminv2connect.ComponentServiceClient
 		Filesystem() adminv2connect.FilesystemServiceClient
 		Image() adminv2connect.ImageServiceClient
 		IP() adminv2connect.IPServiceClient
@@ -39,6 +40,7 @@ type (
 	}
 
 	adminv2 struct {
+		componentservice       adminv2connect.ComponentServiceClient
 		filesystemservice      adminv2connect.FilesystemServiceClient
 		imageservice           adminv2connect.ImageServiceClient
 		ipservice              adminv2connect.IPServiceClient
@@ -94,15 +96,17 @@ type (
 	Infrav2 interface {
 		BMC() infrav2connect.BMCServiceClient
 		Boot() infrav2connect.BootServiceClient
+		Component() infrav2connect.ComponentServiceClient
 		Event() infrav2connect.EventServiceClient
 		Switch() infrav2connect.SwitchServiceClient
 	}
 
 	infrav2 struct {
-		bmcservice    infrav2connect.BMCServiceClient
-		bootservice   infrav2connect.BootServiceClient
-		eventservice  infrav2connect.EventServiceClient
-		switchservice infrav2connect.SwitchServiceClient
+		bmcservice       infrav2connect.BMCServiceClient
+		bootservice      infrav2connect.BootServiceClient
+		componentservice infrav2connect.ComponentServiceClient
+		eventservice     infrav2connect.EventServiceClient
+		switchservice    infrav2connect.SwitchServiceClient
 	}
 )
 
@@ -137,6 +141,12 @@ func New(config *DialConfig) (Client, error) {
 
 func (c *client) Adminv2() Adminv2 {
 	a := &adminv2{
+		componentservice: adminv2connect.NewComponentServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		filesystemservice: adminv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -225,6 +235,9 @@ func (c *client) Adminv2() Adminv2 {
 	return a
 }
 
+func (c *adminv2) Component() adminv2connect.ComponentServiceClient {
+	return c.componentservice
+}
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }
@@ -424,6 +437,12 @@ func (c *client) Infrav2() Infrav2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		componentservice: infrav2connect.NewComponentServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		eventservice: infrav2connect.NewEventServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -445,6 +464,9 @@ func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 }
 func (c *infrav2) Boot() infrav2connect.BootServiceClient {
 	return c.bootservice
+}
+func (c *infrav2) Component() infrav2connect.ComponentServiceClient {
+	return c.componentservice
 }
 func (c *infrav2) Event() infrav2connect.EventServiceClient {
 	return c.eventservice
