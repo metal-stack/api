@@ -2,6 +2,8 @@
 package client
 
 import (
+	"context"
+
 	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
 
@@ -15,6 +17,7 @@ type (
 {{ range $name, $api := . -}}
 	{{ $name | title }}() {{ $name | title }}
 {{ end }}
+	Ping(context.Context, *PingConfig)
 	}
 	client struct {
 		config *DialConfig

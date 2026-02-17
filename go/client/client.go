@@ -2,6 +2,8 @@
 package client
 
 import (
+	"context"
+
 	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
 
@@ -15,6 +17,8 @@ type (
 		Adminv2() Adminv2
 		Apiv2() Apiv2
 		Infrav2() Infrav2
+
+		Ping(context.Context, *PingConfig)
 	}
 	client struct {
 		config *DialConfig

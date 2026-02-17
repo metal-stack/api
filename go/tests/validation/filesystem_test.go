@@ -6,7 +6,6 @@ import (
 	"github.com/metal-stack/api/go/enum"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/stretchr/testify/require"
-	"google.golang.org/protobuf/proto"
 )
 
 func TestValidateFilesystem(t *testing.T) {
@@ -49,8 +48,8 @@ func TestValidateFilesystem(t *testing.T) {
 			name: "Valid Filesystem minimal config with valid name and description",
 			msg: &apiv2.FilesystemLayout{
 				Id:          "c1-large",
-				Name:        proto.String("c1-large"),
-				Description: proto.String("c1-large"),
+				Name:        new("c1-large"),
+				Description: new("c1-large"),
 			},
 			wantErr: false,
 		},
@@ -58,8 +57,8 @@ func TestValidateFilesystem(t *testing.T) {
 			name: "Valid Filesystem minimal config with invalid name",
 			msg: &apiv2.FilesystemLayout{
 				Id:          "c1-large",
-				Name:        proto.String("c"),
-				Description: proto.String("c1-large"),
+				Name:        new("c"),
+				Description: new("c1-large"),
 			},
 			wantErr:          true,
 			wantErrorMessage: `validation error: name: must be within 2 and 128 characters`},

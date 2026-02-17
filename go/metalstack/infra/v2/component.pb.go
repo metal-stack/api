@@ -11,6 +11,7 @@ import (
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	durationpb "google.golang.org/protobuf/types/known/durationpb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
@@ -24,87 +25,21 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ComponentType defines which service is actually pinging
-type ComponentType int32
-
-const (
-	// COMPONENT_TYPE_UNSPECIFIED is unspecified
-	ComponentType_COMPONENT_TYPE_UNSPECIFIED ComponentType = 0
-	// COMPONENT_TYPE_PIXIECORE is pixiecore
-	ComponentType_COMPONENT_TYPE_PIXIECORE ComponentType = 1
-	// COMPONENT_TYPE_METAL_CORE is metal-core
-	ComponentType_COMPONENT_TYPE_METAL_CORE ComponentType = 2
-	// COMPONENT_TYPE_METAL_BMC is metal-bmc
-	ComponentType_COMPONENT_TYPE_METAL_BMC ComponentType = 3
-	// COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync
-	ComponentType_COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC ComponentType = 4
-	// COMPONENT_TYPE_METAL_CONSOLE is metal-console
-	ComponentType_COMPONENT_TYPE_METAL_CONSOLE ComponentType = 5
-	// COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter
-	ComponentType_COMPONENT_TYPE_METAL_METRICS_EXPORTER ComponentType = 6
-)
-
-// Enum value maps for ComponentType.
-var (
-	ComponentType_name = map[int32]string{
-		0: "COMPONENT_TYPE_UNSPECIFIED",
-		1: "COMPONENT_TYPE_PIXIECORE",
-		2: "COMPONENT_TYPE_METAL_CORE",
-		3: "COMPONENT_TYPE_METAL_BMC",
-		4: "COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC",
-		5: "COMPONENT_TYPE_METAL_CONSOLE",
-		6: "COMPONENT_TYPE_METAL_METRICS_EXPORTER",
-	}
-	ComponentType_value = map[string]int32{
-		"COMPONENT_TYPE_UNSPECIFIED":            0,
-		"COMPONENT_TYPE_PIXIECORE":              1,
-		"COMPONENT_TYPE_METAL_CORE":             2,
-		"COMPONENT_TYPE_METAL_BMC":              3,
-		"COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC": 4,
-		"COMPONENT_TYPE_METAL_CONSOLE":          5,
-		"COMPONENT_TYPE_METAL_METRICS_EXPORTER": 6,
-	}
-)
-
-func (x ComponentType) Enum() *ComponentType {
-	p := new(ComponentType)
-	*p = x
-	return p
-}
-
-func (x ComponentType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (ComponentType) Descriptor() protoreflect.EnumDescriptor {
-	return file_metalstack_infra_v2_component_proto_enumTypes[0].Descriptor()
-}
-
-func (ComponentType) Type() protoreflect.EnumType {
-	return &file_metalstack_infra_v2_component_proto_enumTypes[0]
-}
-
-func (x ComponentType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use ComponentType.Descriptor instead.
-func (ComponentType) EnumDescriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_component_proto_rawDescGZIP(), []int{0}
-}
-
 // ComponentServicePingRequest is sent from a microservice to report its state regularly
 type ComponentServicePingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Type defines which service is actually pinging
-	Type ComponentType `protobuf:"varint,1,opt,name=type,proto3,enum=metalstack.infra.v2.ComponentType" json:"type,omitempty"`
+	Type v2.ComponentType `protobuf:"varint,1,opt,name=type,proto3,enum=metalstack.api.v2.ComponentType" json:"type,omitempty"`
 	// Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
 	// micro_service and identifier guarantee uniqueness.
 	Identifier string `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	// StartedAt is the timestamp this service was started
+	// StartedAt is the timestamp this service was started.
 	StartedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=started_at,json=startedAt,proto3" json:"started_at,omitempty"`
+	// Interval at which the ping is scheduled, must be between 5 seconds and 1 hour.
+	// Also gets validated in the same way in go/client/ping.go.
+	Interval *durationpb.Duration `protobuf:"bytes,4,opt,name=interval,proto3" json:"interval,omitempty"`
 	// Version of this service
-	Version       *v2.Version `protobuf:"bytes,4,opt,name=version,proto3" json:"version,omitempty"`
+	Version       *v2.Version `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -139,11 +74,11 @@ func (*ComponentServicePingRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_component_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ComponentServicePingRequest) GetType() ComponentType {
+func (x *ComponentServicePingRequest) GetType() v2.ComponentType {
 	if x != nil {
 		return x.Type
 	}
-	return ComponentType_COMPONENT_TYPE_UNSPECIFIED
+	return v2.ComponentType(0)
 }
 
 func (x *ComponentServicePingRequest) GetIdentifier() string {
@@ -156,6 +91,13 @@ func (x *ComponentServicePingRequest) GetIdentifier() string {
 func (x *ComponentServicePingRequest) GetStartedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.StartedAt
+	}
+	return nil
+}
+
+func (x *ComponentServicePingRequest) GetInterval() *durationpb.Duration {
+	if x != nil {
+		return x.Interval
 	}
 	return nil
 }
@@ -208,25 +150,17 @@ var File_metalstack_infra_v2_component_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_component_proto_rawDesc = "" +
 	"\n" +
-	"#metalstack/infra/v2/component.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1fmetalstack/api/v2/version.proto\"\x87\x02\n" +
-	"\x1bComponentServicePingRequest\x12@\n" +
-	"\x04type\x18\x01 \x01(\x0e2\".metalstack.infra.v2.ComponentTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12+\n" +
+	"#metalstack/infra/v2/component.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/component.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1fmetalstack/api/v2/version.proto\"\xcd\x02\n" +
+	"\x1bComponentServicePingRequest\x12>\n" +
+	"\x04type\x18\x01 \x01(\x0e2 .metalstack.api.v2.ComponentTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12+\n" +
 	"\n" +
 	"identifier\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\n" +
 	"identifier\x12C\n" +
 	"\n" +
-	"started_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tstartedAt\x124\n" +
-	"\aversion\x18\x04 \x01(\v2\x1a.metalstack.api.v2.VersionR\aversion\"\x1e\n" +
-	"\x1cComponentServicePingResponse*\x8c\x03\n" +
-	"\rComponentType\x12/\n" +
-	"\x1aCOMPONENT_TYPE_UNSPECIFIED\x10\x00\x1a\x0f\x82\xb2\x19\vunspecified\x12+\n" +
-	"\x18COMPONENT_TYPE_PIXIECORE\x10\x01\x1a\r\x82\xb2\x19\tpixiecore\x12-\n" +
-	"\x19COMPONENT_TYPE_METAL_CORE\x10\x02\x1a\x0e\x82\xb2\x19\n" +
-	"metal-core\x12+\n" +
-	"\x18COMPONENT_TYPE_METAL_BMC\x10\x03\x1a\r\x82\xb2\x19\tmetal-bmc\x12E\n" +
-	"%COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC\x10\x04\x1a\x1a\x82\xb2\x19\x16metal-image-cache-sync\x123\n" +
-	"\x1cCOMPONENT_TYPE_METAL_CONSOLE\x10\x05\x1a\x11\x82\xb2\x19\rmetal-console\x12E\n" +
-	"%COMPONENT_TYPE_METAL_METRICS_EXPORTER\x10\x06\x1a\x1a\x82\xb2\x19\x16metal-metrics-exporter2\x8a\x01\n" +
+	"started_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\b\xbaH\x05\xb2\x01\x028\x01R\tstartedAt\x12F\n" +
+	"\binterval\x18\x04 \x01(\v2\x19.google.protobuf.DurationB\x0f\xbaH\f\xaa\x01\t\"\x03\b\x90\x1c2\x02\b\x05R\binterval\x124\n" +
+	"\aversion\x18\x05 \x01(\v2\x1a.metalstack.api.v2.VersionR\aversion\"\x1e\n" +
+	"\x1cComponentServicePingResponse2\x8a\x01\n" +
 	"\x10ComponentService\x12v\n" +
 	"\x04Ping\x120.metalstack.infra.v2.ComponentServicePingRequest\x1a1.metalstack.infra.v2.ComponentServicePingResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xd2\x01\n" +
 	"\x17com.metalstack.infra.v2B\x0eComponentProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
@@ -243,26 +177,27 @@ func file_metalstack_infra_v2_component_proto_rawDescGZIP() []byte {
 	return file_metalstack_infra_v2_component_proto_rawDescData
 }
 
-var file_metalstack_infra_v2_component_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_metalstack_infra_v2_component_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_metalstack_infra_v2_component_proto_goTypes = []any{
-	(ComponentType)(0),                   // 0: metalstack.infra.v2.ComponentType
-	(*ComponentServicePingRequest)(nil),  // 1: metalstack.infra.v2.ComponentServicePingRequest
-	(*ComponentServicePingResponse)(nil), // 2: metalstack.infra.v2.ComponentServicePingResponse
+	(*ComponentServicePingRequest)(nil),  // 0: metalstack.infra.v2.ComponentServicePingRequest
+	(*ComponentServicePingResponse)(nil), // 1: metalstack.infra.v2.ComponentServicePingResponse
+	(v2.ComponentType)(0),                // 2: metalstack.api.v2.ComponentType
 	(*timestamppb.Timestamp)(nil),        // 3: google.protobuf.Timestamp
-	(*v2.Version)(nil),                   // 4: metalstack.api.v2.Version
+	(*durationpb.Duration)(nil),          // 4: google.protobuf.Duration
+	(*v2.Version)(nil),                   // 5: metalstack.api.v2.Version
 }
 var file_metalstack_infra_v2_component_proto_depIdxs = []int32{
-	0, // 0: metalstack.infra.v2.ComponentServicePingRequest.type:type_name -> metalstack.infra.v2.ComponentType
+	2, // 0: metalstack.infra.v2.ComponentServicePingRequest.type:type_name -> metalstack.api.v2.ComponentType
 	3, // 1: metalstack.infra.v2.ComponentServicePingRequest.started_at:type_name -> google.protobuf.Timestamp
-	4, // 2: metalstack.infra.v2.ComponentServicePingRequest.version:type_name -> metalstack.api.v2.Version
-	1, // 3: metalstack.infra.v2.ComponentService.Ping:input_type -> metalstack.infra.v2.ComponentServicePingRequest
-	2, // 4: metalstack.infra.v2.ComponentService.Ping:output_type -> metalstack.infra.v2.ComponentServicePingResponse
-	4, // [4:5] is the sub-list for method output_type
-	3, // [3:4] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 2: metalstack.infra.v2.ComponentServicePingRequest.interval:type_name -> google.protobuf.Duration
+	5, // 3: metalstack.infra.v2.ComponentServicePingRequest.version:type_name -> metalstack.api.v2.Version
+	0, // 4: metalstack.infra.v2.ComponentService.Ping:input_type -> metalstack.infra.v2.ComponentServicePingRequest
+	1, // 5: metalstack.infra.v2.ComponentService.Ping:output_type -> metalstack.infra.v2.ComponentServicePingResponse
+	5, // [5:6] is the sub-list for method output_type
+	4, // [4:5] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_infra_v2_component_proto_init() }
@@ -275,14 +210,13 @@ func file_metalstack_infra_v2_component_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_infra_v2_component_proto_rawDesc), len(file_metalstack_infra_v2_component_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_metalstack_infra_v2_component_proto_goTypes,
 		DependencyIndexes: file_metalstack_infra_v2_component_proto_depIdxs,
-		EnumInfos:         file_metalstack_infra_v2_component_proto_enumTypes,
 		MessageInfos:      file_metalstack_infra_v2_component_proto_msgTypes,
 	}.Build()
 	File_metalstack_infra_v2_component_proto = out.File

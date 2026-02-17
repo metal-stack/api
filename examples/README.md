@@ -21,4 +21,7 @@ sh curl/ip-list.sh
 
 # Python:
 python python/ip-list.py
+
+# TypeScript / JavaScript:
+cd js && bun i && bun run ip-list.ts
 ```

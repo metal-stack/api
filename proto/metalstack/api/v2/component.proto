@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+import "metalstack/api/v2/token.proto";
+import "metalstack/api/v2/version.proto";
+
+// Component represents a microservice connected to our apiserver
+message Component {
+  // UUID identifies this component event
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Type defines which service is actually pinging
+  ComponentType type = 2 [(buf.validate.field).enum.defined_only = true];
+  // Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
+  // micro_service and identifier guarantee uniqueness.
+  string identifier = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // StartedAt is the timestamp this service was started
+  google.protobuf.Timestamp started_at = 4;
+  // ReportedAt is the timestamp this service sent this ping.
+  google.protobuf.Timestamp reported_at = 5;
+  // Interval at which the ping is scheduled.
+  google.protobuf.Duration interval = 6;
+  // Version of this service
+  metalstack.api.v2.Version version = 7;
+  // Token is the token which is actually used by this microservice.
+  Token token = 8;
+}
+
+// ComponentQuery to query components
+message ComponentQuery {
+  // UUID identifies this component
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Type defines which service is actually pinging
+  optional ComponentType type = 2 [(buf.validate.field).enum.defined_only = true];
+  // Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
+  // micro_service and identifier guarantee uniqueness.
+  optional string identifier = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+}
+
+// ComponentType defines which service is actually pinging
+enum ComponentType {
+  // COMPONENT_TYPE_UNSPECIFIED is unspecified
+  COMPONENT_TYPE_UNSPECIFIED = 0 [(metalstack.api.v2.enum_string_value) = "unspecified"];
+  // COMPONENT_TYPE_PIXIECORE is pixiecore
+  COMPONENT_TYPE_PIXIECORE = 1 [(metalstack.api.v2.enum_string_value) = "pixiecore"];
+  // COMPONENT_TYPE_METAL_CORE is metal-core
+  COMPONENT_TYPE_METAL_CORE = 2 [(metalstack.api.v2.enum_string_value) = "metal-core"];
+  // COMPONENT_TYPE_METAL_BMC is metal-bmc
+  COMPONENT_TYPE_METAL_BMC = 3 [(metalstack.api.v2.enum_string_value) = "metal-bmc"];
+  // COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync
+  COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC = 4 [(metalstack.api.v2.enum_string_value) = "metal-image-cache-sync"];
+  // COMPONENT_TYPE_METAL_CONSOLE is metal-console
+  COMPONENT_TYPE_METAL_CONSOLE = 5 [(metalstack.api.v2.enum_string_value) = "metal-console"];
+  // COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter
+  COMPONENT_TYPE_METAL_METRICS_EXPORTER = 6 [(metalstack.api.v2.enum_string_value) = "metal-metrics-exporter"];
+}

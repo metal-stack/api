@@ -5,6 +5,8 @@
 package client
 
 import (
+	"context"
+
 	"github.com/metal-stack/api/go/client"
 	mock "github.com/stretchr/testify/mock"
 )
@@ -171,5 +173,51 @@ func (_c *Client_Infrav2_Call) Return(infrav2 client.Infrav2) *Client_Infrav2_Ca
 
 func (_c *Client_Infrav2_Call) RunAndReturn(run func() client.Infrav2) *Client_Infrav2_Call {
 	_c.Call.Return(run)
+	return _c
+}
+
+// Ping provides a mock function for the type Client
+func (_mock *Client) Ping(context1 context.Context, pingConfig *client.PingConfig) {
+	_mock.Called(context1, pingConfig)
+	return
+}
+
+// Client_Ping_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Ping'
+type Client_Ping_Call struct {
+	*mock.Call
+}
+
+// Ping is a helper method to define mock.On call
+//   - context1 context.Context
+//   - pingConfig *client.PingConfig
+func (_e *Client_Expecter) Ping(context1 interface{}, pingConfig interface{}) *Client_Ping_Call {
+	return &Client_Ping_Call{Call: _e.mock.On("Ping", context1, pingConfig)}
+}
+
+func (_c *Client_Ping_Call) Run(run func(context1 context.Context, pingConfig *client.PingConfig)) *Client_Ping_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *client.PingConfig
+		if args[1] != nil {
+			arg1 = args[1].(*client.PingConfig)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *Client_Ping_Call) Return() *Client_Ping_Call {
+	_c.Call.Return()
+	return _c
+}
+
+func (_c *Client_Ping_Call) RunAndReturn(run func(context1 context.Context, pingConfig *client.PingConfig)) *Client_Ping_Call {
+	_c.Run(run)
 	return _c
 }

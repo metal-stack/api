@@ -16,6 +16,12 @@ import metalstack.admin.v2.component_pb2 as metalstack_dot_admin_dot_v2_dot_comp
 
 
 class ComponentService(Protocol):
+    async def get(self, request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
+    async def delete(self, request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
     async def list(self, request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
@@ -25,6 +31,26 @@ class ComponentServiceASGIApplication(ConnectASGIApplication[ComponentService]):
         super().__init__(
             service=service,
             endpoints=lambda svc: {
+                "/metalstack.admin.v2.ComponentService/Get": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Get",
+                        service_name="metalstack.admin.v2.ComponentService",
+                        input=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.get,
+                ),
+                "/metalstack.admin.v2.ComponentService/Delete": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Delete",
+                        service_name="metalstack.admin.v2.ComponentService",
+                        input=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.delete,
+                ),
                 "/metalstack.admin.v2.ComponentService/List": Endpoint.unary(
                     method=MethodInfo(
                         name="List",
@@ -47,6 +73,46 @@ class ComponentServiceASGIApplication(ConnectASGIApplication[ComponentService]):
 
 
 class ComponentServiceClient(ConnectClient):
+    async def get(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Get",
+                service_name="metalstack.admin.v2.ComponentService",
+                input=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetRequest,
+                output=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    async def delete(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Delete",
+                service_name="metalstack.admin.v2.ComponentService",
+                input=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
     async def list(
         self,
         request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceListRequest,
@@ -69,6 +135,10 @@ class ComponentServiceClient(ConnectClient):
 
 
 class ComponentServiceSync(Protocol):
+    def get(self, request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def delete(self, request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def list(self, request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
@@ -77,6 +147,26 @@ class ComponentServiceWSGIApplication(ConnectWSGIApplication):
     def __init__(self, service: ComponentServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
         super().__init__(
             endpoints={
+                "/metalstack.admin.v2.ComponentService/Get": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Get",
+                        service_name="metalstack.admin.v2.ComponentService",
+                        input=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.get,
+                ),
+                "/metalstack.admin.v2.ComponentService/Delete": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Delete",
+                        service_name="metalstack.admin.v2.ComponentService",
+                        input=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.delete,
+                ),
                 "/metalstack.admin.v2.ComponentService/List": EndpointSync.unary(
                     method=MethodInfo(
                         name="List",
@@ -99,6 +189,46 @@ class ComponentServiceWSGIApplication(ConnectWSGIApplication):
 
 
 class ComponentServiceClientSync(ConnectClientSync):
+    def get(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Get",
+                service_name="metalstack.admin.v2.ComponentService",
+                input=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetRequest,
+                output=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def delete(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Delete",
+                service_name="metalstack.admin.v2.ComponentService",
+                input=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceDeleteResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
     def list(
         self,
         request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceListRequest,

@@ -1,8 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Timestamp } from "@bufbuild/protobuf/wkt";
-import type { Token } from "../../api/v2/token_pb";
-import type { Version } from "../../api/v2/version_pb";
-import type { ComponentType } from "../../infra/v2/component_pb";
+import type { Component, ComponentQuery } from "../../api/v2/component_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/component.proto.
@@ -13,7 +10,14 @@ export declare const file_metalstack_admin_v2_component: GenFile;
  *
  * @generated from message metalstack.admin.v2.ComponentServiceListRequest
  */
-export type ComponentServiceListRequest = Message<"metalstack.admin.v2.ComponentServiceListRequest"> & {};
+export type ComponentServiceListRequest = Message<"metalstack.admin.v2.ComponentServiceListRequest"> & {
+    /**
+     * Query components.
+     *
+     * @generated from field: metalstack.api.v2.ComponentQuery query = 1;
+     */
+    query?: ComponentQuery;
+};
 /**
  * Describes the message metalstack.admin.v2.ComponentServiceListRequest.
  * Use `create(ComponentServiceListRequestSchema)` to create a new message.
@@ -28,7 +32,7 @@ export type ComponentServiceListResponse = Message<"metalstack.admin.v2.Componen
     /**
      * Components
      *
-     * @generated from field: repeated metalstack.admin.v2.Component components = 1;
+     * @generated from field: repeated metalstack.api.v2.Component components = 1;
      */
     components: Component[];
 };
@@ -38,60 +42,103 @@ export type ComponentServiceListResponse = Message<"metalstack.admin.v2.Componen
  */
 export declare const ComponentServiceListResponseSchema: GenMessage<ComponentServiceListResponse>;
 /**
- * Component represents a microservice connected to our apiserver
+ * ComponentServiceGetRequest
  *
- * @generated from message metalstack.admin.v2.Component
+ * @generated from message metalstack.admin.v2.ComponentServiceGetRequest
  */
-export type Component = Message<"metalstack.admin.v2.Component"> & {
+export type ComponentServiceGetRequest = Message<"metalstack.admin.v2.ComponentServiceGetRequest"> & {
     /**
-     * UUID identifies this component event
+     * UUID identifies the component to get
      *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
-    /**
-     * Type defines which service is actually pinging
-     *
-     * @generated from field: metalstack.infra.v2.ComponentType type = 2;
-     */
-    type: ComponentType;
-    /**
-     * Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
-     * micro_service and identifier guarantee uniqueness.
-     *
-     * @generated from field: string identifier = 3;
-     */
-    identifier: string;
-    /**
-     * StartedAt is the timestamp this service was started
-     *
-     * @generated from field: google.protobuf.Timestamp started_at = 4;
-     */
-    startedAt?: Timestamp;
-    /**
-     * Version of this service
-     *
-     * @generated from field: metalstack.api.v2.Version version = 5;
-     */
-    version?: Version;
-    /**
-     * Token is the token which is actually used by this microservice.
-     *
-     * @generated from field: metalstack.api.v2.Token token = 6;
-     */
-    token?: Token;
 };
 /**
- * Describes the message metalstack.admin.v2.Component.
- * Use `create(ComponentSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.ComponentServiceGetRequest.
+ * Use `create(ComponentServiceGetRequestSchema)` to create a new message.
  */
-export declare const ComponentSchema: GenMessage<Component>;
+export declare const ComponentServiceGetRequestSchema: GenMessage<ComponentServiceGetRequest>;
+/**
+ * ComponentServiceGetResponse
+ *
+ * @generated from message metalstack.admin.v2.ComponentServiceGetResponse
+ */
+export type ComponentServiceGetResponse = Message<"metalstack.admin.v2.ComponentServiceGetResponse"> & {
+    /**
+     * Component
+     *
+     * @generated from field: metalstack.api.v2.Component component = 1;
+     */
+    component?: Component;
+};
+/**
+ * Describes the message metalstack.admin.v2.ComponentServiceGetResponse.
+ * Use `create(ComponentServiceGetResponseSchema)` to create a new message.
+ */
+export declare const ComponentServiceGetResponseSchema: GenMessage<ComponentServiceGetResponse>;
+/**
+ * ComponentServiceGetRequest
+ *
+ * @generated from message metalstack.admin.v2.ComponentServiceDeleteRequest
+ */
+export type ComponentServiceDeleteRequest = Message<"metalstack.admin.v2.ComponentServiceDeleteRequest"> & {
+    /**
+     * UUID identifies the component to delete
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+};
+/**
+ * Describes the message metalstack.admin.v2.ComponentServiceDeleteRequest.
+ * Use `create(ComponentServiceDeleteRequestSchema)` to create a new message.
+ */
+export declare const ComponentServiceDeleteRequestSchema: GenMessage<ComponentServiceDeleteRequest>;
+/**
+ * ComponentServiceGetResponse
+ *
+ * @generated from message metalstack.admin.v2.ComponentServiceDeleteResponse
+ */
+export type ComponentServiceDeleteResponse = Message<"metalstack.admin.v2.ComponentServiceDeleteResponse"> & {
+    /**
+     * Component
+     *
+     * @generated from field: metalstack.api.v2.Component component = 1;
+     */
+    component?: Component;
+};
+/**
+ * Describes the message metalstack.admin.v2.ComponentServiceDeleteResponse.
+ * Use `create(ComponentServiceDeleteResponseSchema)` to create a new message.
+ */
+export declare const ComponentServiceDeleteResponseSchema: GenMessage<ComponentServiceDeleteResponse>;
 /**
  * ComponentService serves microservice related functions
  *
  * @generated from service metalstack.admin.v2.ComponentService
  */
 export declare const ComponentService: GenService<{
+    /**
+     * Get a single component
+     *
+     * @generated from rpc metalstack.admin.v2.ComponentService.Get
+     */
+    get: {
+        methodKind: "unary";
+        input: typeof ComponentServiceGetRequestSchema;
+        output: typeof ComponentServiceGetResponseSchema;
+    };
+    /**
+     * Delete a component
+     *
+     * @generated from rpc metalstack.admin.v2.ComponentService.Delete
+     */
+    delete: {
+        methodKind: "unary";
+        input: typeof ComponentServiceDeleteRequestSchema;
+        output: typeof ComponentServiceDeleteResponseSchema;
+    };
     /**
      * List all components with their status
      *

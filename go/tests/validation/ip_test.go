@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"google.golang.org/protobuf/proto"
 )
 
 func TestValidateIP(t *testing.T) {
@@ -144,7 +143,7 @@ func TestValidateIP(t *testing.T) {
 			msg: &apiv2.IPServiceCreateRequest{
 				Network: "Internet",
 				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
-				Machine: proto.String("57cd8678-9ff0-4f8c-a34a-43d8f16caacf"),
+				Machine: new("57cd8678-9ff0-4f8c-a34a-43d8f16caacf"),
 			},
 			wantErr: false,
 		},
@@ -153,7 +152,7 @@ func TestValidateIP(t *testing.T) {
 			msg: &apiv2.IPServiceCreateRequest{
 				Network: "Internet",
 				Project: "57cd8678-9ff0-4f8c-a34a-43d8f16caadf",
-				Name:    proto.String("a"),
+				Name:    new("a"),
 			},
 			wantErr:          true,
 			wantErrorMessage: `validation error: name: must be within 2 and 128 characters`,

@@ -8,11 +8,9 @@ package adminv2
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	v21 "github.com/metal-stack/api/go/metalstack/api/v2"
-	v2 "github.com/metal-stack/api/go/metalstack/infra/v2"
+	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -27,7 +25,9 @@ const (
 
 // ComponentServiceListRequest
 type ComponentServiceListRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Query components.
+	Query         *v2.ComponentQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -62,11 +62,18 @@ func (*ComponentServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_component_proto_rawDescGZIP(), []int{0}
 }
 
+func (x *ComponentServiceListRequest) GetQuery() *v2.ComponentQuery {
+	if x != nil {
+		return x.Query
+	}
+	return nil
+}
+
 // ComponentServiceListResponse
 type ComponentServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Components
-	Components    []*Component `protobuf:"bytes,1,rep,name=components,proto3" json:"components,omitempty"`
+	Components    []*v2.Component `protobuf:"bytes,1,rep,name=components,proto3" json:"components,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -101,47 +108,36 @@ func (*ComponentServiceListResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_component_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ComponentServiceListResponse) GetComponents() []*Component {
+func (x *ComponentServiceListResponse) GetComponents() []*v2.Component {
 	if x != nil {
 		return x.Components
 	}
 	return nil
 }
 
-// Component represents a microservice connected to our apiserver
-type Component struct {
+// ComponentServiceGetRequest
+type ComponentServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID identifies this component event
-	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Type defines which service is actually pinging
-	Type v2.ComponentType `protobuf:"varint,2,opt,name=type,proto3,enum=metalstack.infra.v2.ComponentType" json:"type,omitempty"`
-	// Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
-	// micro_service and identifier guarantee uniqueness.
-	Identifier string `protobuf:"bytes,3,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	// StartedAt is the timestamp this service was started
-	StartedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=started_at,json=startedAt,proto3" json:"started_at,omitempty"`
-	// Version of this service
-	Version *v21.Version `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty"`
-	// Token is the token which is actually used by this microservice.
-	Token         *v21.Token `protobuf:"bytes,6,opt,name=token,proto3" json:"token,omitempty"`
+	// UUID identifies the component to get
+	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Component) Reset() {
-	*x = Component{}
+func (x *ComponentServiceGetRequest) Reset() {
+	*x = ComponentServiceGetRequest{}
 	mi := &file_metalstack_admin_v2_component_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Component) String() string {
+func (x *ComponentServiceGetRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Component) ProtoMessage() {}
+func (*ComponentServiceGetRequest) ProtoMessage() {}
 
-func (x *Component) ProtoReflect() protoreflect.Message {
+func (x *ComponentServiceGetRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_admin_v2_component_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -153,49 +149,152 @@ func (x *Component) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Component.ProtoReflect.Descriptor instead.
-func (*Component) Descriptor() ([]byte, []int) {
+// Deprecated: Use ComponentServiceGetRequest.ProtoReflect.Descriptor instead.
+func (*ComponentServiceGetRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_component_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Component) GetUuid() string {
+func (x *ComponentServiceGetRequest) GetUuid() string {
 	if x != nil {
 		return x.Uuid
 	}
 	return ""
 }
 
-func (x *Component) GetType() v2.ComponentType {
-	if x != nil {
-		return x.Type
-	}
-	return v2.ComponentType(0)
+// ComponentServiceGetResponse
+type ComponentServiceGetResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Component
+	Component     *v2.Component `protobuf:"bytes,1,opt,name=component,proto3" json:"component,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Component) GetIdentifier() string {
+func (x *ComponentServiceGetResponse) Reset() {
+	*x = ComponentServiceGetResponse{}
+	mi := &file_metalstack_admin_v2_component_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ComponentServiceGetResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ComponentServiceGetResponse) ProtoMessage() {}
+
+func (x *ComponentServiceGetResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_component_proto_msgTypes[3]
 	if x != nil {
-		return x.Identifier
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ComponentServiceGetResponse.ProtoReflect.Descriptor instead.
+func (*ComponentServiceGetResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_component_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ComponentServiceGetResponse) GetComponent() *v2.Component {
+	if x != nil {
+		return x.Component
+	}
+	return nil
+}
+
+// ComponentServiceGetRequest
+type ComponentServiceDeleteRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// UUID identifies the component to delete
+	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ComponentServiceDeleteRequest) Reset() {
+	*x = ComponentServiceDeleteRequest{}
+	mi := &file_metalstack_admin_v2_component_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ComponentServiceDeleteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ComponentServiceDeleteRequest) ProtoMessage() {}
+
+func (x *ComponentServiceDeleteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_component_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ComponentServiceDeleteRequest.ProtoReflect.Descriptor instead.
+func (*ComponentServiceDeleteRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_component_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *ComponentServiceDeleteRequest) GetUuid() string {
+	if x != nil {
+		return x.Uuid
 	}
 	return ""
 }
 
-func (x *Component) GetStartedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.StartedAt
-	}
-	return nil
+// ComponentServiceGetResponse
+type ComponentServiceDeleteResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Component
+	Component     *v2.Component `protobuf:"bytes,1,opt,name=component,proto3" json:"component,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (x *Component) GetVersion() *v21.Version {
-	if x != nil {
-		return x.Version
-	}
-	return nil
+func (x *ComponentServiceDeleteResponse) Reset() {
+	*x = ComponentServiceDeleteResponse{}
+	mi := &file_metalstack_admin_v2_component_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
-func (x *Component) GetToken() *v21.Token {
+func (x *ComponentServiceDeleteResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ComponentServiceDeleteResponse) ProtoMessage() {}
+
+func (x *ComponentServiceDeleteResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_component_proto_msgTypes[5]
 	if x != nil {
-		return x.Token
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ComponentServiceDeleteResponse.ProtoReflect.Descriptor instead.
+func (*ComponentServiceDeleteResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_component_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ComponentServiceDeleteResponse) GetComponent() *v2.Component {
+	if x != nil {
+		return x.Component
 	}
 	return nil
 }
@@ -204,23 +303,25 @@ var File_metalstack_admin_v2_component_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_component_proto_rawDesc = "" +
 	"\n" +
-	"#metalstack/admin/v2/component.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1dmetalstack/api/v2/token.proto\x1a\x1fmetalstack/api/v2/version.proto\x1a#metalstack/infra/v2/component.proto\"\x1d\n" +
-	"\x1bComponentServiceListRequest\"^\n" +
-	"\x1cComponentServiceListResponse\x12>\n" +
+	"#metalstack/admin/v2/component.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/component.proto\"V\n" +
+	"\x1bComponentServiceListRequest\x127\n" +
+	"\x05query\x18\x01 \x01(\v2!.metalstack.api.v2.ComponentQueryR\x05query\"\\\n" +
+	"\x1cComponentServiceListResponse\x12<\n" +
 	"\n" +
-	"components\x18\x01 \x03(\v2\x1e.metalstack.admin.v2.ComponentR\n" +
-	"components\"\xb9\x02\n" +
-	"\tComponent\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12@\n" +
-	"\x04type\x18\x02 \x01(\x0e2\".metalstack.infra.v2.ComponentTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12+\n" +
-	"\n" +
-	"identifier\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\n" +
-	"identifier\x129\n" +
-	"\n" +
-	"started_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tstartedAt\x124\n" +
-	"\aversion\x18\x05 \x01(\v2\x1a.metalstack.api.v2.VersionR\aversion\x12.\n" +
-	"\x05token\x18\x06 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token2\x8b\x01\n" +
-	"\x10ComponentService\x12w\n" +
+	"components\x18\x01 \x03(\v2\x1c.metalstack.api.v2.ComponentR\n" +
+	"components\":\n" +
+	"\x1aComponentServiceGetRequest\x12\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"Y\n" +
+	"\x1bComponentServiceGetResponse\x12:\n" +
+	"\tcomponent\x18\x01 \x01(\v2\x1c.metalstack.api.v2.ComponentR\tcomponent\"=\n" +
+	"\x1dComponentServiceDeleteRequest\x12\x1c\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\\\n" +
+	"\x1eComponentServiceDeleteResponse\x12:\n" +
+	"\tcomponent\x18\x01 \x01(\v2\x1c.metalstack.api.v2.ComponentR\tcomponent2\xff\x02\n" +
+	"\x10ComponentService\x12t\n" +
+	"\x03Get\x12/.metalstack.admin.v2.ComponentServiceGetRequest\x1a0.metalstack.admin.v2.ComponentServiceGetResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12|\n" +
+	"\x06Delete\x122.metalstack.admin.v2.ComponentServiceDeleteRequest\x1a3.metalstack.admin.v2.ComponentServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12w\n" +
 	"\x04List\x120.metalstack.admin.v2.ComponentServiceListRequest\x1a1.metalstack.admin.v2.ComponentServiceListResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02B\xd2\x01\n" +
 	"\x17com.metalstack.admin.v2B\x0eComponentProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
@@ -237,29 +338,33 @@ func file_metalstack_admin_v2_component_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_component_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_component_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_metalstack_admin_v2_component_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_metalstack_admin_v2_component_proto_goTypes = []any{
-	(*ComponentServiceListRequest)(nil),  // 0: metalstack.admin.v2.ComponentServiceListRequest
-	(*ComponentServiceListResponse)(nil), // 1: metalstack.admin.v2.ComponentServiceListResponse
-	(*Component)(nil),                    // 2: metalstack.admin.v2.Component
-	(v2.ComponentType)(0),                // 3: metalstack.infra.v2.ComponentType
-	(*timestamppb.Timestamp)(nil),        // 4: google.protobuf.Timestamp
-	(*v21.Version)(nil),                  // 5: metalstack.api.v2.Version
-	(*v21.Token)(nil),                    // 6: metalstack.api.v2.Token
+	(*ComponentServiceListRequest)(nil),    // 0: metalstack.admin.v2.ComponentServiceListRequest
+	(*ComponentServiceListResponse)(nil),   // 1: metalstack.admin.v2.ComponentServiceListResponse
+	(*ComponentServiceGetRequest)(nil),     // 2: metalstack.admin.v2.ComponentServiceGetRequest
+	(*ComponentServiceGetResponse)(nil),    // 3: metalstack.admin.v2.ComponentServiceGetResponse
+	(*ComponentServiceDeleteRequest)(nil),  // 4: metalstack.admin.v2.ComponentServiceDeleteRequest
+	(*ComponentServiceDeleteResponse)(nil), // 5: metalstack.admin.v2.ComponentServiceDeleteResponse
+	(*v2.ComponentQuery)(nil),              // 6: metalstack.api.v2.ComponentQuery
+	(*v2.Component)(nil),                   // 7: metalstack.api.v2.Component
 }
 var file_metalstack_admin_v2_component_proto_depIdxs = []int32{
-	2, // 0: metalstack.admin.v2.ComponentServiceListResponse.components:type_name -> metalstack.admin.v2.Component
-	3, // 1: metalstack.admin.v2.Component.type:type_name -> metalstack.infra.v2.ComponentType
-	4, // 2: metalstack.admin.v2.Component.started_at:type_name -> google.protobuf.Timestamp
-	5, // 3: metalstack.admin.v2.Component.version:type_name -> metalstack.api.v2.Version
-	6, // 4: metalstack.admin.v2.Component.token:type_name -> metalstack.api.v2.Token
-	0, // 5: metalstack.admin.v2.ComponentService.List:input_type -> metalstack.admin.v2.ComponentServiceListRequest
-	1, // 6: metalstack.admin.v2.ComponentService.List:output_type -> metalstack.admin.v2.ComponentServiceListResponse
-	6, // [6:7] is the sub-list for method output_type
-	5, // [5:6] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	6, // 0: metalstack.admin.v2.ComponentServiceListRequest.query:type_name -> metalstack.api.v2.ComponentQuery
+	7, // 1: metalstack.admin.v2.ComponentServiceListResponse.components:type_name -> metalstack.api.v2.Component
+	7, // 2: metalstack.admin.v2.ComponentServiceGetResponse.component:type_name -> metalstack.api.v2.Component
+	7, // 3: metalstack.admin.v2.ComponentServiceDeleteResponse.component:type_name -> metalstack.api.v2.Component
+	2, // 4: metalstack.admin.v2.ComponentService.Get:input_type -> metalstack.admin.v2.ComponentServiceGetRequest
+	4, // 5: metalstack.admin.v2.ComponentService.Delete:input_type -> metalstack.admin.v2.ComponentServiceDeleteRequest
+	0, // 6: metalstack.admin.v2.ComponentService.List:input_type -> metalstack.admin.v2.ComponentServiceListRequest
+	3, // 7: metalstack.admin.v2.ComponentService.Get:output_type -> metalstack.admin.v2.ComponentServiceGetResponse
+	5, // 8: metalstack.admin.v2.ComponentService.Delete:output_type -> metalstack.admin.v2.ComponentServiceDeleteResponse
+	1, // 9: metalstack.admin.v2.ComponentService.List:output_type -> metalstack.admin.v2.ComponentServiceListResponse
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_component_proto_init() }
@@ -273,7 +378,7 @@ func file_metalstack_admin_v2_component_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_component_proto_rawDesc), len(file_metalstack_admin_v2_component_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

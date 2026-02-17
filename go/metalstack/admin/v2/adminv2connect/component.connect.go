@@ -33,12 +33,20 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// ComponentServiceGetProcedure is the fully-qualified name of the ComponentService's Get RPC.
+	ComponentServiceGetProcedure = "/metalstack.admin.v2.ComponentService/Get"
+	// ComponentServiceDeleteProcedure is the fully-qualified name of the ComponentService's Delete RPC.
+	ComponentServiceDeleteProcedure = "/metalstack.admin.v2.ComponentService/Delete"
 	// ComponentServiceListProcedure is the fully-qualified name of the ComponentService's List RPC.
 	ComponentServiceListProcedure = "/metalstack.admin.v2.ComponentService/List"
 )
 
 // ComponentServiceClient is a client for the metalstack.admin.v2.ComponentService service.
 type ComponentServiceClient interface {
+	// Get a single component
+	Get(context.Context, *v2.ComponentServiceGetRequest) (*v2.ComponentServiceGetResponse, error)
+	// Delete a component
+	Delete(context.Context, *v2.ComponentServiceDeleteRequest) (*v2.ComponentServiceDeleteResponse, error)
 	// List all components with their status
 	List(context.Context, *v2.ComponentServiceListRequest) (*v2.ComponentServiceListResponse, error)
 }
@@ -54,6 +62,18 @@ func NewComponentServiceClient(httpClient connect.HTTPClient, baseURL string, op
 	baseURL = strings.TrimRight(baseURL, "/")
 	componentServiceMethods := v2.File_metalstack_admin_v2_component_proto.Services().ByName("ComponentService").Methods()
 	return &componentServiceClient{
+		get: connect.NewClient[v2.ComponentServiceGetRequest, v2.ComponentServiceGetResponse](
+			httpClient,
+			baseURL+ComponentServiceGetProcedure,
+			connect.WithSchema(componentServiceMethods.ByName("Get")),
+			connect.WithClientOptions(opts...),
+		),
+		delete: connect.NewClient[v2.ComponentServiceDeleteRequest, v2.ComponentServiceDeleteResponse](
+			httpClient,
+			baseURL+ComponentServiceDeleteProcedure,
+			connect.WithSchema(componentServiceMethods.ByName("Delete")),
+			connect.WithClientOptions(opts...),
+		),
 		list: connect.NewClient[v2.ComponentServiceListRequest, v2.ComponentServiceListResponse](
 			httpClient,
 			baseURL+ComponentServiceListProcedure,
@@ -65,7 +85,27 @@ func NewComponentServiceClient(httpClient connect.HTTPClient, baseURL string, op
 
 // componentServiceClient implements ComponentServiceClient.
 type componentServiceClient struct {
-	list *connect.Client[v2.ComponentServiceListRequest, v2.ComponentServiceListResponse]
+	get    *connect.Client[v2.ComponentServiceGetRequest, v2.ComponentServiceGetResponse]
+	delete *connect.Client[v2.ComponentServiceDeleteRequest, v2.ComponentServiceDeleteResponse]
+	list   *connect.Client[v2.ComponentServiceListRequest, v2.ComponentServiceListResponse]
+}
+
+// Get calls metalstack.admin.v2.ComponentService.Get.
+func (c *componentServiceClient) Get(ctx context.Context, req *v2.ComponentServiceGetRequest) (*v2.ComponentServiceGetResponse, error) {
+	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// Delete calls metalstack.admin.v2.ComponentService.Delete.
+func (c *componentServiceClient) Delete(ctx context.Context, req *v2.ComponentServiceDeleteRequest) (*v2.ComponentServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.admin.v2.ComponentService.List.
@@ -79,6 +119,10 @@ func (c *componentServiceClient) List(ctx context.Context, req *v2.ComponentServ
 
 // ComponentServiceHandler is an implementation of the metalstack.admin.v2.ComponentService service.
 type ComponentServiceHandler interface {
+	// Get a single component
+	Get(context.Context, *v2.ComponentServiceGetRequest) (*v2.ComponentServiceGetResponse, error)
+	// Delete a component
+	Delete(context.Context, *v2.ComponentServiceDeleteRequest) (*v2.ComponentServiceDeleteResponse, error)
 	// List all components with their status
 	List(context.Context, *v2.ComponentServiceListRequest) (*v2.ComponentServiceListResponse, error)
 }
@@ -90,6 +134,18 @@ type ComponentServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewComponentServiceHandler(svc ComponentServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	componentServiceMethods := v2.File_metalstack_admin_v2_component_proto.Services().ByName("ComponentService").Methods()
+	componentServiceGetHandler := connect.NewUnaryHandlerSimple(
+		ComponentServiceGetProcedure,
+		svc.Get,
+		connect.WithSchema(componentServiceMethods.ByName("Get")),
+		connect.WithHandlerOptions(opts...),
+	)
+	componentServiceDeleteHandler := connect.NewUnaryHandlerSimple(
+		ComponentServiceDeleteProcedure,
+		svc.Delete,
+		connect.WithSchema(componentServiceMethods.ByName("Delete")),
+		connect.WithHandlerOptions(opts...),
+	)
 	componentServiceListHandler := connect.NewUnaryHandlerSimple(
 		ComponentServiceListProcedure,
 		svc.List,
@@ -98,6 +154,10 @@ func NewComponentServiceHandler(svc ComponentServiceHandler, opts ...connect.Han
 	)
 	return "/metalstack.admin.v2.ComponentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case ComponentServiceGetProcedure:
+			componentServiceGetHandler.ServeHTTP(w, r)
+		case ComponentServiceDeleteProcedure:
+			componentServiceDeleteHandler.ServeHTTP(w, r)
 		case ComponentServiceListProcedure:
 			componentServiceListHandler.ServeHTTP(w, r)
 		default:
@@ -108,6 +168,14 @@ func NewComponentServiceHandler(svc ComponentServiceHandler, opts ...connect.Han
 
 // UnimplementedComponentServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedComponentServiceHandler struct{}
+
+func (UnimplementedComponentServiceHandler) Get(context.Context, *v2.ComponentServiceGetRequest) (*v2.ComponentServiceGetResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ComponentService.Get is not implemented"))
+}
+
+func (UnimplementedComponentServiceHandler) Delete(context.Context, *v2.ComponentServiceDeleteRequest) (*v2.ComponentServiceDeleteResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ComponentService.Delete is not implemented"))
+}
 
 func (UnimplementedComponentServiceHandler) List(context.Context, *v2.ComponentServiceListRequest) (*v2.ComponentServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ComponentService.List is not implemented"))

@@ -3,16 +3,12 @@
 /* eslint-disable */
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
-import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
-import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
-import { file_metalstack_api_v2_token } from "../../api/v2/token_pb";
-import { file_metalstack_api_v2_version } from "../../api/v2/version_pb";
-import { file_metalstack_infra_v2_component } from "../../infra/v2/component_pb";
+import { file_metalstack_api_v2_component } from "../../api/v2/component_pb";
 /**
  * Describes the file metalstack/admin/v2/component.proto.
  */
-export const file_metalstack_admin_v2_component = /*@__PURE__*/ fileDesc("CiNtZXRhbHN0YWNrL2FkbWluL3YyL2NvbXBvbmVudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiIdChtDb21wb25lbnRTZXJ2aWNlTGlzdFJlcXVlc3QiUgocQ29tcG9uZW50U2VydmljZUxpc3RSZXNwb25zZRIyCgpjb21wb25lbnRzGAEgAygLMh4ubWV0YWxzdGFjay5hZG1pbi52Mi5Db21wb25lbnQihgIKCUNvbXBvbmVudBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI6CgR0eXBlGAIgASgOMiIubWV0YWxzdGFjay5pbmZyYS52Mi5Db21wb25lbnRUeXBlQgi6SAWCAQIQARIfCgppZGVudGlmaWVyGAMgASgJQgu6SAhyBsCzrrECARIuCgpzdGFydGVkX2F0GAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIrCgd2ZXJzaW9uGAUgASgLMhoubWV0YWxzdGFjay5hcGkudjIuVmVyc2lvbhInCgV0b2tlbhgGIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuMosBChBDb21wb25lbnRTZXJ2aWNlEncKBExpc3QSMC5tZXRhbHN0YWNrLmFkbWluLnYyLkNvbXBvbmVudFNlcnZpY2VMaXN0UmVxdWVzdBoxLm1ldGFsc3RhY2suYWRtaW4udjIuQ29tcG9uZW50U2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYAkLSAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCDkNvbXBvbmVudFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_token, file_metalstack_api_v2_version, file_metalstack_infra_v2_component]);
+export const file_metalstack_admin_v2_component = /*@__PURE__*/ fileDesc("CiNtZXRhbHN0YWNrL2FkbWluL3YyL2NvbXBvbmVudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiJPChtDb21wb25lbnRTZXJ2aWNlTGlzdFJlcXVlc3QSMAoFcXVlcnkYASABKAsyIS5tZXRhbHN0YWNrLmFwaS52Mi5Db21wb25lbnRRdWVyeSJQChxDb21wb25lbnRTZXJ2aWNlTGlzdFJlc3BvbnNlEjAKCmNvbXBvbmVudHMYASADKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5Db21wb25lbnQiNAoaQ29tcG9uZW50U2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQEiTgobQ29tcG9uZW50U2VydmljZUdldFJlc3BvbnNlEi8KCWNvbXBvbmVudBgBIAEoCzIcLm1ldGFsc3RhY2suYXBpLnYyLkNvbXBvbmVudCI3Ch1Db21wb25lbnRTZXJ2aWNlRGVsZXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJRCh5Db21wb25lbnRTZXJ2aWNlRGVsZXRlUmVzcG9uc2USLwoJY29tcG9uZW50GAEgASgLMhwubWV0YWxzdGFjay5hcGkudjIuQ29tcG9uZW50Mv8CChBDb21wb25lbnRTZXJ2aWNlEnQKA0dldBIvLm1ldGFsc3RhY2suYWRtaW4udjIuQ29tcG9uZW50U2VydmljZUdldFJlcXVlc3QaMC5tZXRhbHN0YWNrLmFkbWluLnYyLkNvbXBvbmVudFNlcnZpY2VHZXRSZXNwb25zZSIK0vMYAgEC4PMYAhJ8CgZEZWxldGUSMi5tZXRhbHN0YWNrLmFkbWluLnYyLkNvbXBvbmVudFNlcnZpY2VEZWxldGVSZXF1ZXN0GjMubWV0YWxzdGFjay5hZG1pbi52Mi5Db21wb25lbnRTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiCdLzGAEB4PMYAhJ3CgRMaXN0EjAubWV0YWxzdGFjay5hZG1pbi52Mi5Db21wb25lbnRTZXJ2aWNlTGlzdFJlcXVlc3QaMS5tZXRhbHN0YWNrLmFkbWluLnYyLkNvbXBvbmVudFNlcnZpY2VMaXN0UmVzcG9uc2UiCtLzGAIBAuDzGAJC0gEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQg5Db21wb25lbnRQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_component]);
 /**
  * Describes the message metalstack.admin.v2.ComponentServiceListRequest.
  * Use `create(ComponentServiceListRequestSchema)` to create a new message.
@@ -24,10 +20,25 @@ export const ComponentServiceListRequestSchema = /*@__PURE__*/ messageDesc(file_
  */
 export const ComponentServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_component, 1);
 /**
- * Describes the message metalstack.admin.v2.Component.
- * Use `create(ComponentSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.ComponentServiceGetRequest.
+ * Use `create(ComponentServiceGetRequestSchema)` to create a new message.
  */
-export const ComponentSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_component, 2);
+export const ComponentServiceGetRequestSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_component, 2);
+/**
+ * Describes the message metalstack.admin.v2.ComponentServiceGetResponse.
+ * Use `create(ComponentServiceGetResponseSchema)` to create a new message.
+ */
+export const ComponentServiceGetResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_component, 3);
+/**
+ * Describes the message metalstack.admin.v2.ComponentServiceDeleteRequest.
+ * Use `create(ComponentServiceDeleteRequestSchema)` to create a new message.
+ */
+export const ComponentServiceDeleteRequestSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_component, 4);
+/**
+ * Describes the message metalstack.admin.v2.ComponentServiceDeleteResponse.
+ * Use `create(ComponentServiceDeleteResponseSchema)` to create a new message.
+ */
+export const ComponentServiceDeleteResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_component, 5);
 /**
  * ComponentService serves microservice related functions
  *

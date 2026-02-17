@@ -40,7 +40,7 @@ const (
 // ComponentServiceClient is a client for the metalstack.infra.v2.ComponentService service.
 type ComponentServiceClient interface {
 	// Ping must be called from every connected microservice in a recurring manner
-	// to get visibility of all required microservices.
+	// to get visibility of all registered microservices.
 	Ping(context.Context, *v2.ComponentServicePingRequest) (*v2.ComponentServicePingResponse, error)
 }
 
@@ -81,7 +81,7 @@ func (c *componentServiceClient) Ping(ctx context.Context, req *v2.ComponentServ
 // ComponentServiceHandler is an implementation of the metalstack.infra.v2.ComponentService service.
 type ComponentServiceHandler interface {
 	// Ping must be called from every connected microservice in a recurring manner
-	// to get visibility of all required microservices.
+	// to get visibility of all registered microservices.
 	Ping(context.Context, *v2.ComponentServicePingRequest) (*v2.ComponentServicePingResponse, error)
 }
 

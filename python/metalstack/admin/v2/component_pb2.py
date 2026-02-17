@@ -23,15 +23,11 @@ _sym_db = _symbol_database.Default()
 
 
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
-from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
-from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
-from metalstack.api.v2 import token_pb2 as metalstack_dot_api_dot_v2_dot_token__pb2
-from metalstack.api.v2 import version_pb2 as metalstack_dot_api_dot_v2_dot_version__pb2
-from metalstack.infra.v2 import component_pb2 as metalstack_dot_infra_dot_v2_dot_component__pb2
+from metalstack.api.v2 import component_pb2 as metalstack_dot_api_dot_v2_dot_component__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n#metalstack/admin/v2/component.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1dmetalstack/api/v2/token.proto\x1a\x1fmetalstack/api/v2/version.proto\x1a#metalstack/infra/v2/component.proto\"\x1d\n\x1b\x43omponentServiceListRequest\"^\n\x1c\x43omponentServiceListResponse\x12>\n\ncomponents\x18\x01 \x03(\x0b\x32\x1e.metalstack.admin.v2.ComponentR\ncomponents\"\xb9\x02\n\tComponent\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12@\n\x04type\x18\x02 \x01(\x0e\x32\".metalstack.infra.v2.ComponentTypeB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12+\n\nidentifier\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\nidentifier\x12\x39\n\nstarted_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tstartedAt\x12\x34\n\x07version\x18\x05 \x01(\x0b\x32\x1a.metalstack.api.v2.VersionR\x07version\x12.\n\x05token\x18\x06 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token2\x8b\x01\n\x10\x43omponentService\x12w\n\x04List\x12\x30.metalstack.admin.v2.ComponentServiceListRequest\x1a\x31.metalstack.admin.v2.ComponentServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x42\xd2\x01\n\x17\x63om.metalstack.admin.v2B\x0e\x43omponentProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n#metalstack/admin/v2/component.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/component.proto\"V\n\x1b\x43omponentServiceListRequest\x12\x37\n\x05query\x18\x01 \x01(\x0b\x32!.metalstack.api.v2.ComponentQueryR\x05query\"\\\n\x1c\x43omponentServiceListResponse\x12<\n\ncomponents\x18\x01 \x03(\x0b\x32\x1c.metalstack.api.v2.ComponentR\ncomponents\":\n\x1a\x43omponentServiceGetRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"Y\n\x1b\x43omponentServiceGetResponse\x12:\n\tcomponent\x18\x01 \x01(\x0b\x32\x1c.metalstack.api.v2.ComponentR\tcomponent\"=\n\x1d\x43omponentServiceDeleteRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\\\n\x1e\x43omponentServiceDeleteResponse\x12:\n\tcomponent\x18\x01 \x01(\x0b\x32\x1c.metalstack.api.v2.ComponentR\tcomponent2\xff\x02\n\x10\x43omponentService\x12t\n\x03Get\x12/.metalstack.admin.v2.ComponentServiceGetRequest\x1a\x30.metalstack.admin.v2.ComponentServiceGetResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12|\n\x06\x44\x65lete\x12\x32.metalstack.admin.v2.ComponentServiceDeleteRequest\x1a\x33.metalstack.admin.v2.ComponentServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12w\n\x04List\x12\x30.metalstack.admin.v2.ComponentServiceListRequest\x1a\x31.metalstack.admin.v2.ComponentServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x42\xd2\x01\n\x17\x63om.metalstack.admin.v2B\x0e\x43omponentProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -39,20 +35,28 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.admin.v2.compone
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.admin.v2B\016ComponentProtoP\001Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\242\002\003MAX\252\002\023Metalstack.Admin.V2\312\002\023Metalstack\\Admin\\V2\342\002\037Metalstack\\Admin\\V2\\GPBMetadata\352\002\025Metalstack::Admin::V2'
-  _globals['_COMPONENT'].fields_by_name['uuid']._loaded_options = None
-  _globals['_COMPONENT'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
-  _globals['_COMPONENT'].fields_by_name['type']._loaded_options = None
-  _globals['_COMPONENT'].fields_by_name['type']._serialized_options = b'\272H\005\202\001\002\020\001'
-  _globals['_COMPONENT'].fields_by_name['identifier']._loaded_options = None
-  _globals['_COMPONENT'].fields_by_name['identifier']._serialized_options = b'\272H\010r\006\300\263\256\261\002\001'
+  _globals['_COMPONENTSERVICEGETREQUEST'].fields_by_name['uuid']._loaded_options = None
+  _globals['_COMPONENTSERVICEGETREQUEST'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
+  _globals['_COMPONENTSERVICEDELETEREQUEST'].fields_by_name['uuid']._loaded_options = None
+  _globals['_COMPONENTSERVICEDELETEREQUEST'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
+  _globals['_COMPONENTSERVICE'].methods_by_name['Get']._loaded_options = None
+  _globals['_COMPONENTSERVICE'].methods_by_name['Get']._serialized_options = b'\322\363\030\002\001\002\340\363\030\002'
+  _globals['_COMPONENTSERVICE'].methods_by_name['Delete']._loaded_options = None
+  _globals['_COMPONENTSERVICE'].methods_by_name['Delete']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
   _globals['_COMPONENTSERVICE'].methods_by_name['List']._loaded_options = None
   _globals['_COMPONENTSERVICE'].methods_by_name['List']._serialized_options = b'\322\363\030\002\001\002\340\363\030\002'
-  _globals['_COMPONENTSERVICELISTREQUEST']._serialized_start=297
-  _globals['_COMPONENTSERVICELISTREQUEST']._serialized_end=326
-  _globals['_COMPONENTSERVICELISTRESPONSE']._serialized_start=328
-  _globals['_COMPONENTSERVICELISTRESPONSE']._serialized_end=422
-  _globals['_COMPONENT']._serialized_start=425
-  _globals['_COMPONENT']._serialized_end=738
-  _globals['_COMPONENTSERVICE']._serialized_start=741
-  _globals['_COMPONENTSERVICE']._serialized_end=880
+  _globals['_COMPONENTSERVICELISTREQUEST']._serialized_start=156
+  _globals['_COMPONENTSERVICELISTREQUEST']._serialized_end=242
+  _globals['_COMPONENTSERVICELISTRESPONSE']._serialized_start=244
+  _globals['_COMPONENTSERVICELISTRESPONSE']._serialized_end=336
+  _globals['_COMPONENTSERVICEGETREQUEST']._serialized_start=338
+  _globals['_COMPONENTSERVICEGETREQUEST']._serialized_end=396
+  _globals['_COMPONENTSERVICEGETRESPONSE']._serialized_start=398
+  _globals['_COMPONENTSERVICEGETRESPONSE']._serialized_end=487
+  _globals['_COMPONENTSERVICEDELETEREQUEST']._serialized_start=489
+  _globals['_COMPONENTSERVICEDELETEREQUEST']._serialized_end=550
+  _globals['_COMPONENTSERVICEDELETERESPONSE']._serialized_start=552
+  _globals['_COMPONENTSERVICEDELETERESPONSE']._serialized_end=644
+  _globals['_COMPONENTSERVICE']._serialized_start=647
+  _globals['_COMPONENTSERVICE']._serialized_end=1030
 # @@protoc_insertion_point(module_scope)

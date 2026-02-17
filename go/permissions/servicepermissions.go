@@ -50,6 +50,8 @@ func GetServicePermissions() *ServicePermissions {
 		Roles: Roles{
 			Admin: Admin{
 				"ADMIN_ROLE_EDITOR": []string{
+					"/metalstack.admin.v2.ComponentService/Get",
+					"/metalstack.admin.v2.ComponentService/Delete",
 					"/metalstack.admin.v2.ComponentService/List",
 					"/metalstack.admin.v2.FilesystemService/Create",
 					"/metalstack.admin.v2.FilesystemService/Update",
@@ -101,6 +103,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.admin.v2.VPNService/ListNodes",
 				},
 				"ADMIN_ROLE_VIEWER": []string{
+					"/metalstack.admin.v2.ComponentService/Get",
 					"/metalstack.admin.v2.ComponentService/List",
 					"/metalstack.admin.v2.ImageService/Usage",
 					"/metalstack.admin.v2.IPService/List",
@@ -248,6 +251,8 @@ func GetServicePermissions() *ServicePermissions {
 		Methods: map[string]bool{
 			"/grpc.reflection.v1.ServerReflection/ServerReflectionInfo":      true,
 			"/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
+			"/metalstack.admin.v2.ComponentService/Delete":                   true,
+			"/metalstack.admin.v2.ComponentService/Get":                      true,
 			"/metalstack.admin.v2.ComponentService/List":                     true,
 			"/metalstack.admin.v2.FilesystemService/Create":                  true,
 			"/metalstack.admin.v2.FilesystemService/Delete":                  true,
@@ -415,6 +420,8 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.api.v2.UserService/Get":               true,
 			},
 			Admin: map[string]bool{
+				"/metalstack.admin.v2.ComponentService/Delete":        true,
+				"/metalstack.admin.v2.ComponentService/Get":           true,
 				"/metalstack.admin.v2.ComponentService/List":          true,
 				"/metalstack.admin.v2.FilesystemService/Create":       true,
 				"/metalstack.admin.v2.FilesystemService/Delete":       true,
@@ -528,6 +535,8 @@ func GetServicePermissions() *ServicePermissions {
 			},
 		},
 		Auditable: map[string]bool{
+			"/metalstack.admin.v2.ComponentService/Delete":           true,
+			"/metalstack.admin.v2.ComponentService/Get":              false,
 			"/metalstack.admin.v2.ComponentService/List":             false,
 			"/metalstack.admin.v2.FilesystemService/Create":          true,
 			"/metalstack.admin.v2.FilesystemService/Delete":          true,
