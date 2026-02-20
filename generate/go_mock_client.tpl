@@ -2,6 +2,7 @@
 package apitests
 
 import (
+	"context"
 	"testing"
 
 	apiclient "github.com/metal-stack/api/go/client"
@@ -60,6 +61,8 @@ func (c *client) {{ $name | title }}() apiclient.{{ $name | title }} {
 	return c.{{ $name }}service
 }
 {{ end }}
+
+func (c *client) Ping(context.Context, *apiclient.PingConfig) {}
 
 {{ range $name, $api := . -}}
 func (w wrapper) {{ $name | title }}(fns *{{ $name | title }}MockFns) *{{ $name }} {
