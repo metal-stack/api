@@ -34,6 +34,7 @@ export type ComponentServicePingRequest = Message<"metalstack.infra.v2.Component
     startedAt?: Timestamp;
     /**
      * Interval at which the ping is scheduled, must be between 5 seconds and 1 hour.
+     * Also gets validated in the same way in go/client/ping.go.
      *
      * @generated from field: google.protobuf.Duration interval = 4;
      */

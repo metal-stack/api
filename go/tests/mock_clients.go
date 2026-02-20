@@ -2,6 +2,7 @@
 package apitests
 
 import (
+	"context"
 	"testing"
 
 	apiclient "github.com/metal-stack/api/go/client"
@@ -139,6 +140,8 @@ func (c *client) Apiv2() apiclient.Apiv2 {
 func (c *client) Infrav2() apiclient.Infrav2 {
 	return c.infrav2service
 }
+
+func (c *client) Ping(context.Context, *apiclient.PingConfig) {}
 
 func (w wrapper) Adminv2(fns *Adminv2MockFns) *adminv2 {
 	return newadminv2(w.t, fns)
