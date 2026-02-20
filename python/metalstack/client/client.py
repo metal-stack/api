@@ -2,6 +2,7 @@
 
 import pyqwest
 
+import metalstack.admin.v2.component_connect as admin_component_connect
 import metalstack.admin.v2.filesystem_connect as admin_filesystem_connect
 import metalstack.admin.v2.image_connect as admin_image_connect
 import metalstack.admin.v2.ip_connect as admin_ip_connect
@@ -35,6 +36,7 @@ import metalstack.api.v2.version_connect as api_version_connect
 
 import metalstack.infra.v2.bmc_connect as infra_bmc_connect
 import metalstack.infra.v2.boot_connect as infra_boot_connect
+import metalstack.infra.v2.component_connect as infra_component_connect
 import metalstack.infra.v2.event_connect as infra_event_connect
 import metalstack.infra.v2.switch_connect as infra_switch_connect
 
@@ -68,6 +70,9 @@ class Client:
             self._baseurl = baseurl
             self._client = client
 
+
+        def component(self):
+            return admin_component_connect.ComponentServiceClientSync(address=self._baseurl, http_client=self._client)
 
         def filesystem(self):
             return admin_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, http_client=self._client)
@@ -175,6 +180,9 @@ class Client:
 
         def boot(self):
             return infra_boot_connect.BootServiceClientSync(address=self._baseurl, http_client=self._client)
+
+        def component(self):
+            return infra_component_connect.ComponentServiceClientSync(address=self._baseurl, http_client=self._client)
 
         def event(self):
             return infra_event_connect.EventServiceClientSync(address=self._baseurl, http_client=self._client)

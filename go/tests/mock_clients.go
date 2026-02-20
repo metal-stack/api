@@ -32,6 +32,7 @@ type (
 		t *testing.T
 	}
 	adminv2 struct {
+		componentservice       *adminv2mocks.ComponentServiceClient
 		filesystemservice      *adminv2mocks.FilesystemServiceClient
 		imageservice           *adminv2mocks.ImageServiceClient
 		ipservice              *adminv2mocks.IPServiceClient
@@ -49,6 +50,7 @@ type (
 	}
 
 	Adminv2MockFns struct {
+		Component       func(m *mock.Mock)
 		Filesystem      func(m *mock.Mock)
 		Image           func(m *mock.Mock)
 		IP              func(m *mock.Mock)
@@ -100,17 +102,19 @@ type (
 		Version         func(m *mock.Mock)
 	}
 	infrav2 struct {
-		bmcservice    *infrav2mocks.BMCServiceClient
-		bootservice   *infrav2mocks.BootServiceClient
-		eventservice  *infrav2mocks.EventServiceClient
-		switchservice *infrav2mocks.SwitchServiceClient
+		bmcservice       *infrav2mocks.BMCServiceClient
+		bootservice      *infrav2mocks.BootServiceClient
+		componentservice *infrav2mocks.ComponentServiceClient
+		eventservice     *infrav2mocks.EventServiceClient
+		switchservice    *infrav2mocks.SwitchServiceClient
 	}
 
 	Infrav2MockFns struct {
-		BMC    func(m *mock.Mock)
-		Boot   func(m *mock.Mock)
-		Event  func(m *mock.Mock)
-		Switch func(m *mock.Mock)
+		BMC       func(m *mock.Mock)
+		Boot      func(m *mock.Mock)
+		Component func(m *mock.Mock)
+		Event     func(m *mock.Mock)
+		Switch    func(m *mock.Mock)
 	}
 )
 
@@ -142,6 +146,7 @@ func (w wrapper) Adminv2(fns *Adminv2MockFns) *adminv2 {
 
 func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	a := &adminv2{
+		componentservice:       adminv2mocks.NewComponentServiceClient(t),
 		filesystemservice:      adminv2mocks.NewFilesystemServiceClient(t),
 		imageservice:           adminv2mocks.NewImageServiceClient(t),
 		ipservice:              adminv2mocks.NewIPServiceClient(t),
@@ -159,6 +164,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	}
 
 	if fns != nil {
+		if fns.Component != nil {
+			fns.Component(&a.componentservice.Mock)
+		}
 		if fns.Filesystem != nil {
 			fns.Filesystem(&a.filesystemservice.Mock)
 		}
@@ -207,6 +215,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	return a
 }
 
+func (c *adminv2) Component() adminv2connect.ComponentServiceClient {
+	return c.componentservice
+}
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }
@@ -377,10 +388,11 @@ func (w wrapper) Infrav2(fns *Infrav2MockFns) *infrav2 {
 
 func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 	a := &infrav2{
-		bmcservice:    infrav2mocks.NewBMCServiceClient(t),
-		bootservice:   infrav2mocks.NewBootServiceClient(t),
-		eventservice:  infrav2mocks.NewEventServiceClient(t),
-		switchservice: infrav2mocks.NewSwitchServiceClient(t),
+		bmcservice:       infrav2mocks.NewBMCServiceClient(t),
+		bootservice:      infrav2mocks.NewBootServiceClient(t),
+		componentservice: infrav2mocks.NewComponentServiceClient(t),
+		eventservice:     infrav2mocks.NewEventServiceClient(t),
+		switchservice:    infrav2mocks.NewSwitchServiceClient(t),
 	}
 
 	if fns != nil {
@@ -389,6 +401,9 @@ func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 		}
 		if fns.Boot != nil {
 			fns.Boot(&a.bootservice.Mock)
+		}
+		if fns.Component != nil {
+			fns.Component(&a.componentservice.Mock)
 		}
 		if fns.Event != nil {
 			fns.Event(&a.eventservice.Mock)
@@ -407,6 +422,9 @@ func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 }
 func (c *infrav2) Boot() infrav2connect.BootServiceClient {
 	return c.bootservice
+}
+func (c *infrav2) Component() infrav2connect.ComponentServiceClient {
+	return c.componentservice
 }
 func (c *infrav2) Event() infrav2connect.EventServiceClient {
 	return c.eventservice

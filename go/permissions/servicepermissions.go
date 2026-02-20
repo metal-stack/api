@@ -7,6 +7,7 @@ import (
 
 func GetServices() []string {
 	return []string{
+		"metalstack.admin.v2.ComponentService",
 		"metalstack.admin.v2.FilesystemService",
 		"metalstack.admin.v2.IPService",
 		"metalstack.admin.v2.ImageService",
@@ -38,6 +39,7 @@ func GetServices() []string {
 		"metalstack.api.v2.VersionService",
 		"metalstack.infra.v2.BMCService",
 		"metalstack.infra.v2.BootService",
+		"metalstack.infra.v2.ComponentService",
 		"metalstack.infra.v2.EventService",
 		"metalstack.infra.v2.SwitchService",
 	}
@@ -48,6 +50,9 @@ func GetServicePermissions() *ServicePermissions {
 		Roles: Roles{
 			Admin: Admin{
 				"ADMIN_ROLE_EDITOR": []string{
+					"/metalstack.admin.v2.ComponentService/Get",
+					"/metalstack.admin.v2.ComponentService/Delete",
+					"/metalstack.admin.v2.ComponentService/List",
 					"/metalstack.admin.v2.FilesystemService/Create",
 					"/metalstack.admin.v2.FilesystemService/Update",
 					"/metalstack.admin.v2.FilesystemService/Delete",
@@ -98,6 +103,8 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.admin.v2.VPNService/ListNodes",
 				},
 				"ADMIN_ROLE_VIEWER": []string{
+					"/metalstack.admin.v2.ComponentService/Get",
+					"/metalstack.admin.v2.ComponentService/List",
 					"/metalstack.admin.v2.ImageService/Usage",
 					"/metalstack.admin.v2.IPService/List",
 					"/metalstack.admin.v2.MachineService/Get",
@@ -127,6 +134,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.infra.v2.BMCService/BMCCommandDone",
 					"/metalstack.infra.v2.BootService/Dhcp",
 					"/metalstack.infra.v2.BootService/Boot",
+					"/metalstack.infra.v2.ComponentService/Ping",
 					"/metalstack.infra.v2.EventService/Send",
 					"/metalstack.infra.v2.SwitchService/Get",
 					"/metalstack.infra.v2.SwitchService/Register",
@@ -243,6 +251,9 @@ func GetServicePermissions() *ServicePermissions {
 		Methods: map[string]bool{
 			"/grpc.reflection.v1.ServerReflection/ServerReflectionInfo":      true,
 			"/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
+			"/metalstack.admin.v2.ComponentService/Delete":                   true,
+			"/metalstack.admin.v2.ComponentService/Get":                      true,
+			"/metalstack.admin.v2.ComponentService/List":                     true,
 			"/metalstack.admin.v2.FilesystemService/Create":                  true,
 			"/metalstack.admin.v2.FilesystemService/Delete":                  true,
 			"/metalstack.admin.v2.FilesystemService/Update":                  true,
@@ -367,6 +378,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.infra.v2.BootService/Register":                      true,
 			"/metalstack.infra.v2.BootService/SuperUserPassword":             true,
 			"/metalstack.infra.v2.BootService/Wait":                          true,
+			"/metalstack.infra.v2.ComponentService/Ping":                     true,
 			"/metalstack.infra.v2.EventService/Send":                         true,
 			"/metalstack.infra.v2.SwitchService/Get":                         true,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":                   true,
@@ -408,6 +420,9 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.api.v2.UserService/Get":               true,
 			},
 			Admin: map[string]bool{
+				"/metalstack.admin.v2.ComponentService/Delete":        true,
+				"/metalstack.admin.v2.ComponentService/Get":           true,
+				"/metalstack.admin.v2.ComponentService/List":          true,
 				"/metalstack.admin.v2.FilesystemService/Create":       true,
 				"/metalstack.admin.v2.FilesystemService/Delete":       true,
 				"/metalstack.admin.v2.FilesystemService/Update":       true,
@@ -463,6 +478,7 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.infra.v2.BMCService/WaitForBMCCommand": true,
 				"/metalstack.infra.v2.BootService/Boot":             true,
 				"/metalstack.infra.v2.BootService/Dhcp":             true,
+				"/metalstack.infra.v2.ComponentService/Ping":        true,
 				"/metalstack.infra.v2.EventService/Send":            true,
 				"/metalstack.infra.v2.SwitchService/Get":            true,
 				"/metalstack.infra.v2.SwitchService/Heartbeat":      true,
@@ -519,6 +535,9 @@ func GetServicePermissions() *ServicePermissions {
 			},
 		},
 		Auditable: map[string]bool{
+			"/metalstack.admin.v2.ComponentService/Delete":           true,
+			"/metalstack.admin.v2.ComponentService/Get":              false,
+			"/metalstack.admin.v2.ComponentService/List":             false,
 			"/metalstack.admin.v2.FilesystemService/Create":          true,
 			"/metalstack.admin.v2.FilesystemService/Delete":          true,
 			"/metalstack.admin.v2.FilesystemService/Update":          true,
@@ -643,6 +662,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.infra.v2.BootService/Register":              false,
 			"/metalstack.infra.v2.BootService/SuperUserPassword":     false,
 			"/metalstack.infra.v2.BootService/Wait":                  false,
+			"/metalstack.infra.v2.ComponentService/Ping":             false,
 			"/metalstack.infra.v2.EventService/Send":                 false,
 			"/metalstack.infra.v2.SwitchService/Get":                 false,
 			"/metalstack.infra.v2.SwitchService/Heartbeat":           false,

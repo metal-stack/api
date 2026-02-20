@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/component.proto";
+
+// ComponentService serves microservice related functions
+service ComponentService {
+  // Get a single component
+  rpc Get(ComponentServiceGetRequest) returns (ComponentServiceGetResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // Delete a component
+  rpc Delete(ComponentServiceDeleteRequest) returns (ComponentServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // List all components with their status
+  rpc List(ComponentServiceListRequest) returns (ComponentServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// ComponentServiceListRequest
+message ComponentServiceListRequest {
+  // Query components.
+  metalstack.api.v2.ComponentQuery query = 1;
+}
+
+// ComponentServiceListResponse
+message ComponentServiceListResponse {
+  // Components
+  repeated metalstack.api.v2.Component components = 1;
+}
+
+// ComponentServiceGetRequest
+message ComponentServiceGetRequest {
+  // UUID identifies the component to get
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// ComponentServiceGetResponse
+message ComponentServiceGetResponse {
+  // Component
+  metalstack.api.v2.Component component = 1;
+}
+
+// ComponentServiceGetRequest
+message ComponentServiceDeleteRequest {
+  // UUID identifies the component to delete
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// ComponentServiceGetResponse
+message ComponentServiceDeleteResponse {
+  // Component
+  metalstack.api.v2.Component component = 1;
+}

@@ -743,12 +743,12 @@ const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\n" +
 	"\b_project\"y\n" +
 	" PartitionServiceCapacityResponse\x12U\n" +
-	"\x12partition_capacity\x18\x01 \x03(\v2&.metalstack.admin.v2.PartitionCapacityR\x11partitionCapacity\"\x93\x01\n" +
-	"\x11PartitionCapacity\x12\x1c\n" +
-	"\tpartition\x18\x01 \x01(\tR\tpartition\x12`\n" +
-	"\x17machine_size_capacities\x18\x02 \x03(\v2(.metalstack.admin.v2.MachineSizeCapacityR\x15machineSizeCapacities\"\xf6\x03\n" +
-	"\x13MachineSizeCapacity\x12\x12\n" +
-	"\x04size\x18\x02 \x01(\tR\x04size\x12\x14\n" +
+	"\x12partition_capacity\x18\x01 \x03(\v2&.metalstack.admin.v2.PartitionCapacityR\x11partitionCapacity\"\xa0\x01\n" +
+	"\x11PartitionCapacity\x12)\n" +
+	"\tpartition\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12`\n" +
+	"\x17machine_size_capacities\x18\x02 \x03(\v2(.metalstack.admin.v2.MachineSizeCapacityR\x15machineSizeCapacities\"\x83\x04\n" +
+	"\x13MachineSizeCapacity\x12\x1f\n" +
+	"\x04size\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04size\x12\x14\n" +
 	"\x05total\x18\x03 \x01(\x03R\x05total\x12\x1f\n" +
 	"\vphoned_home\x18\x04 \x01(\x03R\n" +
 	"phonedHome\x12\x18\n" +

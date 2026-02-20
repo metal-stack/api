@@ -103,7 +103,7 @@ message PartitionServiceCapacityResponse {
 // PartitionCapacity is the capacity of one partition
 message PartitionCapacity {
   // Partition of which this capacity is reported.
-  string partition = 1;
+  string partition = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // MachineSizeCapacities is the capacity per machine size.
   repeated MachineSizeCapacity machine_size_capacities = 2;
 }
@@ -111,7 +111,7 @@ message PartitionCapacity {
 // ServerCapacity is the capacity of one server type, eg machine size
 message MachineSizeCapacity {
   // Size is the size id correlating to all counts in this server capacity.
-  string size = 2;
+  string size = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Total is the total amount of machines for this size.
   int64 total = 3;
 

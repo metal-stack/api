@@ -22,10 +22,12 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
+from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fmetalstack/api/v2/version.proto\x12\x11metalstack.api.v2\x1a\x1emetalstack/api/v2/common.proto\"y\n\x07Version\x12\x18\n\x07version\x18\x01 \x01(\tR\x07version\x12\x1a\n\x08revision\x18\x02 \x01(\tR\x08revision\x12\x19\n\x08git_sha1\x18\x03 \x01(\tR\x07gitSha1\x12\x1d\n\nbuild_date\x18\x04 \x01(\tR\tbuildDate\"\x1a\n\x18VersionServiceGetRequest\"Q\n\x19VersionServiceGetResponse\x12\x34\n\x07version\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.VersionR\x07version2|\n\x0eVersionService\x12j\n\x03Get\x12+.metalstack.api.v2.VersionServiceGetRequest\x1a,.metalstack.api.v2.VersionServiceGetResponse\"\x08\xd8\xf3\x18\x01\xe0\xf3\x18\x02\x42\xc2\x01\n\x15\x63om.metalstack.api.v2B\x0cVersionProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fmetalstack/api/v2/version.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xad\x01\n\x07Version\x12%\n\x07version\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x07version\x12\'\n\x08revision\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x08revision\x12&\n\x08git_sha1\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x07gitSha1\x12*\n\nbuild_date\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\tbuildDate\"\x1a\n\x18VersionServiceGetRequest\"Q\n\x19VersionServiceGetResponse\x12\x34\n\x07version\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.VersionR\x07version2|\n\x0eVersionService\x12j\n\x03Get\x12+.metalstack.api.v2.VersionServiceGetRequest\x1a,.metalstack.api.v2.VersionServiceGetResponse\"\x08\xd8\xf3\x18\x01\xe0\xf3\x18\x02\x42\xc2\x01\n\x15\x63om.metalstack.api.v2B\x0cVersionProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,14 +35,22 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.api.v2.version_p
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\025com.metalstack.api.v2B\014VersionProtoP\001Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\242\002\003MAX\252\002\021Metalstack.Api.V2\312\002\021Metalstack\\Api\\V2\342\002\035Metalstack\\Api\\V2\\GPBMetadata\352\002\023Metalstack::Api::V2'
+  _globals['_VERSION'].fields_by_name['version']._loaded_options = None
+  _globals['_VERSION'].fields_by_name['version']._serialized_options = b'\272H\010r\006\310\263\256\261\002\001'
+  _globals['_VERSION'].fields_by_name['revision']._loaded_options = None
+  _globals['_VERSION'].fields_by_name['revision']._serialized_options = b'\272H\010r\006\310\263\256\261\002\001'
+  _globals['_VERSION'].fields_by_name['git_sha1']._loaded_options = None
+  _globals['_VERSION'].fields_by_name['git_sha1']._serialized_options = b'\272H\010r\006\310\263\256\261\002\001'
+  _globals['_VERSION'].fields_by_name['build_date']._loaded_options = None
+  _globals['_VERSION'].fields_by_name['build_date']._serialized_options = b'\272H\010r\006\310\263\256\261\002\001'
   _globals['_VERSIONSERVICE'].methods_by_name['Get']._loaded_options = None
   _globals['_VERSIONSERVICE'].methods_by_name['Get']._serialized_options = b'\330\363\030\001\340\363\030\002'
-  _globals['_VERSION']._serialized_start=86
-  _globals['_VERSION']._serialized_end=207
-  _globals['_VERSIONSERVICEGETREQUEST']._serialized_start=209
-  _globals['_VERSIONSERVICEGETREQUEST']._serialized_end=235
-  _globals['_VERSIONSERVICEGETRESPONSE']._serialized_start=237
-  _globals['_VERSIONSERVICEGETRESPONSE']._serialized_end=318
-  _globals['_VERSIONSERVICE']._serialized_start=320
-  _globals['_VERSIONSERVICE']._serialized_end=444
+  _globals['_VERSION']._serialized_start=158
+  _globals['_VERSION']._serialized_end=331
+  _globals['_VERSIONSERVICEGETREQUEST']._serialized_start=333
+  _globals['_VERSIONSERVICEGETREQUEST']._serialized_end=359
+  _globals['_VERSIONSERVICEGETRESPONSE']._serialized_start=361
+  _globals['_VERSIONSERVICEGETRESPONSE']._serialized_end=442
+  _globals['_VERSIONSERVICE']._serialized_start=444
+  _globals['_VERSIONSERVICE']._serialized_end=568
 # @@protoc_insertion_point(module_scope)

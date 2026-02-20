@@ -5,7 +5,6 @@ import (
 
 	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"google.golang.org/protobuf/proto"
 )
 
 func TestValidateImage(t *testing.T) {
@@ -44,7 +43,7 @@ func TestValidateImage(t *testing.T) {
 			name: "Valid ImageUpdate minimal config",
 			msg: &adminv2.ImageServiceUpdateRequest{
 				Id:             "debian:12.0.20250101",
-				Name:           proto.String("debian"),
+				Name:           new("debian"),
 				UpdateMeta:     &apiv2.UpdateMeta{},
 				Features:       []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE},
 				Classification: apiv2.ImageClassification_IMAGE_CLASSIFICATION_PREVIEW,
@@ -55,7 +54,7 @@ func TestValidateImage(t *testing.T) {
 			name: "InValid ImageUpdate duplicate Features",
 			msg: &adminv2.ImageServiceUpdateRequest{
 				Id:             "debian:12.0.20250101",
-				Name:           proto.String("debian"),
+				Name:           new("debian"),
 				UpdateMeta:     &apiv2.UpdateMeta{},
 				Features:       []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE, apiv2.ImageFeature_IMAGE_FEATURE_MACHINE},
 				Classification: apiv2.ImageClassification_IMAGE_CLASSIFICATION_PREVIEW,
@@ -67,7 +66,7 @@ func TestValidateImage(t *testing.T) {
 			name: "InValid ImageUpdate invalid Features",
 			msg: &adminv2.ImageServiceUpdateRequest{
 				Id:             "debian:12.0.20250101",
-				Name:           proto.String("debian"),
+				Name:           new("debian"),
 				UpdateMeta:     &apiv2.UpdateMeta{},
 				Features:       []apiv2.ImageFeature{apiv2.ImageFeature_IMAGE_FEATURE_MACHINE, 3},
 				Classification: apiv2.ImageClassification_IMAGE_CLASSIFICATION_PREVIEW,
