@@ -144,9 +144,9 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
     /**
      * IPs to to attach to this machine additionally
      *
-     * @generated from field: repeated string ips = 14;
+     * @generated from field: repeated metalstack.api.v2.MachineAllocationIp ips = 14;
      */
-    ips: string[];
+    ips: MachineAllocationIp[];
     /**
      * PlacementTags by default machines are spread across the racks inside a partition for every project.
      * if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
@@ -193,7 +193,7 @@ export type FirewallSpec = Message<"metalstack.api.v2.FirewallSpec"> & {
     /**
      * FirewallRules to be applied if this is a firewall
      *
-     * @generated from field: metalstack.api.v2.FirewallRules firewall_rules = 19;
+     * @generated from field: metalstack.api.v2.FirewallRules firewall_rules = 1;
      */
     firewallRules?: FirewallRules;
 };
@@ -731,6 +731,30 @@ export type MachineAllocationNetwork = Message<"metalstack.api.v2.MachineAllocat
  * Use `create(MachineAllocationNetworkSchema)` to create a new message.
  */
 export declare const MachineAllocationNetworkSchema: GenMessage<MachineAllocationNetwork>;
+/**
+ * MachineAllocationIp defines a ip and a optional namespace which should be attached to this machine during create
+ *
+ * @generated from message metalstack.api.v2.MachineAllocationIp
+ */
+export type MachineAllocationIp = Message<"metalstack.api.v2.MachineAllocationIp"> & {
+    /**
+     * IP to to attach to this machine additionally
+     *
+     * @generated from field: string ip = 1;
+     */
+    ip: string;
+    /**
+     * Namespace where this ip was created, usually the project of the namespaced tenant network.
+     *
+     * @generated from field: optional string namespace = 2;
+     */
+    namespace?: string;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineAllocationIp.
+ * Use `create(MachineAllocationIpSchema)` to create a new message.
+ */
+export declare const MachineAllocationIpSchema: GenMessage<MachineAllocationIp>;
 /**
  * FirewallRules can be defined during firewall allocation
  *

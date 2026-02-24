@@ -1080,6 +1080,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineAllocationIp"><span class="badge">M</span>MachineAllocationIp</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineAllocationNetwork"><span class="badge">M</span>MachineAllocationNetwork</a>
                 </li>
               
@@ -9069,6 +9073,37 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.MachineAllocationIp">MachineAllocationIp</h3>
+        <p>MachineAllocationIp defines a ip and a optional namespace which should be attached to this machine during create</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>ip</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>IP to to attach to this machine additionally </p></td>
+                </tr>
+              
+                <tr>
+                  <td>namespace</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Namespace where this ip was created, usually the project of the namespaced tenant network. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.MachineAllocationNetwork">MachineAllocationNetwork</h3>
         <p>MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired</p>
 
@@ -10441,7 +10476,7 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
               
                 <tr>
                   <td>ips</td>
-                  <td><a href="#string">string</a></td>
+                  <td><a href="#metalstack.api.v2.MachineAllocationIp">MachineAllocationIp</a></td>
                   <td>repeated</td>
                   <td><p>IPs to to attach to this machine additionally </p></td>
                 </tr>
