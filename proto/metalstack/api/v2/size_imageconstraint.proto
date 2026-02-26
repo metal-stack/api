@@ -17,9 +17,9 @@ service SizeImageConstraintService {
 
 // SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request
 message SizeImageConstraintServiceTryRequest {
-  // ID of the size to try
+  // Size to try
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // ID of the image to try
+  // Image to try
   string image = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
@@ -34,7 +34,7 @@ message SizeImageConstraintServiceTryResponse {}
 // If the image in question is not found, no restrictions apply as well.
 // If the image in question is found, but does not match the given expression, machine creation must be forbidden.
 message SizeImageConstraint {
-  // Id of the size
+  // Size where this constraint should apply
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // ImageConstraints to apply to this size
   repeated ImageConstraint image_constraints = 2;
@@ -52,9 +52,9 @@ message SizeImageConstraint {
 //    ubuntu: ">= 20.04.20211011"
 //    debian: ">= 10.0.20210101"
 message ImageConstraint {
-  // Id of the image
+  // Image of the constraint
   string image = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Semver match
+  // SemverMatch which defines in semver match format which image version should apply
   string semver_match = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 

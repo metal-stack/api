@@ -23,14 +23,14 @@ export const file_metalstack_api_v2_size_imageconstraint: GenFile = /*@__PURE__*
  */
 export type SizeImageConstraintServiceTryRequest = Message<"metalstack.api.v2.SizeImageConstraintServiceTryRequest"> & {
   /**
-   * ID of the size to try
+   * Size to try
    *
    * @generated from field: string size = 1;
    */
   size: string;
 
   /**
-   * ID of the image to try
+   * Image to try
    *
    * @generated from field: string image = 2;
    */
@@ -72,7 +72,7 @@ export const SizeImageConstraintServiceTryResponseSchema: GenMessage<SizeImageCo
  */
 export type SizeImageConstraint = Message<"metalstack.api.v2.SizeImageConstraint"> & {
   /**
-   * Id of the size
+   * Size where this constraint should apply
    *
    * @generated from field: string size = 1;
    */
@@ -125,14 +125,14 @@ export const SizeImageConstraintSchema: GenMessage<SizeImageConstraint> = /*@__P
  */
 export type ImageConstraint = Message<"metalstack.api.v2.ImageConstraint"> & {
   /**
-   * Id of the image
+   * Image of the constraint
    *
    * @generated from field: string image = 1;
    */
   image: string;
 
   /**
-   * Semver match
+   * SemverMatch which defines in semver match format which image version should apply
    *
    * @generated from field: string semver_match = 2;
    */

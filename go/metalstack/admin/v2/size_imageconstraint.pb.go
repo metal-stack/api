@@ -26,7 +26,7 @@ const (
 // SizeImageConstraintServiceCreateRequest is the request payload for a size image constraint create request
 type SizeImageConstraintServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the size
+	// Size of the constraint
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	// ImageConstraints to apply to this size
 	ImageConstraints []*v2.ImageConstraint `protobuf:"bytes,2,rep,name=image_constraints,json=imageConstraints,proto3" json:"image_constraints,omitempty"`
@@ -154,7 +154,7 @@ func (x *SizeImageConstraintServiceCreateResponse) GetSizeImageConstraint() *v2.
 // SizeImageConstraintServiceUpdateRequest is the request payload for a size image constraint update request
 type SizeImageConstraintServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the size
+	// Size of the image constraint to update
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
@@ -282,7 +282,7 @@ func (x *SizeImageConstraintServiceUpdateResponse) GetSizeImageConstraint() *v2.
 // SizeImageConstraintServiceDeleteRequest is the request payload for a size image constraint delete request
 type SizeImageConstraintServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the size
+	// Size of the constraint
 	Size          string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -374,7 +374,7 @@ func (x *SizeImageConstraintServiceDeleteResponse) GetSizeImageConstraint() *v2.
 // SizeImageConstraintServiceGetRequest is the request payload for a size image constraint get request
 type SizeImageConstraintServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the size to get
+	// Size of the constraint
 	Size          string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -594,9 +594,9 @@ const file_metalstack_admin_v2_size_imageconstraint_proto_rawDesc = "" +
 	"&SizeImageConstraintServiceListResponse\x12\\\n" +
 	"\x16size_image_constraints\x18\x01 \x03(\v2&.metalstack.api.v2.SizeImageConstraintR\x14sizeImageConstraints2\xee\x05\n" +
 	"\x1aSizeImageConstraintService\x12\x90\x01\n" +
-	"\x06Create\x12<.metalstack.admin.v2.SizeImageConstraintServiceCreateRequest\x1a=.metalstack.admin.v2.SizeImageConstraintServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x02\x12\x90\x01\n" +
-	"\x06Update\x12<.metalstack.admin.v2.SizeImageConstraintServiceUpdateRequest\x1a=.metalstack.admin.v2.SizeImageConstraintServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x02\x12\x90\x01\n" +
-	"\x06Delete\x12<.metalstack.admin.v2.SizeImageConstraintServiceDeleteRequest\x1a=.metalstack.admin.v2.SizeImageConstraintServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x02\x12\x88\x01\n" +
+	"\x06Create\x12<.metalstack.admin.v2.SizeImageConstraintServiceCreateRequest\x1a=.metalstack.admin.v2.SizeImageConstraintServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x90\x01\n" +
+	"\x06Update\x12<.metalstack.admin.v2.SizeImageConstraintServiceUpdateRequest\x1a=.metalstack.admin.v2.SizeImageConstraintServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x90\x01\n" +
+	"\x06Delete\x12<.metalstack.admin.v2.SizeImageConstraintServiceDeleteRequest\x1a=.metalstack.admin.v2.SizeImageConstraintServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x88\x01\n" +
 	"\x03Get\x129.metalstack.admin.v2.SizeImageConstraintServiceGetRequest\x1a:.metalstack.admin.v2.SizeImageConstraintServiceGetResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12\x8b\x01\n" +
 	"\x04List\x12:.metalstack.admin.v2.SizeImageConstraintServiceListRequest\x1a;.metalstack.admin.v2.SizeImageConstraintServiceListResponse\"\n" +

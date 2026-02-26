@@ -13,7 +13,7 @@ export declare const file_metalstack_admin_v2_size_imageconstraint: GenFile;
  */
 export type SizeImageConstraintServiceCreateRequest = Message<"metalstack.admin.v2.SizeImageConstraintServiceCreateRequest"> & {
     /**
-     * Id of the size
+     * Size of the constraint
      *
      * @generated from field: string size = 1;
      */
@@ -73,7 +73,7 @@ export declare const SizeImageConstraintServiceCreateResponseSchema: GenMessage<
  */
 export type SizeImageConstraintServiceUpdateRequest = Message<"metalstack.admin.v2.SizeImageConstraintServiceUpdateRequest"> & {
     /**
-     * Id of the size
+     * Size of the image constraint to update
      *
      * @generated from field: string size = 1;
      */
@@ -133,7 +133,7 @@ export declare const SizeImageConstraintServiceUpdateResponseSchema: GenMessage<
  */
 export type SizeImageConstraintServiceDeleteRequest = Message<"metalstack.admin.v2.SizeImageConstraintServiceDeleteRequest"> & {
     /**
-     * Id of the size
+     * Size of the constraint
      *
      * @generated from field: string size = 1;
      */
@@ -169,7 +169,7 @@ export declare const SizeImageConstraintServiceDeleteResponseSchema: GenMessage<
  */
 export type SizeImageConstraintServiceGetRequest = Message<"metalstack.admin.v2.SizeImageConstraintServiceGetRequest"> & {
     /**
-     * Id of the size to get
+     * Size of the constraint
      *
      * @generated from field: string size = 1;
      */

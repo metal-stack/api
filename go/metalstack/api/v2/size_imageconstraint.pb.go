@@ -25,9 +25,9 @@ const (
 // SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request
 type SizeImageConstraintServiceTryRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the size to try
+	// Size to try
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
-	// ID of the image to try
+	// Image to try
 	Image         string `protobuf:"bytes,2,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -123,7 +123,7 @@ func (*SizeImageConstraintServiceTryResponse) Descriptor() ([]byte, []int) {
 // If the image in question is found, but does not match the given expression, machine creation must be forbidden.
 type SizeImageConstraint struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the size
+	// Size where this constraint should apply
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	// ImageConstraints to apply to this size
 	ImageConstraints []*ImageConstraint `protobuf:"bytes,2,rep,name=image_constraints,json=imageConstraints,proto3" json:"image_constraints,omitempty"`
@@ -210,9 +210,9 @@ func (x *SizeImageConstraint) GetDescription() string {
 //	debian: ">= 10.0.20210101"
 type ImageConstraint struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the image
+	// Image of the constraint
 	Image string `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
-	// Semver match
+	// SemverMatch which defines in semver match format which image version should apply
 	SemverMatch   string `protobuf:"bytes,2,opt,name=semver_match,json=semverMatch,proto3" json:"semver_match,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

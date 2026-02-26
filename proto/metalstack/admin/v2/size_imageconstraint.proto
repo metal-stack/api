@@ -12,17 +12,17 @@ service SizeImageConstraintService {
   // Create a size image constraint
   rpc Create(SizeImageConstraintServiceCreateRequest) returns (SizeImageConstraintServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Update a size image constraint
   rpc Update(SizeImageConstraintServiceUpdateRequest) returns (SizeImageConstraintServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Delete a size image constraint
   rpc Delete(SizeImageConstraintServiceDeleteRequest) returns (SizeImageConstraintServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Get a size image constraint
   rpc Get(SizeImageConstraintServiceGetRequest) returns (SizeImageConstraintServiceGetResponse) {
@@ -40,7 +40,7 @@ service SizeImageConstraintService {
 
 // SizeImageConstraintServiceCreateRequest is the request payload for a size image constraint create request
 message SizeImageConstraintServiceCreateRequest {
-  // Id of the size
+  // Size of the constraint
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // ImageConstraints to apply to this size
   repeated metalstack.api.v2.ImageConstraint image_constraints = 2;
@@ -60,7 +60,7 @@ message SizeImageConstraintServiceCreateResponse {
 
 // SizeImageConstraintServiceUpdateRequest is the request payload for a size image constraint update request
 message SizeImageConstraintServiceUpdateRequest {
-  // Id of the size
+  // Size of the image constraint to update
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
@@ -80,7 +80,7 @@ message SizeImageConstraintServiceUpdateResponse {
 
 // SizeImageConstraintServiceDeleteRequest is the request payload for a size image constraint delete request
 message SizeImageConstraintServiceDeleteRequest {
-  // Id of the size
+  // Size of the constraint
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
@@ -92,7 +92,7 @@ message SizeImageConstraintServiceDeleteResponse {
 
 // SizeImageConstraintServiceGetRequest is the request payload for a size image constraint get request
 message SizeImageConstraintServiceGetRequest {
-  // Id of the size to get
+  // Size of the constraint
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
