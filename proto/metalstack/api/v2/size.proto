@@ -23,10 +23,7 @@ service SizeService {
 // SizeServiceGetRequest is the request payload for a size get request
 message SizeServiceGetRequest {
   // ID of the size to get
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // SizeServiceListRequest is the request payload for a size list request

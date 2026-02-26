@@ -496,6 +496,52 @@ func (_c *Apiv2_Size_Call) RunAndReturn(run func() apiv2connect.SizeServiceClien
 	return _c
 }
 
+// SizeImageConstraint provides a mock function for the type Apiv2
+func (_mock *Apiv2) SizeImageConstraint() apiv2connect.SizeImageConstraintServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for SizeImageConstraint")
+	}
+
+	var r0 apiv2connect.SizeImageConstraintServiceClient
+	if returnFunc, ok := ret.Get(0).(func() apiv2connect.SizeImageConstraintServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(apiv2connect.SizeImageConstraintServiceClient)
+		}
+	}
+	return r0
+}
+
+// Apiv2_SizeImageConstraint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SizeImageConstraint'
+type Apiv2_SizeImageConstraint_Call struct {
+	*mock.Call
+}
+
+// SizeImageConstraint is a helper method to define mock.On call
+func (_e *Apiv2_Expecter) SizeImageConstraint() *Apiv2_SizeImageConstraint_Call {
+	return &Apiv2_SizeImageConstraint_Call{Call: _e.mock.On("SizeImageConstraint")}
+}
+
+func (_c *Apiv2_SizeImageConstraint_Call) Run(run func()) *Apiv2_SizeImageConstraint_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Apiv2_SizeImageConstraint_Call) Return(sizeImageConstraintServiceClient apiv2connect.SizeImageConstraintServiceClient) *Apiv2_SizeImageConstraint_Call {
+	_c.Call.Return(sizeImageConstraintServiceClient)
+	return _c
+}
+
+func (_c *Apiv2_SizeImageConstraint_Call) RunAndReturn(run func() apiv2connect.SizeImageConstraintServiceClient) *Apiv2_SizeImageConstraint_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // SizeReservation provides a mock function for the type Apiv2
 func (_mock *Apiv2) SizeReservation() apiv2connect.SizeReservationServiceClient {
 	ret := _mock.Called()
