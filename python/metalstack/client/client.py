@@ -11,6 +11,7 @@ import metalstack.admin.v2.network_connect as admin_network_connect
 import metalstack.admin.v2.partition_connect as admin_partition_connect
 import metalstack.admin.v2.project_connect as admin_project_connect
 import metalstack.admin.v2.size_connect as admin_size_connect
+import metalstack.admin.v2.size_imageconstraint_connect as admin_size_imageconstraint_connect
 import metalstack.admin.v2.size_reservation_connect as admin_size_reservation_connect
 import metalstack.admin.v2.switch_connect as admin_switch_connect
 import metalstack.admin.v2.task_connect as admin_task_connect
@@ -28,6 +29,7 @@ import metalstack.api.v2.network_connect as api_network_connect
 import metalstack.api.v2.partition_connect as api_partition_connect
 import metalstack.api.v2.project_connect as api_project_connect
 import metalstack.api.v2.size_connect as api_size_connect
+import metalstack.api.v2.size_imageconstraint_connect as api_size_imageconstraint_connect
 import metalstack.api.v2.size_reservation_connect as api_size_reservation_connect
 import metalstack.api.v2.tenant_connect as api_tenant_connect
 import metalstack.api.v2.token_connect as api_token_connect
@@ -98,6 +100,9 @@ class Client:
         def size(self):
             return admin_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client)
 
+        def size_imageconstraint(self):
+            return admin_size_imageconstraint_connect.SizeImageConstraintServiceClientSync(address=self._baseurl, http_client=self._client)
+
         def size_reservation(self):
             return admin_size_reservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client)
 
@@ -152,6 +157,9 @@ class Client:
 
         def size(self):
             return api_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client)
+
+        def size_imageconstraint(self):
+            return api_size_imageconstraint_connect.SizeImageConstraintServiceClientSync(address=self._baseurl, http_client=self._client)
 
         def size_reservation(self):
             return api_size_reservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client)

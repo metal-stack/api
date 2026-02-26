@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+
+// SizeImageConstraintService serves size and image constraint related functions
+service SizeImageConstraintService {
+  // Try if a given combination of size and image is possible
+  rpc Try(SizeImageConstraintServiceTryRequest) returns (SizeImageConstraintServiceTryResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request
+message SizeImageConstraintServiceTryRequest {
+  // Size to try
+  string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Image to try
+  string image = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+}
+
+// SizeImageConstraintServiceTryResponse is the response payload for a size image constraint try request
+message SizeImageConstraintServiceTryResponse {}
+
+// SizeImageConstraint expresses optional restrictions for specific size to image combinations
+// this might be required if the support for a specific hardware in a given size is only supported
+// with a newer version of the image.
+//
+// If the size in question is not found, no restrictions apply.
+// If the image in question is not found, no restrictions apply as well.
+// If the image in question is found, but does not match the given expression, machine creation must be forbidden.
+message SizeImageConstraint {
+  // Size where this constraint should apply
+  string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // ImageConstraints to apply to this size
+  repeated ImageConstraint image_constraints = 2;
+  // Meta for this size image constraint
+  Meta meta = 3;
+  // Name of this size image constraint
+  optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Description of this size image constraint
+  optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// ImageConstraint defines a constraint for a image
+// examples:
+// images:
+//    ubuntu: ">= 20.04.20211011"
+//    debian: ">= 10.0.20210101"
+message ImageConstraint {
+  // Image of the constraint
+  string image = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // SemverMatch which defines in semver match format which image version should apply
+  string semver_match = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// SizeImageConstraintQuery is used to search size image constraints
+message SizeImageConstraintQuery {
+  // Size of the size image constraint
+  optional string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Name of the size image constraint to query
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Description of the size image constraint to query
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}

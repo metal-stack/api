@@ -1080,6 +1080,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineAllocationIp"><span class="badge">M</span>MachineAllocationIp</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineAllocationNetwork"><span class="badge">M</span>MachineAllocationNetwork</a>
                 </li>
               
@@ -1646,6 +1650,96 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.SizeService"><span class="badge">S</span>SizeService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fapi%2fv2%2fsize_imageconstraint.proto">metalstack/api/v2/size_imageconstraint.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ImageConstraint"><span class="badge">M</span>ImageConstraint</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeImageConstraint"><span class="badge">M</span>SizeImageConstraint</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeImageConstraintQuery"><span class="badge">M</span>SizeImageConstraintQuery</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeImageConstraintServiceTryRequest"><span class="badge">M</span>SizeImageConstraintServiceTryRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeImageConstraintServiceTryResponse"><span class="badge">M</span>SizeImageConstraintServiceTryResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.SizeImageConstraintService"><span class="badge">S</span>SizeImageConstraintService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fadmin%2fv2%2fsize_imageconstraint.proto">metalstack/admin/v2/size_imageconstraint.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceCreateRequest"><span class="badge">M</span>SizeImageConstraintServiceCreateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceCreateResponse"><span class="badge">M</span>SizeImageConstraintServiceCreateResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceDeleteRequest"><span class="badge">M</span>SizeImageConstraintServiceDeleteRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceDeleteResponse"><span class="badge">M</span>SizeImageConstraintServiceDeleteResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceGetRequest"><span class="badge">M</span>SizeImageConstraintServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceGetResponse"><span class="badge">M</span>SizeImageConstraintServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceListRequest"><span class="badge">M</span>SizeImageConstraintServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceListResponse"><span class="badge">M</span>SizeImageConstraintServiceListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceUpdateRequest"><span class="badge">M</span>SizeImageConstraintServiceUpdateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintServiceUpdateResponse"><span class="badge">M</span>SizeImageConstraintServiceUpdateResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.admin.v2.SizeImageConstraintService"><span class="badge">S</span>SizeImageConstraintService</a>
                 </li>
               
             </ul>
@@ -9069,6 +9163,37 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.MachineAllocationIp">MachineAllocationIp</h3>
+        <p>MachineAllocationIp defines a ip and a optional namespace which should be attached to this machine during create</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>ip</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>IP to to attach to this machine additionally </p></td>
+                </tr>
+              
+                <tr>
+                  <td>namespace</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Namespace where this ip was created, usually the project of the namespaced tenant network. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.MachineAllocationNetwork">MachineAllocationNetwork</h3>
         <p>MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired</p>
 
@@ -10441,7 +10566,7 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
               
                 <tr>
                   <td>ips</td>
-                  <td><a href="#string">string</a></td>
+                  <td><a href="#metalstack.api.v2.MachineAllocationIp">MachineAllocationIp</a></td>
                   <td>repeated</td>
                   <td><p>IPs to to attach to this machine additionally </p></td>
                 </tr>
@@ -14063,6 +14188,555 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.admin.v2.SizeServiceDeleteRequest">SizeServiceDeleteRequest</a></td>
                 <td><a href="#metalstack.admin.v2.SizeServiceDeleteResponse">SizeServiceDeleteResponse</a></td>
                 <td><p>Delete a size</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/api/v2/size_imageconstraint.proto">metalstack/api/v2/size_imageconstraint.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.api.v2.ImageConstraint">ImageConstraint</h3>
+        <p>ImageConstraint defines a constraint for a image</p><p>examples:</p><p>images:</p><p>ubuntu: ">= 20.04.20211011"</p><p>debian: ">= 10.0.20210101"</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Image of the constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>semver_match</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>SemverMatch which defines in semver match format which image version should apply </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeImageConstraint">SizeImageConstraint</h3>
+        <p>SizeImageConstraint expresses optional restrictions for specific size to image combinations</p><p>this might be required if the support for a specific hardware in a given size is only supported</p><p>with a newer version of the image.</p><p>If the size in question is not found, no restrictions apply.</p><p>If the image in question is not found, no restrictions apply as well.</p><p>If the image in question is found, but does not match the given expression, machine creation must be forbidden.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size where this constraint should apply </p></td>
+                </tr>
+              
+                <tr>
+                  <td>image_constraints</td>
+                  <td><a href="#metalstack.api.v2.ImageConstraint">ImageConstraint</a></td>
+                  <td>repeated</td>
+                  <td><p>ImageConstraints to apply to this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this size image constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this size image constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this size image constraint </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeImageConstraintQuery">SizeImageConstraintQuery</h3>
+        <p>SizeImageConstraintQuery is used to search size image constraints</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Size of the size image constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of the size image constraint to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of the size image constraint to query </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeImageConstraintServiceTryRequest">SizeImageConstraintServiceTryRequest</h3>
+        <p>SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size to try </p></td>
+                </tr>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Image to try </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.SizeImageConstraintServiceTryResponse">SizeImageConstraintServiceTryResponse</h3>
+        <p>SizeImageConstraintServiceTryResponse is the response payload for a size image constraint try request</p>
+
+        
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.api.v2.SizeImageConstraintService">SizeImageConstraintService</h3>
+        <p>SizeImageConstraintService serves size and image constraint related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Try</td>
+                <td><a href="#metalstack.api.v2.SizeImageConstraintServiceTryRequest">SizeImageConstraintServiceTryRequest</a></td>
+                <td><a href="#metalstack.api.v2.SizeImageConstraintServiceTryResponse">SizeImageConstraintServiceTryResponse</a></td>
+                <td><p>Try if a given combination of size and image is possible</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/admin/v2/size_imageconstraint.proto">metalstack/admin/v2/size_imageconstraint.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceCreateRequest">SizeImageConstraintServiceCreateRequest</h3>
+        <p>SizeImageConstraintServiceCreateRequest is the request payload for a size image constraint create request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size of the constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>image_constraints</td>
+                  <td><a href="#metalstack.api.v2.ImageConstraint">metalstack.api.v2.ImageConstraint</a></td>
+                  <td>repeated</td>
+                  <td><p>ImageConstraints to apply to this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">metalstack.api.v2.Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this size image constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this size image constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this size image constraint </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceCreateResponse">SizeImageConstraintServiceCreateResponse</h3>
+        <p>SizeImageConstraintServiceCreateResponse is the response payload for a size image constraint create request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_image_constraint</td>
+                  <td><a href="#metalstack.api.v2.SizeImageConstraint">metalstack.api.v2.SizeImageConstraint</a></td>
+                  <td></td>
+                  <td><p>SizeImageConstraint created </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceDeleteRequest">SizeImageConstraintServiceDeleteRequest</h3>
+        <p>SizeImageConstraintServiceDeleteRequest is the request payload for a size image constraint delete request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size of the constraint </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceDeleteResponse">SizeImageConstraintServiceDeleteResponse</h3>
+        <p>SizeImageConstraintServiceDeleteResponse is the response payload for a size image constraint delete request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_image_constraint</td>
+                  <td><a href="#metalstack.api.v2.SizeImageConstraint">metalstack.api.v2.SizeImageConstraint</a></td>
+                  <td></td>
+                  <td><p>SizeImageConstraint deleted </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceGetRequest">SizeImageConstraintServiceGetRequest</h3>
+        <p>SizeImageConstraintServiceGetRequest is the request payload for a size image constraint get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size of the constraint </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceGetResponse">SizeImageConstraintServiceGetResponse</h3>
+        <p>SizeImageConstraintServiceGetResponse is the response payload for a size image constraint get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_image_constraint</td>
+                  <td><a href="#metalstack.api.v2.SizeImageConstraint">metalstack.api.v2.SizeImageConstraint</a></td>
+                  <td></td>
+                  <td><p>SizeImageConstraint get </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceListRequest">SizeImageConstraintServiceListRequest</h3>
+        <p>SizeImageConstraintServiceListRequest is the request payload for a size image constraint list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.SizeImageConstraintQuery">metalstack.api.v2.SizeImageConstraintQuery</a></td>
+                  <td></td>
+                  <td><p>Query for size image constraints </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceListResponse">SizeImageConstraintServiceListResponse</h3>
+        <p>SizeImageConstraintServiceListResponse is the response payload for a size image constraint list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_image_constraints</td>
+                  <td><a href="#metalstack.api.v2.SizeImageConstraint">metalstack.api.v2.SizeImageConstraint</a></td>
+                  <td>repeated</td>
+                  <td><p>SizeImageConstraints listed </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceUpdateRequest">SizeImageConstraintServiceUpdateRequest</h3>
+        <p>SizeImageConstraintServiceUpdateRequest is the request payload for a size image constraint update request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size of the image constraint to update </p></td>
+                </tr>
+              
+                <tr>
+                  <td>update_meta</td>
+                  <td><a href="#metalstack.api.v2.UpdateMeta">metalstack.api.v2.UpdateMeta</a></td>
+                  <td></td>
+                  <td><p>UpdateMeta contains the timestamp and strategy to be used in this update request </p></td>
+                </tr>
+              
+                <tr>
+                  <td>image_constraints</td>
+                  <td><a href="#metalstack.api.v2.ImageConstraint">metalstack.api.v2.ImageConstraint</a></td>
+                  <td>repeated</td>
+                  <td><p>ImageConstraints to apply to this size </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of this size image constraint </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of this size image constraint </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintServiceUpdateResponse">SizeImageConstraintServiceUpdateResponse</h3>
+        <p>SizeImageConstraintServiceUpdateResponse is the response payload for a size image constraint update request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_image_constraint</td>
+                  <td><a href="#metalstack.api.v2.SizeImageConstraint">metalstack.api.v2.SizeImageConstraint</a></td>
+                  <td></td>
+                  <td><p>SizeImageConstraint updated </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.admin.v2.SizeImageConstraintService">SizeImageConstraintService</h3>
+        <p>SizeImageConstraintService serves size and image constraint related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Create</td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceCreateRequest">SizeImageConstraintServiceCreateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceCreateResponse">SizeImageConstraintServiceCreateResponse</a></td>
+                <td><p>Create a size image constraint</p></td>
+              </tr>
+            
+              <tr>
+                <td>Update</td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceUpdateRequest">SizeImageConstraintServiceUpdateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceUpdateResponse">SizeImageConstraintServiceUpdateResponse</a></td>
+                <td><p>Update a size image constraint</p></td>
+              </tr>
+            
+              <tr>
+                <td>Delete</td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceDeleteRequest">SizeImageConstraintServiceDeleteRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceDeleteResponse">SizeImageConstraintServiceDeleteResponse</a></td>
+                <td><p>Delete a size image constraint</p></td>
+              </tr>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceGetRequest">SizeImageConstraintServiceGetRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceGetResponse">SizeImageConstraintServiceGetResponse</a></td>
+                <td><p>Get a size image constraint</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceListRequest">SizeImageConstraintServiceListRequest</a></td>
+                <td><a href="#metalstack.admin.v2.SizeImageConstraintServiceListResponse">SizeImageConstraintServiceListResponse</a></td>
+                <td><p>List a size image constraint</p></td>
               </tr>
             
           </tbody>
