@@ -3485,7 +3485,11 @@ type MachineQuery struct {
 	// Hardware specific machine query
 	Hardware *MachineHardwareQuery `protobuf:"bytes,13,opt,name=hardware,proto3,oneof" json:"hardware,omitempty"`
 	// State this machine has
-	State         *MachineState `protobuf:"varint,14,opt,name=state,proto3,enum=metalstack.api.v2.MachineState,oneof" json:"state,omitempty"`
+	State *MachineState `protobuf:"varint,14,opt,name=state,proto3,enum=metalstack.api.v2.MachineState,oneof" json:"state,omitempty"`
+	// Waiting indicates this machine is actually waiting.
+	Waiting *bool `protobuf:"varint,15,opt,name=waiting,proto3,oneof" json:"waiting,omitempty"`
+	// Preallocated indicates if this machine is currently preallocated.
+	Preallocated  *bool `protobuf:"varint,16,opt,name=preallocated,proto3,oneof" json:"preallocated,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3616,6 +3620,20 @@ func (x *MachineQuery) GetState() MachineState {
 		return *x.State
 	}
 	return MachineState_MACHINE_STATE_UNSPECIFIED
+}
+
+func (x *MachineQuery) GetWaiting() bool {
+	if x != nil && x.Waiting != nil {
+		return *x.Waiting
+	}
+	return false
+}
+
+func (x *MachineQuery) GetPreallocated() bool {
+	if x != nil && x.Preallocated != nil {
+		return *x.Preallocated
+	}
+	return false
 }
 
 // MachineAllocationQuery allocation specific query parameters
@@ -4443,7 +4461,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x15control_plane_address\x18\x01 \x01(\tR\x13controlPlaneAddress\x12\x19\n" +
 	"\bauth_key\x18\x02 \x01(\tR\aauthKey\x12\x1c\n" +
 	"\tconnected\x18\x03 \x01(\bR\tconnected\x12\x1e\n" +
-	"\x03ips\x18\x05 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\xa4\a\n" +
+	"\x03ips\x18\x05 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\x89\b\n" +
 	"\fMachineQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12-\n" +
@@ -4465,7 +4483,9 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"R\x03bmc\x88\x01\x01\x129\n" +
 	"\x03fru\x18\f \x01(\v2\".metalstack.api.v2.MachineFRUQueryH\vR\x03fru\x88\x01\x01\x12H\n" +
 	"\bhardware\x18\r \x01(\v2'.metalstack.api.v2.MachineHardwareQueryH\fR\bhardware\x88\x01\x01\x12:\n" +
-	"\x05state\x18\x0e \x01(\x0e2\x1f.metalstack.api.v2.MachineStateH\rR\x05state\x88\x01\x01B\a\n" +
+	"\x05state\x18\x0e \x01(\x0e2\x1f.metalstack.api.v2.MachineStateH\rR\x05state\x88\x01\x01\x12\x1d\n" +
+	"\awaiting\x18\x0f \x01(\bH\x0eR\awaiting\x88\x01\x01\x12'\n" +
+	"\fpreallocated\x18\x10 \x01(\bH\x0fR\fpreallocated\x88\x01\x01B\a\n" +
 	"\x05_uuidB\a\n" +
 	"\x05_nameB\f\n" +
 	"\n" +
@@ -4481,7 +4501,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04_bmcB\x06\n" +
 	"\x04_fruB\v\n" +
 	"\t_hardwareB\b\n" +
-	"\x06_state\"\xde\x04\n" +
+	"\x06_stateB\n" +
+	"\n" +
+	"\b_waitingB\x0f\n" +
+	"\r_preallocated\"\xde\x04\n" +
 	"\x16MachineAllocationQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12'\n" +

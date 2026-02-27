@@ -1586,6 +1586,18 @@ export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
      * @generated from field: optional metalstack.api.v2.MachineState state = 14;
      */
     state?: MachineState;
+    /**
+     * Waiting indicates this machine is actually waiting.
+     *
+     * @generated from field: optional bool waiting = 15;
+     */
+    waiting?: boolean;
+    /**
+     * Preallocated indicates if this machine is currently preallocated.
+     *
+     * @generated from field: optional bool preallocated = 16;
+     */
+    preallocated?: boolean;
 };
 /**
  * Describes the message metalstack.api.v2.MachineQuery.

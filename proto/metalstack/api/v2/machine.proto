@@ -778,6 +778,10 @@ message MachineQuery {
   optional MachineHardwareQuery hardware = 13;
   // State this machine has
   optional MachineState state = 14;
+  // Waiting indicates this machine is actually waiting.
+  optional bool waiting = 15;
+  // Preallocated indicates if this machine is currently preallocated.
+  optional bool preallocated = 16;
 }
 
 // MachineAllocationQuery allocation specific query parameters
