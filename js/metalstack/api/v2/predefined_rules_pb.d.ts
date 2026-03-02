@@ -41,14 +41,20 @@ export declare const is_prefix: GenExtension<StringRules, boolean>;
  */
 export declare const is_uri: GenExtension<StringRules, boolean>;
 /**
+ * IsIpOrHostname validates that the given string is either a ip or a hostname
+ *
+ * @generated from extension: optional bool is_ip_or_hostname = 80048957;
+ */
+export declare const is_ip_or_hostname: GenExtension<StringRules, boolean>;
+/**
  * Prefixes validates if a slice of prefixes in string form are valid
  *
- * @generated from extension: optional bool prefixes = 80048956;
+ * @generated from extension: optional bool prefixes = 80058951;
  */
 export declare const prefixes: GenExtension<RepeatedRules, boolean>;
 /**
  * Ips validates if a slice of ips in string form are valid
  *
- * @generated from extension: optional bool ips = 80048957;
+ * @generated from extension: optional bool ips = 80058952;
  */
 export declare const ips: GenExtension<RepeatedRules, boolean>;

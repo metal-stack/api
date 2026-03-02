@@ -7,6 +7,7 @@
 package apiv2
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -181,13 +182,13 @@ var File_metalstack_api_v2_version_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_version_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/version.proto\x12\x11metalstack.api.v2\x1a\x1emetalstack/api/v2/common.proto\"y\n" +
-	"\aVersion\x12\x18\n" +
-	"\aversion\x18\x01 \x01(\tR\aversion\x12\x1a\n" +
-	"\brevision\x18\x02 \x01(\tR\brevision\x12\x19\n" +
-	"\bgit_sha1\x18\x03 \x01(\tR\agitSha1\x12\x1d\n" +
+	"\x1fmetalstack/api/v2/version.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xad\x01\n" +
+	"\aVersion\x12%\n" +
+	"\aversion\x18\x01 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\aversion\x12'\n" +
+	"\brevision\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\brevision\x12&\n" +
+	"\bgit_sha1\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\agitSha1\x12*\n" +
 	"\n" +
-	"build_date\x18\x04 \x01(\tR\tbuildDate\"\x1a\n" +
+	"build_date\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\tbuildDate\"\x1a\n" +
 	"\x18VersionServiceGetRequest\"Q\n" +
 	"\x19VersionServiceGetResponse\x124\n" +
 	"\aversion\x18\x01 \x01(\v2\x1a.metalstack.api.v2.VersionR\aversion2|\n" +
@@ -230,6 +231,7 @@ func file_metalstack_api_v2_version_proto_init() {
 		return
 	}
 	file_metalstack_api_v2_common_proto_init()
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

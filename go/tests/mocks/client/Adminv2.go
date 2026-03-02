@@ -36,6 +36,52 @@ func (_m *Adminv2) EXPECT() *Adminv2_Expecter {
 	return &Adminv2_Expecter{mock: &_m.Mock}
 }
 
+// Component provides a mock function for the type Adminv2
+func (_mock *Adminv2) Component() adminv2connect.ComponentServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Component")
+	}
+
+	var r0 adminv2connect.ComponentServiceClient
+	if returnFunc, ok := ret.Get(0).(func() adminv2connect.ComponentServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.ComponentServiceClient)
+		}
+	}
+	return r0
+}
+
+// Adminv2_Component_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Component'
+type Adminv2_Component_Call struct {
+	*mock.Call
+}
+
+// Component is a helper method to define mock.On call
+func (_e *Adminv2_Expecter) Component() *Adminv2_Component_Call {
+	return &Adminv2_Component_Call{Call: _e.mock.On("Component")}
+}
+
+func (_c *Adminv2_Component_Call) Run(run func()) *Adminv2_Component_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Adminv2_Component_Call) Return(componentServiceClient adminv2connect.ComponentServiceClient) *Adminv2_Component_Call {
+	_c.Call.Return(componentServiceClient)
+	return _c
+}
+
+func (_c *Adminv2_Component_Call) RunAndReturn(run func() adminv2connect.ComponentServiceClient) *Adminv2_Component_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Filesystem provides a mock function for the type Adminv2
 func (_mock *Adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	ret := _mock.Called()
@@ -400,6 +446,98 @@ func (_c *Adminv2_Size_Call) Return(sizeServiceClient adminv2connect.SizeService
 }
 
 func (_c *Adminv2_Size_Call) RunAndReturn(run func() adminv2connect.SizeServiceClient) *Adminv2_Size_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// SizeImageConstraint provides a mock function for the type Adminv2
+func (_mock *Adminv2) SizeImageConstraint() adminv2connect.SizeImageConstraintServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for SizeImageConstraint")
+	}
+
+	var r0 adminv2connect.SizeImageConstraintServiceClient
+	if returnFunc, ok := ret.Get(0).(func() adminv2connect.SizeImageConstraintServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.SizeImageConstraintServiceClient)
+		}
+	}
+	return r0
+}
+
+// Adminv2_SizeImageConstraint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SizeImageConstraint'
+type Adminv2_SizeImageConstraint_Call struct {
+	*mock.Call
+}
+
+// SizeImageConstraint is a helper method to define mock.On call
+func (_e *Adminv2_Expecter) SizeImageConstraint() *Adminv2_SizeImageConstraint_Call {
+	return &Adminv2_SizeImageConstraint_Call{Call: _e.mock.On("SizeImageConstraint")}
+}
+
+func (_c *Adminv2_SizeImageConstraint_Call) Run(run func()) *Adminv2_SizeImageConstraint_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Adminv2_SizeImageConstraint_Call) Return(sizeImageConstraintServiceClient adminv2connect.SizeImageConstraintServiceClient) *Adminv2_SizeImageConstraint_Call {
+	_c.Call.Return(sizeImageConstraintServiceClient)
+	return _c
+}
+
+func (_c *Adminv2_SizeImageConstraint_Call) RunAndReturn(run func() adminv2connect.SizeImageConstraintServiceClient) *Adminv2_SizeImageConstraint_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// SizeReservation provides a mock function for the type Adminv2
+func (_mock *Adminv2) SizeReservation() adminv2connect.SizeReservationServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for SizeReservation")
+	}
+
+	var r0 adminv2connect.SizeReservationServiceClient
+	if returnFunc, ok := ret.Get(0).(func() adminv2connect.SizeReservationServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(adminv2connect.SizeReservationServiceClient)
+		}
+	}
+	return r0
+}
+
+// Adminv2_SizeReservation_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SizeReservation'
+type Adminv2_SizeReservation_Call struct {
+	*mock.Call
+}
+
+// SizeReservation is a helper method to define mock.On call
+func (_e *Adminv2_Expecter) SizeReservation() *Adminv2_SizeReservation_Call {
+	return &Adminv2_SizeReservation_Call{Call: _e.mock.On("SizeReservation")}
+}
+
+func (_c *Adminv2_SizeReservation_Call) Run(run func()) *Adminv2_SizeReservation_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Adminv2_SizeReservation_Call) Return(sizeReservationServiceClient adminv2connect.SizeReservationServiceClient) *Adminv2_SizeReservation_Call {
+	_c.Call.Return(sizeReservationServiceClient)
+	return _c
+}
+
+func (_c *Adminv2_SizeReservation_Call) RunAndReturn(run func() adminv2connect.SizeReservationServiceClient) *Adminv2_SizeReservation_Call {
 	_c.Call.Return(run)
 	return _c
 }

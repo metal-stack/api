@@ -7,7 +7,7 @@ import { file_google_protobuf_descriptor, file_google_protobuf_timestamp } from 
 /**
  * Describes the file metalstack/api/v2/common.proto.
  */
-export const file_metalstack_api_v2_common = /*@__PURE__*/ fileDesc("Ch5tZXRhbHN0YWNrL2FwaS92Mi9jb21tb24ucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIkIKBlBhZ2luZxIRCgRwYWdlGAEgASgESACIAQESEgoFY291bnQYAiABKARIAYgBAUIHCgVfcGFnZUIICgZfY291bnQiiAEKBkxhYmVscxJPCgZsYWJlbHMYASADKAsyJS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHMuTGFiZWxzRW50cnlCGLpIFZoBEiIHcgUQARiAAioHcgUQABiAAhotCgtMYWJlbHNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIrUBCgRNZXRhEi4KBmxhYmVscxgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gAiAEBEi4KCmNyZWF0ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhIKCmdlbmVyYXRpb24YBCABKARCCQoHX2xhYmVscyJJCgxVcGRhdGVMYWJlbHMSKQoGdXBkYXRlGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzEg4KBnJlbW92ZRgCIAMoCSKOAQoKVXBkYXRlTWV0YRIuCgp1cGRhdGVkX2F0GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBJQChBsb2NraW5nX3N0cmF0ZWd5GAIgASgOMiwubWV0YWxzdGFjay5hcGkudjIuT3B0aW1pc3RpY0xvY2tpbmdTdHJhdGVneUIIukgFggECEAEqhwEKClRlbmFudFJvbGUSGwoXVEVOQU5UX1JPTEVfVU5TUEVDSUZJRUQQABIVChFURU5BTlRfUk9MRV9PV05FUhABEhYKElRFTkFOVF9ST0xFX0VESVRPUhACEhYKElRFTkFOVF9ST0xFX1ZJRVdFUhADEhUKEVRFTkFOVF9ST0xFX0dVRVNUEAQqdQoLUHJvamVjdFJvbGUSHAoYUFJPSkVDVF9ST0xFX1VOU1BFQ0lGSUVEEAASFgoSUFJPSkVDVF9ST0xFX09XTkVSEAESFwoTUFJPSkVDVF9ST0xFX0VESVRPUhACEhcKE1BST0pFQ1RfUk9MRV9WSUVXRVIQAypVCglBZG1pblJvbGUSGgoWQURNSU5fUk9MRV9VTlNQRUNJRklFRBAAEhUKEUFETUlOX1JPTEVfRURJVE9SEAESFQoRQURNSU5fUk9MRV9WSUVXRVIQAipVCglJbmZyYVJvbGUSGgoWSU5GUkFfUk9MRV9VTlNQRUNJRklFRBAAEhUKEUlORlJBX1JPTEVfRURJVE9SEAESFQoRSU5GUkFfUk9MRV9WSUVXRVIQAipUCgpWaXNpYmlsaXR5EhoKFlZJU0lCSUxJVFlfVU5TUEVDSUZJRUQQABIVChFWSVNJQklMSVRZX1BVQkxJQxABEhMKD1ZJU0lCSUxJVFlfU0VMRhADKlIKCEF1ZGl0aW5nEhgKFEFVRElUSU5HX1VOU1BFQ0lGSUVEEAASFQoRQVVESVRJTkdfSU5DTFVERUQQARIVChFBVURJVElOR19FWENMVURFRBACKpgBChlPcHRpbWlzdGljTG9ja2luZ1N0cmF0ZWd5EisKJ09QVElNSVNUSUNfTE9DS0lOR19TVFJBVEVHWV9VTlNQRUNJRklFRBAAEiYKIk9QVElNSVNUSUNfTE9DS0lOR19TVFJBVEVHWV9DTElFTlQQARImCiJPUFRJTUlTVElDX0xPQ0tJTkdfU1RSQVRFR1lfU0VSVkVSEAI6YgoMdGVuYW50X3JvbGVzEh4uZ29vZ2xlLnByb3RvYnVmLk1ldGhvZE9wdGlvbnMYuI4DIAMoDjIdLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFJvbGVSC3RlbmFudFJvbGVzOmUKDXByb2plY3Rfcm9sZXMSHi5nb29nbGUucHJvdG9idWYuTWV0aG9kT3B0aW9ucxi5jgMgAygOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGVSDHByb2plY3RSb2xlczpfCgthZG1pbl9yb2xlcxIeLmdvb2dsZS5wcm90b2J1Zi5NZXRob2RPcHRpb25zGLqOAyADKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5BZG1pblJvbGVSCmFkbWluUm9sZXM6XwoKdmlzaWJpbGl0eRIeLmdvb2dsZS5wcm90b2J1Zi5NZXRob2RPcHRpb25zGLuOAyABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5WaXNpYmlsaXR5Ugp2aXNpYmlsaXR5OlkKCGF1ZGl0aW5nEh4uZ29vZ2xlLnByb3RvYnVmLk1ldGhvZE9wdGlvbnMYvI4DIAEoDjIbLm1ldGFsc3RhY2suYXBpLnYyLkF1ZGl0aW5nUghhdWRpdGluZzpfCgtpbmZyYV9yb2xlcxIeLmdvb2dsZS5wcm90b2J1Zi5NZXRob2RPcHRpb25zGL2OAyADKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5JbmZyYVJvbGVSCmluZnJhUm9sZXM6TwoRZW51bV9zdHJpbmdfdmFsdWUSIS5nb29nbGUucHJvdG9idWYuRW51bVZhbHVlT3B0aW9ucxiglgMgASgJUg9lbnVtU3RyaW5nVmFsdWVCwQEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkILQ29tbW9uUHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_descriptor, file_google_protobuf_timestamp]);
+export const file_metalstack_api_v2_common = /*@__PURE__*/ fileDesc("Ch5tZXRhbHN0YWNrL2FwaS92Mi9jb21tb24ucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIkIKBlBhZ2luZxIRCgRwYWdlGAEgASgESACIAQESEgoFY291bnQYAiABKARIAYgBAUIHCgVfcGFnZUIICgZfY291bnQiiAEKBkxhYmVscxJPCgZsYWJlbHMYASADKAsyJS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHMuTGFiZWxzRW50cnlCGLpIFZoBEiIHcgUQARiAAioHcgUQABiAAhotCgtMYWJlbHNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIrUBCgRNZXRhEi4KBmxhYmVscxgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gAiAEBEi4KCmNyZWF0ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhIKCmdlbmVyYXRpb24YBCABKARCCQoHX2xhYmVscyJJCgxVcGRhdGVMYWJlbHMSKQoGdXBkYXRlGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzEg4KBnJlbW92ZRgCIAMoCSKOAQoKVXBkYXRlTWV0YRIuCgp1cGRhdGVkX2F0GAEgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBJQChBsb2NraW5nX3N0cmF0ZWd5GAIgASgOMiwubWV0YWxzdGFjay5hcGkudjIuT3B0aW1pc3RpY0xvY2tpbmdTdHJhdGVneUIIukgFggECEAEqhwEKClRlbmFudFJvbGUSGwoXVEVOQU5UX1JPTEVfVU5TUEVDSUZJRUQQABIVChFURU5BTlRfUk9MRV9PV05FUhABEhYKElRFTkFOVF9ST0xFX0VESVRPUhACEhYKElRFTkFOVF9ST0xFX1ZJRVdFUhADEhUKEVRFTkFOVF9ST0xFX0dVRVNUEAQqdQoLUHJvamVjdFJvbGUSHAoYUFJPSkVDVF9ST0xFX1VOU1BFQ0lGSUVEEAASFgoSUFJPSkVDVF9ST0xFX09XTkVSEAESFwoTUFJPSkVDVF9ST0xFX0VESVRPUhACEhcKE1BST0pFQ1RfUk9MRV9WSUVXRVIQAypVCglBZG1pblJvbGUSGgoWQURNSU5fUk9MRV9VTlNQRUNJRklFRBAAEhUKEUFETUlOX1JPTEVfRURJVE9SEAESFQoRQURNSU5fUk9MRV9WSUVXRVIQAipVCglJbmZyYVJvbGUSGgoWSU5GUkFfUk9MRV9VTlNQRUNJRklFRBAAEhUKEUlORlJBX1JPTEVfRURJVE9SEAESFQoRSU5GUkFfUk9MRV9WSUVXRVIQAipdCgtNYWNoaW5lUm9sZRIcChhNQUNISU5FX1JPTEVfVU5TUEVDSUZJRUQQABIXChNNQUNISU5FX1JPTEVfRURJVE9SEAESFwoTTUFDSElORV9ST0xFX1ZJRVdFUhACKlQKClZpc2liaWxpdHkSGgoWVklTSUJJTElUWV9VTlNQRUNJRklFRBAAEhUKEVZJU0lCSUxJVFlfUFVCTElDEAESEwoPVklTSUJJTElUWV9TRUxGEAMqUgoIQXVkaXRpbmcSGAoUQVVESVRJTkdfVU5TUEVDSUZJRUQQABIVChFBVURJVElOR19JTkNMVURFRBABEhUKEUFVRElUSU5HX0VYQ0xVREVEEAIqmAEKGU9wdGltaXN0aWNMb2NraW5nU3RyYXRlZ3kSKwonT1BUSU1JU1RJQ19MT0NLSU5HX1NUUkFURUdZX1VOU1BFQ0lGSUVEEAASJgoiT1BUSU1JU1RJQ19MT0NLSU5HX1NUUkFURUdZX0NMSUVOVBABEiYKIk9QVElNSVNUSUNfTE9DS0lOR19TVFJBVEVHWV9TRVJWRVIQAjpiCgx0ZW5hbnRfcm9sZXMSHi5nb29nbGUucHJvdG9idWYuTWV0aG9kT3B0aW9ucxi4jgMgAygOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZVILdGVuYW50Um9sZXM6ZQoNcHJvamVjdF9yb2xlcxIeLmdvb2dsZS5wcm90b2J1Zi5NZXRob2RPcHRpb25zGLmOAyADKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZVIMcHJvamVjdFJvbGVzOl8KC2FkbWluX3JvbGVzEh4uZ29vZ2xlLnByb3RvYnVmLk1ldGhvZE9wdGlvbnMYuo4DIAMoDjIcLm1ldGFsc3RhY2suYXBpLnYyLkFkbWluUm9sZVIKYWRtaW5Sb2xlczpfCgp2aXNpYmlsaXR5Eh4uZ29vZ2xlLnByb3RvYnVmLk1ldGhvZE9wdGlvbnMYu44DIAEoDjIdLm1ldGFsc3RhY2suYXBpLnYyLlZpc2liaWxpdHlSCnZpc2liaWxpdHk6WQoIYXVkaXRpbmcSHi5nb29nbGUucHJvdG9idWYuTWV0aG9kT3B0aW9ucxi8jgMgASgOMhsubWV0YWxzdGFjay5hcGkudjIuQXVkaXRpbmdSCGF1ZGl0aW5nOl8KC2luZnJhX3JvbGVzEh4uZ29vZ2xlLnByb3RvYnVmLk1ldGhvZE9wdGlvbnMYvY4DIAMoDjIcLm1ldGFsc3RhY2suYXBpLnYyLkluZnJhUm9sZVIKaW5mcmFSb2xlczplCg1tYWNoaW5lX3JvbGVzEh4uZ29vZ2xlLnByb3RvYnVmLk1ldGhvZE9wdGlvbnMYvo4DIAMoDjIeLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVSb2xlUgxtYWNoaW5lUm9sZXM6TwoRZW51bV9zdHJpbmdfdmFsdWUSIS5nb29nbGUucHJvdG9idWYuRW51bVZhbHVlT3B0aW9ucxiglgMgASgJUg9lbnVtU3RyaW5nVmFsdWVCwQEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkILQ29tbW9uUHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_descriptor, file_google_protobuf_timestamp]);
 /**
  * Describes the message metalstack.api.v2.Paging.
  * Use `create(PagingSchema)` to create a new message.
@@ -174,6 +174,36 @@ export var InfraRole;
  */
 export const InfraRoleSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 3);
 /**
+ * MachineRole specifies what role a microservice needs to call this machine service
+ *
+ * @generated from enum metalstack.api.v2.MachineRole
+ */
+export var MachineRole;
+(function (MachineRole) {
+    /**
+     * MACHINE_ROLE_UNSPECIFIED is not specified
+     *
+     * @generated from enum value: MACHINE_ROLE_UNSPECIFIED = 0;
+     */
+    MachineRole[MachineRole["UNSPECIFIED"] = 0] = "UNSPECIFIED";
+    /**
+     * MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method
+     *
+     * @generated from enum value: MACHINE_ROLE_EDITOR = 1;
+     */
+    MachineRole[MachineRole["EDITOR"] = 1] = "EDITOR";
+    /**
+     * MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method
+     *
+     * @generated from enum value: MACHINE_ROLE_VIEWER = 2;
+     */
+    MachineRole[MachineRole["VIEWER"] = 2] = "VIEWER";
+})(MachineRole || (MachineRole = {}));
+/**
+ * Describes the enum metalstack.api.v2.MachineRole.
+ */
+export const MachineRoleSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 4);
+/**
  * Visibility of a method
  *
  * @generated from enum metalstack.api.v2.Visibility
@@ -202,7 +232,7 @@ export var Visibility;
 /**
  * Describes the enum metalstack.api.v2.Visibility.
  */
-export const VisibilitySchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 4);
+export const VisibilitySchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 5);
 /**
  * Auditing option specified per service method
  * by default all service methods are included
@@ -234,7 +264,7 @@ export var Auditing;
 /**
  * Describes the enum metalstack.api.v2.Auditing.
  */
-export const AuditingSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 5);
+export const AuditingSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 6);
 /**
  * OptimisticLockingStrategy defines how optimistic locking should be handled.
  * It defaults to client side, which requires the UpdatedAt timestamp to be provided
@@ -266,7 +296,7 @@ export var OptimisticLockingStrategy;
 /**
  * Describes the enum metalstack.api.v2.OptimisticLockingStrategy.
  */
-export const OptimisticLockingStrategySchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 6);
+export const OptimisticLockingStrategySchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 7);
 /**
  * TenantRoles are used to define which tenant role a logged in user must provide to call this method
  *
@@ -304,8 +334,14 @@ export const auditing = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 4);
  */
 export const infra_roles = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 5);
 /**
+ * MachineRole are used to define which infra role a microservice must provide to call this method
+ *
+ * @generated from extension: repeated metalstack.api.v2.MachineRole machine_roles = 51006;
+ */
+export const machine_roles = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 6);
+/**
  * StringValue which can be set to a enum
  *
  * @generated from extension: string enum_string_value = 52000;
  */
-export const enum_string_value = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 6);
+export const enum_string_value = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 7);

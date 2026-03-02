@@ -47,10 +47,7 @@ message ImageServiceCreateResponse {
 // ImageServiceUpdateRequest
 message ImageServiceUpdateRequest {
   // Id of this image
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // URL where this image is located
@@ -82,10 +79,7 @@ message ImageServiceUpdateResponse {
 // ImageServiceDeleteRequest
 message ImageServiceDeleteRequest {
   // ID of the image to delete
-  string id = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // message ImageServiceDeleteResponse {

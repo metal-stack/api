@@ -30,6 +30,8 @@ message TenantServiceCreateRequest {
   optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant
   optional string avatar_url = 4;
+  // Labels on the tenant
+  metalstack.api.v2.Labels labels = 5;
 }
 
 // TenantServiceCreateResponse is the response payload of the tenant create request
@@ -44,8 +46,6 @@ message TenantServiceListRequest {
   optional string login = 1;
   // Name of the tenant to list
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Email of the tenant to list
-  optional string email = 3;
   // Paging details for the list request
   metalstack.api.v2.Paging paging = 7;
 }

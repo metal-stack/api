@@ -69,6 +69,7 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
     /**
      * ManagementServiceAddresses defines where the management is reachable
      * should be in the form <ip|host>:<port>
+     * FIXME validation
      *
      * @generated from field: repeated string mgmt_service_addresses = 7;
      */
@@ -194,104 +195,146 @@ export declare const PartitionServiceCapacityRequestSchema: GenMessage<Partition
  */
 export type PartitionServiceCapacityResponse = Message<"metalstack.admin.v2.PartitionServiceCapacityResponse"> & {
     /**
-     * Size is the size id correlating to all counts in this server capacity.
+     * PartitionCapacity is a capacity report per partition
      *
-     * @generated from field: string size = 1;
+     * @generated from field: repeated metalstack.admin.v2.PartitionCapacity partition_capacity = 1;
      */
-    size: string;
-    /**
-     * Total is the total amount of machines for this size.
-     *
-     * @generated from field: int64 total = 2;
-     */
-    total: bigint;
-    /**
-     * PhonedHome is the amount of machines that are currently in the provisioning state "phoned home".
-     *
-     * @generated from field: int64 phoned_home = 3;
-     */
-    phonedHome: bigint;
-    /**
-     * Waiting is the amount of machines that are currently in the provisioning state "waiting".
-     *
-     * @generated from field: int64 waiting = 4;
-     */
-    waiting: bigint;
-    /**
-     * Other is the amount of machines that are neither in the provisioning state waiting nor in phoned home but in another provisioning state.
-     *
-     * @generated from field: int64 other = 5;
-     */
-    other: bigint;
-    /**
-     * OtherMachines contains the machine IDs for machines that were classified into "Other".
-     *
-     * @generated from field: repeated string other_machines = 6;
-     */
-    otherMachines: string[];
-    /**
-     * Allocated is the amount of machines that are currently allocated.
-     *
-     * @generated from field: int64 allocated = 7;
-     */
-    allocated: bigint;
-    /**
-     * Allocatable is the amount of machines in a partition is the amount of machines that can be allocated.
-     * Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable. Size reservations are not considered in this count.
-     *
-     * @generated from field: int64 allocatable = 8;
-     */
-    allocatable: bigint;
-    /**
-     * Free is the amount of machines in a partition that can be freely allocated at any given moment by a project.
-     * Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable due to size reservations.
-     *
-     * @generated from field: int64 free = 9;
-     */
-    free: bigint;
-    /**
-     * Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or
-     * not in the machine state "available", e.g. locked or reserved.
-     *
-     * @generated from field: int64 unavailable = 10;
-     */
-    unavailable: bigint;
-    /**
-     * Faulty is the amount of machines that are neither allocated nor in the pool of available machines because they report an error.
-     *
-     * @generated from field: int64 faulty = 11;
-     */
-    faulty: bigint;
-    /**
-     * FaultyMachines contains the machine IDs for machines that were classified into "Faulty".
-     *
-     * @generated from field: repeated string faulty_machines = 12;
-     */
-    faultyMachines: string[];
-    /**
-     * Reservations is the amount of reservations made for this size.
-     *
-     * @generated from field: int64 reservations = 13;
-     */
-    reservations: bigint;
-    /**
-     * UsedReservations is the amount of reservations already used up for this size.
-     *
-     * @generated from field: int64 used_reservations = 14;
-     */
-    usedReservations: bigint;
-    /**
-     * RemainingReservations is the amount of reservations remaining for this size.
-     *
-     * @generated from field: int64 remaining_reservations = 15;
-     */
-    remainingReservations: bigint;
+    partitionCapacity: PartitionCapacity[];
 };
 /**
  * Describes the message metalstack.admin.v2.PartitionServiceCapacityResponse.
  * Use `create(PartitionServiceCapacityResponseSchema)` to create a new message.
  */
 export declare const PartitionServiceCapacityResponseSchema: GenMessage<PartitionServiceCapacityResponse>;
+/**
+ * PartitionCapacity is the capacity of one partition
+ *
+ * @generated from message metalstack.admin.v2.PartitionCapacity
+ */
+export type PartitionCapacity = Message<"metalstack.admin.v2.PartitionCapacity"> & {
+    /**
+     * Partition of which this capacity is reported.
+     *
+     * @generated from field: string partition = 1;
+     */
+    partition: string;
+    /**
+     * MachineSizeCapacities is the capacity per machine size.
+     *
+     * @generated from field: repeated metalstack.admin.v2.MachineSizeCapacity machine_size_capacities = 2;
+     */
+    machineSizeCapacities: MachineSizeCapacity[];
+};
+/**
+ * Describes the message metalstack.admin.v2.PartitionCapacity.
+ * Use `create(PartitionCapacitySchema)` to create a new message.
+ */
+export declare const PartitionCapacitySchema: GenMessage<PartitionCapacity>;
+/**
+ * ServerCapacity is the capacity of one server type, eg machine size
+ *
+ * @generated from message metalstack.admin.v2.MachineSizeCapacity
+ */
+export type MachineSizeCapacity = Message<"metalstack.admin.v2.MachineSizeCapacity"> & {
+    /**
+     * Size is the size id correlating to all counts in this server capacity.
+     *
+     * @generated from field: string size = 2;
+     */
+    size: string;
+    /**
+     * Total is the total amount of machines for this size.
+     *
+     * @generated from field: int64 total = 3;
+     */
+    total: bigint;
+    /**
+     * PhonedHome is the amount of machines that are currently in the provisioning state "phoned home".
+     *
+     * @generated from field: int64 phoned_home = 4;
+     */
+    phonedHome: bigint;
+    /**
+     * Waiting is the amount of machines that are currently in the provisioning state "waiting".
+     *
+     * @generated from field: int64 waiting = 5;
+     */
+    waiting: bigint;
+    /**
+     * Other is the amount of machines that are neither in the provisioning state waiting nor in phoned home but in another provisioning state.
+     *
+     * @generated from field: int64 other = 6;
+     */
+    other: bigint;
+    /**
+     * OtherMachines contains the machine IDs for machines that were classified into "Other".
+     *
+     * @generated from field: repeated string other_machines = 7;
+     */
+    otherMachines: string[];
+    /**
+     * Allocated is the amount of machines that are currently allocated.
+     *
+     * @generated from field: int64 allocated = 8;
+     */
+    allocated: bigint;
+    /**
+     * Allocatable is the amount of machines in a partition is the amount of machines that can be allocated.
+     * Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable. Size reservations are not considered in this count.
+     *
+     * @generated from field: int64 allocatable = 9;
+     */
+    allocatable: bigint;
+    /**
+     * Free is the amount of machines in a partition that can be freely allocated at any given moment by a project.
+     * Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable due to size reservations.
+     *
+     * @generated from field: int64 free = 10;
+     */
+    free: bigint;
+    /**
+     * Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or
+     * not in the machine state "available", e.g. locked or reserved.
+     *
+     * @generated from field: int64 unavailable = 11;
+     */
+    unavailable: bigint;
+    /**
+     * Faulty is the amount of machines that are neither allocated nor in the pool of available machines because they report an error.
+     *
+     * @generated from field: int64 faulty = 12;
+     */
+    faulty: bigint;
+    /**
+     * FaultyMachines contains the machine IDs for machines that were classified into "Faulty".
+     *
+     * @generated from field: repeated string faulty_machines = 13;
+     */
+    faultyMachines: string[];
+    /**
+     * Reservations is the amount of reservations made for this size.
+     *
+     * @generated from field: int64 reservations = 14;
+     */
+    reservations: bigint;
+    /**
+     * UsedReservations is the amount of reservations already used up for this size.
+     *
+     * @generated from field: int64 used_reservations = 15;
+     */
+    usedReservations: bigint;
+    /**
+     * RemainingReservations is the amount of reservations remaining for this size.
+     *
+     * @generated from field: int64 remaining_reservations = 16;
+     */
+    remainingReservations: bigint;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineSizeCapacity.
+ * Use `create(MachineSizeCapacitySchema)` to create a new message.
+ */
+export declare const MachineSizeCapacitySchema: GenMessage<MachineSizeCapacity>;
 /**
  * PartitionService serves partition address related functions
  *

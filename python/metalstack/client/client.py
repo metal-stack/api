@@ -2,6 +2,7 @@
 
 import pyqwest
 
+import metalstack.admin.v2.component_connect as admin_component_connect
 import metalstack.admin.v2.filesystem_connect as admin_filesystem_connect
 import metalstack.admin.v2.image_connect as admin_image_connect
 import metalstack.admin.v2.ip_connect as admin_ip_connect
@@ -10,6 +11,8 @@ import metalstack.admin.v2.network_connect as admin_network_connect
 import metalstack.admin.v2.partition_connect as admin_partition_connect
 import metalstack.admin.v2.project_connect as admin_project_connect
 import metalstack.admin.v2.size_connect as admin_size_connect
+import metalstack.admin.v2.size_imageconstraint_connect as admin_size_imageconstraint_connect
+import metalstack.admin.v2.size_reservation_connect as admin_size_reservation_connect
 import metalstack.admin.v2.switch_connect as admin_switch_connect
 import metalstack.admin.v2.task_connect as admin_task_connect
 import metalstack.admin.v2.tenant_connect as admin_tenant_connect
@@ -26,6 +29,8 @@ import metalstack.api.v2.network_connect as api_network_connect
 import metalstack.api.v2.partition_connect as api_partition_connect
 import metalstack.api.v2.project_connect as api_project_connect
 import metalstack.api.v2.size_connect as api_size_connect
+import metalstack.api.v2.size_imageconstraint_connect as api_size_imageconstraint_connect
+import metalstack.api.v2.size_reservation_connect as api_size_reservation_connect
 import metalstack.api.v2.tenant_connect as api_tenant_connect
 import metalstack.api.v2.token_connect as api_token_connect
 import metalstack.api.v2.user_connect as api_user_connect
@@ -33,6 +38,7 @@ import metalstack.api.v2.version_connect as api_version_connect
 
 import metalstack.infra.v2.bmc_connect as infra_bmc_connect
 import metalstack.infra.v2.boot_connect as infra_boot_connect
+import metalstack.infra.v2.component_connect as infra_component_connect
 import metalstack.infra.v2.event_connect as infra_event_connect
 import metalstack.infra.v2.switch_connect as infra_switch_connect
 
@@ -67,6 +73,9 @@ class Client:
             self._client = client
 
 
+        def component(self):
+            return admin_component_connect.ComponentServiceClientSync(address=self._baseurl, http_client=self._client)
+
         def filesystem(self):
             return admin_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, http_client=self._client)
 
@@ -90,6 +99,12 @@ class Client:
 
         def size(self):
             return admin_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client)
+
+        def size_imageconstraint(self):
+            return admin_size_imageconstraint_connect.SizeImageConstraintServiceClientSync(address=self._baseurl, http_client=self._client)
+
+        def size_reservation(self):
+            return admin_size_reservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client)
 
         def switch(self):
             return admin_switch_connect.SwitchServiceClientSync(address=self._baseurl, http_client=self._client)
@@ -143,6 +158,12 @@ class Client:
         def size(self):
             return api_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client)
 
+        def size_imageconstraint(self):
+            return api_size_imageconstraint_connect.SizeImageConstraintServiceClientSync(address=self._baseurl, http_client=self._client)
+
+        def size_reservation(self):
+            return api_size_reservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client)
+
         def tenant(self):
             return api_tenant_connect.TenantServiceClientSync(address=self._baseurl, http_client=self._client)
 
@@ -167,6 +188,9 @@ class Client:
 
         def boot(self):
             return infra_boot_connect.BootServiceClientSync(address=self._baseurl, http_client=self._client)
+
+        def component(self):
+            return infra_component_connect.ComponentServiceClientSync(address=self._baseurl, http_client=self._client)
 
         def event(self):
             return infra_event_connect.EventServiceClientSync(address=self._baseurl, http_client=self._client)

@@ -43,6 +43,12 @@ extend buf.validate.StringRules {
     message: "given uri must be valid"
     expression: "this.isUri()"
   }];
+  // IsIpOrHostname validates that the given string is either a ip or a hostname
+  optional bool is_ip_or_hostname = 80048957 [(buf.validate.predefined).cel = {
+    id: "valid_address"
+    message: "must be a valid IP address or hostname"
+    expression: "this.isIp() || this.isHostname()"
+  }];
 }
 
 extend buf.validate.RepeatedRules {

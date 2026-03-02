@@ -119,10 +119,10 @@ message MachineServiceCreateRequest {
   // Networks the networks that this machine will be placed in.
   repeated MachineAllocationNetwork networks = 13;
   // IPs to to attach to this machine additionally
-  repeated string ips = 14 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
+  repeated MachineAllocationIp ips = 14;
   // PlacementTags by default machines are spread across the racks inside a partition for every project.
   // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
-  repeated string placement_tags = 15;
+  repeated string placement_tags = 15 [(buf.validate.field).repeated.max_items = 64];
   // DNSServer the dns servers used for the machine
   repeated DNSServer dns_server = 16 [(buf.validate.field).repeated.max_items = 3];
   // NTPServer the ntp servers used for the machine
@@ -136,7 +136,7 @@ message MachineServiceCreateRequest {
 // FirewallSpec contains firewall specific firewall creation parameters
 message FirewallSpec {
   // FirewallRules to be applied if this is a firewall
-  FirewallRules firewall_rules = 19;
+  FirewallRules firewall_rules = 1;
 }
 
 // MachineServiceCreateResponse is the request payload for a machine create response
@@ -342,10 +342,18 @@ message MachineAllocation {
 // MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired
 message MachineAllocationNetwork {
   // Network the id of the network that this machine will be placed in
-  string network = 1;
+  string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
   // By default one ip address is acquired per network for the machine
   optional bool no_auto_acquire_ip = 2;
+}
+
+// MachineAllocationIp defines a ip and a optional namespace which should be attached to this machine during create
+message MachineAllocationIp {
+  // IP to to attach to this machine additionally
+  string ip = 1 [(buf.validate.field).string.ip = true];
+  // Namespace where this ip was created, usually the project of the namespaced tenant network.
+  optional string namespace = 2 [(buf.validate.field).string.uuid = true];
 }
 
 // FirewallRules can be defined during firewall allocation

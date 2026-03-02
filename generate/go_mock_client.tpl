@@ -2,6 +2,7 @@
 package apitests
 
 import (
+	"context"
 	"testing"
 
 	apiclient "github.com/metal-stack/api/go/client"
@@ -31,13 +32,13 @@ type (
 {{ range $name, $api := . -}}
     {{ $name }} struct {
 {{ range $svc := $api.Services -}}
-	{{ $svc | lower }} *{{ $name }}mocks.{{ $svc }}Client
+	{{ $svc.Name | lower }} *{{ $name }}mocks.{{ $svc.Name }}Client
 {{ end }}
     }
 
 	{{ $name | title }}MockFns struct {
 {{ range $svc := $api.Services -}}
-	{{ $svc | trimSuffix "Service" }}  func(m *mock.Mock)
+	{{ $svc.Name | trimSuffix "Service" }}  func(m *mock.Mock)
 {{ end }}
 	}
 {{ end }}
@@ -61,6 +62,8 @@ func (c *client) {{ $name | title }}() apiclient.{{ $name | title }} {
 }
 {{ end }}
 
+func (c *client) Ping(context.Context, *apiclient.PingConfig) {}
+
 {{ range $name, $api := . -}}
 func (w wrapper) {{ $name | title }}(fns *{{ $name | title }}MockFns) *{{ $name }} {
 	return new{{ $name }}(w.t, fns)
@@ -69,14 +72,14 @@ func (w wrapper) {{ $name | title }}(fns *{{ $name | title }}MockFns) *{{ $name 
 func new{{ $name }}(t *testing.T, fns *{{ $name | title }}MockFns) *{{ $name }} {
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
-	{{ $svc | lower }}:  {{ $name }}mocks.New{{ $svc }}Client(t),
+	{{ $svc.Name | lower }}:  {{ $name }}mocks.New{{ $svc.Name }}Client(t),
 {{ end }}
 	}
 
 	if fns != nil {
 {{ range $svc := $api.Services -}}
-		if fns.{{ $svc | trimSuffix "Service" }} != nil {
-			fns.{{ $svc | trimSuffix "Service" }}(&a.{{ $svc | lower }}.Mock)
+		if fns.{{ $svc.Name | trimSuffix "Service" }} != nil {
+			fns.{{ $svc.Name | trimSuffix "Service" }}(&a.{{ $svc.Name | lower }}.Mock)
 		}
 {{ end }}
 	}
@@ -85,8 +88,8 @@ func new{{ $name }}(t *testing.T, fns *{{ $name | title }}MockFns) *{{ $name }} 
 }
 
 {{ range $svc := $api.Services -}}
-func (c  *{{ $name }} ) {{ $svc | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc }}Client {
-	return c.{{ $svc | lower }}
+func (c  *{{ $name }} ) {{ $svc.Name | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc.Name }}Client {
+	return c.{{ $svc.Name | lower }}
 }
 {{ end }}
 

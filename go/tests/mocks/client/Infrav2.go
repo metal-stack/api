@@ -128,6 +128,52 @@ func (_c *Infrav2_Boot_Call) RunAndReturn(run func() infrav2connect.BootServiceC
 	return _c
 }
 
+// Component provides a mock function for the type Infrav2
+func (_mock *Infrav2) Component() infrav2connect.ComponentServiceClient {
+	ret := _mock.Called()
+
+	if len(ret) == 0 {
+		panic("no return value specified for Component")
+	}
+
+	var r0 infrav2connect.ComponentServiceClient
+	if returnFunc, ok := ret.Get(0).(func() infrav2connect.ComponentServiceClient); ok {
+		r0 = returnFunc()
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(infrav2connect.ComponentServiceClient)
+		}
+	}
+	return r0
+}
+
+// Infrav2_Component_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Component'
+type Infrav2_Component_Call struct {
+	*mock.Call
+}
+
+// Component is a helper method to define mock.On call
+func (_e *Infrav2_Expecter) Component() *Infrav2_Component_Call {
+	return &Infrav2_Component_Call{Call: _e.mock.On("Component")}
+}
+
+func (_c *Infrav2_Component_Call) Run(run func()) *Infrav2_Component_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *Infrav2_Component_Call) Return(componentServiceClient infrav2connect.ComponentServiceClient) *Infrav2_Component_Call {
+	_c.Call.Return(componentServiceClient)
+	return _c
+}
+
+func (_c *Infrav2_Component_Call) RunAndReturn(run func() infrav2connect.ComponentServiceClient) *Infrav2_Component_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Event provides a mock function for the type Infrav2
 func (_mock *Infrav2) Event() infrav2connect.EventServiceClient {
 	ret := _mock.Called()

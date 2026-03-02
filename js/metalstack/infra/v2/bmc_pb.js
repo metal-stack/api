@@ -2,11 +2,14 @@
 // @generated from file metalstack/infra/v2/bmc.proto (package metalstack.infra.v2, syntax proto3)
 /* eslint-disable */
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
+import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
+import { file_metalstack_api_v2_machine } from "../../api/v2/machine_pb";
+import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
 /**
  * Describes the file metalstack/infra/v2/bmc.proto.
  */
-export const file_metalstack_infra_v2_bmc = /*@__PURE__*/ fileDesc("Ch1tZXRhbHN0YWNrL2luZnJhL3YyL2JtYy5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiIWChRVcGRhdGVCTUNJbmZvUmVxdWVzdCIXChVVcGRhdGVCTUNJbmZvUmVzcG9uc2UiHAoaV2FpdEZvck1hY2hpbmVFdmVudFJlcXVlc3QiHQobV2FpdEZvck1hY2hpbmVFdmVudFJlc3BvbnNlMocCCgpCTUNTZXJ2aWNlEnEKDVVwZGF0ZUJNQ0luZm8SKS5tZXRhbHN0YWNrLmluZnJhLnYyLlVwZGF0ZUJNQ0luZm9SZXF1ZXN0GioubWV0YWxzdGFjay5pbmZyYS52Mi5VcGRhdGVCTUNJbmZvUmVzcG9uc2UiCeDzGALq8xgBARKFAQoTV2FpdEZvck1hY2hpbmVFdmVudBIvLm1ldGFsc3RhY2suaW5mcmEudjIuV2FpdEZvck1hY2hpbmVFdmVudFJlcXVlc3QaMC5tZXRhbHN0YWNrLmluZnJhLnYyLldhaXRGb3JNYWNoaW5lRXZlbnRSZXNwb25zZSIJ4PMYAurzGAEBMAFCzAEKF2NvbS5tZXRhbHN0YWNrLmluZnJhLnYyQghCbWNQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2luZnJhL3YyO2luZnJhdjKiAgNNSViqAhNNZXRhbHN0YWNrLkluZnJhLlYyygITTWV0YWxzdGFja1xJbmZyYVxWMuICH01ldGFsc3RhY2tcSW5mcmFcVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpJbmZyYTo6VjJiBnByb3RvMw", [file_metalstack_api_v2_common]);
+export const file_metalstack_infra_v2_bmc = /*@__PURE__*/ fileDesc("Ch1tZXRhbHN0YWNrL2luZnJhL3YyL2JtYy5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiLtAQoUVXBkYXRlQk1DSW5mb1JlcXVlc3QSHgoJcGFydGl0aW9uGAEgASgJQgu6SAhyBtCzrrECARJdCgtibWNfcmVwb3J0cxgCIAMoCzI5Lm1ldGFsc3RhY2suaW5mcmEudjIuVXBkYXRlQk1DSW5mb1JlcXVlc3QuQm1jUmVwb3J0c0VudHJ5Qg26SAqaAQciBXIDsAEBGlYKD0JtY1JlcG9ydHNFbnRyeRILCgNrZXkYASABKAkSMgoFdmFsdWUYAiABKAsyIy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQk1DUmVwb3J0OgI4ASJLChVVcGRhdGVCTUNJbmZvUmVzcG9uc2USGAoQdXBkYXRlZF9tYWNoaW5lcxgBIAMoCRIYChBjcmVhdGVkX21hY2hpbmVzGAIgAygJIjoKGFdhaXRGb3JCTUNDb21tYW5kUmVxdWVzdBIeCglwYXJ0aXRpb24YASABKAlCC7pICHIG0LOusQIBIrYBChlXYWl0Rm9yQk1DQ29tbWFuZFJlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjkKC2JtY19jb21tYW5kGAIgASgOMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ0NvbW1hbmQSMgoLbWFjaGluZV9ibWMYAyABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQk1DEhIKCmNvbW1hbmRfaWQYBCABKAkiSQoVQk1DQ29tbWFuZERvbmVSZXF1ZXN0EhIKCmNvbW1hbmRfaWQYASABKAkSEgoFZXJyb3IYAiABKAlIAIgBAUIICgZfZXJyb3IiGAoWQk1DQ29tbWFuZERvbmVSZXNwb25zZTL2AgoKQk1DU2VydmljZRJxCg1VcGRhdGVCTUNJbmZvEikubWV0YWxzdGFjay5pbmZyYS52Mi5VcGRhdGVCTUNJbmZvUmVxdWVzdBoqLm1ldGFsc3RhY2suaW5mcmEudjIuVXBkYXRlQk1DSW5mb1Jlc3BvbnNlIgng8xgC6vMYAQESfwoRV2FpdEZvckJNQ0NvbW1hbmQSLS5tZXRhbHN0YWNrLmluZnJhLnYyLldhaXRGb3JCTUNDb21tYW5kUmVxdWVzdBouLm1ldGFsc3RhY2suaW5mcmEudjIuV2FpdEZvckJNQ0NvbW1hbmRSZXNwb25zZSIJ4PMYAurzGAEBMAESdAoOQk1DQ29tbWFuZERvbmUSKi5tZXRhbHN0YWNrLmluZnJhLnYyLkJNQ0NvbW1hbmREb25lUmVxdWVzdBorLm1ldGFsc3RhY2suaW5mcmEudjIuQk1DQ29tbWFuZERvbmVSZXNwb25zZSIJ4PMYAerzGAEBQswBChdjb20ubWV0YWxzdGFjay5pbmZyYS52MkIIQm1jUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
 /**
  * Describes the message metalstack.infra.v2.UpdateBMCInfoRequest.
  * Use `create(UpdateBMCInfoRequestSchema)` to create a new message.
@@ -18,15 +21,25 @@ export const UpdateBMCInfoRequestSchema = /*@__PURE__*/ messageDesc(file_metalst
  */
 export const UpdateBMCInfoResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_bmc, 1);
 /**
- * Describes the message metalstack.infra.v2.WaitForMachineEventRequest.
- * Use `create(WaitForMachineEventRequestSchema)` to create a new message.
+ * Describes the message metalstack.infra.v2.WaitForBMCCommandRequest.
+ * Use `create(WaitForBMCCommandRequestSchema)` to create a new message.
  */
-export const WaitForMachineEventRequestSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_bmc, 2);
+export const WaitForBMCCommandRequestSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_bmc, 2);
 /**
- * Describes the message metalstack.infra.v2.WaitForMachineEventResponse.
- * Use `create(WaitForMachineEventResponseSchema)` to create a new message.
+ * Describes the message metalstack.infra.v2.WaitForBMCCommandResponse.
+ * Use `create(WaitForBMCCommandResponseSchema)` to create a new message.
  */
-export const WaitForMachineEventResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_bmc, 3);
+export const WaitForBMCCommandResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_bmc, 3);
+/**
+ * Describes the message metalstack.infra.v2.BMCCommandDoneRequest.
+ * Use `create(BMCCommandDoneRequestSchema)` to create a new message.
+ */
+export const BMCCommandDoneRequestSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_bmc, 4);
+/**
+ * Describes the message metalstack.infra.v2.BMCCommandDoneResponse.
+ * Use `create(BMCCommandDoneResponseSchema)` to create a new message.
+ */
+export const BMCCommandDoneResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_bmc, 5);
 /**
  * BMCService serves bmc related functions
  *

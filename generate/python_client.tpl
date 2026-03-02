@@ -4,7 +4,7 @@ import pyqwest
 
 {{ range $name, $api := . -}}
 {{ range $svc := $api.Services -}}
-import metalstack.{{ $name | trimSuffix "v2" }}.v2.{{ $svc | trimSuffix "Service" | lower }}_connect as {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connect
+import metalstack.{{ $name | trimSuffix "v2" }}.v2.{{ $svc.FileName | trimSuffix ".proto" | lower }}_connect as {{ $name | trimSuffix "v2" }}_{{ $svc.FileName | trimSuffix ".proto" | lower }}_connect
 {{ end }}
 {{ end }}
 
@@ -31,7 +31,7 @@ class Client:
             self._client = client
 
 {{ range $svc := $api.Services }}
-        def {{ $svc | trimSuffix "Service" | lower }}(self):
-            return {{ $name | trimSuffix "v2" }}_{{ $svc | trimSuffix "Service" | lower }}_connect.{{ $svc }}ClientSync(address=self._baseurl, http_client=self._client)
+        def {{ $svc.FileName | trimSuffix ".proto" | lower }}(self):
+            return {{ $name | trimSuffix "v2" }}_{{ $svc.FileName | trimSuffix ".proto" | lower }}_connect.{{ $svc.Name }}ClientSync(address=self._baseurl, http_client=self._client)
 {{ end }}
 {{ end }}

@@ -2,6 +2,7 @@ VERSION_STRIPPED := $(patsubst v%,%,$(VERSION))
 
 .PHONY: install
 install:
+	bun upgrade || true
 	bun install -dd
 
 .PHONY: clean

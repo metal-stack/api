@@ -72,10 +72,7 @@ message IP {
   // Description of this ip
   string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Network is the network this ip belongs to
-  string network = 6 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string network = 6 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project where this ip address belongs to
   string project = 7 [(buf.validate.field).string.uuid = true];
   // Type of this ip
@@ -98,10 +95,7 @@ message IPServiceGetRequest {
 // IPServiceCreateRequest is the request payload for a ip create request
 message IPServiceCreateRequest {
   // Network from which the IP should be created
-  string network = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project of the ip
   string project = 2 [(buf.validate.field).string.uuid = true];
   // Name of the ip
@@ -151,10 +145,7 @@ message IPQuery {
   // Ip the ip to list
   optional string ip = 1 [(buf.validate.field).string.ip = true];
   // Network from where the ips to list
-  optional string network = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string network = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project of the ips to list
   optional string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this ip

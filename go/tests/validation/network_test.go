@@ -5,7 +5,6 @@ import (
 
 	adminv2 "github.com/metal-stack/api/go/metalstack/admin/v2"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"google.golang.org/protobuf/proto"
 )
 
 func TestValidateNetwork(t *testing.T) {
@@ -13,7 +12,7 @@ func TestValidateNetwork(t *testing.T) {
 		{
 			name: "Valid NetworkCreateRequest minimal config",
 			msg: &adminv2.NetworkServiceCreateRequest{
-				Id:       proto.String("internet"),
+				Id:       new("internet"),
 				NatType:  apiv2.NATType_NAT_TYPE_IPV4_MASQUERADE.Enum(),
 				Prefixes: []string{"1.2.0.0/16"},
 			},
@@ -22,7 +21,7 @@ func TestValidateNetwork(t *testing.T) {
 		{
 			name: "InValid NetworkCreateRequest prefixes malformed",
 			msg: &adminv2.NetworkServiceCreateRequest{
-				Id:                  proto.String("internet"),
+				Id:                  new("internet"),
 				NatType:             apiv2.NATType_NAT_TYPE_IPV4_MASQUERADE.Enum(),
 				Prefixes:            []string{"1.2.3.4.5/99"},
 				DestinationPrefixes: []string{"0.0.0.0.0/0"},

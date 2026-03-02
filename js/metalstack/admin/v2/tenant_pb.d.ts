@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Paging } from "../../api/v2/common_pb";
+import type { Labels, Paging } from "../../api/v2/common_pb";
 import type { Tenant } from "../../api/v2/tenant_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -36,6 +36,12 @@ export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServ
      * @generated from field: optional string avatar_url = 4;
      */
     avatarUrl?: string;
+    /**
+     * Labels on the tenant
+     *
+     * @generated from field: metalstack.api.v2.Labels labels = 5;
+     */
+    labels?: Labels;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceCreateRequest.
@@ -78,12 +84,6 @@ export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServic
      * @generated from field: optional string name = 2;
      */
     name?: string;
-    /**
-     * Email of the tenant to list
-     *
-     * @generated from field: optional string email = 3;
-     */
-    email?: string;
     /**
      * Paging details for the list request
      *

@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	"google.golang.org/protobuf/proto"
 )
 
 func TestValidateSwitch(t *testing.T) {
@@ -15,7 +14,7 @@ func TestValidateSwitch(t *testing.T) {
 				Name:       "eth0",
 				Identifier: "swp1",
 				Mac:        "abc",
-				Vrf:        proto.String("10"),
+				Vrf:        new("10"),
 			},
 			wantErr:          true,
 			wantErrorMessage: `validation error: mac: this string must be a valid macaddress`,
@@ -26,7 +25,7 @@ func TestValidateSwitch(t *testing.T) {
 				Name:       "eth0",
 				Identifier: "swp1",
 				Mac:        "00:80:41:ae:fd:7e",
-				Vrf:        proto.String("10"),
+				Vrf:        new("10"),
 			},
 			wantErr: false,
 		},
@@ -36,7 +35,7 @@ func TestValidateSwitch(t *testing.T) {
 				Name:       "eth0",
 				Identifier: "swp1",
 				Mac:        "00:80:41:AE:FD:7E",
-				Vrf:        proto.String("10"),
+				Vrf:        new("10"),
 			},
 			wantErr: false,
 		},
@@ -46,8 +45,8 @@ func TestValidateSwitch(t *testing.T) {
 				Id:             "leaf01",
 				Partition:      "p1",
 				ManagementIp:   "1.2.3.4",
-				ManagementUser: proto.String("admin"),
-				ConsoleCommand: proto.String("ssh"),
+				ManagementUser: new("admin"),
+				ConsoleCommand: new("ssh"),
 			},
 			wantErr: false,
 		},
@@ -57,8 +56,8 @@ func TestValidateSwitch(t *testing.T) {
 				Id:             "_1",
 				Partition:      "p1",
 				ManagementIp:   "1.2.3.4",
-				ManagementUser: proto.String("admin"),
-				ConsoleCommand: proto.String("ssh"),
+				ManagementUser: new("admin"),
+				ConsoleCommand: new("ssh"),
 			},
 			wantErr:          true,
 			wantErrorMessage: `validation error: id: value must be a valid hostname`,
