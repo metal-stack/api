@@ -1,7 +1,8 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { UpdateMeta } from "../../api/v2/common_pb";
-import type { Switch, SwitchNic, SwitchOS, SwitchPortStatus, SwitchQuery, SwitchReplaceMode } from "../../api/v2/switch_pb";
+import type { MachineQuery } from "../../api/v2/machine_pb";
+import type { Switch, SwitchNic, SwitchOS, SwitchPortStatus, SwitchQuery, SwitchReplaceMode, SwitchWithMachines } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/switch.proto.
@@ -303,6 +304,48 @@ export type SwitchServicePortResponse = Message<"metalstack.admin.v2.SwitchServi
  */
 export declare const SwitchServicePortResponseSchema: GenMessage<SwitchServicePortResponse>;
 /**
+ * SwitchServiceConnectedMachinesRequest.
+ *
+ * @generated from message metalstack.admin.v2.SwitchServiceConnectedMachinesRequest
+ */
+export type SwitchServiceConnectedMachinesRequest = Message<"metalstack.admin.v2.SwitchServiceConnectedMachinesRequest"> & {
+    /**
+     * Query to filter the switch results.
+     *
+     * @generated from field: metalstack.api.v2.SwitchQuery query = 1;
+     */
+    query?: SwitchQuery;
+    /**
+     * MachineQuery to filter the machine results.
+     *
+     * @generated from field: metalstack.api.v2.MachineQuery machine_query = 2;
+     */
+    machineQuery?: MachineQuery;
+};
+/**
+ * Describes the message metalstack.admin.v2.SwitchServiceConnectedMachinesRequest.
+ * Use `create(SwitchServiceConnectedMachinesRequestSchema)` to create a new message.
+ */
+export declare const SwitchServiceConnectedMachinesRequestSchema: GenMessage<SwitchServiceConnectedMachinesRequest>;
+/**
+ * SwitchServiceConnectedMachinesResponse.
+ *
+ * @generated from message metalstack.admin.v2.SwitchServiceConnectedMachinesResponse
+ */
+export type SwitchServiceConnectedMachinesResponse = Message<"metalstack.admin.v2.SwitchServiceConnectedMachinesResponse"> & {
+    /**
+     * SwitchesWithMachines contains all switches with their machine connections.
+     *
+     * @generated from field: repeated metalstack.api.v2.SwitchWithMachines switches_with_machines = 1;
+     */
+    switchesWithMachines: SwitchWithMachines[];
+};
+/**
+ * Describes the message metalstack.admin.v2.SwitchServiceConnectedMachinesResponse.
+ * Use `create(SwitchServiceConnectedMachinesResponseSchema)` to create a new message.
+ */
+export declare const SwitchServiceConnectedMachinesResponseSchema: GenMessage<SwitchServiceConnectedMachinesResponse>;
+/**
  * SwitchService serves switch related functions.
  *
  * @generated from service metalstack.admin.v2.SwitchService
@@ -367,5 +410,15 @@ export declare const SwitchService: GenService<{
         methodKind: "unary";
         input: typeof SwitchServicePortRequestSchema;
         output: typeof SwitchServicePortResponseSchema;
+    };
+    /**
+     * ConnectedMachines lists all switches with their machine connections.
+     *
+     * @generated from rpc metalstack.admin.v2.SwitchService.ConnectedMachines
+     */
+    connectedMachines: {
+        methodKind: "unary";
+        input: typeof SwitchServiceConnectedMachinesRequestSchema;
+        output: typeof SwitchServiceConnectedMachinesResponseSchema;
     };
 }>;
