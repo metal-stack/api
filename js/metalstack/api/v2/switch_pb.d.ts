@@ -446,21 +446,27 @@ export declare const SwitchWithMachinesSchema: GenMessage<SwitchWithMachines>;
  */
 export type SwitchNicWithMachine = Message<"metalstack.api.v2.SwitchNicWithMachine"> & {
     /**
-     * Nic is the switch nic the machine is connected to.
+     * NicName is the switch nic the machine is connected to.
      *
-     * @generated from field: metalstack.api.v2.SwitchNic nic = 1;
+     * @generated from field: string nic_name = 1;
      */
-    nic?: SwitchNic;
+    nicName: string;
+    /**
+     * NicIdentifier is the identifier of the nic the machine is connected to.
+     *
+     * @generated from field: string nic_identifier = 2;
+     */
+    nicIdentifier: string;
     /**
      * Machine connected to this nic.
      *
-     * @generated from field: metalstack.api.v2.Machine machine = 2;
+     * @generated from field: metalstack.api.v2.Machine machine = 3;
      */
     machine?: Machine;
     /**
      * FRU of the connected machine.
      *
-     * @generated from field: metalstack.api.v2.MachineFRU fru = 3;
+     * @generated from field: metalstack.api.v2.MachineFRU fru = 4;
      */
     fru?: MachineFRU;
 };

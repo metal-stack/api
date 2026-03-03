@@ -170,12 +170,14 @@ message SwitchWithMachines {
 
 // SwitchNicWithMachine associates a switch port with its connected machine.
 message SwitchNicWithMachine {
-  // Nic is the switch nic the machine is connected to.
-  SwitchNic nic = 1;
+  // NicName is the switch nic the machine is connected to.
+  string nic_name = 1;
+  // NicIdentifier is the identifier of the nic the machine is connected to.
+  string nic_identifier = 2;
   // Machine connected to this nic.
-  metalstack.api.v2.Machine machine = 2;
+  metalstack.api.v2.Machine machine = 3;
   // FRU of the connected machine.
-  metalstack.api.v2.MachineFRU fru = 3;
+  metalstack.api.v2.MachineFRU fru = 4;
 }
 
 // BGPState represents the state of a BGP session.

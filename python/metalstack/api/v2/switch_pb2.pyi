@@ -206,11 +206,13 @@ class SwitchWithMachines(_message.Message):
     def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., connections: _Optional[_Iterable[_Union[SwitchNicWithMachine, _Mapping]]] = ...) -> None: ...
 
 class SwitchNicWithMachine(_message.Message):
-    __slots__ = ("nic", "machine", "fru")
-    NIC_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ("nic_name", "nic_identifier", "machine", "fru")
+    NIC_NAME_FIELD_NUMBER: _ClassVar[int]
+    NIC_IDENTIFIER_FIELD_NUMBER: _ClassVar[int]
     MACHINE_FIELD_NUMBER: _ClassVar[int]
     FRU_FIELD_NUMBER: _ClassVar[int]
-    nic: SwitchNic
+    nic_name: str
+    nic_identifier: str
     machine: _machine_pb2.Machine
     fru: _machine_pb2.MachineFRU
-    def __init__(self, nic: _Optional[_Union[SwitchNic, _Mapping]] = ..., machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ..., fru: _Optional[_Union[_machine_pb2.MachineFRU, _Mapping]] = ...) -> None: ...
+    def __init__(self, nic_name: _Optional[str] = ..., nic_identifier: _Optional[str] = ..., machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ..., fru: _Optional[_Union[_machine_pb2.MachineFRU, _Mapping]] = ...) -> None: ...

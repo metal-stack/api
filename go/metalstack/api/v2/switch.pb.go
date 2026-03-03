@@ -1116,12 +1116,14 @@ func (x *SwitchWithMachines) GetConnections() []*SwitchNicWithMachine {
 // SwitchNicWithMachine associates a switch port with its connected machine.
 type SwitchNicWithMachine struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Nic is the switch nic the machine is connected to.
-	Nic *SwitchNic `protobuf:"bytes,1,opt,name=nic,proto3" json:"nic,omitempty"`
+	// NicName is the switch nic the machine is connected to.
+	NicName string `protobuf:"bytes,1,opt,name=nic_name,json=nicName,proto3" json:"nic_name,omitempty"`
+	// NicIdentifier is the identifier of the nic the machine is connected to.
+	NicIdentifier string `protobuf:"bytes,2,opt,name=nic_identifier,json=nicIdentifier,proto3" json:"nic_identifier,omitempty"`
 	// Machine connected to this nic.
-	Machine *Machine `protobuf:"bytes,2,opt,name=machine,proto3" json:"machine,omitempty"`
+	Machine *Machine `protobuf:"bytes,3,opt,name=machine,proto3" json:"machine,omitempty"`
 	// FRU of the connected machine.
-	Fru           *MachineFRU `protobuf:"bytes,3,opt,name=fru,proto3" json:"fru,omitempty"`
+	Fru           *MachineFRU `protobuf:"bytes,4,opt,name=fru,proto3" json:"fru,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1156,11 +1158,18 @@ func (*SwitchNicWithMachine) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *SwitchNicWithMachine) GetNic() *SwitchNic {
+func (x *SwitchNicWithMachine) GetNicName() string {
 	if x != nil {
-		return x.Nic
+		return x.NicName
 	}
-	return nil
+	return ""
+}
+
+func (x *SwitchNicWithMachine) GetNicIdentifier() string {
+	if x != nil {
+		return x.NicIdentifier
+	}
+	return ""
 }
 
 func (x *SwitchNicWithMachine) GetMachine() *Machine {
@@ -1271,11 +1280,12 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1c\n" +
 	"\tpartition\x18\x02 \x01(\tR\tpartition\x12\x12\n" +
 	"\x04rack\x18\x03 \x01(\tR\x04rack\x12I\n" +
-	"\vconnections\x18\x04 \x03(\v2'.metalstack.api.v2.SwitchNicWithMachineR\vconnections\"\xad\x01\n" +
-	"\x14SwitchNicWithMachine\x12.\n" +
-	"\x03nic\x18\x01 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\x124\n" +
-	"\amachine\x18\x02 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\x12/\n" +
-	"\x03fru\x18\x03 \x01(\v2\x1d.metalstack.api.v2.MachineFRUR\x03fru*\x89\x02\n" +
+	"\vconnections\x18\x04 \x03(\v2'.metalstack.api.v2.SwitchNicWithMachineR\vconnections\"\xbf\x01\n" +
+	"\x14SwitchNicWithMachine\x12\x19\n" +
+	"\bnic_name\x18\x01 \x01(\tR\anicName\x12%\n" +
+	"\x0enic_identifier\x18\x02 \x01(\tR\rnicIdentifier\x124\n" +
+	"\amachine\x18\x03 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\x12/\n" +
+	"\x03fru\x18\x04 \x01(\v2\x1d.metalstack.api.v2.MachineFRUR\x03fru*\x89\x02\n" +
 	"\bBGPState\x12\x19\n" +
 	"\x15BGP_STATE_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x0eBGP_STATE_IDLE\x10\x01\x1a\b\x82\xb2\x19\x04Idle\x12\"\n" +
@@ -1359,14 +1369,13 @@ var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	17, // 18: metalstack.api.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
 	18, // 19: metalstack.api.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
 	15, // 20: metalstack.api.v2.SwitchWithMachines.connections:type_name -> metalstack.api.v2.SwitchNicWithMachine
-	6,  // 21: metalstack.api.v2.SwitchNicWithMachine.nic:type_name -> metalstack.api.v2.SwitchNic
-	19, // 22: metalstack.api.v2.SwitchNicWithMachine.machine:type_name -> metalstack.api.v2.Machine
-	20, // 23: metalstack.api.v2.SwitchNicWithMachine.fru:type_name -> metalstack.api.v2.MachineFRU
-	24, // [24:24] is the sub-list for method output_type
-	24, // [24:24] is the sub-list for method input_type
-	24, // [24:24] is the sub-list for extension type_name
-	24, // [24:24] is the sub-list for extension extendee
-	0,  // [0:24] is the sub-list for field type_name
+	19, // 21: metalstack.api.v2.SwitchNicWithMachine.machine:type_name -> metalstack.api.v2.Machine
+	20, // 22: metalstack.api.v2.SwitchNicWithMachine.fru:type_name -> metalstack.api.v2.MachineFRU
+	23, // [23:23] is the sub-list for method output_type
+	23, // [23:23] is the sub-list for method input_type
+	23, // [23:23] is the sub-list for extension type_name
+	23, // [23:23] is the sub-list for extension extendee
+	0,  // [0:23] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_switch_proto_init() }
