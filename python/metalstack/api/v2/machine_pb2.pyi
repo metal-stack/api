@@ -611,7 +611,7 @@ class MachineVPN(_message.Message):
     def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ..., ips: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class MachineQuery(_message.Message):
-    __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "bmc", "fru", "hardware", "state", "waiting", "preallocated")
+    __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "bmc", "fru", "hardware", "state", "waiting", "preallocated", "not_allocated")
     UUID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
@@ -628,6 +628,7 @@ class MachineQuery(_message.Message):
     STATE_FIELD_NUMBER: _ClassVar[int]
     WAITING_FIELD_NUMBER: _ClassVar[int]
     PREALLOCATED_FIELD_NUMBER: _ClassVar[int]
+    NOT_ALLOCATED_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     name: str
     partition: str
@@ -644,7 +645,8 @@ class MachineQuery(_message.Message):
     state: MachineState
     waiting: bool
     preallocated: bool
-    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., bmc: _Optional[_Union[MachineBMCQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ..., waiting: _Optional[bool] = ..., preallocated: _Optional[bool] = ...) -> None: ...
+    not_allocated: bool
+    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., bmc: _Optional[_Union[MachineBMCQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ..., waiting: _Optional[bool] = ..., preallocated: _Optional[bool] = ..., not_allocated: _Optional[bool] = ...) -> None: ...
 
 class MachineAllocationQuery(_message.Message):
     __slots__ = ("uuid", "name", "project", "image", "filesystem_layout", "hostname", "allocation_type", "labels", "vpn")

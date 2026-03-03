@@ -1598,6 +1598,12 @@ export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
      * @generated from field: optional bool preallocated = 16;
      */
     preallocated?: boolean;
+    /**
+     * NotAllocated if set to true, only machines which are not allocated are returned.
+     *
+     * @generated from field: optional bool not_allocated = 17;
+     */
+    notAllocated?: boolean;
 };
 /**
  * Describes the message metalstack.api.v2.MachineQuery.
