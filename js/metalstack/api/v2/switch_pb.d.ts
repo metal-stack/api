@@ -1,6 +1,7 @@
 import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Meta } from "./common_pb";
+import type { Machine, MachineFRU } from "./machine_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/api/v2/switch.proto.
@@ -402,6 +403,72 @@ export type SwitchSync = Message<"metalstack.api.v2.SwitchSync"> & {
  * Use `create(SwitchSyncSchema)` to create a new message.
  */
 export declare const SwitchSyncSchema: GenMessage<SwitchSync>;
+/**
+ * SwitchWithMachines contains a mapping from switch ports to connected machines.
+ *
+ * @generated from message metalstack.api.v2.SwitchWithMachines
+ */
+export type SwitchWithMachines = Message<"metalstack.api.v2.SwitchWithMachines"> & {
+    /**
+     * Id of the switch.
+     *
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    /**
+     * Partition of the switch.
+     *
+     * @generated from field: string partition = 2;
+     */
+    partition: string;
+    /**
+     * Rack of the switch.
+     *
+     * @generated from field: string rack = 3;
+     */
+    rack: string;
+    /**
+     * Connections associates switch ports with the machines connected to them.
+     *
+     * @generated from field: repeated metalstack.api.v2.SwitchNicWithMachine connections = 4;
+     */
+    connections: SwitchNicWithMachine[];
+};
+/**
+ * Describes the message metalstack.api.v2.SwitchWithMachines.
+ * Use `create(SwitchWithMachinesSchema)` to create a new message.
+ */
+export declare const SwitchWithMachinesSchema: GenMessage<SwitchWithMachines>;
+/**
+ * SwitchNicWithMachine associates a switch port with its connected machine.
+ *
+ * @generated from message metalstack.api.v2.SwitchNicWithMachine
+ */
+export type SwitchNicWithMachine = Message<"metalstack.api.v2.SwitchNicWithMachine"> & {
+    /**
+     * Nic is the switch nic the machine is connected to.
+     *
+     * @generated from field: metalstack.api.v2.SwitchNic nic = 1;
+     */
+    nic?: SwitchNic;
+    /**
+     * Machine connected to this nic.
+     *
+     * @generated from field: metalstack.api.v2.Machine machine = 2;
+     */
+    machine?: Machine;
+    /**
+     * FRU of the connected machine.
+     *
+     * @generated from field: metalstack.api.v2.MachineFRU fru = 3;
+     */
+    fru?: MachineFRU;
+};
+/**
+ * Describes the message metalstack.api.v2.SwitchNicWithMachine.
+ * Use `create(SwitchNicWithMachineSchema)` to create a new message.
+ */
+export declare const SwitchNicWithMachineSchema: GenMessage<SwitchNicWithMachine>;
 /**
  * BGPState represents the state of a BGP session.
  *

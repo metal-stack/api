@@ -11,8 +11,7 @@ service WrongProjectService {
   rpc Get(WrongProjectServiceGetRequest) returns (WrongProjectServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
   }
-  rpc List(WrongProjectServiceListRequest) returns (WrongProjectServiceListResponse) {
-  }
+  rpc List(WrongProjectServiceListRequest) returns (WrongProjectServiceListResponse) {}
   rpc Update(WrongProjectServiceUpdateRequest) returns (WrongProjectServiceUpdateResponse) {
     option (admin_roles) = ADMIN_ROLE_VIEWER;
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -34,40 +33,40 @@ message WrongProjectServiceAddResponse {
   string login = 1;
 }
 message WrongProjectServiceGetRequest {
-    string uuid = 1;
+  string uuid = 1;
 }
 
 message WrongProjectServiceGetResponse {
-    string uuid = 1;
+  string uuid = 1;
 }
 message WrongProjectServiceListRequest {
-    string uuid = 1;
+  string uuid = 1;
 }
 
 message WrongProjectServiceListResponse {
-    string uuid = 1;
+  string uuid = 1;
 }
 
 message WrongProjectServiceUpdateRequest {
-    string uuid = 1;
-    string project = 2;
-    metalstack.api.v2.Meta meta = 3;
+  string uuid = 1;
+  string project = 2;
+  metalstack.api.v2.Meta meta = 3;
 }
 message WrongProjectServiceUpdateResponse {
-    string uuid = 1;
+  string uuid = 1;
 }
 
 message WrongProjectServiceDeleteRequest {
-    string uuid = 1;
+  string uuid = 1;
 }
 
 message WrongProjectServiceDeleteResponse {
-    string uuid = 1;
+  string uuid = 1;
 }
 message WrongProjectServiceChargeRequest {
-    string uuid = 1;
+  string uuid = 1;
 }
 
 message WrongProjectServiceChargeResponse {
-    string uuid = 1;
+  string uuid = 1;
 }
