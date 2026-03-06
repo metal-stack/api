@@ -311,7 +311,7 @@ export var MachineState;
      */
     MachineState[MachineState["LOCKED"] = 2] = "LOCKED";
     /**
-     * MACHINE_STATE_LOCKED this machine is available for all
+     * MACHINE_STATE_AVAILABLE this machine is available for all
      *
      * @generated from enum value: MACHINE_STATE_AVAILABLE = 3;
      */

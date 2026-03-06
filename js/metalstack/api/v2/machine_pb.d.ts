@@ -1958,7 +1958,7 @@ export declare enum MachineState {
      */
     LOCKED = 2,
     /**
-     * MACHINE_STATE_LOCKED this machine is available for all
+     * MACHINE_STATE_AVAILABLE this machine is available for all
      *
      * @generated from enum value: MACHINE_STATE_AVAILABLE = 3;
      */

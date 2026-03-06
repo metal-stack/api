@@ -86,7 +86,7 @@ const (
 	MachineState_MACHINE_STATE_RESERVED MachineState = 1
 	// MACHINE_STATE_LOCKED this machine is locked
 	MachineState_MACHINE_STATE_LOCKED MachineState = 2
-	// MACHINE_STATE_LOCKED this machine is available for all
+	// MACHINE_STATE_AVAILABLE this machine is available for all
 	MachineState_MACHINE_STATE_AVAILABLE MachineState = 3
 )
 

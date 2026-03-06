@@ -8099,7 +8099,8 @@ Such a network will be created either from a super, or super namespaced.</p></td
                 <td><p>NETWORK_TYPE_CHILD_SHARED indicates a child network of a project which allows the allocation of ips from different projects.
 Connectivity to external networks is not possible, as for normal child networks.
 These networks are usually used to provide connectivity to shared services which are created in child networks, e.g. storage.
-With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.</p></td>
+With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.
+Only one child shared network per project is allowed.</p></td>
               </tr>
             
           </tbody>
@@ -11470,7 +11471,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
               <tr>
                 <td>MACHINE_STATE_AVAILABLE</td>
                 <td>3</td>
-                <td><p>MACHINE_STATE_LOCKED this machine is available for all</p></td>
+                <td><p>MACHINE_STATE_AVAILABLE this machine is available for all</p></td>
               </tr>
             
           </tbody>
