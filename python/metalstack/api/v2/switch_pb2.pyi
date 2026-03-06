@@ -4,6 +4,7 @@ from buf.validate import validate_pb2 as _validate_pb2
 from google.protobuf import duration_pb2 as _duration_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import machine_pb2 as _machine_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
@@ -191,3 +192,25 @@ class SwitchSync(_message.Message):
     duration: _duration_pb2.Duration
     error: str
     def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., duration: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., error: _Optional[str] = ...) -> None: ...
+
+class SwitchWithMachines(_message.Message):
+    __slots__ = ("id", "partition", "rack", "connections")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
+    CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    partition: str
+    rack: str
+    connections: _containers.RepeatedCompositeFieldContainer[SwitchNicWithMachine]
+    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., connections: _Optional[_Iterable[_Union[SwitchNicWithMachine, _Mapping]]] = ...) -> None: ...
+
+class SwitchNicWithMachine(_message.Message):
+    __slots__ = ("nic", "machine", "fru")
+    NIC_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    FRU_FIELD_NUMBER: _ClassVar[int]
+    nic: SwitchNic
+    machine: _machine_pb2.Machine
+    fru: _machine_pb2.MachineFRU
+    def __init__(self, nic: _Optional[_Union[SwitchNic, _Mapping]] = ..., machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ..., fru: _Optional[_Union[_machine_pb2.MachineFRU, _Mapping]] = ...) -> None: ...

@@ -6,6 +6,7 @@ import "buf/validate/validate.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/machine.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
 // Switch represents a network switch.
@@ -153,6 +154,28 @@ message SwitchSync {
   google.protobuf.Duration duration = 2;
   // Error if any occurred.
   optional string error = 3;
+}
+
+// SwitchWithMachines contains a mapping from switch ports to connected machines.
+message SwitchWithMachines {
+  // Id of the switch.
+  string id = 1;
+  // Partition of the switch.
+  string partition = 2;
+  // Rack of the switch.
+  string rack = 3;
+  // Connections associates switch ports with the machines connected to them.
+  repeated SwitchNicWithMachine connections = 4;
+}
+
+// SwitchNicWithMachine associates a switch port with its connected machine.
+message SwitchNicWithMachine {
+  // Nic is the switch nic the machine is connected to.
+  SwitchNic nic = 1;
+  // Machine connected to this nic.
+  metalstack.api.v2.Machine machine = 2;
+  // FRU of the connected machine.
+  metalstack.api.v2.MachineFRU fru = 3;
 }
 
 // BGPState represents the state of a BGP session.
