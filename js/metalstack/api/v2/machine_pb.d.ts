@@ -911,6 +911,12 @@ export type MachineNetwork = Message<"metalstack.api.v2.MachineNetwork"> & {
      * @generated from field: uint32 asn = 8;
      */
     asn: number;
+    /**
+     * Project is the project uuid associated with this network
+     *
+     * @generated from field: optional string project = 9;
+     */
+    project?: string;
 };
 /**
  * Describes the message metalstack.api.v2.MachineNetwork.

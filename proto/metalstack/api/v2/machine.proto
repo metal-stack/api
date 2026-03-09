@@ -438,6 +438,8 @@ message MachineNetwork {
   uint64 vrf = 7;
   // ASN the autonomous system number for this network
   uint32 asn = 8;
+  // Project is the project uuid associated with this network
+  optional string project = 9 [(buf.validate.field).string.uuid = true];
 }
 
 // MachineHardware contains hardware details

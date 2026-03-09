@@ -401,7 +401,7 @@ class FirewallIngressRule(_message.Message):
     def __init__(self, protocol: _Optional[_Union[IPProtocol, str]] = ..., ports: _Optional[_Iterable[int]] = ..., to: _Optional[_Iterable[str]] = ..., comment: _Optional[str] = ..., **kwargs) -> None: ...
 
 class MachineNetwork(_message.Message):
-    __slots__ = ("network", "prefixes", "destination_prefixes", "ips", "network_type", "nat_type", "vrf", "asn")
+    __slots__ = ("network", "prefixes", "destination_prefixes", "ips", "network_type", "nat_type", "vrf", "asn", "project")
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     PREFIXES_FIELD_NUMBER: _ClassVar[int]
     DESTINATION_PREFIXES_FIELD_NUMBER: _ClassVar[int]
@@ -410,6 +410,7 @@ class MachineNetwork(_message.Message):
     NAT_TYPE_FIELD_NUMBER: _ClassVar[int]
     VRF_FIELD_NUMBER: _ClassVar[int]
     ASN_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
     network: str
     prefixes: _containers.RepeatedScalarFieldContainer[str]
     destination_prefixes: _containers.RepeatedScalarFieldContainer[str]
@@ -418,7 +419,8 @@ class MachineNetwork(_message.Message):
     nat_type: _network_pb2.NATType
     vrf: int
     asn: int
-    def __init__(self, network: _Optional[str] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., ips: _Optional[_Iterable[str]] = ..., network_type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., asn: _Optional[int] = ...) -> None: ...
+    project: str
+    def __init__(self, network: _Optional[str] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., ips: _Optional[_Iterable[str]] = ..., network_type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., asn: _Optional[int] = ..., project: _Optional[str] = ...) -> None: ...
 
 class MachineHardware(_message.Message):
     __slots__ = ("memory", "disks", "cpus", "gpus", "nics")

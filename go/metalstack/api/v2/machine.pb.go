@@ -2215,7 +2215,9 @@ type MachineNetwork struct {
 	// VRF the vrf id
 	Vrf uint64 `protobuf:"varint,7,opt,name=vrf,proto3" json:"vrf,omitempty"`
 	// ASN the autonomous system number for this network
-	Asn           uint32 `protobuf:"varint,8,opt,name=asn,proto3" json:"asn,omitempty"`
+	Asn uint32 `protobuf:"varint,8,opt,name=asn,proto3" json:"asn,omitempty"`
+	// Project is the project uuid associated with this network
+	Project       *string `protobuf:"bytes,9,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2304,6 +2306,13 @@ func (x *MachineNetwork) GetAsn() uint32 {
 		return x.Asn
 	}
 	return 0
+}
+
+func (x *MachineNetwork) GetProject() string {
+	if x != nil && x.Project != nil {
+		return *x.Project
+	}
+	return ""
 }
 
 // MachineHardware contains hardware details
@@ -4364,7 +4373,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x05ports\x18\x02 \x03(\rB\x0e\xbaH\v\x92\x01\b\"\x06*\x04\x18\xfc\xff\x03R\x05ports\x12\x1c\n" +
 	"\x02to\x18\x03 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x02to\x12 \n" +
 	"\x04from\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x04from\x121\n" +
-	"\acomment\x18\x05 \x01(\tB\x17\xbaH\x14\xd8\x01\x01r\x0f\x18d2\v^[a-z_ -]*$R\acomment\"\xe7\x02\n" +
+	"\acomment\x18\x05 \x01(\tB\x17\xbaH\x14\xd8\x01\x01r\x0f\x18d2\v^[a-z_ -]*$R\acomment\"\x9c\x03\n" +
 	"\x0eMachineNetwork\x12\x18\n" +
 	"\anetwork\x18\x01 \x01(\tR\anetwork\x12(\n" +
 	"\bprefixes\x18\x02 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\bprefixes\x12?\n" +
@@ -4373,7 +4382,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\fnetwork_type\x18\x05 \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vnetworkType\x12?\n" +
 	"\bnat_type\x18\x06 \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\anatType\x12\x10\n" +
 	"\x03vrf\x18\a \x01(\x04R\x03vrf\x12\x10\n" +
-	"\x03asn\x18\b \x01(\rR\x03asn\"\xfb\x01\n" +
+	"\x03asn\x18\b \x01(\rR\x03asn\x12'\n" +
+	"\aproject\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\aproject\x88\x01\x01B\n" +
+	"\n" +
+	"\b_project\"\xfb\x01\n" +
 	"\x0fMachineHardware\x12\x16\n" +
 	"\x06memory\x18\x01 \x01(\x04R\x06memory\x12;\n" +
 	"\x05disks\x18\x03 \x03(\v2%.metalstack.api.v2.MachineBlockDeviceR\x05disks\x12/\n" +
@@ -4849,6 +4861,7 @@ func file_metalstack_api_v2_machine_proto_init() {
 	file_metalstack_api_v2_machine_proto_msgTypes[5].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[19].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[20].OneofWrappers = []any{}
+	file_metalstack_api_v2_machine_proto_msgTypes[24].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[34].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[40].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[41].OneofWrappers = []any{}
