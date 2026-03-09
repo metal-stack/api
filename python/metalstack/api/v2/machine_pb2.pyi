@@ -401,7 +401,7 @@ class FirewallIngressRule(_message.Message):
     def __init__(self, protocol: _Optional[_Union[IPProtocol, str]] = ..., ports: _Optional[_Iterable[int]] = ..., to: _Optional[_Iterable[str]] = ..., comment: _Optional[str] = ..., **kwargs) -> None: ...
 
 class MachineNetwork(_message.Message):
-    __slots__ = ("network", "prefixes", "destination_prefixes", "ips", "network_type", "nat_type", "vrf", "asn")
+    __slots__ = ("network", "prefixes", "destination_prefixes", "ips", "network_type", "nat_type", "vrf", "asn", "project")
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     PREFIXES_FIELD_NUMBER: _ClassVar[int]
     DESTINATION_PREFIXES_FIELD_NUMBER: _ClassVar[int]
@@ -410,6 +410,7 @@ class MachineNetwork(_message.Message):
     NAT_TYPE_FIELD_NUMBER: _ClassVar[int]
     VRF_FIELD_NUMBER: _ClassVar[int]
     ASN_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
     network: str
     prefixes: _containers.RepeatedScalarFieldContainer[str]
     destination_prefixes: _containers.RepeatedScalarFieldContainer[str]
@@ -418,7 +419,8 @@ class MachineNetwork(_message.Message):
     nat_type: _network_pb2.NATType
     vrf: int
     asn: int
-    def __init__(self, network: _Optional[str] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., ips: _Optional[_Iterable[str]] = ..., network_type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., asn: _Optional[int] = ...) -> None: ...
+    project: str
+    def __init__(self, network: _Optional[str] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., ips: _Optional[_Iterable[str]] = ..., network_type: _Optional[_Union[_network_pb2.NetworkType, str]] = ..., nat_type: _Optional[_Union[_network_pb2.NATType, str]] = ..., vrf: _Optional[int] = ..., asn: _Optional[int] = ..., project: _Optional[str] = ...) -> None: ...
 
 class MachineHardware(_message.Message):
     __slots__ = ("memory", "disks", "cpus", "gpus", "nics")
@@ -611,7 +613,7 @@ class MachineVPN(_message.Message):
     def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ..., ips: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class MachineQuery(_message.Message):
-    __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "bmc", "fru", "hardware", "state")
+    __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "bmc", "fru", "hardware", "state", "waiting", "preallocated", "not_allocated")
     UUID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
@@ -626,6 +628,9 @@ class MachineQuery(_message.Message):
     FRU_FIELD_NUMBER: _ClassVar[int]
     HARDWARE_FIELD_NUMBER: _ClassVar[int]
     STATE_FIELD_NUMBER: _ClassVar[int]
+    WAITING_FIELD_NUMBER: _ClassVar[int]
+    PREALLOCATED_FIELD_NUMBER: _ClassVar[int]
+    NOT_ALLOCATED_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     name: str
     partition: str
@@ -640,7 +645,10 @@ class MachineQuery(_message.Message):
     fru: MachineFRUQuery
     hardware: MachineHardwareQuery
     state: MachineState
-    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., bmc: _Optional[_Union[MachineBMCQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ...) -> None: ...
+    waiting: bool
+    preallocated: bool
+    not_allocated: bool
+    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., bmc: _Optional[_Union[MachineBMCQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ..., waiting: _Optional[bool] = ..., preallocated: _Optional[bool] = ..., not_allocated: _Optional[bool] = ...) -> None: ...
 
 class MachineAllocationQuery(_message.Message):
     __slots__ = ("uuid", "name", "project", "image", "filesystem_layout", "hostname", "allocation_type", "labels", "vpn")

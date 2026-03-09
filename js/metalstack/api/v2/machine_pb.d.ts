@@ -911,6 +911,12 @@ export type MachineNetwork = Message<"metalstack.api.v2.MachineNetwork"> & {
      * @generated from field: uint32 asn = 8;
      */
     asn: number;
+    /**
+     * Project is the project uuid associated with this network
+     *
+     * @generated from field: optional string project = 9;
+     */
+    project?: string;
 };
 /**
  * Describes the message metalstack.api.v2.MachineNetwork.
@@ -1586,6 +1592,24 @@ export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
      * @generated from field: optional metalstack.api.v2.MachineState state = 14;
      */
     state?: MachineState;
+    /**
+     * Waiting indicates this machine is actually waiting.
+     *
+     * @generated from field: optional bool waiting = 15;
+     */
+    waiting?: boolean;
+    /**
+     * Preallocated indicates if this machine is currently preallocated.
+     *
+     * @generated from field: optional bool preallocated = 16;
+     */
+    preallocated?: boolean;
+    /**
+     * NotAllocated if set to true, only machines which are not allocated are returned.
+     *
+     * @generated from field: optional bool not_allocated = 17;
+     */
+    notAllocated?: boolean;
 };
 /**
  * Describes the message metalstack.api.v2.MachineQuery.
@@ -1940,7 +1964,7 @@ export declare enum MachineState {
      */
     LOCKED = 2,
     /**
-     * MACHINE_STATE_LOCKED this machine is available for all
+     * MACHINE_STATE_AVAILABLE this machine is available for all
      *
      * @generated from enum value: MACHINE_STATE_AVAILABLE = 3;
      */

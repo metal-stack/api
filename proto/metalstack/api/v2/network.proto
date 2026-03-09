@@ -313,7 +313,20 @@ enum NetworkType {
   // Connectivity to external networks is not possible, as for normal child networks.
   // These networks are usually used to provide connectivity to shared services which are created in child networks, e.g. storage.
   // With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.
+  // Only one child shared network per project is allowed.
   NETWORK_TYPE_CHILD_SHARED = 6 [(enum_string_value) = "child-shared"];
+
+  /*
+           // PrivatePrimaryUnshared is a network which is for machines which is private
+           PrivatePrimaryUnshared = "privateprimaryunshared" => CHILD
+           // PrivatePrimaryShared is a network which is for machines which is private and shared for other networks
+     // This is the case for firewalls and nodes in storage clusters
+           PrivatePrimaryShared = "privateprimaryshared" => CHILD_SHARED
+           // PrivateSecondaryShared is a network which is for machines which is consumed from a other shared network
+     // This is the case for firewall in other clusters which consume the storage
+     // FIXME ALLOW only one Child Shared Network per project
+           PrivateSecondaryShared = "privatesecondaryshared" => CHILD_SHARED if machine/firewall project != network project
+  */
 }
 
 // NetworkAddressFamily defines the address family of a network

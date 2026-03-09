@@ -8099,7 +8099,8 @@ Such a network will be created either from a super, or super namespaced.</p></td
                 <td><p>NETWORK_TYPE_CHILD_SHARED indicates a child network of a project which allows the allocation of ips from different projects.
 Connectivity to external networks is not possible, as for normal child networks.
 These networks are usually used to provide connectivity to shared services which are created in child networks, e.g. storage.
-With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.</p></td>
+With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.
+Only one child shared network per project is allowed.</p></td>
               </tr>
             
           </tbody>
@@ -9963,6 +9964,13 @@ By default one ip address is acquired per network for the machine </p></td>
                   <td><p>ASN the autonomous system number for this network </p></td>
                 </tr>
               
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project is the project uuid associated with this network </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -10376,6 +10384,27 @@ IntervalInMin minutes. </p></td>
                   <td><a href="#metalstack.api.v2.MachineState">MachineState</a></td>
                   <td>optional</td>
                   <td><p>State this machine has </p></td>
+                </tr>
+              
+                <tr>
+                  <td>waiting</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>Waiting indicates this machine is actually waiting. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>preallocated</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>Preallocated indicates if this machine is currently preallocated. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>not_allocated</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>NotAllocated if set to true, only machines which are not allocated are returned. </p></td>
                 </tr>
               
             </tbody>
@@ -11449,7 +11478,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
               <tr>
                 <td>MACHINE_STATE_AVAILABLE</td>
                 <td>3</td>
-                <td><p>MACHINE_STATE_LOCKED this machine is available for all</p></td>
+                <td><p>MACHINE_STATE_AVAILABLE this machine is available for all</p></td>
               </tr>
             
           </tbody>

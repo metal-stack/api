@@ -438,6 +438,8 @@ message MachineNetwork {
   uint64 vrf = 7;
   // ASN the autonomous system number for this network
   uint32 asn = 8;
+  // Project is the project uuid associated with this network
+  optional string project = 9 [(buf.validate.field).string.uuid = true];
 }
 
 // MachineHardware contains hardware details
@@ -510,7 +512,7 @@ enum MachineState {
   MACHINE_STATE_RESERVED = 1 [(enum_string_value) = "reserved"];
   // MACHINE_STATE_LOCKED this machine is locked
   MACHINE_STATE_LOCKED = 2 [(enum_string_value) = "locked"];
-  // MACHINE_STATE_LOCKED this machine is available for all
+  // MACHINE_STATE_AVAILABLE this machine is available for all
   MACHINE_STATE_AVAILABLE = 3 [(enum_string_value) = "available"];
 }
 
@@ -778,6 +780,12 @@ message MachineQuery {
   optional MachineHardwareQuery hardware = 13;
   // State this machine has
   optional MachineState state = 14;
+  // Waiting indicates this machine is actually waiting.
+  optional bool waiting = 15;
+  // Preallocated indicates if this machine is currently preallocated.
+  optional bool preallocated = 16;
+  // NotAllocated if set to true, only machines which are not allocated are returned.
+  optional bool not_allocated = 17;
 }
 
 // MachineAllocationQuery allocation specific query parameters
