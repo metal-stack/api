@@ -614,9 +614,9 @@ type MachineServiceCreateRequest struct {
 	// if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
 	PlacementTags []string `protobuf:"bytes,15,rep,name=placement_tags,json=placementTags,proto3" json:"placement_tags,omitempty"`
 	// DNSServer the dns servers used for the machine
-	DnsServer []*DNSServer `protobuf:"bytes,16,rep,name=dns_server,json=dnsServer,proto3" json:"dns_server,omitempty"`
+	DnsServers []*DNSServer `protobuf:"bytes,16,rep,name=dns_servers,json=dnsServers,proto3" json:"dns_servers,omitempty"`
 	// NTPServer the ntp servers used for the machine
-	NtpServer []*NTPServer `protobuf:"bytes,17,rep,name=ntp_server,json=ntpServer,proto3" json:"ntp_server,omitempty"`
+	NtpServers []*NTPServer `protobuf:"bytes,17,rep,name=ntp_servers,json=ntpServers,proto3" json:"ntp_servers,omitempty"`
 	// AllocationType of this machine
 	AllocationType MachineAllocationType `protobuf:"varint,18,opt,name=allocation_type,json=allocationType,proto3,enum=metalstack.api.v2.MachineAllocationType" json:"allocation_type,omitempty"`
 	// FirewallSpec provides firewall specific parameters if allocationType is firewall
@@ -760,16 +760,16 @@ func (x *MachineServiceCreateRequest) GetPlacementTags() []string {
 	return nil
 }
 
-func (x *MachineServiceCreateRequest) GetDnsServer() []*DNSServer {
+func (x *MachineServiceCreateRequest) GetDnsServers() []*DNSServer {
 	if x != nil {
-		return x.DnsServer
+		return x.DnsServers
 	}
 	return nil
 }
 
-func (x *MachineServiceCreateRequest) GetNtpServer() []*NTPServer {
+func (x *MachineServiceCreateRequest) GetNtpServers() []*NTPServer {
 	if x != nil {
-		return x.NtpServer
+		return x.NtpServers
 	}
 	return nil
 }
@@ -1718,9 +1718,9 @@ type MachineAllocation struct {
 	// FirewallRules to be applied if this is a firewall
 	FirewallRules *FirewallRules `protobuf:"bytes,14,opt,name=firewall_rules,json=firewallRules,proto3" json:"firewall_rules,omitempty"`
 	// DNSServers for this machine
-	DnsServer []*DNSServer `protobuf:"bytes,15,rep,name=dns_server,json=dnsServer,proto3" json:"dns_server,omitempty"`
+	DnsServers []*DNSServer `protobuf:"bytes,15,rep,name=dns_servers,json=dnsServers,proto3" json:"dns_servers,omitempty"`
 	// NTPServers for this machine
-	NtpServer []*NTPServer `protobuf:"bytes,16,rep,name=ntp_server,json=ntpServer,proto3" json:"ntp_server,omitempty"`
+	NtpServers []*NTPServer `protobuf:"bytes,16,rep,name=ntp_servers,json=ntpServers,proto3" json:"ntp_servers,omitempty"`
 	// VPN connection configuration
 	Vpn           *MachineVPN `protobuf:"bytes,17,opt,name=vpn,proto3" json:"vpn,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -1855,16 +1855,16 @@ func (x *MachineAllocation) GetFirewallRules() *FirewallRules {
 	return nil
 }
 
-func (x *MachineAllocation) GetDnsServer() []*DNSServer {
+func (x *MachineAllocation) GetDnsServers() []*DNSServer {
 	if x != nil {
-		return x.DnsServer
+		return x.DnsServers
 	}
 	return nil
 }
 
-func (x *MachineAllocation) GetNtpServer() []*NTPServer {
+func (x *MachineAllocation) GetNtpServers() []*NTPServer {
 	if x != nil {
-		return x.NtpServer
+		return x.NtpServers
 	}
 	return nil
 }
@@ -4201,7 +4201,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xc6\b\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xca\b\n" +
 	"\x1bMachineServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12!\n" +
 	"\x04uuid\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12\x1f\n" +
@@ -4218,12 +4218,12 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x06labels\x18\f \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12G\n" +
 	"\bnetworks\x18\r \x03(\v2+.metalstack.api.v2.MachineAllocationNetworkR\bnetworks\x128\n" +
 	"\x03ips\x18\x0e \x03(\v2&.metalstack.api.v2.MachineAllocationIpR\x03ips\x12/\n" +
-	"\x0eplacement_tags\x18\x0f \x03(\tB\b\xbaH\x05\x92\x01\x02\x10@R\rplacementTags\x12E\n" +
-	"\n" +
-	"dns_server\x18\x10 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12E\n" +
-	"\n" +
-	"ntp_server\x18\x11 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
-	"R\tntpServer\x12[\n" +
+	"\x0eplacement_tags\x18\x0f \x03(\tB\b\xbaH\x05\x92\x01\x02\x10@R\rplacementTags\x12G\n" +
+	"\vdns_servers\x18\x10 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\n" +
+	"dnsServers\x12G\n" +
+	"\vntp_servers\x18\x11 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
+	"R\n" +
+	"ntpServers\x12[\n" +
 	"\x0fallocation_type\x18\x12 \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0eallocationType\x12D\n" +
 	"\rfirewall_spec\x18\x13 \x01(\v2\x1f.metalstack.api.v2.FirewallSpecR\ffirewallSpecB\a\n" +
 	"\x05_uuidB\x0e\n" +
@@ -4291,7 +4291,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x10MachineCondition\x12?\n" +
 	"\x05state\x18\x01 \x01(\x0e2\x1f.metalstack.api.v2.MachineStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05state\x12-\n" +
 	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12 \n" +
-	"\x06issuer\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06issuer\"\xa8\a\n" +
+	"\x06issuer\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06issuer\"\xac\a\n" +
 	"\x11MachineAllocation\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x1f\n" +
@@ -4308,12 +4308,12 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x0fssh_public_keys\x18\v \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x12%\n" +
 	"\buserdata\x18\f \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80\x02R\buserdata\x12[\n" +
 	"\x0fallocation_type\x18\r \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0eallocationType\x12G\n" +
-	"\x0efirewall_rules\x18\x0e \x01(\v2 .metalstack.api.v2.FirewallRulesR\rfirewallRules\x12E\n" +
-	"\n" +
-	"dns_server\x18\x0f \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12E\n" +
-	"\n" +
-	"ntp_server\x18\x10 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
-	"R\tntpServer\x12/\n" +
+	"\x0efirewall_rules\x18\x0e \x01(\v2 .metalstack.api.v2.FirewallRulesR\rfirewallRules\x12G\n" +
+	"\vdns_servers\x18\x0f \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\n" +
+	"dnsServers\x12G\n" +
+	"\vntp_servers\x18\x10 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
+	"R\n" +
+	"ntpServers\x12/\n" +
 	"\x03vpn\x18\x11 \x01(\v2\x1d.metalstack.api.v2.MachineVPNR\x03vpn\"\x8a\x01\n" +
 	"\x18MachineAllocationNetwork\x12%\n" +
 	"\anetwork\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anetwork\x120\n" +
@@ -4708,8 +4708,8 @@ var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	55, // 1: metalstack.api.v2.MachineServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
 	26, // 2: metalstack.api.v2.MachineServiceCreateRequest.networks:type_name -> metalstack.api.v2.MachineAllocationNetwork
 	27, // 3: metalstack.api.v2.MachineServiceCreateRequest.ips:type_name -> metalstack.api.v2.MachineAllocationIp
-	56, // 4: metalstack.api.v2.MachineServiceCreateRequest.dns_server:type_name -> metalstack.api.v2.DNSServer
-	57, // 5: metalstack.api.v2.MachineServiceCreateRequest.ntp_server:type_name -> metalstack.api.v2.NTPServer
+	56, // 4: metalstack.api.v2.MachineServiceCreateRequest.dns_servers:type_name -> metalstack.api.v2.DNSServer
+	57, // 5: metalstack.api.v2.MachineServiceCreateRequest.ntp_servers:type_name -> metalstack.api.v2.NTPServer
 	5,  // 6: metalstack.api.v2.MachineServiceCreateRequest.allocation_type:type_name -> metalstack.api.v2.MachineAllocationType
 	10, // 7: metalstack.api.v2.MachineServiceCreateRequest.firewall_spec:type_name -> metalstack.api.v2.FirewallSpec
 	28, // 8: metalstack.api.v2.FirewallSpec.firewall_rules:type_name -> metalstack.api.v2.FirewallRules
@@ -4739,8 +4739,8 @@ var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	31, // 32: metalstack.api.v2.MachineAllocation.networks:type_name -> metalstack.api.v2.MachineNetwork
 	5,  // 33: metalstack.api.v2.MachineAllocation.allocation_type:type_name -> metalstack.api.v2.MachineAllocationType
 	28, // 34: metalstack.api.v2.MachineAllocation.firewall_rules:type_name -> metalstack.api.v2.FirewallRules
-	56, // 35: metalstack.api.v2.MachineAllocation.dns_server:type_name -> metalstack.api.v2.DNSServer
-	57, // 36: metalstack.api.v2.MachineAllocation.ntp_server:type_name -> metalstack.api.v2.NTPServer
+	56, // 35: metalstack.api.v2.MachineAllocation.dns_servers:type_name -> metalstack.api.v2.DNSServer
+	57, // 36: metalstack.api.v2.MachineAllocation.ntp_servers:type_name -> metalstack.api.v2.NTPServer
 	46, // 37: metalstack.api.v2.MachineAllocation.vpn:type_name -> metalstack.api.v2.MachineVPN
 	29, // 38: metalstack.api.v2.FirewallRules.egress:type_name -> metalstack.api.v2.FirewallEgressRule
 	30, // 39: metalstack.api.v2.FirewallRules.ingress:type_name -> metalstack.api.v2.FirewallIngressRule
