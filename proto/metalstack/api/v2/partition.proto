@@ -31,9 +31,9 @@ message Partition {
   // PartitionBootConfiguration defines how metal-hammer boots
   PartitionBootConfiguration boot_configuration = 4;
   // DNSServers for this partition
-  repeated DNSServer dns_server = 5 [(buf.validate.field).repeated.max_items = 3];
+  repeated DNSServer dns_servers = 5 [(buf.validate.field).repeated.max_items = 3];
   // NTPServers for this partition
-  repeated NTPServer ntp_server = 6 [(buf.validate.field).repeated.max_items = 10];
+  repeated NTPServer ntp_servers = 6 [(buf.validate.field).repeated.max_items = 10];
   // ManagementServiceAddresses defines where the management is reachable
   // should be in the form <ip|host>:<port>
   repeated string mgmt_service_addresses = 7;
