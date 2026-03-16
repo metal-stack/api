@@ -81,9 +81,9 @@ type PartitionServiceUpdateRequest struct {
 	// PartitionBootConfiguration defines how metal-hammer boots
 	BootConfiguration *v2.PartitionBootConfiguration `protobuf:"bytes,4,opt,name=boot_configuration,json=bootConfiguration,proto3" json:"boot_configuration,omitempty"`
 	// DNSServers for this partition
-	DnsServer []*v2.DNSServer `protobuf:"bytes,5,rep,name=dns_server,json=dnsServer,proto3" json:"dns_server,omitempty"`
+	DnsServers []*v2.DNSServer `protobuf:"bytes,5,rep,name=dns_servers,json=dnsServers,proto3" json:"dns_servers,omitempty"`
 	// NTPServers for this partition
-	NtpServer []*v2.NTPServer `protobuf:"bytes,6,rep,name=ntp_server,json=ntpServer,proto3" json:"ntp_server,omitempty"`
+	NtpServers []*v2.NTPServer `protobuf:"bytes,6,rep,name=ntp_servers,json=ntpServers,proto3" json:"ntp_servers,omitempty"`
 	// ManagementServiceAddresses defines where the management is reachable
 	// should be in the form <ip|host>:<port>
 	// FIXME validation
@@ -152,16 +152,16 @@ func (x *PartitionServiceUpdateRequest) GetBootConfiguration() *v2.PartitionBoot
 	return nil
 }
 
-func (x *PartitionServiceUpdateRequest) GetDnsServer() []*v2.DNSServer {
+func (x *PartitionServiceUpdateRequest) GetDnsServers() []*v2.DNSServer {
 	if x != nil {
-		return x.DnsServer
+		return x.DnsServers
 	}
 	return nil
 }
 
-func (x *PartitionServiceUpdateRequest) GetNtpServer() []*v2.NTPServer {
+func (x *PartitionServiceUpdateRequest) GetNtpServers() []*v2.NTPServer {
 	if x != nil {
-		return x.NtpServer
+		return x.NtpServers
 	}
 	return nil
 }
@@ -710,18 +710,18 @@ const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\n" +
 	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\x1a(metalstack/api/v2/predefined_rules.proto\"[\n" +
 	"\x1dPartitionServiceCreateRequest\x12:\n" +
-	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xb3\x04\n" +
+	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xb7\x04\n" +
 	"\x1dPartitionServiceUpdateRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
 	"updateMeta\x122\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12\\\n" +
-	"\x12boot_configuration\x18\x04 \x01(\v2-.metalstack.api.v2.PartitionBootConfigurationR\x11bootConfiguration\x12E\n" +
-	"\n" +
-	"dns_server\x18\x05 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12E\n" +
-	"\n" +
-	"ntp_server\x18\x06 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
-	"R\tntpServer\x124\n" +
+	"\x12boot_configuration\x18\x04 \x01(\v2-.metalstack.api.v2.PartitionBootConfigurationR\x11bootConfiguration\x12G\n" +
+	"\vdns_servers\x18\x05 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\n" +
+	"dnsServers\x12G\n" +
+	"\vntp_servers\x18\x06 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
+	"R\n" +
+	"ntpServers\x124\n" +
 	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\x12<\n" +
 	"\x06labels\x18\b \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\t\n" +
@@ -808,8 +808,8 @@ var file_metalstack_admin_v2_partition_proto_depIdxs = []int32{
 	10, // 0: metalstack.admin.v2.PartitionServiceCreateRequest.partition:type_name -> metalstack.api.v2.Partition
 	11, // 1: metalstack.admin.v2.PartitionServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
 	12, // 2: metalstack.admin.v2.PartitionServiceUpdateRequest.boot_configuration:type_name -> metalstack.api.v2.PartitionBootConfiguration
-	13, // 3: metalstack.admin.v2.PartitionServiceUpdateRequest.dns_server:type_name -> metalstack.api.v2.DNSServer
-	14, // 4: metalstack.admin.v2.PartitionServiceUpdateRequest.ntp_server:type_name -> metalstack.api.v2.NTPServer
+	13, // 3: metalstack.admin.v2.PartitionServiceUpdateRequest.dns_servers:type_name -> metalstack.api.v2.DNSServer
+	14, // 4: metalstack.admin.v2.PartitionServiceUpdateRequest.ntp_servers:type_name -> metalstack.api.v2.NTPServer
 	15, // 5: metalstack.admin.v2.PartitionServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	10, // 6: metalstack.admin.v2.PartitionServiceCreateResponse.partition:type_name -> metalstack.api.v2.Partition
 	10, // 7: metalstack.admin.v2.PartitionServiceUpdateResponse.partition:type_name -> metalstack.api.v2.Partition
