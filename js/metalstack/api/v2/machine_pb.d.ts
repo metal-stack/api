@@ -157,15 +157,15 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
     /**
      * DNSServer the dns servers used for the machine
      *
-     * @generated from field: repeated metalstack.api.v2.DNSServer dns_server = 16;
+     * @generated from field: repeated metalstack.api.v2.DNSServer dns_servers = 16;
      */
-    dnsServer: DNSServer[];
+    dnsServers: DNSServer[];
     /**
      * NTPServer the ntp servers used for the machine
      *
-     * @generated from field: repeated metalstack.api.v2.NTPServer ntp_server = 17;
+     * @generated from field: repeated metalstack.api.v2.NTPServer ntp_servers = 17;
      */
-    ntpServer: NTPServer[];
+    ntpServers: NTPServer[];
     /**
      * AllocationType of this machine
      *
@@ -685,15 +685,15 @@ export type MachineAllocation = Message<"metalstack.api.v2.MachineAllocation"> &
     /**
      * DNSServers for this machine
      *
-     * @generated from field: repeated metalstack.api.v2.DNSServer dns_server = 15;
+     * @generated from field: repeated metalstack.api.v2.DNSServer dns_servers = 15;
      */
-    dnsServer: DNSServer[];
+    dnsServers: DNSServer[];
     /**
      * NTPServers for this machine
      *
-     * @generated from field: repeated metalstack.api.v2.NTPServer ntp_server = 16;
+     * @generated from field: repeated metalstack.api.v2.NTPServer ntp_servers = 16;
      */
-    ntpServer: NTPServer[];
+    ntpServers: NTPServer[];
     /**
      * VPN connection configuration
      *

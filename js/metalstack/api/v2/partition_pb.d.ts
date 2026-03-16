@@ -38,15 +38,15 @@ export type Partition = Message<"metalstack.api.v2.Partition"> & {
     /**
      * DNSServers for this partition
      *
-     * @generated from field: repeated metalstack.api.v2.DNSServer dns_server = 5;
+     * @generated from field: repeated metalstack.api.v2.DNSServer dns_servers = 5;
      */
-    dnsServer: DNSServer[];
+    dnsServers: DNSServer[];
     /**
      * NTPServers for this partition
      *
-     * @generated from field: repeated metalstack.api.v2.NTPServer ntp_server = 6;
+     * @generated from field: repeated metalstack.api.v2.NTPServer ntp_servers = 6;
      */
-    ntpServer: NTPServer[];
+    ntpServers: NTPServer[];
     /**
      * ManagementServiceAddresses defines where the management is reachable
      * should be in the form <ip|host>:<port>

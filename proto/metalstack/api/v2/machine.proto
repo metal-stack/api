@@ -124,9 +124,9 @@ message MachineServiceCreateRequest {
   // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
   repeated string placement_tags = 15 [(buf.validate.field).repeated.max_items = 64];
   // DNSServer the dns servers used for the machine
-  repeated DNSServer dns_server = 16 [(buf.validate.field).repeated.max_items = 3];
+  repeated DNSServer dns_servers = 16 [(buf.validate.field).repeated.max_items = 3];
   // NTPServer the ntp servers used for the machine
-  repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
+  repeated NTPServer ntp_servers = 17 [(buf.validate.field).repeated.max_items = 10];
   // AllocationType of this machine
   MachineAllocationType allocation_type = 18 [(buf.validate.field).enum.defined_only = true];
   // FirewallSpec provides firewall specific parameters if allocationType is firewall
@@ -332,9 +332,9 @@ message MachineAllocation {
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 14;
   // DNSServers for this machine
-  repeated DNSServer dns_server = 15 [(buf.validate.field).repeated.max_items = 3];
+  repeated DNSServer dns_servers = 15 [(buf.validate.field).repeated.max_items = 3];
   // NTPServers for this machine
-  repeated NTPServer ntp_server = 16 [(buf.validate.field).repeated.max_items = 10];
+  repeated NTPServer ntp_servers = 16 [(buf.validate.field).repeated.max_items = 10];
   // VPN connection configuration
   MachineVPN vpn = 17;
 }

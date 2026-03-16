@@ -10,22 +10,22 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class Partition(_message.Message):
-    __slots__ = ("id", "meta", "description", "boot_configuration", "dns_server", "ntp_server", "mgmt_service_addresses")
+    __slots__ = ("id", "meta", "description", "boot_configuration", "dns_servers", "ntp_servers", "mgmt_service_addresses")
     ID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     BOOT_CONFIGURATION_FIELD_NUMBER: _ClassVar[int]
-    DNS_SERVER_FIELD_NUMBER: _ClassVar[int]
-    NTP_SERVER_FIELD_NUMBER: _ClassVar[int]
+    DNS_SERVERS_FIELD_NUMBER: _ClassVar[int]
+    NTP_SERVERS_FIELD_NUMBER: _ClassVar[int]
     MGMT_SERVICE_ADDRESSES_FIELD_NUMBER: _ClassVar[int]
     id: str
     meta: _common_pb2.Meta
     description: str
     boot_configuration: PartitionBootConfiguration
-    dns_server: _containers.RepeatedCompositeFieldContainer[DNSServer]
-    ntp_server: _containers.RepeatedCompositeFieldContainer[NTPServer]
+    dns_servers: _containers.RepeatedCompositeFieldContainer[DNSServer]
+    ntp_servers: _containers.RepeatedCompositeFieldContainer[NTPServer]
     mgmt_service_addresses: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., boot_configuration: _Optional[_Union[PartitionBootConfiguration, _Mapping]] = ..., dns_server: _Optional[_Iterable[_Union[DNSServer, _Mapping]]] = ..., ntp_server: _Optional[_Iterable[_Union[NTPServer, _Mapping]]] = ..., mgmt_service_addresses: _Optional[_Iterable[str]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., boot_configuration: _Optional[_Union[PartitionBootConfiguration, _Mapping]] = ..., dns_servers: _Optional[_Iterable[_Union[DNSServer, _Mapping]]] = ..., ntp_servers: _Optional[_Iterable[_Union[NTPServer, _Mapping]]] = ..., mgmt_service_addresses: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class PartitionQuery(_message.Message):
     __slots__ = ("id", "labels")
