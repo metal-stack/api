@@ -2,6 +2,7 @@
 
 import pyqwest
 
+import metalstack.admin.v2.audit_connect as admin_audit_connect
 import metalstack.admin.v2.component_connect as admin_component_connect
 import metalstack.admin.v2.filesystem_connect as admin_filesystem_connect
 import metalstack.admin.v2.image_connect as admin_image_connect
@@ -19,6 +20,7 @@ import metalstack.admin.v2.tenant_connect as admin_tenant_connect
 import metalstack.admin.v2.token_connect as admin_token_connect
 import metalstack.admin.v2.vpn_connect as admin_vpn_connect
 
+import metalstack.api.v2.audit_connect as api_audit_connect
 import metalstack.api.v2.filesystem_connect as api_filesystem_connect
 import metalstack.api.v2.health_connect as api_health_connect
 import metalstack.api.v2.image_connect as api_image_connect
@@ -72,6 +74,9 @@ class Client:
             self._baseurl = baseurl
             self._client = client
 
+
+        def audit(self):
+            return admin_audit_connect.AuditServiceClientSync(address=self._baseurl, http_client=self._client)
 
         def component(self):
             return admin_component_connect.ComponentServiceClientSync(address=self._baseurl, http_client=self._client)
@@ -127,6 +132,9 @@ class Client:
             self._baseurl = baseurl
             self._client = client
 
+
+        def audit(self):
+            return api_audit_connect.AuditServiceClientSync(address=self._baseurl, http_client=self._client)
 
         def filesystem(self):
             return api_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, http_client=self._client)

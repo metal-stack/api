@@ -26,6 +26,7 @@ type (
 		interceptors []connect.Interceptor
 	}
 	Adminv2 interface {
+		Audit() adminv2connect.AuditServiceClient
 		Component() adminv2connect.ComponentServiceClient
 		Filesystem() adminv2connect.FilesystemServiceClient
 		Image() adminv2connect.ImageServiceClient
@@ -45,6 +46,7 @@ type (
 	}
 
 	adminv2 struct {
+		auditservice               adminv2connect.AuditServiceClient
 		componentservice           adminv2connect.ComponentServiceClient
 		filesystemservice          adminv2connect.FilesystemServiceClient
 		imageservice               adminv2connect.ImageServiceClient
@@ -64,6 +66,7 @@ type (
 	}
 
 	Apiv2 interface {
+		Audit() apiv2connect.AuditServiceClient
 		Filesystem() apiv2connect.FilesystemServiceClient
 		Health() apiv2connect.HealthServiceClient
 		Image() apiv2connect.ImageServiceClient
@@ -83,6 +86,7 @@ type (
 	}
 
 	apiv2 struct {
+		auditservice               apiv2connect.AuditServiceClient
 		filesystemservice          apiv2connect.FilesystemServiceClient
 		healthservice              apiv2connect.HealthServiceClient
 		imageservice               apiv2connect.ImageServiceClient
@@ -149,6 +153,12 @@ func New(config *DialConfig) (Client, error) {
 
 func (c *client) Adminv2() Adminv2 {
 	a := &adminv2{
+		auditservice: adminv2connect.NewAuditServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		componentservice: adminv2connect.NewComponentServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -249,6 +259,9 @@ func (c *client) Adminv2() Adminv2 {
 	return a
 }
 
+func (c *adminv2) Audit() adminv2connect.AuditServiceClient {
+	return c.auditservice
+}
 func (c *adminv2) Component() adminv2connect.ComponentServiceClient {
 	return c.componentservice
 }
@@ -300,6 +313,12 @@ func (c *adminv2) VPN() adminv2connect.VPNServiceClient {
 
 func (c *client) Apiv2() Apiv2 {
 	a := &apiv2{
+		auditservice: apiv2connect.NewAuditServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		filesystemservice: apiv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -400,6 +419,9 @@ func (c *client) Apiv2() Apiv2 {
 	return a
 }
 
+func (c *apiv2) Audit() apiv2connect.AuditServiceClient {
+	return c.auditservice
+}
 func (c *apiv2) Filesystem() apiv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }

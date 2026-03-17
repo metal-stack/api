@@ -33,6 +33,7 @@ type (
 		t *testing.T
 	}
 	adminv2 struct {
+		auditservice               *adminv2mocks.AuditServiceClient
 		componentservice           *adminv2mocks.ComponentServiceClient
 		filesystemservice          *adminv2mocks.FilesystemServiceClient
 		imageservice               *adminv2mocks.ImageServiceClient
@@ -52,6 +53,7 @@ type (
 	}
 
 	Adminv2MockFns struct {
+		Audit               func(m *mock.Mock)
 		Component           func(m *mock.Mock)
 		Filesystem          func(m *mock.Mock)
 		Image               func(m *mock.Mock)
@@ -70,6 +72,7 @@ type (
 		VPN                 func(m *mock.Mock)
 	}
 	apiv2 struct {
+		auditservice               *apiv2mocks.AuditServiceClient
 		filesystemservice          *apiv2mocks.FilesystemServiceClient
 		healthservice              *apiv2mocks.HealthServiceClient
 		imageservice               *apiv2mocks.ImageServiceClient
@@ -89,6 +92,7 @@ type (
 	}
 
 	Apiv2MockFns struct {
+		Audit               func(m *mock.Mock)
 		Filesystem          func(m *mock.Mock)
 		Health              func(m *mock.Mock)
 		Image               func(m *mock.Mock)
@@ -153,6 +157,7 @@ func (w wrapper) Adminv2(fns *Adminv2MockFns) *adminv2 {
 
 func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	a := &adminv2{
+		auditservice:               adminv2mocks.NewAuditServiceClient(t),
 		componentservice:           adminv2mocks.NewComponentServiceClient(t),
 		filesystemservice:          adminv2mocks.NewFilesystemServiceClient(t),
 		imageservice:               adminv2mocks.NewImageServiceClient(t),
@@ -172,6 +177,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	}
 
 	if fns != nil {
+		if fns.Audit != nil {
+			fns.Audit(&a.auditservice.Mock)
+		}
 		if fns.Component != nil {
 			fns.Component(&a.componentservice.Mock)
 		}
@@ -226,6 +234,9 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	return a
 }
 
+func (c *adminv2) Audit() adminv2connect.AuditServiceClient {
+	return c.auditservice
+}
 func (c *adminv2) Component() adminv2connect.ComponentServiceClient {
 	return c.componentservice
 }
@@ -281,6 +292,7 @@ func (w wrapper) Apiv2(fns *Apiv2MockFns) *apiv2 {
 
 func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 	a := &apiv2{
+		auditservice:               apiv2mocks.NewAuditServiceClient(t),
 		filesystemservice:          apiv2mocks.NewFilesystemServiceClient(t),
 		healthservice:              apiv2mocks.NewHealthServiceClient(t),
 		imageservice:               apiv2mocks.NewImageServiceClient(t),
@@ -300,6 +312,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 	}
 
 	if fns != nil {
+		if fns.Audit != nil {
+			fns.Audit(&a.auditservice.Mock)
+		}
 		if fns.Filesystem != nil {
 			fns.Filesystem(&a.filesystemservice.Mock)
 		}
@@ -354,6 +369,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 	return a
 }
 
+func (c *apiv2) Audit() apiv2connect.AuditServiceClient {
+	return c.auditservice
+}
 func (c *apiv2) Filesystem() apiv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }
