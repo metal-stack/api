@@ -780,9 +780,9 @@ message MachineQuery {
   optional MachineHardwareQuery hardware = 13;
   // State this machine has
   optional MachineState state = 14;
-  // Waiting indicates this machine is actually waiting.
+  // Waiting if set to true, only waiting machines are returned.
   optional bool waiting = 15;
-  // Preallocated indicates if this machine is currently preallocated.
+  // Preallocated if set to true, only machines which are preallocated are returned.
   optional bool preallocated = 16;
   // NotAllocated if set to true, only machines which are not allocated are returned.
   optional bool not_allocated = 17;

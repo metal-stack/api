@@ -1872,14 +1872,14 @@ export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
   state?: MachineState;
 
   /**
-   * Waiting indicates this machine is actually waiting.
+   * Waiting if set to true, only waiting machines are returned.
    *
    * @generated from field: optional bool waiting = 15;
    */
   waiting?: boolean;
 
   /**
-   * Preallocated indicates if this machine is currently preallocated.
+   * Preallocated if set to true, only machines which are preallocated are returned.
    *
    * @generated from field: optional bool preallocated = 16;
    */

@@ -3495,9 +3495,9 @@ type MachineQuery struct {
 	Hardware *MachineHardwareQuery `protobuf:"bytes,13,opt,name=hardware,proto3,oneof" json:"hardware,omitempty"`
 	// State this machine has
 	State *MachineState `protobuf:"varint,14,opt,name=state,proto3,enum=metalstack.api.v2.MachineState,oneof" json:"state,omitempty"`
-	// Waiting indicates this machine is actually waiting.
+	// Waiting if set to true, only waiting machines are returned.
 	Waiting *bool `protobuf:"varint,15,opt,name=waiting,proto3,oneof" json:"waiting,omitempty"`
-	// Preallocated indicates if this machine is currently preallocated.
+	// Preallocated if set to true, only machines which are preallocated are returned.
 	Preallocated *bool `protobuf:"varint,16,opt,name=preallocated,proto3,oneof" json:"preallocated,omitempty"`
 	// NotAllocated if set to true, only machines which are not allocated are returned.
 	NotAllocated  *bool `protobuf:"varint,17,opt,name=not_allocated,json=notAllocated,proto3,oneof" json:"not_allocated,omitempty"`
