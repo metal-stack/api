@@ -55,7 +55,7 @@ message AuditTrace {
   AuditPhase phase = 10;
 }
 
-// AuditServiceListRequest is the request payload to list audits
+// AuditQuery is the query for audit traces
 message AuditQuery {
   // Uuid of the audit trace
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];

@@ -203,7 +203,7 @@ func (x *AuditTrace) GetPhase() AuditPhase {
 	return AuditPhase_AUDIT_PHASE_UNSPECIFIED
 }
 
-// AuditServiceListRequest is the request payload to list audits
+// AuditQuery is the query for audit traces
 type AuditQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the audit trace

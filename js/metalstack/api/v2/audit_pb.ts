@@ -102,7 +102,7 @@ export const AuditTraceSchema: GenMessage<AuditTrace> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_audit, 0);
 
 /**
- * AuditServiceListRequest is the request payload to list audits
+ * AuditQuery is the query for audit traces
  *
  * @generated from message metalstack.api.v2.AuditQuery
  */
