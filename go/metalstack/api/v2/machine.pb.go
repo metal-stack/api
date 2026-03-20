@@ -86,7 +86,7 @@ const (
 	MachineState_MACHINE_STATE_RESERVED MachineState = 1
 	// MACHINE_STATE_LOCKED this machine is locked
 	MachineState_MACHINE_STATE_LOCKED MachineState = 2
-	// MACHINE_STATE_LOCKED this machine is available for all
+	// MACHINE_STATE_AVAILABLE this machine is available for all
 	MachineState_MACHINE_STATE_AVAILABLE MachineState = 3
 )
 
@@ -2215,7 +2215,9 @@ type MachineNetwork struct {
 	// VRF the vrf id
 	Vrf uint64 `protobuf:"varint,7,opt,name=vrf,proto3" json:"vrf,omitempty"`
 	// ASN the autonomous system number for this network
-	Asn           uint32 `protobuf:"varint,8,opt,name=asn,proto3" json:"asn,omitempty"`
+	Asn uint32 `protobuf:"varint,8,opt,name=asn,proto3" json:"asn,omitempty"`
+	// Project is the project uuid associated with this network
+	Project       *string `protobuf:"bytes,9,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2304,6 +2306,13 @@ func (x *MachineNetwork) GetAsn() uint32 {
 		return x.Asn
 	}
 	return 0
+}
+
+func (x *MachineNetwork) GetProject() string {
+	if x != nil && x.Project != nil {
+		return *x.Project
+	}
+	return ""
 }
 
 // MachineHardware contains hardware details
@@ -3485,7 +3494,16 @@ type MachineQuery struct {
 	// Hardware specific machine query
 	Hardware *MachineHardwareQuery `protobuf:"bytes,13,opt,name=hardware,proto3,oneof" json:"hardware,omitempty"`
 	// State this machine has
-	State         *MachineState `protobuf:"varint,14,opt,name=state,proto3,enum=metalstack.api.v2.MachineState,oneof" json:"state,omitempty"`
+	State *MachineState `protobuf:"varint,14,opt,name=state,proto3,enum=metalstack.api.v2.MachineState,oneof" json:"state,omitempty"`
+	// Waiting if set to true, only waiting machines are returned.
+	// Only useful for admins.
+	Waiting *bool `protobuf:"varint,15,opt,name=waiting,proto3,oneof" json:"waiting,omitempty"`
+	// Preallocated if set to true, only machines which are preallocated are returned.
+	// Only useful for admins.
+	Preallocated *bool `protobuf:"varint,16,opt,name=preallocated,proto3,oneof" json:"preallocated,omitempty"`
+	// NotAllocated if set to true, only machines which are not allocated are returned.
+	// Only useful for admins.
+	NotAllocated  *bool `protobuf:"varint,17,opt,name=not_allocated,json=notAllocated,proto3,oneof" json:"not_allocated,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3616,6 +3634,27 @@ func (x *MachineQuery) GetState() MachineState {
 		return *x.State
 	}
 	return MachineState_MACHINE_STATE_UNSPECIFIED
+}
+
+func (x *MachineQuery) GetWaiting() bool {
+	if x != nil && x.Waiting != nil {
+		return *x.Waiting
+	}
+	return false
+}
+
+func (x *MachineQuery) GetPreallocated() bool {
+	if x != nil && x.Preallocated != nil {
+		return *x.Preallocated
+	}
+	return false
+}
+
+func (x *MachineQuery) GetNotAllocated() bool {
+	if x != nil && x.NotAllocated != nil {
+		return *x.NotAllocated
+	}
+	return false
 }
 
 // MachineAllocationQuery allocation specific query parameters
@@ -4337,7 +4376,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x05ports\x18\x02 \x03(\rB\x0e\xbaH\v\x92\x01\b\"\x06*\x04\x18\xfc\xff\x03R\x05ports\x12\x1c\n" +
 	"\x02to\x18\x03 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x02to\x12 \n" +
 	"\x04from\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x04from\x121\n" +
-	"\acomment\x18\x05 \x01(\tB\x17\xbaH\x14\xd8\x01\x01r\x0f\x18d2\v^[a-z_ -]*$R\acomment\"\xe7\x02\n" +
+	"\acomment\x18\x05 \x01(\tB\x17\xbaH\x14\xd8\x01\x01r\x0f\x18d2\v^[a-z_ -]*$R\acomment\"\x9c\x03\n" +
 	"\x0eMachineNetwork\x12\x18\n" +
 	"\anetwork\x18\x01 \x01(\tR\anetwork\x12(\n" +
 	"\bprefixes\x18\x02 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\bprefixes\x12?\n" +
@@ -4346,7 +4385,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\fnetwork_type\x18\x05 \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vnetworkType\x12?\n" +
 	"\bnat_type\x18\x06 \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\anatType\x12\x10\n" +
 	"\x03vrf\x18\a \x01(\x04R\x03vrf\x12\x10\n" +
-	"\x03asn\x18\b \x01(\rR\x03asn\"\xfb\x01\n" +
+	"\x03asn\x18\b \x01(\rR\x03asn\x12'\n" +
+	"\aproject\x18\t \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\aproject\x88\x01\x01B\n" +
+	"\n" +
+	"\b_project\"\xfb\x01\n" +
 	"\x0fMachineHardware\x12\x16\n" +
 	"\x06memory\x18\x01 \x01(\x04R\x06memory\x12;\n" +
 	"\x05disks\x18\x03 \x03(\v2%.metalstack.api.v2.MachineBlockDeviceR\x05disks\x12/\n" +
@@ -4443,7 +4485,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x15control_plane_address\x18\x01 \x01(\tR\x13controlPlaneAddress\x12\x19\n" +
 	"\bauth_key\x18\x02 \x01(\tR\aauthKey\x12\x1c\n" +
 	"\tconnected\x18\x03 \x01(\bR\tconnected\x12\x1e\n" +
-	"\x03ips\x18\x05 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\xa4\a\n" +
+	"\x03ips\x18\x05 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\xc5\b\n" +
 	"\fMachineQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12-\n" +
@@ -4465,7 +4507,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"R\x03bmc\x88\x01\x01\x129\n" +
 	"\x03fru\x18\f \x01(\v2\".metalstack.api.v2.MachineFRUQueryH\vR\x03fru\x88\x01\x01\x12H\n" +
 	"\bhardware\x18\r \x01(\v2'.metalstack.api.v2.MachineHardwareQueryH\fR\bhardware\x88\x01\x01\x12:\n" +
-	"\x05state\x18\x0e \x01(\x0e2\x1f.metalstack.api.v2.MachineStateH\rR\x05state\x88\x01\x01B\a\n" +
+	"\x05state\x18\x0e \x01(\x0e2\x1f.metalstack.api.v2.MachineStateH\rR\x05state\x88\x01\x01\x12\x1d\n" +
+	"\awaiting\x18\x0f \x01(\bH\x0eR\awaiting\x88\x01\x01\x12'\n" +
+	"\fpreallocated\x18\x10 \x01(\bH\x0fR\fpreallocated\x88\x01\x01\x12(\n" +
+	"\rnot_allocated\x18\x11 \x01(\bH\x10R\fnotAllocated\x88\x01\x01B\a\n" +
 	"\x05_uuidB\a\n" +
 	"\x05_nameB\f\n" +
 	"\n" +
@@ -4481,7 +4526,11 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04_bmcB\x06\n" +
 	"\x04_fruB\v\n" +
 	"\t_hardwareB\b\n" +
-	"\x06_state\"\xde\x04\n" +
+	"\x06_stateB\n" +
+	"\n" +
+	"\b_waitingB\x0f\n" +
+	"\r_preallocatedB\x10\n" +
+	"\x0e_not_allocated\"\xde\x04\n" +
 	"\x16MachineAllocationQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12'\n" +
@@ -4815,6 +4864,7 @@ func file_metalstack_api_v2_machine_proto_init() {
 	file_metalstack_api_v2_machine_proto_msgTypes[5].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[19].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[20].OneofWrappers = []any{}
+	file_metalstack_api_v2_machine_proto_msgTypes[24].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[34].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[40].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[41].OneofWrappers = []any{}

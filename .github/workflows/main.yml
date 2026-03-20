@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Set up Go
       uses: actions/setup-go@v6
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Check spelling
       uses: crate-ci/typos@master
@@ -51,7 +51,7 @@ jobs:
         cache: false
 
     - name: Lint
-      uses: golangci/golangci-lint-action@v8
+      uses: golangci/golangci-lint-action@v9
       with:
         args: -D protogetter --timeout=5m
 
@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Set up Python 3.13
       uses: actions/setup-python@v6

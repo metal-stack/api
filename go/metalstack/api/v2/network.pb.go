@@ -114,6 +114,7 @@ const (
 	// Connectivity to external networks is not possible, as for normal child networks.
 	// These networks are usually used to provide connectivity to shared services which are created in child networks, e.g. storage.
 	// With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.
+	// Only one child shared network per project is allowed.
 	NetworkType_NETWORK_TYPE_CHILD_SHARED NetworkType = 6
 )
 
