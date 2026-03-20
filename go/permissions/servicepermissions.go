@@ -7,6 +7,7 @@ import (
 
 func GetServices() []string {
 	return []string{
+		"metalstack.admin.v2.AuditService",
 		"metalstack.admin.v2.ComponentService",
 		"metalstack.admin.v2.FilesystemService",
 		"metalstack.admin.v2.IPService",
@@ -23,6 +24,7 @@ func GetServices() []string {
 		"metalstack.admin.v2.TenantService",
 		"metalstack.admin.v2.TokenService",
 		"metalstack.admin.v2.VPNService",
+		"metalstack.api.v2.AuditService",
 		"metalstack.api.v2.FilesystemService",
 		"metalstack.api.v2.HealthService",
 		"metalstack.api.v2.IPService",
@@ -52,6 +54,8 @@ func GetServicePermissions() *ServicePermissions {
 		Roles: Roles{
 			Admin: Admin{
 				"ADMIN_ROLE_EDITOR": []string{
+					"/metalstack.admin.v2.AuditService/Get",
+					"/metalstack.admin.v2.AuditService/List",
 					"/metalstack.admin.v2.ComponentService/Get",
 					"/metalstack.admin.v2.ComponentService/Delete",
 					"/metalstack.admin.v2.ComponentService/List",
@@ -111,6 +115,8 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.admin.v2.VPNService/ListNodes",
 				},
 				"ADMIN_ROLE_VIEWER": []string{
+					"/metalstack.admin.v2.AuditService/Get",
+					"/metalstack.admin.v2.AuditService/List",
 					"/metalstack.admin.v2.ComponentService/Get",
 					"/metalstack.admin.v2.ComponentService/List",
 					"/metalstack.admin.v2.ImageService/Usage",
@@ -174,6 +180,8 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.api.v2.TenantService/Get",
 				},
 				"TENANT_ROLE_OWNER": []string{
+					"/metalstack.api.v2.AuditService/Get",
+					"/metalstack.api.v2.AuditService/List",
 					"/metalstack.api.v2.ProjectService/Create",
 					"/metalstack.api.v2.TenantService/Get",
 					"/metalstack.api.v2.TenantService/Update",
@@ -262,6 +270,8 @@ func GetServicePermissions() *ServicePermissions {
 		Methods: map[string]bool{
 			"/grpc.reflection.v1.ServerReflection/ServerReflectionInfo":      true,
 			"/grpc.reflection.v1alpha.ServerReflection/ServerReflectionInfo": true,
+			"/metalstack.admin.v2.AuditService/Get":                          true,
+			"/metalstack.admin.v2.AuditService/List":                         true,
 			"/metalstack.admin.v2.ComponentService/Delete":                   true,
 			"/metalstack.admin.v2.ComponentService/Get":                      true,
 			"/metalstack.admin.v2.ComponentService/List":                     true,
@@ -319,6 +329,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.admin.v2.TokenService/Revoke":                       true,
 			"/metalstack.admin.v2.VPNService/AuthKey":                        true,
 			"/metalstack.admin.v2.VPNService/ListNodes":                      true,
+			"/metalstack.api.v2.AuditService/Get":                            true,
+			"/metalstack.api.v2.AuditService/List":                           true,
 			"/metalstack.api.v2.FilesystemService/Get":                       true,
 			"/metalstack.api.v2.FilesystemService/List":                      true,
 			"/metalstack.api.v2.FilesystemService/Match":                     true,
@@ -439,6 +451,8 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.api.v2.UserService/Get":                true,
 			},
 			Admin: map[string]bool{
+				"/metalstack.admin.v2.AuditService/Get":                  true,
+				"/metalstack.admin.v2.AuditService/List":                 true,
 				"/metalstack.admin.v2.ComponentService/Delete":           true,
 				"/metalstack.admin.v2.ComponentService/Get":              true,
 				"/metalstack.admin.v2.ComponentService/List":             true,
@@ -516,6 +530,8 @@ func GetServicePermissions() *ServicePermissions {
 				"/metalstack.infra.v2.BootService/Wait":                  true,
 			},
 			Tenant: map[string]bool{
+				"/metalstack.api.v2.AuditService/Get":           true,
+				"/metalstack.api.v2.AuditService/List":          true,
 				"/metalstack.api.v2.ProjectService/Create":      true,
 				"/metalstack.api.v2.TenantService/Delete":       true,
 				"/metalstack.api.v2.TenantService/Get":          true,
@@ -560,6 +576,8 @@ func GetServicePermissions() *ServicePermissions {
 			},
 		},
 		Auditable: map[string]bool{
+			"/metalstack.admin.v2.AuditService/Get":                  true,
+			"/metalstack.admin.v2.AuditService/List":                 true,
 			"/metalstack.admin.v2.ComponentService/Delete":           true,
 			"/metalstack.admin.v2.ComponentService/Get":              false,
 			"/metalstack.admin.v2.ComponentService/List":             false,
@@ -617,6 +635,8 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.admin.v2.TokenService/Revoke":               true,
 			"/metalstack.admin.v2.VPNService/AuthKey":                true,
 			"/metalstack.admin.v2.VPNService/ListNodes":              true,
+			"/metalstack.api.v2.AuditService/Get":                    false,
+			"/metalstack.api.v2.AuditService/List":                   false,
 			"/metalstack.api.v2.FilesystemService/Get":               false,
 			"/metalstack.api.v2.FilesystemService/List":              false,
 			"/metalstack.api.v2.FilesystemService/Match":             false,

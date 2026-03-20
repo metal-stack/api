@@ -321,6 +321,80 @@
         
           
           <li>
+            <a href="#metalstack%2fapi%2fv2%2faudit.proto">metalstack/api/v2/audit.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.api.v2.AuditQuery"><span class="badge">M</span>AuditQuery</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.AuditServiceGetRequest"><span class="badge">M</span>AuditServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.AuditServiceGetResponse"><span class="badge">M</span>AuditServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.AuditServiceListRequest"><span class="badge">M</span>AuditServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.AuditServiceListResponse"><span class="badge">M</span>AuditServiceListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.AuditTrace"><span class="badge">M</span>AuditTrace</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.AuditPhase"><span class="badge">E</span>AuditPhase</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.AuditService"><span class="badge">S</span>AuditService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fadmin%2fv2%2faudit.proto">metalstack/admin/v2/audit.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.AuditServiceGetRequest"><span class="badge">M</span>AuditServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.AuditServiceGetResponse"><span class="badge">M</span>AuditServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.AuditServiceListRequest"><span class="badge">M</span>AuditServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.AuditServiceListResponse"><span class="badge">M</span>AuditServiceListResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.admin.v2.AuditService"><span class="badge">S</span>AuditService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2fapi%2fv2%2ftoken.proto">metalstack/api/v2/token.proto</a>
             <ul>
               
@@ -3244,6 +3318,516 @@ having a direct membership within the tenant.</p></td>
       
 
       
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/api/v2/audit.proto">metalstack/api/v2/audit.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.api.v2.AuditQuery">AuditQuery</h3>
+        <p>AuditQuery is the query for audit traces</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Uuid of the audit trace </p></td>
+                </tr>
+              
+                <tr>
+                  <td>from</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>optional</td>
+                  <td><p>From describes the start of the time window in which to list audit traces. Defaults to the last eight hours </p></td>
+                </tr>
+              
+                <tr>
+                  <td>to</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>optional</td>
+                  <td><p>To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>User is the user who called the api method </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project is the project targeted by the api call </p></td>
+                </tr>
+              
+                <tr>
+                  <td>method</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Method is the api method that was called </p></td>
+                </tr>
+              
+                <tr>
+                  <td>source_ip</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Source IP contains the ip address of the caller </p></td>
+                </tr>
+              
+                <tr>
+                  <td>result_code</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>optional</td>
+                  <td><p>Result Code is a string describing the result of the api call </p></td>
+                </tr>
+              
+                <tr>
+                  <td>body</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Body is a string providing text-search of the body field </p></td>
+                </tr>
+              
+                <tr>
+                  <td>limit</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>optional</td>
+                  <td><p>Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>phase</td>
+                  <td><a href="#metalstack.api.v2.AuditPhase">AuditPhase</a></td>
+                  <td>optional</td>
+                  <td><p>Phase specifies the audit phase </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.AuditServiceGetRequest">AuditServiceGetRequest</h3>
+        <p>AuditServiceGetRequest is the request payload of a audit get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login for this tenant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Uuid of the audit trace </p></td>
+                </tr>
+              
+                <tr>
+                  <td>phase</td>
+                  <td><a href="#metalstack.api.v2.AuditPhase">AuditPhase</a></td>
+                  <td>optional</td>
+                  <td><p>Phase specifies the audit phase. Defaults to request </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.AuditServiceGetResponse">AuditServiceGetResponse</h3>
+        <p>AuditServiceGetResponse is the response payload of a audit get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>trace</td>
+                  <td><a href="#metalstack.api.v2.AuditTrace">AuditTrace</a></td>
+                  <td></td>
+                  <td><p>Trace is the audit trace </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.AuditServiceListRequest">AuditServiceListRequest</h3>
+        <p>AuditServiceListRequest is the request payload for a audit list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login for this tenant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.AuditQuery">AuditQuery</a></td>
+                  <td></td>
+                  <td><p>Query for audit traces </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.AuditServiceListResponse">AuditServiceListResponse</h3>
+        <p>AuditServiceListResponse is the response payload of a audit list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>traces</td>
+                  <td><a href="#metalstack.api.v2.AuditTrace">AuditTrace</a></td>
+                  <td>repeated</td>
+                  <td><p>Traces is a list of audit traces </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.AuditTrace">AuditTrace</h3>
+        <p>AuditTrace is an audit trace</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Uuid of the audit trace </p></td>
+                </tr>
+              
+                <tr>
+                  <td>timestamp</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td></td>
+                  <td><p>Timestamp is the timestamp when the request arrived at the api </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User is the login user who called the api method </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tenant</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Tenant is the tenant targeted by the api call </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project is the project targeted by the api call </p></td>
+                </tr>
+              
+                <tr>
+                  <td>method</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Method is the api method that was called </p></td>
+                </tr>
+              
+                <tr>
+                  <td>body</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server </p></td>
+                </tr>
+              
+                <tr>
+                  <td>source_ip</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Source IP contains the source ip address of the api call </p></td>
+                </tr>
+              
+                <tr>
+                  <td>result_code</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td>optional</td>
+                  <td><p>Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes </p></td>
+                </tr>
+              
+                <tr>
+                  <td>phase</td>
+                  <td><a href="#metalstack.api.v2.AuditPhase">AuditPhase</a></td>
+                  <td></td>
+                  <td><p>Phase represents the phase of the audit trace </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="metalstack.api.v2.AuditPhase">AuditPhase</h3>
+        <p>AuditPhase specifies phase of an audit trace</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>AUDIT_PHASE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>AUDIT_PHASE_UNSPECIFIED is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUDIT_PHASE_REQUEST</td>
+                <td>1</td>
+                <td><p>AUDIT_PHASE_REQUEST defines an audit trace in the request phase</p></td>
+              </tr>
+            
+              <tr>
+                <td>AUDIT_PHASE_RESPONSE</td>
+                <td>2</td>
+                <td><p>AUDIT_PHASE_REQUEST defines an audit trace in the response phase</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="metalstack.api.v2.AuditService">AuditService</h3>
+        <p>AuditService serves audit related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.api.v2.AuditServiceGetRequest">AuditServiceGetRequest</a></td>
+                <td><a href="#metalstack.api.v2.AuditServiceGetResponse">AuditServiceGetResponse</a></td>
+                <td><p>Get an audit trace</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.api.v2.AuditServiceListRequest">AuditServiceListRequest</a></td>
+                <td><a href="#metalstack.api.v2.AuditServiceListResponse">AuditServiceListResponse</a></td>
+                <td><p>List audit traces</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/admin/v2/audit.proto">metalstack/admin/v2/audit.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.admin.v2.AuditServiceGetRequest">AuditServiceGetRequest</h3>
+        <p>AuditServiceGetRequest is the request payload of a audit get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Uuid of the audit trace </p></td>
+                </tr>
+              
+                <tr>
+                  <td>phase</td>
+                  <td><a href="#metalstack.api.v2.AuditPhase">metalstack.api.v2.AuditPhase</a></td>
+                  <td>optional</td>
+                  <td><p>Phase specifies the audit phase. Defaults to request </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.AuditServiceGetResponse">AuditServiceGetResponse</h3>
+        <p>AuditServiceGetResponse is the response payload of a audit get request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>trace</td>
+                  <td><a href="#metalstack.api.v2.AuditTrace">metalstack.api.v2.AuditTrace</a></td>
+                  <td></td>
+                  <td><p>Trace is the audit trace </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.AuditServiceListRequest">AuditServiceListRequest</h3>
+        <p>AuditServiceListRequest is the request payload to list audits</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.AuditQuery">metalstack.api.v2.AuditQuery</a></td>
+                  <td></td>
+                  <td><p>Query for audit traces </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.AuditServiceListResponse">AuditServiceListResponse</h3>
+        <p>AuditServiceListResponse is the response payload of a audit list request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>traces</td>
+                  <td><a href="#metalstack.api.v2.AuditTrace">metalstack.api.v2.AuditTrace</a></td>
+                  <td>repeated</td>
+                  <td><p>Traces is a list of audit traces </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.admin.v2.AuditService">AuditService</h3>
+        <p>AuditService serves audit related functions</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.admin.v2.AuditServiceGetRequest">AuditServiceGetRequest</a></td>
+                <td><a href="#metalstack.admin.v2.AuditServiceGetResponse">AuditServiceGetResponse</a></td>
+                <td><p>Get an audit trace</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.admin.v2.AuditServiceListRequest">AuditServiceListRequest</a></td>
+                <td><a href="#metalstack.admin.v2.AuditServiceListResponse">AuditServiceListResponse</a></td>
+                <td><p>List all audit traces</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
     
       
       <div class="file-heading">
