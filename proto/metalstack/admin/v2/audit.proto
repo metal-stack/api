@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/audit.proto";
+import "metalstack/api/v2/common.proto";
+
+// AuditService serves audit related functions
+service AuditService {
+  // Get an audit trace
+  rpc Get(AuditServiceGetRequest) returns (AuditServiceGetResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+  // List all audit traces
+  rpc List(AuditServiceListRequest) returns (AuditServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+  }
+}
+
+// AuditServiceListRequest is the request payload to list audits
+message AuditServiceListRequest {
+  // Query for audit traces
+  metalstack.api.v2.AuditQuery query = 1;
+}
+
+// AuditServiceListResponse is the response payload of a audit list request
+message AuditServiceListResponse {
+  // Traces is a list of audit traces
+  repeated metalstack.api.v2.AuditTrace traces = 1;
+}
+
+// AuditServiceGetRequest is the request payload of a audit get request
+message AuditServiceGetRequest {
+  // Uuid of the audit trace
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Phase specifies the audit phase. Defaults to request
+  optional metalstack.api.v2.AuditPhase phase = 2 [(buf.validate.field).enum.defined_only = true];
+}
+
+// AuditServiceGetResponse is the response payload of a audit get request
+message AuditServiceGetResponse {
+  // Trace is the audit trace
+  metalstack.api.v2.AuditTrace trace = 1;
+}
