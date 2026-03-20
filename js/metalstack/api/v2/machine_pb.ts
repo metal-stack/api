@@ -1873,6 +1873,7 @@ export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
 
   /**
    * Waiting if set to true, only waiting machines are returned.
+   * Only useful for admins.
    *
    * @generated from field: optional bool waiting = 15;
    */
@@ -1880,6 +1881,7 @@ export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
 
   /**
    * Preallocated if set to true, only machines which are preallocated are returned.
+   * Only useful for admins.
    *
    * @generated from field: optional bool preallocated = 16;
    */
@@ -1887,6 +1889,7 @@ export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
 
   /**
    * NotAllocated if set to true, only machines which are not allocated are returned.
+   * Only useful for admins.
    *
    * @generated from field: optional bool not_allocated = 17;
    */

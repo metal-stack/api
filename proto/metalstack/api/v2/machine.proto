@@ -781,10 +781,13 @@ message MachineQuery {
   // State this machine has
   optional MachineState state = 14;
   // Waiting if set to true, only waiting machines are returned.
+  // Only useful for admins.
   optional bool waiting = 15;
   // Preallocated if set to true, only machines which are preallocated are returned.
+  // Only useful for admins.
   optional bool preallocated = 16;
   // NotAllocated if set to true, only machines which are not allocated are returned.
+  // Only useful for admins.
   optional bool not_allocated = 17;
 }
 
