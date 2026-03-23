@@ -134,8 +134,10 @@ class TokenServiceCreateResponse(_message.Message):
     def __init__(self, token: _Optional[_Union[Token, _Mapping]] = ..., secret: _Optional[str] = ...) -> None: ...
 
 class TokenServiceListRequest(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("query",)
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: TokenQuery
+    def __init__(self, query: _Optional[_Union[TokenQuery, _Mapping]] = ...) -> None: ...
 
 class TokenServiceListResponse(_message.Message):
     __slots__ = ("tokens",)
@@ -227,3 +229,17 @@ class TokenServiceRefreshResponse(_message.Message):
     token: Token
     secret: str
     def __init__(self, token: _Optional[_Union[Token, _Mapping]] = ..., secret: _Optional[str] = ...) -> None: ...
+
+class TokenQuery(_message.Message):
+    __slots__ = ("uuid", "user", "description", "labels", "token_type")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    USER_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
+    TOKEN_TYPE_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    user: str
+    description: str
+    labels: _common_pb2.Labels
+    token_type: TokenType
+    def __init__(self, uuid: _Optional[str] = ..., user: _Optional[str] = ..., description: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., token_type: _Optional[_Union[TokenType, str]] = ...) -> None: ...

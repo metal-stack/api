@@ -244,7 +244,14 @@ export declare const TokenServiceCreateResponseSchema: GenMessage<TokenServiceCr
  *
  * @generated from message metalstack.api.v2.TokenServiceListRequest
  */
-export type TokenServiceListRequest = Message<"metalstack.api.v2.TokenServiceListRequest"> & {};
+export type TokenServiceListRequest = Message<"metalstack.api.v2.TokenServiceListRequest"> & {
+    /**
+     * Query for tokens
+     *
+     * @generated from field: metalstack.api.v2.TokenQuery query = 1;
+     */
+    query?: TokenQuery;
+};
 /**
  * Describes the message metalstack.api.v2.TokenServiceListRequest.
  * Use `create(TokenServiceListRequestSchema)` to create a new message.
@@ -467,6 +474,49 @@ export type TokenServiceRefreshResponse = Message<"metalstack.api.v2.TokenServic
  * Use `create(TokenServiceRefreshResponseSchema)` to create a new message.
  */
 export declare const TokenServiceRefreshResponseSchema: GenMessage<TokenServiceRefreshResponse>;
+/**
+ * TokenQuery is used to search tokens
+ *
+ * @generated from message metalstack.api.v2.TokenQuery
+ */
+export type TokenQuery = Message<"metalstack.api.v2.TokenQuery"> & {
+    /**
+     * UUID of the token to get
+     *
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string;
+    /**
+     * Name of the token user to query
+     * Only useful for admins.
+     *
+     * @generated from field: optional string user = 2;
+     */
+    user?: string;
+    /**
+     * Description of the token to query
+     *
+     * @generated from field: optional string description = 3;
+     */
+    description?: string;
+    /**
+     * Labels lists only tokens containing the given labels
+     *
+     * @generated from field: optional metalstack.api.v2.Labels labels = 4;
+     */
+    labels?: Labels;
+    /**
+     * Token type of the token to query
+     *
+     * @generated from field: optional metalstack.api.v2.TokenType token_type = 5;
+     */
+    tokenType?: TokenType;
+};
+/**
+ * Describes the message metalstack.api.v2.TokenQuery.
+ * Use `create(TokenQuerySchema)` to create a new message.
+ */
+export declare const TokenQuerySchema: GenMessage<TokenQuery>;
 /**
  * TokenType specifies different use cases of tokens
  *

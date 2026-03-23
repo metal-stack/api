@@ -26,8 +26,8 @@ service TokenService {
 
 // TokenServiceListRequest is the request payload for the token list request
 message TokenServiceListRequest {
-  // User is the id of the user for which the tokens should be listed
-  optional string user = 1;
+  // Query for tokens
+  metalstack.api.v2.TokenQuery query = 1;
 }
 
 // TokenServiceListResponse is the response payload for the token list request

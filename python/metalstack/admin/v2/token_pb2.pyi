@@ -10,10 +10,10 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class TokenServiceListRequest(_message.Message):
-    __slots__ = ("user",)
-    USER_FIELD_NUMBER: _ClassVar[int]
-    user: str
-    def __init__(self, user: _Optional[str] = ...) -> None: ...
+    __slots__ = ("query",)
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: _token_pb2.TokenQuery
+    def __init__(self, query: _Optional[_Union[_token_pb2.TokenQuery, _Mapping]] = ...) -> None: ...
 
 class TokenServiceListResponse(_message.Message):
     __slots__ = ("tokens",)
