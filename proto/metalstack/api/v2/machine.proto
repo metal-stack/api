@@ -345,7 +345,7 @@ message MachineAllocationNetwork {
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
   // By default one ip address is acquired per network for the machine
-  optional bool no_auto_acquire_ip = 2;
+  bool no_auto_acquire_ip = 2;
 }
 
 // MachineAllocationIp defines a ip and a optional namespace which should be attached to this machine during create

@@ -722,9 +722,9 @@ export type MachineAllocationNetwork = Message<"metalstack.api.v2.MachineAllocat
      * NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
      * By default one ip address is acquired per network for the machine
      *
-     * @generated from field: optional bool no_auto_acquire_ip = 2;
+     * @generated from field: bool no_auto_acquire_ip = 2;
      */
-    noAutoAcquireIp?: boolean;
+    noAutoAcquireIp: boolean;
 };
 /**
  * Describes the message metalstack.api.v2.MachineAllocationNetwork.

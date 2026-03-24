@@ -1883,7 +1883,7 @@ type MachineAllocationNetwork struct {
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	// NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
 	// By default one ip address is acquired per network for the machine
-	NoAutoAcquireIp *bool `protobuf:"varint,2,opt,name=no_auto_acquire_ip,json=noAutoAcquireIp,proto3,oneof" json:"no_auto_acquire_ip,omitempty"`
+	NoAutoAcquireIp bool `protobuf:"varint,2,opt,name=no_auto_acquire_ip,json=noAutoAcquireIp,proto3" json:"no_auto_acquire_ip,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -1926,8 +1926,8 @@ func (x *MachineAllocationNetwork) GetNetwork() string {
 }
 
 func (x *MachineAllocationNetwork) GetNoAutoAcquireIp() bool {
-	if x != nil && x.NoAutoAcquireIp != nil {
-		return *x.NoAutoAcquireIp
+	if x != nil {
+		return x.NoAutoAcquireIp
 	}
 	return false
 }
@@ -4353,11 +4353,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\vntp_servers\x18\x10 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
 	"R\n" +
 	"ntpServers\x12/\n" +
-	"\x03vpn\x18\x11 \x01(\v2\x1d.metalstack.api.v2.MachineVPNR\x03vpn\"\x8a\x01\n" +
+	"\x03vpn\x18\x11 \x01(\v2\x1d.metalstack.api.v2.MachineVPNR\x03vpn\"n\n" +
 	"\x18MachineAllocationNetwork\x12%\n" +
-	"\anetwork\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anetwork\x120\n" +
-	"\x12no_auto_acquire_ip\x18\x02 \x01(\bH\x00R\x0fnoAutoAcquireIp\x88\x01\x01B\x15\n" +
-	"\x13_no_auto_acquire_ip\"i\n" +
+	"\anetwork\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anetwork\x12+\n" +
+	"\x12no_auto_acquire_ip\x18\x02 \x01(\bR\x0fnoAutoAcquireIp\"i\n" +
 	"\x13MachineAllocationIp\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\x12+\n" +
 	"\tnamespace\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\tnamespace\x88\x01\x01B\f\n" +
@@ -4862,7 +4861,6 @@ func file_metalstack_api_v2_machine_proto_init() {
 	file_metalstack_api_v2_size_proto_init()
 	file_metalstack_api_v2_machine_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[5].OneofWrappers = []any{}
-	file_metalstack_api_v2_machine_proto_msgTypes[19].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[20].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[24].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[34].OneofWrappers = []any{}
