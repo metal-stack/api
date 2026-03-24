@@ -52,6 +52,8 @@ message VPNServiceAuthKeyResponse {
   google.protobuf.Timestamp expires_at = 4;
   // CreatedAt this key was created at this timestamp.
   google.protobuf.Timestamp created_at = 5;
+  // Flavor of the vpn.
+  metalstack.api.v2.VPNFlavor flavor = 6 [(buf.validate.field).enum.defined_only = true];
 }
 
 // VPNServiceListNodesRequest is the request payload for a vpn list nodes request

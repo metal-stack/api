@@ -11,6 +11,7 @@ import "metalstack/api/v2/network.proto";
 import "metalstack/api/v2/partition.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/size.proto";
+import "metalstack/api/v2/vpn.proto";
 
 // MachineService serves machine related functions
 service MachineService {
@@ -689,6 +690,8 @@ message MachineVPN {
   bool connected = 3;
   // IPs of the machine connected to the vpn
   repeated string ips = 5 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
+  // Flavor of the vpn.
+  VPNFlavor flavor = 6 [(buf.validate.field).enum.defined_only = true];
 }
 
 // MachineLiveliness specifies the liveliness of a machine

@@ -22,10 +22,11 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bmetalstack/api/v2/vpn.proto\x12\x11metalstack.api.v2\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbb\x01\n\x07VPNNode\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n\x07project\x18\x03 \x01(\tR\x07project\x12!\n\x0cip_addresses\x18\x04 \x03(\tR\x0bipAddresses\x12\x37\n\tlast_seen\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x08lastSeen\x12\x16\n\x06online\x18\x06 \x01(\x08R\x06onlineB\xbe\x01\n\x15\x63om.metalstack.api.v2B\x08VpnProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bmetalstack/api/v2/vpn.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfb\x01\n\x07VPNNode\x12\x0e\n\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n\x07project\x18\x03 \x01(\tR\x07project\x12!\n\x0cip_addresses\x18\x04 \x03(\tR\x0bipAddresses\x12\x37\n\tlast_seen\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x08lastSeen\x12\x16\n\x06online\x18\x06 \x01(\x08R\x06online\x12>\n\x06\x66lavor\x18\x07 \x01(\x0e\x32\x1c.metalstack.api.v2.VPNFlavorB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x06\x66lavor*A\n\tVPNFlavor\x12\x1a\n\x16VPN_FLAVOR_UNSPECIFIED\x10\x00\x12\x18\n\x14VPN_FLAVOR_TAILSCALE\x10\x01\x42\xbe\x01\n\x15\x63om.metalstack.api.v2B\x08VpnProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,6 +34,10 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.api.v2.vpn_pb2',
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\025com.metalstack.api.v2B\010VpnProtoP\001Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\242\002\003MAX\252\002\021Metalstack.Api.V2\312\002\021Metalstack\\Api\\V2\342\002\035Metalstack\\Api\\V2\\GPBMetadata\352\002\023Metalstack::Api::V2'
-  _globals['_VPNNODE']._serialized_start=84
-  _globals['_VPNNODE']._serialized_end=271
+  _globals['_VPNNODE'].fields_by_name['flavor']._loaded_options = None
+  _globals['_VPNNODE'].fields_by_name['flavor']._serialized_options = b'\272H\005\202\001\002\020\001'
+  _globals['_VPNFLAVOR']._serialized_start=366
+  _globals['_VPNFLAVOR']._serialized_end=431
+  _globals['_VPNNODE']._serialized_start=113
+  _globals['_VPNNODE']._serialized_end=364
 # @@protoc_insertion_point(module_scope)

@@ -6,6 +6,7 @@ import type { Image } from "./image_pb";
 import type { NATType, NetworkType } from "./network_pb";
 import type { DNSServer, NTPServer, Partition } from "./partition_pb";
 import type { Size } from "./size_pb";
+import type { VPNFlavor } from "./vpn_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/api/v2/machine.proto.
@@ -1496,6 +1497,12 @@ export type MachineVPN = Message<"metalstack.api.v2.MachineVPN"> & {
      * @generated from field: repeated string ips = 5;
      */
     ips: string[];
+    /**
+     * Flavor of the vpn.
+     *
+     * @generated from field: metalstack.api.v2.VPNFlavor flavor = 6;
+     */
+    flavor: VPNFlavor;
 };
 /**
  * Describes the message metalstack.api.v2.MachineVPN.

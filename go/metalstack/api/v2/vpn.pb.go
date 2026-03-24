@@ -7,6 +7,7 @@
 package apiv2
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -22,6 +23,55 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// VPNFlavor defines which vpn flavor is used to form the vpn.
+type VPNFlavor int32
+
+const (
+	// VPN_FLAVOR_UNSPECIFIED is not specified
+	VPNFlavor_VPN_FLAVOR_UNSPECIFIED VPNFlavor = 0
+	// VPN_FLAVOR_TAILSCALE tailscale is in use
+	VPNFlavor_VPN_FLAVOR_TAILSCALE VPNFlavor = 1
+)
+
+// Enum value maps for VPNFlavor.
+var (
+	VPNFlavor_name = map[int32]string{
+		0: "VPN_FLAVOR_UNSPECIFIED",
+		1: "VPN_FLAVOR_TAILSCALE",
+	}
+	VPNFlavor_value = map[string]int32{
+		"VPN_FLAVOR_UNSPECIFIED": 0,
+		"VPN_FLAVOR_TAILSCALE":   1,
+	}
+)
+
+func (x VPNFlavor) Enum() *VPNFlavor {
+	p := new(VPNFlavor)
+	*p = x
+	return p
+}
+
+func (x VPNFlavor) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (VPNFlavor) Descriptor() protoreflect.EnumDescriptor {
+	return file_metalstack_api_v2_vpn_proto_enumTypes[0].Descriptor()
+}
+
+func (VPNFlavor) Type() protoreflect.EnumType {
+	return &file_metalstack_api_v2_vpn_proto_enumTypes[0]
+}
+
+func (x VPNFlavor) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use VPNFlavor.Descriptor instead.
+func (VPNFlavor) EnumDescriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_vpn_proto_rawDescGZIP(), []int{0}
+}
+
 // VPNNode is a machine connected to the vpn
 type VPNNode struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -36,7 +86,9 @@ type VPNNode struct {
 	// LastSeen timestamp when this node reached out the the control plane
 	LastSeen *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
 	// Online indicates if this node is online
-	Online        bool `protobuf:"varint,6,opt,name=online,proto3" json:"online,omitempty"`
+	Online bool `protobuf:"varint,6,opt,name=online,proto3" json:"online,omitempty"`
+	// Flavor of the vpn.
+	Flavor        VPNFlavor `protobuf:"varint,7,opt,name=flavor,proto3,enum=metalstack.api.v2.VPNFlavor" json:"flavor,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -113,18 +165,29 @@ func (x *VPNNode) GetOnline() bool {
 	return false
 }
 
+func (x *VPNNode) GetFlavor() VPNFlavor {
+	if x != nil {
+		return x.Flavor
+	}
+	return VPNFlavor_VPN_FLAVOR_UNSPECIFIED
+}
+
 var File_metalstack_api_v2_vpn_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_vpn_proto_rawDesc = "" +
 	"\n" +
-	"\x1bmetalstack/api/v2/vpn.proto\x12\x11metalstack.api.v2\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbb\x01\n" +
+	"\x1bmetalstack/api/v2/vpn.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfb\x01\n" +
 	"\aVPNNode\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
 	"\aproject\x18\x03 \x01(\tR\aproject\x12!\n" +
 	"\fip_addresses\x18\x04 \x03(\tR\vipAddresses\x127\n" +
 	"\tlast_seen\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\x12\x16\n" +
-	"\x06online\x18\x06 \x01(\bR\x06onlineB\xbe\x01\n" +
+	"\x06online\x18\x06 \x01(\bR\x06online\x12>\n" +
+	"\x06flavor\x18\a \x01(\x0e2\x1c.metalstack.api.v2.VPNFlavorB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06flavor*A\n" +
+	"\tVPNFlavor\x12\x1a\n" +
+	"\x16VPN_FLAVOR_UNSPECIFIED\x10\x00\x12\x18\n" +
+	"\x14VPN_FLAVOR_TAILSCALE\x10\x01B\xbe\x01\n" +
 	"\x15com.metalstack.api.v2B\bVpnProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (
@@ -139,18 +202,21 @@ func file_metalstack_api_v2_vpn_proto_rawDescGZIP() []byte {
 	return file_metalstack_api_v2_vpn_proto_rawDescData
 }
 
+var file_metalstack_api_v2_vpn_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_metalstack_api_v2_vpn_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_metalstack_api_v2_vpn_proto_goTypes = []any{
-	(*VPNNode)(nil),               // 0: metalstack.api.v2.VPNNode
-	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
+	(VPNFlavor)(0),                // 0: metalstack.api.v2.VPNFlavor
+	(*VPNNode)(nil),               // 1: metalstack.api.v2.VPNNode
+	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
 }
 var file_metalstack_api_v2_vpn_proto_depIdxs = []int32{
-	1, // 0: metalstack.api.v2.VPNNode.last_seen:type_name -> google.protobuf.Timestamp
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	2, // 0: metalstack.api.v2.VPNNode.last_seen:type_name -> google.protobuf.Timestamp
+	0, // 1: metalstack.api.v2.VPNNode.flavor:type_name -> metalstack.api.v2.VPNFlavor
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_vpn_proto_init() }
@@ -163,13 +229,14 @@ func file_metalstack_api_v2_vpn_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_vpn_proto_rawDesc), len(file_metalstack_api_v2_vpn_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_vpn_proto_goTypes,
 		DependencyIndexes: file_metalstack_api_v2_vpn_proto_depIdxs,
+		EnumInfos:         file_metalstack_api_v2_vpn_proto_enumTypes,
 		MessageInfos:      file_metalstack_api_v2_vpn_proto_msgTypes,
 	}.Build()
 	File_metalstack_api_v2_vpn_proto = out.File
