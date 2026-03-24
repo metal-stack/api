@@ -41,6 +41,10 @@ enum Service {
   SERVICE_AUDIT = 5 [(enum_string_value) = "audit"];
   // SERVICE_VPN the vpn service
   SERVICE_VPN = 6 [(enum_string_value) = "vpn"];
+  // SERVICE_REDIS the redis service
+  SERVICE_REDIS = 7 [(enum_string_value) = "redis"];
+  // SERVICE_TASKS the tasks service
+  SERVICE_TASKS = 8 [(enum_string_value) = "tasks"];
 }
 
 // Health reports the health status of all services

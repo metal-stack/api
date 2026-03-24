@@ -96,6 +96,10 @@ const (
 	Service_SERVICE_AUDIT Service = 5
 	// SERVICE_VPN the vpn service
 	Service_SERVICE_VPN Service = 6
+	// SERVICE_REDIS the redis service
+	Service_SERVICE_REDIS Service = 7
+	// SERVICE_TASKS the tasks service
+	Service_SERVICE_TASKS Service = 8
 )
 
 // Enum value maps for Service.
@@ -108,6 +112,8 @@ var (
 		4: "SERVICE_MACHINES",
 		5: "SERVICE_AUDIT",
 		6: "SERVICE_VPN",
+		7: "SERVICE_REDIS",
+		8: "SERVICE_TASKS",
 	}
 	Service_value = map[string]int32{
 		"SERVICE_UNSPECIFIED": 0,
@@ -117,6 +123,8 @@ var (
 		"SERVICE_MACHINES":    4,
 		"SERVICE_AUDIT":       5,
 		"SERVICE_VPN":         6,
+		"SERVICE_REDIS":       7,
+		"SERVICE_TASKS":       8,
 	}
 )
 
@@ -431,7 +439,7 @@ const file_metalstack_api_v2_health_proto_rawDesc = "" +
 	"\x1aSERVICE_STATUS_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\x17SERVICE_STATUS_DEGRADED\x10\x01\x12\x1c\n" +
 	"\x18SERVICE_STATUS_UNHEALTHY\x10\x02\x12\x1a\n" +
-	"\x16SERVICE_STATUS_HEALTHY\x10\x03*\xe6\x01\n" +
+	"\x16SERVICE_STATUS_HEALTHY\x10\x03*\xa2\x02\n" +
 	"\aService\x12\x17\n" +
 	"\x13SERVICE_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\fSERVICE_IPAM\x10\x01\x1a\b\x82\xb2\x19\x04ipam\x12\"\n" +
@@ -440,7 +448,9 @@ const file_metalstack_api_v2_health_proto_rawDesc = "" +
 	"masterdata\x12\"\n" +
 	"\x10SERVICE_MACHINES\x10\x04\x1a\f\x82\xb2\x19\bmachines\x12\x1c\n" +
 	"\rSERVICE_AUDIT\x10\x05\x1a\t\x82\xb2\x19\x05audit\x12\x18\n" +
-	"\vSERVICE_VPN\x10\x06\x1a\a\x82\xb2\x19\x03vpn2y\n" +
+	"\vSERVICE_VPN\x10\x06\x1a\a\x82\xb2\x19\x03vpn\x12\x1c\n" +
+	"\rSERVICE_REDIS\x10\a\x1a\t\x82\xb2\x19\x05redis\x12\x1c\n" +
+	"\rSERVICE_TASKS\x10\b\x1a\t\x82\xb2\x19\x05tasks2y\n" +
 	"\rHealthService\x12h\n" +
 	"\x03Get\x12*.metalstack.api.v2.HealthServiceGetRequest\x1a+.metalstack.api.v2.HealthServiceGetResponse\"\b\xd8\xf3\x18\x01\xe0\xf3\x18\x02B\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vHealthProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"

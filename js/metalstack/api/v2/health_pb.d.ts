@@ -195,7 +195,19 @@ export declare enum Service {
      *
      * @generated from enum value: SERVICE_VPN = 6;
      */
-    VPN = 6
+    VPN = 6,
+    /**
+     * SERVICE_REDIS the redis service
+     *
+     * @generated from enum value: SERVICE_REDIS = 7;
+     */
+    REDIS = 7,
+    /**
+     * SERVICE_TASKS the tasks service
+     *
+     * @generated from enum value: SERVICE_TASKS = 8;
+     */
+    TASKS = 8
 }
 /**
  * Describes the enum metalstack.api.v2.Service.
