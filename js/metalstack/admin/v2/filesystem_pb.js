@@ -41,7 +41,7 @@ export const FilesystemServiceDeleteRequestSchema = /*@__PURE__*/ messageDesc(fi
  */
 export const FilesystemServiceDeleteResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_filesystem, 5);
 /**
- * FilesystemService serves filesystem related functions
+ * FilesystemService provides filesystem management operations.
  *
  * @generated from service metalstack.admin.v2.FilesystemService
  */

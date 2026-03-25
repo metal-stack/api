@@ -130,7 +130,7 @@ export var IPAddressFamily;
  */
 export const IPAddressFamilySchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_ip, 1);
 /**
- * IPService serves ip address related functions
+ * IPService provides IP address management operations.
  *
  * @generated from service metalstack.api.v2.IPService
  */

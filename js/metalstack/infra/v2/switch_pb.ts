@@ -20,13 +20,13 @@ export const file_metalstack_infra_v2_switch: GenFile = /*@__PURE__*/
   fileDesc("CiBtZXRhbHN0YWNrL2luZnJhL3YyL3N3aXRjaC5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiI0ChdTd2l0Y2hTZXJ2aWNlR2V0UmVxdWVzdBIZCgJpZBgBIAEoCUINukgKcgjAs66xAgFoASJFChhTd2l0Y2hTZXJ2aWNlR2V0UmVzcG9uc2USKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkkKHFN3aXRjaFNlcnZpY2VSZWdpc3RlclJlcXVlc3QSKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkoKHVN3aXRjaFNlcnZpY2VSZWdpc3RlclJlc3BvbnNlEikKBnN3aXRjaBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaCLzAwodU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QSGQoCaWQYASABKAlCDbpICnIIwLOusQIBaAESKwoIZHVyYXRpb24YAiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24SEgoFZXJyb3IYAyABKAlIAIgBARJXCgtwb3J0X3N0YXRlcxgEIAMoCzJCLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuUG9ydFN0YXRlc0VudHJ5El4KD2JncF9wb3J0X3N0YXRlcxgFIAMoCzJFLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuQmdwUG9ydFN0YXRlc0VudHJ5GlYKD1BvcnRTdGF0ZXNFbnRyeRILCgNrZXkYASABKAkSMgoFdmFsdWUYAiABKA4yIy5tZXRhbHN0YWNrLmFwaS52Mi5Td2l0Y2hQb3J0U3RhdHVzOgI4ARpbChJCZ3BQb3J0U3RhdGVzRW50cnkSCwoDa2V5GAEgASgJEjQKBXZhbHVlGAIgASgLMiUubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoQkdQUG9ydFN0YXRlOgI4AUIICgZfZXJyb3IilgEKHlN3aXRjaFNlcnZpY2VIZWFydGJlYXRSZXNwb25zZRIKCgJpZBgBIAEoCRIwCglsYXN0X3N5bmMYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5Td2l0Y2hTeW5jEjYKD2xhc3Rfc3luY19lcnJvchgDIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaFN5bmMy/gIKDVN3aXRjaFNlcnZpY2USbgoDR2V0EiwubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlR2V0UmVxdWVzdBotLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUdldFJlc3BvbnNlIgrg8xgC6vMYAgECEnwKCFJlZ2lzdGVyEjEubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlUmVnaXN0ZXJSZXF1ZXN0GjIubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlUmVnaXN0ZXJSZXNwb25zZSIJ4PMYAurzGAEBEn8KCUhlYXJ0YmVhdBIyLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QaMy5tZXRhbHN0YWNrLmluZnJhLnYyLlN3aXRjaFNlcnZpY2VIZWFydGJlYXRSZXNwb25zZSIJ4PMYAurzGAEBQs8BChdjb20ubWV0YWxzdGFjay5pbmZyYS52MkILU3dpdGNoUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_duration, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_switch]);
 
 /**
- * SwitchServiceGetRequest.
+ * SwitchServiceGetRequest is the request payload for getting a switch.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceGetRequest
  */
 export type SwitchServiceGetRequest = Message<"metalstack.infra.v2.SwitchServiceGetRequest"> & {
   /**
-   * Id of the switch.
+   * Id of the switch
    *
    * @generated from field: string id = 1;
    */
@@ -41,13 +41,13 @@ export const SwitchServiceGetRequestSchema: GenMessage<SwitchServiceGetRequest> 
   messageDesc(file_metalstack_infra_v2_switch, 0);
 
 /**
- * SwitchServiceGetResponse.
+ * SwitchServiceGetResponse is the response payload for getting a switch.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceGetResponse
  */
 export type SwitchServiceGetResponse = Message<"metalstack.infra.v2.SwitchServiceGetResponse"> & {
   /**
-   * Switch that was requested.
+   * Switch contains the requested switch
    *
    * @generated from field: metalstack.api.v2.Switch switch = 1;
    */
@@ -62,13 +62,13 @@ export const SwitchServiceGetResponseSchema: GenMessage<SwitchServiceGetResponse
   messageDesc(file_metalstack_infra_v2_switch, 1);
 
 /**
- * SwitchServiceRegisterRequest.
+ * SwitchServiceRegisterRequest is the request payload for registering a switch.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceRegisterRequest
  */
 export type SwitchServiceRegisterRequest = Message<"metalstack.infra.v2.SwitchServiceRegisterRequest"> & {
   /**
-   * Switch to register.
+   * Switch to register
    *
    * @generated from field: metalstack.api.v2.Switch switch = 1;
    */
@@ -83,13 +83,13 @@ export const SwitchServiceRegisterRequestSchema: GenMessage<SwitchServiceRegiste
   messageDesc(file_metalstack_infra_v2_switch, 2);
 
 /**
- * SwitchServiceRegisterResponse.
+ * SwitchServiceRegisterResponse is the response payload for registering a switch.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceRegisterResponse
  */
 export type SwitchServiceRegisterResponse = Message<"metalstack.infra.v2.SwitchServiceRegisterResponse"> & {
   /**
-   * Switch that was registered.
+   * Switch contains the registered switch
    *
    * @generated from field: metalstack.api.v2.Switch switch = 1;
    */
@@ -104,41 +104,41 @@ export const SwitchServiceRegisterResponseSchema: GenMessage<SwitchServiceRegist
   messageDesc(file_metalstack_infra_v2_switch, 3);
 
 /**
- * SwitchServiceHeartbeatRequest.
+ * SwitchServiceHeartbeatRequest is the request payload for sending a switch heartbeat.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceHeartbeatRequest
  */
 export type SwitchServiceHeartbeatRequest = Message<"metalstack.infra.v2.SwitchServiceHeartbeatRequest"> & {
   /**
-   * Id of the switch.
+   * Id of the switch
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Duration of the sync.
+   * Duration of the sync
    *
    * @generated from field: google.protobuf.Duration duration = 2;
    */
   duration?: Duration;
 
   /**
-   * Error if any occurred during the sync.
+   * Error if any occurred during the sync
    *
    * @generated from field: optional string error = 3;
    */
   error?: string;
 
   /**
-   * PortStates maps port identifiers to the respective port's operational state.
+   * PortStates maps port identifiers to the respective port's operational state
    *
    * @generated from field: map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
    */
   portStates: { [key: string]: SwitchPortStatus };
 
   /**
-   * BgpPortStates maps port identifiers to the respective port's BGP state.
+   * BgpPortStates maps port identifiers to the respective port's BGP state
    *
    * @generated from field: map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
    */
@@ -153,27 +153,27 @@ export const SwitchServiceHeartbeatRequestSchema: GenMessage<SwitchServiceHeartb
   messageDesc(file_metalstack_infra_v2_switch, 4);
 
 /**
- * SwitchServiceHeartbeatResponse.
+ * SwitchServiceHeartbeatResponse is the response payload for sending a switch heartbeat.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceHeartbeatResponse
  */
 export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.SwitchServiceHeartbeatResponse"> & {
   /**
-   * Id of the switch.
+   * Id of the switch
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * LastSync holds information about the last sync.
+   * LastSync holds information about the last sync
    *
    * @generated from field: metalstack.api.v2.SwitchSync last_sync = 2;
    */
   lastSync?: SwitchSync;
 
   /**
-   * LastSyncError holds information about the last erroneous sync.
+   * LastSyncError holds information about the last erroneous sync
    *
    * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 3;
    */
@@ -188,13 +188,13 @@ export const SwitchServiceHeartbeatResponseSchema: GenMessage<SwitchServiceHeart
   messageDesc(file_metalstack_infra_v2_switch, 5);
 
 /**
- * SwitchService serves switch related functions.
+ * SwitchService provides infrastructure switch management operations.
  *
  * @generated from service metalstack.infra.v2.SwitchService
  */
 export const SwitchService: GenService<{
   /**
-   * Get a switch by ID.
+   * Returns the switch with the specified ID.
    *
    * @generated from rpc metalstack.infra.v2.SwitchService.Get
    */
@@ -204,7 +204,7 @@ export const SwitchService: GenService<{
     output: typeof SwitchServiceGetResponseSchema;
   },
   /**
-   * Register a switch.
+   * Registers a switch.
    *
    * @generated from rpc metalstack.infra.v2.SwitchService.Register
    */
@@ -214,7 +214,7 @@ export const SwitchService: GenService<{
     output: typeof SwitchServiceRegisterResponseSchema;
   },
   /**
-   * Heartbeat a switch.
+   * Heartbeat sends a heartbeat from a switch.
    *
    * @generated from rpc metalstack.infra.v2.SwitchService.Heartbeat
    */

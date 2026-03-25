@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// MethodServiceListRequest is the request payload to list all public methods
+// MethodServiceListRequest is the request payload for listing all public methods.
 type MethodServiceListRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -59,7 +59,7 @@ func (*MethodServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_method_proto_rawDescGZIP(), []int{0}
 }
 
-// MethodServiceListResponse is the response payload with all public visible methods
+// MethodServiceListResponse is the response payload for listing all public methods.
 type MethodServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Methods is a list of methods public callable
@@ -105,7 +105,7 @@ func (x *MethodServiceListResponse) GetMethods() []string {
 	return nil
 }
 
-// MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request
+// MethodServiceTokenScopedListRequest is the request payload for listing all methods callable with the token present in the request.
 type MethodServiceTokenScopedListRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -142,14 +142,14 @@ func (*MethodServiceTokenScopedListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_method_proto_rawDescGZIP(), []int{2}
 }
 
-// MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
+// MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token.
 type MethodServiceTokenScopedListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Permissions a list of methods which can be called
+	// Permissions contains a list of methods which can be called
 	Permissions []*MethodPermission `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	// ProjectRoles associates a project id with the corresponding role of the token owner
+	// ProjectRoles associates a project ID with the corresponding role of the token owner
 	ProjectRoles map[string]ProjectRole `protobuf:"bytes,3,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
-	// TenantRoles associates a tenant id with the corresponding role of the token owner
+	// TenantRoles associates a tenant ID with the corresponding role of the token owner
 	TenantRoles map[string]TenantRole `protobuf:"bytes,4,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
 	// AdminRole defines the admin role of the token owner
 	AdminRole *AdminRole `protobuf:"varint,5,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`

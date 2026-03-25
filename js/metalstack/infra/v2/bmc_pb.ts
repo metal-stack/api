@@ -18,20 +18,20 @@ export const file_metalstack_infra_v2_bmc: GenFile = /*@__PURE__*/
   fileDesc("Ch1tZXRhbHN0YWNrL2luZnJhL3YyL2JtYy5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiLtAQoUVXBkYXRlQk1DSW5mb1JlcXVlc3QSHgoJcGFydGl0aW9uGAEgASgJQgu6SAhyBtCzrrECARJdCgtibWNfcmVwb3J0cxgCIAMoCzI5Lm1ldGFsc3RhY2suaW5mcmEudjIuVXBkYXRlQk1DSW5mb1JlcXVlc3QuQm1jUmVwb3J0c0VudHJ5Qg26SAqaAQciBXIDsAEBGlYKD0JtY1JlcG9ydHNFbnRyeRILCgNrZXkYASABKAkSMgoFdmFsdWUYAiABKAsyIy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQk1DUmVwb3J0OgI4ASJLChVVcGRhdGVCTUNJbmZvUmVzcG9uc2USGAoQdXBkYXRlZF9tYWNoaW5lcxgBIAMoCRIYChBjcmVhdGVkX21hY2hpbmVzGAIgAygJIjoKGFdhaXRGb3JCTUNDb21tYW5kUmVxdWVzdBIeCglwYXJ0aXRpb24YASABKAlCC7pICHIG0LOusQIBIrYBChlXYWl0Rm9yQk1DQ29tbWFuZFJlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjkKC2JtY19jb21tYW5kGAIgASgOMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ0NvbW1hbmQSMgoLbWFjaGluZV9ibWMYAyABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQk1DEhIKCmNvbW1hbmRfaWQYBCABKAkiSQoVQk1DQ29tbWFuZERvbmVSZXF1ZXN0EhIKCmNvbW1hbmRfaWQYASABKAkSEgoFZXJyb3IYAiABKAlIAIgBAUIICgZfZXJyb3IiGAoWQk1DQ29tbWFuZERvbmVSZXNwb25zZTL2AgoKQk1DU2VydmljZRJxCg1VcGRhdGVCTUNJbmZvEikubWV0YWxzdGFjay5pbmZyYS52Mi5VcGRhdGVCTUNJbmZvUmVxdWVzdBoqLm1ldGFsc3RhY2suaW5mcmEudjIuVXBkYXRlQk1DSW5mb1Jlc3BvbnNlIgng8xgC6vMYAQESfwoRV2FpdEZvckJNQ0NvbW1hbmQSLS5tZXRhbHN0YWNrLmluZnJhLnYyLldhaXRGb3JCTUNDb21tYW5kUmVxdWVzdBouLm1ldGFsc3RhY2suaW5mcmEudjIuV2FpdEZvckJNQ0NvbW1hbmRSZXNwb25zZSIJ4PMYAurzGAEBMAESdAoOQk1DQ29tbWFuZERvbmUSKi5tZXRhbHN0YWNrLmluZnJhLnYyLkJNQ0NvbW1hbmREb25lUmVxdWVzdBorLm1ldGFsc3RhY2suaW5mcmEudjIuQk1DQ29tbWFuZERvbmVSZXNwb25zZSIJ4PMYAerzGAEBQswBChdjb20ubWV0YWxzdGFjay5pbmZyYS52MkIIQm1jUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * UpdateBMCInfoRequest
+ * UpdateBMCInfoRequest is the request payload for updating BMC information.
  *
  * @generated from message metalstack.infra.v2.UpdateBMCInfoRequest
  */
 export type UpdateBMCInfoRequest = Message<"metalstack.infra.v2.UpdateBMCInfoRequest"> & {
   /**
-   * Partition the partition id where metal-bmc wants to receive events
+   * Partition is the partition ID where metal-bmc wants to receive events
    *
    * @generated from field: string partition = 1;
    */
   partition: string;
 
   /**
-   * BmcReports contains maps the bmc report per machine uuid
+   * BmcReports contains maps the BMC report per machine UUID
    *
    * @generated from field: map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 2;
    */
@@ -46,20 +46,20 @@ export const UpdateBMCInfoRequestSchema: GenMessage<UpdateBMCInfoRequest> = /*@_
   messageDesc(file_metalstack_infra_v2_bmc, 0);
 
 /**
- * UpdateBMCInfoResponse
+ * UpdateBMCInfoResponse is the response payload for updating BMC information.
  *
  * @generated from message metalstack.infra.v2.UpdateBMCInfoResponse
  */
 export type UpdateBMCInfoResponse = Message<"metalstack.infra.v2.UpdateBMCInfoResponse"> & {
   /**
-   * UpdatedMachines is a slice of machine uuids which were updated
+   * UpdatedMachines is a slice of machine UUIDs which were updated
    *
    * @generated from field: repeated string updated_machines = 1;
    */
   updatedMachines: string[];
 
   /**
-   * CreatedMachines is a slice of machine uuids which were created
+   * CreatedMachines is a slice of machine UUIDs which were created
    *
    * @generated from field: repeated string created_machines = 2;
    */
@@ -74,13 +74,13 @@ export const UpdateBMCInfoResponseSchema: GenMessage<UpdateBMCInfoResponse> = /*
   messageDesc(file_metalstack_infra_v2_bmc, 1);
 
 /**
- * WaitForBMCCommandRequest
+ * WaitForBMCCommandRequest is the request payload for waiting for a BMC command.
  *
  * @generated from message metalstack.infra.v2.WaitForBMCCommandRequest
  */
 export type WaitForBMCCommandRequest = Message<"metalstack.infra.v2.WaitForBMCCommandRequest"> & {
   /**
-   * Partition the partition id where metal-bmc wants to receive bmc commands
+   * Partition is the partition ID where metal-bmc wants to receive BMC commands
    *
    * @generated from field: string partition = 1;
    */
@@ -95,7 +95,7 @@ export const WaitForBMCCommandRequestSchema: GenMessage<WaitForBMCCommandRequest
   messageDesc(file_metalstack_infra_v2_bmc, 2);
 
 /**
- * WaitForBMCCommandResponse
+ * WaitForBMCCommandResponse is the response payload for waiting for a BMC command.
  *
  * @generated from message metalstack.infra.v2.WaitForBMCCommandResponse
  */
@@ -108,14 +108,14 @@ export type WaitForBMCCommandResponse = Message<"metalstack.infra.v2.WaitForBMCC
   uuid: string;
 
   /**
-   * BmcCommand to execute against the bmc of the machine
+   * BmcCommand to execute against the BMC of the machine
    *
    * @generated from field: metalstack.api.v2.MachineBMCCommand bmc_command = 2;
    */
   bmcCommand: MachineBMCCommand;
 
   /**
-   * MachineBmc contains connection details of the machine to issue the bmcCommand to
+   * MachineBmc contains connection details of the machine to issue the BMC command to
    *
    * @generated from field: metalstack.api.v2.MachineBMC machine_bmc = 3;
    */
@@ -123,7 +123,7 @@ export type WaitForBMCCommandResponse = Message<"metalstack.infra.v2.WaitForBMCC
 
   /**
    * CommandId is a unique ID which must be sent back after execution
-   * it is usually in the form: <machine-uuid>:machine-bmc-command:<command>
+   * It is usually in the form: <machine-uuid>:machine-bmc-command:<command>
    *
    * @generated from field: string command_id = 4;
    */
@@ -138,14 +138,14 @@ export const WaitForBMCCommandResponseSchema: GenMessage<WaitForBMCCommandRespon
   messageDesc(file_metalstack_infra_v2_bmc, 3);
 
 /**
- * BMCCommandDoneRequest must be returned after command execution
+ * BMCCommandDoneRequest must be returned after command execution.
  *
  * @generated from message metalstack.infra.v2.BMCCommandDoneRequest
  */
 export type BMCCommandDoneRequest = Message<"metalstack.infra.v2.BMCCommandDoneRequest"> & {
   /**
    * CommandId is a unique ID which must be sent back after execution
-   * it is usually in the form: <machine-uuid>:machine-bmc-command
+   * It is usually in the form: <machine-uuid>:machine-bmc-command
    *
    * @generated from field: string command_id = 1;
    */
@@ -167,7 +167,7 @@ export const BMCCommandDoneRequestSchema: GenMessage<BMCCommandDoneRequest> = /*
   messageDesc(file_metalstack_infra_v2_bmc, 4);
 
 /**
- * BMCCommandDoneResponse
+ * BMCCommandDoneResponse is the response payload for BMC command completion.
  *
  * @generated from message metalstack.infra.v2.BMCCommandDoneResponse
  */
@@ -182,13 +182,13 @@ export const BMCCommandDoneResponseSchema: GenMessage<BMCCommandDoneResponse> = 
   messageDesc(file_metalstack_infra_v2_bmc, 5);
 
 /**
- * BMCService serves bmc related functions
+ * BMCService provides BMC management operations.
  *
  * @generated from service metalstack.infra.v2.BMCService
  */
 export const BMCService: GenService<{
   /**
-   * UpdateBMCInfo
+   * Updates BMC information.
    *
    * @generated from rpc metalstack.infra.v2.BMCService.UpdateBMCInfo
    */
@@ -198,7 +198,7 @@ export const BMCService: GenService<{
     output: typeof UpdateBMCInfoResponseSchema;
   },
   /**
-   * WaitForBMCCommand is called by the metal-bmc and is returned with a bmc command to execute.
+   * WaitForBMCCommand is called by the metal-bmc and returns a BMC command to execute.
    *
    * @generated from rpc metalstack.infra.v2.BMCService.WaitForBMCCommand
    */
@@ -208,7 +208,7 @@ export const BMCService: GenService<{
     output: typeof WaitForBMCCommandResponseSchema;
   },
   /**
-   * BMCCommandDone must be called from metal-bmc after the command execution
+   * BMCCommandDone must be called from metal-bmc after the command execution.
    *
    * @generated from rpc metalstack.infra.v2.BMCService.BMCCommandDone
    */

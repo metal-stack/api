@@ -35,7 +35,7 @@ export const ImageConstraintSchema = /*@__PURE__*/ messageDesc(file_metalstack_a
  */
 export const SizeImageConstraintQuerySchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_size_imageconstraint, 4);
 /**
- * SizeImageConstraintService serves size and image constraint related functions
+ * SizeImageConstraintService provides size and image constraint validation operations.
  *
  * @generated from service metalstack.api.v2.SizeImageConstraintService
  */

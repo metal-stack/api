@@ -41,7 +41,7 @@ export const SizeServiceDeleteRequestSchema = /*@__PURE__*/ messageDesc(file_met
  */
 export const SizeServiceDeleteResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_size, 5);
 /**
- * SizeService serves size related functions
+ * SizeService provides size management operations.
  *
  * @generated from service metalstack.admin.v2.SizeService
  */

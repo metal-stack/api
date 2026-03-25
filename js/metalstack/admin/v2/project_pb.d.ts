@@ -7,19 +7,19 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_project: GenFile;
 /**
- * ProjectServiceListRequest is the request payload for the project list request
+ * ProjectServiceListRequest is the request payload for listing projects.
  *
  * @generated from message metalstack.admin.v2.ProjectServiceListRequest
  */
 export type ProjectServiceListRequest = Message<"metalstack.admin.v2.ProjectServiceListRequest"> & {
     /**
-     * Tenant lists only projects of this tenant
+     * Tenant filters projects by this tenant
      *
      * @generated from field: optional string tenant = 1;
      */
     tenant?: string;
     /**
-     * Labels lists only projects containing the given labels
+     * Labels filters projects containing the given labels
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 2;
      */
@@ -31,13 +31,13 @@ export type ProjectServiceListRequest = Message<"metalstack.admin.v2.ProjectServ
  */
 export declare const ProjectServiceListRequestSchema: GenMessage<ProjectServiceListRequest>;
 /**
- * ProjectServiceListResponse is the response payload for the project list request
+ * ProjectServiceListResponse is the response payload for listing projects.
  *
  * @generated from message metalstack.admin.v2.ProjectServiceListResponse
  */
 export type ProjectServiceListResponse = Message<"metalstack.admin.v2.ProjectServiceListResponse"> & {
     /**
-     * Projects is a list of all projects
+     * Projects contains the list of projects
      *
      * @generated from field: repeated metalstack.api.v2.Project projects = 1;
      */
@@ -49,13 +49,13 @@ export type ProjectServiceListResponse = Message<"metalstack.admin.v2.ProjectSer
  */
 export declare const ProjectServiceListResponseSchema: GenMessage<ProjectServiceListResponse>;
 /**
- * ProjectService serves project related functions
+ * ProjectService provides project management operations.
  *
  * @generated from service metalstack.admin.v2.ProjectService
  */
 export declare const ProjectService: GenService<{
     /**
-     * List projects based on various filter criteria
+     * Returns the list of projects matching the filter criteria.
      *
      * @generated from rpc metalstack.admin.v2.ProjectService.List
      */

@@ -19,13 +19,13 @@ export const file_metalstack_admin_v2_filesystem: GenFile = /*@__PURE__*/
   fileDesc("CiRtZXRhbHN0YWNrL2FkbWluL3YyL2ZpbGVzeXN0ZW0ucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiYAoeRmlsZXN5c3RlbVNlcnZpY2VDcmVhdGVSZXF1ZXN0Ej4KEWZpbGVzeXN0ZW1fbGF5b3V0GAEgASgLMiMubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbUxheW91dCJhCh9GaWxlc3lzdGVtU2VydmljZUNyZWF0ZVJlc3BvbnNlEj4KEWZpbGVzeXN0ZW1fbGF5b3V0GAEgASgLMiMubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbUxheW91dCKPBAoeRmlsZXN5c3RlbVNlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIeCgRuYW1lGAMgASgJQgu6SAhyBsCzrrECAUgAiAEBEiUKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECAUgBiAEBEjIKC2ZpbGVzeXN0ZW1zGAUgAygLMh0ubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbRImCgVkaXNrcxgGIAMoCzIXLm1ldGFsc3RhY2suYXBpLnYyLkRpc2sSJQoEcmFpZBgHIAMoCzIXLm1ldGFsc3RhY2suYXBpLnYyLlJhaWQSNQoNdm9sdW1lX2dyb3VwcxgIIAMoCzIeLm1ldGFsc3RhY2suYXBpLnYyLlZvbHVtZUdyb3VwEjkKD2xvZ2ljYWxfdm9sdW1lcxgJIAMoCzIgLm1ldGFsc3RhY2suYXBpLnYyLkxvZ2ljYWxWb2x1bWUSQwoLY29uc3RyYWludHMYCiABKAsyLi5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtTGF5b3V0Q29uc3RyYWludHNCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uImEKH0ZpbGVzeXN0ZW1TZXJ2aWNlVXBkYXRlUmVzcG9uc2USPgoRZmlsZXN5c3RlbV9sYXlvdXQYASABKAsyIy5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtTGF5b3V0IjkKHkZpbGVzeXN0ZW1TZXJ2aWNlRGVsZXRlUmVxdWVzdBIXCgJpZBgBIAEoCUILukgIcgbAs66xAgEiYQofRmlsZXN5c3RlbVNlcnZpY2VEZWxldGVSZXNwb25zZRI+ChFmaWxlc3lzdGVtX2xheW91dBgBIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLkZpbGVzeXN0ZW1MYXlvdXQykwMKEUZpbGVzeXN0ZW1TZXJ2aWNlEn4KBkNyZWF0ZRIzLm1ldGFsc3RhY2suYWRtaW4udjIuRmlsZXN5c3RlbVNlcnZpY2VDcmVhdGVSZXF1ZXN0GjQubWV0YWxzdGFjay5hZG1pbi52Mi5GaWxlc3lzdGVtU2VydmljZUNyZWF0ZVJlc3BvbnNlIgnS8xgBAeDzGAESfgoGVXBkYXRlEjMubWV0YWxzdGFjay5hZG1pbi52Mi5GaWxlc3lzdGVtU2VydmljZVVwZGF0ZVJlcXVlc3QaNC5tZXRhbHN0YWNrLmFkbWluLnYyLkZpbGVzeXN0ZW1TZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCdLzGAEB4PMYARJ+CgZEZWxldGUSMy5tZXRhbHN0YWNrLmFkbWluLnYyLkZpbGVzeXN0ZW1TZXJ2aWNlRGVsZXRlUmVxdWVzdBo0Lm1ldGFsc3RhY2suYWRtaW4udjIuRmlsZXN5c3RlbVNlcnZpY2VEZWxldGVSZXNwb25zZSIJ0vMYAQHg8xgBQtMBChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIPRmlsZXN5c3RlbVByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_filesystem, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * FilesystemServiceCreateRequest
+ * FilesystemServiceCreateRequest is the request payload for creating a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceCreateRequest
  */
 export type FilesystemServiceCreateRequest = Message<"metalstack.admin.v2.FilesystemServiceCreateRequest"> & {
   /**
-   * FilesystemLayout the filesystemlayout
+   * FilesystemLayout is the filesystem layout to create
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
    */
@@ -40,13 +40,13 @@ export const FilesystemServiceCreateRequestSchema: GenMessage<FilesystemServiceC
   messageDesc(file_metalstack_admin_v2_filesystem, 0);
 
 /**
- * FilesystemServiceCreateResponse
+ * FilesystemServiceCreateResponse is the response payload for creating a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceCreateResponse
  */
 export type FilesystemServiceCreateResponse = Message<"metalstack.admin.v2.FilesystemServiceCreateResponse"> & {
   /**
-   * FilesystemLayout the filesystemlayout
+   * FilesystemLayout contains the created filesystem layout
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
    */
@@ -61,7 +61,7 @@ export const FilesystemServiceCreateResponseSchema: GenMessage<FilesystemService
   messageDesc(file_metalstack_admin_v2_filesystem, 1);
 
 /**
- * FilesystemServiceUpdateRequest
+ * FilesystemServiceUpdateRequest is the request payload for updating a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceUpdateRequest
  */
@@ -109,7 +109,7 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
   disks: Disk[];
 
   /**
-   * raid arrays to create
+   * Raid arrays to create
    *
    * @generated from field: repeated metalstack.api.v2.Raid raid = 7;
    */
@@ -145,13 +145,13 @@ export const FilesystemServiceUpdateRequestSchema: GenMessage<FilesystemServiceU
   messageDesc(file_metalstack_admin_v2_filesystem, 2);
 
 /**
- * FilesystemServiceUpdateResponse
+ * FilesystemServiceUpdateResponse is the response payload for updating a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceUpdateResponse
  */
 export type FilesystemServiceUpdateResponse = Message<"metalstack.admin.v2.FilesystemServiceUpdateResponse"> & {
   /**
-   * FilesystemLayout the filesystemlayout
+   * FilesystemLayout contains the updated filesystem layout
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
    */
@@ -166,7 +166,7 @@ export const FilesystemServiceUpdateResponseSchema: GenMessage<FilesystemService
   messageDesc(file_metalstack_admin_v2_filesystem, 3);
 
 /**
- * FilesystemServiceDeleteRequest
+ * FilesystemServiceDeleteRequest is the request payload for deleting a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceDeleteRequest
  */
@@ -187,13 +187,13 @@ export const FilesystemServiceDeleteRequestSchema: GenMessage<FilesystemServiceD
   messageDesc(file_metalstack_admin_v2_filesystem, 4);
 
 /**
- * message FilesystemServiceDeleteResponse {
+ * FilesystemServiceDeleteResponse is the response payload for deleting a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceDeleteResponse
  */
 export type FilesystemServiceDeleteResponse = Message<"metalstack.admin.v2.FilesystemServiceDeleteResponse"> & {
   /**
-   * FilesystemLayout the filesystemlayout
+   * FilesystemLayout contains the deleted filesystem layout
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
    */
@@ -208,13 +208,13 @@ export const FilesystemServiceDeleteResponseSchema: GenMessage<FilesystemService
   messageDesc(file_metalstack_admin_v2_filesystem, 5);
 
 /**
- * FilesystemService serves filesystem related functions
+ * FilesystemService provides filesystem management operations.
  *
  * @generated from service metalstack.admin.v2.FilesystemService
  */
 export const FilesystemService: GenService<{
   /**
-   * Create a filesystem
+   * Creates a new filesystem.
    *
    * @generated from rpc metalstack.admin.v2.FilesystemService.Create
    */
@@ -224,7 +224,7 @@ export const FilesystemService: GenService<{
     output: typeof FilesystemServiceCreateResponseSchema;
   },
   /**
-   * Update a filesystem
+   * Updates a filesystem.
    *
    * @generated from rpc metalstack.admin.v2.FilesystemService.Update
    */
@@ -234,7 +234,7 @@ export const FilesystemService: GenService<{
     output: typeof FilesystemServiceUpdateResponseSchema;
   },
   /**
-   * Delete a filesystem
+   * Deletes a filesystem.
    *
    * @generated from rpc metalstack.admin.v2.FilesystemService.Delete
    */

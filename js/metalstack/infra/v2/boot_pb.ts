@@ -363,7 +363,7 @@ export const BootServiceSuperUserPasswordResponseSchema: GenMessage<BootServiceS
   messageDesc(file_metalstack_infra_v2_boot, 11);
 
 /**
- * BootService is used for all boot related requests, either pixiecore or metal-hammer
+ * BootService provides boot-related operations for pixiecore and metal-hammer.
  *
  * Pixiecore
  *
@@ -371,7 +371,7 @@ export const BootServiceSuperUserPasswordResponseSchema: GenMessage<BootServiceS
  */
 export const BootService: GenService<{
   /**
-   * Dhcp is the first dhcp request (option 97). A ProvisioningEventPXEBooting is fired
+   * Dhcp handles the first DHCP request (option 97). A ProvisioningEventPXEBooting is fired.
    *
    * @generated from rpc metalstack.infra.v2.BootService.Dhcp
    */
@@ -381,7 +381,7 @@ export const BootService: GenService<{
     output: typeof BootServiceDhcpResponseSchema;
   },
   /**
-   * Boot is called from pixie once the machine got the first dhcp response and ipxie asks for subsequent kernel and initrd
+   * Boot is called from pixie once the machine got the first DHCP response and ipxe asks for subsequent kernel and initrd.
    *
    * @generated from rpc metalstack.infra.v2.BootService.Boot
    */
@@ -391,7 +391,7 @@ export const BootService: GenService<{
     output: typeof BootServiceBootResponseSchema;
   },
   /**
-   * SuperUserPassword metal-hammer takes the configured root password for the bmc from metal-apiserver and configure the bmc accordingly
+   * SuperUserPassword returns the configured root password for the BMC.
    *
    * @generated from rpc metalstack.infra.v2.BootService.SuperUserPassword
    */
@@ -401,7 +401,7 @@ export const BootService: GenService<{
     output: typeof BootServiceSuperUserPasswordResponseSchema;
   },
   /**
-   * Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all gory details about that machine
+   * Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all details about that machine.
    *
    * @generated from rpc metalstack.infra.v2.BootService.Register
    */
@@ -411,7 +411,7 @@ export const BootService: GenService<{
     output: typeof BootServiceRegisterResponseSchema;
   },
   /**
-   * Wait is a hanging call that waits until the machine gets allocated by a user
+   * Wait is a hanging call that waits until the machine gets allocated by a user.
    *
    * @generated from rpc metalstack.infra.v2.BootService.Wait
    */
@@ -421,7 +421,7 @@ export const BootService: GenService<{
     output: typeof BootServiceWaitResponseSchema;
   },
   /**
-   * InstallationSucceeded tells metal-apiserver installation was either successful
+   * InstallationSucceeded tells metal-apiserver that installation was successful.
    *
    * @generated from rpc metalstack.infra.v2.BootService.InstallationSucceeded
    */

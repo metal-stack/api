@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Version of the application
+// Version represents the version of the application.
 type Version struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Version of the application
@@ -95,7 +95,7 @@ func (x *Version) GetBuildDate() string {
 	return ""
 }
 
-// VersionServiceGetRequest is the request payload to get the version
+// VersionServiceGetRequest is the request payload for getting the version.
 type VersionServiceGetRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -132,10 +132,10 @@ func (*VersionServiceGetRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_version_proto_rawDescGZIP(), []int{1}
 }
 
-// VersionServiceGetResponse is the response payload with the version
+// VersionServiceGetResponse is the response payload for getting the version.
 type VersionServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Version of the application
+	// Version contains the version of the application
 	Version       *Version `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

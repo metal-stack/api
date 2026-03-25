@@ -32,73 +32,73 @@ export const MachineProvisioningEventSchema = /*@__PURE__*/ messageDesc(file_met
 export var ProvisioningEventType;
 (function (ProvisioningEventType) {
     /**
-     * PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified.
+     * PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
      */
     ProvisioningEventType[ProvisioningEventType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago.
+     * PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_ALIVE = 1;
      */
     ProvisioningEventType[ProvisioningEventType["ALIVE"] = 1] = "ALIVE";
     /**
-     * PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine's lifecycle.
+     * PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine's lifecycle
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_CRASHED = 2;
      */
     ProvisioningEventType[ProvisioningEventType["CRASHED"] = 2] = "CRASHED";
     /**
-     * PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE.
+     * PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_PXE_BOOTING = 3;
      */
     ProvisioningEventType[ProvisioningEventType["PXE_BOOTING"] = 3] = "PXE_BOOTING";
     /**
-     * PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot.
+     * PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_PLANNED_REBOOT = 4;
      */
     ProvisioningEventType[ProvisioningEventType["PLANNED_REBOOT"] = 4] = "PLANNED_REBOOT";
     /**
-     * PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started.
+     * PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_PREPARING = 5;
      */
     ProvisioningEventType[ProvisioningEventType["PREPARING"] = 5] = "PREPARING";
     /**
-     * PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API.
+     * PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_REGISTERING = 6;
      */
     ProvisioningEventType[ProvisioningEventType["REGISTERING"] = 6] = "REGISTERING";
     /**
-     * PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation.
+     * PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_WAITING = 7;
      */
     ProvisioningEventType[ProvisioningEventType["WAITING"] = 7] = "WAITING";
     /**
-     * PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed.
+     * PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_INSTALLING = 8;
      */
     ProvisioningEventType[ProvisioningEventType["INSTALLING"] = 8] = "INSTALLING";
     /**
-     * PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS.
+     * PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL = 9;
      */
     ProvisioningEventType[ProvisioningEventType["BOOTING_NEW_KERNEL"] = 9] = "BOOTING_NEW_KERNEL";
     /**
-     * PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness.
+     * PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_PHONED_HOME = 10;
      */
     ProvisioningEventType[ProvisioningEventType["PHONED_HOME"] = 10] = "PHONED_HOME";
     /**
-     * PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines.
+     * PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines
      *
      * @generated from enum value: PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11;
      */
@@ -109,7 +109,7 @@ export var ProvisioningEventType;
  */
 export const ProvisioningEventTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_infra_v2_event, 0);
 /**
- * EventService serves event related functions.
+ * EventService provides machine provisioning event logging operations.
  *
  * @generated from service metalstack.infra.v2.EventService
  */

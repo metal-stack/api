@@ -7,24 +7,24 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/partition.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// PartitionService serves partition address related functions
+// PartitionService provides partition management operations.
 service PartitionService {
-  // Create a partition
+  // Creates a new partition.
   rpc Create(PartitionServiceCreateRequest) returns (PartitionServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Update a partition
+  // Updates a partition.
   rpc Update(PartitionServiceUpdateRequest) returns (PartitionServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Delete a partition
+  // Deletes a partition.
   rpc Delete(PartitionServiceDeleteRequest) returns (PartitionServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Capacity of a partitions
+  // Returns the capacity of a partition.
   rpc Capacity(PartitionServiceCapacityRequest) returns (PartitionServiceCapacityResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
@@ -38,7 +38,7 @@ message PartitionServiceCreateRequest {
   metalstack.api.v2.Partition partition = 1;
 }
 
-// PartitionServiceUpdateRequest is the request payload for a partition update request
+// PartitionServiceUpdateRequest is the request payload for updating a partition.
 message PartitionServiceUpdateRequest {
   // ID of this partition
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
@@ -53,9 +53,8 @@ message PartitionServiceUpdateRequest {
   // NTPServers for this partition
   repeated metalstack.api.v2.NTPServer ntp_servers = 6 [(buf.validate.field).repeated.max_items = 10];
   // ManagementServiceAddresses defines where the management is reachable
-  // should be in the form <ip|host>:<port>
-  // FIXME validation
-  repeated string mgmt_service_addresses = 7;
+  // must be in the form <ip|host>:<port>
+  repeated string mgmt_service_addresses = 7 [(buf.validate.field).repeated.(metalstack.api.v2.are_host_and_port) = true];
   // Labels to update on this network
   optional metalstack.api.v2.UpdateLabels labels = 8;
 }
@@ -78,13 +77,13 @@ message PartitionServiceUpdateResponse {
   metalstack.api.v2.Partition partition = 1;
 }
 
-// PartitionServiceCapacityResponse is the response payload for a partition delete request
+// PartitionServiceDeleteResponse is the response payload for deleting a partition.
 message PartitionServiceDeleteResponse {
-  // Partition the partition
+  // Partition contains the deleted partition
   metalstack.api.v2.Partition partition = 1;
 }
 
-// PartitionServiceListRequest is the request payload for a partition capacity request
+// PartitionServiceCapacityRequest is the request payload for getting partition capacity.
 message PartitionServiceCapacityRequest {
   // ID of the partition to get
   optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];

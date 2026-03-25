@@ -6,148 +6,148 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 
-// TaskService provides services to async tasks
+// TaskService provides asynchronous task management operations.
 service TaskService {
-  // Get a specific task
+  // Returns the task with the specified identifier.
   rpc Get(TaskServiceGetRequest) returns (TaskServiceGetResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
-  // Delete a specific task
+  // Deletes the task with the specified identifier.
   rpc Delete(TaskServiceDeleteRequest) returns (TaskServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
   }
-  // Queues returns all configures queues
+  // Returns the list of all configured queues.
   rpc Queues(TaskServiceQueuesRequest) returns (TaskServiceQueuesResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
-  // List list all tasks
+  // Returns the list of all tasks.
   rpc List(TaskServiceListRequest) returns (TaskServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 
-// TaskServiceGetRequest is the message to a get task request
+// TaskServiceGetRequest is the request payload for getting a task.
 message TaskServiceGetRequest {
-  // TaskId to get
+  // TaskId is the identifier of the task to get
   string task_id = 1;
-  // Queue where this task was scheduled to
+  // Queue is the queue where this task was scheduled to
   string queue = 2;
 }
 
-// TaskServiceGetResponse is the response to a task get request
+// TaskServiceGetResponse is the response payload for getting a task.
 message TaskServiceGetResponse {
   // Task contains the task details
   TaskInfo task = 1;
 }
 
-// TaskServiceDeleteRequest is the message to a delete task request
+// TaskServiceDeleteRequest is the request payload for deleting a task.
 message TaskServiceDeleteRequest {
-  // TaskId to cancel
+  // TaskId is the identifier of the task to cancel
   string task_id = 1;
-  // Queue where this task was scheduled to
+  // Queue is the queue where this task was scheduled to
   string queue = 2;
 }
 
-// TaskServiceDeleteResponse is the response to a task delete request
+// TaskServiceDeleteResponse is the response payload for deleting a task.
 message TaskServiceDeleteResponse {}
 
-// TaskServiceQueuesRequest is the message to get all queues
+// TaskServiceQueuesRequest is the request payload for getting all queues.
 message TaskServiceQueuesRequest {}
 
-// TaskServiceQueuesResponse is the response to a queues request
+// TaskServiceQueuesResponse is the response payload for getting all queues.
 message TaskServiceQueuesResponse {
   // Queues configured for the async system
   repeated string queues = 1;
 }
 
-// TaskServiceListRequest is the message to a task list request
+// TaskServiceListRequest is the request payload for listing tasks.
 message TaskServiceListRequest {
-  // Queue where this tasks should be listed
-  // will return tasks from all queues if not specified
+  // Queue filters tasks by this queue
+  // Will return tasks from all queues if not specified
   optional string queue = 1;
-  // Count of tasks to return
+  // Count is the number of tasks to return
   optional uint32 count = 2;
-  // Page of tasks to return
+  // Page is the page of tasks to return
   optional uint32 page = 3;
 }
 
-// TaskServiceListResponse is the response to a task list request
+// TaskServiceListResponse is the response payload for listing tasks.
 message TaskServiceListResponse {
-  // Tasks contains the requested list of tasks
+  // Tasks contains the list of requested tasks
   repeated TaskInfo tasks = 1;
 }
 
-// TaskInfo contains details of an async task
+// TaskInfo contains details of an asynchronous task.
 message TaskInfo {
-  // ID is the identifier of the task.
+  // ID is the identifier of the task
   string id = 1;
-  // Queue is the name of the queue in which the task belongs.
+  // Queue is the name of the queue in which the task belongs
   string queue = 2;
-  // Type is the type name of the task.
+  // Type is the type name of the task
   string type = 3;
-  // Payload is the payload data of the task.
+  // Payload is the payload data of the task
   bytes payload = 4;
-  // State indicates the task state.
+  // State indicates the task state
   TaskState state = 5;
-  // MaxRetry is the maximum number of times the task can be retried.
+  // MaxRetry is the maximum number of times the task can be retried
   int32 max_retry = 6;
-  // Retried is the number of times the task has retried so far.
+  // Retried is the number of times the task has retried so far
   int32 retried = 7;
-  // LastError is the error message from the last failure.
+  // LastError is the error message from the last failure
   string last_error = 8;
-  // LastFailedAt is the time time of the last failure if any.
-  // If the task has no failures, LastFailedAt is zero time (i.e. time.Time{}).
+  // LastFailedAt is the time of the last failure if any
+  // If the task has no failures, LastFailedAt is zero time (i.e. time.Time{})
   google.protobuf.Timestamp last_failed_at = 9;
-  // Timeout is the duration the task can be processed by Handler before being retried,
+  // Timeout is the duration the task can be processed by Handler before being retried
   google.protobuf.Duration timeout = 10;
-  // Deadline is the deadline for the task.
+  // Deadline is the deadline for the task
   google.protobuf.Timestamp deadline = 11;
-  // Group is the name of the group in which the task belongs.
+  // Group is the name of the group in which the task belongs
   //
   // Tasks in the same queue can be grouped together by Group name and will be aggregated into one task
-  // by a Server processing the queue.
+  // by a Server processing the queue
   //
-  // Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task.
+  // Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task
   string group = 12;
-  // NextProcessAt is the time the task is scheduled to be processed,
-  // zero if not applicable.
+  // NextProcessAt is the time the task is scheduled to be processed
+  // Zero if not applicable
   google.protobuf.Timestamp next_process_at = 13;
-  // IsOrphaned describes whether the task is left in active state with no worker processing it.
+  // IsOrphaned describes whether the task is left in active state with no worker processing it
   // An orphaned task indicates that the worker has crashed or experienced network failures and was not able to
-  // extend its lease on the task.
+  // extend its lease on the task
   //
-  // This task will be recovered by running a server against the queue the task is in.
-  // This field is only applicable to tasks with TaskStateActive.
+  // This task will be recovered by running a server against the queue the task is in
+  // This field is only applicable to tasks with TaskStateActive
   bool is_orphaned = 14;
-  // Retention is duration of the retention period after the task is successfully processed.
+  // Retention is duration of the retention period after the task is successfully processed
   google.protobuf.Duration retention = 15;
-  // CompletedAt is the time when the task is processed successfully.
-  // Zero value (i.e. time.Time{}) indicates no value.
+  // CompletedAt is the time when the task is processed successfully
+  // Zero value (i.e. time.Time{}) indicates no value
   google.protobuf.Timestamp completed_at = 16;
-  // Result holds the result data associated with the task.
-  // Use ResultWriter to write result data from the Handler.
+  // Result holds the result data associated with the task
+  // Use ResultWriter to write result data from the Handler
   bytes result = 17;
 }
 
-// TaskState defines the state of the task
+// TaskState defines the state of the task.
 enum TaskState {
-  // TASK_STATE_UNSPECIFIED indicates a undefined state
+  // TASK_STATE_UNSPECIFIED is not specified
   TASK_STATE_UNSPECIFIED = 0;
-  // TASK_STATE_ACTIVE indicates that the task is currently being processed by Handler.
+  // TASK_STATE_ACTIVE indicates that the task is currently being processed by Handler
   TASK_STATE_ACTIVE = 1 [(metalstack.api.v2.enum_string_value) = "active"];
-  // TASK_STATE_PENDING indicates that the task is ready to be processed by Handler.
+  // TASK_STATE_PENDING indicates that the task is ready to be processed by Handler
   TASK_STATE_PENDING = 2 [(metalstack.api.v2.enum_string_value) = "pending"];
-  // TASK_STATE_SCHEDULED indicates that the task is scheduled to be processed some time in the future.
+  // TASK_STATE_SCHEDULED indicates that the task is scheduled to be processed some time in the future
   TASK_STATE_SCHEDULED = 3 [(metalstack.api.v2.enum_string_value) = "scheduled"];
-  // TASK_STATE_RETRY indicates that the task has previously failed and scheduled to be processed some time in the future.
+  // TASK_STATE_RETRY indicates that the task has previously failed and is scheduled to be processed some time in the future
   TASK_STATE_RETRY = 4 [(metalstack.api.v2.enum_string_value) = "retry"];
-  // TASK_STATE_ARCHIVED indicates that the task is archived and stored for inspection purposes.
+  // TASK_STATE_ARCHIVED indicates that the task is archived and stored for inspection purposes
   TASK_STATE_ARCHIVED = 5 [(metalstack.api.v2.enum_string_value) = "archived"];
-  // TASK_STATE_COMPLETED indicates that the task is processed successfully and retained until the retention TTL expires.
+  // TASK_STATE_COMPLETED indicates that the task is processed successfully and retained until the retention TTL expires
   TASK_STATE_COMPLETED = 6 [(metalstack.api.v2.enum_string_value) = "completed"];
-  // TASK_STATE_AGGREGATING indicates that the task is waiting in a group to be aggregated into one task.
+  // TASK_STATE_AGGREGATING indicates that the task is waiting in a group to be aggregated into one task
   TASK_STATE_AGGREGATING = 7 [(metalstack.api.v2.enum_string_value) = "aggregating"];
 }

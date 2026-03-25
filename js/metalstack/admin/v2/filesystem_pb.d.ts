@@ -7,13 +7,13 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_filesystem: GenFile;
 /**
- * FilesystemServiceCreateRequest
+ * FilesystemServiceCreateRequest is the request payload for creating a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceCreateRequest
  */
 export type FilesystemServiceCreateRequest = Message<"metalstack.admin.v2.FilesystemServiceCreateRequest"> & {
     /**
-     * FilesystemLayout the filesystemlayout
+     * FilesystemLayout is the filesystem layout to create
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
@@ -25,13 +25,13 @@ export type FilesystemServiceCreateRequest = Message<"metalstack.admin.v2.Filesy
  */
 export declare const FilesystemServiceCreateRequestSchema: GenMessage<FilesystemServiceCreateRequest>;
 /**
- * FilesystemServiceCreateResponse
+ * FilesystemServiceCreateResponse is the response payload for creating a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceCreateResponse
  */
 export type FilesystemServiceCreateResponse = Message<"metalstack.admin.v2.FilesystemServiceCreateResponse"> & {
     /**
-     * FilesystemLayout the filesystemlayout
+     * FilesystemLayout contains the created filesystem layout
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
@@ -43,7 +43,7 @@ export type FilesystemServiceCreateResponse = Message<"metalstack.admin.v2.Files
  */
 export declare const FilesystemServiceCreateResponseSchema: GenMessage<FilesystemServiceCreateResponse>;
 /**
- * FilesystemServiceUpdateRequest
+ * FilesystemServiceUpdateRequest is the request payload for updating a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceUpdateRequest
  */
@@ -85,7 +85,7 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
      */
     disks: Disk[];
     /**
-     * raid arrays to create
+     * Raid arrays to create
      *
      * @generated from field: repeated metalstack.api.v2.Raid raid = 7;
      */
@@ -115,13 +115,13 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
  */
 export declare const FilesystemServiceUpdateRequestSchema: GenMessage<FilesystemServiceUpdateRequest>;
 /**
- * FilesystemServiceUpdateResponse
+ * FilesystemServiceUpdateResponse is the response payload for updating a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceUpdateResponse
  */
 export type FilesystemServiceUpdateResponse = Message<"metalstack.admin.v2.FilesystemServiceUpdateResponse"> & {
     /**
-     * FilesystemLayout the filesystemlayout
+     * FilesystemLayout contains the updated filesystem layout
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
@@ -133,7 +133,7 @@ export type FilesystemServiceUpdateResponse = Message<"metalstack.admin.v2.Files
  */
 export declare const FilesystemServiceUpdateResponseSchema: GenMessage<FilesystemServiceUpdateResponse>;
 /**
- * FilesystemServiceDeleteRequest
+ * FilesystemServiceDeleteRequest is the request payload for deleting a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceDeleteRequest
  */
@@ -151,13 +151,13 @@ export type FilesystemServiceDeleteRequest = Message<"metalstack.admin.v2.Filesy
  */
 export declare const FilesystemServiceDeleteRequestSchema: GenMessage<FilesystemServiceDeleteRequest>;
 /**
- * message FilesystemServiceDeleteResponse {
+ * FilesystemServiceDeleteResponse is the response payload for deleting a filesystem.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceDeleteResponse
  */
 export type FilesystemServiceDeleteResponse = Message<"metalstack.admin.v2.FilesystemServiceDeleteResponse"> & {
     /**
-     * FilesystemLayout the filesystemlayout
+     * FilesystemLayout contains the deleted filesystem layout
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
@@ -169,13 +169,13 @@ export type FilesystemServiceDeleteResponse = Message<"metalstack.admin.v2.Files
  */
 export declare const FilesystemServiceDeleteResponseSchema: GenMessage<FilesystemServiceDeleteResponse>;
 /**
- * FilesystemService serves filesystem related functions
+ * FilesystemService provides filesystem management operations.
  *
  * @generated from service metalstack.admin.v2.FilesystemService
  */
 export declare const FilesystemService: GenService<{
     /**
-     * Create a filesystem
+     * Creates a new filesystem.
      *
      * @generated from rpc metalstack.admin.v2.FilesystemService.Create
      */
@@ -185,7 +185,7 @@ export declare const FilesystemService: GenService<{
         output: typeof FilesystemServiceCreateResponseSchema;
     };
     /**
-     * Update a filesystem
+     * Updates a filesystem.
      *
      * @generated from rpc metalstack.admin.v2.FilesystemService.Update
      */
@@ -195,7 +195,7 @@ export declare const FilesystemService: GenService<{
         output: typeof FilesystemServiceUpdateResponseSchema;
     };
     /**
-     * Delete a filesystem
+     * Deletes a filesystem.
      *
      * @generated from rpc metalstack.admin.v2.FilesystemService.Delete
      */

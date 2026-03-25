@@ -20,13 +20,13 @@ export const file_metalstack_api_v2_user: GenFile = /*@__PURE__*/
   fileDesc("ChxtZXRhbHN0YWNrL2FwaS92Mi91c2VyLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiLgAQoEVXNlchINCgVsb2dpbhgBIAEoCRIZCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECARINCgVlbWFpbBgDIAEoCRISCgphdmF0YXJfdXJsGAUgASgJEioKB3RlbmFudHMYCCADKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQSLAoIcHJvamVjdHMYCSADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0EjEKDmRlZmF1bHRfdGVuYW50GAogASgLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50IhcKFVVzZXJTZXJ2aWNlR2V0UmVxdWVzdCI/ChZVc2VyU2VydmljZUdldFJlc3BvbnNlEiUKBHVzZXIYASABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5Vc2VyMnMKC1VzZXJTZXJ2aWNlEmQKA0dldBIoLm1ldGFsc3RhY2suYXBpLnYyLlVzZXJTZXJ2aWNlR2V0UmVxdWVzdBopLm1ldGFsc3RhY2suYXBpLnYyLlVzZXJTZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGAPg8xgBQr8BChVjb20ubWV0YWxzdGFjay5hcGkudjJCCVVzZXJQcm90b1ABWjVnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FwaS92MjthcGl2MqICA01BWKoCEU1ldGFsc3RhY2suQXBpLlYyygIRTWV0YWxzdGFja1xBcGlcVjLiAh1NZXRhbHN0YWNrXEFwaVxWMlxHUEJNZXRhZGF0YeoCE01ldGFsc3RhY2s6OkFwaTo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_project, file_metalstack_api_v2_tenant]);
 
 /**
- * User is a end user of the platform
+ * User represents an end user of the platform.
  *
  * @generated from message metalstack.api.v2.User
  */
 export type User = Message<"metalstack.api.v2.User"> & {
   /**
-   * Login the login at the provider
+   * Login is the login at the provider
    *
    * @generated from field: string login = 1;
    */
@@ -83,7 +83,7 @@ export const UserSchema: GenMessage<User> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_user, 0);
 
 /**
- * UserServiceGetRequest is the request to get the user
+ * UserServiceGetRequest is the request payload for getting the user.
  *
  * @generated from message metalstack.api.v2.UserServiceGetRequest
  */
@@ -98,13 +98,13 @@ export const UserServiceGetRequestSchema: GenMessage<UserServiceGetRequest> = /*
   messageDesc(file_metalstack_api_v2_user, 1);
 
 /**
- * UserServiceGetResponse the response when userservice get request was called
+ * UserServiceGetResponse is the response payload for getting the user.
  *
  * @generated from message metalstack.api.v2.UserServiceGetResponse
  */
 export type UserServiceGetResponse = Message<"metalstack.api.v2.UserServiceGetResponse"> & {
   /**
-   * User is the user
+   * User contains the authenticated user
    *
    * @generated from field: metalstack.api.v2.User user = 1;
    */
@@ -119,13 +119,13 @@ export const UserServiceGetResponseSchema: GenMessage<UserServiceGetResponse> = 
   messageDesc(file_metalstack_api_v2_user, 2);
 
 /**
- * UserService exposes rpc calls for users
+ * UserService provides user information operations.
  *
  * @generated from service metalstack.api.v2.UserService
  */
 export const UserService: GenService<{
   /**
-   * Get a User
+   * Returns the authenticated user.
    *
    * @generated from rpc metalstack.api.v2.UserService.Get
    */

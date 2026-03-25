@@ -27,7 +27,7 @@ export const UserServiceGetRequestSchema = /*@__PURE__*/ messageDesc(file_metals
  */
 export const UserServiceGetResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_user, 2);
 /**
- * UserService exposes rpc calls for users
+ * UserService provides user information operations.
  *
  * @generated from service metalstack.api.v2.UserService
  */

@@ -52,7 +52,7 @@ export const ImageServiceUsageRequestSchema = /*@__PURE__*/ messageDesc(file_met
  */
 export const ImageServiceUsageResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_image, 7);
 /**
- * ImageService serves image related functions
+ * ImageService provides image management operations.
  *
  * @generated from service metalstack.admin.v2.ImageService
  */

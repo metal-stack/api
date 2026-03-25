@@ -7,13 +7,13 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_user: GenFile;
 /**
- * User is a end user of the platform
+ * User represents an end user of the platform.
  *
  * @generated from message metalstack.api.v2.User
  */
 export type User = Message<"metalstack.api.v2.User"> & {
     /**
-     * Login the login at the provider
+     * Login is the login at the provider
      *
      * @generated from field: string login = 1;
      */
@@ -61,7 +61,7 @@ export type User = Message<"metalstack.api.v2.User"> & {
  */
 export declare const UserSchema: GenMessage<User>;
 /**
- * UserServiceGetRequest is the request to get the user
+ * UserServiceGetRequest is the request payload for getting the user.
  *
  * @generated from message metalstack.api.v2.UserServiceGetRequest
  */
@@ -72,13 +72,13 @@ export type UserServiceGetRequest = Message<"metalstack.api.v2.UserServiceGetReq
  */
 export declare const UserServiceGetRequestSchema: GenMessage<UserServiceGetRequest>;
 /**
- * UserServiceGetResponse the response when userservice get request was called
+ * UserServiceGetResponse is the response payload for getting the user.
  *
  * @generated from message metalstack.api.v2.UserServiceGetResponse
  */
 export type UserServiceGetResponse = Message<"metalstack.api.v2.UserServiceGetResponse"> & {
     /**
-     * User is the user
+     * User contains the authenticated user
      *
      * @generated from field: metalstack.api.v2.User user = 1;
      */
@@ -90,13 +90,13 @@ export type UserServiceGetResponse = Message<"metalstack.api.v2.UserServiceGetRe
  */
 export declare const UserServiceGetResponseSchema: GenMessage<UserServiceGetResponse>;
 /**
- * UserService exposes rpc calls for users
+ * UserService provides user information operations.
  *
  * @generated from service metalstack.api.v2.UserService
  */
 export declare const UserService: GenService<{
     /**
-     * Get a User
+     * Returns the authenticated user.
      *
      * @generated from rpc metalstack.api.v2.UserService.Get
      */

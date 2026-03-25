@@ -17,7 +17,7 @@ export const file_metalstack_admin_v2_token: GenFile = /*@__PURE__*/
   fileDesc("Ch9tZXRhbHN0YWNrL2FkbWluL3YyL3Rva2VuLnByb3RvEhNtZXRhbHN0YWNrLmFkbWluLnYyIjUKF1Rva2VuU2VydmljZUxpc3RSZXF1ZXN0EhEKBHVzZXIYASABKAlIAIgBAUIHCgVfdXNlciJEChhUb2tlblNlcnZpY2VMaXN0UmVzcG9uc2USKAoGdG9rZW5zGAEgAygLMhgubWV0YWxzdGFjay5hcGkudjIuVG9rZW4iTQoZVG9rZW5TZXJ2aWNlUmV2b2tlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIYCgR1c2VyGAIgASgJQgq6SAdyBRACGIAEIhwKGlRva2VuU2VydmljZVJldm9rZVJlc3BvbnNlIo8BChlUb2tlblNlcnZpY2VDcmVhdGVSZXF1ZXN0Eh0KBHVzZXIYASABKAlCCrpIB3IFEAIYgARIAIgBARJKChR0b2tlbl9jcmVhdGVfcmVxdWVzdBgCIAEoCzIsLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZUNyZWF0ZVJlcXVlc3RCBwoFX3VzZXIiVQoaVG9rZW5TZXJ2aWNlQ3JlYXRlUmVzcG9uc2USJwoFdG9rZW4YASABKAsyGC5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlbhIOCgZzZWNyZXQYAiABKAky3wIKDFRva2VuU2VydmljZRJrCgRMaXN0EiwubWV0YWxzdGFjay5hZG1pbi52Mi5Ub2tlblNlcnZpY2VMaXN0UmVxdWVzdBotLm1ldGFsc3RhY2suYWRtaW4udjIuVG9rZW5TZXJ2aWNlTGlzdFJlc3BvbnNlIgbS8xgCAQIScAoGUmV2b2tlEi4ubWV0YWxzdGFjay5hZG1pbi52Mi5Ub2tlblNlcnZpY2VSZXZva2VSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hZG1pbi52Mi5Ub2tlblNlcnZpY2VSZXZva2VSZXNwb25zZSIF0vMYAQEScAoGQ3JlYXRlEi4ubWV0YWxzdGFjay5hZG1pbi52Mi5Ub2tlblNlcnZpY2VDcmVhdGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hZG1pbi52Mi5Ub2tlblNlcnZpY2VDcmVhdGVSZXNwb25zZSIF0vMYAQFCzgEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgpUb2tlblByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_token]);
 
 /**
- * TokenServiceListRequest is the request payload for the token list request
+ * TokenServiceListRequest is the request payload for listing tokens.
  *
  * @generated from message metalstack.admin.v2.TokenServiceListRequest
  */
@@ -38,13 +38,13 @@ export const TokenServiceListRequestSchema: GenMessage<TokenServiceListRequest> 
   messageDesc(file_metalstack_admin_v2_token, 0);
 
 /**
- * TokenServiceListResponse is the response payload for the token list request
+ * TokenServiceListResponse is the response payload for listing tokens.
  *
  * @generated from message metalstack.admin.v2.TokenServiceListResponse
  */
 export type TokenServiceListResponse = Message<"metalstack.admin.v2.TokenServiceListResponse"> & {
   /**
-   * Tokens is the list of tokens
+   * Tokens contains the list of tokens
    *
    * @generated from field: repeated metalstack.api.v2.Token tokens = 1;
    */
@@ -59,7 +59,7 @@ export const TokenServiceListResponseSchema: GenMessage<TokenServiceListResponse
   messageDesc(file_metalstack_admin_v2_token, 1);
 
 /**
- * TokenServiceRevokeRequest is the request payload for the token revoke request
+ * TokenServiceRevokeRequest is the request payload for revoking a token.
  *
  * @generated from message metalstack.admin.v2.TokenServiceRevokeRequest
  */
@@ -87,7 +87,7 @@ export const TokenServiceRevokeRequestSchema: GenMessage<TokenServiceRevokeReque
   messageDesc(file_metalstack_admin_v2_token, 2);
 
 /**
- * TokenServiceRevokeResponse is the response payload for the token revoke request
+ * TokenServiceRevokeResponse is the response payload for revoking a token.
  *
  * @generated from message metalstack.admin.v2.TokenServiceRevokeResponse
  */
@@ -102,7 +102,7 @@ export const TokenServiceRevokeResponseSchema: GenMessage<TokenServiceRevokeResp
   messageDesc(file_metalstack_admin_v2_token, 3);
 
 /**
- * TokenServiceCreateRequest is the request payload to create a token
+ * TokenServiceCreateRequest is the request payload for creating a token.
  *
  * @generated from message metalstack.admin.v2.TokenServiceCreateRequest
  */
@@ -130,20 +130,20 @@ export const TokenServiceCreateRequestSchema: GenMessage<TokenServiceCreateReque
   messageDesc(file_metalstack_admin_v2_token, 4);
 
 /**
- * TokenServiceCreateResponse is the response payload of a token create request
+ * TokenServiceCreateResponse is the response payload for creating a token.
  *
  * @generated from message metalstack.admin.v2.TokenServiceCreateResponse
  */
 export type TokenServiceCreateResponse = Message<"metalstack.admin.v2.TokenServiceCreateResponse"> & {
   /**
-   * Token which was created
+   * Token contains the created token
    *
    * @generated from field: metalstack.api.v2.Token token = 1;
    */
   token?: Token;
 
   /**
-   * Secret is the body if the jwt token, should be used in api requests as bearer token
+   * Secret is the body if the JWT token, should be used in API requests as bearer token
    *
    * @generated from field: string secret = 2;
    */
@@ -158,13 +158,13 @@ export const TokenServiceCreateResponseSchema: GenMessage<TokenServiceCreateResp
   messageDesc(file_metalstack_admin_v2_token, 5);
 
 /**
- * TokenService serves token related functions
+ * TokenService provides token management operations.
  *
  * @generated from service metalstack.admin.v2.TokenService
  */
 export const TokenService: GenService<{
   /**
-   * List tokens
+   * Returns the list of tokens for a user.
    *
    * @generated from rpc metalstack.admin.v2.TokenService.List
    */
@@ -174,7 +174,7 @@ export const TokenService: GenService<{
     output: typeof TokenServiceListResponseSchema;
   },
   /**
-   * Revoke a token
+   * Revokes a token.
    *
    * @generated from rpc metalstack.admin.v2.TokenService.Revoke
    */
@@ -184,7 +184,7 @@ export const TokenService: GenService<{
     output: typeof TokenServiceRevokeResponseSchema;
   },
   /**
-   * Create a token to authenticate against the platform, the secret will be only visible in the response.
+   * Creates a token to authenticate against the platform, the secret will be only visible in the response.
    * This service is suitable to create tokens for other users instead of deriving users from tokens directly.
    *
    * @generated from rpc metalstack.admin.v2.TokenService.Create

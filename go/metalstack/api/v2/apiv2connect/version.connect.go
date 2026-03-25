@@ -39,7 +39,7 @@ const (
 
 // VersionServiceClient is a client for the metalstack.api.v2.VersionService service.
 type VersionServiceClient interface {
-	// Get the version
+	// Returns the version of the application.
 	Get(context.Context, *v2.VersionServiceGetRequest) (*v2.VersionServiceGetResponse, error)
 }
 
@@ -79,7 +79,7 @@ func (c *versionServiceClient) Get(ctx context.Context, req *v2.VersionServiceGe
 
 // VersionServiceHandler is an implementation of the metalstack.api.v2.VersionService service.
 type VersionServiceHandler interface {
-	// Get the version
+	// Returns the version of the application.
 	Get(context.Context, *v2.VersionServiceGetRequest) (*v2.VersionServiceGetResponse, error)
 }
 

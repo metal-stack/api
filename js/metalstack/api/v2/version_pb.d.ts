@@ -5,7 +5,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_version: GenFile;
 /**
- * Version of the application
+ * Version represents the version of the application.
  *
  * @generated from message metalstack.api.v2.Version
  */
@@ -41,7 +41,7 @@ export type Version = Message<"metalstack.api.v2.Version"> & {
  */
 export declare const VersionSchema: GenMessage<Version>;
 /**
- * VersionServiceGetRequest is the request payload to get the version
+ * VersionServiceGetRequest is the request payload for getting the version.
  *
  * @generated from message metalstack.api.v2.VersionServiceGetRequest
  */
@@ -52,13 +52,13 @@ export type VersionServiceGetRequest = Message<"metalstack.api.v2.VersionService
  */
 export declare const VersionServiceGetRequestSchema: GenMessage<VersionServiceGetRequest>;
 /**
- * VersionServiceGetResponse is the response payload with the version
+ * VersionServiceGetResponse is the response payload for getting the version.
  *
  * @generated from message metalstack.api.v2.VersionServiceGetResponse
  */
 export type VersionServiceGetResponse = Message<"metalstack.api.v2.VersionServiceGetResponse"> & {
     /**
-     * Version of the application
+     * Version contains the version of the application
      *
      * @generated from field: metalstack.api.v2.Version version = 1;
      */
@@ -70,13 +70,13 @@ export type VersionServiceGetResponse = Message<"metalstack.api.v2.VersionServic
  */
 export declare const VersionServiceGetResponseSchema: GenMessage<VersionServiceGetResponse>;
 /**
- * VersionService serves version related functions
+ * VersionService provides version information operations.
  *
  * @generated from service metalstack.api.v2.VersionService
  */
 export declare const VersionService: GenService<{
     /**
-     * Get the version
+     * Returns the version of the application.
      *
      * @generated from rpc metalstack.api.v2.VersionService.Get
      */

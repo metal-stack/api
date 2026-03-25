@@ -43,11 +43,11 @@ const (
 
 // ImageServiceClient is a client for the metalstack.api.v2.ImageService service.
 type ImageServiceClient interface {
-	// Get a image
+	// Returns the image with the specified ID.
 	Get(context.Context, *v2.ImageServiceGetRequest) (*v2.ImageServiceGetResponse, error)
-	// List all images
+	// Returns the list of all images.
 	List(context.Context, *v2.ImageServiceListRequest) (*v2.ImageServiceListResponse, error)
-	// Latest image for a specific os
+	// Returns the latest image for a specific operating system.
 	Latest(context.Context, *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error)
 }
 
@@ -119,11 +119,11 @@ func (c *imageServiceClient) Latest(ctx context.Context, req *v2.ImageServiceLat
 
 // ImageServiceHandler is an implementation of the metalstack.api.v2.ImageService service.
 type ImageServiceHandler interface {
-	// Get a image
+	// Returns the image with the specified ID.
 	Get(context.Context, *v2.ImageServiceGetRequest) (*v2.ImageServiceGetResponse, error)
-	// List all images
+	// Returns the list of all images.
 	List(context.Context, *v2.ImageServiceListRequest) (*v2.ImageServiceListResponse, error)
-	// Latest image for a specific os
+	// Returns the latest image for a specific operating system.
 	Latest(context.Context, *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error)
 }
 

@@ -61,7 +61,7 @@ export const SizeImageConstraintServiceListRequestSchema = /*@__PURE__*/ message
  */
 export const SizeImageConstraintServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_size_imageconstraint, 9);
 /**
- * SizeImageConstraintService serves size and image constraint related functions
+ * SizeImageConstraintService provides size and image constraint management operations.
  *
  * @generated from service metalstack.admin.v2.SizeImageConstraintService
  */

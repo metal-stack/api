@@ -6,38 +6,38 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/token.proto";
 
-// MethodService serves method related functions
-// methods are functions in services
+// MethodService provides method discovery operations.
+// Methods are functions in services.
 service MethodService {
-  // List all public visible methods
+  // Returns the list of all public visible methods.
   rpc List(MethodServiceListRequest) returns (MethodServiceListResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
   }
-  // TokenScopedList all methods callable with the token present in the request
+  // TokenScopedList returns all methods callable with the token present in the request.
   rpc TokenScopedList(MethodServiceTokenScopedListRequest) returns (MethodServiceTokenScopedListResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
 }
 
-// MethodServiceListRequest is the request payload to list all public methods
+// MethodServiceListRequest is the request payload for listing all public methods.
 message MethodServiceListRequest {}
 
-// MethodServiceListResponse is the response payload with all public visible methods
+// MethodServiceListResponse is the response payload for listing all public methods.
 message MethodServiceListResponse {
   // Methods is a list of methods public callable
   repeated string methods = 1;
 }
 
-// MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request
+// MethodServiceTokenScopedListRequest is the request payload for listing all methods callable with the token present in the request.
 message MethodServiceTokenScopedListRequest {}
 
-// MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
+// MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token.
 message MethodServiceTokenScopedListResponse {
-  // Permissions a list of methods which can be called
+  // Permissions contains a list of methods which can be called
   repeated MethodPermission permissions = 1;
-  // ProjectRoles associates a project id with the corresponding role of the token owner
+  // ProjectRoles associates a project ID with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 3;
-  // TenantRoles associates a tenant id with the corresponding role of the token owner
+  // TenantRoles associates a tenant ID with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 4;
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 5 [(buf.validate.field).enum.defined_only = true];

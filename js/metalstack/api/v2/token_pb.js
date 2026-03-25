@@ -111,7 +111,7 @@ export var TokenType;
  */
 export const TokenTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_token, 0);
 /**
- * TokenService serves token related functions
+ * TokenService provides token management operations.
  *
  * @generated from service metalstack.api.v2.TokenService
  */

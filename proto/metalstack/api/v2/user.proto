@@ -8,18 +8,18 @@ import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/project.proto";
 import "metalstack/api/v2/tenant.proto";
 
-// UserService exposes rpc calls for users
+// UserService provides user information operations.
 service UserService {
-  // Get a User
+  // Returns the authenticated user.
   rpc Get(UserServiceGetRequest) returns (UserServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_INCLUDED;
   }
 }
 
-// User is a end user of the platform
+// User represents an end user of the platform.
 message User {
-  // Login the login at the provider
+  // Login is the login at the provider
   string login = 1;
   // Name of the user
   string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -35,11 +35,11 @@ message User {
   Tenant default_tenant = 10;
 }
 
-// UserServiceGetRequest is the request to get the user
+// UserServiceGetRequest is the request payload for getting the user.
 message UserServiceGetRequest {}
 
-// UserServiceGetResponse the response when userservice get request was called
+// UserServiceGetResponse is the response payload for getting the user.
 message UserServiceGetResponse {
-  // User is the user
+  // User contains the authenticated user
   User user = 1;
 }

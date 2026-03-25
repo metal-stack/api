@@ -30,8 +30,8 @@ export const MethodServiceTokenScopedListRequestSchema = /*@__PURE__*/ messageDe
  */
 export const MethodServiceTokenScopedListResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_method, 3);
 /**
- * MethodService serves method related functions
- * methods are functions in services
+ * MethodService provides method discovery operations.
+ * Methods are functions in services.
  *
  * @generated from service metalstack.api.v2.MethodService
  */

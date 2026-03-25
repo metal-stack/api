@@ -42,7 +42,7 @@ export const SwitchServiceHeartbeatRequestSchema = /*@__PURE__*/ messageDesc(fil
  */
 export const SwitchServiceHeartbeatResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_switch, 5);
 /**
- * SwitchService serves switch related functions.
+ * SwitchService provides infrastructure switch management operations.
  *
  * @generated from service metalstack.infra.v2.SwitchService
  */

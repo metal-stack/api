@@ -23,7 +23,7 @@ export const ComponentServicePingRequestSchema = /*@__PURE__*/ messageDesc(file_
  */
 export const ComponentServicePingResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_component, 1);
 /**
- * ComponentService serves component, e.g. microservices related functions.
+ * ComponentService provides microservice component management operations.
  *
  * @generated from service metalstack.infra.v2.ComponentService
  */

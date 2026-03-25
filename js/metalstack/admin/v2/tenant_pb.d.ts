@@ -7,19 +7,19 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_tenant: GenFile;
 /**
- * TenantServiceCreateRequest is the request payload of the tenant create request
+ * TenantServiceCreateRequest is the request payload for creating a tenant.
  *
  * @generated from message metalstack.admin.v2.TenantServiceCreateRequest
  */
 export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServiceCreateRequest"> & {
     /**
-     * Name of this tenant
+     * Name of the tenant
      *
      * @generated from field: string name = 1;
      */
     name: string;
     /**
-     * Description of this tenant
+     * Description of the tenant
      *
      * @generated from field: optional string description = 2;
      */
@@ -49,13 +49,13 @@ export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServ
  */
 export declare const TenantServiceCreateRequestSchema: GenMessage<TenantServiceCreateRequest>;
 /**
- * TenantServiceCreateResponse is the response payload of the tenant create request
+ * TenantServiceCreateResponse is the response payload for creating a tenant.
  *
  * @generated from message metalstack.admin.v2.TenantServiceCreateResponse
  */
 export type TenantServiceCreateResponse = Message<"metalstack.admin.v2.TenantServiceCreateResponse"> & {
     /**
-     * Tenant is the tenant
+     * Tenant contains the created tenant
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
@@ -67,19 +67,19 @@ export type TenantServiceCreateResponse = Message<"metalstack.admin.v2.TenantSer
  */
 export declare const TenantServiceCreateResponseSchema: GenMessage<TenantServiceCreateResponse>;
 /**
- * TenantServiceListRequest is the request payload for a tenant list request
+ * TenantServiceListRequest is the request payload for listing tenants.
  *
  * @generated from message metalstack.admin.v2.TenantServiceListRequest
  */
 export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServiceListRequest"> & {
     /**
-     * Login of the tenant to list
+     * Login filters tenants by this login
      *
      * @generated from field: optional string login = 1;
      */
     login?: string;
     /**
-     * Name of the tenant to list
+     * Name filters tenants by this name
      *
      * @generated from field: optional string name = 2;
      */
@@ -97,19 +97,19 @@ export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServic
  */
 export declare const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest>;
 /**
- * TenantServiceListResponse is the response payload for a tenant list request
+ * TenantServiceListResponse is the response payload for listing tenants.
  *
  * @generated from message metalstack.admin.v2.TenantServiceListResponse
  */
 export type TenantServiceListResponse = Message<"metalstack.admin.v2.TenantServiceListResponse"> & {
     /**
-     * Tenants are the list of tenants
+     * Tenants contains the list of tenants
      *
      * @generated from field: repeated metalstack.api.v2.Tenant tenants = 1;
      */
     tenants: Tenant[];
     /**
-     * NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+     * NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request
      *
      * @generated from field: optional uint64 next_page = 2;
      */
@@ -121,13 +121,13 @@ export type TenantServiceListResponse = Message<"metalstack.admin.v2.TenantServi
  */
 export declare const TenantServiceListResponseSchema: GenMessage<TenantServiceListResponse>;
 /**
- * TenantService serves tenant related functions
+ * TenantService provides tenant management operations.
  *
  * @generated from service metalstack.admin.v2.TenantService
  */
 export declare const TenantService: GenService<{
     /**
-     * Create a tenant
+     * Creates a new tenant.
      *
      * @generated from rpc metalstack.admin.v2.TenantService.Create
      */
@@ -137,7 +137,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceCreateResponseSchema;
     };
     /**
-     * List all tenants
+     * Returns the list of all tenants.
      *
      * @generated from rpc metalstack.admin.v2.TenantService.List
      */

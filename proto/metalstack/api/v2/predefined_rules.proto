@@ -64,4 +64,10 @@ extend buf.validate.RepeatedRules {
     message: "given ips must be valid"
     expression: "this.all(m, m.isIp())"
   }];
+  // AreHostAndPort validates if a slice of strings are all in the form of <ip | host>:<port>
+  optional bool are_host_and_port = 80058953 [(buf.validate.predefined).cel = {
+    id: "repeated.are_host_and_port"
+    message: "given entries must all be in the form of <ip | host>:<port> but port is optional"
+    expression: "this.all(m, m.isHostAndPort(false))"
+  }];
 }

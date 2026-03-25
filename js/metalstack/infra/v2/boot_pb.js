@@ -71,7 +71,7 @@ export const BootServiceSuperUserPasswordRequestSchema = /*@__PURE__*/ messageDe
  */
 export const BootServiceSuperUserPasswordResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_boot, 11);
 /**
- * BootService is used for all boot related requests, either pixiecore or metal-hammer
+ * BootService provides boot-related operations for pixiecore and metal-hammer.
  *
  * Pixiecore
  *

@@ -885,13 +885,13 @@ export const NetworkAddressFamilySchema: GenEnum<NetworkAddressFamily> = /*@__PU
   enumDesc(file_metalstack_api_v2_network, 2);
 
 /**
- * NetworkService serves network address related functions for end users, e.g. with project scope
+ * NetworkService provides network management operations for end users, for example with project scope.
  *
  * @generated from service metalstack.api.v2.NetworkService
  */
 export const NetworkService: GenService<{
   /**
-   * Get a network
+   * Returns the network with the specified ID.
    *
    * @generated from rpc metalstack.api.v2.NetworkService.Get
    */
@@ -901,7 +901,7 @@ export const NetworkService: GenService<{
     output: typeof NetworkServiceGetResponseSchema;
   },
   /**
-   * Create a child network from a super network.
+   * Creates a child network from a super network.
    *
    * @generated from rpc metalstack.api.v2.NetworkService.Create
    */
@@ -911,7 +911,7 @@ export const NetworkService: GenService<{
     output: typeof NetworkServiceCreateResponseSchema;
   },
   /**
-   * Update a network
+   * Updates a network.
    *
    * @generated from rpc metalstack.api.v2.NetworkService.Update
    */
@@ -921,7 +921,7 @@ export const NetworkService: GenService<{
     output: typeof NetworkServiceUpdateResponseSchema;
   },
   /**
-   * List all project networks
+   * Returns the list of all project networks.
    *
    * @generated from rpc metalstack.api.v2.NetworkService.List
    */
@@ -931,7 +931,7 @@ export const NetworkService: GenService<{
     output: typeof NetworkServiceListResponseSchema;
   },
   /**
-   * ListBaseNetworks all base networks that can be used for either child network or ip allocation
+   * ListBaseNetworks returns all base networks that can be used for either child network or IP allocation.
    *
    * @generated from rpc metalstack.api.v2.NetworkService.ListBaseNetworks
    */
@@ -941,7 +941,7 @@ export const NetworkService: GenService<{
     output: typeof NetworkServiceListBaseNetworksResponseSchema;
   },
   /**
-   * Delete a network
+   * Deletes a network.
    *
    * @generated from rpc metalstack.api.v2.NetworkService.Delete
    */

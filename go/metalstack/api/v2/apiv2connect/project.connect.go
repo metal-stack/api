@@ -69,9 +69,9 @@ const (
 
 // ProjectServiceClient is a client for the metalstack.api.v2.ProjectService service.
 type ProjectServiceClient interface {
-	// List all accessible projects
+	// Returns the list of all accessible projects.
 	List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error)
-	// Get a project
+	// Returns the project with the specified UUID.
 	Get(context.Context, *v2.ProjectServiceGetRequest) (*v2.ProjectServiceGetResponse, error)
 	// Create a project
 	Create(context.Context, *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error)
@@ -325,9 +325,9 @@ func (c *projectServiceClient) InviteGet(ctx context.Context, req *v2.ProjectSer
 
 // ProjectServiceHandler is an implementation of the metalstack.api.v2.ProjectService service.
 type ProjectServiceHandler interface {
-	// List all accessible projects
+	// Returns the list of all accessible projects.
 	List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error)
-	// Get a project
+	// Returns the project with the specified UUID.
 	Get(context.Context, *v2.ProjectServiceGetRequest) (*v2.ProjectServiceGetResponse, error)
 	// Create a project
 	Create(context.Context, *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error)

@@ -47,15 +47,15 @@ const (
 
 // NetworkServiceClient is a client for the metalstack.admin.v2.NetworkService service.
 type NetworkServiceClient interface {
-	// Get a network
+	// Returns the network with the specified ID.
 	Get(context.Context, *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error)
-	// Create a network
+	// Creates a new network.
 	Create(context.Context, *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error)
-	// Update a network
+	// Updates a network.
 	Update(context.Context, *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error)
-	// Delete a network
+	// Deletes a network.
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
-	// List all networks
+	// Returns the list of all networks.
 	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
 }
 
@@ -159,15 +159,15 @@ func (c *networkServiceClient) List(ctx context.Context, req *v2.NetworkServiceL
 
 // NetworkServiceHandler is an implementation of the metalstack.admin.v2.NetworkService service.
 type NetworkServiceHandler interface {
-	// Get a network
+	// Returns the network with the specified ID.
 	Get(context.Context, *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error)
-	// Create a network
+	// Creates a new network.
 	Create(context.Context, *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error)
-	// Update a network
+	// Updates a network.
 	Update(context.Context, *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error)
-	// Delete a network
+	// Deletes a network.
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
-	// List all networks
+	// Returns the list of all networks.
 	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
 }
 

@@ -6,9 +6,9 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// SizeImageConstraintService serves size and image constraint related functions
+// SizeImageConstraintService provides size and image constraint validation operations.
 service SizeImageConstraintService {
-  // Try if a given combination of size and image is possible
+  // Try validates if a given combination of size and image is possible.
   rpc Try(SizeImageConstraintServiceTryRequest) returns (SizeImageConstraintServiceTryResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;

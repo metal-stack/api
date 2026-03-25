@@ -502,12 +502,12 @@ func (x *MachineServiceListBMCResponse) GetBmcReports() map[string]*v2.MachineBM
 	return nil
 }
 
-// MachineServiceConsolePasswordRequest is the request to get the console password
+// MachineServiceConsolePasswordRequest is the request payload for getting the console password.
 type MachineServiceConsolePasswordRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to get
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Reason must be provided why access to the console is requested.
+	// Reason must be provided why access to the console is requested
 	// Reason is only forwarded to an audit sink
 	Reason        string `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -558,7 +558,7 @@ func (x *MachineServiceConsolePasswordRequest) GetReason() string {
 	return ""
 }
 
-// MachineServiceConsolePasswordResponse is the response to the console password request
+// MachineServiceConsolePasswordResponse is the response payload for getting the console password.
 type MachineServiceConsolePasswordResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to get

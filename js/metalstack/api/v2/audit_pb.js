@@ -41,7 +41,7 @@ export const AuditServiceGetRequestSchema = /*@__PURE__*/ messageDesc(file_metal
  */
 export const AuditServiceGetResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_audit, 5);
 /**
- * AuditPhase specifies phase of an audit trace
+ * AuditPhase specifies the phase of an audit trace.
  *
  * @generated from enum metalstack.api.v2.AuditPhase
  */
@@ -60,7 +60,7 @@ export var AuditPhase;
      */
     AuditPhase[AuditPhase["REQUEST"] = 1] = "REQUEST";
     /**
-     * AUDIT_PHASE_REQUEST defines an audit trace in the response phase
+     * AUDIT_PHASE_RESPONSE defines an audit trace in the response phase
      *
      * @generated from enum value: AUDIT_PHASE_RESPONSE = 2;
      */
@@ -71,7 +71,7 @@ export var AuditPhase;
  */
 export const AuditPhaseSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_audit, 0);
 /**
- * AuditService serves audit related functions
+ * AuditService provides audit logging operations.
  *
  * @generated from service metalstack.api.v2.AuditService
  */

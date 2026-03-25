@@ -22,18 +22,18 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// VPNNode is a machine connected to the vpn
+// VPNNode represents a machine connected to the VPN.
 type VPNNode struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this node
+	// ID of this node
 	Id uint64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Name of this node
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// Project of this node, maps to a project
 	Project string `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
-	// IPAddresses of this node in the vpn
+	// IPAddresses of this node in the VPN
 	IpAddresses []string `protobuf:"bytes,4,rep,name=ip_addresses,json=ipAddresses,proto3" json:"ip_addresses,omitempty"`
-	// LastSeen timestamp when this node reached out the the control plane
+	// LastSeen timestamp when this node reached out to the control plane
 	LastSeen *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
 	// Online indicates if this node is online
 	Online        bool `protobuf:"varint,6,opt,name=online,proto3" json:"online,omitempty"`

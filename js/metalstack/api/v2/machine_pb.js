@@ -586,7 +586,7 @@ export var MachineBMCCommand;
  */
 export const MachineBMCCommandSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 6);
 /**
- * MachineService serves machine related functions
+ * MachineService provides machine lifecycle management operations.
  *
  * @generated from service metalstack.api.v2.MachineService
  */

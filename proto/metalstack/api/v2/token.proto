@@ -8,29 +8,29 @@ import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// TokenService serves token related functions
+// TokenService provides token management operations.
 service TokenService {
-  // Get a token
+  // Returns the token with the specified UUID.
   rpc Get(TokenServiceGetRequest) returns (TokenServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
-  // Create a token to authenticate against the platform, the secret will be only visible in the response.
+  // Creates a token to authenticate against the platform, the secret will be only visible in the response.
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
-  // Update a token
+  // Updates a token.
   rpc Update(TokenServiceUpdateRequest) returns (TokenServiceUpdateResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
-  // List all your tokens
+  // Returns the list of all user tokens.
   rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
-  // Revoke a token, no further usage is possible afterwards
+  // Revokes a token, no further usage is possible afterwards.
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (visibility) = VISIBILITY_SELF;
   }
-  // Refresh a token, this will create a new token with the exact same permissions as the calling token contains
+  // Refreshes a token, this will create a new token with the exact same permissions as the calling token contains.
   rpc Refresh(TokenServiceRefreshRequest) returns (TokenServiceRefreshResponse) {
     option (visibility) = VISIBILITY_SELF;
   }

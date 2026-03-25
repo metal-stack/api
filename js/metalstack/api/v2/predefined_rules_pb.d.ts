@@ -58,3 +58,9 @@ export declare const prefixes: GenExtension<RepeatedRules, boolean>;
  * @generated from extension: optional bool ips = 80058952;
  */
 export declare const ips: GenExtension<RepeatedRules, boolean>;
+/**
+ * AreHostAndPort validates if a slice of strings are all in the form of <ip | host>:<port>
+ *
+ * @generated from extension: optional bool are_host_and_port = 80058953;
+ */
+export declare const are_host_and_port: GenExtension<RepeatedRules, boolean>;

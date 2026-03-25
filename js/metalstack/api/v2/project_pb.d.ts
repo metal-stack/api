@@ -724,13 +724,13 @@ export type ProjectServiceInviteDeleteResponse = Message<"metalstack.api.v2.Proj
  */
 export declare const ProjectServiceInviteDeleteResponseSchema: GenMessage<ProjectServiceInviteDeleteResponse>;
 /**
- * ProjectService serves project related functions
+ * ProjectService provides project management operations.
  *
  * @generated from service metalstack.api.v2.ProjectService
  */
 export declare const ProjectService: GenService<{
     /**
-     * List all accessible projects
+     * Returns the list of all accessible projects.
      *
      * @generated from rpc metalstack.api.v2.ProjectService.List
      */
@@ -740,7 +740,7 @@ export declare const ProjectService: GenService<{
         output: typeof ProjectServiceListResponseSchema;
     };
     /**
-     * Get a project
+     * Returns the project with the specified UUID.
      *
      * @generated from rpc metalstack.api.v2.ProjectService.Get
      */

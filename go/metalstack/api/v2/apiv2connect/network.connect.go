@@ -50,17 +50,17 @@ const (
 
 // NetworkServiceClient is a client for the metalstack.api.v2.NetworkService service.
 type NetworkServiceClient interface {
-	// Get a network
+	// Returns the network with the specified ID.
 	Get(context.Context, *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error)
-	// Create a child network from a super network.
+	// Creates a child network from a super network.
 	Create(context.Context, *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error)
-	// Update a network
+	// Updates a network.
 	Update(context.Context, *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error)
-	// List all project networks
+	// Returns the list of all project networks.
 	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
-	// ListBaseNetworks all base networks that can be used for either child network or ip allocation
+	// ListBaseNetworks returns all base networks that can be used for either child network or IP allocation.
 	ListBaseNetworks(context.Context, *v2.NetworkServiceListBaseNetworksRequest) (*v2.NetworkServiceListBaseNetworksResponse, error)
-	// Delete a network
+	// Deletes a network.
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 }
 
@@ -180,17 +180,17 @@ func (c *networkServiceClient) Delete(ctx context.Context, req *v2.NetworkServic
 
 // NetworkServiceHandler is an implementation of the metalstack.api.v2.NetworkService service.
 type NetworkServiceHandler interface {
-	// Get a network
+	// Returns the network with the specified ID.
 	Get(context.Context, *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error)
-	// Create a child network from a super network.
+	// Creates a child network from a super network.
 	Create(context.Context, *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error)
-	// Update a network
+	// Updates a network.
 	Update(context.Context, *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error)
-	// List all project networks
+	// Returns the list of all project networks.
 	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
-	// ListBaseNetworks all base networks that can be used for either child network or ip allocation
+	// ListBaseNetworks returns all base networks that can be used for either child network or IP allocation.
 	ListBaseNetworks(context.Context, *v2.NetworkServiceListBaseNetworksRequest) (*v2.NetworkServiceListBaseNetworksResponse, error)
-	// Delete a network
+	// Deletes a network.
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 }
 
