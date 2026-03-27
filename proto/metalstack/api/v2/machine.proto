@@ -95,25 +95,31 @@ message MachineServiceCreateRequest {
   // Can be specified to test new fsls during development of fsls
   optional string filesystem_layout = 9;
   // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
-  repeated string ssh_public_keys = 10 [(buf.validate.field).repeated = {
-    // At most 50 keys can be store.
-    // A lower bound can be set similarly with `min_items`.
-    max_items: 50
-    // `items` validate each value in this `repeated` field.
-    items: {
-      // `string` has string-specific rules for each value in the `repeated` field.
-      // The set of rules allowed here is the same as that of a string field.
-      string: {
-        // Each key must not be empty
-        min_len: 1
-        // Each key can contain at most 8192 characters.
-        max_len: 8192
+  repeated string ssh_public_keys = 10 [
+    (buf.validate.field).repeated = {
+      // At most 50 keys can be store.
+      // A lower bound can be set similarly with `min_items`.
+      max_items: 50
+      // `items` validate each value in this `repeated` field.
+      items: {
+        // `string` has string-specific rules for each value in the `repeated` field.
+        // The set of rules allowed here is the same as that of a string field.
+        string: {
+          // Each key must not be empty
+          min_len: 1
+          // Each key can contain at most 8192 characters.
+          max_len: 8192
+        }
       }
-    }
-  }];
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
   // Userdata contains instructions required to bootstrap the machine
   // AWS limits the max userdata size to 16k, lets allow twice as much
-  optional string userdata = 11 [(buf.validate.field).string = {max_len: 32768}];
+  optional string userdata = 11 [
+    (buf.validate.field).string = {max_len: 32768},
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // Labels to be attached to this machine allocation
   Labels labels = 12;
   // Networks the networks that this machine will be placed in.
@@ -158,22 +164,25 @@ message MachineServiceUpdateRequest {
   // Labels to update on this machine allocation
   optional UpdateLabels labels = 5;
   // SSHPublicKeys which should be update of this machine allocation
-  repeated string ssh_public_keys = 6 [(buf.validate.field).repeated = {
-    // At most 50 keys can be store.
-    // A lower bound can be set similarly with `min_items`.
-    max_items: 50
-    // `items` validate each value in this `repeated` field.
-    items: {
-      // `string` has string-specific rules for each value in the `repeated` field.
-      // The set of rules allowed here is the same as that of a string field.
-      string: {
-        // Each key must not be empty
-        min_len: 1
-        // Each key can contain at most 8192 characters.
-        max_len: 8192
+  repeated string ssh_public_keys = 6 [
+    (buf.validate.field).repeated = {
+      // At most 50 keys can be store.
+      // A lower bound can be set similarly with `min_items`.
+      max_items: 50
+      // `items` validate each value in this `repeated` field.
+      items: {
+        // `string` has string-specific rules for each value in the `repeated` field.
+        // The set of rules allowed here is the same as that of a string field.
+        string: {
+          // Each key must not be empty
+          min_len: 1
+          // Each key can contain at most 8192 characters.
+          max_len: 8192
+        }
       }
-    }
-  }];
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
 }
 
 // MachineServiceUpdateResponse is the request payload for a machine update response
@@ -308,25 +317,31 @@ message MachineAllocation {
   // Hostname of the allocated machine
   string hostname = 10 [(buf.validate.field).string.hostname = true];
   // SSHPublicKeys which should be installed on this machine
-  repeated string ssh_public_keys = 11 [(buf.validate.field).repeated = {
-    // At most 50 keys can be store.
-    // A lower bound can be set similarly with `min_items`.
-    max_items: 50
-    // `items` validate each value in this `repeated` field.
-    items: {
-      // `string` has string-specific rules for each value in the `repeated` field.
-      // The set of rules allowed here is the same as that of a string field.
-      string: {
-        // Each key must not be empty
-        min_len: 1
-        // Each key can contain at most 8192 characters.
-        max_len: 8192
+  repeated string ssh_public_keys = 11 [
+    (buf.validate.field).repeated = {
+      // At most 50 keys can be store.
+      // A lower bound can be set similarly with `min_items`.
+      max_items: 50
+      // `items` validate each value in this `repeated` field.
+      items: {
+        // `string` has string-specific rules for each value in the `repeated` field.
+        // The set of rules allowed here is the same as that of a string field.
+        string: {
+          // Each key must not be empty
+          min_len: 1
+          // Each key can contain at most 8192 characters.
+          max_len: 8192
+        }
       }
-    }
-  }];
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
   // Userdata contains instructions required to bootstrap the machine.
   // AWS limits the max userdata size to 16k, lets allow twice as much
-  string userdata = 12 [(buf.validate.field).string = {max_len: 32768}];
+  string userdata = 12 [
+    (buf.validate.field).string = {max_len: 32768},
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // AllocationType of this machine
   MachineAllocationType allocation_type = 13 [(buf.validate.field).enum.defined_only = true];
   // FirewallRules to be applied if this is a firewall

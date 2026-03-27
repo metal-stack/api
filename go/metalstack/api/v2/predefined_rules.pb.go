@@ -79,6 +79,14 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
+		ExtendedType:  (*validate.StringRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80048958,
+		Name:          "metalstack.api.v2.trimmed",
+		Tag:           "varint,80048958,opt,name=trimmed",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
 		ExtendedType:  (*validate.RepeatedRules)(nil),
 		ExtensionType: (*bool)(nil),
 		Field:         80058951,
@@ -92,6 +100,14 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 		Field:         80058952,
 		Name:          "metalstack.api.v2.ips",
 		Tag:           "varint,80058952,opt,name=ips",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
+		ExtendedType:  (*validate.RepeatedRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80058953,
+		Name:          "metalstack.api.v2.all_trimmed",
+		Tag:           "varint,80058953,opt,name=all_trimmed",
 		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 }
@@ -126,6 +142,10 @@ var (
 	//
 	// optional bool is_ip_or_hostname = 80048957;
 	E_IsIpOrHostname = &file_metalstack_api_v2_predefined_rules_proto_extTypes[6]
+	// Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end.
+	//
+	// optional bool trimmed = 80048958;
+	E_Trimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[7]
 )
 
 // Extension fields to validate.RepeatedRules.
@@ -133,11 +153,15 @@ var (
 	// Prefixes validates if a slice of prefixes in string form are valid
 	//
 	// optional bool prefixes = 80058951;
-	E_Prefixes = &file_metalstack_api_v2_predefined_rules_proto_extTypes[7]
+	E_Prefixes = &file_metalstack_api_v2_predefined_rules_proto_extTypes[8]
 	// Ips validates if a slice of ips in string form are valid
 	//
 	// optional bool ips = 80058952;
-	E_Ips = &file_metalstack_api_v2_predefined_rules_proto_extTypes[8]
+	E_Ips = &file_metalstack_api_v2_predefined_rules_proto_extTypes[9]
+	// All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end.
+	//
+	// optional bool all_trimmed = 80058953;
+	E_AllTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[10]
 )
 
 var File_metalstack_api_v2_predefined_rules_proto protoreflect.FileDescriptor
@@ -168,13 +192,20 @@ const file_metalstack_api_v2_predefined_rules_proto_rawDesc = "" +
 	"string.uri\x12\x17given uri must be valid\x1a\fthis.isUri()R\x05isUri:\xa7\x01\n" +
 	"\x11is_ip_or_hostname\x12\x19.buf.validate.StringRules\x18\xbd\xe6\x95& \x01(\bB^\xc2H[\n" +
 	"Y\n" +
-	"\rvalid_address\x12&must be a valid IP address or hostname\x1a this.isIp() || this.isHostname()R\x0eisIpOrHostname:\x8f\x01\n" +
+	"\rvalid_address\x12&must be a valid IP address or hostname\x1a this.isIp() || this.isHostname()R\x0eisIpOrHostname:\x9d\x01\n" +
+	"\atrimmed\x12\x19.buf.validate.StringRules\x18\xbe\xe6\x95& \x01(\bBe\xc2Hb\n" +
+	"`\n" +
+	"\x0estring.trimmed\x12+value must not start or end with whitespace\x1a!this.trim().size() == this.size()R\atrimmed:\x8f\x01\n" +
 	"\bprefixes\x12\x1b.buf.validate.RepeatedRules\x18Ǵ\x96& \x01(\bBS\xc2HP\n" +
 	"N\n" +
 	"\x11repeated.prefixes\x12\x1cgiven prefixes must be valid\x1a\x1bthis.all(m, m.isIpPrefix())R\bprefixes:u\n" +
 	"\x03ips\x12\x1b.buf.validate.RepeatedRules\x18ȴ\x96& \x01(\bBC\xc2H@\n" +
 	">\n" +
-	"\frepeated.ips\x12\x17given ips must be valid\x1a\x15this.all(m, m.isIp())R\x03ipsB\xca\x01\n" +
+	"\frepeated.ips\x12\x17given ips must be valid\x1a\x15this.all(m, m.isIp())R\x03ips:\xba\x01\n" +
+	"\vall_trimmed\x12\x1b.buf.validate.RepeatedRules\x18ɴ\x96& \x01(\bBy\xc2Hv\n" +
+	"t\n" +
+	"\x14repeated.all_trimmed\x122given values must not start or end with whitespace\x1a(this.all(m, m.trim().size() == m.size())R\n" +
+	"allTrimmedB\xca\x01\n" +
 	"\x15com.metalstack.api.v2B\x14PredefinedRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2"
 
 var file_metalstack_api_v2_predefined_rules_proto_goTypes = []any{
@@ -182,20 +213,22 @@ var file_metalstack_api_v2_predefined_rules_proto_goTypes = []any{
 	(*validate.RepeatedRules)(nil), // 1: buf.validate.RepeatedRules
 }
 var file_metalstack_api_v2_predefined_rules_proto_depIdxs = []int32{
-	0, // 0: metalstack.api.v2.macaddress:extendee -> buf.validate.StringRules
-	0, // 1: metalstack.api.v2.is_name:extendee -> buf.validate.StringRules
-	0, // 2: metalstack.api.v2.is_description:extendee -> buf.validate.StringRules
-	0, // 3: metalstack.api.v2.is_partition:extendee -> buf.validate.StringRules
-	0, // 4: metalstack.api.v2.is_prefix:extendee -> buf.validate.StringRules
-	0, // 5: metalstack.api.v2.is_uri:extendee -> buf.validate.StringRules
-	0, // 6: metalstack.api.v2.is_ip_or_hostname:extendee -> buf.validate.StringRules
-	1, // 7: metalstack.api.v2.prefixes:extendee -> buf.validate.RepeatedRules
-	1, // 8: metalstack.api.v2.ips:extendee -> buf.validate.RepeatedRules
-	9, // [9:9] is the sub-list for method output_type
-	9, // [9:9] is the sub-list for method input_type
-	9, // [9:9] is the sub-list for extension type_name
-	0, // [0:9] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: metalstack.api.v2.macaddress:extendee -> buf.validate.StringRules
+	0,  // 1: metalstack.api.v2.is_name:extendee -> buf.validate.StringRules
+	0,  // 2: metalstack.api.v2.is_description:extendee -> buf.validate.StringRules
+	0,  // 3: metalstack.api.v2.is_partition:extendee -> buf.validate.StringRules
+	0,  // 4: metalstack.api.v2.is_prefix:extendee -> buf.validate.StringRules
+	0,  // 5: metalstack.api.v2.is_uri:extendee -> buf.validate.StringRules
+	0,  // 6: metalstack.api.v2.is_ip_or_hostname:extendee -> buf.validate.StringRules
+	0,  // 7: metalstack.api.v2.trimmed:extendee -> buf.validate.StringRules
+	1,  // 8: metalstack.api.v2.prefixes:extendee -> buf.validate.RepeatedRules
+	1,  // 9: metalstack.api.v2.ips:extendee -> buf.validate.RepeatedRules
+	1,  // 10: metalstack.api.v2.all_trimmed:extendee -> buf.validate.RepeatedRules
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	0,  // [0:11] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_predefined_rules_proto_init() }
@@ -210,7 +243,7 @@ func file_metalstack_api_v2_predefined_rules_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_predefined_rules_proto_rawDesc), len(file_metalstack_api_v2_predefined_rules_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   0,
-			NumExtensions: 9,
+			NumExtensions: 11,
 			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_predefined_rules_proto_goTypes,
