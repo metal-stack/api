@@ -17,7 +17,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/api/v2/user.proto.
  */
 export const file_metalstack_api_v2_user: GenFile = /*@__PURE__*/
-  fileDesc("ChxtZXRhbHN0YWNrL2FwaS92Mi91c2VyLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiLgAQoEVXNlchINCgVsb2dpbhgBIAEoCRIZCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECARINCgVlbWFpbBgDIAEoCRISCgphdmF0YXJfdXJsGAUgASgJEioKB3RlbmFudHMYCCADKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQSLAoIcHJvamVjdHMYCSADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0EjEKDmRlZmF1bHRfdGVuYW50GAogASgLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50IhcKFVVzZXJTZXJ2aWNlR2V0UmVxdWVzdCI/ChZVc2VyU2VydmljZUdldFJlc3BvbnNlEiUKBHVzZXIYASABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5Vc2VyMnMKC1VzZXJTZXJ2aWNlEmQKA0dldBIoLm1ldGFsc3RhY2suYXBpLnYyLlVzZXJTZXJ2aWNlR2V0UmVxdWVzdBopLm1ldGFsc3RhY2suYXBpLnYyLlVzZXJTZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGAPg8xgBQr8BChVjb20ubWV0YWxzdGFjay5hcGkudjJCCVVzZXJQcm90b1ABWjVnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FwaS92MjthcGl2MqICA01BWKoCEU1ldGFsc3RhY2suQXBpLlYyygIRTWV0YWxzdGFja1xBcGlcVjLiAh1NZXRhbHN0YWNrXEFwaVxWMlxHUEJNZXRhZGF0YeoCE01ldGFsc3RhY2s6OkFwaTo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_project, file_metalstack_api_v2_tenant]);
+  fileDesc("ChxtZXRhbHN0YWNrL2FwaS92Mi91c2VyLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiLgAQoEVXNlchINCgVsb2dpbhgBIAEoCRIZCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECARINCgVlbWFpbBgDIAEoCRISCgphdmF0YXJfdXJsGAQgASgJEioKB3RlbmFudHMYBSADKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQSLAoIcHJvamVjdHMYBiADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0EjEKDmRlZmF1bHRfdGVuYW50GAcgASgLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50IhcKFVVzZXJTZXJ2aWNlR2V0UmVxdWVzdCI/ChZVc2VyU2VydmljZUdldFJlc3BvbnNlEiUKBHVzZXIYASABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5Vc2VyMnMKC1VzZXJTZXJ2aWNlEmQKA0dldBIoLm1ldGFsc3RhY2suYXBpLnYyLlVzZXJTZXJ2aWNlR2V0UmVxdWVzdBopLm1ldGFsc3RhY2suYXBpLnYyLlVzZXJTZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGAPg8xgBQr8BChVjb20ubWV0YWxzdGFjay5hcGkudjJCCVVzZXJQcm90b1ABWjVnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FwaS92MjthcGl2MqICA01BWKoCEU1ldGFsc3RhY2suQXBpLlYyygIRTWV0YWxzdGFja1xBcGlcVjLiAh1NZXRhbHN0YWNrXEFwaVxWMlxHUEJNZXRhZGF0YeoCE01ldGFsc3RhY2s6OkFwaTo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_project, file_metalstack_api_v2_tenant]);
 
 /**
  * User is a end user of the platform
@@ -49,28 +49,28 @@ export type User = Message<"metalstack.api.v2.User"> & {
   /**
    * AvatarUrl of the user
    *
-   * @generated from field: string avatar_url = 5;
+   * @generated from field: string avatar_url = 4;
    */
   avatarUrl: string;
 
   /**
    * Tenants the user belongs to
    *
-   * @generated from field: repeated metalstack.api.v2.Tenant tenants = 8;
+   * @generated from field: repeated metalstack.api.v2.Tenant tenants = 5;
    */
   tenants: Tenant[];
 
   /**
    * Projects the user belongs to
    *
-   * @generated from field: repeated metalstack.api.v2.Project projects = 9;
+   * @generated from field: repeated metalstack.api.v2.Project projects = 6;
    */
   projects: Project[];
 
   /**
    * DefaultTenant this user belongs to
    *
-   * @generated from field: metalstack.api.v2.Tenant default_tenant = 10;
+   * @generated from field: metalstack.api.v2.Tenant default_tenant = 7;
    */
   defaultTenant?: Tenant;
 };

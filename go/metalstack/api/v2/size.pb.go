@@ -275,11 +275,11 @@ type Size struct {
 	// Meta for this size
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	// Name of this size
-	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of this size
-	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
+	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Constraints which must match that a specific machine is considered of this size
-	Constraints   []*SizeConstraint `protobuf:"bytes,6,rep,name=constraints,proto3" json:"constraints,omitempty"`
+	Constraints   []*SizeConstraint `protobuf:"bytes,5,rep,name=constraints,proto3" json:"constraints,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -511,9 +511,9 @@ const file_metalstack_api_v2_size_proto_rawDesc = "" +
 	"\x04Size\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12$\n" +
-	"\x04name\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
-	"\vdescription\x18\x05 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12C\n" +
-	"\vconstraints\x18\x06 \x03(\v2!.metalstack.api.v2.SizeConstraintR\vconstraintsB\a\n" +
+	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
+	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12C\n" +
+	"\vconstraints\x18\x05 \x03(\v2!.metalstack.api.v2.SizeConstraintR\vconstraintsB\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_description\"\xb9\x01\n" +
 	"\x0eSizeConstraint\x12C\n" +

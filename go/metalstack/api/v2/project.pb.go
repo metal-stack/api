@@ -127,7 +127,7 @@ type ProjectMember struct {
 	// Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
 	InheritedMembership bool `protobuf:"varint,3,opt,name=inherited_membership,json=inheritedMembership,proto3" json:"inherited_membership,omitempty"`
 	// CreatedAt the date when the member was added to the project
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -208,9 +208,9 @@ type ProjectInvite struct {
 	// TenantName is the name of tenant who invites to join this project
 	TenantName string `protobuf:"bytes,7,opt,name=tenant_name,json=tenantName,proto3" json:"tenant_name,omitempty"`
 	// ExpiresAt the date when this invite expires
-	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	// JoinedAt the date when the member accepted this invite
-	JoinedAt      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
+	JoinedAt      *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -318,7 +318,7 @@ type ProjectServiceListRequest struct {
 	// Tenant lists only projects of this tenant
 	Tenant *string `protobuf:"bytes,3,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
 	// Labels lists only projects containing the given labels
-	Labels        *Labels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	Labels        *Labels `protobuf:"bytes,4,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -892,7 +892,7 @@ type ProjectServiceInviteRequest struct {
 	// Project is the uuid of the project
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// Role of this user in this project
-	Role          ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
+	Role          ProjectRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1670,8 +1670,7 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\x04role\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x121\n" +
 	"\x14inherited_membership\x18\x03 \x01(\bR\x13inheritedMembership\x129\n" +
 	"\n" +
-	"created_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xe7\x02\n" +
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xe7\x02\n" +
 	"\rProjectInvite\x12\x16\n" +
 	"\x06secret\x18\x01 \x01(\tR\x06secret\x12\x18\n" +
 	"\aproject\x18\x02 \x01(\tR\aproject\x12<\n" +
@@ -1682,14 +1681,13 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\vtenant_name\x18\a \x01(\tR\n" +
 	"tenantName\x129\n" +
 	"\n" +
-	"expires_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x127\n" +
-	"\tjoined_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\"\xde\x01\n" +
+	"expires_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x127\n" +
+	"\tjoined_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\"\xde\x01\n" +
 	"\x19ProjectServiceListRequest\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\tH\x00R\x02id\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12(\n" +
 	"\x06tenant\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x02R\x06tenant\x88\x01\x01\x126\n" +
-	"\x06labels\x18\x06 \x01(\v2\x19.metalstack.api.v2.LabelsH\x03R\x06labels\x88\x01\x01B\x05\n" +
+	"\x06labels\x18\x04 \x01(\v2\x19.metalstack.api.v2.LabelsH\x03R\x06labels\x88\x01\x01B\x05\n" +
 	"\x03_idB\a\n" +
 	"\x05_nameB\t\n" +
 	"\a_tenantB\t\n" +
@@ -1732,7 +1730,7 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\x7f\n" +
 	"\x1bProjectServiceInviteRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12<\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"X\n" +
+	"\x04role\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"X\n" +
 	"\x1cProjectServiceInviteResponse\x128\n" +
 	"\x06invite\x18\x01 \x01(\v2 .metalstack.api.v2.ProjectInviteR\x06invite\"F\n" +
 	" ProjectServiceInvitesListRequest\x12\"\n" +

@@ -100,22 +100,21 @@ message NetworkServiceUpdateRequest {
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Labels to update on this network
   optional metalstack.api.v2.UpdateLabels labels = 5;
-
   // Prefixes in this network
   repeated string prefixes = 6 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Destination Prefixes in this network
   repeated string destination_prefixes = 7 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Default Child Prefix length defines the bit length of a child network created per addressfamily, of not specified during the allocate request
-  optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
+  optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 8;
   // Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
-  optional metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
+  optional metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 9;
   // NATType of this network
-  optional metalstack.api.v2.NATType nat_type = 13 [(buf.validate.field).enum.defined_only = true];
+  optional metalstack.api.v2.NATType nat_type = 10 [(buf.validate.field).enum.defined_only = true];
   // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-  repeated string additional_announcable_cidrs = 16 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
+  repeated string additional_announcable_cidrs = 11 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
 
   // Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact.
-  bool force = 20;
+  bool force = 12;
 }
 
 // NetworkServiceDeleteRequest is the request payload for a network delete request

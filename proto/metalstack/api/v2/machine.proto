@@ -265,11 +265,11 @@ message Machine {
   // Hardware specs of this machine
   MachineHardware hardware = 6;
   // Allocation details
-  MachineAllocation allocation = 8;
+  MachineAllocation allocation = 7;
   // Status contains several status details related to this machine
-  MachineStatus status = 9;
+  MachineStatus status = 8;
   // MachineRecentProvisioningEvents contains the recent provisioning events
-  MachineRecentProvisioningEvents recent_provisioning_events = 10;
+  MachineRecentProvisioningEvents recent_provisioning_events = 9;
 }
 
 // MachineStatus contains several status details related to this machine
@@ -462,13 +462,13 @@ message MachineHardware {
   // Memory the total memory of the machine in bytes
   uint64 memory = 1;
   // Disks the list of block devices of this machine
-  repeated MachineBlockDevice disks = 3;
+  repeated MachineBlockDevice disks = 2;
   // CPUs the cpu details
-  repeated MetalCPU cpus = 4;
+  repeated MetalCPU cpus = 3;
   // GPUs the gpu details
-  repeated MetalGPU gpus = 5;
+  repeated MetalGPU gpus = 4;
   // Nics the list of network interfaces of this machine
-  repeated MachineNic nics = 6;
+  repeated MachineNic nics = 5;
 }
 
 // MetalCPU contains details of a cpu in this machine
@@ -580,9 +580,9 @@ message MachineBMC {
   // Interface of this ipmi device
   string interface = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Version of this bmc device
-  string version = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  string version = 6 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // PowerState of this machine
-  string power_state = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  string power_state = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
 // MachineFRU describes details to the machine which are required in case of a necessary replacement
@@ -703,7 +703,7 @@ message MachineVPN {
   // Connected indicate if this machine is connected to the VPN
   bool connected = 3;
   // IPs of the machine connected to the vpn
-  repeated string ips = 5 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
+  repeated string ips = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
 // MachineLiveliness specifies the liveliness of a machine

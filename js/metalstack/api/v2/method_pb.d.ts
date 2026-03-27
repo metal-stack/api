@@ -61,7 +61,7 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
     /**
      * ProjectRoles associates a project id with the corresponding role of the token owner
      *
-     * @generated from field: map<string, metalstack.api.v2.ProjectRole> project_roles = 3;
+     * @generated from field: map<string, metalstack.api.v2.ProjectRole> project_roles = 2;
      */
     projectRoles: {
         [key: string]: ProjectRole;
@@ -69,7 +69,7 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
     /**
      * TenantRoles associates a tenant id with the corresponding role of the token owner
      *
-     * @generated from field: map<string, metalstack.api.v2.TenantRole> tenant_roles = 4;
+     * @generated from field: map<string, metalstack.api.v2.TenantRole> tenant_roles = 3;
      */
     tenantRoles: {
         [key: string]: TenantRole;
@@ -77,19 +77,19 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
     /**
      * AdminRole defines the admin role of the token owner
      *
-     * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 5;
+     * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 4;
      */
     adminRole?: AdminRole;
     /**
      * InfraRole defines the infrastructure role of the token owner
      *
-     * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 6;
+     * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 5;
      */
     infraRole?: InfraRole;
     /**
      * MachineRoles defines the machine roles of the token owner
      *
-     * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 7;
+     * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 6;
      */
     machineRoles: {
         [key: string]: MachineRole;
