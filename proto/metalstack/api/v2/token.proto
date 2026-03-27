@@ -104,12 +104,12 @@ message TokenServiceCreateRequest {
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 2 [(buf.validate.field).repeated.max_items = 100];
   // Expires gives the duration since now, after which this token can not be used anymore
-  google.protobuf.Duration expires = 4 [(buf.validate.field).duration = {
+  google.protobuf.Duration expires = 3 [(buf.validate.field).duration = {
     lt: {seconds: 31536001}
     gte: {seconds: 600}
   }];
   // ProjectRoles associates a project id with the corresponding role of the token owner
-  map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
+  map<string, ProjectRole> project_roles = 4 [(buf.validate.field).map = {
     keys: {
       string: {uuid: true}
     }
@@ -117,8 +117,8 @@ message TokenServiceCreateRequest {
       enum: {defined_only: true}
     }
   }];
-  // TenantRoles associates a tenant id with the corresponding role of the token owner
-  map<string, TenantRole> tenant_roles = 6 [(buf.validate.field).map = {
+  // TenantRoles_associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 5 [(buf.validate.field).map = {
     keys: {
       string: {
         min_len: 3
@@ -130,11 +130,11 @@ message TokenServiceCreateRequest {
     }
   }];
   // AdminRole defines the admin role of the token owner
-  optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
+  optional AdminRole admin_role = 6 [(buf.validate.field).enum.defined_only = true];
   // InfraRole defines the infrastructure role of the token owner
-  optional InfraRole infra_role = 8 [(buf.validate.field).enum.defined_only = true];
+  optional InfraRole infra_role = 7 [(buf.validate.field).enum.defined_only = true];
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
-  map<string, MachineRole> machine_roles = 9 [
+  map<string, MachineRole> machine_roles = 8 [
     (buf.validate.field).cel = {
       id: "machine_roles_keys"
       message: "map keys must be empty string, '*', or a valid UUID"
@@ -146,7 +146,7 @@ message TokenServiceCreateRequest {
     }
   ];
   // Labels on this token
-  Labels labels = 10;
+  Labels labels = 9;
 }
 
 // MethodPermission is a mapping from a subject/project to a service method

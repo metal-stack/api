@@ -315,6 +315,14 @@
                   <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
               
             </ul>
           </li>
@@ -3246,6 +3254,14 @@ having a direct membership within the tenant.</p></td>
           <tbody>
             
               <tr>
+                <td>all_trimmed</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.RepeatedRules">.buf.validate.RepeatedRules</a></td>
+                <td>80058953</td>
+                <td><p>All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end.</p></td>
+              </tr>
+            
+              <tr>
                 <td>ips</td>
                 <td><a href="#bool">bool</a></td>
                 <td><a href="#buf.validate.RepeatedRules">.buf.validate.RepeatedRules</a></td>
@@ -3315,6 +3331,14 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
                 <td>80048951</td>
                 <td><p>Macaddress returns true if the given string is a valid macadress</p></td>
+              </tr>
+            
+              <tr>
+                <td>trimmed</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048958</td>
+                <td><p>Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end.</p></td>
               </tr>
             
           </tbody>
@@ -4173,7 +4197,7 @@ Only useful for admins. </p></td>
                   <td>tenant_roles</td>
                   <td><a href="#metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry">TokenServiceCreateRequest.TenantRolesEntry</a></td>
                   <td>repeated</td>
-                  <td><p>TenantRoles associates a tenant id with the corresponding role of the token owner </p></td>
+                  <td><p>TenantRoles_associates a tenant id with the corresponding role of the token owner </p></td>
                 </tr>
               
                 <tr>

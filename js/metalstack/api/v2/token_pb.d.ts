@@ -135,21 +135,21 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
     /**
      * Expires gives the duration since now, after which this token can not be used anymore
      *
-     * @generated from field: google.protobuf.Duration expires = 4;
+     * @generated from field: google.protobuf.Duration expires = 3;
      */
     expires?: Duration;
     /**
      * ProjectRoles associates a project id with the corresponding role of the token owner
      *
-     * @generated from field: map<string, metalstack.api.v2.ProjectRole> project_roles = 5;
+     * @generated from field: map<string, metalstack.api.v2.ProjectRole> project_roles = 4;
      */
     projectRoles: {
         [key: string]: ProjectRole;
     };
     /**
-     * TenantRoles associates a tenant id with the corresponding role of the token owner
+     * TenantRoles_associates a tenant id with the corresponding role of the token owner
      *
-     * @generated from field: map<string, metalstack.api.v2.TenantRole> tenant_roles = 6;
+     * @generated from field: map<string, metalstack.api.v2.TenantRole> tenant_roles = 5;
      */
     tenantRoles: {
         [key: string]: TenantRole;
@@ -157,19 +157,19 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
     /**
      * AdminRole defines the admin role of the token owner
      *
-     * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 7;
+     * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 6;
      */
     adminRole?: AdminRole;
     /**
      * InfraRole defines the infrastructure role of the token owner
      *
-     * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 8;
+     * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 7;
      */
     infraRole?: InfraRole;
     /**
      * MachineRoles associates a machine uuid with the corresponding role of the token owner
      *
-     * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 9;
+     * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 8;
      */
     machineRoles: {
         [key: string]: MachineRole;
@@ -177,7 +177,7 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
     /**
      * Labels on this token
      *
-     * @generated from field: metalstack.api.v2.Labels labels = 10;
+     * @generated from field: metalstack.api.v2.Labels labels = 9;
      */
     labels?: Labels;
 };

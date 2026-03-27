@@ -207,31 +207,31 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkSe
     /**
      * Default Child Prefix length defines the bit length of a child network created per addressfamily, of not specified during the allocate request
      *
-     * @generated from field: optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
+     * @generated from field: optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 8;
      */
     defaultChildPrefixLength?: ChildPrefixLength;
     /**
      * Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
      *
-     * @generated from field: optional metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
+     * @generated from field: optional metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 9;
      */
     minChildPrefixLength?: ChildPrefixLength;
     /**
      * NATType of this network
      *
-     * @generated from field: optional metalstack.api.v2.NATType nat_type = 13;
+     * @generated from field: optional metalstack.api.v2.NATType nat_type = 10;
      */
     natType?: NATType;
     /**
      * AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
      *
-     * @generated from field: repeated string additional_announcable_cidrs = 16;
+     * @generated from field: repeated string additional_announcable_cidrs = 11;
      */
     additionalAnnouncableCidrs: string[];
     /**
      * Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact.
      *
-     * @generated from field: bool force = 20;
+     * @generated from field: bool force = 12;
      */
     force: boolean;
 };
