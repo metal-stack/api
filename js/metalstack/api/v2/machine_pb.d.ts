@@ -505,19 +505,19 @@ export type Machine = Message<"metalstack.api.v2.Machine"> & {
     /**
      * Allocation details
      *
-     * @generated from field: metalstack.api.v2.MachineAllocation allocation = 8;
+     * @generated from field: metalstack.api.v2.MachineAllocation allocation = 7;
      */
     allocation?: MachineAllocation;
     /**
      * Status contains several status details related to this machine
      *
-     * @generated from field: metalstack.api.v2.MachineStatus status = 9;
+     * @generated from field: metalstack.api.v2.MachineStatus status = 8;
      */
     status?: MachineStatus;
     /**
      * MachineRecentProvisioningEvents contains the recent provisioning events
      *
-     * @generated from field: metalstack.api.v2.MachineRecentProvisioningEvents recent_provisioning_events = 10;
+     * @generated from field: metalstack.api.v2.MachineRecentProvisioningEvents recent_provisioning_events = 9;
      */
     recentProvisioningEvents?: MachineRecentProvisioningEvents;
 };
@@ -939,25 +939,25 @@ export type MachineHardware = Message<"metalstack.api.v2.MachineHardware"> & {
     /**
      * Disks the list of block devices of this machine
      *
-     * @generated from field: repeated metalstack.api.v2.MachineBlockDevice disks = 3;
+     * @generated from field: repeated metalstack.api.v2.MachineBlockDevice disks = 2;
      */
     disks: MachineBlockDevice[];
     /**
      * CPUs the cpu details
      *
-     * @generated from field: repeated metalstack.api.v2.MetalCPU cpus = 4;
+     * @generated from field: repeated metalstack.api.v2.MetalCPU cpus = 3;
      */
     cpus: MetalCPU[];
     /**
      * GPUs the gpu details
      *
-     * @generated from field: repeated metalstack.api.v2.MetalGPU gpus = 5;
+     * @generated from field: repeated metalstack.api.v2.MetalGPU gpus = 4;
      */
     gpus: MetalGPU[];
     /**
      * Nics the list of network interfaces of this machine
      *
-     * @generated from field: repeated metalstack.api.v2.MachineNic nics = 6;
+     * @generated from field: repeated metalstack.api.v2.MachineNic nics = 5;
      */
     nics: MachineNic[];
 };
@@ -1257,13 +1257,13 @@ export type MachineBMC = Message<"metalstack.api.v2.MachineBMC"> & {
     /**
      * Version of this bmc device
      *
-     * @generated from field: string version = 7;
+     * @generated from field: string version = 6;
      */
     version: string;
     /**
      * PowerState of this machine
      *
-     * @generated from field: string power_state = 8;
+     * @generated from field: string power_state = 7;
      */
     powerState: string;
 };
@@ -1494,13 +1494,13 @@ export type MachineVPN = Message<"metalstack.api.v2.MachineVPN"> & {
     /**
      * IPs of the machine connected to the vpn
      *
-     * @generated from field: repeated string ips = 5;
+     * @generated from field: repeated string ips = 4;
      */
     ips: string[];
     /**
      * Flavor of the vpn.
      *
-     * @generated from field: metalstack.api.v2.VPNFlavor flavor = 6;
+     * @generated from field: metalstack.api.v2.VPNFlavor flavor = 5;
      */
     flavor: VPNFlavor;
 };
