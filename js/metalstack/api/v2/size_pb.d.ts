@@ -98,19 +98,19 @@ export type Size = Message<"metalstack.api.v2.Size"> & {
     /**
      * Name of this size
      *
-     * @generated from field: optional string name = 4;
+     * @generated from field: optional string name = 3;
      */
     name?: string;
     /**
      * Description of this size
      *
-     * @generated from field: optional string description = 5;
+     * @generated from field: optional string description = 4;
      */
     description?: string;
     /**
      * Constraints which must match that a specific machine is considered of this size
      *
-     * @generated from field: repeated metalstack.api.v2.SizeConstraint constraints = 6;
+     * @generated from field: repeated metalstack.api.v2.SizeConstraint constraints = 5;
      */
     constraints: SizeConstraint[];
 };

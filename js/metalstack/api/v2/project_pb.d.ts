@@ -84,7 +84,7 @@ export type ProjectMember = Message<"metalstack.api.v2.ProjectMember"> & {
     /**
      * CreatedAt the date when the member was added to the project
      *
-     * @generated from field: google.protobuf.Timestamp created_at = 10;
+     * @generated from field: google.protobuf.Timestamp created_at = 4;
      */
     createdAt?: Timestamp;
 };
@@ -144,13 +144,13 @@ export type ProjectInvite = Message<"metalstack.api.v2.ProjectInvite"> & {
     /**
      * ExpiresAt the date when this invite expires
      *
-     * @generated from field: google.protobuf.Timestamp expires_at = 10;
+     * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
     expiresAt?: Timestamp;
     /**
      * JoinedAt the date when the member accepted this invite
      *
-     * @generated from field: google.protobuf.Timestamp joined_at = 11;
+     * @generated from field: google.protobuf.Timestamp joined_at = 9;
      */
     joinedAt?: Timestamp;
 };
@@ -186,7 +186,7 @@ export type ProjectServiceListRequest = Message<"metalstack.api.v2.ProjectServic
     /**
      * Labels lists only projects containing the given labels
      *
-     * @generated from field: optional metalstack.api.v2.Labels labels = 6;
+     * @generated from field: optional metalstack.api.v2.Labels labels = 4;
      */
     labels?: Labels;
 };
@@ -433,7 +433,7 @@ export type ProjectServiceInviteRequest = Message<"metalstack.api.v2.ProjectServ
     /**
      * Role of this user in this project
      *
-     * @generated from field: metalstack.api.v2.ProjectRole role = 3;
+     * @generated from field: metalstack.api.v2.ProjectRole role = 2;
      */
     role: ProjectRole;
 };

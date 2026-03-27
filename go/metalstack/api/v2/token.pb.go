@@ -251,19 +251,19 @@ type TokenServiceCreateRequest struct {
 	// Permissions is a list of service methods this token can be used for
 	Permissions []*MethodPermission `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	// Expires gives the duration since now, after which this token can not be used anymore
-	Expires *durationpb.Duration `protobuf:"bytes,4,opt,name=expires,proto3" json:"expires,omitempty"`
+	Expires *durationpb.Duration `protobuf:"bytes,3,opt,name=expires,proto3" json:"expires,omitempty"`
 	// ProjectRoles associates a project id with the corresponding role of the token owner
-	ProjectRoles map[string]ProjectRole `protobuf:"bytes,5,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
-	// TenantRoles associates a tenant id with the corresponding role of the token owner
-	TenantRoles map[string]TenantRole `protobuf:"bytes,6,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
+	ProjectRoles map[string]ProjectRole `protobuf:"bytes,4,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
+	// TenantRoles_associates a tenant id with the corresponding role of the token owner
+	TenantRoles map[string]TenantRole `protobuf:"bytes,5,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
 	// AdminRole defines the admin role of the token owner
-	AdminRole *AdminRole `protobuf:"varint,7,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
+	AdminRole *AdminRole `protobuf:"varint,6,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
 	// InfraRole defines the infrastructure role of the token owner
-	InfraRole *InfraRole `protobuf:"varint,8,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
+	InfraRole *InfraRole `protobuf:"varint,7,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
 	// MachineRoles associates a machine uuid with the corresponding role of the token owner
-	MachineRoles map[string]MachineRole `protobuf:"bytes,9,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
+	MachineRoles map[string]MachineRole `protobuf:"bytes,8,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
 	// Labels on this token
-	Labels        *Labels `protobuf:"bytes,10,opt,name=labels,proto3" json:"labels,omitempty"`
+	Labels        *Labels `protobuf:"bytes,9,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1043,17 +1043,16 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x19TokenServiceCreateRequest\x12-\n" +
 	"\vdescription\x18\x01 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12O\n" +
 	"\vpermissions\x18\x02 \x03(\v2#.metalstack.api.v2.MethodPermissionB\b\xbaH\x05\x92\x01\x02\x10dR\vpermissions\x12G\n" +
-	"\aexpires\x18\x04 \x01(\v2\x19.google.protobuf.DurationB\x12\xbaH\x0f\xaa\x01\f\x1a\x05\b\x81\xe7\x84\x0f2\x03\b\xd8\x04R\aexpires\x12y\n" +
-	"\rproject_roles\x18\x05 \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntryB\x14\xbaH\x11\x9a\x01\x0e\"\x05r\x03\xb0\x01\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12x\n" +
-	"\ftenant_roles\x18\x06 \x03(\v2=.metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntryB\x16\xbaH\x13\x9a\x01\x10\"\ar\x05\x10\x03\x18\x80\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
+	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x12\xbaH\x0f\xaa\x01\f\x1a\x05\b\x81\xe7\x84\x0f2\x03\b\xd8\x04R\aexpires\x12y\n" +
+	"\rproject_roles\x18\x04 \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntryB\x14\xbaH\x11\x9a\x01\x0e\"\x05r\x03\xb0\x01\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12x\n" +
+	"\ftenant_roles\x18\x05 \x03(\v2=.metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntryB\x16\xbaH\x13\x9a\x01\x10\"\ar\x05\x10\x03\x18\x80\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
 	"\n" +
-	"admin_role\x18\a \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x12J\n" +
+	"admin_role\x18\x06 \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x12J\n" +
 	"\n" +
-	"infra_role\x18\b \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12\xc1\x02\n" +
-	"\rmachine_roles\x18\t \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntryB\xdb\x01\xbaH\xd7\x01\xba\x01\xc9\x01\n" +
+	"infra_role\x18\a \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12\xc1\x02\n" +
+	"\rmachine_roles\x18\b \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntryB\xdb\x01\xbaH\xd7\x01\xba\x01\xc9\x01\n" +
 	"\x12machine_roles_keys\x123map keys must be empty string, '*', or a valid UUID\x1a~this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))\x9a\x01\a*\x05\x82\x01\x02\x10\x01R\fmachineRoles\x121\n" +
-	"\x06labels\x18\n" +
-	" \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x1a_\n" +
+	"\x06labels\x18\t \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x1a_\n" +
 	"\x11ProjectRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x028\x01\x1a]\n" +
