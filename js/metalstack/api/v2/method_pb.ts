@@ -15,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/api/v2/method.proto.
  */
 export const file_metalstack_api_v2_method: GenFile = /*@__PURE__*/
-  fileDesc("Ch5tZXRhbHN0YWNrL2FwaS92Mi9tZXRob2QucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIhoKGE1ldGhvZFNlcnZpY2VMaXN0UmVxdWVzdCIsChlNZXRob2RTZXJ2aWNlTGlzdFJlc3BvbnNlEg8KB21ldGhvZHMYASADKAkiJQojTWV0aG9kU2VydmljZVRva2VuU2NvcGVkTGlzdFJlcXVlc3QioQYKJE1ldGhvZFNlcnZpY2VUb2tlblNjb3BlZExpc3RSZXNwb25zZRI4CgtwZXJtaXNzaW9ucxgBIAMoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFBlcm1pc3Npb24SYAoNcHJvamVjdF9yb2xlcxgDIAMoCzJJLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VUb2tlblNjb3BlZExpc3RSZXNwb25zZS5Qcm9qZWN0Um9sZXNFbnRyeRJeCgx0ZW5hbnRfcm9sZXMYBCADKAsySC5tZXRhbHN0YWNrLmFwaS52Mi5NZXRob2RTZXJ2aWNlVG9rZW5TY29wZWRMaXN0UmVzcG9uc2UuVGVuYW50Um9sZXNFbnRyeRI/CgphZG1pbl9yb2xlGAUgASgOMhwubWV0YWxzdGFjay5hcGkudjIuQWRtaW5Sb2xlQgi6SAWCAQIQAUgAiAEBEj8KCmluZnJhX3JvbGUYBiABKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5JbmZyYVJvbGVCCLpIBYIBAhABSAGIAQESYAoNbWFjaGluZV9yb2xlcxgHIAMoCzJJLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VUb2tlblNjb3BlZExpc3RSZXNwb25zZS5NYWNoaW5lUm9sZXNFbnRyeRpTChFQcm9qZWN0Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZToCOAEaUQoQVGVuYW50Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLAoFdmFsdWUYAiABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRSb2xlOgI4ARpTChFNYWNoaW5lUm9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lUm9sZToCOAFCDQoLX2FkbWluX3JvbGVCDQoLX2luZnJhX3JvbGUygwIKDU1ldGhvZFNlcnZpY2USZwoETGlzdBIrLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VMaXN0UmVxdWVzdBosLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VMaXN0UmVzcG9uc2UiBNjzGAESiAEKD1Rva2VuU2NvcGVkTGlzdBI2Lm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VUb2tlblNjb3BlZExpc3RSZXF1ZXN0GjcubWV0YWxzdGFjay5hcGkudjIuTWV0aG9kU2VydmljZVRva2VuU2NvcGVkTGlzdFJlc3BvbnNlIgTY8xgDQsEBChVjb20ubWV0YWxzdGFjay5hcGkudjJCC01ldGhvZFByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_token]);
+  fileDesc("Ch5tZXRhbHN0YWNrL2FwaS92Mi9tZXRob2QucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIhoKGE1ldGhvZFNlcnZpY2VMaXN0UmVxdWVzdCIsChlNZXRob2RTZXJ2aWNlTGlzdFJlc3BvbnNlEg8KB21ldGhvZHMYASADKAkiJQojTWV0aG9kU2VydmljZVRva2VuU2NvcGVkTGlzdFJlcXVlc3QioQYKJE1ldGhvZFNlcnZpY2VUb2tlblNjb3BlZExpc3RSZXNwb25zZRI4CgtwZXJtaXNzaW9ucxgBIAMoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFBlcm1pc3Npb24SYAoNcHJvamVjdF9yb2xlcxgCIAMoCzJJLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VUb2tlblNjb3BlZExpc3RSZXNwb25zZS5Qcm9qZWN0Um9sZXNFbnRyeRJeCgx0ZW5hbnRfcm9sZXMYAyADKAsySC5tZXRhbHN0YWNrLmFwaS52Mi5NZXRob2RTZXJ2aWNlVG9rZW5TY29wZWRMaXN0UmVzcG9uc2UuVGVuYW50Um9sZXNFbnRyeRI/CgphZG1pbl9yb2xlGAQgASgOMhwubWV0YWxzdGFjay5hcGkudjIuQWRtaW5Sb2xlQgi6SAWCAQIQAUgAiAEBEj8KCmluZnJhX3JvbGUYBSABKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5JbmZyYVJvbGVCCLpIBYIBAhABSAGIAQESYAoNbWFjaGluZV9yb2xlcxgGIAMoCzJJLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VUb2tlblNjb3BlZExpc3RSZXNwb25zZS5NYWNoaW5lUm9sZXNFbnRyeRpTChFQcm9qZWN0Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZToCOAEaUQoQVGVuYW50Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLAoFdmFsdWUYAiABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRSb2xlOgI4ARpTChFNYWNoaW5lUm9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lUm9sZToCOAFCDQoLX2FkbWluX3JvbGVCDQoLX2luZnJhX3JvbGUygwIKDU1ldGhvZFNlcnZpY2USZwoETGlzdBIrLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VMaXN0UmVxdWVzdBosLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VMaXN0UmVzcG9uc2UiBNjzGAESiAEKD1Rva2VuU2NvcGVkTGlzdBI2Lm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFNlcnZpY2VUb2tlblNjb3BlZExpc3RSZXF1ZXN0GjcubWV0YWxzdGFjay5hcGkudjIuTWV0aG9kU2VydmljZVRva2VuU2NvcGVkTGlzdFJlc3BvbnNlIgTY8xgDQsEBChVjb20ubWV0YWxzdGFjay5hcGkudjJCC01ldGhvZFByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_token]);
 
 /**
  * MethodServiceListRequest is the request payload to list all public methods
@@ -84,35 +84,35 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
   /**
    * ProjectRoles associates a project id with the corresponding role of the token owner
    *
-   * @generated from field: map<string, metalstack.api.v2.ProjectRole> project_roles = 3;
+   * @generated from field: map<string, metalstack.api.v2.ProjectRole> project_roles = 2;
    */
   projectRoles: { [key: string]: ProjectRole };
 
   /**
    * TenantRoles associates a tenant id with the corresponding role of the token owner
    *
-   * @generated from field: map<string, metalstack.api.v2.TenantRole> tenant_roles = 4;
+   * @generated from field: map<string, metalstack.api.v2.TenantRole> tenant_roles = 3;
    */
   tenantRoles: { [key: string]: TenantRole };
 
   /**
    * AdminRole defines the admin role of the token owner
    *
-   * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 5;
+   * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 4;
    */
   adminRole?: AdminRole;
 
   /**
    * InfraRole defines the infrastructure role of the token owner
    *
-   * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 6;
+   * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 5;
    */
   infraRole?: InfraRole;
 
   /**
    * MachineRoles defines the machine roles of the token owner
    *
-   * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 7;
+   * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 6;
    */
   machineRoles: { [key: string]: MachineRole };
 };

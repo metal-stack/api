@@ -108,7 +108,7 @@ message ProjectMember {
   // Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
   bool inherited_membership = 3;
   // CreatedAt the date when the member was added to the project
-  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp created_at = 4;
 }
 
 // ProjectInvite defines invite to project
@@ -128,9 +128,9 @@ message ProjectInvite {
   // TenantName is the name of tenant who invites to join this project
   string tenant_name = 7;
   // ExpiresAt the date when this invite expires
-  google.protobuf.Timestamp expires_at = 10;
+  google.protobuf.Timestamp expires_at = 8;
   // JoinedAt the date when the member accepted this invite
-  google.protobuf.Timestamp joined_at = 11;
+  google.protobuf.Timestamp joined_at = 9;
 }
 
 // ProjectServiceListRequest is the request payload to list all projects
@@ -142,7 +142,7 @@ message ProjectServiceListRequest {
   // Tenant lists only projects of this tenant
   optional string tenant = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Labels lists only projects containing the given labels
-  optional Labels labels = 6;
+  optional Labels labels = 4;
 }
 
 // ProjectServiceListResponse is the response payload to list all projects
@@ -226,7 +226,7 @@ message ProjectServiceInviteRequest {
   string project = 1 [(buf.validate.field).string.uuid = true];
 
   // Role of this user in this project
-  ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
+  ProjectRole role = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
 // ProjectServiceInviteRequest is the response payload to a invite member request
