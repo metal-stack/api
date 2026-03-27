@@ -29,7 +29,7 @@ from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common
 from metalstack.api.v2 import vpn_pb2 as metalstack_dot_api_dot_v2_dot_vpn__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/admin/v2/vpn.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"\xb5\x01\n\x18VPNServiceAuthKeyRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12\x1c\n\tephemeral\x18\x02 \x01(\x08R\tephemeral\x12\x33\n\x07\x65xpires\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationR\x07\x65xpires\x12\"\n\x06reason\x18\x04 \x01(\tB\n\xbaH\x07r\x05\x10\n\x18\x80\x04R\x06reason\"\xe4\x01\n\x19VPNServiceAuthKeyResponse\x12\x18\n\x07\x61\x64\x64ress\x18\x01 \x01(\tR\x07\x61\x64\x64ress\x12\x19\n\x08\x61uth_key\x18\x02 \x01(\tR\x07\x61uthKey\x12\x1c\n\tephemeral\x18\x03 \x01(\x08R\tephemeral\x12\x39\n\nexpires_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\texpiresAt\x12\x39\n\ncreated_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\"G\n\x1aVPNServiceListNodesRequest\x12\x1d\n\x07project\x18\x01 \x01(\tH\x00R\x07project\x88\x01\x01\x42\n\n\x08_project\"O\n\x1bVPNServiceListNodesResponse\x12\x30\n\x05nodes\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.VPNNodeR\x05nodes2\xf5\x01\n\nVPNService\x12o\n\x07\x41uthKey\x12-.metalstack.admin.v2.VPNServiceAuthKeyRequest\x1a..metalstack.admin.v2.VPNServiceAuthKeyResponse\"\x05\xd2\xf3\x18\x01\x01\x12v\n\tListNodes\x12/.metalstack.admin.v2.VPNServiceListNodesRequest\x1a\x30.metalstack.admin.v2.VPNServiceListNodesResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x42\xcc\x01\n\x17\x63om.metalstack.admin.v2B\x08VpnProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dmetalstack/admin/v2/vpn.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"\xb5\x01\n\x18VPNServiceAuthKeyRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12\x1c\n\tephemeral\x18\x02 \x01(\x08R\tephemeral\x12\x33\n\x07\x65xpires\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationR\x07\x65xpires\x12\"\n\x06reason\x18\x04 \x01(\tB\n\xbaH\x07r\x05\x10\n\x18\x80\x04R\x06reason\"\xa4\x02\n\x19VPNServiceAuthKeyResponse\x12\x18\n\x07\x61\x64\x64ress\x18\x01 \x01(\tR\x07\x61\x64\x64ress\x12\x19\n\x08\x61uth_key\x18\x02 \x01(\tR\x07\x61uthKey\x12\x1c\n\tephemeral\x18\x03 \x01(\x08R\tephemeral\x12\x39\n\nexpires_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\texpiresAt\x12\x39\n\ncreated_at\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\x12>\n\x06\x66lavor\x18\x06 \x01(\x0e\x32\x1c.metalstack.api.v2.VPNFlavorB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x06\x66lavor\"G\n\x1aVPNServiceListNodesRequest\x12\x1d\n\x07project\x18\x01 \x01(\tH\x00R\x07project\x88\x01\x01\x42\n\n\x08_project\"O\n\x1bVPNServiceListNodesResponse\x12\x30\n\x05nodes\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.VPNNodeR\x05nodes2\xf5\x01\n\nVPNService\x12o\n\x07\x41uthKey\x12-.metalstack.admin.v2.VPNServiceAuthKeyRequest\x1a..metalstack.admin.v2.VPNServiceAuthKeyResponse\"\x05\xd2\xf3\x18\x01\x01\x12v\n\tListNodes\x12/.metalstack.admin.v2.VPNServiceListNodesRequest\x1a\x30.metalstack.admin.v2.VPNServiceListNodesResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x42\xcc\x01\n\x17\x63om.metalstack.admin.v2B\x08VpnProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -41,6 +41,8 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_VPNSERVICEAUTHKEYREQUEST'].fields_by_name['project']._serialized_options = b'\272H\005r\003\260\001\001'
   _globals['_VPNSERVICEAUTHKEYREQUEST'].fields_by_name['reason']._loaded_options = None
   _globals['_VPNSERVICEAUTHKEYREQUEST'].fields_by_name['reason']._serialized_options = b'\272H\007r\005\020\n\030\200\004'
+  _globals['_VPNSERVICEAUTHKEYRESPONSE'].fields_by_name['flavor']._loaded_options = None
+  _globals['_VPNSERVICEAUTHKEYRESPONSE'].fields_by_name['flavor']._serialized_options = b'\272H\005\202\001\002\020\001'
   _globals['_VPNSERVICE'].methods_by_name['AuthKey']._loaded_options = None
   _globals['_VPNSERVICE'].methods_by_name['AuthKey']._serialized_options = b'\322\363\030\001\001'
   _globals['_VPNSERVICE'].methods_by_name['ListNodes']._loaded_options = None
@@ -48,11 +50,11 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_VPNSERVICEAUTHKEYREQUEST']._serialized_start=210
   _globals['_VPNSERVICEAUTHKEYREQUEST']._serialized_end=391
   _globals['_VPNSERVICEAUTHKEYRESPONSE']._serialized_start=394
-  _globals['_VPNSERVICEAUTHKEYRESPONSE']._serialized_end=622
-  _globals['_VPNSERVICELISTNODESREQUEST']._serialized_start=624
-  _globals['_VPNSERVICELISTNODESREQUEST']._serialized_end=695
-  _globals['_VPNSERVICELISTNODESRESPONSE']._serialized_start=697
-  _globals['_VPNSERVICELISTNODESRESPONSE']._serialized_end=776
-  _globals['_VPNSERVICE']._serialized_start=779
-  _globals['_VPNSERVICE']._serialized_end=1024
+  _globals['_VPNSERVICEAUTHKEYRESPONSE']._serialized_end=686
+  _globals['_VPNSERVICELISTNODESREQUEST']._serialized_start=688
+  _globals['_VPNSERVICELISTNODESREQUEST']._serialized_end=759
+  _globals['_VPNSERVICELISTNODESRESPONSE']._serialized_start=761
+  _globals['_VPNSERVICELISTNODESRESPONSE']._serialized_end=840
+  _globals['_VPNSERVICE']._serialized_start=843
+  _globals['_VPNSERVICE']._serialized_end=1088
 # @@protoc_insertion_point(module_scope)

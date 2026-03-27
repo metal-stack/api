@@ -2,8 +2,9 @@
 // @generated from file metalstack/api/v2/vpn.proto (package metalstack.api.v2, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
-import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
+import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
+import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
@@ -12,7 +13,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/api/v2/vpn.proto.
  */
 export const file_metalstack_api_v2_vpn: GenFile = /*@__PURE__*/
-  fileDesc("ChttZXRhbHN0YWNrL2FwaS92Mi92cG4ucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIokBCgdWUE5Ob2RlEgoKAmlkGAEgASgEEgwKBG5hbWUYAiABKAkSDwoHcHJvamVjdBgDIAEoCRIUCgxpcF9hZGRyZXNzZXMYBCADKAkSLQoJbGFzdF9zZWVuGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIOCgZvbmxpbmUYBiABKAhCvgEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkIIVnBuUHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_google_protobuf_timestamp]);
+  fileDesc("ChttZXRhbHN0YWNrL2FwaS92Mi92cG4ucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIsEBCgdWUE5Ob2RlEgoKAmlkGAEgASgEEgwKBG5hbWUYAiABKAkSDwoHcHJvamVjdBgDIAEoCRIUCgxpcF9hZGRyZXNzZXMYBCADKAkSLQoJbGFzdF9zZWVuGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIOCgZvbmxpbmUYBiABKAgSNgoGZmxhdm9yGAcgASgOMhwubWV0YWxzdGFjay5hcGkudjIuVlBORmxhdm9yQgi6SAWCAQIQASpBCglWUE5GbGF2b3ISGgoWVlBOX0ZMQVZPUl9VTlNQRUNJRklFRBAAEhgKFFZQTl9GTEFWT1JfVEFJTFNDQUxFEAFCvgEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkIIVnBuUHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_timestamp]);
 
 /**
  * VPNNode is a machine connected to the vpn
@@ -61,6 +62,13 @@ export type VPNNode = Message<"metalstack.api.v2.VPNNode"> & {
    * @generated from field: bool online = 6;
    */
   online: boolean;
+
+  /**
+   * Flavor of the vpn.
+   *
+   * @generated from field: metalstack.api.v2.VPNFlavor flavor = 7;
+   */
+  flavor: VPNFlavor;
 };
 
 /**
@@ -69,4 +77,31 @@ export type VPNNode = Message<"metalstack.api.v2.VPNNode"> & {
  */
 export const VPNNodeSchema: GenMessage<VPNNode> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_vpn, 0);
+
+/**
+ * VPNFlavor defines which vpn flavor is used to form the vpn.
+ *
+ * @generated from enum metalstack.api.v2.VPNFlavor
+ */
+export enum VPNFlavor {
+  /**
+   * VPN_FLAVOR_UNSPECIFIED is not specified
+   *
+   * @generated from enum value: VPN_FLAVOR_UNSPECIFIED = 0;
+   */
+  VPN_FLAVOR_UNSPECIFIED = 0,
+
+  /**
+   * VPN_FLAVOR_TAILSCALE tailscale is in use
+   *
+   * @generated from enum value: VPN_FLAVOR_TAILSCALE = 1;
+   */
+  VPN_FLAVOR_TAILSCALE = 1,
+}
+
+/**
+ * Describes the enum metalstack.api.v2.VPNFlavor.
+ */
+export const VPNFlavorSchema: GenEnum<VPNFlavor> = /*@__PURE__*/
+  enumDesc(file_metalstack_api_v2_vpn, 0);
 

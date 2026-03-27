@@ -112,7 +112,9 @@ type VPNServiceAuthKeyResponse struct {
 	// ExpiresAt this key cannot be used after this timestamp.
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	// CreatedAt this key was created at this timestamp.
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	// Flavor of the vpn.
+	Flavor        v2.VPNFlavor `protobuf:"varint,6,opt,name=flavor,proto3,enum=metalstack.api.v2.VPNFlavor" json:"flavor,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -180,6 +182,13 @@ func (x *VPNServiceAuthKeyResponse) GetCreatedAt() *timestamppb.Timestamp {
 		return x.CreatedAt
 	}
 	return nil
+}
+
+func (x *VPNServiceAuthKeyResponse) GetFlavor() v2.VPNFlavor {
+	if x != nil {
+		return x.Flavor
+	}
+	return v2.VPNFlavor(0)
 }
 
 // VPNServiceListNodesRequest is the request payload for a vpn list nodes request
@@ -285,7 +294,7 @@ const file_metalstack_admin_v2_vpn_proto_rawDesc = "" +
 	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationR\aexpires\x12\"\n" +
 	"\x06reason\x18\x04 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\n" +
-	"\x18\x80\x04R\x06reason\"\xe4\x01\n" +
+	"\x18\x80\x04R\x06reason\"\xa4\x02\n" +
 	"\x19VPNServiceAuthKeyResponse\x12\x18\n" +
 	"\aaddress\x18\x01 \x01(\tR\aaddress\x12\x19\n" +
 	"\bauth_key\x18\x02 \x01(\tR\aauthKey\x12\x1c\n" +
@@ -293,7 +302,8 @@ const file_metalstack_admin_v2_vpn_proto_rawDesc = "" +
 	"\n" +
 	"expires_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"G\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12>\n" +
+	"\x06flavor\x18\x06 \x01(\x0e2\x1c.metalstack.api.v2.VPNFlavorB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06flavor\"G\n" +
 	"\x1aVPNServiceListNodesRequest\x12\x1d\n" +
 	"\aproject\x18\x01 \x01(\tH\x00R\aproject\x88\x01\x01B\n" +
 	"\n" +
@@ -326,22 +336,24 @@ var file_metalstack_admin_v2_vpn_proto_goTypes = []any{
 	(*VPNServiceListNodesResponse)(nil), // 3: metalstack.admin.v2.VPNServiceListNodesResponse
 	(*durationpb.Duration)(nil),         // 4: google.protobuf.Duration
 	(*timestamppb.Timestamp)(nil),       // 5: google.protobuf.Timestamp
-	(*v2.VPNNode)(nil),                  // 6: metalstack.api.v2.VPNNode
+	(v2.VPNFlavor)(0),                   // 6: metalstack.api.v2.VPNFlavor
+	(*v2.VPNNode)(nil),                  // 7: metalstack.api.v2.VPNNode
 }
 var file_metalstack_admin_v2_vpn_proto_depIdxs = []int32{
 	4, // 0: metalstack.admin.v2.VPNServiceAuthKeyRequest.expires:type_name -> google.protobuf.Duration
 	5, // 1: metalstack.admin.v2.VPNServiceAuthKeyResponse.expires_at:type_name -> google.protobuf.Timestamp
 	5, // 2: metalstack.admin.v2.VPNServiceAuthKeyResponse.created_at:type_name -> google.protobuf.Timestamp
-	6, // 3: metalstack.admin.v2.VPNServiceListNodesResponse.nodes:type_name -> metalstack.api.v2.VPNNode
-	0, // 4: metalstack.admin.v2.VPNService.AuthKey:input_type -> metalstack.admin.v2.VPNServiceAuthKeyRequest
-	2, // 5: metalstack.admin.v2.VPNService.ListNodes:input_type -> metalstack.admin.v2.VPNServiceListNodesRequest
-	1, // 6: metalstack.admin.v2.VPNService.AuthKey:output_type -> metalstack.admin.v2.VPNServiceAuthKeyResponse
-	3, // 7: metalstack.admin.v2.VPNService.ListNodes:output_type -> metalstack.admin.v2.VPNServiceListNodesResponse
-	6, // [6:8] is the sub-list for method output_type
-	4, // [4:6] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	6, // 3: metalstack.admin.v2.VPNServiceAuthKeyResponse.flavor:type_name -> metalstack.api.v2.VPNFlavor
+	7, // 4: metalstack.admin.v2.VPNServiceListNodesResponse.nodes:type_name -> metalstack.api.v2.VPNNode
+	0, // 5: metalstack.admin.v2.VPNService.AuthKey:input_type -> metalstack.admin.v2.VPNServiceAuthKeyRequest
+	2, // 6: metalstack.admin.v2.VPNService.ListNodes:input_type -> metalstack.admin.v2.VPNServiceListNodesRequest
+	1, // 7: metalstack.admin.v2.VPNService.AuthKey:output_type -> metalstack.admin.v2.VPNServiceAuthKeyResponse
+	3, // 8: metalstack.admin.v2.VPNService.ListNodes:output_type -> metalstack.admin.v2.VPNServiceListNodesResponse
+	7, // [7:9] is the sub-list for method output_type
+	5, // [5:7] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_vpn_proto_init() }

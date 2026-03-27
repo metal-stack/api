@@ -9,6 +9,7 @@ from metalstack.api.v2 import network_pb2 as _network_pb2
 from metalstack.api.v2 import partition_pb2 as _partition_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import size_pb2 as _size_pb2
+from metalstack.api.v2 import vpn_pb2 as _vpn_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
@@ -601,16 +602,18 @@ class MachineProvisioningEvent(_message.Message):
     def __init__(self, time: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., event: _Optional[_Union[MachineProvisioningEventType, str]] = ..., message: _Optional[str] = ...) -> None: ...
 
 class MachineVPN(_message.Message):
-    __slots__ = ("control_plane_address", "auth_key", "connected", "ips")
+    __slots__ = ("control_plane_address", "auth_key", "connected", "ips", "flavor")
     CONTROL_PLANE_ADDRESS_FIELD_NUMBER: _ClassVar[int]
     AUTH_KEY_FIELD_NUMBER: _ClassVar[int]
     CONNECTED_FIELD_NUMBER: _ClassVar[int]
     IPS_FIELD_NUMBER: _ClassVar[int]
+    FLAVOR_FIELD_NUMBER: _ClassVar[int]
     control_plane_address: str
     auth_key: str
     connected: bool
     ips: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ..., ips: _Optional[_Iterable[str]] = ...) -> None: ...
+    flavor: _vpn_pb2.VPNFlavor
+    def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ..., ips: _Optional[_Iterable[str]] = ..., flavor: _Optional[_Union[_vpn_pb2.VPNFlavor, str]] = ...) -> None: ...
 
 class MachineQuery(_message.Message):
     __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "bmc", "fru", "hardware", "state", "waiting", "preallocated", "not_allocated")

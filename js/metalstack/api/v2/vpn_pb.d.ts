@@ -1,4 +1,4 @@
-import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -47,9 +47,38 @@ export type VPNNode = Message<"metalstack.api.v2.VPNNode"> & {
      * @generated from field: bool online = 6;
      */
     online: boolean;
+    /**
+     * Flavor of the vpn.
+     *
+     * @generated from field: metalstack.api.v2.VPNFlavor flavor = 7;
+     */
+    flavor: VPNFlavor;
 };
 /**
  * Describes the message metalstack.api.v2.VPNNode.
  * Use `create(VPNNodeSchema)` to create a new message.
  */
 export declare const VPNNodeSchema: GenMessage<VPNNode>;
+/**
+ * VPNFlavor defines which vpn flavor is used to form the vpn.
+ *
+ * @generated from enum metalstack.api.v2.VPNFlavor
+ */
+export declare enum VPNFlavor {
+    /**
+     * VPN_FLAVOR_UNSPECIFIED is not specified
+     *
+     * @generated from enum value: VPN_FLAVOR_UNSPECIFIED = 0;
+     */
+    VPN_FLAVOR_UNSPECIFIED = 0,
+    /**
+     * VPN_FLAVOR_TAILSCALE tailscale is in use
+     *
+     * @generated from enum value: VPN_FLAVOR_TAILSCALE = 1;
+     */
+    VPN_FLAVOR_TAILSCALE = 1
+}
+/**
+ * Describes the enum metalstack.api.v2.VPNFlavor.
+ */
+export declare const VPNFlavorSchema: GenEnum<VPNFlavor>;

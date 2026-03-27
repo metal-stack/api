@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package metalstack.api.v2;
 
+import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
 
 // VPNNode is a machine connected to the vpn
@@ -18,4 +19,14 @@ message VPNNode {
   google.protobuf.Timestamp last_seen = 5;
   // Online indicates if this node is online
   bool online = 6;
+  // Flavor of the vpn.
+  VPNFlavor flavor = 7 [(buf.validate.field).enum.defined_only = true];
+}
+
+// VPNFlavor defines which vpn flavor is used to form the vpn.
+enum VPNFlavor {
+  // VPN_FLAVOR_UNSPECIFIED is not specified
+  VPN_FLAVOR_UNSPECIFIED = 0;
+  // VPN_FLAVOR_TAILSCALE tailscale is in use
+  VPN_FLAVOR_TAILSCALE = 1;
 }

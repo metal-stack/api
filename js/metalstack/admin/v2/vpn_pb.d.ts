@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
-import type { VPNNode } from "../../api/v2/vpn_pb";
+import type { VPNFlavor, VPNNode } from "../../api/v2/vpn_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/vpn.proto.
@@ -80,6 +80,12 @@ export type VPNServiceAuthKeyResponse = Message<"metalstack.admin.v2.VPNServiceA
      * @generated from field: google.protobuf.Timestamp created_at = 5;
      */
     createdAt?: Timestamp;
+    /**
+     * Flavor of the vpn.
+     *
+     * @generated from field: metalstack.api.v2.VPNFlavor flavor = 6;
+     */
+    flavor: VPNFlavor;
 };
 /**
  * Describes the message metalstack.admin.v2.VPNServiceAuthKeyResponse.
