@@ -32,13 +32,13 @@ type User struct {
 	// Email of the user
 	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	// AvatarUrl of the user
-	AvatarUrl string `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
+	AvatarUrl string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
 	// Tenants the user belongs to
-	Tenants []*Tenant `protobuf:"bytes,8,rep,name=tenants,proto3" json:"tenants,omitempty"`
+	Tenants []*Tenant `protobuf:"bytes,5,rep,name=tenants,proto3" json:"tenants,omitempty"`
 	// Projects the user belongs to
-	Projects []*Project `protobuf:"bytes,9,rep,name=projects,proto3" json:"projects,omitempty"`
+	Projects []*Project `protobuf:"bytes,6,rep,name=projects,proto3" json:"projects,omitempty"`
 	// DefaultTenant this user belongs to
-	DefaultTenant *Tenant `protobuf:"bytes,10,opt,name=default_tenant,json=defaultTenant,proto3" json:"default_tenant,omitempty"`
+	DefaultTenant *Tenant `protobuf:"bytes,7,opt,name=default_tenant,json=defaultTenant,proto3" json:"default_tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -215,11 +215,10 @@ const file_metalstack_api_v2_user_proto_rawDesc = "" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12\x14\n" +
 	"\x05email\x18\x03 \x01(\tR\x05email\x12\x1d\n" +
 	"\n" +
-	"avatar_url\x18\x05 \x01(\tR\tavatarUrl\x123\n" +
-	"\atenants\x18\b \x03(\v2\x19.metalstack.api.v2.TenantR\atenants\x126\n" +
-	"\bprojects\x18\t \x03(\v2\x1a.metalstack.api.v2.ProjectR\bprojects\x12@\n" +
-	"\x0edefault_tenant\x18\n" +
-	" \x01(\v2\x19.metalstack.api.v2.TenantR\rdefaultTenant\"\x17\n" +
+	"avatar_url\x18\x04 \x01(\tR\tavatarUrl\x123\n" +
+	"\atenants\x18\x05 \x03(\v2\x19.metalstack.api.v2.TenantR\atenants\x126\n" +
+	"\bprojects\x18\x06 \x03(\v2\x1a.metalstack.api.v2.ProjectR\bprojects\x12@\n" +
+	"\x0edefault_tenant\x18\a \x01(\v2\x19.metalstack.api.v2.TenantR\rdefaultTenant\"\x17\n" +
 	"\x15UserServiceGetRequest\"E\n" +
 	"\x16UserServiceGetResponse\x12+\n" +
 	"\x04user\x18\x01 \x01(\v2\x17.metalstack.api.v2.UserR\x04user2s\n" +

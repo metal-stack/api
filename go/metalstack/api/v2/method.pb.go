@@ -148,15 +148,15 @@ type MethodServiceTokenScopedListResponse struct {
 	// Permissions contains a list of methods which can be called
 	Permissions []*MethodPermission `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	// ProjectRoles associates a project ID with the corresponding role of the token owner
-	ProjectRoles map[string]ProjectRole `protobuf:"bytes,3,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
+	ProjectRoles map[string]ProjectRole `protobuf:"bytes,2,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
 	// TenantRoles associates a tenant ID with the corresponding role of the token owner
-	TenantRoles map[string]TenantRole `protobuf:"bytes,4,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
+	TenantRoles map[string]TenantRole `protobuf:"bytes,3,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
 	// AdminRole defines the admin role of the token owner
-	AdminRole *AdminRole `protobuf:"varint,5,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
+	AdminRole *AdminRole `protobuf:"varint,4,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
 	// InfraRole defines the infrastructure role of the token owner
-	InfraRole *InfraRole `protobuf:"varint,6,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
+	InfraRole *InfraRole `protobuf:"varint,5,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
 	// MachineRoles defines the machine roles of the token owner
-	MachineRoles  map[string]MachineRole `protobuf:"bytes,7,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
+	MachineRoles  map[string]MachineRole `protobuf:"bytes,6,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -244,13 +244,13 @@ const file_metalstack_api_v2_method_proto_rawDesc = "" +
 	"#MethodServiceTokenScopedListRequest\"\x91\a\n" +
 	"$MethodServiceTokenScopedListResponse\x12E\n" +
 	"\vpermissions\x18\x01 \x03(\v2#.metalstack.api.v2.MethodPermissionR\vpermissions\x12n\n" +
-	"\rproject_roles\x18\x03 \x03(\v2I.metalstack.api.v2.MethodServiceTokenScopedListResponse.ProjectRolesEntryR\fprojectRoles\x12k\n" +
-	"\ftenant_roles\x18\x04 \x03(\v2H.metalstack.api.v2.MethodServiceTokenScopedListResponse.TenantRolesEntryR\vtenantRoles\x12J\n" +
+	"\rproject_roles\x18\x02 \x03(\v2I.metalstack.api.v2.MethodServiceTokenScopedListResponse.ProjectRolesEntryR\fprojectRoles\x12k\n" +
+	"\ftenant_roles\x18\x03 \x03(\v2H.metalstack.api.v2.MethodServiceTokenScopedListResponse.TenantRolesEntryR\vtenantRoles\x12J\n" +
 	"\n" +
-	"admin_role\x18\x05 \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x12J\n" +
+	"admin_role\x18\x04 \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x12J\n" +
 	"\n" +
-	"infra_role\x18\x06 \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12n\n" +
-	"\rmachine_roles\x18\a \x03(\v2I.metalstack.api.v2.MethodServiceTokenScopedListResponse.MachineRolesEntryR\fmachineRoles\x1a_\n" +
+	"infra_role\x18\x05 \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12n\n" +
+	"\rmachine_roles\x18\x06 \x03(\v2I.metalstack.api.v2.MethodServiceTokenScopedListResponse.MachineRolesEntryR\fmachineRoles\x1a_\n" +
 	"\x11ProjectRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x028\x01\x1a]\n" +

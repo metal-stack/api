@@ -95,25 +95,31 @@ message MachineServiceCreateRequest {
   // Can be specified to test new fsls during development of fsls
   optional string filesystem_layout = 9;
   // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
-  repeated string ssh_public_keys = 10 [(buf.validate.field).repeated = {
-    // At most 50 keys can be store.
-    // A lower bound can be set similarly with `min_items`.
-    max_items: 50
-    // `items` validate each value in this `repeated` field.
-    items: {
-      // `string` has string-specific rules for each value in the `repeated` field.
-      // The set of rules allowed here is the same as that of a string field.
-      string: {
-        // Each key must not be empty
-        min_len: 1
-        // Each key can contain at most 8192 characters.
-        max_len: 8192
+  repeated string ssh_public_keys = 10 [
+    (buf.validate.field).repeated = {
+      // At most 50 keys can be store.
+      // A lower bound can be set similarly with `min_items`.
+      max_items: 50
+      // `items` validate each value in this `repeated` field.
+      items: {
+        // `string` has string-specific rules for each value in the `repeated` field.
+        // The set of rules allowed here is the same as that of a string field.
+        string: {
+          // Each key must not be empty
+          min_len: 1
+          // Each key can contain at most 8192 characters.
+          max_len: 8192
+        }
       }
-    }
-  }];
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
   // Userdata contains instructions required to bootstrap the machine
   // AWS limits the max userdata size to 16k, lets allow twice as much
-  optional string userdata = 11 [(buf.validate.field).string = {max_len: 32768}];
+  optional string userdata = 11 [
+    (buf.validate.field).string = {max_len: 32768},
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // Labels to be attached to this machine allocation
   Labels labels = 12;
   // Networks the networks that this machine will be placed in.
@@ -158,22 +164,25 @@ message MachineServiceUpdateRequest {
   // Labels to update on this machine allocation
   optional UpdateLabels labels = 5;
   // SSHPublicKeys which should be update of this machine allocation
-  repeated string ssh_public_keys = 6 [(buf.validate.field).repeated = {
-    // At most 50 keys can be store.
-    // A lower bound can be set similarly with `min_items`.
-    max_items: 50
-    // `items` validate each value in this `repeated` field.
-    items: {
-      // `string` has string-specific rules for each value in the `repeated` field.
-      // The set of rules allowed here is the same as that of a string field.
-      string: {
-        // Each key must not be empty
-        min_len: 1
-        // Each key can contain at most 8192 characters.
-        max_len: 8192
+  repeated string ssh_public_keys = 6 [
+    (buf.validate.field).repeated = {
+      // At most 50 keys can be store.
+      // A lower bound can be set similarly with `min_items`.
+      max_items: 50
+      // `items` validate each value in this `repeated` field.
+      items: {
+        // `string` has string-specific rules for each value in the `repeated` field.
+        // The set of rules allowed here is the same as that of a string field.
+        string: {
+          // Each key must not be empty
+          min_len: 1
+          // Each key can contain at most 8192 characters.
+          max_len: 8192
+        }
       }
-    }
-  }];
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
 }
 
 // MachineServiceUpdateResponse is the request payload for a machine update response
@@ -256,11 +265,11 @@ message Machine {
   // Hardware specs of this machine
   MachineHardware hardware = 6;
   // Allocation details
-  MachineAllocation allocation = 8;
+  MachineAllocation allocation = 7;
   // Status contains several status details related to this machine
-  MachineStatus status = 9;
+  MachineStatus status = 8;
   // MachineRecentProvisioningEvents contains the recent provisioning events
-  MachineRecentProvisioningEvents recent_provisioning_events = 10;
+  MachineRecentProvisioningEvents recent_provisioning_events = 9;
 }
 
 // MachineStatus contains several status details related to this machine
@@ -308,25 +317,31 @@ message MachineAllocation {
   // Hostname of the allocated machine
   string hostname = 10 [(buf.validate.field).string.hostname = true];
   // SSHPublicKeys which should be installed on this machine
-  repeated string ssh_public_keys = 11 [(buf.validate.field).repeated = {
-    // At most 50 keys can be store.
-    // A lower bound can be set similarly with `min_items`.
-    max_items: 50
-    // `items` validate each value in this `repeated` field.
-    items: {
-      // `string` has string-specific rules for each value in the `repeated` field.
-      // The set of rules allowed here is the same as that of a string field.
-      string: {
-        // Each key must not be empty
-        min_len: 1
-        // Each key can contain at most 8192 characters.
-        max_len: 8192
+  repeated string ssh_public_keys = 11 [
+    (buf.validate.field).repeated = {
+      // At most 50 keys can be store.
+      // A lower bound can be set similarly with `min_items`.
+      max_items: 50
+      // `items` validate each value in this `repeated` field.
+      items: {
+        // `string` has string-specific rules for each value in the `repeated` field.
+        // The set of rules allowed here is the same as that of a string field.
+        string: {
+          // Each key must not be empty
+          min_len: 1
+          // Each key can contain at most 8192 characters.
+          max_len: 8192
+        }
       }
-    }
-  }];
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
   // Userdata contains instructions required to bootstrap the machine.
   // AWS limits the max userdata size to 16k, lets allow twice as much
-  string userdata = 12 [(buf.validate.field).string = {max_len: 32768}];
+  string userdata = 12 [
+    (buf.validate.field).string = {max_len: 32768},
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // AllocationType of this machine
   MachineAllocationType allocation_type = 13 [(buf.validate.field).enum.defined_only = true];
   // FirewallRules to be applied if this is a firewall
@@ -447,13 +462,13 @@ message MachineHardware {
   // Memory the total memory of the machine in bytes
   uint64 memory = 1;
   // Disks the list of block devices of this machine
-  repeated MachineBlockDevice disks = 3;
+  repeated MachineBlockDevice disks = 2;
   // CPUs the cpu details
-  repeated MetalCPU cpus = 4;
+  repeated MetalCPU cpus = 3;
   // GPUs the gpu details
-  repeated MetalGPU gpus = 5;
+  repeated MetalGPU gpus = 4;
   // Nics the list of network interfaces of this machine
-  repeated MachineNic nics = 6;
+  repeated MachineNic nics = 5;
 }
 
 // MetalCPU contains details of a cpu in this machine
@@ -565,9 +580,9 @@ message MachineBMC {
   // Interface of this ipmi device
   string interface = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Version of this bmc device
-  string version = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  string version = 6 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // PowerState of this machine
-  string power_state = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  string power_state = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
 // MachineFRU describes details to the machine which are required in case of a necessary replacement
@@ -688,7 +703,7 @@ message MachineVPN {
   // Connected indicate if this machine is connected to the VPN
   bool connected = 3;
   // IPs of the machine connected to the vpn
-  repeated string ips = 5 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
+  repeated string ips = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
 // MachineLiveliness specifies the liveliness of a machine

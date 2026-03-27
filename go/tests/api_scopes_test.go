@@ -130,6 +130,45 @@ func Test_APIScopes(t *testing.T) {
 	require.Equal(t, err, errs)
 }
 
+func Test_FieldNumbering(t *testing.T) {
+	files, err := getProtos("../../proto")
+	require.NoError(t, err)
+	var errs []error
+
+	for _, filename := range files {
+		fd, err := protoparser.Parse(filename)
+		require.NoError(t, err)
+
+		for _, serviceDesc := range fd.GetService() {
+			for _, method := range serviceDesc.GetMethod() {
+				firstFiled := true
+				var lastNumber int32
+
+				for _, mt := range fd.GetMessageType() {
+					if mt.GetName() != method.GetInputType() {
+						continue
+					}
+					for _, field := range mt.GetField() {
+						// t.Logf("file:%s method:%s field:%s\n", filename, method, field)
+						if field.Number != nil {
+							if firstFiled {
+								firstFiled = false
+							} else {
+								if lastNumber+1 != *field.Number {
+									errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *method.Name, *field.Name, lastNumber+1, *field.Number))
+								}
+							}
+							lastNumber = *field.Number
+						}
+
+					}
+				}
+			}
+		}
+	}
+	require.NoError(t, errors.Join(errs...))
+}
+
 func validateProto(root string) error {
 	var (
 		tr v2.TenantRole

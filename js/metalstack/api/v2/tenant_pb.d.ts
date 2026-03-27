@@ -51,7 +51,7 @@ export type Tenant = Message<"metalstack.api.v2.Tenant"> & {
     /**
      * CreatedBy stores who created this tenant
      *
-     * @generated from field: string created_by = 15;
+     * @generated from field: string created_by = 7;
      */
     createdBy: string;
 };
@@ -81,13 +81,13 @@ export type TenantMember = Message<"metalstack.api.v2.TenantMember"> & {
     /**
      * Projects for the projects in which a user is a direct member
      *
-     * @generated from field: repeated string projects = 4;
+     * @generated from field: repeated string projects = 3;
      */
     projects: string[];
     /**
      * CreatedAt the date when the member was added to the tenant
      *
-     * @generated from field: google.protobuf.Timestamp created_at = 10;
+     * @generated from field: google.protobuf.Timestamp created_at = 4;
      */
     createdAt?: Timestamp;
 };
@@ -147,13 +147,13 @@ export type TenantInvite = Message<"metalstack.api.v2.TenantInvite"> & {
     /**
      * ExpiresAt the date when this invite expires
      *
-     * @generated from field: google.protobuf.Timestamp expires_at = 10;
+     * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
     expiresAt?: Timestamp;
     /**
      * JoinedAt the date when the member accepted this invite
      *
-     * @generated from field: google.protobuf.Timestamp joined_at = 11;
+     * @generated from field: google.protobuf.Timestamp joined_at = 9;
      */
     joinedAt?: Timestamp;
 };

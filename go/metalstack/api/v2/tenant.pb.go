@@ -39,7 +39,7 @@ type Tenant struct {
 	// AvatarUrl of the tenant
 	AvatarUrl string `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
 	// CreatedBy stores who created this tenant
-	CreatedBy     string `protobuf:"bytes,15,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
+	CreatedBy     string `protobuf:"bytes,7,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -131,9 +131,9 @@ type TenantMember struct {
 	// Role is the role of the member
 	Role TenantRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.TenantRole" json:"role,omitempty"`
 	// Projects for the projects in which a user is a direct member
-	Projects []string `protobuf:"bytes,4,rep,name=projects,proto3" json:"projects,omitempty"`
+	Projects []string `protobuf:"bytes,3,rep,name=projects,proto3" json:"projects,omitempty"`
 	// CreatedAt the date when the member was added to the tenant
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -214,9 +214,9 @@ type TenantInvite struct {
 	// TenantName is the name of tenant who invites to join this tenant
 	TenantName string `protobuf:"bytes,7,opt,name=tenant_name,json=tenantName,proto3" json:"tenant_name,omitempty"`
 	// ExpiresAt the date when this invite expires
-	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,10,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	// JoinedAt the date when the member accepted this invite
-	JoinedAt      *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
+	JoinedAt      *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1670,14 +1670,13 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\n" +
 	"avatar_url\x18\x06 \x01(\tR\tavatarUrl\x12\x1d\n" +
 	"\n" +
-	"created_by\x18\x0f \x01(\tR\tcreatedBy\"\xb2\x01\n" +
+	"created_by\x18\a \x01(\tR\tcreatedBy\"\xb2\x01\n" +
 	"\fTenantMember\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12;\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x12\x1a\n" +
-	"\bprojects\x18\x04 \x03(\tR\bprojects\x129\n" +
+	"\bprojects\x18\x03 \x03(\tR\bprojects\x129\n" +
 	"\n" +
-	"created_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xfb\x02\n" +
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\"\xfb\x02\n" +
 	"\fTenantInvite\x12\x16\n" +
 	"\x06secret\x18\x01 \x01(\tR\x06secret\x12#\n" +
 	"\rtarget_tenant\x18\x02 \x01(\tR\ftargetTenant\x12;\n" +
@@ -1688,9 +1687,8 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\vtenant_name\x18\a \x01(\tR\n" +
 	"tenantName\x129\n" +
 	"\n" +
-	"expires_at\x18\n" +
-	" \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x127\n" +
-	"\tjoined_at\x18\v \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\"\xa8\x01\n" +
+	"expires_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x127\n" +
+	"\tjoined_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\bjoinedAt\"\xa8\x01\n" +
 	"\x18TenantServiceListRequest\x12\x13\n" +
 	"\x02id\x18\x01 \x01(\tH\x00R\x02id\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x126\n" +

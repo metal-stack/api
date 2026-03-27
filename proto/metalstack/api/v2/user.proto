@@ -26,13 +26,13 @@ message User {
   // Email of the user
   string email = 3;
   // AvatarUrl of the user
-  string avatar_url = 5;
+  string avatar_url = 4;
   // Tenants the user belongs to
-  repeated Tenant tenants = 8;
+  repeated Tenant tenants = 5;
   // Projects the user belongs to
-  repeated Project projects = 9;
+  repeated Project projects = 6;
   // DefaultTenant this user belongs to
-  Tenant default_tenant = 10;
+  Tenant default_tenant = 7;
 }
 
 // UserServiceGetRequest is the request payload for getting the user.

@@ -33,25 +33,25 @@ export type User = Message<"metalstack.api.v2.User"> & {
     /**
      * AvatarUrl of the user
      *
-     * @generated from field: string avatar_url = 5;
+     * @generated from field: string avatar_url = 4;
      */
     avatarUrl: string;
     /**
      * Tenants the user belongs to
      *
-     * @generated from field: repeated metalstack.api.v2.Tenant tenants = 8;
+     * @generated from field: repeated metalstack.api.v2.Tenant tenants = 5;
      */
     tenants: Tenant[];
     /**
      * Projects the user belongs to
      *
-     * @generated from field: repeated metalstack.api.v2.Project projects = 9;
+     * @generated from field: repeated metalstack.api.v2.Project projects = 6;
      */
     projects: Project[];
     /**
      * DefaultTenant this user belongs to
      *
-     * @generated from field: metalstack.api.v2.Tenant default_tenant = 10;
+     * @generated from field: metalstack.api.v2.Tenant default_tenant = 7;
      */
     defaultTenant?: Tenant;
 };

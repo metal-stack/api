@@ -47,7 +47,7 @@ message TenantServiceListRequest {
   // Name filters tenants by this name
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Paging details for the list request
-  metalstack.api.v2.Paging paging = 7;
+  metalstack.api.v2.Paging paging = 3;
 }
 
 // TenantServiceListResponse is the response payload for listing tenants.

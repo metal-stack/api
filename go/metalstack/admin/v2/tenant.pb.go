@@ -159,7 +159,7 @@ type TenantServiceListRequest struct {
 	// Name filters tenants by this name
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Paging details for the list request
-	Paging        *v2.Paging `protobuf:"bytes,7,opt,name=paging,proto3" json:"paging,omitempty"`
+	Paging        *v2.Paging `protobuf:"bytes,3,opt,name=paging,proto3" json:"paging,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -290,7 +290,7 @@ const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\x18TenantServiceListRequest\x12\x19\n" +
 	"\x05login\x18\x01 \x01(\tH\x00R\x05login\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x121\n" +
-	"\x06paging\x18\a \x01(\v2\x19.metalstack.api.v2.PagingR\x06pagingB\b\n" +
+	"\x06paging\x18\x03 \x01(\v2\x19.metalstack.api.v2.PagingR\x06pagingB\b\n" +
 	"\x06_loginB\a\n" +
 	"\x05_name\"\x80\x01\n" +
 	"\x19TenantServiceListResponse\x123\n" +

@@ -323,15 +323,15 @@ type NetworkServiceUpdateRequest struct {
 	// Destination Prefixes in this network
 	DestinationPrefixes []string `protobuf:"bytes,7,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
 	// Default Child Prefix length defines the bit length of a child network created per addressfamily, if not specified during the allocate request
-	DefaultChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,10,opt,name=default_child_prefix_length,json=defaultChildPrefixLength,proto3,oneof" json:"default_child_prefix_length,omitempty"`
+	DefaultChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,8,opt,name=default_child_prefix_length,json=defaultChildPrefixLength,proto3,oneof" json:"default_child_prefix_length,omitempty"`
 	// Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
-	MinChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,11,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3,oneof" json:"min_child_prefix_length,omitempty"`
+	MinChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,9,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3,oneof" json:"min_child_prefix_length,omitempty"`
 	// NATType of this network
-	NatType *v2.NATType `protobuf:"varint,13,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
+	NatType *v2.NATType `protobuf:"varint,10,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
 	// AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
-	AdditionalAnnouncableCidrs []string `protobuf:"bytes,16,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
+	AdditionalAnnouncableCidrs []string `protobuf:"bytes,11,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
 	// Force update, prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane.
-	Force         bool `protobuf:"varint,20,opt,name=force,proto3" json:"force,omitempty"`
+	Force         bool `protobuf:"varint,12,opt,name=force,proto3" json:"force,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -777,12 +777,12 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x02R\x06labels\x88\x01\x01\x12(\n" +
 	"\bprefixes\x18\x06 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\bprefixes\x12?\n" +
 	"\x14destination_prefixes\x18\a \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x13destinationPrefixes\x12h\n" +
-	"\x1bdefault_child_prefix_length\x18\n" +
-	" \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\x03R\x18defaultChildPrefixLength\x88\x01\x01\x12`\n" +
-	"\x17min_child_prefix_length\x18\v \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\x04R\x14minChildPrefixLength\x88\x01\x01\x12D\n" +
-	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\anatType\x88\x01\x01\x12N\n" +
-	"\x1cadditional_announcable_cidrs\x18\x10 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x1aadditionalAnnouncableCidrs\x12\x14\n" +
-	"\x05force\x18\x14 \x01(\bR\x05forceB\a\n" +
+	"\x1bdefault_child_prefix_length\x18\b \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\x03R\x18defaultChildPrefixLength\x88\x01\x01\x12`\n" +
+	"\x17min_child_prefix_length\x18\t \x01(\v2$.metalstack.api.v2.ChildPrefixLengthH\x04R\x14minChildPrefixLength\x88\x01\x01\x12D\n" +
+	"\bnat_type\x18\n" +
+	" \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\anatType\x88\x01\x01\x12N\n" +
+	"\x1cadditional_announcable_cidrs\x18\v \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x1aadditionalAnnouncableCidrs\x12\x14\n" +
+	"\x05force\x18\f \x01(\bR\x05forceB\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\t\n" +
 	"\a_labelsB\x1e\n" +

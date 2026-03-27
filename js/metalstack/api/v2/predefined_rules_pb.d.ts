@@ -47,6 +47,12 @@ export declare const is_uri: GenExtension<StringRules, boolean>;
  */
 export declare const is_ip_or_hostname: GenExtension<StringRules, boolean>;
 /**
+ * Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end
+ *
+ * @generated from extension: optional bool trimmed = 80048958;
+ */
+export declare const trimmed: GenExtension<StringRules, boolean>;
+/**
  * Prefixes validates if a slice of prefixes in string form are valid
  *
  * @generated from extension: optional bool prefixes = 80058951;
@@ -64,3 +70,9 @@ export declare const ips: GenExtension<RepeatedRules, boolean>;
  * @generated from extension: optional bool are_host_and_port = 80058953;
  */
 export declare const are_host_and_port: GenExtension<RepeatedRules, boolean>;
+/**
+ * All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end
+ *
+ * @generated from extension: optional bool all_trimmed = 80058954;
+ */
+export declare const all_trimmed: GenExtension<RepeatedRules, boolean>;

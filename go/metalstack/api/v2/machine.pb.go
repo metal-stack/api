@@ -1446,11 +1446,11 @@ type Machine struct {
 	// Hardware specs of this machine
 	Hardware *MachineHardware `protobuf:"bytes,6,opt,name=hardware,proto3" json:"hardware,omitempty"`
 	// Allocation details
-	Allocation *MachineAllocation `protobuf:"bytes,8,opt,name=allocation,proto3" json:"allocation,omitempty"`
+	Allocation *MachineAllocation `protobuf:"bytes,7,opt,name=allocation,proto3" json:"allocation,omitempty"`
 	// Status contains several status details related to this machine
-	Status *MachineStatus `protobuf:"bytes,9,opt,name=status,proto3" json:"status,omitempty"`
+	Status *MachineStatus `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
 	// MachineRecentProvisioningEvents contains the recent provisioning events
-	RecentProvisioningEvents *MachineRecentProvisioningEvents `protobuf:"bytes,10,opt,name=recent_provisioning_events,json=recentProvisioningEvents,proto3" json:"recent_provisioning_events,omitempty"`
+	RecentProvisioningEvents *MachineRecentProvisioningEvents `protobuf:"bytes,9,opt,name=recent_provisioning_events,json=recentProvisioningEvents,proto3" json:"recent_provisioning_events,omitempty"`
 	unknownFields            protoimpl.UnknownFields
 	sizeCache                protoimpl.SizeCache
 }
@@ -2321,13 +2321,13 @@ type MachineHardware struct {
 	// Memory the total memory of the machine in bytes
 	Memory uint64 `protobuf:"varint,1,opt,name=memory,proto3" json:"memory,omitempty"`
 	// Disks the list of block devices of this machine
-	Disks []*MachineBlockDevice `protobuf:"bytes,3,rep,name=disks,proto3" json:"disks,omitempty"`
+	Disks []*MachineBlockDevice `protobuf:"bytes,2,rep,name=disks,proto3" json:"disks,omitempty"`
 	// CPUs the cpu details
-	Cpus []*MetalCPU `protobuf:"bytes,4,rep,name=cpus,proto3" json:"cpus,omitempty"`
+	Cpus []*MetalCPU `protobuf:"bytes,3,rep,name=cpus,proto3" json:"cpus,omitempty"`
 	// GPUs the gpu details
-	Gpus []*MetalGPU `protobuf:"bytes,5,rep,name=gpus,proto3" json:"gpus,omitempty"`
+	Gpus []*MetalGPU `protobuf:"bytes,4,rep,name=gpus,proto3" json:"gpus,omitempty"`
 	// Nics the list of network interfaces of this machine
-	Nics          []*MachineNic `protobuf:"bytes,6,rep,name=nics,proto3" json:"nics,omitempty"`
+	Nics          []*MachineNic `protobuf:"bytes,5,rep,name=nics,proto3" json:"nics,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2922,9 +2922,9 @@ type MachineBMC struct {
 	// Interface of this ipmi device
 	Interface string `protobuf:"bytes,5,opt,name=interface,proto3" json:"interface,omitempty"`
 	// Version of this bmc device
-	Version string `protobuf:"bytes,7,opt,name=version,proto3" json:"version,omitempty"`
+	Version string `protobuf:"bytes,6,opt,name=version,proto3" json:"version,omitempty"`
 	// PowerState of this machine
-	PowerState    string `protobuf:"bytes,8,opt,name=power_state,json=powerState,proto3" json:"power_state,omitempty"`
+	PowerState    string `protobuf:"bytes,7,opt,name=power_state,json=powerState,proto3" json:"power_state,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3401,7 +3401,7 @@ type MachineVPN struct {
 	// Connected indicate if this machine is connected to the VPN
 	Connected bool `protobuf:"varint,3,opt,name=connected,proto3" json:"connected,omitempty"`
 	// IPs of the machine connected to the vpn
-	Ips           []string `protobuf:"bytes,5,rep,name=ips,proto3" json:"ips,omitempty"`
+	Ips           []string `protobuf:"bytes,4,rep,name=ips,proto3" json:"ips,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4240,7 +4240,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xca\b\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xd6\b\n" +
 	"\x1bMachineServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12!\n" +
 	"\x04uuid\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12\x1f\n" +
@@ -4250,10 +4250,11 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\tpartition\x18\x06 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12\x1c\n" +
 	"\x04size\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x04size\x12\x1e\n" +
 	"\x05image\x18\b \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x05image\x120\n" +
-	"\x11filesystem_layout\x18\t \x01(\tH\x03R\x10filesystemLayout\x88\x01\x01\x129\n" +
+	"\x11filesystem_layout\x18\t \x01(\tH\x03R\x10filesystemLayout\x88\x01\x01\x12?\n" +
 	"\x0fssh_public_keys\x18\n" +
-	" \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x12*\n" +
-	"\buserdata\x18\v \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80\x02H\x04R\buserdata\x88\x01\x01\x121\n" +
+	" \x03(\tB\x17\xbaH\x14\x92\x01\x11Ф\xb3\xb1\x02\x01\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x120\n" +
+	"\buserdata\x18\v \x01(\tB\x0f\xbaH\fr\n" +
+	"\U00033bb1\x02\x01\x18\x80\x80\x02H\x04R\buserdata\x88\x01\x01\x121\n" +
 	"\x06labels\x18\f \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12G\n" +
 	"\bnetworks\x18\r \x03(\v2+.metalstack.api.v2.MachineAllocationNetworkR\bnetworks\x128\n" +
 	"\x03ips\x18\x0e \x03(\v2&.metalstack.api.v2.MachineAllocationIpR\x03ips\x12/\n" +
@@ -4273,15 +4274,15 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\fFirewallSpec\x12G\n" +
 	"\x0efirewall_rules\x18\x01 \x01(\v2 .metalstack.api.v2.FirewallRulesR\rfirewallRules\"T\n" +
 	"\x1cMachineServiceCreateResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xef\x02\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xf5\x02\n" +
 	"\x1bMachineServiceUpdateRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
 	"updateMeta\x12\"\n" +
 	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x122\n" +
 	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12<\n" +
-	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01\x129\n" +
-	"\x0fssh_public_keys\x18\x06 \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeysB\x0e\n" +
+	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01\x12?\n" +
+	"\x0fssh_public_keys\x18\x06 \x03(\tB\x17\xbaH\x14\x92\x01\x11Ф\xb3\xb1\x02\x01\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeysB\x0e\n" +
 	"\f_descriptionB\t\n" +
 	"\a_labels\"T\n" +
 	"\x1cMachineServiceUpdateResponse\x124\n" +
@@ -4315,11 +4316,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04size\x18\x05 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\x12>\n" +
 	"\bhardware\x18\x06 \x01(\v2\".metalstack.api.v2.MachineHardwareR\bhardware\x12D\n" +
 	"\n" +
-	"allocation\x18\b \x01(\v2$.metalstack.api.v2.MachineAllocationR\n" +
+	"allocation\x18\a \x01(\v2$.metalstack.api.v2.MachineAllocationR\n" +
 	"allocation\x128\n" +
-	"\x06status\x18\t \x01(\v2 .metalstack.api.v2.MachineStatusR\x06status\x12p\n" +
-	"\x1arecent_provisioning_events\x18\n" +
-	" \x01(\v22.metalstack.api.v2.MachineRecentProvisioningEventsR\x18recentProvisioningEvents\"\xa4\x02\n" +
+	"\x06status\x18\b \x01(\v2 .metalstack.api.v2.MachineStatusR\x06status\x12p\n" +
+	"\x1arecent_provisioning_events\x18\t \x01(\v22.metalstack.api.v2.MachineRecentProvisioningEventsR\x18recentProvisioningEvents\"\xa4\x02\n" +
 	"\rMachineStatus\x12A\n" +
 	"\tcondition\x18\x01 \x01(\v2#.metalstack.api.v2.MachineConditionR\tcondition\x12N\n" +
 	"\tled_state\x18\x02 \x01(\v21.metalstack.api.v2.MachineChassisIdentifyLEDStateR\bledState\x12N\n" +
@@ -4330,7 +4330,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x10MachineCondition\x12?\n" +
 	"\x05state\x18\x01 \x01(\x0e2\x1f.metalstack.api.v2.MachineStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05state\x12-\n" +
 	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12 \n" +
-	"\x06issuer\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06issuer\"\xac\a\n" +
+	"\x06issuer\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06issuer\"\xb8\a\n" +
 	"\x11MachineAllocation\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\x1f\n" +
@@ -4343,9 +4343,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x11filesystem_layout\x18\b \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\x12=\n" +
 	"\bnetworks\x18\t \x03(\v2!.metalstack.api.v2.MachineNetworkR\bnetworks\x12#\n" +
 	"\bhostname\x18\n" +
-	" \x01(\tB\a\xbaH\x04r\x02h\x01R\bhostname\x129\n" +
-	"\x0fssh_public_keys\x18\v \x03(\tB\x11\xbaH\x0e\x92\x01\v\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x12%\n" +
-	"\buserdata\x18\f \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80\x02R\buserdata\x12[\n" +
+	" \x01(\tB\a\xbaH\x04r\x02h\x01R\bhostname\x12?\n" +
+	"\x0fssh_public_keys\x18\v \x03(\tB\x17\xbaH\x14\x92\x01\x11Ф\xb3\xb1\x02\x01\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x12+\n" +
+	"\buserdata\x18\f \x01(\tB\x0f\xbaH\fr\n" +
+	"\U00033bb1\x02\x01\x18\x80\x80\x02R\buserdata\x12[\n" +
 	"\x0fallocation_type\x18\r \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0eallocationType\x12G\n" +
 	"\x0efirewall_rules\x18\x0e \x01(\v2 .metalstack.api.v2.FirewallRulesR\rfirewallRules\x12G\n" +
 	"\vdns_servers\x18\x0f \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\n" +
@@ -4391,10 +4392,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\b_project\"\xfb\x01\n" +
 	"\x0fMachineHardware\x12\x16\n" +
 	"\x06memory\x18\x01 \x01(\x04R\x06memory\x12;\n" +
-	"\x05disks\x18\x03 \x03(\v2%.metalstack.api.v2.MachineBlockDeviceR\x05disks\x12/\n" +
-	"\x04cpus\x18\x04 \x03(\v2\x1b.metalstack.api.v2.MetalCPUR\x04cpus\x12/\n" +
-	"\x04gpus\x18\x05 \x03(\v2\x1b.metalstack.api.v2.MetalGPUR\x04gpus\x121\n" +
-	"\x04nics\x18\x06 \x03(\v2\x1d.metalstack.api.v2.MachineNicR\x04nics\"|\n" +
+	"\x05disks\x18\x02 \x03(\v2%.metalstack.api.v2.MachineBlockDeviceR\x05disks\x12/\n" +
+	"\x04cpus\x18\x03 \x03(\v2\x1b.metalstack.api.v2.MetalCPUR\x04cpus\x12/\n" +
+	"\x04gpus\x18\x04 \x03(\v2\x1b.metalstack.api.v2.MetalGPUR\x04gpus\x121\n" +
+	"\x04nics\x18\x05 \x03(\v2\x1d.metalstack.api.v2.MachineNicR\x04nics\"|\n" +
 	"\bMetalCPU\x12 \n" +
 	"\x06vendor\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06vendor\x12\x1e\n" +
 	"\x05model\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x05model\x12\x14\n" +
@@ -4441,8 +4442,8 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04user\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\x04user\x12'\n" +
 	"\bpassword\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\bpassword\x12)\n" +
 	"\tinterface\x18\x05 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\tinterface\x12%\n" +
-	"\aversion\x18\a \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\aversion\x12,\n" +
-	"\vpower_state\x18\b \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\n" +
+	"\aversion\x18\x06 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\aversion\x12,\n" +
+	"\vpower_state\x18\a \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\n" +
 	"powerState\"\xa6\x05\n" +
 	"\n" +
 	"MachineFRU\x12@\n" +
@@ -4485,7 +4486,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x15control_plane_address\x18\x01 \x01(\tR\x13controlPlaneAddress\x12\x19\n" +
 	"\bauth_key\x18\x02 \x01(\tR\aauthKey\x12\x1c\n" +
 	"\tconnected\x18\x03 \x01(\bR\tconnected\x12\x1e\n" +
-	"\x03ips\x18\x05 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\xc5\b\n" +
+	"\x03ips\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\xc5\b\n" +
 	"\fMachineQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12-\n" +
