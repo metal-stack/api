@@ -17,7 +17,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/infra/v2/switch.proto.
  */
 export const file_metalstack_infra_v2_switch: GenFile = /*@__PURE__*/
-  fileDesc("CiBtZXRhbHN0YWNrL2luZnJhL3YyL3N3aXRjaC5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiI0ChdTd2l0Y2hTZXJ2aWNlR2V0UmVxdWVzdBIZCgJpZBgBIAEoCUINukgKcgjAs66xAgFoASJFChhTd2l0Y2hTZXJ2aWNlR2V0UmVzcG9uc2USKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkkKHFN3aXRjaFNlcnZpY2VSZWdpc3RlclJlcXVlc3QSKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkoKHVN3aXRjaFNlcnZpY2VSZWdpc3RlclJlc3BvbnNlEikKBnN3aXRjaBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaCLzAwodU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QSGQoCaWQYASABKAlCDbpICnIIwLOusQIBaAESKwoIZHVyYXRpb24YAiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24SEgoFZXJyb3IYAyABKAlIAIgBARJXCgtwb3J0X3N0YXRlcxgEIAMoCzJCLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuUG9ydFN0YXRlc0VudHJ5El4KD2JncF9wb3J0X3N0YXRlcxgFIAMoCzJFLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuQmdwUG9ydFN0YXRlc0VudHJ5GlYKD1BvcnRTdGF0ZXNFbnRyeRILCgNrZXkYASABKAkSMgoFdmFsdWUYAiABKA4yIy5tZXRhbHN0YWNrLmFwaS52Mi5Td2l0Y2hQb3J0U3RhdHVzOgI4ARpbChJCZ3BQb3J0U3RhdGVzRW50cnkSCwoDa2V5GAEgASgJEjQKBXZhbHVlGAIgASgLMiUubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoQkdQUG9ydFN0YXRlOgI4AUIICgZfZXJyb3IilgEKHlN3aXRjaFNlcnZpY2VIZWFydGJlYXRSZXNwb25zZRIKCgJpZBgBIAEoCRIwCglsYXN0X3N5bmMYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5Td2l0Y2hTeW5jEjYKD2xhc3Rfc3luY19lcnJvchgDIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaFN5bmMy/gIKDVN3aXRjaFNlcnZpY2USbgoDR2V0EiwubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlR2V0UmVxdWVzdBotLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUdldFJlc3BvbnNlIgrg8xgC6vMYAgECEnwKCFJlZ2lzdGVyEjEubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlUmVnaXN0ZXJSZXF1ZXN0GjIubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlUmVnaXN0ZXJSZXNwb25zZSIJ4PMYAurzGAEBEn8KCUhlYXJ0YmVhdBIyLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QaMy5tZXRhbHN0YWNrLmluZnJhLnYyLlN3aXRjaFNlcnZpY2VIZWFydGJlYXRSZXNwb25zZSIJ4PMYAurzGAEBQs8BChdjb20ubWV0YWxzdGFjay5pbmZyYS52MkILU3dpdGNoUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_duration, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_switch]);
+  fileDesc("CiBtZXRhbHN0YWNrL2luZnJhL3YyL3N3aXRjaC5wcm90bxITbWV0YWxzdGFjay5pbmZyYS52MiI0ChdTd2l0Y2hTZXJ2aWNlR2V0UmVxdWVzdBIZCgJpZBgBIAEoCUINukgKcgjAs66xAgFoASJFChhTd2l0Y2hTZXJ2aWNlR2V0UmVzcG9uc2USKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkkKHFN3aXRjaFNlcnZpY2VSZWdpc3RlclJlcXVlc3QSKQoGc3dpdGNoGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoIkoKHVN3aXRjaFNlcnZpY2VSZWdpc3RlclJlc3BvbnNlEikKBnN3aXRjaBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaCLhBAodU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QSGQoCaWQYASABKAlCDbpICnIIwLOusQIBaAESKwoIZHVyYXRpb24YAiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb24SEgoFZXJyb3IYAyABKAlIAIgBARJXCgtwb3J0X3N0YXRlcxgEIAMoCzJCLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuUG9ydFN0YXRlc0VudHJ5El4KD2JncF9wb3J0X3N0YXRlcxgFIAMoCzJFLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QuQmdwUG9ydFN0YXRlc0VudHJ5EjEKCmJncF9yb3V0ZXMYBiADKAsyHS5tZXRhbHN0YWNrLmluZnJhLnYyLkJHUFJvdXRlEjkKDmxsZHBfbmVpZ2hib3JzGAcgAygLMiEubWV0YWxzdGFjay5pbmZyYS52Mi5MTERQTmVpZ2hib3IaVgoPUG9ydFN0YXRlc0VudHJ5EgsKA2tleRgBIAEoCRIyCgV2YWx1ZRgCIAEoDjIjLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaFBvcnRTdGF0dXM6AjgBGlsKEkJncFBvcnRTdGF0ZXNFbnRyeRILCgNrZXkYASABKAkSNAoFdmFsdWUYAiABKAsyJS5tZXRhbHN0YWNrLmFwaS52Mi5Td2l0Y2hCR1BQb3J0U3RhdGU6AjgBQggKBl9lcnJvciKWAQoeU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlc3BvbnNlEgoKAmlkGAEgASgJEjAKCWxhc3Rfc3luYxgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlN3aXRjaFN5bmMSNgoPbGFzdF9zeW5jX2Vycm9yGAMgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuU3dpdGNoU3luYyJdCghCR1BSb3V0ZRIMCgRjaWRyGAEgASgJOkO6SEAaPgoEY2lkchIeY2lkciBtdXN0IGJlIGEgdmFsaWQgaXAgcHJlZml4GhZ0aGlzLmNpZHIuaXNJcFByZWZpeCgpInUKDExMRFBOZWlnaGJvchIiCgtyZW1vdGVfaG9zdBgBIAEoCUINukgKcgjAs66xAgFoARIfCgpsb2NhbF9wb3J0GAIgASgJQgu6SAhyBsCzrrECARIgCgtyZW1vdGVfcG9ydBgDIAEoCUILukgIcgbAs66xAgEy/gIKDVN3aXRjaFNlcnZpY2USbgoDR2V0EiwubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlR2V0UmVxdWVzdBotLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUdldFJlc3BvbnNlIgrg8xgC6vMYAgECEnwKCFJlZ2lzdGVyEjEubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlUmVnaXN0ZXJSZXF1ZXN0GjIubWV0YWxzdGFjay5pbmZyYS52Mi5Td2l0Y2hTZXJ2aWNlUmVnaXN0ZXJSZXNwb25zZSIJ4PMYAurzGAEBEn8KCUhlYXJ0YmVhdBIyLm1ldGFsc3RhY2suaW5mcmEudjIuU3dpdGNoU2VydmljZUhlYXJ0YmVhdFJlcXVlc3QaMy5tZXRhbHN0YWNrLmluZnJhLnYyLlN3aXRjaFNlcnZpY2VIZWFydGJlYXRSZXNwb25zZSIJ4PMYAurzGAEBQs8BChdjb20ubWV0YWxzdGFjay5pbmZyYS52MkILU3dpdGNoUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_duration, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_switch]);
 
 /**
  * SwitchServiceGetRequest.
@@ -143,6 +143,20 @@ export type SwitchServiceHeartbeatRequest = Message<"metalstack.infra.v2.SwitchS
    * @generated from field: map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
    */
   bgpPortStates: { [key: string]: SwitchBGPPortState };
+
+  /**
+   * BGPRoutes collected on the switch.
+   *
+   * @generated from field: repeated metalstack.infra.v2.BGPRoute bgp_routes = 6;
+   */
+  bgpRoutes: BGPRoute[];
+
+  /**
+   * LLDPNeighbors known to the switch.
+   *
+   * @generated from field: repeated metalstack.infra.v2.LLDPNeighbor lldp_neighbors = 7;
+   */
+  lldpNeighbors: LLDPNeighbor[];
 };
 
 /**
@@ -186,6 +200,64 @@ export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.Switch
  */
 export const SwitchServiceHeartbeatResponseSchema: GenMessage<SwitchServiceHeartbeatResponse> = /*@__PURE__*/
   messageDesc(file_metalstack_infra_v2_switch, 5);
+
+/**
+ * BGPRoute represents the route to a prefix.
+ *
+ * @generated from message metalstack.infra.v2.BGPRoute
+ */
+export type BGPRoute = Message<"metalstack.infra.v2.BGPRoute"> & {
+  /**
+   * CIDR of the network that is routed to.
+   *
+   * @generated from field: string cidr = 1;
+   */
+  cidr: string;
+};
+
+/**
+ * Describes the message metalstack.infra.v2.BGPRoute.
+ * Use `create(BGPRouteSchema)` to create a new message.
+ */
+export const BGPRouteSchema: GenMessage<BGPRoute> = /*@__PURE__*/
+  messageDesc(file_metalstack_infra_v2_switch, 6);
+
+/**
+ * LLDPNeighbor contains details about a neighbor learned via LLDP.
+ *
+ * @generated from message metalstack.infra.v2.LLDPNeighbor
+ */
+export type LLDPNeighbor = Message<"metalstack.infra.v2.LLDPNeighbor"> & {
+  /**
+   * RemoteHost is the neighbor's name as given via 'System Name TLV' field of a LLDP packet.
+   * Usually this is simply the neighbor's hostname.
+   *
+   * @generated from field: string remote_host = 1;
+   */
+  remoteHost: string;
+
+  /**
+   * LocalPort is the name of the local port that is connected to the neighbor.
+   *
+   * @generated from field: string local_port = 2;
+   */
+  localPort: string;
+
+  /**
+   * RemotePort is the neighbor's port name as sent via `Port Description TLV`.
+   * Don't mix it up with `Port ID TLV`.
+   *
+   * @generated from field: string remote_port = 3;
+   */
+  remotePort: string;
+};
+
+/**
+ * Describes the message metalstack.infra.v2.LLDPNeighbor.
+ * Use `create(LLDPNeighborSchema)` to create a new message.
+ */
+export const LLDPNeighborSchema: GenMessage<LLDPNeighbor> = /*@__PURE__*/
+  messageDesc(file_metalstack_infra_v2_switch, 7);
 
 /**
  * SwitchService serves switch related functions.

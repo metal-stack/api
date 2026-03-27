@@ -118,6 +118,18 @@ export type SwitchServiceHeartbeatRequest = Message<"metalstack.infra.v2.SwitchS
     bgpPortStates: {
         [key: string]: SwitchBGPPortState;
     };
+    /**
+     * BGPRoutes collected on the switch.
+     *
+     * @generated from field: repeated metalstack.infra.v2.BGPRoute bgp_routes = 6;
+     */
+    bgpRoutes: BGPRoute[];
+    /**
+     * LLDPNeighbors known to the switch.
+     *
+     * @generated from field: repeated metalstack.infra.v2.LLDPNeighbor lldp_neighbors = 7;
+     */
+    lldpNeighbors: LLDPNeighbor[];
 };
 /**
  * Describes the message metalstack.infra.v2.SwitchServiceHeartbeatRequest.
@@ -154,6 +166,56 @@ export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.Switch
  * Use `create(SwitchServiceHeartbeatResponseSchema)` to create a new message.
  */
 export declare const SwitchServiceHeartbeatResponseSchema: GenMessage<SwitchServiceHeartbeatResponse>;
+/**
+ * BGPRoute represents the route to a prefix.
+ *
+ * @generated from message metalstack.infra.v2.BGPRoute
+ */
+export type BGPRoute = Message<"metalstack.infra.v2.BGPRoute"> & {
+    /**
+     * CIDR of the network that is routed to.
+     *
+     * @generated from field: string cidr = 1;
+     */
+    cidr: string;
+};
+/**
+ * Describes the message metalstack.infra.v2.BGPRoute.
+ * Use `create(BGPRouteSchema)` to create a new message.
+ */
+export declare const BGPRouteSchema: GenMessage<BGPRoute>;
+/**
+ * LLDPNeighbor contains details about a neighbor learned via LLDP.
+ *
+ * @generated from message metalstack.infra.v2.LLDPNeighbor
+ */
+export type LLDPNeighbor = Message<"metalstack.infra.v2.LLDPNeighbor"> & {
+    /**
+     * RemoteHost is the neighbor's name as given via 'System Name TLV' field of a LLDP packet.
+     * Usually this is simply the neighbor's hostname.
+     *
+     * @generated from field: string remote_host = 1;
+     */
+    remoteHost: string;
+    /**
+     * LocalPort is the name of the local port that is connected to the neighbor.
+     *
+     * @generated from field: string local_port = 2;
+     */
+    localPort: string;
+    /**
+     * RemotePort is the neighbor's port name as sent via `Port Description TLV`.
+     * Don't mix it up with `Port ID TLV`.
+     *
+     * @generated from field: string remote_port = 3;
+     */
+    remotePort: string;
+};
+/**
+ * Describes the message metalstack.infra.v2.LLDPNeighbor.
+ * Use `create(LLDPNeighborSchema)` to create a new message.
+ */
+export declare const LLDPNeighborSchema: GenMessage<LLDPNeighbor>;
 /**
  * SwitchService serves switch related functions.
  *

@@ -97,6 +97,12 @@ export type Switch = Message<"metalstack.api.v2.Switch"> & {
      * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 14;
      */
     lastSyncError?: SwitchSync;
+    /**
+     * Type is the role of the switch.
+     *
+     * @generated from field: metalstack.api.v2.SwitchType type = 15;
+     */
+    type: SwitchType;
 };
 /**
  * Describes the message metalstack.api.v2.Switch.
@@ -615,3 +621,44 @@ export declare enum SwitchPortStatus {
  * Describes the enum metalstack.api.v2.SwitchPortStatus.
  */
 export declare const SwitchPortStatusSchema: GenEnum<SwitchPortStatus>;
+/**
+ * SwitchType represents the role of a switch.
+ *
+ * @generated from enum metalstack.api.v2.SwitchType
+ */
+export declare enum SwitchType {
+    /**
+     * SWITCH_TYPE_UNSPECIFIED is not specified.
+     *
+     * @generated from enum value: SWITCH_TYPE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * SWITCH_TYPE_LEAF is a leaf switch.
+     *
+     * @generated from enum value: SWITCH_TYPE_LEAF = 1;
+     */
+    LEAF = 1,
+    /**
+     * SWITCH_TYPE_EXIT is an exit switch.
+     *
+     * @generated from enum value: SWITCH_TYPE_EXIT = 2;
+     */
+    EXIT = 2,
+    /**
+     * SWITCH_TYPE_SPINE is a spine switch.
+     *
+     * @generated from enum value: SWITCH_TYPE_SPINE = 3;
+     */
+    SPINE = 3,
+    /**
+     * SWITCH_TYPE_MGMT is a switch used only for management tasks.
+     *
+     * @generated from enum value: SWITCH_TYPE_MGMT = 4;
+     */
+    MGMT = 4
+}
+/**
+ * Describes the enum metalstack.api.v2.SwitchType.
+ */
+export declare const SwitchTypeSchema: GenEnum<SwitchType>;

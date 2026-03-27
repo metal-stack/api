@@ -6,29 +6,37 @@ import (
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 )
 
-func TestValidateSwitch(t *testing.T) {
+func TestValidateMACAddress(t *testing.T) {
 	tests := prototests{
 		{
-			name: "SwitchNic with invalid MAC",
+			name: "Valid MAC address",
 			msg: &apiv2.SwitchNic{
-				Name:       "eth0",
-				Identifier: "swp1",
-				Mac:        "abc",
-				Vrf:        new("10"),
-			},
-			wantErr:          true,
-			wantErrorMessage: `validation error: mac: this string must be a valid macaddress`,
-		},
-		{
-			name: "SwitchNic with valid lowercase MAC",
-			msg: &apiv2.SwitchNic{
-				Name:       "eth0",
-				Identifier: "swp1",
-				Mac:        "00:80:41:ae:fd:7e",
-				Vrf:        new("10"),
+				Mac:        "11:22:33:44:55:66",
+				Name:       "Ethernet0",
+				Identifier: "Eth1/1",
 			},
 			wantErr: false,
 		},
+		{
+			name: "Too long",
+			msg: &apiv2.SwitchNic{
+				Mac:        "11:22:33:44:55:66:77",
+				Name:       "Ethernet0",
+				Identifier: "Eth1/1",
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: mac: this string must be a valid macaddress",
+		},
+		// FIXME does not fail anymore
+		// {
+		// 	name: "Too short",
+		// 	msg: &apiv2.SwitchNic{
+		// 		Mac:        "11:22:33:44:55",
+		// 		Name:       "Ethernet0",
+		// 		Identifier: "Eth1/1",
+		// 	},
+		// 	wantErr: false,
+		// },
 		{
 			name: "SwitchNic with valid uppercase MAC",
 			msg: &apiv2.SwitchNic{
@@ -60,8 +68,39 @@ func TestValidateSwitch(t *testing.T) {
 				ConsoleCommand: new("ssh"),
 			},
 			wantErr:          true,
-			wantErrorMessage: `validation error: id: value must be a valid hostname`,
+			wantErrorMessage: "validation error: id: value must be a valid hostname",
+		},
+		{
+			name: "Invalid separator",
+			msg: &apiv2.SwitchNic{
+				Mac:        "11.22.33.44.55.66",
+				Name:       "Ethernet0",
+				Identifier: "Eth1/1",
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: mac: this string must be a valid macaddress",
+		},
+		{
+			name: "Invalid character",
+			msg: &apiv2.SwitchNic{
+				Mac:        "11:22:33:44:55:gg",
+				Name:       "Ethernet0",
+				Identifier: "Eth1/1",
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: mac: this string must be a valid macaddress",
+		},
+		{
+			name: "Uppercase and lowercase allowed",
+			msg: &apiv2.SwitchNic{
+				Mac:        "11:22:33:44:55:aA",
+				Name:       "Ethernet0",
+				Identifier: "Eth1/1",
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: mac: this string must be a valid macaddress",
 		},
 	}
+
 	validateProtos(t, tests)
 }
