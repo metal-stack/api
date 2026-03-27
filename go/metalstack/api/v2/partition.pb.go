@@ -34,9 +34,9 @@ type Partition struct {
 	// PartitionBootConfiguration defines how metal-hammer boots
 	BootConfiguration *PartitionBootConfiguration `protobuf:"bytes,4,opt,name=boot_configuration,json=bootConfiguration,proto3" json:"boot_configuration,omitempty"`
 	// DNSServers for this partition
-	DnsServer []*DNSServer `protobuf:"bytes,5,rep,name=dns_server,json=dnsServer,proto3" json:"dns_server,omitempty"`
+	DnsServers []*DNSServer `protobuf:"bytes,5,rep,name=dns_servers,json=dnsServers,proto3" json:"dns_servers,omitempty"`
 	// NTPServers for this partition
-	NtpServer []*NTPServer `protobuf:"bytes,6,rep,name=ntp_server,json=ntpServer,proto3" json:"ntp_server,omitempty"`
+	NtpServers []*NTPServer `protobuf:"bytes,6,rep,name=ntp_servers,json=ntpServers,proto3" json:"ntp_servers,omitempty"`
 	// ManagementServiceAddresses defines where the management is reachable
 	// should be in the form <ip|host>:<port>
 	MgmtServiceAddresses []string `protobuf:"bytes,7,rep,name=mgmt_service_addresses,json=mgmtServiceAddresses,proto3" json:"mgmt_service_addresses,omitempty"`
@@ -102,16 +102,16 @@ func (x *Partition) GetBootConfiguration() *PartitionBootConfiguration {
 	return nil
 }
 
-func (x *Partition) GetDnsServer() []*DNSServer {
+func (x *Partition) GetDnsServers() []*DNSServer {
 	if x != nil {
-		return x.DnsServer
+		return x.DnsServers
 	}
 	return nil
 }
 
-func (x *Partition) GetNtpServer() []*NTPServer {
+func (x *Partition) GetNtpServers() []*NTPServer {
 	if x != nil {
-		return x.NtpServer
+		return x.NtpServers
 	}
 	return nil
 }
@@ -522,22 +522,20 @@ var File_metalstack_api_v2_partition_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xa5\x03\n" +
-	"\tPartition\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12+\n" +
+	"!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xaa\x03\n" +
+	"\tPartition\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12-\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12\\\n" +
-	"\x12boot_configuration\x18\x04 \x01(\v2-.metalstack.api.v2.PartitionBootConfigurationR\x11bootConfiguration\x12E\n" +
-	"\n" +
-	"dns_server\x18\x05 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\tdnsServer\x12E\n" +
-	"\n" +
-	"ntp_server\x18\x06 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
-	"R\tntpServer\x124\n" +
-	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\"{\n" +
-	"\x0ePartitionQuery\x12\x1f\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x126\n" +
+	"\x12boot_configuration\x18\x04 \x01(\v2-.metalstack.api.v2.PartitionBootConfigurationR\x11bootConfiguration\x12G\n" +
+	"\vdns_servers\x18\x05 \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\n" +
+	"dnsServers\x12G\n" +
+	"\vntp_servers\x18\x06 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
+	"R\n" +
+	"ntpServers\x124\n" +
+	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\"|\n" +
+	"\x0ePartitionQuery\x12 \n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x00R\x02id\x88\x01\x01\x126\n" +
 	"\x06labels\x18\x02 \x01(\v2\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01B\x05\n" +
 	"\x03_idB\t\n" +
 	"\a_labels\"\x94\x01\n" +
@@ -547,12 +545,11 @@ const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"kernel_url\x18\x02 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01R\tkernelUrl\x12 \n" +
 	"\vcommandline\x18\x03 \x01(\tR\vcommandline\"$\n" +
 	"\tDNSServer\x12\x17\n" +
-	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\"/\n" +
-	"\tNTPServer\x12\"\n" +
-	"\aaddress\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\aaddress\"8\n" +
-	"\x1aPartitionServiceGetRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\"V\n" +
+	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\"2\n" +
+	"\tNTPServer\x12%\n" +
+	"\aaddress\x18\x01 \x01(\tB\v\xbaH\br\x06賮\xb1\x02\x01R\aaddress\"9\n" +
+	"\x1aPartitionServiceGetRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\"V\n" +
 	"\x1bPartitionServiceListRequest\x127\n" +
 	"\x05query\x18\x01 \x01(\v2!.metalstack.api.v2.PartitionQueryR\x05query\"Y\n" +
 	"\x1bPartitionServiceGetResponse\x12:\n" +
@@ -595,8 +592,8 @@ var file_metalstack_api_v2_partition_proto_goTypes = []any{
 var file_metalstack_api_v2_partition_proto_depIdxs = []int32{
 	9,  // 0: metalstack.api.v2.Partition.meta:type_name -> metalstack.api.v2.Meta
 	2,  // 1: metalstack.api.v2.Partition.boot_configuration:type_name -> metalstack.api.v2.PartitionBootConfiguration
-	3,  // 2: metalstack.api.v2.Partition.dns_server:type_name -> metalstack.api.v2.DNSServer
-	4,  // 3: metalstack.api.v2.Partition.ntp_server:type_name -> metalstack.api.v2.NTPServer
+	3,  // 2: metalstack.api.v2.Partition.dns_servers:type_name -> metalstack.api.v2.DNSServer
+	4,  // 3: metalstack.api.v2.Partition.ntp_servers:type_name -> metalstack.api.v2.NTPServer
 	10, // 4: metalstack.api.v2.PartitionQuery.labels:type_name -> metalstack.api.v2.Labels
 	1,  // 5: metalstack.api.v2.PartitionServiceListRequest.query:type_name -> metalstack.api.v2.PartitionQuery
 	0,  // 6: metalstack.api.v2.PartitionServiceGetResponse.partition:type_name -> metalstack.api.v2.Partition

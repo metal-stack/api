@@ -46,6 +46,48 @@ func TestValidateMachine(t *testing.T) {
 			wantErr:          true,
 			wantErrorMessage: `validation error: ips: given ips must be valid`,
 		},
+		{
+			name: "MachineBMC address validation",
+			msg: &apiv2.MachineBMC{
+				Address: "192.168.0.1:623",
+				Mac:     "00:00:00:00:00:00",
+			},
+			wantErr: false,
+		},
+		{
+			name: "MachineBMC address validation, port missing",
+			msg: &apiv2.MachineBMC{
+				Address: "192.168.0.1",
+				Mac:     "00:00:00:00:00:00",
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: address: value must be a valid host (hostname or IP address) and port pair",
+		},
+		{
+			name: "Machine create, userdata with whitespaces",
+			msg: &apiv2.MachineServiceCreateRequest{
+				Project:   "9fdc7bd9-d412-4578-a20f-bf7c03f20135",
+				Partition: "partition-1",
+				Name:      "testserver",
+				Userdata:  new(" userdata with whitespaces"),
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: userdata: value must not start or end with whitespace",
+		},
+		{
+			name: "Machine create, one ssh public key with whitespaces",
+			msg: &apiv2.MachineServiceCreateRequest{
+				Project:   "9fdc7bd9-d412-4578-a20f-bf7c03f20135",
+				Partition: "partition-1",
+				Name:      "testserver",
+				SshPublicKeys: []string{
+					"good key",
+					" bad key ",
+				},
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: ssh_public_keys: given values must not start or end with whitespace",
+		},
 	}
 	validateProtos(t, tests)
 }

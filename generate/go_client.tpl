@@ -3,7 +3,6 @@ package client
 
 import (
 	"context"
-	"sync"
 
 	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
@@ -18,24 +17,23 @@ type (
 {{ range $name, $api := . -}}
 	{{ $name | title }}() {{ $name | title }}
 {{ end }}
+	Ping(context.Context, *PingConfig)
 	}
 	client struct {
 		config *DialConfig
 
 		interceptors []connect.Interceptor
-
-		sync.Mutex
 	}
 {{ range $name, $api := . -}}
 	{{ $name | title }} interface {
 {{ range $svc := $api.Services -}}
-	{{ $svc | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc }}Client
+	{{ $svc.Name | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc.Name }}Client
 {{ end }}
 	}
 
     {{ $name }} struct {
 {{ range $svc := $api.Services -}}
-	{{ $svc | lower }} {{ $name }}connect.{{ $svc }}Client
+	{{ $svc.Name | lower }} {{ $name }}connect.{{ $svc.Name }}Client
 {{ end }}
     }
 
@@ -53,34 +51,20 @@ func New(config *DialConfig) (Client, error) {
 		interceptors: []connect.Interceptor{},
 	}
 
-	authInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
-		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-			request.Header().Add("Authorization", "Bearer "+config.Token)
-			return next(ctx, request)
-		})
-	})
-
-	loggingInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
-		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
-			response, err := next(ctx, request)
-			if err != nil {
-				return nil, err
-			}
-			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
-			return response, err
-		})
-	})
-
 	if config.Token != "" {
+		authInterceptor := &authInterceptor{config: config}
 		c.interceptors = append(c.interceptors, authInterceptor)
+
+		if config.TokenRenewal != nil {
+			tokenRenewingInterceptor := &tokenRenewingInterceptor{config: config, client: c}
+			c.interceptors = append(c.interceptors, tokenRenewingInterceptor)
+		}
 	}
 	if config.Log != nil {
+		loggingInterceptor := &loggingInterceptor{config: config}
 		c.interceptors = append(c.interceptors, loggingInterceptor)
 	}
 	c.interceptors = append(c.interceptors, config.Interceptors...)
-
-	go c.startTokenRenewal()
 
 	return c, nil
 }
@@ -89,7 +73,7 @@ func New(config *DialConfig) (Client, error) {
 func (c *client) {{ $name | title }}() {{ $name | title }} {
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
-	{{ $svc | lower }}:  {{ $name }}connect.New{{ $svc }}Client(
+	{{ $svc.Name | lower }}:  {{ $name }}connect.New{{ $svc.Name }}Client(
 		c.config.HttpClient(),
 		c.config.BaseURL,
 		connect.WithInterceptors(c.interceptors...),
@@ -101,8 +85,8 @@ func (c *client) {{ $name | title }}() {{ $name | title }} {
 }
 
 {{ range $svc := $api.Services -}}
-func (c  *{{ $name }} ) {{ $svc | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc }}Client {
-	return c.{{ $svc | lower }}
+func (c  *{{ $name }} ) {{ $svc.Name | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc.Name }}Client {
+	return c.{{ $svc.Name | lower }}
 }
 {{ end }}
 

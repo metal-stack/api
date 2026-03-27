@@ -13,12 +13,16 @@ timeout_s = 5
 baseurl = os.environ['METAL_APISERVER_URL']
 token = os.environ['API_TOKEN']
 project = os.environ['PROJECT_ID']
+headers = dict(Authorization="Bearer " + token)
 
-client = apiclient.Client(baseurl=baseurl, token=token, timeout=timeout_s)
+client = apiclient.Client(baseurl=baseurl, timeout=timeout_s)
 
 try:
-    resp = client.apiv2().ip().list(request=ip_pb2.IPServiceListRequest(
-        project=project))
+    resp = client.apiv2().ip().list(
+        headers=headers,
+        request=ip_pb2.IPServiceListRequest(
+            project=project),
+    )
 except ConnectError as e:
     print(e.code, e.message, e.to_dict())
     sys.exit(1)
@@ -28,7 +32,9 @@ for ip in resp.ips:
     print(ip.ip, ip.name, ip.project, ip.network)
 
 resp = client.adminv2().network().list(
-    request=network_pb2.NetworkServiceListRequest())
+    headers=headers,
+    request=network_pb2.NetworkServiceListRequest(),
+)
 
 for nw in resp.networks:
     print(nw.id, nw.name, nw.project)

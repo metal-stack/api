@@ -17,6 +17,9 @@ func GetStringValue[E protoreflect.Enum](e E) (*string, error) {
 			return nil, fmt.Errorf("given enum is a nil pointer")
 		}
 	}
+	if e.Descriptor().Values().Len() <= int(e.Number()) {
+		return nil, fmt.Errorf("given enum number:%d is out of range", e.Number())
+	}
 	value := e.Descriptor().Values().Get(int(e.Number()))
 
 	// Retrieve custom options

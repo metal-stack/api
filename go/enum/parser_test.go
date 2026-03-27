@@ -50,4 +50,10 @@ func TestGetStringValue(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, got)
 	require.Equal(t, "ext3", *got)
+
+	var invalid apiv2.Format = 42
+	got, err = GetStringValue(invalid)
+	require.Error(t, err)
+	require.EqualError(t, err, "given enum number:42 is out of range")
+	require.Nil(t, got)
 }

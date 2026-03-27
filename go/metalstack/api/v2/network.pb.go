@@ -114,6 +114,7 @@ const (
 	// Connectivity to external networks is not possible, as for normal child networks.
 	// These networks are usually used to provide connectivity to shared services which are created in child networks, e.g. storage.
 	// With this approach the number of hops can be reduced to the bare minimum in order to increase availability and performance.
+	// Only one child shared network per project is allowed.
 	NetworkType_NETWORK_TYPE_CHILD_SHARED NetworkType = 6
 )
 
@@ -1460,10 +1461,9 @@ var File_metalstack_api_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/api/v2/network.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"]\n" +
-	"\x18NetworkServiceGetRequest\x12\x1a\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x02id\x12%\n" +
+	"\x1fmetalstack/api/v2/network.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"^\n" +
+	"\x18NetworkServiceGetRequest\x12\x1b\n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12%\n" +
 	"\aproject\x18\x02 \x01(\tB\v\xbaH\b\xd8\x01\x01r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xb1\x04\n" +
@@ -1521,8 +1521,8 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\tpartition\x18\x05 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x02R\tpartition\x88\x01\x01\x12'\n" +
 	"\aproject\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x03R\aproject\x88\x01\x01\x12+\n" +
 	"\tnamespace\x18\a \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x04R\tnamespace\x88\x01\x01\x12(\n" +
-	"\bprefixes\x18\b \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\bprefixes\x12?\n" +
-	"\x14destination_prefixes\x18\t \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\x13destinationPrefixes\x12c\n" +
+	"\bprefixes\x18\b \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\bprefixes\x12?\n" +
+	"\x14destination_prefixes\x18\t \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x13destinationPrefixes\x12c\n" +
 	"\x1bdefault_child_prefix_length\x18\n" +
 	" \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x18defaultChildPrefixLength\x12[\n" +
 	"\x17min_child_prefix_length\x18\v \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x14minChildPrefixLength\x12A\n" +
@@ -1530,7 +1530,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\anatType\x88\x01\x01\x12\x15\n" +
 	"\x03vrf\x18\x0e \x01(\rH\aR\x03vrf\x88\x01\x01\x127\n" +
 	"\x0eparent_network\x18\x0f \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\bR\rparentNetwork\x88\x01\x01\x12N\n" +
-	"\x1cadditional_announcable_cidrs\x18\x10 \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\x1aadditionalAnnouncableCidrs\x12G\n" +
+	"\x1cadditional_announcable_cidrs\x18\x10 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x1aadditionalAnnouncableCidrs\x12G\n" +
 	"\vconsumption\x18\x11 \x01(\v2%.metalstack.api.v2.NetworkConsumptionR\vconsumptionB\a\n" +
 	"\x05_nameB\x0e\n" +
 	"\f_descriptionB\f\n" +
@@ -1543,17 +1543,16 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x05_typeB\v\n" +
 	"\t_nat_typeB\x06\n" +
 	"\x04_vrfB\x11\n" +
-	"\x0f_parent_network\"\x81\a\n" +
-	"\fNetworkQuery\x12\x1f\n" +
-	"\x02id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x00R\x02id\x88\x01\x01\x12$\n" +
+	"\x0f_parent_network\"\x82\a\n" +
+	"\fNetworkQuery\x12 \n" +
+	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x02id\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x122\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x02R\vdescription\x88\x01\x01\x12.\n" +
 	"\tpartition\x18\x04 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x03R\tpartition\x88\x01\x01\x12'\n" +
 	"\aproject\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x04R\aproject\x88\x01\x01\x12+\n" +
 	"\tnamespace\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x05R\tnamespace\x88\x01\x01\x12(\n" +
-	"\bprefixes\x18\a \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\bprefixes\x12?\n" +
-	"\x14destination_prefixes\x18\b \x03(\tB\f\xbaH\t\x92\x01\x06೮\xb1\x02\x01R\x13destinationPrefixes\x12\x15\n" +
+	"\bprefixes\x18\a \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\bprefixes\x12?\n" +
+	"\x14destination_prefixes\x18\b \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x13destinationPrefixes\x12\x15\n" +
 	"\x03vrf\x18\t \x01(\rH\x06R\x03vrf\x88\x01\x01\x127\n" +
 	"\x0eparent_network\x18\n" +
 	" \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\aR\rparentNetwork\x88\x01\x01\x12]\n" +

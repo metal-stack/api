@@ -2,6 +2,7 @@
 package apitests
 
 import (
+	"context"
 	"testing"
 
 	apiclient "github.com/metal-stack/api/go/client"
@@ -32,77 +33,97 @@ type (
 		t *testing.T
 	}
 	adminv2 struct {
-		filesystemservice *adminv2mocks.FilesystemServiceClient
-		imageservice      *adminv2mocks.ImageServiceClient
-		ipservice         *adminv2mocks.IPServiceClient
-		machineservice    *adminv2mocks.MachineServiceClient
-		networkservice    *adminv2mocks.NetworkServiceClient
-		partitionservice  *adminv2mocks.PartitionServiceClient
-		projectservice    *adminv2mocks.ProjectServiceClient
-		sizeservice       *adminv2mocks.SizeServiceClient
-		switchservice     *adminv2mocks.SwitchServiceClient
-		tenantservice     *adminv2mocks.TenantServiceClient
-		tokenservice      *adminv2mocks.TokenServiceClient
-		vpnservice        *adminv2mocks.VPNServiceClient
+		auditservice               *adminv2mocks.AuditServiceClient
+		componentservice           *adminv2mocks.ComponentServiceClient
+		filesystemservice          *adminv2mocks.FilesystemServiceClient
+		imageservice               *adminv2mocks.ImageServiceClient
+		ipservice                  *adminv2mocks.IPServiceClient
+		machineservice             *adminv2mocks.MachineServiceClient
+		networkservice             *adminv2mocks.NetworkServiceClient
+		partitionservice           *adminv2mocks.PartitionServiceClient
+		projectservice             *adminv2mocks.ProjectServiceClient
+		sizeservice                *adminv2mocks.SizeServiceClient
+		sizeimageconstraintservice *adminv2mocks.SizeImageConstraintServiceClient
+		sizereservationservice     *adminv2mocks.SizeReservationServiceClient
+		switchservice              *adminv2mocks.SwitchServiceClient
+		taskservice                *adminv2mocks.TaskServiceClient
+		tenantservice              *adminv2mocks.TenantServiceClient
+		tokenservice               *adminv2mocks.TokenServiceClient
+		vpnservice                 *adminv2mocks.VPNServiceClient
 	}
 
 	Adminv2MockFns struct {
-		Filesystem func(m *mock.Mock)
-		Image      func(m *mock.Mock)
-		IP         func(m *mock.Mock)
-		Machine    func(m *mock.Mock)
-		Network    func(m *mock.Mock)
-		Partition  func(m *mock.Mock)
-		Project    func(m *mock.Mock)
-		Size       func(m *mock.Mock)
-		Switch     func(m *mock.Mock)
-		Tenant     func(m *mock.Mock)
-		Token      func(m *mock.Mock)
-		VPN        func(m *mock.Mock)
+		Audit               func(m *mock.Mock)
+		Component           func(m *mock.Mock)
+		Filesystem          func(m *mock.Mock)
+		Image               func(m *mock.Mock)
+		IP                  func(m *mock.Mock)
+		Machine             func(m *mock.Mock)
+		Network             func(m *mock.Mock)
+		Partition           func(m *mock.Mock)
+		Project             func(m *mock.Mock)
+		Size                func(m *mock.Mock)
+		SizeImageConstraint func(m *mock.Mock)
+		SizeReservation     func(m *mock.Mock)
+		Switch              func(m *mock.Mock)
+		Task                func(m *mock.Mock)
+		Tenant              func(m *mock.Mock)
+		Token               func(m *mock.Mock)
+		VPN                 func(m *mock.Mock)
 	}
 	apiv2 struct {
-		filesystemservice *apiv2mocks.FilesystemServiceClient
-		healthservice     *apiv2mocks.HealthServiceClient
-		imageservice      *apiv2mocks.ImageServiceClient
-		ipservice         *apiv2mocks.IPServiceClient
-		machineservice    *apiv2mocks.MachineServiceClient
-		methodservice     *apiv2mocks.MethodServiceClient
-		networkservice    *apiv2mocks.NetworkServiceClient
-		partitionservice  *apiv2mocks.PartitionServiceClient
-		projectservice    *apiv2mocks.ProjectServiceClient
-		sizeservice       *apiv2mocks.SizeServiceClient
-		tenantservice     *apiv2mocks.TenantServiceClient
-		tokenservice      *apiv2mocks.TokenServiceClient
-		userservice       *apiv2mocks.UserServiceClient
-		versionservice    *apiv2mocks.VersionServiceClient
+		auditservice               *apiv2mocks.AuditServiceClient
+		filesystemservice          *apiv2mocks.FilesystemServiceClient
+		healthservice              *apiv2mocks.HealthServiceClient
+		imageservice               *apiv2mocks.ImageServiceClient
+		ipservice                  *apiv2mocks.IPServiceClient
+		machineservice             *apiv2mocks.MachineServiceClient
+		methodservice              *apiv2mocks.MethodServiceClient
+		networkservice             *apiv2mocks.NetworkServiceClient
+		partitionservice           *apiv2mocks.PartitionServiceClient
+		projectservice             *apiv2mocks.ProjectServiceClient
+		sizeservice                *apiv2mocks.SizeServiceClient
+		sizeimageconstraintservice *apiv2mocks.SizeImageConstraintServiceClient
+		sizereservationservice     *apiv2mocks.SizeReservationServiceClient
+		tenantservice              *apiv2mocks.TenantServiceClient
+		tokenservice               *apiv2mocks.TokenServiceClient
+		userservice                *apiv2mocks.UserServiceClient
+		versionservice             *apiv2mocks.VersionServiceClient
 	}
 
 	Apiv2MockFns struct {
-		Filesystem func(m *mock.Mock)
-		Health     func(m *mock.Mock)
-		Image      func(m *mock.Mock)
-		IP         func(m *mock.Mock)
-		Machine    func(m *mock.Mock)
-		Method     func(m *mock.Mock)
-		Network    func(m *mock.Mock)
-		Partition  func(m *mock.Mock)
-		Project    func(m *mock.Mock)
-		Size       func(m *mock.Mock)
-		Tenant     func(m *mock.Mock)
-		Token      func(m *mock.Mock)
-		User       func(m *mock.Mock)
-		Version    func(m *mock.Mock)
+		Audit               func(m *mock.Mock)
+		Filesystem          func(m *mock.Mock)
+		Health              func(m *mock.Mock)
+		Image               func(m *mock.Mock)
+		IP                  func(m *mock.Mock)
+		Machine             func(m *mock.Mock)
+		Method              func(m *mock.Mock)
+		Network             func(m *mock.Mock)
+		Partition           func(m *mock.Mock)
+		Project             func(m *mock.Mock)
+		Size                func(m *mock.Mock)
+		SizeImageConstraint func(m *mock.Mock)
+		SizeReservation     func(m *mock.Mock)
+		Tenant              func(m *mock.Mock)
+		Token               func(m *mock.Mock)
+		User                func(m *mock.Mock)
+		Version             func(m *mock.Mock)
 	}
 	infrav2 struct {
-		bmcservice    *infrav2mocks.BMCServiceClient
-		eventservice  *infrav2mocks.EventServiceClient
-		switchservice *infrav2mocks.SwitchServiceClient
+		bmcservice       *infrav2mocks.BMCServiceClient
+		bootservice      *infrav2mocks.BootServiceClient
+		componentservice *infrav2mocks.ComponentServiceClient
+		eventservice     *infrav2mocks.EventServiceClient
+		switchservice    *infrav2mocks.SwitchServiceClient
 	}
 
 	Infrav2MockFns struct {
-		BMC    func(m *mock.Mock)
-		Event  func(m *mock.Mock)
-		Switch func(m *mock.Mock)
+		BMC       func(m *mock.Mock)
+		Boot      func(m *mock.Mock)
+		Component func(m *mock.Mock)
+		Event     func(m *mock.Mock)
+		Switch    func(m *mock.Mock)
 	}
 )
 
@@ -128,27 +149,40 @@ func (c *client) Infrav2() apiclient.Infrav2 {
 	return c.infrav2service
 }
 
+func (c *client) Ping(context.Context, *apiclient.PingConfig) {}
+
 func (w wrapper) Adminv2(fns *Adminv2MockFns) *adminv2 {
 	return newadminv2(w.t, fns)
 }
 
 func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	a := &adminv2{
-		filesystemservice: adminv2mocks.NewFilesystemServiceClient(t),
-		imageservice:      adminv2mocks.NewImageServiceClient(t),
-		ipservice:         adminv2mocks.NewIPServiceClient(t),
-		machineservice:    adminv2mocks.NewMachineServiceClient(t),
-		networkservice:    adminv2mocks.NewNetworkServiceClient(t),
-		partitionservice:  adminv2mocks.NewPartitionServiceClient(t),
-		projectservice:    adminv2mocks.NewProjectServiceClient(t),
-		sizeservice:       adminv2mocks.NewSizeServiceClient(t),
-		switchservice:     adminv2mocks.NewSwitchServiceClient(t),
-		tenantservice:     adminv2mocks.NewTenantServiceClient(t),
-		tokenservice:      adminv2mocks.NewTokenServiceClient(t),
-		vpnservice:        adminv2mocks.NewVPNServiceClient(t),
+		auditservice:               adminv2mocks.NewAuditServiceClient(t),
+		componentservice:           adminv2mocks.NewComponentServiceClient(t),
+		filesystemservice:          adminv2mocks.NewFilesystemServiceClient(t),
+		imageservice:               adminv2mocks.NewImageServiceClient(t),
+		ipservice:                  adminv2mocks.NewIPServiceClient(t),
+		machineservice:             adminv2mocks.NewMachineServiceClient(t),
+		networkservice:             adminv2mocks.NewNetworkServiceClient(t),
+		partitionservice:           adminv2mocks.NewPartitionServiceClient(t),
+		projectservice:             adminv2mocks.NewProjectServiceClient(t),
+		sizeservice:                adminv2mocks.NewSizeServiceClient(t),
+		sizeimageconstraintservice: adminv2mocks.NewSizeImageConstraintServiceClient(t),
+		sizereservationservice:     adminv2mocks.NewSizeReservationServiceClient(t),
+		switchservice:              adminv2mocks.NewSwitchServiceClient(t),
+		taskservice:                adminv2mocks.NewTaskServiceClient(t),
+		tenantservice:              adminv2mocks.NewTenantServiceClient(t),
+		tokenservice:               adminv2mocks.NewTokenServiceClient(t),
+		vpnservice:                 adminv2mocks.NewVPNServiceClient(t),
 	}
 
 	if fns != nil {
+		if fns.Audit != nil {
+			fns.Audit(&a.auditservice.Mock)
+		}
+		if fns.Component != nil {
+			fns.Component(&a.componentservice.Mock)
+		}
 		if fns.Filesystem != nil {
 			fns.Filesystem(&a.filesystemservice.Mock)
 		}
@@ -173,8 +207,17 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 		if fns.Size != nil {
 			fns.Size(&a.sizeservice.Mock)
 		}
+		if fns.SizeImageConstraint != nil {
+			fns.SizeImageConstraint(&a.sizeimageconstraintservice.Mock)
+		}
+		if fns.SizeReservation != nil {
+			fns.SizeReservation(&a.sizereservationservice.Mock)
+		}
 		if fns.Switch != nil {
 			fns.Switch(&a.switchservice.Mock)
+		}
+		if fns.Task != nil {
+			fns.Task(&a.taskservice.Mock)
 		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
@@ -191,6 +234,12 @@ func newadminv2(t *testing.T, fns *Adminv2MockFns) *adminv2 {
 	return a
 }
 
+func (c *adminv2) Audit() adminv2connect.AuditServiceClient {
+	return c.auditservice
+}
+func (c *adminv2) Component() adminv2connect.ComponentServiceClient {
+	return c.componentservice
+}
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }
@@ -215,8 +264,17 @@ func (c *adminv2) Project() adminv2connect.ProjectServiceClient {
 func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 	return c.sizeservice
 }
+func (c *adminv2) SizeImageConstraint() adminv2connect.SizeImageConstraintServiceClient {
+	return c.sizeimageconstraintservice
+}
+func (c *adminv2) SizeReservation() adminv2connect.SizeReservationServiceClient {
+	return c.sizereservationservice
+}
 func (c *adminv2) Switch() adminv2connect.SwitchServiceClient {
 	return c.switchservice
+}
+func (c *adminv2) Task() adminv2connect.TaskServiceClient {
+	return c.taskservice
 }
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice
@@ -234,23 +292,29 @@ func (w wrapper) Apiv2(fns *Apiv2MockFns) *apiv2 {
 
 func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 	a := &apiv2{
-		filesystemservice: apiv2mocks.NewFilesystemServiceClient(t),
-		healthservice:     apiv2mocks.NewHealthServiceClient(t),
-		imageservice:      apiv2mocks.NewImageServiceClient(t),
-		ipservice:         apiv2mocks.NewIPServiceClient(t),
-		machineservice:    apiv2mocks.NewMachineServiceClient(t),
-		methodservice:     apiv2mocks.NewMethodServiceClient(t),
-		networkservice:    apiv2mocks.NewNetworkServiceClient(t),
-		partitionservice:  apiv2mocks.NewPartitionServiceClient(t),
-		projectservice:    apiv2mocks.NewProjectServiceClient(t),
-		sizeservice:       apiv2mocks.NewSizeServiceClient(t),
-		tenantservice:     apiv2mocks.NewTenantServiceClient(t),
-		tokenservice:      apiv2mocks.NewTokenServiceClient(t),
-		userservice:       apiv2mocks.NewUserServiceClient(t),
-		versionservice:    apiv2mocks.NewVersionServiceClient(t),
+		auditservice:               apiv2mocks.NewAuditServiceClient(t),
+		filesystemservice:          apiv2mocks.NewFilesystemServiceClient(t),
+		healthservice:              apiv2mocks.NewHealthServiceClient(t),
+		imageservice:               apiv2mocks.NewImageServiceClient(t),
+		ipservice:                  apiv2mocks.NewIPServiceClient(t),
+		machineservice:             apiv2mocks.NewMachineServiceClient(t),
+		methodservice:              apiv2mocks.NewMethodServiceClient(t),
+		networkservice:             apiv2mocks.NewNetworkServiceClient(t),
+		partitionservice:           apiv2mocks.NewPartitionServiceClient(t),
+		projectservice:             apiv2mocks.NewProjectServiceClient(t),
+		sizeservice:                apiv2mocks.NewSizeServiceClient(t),
+		sizeimageconstraintservice: apiv2mocks.NewSizeImageConstraintServiceClient(t),
+		sizereservationservice:     apiv2mocks.NewSizeReservationServiceClient(t),
+		tenantservice:              apiv2mocks.NewTenantServiceClient(t),
+		tokenservice:               apiv2mocks.NewTokenServiceClient(t),
+		userservice:                apiv2mocks.NewUserServiceClient(t),
+		versionservice:             apiv2mocks.NewVersionServiceClient(t),
 	}
 
 	if fns != nil {
+		if fns.Audit != nil {
+			fns.Audit(&a.auditservice.Mock)
+		}
 		if fns.Filesystem != nil {
 			fns.Filesystem(&a.filesystemservice.Mock)
 		}
@@ -281,6 +345,12 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 		if fns.Size != nil {
 			fns.Size(&a.sizeservice.Mock)
 		}
+		if fns.SizeImageConstraint != nil {
+			fns.SizeImageConstraint(&a.sizeimageconstraintservice.Mock)
+		}
+		if fns.SizeReservation != nil {
+			fns.SizeReservation(&a.sizereservationservice.Mock)
+		}
 		if fns.Tenant != nil {
 			fns.Tenant(&a.tenantservice.Mock)
 		}
@@ -299,6 +369,9 @@ func newapiv2(t *testing.T, fns *Apiv2MockFns) *apiv2 {
 	return a
 }
 
+func (c *apiv2) Audit() apiv2connect.AuditServiceClient {
+	return c.auditservice
+}
 func (c *apiv2) Filesystem() apiv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }
@@ -329,6 +402,12 @@ func (c *apiv2) Project() apiv2connect.ProjectServiceClient {
 func (c *apiv2) Size() apiv2connect.SizeServiceClient {
 	return c.sizeservice
 }
+func (c *apiv2) SizeImageConstraint() apiv2connect.SizeImageConstraintServiceClient {
+	return c.sizeimageconstraintservice
+}
+func (c *apiv2) SizeReservation() apiv2connect.SizeReservationServiceClient {
+	return c.sizereservationservice
+}
 func (c *apiv2) Tenant() apiv2connect.TenantServiceClient {
 	return c.tenantservice
 }
@@ -348,14 +427,22 @@ func (w wrapper) Infrav2(fns *Infrav2MockFns) *infrav2 {
 
 func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 	a := &infrav2{
-		bmcservice:    infrav2mocks.NewBMCServiceClient(t),
-		eventservice:  infrav2mocks.NewEventServiceClient(t),
-		switchservice: infrav2mocks.NewSwitchServiceClient(t),
+		bmcservice:       infrav2mocks.NewBMCServiceClient(t),
+		bootservice:      infrav2mocks.NewBootServiceClient(t),
+		componentservice: infrav2mocks.NewComponentServiceClient(t),
+		eventservice:     infrav2mocks.NewEventServiceClient(t),
+		switchservice:    infrav2mocks.NewSwitchServiceClient(t),
 	}
 
 	if fns != nil {
 		if fns.BMC != nil {
 			fns.BMC(&a.bmcservice.Mock)
+		}
+		if fns.Boot != nil {
+			fns.Boot(&a.bootservice.Mock)
+		}
+		if fns.Component != nil {
+			fns.Component(&a.componentservice.Mock)
 		}
 		if fns.Event != nil {
 			fns.Event(&a.eventservice.Mock)
@@ -371,6 +458,12 @@ func newinfrav2(t *testing.T, fns *Infrav2MockFns) *infrav2 {
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Boot() infrav2connect.BootServiceClient {
+	return c.bootservice
+}
+func (c *infrav2) Component() infrav2connect.ComponentServiceClient {
+	return c.componentservice
 }
 func (c *infrav2) Event() infrav2connect.EventServiceClient {
 	return c.eventservice

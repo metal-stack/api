@@ -3,7 +3,6 @@ package client
 
 import (
 	"context"
-	"sync"
 
 	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
@@ -18,15 +17,17 @@ type (
 		Adminv2() Adminv2
 		Apiv2() Apiv2
 		Infrav2() Infrav2
+
+		Ping(context.Context, *PingConfig)
 	}
 	client struct {
 		config *DialConfig
 
 		interceptors []connect.Interceptor
-
-		sync.Mutex
 	}
 	Adminv2 interface {
+		Audit() adminv2connect.AuditServiceClient
+		Component() adminv2connect.ComponentServiceClient
 		Filesystem() adminv2connect.FilesystemServiceClient
 		Image() adminv2connect.ImageServiceClient
 		IP() adminv2connect.IPServiceClient
@@ -35,28 +36,37 @@ type (
 		Partition() adminv2connect.PartitionServiceClient
 		Project() adminv2connect.ProjectServiceClient
 		Size() adminv2connect.SizeServiceClient
+		SizeImageConstraint() adminv2connect.SizeImageConstraintServiceClient
+		SizeReservation() adminv2connect.SizeReservationServiceClient
 		Switch() adminv2connect.SwitchServiceClient
+		Task() adminv2connect.TaskServiceClient
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
 		VPN() adminv2connect.VPNServiceClient
 	}
 
 	adminv2 struct {
-		filesystemservice adminv2connect.FilesystemServiceClient
-		imageservice      adminv2connect.ImageServiceClient
-		ipservice         adminv2connect.IPServiceClient
-		machineservice    adminv2connect.MachineServiceClient
-		networkservice    adminv2connect.NetworkServiceClient
-		partitionservice  adminv2connect.PartitionServiceClient
-		projectservice    adminv2connect.ProjectServiceClient
-		sizeservice       adminv2connect.SizeServiceClient
-		switchservice     adminv2connect.SwitchServiceClient
-		tenantservice     adminv2connect.TenantServiceClient
-		tokenservice      adminv2connect.TokenServiceClient
-		vpnservice        adminv2connect.VPNServiceClient
+		auditservice               adminv2connect.AuditServiceClient
+		componentservice           adminv2connect.ComponentServiceClient
+		filesystemservice          adminv2connect.FilesystemServiceClient
+		imageservice               adminv2connect.ImageServiceClient
+		ipservice                  adminv2connect.IPServiceClient
+		machineservice             adminv2connect.MachineServiceClient
+		networkservice             adminv2connect.NetworkServiceClient
+		partitionservice           adminv2connect.PartitionServiceClient
+		projectservice             adminv2connect.ProjectServiceClient
+		sizeservice                adminv2connect.SizeServiceClient
+		sizeimageconstraintservice adminv2connect.SizeImageConstraintServiceClient
+		sizereservationservice     adminv2connect.SizeReservationServiceClient
+		switchservice              adminv2connect.SwitchServiceClient
+		taskservice                adminv2connect.TaskServiceClient
+		tenantservice              adminv2connect.TenantServiceClient
+		tokenservice               adminv2connect.TokenServiceClient
+		vpnservice                 adminv2connect.VPNServiceClient
 	}
 
 	Apiv2 interface {
+		Audit() apiv2connect.AuditServiceClient
 		Filesystem() apiv2connect.FilesystemServiceClient
 		Health() apiv2connect.HealthServiceClient
 		Image() apiv2connect.ImageServiceClient
@@ -67,6 +77,8 @@ type (
 		Partition() apiv2connect.PartitionServiceClient
 		Project() apiv2connect.ProjectServiceClient
 		Size() apiv2connect.SizeServiceClient
+		SizeImageConstraint() apiv2connect.SizeImageConstraintServiceClient
+		SizeReservation() apiv2connect.SizeReservationServiceClient
 		Tenant() apiv2connect.TenantServiceClient
 		Token() apiv2connect.TokenServiceClient
 		User() apiv2connect.UserServiceClient
@@ -74,32 +86,39 @@ type (
 	}
 
 	apiv2 struct {
-		filesystemservice apiv2connect.FilesystemServiceClient
-		healthservice     apiv2connect.HealthServiceClient
-		imageservice      apiv2connect.ImageServiceClient
-		ipservice         apiv2connect.IPServiceClient
-		machineservice    apiv2connect.MachineServiceClient
-		methodservice     apiv2connect.MethodServiceClient
-		networkservice    apiv2connect.NetworkServiceClient
-		partitionservice  apiv2connect.PartitionServiceClient
-		projectservice    apiv2connect.ProjectServiceClient
-		sizeservice       apiv2connect.SizeServiceClient
-		tenantservice     apiv2connect.TenantServiceClient
-		tokenservice      apiv2connect.TokenServiceClient
-		userservice       apiv2connect.UserServiceClient
-		versionservice    apiv2connect.VersionServiceClient
+		auditservice               apiv2connect.AuditServiceClient
+		filesystemservice          apiv2connect.FilesystemServiceClient
+		healthservice              apiv2connect.HealthServiceClient
+		imageservice               apiv2connect.ImageServiceClient
+		ipservice                  apiv2connect.IPServiceClient
+		machineservice             apiv2connect.MachineServiceClient
+		methodservice              apiv2connect.MethodServiceClient
+		networkservice             apiv2connect.NetworkServiceClient
+		partitionservice           apiv2connect.PartitionServiceClient
+		projectservice             apiv2connect.ProjectServiceClient
+		sizeservice                apiv2connect.SizeServiceClient
+		sizeimageconstraintservice apiv2connect.SizeImageConstraintServiceClient
+		sizereservationservice     apiv2connect.SizeReservationServiceClient
+		tenantservice              apiv2connect.TenantServiceClient
+		tokenservice               apiv2connect.TokenServiceClient
+		userservice                apiv2connect.UserServiceClient
+		versionservice             apiv2connect.VersionServiceClient
 	}
 
 	Infrav2 interface {
 		BMC() infrav2connect.BMCServiceClient
+		Boot() infrav2connect.BootServiceClient
+		Component() infrav2connect.ComponentServiceClient
 		Event() infrav2connect.EventServiceClient
 		Switch() infrav2connect.SwitchServiceClient
 	}
 
 	infrav2 struct {
-		bmcservice    infrav2connect.BMCServiceClient
-		eventservice  infrav2connect.EventServiceClient
-		switchservice infrav2connect.SwitchServiceClient
+		bmcservice       infrav2connect.BMCServiceClient
+		bootservice      infrav2connect.BootServiceClient
+		componentservice infrav2connect.ComponentServiceClient
+		eventservice     infrav2connect.EventServiceClient
+		switchservice    infrav2connect.SwitchServiceClient
 	}
 )
 
@@ -114,40 +133,38 @@ func New(config *DialConfig) (Client, error) {
 		interceptors: []connect.Interceptor{},
 	}
 
-	authInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
-		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-			request.Header().Add("Authorization", "Bearer "+config.Token)
-			return next(ctx, request)
-		})
-	})
-
-	loggingInterceptor := connect.UnaryInterceptorFunc(func(next connect.UnaryFunc) connect.UnaryFunc {
-		return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
-			response, err := next(ctx, request)
-			if err != nil {
-				return nil, err
-			}
-			config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
-			return response, err
-		})
-	})
-
 	if config.Token != "" {
+		authInterceptor := &authInterceptor{config: config}
 		c.interceptors = append(c.interceptors, authInterceptor)
+
+		if config.TokenRenewal != nil {
+			tokenRenewingInterceptor := &tokenRenewingInterceptor{config: config, client: c}
+			c.interceptors = append(c.interceptors, tokenRenewingInterceptor)
+		}
 	}
 	if config.Log != nil {
+		loggingInterceptor := &loggingInterceptor{config: config}
 		c.interceptors = append(c.interceptors, loggingInterceptor)
 	}
 	c.interceptors = append(c.interceptors, config.Interceptors...)
-
-	go c.startTokenRenewal()
 
 	return c, nil
 }
 
 func (c *client) Adminv2() Adminv2 {
 	a := &adminv2{
+		auditservice: adminv2connect.NewAuditServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		componentservice: adminv2connect.NewComponentServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		filesystemservice: adminv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -196,7 +213,25 @@ func (c *client) Adminv2() Adminv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		sizeimageconstraintservice: adminv2connect.NewSizeImageConstraintServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		sizereservationservice: adminv2connect.NewSizeReservationServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		switchservice: adminv2connect.NewSwitchServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		taskservice: adminv2connect.NewTaskServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			connect.WithInterceptors(c.interceptors...),
@@ -224,6 +259,12 @@ func (c *client) Adminv2() Adminv2 {
 	return a
 }
 
+func (c *adminv2) Audit() adminv2connect.AuditServiceClient {
+	return c.auditservice
+}
+func (c *adminv2) Component() adminv2connect.ComponentServiceClient {
+	return c.componentservice
+}
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }
@@ -248,8 +289,17 @@ func (c *adminv2) Project() adminv2connect.ProjectServiceClient {
 func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 	return c.sizeservice
 }
+func (c *adminv2) SizeImageConstraint() adminv2connect.SizeImageConstraintServiceClient {
+	return c.sizeimageconstraintservice
+}
+func (c *adminv2) SizeReservation() adminv2connect.SizeReservationServiceClient {
+	return c.sizereservationservice
+}
 func (c *adminv2) Switch() adminv2connect.SwitchServiceClient {
 	return c.switchservice
+}
+func (c *adminv2) Task() adminv2connect.TaskServiceClient {
+	return c.taskservice
 }
 func (c *adminv2) Tenant() adminv2connect.TenantServiceClient {
 	return c.tenantservice
@@ -263,6 +313,12 @@ func (c *adminv2) VPN() adminv2connect.VPNServiceClient {
 
 func (c *client) Apiv2() Apiv2 {
 	a := &apiv2{
+		auditservice: apiv2connect.NewAuditServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		filesystemservice: apiv2connect.NewFilesystemServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -323,6 +379,18 @@ func (c *client) Apiv2() Apiv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		sizeimageconstraintservice: apiv2connect.NewSizeImageConstraintServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		sizereservationservice: apiv2connect.NewSizeReservationServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		tenantservice: apiv2connect.NewTenantServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -351,6 +419,9 @@ func (c *client) Apiv2() Apiv2 {
 	return a
 }
 
+func (c *apiv2) Audit() apiv2connect.AuditServiceClient {
+	return c.auditservice
+}
 func (c *apiv2) Filesystem() apiv2connect.FilesystemServiceClient {
 	return c.filesystemservice
 }
@@ -381,6 +452,12 @@ func (c *apiv2) Project() apiv2connect.ProjectServiceClient {
 func (c *apiv2) Size() apiv2connect.SizeServiceClient {
 	return c.sizeservice
 }
+func (c *apiv2) SizeImageConstraint() apiv2connect.SizeImageConstraintServiceClient {
+	return c.sizeimageconstraintservice
+}
+func (c *apiv2) SizeReservation() apiv2connect.SizeReservationServiceClient {
+	return c.sizereservationservice
+}
 func (c *apiv2) Tenant() apiv2connect.TenantServiceClient {
 	return c.tenantservice
 }
@@ -397,6 +474,18 @@ func (c *apiv2) Version() apiv2connect.VersionServiceClient {
 func (c *client) Infrav2() Infrav2 {
 	a := &infrav2{
 		bmcservice: infrav2connect.NewBMCServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		bootservice: infrav2connect.NewBootServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		componentservice: infrav2connect.NewComponentServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			connect.WithInterceptors(c.interceptors...),
@@ -420,6 +509,12 @@ func (c *client) Infrav2() Infrav2 {
 
 func (c *infrav2) BMC() infrav2connect.BMCServiceClient {
 	return c.bmcservice
+}
+func (c *infrav2) Boot() infrav2connect.BootServiceClient {
+	return c.bootservice
+}
+func (c *infrav2) Component() infrav2connect.ComponentServiceClient {
+	return c.componentservice
 }
 func (c *infrav2) Event() infrav2connect.EventServiceClient {
 	return c.eventservice

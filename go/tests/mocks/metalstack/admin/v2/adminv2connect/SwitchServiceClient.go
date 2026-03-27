@@ -38,6 +38,74 @@ func (_m *SwitchServiceClient) EXPECT() *SwitchServiceClient_Expecter {
 	return &SwitchServiceClient_Expecter{mock: &_m.Mock}
 }
 
+// ConnectedMachines provides a mock function for the type SwitchServiceClient
+func (_mock *SwitchServiceClient) ConnectedMachines(context1 context.Context, switchServiceConnectedMachinesRequest *adminv2.SwitchServiceConnectedMachinesRequest) (*adminv2.SwitchServiceConnectedMachinesResponse, error) {
+	ret := _mock.Called(context1, switchServiceConnectedMachinesRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ConnectedMachines")
+	}
+
+	var r0 *adminv2.SwitchServiceConnectedMachinesResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceConnectedMachinesRequest) (*adminv2.SwitchServiceConnectedMachinesResponse, error)); ok {
+		return returnFunc(context1, switchServiceConnectedMachinesRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.SwitchServiceConnectedMachinesRequest) *adminv2.SwitchServiceConnectedMachinesResponse); ok {
+		r0 = returnFunc(context1, switchServiceConnectedMachinesRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.SwitchServiceConnectedMachinesResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.SwitchServiceConnectedMachinesRequest) error); ok {
+		r1 = returnFunc(context1, switchServiceConnectedMachinesRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// SwitchServiceClient_ConnectedMachines_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ConnectedMachines'
+type SwitchServiceClient_ConnectedMachines_Call struct {
+	*mock.Call
+}
+
+// ConnectedMachines is a helper method to define mock.On call
+//   - context1 context.Context
+//   - switchServiceConnectedMachinesRequest *adminv2.SwitchServiceConnectedMachinesRequest
+func (_e *SwitchServiceClient_Expecter) ConnectedMachines(context1 interface{}, switchServiceConnectedMachinesRequest interface{}) *SwitchServiceClient_ConnectedMachines_Call {
+	return &SwitchServiceClient_ConnectedMachines_Call{Call: _e.mock.On("ConnectedMachines", context1, switchServiceConnectedMachinesRequest)}
+}
+
+func (_c *SwitchServiceClient_ConnectedMachines_Call) Run(run func(context1 context.Context, switchServiceConnectedMachinesRequest *adminv2.SwitchServiceConnectedMachinesRequest)) *SwitchServiceClient_ConnectedMachines_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.SwitchServiceConnectedMachinesRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.SwitchServiceConnectedMachinesRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *SwitchServiceClient_ConnectedMachines_Call) Return(switchServiceConnectedMachinesResponse *adminv2.SwitchServiceConnectedMachinesResponse, err error) *SwitchServiceClient_ConnectedMachines_Call {
+	_c.Call.Return(switchServiceConnectedMachinesResponse, err)
+	return _c
+}
+
+func (_c *SwitchServiceClient_ConnectedMachines_Call) RunAndReturn(run func(context1 context.Context, switchServiceConnectedMachinesRequest *adminv2.SwitchServiceConnectedMachinesRequest) (*adminv2.SwitchServiceConnectedMachinesResponse, error)) *SwitchServiceClient_ConnectedMachines_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Delete provides a mock function for the type SwitchServiceClient
 func (_mock *SwitchServiceClient) Delete(context1 context.Context, switchServiceDeleteRequest *adminv2.SwitchServiceDeleteRequest) (*adminv2.SwitchServiceDeleteResponse, error) {
 	ret := _mock.Called(context1, switchServiceDeleteRequest)

@@ -11,16 +11,18 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class TenantServiceCreateRequest(_message.Message):
-    __slots__ = ("name", "description", "email", "avatar_url")
+    __slots__ = ("name", "description", "email", "avatar_url", "labels")
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     EMAIL_FIELD_NUMBER: _ClassVar[int]
     AVATAR_URL_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     name: str
     description: str
     email: str
     avatar_url: str
-    def __init__(self, name: _Optional[str] = ..., description: _Optional[str] = ..., email: _Optional[str] = ..., avatar_url: _Optional[str] = ...) -> None: ...
+    labels: _common_pb2.Labels
+    def __init__(self, name: _Optional[str] = ..., description: _Optional[str] = ..., email: _Optional[str] = ..., avatar_url: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class TenantServiceCreateResponse(_message.Message):
     __slots__ = ("tenant",)
@@ -29,16 +31,14 @@ class TenantServiceCreateResponse(_message.Message):
     def __init__(self, tenant: _Optional[_Union[_tenant_pb2.Tenant, _Mapping]] = ...) -> None: ...
 
 class TenantServiceListRequest(_message.Message):
-    __slots__ = ("login", "name", "email", "paging")
+    __slots__ = ("login", "name", "paging")
     LOGIN_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
-    EMAIL_FIELD_NUMBER: _ClassVar[int]
     PAGING_FIELD_NUMBER: _ClassVar[int]
     login: str
     name: str
-    email: str
     paging: _common_pb2.Paging
-    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., email: _Optional[str] = ..., paging: _Optional[_Union[_common_pb2.Paging, _Mapping]] = ...) -> None: ...
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., paging: _Optional[_Union[_common_pb2.Paging, _Mapping]] = ...) -> None: ...
 
 class TenantServiceListResponse(_message.Message):
     __slots__ = ("tenants", "next_page")

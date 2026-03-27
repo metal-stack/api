@@ -3,6 +3,7 @@ import datetime
 from buf.validate import validate_pb2 as _validate_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import machine_pb2 as _machine_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import switch_pb2 as _switch_pb2
 from google.protobuf.internal import containers as _containers
@@ -38,7 +39,7 @@ class SwitchServiceListResponse(_message.Message):
     def __init__(self, switches: _Optional[_Iterable[_Union[_switch_pb2.Switch, _Mapping]]] = ...) -> None: ...
 
 class SwitchServiceUpdateRequest(_message.Message):
-    __slots__ = ("id", "update_meta", "updated_at", "description", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections")
+    __slots__ = ("id", "update_meta", "updated_at", "description", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os")
     ID_FIELD_NUMBER: _ClassVar[int]
     UPDATE_META_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
@@ -49,7 +50,6 @@ class SwitchServiceUpdateRequest(_message.Message):
     CONSOLE_COMMAND_FIELD_NUMBER: _ClassVar[int]
     NICS_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
-    MACHINE_CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
     id: str
     update_meta: _common_pb2.UpdateMeta
     updated_at: _timestamp_pb2.Timestamp
@@ -60,8 +60,7 @@ class SwitchServiceUpdateRequest(_message.Message):
     console_command: str
     nics: _containers.RepeatedCompositeFieldContainer[_switch_pb2.SwitchNic]
     os: _switch_pb2.SwitchOS
-    machine_connections: _containers.RepeatedCompositeFieldContainer[_switch_pb2.MachineConnection]
-    def __init__(self, id: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., description: _Optional[str] = ..., replace_mode: _Optional[_Union[_switch_pb2.SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[_switch_pb2.SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[_switch_pb2.SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[_switch_pb2.MachineConnection, _Mapping]]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., description: _Optional[str] = ..., replace_mode: _Optional[_Union[_switch_pb2.SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[_switch_pb2.SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[_switch_pb2.SwitchOS, _Mapping]] = ...) -> None: ...
 
 class SwitchServiceUpdateResponse(_message.Message):
     __slots__ = ("switch",)
@@ -112,3 +111,17 @@ class SwitchServicePortResponse(_message.Message):
     SWITCH_FIELD_NUMBER: _ClassVar[int]
     switch: _switch_pb2.Switch
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+
+class SwitchServiceConnectedMachinesRequest(_message.Message):
+    __slots__ = ("query", "machine_query")
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: _switch_pb2.SwitchQuery
+    machine_query: _machine_pb2.MachineQuery
+    def __init__(self, query: _Optional[_Union[_switch_pb2.SwitchQuery, _Mapping]] = ..., machine_query: _Optional[_Union[_machine_pb2.MachineQuery, _Mapping]] = ...) -> None: ...
+
+class SwitchServiceConnectedMachinesResponse(_message.Message):
+    __slots__ = ("switches_with_machines",)
+    SWITCHES_WITH_MACHINES_FIELD_NUMBER: _ClassVar[int]
+    switches_with_machines: _containers.RepeatedCompositeFieldContainer[_switch_pb2.SwitchWithMachines]
+    def __init__(self, switches_with_machines: _Optional[_Iterable[_Union[_switch_pb2.SwitchWithMachines, _Mapping]]] = ...) -> None: ...

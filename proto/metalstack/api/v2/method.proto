@@ -36,11 +36,13 @@ message MethodServiceTokenScopedListResponse {
   // Permissions a list of methods which can be called
   repeated MethodPermission permissions = 1;
   // ProjectRoles associates a project id with the corresponding role of the token owner
-  map<string, ProjectRole> project_roles = 3;
+  map<string, ProjectRole> project_roles = 2;
   // TenantRoles associates a tenant id with the corresponding role of the token owner
-  map<string, TenantRole> tenant_roles = 4;
+  map<string, TenantRole> tenant_roles = 3;
   // AdminRole defines the admin role of the token owner
-  optional AdminRole admin_role = 5 [(buf.validate.field).enum.defined_only = true];
+  optional AdminRole admin_role = 4 [(buf.validate.field).enum.defined_only = true];
   // InfraRole defines the infrastructure role of the token owner
-  optional InfraRole infra_role = 6 [(buf.validate.field).enum.defined_only = true];
+  optional InfraRole infra_role = 5 [(buf.validate.field).enum.defined_only = true];
+  // MachineRoles defines the machine roles of the token owner
+  map<string, MachineRole> machine_roles = 6;
 }

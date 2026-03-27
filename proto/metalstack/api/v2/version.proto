@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package metalstack.api.v2;
 
+import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // VersionService serves version related functions
 service VersionService {
@@ -16,13 +18,13 @@ service VersionService {
 // Version of the application
 message Version {
   // Version of the application
-  string version = 1;
+  string version = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Revision of the application
-  string revision = 2;
+  string revision = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // GitSHA1 of the application
-  string git_sha1 = 3;
+  string git_sha1 = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // BuildDate of the application
-  string build_date = 4;
+  string build_date = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
 // VersionServiceGetRequest is the request payload to get the version

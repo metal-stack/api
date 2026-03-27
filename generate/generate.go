@@ -39,8 +39,11 @@ var (
 
 type api struct {
 	Name     string
-	Services []string
-	Path     string
+	Services []struct {
+		Name     string
+		FileName string
+	}
+	Path string
 }
 
 func main() {
@@ -97,6 +100,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 		roles = permissions.Roles{
 			Admin:   permissions.Admin{},
 			Infra:   permissions.Infra{},
+			Machine: permissions.Machine{},
 			Tenant:  permissions.Tenant{},
 			Project: permissions.Project{},
 		}
@@ -114,6 +118,7 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			Self:    map[string]bool{},
 			Admin:   map[string]bool{},
 			Infra:   map[string]bool{},
+			Machine: map[string]bool{},
 			Tenant:  map[string]bool{},
 			Project: map[string]bool{},
 		}
@@ -166,6 +171,12 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 							roles.Infra[role] = append(roles.Infra[role], methodName)
 							visibility.Infra[methodName] = true
 						case v1.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
+							// noop
+						// Machine
+						case v1.MachineRole_MACHINE_ROLE_EDITOR.String(), v1.MachineRole_MACHINE_ROLE_VIEWER.String():
+							roles.Machine[role] = append(roles.Machine[role], methodName)
+							visibility.Machine[methodName] = true
+						case v1.MachineRole_MACHINE_ROLE_UNSPECIFIED.String():
 							// noop
 						// Visibility
 						case v1.Visibility_VISIBILITY_PUBLIC.String():
@@ -243,7 +254,13 @@ func svcs(root string) (map[string]api, error) {
 			}
 		}
 		for _, serviceDesc := range fd.GetService() {
-			a.Services = append(a.Services, *serviceDesc.Name)
+			a.Services = append(a.Services, struct {
+				Name     string
+				FileName string
+			}{
+				Name:     *serviceDesc.Name,
+				FileName: path.Base(filename),
+			})
 		}
 		result[name] = a
 	}

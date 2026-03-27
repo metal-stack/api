@@ -1,0 +1,98 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+
+// SizeReservationService serves size reservation related functions
+service SizeReservationService {
+  // Get a size reservation
+  rpc Get(SizeReservationServiceGetRequest) returns (SizeReservationServiceGetResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // List size reservations
+  rpc List(SizeReservationServiceListRequest) returns (SizeReservationServiceListResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (project_roles) = PROJECT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// SizeReservationServiceGetRequest is the request payload for a size get request
+message SizeReservationServiceGetRequest {
+  // ID of the size reservation to get
+  string id = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the size reservation
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// SizeReservationServiceListRequest is the request payload for a size list request
+message SizeReservationServiceListRequest {
+  // Project of the size reservation
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // Query for size reservations
+  SizeReservationQuery query = 2;
+}
+
+// SizeReservationServiceGetResponse is the response payload for a size reservation get request
+message SizeReservationServiceGetResponse {
+  //  Size reservation
+  SizeReservation size_reservation = 1;
+}
+
+// SizeReservationServiceListResponse is the response payload for a size reservation list request
+message SizeReservationServiceListResponse {
+  // Size reservations
+  repeated SizeReservation size_reservations = 1;
+}
+
+// SizeReservation
+message SizeReservation {
+  // Id of this size reservation, is generated on creation
+  string id = 1 [
+    (buf.validate.field).string.uuid = true,
+    (buf.validate.field).ignore = IGNORE_IF_ZERO_VALUE
+  ];
+  // Meta for this size reservation
+  Meta meta = 2;
+  // Name of this size reservation
+  string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Description of this size reservation
+  string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Project of the size reservation
+  string project = 5 [(buf.validate.field).string.uuid = true];
+  // Size id of this size reservation
+  string size = 6 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Partition ids of this size reservation
+  repeated string partitions = 7 [
+    (buf.validate.field).repeated.min_items = 1,
+    (buf.validate.field).repeated.unique = true,
+    (buf.validate.field).repeated.items.string.(metalstack.api.v2.is_partition) = true
+  ];
+  // Amount of reservations of this size reservation
+  int32 amount = 8 [(buf.validate.field).int32.gt = 0];
+}
+
+// SizeReservationQuery is used to search size reservations
+message SizeReservationQuery {
+  // ID of the size reservation to get
+  optional string id = 1 [(buf.validate.field).string.uuid = true];
+  // Name of this size reservation
+  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Description of this size reservation
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Size id of this size reservation
+  optional string size = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Project of the size reservation
+  optional string project = 5 [(buf.validate.field).string.uuid = true];
+  // Partition of the size reservation
+  optional string partition = 6 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  // Labels lists only size reservations containing the given labels
+  optional Labels labels = 7;
+}

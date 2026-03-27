@@ -43,6 +43,16 @@ service MachineService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
+  // BMCCommand send a command to the bmc of a machine
+  rpc BMCCommand(MachineServiceBMCCommandRequest) returns (MachineServiceBMCCommandResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
+  // GetBMC returns the BMC details of a machine
+  rpc GetBMC(MachineServiceGetBMCRequest) returns (MachineServiceGetBMCResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (project_roles) = PROJECT_ROLE_EDITOR;
+  }
 }
 
 // ------------------------ Service Messages ----------------------------------
@@ -85,38 +95,44 @@ message MachineServiceCreateRequest {
   // Can be specified to test new fsls during development of fsls
   optional string filesystem_layout = 9;
   // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
-  repeated string ssh_public_keys = 10 [(buf.validate.field).repeated = {
-    // At most 50 keys can be store.
-    // A lower bound can be set similarly with `min_items`.
-    max_items: 50
-    // `items` validate each value in this `repeated` field.
-    items: {
-      // `string` has string-specific rules for each value in the `repeated` field.
-      // The set of rules allowed here is the same as that of a string field.
-      string: {
-        // Each key must not be empty
-        min_len: 1
-        // Each key can contain at most 8192 characters.
-        max_len: 8192
+  repeated string ssh_public_keys = 10 [
+    (buf.validate.field).repeated = {
+      // At most 50 keys can be store.
+      // A lower bound can be set similarly with `min_items`.
+      max_items: 50
+      // `items` validate each value in this `repeated` field.
+      items: {
+        // `string` has string-specific rules for each value in the `repeated` field.
+        // The set of rules allowed here is the same as that of a string field.
+        string: {
+          // Each key must not be empty
+          min_len: 1
+          // Each key can contain at most 8192 characters.
+          max_len: 8192
+        }
       }
-    }
-  }];
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
   // Userdata contains instructions required to bootstrap the machine
   // AWS limits the max userdata size to 16k, lets allow twice as much
-  optional string userdata = 11 [(buf.validate.field).string = {max_len: 32768}];
+  optional string userdata = 11 [
+    (buf.validate.field).string = {max_len: 32768},
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // Labels to be attached to this machine allocation
   Labels labels = 12;
   // Networks the networks that this machine will be placed in.
   repeated MachineAllocationNetwork networks = 13;
   // IPs to to attach to this machine additionally
-  repeated string ips = 14 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
+  repeated MachineAllocationIp ips = 14;
   // PlacementTags by default machines are spread across the racks inside a partition for every project.
   // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
-  repeated string placement_tags = 15;
+  repeated string placement_tags = 15 [(buf.validate.field).repeated.max_items = 64];
   // DNSServer the dns servers used for the machine
-  repeated DNSServer dns_server = 16 [(buf.validate.field).repeated.max_items = 3];
+  repeated DNSServer dns_servers = 16 [(buf.validate.field).repeated.max_items = 3];
   // NTPServer the ntp servers used for the machine
-  repeated NTPServer ntp_server = 17 [(buf.validate.field).repeated.max_items = 10];
+  repeated NTPServer ntp_servers = 17 [(buf.validate.field).repeated.max_items = 10];
   // AllocationType of this machine
   MachineAllocationType allocation_type = 18 [(buf.validate.field).enum.defined_only = true];
   // FirewallSpec provides firewall specific parameters if allocationType is firewall
@@ -126,7 +142,7 @@ message MachineServiceCreateRequest {
 // FirewallSpec contains firewall specific firewall creation parameters
 message FirewallSpec {
   // FirewallRules to be applied if this is a firewall
-  FirewallRules firewall_rules = 19;
+  FirewallRules firewall_rules = 1;
 }
 
 // MachineServiceCreateResponse is the request payload for a machine create response
@@ -148,22 +164,25 @@ message MachineServiceUpdateRequest {
   // Labels to update on this machine allocation
   optional UpdateLabels labels = 5;
   // SSHPublicKeys which should be update of this machine allocation
-  repeated string ssh_public_keys = 6 [(buf.validate.field).repeated = {
-    // At most 50 keys can be store.
-    // A lower bound can be set similarly with `min_items`.
-    max_items: 50
-    // `items` validate each value in this `repeated` field.
-    items: {
-      // `string` has string-specific rules for each value in the `repeated` field.
-      // The set of rules allowed here is the same as that of a string field.
-      string: {
-        // Each key must not be empty
-        min_len: 1
-        // Each key can contain at most 8192 characters.
-        max_len: 8192
+  repeated string ssh_public_keys = 6 [
+    (buf.validate.field).repeated = {
+      // At most 50 keys can be store.
+      // A lower bound can be set similarly with `min_items`.
+      max_items: 50
+      // `items` validate each value in this `repeated` field.
+      items: {
+        // `string` has string-specific rules for each value in the `repeated` field.
+        // The set of rules allowed here is the same as that of a string field.
+        string: {
+          // Each key must not be empty
+          min_len: 1
+          // Each key can contain at most 8192 characters.
+          max_len: 8192
+        }
       }
-    }
-  }];
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
 }
 
 // MachineServiceUpdateResponse is the request payload for a machine update response
@@ -200,6 +219,35 @@ message MachineServiceDeleteResponse {
   Machine machine = 1;
 }
 
+// MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+message MachineServiceBMCCommandRequest {
+  // UUID of the machine to send the command to
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+  // Command to send to the bmc of the machine
+  MachineBMCCommand command = 3 [(buf.validate.field).enum.defined_only = true];
+}
+
+// MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+message MachineServiceBMCCommandResponse {}
+
+// MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+message MachineServiceGetBMCRequest {
+  // UUID of the machine to get
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Project of the machine
+  string project = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+message MachineServiceGetBMCResponse {
+  // UUID of the machine
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // BMC contains the BMC details of this machine
+  MachineBMCReport bmc = 2;
+}
+
 // --------------- Types ----------------------------------------------------------
 
 // Machine represents a physical bare metal machine.
@@ -216,14 +264,12 @@ message Machine {
   Size size = 5;
   // Hardware specs of this machine
   MachineHardware hardware = 6;
-  // Bios details for this machine
-  MachineBios bios = 7;
   // Allocation details
-  MachineAllocation allocation = 8;
+  MachineAllocation allocation = 7;
   // Status contains several status details related to this machine
-  MachineStatus status = 9;
+  MachineStatus status = 8;
   // MachineRecentProvisioningEvents contains the recent provisioning events
-  MachineRecentProvisioningEvents recent_provisioning_events = 10;
+  MachineRecentProvisioningEvents recent_provisioning_events = 9;
 }
 
 // MachineStatus contains several status details related to this machine
@@ -271,33 +317,39 @@ message MachineAllocation {
   // Hostname of the allocated machine
   string hostname = 10 [(buf.validate.field).string.hostname = true];
   // SSHPublicKeys which should be installed on this machine
-  repeated string ssh_public_keys = 11 [(buf.validate.field).repeated = {
-    // At most 50 keys can be store.
-    // A lower bound can be set similarly with `min_items`.
-    max_items: 50
-    // `items` validate each value in this `repeated` field.
-    items: {
-      // `string` has string-specific rules for each value in the `repeated` field.
-      // The set of rules allowed here is the same as that of a string field.
-      string: {
-        // Each key must not be empty
-        min_len: 1
-        // Each key can contain at most 8192 characters.
-        max_len: 8192
+  repeated string ssh_public_keys = 11 [
+    (buf.validate.field).repeated = {
+      // At most 50 keys can be store.
+      // A lower bound can be set similarly with `min_items`.
+      max_items: 50
+      // `items` validate each value in this `repeated` field.
+      items: {
+        // `string` has string-specific rules for each value in the `repeated` field.
+        // The set of rules allowed here is the same as that of a string field.
+        string: {
+          // Each key must not be empty
+          min_len: 1
+          // Each key can contain at most 8192 characters.
+          max_len: 8192
+        }
       }
-    }
-  }];
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
   // Userdata contains instructions required to bootstrap the machine.
   // AWS limits the max userdata size to 16k, lets allow twice as much
-  string userdata = 12 [(buf.validate.field).string = {max_len: 32768}];
+  string userdata = 12 [
+    (buf.validate.field).string = {max_len: 32768},
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // AllocationType of this machine
   MachineAllocationType allocation_type = 13 [(buf.validate.field).enum.defined_only = true];
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 14;
   // DNSServers for this machine
-  repeated DNSServer dns_server = 15 [(buf.validate.field).repeated.max_items = 3];
+  repeated DNSServer dns_servers = 15 [(buf.validate.field).repeated.max_items = 3];
   // NTPServers for this machine
-  repeated NTPServer ntp_server = 16 [(buf.validate.field).repeated.max_items = 10];
+  repeated NTPServer ntp_servers = 16 [(buf.validate.field).repeated.max_items = 10];
   // VPN connection configuration
   MachineVPN vpn = 17;
 }
@@ -305,10 +357,18 @@ message MachineAllocation {
 // MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired
 message MachineAllocationNetwork {
   // Network the id of the network that this machine will be placed in
-  string network = 1;
+  string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
   // By default one ip address is acquired per network for the machine
   optional bool no_auto_acquire_ip = 2;
+}
+
+// MachineAllocationIp defines a ip and a optional namespace which should be attached to this machine during create
+message MachineAllocationIp {
+  // IP to to attach to this machine additionally
+  string ip = 1 [(buf.validate.field).string.ip = true];
+  // Namespace where this ip was created, usually the project of the namespaced tenant network.
+  optional string namespace = 2 [(buf.validate.field).string.uuid = true];
 }
 
 // FirewallRules can be defined during firewall allocation
@@ -393,6 +453,8 @@ message MachineNetwork {
   uint64 vrf = 7;
   // ASN the autonomous system number for this network
   uint32 asn = 8;
+  // Project is the project uuid associated with this network
+  optional string project = 9 [(buf.validate.field).string.uuid = true];
 }
 
 // MachineHardware contains hardware details
@@ -400,13 +462,13 @@ message MachineHardware {
   // Memory the total memory of the machine in bytes
   uint64 memory = 1;
   // Disks the list of block devices of this machine
-  repeated MachineBlockDevice disks = 3;
+  repeated MachineBlockDevice disks = 2;
   // CPUs the cpu details
-  repeated MetalCPU cpus = 4;
+  repeated MetalCPU cpus = 3;
   // GPUs the gpu details
-  repeated MetalGPU gpus = 5;
+  repeated MetalGPU gpus = 4;
   // Nics the list of network interfaces of this machine
-  repeated MachineNic nics = 6;
+  repeated MachineNic nics = 5;
 }
 
 // MetalCPU contains details of a cpu in this machine
@@ -465,7 +527,7 @@ enum MachineState {
   MACHINE_STATE_RESERVED = 1 [(enum_string_value) = "reserved"];
   // MACHINE_STATE_LOCKED this machine is locked
   MACHINE_STATE_LOCKED = 2 [(enum_string_value) = "locked"];
-  // MACHINE_STATE_LOCKED this machine is available for all
+  // MACHINE_STATE_AVAILABLE this machine is available for all
   MACHINE_STATE_AVAILABLE = 3 [(enum_string_value) = "available"];
 }
 
@@ -477,14 +539,99 @@ message MachineChassisIdentifyLEDState {
   string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
+// MachineBMCReport is sent from the metal-bmc to update bmc and power related details
+message MachineBMCReport {
+  // Bmc contains bmc details
+  MachineBMC bmc = 1;
+  // Bios contains bios details
+  MachineBios bios = 2;
+  // Fru containers field replaceable unit details
+  MachineFRU fru = 3;
+  // PowerMetric contains the power statistics of the machine
+  MachinePowerMetric power_metric = 4;
+  // PowerSupplies contains details about all power supplies and their state
+  repeated MachinePowerSupply power_supplies = 5;
+  // LedState indicates the state of the indicator LED on this machine
+  MachineChassisIdentifyLEDState led_state = 6;
+  // UpdatedAt contains the date when this data was last updated
+  google.protobuf.Timestamp updated_at = 7;
+}
+
 // MachineBios contains BIOS details of this machine
 message MachineBios {
   // Version the bios version
-  string version = 1 [(buf.validate.field).string = {max_len: 256}];
+  string version = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Vendor the bios vendor
-  string vendor = 2 [(buf.validate.field).string = {max_len: 256}];
+  string vendor = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Date the bios date as string because every vendor has different ideas howto describe the date
-  string date = 3 [(buf.validate.field).string = {max_len: 256}];
+  string date = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// MachineBMC describe details of the ipmi or out of band device
+message MachineBMC {
+  // Address of this ipmi device from outside in the form of <ip or hostname>:<port>
+  string address = 1 [(buf.validate.field).string.host_and_port = true];
+  // Mac address of the network interface of this ipmi device
+  string mac = 2 [(buf.validate.field).string.(macaddress) = true];
+  // User of this ipmi device
+  string user = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Password of this ipmi device
+  string password = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Interface of this ipmi device
+  string interface = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Version of this bmc device
+  string version = 6 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // PowerState of this machine
+  string power_state = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// MachineFRU describes details to the machine which are required in case of a necessary replacement
+message MachineFRU {
+  // ChassisPartNumber is the part number of the machine chassis
+  optional string chassis_part_number = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // ChassisPartSerial is the serial number of the machine chassis
+  optional string chassis_part_serial = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // BoardMfg is the short description of the mainboard
+  optional string board_mfg = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // BoardMfgSerial is the serial number of the mainboard
+  optional string board_mfg_serial = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // BoardPartNumber is the part number of the mainboard
+  optional string board_part_number = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // ProductManufacturer is the manufacturer of the machine
+  optional string product_manufacturer = 6 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // ProductPartNumber is the part number of the machine
+  optional string product_part_number = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // ProductSerial is the serial number of the machine
+  optional string product_serial = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// MachinePowerMetric contains metrics of the power consumption of a machine
+message MachinePowerMetric {
+  // AverageConsumedWatts shall represent the
+  // average power level that occurred averaged over the last IntervalInMin
+  // minutes.
+  float average_consumed_watts = 1;
+  // IntervalInMin shall represent the time
+  // interval (or window), in minutes, in which the PowerMetrics properties
+  // are measured over.
+  // Should be an integer, but some Dell implementations return as a float.
+  float interval_in_min = 2;
+  // MaxConsumedWatts shall represent the
+  // maximum power level in watts that occurred within the last
+  // IntervalInMin minutes.
+  float max_consumed_watts = 3;
+  // MinConsumedWatts shall represent the
+  // minimum power level in watts that occurred within the last
+  // IntervalInMin minutes.
+  float min_consumed_watts = 4;
+}
+
+// MachinePowerSupply contains details of the power supply of a machine
+message MachinePowerSupply {
+  // Health of the powersupply
+  string health = 1;
+  // State of the powersupply
+  string state = 2;
 }
 
 // MachineRecentProvisioningEvents the recent provisioning events for this machine
@@ -556,7 +703,7 @@ message MachineVPN {
   // Connected indicate if this machine is connected to the VPN
   bool connected = 3;
   // IPs of the machine connected to the vpn
-  repeated string ips = 5 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
+  repeated string ips = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
 // MachineLiveliness specifies the liveliness of a machine
@@ -579,6 +726,34 @@ enum MachineAllocationType {
   MACHINE_ALLOCATION_TYPE_MACHINE = 1 [(enum_string_value) = "machine"];
   // MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall
   MACHINE_ALLOCATION_TYPE_FIREWALL = 2 [(enum_string_value) = "firewall"];
+}
+
+// MachineBMCCommand defines commands send to the BMC of the machine
+enum MachineBMCCommand {
+  // MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+  MACHINE_BMC_COMMAND_UNSPECIFIED = 0;
+  // MACHINE_BMC_COMMAND_ON Power on the machine
+  MACHINE_BMC_COMMAND_ON = 1 [(enum_string_value) = "on"];
+  // MACHINE_BMC_COMMAND_OFF Power off the machine
+  MACHINE_BMC_COMMAND_OFF = 2 [(enum_string_value) = "off"];
+  // MACHINE_BMC_COMMAND_RESET Power reset the machine
+  MACHINE_BMC_COMMAND_RESET = 3 [(enum_string_value) = "reset"];
+  // MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+  MACHINE_BMC_COMMAND_CYCLE = 4 [(enum_string_value) = "cycle"];
+  // MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios
+  MACHINE_BMC_COMMAND_BOOT_TO_BIOS = 5 [(enum_string_value) = "boot-to-bios"];
+  // MACHINE_BMC_COMMAND_BOOT_FROM_DISK boot the machine from hard disk
+  MACHINE_BMC_COMMAND_BOOT_FROM_DISK = 6 [(enum_string_value) = "boot-from-disk"];
+  // MACHINE_BMC_COMMAND_BOOT_FROM_PXE boot the machine from pxe
+  MACHINE_BMC_COMMAND_BOOT_FROM_PXE = 7 [(enum_string_value) = "boot-from-pxe"];
+  // MACHINE_BMC_COMMAND_IDENTIFY_LED_ON set identify led of the machine chassis to on
+  MACHINE_BMC_COMMAND_IDENTIFY_LED_ON = 8 [(enum_string_value) = "identify-led-on"];
+  // MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off
+  MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9 [(enum_string_value) = "identify-led-off"];
+  // MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe
+  MACHINE_BMC_COMMAND_MACHINE_DELETED = 10 [(enum_string_value) = "machine-deleted"];
+  // MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was created to set the boot order to boot from disk
+  MACHINE_BMC_COMMAND_MACHINE_CREATED = 11 [(enum_string_value) = "machine-created"];
 }
 
 // MachineQuery contains fields which can be specified to list specific machines.
@@ -612,14 +787,23 @@ message MachineQuery {
   optional MachineNicQuery nic = 9;
   // Disk specific machine queries
   optional MachineDiskQuery disk = 10;
-  // IPMI specific machine queries
-  optional MachineIPMIQuery ipmi = 11;
-  // FRU specific machine queries
+  // Bmc specific machine queries
+  optional MachineBMCQuery bmc = 11;
+  // Fru specific machine queries
   optional MachineFRUQuery fru = 12;
   // Hardware specific machine query
   optional MachineHardwareQuery hardware = 13;
   // State this machine has
   optional MachineState state = 14;
+  // Waiting if set to true, only waiting machines are returned.
+  // Only useful for admins.
+  optional bool waiting = 15;
+  // Preallocated if set to true, only machines which are preallocated are returned.
+  // Only useful for admins.
+  optional bool preallocated = 16;
+  // NotAllocated if set to true, only machines which are not allocated are returned.
+  // Only useful for admins.
+  optional bool not_allocated = 17;
 }
 
 // MachineAllocationQuery allocation specific query parameters
@@ -718,8 +902,8 @@ message MachineDiskQuery {
   repeated uint64 sizes = 2 [(buf.validate.field).repeated = {max_items: 100}];
 }
 
-// MachineIPMIQuery machine ipmi specific machine queries
-message MachineIPMIQuery {
+// MachineBMCQuery machine ipmi or bmc specific machine queries
+message MachineBMCQuery {
   // Address of the ipmi system of this machine
   optional string address = 1 [(buf.validate.field).string.ip = true];
   // Mac of the ipmi system of this machine
