@@ -589,10 +589,10 @@ type MachineServiceCreateRequest struct {
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Hostname the hostname for the allocated machine (defaults to metal)
 	Hostname *string `protobuf:"bytes,5,opt,name=hostname,proto3,oneof" json:"hostname,omitempty"`
-	// Partition the partition id to assign this machine to
-	Partition string `protobuf:"bytes,6,opt,name=partition,proto3" json:"partition,omitempty"`
-	// Size of the machine to create
-	Size string `protobuf:"bytes,7,opt,name=size,proto3" json:"size,omitempty"`
+	// Partition the partition id to assign this machine to, must be omitted if uuid is given
+	Partition *string `protobuf:"bytes,6,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
+	// Size of the machine to create, must be omitted if uuid is given
+	Size *string `protobuf:"bytes,7,opt,name=size,proto3,oneof" json:"size,omitempty"`
 	// Image which should be installed on this machine
 	Image string `protobuf:"bytes,8,opt,name=image,proto3" json:"image,omitempty"`
 	// FilesystemLayout which should be applied for the operating system installation
@@ -689,15 +689,15 @@ func (x *MachineServiceCreateRequest) GetHostname() string {
 }
 
 func (x *MachineServiceCreateRequest) GetPartition() string {
-	if x != nil {
-		return x.Partition
+	if x != nil && x.Partition != nil {
+		return *x.Partition
 	}
 	return ""
 }
 
 func (x *MachineServiceCreateRequest) GetSize() string {
-	if x != nil {
-		return x.Size
+	if x != nil && x.Size != nil {
+		return *x.Size
 	}
 	return ""
 }
@@ -4185,21 +4185,21 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\x9c\b\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xd0\b\n" +
 	"\x1bMachineServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12!\n" +
 	"\x04uuid\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12\x1f\n" +
 	"\x04name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x122\n" +
 	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12(\n" +
-	"\bhostname\x18\x05 \x01(\tB\a\xbaH\x04r\x02h\x01H\x02R\bhostname\x88\x01\x01\x12)\n" +
-	"\tpartition\x18\x06 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12\x1c\n" +
-	"\x04size\x18\a \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x04size\x12\x1e\n" +
-	"\x05image\x18\b \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x05image\x120\n" +
-	"\x11filesystem_layout\x18\t \x01(\tH\x03R\x10filesystemLayout\x88\x01\x01\x12?\n" +
+	"\bhostname\x18\x05 \x01(\tB\a\xbaH\x04r\x02h\x01H\x02R\bhostname\x88\x01\x01\x12.\n" +
+	"\tpartition\x18\x06 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x03R\tpartition\x88\x01\x01\x12$\n" +
+	"\x04size\x18\a \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x04R\x04size\x88\x01\x01\x12!\n" +
+	"\x05image\x18\b \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x05image\x12=\n" +
+	"\x11filesystem_layout\x18\t \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x05R\x10filesystemLayout\x88\x01\x01\x12?\n" +
 	"\x0fssh_public_keys\x18\n" +
 	" \x03(\tB\x17\xbaH\x14\x92\x01\x11Ȥ\xb3\xb1\x02\x01\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x120\n" +
 	"\buserdata\x18\v \x01(\tB\x0f\xbaH\fr\n" +
-	"\U00033bb1\x02\x01\x18\x80\x80\x02H\x04R\buserdata\x88\x01\x01\x121\n" +
+	"\U00033bb1\x02\x01\x18\x80\x80\x02H\x06R\buserdata\x88\x01\x01\x121\n" +
 	"\x06labels\x18\f \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12G\n" +
 	"\bnetworks\x18\r \x03(\v2+.metalstack.api.v2.MachineAllocationNetworkR\bnetworks\x12/\n" +
 	"\x0eplacement_tags\x18\x0e \x03(\tB\b\xbaH\x05\x92\x01\x02\x10@R\rplacementTags\x12G\n" +
@@ -4212,7 +4212,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\rfirewall_spec\x18\x12 \x01(\v2\x1f.metalstack.api.v2.FirewallSpecR\ffirewallSpecB\a\n" +
 	"\x05_uuidB\x0e\n" +
 	"\f_descriptionB\v\n" +
-	"\t_hostnameB\x14\n" +
+	"\t_hostnameB\f\n" +
+	"\n" +
+	"_partitionB\a\n" +
+	"\x05_sizeB\x14\n" +
 	"\x12_filesystem_layoutB\v\n" +
 	"\t_userdata\"W\n" +
 	"\fFirewallSpec\x12G\n" +
@@ -4470,15 +4473,13 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\n" +
 	"\b_waitingB\x0f\n" +
 	"\r_preallocatedB\x10\n" +
-	"\x0e_not_allocated\"\xde\x04\n" +
+	"\x0e_not_allocated\"\xe0\x04\n" +
 	"\x16MachineAllocationQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12'\n" +
-	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x02R\aproject\x88\x01\x01\x12%\n" +
-	"\x05image\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x05image\x88\x01\x01\x12<\n" +
-	"\x11filesystem_layout\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x10filesystemLayout\x88\x01\x01\x12+\n" +
+	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x02R\aproject\x88\x01\x01\x12&\n" +
+	"\x05image\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x03R\x05image\x88\x01\x01\x12=\n" +
+	"\x11filesystem_layout\x18\x05 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x04R\x10filesystemLayout\x88\x01\x01\x12+\n" +
 	"\bhostname\x18\x06 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\bhostname\x88\x01\x01\x12`\n" +
 	"\x0fallocation_type\x18\a \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\x0eallocationType\x88\x01\x01\x126\n" +

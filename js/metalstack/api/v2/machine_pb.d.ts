@@ -91,17 +91,17 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
      */
     hostname?: string;
     /**
-     * Partition the partition id to assign this machine to
+     * Partition the partition id to assign this machine to, must be omitted if uuid is given
      *
-     * @generated from field: string partition = 6;
+     * @generated from field: optional string partition = 6;
      */
-    partition: string;
+    partition?: string;
     /**
-     * Size of the machine to create
+     * Size of the machine to create, must be omitted if uuid is given
      *
-     * @generated from field: string size = 7;
+     * @generated from field: optional string size = 7;
      */
-    size: string;
+    size?: string;
     /**
      * Image which should be installed on this machine
      *

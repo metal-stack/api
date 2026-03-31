@@ -67,8 +67,9 @@ func TestValidateMachine(t *testing.T) {
 			name: "Machine create, userdata with whitespaces",
 			msg: &apiv2.MachineServiceCreateRequest{
 				Project:   "9fdc7bd9-d412-4578-a20f-bf7c03f20135",
-				Partition: "partition-1",
+				Partition: new("partition-1"),
 				Name:      "testserver",
+				Image:     "debian-13",
 				Userdata:  new(" userdata with whitespaces"),
 			},
 			wantErr:          true,
@@ -78,7 +79,8 @@ func TestValidateMachine(t *testing.T) {
 			name: "Machine create, one ssh public key with whitespaces",
 			msg: &apiv2.MachineServiceCreateRequest{
 				Project:   "9fdc7bd9-d412-4578-a20f-bf7c03f20135",
-				Partition: "partition-1",
+				Partition: new("partition-1"),
+				Image:     "debian-13",
 				Name:      "testserver",
 				SshPublicKeys: []string{
 					"good key",

@@ -84,16 +84,16 @@ message MachineServiceCreateRequest {
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Hostname the hostname for the allocated machine (defaults to metal)
   optional string hostname = 5 [(buf.validate.field).string.hostname = true];
-  // Partition the partition id to assign this machine to
-  string partition = 6 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // Size of the machine to create
-  string size = 7 [(buf.validate.field).string = {max_len: 128}];
+  // Partition the partition id to assign this machine to, must be omitted if uuid is given
+  optional string partition = 6 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  // Size of the machine to create, must be omitted if uuid is given
+  optional string size = 7 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Image which should be installed on this machine
-  string image = 8 [(buf.validate.field).string = {max_len: 128}];
+  string image = 8 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // FilesystemLayout which should be applied for the operating system installation
   // Is defaulted by a lookup at the available fsls for this size and image.
   // Can be specified to test new fsls during development of fsls
-  optional string filesystem_layout = 9;
+  optional string filesystem_layout = 9 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
   repeated string ssh_public_keys = 10 [
     (buf.validate.field).repeated = {
@@ -807,15 +807,9 @@ message MachineAllocationQuery {
   // Project of the machine to get
   optional string project = 3 [(buf.validate.field).string.uuid = true];
   // Image of the machine to get
-  optional string image = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string image = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // FilesystemLayout of the machine to get
-  optional string filesystem_layout = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string filesystem_layout = 5 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Hostname of the machine to get
   optional string hostname = 6 [(buf.validate.field).string = {
     min_len: 2
