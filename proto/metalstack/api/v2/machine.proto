@@ -515,9 +515,9 @@ message MachineBlockDevice {
 enum MachineState {
   // MACHINE_STATE_UNSPECIFIED is not specified
   MACHINE_STATE_UNSPECIFIED = 0 [(enum_string_value) = ""];
-  // MACHINE_STATE_RESERVED this machine is reserved
+  // MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during machine allocation
   MACHINE_STATE_RESERVED = 1 [(enum_string_value) = "reserved"];
-  // MACHINE_STATE_LOCKED this machine is locked
+  // MACHINE_STATE_LOCKED this machine is locked, e.g. this machine cannot be allocated or deleted
   MACHINE_STATE_LOCKED = 2 [(enum_string_value) = "locked"];
   // MACHINE_STATE_AVAILABLE this machine is available for all
   MACHINE_STATE_AVAILABLE = 3 [(enum_string_value) = "available"];

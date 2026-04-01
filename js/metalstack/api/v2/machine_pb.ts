@@ -2266,14 +2266,14 @@ export enum MachineState {
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_STATE_RESERVED this machine is reserved
+   * MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during machine allocation
    *
    * @generated from enum value: MACHINE_STATE_RESERVED = 1;
    */
   RESERVED = 1,
 
   /**
-   * MACHINE_STATE_LOCKED this machine is locked
+   * MACHINE_STATE_LOCKED this machine is locked, e.g. this machine cannot be allocated or deleted
    *
    * @generated from enum value: MACHINE_STATE_LOCKED = 2;
    */

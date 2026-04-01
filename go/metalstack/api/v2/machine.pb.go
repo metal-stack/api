@@ -82,9 +82,9 @@ type MachineState int32
 const (
 	// MACHINE_STATE_UNSPECIFIED is not specified
 	MachineState_MACHINE_STATE_UNSPECIFIED MachineState = 0
-	// MACHINE_STATE_RESERVED this machine is reserved
+	// MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during machine allocation
 	MachineState_MACHINE_STATE_RESERVED MachineState = 1
-	// MACHINE_STATE_LOCKED this machine is locked
+	// MACHINE_STATE_LOCKED this machine is locked, e.g. this machine cannot be allocated or deleted
 	MachineState_MACHINE_STATE_LOCKED MachineState = 2
 	// MACHINE_STATE_AVAILABLE this machine is available for all
 	MachineState_MACHINE_STATE_AVAILABLE MachineState = 3
