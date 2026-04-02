@@ -19,7 +19,7 @@ export const file_metalstack_admin_v2_size: GenFile = /*@__PURE__*/
   fileDesc("Ch5tZXRhbHN0YWNrL2FkbWluL3YyL3NpemUucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiQQoYU2l6ZVNlcnZpY2VDcmVhdGVSZXF1ZXN0EiUKBHNpemUYASABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5TaXplIkIKGVNpemVTZXJ2aWNlQ3JlYXRlUmVzcG9uc2USJQoEc2l6ZRgBIAEoCzIXLm1ldGFsc3RhY2suYXBpLnYyLlNpemUiyAIKGFNpemVTZXJ2aWNlVXBkYXRlUmVxdWVzdBIXCgJpZBgBIAEoCUILukgIcgbAs66xAgESOgoLdXBkYXRlX21ldGEYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVNZXRhQga6SAPIAQESHgoEbmFtZRgDIAEoCUILukgIcgbAs66xAgFIAIgBARIlCgtkZXNjcmlwdGlvbhgEIAEoCUILukgIcgbIs66xAgFIAYgBARI2Cgtjb25zdHJhaW50cxgFIAMoCzIhLm1ldGFsc3RhY2suYXBpLnYyLlNpemVDb25zdHJhaW50EjQKBmxhYmVscxgGIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gCiAEBQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIJCgdfbGFiZWxzIkIKGVNpemVTZXJ2aWNlVXBkYXRlUmVzcG9uc2USJQoEc2l6ZRgBIAEoCzIXLm1ldGFsc3RhY2suYXBpLnYyLlNpemUiMwoYU2l6ZVNlcnZpY2VEZWxldGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECASJCChlTaXplU2VydmljZURlbGV0ZVJlc3BvbnNlEiUKBHNpemUYASABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5TaXplMt0CCgtTaXplU2VydmljZRJuCgZDcmVhdGUSLS5tZXRhbHN0YWNrLmFkbWluLnYyLlNpemVTZXJ2aWNlQ3JlYXRlUmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuU2l6ZVNlcnZpY2VDcmVhdGVSZXNwb25zZSIF0vMYAQESbgoGVXBkYXRlEi0ubWV0YWxzdGFjay5hZG1pbi52Mi5TaXplU2VydmljZVVwZGF0ZVJlcXVlc3QaLi5tZXRhbHN0YWNrLmFkbWluLnYyLlNpemVTZXJ2aWNlVXBkYXRlUmVzcG9uc2UiBdLzGAEBEm4KBkRlbGV0ZRItLm1ldGFsc3RhY2suYWRtaW4udjIuU2l6ZVNlcnZpY2VEZWxldGVSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5TaXplU2VydmljZURlbGV0ZVJlc3BvbnNlIgXS8xgBAULNAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCCVNpemVQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_size]);
 
 /**
- * SizeServiceCreateRequest is the request payload for a size create request
+ * SizeServiceCreateRequest is the request payload for creating a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceCreateRequest
  */
@@ -40,13 +40,13 @@ export const SizeServiceCreateRequestSchema: GenMessage<SizeServiceCreateRequest
   messageDesc(file_metalstack_admin_v2_size, 0);
 
 /**
- * SizeServiceGetResponse is the response payload for a size create request
+ * SizeServiceCreateResponse is the response payload for creating a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceCreateResponse
  */
 export type SizeServiceCreateResponse = Message<"metalstack.admin.v2.SizeServiceCreateResponse"> & {
   /**
-   * Size the size
+   * Size contains the created size
    *
    * @generated from field: metalstack.api.v2.Size size = 1;
    */
@@ -61,7 +61,7 @@ export const SizeServiceCreateResponseSchema: GenMessage<SizeServiceCreateRespon
   messageDesc(file_metalstack_admin_v2_size, 1);
 
 /**
- * SizeServiceUpdateRequest is the request payload for a size update request
+ * SizeServiceUpdateRequest is the request payload for updating a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceUpdateRequest
  */
@@ -117,13 +117,13 @@ export const SizeServiceUpdateRequestSchema: GenMessage<SizeServiceUpdateRequest
   messageDesc(file_metalstack_admin_v2_size, 2);
 
 /**
- * SizeServiceUpdateResponse is the response payload for a size update request
+ * SizeServiceUpdateResponse is the response payload for updating a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceUpdateResponse
  */
 export type SizeServiceUpdateResponse = Message<"metalstack.admin.v2.SizeServiceUpdateResponse"> & {
   /**
-   * Size the size
+   * Size contains the updated size
    *
    * @generated from field: metalstack.api.v2.Size size = 1;
    */
@@ -138,7 +138,7 @@ export const SizeServiceUpdateResponseSchema: GenMessage<SizeServiceUpdateRespon
   messageDesc(file_metalstack_admin_v2_size, 3);
 
 /**
- * SizeServiceDeleteRequest is the request payload for a size delete request
+ * SizeServiceDeleteRequest is the request payload for deleting a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceDeleteRequest
  */
@@ -159,13 +159,13 @@ export const SizeServiceDeleteRequestSchema: GenMessage<SizeServiceDeleteRequest
   messageDesc(file_metalstack_admin_v2_size, 4);
 
 /**
- * SizeServiceDeleteResponse is the response payload for a size delete request
+ * SizeServiceDeleteResponse is the response payload for deleting a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceDeleteResponse
  */
 export type SizeServiceDeleteResponse = Message<"metalstack.admin.v2.SizeServiceDeleteResponse"> & {
   /**
-   * Size the size
+   * Size contains the deleted size
    *
    * @generated from field: metalstack.api.v2.Size size = 1;
    */
@@ -180,13 +180,13 @@ export const SizeServiceDeleteResponseSchema: GenMessage<SizeServiceDeleteRespon
   messageDesc(file_metalstack_admin_v2_size, 5);
 
 /**
- * SizeService serves size related functions
+ * SizeService provides size management operations.
  *
  * @generated from service metalstack.admin.v2.SizeService
  */
 export const SizeService: GenService<{
   /**
-   * Create a size
+   * Creates a new size.
    *
    * @generated from rpc metalstack.admin.v2.SizeService.Create
    */
@@ -196,7 +196,7 @@ export const SizeService: GenService<{
     output: typeof SizeServiceCreateResponseSchema;
   },
   /**
-   * Update a size
+   * Updates a size.
    *
    * @generated from rpc metalstack.admin.v2.SizeService.Update
    */
@@ -206,7 +206,7 @@ export const SizeService: GenService<{
     output: typeof SizeServiceUpdateResponseSchema;
   },
   /**
-   * Delete a size
+   * Deletes a size.
    *
    * @generated from rpc metalstack.admin.v2.SizeService.Delete
    */

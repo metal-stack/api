@@ -39,7 +39,7 @@ const (
 
 // EventServiceClient is a client for the metalstack.infra.v2.EventService service.
 type EventServiceClient interface {
-	// Send a series of machine provisioning events.
+	// Sends a series of machine provisioning events.
 	Send(context.Context, *v2.EventServiceSendRequest) (*v2.EventServiceSendResponse, error)
 }
 
@@ -79,7 +79,7 @@ func (c *eventServiceClient) Send(ctx context.Context, req *v2.EventServiceSendR
 
 // EventServiceHandler is an implementation of the metalstack.infra.v2.EventService service.
 type EventServiceHandler interface {
-	// Send a series of machine provisioning events.
+	// Sends a series of machine provisioning events.
 	Send(context.Context, *v2.EventServiceSendRequest) (*v2.EventServiceSendResponse, error)
 }
 

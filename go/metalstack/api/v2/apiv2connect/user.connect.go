@@ -39,7 +39,7 @@ const (
 
 // UserServiceClient is a client for the metalstack.api.v2.UserService service.
 type UserServiceClient interface {
-	// Get a User
+	// Returns the authenticated user.
 	Get(context.Context, *v2.UserServiceGetRequest) (*v2.UserServiceGetResponse, error)
 }
 
@@ -79,7 +79,7 @@ func (c *userServiceClient) Get(ctx context.Context, req *v2.UserServiceGetReque
 
 // UserServiceHandler is an implementation of the metalstack.api.v2.UserService service.
 type UserServiceHandler interface {
-	// Get a User
+	// Returns the authenticated user.
 	Get(context.Context, *v2.UserServiceGetRequest) (*v2.UserServiceGetResponse, error)
 }
 

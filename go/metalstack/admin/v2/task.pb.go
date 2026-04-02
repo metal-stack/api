@@ -24,25 +24,25 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// TaskState defines the state of the task
+// TaskState defines the state of the task.
 type TaskState int32
 
 const (
-	// TASK_STATE_UNSPECIFIED indicates a undefined state
+	// TASK_STATE_UNSPECIFIED is not specified
 	TaskState_TASK_STATE_UNSPECIFIED TaskState = 0
-	// TASK_STATE_ACTIVE indicates that the task is currently being processed by Handler.
+	// TASK_STATE_ACTIVE indicates that the task is currently being processed by Handler
 	TaskState_TASK_STATE_ACTIVE TaskState = 1
-	// TASK_STATE_PENDING indicates that the task is ready to be processed by Handler.
+	// TASK_STATE_PENDING indicates that the task is ready to be processed by Handler
 	TaskState_TASK_STATE_PENDING TaskState = 2
-	// TASK_STATE_SCHEDULED indicates that the task is scheduled to be processed some time in the future.
+	// TASK_STATE_SCHEDULED indicates that the task is scheduled to be processed some time in the future
 	TaskState_TASK_STATE_SCHEDULED TaskState = 3
-	// TASK_STATE_RETRY indicates that the task has previously failed and scheduled to be processed some time in the future.
+	// TASK_STATE_RETRY indicates that the task has previously failed and is scheduled to be processed some time in the future
 	TaskState_TASK_STATE_RETRY TaskState = 4
-	// TASK_STATE_ARCHIVED indicates that the task is archived and stored for inspection purposes.
+	// TASK_STATE_ARCHIVED indicates that the task is archived and stored for inspection purposes
 	TaskState_TASK_STATE_ARCHIVED TaskState = 5
-	// TASK_STATE_COMPLETED indicates that the task is processed successfully and retained until the retention TTL expires.
+	// TASK_STATE_COMPLETED indicates that the task is processed successfully and retained until the retention TTL expires
 	TaskState_TASK_STATE_COMPLETED TaskState = 6
-	// TASK_STATE_AGGREGATING indicates that the task is waiting in a group to be aggregated into one task.
+	// TASK_STATE_AGGREGATING indicates that the task is waiting in a group to be aggregated into one task
 	TaskState_TASK_STATE_AGGREGATING TaskState = 7
 )
 
@@ -97,12 +97,12 @@ func (TaskState) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_task_proto_rawDescGZIP(), []int{0}
 }
 
-// TaskServiceGetRequest is the message to a get task request
+// TaskServiceGetRequest is the request payload for getting a task.
 type TaskServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TaskId to get
+	// TaskId is the identifier of the task to get
 	TaskId string `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
-	// Queue where this task was scheduled to
+	// Queue is the queue where this task was scheduled to
 	Queue         string `protobuf:"bytes,2,opt,name=queue,proto3" json:"queue,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -152,7 +152,7 @@ func (x *TaskServiceGetRequest) GetQueue() string {
 	return ""
 }
 
-// TaskServiceGetResponse is the response to a task get request
+// TaskServiceGetResponse is the response payload for getting a task.
 type TaskServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Task contains the task details
@@ -198,12 +198,12 @@ func (x *TaskServiceGetResponse) GetTask() *TaskInfo {
 	return nil
 }
 
-// TaskServiceDeleteRequest is the message to a delete task request
+// TaskServiceDeleteRequest is the request payload for deleting a task.
 type TaskServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TaskId to cancel
+	// TaskId is the identifier of the task to cancel
 	TaskId string `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
-	// Queue where this task was scheduled to
+	// Queue is the queue where this task was scheduled to
 	Queue         string `protobuf:"bytes,2,opt,name=queue,proto3" json:"queue,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -253,7 +253,7 @@ func (x *TaskServiceDeleteRequest) GetQueue() string {
 	return ""
 }
 
-// TaskServiceDeleteResponse is the response to a task delete request
+// TaskServiceDeleteResponse is the response payload for deleting a task.
 type TaskServiceDeleteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -290,7 +290,7 @@ func (*TaskServiceDeleteResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_task_proto_rawDescGZIP(), []int{3}
 }
 
-// TaskServiceQueuesRequest is the message to get all queues
+// TaskServiceQueuesRequest is the request payload for getting all queues.
 type TaskServiceQueuesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -327,7 +327,7 @@ func (*TaskServiceQueuesRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_task_proto_rawDescGZIP(), []int{4}
 }
 
-// TaskServiceQueuesResponse is the response to a queues request
+// TaskServiceQueuesResponse is the response payload for getting all queues.
 type TaskServiceQueuesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Queues configured for the async system
@@ -373,15 +373,15 @@ func (x *TaskServiceQueuesResponse) GetQueues() []string {
 	return nil
 }
 
-// TaskServiceListRequest is the message to a task list request
+// TaskServiceListRequest is the request payload for listing tasks.
 type TaskServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Queue where this tasks should be listed
-	// will return tasks from all queues if not specified
+	// Queue filters tasks by this queue
+	// Will return tasks from all queues if not specified
 	Queue *string `protobuf:"bytes,1,opt,name=queue,proto3,oneof" json:"queue,omitempty"`
-	// Count of tasks to return
+	// Count is the number of tasks to return
 	Count *uint32 `protobuf:"varint,2,opt,name=count,proto3,oneof" json:"count,omitempty"`
-	// Page of tasks to return
+	// Page is the page of tasks to return
 	Page          *uint32 `protobuf:"varint,3,opt,name=page,proto3,oneof" json:"page,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -438,10 +438,10 @@ func (x *TaskServiceListRequest) GetPage() uint32 {
 	return 0
 }
 
-// TaskServiceListResponse is the response to a task list request
+// TaskServiceListResponse is the response payload for listing tasks.
 type TaskServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tasks contains the requested list of tasks
+	// Tasks contains the list of requested tasks
 	Tasks         []*TaskInfo `protobuf:"bytes,1,rep,name=tasks,proto3" json:"tasks,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -484,56 +484,56 @@ func (x *TaskServiceListResponse) GetTasks() []*TaskInfo {
 	return nil
 }
 
-// TaskInfo contains details of an async task
+// TaskInfo contains details of an asynchronous task.
 type TaskInfo struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID is the identifier of the task.
+	// ID is the identifier of the task
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Queue is the name of the queue in which the task belongs.
+	// Queue is the name of the queue in which the task belongs
 	Queue string `protobuf:"bytes,2,opt,name=queue,proto3" json:"queue,omitempty"`
-	// Type is the type name of the task.
+	// Type is the type name of the task
 	Type string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	// Payload is the payload data of the task.
+	// Payload is the payload data of the task
 	Payload []byte `protobuf:"bytes,4,opt,name=payload,proto3" json:"payload,omitempty"`
-	// State indicates the task state.
+	// State indicates the task state
 	State TaskState `protobuf:"varint,5,opt,name=state,proto3,enum=metalstack.admin.v2.TaskState" json:"state,omitempty"`
-	// MaxRetry is the maximum number of times the task can be retried.
+	// MaxRetry is the maximum number of times the task can be retried
 	MaxRetry int32 `protobuf:"varint,6,opt,name=max_retry,json=maxRetry,proto3" json:"max_retry,omitempty"`
-	// Retried is the number of times the task has retried so far.
+	// Retried is the number of times the task has retried so far
 	Retried int32 `protobuf:"varint,7,opt,name=retried,proto3" json:"retried,omitempty"`
-	// LastError is the error message from the last failure.
+	// LastError is the error message from the last failure
 	LastError string `protobuf:"bytes,8,opt,name=last_error,json=lastError,proto3" json:"last_error,omitempty"`
-	// LastFailedAt is the time time of the last failure if any.
-	// If the task has no failures, LastFailedAt is zero time (i.e. time.Time{}).
+	// LastFailedAt is the time of the last failure if any
+	// If the task has no failures, LastFailedAt is zero time (i.e. time.Time{})
 	LastFailedAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=last_failed_at,json=lastFailedAt,proto3" json:"last_failed_at,omitempty"`
-	// Timeout is the duration the task can be processed by Handler before being retried,
+	// Timeout is the duration the task can be processed by Handler before being retried
 	Timeout *durationpb.Duration `protobuf:"bytes,10,opt,name=timeout,proto3" json:"timeout,omitempty"`
-	// Deadline is the deadline for the task.
+	// Deadline is the deadline for the task
 	Deadline *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=deadline,proto3" json:"deadline,omitempty"`
-	// Group is the name of the group in which the task belongs.
+	// Group is the name of the group in which the task belongs
 	//
 	// Tasks in the same queue can be grouped together by Group name and will be aggregated into one task
-	// by a Server processing the queue.
+	// by a Server processing the queue
 	//
-	// Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task.
+	// Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task
 	Group string `protobuf:"bytes,12,opt,name=group,proto3" json:"group,omitempty"`
-	// NextProcessAt is the time the task is scheduled to be processed,
-	// zero if not applicable.
+	// NextProcessAt is the time the task is scheduled to be processed
+	// Zero if not applicable
 	NextProcessAt *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=next_process_at,json=nextProcessAt,proto3" json:"next_process_at,omitempty"`
-	// IsOrphaned describes whether the task is left in active state with no worker processing it.
+	// IsOrphaned describes whether the task is left in active state with no worker processing it
 	// An orphaned task indicates that the worker has crashed or experienced network failures and was not able to
-	// extend its lease on the task.
+	// extend its lease on the task
 	//
-	// This task will be recovered by running a server against the queue the task is in.
-	// This field is only applicable to tasks with TaskStateActive.
+	// This task will be recovered by running a server against the queue the task is in
+	// This field is only applicable to tasks with TaskStateActive
 	IsOrphaned bool `protobuf:"varint,14,opt,name=is_orphaned,json=isOrphaned,proto3" json:"is_orphaned,omitempty"`
-	// Retention is duration of the retention period after the task is successfully processed.
+	// Retention is duration of the retention period after the task is successfully processed
 	Retention *durationpb.Duration `protobuf:"bytes,15,opt,name=retention,proto3" json:"retention,omitempty"`
-	// CompletedAt is the time when the task is processed successfully.
-	// Zero value (i.e. time.Time{}) indicates no value.
+	// CompletedAt is the time when the task is processed successfully
+	// Zero value (i.e. time.Time{}) indicates no value
 	CompletedAt *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=completed_at,json=completedAt,proto3" json:"completed_at,omitempty"`
-	// Result holds the result data associated with the task.
-	// Use ResultWriter to write result data from the Handler.
+	// Result holds the result data associated with the task
+	// Use ResultWriter to write result data from the Handler
 	Result        []byte `protobuf:"bytes,17,opt,name=result,proto3" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

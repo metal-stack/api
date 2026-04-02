@@ -7,38 +7,38 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/filesystem.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// FilesystemService serves filesystem related functions
+// FilesystemService provides filesystem management operations.
 service FilesystemService {
-  // Create a filesystem
+  // Creates a new filesystem.
   rpc Create(FilesystemServiceCreateRequest) returns (FilesystemServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Update a filesystem
+  // Updates a filesystem.
   rpc Update(FilesystemServiceUpdateRequest) returns (FilesystemServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Delete a filesystem
+  // Deletes a filesystem.
   rpc Delete(FilesystemServiceDeleteRequest) returns (FilesystemServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
-// FilesystemServiceCreateRequest
+// FilesystemServiceCreateRequest is the request payload for creating a filesystem.
 message FilesystemServiceCreateRequest {
-  // FilesystemLayout the filesystemlayout
+  // FilesystemLayout is the filesystem layout to create
   metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
-// FilesystemServiceCreateResponse
+// FilesystemServiceCreateResponse is the response payload for creating a filesystem.
 message FilesystemServiceCreateResponse {
-  // FilesystemLayout the filesystemlayout
+  // FilesystemLayout contains the created filesystem layout
   metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
-// FilesystemServiceUpdateRequest
+// FilesystemServiceUpdateRequest is the request payload for updating a filesystem.
 message FilesystemServiceUpdateRequest {
   // Id of this filesystemLayout
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -52,7 +52,7 @@ message FilesystemServiceUpdateRequest {
   repeated metalstack.api.v2.Filesystem filesystems = 5;
   // Disks list of disks that belong to this layout
   repeated metalstack.api.v2.Disk disks = 6;
-  // raid arrays to create
+  // Raid arrays to create
   repeated metalstack.api.v2.Raid raid = 7;
   // VolumeGroups list of volumegroups to create
   repeated metalstack.api.v2.VolumeGroup volume_groups = 8;
@@ -62,20 +62,20 @@ message FilesystemServiceUpdateRequest {
   metalstack.api.v2.FilesystemLayoutConstraints constraints = 10;
 }
 
-// FilesystemServiceUpdateResponse
+// FilesystemServiceUpdateResponse is the response payload for updating a filesystem.
 message FilesystemServiceUpdateResponse {
-  // FilesystemLayout the filesystemlayout
+  // FilesystemLayout contains the updated filesystem layout
   metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
-// FilesystemServiceDeleteRequest
+// FilesystemServiceDeleteRequest is the request payload for deleting a filesystem.
 message FilesystemServiceDeleteRequest {
   // ID of the filesystem to delete
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// message FilesystemServiceDeleteResponse {
+// FilesystemServiceDeleteResponse is the response payload for deleting a filesystem.
 message FilesystemServiceDeleteResponse {
-  // FilesystemLayout the filesystemlayout
+  // FilesystemLayout contains the deleted filesystem layout
   metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }

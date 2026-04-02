@@ -238,7 +238,7 @@ export var NetworkAddressFamily;
  */
 export const NetworkAddressFamilySchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_network, 2);
 /**
- * NetworkService serves network address related functions for end users, e.g. with project scope
+ * NetworkService provides network management operations for end users, for example with project scope.
  *
  * @generated from service metalstack.api.v2.NetworkService
  */

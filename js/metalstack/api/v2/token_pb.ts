@@ -573,13 +573,13 @@ export const TokenTypeSchema: GenEnum<TokenType> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_token, 0);
 
 /**
- * TokenService serves token related functions
+ * TokenService provides token management operations.
  *
  * @generated from service metalstack.api.v2.TokenService
  */
 export const TokenService: GenService<{
   /**
-   * Get a token
+   * Returns the token with the specified UUID.
    *
    * @generated from rpc metalstack.api.v2.TokenService.Get
    */
@@ -589,7 +589,7 @@ export const TokenService: GenService<{
     output: typeof TokenServiceGetResponseSchema;
   },
   /**
-   * Create a token to authenticate against the platform, the secret will be only visible in the response.
+   * Creates a token to authenticate against the platform, the secret will be only visible in the response.
    *
    * @generated from rpc metalstack.api.v2.TokenService.Create
    */
@@ -599,7 +599,7 @@ export const TokenService: GenService<{
     output: typeof TokenServiceCreateResponseSchema;
   },
   /**
-   * Update a token
+   * Updates a token.
    *
    * @generated from rpc metalstack.api.v2.TokenService.Update
    */
@@ -609,7 +609,7 @@ export const TokenService: GenService<{
     output: typeof TokenServiceUpdateResponseSchema;
   },
   /**
-   * List all your tokens
+   * Returns the list of all user tokens.
    *
    * @generated from rpc metalstack.api.v2.TokenService.List
    */
@@ -619,7 +619,7 @@ export const TokenService: GenService<{
     output: typeof TokenServiceListResponseSchema;
   },
   /**
-   * Revoke a token, no further usage is possible afterwards
+   * Revokes a token, no further usage is possible afterwards.
    *
    * @generated from rpc metalstack.api.v2.TokenService.Revoke
    */
@@ -629,7 +629,7 @@ export const TokenService: GenService<{
     output: typeof TokenServiceRevokeResponseSchema;
   },
   /**
-   * Refresh a token, this will create a new token with the exact same permissions as the calling token contains
+   * Refreshes a token, this will create a new token with the exact same permissions as the calling token contains.
    *
    * @generated from rpc metalstack.api.v2.TokenService.Refresh
    */

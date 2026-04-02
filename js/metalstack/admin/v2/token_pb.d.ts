@@ -6,7 +6,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_token: GenFile;
 /**
- * TokenServiceListRequest is the request payload for the token list request
+ * TokenServiceListRequest is the request payload for listing tokens.
  *
  * @generated from message metalstack.admin.v2.TokenServiceListRequest
  */
@@ -24,13 +24,13 @@ export type TokenServiceListRequest = Message<"metalstack.admin.v2.TokenServiceL
  */
 export declare const TokenServiceListRequestSchema: GenMessage<TokenServiceListRequest>;
 /**
- * TokenServiceListResponse is the response payload for the token list request
+ * TokenServiceListResponse is the response payload for listing tokens.
  *
  * @generated from message metalstack.admin.v2.TokenServiceListResponse
  */
 export type TokenServiceListResponse = Message<"metalstack.admin.v2.TokenServiceListResponse"> & {
     /**
-     * Tokens is the list of tokens
+     * Tokens contains the list of tokens
      *
      * @generated from field: repeated metalstack.api.v2.Token tokens = 1;
      */
@@ -42,7 +42,7 @@ export type TokenServiceListResponse = Message<"metalstack.admin.v2.TokenService
  */
 export declare const TokenServiceListResponseSchema: GenMessage<TokenServiceListResponse>;
 /**
- * TokenServiceRevokeRequest is the request payload for the token revoke request
+ * TokenServiceRevokeRequest is the request payload for revoking a token.
  *
  * @generated from message metalstack.admin.v2.TokenServiceRevokeRequest
  */
@@ -66,7 +66,7 @@ export type TokenServiceRevokeRequest = Message<"metalstack.admin.v2.TokenServic
  */
 export declare const TokenServiceRevokeRequestSchema: GenMessage<TokenServiceRevokeRequest>;
 /**
- * TokenServiceRevokeResponse is the response payload for the token revoke request
+ * TokenServiceRevokeResponse is the response payload for revoking a token.
  *
  * @generated from message metalstack.admin.v2.TokenServiceRevokeResponse
  */
@@ -77,7 +77,7 @@ export type TokenServiceRevokeResponse = Message<"metalstack.admin.v2.TokenServi
  */
 export declare const TokenServiceRevokeResponseSchema: GenMessage<TokenServiceRevokeResponse>;
 /**
- * TokenServiceCreateRequest is the request payload to create a token
+ * TokenServiceCreateRequest is the request payload for creating a token.
  *
  * @generated from message metalstack.admin.v2.TokenServiceCreateRequest
  */
@@ -101,19 +101,19 @@ export type TokenServiceCreateRequest = Message<"metalstack.admin.v2.TokenServic
  */
 export declare const TokenServiceCreateRequestSchema: GenMessage<TokenServiceCreateRequest>;
 /**
- * TokenServiceCreateResponse is the response payload of a token create request
+ * TokenServiceCreateResponse is the response payload for creating a token.
  *
  * @generated from message metalstack.admin.v2.TokenServiceCreateResponse
  */
 export type TokenServiceCreateResponse = Message<"metalstack.admin.v2.TokenServiceCreateResponse"> & {
     /**
-     * Token which was created
+     * Token contains the created token
      *
      * @generated from field: metalstack.api.v2.Token token = 1;
      */
     token?: Token;
     /**
-     * Secret is the body if the jwt token, should be used in api requests as bearer token
+     * Secret is the body if the JWT token, should be used in API requests as bearer token
      *
      * @generated from field: string secret = 2;
      */
@@ -125,13 +125,13 @@ export type TokenServiceCreateResponse = Message<"metalstack.admin.v2.TokenServi
  */
 export declare const TokenServiceCreateResponseSchema: GenMessage<TokenServiceCreateResponse>;
 /**
- * TokenService serves token related functions
+ * TokenService provides token management operations.
  *
  * @generated from service metalstack.admin.v2.TokenService
  */
 export declare const TokenService: GenService<{
     /**
-     * List tokens
+     * Returns the list of tokens for a user.
      *
      * @generated from rpc metalstack.admin.v2.TokenService.List
      */
@@ -141,7 +141,7 @@ export declare const TokenService: GenService<{
         output: typeof TokenServiceListResponseSchema;
     };
     /**
-     * Revoke a token
+     * Revokes a token.
      *
      * @generated from rpc metalstack.admin.v2.TokenService.Revoke
      */
@@ -151,7 +151,7 @@ export declare const TokenService: GenService<{
         output: typeof TokenServiceRevokeResponseSchema;
     };
     /**
-     * Create a token to authenticate against the platform, the secret will be only visible in the response.
+     * Creates a token to authenticate against the platform, the secret will be only visible in the response.
      * This service is suitable to create tokens for other users instead of deriving users from tokens directly.
      *
      * @generated from rpc metalstack.admin.v2.TokenService.Create

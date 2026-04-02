@@ -25,17 +25,17 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// VPNServiceAuthKeyRequest is the request payload for a vpn authkey request.
+// VPNServiceAuthKeyRequest is the request payload for generating a VPN authentication key.
 type VPNServiceAuthKeyRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project for which a vpn authkey should be generated.
+	// Project for which a VPN authentication key should be generated
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Ephemeral defines if the authkey should be ephemeral.
+	// Ephemeral defines if the authentication key should be ephemeral
 	Ephemeral bool `protobuf:"varint,2,opt,name=ephemeral,proto3" json:"ephemeral,omitempty"`
-	// Expires defines the duration after which the authkey expires.
+	// Expires defines the duration after which the authentication key expires
 	Expires *durationpb.Duration `protobuf:"bytes,3,opt,name=expires,proto3" json:"expires,omitempty"`
-	// Reason must be provided why access to the vpn is requested
-	// reason is only forwarded to a audit sink
+	// Reason must be provided why access to the VPN is requested
+	// Reason is only forwarded to an audit sink
 	Reason        string `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -99,19 +99,19 @@ func (x *VPNServiceAuthKeyRequest) GetReason() string {
 	return ""
 }
 
-// VPNServiceAuthKeyResponse is the request payload for a authkey response
+// VPNServiceAuthKeyResponse is the response payload for generating a VPN authentication key.
 type VPNServiceAuthKeyResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Address is the address of the vpn control plane.
+	// Address is the address of the VPN control plane
 	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
-	// AuthKey is the key to connect to the vpn at the given address.
-	// This key can only be seen once.
+	// AuthKey is the key to connect to the VPN at the given address
+	// This key can only be seen once
 	AuthKey string `protobuf:"bytes,2,opt,name=auth_key,json=authKey,proto3" json:"auth_key,omitempty"`
-	// Ephemeral defines if the authkey should be ephemeral.
+	// Ephemeral defines if the authentication key should be ephemeral
 	Ephemeral bool `protobuf:"varint,3,opt,name=ephemeral,proto3" json:"ephemeral,omitempty"`
-	// ExpiresAt this key cannot be used after this timestamp.
+	// ExpiresAt this key cannot be used after this timestamp
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
-	// CreatedAt this key was created at this timestamp.
+	// CreatedAt this key was created at this timestamp
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -182,10 +182,10 @@ func (x *VPNServiceAuthKeyResponse) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-// VPNServiceListNodesRequest is the request payload for a vpn list nodes request
+// VPNServiceListNodesRequest is the request payload for listing VPN nodes.
 type VPNServiceListNodesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project if given only nodes of this user are returned
+	// Project filters nodes by this project
 	Project       *string `protobuf:"bytes,1,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -228,10 +228,10 @@ func (x *VPNServiceListNodesRequest) GetProject() string {
 	return ""
 }
 
-// VPNServiceListNodesResponse is the response payload for a vpn list nodes request
+// VPNServiceListNodesResponse is the response payload for listing VPN nodes.
 type VPNServiceListNodesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Nodes connected to the vpn
+	// Nodes connected to the VPN
 	Nodes         []*v2.VPNNode `protobuf:"bytes,1,rep,name=nodes,proto3" json:"nodes,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

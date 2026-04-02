@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// TokenServiceListRequest is the request payload for the token list request
+// TokenServiceListRequest is the request payload for listing tokens.
 type TokenServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// User is the id of the user for which the tokens should be listed
@@ -69,10 +69,10 @@ func (x *TokenServiceListRequest) GetUser() string {
 	return ""
 }
 
-// TokenServiceListResponse is the response payload for the token list request
+// TokenServiceListResponse is the response payload for listing tokens.
 type TokenServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tokens is the list of tokens
+	// Tokens contains the list of tokens
 	Tokens        []*v2.Token `protobuf:"bytes,1,rep,name=tokens,proto3" json:"tokens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,7 +115,7 @@ func (x *TokenServiceListResponse) GetTokens() []*v2.Token {
 	return nil
 }
 
-// TokenServiceRevokeRequest is the request payload for the token revoke request
+// TokenServiceRevokeRequest is the request payload for revoking a token.
 type TokenServiceRevokeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid is the uuid of the token which should be revoked
@@ -170,7 +170,7 @@ func (x *TokenServiceRevokeRequest) GetUser() string {
 	return ""
 }
 
-// TokenServiceRevokeResponse is the response payload for the token revoke request
+// TokenServiceRevokeResponse is the response payload for revoking a token.
 type TokenServiceRevokeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -207,7 +207,7 @@ func (*TokenServiceRevokeResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_token_proto_rawDescGZIP(), []int{3}
 }
 
-// TokenServiceCreateRequest is the request payload to create a token
+// TokenServiceCreateRequest is the request payload for creating a token.
 type TokenServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// User this token should be created for, if omitted, user is derived from caller
@@ -262,12 +262,12 @@ func (x *TokenServiceCreateRequest) GetTokenCreateRequest() *v2.TokenServiceCrea
 	return nil
 }
 
-// TokenServiceCreateResponse is the response payload of a token create request
+// TokenServiceCreateResponse is the response payload for creating a token.
 type TokenServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Token which was created
+	// Token contains the created token
 	Token *v2.Token `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	// Secret is the body if the jwt token, should be used in api requests as bearer token
+	// Secret is the body if the JWT token, should be used in API requests as bearer token
 	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

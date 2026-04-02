@@ -779,13 +779,13 @@ export const RaidLevelSchema: GenEnum<RaidLevel> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_filesystem, 3);
 
 /**
- * FilesystemService serves filesystem related functions
+ * FilesystemService provides filesystem management operations.
  *
  * @generated from service metalstack.api.v2.FilesystemService
  */
 export const FilesystemService: GenService<{
   /**
-   * Get a filesystem
+   * Returns the filesystem with the specified ID.
    *
    * @generated from rpc metalstack.api.v2.FilesystemService.Get
    */
@@ -795,7 +795,7 @@ export const FilesystemService: GenService<{
     output: typeof FilesystemServiceGetResponseSchema;
   },
   /**
-   * List all filesystems
+   * Returns the list of all filesystems.
    *
    * @generated from rpc metalstack.api.v2.FilesystemService.List
    */
@@ -805,7 +805,7 @@ export const FilesystemService: GenService<{
     output: typeof FilesystemServiceListResponseSchema;
   },
   /**
-   * Match a filesystems
+   * Matches a filesystem to a size and image or machine.
    *
    * @generated from rpc metalstack.api.v2.FilesystemService.Match
    */

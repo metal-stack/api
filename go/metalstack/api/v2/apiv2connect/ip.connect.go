@@ -47,15 +47,15 @@ const (
 
 // IPServiceClient is a client for the metalstack.api.v2.IPService service.
 type IPServiceClient interface {
-	// Get a ip
+	// Returns the IP address with the specified IP.
 	Get(context.Context, *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error)
-	// Create a ip
+	// Creates a new IP address.
 	Create(context.Context, *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error)
-	// Update a ip
+	// Updates an IP address.
 	Update(context.Context, *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error)
-	// List all ips
+	// Returns the list of all IP addresses.
 	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
-	// Delete a ip
+	// Deletes an IP address.
 	Delete(context.Context, *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error)
 }
 
@@ -159,15 +159,15 @@ func (c *iPServiceClient) Delete(ctx context.Context, req *v2.IPServiceDeleteReq
 
 // IPServiceHandler is an implementation of the metalstack.api.v2.IPService service.
 type IPServiceHandler interface {
-	// Get a ip
+	// Returns the IP address with the specified IP.
 	Get(context.Context, *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error)
-	// Create a ip
+	// Creates a new IP address.
 	Create(context.Context, *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error)
-	// Update a ip
+	// Updates an IP address.
 	Update(context.Context, *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error)
-	// List all ips
+	// Returns the list of all IP addresses.
 	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
-	// Delete a ip
+	// Deletes an IP address.
 	Delete(context.Context, *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error)
 }
 

@@ -204,13 +204,13 @@ export type SizeReservationQuery = Message<"metalstack.api.v2.SizeReservationQue
  */
 export declare const SizeReservationQuerySchema: GenMessage<SizeReservationQuery>;
 /**
- * SizeReservationService serves size reservation related functions
+ * SizeReservationService provides size reservation management operations.
  *
  * @generated from service metalstack.api.v2.SizeReservationService
  */
 export declare const SizeReservationService: GenService<{
     /**
-     * Get a size reservation
+     * Returns the size reservation with the specified ID.
      *
      * @generated from rpc metalstack.api.v2.SizeReservationService.Get
      */
@@ -220,7 +220,7 @@ export declare const SizeReservationService: GenService<{
         output: typeof SizeReservationServiceGetResponseSchema;
     };
     /**
-     * List size reservations
+     * Returns the list of size reservations.
      *
      * @generated from rpc metalstack.api.v2.SizeReservationService.List
      */

@@ -14,13 +14,13 @@ export const file_metalstack_api_v2_health: GenFile = /*@__PURE__*/
   fileDesc("Ch5tZXRhbHN0YWNrL2FwaS92Mi9oZWFsdGgucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIjsKBkhlYWx0aBIxCghzZXJ2aWNlcxgBIAMoCzIfLm1ldGFsc3RhY2suYXBpLnYyLkhlYWx0aFN0YXR1cyKXAgoMSGVhbHRoU3RhdHVzEigKBG5hbWUYASABKA4yGi5tZXRhbHN0YWNrLmFwaS52Mi5TZXJ2aWNlEjAKBnN0YXR1cxgCIAEoDjIgLm1ldGFsc3RhY2suYXBpLnYyLlNlcnZpY2VTdGF0dXMSDwoHbWVzc2FnZRgDIAEoCRJDCgpwYXJ0aXRpb25zGAQgAygLMi8ubWV0YWxzdGFjay5hcGkudjIuSGVhbHRoU3RhdHVzLlBhcnRpdGlvbnNFbnRyeRpVCg9QYXJ0aXRpb25zRW50cnkSCwoDa2V5GAEgASgJEjEKBXZhbHVlGAIgASgLMiIubWV0YWxzdGFjay5hcGkudjIuUGFydGl0aW9uSGVhbHRoOgI4ASJUCg9QYXJ0aXRpb25IZWFsdGgSMAoGc3RhdHVzGAEgASgOMiAubWV0YWxzdGFjay5hcGkudjIuU2VydmljZVN0YXR1cxIPCgdtZXNzYWdlGAIgASgJIhkKF0hlYWx0aFNlcnZpY2VHZXRSZXF1ZXN0IkUKGEhlYWx0aFNlcnZpY2VHZXRSZXNwb25zZRIpCgZoZWFsdGgYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5IZWFsdGgqhgEKDVNlcnZpY2VTdGF0dXMSHgoaU0VSVklDRV9TVEFUVVNfVU5TUEVDSUZJRUQQABIbChdTRVJWSUNFX1NUQVRVU19ERUdSQURFRBABEhwKGFNFUlZJQ0VfU1RBVFVTX1VOSEVBTFRIWRACEhoKFlNFUlZJQ0VfU1RBVFVTX0hFQUxUSFkQAyqiAgoHU2VydmljZRIXChNTRVJWSUNFX1VOU1BFQ0lGSUVEEAASGgoMU0VSVklDRV9JUEFNEAEaCIKyGQRpcGFtEiIKD1NFUlZJQ0VfUkVUSElOSxACGg2CshkJcmV0aGlua2RiEiYKElNFUlZJQ0VfTUFTVEVSREFUQRADGg6CshkKbWFzdGVyZGF0YRIiChBTRVJWSUNFX01BQ0hJTkVTEAQaDIKyGQhtYWNoaW5lcxIcCg1TRVJWSUNFX0FVRElUEAUaCYKyGQVhdWRpdBIYCgtTRVJWSUNFX1ZQThAGGgeCshkDdnBuEhwKDVNFUlZJQ0VfUkVESVMQBxoJgrIZBXJlZGlzEhwKDVNFUlZJQ0VfVEFTS1MQCBoJgrIZBXRhc2tzMnkKDUhlYWx0aFNlcnZpY2USaAoDR2V0EioubWV0YWxzdGFjay5hcGkudjIuSGVhbHRoU2VydmljZUdldFJlcXVlc3QaKy5tZXRhbHN0YWNrLmFwaS52Mi5IZWFsdGhTZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGAHg8xgCQsEBChVjb20ubWV0YWxzdGFjay5hcGkudjJCC0hlYWx0aFByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_metalstack_api_v2_common]);
 
 /**
- * Health reports the health status of all services
+ * Health reports the health status of all services.
  *
  * @generated from message metalstack.api.v2.Health
  */
 export type Health = Message<"metalstack.api.v2.Health"> & {
   /**
-   * Services the health of all individual services
+   * Services contains the health of all individual services
    *
    * @generated from field: repeated metalstack.api.v2.HealthStatus services = 1;
    */
@@ -35,20 +35,20 @@ export const HealthSchema: GenMessage<Health> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_health, 0);
 
 /**
- * HealthStatus the health of one service
+ * HealthStatus represents the health status of one service.
  *
  * @generated from message metalstack.api.v2.HealthStatus
  */
 export type HealthStatus = Message<"metalstack.api.v2.HealthStatus"> & {
   /**
-   * Name the name of the service
+   * Name is the name of the service
    *
    * @generated from field: metalstack.api.v2.Service name = 1;
    */
   name: Service;
 
   /**
-   * Status the status of this service
+   * Status is the status of this service
    *
    * @generated from field: metalstack.api.v2.ServiceStatus status = 2;
    */
@@ -77,13 +77,13 @@ export const HealthStatusSchema: GenMessage<HealthStatus> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_health, 1);
 
 /**
- * PartitionHealth the status of a specific service in this partition
+ * PartitionHealth represents the status of a specific service in this partition.
  *
  * @generated from message metalstack.api.v2.PartitionHealth
  */
 export type PartitionHealth = Message<"metalstack.api.v2.PartitionHealth"> & {
   /**
-   * Status the health status of the service in this partition
+   * Status is the health status of the service in this partition
    *
    * @generated from field: metalstack.api.v2.ServiceStatus status = 1;
    */
@@ -105,7 +105,7 @@ export const PartitionHealthSchema: GenMessage<PartitionHealth> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_health, 2);
 
 /**
- * HealthServiceGetRequest is request payload to get the health of the system
+ * HealthServiceGetRequest is the request payload for getting the health of the system.
  *
  * @generated from message metalstack.api.v2.HealthServiceGetRequest
  */
@@ -120,13 +120,13 @@ export const HealthServiceGetRequestSchema: GenMessage<HealthServiceGetRequest> 
   messageDesc(file_metalstack_api_v2_health, 3);
 
 /**
- * HealthServiceGetRequest is the response payload with the health of the system
+ * HealthServiceGetResponse is the response payload for getting the health of the system.
  *
  * @generated from message metalstack.api.v2.HealthServiceGetResponse
  */
 export type HealthServiceGetResponse = Message<"metalstack.api.v2.HealthServiceGetResponse"> & {
   /**
-   * Health is the overall health of the system
+   * Health contains the overall health of the system
    *
    * @generated from field: metalstack.api.v2.Health health = 1;
    */
@@ -141,7 +141,7 @@ export const HealthServiceGetResponseSchema: GenMessage<HealthServiceGetResponse
   messageDesc(file_metalstack_api_v2_health, 4);
 
 /**
- * ServiceStatus defines the status of a service
+ * ServiceStatus defines the status of a service.
  *
  * @generated from enum metalstack.api.v2.ServiceStatus
  */
@@ -168,7 +168,7 @@ export enum ServiceStatus {
   UNHEALTHY = 2,
 
   /**
-   * SERVICE_STATUS_HEALTHY the service is in healthy status e.g. fully functional
+   * SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional
    *
    * @generated from enum value: SERVICE_STATUS_HEALTHY = 3;
    */
@@ -182,7 +182,7 @@ export const ServiceStatusSchema: GenEnum<ServiceStatus> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_health, 0);
 
 /**
- * Service defines the service for which the healtyness is reported
+ * Service defines the service for which the healthiness is reported.
  *
  * @generated from enum metalstack.api.v2.Service
  */
@@ -195,21 +195,21 @@ export enum Service {
   UNSPECIFIED = 0,
 
   /**
-   * SERVICE_IPAM the ipam service
+   * SERVICE_IPAM the IPAM service
    *
    * @generated from enum value: SERVICE_IPAM = 1;
    */
   IPAM = 1,
 
   /**
-   * SERVICE_RETHINK the rethinkdb
+   * SERVICE_RETHINK the RethinkDB
    *
    * @generated from enum value: SERVICE_RETHINK = 2;
    */
   RETHINK = 2,
 
   /**
-   * SERVICE_MASTERDATA the masterdata-api
+   * SERVICE_MASTERDATA the masterdata API
    *
    * @generated from enum value: SERVICE_MASTERDATA = 3;
    */
@@ -230,14 +230,14 @@ export enum Service {
   AUDIT = 5,
 
   /**
-   * SERVICE_VPN the vpn service
+   * SERVICE_VPN the VPN service
    *
    * @generated from enum value: SERVICE_VPN = 6;
    */
   VPN = 6,
 
   /**
-   * SERVICE_REDIS the redis service
+   * SERVICE_REDIS the Redis service
    *
    * @generated from enum value: SERVICE_REDIS = 7;
    */
@@ -258,13 +258,13 @@ export const ServiceSchema: GenEnum<Service> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_health, 1);
 
 /**
- * HealthService serves health related functions
+ * HealthService provides health status monitoring operations.
  *
  * @generated from service metalstack.api.v2.HealthService
  */
 export const HealthService: GenService<{
   /**
-   * Get the health of the platform
+   * Returns the health status of the platform.
    *
    * @generated from rpc metalstack.api.v2.HealthService.Get
    */

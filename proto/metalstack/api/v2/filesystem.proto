@@ -6,19 +6,19 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// FilesystemService serves filesystem related functions
+// FilesystemService provides filesystem management operations.
 service FilesystemService {
-  // Get a filesystem
+  // Returns the filesystem with the specified ID.
   rpc Get(FilesystemServiceGetRequest) returns (FilesystemServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // List all filesystems
+  // Returns the list of all filesystems.
   rpc List(FilesystemServiceListRequest) returns (FilesystemServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Match a filesystems
+  // Matches a filesystem to a size and image or machine.
   rpc Match(FilesystemServiceMatchRequest) returns (FilesystemServiceMatchResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;

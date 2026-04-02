@@ -6,37 +6,37 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/token.proto";
 
-// TokenService serves token related functions
+// TokenService provides token management operations.
 service TokenService {
-  // List tokens
+  // Returns the list of tokens for a user.
   rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
-  // Revoke a token
+  // Revokes a token.
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
   }
-  // Create a token to authenticate against the platform, the secret will be only visible in the response.
+  // Creates a token to authenticate against the platform, the secret will be only visible in the response.
   // This service is suitable to create tokens for other users instead of deriving users from tokens directly.
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
   }
 }
 
-// TokenServiceListRequest is the request payload for the token list request
+// TokenServiceListRequest is the request payload for listing tokens.
 message TokenServiceListRequest {
   // User is the id of the user for which the tokens should be listed
   optional string user = 1;
 }
 
-// TokenServiceListResponse is the response payload for the token list request
+// TokenServiceListResponse is the response payload for listing tokens.
 message TokenServiceListResponse {
-  // Tokens is the list of tokens
+  // Tokens contains the list of tokens
   repeated metalstack.api.v2.Token tokens = 1;
 }
 
-// TokenServiceRevokeRequest is the request payload for the token revoke request
+// TokenServiceRevokeRequest is the request payload for revoking a token.
 message TokenServiceRevokeRequest {
   // Uuid is the uuid of the token which should be revoked
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -47,10 +47,10 @@ message TokenServiceRevokeRequest {
   }];
 }
 
-// TokenServiceRevokeResponse is the response payload for the token revoke request
+// TokenServiceRevokeResponse is the response payload for revoking a token.
 message TokenServiceRevokeResponse {}
 
-// TokenServiceCreateRequest is the request payload to create a token
+// TokenServiceCreateRequest is the request payload for creating a token.
 message TokenServiceCreateRequest {
   // User this token should be created for, if omitted, user is derived from caller
   optional string user = 1 [(buf.validate.field).string = {
@@ -61,10 +61,10 @@ message TokenServiceCreateRequest {
   metalstack.api.v2.TokenServiceCreateRequest token_create_request = 2;
 }
 
-// TokenServiceCreateResponse is the response payload of a token create request
+// TokenServiceCreateResponse is the response payload for creating a token.
 message TokenServiceCreateResponse {
-  // Token which was created
+  // Token contains the created token
   metalstack.api.v2.Token token = 1;
-  // Secret is the body if the jwt token, should be used in api requests as bearer token
+  // Secret is the body if the JWT token, should be used in API requests as bearer token
   string secret = 2;
 }

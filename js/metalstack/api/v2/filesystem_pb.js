@@ -252,7 +252,7 @@ export var RaidLevel;
  */
 export const RaidLevelSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_filesystem, 3);
 /**
- * FilesystemService serves filesystem related functions
+ * FilesystemService provides filesystem management operations.
  *
  * @generated from service metalstack.api.v2.FilesystemService
  */

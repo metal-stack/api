@@ -6,13 +6,13 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_ip: GenFile;
 /**
- * IPServiceListRequest
+ * IPServiceListRequest is the request payload for listing IP addresses.
  *
  * @generated from message metalstack.admin.v2.IPServiceListRequest
  */
 export type IPServiceListRequest = Message<"metalstack.admin.v2.IPServiceListRequest"> & {
     /**
-     * Query to search for one or more ips
+     * Query to search for IP addresses
      *
      * @generated from field: metalstack.api.v2.IPQuery query = 1;
      */
@@ -24,13 +24,13 @@ export type IPServiceListRequest = Message<"metalstack.admin.v2.IPServiceListReq
  */
 export declare const IPServiceListRequestSchema: GenMessage<IPServiceListRequest>;
 /**
- * IPServiceListResponse
+ * IPServiceListResponse is the response payload for listing IP addresses.
  *
  * @generated from message metalstack.admin.v2.IPServiceListResponse
  */
 export type IPServiceListResponse = Message<"metalstack.admin.v2.IPServiceListResponse"> & {
     /**
-     * IPs are the list of ips
+     * IPs contains the list of IP addresses
      *
      * @generated from field: repeated metalstack.api.v2.IP ips = 1;
      */
@@ -42,13 +42,13 @@ export type IPServiceListResponse = Message<"metalstack.admin.v2.IPServiceListRe
  */
 export declare const IPServiceListResponseSchema: GenMessage<IPServiceListResponse>;
 /**
- * IPService serves ip address related functions
+ * IPService provides IP address management operations.
  *
  * @generated from service metalstack.admin.v2.IPService
  */
 export declare const IPService: GenService<{
     /**
-     * List all ips
+     * Returns the list of all IP addresses.
      *
      * @generated from rpc metalstack.admin.v2.IPService.List
      */

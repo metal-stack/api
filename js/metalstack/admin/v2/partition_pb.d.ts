@@ -25,7 +25,7 @@ export type PartitionServiceCreateRequest = Message<"metalstack.admin.v2.Partiti
  */
 export declare const PartitionServiceCreateRequestSchema: GenMessage<PartitionServiceCreateRequest>;
 /**
- * PartitionServiceUpdateRequest is the request payload for a partition update request
+ * PartitionServiceUpdateRequest is the request payload for updating a partition.
  *
  * @generated from message metalstack.admin.v2.PartitionServiceUpdateRequest
  */
@@ -68,8 +68,7 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
     ntpServers: NTPServer[];
     /**
      * ManagementServiceAddresses defines where the management is reachable
-     * should be in the form <ip|host>:<port>
-     * FIXME validation
+     * must be in the form <ip|host>:<port>
      *
      * @generated from field: repeated string mgmt_service_addresses = 7;
      */
@@ -141,13 +140,13 @@ export type PartitionServiceUpdateResponse = Message<"metalstack.admin.v2.Partit
  */
 export declare const PartitionServiceUpdateResponseSchema: GenMessage<PartitionServiceUpdateResponse>;
 /**
- * PartitionServiceCapacityResponse is the response payload for a partition delete request
+ * PartitionServiceDeleteResponse is the response payload for deleting a partition.
  *
  * @generated from message metalstack.admin.v2.PartitionServiceDeleteResponse
  */
 export type PartitionServiceDeleteResponse = Message<"metalstack.admin.v2.PartitionServiceDeleteResponse"> & {
     /**
-     * Partition the partition
+     * Partition contains the deleted partition
      *
      * @generated from field: metalstack.api.v2.Partition partition = 1;
      */
@@ -159,7 +158,7 @@ export type PartitionServiceDeleteResponse = Message<"metalstack.admin.v2.Partit
  */
 export declare const PartitionServiceDeleteResponseSchema: GenMessage<PartitionServiceDeleteResponse>;
 /**
- * PartitionServiceListRequest is the request payload for a partition capacity request
+ * PartitionServiceCapacityRequest is the request payload for getting partition capacity.
  *
  * @generated from message metalstack.admin.v2.PartitionServiceCapacityRequest
  */
@@ -336,13 +335,13 @@ export type MachineSizeCapacity = Message<"metalstack.admin.v2.MachineSizeCapaci
  */
 export declare const MachineSizeCapacitySchema: GenMessage<MachineSizeCapacity>;
 /**
- * PartitionService serves partition address related functions
+ * PartitionService provides partition management operations.
  *
  * @generated from service metalstack.admin.v2.PartitionService
  */
 export declare const PartitionService: GenService<{
     /**
-     * Create a partition
+     * Creates a new partition.
      *
      * @generated from rpc metalstack.admin.v2.PartitionService.Create
      */
@@ -352,7 +351,7 @@ export declare const PartitionService: GenService<{
         output: typeof PartitionServiceCreateResponseSchema;
     };
     /**
-     * Update a partition
+     * Updates a partition.
      *
      * @generated from rpc metalstack.admin.v2.PartitionService.Update
      */
@@ -362,7 +361,7 @@ export declare const PartitionService: GenService<{
         output: typeof PartitionServiceUpdateResponseSchema;
     };
     /**
-     * Delete a partition
+     * Deletes a partition.
      *
      * @generated from rpc metalstack.admin.v2.PartitionService.Delete
      */
@@ -372,7 +371,7 @@ export declare const PartitionService: GenService<{
         output: typeof PartitionServiceDeleteResponseSchema;
     };
     /**
-     * Capacity of a partitions
+     * Returns the capacity of a partition.
      *
      * @generated from rpc metalstack.admin.v2.PartitionService.Capacity
      */

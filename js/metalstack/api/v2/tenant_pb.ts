@@ -864,13 +864,13 @@ export const TenantServiceUpdateMemberResponseSchema: GenMessage<TenantServiceUp
   messageDesc(file_metalstack_api_v2_tenant, 28);
 
 /**
- * TenantService serves tenant related functions
+ * TenantService provides tenant management operations.
  *
  * @generated from service metalstack.api.v2.TenantService
  */
 export const TenantService: GenService<{
   /**
-   * Create a tenant
+   * Creates a new tenant.
    *
    * @generated from rpc metalstack.api.v2.TenantService.Create
    */
@@ -880,7 +880,7 @@ export const TenantService: GenService<{
     output: typeof TenantServiceCreateResponseSchema;
   },
   /**
-   * List tenants
+   * Returns the list of tenants.
    *
    * @generated from rpc metalstack.api.v2.TenantService.List
    */

@@ -7,24 +7,24 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/tenant.proto";
 
-// TenantService serves tenant related functions
+// TenantService provides tenant management operations.
 service TenantService {
-  // Create a tenant
+  // Creates a new tenant.
   rpc Create(TenantServiceCreateRequest) returns (TenantServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
   }
-  // List all tenants
+  // Returns the list of all tenants.
   rpc List(TenantServiceListRequest) returns (TenantServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 
-// TenantServiceCreateRequest is the request payload of the tenant create request
+// TenantServiceCreateRequest is the request payload for creating a tenant.
 message TenantServiceCreateRequest {
-  // Name of this tenant
+  // Name of the tenant
   string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this tenant
+  // Description of the tenant
   optional string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Email of the tenant, if not set will be inherited from the creator
   optional string email = 3 [(buf.validate.field).string.email = true];
@@ -34,26 +34,26 @@ message TenantServiceCreateRequest {
   metalstack.api.v2.Labels labels = 5;
 }
 
-// TenantServiceCreateResponse is the response payload of the tenant create request
+// TenantServiceCreateResponse is the response payload for creating a tenant.
 message TenantServiceCreateResponse {
-  // Tenant is the tenant
+  // Tenant contains the created tenant
   metalstack.api.v2.Tenant tenant = 1;
 }
 
-// TenantServiceListRequest is the request payload for a tenant list request
+// TenantServiceListRequest is the request payload for listing tenants.
 message TenantServiceListRequest {
-  // Login of the tenant to list
+  // Login filters tenants by this login
   optional string login = 1;
-  // Name of the tenant to list
+  // Name filters tenants by this name
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Paging details for the list request
   metalstack.api.v2.Paging paging = 3;
 }
 
-// TenantServiceListResponse is the response payload for a tenant list request
+// TenantServiceListResponse is the response payload for listing tenants.
 message TenantServiceListResponse {
-  // Tenants are the list of tenants
+  // Tenants contains the list of tenants
   repeated metalstack.api.v2.Tenant tenants = 1;
-  // NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+  // NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request
   optional uint64 next_page = 2;
 }

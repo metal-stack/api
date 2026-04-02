@@ -122,7 +122,7 @@ export var ImageClassification;
  */
 export const ImageClassificationSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_image, 1);
 /**
- * ImageService serves image related functions
+ * ImageService provides image management operations.
  *
  * @generated from service metalstack.api.v2.ImageService
  */

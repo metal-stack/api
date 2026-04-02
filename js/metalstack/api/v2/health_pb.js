@@ -33,7 +33,7 @@ export const HealthServiceGetRequestSchema = /*@__PURE__*/ messageDesc(file_meta
  */
 export const HealthServiceGetResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_health, 4);
 /**
- * ServiceStatus defines the status of a service
+ * ServiceStatus defines the status of a service.
  *
  * @generated from enum metalstack.api.v2.ServiceStatus
  */
@@ -58,7 +58,7 @@ export var ServiceStatus;
      */
     ServiceStatus[ServiceStatus["UNHEALTHY"] = 2] = "UNHEALTHY";
     /**
-     * SERVICE_STATUS_HEALTHY the service is in healthy status e.g. fully functional
+     * SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional
      *
      * @generated from enum value: SERVICE_STATUS_HEALTHY = 3;
      */
@@ -69,7 +69,7 @@ export var ServiceStatus;
  */
 export const ServiceStatusSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_health, 0);
 /**
- * Service defines the service for which the healtyness is reported
+ * Service defines the service for which the healthiness is reported.
  *
  * @generated from enum metalstack.api.v2.Service
  */
@@ -82,19 +82,19 @@ export var Service;
      */
     Service[Service["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * SERVICE_IPAM the ipam service
+     * SERVICE_IPAM the IPAM service
      *
      * @generated from enum value: SERVICE_IPAM = 1;
      */
     Service[Service["IPAM"] = 1] = "IPAM";
     /**
-     * SERVICE_RETHINK the rethinkdb
+     * SERVICE_RETHINK the RethinkDB
      *
      * @generated from enum value: SERVICE_RETHINK = 2;
      */
     Service[Service["RETHINK"] = 2] = "RETHINK";
     /**
-     * SERVICE_MASTERDATA the masterdata-api
+     * SERVICE_MASTERDATA the masterdata API
      *
      * @generated from enum value: SERVICE_MASTERDATA = 3;
      */
@@ -112,13 +112,13 @@ export var Service;
      */
     Service[Service["AUDIT"] = 5] = "AUDIT";
     /**
-     * SERVICE_VPN the vpn service
+     * SERVICE_VPN the VPN service
      *
      * @generated from enum value: SERVICE_VPN = 6;
      */
     Service[Service["VPN"] = 6] = "VPN";
     /**
-     * SERVICE_REDIS the redis service
+     * SERVICE_REDIS the Redis service
      *
      * @generated from enum value: SERVICE_REDIS = 7;
      */
@@ -135,7 +135,7 @@ export var Service;
  */
 export const ServiceSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_health, 1);
 /**
- * HealthService serves health related functions
+ * HealthService provides health status monitoring operations.
  *
  * @generated from service metalstack.api.v2.HealthService
  */

@@ -17,13 +17,13 @@ export const file_metalstack_infra_v2_event: GenFile = /*@__PURE__*/
   fileDesc("Ch9tZXRhbHN0YWNrL2luZnJhL3YyL2V2ZW50LnByb3RvEhNtZXRhbHN0YWNrLmluZnJhLnYyIsEBChdFdmVudFNlcnZpY2VTZW5kUmVxdWVzdBJICgZldmVudHMYASADKAsyOC5tZXRhbHN0YWNrLmluZnJhLnYyLkV2ZW50U2VydmljZVNlbmRSZXF1ZXN0LkV2ZW50c0VudHJ5GlwKC0V2ZW50c0VudHJ5EgsKA2tleRgBIAEoCRI8CgV2YWx1ZRgCIAEoCzItLm1ldGFsc3RhY2suaW5mcmEudjIuTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50OgI4ASI6ChhFdmVudFNlcnZpY2VTZW5kUmVzcG9uc2USDgoGZXZlbnRzGAEgASgEEg4KBmZhaWxlZBgCIAMoCSKaAQoYTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50EigKBHRpbWUYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEkMKBWV2ZW50GAIgASgOMioubWV0YWxzdGFjay5pbmZyYS52Mi5Qcm92aXNpb25pbmdFdmVudFR5cGVCCLpIBYIBAhABEg8KB21lc3NhZ2UYAyABKAkquAUKFVByb3Zpc2lvbmluZ0V2ZW50VHlwZRInCiNQUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9VTlNQRUNJRklFRBAAEiwKHVBST1ZJU0lPTklOR19FVkVOVF9UWVBFX0FMSVZFEAEaCYKyGQVBbGl2ZRIwCh9QUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9DUkFTSEVEEAIaC4KyGQdDcmFzaGVkEjgKI1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BYRV9CT09USU5HEAMaD4KyGQtQWEUgQm9vdGluZxI+CiZQUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9QTEFOTkVEX1JFQk9PVBAEGhKCshkOUGxhbm5lZCBSZWJvb3QSNAohUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfUFJFUEFSSU5HEAUaDYKyGQlQcmVwYXJpbmcSOAojUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfUkVHSVNURVJJTkcQBhoPgrIZC1JlZ2lzdGVyaW5nEjAKH1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1dBSVRJTkcQBxoLgrIZB1dhaXRpbmcSNgoiUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfSU5TVEFMTElORxAIGg6CshkKSW5zdGFsbGluZxJGCipQUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9CT09USU5HX05FV19LRVJORUwQCRoWgrIZEkJvb3RpbmcgTmV3IEtlcm5lbBI4CiNQUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9QSE9ORURfSE9NRRAKGg+CshkLUGhvbmVkIEhvbWUSQAonUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfTUFDSElORV9SRUNMQUlNEAsaE4KyGQ9NYWNoaW5lIFJlY2xhaW0yfgoMRXZlbnRTZXJ2aWNlEm4KBFNlbmQSLC5tZXRhbHN0YWNrLmluZnJhLnYyLkV2ZW50U2VydmljZVNlbmRSZXF1ZXN0Gi0ubWV0YWxzdGFjay5pbmZyYS52Mi5FdmVudFNlcnZpY2VTZW5kUmVzcG9uc2UiCeDzGALq8xgBAULOAQoXY29tLm1ldGFsc3RhY2suaW5mcmEudjJCCkV2ZW50UHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common]);
 
 /**
- * EventServiceSendRequest.
+ * EventServiceSendRequest is the request payload for sending provisioning events.
  *
  * @generated from message metalstack.infra.v2.EventServiceSendRequest
  */
 export type EventServiceSendRequest = Message<"metalstack.infra.v2.EventServiceSendRequest"> & {
   /**
-   * Events grouped by machine IDs.
+   * Events grouped by machine IDs
    *
    * @generated from field: map<string, metalstack.infra.v2.MachineProvisioningEvent> events = 1;
    */
@@ -38,20 +38,20 @@ export const EventServiceSendRequestSchema: GenMessage<EventServiceSendRequest> 
   messageDesc(file_metalstack_infra_v2_event, 0);
 
 /**
- * EventServiceSendResponse.
+ * EventServiceSendResponse is the response payload for sending provisioning events.
  *
  * @generated from message metalstack.infra.v2.EventServiceSendResponse
  */
 export type EventServiceSendResponse = Message<"metalstack.infra.v2.EventServiceSendResponse"> & {
   /**
-   * Events counts the number of events successfully stored in the database.
+   * Events counts the number of events successfully stored in the database
    *
    * @generated from field: uint64 events = 1;
    */
   events: bigint;
 
   /**
-   * Failed contains IDs of all machines whose events could not be stored in the database.
+   * Failed contains IDs of all machines whose events could not be stored in the database
    *
    * @generated from field: repeated string failed = 2;
    */
@@ -72,21 +72,21 @@ export const EventServiceSendResponseSchema: GenMessage<EventServiceSendResponse
  */
 export type MachineProvisioningEvent = Message<"metalstack.infra.v2.MachineProvisioningEvent"> & {
   /**
-   * Time the event occurred at.
+   * Time the event occurred at
    *
    * @generated from field: google.protobuf.Timestamp time = 1;
    */
   time?: Timestamp;
 
   /**
-   * Event that occurred.
+   * Event that occurred
    *
    * @generated from field: metalstack.infra.v2.ProvisioningEventType event = 2;
    */
   event: ProvisioningEventType;
 
   /**
-   * Message describing the event in more detail.
+   * Message describes the event in more detail
    *
    * @generated from field: string message = 3;
    */
@@ -107,84 +107,84 @@ export const MachineProvisioningEventSchema: GenMessage<MachineProvisioningEvent
  */
 export enum ProvisioningEventType {
   /**
-   * PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified.
+   * PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago.
+   * PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_ALIVE = 1;
    */
   ALIVE = 1,
 
   /**
-   * PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine's lifecycle.
+   * PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine's lifecycle
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_CRASHED = 2;
    */
   CRASHED = 2,
 
   /**
-   * PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE.
+   * PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_PXE_BOOTING = 3;
    */
   PXE_BOOTING = 3,
 
   /**
-   * PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot.
+   * PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_PLANNED_REBOOT = 4;
    */
   PLANNED_REBOOT = 4,
 
   /**
-   * PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started.
+   * PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_PREPARING = 5;
    */
   PREPARING = 5,
 
   /**
-   * PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API.
+   * PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_REGISTERING = 6;
    */
   REGISTERING = 6,
 
   /**
-   * PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation.
+   * PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_WAITING = 7;
    */
   WAITING = 7,
 
   /**
-   * PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed.
+   * PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_INSTALLING = 8;
    */
   INSTALLING = 8,
 
   /**
-   * PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS.
+   * PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL = 9;
    */
   BOOTING_NEW_KERNEL = 9,
 
   /**
-   * PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness.
+   * PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_PHONED_HOME = 10;
    */
   PHONED_HOME = 10,
 
   /**
-   * PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines.
+   * PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines
    *
    * @generated from enum value: PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11;
    */
@@ -198,13 +198,13 @@ export const ProvisioningEventTypeSchema: GenEnum<ProvisioningEventType> = /*@__
   enumDesc(file_metalstack_infra_v2_event, 0);
 
 /**
- * EventService serves event related functions.
+ * EventService provides machine provisioning event logging operations.
  *
  * @generated from service metalstack.infra.v2.EventService
  */
 export const EventService: GenService<{
   /**
-   * Send a series of machine provisioning events.
+   * Sends a series of machine provisioning events.
    *
    * @generated from rpc metalstack.infra.v2.EventService.Send
    */

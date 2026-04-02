@@ -30,7 +30,7 @@ export const AuditServiceGetRequestSchema = /*@__PURE__*/ messageDesc(file_metal
  */
 export const AuditServiceGetResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_audit, 3);
 /**
- * AuditService serves audit related functions
+ * AuditService provides audit logging operations.
  *
  * @generated from service metalstack.admin.v2.AuditService
  */

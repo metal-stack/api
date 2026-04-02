@@ -223,13 +223,13 @@ export type PartitionServiceListResponse = Message<"metalstack.api.v2.PartitionS
  */
 export declare const PartitionServiceListResponseSchema: GenMessage<PartitionServiceListResponse>;
 /**
- * PartitionService serves partition address related functions
+ * PartitionService provides partition management operations.
  *
  * @generated from service metalstack.api.v2.PartitionService
  */
 export declare const PartitionService: GenService<{
     /**
-     * Get a partition
+     * Returns the partition with the specified ID.
      *
      * @generated from rpc metalstack.api.v2.PartitionService.Get
      */
@@ -239,7 +239,7 @@ export declare const PartitionService: GenService<{
         output: typeof PartitionServiceGetResponseSchema;
     };
     /**
-     * List all partitions
+     * Returns the list of all partitions.
      *
      * @generated from rpc metalstack.api.v2.PartitionService.List
      */

@@ -2208,13 +2208,13 @@ export declare enum MachineBMCCommand {
  */
 export declare const MachineBMCCommandSchema: GenEnum<MachineBMCCommand>;
 /**
- * MachineService serves machine related functions
+ * MachineService provides machine lifecycle management operations.
  *
  * @generated from service metalstack.api.v2.MachineService
  */
 export declare const MachineService: GenService<{
     /**
-     * Get a machine
+     * Returns the machine with the specified UUID.
      *
      * @generated from rpc metalstack.api.v2.MachineService.Get
      */
@@ -2224,7 +2224,7 @@ export declare const MachineService: GenService<{
         output: typeof MachineServiceGetResponseSchema;
     };
     /**
-     * Create a machine
+     * Creates a new machine.
      *
      * @generated from rpc metalstack.api.v2.MachineService.Create
      */
@@ -2234,7 +2234,7 @@ export declare const MachineService: GenService<{
         output: typeof MachineServiceCreateResponseSchema;
     };
     /**
-     * Update a machine
+     * Updates a machine.
      *
      * @generated from rpc metalstack.api.v2.MachineService.Update
      */
@@ -2244,7 +2244,7 @@ export declare const MachineService: GenService<{
         output: typeof MachineServiceUpdateResponseSchema;
     };
     /**
-     * List all machines
+     * Returns the list of all machines.
      *
      * @generated from rpc metalstack.api.v2.MachineService.List
      */
@@ -2254,7 +2254,7 @@ export declare const MachineService: GenService<{
         output: typeof MachineServiceListResponseSchema;
     };
     /**
-     * Delete a machine
+     * Deletes a machine.
      *
      * @generated from rpc metalstack.api.v2.MachineService.Delete
      */
@@ -2264,7 +2264,7 @@ export declare const MachineService: GenService<{
         output: typeof MachineServiceDeleteResponseSchema;
     };
     /**
-     * BMCCommand send a command to the bmc of a machine
+     * BMCCommand sends a command to the BMC of a machine.
      *
      * @generated from rpc metalstack.api.v2.MachineService.BMCCommand
      */
@@ -2274,7 +2274,7 @@ export declare const MachineService: GenService<{
         output: typeof MachineServiceBMCCommandResponseSchema;
     };
     /**
-     * GetBMC returns the BMC details of a machine
+     * Returns the BMC details of a machine.
      *
      * @generated from rpc metalstack.api.v2.MachineService.GetBMC
      */

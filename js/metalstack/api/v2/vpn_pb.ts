@@ -15,13 +15,13 @@ export const file_metalstack_api_v2_vpn: GenFile = /*@__PURE__*/
   fileDesc("ChttZXRhbHN0YWNrL2FwaS92Mi92cG4ucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIokBCgdWUE5Ob2RlEgoKAmlkGAEgASgEEgwKBG5hbWUYAiABKAkSDwoHcHJvamVjdBgDIAEoCRIUCgxpcF9hZGRyZXNzZXMYBCADKAkSLQoJbGFzdF9zZWVuGAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIOCgZvbmxpbmUYBiABKAhCvgEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkIIVnBuUHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
- * VPNNode is a machine connected to the vpn
+ * VPNNode represents a machine connected to the VPN.
  *
  * @generated from message metalstack.api.v2.VPNNode
  */
 export type VPNNode = Message<"metalstack.api.v2.VPNNode"> & {
   /**
-   * Id of this node
+   * ID of this node
    *
    * @generated from field: uint64 id = 1;
    */
@@ -42,14 +42,14 @@ export type VPNNode = Message<"metalstack.api.v2.VPNNode"> & {
   project: string;
 
   /**
-   * IPAddresses of this node in the vpn
+   * IPAddresses of this node in the VPN
    *
    * @generated from field: repeated string ip_addresses = 4;
    */
   ipAddresses: string[];
 
   /**
-   * LastSeen timestamp when this node reached out the the control plane
+   * LastSeen timestamp when this node reached out to the control plane
    *
    * @generated from field: google.protobuf.Timestamp last_seen = 5;
    */

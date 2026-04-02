@@ -19,7 +19,7 @@ export const IPServiceListRequestSchema = /*@__PURE__*/ messageDesc(file_metalst
  */
 export const IPServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_ip, 1);
 /**
- * IPService serves ip address related functions
+ * IPService provides IP address management operations.
  *
  * @generated from service metalstack.admin.v2.IPService
  */

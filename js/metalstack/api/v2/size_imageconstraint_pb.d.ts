@@ -147,13 +147,13 @@ export type SizeImageConstraintQuery = Message<"metalstack.api.v2.SizeImageConst
  */
 export declare const SizeImageConstraintQuerySchema: GenMessage<SizeImageConstraintQuery>;
 /**
- * SizeImageConstraintService serves size and image constraint related functions
+ * SizeImageConstraintService provides size and image constraint validation operations.
  *
  * @generated from service metalstack.api.v2.SizeImageConstraintService
  */
 export declare const SizeImageConstraintService: GenService<{
     /**
-     * Try if a given combination of size and image is possible
+     * Try validates if a given combination of size and image is possible.
      *
      * @generated from rpc metalstack.api.v2.SizeImageConstraintService.Try
      */

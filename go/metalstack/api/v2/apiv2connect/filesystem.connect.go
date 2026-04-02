@@ -43,11 +43,11 @@ const (
 
 // FilesystemServiceClient is a client for the metalstack.api.v2.FilesystemService service.
 type FilesystemServiceClient interface {
-	// Get a filesystem
+	// Returns the filesystem with the specified ID.
 	Get(context.Context, *v2.FilesystemServiceGetRequest) (*v2.FilesystemServiceGetResponse, error)
-	// List all filesystems
+	// Returns the list of all filesystems.
 	List(context.Context, *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error)
-	// Match a filesystems
+	// Matches a filesystem to a size and image or machine.
 	Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error)
 }
 
@@ -119,11 +119,11 @@ func (c *filesystemServiceClient) Match(ctx context.Context, req *v2.FilesystemS
 
 // FilesystemServiceHandler is an implementation of the metalstack.api.v2.FilesystemService service.
 type FilesystemServiceHandler interface {
-	// Get a filesystem
+	// Returns the filesystem with the specified ID.
 	Get(context.Context, *v2.FilesystemServiceGetRequest) (*v2.FilesystemServiceGetResponse, error)
-	// List all filesystems
+	// Returns the list of all filesystems.
 	List(context.Context, *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error)
-	// Match a filesystems
+	// Matches a filesystem to a size and image or machine.
 	Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error)
 }
 

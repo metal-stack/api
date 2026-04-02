@@ -16,13 +16,13 @@ export const file_metalstack_admin_v2_ip: GenFile = /*@__PURE__*/
   fileDesc("ChxtZXRhbHN0YWNrL2FkbWluL3YyL2lwLnByb3RvEhNtZXRhbHN0YWNrLmFkbWluLnYyIkEKFElQU2VydmljZUxpc3RSZXF1ZXN0EikKBXF1ZXJ5GAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuSVBRdWVyeSI7ChVJUFNlcnZpY2VMaXN0UmVzcG9uc2USIgoDaXBzGAEgAygLMhUubWV0YWxzdGFjay5hcGkudjIuSVAydgoJSVBTZXJ2aWNlEmkKBExpc3QSKS5tZXRhbHN0YWNrLmFkbWluLnYyLklQU2VydmljZUxpc3RSZXF1ZXN0GioubWV0YWxzdGFjay5hZG1pbi52Mi5JUFNlcnZpY2VMaXN0UmVzcG9uc2UiCtLzGAIBAuDzGAJCywEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgdJcFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_metalstack_api_v2_common, file_metalstack_api_v2_ip]);
 
 /**
- * IPServiceListRequest
+ * IPServiceListRequest is the request payload for listing IP addresses.
  *
  * @generated from message metalstack.admin.v2.IPServiceListRequest
  */
 export type IPServiceListRequest = Message<"metalstack.admin.v2.IPServiceListRequest"> & {
   /**
-   * Query to search for one or more ips
+   * Query to search for IP addresses
    *
    * @generated from field: metalstack.api.v2.IPQuery query = 1;
    */
@@ -37,13 +37,13 @@ export const IPServiceListRequestSchema: GenMessage<IPServiceListRequest> = /*@_
   messageDesc(file_metalstack_admin_v2_ip, 0);
 
 /**
- * IPServiceListResponse
+ * IPServiceListResponse is the response payload for listing IP addresses.
  *
  * @generated from message metalstack.admin.v2.IPServiceListResponse
  */
 export type IPServiceListResponse = Message<"metalstack.admin.v2.IPServiceListResponse"> & {
   /**
-   * IPs are the list of ips
+   * IPs contains the list of IP addresses
    *
    * @generated from field: repeated metalstack.api.v2.IP ips = 1;
    */
@@ -58,13 +58,13 @@ export const IPServiceListResponseSchema: GenMessage<IPServiceListResponse> = /*
   messageDesc(file_metalstack_admin_v2_ip, 1);
 
 /**
- * IPService serves ip address related functions
+ * IPService provides IP address management operations.
  *
  * @generated from service metalstack.admin.v2.IPService
  */
 export const IPService: GenService<{
   /**
-   * List all ips
+   * Returns the list of all IP addresses.
    *
    * @generated from rpc metalstack.admin.v2.IPService.List
    */

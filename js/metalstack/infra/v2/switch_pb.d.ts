@@ -7,13 +7,13 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_infra_v2_switch: GenFile;
 /**
- * SwitchServiceGetRequest.
+ * SwitchServiceGetRequest is the request payload for getting a switch.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceGetRequest
  */
 export type SwitchServiceGetRequest = Message<"metalstack.infra.v2.SwitchServiceGetRequest"> & {
     /**
-     * Id of the switch.
+     * Id of the switch
      *
      * @generated from field: string id = 1;
      */
@@ -25,13 +25,13 @@ export type SwitchServiceGetRequest = Message<"metalstack.infra.v2.SwitchService
  */
 export declare const SwitchServiceGetRequestSchema: GenMessage<SwitchServiceGetRequest>;
 /**
- * SwitchServiceGetResponse.
+ * SwitchServiceGetResponse is the response payload for getting a switch.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceGetResponse
  */
 export type SwitchServiceGetResponse = Message<"metalstack.infra.v2.SwitchServiceGetResponse"> & {
     /**
-     * Switch that was requested.
+     * Switch contains the requested switch
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
@@ -43,13 +43,13 @@ export type SwitchServiceGetResponse = Message<"metalstack.infra.v2.SwitchServic
  */
 export declare const SwitchServiceGetResponseSchema: GenMessage<SwitchServiceGetResponse>;
 /**
- * SwitchServiceRegisterRequest.
+ * SwitchServiceRegisterRequest is the request payload for registering a switch.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceRegisterRequest
  */
 export type SwitchServiceRegisterRequest = Message<"metalstack.infra.v2.SwitchServiceRegisterRequest"> & {
     /**
-     * Switch to register.
+     * Switch to register
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
@@ -61,13 +61,13 @@ export type SwitchServiceRegisterRequest = Message<"metalstack.infra.v2.SwitchSe
  */
 export declare const SwitchServiceRegisterRequestSchema: GenMessage<SwitchServiceRegisterRequest>;
 /**
- * SwitchServiceRegisterResponse.
+ * SwitchServiceRegisterResponse is the response payload for registering a switch.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceRegisterResponse
  */
 export type SwitchServiceRegisterResponse = Message<"metalstack.infra.v2.SwitchServiceRegisterResponse"> & {
     /**
-     * Switch that was registered.
+     * Switch contains the registered switch
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
@@ -79,31 +79,31 @@ export type SwitchServiceRegisterResponse = Message<"metalstack.infra.v2.SwitchS
  */
 export declare const SwitchServiceRegisterResponseSchema: GenMessage<SwitchServiceRegisterResponse>;
 /**
- * SwitchServiceHeartbeatRequest.
+ * SwitchServiceHeartbeatRequest is the request payload for sending a switch heartbeat.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceHeartbeatRequest
  */
 export type SwitchServiceHeartbeatRequest = Message<"metalstack.infra.v2.SwitchServiceHeartbeatRequest"> & {
     /**
-     * Id of the switch.
+     * Id of the switch
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * Duration of the sync.
+     * Duration of the sync
      *
      * @generated from field: google.protobuf.Duration duration = 2;
      */
     duration?: Duration;
     /**
-     * Error if any occurred during the sync.
+     * Error if any occurred during the sync
      *
      * @generated from field: optional string error = 3;
      */
     error?: string;
     /**
-     * PortStates maps port identifiers to the respective port's operational state.
+     * PortStates maps port identifiers to the respective port's operational state
      *
      * @generated from field: map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
      */
@@ -111,7 +111,7 @@ export type SwitchServiceHeartbeatRequest = Message<"metalstack.infra.v2.SwitchS
         [key: string]: SwitchPortStatus;
     };
     /**
-     * BgpPortStates maps port identifiers to the respective port's BGP state.
+     * BgpPortStates maps port identifiers to the respective port's BGP state
      *
      * @generated from field: map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
      */
@@ -125,25 +125,25 @@ export type SwitchServiceHeartbeatRequest = Message<"metalstack.infra.v2.SwitchS
  */
 export declare const SwitchServiceHeartbeatRequestSchema: GenMessage<SwitchServiceHeartbeatRequest>;
 /**
- * SwitchServiceHeartbeatResponse.
+ * SwitchServiceHeartbeatResponse is the response payload for sending a switch heartbeat.
  *
  * @generated from message metalstack.infra.v2.SwitchServiceHeartbeatResponse
  */
 export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.SwitchServiceHeartbeatResponse"> & {
     /**
-     * Id of the switch.
+     * Id of the switch
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * LastSync holds information about the last sync.
+     * LastSync holds information about the last sync
      *
      * @generated from field: metalstack.api.v2.SwitchSync last_sync = 2;
      */
     lastSync?: SwitchSync;
     /**
-     * LastSyncError holds information about the last erroneous sync.
+     * LastSyncError holds information about the last erroneous sync
      *
      * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 3;
      */
@@ -155,13 +155,13 @@ export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.Switch
  */
 export declare const SwitchServiceHeartbeatResponseSchema: GenMessage<SwitchServiceHeartbeatResponse>;
 /**
- * SwitchService serves switch related functions.
+ * SwitchService provides infrastructure switch management operations.
  *
  * @generated from service metalstack.infra.v2.SwitchService
  */
 export declare const SwitchService: GenService<{
     /**
-     * Get a switch by ID.
+     * Returns the switch with the specified ID.
      *
      * @generated from rpc metalstack.infra.v2.SwitchService.Get
      */
@@ -171,7 +171,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServiceGetResponseSchema;
     };
     /**
-     * Register a switch.
+     * Registers a switch.
      *
      * @generated from rpc metalstack.infra.v2.SwitchService.Register
      */
@@ -181,7 +181,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServiceRegisterResponseSchema;
     };
     /**
-     * Heartbeat a switch.
+     * Heartbeat sends a heartbeat from a switch.
      *
      * @generated from rpc metalstack.infra.v2.SwitchService.Heartbeat
      */

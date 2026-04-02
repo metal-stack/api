@@ -22,10 +22,10 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// IPServiceListRequest
+// IPServiceListRequest is the request payload for listing IP addresses.
 type IPServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query to search for one or more ips
+	// Query to search for IP addresses
 	Query         *v2.IPQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -68,10 +68,10 @@ func (x *IPServiceListRequest) GetQuery() *v2.IPQuery {
 	return nil
 }
 
-// IPServiceListResponse
+// IPServiceListResponse is the response payload for listing IP addresses.
 type IPServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// IPs are the list of ips
+	// IPs contains the list of IP addresses
 	Ips           []*v2.IP `protobuf:"bytes,1,rep,name=ips,proto3" json:"ips,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

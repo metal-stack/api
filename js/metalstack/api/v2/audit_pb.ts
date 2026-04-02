@@ -18,7 +18,7 @@ export const file_metalstack_api_v2_audit: GenFile = /*@__PURE__*/
   fileDesc("Ch1tZXRhbHN0YWNrL2FwaS92Mi9hdWRpdC5wcm90bxIRbWV0YWxzdGFjay5hcGkudjIiqgIKCkF1ZGl0VHJhY2USFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESLQoJdGltZXN0YW1wGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIMCgR1c2VyGAMgASgJEg4KBnRlbmFudBgEIAEoCRIUCgdwcm9qZWN0GAUgASgJSACIAQESDgoGbWV0aG9kGAYgASgJEhEKBGJvZHkYByABKAlIAYgBARIRCglzb3VyY2VfaXAYCCABKAkSGAoLcmVzdWx0X2NvZGUYCSABKAVIAogBARIsCgVwaGFzZRgKIAEoDjIdLm1ldGFsc3RhY2suYXBpLnYyLkF1ZGl0UGhhc2VCCgoIX3Byb2plY3RCBwoFX2JvZHlCDgoMX3Jlc3VsdF9jb2RlIpoECgpBdWRpdFF1ZXJ5EhsKBHV1aWQYAiABKAlCCLpIBXIDsAEBSACIAQESLQoEZnJvbRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAYgBARIrCgJ0bxgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAogBARIeCgR1c2VyGAUgASgJQgu6SAhyBsCzrrECAUgDiAEBEh4KB3Byb2plY3QYBiABKAlCCLpIBXIDsAEBSASIAQESHwoGbWV0aG9kGAcgASgJQgq6SAdyBRACGIACSAWIAQESHwoJc291cmNlX2lwGAggASgJQge6SARyAnABSAaIAQESIQoLcmVzdWx0X2NvZGUYCSABKAVCB7pIBBoCKABIB4gBARIdCgRib2R5GAogASgJQgq6SAdyBRACGIACSAiIAQESHgoFbGltaXQYCyABKAVCCrpIBxoFGOgHIABICYgBARI7CgVwaGFzZRgMIAEoDjIdLm1ldGFsc3RhY2suYXBpLnYyLkF1ZGl0UGhhc2VCCLpIBYIBAhABSAqIAQFCBwoFX3V1aWRCBwoFX2Zyb21CBQoDX3RvQgcKBV91c2VyQgoKCF9wcm9qZWN0QgkKB19tZXRob2RCDAoKX3NvdXJjZV9pcEIOCgxfcmVzdWx0X2NvZGVCBwoFX2JvZHlCCAoGX2xpbWl0QggKBl9waGFzZSJjChdBdWRpdFNlcnZpY2VMaXN0UmVxdWVzdBIaCgVsb2dpbhgBIAEoCUILukgIcgbAs66xAgESLAoFcXVlcnkYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5BdWRpdFF1ZXJ5IkkKGEF1ZGl0U2VydmljZUxpc3RSZXNwb25zZRItCgZ0cmFjZXMYASADKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5BdWRpdFRyYWNlIpMBChZBdWRpdFNlcnZpY2VHZXRSZXF1ZXN0EhoKBWxvZ2luGAEgASgJQgu6SAhyBsCzrrECARIWCgR1dWlkGAIgASgJQgi6SAVyA7ABARI7CgVwaGFzZRgDIAEoDjIdLm1ldGFsc3RhY2suYXBpLnYyLkF1ZGl0UGhhc2VCCLpIBYIBAhABSACIAQFCCAoGX3BoYXNlIkcKF0F1ZGl0U2VydmljZUdldFJlc3BvbnNlEiwKBXRyYWNlGAEgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuQXVkaXRUcmFjZSpcCgpBdWRpdFBoYXNlEhsKF0FVRElUX1BIQVNFX1VOU1BFQ0lGSUVEEAASFwoTQVVESVRfUEhBU0VfUkVRVUVTVBABEhgKFEFVRElUX1BIQVNFX1JFU1BPTlNFEAIy4wEKDEF1ZGl0U2VydmljZRJnCgNHZXQSKS5tZXRhbHN0YWNrLmFwaS52Mi5BdWRpdFNlcnZpY2VHZXRSZXF1ZXN0GioubWV0YWxzdGFjay5hcGkudjIuQXVkaXRTZXJ2aWNlR2V0UmVzcG9uc2UiCcLzGAEB4PMYAhJqCgRMaXN0EioubWV0YWxzdGFjay5hcGkudjIuQXVkaXRTZXJ2aWNlTGlzdFJlcXVlc3QaKy5tZXRhbHN0YWNrLmFwaS52Mi5BdWRpdFNlcnZpY2VMaXN0UmVzcG9uc2UiCcLzGAEB4PMYAkLAAQoVY29tLm1ldGFsc3RhY2suYXBpLnYyQgpBdWRpdFByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * AuditTrace is an audit trace
+ * AuditTrace is an audit trace.
  *
  * @generated from message metalstack.api.v2.AuditTrace
  */
@@ -31,56 +31,56 @@ export type AuditTrace = Message<"metalstack.api.v2.AuditTrace"> & {
   uuid: string;
 
   /**
-   * Timestamp is the timestamp when the request arrived at the api
+   * Timestamp is the timestamp when the request arrived at the API
    *
    * @generated from field: google.protobuf.Timestamp timestamp = 2;
    */
   timestamp?: Timestamp;
 
   /**
-   * User is the login user who called the api method
+   * User is the login user who called the API method
    *
    * @generated from field: string user = 3;
    */
   user: string;
 
   /**
-   * Tenant is the tenant targeted by the api call
+   * Tenant is the tenant targeted by the API call
    *
    * @generated from field: string tenant = 4;
    */
   tenant: string;
 
   /**
-   * Project is the project targeted by the api call
+   * Project is the project targeted by the API call
    *
    * @generated from field: optional string project = 5;
    */
   project?: string;
 
   /**
-   * Method is the api method that was called
+   * Method is the API method that was called
    *
    * @generated from field: string method = 6;
    */
   method: string;
 
   /**
-   * Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
+   * Body is the payload of the API call. In the request phase this contains the payload sent by the client, in the response phase it contains the payload returned by the API server
    *
    * @generated from field: optional string body = 7;
    */
   body?: string;
 
   /**
-   * Source IP contains the source ip address of the api call
+   * SourceIP contains the source IP address of the API call
    *
    * @generated from field: string source_ip = 8;
    */
   sourceIp: string;
 
   /**
-   * Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes
+   * ResultCode is a status code describing the result of the API call. It is set for traces in the response phase and contains official gRPC status codes
    *
    * @generated from field: optional int32 result_code = 9;
    */
@@ -298,7 +298,7 @@ export const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse> 
   messageDesc(file_metalstack_api_v2_audit, 5);
 
 /**
- * AuditPhase specifies phase of an audit trace
+ * AuditPhase specifies the phase of an audit trace.
  *
  * @generated from enum metalstack.api.v2.AuditPhase
  */
@@ -318,7 +318,7 @@ export enum AuditPhase {
   REQUEST = 1,
 
   /**
-   * AUDIT_PHASE_REQUEST defines an audit trace in the response phase
+   * AUDIT_PHASE_RESPONSE defines an audit trace in the response phase
    *
    * @generated from enum value: AUDIT_PHASE_RESPONSE = 2;
    */
@@ -332,13 +332,13 @@ export const AuditPhaseSchema: GenEnum<AuditPhase> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_audit, 0);
 
 /**
- * AuditService serves audit related functions
+ * AuditService provides audit logging operations.
  *
  * @generated from service metalstack.api.v2.AuditService
  */
 export const AuditService: GenService<{
   /**
-   * Get an audit trace
+   * Returns the audit trace with the specified UUID.
    *
    * @generated from rpc metalstack.api.v2.AuditService.Get
    */
@@ -348,7 +348,7 @@ export const AuditService: GenService<{
     output: typeof AuditServiceGetResponseSchema;
   },
   /**
-   * List audit traces
+   * Returns the list of audit traces.
    *
    * @generated from rpc metalstack.api.v2.AuditService.List
    */

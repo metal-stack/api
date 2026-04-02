@@ -45,13 +45,13 @@ const (
 
 // ImageServiceClient is a client for the metalstack.admin.v2.ImageService service.
 type ImageServiceClient interface {
-	// Create a image
+	// Creates a new image.
 	Create(context.Context, *v2.ImageServiceCreateRequest) (*v2.ImageServiceCreateResponse, error)
-	// Update a image
+	// Updates an image.
 	Update(context.Context, *v2.ImageServiceUpdateRequest) (*v2.ImageServiceUpdateResponse, error)
-	// Delete a image
+	// Deletes an image.
 	Delete(context.Context, *v2.ImageServiceDeleteRequest) (*v2.ImageServiceDeleteResponse, error)
-	// Usage of images
+	// Returns the usage of images.
 	Usage(context.Context, *v2.ImageServiceUsageRequest) (*v2.ImageServiceUsageResponse, error)
 }
 
@@ -139,13 +139,13 @@ func (c *imageServiceClient) Usage(ctx context.Context, req *v2.ImageServiceUsag
 
 // ImageServiceHandler is an implementation of the metalstack.admin.v2.ImageService service.
 type ImageServiceHandler interface {
-	// Create a image
+	// Creates a new image.
 	Create(context.Context, *v2.ImageServiceCreateRequest) (*v2.ImageServiceCreateResponse, error)
-	// Update a image
+	// Updates an image.
 	Update(context.Context, *v2.ImageServiceUpdateRequest) (*v2.ImageServiceUpdateResponse, error)
-	// Delete a image
+	// Deletes an image.
 	Delete(context.Context, *v2.ImageServiceDeleteRequest) (*v2.ImageServiceDeleteResponse, error)
-	// Usage of images
+	// Returns the usage of images.
 	Usage(context.Context, *v2.ImageServiceUsageRequest) (*v2.ImageServiceUsageResponse, error)
 }
 

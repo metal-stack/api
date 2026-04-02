@@ -43,11 +43,11 @@ const (
 
 // TokenServiceClient is a client for the metalstack.admin.v2.TokenService service.
 type TokenServiceClient interface {
-	// List tokens
+	// Returns the list of tokens for a user.
 	List(context.Context, *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error)
-	// Revoke a token
+	// Revokes a token.
 	Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error)
-	// Create a token to authenticate against the platform, the secret will be only visible in the response.
+	// Creates a token to authenticate against the platform, the secret will be only visible in the response.
 	// This service is suitable to create tokens for other users instead of deriving users from tokens directly.
 	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
 }
@@ -120,11 +120,11 @@ func (c *tokenServiceClient) Create(ctx context.Context, req *v2.TokenServiceCre
 
 // TokenServiceHandler is an implementation of the metalstack.admin.v2.TokenService service.
 type TokenServiceHandler interface {
-	// List tokens
+	// Returns the list of tokens for a user.
 	List(context.Context, *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error)
-	// Revoke a token
+	// Revokes a token.
 	Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error)
-	// Create a token to authenticate against the platform, the secret will be only visible in the response.
+	// Creates a token to authenticate against the platform, the secret will be only visible in the response.
 	// This service is suitable to create tokens for other users instead of deriving users from tokens directly.
 	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
 }

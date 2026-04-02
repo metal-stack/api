@@ -244,7 +244,7 @@ export const MachineServiceListBMCResponseSchema: GenMessage<MachineServiceListB
   messageDesc(file_metalstack_admin_v2_machine, 9);
 
 /**
- * MachineServiceConsolePasswordRequest is the request to get the console password
+ * MachineServiceConsolePasswordRequest is the request payload for getting the console password.
  *
  * @generated from message metalstack.admin.v2.MachineServiceConsolePasswordRequest
  */
@@ -257,7 +257,7 @@ export type MachineServiceConsolePasswordRequest = Message<"metalstack.admin.v2.
   uuid: string;
 
   /**
-   * Reason must be provided why access to the console is requested.
+   * Reason must be provided why access to the console is requested
    * Reason is only forwarded to an audit sink
    *
    * @generated from field: string reason = 2;
@@ -273,7 +273,7 @@ export const MachineServiceConsolePasswordRequestSchema: GenMessage<MachineServi
   messageDesc(file_metalstack_admin_v2_machine, 10);
 
 /**
- * MachineServiceConsolePasswordResponse is the response to the console password request
+ * MachineServiceConsolePasswordResponse is the response payload for getting the console password.
  *
  * @generated from message metalstack.admin.v2.MachineServiceConsolePasswordResponse
  */
@@ -301,13 +301,13 @@ export const MachineServiceConsolePasswordResponseSchema: GenMessage<MachineServ
   messageDesc(file_metalstack_admin_v2_machine, 11);
 
 /**
- * MachineService serves machine related functions
+ * MachineService provides machine lifecycle management operations.
  *
  * @generated from service metalstack.admin.v2.MachineService
  */
 export const MachineService: GenService<{
   /**
-   * Get a machine
+   * Returns the machine with the specified UUID.
    *
    * @generated from rpc metalstack.admin.v2.MachineService.Get
    */
@@ -317,7 +317,7 @@ export const MachineService: GenService<{
     output: typeof MachineServiceGetResponseSchema;
   },
   /**
-   * List all machines
+   * Returns the list of all machines.
    *
    * @generated from rpc metalstack.admin.v2.MachineService.List
    */
@@ -327,7 +327,7 @@ export const MachineService: GenService<{
     output: typeof MachineServiceListResponseSchema;
   },
   /**
-   * BMCCommand send a command to the bmc of a machine
+   * BMCCommand sends a command to the BMC of a machine.
    *
    * @generated from rpc metalstack.admin.v2.MachineService.BMCCommand
    */
@@ -337,7 +337,7 @@ export const MachineService: GenService<{
     output: typeof MachineServiceBMCCommandResponseSchema;
   },
   /**
-   * GetBMC returns the BMC details of a machine
+   * Returns the BMC details of a machine.
    *
    * @generated from rpc metalstack.admin.v2.MachineService.GetBMC
    */
@@ -347,7 +347,7 @@ export const MachineService: GenService<{
     output: typeof MachineServiceGetBMCResponseSchema;
   },
   /**
-   * ListBMC returns the BMC details of many machines
+   * ListBMC returns the BMC details of many machines.
    *
    * @generated from rpc metalstack.admin.v2.MachineService.ListBMC
    */
@@ -357,7 +357,7 @@ export const MachineService: GenService<{
     output: typeof MachineServiceListBMCResponseSchema;
   },
   /**
-   * ConsolePassword returns the password to access the serial console of the machine
+   * GetConsolePassword returns the password to access the serial console of the machine.
    *
    * @generated from rpc metalstack.admin.v2.MachineService.ConsolePassword
    */

@@ -87,7 +87,7 @@ export var SizeConstraintType;
  */
 export const SizeConstraintTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_size, 0);
 /**
- * SizeService serves size related functions
+ * SizeService provides size management operations.
  *
  * @generated from service metalstack.api.v2.SizeService
  */

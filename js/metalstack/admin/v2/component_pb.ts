@@ -17,13 +17,13 @@ export const file_metalstack_admin_v2_component: GenFile = /*@__PURE__*/
   fileDesc("CiNtZXRhbHN0YWNrL2FkbWluL3YyL2NvbXBvbmVudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiJPChtDb21wb25lbnRTZXJ2aWNlTGlzdFJlcXVlc3QSMAoFcXVlcnkYASABKAsyIS5tZXRhbHN0YWNrLmFwaS52Mi5Db21wb25lbnRRdWVyeSJQChxDb21wb25lbnRTZXJ2aWNlTGlzdFJlc3BvbnNlEjAKCmNvbXBvbmVudHMYASADKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5Db21wb25lbnQiNAoaQ29tcG9uZW50U2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQEiTgobQ29tcG9uZW50U2VydmljZUdldFJlc3BvbnNlEi8KCWNvbXBvbmVudBgBIAEoCzIcLm1ldGFsc3RhY2suYXBpLnYyLkNvbXBvbmVudCI3Ch1Db21wb25lbnRTZXJ2aWNlRGVsZXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJRCh5Db21wb25lbnRTZXJ2aWNlRGVsZXRlUmVzcG9uc2USLwoJY29tcG9uZW50GAEgASgLMhwubWV0YWxzdGFjay5hcGkudjIuQ29tcG9uZW50Mv8CChBDb21wb25lbnRTZXJ2aWNlEnQKA0dldBIvLm1ldGFsc3RhY2suYWRtaW4udjIuQ29tcG9uZW50U2VydmljZUdldFJlcXVlc3QaMC5tZXRhbHN0YWNrLmFkbWluLnYyLkNvbXBvbmVudFNlcnZpY2VHZXRSZXNwb25zZSIK0vMYAgEC4PMYAhJ8CgZEZWxldGUSMi5tZXRhbHN0YWNrLmFkbWluLnYyLkNvbXBvbmVudFNlcnZpY2VEZWxldGVSZXF1ZXN0GjMubWV0YWxzdGFjay5hZG1pbi52Mi5Db21wb25lbnRTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiCdLzGAEB4PMYARJ3CgRMaXN0EjAubWV0YWxzdGFjay5hZG1pbi52Mi5Db21wb25lbnRTZXJ2aWNlTGlzdFJlcXVlc3QaMS5tZXRhbHN0YWNrLmFkbWluLnYyLkNvbXBvbmVudFNlcnZpY2VMaXN0UmVzcG9uc2UiCtLzGAIBAuDzGAJC0gEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQg5Db21wb25lbnRQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_component]);
 
 /**
- * ComponentServiceListRequest
+ * ComponentServiceListRequest is the request payload for listing components.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceListRequest
  */
 export type ComponentServiceListRequest = Message<"metalstack.admin.v2.ComponentServiceListRequest"> & {
   /**
-   * Query components.
+   * Query filters components
    *
    * @generated from field: metalstack.api.v2.ComponentQuery query = 1;
    */
@@ -38,13 +38,13 @@ export const ComponentServiceListRequestSchema: GenMessage<ComponentServiceListR
   messageDesc(file_metalstack_admin_v2_component, 0);
 
 /**
- * ComponentServiceListResponse
+ * ComponentServiceListResponse is the response payload for listing components.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceListResponse
  */
 export type ComponentServiceListResponse = Message<"metalstack.admin.v2.ComponentServiceListResponse"> & {
   /**
-   * Components
+   * Components contains the list of components
    *
    * @generated from field: repeated metalstack.api.v2.Component components = 1;
    */
@@ -59,7 +59,7 @@ export const ComponentServiceListResponseSchema: GenMessage<ComponentServiceList
   messageDesc(file_metalstack_admin_v2_component, 1);
 
 /**
- * ComponentServiceGetRequest
+ * ComponentServiceGetRequest is the request payload for getting a component.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceGetRequest
  */
@@ -80,13 +80,13 @@ export const ComponentServiceGetRequestSchema: GenMessage<ComponentServiceGetReq
   messageDesc(file_metalstack_admin_v2_component, 2);
 
 /**
- * ComponentServiceGetResponse
+ * ComponentServiceGetResponse is the response payload for getting a component.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceGetResponse
  */
 export type ComponentServiceGetResponse = Message<"metalstack.admin.v2.ComponentServiceGetResponse"> & {
   /**
-   * Component
+   * Component contains the retrieved component
    *
    * @generated from field: metalstack.api.v2.Component component = 1;
    */
@@ -101,7 +101,7 @@ export const ComponentServiceGetResponseSchema: GenMessage<ComponentServiceGetRe
   messageDesc(file_metalstack_admin_v2_component, 3);
 
 /**
- * ComponentServiceGetRequest
+ * ComponentServiceDeleteRequest is the request payload for deleting a component.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceDeleteRequest
  */
@@ -122,13 +122,13 @@ export const ComponentServiceDeleteRequestSchema: GenMessage<ComponentServiceDel
   messageDesc(file_metalstack_admin_v2_component, 4);
 
 /**
- * ComponentServiceGetResponse
+ * ComponentServiceDeleteResponse is the response payload for deleting a component.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceDeleteResponse
  */
 export type ComponentServiceDeleteResponse = Message<"metalstack.admin.v2.ComponentServiceDeleteResponse"> & {
   /**
-   * Component
+   * Component contains the deleted component
    *
    * @generated from field: metalstack.api.v2.Component component = 1;
    */
@@ -143,13 +143,13 @@ export const ComponentServiceDeleteResponseSchema: GenMessage<ComponentServiceDe
   messageDesc(file_metalstack_admin_v2_component, 5);
 
 /**
- * ComponentService serves microservice related functions
+ * ComponentService provides microservice component management operations.
  *
  * @generated from service metalstack.admin.v2.ComponentService
  */
 export const ComponentService: GenService<{
   /**
-   * Get a single component
+   * Returns the component with the specified UUID.
    *
    * @generated from rpc metalstack.admin.v2.ComponentService.Get
    */
@@ -159,7 +159,7 @@ export const ComponentService: GenService<{
     output: typeof ComponentServiceGetResponseSchema;
   },
   /**
-   * Delete a component
+   * Deletes the component with the specified UUID.
    *
    * @generated from rpc metalstack.admin.v2.ComponentService.Delete
    */
@@ -169,7 +169,7 @@ export const ComponentService: GenService<{
     output: typeof ComponentServiceDeleteResponseSchema;
   },
   /**
-   * List all components with their status
+   * Returns the list of all components with their status.
    *
    * @generated from rpc metalstack.admin.v2.ComponentService.List
    */

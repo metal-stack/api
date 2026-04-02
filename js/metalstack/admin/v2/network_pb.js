@@ -61,7 +61,7 @@ export const NetworkServiceDeleteResponseSchema = /*@__PURE__*/ messageDesc(file
  */
 export const NetworkServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_network, 9);
 /**
- * NetworkService serves network address related functions
+ * NetworkService provides network management operations.
  *
  * @generated from service metalstack.admin.v2.NetworkService
  */

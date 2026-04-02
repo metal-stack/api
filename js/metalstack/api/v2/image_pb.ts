@@ -396,13 +396,13 @@ export const ImageClassificationSchema: GenEnum<ImageClassification> = /*@__PURE
   enumDesc(file_metalstack_api_v2_image, 1);
 
 /**
- * ImageService serves image related functions
+ * ImageService provides image management operations.
  *
  * @generated from service metalstack.api.v2.ImageService
  */
 export const ImageService: GenService<{
   /**
-   * Get a image
+   * Returns the image with the specified ID.
    *
    * @generated from rpc metalstack.api.v2.ImageService.Get
    */
@@ -412,7 +412,7 @@ export const ImageService: GenService<{
     output: typeof ImageServiceGetResponseSchema;
   },
   /**
-   * List all images
+   * Returns the list of all images.
    *
    * @generated from rpc metalstack.api.v2.ImageService.List
    */
@@ -422,7 +422,7 @@ export const ImageService: GenService<{
     output: typeof ImageServiceListResponseSchema;
   },
   /**
-   * Latest image for a specific os
+   * Returns the latest image for a specific operating system.
    *
    * @generated from rpc metalstack.api.v2.ImageService.Latest
    */

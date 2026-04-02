@@ -31,7 +31,7 @@ export const TenantServiceListRequestSchema = /*@__PURE__*/ messageDesc(file_met
  */
 export const TenantServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_tenant, 3);
 /**
- * TenantService serves tenant related functions
+ * TenantService provides tenant management operations.
  *
  * @generated from service metalstack.admin.v2.TenantService
  */

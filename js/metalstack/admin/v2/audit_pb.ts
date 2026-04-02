@@ -17,7 +17,7 @@ export const file_metalstack_admin_v2_audit: GenFile = /*@__PURE__*/
   fileDesc("Ch9tZXRhbHN0YWNrL2FkbWluL3YyL2F1ZGl0LnByb3RvEhNtZXRhbHN0YWNrLmFkbWluLnYyIkcKF0F1ZGl0U2VydmljZUxpc3RSZXF1ZXN0EiwKBXF1ZXJ5GAEgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuQXVkaXRRdWVyeSJJChhBdWRpdFNlcnZpY2VMaXN0UmVzcG9uc2USLQoGdHJhY2VzGAEgAygLMh0ubWV0YWxzdGFjay5hcGkudjIuQXVkaXRUcmFjZSJ3ChZBdWRpdFNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjsKBXBoYXNlGAIgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuQXVkaXRQaGFzZUIIukgFggECEAFIAIgBAUIICgZfcGhhc2UiRwoXQXVkaXRTZXJ2aWNlR2V0UmVzcG9uc2USLAoFdHJhY2UYASABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5BdWRpdFRyYWNlMuUBCgxBdWRpdFNlcnZpY2USaAoDR2V0EisubWV0YWxzdGFjay5hZG1pbi52Mi5BdWRpdFNlcnZpY2VHZXRSZXF1ZXN0GiwubWV0YWxzdGFjay5hZG1pbi52Mi5BdWRpdFNlcnZpY2VHZXRSZXNwb25zZSIG0vMYAgECEmsKBExpc3QSLC5tZXRhbHN0YWNrLmFkbWluLnYyLkF1ZGl0U2VydmljZUxpc3RSZXF1ZXN0Gi0ubWV0YWxzdGFjay5hZG1pbi52Mi5BdWRpdFNlcnZpY2VMaXN0UmVzcG9uc2UiBtLzGAIBAkLOAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCCkF1ZGl0UHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hZG1pbi92MjthZG1pbnYyogIDTUFYqgITTWV0YWxzdGFjay5BZG1pbi5WMsoCE01ldGFsc3RhY2tcQWRtaW5cVjLiAh9NZXRhbHN0YWNrXEFkbWluXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6QWRtaW46OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_audit, file_metalstack_api_v2_common]);
 
 /**
- * AuditServiceListRequest is the request payload to list audits
+ * AuditServiceListRequest is the request payload for listing audit traces.
  *
  * @generated from message metalstack.admin.v2.AuditServiceListRequest
  */
@@ -38,13 +38,13 @@ export const AuditServiceListRequestSchema: GenMessage<AuditServiceListRequest> 
   messageDesc(file_metalstack_admin_v2_audit, 0);
 
 /**
- * AuditServiceListResponse is the response payload of a audit list request
+ * AuditServiceListResponse is the response payload for listing audit traces.
  *
  * @generated from message metalstack.admin.v2.AuditServiceListResponse
  */
 export type AuditServiceListResponse = Message<"metalstack.admin.v2.AuditServiceListResponse"> & {
   /**
-   * Traces is a list of audit traces
+   * Traces contains the list of audit traces
    *
    * @generated from field: repeated metalstack.api.v2.AuditTrace traces = 1;
    */
@@ -59,7 +59,7 @@ export const AuditServiceListResponseSchema: GenMessage<AuditServiceListResponse
   messageDesc(file_metalstack_admin_v2_audit, 1);
 
 /**
- * AuditServiceGetRequest is the request payload of a audit get request
+ * AuditServiceGetRequest is the request payload for getting an audit trace.
  *
  * @generated from message metalstack.admin.v2.AuditServiceGetRequest
  */
@@ -87,7 +87,7 @@ export const AuditServiceGetRequestSchema: GenMessage<AuditServiceGetRequest> = 
   messageDesc(file_metalstack_admin_v2_audit, 2);
 
 /**
- * AuditServiceGetResponse is the response payload of a audit get request
+ * AuditServiceGetResponse is the response payload for getting an audit trace.
  *
  * @generated from message metalstack.admin.v2.AuditServiceGetResponse
  */
@@ -108,13 +108,13 @@ export const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse> 
   messageDesc(file_metalstack_admin_v2_audit, 3);
 
 /**
- * AuditService serves audit related functions
+ * AuditService provides audit logging operations.
  *
  * @generated from service metalstack.admin.v2.AuditService
  */
 export const AuditService: GenService<{
   /**
-   * Get an audit trace
+   * Returns the audit trace with the specified UUID.
    *
    * @generated from rpc metalstack.admin.v2.AuditService.Get
    */
@@ -124,7 +124,7 @@ export const AuditService: GenService<{
     output: typeof AuditServiceGetResponseSchema;
   },
   /**
-   * List all audit traces
+   * Returns the list of all audit traces.
    *
    * @generated from rpc metalstack.admin.v2.AuditService.List
    */

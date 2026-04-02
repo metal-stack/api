@@ -40,7 +40,7 @@ export const SizeReservationSchema = /*@__PURE__*/ messageDesc(file_metalstack_a
  */
 export const SizeReservationQuerySchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_size_reservation, 5);
 /**
- * SizeReservationService serves size reservation related functions
+ * SizeReservationService provides size reservation management operations.
  *
  * @generated from service metalstack.api.v2.SizeReservationService
  */

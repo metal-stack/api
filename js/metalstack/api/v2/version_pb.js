@@ -25,7 +25,7 @@ export const VersionServiceGetRequestSchema = /*@__PURE__*/ messageDesc(file_met
  */
 export const VersionServiceGetResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_version, 2);
 /**
- * VersionService serves version related functions
+ * VersionService provides version information operations.
  *
  * @generated from service metalstack.api.v2.VersionService
  */

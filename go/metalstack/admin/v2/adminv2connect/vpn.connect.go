@@ -41,9 +41,9 @@ const (
 
 // VPNServiceClient is a client for the metalstack.admin.v2.VPNService service.
 type VPNServiceClient interface {
-	// AuthKey generates a authkey for a project to join a machine to the project vpn
+	// GenerateAuthKey generates an authentication key for a project to join a machine to the project VPN.
 	AuthKey(context.Context, *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error)
-	// ListNodes returns a list of machines actually connected to the vpn
+	// Returns the list of machines connected to the VPN.
 	ListNodes(context.Context, *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error)
 }
 
@@ -99,9 +99,9 @@ func (c *vPNServiceClient) ListNodes(ctx context.Context, req *v2.VPNServiceList
 
 // VPNServiceHandler is an implementation of the metalstack.admin.v2.VPNService service.
 type VPNServiceHandler interface {
-	// AuthKey generates a authkey for a project to join a machine to the project vpn
+	// GenerateAuthKey generates an authentication key for a project to join a machine to the project VPN.
 	AuthKey(context.Context, *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error)
-	// ListNodes returns a list of machines actually connected to the vpn
+	// Returns the list of machines connected to the VPN.
 	ListNodes(context.Context, *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error)
 }
 

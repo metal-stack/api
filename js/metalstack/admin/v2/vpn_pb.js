@@ -31,7 +31,7 @@ export const VPNServiceListNodesRequestSchema = /*@__PURE__*/ messageDesc(file_m
  */
 export const VPNServiceListNodesResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_vpn, 3);
 /**
- * VPNService serves vpn related functions
+ * VPNService provides VPN management operations.
  *
  * @generated from service metalstack.admin.v2.VPNService
  */
