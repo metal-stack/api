@@ -75,7 +75,7 @@ export type ImageServiceLatestRequest = Message<"metalstack.api.v2.ImageServiceL
   os: string;
 
   /**
-   * Classification of the image latest image, defaults to IMAGE_CLASSIFICATION_SUPPORTED
+   * Classification of the image latest image
    *
    * @generated from field: optional metalstack.api.v2.ImageClassification classification = 2;
    */

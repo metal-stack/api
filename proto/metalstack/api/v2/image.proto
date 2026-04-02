@@ -43,7 +43,7 @@ message ImageServiceLatestRequest {
   // OS for which the latest image should be fetched
   // should contain os and major.minor then latest patch version of this os is returned
   string os = 1;
-  // Classification of the image latest image, defaults to IMAGE_CLASSIFICATION_SUPPORTED
+  // Classification of the image latest image
   optional ImageClassification classification = 2 [(buf.validate.field).enum.defined_only = true];
 }
 

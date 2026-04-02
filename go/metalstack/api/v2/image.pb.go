@@ -231,7 +231,7 @@ type ImageServiceLatestRequest struct {
 	// OS for which the latest image should be fetched
 	// should contain os and major.minor then latest patch version of this os is returned
 	Os string `protobuf:"bytes,1,opt,name=os,proto3" json:"os,omitempty"`
-	// Classification of the image latest image, defaults to IMAGE_CLASSIFICATION_SUPPORTED
+	// Classification of the image latest image
 	Classification *ImageClassification `protobuf:"varint,2,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification,oneof" json:"classification,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
