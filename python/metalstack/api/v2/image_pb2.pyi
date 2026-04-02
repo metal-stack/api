@@ -46,10 +46,12 @@ class ImageServiceListRequest(_message.Message):
     def __init__(self, query: _Optional[_Union[ImageQuery, _Mapping]] = ...) -> None: ...
 
 class ImageServiceLatestRequest(_message.Message):
-    __slots__ = ("os",)
+    __slots__ = ("os", "classification")
     OS_FIELD_NUMBER: _ClassVar[int]
+    CLASSIFICATION_FIELD_NUMBER: _ClassVar[int]
     os: str
-    def __init__(self, os: _Optional[str] = ...) -> None: ...
+    classification: ImageClassification
+    def __init__(self, os: _Optional[str] = ..., classification: _Optional[_Union[ImageClassification, str]] = ...) -> None: ...
 
 class ImageServiceGetResponse(_message.Message):
     __slots__ = ("image",)
