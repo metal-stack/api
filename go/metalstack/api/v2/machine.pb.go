@@ -82,7 +82,7 @@ type MachineState int32
 const (
 	// MACHINE_STATE_UNSPECIFIED is not specified
 	MachineState_MACHINE_STATE_UNSPECIFIED MachineState = 0
-	// MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during machine allocation
+	// MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during random machine allocation, but still by specifying the uuid
 	MachineState_MACHINE_STATE_RESERVED MachineState = 1
 	// MACHINE_STATE_LOCKED this machine is locked, e.g. this machine cannot be allocated or deleted
 	MachineState_MACHINE_STATE_LOCKED MachineState = 2
@@ -581,7 +581,8 @@ type MachineServiceCreateRequest struct {
 	// Project of the machine
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-	// this field overrules size and partition
+	// this field overrules size and partition.
+	// Can only be used with ADMIN_ROLE_EDITOR
 	Uuid *string `protobuf:"bytes,2,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
 	// Name of this machine
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
@@ -1872,10 +1873,8 @@ type MachineAllocationNetwork struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network the id of the network that this machine will be placed in
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
-	// NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
-	// By default one ip address is acquired per network for the machine
-	NoAutoAcquireIp bool `protobuf:"varint,2,opt,name=no_auto_acquire_ip,json=noAutoAcquireIp,proto3" json:"no_auto_acquire_ip,omitempty"`
 	// IPs to to attach to this machine additionally
+	// If none given, one ip address is acquired per network for the machine
 	Ips           []string `protobuf:"bytes,3,rep,name=ips,proto3" json:"ips,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1916,13 +1915,6 @@ func (x *MachineAllocationNetwork) GetNetwork() string {
 		return x.Network
 	}
 	return ""
-}
-
-func (x *MachineAllocationNetwork) GetNoAutoAcquireIp() bool {
-	if x != nil {
-		return x.NoAutoAcquireIp
-	}
-	return false
 }
 
 func (x *MachineAllocationNetwork) GetIps() []string {
@@ -4185,7 +4177,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"Q\n" +
 	"\x19MachineServiceGetResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xd0\b\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xda\b\n" +
 	"\x1bMachineServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12!\n" +
 	"\x04uuid\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12\x1f\n" +
@@ -4200,8 +4192,8 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	" \x03(\tB\x17\xbaH\x14\x92\x01\x11Ȥ\xb3\xb1\x02\x01\x102\"\ar\x05\x10\x01\x18\x80@R\rsshPublicKeys\x120\n" +
 	"\buserdata\x18\v \x01(\tB\x0f\xbaH\fr\n" +
 	"\U00033bb1\x02\x01\x18\x80\x80\x02H\x06R\buserdata\x88\x01\x01\x121\n" +
-	"\x06labels\x18\f \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12G\n" +
-	"\bnetworks\x18\r \x03(\v2+.metalstack.api.v2.MachineAllocationNetworkR\bnetworks\x12/\n" +
+	"\x06labels\x18\f \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12Q\n" +
+	"\bnetworks\x18\r \x03(\v2+.metalstack.api.v2.MachineAllocationNetworkB\b\xbaH\x05\x92\x01\x02\b\x01R\bnetworks\x12/\n" +
 	"\x0eplacement_tags\x18\x0e \x03(\tB\b\xbaH\x05\x92\x01\x02\x10@R\rplacementTags\x12G\n" +
 	"\vdns_servers\x18\x0f \x03(\v2\x1c.metalstack.api.v2.DNSServerB\b\xbaH\x05\x92\x01\x02\x10\x03R\n" +
 	"dnsServers\x12G\n" +
@@ -4301,10 +4293,9 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\vntp_servers\x18\x10 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
 	"R\n" +
 	"ntpServers\x12/\n" +
-	"\x03vpn\x18\x11 \x01(\v2\x1d.metalstack.api.v2.MachineVPNR\x03vpn\"\x8e\x01\n" +
+	"\x03vpn\x18\x11 \x01(\v2\x1d.metalstack.api.v2.MachineVPNR\x03vpn\"a\n" +
 	"\x18MachineAllocationNetwork\x12%\n" +
-	"\anetwork\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anetwork\x12+\n" +
-	"\x12no_auto_acquire_ip\x18\x02 \x01(\bR\x0fnoAutoAcquireIp\x12\x1e\n" +
+	"\anetwork\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anetwork\x12\x1e\n" +
 	"\x03ips\x18\x03 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\x90\x01\n" +
 	"\rFirewallRules\x12=\n" +
 	"\x06egress\x18\x01 \x03(\v2%.metalstack.api.v2.FirewallEgressRuleR\x06egress\x12@\n" +

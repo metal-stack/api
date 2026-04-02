@@ -9802,18 +9802,11 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
                 </tr>
               
                 <tr>
-                  <td>no_auto_acquire_ip</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td></td>
-                  <td><p>NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
-By default one ip address is acquired per network for the machine </p></td>
-                </tr>
-              
-                <tr>
                   <td>ips</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>IPs to to attach to this machine additionally </p></td>
+                  <td><p>IPs to to attach to this machine additionally
+If none given, one ip address is acquired per network for the machine </p></td>
                 </tr>
               
             </tbody>
@@ -11109,7 +11102,8 @@ Only useful for admins. </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-this field overrules size and partition </p></td>
+this field overrules size and partition.
+Can only be used with ADMIN_ROLE_EDITOR </p></td>
                 </tr>
               
                 <tr>
@@ -12042,7 +12036,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
               <tr>
                 <td>MACHINE_STATE_RESERVED</td>
                 <td>1</td>
-                <td><p>MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during machine allocation</p></td>
+                <td><p>MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during random machine allocation, but still by specifying the uuid</p></td>
               </tr>
             
               <tr>

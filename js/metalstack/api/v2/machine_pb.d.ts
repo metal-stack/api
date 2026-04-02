@@ -67,7 +67,8 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
     project: string;
     /**
      * UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-     * this field overrules size and partition
+     * this field overrules size and partition.
+     * Can only be used with ADMIN_ROLE_EDITOR
      *
      * @generated from field: optional string uuid = 2;
      */
@@ -713,14 +714,8 @@ export type MachineAllocationNetwork = Message<"metalstack.api.v2.MachineAllocat
      */
     network: string;
     /**
-     * NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
-     * By default one ip address is acquired per network for the machine
-     *
-     * @generated from field: bool no_auto_acquire_ip = 2;
-     */
-    noAutoAcquireIp: boolean;
-    /**
      * IPs to to attach to this machine additionally
+     * If none given, one ip address is acquired per network for the machine
      *
      * @generated from field: repeated string ips = 3;
      */
@@ -1931,7 +1926,7 @@ export declare enum MachineState {
      */
     UNSPECIFIED = 0,
     /**
-     * MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during machine allocation
+     * MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during random machine allocation, but still by specifying the uuid
      *
      * @generated from enum value: MACHINE_STATE_RESERVED = 1;
      */

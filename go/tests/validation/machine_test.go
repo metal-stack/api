@@ -71,6 +71,9 @@ func TestValidateMachine(t *testing.T) {
 				Name:      "testserver",
 				Image:     "debian-13",
 				Userdata:  new(" userdata with whitespaces"),
+				Networks: []*apiv2.MachineAllocationNetwork{
+					{Network: "internet"},
+				},
 			},
 			wantErr:          true,
 			wantErrorMessage: "validation error: userdata: value must not start or end with whitespace",
@@ -85,6 +88,9 @@ func TestValidateMachine(t *testing.T) {
 				SshPublicKeys: []string{
 					"good key",
 					" bad key ",
+				},
+				Networks: []*apiv2.MachineAllocationNetwork{
+					{Network: "internet"},
 				},
 			},
 			wantErr:          true,

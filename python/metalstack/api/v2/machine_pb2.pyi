@@ -350,14 +350,12 @@ class MachineAllocation(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., created_by: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineNetwork, _Mapping]]] = ..., hostname: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ..., dns_servers: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_servers: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ...) -> None: ...
 
 class MachineAllocationNetwork(_message.Message):
-    __slots__ = ("network", "no_auto_acquire_ip", "ips")
+    __slots__ = ("network", "ips")
     NETWORK_FIELD_NUMBER: _ClassVar[int]
-    NO_AUTO_ACQUIRE_IP_FIELD_NUMBER: _ClassVar[int]
     IPS_FIELD_NUMBER: _ClassVar[int]
     network: str
-    no_auto_acquire_ip: bool
     ips: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, network: _Optional[str] = ..., no_auto_acquire_ip: _Optional[bool] = ..., ips: _Optional[_Iterable[str]] = ...) -> None: ...
+    def __init__(self, network: _Optional[str] = ..., ips: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class FirewallRules(_message.Message):
     __slots__ = ("egress", "ingress")
