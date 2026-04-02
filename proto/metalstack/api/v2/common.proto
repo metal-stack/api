@@ -126,15 +126,29 @@ message Labels {
   map<string, string> labels = 1 [(buf.validate.field).map = {
     keys: {
       string: {
-        min_len: 1
+        min_len: 0
         max_len: 256
       }
+      cel: [
+        {
+          id: "keys_trimmed"
+          message: "keys must be trimmed"
+          expression: "this.trim().size() == this.size()"
+        }
+      ]
     }
     values: {
       string: {
         min_len: 0
         max_len: 256
       }
+      cel: [
+        {
+          id: "values_trimmed"
+          message: "values must be trimmed"
+          expression: "this.trim().size() == this.size()"
+        }
+      ]
     }
   }];
 }

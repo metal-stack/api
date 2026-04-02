@@ -28,7 +28,7 @@ from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__
 from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1emetalstack/api/v2/common.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a google/protobuf/descriptor.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(metalstack/api/v2/predefined_rules.proto\"O\n\x06Paging\x12\x17\n\x04page\x18\x01 \x01(\x04H\x00R\x04page\x88\x01\x01\x12\x19\n\x05\x63ount\x18\x02 \x01(\x04H\x01R\x05\x63ount\x88\x01\x01\x42\x07\n\x05_pageB\x08\n\x06_count\"\x9c\x01\n\x06Labels\x12W\n\x06labels\x18\x01 \x03(\x0b\x32%.metalstack.api.v2.Labels.LabelsEntryB\x18\xbaH\x15\x9a\x01\x12\"\x07r\x05\x10\x01\x18\x80\x02*\x07r\x05\x10\x00\x18\x80\x02R\x06labels\x1a\x39\n\x0bLabelsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xdf\x01\n\x04Meta\x12\x36\n\x06labels\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsH\x00R\x06labels\x88\x01\x01\x12\x39\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x39\n\nupdated_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1e\n\ngeneration\x18\x04 \x01(\x04R\ngenerationB\t\n\x07_labels\"\x86\x01\n\x0cUpdateLabels\x12\x31\n\x06update\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsR\x06update\x12$\n\x06remove\x18\x02 \x03(\tB\x0c\xbaH\t\x92\x01\x06\xd0\xa4\xb3\xb1\x02\x01R\x06remove\x12\x1d\n\nremove_all\x18\x03 \x01(\x08R\tremoveAll\"\xaa\x01\n\nUpdateMeta\x12\x39\n\nupdated_at\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x61\n\x10locking_strategy\x18\x02 \x01(\x0e\x32,.metalstack.api.v2.OptimisticLockingStrategyB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x0flockingStrategy*\x87\x01\n\nTenantRole\x12\x1b\n\x17TENANT_ROLE_UNSPECIFIED\x10\x00\x12\x15\n\x11TENANT_ROLE_OWNER\x10\x01\x12\x16\n\x12TENANT_ROLE_EDITOR\x10\x02\x12\x16\n\x12TENANT_ROLE_VIEWER\x10\x03\x12\x15\n\x11TENANT_ROLE_GUEST\x10\x04*u\n\x0bProjectRole\x12\x1c\n\x18PROJECT_ROLE_UNSPECIFIED\x10\x00\x12\x16\n\x12PROJECT_ROLE_OWNER\x10\x01\x12\x17\n\x13PROJECT_ROLE_EDITOR\x10\x02\x12\x17\n\x13PROJECT_ROLE_VIEWER\x10\x03*U\n\tAdminRole\x12\x1a\n\x16\x41\x44MIN_ROLE_UNSPECIFIED\x10\x00\x12\x15\n\x11\x41\x44MIN_ROLE_EDITOR\x10\x01\x12\x15\n\x11\x41\x44MIN_ROLE_VIEWER\x10\x02*U\n\tInfraRole\x12\x1a\n\x16INFRA_ROLE_UNSPECIFIED\x10\x00\x12\x15\n\x11INFRA_ROLE_EDITOR\x10\x01\x12\x15\n\x11INFRA_ROLE_VIEWER\x10\x02*]\n\x0bMachineRole\x12\x1c\n\x18MACHINE_ROLE_UNSPECIFIED\x10\x00\x12\x17\n\x13MACHINE_ROLE_EDITOR\x10\x01\x12\x17\n\x13MACHINE_ROLE_VIEWER\x10\x02*T\n\nVisibility\x12\x1a\n\x16VISIBILITY_UNSPECIFIED\x10\x00\x12\x15\n\x11VISIBILITY_PUBLIC\x10\x01\x12\x13\n\x0fVISIBILITY_SELF\x10\x03*R\n\x08\x41uditing\x12\x18\n\x14\x41UDITING_UNSPECIFIED\x10\x00\x12\x15\n\x11\x41UDITING_INCLUDED\x10\x01\x12\x15\n\x11\x41UDITING_EXCLUDED\x10\x02*\x98\x01\n\x19OptimisticLockingStrategy\x12+\n\'OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED\x10\x00\x12&\n\"OPTIMISTIC_LOCKING_STRATEGY_CLIENT\x10\x01\x12&\n\"OPTIMISTIC_LOCKING_STRATEGY_SERVER\x10\x02:b\n\x0ctenant_roles\x12\x1e.google.protobuf.MethodOptions\x18\xb8\x8e\x03 \x03(\x0e\x32\x1d.metalstack.api.v2.TenantRoleR\x0btenantRoles:e\n\rproject_roles\x12\x1e.google.protobuf.MethodOptions\x18\xb9\x8e\x03 \x03(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleR\x0cprojectRoles:_\n\x0b\x61\x64min_roles\x12\x1e.google.protobuf.MethodOptions\x18\xba\x8e\x03 \x03(\x0e\x32\x1c.metalstack.api.v2.AdminRoleR\nadminRoles:_\n\nvisibility\x12\x1e.google.protobuf.MethodOptions\x18\xbb\x8e\x03 \x01(\x0e\x32\x1d.metalstack.api.v2.VisibilityR\nvisibility:Y\n\x08\x61uditing\x12\x1e.google.protobuf.MethodOptions\x18\xbc\x8e\x03 \x01(\x0e\x32\x1b.metalstack.api.v2.AuditingR\x08\x61uditing:_\n\x0binfra_roles\x12\x1e.google.protobuf.MethodOptions\x18\xbd\x8e\x03 \x03(\x0e\x32\x1c.metalstack.api.v2.InfraRoleR\ninfraRoles:e\n\rmachine_roles\x12\x1e.google.protobuf.MethodOptions\x18\xbe\x8e\x03 \x03(\x0e\x32\x1e.metalstack.api.v2.MachineRoleR\x0cmachineRoles:O\n\x11\x65num_string_value\x12!.google.protobuf.EnumValueOptions\x18\xa0\x96\x03 \x01(\tR\x0f\x65numStringValueB\xc1\x01\n\x15\x63om.metalstack.api.v2B\x0b\x43ommonProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1emetalstack/api/v2/common.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a google/protobuf/descriptor.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(metalstack/api/v2/predefined_rules.proto\"O\n\x06Paging\x12\x17\n\x04page\x18\x01 \x01(\x04H\x00R\x04page\x88\x01\x01\x12\x19\n\x05\x63ount\x18\x02 \x01(\x04H\x01R\x05\x63ount\x88\x01\x01\x42\x07\n\x05_pageB\x08\n\x06_count\"\xb8\x02\n\x06Labels\x12\xf2\x01\n\x06labels\x18\x01 \x03(\x0b\x32%.metalstack.api.v2.Labels.LabelsEntryB\xb2\x01\xbaH\xae\x01\x9a\x01\xaa\x01\"Qr\x05\x10\x00\x18\x80\x02\xba\x01G\n\x0ckeys_trimmed\x12\x14keys must be trimmed\x1a!this.trim().size() == this.size()*Ur\x05\x10\x00\x18\x80\x02\xba\x01K\n\x0evalues_trimmed\x12\x16values must be trimmed\x1a!this.trim().size() == this.size()R\x06labels\x1a\x39\n\x0bLabelsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\xdf\x01\n\x04Meta\x12\x36\n\x06labels\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsH\x00R\x06labels\x88\x01\x01\x12\x39\n\ncreated_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x39\n\nupdated_at\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1e\n\ngeneration\x18\x04 \x01(\x04R\ngenerationB\t\n\x07_labels\"\x86\x01\n\x0cUpdateLabels\x12\x31\n\x06update\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsR\x06update\x12$\n\x06remove\x18\x02 \x03(\tB\x0c\xbaH\t\x92\x01\x06\xd0\xa4\xb3\xb1\x02\x01R\x06remove\x12\x1d\n\nremove_all\x18\x03 \x01(\x08R\tremoveAll\"\xaa\x01\n\nUpdateMeta\x12\x39\n\nupdated_at\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x61\n\x10locking_strategy\x18\x02 \x01(\x0e\x32,.metalstack.api.v2.OptimisticLockingStrategyB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x0flockingStrategy*\x87\x01\n\nTenantRole\x12\x1b\n\x17TENANT_ROLE_UNSPECIFIED\x10\x00\x12\x15\n\x11TENANT_ROLE_OWNER\x10\x01\x12\x16\n\x12TENANT_ROLE_EDITOR\x10\x02\x12\x16\n\x12TENANT_ROLE_VIEWER\x10\x03\x12\x15\n\x11TENANT_ROLE_GUEST\x10\x04*u\n\x0bProjectRole\x12\x1c\n\x18PROJECT_ROLE_UNSPECIFIED\x10\x00\x12\x16\n\x12PROJECT_ROLE_OWNER\x10\x01\x12\x17\n\x13PROJECT_ROLE_EDITOR\x10\x02\x12\x17\n\x13PROJECT_ROLE_VIEWER\x10\x03*U\n\tAdminRole\x12\x1a\n\x16\x41\x44MIN_ROLE_UNSPECIFIED\x10\x00\x12\x15\n\x11\x41\x44MIN_ROLE_EDITOR\x10\x01\x12\x15\n\x11\x41\x44MIN_ROLE_VIEWER\x10\x02*U\n\tInfraRole\x12\x1a\n\x16INFRA_ROLE_UNSPECIFIED\x10\x00\x12\x15\n\x11INFRA_ROLE_EDITOR\x10\x01\x12\x15\n\x11INFRA_ROLE_VIEWER\x10\x02*]\n\x0bMachineRole\x12\x1c\n\x18MACHINE_ROLE_UNSPECIFIED\x10\x00\x12\x17\n\x13MACHINE_ROLE_EDITOR\x10\x01\x12\x17\n\x13MACHINE_ROLE_VIEWER\x10\x02*T\n\nVisibility\x12\x1a\n\x16VISIBILITY_UNSPECIFIED\x10\x00\x12\x15\n\x11VISIBILITY_PUBLIC\x10\x01\x12\x13\n\x0fVISIBILITY_SELF\x10\x03*R\n\x08\x41uditing\x12\x18\n\x14\x41UDITING_UNSPECIFIED\x10\x00\x12\x15\n\x11\x41UDITING_INCLUDED\x10\x01\x12\x15\n\x11\x41UDITING_EXCLUDED\x10\x02*\x98\x01\n\x19OptimisticLockingStrategy\x12+\n\'OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED\x10\x00\x12&\n\"OPTIMISTIC_LOCKING_STRATEGY_CLIENT\x10\x01\x12&\n\"OPTIMISTIC_LOCKING_STRATEGY_SERVER\x10\x02:b\n\x0ctenant_roles\x12\x1e.google.protobuf.MethodOptions\x18\xb8\x8e\x03 \x03(\x0e\x32\x1d.metalstack.api.v2.TenantRoleR\x0btenantRoles:e\n\rproject_roles\x12\x1e.google.protobuf.MethodOptions\x18\xb9\x8e\x03 \x03(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleR\x0cprojectRoles:_\n\x0b\x61\x64min_roles\x12\x1e.google.protobuf.MethodOptions\x18\xba\x8e\x03 \x03(\x0e\x32\x1c.metalstack.api.v2.AdminRoleR\nadminRoles:_\n\nvisibility\x12\x1e.google.protobuf.MethodOptions\x18\xbb\x8e\x03 \x01(\x0e\x32\x1d.metalstack.api.v2.VisibilityR\nvisibility:Y\n\x08\x61uditing\x12\x1e.google.protobuf.MethodOptions\x18\xbc\x8e\x03 \x01(\x0e\x32\x1b.metalstack.api.v2.AuditingR\x08\x61uditing:_\n\x0binfra_roles\x12\x1e.google.protobuf.MethodOptions\x18\xbd\x8e\x03 \x03(\x0e\x32\x1c.metalstack.api.v2.InfraRoleR\ninfraRoles:e\n\rmachine_roles\x12\x1e.google.protobuf.MethodOptions\x18\xbe\x8e\x03 \x03(\x0e\x32\x1e.metalstack.api.v2.MachineRoleR\x0cmachineRoles:O\n\x11\x65num_string_value\x12!.google.protobuf.EnumValueOptions\x18\xa0\x96\x03 \x01(\tR\x0f\x65numStringValueB\xc1\x01\n\x15\x63om.metalstack.api.v2B\x0b\x43ommonProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -39,37 +39,37 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_LABELS_LABELSENTRY']._loaded_options = None
   _globals['_LABELS_LABELSENTRY']._serialized_options = b'8\001'
   _globals['_LABELS'].fields_by_name['labels']._loaded_options = None
-  _globals['_LABELS'].fields_by_name['labels']._serialized_options = b'\272H\025\232\001\022\"\007r\005\020\001\030\200\002*\007r\005\020\000\030\200\002'
+  _globals['_LABELS'].fields_by_name['labels']._serialized_options = b'\272H\256\001\232\001\252\001\"Qr\005\020\000\030\200\002\272\001G\n\014keys_trimmed\022\024keys must be trimmed\032!this.trim().size() == this.size()*Ur\005\020\000\030\200\002\272\001K\n\016values_trimmed\022\026values must be trimmed\032!this.trim().size() == this.size()'
   _globals['_UPDATELABELS'].fields_by_name['remove']._loaded_options = None
   _globals['_UPDATELABELS'].fields_by_name['remove']._serialized_options = b'\272H\t\222\001\006\320\244\263\261\002\001'
   _globals['_UPDATEMETA'].fields_by_name['locking_strategy']._loaded_options = None
   _globals['_UPDATEMETA'].fields_by_name['locking_strategy']._serialized_options = b'\272H\005\202\001\002\020\001'
-  _globals['_TENANTROLE']._serialized_start=968
-  _globals['_TENANTROLE']._serialized_end=1103
-  _globals['_PROJECTROLE']._serialized_start=1105
-  _globals['_PROJECTROLE']._serialized_end=1222
-  _globals['_ADMINROLE']._serialized_start=1224
-  _globals['_ADMINROLE']._serialized_end=1309
-  _globals['_INFRAROLE']._serialized_start=1311
-  _globals['_INFRAROLE']._serialized_end=1396
-  _globals['_MACHINEROLE']._serialized_start=1398
-  _globals['_MACHINEROLE']._serialized_end=1491
-  _globals['_VISIBILITY']._serialized_start=1493
-  _globals['_VISIBILITY']._serialized_end=1577
-  _globals['_AUDITING']._serialized_start=1579
-  _globals['_AUDITING']._serialized_end=1661
-  _globals['_OPTIMISTICLOCKINGSTRATEGY']._serialized_start=1664
-  _globals['_OPTIMISTICLOCKINGSTRATEGY']._serialized_end=1816
+  _globals['_TENANTROLE']._serialized_start=1124
+  _globals['_TENANTROLE']._serialized_end=1259
+  _globals['_PROJECTROLE']._serialized_start=1261
+  _globals['_PROJECTROLE']._serialized_end=1378
+  _globals['_ADMINROLE']._serialized_start=1380
+  _globals['_ADMINROLE']._serialized_end=1465
+  _globals['_INFRAROLE']._serialized_start=1467
+  _globals['_INFRAROLE']._serialized_end=1552
+  _globals['_MACHINEROLE']._serialized_start=1554
+  _globals['_MACHINEROLE']._serialized_end=1647
+  _globals['_VISIBILITY']._serialized_start=1649
+  _globals['_VISIBILITY']._serialized_end=1733
+  _globals['_AUDITING']._serialized_start=1735
+  _globals['_AUDITING']._serialized_end=1817
+  _globals['_OPTIMISTICLOCKINGSTRATEGY']._serialized_start=1820
+  _globals['_OPTIMISTICLOCKINGSTRATEGY']._serialized_end=1972
   _globals['_PAGING']._serialized_start=191
   _globals['_PAGING']._serialized_end=270
   _globals['_LABELS']._serialized_start=273
-  _globals['_LABELS']._serialized_end=429
-  _globals['_LABELS_LABELSENTRY']._serialized_start=372
-  _globals['_LABELS_LABELSENTRY']._serialized_end=429
-  _globals['_META']._serialized_start=432
-  _globals['_META']._serialized_end=655
-  _globals['_UPDATELABELS']._serialized_start=658
-  _globals['_UPDATELABELS']._serialized_end=792
-  _globals['_UPDATEMETA']._serialized_start=795
-  _globals['_UPDATEMETA']._serialized_end=965
+  _globals['_LABELS']._serialized_end=585
+  _globals['_LABELS_LABELSENTRY']._serialized_start=528
+  _globals['_LABELS_LABELSENTRY']._serialized_end=585
+  _globals['_META']._serialized_start=588
+  _globals['_META']._serialized_end=811
+  _globals['_UPDATELABELS']._serialized_start=814
+  _globals['_UPDATELABELS']._serialized_end=948
+  _globals['_UPDATEMETA']._serialized_start=951
+  _globals['_UPDATEMETA']._serialized_end=1121
 # @@protoc_insertion_point(module_scope)
