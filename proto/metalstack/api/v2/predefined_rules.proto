@@ -83,12 +83,3 @@ extend buf.validate.RepeatedRules {
     expression: "this.all(m, m.trim().size() == m.size())"
   }];
 }
-
-extend buf.validate.MapRules {
-  // All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end
-  optional bool keys_trimmed = 80068951 [(buf.validate.predefined).cel = {
-    id: "map.keys_trimmed"
-    message: "keys must not start or end with whitespace"
-    expression: "this.all(m, m.trim().size() == m.size())"
-  }];
-}
