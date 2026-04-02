@@ -5,6 +5,7 @@ package metalstack.api.v2;
 import "buf/validate/validate.proto";
 import "google/protobuf/descriptor.proto";
 import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // TenantRole specifies what role a logged in user needs to call this tenant scoped service
 enum TenantRole {
@@ -155,9 +156,8 @@ message Meta {
 message UpdateLabels {
   // Update labels. New ones will be added, existing ones overwritten
   Labels update = 1;
-
   // Remove labels by key
-  repeated string remove = 2;
+  repeated string remove = 2 [(buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true];
   // RemoveAll can be used to clear all existing labels and just apply the labels given by the update field
   // do not send remove labels in this case
   bool remove_all = 3;
