@@ -171,7 +171,10 @@ message TokenServiceCreateResponse {
 }
 
 // TokenServiceListRequest is the request payload to list tokens
-message TokenServiceListRequest {}
+message TokenServiceListRequest {
+  // Query for tokens
+  TokenQuery query = 1;
+}
 
 // TokenServiceListResponse is the response payload of a token list request
 message TokenServiceListResponse {
@@ -269,4 +272,22 @@ message TokenServiceRefreshResponse {
   Token token = 1;
   // Secret is the body if the jwt token, should be used in api requests as bearer token
   string secret = 2;
+}
+
+// TokenQuery is used to search tokens
+message TokenQuery {
+  // UUID of the token to get
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Name of the token user to query
+  // Only useful for admins.
+  optional string user = 2 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 512
+  }];
+  // Description of the token to query
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Labels lists only tokens containing the given labels
+  optional Labels labels = 4;
+  // Token type of the token to query
+  optional TokenType token_type = 5 [(buf.validate.field).enum.defined_only = true];
 }

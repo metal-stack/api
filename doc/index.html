@@ -431,6 +431,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.TokenQuery"><span class="badge">M</span>TokenQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.TokenServiceCreateRequest"><span class="badge">M</span>TokenServiceCreateRequest</a>
                 </li>
               
@@ -4110,6 +4114,59 @@ TODO: decide if we need this map from machine.uuid-&gt;role, we could instead us
 
         
       
+        <h3 id="metalstack.api.v2.TokenQuery">TokenQuery</h3>
+        <p>TokenQuery is used to search tokens</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>UUID of the token to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of the token user to query
+Only useful for admins. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of the token to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only tokens containing the given labels </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token_type</td>
+                  <td><a href="#metalstack.api.v2.TokenType">TokenType</a></td>
+                  <td>optional</td>
+                  <td><p>Token type of the token to query </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.TokenServiceCreateRequest">TokenServiceCreateRequest</h3>
         <p>TokenServiceCreateRequest is the request payload to create a token</p>
 
@@ -4366,6 +4423,23 @@ TODO: decide if we need this map from machine.uuid-&gt;role, we could instead us
         <p>TokenServiceListRequest is the request payload to list tokens</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.TokenQuery">TokenQuery</a></td>
+                  <td></td>
+                  <td><p>Query for tokens </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -18964,10 +19038,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>user</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>User is the id of the user for which the tokens should be listed </p></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.TokenQuery">metalstack.api.v2.TokenQuery</a></td>
+                  <td></td>
+                  <td><p>Query for tokens </p></td>
                 </tr>
               
             </tbody>
