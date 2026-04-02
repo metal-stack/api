@@ -230,9 +230,11 @@ type ImageServiceLatestRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// OS for which the latest image should be fetched
 	// should contain os and major.minor then latest patch version of this os is returned
-	Os            string `protobuf:"bytes,1,opt,name=os,proto3" json:"os,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Os string `protobuf:"bytes,1,opt,name=os,proto3" json:"os,omitempty"`
+	// Classification of the image latest image
+	Classification *ImageClassification `protobuf:"varint,2,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification,oneof" json:"classification,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ImageServiceLatestRequest) Reset() {
@@ -270,6 +272,13 @@ func (x *ImageServiceLatestRequest) GetOs() string {
 		return x.Os
 	}
 	return ""
+}
+
+func (x *ImageServiceLatestRequest) GetClassification() ImageClassification {
+	if x != nil && x.Classification != nil {
+		return *x.Classification
+	}
+	return ImageClassification_IMAGE_CLASSIFICATION_UNSPECIFIED
 }
 
 // ImageServiceGetResponse is the response payload for a image get request
@@ -700,9 +709,11 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\x16ImageServiceGetRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"N\n" +
 	"\x17ImageServiceListRequest\x123\n" +
-	"\x05query\x18\x01 \x01(\v2\x1d.metalstack.api.v2.ImageQueryR\x05query\"+\n" +
+	"\x05query\x18\x01 \x01(\v2\x1d.metalstack.api.v2.ImageQueryR\x05query\"\x9d\x01\n" +
 	"\x19ImageServiceLatestRequest\x12\x0e\n" +
-	"\x02os\x18\x01 \x01(\tR\x02os\"I\n" +
+	"\x02os\x18\x01 \x01(\tR\x02os\x12]\n" +
+	"\x0eclassification\x18\x02 \x01(\x0e2&.metalstack.api.v2.ImageClassificationB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x0eclassification\x88\x01\x01B\x11\n" +
+	"\x0f_classification\"I\n" +
 	"\x17ImageServiceGetResponse\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
 	"\x18ImageServiceListResponse\x120\n" +
@@ -798,28 +809,29 @@ var file_metalstack_api_v2_image_proto_goTypes = []any{
 }
 var file_metalstack_api_v2_image_proto_depIdxs = []int32{
 	10, // 0: metalstack.api.v2.ImageServiceListRequest.query:type_name -> metalstack.api.v2.ImageQuery
-	8,  // 1: metalstack.api.v2.ImageServiceGetResponse.image:type_name -> metalstack.api.v2.Image
-	8,  // 2: metalstack.api.v2.ImageServiceListResponse.images:type_name -> metalstack.api.v2.Image
-	8,  // 3: metalstack.api.v2.ImageServiceLatestResponse.image:type_name -> metalstack.api.v2.Image
-	11, // 4: metalstack.api.v2.Image.meta:type_name -> metalstack.api.v2.Meta
-	0,  // 5: metalstack.api.v2.Image.features:type_name -> metalstack.api.v2.ImageFeature
-	1,  // 6: metalstack.api.v2.Image.classification:type_name -> metalstack.api.v2.ImageClassification
-	12, // 7: metalstack.api.v2.Image.expires_at:type_name -> google.protobuf.Timestamp
-	8,  // 8: metalstack.api.v2.ImageUsage.image:type_name -> metalstack.api.v2.Image
-	0,  // 9: metalstack.api.v2.ImageQuery.feature:type_name -> metalstack.api.v2.ImageFeature
-	1,  // 10: metalstack.api.v2.ImageQuery.classification:type_name -> metalstack.api.v2.ImageClassification
-	13, // 11: metalstack.api.v2.ImageQuery.labels:type_name -> metalstack.api.v2.Labels
-	2,  // 12: metalstack.api.v2.ImageService.Get:input_type -> metalstack.api.v2.ImageServiceGetRequest
-	3,  // 13: metalstack.api.v2.ImageService.List:input_type -> metalstack.api.v2.ImageServiceListRequest
-	4,  // 14: metalstack.api.v2.ImageService.Latest:input_type -> metalstack.api.v2.ImageServiceLatestRequest
-	5,  // 15: metalstack.api.v2.ImageService.Get:output_type -> metalstack.api.v2.ImageServiceGetResponse
-	6,  // 16: metalstack.api.v2.ImageService.List:output_type -> metalstack.api.v2.ImageServiceListResponse
-	7,  // 17: metalstack.api.v2.ImageService.Latest:output_type -> metalstack.api.v2.ImageServiceLatestResponse
-	15, // [15:18] is the sub-list for method output_type
-	12, // [12:15] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	1,  // 1: metalstack.api.v2.ImageServiceLatestRequest.classification:type_name -> metalstack.api.v2.ImageClassification
+	8,  // 2: metalstack.api.v2.ImageServiceGetResponse.image:type_name -> metalstack.api.v2.Image
+	8,  // 3: metalstack.api.v2.ImageServiceListResponse.images:type_name -> metalstack.api.v2.Image
+	8,  // 4: metalstack.api.v2.ImageServiceLatestResponse.image:type_name -> metalstack.api.v2.Image
+	11, // 5: metalstack.api.v2.Image.meta:type_name -> metalstack.api.v2.Meta
+	0,  // 6: metalstack.api.v2.Image.features:type_name -> metalstack.api.v2.ImageFeature
+	1,  // 7: metalstack.api.v2.Image.classification:type_name -> metalstack.api.v2.ImageClassification
+	12, // 8: metalstack.api.v2.Image.expires_at:type_name -> google.protobuf.Timestamp
+	8,  // 9: metalstack.api.v2.ImageUsage.image:type_name -> metalstack.api.v2.Image
+	0,  // 10: metalstack.api.v2.ImageQuery.feature:type_name -> metalstack.api.v2.ImageFeature
+	1,  // 11: metalstack.api.v2.ImageQuery.classification:type_name -> metalstack.api.v2.ImageClassification
+	13, // 12: metalstack.api.v2.ImageQuery.labels:type_name -> metalstack.api.v2.Labels
+	2,  // 13: metalstack.api.v2.ImageService.Get:input_type -> metalstack.api.v2.ImageServiceGetRequest
+	3,  // 14: metalstack.api.v2.ImageService.List:input_type -> metalstack.api.v2.ImageServiceListRequest
+	4,  // 15: metalstack.api.v2.ImageService.Latest:input_type -> metalstack.api.v2.ImageServiceLatestRequest
+	5,  // 16: metalstack.api.v2.ImageService.Get:output_type -> metalstack.api.v2.ImageServiceGetResponse
+	6,  // 17: metalstack.api.v2.ImageService.List:output_type -> metalstack.api.v2.ImageServiceListResponse
+	7,  // 18: metalstack.api.v2.ImageService.Latest:output_type -> metalstack.api.v2.ImageServiceLatestResponse
+	16, // [16:19] is the sub-list for method output_type
+	13, // [13:16] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_image_proto_init() }
@@ -829,6 +841,7 @@ func file_metalstack_api_v2_image_proto_init() {
 	}
 	file_metalstack_api_v2_common_proto_init()
 	file_metalstack_api_v2_predefined_rules_proto_init()
+	file_metalstack_api_v2_image_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_image_proto_msgTypes[6].OneofWrappers = []any{}
 	file_metalstack_api_v2_image_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}

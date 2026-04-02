@@ -55,6 +55,12 @@ export type ImageServiceLatestRequest = Message<"metalstack.api.v2.ImageServiceL
      * @generated from field: string os = 1;
      */
     os: string;
+    /**
+     * Classification of the image latest image
+     *
+     * @generated from field: optional metalstack.api.v2.ImageClassification classification = 2;
+     */
+    classification?: ImageClassification;
 };
 /**
  * Describes the message metalstack.api.v2.ImageServiceLatestRequest.
