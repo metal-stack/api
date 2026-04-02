@@ -155,8 +155,12 @@ message Meta {
 message UpdateLabels {
   // Update labels. New ones will be added, existing ones overwritten
   Labels update = 1;
+
   // Remove labels by key
   repeated string remove = 2;
+  // RemoveAll can be used to clear all existing labels and just apply the labels given by the update field
+  // do not send remove labels in this case
+  bool remove_all = 3;
 }
 
 // UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled

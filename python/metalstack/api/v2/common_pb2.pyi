@@ -140,12 +140,14 @@ class Meta(_message.Message):
     def __init__(self, labels: _Optional[_Union[Labels, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., generation: _Optional[int] = ...) -> None: ...
 
 class UpdateLabels(_message.Message):
-    __slots__ = ("update", "remove")
+    __slots__ = ("update", "remove", "remove_all")
     UPDATE_FIELD_NUMBER: _ClassVar[int]
     REMOVE_FIELD_NUMBER: _ClassVar[int]
+    REMOVE_ALL_FIELD_NUMBER: _ClassVar[int]
     update: Labels
     remove: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, update: _Optional[_Union[Labels, _Mapping]] = ..., remove: _Optional[_Iterable[str]] = ...) -> None: ...
+    remove_all: bool
+    def __init__(self, update: _Optional[_Union[Labels, _Mapping]] = ..., remove: _Optional[_Iterable[str]] = ..., remove_all: _Optional[bool] = ...) -> None: ...
 
 class UpdateMeta(_message.Message):
     __slots__ = ("updated_at", "locking_strategy")

@@ -105,6 +105,13 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
      * @generated from field: repeated string remove = 2;
      */
     remove: string[];
+    /**
+     * RemoveAll can be used to clear all existing labels and just apply the labels given by the update field
+     * do not send remove labels in this case
+     *
+     * @generated from field: bool remove_all = 3;
+     */
+    removeAll: boolean;
 };
 /**
  * Describes the message metalstack.api.v2.UpdateLabels.
