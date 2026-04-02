@@ -105,6 +105,12 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
     size?: string;
     /**
      * Image which should be installed on this machine
+     * The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+     * - debian-13.0.20260402
+     * or in a simplified form which omits the patch version
+     * - debian-13.0
+     * If the fully qualified form is specified, exactly this image is taken regardless of the image classification
+     * if the short form is given, only the most recent images which has image classification supported is used.
      *
      * @generated from field: string image = 8;
      */

@@ -595,6 +595,12 @@ type MachineServiceCreateRequest struct {
 	// Size of the machine to create, must be omitted if uuid is given
 	Size *string `protobuf:"bytes,7,opt,name=size,proto3,oneof" json:"size,omitempty"`
 	// Image which should be installed on this machine
+	// The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+	// - debian-13.0.20260402
+	// or in a simplified form which omits the patch version
+	// - debian-13.0
+	// If the fully qualified form is specified, exactly this image is taken regardless of the image classification
+	// if the short form is given, only the most recent images which has image classification supported is used.
 	Image string `protobuf:"bytes,8,opt,name=image,proto3" json:"image,omitempty"`
 	// FilesystemLayout which should be applied for the operating system installation
 	// Is defaulted by a lookup at the available fsls for this size and image.
@@ -4419,14 +4425,12 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x15control_plane_address\x18\x01 \x01(\tR\x13controlPlaneAddress\x12\x19\n" +
 	"\bauth_key\x18\x02 \x01(\tR\aauthKey\x12\x1c\n" +
 	"\tconnected\x18\x03 \x01(\bR\tconnected\x12\x1e\n" +
-	"\x03ips\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\xc5\b\n" +
+	"\x03ips\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\xc7\b\n" +
 	"\fMachineQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
-	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12-\n" +
-	"\tpartition\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\tpartition\x88\x01\x01\x12#\n" +
-	"\x04size\x18\x04 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x04size\x88\x01\x01\x12#\n" +
+	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12.\n" +
+	"\tpartition\x18\x03 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x02R\tpartition\x88\x01\x01\x12$\n" +
+	"\x04size\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x03R\x04size\x88\x01\x01\x12#\n" +
 	"\x04rack\x18\x05 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x04rack\x88\x01\x01\x126\n" +
 	"\x06labels\x18\x06 \x01(\v2\x19.metalstack.api.v2.LabelsH\x05R\x06labels\x88\x01\x01\x12N\n" +
@@ -4464,15 +4468,14 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\n" +
 	"\b_waitingB\x0f\n" +
 	"\r_preallocatedB\x10\n" +
-	"\x0e_not_allocated\"\xe0\x04\n" +
+	"\x0e_not_allocated\"\xdd\x04\n" +
 	"\x16MachineAllocationQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12'\n" +
 	"\aproject\x18\x03 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x02R\aproject\x88\x01\x01\x12&\n" +
 	"\x05image\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x03R\x05image\x88\x01\x01\x12=\n" +
-	"\x11filesystem_layout\x18\x05 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x04R\x10filesystemLayout\x88\x01\x01\x12+\n" +
-	"\bhostname\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x05R\bhostname\x88\x01\x01\x12`\n" +
+	"\x11filesystem_layout\x18\x05 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x04R\x10filesystemLayout\x88\x01\x01\x12(\n" +
+	"\bhostname\x18\x06 \x01(\tB\a\xbaH\x04r\x02h\x01H\x05R\bhostname\x88\x01\x01\x12`\n" +
 	"\x0fallocation_type\x18\a \x01(\x0e2(.metalstack.api.v2.MachineAllocationTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\x0eallocationType\x88\x01\x01\x126\n" +
 	"\x06labels\x18\b \x01(\v2\x19.metalstack.api.v2.LabelsH\aR\x06labels\x88\x01\x01\x124\n" +
 	"\x03vpn\x18\t \x01(\v2\x1d.metalstack.api.v2.MachineVPNH\bR\x03vpn\x88\x01\x01B\a\n" +

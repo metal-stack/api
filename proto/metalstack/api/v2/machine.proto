@@ -90,6 +90,12 @@ message MachineServiceCreateRequest {
   // Size of the machine to create, must be omitted if uuid is given
   optional string size = 7 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Image which should be installed on this machine
+  // The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+  // - debian-13.0.20260402
+  // or in a simplified form which omits the patch version
+  // - debian-13.0
+  // If the fully qualified form is specified, exactly this image is taken regardless of the image classification
+  // if the short form is given, only the most recent images which has image classification supported is used.
   string image = 8 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // FilesystemLayout which should be applied for the operating system installation
   // Is defaulted by a lookup at the available fsls for this size and image.
@@ -754,15 +760,9 @@ message MachineQuery {
   // Name of the machine to get
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Partition of the machine to get
-  optional string partition = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 3 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Size of the machine to get
-  optional string size = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string size = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Rack of the machine to get
   optional string rack = 5 [(buf.validate.field).string = {
     min_len: 2
@@ -810,10 +810,7 @@ message MachineAllocationQuery {
   // FilesystemLayout of the machine to get
   optional string filesystem_layout = 5 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Hostname of the machine to get
-  optional string hostname = 6 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string hostname = 6 [(buf.validate.field).string.hostname = true];
   // AllocationType of this machine
   optional MachineAllocationType allocation_type = 7 [(buf.validate.field).enum.defined_only = true];
   // Labels for which this machine allocation should get filtered

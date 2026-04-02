@@ -11164,7 +11164,13 @@ Can only be used with ADMIN_ROLE_EDITOR </p></td>
                   <td>image</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Image which should be installed on this machine </p></td>
+                  <td><p>Image which should be installed on this machine
+The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+- debian-13.0.20260402
+or in a simplified form which omits the patch version
+- debian-13.0
+If the fully qualified form is specified, exactly this image is taken regardless of the image classification
+if the short form is given, only the most recent images which has image classification supported is used. </p></td>
                 </tr>
               
                 <tr>
