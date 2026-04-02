@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// AuditServiceListRequest is the request payload to list audits
+// AuditServiceListRequest is the request payload for listing audit traces.
 type AuditServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Query for audit traces
@@ -69,10 +69,10 @@ func (x *AuditServiceListRequest) GetQuery() *v2.AuditQuery {
 	return nil
 }
 
-// AuditServiceListResponse is the response payload of a audit list request
+// AuditServiceListResponse is the response payload for listing audit traces.
 type AuditServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Traces is a list of audit traces
+	// Traces contains the list of audit traces
 	Traces        []*v2.AuditTrace `protobuf:"bytes,1,rep,name=traces,proto3" json:"traces,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,7 +115,7 @@ func (x *AuditServiceListResponse) GetTraces() []*v2.AuditTrace {
 	return nil
 }
 
-// AuditServiceGetRequest is the request payload of a audit get request
+// AuditServiceGetRequest is the request payload for getting an audit trace.
 type AuditServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the audit trace
@@ -170,7 +170,7 @@ func (x *AuditServiceGetRequest) GetPhase() v2.AuditPhase {
 	return v2.AuditPhase(0)
 }
 
-// AuditServiceGetResponse is the response payload of a audit get request
+// AuditServiceGetResponse is the response payload for getting an audit trace.
 type AuditServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Trace is the audit trace

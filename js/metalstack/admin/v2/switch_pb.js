@@ -83,7 +83,7 @@ export const SwitchServiceConnectedMachinesRequestSchema = /*@__PURE__*/ message
  */
 export const SwitchServiceConnectedMachinesResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_switch, 13);
 /**
- * SwitchService serves switch related functions.
+ * SwitchService provides switch management operations.
  *
  * @generated from service metalstack.admin.v2.SwitchService
  */

@@ -71,7 +71,7 @@ export const MachineServiceConsolePasswordRequestSchema = /*@__PURE__*/ messageD
  */
 export const MachineServiceConsolePasswordResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_machine, 11);
 /**
- * MachineService serves machine related functions
+ * MachineService provides machine lifecycle management operations.
  *
  * @generated from service metalstack.admin.v2.MachineService
  */

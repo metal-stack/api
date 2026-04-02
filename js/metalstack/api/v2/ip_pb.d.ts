@@ -497,13 +497,13 @@ export declare enum IPAddressFamily {
  */
 export declare const IPAddressFamilySchema: GenEnum<IPAddressFamily>;
 /**
- * IPService serves ip address related functions
+ * IPService provides IP address management operations.
  *
  * @generated from service metalstack.api.v2.IPService
  */
 export declare const IPService: GenService<{
     /**
-     * Get a ip
+     * Returns the IP address with the specified IP.
      *
      * @generated from rpc metalstack.api.v2.IPService.Get
      */
@@ -513,7 +513,7 @@ export declare const IPService: GenService<{
         output: typeof IPServiceGetResponseSchema;
     };
     /**
-     * Create a ip
+     * Creates a new IP address.
      *
      * @generated from rpc metalstack.api.v2.IPService.Create
      */
@@ -523,7 +523,7 @@ export declare const IPService: GenService<{
         output: typeof IPServiceCreateResponseSchema;
     };
     /**
-     * Update a ip
+     * Updates an IP address.
      *
      * @generated from rpc metalstack.api.v2.IPService.Update
      */
@@ -533,7 +533,7 @@ export declare const IPService: GenService<{
         output: typeof IPServiceUpdateResponseSchema;
     };
     /**
-     * List all ips
+     * Returns the list of all IP addresses.
      *
      * @generated from rpc metalstack.api.v2.IPService.List
      */
@@ -543,7 +543,7 @@ export declare const IPService: GenService<{
         output: typeof IPServiceListResponseSchema;
     };
     /**
-     * Delete a ip
+     * Deletes an IP address.
      *
      * @generated from rpc metalstack.api.v2.IPService.Delete
      */

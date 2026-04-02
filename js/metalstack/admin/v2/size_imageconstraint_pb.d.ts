@@ -7,7 +7,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_size_imageconstraint: GenFile;
 /**
- * SizeImageConstraintServiceCreateRequest is the request payload for a size image constraint create request
+ * SizeImageConstraintServiceCreateRequest is the request payload for creating a size image constraint.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceCreateRequest
  */
@@ -49,13 +49,13 @@ export type SizeImageConstraintServiceCreateRequest = Message<"metalstack.admin.
  */
 export declare const SizeImageConstraintServiceCreateRequestSchema: GenMessage<SizeImageConstraintServiceCreateRequest>;
 /**
- * SizeImageConstraintServiceCreateResponse is the response payload for a size image constraint create request
+ * SizeImageConstraintServiceCreateResponse is the response payload for creating a size image constraint.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceCreateResponse
  */
 export type SizeImageConstraintServiceCreateResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceCreateResponse"> & {
     /**
-     * SizeImageConstraint created
+     * SizeImageConstraint contains the created constraint
      *
      * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
      */
@@ -67,7 +67,7 @@ export type SizeImageConstraintServiceCreateResponse = Message<"metalstack.admin
  */
 export declare const SizeImageConstraintServiceCreateResponseSchema: GenMessage<SizeImageConstraintServiceCreateResponse>;
 /**
- * SizeImageConstraintServiceUpdateRequest is the request payload for a size image constraint update request
+ * SizeImageConstraintServiceUpdateRequest is the request payload for updating a size image constraint.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceUpdateRequest
  */
@@ -109,13 +109,13 @@ export type SizeImageConstraintServiceUpdateRequest = Message<"metalstack.admin.
  */
 export declare const SizeImageConstraintServiceUpdateRequestSchema: GenMessage<SizeImageConstraintServiceUpdateRequest>;
 /**
- * SizeImageConstraintServiceUpdateResponse is the response payload for a size image constraint update request
+ * SizeImageConstraintServiceUpdateResponse is the response payload for updating a size image constraint.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceUpdateResponse
  */
 export type SizeImageConstraintServiceUpdateResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceUpdateResponse"> & {
     /**
-     * SizeImageConstraint updated
+     * SizeImageConstraint contains the updated constraint
      *
      * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
      */
@@ -127,7 +127,7 @@ export type SizeImageConstraintServiceUpdateResponse = Message<"metalstack.admin
  */
 export declare const SizeImageConstraintServiceUpdateResponseSchema: GenMessage<SizeImageConstraintServiceUpdateResponse>;
 /**
- * SizeImageConstraintServiceDeleteRequest is the request payload for a size image constraint delete request
+ * SizeImageConstraintServiceDeleteRequest is the request payload for deleting a size image constraint.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceDeleteRequest
  */
@@ -145,13 +145,13 @@ export type SizeImageConstraintServiceDeleteRequest = Message<"metalstack.admin.
  */
 export declare const SizeImageConstraintServiceDeleteRequestSchema: GenMessage<SizeImageConstraintServiceDeleteRequest>;
 /**
- * SizeImageConstraintServiceDeleteResponse is the response payload for a size image constraint delete request
+ * SizeImageConstraintServiceDeleteResponse is the response payload for deleting a size image constraint.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceDeleteResponse
  */
 export type SizeImageConstraintServiceDeleteResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceDeleteResponse"> & {
     /**
-     * SizeImageConstraint deleted
+     * SizeImageConstraint contains the deleted constraint
      *
      * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
      */
@@ -163,7 +163,7 @@ export type SizeImageConstraintServiceDeleteResponse = Message<"metalstack.admin
  */
 export declare const SizeImageConstraintServiceDeleteResponseSchema: GenMessage<SizeImageConstraintServiceDeleteResponse>;
 /**
- * SizeImageConstraintServiceGetRequest is the request payload for a size image constraint get request
+ * SizeImageConstraintServiceGetRequest is the request payload for getting a size image constraint.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceGetRequest
  */
@@ -181,13 +181,13 @@ export type SizeImageConstraintServiceGetRequest = Message<"metalstack.admin.v2.
  */
 export declare const SizeImageConstraintServiceGetRequestSchema: GenMessage<SizeImageConstraintServiceGetRequest>;
 /**
- * SizeImageConstraintServiceGetResponse is the response payload for a size image constraint get request
+ * SizeImageConstraintServiceGetResponse is the response payload for getting a size image constraint.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceGetResponse
  */
 export type SizeImageConstraintServiceGetResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceGetResponse"> & {
     /**
-     * SizeImageConstraint get
+     * SizeImageConstraint contains the retrieved constraint
      *
      * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
      */
@@ -199,7 +199,7 @@ export type SizeImageConstraintServiceGetResponse = Message<"metalstack.admin.v2
  */
 export declare const SizeImageConstraintServiceGetResponseSchema: GenMessage<SizeImageConstraintServiceGetResponse>;
 /**
- * SizeImageConstraintServiceListRequest is the request payload for a size image constraint list request
+ * SizeImageConstraintServiceListRequest is the request payload for listing size image constraints.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceListRequest
  */
@@ -217,13 +217,13 @@ export type SizeImageConstraintServiceListRequest = Message<"metalstack.admin.v2
  */
 export declare const SizeImageConstraintServiceListRequestSchema: GenMessage<SizeImageConstraintServiceListRequest>;
 /**
- * SizeImageConstraintServiceListResponse is the response payload for a size image constraint list request
+ * SizeImageConstraintServiceListResponse is the response payload for listing size image constraints.
  *
  * @generated from message metalstack.admin.v2.SizeImageConstraintServiceListResponse
  */
 export type SizeImageConstraintServiceListResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceListResponse"> & {
     /**
-     * SizeImageConstraints listed
+     * SizeImageConstraints contains the list of constraints
      *
      * @generated from field: repeated metalstack.api.v2.SizeImageConstraint size_image_constraints = 1;
      */
@@ -235,13 +235,13 @@ export type SizeImageConstraintServiceListResponse = Message<"metalstack.admin.v
  */
 export declare const SizeImageConstraintServiceListResponseSchema: GenMessage<SizeImageConstraintServiceListResponse>;
 /**
- * SizeImageConstraintService serves size and image constraint related functions
+ * SizeImageConstraintService provides size and image constraint management operations.
  *
  * @generated from service metalstack.admin.v2.SizeImageConstraintService
  */
 export declare const SizeImageConstraintService: GenService<{
     /**
-     * Create a size image constraint
+     * Creates a size image constraint.
      *
      * @generated from rpc metalstack.admin.v2.SizeImageConstraintService.Create
      */
@@ -251,7 +251,7 @@ export declare const SizeImageConstraintService: GenService<{
         output: typeof SizeImageConstraintServiceCreateResponseSchema;
     };
     /**
-     * Update a size image constraint
+     * Updates a size image constraint.
      *
      * @generated from rpc metalstack.admin.v2.SizeImageConstraintService.Update
      */
@@ -261,7 +261,7 @@ export declare const SizeImageConstraintService: GenService<{
         output: typeof SizeImageConstraintServiceUpdateResponseSchema;
     };
     /**
-     * Delete a size image constraint
+     * Deletes a size image constraint.
      *
      * @generated from rpc metalstack.admin.v2.SizeImageConstraintService.Delete
      */
@@ -271,7 +271,7 @@ export declare const SizeImageConstraintService: GenService<{
         output: typeof SizeImageConstraintServiceDeleteResponseSchema;
     };
     /**
-     * Get a size image constraint
+     * Returns the size image constraint with the specified size.
      *
      * @generated from rpc metalstack.admin.v2.SizeImageConstraintService.Get
      */
@@ -281,7 +281,7 @@ export declare const SizeImageConstraintService: GenService<{
         output: typeof SizeImageConstraintServiceGetResponseSchema;
     };
     /**
-     * List a size image constraint
+     * Returns the list of size image constraints.
      *
      * @generated from rpc metalstack.admin.v2.SizeImageConstraintService.List
      */

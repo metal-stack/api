@@ -21,7 +21,7 @@ export const ProjectServiceListRequestSchema = /*@__PURE__*/ messageDesc(file_me
  */
 export const ProjectServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_project, 1);
 /**
- * ProjectService serves project related functions
+ * ProjectService provides project management operations.
  *
  * @generated from service metalstack.admin.v2.ProjectService
  */

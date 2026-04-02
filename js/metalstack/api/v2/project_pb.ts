@@ -861,13 +861,13 @@ export const ProjectServiceInviteDeleteResponseSchema: GenMessage<ProjectService
   messageDesc(file_metalstack_api_v2_project, 28);
 
 /**
- * ProjectService serves project related functions
+ * ProjectService provides project management operations.
  *
  * @generated from service metalstack.api.v2.ProjectService
  */
 export const ProjectService: GenService<{
   /**
-   * List all accessible projects
+   * Returns the list of all accessible projects.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.List
    */
@@ -877,7 +877,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceListResponseSchema;
   },
   /**
-   * Get a project
+   * Returns the project with the specified UUID.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.Get
    */

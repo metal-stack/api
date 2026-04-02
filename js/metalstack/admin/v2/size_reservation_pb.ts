@@ -19,7 +19,7 @@ export const file_metalstack_admin_v2_size_reservation: GenFile = /*@__PURE__*/
   fileDesc("CiptZXRhbHN0YWNrL2FkbWluL3YyL3NpemVfcmVzZXJ2YXRpb24ucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiYwojU2l6ZVJlc2VydmF0aW9uU2VydmljZUNyZWF0ZVJlcXVlc3QSPAoQc2l6ZV9yZXNlcnZhdGlvbhgBIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLlNpemVSZXNlcnZhdGlvbiJkCiRTaXplUmVzZXJ2YXRpb25TZXJ2aWNlQ3JlYXRlUmVzcG9uc2USPAoQc2l6ZV9yZXNlcnZhdGlvbhgBIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLlNpemVSZXNlcnZhdGlvbiLpAgojU2l6ZVJlc2VydmF0aW9uU2VydmljZVVwZGF0ZVJlcXVlc3QSFAoCaWQYASABKAlCCLpIBXIDsAEBEh4KBG5hbWUYAiABKAlCC7pICHIGwLOusQIBSACIAQESJQoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBSAGIAQESOgoLdXBkYXRlX21ldGEYBCABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVNZXRhQga6SAPIAQESJgoKcGFydGl0aW9ucxgFIAMoCUISukgPkgEMGAEiCHIG0LOusQIBEhwKBmFtb3VudBgGIAEoBUIHukgEGgIgAEgCiAEBEjQKBmxhYmVscxgHIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gDiAEBQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIJCgdfYW1vdW50QgkKB19sYWJlbHMiZAokU2l6ZVJlc2VydmF0aW9uU2VydmljZVVwZGF0ZVJlc3BvbnNlEjwKEHNpemVfcmVzZXJ2YXRpb24YASABKAsyIi5tZXRhbHN0YWNrLmFwaS52Mi5TaXplUmVzZXJ2YXRpb24iOwojU2l6ZVJlc2VydmF0aW9uU2VydmljZURlbGV0ZVJlcXVlc3QSFAoCaWQYASABKAlCCLpIBXIDsAEBImQKJFNpemVSZXNlcnZhdGlvblNlcnZpY2VEZWxldGVSZXNwb25zZRI8ChBzaXplX3Jlc2VydmF0aW9uGAEgASgLMiIubWV0YWxzdGFjay5hcGkudjIuU2l6ZVJlc2VydmF0aW9uIlsKIVNpemVSZXNlcnZhdGlvblNlcnZpY2VMaXN0UmVxdWVzdBI2CgVxdWVyeRgBIAEoCzInLm1ldGFsc3RhY2suYXBpLnYyLlNpemVSZXNlcnZhdGlvblF1ZXJ5ImMKIlNpemVSZXNlcnZhdGlvblNlcnZpY2VMaXN0UmVzcG9uc2USPQoRc2l6ZV9yZXNlcnZhdGlvbnMYASADKAsyIi5tZXRhbHN0YWNrLmFwaS52Mi5TaXplUmVzZXJ2YXRpb24yvwQKFlNpemVSZXNlcnZhdGlvblNlcnZpY2USiAEKBkNyZWF0ZRI4Lm1ldGFsc3RhY2suYWRtaW4udjIuU2l6ZVJlc2VydmF0aW9uU2VydmljZUNyZWF0ZVJlcXVlc3QaOS5tZXRhbHN0YWNrLmFkbWluLnYyLlNpemVSZXNlcnZhdGlvblNlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEogBCgZVcGRhdGUSOC5tZXRhbHN0YWNrLmFkbWluLnYyLlNpemVSZXNlcnZhdGlvblNlcnZpY2VVcGRhdGVSZXF1ZXN0GjkubWV0YWxzdGFjay5hZG1pbi52Mi5TaXplUmVzZXJ2YXRpb25TZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCdLzGAEB4PMYARKIAQoGRGVsZXRlEjgubWV0YWxzdGFjay5hZG1pbi52Mi5TaXplUmVzZXJ2YXRpb25TZXJ2aWNlRGVsZXRlUmVxdWVzdBo5Lm1ldGFsc3RhY2suYWRtaW4udjIuU2l6ZVJlc2VydmF0aW9uU2VydmljZURlbGV0ZVJlc3BvbnNlIgnS8xgBAeDzGAESgwEKBExpc3QSNi5tZXRhbHN0YWNrLmFkbWluLnYyLlNpemVSZXNlcnZhdGlvblNlcnZpY2VMaXN0UmVxdWVzdBo3Lm1ldGFsc3RhY2suYWRtaW4udjIuU2l6ZVJlc2VydmF0aW9uU2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYAkLYAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCFFNpemVSZXNlcnZhdGlvblByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_size_reservation]);
 
 /**
- * SizeReservationServiceCreateRequest is the request payload for a size reservation create request
+ * SizeReservationServiceCreateRequest is the request payload for creating a size reservation.
  *
  * @generated from message metalstack.admin.v2.SizeReservationServiceCreateRequest
  */
@@ -40,13 +40,13 @@ export const SizeReservationServiceCreateRequestSchema: GenMessage<SizeReservati
   messageDesc(file_metalstack_admin_v2_size_reservation, 0);
 
 /**
- * SizeReservationServiceCreateResponse is the response payload for a size reservation create request
+ * SizeReservationServiceCreateResponse is the response payload for creating a size reservation.
  *
  * @generated from message metalstack.admin.v2.SizeReservationServiceCreateResponse
  */
 export type SizeReservationServiceCreateResponse = Message<"metalstack.admin.v2.SizeReservationServiceCreateResponse"> & {
   /**
-   * SizeReservation the size reservation
+   * SizeReservation contains the created reservation
    *
    * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
    */
@@ -61,7 +61,7 @@ export const SizeReservationServiceCreateResponseSchema: GenMessage<SizeReservat
   messageDesc(file_metalstack_admin_v2_size_reservation, 1);
 
 /**
- * SizeReservationServiceUpdateRequest is the request payload for a size reservation update request
+ * SizeReservationServiceUpdateRequest is the request payload for updating a size reservation.
  *
  * @generated from message metalstack.admin.v2.SizeReservationServiceUpdateRequest
  */
@@ -124,13 +124,13 @@ export const SizeReservationServiceUpdateRequestSchema: GenMessage<SizeReservati
   messageDesc(file_metalstack_admin_v2_size_reservation, 2);
 
 /**
- * SizeReservationServiceUpdateResponse is the response payload for a size reservation update request
+ * SizeReservationServiceUpdateResponse is the response payload for updating a size reservation.
  *
  * @generated from message metalstack.admin.v2.SizeReservationServiceUpdateResponse
  */
 export type SizeReservationServiceUpdateResponse = Message<"metalstack.admin.v2.SizeReservationServiceUpdateResponse"> & {
   /**
-   * SizeReservation the size reservation
+   * SizeReservation contains the updated reservation
    *
    * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
    */
@@ -145,7 +145,7 @@ export const SizeReservationServiceUpdateResponseSchema: GenMessage<SizeReservat
   messageDesc(file_metalstack_admin_v2_size_reservation, 3);
 
 /**
- * SizeReservationServiceDeleteRequest is the request payload for a size reservation delete request
+ * SizeReservationServiceDeleteRequest is the request payload for deleting a size reservation.
  *
  * @generated from message metalstack.admin.v2.SizeReservationServiceDeleteRequest
  */
@@ -166,13 +166,13 @@ export const SizeReservationServiceDeleteRequestSchema: GenMessage<SizeReservati
   messageDesc(file_metalstack_admin_v2_size_reservation, 4);
 
 /**
- * SizeReservationServiceDeleteResponse is the response payload for a size reservation delete request
+ * SizeReservationServiceDeleteResponse is the response payload for deleting a size reservation.
  *
  * @generated from message metalstack.admin.v2.SizeReservationServiceDeleteResponse
  */
 export type SizeReservationServiceDeleteResponse = Message<"metalstack.admin.v2.SizeReservationServiceDeleteResponse"> & {
   /**
-   * SizeReservation the size reservation
+   * SizeReservation contains the deleted reservation
    *
    * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
    */
@@ -187,7 +187,7 @@ export const SizeReservationServiceDeleteResponseSchema: GenMessage<SizeReservat
   messageDesc(file_metalstack_admin_v2_size_reservation, 5);
 
 /**
- * SizeReservationServiceListRequest is the request payload for a size list request
+ * SizeReservationServiceListRequest is the request payload for listing size reservations.
  *
  * @generated from message metalstack.admin.v2.SizeReservationServiceListRequest
  */
@@ -208,13 +208,13 @@ export const SizeReservationServiceListRequestSchema: GenMessage<SizeReservation
   messageDesc(file_metalstack_admin_v2_size_reservation, 6);
 
 /**
- * SizeReservationServiceListResponse is the response payload for a size reservation list request
+ * SizeReservationServiceListResponse is the response payload for listing size reservations.
  *
  * @generated from message metalstack.admin.v2.SizeReservationServiceListResponse
  */
 export type SizeReservationServiceListResponse = Message<"metalstack.admin.v2.SizeReservationServiceListResponse"> & {
   /**
-   * Size reservations
+   * SizeReservations contains the list of reservations
    *
    * @generated from field: repeated metalstack.api.v2.SizeReservation size_reservations = 1;
    */
@@ -229,13 +229,13 @@ export const SizeReservationServiceListResponseSchema: GenMessage<SizeReservatio
   messageDesc(file_metalstack_admin_v2_size_reservation, 7);
 
 /**
- * SizeReservationService serves size reservation related functions
+ * SizeReservationService provides size reservation management operations.
  *
  * @generated from service metalstack.admin.v2.SizeReservationService
  */
 export const SizeReservationService: GenService<{
   /**
-   * Create a size reservation
+   * Creates a new size reservation.
    *
    * @generated from rpc metalstack.admin.v2.SizeReservationService.Create
    */
@@ -245,7 +245,7 @@ export const SizeReservationService: GenService<{
     output: typeof SizeReservationServiceCreateResponseSchema;
   },
   /**
-   * Update a size reservation
+   * Updates a size reservation.
    *
    * @generated from rpc metalstack.admin.v2.SizeReservationService.Update
    */
@@ -255,7 +255,7 @@ export const SizeReservationService: GenService<{
     output: typeof SizeReservationServiceUpdateResponseSchema;
   },
   /**
-   * Delete a size reservation
+   * Deletes a size reservation.
    *
    * @generated from rpc metalstack.admin.v2.SizeReservationService.Delete
    */
@@ -265,7 +265,7 @@ export const SizeReservationService: GenService<{
     output: typeof SizeReservationServiceDeleteResponseSchema;
   },
   /**
-   * List size reservations
+   * Returns the list of size reservations.
    *
    * @generated from rpc metalstack.admin.v2.SizeReservationService.List
    */

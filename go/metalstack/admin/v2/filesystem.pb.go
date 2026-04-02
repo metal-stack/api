@@ -23,10 +23,10 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// FilesystemServiceCreateRequest
+// FilesystemServiceCreateRequest is the request payload for creating a filesystem.
 type FilesystemServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// FilesystemLayout the filesystemlayout
+	// FilesystemLayout is the filesystem layout to create
 	FilesystemLayout *v2.FilesystemLayout `protobuf:"bytes,1,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
@@ -69,10 +69,10 @@ func (x *FilesystemServiceCreateRequest) GetFilesystemLayout() *v2.FilesystemLay
 	return nil
 }
 
-// FilesystemServiceCreateResponse
+// FilesystemServiceCreateResponse is the response payload for creating a filesystem.
 type FilesystemServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// FilesystemLayout the filesystemlayout
+	// FilesystemLayout contains the created filesystem layout
 	FilesystemLayout *v2.FilesystemLayout `protobuf:"bytes,1,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
@@ -115,7 +115,7 @@ func (x *FilesystemServiceCreateResponse) GetFilesystemLayout() *v2.FilesystemLa
 	return nil
 }
 
-// FilesystemServiceUpdateRequest
+// FilesystemServiceUpdateRequest is the request payload for updating a filesystem.
 type FilesystemServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this filesystemLayout
@@ -130,7 +130,7 @@ type FilesystemServiceUpdateRequest struct {
 	Filesystems []*v2.Filesystem `protobuf:"bytes,5,rep,name=filesystems,proto3" json:"filesystems,omitempty"`
 	// Disks list of disks that belong to this layout
 	Disks []*v2.Disk `protobuf:"bytes,6,rep,name=disks,proto3" json:"disks,omitempty"`
-	// raid arrays to create
+	// Raid arrays to create
 	Raid []*v2.Raid `protobuf:"bytes,7,rep,name=raid,proto3" json:"raid,omitempty"`
 	// VolumeGroups list of volumegroups to create
 	VolumeGroups []*v2.VolumeGroup `protobuf:"bytes,8,rep,name=volume_groups,json=volumeGroups,proto3" json:"volume_groups,omitempty"`
@@ -242,10 +242,10 @@ func (x *FilesystemServiceUpdateRequest) GetConstraints() *v2.FilesystemLayoutCo
 	return nil
 }
 
-// FilesystemServiceUpdateResponse
+// FilesystemServiceUpdateResponse is the response payload for updating a filesystem.
 type FilesystemServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// FilesystemLayout the filesystemlayout
+	// FilesystemLayout contains the updated filesystem layout
 	FilesystemLayout *v2.FilesystemLayout `protobuf:"bytes,1,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
@@ -288,7 +288,7 @@ func (x *FilesystemServiceUpdateResponse) GetFilesystemLayout() *v2.FilesystemLa
 	return nil
 }
 
-// FilesystemServiceDeleteRequest
+// FilesystemServiceDeleteRequest is the request payload for deleting a filesystem.
 type FilesystemServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the filesystem to delete
@@ -334,10 +334,10 @@ func (x *FilesystemServiceDeleteRequest) GetId() string {
 	return ""
 }
 
-// message FilesystemServiceDeleteResponse {
+// FilesystemServiceDeleteResponse is the response payload for deleting a filesystem.
 type FilesystemServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// FilesystemLayout the filesystemlayout
+	// FilesystemLayout contains the deleted filesystem layout
 	FilesystemLayout *v2.FilesystemLayout `protobuf:"bytes,1,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache

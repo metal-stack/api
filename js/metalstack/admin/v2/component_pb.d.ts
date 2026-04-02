@@ -6,13 +6,13 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_component: GenFile;
 /**
- * ComponentServiceListRequest
+ * ComponentServiceListRequest is the request payload for listing components.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceListRequest
  */
 export type ComponentServiceListRequest = Message<"metalstack.admin.v2.ComponentServiceListRequest"> & {
     /**
-     * Query components.
+     * Query filters components
      *
      * @generated from field: metalstack.api.v2.ComponentQuery query = 1;
      */
@@ -24,13 +24,13 @@ export type ComponentServiceListRequest = Message<"metalstack.admin.v2.Component
  */
 export declare const ComponentServiceListRequestSchema: GenMessage<ComponentServiceListRequest>;
 /**
- * ComponentServiceListResponse
+ * ComponentServiceListResponse is the response payload for listing components.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceListResponse
  */
 export type ComponentServiceListResponse = Message<"metalstack.admin.v2.ComponentServiceListResponse"> & {
     /**
-     * Components
+     * Components contains the list of components
      *
      * @generated from field: repeated metalstack.api.v2.Component components = 1;
      */
@@ -42,7 +42,7 @@ export type ComponentServiceListResponse = Message<"metalstack.admin.v2.Componen
  */
 export declare const ComponentServiceListResponseSchema: GenMessage<ComponentServiceListResponse>;
 /**
- * ComponentServiceGetRequest
+ * ComponentServiceGetRequest is the request payload for getting a component.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceGetRequest
  */
@@ -60,13 +60,13 @@ export type ComponentServiceGetRequest = Message<"metalstack.admin.v2.ComponentS
  */
 export declare const ComponentServiceGetRequestSchema: GenMessage<ComponentServiceGetRequest>;
 /**
- * ComponentServiceGetResponse
+ * ComponentServiceGetResponse is the response payload for getting a component.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceGetResponse
  */
 export type ComponentServiceGetResponse = Message<"metalstack.admin.v2.ComponentServiceGetResponse"> & {
     /**
-     * Component
+     * Component contains the retrieved component
      *
      * @generated from field: metalstack.api.v2.Component component = 1;
      */
@@ -78,7 +78,7 @@ export type ComponentServiceGetResponse = Message<"metalstack.admin.v2.Component
  */
 export declare const ComponentServiceGetResponseSchema: GenMessage<ComponentServiceGetResponse>;
 /**
- * ComponentServiceGetRequest
+ * ComponentServiceDeleteRequest is the request payload for deleting a component.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceDeleteRequest
  */
@@ -96,13 +96,13 @@ export type ComponentServiceDeleteRequest = Message<"metalstack.admin.v2.Compone
  */
 export declare const ComponentServiceDeleteRequestSchema: GenMessage<ComponentServiceDeleteRequest>;
 /**
- * ComponentServiceGetResponse
+ * ComponentServiceDeleteResponse is the response payload for deleting a component.
  *
  * @generated from message metalstack.admin.v2.ComponentServiceDeleteResponse
  */
 export type ComponentServiceDeleteResponse = Message<"metalstack.admin.v2.ComponentServiceDeleteResponse"> & {
     /**
-     * Component
+     * Component contains the deleted component
      *
      * @generated from field: metalstack.api.v2.Component component = 1;
      */
@@ -114,13 +114,13 @@ export type ComponentServiceDeleteResponse = Message<"metalstack.admin.v2.Compon
  */
 export declare const ComponentServiceDeleteResponseSchema: GenMessage<ComponentServiceDeleteResponse>;
 /**
- * ComponentService serves microservice related functions
+ * ComponentService provides microservice component management operations.
  *
  * @generated from service metalstack.admin.v2.ComponentService
  */
 export declare const ComponentService: GenService<{
     /**
-     * Get a single component
+     * Returns the component with the specified UUID.
      *
      * @generated from rpc metalstack.admin.v2.ComponentService.Get
      */
@@ -130,7 +130,7 @@ export declare const ComponentService: GenService<{
         output: typeof ComponentServiceGetResponseSchema;
     };
     /**
-     * Delete a component
+     * Deletes the component with the specified UUID.
      *
      * @generated from rpc metalstack.admin.v2.ComponentService.Delete
      */
@@ -140,7 +140,7 @@ export declare const ComponentService: GenService<{
         output: typeof ComponentServiceDeleteResponseSchema;
     };
     /**
-     * List all components with their status
+     * Returns the list of all components with their status.
      *
      * @generated from rpc metalstack.admin.v2.ComponentService.List
      */

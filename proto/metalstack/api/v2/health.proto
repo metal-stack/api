@@ -4,16 +4,16 @@ package metalstack.api.v2;
 
 import "metalstack/api/v2/common.proto";
 
-// HealthService serves health related functions
+// HealthService provides health status monitoring operations.
 service HealthService {
-  // Get the health of the platform
+  // Returns the health status of the platform.
   rpc Get(HealthServiceGetRequest) returns (HealthServiceGetResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }
 
-// ServiceStatus defines the status of a service
+// ServiceStatus defines the status of a service.
 enum ServiceStatus {
   // SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified
   SERVICE_STATUS_UNSPECIFIED = 0;
@@ -21,43 +21,43 @@ enum ServiceStatus {
   SERVICE_STATUS_DEGRADED = 1;
   // SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected
   SERVICE_STATUS_UNHEALTHY = 2;
-  // SERVICE_STATUS_HEALTHY the service is in healthy status e.g. fully functional
+  // SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional
   SERVICE_STATUS_HEALTHY = 3;
 }
 
-// Service defines the service for which the healtyness is reported
+// Service defines the service for which the healthiness is reported.
 enum Service {
   // SERVICE_UNSPECIFIED is a unknown service
   SERVICE_UNSPECIFIED = 0;
-  // SERVICE_IPAM the ipam service
+  // SERVICE_IPAM the IPAM service
   SERVICE_IPAM = 1 [(enum_string_value) = "ipam"];
-  // SERVICE_RETHINK the rethinkdb
+  // SERVICE_RETHINK the RethinkDB
   SERVICE_RETHINK = 2 [(enum_string_value) = "rethinkdb"];
-  // SERVICE_MASTERDATA the masterdata-api
+  // SERVICE_MASTERDATA the masterdata API
   SERVICE_MASTERDATA = 3 [(enum_string_value) = "masterdata"];
   // SERVICE_MACHINES the machine service
   SERVICE_MACHINES = 4 [(enum_string_value) = "machines"];
   // SERVICE_AUDIT the auditing
   SERVICE_AUDIT = 5 [(enum_string_value) = "audit"];
-  // SERVICE_VPN the vpn service
+  // SERVICE_VPN the VPN service
   SERVICE_VPN = 6 [(enum_string_value) = "vpn"];
-  // SERVICE_REDIS the redis service
+  // SERVICE_REDIS the Redis service
   SERVICE_REDIS = 7 [(enum_string_value) = "redis"];
   // SERVICE_TASKS the tasks service
   SERVICE_TASKS = 8 [(enum_string_value) = "tasks"];
 }
 
-// Health reports the health status of all services
+// Health reports the health status of all services.
 message Health {
-  // Services the health of all individual services
+  // Services contains the health of all individual services
   repeated HealthStatus services = 1;
 }
 
-// HealthStatus the health of one service
+// HealthStatus represents the health status of one service.
 message HealthStatus {
-  // Name the name of the service
+  // Name is the name of the service
   Service name = 1;
-  // Status the status of this service
+  // Status is the status of this service
   ServiceStatus status = 2;
   // Message describes the reason for the unhealthy status if possible
   string message = 3;
@@ -65,19 +65,19 @@ message HealthStatus {
   map<string, PartitionHealth> partitions = 4;
 }
 
-// PartitionHealth the status of a specific service in this partition
+// PartitionHealth represents the status of a specific service in this partition.
 message PartitionHealth {
-  // Status the health status of the service in this partition
+  // Status is the health status of the service in this partition
   ServiceStatus status = 1;
   // Message describes the reason for the unhealthy status if possible
   string message = 2;
 }
 
-// HealthServiceGetRequest is request payload to get the health of the system
+// HealthServiceGetRequest is the request payload for getting the health of the system.
 message HealthServiceGetRequest {}
 
-// HealthServiceGetRequest is the response payload with the health of the system
+// HealthServiceGetResponse is the response payload for getting the health of the system.
 message HealthServiceGetResponse {
-  // Health is the overall health of the system
+  // Health contains the overall health of the system
   Health health = 1;
 }

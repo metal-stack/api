@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// SizeServiceCreateRequest is the request payload for a size create request
+// SizeServiceCreateRequest is the request payload for creating a size.
 type SizeServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Size is the size to create
@@ -69,10 +69,10 @@ func (x *SizeServiceCreateRequest) GetSize() *v2.Size {
 	return nil
 }
 
-// SizeServiceGetResponse is the response payload for a size create request
+// SizeServiceCreateResponse is the response payload for creating a size.
 type SizeServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size the size
+	// Size contains the created size
 	Size          *v2.Size `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,7 +115,7 @@ func (x *SizeServiceCreateResponse) GetSize() *v2.Size {
 	return nil
 }
 
-// SizeServiceUpdateRequest is the request payload for a size update request
+// SizeServiceUpdateRequest is the request payload for updating a size.
 type SizeServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this size
@@ -206,10 +206,10 @@ func (x *SizeServiceUpdateRequest) GetLabels() *v2.UpdateLabels {
 	return nil
 }
 
-// SizeServiceUpdateResponse is the response payload for a size update request
+// SizeServiceUpdateResponse is the response payload for updating a size.
 type SizeServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size the size
+	// Size contains the updated size
 	Size          *v2.Size `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -252,7 +252,7 @@ func (x *SizeServiceUpdateResponse) GetSize() *v2.Size {
 	return nil
 }
 
-// SizeServiceDeleteRequest is the request payload for a size delete request
+// SizeServiceDeleteRequest is the request payload for deleting a size.
 type SizeServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the size to delete
@@ -298,10 +298,10 @@ func (x *SizeServiceDeleteRequest) GetId() string {
 	return ""
 }
 
-// SizeServiceDeleteResponse is the response payload for a size delete request
+// SizeServiceDeleteResponse is the response payload for deleting a size.
 type SizeServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size the size
+	// Size contains the deleted size
 	Size          *v2.Size `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

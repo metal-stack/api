@@ -49,17 +49,17 @@ const (
 
 // TokenServiceClient is a client for the metalstack.api.v2.TokenService service.
 type TokenServiceClient interface {
-	// Get a token
+	// Returns the token with the specified UUID.
 	Get(context.Context, *v2.TokenServiceGetRequest) (*v2.TokenServiceGetResponse, error)
-	// Create a token to authenticate against the platform, the secret will be only visible in the response.
+	// Creates a token to authenticate against the platform, the secret will be only visible in the response.
 	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
-	// Update a token
+	// Updates a token.
 	Update(context.Context, *v2.TokenServiceUpdateRequest) (*v2.TokenServiceUpdateResponse, error)
-	// List all your tokens
+	// Returns the list of all user tokens.
 	List(context.Context, *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error)
-	// Revoke a token, no further usage is possible afterwards
+	// Revokes a token, no further usage is possible afterwards.
 	Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error)
-	// Refresh a token, this will create a new token with the exact same permissions as the calling token contains
+	// Refreshes a token, this will create a new token with the exact same permissions as the calling token contains.
 	Refresh(context.Context, *v2.TokenServiceRefreshRequest) (*v2.TokenServiceRefreshResponse, error)
 }
 
@@ -179,17 +179,17 @@ func (c *tokenServiceClient) Refresh(ctx context.Context, req *v2.TokenServiceRe
 
 // TokenServiceHandler is an implementation of the metalstack.api.v2.TokenService service.
 type TokenServiceHandler interface {
-	// Get a token
+	// Returns the token with the specified UUID.
 	Get(context.Context, *v2.TokenServiceGetRequest) (*v2.TokenServiceGetResponse, error)
-	// Create a token to authenticate against the platform, the secret will be only visible in the response.
+	// Creates a token to authenticate against the platform, the secret will be only visible in the response.
 	Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
-	// Update a token
+	// Updates a token.
 	Update(context.Context, *v2.TokenServiceUpdateRequest) (*v2.TokenServiceUpdateResponse, error)
-	// List all your tokens
+	// Returns the list of all user tokens.
 	List(context.Context, *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error)
-	// Revoke a token, no further usage is possible afterwards
+	// Revokes a token, no further usage is possible afterwards.
 	Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error)
-	// Refresh a token, this will create a new token with the exact same permissions as the calling token contains
+	// Refreshes a token, this will create a new token with the exact same permissions as the calling token contains.
 	Refresh(context.Context, *v2.TokenServiceRefreshRequest) (*v2.TokenServiceRefreshResponse, error)
 }
 

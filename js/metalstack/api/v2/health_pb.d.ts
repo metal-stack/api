@@ -5,13 +5,13 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_health: GenFile;
 /**
- * Health reports the health status of all services
+ * Health reports the health status of all services.
  *
  * @generated from message metalstack.api.v2.Health
  */
 export type Health = Message<"metalstack.api.v2.Health"> & {
     /**
-     * Services the health of all individual services
+     * Services contains the health of all individual services
      *
      * @generated from field: repeated metalstack.api.v2.HealthStatus services = 1;
      */
@@ -23,19 +23,19 @@ export type Health = Message<"metalstack.api.v2.Health"> & {
  */
 export declare const HealthSchema: GenMessage<Health>;
 /**
- * HealthStatus the health of one service
+ * HealthStatus represents the health status of one service.
  *
  * @generated from message metalstack.api.v2.HealthStatus
  */
 export type HealthStatus = Message<"metalstack.api.v2.HealthStatus"> & {
     /**
-     * Name the name of the service
+     * Name is the name of the service
      *
      * @generated from field: metalstack.api.v2.Service name = 1;
      */
     name: Service;
     /**
-     * Status the status of this service
+     * Status is the status of this service
      *
      * @generated from field: metalstack.api.v2.ServiceStatus status = 2;
      */
@@ -61,13 +61,13 @@ export type HealthStatus = Message<"metalstack.api.v2.HealthStatus"> & {
  */
 export declare const HealthStatusSchema: GenMessage<HealthStatus>;
 /**
- * PartitionHealth the status of a specific service in this partition
+ * PartitionHealth represents the status of a specific service in this partition.
  *
  * @generated from message metalstack.api.v2.PartitionHealth
  */
 export type PartitionHealth = Message<"metalstack.api.v2.PartitionHealth"> & {
     /**
-     * Status the health status of the service in this partition
+     * Status is the health status of the service in this partition
      *
      * @generated from field: metalstack.api.v2.ServiceStatus status = 1;
      */
@@ -85,7 +85,7 @@ export type PartitionHealth = Message<"metalstack.api.v2.PartitionHealth"> & {
  */
 export declare const PartitionHealthSchema: GenMessage<PartitionHealth>;
 /**
- * HealthServiceGetRequest is request payload to get the health of the system
+ * HealthServiceGetRequest is the request payload for getting the health of the system.
  *
  * @generated from message metalstack.api.v2.HealthServiceGetRequest
  */
@@ -96,13 +96,13 @@ export type HealthServiceGetRequest = Message<"metalstack.api.v2.HealthServiceGe
  */
 export declare const HealthServiceGetRequestSchema: GenMessage<HealthServiceGetRequest>;
 /**
- * HealthServiceGetRequest is the response payload with the health of the system
+ * HealthServiceGetResponse is the response payload for getting the health of the system.
  *
  * @generated from message metalstack.api.v2.HealthServiceGetResponse
  */
 export type HealthServiceGetResponse = Message<"metalstack.api.v2.HealthServiceGetResponse"> & {
     /**
-     * Health is the overall health of the system
+     * Health contains the overall health of the system
      *
      * @generated from field: metalstack.api.v2.Health health = 1;
      */
@@ -114,7 +114,7 @@ export type HealthServiceGetResponse = Message<"metalstack.api.v2.HealthServiceG
  */
 export declare const HealthServiceGetResponseSchema: GenMessage<HealthServiceGetResponse>;
 /**
- * ServiceStatus defines the status of a service
+ * ServiceStatus defines the status of a service.
  *
  * @generated from enum metalstack.api.v2.ServiceStatus
  */
@@ -138,7 +138,7 @@ export declare enum ServiceStatus {
      */
     UNHEALTHY = 2,
     /**
-     * SERVICE_STATUS_HEALTHY the service is in healthy status e.g. fully functional
+     * SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional
      *
      * @generated from enum value: SERVICE_STATUS_HEALTHY = 3;
      */
@@ -149,7 +149,7 @@ export declare enum ServiceStatus {
  */
 export declare const ServiceStatusSchema: GenEnum<ServiceStatus>;
 /**
- * Service defines the service for which the healtyness is reported
+ * Service defines the service for which the healthiness is reported.
  *
  * @generated from enum metalstack.api.v2.Service
  */
@@ -161,19 +161,19 @@ export declare enum Service {
      */
     UNSPECIFIED = 0,
     /**
-     * SERVICE_IPAM the ipam service
+     * SERVICE_IPAM the IPAM service
      *
      * @generated from enum value: SERVICE_IPAM = 1;
      */
     IPAM = 1,
     /**
-     * SERVICE_RETHINK the rethinkdb
+     * SERVICE_RETHINK the RethinkDB
      *
      * @generated from enum value: SERVICE_RETHINK = 2;
      */
     RETHINK = 2,
     /**
-     * SERVICE_MASTERDATA the masterdata-api
+     * SERVICE_MASTERDATA the masterdata API
      *
      * @generated from enum value: SERVICE_MASTERDATA = 3;
      */
@@ -191,13 +191,13 @@ export declare enum Service {
      */
     AUDIT = 5,
     /**
-     * SERVICE_VPN the vpn service
+     * SERVICE_VPN the VPN service
      *
      * @generated from enum value: SERVICE_VPN = 6;
      */
     VPN = 6,
     /**
-     * SERVICE_REDIS the redis service
+     * SERVICE_REDIS the Redis service
      *
      * @generated from enum value: SERVICE_REDIS = 7;
      */
@@ -214,13 +214,13 @@ export declare enum Service {
  */
 export declare const ServiceSchema: GenEnum<Service>;
 /**
- * HealthService serves health related functions
+ * HealthService provides health status monitoring operations.
  *
  * @generated from service metalstack.api.v2.HealthService
  */
 export declare const HealthService: GenService<{
     /**
-     * Get the health of the platform
+     * Returns the health status of the platform.
      *
      * @generated from rpc metalstack.api.v2.HealthService.Get
      */

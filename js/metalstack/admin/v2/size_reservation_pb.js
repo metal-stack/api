@@ -51,7 +51,7 @@ export const SizeReservationServiceListRequestSchema = /*@__PURE__*/ messageDesc
  */
 export const SizeReservationServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_size_reservation, 7);
 /**
- * SizeReservationService serves size reservation related functions
+ * SizeReservationService provides size reservation management operations.
  *
  * @generated from service metalstack.admin.v2.SizeReservationService
  */

@@ -19,20 +19,20 @@ export const file_metalstack_admin_v2_tenant: GenFile = /*@__PURE__*/
   fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiLoAQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgbAs66xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIXCgphdmF0YXJfdXJsGAQgASgJSAKIAQESKQoGbGFiZWxzGAUgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzQg4KDF9kZXNjcmlwdGlvbkIICgZfZW1haWxCDQoLX2F2YXRhcl91cmwiSAobVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlEikKBnRlbmFudBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudCKMAQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0EhIKBWxvZ2luGAEgASgJSACIAQESHgoEbmFtZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIpCgZwYWdpbmcYAyABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5QYWdpbmdCCAoGX2xvZ2luQgcKBV9uYW1lIm0KGVRlbmFudFNlcnZpY2VMaXN0UmVzcG9uc2USKgoHdGVuYW50cxgBIAMoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudBIWCgluZXh0X3BhZ2UYAiABKARIAIgBAUIMCgpfbmV4dF9wYWdlMvIBCg1UZW5hbnRTZXJ2aWNlEnIKBkNyZWF0ZRIvLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QaMC5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZSIF0vMYAQESbQoETGlzdBItLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlTGlzdFJlc3BvbnNlIgbS8xgCAQJCzwEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgtUZW5hbnRQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
 
 /**
- * TenantServiceCreateRequest is the request payload of the tenant create request
+ * TenantServiceCreateRequest is the request payload for creating a tenant.
  *
  * @generated from message metalstack.admin.v2.TenantServiceCreateRequest
  */
 export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServiceCreateRequest"> & {
   /**
-   * Name of this tenant
+   * Name of the tenant
    *
    * @generated from field: string name = 1;
    */
   name: string;
 
   /**
-   * Description of this tenant
+   * Description of the tenant
    *
    * @generated from field: optional string description = 2;
    */
@@ -68,13 +68,13 @@ export const TenantServiceCreateRequestSchema: GenMessage<TenantServiceCreateReq
   messageDesc(file_metalstack_admin_v2_tenant, 0);
 
 /**
- * TenantServiceCreateResponse is the response payload of the tenant create request
+ * TenantServiceCreateResponse is the response payload for creating a tenant.
  *
  * @generated from message metalstack.admin.v2.TenantServiceCreateResponse
  */
 export type TenantServiceCreateResponse = Message<"metalstack.admin.v2.TenantServiceCreateResponse"> & {
   /**
-   * Tenant is the tenant
+   * Tenant contains the created tenant
    *
    * @generated from field: metalstack.api.v2.Tenant tenant = 1;
    */
@@ -89,20 +89,20 @@ export const TenantServiceCreateResponseSchema: GenMessage<TenantServiceCreateRe
   messageDesc(file_metalstack_admin_v2_tenant, 1);
 
 /**
- * TenantServiceListRequest is the request payload for a tenant list request
+ * TenantServiceListRequest is the request payload for listing tenants.
  *
  * @generated from message metalstack.admin.v2.TenantServiceListRequest
  */
 export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServiceListRequest"> & {
   /**
-   * Login of the tenant to list
+   * Login filters tenants by this login
    *
    * @generated from field: optional string login = 1;
    */
   login?: string;
 
   /**
-   * Name of the tenant to list
+   * Name filters tenants by this name
    *
    * @generated from field: optional string name = 2;
    */
@@ -124,20 +124,20 @@ export const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest
   messageDesc(file_metalstack_admin_v2_tenant, 2);
 
 /**
- * TenantServiceListResponse is the response payload for a tenant list request
+ * TenantServiceListResponse is the response payload for listing tenants.
  *
  * @generated from message metalstack.admin.v2.TenantServiceListResponse
  */
 export type TenantServiceListResponse = Message<"metalstack.admin.v2.TenantServiceListResponse"> & {
   /**
-   * Tenants are the list of tenants
+   * Tenants contains the list of tenants
    *
    * @generated from field: repeated metalstack.api.v2.Tenant tenants = 1;
    */
   tenants: Tenant[];
 
   /**
-   * NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+   * NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request
    *
    * @generated from field: optional uint64 next_page = 2;
    */
@@ -152,13 +152,13 @@ export const TenantServiceListResponseSchema: GenMessage<TenantServiceListRespon
   messageDesc(file_metalstack_admin_v2_tenant, 3);
 
 /**
- * TenantService serves tenant related functions
+ * TenantService provides tenant management operations.
  *
  * @generated from service metalstack.admin.v2.TenantService
  */
 export const TenantService: GenService<{
   /**
-   * Create a tenant
+   * Creates a new tenant.
    *
    * @generated from rpc metalstack.admin.v2.TenantService.Create
    */
@@ -168,7 +168,7 @@ export const TenantService: GenService<{
     output: typeof TenantServiceCreateResponseSchema;
   },
   /**
-   * List all tenants
+   * Returns the list of all tenants.
    *
    * @generated from rpc metalstack.admin.v2.TenantService.List
    */

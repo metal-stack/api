@@ -40,7 +40,7 @@ export const ComponentServiceDeleteRequestSchema = /*@__PURE__*/ messageDesc(fil
  */
 export const ComponentServiceDeleteResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_component, 5);
 /**
- * ComponentService serves microservice related functions
+ * ComponentService provides microservice component management operations.
  *
  * @generated from service metalstack.admin.v2.ComponentService
  */

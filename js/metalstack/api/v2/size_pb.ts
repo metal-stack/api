@@ -282,13 +282,13 @@ export const SizeConstraintTypeSchema: GenEnum<SizeConstraintType> = /*@__PURE__
   enumDesc(file_metalstack_api_v2_size, 0);
 
 /**
- * SizeService serves size related functions
+ * SizeService provides size management operations.
  *
  * @generated from service metalstack.api.v2.SizeService
  */
 export const SizeService: GenService<{
   /**
-   * Get a size
+   * Returns the size with the specified ID.
    *
    * @generated from rpc metalstack.api.v2.SizeService.Get
    */
@@ -298,7 +298,7 @@ export const SizeService: GenService<{
     output: typeof SizeServiceGetResponseSchema;
   },
   /**
-   * List all sizes
+   * Returns the list of all sizes.
    *
    * @generated from rpc metalstack.api.v2.SizeService.List
    */

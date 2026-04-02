@@ -19,35 +19,35 @@ export const file_metalstack_admin_v2_vpn: GenFile = /*@__PURE__*/
   fileDesc("Ch1tZXRhbHN0YWNrL2FkbWluL3YyL3Zwbi5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiKQAQoYVlBOU2VydmljZUF1dGhLZXlSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEhEKCWVwaGVtZXJhbBgCIAEoCBIqCgdleHBpcmVzGAMgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uEhoKBnJlYXNvbhgEIAEoCUIKukgHcgUQChiABCKxAQoZVlBOU2VydmljZUF1dGhLZXlSZXNwb25zZRIPCgdhZGRyZXNzGAEgASgJEhAKCGF1dGhfa2V5GAIgASgJEhEKCWVwaGVtZXJhbBgDIAEoCBIuCgpleHBpcmVzX2F0GAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgpjcmVhdGVkX2F0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCI+ChpWUE5TZXJ2aWNlTGlzdE5vZGVzUmVxdWVzdBIUCgdwcm9qZWN0GAEgASgJSACIAQFCCgoIX3Byb2plY3QiSAobVlBOU2VydmljZUxpc3ROb2Rlc1Jlc3BvbnNlEikKBW5vZGVzGAEgAygLMhoubWV0YWxzdGFjay5hcGkudjIuVlBOTm9kZTL1AQoKVlBOU2VydmljZRJvCgdBdXRoS2V5Ei0ubWV0YWxzdGFjay5hZG1pbi52Mi5WUE5TZXJ2aWNlQXV0aEtleVJlcXVlc3QaLi5tZXRhbHN0YWNrLmFkbWluLnYyLlZQTlNlcnZpY2VBdXRoS2V5UmVzcG9uc2UiBdLzGAEBEnYKCUxpc3ROb2RlcxIvLm1ldGFsc3RhY2suYWRtaW4udjIuVlBOU2VydmljZUxpc3ROb2Rlc1JlcXVlc3QaMC5tZXRhbHN0YWNrLmFkbWluLnYyLlZQTlNlcnZpY2VMaXN0Tm9kZXNSZXNwb25zZSIG0vMYAgECQswBChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIIVnBuUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hZG1pbi92MjthZG1pbnYyogIDTUFYqgITTWV0YWxzdGFjay5BZG1pbi5WMsoCE01ldGFsc3RhY2tcQWRtaW5cVjLiAh9NZXRhbHN0YWNrXEFkbWluXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6QWRtaW46OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_vpn]);
 
 /**
- * VPNServiceAuthKeyRequest is the request payload for a vpn authkey request.
+ * VPNServiceAuthKeyRequest is the request payload for generating a VPN authentication key.
  *
  * @generated from message metalstack.admin.v2.VPNServiceAuthKeyRequest
  */
 export type VPNServiceAuthKeyRequest = Message<"metalstack.admin.v2.VPNServiceAuthKeyRequest"> & {
   /**
-   * Project for which a vpn authkey should be generated.
+   * Project for which a VPN authentication key should be generated
    *
    * @generated from field: string project = 1;
    */
   project: string;
 
   /**
-   * Ephemeral defines if the authkey should be ephemeral.
+   * Ephemeral defines if the authentication key should be ephemeral
    *
    * @generated from field: bool ephemeral = 2;
    */
   ephemeral: boolean;
 
   /**
-   * Expires defines the duration after which the authkey expires.
+   * Expires defines the duration after which the authentication key expires
    *
    * @generated from field: google.protobuf.Duration expires = 3;
    */
   expires?: Duration;
 
   /**
-   * Reason must be provided why access to the vpn is requested
-   * reason is only forwarded to a audit sink
+   * Reason must be provided why access to the VPN is requested
+   * Reason is only forwarded to an audit sink
    *
    * @generated from field: string reason = 4;
    */
@@ -62,42 +62,42 @@ export const VPNServiceAuthKeyRequestSchema: GenMessage<VPNServiceAuthKeyRequest
   messageDesc(file_metalstack_admin_v2_vpn, 0);
 
 /**
- * VPNServiceAuthKeyResponse is the request payload for a authkey response
+ * VPNServiceAuthKeyResponse is the response payload for generating a VPN authentication key.
  *
  * @generated from message metalstack.admin.v2.VPNServiceAuthKeyResponse
  */
 export type VPNServiceAuthKeyResponse = Message<"metalstack.admin.v2.VPNServiceAuthKeyResponse"> & {
   /**
-   * Address is the address of the vpn control plane.
+   * Address is the address of the VPN control plane
    *
    * @generated from field: string address = 1;
    */
   address: string;
 
   /**
-   * AuthKey is the key to connect to the vpn at the given address.
-   * This key can only be seen once.
+   * AuthKey is the key to connect to the VPN at the given address
+   * This key can only be seen once
    *
    * @generated from field: string auth_key = 2;
    */
   authKey: string;
 
   /**
-   * Ephemeral defines if the authkey should be ephemeral.
+   * Ephemeral defines if the authentication key should be ephemeral
    *
    * @generated from field: bool ephemeral = 3;
    */
   ephemeral: boolean;
 
   /**
-   * ExpiresAt this key cannot be used after this timestamp.
+   * ExpiresAt this key cannot be used after this timestamp
    *
    * @generated from field: google.protobuf.Timestamp expires_at = 4;
    */
   expiresAt?: Timestamp;
 
   /**
-   * CreatedAt this key was created at this timestamp.
+   * CreatedAt this key was created at this timestamp
    *
    * @generated from field: google.protobuf.Timestamp created_at = 5;
    */
@@ -112,13 +112,13 @@ export const VPNServiceAuthKeyResponseSchema: GenMessage<VPNServiceAuthKeyRespon
   messageDesc(file_metalstack_admin_v2_vpn, 1);
 
 /**
- * VPNServiceListNodesRequest is the request payload for a vpn list nodes request
+ * VPNServiceListNodesRequest is the request payload for listing VPN nodes.
  *
  * @generated from message metalstack.admin.v2.VPNServiceListNodesRequest
  */
 export type VPNServiceListNodesRequest = Message<"metalstack.admin.v2.VPNServiceListNodesRequest"> & {
   /**
-   * Project if given only nodes of this user are returned
+   * Project filters nodes by this project
    *
    * @generated from field: optional string project = 1;
    */
@@ -133,13 +133,13 @@ export const VPNServiceListNodesRequestSchema: GenMessage<VPNServiceListNodesReq
   messageDesc(file_metalstack_admin_v2_vpn, 2);
 
 /**
- * VPNServiceListNodesResponse is the response payload for a vpn list nodes request
+ * VPNServiceListNodesResponse is the response payload for listing VPN nodes.
  *
  * @generated from message metalstack.admin.v2.VPNServiceListNodesResponse
  */
 export type VPNServiceListNodesResponse = Message<"metalstack.admin.v2.VPNServiceListNodesResponse"> & {
   /**
-   * Nodes connected to the vpn
+   * Nodes connected to the VPN
    *
    * @generated from field: repeated metalstack.api.v2.VPNNode nodes = 1;
    */
@@ -154,13 +154,13 @@ export const VPNServiceListNodesResponseSchema: GenMessage<VPNServiceListNodesRe
   messageDesc(file_metalstack_admin_v2_vpn, 3);
 
 /**
- * VPNService serves vpn related functions
+ * VPNService provides VPN management operations.
  *
  * @generated from service metalstack.admin.v2.VPNService
  */
 export const VPNService: GenService<{
   /**
-   * AuthKey generates a authkey for a project to join a machine to the project vpn
+   * GenerateAuthKey generates an authentication key for a project to join a machine to the project VPN.
    *
    * @generated from rpc metalstack.admin.v2.VPNService.AuthKey
    */
@@ -170,7 +170,7 @@ export const VPNService: GenService<{
     output: typeof VPNServiceAuthKeyResponseSchema;
   },
   /**
-   * ListNodes returns a list of machines actually connected to the vpn
+   * Returns the list of machines connected to the VPN.
    *
    * @generated from rpc metalstack.admin.v2.VPNService.ListNodes
    */

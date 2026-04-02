@@ -6,16 +6,16 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// VersionService serves version related functions
+// VersionService provides version information operations.
 service VersionService {
-  // Get the version
+  // Returns the version of the application.
   rpc Get(VersionServiceGetRequest) returns (VersionServiceGetResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }
 
-// Version of the application
+// Version represents the version of the application.
 message Version {
   // Version of the application
   string version = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
@@ -27,11 +27,11 @@ message Version {
   string build_date = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// VersionServiceGetRequest is the request payload to get the version
+// VersionServiceGetRequest is the request payload for getting the version.
 message VersionServiceGetRequest {}
 
-// VersionServiceGetResponse is the response payload with the version
+// VersionServiceGetResponse is the response payload for getting the version.
 message VersionServiceGetResponse {
-  // Version of the application
+  // Version contains the version of the application
   Version version = 1;
 }

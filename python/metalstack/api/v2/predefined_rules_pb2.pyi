@@ -23,5 +23,7 @@ PREFIXES_FIELD_NUMBER: _ClassVar[int]
 prefixes: _descriptor.FieldDescriptor
 IPS_FIELD_NUMBER: _ClassVar[int]
 ips: _descriptor.FieldDescriptor
+ARE_HOST_AND_PORT_FIELD_NUMBER: _ClassVar[int]
+are_host_and_port: _descriptor.FieldDescriptor
 ALL_TRIMMED_FIELD_NUMBER: _ClassVar[int]
 all_trimmed: _descriptor.FieldDescriptor

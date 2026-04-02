@@ -49,7 +49,7 @@ extend buf.validate.StringRules {
     message: "must be a valid IP address or hostname"
     expression: "this.isIp() || this.isHostname()"
   }];
-  // Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end.
+  // Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end
   optional bool trimmed = 80048958 [(buf.validate.predefined).cel = {
     id: "string.trimmed"
     message: "value must not start or end with whitespace"
@@ -70,8 +70,14 @@ extend buf.validate.RepeatedRules {
     message: "given ips must be valid"
     expression: "this.all(m, m.isIp())"
   }];
-  // All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end.
-  optional bool all_trimmed = 80058953 [(buf.validate.predefined).cel = {
+  // AreHostAndPort validates if a slice of strings are all in the form of <ip | host>:<port>
+  optional bool are_host_and_port = 80058953 [(buf.validate.predefined).cel = {
+    id: "repeated.are_host_and_port"
+    message: "given entries must all be in the form of <ip | host>:<port> but port is optional"
+    expression: "this.all(m, m.isHostAndPort(false))"
+  }];
+  // All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end
+  optional bool all_trimmed = 80058954 [(buf.validate.predefined).cel = {
     id: "repeated.all_trimmed"
     message: "given values must not start or end with whitespace"
     expression: "this.all(m, m.trim().size() == m.size())"

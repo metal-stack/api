@@ -7,14 +7,14 @@ import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// ProjectService serves project related functions
+// ProjectService provides project management operations.
 service ProjectService {
-  // List all accessible projects
+  // Returns the list of all accessible projects.
   rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Get a project
+  // Returns the project with the specified UUID.
   rpc Get(ProjectServiceGetRequest) returns (ProjectServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;

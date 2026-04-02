@@ -248,13 +248,13 @@ export const SizeReservationQuerySchema: GenMessage<SizeReservationQuery> = /*@_
   messageDesc(file_metalstack_api_v2_size_reservation, 5);
 
 /**
- * SizeReservationService serves size reservation related functions
+ * SizeReservationService provides size reservation management operations.
  *
  * @generated from service metalstack.api.v2.SizeReservationService
  */
 export const SizeReservationService: GenService<{
   /**
-   * Get a size reservation
+   * Returns the size reservation with the specified ID.
    *
    * @generated from rpc metalstack.api.v2.SizeReservationService.Get
    */
@@ -264,7 +264,7 @@ export const SizeReservationService: GenService<{
     output: typeof SizeReservationServiceGetResponseSchema;
   },
   /**
-   * List size reservations
+   * Returns the list of size reservations.
    *
    * @generated from rpc metalstack.api.v2.SizeReservationService.List
    */

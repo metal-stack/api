@@ -8,7 +8,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_infra_v2_component: GenFile;
 /**
- * ComponentServicePingRequest is sent from a microservice to report its state regularly
+ * ComponentServicePingRequest is the request payload for pinging a microservice.
  *
  * @generated from message metalstack.infra.v2.ComponentServicePingRequest
  */
@@ -20,21 +20,19 @@ export type ComponentServicePingRequest = Message<"metalstack.infra.v2.Component
      */
     type: ComponentType;
     /**
-     * Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
-     * micro_service and identifier guarantee uniqueness.
+     * Identifier is a unique identifier of this service, for example if two instances are running, this might be the pod ID
      *
      * @generated from field: string identifier = 2;
      */
     identifier: string;
     /**
-     * StartedAt is the timestamp this service was started.
+     * StartedAt is the timestamp this service was started
      *
      * @generated from field: google.protobuf.Timestamp started_at = 3;
      */
     startedAt?: Timestamp;
     /**
-     * Interval at which the ping is scheduled, must be between 5 seconds and 1 hour.
-     * Also gets validated in the same way in go/client/ping.go.
+     * Interval at which the ping is scheduled, must be between 5 seconds and 1 hour
      *
      * @generated from field: google.protobuf.Duration interval = 4;
      */
@@ -52,7 +50,7 @@ export type ComponentServicePingRequest = Message<"metalstack.infra.v2.Component
  */
 export declare const ComponentServicePingRequestSchema: GenMessage<ComponentServicePingRequest>;
 /**
- * ComponentServicePingResponse is the response to a ping request
+ * ComponentServicePingResponse is the response payload for pinging a microservice.
  *
  * @generated from message metalstack.infra.v2.ComponentServicePingResponse
  */
@@ -63,14 +61,13 @@ export type ComponentServicePingResponse = Message<"metalstack.infra.v2.Componen
  */
 export declare const ComponentServicePingResponseSchema: GenMessage<ComponentServicePingResponse>;
 /**
- * ComponentService serves component, e.g. microservices related functions.
+ * ComponentService provides microservice component management operations.
  *
  * @generated from service metalstack.infra.v2.ComponentService
  */
 export declare const ComponentService: GenService<{
     /**
-     * Ping must be called from every connected microservice in a recurring manner
-     * to get visibility of all registered microservices.
+     * Returns the ping response to register or report the microservice state.
      *
      * @generated from rpc metalstack.infra.v2.ComponentService.Ping
      */

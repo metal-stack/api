@@ -522,7 +522,7 @@ var File_metalstack_api_v2_partition_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xaa\x03\n" +
+	"!metalstack/api/v2/partition.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xb8\x03\n" +
 	"\tPartition\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12-\n" +
@@ -532,8 +532,8 @@ const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"dnsServers\x12G\n" +
 	"\vntp_servers\x18\x06 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
 	"R\n" +
-	"ntpServers\x124\n" +
-	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\"|\n" +
+	"ntpServers\x12B\n" +
+	"\x16mgmt_service_addresses\x18\a \x03(\tB\f\xbaH\t\x92\x01\x06Ȥ\xb3\xb1\x02\x01R\x14mgmtServiceAddresses\"|\n" +
 	"\x0ePartitionQuery\x12 \n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x00R\x02id\x88\x01\x01\x126\n" +
 	"\x06labels\x18\x02 \x01(\v2\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01B\x05\n" +

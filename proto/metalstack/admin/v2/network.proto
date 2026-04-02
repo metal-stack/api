@@ -7,30 +7,30 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/network.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// NetworkService serves network address related functions
+// NetworkService provides network management operations.
 service NetworkService {
-  // Get a network
+  // Returns the network with the specified ID.
   rpc Get(NetworkServiceGetRequest) returns (NetworkServiceGetResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Create a network
+  // Creates a new network.
   rpc Create(NetworkServiceCreateRequest) returns (NetworkServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Update a network
+  // Updates a network.
   rpc Update(NetworkServiceUpdateRequest) returns (NetworkServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Delete a network
+  // Deletes a network.
   rpc Delete(NetworkServiceDeleteRequest) returns (NetworkServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // List all networks
+  // Returns the list of all networks.
   rpc List(NetworkServiceListRequest) returns (NetworkServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
@@ -38,19 +38,19 @@ service NetworkService {
   }
 }
 
-// NetworkServiceGetRequest
+// NetworkServiceGetRequest is the request payload for getting a network.
 message NetworkServiceGetRequest {
   // ID of the network to get
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// NetworkServiceGetResponse
+// NetworkServiceGetResponse is the response payload for getting a network.
 message NetworkServiceGetResponse {
-  // Network which was requested to get
+  // Network contains the requested network
   metalstack.api.v2.Network network = 1;
 }
 
-// NetworkServiceCreateRequest
+// NetworkServiceCreateRequest is the request payload for creating a network.
 message NetworkServiceCreateRequest {
   // Id of this network
   optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -76,7 +76,7 @@ message NetworkServiceCreateRequest {
   metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
   // NATType of this network
   optional metalstack.api.v2.NATType nat_type = 12 [(buf.validate.field).enum.defined_only = true];
-  // VRF of this network has this VNI.
+  // VRF of this network has this VNI
   optional uint32 vrf = 13;
   // Parent Network points to the id of the parent network if any
   optional string parent_network = 14 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -88,7 +88,7 @@ message NetworkServiceCreateRequest {
   optional metalstack.api.v2.NetworkAddressFamily address_family = 17 [(buf.validate.field).enum.defined_only = true];
 }
 
-// NetworkServiceUpdateRequest is the request payload for a network update request
+// NetworkServiceUpdateRequest is the request payload for updating a network.
 message NetworkServiceUpdateRequest {
   // Id of this network
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -104,7 +104,7 @@ message NetworkServiceUpdateRequest {
   repeated string prefixes = 6 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Destination Prefixes in this network
   repeated string destination_prefixes = 7 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
-  // Default Child Prefix length defines the bit length of a child network created per addressfamily, of not specified during the allocate request
+  // Default Child Prefix length defines the bit length of a child network created per addressfamily, if not specified during the allocate request
   optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 8;
   // Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
   optional metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 9;
@@ -113,42 +113,42 @@ message NetworkServiceUpdateRequest {
   // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
   repeated string additional_announcable_cidrs = 11 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
 
-  // Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact.
+  // Force update, prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane.
   bool force = 12;
 }
 
-// NetworkServiceDeleteRequest is the request payload for a network delete request
+// NetworkServiceDeleteRequest is the request payload for deleting a network.
 message NetworkServiceDeleteRequest {
   // ID of the network to get
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// NetworkServiceListRequest
+// NetworkServiceListRequest is the request payload for listing networks.
 message NetworkServiceListRequest {
-  // Query which specifies which networks to return
+  // Query specifies which networks to return
   metalstack.api.v2.NetworkQuery query = 2;
 }
 
-// NetworkServiceCreateResponse is the response payload for a network create request
+// NetworkServiceCreateResponse is the response payload for creating a network.
 message NetworkServiceCreateResponse {
-  // Network the network
+  // Network contains the created network
   metalstack.api.v2.Network network = 1;
 }
 
-// NetworkServiceUpdateResponse is the response payload for a network update request
+// NetworkServiceUpdateResponse is the response payload for updating a network.
 message NetworkServiceUpdateResponse {
-  // Network the network
+  // Network contains the updated network
   metalstack.api.v2.Network network = 1;
 }
 
-// NetworkServiceCapacityResponse is the response payload for a network delete request
+// NetworkServiceDeleteResponse is the response payload for deleting a network.
 message NetworkServiceDeleteResponse {
-  // Network the network
+  // Network contains the deleted network
   metalstack.api.v2.Network network = 1;
 }
 
-// NetworkServiceListResponse
+// NetworkServiceListResponse is the response payload for listing networks.
 message NetworkServiceListResponse {
-  // Networks are the requested networks
+  // Networks contains the list of networks
   repeated metalstack.api.v2.Network networks = 1;
 }

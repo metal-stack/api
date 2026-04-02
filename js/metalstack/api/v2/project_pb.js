@@ -156,7 +156,7 @@ export const ProjectServiceInviteDeleteRequestSchema = /*@__PURE__*/ messageDesc
  */
 export const ProjectServiceInviteDeleteResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_project, 28);
 /**
- * ProjectService serves project related functions
+ * ProjectService provides project management operations.
  *
  * @generated from service metalstack.api.v2.ProjectService
  */

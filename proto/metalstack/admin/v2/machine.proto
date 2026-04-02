@@ -7,35 +7,35 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/machine.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// MachineService serves machine related functions
+// MachineService provides machine lifecycle management operations.
 service MachineService {
-  // Get a machine
+  // Returns the machine with the specified UUID.
   rpc Get(MachineServiceGetRequest) returns (MachineServiceGetResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // List all machines
+  // Returns the list of all machines.
   rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // BMCCommand send a command to the bmc of a machine
+  // BMCCommand sends a command to the BMC of a machine.
   rpc BMCCommand(MachineServiceBMCCommandRequest) returns (MachineServiceBMCCommandResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
   }
-  // GetBMC returns the BMC details of a machine
+  // Returns the BMC details of a machine.
   rpc GetBMC(MachineServiceGetBMCRequest) returns (MachineServiceGetBMCResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
-  // ListBMC returns the BMC details of many machines
+  // ListBMC returns the BMC details of many machines.
   rpc ListBMC(MachineServiceListBMCRequest) returns (MachineServiceListBMCResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
-  // ConsolePassword returns the password to access the serial console of the machine
+  // GetConsolePassword returns the password to access the serial console of the machine.
   rpc ConsolePassword(MachineServiceConsolePasswordRequest) returns (MachineServiceConsolePasswordResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
@@ -112,11 +112,11 @@ message MachineServiceListBMCResponse {
   }];
 }
 
-// MachineServiceConsolePasswordRequest is the request to get the console password
+// MachineServiceConsolePasswordRequest is the request payload for getting the console password.
 message MachineServiceConsolePasswordRequest {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Reason must be provided why access to the console is requested.
+  // Reason must be provided why access to the console is requested
   // Reason is only forwarded to an audit sink
   string reason = 2 [
     (buf.validate.field).string.min_len = 10,
@@ -124,7 +124,7 @@ message MachineServiceConsolePasswordRequest {
   ];
 }
 
-// MachineServiceConsolePasswordResponse is the response to the console password request
+// MachineServiceConsolePasswordResponse is the response payload for getting the console password.
 message MachineServiceConsolePasswordResponse {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];

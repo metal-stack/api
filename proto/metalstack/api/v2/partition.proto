@@ -6,14 +6,14 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// PartitionService serves partition address related functions
+// PartitionService provides partition management operations.
 service PartitionService {
-  // Get a partition
+  // Returns the partition with the specified ID.
   rpc Get(PartitionServiceGetRequest) returns (PartitionServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // List all partitions
+  // Returns the list of all partitions.
   rpc List(PartitionServiceListRequest) returns (PartitionServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
@@ -36,7 +36,7 @@ message Partition {
   repeated NTPServer ntp_servers = 6 [(buf.validate.field).repeated.max_items = 10];
   // ManagementServiceAddresses defines where the management is reachable
   // should be in the form <ip|host>:<port>
-  repeated string mgmt_service_addresses = 7;
+  repeated string mgmt_service_addresses = 7 [(buf.validate.field).repeated.(metalstack.api.v2.are_host_and_port) = true];
 }
 
 // PartitionQuery is used to search partitions

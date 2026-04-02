@@ -16,7 +16,7 @@ export const file_metalstack_api_v2_version: GenFile = /*@__PURE__*/
   fileDesc("Ch9tZXRhbHN0YWNrL2FwaS92Mi92ZXJzaW9uLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiKGAQoHVmVyc2lvbhIcCgd2ZXJzaW9uGAEgASgJQgu6SAhyBsizrrECARIdCghyZXZpc2lvbhgCIAEoCUILukgIcgbIs66xAgESHQoIZ2l0X3NoYTEYAyABKAlCC7pICHIGyLOusQIBEh8KCmJ1aWxkX2RhdGUYBCABKAlCC7pICHIGyLOusQIBIhoKGFZlcnNpb25TZXJ2aWNlR2V0UmVxdWVzdCJIChlWZXJzaW9uU2VydmljZUdldFJlc3BvbnNlEisKB3ZlcnNpb24YASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5WZXJzaW9uMnwKDlZlcnNpb25TZXJ2aWNlEmoKA0dldBIrLm1ldGFsc3RhY2suYXBpLnYyLlZlcnNpb25TZXJ2aWNlR2V0UmVxdWVzdBosLm1ldGFsc3RhY2suYXBpLnYyLlZlcnNpb25TZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGAHg8xgCQsIBChVjb20ubWV0YWxzdGFjay5hcGkudjJCDFZlcnNpb25Qcm90b1ABWjVnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FwaS92MjthcGl2MqICA01BWKoCEU1ldGFsc3RhY2suQXBpLlYyygIRTWV0YWxzdGFja1xBcGlcVjLiAh1NZXRhbHN0YWNrXEFwaVxWMlxHUEJNZXRhZGF0YeoCE01ldGFsc3RhY2s6OkFwaTo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * Version of the application
+ * Version represents the version of the application.
  *
  * @generated from message metalstack.api.v2.Version
  */
@@ -58,7 +58,7 @@ export const VersionSchema: GenMessage<Version> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_version, 0);
 
 /**
- * VersionServiceGetRequest is the request payload to get the version
+ * VersionServiceGetRequest is the request payload for getting the version.
  *
  * @generated from message metalstack.api.v2.VersionServiceGetRequest
  */
@@ -73,13 +73,13 @@ export const VersionServiceGetRequestSchema: GenMessage<VersionServiceGetRequest
   messageDesc(file_metalstack_api_v2_version, 1);
 
 /**
- * VersionServiceGetResponse is the response payload with the version
+ * VersionServiceGetResponse is the response payload for getting the version.
  *
  * @generated from message metalstack.api.v2.VersionServiceGetResponse
  */
 export type VersionServiceGetResponse = Message<"metalstack.api.v2.VersionServiceGetResponse"> & {
   /**
-   * Version of the application
+   * Version contains the version of the application
    *
    * @generated from field: metalstack.api.v2.Version version = 1;
    */
@@ -94,13 +94,13 @@ export const VersionServiceGetResponseSchema: GenMessage<VersionServiceGetRespon
   messageDesc(file_metalstack_api_v2_version, 2);
 
 /**
- * VersionService serves version related functions
+ * VersionService provides version information operations.
  *
  * @generated from service metalstack.api.v2.VersionService
  */
 export const VersionService: GenService<{
   /**
-   * Get the version
+   * Returns the version of the application.
    *
    * @generated from rpc metalstack.api.v2.VersionService.Get
    */

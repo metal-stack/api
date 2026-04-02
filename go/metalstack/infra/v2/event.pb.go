@@ -28,29 +28,29 @@ const (
 type ProvisioningEventType int32
 
 const (
-	// PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified.
+	// PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_UNSPECIFIED ProvisioningEventType = 0
-	// PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago.
+	// PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_ALIVE ProvisioningEventType = 1
-	// PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine's lifecycle.
+	// PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine's lifecycle
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_CRASHED ProvisioningEventType = 2
-	// PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE.
+	// PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_PXE_BOOTING ProvisioningEventType = 3
-	// PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot.
+	// PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT ProvisioningEventType = 4
-	// PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started.
+	// PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_PREPARING ProvisioningEventType = 5
-	// PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API.
+	// PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_REGISTERING ProvisioningEventType = 6
-	// PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation.
+	// PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_WAITING ProvisioningEventType = 7
-	// PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed.
+	// PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_INSTALLING ProvisioningEventType = 8
-	// PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS.
+	// PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL ProvisioningEventType = 9
-	// PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness.
+	// PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_PHONED_HOME ProvisioningEventType = 10
-	// PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines.
+	// PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines
 	ProvisioningEventType_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM ProvisioningEventType = 11
 )
 
@@ -113,10 +113,10 @@ func (ProvisioningEventType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_event_proto_rawDescGZIP(), []int{0}
 }
 
-// EventServiceSendRequest.
+// EventServiceSendRequest is the request payload for sending provisioning events.
 type EventServiceSendRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Events grouped by machine IDs.
+	// Events grouped by machine IDs
 	Events        map[string]*MachineProvisioningEvent `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -159,12 +159,12 @@ func (x *EventServiceSendRequest) GetEvents() map[string]*MachineProvisioningEve
 	return nil
 }
 
-// EventServiceSendResponse.
+// EventServiceSendResponse is the response payload for sending provisioning events.
 type EventServiceSendResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Events counts the number of events successfully stored in the database.
+	// Events counts the number of events successfully stored in the database
 	Events uint64 `protobuf:"varint,1,opt,name=events,proto3" json:"events,omitempty"`
-	// Failed contains IDs of all machines whose events could not be stored in the database.
+	// Failed contains IDs of all machines whose events could not be stored in the database
 	Failed        []string `protobuf:"bytes,2,rep,name=failed,proto3" json:"failed,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -217,11 +217,11 @@ func (x *EventServiceSendResponse) GetFailed() []string {
 // MachineProvisioningEvent contains details about an event.
 type MachineProvisioningEvent struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Time the event occurred at.
+	// Time the event occurred at
 	Time *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
-	// Event that occurred.
+	// Event that occurred
 	Event ProvisioningEventType `protobuf:"varint,2,opt,name=event,proto3,enum=metalstack.infra.v2.ProvisioningEventType" json:"event,omitempty"`
-	// Message describing the event in more detail.
+	// Message describes the event in more detail
 	Message       string `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

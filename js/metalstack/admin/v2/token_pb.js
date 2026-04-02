@@ -40,7 +40,7 @@ export const TokenServiceCreateRequestSchema = /*@__PURE__*/ messageDesc(file_me
  */
 export const TokenServiceCreateResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_token, 5);
 /**
- * TokenService serves token related functions
+ * TokenService provides token management operations.
  *
  * @generated from service metalstack.admin.v2.TokenService
  */

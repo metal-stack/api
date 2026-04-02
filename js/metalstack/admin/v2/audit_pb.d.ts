@@ -6,7 +6,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_audit: GenFile;
 /**
- * AuditServiceListRequest is the request payload to list audits
+ * AuditServiceListRequest is the request payload for listing audit traces.
  *
  * @generated from message metalstack.admin.v2.AuditServiceListRequest
  */
@@ -24,13 +24,13 @@ export type AuditServiceListRequest = Message<"metalstack.admin.v2.AuditServiceL
  */
 export declare const AuditServiceListRequestSchema: GenMessage<AuditServiceListRequest>;
 /**
- * AuditServiceListResponse is the response payload of a audit list request
+ * AuditServiceListResponse is the response payload for listing audit traces.
  *
  * @generated from message metalstack.admin.v2.AuditServiceListResponse
  */
 export type AuditServiceListResponse = Message<"metalstack.admin.v2.AuditServiceListResponse"> & {
     /**
-     * Traces is a list of audit traces
+     * Traces contains the list of audit traces
      *
      * @generated from field: repeated metalstack.api.v2.AuditTrace traces = 1;
      */
@@ -42,7 +42,7 @@ export type AuditServiceListResponse = Message<"metalstack.admin.v2.AuditService
  */
 export declare const AuditServiceListResponseSchema: GenMessage<AuditServiceListResponse>;
 /**
- * AuditServiceGetRequest is the request payload of a audit get request
+ * AuditServiceGetRequest is the request payload for getting an audit trace.
  *
  * @generated from message metalstack.admin.v2.AuditServiceGetRequest
  */
@@ -66,7 +66,7 @@ export type AuditServiceGetRequest = Message<"metalstack.admin.v2.AuditServiceGe
  */
 export declare const AuditServiceGetRequestSchema: GenMessage<AuditServiceGetRequest>;
 /**
- * AuditServiceGetResponse is the response payload of a audit get request
+ * AuditServiceGetResponse is the response payload for getting an audit trace.
  *
  * @generated from message metalstack.admin.v2.AuditServiceGetResponse
  */
@@ -84,13 +84,13 @@ export type AuditServiceGetResponse = Message<"metalstack.admin.v2.AuditServiceG
  */
 export declare const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse>;
 /**
- * AuditService serves audit related functions
+ * AuditService provides audit logging operations.
  *
  * @generated from service metalstack.admin.v2.AuditService
  */
 export declare const AuditService: GenService<{
     /**
-     * Get an audit trace
+     * Returns the audit trace with the specified UUID.
      *
      * @generated from rpc metalstack.admin.v2.AuditService.Get
      */
@@ -100,7 +100,7 @@ export declare const AuditService: GenService<{
         output: typeof AuditServiceGetResponseSchema;
     };
     /**
-     * List all audit traces
+     * Returns the list of all audit traces.
      *
      * @generated from rpc metalstack.admin.v2.AuditService.List
      */

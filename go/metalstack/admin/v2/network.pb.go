@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// NetworkServiceGetRequest
+// NetworkServiceGetRequest is the request payload for getting a network.
 type NetworkServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the network to get
@@ -69,10 +69,10 @@ func (x *NetworkServiceGetRequest) GetId() string {
 	return ""
 }
 
-// NetworkServiceGetResponse
+// NetworkServiceGetResponse is the response payload for getting a network.
 type NetworkServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Network which was requested to get
+	// Network contains the requested network
 	Network       *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,7 +115,7 @@ func (x *NetworkServiceGetResponse) GetNetwork() *v2.Network {
 	return nil
 }
 
-// NetworkServiceCreateRequest
+// NetworkServiceCreateRequest is the request payload for creating a network.
 type NetworkServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this network
@@ -142,7 +142,7 @@ type NetworkServiceCreateRequest struct {
 	MinChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,11,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3" json:"min_child_prefix_length,omitempty"`
 	// NATType of this network
 	NatType *v2.NATType `protobuf:"varint,12,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
-	// VRF of this network has this VNI.
+	// VRF of this network has this VNI
 	Vrf *uint32 `protobuf:"varint,13,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// Parent Network points to the id of the parent network if any
 	ParentNetwork *string `protobuf:"bytes,14,opt,name=parent_network,json=parentNetwork,proto3,oneof" json:"parent_network,omitempty"`
@@ -305,7 +305,7 @@ func (x *NetworkServiceCreateRequest) GetAddressFamily() v2.NetworkAddressFamily
 	return v2.NetworkAddressFamily(0)
 }
 
-// NetworkServiceUpdateRequest is the request payload for a network update request
+// NetworkServiceUpdateRequest is the request payload for updating a network.
 type NetworkServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this network
@@ -322,7 +322,7 @@ type NetworkServiceUpdateRequest struct {
 	Prefixes []string `protobuf:"bytes,6,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
 	// Destination Prefixes in this network
 	DestinationPrefixes []string `protobuf:"bytes,7,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
-	// Default Child Prefix length defines the bit length of a child network created per addressfamily, of not specified during the allocate request
+	// Default Child Prefix length defines the bit length of a child network created per addressfamily, if not specified during the allocate request
 	DefaultChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,8,opt,name=default_child_prefix_length,json=defaultChildPrefixLength,proto3,oneof" json:"default_child_prefix_length,omitempty"`
 	// Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
 	MinChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,9,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3,oneof" json:"min_child_prefix_length,omitempty"`
@@ -330,7 +330,7 @@ type NetworkServiceUpdateRequest struct {
 	NatType *v2.NATType `protobuf:"varint,10,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
 	// AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
 	AdditionalAnnouncableCidrs []string `protobuf:"bytes,11,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
-	// Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact.
+	// Force update, prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane.
 	Force         bool `protobuf:"varint,12,opt,name=force,proto3" json:"force,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -450,7 +450,7 @@ func (x *NetworkServiceUpdateRequest) GetForce() bool {
 	return false
 }
 
-// NetworkServiceDeleteRequest is the request payload for a network delete request
+// NetworkServiceDeleteRequest is the request payload for deleting a network.
 type NetworkServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the network to get
@@ -496,10 +496,10 @@ func (x *NetworkServiceDeleteRequest) GetId() string {
 	return ""
 }
 
-// NetworkServiceListRequest
+// NetworkServiceListRequest is the request payload for listing networks.
 type NetworkServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query which specifies which networks to return
+	// Query specifies which networks to return
 	Query         *v2.NetworkQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -542,10 +542,10 @@ func (x *NetworkServiceListRequest) GetQuery() *v2.NetworkQuery {
 	return nil
 }
 
-// NetworkServiceCreateResponse is the response payload for a network create request
+// NetworkServiceCreateResponse is the response payload for creating a network.
 type NetworkServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Network the network
+	// Network contains the created network
 	Network       *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -588,10 +588,10 @@ func (x *NetworkServiceCreateResponse) GetNetwork() *v2.Network {
 	return nil
 }
 
-// NetworkServiceUpdateResponse is the response payload for a network update request
+// NetworkServiceUpdateResponse is the response payload for updating a network.
 type NetworkServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Network the network
+	// Network contains the updated network
 	Network       *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -634,10 +634,10 @@ func (x *NetworkServiceUpdateResponse) GetNetwork() *v2.Network {
 	return nil
 }
 
-// NetworkServiceCapacityResponse is the response payload for a network delete request
+// NetworkServiceDeleteResponse is the response payload for deleting a network.
 type NetworkServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Network the network
+	// Network contains the deleted network
 	Network       *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -680,10 +680,10 @@ func (x *NetworkServiceDeleteResponse) GetNetwork() *v2.Network {
 	return nil
 }
 
-// NetworkServiceListResponse
+// NetworkServiceListResponse is the response payload for listing networks.
 type NetworkServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Networks are the requested networks
+	// Networks contains the list of networks
 	Networks      []*v2.Network `protobuf:"bytes,1,rep,name=networks,proto3" json:"networks,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

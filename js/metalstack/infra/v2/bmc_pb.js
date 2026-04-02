@@ -41,7 +41,7 @@ export const BMCCommandDoneRequestSchema = /*@__PURE__*/ messageDesc(file_metals
  */
 export const BMCCommandDoneResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_infra_v2_bmc, 5);
 /**
- * BMCService serves bmc related functions
+ * BMCService provides BMC management operations.
  *
  * @generated from service metalstack.infra.v2.BMCService
  */

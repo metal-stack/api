@@ -22,10 +22,10 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// User is a end user of the platform
+// User represents an end user of the platform.
 type User struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login the login at the provider
+	// Login is the login at the provider
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	// Name of the user
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
@@ -122,7 +122,7 @@ func (x *User) GetDefaultTenant() *Tenant {
 	return nil
 }
 
-// UserServiceGetRequest is the request to get the user
+// UserServiceGetRequest is the request payload for getting the user.
 type UserServiceGetRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -159,10 +159,10 @@ func (*UserServiceGetRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_user_proto_rawDescGZIP(), []int{1}
 }
 
-// UserServiceGetResponse the response when userservice get request was called
+// UserServiceGetResponse is the response payload for getting the user.
 type UserServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// User is the user
+	// User contains the authenticated user
 	User          *User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

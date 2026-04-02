@@ -6,40 +6,40 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// NetworkService serves network address related functions for end users, e.g. with project scope
+// NetworkService provides network management operations for end users, for example with project scope.
 service NetworkService {
-  // Get a network
+  // Returns the network with the specified ID.
   rpc Get(NetworkServiceGetRequest) returns (NetworkServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Create a child network from a super network.
+  // Creates a child network from a super network.
   rpc Create(NetworkServiceCreateRequest) returns (NetworkServiceCreateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // Update a network
+  // Updates a network.
   rpc Update(NetworkServiceUpdateRequest) returns (NetworkServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // List all project networks
+  // Returns the list of all project networks.
   rpc List(NetworkServiceListRequest) returns (NetworkServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // ListBaseNetworks all base networks that can be used for either child network or ip allocation
+  // ListBaseNetworks returns all base networks that can be used for either child network or IP allocation.
   rpc ListBaseNetworks(NetworkServiceListBaseNetworksRequest) returns (NetworkServiceListBaseNetworksResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Delete a network
+  // Deletes a network.
   rpc Delete(NetworkServiceDeleteRequest) returns (NetworkServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;

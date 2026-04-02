@@ -44,9 +44,9 @@ const (
 // SizeReservationServiceClient is a client for the metalstack.api.v2.SizeReservationService
 // service.
 type SizeReservationServiceClient interface {
-	// Get a size reservation
+	// Returns the size reservation with the specified ID.
 	Get(context.Context, *v2.SizeReservationServiceGetRequest) (*v2.SizeReservationServiceGetResponse, error)
-	// List size reservations
+	// Returns the list of size reservations.
 	List(context.Context, *v2.SizeReservationServiceListRequest) (*v2.SizeReservationServiceListResponse, error)
 }
 
@@ -103,9 +103,9 @@ func (c *sizeReservationServiceClient) List(ctx context.Context, req *v2.SizeRes
 // SizeReservationServiceHandler is an implementation of the
 // metalstack.api.v2.SizeReservationService service.
 type SizeReservationServiceHandler interface {
-	// Get a size reservation
+	// Returns the size reservation with the specified ID.
 	Get(context.Context, *v2.SizeReservationServiceGetRequest) (*v2.SizeReservationServiceGetResponse, error)
-	// List size reservations
+	// Returns the list of size reservations.
 	List(context.Context, *v2.SizeReservationServiceListRequest) (*v2.SizeReservationServiceListResponse, error)
 }
 

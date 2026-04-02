@@ -46,11 +46,11 @@ const (
 
 // FilesystemServiceClient is a client for the metalstack.admin.v2.FilesystemService service.
 type FilesystemServiceClient interface {
-	// Create a filesystem
+	// Creates a new filesystem.
 	Create(context.Context, *v2.FilesystemServiceCreateRequest) (*v2.FilesystemServiceCreateResponse, error)
-	// Update a filesystem
+	// Updates a filesystem.
 	Update(context.Context, *v2.FilesystemServiceUpdateRequest) (*v2.FilesystemServiceUpdateResponse, error)
-	// Delete a filesystem
+	// Deletes a filesystem.
 	Delete(context.Context, *v2.FilesystemServiceDeleteRequest) (*v2.FilesystemServiceDeleteResponse, error)
 }
 
@@ -123,11 +123,11 @@ func (c *filesystemServiceClient) Delete(ctx context.Context, req *v2.Filesystem
 // FilesystemServiceHandler is an implementation of the metalstack.admin.v2.FilesystemService
 // service.
 type FilesystemServiceHandler interface {
-	// Create a filesystem
+	// Creates a new filesystem.
 	Create(context.Context, *v2.FilesystemServiceCreateRequest) (*v2.FilesystemServiceCreateResponse, error)
-	// Update a filesystem
+	// Updates a filesystem.
 	Update(context.Context, *v2.FilesystemServiceUpdateRequest) (*v2.FilesystemServiceUpdateResponse, error)
-	// Delete a filesystem
+	// Deletes a filesystem.
 	Delete(context.Context, *v2.FilesystemServiceDeleteRequest) (*v2.FilesystemServiceDeleteResponse, error)
 }
 

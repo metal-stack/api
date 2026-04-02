@@ -23,12 +23,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// TenantServiceCreateRequest is the request payload of the tenant create request
+// TenantServiceCreateRequest is the request payload for creating a tenant.
 type TenantServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of this tenant
+	// Name of the tenant
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this tenant
+	// Description of the tenant
 	Description *string `protobuf:"bytes,2,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Email of the tenant, if not set will be inherited from the creator
 	Email *string `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
@@ -105,10 +105,10 @@ func (x *TenantServiceCreateRequest) GetLabels() *v2.Labels {
 	return nil
 }
 
-// TenantServiceCreateResponse is the response payload of the tenant create request
+// TenantServiceCreateResponse is the response payload for creating a tenant.
 type TenantServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenant is the tenant
+	// Tenant contains the created tenant
 	Tenant        *v2.Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -151,12 +151,12 @@ func (x *TenantServiceCreateResponse) GetTenant() *v2.Tenant {
 	return nil
 }
 
-// TenantServiceListRequest is the request payload for a tenant list request
+// TenantServiceListRequest is the request payload for listing tenants.
 type TenantServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant to list
+	// Login filters tenants by this login
 	Login *string `protobuf:"bytes,1,opt,name=login,proto3,oneof" json:"login,omitempty"`
-	// Name of the tenant to list
+	// Name filters tenants by this name
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Paging details for the list request
 	Paging        *v2.Paging `protobuf:"bytes,3,opt,name=paging,proto3" json:"paging,omitempty"`
@@ -215,12 +215,12 @@ func (x *TenantServiceListRequest) GetPaging() *v2.Paging {
 	return nil
 }
 
-// TenantServiceListResponse is the response payload for a tenant list request
+// TenantServiceListResponse is the response payload for listing tenants.
 type TenantServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenants are the list of tenants
+	// Tenants contains the list of tenants
 	Tenants []*v2.Tenant `protobuf:"bytes,1,rep,name=tenants,proto3" json:"tenants,omitempty"`
-	// NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
+	// NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request
 	NextPage      *uint64 `protobuf:"varint,2,opt,name=next_page,json=nextPage,proto3,oneof" json:"next_page,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

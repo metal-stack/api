@@ -39,7 +39,7 @@ const (
 
 // IPServiceClient is a client for the metalstack.admin.v2.IPService service.
 type IPServiceClient interface {
-	// List all ips
+	// Returns the list of all IP addresses.
 	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
 }
 
@@ -79,7 +79,7 @@ func (c *iPServiceClient) List(ctx context.Context, req *v2.IPServiceListRequest
 
 // IPServiceHandler is an implementation of the metalstack.admin.v2.IPService service.
 type IPServiceHandler interface {
-	// List all ips
+	// Returns the list of all IP addresses.
 	List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
 }
 

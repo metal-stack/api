@@ -8,43 +8,43 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/image.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// ImageService serves image related functions
+// ImageService provides image management operations.
 service ImageService {
-  // Create a image
+  // Creates a new image.
   rpc Create(ImageServiceCreateRequest) returns (ImageServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Update a image
+  // Updates an image.
   rpc Update(ImageServiceUpdateRequest) returns (ImageServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Delete a image
+  // Deletes an image.
   rpc Delete(ImageServiceDeleteRequest) returns (ImageServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Usage of images
+  // Returns the usage of images.
   rpc Usage(ImageServiceUsageRequest) returns (ImageServiceUsageResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
   }
 }
 
-// ImageServiceCreateRequest
+// ImageServiceCreateRequest is the request payload for creating an image.
 message ImageServiceCreateRequest {
-  // Image is the image
+  // Image is the image to create
   metalstack.api.v2.Image image = 1;
 }
 
-// ImageServiceCreateResponse
+// ImageServiceCreateResponse is the response payload for creating an image.
 message ImageServiceCreateResponse {
-  // Image is the image
+  // Image contains the created image
   metalstack.api.v2.Image image = 1;
 }
 
-// ImageServiceUpdateRequest
+// ImageServiceUpdateRequest is the request payload for updating an image.
 message ImageServiceUpdateRequest {
   // Id of this image
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -52,9 +52,9 @@ message ImageServiceUpdateRequest {
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // URL where this image is located
   optional string url = 3 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Name of this imageLayout
+  // Name of this image
   optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this imageLayout
+  // Description of this image
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Features of this image
   repeated metalstack.api.v2.ImageFeature features = 6 [(buf.validate.field).repeated = {
@@ -70,32 +70,32 @@ message ImageServiceUpdateRequest {
   google.protobuf.Timestamp expires_at = 8;
 }
 
-// ImageServiceUpdateResponse
+// ImageServiceUpdateResponse is the response payload for updating an image.
 message ImageServiceUpdateResponse {
-  // Image is the image
+  // Image contains the updated image
   metalstack.api.v2.Image image = 1;
 }
 
-// ImageServiceDeleteRequest
+// ImageServiceDeleteRequest is the request payload for deleting an image.
 message ImageServiceDeleteRequest {
   // ID of the image to delete
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// message ImageServiceDeleteResponse {
+// ImageServiceDeleteResponse is the response payload for deleting an image.
 message ImageServiceDeleteResponse {
-  // ImageLayout the imagelayout
+  // Image contains the deleted image
   metalstack.api.v2.Image image = 1;
 }
 
-// ImageServiceUsageRequest
+// ImageServiceUsageRequest is the request payload for getting image usage.
 message ImageServiceUsageRequest {
   // Query for which images the usage should be reported
   metalstack.api.v2.ImageQuery query = 1;
 }
 
-// ImageServiceUsageResponse
+// ImageServiceUsageResponse is the response payload for getting image usage.
 message ImageServiceUsageResponse {
-  // Images with usage
+  // Images contains usage information
   repeated metalstack.api.v2.ImageUsage image_usage = 1;
 }

@@ -12,43 +12,43 @@ import "metalstack/api/v2/partition.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/size.proto";
 
-// MachineService serves machine related functions
+// MachineService provides machine lifecycle management operations.
 service MachineService {
-  // Get a machine
+  // Returns the machine with the specified UUID.
   rpc Get(MachineServiceGetRequest) returns (MachineServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Create a machine
+  // Creates a new machine.
   rpc Create(MachineServiceCreateRequest) returns (MachineServiceCreateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // Update a machine
+  // Updates a machine.
   rpc Update(MachineServiceUpdateRequest) returns (MachineServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // List all machines
+  // Returns the list of all machines.
   rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Delete a machine
+  // Deletes a machine.
   rpc Delete(MachineServiceDeleteRequest) returns (MachineServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // BMCCommand send a command to the bmc of a machine
+  // BMCCommand sends a command to the BMC of a machine.
   rpc BMCCommand(MachineServiceBMCCommandRequest) returns (MachineServiceBMCCommandResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // GetBMC returns the BMC details of a machine
+  // Returns the BMC details of a machine.
   rpc GetBMC(MachineServiceGetBMCRequest) returns (MachineServiceGetBMCResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;

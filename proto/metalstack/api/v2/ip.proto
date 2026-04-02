@@ -6,33 +6,33 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// IPService serves ip address related functions
+// IPService provides IP address management operations.
 service IPService {
-  // Get a ip
+  // Returns the IP address with the specified IP.
   rpc Get(IPServiceGetRequest) returns (IPServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Create a ip
+  // Creates a new IP address.
   rpc Create(IPServiceCreateRequest) returns (IPServiceCreateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // Update a ip
+  // Updates an IP address.
   rpc Update(IPServiceUpdateRequest) returns (IPServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
   }
-  // List all ips
+  // Returns the list of all IP addresses.
   rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Delete a ip
+  // Deletes an IP address.
   rpc Delete(IPServiceDeleteRequest) returns (IPServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;

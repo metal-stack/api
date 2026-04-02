@@ -19,7 +19,7 @@ export const file_metalstack_admin_v2_network: GenFile = /*@__PURE__*/
   fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL25ldHdvcmsucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMwoYTmV0d29ya1NlcnZpY2VHZXRSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECASJIChlOZXR3b3JrU2VydmljZUdldFJlc3BvbnNlEisKB25ldHdvcmsYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrItAHChtOZXR3b3JrU2VydmljZUNyZWF0ZVJlcXVlc3QSHAoCaWQYASABKAlCC7pICHIGwLOusQIBSACIAQESHgoEbmFtZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIlCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgFIAogBARIjCglwYXJ0aXRpb24YBCABKAlCC7pICHIG0LOusQIBSAOIAQESHgoHcHJvamVjdBgFIAEoCUIIukgFcgOwAQFIBIgBARI2CgR0eXBlGAYgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1R5cGVCCLpIBYIBAhABEi4KBmxhYmVscxgHIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gFiAEBEh4KCHByZWZpeGVzGAggAygJQgy6SAmSAQa4pLOxAgESKgoUZGVzdGluYXRpb25fcHJlZml4ZXMYCSADKAlCDLpICZIBBriks7ECARJJChtkZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGgYCiABKAsyJC5tZXRhbHN0YWNrLmFwaS52Mi5DaGlsZFByZWZpeExlbmd0aBJFChdtaW5fY2hpbGRfcHJlZml4X2xlbmd0aBgLIAEoCzIkLm1ldGFsc3RhY2suYXBpLnYyLkNoaWxkUHJlZml4TGVuZ3RoEjsKCG5hdF90eXBlGAwgASgOMhoubWV0YWxzdGFjay5hcGkudjIuTkFUVHlwZUIIukgFggECEAFIBogBARIQCgN2cmYYDSABKA1IB4gBARIoCg5wYXJlbnRfbmV0d29yaxgOIAEoCUILukgIcgbAs66xAgFICIgBARIyChxhZGRpdGlvbmFsX2Fubm91bmNhYmxlX2NpZHJzGA8gAygJQgy6SAmSAQa4pLOxAgESOQoGbGVuZ3RoGBAgASgLMiQubWV0YWxzdGFjay5hcGkudjIuQ2hpbGRQcmVmaXhMZW5ndGhICYgBARJOCg5hZGRyZXNzX2ZhbWlseRgRIAEoDjInLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtBZGRyZXNzRmFtaWx5Qgi6SAWCAQIQAUgKiAEBQgUKA19pZEIHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb25CDAoKX3BhcnRpdGlvbkIKCghfcHJvamVjdEIJCgdfbGFiZWxzQgsKCV9uYXRfdHlwZUIGCgRfdnJmQhEKD19wYXJlbnRfbmV0d29ya0IJCgdfbGVuZ3RoQhEKD19hZGRyZXNzX2ZhbWlseSLEBQobTmV0d29ya1NlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIeCgRuYW1lGAMgASgJQgu6SAhyBsCzrrECAUgAiAEBEiUKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECAUgBiAEBEjQKBmxhYmVscxgFIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gCiAEBEh4KCHByZWZpeGVzGAYgAygJQgy6SAmSAQa4pLOxAgESKgoUZGVzdGluYXRpb25fcHJlZml4ZXMYByADKAlCDLpICZIBBriks7ECARJOChtkZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGgYCCABKAsyJC5tZXRhbHN0YWNrLmFwaS52Mi5DaGlsZFByZWZpeExlbmd0aEgDiAEBEkoKF21pbl9jaGlsZF9wcmVmaXhfbGVuZ3RoGAkgASgLMiQubWV0YWxzdGFjay5hcGkudjIuQ2hpbGRQcmVmaXhMZW5ndGhIBIgBARI7CghuYXRfdHlwZRgKIAEoDjIaLm1ldGFsc3RhY2suYXBpLnYyLk5BVFR5cGVCCLpIBYIBAhABSAWIAQESMgocYWRkaXRpb25hbF9hbm5vdW5jYWJsZV9jaWRycxgLIAMoCUIMukgJkgEGuKSzsQIBEg0KBWZvcmNlGAwgASgIQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIJCgdfbGFiZWxzQh4KHF9kZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGhCGgoYX21pbl9jaGlsZF9wcmVmaXhfbGVuZ3RoQgsKCV9uYXRfdHlwZSI2ChtOZXR3b3JrU2VydmljZURlbGV0ZVJlcXVlc3QSFwoCaWQYASABKAlCC7pICHIGwLOusQIBIksKGU5ldHdvcmtTZXJ2aWNlTGlzdFJlcXVlc3QSLgoFcXVlcnkYAiABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrUXVlcnkiSwocTmV0d29ya1NlcnZpY2VDcmVhdGVSZXNwb25zZRIrCgduZXR3b3JrGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTmV0d29yayJLChxOZXR3b3JrU2VydmljZVVwZGF0ZVJlc3BvbnNlEisKB25ldHdvcmsYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrIksKHE5ldHdvcmtTZXJ2aWNlRGVsZXRlUmVzcG9uc2USKwoHbmV0d29yaxgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmsiSgoaTmV0d29ya1NlcnZpY2VMaXN0UmVzcG9uc2USLAoIbmV0d29ya3MYASADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrMuUECg5OZXR3b3JrU2VydmljZRJwCgNHZXQSLS5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlR2V0UmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuTmV0d29ya1NlcnZpY2VHZXRSZXNwb25zZSIK0vMYAgEC4PMYAhJ4CgZDcmVhdGUSMC5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlQ3JlYXRlUmVxdWVzdBoxLm1ldGFsc3RhY2suYWRtaW4udjIuTmV0d29ya1NlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEngKBlVwZGF0ZRIwLm1ldGFsc3RhY2suYWRtaW4udjIuTmV0d29ya1NlcnZpY2VVcGRhdGVSZXF1ZXN0GjEubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZVVwZGF0ZVJlc3BvbnNlIgnS8xgBAeDzGAESeAoGRGVsZXRlEjAubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZURlbGV0ZVJlcXVlc3QaMS5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiCdLzGAEB4PMYARJzCgRMaXN0Ei4ubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZUxpc3RSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYAkLQAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCDE5ldHdvcmtQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_network, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * NetworkServiceGetRequest
+ * NetworkServiceGetRequest is the request payload for getting a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceGetRequest
  */
@@ -40,13 +40,13 @@ export const NetworkServiceGetRequestSchema: GenMessage<NetworkServiceGetRequest
   messageDesc(file_metalstack_admin_v2_network, 0);
 
 /**
- * NetworkServiceGetResponse
+ * NetworkServiceGetResponse is the response payload for getting a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceGetResponse
  */
 export type NetworkServiceGetResponse = Message<"metalstack.admin.v2.NetworkServiceGetResponse"> & {
   /**
-   * Network which was requested to get
+   * Network contains the requested network
    *
    * @generated from field: metalstack.api.v2.Network network = 1;
    */
@@ -61,7 +61,7 @@ export const NetworkServiceGetResponseSchema: GenMessage<NetworkServiceGetRespon
   messageDesc(file_metalstack_admin_v2_network, 1);
 
 /**
- * NetworkServiceCreateRequest
+ * NetworkServiceCreateRequest is the request payload for creating a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceCreateRequest
  */
@@ -151,7 +151,7 @@ export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkSe
   natType?: NATType;
 
   /**
-   * VRF of this network has this VNI.
+   * VRF of this network has this VNI
    *
    * @generated from field: optional uint32 vrf = 13;
    */
@@ -194,7 +194,7 @@ export const NetworkServiceCreateRequestSchema: GenMessage<NetworkServiceCreateR
   messageDesc(file_metalstack_admin_v2_network, 2);
 
 /**
- * NetworkServiceUpdateRequest is the request payload for a network update request
+ * NetworkServiceUpdateRequest is the request payload for updating a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceUpdateRequest
  */
@@ -249,7 +249,7 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkSe
   destinationPrefixes: string[];
 
   /**
-   * Default Child Prefix length defines the bit length of a child network created per addressfamily, of not specified during the allocate request
+   * Default Child Prefix length defines the bit length of a child network created per addressfamily, if not specified during the allocate request
    *
    * @generated from field: optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 8;
    */
@@ -277,7 +277,7 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkSe
   additionalAnnouncableCidrs: string[];
 
   /**
-   * Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact.
+   * Force update, prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane.
    *
    * @generated from field: bool force = 12;
    */
@@ -292,7 +292,7 @@ export const NetworkServiceUpdateRequestSchema: GenMessage<NetworkServiceUpdateR
   messageDesc(file_metalstack_admin_v2_network, 3);
 
 /**
- * NetworkServiceDeleteRequest is the request payload for a network delete request
+ * NetworkServiceDeleteRequest is the request payload for deleting a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceDeleteRequest
  */
@@ -313,13 +313,13 @@ export const NetworkServiceDeleteRequestSchema: GenMessage<NetworkServiceDeleteR
   messageDesc(file_metalstack_admin_v2_network, 4);
 
 /**
- * NetworkServiceListRequest
+ * NetworkServiceListRequest is the request payload for listing networks.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceListRequest
  */
 export type NetworkServiceListRequest = Message<"metalstack.admin.v2.NetworkServiceListRequest"> & {
   /**
-   * Query which specifies which networks to return
+   * Query specifies which networks to return
    *
    * @generated from field: metalstack.api.v2.NetworkQuery query = 2;
    */
@@ -334,13 +334,13 @@ export const NetworkServiceListRequestSchema: GenMessage<NetworkServiceListReque
   messageDesc(file_metalstack_admin_v2_network, 5);
 
 /**
- * NetworkServiceCreateResponse is the response payload for a network create request
+ * NetworkServiceCreateResponse is the response payload for creating a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceCreateResponse
  */
 export type NetworkServiceCreateResponse = Message<"metalstack.admin.v2.NetworkServiceCreateResponse"> & {
   /**
-   * Network the network
+   * Network contains the created network
    *
    * @generated from field: metalstack.api.v2.Network network = 1;
    */
@@ -355,13 +355,13 @@ export const NetworkServiceCreateResponseSchema: GenMessage<NetworkServiceCreate
   messageDesc(file_metalstack_admin_v2_network, 6);
 
 /**
- * NetworkServiceUpdateResponse is the response payload for a network update request
+ * NetworkServiceUpdateResponse is the response payload for updating a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceUpdateResponse
  */
 export type NetworkServiceUpdateResponse = Message<"metalstack.admin.v2.NetworkServiceUpdateResponse"> & {
   /**
-   * Network the network
+   * Network contains the updated network
    *
    * @generated from field: metalstack.api.v2.Network network = 1;
    */
@@ -376,13 +376,13 @@ export const NetworkServiceUpdateResponseSchema: GenMessage<NetworkServiceUpdate
   messageDesc(file_metalstack_admin_v2_network, 7);
 
 /**
- * NetworkServiceCapacityResponse is the response payload for a network delete request
+ * NetworkServiceDeleteResponse is the response payload for deleting a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceDeleteResponse
  */
 export type NetworkServiceDeleteResponse = Message<"metalstack.admin.v2.NetworkServiceDeleteResponse"> & {
   /**
-   * Network the network
+   * Network contains the deleted network
    *
    * @generated from field: metalstack.api.v2.Network network = 1;
    */
@@ -397,13 +397,13 @@ export const NetworkServiceDeleteResponseSchema: GenMessage<NetworkServiceDelete
   messageDesc(file_metalstack_admin_v2_network, 8);
 
 /**
- * NetworkServiceListResponse
+ * NetworkServiceListResponse is the response payload for listing networks.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceListResponse
  */
 export type NetworkServiceListResponse = Message<"metalstack.admin.v2.NetworkServiceListResponse"> & {
   /**
-   * Networks are the requested networks
+   * Networks contains the list of networks
    *
    * @generated from field: repeated metalstack.api.v2.Network networks = 1;
    */
@@ -418,13 +418,13 @@ export const NetworkServiceListResponseSchema: GenMessage<NetworkServiceListResp
   messageDesc(file_metalstack_admin_v2_network, 9);
 
 /**
- * NetworkService serves network address related functions
+ * NetworkService provides network management operations.
  *
  * @generated from service metalstack.admin.v2.NetworkService
  */
 export const NetworkService: GenService<{
   /**
-   * Get a network
+   * Returns the network with the specified ID.
    *
    * @generated from rpc metalstack.admin.v2.NetworkService.Get
    */
@@ -434,7 +434,7 @@ export const NetworkService: GenService<{
     output: typeof NetworkServiceGetResponseSchema;
   },
   /**
-   * Create a network
+   * Creates a new network.
    *
    * @generated from rpc metalstack.admin.v2.NetworkService.Create
    */
@@ -444,7 +444,7 @@ export const NetworkService: GenService<{
     output: typeof NetworkServiceCreateResponseSchema;
   },
   /**
-   * Update a network
+   * Updates a network.
    *
    * @generated from rpc metalstack.admin.v2.NetworkService.Update
    */
@@ -454,7 +454,7 @@ export const NetworkService: GenService<{
     output: typeof NetworkServiceUpdateResponseSchema;
   },
   /**
-   * Delete a network
+   * Deletes a network.
    *
    * @generated from rpc metalstack.admin.v2.NetworkService.Delete
    */
@@ -464,7 +464,7 @@ export const NetworkService: GenService<{
     output: typeof NetworkServiceDeleteResponseSchema;
   },
   /**
-   * List all networks
+   * Returns the list of all networks.
    *
    * @generated from rpc metalstack.admin.v2.NetworkService.List
    */

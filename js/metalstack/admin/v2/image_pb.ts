@@ -21,13 +21,13 @@ export const file_metalstack_admin_v2_image: GenFile = /*@__PURE__*/
   fileDesc("Ch9tZXRhbHN0YWNrL2FkbWluL3YyL2ltYWdlLnByb3RvEhNtZXRhbHN0YWNrLmFkbWluLnYyIkQKGUltYWdlU2VydmljZUNyZWF0ZVJlcXVlc3QSJwoFaW1hZ2UYASABKAsyGC5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZSJFChpJbWFnZVNlcnZpY2VDcmVhdGVSZXNwb25zZRInCgVpbWFnZRgBIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlIrUDChlJbWFnZVNlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIdCgN1cmwYAyABKAlCC7pICHIG4LOusQIBSACIAQESHgoEbmFtZRgEIAEoCUILukgIcgbAs66xAgFIAYgBARIlCgtkZXNjcmlwdGlvbhgFIAEoCUILukgIcgbIs66xAgFIAogBARJCCghmZWF0dXJlcxgGIAMoDjIfLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlRmVhdHVyZUIPukgMkgEJGAEiBYIBAhABEkgKDmNsYXNzaWZpY2F0aW9uGAcgASgOMiYubWV0YWxzdGFjay5hcGkudjIuSW1hZ2VDbGFzc2lmaWNhdGlvbkIIukgFggECEAESLgoKZXhwaXJlc19hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBgoEX3VybEIHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb24iRQoaSW1hZ2VTZXJ2aWNlVXBkYXRlUmVzcG9uc2USJwoFaW1hZ2UYASABKAsyGC5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZSI0ChlJbWFnZVNlcnZpY2VEZWxldGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECASJFChpJbWFnZVNlcnZpY2VEZWxldGVSZXNwb25zZRInCgVpbWFnZRgBIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlIkgKGEltYWdlU2VydmljZVVzYWdlUmVxdWVzdBIsCgVxdWVyeRgBIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlUXVlcnkiTwoZSW1hZ2VTZXJ2aWNlVXNhZ2VSZXNwb25zZRIyCgtpbWFnZV91c2FnZRgBIAMoCzIdLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlVXNhZ2Uy4AMKDEltYWdlU2VydmljZRJ0CgZDcmVhdGUSLi5tZXRhbHN0YWNrLmFkbWluLnYyLkltYWdlU2VydmljZUNyZWF0ZVJlcXVlc3QaLy5tZXRhbHN0YWNrLmFkbWluLnYyLkltYWdlU2VydmljZUNyZWF0ZVJlc3BvbnNlIgnS8xgBAeDzGAESdAoGVXBkYXRlEi4ubWV0YWxzdGFjay5hZG1pbi52Mi5JbWFnZVNlcnZpY2VVcGRhdGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hZG1pbi52Mi5JbWFnZVNlcnZpY2VVcGRhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnQKBkRlbGV0ZRIuLm1ldGFsc3RhY2suYWRtaW4udjIuSW1hZ2VTZXJ2aWNlRGVsZXRlUmVxdWVzdBovLm1ldGFsc3RhY2suYWRtaW4udjIuSW1hZ2VTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiCdLzGAEB4PMYARJuCgVVc2FnZRItLm1ldGFsc3RhY2suYWRtaW4udjIuSW1hZ2VTZXJ2aWNlVXNhZ2VSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5JbWFnZVNlcnZpY2VVc2FnZVJlc3BvbnNlIgbS8xgCAQJCzgEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgpJbWFnZVByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_image, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * ImageServiceCreateRequest
+ * ImageServiceCreateRequest is the request payload for creating an image.
  *
  * @generated from message metalstack.admin.v2.ImageServiceCreateRequest
  */
 export type ImageServiceCreateRequest = Message<"metalstack.admin.v2.ImageServiceCreateRequest"> & {
   /**
-   * Image is the image
+   * Image is the image to create
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -42,13 +42,13 @@ export const ImageServiceCreateRequestSchema: GenMessage<ImageServiceCreateReque
   messageDesc(file_metalstack_admin_v2_image, 0);
 
 /**
- * ImageServiceCreateResponse
+ * ImageServiceCreateResponse is the response payload for creating an image.
  *
  * @generated from message metalstack.admin.v2.ImageServiceCreateResponse
  */
 export type ImageServiceCreateResponse = Message<"metalstack.admin.v2.ImageServiceCreateResponse"> & {
   /**
-   * Image is the image
+   * Image contains the created image
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -63,7 +63,7 @@ export const ImageServiceCreateResponseSchema: GenMessage<ImageServiceCreateResp
   messageDesc(file_metalstack_admin_v2_image, 1);
 
 /**
- * ImageServiceUpdateRequest
+ * ImageServiceUpdateRequest is the request payload for updating an image.
  *
  * @generated from message metalstack.admin.v2.ImageServiceUpdateRequest
  */
@@ -90,14 +90,14 @@ export type ImageServiceUpdateRequest = Message<"metalstack.admin.v2.ImageServic
   url?: string;
 
   /**
-   * Name of this imageLayout
+   * Name of this image
    *
    * @generated from field: optional string name = 4;
    */
   name?: string;
 
   /**
-   * Description of this imageLayout
+   * Description of this image
    *
    * @generated from field: optional string description = 5;
    */
@@ -133,13 +133,13 @@ export const ImageServiceUpdateRequestSchema: GenMessage<ImageServiceUpdateReque
   messageDesc(file_metalstack_admin_v2_image, 2);
 
 /**
- * ImageServiceUpdateResponse
+ * ImageServiceUpdateResponse is the response payload for updating an image.
  *
  * @generated from message metalstack.admin.v2.ImageServiceUpdateResponse
  */
 export type ImageServiceUpdateResponse = Message<"metalstack.admin.v2.ImageServiceUpdateResponse"> & {
   /**
-   * Image is the image
+   * Image contains the updated image
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -154,7 +154,7 @@ export const ImageServiceUpdateResponseSchema: GenMessage<ImageServiceUpdateResp
   messageDesc(file_metalstack_admin_v2_image, 3);
 
 /**
- * ImageServiceDeleteRequest
+ * ImageServiceDeleteRequest is the request payload for deleting an image.
  *
  * @generated from message metalstack.admin.v2.ImageServiceDeleteRequest
  */
@@ -175,13 +175,13 @@ export const ImageServiceDeleteRequestSchema: GenMessage<ImageServiceDeleteReque
   messageDesc(file_metalstack_admin_v2_image, 4);
 
 /**
- * message ImageServiceDeleteResponse {
+ * ImageServiceDeleteResponse is the response payload for deleting an image.
  *
  * @generated from message metalstack.admin.v2.ImageServiceDeleteResponse
  */
 export type ImageServiceDeleteResponse = Message<"metalstack.admin.v2.ImageServiceDeleteResponse"> & {
   /**
-   * ImageLayout the imagelayout
+   * Image contains the deleted image
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -196,7 +196,7 @@ export const ImageServiceDeleteResponseSchema: GenMessage<ImageServiceDeleteResp
   messageDesc(file_metalstack_admin_v2_image, 5);
 
 /**
- * ImageServiceUsageRequest
+ * ImageServiceUsageRequest is the request payload for getting image usage.
  *
  * @generated from message metalstack.admin.v2.ImageServiceUsageRequest
  */
@@ -217,13 +217,13 @@ export const ImageServiceUsageRequestSchema: GenMessage<ImageServiceUsageRequest
   messageDesc(file_metalstack_admin_v2_image, 6);
 
 /**
- * ImageServiceUsageResponse
+ * ImageServiceUsageResponse is the response payload for getting image usage.
  *
  * @generated from message metalstack.admin.v2.ImageServiceUsageResponse
  */
 export type ImageServiceUsageResponse = Message<"metalstack.admin.v2.ImageServiceUsageResponse"> & {
   /**
-   * Images with usage
+   * Images contains usage information
    *
    * @generated from field: repeated metalstack.api.v2.ImageUsage image_usage = 1;
    */
@@ -238,13 +238,13 @@ export const ImageServiceUsageResponseSchema: GenMessage<ImageServiceUsageRespon
   messageDesc(file_metalstack_admin_v2_image, 7);
 
 /**
- * ImageService serves image related functions
+ * ImageService provides image management operations.
  *
  * @generated from service metalstack.admin.v2.ImageService
  */
 export const ImageService: GenService<{
   /**
-   * Create a image
+   * Creates a new image.
    *
    * @generated from rpc metalstack.admin.v2.ImageService.Create
    */
@@ -254,7 +254,7 @@ export const ImageService: GenService<{
     output: typeof ImageServiceCreateResponseSchema;
   },
   /**
-   * Update a image
+   * Updates an image.
    *
    * @generated from rpc metalstack.admin.v2.ImageService.Update
    */
@@ -264,7 +264,7 @@ export const ImageService: GenService<{
     output: typeof ImageServiceUpdateResponseSchema;
   },
   /**
-   * Delete a image
+   * Deletes an image.
    *
    * @generated from rpc metalstack.admin.v2.ImageService.Delete
    */
@@ -274,7 +274,7 @@ export const ImageService: GenService<{
     output: typeof ImageServiceDeleteResponseSchema;
   },
   /**
-   * Usage of images
+   * Returns the usage of images.
    *
    * @generated from rpc metalstack.admin.v2.ImageService.Usage
    */

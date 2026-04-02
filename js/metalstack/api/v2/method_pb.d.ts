@@ -7,7 +7,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_method: GenFile;
 /**
- * MethodServiceListRequest is the request payload to list all public methods
+ * MethodServiceListRequest is the request payload for listing all public methods.
  *
  * @generated from message metalstack.api.v2.MethodServiceListRequest
  */
@@ -18,7 +18,7 @@ export type MethodServiceListRequest = Message<"metalstack.api.v2.MethodServiceL
  */
 export declare const MethodServiceListRequestSchema: GenMessage<MethodServiceListRequest>;
 /**
- * MethodServiceListResponse is the response payload with all public visible methods
+ * MethodServiceListResponse is the response payload for listing all public methods.
  *
  * @generated from message metalstack.api.v2.MethodServiceListResponse
  */
@@ -36,7 +36,7 @@ export type MethodServiceListResponse = Message<"metalstack.api.v2.MethodService
  */
 export declare const MethodServiceListResponseSchema: GenMessage<MethodServiceListResponse>;
 /**
- * MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request
+ * MethodServiceTokenScopedListRequest is the request payload for listing all methods callable with the token present in the request.
  *
  * @generated from message metalstack.api.v2.MethodServiceTokenScopedListRequest
  */
@@ -47,19 +47,19 @@ export type MethodServiceTokenScopedListRequest = Message<"metalstack.api.v2.Met
  */
 export declare const MethodServiceTokenScopedListRequestSchema: GenMessage<MethodServiceTokenScopedListRequest>;
 /**
- * MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
+ * MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token.
  *
  * @generated from message metalstack.api.v2.MethodServiceTokenScopedListResponse
  */
 export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.MethodServiceTokenScopedListResponse"> & {
     /**
-     * Permissions a list of methods which can be called
+     * Permissions contains a list of methods which can be called
      *
      * @generated from field: repeated metalstack.api.v2.MethodPermission permissions = 1;
      */
     permissions: MethodPermission[];
     /**
-     * ProjectRoles associates a project id with the corresponding role of the token owner
+     * ProjectRoles associates a project ID with the corresponding role of the token owner
      *
      * @generated from field: map<string, metalstack.api.v2.ProjectRole> project_roles = 2;
      */
@@ -67,7 +67,7 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
         [key: string]: ProjectRole;
     };
     /**
-     * TenantRoles associates a tenant id with the corresponding role of the token owner
+     * TenantRoles associates a tenant ID with the corresponding role of the token owner
      *
      * @generated from field: map<string, metalstack.api.v2.TenantRole> tenant_roles = 3;
      */
@@ -101,14 +101,14 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
  */
 export declare const MethodServiceTokenScopedListResponseSchema: GenMessage<MethodServiceTokenScopedListResponse>;
 /**
- * MethodService serves method related functions
- * methods are functions in services
+ * MethodService provides method discovery operations.
+ * Methods are functions in services.
  *
  * @generated from service metalstack.api.v2.MethodService
  */
 export declare const MethodService: GenService<{
     /**
-     * List all public visible methods
+     * Returns the list of all public visible methods.
      *
      * @generated from rpc metalstack.api.v2.MethodService.List
      */
@@ -118,7 +118,7 @@ export declare const MethodService: GenService<{
         output: typeof MethodServiceListResponseSchema;
     };
     /**
-     * TokenScopedList all methods callable with the token present in the request
+     * TokenScopedList returns all methods callable with the token present in the request.
      *
      * @generated from rpc metalstack.api.v2.MethodService.TokenScopedList
      */

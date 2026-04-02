@@ -330,13 +330,13 @@ export declare enum ImageClassification {
  */
 export declare const ImageClassificationSchema: GenEnum<ImageClassification>;
 /**
- * ImageService serves image related functions
+ * ImageService provides image management operations.
  *
  * @generated from service metalstack.api.v2.ImageService
  */
 export declare const ImageService: GenService<{
     /**
-     * Get a image
+     * Returns the image with the specified ID.
      *
      * @generated from rpc metalstack.api.v2.ImageService.Get
      */
@@ -346,7 +346,7 @@ export declare const ImageService: GenService<{
         output: typeof ImageServiceGetResponseSchema;
     };
     /**
-     * List all images
+     * Returns the list of all images.
      *
      * @generated from rpc metalstack.api.v2.ImageService.List
      */
@@ -356,7 +356,7 @@ export declare const ImageService: GenService<{
         output: typeof ImageServiceListResponseSchema;
     };
     /**
-     * Latest image for a specific os
+     * Returns the latest image for a specific operating system.
      *
      * @generated from rpc metalstack.api.v2.ImageService.Latest
      */

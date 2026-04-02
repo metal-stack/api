@@ -21,7 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ServiceStatus defines the status of a service
+// ServiceStatus defines the status of a service.
 type ServiceStatus int32
 
 const (
@@ -31,7 +31,7 @@ const (
 	ServiceStatus_SERVICE_STATUS_DEGRADED ServiceStatus = 1
 	// SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected
 	ServiceStatus_SERVICE_STATUS_UNHEALTHY ServiceStatus = 2
-	// SERVICE_STATUS_HEALTHY the service is in healthy status e.g. fully functional
+	// SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional
 	ServiceStatus_SERVICE_STATUS_HEALTHY ServiceStatus = 3
 )
 
@@ -78,25 +78,25 @@ func (ServiceStatus) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_health_proto_rawDescGZIP(), []int{0}
 }
 
-// Service defines the service for which the healtyness is reported
+// Service defines the service for which the healthiness is reported.
 type Service int32
 
 const (
 	// SERVICE_UNSPECIFIED is a unknown service
 	Service_SERVICE_UNSPECIFIED Service = 0
-	// SERVICE_IPAM the ipam service
+	// SERVICE_IPAM the IPAM service
 	Service_SERVICE_IPAM Service = 1
-	// SERVICE_RETHINK the rethinkdb
+	// SERVICE_RETHINK the RethinkDB
 	Service_SERVICE_RETHINK Service = 2
-	// SERVICE_MASTERDATA the masterdata-api
+	// SERVICE_MASTERDATA the masterdata API
 	Service_SERVICE_MASTERDATA Service = 3
 	// SERVICE_MACHINES the machine service
 	Service_SERVICE_MACHINES Service = 4
 	// SERVICE_AUDIT the auditing
 	Service_SERVICE_AUDIT Service = 5
-	// SERVICE_VPN the vpn service
+	// SERVICE_VPN the VPN service
 	Service_SERVICE_VPN Service = 6
-	// SERVICE_REDIS the redis service
+	// SERVICE_REDIS the Redis service
 	Service_SERVICE_REDIS Service = 7
 	// SERVICE_TASKS the tasks service
 	Service_SERVICE_TASKS Service = 8
@@ -155,10 +155,10 @@ func (Service) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_health_proto_rawDescGZIP(), []int{1}
 }
 
-// Health reports the health status of all services
+// Health reports the health status of all services.
 type Health struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Services the health of all individual services
+	// Services contains the health of all individual services
 	Services      []*HealthStatus `protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -201,12 +201,12 @@ func (x *Health) GetServices() []*HealthStatus {
 	return nil
 }
 
-// HealthStatus the health of one service
+// HealthStatus represents the health status of one service.
 type HealthStatus struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name the name of the service
+	// Name is the name of the service
 	Name Service `protobuf:"varint,1,opt,name=name,proto3,enum=metalstack.api.v2.Service" json:"name,omitempty"`
-	// Status the status of this service
+	// Status is the status of this service
 	Status ServiceStatus `protobuf:"varint,2,opt,name=status,proto3,enum=metalstack.api.v2.ServiceStatus" json:"status,omitempty"`
 	// Message describes the reason for the unhealthy status if possible
 	Message string `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
@@ -274,10 +274,10 @@ func (x *HealthStatus) GetPartitions() map[string]*PartitionHealth {
 	return nil
 }
 
-// PartitionHealth the status of a specific service in this partition
+// PartitionHealth represents the status of a specific service in this partition.
 type PartitionHealth struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Status the health status of the service in this partition
+	// Status is the health status of the service in this partition
 	Status ServiceStatus `protobuf:"varint,1,opt,name=status,proto3,enum=metalstack.api.v2.ServiceStatus" json:"status,omitempty"`
 	// Message describes the reason for the unhealthy status if possible
 	Message       string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
@@ -329,7 +329,7 @@ func (x *PartitionHealth) GetMessage() string {
 	return ""
 }
 
-// HealthServiceGetRequest is request payload to get the health of the system
+// HealthServiceGetRequest is the request payload for getting the health of the system.
 type HealthServiceGetRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -366,10 +366,10 @@ func (*HealthServiceGetRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_health_proto_rawDescGZIP(), []int{3}
 }
 
-// HealthServiceGetRequest is the response payload with the health of the system
+// HealthServiceGetResponse is the response payload for getting the health of the system.
 type HealthServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Health is the overall health of the system
+	// Health contains the overall health of the system
 	Health        *Health `protobuf:"bytes,1,opt,name=health,proto3" json:"health,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
