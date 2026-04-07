@@ -20,9 +20,9 @@ plugins:
     out: ../go
     opt: paths=source_relative,simple
   # python
-  - remote: buf.build/protocolbuffers/python:v34.0
+  - remote: buf.build/protocolbuffers/python:v34.1
     out: ../python
-  - remote: buf.build/protocolbuffers/pyi:v34.0
+  - remote: buf.build/protocolbuffers/pyi:v34.1
     out: ../python
   - remote: buf.build/connectrpc/python:v0.8.1
     out: ../python
