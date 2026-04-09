@@ -864,14 +864,14 @@ var File_metalstack_api_v2_common_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/common.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a google/protobuf/descriptor.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"O\n" +
+	"\x1emetalstack/api/v2/common.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a google/protobuf/descriptor.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(metalstack/api/v2/predefined_rules.proto\"O\n" +
 	"\x06Paging\x12\x17\n" +
 	"\x04page\x18\x01 \x01(\x04H\x00R\x04page\x88\x01\x01\x12\x19\n" +
 	"\x05count\x18\x02 \x01(\x04H\x01R\x05count\x88\x01\x01B\a\n" +
 	"\x05_pageB\b\n" +
-	"\x06_count\"\x9c\x01\n" +
-	"\x06Labels\x12W\n" +
-	"\x06labels\x18\x01 \x03(\v2%.metalstack.api.v2.Labels.LabelsEntryB\x18\xbaH\x15\x9a\x01\x12\"\ar\x05\x10\x01\x18\x80\x02*\ar\x05\x10\x00\x18\x80\x02R\x06labels\x1a9\n" +
+	"\x06_count\"\xa2\x01\n" +
+	"\x06Labels\x12]\n" +
+	"\x06labels\x18\x01 \x03(\v2%.metalstack.api.v2.Labels.LabelsEntryB\x1e\xbaH\x1b\x9a\x01\x18\xb8\x95\xb8\xb1\x02\x01\"\ar\x05\x10\x01\x18\x80\x02*\ar\x05\x10\x00\x18\x80\x02R\x06labels\x1a9\n" +
 	"\vLabelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xdf\x01\n" +
@@ -1012,6 +1012,7 @@ func file_metalstack_api_v2_common_proto_init() {
 	if File_metalstack_api_v2_common_proto != nil {
 		return
 	}
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_common_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_common_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}

@@ -118,6 +118,22 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 		Tag:           "varint,80058954,opt,name=all_trimmed",
 		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
+	{
+		ExtendedType:  (*validate.MapRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80068951,
+		Name:          "metalstack.api.v2.keys_and_values_trimmed",
+		Tag:           "varint,80068951,opt,name=keys_and_values_trimmed",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
+		ExtendedType:  (*validate.MapRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80068952,
+		Name:          "metalstack.api.v2.keys_trimmed",
+		Tag:           "varint,80068952,opt,name=keys_trimmed",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
 }
 
 // Extension fields to validate.StringRules.
@@ -176,6 +192,18 @@ var (
 	E_AllTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[11]
 )
 
+// Extension fields to validate.MapRules.
+var (
+	// Keys and Values trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+	//
+	// optional bool keys_and_values_trimmed = 80068951;
+	E_KeysAndValuesTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[12]
+	// Keys trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+	//
+	// optional bool keys_trimmed = 80068952;
+	E_KeysTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[13]
+)
+
 var File_metalstack_api_v2_predefined_rules_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_predefined_rules_proto_rawDesc = "" +
@@ -220,12 +248,19 @@ const file_metalstack_api_v2_predefined_rules_proto_rawDesc = "" +
 	"\vall_trimmed\x12\x1b.buf.validate.RepeatedRules\x18ʴ\x96& \x01(\bBy\xc2Hv\n" +
 	"t\n" +
 	"\x14repeated.all_trimmed\x122given values must not start or end with whitespace\x1a(this.all(m, m.trim().size() == m.size())R\n" +
-	"allTrimmedB\xca\x01\n" +
+	"allTrimmed:\x84\x02\n" +
+	"\x17keys_and_values_trimmed\x12\x16.buf.validate.MapRules\x18ׂ\x97& \x01(\bB\xb1\x01\xc2H\xad\x01\n" +
+	"\xaa\x01\n" +
+	"\x1bmap.keys_and_values_trimmed\x125keys and values must not start or end with whitespace\x1aTthis.all(k, k.trim().size() == k.size()) && this.all(v, v.trim().size() == v.size())R\x14keysAndValuesTrimmed:\xab\x01\n" +
+	"\fkeys_trimmed\x12\x16.buf.validate.MapRules\x18\u0602\x97& \x01(\bBm\xc2Hj\n" +
+	"h\n" +
+	"\x10map.keys_trimmed\x12*keys must not start or end with whitespace\x1a(this.all(k, k.trim().size() == k.size())R\vkeysTrimmedB\xca\x01\n" +
 	"\x15com.metalstack.api.v2B\x14PredefinedRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2"
 
 var file_metalstack_api_v2_predefined_rules_proto_goTypes = []any{
 	(*validate.StringRules)(nil),   // 0: buf.validate.StringRules
 	(*validate.RepeatedRules)(nil), // 1: buf.validate.RepeatedRules
+	(*validate.MapRules)(nil),      // 2: buf.validate.MapRules
 }
 var file_metalstack_api_v2_predefined_rules_proto_depIdxs = []int32{
 	0,  // 0: metalstack.api.v2.macaddress:extendee -> buf.validate.StringRules
@@ -240,10 +275,12 @@ var file_metalstack_api_v2_predefined_rules_proto_depIdxs = []int32{
 	1,  // 9: metalstack.api.v2.ips:extendee -> buf.validate.RepeatedRules
 	1,  // 10: metalstack.api.v2.are_host_and_port:extendee -> buf.validate.RepeatedRules
 	1,  // 11: metalstack.api.v2.all_trimmed:extendee -> buf.validate.RepeatedRules
-	12, // [12:12] is the sub-list for method output_type
-	12, // [12:12] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	0,  // [0:12] is the sub-list for extension extendee
+	2,  // 12: metalstack.api.v2.keys_and_values_trimmed:extendee -> buf.validate.MapRules
+	2,  // 13: metalstack.api.v2.keys_trimmed:extendee -> buf.validate.MapRules
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	0,  // [0:14] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
 }
 
@@ -259,7 +296,7 @@ func file_metalstack_api_v2_predefined_rules_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_predefined_rules_proto_rawDesc), len(file_metalstack_api_v2_predefined_rules_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   0,
-			NumExtensions: 12,
+			NumExtensions: 14,
 			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_predefined_rules_proto_goTypes,
