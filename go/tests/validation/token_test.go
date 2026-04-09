@@ -118,6 +118,22 @@ func TestValidateToken(t *testing.T) {
 			wantErr:          true,
 			wantErrorMessage: "validation error: machine_roles: map keys must be empty string, '*', or a valid UUID",
 		},
+		{
+			name: "InValid Token Create Request, token role not trimmed",
+			msg: &apiv2.TokenServiceCreateRequest{
+				Description: "A Token",
+				ProjectRoles: map[string]apiv2.ProjectRole{
+					"00000000-0000-0000-0000-000000000000": apiv2.ProjectRole_PROJECT_ROLE_EDITOR,
+					"00000000-0000-0000-0000-000000000001": apiv2.ProjectRole_PROJECT_ROLE_VIEWER,
+					"00000000-0000-0000-0000-000000000002": apiv2.ProjectRole_PROJECT_ROLE_OWNER,
+				},
+				TenantRoles: map[string]apiv2.TenantRole{
+					" t12": apiv2.TenantRole_TENANT_ROLE_EDITOR,
+				},
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: tenant_roles: keys must not start or end with whitespace",
+		},
 	}
 
 	validateProtos(t, tests)
