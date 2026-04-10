@@ -185,9 +185,9 @@ message Network {
   // Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
   ChildPrefixLength min_child_prefix_length = 11;
   // Type of the network
-  optional NetworkType type = 12 [(buf.validate.field).enum.defined_only = true];
+  NetworkType type = 12 [(buf.validate.field).enum.defined_only = true];
   // NATType of this network
-  optional NATType nat_type = 13 [(buf.validate.field).enum.defined_only = true];
+  NATType nat_type = 13 [(buf.validate.field).enum.defined_only = true];
   // VRF of this network has this VNI.
   optional uint32 vrf = 14;
   // Parent Network points to the id of the parent network if any

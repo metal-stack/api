@@ -947,9 +947,9 @@ type Network struct {
 	// Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
 	MinChildPrefixLength *ChildPrefixLength `protobuf:"bytes,11,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3" json:"min_child_prefix_length,omitempty"`
 	// Type of the network
-	Type *NetworkType `protobuf:"varint,12,opt,name=type,proto3,enum=metalstack.api.v2.NetworkType,oneof" json:"type,omitempty"`
+	Type NetworkType `protobuf:"varint,12,opt,name=type,proto3,enum=metalstack.api.v2.NetworkType" json:"type,omitempty"`
 	// NATType of this network
-	NatType *NATType `protobuf:"varint,13,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
+	NatType NATType `protobuf:"varint,13,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType" json:"nat_type,omitempty"`
 	// VRF of this network has this VNI.
 	Vrf *uint32 `protobuf:"varint,14,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// Parent Network points to the id of the parent network if any
@@ -1070,15 +1070,15 @@ func (x *Network) GetMinChildPrefixLength() *ChildPrefixLength {
 }
 
 func (x *Network) GetType() NetworkType {
-	if x != nil && x.Type != nil {
-		return *x.Type
+	if x != nil {
+		return x.Type
 	}
 	return NetworkType_NETWORK_TYPE_UNSPECIFIED
 }
 
 func (x *Network) GetNatType() NATType {
-	if x != nil && x.NatType != nil {
-		return *x.NatType
+	if x != nil {
+		return x.NatType
 	}
 	return NATType_NAT_TYPE_UNSPECIFIED
 }
@@ -1512,7 +1512,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"T\n" +
 	"\x1cNetworkServiceDeleteResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xc4\b\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xa4\b\n" +
 	"\aNetwork\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12$\n" +
@@ -1525,11 +1525,11 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x14destination_prefixes\x18\t \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x13destinationPrefixes\x12c\n" +
 	"\x1bdefault_child_prefix_length\x18\n" +
 	" \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x18defaultChildPrefixLength\x12[\n" +
-	"\x17min_child_prefix_length\x18\v \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x14minChildPrefixLength\x12A\n" +
-	"\x04type\x18\f \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x05R\x04type\x88\x01\x01\x12D\n" +
-	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x06R\anatType\x88\x01\x01\x12\x15\n" +
-	"\x03vrf\x18\x0e \x01(\rH\aR\x03vrf\x88\x01\x01\x127\n" +
-	"\x0eparent_network\x18\x0f \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\bR\rparentNetwork\x88\x01\x01\x12N\n" +
+	"\x17min_child_prefix_length\x18\v \x01(\v2$.metalstack.api.v2.ChildPrefixLengthR\x14minChildPrefixLength\x12<\n" +
+	"\x04type\x18\f \x01(\x0e2\x1e.metalstack.api.v2.NetworkTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12?\n" +
+	"\bnat_type\x18\r \x01(\x0e2\x1a.metalstack.api.v2.NATTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\anatType\x12\x15\n" +
+	"\x03vrf\x18\x0e \x01(\rH\x05R\x03vrf\x88\x01\x01\x127\n" +
+	"\x0eparent_network\x18\x0f \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x06R\rparentNetwork\x88\x01\x01\x12N\n" +
 	"\x1cadditional_announcable_cidrs\x18\x10 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x1aadditionalAnnouncableCidrs\x12G\n" +
 	"\vconsumption\x18\x11 \x01(\v2%.metalstack.api.v2.NetworkConsumptionR\vconsumptionB\a\n" +
 	"\x05_nameB\x0e\n" +
@@ -1539,9 +1539,7 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\n" +
 	"\b_projectB\f\n" +
 	"\n" +
-	"_namespaceB\a\n" +
-	"\x05_typeB\v\n" +
-	"\t_nat_typeB\x06\n" +
+	"_namespaceB\x06\n" +
 	"\x04_vrfB\x11\n" +
 	"\x0f_parent_network\"\x82\a\n" +
 	"\fNetworkQuery\x12 \n" +

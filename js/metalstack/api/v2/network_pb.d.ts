@@ -393,15 +393,15 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
     /**
      * Type of the network
      *
-     * @generated from field: optional metalstack.api.v2.NetworkType type = 12;
+     * @generated from field: metalstack.api.v2.NetworkType type = 12;
      */
-    type?: NetworkType;
+    type: NetworkType;
     /**
      * NATType of this network
      *
-     * @generated from field: optional metalstack.api.v2.NATType nat_type = 13;
+     * @generated from field: metalstack.api.v2.NATType nat_type = 13;
      */
-    natType?: NATType;
+    natType: NATType;
     /**
      * VRF of this network has this VNI.
      *
