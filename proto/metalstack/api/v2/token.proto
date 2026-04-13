@@ -109,26 +109,32 @@ message TokenServiceCreateRequest {
     gte: {seconds: 600}
   }];
   // ProjectRoles associates a project id with the corresponding role of the token owner
-  map<string, ProjectRole> project_roles = 4 [(buf.validate.field).map = {
-    keys: {
-      string: {uuid: true}
-    }
-    values: {
-      enum: {defined_only: true}
-    }
-  }];
-  // TenantRoles_associates a tenant id with the corresponding role of the token owner
-  map<string, TenantRole> tenant_roles = 5 [(buf.validate.field).map = {
-    keys: {
-      string: {
-        min_len: 3
-        max_len: 128
+  map<string, ProjectRole> project_roles = 4 [
+    (buf.validate.field).map = {
+      keys: {
+        string: {uuid: true}
       }
-    }
-    values: {
-      enum: {defined_only: true}
-    }
-  }];
+      values: {
+        enum: {defined_only: true}
+      }
+    },
+    (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
+  ];
+  // TenantRoles_associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 5 [
+    (buf.validate.field).map = {
+      keys: {
+        string: {
+          min_len: 3
+          max_len: 128
+        }
+      }
+      values: {
+        enum: {defined_only: true}
+      }
+    },
+    (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
+  ];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 6 [(buf.validate.field).enum.defined_only = true];
   // InfraRole defines the infrastructure role of the token owner
@@ -200,26 +206,32 @@ message TokenServiceUpdateRequest {
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 4;
   // ProjectRoles associates a project id with the corresponding role of the token owner
-  map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
-    keys: {
-      string: {uuid: true}
-    }
-    values: {
-      enum: {defined_only: true}
-    }
-  }];
-  // TenantRoles associates a tenant id with the corresponding role of the token owner
-  map<string, TenantRole> tenant_roles = 6 [(buf.validate.field).map = {
-    keys: {
-      string: {
-        min_len: 3
-        max_len: 128
+  map<string, ProjectRole> project_roles = 5 [
+    (buf.validate.field).map = {
+      keys: {
+        string: {uuid: true}
       }
-    }
-    values: {
-      enum: {defined_only: true}
-    }
-  }];
+      values: {
+        enum: {defined_only: true}
+      }
+    },
+    (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
+  ];
+  // TenantRoles associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 6 [
+    (buf.validate.field).map = {
+      keys: {
+        string: {
+          min_len: 3
+          max_len: 128
+        }
+      }
+      values: {
+        enum: {defined_only: true}
+      }
+    },
+    (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
+  ];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
   // InfraRole defines the infrastructure role of the token owner
