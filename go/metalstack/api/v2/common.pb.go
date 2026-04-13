@@ -648,7 +648,10 @@ type UpdateLabels struct {
 	// Update labels. New ones will be added, existing ones overwritten
 	Update *Labels `protobuf:"bytes,1,opt,name=update,proto3" json:"update,omitempty"`
 	// Remove labels by key
-	Remove        []string `protobuf:"bytes,2,rep,name=remove,proto3" json:"remove,omitempty"`
+	Remove []string `protobuf:"bytes,2,rep,name=remove,proto3" json:"remove,omitempty"`
+	// RemoveAll can be used to clear all existing labels and just apply the labels given by the update field
+	// do not send remove labels in this case
+	RemoveAll     bool `protobuf:"varint,3,opt,name=remove_all,json=removeAll,proto3" json:"remove_all,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -695,6 +698,13 @@ func (x *UpdateLabels) GetRemove() []string {
 		return x.Remove
 	}
 	return nil
+}
+
+func (x *UpdateLabels) GetRemoveAll() bool {
+	if x != nil {
+		return x.RemoveAll
+	}
+	return false
 }
 
 // UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled
@@ -884,10 +894,12 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\n" +
 	"generation\x18\x04 \x01(\x04R\n" +
 	"generationB\t\n" +
-	"\a_labels\"Y\n" +
+	"\a_labels\"\x86\x01\n" +
 	"\fUpdateLabels\x121\n" +
-	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12\x16\n" +
-	"\x06remove\x18\x02 \x03(\tR\x06remove\"\xaa\x01\n" +
+	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12$\n" +
+	"\x06remove\x18\x02 \x03(\tB\f\xbaH\t\x92\x01\x06Ф\xb3\xb1\x02\x01R\x06remove\x12\x1d\n" +
+	"\n" +
+	"remove_all\x18\x03 \x01(\bR\tremoveAll\"\xaa\x01\n" +
 	"\n" +
 	"UpdateMeta\x129\n" +
 	"\n" +
