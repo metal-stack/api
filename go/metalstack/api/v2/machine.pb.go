@@ -82,9 +82,9 @@ type MachineState int32
 const (
 	// MACHINE_STATE_UNSPECIFIED is not specified
 	MachineState_MACHINE_STATE_UNSPECIFIED MachineState = 0
-	// MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during random machine allocation, but still by specifying the uuid
-	MachineState_MACHINE_STATE_RESERVED MachineState = 1
-	// MACHINE_STATE_LOCKED this machine is locked, e.g. this machine cannot be allocated or deleted
+	// MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid
+	MachineState_MACHINE_STATE_TAINTED MachineState = 1
+	// MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or deleted
 	MachineState_MACHINE_STATE_LOCKED MachineState = 2
 	// MACHINE_STATE_AVAILABLE this machine is available for all
 	MachineState_MACHINE_STATE_AVAILABLE MachineState = 3
@@ -94,13 +94,13 @@ const (
 var (
 	MachineState_name = map[int32]string{
 		0: "MACHINE_STATE_UNSPECIFIED",
-		1: "MACHINE_STATE_RESERVED",
+		1: "MACHINE_STATE_TAINTED",
 		2: "MACHINE_STATE_LOCKED",
 		3: "MACHINE_STATE_AVAILABLE",
 	}
 	MachineState_value = map[string]int32{
 		"MACHINE_STATE_UNSPECIFIED": 0,
-		"MACHINE_STATE_RESERVED":    1,
+		"MACHINE_STATE_TAINTED":     1,
 		"MACHINE_STATE_LOCKED":      2,
 		"MACHINE_STATE_AVAILABLE":   3,
 	}
@@ -1881,7 +1881,7 @@ type MachineAllocationNetwork struct {
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	// IPs to to attach to this machine additionally
 	// If none given, one ip address is acquired per network for the machine
-	Ips           []string `protobuf:"bytes,3,rep,name=ips,proto3" json:"ips,omitempty"`
+	Ips           []string `protobuf:"bytes,2,rep,name=ips,proto3" json:"ips,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4302,7 +4302,7 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x03vpn\x18\x11 \x01(\v2\x1d.metalstack.api.v2.MachineVPNR\x03vpn\"a\n" +
 	"\x18MachineAllocationNetwork\x12%\n" +
 	"\anetwork\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anetwork\x12\x1e\n" +
-	"\x03ips\x18\x03 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\x90\x01\n" +
+	"\x03ips\x18\x02 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\x90\x01\n" +
 	"\rFirewallRules\x12=\n" +
 	"\x06egress\x18\x01 \x03(\v2%.metalstack.api.v2.FirewallEgressRuleR\x06egress\x12@\n" +
 	"\aingress\x18\x02 \x03(\v2&.metalstack.api.v2.FirewallIngressRuleR\aingress\"\xd0\x01\n" +
@@ -4543,10 +4543,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"IPProtocol\x12\x1b\n" +
 	"\x17IP_PROTOCOL_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x0fIP_PROTOCOL_TCP\x10\x01\x1a\a\x82\xb2\x19\x03tcp\x12\x1c\n" +
-	"\x0fIP_PROTOCOL_UDP\x10\x02\x1a\a\x82\xb2\x19\x03udp*\xaf\x01\n" +
+	"\x0fIP_PROTOCOL_UDP\x10\x02\x1a\a\x82\xb2\x19\x03udp*\xad\x01\n" +
 	"\fMachineState\x12#\n" +
-	"\x19MACHINE_STATE_UNSPECIFIED\x10\x00\x1a\x04\x82\xb2\x19\x00\x12(\n" +
-	"\x16MACHINE_STATE_RESERVED\x10\x01\x1a\f\x82\xb2\x19\breserved\x12$\n" +
+	"\x19MACHINE_STATE_UNSPECIFIED\x10\x00\x1a\x04\x82\xb2\x19\x00\x12&\n" +
+	"\x15MACHINE_STATE_TAINTED\x10\x01\x1a\v\x82\xb2\x19\atainted\x12$\n" +
 	"\x14MACHINE_STATE_LOCKED\x10\x02\x1a\n" +
 	"\x82\xb2\x19\x06locked\x12*\n" +
 	"\x17MACHINE_STATE_AVAILABLE\x10\x03\x1a\r\x82\xb2\x19\tavailable*\xdf\x01\n" +

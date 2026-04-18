@@ -61,7 +61,7 @@ func TestValidateMachine(t *testing.T) {
 				Mac:     "00:00:00:00:00:00",
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error: address: value must be a valid host (hostname or IP address) and port pair",
+			wantErrorMessage: "validation error: address: must be a valid host (hostname or IP address) and port pair",
 		},
 		{
 			name: "Machine create, userdata with whitespaces",

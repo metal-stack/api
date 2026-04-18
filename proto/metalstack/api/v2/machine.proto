@@ -365,7 +365,7 @@ message MachineAllocationNetwork {
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // IPs to to attach to this machine additionally
   // If none given, one ip address is acquired per network for the machine
-  repeated string ips = 3 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
+  repeated string ips = 2 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
 // FirewallRules can be defined during firewall allocation
@@ -520,9 +520,9 @@ message MachineBlockDevice {
 enum MachineState {
   // MACHINE_STATE_UNSPECIFIED is not specified
   MACHINE_STATE_UNSPECIFIED = 0 [(enum_string_value) = ""];
-  // MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during random machine allocation, but still by specifying the uuid
-  MACHINE_STATE_RESERVED = 1 [(enum_string_value) = "reserved"];
-  // MACHINE_STATE_LOCKED this machine is locked, e.g. this machine cannot be allocated or deleted
+  // MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid
+  MACHINE_STATE_TAINTED = 1 [(enum_string_value) = "tainted"];
+  // MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or deleted
   MACHINE_STATE_LOCKED = 2 [(enum_string_value) = "locked"];
   // MACHINE_STATE_AVAILABLE this machine is available for all
   MACHINE_STATE_AVAILABLE = 3 [(enum_string_value) = "available"];

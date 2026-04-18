@@ -33,7 +33,7 @@ func TestValidateToken(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation errors:
- - project_roles["p42"]: value must be a valid UUID
+ - project_roles["p42"]: must be a valid UUID
  - project_roles["p42"]: value must be one of the defined enum values`,
 		},
 		{

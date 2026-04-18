@@ -18,7 +18,7 @@ func TestValidateSizeReservation(t *testing.T) {
  - name: must be within 2 and 128 characters
  - project: value is empty, which is not a valid UUID
  - size: must be within 2 and 128 characters
- - amount: value must be greater than 0`,
+ - amount: must be greater than 0`,
 		},
 		{
 			name: "Invalid SizeReservation id not a uuid",
@@ -28,11 +28,11 @@ func TestValidateSizeReservation(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation errors:
- - id: value must be a valid UUID
+ - id: must be a valid UUID
  - name: must be within 2 and 128 characters
  - project: value is empty, which is not a valid UUID
  - size: must be within 2 and 128 characters
- - amount: value must be greater than 0`,
+ - amount: must be greater than 0`,
 		},
 		{
 			name: "Invalid SizeReservation partitions not unique",

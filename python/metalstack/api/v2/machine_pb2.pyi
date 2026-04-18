@@ -27,7 +27,7 @@ class IPProtocol(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
 class MachineState(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
     MACHINE_STATE_UNSPECIFIED: _ClassVar[MachineState]
-    MACHINE_STATE_RESERVED: _ClassVar[MachineState]
+    MACHINE_STATE_TAINTED: _ClassVar[MachineState]
     MACHINE_STATE_LOCKED: _ClassVar[MachineState]
     MACHINE_STATE_AVAILABLE: _ClassVar[MachineState]
 
@@ -83,7 +83,7 @@ IP_PROTOCOL_UNSPECIFIED: IPProtocol
 IP_PROTOCOL_TCP: IPProtocol
 IP_PROTOCOL_UDP: IPProtocol
 MACHINE_STATE_UNSPECIFIED: MachineState
-MACHINE_STATE_RESERVED: MachineState
+MACHINE_STATE_TAINTED: MachineState
 MACHINE_STATE_LOCKED: MachineState
 MACHINE_STATE_AVAILABLE: MachineState
 MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED: MachineProvisioningEventState

@@ -723,7 +723,7 @@ export type MachineAllocationNetwork = Message<"metalstack.api.v2.MachineAllocat
      * IPs to to attach to this machine additionally
      * If none given, one ip address is acquired per network for the machine
      *
-     * @generated from field: repeated string ips = 3;
+     * @generated from field: repeated string ips = 2;
      */
     ips: string[];
 };
@@ -1932,13 +1932,13 @@ export declare enum MachineState {
      */
     UNSPECIFIED = 0,
     /**
-     * MACHINE_STATE_RESERVED this machine is reserved, e.g. this machine is not considered during random machine allocation, but still by specifying the uuid
+     * MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid
      *
-     * @generated from enum value: MACHINE_STATE_RESERVED = 1;
+     * @generated from enum value: MACHINE_STATE_TAINTED = 1;
      */
-    RESERVED = 1,
+    TAINTED = 1,
     /**
-     * MACHINE_STATE_LOCKED this machine is locked, e.g. this machine cannot be allocated or deleted
+     * MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or deleted
      *
      * @generated from enum value: MACHINE_STATE_LOCKED = 2;
      */

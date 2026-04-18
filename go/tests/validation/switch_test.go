@@ -60,7 +60,7 @@ func TestValidateSwitch(t *testing.T) {
 				ConsoleCommand: new("ssh"),
 			},
 			wantErr:          true,
-			wantErrorMessage: `validation error: id: value must be a valid hostname`,
+			wantErrorMessage: `validation error: id: must be a valid hostname`,
 		},
 	}
 	validateProtos(t, tests)
