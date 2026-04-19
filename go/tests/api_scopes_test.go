@@ -139,29 +139,42 @@ func Test_FieldNumbering(t *testing.T) {
 		fd, err := protoparser.Parse(filename)
 		require.NoError(t, err)
 
-		for _, serviceDesc := range fd.GetService() {
-			for _, method := range serviceDesc.GetMethod() {
-				firstFiled := true
-				var lastNumber int32
+		for _, mt := range fd.GetMessageType() {
+			var (
+				firstFiled = true
+				lastNumber int32
+			)
 
-				for _, mt := range fd.GetMessageType() {
-					if mt.GetName() != method.GetInputType() {
-						continue
-					}
-					for _, field := range mt.GetField() {
-						// t.Logf("file:%s method:%s field:%s\n", filename, method, field)
-						if field.Number != nil {
-							if firstFiled {
-								firstFiled = false
-							} else {
-								if lastNumber+1 != *field.Number {
-									errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *method.Name, *field.Name, lastNumber+1, *field.Number))
-								}
-							}
-							lastNumber = *field.Number
+			for _, field := range mt.GetField() {
+				if field.Number != nil {
+					if firstFiled {
+						firstFiled = false
+					} else {
+						if lastNumber+1 != *field.Number {
+							errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *mt.Name, *field.Name, lastNumber+1, *field.Number))
 						}
-
 					}
+					lastNumber = *field.Number
+				}
+			}
+		}
+
+		for _, et := range fd.GetEnumType() {
+			var (
+				firstFiled = true
+				lastNumber int32
+			)
+
+			for _, value := range et.GetValue() {
+				if value.Number != nil {
+					if firstFiled {
+						firstFiled = false
+					} else {
+						if lastNumber+1 != *value.Number {
+							errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *et.Name, *value.Name, lastNumber+1, *value.Number))
+						}
+					}
+					lastNumber = *value.Number
 				}
 			}
 		}

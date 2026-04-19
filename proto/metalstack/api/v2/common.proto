@@ -72,7 +72,7 @@ enum Visibility {
   // VISIBILITY_PUBLIC specifies that this service is accessible without authentication
   VISIBILITY_PUBLIC = 1;
   // VISIBILITY_SELF enable call this endpoint from the authenticated user only
-  VISIBILITY_SELF = 3;
+  VISIBILITY_SELF = 2;
 }
 
 // Auditing option specified per service method

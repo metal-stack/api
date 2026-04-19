@@ -1120,12 +1120,12 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x0eTOKEN_TYPE_API\x10\x01\x12\x13\n" +
 	"\x0fTOKEN_TYPE_USER\x10\x022\x90\x05\n" +
 	"\fTokenService\x12b\n" +
-	"\x03Get\x12).metalstack.api.v2.TokenServiceGetRequest\x1a*.metalstack.api.v2.TokenServiceGetResponse\"\x04\xd8\xf3\x18\x03\x12k\n" +
-	"\x06Create\x12,.metalstack.api.v2.TokenServiceCreateRequest\x1a-.metalstack.api.v2.TokenServiceCreateResponse\"\x04\xd8\xf3\x18\x03\x12k\n" +
-	"\x06Update\x12,.metalstack.api.v2.TokenServiceUpdateRequest\x1a-.metalstack.api.v2.TokenServiceUpdateResponse\"\x04\xd8\xf3\x18\x03\x12e\n" +
-	"\x04List\x12*.metalstack.api.v2.TokenServiceListRequest\x1a+.metalstack.api.v2.TokenServiceListResponse\"\x04\xd8\xf3\x18\x03\x12k\n" +
-	"\x06Revoke\x12,.metalstack.api.v2.TokenServiceRevokeRequest\x1a-.metalstack.api.v2.TokenServiceRevokeResponse\"\x04\xd8\xf3\x18\x03\x12n\n" +
-	"\aRefresh\x12-.metalstack.api.v2.TokenServiceRefreshRequest\x1a..metalstack.api.v2.TokenServiceRefreshResponse\"\x04\xd8\xf3\x18\x03B\xc0\x01\n" +
+	"\x03Get\x12).metalstack.api.v2.TokenServiceGetRequest\x1a*.metalstack.api.v2.TokenServiceGetResponse\"\x04\xd8\xf3\x18\x02\x12k\n" +
+	"\x06Create\x12,.metalstack.api.v2.TokenServiceCreateRequest\x1a-.metalstack.api.v2.TokenServiceCreateResponse\"\x04\xd8\xf3\x18\x02\x12k\n" +
+	"\x06Update\x12,.metalstack.api.v2.TokenServiceUpdateRequest\x1a-.metalstack.api.v2.TokenServiceUpdateResponse\"\x04\xd8\xf3\x18\x02\x12e\n" +
+	"\x04List\x12*.metalstack.api.v2.TokenServiceListRequest\x1a+.metalstack.api.v2.TokenServiceListResponse\"\x04\xd8\xf3\x18\x02\x12k\n" +
+	"\x06Revoke\x12,.metalstack.api.v2.TokenServiceRevokeRequest\x1a-.metalstack.api.v2.TokenServiceRevokeResponse\"\x04\xd8\xf3\x18\x02\x12n\n" +
+	"\aRefresh\x12-.metalstack.api.v2.TokenServiceRefreshRequest\x1a..metalstack.api.v2.TokenServiceRefreshResponse\"\x04\xd8\xf3\x18\x02B\xc0\x01\n" +
 	"\x15com.metalstack.api.v2B\n" +
 	"TokenProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
