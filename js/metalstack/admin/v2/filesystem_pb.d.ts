@@ -17,7 +17,7 @@ export type FilesystemServiceCreateRequest = Message<"metalstack.admin.v2.Filesy
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
-    filesystemLayout?: FilesystemLayout;
+    filesystemLayout?: FilesystemLayout | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.FilesystemServiceCreateRequest.
@@ -35,7 +35,7 @@ export type FilesystemServiceCreateResponse = Message<"metalstack.admin.v2.Files
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
-    filesystemLayout?: FilesystemLayout;
+    filesystemLayout?: FilesystemLayout | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.FilesystemServiceCreateResponse.
@@ -59,19 +59,19 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Name of this filesystemLayout
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this filesystemLayout
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Filesystems is a list of filesystems to create on a machine
      *
@@ -107,7 +107,7 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
      *
      * @generated from field: metalstack.api.v2.FilesystemLayoutConstraints constraints = 10;
      */
-    constraints?: FilesystemLayoutConstraints;
+    constraints?: FilesystemLayoutConstraints | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.FilesystemServiceUpdateRequest.
@@ -125,7 +125,7 @@ export type FilesystemServiceUpdateResponse = Message<"metalstack.admin.v2.Files
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
-    filesystemLayout?: FilesystemLayout;
+    filesystemLayout?: FilesystemLayout | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.FilesystemServiceUpdateResponse.
@@ -161,7 +161,7 @@ export type FilesystemServiceDeleteResponse = Message<"metalstack.admin.v2.Files
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
-    filesystemLayout?: FilesystemLayout;
+    filesystemLayout?: FilesystemLayout | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.FilesystemServiceDeleteResponse.

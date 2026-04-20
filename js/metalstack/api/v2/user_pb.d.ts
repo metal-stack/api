@@ -53,7 +53,7 @@ export type User = Message<"metalstack.api.v2.User"> & {
      *
      * @generated from field: metalstack.api.v2.Tenant default_tenant = 7;
      */
-    defaultTenant?: Tenant;
+    defaultTenant?: Tenant | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.User.
@@ -82,7 +82,7 @@ export type UserServiceGetResponse = Message<"metalstack.api.v2.UserServiceGetRe
      *
      * @generated from field: metalstack.api.v2.User user = 1;
      */
-    user?: User;
+    user?: User | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.UserServiceGetResponse.

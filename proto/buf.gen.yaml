@@ -16,7 +16,7 @@ plugins:
   - remote: buf.build/protocolbuffers/go:v1.36.11
     out: ../go
     opt: paths=source_relative
-  - remote: buf.build/connectrpc/go:v1.19.1
+  - remote: buf.build/connectrpc/go:v1.19.2
     out: ../go
     opt: paths=source_relative,simple
   # python
@@ -27,7 +27,7 @@ plugins:
   - remote: buf.build/connectrpc/python:v0.8.1
     out: ../python
   # js
-  - remote: buf.build/bufbuild/es:v2.11.0
+  - remote: buf.build/bufbuild/es:v2.12.0
     include_imports: true
     out: ../js
     opt: target=ts

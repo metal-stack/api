@@ -60,7 +60,7 @@ export type MachineProvisioningEvent = Message<"metalstack.infra.v2.MachineProvi
      *
      * @generated from field: google.protobuf.Timestamp time = 1;
      */
-    time?: Timestamp;
+    time?: Timestamp | undefined;
     /**
      * Event that occurred
      *

@@ -34,7 +34,7 @@ export type MachineServiceGetResponse = Message<"metalstack.admin.v2.MachineServ
      *
      * @generated from field: metalstack.api.v2.Machine machine = 1;
      */
-    machine?: Machine;
+    machine?: Machine | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceGetResponse.
@@ -52,14 +52,14 @@ export type MachineServiceListRequest = Message<"metalstack.admin.v2.MachineServ
      *
      * @generated from field: metalstack.api.v2.MachineQuery query = 1;
      */
-    query?: MachineQuery;
+    query?: MachineQuery | undefined;
     /**
      * Partition for which machines should be listed, could be left empty if only one partition is present
      * otherwise an error is thrown that the partition must be specified
      *
      * @generated from field: optional string partition = 2;
      */
-    partition?: string;
+    partition?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceListRequest.
@@ -154,7 +154,7 @@ export type MachineServiceGetBMCResponse = Message<"metalstack.admin.v2.MachineS
      *
      * @generated from field: metalstack.api.v2.MachineBMCReport bmc = 2;
      */
-    bmc?: MachineBMCReport;
+    bmc?: MachineBMCReport | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceGetBMCResponse.
@@ -172,7 +172,7 @@ export type MachineServiceListBMCRequest = Message<"metalstack.admin.v2.MachineS
      *
      * @generated from field: metalstack.api.v2.MachineBMCQuery query = 1;
      */
-    query?: MachineBMCQuery;
+    query?: MachineBMCQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceListBMCRequest.

@@ -16,7 +16,7 @@ export type AuditServiceListRequest = Message<"metalstack.admin.v2.AuditServiceL
      *
      * @generated from field: metalstack.api.v2.AuditQuery query = 1;
      */
-    query?: AuditQuery;
+    query?: AuditQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.AuditServiceListRequest.
@@ -58,7 +58,7 @@ export type AuditServiceGetRequest = Message<"metalstack.admin.v2.AuditServiceGe
      *
      * @generated from field: optional metalstack.api.v2.AuditPhase phase = 2;
      */
-    phase?: AuditPhase;
+    phase?: AuditPhase | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.AuditServiceGetRequest.
@@ -76,7 +76,7 @@ export type AuditServiceGetResponse = Message<"metalstack.admin.v2.AuditServiceG
      *
      * @generated from field: metalstack.api.v2.AuditTrace trace = 1;
      */
-    trace?: AuditTrace;
+    trace?: AuditTrace | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.AuditServiceGetResponse.

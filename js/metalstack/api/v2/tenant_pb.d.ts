@@ -23,7 +23,7 @@ export type Tenant = Message<"metalstack.api.v2.Tenant"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Name of the tenant
      *
@@ -89,7 +89,7 @@ export type TenantMember = Message<"metalstack.api.v2.TenantMember"> & {
      *
      * @generated from field: google.protobuf.Timestamp created_at = 4;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantMember.
@@ -149,13 +149,13 @@ export type TenantInvite = Message<"metalstack.api.v2.TenantInvite"> & {
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
-    expiresAt?: Timestamp;
+    expiresAt?: Timestamp | undefined;
     /**
      * JoinedAt the date when the member accepted this invite
      *
      * @generated from field: google.protobuf.Timestamp joined_at = 9;
      */
-    joinedAt?: Timestamp;
+    joinedAt?: Timestamp | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantInvite.
@@ -173,19 +173,19 @@ export type TenantServiceListRequest = Message<"metalstack.api.v2.TenantServiceL
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Name filters tenants by name
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Labels lists only projects containing the given labels
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 3;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantServiceListRequest.
@@ -227,25 +227,25 @@ export type TenantServiceCreateRequest = Message<"metalstack.api.v2.TenantServic
      *
      * @generated from field: optional string description = 2;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Email of the tenant, if not set will be inherited from the creator
      *
      * @generated from field: optional string email = 3;
      */
-    email?: string;
+    email?: string | undefined;
     /**
      * AvatarUrl of the tenant
      *
      * @generated from field: optional string avatar_url = 4;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
     /**
      * Labels on the tenant
      *
      * @generated from field: metalstack.api.v2.Labels labels = 5;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantServiceCreateRequest.
@@ -269,37 +269,37 @@ export type TenantServiceUpdateRequest = Message<"metalstack.api.v2.TenantServic
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Name of the tenant
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Email of the tenant
      *
      * @generated from field: optional string email = 4;
      */
-    email?: string;
+    email?: string | undefined;
     /**
      * Description of this tenant
      *
      * @generated from field: optional string description = 5;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * AvatarUrl of the tenant
      *
      * @generated from field: optional string avatar_url = 6;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
     /**
      * Labels on the tenant
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 7;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantServiceUpdateRequest.
@@ -335,7 +335,7 @@ export type TenantServiceGetResponse = Message<"metalstack.api.v2.TenantServiceG
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
     /**
      * TenantMembers of this tenant
      *
@@ -377,7 +377,7 @@ export type TenantServiceCreateResponse = Message<"metalstack.api.v2.TenantServi
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantServiceCreateResponse.
@@ -395,7 +395,7 @@ export type TenantServiceUpdateResponse = Message<"metalstack.api.v2.TenantServi
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantServiceUpdateResponse.
@@ -413,7 +413,7 @@ export type TenantServiceDeleteResponse = Message<"metalstack.api.v2.TenantServi
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantServiceDeleteResponse.
@@ -457,7 +457,7 @@ export type TenantServiceInviteResponse = Message<"metalstack.api.v2.TenantServi
      *
      * @generated from field: metalstack.api.v2.TenantInvite invite = 1;
      */
-    invite?: TenantInvite;
+    invite?: TenantInvite | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantServiceInviteResponse.
@@ -529,7 +529,7 @@ export type TenantServiceInviteGetResponse = Message<"metalstack.api.v2.TenantSe
      *
      * @generated from field: metalstack.api.v2.TenantInvite invite = 1;
      */
-    invite?: TenantInvite;
+    invite?: TenantInvite | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantServiceInviteGetResponse.
@@ -718,7 +718,7 @@ export type TenantServiceUpdateMemberResponse = Message<"metalstack.api.v2.Tenan
      *
      * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
      */
-    tenantMember?: TenantMember;
+    tenantMember?: TenantMember | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantServiceUpdateMemberResponse.

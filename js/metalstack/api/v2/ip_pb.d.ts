@@ -22,7 +22,7 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Ip is either ipv4 or ipv6 address
      *
@@ -65,7 +65,7 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
      *
      * @generated from field: optional string namespace = 9;
      */
-    namespace?: string;
+    namespace?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IP.
@@ -95,7 +95,7 @@ export type IPServiceGetRequest = Message<"metalstack.api.v2.IPServiceGetRequest
      *
      * @generated from field: optional string namespace = 3;
      */
-    namespace?: string;
+    namespace?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IPServiceGetRequest.
@@ -125,43 +125,43 @@ export type IPServiceCreateRequest = Message<"metalstack.api.v2.IPServiceCreateR
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of the ip
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * IP if given try to create this ip if still available
      *
      * @generated from field: optional string ip = 5;
      */
-    ip?: string;
+    ip?: string | undefined;
     /**
      * Machine for which this ip should get created
      *
      * @generated from field: optional string machine = 6;
      */
-    machine?: string;
+    machine?: string | undefined;
     /**
      * Labels to put onto the ip
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 7;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
     /**
      * Type of the IP, ether ephemeral (default), or static
      *
      * @generated from field: optional metalstack.api.v2.IPType type = 8;
      */
-    type?: IPType;
+    type?: IPType | undefined;
     /**
      * Addressfamily of the IP to create, defaults to ipv4
      *
      * @generated from field: optional metalstack.api.v2.IPAddressFamily address_family = 9;
      */
-    addressFamily?: IPAddressFamily;
+    addressFamily?: IPAddressFamily | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IPServiceCreateRequest.
@@ -185,7 +185,7 @@ export type IPServiceUpdateRequest = Message<"metalstack.api.v2.IPServiceUpdateR
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Project id of the ip
      *
@@ -197,25 +197,25 @@ export type IPServiceUpdateRequest = Message<"metalstack.api.v2.IPServiceUpdateR
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this ip
      *
      * @generated from field: optional string description = 5;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Type of this ip
      *
      * @generated from field: optional metalstack.api.v2.IPType type = 6;
      */
-    type?: IPType;
+    type?: IPType | undefined;
     /**
      * Labels on this ip
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 7;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IPServiceUpdateRequest.
@@ -239,7 +239,7 @@ export type IPServiceListRequest = Message<"metalstack.api.v2.IPServiceListReque
      *
      * @generated from field: metalstack.api.v2.IPQuery query = 2;
      */
-    query?: IPQuery;
+    query?: IPQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IPServiceListRequest.
@@ -257,67 +257,67 @@ export type IPQuery = Message<"metalstack.api.v2.IPQuery"> & {
      *
      * @generated from field: optional string ip = 1;
      */
-    ip?: string;
+    ip?: string | undefined;
     /**
      * Network from where the ips to list
      *
      * @generated from field: optional string network = 2;
      */
-    network?: string;
+    network?: string | undefined;
     /**
      * Project of the ips to list
      *
      * @generated from field: optional string project = 3;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Name of this ip
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Uuid for which this ips should get filtered
      *
      * @generated from field: optional string uuid = 5;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * Machine for which this ips should get filtered
      *
      * @generated from field: optional string machine = 6;
      */
-    machine?: string;
+    machine?: string | undefined;
     /**
      * ParentPrefixCidr for which this ips should get filtered
      *
      * @generated from field: optional string parent_prefix_cidr = 7;
      */
-    parentPrefixCidr?: string;
+    parentPrefixCidr?: string | undefined;
     /**
      * Labels for which this ips should get filtered
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 8;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
     /**
      * Static if set to true, this will be a Static ip
      *
      * @generated from field: optional metalstack.api.v2.IPType type = 9;
      */
-    type?: IPType;
+    type?: IPType | undefined;
     /**
      * Addressfamily of the IPs to list, defaults to all addressfamilies
      *
      * @generated from field: optional metalstack.api.v2.IPAddressFamily address_family = 10;
      */
-    addressFamily?: IPAddressFamily;
+    addressFamily?: IPAddressFamily | undefined;
     /**
      * Namespace can be specified to get the ip of a namespace.
      *
      * @generated from field: optional string namespace = 11;
      */
-    namespace?: string;
+    namespace?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IPQuery.
@@ -359,7 +359,7 @@ export type IPServiceGetResponse = Message<"metalstack.api.v2.IPServiceGetRespon
      *
      * @generated from field: metalstack.api.v2.IP ip = 1;
      */
-    ip?: IP;
+    ip?: IP | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IPServiceGetResponse.
@@ -377,7 +377,7 @@ export type IPServiceUpdateResponse = Message<"metalstack.api.v2.IPServiceUpdate
      *
      * @generated from field: metalstack.api.v2.IP ip = 1;
      */
-    ip?: IP;
+    ip?: IP | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IPServiceUpdateResponse.
@@ -395,7 +395,7 @@ export type IPServiceCreateResponse = Message<"metalstack.api.v2.IPServiceCreate
      *
      * @generated from field: metalstack.api.v2.IP ip = 1;
      */
-    ip?: IP;
+    ip?: IP | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IPServiceCreateResponse.
@@ -431,7 +431,7 @@ export type IPServiceDeleteResponse = Message<"metalstack.api.v2.IPServiceDelete
      *
      * @generated from field: metalstack.api.v2.IP ip = 1;
      */
-    ip?: IP;
+    ip?: IP | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.IPServiceDeleteResponse.

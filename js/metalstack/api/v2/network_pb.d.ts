@@ -40,7 +40,7 @@ export type NetworkServiceGetResponse = Message<"metalstack.api.v2.NetworkServic
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
-    network?: Network;
+    network?: Network | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkServiceGetResponse.
@@ -64,43 +64,43 @@ export type NetworkServiceCreateRequest = Message<"metalstack.api.v2.NetworkServ
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this network
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Partition where this network will be created
      *
      * @generated from field: optional string partition = 4;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Labels on this network
      *
      * @generated from field: metalstack.api.v2.Labels labels = 5;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
     /**
      * Parent Network points to the id of the parent network if any
      *
      * @generated from field: optional string parent_network = 6;
      */
-    parentNetwork?: string;
+    parentNetwork?: string | undefined;
     /**
      * Length per addressfamily
      *
      * @generated from field: optional metalstack.api.v2.ChildPrefixLength length = 7;
      */
-    length?: ChildPrefixLength;
+    length?: ChildPrefixLength | undefined;
     /**
      * AddressFamily to create, defaults to the same as the parent
      *
      * @generated from field: optional metalstack.api.v2.NetworkAddressFamily address_family = 8;
      */
-    addressFamily?: NetworkAddressFamily;
+    addressFamily?: NetworkAddressFamily | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkServiceCreateRequest.
@@ -118,7 +118,7 @@ export type NetworkServiceCreateResponse = Message<"metalstack.api.v2.NetworkSer
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
-    network?: Network;
+    network?: Network | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkServiceCreateResponse.
@@ -142,7 +142,7 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.api.v2.NetworkServ
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Project of the network
      *
@@ -154,19 +154,19 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.api.v2.NetworkServ
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this network
      *
      * @generated from field: optional string description = 5;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Labels on this network
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 6;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkServiceUpdateRequest.
@@ -184,7 +184,7 @@ export type NetworkServiceUpdateResponse = Message<"metalstack.api.v2.NetworkSer
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
-    network?: Network;
+    network?: Network | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkServiceUpdateResponse.
@@ -208,7 +208,7 @@ export type NetworkServiceListRequest = Message<"metalstack.api.v2.NetworkServic
      *
      * @generated from field: metalstack.api.v2.NetworkQuery query = 2;
      */
-    query?: NetworkQuery;
+    query?: NetworkQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkServiceListRequest.
@@ -250,7 +250,7 @@ export type NetworkServiceListBaseNetworksRequest = Message<"metalstack.api.v2.N
      *
      * @generated from field: metalstack.api.v2.NetworkQuery query = 2;
      */
-    query?: NetworkQuery;
+    query?: NetworkQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkServiceListBaseNetworksRequest.
@@ -310,7 +310,7 @@ export type NetworkServiceDeleteResponse = Message<"metalstack.api.v2.NetworkSer
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
-    network?: Network;
+    network?: Network | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkServiceDeleteResponse.
@@ -334,38 +334,38 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Name of this network
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this network
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Partition where this network will be created
      *
      * @generated from field: optional string partition = 5;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Project where this network belongs to
      *
      * @generated from field: optional string project = 6;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Namespace if specified, this network is namespaced and can therefore overlap with others
      * Will be equal with project most of the time
      *
      * @generated from field: optional string namespace = 7;
      */
-    namespace?: string;
+    namespace?: string | undefined;
     /**
      * Prefixes in this network
      *
@@ -383,13 +383,13 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
      *
      * @generated from field: metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
      */
-    defaultChildPrefixLength?: ChildPrefixLength;
+    defaultChildPrefixLength?: ChildPrefixLength | undefined;
     /**
      * Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
      *
      * @generated from field: metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
      */
-    minChildPrefixLength?: ChildPrefixLength;
+    minChildPrefixLength?: ChildPrefixLength | undefined;
     /**
      * Type of the network
      *
@@ -407,13 +407,13 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
      *
      * @generated from field: optional uint32 vrf = 14;
      */
-    vrf?: number;
+    vrf?: number | undefined;
     /**
      * Parent Network points to the id of the parent network if any
      *
      * @generated from field: optional string parent_network = 15;
      */
-    parentNetwork?: string;
+    parentNetwork?: string | undefined;
     /**
      * AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
      *
@@ -425,7 +425,7 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
      *
      * @generated from field: metalstack.api.v2.NetworkConsumption consumption = 17;
      */
-    consumption?: NetworkConsumption;
+    consumption?: NetworkConsumption | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Network.
@@ -443,37 +443,37 @@ export type NetworkQuery = Message<"metalstack.api.v2.NetworkQuery"> & {
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Name of this network
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this network
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Partition where this network will be created
      *
      * @generated from field: optional string partition = 4;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Project where this network belongs to
      *
      * @generated from field: optional string project = 5;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Namespace where this network belongs to
      *
      * @generated from field: optional string namespace = 6;
      */
-    namespace?: string;
+    namespace?: string | undefined;
     /**
      * Prefixes in this network
      *
@@ -491,37 +491,37 @@ export type NetworkQuery = Message<"metalstack.api.v2.NetworkQuery"> & {
      *
      * @generated from field: optional uint32 vrf = 9;
      */
-    vrf?: number;
+    vrf?: number | undefined;
     /**
      * Parent Network points to the id of the parent network if any
      *
      * @generated from field: optional string parent_network = 10;
      */
-    parentNetwork?: string;
+    parentNetwork?: string | undefined;
     /**
      * Addressfamily to query
      *
      * @generated from field: optional metalstack.api.v2.NetworkAddressFamily address_family = 11;
      */
-    addressFamily?: NetworkAddressFamily;
+    addressFamily?: NetworkAddressFamily | undefined;
     /**
      * Type of the network to query for
      *
      * @generated from field: optional metalstack.api.v2.NetworkType type = 12;
      */
-    type?: NetworkType;
+    type?: NetworkType | undefined;
     /**
      * NATType configured
      *
      * @generated from field: optional metalstack.api.v2.NATType nat_type = 13;
      */
-    natType?: NATType;
+    natType?: NATType | undefined;
     /**
      * Labels on this network
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 14;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkQuery.
@@ -539,13 +539,13 @@ export type ChildPrefixLength = Message<"metalstack.api.v2.ChildPrefixLength"> &
      *
      * @generated from field: optional uint32 ipv4 = 1;
      */
-    ipv4?: number;
+    ipv4?: number | undefined;
     /**
      * IPv6 bit length of this network in this addressfamily
      *
      * @generated from field: optional uint32 ipv6 = 2;
      */
-    ipv6?: number;
+    ipv6?: number | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ChildPrefixLength.
@@ -563,13 +563,13 @@ export type NetworkConsumption = Message<"metalstack.api.v2.NetworkConsumption">
      *
      * @generated from field: metalstack.api.v2.NetworkUsage ipv4 = 1;
      */
-    ipv4?: NetworkUsage;
+    ipv4?: NetworkUsage | undefined;
     /**
      * IPv6 network usage, this can be approximated for high numbers
      *
      * @generated from field: metalstack.api.v2.NetworkUsage ipv6 = 2;
      */
-    ipv6?: NetworkUsage;
+    ipv6?: NetworkUsage | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkConsumption.
@@ -585,25 +585,25 @@ export type NetworkUsage = Message<"metalstack.api.v2.NetworkUsage"> & {
     /**
      * the total available IPs
      *
-     * @generated from field: uint64 available_ips = 2;
+     * @generated from field: uint64 available_ips = 1;
      */
     availableIps: bigint;
     /**
      * the total used IPs
      *
-     * @generated from field: uint64 used_ips = 3;
+     * @generated from field: uint64 used_ips = 2;
      */
     usedIps: bigint;
     /**
      * the total available 2 bit Prefixes
      *
-     * @generated from field: uint64 available_prefixes = 4;
+     * @generated from field: uint64 available_prefixes = 3;
      */
     availablePrefixes: bigint;
     /**
      * the total used Prefixes
      *
-     * @generated from field: uint64 used_prefixes = 5;
+     * @generated from field: uint64 used_prefixes = 4;
      */
     usedPrefixes: bigint;
 };

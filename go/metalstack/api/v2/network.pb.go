@@ -1388,13 +1388,13 @@ func (x *NetworkConsumption) GetIpv6() *NetworkUsage {
 type NetworkUsage struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// the total available IPs
-	AvailableIps uint64 `protobuf:"varint,2,opt,name=available_ips,json=availableIps,proto3" json:"available_ips,omitempty"`
+	AvailableIps uint64 `protobuf:"varint,1,opt,name=available_ips,json=availableIps,proto3" json:"available_ips,omitempty"`
 	// the total used IPs
-	UsedIps uint64 `protobuf:"varint,3,opt,name=used_ips,json=usedIps,proto3" json:"used_ips,omitempty"`
+	UsedIps uint64 `protobuf:"varint,2,opt,name=used_ips,json=usedIps,proto3" json:"used_ips,omitempty"`
 	// the total available 2 bit Prefixes
-	AvailablePrefixes uint64 `protobuf:"varint,4,opt,name=available_prefixes,json=availablePrefixes,proto3" json:"available_prefixes,omitempty"`
+	AvailablePrefixes uint64 `protobuf:"varint,3,opt,name=available_prefixes,json=availablePrefixes,proto3" json:"available_prefixes,omitempty"`
 	// the total used Prefixes
-	UsedPrefixes  uint64 `protobuf:"varint,5,opt,name=used_prefixes,json=usedPrefixes,proto3" json:"used_prefixes,omitempty"`
+	UsedPrefixes  uint64 `protobuf:"varint,4,opt,name=used_prefixes,json=usedPrefixes,proto3" json:"used_prefixes,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1584,10 +1584,10 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x04ipv4\x18\x01 \x01(\v2\x1f.metalstack.api.v2.NetworkUsageR\x04ipv4\x123\n" +
 	"\x04ipv6\x18\x02 \x01(\v2\x1f.metalstack.api.v2.NetworkUsageR\x04ipv6\"\xa2\x01\n" +
 	"\fNetworkUsage\x12#\n" +
-	"\ravailable_ips\x18\x02 \x01(\x04R\favailableIps\x12\x19\n" +
-	"\bused_ips\x18\x03 \x01(\x04R\ausedIps\x12-\n" +
-	"\x12available_prefixes\x18\x04 \x01(\x04R\x11availablePrefixes\x12#\n" +
-	"\rused_prefixes\x18\x05 \x01(\x04R\fusedPrefixes*m\n" +
+	"\ravailable_ips\x18\x01 \x01(\x04R\favailableIps\x12\x19\n" +
+	"\bused_ips\x18\x02 \x01(\x04R\ausedIps\x12-\n" +
+	"\x12available_prefixes\x18\x03 \x01(\x04R\x11availablePrefixes\x12#\n" +
+	"\rused_prefixes\x18\x04 \x01(\x04R\fusedPrefixes*m\n" +
 	"\aNATType\x12\x18\n" +
 	"\x14NAT_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\rNAT_TYPE_NONE\x10\x01\x1a\b\x82\xb2\x19\x04none\x12+\n" +

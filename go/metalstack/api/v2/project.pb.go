@@ -1416,7 +1416,7 @@ func (x *ProjectServiceUpdateMemberRequest) GetRole() ProjectRole {
 type ProjectServiceUpdateMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ProjectMember is the updated project member
-	ProjectMember *ProjectMember `protobuf:"bytes,5,opt,name=project_member,json=projectMember,proto3" json:"project_member,omitempty"`
+	ProjectMember *ProjectMember `protobuf:"bytes,1,opt,name=project_member,json=projectMember,proto3" json:"project_member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1753,7 +1753,7 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\x06member\x18\x02 \x01(\tR\x06member\x12<\n" +
 	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"m\n" +
 	"\"ProjectServiceUpdateMemberResponse\x12G\n" +
-	"\x0eproject_member\x18\x05 \x01(\v2 .metalstack.api.v2.ProjectMemberR\rprojectMember\";\n" +
+	"\x0eproject_member\x18\x01 \x01(\v2 .metalstack.api.v2.ProjectMemberR\rprojectMember\";\n" +
 	"!ProjectServiceInviteAcceptRequest\x12\x16\n" +
 	"\x06secret\x18\x01 \x01(\tR\x06secret\"a\n" +
 	"\"ProjectServiceInviteAcceptResponse\x12\x18\n" +

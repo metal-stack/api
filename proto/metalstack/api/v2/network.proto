@@ -255,13 +255,13 @@ message NetworkConsumption {
 // NetworkUsage reports core metrics about available and used IPs or Prefixes in a Network.
 message NetworkUsage {
   // the total available IPs
-  uint64 available_ips = 2;
+  uint64 available_ips = 1;
   // the total used IPs
-  uint64 used_ips = 3;
+  uint64 used_ips = 2;
   // the total available 2 bit Prefixes
-  uint64 available_prefixes = 4;
+  uint64 available_prefixes = 3;
   // the total used Prefixes
-  uint64 used_prefixes = 5;
+  uint64 used_prefixes = 4;
 }
 
 // NATType defines how and if outgoing traffic is translated

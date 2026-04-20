@@ -294,7 +294,7 @@ message ProjectServiceUpdateMemberRequest {
 // ProjectServiceUpdateMemberResponse is the response payload to a update member request
 message ProjectServiceUpdateMemberResponse {
   // ProjectMember is the updated project member
-  ProjectMember project_member = 5;
+  ProjectMember project_member = 1;
 }
 
 // ProjectServiceInviteAcceptRequest is the request payload to a accept invite request

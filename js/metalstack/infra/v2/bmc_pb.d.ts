@@ -96,7 +96,7 @@ export type WaitForBMCCommandResponse = Message<"metalstack.infra.v2.WaitForBMCC
      *
      * @generated from field: metalstack.api.v2.MachineBMC machine_bmc = 3;
      */
-    machineBmc?: MachineBMC;
+    machineBmc?: MachineBMC | undefined;
     /**
      * CommandId is a unique ID which must be sent back after execution
      * It is usually in the form: <machine-uuid>:machine-bmc-command:<command>
@@ -128,7 +128,7 @@ export type BMCCommandDoneRequest = Message<"metalstack.infra.v2.BMCCommandDoneR
      *
      * @generated from field: optional string error = 2;
      */
-    error?: string;
+    error?: string | undefined;
 };
 /**
  * Describes the message metalstack.infra.v2.BMCCommandDoneRequest.

@@ -23,25 +23,25 @@ export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServ
      *
      * @generated from field: optional string description = 2;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Email of the tenant, if not set will be inherited from the creator
      *
      * @generated from field: optional string email = 3;
      */
-    email?: string;
+    email?: string | undefined;
     /**
      * AvatarUrl of the tenant
      *
      * @generated from field: optional string avatar_url = 4;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
     /**
      * Labels on the tenant
      *
      * @generated from field: metalstack.api.v2.Labels labels = 5;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceCreateRequest.
@@ -59,7 +59,7 @@ export type TenantServiceCreateResponse = Message<"metalstack.admin.v2.TenantSer
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
-    tenant?: Tenant;
+    tenant?: Tenant | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceCreateResponse.
@@ -77,19 +77,19 @@ export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServic
      *
      * @generated from field: optional string login = 1;
      */
-    login?: string;
+    login?: string | undefined;
     /**
      * Name filters tenants by this name
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Paging details for the list request
      *
      * @generated from field: metalstack.api.v2.Paging paging = 3;
      */
-    paging?: Paging;
+    paging?: Paging | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceListRequest.
@@ -113,7 +113,7 @@ export type TenantServiceListResponse = Message<"metalstack.admin.v2.TenantServi
      *
      * @generated from field: optional uint64 next_page = 2;
      */
-    nextPage?: bigint;
+    nextPage?: bigint | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceListResponse.
