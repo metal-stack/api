@@ -61,15 +61,19 @@ func TestValidateMachine(t *testing.T) {
 				Mac:     "00:00:00:00:00:00",
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error: address: value must be a valid host (hostname or IP address) and port pair",
+			wantErrorMessage: "validation error: address: must be a valid host (hostname or IP address) and port pair",
 		},
 		{
 			name: "Machine create, userdata with whitespaces",
 			msg: &apiv2.MachineServiceCreateRequest{
 				Project:   "9fdc7bd9-d412-4578-a20f-bf7c03f20135",
-				Partition: "partition-1",
+				Partition: new("partition-1"),
 				Name:      "testserver",
+				Image:     "debian-13",
 				Userdata:  new(" userdata with whitespaces"),
+				Networks: []*apiv2.MachineAllocationNetwork{
+					{Network: "internet"},
+				},
 			},
 			wantErr:          true,
 			wantErrorMessage: "validation error: userdata: value must not start or end with whitespace",
@@ -78,11 +82,15 @@ func TestValidateMachine(t *testing.T) {
 			name: "Machine create, one ssh public key with whitespaces",
 			msg: &apiv2.MachineServiceCreateRequest{
 				Project:   "9fdc7bd9-d412-4578-a20f-bf7c03f20135",
-				Partition: "partition-1",
+				Partition: new("partition-1"),
+				Image:     "debian-13",
 				Name:      "testserver",
 				SshPublicKeys: []string{
 					"good key",
 					" bad key ",
+				},
+				Networks: []*apiv2.MachineAllocationNetwork{
+					{Network: "internet"},
 				},
 			},
 			wantErr:          true,

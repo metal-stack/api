@@ -771,9 +771,9 @@ const file_metalstack_api_v2_image_proto_rawDesc = "" +
 	"\x1fIMAGE_CLASSIFICATION_DEPRECATED\x10\x03\x1a\x0e\x82\xb2\x19\n" +
 	"deprecated2\xd2\x02\n" +
 	"\fImageService\x12f\n" +
-	"\x03Get\x12).metalstack.api.v2.ImageServiceGetRequest\x1a*.metalstack.api.v2.ImageServiceGetResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12i\n" +
-	"\x04List\x12*.metalstack.api.v2.ImageServiceListRequest\x1a+.metalstack.api.v2.ImageServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12o\n" +
-	"\x06Latest\x12,.metalstack.api.v2.ImageServiceLatestRequest\x1a-.metalstack.api.v2.ImageServiceLatestResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02B\xc0\x01\n" +
+	"\x03Get\x12).metalstack.api.v2.ImageServiceGetRequest\x1a*.metalstack.api.v2.ImageServiceGetResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02\x12i\n" +
+	"\x04List\x12*.metalstack.api.v2.ImageServiceListRequest\x1a+.metalstack.api.v2.ImageServiceListResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02\x12o\n" +
+	"\x06Latest\x12,.metalstack.api.v2.ImageServiceLatestRequest\x1a-.metalstack.api.v2.ImageServiceLatestResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02B\xc0\x01\n" +
 	"\x15com.metalstack.api.v2B\n" +
 	"ImageProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 

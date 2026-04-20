@@ -67,7 +67,8 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
     project: string;
     /**
      * UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-     * this field overrules size and partition
+     * this field overrules size and partition.
+     * Can only be used with ADMIN_ROLE_EDITOR
      *
      * @generated from field: optional string uuid = 2;
      */
@@ -91,19 +92,25 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
      */
     hostname?: string;
     /**
-     * Partition the partition id to assign this machine to
+     * Partition the partition id to assign this machine to, must be omitted if uuid is given
      *
-     * @generated from field: string partition = 6;
+     * @generated from field: optional string partition = 6;
      */
-    partition: string;
+    partition?: string;
     /**
-     * Size of the machine to create
+     * Size of the machine to create, must be omitted if uuid is given
      *
-     * @generated from field: string size = 7;
+     * @generated from field: optional string size = 7;
      */
-    size: string;
+    size?: string;
     /**
      * Image which should be installed on this machine
+     * The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+     * - debian-13.0.20260402
+     * or in a simplified form which omits the patch version
+     * - debian-13.0
+     * If the fully qualified form is specified, exactly this image is taken regardless of the image classification
+     * if the short form is given, only the most recent images which has image classification supported is used.
      *
      * @generated from field: string image = 8;
      */
@@ -142,40 +149,34 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
      */
     networks: MachineAllocationNetwork[];
     /**
-     * IPs to to attach to this machine additionally
-     *
-     * @generated from field: repeated metalstack.api.v2.MachineAllocationIp ips = 14;
-     */
-    ips: MachineAllocationIp[];
-    /**
      * PlacementTags by default machines are spread across the racks inside a partition for every project.
      * if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
      *
-     * @generated from field: repeated string placement_tags = 15;
+     * @generated from field: repeated string placement_tags = 14;
      */
     placementTags: string[];
     /**
      * DNSServer the dns servers used for the machine
      *
-     * @generated from field: repeated metalstack.api.v2.DNSServer dns_servers = 16;
+     * @generated from field: repeated metalstack.api.v2.DNSServer dns_servers = 15;
      */
     dnsServers: DNSServer[];
     /**
      * NTPServer the ntp servers used for the machine
      *
-     * @generated from field: repeated metalstack.api.v2.NTPServer ntp_servers = 17;
+     * @generated from field: repeated metalstack.api.v2.NTPServer ntp_servers = 16;
      */
     ntpServers: NTPServer[];
     /**
      * AllocationType of this machine
      *
-     * @generated from field: metalstack.api.v2.MachineAllocationType allocation_type = 18;
+     * @generated from field: metalstack.api.v2.MachineAllocationType allocation_type = 17;
      */
     allocationType: MachineAllocationType;
     /**
      * FirewallSpec provides firewall specific parameters if allocationType is firewall
      *
-     * @generated from field: metalstack.api.v2.FirewallSpec firewall_spec = 19;
+     * @generated from field: metalstack.api.v2.FirewallSpec firewall_spec = 18;
      */
     firewallSpec?: FirewallSpec;
 };
@@ -719,42 +720,18 @@ export type MachineAllocationNetwork = Message<"metalstack.api.v2.MachineAllocat
      */
     network: string;
     /**
-     * NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
-     * By default one ip address is acquired per network for the machine
+     * IPs to to attach to this machine additionally
+     * If none given, one ip address is acquired per network for the machine
      *
-     * @generated from field: optional bool no_auto_acquire_ip = 2;
+     * @generated from field: repeated string ips = 2;
      */
-    noAutoAcquireIp?: boolean;
+    ips: string[];
 };
 /**
  * Describes the message metalstack.api.v2.MachineAllocationNetwork.
  * Use `create(MachineAllocationNetworkSchema)` to create a new message.
  */
 export declare const MachineAllocationNetworkSchema: GenMessage<MachineAllocationNetwork>;
-/**
- * MachineAllocationIp defines a ip and a optional namespace which should be attached to this machine during create
- *
- * @generated from message metalstack.api.v2.MachineAllocationIp
- */
-export type MachineAllocationIp = Message<"metalstack.api.v2.MachineAllocationIp"> & {
-    /**
-     * IP to to attach to this machine additionally
-     *
-     * @generated from field: string ip = 1;
-     */
-    ip: string;
-    /**
-     * Namespace where this ip was created, usually the project of the namespaced tenant network.
-     *
-     * @generated from field: optional string namespace = 2;
-     */
-    namespace?: string;
-};
-/**
- * Describes the message metalstack.api.v2.MachineAllocationIp.
- * Use `create(MachineAllocationIpSchema)` to create a new message.
- */
-export declare const MachineAllocationIpSchema: GenMessage<MachineAllocationIp>;
 /**
  * FirewallRules can be defined during firewall allocation
  *
@@ -1955,13 +1932,13 @@ export declare enum MachineState {
      */
     UNSPECIFIED = 0,
     /**
-     * MACHINE_STATE_RESERVED this machine is reserved
+     * MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid
      *
-     * @generated from enum value: MACHINE_STATE_RESERVED = 1;
+     * @generated from enum value: MACHINE_STATE_TAINTED = 1;
      */
-    RESERVED = 1,
+    TAINTED = 1,
     /**
-     * MACHINE_STATE_LOCKED this machine is locked
+     * MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or deleted
      *
      * @generated from enum value: MACHINE_STATE_LOCKED = 2;
      */

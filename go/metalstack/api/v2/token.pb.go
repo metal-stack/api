@@ -1038,14 +1038,14 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleR\x05value:\x028\x01:\x9f\x01\xbaH\x9b\x01\x1a\x98\x01\n" +
 	"\x1btoken.permissions.usertoken\x12)token type user must not have permissions\x1aN(this.token_type == 2 && this.permissions.size() == 0) || this.token_type != 2B\r\n" +
 	"\v_admin_roleB\r\n" +
-	"\v_infra_role\"\xa7\n" +
+	"\v_infra_role\"\xb3\n" +
 	"\n" +
 	"\x19TokenServiceCreateRequest\x12-\n" +
 	"\vdescription\x18\x01 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12O\n" +
 	"\vpermissions\x18\x02 \x03(\v2#.metalstack.api.v2.MethodPermissionB\b\xbaH\x05\x92\x01\x02\x10dR\vpermissions\x12G\n" +
-	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x12\xbaH\x0f\xaa\x01\f\x1a\x05\b\x81\xe7\x84\x0f2\x03\b\xd8\x04R\aexpires\x12y\n" +
-	"\rproject_roles\x18\x04 \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntryB\x14\xbaH\x11\x9a\x01\x0e\"\x05r\x03\xb0\x01\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12x\n" +
-	"\ftenant_roles\x18\x05 \x03(\v2=.metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntryB\x16\xbaH\x13\x9a\x01\x10\"\ar\x05\x10\x03\x18\x80\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
+	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x12\xbaH\x0f\xaa\x01\f\x1a\x05\b\x81\xe7\x84\x0f2\x03\b\xd8\x04R\aexpires\x12\x7f\n" +
+	"\rproject_roles\x18\x04 \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntryB\x1a\xbaH\x17\x9a\x01\x14\xc0\x95\xb8\xb1\x02\x01\"\x05r\x03\xb0\x01\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12~\n" +
+	"\ftenant_roles\x18\x05 \x03(\v2=.metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntryB\x1c\xbaH\x19\x9a\x01\x16\xc0\x95\xb8\xb1\x02\x01\"\ar\x05\x10\x03\x18\x80\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
 	"\n" +
 	"admin_role\x18\x06 \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x12J\n" +
 	"\n" +
@@ -1075,16 +1075,16 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"9\n" +
 	"\x19TokenServiceRevokeRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x1c\n" +
-	"\x1aTokenServiceRevokeResponse\"\xd5\n" +
+	"\x1aTokenServiceRevokeResponse\"\xe1\n" +
 	"\n" +
 	"\x19TokenServiceUpdateRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x00R\n" +
 	"updateMeta\x122\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12E\n" +
-	"\vpermissions\x18\x04 \x03(\v2#.metalstack.api.v2.MethodPermissionR\vpermissions\x12y\n" +
-	"\rproject_roles\x18\x05 \x03(\v2>.metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntryB\x14\xbaH\x11\x9a\x01\x0e\"\x05r\x03\xb0\x01\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12x\n" +
-	"\ftenant_roles\x18\x06 \x03(\v2=.metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntryB\x16\xbaH\x13\x9a\x01\x10\"\ar\x05\x10\x03\x18\x80\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
+	"\vpermissions\x18\x04 \x03(\v2#.metalstack.api.v2.MethodPermissionR\vpermissions\x12\x7f\n" +
+	"\rproject_roles\x18\x05 \x03(\v2>.metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntryB\x1a\xbaH\x17\x9a\x01\x14\xc0\x95\xb8\xb1\x02\x01\"\x05r\x03\xb0\x01\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12~\n" +
+	"\ftenant_roles\x18\x06 \x03(\v2=.metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntryB\x1c\xbaH\x19\x9a\x01\x16\xc0\x95\xb8\xb1\x02\x01\"\ar\x05\x10\x03\x18\x80\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
 	"\n" +
 	"admin_role\x18\a \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tadminRole\x88\x01\x01\x12J\n" +
 	"\n" +
@@ -1120,12 +1120,12 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x0eTOKEN_TYPE_API\x10\x01\x12\x13\n" +
 	"\x0fTOKEN_TYPE_USER\x10\x022\x90\x05\n" +
 	"\fTokenService\x12b\n" +
-	"\x03Get\x12).metalstack.api.v2.TokenServiceGetRequest\x1a*.metalstack.api.v2.TokenServiceGetResponse\"\x04\xd8\xf3\x18\x03\x12k\n" +
-	"\x06Create\x12,.metalstack.api.v2.TokenServiceCreateRequest\x1a-.metalstack.api.v2.TokenServiceCreateResponse\"\x04\xd8\xf3\x18\x03\x12k\n" +
-	"\x06Update\x12,.metalstack.api.v2.TokenServiceUpdateRequest\x1a-.metalstack.api.v2.TokenServiceUpdateResponse\"\x04\xd8\xf3\x18\x03\x12e\n" +
-	"\x04List\x12*.metalstack.api.v2.TokenServiceListRequest\x1a+.metalstack.api.v2.TokenServiceListResponse\"\x04\xd8\xf3\x18\x03\x12k\n" +
-	"\x06Revoke\x12,.metalstack.api.v2.TokenServiceRevokeRequest\x1a-.metalstack.api.v2.TokenServiceRevokeResponse\"\x04\xd8\xf3\x18\x03\x12n\n" +
-	"\aRefresh\x12-.metalstack.api.v2.TokenServiceRefreshRequest\x1a..metalstack.api.v2.TokenServiceRefreshResponse\"\x04\xd8\xf3\x18\x03B\xc0\x01\n" +
+	"\x03Get\x12).metalstack.api.v2.TokenServiceGetRequest\x1a*.metalstack.api.v2.TokenServiceGetResponse\"\x04\xd8\xf3\x18\x02\x12k\n" +
+	"\x06Create\x12,.metalstack.api.v2.TokenServiceCreateRequest\x1a-.metalstack.api.v2.TokenServiceCreateResponse\"\x04\xd8\xf3\x18\x02\x12k\n" +
+	"\x06Update\x12,.metalstack.api.v2.TokenServiceUpdateRequest\x1a-.metalstack.api.v2.TokenServiceUpdateResponse\"\x04\xd8\xf3\x18\x02\x12e\n" +
+	"\x04List\x12*.metalstack.api.v2.TokenServiceListRequest\x1a+.metalstack.api.v2.TokenServiceListResponse\"\x04\xd8\xf3\x18\x02\x12k\n" +
+	"\x06Revoke\x12,.metalstack.api.v2.TokenServiceRevokeRequest\x1a-.metalstack.api.v2.TokenServiceRevokeResponse\"\x04\xd8\xf3\x18\x02\x12n\n" +
+	"\aRefresh\x12-.metalstack.api.v2.TokenServiceRefreshRequest\x1a..metalstack.api.v2.TokenServiceRefreshResponse\"\x04\xd8\xf3\x18\x02B\xc0\x01\n" +
 	"\x15com.metalstack.api.v2B\n" +
 	"TokenProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 

@@ -1446,9 +1446,9 @@ const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\fRAID_LEVEL_0\x10\x01\x12\x10\n" +
 	"\fRAID_LEVEL_1\x10\x022\xf2\x02\n" +
 	"\x11FilesystemService\x12p\n" +
-	"\x03Get\x12..metalstack.api.v2.FilesystemServiceGetRequest\x1a/.metalstack.api.v2.FilesystemServiceGetResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12s\n" +
-	"\x04List\x12/.metalstack.api.v2.FilesystemServiceListRequest\x1a0.metalstack.api.v2.FilesystemServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12v\n" +
-	"\x05Match\x120.metalstack.api.v2.FilesystemServiceMatchRequest\x1a1.metalstack.api.v2.FilesystemServiceMatchResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02B\xc5\x01\n" +
+	"\x03Get\x12..metalstack.api.v2.FilesystemServiceGetRequest\x1a/.metalstack.api.v2.FilesystemServiceGetResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02\x12s\n" +
+	"\x04List\x12/.metalstack.api.v2.FilesystemServiceListRequest\x1a0.metalstack.api.v2.FilesystemServiceListResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02\x12v\n" +
+	"\x05Match\x120.metalstack.api.v2.FilesystemServiceMatchRequest\x1a1.metalstack.api.v2.FilesystemServiceMatchResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02B\xc5\x01\n" +
 	"\x15com.metalstack.api.v2B\x0fFilesystemProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

@@ -5,6 +5,7 @@ package metalstack.api.v2;
 import "buf/validate/validate.proto";
 
 // See https://protovalidate.com/schemas/predefined-rules/
+// See https://celbyexample.com/ for cel documentation
 
 extend buf.validate.StringRules {
   // Macaddress returns true if the given string is a valid macadress
@@ -81,5 +82,20 @@ extend buf.validate.RepeatedRules {
     id: "repeated.all_trimmed"
     message: "given values must not start or end with whitespace"
     expression: "this.all(m, m.trim().size() == m.size())"
+  }];
+}
+
+extend buf.validate.MapRules {
+  // Keys and Values trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+  optional bool keys_and_values_trimmed = 80068951 [(buf.validate.predefined).cel = {
+    id: "map.keys_and_values_trimmed"
+    message: "keys and values must not start or end with whitespace"
+    expression: "this.all(k, k.trim().size() == k.size()) && this.all(v, v.trim().size() == v.size())"
+  }];
+  // Keys trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+  optional bool keys_trimmed = 80068952 [(buf.validate.predefined).cel = {
+    id: "map.keys_trimmed"
+    message: "keys must not start or end with whitespace"
+    expression: "this.all(k, k.trim().size() == k.size())"
   }];
 }
