@@ -264,7 +264,7 @@ const file_metalstack_api_v2_method_proto_rawDesc = "" +
 	"\v_infra_role2\x83\x02\n" +
 	"\rMethodService\x12g\n" +
 	"\x04List\x12+.metalstack.api.v2.MethodServiceListRequest\x1a,.metalstack.api.v2.MethodServiceListResponse\"\x04\xd8\xf3\x18\x01\x12\x88\x01\n" +
-	"\x0fTokenScopedList\x126.metalstack.api.v2.MethodServiceTokenScopedListRequest\x1a7.metalstack.api.v2.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x03B\xc1\x01\n" +
+	"\x0fTokenScopedList\x126.metalstack.api.v2.MethodServiceTokenScopedListRequest\x1a7.metalstack.api.v2.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x02B\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vMethodProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

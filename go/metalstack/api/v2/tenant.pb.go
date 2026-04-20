@@ -1773,8 +1773,8 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"!TenantServiceUpdateMemberResponse\x12D\n" +
 	"\rtenant_member\x18\x01 \x01(\v2\x1f.metalstack.api.v2.TenantMemberR\ftenantMember2\xc7\f\n" +
 	"\rTenantService\x12q\n" +
-	"\x06Create\x12-.metalstack.api.v2.TenantServiceCreateRequest\x1a..metalstack.api.v2.TenantServiceCreateResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x01\x12k\n" +
-	"\x04List\x12+.metalstack.api.v2.TenantServiceListRequest\x1a,.metalstack.api.v2.TenantServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12l\n" +
+	"\x06Create\x12-.metalstack.api.v2.TenantServiceCreateRequest\x1a..metalstack.api.v2.TenantServiceCreateResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x01\x12k\n" +
+	"\x04List\x12+.metalstack.api.v2.TenantServiceListRequest\x1a,.metalstack.api.v2.TenantServiceListResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02\x12l\n" +
 	"\x03Get\x12*.metalstack.api.v2.TenantServiceGetRequest\x1a+.metalstack.api.v2.TenantServiceGetResponse\"\f\xc2\xf3\x18\x04\x01\x02\x03\x04\xe0\xf3\x18\x02\x12s\n" +
 	"\x06Update\x12-.metalstack.api.v2.TenantServiceUpdateRequest\x1a..metalstack.api.v2.TenantServiceUpdateResponse\"\n" +
 	"\xc2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12s\n" +
@@ -1784,10 +1784,10 @@ const file_metalstack_api_v2_tenant_proto_rawDesc = "" +
 	"\fRemoveMember\x123.metalstack.api.v2.TenantServiceRemoveMemberRequest\x1a4.metalstack.api.v2.TenantServiceRemoveMemberResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x84\x01\n" +
 	"\fUpdateMember\x123.metalstack.api.v2.TenantServiceUpdateMemberRequest\x1a4.metalstack.api.v2.TenantServiceUpdateMemberResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12r\n" +
 	"\x06Invite\x12-.metalstack.api.v2.TenantServiceInviteRequest\x1a..metalstack.api.v2.TenantServiceInviteResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x83\x01\n" +
-	"\fInviteAccept\x123.metalstack.api.v2.TenantServiceInviteAcceptRequest\x1a4.metalstack.api.v2.TenantServiceInviteAcceptResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x01\x12\x84\x01\n" +
+	"\fInviteAccept\x123.metalstack.api.v2.TenantServiceInviteAcceptRequest\x1a4.metalstack.api.v2.TenantServiceInviteAcceptResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x01\x12\x84\x01\n" +
 	"\fInviteDelete\x123.metalstack.api.v2.TenantServiceInviteDeleteRequest\x1a4.metalstack.api.v2.TenantServiceInviteDeleteResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x81\x01\n" +
 	"\vInvitesList\x122.metalstack.api.v2.TenantServiceInvitesListRequest\x1a3.metalstack.api.v2.TenantServiceInvitesListResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x02\x12z\n" +
-	"\tInviteGet\x120.metalstack.api.v2.TenantServiceInviteGetRequest\x1a1.metalstack.api.v2.TenantServiceInviteGetResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02B\xc1\x01\n" +
+	"\tInviteGet\x120.metalstack.api.v2.TenantServiceInviteGetRequest\x1a1.metalstack.api.v2.TenantServiceInviteGetResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02B\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vTenantProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

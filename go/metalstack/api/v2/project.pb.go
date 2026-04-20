@@ -1764,7 +1764,7 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\x06secret\x18\x02 \x01(\tR\x06secret\"$\n" +
 	"\"ProjectServiceInviteDeleteResponse2\xe2\f\n" +
 	"\x0eProjectService\x12m\n" +
-	"\x04List\x12,.metalstack.api.v2.ProjectServiceListRequest\x1a-.metalstack.api.v2.ProjectServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12m\n" +
+	"\x04List\x12,.metalstack.api.v2.ProjectServiceListRequest\x1a-.metalstack.api.v2.ProjectServiceListResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02\x12m\n" +
 	"\x03Get\x12+.metalstack.api.v2.ProjectServiceGetRequest\x1a,.metalstack.api.v2.ProjectServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12u\n" +
 	"\x06Create\x12..metalstack.api.v2.ProjectServiceCreateRequest\x1a/.metalstack.api.v2.ProjectServiceCreateResponse\"\n" +
 	"\xc2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12t\n" +
@@ -1775,10 +1775,10 @@ const file_metalstack_api_v2_project_proto_rawDesc = "" +
 	"\fRemoveMember\x124.metalstack.api.v2.ProjectServiceRemoveMemberRequest\x1a5.metalstack.api.v2.ProjectServiceRemoveMemberResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x86\x01\n" +
 	"\fUpdateMember\x124.metalstack.api.v2.ProjectServiceUpdateMemberRequest\x1a5.metalstack.api.v2.ProjectServiceUpdateMemberResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n" +
 	"\x06Invite\x12..metalstack.api.v2.ProjectServiceInviteRequest\x1a/.metalstack.api.v2.ProjectServiceInviteResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x85\x01\n" +
-	"\fInviteAccept\x124.metalstack.api.v2.ProjectServiceInviteAcceptRequest\x1a5.metalstack.api.v2.ProjectServiceInviteAcceptResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x01\x12\x86\x01\n" +
+	"\fInviteAccept\x124.metalstack.api.v2.ProjectServiceInviteAcceptRequest\x1a5.metalstack.api.v2.ProjectServiceInviteAcceptResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x01\x12\x86\x01\n" +
 	"\fInviteDelete\x124.metalstack.api.v2.ProjectServiceInviteDeleteRequest\x1a5.metalstack.api.v2.ProjectServiceInviteDeleteResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x83\x01\n" +
 	"\vInvitesList\x123.metalstack.api.v2.ProjectServiceInvitesListRequest\x1a4.metalstack.api.v2.ProjectServiceInvitesListResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x02\x12|\n" +
-	"\tInviteGet\x121.metalstack.api.v2.ProjectServiceInviteGetRequest\x1a2.metalstack.api.v2.ProjectServiceInviteGetResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02B\xc2\x01\n" +
+	"\tInviteGet\x121.metalstack.api.v2.ProjectServiceInviteGetRequest\x1a2.metalstack.api.v2.ProjectServiceInviteGetResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02B\xc2\x01\n" +
 	"\x15com.metalstack.api.v2B\fProjectProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

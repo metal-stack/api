@@ -5,6 +5,7 @@ package metalstack.api.v2;
 import "buf/validate/validate.proto";
 
 // See https://protovalidate.com/schemas/predefined-rules/
+// See https://celbyexample.com/ for cel documentation
 
 extend buf.validate.StringRules {
   // Macaddress returns true if the given string is a valid macadress

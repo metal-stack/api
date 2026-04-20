@@ -15,7 +15,7 @@ func TestValidateIP(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation errors:
- - uuid: value must be a valid UUID
+ - uuid: must be a valid UUID
  - ip: value is empty, which is not a valid IP address
  - name: must be within 2 and 128 characters
  - network: must be within 2 and 128 characters

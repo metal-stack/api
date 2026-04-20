@@ -312,7 +312,7 @@ const (
 	// VISIBILITY_PUBLIC specifies that this service is accessible without authentication
 	Visibility_VISIBILITY_PUBLIC Visibility = 1
 	// VISIBILITY_SELF enable call this endpoint from the authenticated user only
-	Visibility_VISIBILITY_SELF Visibility = 3
+	Visibility_VISIBILITY_SELF Visibility = 2
 )
 
 // Enum value maps for Visibility.
@@ -320,12 +320,12 @@ var (
 	Visibility_name = map[int32]string{
 		0: "VISIBILITY_UNSPECIFIED",
 		1: "VISIBILITY_PUBLIC",
-		3: "VISIBILITY_SELF",
+		2: "VISIBILITY_SELF",
 	}
 	Visibility_value = map[string]int32{
 		"VISIBILITY_UNSPECIFIED": 0,
 		"VISIBILITY_PUBLIC":      1,
-		"VISIBILITY_SELF":        3,
+		"VISIBILITY_SELF":        2,
 	}
 )
 
@@ -921,7 +921,7 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"Visibility\x12\x1a\n" +
 	"\x16VISIBILITY_UNSPECIFIED\x10\x00\x12\x15\n" +
 	"\x11VISIBILITY_PUBLIC\x10\x01\x12\x13\n" +
-	"\x0fVISIBILITY_SELF\x10\x03*R\n" +
+	"\x0fVISIBILITY_SELF\x10\x02*R\n" +
 	"\bAuditing\x12\x18\n" +
 	"\x14AUDITING_UNSPECIFIED\x10\x00\x12\x15\n" +
 	"\x11AUDITING_INCLUDED\x10\x01\x12\x15\n" +

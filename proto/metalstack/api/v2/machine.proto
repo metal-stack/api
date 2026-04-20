@@ -76,7 +76,8 @@ message MachineServiceCreateRequest {
   // Project of the machine
   string project = 1 [(buf.validate.field).string.uuid = true];
   // UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-  // this field overrules size and partition
+  // this field overrules size and partition.
+  // Can only be used with ADMIN_ROLE_EDITOR
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // Name of this machine
   string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -84,16 +85,22 @@ message MachineServiceCreateRequest {
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Hostname the hostname for the allocated machine (defaults to metal)
   optional string hostname = 5 [(buf.validate.field).string.hostname = true];
-  // Partition the partition id to assign this machine to
-  string partition = 6 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // Size of the machine to create
-  string size = 7 [(buf.validate.field).string = {max_len: 128}];
+  // Partition the partition id to assign this machine to, must be omitted if uuid is given
+  optional string partition = 6 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  // Size of the machine to create, must be omitted if uuid is given
+  optional string size = 7 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Image which should be installed on this machine
-  string image = 8 [(buf.validate.field).string = {max_len: 128}];
+  // The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+  // - debian-13.0.20260402
+  // or in a simplified form which omits the patch version
+  // - debian-13.0
+  // If the fully qualified form is specified, exactly this image is taken regardless of the image classification
+  // if the short form is given, only the most recent images which has image classification supported is used.
+  string image = 8 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // FilesystemLayout which should be applied for the operating system installation
   // Is defaulted by a lookup at the available fsls for this size and image.
   // Can be specified to test new fsls during development of fsls
-  optional string filesystem_layout = 9;
+  optional string filesystem_layout = 9 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
   repeated string ssh_public_keys = 10 [
     (buf.validate.field).repeated = {
@@ -123,20 +130,18 @@ message MachineServiceCreateRequest {
   // Labels to be attached to this machine allocation
   Labels labels = 12;
   // Networks the networks that this machine will be placed in.
-  repeated MachineAllocationNetwork networks = 13;
-  // IPs to to attach to this machine additionally
-  repeated MachineAllocationIp ips = 14;
+  repeated MachineAllocationNetwork networks = 13 [(buf.validate.field).repeated.min_items = 1];
   // PlacementTags by default machines are spread across the racks inside a partition for every project.
   // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
-  repeated string placement_tags = 15 [(buf.validate.field).repeated.max_items = 64];
+  repeated string placement_tags = 14 [(buf.validate.field).repeated.max_items = 64];
   // DNSServer the dns servers used for the machine
-  repeated DNSServer dns_servers = 16 [(buf.validate.field).repeated.max_items = 3];
+  repeated DNSServer dns_servers = 15 [(buf.validate.field).repeated.max_items = 3];
   // NTPServer the ntp servers used for the machine
-  repeated NTPServer ntp_servers = 17 [(buf.validate.field).repeated.max_items = 10];
+  repeated NTPServer ntp_servers = 16 [(buf.validate.field).repeated.max_items = 10];
   // AllocationType of this machine
-  MachineAllocationType allocation_type = 18 [(buf.validate.field).enum.defined_only = true];
+  MachineAllocationType allocation_type = 17 [(buf.validate.field).enum.defined_only = true];
   // FirewallSpec provides firewall specific parameters if allocationType is firewall
-  FirewallSpec firewall_spec = 19;
+  FirewallSpec firewall_spec = 18;
 }
 
 // FirewallSpec contains firewall specific firewall creation parameters
@@ -358,17 +363,9 @@ message MachineAllocation {
 message MachineAllocationNetwork {
   // Network the id of the network that this machine will be placed in
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
-  // By default one ip address is acquired per network for the machine
-  optional bool no_auto_acquire_ip = 2;
-}
-
-// MachineAllocationIp defines a ip and a optional namespace which should be attached to this machine during create
-message MachineAllocationIp {
-  // IP to to attach to this machine additionally
-  string ip = 1 [(buf.validate.field).string.ip = true];
-  // Namespace where this ip was created, usually the project of the namespaced tenant network.
-  optional string namespace = 2 [(buf.validate.field).string.uuid = true];
+  // IPs to to attach to this machine additionally
+  // If none given, one ip address is acquired per network for the machine
+  repeated string ips = 2 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
 // FirewallRules can be defined during firewall allocation
@@ -523,9 +520,9 @@ message MachineBlockDevice {
 enum MachineState {
   // MACHINE_STATE_UNSPECIFIED is not specified
   MACHINE_STATE_UNSPECIFIED = 0 [(enum_string_value) = ""];
-  // MACHINE_STATE_RESERVED this machine is reserved
-  MACHINE_STATE_RESERVED = 1 [(enum_string_value) = "reserved"];
-  // MACHINE_STATE_LOCKED this machine is locked
+  // MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid
+  MACHINE_STATE_TAINTED = 1 [(enum_string_value) = "tainted"];
+  // MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or deleted
   MACHINE_STATE_LOCKED = 2 [(enum_string_value) = "locked"];
   // MACHINE_STATE_AVAILABLE this machine is available for all
   MACHINE_STATE_AVAILABLE = 3 [(enum_string_value) = "available"];
@@ -763,15 +760,9 @@ message MachineQuery {
   // Name of the machine to get
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Partition of the machine to get
-  optional string partition = 3 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string partition = 3 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Size of the machine to get
-  optional string size = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string size = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Rack of the machine to get
   optional string rack = 5 [(buf.validate.field).string = {
     min_len: 2
@@ -815,20 +806,11 @@ message MachineAllocationQuery {
   // Project of the machine to get
   optional string project = 3 [(buf.validate.field).string.uuid = true];
   // Image of the machine to get
-  optional string image = 4 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string image = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // FilesystemLayout of the machine to get
-  optional string filesystem_layout = 5 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string filesystem_layout = 5 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Hostname of the machine to get
-  optional string hostname = 6 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string hostname = 6 [(buf.validate.field).string.hostname = true];
   // AllocationType of this machine
   optional MachineAllocationType allocation_type = 7 [(buf.validate.field).enum.defined_only = true];
   // Labels for which this machine allocation should get filtered

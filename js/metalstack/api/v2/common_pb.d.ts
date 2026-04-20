@@ -322,9 +322,9 @@ export declare enum Visibility {
     /**
      * VISIBILITY_SELF enable call this endpoint from the authenticated user only
      *
-     * @generated from enum value: VISIBILITY_SELF = 3;
+     * @generated from enum value: VISIBILITY_SELF = 2;
      */
-    SELF = 3
+    SELF = 2
 }
 /**
  * Describes the enum metalstack.api.v2.Visibility.

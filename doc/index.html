@@ -1174,10 +1174,6 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.MachineAllocationIp"><span class="badge">M</span>MachineAllocationIp</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.MachineAllocationNetwork"><span class="badge">M</span>MachineAllocationNetwork</a>
                 </li>
               
@@ -3293,7 +3289,7 @@ having a direct membership within the tenant.</p></td>
             
               <tr>
                 <td>VISIBILITY_SELF</td>
-                <td>3</td>
+                <td>2</td>
                 <td><p>VISIBILITY_SELF enable call this endpoint from the authenticated user only</p></td>
               </tr>
             
@@ -9831,37 +9827,6 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
 
         
       
-        <h3 id="metalstack.api.v2.MachineAllocationIp">MachineAllocationIp</h3>
-        <p>MachineAllocationIp defines a ip and a optional namespace which should be attached to this machine during create</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>ip</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>IP to to attach to this machine additionally </p></td>
-                </tr>
-              
-                <tr>
-                  <td>namespace</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Namespace where this ip was created, usually the project of the namespaced tenant network. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="metalstack.api.v2.MachineAllocationNetwork">MachineAllocationNetwork</h3>
         <p>MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired</p>
 
@@ -9880,11 +9845,11 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
                 </tr>
               
                 <tr>
-                  <td>no_auto_acquire_ip</td>
-                  <td><a href="#bool">bool</a></td>
-                  <td>optional</td>
-                  <td><p>NoAutoAcquireIp will prevent automatic ip acquirement per network if set to true.
-By default one ip address is acquired per network for the machine </p></td>
+                  <td>ips</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>IPs to to attach to this machine additionally
+If none given, one ip address is acquired per network for the machine </p></td>
                 </tr>
               
             </tbody>
@@ -11180,7 +11145,8 @@ Only useful for admins. </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-this field overrules size and partition </p></td>
+this field overrules size and partition.
+Can only be used with ADMIN_ROLE_EDITOR </p></td>
                 </tr>
               
                 <tr>
@@ -11207,22 +11173,28 @@ this field overrules size and partition </p></td>
                 <tr>
                   <td>partition</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Partition the partition id to assign this machine to </p></td>
+                  <td>optional</td>
+                  <td><p>Partition the partition id to assign this machine to, must be omitted if uuid is given </p></td>
                 </tr>
               
                 <tr>
                   <td>size</td>
                   <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Size of the machine to create </p></td>
+                  <td>optional</td>
+                  <td><p>Size of the machine to create, must be omitted if uuid is given </p></td>
                 </tr>
               
                 <tr>
                   <td>image</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Image which should be installed on this machine </p></td>
+                  <td><p>Image which should be installed on this machine
+The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+- debian-13.0.20260402
+or in a simplified form which omits the patch version
+- debian-13.0
+If the fully qualified form is specified, exactly this image is taken regardless of the image classification
+if the short form is given, only the most recent images which has image classification supported is used. </p></td>
                 </tr>
               
                 <tr>
@@ -11261,13 +11233,6 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
                   <td><a href="#metalstack.api.v2.MachineAllocationNetwork">MachineAllocationNetwork</a></td>
                   <td>repeated</td>
                   <td><p>Networks the networks that this machine will be placed in. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ips</td>
-                  <td><a href="#metalstack.api.v2.MachineAllocationIp">MachineAllocationIp</a></td>
-                  <td>repeated</td>
-                  <td><p>IPs to to attach to this machine additionally </p></td>
                 </tr>
               
                 <tr>
@@ -12118,15 +12083,15 @@ if placement tags are provided, the machine candidate has an additional anti-aff
               </tr>
             
               <tr>
-                <td>MACHINE_STATE_RESERVED</td>
+                <td>MACHINE_STATE_TAINTED</td>
                 <td>1</td>
-                <td><p>MACHINE_STATE_RESERVED this machine is reserved</p></td>
+                <td><p>MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid</p></td>
               </tr>
             
               <tr>
                 <td>MACHINE_STATE_LOCKED</td>
                 <td>2</td>
-                <td><p>MACHINE_STATE_LOCKED this machine is locked</p></td>
+                <td><p>MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or deleted</p></td>
               </tr>
             
               <tr>
