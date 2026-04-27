@@ -34,7 +34,7 @@ export type FilesystemServiceListRequest = Message<"metalstack.api.v2.Filesystem
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.FilesystemServiceListRequest.
@@ -52,7 +52,7 @@ export type FilesystemServiceGetResponse = Message<"metalstack.api.v2.Filesystem
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
-    filesystemLayout?: FilesystemLayout;
+    filesystemLayout?: FilesystemLayout | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.FilesystemServiceGetResponse.
@@ -174,7 +174,7 @@ export type FilesystemServiceMatchResponse = Message<"metalstack.api.v2.Filesyst
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
-    filesystemLayout?: FilesystemLayout;
+    filesystemLayout?: FilesystemLayout | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.FilesystemServiceMatchResponse.
@@ -198,19 +198,19 @@ export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Name of this filesystemLayout
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this filesystemLayout
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Filesystems is a list of filesystems to create on a machine
      *
@@ -246,7 +246,7 @@ export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
      *
      * @generated from field: metalstack.api.v2.FilesystemLayoutConstraints constraints = 10;
      */
-    constraints?: FilesystemLayoutConstraints;
+    constraints?: FilesystemLayoutConstraints | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.FilesystemLayout.
@@ -302,25 +302,25 @@ export type Filesystem = Message<"metalstack.api.v2.Filesystem"> & {
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this filesystem
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Path the mountpoint where this filesystem should be mounted on
      *
      * @generated from field: optional string path = 5;
      */
-    path?: string;
+    path?: string | undefined;
     /**
      * Label optional label for this this filesystem
      *
      * @generated from field: optional string label = 6;
      */
-    label?: string;
+    label?: string | undefined;
     /**
      * MountOptions the options to use to mount this filesystem
      *
@@ -422,7 +422,7 @@ export type DiskPartition = Message<"metalstack.api.v2.DiskPartition"> & {
      *
      * @generated from field: optional string label = 2;
      */
-    label?: string;
+    label?: string | undefined;
     /**
      * Size size in mebibytes (MiB) of this partition"
      *
@@ -434,7 +434,7 @@ export type DiskPartition = Message<"metalstack.api.v2.DiskPartition"> & {
      *
      * @generated from field: optional metalstack.api.v2.GPTType gpt_type = 4;
      */
-    gptType?: GPTType;
+    gptType?: GPTType | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.DiskPartition.

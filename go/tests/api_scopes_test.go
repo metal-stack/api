@@ -141,14 +141,18 @@ func Test_FieldNumbering(t *testing.T) {
 
 		for _, mt := range fd.GetMessageType() {
 			var (
-				firstFiled = true
+				firstField = true
 				lastNumber int32
 			)
 
 			for _, field := range mt.GetField() {
 				if field.Number != nil {
-					if firstFiled {
-						firstFiled = false
+					if firstField {
+						// Enable if the first field must start with 1
+						// if *field.Number != 1 {
+						// 	errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *mt.Name, *field.Name, 1, *field.Number))
+						// }
+						firstField = false
 					} else {
 						if lastNumber+1 != *field.Number {
 							errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *mt.Name, *field.Name, lastNumber+1, *field.Number))
@@ -161,14 +165,17 @@ func Test_FieldNumbering(t *testing.T) {
 
 		for _, et := range fd.GetEnumType() {
 			var (
-				firstFiled = true
+				firstField = true
 				lastNumber int32
 			)
 
 			for _, value := range et.GetValue() {
 				if value.Number != nil {
-					if firstFiled {
-						firstFiled = false
+					if firstField {
+						if *value.Number != 0 {
+							errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *et.Name, *value.Name, 0, *value.Number))
+						}
+						firstField = false
 					} else {
 						if lastNumber+1 != *value.Number {
 							errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *et.Name, *value.Name, lastNumber+1, *value.Number))

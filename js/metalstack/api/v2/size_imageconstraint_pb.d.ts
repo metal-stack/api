@@ -69,19 +69,19 @@ export type SizeImageConstraint = Message<"metalstack.api.v2.SizeImageConstraint
      *
      * @generated from field: metalstack.api.v2.Meta meta = 3;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Name of this size image constraint
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this size image constraint
      *
      * @generated from field: optional string description = 5;
      */
-    description?: string;
+    description?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SizeImageConstraint.
@@ -127,19 +127,19 @@ export type SizeImageConstraintQuery = Message<"metalstack.api.v2.SizeImageConst
      *
      * @generated from field: optional string size = 1;
      */
-    size?: string;
+    size?: string | undefined;
     /**
      * Name of the size image constraint to query
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of the size image constraint to query
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SizeImageConstraintQuery.

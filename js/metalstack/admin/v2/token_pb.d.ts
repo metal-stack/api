@@ -16,7 +16,7 @@ export type TokenServiceListRequest = Message<"metalstack.admin.v2.TokenServiceL
      *
      * @generated from field: optional string user = 1;
      */
-    user?: string;
+    user?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TokenServiceListRequest.
@@ -87,13 +87,13 @@ export type TokenServiceCreateRequest = Message<"metalstack.admin.v2.TokenServic
      *
      * @generated from field: optional string user = 1;
      */
-    user?: string;
+    user?: string | undefined;
     /**
      * TokenCreateRequest which should be created
      *
      * @generated from field: metalstack.api.v2.TokenServiceCreateRequest token_create_request = 2;
      */
-    tokenCreateRequest?: TokenServiceCreateRequest$1;
+    tokenCreateRequest?: TokenServiceCreateRequest$1 | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TokenServiceCreateRequest.
@@ -111,7 +111,7 @@ export type TokenServiceCreateResponse = Message<"metalstack.admin.v2.TokenServi
      *
      * @generated from field: metalstack.api.v2.Token token = 1;
      */
-    token?: Token;
+    token?: Token | undefined;
     /**
      * Secret is the body if the JWT token, should be used in API requests as bearer token
      *

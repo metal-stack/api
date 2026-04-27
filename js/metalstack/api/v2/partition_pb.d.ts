@@ -22,7 +22,7 @@ export type Partition = Message<"metalstack.api.v2.Partition"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Description of this partition
      *
@@ -34,7 +34,7 @@ export type Partition = Message<"metalstack.api.v2.Partition"> & {
      *
      * @generated from field: metalstack.api.v2.PartitionBootConfiguration boot_configuration = 4;
      */
-    bootConfiguration?: PartitionBootConfiguration;
+    bootConfiguration?: PartitionBootConfiguration | undefined;
     /**
      * DNSServers for this partition
      *
@@ -71,13 +71,13 @@ export type PartitionQuery = Message<"metalstack.api.v2.PartitionQuery"> & {
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Labels lists only partitions containing the given labels
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 2;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.PartitionQuery.
@@ -179,7 +179,7 @@ export type PartitionServiceListRequest = Message<"metalstack.api.v2.PartitionSe
      *
      * @generated from field: metalstack.api.v2.PartitionQuery query = 1;
      */
-    query?: PartitionQuery;
+    query?: PartitionQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.PartitionServiceListRequest.
@@ -197,7 +197,7 @@ export type PartitionServiceGetResponse = Message<"metalstack.api.v2.PartitionSe
      *
      * @generated from field: metalstack.api.v2.Partition partition = 1;
      */
-    partition?: Partition;
+    partition?: Partition | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.PartitionServiceGetResponse.

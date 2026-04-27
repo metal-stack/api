@@ -106,7 +106,7 @@ export type HealthServiceGetResponse = Message<"metalstack.api.v2.HealthServiceG
      *
      * @generated from field: metalstack.api.v2.Health health = 1;
      */
-    health?: Health;
+    health?: Health | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.HealthServiceGetResponse.

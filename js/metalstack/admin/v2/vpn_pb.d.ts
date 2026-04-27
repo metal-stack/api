@@ -29,7 +29,7 @@ export type VPNServiceAuthKeyRequest = Message<"metalstack.admin.v2.VPNServiceAu
      *
      * @generated from field: google.protobuf.Duration expires = 3;
      */
-    expires?: Duration;
+    expires?: Duration | undefined;
     /**
      * Reason must be provided why access to the VPN is requested
      * Reason is only forwarded to an audit sink
@@ -73,13 +73,13 @@ export type VPNServiceAuthKeyResponse = Message<"metalstack.admin.v2.VPNServiceA
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 4;
      */
-    expiresAt?: Timestamp;
+    expiresAt?: Timestamp | undefined;
     /**
      * CreatedAt this key was created at this timestamp
      *
      * @generated from field: google.protobuf.Timestamp created_at = 5;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.VPNServiceAuthKeyResponse.
@@ -97,7 +97,7 @@ export type VPNServiceListNodesRequest = Message<"metalstack.admin.v2.VPNService
      *
      * @generated from field: optional string project = 1;
      */
-    project?: string;
+    project?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.VPNServiceListNodesRequest.

@@ -17,13 +17,13 @@ export type ProjectServiceListRequest = Message<"metalstack.admin.v2.ProjectServ
      *
      * @generated from field: optional string tenant = 1;
      */
-    tenant?: string;
+    tenant?: string | undefined;
     /**
      * Labels filters projects containing the given labels
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 2;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ProjectServiceListRequest.

@@ -35,7 +35,7 @@ export type ImageServiceListRequest = Message<"metalstack.api.v2.ImageServiceLis
      *
      * @generated from field: metalstack.api.v2.ImageQuery query = 1;
      */
-    query?: ImageQuery;
+    query?: ImageQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ImageServiceListRequest.
@@ -60,7 +60,7 @@ export type ImageServiceLatestRequest = Message<"metalstack.api.v2.ImageServiceL
      *
      * @generated from field: optional metalstack.api.v2.ImageClassification classification = 2;
      */
-    classification?: ImageClassification;
+    classification?: ImageClassification | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ImageServiceLatestRequest.
@@ -78,7 +78,7 @@ export type ImageServiceGetResponse = Message<"metalstack.api.v2.ImageServiceGet
      *
      * @generated from field: metalstack.api.v2.Image image = 1;
      */
-    image?: Image;
+    image?: Image | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ImageServiceGetResponse.
@@ -114,7 +114,7 @@ export type ImageServiceLatestResponse = Message<"metalstack.api.v2.ImageService
      *
      * @generated from field: metalstack.api.v2.Image image = 1;
      */
-    image?: Image;
+    image?: Image | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ImageServiceLatestResponse.
@@ -138,7 +138,7 @@ export type Image = Message<"metalstack.api.v2.Image"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * URL where this image is located
      *
@@ -150,13 +150,13 @@ export type Image = Message<"metalstack.api.v2.Image"> & {
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this imageLayout
      *
      * @generated from field: optional string description = 5;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Features of this image
      *
@@ -174,7 +174,7 @@ export type Image = Message<"metalstack.api.v2.Image"> & {
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
-    expiresAt?: Timestamp;
+    expiresAt?: Timestamp | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Image.
@@ -192,7 +192,7 @@ export type ImageUsage = Message<"metalstack.api.v2.ImageUsage"> & {
      *
      * @generated from field: metalstack.api.v2.Image image = 1;
      */
-    image?: Image;
+    image?: Image | undefined;
     /**
      * UsedBy the following machines/firewalls
      *
@@ -216,55 +216,55 @@ export type ImageQuery = Message<"metalstack.api.v2.ImageQuery"> & {
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * OS of the image
      *
      * @generated from field: optional string os = 2;
      */
-    os?: string;
+    os?: string | undefined;
     /**
      * Version of the Image
      *
      * @generated from field: optional string version = 3;
      */
-    version?: string;
+    version?: string | undefined;
     /**
      * Name of the image to query
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of the image to query
      *
      * @generated from field: optional string description = 5;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Url of the image to query
      *
      * @generated from field: optional string url = 6;
      */
-    url?: string;
+    url?: string | undefined;
     /**
      * Feature of the image to query
      *
      * @generated from field: optional metalstack.api.v2.ImageFeature feature = 7;
      */
-    feature?: ImageFeature;
+    feature?: ImageFeature | undefined;
     /**
      * Classification of the image to query
      *
      * @generated from field: optional metalstack.api.v2.ImageClassification classification = 8;
      */
-    classification?: ImageClassification;
+    classification?: ImageClassification | undefined;
     /**
      * Labels lists only images containing the given labels
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 9;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ImageQuery.

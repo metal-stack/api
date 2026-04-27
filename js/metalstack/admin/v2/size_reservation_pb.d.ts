@@ -17,7 +17,7 @@ export type SizeReservationServiceCreateRequest = Message<"metalstack.admin.v2.S
      *
      * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
      */
-    sizeReservation?: SizeReservation;
+    sizeReservation?: SizeReservation | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeReservationServiceCreateRequest.
@@ -35,7 +35,7 @@ export type SizeReservationServiceCreateResponse = Message<"metalstack.admin.v2.
      *
      * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
      */
-    sizeReservation?: SizeReservation;
+    sizeReservation?: SizeReservation | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeReservationServiceCreateResponse.
@@ -59,19 +59,19 @@ export type SizeReservationServiceUpdateRequest = Message<"metalstack.admin.v2.S
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this size reservation
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * UpdateMeta contains the timestamp and strategy to be used in this update request
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 4;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Partition ids of this size reservation
      *
@@ -83,13 +83,13 @@ export type SizeReservationServiceUpdateRequest = Message<"metalstack.admin.v2.S
      *
      * @generated from field: optional int32 amount = 6;
      */
-    amount?: number;
+    amount?: number | undefined;
     /**
      * Labels to update of this size reservation
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 7;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeReservationServiceUpdateRequest.
@@ -107,7 +107,7 @@ export type SizeReservationServiceUpdateResponse = Message<"metalstack.admin.v2.
      *
      * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
      */
-    sizeReservation?: SizeReservation;
+    sizeReservation?: SizeReservation | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeReservationServiceUpdateResponse.
@@ -143,7 +143,7 @@ export type SizeReservationServiceDeleteResponse = Message<"metalstack.admin.v2.
      *
      * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
      */
-    sizeReservation?: SizeReservation;
+    sizeReservation?: SizeReservation | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeReservationServiceDeleteResponse.
@@ -161,7 +161,7 @@ export type SizeReservationServiceListRequest = Message<"metalstack.admin.v2.Siz
      *
      * @generated from field: metalstack.api.v2.SizeReservationQuery query = 1;
      */
-    query?: SizeReservationQuery;
+    query?: SizeReservationQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeReservationServiceListRequest.

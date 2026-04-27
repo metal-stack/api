@@ -62,7 +62,7 @@ export type VersionServiceGetResponse = Message<"metalstack.api.v2.VersionServic
      *
      * @generated from field: metalstack.api.v2.Version version = 1;
      */
-    version?: Version;
+    version?: Version | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.VersionServiceGetResponse.

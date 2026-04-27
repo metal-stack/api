@@ -17,13 +17,13 @@ export type Paging = Message<"metalstack.api.v2.Paging"> & {
      *
      * @generated from field: optional uint64 page = 1;
      */
-    page?: bigint;
+    page?: bigint | undefined;
     /**
      * Count is the number of results returned per page, if not given server side defaults apply
      *
      * @generated from field: optional uint64 count = 2;
      */
-    count?: bigint;
+    count?: bigint | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Paging.
@@ -61,20 +61,20 @@ export type Meta = Message<"metalstack.api.v2.Meta"> & {
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 1;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
     /**
      * CreatedAt is the date when this entity was created
      *
      * @generated from field: google.protobuf.Timestamp created_at = 2;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
     /**
      * UpdatedAt is the date when this entity was updated
      * must be part of the update request to ensure optimistic locking
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 3;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
      * Generation identifies how often this entity was modified since creation.
      *
@@ -98,7 +98,7 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
      *
      * @generated from field: metalstack.api.v2.Labels update = 1;
      */
-    update?: Labels;
+    update?: Labels | undefined;
     /**
      * Remove labels by key
      *
@@ -123,7 +123,7 @@ export type UpdateMeta = Message<"metalstack.api.v2.UpdateMeta"> & {
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 1;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
      * LockingStrategy to be used for this update request
      *
