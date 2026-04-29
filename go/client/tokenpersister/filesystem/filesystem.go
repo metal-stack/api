@@ -1,8 +1,10 @@
-package client
+package filesystem
 
 import (
 	"fmt"
 	"os"
+
+	"github.com/metal-stack/api/go/client"
 )
 
 type (
@@ -11,7 +13,7 @@ type (
 	}
 )
 
-func NewFilesystemTokenPersister(tokenFile string) (PersistTokenFn, error) {
+func NewPersistTokenFunc(tokenFile string) (client.PersistTokenFn, error) {
 	fileInfo, err := os.Stat(tokenFile)
 	if err != nil {
 		return nil, fmt.Errorf("unable to stat tokenfile:%w", err)

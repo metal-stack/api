@@ -1,21 +1,21 @@
-package client_test
+package filesystem_test
 
 import (
 	"os"
 	"path"
 	"testing"
 
-	"github.com/metal-stack/api/go/client"
+	"github.com/metal-stack/api/go/client/tokenpersister/filesystem"
 	"github.com/stretchr/testify/require"
 )
 
-func TestNewFilesystemTokenPersiter(t *testing.T) {
+func TestNewFilesystemTokenPersister(t *testing.T) {
 	tokenPath := path.Join(t.TempDir(), "token")
 
 	_, err := os.OpenFile(tokenPath, os.O_RDONLY|os.O_CREATE, 0600)
 	require.NoError(t, err)
 
-	filesystemPersister, err := client.NewFilesystemTokenPersister(tokenPath)
+	filesystemPersister, err := filesystem.NewPersistTokenFunc(tokenPath)
 	require.NoError(t, err)
 
 	token := "a-token"
