@@ -12,11 +12,13 @@ service TenantService {
   // Creates a new tenant.
   rpc Create(TenantServiceCreateRequest) returns (TenantServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Returns the list of all tenants.
   rpc List(TenantServiceListRequest) returns (TenantServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 

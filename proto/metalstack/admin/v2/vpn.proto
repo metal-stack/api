@@ -13,11 +13,13 @@ service VPNService {
   // GenerateAuthKey generates an authentication key for a project to join a machine to the project VPN.
   rpc AuthKey(VPNServiceAuthKeyRequest) returns (VPNServiceAuthKeyResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Returns the list of machines connected to the VPN.
   rpc ListNodes(VPNServiceListNodesRequest) returns (VPNServiceListNodesResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 

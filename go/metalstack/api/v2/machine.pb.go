@@ -4591,16 +4591,21 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"$MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF\x10\t\x1a\x14\x82\xb2\x19\x10identify-led-off\x12<\n" +
 	"#MACHINE_BMC_COMMAND_MACHINE_DELETED\x10\n" +
 	"\x1a\x13\x82\xb2\x19\x0fmachine-deleted\x12<\n" +
-	"#MACHINE_BMC_COMMAND_MACHINE_CREATED\x10\v\x1a\x13\x82\xb2\x19\x0fmachine-created2\xbc\x06\n" +
+	"#MACHINE_BMC_COMMAND_MACHINE_CREATED\x10\v\x1a\x13\x82\xb2\x19\x0fmachine-created2\xd1\x06\n" +
 	"\x0eMachineService\x12m\n" +
-	"\x03Get\x12+.metalstack.api.v2.MachineServiceGetRequest\x1a,.metalstack.api.v2.MachineServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
-	"\x06Create\x12..metalstack.api.v2.MachineServiceCreateRequest\x1a/.metalstack.api.v2.MachineServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12q\n" +
-	"\x06Update\x12..metalstack.api.v2.MachineServiceUpdateRequest\x1a/.metalstack.api.v2.MachineServiceUpdateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12p\n" +
-	"\x04List\x12,.metalstack.api.v2.MachineServiceListRequest\x1a-.metalstack.api.v2.MachineServiceListResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
-	"\x06Delete\x12..metalstack.api.v2.MachineServiceDeleteRequest\x1a/.metalstack.api.v2.MachineServiceDeleteResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12}\n" +
+	"\x03Get\x12+.metalstack.api.v2.MachineServiceGetRequest\x1a,.metalstack.api.v2.MachineServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12u\n" +
+	"\x06Create\x12..metalstack.api.v2.MachineServiceCreateRequest\x1a/.metalstack.api.v2.MachineServiceCreateResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12u\n" +
+	"\x06Update\x12..metalstack.api.v2.MachineServiceUpdateRequest\x1a/.metalstack.api.v2.MachineServiceUpdateResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12p\n" +
+	"\x04List\x12,.metalstack.api.v2.MachineServiceListRequest\x1a-.metalstack.api.v2.MachineServiceListResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12u\n" +
+	"\x06Delete\x12..metalstack.api.v2.MachineServiceDeleteRequest\x1a/.metalstack.api.v2.MachineServiceDeleteResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12\x81\x01\n" +
 	"\n" +
-	"BMCCommand\x122.metalstack.api.v2.MachineServiceBMCCommandRequest\x1a3.metalstack.api.v2.MachineServiceBMCCommandResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12q\n" +
-	"\x06GetBMC\x12..metalstack.api.v2.MachineServiceGetBMCRequest\x1a/.metalstack.api.v2.MachineServiceGetBMCResponse\"\x06\xca\xf3\x18\x02\x01\x02B\xc2\x01\n" +
+	"BMCCommand\x122.metalstack.api.v2.MachineServiceBMCCommandRequest\x1a3.metalstack.api.v2.MachineServiceBMCCommandResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12u\n" +
+	"\x06GetBMC\x12..metalstack.api.v2.MachineServiceGetBMCRequest\x1a/.metalstack.api.v2.MachineServiceGetBMCResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xc2\x01\n" +
 	"\x15com.metalstack.api.v2B\fMachineProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

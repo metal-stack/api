@@ -654,17 +654,20 @@ const file_metalstack_admin_v2_machine_proto_rawDesc = "" +
 	"\x18\x80\x04R\x06reason\"a\n" +
 	"%MachineServiceConsolePasswordResponse\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword2\xfe\x05\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword2\x8e\x06\n" +
 	"\x0eMachineService\x12p\n" +
 	"\x03Get\x12-.metalstack.admin.v2.MachineServiceGetRequest\x1a..metalstack.admin.v2.MachineServiceGetResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12s\n" +
 	"\x04List\x12..metalstack.admin.v2.MachineServiceListRequest\x1a/.metalstack.admin.v2.MachineServiceListResponse\"\n" +
-	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12\x80\x01\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12\x84\x01\n" +
 	"\n" +
-	"BMCCommand\x124.metalstack.admin.v2.MachineServiceBMCCommandRequest\x1a5.metalstack.admin.v2.MachineServiceBMCCommandResponse\"\x05\xd2\xf3\x18\x01\x01\x12u\n" +
-	"\x06GetBMC\x120.metalstack.admin.v2.MachineServiceGetBMCRequest\x1a1.metalstack.admin.v2.MachineServiceGetBMCResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12x\n" +
-	"\aListBMC\x121.metalstack.admin.v2.MachineServiceListBMCRequest\x1a2.metalstack.admin.v2.MachineServiceListBMCResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12\x90\x01\n" +
-	"\x0fConsolePassword\x129.metalstack.admin.v2.MachineServiceConsolePasswordRequest\x1a:.metalstack.admin.v2.MachineServiceConsolePasswordResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xd0\x01\n" +
+	"BMCCommand\x124.metalstack.admin.v2.MachineServiceBMCCommandRequest\x1a5.metalstack.admin.v2.MachineServiceBMCCommandResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12y\n" +
+	"\x06GetBMC\x120.metalstack.admin.v2.MachineServiceGetBMCRequest\x1a1.metalstack.admin.v2.MachineServiceGetBMCResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12|\n" +
+	"\aListBMC\x121.metalstack.admin.v2.MachineServiceListBMCRequest\x1a2.metalstack.admin.v2.MachineServiceListBMCResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12\x94\x01\n" +
+	"\x0fConsolePassword\x129.metalstack.admin.v2.MachineServiceConsolePasswordRequest\x1a:.metalstack.admin.v2.MachineServiceConsolePasswordResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xd0\x01\n" +
 	"\x17com.metalstack.admin.v2B\fMachineProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (

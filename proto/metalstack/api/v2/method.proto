@@ -12,10 +12,12 @@ service MethodService {
   // Returns the list of all public visible methods.
   rpc List(MethodServiceListRequest) returns (MethodServiceListResponse) {
     option (visibility) = VISIBILITY_PUBLIC;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // TokenScopedList returns all methods callable with the token present in the request.
   rpc TokenScopedList(MethodServiceTokenScopedListRequest) returns (MethodServiceTokenScopedListResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 

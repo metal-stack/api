@@ -369,11 +369,11 @@ const file_metalstack_admin_v2_size_proto_rawDesc = "" +
 	"\x18SizeServiceDeleteRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"H\n" +
 	"\x19SizeServiceDeleteResponse\x12+\n" +
-	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size2\xdd\x02\n" +
-	"\vSizeService\x12n\n" +
-	"\x06Create\x12-.metalstack.admin.v2.SizeServiceCreateRequest\x1a..metalstack.admin.v2.SizeServiceCreateResponse\"\x05\xd2\xf3\x18\x01\x01\x12n\n" +
-	"\x06Update\x12-.metalstack.admin.v2.SizeServiceUpdateRequest\x1a..metalstack.admin.v2.SizeServiceUpdateResponse\"\x05\xd2\xf3\x18\x01\x01\x12n\n" +
-	"\x06Delete\x12-.metalstack.admin.v2.SizeServiceDeleteRequest\x1a..metalstack.admin.v2.SizeServiceDeleteResponse\"\x05\xd2\xf3\x18\x01\x01B\xcd\x01\n" +
+	"\x04size\x18\x01 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size2\xe9\x02\n" +
+	"\vSizeService\x12r\n" +
+	"\x06Create\x12-.metalstack.admin.v2.SizeServiceCreateRequest\x1a..metalstack.admin.v2.SizeServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12r\n" +
+	"\x06Update\x12-.metalstack.admin.v2.SizeServiceUpdateRequest\x1a..metalstack.admin.v2.SizeServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12r\n" +
+	"\x06Delete\x12-.metalstack.admin.v2.SizeServiceDeleteRequest\x1a..metalstack.admin.v2.SizeServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01B\xcd\x01\n" +
 	"\x17com.metalstack.admin.v2B\tSizeProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (

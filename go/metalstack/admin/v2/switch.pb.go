@@ -858,16 +858,16 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\x12D\n" +
 	"\rmachine_query\x18\x02 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\fmachineQuery\"\x85\x01\n" +
 	"&SwitchServiceConnectedMachinesResponse\x12[\n" +
-	"\x16switches_with_machines\x18\x01 \x03(\v2%.metalstack.api.v2.SwitchWithMachinesR\x14switchesWithMachines2\xda\x06\n" +
+	"\x16switches_with_machines\x18\x01 \x03(\v2%.metalstack.api.v2.SwitchWithMachinesR\x14switchesWithMachines2\xea\x06\n" +
 	"\rSwitchService\x12n\n" +
 	"\x03Get\x12,.metalstack.admin.v2.SwitchServiceGetRequest\x1a-.metalstack.admin.v2.SwitchServiceGetResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12q\n" +
 	"\x04List\x12-.metalstack.admin.v2.SwitchServiceListRequest\x1a..metalstack.admin.v2.SwitchServiceListResponse\"\n" +
-	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12r\n" +
-	"\x06Update\x12/.metalstack.admin.v2.SwitchServiceUpdateRequest\x1a0.metalstack.admin.v2.SwitchServiceUpdateResponse\"\x05\xd2\xf3\x18\x01\x01\x12r\n" +
-	"\x06Delete\x12/.metalstack.admin.v2.SwitchServiceDeleteRequest\x1a0.metalstack.admin.v2.SwitchServiceDeleteResponse\"\x05\xd2\xf3\x18\x01\x01\x12u\n" +
-	"\aMigrate\x120.metalstack.admin.v2.SwitchServiceMigrateRequest\x1a1.metalstack.admin.v2.SwitchServiceMigrateResponse\"\x05\xd2\xf3\x18\x01\x01\x12l\n" +
-	"\x04Port\x12-.metalstack.admin.v2.SwitchServicePortRequest\x1a..metalstack.admin.v2.SwitchServicePortResponse\"\x05\xd2\xf3\x18\x01\x01\x12\x98\x01\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12v\n" +
+	"\x06Update\x12/.metalstack.admin.v2.SwitchServiceUpdateRequest\x1a0.metalstack.admin.v2.SwitchServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12v\n" +
+	"\x06Delete\x12/.metalstack.admin.v2.SwitchServiceDeleteRequest\x1a0.metalstack.admin.v2.SwitchServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12y\n" +
+	"\aMigrate\x120.metalstack.admin.v2.SwitchServiceMigrateRequest\x1a1.metalstack.admin.v2.SwitchServiceMigrateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12p\n" +
+	"\x04Port\x12-.metalstack.admin.v2.SwitchServicePortRequest\x1a..metalstack.admin.v2.SwitchServicePortResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x98\x01\n" +
 	"\x11ConnectedMachines\x12:.metalstack.admin.v2.SwitchServiceConnectedMachinesRequest\x1a;.metalstack.admin.v2.SwitchServiceConnectedMachinesResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02B\xcf\x01\n" +
 	"\x17com.metalstack.admin.v2B\vSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"

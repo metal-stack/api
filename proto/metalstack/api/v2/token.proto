@@ -13,26 +13,32 @@ service TokenService {
   // Returns the token with the specified UUID.
   rpc Get(TokenServiceGetRequest) returns (TokenServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Creates a token to authenticate against the platform, the secret will be only visible in the response.
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Updates a token.
   rpc Update(TokenServiceUpdateRequest) returns (TokenServiceUpdateResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Returns the list of all user tokens.
   rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Revokes a token, no further usage is possible afterwards.
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Refreshes a token, this will create a new token with the exact same permissions as the calling token contains.
   rpc Refresh(TokenServiceRefreshRequest) returns (TokenServiceRefreshResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 

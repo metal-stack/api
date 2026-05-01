@@ -1605,14 +1605,17 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x19NETWORK_ADDRESS_FAMILY_V4\x10\x01\x1a\b\x82\xb2\x19\x04ipv4\x12'\n" +
 	"\x19NETWORK_ADDRESS_FAMILY_V6\x10\x02\x1a\b\x82\xb2\x19\x04ipv6\x125\n" +
 	"!NETWORK_ADDRESS_FAMILY_DUAL_STACK\x10\x03\x1a\x0e\x82\xb2\x19\n" +
-	"dual-stack2\xe1\x05\n" +
+	"dual-stack2\xed\x05\n" +
 	"\x0eNetworkService\x12m\n" +
-	"\x03Get\x12+.metalstack.api.v2.NetworkServiceGetRequest\x1a,.metalstack.api.v2.NetworkServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
-	"\x06Create\x12..metalstack.api.v2.NetworkServiceCreateRequest\x1a/.metalstack.api.v2.NetworkServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12q\n" +
-	"\x06Update\x12..metalstack.api.v2.NetworkServiceUpdateRequest\x1a/.metalstack.api.v2.NetworkServiceUpdateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12p\n" +
+	"\x03Get\x12+.metalstack.api.v2.NetworkServiceGetRequest\x1a,.metalstack.api.v2.NetworkServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12u\n" +
+	"\x06Create\x12..metalstack.api.v2.NetworkServiceCreateRequest\x1a/.metalstack.api.v2.NetworkServiceCreateResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12u\n" +
+	"\x06Update\x12..metalstack.api.v2.NetworkServiceUpdateRequest\x1a/.metalstack.api.v2.NetworkServiceUpdateResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12p\n" +
 	"\x04List\x12,.metalstack.api.v2.NetworkServiceListRequest\x1a-.metalstack.api.v2.NetworkServiceListResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12\x94\x01\n" +
-	"\x10ListBaseNetworks\x128.metalstack.api.v2.NetworkServiceListBaseNetworksRequest\x1a9.metalstack.api.v2.NetworkServiceListBaseNetworksResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12q\n" +
-	"\x06Delete\x12..metalstack.api.v2.NetworkServiceDeleteRequest\x1a/.metalstack.api.v2.NetworkServiceDeleteResponse\"\x06\xca\xf3\x18\x02\x01\x02B\xc2\x01\n" +
+	"\x10ListBaseNetworks\x128.metalstack.api.v2.NetworkServiceListBaseNetworksRequest\x1a9.metalstack.api.v2.NetworkServiceListBaseNetworksResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12u\n" +
+	"\x06Delete\x12..metalstack.api.v2.NetworkServiceDeleteRequest\x1a/.metalstack.api.v2.NetworkServiceDeleteResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xc2\x01\n" +
 	"\x15com.metalstack.api.v2B\fNetworkProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (
