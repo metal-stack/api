@@ -488,12 +488,13 @@ const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\x05query\x18\x01 \x01(\v2\x1d.metalstack.api.v2.ImageQueryR\x05query\"[\n" +
 	"\x19ImageServiceUsageResponse\x12>\n" +
 	"\vimage_usage\x18\x01 \x03(\v2\x1d.metalstack.api.v2.ImageUsageR\n" +
-	"imageUsage2\xe0\x03\n" +
+	"imageUsage2\xe4\x03\n" +
 	"\fImageService\x12t\n" +
 	"\x06Create\x12..metalstack.admin.v2.ImageServiceCreateRequest\x1a/.metalstack.admin.v2.ImageServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n" +
 	"\x06Update\x12..metalstack.admin.v2.ImageServiceUpdateRequest\x1a/.metalstack.admin.v2.ImageServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n" +
-	"\x06Delete\x12..metalstack.admin.v2.ImageServiceDeleteRequest\x1a/.metalstack.admin.v2.ImageServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12n\n" +
-	"\x05Usage\x12-.metalstack.admin.v2.ImageServiceUsageRequest\x1a..metalstack.admin.v2.ImageServiceUsageResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xce\x01\n" +
+	"\x06Delete\x12..metalstack.admin.v2.ImageServiceDeleteRequest\x1a/.metalstack.admin.v2.ImageServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12r\n" +
+	"\x05Usage\x12-.metalstack.admin.v2.ImageServiceUsageRequest\x1a..metalstack.admin.v2.ImageServiceUsageResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xce\x01\n" +
 	"\x17com.metalstack.admin.v2B\n" +
 	"ImageProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 

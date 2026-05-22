@@ -29,6 +29,7 @@ service ImageService {
   rpc Usage(ImageServiceUsageRequest) returns (ImageServiceUsageResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 

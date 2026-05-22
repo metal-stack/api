@@ -24,21 +24,25 @@ service MachineService {
   // BMCCommand sends a command to the BMC of a machine.
   rpc BMCCommand(MachineServiceBMCCommandRequest) returns (MachineServiceBMCCommandResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Returns the BMC details of a machine.
   rpc GetBMC(MachineServiceGetBMCRequest) returns (MachineServiceGetBMCResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // ListBMC returns the BMC details of many machines.
   rpc ListBMC(MachineServiceListBMCRequest) returns (MachineServiceListBMCResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // GetConsolePassword returns the password to access the serial console of the machine.
   rpc ConsolePassword(MachineServiceConsolePasswordRequest) returns (MachineServiceConsolePasswordResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 

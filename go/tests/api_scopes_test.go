@@ -243,6 +243,15 @@ func validateProto(root string) error {
 						return
 					}()
 				)
+				var auditingSpecified bool
+				for _, methodOpt := range methodOpts {
+					if *methodOpt.IdentifierValue == v2.Auditing_AUDITING_EXCLUDED.String() || *methodOpt.IdentifierValue == v2.Auditing_AUDITING_INCLUDED.String() {
+						auditingSpecified = true
+					}
+				}
+				if !auditingSpecified {
+					errs = append(errs, fmt.Errorf("api service method: %q does not have auditing specified", methodName))
+				}
 
 				// Sort all to have stable results
 				slices.Sort(allScopeNames)

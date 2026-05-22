@@ -339,11 +339,12 @@ const file_metalstack_admin_v2_token_proto_rawDesc = "" +
 	"\x05_user\"d\n" +
 	"\x1aTokenServiceCreateResponse\x12.\n" +
 	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n" +
-	"\x06secret\x18\x02 \x01(\tR\x06secret2\xdf\x02\n" +
-	"\fTokenService\x12k\n" +
-	"\x04List\x12,.metalstack.admin.v2.TokenServiceListRequest\x1a-.metalstack.admin.v2.TokenServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12p\n" +
-	"\x06Revoke\x12..metalstack.admin.v2.TokenServiceRevokeRequest\x1a/.metalstack.admin.v2.TokenServiceRevokeResponse\"\x05\xd2\xf3\x18\x01\x01\x12p\n" +
-	"\x06Create\x12..metalstack.admin.v2.TokenServiceCreateRequest\x1a/.metalstack.admin.v2.TokenServiceCreateResponse\"\x05\xd2\xf3\x18\x01\x01B\xce\x01\n" +
+	"\x06secret\x18\x02 \x01(\tR\x06secret2\xeb\x02\n" +
+	"\fTokenService\x12o\n" +
+	"\x04List\x12,.metalstack.admin.v2.TokenServiceListRequest\x1a-.metalstack.admin.v2.TokenServiceListResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12t\n" +
+	"\x06Revoke\x12..metalstack.admin.v2.TokenServiceRevokeRequest\x1a/.metalstack.admin.v2.TokenServiceRevokeResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n" +
+	"\x06Create\x12..metalstack.admin.v2.TokenServiceCreateRequest\x1a/.metalstack.admin.v2.TokenServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01B\xce\x01\n" +
 	"\x17com.metalstack.admin.v2B\n" +
 	"TokenProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 

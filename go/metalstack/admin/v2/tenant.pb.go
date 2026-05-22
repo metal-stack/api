@@ -297,10 +297,11 @@ const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\atenants\x18\x01 \x03(\v2\x19.metalstack.api.v2.TenantR\atenants\x12 \n" +
 	"\tnext_page\x18\x02 \x01(\x04H\x00R\bnextPage\x88\x01\x01B\f\n" +
 	"\n" +
-	"_next_page2\xf2\x01\n" +
-	"\rTenantService\x12r\n" +
-	"\x06Create\x12/.metalstack.admin.v2.TenantServiceCreateRequest\x1a0.metalstack.admin.v2.TenantServiceCreateResponse\"\x05\xd2\xf3\x18\x01\x01\x12m\n" +
-	"\x04List\x12-.metalstack.admin.v2.TenantServiceListRequest\x1a..metalstack.admin.v2.TenantServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xcf\x01\n" +
+	"_next_page2\xfa\x01\n" +
+	"\rTenantService\x12v\n" +
+	"\x06Create\x12/.metalstack.admin.v2.TenantServiceCreateRequest\x1a0.metalstack.admin.v2.TenantServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12q\n" +
+	"\x04List\x12-.metalstack.admin.v2.TenantServiceListRequest\x1a..metalstack.admin.v2.TenantServiceListResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xcf\x01\n" +
 	"\x17com.metalstack.admin.v2B\vTenantProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (

@@ -12,11 +12,13 @@ service AuditService {
   rpc Get(AuditServiceGetRequest) returns (AuditServiceGetResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Returns the list of all audit traces.
   rpc List(AuditServiceListRequest) returns (AuditServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 

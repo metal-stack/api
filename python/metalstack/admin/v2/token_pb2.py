@@ -27,7 +27,7 @@ from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common
 from metalstack.api.v2 import token_pb2 as metalstack_dot_api_dot_v2_dot_token__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fmetalstack/admin/v2/token.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/token.proto\";\n\x17TokenServiceListRequest\x12\x17\n\x04user\x18\x01 \x01(\tH\x00R\x04user\x88\x01\x01\x42\x07\n\x05_user\"L\n\x18TokenServiceListResponse\x12\x30\n\x06tokens\x18\x01 \x03(\x0b\x32\x18.metalstack.api.v2.TokenR\x06tokens\"Y\n\x19TokenServiceRevokeRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n\x04user\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x04R\x04user\"\x1c\n\x1aTokenServiceRevokeResponse\"\xa9\x01\n\x19TokenServiceCreateRequest\x12#\n\x04user\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x04H\x00R\x04user\x88\x01\x01\x12^\n\x14token_create_request\x18\x02 \x01(\x0b\x32,.metalstack.api.v2.TokenServiceCreateRequestR\x12tokenCreateRequestB\x07\n\x05_user\"d\n\x1aTokenServiceCreateResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n\x06secret\x18\x02 \x01(\tR\x06secret2\xdf\x02\n\x0cTokenService\x12k\n\x04List\x12,.metalstack.admin.v2.TokenServiceListRequest\x1a-.metalstack.admin.v2.TokenServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12p\n\x06Revoke\x12..metalstack.admin.v2.TokenServiceRevokeRequest\x1a/.metalstack.admin.v2.TokenServiceRevokeResponse\"\x05\xd2\xf3\x18\x01\x01\x12p\n\x06\x43reate\x12..metalstack.admin.v2.TokenServiceCreateRequest\x1a/.metalstack.admin.v2.TokenServiceCreateResponse\"\x05\xd2\xf3\x18\x01\x01\x42\xce\x01\n\x17\x63om.metalstack.admin.v2B\nTokenProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fmetalstack/admin/v2/token.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/token.proto\";\n\x17TokenServiceListRequest\x12\x17\n\x04user\x18\x01 \x01(\tH\x00R\x04user\x88\x01\x01\x42\x07\n\x05_user\"L\n\x18TokenServiceListResponse\x12\x30\n\x06tokens\x18\x01 \x03(\x0b\x32\x18.metalstack.api.v2.TokenR\x06tokens\"Y\n\x19TokenServiceRevokeRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n\x04user\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x04R\x04user\"\x1c\n\x1aTokenServiceRevokeResponse\"\xa9\x01\n\x19TokenServiceCreateRequest\x12#\n\x04user\x18\x01 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x04H\x00R\x04user\x88\x01\x01\x12^\n\x14token_create_request\x18\x02 \x01(\x0b\x32,.metalstack.api.v2.TokenServiceCreateRequestR\x12tokenCreateRequestB\x07\n\x05_user\"d\n\x1aTokenServiceCreateResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n\x06secret\x18\x02 \x01(\tR\x06secret2\xeb\x02\n\x0cTokenService\x12o\n\x04List\x12,.metalstack.admin.v2.TokenServiceListRequest\x1a-.metalstack.admin.v2.TokenServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12t\n\x06Revoke\x12..metalstack.admin.v2.TokenServiceRevokeRequest\x1a/.metalstack.admin.v2.TokenServiceRevokeResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n\x06\x43reate\x12..metalstack.admin.v2.TokenServiceCreateRequest\x1a/.metalstack.admin.v2.TokenServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x42\xce\x01\n\x17\x63om.metalstack.admin.v2B\nTokenProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -42,11 +42,11 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['user']._loaded_options = None
   _globals['_TOKENSERVICECREATEREQUEST'].fields_by_name['user']._serialized_options = b'\272H\007r\005\020\002\030\200\004'
   _globals['_TOKENSERVICE'].methods_by_name['List']._loaded_options = None
-  _globals['_TOKENSERVICE'].methods_by_name['List']._serialized_options = b'\322\363\030\002\001\002'
+  _globals['_TOKENSERVICE'].methods_by_name['List']._serialized_options = b'\322\363\030\002\001\002\340\363\030\001'
   _globals['_TOKENSERVICE'].methods_by_name['Revoke']._loaded_options = None
-  _globals['_TOKENSERVICE'].methods_by_name['Revoke']._serialized_options = b'\322\363\030\001\001'
+  _globals['_TOKENSERVICE'].methods_by_name['Revoke']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
   _globals['_TOKENSERVICE'].methods_by_name['Create']._loaded_options = None
-  _globals['_TOKENSERVICE'].methods_by_name['Create']._serialized_options = b'\322\363\030\001\001'
+  _globals['_TOKENSERVICE'].methods_by_name['Create']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
   _globals['_TOKENSERVICELISTREQUEST']._serialized_start=148
   _globals['_TOKENSERVICELISTREQUEST']._serialized_end=207
   _globals['_TOKENSERVICELISTRESPONSE']._serialized_start=209
@@ -60,5 +60,5 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TOKENSERVICECREATERESPONSE']._serialized_start=580
   _globals['_TOKENSERVICECREATERESPONSE']._serialized_end=680
   _globals['_TOKENSERVICE']._serialized_start=683
-  _globals['_TOKENSERVICE']._serialized_end=1034
+  _globals['_TOKENSERVICE']._serialized_end=1046
 # @@protoc_insertion_point(module_scope)

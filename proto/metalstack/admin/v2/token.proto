@@ -12,15 +12,18 @@ service TokenService {
   rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Revokes a token.
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Creates a token to authenticate against the platform, the secret will be only visible in the response.
   // This service is suitable to create tokens for other users instead of deriving users from tokens directly.
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 

@@ -261,10 +261,10 @@ const file_metalstack_api_v2_method_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleR\x05value:\x028\x01B\r\n" +
 	"\v_admin_roleB\r\n" +
-	"\v_infra_role2\x83\x02\n" +
-	"\rMethodService\x12g\n" +
-	"\x04List\x12+.metalstack.api.v2.MethodServiceListRequest\x1a,.metalstack.api.v2.MethodServiceListResponse\"\x04\xd8\xf3\x18\x01\x12\x88\x01\n" +
-	"\x0fTokenScopedList\x126.metalstack.api.v2.MethodServiceTokenScopedListRequest\x1a7.metalstack.api.v2.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x02B\xc1\x01\n" +
+	"\v_infra_role2\x8b\x02\n" +
+	"\rMethodService\x12k\n" +
+	"\x04List\x12+.metalstack.api.v2.MethodServiceListRequest\x1a,.metalstack.api.v2.MethodServiceListResponse\"\b\xd8\xf3\x18\x01\xe0\xf3\x18\x01\x12\x8c\x01\n" +
+	"\x0fTokenScopedList\x126.metalstack.api.v2.MethodServiceTokenScopedListRequest\x1a7.metalstack.api.v2.MethodServiceTokenScopedListResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x01B\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vMethodProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

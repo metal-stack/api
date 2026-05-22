@@ -7,21 +7,28 @@ import "metalstack/api/v2/common.proto";
 service WrongProjectService {
   rpc Add(WrongProjectServiceAddRequest) returns (WrongProjectServiceAddResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   rpc Get(WrongProjectServiceGetRequest) returns (WrongProjectServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  rpc List(WrongProjectServiceListRequest) returns (WrongProjectServiceListResponse) {}
+  rpc List(WrongProjectServiceListRequest) returns (WrongProjectServiceListResponse) {
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
   rpc Update(WrongProjectServiceUpdateRequest) returns (WrongProjectServiceUpdateResponse) {
     option (admin_roles) = ADMIN_ROLE_VIEWER;
     option (project_roles) = PROJECT_ROLE_OWNER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   rpc Delete(WrongProjectServiceDeleteRequest) returns (WrongProjectServiceDeleteResponse) {
     option (admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.visibility) = VISIBILITY_PUBLIC;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   rpc Charge(WrongProjectServiceChargeRequest) returns (WrongProjectServiceChargeResponse) {
     option (chargeable) = CHARGEABLE_TRUE;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 

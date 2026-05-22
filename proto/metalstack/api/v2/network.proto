@@ -19,11 +19,13 @@ service NetworkService {
   rpc Create(NetworkServiceCreateRequest) returns (NetworkServiceCreateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Updates a network.
   rpc Update(NetworkServiceUpdateRequest) returns (NetworkServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Returns the list of all project networks.
   rpc List(NetworkServiceListRequest) returns (NetworkServiceListResponse) {
@@ -43,6 +45,7 @@ service NetworkService {
   rpc Delete(NetworkServiceDeleteRequest) returns (NetworkServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
