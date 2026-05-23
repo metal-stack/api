@@ -2632,14 +2632,6 @@
                   <a href="#metalstack.infra.v2.EventServiceSendResponse"><span class="badge">M</span>EventServiceSendResponse</a>
                 </li>
               
-                <li>
-                  <a href="#metalstack.infra.v2.MachineProvisioningEvent"><span class="badge">M</span>MachineProvisioningEvent</a>
-                </li>
-              
-              
-                <li>
-                  <a href="#metalstack.infra.v2.ProvisioningEventType"><span class="badge">E</span>ProvisioningEventType</a>
-                </li>
               
               
               
@@ -2821,7 +2813,7 @@
                 <td><a href="#bool">bool</a></td>
                 <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
                 <td>80048951</td>
-                <td><p>Macaddress returns true if the given string is a valid macadress</p></td>
+                <td><p>Macaddress returns true if the given string is a valid macaddress</p></td>
               </tr>
             
               <tr>
@@ -3342,7 +3334,7 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#metalstack.api.v2.MachineRole">MachineRole</a></td>
                 <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
                 <td>51006</td>
-                <td><p>MachineRole are used to define which infra role a microservice must provide to call this method</p></td>
+                <td><p>MachineRole are used to define which machine role a microservice must provide to call this method</p></td>
               </tr>
             
               <tr>
@@ -6383,14 +6375,14 @@ micro_service and identifier guarantee uniqueness. </p></td>
                   <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Id of this imageLayout </p></td>
+                  <td><p>Id of this image </p></td>
                 </tr>
               
                 <tr>
                   <td>meta</td>
                   <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
                   <td></td>
-                  <td><p>Meta for this ip </p></td>
+                  <td><p>Meta for this image </p></td>
                 </tr>
               
                 <tr>
@@ -6404,14 +6396,14 @@ micro_service and identifier guarantee uniqueness. </p></td>
                   <td>name</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Name of this imageLayout </p></td>
+                  <td><p>Name of this image </p></td>
                 </tr>
               
                 <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Description of this imageLayout </p></td>
+                  <td><p>Description of this image </p></td>
                 </tr>
               
                 <tr>
@@ -7576,7 +7568,7 @@ Will be equal with project most of the time </p></td>
                   <td>ip</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Ip the ip to update </p></td>
+                  <td><p>Ip the ip address to update </p></td>
                 </tr>
               
                 <tr>
@@ -8888,7 +8880,7 @@ Only one child shared network per project is allowed.</p></td>
                   <td>meta</td>
                   <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
                   <td></td>
-                  <td><p>Meta for this ip </p></td>
+                  <td><p>Meta for this partition </p></td>
                 </tr>
               
                 <tr>
@@ -9041,7 +9033,7 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>partition</td>
                   <td><a href="#metalstack.api.v2.Partition">Partition</a></td>
                   <td></td>
-                  <td><p>Ip the partition </p></td>
+                  <td><p>Partition is the partition </p></td>
                 </tr>
               
             </tbody>
@@ -9089,7 +9081,7 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>partitions</td>
                   <td><a href="#metalstack.api.v2.Partition">Partition</a></td>
                   <td>repeated</td>
-                  <td><p>Ips the partitions </p></td>
+                  <td><p>Partitions are the partitions </p></td>
                 </tr>
               
             </tbody>
@@ -11145,7 +11137,7 @@ Only useful for admins. </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-this field overrules size and partition.
+this field takes precedence over size and partition.
 Can only be used with ADMIN_ROLE_EDITOR </p></td>
                 </tr>
               
@@ -11279,7 +11271,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
         
       
         <h3 id="metalstack.api.v2.MachineServiceCreateResponse">MachineServiceCreateResponse</h3>
-        <p>MachineServiceCreateResponse is the request payload for a machine create response</p>
+        <p>MachineServiceCreateResponse is the response payload for a machine create request</p>
 
         
           <table class="field-table">
@@ -11334,7 +11326,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
         
       
         <h3 id="metalstack.api.v2.MachineServiceDeleteResponse">MachineServiceDeleteResponse</h3>
-        <p>MachineServiceDeleteResponse is the request payload for a machine delete response</p>
+        <p>MachineServiceDeleteResponse is the response payload for a machine delete request</p>
 
         
           <table class="field-table">
@@ -11347,7 +11339,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                   <td>machine</td>
                   <td><a href="#metalstack.api.v2.Machine">Machine</a></td>
                   <td></td>
-                  <td><p>Machine which was deleteds </p></td>
+                  <td><p>Machine which was deleted </p></td>
                 </tr>
               
             </tbody>
@@ -11451,7 +11443,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
         
       
         <h3 id="metalstack.api.v2.MachineServiceGetResponse">MachineServiceGetResponse</h3>
-        <p>MachineServiceGetResponse is the request payload for a machine get response</p>
+        <p>MachineServiceGetResponse is the response payload for a machine get request</p>
 
         
           <table class="field-table">
@@ -11506,7 +11498,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
         
       
         <h3 id="metalstack.api.v2.MachineServiceListResponse">MachineServiceListResponse</h3>
-        <p>MachineServiceListResponse is the request payload for a machine list response</p>
+        <p>MachineServiceListResponse is the response payload for a machine list request</p>
 
         
           <table class="field-table">
@@ -11589,7 +11581,7 @@ if placement tags are provided, the machine candidate has an additional anti-aff
         
       
         <h3 id="metalstack.api.v2.MachineServiceUpdateResponse">MachineServiceUpdateResponse</h3>
-        <p>MachineServiceUpdateResponse is the request payload for a machine update response</p>
+        <p>MachineServiceUpdateResponse is the response payload for a machine update request</p>
 
         
           <table class="field-table">
@@ -12357,7 +12349,7 @@ Reason is only forwarded to an audit sink </p></td>
         
       
         <h3 id="metalstack.admin.v2.MachineServiceGetResponse">MachineServiceGetResponse</h3>
-        <p>MachineServiceGetResponse is the request payload for a machine get response</p>
+        <p>MachineServiceGetResponse is the response payload for a machine get request</p>
 
         
           <table class="field-table">
@@ -12394,7 +12386,7 @@ Reason is only forwarded to an audit sink </p></td>
                   <td>query</td>
                   <td><a href="#metalstack.api.v2.MachineBMCQuery">metalstack.api.v2.MachineBMCQuery</a></td>
                   <td></td>
-                  <td><p>Query to list one ore more bmcs of more machines </p></td>
+                  <td><p>Query to list one ore more bmcs of many machines </p></td>
                 </tr>
               
             </tbody>
@@ -12492,7 +12484,7 @@ otherwise an error is thrown that the partition must be specified </p></td>
         
       
         <h3 id="metalstack.admin.v2.MachineServiceListResponse">MachineServiceListResponse</h3>
-        <p>MachineServiceListResponse is the request payload for a machine list response</p>
+        <p>MachineServiceListResponse is the response payload for a machine list request</p>
 
         
           <table class="field-table">
@@ -13816,7 +13808,7 @@ TODO: is login really a good name? </p></td>
                   <td>project</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Project is the uuid of the project to get </p></td>
+                  <td><p>Project is the uuid of the project to delete </p></td>
                 </tr>
               
             </tbody>
@@ -13930,7 +13922,7 @@ TODO: is login really a good name? </p></td>
         
       
         <h3 id="metalstack.api.v2.ProjectServiceInviteAcceptResponse">ProjectServiceInviteAcceptResponse</h3>
-        <p>ProjectServiceInvitesListResponse is the response payload to a accept invite request</p>
+        <p>ProjectServiceInviteAcceptResponse is the response payload to a accept invite request</p>
 
         
           <table class="field-table">
@@ -14078,7 +14070,7 @@ TODO: is login really a good name? </p></td>
         
       
         <h3 id="metalstack.api.v2.ProjectServiceInviteResponse">ProjectServiceInviteResponse</h3>
-        <p>ProjectServiceInviteRequest is the response payload to a invite member request</p>
+        <p>ProjectServiceInviteResponse is the response payload to a invite member request</p>
 
         
           <table class="field-table">
@@ -18081,7 +18073,7 @@ Will return tasks from all queues if not specified </p></td>
         
       
         <h3 id="metalstack.api.v2.TenantServiceInviteAcceptResponse">TenantServiceInviteAcceptResponse</h3>
-        <p>TenantServiceInvitesListResponse is the response payload to a accept invite request</p>
+        <p>TenantServiceInviteAcceptResponse is the response payload to a accept invite request</p>
 
         
           <table class="field-table">
@@ -20809,7 +20801,7 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&
               
                 <tr>
                   <td>value</td>
-                  <td><a href="#metalstack.infra.v2.MachineProvisioningEvent">MachineProvisioningEvent</a></td>
+                  <td><a href="#metalstack.api.v2.MachineProvisioningEvent">metalstack.api.v2.MachineProvisioningEvent</a></td>
                   <td></td>
                   <td><p> </p></td>
                 </tr>
@@ -20852,128 +20844,7 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&
 
         
       
-        <h3 id="metalstack.infra.v2.MachineProvisioningEvent">MachineProvisioningEvent</h3>
-        <p>MachineProvisioningEvent contains details about an event.</p>
 
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>time</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>Time the event occurred at </p></td>
-                </tr>
-              
-                <tr>
-                  <td>event</td>
-                  <td><a href="#metalstack.infra.v2.ProvisioningEventType">ProvisioningEventType</a></td>
-                  <td></td>
-                  <td><p>Event that occurred </p></td>
-                </tr>
-              
-                <tr>
-                  <td>message</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Message describes the event in more detail </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-
-      
-        <h3 id="metalstack.infra.v2.ProvisioningEventType">ProvisioningEventType</h3>
-        <p>ProvisioningEventType is a short description of a machine event.</p>
-        <table class="enum-table">
-          <thead>
-            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_UNSPECIFIED</td>
-                <td>0</td>
-                <td><p>PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_ALIVE</td>
-                <td>1</td>
-                <td><p>PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_CRASHED</td>
-                <td>2</td>
-                <td><p>PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine&#39;s lifecycle</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_PXE_BOOTING</td>
-                <td>3</td>
-                <td><p>PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_PLANNED_REBOOT</td>
-                <td>4</td>
-                <td><p>PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_PREPARING</td>
-                <td>5</td>
-                <td><p>PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_REGISTERING</td>
-                <td>6</td>
-                <td><p>PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_WAITING</td>
-                <td>7</td>
-                <td><p>PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_INSTALLING</td>
-                <td>8</td>
-                <td><p>PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL</td>
-                <td>9</td>
-                <td><p>PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_PHONED_HOME</td>
-                <td>10</td>
-                <td><p>PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness</p></td>
-              </tr>
-            
-              <tr>
-                <td>PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM</td>
-                <td>11</td>
-                <td><p>PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines</p></td>
-              </tr>
-            
-          </tbody>
-        </table>
       
 
       

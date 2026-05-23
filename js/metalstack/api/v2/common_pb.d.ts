@@ -429,7 +429,7 @@ export declare const auditing: GenExtension<MethodOptions, Auditing>;
  */
 export declare const infra_roles: GenExtension<MethodOptions, InfraRole[]>;
 /**
- * MachineRole are used to define which infra role a microservice must provide to call this method
+ * MachineRole are used to define which machine role a microservice must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.MachineRole machine_roles = 51006;
  */

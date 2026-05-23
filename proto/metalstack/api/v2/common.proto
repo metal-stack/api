@@ -101,7 +101,7 @@ extend google.protobuf.MethodOptions {
   Auditing auditing = 51004;
   // InfraRoles are used to define which infra role a microservice must provide to call this method
   repeated InfraRole infra_roles = 51005;
-  // MachineRole are used to define which infra role a microservice must provide to call this method
+  // MachineRole are used to define which machine role a microservice must provide to call this method
   repeated MachineRole machine_roles = 51006;
 }
 

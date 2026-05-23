@@ -36,7 +36,7 @@ export type MachineServiceGetRequest = Message<"metalstack.api.v2.MachineService
  */
 export declare const MachineServiceGetRequestSchema: GenMessage<MachineServiceGetRequest>;
 /**
- * MachineServiceGetResponse is the request payload for a machine get response
+ * MachineServiceGetResponse is the response payload for a machine get request
  *
  * @generated from message metalstack.api.v2.MachineServiceGetResponse
  */
@@ -67,7 +67,7 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
     project: string;
     /**
      * UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-     * this field overrules size and partition.
+     * this field takes precedence over size and partition.
      * Can only be used with ADMIN_ROLE_EDITOR
      *
      * @generated from field: optional string uuid = 2;
@@ -204,7 +204,7 @@ export type FirewallSpec = Message<"metalstack.api.v2.FirewallSpec"> & {
  */
 export declare const FirewallSpecSchema: GenMessage<FirewallSpec>;
 /**
- * MachineServiceCreateResponse is the request payload for a machine create response
+ * MachineServiceCreateResponse is the response payload for a machine create request
  *
  * @generated from message metalstack.api.v2.MachineServiceCreateResponse
  */
@@ -270,7 +270,7 @@ export type MachineServiceUpdateRequest = Message<"metalstack.api.v2.MachineServ
  */
 export declare const MachineServiceUpdateRequestSchema: GenMessage<MachineServiceUpdateRequest>;
 /**
- * MachineServiceUpdateResponse is the request payload for a machine update response
+ * MachineServiceUpdateResponse is the response payload for a machine update request
  *
  * @generated from message metalstack.api.v2.MachineServiceUpdateResponse
  */
@@ -312,7 +312,7 @@ export type MachineServiceListRequest = Message<"metalstack.api.v2.MachineServic
  */
 export declare const MachineServiceListRequestSchema: GenMessage<MachineServiceListRequest>;
 /**
- * MachineServiceListResponse is the request payload for a machine list response
+ * MachineServiceListResponse is the response payload for a machine list request
  *
  * @generated from message metalstack.api.v2.MachineServiceListResponse
  */
@@ -354,13 +354,13 @@ export type MachineServiceDeleteRequest = Message<"metalstack.api.v2.MachineServ
  */
 export declare const MachineServiceDeleteRequestSchema: GenMessage<MachineServiceDeleteRequest>;
 /**
- * MachineServiceDeleteResponse is the request payload for a machine delete response
+ * MachineServiceDeleteResponse is the response payload for a machine delete request
  *
  * @generated from message metalstack.api.v2.MachineServiceDeleteResponse
  */
 export type MachineServiceDeleteResponse = Message<"metalstack.api.v2.MachineServiceDeleteResponse"> & {
     /**
-     * Machine which was deleteds
+     * Machine which was deleted
      *
      * @generated from field: metalstack.api.v2.Machine machine = 1;
      */

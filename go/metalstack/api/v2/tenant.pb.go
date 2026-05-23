@@ -1399,7 +1399,7 @@ func (x *TenantServiceInviteAcceptRequest) GetSecret() string {
 	return ""
 }
 
-// TenantServiceInvitesListResponse is the response payload to a accept invite request
+// TenantServiceInviteAcceptResponse is the response payload to a accept invite request
 type TenantServiceInviteAcceptResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Tenant ID of the joined tenant

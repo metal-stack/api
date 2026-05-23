@@ -175,7 +175,7 @@ export declare const IPServiceCreateRequestSchema: GenMessage<IPServiceCreateReq
  */
 export type IPServiceUpdateRequest = Message<"metalstack.api.v2.IPServiceUpdateRequest"> & {
     /**
-     * Ip the ip to update
+     * Ip the ip address to update
      *
      * @generated from field: string ip = 1;
      */

@@ -188,7 +188,7 @@ message ProjectServiceCreateResponse {
 
 // ProjectServiceDeleteRequest is the request payload to delete a project
 message ProjectServiceDeleteRequest {
-  // Project is the uuid of the project to get
+  // Project is the uuid of the project to delete
   string project = 1 [(buf.validate.field).string.uuid = true];
 }
 
@@ -229,7 +229,7 @@ message ProjectServiceInviteRequest {
   ProjectRole role = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
-// ProjectServiceInviteRequest is the response payload to a invite member request
+// ProjectServiceInviteResponse is the response payload to a invite member request
 message ProjectServiceInviteResponse {
   // Inviter contains a secret which can be sent to a potential user
   // can be appended to the invitation endpoint at our cloud console like
@@ -303,7 +303,7 @@ message ProjectServiceInviteAcceptRequest {
   string secret = 1;
 }
 
-// ProjectServiceInvitesListResponse is the response payload to a accept invite request
+// ProjectServiceInviteAcceptResponse is the response payload to a accept invite request
 message ProjectServiceInviteAcceptResponse {
   // Project ID of the project joined
   string project = 1;

@@ -119,7 +119,7 @@ message IPServiceCreateRequest {
 
 // IPServiceUpdateRequest is the request payload for a ip update request
 message IPServiceUpdateRequest {
-  // Ip the ip to update
+  // Ip the ip address to update
   string ip = 1 [(buf.validate.field).string.ip = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];

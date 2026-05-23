@@ -67,15 +67,15 @@ message ImageServiceLatestResponse {
 
 // Image
 message Image {
-  // Id of this imageLayout
+  // Id of this image
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Meta for this ip
+  // Meta for this image
   Meta meta = 2;
   // URL where this image is located
   string url = 3 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Name of this imageLayout
+  // Name of this image
   optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this imageLayout
+  // Description of this image
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Features of this image
   repeated ImageFeature features = 6 [(buf.validate.field).repeated = {

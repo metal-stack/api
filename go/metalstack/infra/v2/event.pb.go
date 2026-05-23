@@ -8,10 +8,10 @@ package infrav2
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "github.com/metal-stack/api/go/metalstack/api/v2"
+	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	_ "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -24,100 +24,11 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ProvisioningEventType is a short description of a machine event.
-type ProvisioningEventType int32
-
-const (
-	// PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_UNSPECIFIED ProvisioningEventType = 0
-	// PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_ALIVE ProvisioningEventType = 1
-	// PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine's lifecycle
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_CRASHED ProvisioningEventType = 2
-	// PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_PXE_BOOTING ProvisioningEventType = 3
-	// PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT ProvisioningEventType = 4
-	// PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_PREPARING ProvisioningEventType = 5
-	// PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_REGISTERING ProvisioningEventType = 6
-	// PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_WAITING ProvisioningEventType = 7
-	// PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_INSTALLING ProvisioningEventType = 8
-	// PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL ProvisioningEventType = 9
-	// PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_PHONED_HOME ProvisioningEventType = 10
-	// PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines
-	ProvisioningEventType_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM ProvisioningEventType = 11
-)
-
-// Enum value maps for ProvisioningEventType.
-var (
-	ProvisioningEventType_name = map[int32]string{
-		0:  "PROVISIONING_EVENT_TYPE_UNSPECIFIED",
-		1:  "PROVISIONING_EVENT_TYPE_ALIVE",
-		2:  "PROVISIONING_EVENT_TYPE_CRASHED",
-		3:  "PROVISIONING_EVENT_TYPE_PXE_BOOTING",
-		4:  "PROVISIONING_EVENT_TYPE_PLANNED_REBOOT",
-		5:  "PROVISIONING_EVENT_TYPE_PREPARING",
-		6:  "PROVISIONING_EVENT_TYPE_REGISTERING",
-		7:  "PROVISIONING_EVENT_TYPE_WAITING",
-		8:  "PROVISIONING_EVENT_TYPE_INSTALLING",
-		9:  "PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL",
-		10: "PROVISIONING_EVENT_TYPE_PHONED_HOME",
-		11: "PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM",
-	}
-	ProvisioningEventType_value = map[string]int32{
-		"PROVISIONING_EVENT_TYPE_UNSPECIFIED":        0,
-		"PROVISIONING_EVENT_TYPE_ALIVE":              1,
-		"PROVISIONING_EVENT_TYPE_CRASHED":            2,
-		"PROVISIONING_EVENT_TYPE_PXE_BOOTING":        3,
-		"PROVISIONING_EVENT_TYPE_PLANNED_REBOOT":     4,
-		"PROVISIONING_EVENT_TYPE_PREPARING":          5,
-		"PROVISIONING_EVENT_TYPE_REGISTERING":        6,
-		"PROVISIONING_EVENT_TYPE_WAITING":            7,
-		"PROVISIONING_EVENT_TYPE_INSTALLING":         8,
-		"PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL": 9,
-		"PROVISIONING_EVENT_TYPE_PHONED_HOME":        10,
-		"PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM":    11,
-	}
-)
-
-func (x ProvisioningEventType) Enum() *ProvisioningEventType {
-	p := new(ProvisioningEventType)
-	*p = x
-	return p
-}
-
-func (x ProvisioningEventType) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (ProvisioningEventType) Descriptor() protoreflect.EnumDescriptor {
-	return file_metalstack_infra_v2_event_proto_enumTypes[0].Descriptor()
-}
-
-func (ProvisioningEventType) Type() protoreflect.EnumType {
-	return &file_metalstack_infra_v2_event_proto_enumTypes[0]
-}
-
-func (x ProvisioningEventType) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use ProvisioningEventType.Descriptor instead.
-func (ProvisioningEventType) EnumDescriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_event_proto_rawDescGZIP(), []int{0}
-}
-
 // EventServiceSendRequest is the request payload for sending provisioning events.
 type EventServiceSendRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Events grouped by machine IDs
-	Events        map[string]*MachineProvisioningEvent `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Events        map[string]*v2.MachineProvisioningEvent `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -152,7 +63,7 @@ func (*EventServiceSendRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_event_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *EventServiceSendRequest) GetEvents() map[string]*MachineProvisioningEvent {
+func (x *EventServiceSendRequest) GetEvents() map[string]*v2.MachineProvisioningEvent {
 	if x != nil {
 		return x.Events
 	}
@@ -214,102 +125,19 @@ func (x *EventServiceSendResponse) GetFailed() []string {
 	return nil
 }
 
-// MachineProvisioningEvent contains details about an event.
-type MachineProvisioningEvent struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Time the event occurred at
-	Time *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=time,proto3" json:"time,omitempty"`
-	// Event that occurred
-	Event ProvisioningEventType `protobuf:"varint,2,opt,name=event,proto3,enum=metalstack.infra.v2.ProvisioningEventType" json:"event,omitempty"`
-	// Message describes the event in more detail
-	Message       string `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *MachineProvisioningEvent) Reset() {
-	*x = MachineProvisioningEvent{}
-	mi := &file_metalstack_infra_v2_event_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *MachineProvisioningEvent) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MachineProvisioningEvent) ProtoMessage() {}
-
-func (x *MachineProvisioningEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_event_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MachineProvisioningEvent.ProtoReflect.Descriptor instead.
-func (*MachineProvisioningEvent) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_event_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *MachineProvisioningEvent) GetTime() *timestamppb.Timestamp {
-	if x != nil {
-		return x.Time
-	}
-	return nil
-}
-
-func (x *MachineProvisioningEvent) GetEvent() ProvisioningEventType {
-	if x != nil {
-		return x.Event
-	}
-	return ProvisioningEventType_PROVISIONING_EVENT_TYPE_UNSPECIFIED
-}
-
-func (x *MachineProvisioningEvent) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
 var File_metalstack_infra_v2_event_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_event_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/infra/v2/event.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\"\xd5\x01\n" +
+	"\x1fmetalstack/infra/v2/event.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"\xd3\x01\n" +
 	"\x17EventServiceSendRequest\x12P\n" +
-	"\x06events\x18\x01 \x03(\v28.metalstack.infra.v2.EventServiceSendRequest.EventsEntryR\x06events\x1ah\n" +
+	"\x06events\x18\x01 \x03(\v28.metalstack.infra.v2.EventServiceSendRequest.EventsEntryR\x06events\x1af\n" +
 	"\vEventsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12C\n" +
-	"\x05value\x18\x02 \x01(\v2-.metalstack.infra.v2.MachineProvisioningEventR\x05value:\x028\x01\"J\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12A\n" +
+	"\x05value\x18\x02 \x01(\v2+.metalstack.api.v2.MachineProvisioningEventR\x05value:\x028\x01\"J\n" +
 	"\x18EventServiceSendResponse\x12\x16\n" +
 	"\x06events\x18\x01 \x01(\x04R\x06events\x12\x16\n" +
-	"\x06failed\x18\x02 \x03(\tR\x06failed\"\xb0\x01\n" +
-	"\x18MachineProvisioningEvent\x12.\n" +
-	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x12J\n" +
-	"\x05event\x18\x02 \x01(\x0e2*.metalstack.infra.v2.ProvisioningEventTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05event\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage*\xb8\x05\n" +
-	"\x15ProvisioningEventType\x12'\n" +
-	"#PROVISIONING_EVENT_TYPE_UNSPECIFIED\x10\x00\x12,\n" +
-	"\x1dPROVISIONING_EVENT_TYPE_ALIVE\x10\x01\x1a\t\x82\xb2\x19\x05Alive\x120\n" +
-	"\x1fPROVISIONING_EVENT_TYPE_CRASHED\x10\x02\x1a\v\x82\xb2\x19\aCrashed\x128\n" +
-	"#PROVISIONING_EVENT_TYPE_PXE_BOOTING\x10\x03\x1a\x0f\x82\xb2\x19\vPXE Booting\x12>\n" +
-	"&PROVISIONING_EVENT_TYPE_PLANNED_REBOOT\x10\x04\x1a\x12\x82\xb2\x19\x0ePlanned Reboot\x124\n" +
-	"!PROVISIONING_EVENT_TYPE_PREPARING\x10\x05\x1a\r\x82\xb2\x19\tPreparing\x128\n" +
-	"#PROVISIONING_EVENT_TYPE_REGISTERING\x10\x06\x1a\x0f\x82\xb2\x19\vRegistering\x120\n" +
-	"\x1fPROVISIONING_EVENT_TYPE_WAITING\x10\a\x1a\v\x82\xb2\x19\aWaiting\x126\n" +
-	"\"PROVISIONING_EVENT_TYPE_INSTALLING\x10\b\x1a\x0e\x82\xb2\x19\n" +
-	"Installing\x12F\n" +
-	"*PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL\x10\t\x1a\x16\x82\xb2\x19\x12Booting New Kernel\x128\n" +
-	"#PROVISIONING_EVENT_TYPE_PHONED_HOME\x10\n" +
-	"\x1a\x0f\x82\xb2\x19\vPhoned Home\x12@\n" +
-	"'PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM\x10\v\x1a\x13\x82\xb2\x19\x0fMachine Reclaim2~\n" +
+	"\x06failed\x18\x02 \x03(\tR\x06failed2~\n" +
 	"\fEventService\x12n\n" +
 	"\x04Send\x12,.metalstack.infra.v2.EventServiceSendRequest\x1a-.metalstack.infra.v2.EventServiceSendResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xce\x01\n" +
 	"\x17com.metalstack.infra.v2B\n" +
@@ -327,28 +155,23 @@ func file_metalstack_infra_v2_event_proto_rawDescGZIP() []byte {
 	return file_metalstack_infra_v2_event_proto_rawDescData
 }
 
-var file_metalstack_infra_v2_event_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_metalstack_infra_v2_event_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_metalstack_infra_v2_event_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_metalstack_infra_v2_event_proto_goTypes = []any{
-	(ProvisioningEventType)(0),       // 0: metalstack.infra.v2.ProvisioningEventType
-	(*EventServiceSendRequest)(nil),  // 1: metalstack.infra.v2.EventServiceSendRequest
-	(*EventServiceSendResponse)(nil), // 2: metalstack.infra.v2.EventServiceSendResponse
-	(*MachineProvisioningEvent)(nil), // 3: metalstack.infra.v2.MachineProvisioningEvent
-	nil,                              // 4: metalstack.infra.v2.EventServiceSendRequest.EventsEntry
-	(*timestamppb.Timestamp)(nil),    // 5: google.protobuf.Timestamp
+	(*EventServiceSendRequest)(nil),     // 0: metalstack.infra.v2.EventServiceSendRequest
+	(*EventServiceSendResponse)(nil),    // 1: metalstack.infra.v2.EventServiceSendResponse
+	nil,                                 // 2: metalstack.infra.v2.EventServiceSendRequest.EventsEntry
+	(*v2.MachineProvisioningEvent)(nil), // 3: metalstack.api.v2.MachineProvisioningEvent
 }
 var file_metalstack_infra_v2_event_proto_depIdxs = []int32{
-	4, // 0: metalstack.infra.v2.EventServiceSendRequest.events:type_name -> metalstack.infra.v2.EventServiceSendRequest.EventsEntry
-	5, // 1: metalstack.infra.v2.MachineProvisioningEvent.time:type_name -> google.protobuf.Timestamp
-	0, // 2: metalstack.infra.v2.MachineProvisioningEvent.event:type_name -> metalstack.infra.v2.ProvisioningEventType
-	3, // 3: metalstack.infra.v2.EventServiceSendRequest.EventsEntry.value:type_name -> metalstack.infra.v2.MachineProvisioningEvent
-	1, // 4: metalstack.infra.v2.EventService.Send:input_type -> metalstack.infra.v2.EventServiceSendRequest
-	2, // 5: metalstack.infra.v2.EventService.Send:output_type -> metalstack.infra.v2.EventServiceSendResponse
-	5, // [5:6] is the sub-list for method output_type
-	4, // [4:5] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	2, // 0: metalstack.infra.v2.EventServiceSendRequest.events:type_name -> metalstack.infra.v2.EventServiceSendRequest.EventsEntry
+	3, // 1: metalstack.infra.v2.EventServiceSendRequest.EventsEntry.value:type_name -> metalstack.api.v2.MachineProvisioningEvent
+	0, // 2: metalstack.infra.v2.EventService.Send:input_type -> metalstack.infra.v2.EventServiceSendRequest
+	1, // 3: metalstack.infra.v2.EventService.Send:output_type -> metalstack.infra.v2.EventServiceSendResponse
+	3, // [3:4] is the sub-list for method output_type
+	2, // [2:3] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_infra_v2_event_proto_init() }
@@ -361,14 +184,13 @@ func file_metalstack_infra_v2_event_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_infra_v2_event_proto_rawDesc), len(file_metalstack_infra_v2_event_proto_rawDesc)),
-			NumEnums:      1,
-			NumMessages:   4,
+			NumEnums:      0,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_metalstack_infra_v2_event_proto_goTypes,
 		DependencyIndexes: file_metalstack_infra_v2_event_proto_depIdxs,
-		EnumInfos:         file_metalstack_infra_v2_event_proto_enumTypes,
 		MessageInfos:      file_metalstack_infra_v2_event_proto_msgTypes,
 	}.Build()
 	File_metalstack_infra_v2_event_proto = out.File

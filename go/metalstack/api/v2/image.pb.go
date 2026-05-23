@@ -422,15 +422,15 @@ func (x *ImageServiceLatestResponse) GetImage() *Image {
 // Image
 type Image struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this imageLayout
+	// Id of this image
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Meta for this ip
+	// Meta for this image
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	// URL where this image is located
 	Url string `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
-	// Name of this imageLayout
+	// Name of this image
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this imageLayout
+	// Description of this image
 	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Features of this image
 	Features []ImageFeature `protobuf:"varint,6,rep,packed,name=features,proto3,enum=metalstack.api.v2.ImageFeature" json:"features,omitempty"`

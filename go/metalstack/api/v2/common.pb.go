@@ -846,7 +846,7 @@ var (
 	//
 	// repeated metalstack.api.v2.InfraRole infra_roles = 51005;
 	E_InfraRoles = &file_metalstack_api_v2_common_proto_extTypes[5]
-	// MachineRole are used to define which infra role a microservice must provide to call this method
+	// MachineRole are used to define which machine role a microservice must provide to call this method
 	//
 	// repeated metalstack.api.v2.MachineRole machine_roles = 51006;
 	E_MachineRoles = &file_metalstack_api_v2_common_proto_extTypes[6]

@@ -8,7 +8,7 @@ import "buf/validate/validate.proto";
 // See https://celbyexample.com/ for cel documentation
 
 extend buf.validate.StringRules {
-  // Macaddress returns true if the given string is a valid macadress
+  // Macaddress returns true if the given string is a valid macaddress
   optional bool macaddress = 80048951 [(buf.validate.predefined).cel = {
     id: "string.macaddress"
     message: "this string must be a valid macaddress"

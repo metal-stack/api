@@ -2,19 +2,20 @@
 // @generated from file metalstack/infra/v2/event.proto (package metalstack.infra.v2, syntax proto3)
 /* eslint-disable */
 
-import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
-import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
+import type { MachineProvisioningEvent } from "../../api/v2/machine_pb";
+import { file_metalstack_api_v2_machine } from "../../api/v2/machine_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file metalstack/infra/v2/event.proto.
  */
 export const file_metalstack_infra_v2_event: GenFile = /*@__PURE__*/
-  fileDesc("Ch9tZXRhbHN0YWNrL2luZnJhL3YyL2V2ZW50LnByb3RvEhNtZXRhbHN0YWNrLmluZnJhLnYyIsEBChdFdmVudFNlcnZpY2VTZW5kUmVxdWVzdBJICgZldmVudHMYASADKAsyOC5tZXRhbHN0YWNrLmluZnJhLnYyLkV2ZW50U2VydmljZVNlbmRSZXF1ZXN0LkV2ZW50c0VudHJ5GlwKC0V2ZW50c0VudHJ5EgsKA2tleRgBIAEoCRI8CgV2YWx1ZRgCIAEoCzItLm1ldGFsc3RhY2suaW5mcmEudjIuTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50OgI4ASI6ChhFdmVudFNlcnZpY2VTZW5kUmVzcG9uc2USDgoGZXZlbnRzGAEgASgEEg4KBmZhaWxlZBgCIAMoCSKaAQoYTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50EigKBHRpbWUYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEkMKBWV2ZW50GAIgASgOMioubWV0YWxzdGFjay5pbmZyYS52Mi5Qcm92aXNpb25pbmdFdmVudFR5cGVCCLpIBYIBAhABEg8KB21lc3NhZ2UYAyABKAkquAUKFVByb3Zpc2lvbmluZ0V2ZW50VHlwZRInCiNQUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9VTlNQRUNJRklFRBAAEiwKHVBST1ZJU0lPTklOR19FVkVOVF9UWVBFX0FMSVZFEAEaCYKyGQVBbGl2ZRIwCh9QUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9DUkFTSEVEEAIaC4KyGQdDcmFzaGVkEjgKI1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BYRV9CT09USU5HEAMaD4KyGQtQWEUgQm9vdGluZxI+CiZQUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9QTEFOTkVEX1JFQk9PVBAEGhKCshkOUGxhbm5lZCBSZWJvb3QSNAohUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfUFJFUEFSSU5HEAUaDYKyGQlQcmVwYXJpbmcSOAojUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfUkVHSVNURVJJTkcQBhoPgrIZC1JlZ2lzdGVyaW5nEjAKH1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1dBSVRJTkcQBxoLgrIZB1dhaXRpbmcSNgoiUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfSU5TVEFMTElORxAIGg6CshkKSW5zdGFsbGluZxJGCipQUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9CT09USU5HX05FV19LRVJORUwQCRoWgrIZEkJvb3RpbmcgTmV3IEtlcm5lbBI4CiNQUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9QSE9ORURfSE9NRRAKGg+CshkLUGhvbmVkIEhvbWUSQAonUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfTUFDSElORV9SRUNMQUlNEAsaE4KyGQ9NYWNoaW5lIFJlY2xhaW0yfgoMRXZlbnRTZXJ2aWNlEm4KBFNlbmQSLC5tZXRhbHN0YWNrLmluZnJhLnYyLkV2ZW50U2VydmljZVNlbmRSZXF1ZXN0Gi0ubWV0YWxzdGFjay5pbmZyYS52Mi5FdmVudFNlcnZpY2VTZW5kUmVzcG9uc2UiCeDzGALq8xgBAULOAQoXY29tLm1ldGFsc3RhY2suaW5mcmEudjJCCkV2ZW50UHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common]);
+  fileDesc("Ch9tZXRhbHN0YWNrL2luZnJhL3YyL2V2ZW50LnByb3RvEhNtZXRhbHN0YWNrLmluZnJhLnYyIr8BChdFdmVudFNlcnZpY2VTZW5kUmVxdWVzdBJICgZldmVudHMYASADKAsyOC5tZXRhbHN0YWNrLmluZnJhLnYyLkV2ZW50U2VydmljZVNlbmRSZXF1ZXN0LkV2ZW50c0VudHJ5GloKC0V2ZW50c0VudHJ5EgsKA2tleRgBIAEoCRI6CgV2YWx1ZRgCIAEoCzIrLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVQcm92aXNpb25pbmdFdmVudDoCOAEiOgoYRXZlbnRTZXJ2aWNlU2VuZFJlc3BvbnNlEg4KBmV2ZW50cxgBIAEoBBIOCgZmYWlsZWQYAiADKAkyfgoMRXZlbnRTZXJ2aWNlEm4KBFNlbmQSLC5tZXRhbHN0YWNrLmluZnJhLnYyLkV2ZW50U2VydmljZVNlbmRSZXF1ZXN0Gi0ubWV0YWxzdGFjay5pbmZyYS52Mi5FdmVudFNlcnZpY2VTZW5kUmVzcG9uc2UiCeDzGALq8xgBAULOAQoXY29tLm1ldGFsc3RhY2suaW5mcmEudjJCCkV2ZW50UHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_machine]);
 
 /**
  * EventServiceSendRequest is the request payload for sending provisioning events.
@@ -25,7 +26,7 @@ export type EventServiceSendRequest = Message<"metalstack.infra.v2.EventServiceS
   /**
    * Events grouped by machine IDs
    *
-   * @generated from field: map<string, metalstack.infra.v2.MachineProvisioningEvent> events = 1;
+   * @generated from field: map<string, metalstack.api.v2.MachineProvisioningEvent> events = 1;
    */
   events: { [key: string]: MachineProvisioningEvent };
 };
@@ -64,138 +65,6 @@ export type EventServiceSendResponse = Message<"metalstack.infra.v2.EventService
  */
 export const EventServiceSendResponseSchema: GenMessage<EventServiceSendResponse> = /*@__PURE__*/
   messageDesc(file_metalstack_infra_v2_event, 1);
-
-/**
- * MachineProvisioningEvent contains details about an event.
- *
- * @generated from message metalstack.infra.v2.MachineProvisioningEvent
- */
-export type MachineProvisioningEvent = Message<"metalstack.infra.v2.MachineProvisioningEvent"> & {
-  /**
-   * Time the event occurred at
-   *
-   * @generated from field: google.protobuf.Timestamp time = 1;
-   */
-  time?: Timestamp | undefined;
-
-  /**
-   * Event that occurred
-   *
-   * @generated from field: metalstack.infra.v2.ProvisioningEventType event = 2;
-   */
-  event: ProvisioningEventType;
-
-  /**
-   * Message describes the event in more detail
-   *
-   * @generated from field: string message = 3;
-   */
-  message: string;
-};
-
-/**
- * Describes the message metalstack.infra.v2.MachineProvisioningEvent.
- * Use `create(MachineProvisioningEventSchema)` to create a new message.
- */
-export const MachineProvisioningEventSchema: GenMessage<MachineProvisioningEvent> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_event, 2);
-
-/**
- * ProvisioningEventType is a short description of a machine event.
- *
- * @generated from enum metalstack.infra.v2.ProvisioningEventType
- */
-export enum ProvisioningEventType {
-  /**
-   * PROVISIONING_EVENT_TYPE_UNSPECIFIED is unspecified
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_ALIVE means the machine has reported itself to the API not long ago
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_ALIVE = 1;
-   */
-  ALIVE = 1,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_CRASHED means an irregularity in the machine's lifecycle
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_CRASHED = 2;
-   */
-  CRASHED = 2,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_PXE_BOOTING is sent when an unprovisioned machine requests a boot image via PXE
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_PXE_BOOTING = 3;
-   */
-  PXE_BOOTING = 3,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_PLANNED_REBOOT means the machine was scheduled for reboot
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_PLANNED_REBOOT = 4;
-   */
-  PLANNED_REBOOT = 4,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_PREPARING means the metal-hammer has started
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_PREPARING = 5;
-   */
-  PREPARING = 5,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_REGISTERING means the metal-hammer is attempting to register the machine at the API
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_REGISTERING = 6;
-   */
-  REGISTERING = 6,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_WAITING means the machine has successfully reached the state where it is waiting for allocation
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_WAITING = 7;
-   */
-  WAITING = 7,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_INSTALLING means the machine was allocated and the requested OS is being installed
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_INSTALLING = 8;
-   */
-  INSTALLING = 8,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL means the machine has successfully been installed and is now booting into the new OS
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL = 9;
-   */
-  BOOTING_NEW_KERNEL = 9,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_PHONED_HOME is sent periodically by an allocated machine to indicate its liveliness
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_PHONED_HOME = 10;
-   */
-  PHONED_HOME = 10,
-
-  /**
-   * PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM means the machine was freed and is about to return into the pool of waiting machines
-   *
-   * @generated from enum value: PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11;
-   */
-  MACHINE_RECLAIM = 11,
-}
-
-/**
- * Describes the enum metalstack.infra.v2.ProvisioningEventType.
- */
-export const ProvisioningEventTypeSchema: GenEnum<ProvisioningEventType> = /*@__PURE__*/
-  enumDesc(file_metalstack_infra_v2_event, 0);
 
 /**
  * EventService provides machine provisioning event logging operations.

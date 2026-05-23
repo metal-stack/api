@@ -39,7 +39,7 @@ export const MachineServiceGetRequestSchema: GenMessage<MachineServiceGetRequest
   messageDesc(file_metalstack_admin_v2_machine, 0);
 
 /**
- * MachineServiceGetResponse is the request payload for a machine get response
+ * MachineServiceGetResponse is the response payload for a machine get request
  *
  * @generated from message metalstack.admin.v2.MachineServiceGetResponse
  */
@@ -89,7 +89,7 @@ export const MachineServiceListRequestSchema: GenMessage<MachineServiceListReque
   messageDesc(file_metalstack_admin_v2_machine, 2);
 
 /**
- * MachineServiceListResponse is the request payload for a machine list response
+ * MachineServiceListResponse is the response payload for a machine list request
  *
  * @generated from message metalstack.admin.v2.MachineServiceListResponse
  */
@@ -208,7 +208,7 @@ export const MachineServiceGetBMCResponseSchema: GenMessage<MachineServiceGetBMC
  */
 export type MachineServiceListBMCRequest = Message<"metalstack.admin.v2.MachineServiceListBMCRequest"> & {
   /**
-   * Query to list one ore more bmcs of more machines
+   * Query to list one ore more bmcs of many machines
    *
    * @generated from field: metalstack.api.v2.MachineBMCQuery query = 1;
    */

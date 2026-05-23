@@ -138,7 +138,7 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 
 // Extension fields to validate.StringRules.
 var (
-	// Macaddress returns true if the given string is a valid macadress
+	// Macaddress returns true if the given string is a valid macaddress
 	//
 	// optional bool macaddress = 80048951;
 	E_Macaddress = &file_metalstack_api_v2_predefined_rules_proto_extTypes[0]

@@ -660,7 +660,7 @@ func (x *ProjectServiceCreateResponse) GetProject() *Project {
 // ProjectServiceDeleteRequest is the request payload to delete a project
 type ProjectServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project to get
+	// Project is the uuid of the project to delete
 	Project       string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -941,7 +941,7 @@ func (x *ProjectServiceInviteRequest) GetRole() ProjectRole {
 	return ProjectRole_PROJECT_ROLE_UNSPECIFIED
 }
 
-// ProjectServiceInviteRequest is the response payload to a invite member request
+// ProjectServiceInviteResponse is the response payload to a invite member request
 type ProjectServiceInviteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Inviter contains a secret which can be sent to a potential user
@@ -1504,7 +1504,7 @@ func (x *ProjectServiceInviteAcceptRequest) GetSecret() string {
 	return ""
 }
 
-// ProjectServiceInvitesListResponse is the response payload to a accept invite request
+// ProjectServiceInviteAcceptResponse is the response payload to a accept invite request
 type ProjectServiceInviteAcceptResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project ID of the project joined
