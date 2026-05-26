@@ -25,6 +25,9 @@ class FilesystemService(Protocol):
     async def delete(self, request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def match(self, request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class FilesystemServiceASGIApplication(ConnectASGIApplication[FilesystemService]):
     def __init__(self, service: FilesystemService | AsyncGenerator[FilesystemService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
@@ -60,6 +63,16 @@ class FilesystemServiceASGIApplication(ConnectASGIApplication[FilesystemService]
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.delete,
+                ),
+                "/metalstack.admin.v2.FilesystemService/Match": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Match",
+                        service_name="metalstack.admin.v2.FilesystemService",
+                        input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.match,
                 ),
             },
             interceptors=interceptors,
@@ -133,6 +146,26 @@ class FilesystemServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def match(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Match",
+                service_name="metalstack.admin.v2.FilesystemService",
+                input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
+                output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 class FilesystemServiceSync(Protocol):
     def create(self, request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceCreateResponse:
@@ -140,6 +173,8 @@ class FilesystemServiceSync(Protocol):
     def update(self, request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceUpdateResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def delete(self, request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def match(self, request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -176,6 +211,16 @@ class FilesystemServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.delete,
+                ),
+                "/metalstack.admin.v2.FilesystemService/Match": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Match",
+                        service_name="metalstack.admin.v2.FilesystemService",
+                        input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.match,
                 ),
             },
             interceptors=interceptors,
@@ -243,6 +288,26 @@ class FilesystemServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.FilesystemService",
                 input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteRequest,
                 output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceDeleteResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def match(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Match",
+                service_name="metalstack.admin.v2.FilesystemService",
+                input=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
+                output=metalstack_dot_admin_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

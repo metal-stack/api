@@ -63,3 +63,33 @@ class FilesystemServiceDeleteResponse(_message.Message):
     FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
     filesystem_layout: _filesystem_pb2.FilesystemLayout
     def __init__(self, filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ...) -> None: ...
+
+class FilesystemServiceMatchRequest(_message.Message):
+    __slots__ = ("size_and_image", "machine_and_filesystemlayout")
+    SIZE_AND_IMAGE_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_AND_FILESYSTEMLAYOUT_FIELD_NUMBER: _ClassVar[int]
+    size_and_image: MatchImageAndSize
+    machine_and_filesystemlayout: MatchMachineAndFilesystemLayout
+    def __init__(self, size_and_image: _Optional[_Union[MatchImageAndSize, _Mapping]] = ..., machine_and_filesystemlayout: _Optional[_Union[MatchMachineAndFilesystemLayout, _Mapping]] = ...) -> None: ...
+
+class MatchImageAndSize(_message.Message):
+    __slots__ = ("size", "image")
+    SIZE_FIELD_NUMBER: _ClassVar[int]
+    IMAGE_FIELD_NUMBER: _ClassVar[int]
+    size: str
+    image: str
+    def __init__(self, size: _Optional[str] = ..., image: _Optional[str] = ...) -> None: ...
+
+class MatchMachineAndFilesystemLayout(_message.Message):
+    __slots__ = ("machine", "filesystem_layout")
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
+    machine: str
+    filesystem_layout: str
+    def __init__(self, machine: _Optional[str] = ..., filesystem_layout: _Optional[str] = ...) -> None: ...
+
+class FilesystemServiceMatchResponse(_message.Message):
+    __slots__ = ("filesystem_layout",)
+    FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
+    filesystem_layout: _filesystem_pb2.FilesystemLayout
+    def __init__(self, filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ...) -> None: ...

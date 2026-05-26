@@ -24,6 +24,12 @@ service FilesystemService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
+  // Matches a filesystem to a size and image or machine.
+  rpc Match(FilesystemServiceMatchRequest) returns (FilesystemServiceMatchResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // FilesystemServiceCreateRequest is the request payload for creating a filesystem.
@@ -77,5 +83,41 @@ message FilesystemServiceDeleteRequest {
 // FilesystemServiceDeleteResponse is the response payload for deleting a filesystem.
 message FilesystemServiceDeleteResponse {
   // FilesystemLayout contains the deleted filesystem layout
+  metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
+}
+
+// FilesystemServiceMatchRequest
+message FilesystemServiceMatchRequest {
+  // Match either size and image to a filesystemlayout
+  // or if a machine matches to a filesystemlayout
+  oneof match {
+    // ensure at least one match is specified
+    option (buf.validate.oneof).required = true;
+    // SizeAndImage
+    MatchImageAndSize size_and_image = 1;
+    // MachineAndFilesystemlayout
+    MatchMachineAndFilesystemLayout machine_and_filesystemlayout = 2;
+  }
+}
+
+// MatchImageAndSize
+message MatchImageAndSize {
+  // Size, machine size to try
+  string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Image machine image to try
+  string image = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+}
+
+// MatchMachineAndFilesystemLayout
+message MatchMachineAndFilesystemLayout {
+  // Machine to check
+  string machine = 1 [(buf.validate.field).string.uuid = true];
+  // FilesystemLayout to check
+  string filesystem_layout = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+}
+
+// FilesystemServiceMatchResponse
+message FilesystemServiceMatchResponse {
+  // FilesystemLayout the filesystemlayout
   metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }

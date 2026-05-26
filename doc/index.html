@@ -659,23 +659,7 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.FilesystemServiceMatchRequest"><span class="badge">M</span>FilesystemServiceMatchRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.FilesystemServiceMatchResponse"><span class="badge">M</span>FilesystemServiceMatchResponse</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.LogicalVolume"><span class="badge">M</span>LogicalVolume</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.MatchImageAndSize"><span class="badge">M</span>MatchImageAndSize</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.MatchMachineAndFilesystemLayout"><span class="badge">M</span>MatchMachineAndFilesystemLayout</a>
                 </li>
               
                 <li>
@@ -734,11 +718,27 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.admin.v2.FilesystemServiceMatchRequest"><span class="badge">M</span>FilesystemServiceMatchRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.FilesystemServiceMatchResponse"><span class="badge">M</span>FilesystemServiceMatchResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.FilesystemServiceUpdateRequest"><span class="badge">M</span>FilesystemServiceUpdateRequest</a>
                 </li>
               
                 <li>
                   <a href="#metalstack.admin.v2.FilesystemServiceUpdateResponse"><span class="badge">M</span>FilesystemServiceUpdateResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.MatchImageAndSize"><span class="badge">M</span>MatchImageAndSize</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.MatchMachineAndFilesystemLayout"><span class="badge">M</span>MatchMachineAndFilesystemLayout</a>
                 </li>
               
               
@@ -5650,61 +5650,6 @@ micro_service and identifier guarantee uniqueness. </p></td>
 
         
       
-        <h3 id="metalstack.api.v2.FilesystemServiceMatchRequest">FilesystemServiceMatchRequest</h3>
-        <p>FilesystemServiceMatchRequest</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>size_and_image</td>
-                  <td><a href="#metalstack.api.v2.MatchImageAndSize">MatchImageAndSize</a></td>
-                  <td></td>
-                  <td><p>SizeAndImage </p></td>
-                </tr>
-              
-                <tr>
-                  <td>machine_and_filesystemlayout</td>
-                  <td><a href="#metalstack.api.v2.MatchMachineAndFilesystemLayout">MatchMachineAndFilesystemLayout</a></td>
-                  <td></td>
-                  <td><p>MachineAndFilesystemlayout </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.FilesystemServiceMatchResponse">FilesystemServiceMatchResponse</h3>
-        <p>FilesystemServiceMatchResponse</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>filesystem_layout</td>
-                  <td><a href="#metalstack.api.v2.FilesystemLayout">FilesystemLayout</a></td>
-                  <td></td>
-                  <td><p>FilesystemLayout the filesystemlayout </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="metalstack.api.v2.LogicalVolume">LogicalVolume</h3>
         <p>LogicalVolume</p>
 
@@ -5741,68 +5686,6 @@ micro_service and identifier guarantee uniqueness. </p></td>
                   <td><a href="#metalstack.api.v2.LVMType">LVMType</a></td>
                   <td></td>
                   <td><p>LVMType the type of this logical volume can be either linear|striped|raid1 </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.MatchImageAndSize">MatchImageAndSize</h3>
-        <p>MatchImageAndSize</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>size</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Size, machine size to try </p></td>
-                </tr>
-              
-                <tr>
-                  <td>image</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Image machine image to try </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.MatchMachineAndFilesystemLayout">MatchMachineAndFilesystemLayout</h3>
-        <p>MatchMachineAndFilesystemLayout</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>machine</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Machine to check </p></td>
-                </tr>
-              
-                <tr>
-                  <td>filesystem_layout</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>FilesystemLayout to check </p></td>
                 </tr>
               
             </tbody>
@@ -6088,13 +5971,6 @@ micro_service and identifier guarantee uniqueness. </p></td>
                 <td><p>Returns the list of all filesystems.</p></td>
               </tr>
             
-              <tr>
-                <td>Match</td>
-                <td><a href="#metalstack.api.v2.FilesystemServiceMatchRequest">FilesystemServiceMatchRequest</a></td>
-                <td><a href="#metalstack.api.v2.FilesystemServiceMatchResponse">FilesystemServiceMatchResponse</a></td>
-                <td><p>Matches a filesystem to a size and image or machine.</p></td>
-              </tr>
-            
           </tbody>
         </table>
 
@@ -6194,6 +6070,61 @@ micro_service and identifier guarantee uniqueness. </p></td>
                   <td><a href="#metalstack.api.v2.FilesystemLayout">metalstack.api.v2.FilesystemLayout</a></td>
                   <td></td>
                   <td><p>FilesystemLayout contains the deleted filesystem layout </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.FilesystemServiceMatchRequest">FilesystemServiceMatchRequest</h3>
+        <p>FilesystemServiceMatchRequest</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size_and_image</td>
+                  <td><a href="#metalstack.admin.v2.MatchImageAndSize">MatchImageAndSize</a></td>
+                  <td></td>
+                  <td><p>SizeAndImage </p></td>
+                </tr>
+              
+                <tr>
+                  <td>machine_and_filesystemlayout</td>
+                  <td><a href="#metalstack.admin.v2.MatchMachineAndFilesystemLayout">MatchMachineAndFilesystemLayout</a></td>
+                  <td></td>
+                  <td><p>MachineAndFilesystemlayout </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.FilesystemServiceMatchResponse">FilesystemServiceMatchResponse</h3>
+        <p>FilesystemServiceMatchResponse</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>filesystem_layout</td>
+                  <td><a href="#metalstack.api.v2.FilesystemLayout">metalstack.api.v2.FilesystemLayout</a></td>
+                  <td></td>
+                  <td><p>FilesystemLayout the filesystemlayout </p></td>
                 </tr>
               
             </tbody>
@@ -6314,6 +6245,68 @@ micro_service and identifier guarantee uniqueness. </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.MatchImageAndSize">MatchImageAndSize</h3>
+        <p>MatchImageAndSize</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size, machine size to try </p></td>
+                </tr>
+              
+                <tr>
+                  <td>image</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Image machine image to try </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.MatchMachineAndFilesystemLayout">MatchMachineAndFilesystemLayout</h3>
+        <p>MatchMachineAndFilesystemLayout</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>machine</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Machine to check </p></td>
+                </tr>
+              
+                <tr>
+                  <td>filesystem_layout</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>FilesystemLayout to check </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
 
@@ -6347,6 +6340,13 @@ micro_service and identifier guarantee uniqueness. </p></td>
                 <td><a href="#metalstack.admin.v2.FilesystemServiceDeleteRequest">FilesystemServiceDeleteRequest</a></td>
                 <td><a href="#metalstack.admin.v2.FilesystemServiceDeleteResponse">FilesystemServiceDeleteResponse</a></td>
                 <td><p>Deletes a filesystem.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Match</td>
+                <td><a href="#metalstack.admin.v2.FilesystemServiceMatchRequest">FilesystemServiceMatchRequest</a></td>
+                <td><a href="#metalstack.admin.v2.FilesystemServiceMatchResponse">FilesystemServiceMatchResponse</a></td>
+                <td><p>Matches a filesystem to a size and image or machine.</p></td>
               </tr>
             
           </tbody>
