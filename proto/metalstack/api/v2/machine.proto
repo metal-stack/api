@@ -70,7 +70,7 @@ message MachineServiceGetRequest {
   string project = 2 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceGetResponse is the request payload for a machine get response
+// MachineServiceGetResponse is the response payload for a machine get request
 message MachineServiceGetResponse {
   // Machine is the machine requested
   Machine machine = 1;
@@ -81,7 +81,7 @@ message MachineServiceCreateRequest {
   // Project of the machine
   string project = 1 [(buf.validate.field).string.uuid = true];
   // UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-  // this field overrules size and partition.
+  // this field takes precedence over size and partition.
   // Can only be used with ADMIN_ROLE_EDITOR
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // Name of this machine
@@ -109,7 +109,7 @@ message MachineServiceCreateRequest {
   // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
   repeated string ssh_public_keys = 10 [
     (buf.validate.field).repeated = {
-      // At most 50 keys can be store.
+      // At most 50 keys can be stored.
       // A lower bound can be set similarly with `min_items`.
       max_items: 50
       // `items` validate each value in this `repeated` field.
@@ -155,7 +155,7 @@ message FirewallSpec {
   FirewallRules firewall_rules = 1;
 }
 
-// MachineServiceCreateResponse is the request payload for a machine create response
+// MachineServiceCreateResponse is the response payload for a machine create request
 message MachineServiceCreateResponse {
   // Machine which was created
   Machine machine = 1;
@@ -176,7 +176,7 @@ message MachineServiceUpdateRequest {
   // SSHPublicKeys which should be update of this machine allocation
   repeated string ssh_public_keys = 6 [
     (buf.validate.field).repeated = {
-      // At most 50 keys can be store.
+      // At most 50 keys can be stored.
       // A lower bound can be set similarly with `min_items`.
       max_items: 50
       // `items` validate each value in this `repeated` field.
@@ -195,7 +195,7 @@ message MachineServiceUpdateRequest {
   ];
 }
 
-// MachineServiceUpdateResponse is the request payload for a machine update response
+// MachineServiceUpdateResponse is the response payload for a machine update request
 message MachineServiceUpdateResponse {
   // Machine which was updated
   Machine machine = 1;
@@ -209,7 +209,7 @@ message MachineServiceListRequest {
   MachineQuery query = 2;
 }
 
-// MachineServiceListResponse is the request payload for a machine list response
+// MachineServiceListResponse is the response payload for a machine list request
 message MachineServiceListResponse {
   // Machines are the machines requested by a list request
   repeated Machine machines = 1;
@@ -223,9 +223,9 @@ message MachineServiceDeleteRequest {
   string project = 2 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceDeleteResponse is the request payload for a machine delete response
+// MachineServiceDeleteResponse is the response payload for a machine delete request
 message MachineServiceDeleteResponse {
-  // Machine which was deleteds
+  // Machine which was deleted
   Machine machine = 1;
 }
 
@@ -329,7 +329,7 @@ message MachineAllocation {
   // SSHPublicKeys which should be installed on this machine
   repeated string ssh_public_keys = 11 [
     (buf.validate.field).repeated = {
-      // At most 50 keys can be store.
+      // At most 50 keys can be stored.
       // A lower bound can be set similarly with `min_items`.
       max_items: 50
       // `items` validate each value in this `repeated` field.
@@ -691,7 +691,7 @@ message MachineProvisioningEvent {
   // Time the time that this event was received
   google.protobuf.Timestamp time = 1;
   // Event the event emitted by the machine
-  MachineProvisioningEventType event = 2;
+  MachineProvisioningEventType event = 2 [(buf.validate.field).enum.defined_only = true];
   // Message an additional message to add to the event
   string message = 3;
 }

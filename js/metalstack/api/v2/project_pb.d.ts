@@ -323,7 +323,7 @@ export declare const ProjectServiceCreateResponseSchema: GenMessage<ProjectServi
  */
 export type ProjectServiceDeleteRequest = Message<"metalstack.api.v2.ProjectServiceDeleteRequest"> & {
     /**
-     * Project is the uuid of the project to get
+     * Project is the uuid of the project to delete
      *
      * @generated from field: string project = 1;
      */
@@ -443,7 +443,7 @@ export type ProjectServiceInviteRequest = Message<"metalstack.api.v2.ProjectServ
  */
 export declare const ProjectServiceInviteRequestSchema: GenMessage<ProjectServiceInviteRequest>;
 /**
- * ProjectServiceInviteRequest is the response payload to a invite member request
+ * ProjectServiceInviteResponse is the response payload to a invite member request
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteResponse
  */
@@ -665,7 +665,7 @@ export type ProjectServiceInviteAcceptRequest = Message<"metalstack.api.v2.Proje
  */
 export declare const ProjectServiceInviteAcceptRequestSchema: GenMessage<ProjectServiceInviteAcceptRequest>;
 /**
- * ProjectServiceInvitesListResponse is the response payload to a accept invite request
+ * ProjectServiceInviteAcceptResponse is the response payload to a accept invite request
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteAcceptResponse
  */

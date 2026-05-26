@@ -2,18 +2,20 @@ syntax = "proto3";
 
 package metalstack.api.v2;
 
+import "buf/validate/validate.proto";
 import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/predefined_rules.proto";
 
 // VPNNode represents a machine connected to the VPN.
 message VPNNode {
   // ID of this node
   uint64 id = 1;
   // Name of this node
-  string name = 2;
+  string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project of this node, maps to a project
-  string project = 3;
+  string project = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // IPAddresses of this node in the VPN
-  repeated string ip_addresses = 4;
+  repeated string ip_addresses = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
   // LastSeen timestamp when this node reached out to the control plane
   google.protobuf.Timestamp last_seen = 5;
   // Online indicates if this node is online

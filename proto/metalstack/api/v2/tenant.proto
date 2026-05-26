@@ -289,7 +289,7 @@ message TenantServiceInviteAcceptRequest {
   string secret = 1;
 }
 
-// TenantServiceInvitesListResponse is the response payload to a accept invite request
+// TenantServiceInviteAcceptResponse is the response payload to a accept invite request
 message TenantServiceInviteAcceptResponse {
   // Tenant ID of the joined tenant
   string tenant = 1;

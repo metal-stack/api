@@ -69,7 +69,7 @@ func (x *MachineServiceGetRequest) GetUuid() string {
 	return ""
 }
 
-// MachineServiceGetResponse is the request payload for a machine get response
+// MachineServiceGetResponse is the response payload for a machine get request
 type MachineServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine is the machine requested
@@ -171,7 +171,7 @@ func (x *MachineServiceListRequest) GetPartition() string {
 	return ""
 }
 
-// MachineServiceListResponse is the request payload for a machine list response
+// MachineServiceListResponse is the response payload for a machine list request
 type MachineServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machines are the machines requested by a list request
@@ -413,7 +413,7 @@ func (x *MachineServiceGetBMCResponse) GetBmc() *v2.MachineBMCReport {
 // MachineServiceListBMCRequest is the request payload for a machine listbmc request
 type MachineServiceListBMCRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query to list one ore more bmcs of more machines
+	// Query to list one ore more bmcs of many machines
 	Query         *v2.MachineBMCQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

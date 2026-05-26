@@ -453,15 +453,15 @@ const file_metalstack_admin_v2_size_reservation_proto_rawDesc = "" +
 	"#SizeReservationServiceCreateRequest\x12M\n" +
 	"\x10size_reservation\x18\x01 \x01(\v2\".metalstack.api.v2.SizeReservationR\x0fsizeReservation\"u\n" +
 	"$SizeReservationServiceCreateResponse\x12M\n" +
-	"\x10size_reservation\x18\x01 \x01(\v2\".metalstack.api.v2.SizeReservationR\x0fsizeReservation\"\xa8\x03\n" +
+	"\x10size_reservation\x18\x01 \x01(\v2\".metalstack.api.v2.SizeReservationR\x0fsizeReservation\"\xaa\x03\n" +
 	"#SizeReservationServiceUpdateRequest\x12\x18\n" +
 	"\x02id\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x02id\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04name\x88\x01\x01\x122\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x01R\vdescription\x88\x01\x01\x12F\n" +
 	"\vupdate_meta\x18\x04 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"updateMeta\x122\n" +
+	"updateMeta\x124\n" +
 	"\n" +
-	"partitions\x18\x05 \x03(\tB\x12\xbaH\x0f\x92\x01\f\x18\x01\"\br\x06г\xae\xb1\x02\x01R\n" +
+	"partitions\x18\x05 \x03(\tB\x14\xbaH\x11\x92\x01\x0e\b\x01\x18\x01\"\br\x06г\xae\xb1\x02\x01R\n" +
 	"partitions\x12$\n" +
 	"\x06amount\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02 \x00H\x02R\x06amount\x88\x01\x01\x12<\n" +
 	"\x06labels\x18\a \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x03R\x06labels\x88\x01\x01B\a\n" +

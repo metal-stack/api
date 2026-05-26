@@ -529,7 +529,7 @@ func (x *MachineServiceGetRequest) GetProject() string {
 	return ""
 }
 
-// MachineServiceGetResponse is the request payload for a machine get response
+// MachineServiceGetResponse is the response payload for a machine get request
 type MachineServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine is the machine requested
@@ -581,7 +581,7 @@ type MachineServiceCreateRequest struct {
 	// Project of the machine
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
-	// this field overrules size and partition.
+	// this field takes precedence over size and partition.
 	// Can only be used with ADMIN_ROLE_EDITOR
 	Uuid *string `protobuf:"bytes,2,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
 	// Name of this machine
@@ -832,7 +832,7 @@ func (x *FirewallSpec) GetFirewallRules() *FirewallRules {
 	return nil
 }
 
-// MachineServiceCreateResponse is the request payload for a machine create response
+// MachineServiceCreateResponse is the response payload for a machine create request
 type MachineServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine which was created
@@ -969,7 +969,7 @@ func (x *MachineServiceUpdateRequest) GetSshPublicKeys() []string {
 	return nil
 }
 
-// MachineServiceUpdateResponse is the request payload for a machine update response
+// MachineServiceUpdateResponse is the response payload for a machine update request
 type MachineServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine which was updated
@@ -1070,7 +1070,7 @@ func (x *MachineServiceListRequest) GetQuery() *MachineQuery {
 	return nil
 }
 
-// MachineServiceListResponse is the request payload for a machine list response
+// MachineServiceListResponse is the response payload for a machine list request
 type MachineServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machines are the machines requested by a list request
@@ -1171,10 +1171,10 @@ func (x *MachineServiceDeleteRequest) GetProject() string {
 	return ""
 }
 
-// MachineServiceDeleteResponse is the request payload for a machine delete response
+// MachineServiceDeleteResponse is the response payload for a machine delete request
 type MachineServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Machine which was deleteds
+	// Machine which was deleted
 	Machine       *Machine `protobuf:"bytes,1,opt,name=machine,proto3" json:"machine,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -4415,10 +4415,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x06events\x18\x01 \x03(\v2+.metalstack.api.v2.MachineProvisioningEventR\x06events\x12B\n" +
 	"\x0flast_event_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\rlastEventTime\x12U\n" +
 	"\x10last_error_event\x18\x03 \x01(\v2+.metalstack.api.v2.MachineProvisioningEventR\x0elastErrorEvent\x12P\n" +
-	"\x05state\x18\x04 \x01(\x0e20.metalstack.api.v2.MachineProvisioningEventStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05state\"\xab\x01\n" +
+	"\x05state\x18\x04 \x01(\x0e20.metalstack.api.v2.MachineProvisioningEventStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05state\"\xb5\x01\n" +
 	"\x18MachineProvisioningEvent\x12.\n" +
-	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x12E\n" +
-	"\x05event\x18\x02 \x01(\x0e2/.metalstack.api.v2.MachineProvisioningEventTypeR\x05event\x12\x18\n" +
+	"\x04time\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampR\x04time\x12O\n" +
+	"\x05event\x18\x02 \x01(\x0e2/.metalstack.api.v2.MachineProvisioningEventTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x05event\x12\x18\n" +
 	"\amessage\x18\x03 \x01(\tR\amessage\"\x99\x01\n" +
 	"\n" +
 	"MachineVPN\x122\n" +

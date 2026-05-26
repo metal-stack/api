@@ -5,7 +5,7 @@ import type { MapRules, RepeatedRules, StringRules } from "../../../buf/validate
  */
 export declare const file_metalstack_api_v2_predefined_rules: GenFile;
 /**
- * Macaddress returns true if the given string is a valid macadress
+ * Macaddress returns true if the given string is a valid macaddress
  *
  * @generated from extension: optional bool macaddress = 80048951;
  */

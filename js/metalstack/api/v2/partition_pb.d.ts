@@ -18,7 +18,7 @@ export type Partition = Message<"metalstack.api.v2.Partition"> & {
      */
     id: string;
     /**
-     * Meta for this ip
+     * Meta for this partition
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
@@ -193,7 +193,7 @@ export declare const PartitionServiceListRequestSchema: GenMessage<PartitionServ
  */
 export type PartitionServiceGetResponse = Message<"metalstack.api.v2.PartitionServiceGetResponse"> & {
     /**
-     * Ip the partition
+     * Partition is the partition
      *
      * @generated from field: metalstack.api.v2.Partition partition = 1;
      */
@@ -211,7 +211,7 @@ export declare const PartitionServiceGetResponseSchema: GenMessage<PartitionServ
  */
 export type PartitionServiceListResponse = Message<"metalstack.api.v2.PartitionServiceListResponse"> & {
     /**
-     * Ips the partitions
+     * Partitions are the partitions
      *
      * @generated from field: repeated metalstack.api.v2.Partition partitions = 1;
      */

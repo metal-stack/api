@@ -7,6 +7,7 @@
 package apiv2
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -117,12 +118,12 @@ var File_metalstack_api_v2_vpn_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_vpn_proto_rawDesc = "" +
 	"\n" +
-	"\x1bmetalstack/api/v2/vpn.proto\x12\x11metalstack.api.v2\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbb\x01\n" +
+	"\x1bmetalstack/api/v2/vpn.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xe3\x01\n" +
 	"\aVPNNode\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
-	"\aproject\x18\x03 \x01(\tR\aproject\x12!\n" +
-	"\fip_addresses\x18\x04 \x03(\tR\vipAddresses\x127\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1f\n" +
+	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12%\n" +
+	"\aproject\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\aproject\x12/\n" +
+	"\fip_addresses\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\vipAddresses\x127\n" +
 	"\tlast_seen\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\blastSeen\x12\x16\n" +
 	"\x06online\x18\x06 \x01(\bR\x06onlineB\xbe\x01\n" +
 	"\x15com.metalstack.api.v2B\bVpnProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
@@ -158,6 +159,7 @@ func file_metalstack_api_v2_vpn_proto_init() {
 	if File_metalstack_api_v2_vpn_proto != nil {
 		return
 	}
+	file_metalstack_api_v2_predefined_rules_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

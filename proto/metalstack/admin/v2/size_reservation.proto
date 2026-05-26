@@ -56,6 +56,7 @@ message SizeReservationServiceUpdateRequest {
   metalstack.api.v2.UpdateMeta update_meta = 4 [(buf.validate.field).required = true];
   // Partition ids of this size reservation
   repeated string partitions = 5 [
+    (buf.validate.field).repeated.min_items = 1,
     (buf.validate.field).repeated.unique = true,
     (buf.validate.field).repeated.items.string.(metalstack.api.v2.is_partition) = true
   ];

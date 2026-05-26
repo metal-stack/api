@@ -101,9 +101,9 @@ export type FilesystemServiceMatchRequest = Message<"metalstack.api.v2.Filesyste
         /**
          * MachineAndFilesystemlayout
          *
-         * @generated from field: metalstack.api.v2.MatchMachine machine_and_filesystemlayout = 2;
+         * @generated from field: metalstack.api.v2.MatchMachineAndFilesystemLayout machine_and_filesystemlayout = 2;
          */
-        value: MatchMachine;
+        value: MatchMachineAndFilesystemLayout;
         case: "machineAndFilesystemlayout";
     } | {
         case: undefined;
@@ -140,11 +140,11 @@ export type MatchImageAndSize = Message<"metalstack.api.v2.MatchImageAndSize"> &
  */
 export declare const MatchImageAndSizeSchema: GenMessage<MatchImageAndSize>;
 /**
- * MatchMachine
+ * MatchMachineAndFilesystemLayout
  *
- * @generated from message metalstack.api.v2.MatchMachine
+ * @generated from message metalstack.api.v2.MatchMachineAndFilesystemLayout
  */
-export type MatchMachine = Message<"metalstack.api.v2.MatchMachine"> & {
+export type MatchMachineAndFilesystemLayout = Message<"metalstack.api.v2.MatchMachineAndFilesystemLayout"> & {
     /**
      * Machine to check
      *
@@ -159,10 +159,10 @@ export type MatchMachine = Message<"metalstack.api.v2.MatchMachine"> & {
     filesystemLayout: string;
 };
 /**
- * Describes the message metalstack.api.v2.MatchMachine.
- * Use `create(MatchMachineSchema)` to create a new message.
+ * Describes the message metalstack.api.v2.MatchMachineAndFilesystemLayout.
+ * Use `create(MatchMachineAndFilesystemLayoutSchema)` to create a new message.
  */
-export declare const MatchMachineSchema: GenMessage<MatchMachine>;
+export declare const MatchMachineAndFilesystemLayoutSchema: GenMessage<MatchMachineAndFilesystemLayout>;
 /**
  * FilesystemServiceMatchResponse
  *

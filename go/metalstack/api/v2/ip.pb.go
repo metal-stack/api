@@ -432,7 +432,7 @@ func (x *IPServiceCreateRequest) GetAddressFamily() IPAddressFamily {
 // IPServiceUpdateRequest is the request payload for a ip update request
 type IPServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ip the ip to update
+	// Ip the ip address to update
 	Ip string `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request
 	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`

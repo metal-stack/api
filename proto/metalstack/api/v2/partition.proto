@@ -24,7 +24,7 @@ service PartitionService {
 message Partition {
   // ID of this partition
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // Meta for this ip
+  // Meta for this partition
   Meta meta = 2;
   // Description of this partition
   string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
@@ -54,7 +54,7 @@ message PartitionBootConfiguration {
   // KernelURL the url to download the kernel for the boot image
   string kernel_url = 2 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // Commandline the cmdline to the kernel for the boot image
-  string commandline = 3;
+  string commandline = 3 [(buf.validate.field).string.max_len = 4096];
 }
 
 // DNSServer
@@ -83,12 +83,12 @@ message PartitionServiceListRequest {
 
 // PartitionServiceGetResponse is the response payload for a partition get request
 message PartitionServiceGetResponse {
-  // Ip the partition
+  // Partition is the partition
   Partition partition = 1;
 }
 
 // PartitionServiceListResponse is the response payload for a partition list request
 message PartitionServiceListResponse {
-  // Ips the partitions
+  // Partitions are the partitions
   repeated Partition partitions = 1;
 }

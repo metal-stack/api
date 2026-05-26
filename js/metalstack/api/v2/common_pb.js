@@ -335,7 +335,7 @@ export const auditing = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 4);
  */
 export const infra_roles = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 5);
 /**
- * MachineRole are used to define which infra role a microservice must provide to call this method
+ * MachineRole are used to define which machine role a microservice must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.MachineRole machine_roles = 51006;
  */

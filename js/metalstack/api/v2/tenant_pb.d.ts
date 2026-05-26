@@ -619,7 +619,7 @@ export type TenantServiceInviteAcceptRequest = Message<"metalstack.api.v2.Tenant
  */
 export declare const TenantServiceInviteAcceptRequestSchema: GenMessage<TenantServiceInviteAcceptRequest>;
 /**
- * TenantServiceInvitesListResponse is the response payload to a accept invite request
+ * TenantServiceInviteAcceptResponse is the response payload to a accept invite request
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteAcceptResponse
  */

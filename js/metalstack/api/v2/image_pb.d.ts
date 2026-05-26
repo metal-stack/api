@@ -128,13 +128,13 @@ export declare const ImageServiceLatestResponseSchema: GenMessage<ImageServiceLa
  */
 export type Image = Message<"metalstack.api.v2.Image"> & {
     /**
-     * Id of this imageLayout
+     * Id of this image
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * Meta for this ip
+     * Meta for this image
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
@@ -146,13 +146,13 @@ export type Image = Message<"metalstack.api.v2.Image"> & {
      */
     url: string;
     /**
-     * Name of this imageLayout
+     * Name of this image
      *
      * @generated from field: optional string name = 4;
      */
     name?: string | undefined;
     /**
-     * Description of this imageLayout
+     * Description of this image
      *
      * @generated from field: optional string description = 5;
      */

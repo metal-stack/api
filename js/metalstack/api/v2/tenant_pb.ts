@@ -737,7 +737,7 @@ export const TenantServiceInviteAcceptRequestSchema: GenMessage<TenantServiceInv
   messageDesc(file_metalstack_api_v2_tenant, 23);
 
 /**
- * TenantServiceInvitesListResponse is the response payload to a accept invite request
+ * TenantServiceInviteAcceptResponse is the response payload to a accept invite request
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteAcceptResponse
  */
