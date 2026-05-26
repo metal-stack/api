@@ -57,7 +57,7 @@ message FilesystemServiceMatchRequest {
     // SizeAndImage
     MatchImageAndSize size_and_image = 1;
     // MachineAndFilesystemlayout
-    MatchMachine machine_and_filesystemlayout = 2;
+    MatchMachineAndFilesystemLayout machine_and_filesystemlayout = 2;
   }
 }
 
@@ -69,8 +69,8 @@ message MatchImageAndSize {
   string image = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// MatchMachine
-message MatchMachine {
+// MatchMachineAndFilesystemLayout
+message MatchMachineAndFilesystemLayout {
   // Machine to check
   string machine = 1 [(buf.validate.field).string.uuid = true];
   // FilesystemLayout to check

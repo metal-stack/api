@@ -89,8 +89,8 @@ class FilesystemServiceMatchRequest(_message.Message):
     SIZE_AND_IMAGE_FIELD_NUMBER: _ClassVar[int]
     MACHINE_AND_FILESYSTEMLAYOUT_FIELD_NUMBER: _ClassVar[int]
     size_and_image: MatchImageAndSize
-    machine_and_filesystemlayout: MatchMachine
-    def __init__(self, size_and_image: _Optional[_Union[MatchImageAndSize, _Mapping]] = ..., machine_and_filesystemlayout: _Optional[_Union[MatchMachine, _Mapping]] = ...) -> None: ...
+    machine_and_filesystemlayout: MatchMachineAndFilesystemLayout
+    def __init__(self, size_and_image: _Optional[_Union[MatchImageAndSize, _Mapping]] = ..., machine_and_filesystemlayout: _Optional[_Union[MatchMachineAndFilesystemLayout, _Mapping]] = ...) -> None: ...
 
 class MatchImageAndSize(_message.Message):
     __slots__ = ("size", "image")
@@ -100,7 +100,7 @@ class MatchImageAndSize(_message.Message):
     image: str
     def __init__(self, size: _Optional[str] = ..., image: _Optional[str] = ...) -> None: ...
 
-class MatchMachine(_message.Message):
+class MatchMachineAndFilesystemLayout(_message.Message):
     __slots__ = ("machine", "filesystem_layout")
     MACHINE_FIELD_NUMBER: _ClassVar[int]
     FILESYSTEM_LAYOUT_FIELD_NUMBER: _ClassVar[int]
