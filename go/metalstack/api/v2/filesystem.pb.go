@@ -1342,11 +1342,11 @@ const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\x1cFilesystemServiceGetResponse\x12P\n" +
 	"\x11filesystem_layout\x18\x01 \x01(\v2#.metalstack.api.v2.FilesystemLayoutR\x10filesystemLayout\"s\n" +
 	"\x1dFilesystemServiceListResponse\x12R\n" +
-	"\x12filesystem_layouts\x18\x01 \x03(\v2#.metalstack.api.v2.FilesystemLayoutR\x11filesystemLayouts\"\xee\x01\n" +
+	"\x12filesystem_layouts\x18\x01 \x03(\v2#.metalstack.api.v2.FilesystemLayoutR\x11filesystemLayouts\"\xf5\x01\n" +
 	"\x1dFilesystemServiceMatchRequest\x12L\n" +
 	"\x0esize_and_image\x18\x01 \x01(\v2$.metalstack.api.v2.MatchImageAndSizeH\x00R\fsizeAndImage\x12v\n" +
-	"\x1cmachine_and_filesystemlayout\x18\x02 \x01(\v22.metalstack.api.v2.MatchMachineAndFilesystemLayoutH\x00R\x1amachineAndFilesystemlayoutB\a\n" +
-	"\x05match\"W\n" +
+	"\x1cmachine_and_filesystemlayout\x18\x02 \x01(\v22.metalstack.api.v2.MatchMachineAndFilesystemLayoutH\x00R\x1amachineAndFilesystemlayoutB\x0e\n" +
+	"\x05match\x12\x05\xbaH\x02\b\x01\"W\n" +
 	"\x11MatchImageAndSize\x12\x1f\n" +
 	"\x04size\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04size\x12!\n" +
 	"\x05image\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x05image\"\x7f\n" +

@@ -54,6 +54,8 @@ message FilesystemServiceMatchRequest {
   // Match either size and image to a filesystemlayout
   // or if a machine matches to a filesystemlayout
   oneof match {
+    // ensure at least one match is specified
+    option (buf.validate.oneof).required = true;
     // SizeAndImage
     MatchImageAndSize size_and_image = 1;
     // MachineAndFilesystemlayout
