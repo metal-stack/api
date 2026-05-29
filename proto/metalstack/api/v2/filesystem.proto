@@ -18,11 +18,6 @@ service FilesystemService {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Matches a filesystem to a size and image or machine.
-  rpc Match(FilesystemServiceMatchRequest) returns (FilesystemServiceMatchResponse) {
-    option (visibility) = VISIBILITY_SELF;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
 }
 
 // FilesystemServiceGetRequest is the request payload for a filesystem get request
@@ -47,42 +42,6 @@ message FilesystemServiceGetResponse {
 message FilesystemServiceListResponse {
   // FilesystemLayouts the filesystemlayouts
   repeated FilesystemLayout filesystem_layouts = 1;
-}
-
-// FilesystemServiceMatchRequest
-message FilesystemServiceMatchRequest {
-  // Match either size and image to a filesystemlayout
-  // or if a machine matches to a filesystemlayout
-  oneof match {
-    // ensure at least one match is specified
-    option (buf.validate.oneof).required = true;
-    // SizeAndImage
-    MatchImageAndSize size_and_image = 1;
-    // MachineAndFilesystemlayout
-    MatchMachineAndFilesystemLayout machine_and_filesystemlayout = 2;
-  }
-}
-
-// MatchImageAndSize
-message MatchImageAndSize {
-  // Size, machine size to try
-  string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Image machine image to try
-  string image = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-}
-
-// MatchMachineAndFilesystemLayout
-message MatchMachineAndFilesystemLayout {
-  // Machine to check
-  string machine = 1 [(buf.validate.field).string.uuid = true];
-  // FilesystemLayout to check
-  string filesystem_layout = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-}
-
-// FilesystemServiceMatchResponse
-message FilesystemServiceMatchResponse {
-  // FilesystemLayout the filesystemlayout
-  FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemLayout

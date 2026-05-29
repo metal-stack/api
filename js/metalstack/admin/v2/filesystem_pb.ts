@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/filesystem.proto.
  */
 export const file_metalstack_admin_v2_filesystem: GenFile = /*@__PURE__*/
-  fileDesc("CiRtZXRhbHN0YWNrL2FkbWluL3YyL2ZpbGVzeXN0ZW0ucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiYAoeRmlsZXN5c3RlbVNlcnZpY2VDcmVhdGVSZXF1ZXN0Ej4KEWZpbGVzeXN0ZW1fbGF5b3V0GAEgASgLMiMubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbUxheW91dCJhCh9GaWxlc3lzdGVtU2VydmljZUNyZWF0ZVJlc3BvbnNlEj4KEWZpbGVzeXN0ZW1fbGF5b3V0GAEgASgLMiMubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbUxheW91dCKPBAoeRmlsZXN5c3RlbVNlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIeCgRuYW1lGAMgASgJQgu6SAhyBsCzrrECAUgAiAEBEiUKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECAUgBiAEBEjIKC2ZpbGVzeXN0ZW1zGAUgAygLMh0ubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbRImCgVkaXNrcxgGIAMoCzIXLm1ldGFsc3RhY2suYXBpLnYyLkRpc2sSJQoEcmFpZBgHIAMoCzIXLm1ldGFsc3RhY2suYXBpLnYyLlJhaWQSNQoNdm9sdW1lX2dyb3VwcxgIIAMoCzIeLm1ldGFsc3RhY2suYXBpLnYyLlZvbHVtZUdyb3VwEjkKD2xvZ2ljYWxfdm9sdW1lcxgJIAMoCzIgLm1ldGFsc3RhY2suYXBpLnYyLkxvZ2ljYWxWb2x1bWUSQwoLY29uc3RyYWludHMYCiABKAsyLi5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtTGF5b3V0Q29uc3RyYWludHNCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uImEKH0ZpbGVzeXN0ZW1TZXJ2aWNlVXBkYXRlUmVzcG9uc2USPgoRZmlsZXN5c3RlbV9sYXlvdXQYASABKAsyIy5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtTGF5b3V0IjkKHkZpbGVzeXN0ZW1TZXJ2aWNlRGVsZXRlUmVxdWVzdBIXCgJpZBgBIAEoCUILukgIcgbAs66xAgEiYQofRmlsZXN5c3RlbVNlcnZpY2VEZWxldGVSZXNwb25zZRI+ChFmaWxlc3lzdGVtX2xheW91dBgBIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLkZpbGVzeXN0ZW1MYXlvdXQykwMKEUZpbGVzeXN0ZW1TZXJ2aWNlEn4KBkNyZWF0ZRIzLm1ldGFsc3RhY2suYWRtaW4udjIuRmlsZXN5c3RlbVNlcnZpY2VDcmVhdGVSZXF1ZXN0GjQubWV0YWxzdGFjay5hZG1pbi52Mi5GaWxlc3lzdGVtU2VydmljZUNyZWF0ZVJlc3BvbnNlIgnS8xgBAeDzGAESfgoGVXBkYXRlEjMubWV0YWxzdGFjay5hZG1pbi52Mi5GaWxlc3lzdGVtU2VydmljZVVwZGF0ZVJlcXVlc3QaNC5tZXRhbHN0YWNrLmFkbWluLnYyLkZpbGVzeXN0ZW1TZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCdLzGAEB4PMYARJ+CgZEZWxldGUSMy5tZXRhbHN0YWNrLmFkbWluLnYyLkZpbGVzeXN0ZW1TZXJ2aWNlRGVsZXRlUmVxdWVzdBo0Lm1ldGFsc3RhY2suYWRtaW4udjIuRmlsZXN5c3RlbVNlcnZpY2VEZWxldGVSZXNwb25zZSIJ0vMYAQHg8xgBQtMBChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIPRmlsZXN5c3RlbVByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_filesystem, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("CiRtZXRhbHN0YWNrL2FkbWluL3YyL2ZpbGVzeXN0ZW0ucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiYAoeRmlsZXN5c3RlbVNlcnZpY2VDcmVhdGVSZXF1ZXN0Ej4KEWZpbGVzeXN0ZW1fbGF5b3V0GAEgASgLMiMubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbUxheW91dCJhCh9GaWxlc3lzdGVtU2VydmljZUNyZWF0ZVJlc3BvbnNlEj4KEWZpbGVzeXN0ZW1fbGF5b3V0GAEgASgLMiMubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbUxheW91dCKPBAoeRmlsZXN5c3RlbVNlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIeCgRuYW1lGAMgASgJQgu6SAhyBsCzrrECAUgAiAEBEiUKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECAUgBiAEBEjIKC2ZpbGVzeXN0ZW1zGAUgAygLMh0ubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbRImCgVkaXNrcxgGIAMoCzIXLm1ldGFsc3RhY2suYXBpLnYyLkRpc2sSJQoEcmFpZBgHIAMoCzIXLm1ldGFsc3RhY2suYXBpLnYyLlJhaWQSNQoNdm9sdW1lX2dyb3VwcxgIIAMoCzIeLm1ldGFsc3RhY2suYXBpLnYyLlZvbHVtZUdyb3VwEjkKD2xvZ2ljYWxfdm9sdW1lcxgJIAMoCzIgLm1ldGFsc3RhY2suYXBpLnYyLkxvZ2ljYWxWb2x1bWUSQwoLY29uc3RyYWludHMYCiABKAsyLi5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtTGF5b3V0Q29uc3RyYWludHNCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uImEKH0ZpbGVzeXN0ZW1TZXJ2aWNlVXBkYXRlUmVzcG9uc2USPgoRZmlsZXN5c3RlbV9sYXlvdXQYASABKAsyIy5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtTGF5b3V0IjkKHkZpbGVzeXN0ZW1TZXJ2aWNlRGVsZXRlUmVxdWVzdBIXCgJpZBgBIAEoCUILukgIcgbAs66xAgEiYQofRmlsZXN5c3RlbVNlcnZpY2VEZWxldGVSZXNwb25zZRI+ChFmaWxlc3lzdGVtX2xheW91dBgBIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLkZpbGVzeXN0ZW1MYXlvdXQizwEKHUZpbGVzeXN0ZW1TZXJ2aWNlTWF0Y2hSZXF1ZXN0EkAKDnNpemVfYW5kX2ltYWdlGAEgASgLMiYubWV0YWxzdGFjay5hZG1pbi52Mi5NYXRjaEltYWdlQW5kU2l6ZUgAElwKHG1hY2hpbmVfYW5kX2ZpbGVzeXN0ZW1sYXlvdXQYAiABKAsyNC5tZXRhbHN0YWNrLmFkbWluLnYyLk1hdGNoTWFjaGluZUFuZEZpbGVzeXN0ZW1MYXlvdXRIAEIOCgVtYXRjaBIFukgCCAEiSgoRTWF0Y2hJbWFnZUFuZFNpemUSGQoEc2l6ZRgBIAEoCUILukgIcgbAs66xAgESGgoFaW1hZ2UYAiABKAlCC7pICHIGwLOusQIBImQKH01hdGNoTWFjaGluZUFuZEZpbGVzeXN0ZW1MYXlvdXQSGQoHbWFjaGluZRgBIAEoCUIIukgFcgOwAQESJgoRZmlsZXN5c3RlbV9sYXlvdXQYAiABKAlCC7pICHIGwLOusQIBImAKHkZpbGVzeXN0ZW1TZXJ2aWNlTWF0Y2hSZXNwb25zZRI+ChFmaWxlc3lzdGVtX2xheW91dBgBIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLkZpbGVzeXN0ZW1MYXlvdXQykQQKEUZpbGVzeXN0ZW1TZXJ2aWNlEn4KBkNyZWF0ZRIzLm1ldGFsc3RhY2suYWRtaW4udjIuRmlsZXN5c3RlbVNlcnZpY2VDcmVhdGVSZXF1ZXN0GjQubWV0YWxzdGFjay5hZG1pbi52Mi5GaWxlc3lzdGVtU2VydmljZUNyZWF0ZVJlc3BvbnNlIgnS8xgBAeDzGAESfgoGVXBkYXRlEjMubWV0YWxzdGFjay5hZG1pbi52Mi5GaWxlc3lzdGVtU2VydmljZVVwZGF0ZVJlcXVlc3QaNC5tZXRhbHN0YWNrLmFkbWluLnYyLkZpbGVzeXN0ZW1TZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCdLzGAEB4PMYARJ+CgZEZWxldGUSMy5tZXRhbHN0YWNrLmFkbWluLnYyLkZpbGVzeXN0ZW1TZXJ2aWNlRGVsZXRlUmVxdWVzdBo0Lm1ldGFsc3RhY2suYWRtaW4udjIuRmlsZXN5c3RlbVNlcnZpY2VEZWxldGVSZXNwb25zZSIJ0vMYAQHg8xgBEnwKBU1hdGNoEjIubWV0YWxzdGFjay5hZG1pbi52Mi5GaWxlc3lzdGVtU2VydmljZU1hdGNoUmVxdWVzdBozLm1ldGFsc3RhY2suYWRtaW4udjIuRmlsZXN5c3RlbVNlcnZpY2VNYXRjaFJlc3BvbnNlIgrS8xgCAQLg8xgCQtMBChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIPRmlsZXN5c3RlbVByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_filesystem, file_metalstack_api_v2_predefined_rules]);
 
 /**
  * FilesystemServiceCreateRequest is the request payload for creating a filesystem.
@@ -208,6 +208,121 @@ export const FilesystemServiceDeleteResponseSchema: GenMessage<FilesystemService
   messageDesc(file_metalstack_admin_v2_filesystem, 5);
 
 /**
+ * FilesystemServiceMatchRequest
+ *
+ * @generated from message metalstack.admin.v2.FilesystemServiceMatchRequest
+ */
+export type FilesystemServiceMatchRequest = Message<"metalstack.admin.v2.FilesystemServiceMatchRequest"> & {
+  /**
+   * Match either size and image to a filesystemlayout
+   * or if a machine matches to a filesystemlayout
+   *
+   * @generated from oneof metalstack.admin.v2.FilesystemServiceMatchRequest.match
+   */
+  match: {
+    /**
+     * SizeAndImage
+     *
+     * @generated from field: metalstack.admin.v2.MatchImageAndSize size_and_image = 1;
+     */
+    value: MatchImageAndSize;
+    case: "sizeAndImage";
+  } | {
+    /**
+     * MachineAndFilesystemlayout
+     *
+     * @generated from field: metalstack.admin.v2.MatchMachineAndFilesystemLayout machine_and_filesystemlayout = 2;
+     */
+    value: MatchMachineAndFilesystemLayout;
+    case: "machineAndFilesystemlayout";
+  } | { case: undefined; value?: undefined };
+};
+
+/**
+ * Describes the message metalstack.admin.v2.FilesystemServiceMatchRequest.
+ * Use `create(FilesystemServiceMatchRequestSchema)` to create a new message.
+ */
+export const FilesystemServiceMatchRequestSchema: GenMessage<FilesystemServiceMatchRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_filesystem, 6);
+
+/**
+ * MatchImageAndSize
+ *
+ * @generated from message metalstack.admin.v2.MatchImageAndSize
+ */
+export type MatchImageAndSize = Message<"metalstack.admin.v2.MatchImageAndSize"> & {
+  /**
+   * Size, machine size to try
+   *
+   * @generated from field: string size = 1;
+   */
+  size: string;
+
+  /**
+   * Image machine image to try
+   *
+   * @generated from field: string image = 2;
+   */
+  image: string;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MatchImageAndSize.
+ * Use `create(MatchImageAndSizeSchema)` to create a new message.
+ */
+export const MatchImageAndSizeSchema: GenMessage<MatchImageAndSize> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_filesystem, 7);
+
+/**
+ * MatchMachineAndFilesystemLayout
+ *
+ * @generated from message metalstack.admin.v2.MatchMachineAndFilesystemLayout
+ */
+export type MatchMachineAndFilesystemLayout = Message<"metalstack.admin.v2.MatchMachineAndFilesystemLayout"> & {
+  /**
+   * Machine to check
+   *
+   * @generated from field: string machine = 1;
+   */
+  machine: string;
+
+  /**
+   * FilesystemLayout to check
+   *
+   * @generated from field: string filesystem_layout = 2;
+   */
+  filesystemLayout: string;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MatchMachineAndFilesystemLayout.
+ * Use `create(MatchMachineAndFilesystemLayoutSchema)` to create a new message.
+ */
+export const MatchMachineAndFilesystemLayoutSchema: GenMessage<MatchMachineAndFilesystemLayout> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_filesystem, 8);
+
+/**
+ * FilesystemServiceMatchResponse
+ *
+ * @generated from message metalstack.admin.v2.FilesystemServiceMatchResponse
+ */
+export type FilesystemServiceMatchResponse = Message<"metalstack.admin.v2.FilesystemServiceMatchResponse"> & {
+  /**
+   * FilesystemLayout the filesystemlayout
+   *
+   * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
+   */
+  filesystemLayout?: FilesystemLayout | undefined;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.FilesystemServiceMatchResponse.
+ * Use `create(FilesystemServiceMatchResponseSchema)` to create a new message.
+ */
+export const FilesystemServiceMatchResponseSchema: GenMessage<FilesystemServiceMatchResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_filesystem, 9);
+
+/**
  * FilesystemService provides filesystem management operations.
  *
  * @generated from service metalstack.admin.v2.FilesystemService
@@ -242,6 +357,16 @@ export const FilesystemService: GenService<{
     methodKind: "unary";
     input: typeof FilesystemServiceDeleteRequestSchema;
     output: typeof FilesystemServiceDeleteResponseSchema;
+  },
+  /**
+   * Matches a filesystem to a size and image or machine.
+   *
+   * @generated from rpc metalstack.admin.v2.FilesystemService.Match
+   */
+  match: {
+    methodKind: "unary";
+    input: typeof FilesystemServiceMatchRequestSchema;
+    output: typeof FilesystemServiceMatchResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_admin_v2_filesystem, 0);

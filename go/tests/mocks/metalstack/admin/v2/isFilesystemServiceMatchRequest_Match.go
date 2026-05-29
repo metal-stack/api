@@ -2,7 +2,7 @@
 // github.com/vektra/mockery
 // template: testify
 
-package apiv2
+package adminv2
 
 import (
 	mock "github.com/stretchr/testify/mock"

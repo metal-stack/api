@@ -78,110 +78,6 @@ export type FilesystemServiceListResponse = Message<"metalstack.api.v2.Filesyste
  */
 export declare const FilesystemServiceListResponseSchema: GenMessage<FilesystemServiceListResponse>;
 /**
- * FilesystemServiceMatchRequest
- *
- * @generated from message metalstack.api.v2.FilesystemServiceMatchRequest
- */
-export type FilesystemServiceMatchRequest = Message<"metalstack.api.v2.FilesystemServiceMatchRequest"> & {
-    /**
-     * Match either size and image to a filesystemlayout
-     * or if a machine matches to a filesystemlayout
-     *
-     * @generated from oneof metalstack.api.v2.FilesystemServiceMatchRequest.match
-     */
-    match: {
-        /**
-         * SizeAndImage
-         *
-         * @generated from field: metalstack.api.v2.MatchImageAndSize size_and_image = 1;
-         */
-        value: MatchImageAndSize;
-        case: "sizeAndImage";
-    } | {
-        /**
-         * MachineAndFilesystemlayout
-         *
-         * @generated from field: metalstack.api.v2.MatchMachineAndFilesystemLayout machine_and_filesystemlayout = 2;
-         */
-        value: MatchMachineAndFilesystemLayout;
-        case: "machineAndFilesystemlayout";
-    } | {
-        case: undefined;
-        value?: undefined;
-    };
-};
-/**
- * Describes the message metalstack.api.v2.FilesystemServiceMatchRequest.
- * Use `create(FilesystemServiceMatchRequestSchema)` to create a new message.
- */
-export declare const FilesystemServiceMatchRequestSchema: GenMessage<FilesystemServiceMatchRequest>;
-/**
- * MatchImageAndSize
- *
- * @generated from message metalstack.api.v2.MatchImageAndSize
- */
-export type MatchImageAndSize = Message<"metalstack.api.v2.MatchImageAndSize"> & {
-    /**
-     * Size, machine size to try
-     *
-     * @generated from field: string size = 1;
-     */
-    size: string;
-    /**
-     * Image machine image to try
-     *
-     * @generated from field: string image = 2;
-     */
-    image: string;
-};
-/**
- * Describes the message metalstack.api.v2.MatchImageAndSize.
- * Use `create(MatchImageAndSizeSchema)` to create a new message.
- */
-export declare const MatchImageAndSizeSchema: GenMessage<MatchImageAndSize>;
-/**
- * MatchMachineAndFilesystemLayout
- *
- * @generated from message metalstack.api.v2.MatchMachineAndFilesystemLayout
- */
-export type MatchMachineAndFilesystemLayout = Message<"metalstack.api.v2.MatchMachineAndFilesystemLayout"> & {
-    /**
-     * Machine to check
-     *
-     * @generated from field: string machine = 1;
-     */
-    machine: string;
-    /**
-     * FilesystemLayout to check
-     *
-     * @generated from field: string filesystem_layout = 2;
-     */
-    filesystemLayout: string;
-};
-/**
- * Describes the message metalstack.api.v2.MatchMachineAndFilesystemLayout.
- * Use `create(MatchMachineAndFilesystemLayoutSchema)` to create a new message.
- */
-export declare const MatchMachineAndFilesystemLayoutSchema: GenMessage<MatchMachineAndFilesystemLayout>;
-/**
- * FilesystemServiceMatchResponse
- *
- * @generated from message metalstack.api.v2.FilesystemServiceMatchResponse
- */
-export type FilesystemServiceMatchResponse = Message<"metalstack.api.v2.FilesystemServiceMatchResponse"> & {
-    /**
-     * FilesystemLayout the filesystemlayout
-     *
-     * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
-     */
-    filesystemLayout?: FilesystemLayout | undefined;
-};
-/**
- * Describes the message metalstack.api.v2.FilesystemServiceMatchResponse.
- * Use `create(FilesystemServiceMatchResponseSchema)` to create a new message.
- */
-export declare const FilesystemServiceMatchResponseSchema: GenMessage<FilesystemServiceMatchResponse>;
-/**
  * FilesystemLayout
  *
  * @generated from message metalstack.api.v2.FilesystemLayout
@@ -690,15 +586,5 @@ export declare const FilesystemService: GenService<{
         methodKind: "unary";
         input: typeof FilesystemServiceListRequestSchema;
         output: typeof FilesystemServiceListResponseSchema;
-    };
-    /**
-     * Matches a filesystem to a size and image or machine.
-     *
-     * @generated from rpc metalstack.api.v2.FilesystemService.Match
-     */
-    match: {
-        methodKind: "unary";
-        input: typeof FilesystemServiceMatchRequestSchema;
-        output: typeof FilesystemServiceMatchResponseSchema;
     };
 }>;
