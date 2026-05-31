@@ -207,7 +207,13 @@ export declare enum Service {
      *
      * @generated from enum value: SERVICE_TASKS = 8;
      */
-    TASKS = 8
+    TASKS = 8,
+    /**
+     * SERVICE_TENANT_APISERVER the tenant-apiserver
+     *
+     * @generated from enum value: SERVICE_TENANT_APISERVER = 9;
+     */
+    TENANT_APISERVER = 9
 }
 /**
  * Describes the enum metalstack.api.v2.Service.

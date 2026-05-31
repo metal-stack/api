@@ -45,6 +45,8 @@ enum Service {
   SERVICE_REDIS = 7 [(enum_string_value) = "redis"];
   // SERVICE_TASKS the tasks service
   SERVICE_TASKS = 8 [(enum_string_value) = "tasks"];
+  // SERVICE_TENANT_APISERVER the tenant-apiserver
+  SERVICE_TENANT_APISERVER = 9 [(enum_string_value) = "tenant-apiserver"];
 }
 
 // Health reports the health status of all services.

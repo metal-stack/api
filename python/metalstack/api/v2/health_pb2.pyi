@@ -26,6 +26,7 @@ class Service(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SERVICE_VPN: _ClassVar[Service]
     SERVICE_REDIS: _ClassVar[Service]
     SERVICE_TASKS: _ClassVar[Service]
+    SERVICE_TENANT_APISERVER: _ClassVar[Service]
 SERVICE_STATUS_UNSPECIFIED: ServiceStatus
 SERVICE_STATUS_DEGRADED: ServiceStatus
 SERVICE_STATUS_UNHEALTHY: ServiceStatus
@@ -39,6 +40,7 @@ SERVICE_AUDIT: Service
 SERVICE_VPN: Service
 SERVICE_REDIS: Service
 SERVICE_TASKS: Service
+SERVICE_TENANT_APISERVER: Service
 
 class Health(_message.Message):
     __slots__ = ("services",)
