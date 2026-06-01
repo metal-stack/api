@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -21,7 +23,7 @@ class EventService(Protocol):
 
 
 class EventServiceASGIApplication(ConnectASGIApplication[EventService]):
-    def __init__(self, service: EventService | AsyncGenerator[EventService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: EventService | AsyncGenerator[EventService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -38,6 +40,8 @@ class EventServiceASGIApplication(ConnectASGIApplication[EventService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -68,13 +72,16 @@ class EventServiceClient(ConnectClient):
         )
 
 
+
+
+
 class EventServiceSync(Protocol):
     def send(self, request: metalstack_dot_infra_dot_v2_dot_event__pb2.EventServiceSendRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_event__pb2.EventServiceSendResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
 class EventServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: EventServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: EventServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.infra.v2.EventService/Send": EndpointSync.unary(
@@ -90,6 +97,8 @@ class EventServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -118,3 +127,5 @@ class EventServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

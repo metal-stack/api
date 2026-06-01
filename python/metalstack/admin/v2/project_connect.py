@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -21,7 +23,7 @@ class ProjectService(Protocol):
 
 
 class ProjectServiceASGIApplication(ConnectASGIApplication[ProjectService]):
-    def __init__(self, service: ProjectService | AsyncGenerator[ProjectService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: ProjectService | AsyncGenerator[ProjectService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -38,6 +40,8 @@ class ProjectServiceASGIApplication(ConnectASGIApplication[ProjectService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -68,13 +72,16 @@ class ProjectServiceClient(ConnectClient):
         )
 
 
+
+
+
 class ProjectServiceSync(Protocol):
     def list(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
 class ProjectServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: ProjectServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: ProjectServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.admin.v2.ProjectService/List": EndpointSync.unary(
@@ -90,6 +97,8 @@ class ProjectServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -118,3 +127,5 @@ class ProjectServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

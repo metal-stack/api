@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -27,7 +29,7 @@ class TokenService(Protocol):
 
 
 class TokenServiceASGIApplication(ConnectASGIApplication[TokenService]):
-    def __init__(self, service: TokenService | AsyncGenerator[TokenService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: TokenService | AsyncGenerator[TokenService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -64,6 +66,8 @@ class TokenServiceASGIApplication(ConnectASGIApplication[TokenService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -134,6 +138,9 @@ class TokenServiceClient(ConnectClient):
         )
 
 
+
+
+
 class TokenServiceSync(Protocol):
     def list(self, request: metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_token__pb2.TokenServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
@@ -144,7 +151,7 @@ class TokenServiceSync(Protocol):
 
 
 class TokenServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: TokenServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: TokenServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.admin.v2.TokenService/List": EndpointSync.unary(
@@ -180,6 +187,8 @@ class TokenServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -248,3 +257,5 @@ class TokenServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+
