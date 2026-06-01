@@ -173,11 +173,11 @@ export declare enum Service {
      */
     RETHINK = 2,
     /**
-     * SERVICE_MASTERDATA the masterdata API
+     * SERVICE_TENANT_APISERVER the tenant-apiserver
      *
-     * @generated from enum value: SERVICE_MASTERDATA = 3;
+     * @generated from enum value: SERVICE_TENANT_APISERVER = 3;
      */
-    MASTERDATA = 3,
+    TENANT_APISERVER = 3,
     /**
      * SERVICE_MACHINES the machine service
      *
@@ -207,13 +207,7 @@ export declare enum Service {
      *
      * @generated from enum value: SERVICE_TASKS = 8;
      */
-    TASKS = 8,
-    /**
-     * SERVICE_TENANT_APISERVER the tenant-apiserver
-     *
-     * @generated from enum value: SERVICE_TENANT_APISERVER = 9;
-     */
-    TENANT_APISERVER = 9
+    TASKS = 8
 }
 /**
  * Describes the enum metalstack.api.v2.Service.

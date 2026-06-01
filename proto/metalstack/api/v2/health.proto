@@ -33,8 +33,8 @@ enum Service {
   SERVICE_IPAM = 1 [(enum_string_value) = "ipam"];
   // SERVICE_RETHINK the RethinkDB
   SERVICE_RETHINK = 2 [(enum_string_value) = "rethinkdb"];
-  // SERVICE_MASTERDATA the masterdata API
-  SERVICE_MASTERDATA = 3 [(enum_string_value) = "masterdata"];
+  // SERVICE_TENANT_APISERVER the tenant-apiserver
+  SERVICE_TENANT_APISERVER = 3 [(enum_string_value) = "tenant-apiserver"];
   // SERVICE_MACHINES the machine service
   SERVICE_MACHINES = 4 [(enum_string_value) = "machines"];
   // SERVICE_AUDIT the auditing
@@ -45,8 +45,6 @@ enum Service {
   SERVICE_REDIS = 7 [(enum_string_value) = "redis"];
   // SERVICE_TASKS the tasks service
   SERVICE_TASKS = 8 [(enum_string_value) = "tasks"];
-  // SERVICE_TENANT_APISERVER the tenant-apiserver
-  SERVICE_TENANT_APISERVER = 9 [(enum_string_value) = "tenant-apiserver"];
 }
 
 // Health reports the health status of all services.
