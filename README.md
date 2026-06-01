@@ -3,7 +3,7 @@
 [![Release](https://github.com/metal-stack/api/actions/workflows/main.yml/badge.svg)](https://github.com/metal-stack/api/actions/workflows/main.yml) [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/metal-stack/api) ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/metal-stack/api) ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/metal-stack/api) [![Go Report Card](https://goreportcard.com/badge/github.com/metal-stack/api)](https://goreportcard.com/report/github.com/metal-stack/api)
 
 > [!IMPORTANT]
-> Please note that this repository is still in alpha stage. For now, the primary API is still defined in the [metal-api](https://github.com/metal-stack/metal-api) project. We will make a special announcement when this repository becomes GA.
+> Clients from the metal-stack infrastructure have not fully migrated to the new API yet and might still communicate with the old [metal-api](https://github.com/metal-stack/metal-api). It could be that the information you look for is not contained in this repo.
 
 This is the V2 API of [metal-stack.io](https://metal-stack.io) to implement [MEP-4](https://metal-stack.io/docs/MEP-4-multi-tenancy-for-the-metal-api).
 
