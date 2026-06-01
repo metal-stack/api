@@ -20,7 +20,7 @@ class Service(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SERVICE_UNSPECIFIED: _ClassVar[Service]
     SERVICE_IPAM: _ClassVar[Service]
     SERVICE_RETHINK: _ClassVar[Service]
-    SERVICE_MASTERDATA: _ClassVar[Service]
+    SERVICE_TENANT_APISERVER: _ClassVar[Service]
     SERVICE_MACHINES: _ClassVar[Service]
     SERVICE_AUDIT: _ClassVar[Service]
     SERVICE_VPN: _ClassVar[Service]
@@ -33,7 +33,7 @@ SERVICE_STATUS_HEALTHY: ServiceStatus
 SERVICE_UNSPECIFIED: Service
 SERVICE_IPAM: Service
 SERVICE_RETHINK: Service
-SERVICE_MASTERDATA: Service
+SERVICE_TENANT_APISERVER: Service
 SERVICE_MACHINES: Service
 SERVICE_AUDIT: Service
 SERVICE_VPN: Service
