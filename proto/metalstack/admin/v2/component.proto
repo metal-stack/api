@@ -6,20 +6,20 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/component.proto";
 
-// ComponentService serves microservice related functions
+// ComponentService provides microservice component management operations.
 service ComponentService {
-  // Get a single component
+  // Returns the component with the specified UUID.
   rpc Get(ComponentServiceGetRequest) returns (ComponentServiceGetResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Delete a component
+  // Deletes the component with the specified UUID.
   rpc Delete(ComponentServiceDeleteRequest) returns (ComponentServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // List all components with their status
+  // Returns the list of all components with their status.
   rpc List(ComponentServiceListRequest) returns (ComponentServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
@@ -27,38 +27,38 @@ service ComponentService {
   }
 }
 
-// ComponentServiceListRequest
+// ComponentServiceListRequest is the request payload for listing components.
 message ComponentServiceListRequest {
-  // Query components.
+  // Query filters components
   metalstack.api.v2.ComponentQuery query = 1;
 }
 
-// ComponentServiceListResponse
+// ComponentServiceListResponse is the response payload for listing components.
 message ComponentServiceListResponse {
-  // Components
+  // Components contains the list of components
   repeated metalstack.api.v2.Component components = 1;
 }
 
-// ComponentServiceGetRequest
+// ComponentServiceGetRequest is the request payload for getting a component.
 message ComponentServiceGetRequest {
   // UUID identifies the component to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// ComponentServiceGetResponse
+// ComponentServiceGetResponse is the response payload for getting a component.
 message ComponentServiceGetResponse {
-  // Component
+  // Component contains the retrieved component
   metalstack.api.v2.Component component = 1;
 }
 
-// ComponentServiceGetRequest
+// ComponentServiceDeleteRequest is the request payload for deleting a component.
 message ComponentServiceDeleteRequest {
   // UUID identifies the component to delete
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// ComponentServiceGetResponse
+// ComponentServiceDeleteResponse is the response payload for deleting a component.
 message ComponentServiceDeleteResponse {
-  // Component
+  // Component contains the deleted component
   metalstack.api.v2.Component component = 1;
 }

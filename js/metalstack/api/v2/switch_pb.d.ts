@@ -24,7 +24,7 @@ export type Switch = Message<"metalstack.api.v2.Switch"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Description of the switch.
      *
@@ -36,7 +36,7 @@ export type Switch = Message<"metalstack.api.v2.Switch"> & {
      *
      * @generated from field: optional string rack = 4;
      */
-    rack?: string;
+    rack?: string | undefined;
     /**
      * Partition the switch belongs to.
      *
@@ -60,13 +60,13 @@ export type Switch = Message<"metalstack.api.v2.Switch"> & {
      *
      * @generated from field: optional string management_user = 8;
      */
-    managementUser?: string;
+    managementUser?: string | undefined;
     /**
      * ConsoleCommand is the command for accessing the switch's console.
      *
      * @generated from field: optional string console_command = 9;
      */
-    consoleCommand?: string;
+    consoleCommand?: string | undefined;
     /**
      * Nics are the front panel ports of the switch.
      *
@@ -78,7 +78,7 @@ export type Switch = Message<"metalstack.api.v2.Switch"> & {
      *
      * @generated from field: metalstack.api.v2.SwitchOS os = 11;
      */
-    os?: SwitchOS;
+    os?: SwitchOS | undefined;
     /**
      * MachineConnections map machines to the nics they are connected to.
      *
@@ -90,13 +90,13 @@ export type Switch = Message<"metalstack.api.v2.Switch"> & {
      *
      * @generated from field: metalstack.api.v2.SwitchSync last_sync = 13;
      */
-    lastSync?: SwitchSync;
+    lastSync?: SwitchSync | undefined;
     /**
      * LastSyncError contains information about the last unsuccessful heartbeat of the switch.
      *
      * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 14;
      */
-    lastSyncError?: SwitchSync;
+    lastSyncError?: SwitchSync | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Switch.
@@ -162,25 +162,25 @@ export type SwitchNic = Message<"metalstack.api.v2.SwitchNic"> & {
      *
      * @generated from field: optional string vrf = 4;
      */
-    vrf?: string;
+    vrf?: string | undefined;
     /**
      * NicState describes the current state of the switch port.
      *
      * @generated from field: optional metalstack.api.v2.NicState state = 5;
      */
-    state?: NicState;
+    state?: NicState | undefined;
     /**
      * BGPFilter optionally configured on a port.
      *
      * @generated from field: optional metalstack.api.v2.BGPFilter bgp_filter = 6;
      */
-    bgpFilter?: BGPFilter;
+    bgpFilter?: BGPFilter | undefined;
     /**
      * BGPPortState represents the current BGP status of the port.
      *
      * @generated from field: optional metalstack.api.v2.SwitchBGPPortState bgp_port_state = 7;
      */
-    bgpPortState?: SwitchBGPPortState;
+    bgpPortState?: SwitchBGPPortState | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SwitchNic.
@@ -246,7 +246,7 @@ export type SwitchBGPPortState = Message<"metalstack.api.v2.SwitchBGPPortState">
      *
      * @generated from field: google.protobuf.Timestamp bgp_timer_up_established = 5;
      */
-    bgpTimerUpEstablished?: Timestamp;
+    bgpTimerUpEstablished?: Timestamp | undefined;
     /**
      * SentPrefixCounter counts the prefixes sent by the switch on this port.
      *
@@ -276,7 +276,7 @@ export type NicState = Message<"metalstack.api.v2.NicState"> & {
      *
      * @generated from field: optional metalstack.api.v2.SwitchPortStatus desired = 1;
      */
-    desired?: SwitchPortStatus;
+    desired?: SwitchPortStatus | undefined;
     /**
      * Actual is the actual port state.
      *
@@ -306,7 +306,7 @@ export type MachineConnection = Message<"metalstack.api.v2.MachineConnection"> &
      *
      * @generated from field: metalstack.api.v2.SwitchNic nic = 2;
      */
-    nic?: SwitchNic;
+    nic?: SwitchNic | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.MachineConnection.
@@ -324,25 +324,25 @@ export type SwitchQuery = Message<"metalstack.api.v2.SwitchQuery"> & {
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Partition of the switches to list.
      *
      * @generated from field: optional string partition = 2;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Rack of the switches to list.
      *
      * @generated from field: optional string rack = 3;
      */
-    rack?: string;
+    rack?: string | undefined;
     /**
      * Switch OS specific queries.
      *
      * @generated from field: optional metalstack.api.v2.SwitchOSQuery os = 4;
      */
-    os?: SwitchOSQuery;
+    os?: SwitchOSQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SwitchQuery.
@@ -360,13 +360,13 @@ export type SwitchOSQuery = Message<"metalstack.api.v2.SwitchOSQuery"> & {
      *
      * @generated from field: optional metalstack.api.v2.SwitchOSVendor vendor = 1;
      */
-    vendor?: SwitchOSVendor;
+    vendor?: SwitchOSVendor | undefined;
     /**
      * OsVersion of the OS by which to filter the switches.
      *
      * @generated from field: optional string version = 2;
      */
-    version?: string;
+    version?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SwitchOSQuery.
@@ -384,19 +384,19 @@ export type SwitchSync = Message<"metalstack.api.v2.SwitchSync"> & {
      *
      * @generated from field: google.protobuf.Timestamp time = 1;
      */
-    time?: Timestamp;
+    time?: Timestamp | undefined;
     /**
      * Duration of the sync.
      *
      * @generated from field: google.protobuf.Duration duration = 2;
      */
-    duration?: Duration;
+    duration?: Duration | undefined;
     /**
      * Error if any occurred.
      *
      * @generated from field: optional string error = 3;
      */
-    error?: string;
+    error?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SwitchSync.
@@ -450,19 +450,19 @@ export type SwitchNicWithMachine = Message<"metalstack.api.v2.SwitchNicWithMachi
      *
      * @generated from field: metalstack.api.v2.SwitchNic nic = 1;
      */
-    nic?: SwitchNic;
+    nic?: SwitchNic | undefined;
     /**
      * Machine connected to this nic.
      *
      * @generated from field: metalstack.api.v2.Machine machine = 2;
      */
-    machine?: Machine;
+    machine?: Machine | undefined;
     /**
      * FRU of the connected machine.
      *
      * @generated from field: metalstack.api.v2.MachineFRU fru = 3;
      */
-    fru?: MachineFRU;
+    fru?: MachineFRU | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SwitchNicWithMachine.

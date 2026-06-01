@@ -51,17 +51,17 @@ const (
 
 // MachineServiceClient is a client for the metalstack.admin.v2.MachineService service.
 type MachineServiceClient interface {
-	// Get a machine
+	// Returns the machine with the specified UUID.
 	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
-	// List all machines
+	// Returns the list of all machines.
 	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
-	// BMCCommand send a command to the bmc of a machine
+	// BMCCommand sends a command to the BMC of a machine.
 	BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
-	// GetBMC returns the BMC details of a machine
+	// Returns the BMC details of a machine.
 	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
-	// ListBMC returns the BMC details of many machines
+	// ListBMC returns the BMC details of many machines.
 	ListBMC(context.Context, *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error)
-	// ConsolePassword returns the password to access the serial console of the machine
+	// GetConsolePassword returns the password to access the serial console of the machine.
 	ConsolePassword(context.Context, *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error)
 }
 
@@ -181,17 +181,17 @@ func (c *machineServiceClient) ConsolePassword(ctx context.Context, req *v2.Mach
 
 // MachineServiceHandler is an implementation of the metalstack.admin.v2.MachineService service.
 type MachineServiceHandler interface {
-	// Get a machine
+	// Returns the machine with the specified UUID.
 	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
-	// List all machines
+	// Returns the list of all machines.
 	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
-	// BMCCommand send a command to the bmc of a machine
+	// BMCCommand sends a command to the BMC of a machine.
 	BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
-	// GetBMC returns the BMC details of a machine
+	// Returns the BMC details of a machine.
 	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
-	// ListBMC returns the BMC details of many machines
+	// ListBMC returns the BMC details of many machines.
 	ListBMC(context.Context, *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error)
-	// ConsolePassword returns the password to access the serial console of the machine
+	// GetConsolePassword returns the password to access the serial console of the machine.
 	ConsolePassword(context.Context, *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error)
 }
 

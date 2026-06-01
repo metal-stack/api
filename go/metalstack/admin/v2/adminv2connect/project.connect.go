@@ -39,7 +39,7 @@ const (
 
 // ProjectServiceClient is a client for the metalstack.admin.v2.ProjectService service.
 type ProjectServiceClient interface {
-	// List projects based on various filter criteria
+	// Returns the list of projects matching the filter criteria.
 	List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error)
 }
 
@@ -79,7 +79,7 @@ func (c *projectServiceClient) List(ctx context.Context, req *v2.ProjectServiceL
 
 // ProjectServiceHandler is an implementation of the metalstack.admin.v2.ProjectService service.
 type ProjectServiceHandler interface {
-	// List projects based on various filter criteria
+	// Returns the list of projects matching the filter criteria.
 	List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error)
 }
 

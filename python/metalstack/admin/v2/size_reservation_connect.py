@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -30,7 +32,7 @@ class SizeReservationService(Protocol):
 
 
 class SizeReservationServiceASGIApplication(ConnectASGIApplication[SizeReservationService]):
-    def __init__(self, service: SizeReservationService | AsyncGenerator[SizeReservationService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: SizeReservationService | AsyncGenerator[SizeReservationService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -77,6 +79,8 @@ class SizeReservationServiceASGIApplication(ConnectASGIApplication[SizeReservati
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -167,6 +171,9 @@ class SizeReservationServiceClient(ConnectClient):
         )
 
 
+
+
+
 class SizeReservationServiceSync(Protocol):
     def create(self, request: metalstack_dot_admin_dot_v2_dot_size__reservation__pb2.SizeReservationServiceCreateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_size__reservation__pb2.SizeReservationServiceCreateResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
@@ -179,7 +186,7 @@ class SizeReservationServiceSync(Protocol):
 
 
 class SizeReservationServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: SizeReservationServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: SizeReservationServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.admin.v2.SizeReservationService/Create": EndpointSync.unary(
@@ -225,6 +232,8 @@ class SizeReservationServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -313,3 +322,5 @@ class SizeReservationServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

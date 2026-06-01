@@ -42,9 +42,9 @@ const (
 
 // MethodServiceClient is a client for the metalstack.api.v2.MethodService service.
 type MethodServiceClient interface {
-	// List all public visible methods
+	// Returns the list of all public visible methods.
 	List(context.Context, *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error)
-	// TokenScopedList all methods callable with the token present in the request
+	// TokenScopedList returns all methods callable with the token present in the request.
 	TokenScopedList(context.Context, *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error)
 }
 
@@ -100,9 +100,9 @@ func (c *methodServiceClient) TokenScopedList(ctx context.Context, req *v2.Metho
 
 // MethodServiceHandler is an implementation of the metalstack.api.v2.MethodService service.
 type MethodServiceHandler interface {
-	// List all public visible methods
+	// Returns the list of all public visible methods.
 	List(context.Context, *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error)
-	// TokenScopedList all methods callable with the token present in the request
+	// TokenScopedList returns all methods callable with the token present in the request.
 	TokenScopedList(context.Context, *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error)
 }
 

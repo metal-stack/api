@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -27,7 +29,7 @@ class ComponentService(Protocol):
 
 
 class ComponentServiceASGIApplication(ConnectASGIApplication[ComponentService]):
-    def __init__(self, service: ComponentService | AsyncGenerator[ComponentService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: ComponentService | AsyncGenerator[ComponentService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -64,6 +66,8 @@ class ComponentServiceASGIApplication(ConnectASGIApplication[ComponentService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -134,6 +138,9 @@ class ComponentServiceClient(ConnectClient):
         )
 
 
+
+
+
 class ComponentServiceSync(Protocol):
     def get(self, request: metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_component__pb2.ComponentServiceGetResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
@@ -144,7 +151,7 @@ class ComponentServiceSync(Protocol):
 
 
 class ComponentServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: ComponentServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: ComponentServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.admin.v2.ComponentService/Get": EndpointSync.unary(
@@ -180,6 +187,8 @@ class ComponentServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -248,3 +257,5 @@ class ComponentServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

@@ -41,9 +41,9 @@ const (
 
 // PartitionServiceClient is a client for the metalstack.api.v2.PartitionService service.
 type PartitionServiceClient interface {
-	// Get a partition
+	// Returns the partition with the specified ID.
 	Get(context.Context, *v2.PartitionServiceGetRequest) (*v2.PartitionServiceGetResponse, error)
-	// List all partitions
+	// Returns the list of all partitions.
 	List(context.Context, *v2.PartitionServiceListRequest) (*v2.PartitionServiceListResponse, error)
 }
 
@@ -99,9 +99,9 @@ func (c *partitionServiceClient) List(ctx context.Context, req *v2.PartitionServ
 
 // PartitionServiceHandler is an implementation of the metalstack.api.v2.PartitionService service.
 type PartitionServiceHandler interface {
-	// Get a partition
+	// Returns the partition with the specified ID.
 	Get(context.Context, *v2.PartitionServiceGetRequest) (*v2.PartitionServiceGetResponse, error)
-	// List all partitions
+	// Returns the list of all partitions.
 	List(context.Context, *v2.PartitionServiceListRequest) (*v2.PartitionServiceListResponse, error)
 }
 

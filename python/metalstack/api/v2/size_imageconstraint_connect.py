@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -21,7 +23,7 @@ class SizeImageConstraintService(Protocol):
 
 
 class SizeImageConstraintServiceASGIApplication(ConnectASGIApplication[SizeImageConstraintService]):
-    def __init__(self, service: SizeImageConstraintService | AsyncGenerator[SizeImageConstraintService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: SizeImageConstraintService | AsyncGenerator[SizeImageConstraintService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -38,6 +40,8 @@ class SizeImageConstraintServiceASGIApplication(ConnectASGIApplication[SizeImage
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -68,13 +72,16 @@ class SizeImageConstraintServiceClient(ConnectClient):
         )
 
 
+
+
+
 class SizeImageConstraintServiceSync(Protocol):
     def try_(self, request: metalstack_dot_api_dot_v2_dot_size__imageconstraint__pb2.SizeImageConstraintServiceTryRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_size__imageconstraint__pb2.SizeImageConstraintServiceTryResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
 class SizeImageConstraintServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: SizeImageConstraintServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: SizeImageConstraintServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.api.v2.SizeImageConstraintService/Try": EndpointSync.unary(
@@ -90,6 +97,8 @@ class SizeImageConstraintServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -118,3 +127,5 @@ class SizeImageConstraintServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

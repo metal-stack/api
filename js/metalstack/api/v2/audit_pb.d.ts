@@ -6,7 +6,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_audit: GenFile;
 /**
- * AuditTrace is an audit trace
+ * AuditTrace is an audit trace.
  *
  * @generated from message metalstack.api.v2.AuditTrace
  */
@@ -18,53 +18,53 @@ export type AuditTrace = Message<"metalstack.api.v2.AuditTrace"> & {
      */
     uuid: string;
     /**
-     * Timestamp is the timestamp when the request arrived at the api
+     * Timestamp is the timestamp when the request arrived at the API
      *
      * @generated from field: google.protobuf.Timestamp timestamp = 2;
      */
-    timestamp?: Timestamp;
+    timestamp?: Timestamp | undefined;
     /**
-     * User is the login user who called the api method
+     * User is the login user who called the API method
      *
      * @generated from field: string user = 3;
      */
     user: string;
     /**
-     * Tenant is the tenant targeted by the api call
+     * Tenant is the tenant targeted by the API call
      *
      * @generated from field: string tenant = 4;
      */
     tenant: string;
     /**
-     * Project is the project targeted by the api call
+     * Project is the project targeted by the API call
      *
      * @generated from field: optional string project = 5;
      */
-    project?: string;
+    project?: string | undefined;
     /**
-     * Method is the api method that was called
+     * Method is the API method that was called
      *
      * @generated from field: string method = 6;
      */
     method: string;
     /**
-     * Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
+     * Body is the payload of the API call. In the request phase this contains the payload sent by the client, in the response phase it contains the payload returned by the API server
      *
      * @generated from field: optional string body = 7;
      */
-    body?: string;
+    body?: string | undefined;
     /**
-     * Source IP contains the source ip address of the api call
+     * SourceIP contains the source IP address of the API call
      *
      * @generated from field: string source_ip = 8;
      */
     sourceIp: string;
     /**
-     * Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes
+     * ResultCode is a status code describing the result of the API call. It is set for traces in the response phase and contains official gRPC status codes
      *
      * @generated from field: optional int32 result_code = 9;
      */
-    resultCode?: number;
+    resultCode?: number | undefined;
     /**
      * Phase represents the phase of the audit trace
      *
@@ -88,67 +88,67 @@ export type AuditQuery = Message<"metalstack.api.v2.AuditQuery"> & {
      *
      * @generated from field: optional string uuid = 2;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * From describes the start of the time window in which to list audit traces. Defaults to the last eight hours
      *
      * @generated from field: optional google.protobuf.Timestamp from = 3;
      */
-    from?: Timestamp;
+    from?: Timestamp | undefined;
     /**
      * To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued
      *
      * @generated from field: optional google.protobuf.Timestamp to = 4;
      */
-    to?: Timestamp;
+    to?: Timestamp | undefined;
     /**
      * User is the user who called the api method
      *
      * @generated from field: optional string user = 5;
      */
-    user?: string;
+    user?: string | undefined;
     /**
      * Project is the project targeted by the api call
      *
      * @generated from field: optional string project = 6;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Method is the api method that was called
      *
      * @generated from field: optional string method = 7;
      */
-    method?: string;
+    method?: string | undefined;
     /**
      * Source IP contains the ip address of the caller
      *
      * @generated from field: optional string source_ip = 8;
      */
-    sourceIp?: string;
+    sourceIp?: string | undefined;
     /**
      * Result Code is a string describing the result of the api call
      *
      * @generated from field: optional int32 result_code = 9;
      */
-    resultCode?: number;
+    resultCode?: number | undefined;
     /**
      * Body is a string providing text-search of the body field
      *
      * @generated from field: optional string body = 10;
      */
-    body?: string;
+    body?: string | undefined;
     /**
      * Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
      *
      * @generated from field: optional int32 limit = 11;
      */
-    limit?: number;
+    limit?: number | undefined;
     /**
      * Phase specifies the audit phase
      *
      * @generated from field: optional metalstack.api.v2.AuditPhase phase = 12;
      */
-    phase?: AuditPhase;
+    phase?: AuditPhase | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.AuditQuery.
@@ -172,7 +172,7 @@ export type AuditServiceListRequest = Message<"metalstack.api.v2.AuditServiceLis
      *
      * @generated from field: metalstack.api.v2.AuditQuery query = 2;
      */
-    query?: AuditQuery;
+    query?: AuditQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.AuditServiceListRequest.
@@ -220,7 +220,7 @@ export type AuditServiceGetRequest = Message<"metalstack.api.v2.AuditServiceGetR
      *
      * @generated from field: optional metalstack.api.v2.AuditPhase phase = 3;
      */
-    phase?: AuditPhase;
+    phase?: AuditPhase | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.AuditServiceGetRequest.
@@ -238,7 +238,7 @@ export type AuditServiceGetResponse = Message<"metalstack.api.v2.AuditServiceGet
      *
      * @generated from field: metalstack.api.v2.AuditTrace trace = 1;
      */
-    trace?: AuditTrace;
+    trace?: AuditTrace | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.AuditServiceGetResponse.
@@ -246,7 +246,7 @@ export type AuditServiceGetResponse = Message<"metalstack.api.v2.AuditServiceGet
  */
 export declare const AuditServiceGetResponseSchema: GenMessage<AuditServiceGetResponse>;
 /**
- * AuditPhase specifies phase of an audit trace
+ * AuditPhase specifies the phase of an audit trace.
  *
  * @generated from enum metalstack.api.v2.AuditPhase
  */
@@ -264,7 +264,7 @@ export declare enum AuditPhase {
      */
     REQUEST = 1,
     /**
-     * AUDIT_PHASE_REQUEST defines an audit trace in the response phase
+     * AUDIT_PHASE_RESPONSE defines an audit trace in the response phase
      *
      * @generated from enum value: AUDIT_PHASE_RESPONSE = 2;
      */
@@ -275,13 +275,13 @@ export declare enum AuditPhase {
  */
 export declare const AuditPhaseSchema: GenEnum<AuditPhase>;
 /**
- * AuditService serves audit related functions
+ * AuditService provides audit logging operations.
  *
  * @generated from service metalstack.api.v2.AuditService
  */
 export declare const AuditService: GenService<{
     /**
-     * Get an audit trace
+     * Returns the audit trace with the specified UUID.
      *
      * @generated from rpc metalstack.api.v2.AuditService.Get
      */
@@ -291,7 +291,7 @@ export declare const AuditService: GenService<{
         output: typeof AuditServiceGetResponseSchema;
     };
     /**
-     * List audit traces
+     * Returns the list of audit traces.
      *
      * @generated from rpc metalstack.api.v2.AuditService.List
      */

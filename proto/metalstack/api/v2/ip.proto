@@ -6,36 +6,39 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// IPService serves ip address related functions
+// IPService provides IP address management operations.
 service IPService {
-  // Get a ip
+  // Returns the IP address with the specified IP.
   rpc Get(IPServiceGetRequest) returns (IPServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Create a ip
+  // Creates a new IP address.
   rpc Create(IPServiceCreateRequest) returns (IPServiceCreateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Update a ip
+  // Updates an IP address.
   rpc Update(IPServiceUpdateRequest) returns (IPServiceUpdateResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // List all ips
+  // Returns the list of all IP addresses.
   rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Delete a ip
+  // Deletes an IP address.
   rpc Delete(IPServiceDeleteRequest) returns (IPServiceDeleteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
@@ -116,7 +119,7 @@ message IPServiceCreateRequest {
 
 // IPServiceUpdateRequest is the request payload for a ip update request
 message IPServiceUpdateRequest {
-  // Ip the ip to update
+  // Ip the ip address to update
   string ip = 1 [(buf.validate.field).string.ip = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];

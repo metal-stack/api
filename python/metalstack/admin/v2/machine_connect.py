@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -36,7 +38,7 @@ class MachineService(Protocol):
 
 
 class MachineServiceASGIApplication(ConnectASGIApplication[MachineService]):
-    def __init__(self, service: MachineService | AsyncGenerator[MachineService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: MachineService | AsyncGenerator[MachineService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -103,6 +105,8 @@ class MachineServiceASGIApplication(ConnectASGIApplication[MachineService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -233,6 +237,9 @@ class MachineServiceClient(ConnectClient):
         )
 
 
+
+
+
 class MachineServiceSync(Protocol):
     def get(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
@@ -249,7 +256,7 @@ class MachineServiceSync(Protocol):
 
 
 class MachineServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: MachineServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: MachineServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.admin.v2.MachineService/Get": EndpointSync.unary(
@@ -315,6 +322,8 @@ class MachineServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -443,3 +452,5 @@ class MachineServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

@@ -42,7 +42,7 @@ const (
 // SizeImageConstraintServiceClient is a client for the metalstack.api.v2.SizeImageConstraintService
 // service.
 type SizeImageConstraintServiceClient interface {
-	// Try if a given combination of size and image is possible
+	// Try validates if a given combination of size and image is possible.
 	Try(context.Context, *v2.SizeImageConstraintServiceTryRequest) (*v2.SizeImageConstraintServiceTryResponse, error)
 }
 
@@ -84,7 +84,7 @@ func (c *sizeImageConstraintServiceClient) Try(ctx context.Context, req *v2.Size
 // SizeImageConstraintServiceHandler is an implementation of the
 // metalstack.api.v2.SizeImageConstraintService service.
 type SizeImageConstraintServiceHandler interface {
-	// Try if a given combination of size and image is possible
+	// Try validates if a given combination of size and image is possible.
 	Try(context.Context, *v2.SizeImageConstraintServiceTryRequest) (*v2.SizeImageConstraintServiceTryResponse, error)
 }
 

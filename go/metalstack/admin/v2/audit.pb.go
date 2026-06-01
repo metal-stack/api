@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// AuditServiceListRequest is the request payload to list audits
+// AuditServiceListRequest is the request payload for listing audit traces.
 type AuditServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Query for audit traces
@@ -69,10 +69,10 @@ func (x *AuditServiceListRequest) GetQuery() *v2.AuditQuery {
 	return nil
 }
 
-// AuditServiceListResponse is the response payload of a audit list request
+// AuditServiceListResponse is the response payload for listing audit traces.
 type AuditServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Traces is a list of audit traces
+	// Traces contains the list of audit traces
 	Traces        []*v2.AuditTrace `protobuf:"bytes,1,rep,name=traces,proto3" json:"traces,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,7 +115,7 @@ func (x *AuditServiceListResponse) GetTraces() []*v2.AuditTrace {
 	return nil
 }
 
-// AuditServiceGetRequest is the request payload of a audit get request
+// AuditServiceGetRequest is the request payload for getting an audit trace.
 type AuditServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the audit trace
@@ -170,7 +170,7 @@ func (x *AuditServiceGetRequest) GetPhase() v2.AuditPhase {
 	return v2.AuditPhase(0)
 }
 
-// AuditServiceGetResponse is the response payload of a audit get request
+// AuditServiceGetResponse is the response payload for getting an audit trace.
 type AuditServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Trace is the audit trace
@@ -230,10 +230,12 @@ const file_metalstack_admin_v2_audit_proto_rawDesc = "" +
 	"\x05phase\x18\x02 \x01(\x0e2\x1d.metalstack.api.v2.AuditPhaseB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x05phase\x88\x01\x01B\b\n" +
 	"\x06_phase\"N\n" +
 	"\x17AuditServiceGetResponse\x123\n" +
-	"\x05trace\x18\x01 \x01(\v2\x1d.metalstack.api.v2.AuditTraceR\x05trace2\xe5\x01\n" +
-	"\fAuditService\x12h\n" +
-	"\x03Get\x12+.metalstack.admin.v2.AuditServiceGetRequest\x1a,.metalstack.admin.v2.AuditServiceGetResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12k\n" +
-	"\x04List\x12,.metalstack.admin.v2.AuditServiceListRequest\x1a-.metalstack.admin.v2.AuditServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xce\x01\n" +
+	"\x05trace\x18\x01 \x01(\v2\x1d.metalstack.api.v2.AuditTraceR\x05trace2\xed\x01\n" +
+	"\fAuditService\x12l\n" +
+	"\x03Get\x12+.metalstack.admin.v2.AuditServiceGetRequest\x1a,.metalstack.admin.v2.AuditServiceGetResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12o\n" +
+	"\x04List\x12,.metalstack.admin.v2.AuditServiceListRequest\x1a-.metalstack.admin.v2.AuditServiceListResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xce\x01\n" +
 	"\x17com.metalstack.admin.v2B\n" +
 	"AuditProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 

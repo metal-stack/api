@@ -5,9 +5,9 @@ package metalstack.admin.v2;
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/ip.proto";
 
-// IPService serves ip address related functions
+// IPService provides IP address management operations.
 service IPService {
-  // List all ips
+  // Returns the list of all IP addresses.
   rpc List(IPServiceListRequest) returns (IPServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
@@ -15,14 +15,14 @@ service IPService {
   }
 }
 
-// IPServiceListRequest
+// IPServiceListRequest is the request payload for listing IP addresses.
 message IPServiceListRequest {
-  // Query to search for one or more ips
+  // Query to search for IP addresses
   metalstack.api.v2.IPQuery query = 1;
 }
 
-// IPServiceListResponse
+// IPServiceListResponse is the response payload for listing IP addresses.
 message IPServiceListResponse {
-  // IPs are the list of ips
+  // IPs contains the list of IP addresses
   repeated metalstack.api.v2.IP ips = 1;
 }

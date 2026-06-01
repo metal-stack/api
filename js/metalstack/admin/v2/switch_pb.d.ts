@@ -9,13 +9,13 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_switch: GenFile;
 /**
- * SwitchServiceGetRequest.
+ * SwitchServiceGetRequest is the request payload for getting a switch.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceGetRequest
  */
 export type SwitchServiceGetRequest = Message<"metalstack.admin.v2.SwitchServiceGetRequest"> & {
     /**
-     * Id of the switch to get.
+     * Id of the switch to get
      *
      * @generated from field: string id = 1;
      */
@@ -27,17 +27,17 @@ export type SwitchServiceGetRequest = Message<"metalstack.admin.v2.SwitchService
  */
 export declare const SwitchServiceGetRequestSchema: GenMessage<SwitchServiceGetRequest>;
 /**
- * SwitchServiceGetResponse.
+ * SwitchServiceGetResponse is the response payload for getting a switch.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceGetResponse
  */
 export type SwitchServiceGetResponse = Message<"metalstack.admin.v2.SwitchServiceGetResponse"> & {
     /**
-     * Switch that was requested.
+     * Switch contains the requested switch
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceGetResponse.
@@ -45,17 +45,17 @@ export type SwitchServiceGetResponse = Message<"metalstack.admin.v2.SwitchServic
  */
 export declare const SwitchServiceGetResponseSchema: GenMessage<SwitchServiceGetResponse>;
 /**
- * SwitchServiceListRequest.
+ * SwitchServiceListRequest is the request payload for listing switches.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceListRequest
  */
 export type SwitchServiceListRequest = Message<"metalstack.admin.v2.SwitchServiceListRequest"> & {
     /**
-     * Query to filter the results.
+     * Query to filter the results
      *
      * @generated from field: metalstack.api.v2.SwitchQuery query = 1;
      */
-    query?: SwitchQuery;
+    query?: SwitchQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceListRequest.
@@ -63,13 +63,13 @@ export type SwitchServiceListRequest = Message<"metalstack.admin.v2.SwitchServic
  */
 export declare const SwitchServiceListRequestSchema: GenMessage<SwitchServiceListRequest>;
 /**
- * SwitchServiceListResponse.
+ * SwitchServiceListResponse is the response payload for listing switches.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceListResponse
  */
 export type SwitchServiceListResponse = Message<"metalstack.admin.v2.SwitchServiceListResponse"> & {
     /**
-     * Switches that match the request query.
+     * Switches that match the request query
      *
      * @generated from field: repeated metalstack.api.v2.Switch switches = 1;
      */
@@ -81,72 +81,72 @@ export type SwitchServiceListResponse = Message<"metalstack.admin.v2.SwitchServi
  */
 export declare const SwitchServiceListResponseSchema: GenMessage<SwitchServiceListResponse>;
 /**
- * SwitchServiceUpdateRequest.
+ * SwitchServiceUpdateRequest is the request payload for updating a switch.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceUpdateRequest
  */
 export type SwitchServiceUpdateRequest = Message<"metalstack.admin.v2.SwitchServiceUpdateRequest"> & {
     /**
-     * ID of the switch.
+     * ID of the switch
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * UpdateMeta contains the timestamp and strategy to be used in this update request.
+     * UpdateMeta contains the timestamp and strategy to be used in this update request
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
-     * UpdatedAt is the date when this entity was updated.
-     * must be part of the update request to ensure optimistic locking.
+     * UpdatedAt is the date when this entity was updated
+     * Must be part of the update request to ensure optimistic locking
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 3;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
-     * Description of the switch.
+     * Description of the switch
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
-     * Replace mode is used to mark a switch ready for replacement.
+     * ReplaceMode is used to mark a switch ready for replacement
      *
      * @generated from field: optional metalstack.api.v2.SwitchReplaceMode replace_mode = 5;
      */
-    replaceMode?: SwitchReplaceMode;
+    replaceMode?: SwitchReplaceMode | undefined;
     /**
-     * Management IP is the switch's IP for management access.
+     * ManagementIp is the switch's IP for management access
      *
      * @generated from field: optional string management_ip = 6;
      */
-    managementIp?: string;
+    managementIp?: string | undefined;
     /**
-     * Management user is the user name to use for management access.
+     * ManagementUser is the user name to use for management access
      *
      * @generated from field: optional string management_user = 7;
      */
-    managementUser?: string;
+    managementUser?: string | undefined;
     /**
-     * Console command is the command for accessing the switch's console.
+     * ConsoleCommand is the command for accessing the switch's console
      *
      * @generated from field: optional string console_command = 8;
      */
-    consoleCommand?: string;
+    consoleCommand?: string | undefined;
     /**
-     * Nics are the front panel ports of the switch.
+     * Nics are the front panel ports of the switch
      *
      * @generated from field: repeated metalstack.api.v2.SwitchNic nics = 9;
      */
     nics: SwitchNic[];
     /**
-     * SwitchOs is the OS running on the switch.
+     * SwitchOs is the OS running on the switch
      *
      * @generated from field: optional metalstack.api.v2.SwitchOS os = 10;
      */
-    os?: SwitchOS;
+    os?: SwitchOS | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceUpdateRequest.
@@ -154,17 +154,17 @@ export type SwitchServiceUpdateRequest = Message<"metalstack.admin.v2.SwitchServ
  */
 export declare const SwitchServiceUpdateRequestSchema: GenMessage<SwitchServiceUpdateRequest>;
 /**
- * SwitchServiceUpdateResponse.
+ * SwitchServiceUpdateResponse is the response payload for updating a switch.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceUpdateResponse
  */
 export type SwitchServiceUpdateResponse = Message<"metalstack.admin.v2.SwitchServiceUpdateResponse"> & {
     /**
-     * Switch that was updated.
+     * Switch contains the updated switch
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceUpdateResponse.
@@ -172,19 +172,19 @@ export type SwitchServiceUpdateResponse = Message<"metalstack.admin.v2.SwitchSer
  */
 export declare const SwitchServiceUpdateResponseSchema: GenMessage<SwitchServiceUpdateResponse>;
 /**
- * SwitchServiceDeleteRequest.
+ * SwitchServiceDeleteRequest is the request payload for deleting a switch.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceDeleteRequest
  */
 export type SwitchServiceDeleteRequest = Message<"metalstack.admin.v2.SwitchServiceDeleteRequest"> & {
     /**
-     * Id of the switch.
+     * Id of the switch
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * Force will allow switch deletion despite existing machine connections.
+     * Force will allow switch deletion despite existing machine connections
      *
      * @generated from field: bool force = 2;
      */
@@ -196,17 +196,17 @@ export type SwitchServiceDeleteRequest = Message<"metalstack.admin.v2.SwitchServ
  */
 export declare const SwitchServiceDeleteRequestSchema: GenMessage<SwitchServiceDeleteRequest>;
 /**
- * SwitchServiceDeleteResponse.
+ * SwitchServiceDeleteResponse is the response payload for deleting a switch.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceDeleteResponse
  */
 export type SwitchServiceDeleteResponse = Message<"metalstack.admin.v2.SwitchServiceDeleteResponse"> & {
     /**
-     * Switch that has been deleted.
+     * Switch contains the deleted switch
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceDeleteResponse.
@@ -214,19 +214,19 @@ export type SwitchServiceDeleteResponse = Message<"metalstack.admin.v2.SwitchSer
  */
 export declare const SwitchServiceDeleteResponseSchema: GenMessage<SwitchServiceDeleteResponse>;
 /**
- * SwitchServiceMigrateRequest.
+ * SwitchServiceMigrateRequest is the request payload for migrating a switch.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceMigrateRequest
  */
 export type SwitchServiceMigrateRequest = Message<"metalstack.admin.v2.SwitchServiceMigrateRequest"> & {
     /**
-     * OldSwitch which to migrate away from.
+     * OldSwitch is the switch to migrate away from
      *
      * @generated from field: string old_switch = 1;
      */
     oldSwitch: string;
     /**
-     * NewSwitch which to migrate to.
+     * NewSwitch is the switch to migrate to
      *
      * @generated from field: string new_switch = 2;
      */
@@ -238,17 +238,17 @@ export type SwitchServiceMigrateRequest = Message<"metalstack.admin.v2.SwitchSer
  */
 export declare const SwitchServiceMigrateRequestSchema: GenMessage<SwitchServiceMigrateRequest>;
 /**
- * SwitchServiceMigrateResponse.
+ * SwitchServiceMigrateResponse is the response payload for migrating a switch.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceMigrateResponse
  */
 export type SwitchServiceMigrateResponse = Message<"metalstack.admin.v2.SwitchServiceMigrateResponse"> & {
     /**
-     * Switch that was migrated to.
+     * Switch contains the switch was migrated to
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceMigrateResponse.
@@ -256,25 +256,25 @@ export type SwitchServiceMigrateResponse = Message<"metalstack.admin.v2.SwitchSe
  */
 export declare const SwitchServiceMigrateResponseSchema: GenMessage<SwitchServiceMigrateResponse>;
 /**
- * SwitchServicePortRequest.
+ * SwitchServicePortRequest is the request payload for setting the port status of a switch port.
  *
  * @generated from message metalstack.admin.v2.SwitchServicePortRequest
  */
 export type SwitchServicePortRequest = Message<"metalstack.admin.v2.SwitchServicePortRequest"> & {
     /**
-     * Id of the switch.
+     * Id of the switch
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * NicName of the port whose status should be changed.
+     * NicName of the port whose status should be changed
      *
      * @generated from field: string nic_name = 2;
      */
     nicName: string;
     /**
-     * Status that the port should have.
+     * Status that the port should have
      *
      * @generated from field: metalstack.api.v2.SwitchPortStatus status = 3;
      */
@@ -286,17 +286,17 @@ export type SwitchServicePortRequest = Message<"metalstack.admin.v2.SwitchServic
  */
 export declare const SwitchServicePortRequestSchema: GenMessage<SwitchServicePortRequest>;
 /**
- * SwitchServicePortResponse.
+ * SwitchServicePortResponse is the response payload for setting the port status of a switch port.
  *
  * @generated from message metalstack.admin.v2.SwitchServicePortResponse
  */
 export type SwitchServicePortResponse = Message<"metalstack.admin.v2.SwitchServicePortResponse"> & {
     /**
-     * Switch after the port status toggle..
+     * Switch after the port status toggle
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServicePortResponse.
@@ -304,23 +304,23 @@ export type SwitchServicePortResponse = Message<"metalstack.admin.v2.SwitchServi
  */
 export declare const SwitchServicePortResponseSchema: GenMessage<SwitchServicePortResponse>;
 /**
- * SwitchServiceConnectedMachinesRequest.
+ * SwitchServiceConnectedMachinesRequest is the request payload for listing switches with machine connections.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceConnectedMachinesRequest
  */
 export type SwitchServiceConnectedMachinesRequest = Message<"metalstack.admin.v2.SwitchServiceConnectedMachinesRequest"> & {
     /**
-     * Query to filter the switch results.
+     * Query to filter the switch results
      *
      * @generated from field: metalstack.api.v2.SwitchQuery query = 1;
      */
-    query?: SwitchQuery;
+    query?: SwitchQuery | undefined;
     /**
-     * MachineQuery to filter the machine results.
+     * MachineQuery to filter the machine results
      *
      * @generated from field: metalstack.api.v2.MachineQuery machine_query = 2;
      */
-    machineQuery?: MachineQuery;
+    machineQuery?: MachineQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceConnectedMachinesRequest.
@@ -328,13 +328,13 @@ export type SwitchServiceConnectedMachinesRequest = Message<"metalstack.admin.v2
  */
 export declare const SwitchServiceConnectedMachinesRequestSchema: GenMessage<SwitchServiceConnectedMachinesRequest>;
 /**
- * SwitchServiceConnectedMachinesResponse.
+ * SwitchServiceConnectedMachinesResponse is the response payload for listing switches with machine connections.
  *
  * @generated from message metalstack.admin.v2.SwitchServiceConnectedMachinesResponse
  */
 export type SwitchServiceConnectedMachinesResponse = Message<"metalstack.admin.v2.SwitchServiceConnectedMachinesResponse"> & {
     /**
-     * SwitchesWithMachines contains all switches with their machine connections.
+     * SwitchesWithMachines contains all switches with their machine connections
      *
      * @generated from field: repeated metalstack.api.v2.SwitchWithMachines switches_with_machines = 1;
      */
@@ -346,13 +346,13 @@ export type SwitchServiceConnectedMachinesResponse = Message<"metalstack.admin.v
  */
 export declare const SwitchServiceConnectedMachinesResponseSchema: GenMessage<SwitchServiceConnectedMachinesResponse>;
 /**
- * SwitchService serves switch related functions.
+ * SwitchService provides switch management operations.
  *
  * @generated from service metalstack.admin.v2.SwitchService
  */
 export declare const SwitchService: GenService<{
     /**
-     * Get a switch by ID.
+     * Returns the switch with the specified ID.
      *
      * @generated from rpc metalstack.admin.v2.SwitchService.Get
      */
@@ -362,7 +362,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServiceGetResponseSchema;
     };
     /**
-     * List switches.
+     * Returns the list of switches.
      *
      * @generated from rpc metalstack.admin.v2.SwitchService.List
      */
@@ -372,7 +372,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServiceListResponseSchema;
     };
     /**
-     * Update a switch.
+     * Updates a switch.
      *
      * @generated from rpc metalstack.admin.v2.SwitchService.Update
      */
@@ -382,7 +382,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServiceUpdateResponseSchema;
     };
     /**
-     * Delete a switch.
+     * Deletes a switch.
      *
      * @generated from rpc metalstack.admin.v2.SwitchService.Delete
      */
@@ -392,7 +392,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServiceDeleteResponseSchema;
     };
     /**
-     * Migrate a switch.
+     * Migrates a switch.
      *
      * @generated from rpc metalstack.admin.v2.SwitchService.Migrate
      */
@@ -402,7 +402,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServiceMigrateResponseSchema;
     };
     /**
-     * Port set the port status of a switch port.
+     * Sets the port status of a switch port.
      *
      * @generated from rpc metalstack.admin.v2.SwitchService.Port
      */
@@ -412,7 +412,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServicePortResponseSchema;
     };
     /**
-     * ConnectedMachines lists all switches with their machine connections.
+     * Returns all switches with their machine connections.
      *
      * @generated from rpc metalstack.admin.v2.SwitchService.ConnectedMachines
      */

@@ -8,31 +8,37 @@ import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// TokenService serves token related functions
+// TokenService provides token management operations.
 service TokenService {
-  // Get a token
+  // Returns the token with the specified UUID.
   rpc Get(TokenServiceGetRequest) returns (TokenServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Create a token to authenticate against the platform, the secret will be only visible in the response.
+  // Creates a token to authenticate against the platform, the secret will be only visible in the response.
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Update a token
+  // Updates a token.
   rpc Update(TokenServiceUpdateRequest) returns (TokenServiceUpdateResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // List all your tokens
+  // Returns the list of all user tokens.
   rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Revoke a token, no further usage is possible afterwards
+  // Revokes a token, no further usage is possible afterwards.
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Refresh a token, this will create a new token with the exact same permissions as the calling token contains
+  // Refreshes a token, this will create a new token with the exact same permissions as the calling token contains.
   rpc Refresh(TokenServiceRefreshRequest) returns (TokenServiceRefreshResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
@@ -109,26 +115,32 @@ message TokenServiceCreateRequest {
     gte: {seconds: 600}
   }];
   // ProjectRoles associates a project id with the corresponding role of the token owner
-  map<string, ProjectRole> project_roles = 4 [(buf.validate.field).map = {
-    keys: {
-      string: {uuid: true}
-    }
-    values: {
-      enum: {defined_only: true}
-    }
-  }];
-  // TenantRoles_associates a tenant id with the corresponding role of the token owner
-  map<string, TenantRole> tenant_roles = 5 [(buf.validate.field).map = {
-    keys: {
-      string: {
-        min_len: 3
-        max_len: 128
+  map<string, ProjectRole> project_roles = 4 [
+    (buf.validate.field).map = {
+      keys: {
+        string: {uuid: true}
       }
-    }
-    values: {
-      enum: {defined_only: true}
-    }
-  }];
+      values: {
+        enum: {defined_only: true}
+      }
+    },
+    (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
+  ];
+  // TenantRoles_associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 5 [
+    (buf.validate.field).map = {
+      keys: {
+        string: {
+          min_len: 3
+          max_len: 128
+        }
+      }
+      values: {
+        enum: {defined_only: true}
+      }
+    },
+    (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
+  ];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 6 [(buf.validate.field).enum.defined_only = true];
   // InfraRole defines the infrastructure role of the token owner
@@ -203,26 +215,32 @@ message TokenServiceUpdateRequest {
   // Permissions is a list of service methods this token can be used for
   repeated MethodPermission permissions = 4;
   // ProjectRoles associates a project id with the corresponding role of the token owner
-  map<string, ProjectRole> project_roles = 5 [(buf.validate.field).map = {
-    keys: {
-      string: {uuid: true}
-    }
-    values: {
-      enum: {defined_only: true}
-    }
-  }];
-  // TenantRoles associates a tenant id with the corresponding role of the token owner
-  map<string, TenantRole> tenant_roles = 6 [(buf.validate.field).map = {
-    keys: {
-      string: {
-        min_len: 3
-        max_len: 128
+  map<string, ProjectRole> project_roles = 5 [
+    (buf.validate.field).map = {
+      keys: {
+        string: {uuid: true}
       }
-    }
-    values: {
-      enum: {defined_only: true}
-    }
-  }];
+      values: {
+        enum: {defined_only: true}
+      }
+    },
+    (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
+  ];
+  // TenantRoles associates a tenant id with the corresponding role of the token owner
+  map<string, TenantRole> tenant_roles = 6 [
+    (buf.validate.field).map = {
+      keys: {
+        string: {
+          min_len: 3
+          max_len: 128
+        }
+      }
+      values: {
+        enum: {defined_only: true}
+      }
+    },
+    (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
+  ];
   // AdminRole defines the admin role of the token owner
   optional AdminRole admin_role = 7 [(buf.validate.field).enum.defined_only = true];
   // InfraRole defines the infrastructure role of the token owner

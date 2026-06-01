@@ -23,10 +23,10 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ComponentServiceListRequest
+// ComponentServiceListRequest is the request payload for listing components.
 type ComponentServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query components.
+	// Query filters components
 	Query         *v2.ComponentQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -69,10 +69,10 @@ func (x *ComponentServiceListRequest) GetQuery() *v2.ComponentQuery {
 	return nil
 }
 
-// ComponentServiceListResponse
+// ComponentServiceListResponse is the response payload for listing components.
 type ComponentServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Components
+	// Components contains the list of components
 	Components    []*v2.Component `protobuf:"bytes,1,rep,name=components,proto3" json:"components,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,7 +115,7 @@ func (x *ComponentServiceListResponse) GetComponents() []*v2.Component {
 	return nil
 }
 
-// ComponentServiceGetRequest
+// ComponentServiceGetRequest is the request payload for getting a component.
 type ComponentServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID identifies the component to get
@@ -161,10 +161,10 @@ func (x *ComponentServiceGetRequest) GetUuid() string {
 	return ""
 }
 
-// ComponentServiceGetResponse
+// ComponentServiceGetResponse is the response payload for getting a component.
 type ComponentServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Component
+	// Component contains the retrieved component
 	Component     *v2.Component `protobuf:"bytes,1,opt,name=component,proto3" json:"component,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -207,7 +207,7 @@ func (x *ComponentServiceGetResponse) GetComponent() *v2.Component {
 	return nil
 }
 
-// ComponentServiceGetRequest
+// ComponentServiceDeleteRequest is the request payload for deleting a component.
 type ComponentServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID identifies the component to delete
@@ -253,10 +253,10 @@ func (x *ComponentServiceDeleteRequest) GetUuid() string {
 	return ""
 }
 
-// ComponentServiceGetResponse
+// ComponentServiceDeleteResponse is the response payload for deleting a component.
 type ComponentServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Component
+	// Component contains the deleted component
 	Component     *v2.Component `protobuf:"bytes,1,opt,name=component,proto3" json:"component,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

@@ -7,7 +7,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_network: GenFile;
 /**
- * NetworkServiceGetRequest
+ * NetworkServiceGetRequest is the request payload for getting a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceGetRequest
  */
@@ -25,17 +25,17 @@ export type NetworkServiceGetRequest = Message<"metalstack.admin.v2.NetworkServi
  */
 export declare const NetworkServiceGetRequestSchema: GenMessage<NetworkServiceGetRequest>;
 /**
- * NetworkServiceGetResponse
+ * NetworkServiceGetResponse is the response payload for getting a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceGetResponse
  */
 export type NetworkServiceGetResponse = Message<"metalstack.admin.v2.NetworkServiceGetResponse"> & {
     /**
-     * Network which was requested to get
+     * Network contains the requested network
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
-    network?: Network;
+    network?: Network | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceGetResponse.
@@ -43,7 +43,7 @@ export type NetworkServiceGetResponse = Message<"metalstack.admin.v2.NetworkServ
  */
 export declare const NetworkServiceGetResponseSchema: GenMessage<NetworkServiceGetResponse>;
 /**
- * NetworkServiceCreateRequest
+ * NetworkServiceCreateRequest is the request payload for creating a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceCreateRequest
  */
@@ -53,31 +53,31 @@ export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkSe
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Name of this network
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this network
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Partition where this network will be created
      *
      * @generated from field: optional string partition = 4;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Project where this network belongs to
      *
      * @generated from field: optional string project = 5;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Type of the network to create
      *
@@ -89,7 +89,7 @@ export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkSe
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 7;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
     /**
      * Prefixes in this network
      *
@@ -107,31 +107,31 @@ export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkSe
      *
      * @generated from field: metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
      */
-    defaultChildPrefixLength?: ChildPrefixLength;
+    defaultChildPrefixLength?: ChildPrefixLength | undefined;
     /**
      * Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
      *
      * @generated from field: metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
      */
-    minChildPrefixLength?: ChildPrefixLength;
+    minChildPrefixLength?: ChildPrefixLength | undefined;
     /**
      * NATType of this network
      *
      * @generated from field: optional metalstack.api.v2.NATType nat_type = 12;
      */
-    natType?: NATType;
+    natType?: NATType | undefined;
     /**
-     * VRF of this network has this VNI.
+     * VRF of this network has this VNI
      *
      * @generated from field: optional uint32 vrf = 13;
      */
-    vrf?: number;
+    vrf?: number | undefined;
     /**
      * Parent Network points to the id of the parent network if any
      *
      * @generated from field: optional string parent_network = 14;
      */
-    parentNetwork?: string;
+    parentNetwork?: string | undefined;
     /**
      * AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
      *
@@ -143,13 +143,13 @@ export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkSe
      *
      * @generated from field: optional metalstack.api.v2.ChildPrefixLength length = 16;
      */
-    length?: ChildPrefixLength;
+    length?: ChildPrefixLength | undefined;
     /**
      * AddressFamily to create, defaults to the same as the parent
      *
      * @generated from field: optional metalstack.api.v2.NetworkAddressFamily address_family = 17;
      */
-    addressFamily?: NetworkAddressFamily;
+    addressFamily?: NetworkAddressFamily | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceCreateRequest.
@@ -157,7 +157,7 @@ export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkSe
  */
 export declare const NetworkServiceCreateRequestSchema: GenMessage<NetworkServiceCreateRequest>;
 /**
- * NetworkServiceUpdateRequest is the request payload for a network update request
+ * NetworkServiceUpdateRequest is the request payload for updating a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceUpdateRequest
  */
@@ -173,25 +173,25 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkSe
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Name of this network
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this network
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Labels to update on this network
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 5;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
     /**
      * Prefixes in this network
      *
@@ -205,23 +205,23 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkSe
      */
     destinationPrefixes: string[];
     /**
-     * Default Child Prefix length defines the bit length of a child network created per addressfamily, of not specified during the allocate request
+     * Default Child Prefix length defines the bit length of a child network created per addressfamily, if not specified during the allocate request
      *
      * @generated from field: optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 8;
      */
-    defaultChildPrefixLength?: ChildPrefixLength;
+    defaultChildPrefixLength?: ChildPrefixLength | undefined;
     /**
      * Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
      *
      * @generated from field: optional metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 9;
      */
-    minChildPrefixLength?: ChildPrefixLength;
+    minChildPrefixLength?: ChildPrefixLength | undefined;
     /**
      * NATType of this network
      *
      * @generated from field: optional metalstack.api.v2.NATType nat_type = 10;
      */
-    natType?: NATType;
+    natType?: NATType | undefined;
     /**
      * AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
      *
@@ -229,7 +229,7 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkSe
      */
     additionalAnnouncableCidrs: string[];
     /**
-     * Force update, actually only prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane in fact.
+     * Force update, prevents accidental removal of additional_announcable_cidrs which will destroy your dataplane.
      *
      * @generated from field: bool force = 12;
      */
@@ -241,7 +241,7 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkSe
  */
 export declare const NetworkServiceUpdateRequestSchema: GenMessage<NetworkServiceUpdateRequest>;
 /**
- * NetworkServiceDeleteRequest is the request payload for a network delete request
+ * NetworkServiceDeleteRequest is the request payload for deleting a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceDeleteRequest
  */
@@ -259,17 +259,17 @@ export type NetworkServiceDeleteRequest = Message<"metalstack.admin.v2.NetworkSe
  */
 export declare const NetworkServiceDeleteRequestSchema: GenMessage<NetworkServiceDeleteRequest>;
 /**
- * NetworkServiceListRequest
+ * NetworkServiceListRequest is the request payload for listing networks.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceListRequest
  */
 export type NetworkServiceListRequest = Message<"metalstack.admin.v2.NetworkServiceListRequest"> & {
     /**
-     * Query which specifies which networks to return
+     * Query specifies which networks to return
      *
-     * @generated from field: metalstack.api.v2.NetworkQuery query = 2;
+     * @generated from field: metalstack.api.v2.NetworkQuery query = 1;
      */
-    query?: NetworkQuery;
+    query?: NetworkQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceListRequest.
@@ -277,17 +277,17 @@ export type NetworkServiceListRequest = Message<"metalstack.admin.v2.NetworkServ
  */
 export declare const NetworkServiceListRequestSchema: GenMessage<NetworkServiceListRequest>;
 /**
- * NetworkServiceCreateResponse is the response payload for a network create request
+ * NetworkServiceCreateResponse is the response payload for creating a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceCreateResponse
  */
 export type NetworkServiceCreateResponse = Message<"metalstack.admin.v2.NetworkServiceCreateResponse"> & {
     /**
-     * Network the network
+     * Network contains the created network
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
-    network?: Network;
+    network?: Network | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceCreateResponse.
@@ -295,17 +295,17 @@ export type NetworkServiceCreateResponse = Message<"metalstack.admin.v2.NetworkS
  */
 export declare const NetworkServiceCreateResponseSchema: GenMessage<NetworkServiceCreateResponse>;
 /**
- * NetworkServiceUpdateResponse is the response payload for a network update request
+ * NetworkServiceUpdateResponse is the response payload for updating a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceUpdateResponse
  */
 export type NetworkServiceUpdateResponse = Message<"metalstack.admin.v2.NetworkServiceUpdateResponse"> & {
     /**
-     * Network the network
+     * Network contains the updated network
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
-    network?: Network;
+    network?: Network | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceUpdateResponse.
@@ -313,17 +313,17 @@ export type NetworkServiceUpdateResponse = Message<"metalstack.admin.v2.NetworkS
  */
 export declare const NetworkServiceUpdateResponseSchema: GenMessage<NetworkServiceUpdateResponse>;
 /**
- * NetworkServiceCapacityResponse is the response payload for a network delete request
+ * NetworkServiceDeleteResponse is the response payload for deleting a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceDeleteResponse
  */
 export type NetworkServiceDeleteResponse = Message<"metalstack.admin.v2.NetworkServiceDeleteResponse"> & {
     /**
-     * Network the network
+     * Network contains the deleted network
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
-    network?: Network;
+    network?: Network | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceDeleteResponse.
@@ -331,13 +331,13 @@ export type NetworkServiceDeleteResponse = Message<"metalstack.admin.v2.NetworkS
  */
 export declare const NetworkServiceDeleteResponseSchema: GenMessage<NetworkServiceDeleteResponse>;
 /**
- * NetworkServiceListResponse
+ * NetworkServiceListResponse is the response payload for listing networks.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceListResponse
  */
 export type NetworkServiceListResponse = Message<"metalstack.admin.v2.NetworkServiceListResponse"> & {
     /**
-     * Networks are the requested networks
+     * Networks contains the list of networks
      *
      * @generated from field: repeated metalstack.api.v2.Network networks = 1;
      */
@@ -349,13 +349,13 @@ export type NetworkServiceListResponse = Message<"metalstack.admin.v2.NetworkSer
  */
 export declare const NetworkServiceListResponseSchema: GenMessage<NetworkServiceListResponse>;
 /**
- * NetworkService serves network address related functions
+ * NetworkService provides network management operations.
  *
  * @generated from service metalstack.admin.v2.NetworkService
  */
 export declare const NetworkService: GenService<{
     /**
-     * Get a network
+     * Returns the network with the specified ID.
      *
      * @generated from rpc metalstack.admin.v2.NetworkService.Get
      */
@@ -365,7 +365,7 @@ export declare const NetworkService: GenService<{
         output: typeof NetworkServiceGetResponseSchema;
     };
     /**
-     * Create a network
+     * Creates a new network.
      *
      * @generated from rpc metalstack.admin.v2.NetworkService.Create
      */
@@ -375,7 +375,7 @@ export declare const NetworkService: GenService<{
         output: typeof NetworkServiceCreateResponseSchema;
     };
     /**
-     * Update a network
+     * Updates a network.
      *
      * @generated from rpc metalstack.admin.v2.NetworkService.Update
      */
@@ -385,7 +385,7 @@ export declare const NetworkService: GenService<{
         output: typeof NetworkServiceUpdateResponseSchema;
     };
     /**
-     * Delete a network
+     * Deletes a network.
      *
      * @generated from rpc metalstack.admin.v2.NetworkService.Delete
      */
@@ -395,7 +395,7 @@ export declare const NetworkService: GenService<{
         output: typeof NetworkServiceDeleteResponseSchema;
     };
     /**
-     * List all networks
+     * Returns the list of all networks.
      *
      * @generated from rpc metalstack.admin.v2.NetworkService.List
      */

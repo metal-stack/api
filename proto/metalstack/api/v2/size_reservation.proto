@@ -6,16 +6,16 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// SizeReservationService serves size reservation related functions
+// SizeReservationService provides size reservation management operations.
 service SizeReservationService {
-  // Get a size reservation
+  // Returns the size reservation with the specified ID.
   rpc Get(SizeReservationServiceGetRequest) returns (SizeReservationServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // List size reservations
+  // Returns the list of size reservations.
   rpc List(SizeReservationServiceListRequest) returns (SizeReservationServiceListResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;

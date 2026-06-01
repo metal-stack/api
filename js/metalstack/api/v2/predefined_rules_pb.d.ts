@@ -1,11 +1,11 @@
 import type { GenExtension, GenFile } from "@bufbuild/protobuf/codegenv2";
-import type { RepeatedRules, StringRules } from "../../../buf/validate/validate_pb";
+import type { MapRules, RepeatedRules, StringRules } from "../../../buf/validate/validate_pb";
 /**
  * Describes the file metalstack/api/v2/predefined_rules.proto.
  */
 export declare const file_metalstack_api_v2_predefined_rules: GenFile;
 /**
- * Macaddress returns true if the given string is a valid macadress
+ * Macaddress returns true if the given string is a valid macaddress
  *
  * @generated from extension: optional bool macaddress = 80048951;
  */
@@ -47,7 +47,7 @@ export declare const is_uri: GenExtension<StringRules, boolean>;
  */
 export declare const is_ip_or_hostname: GenExtension<StringRules, boolean>;
 /**
- * Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end.
+ * Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end
  *
  * @generated from extension: optional bool trimmed = 80048958;
  */
@@ -65,8 +65,26 @@ export declare const prefixes: GenExtension<RepeatedRules, boolean>;
  */
 export declare const ips: GenExtension<RepeatedRules, boolean>;
 /**
- * All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end.
+ * AreHostAndPort validates if a slice of strings are all in the form of <ip | host>:<port>
  *
- * @generated from extension: optional bool all_trimmed = 80058953;
+ * @generated from extension: optional bool are_host_and_port = 80058953;
+ */
+export declare const are_host_and_port: GenExtension<RepeatedRules, boolean>;
+/**
+ * All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end
+ *
+ * @generated from extension: optional bool all_trimmed = 80058954;
  */
 export declare const all_trimmed: GenExtension<RepeatedRules, boolean>;
+/**
+ * Keys and Values trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+ *
+ * @generated from extension: optional bool keys_and_values_trimmed = 80068951;
+ */
+export declare const keys_and_values_trimmed: GenExtension<MapRules, boolean>;
+/**
+ * Keys trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+ *
+ * @generated from extension: optional bool keys_trimmed = 80068952;
+ */
+export declare const keys_trimmed: GenExtension<MapRules, boolean>;

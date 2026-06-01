@@ -7,9 +7,9 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/project.proto";
 
-// ProjectService serves project related functions
+// ProjectService provides project management operations.
 service ProjectService {
-  // List projects based on various filter criteria
+  // Returns the list of projects matching the filter criteria.
   rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
@@ -17,16 +17,16 @@ service ProjectService {
   }
 }
 
-// ProjectServiceListRequest is the request payload for the project list request
+// ProjectServiceListRequest is the request payload for listing projects.
 message ProjectServiceListRequest {
-  // Tenant lists only projects of this tenant
+  // Tenant filters projects by this tenant
   optional string tenant = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Labels lists only projects containing the given labels
+  // Labels filters projects containing the given labels
   optional metalstack.api.v2.Labels labels = 2;
 }
 
-// ProjectServiceListResponse is the response payload for the project list request
+// ProjectServiceListResponse is the response payload for listing projects.
 message ProjectServiceListResponse {
-  // Projects is a list of all projects
+  // Projects contains the list of projects
   repeated metalstack.api.v2.Project projects = 1;
 }

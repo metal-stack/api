@@ -34,7 +34,7 @@ export type FilesystemServiceListRequest = Message<"metalstack.api.v2.Filesystem
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.FilesystemServiceListRequest.
@@ -52,7 +52,7 @@ export type FilesystemServiceGetResponse = Message<"metalstack.api.v2.Filesystem
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
-    filesystemLayout?: FilesystemLayout;
+    filesystemLayout?: FilesystemLayout | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.FilesystemServiceGetResponse.
@@ -78,110 +78,6 @@ export type FilesystemServiceListResponse = Message<"metalstack.api.v2.Filesyste
  */
 export declare const FilesystemServiceListResponseSchema: GenMessage<FilesystemServiceListResponse>;
 /**
- * FilesystemServiceMatchRequest
- *
- * @generated from message metalstack.api.v2.FilesystemServiceMatchRequest
- */
-export type FilesystemServiceMatchRequest = Message<"metalstack.api.v2.FilesystemServiceMatchRequest"> & {
-    /**
-     * Match either size and image to a filesystemlayout
-     * or if a machine matches to a filesystemlayout
-     *
-     * @generated from oneof metalstack.api.v2.FilesystemServiceMatchRequest.match
-     */
-    match: {
-        /**
-         * SizeAndImage
-         *
-         * @generated from field: metalstack.api.v2.MatchImageAndSize size_and_image = 1;
-         */
-        value: MatchImageAndSize;
-        case: "sizeAndImage";
-    } | {
-        /**
-         * MachineAndFilesystemlayout
-         *
-         * @generated from field: metalstack.api.v2.MatchMachine machine_and_filesystemlayout = 2;
-         */
-        value: MatchMachine;
-        case: "machineAndFilesystemlayout";
-    } | {
-        case: undefined;
-        value?: undefined;
-    };
-};
-/**
- * Describes the message metalstack.api.v2.FilesystemServiceMatchRequest.
- * Use `create(FilesystemServiceMatchRequestSchema)` to create a new message.
- */
-export declare const FilesystemServiceMatchRequestSchema: GenMessage<FilesystemServiceMatchRequest>;
-/**
- * MatchImageAndSize
- *
- * @generated from message metalstack.api.v2.MatchImageAndSize
- */
-export type MatchImageAndSize = Message<"metalstack.api.v2.MatchImageAndSize"> & {
-    /**
-     * Size, machine size to try
-     *
-     * @generated from field: string size = 1;
-     */
-    size: string;
-    /**
-     * Image machine image to try
-     *
-     * @generated from field: string image = 2;
-     */
-    image: string;
-};
-/**
- * Describes the message metalstack.api.v2.MatchImageAndSize.
- * Use `create(MatchImageAndSizeSchema)` to create a new message.
- */
-export declare const MatchImageAndSizeSchema: GenMessage<MatchImageAndSize>;
-/**
- * MatchMachine
- *
- * @generated from message metalstack.api.v2.MatchMachine
- */
-export type MatchMachine = Message<"metalstack.api.v2.MatchMachine"> & {
-    /**
-     * Machine to check
-     *
-     * @generated from field: string machine = 1;
-     */
-    machine: string;
-    /**
-     * FilesystemLayout to check
-     *
-     * @generated from field: string filesystem_layout = 2;
-     */
-    filesystemLayout: string;
-};
-/**
- * Describes the message metalstack.api.v2.MatchMachine.
- * Use `create(MatchMachineSchema)` to create a new message.
- */
-export declare const MatchMachineSchema: GenMessage<MatchMachine>;
-/**
- * FilesystemServiceMatchResponse
- *
- * @generated from message metalstack.api.v2.FilesystemServiceMatchResponse
- */
-export type FilesystemServiceMatchResponse = Message<"metalstack.api.v2.FilesystemServiceMatchResponse"> & {
-    /**
-     * FilesystemLayout the filesystemlayout
-     *
-     * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
-     */
-    filesystemLayout?: FilesystemLayout;
-};
-/**
- * Describes the message metalstack.api.v2.FilesystemServiceMatchResponse.
- * Use `create(FilesystemServiceMatchResponseSchema)` to create a new message.
- */
-export declare const FilesystemServiceMatchResponseSchema: GenMessage<FilesystemServiceMatchResponse>;
-/**
  * FilesystemLayout
  *
  * @generated from message metalstack.api.v2.FilesystemLayout
@@ -198,19 +94,19 @@ export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Name of this filesystemLayout
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this filesystemLayout
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Filesystems is a list of filesystems to create on a machine
      *
@@ -246,7 +142,7 @@ export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
      *
      * @generated from field: metalstack.api.v2.FilesystemLayoutConstraints constraints = 10;
      */
-    constraints?: FilesystemLayoutConstraints;
+    constraints?: FilesystemLayoutConstraints | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.FilesystemLayout.
@@ -302,25 +198,25 @@ export type Filesystem = Message<"metalstack.api.v2.Filesystem"> & {
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this filesystem
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Path the mountpoint where this filesystem should be mounted on
      *
      * @generated from field: optional string path = 5;
      */
-    path?: string;
+    path?: string | undefined;
     /**
      * Label optional label for this this filesystem
      *
      * @generated from field: optional string label = 6;
      */
-    label?: string;
+    label?: string | undefined;
     /**
      * MountOptions the options to use to mount this filesystem
      *
@@ -422,7 +318,7 @@ export type DiskPartition = Message<"metalstack.api.v2.DiskPartition"> & {
      *
      * @generated from field: optional string label = 2;
      */
-    label?: string;
+    label?: string | undefined;
     /**
      * Size size in mebibytes (MiB) of this partition"
      *
@@ -434,7 +330,7 @@ export type DiskPartition = Message<"metalstack.api.v2.DiskPartition"> & {
      *
      * @generated from field: optional metalstack.api.v2.GPTType gpt_type = 4;
      */
-    gptType?: GPTType;
+    gptType?: GPTType | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.DiskPartition.
@@ -666,13 +562,13 @@ export declare enum RaidLevel {
  */
 export declare const RaidLevelSchema: GenEnum<RaidLevel>;
 /**
- * FilesystemService serves filesystem related functions
+ * FilesystemService provides filesystem management operations.
  *
  * @generated from service metalstack.api.v2.FilesystemService
  */
 export declare const FilesystemService: GenService<{
     /**
-     * Get a filesystem
+     * Returns the filesystem with the specified ID.
      *
      * @generated from rpc metalstack.api.v2.FilesystemService.Get
      */
@@ -682,7 +578,7 @@ export declare const FilesystemService: GenService<{
         output: typeof FilesystemServiceGetResponseSchema;
     };
     /**
-     * List all filesystems
+     * Returns the list of all filesystems.
      *
      * @generated from rpc metalstack.api.v2.FilesystemService.List
      */
@@ -690,15 +586,5 @@ export declare const FilesystemService: GenService<{
         methodKind: "unary";
         input: typeof FilesystemServiceListRequestSchema;
         output: typeof FilesystemServiceListResponseSchema;
-    };
-    /**
-     * Match a filesystems
-     *
-     * @generated from rpc metalstack.api.v2.FilesystemService.Match
-     */
-    match: {
-        methodKind: "unary";
-        input: typeof FilesystemServiceMatchRequestSchema;
-        output: typeof FilesystemServiceMatchResponseSchema;
     };
 }>;

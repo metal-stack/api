@@ -24,10 +24,10 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ImageServiceCreateRequest
+// ImageServiceCreateRequest is the request payload for creating an image.
 type ImageServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image is the image
+	// Image is the image to create
 	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -70,10 +70,10 @@ func (x *ImageServiceCreateRequest) GetImage() *v2.Image {
 	return nil
 }
 
-// ImageServiceCreateResponse
+// ImageServiceCreateResponse is the response payload for creating an image.
 type ImageServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image is the image
+	// Image contains the created image
 	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -116,7 +116,7 @@ func (x *ImageServiceCreateResponse) GetImage() *v2.Image {
 	return nil
 }
 
-// ImageServiceUpdateRequest
+// ImageServiceUpdateRequest is the request payload for updating an image.
 type ImageServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this image
@@ -125,9 +125,9 @@ type ImageServiceUpdateRequest struct {
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// URL where this image is located
 	Url *string `protobuf:"bytes,3,opt,name=url,proto3,oneof" json:"url,omitempty"`
-	// Name of this imageLayout
+	// Name of this image
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this imageLayout
+	// Description of this image
 	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Features of this image
 	Features []v2.ImageFeature `protobuf:"varint,6,rep,packed,name=features,proto3,enum=metalstack.api.v2.ImageFeature" json:"features,omitempty"`
@@ -225,10 +225,10 @@ func (x *ImageServiceUpdateRequest) GetExpiresAt() *timestamppb.Timestamp {
 	return nil
 }
 
-// ImageServiceUpdateResponse
+// ImageServiceUpdateResponse is the response payload for updating an image.
 type ImageServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image is the image
+	// Image contains the updated image
 	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -271,7 +271,7 @@ func (x *ImageServiceUpdateResponse) GetImage() *v2.Image {
 	return nil
 }
 
-// ImageServiceDeleteRequest
+// ImageServiceDeleteRequest is the request payload for deleting an image.
 type ImageServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the image to delete
@@ -317,10 +317,10 @@ func (x *ImageServiceDeleteRequest) GetId() string {
 	return ""
 }
 
-// message ImageServiceDeleteResponse {
+// ImageServiceDeleteResponse is the response payload for deleting an image.
 type ImageServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ImageLayout the imagelayout
+	// Image contains the deleted image
 	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -363,7 +363,7 @@ func (x *ImageServiceDeleteResponse) GetImage() *v2.Image {
 	return nil
 }
 
-// ImageServiceUsageRequest
+// ImageServiceUsageRequest is the request payload for getting image usage.
 type ImageServiceUsageRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Query for which images the usage should be reported
@@ -409,10 +409,10 @@ func (x *ImageServiceUsageRequest) GetQuery() *v2.ImageQuery {
 	return nil
 }
 
-// ImageServiceUsageResponse
+// ImageServiceUsageResponse is the response payload for getting image usage.
 type ImageServiceUsageResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Images with usage
+	// Images contains usage information
 	ImageUsage    []*v2.ImageUsage `protobuf:"bytes,1,rep,name=image_usage,json=imageUsage,proto3" json:"image_usage,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -488,12 +488,13 @@ const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\x05query\x18\x01 \x01(\v2\x1d.metalstack.api.v2.ImageQueryR\x05query\"[\n" +
 	"\x19ImageServiceUsageResponse\x12>\n" +
 	"\vimage_usage\x18\x01 \x03(\v2\x1d.metalstack.api.v2.ImageUsageR\n" +
-	"imageUsage2\xe0\x03\n" +
+	"imageUsage2\xe4\x03\n" +
 	"\fImageService\x12t\n" +
 	"\x06Create\x12..metalstack.admin.v2.ImageServiceCreateRequest\x1a/.metalstack.admin.v2.ImageServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n" +
 	"\x06Update\x12..metalstack.admin.v2.ImageServiceUpdateRequest\x1a/.metalstack.admin.v2.ImageServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n" +
-	"\x06Delete\x12..metalstack.admin.v2.ImageServiceDeleteRequest\x1a/.metalstack.admin.v2.ImageServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12n\n" +
-	"\x05Usage\x12-.metalstack.admin.v2.ImageServiceUsageRequest\x1a..metalstack.admin.v2.ImageServiceUsageResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xce\x01\n" +
+	"\x06Delete\x12..metalstack.admin.v2.ImageServiceDeleteRequest\x1a/.metalstack.admin.v2.ImageServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12r\n" +
+	"\x05Usage\x12-.metalstack.admin.v2.ImageServiceUsageRequest\x1a..metalstack.admin.v2.ImageServiceUsageResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xce\x01\n" +
 	"\x17com.metalstack.admin.v2B\n" +
 	"ImageProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 

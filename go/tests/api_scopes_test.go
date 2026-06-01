@@ -139,29 +139,49 @@ func Test_FieldNumbering(t *testing.T) {
 		fd, err := protoparser.Parse(filename)
 		require.NoError(t, err)
 
-		for _, serviceDesc := range fd.GetService() {
-			for _, method := range serviceDesc.GetMethod() {
-				firstFiled := true
-				var lastNumber int32
+		for _, mt := range fd.GetMessageType() {
+			var (
+				firstField = true
+				lastNumber int32
+			)
 
-				for _, mt := range fd.GetMessageType() {
-					if mt.GetName() != method.GetInputType() {
-						continue
-					}
-					for _, field := range mt.GetField() {
-						// t.Logf("file:%s method:%s field:%s\n", filename, method, field)
-						if field.Number != nil {
-							if firstFiled {
-								firstFiled = false
-							} else {
-								if lastNumber+1 != *field.Number {
-									errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *method.Name, *field.Name, lastNumber+1, *field.Number))
-								}
-							}
-							lastNumber = *field.Number
+			for _, field := range mt.GetField() {
+				if field.Number != nil {
+					if firstField {
+						// Enable if the first field must start with 1
+						// if *field.Number != 1 {
+						// 	errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *mt.Name, *field.Name, 1, *field.Number))
+						// }
+						firstField = false
+					} else {
+						if lastNumber+1 != *field.Number {
+							errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *mt.Name, *field.Name, lastNumber+1, *field.Number))
 						}
-
 					}
+					lastNumber = *field.Number
+				}
+			}
+		}
+
+		for _, et := range fd.GetEnumType() {
+			var (
+				firstField = true
+				lastNumber int32
+			)
+
+			for _, value := range et.GetValue() {
+				if value.Number != nil {
+					if firstField {
+						if *value.Number != 0 {
+							errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *et.Name, *value.Name, 0, *value.Number))
+						}
+						firstField = false
+					} else {
+						if lastNumber+1 != *value.Number {
+							errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *et.Name, *value.Name, lastNumber+1, *value.Number))
+						}
+					}
+					lastNumber = *value.Number
 				}
 			}
 		}
@@ -223,6 +243,15 @@ func validateProto(root string) error {
 						return
 					}()
 				)
+				var auditingSpecified bool
+				for _, methodOpt := range methodOpts {
+					if *methodOpt.IdentifierValue == v2.Auditing_AUDITING_EXCLUDED.String() || *methodOpt.IdentifierValue == v2.Auditing_AUDITING_INCLUDED.String() {
+						auditingSpecified = true
+					}
+				}
+				if !auditingSpecified {
+					errs = append(errs, fmt.Errorf("api service method: %q does not have auditing specified", methodName))
+				}
 
 				// Sort all to have stable results
 				slices.Sort(allScopeNames)

@@ -43,11 +43,11 @@ const (
 
 // SwitchServiceClient is a client for the metalstack.infra.v2.SwitchService service.
 type SwitchServiceClient interface {
-	// Get a switch by ID.
+	// Returns the switch with the specified ID.
 	Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
-	// Register a switch.
+	// Registers a switch.
 	Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error)
-	// Heartbeat a switch.
+	// Heartbeat sends a heartbeat from a switch.
 	Heartbeat(context.Context, *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error)
 }
 
@@ -119,11 +119,11 @@ func (c *switchServiceClient) Heartbeat(ctx context.Context, req *v2.SwitchServi
 
 // SwitchServiceHandler is an implementation of the metalstack.infra.v2.SwitchService service.
 type SwitchServiceHandler interface {
-	// Get a switch by ID.
+	// Returns the switch with the specified ID.
 	Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
-	// Register a switch.
+	// Registers a switch.
 	Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error)
-	// Heartbeat a switch.
+	// Heartbeat sends a heartbeat from a switch.
 	Heartbeat(context.Context, *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error)
 }
 

@@ -52,19 +52,19 @@ const (
 
 // MachineServiceClient is a client for the metalstack.api.v2.MachineService service.
 type MachineServiceClient interface {
-	// Get a machine
+	// Returns the machine with the specified UUID.
 	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
-	// Create a machine
+	// Creates a new machine.
 	Create(context.Context, *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error)
-	// Update a machine
+	// Updates a machine.
 	Update(context.Context, *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error)
-	// List all machines
+	// Returns the list of all machines.
 	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
-	// Delete a machine
+	// Deletes a machine.
 	Delete(context.Context, *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error)
-	// BMCCommand send a command to the bmc of a machine
+	// BMCCommand sends a command to the BMC of a machine.
 	BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
-	// GetBMC returns the BMC details of a machine
+	// Returns the BMC details of a machine.
 	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
 }
 
@@ -200,19 +200,19 @@ func (c *machineServiceClient) GetBMC(ctx context.Context, req *v2.MachineServic
 
 // MachineServiceHandler is an implementation of the metalstack.api.v2.MachineService service.
 type MachineServiceHandler interface {
-	// Get a machine
+	// Returns the machine with the specified UUID.
 	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
-	// Create a machine
+	// Creates a new machine.
 	Create(context.Context, *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error)
-	// Update a machine
+	// Updates a machine.
 	Update(context.Context, *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error)
-	// List all machines
+	// Returns the list of all machines.
 	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
-	// Delete a machine
+	// Deletes a machine.
 	Delete(context.Context, *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error)
-	// BMCCommand send a command to the bmc of a machine
+	// BMCCommand sends a command to the BMC of a machine.
 	BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
-	// GetBMC returns the BMC details of a machine
+	// Returns the BMC details of a machine.
 	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
 }
 

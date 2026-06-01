@@ -46,13 +46,13 @@ const (
 
 // PartitionServiceClient is a client for the metalstack.admin.v2.PartitionService service.
 type PartitionServiceClient interface {
-	// Create a partition
+	// Creates a new partition.
 	Create(context.Context, *v2.PartitionServiceCreateRequest) (*v2.PartitionServiceCreateResponse, error)
-	// Update a partition
+	// Updates a partition.
 	Update(context.Context, *v2.PartitionServiceUpdateRequest) (*v2.PartitionServiceUpdateResponse, error)
-	// Delete a partition
+	// Deletes a partition.
 	Delete(context.Context, *v2.PartitionServiceDeleteRequest) (*v2.PartitionServiceDeleteResponse, error)
-	// Capacity of a partitions
+	// Returns the capacity of a partition.
 	Capacity(context.Context, *v2.PartitionServiceCapacityRequest) (*v2.PartitionServiceCapacityResponse, error)
 }
 
@@ -140,13 +140,13 @@ func (c *partitionServiceClient) Capacity(ctx context.Context, req *v2.Partition
 
 // PartitionServiceHandler is an implementation of the metalstack.admin.v2.PartitionService service.
 type PartitionServiceHandler interface {
-	// Create a partition
+	// Creates a new partition.
 	Create(context.Context, *v2.PartitionServiceCreateRequest) (*v2.PartitionServiceCreateResponse, error)
-	// Update a partition
+	// Updates a partition.
 	Update(context.Context, *v2.PartitionServiceUpdateRequest) (*v2.PartitionServiceUpdateResponse, error)
-	// Delete a partition
+	// Deletes a partition.
 	Delete(context.Context, *v2.PartitionServiceDeleteRequest) (*v2.PartitionServiceDeleteResponse, error)
-	// Capacity of a partitions
+	// Returns the capacity of a partition.
 	Capacity(context.Context, *v2.PartitionServiceCapacityRequest) (*v2.PartitionServiceCapacityResponse, error)
 }
 

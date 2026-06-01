@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// AuditPhase specifies phase of an audit trace
+// AuditPhase specifies the phase of an audit trace.
 type AuditPhase int32
 
 const (
@@ -31,7 +31,7 @@ const (
 	AuditPhase_AUDIT_PHASE_UNSPECIFIED AuditPhase = 0
 	// AUDIT_PHASE_REQUEST defines an audit trace in the request phase
 	AuditPhase_AUDIT_PHASE_REQUEST AuditPhase = 1
-	// AUDIT_PHASE_REQUEST defines an audit trace in the response phase
+	// AUDIT_PHASE_RESPONSE defines an audit trace in the response phase
 	AuditPhase_AUDIT_PHASE_RESPONSE AuditPhase = 2
 )
 
@@ -76,26 +76,26 @@ func (AuditPhase) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_audit_proto_rawDescGZIP(), []int{0}
 }
 
-// AuditTrace is an audit trace
+// AuditTrace is an audit trace.
 type AuditTrace struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the audit trace
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Timestamp is the timestamp when the request arrived at the api
+	// Timestamp is the timestamp when the request arrived at the API
 	Timestamp *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	// User is the login user who called the api method
+	// User is the login user who called the API method
 	User string `protobuf:"bytes,3,opt,name=user,proto3" json:"user,omitempty"`
-	// Tenant is the tenant targeted by the api call
+	// Tenant is the tenant targeted by the API call
 	Tenant string `protobuf:"bytes,4,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// Project is the project targeted by the api call
+	// Project is the project targeted by the API call
 	Project *string `protobuf:"bytes,5,opt,name=project,proto3,oneof" json:"project,omitempty"`
-	// Method is the api method that was called
+	// Method is the API method that was called
 	Method string `protobuf:"bytes,6,opt,name=method,proto3" json:"method,omitempty"`
-	// Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
+	// Body is the payload of the API call. In the request phase this contains the payload sent by the client, in the response phase it contains the payload returned by the API server
 	Body *string `protobuf:"bytes,7,opt,name=body,proto3,oneof" json:"body,omitempty"`
-	// Source IP contains the source ip address of the api call
+	// SourceIP contains the source IP address of the API call
 	SourceIp string `protobuf:"bytes,8,opt,name=source_ip,json=sourceIp,proto3" json:"source_ip,omitempty"`
-	// Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes
+	// ResultCode is a status code describing the result of the API call. It is set for traces in the response phase and contains official gRPC status codes
 	ResultCode *int32 `protobuf:"varint,9,opt,name=result_code,json=resultCode,proto3,oneof" json:"result_code,omitempty"`
 	// Phase represents the phase of the audit trace
 	Phase         AuditPhase `protobuf:"varint,10,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase" json:"phase,omitempty"`

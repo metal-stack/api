@@ -7,49 +7,49 @@ import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// AuditService serves audit related functions
+// AuditService provides audit logging operations.
 service AuditService {
-  // Get an audit trace
+  // Returns the audit trace with the specified UUID.
   rpc Get(AuditServiceGetRequest) returns (AuditServiceGetResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // List audit traces
+  // Returns the list of audit traces.
   rpc List(AuditServiceListRequest) returns (AuditServiceListResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
 }
 
-// AuditPhase specifies phase of an audit trace
+// AuditPhase specifies the phase of an audit trace.
 enum AuditPhase {
   // AUDIT_PHASE_UNSPECIFIED is not specified
   AUDIT_PHASE_UNSPECIFIED = 0;
   // AUDIT_PHASE_REQUEST defines an audit trace in the request phase
   AUDIT_PHASE_REQUEST = 1;
-  // AUDIT_PHASE_REQUEST defines an audit trace in the response phase
+  // AUDIT_PHASE_RESPONSE defines an audit trace in the response phase
   AUDIT_PHASE_RESPONSE = 2;
 }
 
-// AuditTrace is an audit trace
+// AuditTrace is an audit trace.
 message AuditTrace {
   // Uuid of the audit trace
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Timestamp is the timestamp when the request arrived at the api
+  // Timestamp is the timestamp when the request arrived at the API
   google.protobuf.Timestamp timestamp = 2;
-  // User is the login user who called the api method
+  // User is the login user who called the API method
   string user = 3;
-  // Tenant is the tenant targeted by the api call
+  // Tenant is the tenant targeted by the API call
   string tenant = 4;
-  // Project is the project targeted by the api call
+  // Project is the project targeted by the API call
   optional string project = 5;
-  // Method is the api method that was called
+  // Method is the API method that was called
   string method = 6;
-  // Body is the payload of the api call. In the request phase this contains the payload sent by the client, in the request phase it contains the payload returned by the api server
+  // Body is the payload of the API call. In the request phase this contains the payload sent by the client, in the response phase it contains the payload returned by the API server
   optional string body = 7;
-  // Source IP contains the source ip address of the api call
+  // SourceIP contains the source IP address of the API call
   string source_ip = 8;
-  // Result Code is a status code describing the result of the api call. It is set for traces in the response phase and contains official gRPC status codes
+  // ResultCode is a status code describing the result of the API call. It is set for traces in the response phase and contains official gRPC status codes
   optional int32 result_code = 9;
   // Phase represents the phase of the audit trace
   AuditPhase phase = 10;

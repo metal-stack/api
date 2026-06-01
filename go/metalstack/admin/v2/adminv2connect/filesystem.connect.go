@@ -42,16 +42,20 @@ const (
 	// FilesystemServiceDeleteProcedure is the fully-qualified name of the FilesystemService's Delete
 	// RPC.
 	FilesystemServiceDeleteProcedure = "/metalstack.admin.v2.FilesystemService/Delete"
+	// FilesystemServiceMatchProcedure is the fully-qualified name of the FilesystemService's Match RPC.
+	FilesystemServiceMatchProcedure = "/metalstack.admin.v2.FilesystemService/Match"
 )
 
 // FilesystemServiceClient is a client for the metalstack.admin.v2.FilesystemService service.
 type FilesystemServiceClient interface {
-	// Create a filesystem
+	// Creates a new filesystem.
 	Create(context.Context, *v2.FilesystemServiceCreateRequest) (*v2.FilesystemServiceCreateResponse, error)
-	// Update a filesystem
+	// Updates a filesystem.
 	Update(context.Context, *v2.FilesystemServiceUpdateRequest) (*v2.FilesystemServiceUpdateResponse, error)
-	// Delete a filesystem
+	// Deletes a filesystem.
 	Delete(context.Context, *v2.FilesystemServiceDeleteRequest) (*v2.FilesystemServiceDeleteResponse, error)
+	// Matches a filesystem to a size and image or machine.
+	Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error)
 }
 
 // NewFilesystemServiceClient constructs a client for the metalstack.admin.v2.FilesystemService
@@ -83,6 +87,12 @@ func NewFilesystemServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			connect.WithSchema(filesystemServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
+		match: connect.NewClient[v2.FilesystemServiceMatchRequest, v2.FilesystemServiceMatchResponse](
+			httpClient,
+			baseURL+FilesystemServiceMatchProcedure,
+			connect.WithSchema(filesystemServiceMethods.ByName("Match")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -91,6 +101,7 @@ type filesystemServiceClient struct {
 	create *connect.Client[v2.FilesystemServiceCreateRequest, v2.FilesystemServiceCreateResponse]
 	update *connect.Client[v2.FilesystemServiceUpdateRequest, v2.FilesystemServiceUpdateResponse]
 	delete *connect.Client[v2.FilesystemServiceDeleteRequest, v2.FilesystemServiceDeleteResponse]
+	match  *connect.Client[v2.FilesystemServiceMatchRequest, v2.FilesystemServiceMatchResponse]
 }
 
 // Create calls metalstack.admin.v2.FilesystemService.Create.
@@ -120,15 +131,26 @@ func (c *filesystemServiceClient) Delete(ctx context.Context, req *v2.Filesystem
 	return nil, err
 }
 
+// Match calls metalstack.admin.v2.FilesystemService.Match.
+func (c *filesystemServiceClient) Match(ctx context.Context, req *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error) {
+	response, err := c.match.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // FilesystemServiceHandler is an implementation of the metalstack.admin.v2.FilesystemService
 // service.
 type FilesystemServiceHandler interface {
-	// Create a filesystem
+	// Creates a new filesystem.
 	Create(context.Context, *v2.FilesystemServiceCreateRequest) (*v2.FilesystemServiceCreateResponse, error)
-	// Update a filesystem
+	// Updates a filesystem.
 	Update(context.Context, *v2.FilesystemServiceUpdateRequest) (*v2.FilesystemServiceUpdateResponse, error)
-	// Delete a filesystem
+	// Deletes a filesystem.
 	Delete(context.Context, *v2.FilesystemServiceDeleteRequest) (*v2.FilesystemServiceDeleteResponse, error)
+	// Matches a filesystem to a size and image or machine.
+	Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error)
 }
 
 // NewFilesystemServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -156,6 +178,12 @@ func NewFilesystemServiceHandler(svc FilesystemServiceHandler, opts ...connect.H
 		connect.WithSchema(filesystemServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
+	filesystemServiceMatchHandler := connect.NewUnaryHandlerSimple(
+		FilesystemServiceMatchProcedure,
+		svc.Match,
+		connect.WithSchema(filesystemServiceMethods.ByName("Match")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.FilesystemService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case FilesystemServiceCreateProcedure:
@@ -164,6 +192,8 @@ func NewFilesystemServiceHandler(svc FilesystemServiceHandler, opts ...connect.H
 			filesystemServiceUpdateHandler.ServeHTTP(w, r)
 		case FilesystemServiceDeleteProcedure:
 			filesystemServiceDeleteHandler.ServeHTTP(w, r)
+		case FilesystemServiceMatchProcedure:
+			filesystemServiceMatchHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -183,4 +213,8 @@ func (UnimplementedFilesystemServiceHandler) Update(context.Context, *v2.Filesys
 
 func (UnimplementedFilesystemServiceHandler) Delete(context.Context, *v2.FilesystemServiceDeleteRequest) (*v2.FilesystemServiceDeleteResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.FilesystemService.Delete is not implemented"))
+}
+
+func (UnimplementedFilesystemServiceHandler) Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.FilesystemService.Match is not implemented"))
 }

@@ -41,9 +41,9 @@ const (
 
 // SizeServiceClient is a client for the metalstack.api.v2.SizeService service.
 type SizeServiceClient interface {
-	// Get a size
+	// Returns the size with the specified ID.
 	Get(context.Context, *v2.SizeServiceGetRequest) (*v2.SizeServiceGetResponse, error)
-	// List all sizes
+	// Returns the list of all sizes.
 	List(context.Context, *v2.SizeServiceListRequest) (*v2.SizeServiceListResponse, error)
 }
 
@@ -99,9 +99,9 @@ func (c *sizeServiceClient) List(ctx context.Context, req *v2.SizeServiceListReq
 
 // SizeServiceHandler is an implementation of the metalstack.api.v2.SizeService service.
 type SizeServiceHandler interface {
-	// Get a size
+	// Returns the size with the specified ID.
 	Get(context.Context, *v2.SizeServiceGetRequest) (*v2.SizeServiceGetResponse, error)
-	// List all sizes
+	// Returns the list of all sizes.
 	List(context.Context, *v2.SizeServiceListRequest) (*v2.SizeServiceListResponse, error)
 }
 

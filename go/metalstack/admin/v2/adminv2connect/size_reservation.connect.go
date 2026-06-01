@@ -50,13 +50,13 @@ const (
 // SizeReservationServiceClient is a client for the metalstack.admin.v2.SizeReservationService
 // service.
 type SizeReservationServiceClient interface {
-	// Create a size reservation
+	// Creates a new size reservation.
 	Create(context.Context, *v2.SizeReservationServiceCreateRequest) (*v2.SizeReservationServiceCreateResponse, error)
-	// Update a size reservation
+	// Updates a size reservation.
 	Update(context.Context, *v2.SizeReservationServiceUpdateRequest) (*v2.SizeReservationServiceUpdateResponse, error)
-	// Delete a size reservation
+	// Deletes a size reservation.
 	Delete(context.Context, *v2.SizeReservationServiceDeleteRequest) (*v2.SizeReservationServiceDeleteResponse, error)
-	// List size reservations
+	// Returns the list of size reservations.
 	List(context.Context, *v2.SizeReservationServiceListRequest) (*v2.SizeReservationServiceListResponse, error)
 }
 
@@ -145,13 +145,13 @@ func (c *sizeReservationServiceClient) List(ctx context.Context, req *v2.SizeRes
 // SizeReservationServiceHandler is an implementation of the
 // metalstack.admin.v2.SizeReservationService service.
 type SizeReservationServiceHandler interface {
-	// Create a size reservation
+	// Creates a new size reservation.
 	Create(context.Context, *v2.SizeReservationServiceCreateRequest) (*v2.SizeReservationServiceCreateResponse, error)
-	// Update a size reservation
+	// Updates a size reservation.
 	Update(context.Context, *v2.SizeReservationServiceUpdateRequest) (*v2.SizeReservationServiceUpdateResponse, error)
-	// Delete a size reservation
+	// Deletes a size reservation.
 	Delete(context.Context, *v2.SizeReservationServiceDeleteRequest) (*v2.SizeReservationServiceDeleteResponse, error)
-	// List size reservations
+	// Returns the list of size reservations.
 	List(context.Context, *v2.SizeReservationServiceListRequest) (*v2.SizeReservationServiceListResponse, error)
 }
 

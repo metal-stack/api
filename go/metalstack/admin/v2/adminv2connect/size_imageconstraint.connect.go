@@ -54,15 +54,15 @@ const (
 // SizeImageConstraintServiceClient is a client for the
 // metalstack.admin.v2.SizeImageConstraintService service.
 type SizeImageConstraintServiceClient interface {
-	// Create a size image constraint
+	// Creates a size image constraint.
 	Create(context.Context, *v2.SizeImageConstraintServiceCreateRequest) (*v2.SizeImageConstraintServiceCreateResponse, error)
-	// Update a size image constraint
+	// Updates a size image constraint.
 	Update(context.Context, *v2.SizeImageConstraintServiceUpdateRequest) (*v2.SizeImageConstraintServiceUpdateResponse, error)
-	// Delete a size image constraint
+	// Deletes a size image constraint.
 	Delete(context.Context, *v2.SizeImageConstraintServiceDeleteRequest) (*v2.SizeImageConstraintServiceDeleteResponse, error)
-	// Get a size image constraint
+	// Returns the size image constraint with the specified size.
 	Get(context.Context, *v2.SizeImageConstraintServiceGetRequest) (*v2.SizeImageConstraintServiceGetResponse, error)
-	// List a size image constraint
+	// Returns the list of size image constraints.
 	List(context.Context, *v2.SizeImageConstraintServiceListRequest) (*v2.SizeImageConstraintServiceListResponse, error)
 }
 
@@ -168,15 +168,15 @@ func (c *sizeImageConstraintServiceClient) List(ctx context.Context, req *v2.Siz
 // SizeImageConstraintServiceHandler is an implementation of the
 // metalstack.admin.v2.SizeImageConstraintService service.
 type SizeImageConstraintServiceHandler interface {
-	// Create a size image constraint
+	// Creates a size image constraint.
 	Create(context.Context, *v2.SizeImageConstraintServiceCreateRequest) (*v2.SizeImageConstraintServiceCreateResponse, error)
-	// Update a size image constraint
+	// Updates a size image constraint.
 	Update(context.Context, *v2.SizeImageConstraintServiceUpdateRequest) (*v2.SizeImageConstraintServiceUpdateResponse, error)
-	// Delete a size image constraint
+	// Deletes a size image constraint.
 	Delete(context.Context, *v2.SizeImageConstraintServiceDeleteRequest) (*v2.SizeImageConstraintServiceDeleteResponse, error)
-	// Get a size image constraint
+	// Returns the size image constraint with the specified size.
 	Get(context.Context, *v2.SizeImageConstraintServiceGetRequest) (*v2.SizeImageConstraintServiceGetResponse, error)
-	// List a size image constraint
+	// Returns the list of size image constraints.
 	List(context.Context, *v2.SizeImageConstraintServiceListRequest) (*v2.SizeImageConstraintServiceListResponse, error)
 }
 

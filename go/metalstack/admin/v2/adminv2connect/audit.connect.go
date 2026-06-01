@@ -41,9 +41,9 @@ const (
 
 // AuditServiceClient is a client for the metalstack.admin.v2.AuditService service.
 type AuditServiceClient interface {
-	// Get an audit trace
+	// Returns the audit trace with the specified UUID.
 	Get(context.Context, *v2.AuditServiceGetRequest) (*v2.AuditServiceGetResponse, error)
-	// List all audit traces
+	// Returns the list of all audit traces.
 	List(context.Context, *v2.AuditServiceListRequest) (*v2.AuditServiceListResponse, error)
 }
 
@@ -99,9 +99,9 @@ func (c *auditServiceClient) List(ctx context.Context, req *v2.AuditServiceListR
 
 // AuditServiceHandler is an implementation of the metalstack.admin.v2.AuditService service.
 type AuditServiceHandler interface {
-	// Get an audit trace
+	// Returns the audit trace with the specified UUID.
 	Get(context.Context, *v2.AuditServiceGetRequest) (*v2.AuditServiceGetResponse, error)
-	// List all audit traces
+	// Returns the list of all audit traces.
 	List(context.Context, *v2.AuditServiceListRequest) (*v2.AuditServiceListResponse, error)
 }
 

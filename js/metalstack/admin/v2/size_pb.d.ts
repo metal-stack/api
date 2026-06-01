@@ -7,7 +7,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_admin_v2_size: GenFile;
 /**
- * SizeServiceCreateRequest is the request payload for a size create request
+ * SizeServiceCreateRequest is the request payload for creating a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceCreateRequest
  */
@@ -17,7 +17,7 @@ export type SizeServiceCreateRequest = Message<"metalstack.admin.v2.SizeServiceC
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
-    size?: Size;
+    size?: Size | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceCreateRequest.
@@ -25,17 +25,17 @@ export type SizeServiceCreateRequest = Message<"metalstack.admin.v2.SizeServiceC
  */
 export declare const SizeServiceCreateRequestSchema: GenMessage<SizeServiceCreateRequest>;
 /**
- * SizeServiceGetResponse is the response payload for a size create request
+ * SizeServiceCreateResponse is the response payload for creating a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceCreateResponse
  */
 export type SizeServiceCreateResponse = Message<"metalstack.admin.v2.SizeServiceCreateResponse"> & {
     /**
-     * Size the size
+     * Size contains the created size
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
-    size?: Size;
+    size?: Size | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceCreateResponse.
@@ -43,7 +43,7 @@ export type SizeServiceCreateResponse = Message<"metalstack.admin.v2.SizeService
  */
 export declare const SizeServiceCreateResponseSchema: GenMessage<SizeServiceCreateResponse>;
 /**
- * SizeServiceUpdateRequest is the request payload for a size update request
+ * SizeServiceUpdateRequest is the request payload for updating a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceUpdateRequest
  */
@@ -59,19 +59,19 @@ export type SizeServiceUpdateRequest = Message<"metalstack.admin.v2.SizeServiceU
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Name of this size
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this size
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Constraints which must match that a specific machine is considered of this size
      *
@@ -83,7 +83,7 @@ export type SizeServiceUpdateRequest = Message<"metalstack.admin.v2.SizeServiceU
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 6;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceUpdateRequest.
@@ -91,17 +91,17 @@ export type SizeServiceUpdateRequest = Message<"metalstack.admin.v2.SizeServiceU
  */
 export declare const SizeServiceUpdateRequestSchema: GenMessage<SizeServiceUpdateRequest>;
 /**
- * SizeServiceUpdateResponse is the response payload for a size update request
+ * SizeServiceUpdateResponse is the response payload for updating a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceUpdateResponse
  */
 export type SizeServiceUpdateResponse = Message<"metalstack.admin.v2.SizeServiceUpdateResponse"> & {
     /**
-     * Size the size
+     * Size contains the updated size
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
-    size?: Size;
+    size?: Size | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceUpdateResponse.
@@ -109,7 +109,7 @@ export type SizeServiceUpdateResponse = Message<"metalstack.admin.v2.SizeService
  */
 export declare const SizeServiceUpdateResponseSchema: GenMessage<SizeServiceUpdateResponse>;
 /**
- * SizeServiceDeleteRequest is the request payload for a size delete request
+ * SizeServiceDeleteRequest is the request payload for deleting a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceDeleteRequest
  */
@@ -127,17 +127,17 @@ export type SizeServiceDeleteRequest = Message<"metalstack.admin.v2.SizeServiceD
  */
 export declare const SizeServiceDeleteRequestSchema: GenMessage<SizeServiceDeleteRequest>;
 /**
- * SizeServiceDeleteResponse is the response payload for a size delete request
+ * SizeServiceDeleteResponse is the response payload for deleting a size.
  *
  * @generated from message metalstack.admin.v2.SizeServiceDeleteResponse
  */
 export type SizeServiceDeleteResponse = Message<"metalstack.admin.v2.SizeServiceDeleteResponse"> & {
     /**
-     * Size the size
+     * Size contains the deleted size
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
-    size?: Size;
+    size?: Size | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceDeleteResponse.
@@ -145,13 +145,13 @@ export type SizeServiceDeleteResponse = Message<"metalstack.admin.v2.SizeService
  */
 export declare const SizeServiceDeleteResponseSchema: GenMessage<SizeServiceDeleteResponse>;
 /**
- * SizeService serves size related functions
+ * SizeService provides size management operations.
  *
  * @generated from service metalstack.admin.v2.SizeService
  */
 export declare const SizeService: GenService<{
     /**
-     * Create a size
+     * Creates a new size.
      *
      * @generated from rpc metalstack.admin.v2.SizeService.Create
      */
@@ -161,7 +161,7 @@ export declare const SizeService: GenService<{
         output: typeof SizeServiceCreateResponseSchema;
     };
     /**
-     * Update a size
+     * Updates a size.
      *
      * @generated from rpc metalstack.admin.v2.SizeService.Update
      */
@@ -171,7 +171,7 @@ export declare const SizeService: GenService<{
         output: typeof SizeServiceUpdateResponseSchema;
     };
     /**
-     * Delete a size
+     * Deletes a size.
      *
      * @generated from rpc metalstack.admin.v2.SizeService.Delete
      */

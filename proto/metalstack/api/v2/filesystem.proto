@@ -6,20 +6,15 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// FilesystemService serves filesystem related functions
+// FilesystemService provides filesystem management operations.
 service FilesystemService {
-  // Get a filesystem
+  // Returns the filesystem with the specified ID.
   rpc Get(FilesystemServiceGetRequest) returns (FilesystemServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // List all filesystems
+  // Returns the list of all filesystems.
   rpc List(FilesystemServiceListRequest) returns (FilesystemServiceListResponse) {
-    option (visibility) = VISIBILITY_SELF;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
-  // Match a filesystems
-  rpc Match(FilesystemServiceMatchRequest) returns (FilesystemServiceMatchResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
@@ -47,40 +42,6 @@ message FilesystemServiceGetResponse {
 message FilesystemServiceListResponse {
   // FilesystemLayouts the filesystemlayouts
   repeated FilesystemLayout filesystem_layouts = 1;
-}
-
-// FilesystemServiceMatchRequest
-message FilesystemServiceMatchRequest {
-  // Match either size and image to a filesystemlayout
-  // or if a machine matches to a filesystemlayout
-  oneof match {
-    // SizeAndImage
-    MatchImageAndSize size_and_image = 1;
-    // MachineAndFilesystemlayout
-    MatchMachine machine_and_filesystemlayout = 2;
-  }
-}
-
-// MatchImageAndSize
-message MatchImageAndSize {
-  // Size, machine size to try
-  string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Image machine image to try
-  string image = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-}
-
-// MatchMachine
-message MatchMachine {
-  // Machine to check
-  string machine = 1 [(buf.validate.field).string.uuid = true];
-  // FilesystemLayout to check
-  string filesystem_layout = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-}
-
-// FilesystemServiceMatchResponse
-message FilesystemServiceMatchResponse {
-  // FilesystemLayout the filesystemlayout
-  FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemLayout

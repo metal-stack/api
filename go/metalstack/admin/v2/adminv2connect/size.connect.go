@@ -43,11 +43,11 @@ const (
 
 // SizeServiceClient is a client for the metalstack.admin.v2.SizeService service.
 type SizeServiceClient interface {
-	// Create a size
+	// Creates a new size.
 	Create(context.Context, *v2.SizeServiceCreateRequest) (*v2.SizeServiceCreateResponse, error)
-	// Update a size
+	// Updates a size.
 	Update(context.Context, *v2.SizeServiceUpdateRequest) (*v2.SizeServiceUpdateResponse, error)
-	// Delete a size
+	// Deletes a size.
 	Delete(context.Context, *v2.SizeServiceDeleteRequest) (*v2.SizeServiceDeleteResponse, error)
 }
 
@@ -119,11 +119,11 @@ func (c *sizeServiceClient) Delete(ctx context.Context, req *v2.SizeServiceDelet
 
 // SizeServiceHandler is an implementation of the metalstack.admin.v2.SizeService service.
 type SizeServiceHandler interface {
-	// Create a size
+	// Creates a new size.
 	Create(context.Context, *v2.SizeServiceCreateRequest) (*v2.SizeServiceCreateResponse, error)
-	// Update a size
+	// Updates a size.
 	Update(context.Context, *v2.SizeServiceUpdateRequest) (*v2.SizeServiceUpdateResponse, error)
-	// Delete a size
+	// Deletes a size.
 	Delete(context.Context, *v2.SizeServiceDeleteRequest) (*v2.SizeServiceDeleteResponse, error)
 }
 

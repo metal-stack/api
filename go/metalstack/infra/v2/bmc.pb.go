@@ -23,12 +23,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// UpdateBMCInfoRequest
+// UpdateBMCInfoRequest is the request payload for updating BMC information.
 type UpdateBMCInfoRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Partition the partition id where metal-bmc wants to receive events
+	// Partition is the partition ID where metal-bmc wants to receive events
 	Partition string `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
-	// BmcReports contains maps the bmc report per machine uuid
+	// BmcReports contains maps the BMC report per machine UUID
 	BmcReports    map[string]*v2.MachineBMCReport `protobuf:"bytes,2,rep,name=bmc_reports,json=bmcReports,proto3" json:"bmc_reports,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -78,12 +78,12 @@ func (x *UpdateBMCInfoRequest) GetBmcReports() map[string]*v2.MachineBMCReport {
 	return nil
 }
 
-// UpdateBMCInfoResponse
+// UpdateBMCInfoResponse is the response payload for updating BMC information.
 type UpdateBMCInfoResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UpdatedMachines is a slice of machine uuids which were updated
+	// UpdatedMachines is a slice of machine UUIDs which were updated
 	UpdatedMachines []string `protobuf:"bytes,1,rep,name=updated_machines,json=updatedMachines,proto3" json:"updated_machines,omitempty"`
-	// CreatedMachines is a slice of machine uuids which were created
+	// CreatedMachines is a slice of machine UUIDs which were created
 	CreatedMachines []string `protobuf:"bytes,2,rep,name=created_machines,json=createdMachines,proto3" json:"created_machines,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -133,10 +133,10 @@ func (x *UpdateBMCInfoResponse) GetCreatedMachines() []string {
 	return nil
 }
 
-// WaitForBMCCommandRequest
+// WaitForBMCCommandRequest is the request payload for waiting for a BMC command.
 type WaitForBMCCommandRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Partition the partition id where metal-bmc wants to receive bmc commands
+	// Partition is the partition ID where metal-bmc wants to receive BMC commands
 	Partition     string `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -179,17 +179,17 @@ func (x *WaitForBMCCommandRequest) GetPartition() string {
 	return ""
 }
 
-// WaitForBMCCommandResponse
+// WaitForBMCCommandResponse is the response payload for waiting for a BMC command.
 type WaitForBMCCommandResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to send the command to
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// BmcCommand to execute against the bmc of the machine
+	// BmcCommand to execute against the BMC of the machine
 	BmcCommand v2.MachineBMCCommand `protobuf:"varint,2,opt,name=bmc_command,json=bmcCommand,proto3,enum=metalstack.api.v2.MachineBMCCommand" json:"bmc_command,omitempty"`
-	// MachineBmc contains connection details of the machine to issue the bmcCommand to
+	// MachineBmc contains connection details of the machine to issue the BMC command to
 	MachineBmc *v2.MachineBMC `protobuf:"bytes,3,opt,name=machine_bmc,json=machineBmc,proto3" json:"machine_bmc,omitempty"`
 	// CommandId is a unique ID which must be sent back after execution
-	// it is usually in the form: <machine-uuid>:machine-bmc-command:<command>
+	// It is usually in the form: <machine-uuid>:machine-bmc-command:<command>
 	CommandId     string `protobuf:"bytes,4,opt,name=command_id,json=commandId,proto3" json:"command_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -253,11 +253,11 @@ func (x *WaitForBMCCommandResponse) GetCommandId() string {
 	return ""
 }
 
-// BMCCommandDoneRequest must be returned after command execution
+// BMCCommandDoneRequest must be returned after command execution.
 type BMCCommandDoneRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// CommandId is a unique ID which must be sent back after execution
-	// it is usually in the form: <machine-uuid>:machine-bmc-command
+	// It is usually in the form: <machine-uuid>:machine-bmc-command
 	CommandId string `protobuf:"bytes,1,opt,name=command_id,json=commandId,proto3" json:"command_id,omitempty"`
 	// Error of the command execution, nil if it was successful
 	Error         *string `protobuf:"bytes,2,opt,name=error,proto3,oneof" json:"error,omitempty"`
@@ -309,7 +309,7 @@ func (x *BMCCommandDoneRequest) GetError() string {
 	return ""
 }
 
-// BMCCommandDoneResponse
+// BMCCommandDoneResponse is the response payload for BMC command completion.
 type BMCCommandDoneResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields

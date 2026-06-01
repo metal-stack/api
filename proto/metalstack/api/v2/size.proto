@@ -6,14 +6,14 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// SizeService serves size related functions
+// SizeService provides size management operations.
 service SizeService {
-  // Get a size
+  // Returns the size with the specified ID.
   rpc Get(SizeServiceGetRequest) returns (SizeServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // List all sizes
+  // Returns the list of all sizes.
   rpc List(SizeServiceListRequest) returns (SizeServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;

@@ -41,9 +41,9 @@ const (
 
 // TenantServiceClient is a client for the metalstack.admin.v2.TenantService service.
 type TenantServiceClient interface {
-	// Create a tenant
+	// Creates a new tenant.
 	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
-	// List all tenants
+	// Returns the list of all tenants.
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
 }
 
@@ -99,9 +99,9 @@ func (c *tenantServiceClient) List(ctx context.Context, req *v2.TenantServiceLis
 
 // TenantServiceHandler is an implementation of the metalstack.admin.v2.TenantService service.
 type TenantServiceHandler interface {
-	// Create a tenant
+	// Creates a new tenant.
 	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
-	// List all tenants
+	// Returns the list of all tenants.
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
 }
 

@@ -43,11 +43,11 @@ const (
 
 // ComponentServiceClient is a client for the metalstack.admin.v2.ComponentService service.
 type ComponentServiceClient interface {
-	// Get a single component
+	// Returns the component with the specified UUID.
 	Get(context.Context, *v2.ComponentServiceGetRequest) (*v2.ComponentServiceGetResponse, error)
-	// Delete a component
+	// Deletes the component with the specified UUID.
 	Delete(context.Context, *v2.ComponentServiceDeleteRequest) (*v2.ComponentServiceDeleteResponse, error)
-	// List all components with their status
+	// Returns the list of all components with their status.
 	List(context.Context, *v2.ComponentServiceListRequest) (*v2.ComponentServiceListResponse, error)
 }
 
@@ -119,11 +119,11 @@ func (c *componentServiceClient) List(ctx context.Context, req *v2.ComponentServ
 
 // ComponentServiceHandler is an implementation of the metalstack.admin.v2.ComponentService service.
 type ComponentServiceHandler interface {
-	// Get a single component
+	// Returns the component with the specified UUID.
 	Get(context.Context, *v2.ComponentServiceGetRequest) (*v2.ComponentServiceGetResponse, error)
-	// Delete a component
+	// Deletes the component with the specified UUID.
 	Delete(context.Context, *v2.ComponentServiceDeleteRequest) (*v2.ComponentServiceDeleteResponse, error)
-	// List all components with their status
+	// Returns the list of all components with their status.
 	List(context.Context, *v2.ComponentServiceListRequest) (*v2.ComponentServiceListResponse, error)
 }
 

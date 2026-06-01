@@ -7,14 +7,14 @@ import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// ProjectService serves project related functions
+// ProjectService provides project management operations.
 service ProjectService {
-  // List all accessible projects
+  // Returns the list of all accessible projects.
   rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Get a project
+  // Returns the project with the specified UUID.
   rpc Get(ProjectServiceGetRequest) returns (ProjectServiceGetResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (project_roles) = PROJECT_ROLE_EDITOR;
@@ -188,7 +188,7 @@ message ProjectServiceCreateResponse {
 
 // ProjectServiceDeleteRequest is the request payload to delete a project
 message ProjectServiceDeleteRequest {
-  // Project is the uuid of the project to get
+  // Project is the uuid of the project to delete
   string project = 1 [(buf.validate.field).string.uuid = true];
 }
 
@@ -229,7 +229,7 @@ message ProjectServiceInviteRequest {
   ProjectRole role = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
-// ProjectServiceInviteRequest is the response payload to a invite member request
+// ProjectServiceInviteResponse is the response payload to a invite member request
 message ProjectServiceInviteResponse {
   // Inviter contains a secret which can be sent to a potential user
   // can be appended to the invitation endpoint at our cloud console like
@@ -294,7 +294,7 @@ message ProjectServiceUpdateMemberRequest {
 // ProjectServiceUpdateMemberResponse is the response payload to a update member request
 message ProjectServiceUpdateMemberResponse {
   // ProjectMember is the updated project member
-  ProjectMember project_member = 5;
+  ProjectMember project_member = 1;
 }
 
 // ProjectServiceInviteAcceptRequest is the request payload to a accept invite request
@@ -303,7 +303,7 @@ message ProjectServiceInviteAcceptRequest {
   string secret = 1;
 }
 
-// ProjectServiceInvitesListResponse is the response payload to a accept invite request
+// ProjectServiceInviteAcceptResponse is the response payload to a accept invite request
 message ProjectServiceInviteAcceptResponse {
   // Project ID of the project joined
   string project = 1;

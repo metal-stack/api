@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// MethodServiceListRequest is the request payload to list all public methods
+// MethodServiceListRequest is the request payload for listing all public methods.
 type MethodServiceListRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -59,7 +59,7 @@ func (*MethodServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_method_proto_rawDescGZIP(), []int{0}
 }
 
-// MethodServiceListResponse is the response payload with all public visible methods
+// MethodServiceListResponse is the response payload for listing all public methods.
 type MethodServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Methods is a list of methods public callable
@@ -105,7 +105,7 @@ func (x *MethodServiceListResponse) GetMethods() []string {
 	return nil
 }
 
-// MethodServiceTokenScopedListRequest is the request payload to list all methods callable with the token present in the request
+// MethodServiceTokenScopedListRequest is the request payload for listing all methods callable with the token present in the request.
 type MethodServiceTokenScopedListRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -142,14 +142,14 @@ func (*MethodServiceTokenScopedListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_method_proto_rawDescGZIP(), []int{2}
 }
 
-// MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token
+// MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token.
 type MethodServiceTokenScopedListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Permissions a list of methods which can be called
+	// Permissions contains a list of methods which can be called
 	Permissions []*MethodPermission `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	// ProjectRoles associates a project id with the corresponding role of the token owner
+	// ProjectRoles associates a project ID with the corresponding role of the token owner
 	ProjectRoles map[string]ProjectRole `protobuf:"bytes,2,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
-	// TenantRoles associates a tenant id with the corresponding role of the token owner
+	// TenantRoles associates a tenant ID with the corresponding role of the token owner
 	TenantRoles map[string]TenantRole `protobuf:"bytes,3,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
 	// AdminRole defines the admin role of the token owner
 	AdminRole *AdminRole `protobuf:"varint,4,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
@@ -261,10 +261,10 @@ const file_metalstack_api_v2_method_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleR\x05value:\x028\x01B\r\n" +
 	"\v_admin_roleB\r\n" +
-	"\v_infra_role2\x83\x02\n" +
-	"\rMethodService\x12g\n" +
-	"\x04List\x12+.metalstack.api.v2.MethodServiceListRequest\x1a,.metalstack.api.v2.MethodServiceListResponse\"\x04\xd8\xf3\x18\x01\x12\x88\x01\n" +
-	"\x0fTokenScopedList\x126.metalstack.api.v2.MethodServiceTokenScopedListRequest\x1a7.metalstack.api.v2.MethodServiceTokenScopedListResponse\"\x04\xd8\xf3\x18\x03B\xc1\x01\n" +
+	"\v_infra_role2\x8b\x02\n" +
+	"\rMethodService\x12k\n" +
+	"\x04List\x12+.metalstack.api.v2.MethodServiceListRequest\x1a,.metalstack.api.v2.MethodServiceListResponse\"\b\xd8\xf3\x18\x01\xe0\xf3\x18\x01\x12\x8c\x01\n" +
+	"\x0fTokenScopedList\x126.metalstack.api.v2.MethodServiceTokenScopedListRequest\x1a7.metalstack.api.v2.MethodServiceTokenScopedListResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x01B\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vMethodProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

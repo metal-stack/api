@@ -40,7 +40,7 @@ export type Token = Message<"metalstack.api.v2.Token"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 3;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Description is a user given description of this token.
      *
@@ -58,13 +58,13 @@ export type Token = Message<"metalstack.api.v2.Token"> & {
      *
      * @generated from field: google.protobuf.Timestamp expires = 6;
      */
-    expires?: Timestamp;
+    expires?: Timestamp | undefined;
     /**
      * IssuedAt gives the date when this token was created
      *
      * @generated from field: google.protobuf.Timestamp issued_at = 7;
      */
-    issuedAt?: Timestamp;
+    issuedAt?: Timestamp | undefined;
     /**
      * TokenType describes the type of this token
      *
@@ -92,13 +92,13 @@ export type Token = Message<"metalstack.api.v2.Token"> & {
      *
      * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 11;
      */
-    adminRole?: AdminRole;
+    adminRole?: AdminRole | undefined;
     /**
      * InfraRole defines the infrastructure role of the token owner
      *
      * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 12;
      */
-    infraRole?: InfraRole;
+    infraRole?: InfraRole | undefined;
     /**
      * MachineRoles associates a machine uuid with the corresponding role of the token owner
      * TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead
@@ -137,7 +137,7 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
      *
      * @generated from field: google.protobuf.Duration expires = 3;
      */
-    expires?: Duration;
+    expires?: Duration | undefined;
     /**
      * ProjectRoles associates a project id with the corresponding role of the token owner
      *
@@ -159,13 +159,13 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
      *
      * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 6;
      */
-    adminRole?: AdminRole;
+    adminRole?: AdminRole | undefined;
     /**
      * InfraRole defines the infrastructure role of the token owner
      *
      * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 7;
      */
-    infraRole?: InfraRole;
+    infraRole?: InfraRole | undefined;
     /**
      * MachineRoles associates a machine uuid with the corresponding role of the token owner
      *
@@ -179,7 +179,7 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
      *
      * @generated from field: metalstack.api.v2.Labels labels = 9;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TokenServiceCreateRequest.
@@ -226,7 +226,7 @@ export type TokenServiceCreateResponse = Message<"metalstack.api.v2.TokenService
      *
      * @generated from field: metalstack.api.v2.Token token = 1;
      */
-    token?: Token;
+    token?: Token | undefined;
     /**
      * Secret is the body if the jwt token, should be used in api requests as bearer token
      *
@@ -250,7 +250,7 @@ export type TokenServiceListRequest = Message<"metalstack.api.v2.TokenServiceLis
      *
      * @generated from field: metalstack.api.v2.TokenQuery query = 1;
      */
-    query?: TokenQuery;
+    query?: TokenQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TokenServiceListRequest.
@@ -322,13 +322,13 @@ export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceU
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Description is a user given description of this token.
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Permissions is a list of service methods this token can be used for
      *
@@ -356,13 +356,13 @@ export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceU
      *
      * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 7;
      */
-    adminRole?: AdminRole;
+    adminRole?: AdminRole | undefined;
     /**
      * InfraRole defines the infrastructure role of the token owner
      *
      * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 8;
      */
-    infraRole?: InfraRole;
+    infraRole?: InfraRole | undefined;
     /**
      * MachineRoles associates a machine uuid with the corresponding role of the token owner
      *
@@ -376,7 +376,7 @@ export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceU
      *
      * @generated from field: metalstack.api.v2.UpdateLabels labels = 10;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TokenServiceUpdateRequest.
@@ -394,7 +394,7 @@ export type TokenServiceUpdateResponse = Message<"metalstack.api.v2.TokenService
      *
      * @generated from field: metalstack.api.v2.Token token = 1;
      */
-    token?: Token;
+    token?: Token | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TokenServiceUpdateResponse.
@@ -430,7 +430,7 @@ export type TokenServiceGetResponse = Message<"metalstack.api.v2.TokenServiceGet
      *
      * @generated from field: metalstack.api.v2.Token token = 1;
      */
-    token?: Token;
+    token?: Token | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TokenServiceGetResponse.
@@ -461,7 +461,7 @@ export type TokenServiceRefreshResponse = Message<"metalstack.api.v2.TokenServic
      *
      * @generated from field: metalstack.api.v2.Token token = 1;
      */
-    token?: Token;
+    token?: Token | undefined;
     /**
      * Secret is the body if the jwt token, should be used in api requests as bearer token
      *
@@ -485,32 +485,32 @@ export type TokenQuery = Message<"metalstack.api.v2.TokenQuery"> & {
      *
      * @generated from field: optional string uuid = 1;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * Name of the token user to query
      * Only useful for admins.
      *
      * @generated from field: optional string user = 2;
      */
-    user?: string;
+    user?: string | undefined;
     /**
      * Description of the token to query
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Labels lists only tokens containing the given labels
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 4;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
     /**
      * Token type of the token to query
      *
      * @generated from field: optional metalstack.api.v2.TokenType token_type = 5;
      */
-    tokenType?: TokenType;
+    tokenType?: TokenType | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TokenQuery.
@@ -547,13 +547,13 @@ export declare enum TokenType {
  */
 export declare const TokenTypeSchema: GenEnum<TokenType>;
 /**
- * TokenService serves token related functions
+ * TokenService provides token management operations.
  *
  * @generated from service metalstack.api.v2.TokenService
  */
 export declare const TokenService: GenService<{
     /**
-     * Get a token
+     * Returns the token with the specified UUID.
      *
      * @generated from rpc metalstack.api.v2.TokenService.Get
      */
@@ -563,7 +563,7 @@ export declare const TokenService: GenService<{
         output: typeof TokenServiceGetResponseSchema;
     };
     /**
-     * Create a token to authenticate against the platform, the secret will be only visible in the response.
+     * Creates a token to authenticate against the platform, the secret will be only visible in the response.
      *
      * @generated from rpc metalstack.api.v2.TokenService.Create
      */
@@ -573,7 +573,7 @@ export declare const TokenService: GenService<{
         output: typeof TokenServiceCreateResponseSchema;
     };
     /**
-     * Update a token
+     * Updates a token.
      *
      * @generated from rpc metalstack.api.v2.TokenService.Update
      */
@@ -583,7 +583,7 @@ export declare const TokenService: GenService<{
         output: typeof TokenServiceUpdateResponseSchema;
     };
     /**
-     * List all your tokens
+     * Returns the list of all user tokens.
      *
      * @generated from rpc metalstack.api.v2.TokenService.List
      */
@@ -593,7 +593,7 @@ export declare const TokenService: GenService<{
         output: typeof TokenServiceListResponseSchema;
     };
     /**
-     * Revoke a token, no further usage is possible afterwards
+     * Revokes a token, no further usage is possible afterwards.
      *
      * @generated from rpc metalstack.api.v2.TokenService.Revoke
      */
@@ -603,7 +603,7 @@ export declare const TokenService: GenService<{
         output: typeof TokenServiceRevokeResponseSchema;
     };
     /**
-     * Refresh a token, this will create a new token with the exact same permissions as the calling token contains
+     * Refreshes a token, this will create a new token with the exact same permissions as the calling token contains.
      *
      * @generated from rpc metalstack.api.v2.TokenService.Refresh
      */

@@ -46,11 +46,11 @@ const (
 
 // BMCServiceClient is a client for the metalstack.infra.v2.BMCService service.
 type BMCServiceClient interface {
-	// UpdateBMCInfo
+	// Updates BMC information.
 	UpdateBMCInfo(context.Context, *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error)
-	// WaitForBMCCommand is called by the metal-bmc and is returned with a bmc command to execute.
+	// WaitForBMCCommand is called by the metal-bmc and returns a BMC command to execute.
 	WaitForBMCCommand(context.Context, *v2.WaitForBMCCommandRequest) (*connect.ServerStreamForClient[v2.WaitForBMCCommandResponse], error)
-	// BMCCommandDone must be called from metal-bmc after the command execution
+	// BMCCommandDone must be called from metal-bmc after the command execution.
 	BMCCommandDone(context.Context, *v2.BMCCommandDoneRequest) (*v2.BMCCommandDoneResponse, error)
 }
 
@@ -118,11 +118,11 @@ func (c *bMCServiceClient) BMCCommandDone(ctx context.Context, req *v2.BMCComman
 
 // BMCServiceHandler is an implementation of the metalstack.infra.v2.BMCService service.
 type BMCServiceHandler interface {
-	// UpdateBMCInfo
+	// Updates BMC information.
 	UpdateBMCInfo(context.Context, *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error)
-	// WaitForBMCCommand is called by the metal-bmc and is returned with a bmc command to execute.
+	// WaitForBMCCommand is called by the metal-bmc and returns a BMC command to execute.
 	WaitForBMCCommand(context.Context, *v2.WaitForBMCCommandRequest, *connect.ServerStream[v2.WaitForBMCCommandResponse]) error
-	// BMCCommandDone must be called from metal-bmc after the command execution
+	// BMCCommandDone must be called from metal-bmc after the command execution.
 	BMCCommandDone(context.Context, *v2.BMCCommandDoneRequest) (*v2.BMCCommandDoneResponse, error)
 }
 

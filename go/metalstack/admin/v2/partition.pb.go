@@ -69,7 +69,7 @@ func (x *PartitionServiceCreateRequest) GetPartition() *v2.Partition {
 	return nil
 }
 
-// PartitionServiceUpdateRequest is the request payload for a partition update request
+// PartitionServiceUpdateRequest is the request payload for updating a partition.
 type PartitionServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of this partition
@@ -85,8 +85,7 @@ type PartitionServiceUpdateRequest struct {
 	// NTPServers for this partition
 	NtpServers []*v2.NTPServer `protobuf:"bytes,6,rep,name=ntp_servers,json=ntpServers,proto3" json:"ntp_servers,omitempty"`
 	// ManagementServiceAddresses defines where the management is reachable
-	// should be in the form <ip|host>:<port>
-	// FIXME validation
+	// must be in the form <ip|host>:<port>
 	MgmtServiceAddresses []string `protobuf:"bytes,7,rep,name=mgmt_service_addresses,json=mgmtServiceAddresses,proto3" json:"mgmt_service_addresses,omitempty"`
 	// Labels to update on this network
 	Labels        *v2.UpdateLabels `protobuf:"bytes,8,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
@@ -318,10 +317,10 @@ func (x *PartitionServiceUpdateResponse) GetPartition() *v2.Partition {
 	return nil
 }
 
-// PartitionServiceCapacityResponse is the response payload for a partition delete request
+// PartitionServiceDeleteResponse is the response payload for deleting a partition.
 type PartitionServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Partition the partition
+	// Partition contains the deleted partition
 	Partition     *v2.Partition `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -364,7 +363,7 @@ func (x *PartitionServiceDeleteResponse) GetPartition() *v2.Partition {
 	return nil
 }
 
-// PartitionServiceListRequest is the request payload for a partition capacity request
+// PartitionServiceCapacityRequest is the request payload for getting partition capacity.
 type PartitionServiceCapacityRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the partition to get
@@ -710,7 +709,7 @@ const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"\n" +
 	"#metalstack/admin/v2/partition.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a!metalstack/api/v2/partition.proto\x1a(metalstack/api/v2/predefined_rules.proto\"[\n" +
 	"\x1dPartitionServiceCreateRequest\x12:\n" +
-	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xb7\x04\n" +
+	"\tpartition\x18\x01 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\"\xc5\x04\n" +
 	"\x1dPartitionServiceUpdateRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
@@ -721,8 +720,8 @@ const file_metalstack_admin_v2_partition_proto_rawDesc = "" +
 	"dnsServers\x12G\n" +
 	"\vntp_servers\x18\x06 \x03(\v2\x1c.metalstack.api.v2.NTPServerB\b\xbaH\x05\x92\x01\x02\x10\n" +
 	"R\n" +
-	"ntpServers\x124\n" +
-	"\x16mgmt_service_addresses\x18\a \x03(\tR\x14mgmtServiceAddresses\x12<\n" +
+	"ntpServers\x12B\n" +
+	"\x16mgmt_service_addresses\x18\a \x03(\tB\f\xbaH\t\x92\x01\x06Ȥ\xb3\xb1\x02\x01R\x14mgmtServiceAddresses\x12<\n" +
 	"\x06labels\x18\b \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x01R\x06labels\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\t\n" +
 	"\a_labels\"<\n" +

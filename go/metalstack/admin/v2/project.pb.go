@@ -23,12 +23,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ProjectServiceListRequest is the request payload for the project list request
+// ProjectServiceListRequest is the request payload for listing projects.
 type ProjectServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenant lists only projects of this tenant
+	// Tenant filters projects by this tenant
 	Tenant *string `protobuf:"bytes,1,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
-	// Labels lists only projects containing the given labels
+	// Labels filters projects containing the given labels
 	Labels        *v2.Labels `protobuf:"bytes,2,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -78,10 +78,10 @@ func (x *ProjectServiceListRequest) GetLabels() *v2.Labels {
 	return nil
 }
 
-// ProjectServiceListResponse is the response payload for the project list request
+// ProjectServiceListResponse is the response payload for listing projects.
 type ProjectServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Projects is a list of all projects
+	// Projects contains the list of projects
 	Projects      []*v2.Project `protobuf:"bytes,1,rep,name=projects,proto3" json:"projects,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

@@ -39,7 +39,7 @@ const (
 
 // HealthServiceClient is a client for the metalstack.api.v2.HealthService service.
 type HealthServiceClient interface {
-	// Get the health of the platform
+	// Returns the health status of the platform.
 	Get(context.Context, *v2.HealthServiceGetRequest) (*v2.HealthServiceGetResponse, error)
 }
 
@@ -79,7 +79,7 @@ func (c *healthServiceClient) Get(ctx context.Context, req *v2.HealthServiceGetR
 
 // HealthServiceHandler is an implementation of the metalstack.api.v2.HealthService service.
 type HealthServiceHandler interface {
-	// Get the health of the platform
+	// Returns the health status of the platform.
 	Get(context.Context, *v2.HealthServiceGetRequest) (*v2.HealthServiceGetResponse, error)
 }
 

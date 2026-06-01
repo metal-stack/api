@@ -37,31 +37,31 @@ export type Component = Message<"metalstack.api.v2.Component"> & {
      *
      * @generated from field: google.protobuf.Timestamp started_at = 4;
      */
-    startedAt?: Timestamp;
+    startedAt?: Timestamp | undefined;
     /**
      * ReportedAt is the timestamp this service sent this ping.
      *
      * @generated from field: google.protobuf.Timestamp reported_at = 5;
      */
-    reportedAt?: Timestamp;
+    reportedAt?: Timestamp | undefined;
     /**
      * Interval at which the ping is scheduled.
      *
      * @generated from field: google.protobuf.Duration interval = 6;
      */
-    interval?: Duration;
+    interval?: Duration | undefined;
     /**
      * Version of this service
      *
      * @generated from field: metalstack.api.v2.Version version = 7;
      */
-    version?: Version;
+    version?: Version | undefined;
     /**
      * Token is the token which is actually used by this microservice.
      *
      * @generated from field: metalstack.api.v2.Token token = 8;
      */
-    token?: Token;
+    token?: Token | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Component.
@@ -79,20 +79,20 @@ export type ComponentQuery = Message<"metalstack.api.v2.ComponentQuery"> & {
      *
      * @generated from field: optional string uuid = 1;
      */
-    uuid?: string;
+    uuid?: string | undefined;
     /**
      * Type defines which service is actually pinging
      *
      * @generated from field: optional metalstack.api.v2.ComponentType type = 2;
      */
-    type?: ComponentType;
+    type?: ComponentType | undefined;
     /**
      * Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
      * micro_service and identifier guarantee uniqueness.
      *
      * @generated from field: optional string identifier = 3;
      */
-    identifier?: string;
+    identifier?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ComponentQuery.

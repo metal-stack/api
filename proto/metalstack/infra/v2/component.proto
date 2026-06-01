@@ -10,27 +10,24 @@ import "metalstack/api/v2/component.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/version.proto";
 
-// ComponentService serves component, e.g. microservices related functions.
+// ComponentService provides microservice component management operations.
 service ComponentService {
-  // Ping must be called from every connected microservice in a recurring manner
-  // to get visibility of all registered microservices.
+  // Returns the ping response to register or report the microservice state.
   rpc Ping(ComponentServicePingRequest) returns (ComponentServicePingResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
 }
 
-// ComponentServicePingRequest is sent from a microservice to report its state regularly
+// ComponentServicePingRequest is the request payload for pinging a microservice.
 message ComponentServicePingRequest {
   // Type defines which service is actually pinging
   metalstack.api.v2.ComponentType type = 1 [(buf.validate.field).enum.defined_only = true];
-  // Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
-  // micro_service and identifier guarantee uniqueness.
+  // Identifier is a unique identifier of this service, for example if two instances are running, this might be the pod ID
   string identifier = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // StartedAt is the timestamp this service was started.
+  // StartedAt is the timestamp this service was started
   google.protobuf.Timestamp started_at = 3 [(buf.validate.field).timestamp.lt_now = true];
-  // Interval at which the ping is scheduled, must be between 5 seconds and 1 hour.
-  // Also gets validated in the same way in go/client/ping.go.
+  // Interval at which the ping is scheduled, must be between 5 seconds and 1 hour
   google.protobuf.Duration interval = 4 [(buf.validate.field).duration = {
     gte: {seconds: 5}
     lte: {seconds: 3600}
@@ -39,5 +36,5 @@ message ComponentServicePingRequest {
   metalstack.api.v2.Version version = 5;
 }
 
-// ComponentServicePingResponse is the response to a ping request
+// ComponentServicePingResponse is the response payload for pinging a microservice.
 message ComponentServicePingResponse {}

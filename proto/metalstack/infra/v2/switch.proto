@@ -8,76 +8,76 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/switch.proto";
 
-// SwitchService serves switch related functions.
+// SwitchService provides infrastructure switch management operations.
 service SwitchService {
-  // Get a switch by ID.
+  // Returns the switch with the specified ID.
   rpc Get(SwitchServiceGetRequest) returns (SwitchServiceGetResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Register a switch.
+  // Registers a switch.
   rpc Register(SwitchServiceRegisterRequest) returns (SwitchServiceRegisterResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Heartbeat a switch.
+  // Heartbeat sends a heartbeat from a switch.
   rpc Heartbeat(SwitchServiceHeartbeatRequest) returns (SwitchServiceHeartbeatResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
 }
 
-// SwitchServiceGetRequest.
+// SwitchServiceGetRequest is the request payload for getting a switch.
 message SwitchServiceGetRequest {
-  // Id of the switch.
+  // Id of the switch
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
   }];
 }
 
-// SwitchServiceGetResponse.
+// SwitchServiceGetResponse is the response payload for getting a switch.
 message SwitchServiceGetResponse {
-  // Switch that was requested.
+  // Switch contains the requested switch
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServiceRegisterRequest.
+// SwitchServiceRegisterRequest is the request payload for registering a switch.
 message SwitchServiceRegisterRequest {
-  // Switch to register.
+  // Switch to register
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServiceRegisterResponse.
+// SwitchServiceRegisterResponse is the response payload for registering a switch.
 message SwitchServiceRegisterResponse {
-  // Switch that was registered.
+  // Switch contains the registered switch
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServiceHeartbeatRequest.
+// SwitchServiceHeartbeatRequest is the request payload for sending a switch heartbeat.
 message SwitchServiceHeartbeatRequest {
-  // Id of the switch.
+  // Id of the switch
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
   }];
-  // Duration of the sync.
+  // Duration of the sync
   google.protobuf.Duration duration = 2;
-  // Error if any occurred during the sync.
+  // Error if any occurred during the sync
   optional string error = 3;
-  // PortStates maps port identifiers to the respective port's operational state.
+  // PortStates maps port identifiers to the respective port's operational state
   map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
-  // BgpPortStates maps port identifiers to the respective port's BGP state.
+  // BgpPortStates maps port identifiers to the respective port's BGP state
   map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
 }
 
-// SwitchServiceHeartbeatResponse.
+// SwitchServiceHeartbeatResponse is the response payload for sending a switch heartbeat.
 message SwitchServiceHeartbeatResponse {
-  // Id of the switch.
+  // Id of the switch
   string id = 1;
-  // LastSync holds information about the last sync.
+  // LastSync holds information about the last sync
   metalstack.api.v2.SwitchSync last_sync = 2;
-  // LastSyncError holds information about the last erroneous sync.
+  // LastSyncError holds information about the last erroneous sync
   metalstack.api.v2.SwitchSync last_sync_error = 3;
 }

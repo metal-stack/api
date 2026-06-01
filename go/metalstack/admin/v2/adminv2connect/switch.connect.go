@@ -52,19 +52,19 @@ const (
 
 // SwitchServiceClient is a client for the metalstack.admin.v2.SwitchService service.
 type SwitchServiceClient interface {
-	// Get a switch by ID.
+	// Returns the switch with the specified ID.
 	Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
-	// List switches.
+	// Returns the list of switches.
 	List(context.Context, *v2.SwitchServiceListRequest) (*v2.SwitchServiceListResponse, error)
-	// Update a switch.
+	// Updates a switch.
 	Update(context.Context, *v2.SwitchServiceUpdateRequest) (*v2.SwitchServiceUpdateResponse, error)
-	// Delete a switch.
+	// Deletes a switch.
 	Delete(context.Context, *v2.SwitchServiceDeleteRequest) (*v2.SwitchServiceDeleteResponse, error)
-	// Migrate a switch.
+	// Migrates a switch.
 	Migrate(context.Context, *v2.SwitchServiceMigrateRequest) (*v2.SwitchServiceMigrateResponse, error)
-	// Port set the port status of a switch port.
+	// Sets the port status of a switch port.
 	Port(context.Context, *v2.SwitchServicePortRequest) (*v2.SwitchServicePortResponse, error)
-	// ConnectedMachines lists all switches with their machine connections.
+	// Returns all switches with their machine connections.
 	ConnectedMachines(context.Context, *v2.SwitchServiceConnectedMachinesRequest) (*v2.SwitchServiceConnectedMachinesResponse, error)
 }
 
@@ -200,19 +200,19 @@ func (c *switchServiceClient) ConnectedMachines(ctx context.Context, req *v2.Swi
 
 // SwitchServiceHandler is an implementation of the metalstack.admin.v2.SwitchService service.
 type SwitchServiceHandler interface {
-	// Get a switch by ID.
+	// Returns the switch with the specified ID.
 	Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
-	// List switches.
+	// Returns the list of switches.
 	List(context.Context, *v2.SwitchServiceListRequest) (*v2.SwitchServiceListResponse, error)
-	// Update a switch.
+	// Updates a switch.
 	Update(context.Context, *v2.SwitchServiceUpdateRequest) (*v2.SwitchServiceUpdateResponse, error)
-	// Delete a switch.
+	// Deletes a switch.
 	Delete(context.Context, *v2.SwitchServiceDeleteRequest) (*v2.SwitchServiceDeleteResponse, error)
-	// Migrate a switch.
+	// Migrates a switch.
 	Migrate(context.Context, *v2.SwitchServiceMigrateRequest) (*v2.SwitchServiceMigrateResponse, error)
-	// Port set the port status of a switch port.
+	// Sets the port status of a switch port.
 	Port(context.Context, *v2.SwitchServicePortRequest) (*v2.SwitchServicePortResponse, error)
-	// ConnectedMachines lists all switches with their machine connections.
+	// Returns all switches with their machine connections.
 	ConnectedMachines(context.Context, *v2.SwitchServiceConnectedMachinesRequest) (*v2.SwitchServiceConnectedMachinesResponse, error)
 }
 

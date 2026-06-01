@@ -45,13 +45,13 @@ const (
 
 // TaskServiceClient is a client for the metalstack.admin.v2.TaskService service.
 type TaskServiceClient interface {
-	// Get a specific task
+	// Returns the task with the specified identifier.
 	Get(context.Context, *v2.TaskServiceGetRequest) (*v2.TaskServiceGetResponse, error)
-	// Delete a specific task
+	// Deletes the task with the specified identifier.
 	Delete(context.Context, *v2.TaskServiceDeleteRequest) (*v2.TaskServiceDeleteResponse, error)
-	// Queues returns all configures queues
+	// Returns the list of all configured queues.
 	Queues(context.Context, *v2.TaskServiceQueuesRequest) (*v2.TaskServiceQueuesResponse, error)
-	// List list all tasks
+	// Returns the list of all tasks.
 	List(context.Context, *v2.TaskServiceListRequest) (*v2.TaskServiceListResponse, error)
 }
 
@@ -139,13 +139,13 @@ func (c *taskServiceClient) List(ctx context.Context, req *v2.TaskServiceListReq
 
 // TaskServiceHandler is an implementation of the metalstack.admin.v2.TaskService service.
 type TaskServiceHandler interface {
-	// Get a specific task
+	// Returns the task with the specified identifier.
 	Get(context.Context, *v2.TaskServiceGetRequest) (*v2.TaskServiceGetResponse, error)
-	// Delete a specific task
+	// Deletes the task with the specified identifier.
 	Delete(context.Context, *v2.TaskServiceDeleteRequest) (*v2.TaskServiceDeleteResponse, error)
-	// Queues returns all configures queues
+	// Returns the list of all configured queues.
 	Queues(context.Context, *v2.TaskServiceQueuesRequest) (*v2.TaskServiceQueuesResponse, error)
-	// List list all tasks
+	// Returns the list of all tasks.
 	List(context.Context, *v2.TaskServiceListRequest) (*v2.TaskServiceListResponse, error)
 }
 

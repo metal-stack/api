@@ -7,30 +7,30 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/size_imageconstraint.proto";
 
-// SizeImageConstraintService serves size and image constraint related functions
+// SizeImageConstraintService provides size and image constraint management operations.
 service SizeImageConstraintService {
-  // Create a size image constraint
+  // Creates a size image constraint.
   rpc Create(SizeImageConstraintServiceCreateRequest) returns (SizeImageConstraintServiceCreateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Update a size image constraint
+  // Updates a size image constraint.
   rpc Update(SizeImageConstraintServiceUpdateRequest) returns (SizeImageConstraintServiceUpdateResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Delete a size image constraint
+  // Deletes a size image constraint.
   rpc Delete(SizeImageConstraintServiceDeleteRequest) returns (SizeImageConstraintServiceDeleteResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Get a size image constraint
+  // Returns the size image constraint with the specified size.
   rpc Get(SizeImageConstraintServiceGetRequest) returns (SizeImageConstraintServiceGetResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // List a size image constraint
+  // Returns the list of size image constraints.
   rpc List(SizeImageConstraintServiceListRequest) returns (SizeImageConstraintServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
@@ -38,7 +38,7 @@ service SizeImageConstraintService {
   }
 }
 
-// SizeImageConstraintServiceCreateRequest is the request payload for a size image constraint create request
+// SizeImageConstraintServiceCreateRequest is the request payload for creating a size image constraint.
 message SizeImageConstraintServiceCreateRequest {
   // Size of the constraint
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -52,13 +52,13 @@ message SizeImageConstraintServiceCreateRequest {
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// SizeImageConstraintServiceCreateResponse is the response payload for a size image constraint create request
+// SizeImageConstraintServiceCreateResponse is the response payload for creating a size image constraint.
 message SizeImageConstraintServiceCreateResponse {
-  // SizeImageConstraint created
+  // SizeImageConstraint contains the created constraint
   metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
 }
 
-// SizeImageConstraintServiceUpdateRequest is the request payload for a size image constraint update request
+// SizeImageConstraintServiceUpdateRequest is the request payload for updating a size image constraint.
 message SizeImageConstraintServiceUpdateRequest {
   // Size of the image constraint to update
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -72,44 +72,44 @@ message SizeImageConstraintServiceUpdateRequest {
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// SizeImageConstraintServiceUpdateResponse is the response payload for a size image constraint update request
+// SizeImageConstraintServiceUpdateResponse is the response payload for updating a size image constraint.
 message SizeImageConstraintServiceUpdateResponse {
-  // SizeImageConstraint updated
+  // SizeImageConstraint contains the updated constraint
   metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
 }
 
-// SizeImageConstraintServiceDeleteRequest is the request payload for a size image constraint delete request
+// SizeImageConstraintServiceDeleteRequest is the request payload for deleting a size image constraint.
 message SizeImageConstraintServiceDeleteRequest {
   // Size of the constraint
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// SizeImageConstraintServiceDeleteResponse is the response payload for a size image constraint delete request
+// SizeImageConstraintServiceDeleteResponse is the response payload for deleting a size image constraint.
 message SizeImageConstraintServiceDeleteResponse {
-  // SizeImageConstraint deleted
+  // SizeImageConstraint contains the deleted constraint
   metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
 }
 
-// SizeImageConstraintServiceGetRequest is the request payload for a size image constraint get request
+// SizeImageConstraintServiceGetRequest is the request payload for getting a size image constraint.
 message SizeImageConstraintServiceGetRequest {
   // Size of the constraint
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// SizeImageConstraintServiceGetResponse is the response payload for a size image constraint get request
+// SizeImageConstraintServiceGetResponse is the response payload for getting a size image constraint.
 message SizeImageConstraintServiceGetResponse {
-  // SizeImageConstraint get
+  // SizeImageConstraint contains the retrieved constraint
   metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
 }
 
-// SizeImageConstraintServiceListRequest is the request payload for a size image constraint list request
+// SizeImageConstraintServiceListRequest is the request payload for listing size image constraints.
 message SizeImageConstraintServiceListRequest {
   // Query for size image constraints
   metalstack.api.v2.SizeImageConstraintQuery query = 1;
 }
 
-// SizeImageConstraintServiceListResponse is the response payload for a size image constraint list request
+// SizeImageConstraintServiceListResponse is the response payload for listing size image constraints.
 message SizeImageConstraintServiceListResponse {
-  // SizeImageConstraints listed
+  // SizeImageConstraints contains the list of constraints
   repeated metalstack.api.v2.SizeImageConstraint size_image_constraints = 1;
 }

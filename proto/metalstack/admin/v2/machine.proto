@@ -7,38 +7,42 @@ import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/machine.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
-// MachineService serves machine related functions
+// MachineService provides machine lifecycle management operations.
 service MachineService {
-  // Get a machine
+  // Returns the machine with the specified UUID.
   rpc Get(MachineServiceGetRequest) returns (MachineServiceGetResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // List all machines
+  // Returns the list of all machines.
   rpc List(MachineServiceListRequest) returns (MachineServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // BMCCommand send a command to the bmc of a machine
+  // BMCCommand sends a command to the BMC of a machine.
   rpc BMCCommand(MachineServiceBMCCommandRequest) returns (MachineServiceBMCCommandResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // GetBMC returns the BMC details of a machine
+  // Returns the BMC details of a machine.
   rpc GetBMC(MachineServiceGetBMCRequest) returns (MachineServiceGetBMCResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // ListBMC returns the BMC details of many machines
+  // ListBMC returns the BMC details of many machines.
   rpc ListBMC(MachineServiceListBMCRequest) returns (MachineServiceListBMCResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // ConsolePassword returns the password to access the serial console of the machine
+  // GetConsolePassword returns the password to access the serial console of the machine.
   rpc ConsolePassword(MachineServiceConsolePasswordRequest) returns (MachineServiceConsolePasswordResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
@@ -50,7 +54,7 @@ message MachineServiceGetRequest {
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceGetResponse is the request payload for a machine get response
+// MachineServiceGetResponse is the response payload for a machine get request
 message MachineServiceGetResponse {
   // Machine is the machine requested
   metalstack.api.v2.Machine machine = 1;
@@ -65,7 +69,7 @@ message MachineServiceListRequest {
   optional string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
-// MachineServiceListResponse is the request payload for a machine list response
+// MachineServiceListResponse is the response payload for a machine list request
 message MachineServiceListResponse {
   // Machines are the machines requested by a list request
   repeated metalstack.api.v2.Machine machines = 1;
@@ -98,7 +102,7 @@ message MachineServiceGetBMCResponse {
 
 // MachineServiceListBMCRequest is the request payload for a machine listbmc request
 message MachineServiceListBMCRequest {
-  // Query to list one ore more bmcs of more machines
+  // Query to list one ore more bmcs of many machines
   metalstack.api.v2.MachineBMCQuery query = 1;
 }
 
@@ -112,11 +116,11 @@ message MachineServiceListBMCResponse {
   }];
 }
 
-// MachineServiceConsolePasswordRequest is the request to get the console password
+// MachineServiceConsolePasswordRequest is the request payload for getting the console password.
 message MachineServiceConsolePasswordRequest {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Reason must be provided why access to the console is requested.
+  // Reason must be provided why access to the console is requested
   // Reason is only forwarded to an audit sink
   string reason = 2 [
     (buf.validate.field).string.min_len = 10,
@@ -124,7 +128,7 @@ message MachineServiceConsolePasswordRequest {
   ];
 }
 
-// MachineServiceConsolePasswordResponse is the response to the console password request
+// MachineServiceConsolePasswordResponse is the response payload for getting the console password.
 message MachineServiceConsolePasswordResponse {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
