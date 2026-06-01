@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -24,7 +26,7 @@ class VPNService(Protocol):
 
 
 class VPNServiceASGIApplication(ConnectASGIApplication[VPNService]):
-    def __init__(self, service: VPNService | AsyncGenerator[VPNService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: VPNService | AsyncGenerator[VPNService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -51,6 +53,8 @@ class VPNServiceASGIApplication(ConnectASGIApplication[VPNService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -101,6 +105,9 @@ class VPNServiceClient(ConnectClient):
         )
 
 
+
+
+
 class VPNServiceSync(Protocol):
     def auth_key(self, request: metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceAuthKeyRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_vpn__pb2.VPNServiceAuthKeyResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
@@ -109,7 +116,7 @@ class VPNServiceSync(Protocol):
 
 
 class VPNServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: VPNServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: VPNServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.admin.v2.VPNService/AuthKey": EndpointSync.unary(
@@ -135,6 +142,8 @@ class VPNServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -183,3 +192,5 @@ class VPNServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+
