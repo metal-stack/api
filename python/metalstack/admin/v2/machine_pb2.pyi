@@ -96,3 +96,19 @@ class MachineServiceConsolePasswordResponse(_message.Message):
     uuid: str
     password: str
     def __init__(self, uuid: _Optional[str] = ..., password: _Optional[str] = ...) -> None: ...
+
+class MachineServiceSetStateRequest(_message.Message):
+    __slots__ = ("uuid", "state", "description")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    state: _machine_pb2.MachineState
+    description: str
+    def __init__(self, uuid: _Optional[str] = ..., state: _Optional[_Union[_machine_pb2.MachineState, str]] = ..., description: _Optional[str] = ...) -> None: ...
+
+class MachineServiceSetStateResponse(_message.Message):
+    __slots__ = ("machine",)
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    machine: _machine_pb2.Machine
+    def __init__(self, machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ...) -> None: ...
