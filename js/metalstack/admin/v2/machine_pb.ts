@@ -6,7 +6,7 @@ import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegen
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
-import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineQuery } from "../../api/v2/machine_pb";
+import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineQuery, MachineState } from "../../api/v2/machine_pb";
 import { file_metalstack_api_v2_machine } from "../../api/v2/machine_pb";
 import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -15,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/machine.proto.
  */
 export const file_metalstack_admin_v2_machine: GenFile = /*@__PURE__*/
-  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL21hY2hpbmUucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMgoYTWFjaGluZVNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIkgKGU1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUifgoZTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBIuCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeRIjCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBSACIAQFCDAoKX3BhcnRpdGlvbiJKChpNYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZRIsCghtYWNoaW5lcxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiegofTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI/Cgdjb21tYW5kGAIgASgOMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ0NvbW1hbmRCCLpIBYIBAhABIiIKIE1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlc3BvbnNlIjUKG01hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJoChxNYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjAKA2JtYxgCIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNSZXBvcnQiUQocTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVxdWVzdBIxCgVxdWVyeRgBIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNRdWVyeSLfAQodTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVzcG9uc2USZgoLYm1jX3JlcG9ydHMYASADKAsyQi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdEJNQ1Jlc3BvbnNlLkJtY1JlcG9ydHNFbnRyeUINukgKmgEHIgVyA7ABARpWCg9CbWNSZXBvcnRzRW50cnkSCwoDa2V5GAEgASgJEjIKBXZhbHVlGAIgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ1JlcG9ydDoCOAEiWgokTWFjaGluZVNlcnZpY2VDb25zb2xlUGFzc3dvcmRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhoKBnJlYXNvbhgCIAEoCUIKukgHcgUQChiABCJRCiVNYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHBhc3N3b3JkGAIgASgJMo4GCg5NYWNoaW5lU2VydmljZRJwCgNHZXQSLS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0UmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VHZXRSZXNwb25zZSIK0vMYAgEC4PMYAhJzCgRMaXN0Ei4ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYAhKEAQoKQk1DQ29tbWFuZBI0Lm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVxdWVzdBo1Lm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVzcG9uc2UiCdLzGAEB4PMYARJ5CgZHZXRCTUMSMC5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVxdWVzdBoxLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VHZXRCTUNSZXNwb25zZSIK0vMYAgEC4PMYARJ8CgdMaXN0Qk1DEjEubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RCTUNSZXF1ZXN0GjIubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RCTUNSZXNwb25zZSIK0vMYAgEC4PMYARKUAQoPQ29uc29sZVBhc3N3b3JkEjkubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlcXVlc3QaOi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlQ29uc29sZVBhc3N3b3JkUmVzcG9uc2UiCtLzGAIBAuDzGAFC0AEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgxNYWNoaW5lUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hZG1pbi92MjthZG1pbnYyogIDTUFYqgITTWV0YWxzdGFjay5BZG1pbi5WMsoCE01ldGFsc3RhY2tcQWRtaW5cVjLiAh9NZXRhbHN0YWNrXEFkbWluXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6QWRtaW46OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL21hY2hpbmUucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMgoYTWFjaGluZVNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIkgKGU1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUifgoZTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBIuCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeRIjCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBSACIAQFCDAoKX3BhcnRpdGlvbiJKChpNYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZRIsCghtYWNoaW5lcxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiegofTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI/Cgdjb21tYW5kGAIgASgOMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ0NvbW1hbmRCCLpIBYIBAhABIiIKIE1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlc3BvbnNlIjUKG01hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJoChxNYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjAKA2JtYxgCIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNSZXBvcnQiUQocTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVxdWVzdBIxCgVxdWVyeRgBIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNRdWVyeSLfAQodTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVzcG9uc2USZgoLYm1jX3JlcG9ydHMYASADKAsyQi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdEJNQ1Jlc3BvbnNlLkJtY1JlcG9ydHNFbnRyeUINukgKmgEHIgVyA7ABARpWCg9CbWNSZXBvcnRzRW50cnkSCwoDa2V5GAEgASgJEjIKBXZhbHVlGAIgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ1JlcG9ydDoCOAEiWgokTWFjaGluZVNlcnZpY2VDb25zb2xlUGFzc3dvcmRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhoKBnJlYXNvbhgCIAEoCUIKukgHcgUQChiABCJRCiVNYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHBhc3N3b3JkGAIgASgJIpMBCh1NYWNoaW5lU2VydmljZVNldFN0YXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI4CgVzdGF0ZRgCIAEoDjIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTdGF0ZUIIukgFggECEAESIAoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBIk0KHk1hY2hpbmVTZXJ2aWNlU2V0U3RhdGVSZXNwb25zZRIrCgdtYWNoaW5lGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZTKOBwoOTWFjaGluZVNlcnZpY2UScAoDR2V0Ei0ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUdldFJlcXVlc3QaLi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2UiCtLzGAIBAuDzGAIScwoETGlzdBIuLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBovLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0UmVzcG9uc2UiCtLzGAIBAuDzGAIShAEKCkJNQ0NvbW1hbmQSNC5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlcXVlc3QaNS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlc3BvbnNlIgnS8xgBAeDzGAESeQoGR2V0Qk1DEjAubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUdldEJNQ1JlcXVlc3QaMS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVzcG9uc2UiCtLzGAIBAuDzGAESfAoHTGlzdEJNQxIxLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVxdWVzdBoyLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVzcG9uc2UiCtLzGAIBAuDzGAESlAEKD0NvbnNvbGVQYXNzd29yZBI5Lm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VDb25zb2xlUGFzc3dvcmRSZXF1ZXN0GjoubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlc3BvbnNlIgrS8xgCAQLg8xgBEn4KCFNldFN0YXRlEjIubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZVNldFN0YXRlUmVxdWVzdBozLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VTZXRTdGF0ZVJlc3BvbnNlIgnS8xgBAeDzGAFC0AEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgxNYWNoaW5lUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hZG1pbi92MjthZG1pbnYyogIDTUFYqgITTWV0YWxzdGFjay5BZG1pbi5WMsoCE01ldGFsc3RhY2tcQWRtaW5cVjLiAh9NZXRhbHN0YWNrXEFkbWluXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6QWRtaW46OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
 
 /**
  * MachineServiceGetRequest is the request payload for a machine get request
@@ -301,6 +301,63 @@ export const MachineServiceConsolePasswordResponseSchema: GenMessage<MachineServ
   messageDesc(file_metalstack_admin_v2_machine, 11);
 
 /**
+ * MachineServiceSetStateRequest is the request payload for a machine set state request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceSetStateRequest
+ */
+export type MachineServiceSetStateRequest = Message<"metalstack.admin.v2.MachineServiceSetStateRequest"> & {
+  /**
+   * UUID of the machine to set the state to
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * State the state of this machine.
+   * If State set to available, description is also cleared.
+   *
+   * @generated from field: metalstack.api.v2.MachineState state = 2;
+   */
+  state: MachineState;
+
+  /**
+   * Description a description why this machine is in the given state
+   *
+   * @generated from field: string description = 3;
+   */
+  description: string;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceSetStateRequest.
+ * Use `create(MachineServiceSetStateRequestSchema)` to create a new message.
+ */
+export const MachineServiceSetStateRequestSchema: GenMessage<MachineServiceSetStateRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 12);
+
+/**
+ * MachineServiceSetStateResponse is the response payload for a machine set state request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceSetStateResponse
+ */
+export type MachineServiceSetStateResponse = Message<"metalstack.admin.v2.MachineServiceSetStateResponse"> & {
+  /**
+   * Machine with the changed state.
+   *
+   * @generated from field: metalstack.api.v2.Machine machine = 1;
+   */
+  machine?: Machine | undefined;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceSetStateResponse.
+ * Use `create(MachineServiceSetStateResponseSchema)` to create a new message.
+ */
+export const MachineServiceSetStateResponseSchema: GenMessage<MachineServiceSetStateResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 13);
+
+/**
  * MachineService provides machine lifecycle management operations.
  *
  * @generated from service metalstack.admin.v2.MachineService
@@ -365,6 +422,16 @@ export const MachineService: GenService<{
     methodKind: "unary";
     input: typeof MachineServiceConsolePasswordRequestSchema;
     output: typeof MachineServiceConsolePasswordResponseSchema;
+  },
+  /**
+   * SetState set the state of a machine.
+   *
+   * @generated from rpc metalstack.admin.v2.MachineService.SetState
+   */
+  setState: {
+    methodKind: "unary";
+    input: typeof MachineServiceSetStateRequestSchema;
+    output: typeof MachineServiceSetStateResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_admin_v2_machine, 0);

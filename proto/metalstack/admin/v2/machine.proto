@@ -44,6 +44,11 @@ service MachineService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
+  // SetState set the state of a machine.
+  rpc SetState(MachineServiceSetStateRequest) returns (MachineServiceSetStateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
 }
 
 // ------------------------ Service Messages ----------------------------------
@@ -134,4 +139,21 @@ message MachineServiceConsolePasswordResponse {
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Password to access the console
   string password = 2;
+}
+
+// MachineServiceSetStateRequest is the request payload for a machine set state request
+message MachineServiceSetStateRequest {
+  // UUID of the machine to set the state to
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // State the state of this machine.
+  // If State set to available, description is also cleared.
+  metalstack.api.v2.MachineState state = 2 [(buf.validate.field).enum.defined_only = true];
+  // Description a description why this machine is in the given state
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// MachineServiceSetStateResponse is the response payload for a machine set state request
+message MachineServiceSetStateResponse {
+  // Machine with the changed state.
+  metalstack.api.v2.Machine machine = 1;
 }

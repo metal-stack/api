@@ -1436,6 +1436,14 @@
                   <a href="#metalstack.admin.v2.MachineServiceListResponse"><span class="badge">M</span>MachineServiceListResponse</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.admin.v2.MachineServiceSetStateRequest"><span class="badge">M</span>MachineServiceSetStateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.MachineServiceSetStateResponse"><span class="badge">M</span>MachineServiceSetStateResponse</a>
+                </li>
+              
               
               
               
@@ -12581,6 +12589,69 @@ otherwise an error is thrown that the partition must be specified </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.MachineServiceSetStateRequest">MachineServiceSetStateRequest</h3>
+        <p>MachineServiceSetStateRequest is the request payload for a machine set state request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine to set the state to </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#metalstack.api.v2.MachineState">metalstack.api.v2.MachineState</a></td>
+                  <td></td>
+                  <td><p>State the state of this machine.
+If State set to available, description is also cleared. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Description a description why this machine is in the given state </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.MachineServiceSetStateResponse">MachineServiceSetStateResponse</h3>
+        <p>MachineServiceSetStateResponse is the response payload for a machine set state request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>machine</td>
+                  <td><a href="#metalstack.api.v2.Machine">metalstack.api.v2.Machine</a></td>
+                  <td></td>
+                  <td><p>Machine with the changed state. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
 
@@ -12635,6 +12706,13 @@ otherwise an error is thrown that the partition must be specified </p></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceConsolePasswordRequest">MachineServiceConsolePasswordRequest</a></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceConsolePasswordResponse">MachineServiceConsolePasswordResponse</a></td>
                 <td><p>GetConsolePassword returns the password to access the serial console of the machine.</p></td>
+              </tr>
+            
+              <tr>
+                <td>SetState</td>
+                <td><a href="#metalstack.admin.v2.MachineServiceSetStateRequest">MachineServiceSetStateRequest</a></td>
+                <td><a href="#metalstack.admin.v2.MachineServiceSetStateResponse">MachineServiceSetStateResponse</a></td>
+                <td><p>SetState set the state of a machine.</p></td>
               </tr>
             
           </tbody>
