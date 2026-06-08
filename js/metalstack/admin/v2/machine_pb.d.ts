@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineQuery } from "../../api/v2/machine_pb";
+import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineQuery, MachineState } from "../../api/v2/machine_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/machine.proto.
@@ -249,6 +249,55 @@ export type MachineServiceConsolePasswordResponse = Message<"metalstack.admin.v2
  */
 export declare const MachineServiceConsolePasswordResponseSchema: GenMessage<MachineServiceConsolePasswordResponse>;
 /**
+ * MachineServiceSetStateRequest is the request payload for a machine set state request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceSetStateRequest
+ */
+export type MachineServiceSetStateRequest = Message<"metalstack.admin.v2.MachineServiceSetStateRequest"> & {
+    /**
+     * UUID of the machine to set the state to
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * State the state of this machine.
+     * If State set to available, description is also cleared.
+     *
+     * @generated from field: metalstack.api.v2.MachineState state = 2;
+     */
+    state: MachineState;
+    /**
+     * Description a description why this machine is in the given state
+     *
+     * @generated from field: string description = 3;
+     */
+    description: string;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceSetStateRequest.
+ * Use `create(MachineServiceSetStateRequestSchema)` to create a new message.
+ */
+export declare const MachineServiceSetStateRequestSchema: GenMessage<MachineServiceSetStateRequest>;
+/**
+ * MachineServiceSetStateResponse is the response payload for a machine set state request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceSetStateResponse
+ */
+export type MachineServiceSetStateResponse = Message<"metalstack.admin.v2.MachineServiceSetStateResponse"> & {
+    /**
+     * Machine with the changed state.
+     *
+     * @generated from field: metalstack.api.v2.Machine machine = 1;
+     */
+    machine?: Machine | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceSetStateResponse.
+ * Use `create(MachineServiceSetStateResponseSchema)` to create a new message.
+ */
+export declare const MachineServiceSetStateResponseSchema: GenMessage<MachineServiceSetStateResponse>;
+/**
  * MachineService provides machine lifecycle management operations.
  *
  * @generated from service metalstack.admin.v2.MachineService
@@ -313,5 +362,15 @@ export declare const MachineService: GenService<{
         methodKind: "unary";
         input: typeof MachineServiceConsolePasswordRequestSchema;
         output: typeof MachineServiceConsolePasswordResponseSchema;
+    };
+    /**
+     * SetState set the state of a machine.
+     *
+     * @generated from rpc metalstack.admin.v2.MachineService.SetState
+     */
+    setState: {
+        methodKind: "unary";
+        input: typeof MachineServiceSetStateRequestSchema;
+        output: typeof MachineServiceSetStateResponseSchema;
     };
 }>;

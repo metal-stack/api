@@ -36,6 +36,9 @@ class MachineService(Protocol):
     async def console_password(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def set_state(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class MachineServiceASGIApplication(ConnectASGIApplication[MachineService]):
     def __init__(self, service: MachineService | AsyncGenerator[MachineService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
@@ -101,6 +104,16 @@ class MachineServiceASGIApplication(ConnectASGIApplication[MachineService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.console_password,
+                ),
+                "/metalstack.admin.v2.MachineService/SetState": Endpoint.unary(
+                    method=MethodInfo(
+                        name="SetState",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.set_state,
                 ),
             },
             interceptors=interceptors,
@@ -236,6 +249,26 @@ class MachineServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def set_state(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="SetState",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 
 
@@ -252,6 +285,8 @@ class MachineServiceSync(Protocol):
     def list_b_m_c(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListBMCResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def console_password(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def set_state(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -318,6 +353,16 @@ class MachineServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.console_password,
+                ),
+                "/metalstack.admin.v2.MachineService/SetState": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="SetState",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.set_state,
                 ),
             },
             interceptors=interceptors,
@@ -447,6 +492,26 @@ class MachineServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.MachineService",
                 input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordRequest,
                 output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceConsolePasswordResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def set_state(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="SetState",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

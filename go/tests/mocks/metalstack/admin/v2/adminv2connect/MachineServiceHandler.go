@@ -445,3 +445,71 @@ func (_c *MachineServiceHandler_ListBMC_Call) RunAndReturn(run func(context1 con
 	_c.Call.Return(run)
 	return _c
 }
+
+// SetState provides a mock function for the type MachineServiceHandler
+func (_mock *MachineServiceHandler) SetState(context1 context.Context, machineServiceSetStateRequest *adminv2.MachineServiceSetStateRequest) (*adminv2.MachineServiceSetStateResponse, error) {
+	ret := _mock.Called(context1, machineServiceSetStateRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for SetState")
+	}
+
+	var r0 *adminv2.MachineServiceSetStateResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceSetStateRequest) (*adminv2.MachineServiceSetStateResponse, error)); ok {
+		return returnFunc(context1, machineServiceSetStateRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceSetStateRequest) *adminv2.MachineServiceSetStateResponse); ok {
+		r0 = returnFunc(context1, machineServiceSetStateRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.MachineServiceSetStateResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.MachineServiceSetStateRequest) error); ok {
+		r1 = returnFunc(context1, machineServiceSetStateRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MachineServiceHandler_SetState_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetState'
+type MachineServiceHandler_SetState_Call struct {
+	*mock.Call
+}
+
+// SetState is a helper method to define mock.On call
+//   - context1 context.Context
+//   - machineServiceSetStateRequest *adminv2.MachineServiceSetStateRequest
+func (_e *MachineServiceHandler_Expecter) SetState(context1 interface{}, machineServiceSetStateRequest interface{}) *MachineServiceHandler_SetState_Call {
+	return &MachineServiceHandler_SetState_Call{Call: _e.mock.On("SetState", context1, machineServiceSetStateRequest)}
+}
+
+func (_c *MachineServiceHandler_SetState_Call) Run(run func(context1 context.Context, machineServiceSetStateRequest *adminv2.MachineServiceSetStateRequest)) *MachineServiceHandler_SetState_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.MachineServiceSetStateRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.MachineServiceSetStateRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *MachineServiceHandler_SetState_Call) Return(machineServiceSetStateResponse *adminv2.MachineServiceSetStateResponse, err error) *MachineServiceHandler_SetState_Call {
+	_c.Call.Return(machineServiceSetStateResponse, err)
+	return _c
+}
+
+func (_c *MachineServiceHandler_SetState_Call) RunAndReturn(run func(context1 context.Context, machineServiceSetStateRequest *adminv2.MachineServiceSetStateRequest) (*adminv2.MachineServiceSetStateResponse, error)) *MachineServiceHandler_SetState_Call {
+	_c.Call.Return(run)
+	return _c
+}
