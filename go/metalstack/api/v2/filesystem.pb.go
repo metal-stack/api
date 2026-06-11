@@ -1183,11 +1183,11 @@ const file_metalstack_api_v2_filesystem_proto_rawDesc = "" +
 	"\rGPT_TYPE_BOOT\x10\x01\x1a\b\x82\xb2\x19\x04ef00\x12\x1c\n" +
 	"\x0eGPT_TYPE_LINUX\x10\x02\x1a\b\x82\xb2\x19\x048300\x12!\n" +
 	"\x13GPT_TYPE_LINUX_RAID\x10\x03\x1a\b\x82\xb2\x19\x04fd00\x12 \n" +
-	"\x12GPT_TYPE_LINUX_LVM\x10\x04\x1a\b\x82\xb2\x19\x048e00*K\n" +
+	"\x12GPT_TYPE_LINUX_LVM\x10\x04\x1a\b\x82\xb2\x19\x048e00*Y\n" +
 	"\tRaidLevel\x12\x1a\n" +
-	"\x16RAID_LEVEL_UNSPECIFIED\x10\x00\x12\x10\n" +
-	"\fRAID_LEVEL_0\x10\x01\x12\x10\n" +
-	"\fRAID_LEVEL_1\x10\x022\xfa\x01\n" +
+	"\x16RAID_LEVEL_UNSPECIFIED\x10\x00\x12\x17\n" +
+	"\fRAID_LEVEL_0\x10\x01\x1a\x05\x82\xb2\x19\x010\x12\x17\n" +
+	"\fRAID_LEVEL_1\x10\x02\x1a\x05\x82\xb2\x19\x0112\xfa\x01\n" +
 	"\x11FilesystemService\x12p\n" +
 	"\x03Get\x12..metalstack.api.v2.FilesystemServiceGetRequest\x1a/.metalstack.api.v2.FilesystemServiceGetResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02\x12s\n" +
 	"\x04List\x12/.metalstack.api.v2.FilesystemServiceListRequest\x1a0.metalstack.api.v2.FilesystemServiceListResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02B\xc5\x01\n" +

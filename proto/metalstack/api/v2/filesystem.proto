@@ -249,7 +249,7 @@ enum RaidLevel {
   // RAID_LEVEL_UNSPECIFIED is not specified
   RAID_LEVEL_UNSPECIFIED = 0;
   // RAID_LEVEL_0 is a stripe of two or more disks
-  RAID_LEVEL_0 = 1;
+  RAID_LEVEL_0 = 1 [(enum_string_value) = "0"];
   // RAID_LEVEL_1 is a mirror of two disks
-  RAID_LEVEL_1 = 2;
+  RAID_LEVEL_1 = 2 [(enum_string_value) = "1"];
 }
