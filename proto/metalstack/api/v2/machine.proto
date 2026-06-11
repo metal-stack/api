@@ -227,6 +227,9 @@ message MachineServiceDeleteRequest {
 message MachineServiceDeleteResponse {
   // Machine which was deleted
   Machine machine = 1;
+  // TaskID contains the task id of the machine deletion task that was queued during the machine deletion.
+  // Only usable for admins to inspect errors.
+  string task_id = 2;
 }
 
 // MachineServiceBMCCommandRequest is the request payload for a machine bmc command

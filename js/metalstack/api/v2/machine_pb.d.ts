@@ -365,6 +365,13 @@ export type MachineServiceDeleteResponse = Message<"metalstack.api.v2.MachineSer
      * @generated from field: metalstack.api.v2.Machine machine = 1;
      */
     machine?: Machine | undefined;
+    /**
+     * TaskID contains the task id of the machine deletion task that was queued during the machine deletion.
+     * Only usable for admins to inspect errors.
+     *
+     * @generated from field: string task_id = 2;
+     */
+    taskId: string;
 };
 /**
  * Describes the message metalstack.api.v2.MachineServiceDeleteResponse.

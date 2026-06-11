@@ -432,6 +432,13 @@ export type IPServiceDeleteResponse = Message<"metalstack.api.v2.IPServiceDelete
      * @generated from field: metalstack.api.v2.IP ip = 1;
      */
     ip?: IP | undefined;
+    /**
+     * TaskID contains the task id of the ip deletion task that was queued during the ip deletion.
+     * Only usable for admins to inspect errors.
+     *
+     * @generated from field: string task_id = 2;
+     */
+    taskId: string;
 };
 /**
  * Describes the message metalstack.api.v2.IPServiceDeleteResponse.

@@ -878,7 +878,10 @@ func (x *NetworkServiceDeleteRequest) GetProject() string {
 type NetworkServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network is the deleted network
-	Network       *Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	Network *Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	// TaskID contains the task id of the network deletion task that was queued during the network deletion.
+	// Only usable for admins to inspect errors.
+	TaskId        string `protobuf:"bytes,2,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -918,6 +921,13 @@ func (x *NetworkServiceDeleteResponse) GetNetwork() *Network {
 		return x.Network
 	}
 	return nil
+}
+
+func (x *NetworkServiceDeleteResponse) GetTaskId() string {
+	if x != nil {
+		return x.TaskId
+	}
+	return ""
 }
 
 // Network
@@ -1510,9 +1520,10 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"^\n" +
 	"\x1bNetworkServiceDeleteRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12\"\n" +
-	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"T\n" +
+	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"m\n" +
 	"\x1cNetworkServiceDeleteResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"\xa4\b\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\x12\x17\n" +
+	"\atask_id\x18\x02 \x01(\tR\x06taskId\"\xa4\b\n" +
 	"\aNetwork\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12$\n" +

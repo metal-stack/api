@@ -160,6 +160,9 @@ message NetworkServiceDeleteRequest {
 message NetworkServiceDeleteResponse {
   // Network is the deleted network
   Network network = 1;
+  // TaskID contains the task id of the network deletion task that was queued during the network deletion.
+  // Only usable for admins to inspect errors.
+  string task_id = 2;
 }
 
 // Network

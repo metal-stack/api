@@ -232,10 +232,12 @@ class MachineServiceDeleteRequest(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
 
 class MachineServiceDeleteResponse(_message.Message):
-    __slots__ = ("machine",)
+    __slots__ = ("machine", "task_id")
     MACHINE_FIELD_NUMBER: _ClassVar[int]
+    TASK_ID_FIELD_NUMBER: _ClassVar[int]
     machine: Machine
-    def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
+    task_id: str
+    def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ..., task_id: _Optional[str] = ...) -> None: ...
 
 class MachineServiceBMCCommandRequest(_message.Message):
     __slots__ = ("uuid", "project", "command")
