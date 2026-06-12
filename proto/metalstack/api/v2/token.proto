@@ -64,10 +64,7 @@ message Token {
   // Uuid of the jwt token, used to reference it by revoke
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // User who created this token
-  string user = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  string user = 2 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
   // Meta for this token
   Meta meta = 3;
   // Description is a user given description of this token.
@@ -298,10 +295,7 @@ message TokenQuery {
   optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Name of the token user to query
   // Only useful for admins.
-  optional string user = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  optional string user = 2 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
   // Description of the token to query
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Labels lists only tokens containing the given labels

@@ -1098,12 +1098,11 @@ var File_metalstack_api_v2_token_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/api/v2/token.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x92\n" +
+	"\x1dmetalstack/api/v2/token.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x93\n" +
 	"\n" +
 	"\x05Token\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n" +
-	"\x04user\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04R\x04user\x12+\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n" +
+	"\x04user\x18\x02 \x01(\tB\v\xbaH\br\x06\xf8\xb3\xae\xb1\x02\x01R\x04user\x12+\n" +
 	"\x04meta\x18\x03 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12-\n" +
 	"\vdescription\x18\x04 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12P\n" +
 	"\vpermissions\x18\x05 \x03(\v2#.metalstack.api.v2.MethodPermissionB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\vpermissions\x124\n" +
@@ -1207,12 +1206,11 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x1aTokenServiceRefreshRequest\"e\n" +
 	"\x1bTokenServiceRefreshResponse\x12.\n" +
 	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n" +
-	"\x06secret\x18\x02 \x01(\tR\x06secret\"\xc8\x02\n" +
+	"\x06secret\x18\x02 \x01(\tR\x06secret\"\xc9\x02\n" +
 	"\n" +
 	"TokenQuery\x12!\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12#\n" +
-	"\x04user\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x01R\x04user\x88\x01\x01\x122\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
+	"\x04user\x18\x02 \x01(\tB\v\xbaH\br\x06\xf8\xb3\xae\xb1\x02\x01H\x01R\x04user\x88\x01\x01\x122\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x02R\vdescription\x88\x01\x01\x126\n" +
 	"\x06labels\x18\x04 \x01(\v2\x19.metalstack.api.v2.LabelsH\x03R\x06labels\x88\x01\x01\x12J\n" +
 	"\n" +

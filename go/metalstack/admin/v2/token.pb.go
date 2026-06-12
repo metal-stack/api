@@ -321,19 +321,17 @@ var File_metalstack_admin_v2_token_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_token_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/admin/v2/token.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/token.proto\"N\n" +
+	"\x1fmetalstack/admin/v2/token.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1dmetalstack/api/v2/token.proto\"N\n" +
 	"\x17TokenServiceListRequest\x123\n" +
 	"\x05query\x18\x01 \x01(\v2\x1d.metalstack.api.v2.TokenQueryR\x05query\"L\n" +
 	"\x18TokenServiceListResponse\x120\n" +
-	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"Y\n" +
+	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"Z\n" +
 	"\x19TokenServiceRevokeRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n" +
-	"\x04user\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04R\x04user\"\x1c\n" +
-	"\x1aTokenServiceRevokeResponse\"\xa9\x01\n" +
-	"\x19TokenServiceCreateRequest\x12#\n" +
-	"\x04user\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x00R\x04user\x88\x01\x01\x12^\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n" +
+	"\x04user\x18\x02 \x01(\tB\v\xbaH\br\x06\xf8\xb3\xae\xb1\x02\x01R\x04user\"\x1c\n" +
+	"\x1aTokenServiceRevokeResponse\"\xaa\x01\n" +
+	"\x19TokenServiceCreateRequest\x12$\n" +
+	"\x04user\x18\x01 \x01(\tB\v\xbaH\br\x06\xf8\xb3\xae\xb1\x02\x01H\x00R\x04user\x88\x01\x01\x12^\n" +
 	"\x14token_create_request\x18\x02 \x01(\v2,.metalstack.api.v2.TokenServiceCreateRequestR\x12tokenCreateRequestB\a\n" +
 	"\x05_user\"d\n" +
 	"\x1aTokenServiceCreateResponse\x12.\n" +
