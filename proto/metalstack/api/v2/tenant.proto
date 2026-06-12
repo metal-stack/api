@@ -113,6 +113,8 @@ message TenantMember {
   repeated string projects = 3;
   // CreatedAt the date when the member was added to the tenant
   google.protobuf.Timestamp created_at = 4;
+  // Meta for this tenant member
+  Meta meta = 5;
 }
 
 // TenantInvite defines invite to tenant

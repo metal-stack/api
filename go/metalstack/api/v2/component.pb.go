@@ -112,7 +112,9 @@ type Component struct {
 	// Version of this service
 	Version *Version `protobuf:"bytes,7,opt,name=version,proto3" json:"version,omitempty"`
 	// Token is the token which is actually used by this microservice.
-	Token         *Token `protobuf:"bytes,8,opt,name=token,proto3" json:"token,omitempty"`
+	Token *Token `protobuf:"bytes,8,opt,name=token,proto3" json:"token,omitempty"`
+	// Meta for this component
+	Meta          *Meta `protobuf:"bytes,9,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -203,6 +205,13 @@ func (x *Component) GetToken() *Token {
 	return nil
 }
 
+func (x *Component) GetMeta() *Meta {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
 // ComponentQuery to query components
 type ComponentQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -272,7 +281,7 @@ var File_metalstack_api_v2_component_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_component_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/api/v2/component.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1dmetalstack/api/v2/token.proto\x1a\x1fmetalstack/api/v2/version.proto\"\xab\x03\n" +
+	"!metalstack/api/v2/component.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1dmetalstack/api/v2/token.proto\x1a\x1fmetalstack/api/v2/version.proto\"\xd8\x03\n" +
 	"\tComponent\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12>\n" +
 	"\x04type\x18\x02 \x01(\x0e2 .metalstack.api.v2.ComponentTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04type\x12+\n" +
@@ -285,7 +294,8 @@ const file_metalstack_api_v2_component_proto_rawDesc = "" +
 	"reportedAt\x125\n" +
 	"\binterval\x18\x06 \x01(\v2\x19.google.protobuf.DurationR\binterval\x124\n" +
 	"\aversion\x18\a \x01(\v2\x1a.metalstack.api.v2.VersionR\aversion\x12.\n" +
-	"\x05token\x18\b \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\"\xcb\x01\n" +
+	"\x05token\x18\b \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12+\n" +
+	"\x04meta\x18\t \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\"\xcb\x01\n" +
 	"\x0eComponentQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12C\n" +
 	"\x04type\x18\x02 \x01(\x0e2 .metalstack.api.v2.ComponentTypeB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\x04type\x88\x01\x01\x120\n" +
@@ -328,6 +338,7 @@ var file_metalstack_api_v2_component_proto_goTypes = []any{
 	(*durationpb.Duration)(nil),   // 4: google.protobuf.Duration
 	(*Version)(nil),               // 5: metalstack.api.v2.Version
 	(*Token)(nil),                 // 6: metalstack.api.v2.Token
+	(*Meta)(nil),                  // 7: metalstack.api.v2.Meta
 }
 var file_metalstack_api_v2_component_proto_depIdxs = []int32{
 	0, // 0: metalstack.api.v2.Component.type:type_name -> metalstack.api.v2.ComponentType
@@ -336,12 +347,13 @@ var file_metalstack_api_v2_component_proto_depIdxs = []int32{
 	4, // 3: metalstack.api.v2.Component.interval:type_name -> google.protobuf.Duration
 	5, // 4: metalstack.api.v2.Component.version:type_name -> metalstack.api.v2.Version
 	6, // 5: metalstack.api.v2.Component.token:type_name -> metalstack.api.v2.Token
-	0, // 6: metalstack.api.v2.ComponentQuery.type:type_name -> metalstack.api.v2.ComponentType
-	7, // [7:7] is the sub-list for method output_type
-	7, // [7:7] is the sub-list for method input_type
-	7, // [7:7] is the sub-list for extension type_name
-	7, // [7:7] is the sub-list for extension extendee
-	0, // [0:7] is the sub-list for field type_name
+	7, // 6: metalstack.api.v2.Component.meta:type_name -> metalstack.api.v2.Meta
+	0, // 7: metalstack.api.v2.ComponentQuery.type:type_name -> metalstack.api.v2.ComponentType
+	8, // [8:8] is the sub-list for method output_type
+	8, // [8:8] is the sub-list for method input_type
+	8, // [8:8] is the sub-list for extension type_name
+	8, // [8:8] is the sub-list for extension extendee
+	0, // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_component_proto_init() }
