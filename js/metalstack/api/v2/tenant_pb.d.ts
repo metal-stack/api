@@ -90,6 +90,12 @@ export type TenantMember = Message<"metalstack.api.v2.TenantMember"> & {
      * @generated from field: google.protobuf.Timestamp created_at = 4;
      */
     createdAt?: Timestamp | undefined;
+    /**
+     * Meta for this tenant member
+     *
+     * @generated from field: metalstack.api.v2.Meta meta = 5;
+     */
+    meta?: Meta | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantMember.

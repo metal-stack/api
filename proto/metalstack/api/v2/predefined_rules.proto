@@ -56,6 +56,12 @@ extend buf.validate.StringRules {
     message: "value must not start or end with whitespace"
     expression: "this.trim().size() == this.size()"
   }];
+  // IsUser returns true if name field satisfies our requirements
+  optional bool is_user = 80048959 [(buf.validate.predefined).cel = {
+    id: "string.is_user"
+    message: "must be within 2 and 512 characters"
+    expression: "this.size() >= 2 && this.size() <= 512"
+  }];
 }
 
 extend buf.validate.RepeatedRules {

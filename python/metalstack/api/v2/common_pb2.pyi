@@ -129,16 +129,18 @@ class Labels(_message.Message):
     def __init__(self, labels: _Optional[_Mapping[str, str]] = ...) -> None: ...
 
 class Meta(_message.Message):
-    __slots__ = ("labels", "created_at", "updated_at", "generation")
+    __slots__ = ("labels", "created_at", "updated_at", "generation", "deletion_task_id")
     LABELS_FIELD_NUMBER: _ClassVar[int]
     CREATED_AT_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
     GENERATION_FIELD_NUMBER: _ClassVar[int]
+    DELETION_TASK_ID_FIELD_NUMBER: _ClassVar[int]
     labels: Labels
     created_at: _timestamp_pb2.Timestamp
     updated_at: _timestamp_pb2.Timestamp
     generation: int
-    def __init__(self, labels: _Optional[_Union[Labels, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., generation: _Optional[int] = ...) -> None: ...
+    deletion_task_id: str
+    def __init__(self, labels: _Optional[_Union[Labels, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., generation: _Optional[int] = ..., deletion_task_id: _Optional[str] = ...) -> None: ...
 
 class UpdateLabels(_message.Message):
     __slots__ = ("update", "remove")

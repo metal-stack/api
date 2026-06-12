@@ -1,5 +1,6 @@
 import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Meta } from "./common_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/api/v2/audit.proto.
@@ -71,6 +72,12 @@ export type AuditTrace = Message<"metalstack.api.v2.AuditTrace"> & {
      * @generated from field: metalstack.api.v2.AuditPhase phase = 10;
      */
     phase: AuditPhase;
+    /**
+     * Meta for this audit trace
+     *
+     * @generated from field: metalstack.api.v2.Meta meta = 11;
+     */
+    meta?: Meta | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.AuditTrace.

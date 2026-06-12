@@ -53,6 +53,12 @@ export declare const is_ip_or_hostname: GenExtension<StringRules, boolean>;
  */
 export declare const trimmed: GenExtension<StringRules, boolean>;
 /**
+ * IsUser returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_user = 80048959;
+ */
+export declare const is_user: GenExtension<StringRules, boolean>;
+/**
  * Prefixes validates if a slice of prefixes in string form are valid
  *
  * @generated from extension: optional bool prefixes = 80058951;

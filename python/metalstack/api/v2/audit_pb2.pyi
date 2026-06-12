@@ -23,7 +23,7 @@ AUDIT_PHASE_REQUEST: AuditPhase
 AUDIT_PHASE_RESPONSE: AuditPhase
 
 class AuditTrace(_message.Message):
-    __slots__ = ("uuid", "timestamp", "user", "tenant", "project", "method", "body", "source_ip", "result_code", "phase")
+    __slots__ = ("uuid", "timestamp", "user", "tenant", "project", "method", "body", "source_ip", "result_code", "phase", "meta")
     UUID_FIELD_NUMBER: _ClassVar[int]
     TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
     USER_FIELD_NUMBER: _ClassVar[int]
@@ -34,6 +34,7 @@ class AuditTrace(_message.Message):
     SOURCE_IP_FIELD_NUMBER: _ClassVar[int]
     RESULT_CODE_FIELD_NUMBER: _ClassVar[int]
     PHASE_FIELD_NUMBER: _ClassVar[int]
+    META_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     timestamp: _timestamp_pb2.Timestamp
     user: str
@@ -44,7 +45,8 @@ class AuditTrace(_message.Message):
     source_ip: str
     result_code: int
     phase: AuditPhase
-    def __init__(self, uuid: _Optional[str] = ..., timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., user: _Optional[str] = ..., tenant: _Optional[str] = ..., project: _Optional[str] = ..., method: _Optional[str] = ..., body: _Optional[str] = ..., source_ip: _Optional[str] = ..., result_code: _Optional[int] = ..., phase: _Optional[_Union[AuditPhase, str]] = ...) -> None: ...
+    meta: _common_pb2.Meta
+    def __init__(self, uuid: _Optional[str] = ..., timestamp: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., user: _Optional[str] = ..., tenant: _Optional[str] = ..., project: _Optional[str] = ..., method: _Optional[str] = ..., body: _Optional[str] = ..., source_ip: _Optional[str] = ..., result_code: _Optional[int] = ..., phase: _Optional[_Union[AuditPhase, str]] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ...) -> None: ...
 
 class AuditQuery(_message.Message):
     __slots__ = ("uuid", "to", "user", "project", "method", "source_ip", "result_code", "body", "limit", "phase")

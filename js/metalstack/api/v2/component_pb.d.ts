@@ -1,5 +1,6 @@
 import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Meta } from "./common_pb";
 import type { Token } from "./token_pb";
 import type { Version } from "./version_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -62,6 +63,12 @@ export type Component = Message<"metalstack.api.v2.Component"> & {
      * @generated from field: metalstack.api.v2.Token token = 8;
      */
     token?: Token | undefined;
+    /**
+     * Meta for this component
+     *
+     * @generated from field: metalstack.api.v2.Meta meta = 9;
+     */
+    meta?: Meta | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Component.

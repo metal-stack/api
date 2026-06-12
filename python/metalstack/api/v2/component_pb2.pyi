@@ -33,7 +33,7 @@ COMPONENT_TYPE_METAL_CONSOLE: ComponentType
 COMPONENT_TYPE_METAL_METRICS_EXPORTER: ComponentType
 
 class Component(_message.Message):
-    __slots__ = ("uuid", "type", "identifier", "started_at", "reported_at", "interval", "version", "token")
+    __slots__ = ("uuid", "type", "identifier", "started_at", "reported_at", "interval", "version", "token", "meta")
     UUID_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     IDENTIFIER_FIELD_NUMBER: _ClassVar[int]
@@ -42,6 +42,7 @@ class Component(_message.Message):
     INTERVAL_FIELD_NUMBER: _ClassVar[int]
     VERSION_FIELD_NUMBER: _ClassVar[int]
     TOKEN_FIELD_NUMBER: _ClassVar[int]
+    META_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     type: ComponentType
     identifier: str
@@ -50,7 +51,8 @@ class Component(_message.Message):
     interval: _duration_pb2.Duration
     version: _version_pb2.Version
     token: _token_pb2.Token
-    def __init__(self, uuid: _Optional[str] = ..., type: _Optional[_Union[ComponentType, str]] = ..., identifier: _Optional[str] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., reported_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., interval: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., version: _Optional[_Union[_version_pb2.Version, _Mapping]] = ..., token: _Optional[_Union[_token_pb2.Token, _Mapping]] = ...) -> None: ...
+    meta: _common_pb2.Meta
+    def __init__(self, uuid: _Optional[str] = ..., type: _Optional[_Union[ComponentType, str]] = ..., identifier: _Optional[str] = ..., started_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., reported_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., interval: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., version: _Optional[_Union[_version_pb2.Version, _Mapping]] = ..., token: _Optional[_Union[_token_pb2.Token, _Mapping]] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ...) -> None: ...
 
 class ComponentQuery(_message.Message):
     __slots__ = ("uuid", "type", "identifier")

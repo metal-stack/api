@@ -236,6 +236,10 @@
                   <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
               
             </ul>
           </li>
@@ -436,6 +440,10 @@
               
                 <li>
                   <a href="#metalstack.api.v2.Token.TenantRolesEntry"><span class="badge">M</span>Token.TenantRolesEntry</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TokenQuery"><span class="badge">M</span>TokenQuery</a>
                 </li>
               
                 <li>
@@ -2817,6 +2825,14 @@
               </tr>
             
               <tr>
+                <td>is_user</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048959</td>
+                <td><p>IsUser returns true if name field satisfies our requirements</p></td>
+              </tr>
+            
+              <tr>
                 <td>macaddress</td>
                 <td><a href="#bool">bool</a></td>
                 <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
@@ -2937,6 +2953,14 @@ must be part of the update request to ensure optimistic locking </p></td>
                   <td><a href="#uint64">uint64</a></td>
                   <td></td>
                   <td><p>Generation identifies how often this entity was modified since creation. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>deletion_task_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>DeletionTaskID is an optional id that is set to the meta after triggering the deletion.
+This can be used by admins to track the deletion progress if necessary. </p></td>
                 </tr>
               
             </tbody>
@@ -3673,6 +3697,13 @@ having a direct membership within the tenant.</p></td>
                   <td><p>Phase represents the phase of the audit trace </p></td>
                 </tr>
               
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this audit trace </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -4130,6 +4161,59 @@ TODO: decide if we need this map from machine.uuid-&gt;role, we could instead us
 
         
       
+        <h3 id="metalstack.api.v2.TokenQuery">TokenQuery</h3>
+        <p>TokenQuery is used to search tokens</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>UUID of the token to get </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name of the token user to query
+Only useful for admins. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Description of the token to query </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only tokens containing the given labels </p></td>
+                </tr>
+              
+                <tr>
+                  <td>token_type</td>
+                  <td><a href="#metalstack.api.v2.TokenType">TokenType</a></td>
+                  <td>optional</td>
+                  <td><p>Token type of the token to query </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.TokenServiceCreateRequest">TokenServiceCreateRequest</h3>
         <p>TokenServiceCreateRequest is the request payload to create a token</p>
 
@@ -4386,6 +4470,23 @@ TODO: decide if we need this map from machine.uuid-&gt;role, we could instead us
         <p>TokenServiceListRequest is the request payload to list tokens</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.TokenQuery">TokenQuery</a></td>
+                  <td></td>
+                  <td><p>Query for tokens </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -4958,6 +5059,13 @@ micro_service and identifier guarantee uniqueness. </p></td>
                   <td><a href="#metalstack.api.v2.Token">Token</a></td>
                   <td></td>
                   <td><p>Token is the token which is actually used by this microservice. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this component </p></td>
                 </tr>
               
             </tbody>
@@ -13788,6 +13896,13 @@ Inherited memberships are not included in member lists for users with guest perm
                   <td><p>CreatedAt the date when the member was added to the project </p></td>
                 </tr>
               
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this project member </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -17940,6 +18055,13 @@ Will return tasks from all queues if not specified </p></td>
                   <td><p>CreatedAt the date when the member was added to the tenant </p></td>
                 </tr>
               
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this tenant member </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -19030,10 +19152,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>user</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>User is the id of the user for which the tokens should be listed </p></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.TokenQuery">metalstack.api.v2.TokenQuery</a></td>
+                  <td></td>
+                  <td><p>Query for tokens </p></td>
                 </tr>
               
             </tbody>
