@@ -146,12 +146,10 @@ class NetworkServiceDeleteRequest(_message.Message):
     def __init__(self, id: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
 
 class NetworkServiceDeleteResponse(_message.Message):
-    __slots__ = ("network", "task_id")
+    __slots__ = ("network",)
     NETWORK_FIELD_NUMBER: _ClassVar[int]
-    TASK_ID_FIELD_NUMBER: _ClassVar[int]
     network: Network
-    task_id: str
-    def __init__(self, network: _Optional[_Union[Network, _Mapping]] = ..., task_id: _Optional[str] = ...) -> None: ...
+    def __init__(self, network: _Optional[_Union[Network, _Mapping]] = ...) -> None: ...
 
 class Network(_message.Message):
     __slots__ = ("id", "meta", "name", "description", "partition", "project", "namespace", "prefixes", "destination_prefixes", "default_child_prefix_length", "min_child_prefix_length", "type", "nat_type", "vrf", "parent_network", "additional_announcable_cidrs", "consumption")

@@ -167,9 +167,7 @@ class IPServiceListResponse(_message.Message):
     def __init__(self, ips: _Optional[_Iterable[_Union[IP, _Mapping]]] = ...) -> None: ...
 
 class IPServiceDeleteResponse(_message.Message):
-    __slots__ = ("ip", "task_id")
+    __slots__ = ("ip",)
     IP_FIELD_NUMBER: _ClassVar[int]
-    TASK_ID_FIELD_NUMBER: _ClassVar[int]
     ip: IP
-    task_id: str
-    def __init__(self, ip: _Optional[_Union[IP, _Mapping]] = ..., task_id: _Optional[str] = ...) -> None: ...
+    def __init__(self, ip: _Optional[_Union[IP, _Mapping]] = ...) -> None: ...

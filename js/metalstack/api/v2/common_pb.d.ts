@@ -81,6 +81,13 @@ export type Meta = Message<"metalstack.api.v2.Meta"> & {
      * @generated from field: uint64 generation = 4;
      */
     generation: bigint;
+    /**
+     * DeletionTaskID is an optional id that is set to the meta after triggering the deletion.
+     * This can be used by admins to track the deletion progress if necessary.
+     *
+     * @generated from field: optional string deletion_task_id = 5;
+     */
+    deletionTaskId?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Meta.

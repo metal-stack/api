@@ -311,13 +311,6 @@ export type NetworkServiceDeleteResponse = Message<"metalstack.api.v2.NetworkSer
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
     network?: Network | undefined;
-    /**
-     * TaskID contains the task id of the network deletion task that was queued during the network deletion.
-     * Only usable for admins to inspect errors.
-     *
-     * @generated from field: string task_id = 2;
-     */
-    taskId: string;
 };
 /**
  * Describes the message metalstack.api.v2.NetworkServiceDeleteResponse.

@@ -1175,10 +1175,7 @@ func (x *MachineServiceDeleteRequest) GetProject() string {
 type MachineServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine which was deleted
-	Machine *Machine `protobuf:"bytes,1,opt,name=machine,proto3" json:"machine,omitempty"`
-	// TaskID contains the task id of the machine deletion task that was queued during the machine deletion.
-	// Only usable for admins to inspect errors.
-	TaskId        string `protobuf:"bytes,2,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
+	Machine       *Machine `protobuf:"bytes,1,opt,name=machine,proto3" json:"machine,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1218,13 +1215,6 @@ func (x *MachineServiceDeleteResponse) GetMachine() *Machine {
 		return x.Machine
 	}
 	return nil
-}
-
-func (x *MachineServiceDeleteResponse) GetTaskId() string {
-	if x != nil {
-		return x.TaskId
-	}
-	return ""
 }
 
 // MachineServiceBMCCommandRequest is the request payload for a machine bmc command
@@ -4249,10 +4239,9 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\bmachines\x18\x01 \x03(\v2\x1a.metalstack.api.v2.MachineR\bmachines\"_\n" +
 	"\x1bMachineServiceDeleteRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
-	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"m\n" +
+	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"T\n" +
 	"\x1cMachineServiceDeleteResponse\x124\n" +
-	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\x12\x17\n" +
-	"\atask_id\x18\x02 \x01(\tR\x06taskId\"\xad\x01\n" +
+	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\xad\x01\n" +
 	"\x1fMachineServiceBMCCommandRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12H\n" +

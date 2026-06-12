@@ -2939,6 +2939,14 @@ must be part of the update request to ensure optimistic locking </p></td>
                   <td><p>Generation identifies how often this entity was modified since creation. </p></td>
                 </tr>
               
+                <tr>
+                  <td>deletion_task_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>DeletionTaskID is an optional id that is set to the meta after triggering the deletion.
+This can be used by admins to track the deletion progress if necessary. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -7438,14 +7446,6 @@ Will be equal with project most of the time </p></td>
                   <td><p>Ip the ip </p></td>
                 </tr>
               
-                <tr>
-                  <td>task_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>TaskID contains the task id of the ip deletion task that was queued during the ip deletion.
-Only usable for admins to inspect errors. </p></td>
-                </tr>
-              
             </tbody>
           </table>
 
@@ -8317,14 +8317,6 @@ Will be equal with project most of the time </p></td>
                   <td><a href="#metalstack.api.v2.Network">Network</a></td>
                   <td></td>
                   <td><p>Network is the deleted network </p></td>
-                </tr>
-              
-                <tr>
-                  <td>task_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>TaskID contains the task id of the network deletion task that was queued during the network deletion.
-Only usable for admins to inspect errors. </p></td>
                 </tr>
               
             </tbody>
@@ -11364,14 +11356,6 @@ if placement tags are provided, the machine candidate has an additional anti-aff
                   <td><a href="#metalstack.api.v2.Machine">Machine</a></td>
                   <td></td>
                   <td><p>Machine which was deleted </p></td>
-                </tr>
-              
-                <tr>
-                  <td>task_id</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>TaskID contains the task id of the machine deletion task that was queued during the machine deletion.
-Only usable for admins to inspect errors. </p></td>
                 </tr>
               
             </tbody>

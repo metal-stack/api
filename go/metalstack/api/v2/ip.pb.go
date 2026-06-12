@@ -963,10 +963,7 @@ func (x *IPServiceListResponse) GetIps() []*IP {
 type IPServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Ip the ip
-	Ip *IP `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
-	// TaskID contains the task id of the ip deletion task that was queued during the ip deletion.
-	// Only usable for admins to inspect errors.
-	TaskId        string `protobuf:"bytes,2,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
+	Ip            *IP `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1006,13 +1003,6 @@ func (x *IPServiceDeleteResponse) GetIp() *IP {
 		return x.Ip
 	}
 	return nil
-}
-
-func (x *IPServiceDeleteResponse) GetTaskId() string {
-	if x != nil {
-		return x.TaskId
-	}
-	return ""
 }
 
 var File_metalstack_api_v2_ip_proto protoreflect.FileDescriptor
@@ -1111,10 +1101,9 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x17IPServiceCreateResponse\x12%\n" +
 	"\x02ip\x18\x01 \x01(\v2\x15.metalstack.api.v2.IPR\x02ip\"@\n" +
 	"\x15IPServiceListResponse\x12'\n" +
-	"\x03ips\x18\x01 \x03(\v2\x15.metalstack.api.v2.IPR\x03ips\"Y\n" +
+	"\x03ips\x18\x01 \x03(\v2\x15.metalstack.api.v2.IPR\x03ips\"@\n" +
 	"\x17IPServiceDeleteResponse\x12%\n" +
-	"\x02ip\x18\x01 \x01(\v2\x15.metalstack.api.v2.IPR\x02ip\x12\x17\n" +
-	"\atask_id\x18\x02 \x01(\tR\x06taskId*g\n" +
+	"\x02ip\x18\x01 \x01(\v2\x15.metalstack.api.v2.IPR\x02ip*g\n" +
 	"\x06IPType\x12\x17\n" +
 	"\x13IP_TYPE_UNSPECIFIED\x10\x00\x12$\n" +
 	"\x11IP_TYPE_EPHEMERAL\x10\x01\x1a\r\x82\xb2\x19\tephemeral\x12\x1e\n" +
