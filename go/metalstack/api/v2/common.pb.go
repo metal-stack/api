@@ -579,9 +579,12 @@ type Meta struct {
 	// must be part of the update request to ensure optimistic locking
 	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Generation identifies how often this entity was modified since creation.
-	Generation    uint64 `protobuf:"varint,4,opt,name=generation,proto3" json:"generation,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Generation uint64 `protobuf:"varint,4,opt,name=generation,proto3" json:"generation,omitempty"`
+	// DeletionTaskID is an optional id that is set to the meta after triggering the deletion.
+	// This can be used by admins to track the deletion progress if necessary.
+	DeletionTaskId *string `protobuf:"bytes,5,opt,name=deletion_task_id,json=deletionTaskId,proto3,oneof" json:"deletion_task_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *Meta) Reset() {
@@ -640,6 +643,13 @@ func (x *Meta) GetGeneration() uint64 {
 		return x.Generation
 	}
 	return 0
+}
+
+func (x *Meta) GetDeletionTaskId() string {
+	if x != nil && x.DeletionTaskId != nil {
+		return *x.DeletionTaskId
+	}
+	return ""
 }
 
 // UpdateLabels is a message to update labels
@@ -874,7 +884,7 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"\x06labels\x18\x01 \x03(\v2%.metalstack.api.v2.Labels.LabelsEntryB\x1e\xbaH\x1b\x9a\x01\x18\xb8\x95\xb8\xb1\x02\x01\"\ar\x05\x10\x01\x18\x80\x02*\ar\x05\x10\x00\x18\x80\x02R\x06labels\x1a9\n" +
 	"\vLabelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xdf\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xa3\x02\n" +
 	"\x04Meta\x126\n" +
 	"\x06labels\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsH\x00R\x06labels\x88\x01\x01\x129\n" +
 	"\n" +
@@ -883,8 +893,10 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"updated_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12\x1e\n" +
 	"\n" +
 	"generation\x18\x04 \x01(\x04R\n" +
-	"generationB\t\n" +
-	"\a_labels\"Y\n" +
+	"generation\x12-\n" +
+	"\x10deletion_task_id\x18\x05 \x01(\tH\x01R\x0edeletionTaskId\x88\x01\x01B\t\n" +
+	"\a_labelsB\x13\n" +
+	"\x11_deletion_task_id\"Y\n" +
 	"\fUpdateLabels\x121\n" +
 	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12\x16\n" +
 	"\x06remove\x18\x02 \x03(\tR\x06remove\"\xaa\x01\n" +

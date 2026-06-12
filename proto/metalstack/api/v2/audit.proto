@@ -53,6 +53,8 @@ message AuditTrace {
   optional int32 result_code = 9;
   // Phase represents the phase of the audit trace
   AuditPhase phase = 10;
+  // Meta for this audit trace
+  Meta meta = 11;
 }
 
 // AuditQuery is the query for audit traces
