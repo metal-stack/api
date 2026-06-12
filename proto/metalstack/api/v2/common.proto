@@ -153,6 +153,9 @@ message Meta {
   google.protobuf.Timestamp updated_at = 3;
   // Generation identifies how often this entity was modified since creation.
   uint64 generation = 4;
+  // DeletionTaskID is an optional id that is set to the meta after triggering the deletion.
+  // This can be used by admins to track the deletion progress if necessary.
+  optional string deletion_task_id = 5;
 }
 
 // UpdateLabels is a message to update labels
