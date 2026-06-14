@@ -240,6 +240,14 @@
                   <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
               
             </ul>
           </li>
@@ -2793,11 +2801,27 @@
               </tr>
             
               <tr>
+                <td>is_key</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048961</td>
+                <td><p>IsKey returns true if name field satisfies our requirements</p></td>
+              </tr>
+            
+              <tr>
                 <td>is_name</td>
                 <td><a href="#bool">bool</a></td>
                 <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
                 <td>80048952</td>
                 <td><p>IsName returns true if name field satisfies our requirements</p></td>
+              </tr>
+            
+              <tr>
+                <td>is_option</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048960</td>
+                <td><p>IsOption returns true if name field satisfies our requirements</p></td>
               </tr>
             
               <tr>
@@ -5622,14 +5646,19 @@ micro_service and identifier guarantee uniqueness. </p></td>
                   <td>sizes</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>Sizes list of sizes this layout applies to </p></td>
+                  <td><p>Sizes list of sizes this layout applies to
+this could either be a concrete size, or a asterisk to match all sizes </p></td>
                 </tr>
               
                 <tr>
                   <td>images</td>
                   <td><a href="#metalstack.api.v2.FilesystemLayoutConstraints.ImagesEntry">FilesystemLayoutConstraints.ImagesEntry</a></td>
                   <td>repeated</td>
-                  <td><p>Images list of images this layout applies to </p></td>
+                  <td><p>Images list of images this layout applies to in the following form
+key must be the first part of available images, e.g. the name of the image
+value must be a semver match expression with the constraint and the version separated by space
+this would match all debian images which are greater or equal 12.0
+&#34;debian&#34;:&#34;&gt;= 12.0&#34; </p></td>
                 </tr>
               
             </tbody>

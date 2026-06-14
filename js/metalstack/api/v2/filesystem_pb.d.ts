@@ -157,12 +157,17 @@ export declare const FilesystemLayoutSchema: GenMessage<FilesystemLayout>;
 export type FilesystemLayoutConstraints = Message<"metalstack.api.v2.FilesystemLayoutConstraints"> & {
     /**
      * Sizes list of sizes this layout applies to
+     * this could either be a concrete size, or a asterisk to match all sizes
      *
      * @generated from field: repeated string sizes = 1;
      */
     sizes: string[];
     /**
-     * Images list of images this layout applies to
+     * Images list of images this layout applies to in the following form
+     * key must be the first part of available images, e.g. the name of the image
+     * value must be a semver match expression with the constraint and the version separated by space
+     * this would match all debian images which are greater or equal 12.0
+     * "debian":">= 12.0"
      *
      * @generated from field: map<string, string> images = 2;
      */

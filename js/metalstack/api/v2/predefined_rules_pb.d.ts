@@ -59,6 +59,18 @@ export declare const trimmed: GenExtension<StringRules, boolean>;
  */
 export declare const is_user: GenExtension<StringRules, boolean>;
 /**
+ * IsOption returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_option = 80048960;
+ */
+export declare const is_option: GenExtension<StringRules, boolean>;
+/**
+ * IsKey returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_key = 80048961;
+ */
+export declare const is_key: GenExtension<StringRules, boolean>;
+/**
  * Prefixes validates if a slice of prefixes in string form are valid
  *
  * @generated from extension: optional bool prefixes = 80058951;
