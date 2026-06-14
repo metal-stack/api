@@ -1405,6 +1405,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.admin.v2.MachineServiceDeleteRequest"><span class="badge">M</span>MachineServiceDeleteRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.MachineServiceDeleteResponse"><span class="badge">M</span>MachineServiceDeleteResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.MachineServiceGetBMCRequest"><span class="badge">M</span>MachineServiceGetBMCRequest</a>
                 </li>
               
@@ -12385,6 +12393,54 @@ Reason is only forwarded to an audit sink </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.MachineServiceDeleteRequest">MachineServiceDeleteRequest</h3>
+        <p>MachineServiceDeleteRequest is the request payload for a machine delete request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine to permanently delete </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.MachineServiceDeleteResponse">MachineServiceDeleteResponse</h3>
+        <p>MachineServiceDeleteResponse is the response payload for a machine delete request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>machine</td>
+                  <td><a href="#metalstack.api.v2.Machine">metalstack.api.v2.Machine</a></td>
+                  <td></td>
+                  <td><p>Machine is the machine permanently deleted </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.MachineServiceGetBMCRequest">MachineServiceGetBMCRequest</h3>
         <p>MachineServiceGetBMCRequest is the request payload for a machine getbmc request</p>
 
@@ -12712,6 +12768,13 @@ If State set to available, description is also cleared. </p></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceListRequest">MachineServiceListRequest</a></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceListResponse">MachineServiceListResponse</a></td>
                 <td><p>Returns the list of all machines.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Delete</td>
+                <td><a href="#metalstack.admin.v2.MachineServiceDeleteRequest">MachineServiceDeleteRequest</a></td>
+                <td><a href="#metalstack.admin.v2.MachineServiceDeleteResponse">MachineServiceDeleteResponse</a></td>
+                <td><p>Delete a machine from the database. This can only be done if the machine is offline and dead.</p></td>
               </tr>
             
               <tr>
