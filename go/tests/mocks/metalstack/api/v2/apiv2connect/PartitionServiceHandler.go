@@ -74,7 +74,7 @@ type PartitionServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceGetRequest *apiv2.PartitionServiceGetRequest
-func (_e *PartitionServiceHandler_Expecter) Get(context1 interface{}, partitionServiceGetRequest interface{}) *PartitionServiceHandler_Get_Call {
+func (_e *PartitionServiceHandler_Expecter) Get(context1 any, partitionServiceGetRequest any) *PartitionServiceHandler_Get_Call {
 	return &PartitionServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, partitionServiceGetRequest)}
 }
 
@@ -142,7 +142,7 @@ type PartitionServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceListRequest *apiv2.PartitionServiceListRequest
-func (_e *PartitionServiceHandler_Expecter) List(context1 interface{}, partitionServiceListRequest interface{}) *PartitionServiceHandler_List_Call {
+func (_e *PartitionServiceHandler_Expecter) List(context1 any, partitionServiceListRequest any) *PartitionServiceHandler_List_Call {
 	return &PartitionServiceHandler_List_Call{Call: _e.mock.On("List", context1, partitionServiceListRequest)}
 }
 

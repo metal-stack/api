@@ -74,7 +74,7 @@ type EventServiceClient_Send_Call struct {
 // Send is a helper method to define mock.On call
 //   - context1 context.Context
 //   - eventServiceSendRequest *infrav2.EventServiceSendRequest
-func (_e *EventServiceClient_Expecter) Send(context1 interface{}, eventServiceSendRequest interface{}) *EventServiceClient_Send_Call {
+func (_e *EventServiceClient_Expecter) Send(context1 any, eventServiceSendRequest any) *EventServiceClient_Send_Call {
 	return &EventServiceClient_Send_Call{Call: _e.mock.On("Send", context1, eventServiceSendRequest)}
 }
 

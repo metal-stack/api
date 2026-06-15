@@ -74,7 +74,7 @@ type SizeImageConstraintServiceHandler_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeImageConstraintServiceCreateRequest *adminv2.SizeImageConstraintServiceCreateRequest
-func (_e *SizeImageConstraintServiceHandler_Expecter) Create(context1 interface{}, sizeImageConstraintServiceCreateRequest interface{}) *SizeImageConstraintServiceHandler_Create_Call {
+func (_e *SizeImageConstraintServiceHandler_Expecter) Create(context1 any, sizeImageConstraintServiceCreateRequest any) *SizeImageConstraintServiceHandler_Create_Call {
 	return &SizeImageConstraintServiceHandler_Create_Call{Call: _e.mock.On("Create", context1, sizeImageConstraintServiceCreateRequest)}
 }
 
@@ -142,7 +142,7 @@ type SizeImageConstraintServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeImageConstraintServiceDeleteRequest *adminv2.SizeImageConstraintServiceDeleteRequest
-func (_e *SizeImageConstraintServiceHandler_Expecter) Delete(context1 interface{}, sizeImageConstraintServiceDeleteRequest interface{}) *SizeImageConstraintServiceHandler_Delete_Call {
+func (_e *SizeImageConstraintServiceHandler_Expecter) Delete(context1 any, sizeImageConstraintServiceDeleteRequest any) *SizeImageConstraintServiceHandler_Delete_Call {
 	return &SizeImageConstraintServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, sizeImageConstraintServiceDeleteRequest)}
 }
 
@@ -210,7 +210,7 @@ type SizeImageConstraintServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeImageConstraintServiceGetRequest *adminv2.SizeImageConstraintServiceGetRequest
-func (_e *SizeImageConstraintServiceHandler_Expecter) Get(context1 interface{}, sizeImageConstraintServiceGetRequest interface{}) *SizeImageConstraintServiceHandler_Get_Call {
+func (_e *SizeImageConstraintServiceHandler_Expecter) Get(context1 any, sizeImageConstraintServiceGetRequest any) *SizeImageConstraintServiceHandler_Get_Call {
 	return &SizeImageConstraintServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, sizeImageConstraintServiceGetRequest)}
 }
 
@@ -278,7 +278,7 @@ type SizeImageConstraintServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeImageConstraintServiceListRequest *adminv2.SizeImageConstraintServiceListRequest
-func (_e *SizeImageConstraintServiceHandler_Expecter) List(context1 interface{}, sizeImageConstraintServiceListRequest interface{}) *SizeImageConstraintServiceHandler_List_Call {
+func (_e *SizeImageConstraintServiceHandler_Expecter) List(context1 any, sizeImageConstraintServiceListRequest any) *SizeImageConstraintServiceHandler_List_Call {
 	return &SizeImageConstraintServiceHandler_List_Call{Call: _e.mock.On("List", context1, sizeImageConstraintServiceListRequest)}
 }
 
@@ -346,7 +346,7 @@ type SizeImageConstraintServiceHandler_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeImageConstraintServiceUpdateRequest *adminv2.SizeImageConstraintServiceUpdateRequest
-func (_e *SizeImageConstraintServiceHandler_Expecter) Update(context1 interface{}, sizeImageConstraintServiceUpdateRequest interface{}) *SizeImageConstraintServiceHandler_Update_Call {
+func (_e *SizeImageConstraintServiceHandler_Expecter) Update(context1 any, sizeImageConstraintServiceUpdateRequest any) *SizeImageConstraintServiceHandler_Update_Call {
 	return &SizeImageConstraintServiceHandler_Update_Call{Call: _e.mock.On("Update", context1, sizeImageConstraintServiceUpdateRequest)}
 }
 

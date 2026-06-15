@@ -62,6 +62,18 @@ extend buf.validate.StringRules {
     message: "must be within 2 and 512 characters"
     expression: "this.size() >= 2 && this.size() <= 512"
   }];
+  // IsOption returns true if name field satisfies our requirements
+  optional bool is_option = 80048960 [(buf.validate.predefined).cel = {
+    id: "string.is_option"
+    message: "must be within 1 and 128 characters"
+    expression: "this.size() >= 1 && this.size() <= 128"
+  }];
+  // IsKey returns true if name field satisfies our requirements
+  optional bool is_key = 80048961 [(buf.validate.predefined).cel = {
+    id: "string.is_key"
+    message: "must be within 1 and 8192 characters"
+    expression: "this.size() >= 1 && this.size() <= 8192"
+  }];
 }
 
 extend buf.validate.RepeatedRules {

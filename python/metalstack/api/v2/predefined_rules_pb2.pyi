@@ -21,6 +21,10 @@ TRIMMED_FIELD_NUMBER: _ClassVar[int]
 trimmed: _descriptor.FieldDescriptor
 IS_USER_FIELD_NUMBER: _ClassVar[int]
 is_user: _descriptor.FieldDescriptor
+IS_OPTION_FIELD_NUMBER: _ClassVar[int]
+is_option: _descriptor.FieldDescriptor
+IS_KEY_FIELD_NUMBER: _ClassVar[int]
+is_key: _descriptor.FieldDescriptor
 PREFIXES_FIELD_NUMBER: _ClassVar[int]
 prefixes: _descriptor.FieldDescriptor
 IPS_FIELD_NUMBER: _ClassVar[int]

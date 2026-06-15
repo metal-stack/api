@@ -75,7 +75,7 @@ type BootServiceClient_Boot_Call struct {
 // Boot is a helper method to define mock.On call
 //   - context1 context.Context
 //   - bootServiceBootRequest *infrav2.BootServiceBootRequest
-func (_e *BootServiceClient_Expecter) Boot(context1 interface{}, bootServiceBootRequest interface{}) *BootServiceClient_Boot_Call {
+func (_e *BootServiceClient_Expecter) Boot(context1 any, bootServiceBootRequest any) *BootServiceClient_Boot_Call {
 	return &BootServiceClient_Boot_Call{Call: _e.mock.On("Boot", context1, bootServiceBootRequest)}
 }
 
@@ -143,7 +143,7 @@ type BootServiceClient_Dhcp_Call struct {
 // Dhcp is a helper method to define mock.On call
 //   - context1 context.Context
 //   - bootServiceDhcpRequest *infrav2.BootServiceDhcpRequest
-func (_e *BootServiceClient_Expecter) Dhcp(context1 interface{}, bootServiceDhcpRequest interface{}) *BootServiceClient_Dhcp_Call {
+func (_e *BootServiceClient_Expecter) Dhcp(context1 any, bootServiceDhcpRequest any) *BootServiceClient_Dhcp_Call {
 	return &BootServiceClient_Dhcp_Call{Call: _e.mock.On("Dhcp", context1, bootServiceDhcpRequest)}
 }
 
@@ -211,7 +211,7 @@ type BootServiceClient_InstallationSucceeded_Call struct {
 // InstallationSucceeded is a helper method to define mock.On call
 //   - context1 context.Context
 //   - bootServiceInstallationSucceededRequest *infrav2.BootServiceInstallationSucceededRequest
-func (_e *BootServiceClient_Expecter) InstallationSucceeded(context1 interface{}, bootServiceInstallationSucceededRequest interface{}) *BootServiceClient_InstallationSucceeded_Call {
+func (_e *BootServiceClient_Expecter) InstallationSucceeded(context1 any, bootServiceInstallationSucceededRequest any) *BootServiceClient_InstallationSucceeded_Call {
 	return &BootServiceClient_InstallationSucceeded_Call{Call: _e.mock.On("InstallationSucceeded", context1, bootServiceInstallationSucceededRequest)}
 }
 
@@ -279,7 +279,7 @@ type BootServiceClient_Register_Call struct {
 // Register is a helper method to define mock.On call
 //   - context1 context.Context
 //   - bootServiceRegisterRequest *infrav2.BootServiceRegisterRequest
-func (_e *BootServiceClient_Expecter) Register(context1 interface{}, bootServiceRegisterRequest interface{}) *BootServiceClient_Register_Call {
+func (_e *BootServiceClient_Expecter) Register(context1 any, bootServiceRegisterRequest any) *BootServiceClient_Register_Call {
 	return &BootServiceClient_Register_Call{Call: _e.mock.On("Register", context1, bootServiceRegisterRequest)}
 }
 
@@ -347,7 +347,7 @@ type BootServiceClient_SuperUserPassword_Call struct {
 // SuperUserPassword is a helper method to define mock.On call
 //   - context1 context.Context
 //   - bootServiceSuperUserPasswordRequest *infrav2.BootServiceSuperUserPasswordRequest
-func (_e *BootServiceClient_Expecter) SuperUserPassword(context1 interface{}, bootServiceSuperUserPasswordRequest interface{}) *BootServiceClient_SuperUserPassword_Call {
+func (_e *BootServiceClient_Expecter) SuperUserPassword(context1 any, bootServiceSuperUserPasswordRequest any) *BootServiceClient_SuperUserPassword_Call {
 	return &BootServiceClient_SuperUserPassword_Call{Call: _e.mock.On("SuperUserPassword", context1, bootServiceSuperUserPasswordRequest)}
 }
 
@@ -415,7 +415,7 @@ type BootServiceClient_Wait_Call struct {
 // Wait is a helper method to define mock.On call
 //   - context1 context.Context
 //   - bootServiceWaitRequest *infrav2.BootServiceWaitRequest
-func (_e *BootServiceClient_Expecter) Wait(context1 interface{}, bootServiceWaitRequest interface{}) *BootServiceClient_Wait_Call {
+func (_e *BootServiceClient_Expecter) Wait(context1 any, bootServiceWaitRequest any) *BootServiceClient_Wait_Call {
 	return &BootServiceClient_Wait_Call{Call: _e.mock.On("Wait", context1, bootServiceWaitRequest)}
 }
 

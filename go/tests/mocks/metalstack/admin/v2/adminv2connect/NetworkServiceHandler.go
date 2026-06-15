@@ -74,7 +74,7 @@ type NetworkServiceHandler_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - networkServiceCreateRequest *adminv2.NetworkServiceCreateRequest
-func (_e *NetworkServiceHandler_Expecter) Create(context1 interface{}, networkServiceCreateRequest interface{}) *NetworkServiceHandler_Create_Call {
+func (_e *NetworkServiceHandler_Expecter) Create(context1 any, networkServiceCreateRequest any) *NetworkServiceHandler_Create_Call {
 	return &NetworkServiceHandler_Create_Call{Call: _e.mock.On("Create", context1, networkServiceCreateRequest)}
 }
 
@@ -142,7 +142,7 @@ type NetworkServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - networkServiceDeleteRequest *adminv2.NetworkServiceDeleteRequest
-func (_e *NetworkServiceHandler_Expecter) Delete(context1 interface{}, networkServiceDeleteRequest interface{}) *NetworkServiceHandler_Delete_Call {
+func (_e *NetworkServiceHandler_Expecter) Delete(context1 any, networkServiceDeleteRequest any) *NetworkServiceHandler_Delete_Call {
 	return &NetworkServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, networkServiceDeleteRequest)}
 }
 
@@ -210,7 +210,7 @@ type NetworkServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - networkServiceGetRequest *adminv2.NetworkServiceGetRequest
-func (_e *NetworkServiceHandler_Expecter) Get(context1 interface{}, networkServiceGetRequest interface{}) *NetworkServiceHandler_Get_Call {
+func (_e *NetworkServiceHandler_Expecter) Get(context1 any, networkServiceGetRequest any) *NetworkServiceHandler_Get_Call {
 	return &NetworkServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, networkServiceGetRequest)}
 }
 
@@ -278,7 +278,7 @@ type NetworkServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - networkServiceListRequest *adminv2.NetworkServiceListRequest
-func (_e *NetworkServiceHandler_Expecter) List(context1 interface{}, networkServiceListRequest interface{}) *NetworkServiceHandler_List_Call {
+func (_e *NetworkServiceHandler_Expecter) List(context1 any, networkServiceListRequest any) *NetworkServiceHandler_List_Call {
 	return &NetworkServiceHandler_List_Call{Call: _e.mock.On("List", context1, networkServiceListRequest)}
 }
 
@@ -346,7 +346,7 @@ type NetworkServiceHandler_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - networkServiceUpdateRequest *adminv2.NetworkServiceUpdateRequest
-func (_e *NetworkServiceHandler_Expecter) Update(context1 interface{}, networkServiceUpdateRequest interface{}) *NetworkServiceHandler_Update_Call {
+func (_e *NetworkServiceHandler_Expecter) Update(context1 any, networkServiceUpdateRequest any) *NetworkServiceHandler_Update_Call {
 	return &NetworkServiceHandler_Update_Call{Call: _e.mock.On("Update", context1, networkServiceUpdateRequest)}
 }
 

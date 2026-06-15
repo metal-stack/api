@@ -74,7 +74,7 @@ type ComponentServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - componentServiceDeleteRequest *adminv2.ComponentServiceDeleteRequest
-func (_e *ComponentServiceHandler_Expecter) Delete(context1 interface{}, componentServiceDeleteRequest interface{}) *ComponentServiceHandler_Delete_Call {
+func (_e *ComponentServiceHandler_Expecter) Delete(context1 any, componentServiceDeleteRequest any) *ComponentServiceHandler_Delete_Call {
 	return &ComponentServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, componentServiceDeleteRequest)}
 }
 
@@ -142,7 +142,7 @@ type ComponentServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - componentServiceGetRequest *adminv2.ComponentServiceGetRequest
-func (_e *ComponentServiceHandler_Expecter) Get(context1 interface{}, componentServiceGetRequest interface{}) *ComponentServiceHandler_Get_Call {
+func (_e *ComponentServiceHandler_Expecter) Get(context1 any, componentServiceGetRequest any) *ComponentServiceHandler_Get_Call {
 	return &ComponentServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, componentServiceGetRequest)}
 }
 
@@ -210,7 +210,7 @@ type ComponentServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - componentServiceListRequest *adminv2.ComponentServiceListRequest
-func (_e *ComponentServiceHandler_Expecter) List(context1 interface{}, componentServiceListRequest interface{}) *ComponentServiceHandler_List_Call {
+func (_e *ComponentServiceHandler_Expecter) List(context1 any, componentServiceListRequest any) *ComponentServiceHandler_List_Call {
 	return &ComponentServiceHandler_List_Call{Call: _e.mock.On("List", context1, componentServiceListRequest)}
 }
 

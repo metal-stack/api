@@ -74,7 +74,7 @@ type SizeReservationServiceClient_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeReservationServiceCreateRequest *adminv2.SizeReservationServiceCreateRequest
-func (_e *SizeReservationServiceClient_Expecter) Create(context1 interface{}, sizeReservationServiceCreateRequest interface{}) *SizeReservationServiceClient_Create_Call {
+func (_e *SizeReservationServiceClient_Expecter) Create(context1 any, sizeReservationServiceCreateRequest any) *SizeReservationServiceClient_Create_Call {
 	return &SizeReservationServiceClient_Create_Call{Call: _e.mock.On("Create", context1, sizeReservationServiceCreateRequest)}
 }
 
@@ -142,7 +142,7 @@ type SizeReservationServiceClient_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeReservationServiceDeleteRequest *adminv2.SizeReservationServiceDeleteRequest
-func (_e *SizeReservationServiceClient_Expecter) Delete(context1 interface{}, sizeReservationServiceDeleteRequest interface{}) *SizeReservationServiceClient_Delete_Call {
+func (_e *SizeReservationServiceClient_Expecter) Delete(context1 any, sizeReservationServiceDeleteRequest any) *SizeReservationServiceClient_Delete_Call {
 	return &SizeReservationServiceClient_Delete_Call{Call: _e.mock.On("Delete", context1, sizeReservationServiceDeleteRequest)}
 }
 
@@ -210,7 +210,7 @@ type SizeReservationServiceClient_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeReservationServiceListRequest *adminv2.SizeReservationServiceListRequest
-func (_e *SizeReservationServiceClient_Expecter) List(context1 interface{}, sizeReservationServiceListRequest interface{}) *SizeReservationServiceClient_List_Call {
+func (_e *SizeReservationServiceClient_Expecter) List(context1 any, sizeReservationServiceListRequest any) *SizeReservationServiceClient_List_Call {
 	return &SizeReservationServiceClient_List_Call{Call: _e.mock.On("List", context1, sizeReservationServiceListRequest)}
 }
 
@@ -278,7 +278,7 @@ type SizeReservationServiceClient_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeReservationServiceUpdateRequest *adminv2.SizeReservationServiceUpdateRequest
-func (_e *SizeReservationServiceClient_Expecter) Update(context1 interface{}, sizeReservationServiceUpdateRequest interface{}) *SizeReservationServiceClient_Update_Call {
+func (_e *SizeReservationServiceClient_Expecter) Update(context1 any, sizeReservationServiceUpdateRequest any) *SizeReservationServiceClient_Update_Call {
 	return &SizeReservationServiceClient_Update_Call{Call: _e.mock.On("Update", context1, sizeReservationServiceUpdateRequest)}
 }
 
