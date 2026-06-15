@@ -24,6 +24,9 @@ class MachineService(Protocol):
     async def list(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def delete(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
     async def b_m_c_command(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
@@ -64,6 +67,16 @@ class MachineServiceASGIApplication(ConnectASGIApplication[MachineService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.list,
+                ),
+                "/metalstack.admin.v2.MachineService/Delete": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Delete",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.delete,
                 ),
                 "/metalstack.admin.v2.MachineService/BMCCommand": Endpoint.unary(
                     method=MethodInfo(
@@ -163,6 +176,26 @@ class MachineServiceClient(ConnectClient):
                 service_name="metalstack.admin.v2.MachineService",
                 input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListRequest,
                 output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    async def delete(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Delete",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
@@ -278,6 +311,8 @@ class MachineServiceSync(Protocol):
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def list(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def delete(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def b_m_c_command(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceBMCCommandResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def get_b_m_c(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceGetBMCResponse:
@@ -313,6 +348,16 @@ class MachineServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.list,
+                ),
+                "/metalstack.admin.v2.MachineService/Delete": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Delete",
+                        service_name="metalstack.admin.v2.MachineService",
+                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.delete,
                 ),
                 "/metalstack.admin.v2.MachineService/BMCCommand": EndpointSync.unary(
                     method=MethodInfo(
@@ -412,6 +457,26 @@ class MachineServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.MachineService",
                 input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListRequest,
                 output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceListResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def delete(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Delete",
+                service_name="metalstack.admin.v2.MachineService",
+                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteRequest,
+                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceDeleteResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

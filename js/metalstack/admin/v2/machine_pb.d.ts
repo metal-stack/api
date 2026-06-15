@@ -85,6 +85,42 @@ export type MachineServiceListResponse = Message<"metalstack.admin.v2.MachineSer
  */
 export declare const MachineServiceListResponseSchema: GenMessage<MachineServiceListResponse>;
 /**
+ * MachineServiceDeleteRequest is the request payload for a machine delete request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceDeleteRequest
+ */
+export type MachineServiceDeleteRequest = Message<"metalstack.admin.v2.MachineServiceDeleteRequest"> & {
+    /**
+     * UUID of the machine to permanently delete
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceDeleteRequest.
+ * Use `create(MachineServiceDeleteRequestSchema)` to create a new message.
+ */
+export declare const MachineServiceDeleteRequestSchema: GenMessage<MachineServiceDeleteRequest>;
+/**
+ * MachineServiceDeleteResponse is the response payload for a machine delete request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceDeleteResponse
+ */
+export type MachineServiceDeleteResponse = Message<"metalstack.admin.v2.MachineServiceDeleteResponse"> & {
+    /**
+     * Machine is the machine permanently deleted
+     *
+     * @generated from field: metalstack.api.v2.Machine machine = 1;
+     */
+    machine?: Machine | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceDeleteResponse.
+ * Use `create(MachineServiceDeleteResponseSchema)` to create a new message.
+ */
+export declare const MachineServiceDeleteResponseSchema: GenMessage<MachineServiceDeleteResponse>;
+/**
  * MachineServiceBMCCommandRequest is the request payload for a machine bmc command
  *
  * @generated from message metalstack.admin.v2.MachineServiceBMCCommandRequest
@@ -322,6 +358,16 @@ export declare const MachineService: GenService<{
         methodKind: "unary";
         input: typeof MachineServiceListRequestSchema;
         output: typeof MachineServiceListResponseSchema;
+    };
+    /**
+     * Delete a machine from the database. This can only be done if the machine is offline and dead.
+     *
+     * @generated from rpc metalstack.admin.v2.MachineService.Delete
+     */
+    delete: {
+        methodKind: "unary";
+        input: typeof MachineServiceDeleteRequestSchema;
+        output: typeof MachineServiceDeleteResponseSchema;
     };
     /**
      * BMCCommand sends a command to the BMC of a machine.
