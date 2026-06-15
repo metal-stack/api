@@ -74,7 +74,7 @@ type FilesystemServiceClient_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - filesystemServiceCreateRequest *adminv2.FilesystemServiceCreateRequest
-func (_e *FilesystemServiceClient_Expecter) Create(context1 interface{}, filesystemServiceCreateRequest interface{}) *FilesystemServiceClient_Create_Call {
+func (_e *FilesystemServiceClient_Expecter) Create(context1 any, filesystemServiceCreateRequest any) *FilesystemServiceClient_Create_Call {
 	return &FilesystemServiceClient_Create_Call{Call: _e.mock.On("Create", context1, filesystemServiceCreateRequest)}
 }
 
@@ -142,7 +142,7 @@ type FilesystemServiceClient_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - filesystemServiceDeleteRequest *adminv2.FilesystemServiceDeleteRequest
-func (_e *FilesystemServiceClient_Expecter) Delete(context1 interface{}, filesystemServiceDeleteRequest interface{}) *FilesystemServiceClient_Delete_Call {
+func (_e *FilesystemServiceClient_Expecter) Delete(context1 any, filesystemServiceDeleteRequest any) *FilesystemServiceClient_Delete_Call {
 	return &FilesystemServiceClient_Delete_Call{Call: _e.mock.On("Delete", context1, filesystemServiceDeleteRequest)}
 }
 
@@ -210,7 +210,7 @@ type FilesystemServiceClient_Match_Call struct {
 // Match is a helper method to define mock.On call
 //   - context1 context.Context
 //   - filesystemServiceMatchRequest *adminv2.FilesystemServiceMatchRequest
-func (_e *FilesystemServiceClient_Expecter) Match(context1 interface{}, filesystemServiceMatchRequest interface{}) *FilesystemServiceClient_Match_Call {
+func (_e *FilesystemServiceClient_Expecter) Match(context1 any, filesystemServiceMatchRequest any) *FilesystemServiceClient_Match_Call {
 	return &FilesystemServiceClient_Match_Call{Call: _e.mock.On("Match", context1, filesystemServiceMatchRequest)}
 }
 
@@ -278,7 +278,7 @@ type FilesystemServiceClient_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - filesystemServiceUpdateRequest *adminv2.FilesystemServiceUpdateRequest
-func (_e *FilesystemServiceClient_Expecter) Update(context1 interface{}, filesystemServiceUpdateRequest interface{}) *FilesystemServiceClient_Update_Call {
+func (_e *FilesystemServiceClient_Expecter) Update(context1 any, filesystemServiceUpdateRequest any) *FilesystemServiceClient_Update_Call {
 	return &FilesystemServiceClient_Update_Call{Call: _e.mock.On("Update", context1, filesystemServiceUpdateRequest)}
 }
 

@@ -74,7 +74,7 @@ type TaskServiceClient_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - taskServiceDeleteRequest *adminv2.TaskServiceDeleteRequest
-func (_e *TaskServiceClient_Expecter) Delete(context1 interface{}, taskServiceDeleteRequest interface{}) *TaskServiceClient_Delete_Call {
+func (_e *TaskServiceClient_Expecter) Delete(context1 any, taskServiceDeleteRequest any) *TaskServiceClient_Delete_Call {
 	return &TaskServiceClient_Delete_Call{Call: _e.mock.On("Delete", context1, taskServiceDeleteRequest)}
 }
 
@@ -142,7 +142,7 @@ type TaskServiceClient_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - taskServiceGetRequest *adminv2.TaskServiceGetRequest
-func (_e *TaskServiceClient_Expecter) Get(context1 interface{}, taskServiceGetRequest interface{}) *TaskServiceClient_Get_Call {
+func (_e *TaskServiceClient_Expecter) Get(context1 any, taskServiceGetRequest any) *TaskServiceClient_Get_Call {
 	return &TaskServiceClient_Get_Call{Call: _e.mock.On("Get", context1, taskServiceGetRequest)}
 }
 
@@ -210,7 +210,7 @@ type TaskServiceClient_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - taskServiceListRequest *adminv2.TaskServiceListRequest
-func (_e *TaskServiceClient_Expecter) List(context1 interface{}, taskServiceListRequest interface{}) *TaskServiceClient_List_Call {
+func (_e *TaskServiceClient_Expecter) List(context1 any, taskServiceListRequest any) *TaskServiceClient_List_Call {
 	return &TaskServiceClient_List_Call{Call: _e.mock.On("List", context1, taskServiceListRequest)}
 }
 
@@ -278,7 +278,7 @@ type TaskServiceClient_Queues_Call struct {
 // Queues is a helper method to define mock.On call
 //   - context1 context.Context
 //   - taskServiceQueuesRequest *adminv2.TaskServiceQueuesRequest
-func (_e *TaskServiceClient_Expecter) Queues(context1 interface{}, taskServiceQueuesRequest interface{}) *TaskServiceClient_Queues_Call {
+func (_e *TaskServiceClient_Expecter) Queues(context1 any, taskServiceQueuesRequest any) *TaskServiceClient_Queues_Call {
 	return &TaskServiceClient_Queues_Call{Call: _e.mock.On("Queues", context1, taskServiceQueuesRequest)}
 }
 

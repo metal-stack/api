@@ -74,7 +74,7 @@ type SizeServiceClient_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeServiceCreateRequest *adminv2.SizeServiceCreateRequest
-func (_e *SizeServiceClient_Expecter) Create(context1 interface{}, sizeServiceCreateRequest interface{}) *SizeServiceClient_Create_Call {
+func (_e *SizeServiceClient_Expecter) Create(context1 any, sizeServiceCreateRequest any) *SizeServiceClient_Create_Call {
 	return &SizeServiceClient_Create_Call{Call: _e.mock.On("Create", context1, sizeServiceCreateRequest)}
 }
 
@@ -142,7 +142,7 @@ type SizeServiceClient_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeServiceDeleteRequest *adminv2.SizeServiceDeleteRequest
-func (_e *SizeServiceClient_Expecter) Delete(context1 interface{}, sizeServiceDeleteRequest interface{}) *SizeServiceClient_Delete_Call {
+func (_e *SizeServiceClient_Expecter) Delete(context1 any, sizeServiceDeleteRequest any) *SizeServiceClient_Delete_Call {
 	return &SizeServiceClient_Delete_Call{Call: _e.mock.On("Delete", context1, sizeServiceDeleteRequest)}
 }
 
@@ -210,7 +210,7 @@ type SizeServiceClient_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeServiceUpdateRequest *adminv2.SizeServiceUpdateRequest
-func (_e *SizeServiceClient_Expecter) Update(context1 interface{}, sizeServiceUpdateRequest interface{}) *SizeServiceClient_Update_Call {
+func (_e *SizeServiceClient_Expecter) Update(context1 any, sizeServiceUpdateRequest any) *SizeServiceClient_Update_Call {
 	return &SizeServiceClient_Update_Call{Call: _e.mock.On("Update", context1, sizeServiceUpdateRequest)}
 }
 

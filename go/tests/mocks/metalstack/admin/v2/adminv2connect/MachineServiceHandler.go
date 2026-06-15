@@ -74,7 +74,7 @@ type MachineServiceHandler_BMCCommand_Call struct {
 // BMCCommand is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceBMCCommandRequest *adminv2.MachineServiceBMCCommandRequest
-func (_e *MachineServiceHandler_Expecter) BMCCommand(context1 interface{}, machineServiceBMCCommandRequest interface{}) *MachineServiceHandler_BMCCommand_Call {
+func (_e *MachineServiceHandler_Expecter) BMCCommand(context1 any, machineServiceBMCCommandRequest any) *MachineServiceHandler_BMCCommand_Call {
 	return &MachineServiceHandler_BMCCommand_Call{Call: _e.mock.On("BMCCommand", context1, machineServiceBMCCommandRequest)}
 }
 
@@ -142,7 +142,7 @@ type MachineServiceHandler_ConsolePassword_Call struct {
 // ConsolePassword is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceConsolePasswordRequest *adminv2.MachineServiceConsolePasswordRequest
-func (_e *MachineServiceHandler_Expecter) ConsolePassword(context1 interface{}, machineServiceConsolePasswordRequest interface{}) *MachineServiceHandler_ConsolePassword_Call {
+func (_e *MachineServiceHandler_Expecter) ConsolePassword(context1 any, machineServiceConsolePasswordRequest any) *MachineServiceHandler_ConsolePassword_Call {
 	return &MachineServiceHandler_ConsolePassword_Call{Call: _e.mock.On("ConsolePassword", context1, machineServiceConsolePasswordRequest)}
 }
 
@@ -210,7 +210,7 @@ type MachineServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceGetRequest *adminv2.MachineServiceGetRequest
-func (_e *MachineServiceHandler_Expecter) Get(context1 interface{}, machineServiceGetRequest interface{}) *MachineServiceHandler_Get_Call {
+func (_e *MachineServiceHandler_Expecter) Get(context1 any, machineServiceGetRequest any) *MachineServiceHandler_Get_Call {
 	return &MachineServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, machineServiceGetRequest)}
 }
 
@@ -278,7 +278,7 @@ type MachineServiceHandler_GetBMC_Call struct {
 // GetBMC is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceGetBMCRequest *adminv2.MachineServiceGetBMCRequest
-func (_e *MachineServiceHandler_Expecter) GetBMC(context1 interface{}, machineServiceGetBMCRequest interface{}) *MachineServiceHandler_GetBMC_Call {
+func (_e *MachineServiceHandler_Expecter) GetBMC(context1 any, machineServiceGetBMCRequest any) *MachineServiceHandler_GetBMC_Call {
 	return &MachineServiceHandler_GetBMC_Call{Call: _e.mock.On("GetBMC", context1, machineServiceGetBMCRequest)}
 }
 
@@ -346,7 +346,7 @@ type MachineServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceListRequest *adminv2.MachineServiceListRequest
-func (_e *MachineServiceHandler_Expecter) List(context1 interface{}, machineServiceListRequest interface{}) *MachineServiceHandler_List_Call {
+func (_e *MachineServiceHandler_Expecter) List(context1 any, machineServiceListRequest any) *MachineServiceHandler_List_Call {
 	return &MachineServiceHandler_List_Call{Call: _e.mock.On("List", context1, machineServiceListRequest)}
 }
 
@@ -414,7 +414,7 @@ type MachineServiceHandler_ListBMC_Call struct {
 // ListBMC is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceListBMCRequest *adminv2.MachineServiceListBMCRequest
-func (_e *MachineServiceHandler_Expecter) ListBMC(context1 interface{}, machineServiceListBMCRequest interface{}) *MachineServiceHandler_ListBMC_Call {
+func (_e *MachineServiceHandler_Expecter) ListBMC(context1 any, machineServiceListBMCRequest any) *MachineServiceHandler_ListBMC_Call {
 	return &MachineServiceHandler_ListBMC_Call{Call: _e.mock.On("ListBMC", context1, machineServiceListBMCRequest)}
 }
 
@@ -482,7 +482,7 @@ type MachineServiceHandler_SetState_Call struct {
 // SetState is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceSetStateRequest *adminv2.MachineServiceSetStateRequest
-func (_e *MachineServiceHandler_Expecter) SetState(context1 interface{}, machineServiceSetStateRequest interface{}) *MachineServiceHandler_SetState_Call {
+func (_e *MachineServiceHandler_Expecter) SetState(context1 any, machineServiceSetStateRequest any) *MachineServiceHandler_SetState_Call {
 	return &MachineServiceHandler_SetState_Call{Call: _e.mock.On("SetState", context1, machineServiceSetStateRequest)}
 }
 

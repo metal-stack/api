@@ -74,7 +74,7 @@ type MachineServiceClient_BMCCommand_Call struct {
 // BMCCommand is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceBMCCommandRequest *apiv2.MachineServiceBMCCommandRequest
-func (_e *MachineServiceClient_Expecter) BMCCommand(context1 interface{}, machineServiceBMCCommandRequest interface{}) *MachineServiceClient_BMCCommand_Call {
+func (_e *MachineServiceClient_Expecter) BMCCommand(context1 any, machineServiceBMCCommandRequest any) *MachineServiceClient_BMCCommand_Call {
 	return &MachineServiceClient_BMCCommand_Call{Call: _e.mock.On("BMCCommand", context1, machineServiceBMCCommandRequest)}
 }
 
@@ -142,7 +142,7 @@ type MachineServiceClient_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceCreateRequest *apiv2.MachineServiceCreateRequest
-func (_e *MachineServiceClient_Expecter) Create(context1 interface{}, machineServiceCreateRequest interface{}) *MachineServiceClient_Create_Call {
+func (_e *MachineServiceClient_Expecter) Create(context1 any, machineServiceCreateRequest any) *MachineServiceClient_Create_Call {
 	return &MachineServiceClient_Create_Call{Call: _e.mock.On("Create", context1, machineServiceCreateRequest)}
 }
 
@@ -210,7 +210,7 @@ type MachineServiceClient_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceDeleteRequest *apiv2.MachineServiceDeleteRequest
-func (_e *MachineServiceClient_Expecter) Delete(context1 interface{}, machineServiceDeleteRequest interface{}) *MachineServiceClient_Delete_Call {
+func (_e *MachineServiceClient_Expecter) Delete(context1 any, machineServiceDeleteRequest any) *MachineServiceClient_Delete_Call {
 	return &MachineServiceClient_Delete_Call{Call: _e.mock.On("Delete", context1, machineServiceDeleteRequest)}
 }
 
@@ -278,7 +278,7 @@ type MachineServiceClient_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceGetRequest *apiv2.MachineServiceGetRequest
-func (_e *MachineServiceClient_Expecter) Get(context1 interface{}, machineServiceGetRequest interface{}) *MachineServiceClient_Get_Call {
+func (_e *MachineServiceClient_Expecter) Get(context1 any, machineServiceGetRequest any) *MachineServiceClient_Get_Call {
 	return &MachineServiceClient_Get_Call{Call: _e.mock.On("Get", context1, machineServiceGetRequest)}
 }
 
@@ -346,7 +346,7 @@ type MachineServiceClient_GetBMC_Call struct {
 // GetBMC is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceGetBMCRequest *apiv2.MachineServiceGetBMCRequest
-func (_e *MachineServiceClient_Expecter) GetBMC(context1 interface{}, machineServiceGetBMCRequest interface{}) *MachineServiceClient_GetBMC_Call {
+func (_e *MachineServiceClient_Expecter) GetBMC(context1 any, machineServiceGetBMCRequest any) *MachineServiceClient_GetBMC_Call {
 	return &MachineServiceClient_GetBMC_Call{Call: _e.mock.On("GetBMC", context1, machineServiceGetBMCRequest)}
 }
 
@@ -414,7 +414,7 @@ type MachineServiceClient_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceListRequest *apiv2.MachineServiceListRequest
-func (_e *MachineServiceClient_Expecter) List(context1 interface{}, machineServiceListRequest interface{}) *MachineServiceClient_List_Call {
+func (_e *MachineServiceClient_Expecter) List(context1 any, machineServiceListRequest any) *MachineServiceClient_List_Call {
 	return &MachineServiceClient_List_Call{Call: _e.mock.On("List", context1, machineServiceListRequest)}
 }
 
@@ -482,7 +482,7 @@ type MachineServiceClient_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - machineServiceUpdateRequest *apiv2.MachineServiceUpdateRequest
-func (_e *MachineServiceClient_Expecter) Update(context1 interface{}, machineServiceUpdateRequest interface{}) *MachineServiceClient_Update_Call {
+func (_e *MachineServiceClient_Expecter) Update(context1 any, machineServiceUpdateRequest any) *MachineServiceClient_Update_Call {
 	return &MachineServiceClient_Update_Call{Call: _e.mock.On("Update", context1, machineServiceUpdateRequest)}
 }
 

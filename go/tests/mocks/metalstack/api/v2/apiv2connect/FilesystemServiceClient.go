@@ -74,7 +74,7 @@ type FilesystemServiceClient_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - filesystemServiceGetRequest *apiv2.FilesystemServiceGetRequest
-func (_e *FilesystemServiceClient_Expecter) Get(context1 interface{}, filesystemServiceGetRequest interface{}) *FilesystemServiceClient_Get_Call {
+func (_e *FilesystemServiceClient_Expecter) Get(context1 any, filesystemServiceGetRequest any) *FilesystemServiceClient_Get_Call {
 	return &FilesystemServiceClient_Get_Call{Call: _e.mock.On("Get", context1, filesystemServiceGetRequest)}
 }
 
@@ -142,7 +142,7 @@ type FilesystemServiceClient_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - filesystemServiceListRequest *apiv2.FilesystemServiceListRequest
-func (_e *FilesystemServiceClient_Expecter) List(context1 interface{}, filesystemServiceListRequest interface{}) *FilesystemServiceClient_List_Call {
+func (_e *FilesystemServiceClient_Expecter) List(context1 any, filesystemServiceListRequest any) *FilesystemServiceClient_List_Call {
 	return &FilesystemServiceClient_List_Call{Call: _e.mock.On("List", context1, filesystemServiceListRequest)}
 }
 

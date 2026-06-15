@@ -74,7 +74,7 @@ type SwitchServiceHandler_ConnectedMachines_Call struct {
 // ConnectedMachines is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServiceConnectedMachinesRequest *adminv2.SwitchServiceConnectedMachinesRequest
-func (_e *SwitchServiceHandler_Expecter) ConnectedMachines(context1 interface{}, switchServiceConnectedMachinesRequest interface{}) *SwitchServiceHandler_ConnectedMachines_Call {
+func (_e *SwitchServiceHandler_Expecter) ConnectedMachines(context1 any, switchServiceConnectedMachinesRequest any) *SwitchServiceHandler_ConnectedMachines_Call {
 	return &SwitchServiceHandler_ConnectedMachines_Call{Call: _e.mock.On("ConnectedMachines", context1, switchServiceConnectedMachinesRequest)}
 }
 
@@ -142,7 +142,7 @@ type SwitchServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServiceDeleteRequest *adminv2.SwitchServiceDeleteRequest
-func (_e *SwitchServiceHandler_Expecter) Delete(context1 interface{}, switchServiceDeleteRequest interface{}) *SwitchServiceHandler_Delete_Call {
+func (_e *SwitchServiceHandler_Expecter) Delete(context1 any, switchServiceDeleteRequest any) *SwitchServiceHandler_Delete_Call {
 	return &SwitchServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, switchServiceDeleteRequest)}
 }
 
@@ -210,7 +210,7 @@ type SwitchServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServiceGetRequest *adminv2.SwitchServiceGetRequest
-func (_e *SwitchServiceHandler_Expecter) Get(context1 interface{}, switchServiceGetRequest interface{}) *SwitchServiceHandler_Get_Call {
+func (_e *SwitchServiceHandler_Expecter) Get(context1 any, switchServiceGetRequest any) *SwitchServiceHandler_Get_Call {
 	return &SwitchServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, switchServiceGetRequest)}
 }
 
@@ -278,7 +278,7 @@ type SwitchServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServiceListRequest *adminv2.SwitchServiceListRequest
-func (_e *SwitchServiceHandler_Expecter) List(context1 interface{}, switchServiceListRequest interface{}) *SwitchServiceHandler_List_Call {
+func (_e *SwitchServiceHandler_Expecter) List(context1 any, switchServiceListRequest any) *SwitchServiceHandler_List_Call {
 	return &SwitchServiceHandler_List_Call{Call: _e.mock.On("List", context1, switchServiceListRequest)}
 }
 
@@ -346,7 +346,7 @@ type SwitchServiceHandler_Migrate_Call struct {
 // Migrate is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServiceMigrateRequest *adminv2.SwitchServiceMigrateRequest
-func (_e *SwitchServiceHandler_Expecter) Migrate(context1 interface{}, switchServiceMigrateRequest interface{}) *SwitchServiceHandler_Migrate_Call {
+func (_e *SwitchServiceHandler_Expecter) Migrate(context1 any, switchServiceMigrateRequest any) *SwitchServiceHandler_Migrate_Call {
 	return &SwitchServiceHandler_Migrate_Call{Call: _e.mock.On("Migrate", context1, switchServiceMigrateRequest)}
 }
 
@@ -414,7 +414,7 @@ type SwitchServiceHandler_Port_Call struct {
 // Port is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServicePortRequest *adminv2.SwitchServicePortRequest
-func (_e *SwitchServiceHandler_Expecter) Port(context1 interface{}, switchServicePortRequest interface{}) *SwitchServiceHandler_Port_Call {
+func (_e *SwitchServiceHandler_Expecter) Port(context1 any, switchServicePortRequest any) *SwitchServiceHandler_Port_Call {
 	return &SwitchServiceHandler_Port_Call{Call: _e.mock.On("Port", context1, switchServicePortRequest)}
 }
 
@@ -482,7 +482,7 @@ type SwitchServiceHandler_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServiceUpdateRequest *adminv2.SwitchServiceUpdateRequest
-func (_e *SwitchServiceHandler_Expecter) Update(context1 interface{}, switchServiceUpdateRequest interface{}) *SwitchServiceHandler_Update_Call {
+func (_e *SwitchServiceHandler_Expecter) Update(context1 any, switchServiceUpdateRequest any) *SwitchServiceHandler_Update_Call {
 	return &SwitchServiceHandler_Update_Call{Call: _e.mock.On("Update", context1, switchServiceUpdateRequest)}
 }
 

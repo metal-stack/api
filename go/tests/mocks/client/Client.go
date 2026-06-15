@@ -190,7 +190,7 @@ type Client_Ping_Call struct {
 // Ping is a helper method to define mock.On call
 //   - context1 context.Context
 //   - pingConfig *client.PingConfig
-func (_e *Client_Expecter) Ping(context1 interface{}, pingConfig interface{}) *Client_Ping_Call {
+func (_e *Client_Expecter) Ping(context1 any, pingConfig any) *Client_Ping_Call {
 	return &Client_Ping_Call{Call: _e.mock.On("Ping", context1, pingConfig)}
 }
 

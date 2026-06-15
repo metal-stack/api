@@ -74,7 +74,7 @@ type SizeImageConstraintServiceClient_Try_Call struct {
 // Try is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeImageConstraintServiceTryRequest *apiv2.SizeImageConstraintServiceTryRequest
-func (_e *SizeImageConstraintServiceClient_Expecter) Try(context1 interface{}, sizeImageConstraintServiceTryRequest interface{}) *SizeImageConstraintServiceClient_Try_Call {
+func (_e *SizeImageConstraintServiceClient_Expecter) Try(context1 any, sizeImageConstraintServiceTryRequest any) *SizeImageConstraintServiceClient_Try_Call {
 	return &SizeImageConstraintServiceClient_Try_Call{Call: _e.mock.On("Try", context1, sizeImageConstraintServiceTryRequest)}
 }
 

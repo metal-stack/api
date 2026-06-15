@@ -74,7 +74,7 @@ type TenantServiceClient_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - tenantServiceCreateRequest *adminv2.TenantServiceCreateRequest
-func (_e *TenantServiceClient_Expecter) Create(context1 interface{}, tenantServiceCreateRequest interface{}) *TenantServiceClient_Create_Call {
+func (_e *TenantServiceClient_Expecter) Create(context1 any, tenantServiceCreateRequest any) *TenantServiceClient_Create_Call {
 	return &TenantServiceClient_Create_Call{Call: _e.mock.On("Create", context1, tenantServiceCreateRequest)}
 }
 
@@ -142,7 +142,7 @@ type TenantServiceClient_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - tenantServiceListRequest *adminv2.TenantServiceListRequest
-func (_e *TenantServiceClient_Expecter) List(context1 interface{}, tenantServiceListRequest interface{}) *TenantServiceClient_List_Call {
+func (_e *TenantServiceClient_Expecter) List(context1 any, tenantServiceListRequest any) *TenantServiceClient_List_Call {
 	return &TenantServiceClient_List_Call{Call: _e.mock.On("List", context1, tenantServiceListRequest)}
 }
 

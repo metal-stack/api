@@ -74,7 +74,7 @@ type SizeReservationServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeReservationServiceGetRequest *apiv2.SizeReservationServiceGetRequest
-func (_e *SizeReservationServiceHandler_Expecter) Get(context1 interface{}, sizeReservationServiceGetRequest interface{}) *SizeReservationServiceHandler_Get_Call {
+func (_e *SizeReservationServiceHandler_Expecter) Get(context1 any, sizeReservationServiceGetRequest any) *SizeReservationServiceHandler_Get_Call {
 	return &SizeReservationServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, sizeReservationServiceGetRequest)}
 }
 
@@ -142,7 +142,7 @@ type SizeReservationServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeReservationServiceListRequest *apiv2.SizeReservationServiceListRequest
-func (_e *SizeReservationServiceHandler_Expecter) List(context1 interface{}, sizeReservationServiceListRequest interface{}) *SizeReservationServiceHandler_List_Call {
+func (_e *SizeReservationServiceHandler_Expecter) List(context1 any, sizeReservationServiceListRequest any) *SizeReservationServiceHandler_List_Call {
 	return &SizeReservationServiceHandler_List_Call{Call: _e.mock.On("List", context1, sizeReservationServiceListRequest)}
 }
 

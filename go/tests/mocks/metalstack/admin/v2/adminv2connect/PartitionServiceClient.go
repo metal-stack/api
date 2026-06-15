@@ -74,7 +74,7 @@ type PartitionServiceClient_Capacity_Call struct {
 // Capacity is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceCapacityRequest *adminv2.PartitionServiceCapacityRequest
-func (_e *PartitionServiceClient_Expecter) Capacity(context1 interface{}, partitionServiceCapacityRequest interface{}) *PartitionServiceClient_Capacity_Call {
+func (_e *PartitionServiceClient_Expecter) Capacity(context1 any, partitionServiceCapacityRequest any) *PartitionServiceClient_Capacity_Call {
 	return &PartitionServiceClient_Capacity_Call{Call: _e.mock.On("Capacity", context1, partitionServiceCapacityRequest)}
 }
 
@@ -142,7 +142,7 @@ type PartitionServiceClient_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceCreateRequest *adminv2.PartitionServiceCreateRequest
-func (_e *PartitionServiceClient_Expecter) Create(context1 interface{}, partitionServiceCreateRequest interface{}) *PartitionServiceClient_Create_Call {
+func (_e *PartitionServiceClient_Expecter) Create(context1 any, partitionServiceCreateRequest any) *PartitionServiceClient_Create_Call {
 	return &PartitionServiceClient_Create_Call{Call: _e.mock.On("Create", context1, partitionServiceCreateRequest)}
 }
 
@@ -210,7 +210,7 @@ type PartitionServiceClient_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceDeleteRequest *adminv2.PartitionServiceDeleteRequest
-func (_e *PartitionServiceClient_Expecter) Delete(context1 interface{}, partitionServiceDeleteRequest interface{}) *PartitionServiceClient_Delete_Call {
+func (_e *PartitionServiceClient_Expecter) Delete(context1 any, partitionServiceDeleteRequest any) *PartitionServiceClient_Delete_Call {
 	return &PartitionServiceClient_Delete_Call{Call: _e.mock.On("Delete", context1, partitionServiceDeleteRequest)}
 }
 
@@ -278,7 +278,7 @@ type PartitionServiceClient_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceUpdateRequest *adminv2.PartitionServiceUpdateRequest
-func (_e *PartitionServiceClient_Expecter) Update(context1 interface{}, partitionServiceUpdateRequest interface{}) *PartitionServiceClient_Update_Call {
+func (_e *PartitionServiceClient_Expecter) Update(context1 any, partitionServiceUpdateRequest any) *PartitionServiceClient_Update_Call {
 	return &PartitionServiceClient_Update_Call{Call: _e.mock.On("Update", context1, partitionServiceUpdateRequest)}
 }
 

@@ -74,7 +74,7 @@ type IPServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - iPServiceListRequest *adminv2.IPServiceListRequest
-func (_e *IPServiceHandler_Expecter) List(context1 interface{}, iPServiceListRequest interface{}) *IPServiceHandler_List_Call {
+func (_e *IPServiceHandler_Expecter) List(context1 any, iPServiceListRequest any) *IPServiceHandler_List_Call {
 	return &IPServiceHandler_List_Call{Call: _e.mock.On("List", context1, iPServiceListRequest)}
 }
 

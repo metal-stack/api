@@ -74,7 +74,7 @@ type ImageServiceHandler_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - imageServiceCreateRequest *adminv2.ImageServiceCreateRequest
-func (_e *ImageServiceHandler_Expecter) Create(context1 interface{}, imageServiceCreateRequest interface{}) *ImageServiceHandler_Create_Call {
+func (_e *ImageServiceHandler_Expecter) Create(context1 any, imageServiceCreateRequest any) *ImageServiceHandler_Create_Call {
 	return &ImageServiceHandler_Create_Call{Call: _e.mock.On("Create", context1, imageServiceCreateRequest)}
 }
 
@@ -142,7 +142,7 @@ type ImageServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - imageServiceDeleteRequest *adminv2.ImageServiceDeleteRequest
-func (_e *ImageServiceHandler_Expecter) Delete(context1 interface{}, imageServiceDeleteRequest interface{}) *ImageServiceHandler_Delete_Call {
+func (_e *ImageServiceHandler_Expecter) Delete(context1 any, imageServiceDeleteRequest any) *ImageServiceHandler_Delete_Call {
 	return &ImageServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, imageServiceDeleteRequest)}
 }
 
@@ -210,7 +210,7 @@ type ImageServiceHandler_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - imageServiceUpdateRequest *adminv2.ImageServiceUpdateRequest
-func (_e *ImageServiceHandler_Expecter) Update(context1 interface{}, imageServiceUpdateRequest interface{}) *ImageServiceHandler_Update_Call {
+func (_e *ImageServiceHandler_Expecter) Update(context1 any, imageServiceUpdateRequest any) *ImageServiceHandler_Update_Call {
 	return &ImageServiceHandler_Update_Call{Call: _e.mock.On("Update", context1, imageServiceUpdateRequest)}
 }
 
@@ -278,7 +278,7 @@ type ImageServiceHandler_Usage_Call struct {
 // Usage is a helper method to define mock.On call
 //   - context1 context.Context
 //   - imageServiceUsageRequest *adminv2.ImageServiceUsageRequest
-func (_e *ImageServiceHandler_Expecter) Usage(context1 interface{}, imageServiceUsageRequest interface{}) *ImageServiceHandler_Usage_Call {
+func (_e *ImageServiceHandler_Expecter) Usage(context1 any, imageServiceUsageRequest any) *ImageServiceHandler_Usage_Call {
 	return &ImageServiceHandler_Usage_Call{Call: _e.mock.On("Usage", context1, imageServiceUsageRequest)}
 }
 
