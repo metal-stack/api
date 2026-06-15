@@ -164,16 +164,18 @@ class MachineConnection(_message.Message):
     def __init__(self, machine_id: _Optional[str] = ..., nic: _Optional[_Union[SwitchNic, _Mapping]] = ...) -> None: ...
 
 class SwitchQuery(_message.Message):
-    __slots__ = ("id", "partition", "rack", "os")
+    __slots__ = ("id", "partition", "rack", "os", "connected_machine_id")
     ID_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
+    CONNECTED_MACHINE_ID_FIELD_NUMBER: _ClassVar[int]
     id: str
     partition: str
     rack: str
     os: SwitchOSQuery
-    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., os: _Optional[_Union[SwitchOSQuery, _Mapping]] = ...) -> None: ...
+    connected_machine_id: str
+    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., os: _Optional[_Union[SwitchOSQuery, _Mapping]] = ..., connected_machine_id: _Optional[str] = ...) -> None: ...
 
 class SwitchOSQuery(_message.Message):
     __slots__ = ("vendor", "version")

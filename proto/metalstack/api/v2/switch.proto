@@ -136,6 +136,8 @@ message SwitchQuery {
   optional string rack = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Switch OS specific queries.
   optional SwitchOSQuery os = 4;
+  // ConnectedMachineID lists the switches which have the given machine id in the connected machines map.
+  optional string connected_machine_id = 5 [(buf.validate.field).string.uuid = true];
 }
 
 // SwitchOSQuery holds OS specific query parameters.
