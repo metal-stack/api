@@ -36,6 +36,18 @@ class MachineServiceListResponse(_message.Message):
     machines: _containers.RepeatedCompositeFieldContainer[_machine_pb2.Machine]
     def __init__(self, machines: _Optional[_Iterable[_Union[_machine_pb2.Machine, _Mapping]]] = ...) -> None: ...
 
+class MachineServiceDeleteRequest(_message.Message):
+    __slots__ = ("uuid",)
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    def __init__(self, uuid: _Optional[str] = ...) -> None: ...
+
+class MachineServiceDeleteResponse(_message.Message):
+    __slots__ = ("machine",)
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    machine: _machine_pb2.Machine
+    def __init__(self, machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ...) -> None: ...
+
 class MachineServiceBMCCommandRequest(_message.Message):
     __slots__ = ("uuid", "command")
     UUID_FIELD_NUMBER: _ClassVar[int]

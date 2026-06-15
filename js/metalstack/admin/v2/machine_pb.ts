@@ -15,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/machine.proto.
  */
 export const file_metalstack_admin_v2_machine: GenFile = /*@__PURE__*/
-  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL21hY2hpbmUucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMgoYTWFjaGluZVNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIkgKGU1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUifgoZTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBIuCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeRIjCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBSACIAQFCDAoKX3BhcnRpdGlvbiJKChpNYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZRIsCghtYWNoaW5lcxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiegofTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI/Cgdjb21tYW5kGAIgASgOMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ0NvbW1hbmRCCLpIBYIBAhABIiIKIE1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlc3BvbnNlIjUKG01hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJoChxNYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjAKA2JtYxgCIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNSZXBvcnQiUQocTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVxdWVzdBIxCgVxdWVyeRgBIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNRdWVyeSLfAQodTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVzcG9uc2USZgoLYm1jX3JlcG9ydHMYASADKAsyQi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdEJNQ1Jlc3BvbnNlLkJtY1JlcG9ydHNFbnRyeUINukgKmgEHIgVyA7ABARpWCg9CbWNSZXBvcnRzRW50cnkSCwoDa2V5GAEgASgJEjIKBXZhbHVlGAIgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ1JlcG9ydDoCOAEiWgokTWFjaGluZVNlcnZpY2VDb25zb2xlUGFzc3dvcmRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhoKBnJlYXNvbhgCIAEoCUIKukgHcgUQChiABCJRCiVNYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHBhc3N3b3JkGAIgASgJIpMBCh1NYWNoaW5lU2VydmljZVNldFN0YXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI4CgVzdGF0ZRgCIAEoDjIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTdGF0ZUIIukgFggECEAESIAoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBIk0KHk1hY2hpbmVTZXJ2aWNlU2V0U3RhdGVSZXNwb25zZRIrCgdtYWNoaW5lGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZTKOBwoOTWFjaGluZVNlcnZpY2UScAoDR2V0Ei0ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUdldFJlcXVlc3QaLi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2UiCtLzGAIBAuDzGAIScwoETGlzdBIuLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBovLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0UmVzcG9uc2UiCtLzGAIBAuDzGAIShAEKCkJNQ0NvbW1hbmQSNC5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlcXVlc3QaNS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlc3BvbnNlIgnS8xgBAeDzGAESeQoGR2V0Qk1DEjAubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUdldEJNQ1JlcXVlc3QaMS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVzcG9uc2UiCtLzGAIBAuDzGAESfAoHTGlzdEJNQxIxLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVxdWVzdBoyLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVzcG9uc2UiCtLzGAIBAuDzGAESlAEKD0NvbnNvbGVQYXNzd29yZBI5Lm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VDb25zb2xlUGFzc3dvcmRSZXF1ZXN0GjoubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlc3BvbnNlIgrS8xgCAQLg8xgBEn4KCFNldFN0YXRlEjIubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZVNldFN0YXRlUmVxdWVzdBozLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VTZXRTdGF0ZVJlc3BvbnNlIgnS8xgBAeDzGAFC0AEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgxNYWNoaW5lUHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hZG1pbi92MjthZG1pbnYyogIDTUFYqgITTWV0YWxzdGFjay5BZG1pbi5WMsoCE01ldGFsc3RhY2tcQWRtaW5cVjLiAh9NZXRhbHN0YWNrXEFkbWluXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6QWRtaW46OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL21hY2hpbmUucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMgoYTWFjaGluZVNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIkgKGU1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUifgoZTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBIuCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeRIjCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBSACIAQFCDAoKX3BhcnRpdGlvbiJKChpNYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZRIsCghtYWNoaW5lcxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiNQobTWFjaGluZVNlcnZpY2VEZWxldGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIksKHE1hY2hpbmVTZXJ2aWNlRGVsZXRlUmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiegofTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI/Cgdjb21tYW5kGAIgASgOMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ0NvbW1hbmRCCLpIBYIBAhABIiIKIE1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlc3BvbnNlIjUKG01hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJoChxNYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjAKA2JtYxgCIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNSZXBvcnQiUQocTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVxdWVzdBIxCgVxdWVyeRgBIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNRdWVyeSLfAQodTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVzcG9uc2USZgoLYm1jX3JlcG9ydHMYASADKAsyQi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdEJNQ1Jlc3BvbnNlLkJtY1JlcG9ydHNFbnRyeUINukgKmgEHIgVyA7ABARpWCg9CbWNSZXBvcnRzRW50cnkSCwoDa2V5GAEgASgJEjIKBXZhbHVlGAIgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ1JlcG9ydDoCOAEiWgokTWFjaGluZVNlcnZpY2VDb25zb2xlUGFzc3dvcmRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhoKBnJlYXNvbhgCIAEoCUIKukgHcgUQChiABCJRCiVNYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHBhc3N3b3JkGAIgASgJIpMBCh1NYWNoaW5lU2VydmljZVNldFN0YXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI4CgVzdGF0ZRgCIAEoDjIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTdGF0ZUIIukgFggECEAESIAoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBIk0KHk1hY2hpbmVTZXJ2aWNlU2V0U3RhdGVSZXNwb25zZRIrCgdtYWNoaW5lGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZTKICAoOTWFjaGluZVNlcnZpY2UScAoDR2V0Ei0ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUdldFJlcXVlc3QaLi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2UiCtLzGAIBAuDzGAIScwoETGlzdBIuLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBovLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VMaXN0UmVzcG9uc2UiCtLzGAIBAuDzGAISeAoGRGVsZXRlEjAubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZURlbGV0ZVJlcXVlc3QaMS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiCdLzGAEB4PMYARKEAQoKQk1DQ29tbWFuZBI0Lm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVxdWVzdBo1Lm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVzcG9uc2UiCdLzGAEB4PMYARJ5CgZHZXRCTUMSMC5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVxdWVzdBoxLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VHZXRCTUNSZXNwb25zZSIK0vMYAgEC4PMYARJ8CgdMaXN0Qk1DEjEubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RCTUNSZXF1ZXN0GjIubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RCTUNSZXNwb25zZSIK0vMYAgEC4PMYARKUAQoPQ29uc29sZVBhc3N3b3JkEjkubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlcXVlc3QaOi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlQ29uc29sZVBhc3N3b3JkUmVzcG9uc2UiCtLzGAIBAuDzGAESfgoIU2V0U3RhdGUSMi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlU2V0U3RhdGVSZXF1ZXN0GjMubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZVNldFN0YXRlUmVzcG9uc2UiCdLzGAEB4PMYAULQAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCDE1hY2hpbmVQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
 
 /**
  * MachineServiceGetRequest is the request payload for a machine get request
@@ -110,6 +110,48 @@ export const MachineServiceListResponseSchema: GenMessage<MachineServiceListResp
   messageDesc(file_metalstack_admin_v2_machine, 3);
 
 /**
+ * MachineServiceDeleteRequest is the request payload for a machine delete request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceDeleteRequest
+ */
+export type MachineServiceDeleteRequest = Message<"metalstack.admin.v2.MachineServiceDeleteRequest"> & {
+  /**
+   * UUID of the machine to permanently delete
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceDeleteRequest.
+ * Use `create(MachineServiceDeleteRequestSchema)` to create a new message.
+ */
+export const MachineServiceDeleteRequestSchema: GenMessage<MachineServiceDeleteRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 4);
+
+/**
+ * MachineServiceDeleteResponse is the response payload for a machine delete request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceDeleteResponse
+ */
+export type MachineServiceDeleteResponse = Message<"metalstack.admin.v2.MachineServiceDeleteResponse"> & {
+  /**
+   * Machine is the machine permanently deleted
+   *
+   * @generated from field: metalstack.api.v2.Machine machine = 1;
+   */
+  machine?: Machine | undefined;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceDeleteResponse.
+ * Use `create(MachineServiceDeleteResponseSchema)` to create a new message.
+ */
+export const MachineServiceDeleteResponseSchema: GenMessage<MachineServiceDeleteResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_machine, 5);
+
+/**
  * MachineServiceBMCCommandRequest is the request payload for a machine bmc command
  *
  * @generated from message metalstack.admin.v2.MachineServiceBMCCommandRequest
@@ -135,7 +177,7 @@ export type MachineServiceBMCCommandRequest = Message<"metalstack.admin.v2.Machi
  * Use `create(MachineServiceBMCCommandRequestSchema)` to create a new message.
  */
 export const MachineServiceBMCCommandRequestSchema: GenMessage<MachineServiceBMCCommandRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 4);
+  messageDesc(file_metalstack_admin_v2_machine, 6);
 
 /**
  * MachineServiceBMCCommandResponse is the response payload for a machine bmc command
@@ -150,7 +192,7 @@ export type MachineServiceBMCCommandResponse = Message<"metalstack.admin.v2.Mach
  * Use `create(MachineServiceBMCCommandResponseSchema)` to create a new message.
  */
 export const MachineServiceBMCCommandResponseSchema: GenMessage<MachineServiceBMCCommandResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 5);
+  messageDesc(file_metalstack_admin_v2_machine, 7);
 
 /**
  * MachineServiceGetBMCRequest is the request payload for a machine getbmc request
@@ -171,7 +213,7 @@ export type MachineServiceGetBMCRequest = Message<"metalstack.admin.v2.MachineSe
  * Use `create(MachineServiceGetBMCRequestSchema)` to create a new message.
  */
 export const MachineServiceGetBMCRequestSchema: GenMessage<MachineServiceGetBMCRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 6);
+  messageDesc(file_metalstack_admin_v2_machine, 8);
 
 /**
  * MachineServiceGetBMCResponse is the response payload for a machine getbmc request
@@ -199,7 +241,7 @@ export type MachineServiceGetBMCResponse = Message<"metalstack.admin.v2.MachineS
  * Use `create(MachineServiceGetBMCResponseSchema)` to create a new message.
  */
 export const MachineServiceGetBMCResponseSchema: GenMessage<MachineServiceGetBMCResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 7);
+  messageDesc(file_metalstack_admin_v2_machine, 9);
 
 /**
  * MachineServiceListBMCRequest is the request payload for a machine listbmc request
@@ -220,7 +262,7 @@ export type MachineServiceListBMCRequest = Message<"metalstack.admin.v2.MachineS
  * Use `create(MachineServiceListBMCRequestSchema)` to create a new message.
  */
 export const MachineServiceListBMCRequestSchema: GenMessage<MachineServiceListBMCRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 8);
+  messageDesc(file_metalstack_admin_v2_machine, 10);
 
 /**
  * MachineServiceListBMCResponse is the response payload for a machine listbmc request
@@ -241,7 +283,7 @@ export type MachineServiceListBMCResponse = Message<"metalstack.admin.v2.Machine
  * Use `create(MachineServiceListBMCResponseSchema)` to create a new message.
  */
 export const MachineServiceListBMCResponseSchema: GenMessage<MachineServiceListBMCResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 9);
+  messageDesc(file_metalstack_admin_v2_machine, 11);
 
 /**
  * MachineServiceConsolePasswordRequest is the request payload for getting the console password.
@@ -270,7 +312,7 @@ export type MachineServiceConsolePasswordRequest = Message<"metalstack.admin.v2.
  * Use `create(MachineServiceConsolePasswordRequestSchema)` to create a new message.
  */
 export const MachineServiceConsolePasswordRequestSchema: GenMessage<MachineServiceConsolePasswordRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 10);
+  messageDesc(file_metalstack_admin_v2_machine, 12);
 
 /**
  * MachineServiceConsolePasswordResponse is the response payload for getting the console password.
@@ -298,7 +340,7 @@ export type MachineServiceConsolePasswordResponse = Message<"metalstack.admin.v2
  * Use `create(MachineServiceConsolePasswordResponseSchema)` to create a new message.
  */
 export const MachineServiceConsolePasswordResponseSchema: GenMessage<MachineServiceConsolePasswordResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 11);
+  messageDesc(file_metalstack_admin_v2_machine, 13);
 
 /**
  * MachineServiceSetStateRequest is the request payload for a machine set state request
@@ -334,7 +376,7 @@ export type MachineServiceSetStateRequest = Message<"metalstack.admin.v2.Machine
  * Use `create(MachineServiceSetStateRequestSchema)` to create a new message.
  */
 export const MachineServiceSetStateRequestSchema: GenMessage<MachineServiceSetStateRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 12);
+  messageDesc(file_metalstack_admin_v2_machine, 14);
 
 /**
  * MachineServiceSetStateResponse is the response payload for a machine set state request
@@ -355,7 +397,7 @@ export type MachineServiceSetStateResponse = Message<"metalstack.admin.v2.Machin
  * Use `create(MachineServiceSetStateResponseSchema)` to create a new message.
  */
 export const MachineServiceSetStateResponseSchema: GenMessage<MachineServiceSetStateResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_machine, 13);
+  messageDesc(file_metalstack_admin_v2_machine, 15);
 
 /**
  * MachineService provides machine lifecycle management operations.
@@ -382,6 +424,16 @@ export const MachineService: GenService<{
     methodKind: "unary";
     input: typeof MachineServiceListRequestSchema;
     output: typeof MachineServiceListResponseSchema;
+  },
+  /**
+   * Delete a machine from the database. This can only be done if the machine is offline and dead.
+   *
+   * @generated from rpc metalstack.admin.v2.MachineService.Delete
+   */
+  delete: {
+    methodKind: "unary";
+    input: typeof MachineServiceDeleteRequestSchema;
+    output: typeof MachineServiceDeleteResponseSchema;
   },
   /**
    * BMCCommand sends a command to the BMC of a machine.

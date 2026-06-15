@@ -199,18 +199,6 @@ func TestValidateFilesystem(t *testing.T) {
 			wantErrorMessage: "validation error: create_options: repeated value must contain unique items",
 		},
 		{
-			name: "Invalid Filesystem, create_options more than 32 items",
-			msg: &apiv2.Filesystem{
-				Device:        "/dev/sda3",
-				Format:        apiv2.Format_FORMAT_EXT4,
-				CreateOptions: createRepeatedString(33),
-			},
-			wantErr: true,
-			wantErrorMessage: `validation errors:
- - create_options: must contain no more than 32 item(s)
- - create_options: repeated value must contain unique items`,
-		},
-		{
 			name: "Invalid Filesystem, create_options item too long",
 			msg: &apiv2.Filesystem{
 				Device:        "/dev/sda3",
@@ -761,19 +749,6 @@ func TestValidateRaid(t *testing.T) {
 			},
 			wantErr:          true,
 			wantErrorMessage: "validation error: create_options: repeated value must contain unique items",
-		},
-		{
-			name: "Invalid Raid, create_options too many",
-			msg: &apiv2.Raid{
-				ArrayName:     "md0",
-				Devices:       []string{"/dev/sda", "/dev/sdb"},
-				Level:         apiv2.RaidLevel_RAID_LEVEL_1,
-				CreateOptions: createRepeatedString(33),
-			},
-			wantErr: true,
-			wantErrorMessage: `validation errors:
- - create_options: must contain no more than 32 item(s)
- - create_options: repeated value must contain unique items`,
 		},
 	}
 

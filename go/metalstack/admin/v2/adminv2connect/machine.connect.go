@@ -37,6 +37,8 @@ const (
 	MachineServiceGetProcedure = "/metalstack.admin.v2.MachineService/Get"
 	// MachineServiceListProcedure is the fully-qualified name of the MachineService's List RPC.
 	MachineServiceListProcedure = "/metalstack.admin.v2.MachineService/List"
+	// MachineServiceDeleteProcedure is the fully-qualified name of the MachineService's Delete RPC.
+	MachineServiceDeleteProcedure = "/metalstack.admin.v2.MachineService/Delete"
 	// MachineServiceBMCCommandProcedure is the fully-qualified name of the MachineService's BMCCommand
 	// RPC.
 	MachineServiceBMCCommandProcedure = "/metalstack.admin.v2.MachineService/BMCCommand"
@@ -57,6 +59,8 @@ type MachineServiceClient interface {
 	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
 	// Returns the list of all machines.
 	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
+	// Delete a machine from the database. This can only be done if the machine is offline and dead.
+	Delete(context.Context, *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error)
 	// BMCCommand sends a command to the BMC of a machine.
 	BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
 	// Returns the BMC details of a machine.
@@ -90,6 +94,12 @@ func NewMachineServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			httpClient,
 			baseURL+MachineServiceListProcedure,
 			connect.WithSchema(machineServiceMethods.ByName("List")),
+			connect.WithClientOptions(opts...),
+		),
+		delete: connect.NewClient[v2.MachineServiceDeleteRequest, v2.MachineServiceDeleteResponse](
+			httpClient,
+			baseURL+MachineServiceDeleteProcedure,
+			connect.WithSchema(machineServiceMethods.ByName("Delete")),
 			connect.WithClientOptions(opts...),
 		),
 		bMCCommand: connect.NewClient[v2.MachineServiceBMCCommandRequest, v2.MachineServiceBMCCommandResponse](
@@ -129,6 +139,7 @@ func NewMachineServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 type machineServiceClient struct {
 	get             *connect.Client[v2.MachineServiceGetRequest, v2.MachineServiceGetResponse]
 	list            *connect.Client[v2.MachineServiceListRequest, v2.MachineServiceListResponse]
+	delete          *connect.Client[v2.MachineServiceDeleteRequest, v2.MachineServiceDeleteResponse]
 	bMCCommand      *connect.Client[v2.MachineServiceBMCCommandRequest, v2.MachineServiceBMCCommandResponse]
 	getBMC          *connect.Client[v2.MachineServiceGetBMCRequest, v2.MachineServiceGetBMCResponse]
 	listBMC         *connect.Client[v2.MachineServiceListBMCRequest, v2.MachineServiceListBMCResponse]
@@ -148,6 +159,15 @@ func (c *machineServiceClient) Get(ctx context.Context, req *v2.MachineServiceGe
 // List calls metalstack.admin.v2.MachineService.List.
 func (c *machineServiceClient) List(ctx context.Context, req *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error) {
 	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// Delete calls metalstack.admin.v2.MachineService.Delete.
+func (c *machineServiceClient) Delete(ctx context.Context, req *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error) {
+	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
 	if response != nil {
 		return response.Msg, err
 	}
@@ -205,6 +225,8 @@ type MachineServiceHandler interface {
 	Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
 	// Returns the list of all machines.
 	List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
+	// Delete a machine from the database. This can only be done if the machine is offline and dead.
+	Delete(context.Context, *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error)
 	// BMCCommand sends a command to the BMC of a machine.
 	BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
 	// Returns the BMC details of a machine.
@@ -234,6 +256,12 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 		MachineServiceListProcedure,
 		svc.List,
 		connect.WithSchema(machineServiceMethods.ByName("List")),
+		connect.WithHandlerOptions(opts...),
+	)
+	machineServiceDeleteHandler := connect.NewUnaryHandlerSimple(
+		MachineServiceDeleteProcedure,
+		svc.Delete,
+		connect.WithSchema(machineServiceMethods.ByName("Delete")),
 		connect.WithHandlerOptions(opts...),
 	)
 	machineServiceBMCCommandHandler := connect.NewUnaryHandlerSimple(
@@ -272,6 +300,8 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 			machineServiceGetHandler.ServeHTTP(w, r)
 		case MachineServiceListProcedure:
 			machineServiceListHandler.ServeHTTP(w, r)
+		case MachineServiceDeleteProcedure:
+			machineServiceDeleteHandler.ServeHTTP(w, r)
 		case MachineServiceBMCCommandProcedure:
 			machineServiceBMCCommandHandler.ServeHTTP(w, r)
 		case MachineServiceGetBMCProcedure:
@@ -297,6 +327,10 @@ func (UnimplementedMachineServiceHandler) Get(context.Context, *v2.MachineServic
 
 func (UnimplementedMachineServiceHandler) List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.List is not implemented"))
+}
+
+func (UnimplementedMachineServiceHandler) Delete(context.Context, *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.Delete is not implemented"))
 }
 
 func (UnimplementedMachineServiceHandler) BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error) {
