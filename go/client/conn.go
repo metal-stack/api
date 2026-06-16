@@ -5,13 +5,19 @@ import (
 	"fmt"
 	"log/slog"
 	"net/http"
+	"net/url"
+	"os"
 	"time"
 
 	"connectrpc.com/connect"
 	"github.com/golang-jwt/jwt/v5"
 )
 
-const tokenRenewChecksDuringLifetime = 4
+const (
+	tokenRenewChecksDuringLifetime = 4
+	TokenEnvName                   = "METAL_APIV2_TOKEN"
+	BaseURLEnvName                 = "METAL_APIV2_URL"
+)
 
 type (
 	// DialConfig is the configuration to create a api-server connection
@@ -55,9 +61,23 @@ func (d *DialConfig) HttpClient() *http.Client {
 }
 
 func (dc *DialConfig) parse() error {
-	if dc.Token == "" {
-		return nil
+	if dc.BaseURL == "" {
+		dc.BaseURL = os.Getenv(BaseURLEnvName)
+		if dc.BaseURL == "" {
+			return fmt.Errorf("neither BaseURL nor %s were given", BaseURLEnvName)
+		}
+		if _, err := url.Parse(dc.BaseURL); err != nil {
+			return err
+		}
 	}
+
+	if dc.Token == "" {
+		dc.Token = os.Getenv(TokenEnvName)
+		if dc.Token == "" {
+			return nil
+		}
+	}
+
 	parsed, err := jwt.Parse(dc.Token, nil)
 	if err != nil && !errors.Is(err, jwt.ErrTokenUnverifiable) {
 		return fmt.Errorf("unable to parse token:%w", err)
@@ -80,5 +100,6 @@ func (dc *DialConfig) parse() error {
 	if dc.issuedAt.IsZero() {
 		dc.issuedAt = time.Now()
 	}
+
 	return nil
 }
