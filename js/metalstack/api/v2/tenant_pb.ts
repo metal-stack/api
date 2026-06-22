@@ -7,7 +7,7 @@ import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
-import type { Labels, Meta, TenantRole, UpdateLabels, UpdateMeta } from "./common_pb";
+import type { Labels, Meta, Paging, TenantRole, UpdateLabels, UpdateMeta } from "./common_pb";
 import { file_metalstack_api_v2_common } from "./common_pb";
 import { file_metalstack_api_v2_predefined_rules } from "./predefined_rules_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/api/v2/tenant.proto.
  */
 export const file_metalstack_api_v2_tenant: GenFile = /*@__PURE__*/
-  fileDesc("Ch5tZXRhbHN0YWNrL2FwaS92Mi90ZW5hbnQucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIrIBCgZUZW5hbnQSDQoFbG9naW4YASABKAkSJQoEbWV0YRgCIAEoCzIXLm1ldGFsc3RhY2suYXBpLnYyLk1ldGESGQoEbmFtZRgDIAEoCUILukgIcgbAs66xAgESDQoFZW1haWwYBCABKAkSIAoLZGVzY3JpcHRpb24YBSABKAlCC7pICHIGyLOusQIBEhIKCmF2YXRhcl91cmwYBiABKAkSEgoKY3JlYXRlZF9ieRgHIAEoCSK6AQoMVGVuYW50TWVtYmVyEgoKAmlkGAEgASgJEjUKBHJvbGUYAiABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRSb2xlQgi6SAWCAQIQARIQCghwcm9qZWN0cxgDIAMoCRIuCgpjcmVhdGVkX2F0GAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIlCgRtZXRhGAUgASgLMhcubWV0YWxzdGFjay5hcGkudjIuTWV0YSKcAgoMVGVuYW50SW52aXRlEg4KBnNlY3JldBgBIAEoCRIVCg10YXJnZXRfdGVuYW50GAIgASgJEjUKBHJvbGUYAyABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRSb2xlQgi6SAWCAQIQARIOCgZqb2luZWQYBCABKAgSGgoSdGFyZ2V0X3RlbmFudF9uYW1lGAUgASgJEg4KBnRlbmFudBgGIAEoCRITCgt0ZW5hbnRfbmFtZRgHIAEoCRIuCgpleHBpcmVzX2F0GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglqb2luZWRfYXQYCSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIpYBChhUZW5hbnRTZXJ2aWNlTGlzdFJlcXVlc3QSDwoCaWQYASABKAlIAIgBARIeCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECAUgBiAEBEi4KBmxhYmVscxgDIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gCiAEBQgUKA19pZEIHCgVfbmFtZUIJCgdfbGFiZWxzIigKF1RlbmFudFNlcnZpY2VHZXRSZXF1ZXN0Eg0KBWxvZ2luGAEgASgJIugBChpUZW5hbnRTZXJ2aWNlQ3JlYXRlUmVxdWVzdBIZCgRuYW1lGAEgASgJQgu6SAhyBsCzrrECARIlCgtkZXNjcmlwdGlvbhgCIAEoCUILukgIcgbIs66xAgFIAIgBARIbCgVlbWFpbBgDIAEoCUIHukgEcgJgAUgBiAEBEhcKCmF2YXRhcl91cmwYBCABKAlIAogBARIpCgZsYWJlbHMYBSABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNCDgoMX2Rlc2NyaXB0aW9uQggKBl9lbWFpbEINCgtfYXZhdGFyX3VybCLXAgoaVGVuYW50U2VydmljZVVwZGF0ZVJlcXVlc3QSDQoFbG9naW4YASABKAkSOgoLdXBkYXRlX21ldGEYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVNZXRhQga6SAPIAQESHgoEbmFtZRgDIAEoCUILukgIcgbAs66xAgFIAIgBARIbCgVlbWFpbBgEIAEoCUIHukgEcgJgAUgBiAEBEiUKC2Rlc2NyaXB0aW9uGAUgASgJQgu6SAhyBsizrrECAUgCiAEBEhcKCmF2YXRhcl91cmwYBiABKAlIA4gBARI0CgZsYWJlbHMYByABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVMYWJlbHNIBIgBAUIHCgVfbmFtZUIICgZfZW1haWxCDgoMX2Rlc2NyaXB0aW9uQg0KC19hdmF0YXJfdXJsQgkKB19sYWJlbHMiKwoaVGVuYW50U2VydmljZURlbGV0ZVJlcXVlc3QSDQoFbG9naW4YASABKAkifgoYVGVuYW50U2VydmljZUdldFJlc3BvbnNlEikKBnRlbmFudBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudBI3Cg50ZW5hbnRfbWVtYmVycxgCIAMoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudE1lbWJlciJHChlUZW5hbnRTZXJ2aWNlTGlzdFJlc3BvbnNlEioKB3RlbmFudHMYASADKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiSAobVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlEikKBnRlbmFudBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudCJIChtUZW5hbnRTZXJ2aWNlVXBkYXRlUmVzcG9uc2USKQoGdGVuYW50GAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50IkgKG1RlbmFudFNlcnZpY2VEZWxldGVSZXNwb25zZRIpCgZ0ZW5hbnQYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiYgoaVGVuYW50U2VydmljZUludml0ZVJlcXVlc3QSDQoFbG9naW4YASABKAkSNQoEcm9sZRgCIAEoDjIdLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFJvbGVCCLpIBYIBAhABIk4KG1RlbmFudFNlcnZpY2VJbnZpdGVSZXNwb25zZRIvCgZpbnZpdGUYASABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRJbnZpdGUiMAofVGVuYW50U2VydmljZUludml0ZXNMaXN0UmVxdWVzdBINCgVsb2dpbhgBIAEoCSJUCiBUZW5hbnRTZXJ2aWNlSW52aXRlc0xpc3RSZXNwb25zZRIwCgdpbnZpdGVzGAEgAygLMh8ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50SW52aXRlIi8KHVRlbmFudFNlcnZpY2VJbnZpdGVHZXRSZXF1ZXN0Eg4KBnNlY3JldBgBIAEoCSJRCh5UZW5hbnRTZXJ2aWNlSW52aXRlR2V0UmVzcG9uc2USLwoGaW52aXRlGAEgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50SW52aXRlIkEKIFRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0Eg0KBWxvZ2luGAEgASgJEg4KBm1lbWJlchgCIAEoCSIqChlUZW5hbnRTZXJ2aWNlTGVhdmVSZXF1ZXN0Eg0KBWxvZ2luGAEgASgJIhwKGlRlbmFudFNlcnZpY2VMZWF2ZVJlc3BvbnNlIiMKIVRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSIyCiBUZW5hbnRTZXJ2aWNlSW52aXRlQWNjZXB0UmVxdWVzdBIOCgZzZWNyZXQYASABKAkiSAohVGVuYW50U2VydmljZUludml0ZUFjY2VwdFJlc3BvbnNlEg4KBnRlbmFudBgBIAEoCRITCgt0ZW5hbnRfbmFtZRgCIAEoCSJBCiBUZW5hbnRTZXJ2aWNlSW52aXRlRGVsZXRlUmVxdWVzdBINCgVsb2dpbhgBIAEoCRIOCgZzZWNyZXQYAiABKAkiIwohVGVuYW50U2VydmljZUludml0ZURlbGV0ZVJlc3BvbnNlIngKIFRlbmFudFNlcnZpY2VVcGRhdGVNZW1iZXJSZXF1ZXN0Eg0KBWxvZ2luGAEgASgJEg4KBm1lbWJlchgCIAEoCRI1CgRyb2xlGAMgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZUIIukgFggECEAEiWwohVGVuYW50U2VydmljZVVwZGF0ZU1lbWJlclJlc3BvbnNlEjYKDXRlbmFudF9tZW1iZXIYASABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRNZW1iZXIyxwwKDVRlbmFudFNlcnZpY2UScQoGQ3JlYXRlEi0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QaLi5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlQ3JlYXRlUmVzcG9uc2UiCNjzGALg8xgBEmsKBExpc3QSKy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlTGlzdFJlcXVlc3QaLC5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlTGlzdFJlc3BvbnNlIgjY8xgC4PMYAhJsCgNHZXQSKi5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlR2V0UmVxdWVzdBorLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VHZXRSZXNwb25zZSIMwvMYBAECAwTg8xgCEnMKBlVwZGF0ZRItLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VVcGRhdGVSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZVVwZGF0ZVJlc3BvbnNlIgrC8xgCAQLg8xgBEnMKBkRlbGV0ZRItLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VEZWxldGVSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZURlbGV0ZVJlc3BvbnNlIgrC8xgCAQLg8xgBEm8KBUxlYXZlEiwubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUxlYXZlUmVxdWVzdBotLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VMZWF2ZVJlc3BvbnNlIgnC8xgBA+DzGAEShAEKDFJlbW92ZU1lbWJlchIzLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0GjQubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZVJlbW92ZU1lbWJlclJlc3BvbnNlIgnC8xgBAeDzGAEShAEKDFVwZGF0ZU1lbWJlchIzLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VVcGRhdGVNZW1iZXJSZXF1ZXN0GjQubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZVVwZGF0ZU1lbWJlclJlc3BvbnNlIgnC8xgBAeDzGAEScgoGSW52aXRlEi0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUludml0ZVJlcXVlc3QaLi5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlSW52aXRlUmVzcG9uc2UiCcLzGAEB4PMYARKDAQoMSW52aXRlQWNjZXB0EjMubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUludml0ZUFjY2VwdFJlcXVlc3QaNC5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlSW52aXRlQWNjZXB0UmVzcG9uc2UiCNjzGALg8xgBEoQBCgxJbnZpdGVEZWxldGUSMy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlSW52aXRlRGVsZXRlUmVxdWVzdBo0Lm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VJbnZpdGVEZWxldGVSZXNwb25zZSIJwvMYAQHg8xgBEoEBCgtJbnZpdGVzTGlzdBIyLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VJbnZpdGVzTGlzdFJlcXVlc3QaMy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlSW52aXRlc0xpc3RSZXNwb25zZSIJwvMYAQHg8xgCEnoKCUludml0ZUdldBIwLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VJbnZpdGVHZXRSZXF1ZXN0GjEubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUludml0ZUdldFJlc3BvbnNlIgjY8xgC4PMYAkLBAQoVY29tLm1ldGFsc3RhY2suYXBpLnYyQgtUZW5hbnRQcm90b1ABWjVnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FwaS92MjthcGl2MqICA01BWKoCEU1ldGFsc3RhY2suQXBpLlYyygIRTWV0YWxzdGFja1xBcGlcVjLiAh1NZXRhbHN0YWNrXEFwaVxWMlxHUEJNZXRhZGF0YeoCE01ldGFsc3RhY2s6OkFwaTo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("Ch5tZXRhbHN0YWNrL2FwaS92Mi90ZW5hbnQucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyItUBCgZUZW5hbnQSGgoFbG9naW4YASABKAlCC7pICHIGkLSusQIBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEhkKBG5hbWUYAyABKAlCC7pICHIGwLOusQIBEhYKBWVtYWlsGAQgASgJQge6SARyAmABEiAKC2Rlc2NyaXB0aW9uGAUgASgJQgu6SAhyBsizrrECARIfCgphdmF0YXJfdXJsGAYgASgJQgu6SAhyBuCzrrECARISCgpjcmVhdGVkX2J5GAcgASgJIscBCgxUZW5hbnRNZW1iZXISFwoCaWQYASABKAlCC7pICHIGkLSusQIBEjUKBHJvbGUYAiABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRSb2xlQgi6SAWCAQIQARIQCghwcm9qZWN0cxgDIAMoCRIuCgpjcmVhdGVkX2F0GAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIlCgRtZXRhGAUgASgLMhcubWV0YWxzdGFjay5hcGkudjIuTWV0YSKcAgoMVGVuYW50SW52aXRlEg4KBnNlY3JldBgBIAEoCRIVCg10YXJnZXRfdGVuYW50GAIgASgJEjUKBHJvbGUYAyABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRSb2xlQgi6SAWCAQIQARIOCgZqb2luZWQYBCABKAgSGgoSdGFyZ2V0X3RlbmFudF9uYW1lGAUgASgJEg4KBnRlbmFudBgGIAEoCRITCgt0ZW5hbnRfbmFtZRgHIAEoCRIuCgpleHBpcmVzX2F0GAggASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglqb2luZWRfYXQYCSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIkkKGFRlbmFudFNlcnZpY2VMaXN0UmVxdWVzdBItCgVxdWVyeRgBIAEoCzIeLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFF1ZXJ5IscBCgtUZW5hbnRRdWVyeRIfCgVsb2dpbhgBIAEoCUILukgIcgaQtK6xAgFIAIgBARIeCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECAUgBiAEBEi4KBmxhYmVscxgDIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gCiAEBEikKBnBhZ2luZxgEIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlBhZ2luZ0IICgZfbG9naW5CBwoFX25hbWVCCQoHX2xhYmVscyIoChdUZW5hbnRTZXJ2aWNlR2V0UmVxdWVzdBINCgVsb2dpbhgBIAEoCSL1AQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgbAs66xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIkCgphdmF0YXJfdXJsGAQgASgJQgu6SAhyBuCzrrECAUgCiAEBEikKBmxhYmVscxgFIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0IOCgxfZGVzY3JpcHRpb25CCAoGX2VtYWlsQg0KC19hdmF0YXJfdXJsIvECChpUZW5hbnRTZXJ2aWNlVXBkYXRlUmVxdWVzdBIaCgVsb2dpbhgBIAEoCUILukgIcgaQtK6xAgESOgoLdXBkYXRlX21ldGEYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVNZXRhQga6SAPIAQESHgoEbmFtZRgDIAEoCUILukgIcgbAs66xAgFIAIgBARIbCgVlbWFpbBgEIAEoCUIHukgEcgJgAUgBiAEBEiUKC2Rlc2NyaXB0aW9uGAUgASgJQgu6SAhyBsizrrECAUgCiAEBEiQKCmF2YXRhcl91cmwYBiABKAlCC7pICHIG4LOusQIBSAOIAQESNAoGbGFiZWxzGAcgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuVXBkYXRlTGFiZWxzSASIAQFCBwoFX25hbWVCCAoGX2VtYWlsQg4KDF9kZXNjcmlwdGlvbkINCgtfYXZhdGFyX3VybEIJCgdfbGFiZWxzIjgKGlRlbmFudFNlcnZpY2VEZWxldGVSZXF1ZXN0EhoKBWxvZ2luGAEgASgJQgu6SAhyBpC0rrECASJ+ChhUZW5hbnRTZXJ2aWNlR2V0UmVzcG9uc2USKQoGdGVuYW50GAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50EjcKDnRlbmFudF9tZW1iZXJzGAIgAygLMh8ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50TWVtYmVyIkcKGVRlbmFudFNlcnZpY2VMaXN0UmVzcG9uc2USKgoHdGVuYW50cxgBIAMoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudCJIChtUZW5hbnRTZXJ2aWNlQ3JlYXRlUmVzcG9uc2USKQoGdGVuYW50GAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50IkgKG1RlbmFudFNlcnZpY2VVcGRhdGVSZXNwb25zZRIpCgZ0ZW5hbnQYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiSAobVGVuYW50U2VydmljZURlbGV0ZVJlc3BvbnNlEikKBnRlbmFudBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudCJvChpUZW5hbnRTZXJ2aWNlSW52aXRlUmVxdWVzdBIaCgVsb2dpbhgBIAEoCUILukgIcgaQtK6xAgESNQoEcm9sZRgCIAEoDjIdLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFJvbGVCCLpIBYIBAhABIk4KG1RlbmFudFNlcnZpY2VJbnZpdGVSZXNwb25zZRIvCgZpbnZpdGUYASABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRJbnZpdGUiPQofVGVuYW50U2VydmljZUludml0ZXNMaXN0UmVxdWVzdBIaCgVsb2dpbhgBIAEoCUILukgIcgaQtK6xAgEiVAogVGVuYW50U2VydmljZUludml0ZXNMaXN0UmVzcG9uc2USMAoHaW52aXRlcxgBIAMoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudEludml0ZSIvCh1UZW5hbnRTZXJ2aWNlSW52aXRlR2V0UmVxdWVzdBIOCgZzZWNyZXQYASABKAkiUQoeVGVuYW50U2VydmljZUludml0ZUdldFJlc3BvbnNlEi8KBmludml0ZRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudEludml0ZSJOCiBUZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVxdWVzdBIaCgVsb2dpbhgBIAEoCUILukgIcgaQtK6xAgESDgoGbWVtYmVyGAIgASgJIjcKGVRlbmFudFNlcnZpY2VMZWF2ZVJlcXVlc3QSGgoFbG9naW4YASABKAlCC7pICHIGkLSusQIBIhwKGlRlbmFudFNlcnZpY2VMZWF2ZVJlc3BvbnNlIiMKIVRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSIyCiBUZW5hbnRTZXJ2aWNlSW52aXRlQWNjZXB0UmVxdWVzdBIOCgZzZWNyZXQYASABKAkiSAohVGVuYW50U2VydmljZUludml0ZUFjY2VwdFJlc3BvbnNlEg4KBnRlbmFudBgBIAEoCRITCgt0ZW5hbnRfbmFtZRgCIAEoCSJOCiBUZW5hbnRTZXJ2aWNlSW52aXRlRGVsZXRlUmVxdWVzdBIaCgVsb2dpbhgBIAEoCUILukgIcgaQtK6xAgESDgoGc2VjcmV0GAIgASgJIiMKIVRlbmFudFNlcnZpY2VJbnZpdGVEZWxldGVSZXNwb25zZSKSAQogVGVuYW50U2VydmljZVVwZGF0ZU1lbWJlclJlcXVlc3QSGgoFbG9naW4YASABKAlCC7pICHIGkLSusQIBEhsKBm1lbWJlchgCIAEoCUILukgIcgaQtK6xAgESNQoEcm9sZRgDIAEoDjIdLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFJvbGVCCLpIBYIBAhABIlsKIVRlbmFudFNlcnZpY2VVcGRhdGVNZW1iZXJSZXNwb25zZRI2Cg10ZW5hbnRfbWVtYmVyGAEgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50TWVtYmVyMscMCg1UZW5hbnRTZXJ2aWNlEnEKBkNyZWF0ZRItLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VDcmVhdGVSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlIgjY8xgC4PMYARJrCgRMaXN0EisubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0GiwubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUxpc3RSZXNwb25zZSII2PMYAuDzGAISbAoDR2V0EioubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUdldFJlcXVlc3QaKy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlR2V0UmVzcG9uc2UiDMLzGAQBAgME4PMYAhJzCgZVcGRhdGUSLS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlVXBkYXRlUmVxdWVzdBouLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VVcGRhdGVSZXNwb25zZSIKwvMYAgEC4PMYARJzCgZEZWxldGUSLS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlRGVsZXRlUmVxdWVzdBouLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VEZWxldGVSZXNwb25zZSIKwvMYAgEC4PMYARJvCgVMZWF2ZRIsLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VMZWF2ZVJlcXVlc3QaLS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlTGVhdmVSZXNwb25zZSIJwvMYAQPg8xgBEoQBCgxSZW1vdmVNZW1iZXISMy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVxdWVzdBo0Lm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSIJwvMYAQHg8xgBEoQBCgxVcGRhdGVNZW1iZXISMy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlVXBkYXRlTWVtYmVyUmVxdWVzdBo0Lm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VVcGRhdGVNZW1iZXJSZXNwb25zZSIJwvMYAQHg8xgBEnIKBkludml0ZRItLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VJbnZpdGVSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUludml0ZVJlc3BvbnNlIgnC8xgBAeDzGAESgwEKDEludml0ZUFjY2VwdBIzLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VJbnZpdGVBY2NlcHRSZXF1ZXN0GjQubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUludml0ZUFjY2VwdFJlc3BvbnNlIgjY8xgC4PMYARKEAQoMSW52aXRlRGVsZXRlEjMubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUludml0ZURlbGV0ZVJlcXVlc3QaNC5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlSW52aXRlRGVsZXRlUmVzcG9uc2UiCcLzGAEB4PMYARKBAQoLSW52aXRlc0xpc3QSMi5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlSW52aXRlc0xpc3RSZXF1ZXN0GjMubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUludml0ZXNMaXN0UmVzcG9uc2UiCcLzGAEB4PMYAhJ6CglJbnZpdGVHZXQSMC5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRTZXJ2aWNlSW52aXRlR2V0UmVxdWVzdBoxLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFNlcnZpY2VJbnZpdGVHZXRSZXNwb25zZSII2PMYAuDzGAJCwQEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkILVGVuYW50UHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
  * Tenant is a customer of the platform
@@ -214,11 +214,32 @@ export const TenantInviteSchema: GenMessage<TenantInvite> = /*@__PURE__*/
  */
 export type TenantServiceListRequest = Message<"metalstack.api.v2.TenantServiceListRequest"> & {
   /**
-   * Id filters tenants by id
+   * Query for tenants
    *
-   * @generated from field: optional string id = 1;
+   * @generated from field: metalstack.api.v2.TenantQuery query = 1;
    */
-  id?: string | undefined;
+  query?: TenantQuery | undefined;
+};
+
+/**
+ * Describes the message metalstack.api.v2.TenantServiceListRequest.
+ * Use `create(TenantServiceListRequestSchema)` to create a new message.
+ */
+export const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_tenant, 3);
+
+/**
+ * TenantQuery is used to search tenants
+ *
+ * @generated from message metalstack.api.v2.TenantQuery
+ */
+export type TenantQuery = Message<"metalstack.api.v2.TenantQuery"> & {
+  /**
+   * Id filters tenants by login
+   *
+   * @generated from field: optional string login = 1;
+   */
+  login?: string | undefined;
 
   /**
    * Name filters tenants by name
@@ -233,14 +254,21 @@ export type TenantServiceListRequest = Message<"metalstack.api.v2.TenantServiceL
    * @generated from field: optional metalstack.api.v2.Labels labels = 3;
    */
   labels?: Labels | undefined;
+
+  /**
+   * Paging details for the list request
+   *
+   * @generated from field: metalstack.api.v2.Paging paging = 4;
+   */
+  paging?: Paging | undefined;
 };
 
 /**
- * Describes the message metalstack.api.v2.TenantServiceListRequest.
- * Use `create(TenantServiceListRequestSchema)` to create a new message.
+ * Describes the message metalstack.api.v2.TenantQuery.
+ * Use `create(TenantQuerySchema)` to create a new message.
  */
-export const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 3);
+export const TenantQuerySchema: GenMessage<TenantQuery> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_tenant, 4);
 
 /**
  * TenantServiceGetRequest is the request payload of the tenant get request
@@ -261,7 +289,7 @@ export type TenantServiceGetRequest = Message<"metalstack.api.v2.TenantServiceGe
  * Use `create(TenantServiceGetRequestSchema)` to create a new message.
  */
 export const TenantServiceGetRequestSchema: GenMessage<TenantServiceGetRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 4);
+  messageDesc(file_metalstack_api_v2_tenant, 5);
 
 /**
  * TenantServiceCreateRequest is the request payload of the tenant create request
@@ -310,7 +338,7 @@ export type TenantServiceCreateRequest = Message<"metalstack.api.v2.TenantServic
  * Use `create(TenantServiceCreateRequestSchema)` to create a new message.
  */
 export const TenantServiceCreateRequestSchema: GenMessage<TenantServiceCreateRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 5);
+  messageDesc(file_metalstack_api_v2_tenant, 6);
 
 /**
  * TenantServiceUpdateRequest is the request payload of the tenant update request
@@ -373,7 +401,7 @@ export type TenantServiceUpdateRequest = Message<"metalstack.api.v2.TenantServic
  * Use `create(TenantServiceUpdateRequestSchema)` to create a new message.
  */
 export const TenantServiceUpdateRequestSchema: GenMessage<TenantServiceUpdateRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 6);
+  messageDesc(file_metalstack_api_v2_tenant, 7);
 
 /**
  * TenantServiceDeleteRequest is the request payload of the tenant delete request
@@ -394,7 +422,7 @@ export type TenantServiceDeleteRequest = Message<"metalstack.api.v2.TenantServic
  * Use `create(TenantServiceDeleteRequestSchema)` to create a new message.
  */
 export const TenantServiceDeleteRequestSchema: GenMessage<TenantServiceDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 7);
+  messageDesc(file_metalstack_api_v2_tenant, 8);
 
 /**
  * TenantServiceGetResponse is the response payload of the tenant get request
@@ -422,7 +450,7 @@ export type TenantServiceGetResponse = Message<"metalstack.api.v2.TenantServiceG
  * Use `create(TenantServiceGetResponseSchema)` to create a new message.
  */
 export const TenantServiceGetResponseSchema: GenMessage<TenantServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 8);
+  messageDesc(file_metalstack_api_v2_tenant, 9);
 
 /**
  * TenantServiceListResponse is the response payload of the tenant list request
@@ -443,7 +471,7 @@ export type TenantServiceListResponse = Message<"metalstack.api.v2.TenantService
  * Use `create(TenantServiceListResponseSchema)` to create a new message.
  */
 export const TenantServiceListResponseSchema: GenMessage<TenantServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 9);
+  messageDesc(file_metalstack_api_v2_tenant, 10);
 
 /**
  * TenantServiceCreateResponse is the response payload of the tenant create request
@@ -464,7 +492,7 @@ export type TenantServiceCreateResponse = Message<"metalstack.api.v2.TenantServi
  * Use `create(TenantServiceCreateResponseSchema)` to create a new message.
  */
 export const TenantServiceCreateResponseSchema: GenMessage<TenantServiceCreateResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 10);
+  messageDesc(file_metalstack_api_v2_tenant, 11);
 
 /**
  * TenantServiceUpdateResponse is the response payload of the tenant update request
@@ -485,7 +513,7 @@ export type TenantServiceUpdateResponse = Message<"metalstack.api.v2.TenantServi
  * Use `create(TenantServiceUpdateResponseSchema)` to create a new message.
  */
 export const TenantServiceUpdateResponseSchema: GenMessage<TenantServiceUpdateResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 11);
+  messageDesc(file_metalstack_api_v2_tenant, 12);
 
 /**
  * TenantServiceDeleteResponse is the response payload of the tenant delete request
@@ -506,7 +534,7 @@ export type TenantServiceDeleteResponse = Message<"metalstack.api.v2.TenantServi
  * Use `create(TenantServiceDeleteResponseSchema)` to create a new message.
  */
 export const TenantServiceDeleteResponseSchema: GenMessage<TenantServiceDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 12);
+  messageDesc(file_metalstack_api_v2_tenant, 13);
 
 /**
  * TenantServiceInviteRequest is used to invite a member to a tenant
@@ -534,7 +562,7 @@ export type TenantServiceInviteRequest = Message<"metalstack.api.v2.TenantServic
  * Use `create(TenantServiceInviteRequestSchema)` to create a new message.
  */
 export const TenantServiceInviteRequestSchema: GenMessage<TenantServiceInviteRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 13);
+  messageDesc(file_metalstack_api_v2_tenant, 14);
 
 /**
  * TenantServiceInviteRequest is the response payload to a invite member request
@@ -557,7 +585,7 @@ export type TenantServiceInviteResponse = Message<"metalstack.api.v2.TenantServi
  * Use `create(TenantServiceInviteResponseSchema)` to create a new message.
  */
 export const TenantServiceInviteResponseSchema: GenMessage<TenantServiceInviteResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 14);
+  messageDesc(file_metalstack_api_v2_tenant, 15);
 
 /**
  * TenantServiceInvitesListRequest is the request payload to a list invites request
@@ -578,7 +606,7 @@ export type TenantServiceInvitesListRequest = Message<"metalstack.api.v2.TenantS
  * Use `create(TenantServiceInvitesListRequestSchema)` to create a new message.
  */
 export const TenantServiceInvitesListRequestSchema: GenMessage<TenantServiceInvitesListRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 15);
+  messageDesc(file_metalstack_api_v2_tenant, 16);
 
 /**
  * TenantServiceInvitesListResponse is the response payload to a list invites request
@@ -599,7 +627,7 @@ export type TenantServiceInvitesListResponse = Message<"metalstack.api.v2.Tenant
  * Use `create(TenantServiceInvitesListResponseSchema)` to create a new message.
  */
 export const TenantServiceInvitesListResponseSchema: GenMessage<TenantServiceInvitesListResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 16);
+  messageDesc(file_metalstack_api_v2_tenant, 17);
 
 /**
  * TenantServiceInviteGetRequest is the request payload to get a invite
@@ -620,7 +648,7 @@ export type TenantServiceInviteGetRequest = Message<"metalstack.api.v2.TenantSer
  * Use `create(TenantServiceInviteGetRequestSchema)` to create a new message.
  */
 export const TenantServiceInviteGetRequestSchema: GenMessage<TenantServiceInviteGetRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 17);
+  messageDesc(file_metalstack_api_v2_tenant, 18);
 
 /**
  * TenantServiceInviteGetResponse is the response payload to a get invite request
@@ -641,7 +669,7 @@ export type TenantServiceInviteGetResponse = Message<"metalstack.api.v2.TenantSe
  * Use `create(TenantServiceInviteGetResponseSchema)` to create a new message.
  */
 export const TenantServiceInviteGetResponseSchema: GenMessage<TenantServiceInviteGetResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 18);
+  messageDesc(file_metalstack_api_v2_tenant, 19);
 
 /**
  * TenantServiceRemoveMemberRequest is used to remove a member from a tenant
@@ -669,7 +697,7 @@ export type TenantServiceRemoveMemberRequest = Message<"metalstack.api.v2.Tenant
  * Use `create(TenantServiceRemoveMemberRequestSchema)` to create a new message.
  */
 export const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantServiceRemoveMemberRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 19);
+  messageDesc(file_metalstack_api_v2_tenant, 20);
 
 /**
  * TenantServiceLeaveTenantRequest is used to leave a tenant
@@ -690,7 +718,7 @@ export type TenantServiceLeaveRequest = Message<"metalstack.api.v2.TenantService
  * Use `create(TenantServiceLeaveRequestSchema)` to create a new message.
  */
 export const TenantServiceLeaveRequestSchema: GenMessage<TenantServiceLeaveRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 20);
+  messageDesc(file_metalstack_api_v2_tenant, 21);
 
 /**
  * TenantServiceLeaveTenantResponse is the response payload to a leave tenant request
@@ -705,7 +733,7 @@ export type TenantServiceLeaveResponse = Message<"metalstack.api.v2.TenantServic
  * Use `create(TenantServiceLeaveResponseSchema)` to create a new message.
  */
 export const TenantServiceLeaveResponseSchema: GenMessage<TenantServiceLeaveResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 21);
+  messageDesc(file_metalstack_api_v2_tenant, 22);
 
 /**
  * TenantServiceRemoveMemberResponse is the response payload to a remove member request
@@ -720,7 +748,7 @@ export type TenantServiceRemoveMemberResponse = Message<"metalstack.api.v2.Tenan
  * Use `create(TenantServiceRemoveMemberResponseSchema)` to create a new message.
  */
 export const TenantServiceRemoveMemberResponseSchema: GenMessage<TenantServiceRemoveMemberResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 22);
+  messageDesc(file_metalstack_api_v2_tenant, 23);
 
 /**
  * TenantServiceInviteAcceptRequest is the request payload to a accept invite request
@@ -741,7 +769,7 @@ export type TenantServiceInviteAcceptRequest = Message<"metalstack.api.v2.Tenant
  * Use `create(TenantServiceInviteAcceptRequestSchema)` to create a new message.
  */
 export const TenantServiceInviteAcceptRequestSchema: GenMessage<TenantServiceInviteAcceptRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 23);
+  messageDesc(file_metalstack_api_v2_tenant, 24);
 
 /**
  * TenantServiceInviteAcceptResponse is the response payload to a accept invite request
@@ -769,7 +797,7 @@ export type TenantServiceInviteAcceptResponse = Message<"metalstack.api.v2.Tenan
  * Use `create(TenantServiceInviteAcceptResponseSchema)` to create a new message.
  */
 export const TenantServiceInviteAcceptResponseSchema: GenMessage<TenantServiceInviteAcceptResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 24);
+  messageDesc(file_metalstack_api_v2_tenant, 25);
 
 /**
  * TenantServiceInviteDeleteRequest is the request payload to a delete invite
@@ -797,7 +825,7 @@ export type TenantServiceInviteDeleteRequest = Message<"metalstack.api.v2.Tenant
  * Use `create(TenantServiceInviteDeleteRequestSchema)` to create a new message.
  */
 export const TenantServiceInviteDeleteRequestSchema: GenMessage<TenantServiceInviteDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 25);
+  messageDesc(file_metalstack_api_v2_tenant, 26);
 
 /**
  * TenantServiceInviteDeleteResponse is the response payload of a delete invite request
@@ -812,7 +840,7 @@ export type TenantServiceInviteDeleteResponse = Message<"metalstack.api.v2.Tenan
  * Use `create(TenantServiceInviteDeleteResponseSchema)` to create a new message.
  */
 export const TenantServiceInviteDeleteResponseSchema: GenMessage<TenantServiceInviteDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 26);
+  messageDesc(file_metalstack_api_v2_tenant, 27);
 
 /**
  * TenantServiceUpdateMemberRequest is used to update a member from a tenant
@@ -847,7 +875,7 @@ export type TenantServiceUpdateMemberRequest = Message<"metalstack.api.v2.Tenant
  * Use `create(TenantServiceUpdateMemberRequestSchema)` to create a new message.
  */
 export const TenantServiceUpdateMemberRequestSchema: GenMessage<TenantServiceUpdateMemberRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 27);
+  messageDesc(file_metalstack_api_v2_tenant, 28);
 
 /**
  * TenantServiceUpdateMemberResponse is the response payload to a update member request
@@ -868,7 +896,7 @@ export type TenantServiceUpdateMemberResponse = Message<"metalstack.api.v2.Tenan
  * Use `create(TenantServiceUpdateMemberResponseSchema)` to create a new message.
  */
 export const TenantServiceUpdateMemberResponseSchema: GenMessage<TenantServiceUpdateMemberResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_tenant, 28);
+  messageDesc(file_metalstack_api_v2_tenant, 29);
 
 /**
  * TenantService provides tenant management operations.

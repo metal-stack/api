@@ -248,6 +248,10 @@
                   <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack%2fapi%2fv2%2fpredefined_rules.proto-extensions"><span class="badge">X</span>File-level Extensions</a>
+                </li>
+              
               
             </ul>
           </li>
@@ -2172,6 +2176,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.TenantQuery"><span class="badge">M</span>TenantQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.TenantServiceCreateRequest"><span class="badge">M</span>TenantServiceCreateRequest</a>
                 </li>
               
@@ -2846,6 +2854,14 @@
                 <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
                 <td>80048955</td>
                 <td><p>IsPrefix validates if the given string is a valid prefix</p></td>
+              </tr>
+            
+              <tr>
+                <td>is_tenant_login</td>
+                <td><a href="#bool">bool</a></td>
+                <td><a href="#buf.validate.StringRules">.buf.validate.StringRules</a></td>
+                <td>80048962</td>
+                <td><p>IsTenantLogin returns true if name field satisfies our requirements</p></td>
               </tr>
             
               <tr>
@@ -18161,6 +18177,51 @@ Will return tasks from all queues if not specified </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.TenantQuery">TenantQuery</h3>
+        <p>TenantQuery is used to search tenants</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Id filters tenants by login </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name filters tenants by name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only projects containing the given labels </p></td>
+                </tr>
+              
+                <tr>
+                  <td>paging</td>
+                  <td><a href="#metalstack.api.v2.Paging">Paging</a></td>
+                  <td></td>
+                  <td><p>Paging details for the list request </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.TenantServiceCreateRequest">TenantServiceCreateRequest</h3>
         <p>TenantServiceCreateRequest is the request payload of the tenant create request</p>
 
@@ -18628,24 +18689,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Id filters tenants by id </p></td>
-                </tr>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Name filters tenants by name </p></td>
-                </tr>
-              
-                <tr>
-                  <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
-                  <td>optional</td>
-                  <td><p>Labels lists only projects containing the given labels </p></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.TenantQuery">TenantQuery</a></td>
+                  <td></td>
+                  <td><p>Query for tenants </p></td>
                 </tr>
               
             </tbody>
@@ -19073,24 +19120,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>login</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Login filters tenants by this login </p></td>
-                </tr>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Name filters tenants by this name </p></td>
-                </tr>
-              
-                <tr>
-                  <td>paging</td>
-                  <td><a href="#metalstack.api.v2.Paging">metalstack.api.v2.Paging</a></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.TenantQuery">metalstack.api.v2.TenantQuery</a></td>
                   <td></td>
-                  <td><p>Paging details for the list request </p></td>
+                  <td><p>Query for tenants </p></td>
                 </tr>
               
             </tbody>

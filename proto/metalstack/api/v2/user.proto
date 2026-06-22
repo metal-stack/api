@@ -20,13 +20,13 @@ service UserService {
 // User represents an end user of the platform.
 message User {
   // Login is the login at the provider
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Name of the user
   string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Email of the user
-  string email = 3;
+  string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the user
-  string avatar_url = 4;
+  string avatar_url = 4 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // Tenants the user belongs to
   repeated Tenant tenants = 5;
   // Projects the user belongs to
