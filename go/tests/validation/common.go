@@ -27,14 +27,6 @@ func createString(n int) string {
 	return string(s)
 }
 
-func createRepeatedString(n int) []string {
-	arr := make([]string, n)
-	for i := range arr {
-		arr[i] = "opt" + string(rune('a'+(i%26)))
-	}
-	return arr
-}
-
 func createDiskDevices(n int) []string {
 	devs := make([]string, n)
 	for i := range devs {
