@@ -305,6 +305,7 @@ message MachineAllocation {
   // FilesystemLayout to create on the disks
   FilesystemLayout filesystem_layout = 8;
   // Networks this machine should be attached to
+  // Order of ips of external networks will be preserved.
   repeated MachineNetwork networks = 9;
   // Hostname of the allocated machine
   string hostname = 10 [(buf.validate.field).string.hostname = true];
@@ -343,6 +344,7 @@ message MachineAllocationNetwork {
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // IPs to to attach to this machine additionally
   // If none given, one ip address is acquired per network for the machine
+  // Order of ips is preserved on the loopback interface.
   repeated string ips = 2 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 

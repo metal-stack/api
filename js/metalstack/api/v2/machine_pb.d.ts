@@ -648,6 +648,7 @@ export type MachineAllocation = Message<"metalstack.api.v2.MachineAllocation"> &
     filesystemLayout?: FilesystemLayout | undefined;
     /**
      * Networks this machine should be attached to
+     * Order of ips of external networks will be preserved.
      *
      * @generated from field: repeated metalstack.api.v2.MachineNetwork networks = 9;
      */
@@ -722,6 +723,7 @@ export type MachineAllocationNetwork = Message<"metalstack.api.v2.MachineAllocat
     /**
      * IPs to to attach to this machine additionally
      * If none given, one ip address is acquired per network for the machine
+     * Order of ips is preserved on the loopback interface.
      *
      * @generated from field: repeated string ips = 2;
      */
