@@ -858,9 +858,11 @@ type SwitchQuery struct {
 	// Rack of the switches to list.
 	Rack *string `protobuf:"bytes,3,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
 	// Switch OS specific queries.
-	Os            *SwitchOSQuery `protobuf:"bytes,4,opt,name=os,proto3,oneof" json:"os,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Os *SwitchOSQuery `protobuf:"bytes,4,opt,name=os,proto3,oneof" json:"os,omitempty"`
+	// ConnectedMachineID lists the switches which have the given machine id in the connected machines map.
+	ConnectedMachineId *string `protobuf:"bytes,5,opt,name=connected_machine_id,json=connectedMachineId,proto3,oneof" json:"connected_machine_id,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *SwitchQuery) Reset() {
@@ -919,6 +921,13 @@ func (x *SwitchQuery) GetOs() *SwitchOSQuery {
 		return x.Os
 	}
 	return nil
+}
+
+func (x *SwitchQuery) GetConnectedMachineId() string {
+	if x != nil && x.ConnectedMachineId != nil {
+		return *x.ConnectedMachineId
+	}
+	return ""
 }
 
 // SwitchOSQuery holds OS specific query parameters.
@@ -1243,18 +1252,20 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x11MachineConnection\x12\x1d\n" +
 	"\n" +
 	"machine_id\x18\x01 \x01(\tR\tmachineId\x12.\n" +
-	"\x03nic\x18\x02 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\"\xe3\x01\n" +
+	"\x03nic\x18\x02 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\"\xbd\x02\n" +
 	"\vSwitchQuery\x12\"\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01H\x00R\x02id\x88\x01\x01\x12.\n" +
 	"\tpartition\x18\x02 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x01R\tpartition\x88\x01\x01\x12$\n" +
 	"\x04rack\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x02R\x04rack\x88\x01\x01\x125\n" +
-	"\x02os\x18\x04 \x01(\v2 .metalstack.api.v2.SwitchOSQueryH\x03R\x02os\x88\x01\x01B\x05\n" +
+	"\x02os\x18\x04 \x01(\v2 .metalstack.api.v2.SwitchOSQueryH\x03R\x02os\x88\x01\x01\x12?\n" +
+	"\x14connected_machine_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x04R\x12connectedMachineId\x88\x01\x01B\x05\n" +
 	"\x03_idB\f\n" +
 	"\n" +
 	"_partitionB\a\n" +
 	"\x05_rackB\x05\n" +
-	"\x03_os\"\x9c\x01\n" +
+	"\x03_osB\x17\n" +
+	"\x15_connected_machine_id\"\x9c\x01\n" +
 	"\rSwitchOSQuery\x12H\n" +
 	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x06vendor\x88\x01\x01\x12*\n" +
 	"\aversion\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\aversion\x88\x01\x01B\t\n" +
