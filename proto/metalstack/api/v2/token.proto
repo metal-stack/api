@@ -114,12 +114,8 @@ message TokenServiceCreateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 4 [
     (buf.validate.field).map = {
-      keys: {
-        string: {uuid: true}
-      }
-      values: {
-        enum: {defined_only: true}
-      }
+      keys: {string: {uuid: true}}
+      values: {enum: {defined_only: true}}
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
@@ -132,9 +128,7 @@ message TokenServiceCreateRequest {
           max_len: 128
         }
       }
-      values: {
-        enum: {defined_only: true}
-      }
+      values: {enum: {defined_only: true}}
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
@@ -150,9 +144,7 @@ message TokenServiceCreateRequest {
       // UUID regex pattern: 8-4-4-4-12 hex digits
       expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
     },
-    (buf.validate.field).map.values = {
-      enum: {defined_only: true}
-    }
+    (buf.validate.field).map.values = {enum: {defined_only: true}}
   ];
   // Labels on this token
   Labels labels = 9;
@@ -214,12 +206,8 @@ message TokenServiceUpdateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [
     (buf.validate.field).map = {
-      keys: {
-        string: {uuid: true}
-      }
-      values: {
-        enum: {defined_only: true}
-      }
+      keys: {string: {uuid: true}}
+      values: {enum: {defined_only: true}}
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
@@ -232,9 +220,7 @@ message TokenServiceUpdateRequest {
           max_len: 128
         }
       }
-      values: {
-        enum: {defined_only: true}
-      }
+      values: {enum: {defined_only: true}}
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
@@ -250,9 +236,7 @@ message TokenServiceUpdateRequest {
       // UUID regex pattern: 8-4-4-4-12 hex digits
       expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
     },
-    (buf.validate.field).map.values = {
-      enum: {defined_only: true}
-    }
+    (buf.validate.field).map.values = {enum: {defined_only: true}}
   ];
   // Labels on this token
   UpdateLabels labels = 10;

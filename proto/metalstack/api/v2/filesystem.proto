@@ -108,17 +108,13 @@ message Filesystem {
   repeated string mount_options = 7 [(buf.validate.field).repeated = {
     unique: true
     max_items: 32
-    items: {
-      string: {[metalstack.api.v2.is_option]: true}
-    }
+    items: {string: {[metalstack.api.v2.is_option]: true}}
   }];
   // CreateOptions the options to use to create (mkfs) this filesystem
   repeated string create_options = 8 [(buf.validate.field).repeated = {
     unique: true
     max_items: 32
-    items: {
-      string: {[metalstack.api.v2.is_option]: true}
-    }
+    items: {string: {[metalstack.api.v2.is_option]: true}}
   }];
 }
 
@@ -144,9 +140,7 @@ message Raid {
   repeated string devices = 2 [
     (buf.validate.field).repeated = {
       max_items: 128
-      items: {
-        string: {[metalstack.api.v2.is_name]: true}
-      }
+      items: {string: {[metalstack.api.v2.is_name]: true}}
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
@@ -159,9 +153,7 @@ message Raid {
   repeated string create_options = 4 [(buf.validate.field).repeated = {
     unique: true
     max_items: 32
-    items: {
-      string: {[metalstack.api.v2.is_option]: true}
-    }
+    items: {string: {[metalstack.api.v2.is_option]: true}}
   }];
   // Spares number of spares for the raid array
   int32 spares = 5;
@@ -193,9 +185,7 @@ message VolumeGroup {
   repeated string devices = 2 [
     (buf.validate.field).repeated = {
       max_items: 128
-      items: {
-        string: {[metalstack.api.v2.is_name]: true}
-      }
+      items: {string: {[metalstack.api.v2.is_name]: true}}
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
@@ -203,9 +193,7 @@ message VolumeGroup {
   repeated string tags = 3 [
     (buf.validate.field).repeated = {
       max_items: 128
-      items: {
-        string: {[metalstack.api.v2.is_name]: true}
-      }
+      items: {string: {[metalstack.api.v2.is_name]: true}}
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
