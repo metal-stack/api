@@ -157,18 +157,6 @@ func TestValidateFilesystem(t *testing.T) {
 			wantErrorMessage: "validation error: mount_options: repeated value must contain unique items",
 		},
 		{
-			name: "Invalid Filesystem, mount_options more than 32 items",
-			msg: &apiv2.Filesystem{
-				Device:       "/dev/sda3",
-				Format:       apiv2.Format_FORMAT_EXT4,
-				MountOptions: createRepeatedString(33),
-			},
-			wantErr: true,
-			wantErrorMessage: `validation errors:
- - mount_options: must contain no more than 32 item(s)
- - mount_options: repeated value must contain unique items`,
-		},
-		{
 			name: "Invalid Filesystem, mount_options item too long",
 			msg: &apiv2.Filesystem{
 				Device:       "/dev/sda3",

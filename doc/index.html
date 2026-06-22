@@ -9921,7 +9921,8 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>networks</td>
                   <td><a href="#metalstack.api.v2.MachineNetwork">MachineNetwork</a></td>
                   <td>repeated</td>
-                  <td><p>Networks this machine should be attached to </p></td>
+                  <td><p>Networks this machine should be attached to
+Order of ips of external networks will be preserved. </p></td>
                 </tr>
               
                 <tr>
@@ -10010,7 +10011,8 @@ AWS limits the max userdata size to 16k, lets allow twice as much </p></td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
                   <td><p>IPs to to attach to this machine additionally
-If none given, one ip address is acquired per network for the machine </p></td>
+If none given, one ip address is acquired per network for the machine
+Order of ips is preserved on the loopback interface. </p></td>
                 </tr>
               
             </tbody>

@@ -1703,6 +1703,7 @@ type MachineAllocation struct {
 	// FilesystemLayout to create on the disks
 	FilesystemLayout *FilesystemLayout `protobuf:"bytes,8,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
 	// Networks this machine should be attached to
+	// Order of ips of external networks will be preserved.
 	Networks []*MachineNetwork `protobuf:"bytes,9,rep,name=networks,proto3" json:"networks,omitempty"`
 	// Hostname of the allocated machine
 	Hostname string `protobuf:"bytes,10,opt,name=hostname,proto3" json:"hostname,omitempty"`
@@ -1881,6 +1882,7 @@ type MachineAllocationNetwork struct {
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	// IPs to to attach to this machine additionally
 	// If none given, one ip address is acquired per network for the machine
+	// Order of ips is preserved on the loopback interface.
 	Ips           []string `protobuf:"bytes,2,rep,name=ips,proto3" json:"ips,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
