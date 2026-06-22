@@ -31,7 +31,7 @@ message TenantServiceCreateRequest {
   // Email of the tenant, if not set will be inherited from the creator
   optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant
-  optional string avatar_url = 4;
+  optional string avatar_url = 4 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // Labels on the tenant
   metalstack.api.v2.Labels labels = 5;
 }
@@ -44,12 +44,8 @@ message TenantServiceCreateResponse {
 
 // TenantServiceListRequest is the request payload for listing tenants.
 message TenantServiceListRequest {
-  // Login filters tenants by this login
-  optional string login = 1;
-  // Name filters tenants by this name
-  optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Paging details for the list request
-  metalstack.api.v2.Paging paging = 3;
+  // Query for tenants
+  metalstack.api.v2.TenantQuery query = 1;
 }
 
 // TenantServiceListResponse is the response payload for listing tenants.

@@ -25,6 +25,8 @@ IS_OPTION_FIELD_NUMBER: _ClassVar[int]
 is_option: _descriptor.FieldDescriptor
 IS_KEY_FIELD_NUMBER: _ClassVar[int]
 is_key: _descriptor.FieldDescriptor
+IS_TENANT_LOGIN_FIELD_NUMBER: _ClassVar[int]
+is_tenant_login: _descriptor.FieldDescriptor
 PREFIXES_FIELD_NUMBER: _ClassVar[int]
 prefixes: _descriptor.FieldDescriptor
 IPS_FIELD_NUMBER: _ClassVar[int]
