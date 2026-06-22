@@ -74,6 +74,12 @@ extend buf.validate.StringRules {
     message: "must be within 1 and 8192 characters"
     expression: "this.size() >= 1 && this.size() <= 8192"
   }];
+  // IsTenantLogin returns true if name field satisfies our requirements
+  optional bool is_tenant_login = 80048962 [(buf.validate.predefined).cel = {
+    id: "string.is_tenant_login"
+    message: "must be within 2 and 256 characters"
+    expression: "this.size() >= 2 && this.size() <= 256"
+  }];
 }
 
 extend buf.validate.RepeatedRules {

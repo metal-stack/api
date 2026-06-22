@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
-import type { Labels, Meta, TenantRole, UpdateLabels, UpdateMeta } from "./common_pb";
+import type { Labels, Meta, Paging, TenantRole, UpdateLabels, UpdateMeta } from "./common_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/api/v2/tenant.proto.
@@ -175,11 +175,29 @@ export declare const TenantInviteSchema: GenMessage<TenantInvite>;
  */
 export type TenantServiceListRequest = Message<"metalstack.api.v2.TenantServiceListRequest"> & {
     /**
-     * Id filters tenants by id
+     * Query for tenants
      *
-     * @generated from field: optional string id = 1;
+     * @generated from field: metalstack.api.v2.TenantQuery query = 1;
      */
-    id?: string | undefined;
+    query?: TenantQuery | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.TenantServiceListRequest.
+ * Use `create(TenantServiceListRequestSchema)` to create a new message.
+ */
+export declare const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest>;
+/**
+ * TenantQuery is used to search tenants
+ *
+ * @generated from message metalstack.api.v2.TenantQuery
+ */
+export type TenantQuery = Message<"metalstack.api.v2.TenantQuery"> & {
+    /**
+     * Id filters tenants by login
+     *
+     * @generated from field: optional string login = 1;
+     */
+    login?: string | undefined;
     /**
      * Name filters tenants by name
      *
@@ -192,12 +210,18 @@ export type TenantServiceListRequest = Message<"metalstack.api.v2.TenantServiceL
      * @generated from field: optional metalstack.api.v2.Labels labels = 3;
      */
     labels?: Labels | undefined;
+    /**
+     * Paging details for the list request
+     *
+     * @generated from field: metalstack.api.v2.Paging paging = 4;
+     */
+    paging?: Paging | undefined;
 };
 /**
- * Describes the message metalstack.api.v2.TenantServiceListRequest.
- * Use `create(TenantServiceListRequestSchema)` to create a new message.
+ * Describes the message metalstack.api.v2.TenantQuery.
+ * Use `create(TenantQuerySchema)` to create a new message.
  */
-export declare const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest>;
+export declare const TenantQuerySchema: GenMessage<TenantQuery>;
 /**
  * TenantServiceGetRequest is the request payload of the tenant get request
  *

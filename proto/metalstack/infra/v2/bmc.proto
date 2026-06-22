@@ -31,11 +31,7 @@ message UpdateBMCInfoRequest {
   // Partition is the partition ID where metal-bmc wants to receive events
   string partition = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // BmcReports contains maps the BMC report per machine UUID
-  map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 2 [(buf.validate.field).map = {
-    keys: {
-      string: {uuid: true}
-    }
-  }];
+  map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 2 [(buf.validate.field).map = {keys: {string: {uuid: true}}}];
 }
 
 // UpdateBMCInfoResponse is the response payload for updating BMC information.

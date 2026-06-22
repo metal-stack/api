@@ -5,10 +5,10 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
-import type { Labels, Paging } from "../../api/v2/common_pb";
+import type { Labels } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
-import type { Tenant } from "../../api/v2/tenant_pb";
+import type { Tenant, TenantQuery } from "../../api/v2/tenant_pb";
 import { file_metalstack_api_v2_tenant } from "../../api/v2/tenant_pb";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/tenant.proto.
  */
 export const file_metalstack_admin_v2_tenant: GenFile = /*@__PURE__*/
-  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiLoAQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgbAs66xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIXCgphdmF0YXJfdXJsGAQgASgJSAKIAQESKQoGbGFiZWxzGAUgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzQg4KDF9kZXNjcmlwdGlvbkIICgZfZW1haWxCDQoLX2F2YXRhcl91cmwiSAobVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlEikKBnRlbmFudBgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudCKMAQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0EhIKBWxvZ2luGAEgASgJSACIAQESHgoEbmFtZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIpCgZwYWdpbmcYAyABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5QYWdpbmdCCAoGX2xvZ2luQgcKBV9uYW1lIm0KGVRlbmFudFNlcnZpY2VMaXN0UmVzcG9uc2USKgoHdGVuYW50cxgBIAMoCzIZLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudBIWCgluZXh0X3BhZ2UYAiABKARIAIgBAUIMCgpfbmV4dF9wYWdlMvoBCg1UZW5hbnRTZXJ2aWNlEnYKBkNyZWF0ZRIvLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QaMC5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnEKBExpc3QSLS5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VMaXN0UmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYAULPAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCC1RlbmFudFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
+  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiL1AQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgbAs66xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIkCgphdmF0YXJfdXJsGAQgASgJQgu6SAhyBuCzrrECAUgCiAEBEikKBmxhYmVscxgFIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0IOCgxfZGVzY3JpcHRpb25CCAoGX2VtYWlsQg0KC19hdmF0YXJfdXJsIkgKG1RlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZRIpCgZ0ZW5hbnQYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiSQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Ei0KBXF1ZXJ5GAEgASgLMh4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50UXVlcnkibQoZVGVuYW50U2VydmljZUxpc3RSZXNwb25zZRIqCgd0ZW5hbnRzGAEgAygLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50EhYKCW5leHRfcGFnZRgCIAEoBEgAiAEBQgwKCl9uZXh0X3BhZ2Uy+gEKDVRlbmFudFNlcnZpY2USdgoGQ3JlYXRlEi8ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlQ3JlYXRlUmVxdWVzdBowLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlIgnS8xgBAeDzGAEScQoETGlzdBItLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgBQs8BChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkILVGVuYW50UHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hZG1pbi92MjthZG1pbnYyogIDTUFYqgITTWV0YWxzdGFjay5BZG1pbi5WMsoCE01ldGFsc3RhY2tcQWRtaW5cVjLiAh9NZXRhbHN0YWNrXEFkbWluXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6QWRtaW46OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
 
 /**
  * TenantServiceCreateRequest is the request payload for creating a tenant.
@@ -95,25 +95,11 @@ export const TenantServiceCreateResponseSchema: GenMessage<TenantServiceCreateRe
  */
 export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServiceListRequest"> & {
   /**
-   * Login filters tenants by this login
+   * Query for tenants
    *
-   * @generated from field: optional string login = 1;
+   * @generated from field: metalstack.api.v2.TenantQuery query = 1;
    */
-  login?: string | undefined;
-
-  /**
-   * Name filters tenants by this name
-   *
-   * @generated from field: optional string name = 2;
-   */
-  name?: string | undefined;
-
-  /**
-   * Paging details for the list request
-   *
-   * @generated from field: metalstack.api.v2.Paging paging = 3;
-   */
-  paging?: Paging | undefined;
+  query?: TenantQuery | undefined;
 };
 
 /**

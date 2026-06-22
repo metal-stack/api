@@ -113,9 +113,7 @@ message MachineServiceCreateRequest {
       // A lower bound can be set similarly with `min_items`.
       max_items: 50
       // `items` validate each value in this `repeated` field.
-      items: {
-        string: {[metalstack.api.v2.is_key]: true}
-      }
+      items: {string: {[metalstack.api.v2.is_key]: true}}
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
@@ -173,9 +171,7 @@ message MachineServiceUpdateRequest {
       // A lower bound can be set similarly with `min_items`.
       max_items: 50
       // `items` validate each value in this `repeated` field.
-      items: {
-        string: {[metalstack.api.v2.is_key]: true}
-      }
+      items: {string: {[metalstack.api.v2.is_key]: true}}
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
@@ -309,6 +305,7 @@ message MachineAllocation {
   // FilesystemLayout to create on the disks
   FilesystemLayout filesystem_layout = 8;
   // Networks this machine should be attached to
+  // Order of ips of external networks will be preserved.
   repeated MachineNetwork networks = 9;
   // Hostname of the allocated machine
   string hostname = 10 [(buf.validate.field).string.hostname = true];
@@ -319,9 +316,7 @@ message MachineAllocation {
       // A lower bound can be set similarly with `min_items`.
       max_items: 50
       // `items` validate each value in this `repeated` field.
-      items: {
-        string: {[metalstack.api.v2.is_key]: true}
-      }
+      items: {string: {[metalstack.api.v2.is_key]: true}}
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
@@ -349,6 +344,7 @@ message MachineAllocationNetwork {
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // IPs to to attach to this machine additionally
   // If none given, one ip address is acquired per network for the machine
+  // Order of ips is preserved on the loopback interface.
   repeated string ips = 2 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
@@ -365,11 +361,7 @@ message FirewallEgressRule {
   // Protocol the protocol for the rule, defaults to tcp
   IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
   // Ports the ports affected by this rule
-  repeated uint32 ports = 2 [(buf.validate.field).repeated = {
-    items: {
-      uint32: {lte: 65532}
-    }
-  }];
+  repeated uint32 ports = 2 [(buf.validate.field).repeated = {items: {uint32: {lte: 65532}}}];
   // To the destination cidrs affected by this rule
   repeated string to = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Comment for this rule
@@ -387,11 +379,7 @@ message FirewallIngressRule {
   // Protocol the protocol for the rule, defaults to tcp
   IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
   // Ports the ports affected by this rule
-  repeated uint32 ports = 2 [(buf.validate.field).repeated = {
-    items: {
-      uint32: {lte: 65532}
-    }
-  }];
+  repeated uint32 ports = 2 [(buf.validate.field).repeated = {items: {uint32: {lte: 65532}}}];
   // To the destination cidrs affected by this rule
   repeated string to = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // From the source cidrs affected by this rule
@@ -825,33 +813,25 @@ message MachineNicQuery {
   repeated string macs = 1 [(buf.validate.field).repeated = {
     max_items: 100
     unique: true
-    items: {
-      string: {[metalstack.api.v2.macaddress]: true}
-    }
+    items: {string: {[metalstack.api.v2.macaddress]: true}}
   }];
   // Names this machine nic has
   repeated string names = 2 [(buf.validate.field).repeated = {
     max_items: 100
     unique: true
-    items: {
-      string: {max_len: 128}
-    }
+    items: {string: {max_len: 128}}
   }];
   // NeighborMacs this machine nic has
   repeated string neighbor_macs = 3 [(buf.validate.field).repeated = {
     max_items: 100
     unique: true
-    items: {
-      string: {[metalstack.api.v2.macaddress]: true}
-    }
+    items: {string: {[metalstack.api.v2.macaddress]: true}}
   }];
   // NeighborNames this machine nic has
   repeated string neighbor_names = 4 [(buf.validate.field).repeated = {
     max_items: 100
     unique: true
-    items: {
-      string: {max_len: 128}
-    }
+    items: {string: {max_len: 128}}
   }];
 }
 
@@ -860,9 +840,7 @@ message MachineDiskQuery {
   // Names of disks in this machine
   repeated string names = 1 [(buf.validate.field).repeated = {
     max_items: 100
-    items: {
-      string: {max_len: 128}
-    }
+    items: {string: {max_len: 128}}
   }];
   // Sizes of disks in this machine
   repeated uint64 sizes = 2 [(buf.validate.field).repeated = {max_items: 100}];
