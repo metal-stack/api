@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Labels, Paging } from "../../api/v2/common_pb";
-import type { Tenant } from "../../api/v2/tenant_pb";
+import type { Labels } from "../../api/v2/common_pb";
+import type { Tenant, TenantQuery } from "../../api/v2/tenant_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/tenant.proto.
@@ -73,23 +73,11 @@ export declare const TenantServiceCreateResponseSchema: GenMessage<TenantService
  */
 export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServiceListRequest"> & {
     /**
-     * Login filters tenants by this login
+     * Query for tenants
      *
-     * @generated from field: optional string login = 1;
+     * @generated from field: metalstack.api.v2.TenantQuery query = 1;
      */
-    login?: string | undefined;
-    /**
-     * Name filters tenants by this name
-     *
-     * @generated from field: optional string name = 2;
-     */
-    name?: string | undefined;
-    /**
-     * Paging details for the list request
-     *
-     * @generated from field: metalstack.api.v2.Paging paging = 3;
-     */
-    paging?: Paging | undefined;
+    query?: TenantQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceListRequest.

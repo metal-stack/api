@@ -154,12 +154,8 @@ func (x *TenantServiceCreateResponse) GetTenant() *v2.Tenant {
 // TenantServiceListRequest is the request payload for listing tenants.
 type TenantServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login filters tenants by this login
-	Login *string `protobuf:"bytes,1,opt,name=login,proto3,oneof" json:"login,omitempty"`
-	// Name filters tenants by this name
-	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Paging details for the list request
-	Paging        *v2.Paging `protobuf:"bytes,3,opt,name=paging,proto3" json:"paging,omitempty"`
+	// Query for tenants
+	Query         *v2.TenantQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -194,23 +190,9 @@ func (*TenantServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_tenant_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *TenantServiceListRequest) GetLogin() string {
-	if x != nil && x.Login != nil {
-		return *x.Login
-	}
-	return ""
-}
-
-func (x *TenantServiceListRequest) GetName() string {
-	if x != nil && x.Name != nil {
-		return *x.Name
-	}
-	return ""
-}
-
-func (x *TenantServiceListRequest) GetPaging() *v2.Paging {
+func (x *TenantServiceListRequest) GetQuery() *v2.TenantQuery {
 	if x != nil {
-		return x.Paging
+		return x.Query
 	}
 	return nil
 }
@@ -274,25 +256,21 @@ var File_metalstack_admin_v2_tenant_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\x95\x02\n" +
+	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xa2\x02\n" +
 	"\x1aTenantServiceCreateRequest\x12\x1f\n" +
 	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x122\n" +
 	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12\"\n" +
-	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x12\"\n" +
+	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x12/\n" +
 	"\n" +
-	"avatar_url\x18\x04 \x01(\tH\x02R\tavatarUrl\x88\x01\x01\x121\n" +
+	"avatar_url\x18\x04 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01H\x02R\tavatarUrl\x88\x01\x01\x121\n" +
 	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labelsB\x0e\n" +
 	"\f_descriptionB\b\n" +
 	"\x06_emailB\r\n" +
 	"\v_avatar_url\"P\n" +
 	"\x1bTenantServiceCreateResponse\x121\n" +
-	"\x06tenant\x18\x01 \x01(\v2\x19.metalstack.api.v2.TenantR\x06tenant\"\xa1\x01\n" +
-	"\x18TenantServiceListRequest\x12\x19\n" +
-	"\x05login\x18\x01 \x01(\tH\x00R\x05login\x88\x01\x01\x12$\n" +
-	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x121\n" +
-	"\x06paging\x18\x03 \x01(\v2\x19.metalstack.api.v2.PagingR\x06pagingB\b\n" +
-	"\x06_loginB\a\n" +
-	"\x05_name\"\x80\x01\n" +
+	"\x06tenant\x18\x01 \x01(\v2\x19.metalstack.api.v2.TenantR\x06tenant\"P\n" +
+	"\x18TenantServiceListRequest\x124\n" +
+	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.TenantQueryR\x05query\"\x80\x01\n" +
 	"\x19TenantServiceListResponse\x123\n" +
 	"\atenants\x18\x01 \x03(\v2\x19.metalstack.api.v2.TenantR\atenants\x12 \n" +
 	"\tnext_page\x18\x02 \x01(\x04H\x00R\bnextPage\x88\x01\x01B\f\n" +
@@ -324,12 +302,12 @@ var file_metalstack_admin_v2_tenant_proto_goTypes = []any{
 	(*TenantServiceListResponse)(nil),   // 3: metalstack.admin.v2.TenantServiceListResponse
 	(*v2.Labels)(nil),                   // 4: metalstack.api.v2.Labels
 	(*v2.Tenant)(nil),                   // 5: metalstack.api.v2.Tenant
-	(*v2.Paging)(nil),                   // 6: metalstack.api.v2.Paging
+	(*v2.TenantQuery)(nil),              // 6: metalstack.api.v2.TenantQuery
 }
 var file_metalstack_admin_v2_tenant_proto_depIdxs = []int32{
 	4, // 0: metalstack.admin.v2.TenantServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
 	5, // 1: metalstack.admin.v2.TenantServiceCreateResponse.tenant:type_name -> metalstack.api.v2.Tenant
-	6, // 2: metalstack.admin.v2.TenantServiceListRequest.paging:type_name -> metalstack.api.v2.Paging
+	6, // 2: metalstack.admin.v2.TenantServiceListRequest.query:type_name -> metalstack.api.v2.TenantQuery
 	5, // 3: metalstack.admin.v2.TenantServiceListResponse.tenants:type_name -> metalstack.api.v2.Tenant
 	0, // 4: metalstack.admin.v2.TenantService.Create:input_type -> metalstack.admin.v2.TenantServiceCreateRequest
 	2, // 5: metalstack.admin.v2.TenantService.List:input_type -> metalstack.admin.v2.TenantServiceListRequest
@@ -348,7 +326,6 @@ func file_metalstack_admin_v2_tenant_proto_init() {
 		return
 	}
 	file_metalstack_admin_v2_tenant_proto_msgTypes[0].OneofWrappers = []any{}
-	file_metalstack_admin_v2_tenant_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_admin_v2_tenant_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

@@ -343,6 +343,12 @@ export type SwitchQuery = Message<"metalstack.api.v2.SwitchQuery"> & {
      * @generated from field: optional metalstack.api.v2.SwitchOSQuery os = 4;
      */
     os?: SwitchOSQuery | undefined;
+    /**
+     * ConnectedMachineID lists the switches which have the given machine id in the connected machines map.
+     *
+     * @generated from field: optional string connected_machine_id = 5;
+     */
+    connectedMachineId?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SwitchQuery.
