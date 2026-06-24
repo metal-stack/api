@@ -28,7 +28,7 @@ from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_
 from metalstack.api.v2 import tenant_pb2 as metalstack_dot_api_dot_v2_dot_tenant__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xa2\x02\n\x1aTenantServiceCreateRequest\x12\x1f\n\x04name\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12\x32\n\x0b\x64\x65scription\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x00R\x0b\x64\x65scription\x88\x01\x01\x12\"\n\x05\x65mail\x18\x03 \x01(\tB\x07\xbaH\x04r\x02`\x01H\x01R\x05\x65mail\x88\x01\x01\x12/\n\navatar_url\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xe0\xb3\xae\xb1\x02\x01H\x02R\tavatarUrl\x88\x01\x01\x12\x31\n\x06labels\x18\x05 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsR\x06labelsB\x0e\n\x0c_descriptionB\x08\n\x06_emailB\r\n\x0b_avatar_url\"P\n\x1bTenantServiceCreateResponse\x12\x31\n\x06tenant\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.TenantR\x06tenant\"P\n\x18TenantServiceListRequest\x12\x34\n\x05query\x18\x01 \x01(\x0b\x32\x1e.metalstack.api.v2.TenantQueryR\x05query\"\x80\x01\n\x19TenantServiceListResponse\x12\x33\n\x07tenants\x18\x01 \x03(\x0b\x32\x19.metalstack.api.v2.TenantR\x07tenants\x12 \n\tnext_page\x18\x02 \x01(\x04H\x00R\x08nextPage\x88\x01\x01\x42\x0c\n\n_next_page2\xfa\x01\n\rTenantService\x12v\n\x06\x43reate\x12/.metalstack.admin.v2.TenantServiceCreateRequest\x1a\x30.metalstack.admin.v2.TenantServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12q\n\x04List\x12-.metalstack.admin.v2.TenantServiceListRequest\x1a..metalstack.admin.v2.TenantServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x42\xcf\x01\n\x17\x63om.metalstack.admin.v2B\x0bTenantProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xa2\x02\n\x1aTenantServiceCreateRequest\x12\x1f\n\x04name\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x04name\x12\x32\n\x0b\x64\x65scription\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x00R\x0b\x64\x65scription\x88\x01\x01\x12\"\n\x05\x65mail\x18\x03 \x01(\tB\x07\xbaH\x04r\x02`\x01H\x01R\x05\x65mail\x88\x01\x01\x12/\n\navatar_url\x18\x04 \x01(\tB\x0b\xbaH\x08r\x06\xe0\xb3\xae\xb1\x02\x01H\x02R\tavatarUrl\x88\x01\x01\x12\x31\n\x06labels\x18\x05 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsR\x06labelsB\x0e\n\x0c_descriptionB\x08\n\x06_emailB\r\n\x0b_avatar_url\"P\n\x1bTenantServiceCreateResponse\x12\x31\n\x06tenant\x18\x01 \x01(\x0b\x32\x19.metalstack.api.v2.TenantR\x06tenant\"P\n\x18TenantServiceListRequest\x12\x34\n\x05query\x18\x01 \x01(\x0b\x32\x1e.metalstack.api.v2.TenantQueryR\x05query\"\x80\x01\n\x19TenantServiceListResponse\x12\x33\n\x07tenants\x18\x01 \x03(\x0b\x32\x19.metalstack.api.v2.TenantR\x07tenants\x12 \n\tnext_page\x18\x02 \x01(\x04H\x00R\x08nextPage\x88\x01\x01\x42\x0c\n\n_next_page\"\xa6\x01\n\x1dTenantServiceAddMemberRequest\x12#\n\x06tenant\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06tenant\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12;\n\x04role\x18\x03 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04role\" \n\x1eTenantServiceAddMemberResponse2\xfb\x02\n\rTenantService\x12v\n\x06\x43reate\x12/.metalstack.admin.v2.TenantServiceCreateRequest\x1a\x30.metalstack.admin.v2.TenantServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12q\n\x04List\x12-.metalstack.admin.v2.TenantServiceListRequest\x1a..metalstack.admin.v2.TenantServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12\x7f\n\tAddMember\x12\x32.metalstack.admin.v2.TenantServiceAddMemberRequest\x1a\x33.metalstack.admin.v2.TenantServiceAddMemberResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x42\xcf\x01\n\x17\x63om.metalstack.admin.v2B\x0bTenantProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -37,17 +37,25 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.admin.v2B\013TenantProtoP\001Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\242\002\003MAX\252\002\023Metalstack.Admin.V2\312\002\023Metalstack\\Admin\\V2\342\002\037Metalstack\\Admin\\V2\\GPBMetadata\352\002\025Metalstack::Admin::V2'
   _globals['_TENANTSERVICECREATEREQUEST'].fields_by_name['name']._loaded_options = None
-  _globals['_TENANTSERVICECREATEREQUEST'].fields_by_name['name']._serialized_options = b'\272H\010r\006\300\263\256\261\002\001'
+  _globals['_TENANTSERVICECREATEREQUEST'].fields_by_name['name']._serialized_options = b'\272H\010r\006\220\264\256\261\002\001'
   _globals['_TENANTSERVICECREATEREQUEST'].fields_by_name['description']._loaded_options = None
   _globals['_TENANTSERVICECREATEREQUEST'].fields_by_name['description']._serialized_options = b'\272H\010r\006\310\263\256\261\002\001'
   _globals['_TENANTSERVICECREATEREQUEST'].fields_by_name['email']._loaded_options = None
   _globals['_TENANTSERVICECREATEREQUEST'].fields_by_name['email']._serialized_options = b'\272H\004r\002`\001'
   _globals['_TENANTSERVICECREATEREQUEST'].fields_by_name['avatar_url']._loaded_options = None
   _globals['_TENANTSERVICECREATEREQUEST'].fields_by_name['avatar_url']._serialized_options = b'\272H\010r\006\340\263\256\261\002\001'
+  _globals['_TENANTSERVICEADDMEMBERREQUEST'].fields_by_name['tenant']._loaded_options = None
+  _globals['_TENANTSERVICEADDMEMBERREQUEST'].fields_by_name['tenant']._serialized_options = b'\272H\010r\006\220\264\256\261\002\001'
+  _globals['_TENANTSERVICEADDMEMBERREQUEST'].fields_by_name['member']._loaded_options = None
+  _globals['_TENANTSERVICEADDMEMBERREQUEST'].fields_by_name['member']._serialized_options = b'\272H\010r\006\220\264\256\261\002\001'
+  _globals['_TENANTSERVICEADDMEMBERREQUEST'].fields_by_name['role']._loaded_options = None
+  _globals['_TENANTSERVICEADDMEMBERREQUEST'].fields_by_name['role']._serialized_options = b'\272H\005\202\001\002\020\001'
   _globals['_TENANTSERVICE'].methods_by_name['Create']._loaded_options = None
   _globals['_TENANTSERVICE'].methods_by_name['Create']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
   _globals['_TENANTSERVICE'].methods_by_name['List']._loaded_options = None
   _globals['_TENANTSERVICE'].methods_by_name['List']._serialized_options = b'\322\363\030\002\001\002\340\363\030\001'
+  _globals['_TENANTSERVICE'].methods_by_name['AddMember']._loaded_options = None
+  _globals['_TENANTSERVICE'].methods_by_name['AddMember']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
   _globals['_TENANTSERVICECREATEREQUEST']._serialized_start=193
   _globals['_TENANTSERVICECREATEREQUEST']._serialized_end=483
   _globals['_TENANTSERVICECREATERESPONSE']._serialized_start=485
@@ -56,6 +64,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TENANTSERVICELISTREQUEST']._serialized_end=647
   _globals['_TENANTSERVICELISTRESPONSE']._serialized_start=650
   _globals['_TENANTSERVICELISTRESPONSE']._serialized_end=778
-  _globals['_TENANTSERVICE']._serialized_start=781
-  _globals['_TENANTSERVICE']._serialized_end=1031
+  _globals['_TENANTSERVICEADDMEMBERREQUEST']._serialized_start=781
+  _globals['_TENANTSERVICEADDMEMBERREQUEST']._serialized_end=947
+  _globals['_TENANTSERVICEADDMEMBERRESPONSE']._serialized_start=949
+  _globals['_TENANTSERVICEADDMEMBERRESPONSE']._serialized_end=981
+  _globals['_TENANTSERVICE']._serialized_start=984
+  _globals['_TENANTSERVICE']._serialized_end=1363
 # @@protoc_insertion_point(module_scope)

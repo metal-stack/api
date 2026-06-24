@@ -37,6 +37,8 @@ const (
 	TenantServiceCreateProcedure = "/metalstack.admin.v2.TenantService/Create"
 	// TenantServiceListProcedure is the fully-qualified name of the TenantService's List RPC.
 	TenantServiceListProcedure = "/metalstack.admin.v2.TenantService/List"
+	// TenantServiceAddMemberProcedure is the fully-qualified name of the TenantService's AddMember RPC.
+	TenantServiceAddMemberProcedure = "/metalstack.admin.v2.TenantService/AddMember"
 )
 
 // TenantServiceClient is a client for the metalstack.admin.v2.TenantService service.
@@ -45,6 +47,8 @@ type TenantServiceClient interface {
 	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// Returns the list of all tenants.
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
+	// Add a member to a tenant
+	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
 }
 
 // NewTenantServiceClient constructs a client for the metalstack.admin.v2.TenantService service. By
@@ -70,13 +74,20 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(tenantServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
+		addMember: connect.NewClient[v2.TenantServiceAddMemberRequest, v2.TenantServiceAddMemberResponse](
+			httpClient,
+			baseURL+TenantServiceAddMemberProcedure,
+			connect.WithSchema(tenantServiceMethods.ByName("AddMember")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	create *connect.Client[v2.TenantServiceCreateRequest, v2.TenantServiceCreateResponse]
-	list   *connect.Client[v2.TenantServiceListRequest, v2.TenantServiceListResponse]
+	create    *connect.Client[v2.TenantServiceCreateRequest, v2.TenantServiceCreateResponse]
+	list      *connect.Client[v2.TenantServiceListRequest, v2.TenantServiceListResponse]
+	addMember *connect.Client[v2.TenantServiceAddMemberRequest, v2.TenantServiceAddMemberResponse]
 }
 
 // Create calls metalstack.admin.v2.TenantService.Create.
@@ -97,12 +108,23 @@ func (c *tenantServiceClient) List(ctx context.Context, req *v2.TenantServiceLis
 	return nil, err
 }
 
+// AddMember calls metalstack.admin.v2.TenantService.AddMember.
+func (c *tenantServiceClient) AddMember(ctx context.Context, req *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error) {
+	response, err := c.addMember.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // TenantServiceHandler is an implementation of the metalstack.admin.v2.TenantService service.
 type TenantServiceHandler interface {
 	// Creates a new tenant.
 	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// Returns the list of all tenants.
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
+	// Add a member to a tenant
+	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -124,12 +146,20 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(tenantServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
+	tenantServiceAddMemberHandler := connect.NewUnaryHandlerSimple(
+		TenantServiceAddMemberProcedure,
+		svc.AddMember,
+		connect.WithSchema(tenantServiceMethods.ByName("AddMember")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case TenantServiceCreateProcedure:
 			tenantServiceCreateHandler.ServeHTTP(w, r)
 		case TenantServiceListProcedure:
 			tenantServiceListHandler.ServeHTTP(w, r)
+		case TenantServiceAddMemberProcedure:
+			tenantServiceAddMemberHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -145,4 +175,8 @@ func (UnimplementedTenantServiceHandler) Create(context.Context, *v2.TenantServi
 
 func (UnimplementedTenantServiceHandler) List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TenantService.List is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TenantService.AddMember is not implemented"))
 }

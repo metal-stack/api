@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Labels } from "../../api/v2/common_pb";
+import type { Labels, TenantRole } from "../../api/v2/common_pb";
 import type { Tenant, TenantQuery } from "../../api/v2/tenant_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -109,6 +109,47 @@ export type TenantServiceListResponse = Message<"metalstack.admin.v2.TenantServi
  */
 export declare const TenantServiceListResponseSchema: GenMessage<TenantServiceListResponse>;
 /**
+ * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+ *
+ * @generated from message metalstack.admin.v2.TenantServiceAddMemberRequest
+ */
+export type TenantServiceAddMemberRequest = Message<"metalstack.admin.v2.TenantServiceAddMemberRequest"> & {
+    /**
+     * Login of the tenant to which the member will be added
+     *
+     * @generated from field: string tenant = 1;
+     */
+    tenant: string;
+    /**
+     * Login of the member to add
+     *
+     * @generated from field: string member = 2;
+     */
+    member: string;
+    /**
+     * Role to assign to the new member
+     *
+     * @generated from field: metalstack.api.v2.TenantRole role = 3;
+     */
+    role: TenantRole;
+};
+/**
+ * Describes the message metalstack.admin.v2.TenantServiceAddMemberRequest.
+ * Use `create(TenantServiceAddMemberRequestSchema)` to create a new message.
+ */
+export declare const TenantServiceAddMemberRequestSchema: GenMessage<TenantServiceAddMemberRequest>;
+/**
+ * TenantServiceAddMemberResponse is the response payload for the add member request
+ *
+ * @generated from message metalstack.admin.v2.TenantServiceAddMemberResponse
+ */
+export type TenantServiceAddMemberResponse = Message<"metalstack.admin.v2.TenantServiceAddMemberResponse"> & {};
+/**
+ * Describes the message metalstack.admin.v2.TenantServiceAddMemberResponse.
+ * Use `create(TenantServiceAddMemberResponseSchema)` to create a new message.
+ */
+export declare const TenantServiceAddMemberResponseSchema: GenMessage<TenantServiceAddMemberResponse>;
+/**
  * TenantService provides tenant management operations.
  *
  * @generated from service metalstack.admin.v2.TenantService
@@ -133,5 +174,15 @@ export declare const TenantService: GenService<{
         methodKind: "unary";
         input: typeof TenantServiceListRequestSchema;
         output: typeof TenantServiceListResponseSchema;
+    };
+    /**
+     * Add a member to a tenant
+     *
+     * @generated from rpc metalstack.admin.v2.TenantService.AddMember
+     */
+    addMember: {
+        methodKind: "unary";
+        input: typeof TenantServiceAddMemberRequestSchema;
+        output: typeof TenantServiceAddMemberResponseSchema;
     };
 }>;
