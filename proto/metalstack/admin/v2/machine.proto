@@ -54,6 +54,12 @@ service MachineService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
+  // Issues allows to query issues of machines
+  rpc Issues(MachineServiceIssuesRequest) returns (MachineServiceIssuesResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
 }
 
 // ------------------------ Service Messages ----------------------------------
@@ -169,4 +175,16 @@ message MachineServiceSetStateRequest {
 message MachineServiceSetStateResponse {
   // Machine with the changed state.
   metalstack.api.v2.Machine machine = 1;
+}
+
+// MachineServiceIssuesRequest is the request payload for a machine issues request
+message MachineServiceIssuesRequest {
+  // Query which machine issues to include
+  metalstack.api.v2.MachineIssuesQuery query = 1;
+}
+
+// MachineServiceIssuesResponse is the response payload for a machine issues request
+message MachineServiceIssuesResponse {
+  // Issues is the result of the issues query
+  repeated metalstack.api.v2.MachineIssues issues = 1;
 }

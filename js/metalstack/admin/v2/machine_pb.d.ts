@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineQuery, MachineState } from "../../api/v2/machine_pb";
+import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineIssues, MachineIssuesQuery, MachineQuery, MachineState } from "../../api/v2/machine_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/machine.proto.
@@ -334,6 +334,42 @@ export type MachineServiceSetStateResponse = Message<"metalstack.admin.v2.Machin
  */
 export declare const MachineServiceSetStateResponseSchema: GenMessage<MachineServiceSetStateResponse>;
 /**
+ * MachineServiceIssuesRequest is the request payload for a machine issues request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceIssuesRequest
+ */
+export type MachineServiceIssuesRequest = Message<"metalstack.admin.v2.MachineServiceIssuesRequest"> & {
+    /**
+     * Query which machine issues to include
+     *
+     * @generated from field: metalstack.api.v2.MachineIssuesQuery query = 1;
+     */
+    query?: MachineIssuesQuery | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceIssuesRequest.
+ * Use `create(MachineServiceIssuesRequestSchema)` to create a new message.
+ */
+export declare const MachineServiceIssuesRequestSchema: GenMessage<MachineServiceIssuesRequest>;
+/**
+ * MachineServiceIssuesResponse is the response payload for a machine issues request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceIssuesResponse
+ */
+export type MachineServiceIssuesResponse = Message<"metalstack.admin.v2.MachineServiceIssuesResponse"> & {
+    /**
+     * Issues is the result of the issues query
+     *
+     * @generated from field: repeated metalstack.api.v2.MachineIssues issues = 1;
+     */
+    issues: MachineIssues[];
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceIssuesResponse.
+ * Use `create(MachineServiceIssuesResponseSchema)` to create a new message.
+ */
+export declare const MachineServiceIssuesResponseSchema: GenMessage<MachineServiceIssuesResponse>;
+/**
  * MachineService provides machine lifecycle management operations.
  *
  * @generated from service metalstack.admin.v2.MachineService
@@ -418,5 +454,15 @@ export declare const MachineService: GenService<{
         methodKind: "unary";
         input: typeof MachineServiceSetStateRequestSchema;
         output: typeof MachineServiceSetStateResponseSchema;
+    };
+    /**
+     * Issues allows to query issues of machines
+     *
+     * @generated from rpc metalstack.admin.v2.MachineService.Issues
+     */
+    issues: {
+        methodKind: "unary";
+        input: typeof MachineServiceIssuesRequestSchema;
+        output: typeof MachineServiceIssuesResponseSchema;
     };
 }>;

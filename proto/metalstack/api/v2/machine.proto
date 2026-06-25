@@ -3,6 +3,7 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/filesystem.proto";
@@ -884,4 +885,86 @@ message MachineHardwareQuery {
   optional uint64 memory = 1;
   // CPUCores the number of cpu cores
   optional uint32 cpu_cores = 2;
+}
+
+// Issues related
+
+// MachineIssuesQuery defines which machine issues should be listed
+message MachineIssuesQuery {
+  // MachineQuery to select specific machines
+  metalstack.api.v2.MachineQuery machine_query = 1;
+  // Only a list of machine issue types to include
+  repeated MachineIssueType only = 2;
+  // Omit a list of machine issues to omit
+  repeated MachineIssueType omit = 3;
+  // Severity filters issue for given severity
+  MachineIssueSeverity severity = 4 [(buf.validate.field).enum.defined_only = true];
+  // LastErrorThreshold defines the last error threshold
+  google.protobuf.Duration last_error_threshold = 5;
+}
+
+// MachineIssues is a list of issues for a machine
+message MachineIssues {
+  // UUID of the machine for which the issues are listed
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Issues of this machine
+  repeated MachineIssue issues = 2;
+}
+
+// MachineIssue contains details of one issue
+message MachineIssue {
+  // Type specifies the issue type (id)
+  MachineIssueType type = 1 [(buf.validate.field).enum.defined_only = true];
+  // Severity specifies the severity of an issue
+  MachineIssueSeverity severity = 2 [(buf.validate.field).enum.defined_only = true];
+  // Description provides an issue description
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // RefURL provides a link to a more detailed issue description in the metal-stack documentation
+  string reference_url = 4 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
+  // Details may contain additional details on an evaluated issue
+  string details = 5;
+}
+
+// MachineIssueType defines which type of issue it is
+enum MachineIssueType {
+  // MACHINE_ISSUE_TYPE_UNSPECIFIED type is not specified
+  MACHINE_ISSUE_TYPE_UNSPECIFIED = 0;
+  // MACHINE_ISSUE_TYPE_ASN_UNIQUENESS machine asn is not unique
+  MACHINE_ISSUE_TYPE_ASN_UNIQUENESS = 1 [(enum_string_value) = "asn-not-unique"];
+  // MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED machine bmc info out of date
+  MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED = 2 [(enum_string_value) = "bmc-info-outdated"];
+  // MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP machine bmc ip is not distinct
+  MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP = 3 [(enum_string_value) = "bmc-no-distinct-ip"];
+  // MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP machine bmc without ip
+  MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP = 4 [(enum_string_value) = "bmc-without-ip"];
+  // MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC machine bmc without mac address
+  MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC = 5 [(enum_string_value) = "bmc-without-mac"];
+  // MACHINE_ISSUE_TYPE_CRASH_LOOP machine is in crashloop
+  MACHINE_ISSUE_TYPE_CRASH_LOOP = 6 [(enum_string_value) = "crashloop"];
+  // MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM machine was not freed after delete
+  MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM = 7 [(enum_string_value) = "failed-machine-reclaim"];
+  // MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR machine last event error
+  MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR = 8 [(enum_string_value) = "last-event-error"];
+  // MACHINE_ISSUE_TYPE_LIVELINESS_DEAD machine is dead
+  MACHINE_ISSUE_TYPE_LIVELINESS_DEAD = 9 [(enum_string_value) = "liveliness-dead"];
+  // MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE machine liveliness is not available
+  MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE = 10 [(enum_string_value) = "liveliness-not-available"];
+  // MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN machine liveliness is unknown
+  MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN = 11 [(enum_string_value) = "liveliness-unknown"];
+  // MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER machine does not have a event container
+  MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER = 12 [(enum_string_value) = "no-event-container"];
+  // MACHINE_ISSUE_TYPE_NO_PARTITION no partition set
+  MACHINE_ISSUE_TYPE_NO_PARTITION = 13 [(enum_string_value) = "no-partition"];
+}
+
+// MachineIssueSeverity defines the severity of an issue
+enum MachineIssueSeverity {
+  // MACHINE_ISSUE_SEVERITY_UNSPECIFIED severity is not specified
+  MACHINE_ISSUE_SEVERITY_UNSPECIFIED = 0;
+  // MACHINE_ISSUE_SEVERITY_MINOR machine issues is of severity minor
+  MACHINE_ISSUE_SEVERITY_MINOR = 1 [(enum_string_value) = "minor"];
+  // MACHINE_ISSUE_SEVERITY_MAJOR machine issues is of severity major
+  MACHINE_ISSUE_SEVERITY_MAJOR = 2 [(enum_string_value) = "major"];
+  // MACHINE_ISSUE_SEVERITY_CRITICAL machine issues is of severity critical
+  MACHINE_ISSUE_SEVERITY_CRITICAL = 3 [(enum_string_value) = "critical"];
 }
