@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/tenant.proto.
  */
 export const file_metalstack_admin_v2_tenant: GenFile = /*@__PURE__*/
-  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiL1AQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgaQtK6xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIkCgphdmF0YXJfdXJsGAQgASgJQgu6SAhyBuCzrrECAUgCiAEBEikKBmxhYmVscxgFIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0IOCgxfZGVzY3JpcHRpb25CCAoGX2VtYWlsQg0KC19hdmF0YXJfdXJsIkgKG1RlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZRIpCgZ0ZW5hbnQYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiSQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Ei0KBXF1ZXJ5GAEgASgLMh4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50UXVlcnkibQoZVGVuYW50U2VydmljZUxpc3RSZXNwb25zZRIqCgd0ZW5hbnRzGAEgAygLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50EhYKCW5leHRfcGFnZRgCIAEoBEgAiAEBQgwKCl9uZXh0X3BhZ2UikAEKHVRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXF1ZXN0EhsKBnRlbmFudBgBIAEoCUILukgIcgaQtK6xAgESGwoGbWVtYmVyGAIgASgJQgu6SAhyBpC0rrECARI1CgRyb2xlGAMgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZUIIukgFggECEAEiIAoeVGVuYW50U2VydmljZUFkZE1lbWJlclJlc3BvbnNlMvsCCg1UZW5hbnRTZXJ2aWNlEnYKBkNyZWF0ZRIvLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QaMC5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnEKBExpc3QSLS5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VMaXN0UmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYARJ/CglBZGRNZW1iZXISMi5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXF1ZXN0GjMubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlQWRkTWVtYmVyUmVzcG9uc2UiCdLzGAEB4PMYAULPAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCC1RlbmFudFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
+  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiL1AQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgaQtK6xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIkCgphdmF0YXJfdXJsGAQgASgJQgu6SAhyBuCzrrECAUgCiAEBEikKBmxhYmVscxgFIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0IOCgxfZGVzY3JpcHRpb25CCAoGX2VtYWlsQg0KC19hdmF0YXJfdXJsIkgKG1RlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZRIpCgZ0ZW5hbnQYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiSQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Ei0KBXF1ZXJ5GAEgASgLMh4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50UXVlcnkibQoZVGVuYW50U2VydmljZUxpc3RSZXNwb25zZRIqCgd0ZW5hbnRzGAEgAygLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50EhYKCW5leHRfcGFnZRgCIAEoBEgAiAEBQgwKCl9uZXh0X3BhZ2UikAEKHVRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXF1ZXN0EhsKBnRlbmFudBgBIAEoCUILukgIcgaQtK6xAgESGwoGbWVtYmVyGAIgASgJQgu6SAhyBpC0rrECARI1CgRyb2xlGAMgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZUIIukgFggECEAEiIAoeVGVuYW50U2VydmljZUFkZE1lbWJlclJlc3BvbnNlIlwKIFRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0EhsKBnRlbmFudBgBIAEoCUILukgIcgaQtK6xAgESGwoGbWVtYmVyGAIgASgJQgu6SAhyBpC0rrECASIjCiFUZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVzcG9uc2UyhgQKDVRlbmFudFNlcnZpY2USdgoGQ3JlYXRlEi8ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlQ3JlYXRlUmVxdWVzdBowLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlIgnS8xgBAeDzGAEScQoETGlzdBItLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgBEn8KCUFkZE1lbWJlchIyLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUFkZE1lbWJlclJlcXVlc3QaMy5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXNwb25zZSIJ0vMYAQHg8xgBEogBCgxSZW1vdmVNZW1iZXISNS5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0GjYubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVzcG9uc2UiCdLzGAEB4PMYAULPAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCC1RlbmFudFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
 
 /**
  * TenantServiceCreateRequest is the request payload for creating a tenant.
@@ -188,6 +188,49 @@ export const TenantServiceAddMemberResponseSchema: GenMessage<TenantServiceAddMe
   messageDesc(file_metalstack_admin_v2_tenant, 5);
 
 /**
+ * TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant
+ *
+ * @generated from message metalstack.admin.v2.TenantServiceRemoveMemberRequest
+ */
+export type TenantServiceRemoveMemberRequest = Message<"metalstack.admin.v2.TenantServiceRemoveMemberRequest"> & {
+  /**
+   * Login of the tenant from which the member will be removed
+   *
+   * @generated from field: string tenant = 1;
+   */
+  tenant: string;
+
+  /**
+   * Login of the member to remove
+   *
+   * @generated from field: string member = 2;
+   */
+  member: string;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.TenantServiceRemoveMemberRequest.
+ * Use `create(TenantServiceRemoveMemberRequestSchema)` to create a new message.
+ */
+export const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantServiceRemoveMemberRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_tenant, 6);
+
+/**
+ * TenantServiceRemoveMemberResponse is the response payload for the remove member request
+ *
+ * @generated from message metalstack.admin.v2.TenantServiceRemoveMemberResponse
+ */
+export type TenantServiceRemoveMemberResponse = Message<"metalstack.admin.v2.TenantServiceRemoveMemberResponse"> & {
+};
+
+/**
+ * Describes the message metalstack.admin.v2.TenantServiceRemoveMemberResponse.
+ * Use `create(TenantServiceRemoveMemberResponseSchema)` to create a new message.
+ */
+export const TenantServiceRemoveMemberResponseSchema: GenMessage<TenantServiceRemoveMemberResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_tenant, 7);
+
+/**
  * TenantService provides tenant management operations.
  *
  * @generated from service metalstack.admin.v2.TenantService
@@ -222,6 +265,16 @@ export const TenantService: GenService<{
     methodKind: "unary";
     input: typeof TenantServiceAddMemberRequestSchema;
     output: typeof TenantServiceAddMemberResponseSchema;
+  },
+  /**
+   * RemoveMember remove a member of a tenant
+   *
+   * @generated from rpc metalstack.admin.v2.TenantService.RemoveMember
+   */
+  removeMember: {
+    methodKind: "unary";
+    input: typeof TenantServiceRemoveMemberRequestSchema;
+    output: typeof TenantServiceRemoveMemberResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_admin_v2_tenant, 0);

@@ -25,6 +25,11 @@ service TenantService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
+  // RemoveMember remove a member of a tenant
+  rpc RemoveMember(TenantServiceRemoveMemberRequest) returns (TenantServiceRemoveMemberResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
 }
 
 // TenantServiceCreateRequest is the request payload for creating a tenant.
@@ -73,3 +78,14 @@ message TenantServiceAddMemberRequest {
 
 // TenantServiceAddMemberResponse is the response payload for the add member request
 message TenantServiceAddMemberResponse {}
+
+// TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant
+message TenantServiceRemoveMemberRequest {
+  // Login of the tenant from which the member will be removed
+  string tenant = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Login of the member to remove
+  string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+}
+
+// TenantServiceRemoveMemberResponse is the response payload for the remove member request
+message TenantServiceRemoveMemberResponse {}

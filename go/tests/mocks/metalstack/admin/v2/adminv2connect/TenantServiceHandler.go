@@ -241,3 +241,71 @@ func (_c *TenantServiceHandler_List_Call) RunAndReturn(run func(context1 context
 	_c.Call.Return(run)
 	return _c
 }
+
+// RemoveMember provides a mock function for the type TenantServiceHandler
+func (_mock *TenantServiceHandler) RemoveMember(context1 context.Context, tenantServiceRemoveMemberRequest *adminv2.TenantServiceRemoveMemberRequest) (*adminv2.TenantServiceRemoveMemberResponse, error) {
+	ret := _mock.Called(context1, tenantServiceRemoveMemberRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for RemoveMember")
+	}
+
+	var r0 *adminv2.TenantServiceRemoveMemberResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.TenantServiceRemoveMemberRequest) (*adminv2.TenantServiceRemoveMemberResponse, error)); ok {
+		return returnFunc(context1, tenantServiceRemoveMemberRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.TenantServiceRemoveMemberRequest) *adminv2.TenantServiceRemoveMemberResponse); ok {
+		r0 = returnFunc(context1, tenantServiceRemoveMemberRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.TenantServiceRemoveMemberResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.TenantServiceRemoveMemberRequest) error); ok {
+		r1 = returnFunc(context1, tenantServiceRemoveMemberRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// TenantServiceHandler_RemoveMember_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'RemoveMember'
+type TenantServiceHandler_RemoveMember_Call struct {
+	*mock.Call
+}
+
+// RemoveMember is a helper method to define mock.On call
+//   - context1 context.Context
+//   - tenantServiceRemoveMemberRequest *adminv2.TenantServiceRemoveMemberRequest
+func (_e *TenantServiceHandler_Expecter) RemoveMember(context1 any, tenantServiceRemoveMemberRequest any) *TenantServiceHandler_RemoveMember_Call {
+	return &TenantServiceHandler_RemoveMember_Call{Call: _e.mock.On("RemoveMember", context1, tenantServiceRemoveMemberRequest)}
+}
+
+func (_c *TenantServiceHandler_RemoveMember_Call) Run(run func(context1 context.Context, tenantServiceRemoveMemberRequest *adminv2.TenantServiceRemoveMemberRequest)) *TenantServiceHandler_RemoveMember_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.TenantServiceRemoveMemberRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.TenantServiceRemoveMemberRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *TenantServiceHandler_RemoveMember_Call) Return(tenantServiceRemoveMemberResponse *adminv2.TenantServiceRemoveMemberResponse, err error) *TenantServiceHandler_RemoveMember_Call {
+	_c.Call.Return(tenantServiceRemoveMemberResponse, err)
+	return _c
+}
+
+func (_c *TenantServiceHandler_RemoveMember_Call) RunAndReturn(run func(context1 context.Context, tenantServiceRemoveMemberRequest *adminv2.TenantServiceRemoveMemberRequest) (*adminv2.TenantServiceRemoveMemberResponse, error)) *TenantServiceHandler_RemoveMember_Call {
+	_c.Call.Return(run)
+	return _c
+}

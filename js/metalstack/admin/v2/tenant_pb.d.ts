@@ -150,6 +150,41 @@ export type TenantServiceAddMemberResponse = Message<"metalstack.admin.v2.Tenant
  */
 export declare const TenantServiceAddMemberResponseSchema: GenMessage<TenantServiceAddMemberResponse>;
 /**
+ * TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant
+ *
+ * @generated from message metalstack.admin.v2.TenantServiceRemoveMemberRequest
+ */
+export type TenantServiceRemoveMemberRequest = Message<"metalstack.admin.v2.TenantServiceRemoveMemberRequest"> & {
+    /**
+     * Login of the tenant from which the member will be removed
+     *
+     * @generated from field: string tenant = 1;
+     */
+    tenant: string;
+    /**
+     * Login of the member to remove
+     *
+     * @generated from field: string member = 2;
+     */
+    member: string;
+};
+/**
+ * Describes the message metalstack.admin.v2.TenantServiceRemoveMemberRequest.
+ * Use `create(TenantServiceRemoveMemberRequestSchema)` to create a new message.
+ */
+export declare const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantServiceRemoveMemberRequest>;
+/**
+ * TenantServiceRemoveMemberResponse is the response payload for the remove member request
+ *
+ * @generated from message metalstack.admin.v2.TenantServiceRemoveMemberResponse
+ */
+export type TenantServiceRemoveMemberResponse = Message<"metalstack.admin.v2.TenantServiceRemoveMemberResponse"> & {};
+/**
+ * Describes the message metalstack.admin.v2.TenantServiceRemoveMemberResponse.
+ * Use `create(TenantServiceRemoveMemberResponseSchema)` to create a new message.
+ */
+export declare const TenantServiceRemoveMemberResponseSchema: GenMessage<TenantServiceRemoveMemberResponse>;
+/**
  * TenantService provides tenant management operations.
  *
  * @generated from service metalstack.admin.v2.TenantService
@@ -184,5 +219,15 @@ export declare const TenantService: GenService<{
         methodKind: "unary";
         input: typeof TenantServiceAddMemberRequestSchema;
         output: typeof TenantServiceAddMemberResponseSchema;
+    };
+    /**
+     * RemoveMember remove a member of a tenant
+     *
+     * @generated from rpc metalstack.admin.v2.TenantService.RemoveMember
+     */
+    removeMember: {
+        methodKind: "unary";
+        input: typeof TenantServiceRemoveMemberRequestSchema;
+        output: typeof TenantServiceRemoveMemberResponseSchema;
     };
 }>;

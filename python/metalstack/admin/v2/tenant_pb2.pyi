@@ -57,3 +57,15 @@ class TenantServiceAddMemberRequest(_message.Message):
 class TenantServiceAddMemberResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
+
+class TenantServiceRemoveMemberRequest(_message.Message):
+    __slots__ = ("tenant", "member")
+    TENANT_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    tenant: str
+    member: str
+    def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
+
+class TenantServiceRemoveMemberResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...

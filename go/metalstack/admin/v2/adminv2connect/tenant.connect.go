@@ -39,6 +39,9 @@ const (
 	TenantServiceListProcedure = "/metalstack.admin.v2.TenantService/List"
 	// TenantServiceAddMemberProcedure is the fully-qualified name of the TenantService's AddMember RPC.
 	TenantServiceAddMemberProcedure = "/metalstack.admin.v2.TenantService/AddMember"
+	// TenantServiceRemoveMemberProcedure is the fully-qualified name of the TenantService's
+	// RemoveMember RPC.
+	TenantServiceRemoveMemberProcedure = "/metalstack.admin.v2.TenantService/RemoveMember"
 )
 
 // TenantServiceClient is a client for the metalstack.admin.v2.TenantService service.
@@ -49,6 +52,8 @@ type TenantServiceClient interface {
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
 	// Add a member to a tenant
 	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
+	// RemoveMember remove a member of a tenant
+	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 }
 
 // NewTenantServiceClient constructs a client for the metalstack.admin.v2.TenantService service. By
@@ -80,14 +85,21 @@ func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(tenantServiceMethods.ByName("AddMember")),
 			connect.WithClientOptions(opts...),
 		),
+		removeMember: connect.NewClient[v2.TenantServiceRemoveMemberRequest, v2.TenantServiceRemoveMemberResponse](
+			httpClient,
+			baseURL+TenantServiceRemoveMemberProcedure,
+			connect.WithSchema(tenantServiceMethods.ByName("RemoveMember")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // tenantServiceClient implements TenantServiceClient.
 type tenantServiceClient struct {
-	create    *connect.Client[v2.TenantServiceCreateRequest, v2.TenantServiceCreateResponse]
-	list      *connect.Client[v2.TenantServiceListRequest, v2.TenantServiceListResponse]
-	addMember *connect.Client[v2.TenantServiceAddMemberRequest, v2.TenantServiceAddMemberResponse]
+	create       *connect.Client[v2.TenantServiceCreateRequest, v2.TenantServiceCreateResponse]
+	list         *connect.Client[v2.TenantServiceListRequest, v2.TenantServiceListResponse]
+	addMember    *connect.Client[v2.TenantServiceAddMemberRequest, v2.TenantServiceAddMemberResponse]
+	removeMember *connect.Client[v2.TenantServiceRemoveMemberRequest, v2.TenantServiceRemoveMemberResponse]
 }
 
 // Create calls metalstack.admin.v2.TenantService.Create.
@@ -117,6 +129,15 @@ func (c *tenantServiceClient) AddMember(ctx context.Context, req *v2.TenantServi
 	return nil, err
 }
 
+// RemoveMember calls metalstack.admin.v2.TenantService.RemoveMember.
+func (c *tenantServiceClient) RemoveMember(ctx context.Context, req *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error) {
+	response, err := c.removeMember.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // TenantServiceHandler is an implementation of the metalstack.admin.v2.TenantService service.
 type TenantServiceHandler interface {
 	// Creates a new tenant.
@@ -125,6 +146,8 @@ type TenantServiceHandler interface {
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
 	// Add a member to a tenant
 	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
+	// RemoveMember remove a member of a tenant
+	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 }
 
 // NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -152,6 +175,12 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(tenantServiceMethods.ByName("AddMember")),
 		connect.WithHandlerOptions(opts...),
 	)
+	tenantServiceRemoveMemberHandler := connect.NewUnaryHandlerSimple(
+		TenantServiceRemoveMemberProcedure,
+		svc.RemoveMember,
+		connect.WithSchema(tenantServiceMethods.ByName("RemoveMember")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case TenantServiceCreateProcedure:
@@ -160,6 +189,8 @@ func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOp
 			tenantServiceListHandler.ServeHTTP(w, r)
 		case TenantServiceAddMemberProcedure:
 			tenantServiceAddMemberHandler.ServeHTTP(w, r)
+		case TenantServiceRemoveMemberProcedure:
+			tenantServiceRemoveMemberHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -179,4 +210,8 @@ func (UnimplementedTenantServiceHandler) List(context.Context, *v2.TenantService
 
 func (UnimplementedTenantServiceHandler) AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TenantService.AddMember is not implemented"))
+}
+
+func (UnimplementedTenantServiceHandler) RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.TenantService.RemoveMember is not implemented"))
 }

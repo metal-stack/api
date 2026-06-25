@@ -2322,6 +2322,14 @@
                   <a href="#metalstack.admin.v2.TenantServiceListResponse"><span class="badge">M</span>TenantServiceListResponse</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.admin.v2.TenantServiceRemoveMemberRequest"><span class="badge">M</span>TenantServiceRemoveMemberRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TenantServiceRemoveMemberResponse"><span class="badge">M</span>TenantServiceRemoveMemberResponse</a>
+                </li>
+              
               
               
               
@@ -19226,6 +19234,44 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.TenantServiceRemoveMemberRequest">TenantServiceRemoveMemberRequest</h3>
+        <p>TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant from which the member will be removed </p></td>
+                </tr>
+              
+                <tr>
+                  <td>member</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the member to remove </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TenantServiceRemoveMemberResponse">TenantServiceRemoveMemberResponse</h3>
+        <p>TenantServiceRemoveMemberResponse is the response payload for the remove member request</p>
+
+        
+
+        
+      
 
       
 
@@ -19259,6 +19305,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.admin.v2.TenantServiceAddMemberRequest">TenantServiceAddMemberRequest</a></td>
                 <td><a href="#metalstack.admin.v2.TenantServiceAddMemberResponse">TenantServiceAddMemberResponse</a></td>
                 <td><p>Add a member to a tenant</p></td>
+              </tr>
+            
+              <tr>
+                <td>RemoveMember</td>
+                <td><a href="#metalstack.admin.v2.TenantServiceRemoveMemberRequest">TenantServiceRemoveMemberRequest</a></td>
+                <td><a href="#metalstack.admin.v2.TenantServiceRemoveMemberResponse">TenantServiceRemoveMemberResponse</a></td>
+                <td><p>RemoveMember remove a member of a tenant</p></td>
               </tr>
             
           </tbody>
