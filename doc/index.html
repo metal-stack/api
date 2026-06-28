@@ -2330,6 +2330,14 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.admin.v2.TokenServiceCreateMultiRequest"><span class="badge">M</span>TokenServiceCreateMultiRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TokenServiceCreateMultiRequest.TokenCreateRequestsEntry"><span class="badge">M</span>TokenServiceCreateMultiRequest.TokenCreateRequestsEntry</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.TokenServiceCreateRequest"><span class="badge">M</span>TokenServiceCreateRequest</a>
                 </li>
               
@@ -19212,6 +19220,62 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
       </div>
       <p></p>
 
+      
+        <h3 id="metalstack.admin.v2.TokenServiceCreateMultiRequest">TokenServiceCreateMultiRequest</h3>
+        <p>TokenServiceCreateMultiRequest is the request payload for creating multiple tokens.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>token_create_requests</td>
+                  <td><a href="#metalstack.admin.v2.TokenServiceCreateMultiRequest.TokenCreateRequestsEntry">TokenServiceCreateMultiRequest.TokenCreateRequestsEntry</a></td>
+                  <td>repeated</td>
+                  <td><p>TokenCreateRequests which map a destination name to a token create request.
+this can be used to create tokens for multiple purposes at once. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TokenServiceCreateMultiRequest.TokenCreateRequestsEntry">TokenServiceCreateMultiRequest.TokenCreateRequestsEntry</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>key</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>value</td>
+                  <td><a href="#metalstack.admin.v2.TokenServiceCreateRequest">TokenServiceCreateRequest</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
       
         <h3 id="metalstack.admin.v2.TokenServiceCreateRequest">TokenServiceCreateRequest</h3>
         <p>TokenServiceCreateRequest is the request payload for creating a token.</p>

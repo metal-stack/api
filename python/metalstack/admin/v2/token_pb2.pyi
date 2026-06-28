@@ -49,3 +49,16 @@ class TokenServiceCreateResponse(_message.Message):
     token: _token_pb2.Token
     secret: str
     def __init__(self, token: _Optional[_Union[_token_pb2.Token, _Mapping]] = ..., secret: _Optional[str] = ...) -> None: ...
+
+class TokenServiceCreateMultiRequest(_message.Message):
+    __slots__ = ("token_create_requests",)
+    class TokenCreateRequestsEntry(_message.Message):
+        __slots__ = ("key", "value")
+        KEY_FIELD_NUMBER: _ClassVar[int]
+        VALUE_FIELD_NUMBER: _ClassVar[int]
+        key: str
+        value: TokenServiceCreateRequest
+        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[TokenServiceCreateRequest, _Mapping]] = ...) -> None: ...
+    TOKEN_CREATE_REQUESTS_FIELD_NUMBER: _ClassVar[int]
+    token_create_requests: _containers.MessageMap[str, TokenServiceCreateRequest]
+    def __init__(self, token_create_requests: _Optional[_Mapping[str, TokenServiceCreateRequest]] = ...) -> None: ...

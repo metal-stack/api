@@ -66,3 +66,10 @@ message TokenServiceCreateResponse {
   // Secret is the body if the JWT token, should be used in API requests as bearer token
   string secret = 2;
 }
+
+// TokenServiceCreateMultiRequest is the request payload for creating multiple tokens.
+message TokenServiceCreateMultiRequest {
+  // TokenCreateRequests which map a destination name to a token create request.
+  // this can be used to create tokens for multiple purposes at once.
+  map<string, TokenServiceCreateRequest> token_create_requests = 2;
+}

@@ -125,6 +125,27 @@ export type TokenServiceCreateResponse = Message<"metalstack.admin.v2.TokenServi
  */
 export declare const TokenServiceCreateResponseSchema: GenMessage<TokenServiceCreateResponse>;
 /**
+ * TokenServiceCreateMultiRequest is the request payload for creating multiple tokens.
+ *
+ * @generated from message metalstack.admin.v2.TokenServiceCreateMultiRequest
+ */
+export type TokenServiceCreateMultiRequest = Message<"metalstack.admin.v2.TokenServiceCreateMultiRequest"> & {
+    /**
+     * TokenCreateRequests which map a destination name to a token create request.
+     * this can be used to create tokens for multiple purposes at once.
+     *
+     * @generated from field: map<string, metalstack.admin.v2.TokenServiceCreateRequest> token_create_requests = 2;
+     */
+    tokenCreateRequests: {
+        [key: string]: TokenServiceCreateRequest;
+    };
+};
+/**
+ * Describes the message metalstack.admin.v2.TokenServiceCreateMultiRequest.
+ * Use `create(TokenServiceCreateMultiRequestSchema)` to create a new message.
+ */
+export declare const TokenServiceCreateMultiRequestSchema: GenMessage<TokenServiceCreateMultiRequest>;
+/**
  * TokenService provides token management operations.
  *
  * @generated from service metalstack.admin.v2.TokenService

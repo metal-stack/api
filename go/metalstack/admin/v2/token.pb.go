@@ -317,6 +317,53 @@ func (x *TokenServiceCreateResponse) GetSecret() string {
 	return ""
 }
 
+// TokenServiceCreateMultiRequest is the request payload for creating multiple tokens.
+type TokenServiceCreateMultiRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// TokenCreateRequests which map a destination name to a token create request.
+	// this can be used to create tokens for multiple purposes at once.
+	TokenCreateRequests map[string]*TokenServiceCreateRequest `protobuf:"bytes,2,rep,name=token_create_requests,json=tokenCreateRequests,proto3" json:"token_create_requests,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *TokenServiceCreateMultiRequest) Reset() {
+	*x = TokenServiceCreateMultiRequest{}
+	mi := &file_metalstack_admin_v2_token_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TokenServiceCreateMultiRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TokenServiceCreateMultiRequest) ProtoMessage() {}
+
+func (x *TokenServiceCreateMultiRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_token_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TokenServiceCreateMultiRequest.ProtoReflect.Descriptor instead.
+func (*TokenServiceCreateMultiRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_token_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *TokenServiceCreateMultiRequest) GetTokenCreateRequests() map[string]*TokenServiceCreateRequest {
+	if x != nil {
+		return x.TokenCreateRequests
+	}
+	return nil
+}
+
 var File_metalstack_admin_v2_token_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_token_proto_rawDesc = "" +
@@ -336,7 +383,12 @@ const file_metalstack_admin_v2_token_proto_rawDesc = "" +
 	"\x05_user\"d\n" +
 	"\x1aTokenServiceCreateResponse\x12.\n" +
 	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n" +
-	"\x06secret\x18\x02 \x01(\tR\x06secret2\xeb\x02\n" +
+	"\x06secret\x18\x02 \x01(\tR\x06secret\"\x9b\x02\n" +
+	"\x1eTokenServiceCreateMultiRequest\x12\x80\x01\n" +
+	"\x15token_create_requests\x18\x02 \x03(\v2L.metalstack.admin.v2.TokenServiceCreateMultiRequest.TokenCreateRequestsEntryR\x13tokenCreateRequests\x1av\n" +
+	"\x18TokenCreateRequestsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12D\n" +
+	"\x05value\x18\x02 \x01(\v2..metalstack.admin.v2.TokenServiceCreateRequestR\x05value:\x028\x012\xeb\x02\n" +
 	"\fTokenService\x12o\n" +
 	"\x04List\x12,.metalstack.admin.v2.TokenServiceListRequest\x1a-.metalstack.admin.v2.TokenServiceListResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12t\n" +
@@ -357,34 +409,38 @@ func file_metalstack_admin_v2_token_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_token_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_token_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_metalstack_admin_v2_token_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_metalstack_admin_v2_token_proto_goTypes = []any{
-	(*TokenServiceListRequest)(nil),      // 0: metalstack.admin.v2.TokenServiceListRequest
-	(*TokenServiceListResponse)(nil),     // 1: metalstack.admin.v2.TokenServiceListResponse
-	(*TokenServiceRevokeRequest)(nil),    // 2: metalstack.admin.v2.TokenServiceRevokeRequest
-	(*TokenServiceRevokeResponse)(nil),   // 3: metalstack.admin.v2.TokenServiceRevokeResponse
-	(*TokenServiceCreateRequest)(nil),    // 4: metalstack.admin.v2.TokenServiceCreateRequest
-	(*TokenServiceCreateResponse)(nil),   // 5: metalstack.admin.v2.TokenServiceCreateResponse
-	(*v2.TokenQuery)(nil),                // 6: metalstack.api.v2.TokenQuery
-	(*v2.Token)(nil),                     // 7: metalstack.api.v2.Token
-	(*v2.TokenServiceCreateRequest)(nil), // 8: metalstack.api.v2.TokenServiceCreateRequest
+	(*TokenServiceListRequest)(nil),        // 0: metalstack.admin.v2.TokenServiceListRequest
+	(*TokenServiceListResponse)(nil),       // 1: metalstack.admin.v2.TokenServiceListResponse
+	(*TokenServiceRevokeRequest)(nil),      // 2: metalstack.admin.v2.TokenServiceRevokeRequest
+	(*TokenServiceRevokeResponse)(nil),     // 3: metalstack.admin.v2.TokenServiceRevokeResponse
+	(*TokenServiceCreateRequest)(nil),      // 4: metalstack.admin.v2.TokenServiceCreateRequest
+	(*TokenServiceCreateResponse)(nil),     // 5: metalstack.admin.v2.TokenServiceCreateResponse
+	(*TokenServiceCreateMultiRequest)(nil), // 6: metalstack.admin.v2.TokenServiceCreateMultiRequest
+	nil,                                    // 7: metalstack.admin.v2.TokenServiceCreateMultiRequest.TokenCreateRequestsEntry
+	(*v2.TokenQuery)(nil),                  // 8: metalstack.api.v2.TokenQuery
+	(*v2.Token)(nil),                       // 9: metalstack.api.v2.Token
+	(*v2.TokenServiceCreateRequest)(nil),   // 10: metalstack.api.v2.TokenServiceCreateRequest
 }
 var file_metalstack_admin_v2_token_proto_depIdxs = []int32{
-	6, // 0: metalstack.admin.v2.TokenServiceListRequest.query:type_name -> metalstack.api.v2.TokenQuery
-	7, // 1: metalstack.admin.v2.TokenServiceListResponse.tokens:type_name -> metalstack.api.v2.Token
-	8, // 2: metalstack.admin.v2.TokenServiceCreateRequest.token_create_request:type_name -> metalstack.api.v2.TokenServiceCreateRequest
-	7, // 3: metalstack.admin.v2.TokenServiceCreateResponse.token:type_name -> metalstack.api.v2.Token
-	0, // 4: metalstack.admin.v2.TokenService.List:input_type -> metalstack.admin.v2.TokenServiceListRequest
-	2, // 5: metalstack.admin.v2.TokenService.Revoke:input_type -> metalstack.admin.v2.TokenServiceRevokeRequest
-	4, // 6: metalstack.admin.v2.TokenService.Create:input_type -> metalstack.admin.v2.TokenServiceCreateRequest
-	1, // 7: metalstack.admin.v2.TokenService.List:output_type -> metalstack.admin.v2.TokenServiceListResponse
-	3, // 8: metalstack.admin.v2.TokenService.Revoke:output_type -> metalstack.admin.v2.TokenServiceRevokeResponse
-	5, // 9: metalstack.admin.v2.TokenService.Create:output_type -> metalstack.admin.v2.TokenServiceCreateResponse
-	7, // [7:10] is the sub-list for method output_type
-	4, // [4:7] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	8,  // 0: metalstack.admin.v2.TokenServiceListRequest.query:type_name -> metalstack.api.v2.TokenQuery
+	9,  // 1: metalstack.admin.v2.TokenServiceListResponse.tokens:type_name -> metalstack.api.v2.Token
+	10, // 2: metalstack.admin.v2.TokenServiceCreateRequest.token_create_request:type_name -> metalstack.api.v2.TokenServiceCreateRequest
+	9,  // 3: metalstack.admin.v2.TokenServiceCreateResponse.token:type_name -> metalstack.api.v2.Token
+	7,  // 4: metalstack.admin.v2.TokenServiceCreateMultiRequest.token_create_requests:type_name -> metalstack.admin.v2.TokenServiceCreateMultiRequest.TokenCreateRequestsEntry
+	4,  // 5: metalstack.admin.v2.TokenServiceCreateMultiRequest.TokenCreateRequestsEntry.value:type_name -> metalstack.admin.v2.TokenServiceCreateRequest
+	0,  // 6: metalstack.admin.v2.TokenService.List:input_type -> metalstack.admin.v2.TokenServiceListRequest
+	2,  // 7: metalstack.admin.v2.TokenService.Revoke:input_type -> metalstack.admin.v2.TokenServiceRevokeRequest
+	4,  // 8: metalstack.admin.v2.TokenService.Create:input_type -> metalstack.admin.v2.TokenServiceCreateRequest
+	1,  // 9: metalstack.admin.v2.TokenService.List:output_type -> metalstack.admin.v2.TokenServiceListResponse
+	3,  // 10: metalstack.admin.v2.TokenService.Revoke:output_type -> metalstack.admin.v2.TokenServiceRevokeResponse
+	5,  // 11: metalstack.admin.v2.TokenService.Create:output_type -> metalstack.admin.v2.TokenServiceCreateResponse
+	9,  // [9:12] is the sub-list for method output_type
+	6,  // [6:9] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_token_proto_init() }
@@ -399,7 +455,7 @@ func file_metalstack_admin_v2_token_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_token_proto_rawDesc), len(file_metalstack_admin_v2_token_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
