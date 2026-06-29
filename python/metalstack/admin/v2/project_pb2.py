@@ -28,7 +28,7 @@ from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_
 from metalstack.api.v2 import project_pb2 as metalstack_dot_api_dot_v2_dot_project__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1fmetalstack/api/v2/project.proto\"\x93\x01\n\x19ProjectServiceListRequest\x12(\n\x06tenant\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x06tenant\x88\x01\x01\x12\x36\n\x06labels\x18\x02 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01\x42\t\n\x07_tenantB\t\n\x07_labels\"T\n\x1aProjectServiceListResponse\x12\x36\n\x08projects\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.ProjectR\x08projects2\x85\x01\n\x0eProjectService\x12s\n\x04List\x12..metalstack.admin.v2.ProjectServiceListRequest\x1a/.metalstack.admin.v2.ProjectServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x42\xd0\x01\n\x17\x63om.metalstack.admin.v2B\x0cProjectProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1fmetalstack/api/v2/project.proto\"a\n\x19ProjectServiceListRequest\x12:\n\x05query\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.ProjectQueryH\x00R\x05query\x88\x01\x01\x42\x08\n\x06_query\"T\n\x1aProjectServiceListResponse\x12\x36\n\x08projects\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.ProjectR\x08projects2\x85\x01\n\x0eProjectService\x12s\n\x04List\x12..metalstack.admin.v2.ProjectServiceListRequest\x1a/.metalstack.admin.v2.ProjectServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x42\xd0\x01\n\x17\x63om.metalstack.admin.v2B\x0cProjectProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -36,14 +36,12 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.admin.v2.project
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.admin.v2B\014ProjectProtoP\001Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\242\002\003MAX\252\002\023Metalstack.Admin.V2\312\002\023Metalstack\\Admin\\V2\342\002\037Metalstack\\Admin\\V2\\GPBMetadata\352\002\025Metalstack::Admin::V2'
-  _globals['_PROJECTSERVICELISTREQUEST'].fields_by_name['tenant']._loaded_options = None
-  _globals['_PROJECTSERVICELISTREQUEST'].fields_by_name['tenant']._serialized_options = b'\272H\010r\006\300\263\256\261\002\001'
   _globals['_PROJECTSERVICE'].methods_by_name['List']._loaded_options = None
   _globals['_PROJECTSERVICE'].methods_by_name['List']._serialized_options = b'\322\363\030\002\001\002\340\363\030\002'
-  _globals['_PROJECTSERVICELISTREQUEST']._serialized_start=195
-  _globals['_PROJECTSERVICELISTREQUEST']._serialized_end=342
-  _globals['_PROJECTSERVICELISTRESPONSE']._serialized_start=344
-  _globals['_PROJECTSERVICELISTRESPONSE']._serialized_end=428
-  _globals['_PROJECTSERVICE']._serialized_start=431
-  _globals['_PROJECTSERVICE']._serialized_end=564
+  _globals['_PROJECTSERVICELISTREQUEST']._serialized_start=194
+  _globals['_PROJECTSERVICELISTREQUEST']._serialized_end=291
+  _globals['_PROJECTSERVICELISTRESPONSE']._serialized_start=293
+  _globals['_PROJECTSERVICELISTRESPONSE']._serialized_end=377
+  _globals['_PROJECTSERVICE']._serialized_start=380
+  _globals['_PROJECTSERVICE']._serialized_end=513
 # @@protoc_insertion_point(module_scope)

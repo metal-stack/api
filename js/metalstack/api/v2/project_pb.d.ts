@@ -172,11 +172,29 @@ export declare const ProjectInviteSchema: GenMessage<ProjectInvite>;
  */
 export type ProjectServiceListRequest = Message<"metalstack.api.v2.ProjectServiceListRequest"> & {
     /**
-     * Id lists only projects with this id
+     * Query for projects
      *
-     * @generated from field: optional string id = 1;
+     * @generated from field: metalstack.api.v2.ProjectQuery query = 1;
      */
-    id?: string | undefined;
+    query?: ProjectQuery | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.ProjectServiceListRequest.
+ * Use `create(ProjectServiceListRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceListRequestSchema: GenMessage<ProjectServiceListRequest>;
+/**
+ * ProjectQuery is used to search projects
+ *
+ * @generated from message metalstack.api.v2.ProjectQuery
+ */
+export type ProjectQuery = Message<"metalstack.api.v2.ProjectQuery"> & {
+    /**
+     * Uuid lists only projects with this uuid
+     *
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string | undefined;
     /**
      * Name lists only projects with this name
      *
@@ -197,10 +215,10 @@ export type ProjectServiceListRequest = Message<"metalstack.api.v2.ProjectServic
     labels?: Labels | undefined;
 };
 /**
- * Describes the message metalstack.api.v2.ProjectServiceListRequest.
- * Use `create(ProjectServiceListRequestSchema)` to create a new message.
+ * Describes the message metalstack.api.v2.ProjectQuery.
+ * Use `create(ProjectQuerySchema)` to create a new message.
  */
-export declare const ProjectServiceListRequestSchema: GenMessage<ProjectServiceListRequest>;
+export declare const ProjectQuerySchema: GenMessage<ProjectQuery>;
 /**
  * ProjectServiceListResponse is the response payload to list all projects
  *
