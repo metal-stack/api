@@ -4341,7 +4341,7 @@ type MachineIssuesQuery struct {
 	// Omit a list of machine issues to omit
 	Omit []MachineIssueType `protobuf:"varint,3,rep,packed,name=omit,proto3,enum=metalstack.api.v2.MachineIssueType" json:"omit,omitempty"`
 	// Severity filters issue for given severity
-	Severity MachineIssueSeverity `protobuf:"varint,4,opt,name=severity,proto3,enum=metalstack.api.v2.MachineIssueSeverity" json:"severity,omitempty"`
+	Severity *MachineIssueSeverity `protobuf:"varint,4,opt,name=severity,proto3,enum=metalstack.api.v2.MachineIssueSeverity,oneof" json:"severity,omitempty"`
 	// LastErrorThreshold defines the last error threshold
 	LastErrorThreshold *durationpb.Duration `protobuf:"bytes,5,opt,name=last_error_threshold,json=lastErrorThreshold,proto3" json:"last_error_threshold,omitempty"`
 	unknownFields      protoimpl.UnknownFields
@@ -4400,8 +4400,8 @@ func (x *MachineIssuesQuery) GetOmit() []MachineIssueType {
 }
 
 func (x *MachineIssuesQuery) GetSeverity() MachineIssueSeverity {
-	if x != nil {
-		return x.Severity
+	if x != nil && x.Severity != nil {
+		return *x.Severity
 	}
 	return MachineIssueSeverity_MACHINE_ISSUE_SEVERITY_UNSPECIFIED
 }
@@ -4914,15 +4914,16 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\tcpu_cores\x18\x02 \x01(\rH\x01R\bcpuCores\x88\x01\x01B\t\n" +
 	"\a_memoryB\f\n" +
 	"\n" +
-	"_cpu_cores\"\x86\x03\n" +
+	"_cpu_cores\"\x98\x03\n" +
 	"\x12MachineIssuesQuery\x12D\n" +
 	"\rmachine_query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\fmachineQuery\x12F\n" +
 	"\x04only\x18\x02 \x03(\x0e2#.metalstack.api.v2.MachineIssueTypeB\r\xbaH\n" +
 	"\x92\x01\a\"\x05\x82\x01\x02\x10\x01R\x04only\x12F\n" +
 	"\x04omit\x18\x03 \x03(\x0e2#.metalstack.api.v2.MachineIssueTypeB\r\xbaH\n" +
-	"\x92\x01\a\"\x05\x82\x01\x02\x10\x01R\x04omit\x12M\n" +
-	"\bseverity\x18\x04 \x01(\x0e2'.metalstack.api.v2.MachineIssueSeverityB\b\xbaH\x05\x82\x01\x02\x10\x01R\bseverity\x12K\n" +
-	"\x14last_error_threshold\x18\x05 \x01(\v2\x19.google.protobuf.DurationR\x12lastErrorThreshold\"f\n" +
+	"\x92\x01\a\"\x05\x82\x01\x02\x10\x01R\x04omit\x12R\n" +
+	"\bseverity\x18\x04 \x01(\x0e2'.metalstack.api.v2.MachineIssueSeverityB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\bseverity\x88\x01\x01\x12K\n" +
+	"\x14last_error_threshold\x18\x05 \x01(\v2\x19.google.protobuf.DurationR\x12lastErrorThresholdB\v\n" +
+	"\t_severity\"f\n" +
 	"\rMachineIssues\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x127\n" +
 	"\x06issues\x18\x02 \x03(\v2\x1f.metalstack.api.v2.MachineIssueR\x06issues\"\x9b\x02\n" +
@@ -5235,6 +5236,7 @@ func file_metalstack_api_v2_machine_proto_init() {
 	file_metalstack_api_v2_machine_proto_msgTypes[44].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[45].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[46].OneofWrappers = []any{}
+	file_metalstack_api_v2_machine_proto_msgTypes[47].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

@@ -1919,9 +1919,9 @@ export type MachineIssuesQuery = Message<"metalstack.api.v2.MachineIssuesQuery">
     /**
      * Severity filters issue for given severity
      *
-     * @generated from field: metalstack.api.v2.MachineIssueSeverity severity = 4;
+     * @generated from field: optional metalstack.api.v2.MachineIssueSeverity severity = 4;
      */
-    severity: MachineIssueSeverity;
+    severity?: MachineIssueSeverity | undefined;
     /**
      * LastErrorThreshold defines the last error threshold
      *
