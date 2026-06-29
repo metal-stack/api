@@ -1606,6 +1606,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.ProjectQuery"><span class="badge">M</span>ProjectQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.ProjectServiceCreateRequest"><span class="badge">M</span>ProjectServiceCreateRequest</a>
                 </li>
               
@@ -14036,6 +14040,51 @@ Inherited memberships are not included in member lists for users with guest perm
 
         
       
+        <h3 id="metalstack.api.v2.ProjectQuery">ProjectQuery</h3>
+        <p>ProjectQuery is used to search projects</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Uuid lists only projects with this uuid </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name lists only projects with this name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tenant</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Tenant lists only projects of this tenant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only projects containing the given labels </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.ProjectServiceCreateRequest">ProjectServiceCreateRequest</h3>
         <p>ProjectServiceCreateRequest is the request payload to Create a project</p>
 
@@ -14504,31 +14553,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Id lists only projects with this id </p></td>
-                </tr>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Name lists only projects with this name </p></td>
-                </tr>
-              
-                <tr>
-                  <td>tenant</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Tenant lists only projects of this tenant </p></td>
-                </tr>
-              
-                <tr>
-                  <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
-                  <td>optional</td>
-                  <td><p>Labels lists only projects containing the given labels </p></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.ProjectQuery">ProjectQuery</a></td>
+                  <td></td>
+                  <td><p>Query for projects </p></td>
                 </tr>
               
             </tbody>
@@ -14873,17 +14901,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>tenant</td>
-                  <td><a href="#string">string</a></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.ProjectQuery">metalstack.api.v2.ProjectQuery</a></td>
                   <td>optional</td>
-                  <td><p>Tenant filters projects by this tenant </p></td>
-                </tr>
-              
-                <tr>
-                  <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Labels">metalstack.api.v2.Labels</a></td>
-                  <td>optional</td>
-                  <td><p>Labels filters projects containing the given labels </p></td>
+                  <td><p>Query for projects </p></td>
                 </tr>
               
             </tbody>

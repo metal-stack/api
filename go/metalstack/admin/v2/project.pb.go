@@ -26,10 +26,8 @@ const (
 // ProjectServiceListRequest is the request payload for listing projects.
 type ProjectServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenant filters projects by this tenant
-	Tenant *string `protobuf:"bytes,1,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
-	// Labels filters projects containing the given labels
-	Labels        *v2.Labels `protobuf:"bytes,2,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	// Query for projects
+	Query         *v2.ProjectQuery `protobuf:"bytes,1,opt,name=query,proto3,oneof" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -64,16 +62,9 @@ func (*ProjectServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_project_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ProjectServiceListRequest) GetTenant() string {
-	if x != nil && x.Tenant != nil {
-		return *x.Tenant
-	}
-	return ""
-}
-
-func (x *ProjectServiceListRequest) GetLabels() *v2.Labels {
+func (x *ProjectServiceListRequest) GetQuery() *v2.ProjectQuery {
 	if x != nil {
-		return x.Labels
+		return x.Query
 	}
 	return nil
 }
@@ -128,12 +119,10 @@ var File_metalstack_admin_v2_project_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_project_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1fmetalstack/api/v2/project.proto\"\x93\x01\n" +
-	"\x19ProjectServiceListRequest\x12(\n" +
-	"\x06tenant\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x06tenant\x88\x01\x01\x126\n" +
-	"\x06labels\x18\x02 \x01(\v2\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01B\t\n" +
-	"\a_tenantB\t\n" +
-	"\a_labels\"T\n" +
+	"!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1fmetalstack/api/v2/project.proto\"a\n" +
+	"\x19ProjectServiceListRequest\x12:\n" +
+	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.ProjectQueryH\x00R\x05query\x88\x01\x01B\b\n" +
+	"\x06_query\"T\n" +
 	"\x1aProjectServiceListResponse\x126\n" +
 	"\bprojects\x18\x01 \x03(\v2\x1a.metalstack.api.v2.ProjectR\bprojects2\x85\x01\n" +
 	"\x0eProjectService\x12s\n" +
@@ -157,11 +146,11 @@ var file_metalstack_admin_v2_project_proto_msgTypes = make([]protoimpl.MessageIn
 var file_metalstack_admin_v2_project_proto_goTypes = []any{
 	(*ProjectServiceListRequest)(nil),  // 0: metalstack.admin.v2.ProjectServiceListRequest
 	(*ProjectServiceListResponse)(nil), // 1: metalstack.admin.v2.ProjectServiceListResponse
-	(*v2.Labels)(nil),                  // 2: metalstack.api.v2.Labels
+	(*v2.ProjectQuery)(nil),            // 2: metalstack.api.v2.ProjectQuery
 	(*v2.Project)(nil),                 // 3: metalstack.api.v2.Project
 }
 var file_metalstack_admin_v2_project_proto_depIdxs = []int32{
-	2, // 0: metalstack.admin.v2.ProjectServiceListRequest.labels:type_name -> metalstack.api.v2.Labels
+	2, // 0: metalstack.admin.v2.ProjectServiceListRequest.query:type_name -> metalstack.api.v2.ProjectQuery
 	3, // 1: metalstack.admin.v2.ProjectServiceListResponse.projects:type_name -> metalstack.api.v2.Project
 	0, // 2: metalstack.admin.v2.ProjectService.List:input_type -> metalstack.admin.v2.ProjectServiceListRequest
 	1, // 3: metalstack.admin.v2.ProjectService.List:output_type -> metalstack.admin.v2.ProjectServiceListResponse
