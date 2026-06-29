@@ -1,6 +1,7 @@
 import datetime
 
 from buf.validate import validate_pb2 as _validate_pb2
+from google.protobuf import duration_pb2 as _duration_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import filesystem_pb2 as _filesystem_pb2
@@ -79,6 +80,30 @@ class MachineBMCCommand(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: _ClassVar[MachineBMCCommand]
     MACHINE_BMC_COMMAND_MACHINE_DELETED: _ClassVar[MachineBMCCommand]
     MACHINE_BMC_COMMAND_MACHINE_CREATED: _ClassVar[MachineBMCCommand]
+
+class MachineIssueType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_ISSUE_TYPE_UNSPECIFIED: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_ASN_UNIQUENESS: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_CRASH_LOOP: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_LIVELINESS_DEAD: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_NO_PARTITION: _ClassVar[MachineIssueType]
+
+class MachineIssueSeverity(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_ISSUE_SEVERITY_UNSPECIFIED: _ClassVar[MachineIssueSeverity]
+    MACHINE_ISSUE_SEVERITY_MINOR: _ClassVar[MachineIssueSeverity]
+    MACHINE_ISSUE_SEVERITY_MAJOR: _ClassVar[MachineIssueSeverity]
+    MACHINE_ISSUE_SEVERITY_CRITICAL: _ClassVar[MachineIssueSeverity]
 IP_PROTOCOL_UNSPECIFIED: IPProtocol
 IP_PROTOCOL_TCP: IPProtocol
 IP_PROTOCOL_UDP: IPProtocol
@@ -120,6 +145,24 @@ MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: MachineBMCCommand
 MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: MachineBMCCommand
 MACHINE_BMC_COMMAND_MACHINE_DELETED: MachineBMCCommand
 MACHINE_BMC_COMMAND_MACHINE_CREATED: MachineBMCCommand
+MACHINE_ISSUE_TYPE_UNSPECIFIED: MachineIssueType
+MACHINE_ISSUE_TYPE_ASN_UNIQUENESS: MachineIssueType
+MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED: MachineIssueType
+MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP: MachineIssueType
+MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP: MachineIssueType
+MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC: MachineIssueType
+MACHINE_ISSUE_TYPE_CRASH_LOOP: MachineIssueType
+MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM: MachineIssueType
+MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR: MachineIssueType
+MACHINE_ISSUE_TYPE_LIVELINESS_DEAD: MachineIssueType
+MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE: MachineIssueType
+MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN: MachineIssueType
+MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER: MachineIssueType
+MACHINE_ISSUE_TYPE_NO_PARTITION: MachineIssueType
+MACHINE_ISSUE_SEVERITY_UNSPECIFIED: MachineIssueSeverity
+MACHINE_ISSUE_SEVERITY_MINOR: MachineIssueSeverity
+MACHINE_ISSUE_SEVERITY_MAJOR: MachineIssueSeverity
+MACHINE_ISSUE_SEVERITY_CRITICAL: MachineIssueSeverity
 
 class MachineServiceGetRequest(_message.Message):
     __slots__ = ("uuid", "project")
@@ -737,3 +780,39 @@ class MachineHardwareQuery(_message.Message):
     memory: int
     cpu_cores: int
     def __init__(self, memory: _Optional[int] = ..., cpu_cores: _Optional[int] = ...) -> None: ...
+
+class MachineIssuesQuery(_message.Message):
+    __slots__ = ("machine_query", "only", "omit", "severity", "last_error_threshold")
+    MACHINE_QUERY_FIELD_NUMBER: _ClassVar[int]
+    ONLY_FIELD_NUMBER: _ClassVar[int]
+    OMIT_FIELD_NUMBER: _ClassVar[int]
+    SEVERITY_FIELD_NUMBER: _ClassVar[int]
+    LAST_ERROR_THRESHOLD_FIELD_NUMBER: _ClassVar[int]
+    machine_query: MachineQuery
+    only: _containers.RepeatedScalarFieldContainer[MachineIssueType]
+    omit: _containers.RepeatedScalarFieldContainer[MachineIssueType]
+    severity: MachineIssueSeverity
+    last_error_threshold: _duration_pb2.Duration
+    def __init__(self, machine_query: _Optional[_Union[MachineQuery, _Mapping]] = ..., only: _Optional[_Iterable[_Union[MachineIssueType, str]]] = ..., omit: _Optional[_Iterable[_Union[MachineIssueType, str]]] = ..., severity: _Optional[_Union[MachineIssueSeverity, str]] = ..., last_error_threshold: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+
+class MachineIssues(_message.Message):
+    __slots__ = ("uuid", "issues")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    ISSUES_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    issues: _containers.RepeatedCompositeFieldContainer[MachineIssue]
+    def __init__(self, uuid: _Optional[str] = ..., issues: _Optional[_Iterable[_Union[MachineIssue, _Mapping]]] = ...) -> None: ...
+
+class MachineIssue(_message.Message):
+    __slots__ = ("type", "severity", "description", "reference_url", "details")
+    TYPE_FIELD_NUMBER: _ClassVar[int]
+    SEVERITY_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    REFERENCE_URL_FIELD_NUMBER: _ClassVar[int]
+    DETAILS_FIELD_NUMBER: _ClassVar[int]
+    type: MachineIssueType
+    severity: MachineIssueSeverity
+    description: str
+    reference_url: str
+    details: str
+    def __init__(self, type: _Optional[_Union[MachineIssueType, str]] = ..., severity: _Optional[_Union[MachineIssueSeverity, str]] = ..., description: _Optional[str] = ..., reference_url: _Optional[str] = ..., details: _Optional[str] = ...) -> None: ...

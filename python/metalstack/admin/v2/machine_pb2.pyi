@@ -124,3 +124,15 @@ class MachineServiceSetStateResponse(_message.Message):
     MACHINE_FIELD_NUMBER: _ClassVar[int]
     machine: _machine_pb2.Machine
     def __init__(self, machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ...) -> None: ...
+
+class MachineServiceIssuesRequest(_message.Message):
+    __slots__ = ("query",)
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: _machine_pb2.MachineIssuesQuery
+    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineIssuesQuery, _Mapping]] = ...) -> None: ...
+
+class MachineServiceIssuesResponse(_message.Message):
+    __slots__ = ("issues",)
+    ISSUES_FIELD_NUMBER: _ClassVar[int]
+    issues: _containers.RepeatedCompositeFieldContainer[_machine_pb2.MachineIssues]
+    def __init__(self, issues: _Optional[_Iterable[_Union[_machine_pb2.MachineIssues, _Mapping]]] = ...) -> None: ...

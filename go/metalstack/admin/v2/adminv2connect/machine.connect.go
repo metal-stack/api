@@ -51,6 +51,8 @@ const (
 	MachineServiceConsolePasswordProcedure = "/metalstack.admin.v2.MachineService/ConsolePassword"
 	// MachineServiceSetStateProcedure is the fully-qualified name of the MachineService's SetState RPC.
 	MachineServiceSetStateProcedure = "/metalstack.admin.v2.MachineService/SetState"
+	// MachineServiceIssuesProcedure is the fully-qualified name of the MachineService's Issues RPC.
+	MachineServiceIssuesProcedure = "/metalstack.admin.v2.MachineService/Issues"
 )
 
 // MachineServiceClient is a client for the metalstack.admin.v2.MachineService service.
@@ -71,6 +73,8 @@ type MachineServiceClient interface {
 	ConsolePassword(context.Context, *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error)
 	// SetState set the state of a machine.
 	SetState(context.Context, *v2.MachineServiceSetStateRequest) (*v2.MachineServiceSetStateResponse, error)
+	// Issues allows to query issues of machines
+	Issues(context.Context, *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error)
 }
 
 // NewMachineServiceClient constructs a client for the metalstack.admin.v2.MachineService service.
@@ -132,6 +136,12 @@ func NewMachineServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(machineServiceMethods.ByName("SetState")),
 			connect.WithClientOptions(opts...),
 		),
+		issues: connect.NewClient[v2.MachineServiceIssuesRequest, v2.MachineServiceIssuesResponse](
+			httpClient,
+			baseURL+MachineServiceIssuesProcedure,
+			connect.WithSchema(machineServiceMethods.ByName("Issues")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -145,6 +155,7 @@ type machineServiceClient struct {
 	listBMC         *connect.Client[v2.MachineServiceListBMCRequest, v2.MachineServiceListBMCResponse]
 	consolePassword *connect.Client[v2.MachineServiceConsolePasswordRequest, v2.MachineServiceConsolePasswordResponse]
 	setState        *connect.Client[v2.MachineServiceSetStateRequest, v2.MachineServiceSetStateResponse]
+	issues          *connect.Client[v2.MachineServiceIssuesRequest, v2.MachineServiceIssuesResponse]
 }
 
 // Get calls metalstack.admin.v2.MachineService.Get.
@@ -219,6 +230,15 @@ func (c *machineServiceClient) SetState(ctx context.Context, req *v2.MachineServ
 	return nil, err
 }
 
+// Issues calls metalstack.admin.v2.MachineService.Issues.
+func (c *machineServiceClient) Issues(ctx context.Context, req *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error) {
+	response, err := c.issues.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // MachineServiceHandler is an implementation of the metalstack.admin.v2.MachineService service.
 type MachineServiceHandler interface {
 	// Returns the machine with the specified UUID.
@@ -237,6 +257,8 @@ type MachineServiceHandler interface {
 	ConsolePassword(context.Context, *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error)
 	// SetState set the state of a machine.
 	SetState(context.Context, *v2.MachineServiceSetStateRequest) (*v2.MachineServiceSetStateResponse, error)
+	// Issues allows to query issues of machines
+	Issues(context.Context, *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error)
 }
 
 // NewMachineServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -294,6 +316,12 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 		connect.WithSchema(machineServiceMethods.ByName("SetState")),
 		connect.WithHandlerOptions(opts...),
 	)
+	machineServiceIssuesHandler := connect.NewUnaryHandlerSimple(
+		MachineServiceIssuesProcedure,
+		svc.Issues,
+		connect.WithSchema(machineServiceMethods.ByName("Issues")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.MachineService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case MachineServiceGetProcedure:
@@ -312,6 +340,8 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 			machineServiceConsolePasswordHandler.ServeHTTP(w, r)
 		case MachineServiceSetStateProcedure:
 			machineServiceSetStateHandler.ServeHTTP(w, r)
+		case MachineServiceIssuesProcedure:
+			machineServiceIssuesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -351,4 +381,8 @@ func (UnimplementedMachineServiceHandler) ConsolePassword(context.Context, *v2.M
 
 func (UnimplementedMachineServiceHandler) SetState(context.Context, *v2.MachineServiceSetStateRequest) (*v2.MachineServiceSetStateResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.SetState is not implemented"))
+}
+
+func (UnimplementedMachineServiceHandler) Issues(context.Context, *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.Issues is not implemented"))
 }
