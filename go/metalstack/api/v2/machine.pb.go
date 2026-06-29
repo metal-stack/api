@@ -4914,11 +4914,13 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\tcpu_cores\x18\x02 \x01(\rH\x01R\bcpuCores\x88\x01\x01B\t\n" +
 	"\a_memoryB\f\n" +
 	"\n" +
-	"_cpu_cores\"\xe8\x02\n" +
+	"_cpu_cores\"\x86\x03\n" +
 	"\x12MachineIssuesQuery\x12D\n" +
-	"\rmachine_query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\fmachineQuery\x127\n" +
-	"\x04only\x18\x02 \x03(\x0e2#.metalstack.api.v2.MachineIssueTypeR\x04only\x127\n" +
-	"\x04omit\x18\x03 \x03(\x0e2#.metalstack.api.v2.MachineIssueTypeR\x04omit\x12M\n" +
+	"\rmachine_query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.MachineQueryR\fmachineQuery\x12F\n" +
+	"\x04only\x18\x02 \x03(\x0e2#.metalstack.api.v2.MachineIssueTypeB\r\xbaH\n" +
+	"\x92\x01\a\"\x05\x82\x01\x02\x10\x01R\x04only\x12F\n" +
+	"\x04omit\x18\x03 \x03(\x0e2#.metalstack.api.v2.MachineIssueTypeB\r\xbaH\n" +
+	"\x92\x01\a\"\x05\x82\x01\x02\x10\x01R\x04omit\x12M\n" +
 	"\bseverity\x18\x04 \x01(\x0e2'.metalstack.api.v2.MachineIssueSeverityB\b\xbaH\x05\x82\x01\x02\x10\x01R\bseverity\x12K\n" +
 	"\x14last_error_threshold\x18\x05 \x01(\v2\x19.google.protobuf.DurationR\x12lastErrorThreshold\"f\n" +
 	"\rMachineIssues\x12\x1c\n" +

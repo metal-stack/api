@@ -137,12 +137,18 @@ message ProjectInvite {
 
 // ProjectServiceListRequest is the request payload to list all projects
 message ProjectServiceListRequest {
-  // Id lists only projects with this id
-  optional string id = 1;
+  // Query for projects
+  ProjectQuery query = 1;
+}
+
+// ProjectQuery is used to search projects
+message ProjectQuery {
+  // Uuid lists only projects with this uuid
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Name lists only projects with this name
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Tenant lists only projects of this tenant
-  optional string tenant = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  optional string tenant = 3 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Labels lists only projects containing the given labels
   optional Labels labels = 4;
 }

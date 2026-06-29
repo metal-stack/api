@@ -894,9 +894,9 @@ message MachineIssuesQuery {
   // MachineQuery to select specific machines
   metalstack.api.v2.MachineQuery machine_query = 1;
   // Only a list of machine issue types to include
-  repeated MachineIssueType only = 2;
+  repeated MachineIssueType only = 2 [(buf.validate.field).repeated = {items: {enum: {defined_only: true}}}];
   // Omit a list of machine issues to omit
-  repeated MachineIssueType omit = 3;
+  repeated MachineIssueType omit = 3 [(buf.validate.field).repeated = {items: {enum: {defined_only: true}}}];
   // Severity filters issue for given severity
   MachineIssueSeverity severity = 4 [(buf.validate.field).enum.defined_only = true];
   // LastErrorThreshold defines the last error threshold
