@@ -19,10 +19,8 @@ service ProjectService {
 
 // ProjectServiceListRequest is the request payload for listing projects.
 message ProjectServiceListRequest {
-  // Tenant filters projects by this tenant
-  optional string tenant = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Labels filters projects containing the given labels
-  optional metalstack.api.v2.Labels labels = 2;
+  // Query for projects
+  optional metalstack.api.v2.ProjectQuery query = 1;
 }
 
 // ProjectServiceListResponse is the response payload for listing projects.

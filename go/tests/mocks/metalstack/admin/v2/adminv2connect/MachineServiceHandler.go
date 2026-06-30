@@ -378,6 +378,74 @@ func (_c *MachineServiceHandler_GetBMC_Call) RunAndReturn(run func(context1 cont
 	return _c
 }
 
+// Issues provides a mock function for the type MachineServiceHandler
+func (_mock *MachineServiceHandler) Issues(context1 context.Context, machineServiceIssuesRequest *adminv2.MachineServiceIssuesRequest) (*adminv2.MachineServiceIssuesResponse, error) {
+	ret := _mock.Called(context1, machineServiceIssuesRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Issues")
+	}
+
+	var r0 *adminv2.MachineServiceIssuesResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceIssuesRequest) (*adminv2.MachineServiceIssuesResponse, error)); ok {
+		return returnFunc(context1, machineServiceIssuesRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.MachineServiceIssuesRequest) *adminv2.MachineServiceIssuesResponse); ok {
+		r0 = returnFunc(context1, machineServiceIssuesRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.MachineServiceIssuesResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.MachineServiceIssuesRequest) error); ok {
+		r1 = returnFunc(context1, machineServiceIssuesRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// MachineServiceHandler_Issues_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Issues'
+type MachineServiceHandler_Issues_Call struct {
+	*mock.Call
+}
+
+// Issues is a helper method to define mock.On call
+//   - context1 context.Context
+//   - machineServiceIssuesRequest *adminv2.MachineServiceIssuesRequest
+func (_e *MachineServiceHandler_Expecter) Issues(context1 any, machineServiceIssuesRequest any) *MachineServiceHandler_Issues_Call {
+	return &MachineServiceHandler_Issues_Call{Call: _e.mock.On("Issues", context1, machineServiceIssuesRequest)}
+}
+
+func (_c *MachineServiceHandler_Issues_Call) Run(run func(context1 context.Context, machineServiceIssuesRequest *adminv2.MachineServiceIssuesRequest)) *MachineServiceHandler_Issues_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.MachineServiceIssuesRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.MachineServiceIssuesRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *MachineServiceHandler_Issues_Call) Return(machineServiceIssuesResponse *adminv2.MachineServiceIssuesResponse, err error) *MachineServiceHandler_Issues_Call {
+	_c.Call.Return(machineServiceIssuesResponse, err)
+	return _c
+}
+
+func (_c *MachineServiceHandler_Issues_Call) RunAndReturn(run func(context1 context.Context, machineServiceIssuesRequest *adminv2.MachineServiceIssuesRequest) (*adminv2.MachineServiceIssuesResponse, error)) *MachineServiceHandler_Issues_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // List provides a mock function for the type MachineServiceHandler
 func (_mock *MachineServiceHandler) List(context1 context.Context, machineServiceListRequest *adminv2.MachineServiceListRequest) (*adminv2.MachineServiceListResponse, error) {
 	ret := _mock.Called(context1, machineServiceListRequest)

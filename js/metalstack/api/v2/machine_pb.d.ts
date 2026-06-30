@@ -1,5 +1,5 @@
 import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Timestamp } from "@bufbuild/protobuf/wkt";
+import type { Duration, Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Labels, Meta, UpdateLabels, UpdateMeta } from "./common_pb";
 import type { FilesystemLayout } from "./filesystem_pb";
 import type { Image } from "./image_pb";
@@ -1893,6 +1893,114 @@ export type MachineHardwareQuery = Message<"metalstack.api.v2.MachineHardwareQue
  */
 export declare const MachineHardwareQuerySchema: GenMessage<MachineHardwareQuery>;
 /**
+ * MachineIssuesQuery defines which machine issues should be listed
+ *
+ * @generated from message metalstack.api.v2.MachineIssuesQuery
+ */
+export type MachineIssuesQuery = Message<"metalstack.api.v2.MachineIssuesQuery"> & {
+    /**
+     * MachineQuery to select specific machines
+     *
+     * @generated from field: metalstack.api.v2.MachineQuery machine_query = 1;
+     */
+    machineQuery?: MachineQuery | undefined;
+    /**
+     * Only a list of machine issue types to include
+     *
+     * @generated from field: repeated metalstack.api.v2.MachineIssueType only = 2;
+     */
+    only: MachineIssueType[];
+    /**
+     * Omit a list of machine issues to omit
+     *
+     * @generated from field: repeated metalstack.api.v2.MachineIssueType omit = 3;
+     */
+    omit: MachineIssueType[];
+    /**
+     * Severity filters issue for given severity
+     *
+     * @generated from field: optional metalstack.api.v2.MachineIssueSeverity severity = 4;
+     */
+    severity?: MachineIssueSeverity | undefined;
+    /**
+     * LastErrorThreshold defines the last error threshold
+     *
+     * @generated from field: google.protobuf.Duration last_error_threshold = 5;
+     */
+    lastErrorThreshold?: Duration | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineIssuesQuery.
+ * Use `create(MachineIssuesQuerySchema)` to create a new message.
+ */
+export declare const MachineIssuesQuerySchema: GenMessage<MachineIssuesQuery>;
+/**
+ * MachineIssues is a list of issues for a machine
+ *
+ * @generated from message metalstack.api.v2.MachineIssues
+ */
+export type MachineIssues = Message<"metalstack.api.v2.MachineIssues"> & {
+    /**
+     * UUID of the machine for which the issues are listed
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Issues of this machine
+     *
+     * @generated from field: repeated metalstack.api.v2.MachineIssue issues = 2;
+     */
+    issues: MachineIssue[];
+};
+/**
+ * Describes the message metalstack.api.v2.MachineIssues.
+ * Use `create(MachineIssuesSchema)` to create a new message.
+ */
+export declare const MachineIssuesSchema: GenMessage<MachineIssues>;
+/**
+ * MachineIssue contains details of one issue
+ *
+ * @generated from message metalstack.api.v2.MachineIssue
+ */
+export type MachineIssue = Message<"metalstack.api.v2.MachineIssue"> & {
+    /**
+     * Type specifies the issue type (id)
+     *
+     * @generated from field: metalstack.api.v2.MachineIssueType type = 1;
+     */
+    type: MachineIssueType;
+    /**
+     * Severity specifies the severity of an issue
+     *
+     * @generated from field: metalstack.api.v2.MachineIssueSeverity severity = 2;
+     */
+    severity: MachineIssueSeverity;
+    /**
+     * Description provides an issue description
+     *
+     * @generated from field: string description = 3;
+     */
+    description: string;
+    /**
+     * RefURL provides a link to a more detailed issue description in the metal-stack documentation
+     *
+     * @generated from field: string reference_url = 4;
+     */
+    referenceUrl: string;
+    /**
+     * Details may contain additional details on an evaluated issue
+     *
+     * @generated from field: string details = 5;
+     */
+    details: string;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineIssue.
+ * Use `create(MachineIssueSchema)` to create a new message.
+ */
+export declare const MachineIssueSchema: GenMessage<MachineIssue>;
+/**
  * IPProtocol defines tcp|udp
  *
  * @generated from enum metalstack.api.v2.IPProtocol
@@ -2215,6 +2323,136 @@ export declare enum MachineBMCCommand {
  * Describes the enum metalstack.api.v2.MachineBMCCommand.
  */
 export declare const MachineBMCCommandSchema: GenEnum<MachineBMCCommand>;
+/**
+ * MachineIssueType defines which type of issue it is
+ *
+ * @generated from enum metalstack.api.v2.MachineIssueType
+ */
+export declare enum MachineIssueType {
+    /**
+     * MACHINE_ISSUE_TYPE_UNSPECIFIED type is not specified
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * MACHINE_ISSUE_TYPE_ASN_UNIQUENESS machine asn is not unique
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_ASN_UNIQUENESS = 1;
+     */
+    ASN_UNIQUENESS = 1,
+    /**
+     * MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED machine bmc info out of date
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED = 2;
+     */
+    BMC_INFO_OUTDATED = 2,
+    /**
+     * MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP machine bmc ip is not distinct
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP = 3;
+     */
+    BMC_NON_DISTINCT_IP = 3,
+    /**
+     * MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP machine bmc without ip
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP = 4;
+     */
+    BMC_WITHOUT_IP = 4,
+    /**
+     * MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC machine bmc without mac address
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC = 5;
+     */
+    BMC_WITHOUT_MAC = 5,
+    /**
+     * MACHINE_ISSUE_TYPE_CRASH_LOOP machine is in crashloop
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_CRASH_LOOP = 6;
+     */
+    CRASH_LOOP = 6,
+    /**
+     * MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM machine was not freed after delete
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM = 7;
+     */
+    FAILED_MACHINE_RECLAIM = 7,
+    /**
+     * MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR machine last event error
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR = 8;
+     */
+    LAST_EVENT_ERROR = 8,
+    /**
+     * MACHINE_ISSUE_TYPE_LIVELINESS_DEAD machine is dead
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_LIVELINESS_DEAD = 9;
+     */
+    LIVELINESS_DEAD = 9,
+    /**
+     * MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE machine liveliness is not available
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE = 10;
+     */
+    LIVELINESS_NOT_AVAILABLE = 10,
+    /**
+     * MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN machine liveliness is unknown
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN = 11;
+     */
+    LIVELINESS_UNKNOWN = 11,
+    /**
+     * MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER machine does not have a event container
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER = 12;
+     */
+    NO_EVENT_CONTAINER = 12,
+    /**
+     * MACHINE_ISSUE_TYPE_NO_PARTITION no partition set
+     *
+     * @generated from enum value: MACHINE_ISSUE_TYPE_NO_PARTITION = 13;
+     */
+    NO_PARTITION = 13
+}
+/**
+ * Describes the enum metalstack.api.v2.MachineIssueType.
+ */
+export declare const MachineIssueTypeSchema: GenEnum<MachineIssueType>;
+/**
+ * MachineIssueSeverity defines the severity of an issue
+ *
+ * @generated from enum metalstack.api.v2.MachineIssueSeverity
+ */
+export declare enum MachineIssueSeverity {
+    /**
+     * MACHINE_ISSUE_SEVERITY_UNSPECIFIED severity is not specified
+     *
+     * @generated from enum value: MACHINE_ISSUE_SEVERITY_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * MACHINE_ISSUE_SEVERITY_MINOR machine issues is of severity minor
+     *
+     * @generated from enum value: MACHINE_ISSUE_SEVERITY_MINOR = 1;
+     */
+    MINOR = 1,
+    /**
+     * MACHINE_ISSUE_SEVERITY_MAJOR machine issues is of severity major
+     *
+     * @generated from enum value: MACHINE_ISSUE_SEVERITY_MAJOR = 2;
+     */
+    MAJOR = 2,
+    /**
+     * MACHINE_ISSUE_SEVERITY_CRITICAL machine issues is of severity critical
+     *
+     * @generated from enum value: MACHINE_ISSUE_SEVERITY_CRITICAL = 3;
+     */
+    CRITICAL = 3
+}
+/**
+ * Describes the enum metalstack.api.v2.MachineIssueSeverity.
+ */
+export declare const MachineIssueSeveritySchema: GenEnum<MachineIssueSeverity>;
 /**
  * MachineService provides machine lifecycle management operations.
  *

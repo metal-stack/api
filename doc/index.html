@@ -1250,6 +1250,18 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineIssue"><span class="badge">M</span>MachineIssue</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MachineIssues"><span class="badge">M</span>MachineIssues</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MachineIssuesQuery"><span class="badge">M</span>MachineIssuesQuery</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineNetwork"><span class="badge">M</span>MachineNetwork</a>
                 </li>
               
@@ -1371,6 +1383,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineIssueSeverity"><span class="badge">E</span>MachineIssueSeverity</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.MachineIssueType"><span class="badge">E</span>MachineIssueType</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineLiveliness"><span class="badge">E</span>MachineLiveliness</a>
                 </li>
               
@@ -1438,6 +1458,14 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.MachineServiceGetResponse"><span class="badge">M</span>MachineServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.MachineServiceIssuesRequest"><span class="badge">M</span>MachineServiceIssuesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.MachineServiceIssuesResponse"><span class="badge">M</span>MachineServiceIssuesResponse</a>
                 </li>
               
                 <li>
@@ -1603,6 +1631,10 @@
               
                 <li>
                   <a href="#metalstack.api.v2.ProjectMember"><span class="badge">M</span>ProjectMember</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ProjectQuery"><span class="badge">M</span>ProjectQuery</a>
                 </li>
               
                 <li>
@@ -2299,6 +2331,14 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.admin.v2.TenantServiceAddMemberRequest"><span class="badge">M</span>TenantServiceAddMemberRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TenantServiceAddMemberResponse"><span class="badge">M</span>TenantServiceAddMemberResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.TenantServiceCreateRequest"><span class="badge">M</span>TenantServiceCreateRequest</a>
                 </li>
               
@@ -2312,6 +2352,14 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.TenantServiceListResponse"><span class="badge">M</span>TenantServiceListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TenantServiceRemoveMemberRequest"><span class="badge">M</span>TenantServiceRemoveMemberRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.TenantServiceRemoveMemberResponse"><span class="badge">M</span>TenantServiceRemoveMemberResponse</a>
                 </li>
               
               
@@ -10685,6 +10733,141 @@ Order of ips is preserved on the loopback interface. </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.MachineIssue">MachineIssue</h3>
+        <p>MachineIssue contains details of one issue</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>type</td>
+                  <td><a href="#metalstack.api.v2.MachineIssueType">MachineIssueType</a></td>
+                  <td></td>
+                  <td><p>Type specifies the issue type (id) </p></td>
+                </tr>
+              
+                <tr>
+                  <td>severity</td>
+                  <td><a href="#metalstack.api.v2.MachineIssueSeverity">MachineIssueSeverity</a></td>
+                  <td></td>
+                  <td><p>Severity specifies the severity of an issue </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Description provides an issue description </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reference_url</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>RefURL provides a link to a more detailed issue description in the metal-stack documentation </p></td>
+                </tr>
+              
+                <tr>
+                  <td>details</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Details may contain additional details on an evaluated issue </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MachineIssues">MachineIssues</h3>
+        <p>MachineIssues is a list of issues for a machine</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine for which the issues are listed </p></td>
+                </tr>
+              
+                <tr>
+                  <td>issues</td>
+                  <td><a href="#metalstack.api.v2.MachineIssue">MachineIssue</a></td>
+                  <td>repeated</td>
+                  <td><p>Issues of this machine </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.MachineIssuesQuery">MachineIssuesQuery</h3>
+        <p>MachineIssuesQuery defines which machine issues should be listed</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>machine_query</td>
+                  <td><a href="#metalstack.api.v2.MachineQuery">MachineQuery</a></td>
+                  <td></td>
+                  <td><p>MachineQuery to select specific machines </p></td>
+                </tr>
+              
+                <tr>
+                  <td>only</td>
+                  <td><a href="#metalstack.api.v2.MachineIssueType">MachineIssueType</a></td>
+                  <td>repeated</td>
+                  <td><p>Only a list of machine issue types to include </p></td>
+                </tr>
+              
+                <tr>
+                  <td>omit</td>
+                  <td><a href="#metalstack.api.v2.MachineIssueType">MachineIssueType</a></td>
+                  <td>repeated</td>
+                  <td><p>Omit a list of machine issues to omit </p></td>
+                </tr>
+              
+                <tr>
+                  <td>severity</td>
+                  <td><a href="#metalstack.api.v2.MachineIssueSeverity">MachineIssueSeverity</a></td>
+                  <td>optional</td>
+                  <td><p>Severity filters issue for given severity </p></td>
+                </tr>
+              
+                <tr>
+                  <td>last_error_threshold</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>LastErrorThreshold defines the last error threshold </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.MachineNetwork">MachineNetwork</h3>
         <p>MachineNetwork contains details which network should be created on a allocated machine</p>
 
@@ -12092,6 +12275,136 @@ if placement tags are provided, the machine candidate has an additional anti-aff
           </tbody>
         </table>
       
+        <h3 id="metalstack.api.v2.MachineIssueSeverity">MachineIssueSeverity</h3>
+        <p>MachineIssueSeverity defines the severity of an issue</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MACHINE_ISSUE_SEVERITY_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>MACHINE_ISSUE_SEVERITY_UNSPECIFIED severity is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_SEVERITY_MINOR</td>
+                <td>1</td>
+                <td><p>MACHINE_ISSUE_SEVERITY_MINOR machine issues is of severity minor</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_SEVERITY_MAJOR</td>
+                <td>2</td>
+                <td><p>MACHINE_ISSUE_SEVERITY_MAJOR machine issues is of severity major</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_SEVERITY_CRITICAL</td>
+                <td>3</td>
+                <td><p>MACHINE_ISSUE_SEVERITY_CRITICAL machine issues is of severity critical</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.MachineIssueType">MachineIssueType</h3>
+        <p>MachineIssueType defines which type of issue it is</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>MACHINE_ISSUE_TYPE_UNSPECIFIED type is not specified</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_ASN_UNIQUENESS</td>
+                <td>1</td>
+                <td><p>MACHINE_ISSUE_TYPE_ASN_UNIQUENESS machine asn is not unique</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED</td>
+                <td>2</td>
+                <td><p>MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED machine bmc info out of date</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP</td>
+                <td>3</td>
+                <td><p>MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP machine bmc ip is not distinct</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP</td>
+                <td>4</td>
+                <td><p>MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP machine bmc without ip</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC</td>
+                <td>5</td>
+                <td><p>MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC machine bmc without mac address</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_CRASH_LOOP</td>
+                <td>6</td>
+                <td><p>MACHINE_ISSUE_TYPE_CRASH_LOOP machine is in crashloop</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM</td>
+                <td>7</td>
+                <td><p>MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM machine was not freed after delete</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR</td>
+                <td>8</td>
+                <td><p>MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR machine last event error</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_LIVELINESS_DEAD</td>
+                <td>9</td>
+                <td><p>MACHINE_ISSUE_TYPE_LIVELINESS_DEAD machine is dead</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE</td>
+                <td>10</td>
+                <td><p>MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE machine liveliness is not available</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN</td>
+                <td>11</td>
+                <td><p>MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN machine liveliness is unknown</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER</td>
+                <td>12</td>
+                <td><p>MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER machine does not have a event container</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_ISSUE_TYPE_NO_PARTITION</td>
+                <td>13</td>
+                <td><p>MACHINE_ISSUE_TYPE_NO_PARTITION no partition set</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
         <h3 id="metalstack.api.v2.MachineLiveliness">MachineLiveliness</h3>
         <p>MachineLiveliness specifies the liveliness of a machine</p>
         <table class="enum-table">
@@ -12599,6 +12912,54 @@ Reason is only forwarded to an audit sink </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.MachineServiceIssuesRequest">MachineServiceIssuesRequest</h3>
+        <p>MachineServiceIssuesRequest is the request payload for a machine issues request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.MachineIssuesQuery">metalstack.api.v2.MachineIssuesQuery</a></td>
+                  <td></td>
+                  <td><p>Query which machine issues to include </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.MachineServiceIssuesResponse">MachineServiceIssuesResponse</h3>
+        <p>MachineServiceIssuesResponse is the response payload for a machine issues request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>issues</td>
+                  <td><a href="#metalstack.api.v2.MachineIssues">metalstack.api.v2.MachineIssues</a></td>
+                  <td>repeated</td>
+                  <td><p>Issues is the result of the issues query </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.MachineServiceListBMCRequest">MachineServiceListBMCRequest</h3>
         <p>MachineServiceListBMCRequest is the request payload for a machine listbmc request</p>
 
@@ -12865,6 +13226,13 @@ If State set to available, description is also cleared. </p></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceSetStateRequest">MachineServiceSetStateRequest</a></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceSetStateResponse">MachineServiceSetStateResponse</a></td>
                 <td><p>SetState set the state of a machine.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Issues</td>
+                <td><a href="#metalstack.admin.v2.MachineServiceIssuesRequest">MachineServiceIssuesRequest</a></td>
+                <td><a href="#metalstack.admin.v2.MachineServiceIssuesResponse">MachineServiceIssuesResponse</a></td>
+                <td><p>Issues allows to query issues of machines</p></td>
               </tr>
             
           </tbody>
@@ -14028,6 +14396,51 @@ Inherited memberships are not included in member lists for users with guest perm
 
         
       
+        <h3 id="metalstack.api.v2.ProjectQuery">ProjectQuery</h3>
+        <p>ProjectQuery is used to search projects</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Uuid lists only projects with this uuid </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Name lists only projects with this name </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tenant</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Tenant lists only projects of this tenant </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td>optional</td>
+                  <td><p>Labels lists only projects containing the given labels </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.ProjectServiceCreateRequest">ProjectServiceCreateRequest</h3>
         <p>ProjectServiceCreateRequest is the request payload to Create a project</p>
 
@@ -14496,31 +14909,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>id</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Id lists only projects with this id </p></td>
-                </tr>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Name lists only projects with this name </p></td>
-                </tr>
-              
-                <tr>
-                  <td>tenant</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Tenant lists only projects of this tenant </p></td>
-                </tr>
-              
-                <tr>
-                  <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
-                  <td>optional</td>
-                  <td><p>Labels lists only projects containing the given labels </p></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.ProjectQuery">ProjectQuery</a></td>
+                  <td></td>
+                  <td><p>Query for projects </p></td>
                 </tr>
               
             </tbody>
@@ -14865,17 +15257,10 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
             <tbody>
               
                 <tr>
-                  <td>tenant</td>
-                  <td><a href="#string">string</a></td>
+                  <td>query</td>
+                  <td><a href="#metalstack.api.v2.ProjectQuery">metalstack.api.v2.ProjectQuery</a></td>
                   <td>optional</td>
-                  <td><p>Tenant filters projects by this tenant </p></td>
-                </tr>
-              
-                <tr>
-                  <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Labels">metalstack.api.v2.Labels</a></td>
-                  <td>optional</td>
-                  <td><p>Labels filters projects containing the given labels </p></td>
+                  <td><p>Query for projects </p></td>
                 </tr>
               
             </tbody>
@@ -19050,6 +19435,51 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
       <p></p>
 
       
+        <h3 id="metalstack.admin.v2.TenantServiceAddMemberRequest">TenantServiceAddMemberRequest</h3>
+        <p>TenantServiceAddMemberRequest is the request payload for adding a member to a tenant</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant to which the member will be added </p></td>
+                </tr>
+              
+                <tr>
+                  <td>member</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the member to add </p></td>
+                </tr>
+              
+                <tr>
+                  <td>role</td>
+                  <td><a href="#metalstack.api.v2.TenantRole">metalstack.api.v2.TenantRole</a></td>
+                  <td></td>
+                  <td><p>Role to assign to the new member </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TenantServiceAddMemberResponse">TenantServiceAddMemberResponse</h3>
+        <p>TenantServiceAddMemberResponse is the response payload for the add member request</p>
+
+        
+
+        
+      
         <h3 id="metalstack.admin.v2.TenantServiceCreateRequest">TenantServiceCreateRequest</h3>
         <p>TenantServiceCreateRequest is the request payload for creating a tenant.</p>
 
@@ -19181,6 +19611,44 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.TenantServiceRemoveMemberRequest">TenantServiceRemoveMemberRequest</h3>
+        <p>TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant from which the member will be removed </p></td>
+                </tr>
+              
+                <tr>
+                  <td>member</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the member to remove </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.TenantServiceRemoveMemberResponse">TenantServiceRemoveMemberResponse</h3>
+        <p>TenantServiceRemoveMemberResponse is the response payload for the remove member request</p>
+
+        
+
+        
+      
 
       
 
@@ -19207,6 +19675,20 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.admin.v2.TenantServiceListRequest">TenantServiceListRequest</a></td>
                 <td><a href="#metalstack.admin.v2.TenantServiceListResponse">TenantServiceListResponse</a></td>
                 <td><p>Returns the list of all tenants.</p></td>
+              </tr>
+            
+              <tr>
+                <td>AddMember</td>
+                <td><a href="#metalstack.admin.v2.TenantServiceAddMemberRequest">TenantServiceAddMemberRequest</a></td>
+                <td><a href="#metalstack.admin.v2.TenantServiceAddMemberResponse">TenantServiceAddMemberResponse</a></td>
+                <td><p>Add a member to a tenant</p></td>
+              </tr>
+            
+              <tr>
+                <td>RemoveMember</td>
+                <td><a href="#metalstack.admin.v2.TenantServiceRemoveMemberRequest">TenantServiceRemoveMemberRequest</a></td>
+                <td><a href="#metalstack.admin.v2.TenantServiceRemoveMemberResponse">TenantServiceRemoveMemberResponse</a></td>
+                <td><p>RemoveMember remove a member of a tenant</p></td>
               </tr>
             
           </tbody>
