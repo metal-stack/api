@@ -101,6 +101,43 @@ export declare const MetaSchema: GenMessage<Meta>;
  */
 export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
     /**
+     * strategy defines the label update strategy
+     *
+     * @generated from oneof metalstack.api.v2.UpdateLabels.strategy
+     */
+    strategy: {
+        /**
+         * Labels replaces existing labels with the given ones
+         *
+         * @generated from field: metalstack.api.v2.Labels replace = 1;
+         */
+        value: Labels;
+        case: "replace";
+    } | {
+        /**
+         * UpdateLabelsIndividually adds, updates or remove given labels without modifying others
+         *
+         * @generated from field: metalstack.api.v2.UpdateLabelsIndividually inidivual = 2;
+         */
+        value: UpdateLabelsIndividually;
+        case: "inidivual";
+    } | {
+        case: undefined;
+        value?: undefined;
+    };
+};
+/**
+ * Describes the message metalstack.api.v2.UpdateLabels.
+ * Use `create(UpdateLabelsSchema)` to create a new message.
+ */
+export declare const UpdateLabelsSchema: GenMessage<UpdateLabels>;
+/**
+ * UpdateLabelsIndividually adds, updates or remove given labels without modifying others
+ *
+ * @generated from message metalstack.api.v2.UpdateLabelsIndividually
+ */
+export type UpdateLabelsIndividually = Message<"metalstack.api.v2.UpdateLabelsIndividually"> & {
+    /**
      * Update labels. New ones will be added, existing ones overwritten
      *
      * @generated from field: metalstack.api.v2.Labels update = 1;
@@ -114,10 +151,10 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
     remove: string[];
 };
 /**
- * Describes the message metalstack.api.v2.UpdateLabels.
- * Use `create(UpdateLabelsSchema)` to create a new message.
+ * Describes the message metalstack.api.v2.UpdateLabelsIndividually.
+ * Use `create(UpdateLabelsIndividuallySchema)` to create a new message.
  */
-export declare const UpdateLabelsSchema: GenMessage<UpdateLabels>;
+export declare const UpdateLabelsIndividuallySchema: GenMessage<UpdateLabelsIndividually>;
 /**
  * UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled
  *
