@@ -117,10 +117,10 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
         /**
          * UpdateLabelsIndividually adds, updates or remove given labels without modifying others
          *
-         * @generated from field: metalstack.api.v2.UpdateLabelsIndividually inidivual = 2;
+         * @generated from field: metalstack.api.v2.UpdateLabelsIndividually individual = 2;
          */
         value: UpdateLabelsIndividually;
-        case: "inidivual";
+        case: "individual";
     } | {
         case: undefined;
         value?: undefined;
