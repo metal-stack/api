@@ -107,11 +107,11 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
      */
     strategy: {
         /**
-         * UpdateLabelsReplace replaces existing labels with the given ones
+         * Labels replaces existing labels with the given ones
          *
-         * @generated from field: metalstack.api.v2.UpdateLabelsReplace replace = 1;
+         * @generated from field: metalstack.api.v2.Labels replace = 1;
          */
-        value: UpdateLabelsReplace;
+        value: Labels;
         case: "replace";
     } | {
         /**
@@ -131,24 +131,6 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
  * Use `create(UpdateLabelsSchema)` to create a new message.
  */
 export declare const UpdateLabelsSchema: GenMessage<UpdateLabels>;
-/**
- * UpdateLabelsReplace replaces existing labels with the given ones
- *
- * @generated from message metalstack.api.v2.UpdateLabelsReplace
- */
-export type UpdateLabelsReplace = Message<"metalstack.api.v2.UpdateLabelsReplace"> & {
-    /**
-     * Update labels. Existing labels will be overwritten
-     *
-     * @generated from field: metalstack.api.v2.Labels replace = 1;
-     */
-    replace?: Labels | undefined;
-};
-/**
- * Describes the message metalstack.api.v2.UpdateLabelsReplace.
- * Use `create(UpdateLabelsReplaceSchema)` to create a new message.
- */
-export declare const UpdateLabelsReplaceSchema: GenMessage<UpdateLabelsReplace>;
 /**
  * UpdateLabelsIndividually adds, updates or remove given labels without modifying others
  *

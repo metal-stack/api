@@ -146,15 +146,9 @@ class UpdateLabels(_message.Message):
     __slots__ = ("replace", "inidivual")
     REPLACE_FIELD_NUMBER: _ClassVar[int]
     INIDIVUAL_FIELD_NUMBER: _ClassVar[int]
-    replace: UpdateLabelsReplace
-    inidivual: UpdateLabelsIndividually
-    def __init__(self, replace: _Optional[_Union[UpdateLabelsReplace, _Mapping]] = ..., inidivual: _Optional[_Union[UpdateLabelsIndividually, _Mapping]] = ...) -> None: ...
-
-class UpdateLabelsReplace(_message.Message):
-    __slots__ = ("replace",)
-    REPLACE_FIELD_NUMBER: _ClassVar[int]
     replace: Labels
-    def __init__(self, replace: _Optional[_Union[Labels, _Mapping]] = ...) -> None: ...
+    inidivual: UpdateLabelsIndividually
+    def __init__(self, replace: _Optional[_Union[Labels, _Mapping]] = ..., inidivual: _Optional[_Union[UpdateLabelsIndividually, _Mapping]] = ...) -> None: ...
 
 class UpdateLabelsIndividually(_message.Message):
     __slots__ = ("update", "remove")

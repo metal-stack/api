@@ -165,17 +165,11 @@ message UpdateLabels {
     // ensure at least one match is specified
     option (buf.validate.oneof).required = true;
 
-    // UpdateLabelsReplace replaces existing labels with the given ones
-    UpdateLabelsReplace replace = 1;
+    // Labels replaces existing labels with the given ones
+    Labels replace = 1;
     // UpdateLabelsIndividually adds, updates or remove given labels without modifying others
     UpdateLabelsIndividually inidivual = 2;
   }
-}
-
-// UpdateLabelsReplace replaces existing labels with the given ones
-message UpdateLabelsReplace {
-  // Update labels. Existing labels will be overwritten
-  Labels replace = 1;
 }
 
 // UpdateLabelsIndividually adds, updates or remove given labels without modifying others
