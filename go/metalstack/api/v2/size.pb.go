@@ -542,8 +542,8 @@ const file_metalstack_api_v2_size_proto_rawDesc = "" +
 	"\x1cSIZE_CONSTRAINT_TYPE_STORAGE\x10\x03\x1a\v\x82\xb2\x19\astorage\x12%\n" +
 	"\x18SIZE_CONSTRAINT_TYPE_GPU\x10\x04\x1a\a\x82\xb2\x19\x03gpu2\xdc\x01\n" +
 	"\vSizeService\x12d\n" +
-	"\x03Get\x12(.metalstack.api.v2.SizeServiceGetRequest\x1a).metalstack.api.v2.SizeServiceGetResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12g\n" +
-	"\x04List\x12).metalstack.api.v2.SizeServiceListRequest\x1a*.metalstack.api.v2.SizeServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02B\xbf\x01\n" +
+	"\x03Get\x12(.metalstack.api.v2.SizeServiceGetRequest\x1a).metalstack.api.v2.SizeServiceGetResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02\x12g\n" +
+	"\x04List\x12).metalstack.api.v2.SizeServiceListRequest\x1a*.metalstack.api.v2.SizeServiceListResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02B\xbf\x01\n" +
 	"\x15com.metalstack.api.v2B\tSizeProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

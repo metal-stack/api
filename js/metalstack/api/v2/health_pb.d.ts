@@ -106,7 +106,7 @@ export type HealthServiceGetResponse = Message<"metalstack.api.v2.HealthServiceG
      *
      * @generated from field: metalstack.api.v2.Health health = 1;
      */
-    health?: Health;
+    health?: Health | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.HealthServiceGetResponse.
@@ -173,11 +173,11 @@ export declare enum Service {
      */
     RETHINK = 2,
     /**
-     * SERVICE_MASTERDATA the masterdata API
+     * SERVICE_TENANT_APISERVER the tenant-apiserver
      *
-     * @generated from enum value: SERVICE_MASTERDATA = 3;
+     * @generated from enum value: SERVICE_TENANT_APISERVER = 3;
      */
-    MASTERDATA = 3,
+    TENANT_APISERVER = 3,
     /**
      * SERVICE_MACHINES the machine service
      *

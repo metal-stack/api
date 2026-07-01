@@ -24,7 +24,7 @@ export type Project = Message<"metalstack.api.v2.Project"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Name of this project must be unique per tenant
      *
@@ -48,7 +48,7 @@ export type Project = Message<"metalstack.api.v2.Project"> & {
      *
      * @generated from field: optional string avatar_url = 6;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Project.
@@ -86,7 +86,13 @@ export type ProjectMember = Message<"metalstack.api.v2.ProjectMember"> & {
      *
      * @generated from field: google.protobuf.Timestamp created_at = 4;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
+    /**
+     * Meta for this project member
+     *
+     * @generated from field: metalstack.api.v2.Meta meta = 5;
+     */
+    meta?: Meta | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectMember.
@@ -146,13 +152,13 @@ export type ProjectInvite = Message<"metalstack.api.v2.ProjectInvite"> & {
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
-    expiresAt?: Timestamp;
+    expiresAt?: Timestamp | undefined;
     /**
      * JoinedAt the date when the member accepted this invite
      *
      * @generated from field: google.protobuf.Timestamp joined_at = 9;
      */
-    joinedAt?: Timestamp;
+    joinedAt?: Timestamp | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectInvite.
@@ -166,35 +172,53 @@ export declare const ProjectInviteSchema: GenMessage<ProjectInvite>;
  */
 export type ProjectServiceListRequest = Message<"metalstack.api.v2.ProjectServiceListRequest"> & {
     /**
-     * Id lists only projects with this id
+     * Query for projects
      *
-     * @generated from field: optional string id = 1;
+     * @generated from field: metalstack.api.v2.ProjectQuery query = 1;
      */
-    id?: string;
-    /**
-     * Name lists only projects with this name
-     *
-     * @generated from field: optional string name = 2;
-     */
-    name?: string;
-    /**
-     * Tenant lists only projects of this tenant
-     *
-     * @generated from field: optional string tenant = 3;
-     */
-    tenant?: string;
-    /**
-     * Labels lists only projects containing the given labels
-     *
-     * @generated from field: optional metalstack.api.v2.Labels labels = 4;
-     */
-    labels?: Labels;
+    query?: ProjectQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceListRequest.
  * Use `create(ProjectServiceListRequestSchema)` to create a new message.
  */
 export declare const ProjectServiceListRequestSchema: GenMessage<ProjectServiceListRequest>;
+/**
+ * ProjectQuery is used to search projects
+ *
+ * @generated from message metalstack.api.v2.ProjectQuery
+ */
+export type ProjectQuery = Message<"metalstack.api.v2.ProjectQuery"> & {
+    /**
+     * Uuid lists only projects with this uuid
+     *
+     * @generated from field: optional string uuid = 1;
+     */
+    uuid?: string | undefined;
+    /**
+     * Name lists only projects with this name
+     *
+     * @generated from field: optional string name = 2;
+     */
+    name?: string | undefined;
+    /**
+     * Tenant lists only projects of this tenant
+     *
+     * @generated from field: optional string tenant = 3;
+     */
+    tenant?: string | undefined;
+    /**
+     * Labels lists only projects containing the given labels
+     *
+     * @generated from field: optional metalstack.api.v2.Labels labels = 4;
+     */
+    labels?: Labels | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.ProjectQuery.
+ * Use `create(ProjectQuerySchema)` to create a new message.
+ */
+export declare const ProjectQuerySchema: GenMessage<ProjectQuery>;
 /**
  * ProjectServiceListResponse is the response payload to list all projects
  *
@@ -242,7 +266,7 @@ export type ProjectServiceGetResponse = Message<"metalstack.api.v2.ProjectServic
      *
      * @generated from field: metalstack.api.v2.Project project = 1;
      */
-    project?: Project;
+    project?: Project | undefined;
     /**
      * ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions
      *
@@ -285,13 +309,13 @@ export type ProjectServiceCreateRequest = Message<"metalstack.api.v2.ProjectServ
      *
      * @generated from field: optional string avatar_url = 4;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
     /**
      * Labels on the project
      *
      * @generated from field: metalstack.api.v2.Labels labels = 5;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceCreateRequest.
@@ -309,7 +333,7 @@ export type ProjectServiceCreateResponse = Message<"metalstack.api.v2.ProjectSer
      *
      * @generated from field: metalstack.api.v2.Project project = 1;
      */
-    project?: Project;
+    project?: Project | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceCreateResponse.
@@ -323,7 +347,7 @@ export declare const ProjectServiceCreateResponseSchema: GenMessage<ProjectServi
  */
 export type ProjectServiceDeleteRequest = Message<"metalstack.api.v2.ProjectServiceDeleteRequest"> & {
     /**
-     * Project is the uuid of the project to get
+     * Project is the uuid of the project to delete
      *
      * @generated from field: string project = 1;
      */
@@ -345,7 +369,7 @@ export type ProjectServiceDeleteResponse = Message<"metalstack.api.v2.ProjectSer
      *
      * @generated from field: metalstack.api.v2.Project project = 1;
      */
-    project?: Project;
+    project?: Project | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceDeleteResponse.
@@ -369,31 +393,31 @@ export type ProjectServiceUpdateRequest = Message<"metalstack.api.v2.ProjectServ
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Name of this project unique per tenant
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this project
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Avatar URL of the project
      *
      * @generated from field: optional string avatar_url = 5;
      */
-    avatarUrl?: string;
+    avatarUrl?: string | undefined;
     /**
      * Labels on this project
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 6;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceUpdateRequest.
@@ -411,7 +435,7 @@ export type ProjectServiceUpdateResponse = Message<"metalstack.api.v2.ProjectSer
      *
      * @generated from field: metalstack.api.v2.Project project = 1;
      */
-    project?: Project;
+    project?: Project | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceUpdateResponse.
@@ -443,7 +467,7 @@ export type ProjectServiceInviteRequest = Message<"metalstack.api.v2.ProjectServ
  */
 export declare const ProjectServiceInviteRequestSchema: GenMessage<ProjectServiceInviteRequest>;
 /**
- * ProjectServiceInviteRequest is the response payload to a invite member request
+ * ProjectServiceInviteResponse is the response payload to a invite member request
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteResponse
  */
@@ -455,7 +479,7 @@ export type ProjectServiceInviteResponse = Message<"metalstack.api.v2.ProjectSer
      *
      * @generated from field: metalstack.api.v2.ProjectInvite invite = 1;
      */
-    invite?: ProjectInvite;
+    invite?: ProjectInvite | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceInviteResponse.
@@ -527,7 +551,7 @@ export type ProjectServiceInviteGetResponse = Message<"metalstack.api.v2.Project
      *
      * @generated from field: metalstack.api.v2.ProjectInvite invite = 1;
      */
-    invite?: ProjectInvite;
+    invite?: ProjectInvite | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceInviteGetResponse.
@@ -637,9 +661,9 @@ export type ProjectServiceUpdateMemberResponse = Message<"metalstack.api.v2.Proj
     /**
      * ProjectMember is the updated project member
      *
-     * @generated from field: metalstack.api.v2.ProjectMember project_member = 5;
+     * @generated from field: metalstack.api.v2.ProjectMember project_member = 1;
      */
-    projectMember?: ProjectMember;
+    projectMember?: ProjectMember | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceUpdateMemberResponse.
@@ -665,7 +689,7 @@ export type ProjectServiceInviteAcceptRequest = Message<"metalstack.api.v2.Proje
  */
 export declare const ProjectServiceInviteAcceptRequestSchema: GenMessage<ProjectServiceInviteAcceptRequest>;
 /**
- * ProjectServiceInvitesListResponse is the response payload to a accept invite request
+ * ProjectServiceInviteAcceptResponse is the response payload to a accept invite request
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteAcceptResponse
  */

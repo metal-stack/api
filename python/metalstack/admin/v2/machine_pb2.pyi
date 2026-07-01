@@ -36,6 +36,18 @@ class MachineServiceListResponse(_message.Message):
     machines: _containers.RepeatedCompositeFieldContainer[_machine_pb2.Machine]
     def __init__(self, machines: _Optional[_Iterable[_Union[_machine_pb2.Machine, _Mapping]]] = ...) -> None: ...
 
+class MachineServiceDeleteRequest(_message.Message):
+    __slots__ = ("uuid",)
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    def __init__(self, uuid: _Optional[str] = ...) -> None: ...
+
+class MachineServiceDeleteResponse(_message.Message):
+    __slots__ = ("machine",)
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    machine: _machine_pb2.Machine
+    def __init__(self, machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ...) -> None: ...
+
 class MachineServiceBMCCommandRequest(_message.Message):
     __slots__ = ("uuid", "command")
     UUID_FIELD_NUMBER: _ClassVar[int]
@@ -96,3 +108,31 @@ class MachineServiceConsolePasswordResponse(_message.Message):
     uuid: str
     password: str
     def __init__(self, uuid: _Optional[str] = ..., password: _Optional[str] = ...) -> None: ...
+
+class MachineServiceSetStateRequest(_message.Message):
+    __slots__ = ("uuid", "state", "description")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    state: _machine_pb2.MachineState
+    description: str
+    def __init__(self, uuid: _Optional[str] = ..., state: _Optional[_Union[_machine_pb2.MachineState, str]] = ..., description: _Optional[str] = ...) -> None: ...
+
+class MachineServiceSetStateResponse(_message.Message):
+    __slots__ = ("machine",)
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    machine: _machine_pb2.Machine
+    def __init__(self, machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ...) -> None: ...
+
+class MachineServiceIssuesRequest(_message.Message):
+    __slots__ = ("query",)
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: _machine_pb2.MachineIssuesQuery
+    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineIssuesQuery, _Mapping]] = ...) -> None: ...
+
+class MachineServiceIssuesResponse(_message.Message):
+    __slots__ = ("issues",)
+    ISSUES_FIELD_NUMBER: _ClassVar[int]
+    issues: _containers.RepeatedCompositeFieldContainer[_machine_pb2.MachineIssues]
+    def __init__(self, issues: _Optional[_Iterable[_Union[_machine_pb2.MachineIssues, _Mapping]]] = ...) -> None: ...

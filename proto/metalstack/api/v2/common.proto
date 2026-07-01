@@ -72,7 +72,7 @@ enum Visibility {
   // VISIBILITY_PUBLIC specifies that this service is accessible without authentication
   VISIBILITY_PUBLIC = 1;
   // VISIBILITY_SELF enable call this endpoint from the authenticated user only
-  VISIBILITY_SELF = 3;
+  VISIBILITY_SELF = 2;
 }
 
 // Auditing option specified per service method
@@ -101,7 +101,7 @@ extend google.protobuf.MethodOptions {
   Auditing auditing = 51004;
   // InfraRoles are used to define which infra role a microservice must provide to call this method
   repeated InfraRole infra_roles = 51005;
-  // MachineRole are used to define which infra role a microservice must provide to call this method
+  // MachineRole are used to define which machine role a microservice must provide to call this method
   repeated MachineRole machine_roles = 51006;
 }
 
@@ -153,17 +153,37 @@ message Meta {
   google.protobuf.Timestamp updated_at = 3;
   // Generation identifies how often this entity was modified since creation.
   uint64 generation = 4;
+  // DeletionTaskID is an optional id that is set to the meta after triggering the deletion.
+  // This can be used by admins to track the deletion progress if necessary.
+  optional string deletion_task_id = 5;
 }
 
 // UpdateLabels is a message to update labels
 message UpdateLabels {
+  // strategy defines the label update strategy
+  oneof strategy {
+    // ensure at least one match is specified
+    option (buf.validate.oneof).required = true;
+
+    // UpdateLabelsReplace replaces existing labels with the given ones
+    UpdateLabelsReplace replace = 1;
+    // UpdateLabelsIndividually adds, updates or remove given labels without modifying others
+    UpdateLabelsIndividually inidivual = 2;
+  }
+}
+
+// UpdateLabelsReplace replaces existing labels with the given ones
+message UpdateLabelsReplace {
+  // Update labels. Existing labels will be overwritten
+  Labels replace = 1;
+}
+
+// UpdateLabelsIndividually adds, updates or remove given labels without modifying others
+message UpdateLabelsIndividually {
   // Update labels. New ones will be added, existing ones overwritten
   Labels update = 1;
   // Remove labels by key
   repeated string remove = 2 [(buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true];
-  // RemoveAll can be used to clear all existing labels and just apply the labels given by the update field
-  // do not send remove labels in this case
-  bool remove_all = 3;
 }
 
 // UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled

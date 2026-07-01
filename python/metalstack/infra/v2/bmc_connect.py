@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -27,7 +29,7 @@ class BMCService(Protocol):
 
 
 class BMCServiceASGIApplication(ConnectASGIApplication[BMCService]):
-    def __init__(self, service: BMCService | AsyncGenerator[BMCService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: BMCService | AsyncGenerator[BMCService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -64,6 +66,8 @@ class BMCServiceASGIApplication(ConnectASGIApplication[BMCService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -134,6 +138,9 @@ class BMCServiceClient(ConnectClient):
         )
 
 
+
+
+
 class BMCServiceSync(Protocol):
     def update_b_m_c_info(self, request: metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_bmc__pb2.UpdateBMCInfoResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
@@ -144,7 +151,7 @@ class BMCServiceSync(Protocol):
 
 
 class BMCServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: BMCServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: BMCServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.infra.v2.BMCService/UpdateBMCInfo": EndpointSync.unary(
@@ -180,6 +187,8 @@ class BMCServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -248,3 +257,5 @@ class BMCServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

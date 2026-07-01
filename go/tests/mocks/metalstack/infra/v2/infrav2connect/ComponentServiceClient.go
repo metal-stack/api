@@ -74,7 +74,7 @@ type ComponentServiceClient_Ping_Call struct {
 // Ping is a helper method to define mock.On call
 //   - context1 context.Context
 //   - componentServicePingRequest *infrav2.ComponentServicePingRequest
-func (_e *ComponentServiceClient_Expecter) Ping(context1 interface{}, componentServicePingRequest interface{}) *ComponentServiceClient_Ping_Call {
+func (_e *ComponentServiceClient_Expecter) Ping(context1 any, componentServicePingRequest any) *ComponentServiceClient_Ping_Call {
 	return &ComponentServiceClient_Ping_Call{Call: _e.mock.On("Ping", context1, componentServicePingRequest)}
 }
 

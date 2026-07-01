@@ -79,13 +79,13 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
      *
      * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 4;
      */
-    adminRole?: AdminRole;
+    adminRole?: AdminRole | undefined;
     /**
      * InfraRole defines the infrastructure role of the token owner
      *
      * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 5;
      */
-    infraRole?: InfraRole;
+    infraRole?: InfraRole | undefined;
     /**
      * MachineRoles defines the machine roles of the token owner
      *

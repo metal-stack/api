@@ -18,11 +18,6 @@ service FilesystemService {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Matches a filesystem to a size and image or machine.
-  rpc Match(FilesystemServiceMatchRequest) returns (FilesystemServiceMatchResponse) {
-    option (visibility) = VISIBILITY_SELF;
-    option (auditing) = AUDITING_EXCLUDED;
-  }
 }
 
 // FilesystemServiceGetRequest is the request payload for a filesystem get request
@@ -47,40 +42,6 @@ message FilesystemServiceGetResponse {
 message FilesystemServiceListResponse {
   // FilesystemLayouts the filesystemlayouts
   repeated FilesystemLayout filesystem_layouts = 1;
-}
-
-// FilesystemServiceMatchRequest
-message FilesystemServiceMatchRequest {
-  // Match either size and image to a filesystemlayout
-  // or if a machine matches to a filesystemlayout
-  oneof match {
-    // SizeAndImage
-    MatchImageAndSize size_and_image = 1;
-    // MachineAndFilesystemlayout
-    MatchMachine machine_and_filesystemlayout = 2;
-  }
-}
-
-// MatchImageAndSize
-message MatchImageAndSize {
-  // Size, machine size to try
-  string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Image machine image to try
-  string image = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-}
-
-// MatchMachine
-message MatchMachine {
-  // Machine to check
-  string machine = 1 [(buf.validate.field).string.uuid = true];
-  // FilesystemLayout to check
-  string filesystem_layout = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-}
-
-// FilesystemServiceMatchResponse
-message FilesystemServiceMatchResponse {
-  // FilesystemLayout the filesystemlayout
-  FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemLayout
@@ -110,8 +71,13 @@ message FilesystemLayout {
 // FilesystemLayoutConstraints
 message FilesystemLayoutConstraints {
   // Sizes list of sizes this layout applies to
+  // this could either be a concrete size, or a asterisk to match all sizes
   repeated string sizes = 1;
-  // Images list of images this layout applies to
+  // Images list of images this layout applies to in the following form
+  // key must be the first part of available images, e.g. the name of the image
+  // value must be a semver match expression with the constraint and the version separated by space
+  // this would match all debian images which are greater or equal 12.0
+  // "debian":">= 12.0"
   map<string, string> images = 2;
 }
 
@@ -134,41 +100,31 @@ message Filesystem {
     max_len: 4096
   }];
   // Label optional label for this this filesystem
-  optional string label = 6 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  optional string label = 6 [
+    (buf.validate.field).string.(metalstack.api.v2.is_name) = true,
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // MountOptions the options to use to mount this filesystem
   repeated string mount_options = 7 [(buf.validate.field).repeated = {
     unique: true
     max_items: 32
-    items: {
-      string: {
-        min_len: 1
-        max_len: 128
-      }
-    }
+    items: {string: {[metalstack.api.v2.is_option]: true}}
   }];
   // CreateOptions the options to use to create (mkfs) this filesystem
   repeated string create_options = 8 [(buf.validate.field).repeated = {
     unique: true
     max_items: 32
-    items: {
-      string: {
-        min_len: 1
-        max_len: 128
-      }
-    }
+    items: {string: {[metalstack.api.v2.is_option]: true}}
   }];
 }
 
 // Disk
 message Disk {
   // Device the device to create the partitions
-  string device = 1 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string device = 1 [
+    (buf.validate.field).string.(metalstack.api.v2.is_name) = true,
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // Partitions list of partitions to create on this disk
   repeated DiskPartition partitions = 2;
 }
@@ -176,9 +132,18 @@ message Disk {
 // Raid
 message Raid {
   // ArrayName the name of the resulting array device
-  string array_name = 1;
+  string array_name = 1 [
+    (buf.validate.field).string.(metalstack.api.v2.is_name) = true,
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // Devices list of devices to form the raid array from
-  repeated string devices = 2;
+  repeated string devices = 2 [
+    (buf.validate.field).repeated = {
+      max_items: 128
+      items: {string: {[metalstack.api.v2.is_name]: true}}
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
   // Level raid level to create, should be 0 or 1
   RaidLevel level = 3 [
     (buf.validate.field).enum.defined_only = true,
@@ -188,12 +153,7 @@ message Raid {
   repeated string create_options = 4 [(buf.validate.field).repeated = {
     unique: true
     max_items: 32
-    items: {
-      string: {
-        min_len: 1
-        max_len: 128
-      }
-    }
+    items: {string: {[metalstack.api.v2.is_option]: true}}
   }];
   // Spares number of spares for the raid array
   int32 spares = 5;
@@ -204,7 +164,10 @@ message DiskPartition {
   // Number partition number, will be appended to partitionprefix to create the final devicename
   uint32 number = 1;
   // optional label for this this partition
-  optional string label = 2;
+  optional string label = 2 [
+    (buf.validate.field).string.(metalstack.api.v2.is_name) = true,
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+  ];
   // Size size in mebibytes (MiB) of this partition"
   uint64 size = 3;
   // GPTType the gpt partition table type of this partition
@@ -219,9 +182,21 @@ message VolumeGroup {
   // Name the name of the resulting volume group
   string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Devices list of devices to form the volume group from
-  repeated string devices = 2;
+  repeated string devices = 2 [
+    (buf.validate.field).repeated = {
+      max_items: 128
+      items: {string: {[metalstack.api.v2.is_name]: true}}
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
   // Tags list of tags to add to the volume group
-  repeated string tags = 3;
+  repeated string tags = 3 [
+    (buf.validate.field).repeated = {
+      max_items: 128
+      items: {string: {[metalstack.api.v2.is_name]: true}}
+    },
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
 }
 
 // LogicalVolume
@@ -229,10 +204,7 @@ message LogicalVolume {
   // Name the name of the logical volume
   string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // VolumeGroup the name of the volume group where to create the logical volume onto
-  string volume_group = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 128
-  }];
+  string volume_group = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Size size in mebibytes (MiB) of this volume
   uint64 size = 3;
   // LVMType the type of this logical volume can be either linear|striped|raid1
@@ -288,7 +260,7 @@ enum RaidLevel {
   // RAID_LEVEL_UNSPECIFIED is not specified
   RAID_LEVEL_UNSPECIFIED = 0;
   // RAID_LEVEL_0 is a stripe of two or more disks
-  RAID_LEVEL_0 = 1;
+  RAID_LEVEL_0 = 1 [(enum_string_value) = "0"];
   // RAID_LEVEL_1 is a mirror of two disks
-  RAID_LEVEL_1 = 2;
+  RAID_LEVEL_1 = 2 [(enum_string_value) = "1"];
 }

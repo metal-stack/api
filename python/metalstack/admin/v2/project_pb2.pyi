@@ -11,12 +11,10 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ProjectServiceListRequest(_message.Message):
-    __slots__ = ("tenant", "labels")
-    TENANT_FIELD_NUMBER: _ClassVar[int]
-    LABELS_FIELD_NUMBER: _ClassVar[int]
-    tenant: str
-    labels: _common_pb2.Labels
-    def __init__(self, tenant: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
+    __slots__ = ("query",)
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: _project_pb2.ProjectQuery
+    def __init__(self, query: _Optional[_Union[_project_pb2.ProjectQuery, _Mapping]] = ...) -> None: ...
 
 class ProjectServiceListResponse(_message.Message):
     __slots__ = ("projects",)

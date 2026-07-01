@@ -74,7 +74,7 @@ type SwitchServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServiceGetRequest *infrav2.SwitchServiceGetRequest
-func (_e *SwitchServiceHandler_Expecter) Get(context1 interface{}, switchServiceGetRequest interface{}) *SwitchServiceHandler_Get_Call {
+func (_e *SwitchServiceHandler_Expecter) Get(context1 any, switchServiceGetRequest any) *SwitchServiceHandler_Get_Call {
 	return &SwitchServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, switchServiceGetRequest)}
 }
 
@@ -142,7 +142,7 @@ type SwitchServiceHandler_Heartbeat_Call struct {
 // Heartbeat is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServiceHeartbeatRequest *infrav2.SwitchServiceHeartbeatRequest
-func (_e *SwitchServiceHandler_Expecter) Heartbeat(context1 interface{}, switchServiceHeartbeatRequest interface{}) *SwitchServiceHandler_Heartbeat_Call {
+func (_e *SwitchServiceHandler_Expecter) Heartbeat(context1 any, switchServiceHeartbeatRequest any) *SwitchServiceHandler_Heartbeat_Call {
 	return &SwitchServiceHandler_Heartbeat_Call{Call: _e.mock.On("Heartbeat", context1, switchServiceHeartbeatRequest)}
 }
 
@@ -210,7 +210,7 @@ type SwitchServiceHandler_Register_Call struct {
 // Register is a helper method to define mock.On call
 //   - context1 context.Context
 //   - switchServiceRegisterRequest *infrav2.SwitchServiceRegisterRequest
-func (_e *SwitchServiceHandler_Expecter) Register(context1 interface{}, switchServiceRegisterRequest interface{}) *SwitchServiceHandler_Register_Call {
+func (_e *SwitchServiceHandler_Expecter) Register(context1 any, switchServiceRegisterRequest any) *SwitchServiceHandler_Register_Call {
 	return &SwitchServiceHandler_Register_Call{Call: _e.mock.On("Register", context1, switchServiceRegisterRequest)}
 }
 

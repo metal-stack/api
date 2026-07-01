@@ -500,7 +500,7 @@ func (x *NetworkServiceDeleteRequest) GetId() string {
 type NetworkServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Query specifies which networks to return
-	Query         *v2.NetworkQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
+	Query         *v2.NetworkQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -792,7 +792,7 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x1bNetworkServiceDeleteRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"R\n" +
 	"\x19NetworkServiceListRequest\x125\n" +
-	"\x05query\x18\x02 \x01(\v2\x1f.metalstack.api.v2.NetworkQueryR\x05query\"T\n" +
+	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.NetworkQueryR\x05query\"T\n" +
 	"\x1cNetworkServiceCreateResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"T\n" +
 	"\x1cNetworkServiceUpdateResponse\x124\n" +

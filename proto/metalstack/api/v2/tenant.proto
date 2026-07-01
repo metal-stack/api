@@ -88,17 +88,17 @@ service TenantService {
 // Tenant is a customer of the platform
 message Tenant {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Meta for this tenant
   Meta meta = 2;
   // Name of the tenant
   string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Email of the tenant
-  string email = 4;
+  string email = 4 [(buf.validate.field).string.email = true];
   // Description of this tenant
   string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // AvatarUrl of the tenant
-  string avatar_url = 6;
+  string avatar_url = 6 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // CreatedBy stores who created this tenant
   string created_by = 7;
 }
@@ -106,13 +106,15 @@ message Tenant {
 // TenantMember defines a user that participates at a tenant
 message TenantMember {
   // Id is the user id of the member
-  string id = 1;
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Role is the role of the member
   TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
   // Projects for the projects in which a user is a direct member
   repeated string projects = 3;
   // CreatedAt the date when the member was added to the tenant
   google.protobuf.Timestamp created_at = 4;
+  // Meta for this tenant member
+  Meta meta = 5;
 }
 
 // TenantInvite defines invite to tenant
@@ -139,12 +141,20 @@ message TenantInvite {
 
 // TenantServiceListRequest is the request payload of the tenant list request
 message TenantServiceListRequest {
-  // Id filters tenants by id
-  optional string id = 1;
+  // Query for tenants
+  TenantQuery query = 1;
+}
+
+// TenantQuery is used to search tenants
+message TenantQuery {
+  // Id filters tenants by login
+  optional string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Name filters tenants by name
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Labels lists only projects containing the given labels
   optional Labels labels = 3;
+  // Paging details for the list request
+  Paging paging = 4;
 }
 
 // TenantServiceGetRequest is the request payload of the tenant get request
@@ -162,7 +172,7 @@ message TenantServiceCreateRequest {
   // Email of the tenant, if not set will be inherited from the creator
   optional string email = 3 [(buf.validate.field).string.email = true];
   // AvatarUrl of the tenant
-  optional string avatar_url = 4;
+  optional string avatar_url = 4 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // Labels on the tenant
   Labels labels = 5;
 }
@@ -170,7 +180,7 @@ message TenantServiceCreateRequest {
 // TenantServiceUpdateRequest is the request payload of the tenant update request
 message TenantServiceUpdateRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of the tenant
@@ -180,7 +190,7 @@ message TenantServiceUpdateRequest {
   // Description of this tenant
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // AvatarUrl of the tenant
-  optional string avatar_url = 6;
+  optional string avatar_url = 6 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // Labels on the tenant
   optional UpdateLabels labels = 7;
 }
@@ -188,7 +198,7 @@ message TenantServiceUpdateRequest {
 // TenantServiceDeleteRequest is the request payload of the tenant delete request
 message TenantServiceDeleteRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
 // TenantServiceGetResponse is the response payload of the tenant get request
@@ -226,7 +236,7 @@ message TenantServiceDeleteResponse {
 // TenantServiceInviteRequest is used to invite a member to a tenant
 message TenantServiceInviteRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Role of this user in this tenant
   TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
 }
@@ -242,7 +252,7 @@ message TenantServiceInviteResponse {
 // TenantServiceInvitesListRequest is the request payload to a list invites request
 message TenantServiceInvitesListRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
 // TenantServiceInvitesListResponse is the response payload to a list invites request
@@ -266,7 +276,7 @@ message TenantServiceInviteGetResponse {
 // TenantServiceRemoveMemberRequest is used to remove a member from a tenant
 message TenantServiceRemoveMemberRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Member is the id of the member to remove from this tenant
   string member = 2;
 }
@@ -274,7 +284,7 @@ message TenantServiceRemoveMemberRequest {
 // TenantServiceLeaveTenantRequest is used to leave a tenant
 message TenantServiceLeaveRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
 // TenantServiceLeaveTenantResponse is the response payload to a leave tenant request
@@ -289,7 +299,7 @@ message TenantServiceInviteAcceptRequest {
   string secret = 1;
 }
 
-// TenantServiceInvitesListResponse is the response payload to a accept invite request
+// TenantServiceInviteAcceptResponse is the response payload to a accept invite request
 message TenantServiceInviteAcceptResponse {
   // Tenant ID of the joined tenant
   string tenant = 1;
@@ -300,7 +310,7 @@ message TenantServiceInviteAcceptResponse {
 // TenantServiceInviteDeleteRequest is the request payload to a delete invite
 message TenantServiceInviteDeleteRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Secret of the invite to delete
   string secret = 2;
 }
@@ -311,9 +321,9 @@ message TenantServiceInviteDeleteResponse {}
 // TenantServiceUpdateMemberRequest is used to update a member from a tenant
 message TenantServiceUpdateMemberRequest {
   // Login of the tenant
-  string login = 1;
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Member is the id of the member to update in this tenant
-  string member = 2;
+  string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Role of this user in this tenant
   TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }

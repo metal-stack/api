@@ -87,6 +87,38 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
 	{
+		ExtendedType:  (*validate.StringRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80048959,
+		Name:          "metalstack.api.v2.is_user",
+		Tag:           "varint,80048959,opt,name=is_user",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
+		ExtendedType:  (*validate.StringRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80048960,
+		Name:          "metalstack.api.v2.is_option",
+		Tag:           "varint,80048960,opt,name=is_option",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
+		ExtendedType:  (*validate.StringRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80048961,
+		Name:          "metalstack.api.v2.is_key",
+		Tag:           "varint,80048961,opt,name=is_key",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
+		ExtendedType:  (*validate.StringRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80048962,
+		Name:          "metalstack.api.v2.is_tenant_login",
+		Tag:           "varint,80048962,opt,name=is_tenant_login",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
 		ExtendedType:  (*validate.RepeatedRules)(nil),
 		ExtensionType: (*bool)(nil),
 		Field:         80058951,
@@ -138,7 +170,7 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 
 // Extension fields to validate.StringRules.
 var (
-	// Macaddress returns true if the given string is a valid macadress
+	// Macaddress returns true if the given string is a valid macaddress
 	//
 	// optional bool macaddress = 80048951;
 	E_Macaddress = &file_metalstack_api_v2_predefined_rules_proto_extTypes[0]
@@ -170,6 +202,22 @@ var (
 	//
 	// optional bool trimmed = 80048958;
 	E_Trimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[7]
+	// IsUser returns true if name field satisfies our requirements
+	//
+	// optional bool is_user = 80048959;
+	E_IsUser = &file_metalstack_api_v2_predefined_rules_proto_extTypes[8]
+	// IsOption returns true if name field satisfies our requirements
+	//
+	// optional bool is_option = 80048960;
+	E_IsOption = &file_metalstack_api_v2_predefined_rules_proto_extTypes[9]
+	// IsKey returns true if name field satisfies our requirements
+	//
+	// optional bool is_key = 80048961;
+	E_IsKey = &file_metalstack_api_v2_predefined_rules_proto_extTypes[10]
+	// IsTenantLogin returns true if name field satisfies our requirements
+	//
+	// optional bool is_tenant_login = 80048962;
+	E_IsTenantLogin = &file_metalstack_api_v2_predefined_rules_proto_extTypes[11]
 )
 
 // Extension fields to validate.RepeatedRules.
@@ -177,19 +225,19 @@ var (
 	// Prefixes validates if a slice of prefixes in string form are valid
 	//
 	// optional bool prefixes = 80058951;
-	E_Prefixes = &file_metalstack_api_v2_predefined_rules_proto_extTypes[8]
+	E_Prefixes = &file_metalstack_api_v2_predefined_rules_proto_extTypes[12]
 	// Ips validates if a slice of ips in string form are valid
 	//
 	// optional bool ips = 80058952;
-	E_Ips = &file_metalstack_api_v2_predefined_rules_proto_extTypes[9]
+	E_Ips = &file_metalstack_api_v2_predefined_rules_proto_extTypes[13]
 	// AreHostAndPort validates if a slice of strings are all in the form of <ip | host>:<port>
 	//
 	// optional bool are_host_and_port = 80058953;
-	E_AreHostAndPort = &file_metalstack_api_v2_predefined_rules_proto_extTypes[10]
+	E_AreHostAndPort = &file_metalstack_api_v2_predefined_rules_proto_extTypes[14]
 	// All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end
 	//
 	// optional bool all_trimmed = 80058954;
-	E_AllTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[11]
+	E_AllTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[15]
 )
 
 // Extension fields to validate.MapRules.
@@ -197,11 +245,11 @@ var (
 	// Keys and Values trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
 	//
 	// optional bool keys_and_values_trimmed = 80068951;
-	E_KeysAndValuesTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[12]
+	E_KeysAndValuesTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[16]
 	// Keys trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
 	//
 	// optional bool keys_trimmed = 80068952;
-	E_KeysTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[13]
+	E_KeysTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[17]
 )
 
 var File_metalstack_api_v2_predefined_rules_proto protoreflect.FileDescriptor
@@ -235,7 +283,19 @@ const file_metalstack_api_v2_predefined_rules_proto_rawDesc = "" +
 	"\rvalid_address\x12&must be a valid IP address or hostname\x1a this.isIp() || this.isHostname()R\x0eisIpOrHostname:\x9d\x01\n" +
 	"\atrimmed\x12\x19.buf.validate.StringRules\x18\xbe\xe6\x95& \x01(\bBe\xc2Hb\n" +
 	"`\n" +
-	"\x0estring.trimmed\x12+value must not start or end with whitespace\x1a!this.trim().size() == this.size()R\atrimmed:\x8f\x01\n" +
+	"\x0estring.trimmed\x12+value must not start or end with whitespace\x1a!this.trim().size() == this.size()R\atrimmed:\x99\x01\n" +
+	"\ais_user\x12\x19.buf.validate.StringRules\x18\xbf\xe6\x95& \x01(\bBb\xc2H_\n" +
+	"]\n" +
+	"\x0estring.is_user\x12#must be within 2 and 512 characters\x1a&this.size() >= 2 && this.size() <= 512R\x06isUser:\x9f\x01\n" +
+	"\tis_option\x12\x19.buf.validate.StringRules\x18\xc0\xe6\x95& \x01(\bBd\xc2Ha\n" +
+	"_\n" +
+	"\x10string.is_option\x12#must be within 1 and 128 characters\x1a&this.size() >= 1 && this.size() <= 128R\bisOption:\x98\x01\n" +
+	"\x06is_key\x12\x19.buf.validate.StringRules\x18\xc1\xe6\x95& \x01(\bBc\xc2H`\n" +
+	"^\n" +
+	"\rstring.is_key\x12$must be within 1 and 8192 characters\x1a'this.size() >= 1 && this.size() <= 8192R\x05isKey:\xb0\x01\n" +
+	"\x0fis_tenant_login\x12\x19.buf.validate.StringRules\x18\xc2\xe6\x95& \x01(\bBj\xc2Hg\n" +
+	"e\n" +
+	"\x16string.is_tenant_login\x12#must be within 2 and 256 characters\x1a&this.size() >= 2 && this.size() <= 256R\risTenantLogin:\x8f\x01\n" +
 	"\bprefixes\x12\x1b.buf.validate.RepeatedRules\x18Ǵ\x96& \x01(\bBS\xc2HP\n" +
 	"N\n" +
 	"\x11repeated.prefixes\x12\x1cgiven prefixes must be valid\x1a\x1bthis.all(m, m.isIpPrefix())R\bprefixes:u\n" +
@@ -271,16 +331,20 @@ var file_metalstack_api_v2_predefined_rules_proto_depIdxs = []int32{
 	0,  // 5: metalstack.api.v2.is_uri:extendee -> buf.validate.StringRules
 	0,  // 6: metalstack.api.v2.is_ip_or_hostname:extendee -> buf.validate.StringRules
 	0,  // 7: metalstack.api.v2.trimmed:extendee -> buf.validate.StringRules
-	1,  // 8: metalstack.api.v2.prefixes:extendee -> buf.validate.RepeatedRules
-	1,  // 9: metalstack.api.v2.ips:extendee -> buf.validate.RepeatedRules
-	1,  // 10: metalstack.api.v2.are_host_and_port:extendee -> buf.validate.RepeatedRules
-	1,  // 11: metalstack.api.v2.all_trimmed:extendee -> buf.validate.RepeatedRules
-	2,  // 12: metalstack.api.v2.keys_and_values_trimmed:extendee -> buf.validate.MapRules
-	2,  // 13: metalstack.api.v2.keys_trimmed:extendee -> buf.validate.MapRules
-	14, // [14:14] is the sub-list for method output_type
-	14, // [14:14] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	0,  // [0:14] is the sub-list for extension extendee
+	0,  // 8: metalstack.api.v2.is_user:extendee -> buf.validate.StringRules
+	0,  // 9: metalstack.api.v2.is_option:extendee -> buf.validate.StringRules
+	0,  // 10: metalstack.api.v2.is_key:extendee -> buf.validate.StringRules
+	0,  // 11: metalstack.api.v2.is_tenant_login:extendee -> buf.validate.StringRules
+	1,  // 12: metalstack.api.v2.prefixes:extendee -> buf.validate.RepeatedRules
+	1,  // 13: metalstack.api.v2.ips:extendee -> buf.validate.RepeatedRules
+	1,  // 14: metalstack.api.v2.are_host_and_port:extendee -> buf.validate.RepeatedRules
+	1,  // 15: metalstack.api.v2.all_trimmed:extendee -> buf.validate.RepeatedRules
+	2,  // 16: metalstack.api.v2.keys_and_values_trimmed:extendee -> buf.validate.MapRules
+	2,  // 17: metalstack.api.v2.keys_trimmed:extendee -> buf.validate.MapRules
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	0,  // [0:18] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
 }
 
@@ -296,7 +360,7 @@ func file_metalstack_api_v2_predefined_rules_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_predefined_rules_proto_rawDesc), len(file_metalstack_api_v2_predefined_rules_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   0,
-			NumExtensions: 14,
+			NumExtensions: 18,
 			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_predefined_rules_proto_goTypes,

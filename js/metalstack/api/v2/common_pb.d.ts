@@ -17,13 +17,13 @@ export type Paging = Message<"metalstack.api.v2.Paging"> & {
      *
      * @generated from field: optional uint64 page = 1;
      */
-    page?: bigint;
+    page?: bigint | undefined;
     /**
      * Count is the number of results returned per page, if not given server side defaults apply
      *
      * @generated from field: optional uint64 count = 2;
      */
-    count?: bigint;
+    count?: bigint | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Paging.
@@ -61,26 +61,33 @@ export type Meta = Message<"metalstack.api.v2.Meta"> & {
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 1;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
     /**
      * CreatedAt is the date when this entity was created
      *
      * @generated from field: google.protobuf.Timestamp created_at = 2;
      */
-    createdAt?: Timestamp;
+    createdAt?: Timestamp | undefined;
     /**
      * UpdatedAt is the date when this entity was updated
      * must be part of the update request to ensure optimistic locking
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 3;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
      * Generation identifies how often this entity was modified since creation.
      *
      * @generated from field: uint64 generation = 4;
      */
     generation: bigint;
+    /**
+     * DeletionTaskID is an optional id that is set to the meta after triggering the deletion.
+     * This can be used by admins to track the deletion progress if necessary.
+     *
+     * @generated from field: optional string deletion_task_id = 5;
+     */
+    deletionTaskId?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Meta.
@@ -94,30 +101,78 @@ export declare const MetaSchema: GenMessage<Meta>;
  */
 export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
     /**
-     * Update labels. New ones will be added, existing ones overwritten
+     * strategy defines the label update strategy
      *
-     * @generated from field: metalstack.api.v2.Labels update = 1;
+     * @generated from oneof metalstack.api.v2.UpdateLabels.strategy
      */
-    update?: Labels;
-    /**
-     * Remove labels by key
-     *
-     * @generated from field: repeated string remove = 2;
-     */
-    remove: string[];
-    /**
-     * RemoveAll can be used to clear all existing labels and just apply the labels given by the update field
-     * do not send remove labels in this case
-     *
-     * @generated from field: bool remove_all = 3;
-     */
-    removeAll: boolean;
+    strategy: {
+        /**
+         * UpdateLabelsReplace replaces existing labels with the given ones
+         *
+         * @generated from field: metalstack.api.v2.UpdateLabelsReplace replace = 1;
+         */
+        value: UpdateLabelsReplace;
+        case: "replace";
+    } | {
+        /**
+         * UpdateLabelsIndividually adds, updates or remove given labels without modifying others
+         *
+         * @generated from field: metalstack.api.v2.UpdateLabelsIndividually inidivual = 2;
+         */
+        value: UpdateLabelsIndividually;
+        case: "inidivual";
+    } | {
+        case: undefined;
+        value?: undefined;
+    };
 };
 /**
  * Describes the message metalstack.api.v2.UpdateLabels.
  * Use `create(UpdateLabelsSchema)` to create a new message.
  */
 export declare const UpdateLabelsSchema: GenMessage<UpdateLabels>;
+/**
+ * UpdateLabelsReplace replaces existing labels with the given ones
+ *
+ * @generated from message metalstack.api.v2.UpdateLabelsReplace
+ */
+export type UpdateLabelsReplace = Message<"metalstack.api.v2.UpdateLabelsReplace"> & {
+    /**
+     * Update labels. Existing labels will be overwritten
+     *
+     * @generated from field: metalstack.api.v2.Labels replace = 1;
+     */
+    replace?: Labels | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.UpdateLabelsReplace.
+ * Use `create(UpdateLabelsReplaceSchema)` to create a new message.
+ */
+export declare const UpdateLabelsReplaceSchema: GenMessage<UpdateLabelsReplace>;
+/**
+ * UpdateLabelsIndividually adds, updates or remove given labels without modifying others
+ *
+ * @generated from message metalstack.api.v2.UpdateLabelsIndividually
+ */
+export type UpdateLabelsIndividually = Message<"metalstack.api.v2.UpdateLabelsIndividually"> & {
+    /**
+     * Update labels. New ones will be added, existing ones overwritten
+     *
+     * @generated from field: metalstack.api.v2.Labels update = 1;
+     */
+    update?: Labels | undefined;
+    /**
+     * Remove labels by key
+     *
+     * @generated from field: repeated string remove = 2;
+     */
+    remove: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.UpdateLabelsIndividually.
+ * Use `create(UpdateLabelsIndividuallySchema)` to create a new message.
+ */
+export declare const UpdateLabelsIndividuallySchema: GenMessage<UpdateLabelsIndividually>;
 /**
  * UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled
  *
@@ -130,7 +185,7 @@ export type UpdateMeta = Message<"metalstack.api.v2.UpdateMeta"> & {
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 1;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
      * LockingStrategy to be used for this update request
      *
@@ -329,9 +384,9 @@ export declare enum Visibility {
     /**
      * VISIBILITY_SELF enable call this endpoint from the authenticated user only
      *
-     * @generated from enum value: VISIBILITY_SELF = 3;
+     * @generated from enum value: VISIBILITY_SELF = 2;
      */
-    SELF = 3
+    SELF = 2
 }
 /**
  * Describes the enum metalstack.api.v2.Visibility.
@@ -436,7 +491,7 @@ export declare const auditing: GenExtension<MethodOptions, Auditing>;
  */
 export declare const infra_roles: GenExtension<MethodOptions, InfraRole[]>;
 /**
- * MachineRole are used to define which infra role a microservice must provide to call this method
+ * MachineRole are used to define which machine role a microservice must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.MachineRole machine_roles = 51006;
  */

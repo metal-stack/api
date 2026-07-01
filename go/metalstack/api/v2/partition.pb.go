@@ -27,7 +27,7 @@ type Partition struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of this partition
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Meta for this ip
+	// Meta for this partition
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	// Description of this partition
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
@@ -429,7 +429,7 @@ func (x *PartitionServiceListRequest) GetQuery() *PartitionQuery {
 // PartitionServiceGetResponse is the response payload for a partition get request
 type PartitionServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ip the partition
+	// Partition is the partition
 	Partition     *Partition `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -475,7 +475,7 @@ func (x *PartitionServiceGetResponse) GetPartition() *Partition {
 // PartitionServiceListResponse is the response payload for a partition list request
 type PartitionServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ips the partitions
+	// Partitions are the partitions
 	Partitions    []*Partition `protobuf:"bytes,1,rep,name=partitions,proto3" json:"partitions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -538,12 +538,12 @@ const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x00R\x02id\x88\x01\x01\x126\n" +
 	"\x06labels\x18\x02 \x01(\v2\x19.metalstack.api.v2.LabelsH\x01R\x06labels\x88\x01\x01B\x05\n" +
 	"\x03_idB\t\n" +
-	"\a_labels\"\x94\x01\n" +
+	"\a_labels\"\x9e\x01\n" +
 	"\x1aPartitionBootConfiguration\x12(\n" +
 	"\timage_url\x18\x01 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01R\bimageUrl\x12*\n" +
 	"\n" +
-	"kernel_url\x18\x02 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01R\tkernelUrl\x12 \n" +
-	"\vcommandline\x18\x03 \x01(\tR\vcommandline\"$\n" +
+	"kernel_url\x18\x02 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01R\tkernelUrl\x12*\n" +
+	"\vcommandline\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80 R\vcommandline\"$\n" +
 	"\tDNSServer\x12\x17\n" +
 	"\x02ip\x18\x01 \x01(\tB\a\xbaH\x04r\x02p\x01R\x02ip\"2\n" +
 	"\tNTPServer\x12%\n" +
@@ -559,8 +559,8 @@ const file_metalstack_api_v2_partition_proto_rawDesc = "" +
 	"partitions\x18\x01 \x03(\v2\x1c.metalstack.api.v2.PartitionR\n" +
 	"partitions2\xf5\x01\n" +
 	"\x10PartitionService\x12n\n" +
-	"\x03Get\x12-.metalstack.api.v2.PartitionServiceGetRequest\x1a..metalstack.api.v2.PartitionServiceGetResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02\x12q\n" +
-	"\x04List\x12..metalstack.api.v2.PartitionServiceListRequest\x1a/.metalstack.api.v2.PartitionServiceListResponse\"\b\xd8\xf3\x18\x03\xe0\xf3\x18\x02B\xc4\x01\n" +
+	"\x03Get\x12-.metalstack.api.v2.PartitionServiceGetRequest\x1a..metalstack.api.v2.PartitionServiceGetResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02\x12q\n" +
+	"\x04List\x12..metalstack.api.v2.PartitionServiceListRequest\x1a/.metalstack.api.v2.PartitionServiceListResponse\"\b\xd8\xf3\x18\x02\xe0\xf3\x18\x02B\xc4\x01\n" +
 	"\x15com.metalstack.api.v2B\x0ePartitionProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

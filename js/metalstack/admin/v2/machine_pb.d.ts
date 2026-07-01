@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineQuery } from "../../api/v2/machine_pb";
+import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineIssues, MachineIssuesQuery, MachineQuery, MachineState } from "../../api/v2/machine_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/machine.proto.
@@ -24,7 +24,7 @@ export type MachineServiceGetRequest = Message<"metalstack.admin.v2.MachineServi
  */
 export declare const MachineServiceGetRequestSchema: GenMessage<MachineServiceGetRequest>;
 /**
- * MachineServiceGetResponse is the request payload for a machine get response
+ * MachineServiceGetResponse is the response payload for a machine get request
  *
  * @generated from message metalstack.admin.v2.MachineServiceGetResponse
  */
@@ -34,7 +34,7 @@ export type MachineServiceGetResponse = Message<"metalstack.admin.v2.MachineServ
      *
      * @generated from field: metalstack.api.v2.Machine machine = 1;
      */
-    machine?: Machine;
+    machine?: Machine | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceGetResponse.
@@ -52,14 +52,14 @@ export type MachineServiceListRequest = Message<"metalstack.admin.v2.MachineServ
      *
      * @generated from field: metalstack.api.v2.MachineQuery query = 1;
      */
-    query?: MachineQuery;
+    query?: MachineQuery | undefined;
     /**
      * Partition for which machines should be listed, could be left empty if only one partition is present
      * otherwise an error is thrown that the partition must be specified
      *
      * @generated from field: optional string partition = 2;
      */
-    partition?: string;
+    partition?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceListRequest.
@@ -67,7 +67,7 @@ export type MachineServiceListRequest = Message<"metalstack.admin.v2.MachineServ
  */
 export declare const MachineServiceListRequestSchema: GenMessage<MachineServiceListRequest>;
 /**
- * MachineServiceListResponse is the request payload for a machine list response
+ * MachineServiceListResponse is the response payload for a machine list request
  *
  * @generated from message metalstack.admin.v2.MachineServiceListResponse
  */
@@ -84,6 +84,42 @@ export type MachineServiceListResponse = Message<"metalstack.admin.v2.MachineSer
  * Use `create(MachineServiceListResponseSchema)` to create a new message.
  */
 export declare const MachineServiceListResponseSchema: GenMessage<MachineServiceListResponse>;
+/**
+ * MachineServiceDeleteRequest is the request payload for a machine delete request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceDeleteRequest
+ */
+export type MachineServiceDeleteRequest = Message<"metalstack.admin.v2.MachineServiceDeleteRequest"> & {
+    /**
+     * UUID of the machine to permanently delete
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceDeleteRequest.
+ * Use `create(MachineServiceDeleteRequestSchema)` to create a new message.
+ */
+export declare const MachineServiceDeleteRequestSchema: GenMessage<MachineServiceDeleteRequest>;
+/**
+ * MachineServiceDeleteResponse is the response payload for a machine delete request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceDeleteResponse
+ */
+export type MachineServiceDeleteResponse = Message<"metalstack.admin.v2.MachineServiceDeleteResponse"> & {
+    /**
+     * Machine is the machine permanently deleted
+     *
+     * @generated from field: metalstack.api.v2.Machine machine = 1;
+     */
+    machine?: Machine | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceDeleteResponse.
+ * Use `create(MachineServiceDeleteResponseSchema)` to create a new message.
+ */
+export declare const MachineServiceDeleteResponseSchema: GenMessage<MachineServiceDeleteResponse>;
 /**
  * MachineServiceBMCCommandRequest is the request payload for a machine bmc command
  *
@@ -154,7 +190,7 @@ export type MachineServiceGetBMCResponse = Message<"metalstack.admin.v2.MachineS
      *
      * @generated from field: metalstack.api.v2.MachineBMCReport bmc = 2;
      */
-    bmc?: MachineBMCReport;
+    bmc?: MachineBMCReport | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceGetBMCResponse.
@@ -168,11 +204,11 @@ export declare const MachineServiceGetBMCResponseSchema: GenMessage<MachineServi
  */
 export type MachineServiceListBMCRequest = Message<"metalstack.admin.v2.MachineServiceListBMCRequest"> & {
     /**
-     * Query to list one ore more bmcs of more machines
+     * Query to list one ore more bmcs of many machines
      *
      * @generated from field: metalstack.api.v2.MachineBMCQuery query = 1;
      */
-    query?: MachineBMCQuery;
+    query?: MachineBMCQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceListBMCRequest.
@@ -249,6 +285,91 @@ export type MachineServiceConsolePasswordResponse = Message<"metalstack.admin.v2
  */
 export declare const MachineServiceConsolePasswordResponseSchema: GenMessage<MachineServiceConsolePasswordResponse>;
 /**
+ * MachineServiceSetStateRequest is the request payload for a machine set state request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceSetStateRequest
+ */
+export type MachineServiceSetStateRequest = Message<"metalstack.admin.v2.MachineServiceSetStateRequest"> & {
+    /**
+     * UUID of the machine to set the state to
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * State the state of this machine.
+     * If State set to available, description is also cleared.
+     *
+     * @generated from field: metalstack.api.v2.MachineState state = 2;
+     */
+    state: MachineState;
+    /**
+     * Description a description why this machine is in the given state
+     *
+     * @generated from field: string description = 3;
+     */
+    description: string;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceSetStateRequest.
+ * Use `create(MachineServiceSetStateRequestSchema)` to create a new message.
+ */
+export declare const MachineServiceSetStateRequestSchema: GenMessage<MachineServiceSetStateRequest>;
+/**
+ * MachineServiceSetStateResponse is the response payload for a machine set state request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceSetStateResponse
+ */
+export type MachineServiceSetStateResponse = Message<"metalstack.admin.v2.MachineServiceSetStateResponse"> & {
+    /**
+     * Machine with the changed state.
+     *
+     * @generated from field: metalstack.api.v2.Machine machine = 1;
+     */
+    machine?: Machine | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceSetStateResponse.
+ * Use `create(MachineServiceSetStateResponseSchema)` to create a new message.
+ */
+export declare const MachineServiceSetStateResponseSchema: GenMessage<MachineServiceSetStateResponse>;
+/**
+ * MachineServiceIssuesRequest is the request payload for a machine issues request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceIssuesRequest
+ */
+export type MachineServiceIssuesRequest = Message<"metalstack.admin.v2.MachineServiceIssuesRequest"> & {
+    /**
+     * Query which machine issues to include
+     *
+     * @generated from field: metalstack.api.v2.MachineIssuesQuery query = 1;
+     */
+    query?: MachineIssuesQuery | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceIssuesRequest.
+ * Use `create(MachineServiceIssuesRequestSchema)` to create a new message.
+ */
+export declare const MachineServiceIssuesRequestSchema: GenMessage<MachineServiceIssuesRequest>;
+/**
+ * MachineServiceIssuesResponse is the response payload for a machine issues request
+ *
+ * @generated from message metalstack.admin.v2.MachineServiceIssuesResponse
+ */
+export type MachineServiceIssuesResponse = Message<"metalstack.admin.v2.MachineServiceIssuesResponse"> & {
+    /**
+     * Issues is the result of the issues query
+     *
+     * @generated from field: repeated metalstack.api.v2.MachineIssues issues = 1;
+     */
+    issues: MachineIssues[];
+};
+/**
+ * Describes the message metalstack.admin.v2.MachineServiceIssuesResponse.
+ * Use `create(MachineServiceIssuesResponseSchema)` to create a new message.
+ */
+export declare const MachineServiceIssuesResponseSchema: GenMessage<MachineServiceIssuesResponse>;
+/**
  * MachineService provides machine lifecycle management operations.
  *
  * @generated from service metalstack.admin.v2.MachineService
@@ -273,6 +394,16 @@ export declare const MachineService: GenService<{
         methodKind: "unary";
         input: typeof MachineServiceListRequestSchema;
         output: typeof MachineServiceListResponseSchema;
+    };
+    /**
+     * Delete a machine from the database. This can only be done if the machine is offline and dead.
+     *
+     * @generated from rpc metalstack.admin.v2.MachineService.Delete
+     */
+    delete: {
+        methodKind: "unary";
+        input: typeof MachineServiceDeleteRequestSchema;
+        output: typeof MachineServiceDeleteResponseSchema;
     };
     /**
      * BMCCommand sends a command to the BMC of a machine.
@@ -313,5 +444,25 @@ export declare const MachineService: GenService<{
         methodKind: "unary";
         input: typeof MachineServiceConsolePasswordRequestSchema;
         output: typeof MachineServiceConsolePasswordResponseSchema;
+    };
+    /**
+     * SetState set the state of a machine.
+     *
+     * @generated from rpc metalstack.admin.v2.MachineService.SetState
+     */
+    setState: {
+        methodKind: "unary";
+        input: typeof MachineServiceSetStateRequestSchema;
+        output: typeof MachineServiceSetStateResponseSchema;
+    };
+    /**
+     * Issues allows to query issues of machines
+     *
+     * @generated from rpc metalstack.admin.v2.MachineService.Issues
+     */
+    issues: {
+        methodKind: "unary";
+        input: typeof MachineServiceIssuesRequestSchema;
+        output: typeof MachineServiceIssuesResponseSchema;
     };
 }>;

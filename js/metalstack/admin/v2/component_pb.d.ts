@@ -16,7 +16,7 @@ export type ComponentServiceListRequest = Message<"metalstack.admin.v2.Component
      *
      * @generated from field: metalstack.api.v2.ComponentQuery query = 1;
      */
-    query?: ComponentQuery;
+    query?: ComponentQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ComponentServiceListRequest.
@@ -70,7 +70,7 @@ export type ComponentServiceGetResponse = Message<"metalstack.admin.v2.Component
      *
      * @generated from field: metalstack.api.v2.Component component = 1;
      */
-    component?: Component;
+    component?: Component | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ComponentServiceGetResponse.
@@ -106,7 +106,7 @@ export type ComponentServiceDeleteResponse = Message<"metalstack.admin.v2.Compon
      *
      * @generated from field: metalstack.api.v2.Component component = 1;
      */
-    component?: Component;
+    component?: Component | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ComponentServiceDeleteResponse.

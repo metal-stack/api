@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Token, TokenServiceCreateRequest as TokenServiceCreateRequest$1 } from "../../api/v2/token_pb";
+import type { Token, TokenQuery, TokenServiceCreateRequest as TokenServiceCreateRequest$1 } from "../../api/v2/token_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/token.proto.
@@ -12,11 +12,11 @@ export declare const file_metalstack_admin_v2_token: GenFile;
  */
 export type TokenServiceListRequest = Message<"metalstack.admin.v2.TokenServiceListRequest"> & {
     /**
-     * User is the id of the user for which the tokens should be listed
+     * Query for tokens
      *
-     * @generated from field: optional string user = 1;
+     * @generated from field: metalstack.api.v2.TokenQuery query = 1;
      */
-    user?: string;
+    query?: TokenQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TokenServiceListRequest.
@@ -87,13 +87,13 @@ export type TokenServiceCreateRequest = Message<"metalstack.admin.v2.TokenServic
      *
      * @generated from field: optional string user = 1;
      */
-    user?: string;
+    user?: string | undefined;
     /**
      * TokenCreateRequest which should be created
      *
      * @generated from field: metalstack.api.v2.TokenServiceCreateRequest token_create_request = 2;
      */
-    tokenCreateRequest?: TokenServiceCreateRequest$1;
+    tokenCreateRequest?: TokenServiceCreateRequest$1 | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TokenServiceCreateRequest.
@@ -111,7 +111,7 @@ export type TokenServiceCreateResponse = Message<"metalstack.admin.v2.TokenServi
      *
      * @generated from field: metalstack.api.v2.Token token = 1;
      */
-    token?: Token;
+    token?: Token | undefined;
     /**
      * Secret is the body if the JWT token, should be used in API requests as bearer token
      *

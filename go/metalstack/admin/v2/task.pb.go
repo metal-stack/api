@@ -744,12 +744,15 @@ const file_metalstack_admin_v2_task_proto_rawDesc = "" +
 	"\x10TASK_STATE_RETRY\x10\x04\x1a\t\x82\xb2\x19\x05retry\x12%\n" +
 	"\x13TASK_STATE_ARCHIVED\x10\x05\x1a\f\x82\xb2\x19\barchived\x12'\n" +
 	"\x14TASK_STATE_COMPLETED\x10\x06\x1a\r\x82\xb2\x19\tcompleted\x12+\n" +
-	"\x16TASK_STATE_AGGREGATING\x10\a\x1a\x0f\x82\xb2\x19\vaggregating2\xc1\x03\n" +
-	"\vTaskService\x12f\n" +
-	"\x03Get\x12*.metalstack.admin.v2.TaskServiceGetRequest\x1a+.metalstack.admin.v2.TaskServiceGetResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12n\n" +
-	"\x06Delete\x12-.metalstack.admin.v2.TaskServiceDeleteRequest\x1a..metalstack.admin.v2.TaskServiceDeleteResponse\"\x05\xd2\xf3\x18\x01\x01\x12o\n" +
-	"\x06Queues\x12-.metalstack.admin.v2.TaskServiceQueuesRequest\x1a..metalstack.admin.v2.TaskServiceQueuesResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12i\n" +
-	"\x04List\x12+.metalstack.admin.v2.TaskServiceListRequest\x1a,.metalstack.admin.v2.TaskServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xcd\x01\n" +
+	"\x16TASK_STATE_AGGREGATING\x10\a\x1a\x0f\x82\xb2\x19\vaggregating2\xd1\x03\n" +
+	"\vTaskService\x12j\n" +
+	"\x03Get\x12*.metalstack.admin.v2.TaskServiceGetRequest\x1a+.metalstack.admin.v2.TaskServiceGetResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12r\n" +
+	"\x06Delete\x12-.metalstack.admin.v2.TaskServiceDeleteRequest\x1a..metalstack.admin.v2.TaskServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12s\n" +
+	"\x06Queues\x12-.metalstack.admin.v2.TaskServiceQueuesRequest\x1a..metalstack.admin.v2.TaskServiceQueuesResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12m\n" +
+	"\x04List\x12+.metalstack.admin.v2.TaskServiceListRequest\x1a,.metalstack.admin.v2.TaskServiceListResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xcd\x01\n" +
 	"\x17com.metalstack.admin.v2B\tTaskProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (

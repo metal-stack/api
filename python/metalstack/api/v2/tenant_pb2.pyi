@@ -31,16 +31,18 @@ class Tenant(_message.Message):
     def __init__(self, login: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., email: _Optional[str] = ..., description: _Optional[str] = ..., avatar_url: _Optional[str] = ..., created_by: _Optional[str] = ...) -> None: ...
 
 class TenantMember(_message.Message):
-    __slots__ = ("id", "role", "projects", "created_at")
+    __slots__ = ("id", "role", "projects", "created_at", "meta")
     ID_FIELD_NUMBER: _ClassVar[int]
     ROLE_FIELD_NUMBER: _ClassVar[int]
     PROJECTS_FIELD_NUMBER: _ClassVar[int]
     CREATED_AT_FIELD_NUMBER: _ClassVar[int]
+    META_FIELD_NUMBER: _ClassVar[int]
     id: str
     role: _common_pb2.TenantRole
     projects: _containers.RepeatedScalarFieldContainer[str]
     created_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., projects: _Optional[_Iterable[str]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    meta: _common_pb2.Meta
+    def __init__(self, id: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., projects: _Optional[_Iterable[str]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ...) -> None: ...
 
 class TenantInvite(_message.Message):
     __slots__ = ("secret", "target_tenant", "role", "joined", "target_tenant_name", "tenant", "tenant_name", "expires_at", "joined_at")
@@ -65,14 +67,22 @@ class TenantInvite(_message.Message):
     def __init__(self, secret: _Optional[str] = ..., target_tenant: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., joined: _Optional[bool] = ..., target_tenant_name: _Optional[str] = ..., tenant: _Optional[str] = ..., tenant_name: _Optional[str] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., joined_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class TenantServiceListRequest(_message.Message):
-    __slots__ = ("id", "name", "labels")
-    ID_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ("query",)
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: TenantQuery
+    def __init__(self, query: _Optional[_Union[TenantQuery, _Mapping]] = ...) -> None: ...
+
+class TenantQuery(_message.Message):
+    __slots__ = ("login", "name", "labels", "paging")
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
-    id: str
+    PAGING_FIELD_NUMBER: _ClassVar[int]
+    login: str
     name: str
     labels: _common_pb2.Labels
-    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
+    paging: _common_pb2.Paging
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., paging: _Optional[_Union[_common_pb2.Paging, _Mapping]] = ...) -> None: ...
 
 class TenantServiceGetRequest(_message.Message):
     __slots__ = ("login",)

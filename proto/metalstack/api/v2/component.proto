@@ -29,6 +29,8 @@ message Component {
   metalstack.api.v2.Version version = 7;
   // Token is the token which is actually used by this microservice.
   Token token = 8;
+  // Meta for this component
+  Meta meta = 9;
 }
 
 // ComponentQuery to query components

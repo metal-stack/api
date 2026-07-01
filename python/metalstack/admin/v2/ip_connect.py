@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -21,7 +23,7 @@ class IPService(Protocol):
 
 
 class IPServiceASGIApplication(ConnectASGIApplication[IPService]):
-    def __init__(self, service: IPService | AsyncGenerator[IPService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: IPService | AsyncGenerator[IPService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -38,6 +40,8 @@ class IPServiceASGIApplication(ConnectASGIApplication[IPService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -68,13 +72,16 @@ class IPServiceClient(ConnectClient):
         )
 
 
+
+
+
 class IPServiceSync(Protocol):
     def list(self, request: metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_ip__pb2.IPServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
 class IPServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: IPServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: IPServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.admin.v2.IPService/List": EndpointSync.unary(
@@ -90,6 +97,8 @@ class IPServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -118,3 +127,5 @@ class IPServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

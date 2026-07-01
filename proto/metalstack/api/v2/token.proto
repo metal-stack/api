@@ -13,26 +13,32 @@ service TokenService {
   // Returns the token with the specified UUID.
   rpc Get(TokenServiceGetRequest) returns (TokenServiceGetResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Creates a token to authenticate against the platform, the secret will be only visible in the response.
   rpc Create(TokenServiceCreateRequest) returns (TokenServiceCreateResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Updates a token.
   rpc Update(TokenServiceUpdateRequest) returns (TokenServiceUpdateResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Returns the list of all user tokens.
   rpc List(TokenServiceListRequest) returns (TokenServiceListResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Revokes a token, no further usage is possible afterwards.
   rpc Revoke(TokenServiceRevokeRequest) returns (TokenServiceRevokeResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Refreshes a token, this will create a new token with the exact same permissions as the calling token contains.
   rpc Refresh(TokenServiceRefreshRequest) returns (TokenServiceRefreshResponse) {
     option (visibility) = VISIBILITY_SELF;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
@@ -58,10 +64,7 @@ message Token {
   // Uuid of the jwt token, used to reference it by revoke
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // User who created this token
-  string user = 2 [(buf.validate.field).string = {
-    min_len: 2
-    max_len: 512
-  }];
+  string user = 2 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
   // Meta for this token
   Meta meta = 3;
   // Description is a user given description of this token.
@@ -111,12 +114,8 @@ message TokenServiceCreateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 4 [
     (buf.validate.field).map = {
-      keys: {
-        string: {uuid: true}
-      }
-      values: {
-        enum: {defined_only: true}
-      }
+      keys: {string: {uuid: true}}
+      values: {enum: {defined_only: true}}
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
@@ -129,9 +128,7 @@ message TokenServiceCreateRequest {
           max_len: 128
         }
       }
-      values: {
-        enum: {defined_only: true}
-      }
+      values: {enum: {defined_only: true}}
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
@@ -147,9 +144,7 @@ message TokenServiceCreateRequest {
       // UUID regex pattern: 8-4-4-4-12 hex digits
       expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
     },
-    (buf.validate.field).map.values = {
-      enum: {defined_only: true}
-    }
+    (buf.validate.field).map.values = {enum: {defined_only: true}}
   ];
   // Labels on this token
   Labels labels = 9;
@@ -177,7 +172,10 @@ message TokenServiceCreateResponse {
 }
 
 // TokenServiceListRequest is the request payload to list tokens
-message TokenServiceListRequest {}
+message TokenServiceListRequest {
+  // Query for tokens
+  TokenQuery query = 1;
+}
 
 // TokenServiceListResponse is the response payload of a token list request
 message TokenServiceListResponse {
@@ -208,12 +206,8 @@ message TokenServiceUpdateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [
     (buf.validate.field).map = {
-      keys: {
-        string: {uuid: true}
-      }
-      values: {
-        enum: {defined_only: true}
-      }
+      keys: {string: {uuid: true}}
+      values: {enum: {defined_only: true}}
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
@@ -226,9 +220,7 @@ message TokenServiceUpdateRequest {
           max_len: 128
         }
       }
-      values: {
-        enum: {defined_only: true}
-      }
+      values: {enum: {defined_only: true}}
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
@@ -244,9 +236,7 @@ message TokenServiceUpdateRequest {
       // UUID regex pattern: 8-4-4-4-12 hex digits
       expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
     },
-    (buf.validate.field).map.values = {
-      enum: {defined_only: true}
-    }
+    (buf.validate.field).map.values = {enum: {defined_only: true}}
   ];
   // Labels on this token
   UpdateLabels labels = 10;
@@ -281,4 +271,19 @@ message TokenServiceRefreshResponse {
   Token token = 1;
   // Secret is the body if the jwt token, should be used in api requests as bearer token
   string secret = 2;
+}
+
+// TokenQuery is used to search tokens
+message TokenQuery {
+  // UUID of the token to get
+  optional string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Name of the token user to query
+  // Only useful for admins.
+  optional string user = 2 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
+  // Description of the token to query
+  optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+  // Labels lists only tokens containing the given labels
+  optional Labels labels = 4;
+  // Token type of the token to query
+  optional TokenType token_type = 5 [(buf.validate.field).enum.defined_only = true];
 }

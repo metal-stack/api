@@ -40,7 +40,7 @@ export type TaskServiceGetResponse = Message<"metalstack.admin.v2.TaskServiceGet
      *
      * @generated from field: metalstack.admin.v2.TaskInfo task = 1;
      */
-    task?: TaskInfo;
+    task?: TaskInfo | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TaskServiceGetResponse.
@@ -123,19 +123,19 @@ export type TaskServiceListRequest = Message<"metalstack.admin.v2.TaskServiceLis
      *
      * @generated from field: optional string queue = 1;
      */
-    queue?: string;
+    queue?: string | undefined;
     /**
      * Count is the number of tasks to return
      *
      * @generated from field: optional uint32 count = 2;
      */
-    count?: number;
+    count?: number | undefined;
     /**
      * Page is the page of tasks to return
      *
      * @generated from field: optional uint32 page = 3;
      */
-    page?: number;
+    page?: number | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TaskServiceListRequest.
@@ -220,19 +220,19 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
      *
      * @generated from field: google.protobuf.Timestamp last_failed_at = 9;
      */
-    lastFailedAt?: Timestamp;
+    lastFailedAt?: Timestamp | undefined;
     /**
      * Timeout is the duration the task can be processed by Handler before being retried
      *
      * @generated from field: google.protobuf.Duration timeout = 10;
      */
-    timeout?: Duration;
+    timeout?: Duration | undefined;
     /**
      * Deadline is the deadline for the task
      *
      * @generated from field: google.protobuf.Timestamp deadline = 11;
      */
-    deadline?: Timestamp;
+    deadline?: Timestamp | undefined;
     /**
      * Group is the name of the group in which the task belongs
      *
@@ -250,7 +250,7 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
      *
      * @generated from field: google.protobuf.Timestamp next_process_at = 13;
      */
-    nextProcessAt?: Timestamp;
+    nextProcessAt?: Timestamp | undefined;
     /**
      * IsOrphaned describes whether the task is left in active state with no worker processing it
      * An orphaned task indicates that the worker has crashed or experienced network failures and was not able to
@@ -267,14 +267,14 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
      *
      * @generated from field: google.protobuf.Duration retention = 15;
      */
-    retention?: Duration;
+    retention?: Duration | undefined;
     /**
      * CompletedAt is the time when the task is processed successfully
      * Zero value (i.e. time.Time{}) indicates no value
      *
      * @generated from field: google.protobuf.Timestamp completed_at = 16;
      */
-    completedAt?: Timestamp;
+    completedAt?: Timestamp | undefined;
     /**
      * Result holds the result data associated with the task
      * Use ResultWriter to write result data from the Handler

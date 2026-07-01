@@ -19,6 +19,14 @@ IS_IP_OR_HOSTNAME_FIELD_NUMBER: _ClassVar[int]
 is_ip_or_hostname: _descriptor.FieldDescriptor
 TRIMMED_FIELD_NUMBER: _ClassVar[int]
 trimmed: _descriptor.FieldDescriptor
+IS_USER_FIELD_NUMBER: _ClassVar[int]
+is_user: _descriptor.FieldDescriptor
+IS_OPTION_FIELD_NUMBER: _ClassVar[int]
+is_option: _descriptor.FieldDescriptor
+IS_KEY_FIELD_NUMBER: _ClassVar[int]
+is_key: _descriptor.FieldDescriptor
+IS_TENANT_LOGIN_FIELD_NUMBER: _ClassVar[int]
+is_tenant_login: _descriptor.FieldDescriptor
 PREFIXES_FIELD_NUMBER: _ClassVar[int]
 prefixes: _descriptor.FieldDescriptor
 IPS_FIELD_NUMBER: _ClassVar[int]

@@ -88,8 +88,8 @@ const (
 	Service_SERVICE_IPAM Service = 1
 	// SERVICE_RETHINK the RethinkDB
 	Service_SERVICE_RETHINK Service = 2
-	// SERVICE_MASTERDATA the masterdata API
-	Service_SERVICE_MASTERDATA Service = 3
+	// SERVICE_TENANT_APISERVER the tenant-apiserver
+	Service_SERVICE_TENANT_APISERVER Service = 3
 	// SERVICE_MACHINES the machine service
 	Service_SERVICE_MACHINES Service = 4
 	// SERVICE_AUDIT the auditing
@@ -108,7 +108,7 @@ var (
 		0: "SERVICE_UNSPECIFIED",
 		1: "SERVICE_IPAM",
 		2: "SERVICE_RETHINK",
-		3: "SERVICE_MASTERDATA",
+		3: "SERVICE_TENANT_APISERVER",
 		4: "SERVICE_MACHINES",
 		5: "SERVICE_AUDIT",
 		6: "SERVICE_VPN",
@@ -116,15 +116,15 @@ var (
 		8: "SERVICE_TASKS",
 	}
 	Service_value = map[string]int32{
-		"SERVICE_UNSPECIFIED": 0,
-		"SERVICE_IPAM":        1,
-		"SERVICE_RETHINK":     2,
-		"SERVICE_MASTERDATA":  3,
-		"SERVICE_MACHINES":    4,
-		"SERVICE_AUDIT":       5,
-		"SERVICE_VPN":         6,
-		"SERVICE_REDIS":       7,
-		"SERVICE_TASKS":       8,
+		"SERVICE_UNSPECIFIED":      0,
+		"SERVICE_IPAM":             1,
+		"SERVICE_RETHINK":          2,
+		"SERVICE_TENANT_APISERVER": 3,
+		"SERVICE_MACHINES":         4,
+		"SERVICE_AUDIT":            5,
+		"SERVICE_VPN":              6,
+		"SERVICE_REDIS":            7,
+		"SERVICE_TASKS":            8,
 	}
 )
 
@@ -439,13 +439,12 @@ const file_metalstack_api_v2_health_proto_rawDesc = "" +
 	"\x1aSERVICE_STATUS_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\x17SERVICE_STATUS_DEGRADED\x10\x01\x12\x1c\n" +
 	"\x18SERVICE_STATUS_UNHEALTHY\x10\x02\x12\x1a\n" +
-	"\x16SERVICE_STATUS_HEALTHY\x10\x03*\xa2\x02\n" +
+	"\x16SERVICE_STATUS_HEALTHY\x10\x03*\xae\x02\n" +
 	"\aService\x12\x17\n" +
 	"\x13SERVICE_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\fSERVICE_IPAM\x10\x01\x1a\b\x82\xb2\x19\x04ipam\x12\"\n" +
-	"\x0fSERVICE_RETHINK\x10\x02\x1a\r\x82\xb2\x19\trethinkdb\x12&\n" +
-	"\x12SERVICE_MASTERDATA\x10\x03\x1a\x0e\x82\xb2\x19\n" +
-	"masterdata\x12\"\n" +
+	"\x0fSERVICE_RETHINK\x10\x02\x1a\r\x82\xb2\x19\trethinkdb\x122\n" +
+	"\x18SERVICE_TENANT_APISERVER\x10\x03\x1a\x14\x82\xb2\x19\x10tenant-apiserver\x12\"\n" +
 	"\x10SERVICE_MACHINES\x10\x04\x1a\f\x82\xb2\x19\bmachines\x12\x1c\n" +
 	"\rSERVICE_AUDIT\x10\x05\x1a\t\x82\xb2\x19\x05audit\x12\x18\n" +
 	"\vSERVICE_VPN\x10\x06\x1a\a\x82\xb2\x19\x03vpn\x12\x1c\n" +

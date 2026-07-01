@@ -98,7 +98,9 @@ type AuditTrace struct {
 	// ResultCode is a status code describing the result of the API call. It is set for traces in the response phase and contains official gRPC status codes
 	ResultCode *int32 `protobuf:"varint,9,opt,name=result_code,json=resultCode,proto3,oneof" json:"result_code,omitempty"`
 	// Phase represents the phase of the audit trace
-	Phase         AuditPhase `protobuf:"varint,10,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase" json:"phase,omitempty"`
+	Phase AuditPhase `protobuf:"varint,10,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase" json:"phase,omitempty"`
+	// Meta for this audit trace
+	Meta          *Meta `protobuf:"bytes,11,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -201,6 +203,13 @@ func (x *AuditTrace) GetPhase() AuditPhase {
 		return x.Phase
 	}
 	return AuditPhase_AUDIT_PHASE_UNSPECIFIED
+}
+
+func (x *AuditTrace) GetMeta() *Meta {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
 }
 
 // AuditQuery is the query for audit traces
@@ -554,7 +563,7 @@ var File_metalstack_api_v2_audit_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_audit_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/api/v2/audit.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xfd\x02\n" +
+	"\x1dmetalstack/api/v2/audit.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xaa\x03\n" +
 	"\n" +
 	"AuditTrace\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x128\n" +
@@ -568,7 +577,8 @@ const file_metalstack_api_v2_audit_proto_rawDesc = "" +
 	"\vresult_code\x18\t \x01(\x05H\x02R\n" +
 	"resultCode\x88\x01\x01\x123\n" +
 	"\x05phase\x18\n" +
-	" \x01(\x0e2\x1d.metalstack.api.v2.AuditPhaseR\x05phaseB\n" +
+	" \x01(\x0e2\x1d.metalstack.api.v2.AuditPhaseR\x05phase\x12+\n" +
+	"\x04meta\x18\v \x01(\v2\x17.metalstack.api.v2.MetaR\x04metaB\n" +
 	"\n" +
 	"\b_projectB\a\n" +
 	"\x05_bodyB\x0e\n" +
@@ -651,26 +661,28 @@ var file_metalstack_api_v2_audit_proto_goTypes = []any{
 	(*AuditServiceGetRequest)(nil),   // 5: metalstack.api.v2.AuditServiceGetRequest
 	(*AuditServiceGetResponse)(nil),  // 6: metalstack.api.v2.AuditServiceGetResponse
 	(*timestamppb.Timestamp)(nil),    // 7: google.protobuf.Timestamp
+	(*Meta)(nil),                     // 8: metalstack.api.v2.Meta
 }
 var file_metalstack_api_v2_audit_proto_depIdxs = []int32{
 	7,  // 0: metalstack.api.v2.AuditTrace.timestamp:type_name -> google.protobuf.Timestamp
 	0,  // 1: metalstack.api.v2.AuditTrace.phase:type_name -> metalstack.api.v2.AuditPhase
-	7,  // 2: metalstack.api.v2.AuditQuery.from:type_name -> google.protobuf.Timestamp
-	7,  // 3: metalstack.api.v2.AuditQuery.to:type_name -> google.protobuf.Timestamp
-	0,  // 4: metalstack.api.v2.AuditQuery.phase:type_name -> metalstack.api.v2.AuditPhase
-	2,  // 5: metalstack.api.v2.AuditServiceListRequest.query:type_name -> metalstack.api.v2.AuditQuery
-	1,  // 6: metalstack.api.v2.AuditServiceListResponse.traces:type_name -> metalstack.api.v2.AuditTrace
-	0,  // 7: metalstack.api.v2.AuditServiceGetRequest.phase:type_name -> metalstack.api.v2.AuditPhase
-	1,  // 8: metalstack.api.v2.AuditServiceGetResponse.trace:type_name -> metalstack.api.v2.AuditTrace
-	5,  // 9: metalstack.api.v2.AuditService.Get:input_type -> metalstack.api.v2.AuditServiceGetRequest
-	3,  // 10: metalstack.api.v2.AuditService.List:input_type -> metalstack.api.v2.AuditServiceListRequest
-	6,  // 11: metalstack.api.v2.AuditService.Get:output_type -> metalstack.api.v2.AuditServiceGetResponse
-	4,  // 12: metalstack.api.v2.AuditService.List:output_type -> metalstack.api.v2.AuditServiceListResponse
-	11, // [11:13] is the sub-list for method output_type
-	9,  // [9:11] is the sub-list for method input_type
-	9,  // [9:9] is the sub-list for extension type_name
-	9,  // [9:9] is the sub-list for extension extendee
-	0,  // [0:9] is the sub-list for field type_name
+	8,  // 2: metalstack.api.v2.AuditTrace.meta:type_name -> metalstack.api.v2.Meta
+	7,  // 3: metalstack.api.v2.AuditQuery.from:type_name -> google.protobuf.Timestamp
+	7,  // 4: metalstack.api.v2.AuditQuery.to:type_name -> google.protobuf.Timestamp
+	0,  // 5: metalstack.api.v2.AuditQuery.phase:type_name -> metalstack.api.v2.AuditPhase
+	2,  // 6: metalstack.api.v2.AuditServiceListRequest.query:type_name -> metalstack.api.v2.AuditQuery
+	1,  // 7: metalstack.api.v2.AuditServiceListResponse.traces:type_name -> metalstack.api.v2.AuditTrace
+	0,  // 8: metalstack.api.v2.AuditServiceGetRequest.phase:type_name -> metalstack.api.v2.AuditPhase
+	1,  // 9: metalstack.api.v2.AuditServiceGetResponse.trace:type_name -> metalstack.api.v2.AuditTrace
+	5,  // 10: metalstack.api.v2.AuditService.Get:input_type -> metalstack.api.v2.AuditServiceGetRequest
+	3,  // 11: metalstack.api.v2.AuditService.List:input_type -> metalstack.api.v2.AuditServiceListRequest
+	6,  // 12: metalstack.api.v2.AuditService.Get:output_type -> metalstack.api.v2.AuditServiceGetResponse
+	4,  // 13: metalstack.api.v2.AuditService.List:output_type -> metalstack.api.v2.AuditServiceListResponse
+	12, // [12:14] is the sub-list for method output_type
+	10, // [10:12] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_audit_proto_init() }

@@ -29,19 +29,19 @@ export type SizeImageConstraintServiceCreateRequest = Message<"metalstack.admin.
      *
      * @generated from field: metalstack.api.v2.Meta meta = 3;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Name of this size image constraint
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this size image constraint
      *
      * @generated from field: optional string description = 5;
      */
-    description?: string;
+    description?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeImageConstraintServiceCreateRequest.
@@ -59,7 +59,7 @@ export type SizeImageConstraintServiceCreateResponse = Message<"metalstack.admin
      *
      * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
      */
-    sizeImageConstraint?: SizeImageConstraint;
+    sizeImageConstraint?: SizeImageConstraint | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeImageConstraintServiceCreateResponse.
@@ -83,7 +83,7 @@ export type SizeImageConstraintServiceUpdateRequest = Message<"metalstack.admin.
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * ImageConstraints to apply to this size
      *
@@ -95,13 +95,13 @@ export type SizeImageConstraintServiceUpdateRequest = Message<"metalstack.admin.
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this size image constraint
      *
      * @generated from field: optional string description = 5;
      */
-    description?: string;
+    description?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeImageConstraintServiceUpdateRequest.
@@ -119,7 +119,7 @@ export type SizeImageConstraintServiceUpdateResponse = Message<"metalstack.admin
      *
      * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
      */
-    sizeImageConstraint?: SizeImageConstraint;
+    sizeImageConstraint?: SizeImageConstraint | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeImageConstraintServiceUpdateResponse.
@@ -155,7 +155,7 @@ export type SizeImageConstraintServiceDeleteResponse = Message<"metalstack.admin
      *
      * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
      */
-    sizeImageConstraint?: SizeImageConstraint;
+    sizeImageConstraint?: SizeImageConstraint | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeImageConstraintServiceDeleteResponse.
@@ -191,7 +191,7 @@ export type SizeImageConstraintServiceGetResponse = Message<"metalstack.admin.v2
      *
      * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
      */
-    sizeImageConstraint?: SizeImageConstraint;
+    sizeImageConstraint?: SizeImageConstraint | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeImageConstraintServiceGetResponse.
@@ -209,7 +209,7 @@ export type SizeImageConstraintServiceListRequest = Message<"metalstack.admin.v2
      *
      * @generated from field: metalstack.api.v2.SizeImageConstraintQuery query = 1;
      */
-    query?: SizeImageConstraintQuery;
+    query?: SizeImageConstraintQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeImageConstraintServiceListRequest.

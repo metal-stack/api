@@ -16,7 +16,7 @@ export type IPServiceListRequest = Message<"metalstack.admin.v2.IPServiceListReq
      *
      * @generated from field: metalstack.api.v2.IPQuery query = 1;
      */
-    query?: IPQuery;
+    query?: IPQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.IPServiceListRequest.

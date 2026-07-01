@@ -37,8 +37,6 @@ const (
 	FilesystemServiceGetProcedure = "/metalstack.api.v2.FilesystemService/Get"
 	// FilesystemServiceListProcedure is the fully-qualified name of the FilesystemService's List RPC.
 	FilesystemServiceListProcedure = "/metalstack.api.v2.FilesystemService/List"
-	// FilesystemServiceMatchProcedure is the fully-qualified name of the FilesystemService's Match RPC.
-	FilesystemServiceMatchProcedure = "/metalstack.api.v2.FilesystemService/Match"
 )
 
 // FilesystemServiceClient is a client for the metalstack.api.v2.FilesystemService service.
@@ -47,8 +45,6 @@ type FilesystemServiceClient interface {
 	Get(context.Context, *v2.FilesystemServiceGetRequest) (*v2.FilesystemServiceGetResponse, error)
 	// Returns the list of all filesystems.
 	List(context.Context, *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error)
-	// Matches a filesystem to a size and image or machine.
-	Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error)
 }
 
 // NewFilesystemServiceClient constructs a client for the metalstack.api.v2.FilesystemService
@@ -74,20 +70,13 @@ func NewFilesystemServiceClient(httpClient connect.HTTPClient, baseURL string, o
 			connect.WithSchema(filesystemServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
-		match: connect.NewClient[v2.FilesystemServiceMatchRequest, v2.FilesystemServiceMatchResponse](
-			httpClient,
-			baseURL+FilesystemServiceMatchProcedure,
-			connect.WithSchema(filesystemServiceMethods.ByName("Match")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
 // filesystemServiceClient implements FilesystemServiceClient.
 type filesystemServiceClient struct {
-	get   *connect.Client[v2.FilesystemServiceGetRequest, v2.FilesystemServiceGetResponse]
-	list  *connect.Client[v2.FilesystemServiceListRequest, v2.FilesystemServiceListResponse]
-	match *connect.Client[v2.FilesystemServiceMatchRequest, v2.FilesystemServiceMatchResponse]
+	get  *connect.Client[v2.FilesystemServiceGetRequest, v2.FilesystemServiceGetResponse]
+	list *connect.Client[v2.FilesystemServiceListRequest, v2.FilesystemServiceListResponse]
 }
 
 // Get calls metalstack.api.v2.FilesystemService.Get.
@@ -108,23 +97,12 @@ func (c *filesystemServiceClient) List(ctx context.Context, req *v2.FilesystemSe
 	return nil, err
 }
 
-// Match calls metalstack.api.v2.FilesystemService.Match.
-func (c *filesystemServiceClient) Match(ctx context.Context, req *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error) {
-	response, err := c.match.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
 // FilesystemServiceHandler is an implementation of the metalstack.api.v2.FilesystemService service.
 type FilesystemServiceHandler interface {
 	// Returns the filesystem with the specified ID.
 	Get(context.Context, *v2.FilesystemServiceGetRequest) (*v2.FilesystemServiceGetResponse, error)
 	// Returns the list of all filesystems.
 	List(context.Context, *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error)
-	// Matches a filesystem to a size and image or machine.
-	Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error)
 }
 
 // NewFilesystemServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -146,20 +124,12 @@ func NewFilesystemServiceHandler(svc FilesystemServiceHandler, opts ...connect.H
 		connect.WithSchema(filesystemServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
-	filesystemServiceMatchHandler := connect.NewUnaryHandlerSimple(
-		FilesystemServiceMatchProcedure,
-		svc.Match,
-		connect.WithSchema(filesystemServiceMethods.ByName("Match")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/metalstack.api.v2.FilesystemService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case FilesystemServiceGetProcedure:
 			filesystemServiceGetHandler.ServeHTTP(w, r)
 		case FilesystemServiceListProcedure:
 			filesystemServiceListHandler.ServeHTTP(w, r)
-		case FilesystemServiceMatchProcedure:
-			filesystemServiceMatchHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -175,8 +145,4 @@ func (UnimplementedFilesystemServiceHandler) Get(context.Context, *v2.Filesystem
 
 func (UnimplementedFilesystemServiceHandler) List(context.Context, *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.FilesystemService.List is not implemented"))
-}
-
-func (UnimplementedFilesystemServiceHandler) Match(context.Context, *v2.FilesystemServiceMatchRequest) (*v2.FilesystemServiceMatchResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.FilesystemService.Match is not implemented"))
 }

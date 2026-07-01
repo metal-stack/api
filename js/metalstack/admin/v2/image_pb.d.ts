@@ -18,7 +18,7 @@ export type ImageServiceCreateRequest = Message<"metalstack.admin.v2.ImageServic
      *
      * @generated from field: metalstack.api.v2.Image image = 1;
      */
-    image?: Image;
+    image?: Image | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ImageServiceCreateRequest.
@@ -36,7 +36,7 @@ export type ImageServiceCreateResponse = Message<"metalstack.admin.v2.ImageServi
      *
      * @generated from field: metalstack.api.v2.Image image = 1;
      */
-    image?: Image;
+    image?: Image | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ImageServiceCreateResponse.
@@ -60,25 +60,25 @@ export type ImageServiceUpdateRequest = Message<"metalstack.admin.v2.ImageServic
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * URL where this image is located
      *
      * @generated from field: optional string url = 3;
      */
-    url?: string;
+    url?: string | undefined;
     /**
      * Name of this image
      *
      * @generated from field: optional string name = 4;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this image
      *
      * @generated from field: optional string description = 5;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Features of this image
      *
@@ -96,7 +96,7 @@ export type ImageServiceUpdateRequest = Message<"metalstack.admin.v2.ImageServic
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
-    expiresAt?: Timestamp;
+    expiresAt?: Timestamp | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ImageServiceUpdateRequest.
@@ -114,7 +114,7 @@ export type ImageServiceUpdateResponse = Message<"metalstack.admin.v2.ImageServi
      *
      * @generated from field: metalstack.api.v2.Image image = 1;
      */
-    image?: Image;
+    image?: Image | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ImageServiceUpdateResponse.
@@ -150,7 +150,7 @@ export type ImageServiceDeleteResponse = Message<"metalstack.admin.v2.ImageServi
      *
      * @generated from field: metalstack.api.v2.Image image = 1;
      */
-    image?: Image;
+    image?: Image | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ImageServiceDeleteResponse.
@@ -168,7 +168,7 @@ export type ImageServiceUsageRequest = Message<"metalstack.admin.v2.ImageService
      *
      * @generated from field: metalstack.api.v2.ImageQuery query = 1;
      */
-    query?: ImageQuery;
+    query?: ImageQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ImageServiceUsageRequest.

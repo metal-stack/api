@@ -5,7 +5,7 @@ import type { MapRules, RepeatedRules, StringRules } from "../../../buf/validate
  */
 export declare const file_metalstack_api_v2_predefined_rules: GenFile;
 /**
- * Macaddress returns true if the given string is a valid macadress
+ * Macaddress returns true if the given string is a valid macaddress
  *
  * @generated from extension: optional bool macaddress = 80048951;
  */
@@ -52,6 +52,30 @@ export declare const is_ip_or_hostname: GenExtension<StringRules, boolean>;
  * @generated from extension: optional bool trimmed = 80048958;
  */
 export declare const trimmed: GenExtension<StringRules, boolean>;
+/**
+ * IsUser returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_user = 80048959;
+ */
+export declare const is_user: GenExtension<StringRules, boolean>;
+/**
+ * IsOption returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_option = 80048960;
+ */
+export declare const is_option: GenExtension<StringRules, boolean>;
+/**
+ * IsKey returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_key = 80048961;
+ */
+export declare const is_key: GenExtension<StringRules, boolean>;
+/**
+ * IsTenantLogin returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_tenant_login = 80048962;
+ */
+export declare const is_tenant_login: GenExtension<StringRules, boolean>;
 /**
  * Prefixes validates if a slice of prefixes in string form are valid
  *

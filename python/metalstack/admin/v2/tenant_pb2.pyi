@@ -31,14 +31,10 @@ class TenantServiceCreateResponse(_message.Message):
     def __init__(self, tenant: _Optional[_Union[_tenant_pb2.Tenant, _Mapping]] = ...) -> None: ...
 
 class TenantServiceListRequest(_message.Message):
-    __slots__ = ("login", "name", "paging")
-    LOGIN_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    PAGING_FIELD_NUMBER: _ClassVar[int]
-    login: str
-    name: str
-    paging: _common_pb2.Paging
-    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., paging: _Optional[_Union[_common_pb2.Paging, _Mapping]] = ...) -> None: ...
+    __slots__ = ("query",)
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    query: _tenant_pb2.TenantQuery
+    def __init__(self, query: _Optional[_Union[_tenant_pb2.TenantQuery, _Mapping]] = ...) -> None: ...
 
 class TenantServiceListResponse(_message.Message):
     __slots__ = ("tenants", "next_page")
@@ -47,3 +43,29 @@ class TenantServiceListResponse(_message.Message):
     tenants: _containers.RepeatedCompositeFieldContainer[_tenant_pb2.Tenant]
     next_page: int
     def __init__(self, tenants: _Optional[_Iterable[_Union[_tenant_pb2.Tenant, _Mapping]]] = ..., next_page: _Optional[int] = ...) -> None: ...
+
+class TenantServiceAddMemberRequest(_message.Message):
+    __slots__ = ("tenant", "member", "role")
+    TENANT_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    ROLE_FIELD_NUMBER: _ClassVar[int]
+    tenant: str
+    member: str
+    role: _common_pb2.TenantRole
+    def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ...) -> None: ...
+
+class TenantServiceAddMemberResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class TenantServiceRemoveMemberRequest(_message.Message):
+    __slots__ = ("tenant", "member")
+    TENANT_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    tenant: str
+    member: str
+    def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
+
+class TenantServiceRemoveMemberResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...

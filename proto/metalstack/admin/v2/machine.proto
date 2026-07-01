@@ -21,24 +21,44 @@ service MachineService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
+  // Delete a machine from the database. This can only be done if the machine is offline and dead.
+  rpc Delete(MachineServiceDeleteRequest) returns (MachineServiceDeleteResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
   // BMCCommand sends a command to the BMC of a machine.
   rpc BMCCommand(MachineServiceBMCCommandRequest) returns (MachineServiceBMCCommandResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Returns the BMC details of a machine.
   rpc GetBMC(MachineServiceGetBMCRequest) returns (MachineServiceGetBMCResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // ListBMC returns the BMC details of many machines.
   rpc ListBMC(MachineServiceListBMCRequest) returns (MachineServiceListBMCResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // GetConsolePassword returns the password to access the serial console of the machine.
   rpc ConsolePassword(MachineServiceConsolePasswordRequest) returns (MachineServiceConsolePasswordResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // SetState set the state of a machine.
+  rpc SetState(MachineServiceSetStateRequest) returns (MachineServiceSetStateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Issues allows to query issues of machines
+  rpc Issues(MachineServiceIssuesRequest) returns (MachineServiceIssuesResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
 }
 
@@ -50,7 +70,7 @@ message MachineServiceGetRequest {
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceGetResponse is the request payload for a machine get response
+// MachineServiceGetResponse is the response payload for a machine get request
 message MachineServiceGetResponse {
   // Machine is the machine requested
   metalstack.api.v2.Machine machine = 1;
@@ -65,10 +85,22 @@ message MachineServiceListRequest {
   optional string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
-// MachineServiceListResponse is the request payload for a machine list response
+// MachineServiceListResponse is the response payload for a machine list request
 message MachineServiceListResponse {
   // Machines are the machines requested by a list request
   repeated metalstack.api.v2.Machine machines = 1;
+}
+
+// MachineServiceDeleteRequest is the request payload for a machine delete request
+message MachineServiceDeleteRequest {
+  // UUID of the machine to permanently delete
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+}
+
+// MachineServiceDeleteResponse is the response payload for a machine delete request
+message MachineServiceDeleteResponse {
+  // Machine is the machine permanently deleted
+  metalstack.api.v2.Machine machine = 1;
 }
 
 // MachineServiceBMCCommandRequest is the request payload for a machine bmc command
@@ -98,18 +130,14 @@ message MachineServiceGetBMCResponse {
 
 // MachineServiceListBMCRequest is the request payload for a machine listbmc request
 message MachineServiceListBMCRequest {
-  // Query to list one ore more bmcs of more machines
+  // Query to list one ore more bmcs of many machines
   metalstack.api.v2.MachineBMCQuery query = 1;
 }
 
 // MachineServiceListBMCResponse is the response payload for a machine listbmc request
 message MachineServiceListBMCResponse {
   // BMCReports maps the bmc report per machine uuid
-  map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 1 [(buf.validate.field).map = {
-    keys: {
-      string: {uuid: true}
-    }
-  }];
+  map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 1 [(buf.validate.field).map = {keys: {string: {uuid: true}}}];
 }
 
 // MachineServiceConsolePasswordRequest is the request payload for getting the console password.
@@ -130,4 +158,33 @@ message MachineServiceConsolePasswordResponse {
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Password to access the console
   string password = 2;
+}
+
+// MachineServiceSetStateRequest is the request payload for a machine set state request
+message MachineServiceSetStateRequest {
+  // UUID of the machine to set the state to
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // State the state of this machine.
+  // If State set to available, description is also cleared.
+  metalstack.api.v2.MachineState state = 2 [(buf.validate.field).enum.defined_only = true];
+  // Description a description why this machine is in the given state
+  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// MachineServiceSetStateResponse is the response payload for a machine set state request
+message MachineServiceSetStateResponse {
+  // Machine with the changed state.
+  metalstack.api.v2.Machine machine = 1;
+}
+
+// MachineServiceIssuesRequest is the request payload for a machine issues request
+message MachineServiceIssuesRequest {
+  // Query which machine issues to include
+  metalstack.api.v2.MachineIssuesQuery query = 1;
+}
+
+// MachineServiceIssuesResponse is the response payload for a machine issues request
+message MachineServiceIssuesResponse {
+  // Issues is the result of the issues query
+  repeated metalstack.api.v2.MachineIssues issues = 1;
 }

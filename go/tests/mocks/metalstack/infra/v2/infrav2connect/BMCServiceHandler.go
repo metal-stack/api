@@ -75,7 +75,7 @@ type BMCServiceHandler_BMCCommandDone_Call struct {
 // BMCCommandDone is a helper method to define mock.On call
 //   - context1 context.Context
 //   - bMCCommandDoneRequest *infrav2.BMCCommandDoneRequest
-func (_e *BMCServiceHandler_Expecter) BMCCommandDone(context1 interface{}, bMCCommandDoneRequest interface{}) *BMCServiceHandler_BMCCommandDone_Call {
+func (_e *BMCServiceHandler_Expecter) BMCCommandDone(context1 any, bMCCommandDoneRequest any) *BMCServiceHandler_BMCCommandDone_Call {
 	return &BMCServiceHandler_BMCCommandDone_Call{Call: _e.mock.On("BMCCommandDone", context1, bMCCommandDoneRequest)}
 }
 
@@ -143,7 +143,7 @@ type BMCServiceHandler_UpdateBMCInfo_Call struct {
 // UpdateBMCInfo is a helper method to define mock.On call
 //   - context1 context.Context
 //   - updateBMCInfoRequest *infrav2.UpdateBMCInfoRequest
-func (_e *BMCServiceHandler_Expecter) UpdateBMCInfo(context1 interface{}, updateBMCInfoRequest interface{}) *BMCServiceHandler_UpdateBMCInfo_Call {
+func (_e *BMCServiceHandler_Expecter) UpdateBMCInfo(context1 any, updateBMCInfoRequest any) *BMCServiceHandler_UpdateBMCInfo_Call {
 	return &BMCServiceHandler_UpdateBMCInfo_Call{Call: _e.mock.On("UpdateBMCInfo", context1, updateBMCInfoRequest)}
 }
 
@@ -201,7 +201,7 @@ type BMCServiceHandler_WaitForBMCCommand_Call struct {
 //   - context1 context.Context
 //   - waitForBMCCommandRequest *infrav2.WaitForBMCCommandRequest
 //   - serverStream *connect.ServerStream[infrav2.WaitForBMCCommandResponse]
-func (_e *BMCServiceHandler_Expecter) WaitForBMCCommand(context1 interface{}, waitForBMCCommandRequest interface{}, serverStream interface{}) *BMCServiceHandler_WaitForBMCCommand_Call {
+func (_e *BMCServiceHandler_Expecter) WaitForBMCCommand(context1 any, waitForBMCCommandRequest any, serverStream any) *BMCServiceHandler_WaitForBMCCommand_Call {
 	return &BMCServiceHandler_WaitForBMCCommand_Call{Call: _e.mock.On("WaitForBMCCommand", context1, waitForBMCCommandRequest, serverStream)}
 }
 

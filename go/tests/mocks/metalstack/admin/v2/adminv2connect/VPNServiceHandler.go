@@ -74,7 +74,7 @@ type VPNServiceHandler_AuthKey_Call struct {
 // AuthKey is a helper method to define mock.On call
 //   - context1 context.Context
 //   - vPNServiceAuthKeyRequest *adminv2.VPNServiceAuthKeyRequest
-func (_e *VPNServiceHandler_Expecter) AuthKey(context1 interface{}, vPNServiceAuthKeyRequest interface{}) *VPNServiceHandler_AuthKey_Call {
+func (_e *VPNServiceHandler_Expecter) AuthKey(context1 any, vPNServiceAuthKeyRequest any) *VPNServiceHandler_AuthKey_Call {
 	return &VPNServiceHandler_AuthKey_Call{Call: _e.mock.On("AuthKey", context1, vPNServiceAuthKeyRequest)}
 }
 
@@ -142,7 +142,7 @@ type VPNServiceHandler_ListNodes_Call struct {
 // ListNodes is a helper method to define mock.On call
 //   - context1 context.Context
 //   - vPNServiceListNodesRequest *adminv2.VPNServiceListNodesRequest
-func (_e *VPNServiceHandler_Expecter) ListNodes(context1 interface{}, vPNServiceListNodesRequest interface{}) *VPNServiceHandler_ListNodes_Call {
+func (_e *VPNServiceHandler_Expecter) ListNodes(context1 any, vPNServiceListNodesRequest any) *VPNServiceHandler_ListNodes_Call {
 	return &VPNServiceHandler_ListNodes_Call{Call: _e.mock.On("ListNodes", context1, vPNServiceListNodesRequest)}
 }
 

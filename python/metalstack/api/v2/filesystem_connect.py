@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -22,12 +24,9 @@ class FilesystemService(Protocol):
     async def list(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
-    async def match(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-
 
 class FilesystemServiceASGIApplication(ConnectASGIApplication[FilesystemService]):
-    def __init__(self, service: FilesystemService | AsyncGenerator[FilesystemService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: FilesystemService | AsyncGenerator[FilesystemService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -51,19 +50,11 @@ class FilesystemServiceASGIApplication(ConnectASGIApplication[FilesystemService]
                     ),
                     function=svc.list,
                 ),
-                "/metalstack.api.v2.FilesystemService/Match": Endpoint.unary(
-                    method=MethodInfo(
-                        name="Match",
-                        service_name="metalstack.api.v2.FilesystemService",
-                        input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
-                        output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=svc.match,
-                ),
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -113,25 +104,8 @@ class FilesystemServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
-    async def match(
-        self,
-        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
-        return await self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="Match",
-                service_name="metalstack.api.v2.FilesystemService",
-                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
-                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
+
+
 
 
 class FilesystemServiceSync(Protocol):
@@ -139,12 +113,10 @@ class FilesystemServiceSync(Protocol):
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def list(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-    def match(self, request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
 class FilesystemServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: FilesystemServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: FilesystemServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.api.v2.FilesystemService/Get": EndpointSync.unary(
@@ -167,19 +139,11 @@ class FilesystemServiceWSGIApplication(ConnectWSGIApplication):
                     ),
                     function=service.list,
                 ),
-                "/metalstack.api.v2.FilesystemService/Match": EndpointSync.unary(
-                    method=MethodInfo(
-                        name="Match",
-                        service_name="metalstack.api.v2.FilesystemService",
-                        input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
-                        output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.match,
-                ),
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -229,22 +193,4 @@ class FilesystemServiceClientSync(ConnectClientSync):
             timeout_ms=timeout_ms,
         )
 
-    def match(
-        self,
-        request: metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse:
-        return self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="Match",
-                service_name="metalstack.api.v2.FilesystemService",
-                input=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchRequest,
-                output=metalstack_dot_api_dot_v2_dot_filesystem__pb2.FilesystemServiceMatchResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
+

@@ -126,7 +126,7 @@ message NetworkServiceDeleteRequest {
 // NetworkServiceListRequest is the request payload for listing networks.
 message NetworkServiceListRequest {
   // Query specifies which networks to return
-  metalstack.api.v2.NetworkQuery query = 2;
+  metalstack.api.v2.NetworkQuery query = 1;
 }
 
 // NetworkServiceCreateResponse is the response payload for creating a network.

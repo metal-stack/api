@@ -299,11 +299,12 @@ const file_metalstack_admin_v2_vpn_proto_rawDesc = "" +
 	"\n" +
 	"\b_project\"O\n" +
 	"\x1bVPNServiceListNodesResponse\x120\n" +
-	"\x05nodes\x18\x01 \x03(\v2\x1a.metalstack.api.v2.VPNNodeR\x05nodes2\xf5\x01\n" +
+	"\x05nodes\x18\x01 \x03(\v2\x1a.metalstack.api.v2.VPNNodeR\x05nodes2\xfd\x01\n" +
 	"\n" +
-	"VPNService\x12o\n" +
-	"\aAuthKey\x12-.metalstack.admin.v2.VPNServiceAuthKeyRequest\x1a..metalstack.admin.v2.VPNServiceAuthKeyResponse\"\x05\xd2\xf3\x18\x01\x01\x12v\n" +
-	"\tListNodes\x12/.metalstack.admin.v2.VPNServiceListNodesRequest\x1a0.metalstack.admin.v2.VPNServiceListNodesResponse\"\x06\xd2\xf3\x18\x02\x01\x02B\xcc\x01\n" +
+	"VPNService\x12s\n" +
+	"\aAuthKey\x12-.metalstack.admin.v2.VPNServiceAuthKeyRequest\x1a..metalstack.admin.v2.VPNServiceAuthKeyResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12z\n" +
+	"\tListNodes\x12/.metalstack.admin.v2.VPNServiceListNodesRequest\x1a0.metalstack.admin.v2.VPNServiceListNodesResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xcc\x01\n" +
 	"\x17com.metalstack.admin.v2B\bVpnProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (

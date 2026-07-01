@@ -432,7 +432,7 @@ func (x *IPServiceCreateRequest) GetAddressFamily() IPAddressFamily {
 // IPServiceUpdateRequest is the request payload for a ip update request
 type IPServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ip the ip to update
+	// Ip the ip address to update
 	Ip string `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request
 	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
@@ -1112,13 +1112,16 @@ const file_metalstack_api_v2_ip_proto_rawDesc = "" +
 	"\x0fIPAddressFamily\x12!\n" +
 	"\x1dIP_ADDRESS_FAMILY_UNSPECIFIED\x10\x00\x12\"\n" +
 	"\x14IP_ADDRESS_FAMILY_V4\x10\x01\x1a\b\x82\xb2\x19\x04ipv4\x12\"\n" +
-	"\x14IP_ADDRESS_FAMILY_V6\x10\x02\x1a\b\x82\xb2\x19\x04ipv62\x93\x04\n" +
+	"\x14IP_ADDRESS_FAMILY_V6\x10\x02\x1a\b\x82\xb2\x19\x04ipv62\x9f\x04\n" +
 	"\tIPService\x12c\n" +
-	"\x03Get\x12&.metalstack.api.v2.IPServiceGetRequest\x1a'.metalstack.api.v2.IPServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12g\n" +
-	"\x06Create\x12).metalstack.api.v2.IPServiceCreateRequest\x1a*.metalstack.api.v2.IPServiceCreateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12g\n" +
-	"\x06Update\x12).metalstack.api.v2.IPServiceUpdateRequest\x1a*.metalstack.api.v2.IPServiceUpdateResponse\"\x06\xca\xf3\x18\x02\x01\x02\x12f\n" +
-	"\x04List\x12'.metalstack.api.v2.IPServiceListRequest\x1a(.metalstack.api.v2.IPServiceListResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12g\n" +
-	"\x06Delete\x12).metalstack.api.v2.IPServiceDeleteRequest\x1a*.metalstack.api.v2.IPServiceDeleteResponse\"\x06\xca\xf3\x18\x02\x01\x02B\xbd\x01\n" +
+	"\x03Get\x12&.metalstack.api.v2.IPServiceGetRequest\x1a'.metalstack.api.v2.IPServiceGetResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12k\n" +
+	"\x06Create\x12).metalstack.api.v2.IPServiceCreateRequest\x1a*.metalstack.api.v2.IPServiceCreateResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12k\n" +
+	"\x06Update\x12).metalstack.api.v2.IPServiceUpdateRequest\x1a*.metalstack.api.v2.IPServiceUpdateResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12f\n" +
+	"\x04List\x12'.metalstack.api.v2.IPServiceListRequest\x1a(.metalstack.api.v2.IPServiceListResponse\"\v\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12k\n" +
+	"\x06Delete\x12).metalstack.api.v2.IPServiceDeleteRequest\x1a*.metalstack.api.v2.IPServiceDeleteResponse\"\n" +
+	"\xca\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01B\xbd\x01\n" +
 	"\x15com.metalstack.api.v2B\aIpProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (

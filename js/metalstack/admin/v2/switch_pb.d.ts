@@ -37,7 +37,7 @@ export type SwitchServiceGetResponse = Message<"metalstack.admin.v2.SwitchServic
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceGetResponse.
@@ -55,7 +55,7 @@ export type SwitchServiceListRequest = Message<"metalstack.admin.v2.SwitchServic
      *
      * @generated from field: metalstack.api.v2.SwitchQuery query = 1;
      */
-    query?: SwitchQuery;
+    query?: SwitchQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceListRequest.
@@ -97,44 +97,44 @@ export type SwitchServiceUpdateRequest = Message<"metalstack.admin.v2.SwitchServ
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * UpdatedAt is the date when this entity was updated
      * Must be part of the update request to ensure optimistic locking
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 3;
      */
-    updatedAt?: Timestamp;
+    updatedAt?: Timestamp | undefined;
     /**
      * Description of the switch
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * ReplaceMode is used to mark a switch ready for replacement
      *
      * @generated from field: optional metalstack.api.v2.SwitchReplaceMode replace_mode = 5;
      */
-    replaceMode?: SwitchReplaceMode;
+    replaceMode?: SwitchReplaceMode | undefined;
     /**
      * ManagementIp is the switch's IP for management access
      *
      * @generated from field: optional string management_ip = 6;
      */
-    managementIp?: string;
+    managementIp?: string | undefined;
     /**
      * ManagementUser is the user name to use for management access
      *
      * @generated from field: optional string management_user = 7;
      */
-    managementUser?: string;
+    managementUser?: string | undefined;
     /**
      * ConsoleCommand is the command for accessing the switch's console
      *
      * @generated from field: optional string console_command = 8;
      */
-    consoleCommand?: string;
+    consoleCommand?: string | undefined;
     /**
      * Nics are the front panel ports of the switch
      *
@@ -146,7 +146,7 @@ export type SwitchServiceUpdateRequest = Message<"metalstack.admin.v2.SwitchServ
      *
      * @generated from field: optional metalstack.api.v2.SwitchOS os = 10;
      */
-    os?: SwitchOS;
+    os?: SwitchOS | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceUpdateRequest.
@@ -164,7 +164,7 @@ export type SwitchServiceUpdateResponse = Message<"metalstack.admin.v2.SwitchSer
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceUpdateResponse.
@@ -206,7 +206,7 @@ export type SwitchServiceDeleteResponse = Message<"metalstack.admin.v2.SwitchSer
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceDeleteResponse.
@@ -248,7 +248,7 @@ export type SwitchServiceMigrateResponse = Message<"metalstack.admin.v2.SwitchSe
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceMigrateResponse.
@@ -296,7 +296,7 @@ export type SwitchServicePortResponse = Message<"metalstack.admin.v2.SwitchServi
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServicePortResponse.
@@ -314,13 +314,13 @@ export type SwitchServiceConnectedMachinesRequest = Message<"metalstack.admin.v2
      *
      * @generated from field: metalstack.api.v2.SwitchQuery query = 1;
      */
-    query?: SwitchQuery;
+    query?: SwitchQuery | undefined;
     /**
      * MachineQuery to filter the machine results
      *
      * @generated from field: metalstack.api.v2.MachineQuery machine_query = 2;
      */
-    machineQuery?: MachineQuery;
+    machineQuery?: MachineQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceConnectedMachinesRequest.

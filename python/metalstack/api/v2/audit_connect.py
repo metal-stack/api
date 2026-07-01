@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -24,7 +26,7 @@ class AuditService(Protocol):
 
 
 class AuditServiceASGIApplication(ConnectASGIApplication[AuditService]):
-    def __init__(self, service: AuditService | AsyncGenerator[AuditService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: AuditService | AsyncGenerator[AuditService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -51,6 +53,8 @@ class AuditServiceASGIApplication(ConnectASGIApplication[AuditService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -101,6 +105,9 @@ class AuditServiceClient(ConnectClient):
         )
 
 
+
+
+
 class AuditServiceSync(Protocol):
     def get(self, request: metalstack_dot_api_dot_v2_dot_audit__pb2.AuditServiceGetRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_audit__pb2.AuditServiceGetResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
@@ -109,7 +116,7 @@ class AuditServiceSync(Protocol):
 
 
 class AuditServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: AuditServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: AuditServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.api.v2.AuditService/Get": EndpointSync.unary(
@@ -135,6 +142,8 @@ class AuditServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -183,3 +192,5 @@ class AuditServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

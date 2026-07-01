@@ -74,7 +74,7 @@ type PartitionServiceHandler_Capacity_Call struct {
 // Capacity is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceCapacityRequest *adminv2.PartitionServiceCapacityRequest
-func (_e *PartitionServiceHandler_Expecter) Capacity(context1 interface{}, partitionServiceCapacityRequest interface{}) *PartitionServiceHandler_Capacity_Call {
+func (_e *PartitionServiceHandler_Expecter) Capacity(context1 any, partitionServiceCapacityRequest any) *PartitionServiceHandler_Capacity_Call {
 	return &PartitionServiceHandler_Capacity_Call{Call: _e.mock.On("Capacity", context1, partitionServiceCapacityRequest)}
 }
 
@@ -142,7 +142,7 @@ type PartitionServiceHandler_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceCreateRequest *adminv2.PartitionServiceCreateRequest
-func (_e *PartitionServiceHandler_Expecter) Create(context1 interface{}, partitionServiceCreateRequest interface{}) *PartitionServiceHandler_Create_Call {
+func (_e *PartitionServiceHandler_Expecter) Create(context1 any, partitionServiceCreateRequest any) *PartitionServiceHandler_Create_Call {
 	return &PartitionServiceHandler_Create_Call{Call: _e.mock.On("Create", context1, partitionServiceCreateRequest)}
 }
 
@@ -210,7 +210,7 @@ type PartitionServiceHandler_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceDeleteRequest *adminv2.PartitionServiceDeleteRequest
-func (_e *PartitionServiceHandler_Expecter) Delete(context1 interface{}, partitionServiceDeleteRequest interface{}) *PartitionServiceHandler_Delete_Call {
+func (_e *PartitionServiceHandler_Expecter) Delete(context1 any, partitionServiceDeleteRequest any) *PartitionServiceHandler_Delete_Call {
 	return &PartitionServiceHandler_Delete_Call{Call: _e.mock.On("Delete", context1, partitionServiceDeleteRequest)}
 }
 
@@ -278,7 +278,7 @@ type PartitionServiceHandler_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - partitionServiceUpdateRequest *adminv2.PartitionServiceUpdateRequest
-func (_e *PartitionServiceHandler_Expecter) Update(context1 interface{}, partitionServiceUpdateRequest interface{}) *PartitionServiceHandler_Update_Call {
+func (_e *PartitionServiceHandler_Expecter) Update(context1 any, partitionServiceUpdateRequest any) *PartitionServiceHandler_Update_Call {
 	return &PartitionServiceHandler_Update_Call{Call: _e.mock.On("Update", context1, partitionServiceUpdateRequest)}
 }
 

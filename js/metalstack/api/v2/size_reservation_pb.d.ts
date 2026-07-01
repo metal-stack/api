@@ -46,7 +46,7 @@ export type SizeReservationServiceListRequest = Message<"metalstack.api.v2.SizeR
      *
      * @generated from field: metalstack.api.v2.SizeReservationQuery query = 2;
      */
-    query?: SizeReservationQuery;
+    query?: SizeReservationQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SizeReservationServiceListRequest.
@@ -64,7 +64,7 @@ export type SizeReservationServiceGetResponse = Message<"metalstack.api.v2.SizeR
      *
      * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
      */
-    sizeReservation?: SizeReservation;
+    sizeReservation?: SizeReservation | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SizeReservationServiceGetResponse.
@@ -106,7 +106,7 @@ export type SizeReservation = Message<"metalstack.api.v2.SizeReservation"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Name of this size reservation
      *
@@ -160,43 +160,43 @@ export type SizeReservationQuery = Message<"metalstack.api.v2.SizeReservationQue
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Name of this size reservation
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this size reservation
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Size id of this size reservation
      *
      * @generated from field: optional string size = 4;
      */
-    size?: string;
+    size?: string | undefined;
     /**
      * Project of the size reservation
      *
      * @generated from field: optional string project = 5;
      */
-    project?: string;
+    project?: string | undefined;
     /**
      * Partition of the size reservation
      *
      * @generated from field: optional string partition = 6;
      */
-    partition?: string;
+    partition?: string | undefined;
     /**
      * Labels lists only size reservations containing the given labels
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 7;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SizeReservationQuery.

@@ -34,7 +34,7 @@ export type SizeServiceListRequest = Message<"metalstack.api.v2.SizeServiceListR
      *
      * @generated from field: metalstack.api.v2.SizeQuery query = 1;
      */
-    query?: SizeQuery;
+    query?: SizeQuery | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SizeServiceListRequest.
@@ -52,7 +52,7 @@ export type SizeServiceGetResponse = Message<"metalstack.api.v2.SizeServiceGetRe
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
-    size?: Size;
+    size?: Size | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SizeServiceGetResponse.
@@ -94,19 +94,19 @@ export type Size = Message<"metalstack.api.v2.Size"> & {
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
-    meta?: Meta;
+    meta?: Meta | undefined;
     /**
      * Name of this size
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this size
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Constraints which must match that a specific machine is considered of this size
      *
@@ -148,7 +148,7 @@ export type SizeConstraint = Message<"metalstack.api.v2.SizeConstraint"> & {
      *
      * @generated from field: optional string identifier = 4;
      */
-    identifier?: string;
+    identifier?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SizeConstraint.
@@ -166,25 +166,25 @@ export type SizeQuery = Message<"metalstack.api.v2.SizeQuery"> & {
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Name of the size to query
      *
      * @generated from field: optional string name = 2;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of the size to query
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Labels lists only sizes containing the given labels
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 4;
      */
-    labels?: Labels;
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.SizeQuery.

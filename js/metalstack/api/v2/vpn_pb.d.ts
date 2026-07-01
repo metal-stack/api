@@ -40,7 +40,7 @@ export type VPNNode = Message<"metalstack.api.v2.VPNNode"> & {
      *
      * @generated from field: google.protobuf.Timestamp last_seen = 5;
      */
-    lastSeen?: Timestamp;
+    lastSeen?: Timestamp | undefined;
     /**
      * Online indicates if this node is online
      *

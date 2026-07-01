@@ -17,7 +17,7 @@ export type SizeServiceCreateRequest = Message<"metalstack.admin.v2.SizeServiceC
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
-    size?: Size;
+    size?: Size | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceCreateRequest.
@@ -35,7 +35,7 @@ export type SizeServiceCreateResponse = Message<"metalstack.admin.v2.SizeService
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
-    size?: Size;
+    size?: Size | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceCreateResponse.
@@ -59,19 +59,19 @@ export type SizeServiceUpdateRequest = Message<"metalstack.admin.v2.SizeServiceU
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Name of this size
      *
      * @generated from field: optional string name = 3;
      */
-    name?: string;
+    name?: string | undefined;
     /**
      * Description of this size
      *
      * @generated from field: optional string description = 4;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * Constraints which must match that a specific machine is considered of this size
      *
@@ -83,7 +83,7 @@ export type SizeServiceUpdateRequest = Message<"metalstack.admin.v2.SizeServiceU
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 6;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceUpdateRequest.
@@ -101,7 +101,7 @@ export type SizeServiceUpdateResponse = Message<"metalstack.admin.v2.SizeService
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
-    size?: Size;
+    size?: Size | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceUpdateResponse.
@@ -137,7 +137,7 @@ export type SizeServiceDeleteResponse = Message<"metalstack.admin.v2.SizeService
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
-    size?: Size;
+    size?: Size | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SizeServiceDeleteResponse.

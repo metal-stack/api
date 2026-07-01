@@ -5,9 +5,10 @@ package metalstack.api.v2;
 import "buf/validate/validate.proto";
 
 // See https://protovalidate.com/schemas/predefined-rules/
+// See https://celbyexample.com/ for cel documentation
 
 extend buf.validate.StringRules {
-  // Macaddress returns true if the given string is a valid macadress
+  // Macaddress returns true if the given string is a valid macaddress
   optional bool macaddress = 80048951 [(buf.validate.predefined).cel = {
     id: "string.macaddress"
     message: "this string must be a valid macaddress"
@@ -54,6 +55,30 @@ extend buf.validate.StringRules {
     id: "string.trimmed"
     message: "value must not start or end with whitespace"
     expression: "this.trim().size() == this.size()"
+  }];
+  // IsUser returns true if name field satisfies our requirements
+  optional bool is_user = 80048959 [(buf.validate.predefined).cel = {
+    id: "string.is_user"
+    message: "must be within 2 and 512 characters"
+    expression: "this.size() >= 2 && this.size() <= 512"
+  }];
+  // IsOption returns true if name field satisfies our requirements
+  optional bool is_option = 80048960 [(buf.validate.predefined).cel = {
+    id: "string.is_option"
+    message: "must be within 1 and 128 characters"
+    expression: "this.size() >= 1 && this.size() <= 128"
+  }];
+  // IsKey returns true if name field satisfies our requirements
+  optional bool is_key = 80048961 [(buf.validate.predefined).cel = {
+    id: "string.is_key"
+    message: "must be within 1 and 8192 characters"
+    expression: "this.size() >= 1 && this.size() <= 8192"
+  }];
+  // IsTenantLogin returns true if name field satisfies our requirements
+  optional bool is_tenant_login = 80048962 [(buf.validate.predefined).cel = {
+    id: "string.is_tenant_login"
+    message: "must be within 2 and 256 characters"
+    expression: "this.size() >= 2 && this.size() <= 256"
   }];
 }
 

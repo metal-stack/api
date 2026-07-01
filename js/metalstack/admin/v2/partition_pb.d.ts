@@ -17,7 +17,7 @@ export type PartitionServiceCreateRequest = Message<"metalstack.admin.v2.Partiti
      *
      * @generated from field: metalstack.api.v2.Partition partition = 1;
      */
-    partition?: Partition;
+    partition?: Partition | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.PartitionServiceCreateRequest.
@@ -41,19 +41,19 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
-    updateMeta?: UpdateMeta;
+    updateMeta?: UpdateMeta | undefined;
     /**
      * Description of this partition
      *
      * @generated from field: optional string description = 3;
      */
-    description?: string;
+    description?: string | undefined;
     /**
      * PartitionBootConfiguration defines how metal-hammer boots
      *
      * @generated from field: metalstack.api.v2.PartitionBootConfiguration boot_configuration = 4;
      */
-    bootConfiguration?: PartitionBootConfiguration;
+    bootConfiguration?: PartitionBootConfiguration | undefined;
     /**
      * DNSServers for this partition
      *
@@ -78,7 +78,7 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 8;
      */
-    labels?: UpdateLabels;
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.PartitionServiceUpdateRequest.
@@ -114,7 +114,7 @@ export type PartitionServiceCreateResponse = Message<"metalstack.admin.v2.Partit
      *
      * @generated from field: metalstack.api.v2.Partition partition = 1;
      */
-    partition?: Partition;
+    partition?: Partition | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.PartitionServiceCreateResponse.
@@ -132,7 +132,7 @@ export type PartitionServiceUpdateResponse = Message<"metalstack.admin.v2.Partit
      *
      * @generated from field: metalstack.api.v2.Partition partition = 1;
      */
-    partition?: Partition;
+    partition?: Partition | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.PartitionServiceUpdateResponse.
@@ -150,7 +150,7 @@ export type PartitionServiceDeleteResponse = Message<"metalstack.admin.v2.Partit
      *
      * @generated from field: metalstack.api.v2.Partition partition = 1;
      */
-    partition?: Partition;
+    partition?: Partition | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.PartitionServiceDeleteResponse.
@@ -168,19 +168,19 @@ export type PartitionServiceCapacityRequest = Message<"metalstack.admin.v2.Parti
      *
      * @generated from field: optional string id = 1;
      */
-    id?: string;
+    id?: string | undefined;
     /**
      * Size of machines to show the capacity
      *
      * @generated from field: optional string size = 2;
      */
-    size?: string;
+    size?: string | undefined;
     /**
      * Project of machines to show the capacity
      *
      * @generated from field: optional string project = 3;
      */
-    project?: string;
+    project?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.PartitionServiceCapacityRequest.

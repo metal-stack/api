@@ -74,7 +74,7 @@ type ImageServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - imageServiceGetRequest *apiv2.ImageServiceGetRequest
-func (_e *ImageServiceHandler_Expecter) Get(context1 interface{}, imageServiceGetRequest interface{}) *ImageServiceHandler_Get_Call {
+func (_e *ImageServiceHandler_Expecter) Get(context1 any, imageServiceGetRequest any) *ImageServiceHandler_Get_Call {
 	return &ImageServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, imageServiceGetRequest)}
 }
 
@@ -142,7 +142,7 @@ type ImageServiceHandler_Latest_Call struct {
 // Latest is a helper method to define mock.On call
 //   - context1 context.Context
 //   - imageServiceLatestRequest *apiv2.ImageServiceLatestRequest
-func (_e *ImageServiceHandler_Expecter) Latest(context1 interface{}, imageServiceLatestRequest interface{}) *ImageServiceHandler_Latest_Call {
+func (_e *ImageServiceHandler_Expecter) Latest(context1 any, imageServiceLatestRequest any) *ImageServiceHandler_Latest_Call {
 	return &ImageServiceHandler_Latest_Call{Call: _e.mock.On("Latest", context1, imageServiceLatestRequest)}
 }
 
@@ -210,7 +210,7 @@ type ImageServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - imageServiceListRequest *apiv2.ImageServiceListRequest
-func (_e *ImageServiceHandler_Expecter) List(context1 interface{}, imageServiceListRequest interface{}) *ImageServiceHandler_List_Call {
+func (_e *ImageServiceHandler_Expecter) List(context1 any, imageServiceListRequest any) *ImageServiceHandler_List_Call {
 	return &ImageServiceHandler_List_Call{Call: _e.mock.On("List", context1, imageServiceListRequest)}
 }
 

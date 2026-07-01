@@ -35,7 +35,7 @@ export type SwitchServiceGetResponse = Message<"metalstack.infra.v2.SwitchServic
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.infra.v2.SwitchServiceGetResponse.
@@ -53,7 +53,7 @@ export type SwitchServiceRegisterRequest = Message<"metalstack.infra.v2.SwitchSe
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.infra.v2.SwitchServiceRegisterRequest.
@@ -71,7 +71,7 @@ export type SwitchServiceRegisterResponse = Message<"metalstack.infra.v2.SwitchS
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
-    switch?: Switch;
+    switch?: Switch | undefined;
 };
 /**
  * Describes the message metalstack.infra.v2.SwitchServiceRegisterResponse.
@@ -95,13 +95,13 @@ export type SwitchServiceHeartbeatRequest = Message<"metalstack.infra.v2.SwitchS
      *
      * @generated from field: google.protobuf.Duration duration = 2;
      */
-    duration?: Duration;
+    duration?: Duration | undefined;
     /**
      * Error if any occurred during the sync
      *
      * @generated from field: optional string error = 3;
      */
-    error?: string;
+    error?: string | undefined;
     /**
      * PortStates maps port identifiers to the respective port's operational state
      *
@@ -141,13 +141,13 @@ export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.Switch
      *
      * @generated from field: metalstack.api.v2.SwitchSync last_sync = 2;
      */
-    lastSync?: SwitchSync;
+    lastSync?: SwitchSync | undefined;
     /**
      * LastSyncError holds information about the last erroneous sync
      *
      * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 3;
      */
-    lastSyncError?: SwitchSync;
+    lastSyncError?: SwitchSync | undefined;
 };
 /**
  * Describes the message metalstack.infra.v2.SwitchServiceHeartbeatResponse.

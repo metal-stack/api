@@ -74,7 +74,7 @@ type SizeServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeServiceGetRequest *apiv2.SizeServiceGetRequest
-func (_e *SizeServiceHandler_Expecter) Get(context1 interface{}, sizeServiceGetRequest interface{}) *SizeServiceHandler_Get_Call {
+func (_e *SizeServiceHandler_Expecter) Get(context1 any, sizeServiceGetRequest any) *SizeServiceHandler_Get_Call {
 	return &SizeServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, sizeServiceGetRequest)}
 }
 
@@ -142,7 +142,7 @@ type SizeServiceHandler_List_Call struct {
 // List is a helper method to define mock.On call
 //   - context1 context.Context
 //   - sizeServiceListRequest *apiv2.SizeServiceListRequest
-func (_e *SizeServiceHandler_Expecter) List(context1 interface{}, sizeServiceListRequest interface{}) *SizeServiceHandler_List_Call {
+func (_e *SizeServiceHandler_Expecter) List(context1 any, sizeServiceListRequest any) *SizeServiceHandler_List_Call {
 	return &SizeServiceHandler_List_Call{Call: _e.mock.On("List", context1, sizeServiceListRequest)}
 }
 

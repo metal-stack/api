@@ -26,8 +26,8 @@ const (
 // TokenServiceListRequest is the request payload for listing tokens.
 type TokenServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// User is the id of the user for which the tokens should be listed
-	User          *string `protobuf:"bytes,1,opt,name=user,proto3,oneof" json:"user,omitempty"`
+	// Query for tokens
+	Query         *v2.TokenQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -62,11 +62,11 @@ func (*TokenServiceListRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_token_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TokenServiceListRequest) GetUser() string {
-	if x != nil && x.User != nil {
-		return *x.User
+func (x *TokenServiceListRequest) GetQuery() *v2.TokenQuery {
+	if x != nil {
+		return x.Query
 	}
-	return ""
+	return nil
 }
 
 // TokenServiceListResponse is the response payload for listing tokens.
@@ -321,29 +321,27 @@ var File_metalstack_admin_v2_token_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_token_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/admin/v2/token.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1dmetalstack/api/v2/token.proto\";\n" +
-	"\x17TokenServiceListRequest\x12\x17\n" +
-	"\x04user\x18\x01 \x01(\tH\x00R\x04user\x88\x01\x01B\a\n" +
-	"\x05_user\"L\n" +
+	"\x1fmetalstack/admin/v2/token.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1dmetalstack/api/v2/token.proto\"N\n" +
+	"\x17TokenServiceListRequest\x123\n" +
+	"\x05query\x18\x01 \x01(\v2\x1d.metalstack.api.v2.TokenQueryR\x05query\"L\n" +
 	"\x18TokenServiceListResponse\x120\n" +
-	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"Y\n" +
+	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"Z\n" +
 	"\x19TokenServiceRevokeRequest\x12\x1c\n" +
-	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1e\n" +
-	"\x04user\x18\x02 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04R\x04user\"\x1c\n" +
-	"\x1aTokenServiceRevokeResponse\"\xa9\x01\n" +
-	"\x19TokenServiceCreateRequest\x12#\n" +
-	"\x04user\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x04H\x00R\x04user\x88\x01\x01\x12^\n" +
+	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n" +
+	"\x04user\x18\x02 \x01(\tB\v\xbaH\br\x06\xf8\xb3\xae\xb1\x02\x01R\x04user\"\x1c\n" +
+	"\x1aTokenServiceRevokeResponse\"\xaa\x01\n" +
+	"\x19TokenServiceCreateRequest\x12$\n" +
+	"\x04user\x18\x01 \x01(\tB\v\xbaH\br\x06\xf8\xb3\xae\xb1\x02\x01H\x00R\x04user\x88\x01\x01\x12^\n" +
 	"\x14token_create_request\x18\x02 \x01(\v2,.metalstack.api.v2.TokenServiceCreateRequestR\x12tokenCreateRequestB\a\n" +
 	"\x05_user\"d\n" +
 	"\x1aTokenServiceCreateResponse\x12.\n" +
 	"\x05token\x18\x01 \x01(\v2\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n" +
-	"\x06secret\x18\x02 \x01(\tR\x06secret2\xdf\x02\n" +
-	"\fTokenService\x12k\n" +
-	"\x04List\x12,.metalstack.admin.v2.TokenServiceListRequest\x1a-.metalstack.admin.v2.TokenServiceListResponse\"\x06\xd2\xf3\x18\x02\x01\x02\x12p\n" +
-	"\x06Revoke\x12..metalstack.admin.v2.TokenServiceRevokeRequest\x1a/.metalstack.admin.v2.TokenServiceRevokeResponse\"\x05\xd2\xf3\x18\x01\x01\x12p\n" +
-	"\x06Create\x12..metalstack.admin.v2.TokenServiceCreateRequest\x1a/.metalstack.admin.v2.TokenServiceCreateResponse\"\x05\xd2\xf3\x18\x01\x01B\xce\x01\n" +
+	"\x06secret\x18\x02 \x01(\tR\x06secret2\xeb\x02\n" +
+	"\fTokenService\x12o\n" +
+	"\x04List\x12,.metalstack.admin.v2.TokenServiceListRequest\x1a-.metalstack.admin.v2.TokenServiceListResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12t\n" +
+	"\x06Revoke\x12..metalstack.admin.v2.TokenServiceRevokeRequest\x1a/.metalstack.admin.v2.TokenServiceRevokeResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12t\n" +
+	"\x06Create\x12..metalstack.admin.v2.TokenServiceCreateRequest\x1a/.metalstack.admin.v2.TokenServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01B\xce\x01\n" +
 	"\x17com.metalstack.admin.v2B\n" +
 	"TokenProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
@@ -367,24 +365,26 @@ var file_metalstack_admin_v2_token_proto_goTypes = []any{
 	(*TokenServiceRevokeResponse)(nil),   // 3: metalstack.admin.v2.TokenServiceRevokeResponse
 	(*TokenServiceCreateRequest)(nil),    // 4: metalstack.admin.v2.TokenServiceCreateRequest
 	(*TokenServiceCreateResponse)(nil),   // 5: metalstack.admin.v2.TokenServiceCreateResponse
-	(*v2.Token)(nil),                     // 6: metalstack.api.v2.Token
-	(*v2.TokenServiceCreateRequest)(nil), // 7: metalstack.api.v2.TokenServiceCreateRequest
+	(*v2.TokenQuery)(nil),                // 6: metalstack.api.v2.TokenQuery
+	(*v2.Token)(nil),                     // 7: metalstack.api.v2.Token
+	(*v2.TokenServiceCreateRequest)(nil), // 8: metalstack.api.v2.TokenServiceCreateRequest
 }
 var file_metalstack_admin_v2_token_proto_depIdxs = []int32{
-	6, // 0: metalstack.admin.v2.TokenServiceListResponse.tokens:type_name -> metalstack.api.v2.Token
-	7, // 1: metalstack.admin.v2.TokenServiceCreateRequest.token_create_request:type_name -> metalstack.api.v2.TokenServiceCreateRequest
-	6, // 2: metalstack.admin.v2.TokenServiceCreateResponse.token:type_name -> metalstack.api.v2.Token
-	0, // 3: metalstack.admin.v2.TokenService.List:input_type -> metalstack.admin.v2.TokenServiceListRequest
-	2, // 4: metalstack.admin.v2.TokenService.Revoke:input_type -> metalstack.admin.v2.TokenServiceRevokeRequest
-	4, // 5: metalstack.admin.v2.TokenService.Create:input_type -> metalstack.admin.v2.TokenServiceCreateRequest
-	1, // 6: metalstack.admin.v2.TokenService.List:output_type -> metalstack.admin.v2.TokenServiceListResponse
-	3, // 7: metalstack.admin.v2.TokenService.Revoke:output_type -> metalstack.admin.v2.TokenServiceRevokeResponse
-	5, // 8: metalstack.admin.v2.TokenService.Create:output_type -> metalstack.admin.v2.TokenServiceCreateResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	6, // 0: metalstack.admin.v2.TokenServiceListRequest.query:type_name -> metalstack.api.v2.TokenQuery
+	7, // 1: metalstack.admin.v2.TokenServiceListResponse.tokens:type_name -> metalstack.api.v2.Token
+	8, // 2: metalstack.admin.v2.TokenServiceCreateRequest.token_create_request:type_name -> metalstack.api.v2.TokenServiceCreateRequest
+	7, // 3: metalstack.admin.v2.TokenServiceCreateResponse.token:type_name -> metalstack.api.v2.Token
+	0, // 4: metalstack.admin.v2.TokenService.List:input_type -> metalstack.admin.v2.TokenServiceListRequest
+	2, // 5: metalstack.admin.v2.TokenService.Revoke:input_type -> metalstack.admin.v2.TokenServiceRevokeRequest
+	4, // 6: metalstack.admin.v2.TokenService.Create:input_type -> metalstack.admin.v2.TokenServiceCreateRequest
+	1, // 7: metalstack.admin.v2.TokenService.List:output_type -> metalstack.admin.v2.TokenServiceListResponse
+	3, // 8: metalstack.admin.v2.TokenService.Revoke:output_type -> metalstack.admin.v2.TokenServiceRevokeResponse
+	5, // 9: metalstack.admin.v2.TokenService.Create:output_type -> metalstack.admin.v2.TokenServiceCreateResponse
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_token_proto_init() }
@@ -392,7 +392,6 @@ func file_metalstack_admin_v2_token_proto_init() {
 	if File_metalstack_admin_v2_token_proto != nil {
 		return
 	}
-	file_metalstack_admin_v2_token_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_admin_v2_token_proto_msgTypes[4].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

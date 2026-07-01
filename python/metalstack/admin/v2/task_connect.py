@@ -7,6 +7,8 @@ from typing import Protocol
 
 from connectrpc.client import ConnectClient, ConnectClientSync
 from connectrpc.code import Code
+from connectrpc.codec import Codec
+from connectrpc.compression import Compression
 from connectrpc.errors import ConnectError
 from connectrpc.interceptor import Interceptor, InterceptorSync
 from connectrpc.method import IdempotencyLevel, MethodInfo
@@ -30,7 +32,7 @@ class TaskService(Protocol):
 
 
 class TaskServiceASGIApplication(ConnectASGIApplication[TaskService]):
-    def __init__(self, service: TaskService | AsyncGenerator[TaskService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: TaskService | AsyncGenerator[TaskService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             service=service,
             endpoints=lambda svc: {
@@ -77,6 +79,8 @@ class TaskServiceASGIApplication(ConnectASGIApplication[TaskService]):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -167,6 +171,9 @@ class TaskServiceClient(ConnectClient):
         )
 
 
+
+
+
 class TaskServiceSync(Protocol):
     def get(self, request: metalstack_dot_admin_dot_v2_dot_task__pb2.TaskServiceGetRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_task__pb2.TaskServiceGetResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
@@ -179,7 +186,7 @@ class TaskServiceSync(Protocol):
 
 
 class TaskServiceWSGIApplication(ConnectWSGIApplication):
-    def __init__(self, service: TaskServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None) -> None:
+    def __init__(self, service: TaskServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
                 "/metalstack.admin.v2.TaskService/Get": EndpointSync.unary(
@@ -225,6 +232,8 @@ class TaskServiceWSGIApplication(ConnectWSGIApplication):
             },
             interceptors=interceptors,
             read_max_bytes=read_max_bytes,
+            compressions=compressions,
+            codecs=codecs,
         )
 
     @property
@@ -313,3 +322,5 @@ class TaskServiceClientSync(ConnectClientSync):
             headers=headers,
             timeout_ms=timeout_ms,
         )
+
+

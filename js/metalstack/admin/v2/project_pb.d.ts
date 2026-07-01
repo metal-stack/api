@@ -1,6 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Labels } from "../../api/v2/common_pb";
-import type { Project } from "../../api/v2/project_pb";
+import type { Project, ProjectQuery } from "../../api/v2/project_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/project.proto.
@@ -13,17 +12,11 @@ export declare const file_metalstack_admin_v2_project: GenFile;
  */
 export type ProjectServiceListRequest = Message<"metalstack.admin.v2.ProjectServiceListRequest"> & {
     /**
-     * Tenant filters projects by this tenant
+     * Query for projects
      *
-     * @generated from field: optional string tenant = 1;
+     * @generated from field: optional metalstack.api.v2.ProjectQuery query = 1;
      */
-    tenant?: string;
-    /**
-     * Labels filters projects containing the given labels
-     *
-     * @generated from field: optional metalstack.api.v2.Labels labels = 2;
-     */
-    labels?: Labels;
+    query?: ProjectQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ProjectServiceListRequest.

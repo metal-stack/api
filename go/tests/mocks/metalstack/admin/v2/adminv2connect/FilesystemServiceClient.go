@@ -74,7 +74,7 @@ type FilesystemServiceClient_Create_Call struct {
 // Create is a helper method to define mock.On call
 //   - context1 context.Context
 //   - filesystemServiceCreateRequest *adminv2.FilesystemServiceCreateRequest
-func (_e *FilesystemServiceClient_Expecter) Create(context1 interface{}, filesystemServiceCreateRequest interface{}) *FilesystemServiceClient_Create_Call {
+func (_e *FilesystemServiceClient_Expecter) Create(context1 any, filesystemServiceCreateRequest any) *FilesystemServiceClient_Create_Call {
 	return &FilesystemServiceClient_Create_Call{Call: _e.mock.On("Create", context1, filesystemServiceCreateRequest)}
 }
 
@@ -142,7 +142,7 @@ type FilesystemServiceClient_Delete_Call struct {
 // Delete is a helper method to define mock.On call
 //   - context1 context.Context
 //   - filesystemServiceDeleteRequest *adminv2.FilesystemServiceDeleteRequest
-func (_e *FilesystemServiceClient_Expecter) Delete(context1 interface{}, filesystemServiceDeleteRequest interface{}) *FilesystemServiceClient_Delete_Call {
+func (_e *FilesystemServiceClient_Expecter) Delete(context1 any, filesystemServiceDeleteRequest any) *FilesystemServiceClient_Delete_Call {
 	return &FilesystemServiceClient_Delete_Call{Call: _e.mock.On("Delete", context1, filesystemServiceDeleteRequest)}
 }
 
@@ -170,6 +170,74 @@ func (_c *FilesystemServiceClient_Delete_Call) Return(filesystemServiceDeleteRes
 }
 
 func (_c *FilesystemServiceClient_Delete_Call) RunAndReturn(run func(context1 context.Context, filesystemServiceDeleteRequest *adminv2.FilesystemServiceDeleteRequest) (*adminv2.FilesystemServiceDeleteResponse, error)) *FilesystemServiceClient_Delete_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// Match provides a mock function for the type FilesystemServiceClient
+func (_mock *FilesystemServiceClient) Match(context1 context.Context, filesystemServiceMatchRequest *adminv2.FilesystemServiceMatchRequest) (*adminv2.FilesystemServiceMatchResponse, error) {
+	ret := _mock.Called(context1, filesystemServiceMatchRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for Match")
+	}
+
+	var r0 *adminv2.FilesystemServiceMatchResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.FilesystemServiceMatchRequest) (*adminv2.FilesystemServiceMatchResponse, error)); ok {
+		return returnFunc(context1, filesystemServiceMatchRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *adminv2.FilesystemServiceMatchRequest) *adminv2.FilesystemServiceMatchResponse); ok {
+		r0 = returnFunc(context1, filesystemServiceMatchRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*adminv2.FilesystemServiceMatchResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *adminv2.FilesystemServiceMatchRequest) error); ok {
+		r1 = returnFunc(context1, filesystemServiceMatchRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// FilesystemServiceClient_Match_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Match'
+type FilesystemServiceClient_Match_Call struct {
+	*mock.Call
+}
+
+// Match is a helper method to define mock.On call
+//   - context1 context.Context
+//   - filesystemServiceMatchRequest *adminv2.FilesystemServiceMatchRequest
+func (_e *FilesystemServiceClient_Expecter) Match(context1 any, filesystemServiceMatchRequest any) *FilesystemServiceClient_Match_Call {
+	return &FilesystemServiceClient_Match_Call{Call: _e.mock.On("Match", context1, filesystemServiceMatchRequest)}
+}
+
+func (_c *FilesystemServiceClient_Match_Call) Run(run func(context1 context.Context, filesystemServiceMatchRequest *adminv2.FilesystemServiceMatchRequest)) *FilesystemServiceClient_Match_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *adminv2.FilesystemServiceMatchRequest
+		if args[1] != nil {
+			arg1 = args[1].(*adminv2.FilesystemServiceMatchRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *FilesystemServiceClient_Match_Call) Return(filesystemServiceMatchResponse *adminv2.FilesystemServiceMatchResponse, err error) *FilesystemServiceClient_Match_Call {
+	_c.Call.Return(filesystemServiceMatchResponse, err)
+	return _c
+}
+
+func (_c *FilesystemServiceClient_Match_Call) RunAndReturn(run func(context1 context.Context, filesystemServiceMatchRequest *adminv2.FilesystemServiceMatchRequest) (*adminv2.FilesystemServiceMatchResponse, error)) *FilesystemServiceClient_Match_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -210,7 +278,7 @@ type FilesystemServiceClient_Update_Call struct {
 // Update is a helper method to define mock.On call
 //   - context1 context.Context
 //   - filesystemServiceUpdateRequest *adminv2.FilesystemServiceUpdateRequest
-func (_e *FilesystemServiceClient_Expecter) Update(context1 interface{}, filesystemServiceUpdateRequest interface{}) *FilesystemServiceClient_Update_Call {
+func (_e *FilesystemServiceClient_Expecter) Update(context1 any, filesystemServiceUpdateRequest any) *FilesystemServiceClient_Update_Call {
 	return &FilesystemServiceClient_Update_Call{Call: _e.mock.On("Update", context1, filesystemServiceUpdateRequest)}
 }
 

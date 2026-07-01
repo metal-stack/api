@@ -74,7 +74,7 @@ type UserServiceHandler_Get_Call struct {
 // Get is a helper method to define mock.On call
 //   - context1 context.Context
 //   - userServiceGetRequest *apiv2.UserServiceGetRequest
-func (_e *UserServiceHandler_Expecter) Get(context1 interface{}, userServiceGetRequest interface{}) *UserServiceHandler_Get_Call {
+func (_e *UserServiceHandler_Expecter) Get(context1 any, userServiceGetRequest any) *UserServiceHandler_Get_Call {
 	return &UserServiceHandler_Get_Call{Call: _e.mock.On("Get", context1, userServiceGetRequest)}
 }
 

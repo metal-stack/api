@@ -1,6 +1,7 @@
 import datetime
 
 from buf.validate import validate_pb2 as _validate_pb2
+from google.protobuf import duration_pb2 as _duration_pb2
 from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import filesystem_pb2 as _filesystem_pb2
@@ -27,7 +28,7 @@ class IPProtocol(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
 class MachineState(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
     MACHINE_STATE_UNSPECIFIED: _ClassVar[MachineState]
-    MACHINE_STATE_RESERVED: _ClassVar[MachineState]
+    MACHINE_STATE_TAINTED: _ClassVar[MachineState]
     MACHINE_STATE_LOCKED: _ClassVar[MachineState]
     MACHINE_STATE_AVAILABLE: _ClassVar[MachineState]
 
@@ -79,11 +80,35 @@ class MachineBMCCommand(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: _ClassVar[MachineBMCCommand]
     MACHINE_BMC_COMMAND_MACHINE_DELETED: _ClassVar[MachineBMCCommand]
     MACHINE_BMC_COMMAND_MACHINE_CREATED: _ClassVar[MachineBMCCommand]
+
+class MachineIssueType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_ISSUE_TYPE_UNSPECIFIED: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_ASN_UNIQUENESS: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_CRASH_LOOP: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_LIVELINESS_DEAD: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER: _ClassVar[MachineIssueType]
+    MACHINE_ISSUE_TYPE_NO_PARTITION: _ClassVar[MachineIssueType]
+
+class MachineIssueSeverity(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    MACHINE_ISSUE_SEVERITY_UNSPECIFIED: _ClassVar[MachineIssueSeverity]
+    MACHINE_ISSUE_SEVERITY_MINOR: _ClassVar[MachineIssueSeverity]
+    MACHINE_ISSUE_SEVERITY_MAJOR: _ClassVar[MachineIssueSeverity]
+    MACHINE_ISSUE_SEVERITY_CRITICAL: _ClassVar[MachineIssueSeverity]
 IP_PROTOCOL_UNSPECIFIED: IPProtocol
 IP_PROTOCOL_TCP: IPProtocol
 IP_PROTOCOL_UDP: IPProtocol
 MACHINE_STATE_UNSPECIFIED: MachineState
-MACHINE_STATE_RESERVED: MachineState
+MACHINE_STATE_TAINTED: MachineState
 MACHINE_STATE_LOCKED: MachineState
 MACHINE_STATE_AVAILABLE: MachineState
 MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED: MachineProvisioningEventState
@@ -120,6 +145,24 @@ MACHINE_BMC_COMMAND_IDENTIFY_LED_ON: MachineBMCCommand
 MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF: MachineBMCCommand
 MACHINE_BMC_COMMAND_MACHINE_DELETED: MachineBMCCommand
 MACHINE_BMC_COMMAND_MACHINE_CREATED: MachineBMCCommand
+MACHINE_ISSUE_TYPE_UNSPECIFIED: MachineIssueType
+MACHINE_ISSUE_TYPE_ASN_UNIQUENESS: MachineIssueType
+MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED: MachineIssueType
+MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP: MachineIssueType
+MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP: MachineIssueType
+MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC: MachineIssueType
+MACHINE_ISSUE_TYPE_CRASH_LOOP: MachineIssueType
+MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM: MachineIssueType
+MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR: MachineIssueType
+MACHINE_ISSUE_TYPE_LIVELINESS_DEAD: MachineIssueType
+MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE: MachineIssueType
+MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN: MachineIssueType
+MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER: MachineIssueType
+MACHINE_ISSUE_TYPE_NO_PARTITION: MachineIssueType
+MACHINE_ISSUE_SEVERITY_UNSPECIFIED: MachineIssueSeverity
+MACHINE_ISSUE_SEVERITY_MINOR: MachineIssueSeverity
+MACHINE_ISSUE_SEVERITY_MAJOR: MachineIssueSeverity
+MACHINE_ISSUE_SEVERITY_CRITICAL: MachineIssueSeverity
 
 class MachineServiceGetRequest(_message.Message):
     __slots__ = ("uuid", "project")
@@ -136,7 +179,7 @@ class MachineServiceGetResponse(_message.Message):
     def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceCreateRequest(_message.Message):
-    __slots__ = ("project", "uuid", "name", "description", "hostname", "partition", "size", "image", "filesystem_layout", "ssh_public_keys", "userdata", "labels", "networks", "ips", "placement_tags", "dns_servers", "ntp_servers", "allocation_type", "firewall_spec")
+    __slots__ = ("project", "uuid", "name", "description", "hostname", "partition", "size", "image", "filesystem_layout", "ssh_public_keys", "userdata", "labels", "networks", "placement_tags", "dns_servers", "ntp_servers", "allocation_type", "firewall_spec")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     UUID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -150,7 +193,6 @@ class MachineServiceCreateRequest(_message.Message):
     USERDATA_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     NETWORKS_FIELD_NUMBER: _ClassVar[int]
-    IPS_FIELD_NUMBER: _ClassVar[int]
     PLACEMENT_TAGS_FIELD_NUMBER: _ClassVar[int]
     DNS_SERVERS_FIELD_NUMBER: _ClassVar[int]
     NTP_SERVERS_FIELD_NUMBER: _ClassVar[int]
@@ -169,13 +211,12 @@ class MachineServiceCreateRequest(_message.Message):
     userdata: str
     labels: _common_pb2.Labels
     networks: _containers.RepeatedCompositeFieldContainer[MachineAllocationNetwork]
-    ips: _containers.RepeatedCompositeFieldContainer[MachineAllocationIp]
     placement_tags: _containers.RepeatedScalarFieldContainer[str]
     dns_servers: _containers.RepeatedCompositeFieldContainer[_partition_pb2.DNSServer]
     ntp_servers: _containers.RepeatedCompositeFieldContainer[_partition_pb2.NTPServer]
     allocation_type: MachineAllocationType
     firewall_spec: FirewallSpec
-    def __init__(self, project: _Optional[str] = ..., uuid: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., hostname: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineAllocationNetwork, _Mapping]]] = ..., ips: _Optional[_Iterable[_Union[MachineAllocationIp, _Mapping]]] = ..., placement_tags: _Optional[_Iterable[str]] = ..., dns_servers: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_servers: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_spec: _Optional[_Union[FirewallSpec, _Mapping]] = ...) -> None: ...
+    def __init__(self, project: _Optional[str] = ..., uuid: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., hostname: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineAllocationNetwork, _Mapping]]] = ..., placement_tags: _Optional[_Iterable[str]] = ..., dns_servers: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_servers: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_spec: _Optional[_Union[FirewallSpec, _Mapping]] = ...) -> None: ...
 
 class FirewallSpec(_message.Message):
     __slots__ = ("firewall_rules",)
@@ -352,20 +393,12 @@ class MachineAllocation(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., created_by: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineNetwork, _Mapping]]] = ..., hostname: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ..., dns_servers: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_servers: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ...) -> None: ...
 
 class MachineAllocationNetwork(_message.Message):
-    __slots__ = ("network", "no_auto_acquire_ip")
+    __slots__ = ("network", "ips")
     NETWORK_FIELD_NUMBER: _ClassVar[int]
-    NO_AUTO_ACQUIRE_IP_FIELD_NUMBER: _ClassVar[int]
+    IPS_FIELD_NUMBER: _ClassVar[int]
     network: str
-    no_auto_acquire_ip: bool
-    def __init__(self, network: _Optional[str] = ..., no_auto_acquire_ip: _Optional[bool] = ...) -> None: ...
-
-class MachineAllocationIp(_message.Message):
-    __slots__ = ("ip", "namespace")
-    IP_FIELD_NUMBER: _ClassVar[int]
-    NAMESPACE_FIELD_NUMBER: _ClassVar[int]
-    ip: str
-    namespace: str
-    def __init__(self, ip: _Optional[str] = ..., namespace: _Optional[str] = ...) -> None: ...
+    ips: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, network: _Optional[str] = ..., ips: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class FirewallRules(_message.Message):
     __slots__ = ("egress", "ingress")
@@ -747,3 +780,39 @@ class MachineHardwareQuery(_message.Message):
     memory: int
     cpu_cores: int
     def __init__(self, memory: _Optional[int] = ..., cpu_cores: _Optional[int] = ...) -> None: ...
+
+class MachineIssuesQuery(_message.Message):
+    __slots__ = ("machine_query", "only", "omit", "severity", "last_error_threshold")
+    MACHINE_QUERY_FIELD_NUMBER: _ClassVar[int]
+    ONLY_FIELD_NUMBER: _ClassVar[int]
+    OMIT_FIELD_NUMBER: _ClassVar[int]
+    SEVERITY_FIELD_NUMBER: _ClassVar[int]
+    LAST_ERROR_THRESHOLD_FIELD_NUMBER: _ClassVar[int]
+    machine_query: MachineQuery
+    only: _containers.RepeatedScalarFieldContainer[MachineIssueType]
+    omit: _containers.RepeatedScalarFieldContainer[MachineIssueType]
+    severity: MachineIssueSeverity
+    last_error_threshold: _duration_pb2.Duration
+    def __init__(self, machine_query: _Optional[_Union[MachineQuery, _Mapping]] = ..., only: _Optional[_Iterable[_Union[MachineIssueType, str]]] = ..., omit: _Optional[_Iterable[_Union[MachineIssueType, str]]] = ..., severity: _Optional[_Union[MachineIssueSeverity, str]] = ..., last_error_threshold: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ...) -> None: ...
+
+class MachineIssues(_message.Message):
+    __slots__ = ("uuid", "issues")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    ISSUES_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    issues: _containers.RepeatedCompositeFieldContainer[MachineIssue]
+    def __init__(self, uuid: _Optional[str] = ..., issues: _Optional[_Iterable[_Union[MachineIssue, _Mapping]]] = ...) -> None: ...
+
+class MachineIssue(_message.Message):
+    __slots__ = ("type", "severity", "description", "reference_url", "details")
+    TYPE_FIELD_NUMBER: _ClassVar[int]
+    SEVERITY_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    REFERENCE_URL_FIELD_NUMBER: _ClassVar[int]
+    DETAILS_FIELD_NUMBER: _ClassVar[int]
+    type: MachineIssueType
+    severity: MachineIssueSeverity
+    description: str
+    reference_url: str
+    details: str
+    def __init__(self, type: _Optional[_Union[MachineIssueType, str]] = ..., severity: _Optional[_Union[MachineIssueSeverity, str]] = ..., description: _Optional[str] = ..., reference_url: _Optional[str] = ..., details: _Optional[str] = ...) -> None: ...
