@@ -660,7 +660,7 @@ type UpdateLabels struct {
 	// Types that are valid to be assigned to Strategy:
 	//
 	//	*UpdateLabels_Replace
-	//	*UpdateLabels_Inidivual
+	//	*UpdateLabels_Individual
 	Strategy      isUpdateLabels_Strategy `protobuf_oneof:"strategy"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -712,10 +712,10 @@ func (x *UpdateLabels) GetReplace() *Labels {
 	return nil
 }
 
-func (x *UpdateLabels) GetInidivual() *UpdateLabelsIndividually {
+func (x *UpdateLabels) GetIndividual() *UpdateLabelsIndividually {
 	if x != nil {
-		if x, ok := x.Strategy.(*UpdateLabels_Inidivual); ok {
-			return x.Inidivual
+		if x, ok := x.Strategy.(*UpdateLabels_Individual); ok {
+			return x.Individual
 		}
 	}
 	return nil
@@ -730,14 +730,14 @@ type UpdateLabels_Replace struct {
 	Replace *Labels `protobuf:"bytes,1,opt,name=replace,proto3,oneof"`
 }
 
-type UpdateLabels_Inidivual struct {
+type UpdateLabels_Individual struct {
 	// UpdateLabelsIndividually adds, updates or remove given labels without modifying others
-	Inidivual *UpdateLabelsIndividually `protobuf:"bytes,2,opt,name=inidivual,proto3,oneof"`
+	Individual *UpdateLabelsIndividually `protobuf:"bytes,2,opt,name=individual,proto3,oneof"`
 }
 
 func (*UpdateLabels_Replace) isUpdateLabels_Strategy() {}
 
-func (*UpdateLabels_Inidivual) isUpdateLabels_Strategy() {}
+func (*UpdateLabels_Individual) isUpdateLabels_Strategy() {}
 
 // UpdateLabelsIndividually adds, updates or remove given labels without modifying others
 type UpdateLabelsIndividually struct {
@@ -983,10 +983,12 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"generation\x12-\n" +
 	"\x10deletion_task_id\x18\x05 \x01(\tH\x01R\x0edeletionTaskId\x88\x01\x01B\t\n" +
 	"\a_labelsB\x13\n" +
-	"\x11_deletion_task_id\"\xa5\x01\n" +
+	"\x11_deletion_task_id\"\xa7\x01\n" +
 	"\fUpdateLabels\x125\n" +
-	"\areplace\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsH\x00R\areplace\x12K\n" +
-	"\tinidivual\x18\x02 \x01(\v2+.metalstack.api.v2.UpdateLabelsIndividuallyH\x00R\tinidivualB\x11\n" +
+	"\areplace\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsH\x00R\areplace\x12M\n" +
+	"\n" +
+	"individual\x18\x02 \x01(\v2+.metalstack.api.v2.UpdateLabelsIndividuallyH\x00R\n" +
+	"individualB\x11\n" +
 	"\bstrategy\x12\x05\xbaH\x02\b\x01\"s\n" +
 	"\x18UpdateLabelsIndividually\x121\n" +
 	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12$\n" +
@@ -1087,7 +1089,7 @@ var file_metalstack_api_v2_common_proto_depIdxs = []int32{
 	15, // 2: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
 	15, // 3: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
 	9,  // 4: metalstack.api.v2.UpdateLabels.replace:type_name -> metalstack.api.v2.Labels
-	12, // 5: metalstack.api.v2.UpdateLabels.inidivual:type_name -> metalstack.api.v2.UpdateLabelsIndividually
+	12, // 5: metalstack.api.v2.UpdateLabels.individual:type_name -> metalstack.api.v2.UpdateLabelsIndividually
 	9,  // 6: metalstack.api.v2.UpdateLabelsIndividually.update:type_name -> metalstack.api.v2.Labels
 	15, // 7: metalstack.api.v2.UpdateMeta.updated_at:type_name -> google.protobuf.Timestamp
 	7,  // 8: metalstack.api.v2.UpdateMeta.locking_strategy:type_name -> metalstack.api.v2.OptimisticLockingStrategy
@@ -1123,7 +1125,7 @@ func file_metalstack_api_v2_common_proto_init() {
 	file_metalstack_api_v2_common_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_common_proto_msgTypes[3].OneofWrappers = []any{
 		(*UpdateLabels_Replace)(nil),
-		(*UpdateLabels_Inidivual)(nil),
+		(*UpdateLabels_Individual)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
