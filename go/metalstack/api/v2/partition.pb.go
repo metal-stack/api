@@ -185,7 +185,7 @@ type PartitionBootConfiguration struct {
 	ImageUrl string `protobuf:"bytes,1,opt,name=image_url,json=imageUrl,proto3" json:"image_url,omitempty"`
 	// KernelURL the url to download the kernel for the boot image
 	KernelUrl string `protobuf:"bytes,2,opt,name=kernel_url,json=kernelUrl,proto3" json:"kernel_url,omitempty"`
-	// Cmdline the kernel command line for the boot image
+	// Commandline the kernel command line for the boot image
 	Commandline   string `protobuf:"bytes,3,opt,name=commandline,proto3" json:"commandline,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
