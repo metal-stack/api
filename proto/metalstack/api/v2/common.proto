@@ -168,7 +168,7 @@ message UpdateLabels {
     // Labels replaces existing labels with the given ones
     Labels replace = 1;
     // UpdateLabelsIndividually adds, updates or remove given labels without modifying others
-    UpdateLabelsIndividually inidivual = 2;
+    UpdateLabelsIndividually individual = 2;
   }
 }
 
