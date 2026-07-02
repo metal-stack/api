@@ -214,8 +214,8 @@ export const FilesystemServiceDeleteResponseSchema: GenMessage<FilesystemService
  */
 export type FilesystemServiceMatchRequest = Message<"metalstack.admin.v2.FilesystemServiceMatchRequest"> & {
   /**
-   * Match either size and image to a filesystemlayout
-   * or if a machine matches to a filesystemlayout
+   * Match size and image to a filesystem layout
+   * or match a machine to a filesystem layout
    *
    * @generated from oneof metalstack.admin.v2.FilesystemServiceMatchRequest.match
    */

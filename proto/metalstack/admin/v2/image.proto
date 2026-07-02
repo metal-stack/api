@@ -65,7 +65,7 @@ message ImageServiceUpdateRequest {
   // Classification of this image
   metalstack.api.v2.ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
 
-  // ExpiresAt usage is not possible after this date
+  // ExpiresAt indicates that usage is not possible after this date
   google.protobuf.Timestamp expires_at = 8;
 }
 

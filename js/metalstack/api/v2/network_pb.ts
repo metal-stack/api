@@ -451,7 +451,7 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
   destinationPrefixes: string[];
 
   /**
-   * Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+   * Default Child Prefix length defines the bit length of a child network created per address family, if not specified during the allocate request
    *
    * @generated from field: metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
    */
@@ -500,7 +500,7 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
   additionalAnnouncableCidrs: string[];
 
   /**
-   * Consumption of ips and prefixes in this networks
+   * Consumption of IPs and prefixes in this network
    *
    * @generated from field: metalstack.api.v2.NetworkConsumption consumption = 17;
    */
@@ -703,7 +703,7 @@ export type NetworkUsage = Message<"metalstack.api.v2.NetworkUsage"> & {
   usedIps: bigint;
 
   /**
-   * the total available 2 bit Prefixes
+   * the total available 2-bit prefixes
    *
    * @generated from field: uint64 available_prefixes = 3;
    */

@@ -123,14 +123,14 @@ func (x *Tenant) GetCreatedBy() string {
 	return ""
 }
 
-// TenantMember defines a user that participates at a tenant
+// TenantMember defines a user that participates in a tenant
 type TenantMember struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id is the user id of the member
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Role is the role of the member
 	Role TenantRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.TenantRole" json:"role,omitempty"`
-	// Projects for the projects in which a user is a direct member
+	// Projects in which a user is a direct member
 	Projects []string `protobuf:"bytes,3,rep,name=projects,proto3" json:"projects,omitempty"`
 	// CreatedAt the date when the member was added to the tenant
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
@@ -218,9 +218,9 @@ type TenantInvite struct {
 	Joined bool `protobuf:"varint,4,opt,name=joined,proto3" json:"joined,omitempty"`
 	// TargetTenantName is the tenant name for which this invite was created
 	TargetTenantName string `protobuf:"bytes,5,opt,name=target_tenant_name,json=targetTenantName,proto3" json:"target_tenant_name,omitempty"`
-	// Tenant is the login of tenant who invites to join this tenant
+	// Tenant is the login of the tenant inviting another user to join this tenant
 	Tenant string `protobuf:"bytes,6,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// TenantName is the name of tenant who invites to join this tenant
+	// TenantName is the name of the tenant inviting another user to join this tenant
 	TenantName string `protobuf:"bytes,7,opt,name=tenant_name,json=tenantName,proto3" json:"tenant_name,omitempty"`
 	// ExpiresAt the date when this invite expires
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
@@ -1107,7 +1107,7 @@ func (x *TenantServiceInvitesListRequest) GetLogin() string {
 // TenantServiceInvitesListResponse is the response payload to a list invites request
 type TenantServiceInvitesListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Invites not already accepted the invitation to this tenant
+	// Invites that have not yet accepted the invitation to this tenant
 	Invites       []*TenantInvite `protobuf:"bytes,1,rep,name=invites,proto3" json:"invites,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

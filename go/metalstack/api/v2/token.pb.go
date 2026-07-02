@@ -254,7 +254,7 @@ type TokenServiceCreateRequest struct {
 	Expires *durationpb.Duration `protobuf:"bytes,3,opt,name=expires,proto3" json:"expires,omitempty"`
 	// ProjectRoles associates a project id with the corresponding role of the token owner
 	ProjectRoles map[string]ProjectRole `protobuf:"bytes,4,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
-	// TenantRoles_associates a tenant id with the corresponding role of the token owner
+	// TenantRoles associates a tenant id with the corresponding role of the token owner
 	TenantRoles map[string]TenantRole `protobuf:"bytes,5,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
 	// AdminRole defines the admin role of the token owner
 	AdminRole *AdminRole `protobuf:"varint,6,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
@@ -426,7 +426,7 @@ type TokenServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Token which was created
 	Token *Token `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	// Secret is the body if the jwt token, should be used in api requests as bearer token
+	// Secret is the body of the JWT token, should be used in API requests as bearer token
 	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -961,7 +961,7 @@ type TokenServiceRefreshResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Token which was refreshed
 	Token *Token `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	// Secret is the body if the jwt token, should be used in api requests as bearer token
+	// Secret is the body of the JWT token, should be used in API requests as bearer token
 	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

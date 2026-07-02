@@ -61,7 +61,7 @@ message PartitionServiceUpdateRequest {
 
 // PartitionServiceDeleteRequest is the request payload for a partition delete request
 message PartitionServiceDeleteRequest {
-  // ID of the partition to get
+  // ID of the partition to delete
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 

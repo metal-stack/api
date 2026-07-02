@@ -37,7 +37,7 @@ type User struct {
 	Tenants []*Tenant `protobuf:"bytes,5,rep,name=tenants,proto3" json:"tenants,omitempty"`
 	// Projects the user belongs to
 	Projects []*Project `protobuf:"bytes,6,rep,name=projects,proto3" json:"projects,omitempty"`
-	// DefaultTenant this user belongs to
+	// DefaultTenant the default tenant that this user belongs to
 	DefaultTenant *Tenant `protobuf:"bytes,7,opt,name=default_tenant,json=defaultTenant,proto3" json:"default_tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

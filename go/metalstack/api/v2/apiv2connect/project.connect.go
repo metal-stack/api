@@ -81,13 +81,13 @@ type ProjectServiceClient interface {
 	Update(context.Context, *v2.ProjectServiceUpdateRequest) (*v2.ProjectServiceUpdateResponse, error)
 	// Leave project
 	Leave(context.Context, *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error)
-	// RemoveMember remove a user from a project
+	// RemoveMember removes a user from a project
 	RemoveMember(context.Context, *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error)
-	// UpdateMember update a user for a project
+	// UpdateMember updates a user for a project
 	UpdateMember(context.Context, *v2.ProjectServiceUpdateMemberRequest) (*v2.ProjectServiceUpdateMemberResponse, error)
 	// Invite a user to a project
 	Invite(context.Context, *v2.ProjectServiceInviteRequest) (*v2.ProjectServiceInviteResponse, error)
-	// InviteAccept is called from a user to accept a invitation
+	// InviteAccept is called by a user to accept an invitation
 	InviteAccept(context.Context, *v2.ProjectServiceInviteAcceptRequest) (*v2.ProjectServiceInviteAcceptResponse, error)
 	// InviteDelete deletes a pending invitation
 	InviteDelete(context.Context, *v2.ProjectServiceInviteDeleteRequest) (*v2.ProjectServiceInviteDeleteResponse, error)
@@ -337,13 +337,13 @@ type ProjectServiceHandler interface {
 	Update(context.Context, *v2.ProjectServiceUpdateRequest) (*v2.ProjectServiceUpdateResponse, error)
 	// Leave project
 	Leave(context.Context, *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error)
-	// RemoveMember remove a user from a project
+	// RemoveMember removes a user from a project
 	RemoveMember(context.Context, *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error)
-	// UpdateMember update a user for a project
+	// UpdateMember updates a user for a project
 	UpdateMember(context.Context, *v2.ProjectServiceUpdateMemberRequest) (*v2.ProjectServiceUpdateMemberResponse, error)
 	// Invite a user to a project
 	Invite(context.Context, *v2.ProjectServiceInviteRequest) (*v2.ProjectServiceInviteResponse, error)
-	// InviteAccept is called from a user to accept a invitation
+	// InviteAccept is called by a user to accept an invitation
 	InviteAccept(context.Context, *v2.ProjectServiceInviteAcceptRequest) (*v2.ProjectServiceInviteAcceptResponse, error)
 	// InviteDelete deletes a pending invitation
 	InviteDelete(context.Context, *v2.ProjectServiceInviteDeleteRequest) (*v2.ProjectServiceInviteDeleteResponse, error)

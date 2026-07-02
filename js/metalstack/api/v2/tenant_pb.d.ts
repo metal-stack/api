@@ -61,7 +61,7 @@ export type Tenant = Message<"metalstack.api.v2.Tenant"> & {
  */
 export declare const TenantSchema: GenMessage<Tenant>;
 /**
- * TenantMember defines a user that participates at a tenant
+ * TenantMember defines a user that participates in a tenant
  *
  * @generated from message metalstack.api.v2.TenantMember
  */
@@ -79,7 +79,7 @@ export type TenantMember = Message<"metalstack.api.v2.TenantMember"> & {
      */
     role: TenantRole;
     /**
-     * Projects for the projects in which a user is a direct member
+     * Projects in which a user is a direct member
      *
      * @generated from field: repeated string projects = 3;
      */
@@ -139,13 +139,13 @@ export type TenantInvite = Message<"metalstack.api.v2.TenantInvite"> & {
      */
     targetTenantName: string;
     /**
-     * Tenant is the login of tenant who invites to join this tenant
+     * Tenant is the login of the tenant inviting another user to join this tenant
      *
      * @generated from field: string tenant = 6;
      */
     tenant: string;
     /**
-     * TenantName is the name of tenant who invites to join this tenant
+     * TenantName is the name of the tenant inviting another user to join this tenant
      *
      * @generated from field: string tenant_name = 7;
      */
@@ -519,7 +519,7 @@ export declare const TenantServiceInvitesListRequestSchema: GenMessage<TenantSer
  */
 export type TenantServiceInvitesListResponse = Message<"metalstack.api.v2.TenantServiceInvitesListResponse"> & {
     /**
-     * Invites not already accepted the invitation to this tenant
+     * Invites that have not yet accepted the invitation to this tenant
      *
      * @generated from field: repeated metalstack.api.v2.TenantInvite invites = 1;
      */
@@ -812,7 +812,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceDeleteResponseSchema;
     };
     /**
-     * Leave remove a member of a tenant
+     * Leave removes a member from a tenant
      *
      * @generated from rpc metalstack.api.v2.TenantService.Leave
      */
@@ -822,7 +822,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceLeaveResponseSchema;
     };
     /**
-     * RemoveMember remove a member of a tenant
+     * RemoveMember removes a member from a tenant
      *
      * @generated from rpc metalstack.api.v2.TenantService.RemoveMember
      */

@@ -646,7 +646,7 @@ type Filesystem struct {
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Path the mountpoint where this filesystem should be mounted on
 	Path *string `protobuf:"bytes,5,opt,name=path,proto3,oneof" json:"path,omitempty"`
-	// Label optional label for this this filesystem
+	// Label an optional label for this filesystem
 	Label *string `protobuf:"bytes,6,opt,name=label,proto3,oneof" json:"label,omitempty"`
 	// MountOptions the options to use to mount this filesystem
 	MountOptions []string `protobuf:"bytes,7,rep,name=mount_options,json=mountOptions,proto3" json:"mount_options,omitempty"`
@@ -884,9 +884,9 @@ type DiskPartition struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Number partition number, will be appended to partitionprefix to create the final devicename
 	Number uint32 `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
-	// optional label for this this partition
+	// Label an optional label for this partition
 	Label *string `protobuf:"bytes,2,opt,name=label,proto3,oneof" json:"label,omitempty"`
-	// Size size in mebibytes (MiB) of this partition"
+	// Size in mebibytes (MiB) of this partition
 	Size uint64 `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
 	// GPTType the gpt partition table type of this partition
 	GptType       *GPTType `protobuf:"varint,4,opt,name=gpt_type,json=gptType,proto3,enum=metalstack.api.v2.GPTType,oneof" json:"gpt_type,omitempty"`

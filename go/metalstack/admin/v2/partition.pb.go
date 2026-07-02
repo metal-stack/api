@@ -182,7 +182,7 @@ func (x *PartitionServiceUpdateRequest) GetLabels() *v2.UpdateLabels {
 // PartitionServiceDeleteRequest is the request payload for a partition delete request
 type PartitionServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the partition to get
+	// ID of the partition to delete
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

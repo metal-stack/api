@@ -3445,7 +3445,7 @@ having a direct membership within the tenant.</p></td>
               <tr>
                 <td>VISIBILITY_SELF</td>
                 <td>2</td>
-                <td><p>VISIBILITY_SELF enable call this endpoint from the authenticated user only</p></td>
+                <td><p>VISIBILITY_SELF restricts calls to the authenticated user only</p></td>
               </tr>
             
           </tbody>
@@ -3473,7 +3473,7 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#metalstack.api.v2.AdminRole">AdminRole</a></td>
                 <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
                 <td>51002</td>
-                <td><p>AdminRoles are used to define which admin role a logged in user must provide to call this method</p></td>
+                <td><p>AdminRoles are used to define the admin role a logged in user must provide to call this method</p></td>
               </tr>
             
               <tr>
@@ -3489,7 +3489,7 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#metalstack.api.v2.InfraRole">InfraRole</a></td>
                 <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
                 <td>51005</td>
-                <td><p>InfraRoles are used to define which infra role a microservice must provide to call this method</p></td>
+                <td><p>InfraRoles are used to define the infra role a microservice must provide to call this method</p></td>
               </tr>
             
               <tr>
@@ -3505,7 +3505,7 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#metalstack.api.v2.ProjectRole">ProjectRole</a></td>
                 <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
                 <td>51001</td>
-                <td><p>ProjectRoles are used to define which project role a logged in user must provide to call this method</p></td>
+                <td><p>ProjectRoles are used to define the project role a logged in user must provide to call this method</p></td>
               </tr>
             
               <tr>
@@ -3513,7 +3513,7 @@ having a direct membership within the tenant.</p></td>
                 <td><a href="#metalstack.api.v2.TenantRole">TenantRole</a></td>
                 <td><a href="#google.protobuf.MethodOptions">.google.protobuf.MethodOptions</a></td>
                 <td>51000</td>
-                <td><p>TenantRoles are used to define which tenant role a logged in user must provide to call this method</p></td>
+                <td><p>TenantRoles are used to define the tenant role a logged in user must provide to call this method</p></td>
               </tr>
             
               <tr>
@@ -3694,7 +3694,7 @@ having a direct membership within the tenant.</p></td>
         
       
         <h3 id="metalstack.api.v2.AuditServiceListRequest">AuditServiceListRequest</h3>
-        <p>AuditServiceListRequest is the request payload for a audit list request</p>
+        <p>AuditServiceListRequest is the request payload for an audit list request</p>
 
         
           <table class="field-table">
@@ -4387,7 +4387,7 @@ Only useful for admins. </p></td>
                   <td>tenant_roles</td>
                   <td><a href="#metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry">TokenServiceCreateRequest.TenantRolesEntry</a></td>
                   <td>repeated</td>
-                  <td><p>TenantRoles_associates a tenant id with the corresponding role of the token owner </p></td>
+                  <td><p>TenantRoles associates a tenant id with the corresponding role of the token owner </p></td>
                 </tr>
               
                 <tr>
@@ -4539,7 +4539,7 @@ Only useful for admins. </p></td>
                   <td>secret</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Secret is the body if the jwt token, should be used in api requests as bearer token </p></td>
+                  <td><p>Secret is the body of the JWT token, should be used in API requests as bearer token </p></td>
                 </tr>
               
             </tbody>
@@ -4673,7 +4673,7 @@ Only useful for admins. </p></td>
                   <td>secret</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Secret is the body if the jwt token, should be used in api requests as bearer token </p></td>
+                  <td><p>Secret is the body of the JWT token, should be used in API requests as bearer token </p></td>
                 </tr>
               
             </tbody>
@@ -5555,14 +5555,14 @@ micro_service and identifier guarantee uniqueness. </p></td>
                   <td>label</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>optional label for this this partition </p></td>
+                  <td><p>Label an optional label for this partition </p></td>
                 </tr>
               
                 <tr>
                   <td>size</td>
                   <td><a href="#uint64">uint64</a></td>
                   <td></td>
-                  <td><p>Size size in mebibytes (MiB) of this partition&#34; </p></td>
+                  <td><p>Size in mebibytes (MiB) of this partition </p></td>
                 </tr>
               
                 <tr>
@@ -5628,7 +5628,7 @@ micro_service and identifier guarantee uniqueness. </p></td>
                   <td>label</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Label optional label for this this filesystem </p></td>
+                  <td><p>Label an optional label for this filesystem </p></td>
                 </tr>
               
                 <tr>
@@ -6767,7 +6767,7 @@ this would match all debian images which are greater or equal 12.0
         
       
         <h3 id="metalstack.api.v2.ImageServiceGetRequest">ImageServiceGetRequest</h3>
-        <p>ImageServiceGetRequest is the request payload for a image get request</p>
+        <p>ImageServiceGetRequest is the request payload for an image get request</p>
 
         
           <table class="field-table">
@@ -6791,7 +6791,7 @@ this would match all debian images which are greater or equal 12.0
         
       
         <h3 id="metalstack.api.v2.ImageServiceGetResponse">ImageServiceGetResponse</h3>
-        <p>ImageServiceGetResponse is the response payload for a image get request</p>
+        <p>ImageServiceGetResponse is the response payload for an image get request</p>
 
         
           <table class="field-table">
@@ -6815,7 +6815,7 @@ this would match all debian images which are greater or equal 12.0
         
       
         <h3 id="metalstack.api.v2.ImageServiceLatestRequest">ImageServiceLatestRequest</h3>
-        <p>ImageServiceLatestRequest is the request payload for a image latest request</p>
+        <p>ImageServiceLatestRequest is the request payload for an image latest request</p>
 
         
           <table class="field-table">
@@ -6847,7 +6847,7 @@ should contain os and major.minor then latest patch version of this os is return
         
       
         <h3 id="metalstack.api.v2.ImageServiceLatestResponse">ImageServiceLatestResponse</h3>
-        <p>ImageServiceLatestResponse is the response payload for a image latest request</p>
+        <p>ImageServiceLatestResponse is the response payload for an image latest request</p>
 
         
           <table class="field-table">
@@ -6871,7 +6871,7 @@ should contain os and major.minor then latest patch version of this os is return
         
       
         <h3 id="metalstack.api.v2.ImageServiceListRequest">ImageServiceListRequest</h3>
-        <p>ImageServiceListRequest is the request payload for a image list request</p>
+        <p>ImageServiceListRequest is the request payload for an image list request</p>
 
         
           <table class="field-table">
@@ -6895,7 +6895,7 @@ should contain os and major.minor then latest patch version of this os is return
         
       
         <h3 id="metalstack.api.v2.ImageServiceListResponse">ImageServiceListResponse</h3>
-        <p>ImageServiceListResponse is the response payload for a image list request</p>
+        <p>ImageServiceListResponse is the response payload for an image list request</p>
 
         
           <table class="field-table">
@@ -7219,7 +7219,7 @@ should contain os and major.minor then latest patch version of this os is return
                   <td>expires_at</td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
-                  <td><p>ExpiresAt usage is not possible after this date </p></td>
+                  <td><p>ExpiresAt indicates that usage is not possible after this date </p></td>
                 </tr>
               
             </tbody>
@@ -7356,7 +7356,7 @@ should contain os and major.minor then latest patch version of this os is return
 
       
         <h3 id="metalstack.api.v2.IP">IP</h3>
-        <p>IP is a ip address which can be used as loadbalancer addresses</p>
+        <p>IP is an IP address which can be used as loadbalancer addresses</p>
 
         
           <table class="field-table">
@@ -7457,7 +7457,7 @@ Will be equal with project most of the time </p></td>
                   <td>network</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Network from where the ips to list </p></td>
+                  <td><p>Network from which the IPs are to list </p></td>
                 </tr>
               
                 <tr>
@@ -7478,14 +7478,14 @@ Will be equal with project most of the time </p></td>
                   <td>uuid</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Uuid for which this ips should get filtered </p></td>
+                  <td><p>UUID for which these IPs should be filtered </p></td>
                 </tr>
               
                 <tr>
                   <td>machine</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Machine for which this ips should get filtered </p></td>
+                  <td><p>Machine for which these IPs should be filtered </p></td>
                 </tr>
               
                 <tr>
@@ -7499,7 +7499,7 @@ Will be equal with project most of the time </p></td>
                   <td>labels</td>
                   <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
                   <td>optional</td>
-                  <td><p>Labels for which this ips should get filtered </p></td>
+                  <td><p>Labels for which these IPs should be filtered </p></td>
                 </tr>
               
                 <tr>
@@ -7513,7 +7513,7 @@ Will be equal with project most of the time </p></td>
                   <td>address_family</td>
                   <td><a href="#metalstack.api.v2.IPAddressFamily">IPAddressFamily</a></td>
                   <td>optional</td>
-                  <td><p>Addressfamily of the IPs to list, defaults to all addressfamilies </p></td>
+                  <td><p>Address family of the IPs to list, defaults to all address families </p></td>
                 </tr>
               
                 <tr>
@@ -7531,7 +7531,7 @@ Will be equal with project most of the time </p></td>
         
       
         <h3 id="metalstack.api.v2.IPServiceCreateRequest">IPServiceCreateRequest</h3>
-        <p>IPServiceCreateRequest is the request payload for a ip create request</p>
+        <p>IPServiceCreateRequest is the request payload for an IP create request</p>
 
         
           <table class="field-table">
@@ -7611,7 +7611,7 @@ Will be equal with project most of the time </p></td>
         
       
         <h3 id="metalstack.api.v2.IPServiceCreateResponse">IPServiceCreateResponse</h3>
-        <p>IPServiceCreateResponse is the response payload for a ip create request</p>
+        <p>IPServiceCreateResponse is the response payload for an IP create request</p>
 
         
           <table class="field-table">
@@ -7666,7 +7666,7 @@ Will be equal with project most of the time </p></td>
         
       
         <h3 id="metalstack.api.v2.IPServiceDeleteResponse">IPServiceDeleteResponse</h3>
-        <p>IPServiceDeleteResponse is the response payload for a ip delete request</p>
+        <p>IPServiceDeleteResponse is the response payload for an IP delete request</p>
 
         
           <table class="field-table">
@@ -7690,7 +7690,7 @@ Will be equal with project most of the time </p></td>
         
       
         <h3 id="metalstack.api.v2.IPServiceGetRequest">IPServiceGetRequest</h3>
-        <p>IPServiceGetRequest is the request payload for a ip get request</p>
+        <p>IPServiceGetRequest is the request payload for an IP get request</p>
 
         
           <table class="field-table">
@@ -7728,7 +7728,7 @@ Will be equal with project most of the time </p></td>
         
       
         <h3 id="metalstack.api.v2.IPServiceGetResponse">IPServiceGetResponse</h3>
-        <p>IPServiceGetResponse is the response payload for a ip get request</p>
+        <p>IPServiceGetResponse is the response payload for an IP get request</p>
 
         
           <table class="field-table">
@@ -7752,7 +7752,7 @@ Will be equal with project most of the time </p></td>
         
       
         <h3 id="metalstack.api.v2.IPServiceListRequest">IPServiceListRequest</h3>
-        <p>IPServiceListRequest is the request payload for a ip list request</p>
+        <p>IPServiceListRequest is the request payload for an IP list request</p>
 
         
           <table class="field-table">
@@ -7772,7 +7772,7 @@ Will be equal with project most of the time </p></td>
                   <td>query</td>
                   <td><a href="#metalstack.api.v2.IPQuery">IPQuery</a></td>
                   <td></td>
-                  <td><p>Query to list one ore more ips </p></td>
+                  <td><p>Query to list one or more IPs </p></td>
                 </tr>
               
             </tbody>
@@ -7783,7 +7783,7 @@ Will be equal with project most of the time </p></td>
         
       
         <h3 id="metalstack.api.v2.IPServiceListResponse">IPServiceListResponse</h3>
-        <p>IPServiceListResponse is the response payload for a ip list request</p>
+        <p>IPServiceListResponse is the response payload for an IP list request</p>
 
         
           <table class="field-table">
@@ -7807,7 +7807,7 @@ Will be equal with project most of the time </p></td>
         
       
         <h3 id="metalstack.api.v2.IPServiceUpdateRequest">IPServiceUpdateRequest</h3>
-        <p>IPServiceUpdateRequest is the request payload for a ip update request</p>
+        <p>IPServiceUpdateRequest is the request payload for an IP update request</p>
 
         
           <table class="field-table">
@@ -7928,7 +7928,7 @@ Will be equal with project most of the time </p></td>
         </table>
       
         <h3 id="metalstack.api.v2.IPType">IPType</h3>
-        <p>IPType specifies different ip address types</p>
+        <p>IPType specifies different IP address types</p>
         <table class="enum-table">
           <thead>
             <tr><td>Name</td><td>Number</td><td>Description</td></tr>
@@ -7944,7 +7944,7 @@ Will be equal with project most of the time </p></td>
               <tr>
                 <td>IP_TYPE_EPHEMERAL</td>
                 <td>1</td>
-                <td><p>IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage</p></td>
+                <td><p>IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage</p></td>
               </tr>
             
               <tr>
@@ -8205,7 +8205,7 @@ Will be equal with project most of the time </p></td>
                   <td>default_child_prefix_length</td>
                   <td><a href="#metalstack.api.v2.ChildPrefixLength">ChildPrefixLength</a></td>
                   <td></td>
-                  <td><p>Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request </p></td>
+                  <td><p>Default Child Prefix length defines the bit length of a child network created per address family, if not specified during the allocate request </p></td>
                 </tr>
               
                 <tr>
@@ -8254,7 +8254,7 @@ Will be equal with project most of the time </p></td>
                   <td>consumption</td>
                   <td><a href="#metalstack.api.v2.NetworkConsumption">NetworkConsumption</a></td>
                   <td></td>
-                  <td><p>Consumption of ips and prefixes in this networks </p></td>
+                  <td><p>Consumption of IPs and prefixes in this network </p></td>
                 </tr>
               
             </tbody>
@@ -8838,7 +8838,7 @@ Will be equal with project most of the time </p></td>
                   <td>available_prefixes</td>
                   <td><a href="#uint64">uint64</a></td>
                   <td></td>
-                  <td><p>the total available 2 bit Prefixes </p></td>
+                  <td><p>the total available 2-bit prefixes </p></td>
                 </tr>
               
                 <tr>
@@ -9206,7 +9206,7 @@ should be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>commandline</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Commandline the cmdline to the kernel for the boot image </p></td>
+                  <td><p>Commandline the kernel command line for the boot image </p></td>
                 </tr>
               
             </tbody>
@@ -10324,7 +10324,7 @@ Order of ips is preserved on the loopback interface. </p></td>
                   <td>fru</td>
                   <td><a href="#metalstack.api.v2.MachineFRU">MachineFRU</a></td>
                   <td></td>
-                  <td><p>Fru containers field replaceable unit details </p></td>
+                  <td><p>Fru contains field replaceable unit details </p></td>
                 </tr>
               
                 <tr>
@@ -10390,7 +10390,7 @@ Order of ips is preserved on the loopback interface. </p></td>
                   <td>date</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Date the bios date as string because every vendor has different ideas howto describe the date </p></td>
+                  <td><p>Date the bios date as string because every vendor has different ideas how to describe the date </p></td>
                 </tr>
               
             </tbody>
@@ -10864,14 +10864,14 @@ Order of ips is preserved on the loopback interface. </p></td>
                   <td>only</td>
                   <td><a href="#metalstack.api.v2.MachineIssueType">MachineIssueType</a></td>
                   <td>repeated</td>
-                  <td><p>Only a list of machine issue types to include </p></td>
+                  <td><p>Only includes the specified machine issue types </p></td>
                 </tr>
               
                 <tr>
                   <td>omit</td>
                   <td><a href="#metalstack.api.v2.MachineIssueType">MachineIssueType</a></td>
                   <td>repeated</td>
-                  <td><p>Omit a list of machine issues to omit </p></td>
+                  <td><p>Omits the specified machine issues </p></td>
                 </tr>
               
                 <tr>
@@ -11238,7 +11238,7 @@ IntervalInMin minutes. </p></td>
         
       
         <h3 id="metalstack.api.v2.MachineProvisioningEvent">MachineProvisioningEvent</h3>
-        <p>MachineProvisioningEvent is a event which has occurred during provisioning</p>
+        <p>MachineProvisioningEvent is an event that has occurred during provisioning</p>
 
         
           <table class="field-table">
@@ -13001,7 +13001,7 @@ Reason is only forwarded to an audit sink </p></td>
                   <td>query</td>
                   <td><a href="#metalstack.api.v2.MachineBMCQuery">metalstack.api.v2.MachineBMCQuery</a></td>
                   <td></td>
-                  <td><p>Query to list one ore more bmcs of many machines </p></td>
+                  <td><p>Query to list one or more BMCs of many machines </p></td>
                 </tr>
               
             </tbody>
@@ -13080,7 +13080,7 @@ Reason is only forwarded to an audit sink </p></td>
                   <td>query</td>
                   <td><a href="#metalstack.api.v2.MachineQuery">metalstack.api.v2.MachineQuery</a></td>
                   <td></td>
-                  <td><p>Query to list one ore more machines </p></td>
+                  <td><p>Query to list one or more machines </p></td>
                 </tr>
               
                 <tr>
@@ -14044,7 +14044,7 @@ not in the machine state &#34;available&#34;, e.g. locked or reserved. </p></td>
                   <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>ID of the partition to get </p></td>
+                  <td><p>ID of the partition to delete </p></td>
                 </tr>
               
             </tbody>
@@ -14338,14 +14338,14 @@ must be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
                   <td>tenant</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Tenant is the login of tenant who invites to join this project </p></td>
+                  <td><p>Tenant is the login of the tenant inviting another user to join this project </p></td>
                 </tr>
               
                 <tr>
                   <td>tenant_name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>TenantName is the name of tenant who invites to join this project </p></td>
+                  <td><p>TenantName is the name of the tenant inviting another user to join this project </p></td>
                 </tr>
               
                 <tr>
@@ -14370,7 +14370,7 @@ must be in the form &lt;ip|host&gt;:&lt;port&gt; </p></td>
         
       
         <h3 id="metalstack.api.v2.ProjectMember">ProjectMember</h3>
-        <p>ProjectMember defines a user that participates at a project</p>
+        <p>ProjectMember defines a user that participates in a project</p>
 
         
           <table class="field-table">
@@ -14693,7 +14693,7 @@ TODO: is login really a good name? </p></td>
                   <td>project_name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>ProjectName if the project joined </p></td>
+                  <td><p>ProjectName of the project joined </p></td>
                 </tr>
               
             </tbody>
@@ -15216,14 +15216,14 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td>RemoveMember</td>
                 <td><a href="#metalstack.api.v2.ProjectServiceRemoveMemberRequest">ProjectServiceRemoveMemberRequest</a></td>
                 <td><a href="#metalstack.api.v2.ProjectServiceRemoveMemberResponse">ProjectServiceRemoveMemberResponse</a></td>
-                <td><p>RemoveMember remove a user from a project</p></td>
+                <td><p>RemoveMember removes a user from a project</p></td>
               </tr>
             
               <tr>
                 <td>UpdateMember</td>
                 <td><a href="#metalstack.api.v2.ProjectServiceUpdateMemberRequest">ProjectServiceUpdateMemberRequest</a></td>
                 <td><a href="#metalstack.api.v2.ProjectServiceUpdateMemberResponse">ProjectServiceUpdateMemberResponse</a></td>
-                <td><p>UpdateMember update a user for a project</p></td>
+                <td><p>UpdateMember updates a user for a project</p></td>
               </tr>
             
               <tr>
@@ -15237,7 +15237,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td>InviteAccept</td>
                 <td><a href="#metalstack.api.v2.ProjectServiceInviteAcceptRequest">ProjectServiceInviteAcceptRequest</a></td>
                 <td><a href="#metalstack.api.v2.ProjectServiceInviteAcceptResponse">ProjectServiceInviteAcceptResponse</a></td>
-                <td><p>InviteAccept is called from a user to accept a invitation</p></td>
+                <td><p>InviteAccept is called by a user to accept an invitation</p></td>
               </tr>
             
               <tr>
@@ -15581,7 +15581,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
 
       
         <h3 id="metalstack.api.v2.ImageConstraint">ImageConstraint</h3>
-        <p>ImageConstraint defines a constraint for a image</p><p>examples:</p><p>images:</p><p>ubuntu: ">= 20.04.20211011"</p><p>debian: ">= 10.0.20210101"</p>
+        <p>ImageConstraint defines a constraint for an image</p><p>examples:</p><p>images:</p><p>ubuntu: ">= 20.04.20211011"</p><p>debian: ">= 10.0.20210101"</p>
 
         
           <table class="field-table">
@@ -17699,7 +17699,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td>switch</td>
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
                   <td></td>
-                  <td><p>Switch contains the switch was migrated to </p></td>
+                  <td><p>Switch contains the switch that was migrated to </p></td>
                 </tr>
               
             </tbody>
@@ -18523,14 +18523,14 @@ Will return tasks from all queues if not specified </p></td>
                   <td>tenant</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Tenant is the login of tenant who invites to join this tenant </p></td>
+                  <td><p>Tenant is the login of the tenant inviting another user to join this tenant </p></td>
                 </tr>
               
                 <tr>
                   <td>tenant_name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>TenantName is the name of tenant who invites to join this tenant </p></td>
+                  <td><p>TenantName is the name of the tenant inviting another user to join this tenant </p></td>
                 </tr>
               
                 <tr>
@@ -18555,7 +18555,7 @@ Will return tasks from all queues if not specified </p></td>
         
       
         <h3 id="metalstack.api.v2.TenantMember">TenantMember</h3>
-        <p>TenantMember defines a user that participates at a tenant</p>
+        <p>TenantMember defines a user that participates in a tenant</p>
 
         
           <table class="field-table">
@@ -18582,7 +18582,7 @@ Will return tasks from all queues if not specified </p></td>
                   <td>projects</td>
                   <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>Projects for the projects in which a user is a direct member </p></td>
+                  <td><p>Projects in which a user is a direct member </p></td>
                 </tr>
               
                 <tr>
@@ -19066,7 +19066,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                   <td>invites</td>
                   <td><a href="#metalstack.api.v2.TenantInvite">TenantInvite</a></td>
                   <td>repeated</td>
-                  <td><p>Invites not already accepted the invitation to this tenant </p></td>
+                  <td><p>Invites that have not yet accepted the invitation to this tenant </p></td>
                 </tr>
               
             </tbody>
@@ -19398,14 +19398,14 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td>Leave</td>
                 <td><a href="#metalstack.api.v2.TenantServiceLeaveRequest">TenantServiceLeaveRequest</a></td>
                 <td><a href="#metalstack.api.v2.TenantServiceLeaveResponse">TenantServiceLeaveResponse</a></td>
-                <td><p>Leave remove a member of a tenant</p></td>
+                <td><p>Leave removes a member from a tenant</p></td>
               </tr>
             
               <tr>
                 <td>RemoveMember</td>
                 <td><a href="#metalstack.api.v2.TenantServiceRemoveMemberRequest">TenantServiceRemoveMemberRequest</a></td>
                 <td><a href="#metalstack.api.v2.TenantServiceRemoveMemberResponse">TenantServiceRemoveMemberResponse</a></td>
-                <td><p>RemoveMember remove a member of a tenant</p></td>
+                <td><p>RemoveMember removes a member from a tenant</p></td>
               </tr>
             
               <tr>
@@ -19715,7 +19715,7 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td>RemoveMember</td>
                 <td><a href="#metalstack.admin.v2.TenantServiceRemoveMemberRequest">TenantServiceRemoveMemberRequest</a></td>
                 <td><a href="#metalstack.admin.v2.TenantServiceRemoveMemberResponse">TenantServiceRemoveMemberResponse</a></td>
-                <td><p>RemoveMember remove a member of a tenant</p></td>
+                <td><p>RemoveMember removes a member from a tenant</p></td>
               </tr>
             
           </tbody>
@@ -20767,7 +20767,7 @@ This key can only be seen once </p></td>
                   <td>default_tenant</td>
                   <td><a href="#metalstack.api.v2.Tenant">Tenant</a></td>
                   <td></td>
-                  <td><p>DefaultTenant this user belongs to </p></td>
+                  <td><p>DefaultTenant the default tenant that this user belongs to </p></td>
                 </tr>
               
             </tbody>
@@ -20901,7 +20901,7 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command </p></td>
                   <td>bmc_reports</td>
                   <td><a href="#metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry">UpdateBMCInfoRequest.BmcReportsEntry</a></td>
                   <td>repeated</td>
-                  <td><p>BmcReports contains maps the BMC report per machine UUID </p></td>
+                  <td><p>BmcReports maps the BMC report per machine UUID </p></td>
                 </tr>
               
             </tbody>
@@ -21291,7 +21291,7 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&
                   <td>metal_hammer_version</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>MetalHammer version this machine was bootet into </p></td>
+                  <td><p>MetalHammer version this machine was booted into </p></td>
                 </tr>
               
                 <tr>

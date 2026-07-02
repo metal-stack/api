@@ -46,7 +46,7 @@ message SizeImageConstraint {
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// ImageConstraint defines a constraint for a image
+// ImageConstraint defines a constraint for an image
 // examples:
 // images:
 //    ubuntu: ">= 20.04.20211011"

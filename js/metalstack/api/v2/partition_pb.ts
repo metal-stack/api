@@ -129,7 +129,7 @@ export type PartitionBootConfiguration = Message<"metalstack.api.v2.PartitionBoo
   kernelUrl: string;
 
   /**
-   * Commandline the cmdline to the kernel for the boot image
+   * Commandline the kernel command line for the boot image
    *
    * @generated from field: string commandline = 3;
    */
