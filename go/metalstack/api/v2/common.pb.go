@@ -311,7 +311,7 @@ const (
 	Visibility_VISIBILITY_UNSPECIFIED Visibility = 0
 	// VISIBILITY_PUBLIC specifies that this service is accessible without authentication
 	Visibility_VISIBILITY_PUBLIC Visibility = 1
-	// VISIBILITY_SELF enable call this endpoint from the authenticated user only
+	// VISIBILITY_SELF restricts calls to the authenticated user only
 	Visibility_VISIBILITY_SELF Visibility = 2
 )
 
@@ -919,15 +919,15 @@ var file_metalstack_api_v2_common_proto_extTypes = []protoimpl.ExtensionInfo{
 
 // Extension fields to descriptorpb.MethodOptions.
 var (
-	// TenantRoles are used to define which tenant role a logged in user must provide to call this method
+	// TenantRoles are used to define the tenant role a logged in user must provide to call this method
 	//
 	// repeated metalstack.api.v2.TenantRole tenant_roles = 51000;
 	E_TenantRoles = &file_metalstack_api_v2_common_proto_extTypes[0]
-	// ProjectRoles are used to define which project role a logged in user must provide to call this method
+	// ProjectRoles are used to define the project role a logged in user must provide to call this method
 	//
 	// repeated metalstack.api.v2.ProjectRole project_roles = 51001;
 	E_ProjectRoles = &file_metalstack_api_v2_common_proto_extTypes[1]
-	// AdminRoles are used to define which admin role a logged in user must provide to call this method
+	// AdminRoles are used to define the admin role a logged in user must provide to call this method
 	//
 	// repeated metalstack.api.v2.AdminRole admin_roles = 51002;
 	E_AdminRoles = &file_metalstack_api_v2_common_proto_extTypes[2]
@@ -939,7 +939,7 @@ var (
 	//
 	// optional metalstack.api.v2.Auditing auditing = 51004;
 	E_Auditing = &file_metalstack_api_v2_common_proto_extTypes[4]
-	// InfraRoles are used to define which infra role a microservice must provide to call this method
+	// InfraRoles are used to define the infra role a microservice must provide to call this method
 	//
 	// repeated metalstack.api.v2.InfraRole infra_roles = 51005;
 	E_InfraRoles = &file_metalstack_api_v2_common_proto_extTypes[5]

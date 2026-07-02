@@ -183,7 +183,7 @@ message Network {
   repeated string prefixes = 8 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Destination Prefixes in this network
   repeated string destination_prefixes = 9 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
-  // Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+  // Default Child Prefix length defines the bit length of a child network created per address family, if not specified during the allocate request
   ChildPrefixLength default_child_prefix_length = 10;
   // Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
   ChildPrefixLength min_child_prefix_length = 11;
@@ -197,7 +197,7 @@ message Network {
   optional string parent_network = 15 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
   repeated string additional_announcable_cidrs = 16 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
-  // Consumption of ips and prefixes in this networks
+  // Consumption of IPs and prefixes in this network
   NetworkConsumption consumption = 17;
 }
 
@@ -261,7 +261,7 @@ message NetworkUsage {
   uint64 available_ips = 1;
   // the total used IPs
   uint64 used_ips = 2;
-  // the total available 2 bit Prefixes
+  // the total available 2-bit prefixes
   uint64 available_prefixes = 3;
   // the total used Prefixes
   uint64 used_prefixes = 4;

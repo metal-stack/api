@@ -7,7 +7,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_image: GenFile;
 /**
- * ImageServiceGetRequest is the request payload for a image get request
+ * ImageServiceGetRequest is the request payload for an image get request
  *
  * @generated from message metalstack.api.v2.ImageServiceGetRequest
  */
@@ -25,7 +25,7 @@ export type ImageServiceGetRequest = Message<"metalstack.api.v2.ImageServiceGetR
  */
 export declare const ImageServiceGetRequestSchema: GenMessage<ImageServiceGetRequest>;
 /**
- * ImageServiceListRequest is the request payload for a image list request
+ * ImageServiceListRequest is the request payload for an image list request
  *
  * @generated from message metalstack.api.v2.ImageServiceListRequest
  */
@@ -43,7 +43,7 @@ export type ImageServiceListRequest = Message<"metalstack.api.v2.ImageServiceLis
  */
 export declare const ImageServiceListRequestSchema: GenMessage<ImageServiceListRequest>;
 /**
- * ImageServiceLatestRequest is the request payload for a image latest request
+ * ImageServiceLatestRequest is the request payload for an image latest request
  *
  * @generated from message metalstack.api.v2.ImageServiceLatestRequest
  */
@@ -68,7 +68,7 @@ export type ImageServiceLatestRequest = Message<"metalstack.api.v2.ImageServiceL
  */
 export declare const ImageServiceLatestRequestSchema: GenMessage<ImageServiceLatestRequest>;
 /**
- * ImageServiceGetResponse is the response payload for a image get request
+ * ImageServiceGetResponse is the response payload for an image get request
  *
  * @generated from message metalstack.api.v2.ImageServiceGetResponse
  */
@@ -86,7 +86,7 @@ export type ImageServiceGetResponse = Message<"metalstack.api.v2.ImageServiceGet
  */
 export declare const ImageServiceGetResponseSchema: GenMessage<ImageServiceGetResponse>;
 /**
- * ImageServiceListResponse is the response payload for a image list request
+ * ImageServiceListResponse is the response payload for an image list request
  *
  * @generated from message metalstack.api.v2.ImageServiceListResponse
  */
@@ -104,7 +104,7 @@ export type ImageServiceListResponse = Message<"metalstack.api.v2.ImageServiceLi
  */
 export declare const ImageServiceListResponseSchema: GenMessage<ImageServiceListResponse>;
 /**
- * ImageServiceLatestResponse is the response payload for a image latest request
+ * ImageServiceLatestResponse is the response payload for an image latest request
  *
  * @generated from message metalstack.api.v2.ImageServiceLatestResponse
  */

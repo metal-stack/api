@@ -515,7 +515,7 @@ message MachineBMCReport {
   MachineBMC bmc = 1;
   // Bios contains bios details
   MachineBios bios = 2;
-  // Fru containers field replaceable unit details
+  // Fru contains field replaceable unit details
   MachineFRU fru = 3;
   // PowerMetric contains the power statistics of the machine
   MachinePowerMetric power_metric = 4;
@@ -533,7 +533,7 @@ message MachineBios {
   string version = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Vendor the bios vendor
   string vendor = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Date the bios date as string because every vendor has different ideas howto describe the date
+  // Date the bios date as string because every vendor has different ideas how to describe the date
   string date = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
@@ -654,7 +654,7 @@ enum MachineProvisioningEventType {
   MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11 [(enum_string_value) = "Machine Reclaim"];
 }
 
-// MachineProvisioningEvent is a event which has occurred during provisioning
+// MachineProvisioningEvent is an event that has occurred during provisioning
 message MachineProvisioningEvent {
   // Time the time that this event was received
   google.protobuf.Timestamp time = 1;
@@ -893,9 +893,9 @@ message MachineHardwareQuery {
 message MachineIssuesQuery {
   // MachineQuery to select specific machines
   metalstack.api.v2.MachineQuery machine_query = 1;
-  // Only a list of machine issue types to include
+  // Only includes the specified machine issue types
   repeated MachineIssueType only = 2 [(buf.validate.field).repeated = {items: {enum: {defined_only: true}}}];
-  // Omit a list of machine issues to omit
+  // Omits the specified machine issues
   repeated MachineIssueType omit = 3 [(buf.validate.field).repeated = {items: {enum: {defined_only: true}}}];
   // Severity filters issue for given severity
   optional MachineIssueSeverity severity = 4 [(buf.validate.field).enum.defined_only = true];

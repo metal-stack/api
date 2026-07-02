@@ -145,7 +145,7 @@ message SwitchServiceMigrateRequest {
 
 // SwitchServiceMigrateResponse is the response payload for migrating a switch.
 message SwitchServiceMigrateResponse {
-  // Switch contains the switch was migrated to
+  // Switch contains the switch that was migrated to
   metalstack.api.v2.Switch switch = 1;
 }
 

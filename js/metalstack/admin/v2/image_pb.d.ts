@@ -92,7 +92,7 @@ export type ImageServiceUpdateRequest = Message<"metalstack.admin.v2.ImageServic
      */
     classification: ImageClassification;
     /**
-     * ExpiresAt usage is not possible after this date
+     * ExpiresAt indicates that usage is not possible after this date
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */

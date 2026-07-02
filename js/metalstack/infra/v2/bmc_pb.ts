@@ -31,7 +31,7 @@ export type UpdateBMCInfoRequest = Message<"metalstack.infra.v2.UpdateBMCInfoReq
   partition: string;
 
   /**
-   * BmcReports contains maps the BMC report per machine UUID
+   * BmcReports maps the BMC report per machine UUID
    *
    * @generated from field: map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 2;
    */

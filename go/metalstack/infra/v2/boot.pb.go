@@ -249,7 +249,7 @@ type BootServiceRegisterRequest struct {
 	Fru *v2.MachineFRU `protobuf:"bytes,5,opt,name=fru,proto3" json:"fru,omitempty"`
 	// Tags of this machine
 	Tags []string `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
-	// MetalHammer version this machine was bootet into
+	// MetalHammer version this machine was booted into
 	MetalHammerVersion string `protobuf:"bytes,7,opt,name=metal_hammer_version,json=metalHammerVersion,proto3" json:"metal_hammer_version,omitempty"`
 	// Partition where this machine is located
 	Partition     string `protobuf:"bytes,8,opt,name=partition,proto3" json:"partition,omitempty"`

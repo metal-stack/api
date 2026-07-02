@@ -6,7 +6,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_ip: GenFile;
 /**
- * IP is a ip address which can be used as loadbalancer addresses
+ * IP is an IP address which can be used as loadbalancer addresses
  *
  * @generated from message metalstack.api.v2.IP
  */
@@ -73,7 +73,7 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
  */
 export declare const IPSchema: GenMessage<IP>;
 /**
- * IPServiceGetRequest is the request payload for a ip get request
+ * IPServiceGetRequest is the request payload for an IP get request
  *
  * @generated from message metalstack.api.v2.IPServiceGetRequest
  */
@@ -103,7 +103,7 @@ export type IPServiceGetRequest = Message<"metalstack.api.v2.IPServiceGetRequest
  */
 export declare const IPServiceGetRequestSchema: GenMessage<IPServiceGetRequest>;
 /**
- * IPServiceCreateRequest is the request payload for a ip create request
+ * IPServiceCreateRequest is the request payload for an IP create request
  *
  * @generated from message metalstack.api.v2.IPServiceCreateRequest
  */
@@ -169,7 +169,7 @@ export type IPServiceCreateRequest = Message<"metalstack.api.v2.IPServiceCreateR
  */
 export declare const IPServiceCreateRequestSchema: GenMessage<IPServiceCreateRequest>;
 /**
- * IPServiceUpdateRequest is the request payload for a ip update request
+ * IPServiceUpdateRequest is the request payload for an IP update request
  *
  * @generated from message metalstack.api.v2.IPServiceUpdateRequest
  */
@@ -223,7 +223,7 @@ export type IPServiceUpdateRequest = Message<"metalstack.api.v2.IPServiceUpdateR
  */
 export declare const IPServiceUpdateRequestSchema: GenMessage<IPServiceUpdateRequest>;
 /**
- * IPServiceListRequest is the request payload for a ip list request
+ * IPServiceListRequest is the request payload for an IP list request
  *
  * @generated from message metalstack.api.v2.IPServiceListRequest
  */
@@ -235,7 +235,7 @@ export type IPServiceListRequest = Message<"metalstack.api.v2.IPServiceListReque
      */
     project: string;
     /**
-     * Query to list one ore more ips
+     * Query to list one or more IPs
      *
      * @generated from field: metalstack.api.v2.IPQuery query = 2;
      */
@@ -259,7 +259,7 @@ export type IPQuery = Message<"metalstack.api.v2.IPQuery"> & {
      */
     ip?: string | undefined;
     /**
-     * Network from where the ips to list
+     * Network from which the IPs are to list
      *
      * @generated from field: optional string network = 2;
      */
@@ -277,13 +277,13 @@ export type IPQuery = Message<"metalstack.api.v2.IPQuery"> & {
      */
     name?: string | undefined;
     /**
-     * Uuid for which this ips should get filtered
+     * UUID for which these IPs should be filtered
      *
      * @generated from field: optional string uuid = 5;
      */
     uuid?: string | undefined;
     /**
-     * Machine for which this ips should get filtered
+     * Machine for which these IPs should be filtered
      *
      * @generated from field: optional string machine = 6;
      */
@@ -295,7 +295,7 @@ export type IPQuery = Message<"metalstack.api.v2.IPQuery"> & {
      */
     parentPrefixCidr?: string | undefined;
     /**
-     * Labels for which this ips should get filtered
+     * Labels for which these IPs should be filtered
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 8;
      */
@@ -307,7 +307,7 @@ export type IPQuery = Message<"metalstack.api.v2.IPQuery"> & {
      */
     type?: IPType | undefined;
     /**
-     * Addressfamily of the IPs to list, defaults to all addressfamilies
+     * Address family of the IPs to list, defaults to all address families
      *
      * @generated from field: optional metalstack.api.v2.IPAddressFamily address_family = 10;
      */
@@ -349,7 +349,7 @@ export type IPServiceDeleteRequest = Message<"metalstack.api.v2.IPServiceDeleteR
  */
 export declare const IPServiceDeleteRequestSchema: GenMessage<IPServiceDeleteRequest>;
 /**
- * IPServiceGetResponse is the response payload for a ip get request
+ * IPServiceGetResponse is the response payload for an IP get request
  *
  * @generated from message metalstack.api.v2.IPServiceGetResponse
  */
@@ -385,7 +385,7 @@ export type IPServiceUpdateResponse = Message<"metalstack.api.v2.IPServiceUpdate
  */
 export declare const IPServiceUpdateResponseSchema: GenMessage<IPServiceUpdateResponse>;
 /**
- * IPServiceCreateResponse is the response payload for a ip create request
+ * IPServiceCreateResponse is the response payload for an IP create request
  *
  * @generated from message metalstack.api.v2.IPServiceCreateResponse
  */
@@ -403,7 +403,7 @@ export type IPServiceCreateResponse = Message<"metalstack.api.v2.IPServiceCreate
  */
 export declare const IPServiceCreateResponseSchema: GenMessage<IPServiceCreateResponse>;
 /**
- * IPServiceListResponse is the response payload for a ip list request
+ * IPServiceListResponse is the response payload for an IP list request
  *
  * @generated from message metalstack.api.v2.IPServiceListResponse
  */
@@ -421,7 +421,7 @@ export type IPServiceListResponse = Message<"metalstack.api.v2.IPServiceListResp
  */
 export declare const IPServiceListResponseSchema: GenMessage<IPServiceListResponse>;
 /**
- * IPServiceDeleteResponse is the response payload for a ip delete request
+ * IPServiceDeleteResponse is the response payload for an IP delete request
  *
  * @generated from message metalstack.api.v2.IPServiceDeleteResponse
  */
@@ -439,7 +439,7 @@ export type IPServiceDeleteResponse = Message<"metalstack.api.v2.IPServiceDelete
  */
 export declare const IPServiceDeleteResponseSchema: GenMessage<IPServiceDeleteResponse>;
 /**
- * IPType specifies different ip address types
+ * IPType specifies different IP address types
  *
  * @generated from enum metalstack.api.v2.IPType
  */
@@ -451,7 +451,7 @@ export declare enum IPType {
      */
     IP_TYPE_UNSPECIFIED = 0,
     /**
-     * IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage
+     * IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage
      *
      * @generated from enum value: IP_TYPE_EPHEMERAL = 1;
      */

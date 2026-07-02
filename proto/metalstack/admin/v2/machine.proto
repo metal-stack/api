@@ -78,7 +78,7 @@ message MachineServiceGetResponse {
 
 // MachineServiceListRequest is the request payload for a machine list request
 message MachineServiceListRequest {
-  // Query to list one ore more machines
+  // Query to list one or more machines
   metalstack.api.v2.MachineQuery query = 1;
   // Partition for which machines should be listed, could be left empty if only one partition is present
   // otherwise an error is thrown that the partition must be specified
@@ -130,7 +130,7 @@ message MachineServiceGetBMCResponse {
 
 // MachineServiceListBMCRequest is the request payload for a machine listbmc request
 message MachineServiceListBMCRequest {
-  // Query to list one ore more bmcs of many machines
+  // Query to list one or more BMCs of many machines
   metalstack.api.v2.MachineBMCQuery query = 1;
 }
 

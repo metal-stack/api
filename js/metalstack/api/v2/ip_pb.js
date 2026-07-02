@@ -70,7 +70,7 @@ export const IPServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metals
  */
 export const IPServiceDeleteResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_ip, 11);
 /**
- * IPType specifies different ip address types
+ * IPType specifies different IP address types
  *
  * @generated from enum metalstack.api.v2.IPType
  */
@@ -83,7 +83,7 @@ export var IPType;
      */
     IPType[IPType["IP_TYPE_UNSPECIFIED"] = 0] = "IP_TYPE_UNSPECIFIED";
     /**
-     * IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage
+     * IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage
      *
      * @generated from enum value: IP_TYPE_EPHEMERAL = 1;
      */

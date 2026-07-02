@@ -133,7 +133,7 @@ type ImageServiceUpdateRequest struct {
 	Features []v2.ImageFeature `protobuf:"varint,6,rep,packed,name=features,proto3,enum=metalstack.api.v2.ImageFeature" json:"features,omitempty"`
 	// Classification of this image
 	Classification v2.ImageClassification `protobuf:"varint,7,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification" json:"classification,omitempty"`
-	// ExpiresAt usage is not possible after this date
+	// ExpiresAt indicates that usage is not possible after this date
 	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

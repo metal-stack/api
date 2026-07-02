@@ -31,7 +31,7 @@ message User {
   repeated Tenant tenants = 5;
   // Projects the user belongs to
   repeated Project projects = 6;
-  // DefaultTenant this user belongs to
+  // DefaultTenant the default tenant that this user belongs to
   Tenant default_tenant = 7;
 }
 

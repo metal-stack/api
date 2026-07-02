@@ -92,7 +92,7 @@ export declare const PartitionServiceUpdateRequestSchema: GenMessage<PartitionSe
  */
 export type PartitionServiceDeleteRequest = Message<"metalstack.admin.v2.PartitionServiceDeleteRequest"> & {
     /**
-     * ID of the partition to get
+     * ID of the partition to delete
      *
      * @generated from field: string id = 1;
      */

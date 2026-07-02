@@ -43,12 +43,12 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // RemoveMember remove a user from a project
+  // RemoveMember removes a user from a project
   rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // UpdateMember update a user for a project
+  // UpdateMember updates a user for a project
   rpc UpdateMember(ProjectServiceUpdateMemberRequest) returns (ProjectServiceUpdateMemberResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
@@ -58,7 +58,7 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // InviteAccept is called from a user to accept a invitation
+  // InviteAccept is called by a user to accept an invitation
   rpc InviteAccept(ProjectServiceInviteAcceptRequest) returns (ProjectServiceInviteAcceptResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_INCLUDED;
@@ -97,7 +97,7 @@ message Project {
   optional string avatar_url = 6 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
 }
 
-// ProjectMember defines a user that participates at a project
+// ProjectMember defines a user that participates in a project
 message ProjectMember {
   // Id is the user id of the member
   string id = 1;
@@ -125,9 +125,9 @@ message ProjectInvite {
   bool joined = 4;
   // ProjectName is the project name for which this invite was created
   string project_name = 5;
-  // Tenant is the login of tenant who invites to join this project
+  // Tenant is the login of the tenant inviting another user to join this project
   string tenant = 6;
-  // TenantName is the name of tenant who invites to join this project
+  // TenantName is the name of the tenant inviting another user to join this project
   string tenant_name = 7;
   // ExpiresAt the date when this invite expires
   google.protobuf.Timestamp expires_at = 8;
@@ -315,7 +315,7 @@ message ProjectServiceInviteAcceptRequest {
 message ProjectServiceInviteAcceptResponse {
   // Project ID of the project joined
   string project = 1;
-  // ProjectName if the project joined
+  // ProjectName of the project joined
   string project_name = 2;
 }
 

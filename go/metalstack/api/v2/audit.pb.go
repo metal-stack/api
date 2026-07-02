@@ -348,7 +348,7 @@ func (x *AuditQuery) GetPhase() AuditPhase {
 	return AuditPhase_AUDIT_PHASE_UNSPECIFIED
 }
 
-// AuditServiceListRequest is the request payload for a audit list request
+// AuditServiceListRequest is the request payload for an audit list request
 type AuditServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login for this tenant

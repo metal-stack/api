@@ -42,7 +42,7 @@ message SizeReservationServiceListRequest {
 
 // SizeReservationServiceGetResponse is the response payload for a size reservation get request
 message SizeReservationServiceGetResponse {
-  //  Size reservation
+  // Size reservation
   SizeReservation size_reservation = 1;
 }
 

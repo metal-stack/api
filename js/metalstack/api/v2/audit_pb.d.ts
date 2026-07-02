@@ -163,7 +163,7 @@ export type AuditQuery = Message<"metalstack.api.v2.AuditQuery"> & {
  */
 export declare const AuditQuerySchema: GenMessage<AuditQuery>;
 /**
- * AuditServiceListRequest is the request payload for a audit list request
+ * AuditServiceListRequest is the request payload for an audit list request
  *
  * @generated from message metalstack.api.v2.AuditServiceListRequest
  */

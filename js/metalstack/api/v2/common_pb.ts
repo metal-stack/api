@@ -425,7 +425,7 @@ export enum Visibility {
   PUBLIC = 1,
 
   /**
-   * VISIBILITY_SELF enable call this endpoint from the authenticated user only
+   * VISIBILITY_SELF restricts calls to the authenticated user only
    *
    * @generated from enum value: VISIBILITY_SELF = 2;
    */
@@ -511,7 +511,7 @@ export const OptimisticLockingStrategySchema: GenEnum<OptimisticLockingStrategy>
   enumDesc(file_metalstack_api_v2_common, 7);
 
 /**
- * TenantRoles are used to define which tenant role a logged in user must provide to call this method
+ * TenantRoles are used to define the tenant role a logged in user must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.TenantRole tenant_roles = 51000;
  */
@@ -519,7 +519,7 @@ export const tenant_roles: GenExtension<MethodOptions, TenantRole[]> = /*@__PURE
   extDesc(file_metalstack_api_v2_common, 0);
 
 /**
- * ProjectRoles are used to define which project role a logged in user must provide to call this method
+ * ProjectRoles are used to define the project role a logged in user must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.ProjectRole project_roles = 51001;
  */
@@ -527,7 +527,7 @@ export const project_roles: GenExtension<MethodOptions, ProjectRole[]> = /*@__PU
   extDesc(file_metalstack_api_v2_common, 1);
 
 /**
- * AdminRoles are used to define which admin role a logged in user must provide to call this method
+ * AdminRoles are used to define the admin role a logged in user must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.AdminRole admin_roles = 51002;
  */
@@ -551,7 +551,7 @@ export const auditing: GenExtension<MethodOptions, Auditing> = /*@__PURE__*/
   extDesc(file_metalstack_api_v2_common, 4);
 
 /**
- * InfraRoles are used to define which infra role a microservice must provide to call this method
+ * InfraRoles are used to define the infra role a microservice must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.InfraRole infra_roles = 51005;
  */

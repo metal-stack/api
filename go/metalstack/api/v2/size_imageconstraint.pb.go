@@ -202,7 +202,7 @@ func (x *SizeImageConstraint) GetDescription() string {
 	return ""
 }
 
-// ImageConstraint defines a constraint for a image
+// ImageConstraint defines a constraint for an image
 // examples:
 // images:
 //
