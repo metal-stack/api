@@ -115,7 +115,7 @@ export const SizeImageConstraintSchema: GenMessage<SizeImageConstraint> = /*@__P
   messageDesc(file_metalstack_api_v2_size_imageconstraint, 2);
 
 /**
- * ImageConstraint defines a constraint for a image
+ * ImageConstraint defines a constraint for an image
  * examples:
  * images:
  *    ubuntu: ">= 20.04.20211011"

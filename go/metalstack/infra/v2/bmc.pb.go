@@ -28,7 +28,7 @@ type UpdateBMCInfoRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Partition is the partition ID where metal-bmc wants to receive events
 	Partition string `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
-	// BmcReports contains maps the BMC report per machine UUID
+	// BmcReports maps the BMC report per machine UUID
 	BmcReports    map[string]*v2.MachineBMCReport `protobuf:"bytes,2,rep,name=bmc_reports,json=bmcReports,proto3" json:"bmc_reports,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

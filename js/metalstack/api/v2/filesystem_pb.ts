@@ -259,7 +259,7 @@ export type Filesystem = Message<"metalstack.api.v2.Filesystem"> & {
   path?: string | undefined;
 
   /**
-   * Label optional label for this this filesystem
+   * Label an optional label for this filesystem
    *
    * @generated from field: optional string label = 6;
    */
@@ -378,14 +378,14 @@ export type DiskPartition = Message<"metalstack.api.v2.DiskPartition"> & {
   number: number;
 
   /**
-   * optional label for this this partition
+   * Label an optional label for this partition
    *
    * @generated from field: optional string label = 2;
    */
   label?: string | undefined;
 
   /**
-   * Size size in mebibytes (MiB) of this partition"
+   * Size in mebibytes (MiB) of this partition
    *
    * @generated from field: uint64 size = 3;
    */

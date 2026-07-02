@@ -60,7 +60,7 @@ export declare const SizeReservationServiceListRequestSchema: GenMessage<SizeRes
  */
 export type SizeReservationServiceGetResponse = Message<"metalstack.api.v2.SizeReservationServiceGetResponse"> & {
     /**
-     *  Size reservation
+     * Size reservation
      *
      * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
      */

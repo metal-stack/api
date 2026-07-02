@@ -89,7 +89,7 @@ message BootServiceRegisterRequest {
   metalstack.api.v2.MachineFRU fru = 5;
   // Tags of this machine
   repeated string tags = 6;
-  // MetalHammer version this machine was bootet into
+  // MetalHammer version this machine was booted into
   string metal_hammer_version = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Partition where this machine is located
   string partition = 8 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];

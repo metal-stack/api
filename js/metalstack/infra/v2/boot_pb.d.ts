@@ -137,7 +137,7 @@ export type BootServiceRegisterRequest = Message<"metalstack.infra.v2.BootServic
      */
     tags: string[];
     /**
-     * MetalHammer version this machine was bootet into
+     * MetalHammer version this machine was booted into
      *
      * @generated from field: string metal_hammer_version = 7;
      */

@@ -49,7 +49,7 @@ export type User = Message<"metalstack.api.v2.User"> & {
      */
     projects: Project[];
     /**
-     * DefaultTenant this user belongs to
+     * DefaultTenant the default tenant that this user belongs to
      *
      * @generated from field: metalstack.api.v2.Tenant default_tenant = 7;
      */

@@ -53,7 +53,7 @@ message PartitionBootConfiguration {
   string image_url = 1 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
   // KernelURL the url to download the kernel for the boot image
   string kernel_url = 2 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Commandline the cmdline to the kernel for the boot image
+  // Cmdline the kernel command line for the boot image
   string commandline = 3 [(buf.validate.field).string.max_len = 4096];
 }
 

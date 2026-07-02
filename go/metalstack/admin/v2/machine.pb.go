@@ -118,7 +118,7 @@ func (x *MachineServiceGetResponse) GetMachine() *v2.Machine {
 // MachineServiceListRequest is the request payload for a machine list request
 type MachineServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query to list one ore more machines
+	// Query to list one or more machines
 	Query *v2.MachineQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	// Partition for which machines should be listed, could be left empty if only one partition is present
 	// otherwise an error is thrown that the partition must be specified
@@ -505,7 +505,7 @@ func (x *MachineServiceGetBMCResponse) GetBmc() *v2.MachineBMCReport {
 // MachineServiceListBMCRequest is the request payload for a machine listbmc request
 type MachineServiceListBMCRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query to list one ore more bmcs of many machines
+	// Query to list one or more BMCs of many machines
 	Query         *v2.MachineBMCQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

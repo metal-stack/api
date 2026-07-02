@@ -48,7 +48,7 @@ export declare const MachineServiceGetResponseSchema: GenMessage<MachineServiceG
  */
 export type MachineServiceListRequest = Message<"metalstack.admin.v2.MachineServiceListRequest"> & {
     /**
-     * Query to list one ore more machines
+     * Query to list one or more machines
      *
      * @generated from field: metalstack.api.v2.MachineQuery query = 1;
      */
@@ -204,7 +204,7 @@ export declare const MachineServiceGetBMCResponseSchema: GenMessage<MachineServi
  */
 export type MachineServiceListBMCRequest = Message<"metalstack.admin.v2.MachineServiceListBMCRequest"> & {
     /**
-     * Query to list one ore more bmcs of many machines
+     * Query to list one or more BMCs of many machines
      *
      * @generated from field: metalstack.api.v2.MachineBMCQuery query = 1;
      */

@@ -364,7 +364,7 @@ export declare enum Visibility {
      */
     PUBLIC = 1,
     /**
-     * VISIBILITY_SELF enable call this endpoint from the authenticated user only
+     * VISIBILITY_SELF restricts calls to the authenticated user only
      *
      * @generated from enum value: VISIBILITY_SELF = 2;
      */
@@ -437,19 +437,19 @@ export declare enum OptimisticLockingStrategy {
  */
 export declare const OptimisticLockingStrategySchema: GenEnum<OptimisticLockingStrategy>;
 /**
- * TenantRoles are used to define which tenant role a logged in user must provide to call this method
+ * TenantRoles are used to define the tenant role a logged in user must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.TenantRole tenant_roles = 51000;
  */
 export declare const tenant_roles: GenExtension<MethodOptions, TenantRole[]>;
 /**
- * ProjectRoles are used to define which project role a logged in user must provide to call this method
+ * ProjectRoles are used to define the project role a logged in user must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.ProjectRole project_roles = 51001;
  */
 export declare const project_roles: GenExtension<MethodOptions, ProjectRole[]>;
 /**
- * AdminRoles are used to define which admin role a logged in user must provide to call this method
+ * AdminRoles are used to define the admin role a logged in user must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.AdminRole admin_roles = 51002;
  */
@@ -467,7 +467,7 @@ export declare const visibility: GenExtension<MethodOptions, Visibility>;
  */
 export declare const auditing: GenExtension<MethodOptions, Auditing>;
 /**
- * InfraRoles are used to define which infra role a microservice must provide to call this method
+ * InfraRoles are used to define the infra role a microservice must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.InfraRole infra_roles = 51005;
  */

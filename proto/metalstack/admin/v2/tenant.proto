@@ -25,7 +25,7 @@ service TenantService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // RemoveMember remove a member of a tenant
+  // RemoveMember removes a member from a tenant
   rpc RemoveMember(TenantServiceRemoveMemberRequest) returns (TenantServiceRemoveMemberResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;

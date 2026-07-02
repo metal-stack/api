@@ -2851,7 +2851,7 @@ type MachineBMCReport struct {
 	Bmc *MachineBMC `protobuf:"bytes,1,opt,name=bmc,proto3" json:"bmc,omitempty"`
 	// Bios contains bios details
 	Bios *MachineBios `protobuf:"bytes,2,opt,name=bios,proto3" json:"bios,omitempty"`
-	// Fru containers field replaceable unit details
+	// Fru contains field replaceable unit details
 	Fru *MachineFRU `protobuf:"bytes,3,opt,name=fru,proto3" json:"fru,omitempty"`
 	// PowerMetric contains the power statistics of the machine
 	PowerMetric *MachinePowerMetric `protobuf:"bytes,4,opt,name=power_metric,json=powerMetric,proto3" json:"power_metric,omitempty"`
@@ -2951,7 +2951,7 @@ type MachineBios struct {
 	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 	// Vendor the bios vendor
 	Vendor string `protobuf:"bytes,2,opt,name=vendor,proto3" json:"vendor,omitempty"`
-	// Date the bios date as string because every vendor has different ideas howto describe the date
+	// Date the bios date as string because every vendor has different ideas how to describe the date
 	Date          string `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -3427,7 +3427,7 @@ func (x *MachineRecentProvisioningEvents) GetState() MachineProvisioningEventSta
 	return MachineProvisioningEventState_MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED
 }
 
-// MachineProvisioningEvent is a event which has occurred during provisioning
+// MachineProvisioningEvent is an event that has occurred during provisioning
 type MachineProvisioningEvent struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Time the time that this event was received
@@ -4336,9 +4336,9 @@ type MachineIssuesQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// MachineQuery to select specific machines
 	MachineQuery *MachineQuery `protobuf:"bytes,1,opt,name=machine_query,json=machineQuery,proto3" json:"machine_query,omitempty"`
-	// Only a list of machine issue types to include
+	// Only includes the specified machine issue types
 	Only []MachineIssueType `protobuf:"varint,2,rep,packed,name=only,proto3,enum=metalstack.api.v2.MachineIssueType" json:"only,omitempty"`
-	// Omit a list of machine issues to omit
+	// Omits the specified machine issues
 	Omit []MachineIssueType `protobuf:"varint,3,rep,packed,name=omit,proto3,enum=metalstack.api.v2.MachineIssueType" json:"omit,omitempty"`
 	// Severity filters issue for given severity
 	Severity *MachineIssueSeverity `protobuf:"varint,4,opt,name=severity,proto3,enum=metalstack.api.v2.MachineIssueSeverity,oneof" json:"severity,omitempty"`

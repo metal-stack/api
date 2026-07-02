@@ -22,13 +22,13 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// IPType specifies different ip address types
+// IPType specifies different IP address types
 type IPType int32
 
 const (
 	// IP_TYPE_UNSPECIFIED is not specified
 	IPType_IP_TYPE_UNSPECIFIED IPType = 0
-	// IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage
+	// IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage
 	IPType_IP_TYPE_EPHEMERAL IPType = 1
 	// IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly
 	IPType_IP_TYPE_STATIC IPType = 2
@@ -128,7 +128,7 @@ func (IPAddressFamily) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_ip_proto_rawDescGZIP(), []int{1}
 }
 
-// IP is a ip address which can be used as loadbalancer addresses
+// IP is an IP address which can be used as loadbalancer addresses
 type IP struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of this ip
@@ -247,7 +247,7 @@ func (x *IP) GetNamespace() string {
 	return ""
 }
 
-// IPServiceGetRequest is the request payload for a ip get request
+// IPServiceGetRequest is the request payload for an IP get request
 type IPServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// IP of the ip to get
@@ -311,7 +311,7 @@ func (x *IPServiceGetRequest) GetNamespace() string {
 	return ""
 }
 
-// IPServiceCreateRequest is the request payload for a ip create request
+// IPServiceCreateRequest is the request payload for an IP create request
 type IPServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network from which the IP should be created
@@ -429,7 +429,7 @@ func (x *IPServiceCreateRequest) GetAddressFamily() IPAddressFamily {
 	return IPAddressFamily_IP_ADDRESS_FAMILY_UNSPECIFIED
 }
 
-// IPServiceUpdateRequest is the request payload for a ip update request
+// IPServiceUpdateRequest is the request payload for an IP update request
 type IPServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Ip the ip address to update
@@ -529,12 +529,12 @@ func (x *IPServiceUpdateRequest) GetLabels() *UpdateLabels {
 	return nil
 }
 
-// IPServiceListRequest is the request payload for a ip list request
+// IPServiceListRequest is the request payload for an IP list request
 type IPServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project of the ips to list
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Query to list one ore more ips
+	// Query to list one or more IPs
 	Query         *IPQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -589,23 +589,23 @@ type IPQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Ip the ip to list
 	Ip *string `protobuf:"bytes,1,opt,name=ip,proto3,oneof" json:"ip,omitempty"`
-	// Network from where the ips to list
+	// Network from which the IPs are to list
 	Network *string `protobuf:"bytes,2,opt,name=network,proto3,oneof" json:"network,omitempty"`
 	// Project of the ips to list
 	Project *string `protobuf:"bytes,3,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	// Name of this ip
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Uuid for which this ips should get filtered
+	// UUID for which these IPs should be filtered
 	Uuid *string `protobuf:"bytes,5,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	// Machine for which this ips should get filtered
+	// Machine for which these IPs should be filtered
 	Machine *string `protobuf:"bytes,6,opt,name=machine,proto3,oneof" json:"machine,omitempty"`
 	// ParentPrefixCidr for which this ips should get filtered
 	ParentPrefixCidr *string `protobuf:"bytes,7,opt,name=parent_prefix_cidr,json=parentPrefixCidr,proto3,oneof" json:"parent_prefix_cidr,omitempty"`
-	// Labels for which this ips should get filtered
+	// Labels for which these IPs should be filtered
 	Labels *Labels `protobuf:"bytes,8,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	// Static if set to true, this will be a Static ip
 	Type *IPType `protobuf:"varint,9,opt,name=type,proto3,enum=metalstack.api.v2.IPType,oneof" json:"type,omitempty"`
-	// Addressfamily of the IPs to list, defaults to all addressfamilies
+	// Address family of the IPs to list, defaults to all address families
 	AddressFamily *IPAddressFamily `protobuf:"varint,10,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
 	// Namespace can be specified to get the ip of a namespace.
 	Namespace     *string `protobuf:"bytes,11,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
@@ -775,7 +775,7 @@ func (x *IPServiceDeleteRequest) GetProject() string {
 	return ""
 }
 
-// IPServiceGetResponse is the response payload for a ip get request
+// IPServiceGetResponse is the response payload for an IP get request
 type IPServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Ip the ip
@@ -867,7 +867,7 @@ func (x *IPServiceUpdateResponse) GetIp() *IP {
 	return nil
 }
 
-// IPServiceCreateResponse is the response payload for a ip create request
+// IPServiceCreateResponse is the response payload for an IP create request
 type IPServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Ip the ip
@@ -913,7 +913,7 @@ func (x *IPServiceCreateResponse) GetIp() *IP {
 	return nil
 }
 
-// IPServiceListResponse is the response payload for a ip list request
+// IPServiceListResponse is the response payload for an IP list request
 type IPServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Ips the ips
@@ -959,7 +959,7 @@ func (x *IPServiceListResponse) GetIps() []*IP {
 	return nil
 }
 
-// IPServiceDeleteResponse is the response payload for a ip delete request
+// IPServiceDeleteResponse is the response payload for an IP delete request
 type IPServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Ip the ip

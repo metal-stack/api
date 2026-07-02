@@ -42,11 +42,11 @@ service IPService {
   }
 }
 
-// IPType specifies different ip address types
+// IPType specifies different IP address types
 enum IPType {
   // IP_TYPE_UNSPECIFIED is not specified
   IP_TYPE_UNSPECIFIED = 0;
-  // IP_TYPE_EPHEMERAL defines a ephemeral ip address which is freed/deleted after usage
+  // IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage
   IP_TYPE_EPHEMERAL = 1 [(enum_string_value) = "ephemeral"];
   // IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly
   IP_TYPE_STATIC = 2 [(enum_string_value) = "static"];
@@ -62,7 +62,7 @@ enum IPAddressFamily {
   IP_ADDRESS_FAMILY_V6 = 2 [(enum_string_value) = "ipv6"];
 }
 
-// IP is a ip address which can be used as loadbalancer addresses
+// IP is an IP address which can be used as loadbalancer addresses
 message IP {
   // Uuid of this ip
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -85,7 +85,7 @@ message IP {
   optional string namespace = 9 [(buf.validate.field).string.uuid = true];
 }
 
-// IPServiceGetRequest is the request payload for a ip get request
+// IPServiceGetRequest is the request payload for an IP get request
 message IPServiceGetRequest {
   // IP of the ip to get
   string ip = 1 [(buf.validate.field).string.ip = true];
@@ -95,7 +95,7 @@ message IPServiceGetRequest {
   optional string namespace = 3 [(buf.validate.field).string.uuid = true];
 }
 
-// IPServiceCreateRequest is the request payload for a ip create request
+// IPServiceCreateRequest is the request payload for an IP create request
 message IPServiceCreateRequest {
   // Network from which the IP should be created
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -117,7 +117,7 @@ message IPServiceCreateRequest {
   optional IPAddressFamily address_family = 9 [(buf.validate.field).enum.defined_only = true];
 }
 
-// IPServiceUpdateRequest is the request payload for a ip update request
+// IPServiceUpdateRequest is the request payload for an IP update request
 message IPServiceUpdateRequest {
   // Ip the ip address to update
   string ip = 1 [(buf.validate.field).string.ip = true];
@@ -135,11 +135,11 @@ message IPServiceUpdateRequest {
   optional UpdateLabels labels = 7;
 }
 
-// IPServiceListRequest is the request payload for a ip list request
+// IPServiceListRequest is the request payload for an IP list request
 message IPServiceListRequest {
   // Project of the ips to list
   string project = 1 [(buf.validate.field).string.uuid = true];
-  // Query to list one ore more ips
+  // Query to list one or more IPs
   IPQuery query = 2;
 }
 
@@ -147,23 +147,23 @@ message IPServiceListRequest {
 message IPQuery {
   // Ip the ip to list
   optional string ip = 1 [(buf.validate.field).string.ip = true];
-  // Network from where the ips to list
+  // Network from which the IPs are to list
   optional string network = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project of the ips to list
   optional string project = 3 [(buf.validate.field).string.uuid = true];
   // Name of this ip
   optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Uuid for which this ips should get filtered
+  // UUID for which these IPs should be filtered
   optional string uuid = 5 [(buf.validate.field).string.uuid = true];
-  // Machine for which this ips should get filtered
+  // Machine for which these IPs should be filtered
   optional string machine = 6 [(buf.validate.field).string.uuid = true];
   // ParentPrefixCidr for which this ips should get filtered
   optional string parent_prefix_cidr = 7 [(buf.validate.field).string.ip_prefix = true];
-  // Labels for which this ips should get filtered
+  // Labels for which these IPs should be filtered
   optional Labels labels = 8;
   // Static if set to true, this will be a Static ip
   optional IPType type = 9 [(buf.validate.field).enum.defined_only = true];
-  // Addressfamily of the IPs to list, defaults to all addressfamilies
+  // Address family of the IPs to list, defaults to all address families
   optional IPAddressFamily address_family = 10 [(buf.validate.field).enum.defined_only = true];
   // Namespace can be specified to get the ip of a namespace.
   optional string namespace = 11 [(buf.validate.field).string.uuid = true];
@@ -177,7 +177,7 @@ message IPServiceDeleteRequest {
   string project = 2 [(buf.validate.field).string.uuid = true];
 }
 
-// IPServiceGetResponse is the response payload for a ip get request
+// IPServiceGetResponse is the response payload for an IP get request
 message IPServiceGetResponse {
   // Ip the ip
   IP ip = 1;
@@ -189,19 +189,19 @@ message IPServiceUpdateResponse {
   IP ip = 1;
 }
 
-// IPServiceCreateResponse is the response payload for a ip create request
+// IPServiceCreateResponse is the response payload for an IP create request
 message IPServiceCreateResponse {
   // Ip the ip
   IP ip = 1;
 }
 
-// IPServiceListResponse is the response payload for a ip list request
+// IPServiceListResponse is the response payload for an IP list request
 message IPServiceListResponse {
   // Ips the ips
   repeated IP ips = 1;
 }
 
-// IPServiceDeleteResponse is the response payload for a ip delete request
+// IPServiceDeleteResponse is the response payload for an IP delete request
 message IPServiceDeleteResponse {
   // Ip the ip
   IP ip = 1;

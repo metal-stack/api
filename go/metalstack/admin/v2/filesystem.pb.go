@@ -383,8 +383,8 @@ func (x *FilesystemServiceDeleteResponse) GetFilesystemLayout() *v2.FilesystemLa
 // FilesystemServiceMatchRequest
 type FilesystemServiceMatchRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Match either size and image to a filesystemlayout
-	// or if a machine matches to a filesystemlayout
+	// Match size and image to a filesystem layout
+	// or match a machine to a filesystem layout
 	//
 	// Types that are valid to be assigned to Match:
 	//
