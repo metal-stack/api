@@ -311,7 +311,7 @@ const (
 	Visibility_VISIBILITY_UNSPECIFIED Visibility = 0
 	// VISIBILITY_PUBLIC specifies that this service is accessible without authentication
 	Visibility_VISIBILITY_PUBLIC Visibility = 1
-	// VISIBILITY_SELF enable call this endpoint from the authenticated user only
+	// VISIBILITY_SELF restricts calls to the authenticated user only
 	Visibility_VISIBILITY_SELF Visibility = 2
 )
 
@@ -655,10 +655,13 @@ func (x *Meta) GetDeletionTaskId() string {
 // UpdateLabels is a message to update labels
 type UpdateLabels struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Update labels. New ones will be added, existing ones overwritten
-	Update *Labels `protobuf:"bytes,1,opt,name=update,proto3" json:"update,omitempty"`
-	// Remove labels by key
-	Remove        []string `protobuf:"bytes,2,rep,name=remove,proto3" json:"remove,omitempty"`
+	// Strategy defines the label update strategy
+	//
+	// Types that are valid to be assigned to Strategy:
+	//
+	//	*UpdateLabels_Replace
+	//	*UpdateLabels_Patch
+	Strategy      isUpdateLabels_Strategy `protobuf_oneof:"strategy"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -693,14 +696,98 @@ func (*UpdateLabels) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *UpdateLabels) GetUpdate() *Labels {
+func (x *UpdateLabels) GetStrategy() isUpdateLabels_Strategy {
+	if x != nil {
+		return x.Strategy
+	}
+	return nil
+}
+
+func (x *UpdateLabels) GetReplace() *Labels {
+	if x != nil {
+		if x, ok := x.Strategy.(*UpdateLabels_Replace); ok {
+			return x.Replace
+		}
+	}
+	return nil
+}
+
+func (x *UpdateLabels) GetPatch() *LabelsPatch {
+	if x != nil {
+		if x, ok := x.Strategy.(*UpdateLabels_Patch); ok {
+			return x.Patch
+		}
+	}
+	return nil
+}
+
+type isUpdateLabels_Strategy interface {
+	isUpdateLabels_Strategy()
+}
+
+type UpdateLabels_Replace struct {
+	// Replace existing labels with the given ones
+	Replace *Labels `protobuf:"bytes,1,opt,name=replace,proto3,oneof"`
+}
+
+type UpdateLabels_Patch struct {
+	// Patch adds, updates or remove given labels without modifying others
+	Patch *LabelsPatch `protobuf:"bytes,2,opt,name=patch,proto3,oneof"`
+}
+
+func (*UpdateLabels_Replace) isUpdateLabels_Strategy() {}
+
+func (*UpdateLabels_Patch) isUpdateLabels_Strategy() {}
+
+// LabelsPatch adds, updates or remove given labels without modifying others
+type LabelsPatch struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Update labels. New ones will be added, existing ones overwritten
+	Update *Labels `protobuf:"bytes,1,opt,name=update,proto3" json:"update,omitempty"`
+	// Remove labels by key
+	Remove        []string `protobuf:"bytes,2,rep,name=remove,proto3" json:"remove,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LabelsPatch) Reset() {
+	*x = LabelsPatch{}
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LabelsPatch) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LabelsPatch) ProtoMessage() {}
+
+func (x *LabelsPatch) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LabelsPatch.ProtoReflect.Descriptor instead.
+func (*LabelsPatch) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *LabelsPatch) GetUpdate() *Labels {
 	if x != nil {
 		return x.Update
 	}
 	return nil
 }
 
-func (x *UpdateLabels) GetRemove() []string {
+func (x *LabelsPatch) GetRemove() []string {
 	if x != nil {
 		return x.Remove
 	}
@@ -721,7 +808,7 @@ type UpdateMeta struct {
 
 func (x *UpdateMeta) Reset() {
 	*x = UpdateMeta{}
-	mi := &file_metalstack_api_v2_common_proto_msgTypes[4]
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -733,7 +820,7 @@ func (x *UpdateMeta) String() string {
 func (*UpdateMeta) ProtoMessage() {}
 
 func (x *UpdateMeta) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_common_proto_msgTypes[4]
+	mi := &file_metalstack_api_v2_common_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -746,7 +833,7 @@ func (x *UpdateMeta) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateMeta.ProtoReflect.Descriptor instead.
 func (*UpdateMeta) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{4}
+	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *UpdateMeta) GetUpdatedAt() *timestamppb.Timestamp {
@@ -832,15 +919,15 @@ var file_metalstack_api_v2_common_proto_extTypes = []protoimpl.ExtensionInfo{
 
 // Extension fields to descriptorpb.MethodOptions.
 var (
-	// TenantRoles are used to define which tenant role a logged in user must provide to call this method
+	// TenantRoles are used to define the tenant role a logged in user must provide to call this method
 	//
 	// repeated metalstack.api.v2.TenantRole tenant_roles = 51000;
 	E_TenantRoles = &file_metalstack_api_v2_common_proto_extTypes[0]
-	// ProjectRoles are used to define which project role a logged in user must provide to call this method
+	// ProjectRoles are used to define the project role a logged in user must provide to call this method
 	//
 	// repeated metalstack.api.v2.ProjectRole project_roles = 51001;
 	E_ProjectRoles = &file_metalstack_api_v2_common_proto_extTypes[1]
-	// AdminRoles are used to define which admin role a logged in user must provide to call this method
+	// AdminRoles are used to define the admin role a logged in user must provide to call this method
 	//
 	// repeated metalstack.api.v2.AdminRole admin_roles = 51002;
 	E_AdminRoles = &file_metalstack_api_v2_common_proto_extTypes[2]
@@ -852,7 +939,7 @@ var (
 	//
 	// optional metalstack.api.v2.Auditing auditing = 51004;
 	E_Auditing = &file_metalstack_api_v2_common_proto_extTypes[4]
-	// InfraRoles are used to define which infra role a microservice must provide to call this method
+	// InfraRoles are used to define the infra role a microservice must provide to call this method
 	//
 	// repeated metalstack.api.v2.InfraRole infra_roles = 51005;
 	E_InfraRoles = &file_metalstack_api_v2_common_proto_extTypes[5]
@@ -896,10 +983,14 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"generation\x12-\n" +
 	"\x10deletion_task_id\x18\x05 \x01(\tH\x01R\x0edeletionTaskId\x88\x01\x01B\t\n" +
 	"\a_labelsB\x13\n" +
-	"\x11_deletion_task_id\"Y\n" +
-	"\fUpdateLabels\x121\n" +
-	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12\x16\n" +
-	"\x06remove\x18\x02 \x03(\tR\x06remove\"\xaa\x01\n" +
+	"\x11_deletion_task_id\"\x90\x01\n" +
+	"\fUpdateLabels\x125\n" +
+	"\areplace\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsH\x00R\areplace\x126\n" +
+	"\x05patch\x18\x02 \x01(\v2\x1e.metalstack.api.v2.LabelsPatchH\x00R\x05patchB\x11\n" +
+	"\bstrategy\x12\x05\xbaH\x02\b\x01\"l\n" +
+	"\vLabelsPatch\x121\n" +
+	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12*\n" +
+	"\x06remove\x18\x02 \x03(\tB\x12\xbaH\x0f\x92\x01\f\x18\x01\"\br\x06\U00033bb1\x02\x01R\x06remove\"\xaa\x01\n" +
 	"\n" +
 	"UpdateMeta\x129\n" +
 	"\n" +
@@ -969,7 +1060,7 @@ func file_metalstack_api_v2_common_proto_rawDescGZIP() []byte {
 }
 
 var file_metalstack_api_v2_common_proto_enumTypes = make([]protoimpl.EnumInfo, 8)
-var file_metalstack_api_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_metalstack_api_v2_common_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(TenantRole)(0),                       // 0: metalstack.api.v2.TenantRole
 	(ProjectRole)(0),                      // 1: metalstack.api.v2.ProjectRole
@@ -983,40 +1074,43 @@ var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(*Labels)(nil),                        // 9: metalstack.api.v2.Labels
 	(*Meta)(nil),                          // 10: metalstack.api.v2.Meta
 	(*UpdateLabels)(nil),                  // 11: metalstack.api.v2.UpdateLabels
-	(*UpdateMeta)(nil),                    // 12: metalstack.api.v2.UpdateMeta
-	nil,                                   // 13: metalstack.api.v2.Labels.LabelsEntry
-	(*timestamppb.Timestamp)(nil),         // 14: google.protobuf.Timestamp
-	(*descriptorpb.MethodOptions)(nil),    // 15: google.protobuf.MethodOptions
-	(*descriptorpb.EnumValueOptions)(nil), // 16: google.protobuf.EnumValueOptions
+	(*LabelsPatch)(nil),                   // 12: metalstack.api.v2.LabelsPatch
+	(*UpdateMeta)(nil),                    // 13: metalstack.api.v2.UpdateMeta
+	nil,                                   // 14: metalstack.api.v2.Labels.LabelsEntry
+	(*timestamppb.Timestamp)(nil),         // 15: google.protobuf.Timestamp
+	(*descriptorpb.MethodOptions)(nil),    // 16: google.protobuf.MethodOptions
+	(*descriptorpb.EnumValueOptions)(nil), // 17: google.protobuf.EnumValueOptions
 }
 var file_metalstack_api_v2_common_proto_depIdxs = []int32{
-	13, // 0: metalstack.api.v2.Labels.labels:type_name -> metalstack.api.v2.Labels.LabelsEntry
+	14, // 0: metalstack.api.v2.Labels.labels:type_name -> metalstack.api.v2.Labels.LabelsEntry
 	9,  // 1: metalstack.api.v2.Meta.labels:type_name -> metalstack.api.v2.Labels
-	14, // 2: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
-	14, // 3: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
-	9,  // 4: metalstack.api.v2.UpdateLabels.update:type_name -> metalstack.api.v2.Labels
-	14, // 5: metalstack.api.v2.UpdateMeta.updated_at:type_name -> google.protobuf.Timestamp
-	7,  // 6: metalstack.api.v2.UpdateMeta.locking_strategy:type_name -> metalstack.api.v2.OptimisticLockingStrategy
-	15, // 7: metalstack.api.v2.tenant_roles:extendee -> google.protobuf.MethodOptions
-	15, // 8: metalstack.api.v2.project_roles:extendee -> google.protobuf.MethodOptions
-	15, // 9: metalstack.api.v2.admin_roles:extendee -> google.protobuf.MethodOptions
-	15, // 10: metalstack.api.v2.visibility:extendee -> google.protobuf.MethodOptions
-	15, // 11: metalstack.api.v2.auditing:extendee -> google.protobuf.MethodOptions
-	15, // 12: metalstack.api.v2.infra_roles:extendee -> google.protobuf.MethodOptions
-	15, // 13: metalstack.api.v2.machine_roles:extendee -> google.protobuf.MethodOptions
-	16, // 14: metalstack.api.v2.enum_string_value:extendee -> google.protobuf.EnumValueOptions
-	0,  // 15: metalstack.api.v2.tenant_roles:type_name -> metalstack.api.v2.TenantRole
-	1,  // 16: metalstack.api.v2.project_roles:type_name -> metalstack.api.v2.ProjectRole
-	2,  // 17: metalstack.api.v2.admin_roles:type_name -> metalstack.api.v2.AdminRole
-	5,  // 18: metalstack.api.v2.visibility:type_name -> metalstack.api.v2.Visibility
-	6,  // 19: metalstack.api.v2.auditing:type_name -> metalstack.api.v2.Auditing
-	3,  // 20: metalstack.api.v2.infra_roles:type_name -> metalstack.api.v2.InfraRole
-	4,  // 21: metalstack.api.v2.machine_roles:type_name -> metalstack.api.v2.MachineRole
-	22, // [22:22] is the sub-list for method output_type
-	22, // [22:22] is the sub-list for method input_type
-	15, // [15:22] is the sub-list for extension type_name
-	7,  // [7:15] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	15, // 2: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
+	15, // 3: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
+	9,  // 4: metalstack.api.v2.UpdateLabels.replace:type_name -> metalstack.api.v2.Labels
+	12, // 5: metalstack.api.v2.UpdateLabels.patch:type_name -> metalstack.api.v2.LabelsPatch
+	9,  // 6: metalstack.api.v2.LabelsPatch.update:type_name -> metalstack.api.v2.Labels
+	15, // 7: metalstack.api.v2.UpdateMeta.updated_at:type_name -> google.protobuf.Timestamp
+	7,  // 8: metalstack.api.v2.UpdateMeta.locking_strategy:type_name -> metalstack.api.v2.OptimisticLockingStrategy
+	16, // 9: metalstack.api.v2.tenant_roles:extendee -> google.protobuf.MethodOptions
+	16, // 10: metalstack.api.v2.project_roles:extendee -> google.protobuf.MethodOptions
+	16, // 11: metalstack.api.v2.admin_roles:extendee -> google.protobuf.MethodOptions
+	16, // 12: metalstack.api.v2.visibility:extendee -> google.protobuf.MethodOptions
+	16, // 13: metalstack.api.v2.auditing:extendee -> google.protobuf.MethodOptions
+	16, // 14: metalstack.api.v2.infra_roles:extendee -> google.protobuf.MethodOptions
+	16, // 15: metalstack.api.v2.machine_roles:extendee -> google.protobuf.MethodOptions
+	17, // 16: metalstack.api.v2.enum_string_value:extendee -> google.protobuf.EnumValueOptions
+	0,  // 17: metalstack.api.v2.tenant_roles:type_name -> metalstack.api.v2.TenantRole
+	1,  // 18: metalstack.api.v2.project_roles:type_name -> metalstack.api.v2.ProjectRole
+	2,  // 19: metalstack.api.v2.admin_roles:type_name -> metalstack.api.v2.AdminRole
+	5,  // 20: metalstack.api.v2.visibility:type_name -> metalstack.api.v2.Visibility
+	6,  // 21: metalstack.api.v2.auditing:type_name -> metalstack.api.v2.Auditing
+	3,  // 22: metalstack.api.v2.infra_roles:type_name -> metalstack.api.v2.InfraRole
+	4,  // 23: metalstack.api.v2.machine_roles:type_name -> metalstack.api.v2.MachineRole
+	24, // [24:24] is the sub-list for method output_type
+	24, // [24:24] is the sub-list for method input_type
+	17, // [17:24] is the sub-list for extension type_name
+	9,  // [9:17] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_common_proto_init() }
@@ -1027,13 +1121,17 @@ func file_metalstack_api_v2_common_proto_init() {
 	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_common_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_common_proto_msgTypes[2].OneofWrappers = []any{}
+	file_metalstack_api_v2_common_proto_msgTypes[3].OneofWrappers = []any{
+		(*UpdateLabels_Replace)(nil),
+		(*UpdateLabels_Patch)(nil),
+	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_common_proto_rawDesc), len(file_metalstack_api_v2_common_proto_rawDesc)),
 			NumEnums:      8,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 8,
 			NumServices:   0,
 		},

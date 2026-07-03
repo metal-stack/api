@@ -99,7 +99,7 @@ message Filesystem {
     min_len: 1
     max_len: 4096
   }];
-  // Label optional label for this this filesystem
+  // Label an optional label for this filesystem
   optional string label = 6 [
     (buf.validate.field).string.(metalstack.api.v2.is_name) = true,
     (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
@@ -163,12 +163,12 @@ message Raid {
 message DiskPartition {
   // Number partition number, will be appended to partitionprefix to create the final devicename
   uint32 number = 1;
-  // optional label for this this partition
+  // Label an optional label for this partition
   optional string label = 2 [
     (buf.validate.field).string.(metalstack.api.v2.is_name) = true,
     (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
   ];
-  // Size size in mebibytes (MiB) of this partition"
+  // Size in mebibytes (MiB) of this partition
   uint64 size = 3;
   // GPTType the gpt partition table type of this partition
   optional GPTType gpt_type = 4 [

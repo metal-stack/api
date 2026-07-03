@@ -89,7 +89,7 @@ export type SizeImageConstraint = Message<"metalstack.api.v2.SizeImageConstraint
  */
 export declare const SizeImageConstraintSchema: GenMessage<SizeImageConstraint>;
 /**
- * ImageConstraint defines a constraint for a image
+ * ImageConstraint defines a constraint for an image
  * examples:
  * images:
  *    ubuntu: ">= 20.04.20211011"

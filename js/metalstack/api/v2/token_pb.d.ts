@@ -147,7 +147,7 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
         [key: string]: ProjectRole;
     };
     /**
-     * TenantRoles_associates a tenant id with the corresponding role of the token owner
+     * TenantRoles associates a tenant id with the corresponding role of the token owner
      *
      * @generated from field: map<string, metalstack.api.v2.TenantRole> tenant_roles = 5;
      */
@@ -228,7 +228,7 @@ export type TokenServiceCreateResponse = Message<"metalstack.api.v2.TokenService
      */
     token?: Token | undefined;
     /**
-     * Secret is the body if the jwt token, should be used in api requests as bearer token
+     * Secret is the body of the JWT token, should be used in API requests as bearer token
      *
      * @generated from field: string secret = 2;
      */
@@ -463,7 +463,7 @@ export type TokenServiceRefreshResponse = Message<"metalstack.api.v2.TokenServic
      */
     token?: Token | undefined;
     /**
-     * Secret is the body if the jwt token, should be used in api requests as bearer token
+     * Secret is the body of the JWT token, should be used in API requests as bearer token
      *
      * @generated from field: string secret = 2;
      */

@@ -56,7 +56,7 @@ export type Project = Message<"metalstack.api.v2.Project"> & {
  */
 export declare const ProjectSchema: GenMessage<Project>;
 /**
- * ProjectMember defines a user that participates at a project
+ * ProjectMember defines a user that participates in a project
  *
  * @generated from message metalstack.api.v2.ProjectMember
  */
@@ -136,13 +136,13 @@ export type ProjectInvite = Message<"metalstack.api.v2.ProjectInvite"> & {
      */
     projectName: string;
     /**
-     * Tenant is the login of tenant who invites to join this project
+     * Tenant is the login of the tenant inviting another user to join this project
      *
      * @generated from field: string tenant = 6;
      */
     tenant: string;
     /**
-     * TenantName is the name of tenant who invites to join this project
+     * TenantName is the name of the tenant inviting another user to join this project
      *
      * @generated from field: string tenant_name = 7;
      */
@@ -701,7 +701,7 @@ export type ProjectServiceInviteAcceptResponse = Message<"metalstack.api.v2.Proj
      */
     project: string;
     /**
-     * ProjectName if the project joined
+     * ProjectName of the project joined
      *
      * @generated from field: string project_name = 2;
      */
@@ -814,7 +814,7 @@ export declare const ProjectService: GenService<{
         output: typeof ProjectServiceLeaveResponseSchema;
     };
     /**
-     * RemoveMember remove a user from a project
+     * RemoveMember removes a user from a project
      *
      * @generated from rpc metalstack.api.v2.ProjectService.RemoveMember
      */
@@ -824,7 +824,7 @@ export declare const ProjectService: GenService<{
         output: typeof ProjectServiceRemoveMemberResponseSchema;
     };
     /**
-     * UpdateMember update a user for a project
+     * UpdateMember updates a user for a project
      *
      * @generated from rpc metalstack.api.v2.ProjectService.UpdateMember
      */
@@ -844,7 +844,7 @@ export declare const ProjectService: GenService<{
         output: typeof ProjectServiceInviteResponseSchema;
     };
     /**
-     * InviteAccept is called from a user to accept a invitation
+     * InviteAccept is called by a user to accept an invitation
      *
      * @generated from rpc metalstack.api.v2.ProjectService.InviteAccept
      */

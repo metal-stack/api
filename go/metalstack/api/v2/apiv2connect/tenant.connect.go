@@ -78,9 +78,9 @@ type TenantServiceClient interface {
 	Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error)
 	// Delete a tenant
 	Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error)
-	// Leave remove a member of a tenant
+	// Leave removes a member from a tenant
 	Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error)
-	// RemoveMember remove a member of a tenant
+	// RemoveMember removes a member from a tenant
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 	// UpdateMember update a member of a tenant
 	UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error)
@@ -334,9 +334,9 @@ type TenantServiceHandler interface {
 	Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error)
 	// Delete a tenant
 	Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error)
-	// Leave remove a member of a tenant
+	// Leave removes a member from a tenant
 	Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error)
-	// RemoveMember remove a member of a tenant
+	// RemoveMember removes a member from a tenant
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 	// UpdateMember update a member of a tenant
 	UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error)

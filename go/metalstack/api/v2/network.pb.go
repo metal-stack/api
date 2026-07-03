@@ -942,7 +942,7 @@ type Network struct {
 	Prefixes []string `protobuf:"bytes,8,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
 	// Destination Prefixes in this network
 	DestinationPrefixes []string `protobuf:"bytes,9,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
-	// Default Child Prefix length defines the bitlength of a child network created per addressfamily, of not specified during the allocate request
+	// Default Child Prefix length defines the bit length of a child network created per address family, if not specified during the allocate request
 	DefaultChildPrefixLength *ChildPrefixLength `protobuf:"bytes,10,opt,name=default_child_prefix_length,json=defaultChildPrefixLength,proto3" json:"default_child_prefix_length,omitempty"`
 	// Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
 	MinChildPrefixLength *ChildPrefixLength `protobuf:"bytes,11,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3" json:"min_child_prefix_length,omitempty"`
@@ -956,7 +956,7 @@ type Network struct {
 	ParentNetwork *string `protobuf:"bytes,15,opt,name=parent_network,json=parentNetwork,proto3,oneof" json:"parent_network,omitempty"`
 	// AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
 	AdditionalAnnouncableCidrs []string `protobuf:"bytes,16,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
-	// Consumption of ips and prefixes in this networks
+	// Consumption of IPs and prefixes in this network
 	Consumption   *NetworkConsumption `protobuf:"bytes,17,opt,name=consumption,proto3" json:"consumption,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1391,7 +1391,7 @@ type NetworkUsage struct {
 	AvailableIps uint64 `protobuf:"varint,1,opt,name=available_ips,json=availableIps,proto3" json:"available_ips,omitempty"`
 	// the total used IPs
 	UsedIps uint64 `protobuf:"varint,2,opt,name=used_ips,json=usedIps,proto3" json:"used_ips,omitempty"`
-	// the total available 2 bit Prefixes
+	// the total available 2-bit prefixes
 	AvailablePrefixes uint64 `protobuf:"varint,3,opt,name=available_prefixes,json=availablePrefixes,proto3" json:"available_prefixes,omitempty"`
 	// the total used Prefixes
 	UsedPrefixes  uint64 `protobuf:"varint,4,opt,name=used_prefixes,json=usedPrefixes,proto3" json:"used_prefixes,omitempty"`

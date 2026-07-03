@@ -92,7 +92,7 @@ message AuditQuery {
   optional AuditPhase phase = 12 [(buf.validate.field).enum.defined_only = true];
 }
 
-// AuditServiceListRequest is the request payload for a audit list request
+// AuditServiceListRequest is the request payload for an audit list request
 message AuditServiceListRequest {
   // Login for this tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];

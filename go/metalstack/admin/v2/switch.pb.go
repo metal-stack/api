@@ -541,7 +541,7 @@ func (x *SwitchServiceMigrateRequest) GetNewSwitch() string {
 // SwitchServiceMigrateResponse is the response payload for migrating a switch.
 type SwitchServiceMigrateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switch contains the switch was migrated to
+	// Switch contains the switch that was migrated to
 	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

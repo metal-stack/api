@@ -1333,7 +1333,7 @@ export type MachineBMCReport = Message<"metalstack.api.v2.MachineBMCReport"> & {
   bios?: MachineBios | undefined;
 
   /**
-   * Fru containers field replaceable unit details
+   * Fru contains field replaceable unit details
    *
    * @generated from field: metalstack.api.v2.MachineFRU fru = 3;
    */
@@ -1396,7 +1396,7 @@ export type MachineBios = Message<"metalstack.api.v2.MachineBios"> & {
   vendor: string;
 
   /**
-   * Date the bios date as string because every vendor has different ideas howto describe the date
+   * Date the bios date as string because every vendor has different ideas how to describe the date
    *
    * @generated from field: string date = 3;
    */
@@ -1665,7 +1665,7 @@ export const MachineRecentProvisioningEventsSchema: GenMessage<MachineRecentProv
   messageDesc(file_metalstack_api_v2_machine, 36);
 
 /**
- * MachineProvisioningEvent is a event which has occurred during provisioning
+ * MachineProvisioningEvent is an event that has occurred during provisioning
  *
  * @generated from message metalstack.api.v2.MachineProvisioningEvent
  */
@@ -2234,14 +2234,14 @@ export type MachineIssuesQuery = Message<"metalstack.api.v2.MachineIssuesQuery">
   machineQuery?: MachineQuery | undefined;
 
   /**
-   * Only a list of machine issue types to include
+   * Only includes the specified machine issue types
    *
    * @generated from field: repeated metalstack.api.v2.MachineIssueType only = 2;
    */
   only: MachineIssueType[];
 
   /**
-   * Omit a list of machine issues to omit
+   * Omits the specified machine issues
    *
    * @generated from field: repeated metalstack.api.v2.MachineIssueType omit = 3;
    */

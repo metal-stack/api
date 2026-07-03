@@ -296,7 +296,7 @@ export const SwitchServiceMigrateRequestSchema: GenMessage<SwitchServiceMigrateR
  */
 export type SwitchServiceMigrateResponse = Message<"metalstack.admin.v2.SwitchServiceMigrateResponse"> & {
   /**
-   * Switch contains the switch was migrated to
+   * Switch contains the switch that was migrated to
    *
    * @generated from field: metalstack.api.v2.Switch switch = 1;
    */

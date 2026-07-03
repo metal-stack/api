@@ -201,7 +201,7 @@ export const AuditQuerySchema: GenMessage<AuditQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_audit, 1);
 
 /**
- * AuditServiceListRequest is the request payload for a audit list request
+ * AuditServiceListRequest is the request payload for an audit list request
  *
  * @generated from message metalstack.api.v2.AuditServiceListRequest
  */

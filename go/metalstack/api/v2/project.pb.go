@@ -115,7 +115,7 @@ func (x *Project) GetAvatarUrl() string {
 	return ""
 }
 
-// ProjectMember defines a user that participates at a project
+// ProjectMember defines a user that participates in a project
 type ProjectMember struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id is the user id of the member
@@ -212,9 +212,9 @@ type ProjectInvite struct {
 	Joined bool `protobuf:"varint,4,opt,name=joined,proto3" json:"joined,omitempty"`
 	// ProjectName is the project name for which this invite was created
 	ProjectName string `protobuf:"bytes,5,opt,name=project_name,json=projectName,proto3" json:"project_name,omitempty"`
-	// Tenant is the login of tenant who invites to join this project
+	// Tenant is the login of the tenant inviting another user to join this project
 	Tenant string `protobuf:"bytes,6,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// TenantName is the name of tenant who invites to join this project
+	// TenantName is the name of the tenant inviting another user to join this project
 	TenantName string `protobuf:"bytes,7,opt,name=tenant_name,json=tenantName,proto3" json:"tenant_name,omitempty"`
 	// ExpiresAt the date when this invite expires
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
@@ -1564,7 +1564,7 @@ type ProjectServiceInviteAcceptResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project ID of the project joined
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// ProjectName if the project joined
+	// ProjectName of the project joined
 	ProjectName   string `protobuf:"bytes,2,opt,name=project_name,json=projectName,proto3" json:"project_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

@@ -119,7 +119,7 @@ message TokenServiceCreateRequest {
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
-  // TenantRoles_associates a tenant id with the corresponding role of the token owner
+  // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 5 [
     (buf.validate.field).map = {
       keys: {
@@ -167,7 +167,7 @@ message MethodPermission {
 message TokenServiceCreateResponse {
   // Token which was created
   Token token = 1;
-  // Secret is the body if the jwt token, should be used in api requests as bearer token
+  // Secret is the body of the JWT token, should be used in API requests as bearer token
   string secret = 2;
 }
 
@@ -269,7 +269,7 @@ message TokenServiceRefreshRequest {}
 message TokenServiceRefreshResponse {
   // Token which was refreshed
   Token token = 1;
-  // Secret is the body if the jwt token, should be used in api requests as bearer token
+  // Secret is the body of the JWT token, should be used in API requests as bearer token
   string secret = 2;
 }
 

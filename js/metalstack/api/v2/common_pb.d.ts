@@ -101,6 +101,43 @@ export declare const MetaSchema: GenMessage<Meta>;
  */
 export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
     /**
+     * Strategy defines the label update strategy
+     *
+     * @generated from oneof metalstack.api.v2.UpdateLabels.strategy
+     */
+    strategy: {
+        /**
+         * Replace existing labels with the given ones
+         *
+         * @generated from field: metalstack.api.v2.Labels replace = 1;
+         */
+        value: Labels;
+        case: "replace";
+    } | {
+        /**
+         * Patch adds, updates or remove given labels without modifying others
+         *
+         * @generated from field: metalstack.api.v2.LabelsPatch patch = 2;
+         */
+        value: LabelsPatch;
+        case: "patch";
+    } | {
+        case: undefined;
+        value?: undefined;
+    };
+};
+/**
+ * Describes the message metalstack.api.v2.UpdateLabels.
+ * Use `create(UpdateLabelsSchema)` to create a new message.
+ */
+export declare const UpdateLabelsSchema: GenMessage<UpdateLabels>;
+/**
+ * LabelsPatch adds, updates or remove given labels without modifying others
+ *
+ * @generated from message metalstack.api.v2.LabelsPatch
+ */
+export type LabelsPatch = Message<"metalstack.api.v2.LabelsPatch"> & {
+    /**
      * Update labels. New ones will be added, existing ones overwritten
      *
      * @generated from field: metalstack.api.v2.Labels update = 1;
@@ -114,10 +151,10 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
     remove: string[];
 };
 /**
- * Describes the message metalstack.api.v2.UpdateLabels.
- * Use `create(UpdateLabelsSchema)` to create a new message.
+ * Describes the message metalstack.api.v2.LabelsPatch.
+ * Use `create(LabelsPatchSchema)` to create a new message.
  */
-export declare const UpdateLabelsSchema: GenMessage<UpdateLabels>;
+export declare const LabelsPatchSchema: GenMessage<LabelsPatch>;
 /**
  * UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled
  *
@@ -327,7 +364,7 @@ export declare enum Visibility {
      */
     PUBLIC = 1,
     /**
-     * VISIBILITY_SELF enable call this endpoint from the authenticated user only
+     * VISIBILITY_SELF restricts calls to the authenticated user only
      *
      * @generated from enum value: VISIBILITY_SELF = 2;
      */
@@ -400,19 +437,19 @@ export declare enum OptimisticLockingStrategy {
  */
 export declare const OptimisticLockingStrategySchema: GenEnum<OptimisticLockingStrategy>;
 /**
- * TenantRoles are used to define which tenant role a logged in user must provide to call this method
+ * TenantRoles are used to define the tenant role a logged in user must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.TenantRole tenant_roles = 51000;
  */
 export declare const tenant_roles: GenExtension<MethodOptions, TenantRole[]>;
 /**
- * ProjectRoles are used to define which project role a logged in user must provide to call this method
+ * ProjectRoles are used to define the project role a logged in user must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.ProjectRole project_roles = 51001;
  */
 export declare const project_roles: GenExtension<MethodOptions, ProjectRole[]>;
 /**
- * AdminRoles are used to define which admin role a logged in user must provide to call this method
+ * AdminRoles are used to define the admin role a logged in user must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.AdminRole admin_roles = 51002;
  */
@@ -430,7 +467,7 @@ export declare const visibility: GenExtension<MethodOptions, Visibility>;
  */
 export declare const auditing: GenExtension<MethodOptions, Auditing>;
 /**
- * InfraRoles are used to define which infra role a microservice must provide to call this method
+ * InfraRoles are used to define the infra role a microservice must provide to call this method
  *
  * @generated from extension: repeated metalstack.api.v2.InfraRole infra_roles = 51005;
  */

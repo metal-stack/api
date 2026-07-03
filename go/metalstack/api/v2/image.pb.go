@@ -133,7 +133,7 @@ func (ImageClassification) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_image_proto_rawDescGZIP(), []int{1}
 }
 
-// ImageServiceGetRequest is the request payload for a image get request
+// ImageServiceGetRequest is the request payload for an image get request
 type ImageServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the image to get
@@ -179,7 +179,7 @@ func (x *ImageServiceGetRequest) GetId() string {
 	return ""
 }
 
-// ImageServiceListRequest is the request payload for a image list request
+// ImageServiceListRequest is the request payload for an image list request
 type ImageServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Query for images
@@ -225,7 +225,7 @@ func (x *ImageServiceListRequest) GetQuery() *ImageQuery {
 	return nil
 }
 
-// ImageServiceLatestRequest is the request payload for a image latest request
+// ImageServiceLatestRequest is the request payload for an image latest request
 type ImageServiceLatestRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// OS for which the latest image should be fetched
@@ -281,7 +281,7 @@ func (x *ImageServiceLatestRequest) GetClassification() ImageClassification {
 	return ImageClassification_IMAGE_CLASSIFICATION_UNSPECIFIED
 }
 
-// ImageServiceGetResponse is the response payload for a image get request
+// ImageServiceGetResponse is the response payload for an image get request
 type ImageServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Image the image
@@ -327,7 +327,7 @@ func (x *ImageServiceGetResponse) GetImage() *Image {
 	return nil
 }
 
-// ImageServiceListResponse is the response payload for a image list request
+// ImageServiceListResponse is the response payload for an image list request
 type ImageServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Images the images
@@ -373,7 +373,7 @@ func (x *ImageServiceListResponse) GetImages() []*Image {
 	return nil
 }
 
-// ImageServiceLatestResponse is the response payload for a image latest request
+// ImageServiceLatestResponse is the response payload for an image latest request
 type ImageServiceLatestResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Image which is the latest for one os

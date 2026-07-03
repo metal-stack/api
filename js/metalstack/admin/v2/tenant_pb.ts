@@ -267,7 +267,7 @@ export const TenantService: GenService<{
     output: typeof TenantServiceAddMemberResponseSchema;
   },
   /**
-   * RemoveMember remove a member of a tenant
+   * RemoveMember removes a member from a tenant
    *
    * @generated from rpc metalstack.admin.v2.TenantService.RemoveMember
    */
