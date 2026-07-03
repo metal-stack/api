@@ -655,12 +655,12 @@ func (x *Meta) GetDeletionTaskId() string {
 // UpdateLabels is a message to update labels
 type UpdateLabels struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// strategy defines the label update strategy
+	// Strategy defines the label update strategy
 	//
 	// Types that are valid to be assigned to Strategy:
 	//
 	//	*UpdateLabels_Replace
-	//	*UpdateLabels_Individual
+	//	*UpdateLabels_Patch
 	Strategy      isUpdateLabels_Strategy `protobuf_oneof:"strategy"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -712,10 +712,10 @@ func (x *UpdateLabels) GetReplace() *Labels {
 	return nil
 }
 
-func (x *UpdateLabels) GetIndividual() *UpdateLabelsIndividually {
+func (x *UpdateLabels) GetPatch() *LabelsPatch {
 	if x != nil {
-		if x, ok := x.Strategy.(*UpdateLabels_Individual); ok {
-			return x.Individual
+		if x, ok := x.Strategy.(*UpdateLabels_Patch); ok {
+			return x.Patch
 		}
 	}
 	return nil
@@ -726,21 +726,21 @@ type isUpdateLabels_Strategy interface {
 }
 
 type UpdateLabels_Replace struct {
-	// Labels replaces existing labels with the given ones
+	// Replace existing labels with the given ones
 	Replace *Labels `protobuf:"bytes,1,opt,name=replace,proto3,oneof"`
 }
 
-type UpdateLabels_Individual struct {
-	// UpdateLabelsIndividually adds, updates or remove given labels without modifying others
-	Individual *UpdateLabelsIndividually `protobuf:"bytes,2,opt,name=individual,proto3,oneof"`
+type UpdateLabels_Patch struct {
+	// Patch adds, updates or remove given labels without modifying others
+	Patch *LabelsPatch `protobuf:"bytes,2,opt,name=patch,proto3,oneof"`
 }
 
 func (*UpdateLabels_Replace) isUpdateLabels_Strategy() {}
 
-func (*UpdateLabels_Individual) isUpdateLabels_Strategy() {}
+func (*UpdateLabels_Patch) isUpdateLabels_Strategy() {}
 
-// UpdateLabelsIndividually adds, updates or remove given labels without modifying others
-type UpdateLabelsIndividually struct {
+// LabelsPatch adds, updates or remove given labels without modifying others
+type LabelsPatch struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Update labels. New ones will be added, existing ones overwritten
 	Update *Labels `protobuf:"bytes,1,opt,name=update,proto3" json:"update,omitempty"`
@@ -750,20 +750,20 @@ type UpdateLabelsIndividually struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *UpdateLabelsIndividually) Reset() {
-	*x = UpdateLabelsIndividually{}
+func (x *LabelsPatch) Reset() {
+	*x = LabelsPatch{}
 	mi := &file_metalstack_api_v2_common_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *UpdateLabelsIndividually) String() string {
+func (x *LabelsPatch) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateLabelsIndividually) ProtoMessage() {}
+func (*LabelsPatch) ProtoMessage() {}
 
-func (x *UpdateLabelsIndividually) ProtoReflect() protoreflect.Message {
+func (x *LabelsPatch) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_api_v2_common_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -775,19 +775,19 @@ func (x *UpdateLabelsIndividually) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateLabelsIndividually.ProtoReflect.Descriptor instead.
-func (*UpdateLabelsIndividually) Descriptor() ([]byte, []int) {
+// Deprecated: Use LabelsPatch.ProtoReflect.Descriptor instead.
+func (*LabelsPatch) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UpdateLabelsIndividually) GetUpdate() *Labels {
+func (x *LabelsPatch) GetUpdate() *Labels {
 	if x != nil {
 		return x.Update
 	}
 	return nil
 }
 
-func (x *UpdateLabelsIndividually) GetRemove() []string {
+func (x *LabelsPatch) GetRemove() []string {
 	if x != nil {
 		return x.Remove
 	}
@@ -983,16 +983,14 @@ const file_metalstack_api_v2_common_proto_rawDesc = "" +
 	"generation\x12-\n" +
 	"\x10deletion_task_id\x18\x05 \x01(\tH\x01R\x0edeletionTaskId\x88\x01\x01B\t\n" +
 	"\a_labelsB\x13\n" +
-	"\x11_deletion_task_id\"\xa7\x01\n" +
+	"\x11_deletion_task_id\"\x90\x01\n" +
 	"\fUpdateLabels\x125\n" +
-	"\areplace\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsH\x00R\areplace\x12M\n" +
-	"\n" +
-	"individual\x18\x02 \x01(\v2+.metalstack.api.v2.UpdateLabelsIndividuallyH\x00R\n" +
-	"individualB\x11\n" +
-	"\bstrategy\x12\x05\xbaH\x02\b\x01\"s\n" +
-	"\x18UpdateLabelsIndividually\x121\n" +
-	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12$\n" +
-	"\x06remove\x18\x02 \x03(\tB\f\xbaH\t\x92\x01\x06Ф\xb3\xb1\x02\x01R\x06remove\"\xaa\x01\n" +
+	"\areplace\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsH\x00R\areplace\x126\n" +
+	"\x05patch\x18\x02 \x01(\v2\x1e.metalstack.api.v2.LabelsPatchH\x00R\x05patchB\x11\n" +
+	"\bstrategy\x12\x05\xbaH\x02\b\x01\"l\n" +
+	"\vLabelsPatch\x121\n" +
+	"\x06update\x18\x01 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06update\x12*\n" +
+	"\x06remove\x18\x02 \x03(\tB\x12\xbaH\x0f\x92\x01\f\x18\x01\"\br\x06\U00033bb1\x02\x01R\x06remove\"\xaa\x01\n" +
 	"\n" +
 	"UpdateMeta\x129\n" +
 	"\n" +
@@ -1076,7 +1074,7 @@ var file_metalstack_api_v2_common_proto_goTypes = []any{
 	(*Labels)(nil),                        // 9: metalstack.api.v2.Labels
 	(*Meta)(nil),                          // 10: metalstack.api.v2.Meta
 	(*UpdateLabels)(nil),                  // 11: metalstack.api.v2.UpdateLabels
-	(*UpdateLabelsIndividually)(nil),      // 12: metalstack.api.v2.UpdateLabelsIndividually
+	(*LabelsPatch)(nil),                   // 12: metalstack.api.v2.LabelsPatch
 	(*UpdateMeta)(nil),                    // 13: metalstack.api.v2.UpdateMeta
 	nil,                                   // 14: metalstack.api.v2.Labels.LabelsEntry
 	(*timestamppb.Timestamp)(nil),         // 15: google.protobuf.Timestamp
@@ -1089,8 +1087,8 @@ var file_metalstack_api_v2_common_proto_depIdxs = []int32{
 	15, // 2: metalstack.api.v2.Meta.created_at:type_name -> google.protobuf.Timestamp
 	15, // 3: metalstack.api.v2.Meta.updated_at:type_name -> google.protobuf.Timestamp
 	9,  // 4: metalstack.api.v2.UpdateLabels.replace:type_name -> metalstack.api.v2.Labels
-	12, // 5: metalstack.api.v2.UpdateLabels.individual:type_name -> metalstack.api.v2.UpdateLabelsIndividually
-	9,  // 6: metalstack.api.v2.UpdateLabelsIndividually.update:type_name -> metalstack.api.v2.Labels
+	12, // 5: metalstack.api.v2.UpdateLabels.patch:type_name -> metalstack.api.v2.LabelsPatch
+	9,  // 6: metalstack.api.v2.LabelsPatch.update:type_name -> metalstack.api.v2.Labels
 	15, // 7: metalstack.api.v2.UpdateMeta.updated_at:type_name -> google.protobuf.Timestamp
 	7,  // 8: metalstack.api.v2.UpdateMeta.locking_strategy:type_name -> metalstack.api.v2.OptimisticLockingStrategy
 	16, // 9: metalstack.api.v2.tenant_roles:extendee -> google.protobuf.MethodOptions
@@ -1125,7 +1123,7 @@ func file_metalstack_api_v2_common_proto_init() {
 	file_metalstack_api_v2_common_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_common_proto_msgTypes[3].OneofWrappers = []any{
 		(*UpdateLabels_Replace)(nil),
-		(*UpdateLabels_Individual)(nil),
+		(*UpdateLabels_Patch)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

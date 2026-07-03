@@ -101,13 +101,13 @@ export declare const MetaSchema: GenMessage<Meta>;
  */
 export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
     /**
-     * strategy defines the label update strategy
+     * Strategy defines the label update strategy
      *
      * @generated from oneof metalstack.api.v2.UpdateLabels.strategy
      */
     strategy: {
         /**
-         * Labels replaces existing labels with the given ones
+         * Replace existing labels with the given ones
          *
          * @generated from field: metalstack.api.v2.Labels replace = 1;
          */
@@ -115,12 +115,12 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
         case: "replace";
     } | {
         /**
-         * UpdateLabelsIndividually adds, updates or remove given labels without modifying others
+         * Patch adds, updates or remove given labels without modifying others
          *
-         * @generated from field: metalstack.api.v2.UpdateLabelsIndividually individual = 2;
+         * @generated from field: metalstack.api.v2.LabelsPatch patch = 2;
          */
-        value: UpdateLabelsIndividually;
-        case: "individual";
+        value: LabelsPatch;
+        case: "patch";
     } | {
         case: undefined;
         value?: undefined;
@@ -132,11 +132,11 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
  */
 export declare const UpdateLabelsSchema: GenMessage<UpdateLabels>;
 /**
- * UpdateLabelsIndividually adds, updates or remove given labels without modifying others
+ * LabelsPatch adds, updates or remove given labels without modifying others
  *
- * @generated from message metalstack.api.v2.UpdateLabelsIndividually
+ * @generated from message metalstack.api.v2.LabelsPatch
  */
-export type UpdateLabelsIndividually = Message<"metalstack.api.v2.UpdateLabelsIndividually"> & {
+export type LabelsPatch = Message<"metalstack.api.v2.LabelsPatch"> & {
     /**
      * Update labels. New ones will be added, existing ones overwritten
      *
@@ -151,10 +151,10 @@ export type UpdateLabelsIndividually = Message<"metalstack.api.v2.UpdateLabelsIn
     remove: string[];
 };
 /**
- * Describes the message metalstack.api.v2.UpdateLabelsIndividually.
- * Use `create(UpdateLabelsIndividuallySchema)` to create a new message.
+ * Describes the message metalstack.api.v2.LabelsPatch.
+ * Use `create(LabelsPatchSchema)` to create a new message.
  */
-export declare const UpdateLabelsIndividuallySchema: GenMessage<UpdateLabelsIndividually>;
+export declare const LabelsPatchSchema: GenMessage<LabelsPatch>;
 /**
  * UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled
  *
