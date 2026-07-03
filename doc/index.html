@@ -270,6 +270,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.LabelsPatch"><span class="badge">M</span>LabelsPatch</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.Meta"><span class="badge">M</span>Meta</a>
                 </li>
               
@@ -279,10 +283,6 @@
               
                 <li>
                   <a href="#metalstack.api.v2.UpdateLabels"><span class="badge">M</span>UpdateLabels</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.UpdateLabelsIndividually"><span class="badge">M</span>UpdateLabelsIndividually</a>
                 </li>
               
                 <li>
@@ -3016,6 +3016,37 @@
 
         
       
+        <h3 id="metalstack.api.v2.LabelsPatch">LabelsPatch</h3>
+        <p>LabelsPatch adds, updates or remove given labels without modifying others</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>update</td>
+                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
+                  <td></td>
+                  <td><p>Update labels. New ones will be added, existing ones overwritten </p></td>
+                </tr>
+              
+                <tr>
+                  <td>remove</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Remove labels by key </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.Meta">Meta</h3>
         <p>Meta of a message</p>
 
@@ -3116,45 +3147,14 @@ the list response contains then the page number for the next page. </p></td>
                   <td>replace</td>
                   <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
                   <td></td>
-                  <td><p>Labels replaces existing labels with the given ones </p></td>
+                  <td><p>Replace existing labels with the given ones </p></td>
                 </tr>
               
                 <tr>
-                  <td>individual</td>
-                  <td><a href="#metalstack.api.v2.UpdateLabelsIndividually">UpdateLabelsIndividually</a></td>
+                  <td>patch</td>
+                  <td><a href="#metalstack.api.v2.LabelsPatch">LabelsPatch</a></td>
                   <td></td>
-                  <td><p>UpdateLabelsIndividually adds, updates or remove given labels without modifying others </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.UpdateLabelsIndividually">UpdateLabelsIndividually</h3>
-        <p>UpdateLabelsIndividually adds, updates or remove given labels without modifying others</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>update</td>
-                  <td><a href="#metalstack.api.v2.Labels">Labels</a></td>
-                  <td></td>
-                  <td><p>Update labels. New ones will be added, existing ones overwritten </p></td>
-                </tr>
-              
-                <tr>
-                  <td>remove</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Remove labels by key </p></td>
+                  <td><p>Patch adds, updates or remove given labels without modifying others </p></td>
                 </tr>
               
             </tbody>

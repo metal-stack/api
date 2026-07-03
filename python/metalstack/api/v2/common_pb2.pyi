@@ -143,14 +143,14 @@ class Meta(_message.Message):
     def __init__(self, labels: _Optional[_Union[Labels, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., generation: _Optional[int] = ..., deletion_task_id: _Optional[str] = ...) -> None: ...
 
 class UpdateLabels(_message.Message):
-    __slots__ = ("replace", "individual")
+    __slots__ = ("replace", "patch")
     REPLACE_FIELD_NUMBER: _ClassVar[int]
-    INDIVIDUAL_FIELD_NUMBER: _ClassVar[int]
+    PATCH_FIELD_NUMBER: _ClassVar[int]
     replace: Labels
-    individual: UpdateLabelsIndividually
-    def __init__(self, replace: _Optional[_Union[Labels, _Mapping]] = ..., individual: _Optional[_Union[UpdateLabelsIndividually, _Mapping]] = ...) -> None: ...
+    patch: LabelsPatch
+    def __init__(self, replace: _Optional[_Union[Labels, _Mapping]] = ..., patch: _Optional[_Union[LabelsPatch, _Mapping]] = ...) -> None: ...
 
-class UpdateLabelsIndividually(_message.Message):
+class LabelsPatch(_message.Message):
     __slots__ = ("update", "remove")
     UPDATE_FIELD_NUMBER: _ClassVar[int]
     REMOVE_FIELD_NUMBER: _ClassVar[int]
