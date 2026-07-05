@@ -16,14 +16,19 @@ import (
 const (
 	tokenRenewChecksDuringLifetime = 4
 	TokenEnvName                   = "METAL_APIV2_TOKEN"
+	TokenFileEnvName               = "METAL_APIV2_TOKEN_FILE"
 	BaseURLEnvName                 = "METAL_APIV2_URL"
 )
 
 type (
 	// DialConfig is the configuration to create a api-server connection
 	DialConfig struct {
+		// BaseUrl points to the apiv2 url where the apiserver is reachable
 		BaseURL string
-		Token   string
+		// Token to be used to talk to the apiserver
+		Token string
+		// Tokenfile which contains the token, is only read if token is empty
+		TokenFile string
 
 		// Optional client Interceptors
 		Interceptors []connect.Interceptor
@@ -36,8 +41,9 @@ type (
 
 		Log *slog.Logger
 
-		expiresAt time.Time
-		issuedAt  time.Time
+		expiresAt         time.Time
+		issuedAt          time.Time
+		tokenFileLastRead time.Time
 	}
 
 	TokenRenewal struct {
@@ -73,9 +79,27 @@ func (dc *DialConfig) parse() error {
 
 	if dc.Token == "" {
 		dc.Token = os.Getenv(TokenEnvName)
-		if dc.Token == "" {
-			return nil
+	}
+
+	if dc.TokenFile == "" {
+		dc.TokenFile = os.Getenv(TokenFileEnvName)
+	}
+
+	if dc.Token != "" && dc.TokenFile != "" {
+		return fmt.Errorf("either token or tokenfile must be specified, not both")
+	}
+
+	if dc.Token == "" && dc.TokenFile != "" {
+		content, err := os.ReadFile(dc.TokenFile)
+		if err != nil {
+			return err
 		}
+		dc.Token = string(content)
+		dc.tokenFileLastRead = time.Now()
+	}
+
+	if dc.Token == "" && dc.TokenFile == "" {
+		return nil
 	}
 
 	parsed, err := jwt.Parse(dc.Token, nil)
