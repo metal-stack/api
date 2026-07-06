@@ -15,6 +15,7 @@ import (
 
 const (
 	tokenRenewChecksDuringLifetime = 4
+	tokenFileRereadDuration        = 5 * time.Minute
 	TokenEnvName                   = "METAL_APIV2_TOKEN"
 	TokenFileEnvName               = "METAL_APIV2_TOKEN_FILE"
 	BaseURLEnvName                 = "METAL_APIV2_URL"
@@ -29,6 +30,8 @@ type (
 		Token string
 		// Tokenfile which contains the token, is only read if token is empty
 		TokenFile string
+		// Duration between token file re-reads
+		TokenFileRereadDuration time.Duration
 
 		// Optional client Interceptors
 		Interceptors []connect.Interceptor
@@ -90,6 +93,9 @@ func (dc *DialConfig) parse() error {
 	}
 
 	if dc.Token == "" && dc.TokenFile != "" {
+		if dc.TokenFileRereadDuration < time.Minute {
+			return fmt.Errorf("token file re-read duration must be greater than 1min")
+		}
 		content, err := os.ReadFile(dc.TokenFile)
 		if err != nil {
 			return err

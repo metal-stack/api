@@ -112,9 +112,12 @@ func (i *tokenRenewingInterceptor) renewTokenIfNeeded() error {
 	}
 
 	if !i.config.tokenFileLastRead.IsZero() {
+		if i.config.TokenFileRereadDuration == 0 {
+			i.config.TokenFileRereadDuration = tokenFileRereadDuration
+		}
 		// The token is refreshed by a sidecar, this means we should periodically read the tokenfile
 		// and store the token in config instead und update the tokenFileLastRead afterwards
-		if time.Since(i.config.tokenFileLastRead) < 5*time.Minute {
+		if time.Since(i.config.tokenFileLastRead) < i.config.TokenFileRereadDuration {
 			return nil
 		}
 		i.config.Log.Info("tokenfile specified, re-reading content")
