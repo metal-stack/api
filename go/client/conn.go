@@ -15,15 +15,23 @@ import (
 
 const (
 	tokenRenewChecksDuringLifetime = 4
+	tokenFileRereadDuration        = 5 * time.Minute
 	TokenEnvName                   = "METAL_APIV2_TOKEN"
+	TokenFileEnvName               = "METAL_APIV2_TOKEN_FILE"
 	BaseURLEnvName                 = "METAL_APIV2_URL"
 )
 
 type (
 	// DialConfig is the configuration to create a api-server connection
 	DialConfig struct {
+		// BaseUrl points to the apiv2 url where the apiserver is reachable
 		BaseURL string
-		Token   string
+		// Token to be used to talk to the apiserver
+		Token string
+		// Tokenfile which contains the token, is only read if token is empty
+		TokenFile string
+		// Duration between token file re-reads
+		TokenFileRereadDuration time.Duration
 
 		// Optional client Interceptors
 		Interceptors []connect.Interceptor
@@ -36,8 +44,9 @@ type (
 
 		Log *slog.Logger
 
-		expiresAt time.Time
-		issuedAt  time.Time
+		expiresAt         time.Time
+		issuedAt          time.Time
+		tokenFileLastRead time.Time
 	}
 
 	TokenRenewal struct {
@@ -73,9 +82,30 @@ func (dc *DialConfig) parse() error {
 
 	if dc.Token == "" {
 		dc.Token = os.Getenv(TokenEnvName)
-		if dc.Token == "" {
-			return nil
+	}
+
+	if dc.TokenFile == "" {
+		dc.TokenFile = os.Getenv(TokenFileEnvName)
+	}
+
+	if dc.Token != "" && dc.TokenFile != "" {
+		return fmt.Errorf("either token or tokenfile must be specified, not both")
+	}
+
+	if dc.Token == "" && dc.TokenFile != "" {
+		if dc.TokenFileRereadDuration < time.Minute {
+			return fmt.Errorf("token file re-read duration must be greater than 1min")
 		}
+		content, err := os.ReadFile(dc.TokenFile)
+		if err != nil {
+			return err
+		}
+		dc.Token = string(content)
+		dc.tokenFileLastRead = time.Now()
+	}
+
+	if dc.Token == "" && dc.TokenFile == "" {
+		return nil
 	}
 
 	parsed, err := jwt.Parse(dc.Token, nil)
