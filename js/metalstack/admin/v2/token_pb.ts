@@ -160,6 +160,7 @@ export const TokenServiceCreateResponseSchema: GenMessage<TokenServiceCreateResp
 
 /**
  * TokenServiceCreateMultiRequest is the request payload for creating multiple tokens.
+ * Actually only used by the token-create cmd in the metal-apiserver, not exposed.
  *
  * @generated from message metalstack.admin.v2.TokenServiceCreateMultiRequest
  */

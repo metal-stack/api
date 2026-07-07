@@ -318,6 +318,7 @@ func (x *TokenServiceCreateResponse) GetSecret() string {
 }
 
 // TokenServiceCreateMultiRequest is the request payload for creating multiple tokens.
+// Actually only used by the token-create cmd in the metal-apiserver, not exposed.
 type TokenServiceCreateMultiRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// TokenCreateRequests which map a destination name to a token create request.
