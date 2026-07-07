@@ -1,0 +1,21 @@
+---
+name: PR Agent
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  pr_agent_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: PR Agent action step
+      uses: the-pr-agent/pr-agent@main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+        OPENAI.API_BASE: "https://api.orakel.x-cellent.com/api"
+        pr_reviewer.extra_instructions: "Focus on Golang and Proto best practices, type hints, and docstrings."
+        github_action_config.auto_review: "true"
+        github_action_config.auto_describe: "true"
+        github_action_config.auto_improve: "false"
+        config.verbosity_level: "2"
+        config.model: "Qwen/Qwen3.6-35B-A3B-FP8"
