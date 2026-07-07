@@ -2,6 +2,7 @@ package client
 
 import (
 	"context"
+	"log/slog"
 	"os"
 	"time"
 
@@ -45,6 +46,14 @@ func (c *client) Ping(ctx context.Context, config *PingConfig) {
 
 	if config.Interval < minInterval || config.Interval > maxInterval {
 		config.Interval = defaultInterval
+	}
+
+	if config.StartedAt.IsZero() {
+		config.StartedAt = time.Now()
+	}
+
+	if c.config.Log == nil {
+		c.config.Log = slog.Default()
 	}
 
 	var identifier string
