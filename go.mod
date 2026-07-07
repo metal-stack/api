@@ -13,6 +13,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/klauspost/connect-compress/v2 v2.1.1
 	github.com/stretchr/testify v1.11.1
+	google.golang.org/grpc v1.82.0
 	google.golang.org/protobuf v1.36.11
 )
 
@@ -28,6 +29,7 @@ require (
 	github.com/stretchr/objx v0.5.3 // indirect
 	go.yaml.in/yaml/v3 v3.0.4 // indirect
 	golang.org/x/exp v0.0.0-20260611194520-c48552f49976 // indirect
+	golang.org/x/sys v0.43.0 // indirect
 	golang.org/x/text v0.38.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260630182238-925bb5da69e7 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260630182238-925bb5da69e7 // indirect
