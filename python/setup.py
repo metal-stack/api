@@ -4,7 +4,7 @@ import os
 NAME = "metal-stack-api"
 
 REQUIRES = [
-    "connectrpc>=0.10.0",
+    "connectrpc>=0.10.0,<0.11.0",
     "protovalidate>=1.2.0",
 ]
 
