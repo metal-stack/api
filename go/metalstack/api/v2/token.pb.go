@@ -1098,7 +1098,7 @@ var File_metalstack_api_v2_token_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/api/v2/token.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x93\n" +
+	"\x1dmetalstack/api/v2/token.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xe4\n" +
 	"\n" +
 	"\x05Token\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n" +
@@ -1109,15 +1109,15 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\aexpires\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\aexpires\x127\n" +
 	"\tissued_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\bissuedAt\x12E\n" +
 	"\n" +
-	"token_type\x18\b \x01(\x0e2\x1c.metalstack.api.v2.TokenTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\ttokenType\x12O\n" +
-	"\rproject_roles\x18\t \x03(\v2*.metalstack.api.v2.Token.ProjectRolesEntryR\fprojectRoles\x12L\n" +
+	"token_type\x18\b \x01(\x0e2\x1c.metalstack.api.v2.TokenTypeB\b\xbaH\x05\x82\x01\x02\x10\x01R\ttokenType\x12j\n" +
+	"\rproject_roles\x18\t \x03(\v2*.metalstack.api.v2.Token.ProjectRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ȕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12g\n" +
 	"\ftenant_roles\x18\n" +
-	" \x03(\v2).metalstack.api.v2.Token.TenantRolesEntryR\vtenantRoles\x12J\n" +
+	" \x03(\v2).metalstack.api.v2.Token.TenantRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01Е\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
 	"\n" +
 	"admin_role\x18\v \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x12J\n" +
 	"\n" +
-	"infra_role\x18\f \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12O\n" +
-	"\rmachine_roles\x18\r \x03(\v2*.metalstack.api.v2.Token.MachineRolesEntryR\fmachineRoles\x1a_\n" +
+	"infra_role\x18\f \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12j\n" +
+	"\rmachine_roles\x18\r \x03(\v2*.metalstack.api.v2.Token.MachineRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ؕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fmachineRoles\x1a_\n" +
 	"\x11ProjectRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x028\x01\x1a]\n" +
@@ -1129,20 +1129,18 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleR\x05value:\x028\x01:\x9f\x01\xbaH\x9b\x01\x1a\x98\x01\n" +
 	"\x1btoken.permissions.usertoken\x12)token type user must not have permissions\x1aN(this.token_type == 2 && this.permissions.size() == 0) || this.token_type != 2B\r\n" +
 	"\v_admin_roleB\r\n" +
-	"\v_infra_role\"\xb3\n" +
-	"\n" +
+	"\v_infra_role\"\xeb\b\n" +
 	"\x19TokenServiceCreateRequest\x12-\n" +
 	"\vdescription\x18\x01 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12O\n" +
 	"\vpermissions\x18\x02 \x03(\v2#.metalstack.api.v2.MethodPermissionB\b\xbaH\x05\x92\x01\x02\x10dR\vpermissions\x12G\n" +
-	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x12\xbaH\x0f\xaa\x01\f\x1a\x05\b\x81\xe7\x84\x0f2\x03\b\xd8\x04R\aexpires\x12\x7f\n" +
-	"\rproject_roles\x18\x04 \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntryB\x1a\xbaH\x17\x9a\x01\x14\xc0\x95\xb8\xb1\x02\x01\"\x05r\x03\xb0\x01\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12~\n" +
-	"\ftenant_roles\x18\x05 \x03(\v2=.metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntryB\x1c\xbaH\x19\x9a\x01\x16\xc0\x95\xb8\xb1\x02\x01\"\ar\x05\x10\x03\x18\x80\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
+	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x12\xbaH\x0f\xaa\x01\f\x1a\x05\b\x81\xe7\x84\x0f2\x03\b\xd8\x04R\aexpires\x12~\n" +
+	"\rproject_roles\x18\x04 \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ȕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12{\n" +
+	"\ftenant_roles\x18\x05 \x03(\v2=.metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01Е\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
 	"\n" +
 	"admin_role\x18\x06 \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x12J\n" +
 	"\n" +
-	"infra_role\x18\a \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12\xc1\x02\n" +
-	"\rmachine_roles\x18\b \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntryB\xdb\x01\xbaH\xd7\x01\xba\x01\xc9\x01\n" +
-	"\x12machine_roles_keys\x123map keys must be empty string, '*', or a valid UUID\x1a~this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))\x9a\x01\a*\x05\x82\x01\x02\x10\x01R\fmachineRoles\x121\n" +
+	"infra_role\x18\a \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12~\n" +
+	"\rmachine_roles\x18\b \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ؕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fmachineRoles\x121\n" +
 	"\x06labels\x18\t \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x1a_\n" +
 	"\x11ProjectRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
@@ -1167,22 +1165,20 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"9\n" +
 	"\x19TokenServiceRevokeRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x1c\n" +
-	"\x1aTokenServiceRevokeResponse\"\xe1\n" +
-	"\n" +
+	"\x1aTokenServiceRevokeResponse\"\x99\t\n" +
 	"\x19TokenServiceUpdateRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x00R\n" +
 	"updateMeta\x122\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12E\n" +
-	"\vpermissions\x18\x04 \x03(\v2#.metalstack.api.v2.MethodPermissionR\vpermissions\x12\x7f\n" +
-	"\rproject_roles\x18\x05 \x03(\v2>.metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntryB\x1a\xbaH\x17\x9a\x01\x14\xc0\x95\xb8\xb1\x02\x01\"\x05r\x03\xb0\x01\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12~\n" +
-	"\ftenant_roles\x18\x06 \x03(\v2=.metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntryB\x1c\xbaH\x19\x9a\x01\x16\xc0\x95\xb8\xb1\x02\x01\"\ar\x05\x10\x03\x18\x80\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
+	"\vpermissions\x18\x04 \x03(\v2#.metalstack.api.v2.MethodPermissionR\vpermissions\x12~\n" +
+	"\rproject_roles\x18\x05 \x03(\v2>.metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ȕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12{\n" +
+	"\ftenant_roles\x18\x06 \x03(\v2=.metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01Е\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
 	"\n" +
 	"admin_role\x18\a \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tadminRole\x88\x01\x01\x12J\n" +
 	"\n" +
-	"infra_role\x18\b \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\tinfraRole\x88\x01\x01\x12\xc1\x02\n" +
-	"\rmachine_roles\x18\t \x03(\v2>.metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntryB\xdb\x01\xbaH\xd7\x01\xba\x01\xc9\x01\n" +
-	"\x12machine_roles_keys\x123map keys must be empty string, '*', or a valid UUID\x1a~this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))\x9a\x01\a*\x05\x82\x01\x02\x10\x01R\fmachineRoles\x127\n" +
+	"infra_role\x18\b \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x02R\tinfraRole\x88\x01\x01\x12~\n" +
+	"\rmachine_roles\x18\t \x03(\v2>.metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ؕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fmachineRoles\x127\n" +
 	"\x06labels\x18\n" +
 	" \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsR\x06labels\x1a_\n" +
 	"\x11ProjectRolesEntry\x12\x10\n" +

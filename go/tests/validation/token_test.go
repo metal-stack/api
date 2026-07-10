@@ -33,7 +33,7 @@ func TestValidateToken(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrorMessage: `validation errors:
- - project_roles["p42"]: must be a valid UUID
+ - project_roles: subject must be a '*', or a valid UUID
  - project_roles["p42"]: value must be one of the defined enum values`,
 		},
 		{
@@ -103,7 +103,7 @@ func TestValidateToken(t *testing.T) {
 				},
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error: machine_roles: map keys must be empty string, '*', or a valid UUID",
+			wantErrorMessage: "validation error: machine_roles: subject must be empty string, '*', or a valid UUID",
 		},
 		{
 			name: "InValid Token, api token with machineroles with invalid key",
@@ -116,7 +116,7 @@ func TestValidateToken(t *testing.T) {
 				},
 			},
 			wantErr:          true,
-			wantErrorMessage: "validation error: machine_roles: map keys must be empty string, '*', or a valid UUID",
+			wantErrorMessage: "validation error: machine_roles: subject must be empty string, '*', or a valid UUID",
 		},
 		{
 			name: "InValid Token Create Request, token role not trimmed",
