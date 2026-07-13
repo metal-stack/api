@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12", "3.13"]
+        python-version: ["3.13", "3.14"]
 
     steps:
       - name: Check out code
@@ -29,16 +29,6 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Install buf
-        uses: bufbuild/buf-setup-action@v1
-        with:
-          version: "1.71.0"
-
-      - name: Generate protobuf Python code (including buf/validate)
-        run: |
-          cd proto
-          buf generate
 
       - name: Install test dependencies
         run: |
