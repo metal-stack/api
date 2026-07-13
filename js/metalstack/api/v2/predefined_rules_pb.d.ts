@@ -112,3 +112,21 @@ export declare const keys_and_values_trimmed: GenExtension<MapRules, boolean>;
  * @generated from extension: optional bool keys_trimmed = 80068952;
  */
 export declare const keys_trimmed: GenExtension<MapRules, boolean>;
+/**
+ * ProjectRolesKeysValid ensures that project roles keys met our requirements
+ *
+ * @generated from extension: optional bool project_roles_keys_valid = 80068953;
+ */
+export declare const project_roles_keys_valid: GenExtension<MapRules, boolean>;
+/**
+ * TenantRolesKeysValid ensures that tenant roles keys met our requirements
+ *
+ * @generated from extension: optional bool tenant_roles_keys_valid = 80068954;
+ */
+export declare const tenant_roles_keys_valid: GenExtension<MapRules, boolean>;
+/**
+ * MachineRolesKeysValid ensures that machine roles keys met our requirements
+ *
+ * @generated from extension: optional bool machine_roles_keys_valid = 80068955;
+ */
+export declare const machine_roles_keys_valid: GenExtension<MapRules, boolean>;

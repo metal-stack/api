@@ -39,3 +39,9 @@ KEYS_AND_VALUES_TRIMMED_FIELD_NUMBER: _ClassVar[int]
 keys_and_values_trimmed: _descriptor.FieldDescriptor
 KEYS_TRIMMED_FIELD_NUMBER: _ClassVar[int]
 keys_trimmed: _descriptor.FieldDescriptor
+PROJECT_ROLES_KEYS_VALID_FIELD_NUMBER: _ClassVar[int]
+project_roles_keys_valid: _descriptor.FieldDescriptor
+TENANT_ROLES_KEYS_VALID_FIELD_NUMBER: _ClassVar[int]
+tenant_roles_keys_valid: _descriptor.FieldDescriptor
+MACHINE_ROLES_KEYS_VALID_FIELD_NUMBER: _ClassVar[int]
+machine_roles_keys_valid: _descriptor.FieldDescriptor

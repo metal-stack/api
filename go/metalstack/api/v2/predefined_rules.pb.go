@@ -166,6 +166,30 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 		Tag:           "varint,80068952,opt,name=keys_trimmed",
 		Filename:      "metalstack/api/v2/predefined_rules.proto",
 	},
+	{
+		ExtendedType:  (*validate.MapRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80068953,
+		Name:          "metalstack.api.v2.project_roles_keys_valid",
+		Tag:           "varint,80068953,opt,name=project_roles_keys_valid",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
+		ExtendedType:  (*validate.MapRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80068954,
+		Name:          "metalstack.api.v2.tenant_roles_keys_valid",
+		Tag:           "varint,80068954,opt,name=tenant_roles_keys_valid",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
+	{
+		ExtendedType:  (*validate.MapRules)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         80068955,
+		Name:          "metalstack.api.v2.machine_roles_keys_valid",
+		Tag:           "varint,80068955,opt,name=machine_roles_keys_valid",
+		Filename:      "metalstack/api/v2/predefined_rules.proto",
+	},
 }
 
 // Extension fields to validate.StringRules.
@@ -250,6 +274,18 @@ var (
 	//
 	// optional bool keys_trimmed = 80068952;
 	E_KeysTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[17]
+	// ProjectRolesKeysValid ensures that project roles keys met our requirements
+	//
+	// optional bool project_roles_keys_valid = 80068953;
+	E_ProjectRolesKeysValid = &file_metalstack_api_v2_predefined_rules_proto_extTypes[18]
+	// TenantRolesKeysValid ensures that tenant roles keys met our requirements
+	//
+	// optional bool tenant_roles_keys_valid = 80068954;
+	E_TenantRolesKeysValid = &file_metalstack_api_v2_predefined_rules_proto_extTypes[19]
+	// MachineRolesKeysValid ensures that machine roles keys met our requirements
+	//
+	// optional bool machine_roles_keys_valid = 80068955;
+	E_MachineRolesKeysValid = &file_metalstack_api_v2_predefined_rules_proto_extTypes[20]
 )
 
 var File_metalstack_api_v2_predefined_rules_proto protoreflect.FileDescriptor
@@ -314,7 +350,16 @@ const file_metalstack_api_v2_predefined_rules_proto_rawDesc = "" +
 	"\x1bmap.keys_and_values_trimmed\x125keys and values must not start or end with whitespace\x1aTthis.all(k, k.trim().size() == k.size()) && this.all(v, v.trim().size() == v.size())R\x14keysAndValuesTrimmed:\xab\x01\n" +
 	"\fkeys_trimmed\x12\x16.buf.validate.MapRules\x18\u0602\x97& \x01(\bBm\xc2Hj\n" +
 	"h\n" +
-	"\x10map.keys_trimmed\x12*keys must not start or end with whitespace\x1a(this.all(k, k.trim().size() == k.size())R\vkeysTrimmedB\xca\x01\n" +
+	"\x10map.keys_trimmed\x12*keys must not start or end with whitespace\x1a(this.all(k, k.trim().size() == k.size())R\vkeysTrimmed:\x92\x02\n" +
+	"\x18project_roles_keys_valid\x12\x16.buf.validate.MapRules\x18ق\x97& \x01(\bB\xbd\x01\xc2H\xb9\x01\n" +
+	"\xb6\x01\n" +
+	"\x17project_roles.key.valid\x12&subject must be a '*', or a valid UUID\x1asthis.all(k, k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))R\x15projectRolesKeysValid:\xe8\x01\n" +
+	"\x17tenant_roles_keys_valid\x12\x16.buf.validate.MapRules\x18ڂ\x97& \x01(\bB\x95\x01\xc2H\x91\x01\n" +
+	"\x8e\x01\n" +
+	"\x16tenant_roles.key.valid\x123subject must be '*' or between 2 and 128 characters\x1a?this.all(k, k == '*' || this.size() >= 2 || this.size() <=128 )R\x14tenantRolesKeysValid:\xa9\x02\n" +
+	"\x18machine_roles_keys_valid\x12\x16.buf.validate.MapRules\x18ۂ\x97& \x01(\bB\xd4\x01\xc2H\xd0\x01\n" +
+	"\xcd\x01\n" +
+	"\x17machine_roles.key.valid\x122subject must be empty string, '*', or a valid UUID\x1a~this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))R\x15machineRolesKeysValidB\xca\x01\n" +
 	"\x15com.metalstack.api.v2B\x14PredefinedRulesProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2"
 
 var file_metalstack_api_v2_predefined_rules_proto_goTypes = []any{
@@ -341,10 +386,13 @@ var file_metalstack_api_v2_predefined_rules_proto_depIdxs = []int32{
 	1,  // 15: metalstack.api.v2.all_trimmed:extendee -> buf.validate.RepeatedRules
 	2,  // 16: metalstack.api.v2.keys_and_values_trimmed:extendee -> buf.validate.MapRules
 	2,  // 17: metalstack.api.v2.keys_trimmed:extendee -> buf.validate.MapRules
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	0,  // [0:18] is the sub-list for extension extendee
+	2,  // 18: metalstack.api.v2.project_roles_keys_valid:extendee -> buf.validate.MapRules
+	2,  // 19: metalstack.api.v2.tenant_roles_keys_valid:extendee -> buf.validate.MapRules
+	2,  // 20: metalstack.api.v2.machine_roles_keys_valid:extendee -> buf.validate.MapRules
+	21, // [21:21] is the sub-list for method output_type
+	21, // [21:21] is the sub-list for method input_type
+	21, // [21:21] is the sub-list for extension type_name
+	0,  // [0:21] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
 }
 
@@ -360,7 +408,7 @@ func file_metalstack_api_v2_predefined_rules_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_predefined_rules_proto_rawDesc), len(file_metalstack_api_v2_predefined_rules_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   0,
-			NumExtensions: 18,
+			NumExtensions: 21,
 			NumServices:   0,
 		},
 		GoTypes:           file_metalstack_api_v2_predefined_rules_proto_goTypes,
