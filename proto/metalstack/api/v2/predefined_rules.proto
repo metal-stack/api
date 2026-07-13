@@ -122,4 +122,22 @@ extend buf.validate.MapRules {
     message: "keys must not start or end with whitespace"
     expression: "this.all(k, k.trim().size() == k.size())"
   }];
+  // ProjectRolesKeysValid ensures that project roles keys met our requirements
+  optional bool project_roles_keys_valid = 80068953 [(buf.validate.predefined).cel = {
+    id: "project_roles.key.valid"
+    message: "subject must be a '*', or a valid UUID"
+    expression: "this.all(k, k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
+  }];
+  // TenantRolesKeysValid ensures that tenant roles keys met our requirements
+  optional bool tenant_roles_keys_valid = 80068954 [(buf.validate.predefined).cel = {
+    id: "tenant_roles.key.valid"
+    message: "subject must be '*' or between 2 and 128 characters"
+    expression: "this.all(k, k == '*' || this.size() >= 2 || this.size() <=128 )"
+  }];
+  // MachineRolesKeysValid ensures that machine roles keys met our requirements
+  optional bool machine_roles_keys_valid = 80068955 [(buf.validate.predefined).cel = {
+    id: "machine_roles.key.valid"
+    message: "subject must be empty string, '*', or a valid UUID"
+    expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
+  }];
 }
