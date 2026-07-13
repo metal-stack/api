@@ -20,6 +20,8 @@ export declare const file_metalstack_api_v2_token: GenFile;
  * The api token should be used to authenticate services.
  * In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
  *
+ * Message level validation, can be developed using https://protovalidate.com/playground
+ *
  * @generated from message metalstack.api.v2.Token
  */
 export type Token = Message<"metalstack.api.v2.Token"> & {
