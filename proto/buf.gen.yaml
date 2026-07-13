@@ -22,6 +22,7 @@ plugins:
   # python
   - remote: buf.build/protocolbuffers/python:v35.1
     out: ../python
+    include_imports: True
   - remote: buf.build/protocolbuffers/pyi:v35.1
     out: ../python
   - remote: buf.build/connectrpc/python:v0.10.1
