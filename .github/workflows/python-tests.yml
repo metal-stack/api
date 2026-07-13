@@ -1,0 +1,42 @@
+name: python-tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.13", "3.14"]
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install with test dependencies
+        run: |
+          pip install -e python
+          pip install werkzeug pytest
+        env:
+          VERSION: v0.0.0
+
+      - name: Run Python client tests
+        run: |
+          python -m pytest python/metalstack/client/tests/ -v

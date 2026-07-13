@@ -4,7 +4,9 @@ import os
 NAME = "metal-stack-api"
 
 REQUIRES = [
-    "connectrpc>=0.10.0",
+    # this version needs to match the version specified in buf.gen.yaml
+    "connectrpc==0.10.1",
+    "protobuf>=7.0",
     "protovalidate>=1.2.0",
 ]
 
@@ -24,9 +26,8 @@ setup(
         'Natural Language :: English',
         'Operating System :: POSIX',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.11',
-        'Programming Language :: Python :: 3.12',
         'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.14',
     ],
     include_package_data=True,
 )
