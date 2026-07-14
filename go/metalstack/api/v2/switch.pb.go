@@ -267,26 +267,28 @@ type Switch struct {
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Rack ID if the switch resides in a rack.
 	Rack *string `protobuf:"bytes,4,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
+	// Room ID if the switch resides in a room.
+	Room *string `protobuf:"bytes,5,opt,name=room,proto3,oneof" json:"room,omitempty"`
 	// Partition the switch belongs to.
-	Partition string `protobuf:"bytes,5,opt,name=partition,proto3" json:"partition,omitempty"`
+	Partition string `protobuf:"bytes,6,opt,name=partition,proto3" json:"partition,omitempty"`
 	// ReplaceMode is used to mark a switch ready for replacement.
-	ReplaceMode SwitchReplaceMode `protobuf:"varint,6,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode" json:"replace_mode,omitempty"`
+	ReplaceMode SwitchReplaceMode `protobuf:"varint,7,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode" json:"replace_mode,omitempty"`
 	// ManagementIp is the switch's IP for management access.
-	ManagementIp string `protobuf:"bytes,7,opt,name=management_ip,json=managementIp,proto3" json:"management_ip,omitempty"`
+	ManagementIp string `protobuf:"bytes,8,opt,name=management_ip,json=managementIp,proto3" json:"management_ip,omitempty"`
 	// ManagementUser is the user name to use for management access.
-	ManagementUser *string `protobuf:"bytes,8,opt,name=management_user,json=managementUser,proto3,oneof" json:"management_user,omitempty"`
+	ManagementUser *string `protobuf:"bytes,9,opt,name=management_user,json=managementUser,proto3,oneof" json:"management_user,omitempty"`
 	// ConsoleCommand is the command for accessing the switch's console.
-	ConsoleCommand *string `protobuf:"bytes,9,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
+	ConsoleCommand *string `protobuf:"bytes,10,opt,name=console_command,json=consoleCommand,proto3,oneof" json:"console_command,omitempty"`
 	// Nics are the front panel ports of the switch.
-	Nics []*SwitchNic `protobuf:"bytes,10,rep,name=nics,proto3" json:"nics,omitempty"`
+	Nics []*SwitchNic `protobuf:"bytes,11,rep,name=nics,proto3" json:"nics,omitempty"`
 	// SwitchOs is the OS running on the switch.
-	Os *SwitchOS `protobuf:"bytes,11,opt,name=os,proto3" json:"os,omitempty"`
+	Os *SwitchOS `protobuf:"bytes,12,opt,name=os,proto3" json:"os,omitempty"`
 	// MachineConnections map machines to the nics they are connected to.
-	MachineConnections []*MachineConnection `protobuf:"bytes,12,rep,name=machine_connections,json=machineConnections,proto3" json:"machine_connections,omitempty"`
+	MachineConnections []*MachineConnection `protobuf:"bytes,13,rep,name=machine_connections,json=machineConnections,proto3" json:"machine_connections,omitempty"`
 	// LastSync contains information about the last heartbeat of the switch.
-	LastSync *SwitchSync `protobuf:"bytes,13,opt,name=last_sync,json=lastSync,proto3" json:"last_sync,omitempty"`
+	LastSync *SwitchSync `protobuf:"bytes,14,opt,name=last_sync,json=lastSync,proto3" json:"last_sync,omitempty"`
 	// LastSyncError contains information about the last unsuccessful heartbeat of the switch.
-	LastSyncError *SwitchSync `protobuf:"bytes,14,opt,name=last_sync_error,json=lastSyncError,proto3" json:"last_sync_error,omitempty"`
+	LastSyncError *SwitchSync `protobuf:"bytes,15,opt,name=last_sync_error,json=lastSyncError,proto3" json:"last_sync_error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -345,6 +347,13 @@ func (x *Switch) GetDescription() string {
 func (x *Switch) GetRack() string {
 	if x != nil && x.Rack != nil {
 		return *x.Rack
+	}
+	return ""
+}
+
+func (x *Switch) GetRoom() string {
+	if x != nil && x.Room != nil {
+		return *x.Room
 	}
 	return ""
 }
@@ -857,10 +866,12 @@ type SwitchQuery struct {
 	Partition *string `protobuf:"bytes,2,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	// Rack of the switches to list.
 	Rack *string `protobuf:"bytes,3,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
+	// Room ID if the switch resides in a room.
+	Room *string `protobuf:"bytes,4,opt,name=room,proto3,oneof" json:"room,omitempty"`
 	// Switch OS specific queries.
-	Os *SwitchOSQuery `protobuf:"bytes,4,opt,name=os,proto3,oneof" json:"os,omitempty"`
+	Os *SwitchOSQuery `protobuf:"bytes,5,opt,name=os,proto3,oneof" json:"os,omitempty"`
 	// ConnectedMachineID lists the switches which have the given machine id in the connected machines map.
-	ConnectedMachineId *string `protobuf:"bytes,5,opt,name=connected_machine_id,json=connectedMachineId,proto3,oneof" json:"connected_machine_id,omitempty"`
+	ConnectedMachineId *string `protobuf:"bytes,6,opt,name=connected_machine_id,json=connectedMachineId,proto3,oneof" json:"connected_machine_id,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -912,6 +923,13 @@ func (x *SwitchQuery) GetPartition() string {
 func (x *SwitchQuery) GetRack() string {
 	if x != nil && x.Rack != nil {
 		return *x.Rack
+	}
+	return ""
+}
+
+func (x *SwitchQuery) GetRoom() string {
+	if x != nil && x.Room != nil {
+		return *x.Room
 	}
 	return ""
 }
@@ -1190,27 +1208,29 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xb3\x06\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xe2\x06\n" +
 	"\x06Switch\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12-\n" +
 	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12$\n" +
-	"\x04rack\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04rack\x88\x01\x01\x12)\n" +
-	"\tpartition\x18\x05 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12Q\n" +
-	"\freplace_mode\x18\x06 \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
-	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x128\n" +
-	"\x0fmanagement_user\x18\b \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x01R\x0emanagementUser\x88\x01\x01\x128\n" +
-	"\x0fconsole_command\x18\t \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\x0econsoleCommand\x88\x01\x01\x120\n" +
-	"\x04nics\x18\n" +
-	" \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x12+\n" +
-	"\x02os\x18\v \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02os\x12U\n" +
-	"\x13machine_connections\x18\f \x03(\v2$.metalstack.api.v2.MachineConnectionR\x12machineConnections\x12:\n" +
-	"\tlast_sync\x18\r \x01(\v2\x1d.metalstack.api.v2.SwitchSyncR\blastSync\x12E\n" +
-	"\x0flast_sync_error\x18\x0e \x01(\v2\x1d.metalstack.api.v2.SwitchSyncR\rlastSyncErrorB\a\n" +
-	"\x05_rackB\x12\n" +
+	"\x04rack\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04rack\x88\x01\x01\x12$\n" +
+	"\x04room\x18\x05 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04room\x88\x01\x01\x12)\n" +
+	"\tpartition\x18\x06 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12Q\n" +
+	"\freplace_mode\x18\a \x01(\x0e2$.metalstack.api.v2.SwitchReplaceModeB\b\xbaH\x05\x82\x01\x02\x10\x01R\vreplaceMode\x12,\n" +
+	"\rmanagement_ip\x18\b \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x128\n" +
+	"\x0fmanagement_user\x18\t \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\x0emanagementUser\x88\x01\x01\x128\n" +
+	"\x0fconsole_command\x18\n" +
+	" \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x03R\x0econsoleCommand\x88\x01\x01\x120\n" +
+	"\x04nics\x18\v \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x12+\n" +
+	"\x02os\x18\f \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02os\x12U\n" +
+	"\x13machine_connections\x18\r \x03(\v2$.metalstack.api.v2.MachineConnectionR\x12machineConnections\x12:\n" +
+	"\tlast_sync\x18\x0e \x01(\v2\x1d.metalstack.api.v2.SwitchSyncR\blastSync\x12E\n" +
+	"\x0flast_sync_error\x18\x0f \x01(\v2\x1d.metalstack.api.v2.SwitchSyncR\rlastSyncErrorB\a\n" +
+	"\x05_rackB\a\n" +
+	"\x05_roomB\x12\n" +
 	"\x10_management_userB\x12\n" +
 	"\x10_console_command\"\xb1\x01\n" +
 	"\bSwitchOS\x12C\n" +
@@ -1252,18 +1272,20 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x11MachineConnection\x12\x1d\n" +
 	"\n" +
 	"machine_id\x18\x01 \x01(\tR\tmachineId\x12.\n" +
-	"\x03nic\x18\x02 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\"\xbd\x02\n" +
+	"\x03nic\x18\x02 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\"\xec\x02\n" +
 	"\vSwitchQuery\x12\"\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01H\x00R\x02id\x88\x01\x01\x12.\n" +
 	"\tpartition\x18\x02 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x01R\tpartition\x88\x01\x01\x12$\n" +
-	"\x04rack\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x02R\x04rack\x88\x01\x01\x125\n" +
-	"\x02os\x18\x04 \x01(\v2 .metalstack.api.v2.SwitchOSQueryH\x03R\x02os\x88\x01\x01\x12?\n" +
-	"\x14connected_machine_id\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x04R\x12connectedMachineId\x88\x01\x01B\x05\n" +
+	"\x04rack\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x02R\x04rack\x88\x01\x01\x12$\n" +
+	"\x04room\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x03R\x04room\x88\x01\x01\x125\n" +
+	"\x02os\x18\x05 \x01(\v2 .metalstack.api.v2.SwitchOSQueryH\x04R\x02os\x88\x01\x01\x12?\n" +
+	"\x14connected_machine_id\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x05R\x12connectedMachineId\x88\x01\x01B\x05\n" +
 	"\x03_idB\f\n" +
 	"\n" +
 	"_partitionB\a\n" +
-	"\x05_rackB\x05\n" +
+	"\x05_rackB\a\n" +
+	"\x05_roomB\x05\n" +
 	"\x03_osB\x17\n" +
 	"\x15_connected_machine_id\"\x9c\x01\n" +
 	"\rSwitchOSQuery\x12H\n" +
