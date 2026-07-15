@@ -45,6 +45,9 @@ const (
 	ProjectServiceUpdateProcedure = "/metalstack.api.v2.ProjectService/Update"
 	// ProjectServiceLeaveProcedure is the fully-qualified name of the ProjectService's Leave RPC.
 	ProjectServiceLeaveProcedure = "/metalstack.api.v2.ProjectService/Leave"
+	// ProjectServiceAddMemberProcedure is the fully-qualified name of the ProjectService's AddMember
+	// RPC.
+	ProjectServiceAddMemberProcedure = "/metalstack.api.v2.ProjectService/AddMember"
 	// ProjectServiceRemoveMemberProcedure is the fully-qualified name of the ProjectService's
 	// RemoveMember RPC.
 	ProjectServiceRemoveMemberProcedure = "/metalstack.api.v2.ProjectService/RemoveMember"
@@ -81,6 +84,8 @@ type ProjectServiceClient interface {
 	Update(context.Context, *v2.ProjectServiceUpdateRequest) (*v2.ProjectServiceUpdateResponse, error)
 	// Leave project
 	Leave(context.Context, *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error)
+	// AddMember adds a user to a project
+	AddMember(context.Context, *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error)
 	// RemoveMember removes a user from a project
 	RemoveMember(context.Context, *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error)
 	// UpdateMember updates a user for a project
@@ -144,6 +149,12 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(projectServiceMethods.ByName("Leave")),
 			connect.WithClientOptions(opts...),
 		),
+		addMember: connect.NewClient[v2.ProjectServiceAddMemberRequest, v2.ProjectServiceAddMemberResponse](
+			httpClient,
+			baseURL+ProjectServiceAddMemberProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("AddMember")),
+			connect.WithClientOptions(opts...),
+		),
 		removeMember: connect.NewClient[v2.ProjectServiceRemoveMemberRequest, v2.ProjectServiceRemoveMemberResponse](
 			httpClient,
 			baseURL+ProjectServiceRemoveMemberProcedure,
@@ -197,6 +208,7 @@ type projectServiceClient struct {
 	delete       *connect.Client[v2.ProjectServiceDeleteRequest, v2.ProjectServiceDeleteResponse]
 	update       *connect.Client[v2.ProjectServiceUpdateRequest, v2.ProjectServiceUpdateResponse]
 	leave        *connect.Client[v2.ProjectServiceLeaveRequest, v2.ProjectServiceLeaveResponse]
+	addMember    *connect.Client[v2.ProjectServiceAddMemberRequest, v2.ProjectServiceAddMemberResponse]
 	removeMember *connect.Client[v2.ProjectServiceRemoveMemberRequest, v2.ProjectServiceRemoveMemberResponse]
 	updateMember *connect.Client[v2.ProjectServiceUpdateMemberRequest, v2.ProjectServiceUpdateMemberResponse]
 	invite       *connect.Client[v2.ProjectServiceInviteRequest, v2.ProjectServiceInviteResponse]
@@ -254,6 +266,15 @@ func (c *projectServiceClient) Update(ctx context.Context, req *v2.ProjectServic
 // Leave calls metalstack.api.v2.ProjectService.Leave.
 func (c *projectServiceClient) Leave(ctx context.Context, req *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error) {
 	response, err := c.leave.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// AddMember calls metalstack.api.v2.ProjectService.AddMember.
+func (c *projectServiceClient) AddMember(ctx context.Context, req *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error) {
+	response, err := c.addMember.CallUnary(ctx, connect.NewRequest(req))
 	if response != nil {
 		return response.Msg, err
 	}
@@ -337,6 +358,8 @@ type ProjectServiceHandler interface {
 	Update(context.Context, *v2.ProjectServiceUpdateRequest) (*v2.ProjectServiceUpdateResponse, error)
 	// Leave project
 	Leave(context.Context, *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error)
+	// AddMember adds a user to a project
+	AddMember(context.Context, *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error)
 	// RemoveMember removes a user from a project
 	RemoveMember(context.Context, *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error)
 	// UpdateMember updates a user for a project
@@ -396,6 +419,12 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 		connect.WithSchema(projectServiceMethods.ByName("Leave")),
 		connect.WithHandlerOptions(opts...),
 	)
+	projectServiceAddMemberHandler := connect.NewUnaryHandlerSimple(
+		ProjectServiceAddMemberProcedure,
+		svc.AddMember,
+		connect.WithSchema(projectServiceMethods.ByName("AddMember")),
+		connect.WithHandlerOptions(opts...),
+	)
 	projectServiceRemoveMemberHandler := connect.NewUnaryHandlerSimple(
 		ProjectServiceRemoveMemberProcedure,
 		svc.RemoveMember,
@@ -452,6 +481,8 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 			projectServiceUpdateHandler.ServeHTTP(w, r)
 		case ProjectServiceLeaveProcedure:
 			projectServiceLeaveHandler.ServeHTTP(w, r)
+		case ProjectServiceAddMemberProcedure:
+			projectServiceAddMemberHandler.ServeHTTP(w, r)
 		case ProjectServiceRemoveMemberProcedure:
 			projectServiceRemoveMemberHandler.ServeHTTP(w, r)
 		case ProjectServiceUpdateMemberProcedure:
@@ -497,6 +528,10 @@ func (UnimplementedProjectServiceHandler) Update(context.Context, *v2.ProjectSer
 
 func (UnimplementedProjectServiceHandler) Leave(context.Context, *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.Leave is not implemented"))
+}
+
+func (UnimplementedProjectServiceHandler) AddMember(context.Context, *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.AddMember is not implemented"))
 }
 
 func (UnimplementedProjectServiceHandler) RemoveMember(context.Context, *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error) {

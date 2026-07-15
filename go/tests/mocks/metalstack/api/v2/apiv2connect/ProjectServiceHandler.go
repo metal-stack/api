@@ -38,6 +38,74 @@ func (_m *ProjectServiceHandler) EXPECT() *ProjectServiceHandler_Expecter {
 	return &ProjectServiceHandler_Expecter{mock: &_m.Mock}
 }
 
+// AddMember provides a mock function for the type ProjectServiceHandler
+func (_mock *ProjectServiceHandler) AddMember(context1 context.Context, projectServiceAddMemberRequest *apiv2.ProjectServiceAddMemberRequest) (*apiv2.ProjectServiceAddMemberResponse, error) {
+	ret := _mock.Called(context1, projectServiceAddMemberRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for AddMember")
+	}
+
+	var r0 *apiv2.ProjectServiceAddMemberResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *apiv2.ProjectServiceAddMemberRequest) (*apiv2.ProjectServiceAddMemberResponse, error)); ok {
+		return returnFunc(context1, projectServiceAddMemberRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *apiv2.ProjectServiceAddMemberRequest) *apiv2.ProjectServiceAddMemberResponse); ok {
+		r0 = returnFunc(context1, projectServiceAddMemberRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*apiv2.ProjectServiceAddMemberResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *apiv2.ProjectServiceAddMemberRequest) error); ok {
+		r1 = returnFunc(context1, projectServiceAddMemberRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// ProjectServiceHandler_AddMember_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddMember'
+type ProjectServiceHandler_AddMember_Call struct {
+	*mock.Call
+}
+
+// AddMember is a helper method to define mock.On call
+//   - context1 context.Context
+//   - projectServiceAddMemberRequest *apiv2.ProjectServiceAddMemberRequest
+func (_e *ProjectServiceHandler_Expecter) AddMember(context1 any, projectServiceAddMemberRequest any) *ProjectServiceHandler_AddMember_Call {
+	return &ProjectServiceHandler_AddMember_Call{Call: _e.mock.On("AddMember", context1, projectServiceAddMemberRequest)}
+}
+
+func (_c *ProjectServiceHandler_AddMember_Call) Run(run func(context1 context.Context, projectServiceAddMemberRequest *apiv2.ProjectServiceAddMemberRequest)) *ProjectServiceHandler_AddMember_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *apiv2.ProjectServiceAddMemberRequest
+		if args[1] != nil {
+			arg1 = args[1].(*apiv2.ProjectServiceAddMemberRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *ProjectServiceHandler_AddMember_Call) Return(projectServiceAddMemberResponse *apiv2.ProjectServiceAddMemberResponse, err error) *ProjectServiceHandler_AddMember_Call {
+	_c.Call.Return(projectServiceAddMemberResponse, err)
+	return _c
+}
+
+func (_c *ProjectServiceHandler_AddMember_Call) RunAndReturn(run func(context1 context.Context, projectServiceAddMemberRequest *apiv2.ProjectServiceAddMemberRequest) (*apiv2.ProjectServiceAddMemberResponse, error)) *ProjectServiceHandler_AddMember_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Create provides a mock function for the type ProjectServiceHandler
 func (_mock *ProjectServiceHandler) Create(context1 context.Context, projectServiceCreateRequest *apiv2.ProjectServiceCreateRequest) (*apiv2.ProjectServiceCreateResponse, error) {
 	ret := _mock.Called(context1, projectServiceCreateRequest)

@@ -38,6 +38,74 @@ func (_m *TenantServiceClient) EXPECT() *TenantServiceClient_Expecter {
 	return &TenantServiceClient_Expecter{mock: &_m.Mock}
 }
 
+// AddMember provides a mock function for the type TenantServiceClient
+func (_mock *TenantServiceClient) AddMember(context1 context.Context, tenantServiceAddMemberRequest *apiv2.TenantServiceAddMemberRequest) (*apiv2.TenantServiceAddMemberResponse, error) {
+	ret := _mock.Called(context1, tenantServiceAddMemberRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for AddMember")
+	}
+
+	var r0 *apiv2.TenantServiceAddMemberResponse
+	var r1 error
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceAddMemberRequest) (*apiv2.TenantServiceAddMemberResponse, error)); ok {
+		return returnFunc(context1, tenantServiceAddMemberRequest)
+	}
+	if returnFunc, ok := ret.Get(0).(func(context.Context, *apiv2.TenantServiceAddMemberRequest) *apiv2.TenantServiceAddMemberResponse); ok {
+		r0 = returnFunc(context1, tenantServiceAddMemberRequest)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*apiv2.TenantServiceAddMemberResponse)
+		}
+	}
+	if returnFunc, ok := ret.Get(1).(func(context.Context, *apiv2.TenantServiceAddMemberRequest) error); ok {
+		r1 = returnFunc(context1, tenantServiceAddMemberRequest)
+	} else {
+		r1 = ret.Error(1)
+	}
+	return r0, r1
+}
+
+// TenantServiceClient_AddMember_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'AddMember'
+type TenantServiceClient_AddMember_Call struct {
+	*mock.Call
+}
+
+// AddMember is a helper method to define mock.On call
+//   - context1 context.Context
+//   - tenantServiceAddMemberRequest *apiv2.TenantServiceAddMemberRequest
+func (_e *TenantServiceClient_Expecter) AddMember(context1 any, tenantServiceAddMemberRequest any) *TenantServiceClient_AddMember_Call {
+	return &TenantServiceClient_AddMember_Call{Call: _e.mock.On("AddMember", context1, tenantServiceAddMemberRequest)}
+}
+
+func (_c *TenantServiceClient_AddMember_Call) Run(run func(context1 context.Context, tenantServiceAddMemberRequest *apiv2.TenantServiceAddMemberRequest)) *TenantServiceClient_AddMember_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		var arg0 context.Context
+		if args[0] != nil {
+			arg0 = args[0].(context.Context)
+		}
+		var arg1 *apiv2.TenantServiceAddMemberRequest
+		if args[1] != nil {
+			arg1 = args[1].(*apiv2.TenantServiceAddMemberRequest)
+		}
+		run(
+			arg0,
+			arg1,
+		)
+	})
+	return _c
+}
+
+func (_c *TenantServiceClient_AddMember_Call) Return(tenantServiceAddMemberResponse *apiv2.TenantServiceAddMemberResponse, err error) *TenantServiceClient_AddMember_Call {
+	_c.Call.Return(tenantServiceAddMemberResponse, err)
+	return _c
+}
+
+func (_c *TenantServiceClient_AddMember_Call) RunAndReturn(run func(context1 context.Context, tenantServiceAddMemberRequest *apiv2.TenantServiceAddMemberRequest) (*apiv2.TenantServiceAddMemberResponse, error)) *TenantServiceClient_AddMember_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // Create provides a mock function for the type TenantServiceClient
 func (_mock *TenantServiceClient) Create(context1 context.Context, tenantServiceCreateRequest *apiv2.TenantServiceCreateRequest) (*apiv2.TenantServiceCreateResponse, error) {
 	ret := _mock.Called(context1, tenantServiceCreateRequest)

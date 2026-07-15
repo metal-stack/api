@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Labels, TenantRole } from "../../api/v2/common_pb";
-import type { Tenant, TenantQuery } from "../../api/v2/tenant_pb";
+import type { Tenant, TenantMember, TenantQuery } from "../../api/v2/tenant_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/tenant.proto.
@@ -143,7 +143,14 @@ export declare const TenantServiceAddMemberRequestSchema: GenMessage<TenantServi
  *
  * @generated from message metalstack.admin.v2.TenantServiceAddMemberResponse
  */
-export type TenantServiceAddMemberResponse = Message<"metalstack.admin.v2.TenantServiceAddMemberResponse"> & {};
+export type TenantServiceAddMemberResponse = Message<"metalstack.admin.v2.TenantServiceAddMemberResponse"> & {
+    /**
+     * TenantMember is the added tenant member
+     *
+     * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
+     */
+    tenantMember?: TenantMember | undefined;
+};
 /**
  * Describes the message metalstack.admin.v2.TenantServiceAddMemberResponse.
  * Use `create(TenantServiceAddMemberResponseSchema)` to create a new message.
@@ -178,7 +185,14 @@ export declare const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantSe
  *
  * @generated from message metalstack.admin.v2.TenantServiceRemoveMemberResponse
  */
-export type TenantServiceRemoveMemberResponse = Message<"metalstack.admin.v2.TenantServiceRemoveMemberResponse"> & {};
+export type TenantServiceRemoveMemberResponse = Message<"metalstack.admin.v2.TenantServiceRemoveMemberResponse"> & {
+    /**
+     * TenantMember is the removed tenant member
+     *
+     * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
+     */
+    tenantMember?: TenantMember | undefined;
+};
 /**
  * Describes the message metalstack.admin.v2.TenantServiceRemoveMemberResponse.
  * Use `create(TenantServiceRemoveMemberResponseSchema)` to create a new message.
