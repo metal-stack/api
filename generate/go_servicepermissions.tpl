@@ -2,6 +2,7 @@
 package permissions
 
 import (
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"connectrpc.com/connect"
 )
 
@@ -18,7 +19,7 @@ func GetServicePermissions() *ServicePermissions {
 		Roles:      Roles{
 			Admin:   Admin{
 				{{- range $role, $methods := .Roles.Admin }}
-					"{{ $role }}": map[string]struct{}{
+					apiv2.AdminRole_{{ $role }}: map[string]struct{}{
 						{{- range $method,$v := $methods }}
 							"{{ $method }}":{{ $v }},
 						{{- end }}
@@ -27,7 +28,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Infra:   Infra{
 				{{- range $role, $methods := .Roles.Infra }}
-					"{{ $role }}": map[string]struct{}{
+					apiv2.InfraRole_{{ $role }}: map[string]struct{}{
 						{{- range $method,$v := $methods }}
 							"{{ $method }}":{{ $v }},
 						{{- end }}
@@ -36,7 +37,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Machine:   Machine{
 				{{- range $role, $methods := .Roles.Machine }}
-					"{{ $role }}": map[string]struct{}{
+					apiv2.MachineRole_{{ $role }}: map[string]struct{}{
 						{{- range $method,$v := $methods }}
 							"{{ $method }}":{{ $v }},
 						{{- end }}
@@ -45,7 +46,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Tenant:  Tenant{
 				{{- range $role, $methods := .Roles.Tenant }}
-					"{{ $role }}": map[string]struct{}{
+					apiv2.TenantRole_{{ $role }}: map[string]struct{}{
 						{{- range $method,$v := $methods }}
 							"{{ $method }}":{{ $v }},
 						{{- end }}
@@ -54,7 +55,7 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Project: Project{
 				{{- range $role, $methods := .Roles.Project }}
-					"{{ $role }}": map[string]struct{}{
+					apiv2.ProjectRole_{{ $role }}: map[string]struct{}{
 						{{- range $method,$v := $methods }}
 							"{{ $method }}":{{ $v }},
 						{{- end }}

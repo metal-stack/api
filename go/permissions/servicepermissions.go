@@ -3,6 +3,7 @@ package permissions
 
 import (
 	"connectrpc.com/connect"
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 )
 
 func GetServices() []string {
@@ -53,7 +54,7 @@ func GetServicePermissions() *ServicePermissions {
 	return &ServicePermissions{
 		Roles: Roles{
 			Admin: Admin{
-				"ADMIN_ROLE_EDITOR": map[string]struct{}{
+				apiv2.AdminRole_ADMIN_ROLE_EDITOR: map[string]struct{}{
 					"/metalstack.admin.v2.AuditService/Get":                  {},
 					"/metalstack.admin.v2.AuditService/List":                 {},
 					"/metalstack.admin.v2.ComponentService/Delete":           {},
@@ -120,7 +121,7 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.admin.v2.VPNService/AuthKey":                {},
 					"/metalstack.admin.v2.VPNService/ListNodes":              {},
 				},
-				"ADMIN_ROLE_VIEWER": map[string]struct{}{
+				apiv2.AdminRole_ADMIN_ROLE_VIEWER: map[string]struct{}{
 					"/metalstack.admin.v2.AuditService/Get":                {},
 					"/metalstack.admin.v2.AuditService/List":               {},
 					"/metalstack.admin.v2.ComponentService/Get":            {},
@@ -153,7 +154,7 @@ func GetServicePermissions() *ServicePermissions {
 				},
 			},
 			Infra: Infra{
-				"INFRA_ROLE_EDITOR": map[string]struct{}{
+				apiv2.InfraRole_INFRA_ROLE_EDITOR: map[string]struct{}{
 					"/metalstack.infra.v2.BMCService/BMCCommandDone":    {},
 					"/metalstack.infra.v2.BMCService/UpdateBMCInfo":     {},
 					"/metalstack.infra.v2.BMCService/WaitForBMCCommand": {},
@@ -165,12 +166,12 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.infra.v2.SwitchService/Heartbeat":      {},
 					"/metalstack.infra.v2.SwitchService/Register":       {},
 				},
-				"INFRA_ROLE_VIEWER": map[string]struct{}{
+				apiv2.InfraRole_INFRA_ROLE_VIEWER: map[string]struct{}{
 					"/metalstack.infra.v2.SwitchService/Get": {},
 				},
 			},
 			Machine: Machine{
-				"MACHINE_ROLE_EDITOR": map[string]struct{}{
+				apiv2.MachineRole_MACHINE_ROLE_EDITOR: map[string]struct{}{
 					"/metalstack.infra.v2.BootService/InstallationSucceeded": {},
 					"/metalstack.infra.v2.BootService/Register":              {},
 					"/metalstack.infra.v2.BootService/SuperUserPassword":     {},
@@ -178,16 +179,7 @@ func GetServicePermissions() *ServicePermissions {
 				},
 			},
 			Tenant: Tenant{
-				"TENANT_ROLE_EDITOR": map[string]struct{}{
-					"/metalstack.api.v2.ProjectService/Create": {},
-					"/metalstack.api.v2.TenantService/Delete":  {},
-					"/metalstack.api.v2.TenantService/Get":     {},
-					"/metalstack.api.v2.TenantService/Update":  {},
-				},
-				"TENANT_ROLE_GUEST": map[string]struct{}{
-					"/metalstack.api.v2.TenantService/Get": {},
-				},
-				"TENANT_ROLE_OWNER": map[string]struct{}{
+				apiv2.TenantRole_TENANT_ROLE_OWNER: map[string]struct{}{
 					"/metalstack.api.v2.AuditService/Get":           {},
 					"/metalstack.api.v2.AuditService/List":          {},
 					"/metalstack.api.v2.ProjectService/Create":      {},
@@ -200,37 +192,22 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.api.v2.TenantService/Update":       {},
 					"/metalstack.api.v2.TenantService/UpdateMember": {},
 				},
-				"TENANT_ROLE_VIEWER": map[string]struct{}{
+				apiv2.TenantRole_TENANT_ROLE_EDITOR: map[string]struct{}{
+					"/metalstack.api.v2.ProjectService/Create": {},
+					"/metalstack.api.v2.TenantService/Delete":  {},
+					"/metalstack.api.v2.TenantService/Get":     {},
+					"/metalstack.api.v2.TenantService/Update":  {},
+				},
+				apiv2.TenantRole_TENANT_ROLE_VIEWER: map[string]struct{}{
 					"/metalstack.api.v2.TenantService/Get":   {},
 					"/metalstack.api.v2.TenantService/Leave": {},
 				},
+				apiv2.TenantRole_TENANT_ROLE_GUEST: map[string]struct{}{
+					"/metalstack.api.v2.TenantService/Get": {},
+				},
 			},
 			Project: Project{
-				"PROJECT_ROLE_EDITOR": map[string]struct{}{
-					"/metalstack.api.v2.IPService/Create":                {},
-					"/metalstack.api.v2.IPService/Delete":                {},
-					"/metalstack.api.v2.IPService/Get":                   {},
-					"/metalstack.api.v2.IPService/List":                  {},
-					"/metalstack.api.v2.IPService/Update":                {},
-					"/metalstack.api.v2.MachineService/BMCCommand":       {},
-					"/metalstack.api.v2.MachineService/Create":           {},
-					"/metalstack.api.v2.MachineService/Delete":           {},
-					"/metalstack.api.v2.MachineService/Get":              {},
-					"/metalstack.api.v2.MachineService/GetBMC":           {},
-					"/metalstack.api.v2.MachineService/List":             {},
-					"/metalstack.api.v2.MachineService/Update":           {},
-					"/metalstack.api.v2.NetworkService/Create":           {},
-					"/metalstack.api.v2.NetworkService/Delete":           {},
-					"/metalstack.api.v2.NetworkService/Get":              {},
-					"/metalstack.api.v2.NetworkService/List":             {},
-					"/metalstack.api.v2.NetworkService/ListBaseNetworks": {},
-					"/metalstack.api.v2.NetworkService/Update":           {},
-					"/metalstack.api.v2.ProjectService/Get":              {},
-					"/metalstack.api.v2.ProjectService/Update":           {},
-					"/metalstack.api.v2.SizeReservationService/Get":      {},
-					"/metalstack.api.v2.SizeReservationService/List":     {},
-				},
-				"PROJECT_ROLE_OWNER": map[string]struct{}{
+				apiv2.ProjectRole_PROJECT_ROLE_OWNER: map[string]struct{}{
 					"/metalstack.api.v2.IPService/Create":                {},
 					"/metalstack.api.v2.IPService/Delete":                {},
 					"/metalstack.api.v2.IPService/Get":                   {},
@@ -260,7 +237,31 @@ func GetServicePermissions() *ServicePermissions {
 					"/metalstack.api.v2.SizeReservationService/Get":      {},
 					"/metalstack.api.v2.SizeReservationService/List":     {},
 				},
-				"PROJECT_ROLE_VIEWER": map[string]struct{}{
+				apiv2.ProjectRole_PROJECT_ROLE_EDITOR: map[string]struct{}{
+					"/metalstack.api.v2.IPService/Create":                {},
+					"/metalstack.api.v2.IPService/Delete":                {},
+					"/metalstack.api.v2.IPService/Get":                   {},
+					"/metalstack.api.v2.IPService/List":                  {},
+					"/metalstack.api.v2.IPService/Update":                {},
+					"/metalstack.api.v2.MachineService/BMCCommand":       {},
+					"/metalstack.api.v2.MachineService/Create":           {},
+					"/metalstack.api.v2.MachineService/Delete":           {},
+					"/metalstack.api.v2.MachineService/Get":              {},
+					"/metalstack.api.v2.MachineService/GetBMC":           {},
+					"/metalstack.api.v2.MachineService/List":             {},
+					"/metalstack.api.v2.MachineService/Update":           {},
+					"/metalstack.api.v2.NetworkService/Create":           {},
+					"/metalstack.api.v2.NetworkService/Delete":           {},
+					"/metalstack.api.v2.NetworkService/Get":              {},
+					"/metalstack.api.v2.NetworkService/List":             {},
+					"/metalstack.api.v2.NetworkService/ListBaseNetworks": {},
+					"/metalstack.api.v2.NetworkService/Update":           {},
+					"/metalstack.api.v2.ProjectService/Get":              {},
+					"/metalstack.api.v2.ProjectService/Update":           {},
+					"/metalstack.api.v2.SizeReservationService/Get":      {},
+					"/metalstack.api.v2.SizeReservationService/List":     {},
+				},
+				apiv2.ProjectRole_PROJECT_ROLE_VIEWER: map[string]struct{}{
 					"/metalstack.api.v2.IPService/Get":                   {},
 					"/metalstack.api.v2.IPService/List":                  {},
 					"/metalstack.api.v2.MachineService/Get":              {},

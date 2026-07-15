@@ -12,6 +12,7 @@ import (
 	"strings"
 
 	sprig "github.com/go-task/slim-sprig/v3"
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	v1 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/metal-stack/api/go/permissions"
 	"github.com/metal-stack/api/go/tests/protoparser"
@@ -150,46 +151,51 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						// Tenant
 						switch role := *methodOpt.IdentifierValue; role {
 						case v1.TenantRole_TENANT_ROLE_OWNER.String(), v1.TenantRole_TENANT_ROLE_EDITOR.String(), v1.TenantRole_TENANT_ROLE_VIEWER.String(), v1.TenantRole_TENANT_ROLE_GUEST.String():
-							if methods := roles.Tenant[role]; methods == nil {
-								roles.Tenant[role] = permissions.Methods{}
+							apirole := apiv2.TenantRole(apiv2.TenantRole_value[role])
+							if methods := roles.Tenant[apirole]; methods == nil {
+								roles.Tenant[apirole] = permissions.Methods{}
 							}
-							roles.Tenant[role][methodName] = struct{}{}
+							roles.Tenant[apirole][methodName] = struct{}{}
 							visibility.Tenant[methodName] = true
 						case v1.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Project
 						case v1.ProjectRole_PROJECT_ROLE_OWNER.String(), v1.ProjectRole_PROJECT_ROLE_EDITOR.String(), v1.ProjectRole_PROJECT_ROLE_VIEWER.String():
-							if methods := roles.Project[role]; methods == nil {
-								roles.Project[role] = permissions.Methods{}
+							apirole := apiv2.ProjectRole(apiv2.ProjectRole_value[role])
+							if methods := roles.Project[apirole]; methods == nil {
+								roles.Project[apirole] = permissions.Methods{}
 							}
-							roles.Project[role][methodName] = struct{}{}
+							roles.Project[apirole][methodName] = struct{}{}
 							visibility.Project[methodName] = true
 						case v1.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Admin
 						case v1.AdminRole_ADMIN_ROLE_EDITOR.String(), v1.AdminRole_ADMIN_ROLE_VIEWER.String():
-							if methods := roles.Admin[role]; methods == nil {
-								roles.Admin[role] = permissions.Methods{}
+							apirole := apiv2.AdminRole(apiv2.AdminRole_value[role])
+							if methods := roles.Admin[apirole]; methods == nil {
+								roles.Admin[apirole] = permissions.Methods{}
 							}
-							roles.Admin[role][methodName] = struct{}{}
+							roles.Admin[apirole][methodName] = struct{}{}
 							visibility.Admin[methodName] = true
 						case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
 							// noop
 						// Infra
 						case v1.InfraRole_INFRA_ROLE_EDITOR.String(), v1.InfraRole_INFRA_ROLE_VIEWER.String():
-							if methods := roles.Infra[role]; methods == nil {
-								roles.Infra[role] = permissions.Methods{}
+							apirole := apiv2.InfraRole(apiv2.InfraRole_value[role])
+							if methods := roles.Infra[apirole]; methods == nil {
+								roles.Infra[apirole] = permissions.Methods{}
 							}
-							roles.Infra[role][methodName] = struct{}{}
+							roles.Infra[apirole][methodName] = struct{}{}
 							visibility.Infra[methodName] = true
 						case v1.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
 							// noop
 						// Machine
 						case v1.MachineRole_MACHINE_ROLE_EDITOR.String(), v1.MachineRole_MACHINE_ROLE_VIEWER.String():
-							if methods := roles.Machine[role]; methods == nil {
-								roles.Machine[role] = permissions.Methods{}
+							apirole := apiv2.MachineRole(apiv2.MachineRole_value[role])
+							if methods := roles.Machine[apirole]; methods == nil {
+								roles.Machine[apirole] = permissions.Methods{}
 							}
-							roles.Machine[role][methodName] = struct{}{}
+							roles.Machine[apirole][methodName] = struct{}{}
 							visibility.Machine[methodName] = true
 						case v1.MachineRole_MACHINE_ROLE_UNSPECIFIED.String():
 							// noop
