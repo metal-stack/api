@@ -13,16 +13,16 @@ type (
 		Services   []string   `json:"services,omitempty"`
 	}
 
-	Methods map[string]bool
+	Methods map[string]struct{}
 
 	Chargeable map[string]bool
 	Auditable  map[string]bool
 
-	Admin   map[string][]string
-	Infra   map[string][]string
-	Machine map[string][]string
-	Tenant  map[string][]string
-	Project map[string][]string
+	Admin   map[string]Methods
+	Infra   map[string]Methods
+	Machine map[string]Methods
+	Tenant  map[string]Methods
+	Project map[string]Methods
 
 	// Roles
 	Roles struct {
