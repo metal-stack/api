@@ -9,6 +9,3 @@ lint:
 breaking:
   use:
     - FILE
-  except:
-    - EXTENSION_NO_DELETE
-    - FIELD_SAME_DEFAULT

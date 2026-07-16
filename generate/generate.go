@@ -29,8 +29,6 @@ const (
 var (
 	//go:embed go_servicepermissions.tpl
 	servicePermissionsTpl string
-	//go:embed go_mock_client.tpl
-	mockClientTpl string
 	//go:embed go_client.tpl
 	clientTpl string
 	//go:embed python_client.tpl
@@ -67,11 +65,6 @@ func main() {
 	}
 
 	err = writeTemplate("../go/client/client.go", clientTpl, svcs)
-	if err != nil {
-		panic(err)
-	}
-
-	err = writeTemplate("../go/tests/mock_clients.go", mockClientTpl, svcs)
 	if err != nil {
 		panic(err)
 	}
