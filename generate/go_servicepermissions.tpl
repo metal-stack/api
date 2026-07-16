@@ -2,6 +2,7 @@
 package permissions
 
 import (
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"connectrpc.com/connect"
 )
 
@@ -18,51 +19,51 @@ func GetServicePermissions() *ServicePermissions {
 		Roles:      Roles{
 			Admin:   Admin{
 				{{- range $role, $methods := .Roles.Admin }}
-					"{{ $role }}": []string{
-						{{- range $method := $methods }}
-							"{{ $method }}",
+					apiv2.AdminRole_{{ $role }}: map[string]struct{}{
+						{{- range $method,$v := $methods }}
+							"{{ $method }}":{{ $v }},
 						{{- end }}
 					},
 				{{- end }}
 			},
 			Infra:   Infra{
 				{{- range $role, $methods := .Roles.Infra }}
-					"{{ $role }}": []string{
-						{{- range $method := $methods }}
-							"{{ $method }}",
+					apiv2.InfraRole_{{ $role }}: map[string]struct{}{
+						{{- range $method,$v := $methods }}
+							"{{ $method }}":{{ $v }},
 						{{- end }}
 					},
 				{{- end }}
 			},
 			Machine:   Machine{
 				{{- range $role, $methods := .Roles.Machine }}
-					"{{ $role }}": []string{
-						{{- range $method := $methods }}
-							"{{ $method }}",
+					apiv2.MachineRole_{{ $role }}: map[string]struct{}{
+						{{- range $method,$v := $methods }}
+							"{{ $method }}":{{ $v }},
 						{{- end }}
 					},
 				{{- end }}
 			},
 			Tenant:  Tenant{
 				{{- range $role, $methods := .Roles.Tenant }}
-					"{{ $role }}": []string{
-						{{- range $method := $methods }}
-							"{{ $method }}",
+					apiv2.TenantRole_{{ $role }}: map[string]struct{}{
+						{{- range $method,$v := $methods }}
+							"{{ $method }}":{{ $v }},
 						{{- end }}
 					},
 				{{- end }}
 			},
 			Project: Project{
 				{{- range $role, $methods := .Roles.Project }}
-					"{{ $role }}": []string{
-						{{- range $method := $methods }}
-							"{{ $method }}",
+					apiv2.ProjectRole_{{ $role }}: map[string]struct{}{
+						{{- range $method,$v := $methods }}
+							"{{ $method }}":{{ $v }},
 						{{- end }}
 					},
 				{{- end }}
 			},
 		},
-		Methods:    map[string]bool{
+		Methods:    map[string]struct{}{
 {{- range $key, $value := .Methods }}
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
