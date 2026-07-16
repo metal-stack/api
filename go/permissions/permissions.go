@@ -2,6 +2,8 @@ package permissions
 
 import (
 	_ "embed"
+
+	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 )
 
 type (
@@ -13,16 +15,16 @@ type (
 		Services   []string   `json:"services,omitempty"`
 	}
 
-	Methods map[string]bool
+	Methods map[string]struct{}
 
 	Chargeable map[string]bool
 	Auditable  map[string]bool
 
-	Admin   map[string][]string
-	Infra   map[string][]string
-	Machine map[string][]string
-	Tenant  map[string][]string
-	Project map[string][]string
+	Admin   map[apiv2.AdminRole]Methods
+	Infra   map[apiv2.InfraRole]Methods
+	Machine map[apiv2.MachineRole]Methods
+	Tenant  map[apiv2.TenantRole]Methods
+	Project map[apiv2.ProjectRole]Methods
 
 	// Roles
 	Roles struct {
