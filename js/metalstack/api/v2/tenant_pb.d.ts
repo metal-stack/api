@@ -624,7 +624,14 @@ export declare const TenantServiceLeaveResponseSchema: GenMessage<TenantServiceL
  *
  * @generated from message metalstack.api.v2.TenantServiceRemoveMemberResponse
  */
-export type TenantServiceRemoveMemberResponse = Message<"metalstack.api.v2.TenantServiceRemoveMemberResponse"> & {};
+export type TenantServiceRemoveMemberResponse = Message<"metalstack.api.v2.TenantServiceRemoveMemberResponse"> & {
+    /**
+     * TenantMember is the removed tenant member
+     *
+     * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
+     */
+    tenantMember?: TenantMember | undefined;
+};
 /**
  * Describes the message metalstack.api.v2.TenantServiceRemoveMemberResponse.
  * Use `create(TenantServiceRemoveMemberResponseSchema)` to create a new message.
@@ -707,6 +714,54 @@ export type TenantServiceInviteDeleteResponse = Message<"metalstack.api.v2.Tenan
  * Use `create(TenantServiceInviteDeleteResponseSchema)` to create a new message.
  */
 export declare const TenantServiceInviteDeleteResponseSchema: GenMessage<TenantServiceInviteDeleteResponse>;
+/**
+ * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+ *
+ * @generated from message metalstack.api.v2.TenantServiceAddMemberRequest
+ */
+export type TenantServiceAddMemberRequest = Message<"metalstack.api.v2.TenantServiceAddMemberRequest"> & {
+    /**
+     * Login of the tenant to which the member will be added
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * Login of the member to add
+     *
+     * @generated from field: string member = 2;
+     */
+    member: string;
+    /**
+     * Role to assign to the new member
+     *
+     * @generated from field: metalstack.api.v2.TenantRole role = 3;
+     */
+    role: TenantRole;
+};
+/**
+ * Describes the message metalstack.api.v2.TenantServiceAddMemberRequest.
+ * Use `create(TenantServiceAddMemberRequestSchema)` to create a new message.
+ */
+export declare const TenantServiceAddMemberRequestSchema: GenMessage<TenantServiceAddMemberRequest>;
+/**
+ * TenantServiceAddMemberResponse is the response payload for the add member request
+ *
+ * @generated from message metalstack.api.v2.TenantServiceAddMemberResponse
+ */
+export type TenantServiceAddMemberResponse = Message<"metalstack.api.v2.TenantServiceAddMemberResponse"> & {
+    /**
+     * TenantMember is the added tenant member
+     *
+     * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
+     */
+    tenantMember?: TenantMember | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.TenantServiceAddMemberResponse.
+ * Use `create(TenantServiceAddMemberResponseSchema)` to create a new message.
+ */
+export declare const TenantServiceAddMemberResponseSchema: GenMessage<TenantServiceAddMemberResponse>;
 /**
  * TenantServiceUpdateMemberRequest is used to update a member from a tenant
  *
@@ -820,6 +875,16 @@ export declare const TenantService: GenService<{
         methodKind: "unary";
         input: typeof TenantServiceLeaveRequestSchema;
         output: typeof TenantServiceLeaveResponseSchema;
+    };
+    /**
+     * AddMember adds a member to a tenant
+     *
+     * @generated from rpc metalstack.api.v2.TenantService.AddMember
+     */
+    addMember: {
+        methodKind: "unary";
+        input: typeof TenantServiceAddMemberRequestSchema;
+        output: typeof TenantServiceAddMemberResponseSchema;
     };
     /**
      * RemoveMember removes a member from a tenant

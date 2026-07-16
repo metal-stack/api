@@ -217,8 +217,10 @@ class TenantServiceLeaveResponse(_message.Message):
     def __init__(self) -> None: ...
 
 class TenantServiceRemoveMemberResponse(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("tenant_member",)
+    TENANT_MEMBER_FIELD_NUMBER: _ClassVar[int]
+    tenant_member: TenantMember
+    def __init__(self, tenant_member: _Optional[_Union[TenantMember, _Mapping]] = ...) -> None: ...
 
 class TenantServiceInviteAcceptRequest(_message.Message):
     __slots__ = ("secret",)
@@ -245,6 +247,22 @@ class TenantServiceInviteDeleteRequest(_message.Message):
 class TenantServiceInviteDeleteResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
+
+class TenantServiceAddMemberRequest(_message.Message):
+    __slots__ = ("login", "member", "role")
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    ROLE_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    member: str
+    role: _common_pb2.TenantRole
+    def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ...) -> None: ...
+
+class TenantServiceAddMemberResponse(_message.Message):
+    __slots__ = ("tenant_member",)
+    TENANT_MEMBER_FIELD_NUMBER: _ClassVar[int]
+    tenant_member: TenantMember
+    def __init__(self, tenant_member: _Optional[_Union[TenantMember, _Mapping]] = ...) -> None: ...
 
 class TenantServiceUpdateMemberRequest(_message.Message):
     __slots__ = ("login", "member", "role")

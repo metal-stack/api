@@ -204,6 +204,22 @@ class ProjectServiceLeaveResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
 
+class ProjectServiceAddMemberRequest(_message.Message):
+    __slots__ = ("project", "member", "role")
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    ROLE_FIELD_NUMBER: _ClassVar[int]
+    project: str
+    member: str
+    role: _common_pb2.ProjectRole
+    def __init__(self, project: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ...) -> None: ...
+
+class ProjectServiceAddMemberResponse(_message.Message):
+    __slots__ = ("project_member",)
+    PROJECT_MEMBER_FIELD_NUMBER: _ClassVar[int]
+    project_member: _common_pb2.ProjectRole
+    def __init__(self, project_member: _Optional[_Union[_common_pb2.ProjectRole, str]] = ...) -> None: ...
+
 class ProjectServiceRemoveMemberRequest(_message.Message):
     __slots__ = ("project", "member")
     PROJECT_FIELD_NUMBER: _ClassVar[int]

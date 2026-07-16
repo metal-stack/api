@@ -46,6 +46,12 @@ service TenantService {
     option (auditing) = AUDITING_INCLUDED;
   }
 
+  // AddMember adds a member to a tenant
+  rpc AddMember(TenantServiceAddMemberRequest) returns (TenantServiceAddMemberResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_INCLUDED;
+  }
   // RemoveMember removes a member from a tenant
   rpc RemoveMember(TenantServiceRemoveMemberRequest) returns (TenantServiceRemoveMemberResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
@@ -291,7 +297,10 @@ message TenantServiceLeaveRequest {
 message TenantServiceLeaveResponse {}
 
 // TenantServiceRemoveMemberResponse is the response payload to a remove member request
-message TenantServiceRemoveMemberResponse {}
+message TenantServiceRemoveMemberResponse {
+  // TenantMember is the removed tenant member
+  TenantMember tenant_member = 1;
+}
 
 // TenantServiceInviteAcceptRequest is the request payload to a accept invite request
 message TenantServiceInviteAcceptRequest {
@@ -317,6 +326,22 @@ message TenantServiceInviteDeleteRequest {
 
 // TenantServiceInviteDeleteResponse is the response payload of a delete invite request
 message TenantServiceInviteDeleteResponse {}
+
+// TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+message TenantServiceAddMemberRequest {
+  // Login of the tenant to which the member will be added
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Login of the member to add
+  string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Role to assign to the new member
+  TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
+}
+
+// TenantServiceAddMemberResponse is the response payload for the add member request
+message TenantServiceAddMemberResponse {
+  // TenantMember is the added tenant member
+  TenantMember tenant_member = 1;
+}
 
 // TenantServiceUpdateMemberRequest is used to update a member from a tenant
 message TenantServiceUpdateMemberRequest {

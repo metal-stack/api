@@ -55,8 +55,10 @@ class TenantServiceAddMemberRequest(_message.Message):
     def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ...) -> None: ...
 
 class TenantServiceAddMemberResponse(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("tenant_member",)
+    TENANT_MEMBER_FIELD_NUMBER: _ClassVar[int]
+    tenant_member: _tenant_pb2.TenantMember
+    def __init__(self, tenant_member: _Optional[_Union[_tenant_pb2.TenantMember, _Mapping]] = ...) -> None: ...
 
 class TenantServiceRemoveMemberRequest(_message.Message):
     __slots__ = ("tenant", "member")
@@ -67,5 +69,7 @@ class TenantServiceRemoveMemberRequest(_message.Message):
     def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
 
 class TenantServiceRemoveMemberResponse(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
+    __slots__ = ("tenant_member",)
+    TENANT_MEMBER_FIELD_NUMBER: _ClassVar[int]
+    tenant_member: _tenant_pb2.TenantMember
+    def __init__(self, tenant_member: _Optional[_Union[_tenant_pb2.TenantMember, _Mapping]] = ...) -> None: ...

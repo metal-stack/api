@@ -36,6 +36,9 @@ class TenantService(Protocol):
     async def leave(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def add_member(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
     async def remove_member(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
@@ -122,6 +125,16 @@ class TenantServiceASGIApplication(ConnectASGIApplication[TenantService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.leave,
+                ),
+                "/metalstack.api.v2.TenantService/AddMember": Endpoint.unary(
+                    method=MethodInfo(
+                        name="AddMember",
+                        service_name="metalstack.api.v2.TenantService",
+                        input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberRequest,
+                        output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.add_member,
                 ),
                 "/metalstack.api.v2.TenantService/RemoveMember": Endpoint.unary(
                     method=MethodInfo(
@@ -327,6 +340,26 @@ class TenantServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def add_member(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="AddMember",
+                service_name="metalstack.api.v2.TenantService",
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
     async def remove_member(
         self,
         request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest,
@@ -484,6 +517,8 @@ class TenantServiceSync(Protocol):
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def leave(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def add_member(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def remove_member(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceRemoveMemberResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def update_member(self, request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberRequest, ctx: RequestContext) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceUpdateMemberResponse:
@@ -563,6 +598,16 @@ class TenantServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.leave,
+                ),
+                "/metalstack.api.v2.TenantService/AddMember": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="AddMember",
+                        service_name="metalstack.api.v2.TenantService",
+                        input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberRequest,
+                        output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.add_member,
                 ),
                 "/metalstack.api.v2.TenantService/RemoveMember": EndpointSync.unary(
                     method=MethodInfo(
@@ -762,6 +807,26 @@ class TenantServiceClientSync(ConnectClientSync):
                 service_name="metalstack.api.v2.TenantService",
                 input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveRequest,
                 output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceLeaveResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def add_member(
+        self,
+        request: metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="AddMember",
+                service_name="metalstack.api.v2.TenantService",
+                input=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberRequest,
+                output=metalstack_dot_api_dot_v2_dot_tenant__pb2.TenantServiceAddMemberResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

@@ -1654,6 +1654,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.ProjectServiceAddMemberRequest"><span class="badge">M</span>ProjectServiceAddMemberRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.ProjectServiceAddMemberResponse"><span class="badge">M</span>ProjectServiceAddMemberResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.ProjectServiceCreateRequest"><span class="badge">M</span>ProjectServiceCreateRequest</a>
                 </li>
               
@@ -2225,6 +2233,14 @@
               
                 <li>
                   <a href="#metalstack.api.v2.TenantQuery"><span class="badge">M</span>TenantQuery</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TenantServiceAddMemberRequest"><span class="badge">M</span>TenantServiceAddMemberRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TenantServiceAddMemberResponse"><span class="badge">M</span>TenantServiceAddMemberResponse</a>
                 </li>
               
                 <li>
@@ -14518,6 +14534,68 @@ Inherited memberships are not included in member lists for users with guest perm
 
         
       
+        <h3 id="metalstack.api.v2.ProjectServiceAddMemberRequest">ProjectServiceAddMemberRequest</h3>
+        <p>ProjectServiceAddMemberRequest is the request payload for adding a member to a project</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Project is the uuid of the project </p></td>
+                </tr>
+              
+                <tr>
+                  <td>member</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the member to add </p></td>
+                </tr>
+              
+                <tr>
+                  <td>role</td>
+                  <td><a href="#metalstack.api.v2.ProjectRole">ProjectRole</a></td>
+                  <td></td>
+                  <td><p>Role to assign to the new member </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.ProjectServiceAddMemberResponse">ProjectServiceAddMemberResponse</h3>
+        <p>ProjectServiceAddMemberResponse is the response payload for the add member request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project_member</td>
+                  <td><a href="#metalstack.api.v2.ProjectRole">ProjectRole</a></td>
+                  <td></td>
+                  <td><p>ProjectRole is the added project member </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.ProjectServiceCreateRequest">ProjectServiceCreateRequest</h3>
         <p>ProjectServiceCreateRequest is the request payload to Create a project</p>
 
@@ -15260,6 +15338,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
                 <td><a href="#metalstack.api.v2.ProjectServiceLeaveRequest">ProjectServiceLeaveRequest</a></td>
                 <td><a href="#metalstack.api.v2.ProjectServiceLeaveResponse">ProjectServiceLeaveResponse</a></td>
                 <td><p>Leave project</p></td>
+              </tr>
+            
+              <tr>
+                <td>AddMember</td>
+                <td><a href="#metalstack.api.v2.ProjectServiceAddMemberRequest">ProjectServiceAddMemberRequest</a></td>
+                <td><a href="#metalstack.api.v2.ProjectServiceAddMemberResponse">ProjectServiceAddMemberResponse</a></td>
+                <td><p>AddMember adds a user to a project</p></td>
               </tr>
             
               <tr>
@@ -18715,6 +18800,68 @@ Will return tasks from all queues if not specified </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.TenantServiceAddMemberRequest">TenantServiceAddMemberRequest</h3>
+        <p>TenantServiceAddMemberRequest is the request payload for adding a member to a tenant</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant to which the member will be added </p></td>
+                </tr>
+              
+                <tr>
+                  <td>member</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the member to add </p></td>
+                </tr>
+              
+                <tr>
+                  <td>role</td>
+                  <td><a href="#metalstack.api.v2.TenantRole">TenantRole</a></td>
+                  <td></td>
+                  <td><p>Role to assign to the new member </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.TenantServiceAddMemberResponse">TenantServiceAddMemberResponse</h3>
+        <p>TenantServiceAddMemberResponse is the response payload for the add member request</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant_member</td>
+                  <td><a href="#metalstack.api.v2.TenantMember">TenantMember</a></td>
+                  <td></td>
+                  <td><p>TenantMember is the added tenant member </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.TenantServiceCreateRequest">TenantServiceCreateRequest</h3>
         <p>TenantServiceCreateRequest is the request payload of the tenant create request</p>
 
@@ -19254,6 +19401,23 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
         <p>TenantServiceRemoveMemberResponse is the response payload to a remove member request</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant_member</td>
+                  <td><a href="#metalstack.api.v2.TenantMember">TenantMember</a></td>
+                  <td></td>
+                  <td><p>TenantMember is the removed tenant member </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -19466,6 +19630,13 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
               </tr>
             
               <tr>
+                <td>AddMember</td>
+                <td><a href="#metalstack.api.v2.TenantServiceAddMemberRequest">TenantServiceAddMemberRequest</a></td>
+                <td><a href="#metalstack.api.v2.TenantServiceAddMemberResponse">TenantServiceAddMemberResponse</a></td>
+                <td><p>AddMember adds a member to a tenant</p></td>
+              </tr>
+            
+              <tr>
                 <td>RemoveMember</td>
                 <td><a href="#metalstack.api.v2.TenantServiceRemoveMemberRequest">TenantServiceRemoveMemberRequest</a></td>
                 <td><a href="#metalstack.api.v2.TenantServiceRemoveMemberResponse">TenantServiceRemoveMemberResponse</a></td>
@@ -19568,6 +19739,23 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
         <p>TenantServiceAddMemberResponse is the response payload for the add member request</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant_member</td>
+                  <td><a href="#metalstack.api.v2.TenantMember">metalstack.api.v2.TenantMember</a></td>
+                  <td></td>
+                  <td><p>TenantMember is the added tenant member </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -19737,6 +19925,23 @@ console.metalstack.cloud/invite/&lt;secret&gt; </p></td>
         <p>TenantServiceRemoveMemberResponse is the response payload for the remove member request</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant_member</td>
+                  <td><a href="#metalstack.api.v2.TenantMember">metalstack.api.v2.TenantMember</a></td>
+                  <td></td>
+                  <td><p>TenantMember is the removed tenant member </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       

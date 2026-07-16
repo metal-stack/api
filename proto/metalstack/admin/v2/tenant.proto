@@ -77,7 +77,10 @@ message TenantServiceAddMemberRequest {
 }
 
 // TenantServiceAddMemberResponse is the response payload for the add member request
-message TenantServiceAddMemberResponse {}
+message TenantServiceAddMemberResponse {
+  // TenantMember is the added tenant member
+  metalstack.api.v2.TenantMember tenant_member = 1;
+}
 
 // TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant
 message TenantServiceRemoveMemberRequest {
@@ -88,4 +91,7 @@ message TenantServiceRemoveMemberRequest {
 }
 
 // TenantServiceRemoveMemberResponse is the response payload for the remove member request
-message TenantServiceRemoveMemberResponse {}
+message TenantServiceRemoveMemberResponse {
+  // TenantMember is the removed tenant member
+  metalstack.api.v2.TenantMember tenant_member = 1;
+}

@@ -43,6 +43,12 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_VIEWER;
     option (auditing) = AUDITING_INCLUDED;
   }
+
+  // AddMember adds a user to a project
+  rpc AddMember(ProjectServiceAddMemberRequest) returns (ProjectServiceAddMemberResponse) {
+    option (project_roles) = PROJECT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
   // RemoveMember removes a user from a project
   rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -53,6 +59,7 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
+
   // Invite a user to a project
   rpc Invite(ProjectServiceInviteRequest) returns (ProjectServiceInviteResponse) {
     option (project_roles) = PROJECT_ROLE_OWNER;
@@ -277,6 +284,22 @@ message ProjectServiceLeaveRequest {
 
 // ProjectServiceLeaveResponse is the response payload to a leave project request
 message ProjectServiceLeaveResponse {}
+
+// ProjectServiceAddMemberRequest is the request payload for adding a member to a project
+message ProjectServiceAddMemberRequest {
+  // Project is the uuid of the project
+  string project = 1 [(buf.validate.field).string.uuid = true];
+  // Login of the member to add
+  string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Role to assign to the new member
+  ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
+}
+
+// ProjectServiceAddMemberResponse is the response payload for the add member request
+message ProjectServiceAddMemberResponse {
+  // ProjectRole is the added project member
+  ProjectRole project_member = 1;
+}
 
 // ProjectServiceRemoveMemberRequest is used to remove a member from a project
 message ProjectServiceRemoveMemberRequest {

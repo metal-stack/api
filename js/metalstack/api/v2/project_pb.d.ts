@@ -588,6 +588,54 @@ export type ProjectServiceLeaveResponse = Message<"metalstack.api.v2.ProjectServ
  */
 export declare const ProjectServiceLeaveResponseSchema: GenMessage<ProjectServiceLeaveResponse>;
 /**
+ * ProjectServiceAddMemberRequest is the request payload for adding a member to a project
+ *
+ * @generated from message metalstack.api.v2.ProjectServiceAddMemberRequest
+ */
+export type ProjectServiceAddMemberRequest = Message<"metalstack.api.v2.ProjectServiceAddMemberRequest"> & {
+    /**
+     * Project is the uuid of the project
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    /**
+     * Login of the member to add
+     *
+     * @generated from field: string member = 2;
+     */
+    member: string;
+    /**
+     * Role to assign to the new member
+     *
+     * @generated from field: metalstack.api.v2.ProjectRole role = 3;
+     */
+    role: ProjectRole;
+};
+/**
+ * Describes the message metalstack.api.v2.ProjectServiceAddMemberRequest.
+ * Use `create(ProjectServiceAddMemberRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceAddMemberRequestSchema: GenMessage<ProjectServiceAddMemberRequest>;
+/**
+ * ProjectServiceAddMemberResponse is the response payload for the add member request
+ *
+ * @generated from message metalstack.api.v2.ProjectServiceAddMemberResponse
+ */
+export type ProjectServiceAddMemberResponse = Message<"metalstack.api.v2.ProjectServiceAddMemberResponse"> & {
+    /**
+     * ProjectRole is the added project member
+     *
+     * @generated from field: metalstack.api.v2.ProjectRole project_member = 1;
+     */
+    projectMember: ProjectRole;
+};
+/**
+ * Describes the message metalstack.api.v2.ProjectServiceAddMemberResponse.
+ * Use `create(ProjectServiceAddMemberResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceAddMemberResponseSchema: GenMessage<ProjectServiceAddMemberResponse>;
+/**
  * ProjectServiceRemoveMemberRequest is used to remove a member from a project
  *
  * @generated from message metalstack.api.v2.ProjectServiceRemoveMemberRequest
@@ -812,6 +860,16 @@ export declare const ProjectService: GenService<{
         methodKind: "unary";
         input: typeof ProjectServiceLeaveRequestSchema;
         output: typeof ProjectServiceLeaveResponseSchema;
+    };
+    /**
+     * AddMember adds a user to a project
+     *
+     * @generated from rpc metalstack.api.v2.ProjectService.AddMember
+     */
+    addMember: {
+        methodKind: "unary";
+        input: typeof ProjectServiceAddMemberRequestSchema;
+        output: typeof ProjectServiceAddMemberResponseSchema;
     };
     /**
      * RemoveMember removes a user from a project
