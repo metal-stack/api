@@ -311,11 +311,12 @@ class MachineServiceGetBMCResponse(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., bmc: _Optional[_Union[MachineBMCReport, _Mapping]] = ...) -> None: ...
 
 class Machine(_message.Message):
-    __slots__ = ("uuid", "meta", "partition", "rack", "size", "hardware", "allocation", "status", "recent_provisioning_events")
+    __slots__ = ("uuid", "meta", "partition", "rack", "room", "size", "hardware", "allocation", "status", "recent_provisioning_events")
     UUID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
+    ROOM_FIELD_NUMBER: _ClassVar[int]
     SIZE_FIELD_NUMBER: _ClassVar[int]
     HARDWARE_FIELD_NUMBER: _ClassVar[int]
     ALLOCATION_FIELD_NUMBER: _ClassVar[int]
@@ -325,12 +326,13 @@ class Machine(_message.Message):
     meta: _common_pb2.Meta
     partition: _partition_pb2.Partition
     rack: str
+    room: str
     size: _size_pb2.Size
     hardware: MachineHardware
     allocation: MachineAllocation
     status: MachineStatus
     recent_provisioning_events: MachineRecentProvisioningEvents
-    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ..., rack: _Optional[str] = ..., size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardware, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocation, _Mapping]] = ..., status: _Optional[_Union[MachineStatus, _Mapping]] = ..., recent_provisioning_events: _Optional[_Union[MachineRecentProvisioningEvents, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., partition: _Optional[_Union[_partition_pb2.Partition, _Mapping]] = ..., rack: _Optional[str] = ..., room: _Optional[str] = ..., size: _Optional[_Union[_size_pb2.Size, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardware, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocation, _Mapping]] = ..., status: _Optional[_Union[MachineStatus, _Mapping]] = ..., recent_provisioning_events: _Optional[_Union[MachineRecentProvisioningEvents, _Mapping]] = ...) -> None: ...
 
 class MachineStatus(_message.Message):
     __slots__ = ("condition", "led_state", "liveliness", "metal_hammer_version")
@@ -646,12 +648,13 @@ class MachineVPN(_message.Message):
     def __init__(self, control_plane_address: _Optional[str] = ..., auth_key: _Optional[str] = ..., connected: _Optional[bool] = ..., ips: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class MachineQuery(_message.Message):
-    __slots__ = ("uuid", "name", "partition", "size", "rack", "labels", "allocation", "network", "nic", "disk", "bmc", "fru", "hardware", "state", "waiting", "preallocated", "not_allocated")
+    __slots__ = ("uuid", "name", "partition", "size", "rack", "room", "labels", "allocation", "network", "nic", "disk", "bmc", "fru", "hardware", "state", "waiting", "preallocated", "not_allocated")
     UUID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
     SIZE_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
+    ROOM_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     ALLOCATION_FIELD_NUMBER: _ClassVar[int]
     NETWORK_FIELD_NUMBER: _ClassVar[int]
@@ -669,6 +672,7 @@ class MachineQuery(_message.Message):
     partition: str
     size: str
     rack: str
+    room: str
     labels: _common_pb2.Labels
     allocation: MachineAllocationQuery
     network: MachineNetworkQuery
@@ -681,7 +685,7 @@ class MachineQuery(_message.Message):
     waiting: bool
     preallocated: bool
     not_allocated: bool
-    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., bmc: _Optional[_Union[MachineBMCQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ..., waiting: _Optional[bool] = ..., preallocated: _Optional[bool] = ..., not_allocated: _Optional[bool] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., name: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., rack: _Optional[str] = ..., room: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., allocation: _Optional[_Union[MachineAllocationQuery, _Mapping]] = ..., network: _Optional[_Union[MachineNetworkQuery, _Mapping]] = ..., nic: _Optional[_Union[MachineNicQuery, _Mapping]] = ..., disk: _Optional[_Union[MachineDiskQuery, _Mapping]] = ..., bmc: _Optional[_Union[MachineBMCQuery, _Mapping]] = ..., fru: _Optional[_Union[MachineFRUQuery, _Mapping]] = ..., hardware: _Optional[_Union[MachineHardwareQuery, _Mapping]] = ..., state: _Optional[_Union[MachineState, str]] = ..., waiting: _Optional[bool] = ..., preallocated: _Optional[bool] = ..., not_allocated: _Optional[bool] = ...) -> None: ...
 
 class MachineAllocationQuery(_message.Message):
     __slots__ = ("uuid", "name", "project", "image", "filesystem_layout", "hostname", "allocation_type", "labels", "vpn")

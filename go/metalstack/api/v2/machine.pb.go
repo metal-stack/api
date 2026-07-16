@@ -1594,16 +1594,18 @@ type Machine struct {
 	Partition *Partition `protobuf:"bytes,3,opt,name=partition,proto3" json:"partition,omitempty"`
 	// Rack where this machine is located
 	Rack string `protobuf:"bytes,4,opt,name=rack,proto3" json:"rack,omitempty"`
+	// Room where this machine is located
+	Room string `protobuf:"bytes,5,opt,name=room,proto3" json:"room,omitempty"`
 	// Size of this machine
-	Size *Size `protobuf:"bytes,5,opt,name=size,proto3" json:"size,omitempty"`
+	Size *Size `protobuf:"bytes,6,opt,name=size,proto3" json:"size,omitempty"`
 	// Hardware specs of this machine
-	Hardware *MachineHardware `protobuf:"bytes,6,opt,name=hardware,proto3" json:"hardware,omitempty"`
+	Hardware *MachineHardware `protobuf:"bytes,7,opt,name=hardware,proto3" json:"hardware,omitempty"`
 	// Allocation details
-	Allocation *MachineAllocation `protobuf:"bytes,7,opt,name=allocation,proto3" json:"allocation,omitempty"`
+	Allocation *MachineAllocation `protobuf:"bytes,8,opt,name=allocation,proto3" json:"allocation,omitempty"`
 	// Status contains several status details related to this machine
-	Status *MachineStatus `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
+	Status *MachineStatus `protobuf:"bytes,9,opt,name=status,proto3" json:"status,omitempty"`
 	// MachineRecentProvisioningEvents contains the recent provisioning events
-	RecentProvisioningEvents *MachineRecentProvisioningEvents `protobuf:"bytes,9,opt,name=recent_provisioning_events,json=recentProvisioningEvents,proto3" json:"recent_provisioning_events,omitempty"`
+	RecentProvisioningEvents *MachineRecentProvisioningEvents `protobuf:"bytes,10,opt,name=recent_provisioning_events,json=recentProvisioningEvents,proto3" json:"recent_provisioning_events,omitempty"`
 	unknownFields            protoimpl.UnknownFields
 	sizeCache                protoimpl.SizeCache
 }
@@ -1662,6 +1664,13 @@ func (x *Machine) GetPartition() *Partition {
 func (x *Machine) GetRack() string {
 	if x != nil {
 		return x.Rack
+	}
+	return ""
+}
+
+func (x *Machine) GetRoom() string {
+	if x != nil {
+		return x.Room
 	}
 	return ""
 }
@@ -3577,33 +3586,35 @@ type MachineQuery struct {
 	Size *string `protobuf:"bytes,4,opt,name=size,proto3,oneof" json:"size,omitempty"`
 	// Rack of the machine to get
 	Rack *string `protobuf:"bytes,5,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
+	// Room of the machine to get
+	Room *string `protobuf:"bytes,6,opt,name=room,proto3,oneof" json:"room,omitempty"`
 	// Labels for which this machine should get filtered
-	Labels *Labels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
+	Labels *Labels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	// Allocation specific machine queries
-	Allocation *MachineAllocationQuery `protobuf:"bytes,7,opt,name=allocation,proto3,oneof" json:"allocation,omitempty"`
+	Allocation *MachineAllocationQuery `protobuf:"bytes,8,opt,name=allocation,proto3,oneof" json:"allocation,omitempty"`
 	// Network specific machine queries
-	Network *MachineNetworkQuery `protobuf:"bytes,8,opt,name=network,proto3,oneof" json:"network,omitempty"`
+	Network *MachineNetworkQuery `protobuf:"bytes,9,opt,name=network,proto3,oneof" json:"network,omitempty"`
 	// Nic specific machine queries
-	Nic *MachineNicQuery `protobuf:"bytes,9,opt,name=nic,proto3,oneof" json:"nic,omitempty"`
+	Nic *MachineNicQuery `protobuf:"bytes,10,opt,name=nic,proto3,oneof" json:"nic,omitempty"`
 	// Disk specific machine queries
-	Disk *MachineDiskQuery `protobuf:"bytes,10,opt,name=disk,proto3,oneof" json:"disk,omitempty"`
+	Disk *MachineDiskQuery `protobuf:"bytes,11,opt,name=disk,proto3,oneof" json:"disk,omitempty"`
 	// Bmc specific machine queries
-	Bmc *MachineBMCQuery `protobuf:"bytes,11,opt,name=bmc,proto3,oneof" json:"bmc,omitempty"`
+	Bmc *MachineBMCQuery `protobuf:"bytes,12,opt,name=bmc,proto3,oneof" json:"bmc,omitempty"`
 	// Fru specific machine queries
-	Fru *MachineFRUQuery `protobuf:"bytes,12,opt,name=fru,proto3,oneof" json:"fru,omitempty"`
+	Fru *MachineFRUQuery `protobuf:"bytes,13,opt,name=fru,proto3,oneof" json:"fru,omitempty"`
 	// Hardware specific machine query
-	Hardware *MachineHardwareQuery `protobuf:"bytes,13,opt,name=hardware,proto3,oneof" json:"hardware,omitempty"`
+	Hardware *MachineHardwareQuery `protobuf:"bytes,14,opt,name=hardware,proto3,oneof" json:"hardware,omitempty"`
 	// State this machine has
-	State *MachineState `protobuf:"varint,14,opt,name=state,proto3,enum=metalstack.api.v2.MachineState,oneof" json:"state,omitempty"`
+	State *MachineState `protobuf:"varint,15,opt,name=state,proto3,enum=metalstack.api.v2.MachineState,oneof" json:"state,omitempty"`
 	// Waiting if set to true, only waiting machines are returned.
 	// Only useful for admins.
-	Waiting *bool `protobuf:"varint,15,opt,name=waiting,proto3,oneof" json:"waiting,omitempty"`
+	Waiting *bool `protobuf:"varint,16,opt,name=waiting,proto3,oneof" json:"waiting,omitempty"`
 	// Preallocated if set to true, only machines which are preallocated are returned.
 	// Only useful for admins.
-	Preallocated *bool `protobuf:"varint,16,opt,name=preallocated,proto3,oneof" json:"preallocated,omitempty"`
+	Preallocated *bool `protobuf:"varint,17,opt,name=preallocated,proto3,oneof" json:"preallocated,omitempty"`
 	// NotAllocated if set to true, only machines which are not allocated are returned.
 	// Only useful for admins.
-	NotAllocated  *bool `protobuf:"varint,17,opt,name=not_allocated,json=notAllocated,proto3,oneof" json:"not_allocated,omitempty"`
+	NotAllocated  *bool `protobuf:"varint,18,opt,name=not_allocated,json=notAllocated,proto3,oneof" json:"not_allocated,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3669,6 +3680,13 @@ func (x *MachineQuery) GetSize() string {
 func (x *MachineQuery) GetRack() string {
 	if x != nil && x.Rack != nil {
 		return *x.Rack
+	}
+	return ""
+}
+
+func (x *MachineQuery) GetRoom() string {
+	if x != nil && x.Room != nil {
+		return *x.Room
 	}
 	return ""
 }
@@ -4628,19 +4646,21 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"s\n" +
 	"\x1cMachineServiceGetBMCResponse\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x125\n" +
-	"\x03bmc\x18\x02 \x01(\v2#.metalstack.api.v2.MachineBMCReportR\x03bmc\"\x8d\x04\n" +
+	"\x03bmc\x18\x02 \x01(\v2#.metalstack.api.v2.MachineBMCReportR\x03bmc\"\xab\x04\n" +
 	"\aMachine\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12+\n" +
 	"\x04meta\x18\x02 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12:\n" +
 	"\tpartition\x18\x03 \x01(\v2\x1c.metalstack.api.v2.PartitionR\tpartition\x12\x1c\n" +
-	"\x04rack\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x04rack\x12+\n" +
-	"\x04size\x18\x05 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\x12>\n" +
-	"\bhardware\x18\x06 \x01(\v2\".metalstack.api.v2.MachineHardwareR\bhardware\x12D\n" +
+	"\x04rack\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x04rack\x12\x1c\n" +
+	"\x04room\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x04room\x12+\n" +
+	"\x04size\x18\x06 \x01(\v2\x17.metalstack.api.v2.SizeR\x04size\x12>\n" +
+	"\bhardware\x18\a \x01(\v2\".metalstack.api.v2.MachineHardwareR\bhardware\x12D\n" +
 	"\n" +
-	"allocation\x18\a \x01(\v2$.metalstack.api.v2.MachineAllocationR\n" +
+	"allocation\x18\b \x01(\v2$.metalstack.api.v2.MachineAllocationR\n" +
 	"allocation\x128\n" +
-	"\x06status\x18\b \x01(\v2 .metalstack.api.v2.MachineStatusR\x06status\x12p\n" +
-	"\x1arecent_provisioning_events\x18\t \x01(\v22.metalstack.api.v2.MachineRecentProvisioningEventsR\x18recentProvisioningEvents\"\xa4\x02\n" +
+	"\x06status\x18\t \x01(\v2 .metalstack.api.v2.MachineStatusR\x06status\x12p\n" +
+	"\x1arecent_provisioning_events\x18\n" +
+	" \x01(\v22.metalstack.api.v2.MachineRecentProvisioningEventsR\x18recentProvisioningEvents\"\xa4\x02\n" +
 	"\rMachineStatus\x12A\n" +
 	"\tcondition\x18\x01 \x01(\v2#.metalstack.api.v2.MachineConditionR\tcondition\x12N\n" +
 	"\tled_state\x18\x02 \x01(\v21.metalstack.api.v2.MachineChassisIdentifyLEDStateR\bledState\x12N\n" +
@@ -4801,36 +4821,37 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x15control_plane_address\x18\x01 \x01(\tR\x13controlPlaneAddress\x12\x19\n" +
 	"\bauth_key\x18\x02 \x01(\tR\aauthKey\x12\x1c\n" +
 	"\tconnected\x18\x03 \x01(\bR\tconnected\x12\x1e\n" +
-	"\x03ips\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\xc7\b\n" +
+	"\x03ips\x18\x04 \x03(\tB\f\xbaH\t\x92\x01\x06\xc0\xa4\xb3\xb1\x02\x01R\x03ips\"\xf7\b\n" +
 	"\fMachineQuery\x12!\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x04uuid\x88\x01\x01\x12$\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04name\x88\x01\x01\x12.\n" +
 	"\tpartition\x18\x03 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x02R\tpartition\x88\x01\x01\x12$\n" +
-	"\x04size\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x03R\x04size\x88\x01\x01\x12#\n" +
-	"\x04rack\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x04R\x04rack\x88\x01\x01\x126\n" +
-	"\x06labels\x18\x06 \x01(\v2\x19.metalstack.api.v2.LabelsH\x05R\x06labels\x88\x01\x01\x12N\n" +
+	"\x04size\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x03R\x04size\x88\x01\x01\x12$\n" +
+	"\x04rack\x18\x05 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x04R\x04rack\x88\x01\x01\x12$\n" +
+	"\x04room\x18\x06 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x05R\x04room\x88\x01\x01\x126\n" +
+	"\x06labels\x18\a \x01(\v2\x19.metalstack.api.v2.LabelsH\x06R\x06labels\x88\x01\x01\x12N\n" +
 	"\n" +
-	"allocation\x18\a \x01(\v2).metalstack.api.v2.MachineAllocationQueryH\x06R\n" +
+	"allocation\x18\b \x01(\v2).metalstack.api.v2.MachineAllocationQueryH\aR\n" +
 	"allocation\x88\x01\x01\x12E\n" +
-	"\anetwork\x18\b \x01(\v2&.metalstack.api.v2.MachineNetworkQueryH\aR\anetwork\x88\x01\x01\x129\n" +
-	"\x03nic\x18\t \x01(\v2\".metalstack.api.v2.MachineNicQueryH\bR\x03nic\x88\x01\x01\x12<\n" +
-	"\x04disk\x18\n" +
-	" \x01(\v2#.metalstack.api.v2.MachineDiskQueryH\tR\x04disk\x88\x01\x01\x129\n" +
-	"\x03bmc\x18\v \x01(\v2\".metalstack.api.v2.MachineBMCQueryH\n" +
-	"R\x03bmc\x88\x01\x01\x129\n" +
-	"\x03fru\x18\f \x01(\v2\".metalstack.api.v2.MachineFRUQueryH\vR\x03fru\x88\x01\x01\x12H\n" +
-	"\bhardware\x18\r \x01(\v2'.metalstack.api.v2.MachineHardwareQueryH\fR\bhardware\x88\x01\x01\x12:\n" +
-	"\x05state\x18\x0e \x01(\x0e2\x1f.metalstack.api.v2.MachineStateH\rR\x05state\x88\x01\x01\x12\x1d\n" +
-	"\awaiting\x18\x0f \x01(\bH\x0eR\awaiting\x88\x01\x01\x12'\n" +
-	"\fpreallocated\x18\x10 \x01(\bH\x0fR\fpreallocated\x88\x01\x01\x12(\n" +
-	"\rnot_allocated\x18\x11 \x01(\bH\x10R\fnotAllocated\x88\x01\x01B\a\n" +
+	"\anetwork\x18\t \x01(\v2&.metalstack.api.v2.MachineNetworkQueryH\bR\anetwork\x88\x01\x01\x129\n" +
+	"\x03nic\x18\n" +
+	" \x01(\v2\".metalstack.api.v2.MachineNicQueryH\tR\x03nic\x88\x01\x01\x12<\n" +
+	"\x04disk\x18\v \x01(\v2#.metalstack.api.v2.MachineDiskQueryH\n" +
+	"R\x04disk\x88\x01\x01\x129\n" +
+	"\x03bmc\x18\f \x01(\v2\".metalstack.api.v2.MachineBMCQueryH\vR\x03bmc\x88\x01\x01\x129\n" +
+	"\x03fru\x18\r \x01(\v2\".metalstack.api.v2.MachineFRUQueryH\fR\x03fru\x88\x01\x01\x12H\n" +
+	"\bhardware\x18\x0e \x01(\v2'.metalstack.api.v2.MachineHardwareQueryH\rR\bhardware\x88\x01\x01\x12:\n" +
+	"\x05state\x18\x0f \x01(\x0e2\x1f.metalstack.api.v2.MachineStateH\x0eR\x05state\x88\x01\x01\x12\x1d\n" +
+	"\awaiting\x18\x10 \x01(\bH\x0fR\awaiting\x88\x01\x01\x12'\n" +
+	"\fpreallocated\x18\x11 \x01(\bH\x10R\fpreallocated\x88\x01\x01\x12(\n" +
+	"\rnot_allocated\x18\x12 \x01(\bH\x11R\fnotAllocated\x88\x01\x01B\a\n" +
 	"\x05_uuidB\a\n" +
 	"\x05_nameB\f\n" +
 	"\n" +
 	"_partitionB\a\n" +
 	"\x05_sizeB\a\n" +
-	"\x05_rackB\t\n" +
+	"\x05_rackB\a\n" +
+	"\x05_roomB\t\n" +
 	"\a_labelsB\r\n" +
 	"\v_allocationB\n" +
 	"\n" +

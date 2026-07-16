@@ -22,32 +22,34 @@ message Switch {
   string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Rack ID if the switch resides in a rack.
   optional string rack = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Room ID if the switch resides in a room.
+  optional string room = 5 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Partition the switch belongs to.
-  string partition = 5 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  string partition = 6 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // ReplaceMode is used to mark a switch ready for replacement.
-  SwitchReplaceMode replace_mode = 6 [(buf.validate.field).enum.defined_only = true];
+  SwitchReplaceMode replace_mode = 7 [(buf.validate.field).enum.defined_only = true];
   // ManagementIp is the switch's IP for management access.
-  string management_ip = 7 [(buf.validate.field).string.ip = true];
+  string management_ip = 8 [(buf.validate.field).string.ip = true];
   // ManagementUser is the user name to use for management access.
-  optional string management_user = 8 [(buf.validate.field).string = {
+  optional string management_user = 9 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // ConsoleCommand is the command for accessing the switch's console.
-  optional string console_command = 9 [(buf.validate.field).string = {
+  optional string console_command = 10 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
   // Nics are the front panel ports of the switch.
-  repeated SwitchNic nics = 10;
+  repeated SwitchNic nics = 11;
   // SwitchOs is the OS running on the switch.
-  SwitchOS os = 11;
+  SwitchOS os = 12;
   // MachineConnections map machines to the nics they are connected to.
-  repeated MachineConnection machine_connections = 12;
+  repeated MachineConnection machine_connections = 13;
   // LastSync contains information about the last heartbeat of the switch.
-  SwitchSync last_sync = 13;
+  SwitchSync last_sync = 14;
   // LastSyncError contains information about the last unsuccessful heartbeat of the switch.
-  SwitchSync last_sync_error = 14;
+  SwitchSync last_sync_error = 15;
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.
@@ -134,10 +136,12 @@ message SwitchQuery {
   optional string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Rack of the switches to list.
   optional string rack = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Room ID if the switch resides in a room.
+  optional string room = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Switch OS specific queries.
-  optional SwitchOSQuery os = 4;
+  optional SwitchOSQuery os = 5;
   // ConnectedMachineID lists the switches which have the given machine id in the connected machines map.
-  optional string connected_machine_id = 5 [(buf.validate.field).string.uuid = true];
+  optional string connected_machine_id = 6 [(buf.validate.field).string.uuid = true];
 }
 
 // SwitchOSQuery holds OS specific query parameters.

@@ -491,33 +491,39 @@ export type Machine = Message<"metalstack.api.v2.Machine"> & {
      */
     rack: string;
     /**
+     * Room where this machine is located
+     *
+     * @generated from field: string room = 5;
+     */
+    room: string;
+    /**
      * Size of this machine
      *
-     * @generated from field: metalstack.api.v2.Size size = 5;
+     * @generated from field: metalstack.api.v2.Size size = 6;
      */
     size?: Size | undefined;
     /**
      * Hardware specs of this machine
      *
-     * @generated from field: metalstack.api.v2.MachineHardware hardware = 6;
+     * @generated from field: metalstack.api.v2.MachineHardware hardware = 7;
      */
     hardware?: MachineHardware | undefined;
     /**
      * Allocation details
      *
-     * @generated from field: metalstack.api.v2.MachineAllocation allocation = 7;
+     * @generated from field: metalstack.api.v2.MachineAllocation allocation = 8;
      */
     allocation?: MachineAllocation | undefined;
     /**
      * Status contains several status details related to this machine
      *
-     * @generated from field: metalstack.api.v2.MachineStatus status = 8;
+     * @generated from field: metalstack.api.v2.MachineStatus status = 9;
      */
     status?: MachineStatus | undefined;
     /**
      * MachineRecentProvisioningEvents contains the recent provisioning events
      *
-     * @generated from field: metalstack.api.v2.MachineRecentProvisioningEvents recent_provisioning_events = 9;
+     * @generated from field: metalstack.api.v2.MachineRecentProvisioningEvents recent_provisioning_events = 10;
      */
     recentProvisioningEvents?: MachineRecentProvisioningEvents | undefined;
 };
@@ -1518,78 +1524,84 @@ export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
      */
     rack?: string | undefined;
     /**
+     * Room of the machine to get
+     *
+     * @generated from field: optional string room = 6;
+     */
+    room?: string | undefined;
+    /**
      * Labels for which this machine should get filtered
      *
-     * @generated from field: optional metalstack.api.v2.Labels labels = 6;
+     * @generated from field: optional metalstack.api.v2.Labels labels = 7;
      */
     labels?: Labels | undefined;
     /**
      * Allocation specific machine queries
      *
-     * @generated from field: optional metalstack.api.v2.MachineAllocationQuery allocation = 7;
+     * @generated from field: optional metalstack.api.v2.MachineAllocationQuery allocation = 8;
      */
     allocation?: MachineAllocationQuery | undefined;
     /**
      * Network specific machine queries
      *
-     * @generated from field: optional metalstack.api.v2.MachineNetworkQuery network = 8;
+     * @generated from field: optional metalstack.api.v2.MachineNetworkQuery network = 9;
      */
     network?: MachineNetworkQuery | undefined;
     /**
      * Nic specific machine queries
      *
-     * @generated from field: optional metalstack.api.v2.MachineNicQuery nic = 9;
+     * @generated from field: optional metalstack.api.v2.MachineNicQuery nic = 10;
      */
     nic?: MachineNicQuery | undefined;
     /**
      * Disk specific machine queries
      *
-     * @generated from field: optional metalstack.api.v2.MachineDiskQuery disk = 10;
+     * @generated from field: optional metalstack.api.v2.MachineDiskQuery disk = 11;
      */
     disk?: MachineDiskQuery | undefined;
     /**
      * Bmc specific machine queries
      *
-     * @generated from field: optional metalstack.api.v2.MachineBMCQuery bmc = 11;
+     * @generated from field: optional metalstack.api.v2.MachineBMCQuery bmc = 12;
      */
     bmc?: MachineBMCQuery | undefined;
     /**
      * Fru specific machine queries
      *
-     * @generated from field: optional metalstack.api.v2.MachineFRUQuery fru = 12;
+     * @generated from field: optional metalstack.api.v2.MachineFRUQuery fru = 13;
      */
     fru?: MachineFRUQuery | undefined;
     /**
      * Hardware specific machine query
      *
-     * @generated from field: optional metalstack.api.v2.MachineHardwareQuery hardware = 13;
+     * @generated from field: optional metalstack.api.v2.MachineHardwareQuery hardware = 14;
      */
     hardware?: MachineHardwareQuery | undefined;
     /**
      * State this machine has
      *
-     * @generated from field: optional metalstack.api.v2.MachineState state = 14;
+     * @generated from field: optional metalstack.api.v2.MachineState state = 15;
      */
     state?: MachineState | undefined;
     /**
      * Waiting if set to true, only waiting machines are returned.
      * Only useful for admins.
      *
-     * @generated from field: optional bool waiting = 15;
+     * @generated from field: optional bool waiting = 16;
      */
     waiting?: boolean | undefined;
     /**
      * Preallocated if set to true, only machines which are preallocated are returned.
      * Only useful for admins.
      *
-     * @generated from field: optional bool preallocated = 16;
+     * @generated from field: optional bool preallocated = 17;
      */
     preallocated?: boolean | undefined;
     /**
      * NotAllocated if set to true, only machines which are not allocated are returned.
      * Only useful for admins.
      *
-     * @generated from field: optional bool not_allocated = 17;
+     * @generated from field: optional bool not_allocated = 18;
      */
     notAllocated?: boolean | undefined;
 };
