@@ -54,16 +54,22 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
      */
     project: string;
     /**
+     * Bla
+     *
+     * @generated from field: string bla = 8;
+     */
+    bla: string;
+    /**
      * Type of this ip
      *
-     * @generated from field: metalstack.api.v2.IPType type = 8;
+     * @generated from field: metalstack.api.v2.IPType type = 9;
      */
     type: IPType;
     /**
      * Namespace if specified this ip is from a namespaced network and can therefore overlap with others
      * Will be equal with project most of the time
      *
-     * @generated from field: optional string namespace = 9;
+     * @generated from field: optional string namespace = 10;
      */
     namespace?: string | undefined;
 };

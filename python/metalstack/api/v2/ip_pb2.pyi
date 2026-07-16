@@ -29,7 +29,7 @@ IP_ADDRESS_FAMILY_V4: IPAddressFamily
 IP_ADDRESS_FAMILY_V6: IPAddressFamily
 
 class IP(_message.Message):
-    __slots__ = ("uuid", "meta", "ip", "name", "description", "network", "project", "type", "namespace")
+    __slots__ = ("uuid", "meta", "ip", "name", "description", "network", "project", "bla", "type", "namespace")
     UUID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     IP_FIELD_NUMBER: _ClassVar[int]
@@ -37,6 +37,7 @@ class IP(_message.Message):
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     PROJECT_FIELD_NUMBER: _ClassVar[int]
+    BLA_FIELD_NUMBER: _ClassVar[int]
     TYPE_FIELD_NUMBER: _ClassVar[int]
     NAMESPACE_FIELD_NUMBER: _ClassVar[int]
     uuid: str
@@ -46,9 +47,10 @@ class IP(_message.Message):
     description: str
     network: str
     project: str
+    bla: str
     type: IPType
     namespace: str
-    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., ip: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., network: _Optional[str] = ..., project: _Optional[str] = ..., type: _Optional[_Union[IPType, str]] = ..., namespace: _Optional[str] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., ip: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., network: _Optional[str] = ..., project: _Optional[str] = ..., bla: _Optional[str] = ..., type: _Optional[_Union[IPType, str]] = ..., namespace: _Optional[str] = ...) -> None: ...
 
 class IPServiceGetRequest(_message.Message):
     __slots__ = ("ip", "project", "namespace")

@@ -78,11 +78,13 @@ message IP {
   string network = 6 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Project where this ip address belongs to
   string project = 7 [(buf.validate.field).string.uuid = true];
+  // Bla
+  string bla = 8;
   // Type of this ip
-  IPType type = 8 [(buf.validate.field).enum.defined_only = true];
+  IPType type = 9 [(buf.validate.field).enum.defined_only = true];
   // Namespace if specified this ip is from a namespaced network and can therefore overlap with others
   // Will be equal with project most of the time
-  optional string namespace = 9 [(buf.validate.field).string.uuid = true];
+  optional string namespace = 10 [(buf.validate.field).string.uuid = true];
 }
 
 // IPServiceGetRequest is the request payload for an IP get request
