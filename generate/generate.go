@@ -12,8 +12,7 @@ import (
 	"strings"
 
 	sprig "github.com/go-task/slim-sprig/v3"
-	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	v1 "github.com/metal-stack/api/go/metalstack/api/v2"
+	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"github.com/metal-stack/api/go/permissions"
 	"github.com/metal-stack/api/go/tests/protoparser"
 
@@ -150,68 +149,68 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 						auditable[methodName] = true
 						// Tenant
 						switch role := *methodOpt.IdentifierValue; role {
-						case v1.TenantRole_TENANT_ROLE_OWNER.String(), v1.TenantRole_TENANT_ROLE_EDITOR.String(), v1.TenantRole_TENANT_ROLE_VIEWER.String(), v1.TenantRole_TENANT_ROLE_GUEST.String():
-							apirole := apiv2.TenantRole(apiv2.TenantRole_value[role])
+						case v2.TenantRole_TENANT_ROLE_OWNER.String(), v2.TenantRole_TENANT_ROLE_EDITOR.String(), v2.TenantRole_TENANT_ROLE_VIEWER.String(), v2.TenantRole_TENANT_ROLE_GUEST.String():
+							apirole := v2.TenantRole(v2.TenantRole_value[role])
 							if methods := roles.Tenant[apirole]; methods == nil {
 								roles.Tenant[apirole] = permissions.Methods{}
 							}
 							roles.Tenant[apirole][methodName] = struct{}{}
 							visibility.Tenant[methodName] = true
-						case v1.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
+						case v2.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Project
-						case v1.ProjectRole_PROJECT_ROLE_OWNER.String(), v1.ProjectRole_PROJECT_ROLE_EDITOR.String(), v1.ProjectRole_PROJECT_ROLE_VIEWER.String():
-							apirole := apiv2.ProjectRole(apiv2.ProjectRole_value[role])
+						case v2.ProjectRole_PROJECT_ROLE_OWNER.String(), v2.ProjectRole_PROJECT_ROLE_EDITOR.String(), v2.ProjectRole_PROJECT_ROLE_VIEWER.String():
+							apirole := v2.ProjectRole(v2.ProjectRole_value[role])
 							if methods := roles.Project[apirole]; methods == nil {
 								roles.Project[apirole] = permissions.Methods{}
 							}
 							roles.Project[apirole][methodName] = struct{}{}
 							visibility.Project[methodName] = true
-						case v1.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
+						case v2.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Admin
-						case v1.AdminRole_ADMIN_ROLE_EDITOR.String(), v1.AdminRole_ADMIN_ROLE_VIEWER.String():
-							apirole := apiv2.AdminRole(apiv2.AdminRole_value[role])
+						case v2.AdminRole_ADMIN_ROLE_EDITOR.String(), v2.AdminRole_ADMIN_ROLE_VIEWER.String():
+							apirole := v2.AdminRole(v2.AdminRole_value[role])
 							if methods := roles.Admin[apirole]; methods == nil {
 								roles.Admin[apirole] = permissions.Methods{}
 							}
 							roles.Admin[apirole][methodName] = struct{}{}
 							visibility.Admin[methodName] = true
-						case v1.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
+						case v2.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
 							// noop
 						// Infra
-						case v1.InfraRole_INFRA_ROLE_EDITOR.String(), v1.InfraRole_INFRA_ROLE_VIEWER.String():
-							apirole := apiv2.InfraRole(apiv2.InfraRole_value[role])
+						case v2.InfraRole_INFRA_ROLE_EDITOR.String(), v2.InfraRole_INFRA_ROLE_VIEWER.String():
+							apirole := v2.InfraRole(v2.InfraRole_value[role])
 							if methods := roles.Infra[apirole]; methods == nil {
 								roles.Infra[apirole] = permissions.Methods{}
 							}
 							roles.Infra[apirole][methodName] = struct{}{}
 							visibility.Infra[methodName] = true
-						case v1.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
+						case v2.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
 							// noop
 						// Machine
-						case v1.MachineRole_MACHINE_ROLE_EDITOR.String(), v1.MachineRole_MACHINE_ROLE_VIEWER.String():
-							apirole := apiv2.MachineRole(apiv2.MachineRole_value[role])
+						case v2.MachineRole_MACHINE_ROLE_EDITOR.String(), v2.MachineRole_MACHINE_ROLE_VIEWER.String():
+							apirole := v2.MachineRole(v2.MachineRole_value[role])
 							if methods := roles.Machine[apirole]; methods == nil {
 								roles.Machine[apirole] = permissions.Methods{}
 							}
 							roles.Machine[apirole][methodName] = struct{}{}
 							visibility.Machine[methodName] = true
-						case v1.MachineRole_MACHINE_ROLE_UNSPECIFIED.String():
+						case v2.MachineRole_MACHINE_ROLE_UNSPECIFIED.String():
 							// noop
 						// Visibility
-						case v1.Visibility_VISIBILITY_PUBLIC.String():
+						case v2.Visibility_VISIBILITY_PUBLIC.String():
 							visibility.Public[methodName] = true
-						case v1.Visibility_VISIBILITY_SELF.String():
+						case v2.Visibility_VISIBILITY_SELF.String():
 							visibility.Self[methodName] = true
-						case v1.Visibility_VISIBILITY_UNSPECIFIED.String():
+						case v2.Visibility_VISIBILITY_UNSPECIFIED.String():
 							// noop
 						// Auditable
-						case v1.Auditing_AUDITING_EXCLUDED.String():
+						case v2.Auditing_AUDITING_EXCLUDED.String():
 							auditable[methodName] = false
-						case v1.Auditing_AUDITING_INCLUDED.String():
+						case v2.Auditing_AUDITING_INCLUDED.String():
 							auditable[methodName] = true
-						case v1.Auditing_AUDITING_UNSPECIFIED.String():
+						case v2.Auditing_AUDITING_UNSPECIFIED.String():
 							auditable[methodName] = true
 						// noop
 						default:
