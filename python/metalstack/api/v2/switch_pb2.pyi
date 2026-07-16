@@ -62,11 +62,12 @@ SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
 SWITCH_PORT_STATUS_UNKNOWN: SwitchPortStatus
 
 class Switch(_message.Message):
-    __slots__ = ("id", "meta", "description", "rack", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections", "last_sync", "last_sync_error")
+    __slots__ = ("id", "meta", "description", "rack", "room", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections", "last_sync", "last_sync_error")
     ID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
+    ROOM_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
     REPLACE_MODE_FIELD_NUMBER: _ClassVar[int]
     MANAGEMENT_IP_FIELD_NUMBER: _ClassVar[int]
@@ -81,6 +82,7 @@ class Switch(_message.Message):
     meta: _common_pb2.Meta
     description: str
     rack: str
+    room: str
     partition: str
     replace_mode: SwitchReplaceMode
     management_ip: str
@@ -91,7 +93,7 @@ class Switch(_message.Message):
     machine_connections: _containers.RepeatedCompositeFieldContainer[MachineConnection]
     last_sync: SwitchSync
     last_sync_error: SwitchSync
-    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ..., last_sync: _Optional[_Union[SwitchSync, _Mapping]] = ..., last_sync_error: _Optional[_Union[SwitchSync, _Mapping]] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., room: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ..., last_sync: _Optional[_Union[SwitchSync, _Mapping]] = ..., last_sync_error: _Optional[_Union[SwitchSync, _Mapping]] = ...) -> None: ...
 
 class SwitchOS(_message.Message):
     __slots__ = ("vendor", "version", "metal_core_version")
@@ -164,18 +166,20 @@ class MachineConnection(_message.Message):
     def __init__(self, machine_id: _Optional[str] = ..., nic: _Optional[_Union[SwitchNic, _Mapping]] = ...) -> None: ...
 
 class SwitchQuery(_message.Message):
-    __slots__ = ("id", "partition", "rack", "os", "connected_machine_id")
+    __slots__ = ("id", "partition", "rack", "room", "os", "connected_machine_id")
     ID_FIELD_NUMBER: _ClassVar[int]
     PARTITION_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
+    ROOM_FIELD_NUMBER: _ClassVar[int]
     OS_FIELD_NUMBER: _ClassVar[int]
     CONNECTED_MACHINE_ID_FIELD_NUMBER: _ClassVar[int]
     id: str
     partition: str
     rack: str
+    room: str
     os: SwitchOSQuery
     connected_machine_id: str
-    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., os: _Optional[_Union[SwitchOSQuery, _Mapping]] = ..., connected_machine_id: _Optional[str] = ...) -> None: ...
+    def __init__(self, id: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., room: _Optional[str] = ..., os: _Optional[_Union[SwitchOSQuery, _Mapping]] = ..., connected_machine_id: _Optional[str] = ...) -> None: ...
 
 class SwitchOSQuery(_message.Message):
     __slots__ = ("vendor", "version")

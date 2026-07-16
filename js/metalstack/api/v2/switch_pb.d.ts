@@ -38,63 +38,69 @@ export type Switch = Message<"metalstack.api.v2.Switch"> & {
      */
     rack?: string | undefined;
     /**
+     * Room ID if the switch resides in a room.
+     *
+     * @generated from field: optional string room = 5;
+     */
+    room?: string | undefined;
+    /**
      * Partition the switch belongs to.
      *
-     * @generated from field: string partition = 5;
+     * @generated from field: string partition = 6;
      */
     partition: string;
     /**
      * ReplaceMode is used to mark a switch ready for replacement.
      *
-     * @generated from field: metalstack.api.v2.SwitchReplaceMode replace_mode = 6;
+     * @generated from field: metalstack.api.v2.SwitchReplaceMode replace_mode = 7;
      */
     replaceMode: SwitchReplaceMode;
     /**
      * ManagementIp is the switch's IP for management access.
      *
-     * @generated from field: string management_ip = 7;
+     * @generated from field: string management_ip = 8;
      */
     managementIp: string;
     /**
      * ManagementUser is the user name to use for management access.
      *
-     * @generated from field: optional string management_user = 8;
+     * @generated from field: optional string management_user = 9;
      */
     managementUser?: string | undefined;
     /**
      * ConsoleCommand is the command for accessing the switch's console.
      *
-     * @generated from field: optional string console_command = 9;
+     * @generated from field: optional string console_command = 10;
      */
     consoleCommand?: string | undefined;
     /**
      * Nics are the front panel ports of the switch.
      *
-     * @generated from field: repeated metalstack.api.v2.SwitchNic nics = 10;
+     * @generated from field: repeated metalstack.api.v2.SwitchNic nics = 11;
      */
     nics: SwitchNic[];
     /**
      * SwitchOs is the OS running on the switch.
      *
-     * @generated from field: metalstack.api.v2.SwitchOS os = 11;
+     * @generated from field: metalstack.api.v2.SwitchOS os = 12;
      */
     os?: SwitchOS | undefined;
     /**
      * MachineConnections map machines to the nics they are connected to.
      *
-     * @generated from field: repeated metalstack.api.v2.MachineConnection machine_connections = 12;
+     * @generated from field: repeated metalstack.api.v2.MachineConnection machine_connections = 13;
      */
     machineConnections: MachineConnection[];
     /**
      * LastSync contains information about the last heartbeat of the switch.
      *
-     * @generated from field: metalstack.api.v2.SwitchSync last_sync = 13;
+     * @generated from field: metalstack.api.v2.SwitchSync last_sync = 14;
      */
     lastSync?: SwitchSync | undefined;
     /**
      * LastSyncError contains information about the last unsuccessful heartbeat of the switch.
      *
-     * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 14;
+     * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 15;
      */
     lastSyncError?: SwitchSync | undefined;
 };
@@ -338,15 +344,21 @@ export type SwitchQuery = Message<"metalstack.api.v2.SwitchQuery"> & {
      */
     rack?: string | undefined;
     /**
+     * Room ID if the switch resides in a room.
+     *
+     * @generated from field: optional string room = 4;
+     */
+    room?: string | undefined;
+    /**
      * Switch OS specific queries.
      *
-     * @generated from field: optional metalstack.api.v2.SwitchOSQuery os = 4;
+     * @generated from field: optional metalstack.api.v2.SwitchOSQuery os = 5;
      */
     os?: SwitchOSQuery | undefined;
     /**
      * ConnectedMachineID lists the switches which have the given machine id in the connected machines map.
      *
-     * @generated from field: optional string connected_machine_id = 5;
+     * @generated from field: optional string connected_machine_id = 6;
      */
     connectedMachineId?: string | undefined;
 };
