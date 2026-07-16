@@ -93,6 +93,9 @@ func (dc *DialConfig) parse() error {
 	}
 
 	if dc.Token == "" && dc.TokenFile != "" {
+		if dc.TokenFileRereadDuration == 0 {
+			dc.TokenFileRereadDuration = tokenFileRereadDuration
+		}
 		if dc.TokenFileRereadDuration < time.Minute {
 			return fmt.Errorf("token file re-read duration must be greater than 1min")
 		}
