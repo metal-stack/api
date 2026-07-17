@@ -57,6 +57,7 @@ func Test_Ping(t *testing.T) {
 	want := []*infra.ComponentServicePingRequest{
 		{Type: apiv2.ComponentType_COMPONENT_TYPE_METAL_CORE, Identifier: "server01", StartedAt: timestamppb.New(start), Interval: durationpb.New(5 * time.Second), Version: &apiv2.Version{}},
 		{Type: apiv2.ComponentType_COMPONENT_TYPE_METAL_CORE, Identifier: "server01", StartedAt: timestamppb.New(start), Interval: durationpb.New(5 * time.Second), Version: &apiv2.Version{}},
+		{Type: apiv2.ComponentType_COMPONENT_TYPE_METAL_CORE, Identifier: "server01", StartedAt: timestamppb.New(start), Interval: durationpb.New(5 * time.Second), Version: &apiv2.Version{}},
 	}
 
 	c.Ping(ctx, config)
