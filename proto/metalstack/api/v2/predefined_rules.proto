@@ -77,8 +77,27 @@ extend buf.validate.StringRules {
   // IsTenantLogin returns true if name field satisfies our requirements
   optional bool is_tenant_login = 80048962 [(buf.validate.predefined).cel = {
     id: "string.is_tenant_login"
-    message: "must be within 2 and 256 characters"
-    expression: "this.size() >= 2 && this.size() <= 256"
+    message: "must be within 2 and 128 characters"
+    expression: "this.size() >= 2 && this.size() <= 128"
+  }];
+
+  // IsTenantSubjectPermission returns true if name field satisfies our requirements
+  optional bool is_tenant_subject_permission = 80048963 [(buf.validate.predefined).cel = {
+    id: "string.is_tenant_subject_permission"
+    message: "must be '*' or within 2 and 128 characters "
+    expression: "this == '*' || this.size() >= 2 && this.size() <= 128"
+  }];
+  // IsProjectSubjectPermission returns true if name field satisfies our requirements
+  optional bool is_project_subject_permission = 80048964 [(buf.validate.predefined).cel = {
+    id: "string.is_project_subject_permission"
+    message: "must be '*' or within 2 and 128 characters "
+    expression: "this == '*' || this.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')"
+  }];
+  // IsMachineSubjectPermission returns true if name field satisfies our requirements
+  optional bool is_machine_subject_permission = 80048965 [(buf.validate.predefined).cel = {
+    id: "string.is_machine_subject_permission"
+    message: "must be '*' or within 2 and 128 characters "
+    expression: "this == '*' || this.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')"
   }];
 }
 

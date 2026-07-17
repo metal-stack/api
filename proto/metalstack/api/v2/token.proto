@@ -146,15 +146,74 @@ message TokenServiceCreateRequest {
   Labels labels = 9;
 }
 
-// MethodPermission is a mapping from a subject/project to a service method
+// MethodPermission contains service method permissions
 message MethodPermission {
-  // Subject maybe either the project or the tenant
-  // for which the methods should be allowed
-  //
+  // PermissionType defines the type of the method permission
+  oneof permissiontype {
+    // PublicPermissions carries public method permissions
+    PublicPermissions public = 1;
+    // SelfPermissions carries self method permissions
+    SelfPermissions self = 2;
+    // ProjectPermissions carries project method permissions
+    ProjectPermissions project = 3;
+    // TenantPermissions carries tenant method permissions
+    TenantPermissions tenant = 4;
+    // AdminPermissions carries admin method permissions
+    AdminPermissions admin = 5;
+    // MachinePermissions carries machine method permissions
+    MachinePermissions machine = 6;
+    // InfraPermissions carries infra method permissions
+    InfraPermissions infra = 7;
+  }
+}
+
+// PublicPermissions carries public method permissions
+message PublicPermissions {
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// SelfPermissions carries self method permissions
+message SelfPermissions {
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// ProjectPermissions carries project method permissions
+message ProjectPermissions {
   // asterisk (*) can be specified to match any subject
-  // empty string ("") can be specified for requests that do not require a subject, e.g. partition list
-  // otherwise either a projectid or a tenant login should be specified
-  string subject = 1 [(buf.validate.field).string = {max_len: 256}];
+  string project = 1 [(buf.validate.field).string.(metalstack.api.v2.is_project_subject_permission) = true];
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// TenantPermissions carries tenant method permissions
+message TenantPermissions {
+  // Login of the tenant
+  // asterisk (*) can be specified to match any subject
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_subject_permission) = true];
+
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// AdminPermissions carries admin method permissions
+message AdminPermissions {
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// MachinePermissions carries machine method permissions
+message MachinePermissions {
+  // UUID of this machine
+  // asterisk (*) can be specified to match any subject
+  string uuid = 1 [(buf.validate.field).string.(metalstack.api.v2.is_machine_subject_permission) = true];
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// InfraPermissions carries infra method permissions
+message InfraPermissions {
   // Methods which should be accessible
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
