@@ -6,8 +6,8 @@ import sys
 from connectrpc.errors import ConnectError
 
 from metalstack.client import client as apiclient
-from metalstack.api.v2 import ip_pb2
-from metalstack.admin.v2 import network_pb2
+from metalstack.api.v2 import ip_pb
+from metalstack.admin.v2 import network_pb
 
 timeout_s = 5
 baseurl = os.environ['METAL_APISERVER_URL']
@@ -20,7 +20,7 @@ client = apiclient.Client(baseurl=baseurl, timeout=timeout_s)
 try:
     resp = client.apiv2().ip().list(
         headers=headers,
-        request=ip_pb2.IPServiceListRequest(
+        request=ip_pb.IPServiceListRequest(
             project=project),
     )
 except ConnectError as e:
@@ -33,7 +33,7 @@ for ip in resp.ips:
 
 resp = client.adminv2().network().list(
     headers=headers,
-    request=network_pb2.NetworkServiceListRequest(),
+    request=network_pb.NetworkServiceListRequest(),
 )
 
 for nw in resp.networks:
