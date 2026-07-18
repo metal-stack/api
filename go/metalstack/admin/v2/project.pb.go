@@ -7,7 +7,6 @@
 package adminv2
 
 import (
-	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -119,7 +118,7 @@ var File_metalstack_admin_v2_project_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_project_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1fmetalstack/api/v2/project.proto\"a\n" +
+	"!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/project.proto\"a\n" +
 	"\x19ProjectServiceListRequest\x12:\n" +
 	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.ProjectQueryH\x00R\x05query\x88\x01\x01B\b\n" +
 	"\x06_query\"T\n" +
