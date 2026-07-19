@@ -5,7 +5,7 @@ NAME = "metal-stack-api"
 
 REQUIRES = [
     # this version needs to match the version specified in buf.gen.yaml
-    "connectrpc==0.10.1",
+    "connectrpc==0.11.1",
     "protobuf>=7.0",
     "protovalidate>=1.2.0",
 ]
