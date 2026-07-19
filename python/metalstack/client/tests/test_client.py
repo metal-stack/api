@@ -8,8 +8,8 @@ import pyqwest
 import pytest
 from pyqwest.testing import WSGITransport
 
-from metalstack.api.v2 import ip_pb2
-from metalstack.api.v2 import version_pb2
+from metalstack.api.v2 import ip_pb
+from metalstack.api.v2 import version_pb
 from metalstack.api.v2.ip_connect import (
     IPServiceClientSync,
     IPServiceWSGIApplication,
@@ -19,12 +19,12 @@ from metalstack.api.v2.version_connect import (
     VersionServiceWSGIApplication,
 )
 from metalstack.client.client import Client
-from metalstack.infra.v2 import bmc_pb2
+from metalstack.infra.v2 import bmc_pb
 from metalstack.infra.v2.bmc_connect import (
     BMCServiceClientSync,
     BMCServiceWSGIApplication,
 )
-from metalstack.infra.v2 import component_pb2 as infra_component_pb2
+from metalstack.infra.v2 import component_pb as infra_component_pb
 from metalstack.infra.v2.component_connect import (
     ComponentServiceClientSync,
     ComponentServiceWSGIApplication,
@@ -53,7 +53,7 @@ class TestClient:
     def test_client_apiv2_version_get(self, test_client, mock_version_service):
         """Version.Get returns the expected version through the Client wrapper."""
         resp = test_client.apiv2().version().get(
-            request=version_pb2.VersionServiceGetRequest()
+            request=version_pb.VersionServiceGetRequest()
         )
         assert resp is not None
         assert resp.version.version == "1.0"
@@ -77,7 +77,7 @@ class TestClient:
         c._client = pyqwest.SyncClient(transport=transport)
 
         resp = c.apiv2().version().get(
-            request=version_pb2.VersionServiceGetRequest()
+            request=version_pb.VersionServiceGetRequest()
         )
         assert resp.version.version == "2.5.3"
 
@@ -92,7 +92,7 @@ class TestClientInterceptors:
         """Unary call has Authorization header set."""
         token = "test-bearer-token"
         resp = test_client.infrav2().bmc().update_b_m_c_info(
-            request=bmc_pb2.UpdateBMCInfoRequest(),
+            request=bmc_pb.UpdateBMCInfoRequest(),
             headers={"authorization": f"Bearer {token}"},
         )
         assert resp is not None
@@ -102,7 +102,7 @@ class TestClientInterceptors:
         """Streaming call has Authorization header set."""
         token = "test-stream-token"
         stream = test_client.infrav2().bmc().wait_for_b_m_c_command(
-            request=bmc_pb2.WaitForBMCCommandRequest(),
+            request=bmc_pb.WaitForBMCCommandRequest(),
             headers={"authorization": f"Bearer {token}"},
         )
         assert stream is not None
@@ -114,7 +114,7 @@ class TestClientInterceptors:
         """IP Get call has Authorization header set."""
         token = "ip-service-token"
         resp = test_client.apiv2().ip().get(
-            request=ip_pb2.IPServiceGetRequest(ip="10.0.0.1"),
+            request=ip_pb.IPServiceGetRequest(ip="10.0.0.1"),
             headers={"authorization": f"Bearer {token}"},
         )
         assert resp is not None

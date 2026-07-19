@@ -114,7 +114,9 @@ message MachineServiceCreateRequest {
       // A lower bound can be set similarly with `min_items`.
       max_items: 50
       // `items` validate each value in this `repeated` field.
-      items: {string: {[metalstack.api.v2.is_key]: true}}
+      items: {
+        string: {[metalstack.api.v2.is_key]: true}
+      }
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
@@ -172,7 +174,9 @@ message MachineServiceUpdateRequest {
       // A lower bound can be set similarly with `min_items`.
       max_items: 50
       // `items` validate each value in this `repeated` field.
-      items: {string: {[metalstack.api.v2.is_key]: true}}
+      items: {
+        string: {[metalstack.api.v2.is_key]: true}
+      }
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
@@ -319,7 +323,9 @@ message MachineAllocation {
       // A lower bound can be set similarly with `min_items`.
       max_items: 50
       // `items` validate each value in this `repeated` field.
-      items: {string: {[metalstack.api.v2.is_key]: true}}
+      items: {
+        string: {[metalstack.api.v2.is_key]: true}
+      }
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
@@ -364,7 +370,11 @@ message FirewallEgressRule {
   // Protocol the protocol for the rule, defaults to tcp
   IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
   // Ports the ports affected by this rule
-  repeated uint32 ports = 2 [(buf.validate.field).repeated = {items: {uint32: {lte: 65532}}}];
+  repeated uint32 ports = 2 [(buf.validate.field).repeated = {
+    items: {
+      uint32: {lte: 65532}
+    }
+  }];
   // To the destination cidrs affected by this rule
   repeated string to = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // Comment for this rule
@@ -382,7 +392,11 @@ message FirewallIngressRule {
   // Protocol the protocol for the rule, defaults to tcp
   IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
   // Ports the ports affected by this rule
-  repeated uint32 ports = 2 [(buf.validate.field).repeated = {items: {uint32: {lte: 65532}}}];
+  repeated uint32 ports = 2 [(buf.validate.field).repeated = {
+    items: {
+      uint32: {lte: 65532}
+    }
+  }];
   // To the destination cidrs affected by this rule
   repeated string to = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // From the source cidrs affected by this rule
@@ -815,25 +829,33 @@ message MachineNicQuery {
   repeated string macs = 1 [(buf.validate.field).repeated = {
     max_items: 100
     unique: true
-    items: {string: {[metalstack.api.v2.macaddress]: true}}
+    items: {
+      string: {[metalstack.api.v2.macaddress]: true}
+    }
   }];
   // Names this machine nic has
   repeated string names = 2 [(buf.validate.field).repeated = {
     max_items: 100
     unique: true
-    items: {string: {max_len: 128}}
+    items: {
+      string: {max_len: 128}
+    }
   }];
   // NeighborMacs this machine nic has
   repeated string neighbor_macs = 3 [(buf.validate.field).repeated = {
     max_items: 100
     unique: true
-    items: {string: {[metalstack.api.v2.macaddress]: true}}
+    items: {
+      string: {[metalstack.api.v2.macaddress]: true}
+    }
   }];
   // NeighborNames this machine nic has
   repeated string neighbor_names = 4 [(buf.validate.field).repeated = {
     max_items: 100
     unique: true
-    items: {string: {max_len: 128}}
+    items: {
+      string: {max_len: 128}
+    }
   }];
 }
 
@@ -842,7 +864,9 @@ message MachineDiskQuery {
   // Names of disks in this machine
   repeated string names = 1 [(buf.validate.field).repeated = {
     max_items: 100
-    items: {string: {max_len: 128}}
+    items: {
+      string: {max_len: 128}
+    }
   }];
   // Sizes of disks in this machine
   repeated uint64 sizes = 2 [(buf.validate.field).repeated = {max_items: 100}];
@@ -895,9 +919,17 @@ message MachineIssuesQuery {
   // MachineQuery to select specific machines
   metalstack.api.v2.MachineQuery machine_query = 1;
   // Only includes the specified machine issue types
-  repeated MachineIssueType only = 2 [(buf.validate.field).repeated = {items: {enum: {defined_only: true}}}];
+  repeated MachineIssueType only = 2 [(buf.validate.field).repeated = {
+    items: {
+      enum: {defined_only: true}
+    }
+  }];
   // Omits the specified machine issues
-  repeated MachineIssueType omit = 3 [(buf.validate.field).repeated = {items: {enum: {defined_only: true}}}];
+  repeated MachineIssueType omit = 3 [(buf.validate.field).repeated = {
+    items: {
+      enum: {defined_only: true}
+    }
+  }];
   // Severity filters issue for given severity
   optional MachineIssueSeverity severity = 4 [(buf.validate.field).enum.defined_only = true];
   // LastErrorThreshold defines the last error threshold

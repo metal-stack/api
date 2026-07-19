@@ -7,11 +7,9 @@
 package infrav2
 
 import (
-	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	_ "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -129,7 +127,7 @@ var File_metalstack_infra_v2_event_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_event_proto_rawDesc = "" +
 	"\n" +
-	"\x1fmetalstack/infra/v2/event.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"\xd3\x01\n" +
+	"\x1fmetalstack/infra/v2/event.proto\x12\x13metalstack.infra.v2\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"\xd3\x01\n" +
 	"\x17EventServiceSendRequest\x12P\n" +
 	"\x06events\x18\x01 \x03(\v28.metalstack.infra.v2.EventServiceSendRequest.EventsEntryR\x06events\x1af\n" +
 	"\vEventsEntry\x12\x10\n" +

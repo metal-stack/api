@@ -80,7 +80,9 @@ message Image {
   // Features of this image
   repeated ImageFeature features = 6 [(buf.validate.field).repeated = {
     unique: true
-    items: {enum: {defined_only: true}}
+    items: {
+      enum: {defined_only: true}
+    }
   }];
   // Classification of this image
   ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];

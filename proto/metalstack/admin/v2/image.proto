@@ -60,7 +60,9 @@ message ImageServiceUpdateRequest {
   // Features of this image
   repeated metalstack.api.v2.ImageFeature features = 6 [(buf.validate.field).repeated = {
     unique: true
-    items: {enum: {defined_only: true}}
+    items: {
+      enum: {defined_only: true}
+    }
   }];
   // Classification of this image
   metalstack.api.v2.ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];

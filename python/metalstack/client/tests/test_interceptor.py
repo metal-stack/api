@@ -10,7 +10,7 @@ from connectrpc.interceptor import MetadataInterceptorSync
 from connectrpc.request import RequestContext
 from pyqwest.testing import WSGITransport
 
-from metalstack.api.v2 import ip_pb2
+from metalstack.api.v2 import ip_pb
 from metalstack.api.v2.ip_connect import (
     IPServiceClientSync,
     IPServiceWSGIApplication,
@@ -67,28 +67,28 @@ class TestInterceptor:
         from metalstack.infra.v2.bmc_connect import BMCServiceWSGIApplication
         from metalstack.infra.v2.component_connect import ComponentServiceWSGIApplication
         from metalstack.api.v2.version_connect import VersionServiceWSGIApplication
-        from metalstack.infra.v2 import bmc_pb2
-        from metalstack.infra.v2 import component_pb2 as infra_component_pb2
+        from metalstack.infra.v2 import bmc_pb
+        from metalstack.infra.v2 import component_pb as infra_component_pb
 
         class NoopBMC:
             def update_b_m_c_info(self, request, ctx):
-                from metalstack.infra.v2.bmc_pb2 import UpdateBMCInfoResponse
+                from metalstack.infra.v2.bmc_pb import UpdateBMCInfoResponse
                 return UpdateBMCInfoResponse()
             def wait_for_b_m_c_command(self, request, ctx):
-                from metalstack.infra.v2.bmc_pb2 import WaitForBMCCommandResponse
+                from metalstack.infra.v2.bmc_pb import WaitForBMCCommandResponse
                 yield WaitForBMCCommandResponse()
             def b_m_c_command_done(self, request, ctx):
-                from metalstack.infra.v2.bmc_pb2 import BMCCommandDoneResponse
+                from metalstack.infra.v2.bmc_pb import BMCCommandDoneResponse
                 return BMCCommandDoneResponse()
 
         class NoopComponent:
             def ping(self, request, ctx):
-                from metalstack.infra.v2.component_pb2 import ComponentServicePingResponse
+                from metalstack.infra.v2.component_pb import ComponentServicePingResponse
                 return ComponentServicePingResponse()
 
         class NoopVersion:
             def get(self, request, ctx):
-                from metalstack.api.v2.version_pb2 import VersionServiceGetResponse, Version
+                from metalstack.api.v2.version_pb import VersionServiceGetResponse, Version
                 return VersionServiceGetResponse(version=Version(version="0.0"))
 
         services = {
@@ -108,7 +108,7 @@ class TestInterceptor:
         )
 
         resp = svc.get(
-            request=ip_pb2.IPServiceGetRequest(ip="1.2.3.4"),
+            request=ip_pb.IPServiceGetRequest(ip="1.2.3.4"),
         )
 
         assert resp.ip.ip == "1.2.3.4"
@@ -124,23 +124,23 @@ class TestInterceptor:
 
         class NoopBMC:
             def update_b_m_c_info(self, request, ctx):
-                from metalstack.infra.v2.bmc_pb2 import UpdateBMCInfoResponse
+                from metalstack.infra.v2.bmc_pb import UpdateBMCInfoResponse
                 return UpdateBMCInfoResponse()
             def wait_for_b_m_c_command(self, request, ctx):
-                from metalstack.infra.v2.bmc_pb2 import WaitForBMCCommandResponse
+                from metalstack.infra.v2.bmc_pb import WaitForBMCCommandResponse
                 yield WaitForBMCCommandResponse()
             def b_m_c_command_done(self, request, ctx):
-                from metalstack.infra.v2.bmc_pb2 import BMCCommandDoneResponse
+                from metalstack.infra.v2.bmc_pb import BMCCommandDoneResponse
                 return BMCCommandDoneResponse()
 
         class NoopComponent:
             def ping(self, request, ctx):
-                from metalstack.infra.v2.component_pb2 import ComponentServicePingResponse
+                from metalstack.infra.v2.component_pb import ComponentServicePingResponse
                 return ComponentServicePingResponse()
 
         class NoopVersion:
             def get(self, request, ctx):
-                from metalstack.api.v2.version_pb2 import VersionServiceGetResponse, Version
+                from metalstack.api.v2.version_pb import VersionServiceGetResponse, Version
                 return VersionServiceGetResponse(version=Version(version="0.0"))
 
         services = {
@@ -157,7 +157,7 @@ class TestInterceptor:
             interceptors=[AuthInterceptor("my-secret-token")],
         )
 
-        resp = svc.get(request=ip_pb2.IPServiceGetRequest(ip="1.2.3.4"))
+        resp = svc.get(request=ip_pb.IPServiceGetRequest(ip="1.2.3.4"))
 
         assert resp.ip.ip == "1.2.3.4"
         assert ips.received_auth == "Bearer my-secret-token"
@@ -166,7 +166,7 @@ class TestInterceptor:
         """Client wrapper passes headers through to the underlying service."""
         token = "wrapper-test-token"
         resp = test_client.apiv2().ip().get(
-            request=ip_pb2.IPServiceGetRequest(ip="5.6.7.8"),
+            request=ip_pb.IPServiceGetRequest(ip="5.6.7.8"),
             headers={"authorization": f"Bearer {token}"},
         )
         assert resp.ip.ip == "5.6.7.8"
