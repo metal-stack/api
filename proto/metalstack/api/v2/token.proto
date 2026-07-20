@@ -76,13 +76,17 @@ message Token {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 9 [
     (buf.validate.field).map.(metalstack.api.v2.project_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 10 [
     (buf.validate.field).map.(metalstack.api.v2.tenant_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // AdminRole defines the admin role of the token owner
@@ -93,7 +97,9 @@ message Token {
   // TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead
   map<string, MachineRole> machine_roles = 13 [
     (buf.validate.field).map.(metalstack.api.v2.machine_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
 }
@@ -123,13 +129,17 @@ message TokenServiceCreateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 4 [
     (buf.validate.field).map.(metalstack.api.v2.project_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 5 [
     (buf.validate.field).map.(metalstack.api.v2.tenant_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // AdminRole defines the admin role of the token owner
@@ -139,7 +149,9 @@ message TokenServiceCreateRequest {
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
   map<string, MachineRole> machine_roles = 8 [
     (buf.validate.field).map.(metalstack.api.v2.machine_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // Labels on this token
@@ -202,13 +214,17 @@ message TokenServiceUpdateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [
     (buf.validate.field).map.(metalstack.api.v2.project_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 6 [
     (buf.validate.field).map.(metalstack.api.v2.tenant_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // AdminRole defines the admin role of the token owner
@@ -218,7 +234,9 @@ message TokenServiceUpdateRequest {
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
   map<string, MachineRole> machine_roles = 9 [
     (buf.validate.field).map.(metalstack.api.v2.machine_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // Labels on this token

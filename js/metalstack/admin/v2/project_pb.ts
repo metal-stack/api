@@ -4,9 +4,7 @@
 
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
-import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
-import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
 import type { Project, ProjectQuery } from "../../api/v2/project_pb";
 import { file_metalstack_api_v2_project } from "../../api/v2/project_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -15,7 +13,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/project.proto.
  */
 export const file_metalstack_admin_v2_project: GenFile = /*@__PURE__*/
-  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL3Byb2plY3QucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiWgoZUHJvamVjdFNlcnZpY2VMaXN0UmVxdWVzdBIzCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RRdWVyeUgAiAEBQggKBl9xdWVyeSJKChpQcm9qZWN0U2VydmljZUxpc3RSZXNwb25zZRIsCghwcm9qZWN0cxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3QyhQEKDlByb2plY3RTZXJ2aWNlEnMKBExpc3QSLi5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlcXVlc3QaLy5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgCQtABChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIMUHJvamVjdFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_project]);
+  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL3Byb2plY3QucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiWgoZUHJvamVjdFNlcnZpY2VMaXN0UmVxdWVzdBIzCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RRdWVyeUgAiAEBQggKBl9xdWVyeSJKChpQcm9qZWN0U2VydmljZUxpc3RSZXNwb25zZRIsCghwcm9qZWN0cxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3QyhQEKDlByb2plY3RTZXJ2aWNlEnMKBExpc3QSLi5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlcXVlc3QaLy5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgCQtABChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIMUHJvamVjdFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_metalstack_api_v2_common, file_metalstack_api_v2_project]);
 
 /**
  * ProjectServiceListRequest is the request payload for listing projects.

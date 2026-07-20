@@ -19,6 +19,12 @@ plugins:
   - remote: buf.build/connectrpc/go:v1.20.0
     out: ../go
     opt: paths=source_relative,simple
+  - local:
+      - go
+      - run
+      - github.com/redpanda-data/protoc-gen-go-mcp/cmd/protoc-gen-go-mcp@latest
+    out: ../go
+    opt: paths=source_relative
   # python
   - remote: buf.build/protocolbuffers/python:v35.1
     out: ../python
