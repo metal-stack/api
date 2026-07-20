@@ -118,12 +118,70 @@ class TokenServiceCreateRequest(_message.Message):
     def __init__(self, description: _Optional[str] = ..., permissions: _Optional[_Iterable[_Union[MethodPermission, _Mapping]]] = ..., expires: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., project_roles: _Optional[_Mapping[str, _common_pb2.ProjectRole]] = ..., tenant_roles: _Optional[_Mapping[str, _common_pb2.TenantRole]] = ..., admin_role: _Optional[_Union[_common_pb2.AdminRole, str]] = ..., infra_role: _Optional[_Union[_common_pb2.InfraRole, str]] = ..., machine_roles: _Optional[_Mapping[str, _common_pb2.MachineRole]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class MethodPermission(_message.Message):
-    __slots__ = ("subject", "methods")
-    SUBJECT_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ("public", "self", "project", "tenant", "admin", "machine", "infra")
+    PUBLIC_FIELD_NUMBER: _ClassVar[int]
+    SELF_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    TENANT_FIELD_NUMBER: _ClassVar[int]
+    ADMIN_FIELD_NUMBER: _ClassVar[int]
+    MACHINE_FIELD_NUMBER: _ClassVar[int]
+    INFRA_FIELD_NUMBER: _ClassVar[int]
+    public: PublicPermissions
+    self: SelfPermissions
+    project: ProjectPermissions
+    tenant: TenantPermissions
+    admin: AdminPermissions
+    machine: MachinePermissions
+    infra: InfraPermissions
+    def __init__(self_, public: _Optional[_Union[PublicPermissions, _Mapping]] = ..., self: _Optional[_Union[SelfPermissions, _Mapping]] = ..., project: _Optional[_Union[ProjectPermissions, _Mapping]] = ..., tenant: _Optional[_Union[TenantPermissions, _Mapping]] = ..., admin: _Optional[_Union[AdminPermissions, _Mapping]] = ..., machine: _Optional[_Union[MachinePermissions, _Mapping]] = ..., infra: _Optional[_Union[InfraPermissions, _Mapping]] = ...) -> None: ...
+
+class PublicPermissions(_message.Message):
+    __slots__ = ("methods",)
     METHODS_FIELD_NUMBER: _ClassVar[int]
-    subject: str
     methods: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, subject: _Optional[str] = ..., methods: _Optional[_Iterable[str]] = ...) -> None: ...
+    def __init__(self, methods: _Optional[_Iterable[str]] = ...) -> None: ...
+
+class SelfPermissions(_message.Message):
+    __slots__ = ("methods",)
+    METHODS_FIELD_NUMBER: _ClassVar[int]
+    methods: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, methods: _Optional[_Iterable[str]] = ...) -> None: ...
+
+class ProjectPermissions(_message.Message):
+    __slots__ = ("project", "methods")
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    METHODS_FIELD_NUMBER: _ClassVar[int]
+    project: str
+    methods: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, project: _Optional[str] = ..., methods: _Optional[_Iterable[str]] = ...) -> None: ...
+
+class TenantPermissions(_message.Message):
+    __slots__ = ("login", "methods")
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    METHODS_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    methods: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, login: _Optional[str] = ..., methods: _Optional[_Iterable[str]] = ...) -> None: ...
+
+class AdminPermissions(_message.Message):
+    __slots__ = ("methods",)
+    METHODS_FIELD_NUMBER: _ClassVar[int]
+    methods: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, methods: _Optional[_Iterable[str]] = ...) -> None: ...
+
+class MachinePermissions(_message.Message):
+    __slots__ = ("uuid", "methods")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    METHODS_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    methods: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, uuid: _Optional[str] = ..., methods: _Optional[_Iterable[str]] = ...) -> None: ...
+
+class InfraPermissions(_message.Message):
+    __slots__ = ("methods",)
+    METHODS_FIELD_NUMBER: _ClassVar[int]
+    methods: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, methods: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class TokenServiceCreateResponse(_message.Message):
     __slots__ = ("token", "secret")

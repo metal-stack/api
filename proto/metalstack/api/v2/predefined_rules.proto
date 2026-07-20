@@ -84,19 +84,19 @@ extend buf.validate.StringRules {
   // IsTenantSubjectPermission returns true if name field satisfies our requirements
   optional bool is_tenant_subject_permission = 80048963 [(buf.validate.predefined).cel = {
     id: "string.is_tenant_subject_permission"
-    message: "must be '*' or within 2 and 128 characters "
+    message: "must be '*' or within 2 and 128 characters"
     expression: "this == '*' || this.size() >= 2 && this.size() <= 128"
   }];
   // IsProjectSubjectPermission returns true if name field satisfies our requirements
   optional bool is_project_subject_permission = 80048964 [(buf.validate.predefined).cel = {
     id: "string.is_project_subject_permission"
-    message: "must be '*' or within 2 and 128 characters "
+    message: "must be '*' or a uuid"
     expression: "this == '*' || this.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')"
   }];
   // IsMachineSubjectPermission returns true if name field satisfies our requirements
   optional bool is_machine_subject_permission = 80048965 [(buf.validate.predefined).cel = {
     id: "string.is_machine_subject_permission"
-    message: "must be '*' or within 2 and 128 characters "
+    message: "must be '*' or a uuid"
     expression: "this == '*' || this.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')"
   }];
 }
@@ -157,6 +157,6 @@ extend buf.validate.MapRules {
   optional bool machine_roles_keys_valid = 80068955 [(buf.validate.predefined).cel = {
     id: "machine_roles.key.valid"
     message: "subject must be empty string, '*', or a valid UUID"
-    expression: "this.all(k, k == '' || k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
+    expression: "this.all(k, k == '*' || k.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'))"
   }];
 }

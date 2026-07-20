@@ -6,10 +6,10 @@ import (
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 )
 
-func TestValidateToken(t *testing.T) {
+func Test_validateToken(t *testing.T) {
 	tests := prototests{
 		{
-			name: "Valid Token Create Request",
+			name: "valid token create request",
 			msg: &apiv2.TokenServiceCreateRequest{
 				Description: "A Token",
 				ProjectRoles: map[string]apiv2.ProjectRole{
@@ -24,7 +24,7 @@ func TestValidateToken(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "InValid Token Create Request",
+			name: "invalid token create request",
 			msg: &apiv2.TokenServiceCreateRequest{
 				Description: "B Token",
 				ProjectRoles: map[string]apiv2.ProjectRole{
@@ -37,7 +37,7 @@ func TestValidateToken(t *testing.T) {
  - project_roles["p42"]: value must be one of the defined enum values`,
 		},
 		{
-			name: "InValid Token Create Request",
+			name: "invalid token create request",
 			msg: &apiv2.TokenServiceCreateRequest{
 				Description: "B Token",
 				ProjectRoles: map[string]apiv2.ProjectRole{
@@ -48,15 +48,19 @@ func TestValidateToken(t *testing.T) {
 			wantErrorMessage: `validation error: project_roles["00000000-0000-0000-0000-000000000000"]: value must be one of the defined enum values`,
 		},
 		{
-			name: "InValid Token, user token with permissions",
+			name: "invalid token, user token with permissions",
 			msg: &apiv2.Token{
 				Uuid:        "00000000-0000-0000-0000-000000000000",
 				User:        "user-a",
 				Description: "B Token",
 				Permissions: []*apiv2.MethodPermission{
 					{
-						Subject: "project-a",
-						Methods: []string{"/metalstack.admin.v2.IPService/List"},
+						Permissiontype: &apiv2.MethodPermission_Project{
+							Project: &apiv2.ProjectPermissions{
+								Project: "08538119-edd3-4734-84a4-8681da17da5b",
+								Methods: []string{"/metalstack.api.v2.IPService/List"},
+							},
+						},
 					},
 				},
 				TokenType: apiv2.TokenType_TOKEN_TYPE_USER,
@@ -65,15 +69,19 @@ func TestValidateToken(t *testing.T) {
 			wantErrorMessage: `validation error: token type user must not have permissions`,
 		},
 		{
-			name: "Valid Token, api token with permissions",
+			name: "valid token, api token with permissions",
 			msg: &apiv2.Token{
 				Uuid:        "00000000-0000-0000-0000-000000000000",
 				User:        "user-a",
 				Description: "B Token",
 				Permissions: []*apiv2.MethodPermission{
 					{
-						Subject: "project-a",
-						Methods: []string{"/metalstack.admin.v2.IPService/List"},
+						Permissiontype: &apiv2.MethodPermission_Project{
+							Project: &apiv2.ProjectPermissions{
+								Project: "08538119-edd3-4734-84a4-8681da17da5b",
+								Methods: []string{"/metalstack.api.v2.IPService/List"},
+							},
+						},
 					},
 				},
 				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
@@ -81,11 +89,51 @@ func TestValidateToken(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "Valid Token, api token with machineroles",
+			name: "valid token, api token with wildcard permissions",
+			msg: &apiv2.Token{
+				Uuid:        "00000000-0000-0000-0000-000000000000",
+				User:        "user-a",
+				Description: "B Token",
+				Permissions: []*apiv2.MethodPermission{
+					{
+						Permissiontype: &apiv2.MethodPermission_Project{
+							Project: &apiv2.ProjectPermissions{
+								Project: "*",
+								Methods: []string{"/metalstack.api.v2.IPService/List"},
+							},
+						},
+					},
+				},
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+			},
+			wantErr: false,
+		},
+		{
+			name: "invalid token, api token with project permission that has an invalid uuid",
+			msg: &apiv2.Token{
+				Uuid:        "00000000-0000-0000-0000-000000000000",
+				User:        "user-a",
+				Description: "B Token",
+				Permissions: []*apiv2.MethodPermission{
+					{
+						Permissiontype: &apiv2.MethodPermission_Project{
+							Project: &apiv2.ProjectPermissions{
+								Project: "foo",
+								Methods: []string{"/metalstack.api.v2.IPService/List"},
+							},
+						},
+					},
+				},
+				TokenType: apiv2.TokenType_TOKEN_TYPE_API,
+			},
+			wantErr:          true,
+			wantErrorMessage: "validation error: permissions[0].project.project: must be '*' or a uuid",
+		},
+		{
+			name: "valid token, api token with machineroles",
 			msg: &apiv2.TokenServiceUpdateRequest{
 				Uuid: "00000000-0000-0000-0000-000000000000",
 				MachineRoles: map[string]apiv2.MachineRole{
-					"":                                     apiv2.MachineRole_MACHINE_ROLE_EDITOR,
 					"*":                                    apiv2.MachineRole_MACHINE_ROLE_EDITOR,
 					"00000000-0000-0000-0000-000000000000": apiv2.MachineRole_MACHINE_ROLE_EDITOR,
 				},
@@ -93,11 +141,10 @@ func TestValidateToken(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "InValid Token, api token with machineroles with invalid uuid",
+			name: "invalid token, api token with machineroles with invalid uuid",
 			msg: &apiv2.TokenServiceUpdateRequest{
 				Uuid: "00000000-0000-0000-0000-000000000000",
 				MachineRoles: map[string]apiv2.MachineRole{
-					"":                                     apiv2.MachineRole_MACHINE_ROLE_EDITOR,
 					"*":                                    apiv2.MachineRole_MACHINE_ROLE_EDITOR,
 					"y0000000-0000-0000-0000-000000000000": apiv2.MachineRole_MACHINE_ROLE_EDITOR,
 				},
@@ -106,7 +153,7 @@ func TestValidateToken(t *testing.T) {
 			wantErrorMessage: "validation error: machine_roles: subject must be empty string, '*', or a valid UUID",
 		},
 		{
-			name: "InValid Token, api token with machineroles with invalid key",
+			name: "invalid token, api token with machineroles with invalid key",
 			msg: &apiv2.TokenServiceUpdateRequest{
 				Uuid: "00000000-0000-0000-0000-000000000000",
 				MachineRoles: map[string]apiv2.MachineRole{
@@ -119,7 +166,7 @@ func TestValidateToken(t *testing.T) {
 			wantErrorMessage: "validation error: machine_roles: subject must be empty string, '*', or a valid UUID",
 		},
 		{
-			name: "InValid Token Create Request, token role not trimmed",
+			name: "invalid token create request, token role not trimmed",
 			msg: &apiv2.TokenServiceCreateRequest{
 				Description: "A Token",
 				ProjectRoles: map[string]apiv2.ProjectRole{

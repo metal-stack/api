@@ -27,6 +27,12 @@ IS_KEY_FIELD_NUMBER: _ClassVar[int]
 is_key: _descriptor.FieldDescriptor
 IS_TENANT_LOGIN_FIELD_NUMBER: _ClassVar[int]
 is_tenant_login: _descriptor.FieldDescriptor
+IS_TENANT_SUBJECT_PERMISSION_FIELD_NUMBER: _ClassVar[int]
+is_tenant_subject_permission: _descriptor.FieldDescriptor
+IS_PROJECT_SUBJECT_PERMISSION_FIELD_NUMBER: _ClassVar[int]
+is_project_subject_permission: _descriptor.FieldDescriptor
+IS_MACHINE_SUBJECT_PERMISSION_FIELD_NUMBER: _ClassVar[int]
+is_machine_subject_permission: _descriptor.FieldDescriptor
 PREFIXES_FIELD_NUMBER: _ClassVar[int]
 prefixes: _descriptor.FieldDescriptor
 IPS_FIELD_NUMBER: _ClassVar[int]
