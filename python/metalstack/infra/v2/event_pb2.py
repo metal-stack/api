@@ -22,13 +22,11 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
-from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
-from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
 from metalstack.api.v2 import machine_pb2 as metalstack_dot_api_dot_v2_dot_machine__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fmetalstack/infra/v2/event.proto\x12\x13metalstack.infra.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"\xd3\x01\n\x17\x45ventServiceSendRequest\x12P\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x38.metalstack.infra.v2.EventServiceSendRequest.EventsEntryR\x06\x65vents\x1a\x66\n\x0b\x45ventsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x41\n\x05value\x18\x02 \x01(\x0b\x32+.metalstack.api.v2.MachineProvisioningEventR\x05value:\x02\x38\x01\"J\n\x18\x45ventServiceSendResponse\x12\x16\n\x06\x65vents\x18\x01 \x01(\x04R\x06\x65vents\x12\x16\n\x06\x66\x61iled\x18\x02 \x03(\tR\x06\x66\x61iled2~\n\x0c\x45ventService\x12n\n\x04Send\x12,.metalstack.infra.v2.EventServiceSendRequest\x1a-.metalstack.infra.v2.EventServiceSendResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x42\xce\x01\n\x17\x63om.metalstack.infra.v2B\nEventProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fmetalstack/infra/v2/event.proto\x12\x13metalstack.infra.v2\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\"\xd3\x01\n\x17\x45ventServiceSendRequest\x12P\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x38.metalstack.infra.v2.EventServiceSendRequest.EventsEntryR\x06\x65vents\x1a\x66\n\x0b\x45ventsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x41\n\x05value\x18\x02 \x01(\x0b\x32+.metalstack.api.v2.MachineProvisioningEventR\x05value:\x02\x38\x01\"J\n\x18\x45ventServiceSendResponse\x12\x16\n\x06\x65vents\x18\x01 \x01(\x04R\x06\x65vents\x12\x16\n\x06\x66\x61iled\x18\x02 \x03(\tR\x06\x66\x61iled2~\n\x0c\x45ventService\x12n\n\x04Send\x12,.metalstack.infra.v2.EventServiceSendRequest\x1a-.metalstack.infra.v2.EventServiceSendResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x42\xce\x01\n\x17\x63om.metalstack.infra.v2B\nEventProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -40,12 +38,12 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_EVENTSERVICESENDREQUEST_EVENTSENTRY']._serialized_options = b'8\001'
   _globals['_EVENTSERVICE'].methods_by_name['Send']._loaded_options = None
   _globals['_EVENTSERVICE'].methods_by_name['Send']._serialized_options = b'\340\363\030\002\352\363\030\001\001'
-  _globals['_EVENTSERVICESENDREQUEST']._serialized_start=184
-  _globals['_EVENTSERVICESENDREQUEST']._serialized_end=395
-  _globals['_EVENTSERVICESENDREQUEST_EVENTSENTRY']._serialized_start=293
-  _globals['_EVENTSERVICESENDREQUEST_EVENTSENTRY']._serialized_end=395
-  _globals['_EVENTSERVICESENDRESPONSE']._serialized_start=397
-  _globals['_EVENTSERVICESENDRESPONSE']._serialized_end=471
-  _globals['_EVENTSERVICE']._serialized_start=473
-  _globals['_EVENTSERVICE']._serialized_end=599
+  _globals['_EVENTSERVICESENDREQUEST']._serialized_start=122
+  _globals['_EVENTSERVICESENDREQUEST']._serialized_end=333
+  _globals['_EVENTSERVICESENDREQUEST_EVENTSENTRY']._serialized_start=231
+  _globals['_EVENTSERVICESENDREQUEST_EVENTSENTRY']._serialized_end=333
+  _globals['_EVENTSERVICESENDRESPONSE']._serialized_start=335
+  _globals['_EVENTSERVICESENDRESPONSE']._serialized_end=409
+  _globals['_EVENTSERVICE']._serialized_start=411
+  _globals['_EVENTSERVICE']._serialized_end=537
 # @@protoc_insertion_point(module_scope)

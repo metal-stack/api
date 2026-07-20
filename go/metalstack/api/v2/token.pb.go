@@ -249,7 +249,7 @@ type TokenServiceCreateRequest struct {
 	// Description of the token
 	Description string `protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
 	// Permissions is a list of service methods this token can be used for
-	Permissions []*TypedMethodPermission `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Permissions []*PermissionsByVisibility `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	// Expires gives the duration since now, after which this token can not be used anymore
 	Expires *durationpb.Duration `protobuf:"bytes,3,opt,name=expires,proto3" json:"expires,omitempty"`
 	// ProjectRoles associates a project id with the corresponding role of the token owner
@@ -305,7 +305,7 @@ func (x *TokenServiceCreateRequest) GetDescription() string {
 	return ""
 }
 
-func (x *TokenServiceCreateRequest) GetPermissions() []*TypedMethodPermission {
+func (x *TokenServiceCreateRequest) GetPermissions() []*PermissionsByVisibility {
 	if x != nil {
 		return x.Permissions
 	}
@@ -421,39 +421,39 @@ func (x *MethodPermission) GetMethods() []string {
 	return nil
 }
 
-// TypedMethodPermission contains typed service method permissions
-type TypedMethodPermission struct {
+// PermissionsByVisibility contains method permissions by visibility
+type PermissionsByVisibility struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// PermissionType defines the type of the method permission
+	// Visibility defines the visibility of the requested method permissions
 	//
-	// Types that are valid to be assigned to Permissiontype:
+	// Types that are valid to be assigned to Visibility:
 	//
-	//	*TypedMethodPermission_Public
-	//	*TypedMethodPermission_Self
-	//	*TypedMethodPermission_Project
-	//	*TypedMethodPermission_Tenant
-	//	*TypedMethodPermission_Admin
-	//	*TypedMethodPermission_Machine
-	//	*TypedMethodPermission_Infra
-	Permissiontype isTypedMethodPermission_Permissiontype `protobuf_oneof:"permissiontype"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	//	*PermissionsByVisibility_Public
+	//	*PermissionsByVisibility_Self
+	//	*PermissionsByVisibility_Project
+	//	*PermissionsByVisibility_Tenant
+	//	*PermissionsByVisibility_Admin
+	//	*PermissionsByVisibility_Machine
+	//	*PermissionsByVisibility_Infra
+	Visibility    isPermissionsByVisibility_Visibility `protobuf_oneof:"visibility"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TypedMethodPermission) Reset() {
-	*x = TypedMethodPermission{}
+func (x *PermissionsByVisibility) Reset() {
+	*x = PermissionsByVisibility{}
 	mi := &file_metalstack_api_v2_token_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TypedMethodPermission) String() string {
+func (x *PermissionsByVisibility) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TypedMethodPermission) ProtoMessage() {}
+func (*PermissionsByVisibility) ProtoMessage() {}
 
-func (x *TypedMethodPermission) ProtoReflect() protoreflect.Message {
+func (x *PermissionsByVisibility) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_api_v2_token_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -465,133 +465,133 @@ func (x *TypedMethodPermission) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TypedMethodPermission.ProtoReflect.Descriptor instead.
-func (*TypedMethodPermission) Descriptor() ([]byte, []int) {
+// Deprecated: Use PermissionsByVisibility.ProtoReflect.Descriptor instead.
+func (*PermissionsByVisibility) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_token_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *TypedMethodPermission) GetPermissiontype() isTypedMethodPermission_Permissiontype {
+func (x *PermissionsByVisibility) GetVisibility() isPermissionsByVisibility_Visibility {
 	if x != nil {
-		return x.Permissiontype
+		return x.Visibility
 	}
 	return nil
 }
 
-func (x *TypedMethodPermission) GetPublic() *PublicPermissions {
+func (x *PermissionsByVisibility) GetPublic() *PublicPermissions {
 	if x != nil {
-		if x, ok := x.Permissiontype.(*TypedMethodPermission_Public); ok {
+		if x, ok := x.Visibility.(*PermissionsByVisibility_Public); ok {
 			return x.Public
 		}
 	}
 	return nil
 }
 
-func (x *TypedMethodPermission) GetSelf() *SelfPermissions {
+func (x *PermissionsByVisibility) GetSelf() *SelfPermissions {
 	if x != nil {
-		if x, ok := x.Permissiontype.(*TypedMethodPermission_Self); ok {
+		if x, ok := x.Visibility.(*PermissionsByVisibility_Self); ok {
 			return x.Self
 		}
 	}
 	return nil
 }
 
-func (x *TypedMethodPermission) GetProject() *ProjectPermissions {
+func (x *PermissionsByVisibility) GetProject() *ProjectPermissions {
 	if x != nil {
-		if x, ok := x.Permissiontype.(*TypedMethodPermission_Project); ok {
+		if x, ok := x.Visibility.(*PermissionsByVisibility_Project); ok {
 			return x.Project
 		}
 	}
 	return nil
 }
 
-func (x *TypedMethodPermission) GetTenant() *TenantPermissions {
+func (x *PermissionsByVisibility) GetTenant() *TenantPermissions {
 	if x != nil {
-		if x, ok := x.Permissiontype.(*TypedMethodPermission_Tenant); ok {
+		if x, ok := x.Visibility.(*PermissionsByVisibility_Tenant); ok {
 			return x.Tenant
 		}
 	}
 	return nil
 }
 
-func (x *TypedMethodPermission) GetAdmin() *AdminPermissions {
+func (x *PermissionsByVisibility) GetAdmin() *AdminPermissions {
 	if x != nil {
-		if x, ok := x.Permissiontype.(*TypedMethodPermission_Admin); ok {
+		if x, ok := x.Visibility.(*PermissionsByVisibility_Admin); ok {
 			return x.Admin
 		}
 	}
 	return nil
 }
 
-func (x *TypedMethodPermission) GetMachine() *MachinePermissions {
+func (x *PermissionsByVisibility) GetMachine() *MachinePermissions {
 	if x != nil {
-		if x, ok := x.Permissiontype.(*TypedMethodPermission_Machine); ok {
+		if x, ok := x.Visibility.(*PermissionsByVisibility_Machine); ok {
 			return x.Machine
 		}
 	}
 	return nil
 }
 
-func (x *TypedMethodPermission) GetInfra() *InfraPermissions {
+func (x *PermissionsByVisibility) GetInfra() *InfraPermissions {
 	if x != nil {
-		if x, ok := x.Permissiontype.(*TypedMethodPermission_Infra); ok {
+		if x, ok := x.Visibility.(*PermissionsByVisibility_Infra); ok {
 			return x.Infra
 		}
 	}
 	return nil
 }
 
-type isTypedMethodPermission_Permissiontype interface {
-	isTypedMethodPermission_Permissiontype()
+type isPermissionsByVisibility_Visibility interface {
+	isPermissionsByVisibility_Visibility()
 }
 
-type TypedMethodPermission_Public struct {
+type PermissionsByVisibility_Public struct {
 	// PublicPermissions carries public method permissions
 	Public *PublicPermissions `protobuf:"bytes,1,opt,name=public,proto3,oneof"`
 }
 
-type TypedMethodPermission_Self struct {
+type PermissionsByVisibility_Self struct {
 	// SelfPermissions carries self method permissions
 	Self *SelfPermissions `protobuf:"bytes,2,opt,name=self,proto3,oneof"`
 }
 
-type TypedMethodPermission_Project struct {
+type PermissionsByVisibility_Project struct {
 	// ProjectPermissions carries project method permissions
 	Project *ProjectPermissions `protobuf:"bytes,3,opt,name=project,proto3,oneof"`
 }
 
-type TypedMethodPermission_Tenant struct {
+type PermissionsByVisibility_Tenant struct {
 	// TenantPermissions carries tenant method permissions
 	Tenant *TenantPermissions `protobuf:"bytes,4,opt,name=tenant,proto3,oneof"`
 }
 
-type TypedMethodPermission_Admin struct {
+type PermissionsByVisibility_Admin struct {
 	// AdminPermissions carries admin method permissions
 	Admin *AdminPermissions `protobuf:"bytes,5,opt,name=admin,proto3,oneof"`
 }
 
-type TypedMethodPermission_Machine struct {
+type PermissionsByVisibility_Machine struct {
 	// MachinePermissions carries machine method permissions
 	Machine *MachinePermissions `protobuf:"bytes,6,opt,name=machine,proto3,oneof"`
 }
 
-type TypedMethodPermission_Infra struct {
+type PermissionsByVisibility_Infra struct {
 	// InfraPermissions carries infra method permissions
 	Infra *InfraPermissions `protobuf:"bytes,7,opt,name=infra,proto3,oneof"`
 }
 
-func (*TypedMethodPermission_Public) isTypedMethodPermission_Permissiontype() {}
+func (*PermissionsByVisibility_Public) isPermissionsByVisibility_Visibility() {}
 
-func (*TypedMethodPermission_Self) isTypedMethodPermission_Permissiontype() {}
+func (*PermissionsByVisibility_Self) isPermissionsByVisibility_Visibility() {}
 
-func (*TypedMethodPermission_Project) isTypedMethodPermission_Permissiontype() {}
+func (*PermissionsByVisibility_Project) isPermissionsByVisibility_Visibility() {}
 
-func (*TypedMethodPermission_Tenant) isTypedMethodPermission_Permissiontype() {}
+func (*PermissionsByVisibility_Tenant) isPermissionsByVisibility_Visibility() {}
 
-func (*TypedMethodPermission_Admin) isTypedMethodPermission_Permissiontype() {}
+func (*PermissionsByVisibility_Admin) isPermissionsByVisibility_Visibility() {}
 
-func (*TypedMethodPermission_Machine) isTypedMethodPermission_Permissiontype() {}
+func (*PermissionsByVisibility_Machine) isPermissionsByVisibility_Visibility() {}
 
-func (*TypedMethodPermission_Infra) isTypedMethodPermission_Permissiontype() {}
+func (*PermissionsByVisibility_Infra) isPermissionsByVisibility_Visibility() {}
 
 // PublicPermissions carries public method permissions
 type PublicPermissions struct {
@@ -1185,7 +1185,7 @@ type TokenServiceUpdateRequest struct {
 	// Description is a user given description of this token.
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Permissions is a list of service methods this token can be used for
-	Permissions []*TypedMethodPermission `protobuf:"bytes,4,rep,name=permissions,proto3" json:"permissions,omitempty"`
+	Permissions []*PermissionsByVisibility `protobuf:"bytes,4,rep,name=permissions,proto3" json:"permissions,omitempty"`
 	// ProjectRoles associates a project id with the corresponding role of the token owner
 	ProjectRoles map[string]ProjectRole `protobuf:"bytes,5,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
 	// TenantRoles associates a tenant id with the corresponding role of the token owner
@@ -1253,7 +1253,7 @@ func (x *TokenServiceUpdateRequest) GetDescription() string {
 	return ""
 }
 
-func (x *TokenServiceUpdateRequest) GetPermissions() []*TypedMethodPermission {
+func (x *TokenServiceUpdateRequest) GetPermissions() []*PermissionsByVisibility {
 	if x != nil {
 		return x.Permissions
 	}
@@ -1650,10 +1650,10 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.MachineRoleR\x05value:\x028\x01B\r\n" +
 	"\v_admin_roleB\r\n" +
-	"\v_infra_role\"\xf0\b\n" +
+	"\v_infra_role\"\xf2\b\n" +
 	"\x19TokenServiceCreateRequest\x12-\n" +
-	"\vdescription\x18\x01 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12T\n" +
-	"\vpermissions\x18\x02 \x03(\v2(.metalstack.api.v2.TypedMethodPermissionB\b\xbaH\x05\x92\x01\x02\x10dR\vpermissions\x12G\n" +
+	"\vdescription\x18\x01 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12V\n" +
+	"\vpermissions\x18\x02 \x03(\v2*.metalstack.api.v2.PermissionsByVisibilityB\b\xbaH\x05\x92\x01\x02\x10dR\vpermissions\x12G\n" +
 	"\aexpires\x18\x03 \x01(\v2\x19.google.protobuf.DurationB\x12\xbaH\x0f\xaa\x01\f\x1a\x05\b\x81\xe7\x84\x0f2\x03\b\xd8\x04R\aexpires\x12~\n" +
 	"\rproject_roles\x18\x04 \x03(\v2>.metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ȕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12{\n" +
 	"\ftenant_roles\x18\x05 \x03(\v2=.metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01Е\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
@@ -1676,16 +1676,17 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\v_infra_role\"[\n" +
 	"\x10MethodPermission\x12\"\n" +
 	"\asubject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\asubject\x12#\n" +
-	"\amethods\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\amethods\"\xe3\x03\n" +
-	"\x15TypedMethodPermission\x12>\n" +
+	"\amethods\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\amethods\"\xe1\x03\n" +
+	"\x17PermissionsByVisibility\x12>\n" +
 	"\x06public\x18\x01 \x01(\v2$.metalstack.api.v2.PublicPermissionsH\x00R\x06public\x128\n" +
 	"\x04self\x18\x02 \x01(\v2\".metalstack.api.v2.SelfPermissionsH\x00R\x04self\x12A\n" +
 	"\aproject\x18\x03 \x01(\v2%.metalstack.api.v2.ProjectPermissionsH\x00R\aproject\x12>\n" +
 	"\x06tenant\x18\x04 \x01(\v2$.metalstack.api.v2.TenantPermissionsH\x00R\x06tenant\x12;\n" +
 	"\x05admin\x18\x05 \x01(\v2#.metalstack.api.v2.AdminPermissionsH\x00R\x05admin\x12A\n" +
 	"\amachine\x18\x06 \x01(\v2%.metalstack.api.v2.MachinePermissionsH\x00R\amachine\x12;\n" +
-	"\x05infra\x18\a \x01(\v2#.metalstack.api.v2.InfraPermissionsH\x00R\x05infraB\x10\n" +
-	"\x0epermissiontype\"8\n" +
+	"\x05infra\x18\a \x01(\v2#.metalstack.api.v2.InfraPermissionsH\x00R\x05infraB\f\n" +
+	"\n" +
+	"visibility\"8\n" +
 	"\x11PublicPermissions\x12#\n" +
 	"\amethods\x18\x02 \x03(\tB\t\xbaH\x06\x92\x01\x03\x10\xf4\x03R\amethods\"6\n" +
 	"\x0fSelfPermissions\x12#\n" +
@@ -1712,13 +1713,13 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\x06tokens\x18\x01 \x03(\v2\x18.metalstack.api.v2.TokenR\x06tokens\"9\n" +
 	"\x19TokenServiceRevokeRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x1c\n" +
-	"\x1aTokenServiceRevokeResponse\"\x9e\t\n" +
+	"\x1aTokenServiceRevokeResponse\"\xa0\t\n" +
 	"\x19TokenServiceUpdateRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x00R\n" +
 	"updateMeta\x122\n" +
-	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12J\n" +
-	"\vpermissions\x18\x04 \x03(\v2(.metalstack.api.v2.TypedMethodPermissionR\vpermissions\x12~\n" +
+	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12L\n" +
+	"\vpermissions\x18\x04 \x03(\v2*.metalstack.api.v2.PermissionsByVisibilityR\vpermissions\x12~\n" +
 	"\rproject_roles\x18\x05 \x03(\v2>.metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ȕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fprojectRoles\x12{\n" +
 	"\ftenant_roles\x18\x06 \x03(\v2=.metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01Е\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\vtenantRoles\x12J\n" +
 	"\n" +
@@ -1796,7 +1797,7 @@ var file_metalstack_api_v2_token_proto_goTypes = []any{
 	(*Token)(nil),                       // 1: metalstack.api.v2.Token
 	(*TokenServiceCreateRequest)(nil),   // 2: metalstack.api.v2.TokenServiceCreateRequest
 	(*MethodPermission)(nil),            // 3: metalstack.api.v2.MethodPermission
-	(*TypedMethodPermission)(nil),       // 4: metalstack.api.v2.TypedMethodPermission
+	(*PermissionsByVisibility)(nil),     // 4: metalstack.api.v2.PermissionsByVisibility
 	(*PublicPermissions)(nil),           // 5: metalstack.api.v2.PublicPermissions
 	(*SelfPermissions)(nil),             // 6: metalstack.api.v2.SelfPermissions
 	(*ProjectPermissions)(nil),          // 7: metalstack.api.v2.ProjectPermissions
@@ -1848,7 +1849,7 @@ var file_metalstack_api_v2_token_proto_depIdxs = []int32{
 	35, // 7: metalstack.api.v2.Token.admin_role:type_name -> metalstack.api.v2.AdminRole
 	36, // 8: metalstack.api.v2.Token.infra_role:type_name -> metalstack.api.v2.InfraRole
 	26, // 9: metalstack.api.v2.Token.machine_roles:type_name -> metalstack.api.v2.Token.MachineRolesEntry
-	4,  // 10: metalstack.api.v2.TokenServiceCreateRequest.permissions:type_name -> metalstack.api.v2.TypedMethodPermission
+	4,  // 10: metalstack.api.v2.TokenServiceCreateRequest.permissions:type_name -> metalstack.api.v2.PermissionsByVisibility
 	37, // 11: metalstack.api.v2.TokenServiceCreateRequest.expires:type_name -> google.protobuf.Duration
 	27, // 12: metalstack.api.v2.TokenServiceCreateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry
 	28, // 13: metalstack.api.v2.TokenServiceCreateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry
@@ -1856,18 +1857,18 @@ var file_metalstack_api_v2_token_proto_depIdxs = []int32{
 	36, // 15: metalstack.api.v2.TokenServiceCreateRequest.infra_role:type_name -> metalstack.api.v2.InfraRole
 	29, // 16: metalstack.api.v2.TokenServiceCreateRequest.machine_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntry
 	38, // 17: metalstack.api.v2.TokenServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
-	5,  // 18: metalstack.api.v2.TypedMethodPermission.public:type_name -> metalstack.api.v2.PublicPermissions
-	6,  // 19: metalstack.api.v2.TypedMethodPermission.self:type_name -> metalstack.api.v2.SelfPermissions
-	7,  // 20: metalstack.api.v2.TypedMethodPermission.project:type_name -> metalstack.api.v2.ProjectPermissions
-	8,  // 21: metalstack.api.v2.TypedMethodPermission.tenant:type_name -> metalstack.api.v2.TenantPermissions
-	9,  // 22: metalstack.api.v2.TypedMethodPermission.admin:type_name -> metalstack.api.v2.AdminPermissions
-	10, // 23: metalstack.api.v2.TypedMethodPermission.machine:type_name -> metalstack.api.v2.MachinePermissions
-	11, // 24: metalstack.api.v2.TypedMethodPermission.infra:type_name -> metalstack.api.v2.InfraPermissions
+	5,  // 18: metalstack.api.v2.PermissionsByVisibility.public:type_name -> metalstack.api.v2.PublicPermissions
+	6,  // 19: metalstack.api.v2.PermissionsByVisibility.self:type_name -> metalstack.api.v2.SelfPermissions
+	7,  // 20: metalstack.api.v2.PermissionsByVisibility.project:type_name -> metalstack.api.v2.ProjectPermissions
+	8,  // 21: metalstack.api.v2.PermissionsByVisibility.tenant:type_name -> metalstack.api.v2.TenantPermissions
+	9,  // 22: metalstack.api.v2.PermissionsByVisibility.admin:type_name -> metalstack.api.v2.AdminPermissions
+	10, // 23: metalstack.api.v2.PermissionsByVisibility.machine:type_name -> metalstack.api.v2.MachinePermissions
+	11, // 24: metalstack.api.v2.PermissionsByVisibility.infra:type_name -> metalstack.api.v2.InfraPermissions
 	1,  // 25: metalstack.api.v2.TokenServiceCreateResponse.token:type_name -> metalstack.api.v2.Token
 	23, // 26: metalstack.api.v2.TokenServiceListRequest.query:type_name -> metalstack.api.v2.TokenQuery
 	1,  // 27: metalstack.api.v2.TokenServiceListResponse.tokens:type_name -> metalstack.api.v2.Token
 	39, // 28: metalstack.api.v2.TokenServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	4,  // 29: metalstack.api.v2.TokenServiceUpdateRequest.permissions:type_name -> metalstack.api.v2.TypedMethodPermission
+	4,  // 29: metalstack.api.v2.TokenServiceUpdateRequest.permissions:type_name -> metalstack.api.v2.PermissionsByVisibility
 	30, // 30: metalstack.api.v2.TokenServiceUpdateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry
 	31, // 31: metalstack.api.v2.TokenServiceUpdateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry
 	35, // 32: metalstack.api.v2.TokenServiceUpdateRequest.admin_role:type_name -> metalstack.api.v2.AdminRole
@@ -1917,13 +1918,13 @@ func file_metalstack_api_v2_token_proto_init() {
 	file_metalstack_api_v2_token_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_token_proto_msgTypes[1].OneofWrappers = []any{}
 	file_metalstack_api_v2_token_proto_msgTypes[3].OneofWrappers = []any{
-		(*TypedMethodPermission_Public)(nil),
-		(*TypedMethodPermission_Self)(nil),
-		(*TypedMethodPermission_Project)(nil),
-		(*TypedMethodPermission_Tenant)(nil),
-		(*TypedMethodPermission_Admin)(nil),
-		(*TypedMethodPermission_Machine)(nil),
-		(*TypedMethodPermission_Infra)(nil),
+		(*PermissionsByVisibility_Public)(nil),
+		(*PermissionsByVisibility_Self)(nil),
+		(*PermissionsByVisibility_Project)(nil),
+		(*PermissionsByVisibility_Tenant)(nil),
+		(*PermissionsByVisibility_Admin)(nil),
+		(*PermissionsByVisibility_Machine)(nil),
+		(*PermissionsByVisibility_Infra)(nil),
 	}
 	file_metalstack_api_v2_token_proto_msgTypes[16].OneofWrappers = []any{}
 	file_metalstack_api_v2_token_proto_msgTypes[22].OneofWrappers = []any{}

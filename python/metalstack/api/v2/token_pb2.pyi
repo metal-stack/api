@@ -107,7 +107,7 @@ class TokenServiceCreateRequest(_message.Message):
     MACHINE_ROLES_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     description: str
-    permissions: _containers.RepeatedCompositeFieldContainer[TypedMethodPermission]
+    permissions: _containers.RepeatedCompositeFieldContainer[PermissionsByVisibility]
     expires: _duration_pb2.Duration
     project_roles: _containers.ScalarMap[str, _common_pb2.ProjectRole]
     tenant_roles: _containers.ScalarMap[str, _common_pb2.TenantRole]
@@ -115,7 +115,7 @@ class TokenServiceCreateRequest(_message.Message):
     infra_role: _common_pb2.InfraRole
     machine_roles: _containers.ScalarMap[str, _common_pb2.MachineRole]
     labels: _common_pb2.Labels
-    def __init__(self, description: _Optional[str] = ..., permissions: _Optional[_Iterable[_Union[TypedMethodPermission, _Mapping]]] = ..., expires: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., project_roles: _Optional[_Mapping[str, _common_pb2.ProjectRole]] = ..., tenant_roles: _Optional[_Mapping[str, _common_pb2.TenantRole]] = ..., admin_role: _Optional[_Union[_common_pb2.AdminRole, str]] = ..., infra_role: _Optional[_Union[_common_pb2.InfraRole, str]] = ..., machine_roles: _Optional[_Mapping[str, _common_pb2.MachineRole]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
+    def __init__(self, description: _Optional[str] = ..., permissions: _Optional[_Iterable[_Union[PermissionsByVisibility, _Mapping]]] = ..., expires: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., project_roles: _Optional[_Mapping[str, _common_pb2.ProjectRole]] = ..., tenant_roles: _Optional[_Mapping[str, _common_pb2.TenantRole]] = ..., admin_role: _Optional[_Union[_common_pb2.AdminRole, str]] = ..., infra_role: _Optional[_Union[_common_pb2.InfraRole, str]] = ..., machine_roles: _Optional[_Mapping[str, _common_pb2.MachineRole]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class MethodPermission(_message.Message):
     __slots__ = ("subject", "methods")
@@ -125,7 +125,7 @@ class MethodPermission(_message.Message):
     methods: _containers.RepeatedScalarFieldContainer[str]
     def __init__(self, subject: _Optional[str] = ..., methods: _Optional[_Iterable[str]] = ...) -> None: ...
 
-class TypedMethodPermission(_message.Message):
+class PermissionsByVisibility(_message.Message):
     __slots__ = ("public", "self", "project", "tenant", "admin", "machine", "infra")
     PUBLIC_FIELD_NUMBER: _ClassVar[int]
     SELF_FIELD_NUMBER: _ClassVar[int]
@@ -257,14 +257,14 @@ class TokenServiceUpdateRequest(_message.Message):
     uuid: str
     update_meta: _common_pb2.UpdateMeta
     description: str
-    permissions: _containers.RepeatedCompositeFieldContainer[TypedMethodPermission]
+    permissions: _containers.RepeatedCompositeFieldContainer[PermissionsByVisibility]
     project_roles: _containers.ScalarMap[str, _common_pb2.ProjectRole]
     tenant_roles: _containers.ScalarMap[str, _common_pb2.TenantRole]
     admin_role: _common_pb2.AdminRole
     infra_role: _common_pb2.InfraRole
     machine_roles: _containers.ScalarMap[str, _common_pb2.MachineRole]
     labels: _common_pb2.UpdateLabels
-    def __init__(self, uuid: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., description: _Optional[str] = ..., permissions: _Optional[_Iterable[_Union[TypedMethodPermission, _Mapping]]] = ..., project_roles: _Optional[_Mapping[str, _common_pb2.ProjectRole]] = ..., tenant_roles: _Optional[_Mapping[str, _common_pb2.TenantRole]] = ..., admin_role: _Optional[_Union[_common_pb2.AdminRole, str]] = ..., infra_role: _Optional[_Union[_common_pb2.InfraRole, str]] = ..., machine_roles: _Optional[_Mapping[str, _common_pb2.MachineRole]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., description: _Optional[str] = ..., permissions: _Optional[_Iterable[_Union[PermissionsByVisibility, _Mapping]]] = ..., project_roles: _Optional[_Mapping[str, _common_pb2.ProjectRole]] = ..., tenant_roles: _Optional[_Mapping[str, _common_pb2.TenantRole]] = ..., admin_role: _Optional[_Union[_common_pb2.AdminRole, str]] = ..., infra_role: _Optional[_Union[_common_pb2.InfraRole, str]] = ..., machine_roles: _Optional[_Mapping[str, _common_pb2.MachineRole]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
 
 class TokenServiceUpdateResponse(_message.Message):
     __slots__ = ("token",)

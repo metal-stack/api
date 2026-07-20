@@ -179,7 +179,9 @@ message LabelsPatch {
   // Remove labels by key
   repeated string remove = 2 [(buf.validate.field).repeated = {
     unique: true
-    items: {string: {[metalstack.api.v2.trimmed]: true}}
+    items: {
+      string: {[metalstack.api.v2.trimmed]: true}
+    }
   }];
 }
 

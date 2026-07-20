@@ -51,9 +51,9 @@ func Test_validateToken(t *testing.T) {
 			name: "valid token create request, api token with permissions",
 			msg: &apiv2.TokenServiceCreateRequest{
 				Description: "B Token",
-				Permissions: []*apiv2.TypedMethodPermission{
+				Permissions: []*apiv2.PermissionsByVisibility{
 					{
-						Permissiontype: &apiv2.TypedMethodPermission_Project{
+						Visibility: &apiv2.PermissionsByVisibility_Project{
 							Project: &apiv2.ProjectPermissions{
 								Project: "08538119-edd3-4734-84a4-8681da17da5b",
 								Methods: []string{"/metalstack.api.v2.IPService/List"},
@@ -68,9 +68,9 @@ func Test_validateToken(t *testing.T) {
 			name: "valid token create request, api token with wildcard permissions",
 			msg: &apiv2.TokenServiceCreateRequest{
 				Description: "B Token",
-				Permissions: []*apiv2.TypedMethodPermission{
+				Permissions: []*apiv2.PermissionsByVisibility{
 					{
-						Permissiontype: &apiv2.TypedMethodPermission_Project{
+						Visibility: &apiv2.PermissionsByVisibility_Project{
 							Project: &apiv2.ProjectPermissions{
 								Project: "*",
 								Methods: []string{"/metalstack.api.v2.IPService/List"},
@@ -85,9 +85,9 @@ func Test_validateToken(t *testing.T) {
 			name: "invalid token create request, api token with project permission that has an invalid uuid",
 			msg: &apiv2.TokenServiceCreateRequest{
 				Description: "B Token",
-				Permissions: []*apiv2.TypedMethodPermission{
+				Permissions: []*apiv2.PermissionsByVisibility{
 					{
-						Permissiontype: &apiv2.TypedMethodPermission_Project{
+						Visibility: &apiv2.PermissionsByVisibility_Project{
 							Project: &apiv2.ProjectPermissions{
 								Project: "foo",
 								Methods: []string{"/metalstack.api.v2.IPService/List"},
