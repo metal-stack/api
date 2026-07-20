@@ -51,7 +51,7 @@ func TestValidateImage(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "InValid ImageUpdate duplicate Features",
+			name: "invalid ImageUpdate duplicate Features",
 			msg: &adminv2.ImageServiceUpdateRequest{
 				Id:             "debian:12.0.20250101",
 				Name:           new("debian"),
@@ -63,7 +63,7 @@ func TestValidateImage(t *testing.T) {
 			wantErrorMessage: `validation error: features: repeated value must contain unique items`,
 		},
 		{
-			name: "InValid ImageUpdate invalid Features",
+			name: "invalid ImageUpdate invalid Features",
 			msg: &adminv2.ImageServiceUpdateRequest{
 				Id:             "debian:12.0.20250101",
 				Name:           new("debian"),

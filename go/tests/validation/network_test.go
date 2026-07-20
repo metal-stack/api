@@ -19,7 +19,7 @@ func TestValidateNetwork(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "InValid NetworkCreateRequest prefixes malformed",
+			name: "invalid NetworkCreateRequest prefixes malformed",
 			msg: &adminv2.NetworkServiceCreateRequest{
 				Id:                  new("internet"),
 				NatType:             apiv2.NATType_NAT_TYPE_IPV4_MASQUERADE.Enum(),
@@ -40,7 +40,7 @@ func TestValidateNetwork(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "InValid Network minimal config",
+			name: "invalid Network minimal config",
 			msg: &apiv2.Network{
 				Id:                  "internet",
 				Prefixes:            []string{"1.2.3.4.5/99"},
