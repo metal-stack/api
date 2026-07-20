@@ -79,6 +79,17 @@ func (c *client) Ping(ctx context.Context, config *PingConfig) {
 
 	c.config.Log.Debug("ping", "config", config)
 
+	pingFn := func() {
+		pingCtx, cancel := context.WithTimeout(ctx, 2*time.Second)
+		defer cancel()
+		_, err := c.Infrav2().Component().Ping(pingCtx, req)
+		if err != nil {
+			c.config.Log.Error("ping", "error", err)
+		}
+	}
+
+	pingFn()
+
 	ticker := time.NewTicker(config.Interval)
 	go func() {
 		for {
@@ -87,12 +98,7 @@ func (c *client) Ping(ctx context.Context, config *PingConfig) {
 				ticker.Stop()
 				return
 			case <-ticker.C:
-				pingCtx, cancel := context.WithTimeout(ctx, 2*time.Second)
-				defer cancel()
-				_, err := c.Infrav2().Component().Ping(pingCtx, req)
-				if err != nil {
-					c.config.Log.Error("ping", "error", err)
-				}
+				pingFn()
 			}
 		}
 	}()
