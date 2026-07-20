@@ -68,6 +68,61 @@ func GetServicePermissions() *ServicePermissions {
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 		},
+		MethodsByScope: map[MethodScope]Methods{
+{{- range $scope, $methods := .MethodsByScope }}
+
+{{- if eq $scope "public"}}
+			PublicScope:   Methods{
+{{- range $key, $value := $methods }}
+				"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
+{{- end }}
+{{- if eq $scope "admin"}}
+			AdminScope:   Methods{
+{{- range $key, $value := $methods }}
+				"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
+{{- end }}
+{{- if eq $scope "self"}}
+			SelfScope:   Methods{
+{{- range $key, $value := $methods }}
+				"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
+{{- end }}
+{{- if eq $scope "project"}}
+			ProjectScope:   Methods{
+{{- range $key, $value := $methods }}
+				"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
+{{- end }}
+{{- if eq $scope "tenant"}}
+			TenantScope:   Methods{
+{{- range $key, $value := $methods }}
+				"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
+{{- end }}
+{{- if eq $scope "infra"}}
+			InfraScope:   Methods{
+{{- range $key, $value := $methods }}
+				"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
+{{- end }}
+{{- if eq $scope "machine"}}
+			MachineScope:   Methods{
+{{- range $key, $value := $methods }}
+				"{{ $key }}": {{ $value }} ,
+{{- end }}
+			},
+{{- end }}
+
+{{- end }}
+		},
 		Visibility: Visibility{
 			Public:  map[string]bool{
 {{- range $key, $value := .Visibility.Public }}
@@ -76,31 +131,6 @@ func GetServicePermissions() *ServicePermissions {
 			},
 			Self:    map[string]bool{
 {{- range $key, $value := .Visibility.Self }}
-	"{{ $key }}": {{ $value }} ,
-{{- end }}
-			},
-			Admin:    map[string]bool{
-{{- range $key, $value := .Visibility.Admin }}
-	"{{ $key }}": {{ $value }} ,
-{{- end }}
-			},
-			Infra:    map[string]bool{
-{{- range $key, $value := .Visibility.Infra }}
-	"{{ $key }}": {{ $value }} ,
-{{- end }}
-			},
-			Machine:    map[string]bool{
-{{- range $key, $value := .Visibility.Machine }}
-	"{{ $key }}": {{ $value }} ,
-{{- end }}
-			},
-			Tenant:    map[string]bool{
-{{- range $key, $value := .Visibility.Tenant }}
-	"{{ $key }}": {{ $value }} ,
-{{- end }}
-			},
-			Project:    map[string]bool{
-{{- range $key, $value := .Visibility.Project }}
 	"{{ $key }}": {{ $value }} ,
 {{- end }}
 			},
@@ -114,37 +144,37 @@ func GetServicePermissions() *ServicePermissions {
 }
 
 func IsPublicScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Public[req.Spec().Procedure]
+	_, ok := GetServicePermissions().MethodsByScope[PublicScope][req.Spec().Procedure]
 	return ok
 }
 
 func IsSelfScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Self[req.Spec().Procedure]
+	_, ok := GetServicePermissions().MethodsByScope[SelfScope][req.Spec().Procedure]
 	return ok
 }
 
 func IsAdminScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Admin[req.Spec().Procedure]
+	_, ok := GetServicePermissions().MethodsByScope[AdminScope][req.Spec().Procedure]
 	return ok
 }
 
 func IsInfraScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Infra[req.Spec().Procedure]
+	_, ok := GetServicePermissions().MethodsByScope[InfraScope][req.Spec().Procedure]
 	return ok
 }
 
 func IsMachineScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Machine[req.Spec().Procedure]
+	_, ok := GetServicePermissions().MethodsByScope[MachineScope][req.Spec().Procedure]
 	return ok
 }
 
 func IsTenantScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Tenant[req.Spec().Procedure]
+	_, ok := GetServicePermissions().MethodsByScope[TenantScope][req.Spec().Procedure]
 	return ok
 }
 
 func IsProjectScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Project[req.Spec().Procedure]
+	_, ok := GetServicePermissions().MethodsByScope[ProjectScope][req.Spec().Procedure]
 	return ok
 }
 

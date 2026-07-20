@@ -102,18 +102,14 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 			serverReflectionInfov1alpha1: struct{}{},
 			serverReflectionInfo:         struct{}{},
 		}
-		visibility = permissions.Visibility{
+		methodsByScope = map[permissions.MethodScope]permissions.Methods{}
+		visibility     = permissions.Visibility{
 			Public: map[string]bool{
 				// Allow service reflection to list available methods
 				serverReflectionInfov1alpha1: true,
 				serverReflectionInfo:         true,
 			},
-			Self:    map[string]bool{},
-			Admin:   map[string]bool{},
-			Infra:   map[string]bool{},
-			Machine: map[string]bool{},
-			Tenant:  map[string]bool{},
-			Project: map[string]bool{},
+			Self: map[string]bool{},
 		}
 		auditable = permissions.Auditable{}
 		services  = []string{}
@@ -148,7 +144,13 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 								roles.Tenant[apirole] = permissions.Methods{}
 							}
 							roles.Tenant[apirole][methodName] = struct{}{}
-							visibility.Tenant[methodName] = true
+							ms, ok := methodsByScope[permissions.TenantScope]
+							if !ok {
+								ms = permissions.Methods{}
+							}
+							ms[methodName] = struct{}{}
+							methodsByScope[permissions.TenantScope] = ms
+
 						case v2.TenantRole_TENANT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Project
@@ -158,7 +160,12 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 								roles.Project[apirole] = permissions.Methods{}
 							}
 							roles.Project[apirole][methodName] = struct{}{}
-							visibility.Project[methodName] = true
+							ms, ok := methodsByScope[permissions.ProjectScope]
+							if !ok {
+								ms = permissions.Methods{}
+							}
+							ms[methodName] = struct{}{}
+							methodsByScope[permissions.ProjectScope] = ms
 						case v2.ProjectRole_PROJECT_ROLE_UNSPECIFIED.String():
 							// noop
 						// Admin
@@ -168,7 +175,12 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 								roles.Admin[apirole] = permissions.Methods{}
 							}
 							roles.Admin[apirole][methodName] = struct{}{}
-							visibility.Admin[methodName] = true
+							ms, ok := methodsByScope[permissions.AdminScope]
+							if !ok {
+								ms = permissions.Methods{}
+							}
+							ms[methodName] = struct{}{}
+							methodsByScope[permissions.AdminScope] = ms
 						case v2.AdminRole_ADMIN_ROLE_UNSPECIFIED.String():
 							// noop
 						// Infra
@@ -178,7 +190,12 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 								roles.Infra[apirole] = permissions.Methods{}
 							}
 							roles.Infra[apirole][methodName] = struct{}{}
-							visibility.Infra[methodName] = true
+							ms, ok := methodsByScope[permissions.InfraScope]
+							if !ok {
+								ms = permissions.Methods{}
+							}
+							ms[methodName] = struct{}{}
+							methodsByScope[permissions.InfraScope] = ms
 						case v2.InfraRole_INFRA_ROLE_UNSPECIFIED.String():
 							// noop
 						// Machine
@@ -188,14 +205,31 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 								roles.Machine[apirole] = permissions.Methods{}
 							}
 							roles.Machine[apirole][methodName] = struct{}{}
-							visibility.Machine[methodName] = true
+							ms, ok := methodsByScope[permissions.MachineScope]
+							if !ok {
+								ms = permissions.Methods{}
+							}
+							ms[methodName] = struct{}{}
+							methodsByScope[permissions.MachineScope] = ms
 						case v2.MachineRole_MACHINE_ROLE_UNSPECIFIED.String():
 							// noop
 						// Visibility
 						case v2.Visibility_VISIBILITY_PUBLIC.String():
 							visibility.Public[methodName] = true
+							ms, ok := methodsByScope[permissions.PublicScope]
+							if !ok {
+								ms = permissions.Methods{}
+							}
+							ms[methodName] = struct{}{}
+							methodsByScope[permissions.PublicScope] = ms
 						case v2.Visibility_VISIBILITY_SELF.String():
 							visibility.Self[methodName] = true
+							ms, ok := methodsByScope[permissions.SelfScope]
+							if !ok {
+								ms = permissions.Methods{}
+							}
+							ms[methodName] = struct{}{}
+							methodsByScope[permissions.SelfScope] = ms
 						case v2.Visibility_VISIBILITY_UNSPECIFIED.String():
 							// noop
 						// Auditable
@@ -218,11 +252,12 @@ func servicePermissions(root string) (*permissions.ServicePermissions, error) {
 	}
 	slices.Sort(services)
 	sp := &permissions.ServicePermissions{
-		Roles:      roles,
-		Methods:    methods,
-		Visibility: visibility,
-		Auditable:  auditable,
-		Services:   services,
+		Roles:          roles,
+		Methods:        methods,
+		MethodsByScope: methodsByScope,
+		Visibility:     visibility,
+		Auditable:      auditable,
+		Services:       services,
 	}
 
 	return sp, nil

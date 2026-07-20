@@ -131,9 +131,9 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
     /**
      * Permissions is a list of service methods this token can be used for
      *
-     * @generated from field: repeated metalstack.api.v2.MethodPermission permissions = 2;
+     * @generated from field: repeated metalstack.api.v2.TypedMethodPermission permissions = 2;
      */
-    permissions: MethodPermission[];
+    permissions: TypedMethodPermission[];
     /**
      * Expires gives the duration since now, after which this token can not be used anymore
      *
@@ -189,15 +189,44 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
  */
 export declare const TokenServiceCreateRequestSchema: GenMessage<TokenServiceCreateRequest>;
 /**
- * MethodPermission contains service method permissions
+ * MethodPermission is a mapping from a subject/project to a service method
  *
  * @generated from message metalstack.api.v2.MethodPermission
  */
 export type MethodPermission = Message<"metalstack.api.v2.MethodPermission"> & {
     /**
+     * Subject maybe either the project or the tenant
+     * for which the methods should be allowed
+     *
+     * asterisk (*) can be specified to match any subject
+     * empty string ("") can be specified for requests that do not require a subject, e.g. partition list
+     * otherwise either a projectid or a tenant login should be specified
+     *
+     * @generated from field: string subject = 1;
+     */
+    subject: string;
+    /**
+     * Methods which should be accessible
+     *
+     * @generated from field: repeated string methods = 2;
+     */
+    methods: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.MethodPermission.
+ * Use `create(MethodPermissionSchema)` to create a new message.
+ */
+export declare const MethodPermissionSchema: GenMessage<MethodPermission>;
+/**
+ * TypedMethodPermission contains typed service method permissions
+ *
+ * @generated from message metalstack.api.v2.TypedMethodPermission
+ */
+export type TypedMethodPermission = Message<"metalstack.api.v2.TypedMethodPermission"> & {
+    /**
      * PermissionType defines the type of the method permission
      *
-     * @generated from oneof metalstack.api.v2.MethodPermission.permissiontype
+     * @generated from oneof metalstack.api.v2.TypedMethodPermission.permissiontype
      */
     permissiontype: {
         /**
@@ -261,10 +290,10 @@ export type MethodPermission = Message<"metalstack.api.v2.MethodPermission"> & {
     };
 };
 /**
- * Describes the message metalstack.api.v2.MethodPermission.
- * Use `create(MethodPermissionSchema)` to create a new message.
+ * Describes the message metalstack.api.v2.TypedMethodPermission.
+ * Use `create(TypedMethodPermissionSchema)` to create a new message.
  */
-export declare const MethodPermissionSchema: GenMessage<MethodPermission>;
+export declare const TypedMethodPermissionSchema: GenMessage<TypedMethodPermission>;
 /**
  * PublicPermissions carries public method permissions
  *
@@ -528,9 +557,9 @@ export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceU
     /**
      * Permissions is a list of service methods this token can be used for
      *
-     * @generated from field: repeated metalstack.api.v2.MethodPermission permissions = 4;
+     * @generated from field: repeated metalstack.api.v2.TypedMethodPermission permissions = 4;
      */
-    permissions: MethodPermission[];
+    permissions: TypedMethodPermission[];
     /**
      * ProjectRoles associates a project id with the corresponding role of the token owner
      *
