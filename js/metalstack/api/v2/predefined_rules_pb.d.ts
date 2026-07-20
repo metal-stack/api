@@ -77,6 +77,24 @@ export declare const is_key: GenExtension<StringRules, boolean>;
  */
 export declare const is_tenant_login: GenExtension<StringRules, boolean>;
 /**
+ * IsTenantSubjectPermission returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_tenant_subject_permission = 80048963;
+ */
+export declare const is_tenant_subject_permission: GenExtension<StringRules, boolean>;
+/**
+ * IsProjectSubjectPermission returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_project_subject_permission = 80048964;
+ */
+export declare const is_project_subject_permission: GenExtension<StringRules, boolean>;
+/**
+ * IsMachineSubjectPermission returns true if name field satisfies our requirements
+ *
+ * @generated from extension: optional bool is_machine_subject_permission = 80048965;
+ */
+export declare const is_machine_subject_permission: GenExtension<StringRules, boolean>;
+/**
  * Prefixes validates if a slice of prefixes in string form are valid
  *
  * @generated from extension: optional bool prefixes = 80058951;

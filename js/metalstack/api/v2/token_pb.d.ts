@@ -131,9 +131,9 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
     /**
      * Permissions is a list of service methods this token can be used for
      *
-     * @generated from field: repeated metalstack.api.v2.MethodPermission permissions = 2;
+     * @generated from field: repeated metalstack.api.v2.PermissionsByVisibility permissions = 2;
      */
-    permissions: MethodPermission[];
+    permissions: PermissionsByVisibility[];
     /**
      * Expires gives the duration since now, after which this token can not be used anymore
      *
@@ -217,6 +217,229 @@ export type MethodPermission = Message<"metalstack.api.v2.MethodPermission"> & {
  * Use `create(MethodPermissionSchema)` to create a new message.
  */
 export declare const MethodPermissionSchema: GenMessage<MethodPermission>;
+/**
+ * PermissionsByVisibility contains method permissions by visibility
+ *
+ * @generated from message metalstack.api.v2.PermissionsByVisibility
+ */
+export type PermissionsByVisibility = Message<"metalstack.api.v2.PermissionsByVisibility"> & {
+    /**
+     * Visibility defines the visibility of the requested method permissions
+     *
+     * @generated from oneof metalstack.api.v2.PermissionsByVisibility.visibility
+     */
+    visibility: {
+        /**
+         * PublicPermissions carries public method permissions
+         *
+         * @generated from field: metalstack.api.v2.PublicPermissions public = 1;
+         */
+        value: PublicPermissions;
+        case: "public";
+    } | {
+        /**
+         * SelfPermissions carries self method permissions
+         *
+         * @generated from field: metalstack.api.v2.SelfPermissions self = 2;
+         */
+        value: SelfPermissions;
+        case: "self";
+    } | {
+        /**
+         * ProjectPermissions carries project method permissions
+         *
+         * @generated from field: metalstack.api.v2.ProjectPermissions project = 3;
+         */
+        value: ProjectPermissions;
+        case: "project";
+    } | {
+        /**
+         * TenantPermissions carries tenant method permissions
+         *
+         * @generated from field: metalstack.api.v2.TenantPermissions tenant = 4;
+         */
+        value: TenantPermissions;
+        case: "tenant";
+    } | {
+        /**
+         * AdminPermissions carries admin method permissions
+         *
+         * @generated from field: metalstack.api.v2.AdminPermissions admin = 5;
+         */
+        value: AdminPermissions;
+        case: "admin";
+    } | {
+        /**
+         * MachinePermissions carries machine method permissions
+         *
+         * @generated from field: metalstack.api.v2.MachinePermissions machine = 6;
+         */
+        value: MachinePermissions;
+        case: "machine";
+    } | {
+        /**
+         * InfraPermissions carries infra method permissions
+         *
+         * @generated from field: metalstack.api.v2.InfraPermissions infra = 7;
+         */
+        value: InfraPermissions;
+        case: "infra";
+    } | {
+        case: undefined;
+        value?: undefined;
+    };
+};
+/**
+ * Describes the message metalstack.api.v2.PermissionsByVisibility.
+ * Use `create(PermissionsByVisibilitySchema)` to create a new message.
+ */
+export declare const PermissionsByVisibilitySchema: GenMessage<PermissionsByVisibility>;
+/**
+ * PublicPermissions carries public method permissions
+ *
+ * @generated from message metalstack.api.v2.PublicPermissions
+ */
+export type PublicPermissions = Message<"metalstack.api.v2.PublicPermissions"> & {
+    /**
+     * Methods which should be accessible
+     *
+     * @generated from field: repeated string methods = 2;
+     */
+    methods: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.PublicPermissions.
+ * Use `create(PublicPermissionsSchema)` to create a new message.
+ */
+export declare const PublicPermissionsSchema: GenMessage<PublicPermissions>;
+/**
+ * SelfPermissions carries self method permissions
+ *
+ * @generated from message metalstack.api.v2.SelfPermissions
+ */
+export type SelfPermissions = Message<"metalstack.api.v2.SelfPermissions"> & {
+    /**
+     * Methods which should be accessible
+     *
+     * @generated from field: repeated string methods = 2;
+     */
+    methods: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.SelfPermissions.
+ * Use `create(SelfPermissionsSchema)` to create a new message.
+ */
+export declare const SelfPermissionsSchema: GenMessage<SelfPermissions>;
+/**
+ * ProjectPermissions carries project method permissions
+ *
+ * @generated from message metalstack.api.v2.ProjectPermissions
+ */
+export type ProjectPermissions = Message<"metalstack.api.v2.ProjectPermissions"> & {
+    /**
+     * asterisk (*) can be specified to match any subject
+     *
+     * @generated from field: string project = 1;
+     */
+    project: string;
+    /**
+     * Methods which should be accessible
+     *
+     * @generated from field: repeated string methods = 2;
+     */
+    methods: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.ProjectPermissions.
+ * Use `create(ProjectPermissionsSchema)` to create a new message.
+ */
+export declare const ProjectPermissionsSchema: GenMessage<ProjectPermissions>;
+/**
+ * TenantPermissions carries tenant method permissions
+ *
+ * @generated from message metalstack.api.v2.TenantPermissions
+ */
+export type TenantPermissions = Message<"metalstack.api.v2.TenantPermissions"> & {
+    /**
+     * Login of the tenant
+     * asterisk (*) can be specified to match any subject
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * Methods which should be accessible
+     *
+     * @generated from field: repeated string methods = 2;
+     */
+    methods: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.TenantPermissions.
+ * Use `create(TenantPermissionsSchema)` to create a new message.
+ */
+export declare const TenantPermissionsSchema: GenMessage<TenantPermissions>;
+/**
+ * AdminPermissions carries admin method permissions
+ *
+ * @generated from message metalstack.api.v2.AdminPermissions
+ */
+export type AdminPermissions = Message<"metalstack.api.v2.AdminPermissions"> & {
+    /**
+     * Methods which should be accessible
+     *
+     * @generated from field: repeated string methods = 2;
+     */
+    methods: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.AdminPermissions.
+ * Use `create(AdminPermissionsSchema)` to create a new message.
+ */
+export declare const AdminPermissionsSchema: GenMessage<AdminPermissions>;
+/**
+ * MachinePermissions carries machine method permissions
+ *
+ * @generated from message metalstack.api.v2.MachinePermissions
+ */
+export type MachinePermissions = Message<"metalstack.api.v2.MachinePermissions"> & {
+    /**
+     * UUID of this machine
+     * asterisk (*) can be specified to match any subject
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Methods which should be accessible
+     *
+     * @generated from field: repeated string methods = 2;
+     */
+    methods: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.MachinePermissions.
+ * Use `create(MachinePermissionsSchema)` to create a new message.
+ */
+export declare const MachinePermissionsSchema: GenMessage<MachinePermissions>;
+/**
+ * InfraPermissions carries infra method permissions
+ *
+ * @generated from message metalstack.api.v2.InfraPermissions
+ */
+export type InfraPermissions = Message<"metalstack.api.v2.InfraPermissions"> & {
+    /**
+     * Methods which should be accessible
+     *
+     * @generated from field: repeated string methods = 2;
+     */
+    methods: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.InfraPermissions.
+ * Use `create(InfraPermissionsSchema)` to create a new message.
+ */
+export declare const InfraPermissionsSchema: GenMessage<InfraPermissions>;
 /**
  * TokenServiceCreateResponse is the response payload of a token create request
  *
@@ -334,9 +557,9 @@ export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceU
     /**
      * Permissions is a list of service methods this token can be used for
      *
-     * @generated from field: repeated metalstack.api.v2.MethodPermission permissions = 4;
+     * @generated from field: repeated metalstack.api.v2.PermissionsByVisibility permissions = 4;
      */
-    permissions: MethodPermission[];
+    permissions: PermissionsByVisibility[];
     /**
      * ProjectRoles associates a project id with the corresponding role of the token owner
      *

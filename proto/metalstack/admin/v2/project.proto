@@ -2,9 +2,7 @@ syntax = "proto3";
 
 package metalstack.admin.v2;
 
-import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
-import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/project.proto";
 
 // ProjectService provides project management operations.

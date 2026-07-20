@@ -76,13 +76,17 @@ message Token {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 9 [
     (buf.validate.field).map.(metalstack.api.v2.project_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 10 [
     (buf.validate.field).map.(metalstack.api.v2.tenant_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // AdminRole defines the admin role of the token owner
@@ -93,7 +97,9 @@ message Token {
   // TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead
   map<string, MachineRole> machine_roles = 13 [
     (buf.validate.field).map.(metalstack.api.v2.machine_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
 }
@@ -113,7 +119,7 @@ message TokenServiceCreateRequest {
   // Description of the token
   string description = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
-  repeated MethodPermission permissions = 2 [(buf.validate.field).repeated.max_items = 100];
+  repeated PermissionsByVisibility permissions = 2 [(buf.validate.field).repeated.max_items = 100];
   // Expires gives the duration since now, after which this token can not be used anymore
   google.protobuf.Duration expires = 3 [(buf.validate.field).duration = {
     // Max token lifetime is one year
@@ -123,13 +129,17 @@ message TokenServiceCreateRequest {
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 4 [
     (buf.validate.field).map.(metalstack.api.v2.project_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 5 [
     (buf.validate.field).map.(metalstack.api.v2.tenant_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // AdminRole defines the admin role of the token owner
@@ -139,7 +149,9 @@ message TokenServiceCreateRequest {
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
   map<string, MachineRole> machine_roles = 8 [
     (buf.validate.field).map.(metalstack.api.v2.machine_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // Labels on this token
@@ -155,6 +167,78 @@ message MethodPermission {
   // empty string ("") can be specified for requests that do not require a subject, e.g. partition list
   // otherwise either a projectid or a tenant login should be specified
   string subject = 1 [(buf.validate.field).string = {max_len: 256}];
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// PermissionsByVisibility contains method permissions by visibility
+message PermissionsByVisibility {
+  // Visibility defines the visibility of the requested method permissions
+  oneof visibility {
+    // PublicPermissions carries public method permissions
+    PublicPermissions public = 1;
+    // SelfPermissions carries self method permissions
+    SelfPermissions self = 2;
+    // ProjectPermissions carries project method permissions
+    ProjectPermissions project = 3;
+    // TenantPermissions carries tenant method permissions
+    TenantPermissions tenant = 4;
+    // AdminPermissions carries admin method permissions
+    AdminPermissions admin = 5;
+    // MachinePermissions carries machine method permissions
+    MachinePermissions machine = 6;
+    // InfraPermissions carries infra method permissions
+    InfraPermissions infra = 7;
+  }
+}
+
+// PublicPermissions carries public method permissions
+message PublicPermissions {
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// SelfPermissions carries self method permissions
+message SelfPermissions {
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// ProjectPermissions carries project method permissions
+message ProjectPermissions {
+  // asterisk (*) can be specified to match any subject
+  string project = 1 [(buf.validate.field).string.(metalstack.api.v2.is_project_subject_permission) = true];
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// TenantPermissions carries tenant method permissions
+message TenantPermissions {
+  // Login of the tenant
+  // asterisk (*) can be specified to match any subject
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_subject_permission) = true];
+
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// AdminPermissions carries admin method permissions
+message AdminPermissions {
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// MachinePermissions carries machine method permissions
+message MachinePermissions {
+  // UUID of this machine
+  // asterisk (*) can be specified to match any subject
+  string uuid = 1 [(buf.validate.field).string.(metalstack.api.v2.is_machine_subject_permission) = true];
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// InfraPermissions carries infra method permissions
+message InfraPermissions {
   // Methods which should be accessible
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
@@ -198,17 +282,21 @@ message TokenServiceUpdateRequest {
   // Description is a user given description of this token.
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
-  repeated MethodPermission permissions = 4;
+  repeated PermissionsByVisibility permissions = 4;
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [
     (buf.validate.field).map.(metalstack.api.v2.project_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // TenantRoles associates a tenant id with the corresponding role of the token owner
   map<string, TenantRole> tenant_roles = 6 [
     (buf.validate.field).map.(metalstack.api.v2.tenant_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // AdminRole defines the admin role of the token owner
@@ -218,7 +306,9 @@ message TokenServiceUpdateRequest {
   // MachineRoles associates a machine uuid with the corresponding role of the token owner
   map<string, MachineRole> machine_roles = 9 [
     (buf.validate.field).map.(metalstack.api.v2.machine_roles_keys_valid) = true,
-    (buf.validate.field).map.values = {enum: {defined_only: true}},
+    (buf.validate.field).map.values = {
+      enum: {defined_only: true}
+    },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
   // Labels on this token

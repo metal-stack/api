@@ -86,13 +86,19 @@ These options specify the RBAC of the api-endpoint.
 | ADMIN_ROLE\_   | Specifies the required admin role            | UNSPECIFIED |                                                        |
 |                |                                              | EDITOR      | admin editor                                           |
 |                |                                              | VIEWER      | admin viewer                                           |
+| MACHINE_ROLE\_ | Specifies the required machine role          | UNSPECIFIED |                                                        |
+|                |                                              | EDITOR      | machine editor                                         |
+|                |                                              | VIEWER      | machine viewer                                         |
+| INFRA_ROLE\_   | Specifies the required infra role            | UNSPECIFIED |                                                        |
+|                |                                              | EDITOR      | infra editor                                           |
+|                |                                              | VIEWER      | infra viewer                                           |
 | VISIBILITY\_   | Specifies the visibility of the api-endpoint | UNSPECIFIED |                                                        |
 |                |                                              | PUBLIC      | api-method is visible to public, a token is not needed |
 |                |                                              | SELF        | api-method is scoped to owner resources                |
 
 > [!IMPORTANT]
 >
-> Every operation needs at least an option, which references the scope of the request: **ROLE** or **VISIBILITY**
+> Every operation needs to specify exactly one of the presented options. The option defines the request scope, which is later used for implementing request authorization in the server.
 
 > [!CAUTION]
 >

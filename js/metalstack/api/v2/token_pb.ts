@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/api/v2/token.proto.
  */
 export const file_metalstack_api_v2_token: GenFile = /*@__PURE__*/
-  fileDesc("Ch1tZXRhbHN0YWNrL2FwaS92Mi90b2tlbi5wcm90bxIRbWV0YWxzdGFjay5hcGkudjIilQgKBVRva2VuEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhkKBHVzZXIYAiABKAlCC7pICHIG+LOusQIBEiUKBG1ldGEYAyABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEiAKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECARJDCgtwZXJtaXNzaW9ucxgFIAMoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFBlcm1pc3Npb25CCbpIBpIBAxD0AxIrCgdleHBpcmVzGAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglpc3N1ZWRfYXQYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjoKCnRva2VuX3R5cGUYCCABKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblR5cGVCCLpIBYIBAhABElwKDXByb2plY3Rfcm9sZXMYCSADKAsyKi5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlbi5Qcm9qZWN0Um9sZXNFbnRyeUIZukgWmgETwJW4sQIByJW4sQIBKgWCAQIQARJaCgx0ZW5hbnRfcm9sZXMYCiADKAsyKS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlbi5UZW5hbnRSb2xlc0VudHJ5Qhm6SBaaARPAlbixAgHQlbixAgEqBYIBAhABEj8KCmFkbWluX3JvbGUYCyABKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5BZG1pblJvbGVCCLpIBYIBAhABSACIAQESPwoKaW5mcmFfcm9sZRgMIAEoDjIcLm1ldGFsc3RhY2suYXBpLnYyLkluZnJhUm9sZUIIukgFggECEAFIAYgBARJcCg1tYWNoaW5lX3JvbGVzGA0gAygLMioubWV0YWxzdGFjay5hcGkudjIuVG9rZW4uTWFjaGluZVJvbGVzRW50cnlCGbpIFpoBE8CVuLECAdiVuLECASoFggECEAEaUwoRUHJvamVjdFJvbGVzRW50cnkSCwoDa2V5GAEgASgJEi0KBXZhbHVlGAIgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGU6AjgBGlEKEFRlbmFudFJvbGVzRW50cnkSCwoDa2V5GAEgASgJEiwKBXZhbHVlGAIgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZToCOAEaUwoRTWFjaGluZVJvbGVzRW50cnkSCwoDa2V5GAEgASgJEi0KBXZhbHVlGAIgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVJvbGU6AjgBQg0KC19hZG1pbl9yb2xlQg0KC19pbmZyYV9yb2xlIt0HChlUb2tlblNlcnZpY2VDcmVhdGVSZXF1ZXN0EiAKC2Rlc2NyaXB0aW9uGAEgASgJQgu6SAhyBsizrrECARJCCgtwZXJtaXNzaW9ucxgCIAMoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFBlcm1pc3Npb25CCLpIBZIBAhBkEj4KB2V4cGlyZXMYAyABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb25CErpID6oBDBoFCIHnhA8yAwjYBBJwCg1wcm9qZWN0X3JvbGVzGAQgAygLMj4ubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlQ3JlYXRlUmVxdWVzdC5Qcm9qZWN0Um9sZXNFbnRyeUIZukgWmgETwJW4sQIByJW4sQIBKgWCAQIQARJuCgx0ZW5hbnRfcm9sZXMYBSADKAsyPS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VDcmVhdGVSZXF1ZXN0LlRlbmFudFJvbGVzRW50cnlCGbpIFpoBE8CVuLECAdCVuLECASoFggECEAESPwoKYWRtaW5fcm9sZRgGIAEoDjIcLm1ldGFsc3RhY2suYXBpLnYyLkFkbWluUm9sZUIIukgFggECEAFIAIgBARI/CgppbmZyYV9yb2xlGAcgASgOMhwubWV0YWxzdGFjay5hcGkudjIuSW5mcmFSb2xlQgi6SAWCAQIQAUgBiAEBEnAKDW1hY2hpbmVfcm9sZXMYCCADKAsyPi5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VDcmVhdGVSZXF1ZXN0Lk1hY2hpbmVSb2xlc0VudHJ5Qhm6SBaaARPAlbixAgHYlbixAgEqBYIBAhABEikKBmxhYmVscxgJIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVscxpTChFQcm9qZWN0Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZToCOAEaUQoQVGVuYW50Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLAoFdmFsdWUYAiABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRSb2xlOgI4ARpTChFNYWNoaW5lUm9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lUm9sZToCOAFCDQoLX2FkbWluX3JvbGVCDQoLX2luZnJhX3JvbGUiSQoQTWV0aG9kUGVybWlzc2lvbhIZCgdzdWJqZWN0GAEgASgJQgi6SAVyAxiAAhIaCgdtZXRob2RzGAIgAygJQgm6SAaSAQMQ9AMiVQoaVG9rZW5TZXJ2aWNlQ3JlYXRlUmVzcG9uc2USJwoFdG9rZW4YASABKAsyGC5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlbhIOCgZzZWNyZXQYAiABKAkiRwoXVG9rZW5TZXJ2aWNlTGlzdFJlcXVlc3QSLAoFcXVlcnkYASABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblF1ZXJ5IkQKGFRva2VuU2VydmljZUxpc3RSZXNwb25zZRIoCgZ0b2tlbnMYASADKAsyGC5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlbiIzChlUb2tlblNlcnZpY2VSZXZva2VSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIhwKGlRva2VuU2VydmljZVJldm9rZVJlc3BvbnNlIoIIChlUb2tlblNlcnZpY2VVcGRhdGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjoKC3VwZGF0ZV9tZXRhGAIgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuVXBkYXRlTWV0YUIGukgDyAEAEiUKC2Rlc2NyaXB0aW9uGAMgASgJQgu6SAhyBsizrrECAUgAiAEBEjgKC3Blcm1pc3Npb25zGAQgAygLMiMubWV0YWxzdGFjay5hcGkudjIuTWV0aG9kUGVybWlzc2lvbhJwCg1wcm9qZWN0X3JvbGVzGAUgAygLMj4ubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlVXBkYXRlUmVxdWVzdC5Qcm9qZWN0Um9sZXNFbnRyeUIZukgWmgETwJW4sQIByJW4sQIBKgWCAQIQARJuCgx0ZW5hbnRfcm9sZXMYBiADKAsyPS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VVcGRhdGVSZXF1ZXN0LlRlbmFudFJvbGVzRW50cnlCGbpIFpoBE8CVuLECAdCVuLECASoFggECEAESPwoKYWRtaW5fcm9sZRgHIAEoDjIcLm1ldGFsc3RhY2suYXBpLnYyLkFkbWluUm9sZUIIukgFggECEAFIAYgBARI/CgppbmZyYV9yb2xlGAggASgOMhwubWV0YWxzdGFjay5hcGkudjIuSW5mcmFSb2xlQgi6SAWCAQIQAUgCiAEBEnAKDW1hY2hpbmVfcm9sZXMYCSADKAsyPi5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VVcGRhdGVSZXF1ZXN0Lk1hY2hpbmVSb2xlc0VudHJ5Qhm6SBaaARPAlbixAgHYlbixAgEqBYIBAhABEi8KBmxhYmVscxgKIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVscxpTChFQcm9qZWN0Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZToCOAEaUQoQVGVuYW50Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLAoFdmFsdWUYAiABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRSb2xlOgI4ARpTChFNYWNoaW5lUm9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lUm9sZToCOAFCDgoMX2Rlc2NyaXB0aW9uQg0KC19hZG1pbl9yb2xlQg0KC19pbmZyYV9yb2xlIkUKGlRva2VuU2VydmljZVVwZGF0ZVJlc3BvbnNlEicKBXRva2VuGAEgASgLMhgubWV0YWxzdGFjay5hcGkudjIuVG9rZW4iMAoWVG9rZW5TZXJ2aWNlR2V0UmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJCChdUb2tlblNlcnZpY2VHZXRSZXNwb25zZRInCgV0b2tlbhgBIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuIhwKGlRva2VuU2VydmljZVJlZnJlc2hSZXF1ZXN0IlYKG1Rva2VuU2VydmljZVJlZnJlc2hSZXNwb25zZRInCgV0b2tlbhgBIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuEg4KBnNlY3JldBgCIAEoCSKdAgoKVG9rZW5RdWVyeRIbCgR1dWlkGAEgASgJQgi6SAVyA7ABAUgAiAEBEh4KBHVzZXIYAiABKAlCC7pICHIG+LOusQIBSAGIAQESJQoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBSAKIAQESLgoGbGFiZWxzGAQgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzSAOIAQESPwoKdG9rZW5fdHlwZRgFIAEoDjIcLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuVHlwZUIIukgFggECEAFIBIgBAUIHCgVfdXVpZEIHCgVfdXNlckIOCgxfZGVzY3JpcHRpb25CCQoHX2xhYmVsc0INCgtfdG9rZW5fdHlwZSpQCglUb2tlblR5cGUSGgoWVE9LRU5fVFlQRV9VTlNQRUNJRklFRBAAEhIKDlRPS0VOX1RZUEVfQVBJEAESEwoPVE9LRU5fVFlQRV9VU0VSEAIyqAUKDFRva2VuU2VydmljZRJmCgNHZXQSKS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VHZXRSZXF1ZXN0GioubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGALg8xgBEm8KBkNyZWF0ZRIsLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZUNyZWF0ZVJlcXVlc3QaLS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VDcmVhdGVSZXNwb25zZSII2PMYAuDzGAESbwoGVXBkYXRlEiwubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlVXBkYXRlUmVxdWVzdBotLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZVVwZGF0ZVJlc3BvbnNlIgjY8xgC4PMYARJpCgRMaXN0EioubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlTGlzdFJlcXVlc3QaKy5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VMaXN0UmVzcG9uc2UiCNjzGALg8xgBEm8KBlJldm9rZRIsLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZVJldm9rZVJlcXVlc3QaLS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VSZXZva2VSZXNwb25zZSII2PMYAuDzGAEScgoHUmVmcmVzaBItLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZVJlZnJlc2hSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlUmVmcmVzaFJlc3BvbnNlIgjY8xgC4PMYAULAAQoVY29tLm1ldGFsc3RhY2suYXBpLnYyQgpUb2tlblByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("Ch1tZXRhbHN0YWNrL2FwaS92Mi90b2tlbi5wcm90bxIRbWV0YWxzdGFjay5hcGkudjIilQgKBVRva2VuEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhkKBHVzZXIYAiABKAlCC7pICHIG+LOusQIBEiUKBG1ldGEYAyABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEiAKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECARJDCgtwZXJtaXNzaW9ucxgFIAMoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1ldGhvZFBlcm1pc3Npb25CCbpIBpIBAxD0AxIrCgdleHBpcmVzGAYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBItCglpc3N1ZWRfYXQYByABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEjoKCnRva2VuX3R5cGUYCCABKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblR5cGVCCLpIBYIBAhABElwKDXByb2plY3Rfcm9sZXMYCSADKAsyKi5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlbi5Qcm9qZWN0Um9sZXNFbnRyeUIZukgWmgETwJW4sQIByJW4sQIBKgWCAQIQARJaCgx0ZW5hbnRfcm9sZXMYCiADKAsyKS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlbi5UZW5hbnRSb2xlc0VudHJ5Qhm6SBaaARPAlbixAgHQlbixAgEqBYIBAhABEj8KCmFkbWluX3JvbGUYCyABKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5BZG1pblJvbGVCCLpIBYIBAhABSACIAQESPwoKaW5mcmFfcm9sZRgMIAEoDjIcLm1ldGFsc3RhY2suYXBpLnYyLkluZnJhUm9sZUIIukgFggECEAFIAYgBARJcCg1tYWNoaW5lX3JvbGVzGA0gAygLMioubWV0YWxzdGFjay5hcGkudjIuVG9rZW4uTWFjaGluZVJvbGVzRW50cnlCGbpIFpoBE8CVuLECAdiVuLECASoFggECEAEaUwoRUHJvamVjdFJvbGVzRW50cnkSCwoDa2V5GAEgASgJEi0KBXZhbHVlGAIgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGU6AjgBGlEKEFRlbmFudFJvbGVzRW50cnkSCwoDa2V5GAEgASgJEiwKBXZhbHVlGAIgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZToCOAEaUwoRTWFjaGluZVJvbGVzRW50cnkSCwoDa2V5GAEgASgJEi0KBXZhbHVlGAIgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVJvbGU6AjgBQg0KC19hZG1pbl9yb2xlQg0KC19pbmZyYV9yb2xlIuQHChlUb2tlblNlcnZpY2VDcmVhdGVSZXF1ZXN0EiAKC2Rlc2NyaXB0aW9uGAEgASgJQgu6SAhyBsizrrECARJJCgtwZXJtaXNzaW9ucxgCIAMoCzIqLm1ldGFsc3RhY2suYXBpLnYyLlBlcm1pc3Npb25zQnlWaXNpYmlsaXR5Qgi6SAWSAQIQZBI+CgdleHBpcmVzGAMgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQhK6SA+qAQwaBQiB54QPMgMI2AQScAoNcHJvamVjdF9yb2xlcxgEIAMoCzI+Lm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZUNyZWF0ZVJlcXVlc3QuUHJvamVjdFJvbGVzRW50cnlCGbpIFpoBE8CVuLECAciVuLECASoFggECEAESbgoMdGVuYW50X3JvbGVzGAUgAygLMj0ubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlQ3JlYXRlUmVxdWVzdC5UZW5hbnRSb2xlc0VudHJ5Qhm6SBaaARPAlbixAgHQlbixAgEqBYIBAhABEj8KCmFkbWluX3JvbGUYBiABKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5BZG1pblJvbGVCCLpIBYIBAhABSACIAQESPwoKaW5mcmFfcm9sZRgHIAEoDjIcLm1ldGFsc3RhY2suYXBpLnYyLkluZnJhUm9sZUIIukgFggECEAFIAYgBARJwCg1tYWNoaW5lX3JvbGVzGAggAygLMj4ubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlQ3JlYXRlUmVxdWVzdC5NYWNoaW5lUm9sZXNFbnRyeUIZukgWmgETwJW4sQIB2JW4sQIBKgWCAQIQARIpCgZsYWJlbHMYCSABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHMaUwoRUHJvamVjdFJvbGVzRW50cnkSCwoDa2V5GAEgASgJEi0KBXZhbHVlGAIgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGU6AjgBGlEKEFRlbmFudFJvbGVzRW50cnkSCwoDa2V5GAEgASgJEiwKBXZhbHVlGAIgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZToCOAEaUwoRTWFjaGluZVJvbGVzRW50cnkSCwoDa2V5GAEgASgJEi0KBXZhbHVlGAIgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVJvbGU6AjgBQg0KC19hZG1pbl9yb2xlQg0KC19pbmZyYV9yb2xlIkkKEE1ldGhvZFBlcm1pc3Npb24SGQoHc3ViamVjdBgBIAEoCUIIukgFcgMYgAISGgoHbWV0aG9kcxgCIAMoCUIJukgGkgEDEPQDIqsDChdQZXJtaXNzaW9uc0J5VmlzaWJpbGl0eRI2CgZwdWJsaWMYASABKAsyJC5tZXRhbHN0YWNrLmFwaS52Mi5QdWJsaWNQZXJtaXNzaW9uc0gAEjIKBHNlbGYYAiABKAsyIi5tZXRhbHN0YWNrLmFwaS52Mi5TZWxmUGVybWlzc2lvbnNIABI4Cgdwcm9qZWN0GAMgASgLMiUubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFBlcm1pc3Npb25zSAASNgoGdGVuYW50GAQgASgLMiQubWV0YWxzdGFjay5hcGkudjIuVGVuYW50UGVybWlzc2lvbnNIABI0CgVhZG1pbhgFIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLkFkbWluUGVybWlzc2lvbnNIABI4CgdtYWNoaW5lGAYgASgLMiUubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVBlcm1pc3Npb25zSAASNAoFaW5mcmEYByABKAsyIy5tZXRhbHN0YWNrLmFwaS52Mi5JbmZyYVBlcm1pc3Npb25zSABCDAoKdmlzaWJpbGl0eSIvChFQdWJsaWNQZXJtaXNzaW9ucxIaCgdtZXRob2RzGAIgAygJQgm6SAaSAQMQ9AMiLQoPU2VsZlBlcm1pc3Npb25zEhoKB21ldGhvZHMYAiADKAlCCbpIBpIBAxD0AyJOChJQcm9qZWN0UGVybWlzc2lvbnMSHAoHcHJvamVjdBgBIAEoCUILukgIcgagtK6xAgESGgoHbWV0aG9kcxgCIAMoCUIJukgGkgEDEPQDIksKEVRlbmFudFBlcm1pc3Npb25zEhoKBWxvZ2luGAEgASgJQgu6SAhyBpi0rrECARIaCgdtZXRob2RzGAIgAygJQgm6SAaSAQMQ9AMiLgoQQWRtaW5QZXJtaXNzaW9ucxIaCgdtZXRob2RzGAIgAygJQgm6SAaSAQMQ9AMiSwoSTWFjaGluZVBlcm1pc3Npb25zEhkKBHV1aWQYASABKAlCC7pICHIGqLSusQIBEhoKB21ldGhvZHMYAiADKAlCCbpIBpIBAxD0AyIuChBJbmZyYVBlcm1pc3Npb25zEhoKB21ldGhvZHMYAiADKAlCCbpIBpIBAxD0AyJVChpUb2tlblNlcnZpY2VDcmVhdGVSZXNwb25zZRInCgV0b2tlbhgBIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuEg4KBnNlY3JldBgCIAEoCSJHChdUb2tlblNlcnZpY2VMaXN0UmVxdWVzdBIsCgVxdWVyeRgBIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuUXVlcnkiRAoYVG9rZW5TZXJ2aWNlTGlzdFJlc3BvbnNlEigKBnRva2VucxgBIAMoCzIYLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuIjMKGVRva2VuU2VydmljZVJldm9rZVJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQEiHAoaVG9rZW5TZXJ2aWNlUmV2b2tlUmVzcG9uc2UiiQgKGVRva2VuU2VydmljZVVwZGF0ZVJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESOgoLdXBkYXRlX21ldGEYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVNZXRhQga6SAPIAQASJQoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBSACIAQESPwoLcGVybWlzc2lvbnMYBCADKAsyKi5tZXRhbHN0YWNrLmFwaS52Mi5QZXJtaXNzaW9uc0J5VmlzaWJpbGl0eRJwCg1wcm9qZWN0X3JvbGVzGAUgAygLMj4ubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlVXBkYXRlUmVxdWVzdC5Qcm9qZWN0Um9sZXNFbnRyeUIZukgWmgETwJW4sQIByJW4sQIBKgWCAQIQARJuCgx0ZW5hbnRfcm9sZXMYBiADKAsyPS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VVcGRhdGVSZXF1ZXN0LlRlbmFudFJvbGVzRW50cnlCGbpIFpoBE8CVuLECAdCVuLECASoFggECEAESPwoKYWRtaW5fcm9sZRgHIAEoDjIcLm1ldGFsc3RhY2suYXBpLnYyLkFkbWluUm9sZUIIukgFggECEAFIAYgBARI/CgppbmZyYV9yb2xlGAggASgOMhwubWV0YWxzdGFjay5hcGkudjIuSW5mcmFSb2xlQgi6SAWCAQIQAUgCiAEBEnAKDW1hY2hpbmVfcm9sZXMYCSADKAsyPi5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VVcGRhdGVSZXF1ZXN0Lk1hY2hpbmVSb2xlc0VudHJ5Qhm6SBaaARPAlbixAgHYlbixAgEqBYIBAhABEi8KBmxhYmVscxgKIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVscxpTChFQcm9qZWN0Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZToCOAEaUQoQVGVuYW50Um9sZXNFbnRyeRILCgNrZXkYASABKAkSLAoFdmFsdWUYAiABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRSb2xlOgI4ARpTChFNYWNoaW5lUm9sZXNFbnRyeRILCgNrZXkYASABKAkSLQoFdmFsdWUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lUm9sZToCOAFCDgoMX2Rlc2NyaXB0aW9uQg0KC19hZG1pbl9yb2xlQg0KC19pbmZyYV9yb2xlIkUKGlRva2VuU2VydmljZVVwZGF0ZVJlc3BvbnNlEicKBXRva2VuGAEgASgLMhgubWV0YWxzdGFjay5hcGkudjIuVG9rZW4iMAoWVG9rZW5TZXJ2aWNlR2V0UmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJCChdUb2tlblNlcnZpY2VHZXRSZXNwb25zZRInCgV0b2tlbhgBIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuIhwKGlRva2VuU2VydmljZVJlZnJlc2hSZXF1ZXN0IlYKG1Rva2VuU2VydmljZVJlZnJlc2hSZXNwb25zZRInCgV0b2tlbhgBIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuEg4KBnNlY3JldBgCIAEoCSKdAgoKVG9rZW5RdWVyeRIbCgR1dWlkGAEgASgJQgi6SAVyA7ABAUgAiAEBEh4KBHVzZXIYAiABKAlCC7pICHIG+LOusQIBSAGIAQESJQoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBSAKIAQESLgoGbGFiZWxzGAQgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzSAOIAQESPwoKdG9rZW5fdHlwZRgFIAEoDjIcLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuVHlwZUIIukgFggECEAFIBIgBAUIHCgVfdXVpZEIHCgVfdXNlckIOCgxfZGVzY3JpcHRpb25CCQoHX2xhYmVsc0INCgtfdG9rZW5fdHlwZSpQCglUb2tlblR5cGUSGgoWVE9LRU5fVFlQRV9VTlNQRUNJRklFRBAAEhIKDlRPS0VOX1RZUEVfQVBJEAESEwoPVE9LRU5fVFlQRV9VU0VSEAIyqAUKDFRva2VuU2VydmljZRJmCgNHZXQSKS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VHZXRSZXF1ZXN0GioubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGALg8xgBEm8KBkNyZWF0ZRIsLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZUNyZWF0ZVJlcXVlc3QaLS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VDcmVhdGVSZXNwb25zZSII2PMYAuDzGAESbwoGVXBkYXRlEiwubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlVXBkYXRlUmVxdWVzdBotLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZVVwZGF0ZVJlc3BvbnNlIgjY8xgC4PMYARJpCgRMaXN0EioubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlTGlzdFJlcXVlc3QaKy5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VMaXN0UmVzcG9uc2UiCNjzGALg8xgBEm8KBlJldm9rZRIsLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZVJldm9rZVJlcXVlc3QaLS5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlblNlcnZpY2VSZXZva2VSZXNwb25zZSII2PMYAuDzGAEScgoHUmVmcmVzaBItLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuU2VydmljZVJlZnJlc2hSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hcGkudjIuVG9rZW5TZXJ2aWNlUmVmcmVzaFJlc3BvbnNlIgjY8xgC4PMYAULAAQoVY29tLm1ldGFsc3RhY2suYXBpLnYyQgpUb2tlblByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
  * Token generates a jwt authentication token to access the api
@@ -153,9 +153,9 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
   /**
    * Permissions is a list of service methods this token can be used for
    *
-   * @generated from field: repeated metalstack.api.v2.MethodPermission permissions = 2;
+   * @generated from field: repeated metalstack.api.v2.PermissionsByVisibility permissions = 2;
    */
-  permissions: MethodPermission[];
+  permissions: PermissionsByVisibility[];
 
   /**
    * Expires gives the duration since now, after which this token can not be used anymore
@@ -248,6 +248,253 @@ export const MethodPermissionSchema: GenMessage<MethodPermission> = /*@__PURE__*
   messageDesc(file_metalstack_api_v2_token, 2);
 
 /**
+ * PermissionsByVisibility contains method permissions by visibility
+ *
+ * @generated from message metalstack.api.v2.PermissionsByVisibility
+ */
+export type PermissionsByVisibility = Message<"metalstack.api.v2.PermissionsByVisibility"> & {
+  /**
+   * Visibility defines the visibility of the requested method permissions
+   *
+   * @generated from oneof metalstack.api.v2.PermissionsByVisibility.visibility
+   */
+  visibility: {
+    /**
+     * PublicPermissions carries public method permissions
+     *
+     * @generated from field: metalstack.api.v2.PublicPermissions public = 1;
+     */
+    value: PublicPermissions;
+    case: "public";
+  } | {
+    /**
+     * SelfPermissions carries self method permissions
+     *
+     * @generated from field: metalstack.api.v2.SelfPermissions self = 2;
+     */
+    value: SelfPermissions;
+    case: "self";
+  } | {
+    /**
+     * ProjectPermissions carries project method permissions
+     *
+     * @generated from field: metalstack.api.v2.ProjectPermissions project = 3;
+     */
+    value: ProjectPermissions;
+    case: "project";
+  } | {
+    /**
+     * TenantPermissions carries tenant method permissions
+     *
+     * @generated from field: metalstack.api.v2.TenantPermissions tenant = 4;
+     */
+    value: TenantPermissions;
+    case: "tenant";
+  } | {
+    /**
+     * AdminPermissions carries admin method permissions
+     *
+     * @generated from field: metalstack.api.v2.AdminPermissions admin = 5;
+     */
+    value: AdminPermissions;
+    case: "admin";
+  } | {
+    /**
+     * MachinePermissions carries machine method permissions
+     *
+     * @generated from field: metalstack.api.v2.MachinePermissions machine = 6;
+     */
+    value: MachinePermissions;
+    case: "machine";
+  } | {
+    /**
+     * InfraPermissions carries infra method permissions
+     *
+     * @generated from field: metalstack.api.v2.InfraPermissions infra = 7;
+     */
+    value: InfraPermissions;
+    case: "infra";
+  } | { case: undefined; value?: undefined };
+};
+
+/**
+ * Describes the message metalstack.api.v2.PermissionsByVisibility.
+ * Use `create(PermissionsByVisibilitySchema)` to create a new message.
+ */
+export const PermissionsByVisibilitySchema: GenMessage<PermissionsByVisibility> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_token, 3);
+
+/**
+ * PublicPermissions carries public method permissions
+ *
+ * @generated from message metalstack.api.v2.PublicPermissions
+ */
+export type PublicPermissions = Message<"metalstack.api.v2.PublicPermissions"> & {
+  /**
+   * Methods which should be accessible
+   *
+   * @generated from field: repeated string methods = 2;
+   */
+  methods: string[];
+};
+
+/**
+ * Describes the message metalstack.api.v2.PublicPermissions.
+ * Use `create(PublicPermissionsSchema)` to create a new message.
+ */
+export const PublicPermissionsSchema: GenMessage<PublicPermissions> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_token, 4);
+
+/**
+ * SelfPermissions carries self method permissions
+ *
+ * @generated from message metalstack.api.v2.SelfPermissions
+ */
+export type SelfPermissions = Message<"metalstack.api.v2.SelfPermissions"> & {
+  /**
+   * Methods which should be accessible
+   *
+   * @generated from field: repeated string methods = 2;
+   */
+  methods: string[];
+};
+
+/**
+ * Describes the message metalstack.api.v2.SelfPermissions.
+ * Use `create(SelfPermissionsSchema)` to create a new message.
+ */
+export const SelfPermissionsSchema: GenMessage<SelfPermissions> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_token, 5);
+
+/**
+ * ProjectPermissions carries project method permissions
+ *
+ * @generated from message metalstack.api.v2.ProjectPermissions
+ */
+export type ProjectPermissions = Message<"metalstack.api.v2.ProjectPermissions"> & {
+  /**
+   * asterisk (*) can be specified to match any subject
+   *
+   * @generated from field: string project = 1;
+   */
+  project: string;
+
+  /**
+   * Methods which should be accessible
+   *
+   * @generated from field: repeated string methods = 2;
+   */
+  methods: string[];
+};
+
+/**
+ * Describes the message metalstack.api.v2.ProjectPermissions.
+ * Use `create(ProjectPermissionsSchema)` to create a new message.
+ */
+export const ProjectPermissionsSchema: GenMessage<ProjectPermissions> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_token, 6);
+
+/**
+ * TenantPermissions carries tenant method permissions
+ *
+ * @generated from message metalstack.api.v2.TenantPermissions
+ */
+export type TenantPermissions = Message<"metalstack.api.v2.TenantPermissions"> & {
+  /**
+   * Login of the tenant
+   * asterisk (*) can be specified to match any subject
+   *
+   * @generated from field: string login = 1;
+   */
+  login: string;
+
+  /**
+   * Methods which should be accessible
+   *
+   * @generated from field: repeated string methods = 2;
+   */
+  methods: string[];
+};
+
+/**
+ * Describes the message metalstack.api.v2.TenantPermissions.
+ * Use `create(TenantPermissionsSchema)` to create a new message.
+ */
+export const TenantPermissionsSchema: GenMessage<TenantPermissions> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_token, 7);
+
+/**
+ * AdminPermissions carries admin method permissions
+ *
+ * @generated from message metalstack.api.v2.AdminPermissions
+ */
+export type AdminPermissions = Message<"metalstack.api.v2.AdminPermissions"> & {
+  /**
+   * Methods which should be accessible
+   *
+   * @generated from field: repeated string methods = 2;
+   */
+  methods: string[];
+};
+
+/**
+ * Describes the message metalstack.api.v2.AdminPermissions.
+ * Use `create(AdminPermissionsSchema)` to create a new message.
+ */
+export const AdminPermissionsSchema: GenMessage<AdminPermissions> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_token, 8);
+
+/**
+ * MachinePermissions carries machine method permissions
+ *
+ * @generated from message metalstack.api.v2.MachinePermissions
+ */
+export type MachinePermissions = Message<"metalstack.api.v2.MachinePermissions"> & {
+  /**
+   * UUID of this machine
+   * asterisk (*) can be specified to match any subject
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * Methods which should be accessible
+   *
+   * @generated from field: repeated string methods = 2;
+   */
+  methods: string[];
+};
+
+/**
+ * Describes the message metalstack.api.v2.MachinePermissions.
+ * Use `create(MachinePermissionsSchema)` to create a new message.
+ */
+export const MachinePermissionsSchema: GenMessage<MachinePermissions> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_token, 9);
+
+/**
+ * InfraPermissions carries infra method permissions
+ *
+ * @generated from message metalstack.api.v2.InfraPermissions
+ */
+export type InfraPermissions = Message<"metalstack.api.v2.InfraPermissions"> & {
+  /**
+   * Methods which should be accessible
+   *
+   * @generated from field: repeated string methods = 2;
+   */
+  methods: string[];
+};
+
+/**
+ * Describes the message metalstack.api.v2.InfraPermissions.
+ * Use `create(InfraPermissionsSchema)` to create a new message.
+ */
+export const InfraPermissionsSchema: GenMessage<InfraPermissions> = /*@__PURE__*/
+  messageDesc(file_metalstack_api_v2_token, 10);
+
+/**
  * TokenServiceCreateResponse is the response payload of a token create request
  *
  * @generated from message metalstack.api.v2.TokenServiceCreateResponse
@@ -273,7 +520,7 @@ export type TokenServiceCreateResponse = Message<"metalstack.api.v2.TokenService
  * Use `create(TokenServiceCreateResponseSchema)` to create a new message.
  */
 export const TokenServiceCreateResponseSchema: GenMessage<TokenServiceCreateResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 3);
+  messageDesc(file_metalstack_api_v2_token, 11);
 
 /**
  * TokenServiceListRequest is the request payload to list tokens
@@ -294,7 +541,7 @@ export type TokenServiceListRequest = Message<"metalstack.api.v2.TokenServiceLis
  * Use `create(TokenServiceListRequestSchema)` to create a new message.
  */
 export const TokenServiceListRequestSchema: GenMessage<TokenServiceListRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 4);
+  messageDesc(file_metalstack_api_v2_token, 12);
 
 /**
  * TokenServiceListResponse is the response payload of a token list request
@@ -315,7 +562,7 @@ export type TokenServiceListResponse = Message<"metalstack.api.v2.TokenServiceLi
  * Use `create(TokenServiceListResponseSchema)` to create a new message.
  */
 export const TokenServiceListResponseSchema: GenMessage<TokenServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 5);
+  messageDesc(file_metalstack_api_v2_token, 13);
 
 /**
  * TokenServiceRevokeRequest is the request payload of a token revoke request
@@ -336,7 +583,7 @@ export type TokenServiceRevokeRequest = Message<"metalstack.api.v2.TokenServiceR
  * Use `create(TokenServiceRevokeRequestSchema)` to create a new message.
  */
 export const TokenServiceRevokeRequestSchema: GenMessage<TokenServiceRevokeRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 6);
+  messageDesc(file_metalstack_api_v2_token, 14);
 
 /**
  * TokenServiceRevokeResponse is the response payload of a token revoke request
@@ -351,7 +598,7 @@ export type TokenServiceRevokeResponse = Message<"metalstack.api.v2.TokenService
  * Use `create(TokenServiceRevokeResponseSchema)` to create a new message.
  */
 export const TokenServiceRevokeResponseSchema: GenMessage<TokenServiceRevokeResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 7);
+  messageDesc(file_metalstack_api_v2_token, 15);
 
 /**
  * TokenServiceUpdateRequest is the request payload of a token update request
@@ -384,9 +631,9 @@ export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceU
   /**
    * Permissions is a list of service methods this token can be used for
    *
-   * @generated from field: repeated metalstack.api.v2.MethodPermission permissions = 4;
+   * @generated from field: repeated metalstack.api.v2.PermissionsByVisibility permissions = 4;
    */
-  permissions: MethodPermission[];
+  permissions: PermissionsByVisibility[];
 
   /**
    * ProjectRoles associates a project id with the corresponding role of the token owner
@@ -436,7 +683,7 @@ export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceU
  * Use `create(TokenServiceUpdateRequestSchema)` to create a new message.
  */
 export const TokenServiceUpdateRequestSchema: GenMessage<TokenServiceUpdateRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 8);
+  messageDesc(file_metalstack_api_v2_token, 16);
 
 /**
  * TokenServiceUpdateResponse is the response payload of a token update request
@@ -457,7 +704,7 @@ export type TokenServiceUpdateResponse = Message<"metalstack.api.v2.TokenService
  * Use `create(TokenServiceUpdateResponseSchema)` to create a new message.
  */
 export const TokenServiceUpdateResponseSchema: GenMessage<TokenServiceUpdateResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 9);
+  messageDesc(file_metalstack_api_v2_token, 17);
 
 /**
  * TokenServiceGetRequest is the request payload of a token get request
@@ -478,7 +725,7 @@ export type TokenServiceGetRequest = Message<"metalstack.api.v2.TokenServiceGetR
  * Use `create(TokenServiceGetRequestSchema)` to create a new message.
  */
 export const TokenServiceGetRequestSchema: GenMessage<TokenServiceGetRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 10);
+  messageDesc(file_metalstack_api_v2_token, 18);
 
 /**
  * TokenServiceGetResponse is the response payload of a token get request
@@ -499,7 +746,7 @@ export type TokenServiceGetResponse = Message<"metalstack.api.v2.TokenServiceGet
  * Use `create(TokenServiceGetResponseSchema)` to create a new message.
  */
 export const TokenServiceGetResponseSchema: GenMessage<TokenServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 11);
+  messageDesc(file_metalstack_api_v2_token, 19);
 
 /**
  * TokenServiceRefreshRequest is the request payload of a token refresh request
@@ -516,7 +763,7 @@ export type TokenServiceRefreshRequest = Message<"metalstack.api.v2.TokenService
  * Use `create(TokenServiceRefreshRequestSchema)` to create a new message.
  */
 export const TokenServiceRefreshRequestSchema: GenMessage<TokenServiceRefreshRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 12);
+  messageDesc(file_metalstack_api_v2_token, 20);
 
 /**
  * TokenServiceRefreshResponse is the response payload of a token refresh request
@@ -544,7 +791,7 @@ export type TokenServiceRefreshResponse = Message<"metalstack.api.v2.TokenServic
  * Use `create(TokenServiceRefreshResponseSchema)` to create a new message.
  */
 export const TokenServiceRefreshResponseSchema: GenMessage<TokenServiceRefreshResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 13);
+  messageDesc(file_metalstack_api_v2_token, 21);
 
 /**
  * TokenQuery is used to search tokens
@@ -594,7 +841,7 @@ export type TokenQuery = Message<"metalstack.api.v2.TokenQuery"> & {
  * Use `create(TokenQuerySchema)` to create a new message.
  */
 export const TokenQuerySchema: GenMessage<TokenQuery> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_token, 14);
+  messageDesc(file_metalstack_api_v2_token, 22);
 
 /**
  * TokenType specifies different use cases of tokens
