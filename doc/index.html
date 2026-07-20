@@ -586,6 +586,10 @@
                   <a href="#metalstack.api.v2.TokenServiceUpdateResponse"><span class="badge">M</span>TokenServiceUpdateResponse</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.TypedMethodPermission"><span class="badge">M</span>TypedMethodPermission</a>
+                </li>
+              
               
                 <li>
                   <a href="#metalstack.api.v2.TokenType"><span class="badge">E</span>TokenType</a>
@@ -4251,7 +4255,7 @@ asterisk (*) can be specified to match any subject </p></td>
         
       
         <h3 id="metalstack.api.v2.MethodPermission">MethodPermission</h3>
-        <p>MethodPermission contains service method permissions</p>
+        <p>MethodPermission is a mapping from a subject/project to a service method</p>
 
         
           <table class="field-table">
@@ -4261,52 +4265,22 @@ asterisk (*) can be specified to match any subject </p></td>
             <tbody>
               
                 <tr>
-                  <td>public</td>
-                  <td><a href="#metalstack.api.v2.PublicPermissions">PublicPermissions</a></td>
+                  <td>subject</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>PublicPermissions carries public method permissions </p></td>
+                  <td><p>Subject maybe either the project or the tenant
+for which the methods should be allowed
+
+asterisk (*) can be specified to match any subject
+empty string (&#34;&#34;) can be specified for requests that do not require a subject, e.g. partition list
+otherwise either a projectid or a tenant login should be specified </p></td>
                 </tr>
               
                 <tr>
-                  <td>self</td>
-                  <td><a href="#metalstack.api.v2.SelfPermissions">SelfPermissions</a></td>
-                  <td></td>
-                  <td><p>SelfPermissions carries self method permissions </p></td>
-                </tr>
-              
-                <tr>
-                  <td>project</td>
-                  <td><a href="#metalstack.api.v2.ProjectPermissions">ProjectPermissions</a></td>
-                  <td></td>
-                  <td><p>ProjectPermissions carries project method permissions </p></td>
-                </tr>
-              
-                <tr>
-                  <td>tenant</td>
-                  <td><a href="#metalstack.api.v2.TenantPermissions">TenantPermissions</a></td>
-                  <td></td>
-                  <td><p>TenantPermissions carries tenant method permissions </p></td>
-                </tr>
-              
-                <tr>
-                  <td>admin</td>
-                  <td><a href="#metalstack.api.v2.AdminPermissions">AdminPermissions</a></td>
-                  <td></td>
-                  <td><p>AdminPermissions carries admin method permissions </p></td>
-                </tr>
-              
-                <tr>
-                  <td>machine</td>
-                  <td><a href="#metalstack.api.v2.MachinePermissions">MachinePermissions</a></td>
-                  <td></td>
-                  <td><p>MachinePermissions carries machine method permissions </p></td>
-                </tr>
-              
-                <tr>
-                  <td>infra</td>
-                  <td><a href="#metalstack.api.v2.InfraPermissions">InfraPermissions</a></td>
-                  <td></td>
-                  <td><p>InfraPermissions carries infra method permissions </p></td>
+                  <td>methods</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Methods which should be accessible </p></td>
                 </tr>
               
             </tbody>
@@ -4701,7 +4675,7 @@ Only useful for admins. </p></td>
               
                 <tr>
                   <td>permissions</td>
-                  <td><a href="#metalstack.api.v2.MethodPermission">MethodPermission</a></td>
+                  <td><a href="#metalstack.api.v2.TypedMethodPermission">TypedMethodPermission</a></td>
                   <td>repeated</td>
                   <td><p>Permissions is a list of service methods this token can be used for </p></td>
                 </tr>
@@ -5085,7 +5059,7 @@ TokenUpdate is not guarded with optlock in the backend </p></td>
               
                 <tr>
                   <td>permissions</td>
-                  <td><a href="#metalstack.api.v2.MethodPermission">MethodPermission</a></td>
+                  <td><a href="#metalstack.api.v2.TypedMethodPermission">TypedMethodPermission</a></td>
                   <td>repeated</td>
                   <td><p>Permissions is a list of service methods this token can be used for </p></td>
                 </tr>
@@ -5247,6 +5221,72 @@ TokenUpdate is not guarded with optlock in the backend </p></td>
                   <td><a href="#metalstack.api.v2.Token">Token</a></td>
                   <td></td>
                   <td><p>Token is the updated token </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.TypedMethodPermission">TypedMethodPermission</h3>
+        <p>TypedMethodPermission contains typed service method permissions</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>public</td>
+                  <td><a href="#metalstack.api.v2.PublicPermissions">PublicPermissions</a></td>
+                  <td></td>
+                  <td><p>PublicPermissions carries public method permissions </p></td>
+                </tr>
+              
+                <tr>
+                  <td>self</td>
+                  <td><a href="#metalstack.api.v2.SelfPermissions">SelfPermissions</a></td>
+                  <td></td>
+                  <td><p>SelfPermissions carries self method permissions </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#metalstack.api.v2.ProjectPermissions">ProjectPermissions</a></td>
+                  <td></td>
+                  <td><p>ProjectPermissions carries project method permissions </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tenant</td>
+                  <td><a href="#metalstack.api.v2.TenantPermissions">TenantPermissions</a></td>
+                  <td></td>
+                  <td><p>TenantPermissions carries tenant method permissions </p></td>
+                </tr>
+              
+                <tr>
+                  <td>admin</td>
+                  <td><a href="#metalstack.api.v2.AdminPermissions">AdminPermissions</a></td>
+                  <td></td>
+                  <td><p>AdminPermissions carries admin method permissions </p></td>
+                </tr>
+              
+                <tr>
+                  <td>machine</td>
+                  <td><a href="#metalstack.api.v2.MachinePermissions">MachinePermissions</a></td>
+                  <td></td>
+                  <td><p>MachinePermissions carries machine method permissions </p></td>
+                </tr>
+              
+                <tr>
+                  <td>infra</td>
+                  <td><a href="#metalstack.api.v2.InfraPermissions">InfraPermissions</a></td>
+                  <td></td>
+                  <td><p>InfraPermissions carries infra method permissions </p></td>
                 </tr>
               
             </tbody>

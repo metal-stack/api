@@ -113,7 +113,7 @@ message TokenServiceCreateRequest {
   // Description of the token
   string description = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
-  repeated MethodPermission permissions = 2 [(buf.validate.field).repeated.max_items = 100];
+  repeated TypedMethodPermission permissions = 2 [(buf.validate.field).repeated.max_items = 100];
   // Expires gives the duration since now, after which this token can not be used anymore
   google.protobuf.Duration expires = 3 [(buf.validate.field).duration = {
     // Max token lifetime is one year
@@ -146,8 +146,21 @@ message TokenServiceCreateRequest {
   Labels labels = 9;
 }
 
-// MethodPermission contains service method permissions
+// MethodPermission is a mapping from a subject/project to a service method
 message MethodPermission {
+  // Subject maybe either the project or the tenant
+  // for which the methods should be allowed
+  //
+  // asterisk (*) can be specified to match any subject
+  // empty string ("") can be specified for requests that do not require a subject, e.g. partition list
+  // otherwise either a projectid or a tenant login should be specified
+  string subject = 1 [(buf.validate.field).string = {max_len: 256}];
+  // Methods which should be accessible
+  repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
+}
+
+// TypedMethodPermission contains typed service method permissions
+message TypedMethodPermission {
   // PermissionType defines the type of the method permission
   oneof permissiontype {
     // PublicPermissions carries public method permissions
@@ -257,7 +270,7 @@ message TokenServiceUpdateRequest {
   // Description is a user given description of this token.
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for
-  repeated MethodPermission permissions = 4;
+  repeated TypedMethodPermission permissions = 4;
   // ProjectRoles associates a project id with the corresponding role of the token owner
   map<string, ProjectRole> project_roles = 5 [
     (buf.validate.field).map.(metalstack.api.v2.project_roles_keys_valid) = true,
