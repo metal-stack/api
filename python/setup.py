@@ -8,6 +8,7 @@ REQUIRES = [
     "connectrpc==0.10.1",
     "protobuf>=7.0",
     "protovalidate>=1.2.0",
+    "pyqwest<0.7.0",
 ]
 
 setup(
