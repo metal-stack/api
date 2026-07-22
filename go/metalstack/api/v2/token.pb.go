@@ -117,7 +117,10 @@ type Token struct {
 	InfraRole *InfraRole `protobuf:"varint,12,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
 	// MachineRoles associates a machine uuid with the corresponding role of the token owner
 	// TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead
-	MachineRoles  map[string]MachineRole `protobuf:"bytes,13,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
+	MachineRoles map[string]MachineRole `protobuf:"bytes,13,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
+	// RefreshedAt indicates the timestamp when this token was refreshed.
+	// this is only set on tokens which have been created during a refresh call.
+	RefreshedAt   *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=refreshed_at,json=refreshedAt,proto3" json:"refreshed_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -239,6 +242,13 @@ func (x *Token) GetInfraRole() InfraRole {
 func (x *Token) GetMachineRoles() map[string]MachineRole {
 	if x != nil {
 		return x.MachineRoles
+	}
+	return nil
+}
+
+func (x *Token) GetRefreshedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.RefreshedAt
 	}
 	return nil
 }
@@ -1621,7 +1631,8 @@ var File_metalstack_api_v2_token_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/api/v2/token.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xc2\t\n" +
+	"\x1dmetalstack/api/v2/token.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x81\n" +
+	"\n" +
 	"\x05Token\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n" +
 	"\x04user\x18\x02 \x01(\tB\v\xbaH\br\x06\xf8\xb3\xae\xb1\x02\x01R\x04user\x12+\n" +
@@ -1639,7 +1650,8 @@ const file_metalstack_api_v2_token_proto_rawDesc = "" +
 	"admin_role\x18\v \x01(\x0e2\x1c.metalstack.api.v2.AdminRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\tadminRole\x88\x01\x01\x12J\n" +
 	"\n" +
 	"infra_role\x18\f \x01(\x0e2\x1c.metalstack.api.v2.InfraRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\tinfraRole\x88\x01\x01\x12j\n" +
-	"\rmachine_roles\x18\r \x03(\v2*.metalstack.api.v2.Token.MachineRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ؕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fmachineRoles\x1a_\n" +
+	"\rmachine_roles\x18\r \x03(\v2*.metalstack.api.v2.Token.MachineRolesEntryB\x19\xbaH\x16\x9a\x01\x13\xc0\x95\xb8\xb1\x02\x01ؕ\xb8\xb1\x02\x01*\x05\x82\x01\x02\x10\x01R\fmachineRoles\x12=\n" +
+	"\frefreshed_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\vrefreshedAt\x1a_\n" +
 	"\x11ProjectRolesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x124\n" +
 	"\x05value\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleR\x05value:\x028\x01\x1a]\n" +
@@ -1849,63 +1861,64 @@ var file_metalstack_api_v2_token_proto_depIdxs = []int32{
 	35, // 7: metalstack.api.v2.Token.admin_role:type_name -> metalstack.api.v2.AdminRole
 	36, // 8: metalstack.api.v2.Token.infra_role:type_name -> metalstack.api.v2.InfraRole
 	26, // 9: metalstack.api.v2.Token.machine_roles:type_name -> metalstack.api.v2.Token.MachineRolesEntry
-	4,  // 10: metalstack.api.v2.TokenServiceCreateRequest.permissions:type_name -> metalstack.api.v2.PermissionsByVisibility
-	37, // 11: metalstack.api.v2.TokenServiceCreateRequest.expires:type_name -> google.protobuf.Duration
-	27, // 12: metalstack.api.v2.TokenServiceCreateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry
-	28, // 13: metalstack.api.v2.TokenServiceCreateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry
-	35, // 14: metalstack.api.v2.TokenServiceCreateRequest.admin_role:type_name -> metalstack.api.v2.AdminRole
-	36, // 15: metalstack.api.v2.TokenServiceCreateRequest.infra_role:type_name -> metalstack.api.v2.InfraRole
-	29, // 16: metalstack.api.v2.TokenServiceCreateRequest.machine_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntry
-	38, // 17: metalstack.api.v2.TokenServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
-	5,  // 18: metalstack.api.v2.PermissionsByVisibility.public:type_name -> metalstack.api.v2.PublicPermissions
-	6,  // 19: metalstack.api.v2.PermissionsByVisibility.self:type_name -> metalstack.api.v2.SelfPermissions
-	7,  // 20: metalstack.api.v2.PermissionsByVisibility.project:type_name -> metalstack.api.v2.ProjectPermissions
-	8,  // 21: metalstack.api.v2.PermissionsByVisibility.tenant:type_name -> metalstack.api.v2.TenantPermissions
-	9,  // 22: metalstack.api.v2.PermissionsByVisibility.admin:type_name -> metalstack.api.v2.AdminPermissions
-	10, // 23: metalstack.api.v2.PermissionsByVisibility.machine:type_name -> metalstack.api.v2.MachinePermissions
-	11, // 24: metalstack.api.v2.PermissionsByVisibility.infra:type_name -> metalstack.api.v2.InfraPermissions
-	1,  // 25: metalstack.api.v2.TokenServiceCreateResponse.token:type_name -> metalstack.api.v2.Token
-	23, // 26: metalstack.api.v2.TokenServiceListRequest.query:type_name -> metalstack.api.v2.TokenQuery
-	1,  // 27: metalstack.api.v2.TokenServiceListResponse.tokens:type_name -> metalstack.api.v2.Token
-	39, // 28: metalstack.api.v2.TokenServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	4,  // 29: metalstack.api.v2.TokenServiceUpdateRequest.permissions:type_name -> metalstack.api.v2.PermissionsByVisibility
-	30, // 30: metalstack.api.v2.TokenServiceUpdateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry
-	31, // 31: metalstack.api.v2.TokenServiceUpdateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry
-	35, // 32: metalstack.api.v2.TokenServiceUpdateRequest.admin_role:type_name -> metalstack.api.v2.AdminRole
-	36, // 33: metalstack.api.v2.TokenServiceUpdateRequest.infra_role:type_name -> metalstack.api.v2.InfraRole
-	32, // 34: metalstack.api.v2.TokenServiceUpdateRequest.machine_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntry
-	40, // 35: metalstack.api.v2.TokenServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
-	1,  // 36: metalstack.api.v2.TokenServiceUpdateResponse.token:type_name -> metalstack.api.v2.Token
-	1,  // 37: metalstack.api.v2.TokenServiceGetResponse.token:type_name -> metalstack.api.v2.Token
-	1,  // 38: metalstack.api.v2.TokenServiceRefreshResponse.token:type_name -> metalstack.api.v2.Token
-	38, // 39: metalstack.api.v2.TokenQuery.labels:type_name -> metalstack.api.v2.Labels
-	0,  // 40: metalstack.api.v2.TokenQuery.token_type:type_name -> metalstack.api.v2.TokenType
-	41, // 41: metalstack.api.v2.Token.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
-	42, // 42: metalstack.api.v2.Token.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
-	43, // 43: metalstack.api.v2.Token.MachineRolesEntry.value:type_name -> metalstack.api.v2.MachineRole
-	41, // 44: metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
-	42, // 45: metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
-	43, // 46: metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntry.value:type_name -> metalstack.api.v2.MachineRole
-	41, // 47: metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
-	42, // 48: metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
-	43, // 49: metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntry.value:type_name -> metalstack.api.v2.MachineRole
-	19, // 50: metalstack.api.v2.TokenService.Get:input_type -> metalstack.api.v2.TokenServiceGetRequest
-	2,  // 51: metalstack.api.v2.TokenService.Create:input_type -> metalstack.api.v2.TokenServiceCreateRequest
-	17, // 52: metalstack.api.v2.TokenService.Update:input_type -> metalstack.api.v2.TokenServiceUpdateRequest
-	13, // 53: metalstack.api.v2.TokenService.List:input_type -> metalstack.api.v2.TokenServiceListRequest
-	15, // 54: metalstack.api.v2.TokenService.Revoke:input_type -> metalstack.api.v2.TokenServiceRevokeRequest
-	21, // 55: metalstack.api.v2.TokenService.Refresh:input_type -> metalstack.api.v2.TokenServiceRefreshRequest
-	20, // 56: metalstack.api.v2.TokenService.Get:output_type -> metalstack.api.v2.TokenServiceGetResponse
-	12, // 57: metalstack.api.v2.TokenService.Create:output_type -> metalstack.api.v2.TokenServiceCreateResponse
-	18, // 58: metalstack.api.v2.TokenService.Update:output_type -> metalstack.api.v2.TokenServiceUpdateResponse
-	14, // 59: metalstack.api.v2.TokenService.List:output_type -> metalstack.api.v2.TokenServiceListResponse
-	16, // 60: metalstack.api.v2.TokenService.Revoke:output_type -> metalstack.api.v2.TokenServiceRevokeResponse
-	22, // 61: metalstack.api.v2.TokenService.Refresh:output_type -> metalstack.api.v2.TokenServiceRefreshResponse
-	56, // [56:62] is the sub-list for method output_type
-	50, // [50:56] is the sub-list for method input_type
-	50, // [50:50] is the sub-list for extension type_name
-	50, // [50:50] is the sub-list for extension extendee
-	0,  // [0:50] is the sub-list for field type_name
+	34, // 10: metalstack.api.v2.Token.refreshed_at:type_name -> google.protobuf.Timestamp
+	4,  // 11: metalstack.api.v2.TokenServiceCreateRequest.permissions:type_name -> metalstack.api.v2.PermissionsByVisibility
+	37, // 12: metalstack.api.v2.TokenServiceCreateRequest.expires:type_name -> google.protobuf.Duration
+	27, // 13: metalstack.api.v2.TokenServiceCreateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry
+	28, // 14: metalstack.api.v2.TokenServiceCreateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry
+	35, // 15: metalstack.api.v2.TokenServiceCreateRequest.admin_role:type_name -> metalstack.api.v2.AdminRole
+	36, // 16: metalstack.api.v2.TokenServiceCreateRequest.infra_role:type_name -> metalstack.api.v2.InfraRole
+	29, // 17: metalstack.api.v2.TokenServiceCreateRequest.machine_roles:type_name -> metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntry
+	38, // 18: metalstack.api.v2.TokenServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	5,  // 19: metalstack.api.v2.PermissionsByVisibility.public:type_name -> metalstack.api.v2.PublicPermissions
+	6,  // 20: metalstack.api.v2.PermissionsByVisibility.self:type_name -> metalstack.api.v2.SelfPermissions
+	7,  // 21: metalstack.api.v2.PermissionsByVisibility.project:type_name -> metalstack.api.v2.ProjectPermissions
+	8,  // 22: metalstack.api.v2.PermissionsByVisibility.tenant:type_name -> metalstack.api.v2.TenantPermissions
+	9,  // 23: metalstack.api.v2.PermissionsByVisibility.admin:type_name -> metalstack.api.v2.AdminPermissions
+	10, // 24: metalstack.api.v2.PermissionsByVisibility.machine:type_name -> metalstack.api.v2.MachinePermissions
+	11, // 25: metalstack.api.v2.PermissionsByVisibility.infra:type_name -> metalstack.api.v2.InfraPermissions
+	1,  // 26: metalstack.api.v2.TokenServiceCreateResponse.token:type_name -> metalstack.api.v2.Token
+	23, // 27: metalstack.api.v2.TokenServiceListRequest.query:type_name -> metalstack.api.v2.TokenQuery
+	1,  // 28: metalstack.api.v2.TokenServiceListResponse.tokens:type_name -> metalstack.api.v2.Token
+	39, // 29: metalstack.api.v2.TokenServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	4,  // 30: metalstack.api.v2.TokenServiceUpdateRequest.permissions:type_name -> metalstack.api.v2.PermissionsByVisibility
+	30, // 31: metalstack.api.v2.TokenServiceUpdateRequest.project_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry
+	31, // 32: metalstack.api.v2.TokenServiceUpdateRequest.tenant_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry
+	35, // 33: metalstack.api.v2.TokenServiceUpdateRequest.admin_role:type_name -> metalstack.api.v2.AdminRole
+	36, // 34: metalstack.api.v2.TokenServiceUpdateRequest.infra_role:type_name -> metalstack.api.v2.InfraRole
+	32, // 35: metalstack.api.v2.TokenServiceUpdateRequest.machine_roles:type_name -> metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntry
+	40, // 36: metalstack.api.v2.TokenServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	1,  // 37: metalstack.api.v2.TokenServiceUpdateResponse.token:type_name -> metalstack.api.v2.Token
+	1,  // 38: metalstack.api.v2.TokenServiceGetResponse.token:type_name -> metalstack.api.v2.Token
+	1,  // 39: metalstack.api.v2.TokenServiceRefreshResponse.token:type_name -> metalstack.api.v2.Token
+	38, // 40: metalstack.api.v2.TokenQuery.labels:type_name -> metalstack.api.v2.Labels
+	0,  // 41: metalstack.api.v2.TokenQuery.token_type:type_name -> metalstack.api.v2.TokenType
+	41, // 42: metalstack.api.v2.Token.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
+	42, // 43: metalstack.api.v2.Token.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
+	43, // 44: metalstack.api.v2.Token.MachineRolesEntry.value:type_name -> metalstack.api.v2.MachineRole
+	41, // 45: metalstack.api.v2.TokenServiceCreateRequest.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
+	42, // 46: metalstack.api.v2.TokenServiceCreateRequest.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
+	43, // 47: metalstack.api.v2.TokenServiceCreateRequest.MachineRolesEntry.value:type_name -> metalstack.api.v2.MachineRole
+	41, // 48: metalstack.api.v2.TokenServiceUpdateRequest.ProjectRolesEntry.value:type_name -> metalstack.api.v2.ProjectRole
+	42, // 49: metalstack.api.v2.TokenServiceUpdateRequest.TenantRolesEntry.value:type_name -> metalstack.api.v2.TenantRole
+	43, // 50: metalstack.api.v2.TokenServiceUpdateRequest.MachineRolesEntry.value:type_name -> metalstack.api.v2.MachineRole
+	19, // 51: metalstack.api.v2.TokenService.Get:input_type -> metalstack.api.v2.TokenServiceGetRequest
+	2,  // 52: metalstack.api.v2.TokenService.Create:input_type -> metalstack.api.v2.TokenServiceCreateRequest
+	17, // 53: metalstack.api.v2.TokenService.Update:input_type -> metalstack.api.v2.TokenServiceUpdateRequest
+	13, // 54: metalstack.api.v2.TokenService.List:input_type -> metalstack.api.v2.TokenServiceListRequest
+	15, // 55: metalstack.api.v2.TokenService.Revoke:input_type -> metalstack.api.v2.TokenServiceRevokeRequest
+	21, // 56: metalstack.api.v2.TokenService.Refresh:input_type -> metalstack.api.v2.TokenServiceRefreshRequest
+	20, // 57: metalstack.api.v2.TokenService.Get:output_type -> metalstack.api.v2.TokenServiceGetResponse
+	12, // 58: metalstack.api.v2.TokenService.Create:output_type -> metalstack.api.v2.TokenServiceCreateResponse
+	18, // 59: metalstack.api.v2.TokenService.Update:output_type -> metalstack.api.v2.TokenServiceUpdateResponse
+	14, // 60: metalstack.api.v2.TokenService.List:output_type -> metalstack.api.v2.TokenServiceListResponse
+	16, // 61: metalstack.api.v2.TokenService.Revoke:output_type -> metalstack.api.v2.TokenServiceRevokeResponse
+	22, // 62: metalstack.api.v2.TokenService.Refresh:output_type -> metalstack.api.v2.TokenServiceRefreshResponse
+	57, // [57:63] is the sub-list for method output_type
+	51, // [51:57] is the sub-list for method input_type
+	51, // [51:51] is the sub-list for extension type_name
+	51, // [51:51] is the sub-list for extension extendee
+	0,  // [0:51] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_token_proto_init() }

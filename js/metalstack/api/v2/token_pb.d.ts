@@ -110,6 +110,13 @@ export type Token = Message<"metalstack.api.v2.Token"> & {
     machineRoles: {
         [key: string]: MachineRole;
     };
+    /**
+     * RefreshedAt indicates the timestamp when this token was refreshed.
+     * this is only set on tokens which have been created during a refresh call.
+     *
+     * @generated from field: google.protobuf.Timestamp refreshed_at = 14;
+     */
+    refreshedAt?: Timestamp | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.Token.

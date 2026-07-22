@@ -102,6 +102,9 @@ message Token {
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
+  // RefreshedAt indicates the timestamp when this token was refreshed.
+  // this is only set on tokens which have been created during a refresh call.
+  google.protobuf.Timestamp refreshed_at = 14;
 }
 
 // TokenType specifies different use cases of tokens
