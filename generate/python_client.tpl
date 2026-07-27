@@ -8,9 +8,11 @@ import metalstack.{{ $name | trimSuffix "v2" }}.v2.{{ $svc.FileName | trimSuffix
 {{ end }}
 {{ end }}
 
+
 class Client:
-    def __init__(self, baseurl: str, timeout: float = 10):
+    def __init__(self, baseurl: str, timeout: float = 10, interceptors: list = []):
         self._baseurl = baseurl
+        self._interceptors = list(interceptors)
 
         transport = pyqwest.SyncHTTPTransport(
             http_version=pyqwest.HTTPVersion.HTTP2,
@@ -21,17 +23,18 @@ class Client:
 
 {{ range $name, $api := . }}
     def {{ $name | lower }}(self):
-        return self._{{ $name | title }}(baseurl=self._baseurl, client=self._client)
+        return self._{{ $name | title }}(baseurl=self._baseurl, client=self._client, interceptors=self._interceptors)
 {{ end }}
 
 {{ range $name, $api := . }}
     class _{{ $name | title }}:
-        def __init__(self, baseurl: str, client: pyqwest.SyncClient = None):
+        def __init__(self, baseurl: str, client: pyqwest.SyncClient = None, interceptors: list = []):
             self._baseurl = baseurl
             self._client = client
+            self._interceptors = list(interceptors)
 
 {{ range $svc := $api.Services }}
         def {{ $svc.FileName | trimSuffix ".proto" | lower }}(self):
-            return {{ $name | trimSuffix "v2" }}_{{ $svc.FileName | trimSuffix ".proto" | lower }}_connect.{{ $svc.Name }}ClientSync(address=self._baseurl, http_client=self._client)
+            return {{ $name | trimSuffix "v2" }}_{{ $svc.FileName | trimSuffix ".proto" | lower }}_connect.{{ $svc.Name }}ClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 {{ end }}
 {{ end }}
