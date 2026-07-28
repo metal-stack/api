@@ -46,9 +46,11 @@ import metalstack.infra.v2.switch_connect as infra_switch_connect
 
 
 
+
 class Client:
-    def __init__(self, baseurl: str, timeout: float = 10):
+    def __init__(self, baseurl: str, timeout: float = 10, interceptors: list = []):
         self._baseurl = baseurl
+        self._interceptors = list(interceptors)
 
         transport = pyqwest.SyncHTTPTransport(
             http_version=pyqwest.HTTPVersion.HTTP2,
@@ -59,151 +61,154 @@ class Client:
 
 
     def adminv2(self):
-        return self._Adminv2(baseurl=self._baseurl, client=self._client)
+        return self._Adminv2(baseurl=self._baseurl, client=self._client, interceptors=self._interceptors)
 
     def apiv2(self):
-        return self._Apiv2(baseurl=self._baseurl, client=self._client)
+        return self._Apiv2(baseurl=self._baseurl, client=self._client, interceptors=self._interceptors)
 
     def infrav2(self):
-        return self._Infrav2(baseurl=self._baseurl, client=self._client)
+        return self._Infrav2(baseurl=self._baseurl, client=self._client, interceptors=self._interceptors)
 
 
 
     class _Adminv2:
-        def __init__(self, baseurl: str, client: pyqwest.SyncClient = None):
+        def __init__(self, baseurl: str, client: pyqwest.SyncClient = None, interceptors: list = []):
             self._baseurl = baseurl
             self._client = client
+            self._interceptors = list(interceptors)
 
 
         def audit(self):
-            return admin_audit_connect.AuditServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_audit_connect.AuditServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def component(self):
-            return admin_component_connect.ComponentServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_component_connect.ComponentServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def filesystem(self):
-            return admin_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def image(self):
-            return admin_image_connect.ImageServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_image_connect.ImageServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def ip(self):
-            return admin_ip_connect.IPServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_ip_connect.IPServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def machine(self):
-            return admin_machine_connect.MachineServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_machine_connect.MachineServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def network(self):
-            return admin_network_connect.NetworkServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_network_connect.NetworkServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def partition(self):
-            return admin_partition_connect.PartitionServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_partition_connect.PartitionServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def project(self):
-            return admin_project_connect.ProjectServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_project_connect.ProjectServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def size(self):
-            return admin_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def size_imageconstraint(self):
-            return admin_size_imageconstraint_connect.SizeImageConstraintServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_size_imageconstraint_connect.SizeImageConstraintServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def size_reservation(self):
-            return admin_size_reservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_size_reservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def switch(self):
-            return admin_switch_connect.SwitchServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_switch_connect.SwitchServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def task(self):
-            return admin_task_connect.TaskServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_task_connect.TaskServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def tenant(self):
-            return admin_tenant_connect.TenantServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_tenant_connect.TenantServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def token(self):
-            return admin_token_connect.TokenServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_token_connect.TokenServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def vpn(self):
-            return admin_vpn_connect.VPNServiceClientSync(address=self._baseurl, http_client=self._client)
+            return admin_vpn_connect.VPNServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
 
     class _Apiv2:
-        def __init__(self, baseurl: str, client: pyqwest.SyncClient = None):
+        def __init__(self, baseurl: str, client: pyqwest.SyncClient = None, interceptors: list = []):
             self._baseurl = baseurl
             self._client = client
+            self._interceptors = list(interceptors)
 
 
         def audit(self):
-            return api_audit_connect.AuditServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_audit_connect.AuditServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def filesystem(self):
-            return api_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def health(self):
-            return api_health_connect.HealthServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_health_connect.HealthServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def image(self):
-            return api_image_connect.ImageServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_image_connect.ImageServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def ip(self):
-            return api_ip_connect.IPServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_ip_connect.IPServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def machine(self):
-            return api_machine_connect.MachineServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_machine_connect.MachineServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def method(self):
-            return api_method_connect.MethodServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_method_connect.MethodServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def network(self):
-            return api_network_connect.NetworkServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_network_connect.NetworkServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def partition(self):
-            return api_partition_connect.PartitionServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_partition_connect.PartitionServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def project(self):
-            return api_project_connect.ProjectServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_project_connect.ProjectServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def size(self):
-            return api_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def size_imageconstraint(self):
-            return api_size_imageconstraint_connect.SizeImageConstraintServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_size_imageconstraint_connect.SizeImageConstraintServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def size_reservation(self):
-            return api_size_reservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_size_reservation_connect.SizeReservationServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def tenant(self):
-            return api_tenant_connect.TenantServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_tenant_connect.TenantServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def token(self):
-            return api_token_connect.TokenServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_token_connect.TokenServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def user(self):
-            return api_user_connect.UserServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_user_connect.UserServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def version(self):
-            return api_version_connect.VersionServiceClientSync(address=self._baseurl, http_client=self._client)
+            return api_version_connect.VersionServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
 
     class _Infrav2:
-        def __init__(self, baseurl: str, client: pyqwest.SyncClient = None):
+        def __init__(self, baseurl: str, client: pyqwest.SyncClient = None, interceptors: list = []):
             self._baseurl = baseurl
             self._client = client
+            self._interceptors = list(interceptors)
 
 
         def bmc(self):
-            return infra_bmc_connect.BMCServiceClientSync(address=self._baseurl, http_client=self._client)
+            return infra_bmc_connect.BMCServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def boot(self):
-            return infra_boot_connect.BootServiceClientSync(address=self._baseurl, http_client=self._client)
+            return infra_boot_connect.BootServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def component(self):
-            return infra_component_connect.ComponentServiceClientSync(address=self._baseurl, http_client=self._client)
+            return infra_component_connect.ComponentServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def event(self):
-            return infra_event_connect.EventServiceClientSync(address=self._baseurl, http_client=self._client)
+            return infra_event_connect.EventServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def switch(self):
-            return infra_switch_connect.SwitchServiceClientSync(address=self._baseurl, http_client=self._client)
+            return infra_switch_connect.SwitchServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
 
