@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
-import type { UpdateMeta } from "../../api/v2/common_pb";
+import type { UpdateLabels, UpdateMeta } from "../../api/v2/common_pb";
 import type { Image, ImageClassification, ImageFeature, ImageQuery, ImageUsage } from "../../api/v2/image_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -97,6 +97,12 @@ export type ImageServiceUpdateRequest = Message<"metalstack.admin.v2.ImageServic
      * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
     expiresAt?: Timestamp | undefined;
+    /**
+     * Labels to update on this image
+     *
+     * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 9;
+     */
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ImageServiceUpdateRequest.

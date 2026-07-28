@@ -69,6 +69,8 @@ message ImageServiceUpdateRequest {
 
   // ExpiresAt indicates that usage is not possible after this date
   google.protobuf.Timestamp expires_at = 8;
+  // Labels to update on this image
+  optional metalstack.api.v2.UpdateLabels labels = 9;
 }
 
 // ImageServiceUpdateResponse is the response payload for updating an image.
