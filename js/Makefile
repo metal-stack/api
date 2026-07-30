@@ -17,3 +17,7 @@ ifeq ($(CI),true)
 	yq e -o=json ".version" package.json
 endif
 	cd .. && bun run build
+
+.PHONY: test
+test:
+	bun test ./client-test.ts

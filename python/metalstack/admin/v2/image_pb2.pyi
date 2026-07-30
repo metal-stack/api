@@ -26,7 +26,7 @@ class ImageServiceCreateResponse(_message.Message):
     def __init__(self, image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ...) -> None: ...
 
 class ImageServiceUpdateRequest(_message.Message):
-    __slots__ = ("id", "update_meta", "url", "name", "description", "features", "classification", "expires_at")
+    __slots__ = ("id", "update_meta", "url", "name", "description", "features", "classification", "expires_at", "labels")
     ID_FIELD_NUMBER: _ClassVar[int]
     UPDATE_META_FIELD_NUMBER: _ClassVar[int]
     URL_FIELD_NUMBER: _ClassVar[int]
@@ -35,6 +35,7 @@ class ImageServiceUpdateRequest(_message.Message):
     FEATURES_FIELD_NUMBER: _ClassVar[int]
     CLASSIFICATION_FIELD_NUMBER: _ClassVar[int]
     EXPIRES_AT_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     id: str
     update_meta: _common_pb2.UpdateMeta
     url: str
@@ -43,7 +44,8 @@ class ImageServiceUpdateRequest(_message.Message):
     features: _containers.RepeatedScalarFieldContainer[_image_pb2.ImageFeature]
     classification: _image_pb2.ImageClassification
     expires_at: _timestamp_pb2.Timestamp
-    def __init__(self, id: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., url: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., features: _Optional[_Iterable[_Union[_image_pb2.ImageFeature, str]]] = ..., classification: _Optional[_Union[_image_pb2.ImageClassification, str]] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    labels: _common_pb2.UpdateLabels
+    def __init__(self, id: _Optional[str] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., url: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., features: _Optional[_Iterable[_Union[_image_pb2.ImageFeature, str]]] = ..., classification: _Optional[_Union[_image_pb2.ImageClassification, str]] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
 
 class ImageServiceUpdateResponse(_message.Message):
     __slots__ = ("image",)

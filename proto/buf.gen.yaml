@@ -34,7 +34,7 @@ plugins:
   - remote: buf.build/connectrpc/python:v0.10.1
     out: ../python
   # js
-  - remote: buf.build/bufbuild/es:v2.12.1
+  - remote: buf.build/bufbuild/es:v2.13.0
     include_imports: true
     out: ../js
     opt: target=ts

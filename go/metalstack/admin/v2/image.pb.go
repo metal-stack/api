@@ -134,7 +134,9 @@ type ImageServiceUpdateRequest struct {
 	// Classification of this image
 	Classification v2.ImageClassification `protobuf:"varint,7,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification" json:"classification,omitempty"`
 	// ExpiresAt indicates that usage is not possible after this date
-	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
+	// Labels to update on this image
+	Labels        *v2.UpdateLabels `protobuf:"bytes,9,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -221,6 +223,13 @@ func (x *ImageServiceUpdateRequest) GetClassification() v2.ImageClassification {
 func (x *ImageServiceUpdateRequest) GetExpiresAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ExpiresAt
+	}
+	return nil
+}
+
+func (x *ImageServiceUpdateRequest) GetLabels() *v2.UpdateLabels {
+	if x != nil {
+		return x.Labels
 	}
 	return nil
 }
@@ -463,7 +472,7 @@ const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\x19ImageServiceCreateRequest\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"L\n" +
 	"\x1aImageServiceCreateResponse\x12.\n" +
-	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\x82\x04\n" +
+	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"\xcb\x04\n" +
 	"\x19ImageServiceUpdateRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\x12F\n" +
 	"\vupdate_meta\x18\x02 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
@@ -474,10 +483,12 @@ const file_metalstack_admin_v2_image_proto_rawDesc = "" +
 	"\bfeatures\x18\x06 \x03(\x0e2\x1f.metalstack.api.v2.ImageFeatureB\x0f\xbaH\f\x92\x01\t\x18\x01\"\x05\x82\x01\x02\x10\x01R\bfeatures\x12X\n" +
 	"\x0eclassification\x18\a \x01(\x0e2&.metalstack.api.v2.ImageClassificationB\b\xbaH\x05\x82\x01\x02\x10\x01R\x0eclassification\x129\n" +
 	"\n" +
-	"expires_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAtB\x06\n" +
+	"expires_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\texpiresAt\x12<\n" +
+	"\x06labels\x18\t \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsH\x03R\x06labels\x88\x01\x01B\x06\n" +
 	"\x04_urlB\a\n" +
 	"\x05_nameB\x0e\n" +
-	"\f_description\"L\n" +
+	"\f_descriptionB\t\n" +
+	"\a_labels\"L\n" +
 	"\x1aImageServiceUpdateResponse\x12.\n" +
 	"\x05image\x18\x01 \x01(\v2\x18.metalstack.api.v2.ImageR\x05image\"8\n" +
 	"\x19ImageServiceDeleteRequest\x12\x1b\n" +
@@ -525,8 +536,9 @@ var file_metalstack_admin_v2_image_proto_goTypes = []any{
 	(v2.ImageFeature)(0),               // 10: metalstack.api.v2.ImageFeature
 	(v2.ImageClassification)(0),        // 11: metalstack.api.v2.ImageClassification
 	(*timestamppb.Timestamp)(nil),      // 12: google.protobuf.Timestamp
-	(*v2.ImageQuery)(nil),              // 13: metalstack.api.v2.ImageQuery
-	(*v2.ImageUsage)(nil),              // 14: metalstack.api.v2.ImageUsage
+	(*v2.UpdateLabels)(nil),            // 13: metalstack.api.v2.UpdateLabels
+	(*v2.ImageQuery)(nil),              // 14: metalstack.api.v2.ImageQuery
+	(*v2.ImageUsage)(nil),              // 15: metalstack.api.v2.ImageUsage
 }
 var file_metalstack_admin_v2_image_proto_depIdxs = []int32{
 	8,  // 0: metalstack.admin.v2.ImageServiceCreateRequest.image:type_name -> metalstack.api.v2.Image
@@ -535,23 +547,24 @@ var file_metalstack_admin_v2_image_proto_depIdxs = []int32{
 	10, // 3: metalstack.admin.v2.ImageServiceUpdateRequest.features:type_name -> metalstack.api.v2.ImageFeature
 	11, // 4: metalstack.admin.v2.ImageServiceUpdateRequest.classification:type_name -> metalstack.api.v2.ImageClassification
 	12, // 5: metalstack.admin.v2.ImageServiceUpdateRequest.expires_at:type_name -> google.protobuf.Timestamp
-	8,  // 6: metalstack.admin.v2.ImageServiceUpdateResponse.image:type_name -> metalstack.api.v2.Image
-	8,  // 7: metalstack.admin.v2.ImageServiceDeleteResponse.image:type_name -> metalstack.api.v2.Image
-	13, // 8: metalstack.admin.v2.ImageServiceUsageRequest.query:type_name -> metalstack.api.v2.ImageQuery
-	14, // 9: metalstack.admin.v2.ImageServiceUsageResponse.image_usage:type_name -> metalstack.api.v2.ImageUsage
-	0,  // 10: metalstack.admin.v2.ImageService.Create:input_type -> metalstack.admin.v2.ImageServiceCreateRequest
-	2,  // 11: metalstack.admin.v2.ImageService.Update:input_type -> metalstack.admin.v2.ImageServiceUpdateRequest
-	4,  // 12: metalstack.admin.v2.ImageService.Delete:input_type -> metalstack.admin.v2.ImageServiceDeleteRequest
-	6,  // 13: metalstack.admin.v2.ImageService.Usage:input_type -> metalstack.admin.v2.ImageServiceUsageRequest
-	1,  // 14: metalstack.admin.v2.ImageService.Create:output_type -> metalstack.admin.v2.ImageServiceCreateResponse
-	3,  // 15: metalstack.admin.v2.ImageService.Update:output_type -> metalstack.admin.v2.ImageServiceUpdateResponse
-	5,  // 16: metalstack.admin.v2.ImageService.Delete:output_type -> metalstack.admin.v2.ImageServiceDeleteResponse
-	7,  // 17: metalstack.admin.v2.ImageService.Usage:output_type -> metalstack.admin.v2.ImageServiceUsageResponse
-	14, // [14:18] is the sub-list for method output_type
-	10, // [10:14] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	13, // 6: metalstack.admin.v2.ImageServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	8,  // 7: metalstack.admin.v2.ImageServiceUpdateResponse.image:type_name -> metalstack.api.v2.Image
+	8,  // 8: metalstack.admin.v2.ImageServiceDeleteResponse.image:type_name -> metalstack.api.v2.Image
+	14, // 9: metalstack.admin.v2.ImageServiceUsageRequest.query:type_name -> metalstack.api.v2.ImageQuery
+	15, // 10: metalstack.admin.v2.ImageServiceUsageResponse.image_usage:type_name -> metalstack.api.v2.ImageUsage
+	0,  // 11: metalstack.admin.v2.ImageService.Create:input_type -> metalstack.admin.v2.ImageServiceCreateRequest
+	2,  // 12: metalstack.admin.v2.ImageService.Update:input_type -> metalstack.admin.v2.ImageServiceUpdateRequest
+	4,  // 13: metalstack.admin.v2.ImageService.Delete:input_type -> metalstack.admin.v2.ImageServiceDeleteRequest
+	6,  // 14: metalstack.admin.v2.ImageService.Usage:input_type -> metalstack.admin.v2.ImageServiceUsageRequest
+	1,  // 15: metalstack.admin.v2.ImageService.Create:output_type -> metalstack.admin.v2.ImageServiceCreateResponse
+	3,  // 16: metalstack.admin.v2.ImageService.Update:output_type -> metalstack.admin.v2.ImageServiceUpdateResponse
+	5,  // 17: metalstack.admin.v2.ImageService.Delete:output_type -> metalstack.admin.v2.ImageServiceDeleteResponse
+	7,  // 18: metalstack.admin.v2.ImageService.Usage:output_type -> metalstack.admin.v2.ImageServiceUsageResponse
+	15, // [15:19] is the sub-list for method output_type
+	11, // [11:15] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_image_proto_init() }
