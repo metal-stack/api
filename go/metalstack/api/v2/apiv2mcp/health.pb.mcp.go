@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -79,7 +78,7 @@ func RegisterHealthServiceHandler(s runtime.MCPServer, srv HealthServiceServer, 
 
 // HealthServiceClient is compatible with the grpc-go client interface.
 type HealthServiceClient interface {
-	Get(ctx context.Context, req *v2.HealthServiceGetRequest, opts ...grpc.CallOption) (*v2.HealthServiceGetResponse, error)
+	Get(ctx context.Context, req *v2.HealthServiceGetRequest) (*v2.HealthServiceGetResponse, error)
 }
 
 // ConnectHealthServiceClient is compatible with the connectrpc-go client interface.

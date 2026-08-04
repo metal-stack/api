@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -217,10 +216,10 @@ func RegisterSizeReservationServiceHandler(s runtime.MCPServer, srv SizeReservat
 
 // SizeReservationServiceClient is compatible with the grpc-go client interface.
 type SizeReservationServiceClient interface {
-	Create(ctx context.Context, req *v2.SizeReservationServiceCreateRequest, opts ...grpc.CallOption) (*v2.SizeReservationServiceCreateResponse, error)
-	Delete(ctx context.Context, req *v2.SizeReservationServiceDeleteRequest, opts ...grpc.CallOption) (*v2.SizeReservationServiceDeleteResponse, error)
-	List(ctx context.Context, req *v2.SizeReservationServiceListRequest, opts ...grpc.CallOption) (*v2.SizeReservationServiceListResponse, error)
-	Update(ctx context.Context, req *v2.SizeReservationServiceUpdateRequest, opts ...grpc.CallOption) (*v2.SizeReservationServiceUpdateResponse, error)
+	Create(ctx context.Context, req *v2.SizeReservationServiceCreateRequest) (*v2.SizeReservationServiceCreateResponse, error)
+	Delete(ctx context.Context, req *v2.SizeReservationServiceDeleteRequest) (*v2.SizeReservationServiceDeleteResponse, error)
+	List(ctx context.Context, req *v2.SizeReservationServiceListRequest) (*v2.SizeReservationServiceListResponse, error)
+	Update(ctx context.Context, req *v2.SizeReservationServiceUpdateRequest) (*v2.SizeReservationServiceUpdateResponse, error)
 }
 
 // ConnectSizeReservationServiceClient is compatible with the connectrpc-go client interface.

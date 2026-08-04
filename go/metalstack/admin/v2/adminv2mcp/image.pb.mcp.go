@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -217,10 +216,10 @@ func RegisterImageServiceHandler(s runtime.MCPServer, srv ImageServiceServer, op
 
 // ImageServiceClient is compatible with the grpc-go client interface.
 type ImageServiceClient interface {
-	Create(ctx context.Context, req *v2.ImageServiceCreateRequest, opts ...grpc.CallOption) (*v2.ImageServiceCreateResponse, error)
-	Delete(ctx context.Context, req *v2.ImageServiceDeleteRequest, opts ...grpc.CallOption) (*v2.ImageServiceDeleteResponse, error)
-	Update(ctx context.Context, req *v2.ImageServiceUpdateRequest, opts ...grpc.CallOption) (*v2.ImageServiceUpdateResponse, error)
-	Usage(ctx context.Context, req *v2.ImageServiceUsageRequest, opts ...grpc.CallOption) (*v2.ImageServiceUsageResponse, error)
+	Create(ctx context.Context, req *v2.ImageServiceCreateRequest) (*v2.ImageServiceCreateResponse, error)
+	Delete(ctx context.Context, req *v2.ImageServiceDeleteRequest) (*v2.ImageServiceDeleteResponse, error)
+	Update(ctx context.Context, req *v2.ImageServiceUpdateRequest) (*v2.ImageServiceUpdateResponse, error)
+	Usage(ctx context.Context, req *v2.ImageServiceUsageRequest) (*v2.ImageServiceUsageResponse, error)
 }
 
 // ConnectImageServiceClient is compatible with the connectrpc-go client interface.

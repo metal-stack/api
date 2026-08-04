@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -677,20 +676,20 @@ func RegisterTenantServiceHandler(s runtime.MCPServer, srv TenantServiceServer, 
 
 // TenantServiceClient is compatible with the grpc-go client interface.
 type TenantServiceClient interface {
-	AddMember(ctx context.Context, req *v2.TenantServiceAddMemberRequest, opts ...grpc.CallOption) (*v2.TenantServiceAddMemberResponse, error)
-	Create(ctx context.Context, req *v2.TenantServiceCreateRequest, opts ...grpc.CallOption) (*v2.TenantServiceCreateResponse, error)
-	Delete(ctx context.Context, req *v2.TenantServiceDeleteRequest, opts ...grpc.CallOption) (*v2.TenantServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.TenantServiceGetRequest, opts ...grpc.CallOption) (*v2.TenantServiceGetResponse, error)
-	Invite(ctx context.Context, req *v2.TenantServiceInviteRequest, opts ...grpc.CallOption) (*v2.TenantServiceInviteResponse, error)
-	InviteAccept(ctx context.Context, req *v2.TenantServiceInviteAcceptRequest, opts ...grpc.CallOption) (*v2.TenantServiceInviteAcceptResponse, error)
-	InviteDelete(ctx context.Context, req *v2.TenantServiceInviteDeleteRequest, opts ...grpc.CallOption) (*v2.TenantServiceInviteDeleteResponse, error)
-	InviteGet(ctx context.Context, req *v2.TenantServiceInviteGetRequest, opts ...grpc.CallOption) (*v2.TenantServiceInviteGetResponse, error)
-	InvitesList(ctx context.Context, req *v2.TenantServiceInvitesListRequest, opts ...grpc.CallOption) (*v2.TenantServiceInvitesListResponse, error)
-	Leave(ctx context.Context, req *v2.TenantServiceLeaveRequest, opts ...grpc.CallOption) (*v2.TenantServiceLeaveResponse, error)
-	List(ctx context.Context, req *v2.TenantServiceListRequest, opts ...grpc.CallOption) (*v2.TenantServiceListResponse, error)
-	RemoveMember(ctx context.Context, req *v2.TenantServiceRemoveMemberRequest, opts ...grpc.CallOption) (*v2.TenantServiceRemoveMemberResponse, error)
-	Update(ctx context.Context, req *v2.TenantServiceUpdateRequest, opts ...grpc.CallOption) (*v2.TenantServiceUpdateResponse, error)
-	UpdateMember(ctx context.Context, req *v2.TenantServiceUpdateMemberRequest, opts ...grpc.CallOption) (*v2.TenantServiceUpdateMemberResponse, error)
+	AddMember(ctx context.Context, req *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
+	Create(ctx context.Context, req *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
+	Delete(ctx context.Context, req *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error)
+	Invite(ctx context.Context, req *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error)
+	InviteAccept(ctx context.Context, req *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error)
+	InviteDelete(ctx context.Context, req *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error)
+	InviteGet(ctx context.Context, req *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error)
+	InvitesList(ctx context.Context, req *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error)
+	Leave(ctx context.Context, req *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error)
+	List(ctx context.Context, req *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
+	RemoveMember(ctx context.Context, req *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
+	Update(ctx context.Context, req *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error)
+	UpdateMember(ctx context.Context, req *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error)
 }
 
 // ConnectTenantServiceClient is compatible with the connectrpc-go client interface.

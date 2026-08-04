@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -263,11 +262,11 @@ func RegisterIPServiceHandler(s runtime.MCPServer, srv IPServiceServer, opts ...
 
 // IPServiceClient is compatible with the grpc-go client interface.
 type IPServiceClient interface {
-	Create(ctx context.Context, req *v2.IPServiceCreateRequest, opts ...grpc.CallOption) (*v2.IPServiceCreateResponse, error)
-	Delete(ctx context.Context, req *v2.IPServiceDeleteRequest, opts ...grpc.CallOption) (*v2.IPServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.IPServiceGetRequest, opts ...grpc.CallOption) (*v2.IPServiceGetResponse, error)
-	List(ctx context.Context, req *v2.IPServiceListRequest, opts ...grpc.CallOption) (*v2.IPServiceListResponse, error)
-	Update(ctx context.Context, req *v2.IPServiceUpdateRequest, opts ...grpc.CallOption) (*v2.IPServiceUpdateResponse, error)
+	Create(ctx context.Context, req *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error)
+	Delete(ctx context.Context, req *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error)
+	List(ctx context.Context, req *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error)
+	Update(ctx context.Context, req *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error)
 }
 
 // ConnectIPServiceClient is compatible with the connectrpc-go client interface.

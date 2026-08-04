@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -79,7 +78,7 @@ func RegisterSizeImageConstraintServiceHandler(s runtime.MCPServer, srv SizeImag
 
 // SizeImageConstraintServiceClient is compatible with the grpc-go client interface.
 type SizeImageConstraintServiceClient interface {
-	Try(ctx context.Context, req *v2.SizeImageConstraintServiceTryRequest, opts ...grpc.CallOption) (*v2.SizeImageConstraintServiceTryResponse, error)
+	Try(ctx context.Context, req *v2.SizeImageConstraintServiceTryRequest) (*v2.SizeImageConstraintServiceTryResponse, error)
 }
 
 // ConnectSizeImageConstraintServiceClient is compatible with the connectrpc-go client interface.

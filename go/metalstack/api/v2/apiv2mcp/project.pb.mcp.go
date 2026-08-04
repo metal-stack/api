@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -677,20 +676,20 @@ func RegisterProjectServiceHandler(s runtime.MCPServer, srv ProjectServiceServer
 
 // ProjectServiceClient is compatible with the grpc-go client interface.
 type ProjectServiceClient interface {
-	AddMember(ctx context.Context, req *v2.ProjectServiceAddMemberRequest, opts ...grpc.CallOption) (*v2.ProjectServiceAddMemberResponse, error)
-	Create(ctx context.Context, req *v2.ProjectServiceCreateRequest, opts ...grpc.CallOption) (*v2.ProjectServiceCreateResponse, error)
-	Delete(ctx context.Context, req *v2.ProjectServiceDeleteRequest, opts ...grpc.CallOption) (*v2.ProjectServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.ProjectServiceGetRequest, opts ...grpc.CallOption) (*v2.ProjectServiceGetResponse, error)
-	Invite(ctx context.Context, req *v2.ProjectServiceInviteRequest, opts ...grpc.CallOption) (*v2.ProjectServiceInviteResponse, error)
-	InviteAccept(ctx context.Context, req *v2.ProjectServiceInviteAcceptRequest, opts ...grpc.CallOption) (*v2.ProjectServiceInviteAcceptResponse, error)
-	InviteDelete(ctx context.Context, req *v2.ProjectServiceInviteDeleteRequest, opts ...grpc.CallOption) (*v2.ProjectServiceInviteDeleteResponse, error)
-	InviteGet(ctx context.Context, req *v2.ProjectServiceInviteGetRequest, opts ...grpc.CallOption) (*v2.ProjectServiceInviteGetResponse, error)
-	InvitesList(ctx context.Context, req *v2.ProjectServiceInvitesListRequest, opts ...grpc.CallOption) (*v2.ProjectServiceInvitesListResponse, error)
-	Leave(ctx context.Context, req *v2.ProjectServiceLeaveRequest, opts ...grpc.CallOption) (*v2.ProjectServiceLeaveResponse, error)
-	List(ctx context.Context, req *v2.ProjectServiceListRequest, opts ...grpc.CallOption) (*v2.ProjectServiceListResponse, error)
-	RemoveMember(ctx context.Context, req *v2.ProjectServiceRemoveMemberRequest, opts ...grpc.CallOption) (*v2.ProjectServiceRemoveMemberResponse, error)
-	Update(ctx context.Context, req *v2.ProjectServiceUpdateRequest, opts ...grpc.CallOption) (*v2.ProjectServiceUpdateResponse, error)
-	UpdateMember(ctx context.Context, req *v2.ProjectServiceUpdateMemberRequest, opts ...grpc.CallOption) (*v2.ProjectServiceUpdateMemberResponse, error)
+	AddMember(ctx context.Context, req *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error)
+	Create(ctx context.Context, req *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error)
+	Delete(ctx context.Context, req *v2.ProjectServiceDeleteRequest) (*v2.ProjectServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.ProjectServiceGetRequest) (*v2.ProjectServiceGetResponse, error)
+	Invite(ctx context.Context, req *v2.ProjectServiceInviteRequest) (*v2.ProjectServiceInviteResponse, error)
+	InviteAccept(ctx context.Context, req *v2.ProjectServiceInviteAcceptRequest) (*v2.ProjectServiceInviteAcceptResponse, error)
+	InviteDelete(ctx context.Context, req *v2.ProjectServiceInviteDeleteRequest) (*v2.ProjectServiceInviteDeleteResponse, error)
+	InviteGet(ctx context.Context, req *v2.ProjectServiceInviteGetRequest) (*v2.ProjectServiceInviteGetResponse, error)
+	InvitesList(ctx context.Context, req *v2.ProjectServiceInvitesListRequest) (*v2.ProjectServiceInvitesListResponse, error)
+	Leave(ctx context.Context, req *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error)
+	List(ctx context.Context, req *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error)
+	RemoveMember(ctx context.Context, req *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error)
+	Update(ctx context.Context, req *v2.ProjectServiceUpdateRequest) (*v2.ProjectServiceUpdateResponse, error)
+	UpdateMember(ctx context.Context, req *v2.ProjectServiceUpdateMemberRequest) (*v2.ProjectServiceUpdateMemberResponse, error)
 }
 
 // ConnectProjectServiceClient is compatible with the connectrpc-go client interface.

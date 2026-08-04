@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -79,7 +78,7 @@ func RegisterProjectServiceHandler(s runtime.MCPServer, srv ProjectServiceServer
 
 // ProjectServiceClient is compatible with the grpc-go client interface.
 type ProjectServiceClient interface {
-	List(ctx context.Context, req *v2.ProjectServiceListRequest, opts ...grpc.CallOption) (*v2.ProjectServiceListResponse, error)
+	List(ctx context.Context, req *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error)
 }
 
 // ConnectProjectServiceClient is compatible with the connectrpc-go client interface.

@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -263,11 +262,11 @@ func RegisterNetworkServiceHandler(s runtime.MCPServer, srv NetworkServiceServer
 
 // NetworkServiceClient is compatible with the grpc-go client interface.
 type NetworkServiceClient interface {
-	Create(ctx context.Context, req *v2.NetworkServiceCreateRequest, opts ...grpc.CallOption) (*v2.NetworkServiceCreateResponse, error)
-	Delete(ctx context.Context, req *v2.NetworkServiceDeleteRequest, opts ...grpc.CallOption) (*v2.NetworkServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.NetworkServiceGetRequest, opts ...grpc.CallOption) (*v2.NetworkServiceGetResponse, error)
-	List(ctx context.Context, req *v2.NetworkServiceListRequest, opts ...grpc.CallOption) (*v2.NetworkServiceListResponse, error)
-	Update(ctx context.Context, req *v2.NetworkServiceUpdateRequest, opts ...grpc.CallOption) (*v2.NetworkServiceUpdateResponse, error)
+	Create(ctx context.Context, req *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error)
+	Delete(ctx context.Context, req *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error)
+	List(ctx context.Context, req *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
+	Update(ctx context.Context, req *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error)
 }
 
 // ConnectNetworkServiceClient is compatible with the connectrpc-go client interface.

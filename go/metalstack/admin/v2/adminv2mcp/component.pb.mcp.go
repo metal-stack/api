@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -171,9 +170,9 @@ func RegisterComponentServiceHandler(s runtime.MCPServer, srv ComponentServiceSe
 
 // ComponentServiceClient is compatible with the grpc-go client interface.
 type ComponentServiceClient interface {
-	Delete(ctx context.Context, req *v2.ComponentServiceDeleteRequest, opts ...grpc.CallOption) (*v2.ComponentServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.ComponentServiceGetRequest, opts ...grpc.CallOption) (*v2.ComponentServiceGetResponse, error)
-	List(ctx context.Context, req *v2.ComponentServiceListRequest, opts ...grpc.CallOption) (*v2.ComponentServiceListResponse, error)
+	Delete(ctx context.Context, req *v2.ComponentServiceDeleteRequest) (*v2.ComponentServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.ComponentServiceGetRequest) (*v2.ComponentServiceGetResponse, error)
+	List(ctx context.Context, req *v2.ComponentServiceListRequest) (*v2.ComponentServiceListResponse, error)
 }
 
 // ConnectComponentServiceClient is compatible with the connectrpc-go client interface.

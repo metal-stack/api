@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -263,11 +262,11 @@ func RegisterBootServiceHandler(s runtime.MCPServer, srv BootServiceServer, opts
 
 // BootServiceClient is compatible with the grpc-go client interface.
 type BootServiceClient interface {
-	Boot(ctx context.Context, req *v2.BootServiceBootRequest, opts ...grpc.CallOption) (*v2.BootServiceBootResponse, error)
-	Dhcp(ctx context.Context, req *v2.BootServiceDhcpRequest, opts ...grpc.CallOption) (*v2.BootServiceDhcpResponse, error)
-	InstallationSucceeded(ctx context.Context, req *v2.BootServiceInstallationSucceededRequest, opts ...grpc.CallOption) (*v2.BootServiceInstallationSucceededResponse, error)
-	Register(ctx context.Context, req *v2.BootServiceRegisterRequest, opts ...grpc.CallOption) (*v2.BootServiceRegisterResponse, error)
-	SuperUserPassword(ctx context.Context, req *v2.BootServiceSuperUserPasswordRequest, opts ...grpc.CallOption) (*v2.BootServiceSuperUserPasswordResponse, error)
+	Boot(ctx context.Context, req *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error)
+	Dhcp(ctx context.Context, req *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error)
+	InstallationSucceeded(ctx context.Context, req *v2.BootServiceInstallationSucceededRequest) (*v2.BootServiceInstallationSucceededResponse, error)
+	Register(ctx context.Context, req *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error)
+	SuperUserPassword(ctx context.Context, req *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error)
 }
 
 // ConnectBootServiceClient is compatible with the connectrpc-go client interface.

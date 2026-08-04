@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -355,13 +354,13 @@ func RegisterMachineServiceHandler(s runtime.MCPServer, srv MachineServiceServer
 
 // MachineServiceClient is compatible with the grpc-go client interface.
 type MachineServiceClient interface {
-	BMCCommand(ctx context.Context, req *v2.MachineServiceBMCCommandRequest, opts ...grpc.CallOption) (*v2.MachineServiceBMCCommandResponse, error)
-	Create(ctx context.Context, req *v2.MachineServiceCreateRequest, opts ...grpc.CallOption) (*v2.MachineServiceCreateResponse, error)
-	Delete(ctx context.Context, req *v2.MachineServiceDeleteRequest, opts ...grpc.CallOption) (*v2.MachineServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.MachineServiceGetRequest, opts ...grpc.CallOption) (*v2.MachineServiceGetResponse, error)
-	GetBMC(ctx context.Context, req *v2.MachineServiceGetBMCRequest, opts ...grpc.CallOption) (*v2.MachineServiceGetBMCResponse, error)
-	List(ctx context.Context, req *v2.MachineServiceListRequest, opts ...grpc.CallOption) (*v2.MachineServiceListResponse, error)
-	Update(ctx context.Context, req *v2.MachineServiceUpdateRequest, opts ...grpc.CallOption) (*v2.MachineServiceUpdateResponse, error)
+	BMCCommand(ctx context.Context, req *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
+	Create(ctx context.Context, req *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error)
+	Delete(ctx context.Context, req *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
+	GetBMC(ctx context.Context, req *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
+	List(ctx context.Context, req *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
+	Update(ctx context.Context, req *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error)
 }
 
 // ConnectMachineServiceClient is compatible with the connectrpc-go client interface.

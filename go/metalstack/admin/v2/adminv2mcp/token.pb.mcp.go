@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -171,9 +170,9 @@ func RegisterTokenServiceHandler(s runtime.MCPServer, srv TokenServiceServer, op
 
 // TokenServiceClient is compatible with the grpc-go client interface.
 type TokenServiceClient interface {
-	Create(ctx context.Context, req *v2.TokenServiceCreateRequest, opts ...grpc.CallOption) (*v2.TokenServiceCreateResponse, error)
-	List(ctx context.Context, req *v2.TokenServiceListRequest, opts ...grpc.CallOption) (*v2.TokenServiceListResponse, error)
-	Revoke(ctx context.Context, req *v2.TokenServiceRevokeRequest, opts ...grpc.CallOption) (*v2.TokenServiceRevokeResponse, error)
+	Create(ctx context.Context, req *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error)
+	List(ctx context.Context, req *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error)
+	Revoke(ctx context.Context, req *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error)
 }
 
 // ConnectTokenServiceClient is compatible with the connectrpc-go client interface.

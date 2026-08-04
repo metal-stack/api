@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -125,8 +124,8 @@ func RegisterAuditServiceHandler(s runtime.MCPServer, srv AuditServiceServer, op
 
 // AuditServiceClient is compatible with the grpc-go client interface.
 type AuditServiceClient interface {
-	Get(ctx context.Context, req *v2.AuditServiceGetRequest, opts ...grpc.CallOption) (*v2.AuditServiceGetResponse, error)
-	List(ctx context.Context, req *v2.AuditServiceListRequest, opts ...grpc.CallOption) (*v2.AuditServiceListResponse, error)
+	Get(ctx context.Context, req *v2.AuditServiceGetRequest) (*v2.AuditServiceGetResponse, error)
+	List(ctx context.Context, req *v2.AuditServiceListRequest) (*v2.AuditServiceListResponse, error)
 }
 
 // ConnectAuditServiceClient is compatible with the connectrpc-go client interface.

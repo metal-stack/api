@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -447,15 +446,15 @@ func RegisterMachineServiceHandler(s runtime.MCPServer, srv MachineServiceServer
 
 // MachineServiceClient is compatible with the grpc-go client interface.
 type MachineServiceClient interface {
-	BMCCommand(ctx context.Context, req *v2.MachineServiceBMCCommandRequest, opts ...grpc.CallOption) (*v2.MachineServiceBMCCommandResponse, error)
-	ConsolePassword(ctx context.Context, req *v2.MachineServiceConsolePasswordRequest, opts ...grpc.CallOption) (*v2.MachineServiceConsolePasswordResponse, error)
-	Delete(ctx context.Context, req *v2.MachineServiceDeleteRequest, opts ...grpc.CallOption) (*v2.MachineServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.MachineServiceGetRequest, opts ...grpc.CallOption) (*v2.MachineServiceGetResponse, error)
-	GetBMC(ctx context.Context, req *v2.MachineServiceGetBMCRequest, opts ...grpc.CallOption) (*v2.MachineServiceGetBMCResponse, error)
-	Issues(ctx context.Context, req *v2.MachineServiceIssuesRequest, opts ...grpc.CallOption) (*v2.MachineServiceIssuesResponse, error)
-	List(ctx context.Context, req *v2.MachineServiceListRequest, opts ...grpc.CallOption) (*v2.MachineServiceListResponse, error)
-	ListBMC(ctx context.Context, req *v2.MachineServiceListBMCRequest, opts ...grpc.CallOption) (*v2.MachineServiceListBMCResponse, error)
-	SetState(ctx context.Context, req *v2.MachineServiceSetStateRequest, opts ...grpc.CallOption) (*v2.MachineServiceSetStateResponse, error)
+	BMCCommand(ctx context.Context, req *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error)
+	ConsolePassword(ctx context.Context, req *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error)
+	Delete(ctx context.Context, req *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error)
+	GetBMC(ctx context.Context, req *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
+	Issues(ctx context.Context, req *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error)
+	List(ctx context.Context, req *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error)
+	ListBMC(ctx context.Context, req *v2.MachineServiceListBMCRequest) (*v2.MachineServiceListBMCResponse, error)
+	SetState(ctx context.Context, req *v2.MachineServiceSetStateRequest) (*v2.MachineServiceSetStateResponse, error)
 }
 
 // ConnectMachineServiceClient is compatible with the connectrpc-go client interface.

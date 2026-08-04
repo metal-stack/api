@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -171,9 +170,9 @@ func RegisterSwitchServiceHandler(s runtime.MCPServer, srv SwitchServiceServer, 
 
 // SwitchServiceClient is compatible with the grpc-go client interface.
 type SwitchServiceClient interface {
-	Get(ctx context.Context, req *v2.SwitchServiceGetRequest, opts ...grpc.CallOption) (*v2.SwitchServiceGetResponse, error)
-	Heartbeat(ctx context.Context, req *v2.SwitchServiceHeartbeatRequest, opts ...grpc.CallOption) (*v2.SwitchServiceHeartbeatResponse, error)
-	Register(ctx context.Context, req *v2.SwitchServiceRegisterRequest, opts ...grpc.CallOption) (*v2.SwitchServiceRegisterResponse, error)
+	Get(ctx context.Context, req *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
+	Heartbeat(ctx context.Context, req *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error)
+	Register(ctx context.Context, req *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error)
 }
 
 // ConnectSwitchServiceClient is compatible with the connectrpc-go client interface.

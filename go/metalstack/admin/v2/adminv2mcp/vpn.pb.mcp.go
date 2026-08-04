@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -125,8 +124,8 @@ func RegisterVPNServiceHandler(s runtime.MCPServer, srv VPNServiceServer, opts .
 
 // VPNServiceClient is compatible with the grpc-go client interface.
 type VPNServiceClient interface {
-	AuthKey(ctx context.Context, req *v2.VPNServiceAuthKeyRequest, opts ...grpc.CallOption) (*v2.VPNServiceAuthKeyResponse, error)
-	ListNodes(ctx context.Context, req *v2.VPNServiceListNodesRequest, opts ...grpc.CallOption) (*v2.VPNServiceListNodesResponse, error)
+	AuthKey(ctx context.Context, req *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error)
+	ListNodes(ctx context.Context, req *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error)
 }
 
 // ConnectVPNServiceClient is compatible with the connectrpc-go client interface.

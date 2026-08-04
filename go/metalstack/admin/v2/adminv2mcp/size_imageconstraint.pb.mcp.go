@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -263,11 +262,11 @@ func RegisterSizeImageConstraintServiceHandler(s runtime.MCPServer, srv SizeImag
 
 // SizeImageConstraintServiceClient is compatible with the grpc-go client interface.
 type SizeImageConstraintServiceClient interface {
-	Create(ctx context.Context, req *v2.SizeImageConstraintServiceCreateRequest, opts ...grpc.CallOption) (*v2.SizeImageConstraintServiceCreateResponse, error)
-	Delete(ctx context.Context, req *v2.SizeImageConstraintServiceDeleteRequest, opts ...grpc.CallOption) (*v2.SizeImageConstraintServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.SizeImageConstraintServiceGetRequest, opts ...grpc.CallOption) (*v2.SizeImageConstraintServiceGetResponse, error)
-	List(ctx context.Context, req *v2.SizeImageConstraintServiceListRequest, opts ...grpc.CallOption) (*v2.SizeImageConstraintServiceListResponse, error)
-	Update(ctx context.Context, req *v2.SizeImageConstraintServiceUpdateRequest, opts ...grpc.CallOption) (*v2.SizeImageConstraintServiceUpdateResponse, error)
+	Create(ctx context.Context, req *v2.SizeImageConstraintServiceCreateRequest) (*v2.SizeImageConstraintServiceCreateResponse, error)
+	Delete(ctx context.Context, req *v2.SizeImageConstraintServiceDeleteRequest) (*v2.SizeImageConstraintServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.SizeImageConstraintServiceGetRequest) (*v2.SizeImageConstraintServiceGetResponse, error)
+	List(ctx context.Context, req *v2.SizeImageConstraintServiceListRequest) (*v2.SizeImageConstraintServiceListResponse, error)
+	Update(ctx context.Context, req *v2.SizeImageConstraintServiceUpdateRequest) (*v2.SizeImageConstraintServiceUpdateResponse, error)
 }
 
 // ConnectSizeImageConstraintServiceClient is compatible with the connectrpc-go client interface.

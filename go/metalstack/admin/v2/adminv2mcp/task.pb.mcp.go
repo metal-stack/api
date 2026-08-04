@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -217,10 +216,10 @@ func RegisterTaskServiceHandler(s runtime.MCPServer, srv TaskServiceServer, opts
 
 // TaskServiceClient is compatible with the grpc-go client interface.
 type TaskServiceClient interface {
-	Delete(ctx context.Context, req *v2.TaskServiceDeleteRequest, opts ...grpc.CallOption) (*v2.TaskServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.TaskServiceGetRequest, opts ...grpc.CallOption) (*v2.TaskServiceGetResponse, error)
-	List(ctx context.Context, req *v2.TaskServiceListRequest, opts ...grpc.CallOption) (*v2.TaskServiceListResponse, error)
-	Queues(ctx context.Context, req *v2.TaskServiceQueuesRequest, opts ...grpc.CallOption) (*v2.TaskServiceQueuesResponse, error)
+	Delete(ctx context.Context, req *v2.TaskServiceDeleteRequest) (*v2.TaskServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.TaskServiceGetRequest) (*v2.TaskServiceGetResponse, error)
+	List(ctx context.Context, req *v2.TaskServiceListRequest) (*v2.TaskServiceListResponse, error)
+	Queues(ctx context.Context, req *v2.TaskServiceQueuesRequest) (*v2.TaskServiceQueuesResponse, error)
 }
 
 // ConnectTaskServiceClient is compatible with the connectrpc-go client interface.

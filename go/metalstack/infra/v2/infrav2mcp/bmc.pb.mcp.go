@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -125,8 +124,8 @@ func RegisterBMCServiceHandler(s runtime.MCPServer, srv BMCServiceServer, opts .
 
 // BMCServiceClient is compatible with the grpc-go client interface.
 type BMCServiceClient interface {
-	BMCCommandDone(ctx context.Context, req *v2.BMCCommandDoneRequest, opts ...grpc.CallOption) (*v2.BMCCommandDoneResponse, error)
-	UpdateBMCInfo(ctx context.Context, req *v2.UpdateBMCInfoRequest, opts ...grpc.CallOption) (*v2.UpdateBMCInfoResponse, error)
+	BMCCommandDone(ctx context.Context, req *v2.BMCCommandDoneRequest) (*v2.BMCCommandDoneResponse, error)
+	UpdateBMCInfo(ctx context.Context, req *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error)
 }
 
 // ConnectBMCServiceClient is compatible with the connectrpc-go client interface.

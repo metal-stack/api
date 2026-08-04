@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -125,8 +124,8 @@ func RegisterSizeServiceHandler(s runtime.MCPServer, srv SizeServiceServer, opts
 
 // SizeServiceClient is compatible with the grpc-go client interface.
 type SizeServiceClient interface {
-	Get(ctx context.Context, req *v2.SizeServiceGetRequest, opts ...grpc.CallOption) (*v2.SizeServiceGetResponse, error)
-	List(ctx context.Context, req *v2.SizeServiceListRequest, opts ...grpc.CallOption) (*v2.SizeServiceListResponse, error)
+	Get(ctx context.Context, req *v2.SizeServiceGetRequest) (*v2.SizeServiceGetResponse, error)
+	List(ctx context.Context, req *v2.SizeServiceListRequest) (*v2.SizeServiceListResponse, error)
 }
 
 // ConnectSizeServiceClient is compatible with the connectrpc-go client interface.

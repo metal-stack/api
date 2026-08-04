@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -125,8 +124,8 @@ func RegisterFilesystemServiceHandler(s runtime.MCPServer, srv FilesystemService
 
 // FilesystemServiceClient is compatible with the grpc-go client interface.
 type FilesystemServiceClient interface {
-	Get(ctx context.Context, req *v2.FilesystemServiceGetRequest, opts ...grpc.CallOption) (*v2.FilesystemServiceGetResponse, error)
-	List(ctx context.Context, req *v2.FilesystemServiceListRequest, opts ...grpc.CallOption) (*v2.FilesystemServiceListResponse, error)
+	Get(ctx context.Context, req *v2.FilesystemServiceGetRequest) (*v2.FilesystemServiceGetResponse, error)
+	List(ctx context.Context, req *v2.FilesystemServiceListRequest) (*v2.FilesystemServiceListResponse, error)
 }
 
 // ConnectFilesystemServiceClient is compatible with the connectrpc-go client interface.

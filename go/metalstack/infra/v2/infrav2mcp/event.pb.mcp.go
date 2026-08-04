@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -79,7 +78,7 @@ func RegisterEventServiceHandler(s runtime.MCPServer, srv EventServiceServer, op
 
 // EventServiceClient is compatible with the grpc-go client interface.
 type EventServiceClient interface {
-	Send(ctx context.Context, req *v2.EventServiceSendRequest, opts ...grpc.CallOption) (*v2.EventServiceSendResponse, error)
+	Send(ctx context.Context, req *v2.EventServiceSendRequest) (*v2.EventServiceSendResponse, error)
 }
 
 // ConnectEventServiceClient is compatible with the connectrpc-go client interface.

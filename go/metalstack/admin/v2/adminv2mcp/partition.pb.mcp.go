@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -217,10 +216,10 @@ func RegisterPartitionServiceHandler(s runtime.MCPServer, srv PartitionServiceSe
 
 // PartitionServiceClient is compatible with the grpc-go client interface.
 type PartitionServiceClient interface {
-	Capacity(ctx context.Context, req *v2.PartitionServiceCapacityRequest, opts ...grpc.CallOption) (*v2.PartitionServiceCapacityResponse, error)
-	Create(ctx context.Context, req *v2.PartitionServiceCreateRequest, opts ...grpc.CallOption) (*v2.PartitionServiceCreateResponse, error)
-	Delete(ctx context.Context, req *v2.PartitionServiceDeleteRequest, opts ...grpc.CallOption) (*v2.PartitionServiceDeleteResponse, error)
-	Update(ctx context.Context, req *v2.PartitionServiceUpdateRequest, opts ...grpc.CallOption) (*v2.PartitionServiceUpdateResponse, error)
+	Capacity(ctx context.Context, req *v2.PartitionServiceCapacityRequest) (*v2.PartitionServiceCapacityResponse, error)
+	Create(ctx context.Context, req *v2.PartitionServiceCreateRequest) (*v2.PartitionServiceCreateResponse, error)
+	Delete(ctx context.Context, req *v2.PartitionServiceDeleteRequest) (*v2.PartitionServiceDeleteResponse, error)
+	Update(ctx context.Context, req *v2.PartitionServiceUpdateRequest) (*v2.PartitionServiceUpdateResponse, error)
 }
 
 // ConnectPartitionServiceClient is compatible with the connectrpc-go client interface.

@@ -28,3 +28,8 @@ protolint: _gobuf
 .PHONY: protoc
 protoc: _gobuf
 	@$(MAKE)	_buf	CMD="generate -v"
+	# Brutally fix interfaces, must be fixed upstream: https://github.com/redpanda-data/protoc-gen-go-mcp/pull/51
+	find ../go/metalstack -name '*.pb.mcp.go' \
+		-exec sed -i '/^\tgrpc "google.golang.org\/grpc"$$/d' {} +
+	find ../go/metalstack -name '*.pb.mcp.go' \
+		-exec sed -i 's/, opts \.\.\.grpc\.CallOption//g' {} +

@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -355,13 +354,13 @@ func RegisterSwitchServiceHandler(s runtime.MCPServer, srv SwitchServiceServer, 
 
 // SwitchServiceClient is compatible with the grpc-go client interface.
 type SwitchServiceClient interface {
-	ConnectedMachines(ctx context.Context, req *v2.SwitchServiceConnectedMachinesRequest, opts ...grpc.CallOption) (*v2.SwitchServiceConnectedMachinesResponse, error)
-	Delete(ctx context.Context, req *v2.SwitchServiceDeleteRequest, opts ...grpc.CallOption) (*v2.SwitchServiceDeleteResponse, error)
-	Get(ctx context.Context, req *v2.SwitchServiceGetRequest, opts ...grpc.CallOption) (*v2.SwitchServiceGetResponse, error)
-	List(ctx context.Context, req *v2.SwitchServiceListRequest, opts ...grpc.CallOption) (*v2.SwitchServiceListResponse, error)
-	Migrate(ctx context.Context, req *v2.SwitchServiceMigrateRequest, opts ...grpc.CallOption) (*v2.SwitchServiceMigrateResponse, error)
-	Port(ctx context.Context, req *v2.SwitchServicePortRequest, opts ...grpc.CallOption) (*v2.SwitchServicePortResponse, error)
-	Update(ctx context.Context, req *v2.SwitchServiceUpdateRequest, opts ...grpc.CallOption) (*v2.SwitchServiceUpdateResponse, error)
+	ConnectedMachines(ctx context.Context, req *v2.SwitchServiceConnectedMachinesRequest) (*v2.SwitchServiceConnectedMachinesResponse, error)
+	Delete(ctx context.Context, req *v2.SwitchServiceDeleteRequest) (*v2.SwitchServiceDeleteResponse, error)
+	Get(ctx context.Context, req *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error)
+	List(ctx context.Context, req *v2.SwitchServiceListRequest) (*v2.SwitchServiceListResponse, error)
+	Migrate(ctx context.Context, req *v2.SwitchServiceMigrateRequest) (*v2.SwitchServiceMigrateResponse, error)
+	Port(ctx context.Context, req *v2.SwitchServicePortRequest) (*v2.SwitchServicePortResponse, error)
+	Update(ctx context.Context, req *v2.SwitchServiceUpdateRequest) (*v2.SwitchServiceUpdateResponse, error)
 }
 
 // ConnectSwitchServiceClient is compatible with the connectrpc-go client interface.

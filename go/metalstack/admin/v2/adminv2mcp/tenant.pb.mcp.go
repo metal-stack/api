@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -217,10 +216,10 @@ func RegisterTenantServiceHandler(s runtime.MCPServer, srv TenantServiceServer, 
 
 // TenantServiceClient is compatible with the grpc-go client interface.
 type TenantServiceClient interface {
-	AddMember(ctx context.Context, req *v2.TenantServiceAddMemberRequest, opts ...grpc.CallOption) (*v2.TenantServiceAddMemberResponse, error)
-	Create(ctx context.Context, req *v2.TenantServiceCreateRequest, opts ...grpc.CallOption) (*v2.TenantServiceCreateResponse, error)
-	List(ctx context.Context, req *v2.TenantServiceListRequest, opts ...grpc.CallOption) (*v2.TenantServiceListResponse, error)
-	RemoveMember(ctx context.Context, req *v2.TenantServiceRemoveMemberRequest, opts ...grpc.CallOption) (*v2.TenantServiceRemoveMemberResponse, error)
+	AddMember(ctx context.Context, req *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
+	Create(ctx context.Context, req *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
+	List(ctx context.Context, req *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
+	RemoveMember(ctx context.Context, req *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 }
 
 // ConnectTenantServiceClient is compatible with the connectrpc-go client interface.

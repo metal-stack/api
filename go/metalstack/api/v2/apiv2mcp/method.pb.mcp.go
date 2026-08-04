@@ -12,7 +12,6 @@ import (
 	"encoding/json"
 	"google.golang.org/protobuf/encoding/protojson"
 	"connectrpc.com/connect"
-	grpc "google.golang.org/grpc"
 	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
@@ -125,8 +124,8 @@ func RegisterMethodServiceHandler(s runtime.MCPServer, srv MethodServiceServer, 
 
 // MethodServiceClient is compatible with the grpc-go client interface.
 type MethodServiceClient interface {
-	List(ctx context.Context, req *v2.MethodServiceListRequest, opts ...grpc.CallOption) (*v2.MethodServiceListResponse, error)
-	TokenScopedList(ctx context.Context, req *v2.MethodServiceTokenScopedListRequest, opts ...grpc.CallOption) (*v2.MethodServiceTokenScopedListResponse, error)
+	List(ctx context.Context, req *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error)
+	TokenScopedList(ctx context.Context, req *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error)
 }
 
 // ConnectMethodServiceClient is compatible with the connectrpc-go client interface.
