@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+import "metalstack/api/v2/switch.proto";
+
+// VRF represents a VRF that is connected to machines which are not managed by metal-stack.
+message VRF {
+  // Name of the VRF.
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Vni of the VRF.
+  uint32 vni = 2 [(buf.validate.field).uint32 = {
+    gt: 0
+    lte: 16777216
+  }];
+  // VrfPorts maps switch IDs to the respective switch's ports that are bound to this VRF.
+  map<string, VRFPorts> vrf_ports = 3;
+  // Cidrs that are permitted in this VRF.
+  repeated string cidrs = 4 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
+}
+
+// VRFPorts is a collection of ports bound to a VRF.
+message VRFPorts {
+  // Nics in the VRF.
+  repeated metalstack.api.v2.SwitchNic nics = 1;
+}
