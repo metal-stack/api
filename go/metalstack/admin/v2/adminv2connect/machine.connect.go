@@ -73,7 +73,7 @@ type MachineServiceClient interface {
 	ConsolePassword(context.Context, *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error)
 	// SetState set the state of a machine.
 	SetState(context.Context, *v2.MachineServiceSetStateRequest) (*v2.MachineServiceSetStateResponse, error)
-	// Issues allows to query issues of machines
+	// Issues allows to query issues of machines.
 	Issues(context.Context, *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error)
 }
 
@@ -257,7 +257,7 @@ type MachineServiceHandler interface {
 	ConsolePassword(context.Context, *v2.MachineServiceConsolePasswordRequest) (*v2.MachineServiceConsolePasswordResponse, error)
 	// SetState set the state of a machine.
 	SetState(context.Context, *v2.MachineServiceSetStateRequest) (*v2.MachineServiceSetStateResponse, error)
-	// Issues allows to query issues of machines
+	// Issues allows to query issues of machines.
 	Issues(context.Context, *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error)
 }
 

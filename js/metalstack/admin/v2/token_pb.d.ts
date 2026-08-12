@@ -12,7 +12,7 @@ export declare const file_metalstack_admin_v2_token: GenFile;
  */
 export type TokenServiceListRequest = Message<"metalstack.admin.v2.TokenServiceListRequest"> & {
     /**
-     * Query for tokens
+     * Query for tokens.
      *
      * @generated from field: metalstack.api.v2.TokenQuery query = 1;
      */
@@ -30,7 +30,7 @@ export declare const TokenServiceListRequestSchema: GenMessage<TokenServiceListR
  */
 export type TokenServiceListResponse = Message<"metalstack.admin.v2.TokenServiceListResponse"> & {
     /**
-     * Tokens contains the list of tokens
+     * Tokens contains the list of tokens.
      *
      * @generated from field: repeated metalstack.api.v2.Token tokens = 1;
      */
@@ -48,13 +48,13 @@ export declare const TokenServiceListResponseSchema: GenMessage<TokenServiceList
  */
 export type TokenServiceRevokeRequest = Message<"metalstack.admin.v2.TokenServiceRevokeRequest"> & {
     /**
-     * Uuid is the uuid of the token which should be revoked
+     * Uuid is the uuid of the token which should be revoked.
      *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
-     * User is the id of the user for which the token should be revoked
+     * User is the id of the user for which the token should be revoked.
      *
      * @generated from field: string user = 2;
      */
@@ -83,13 +83,13 @@ export declare const TokenServiceRevokeResponseSchema: GenMessage<TokenServiceRe
  */
 export type TokenServiceCreateRequest = Message<"metalstack.admin.v2.TokenServiceCreateRequest"> & {
     /**
-     * User this token should be created for, if omitted, user is derived from caller
+     * User this token should be created for, if omitted, user is derived from caller.
      *
      * @generated from field: optional string user = 1;
      */
     user?: string | undefined;
     /**
-     * TokenCreateRequest which should be created
+     * TokenCreateRequest which should be created.
      *
      * @generated from field: metalstack.api.v2.TokenServiceCreateRequest token_create_request = 2;
      */
@@ -107,13 +107,13 @@ export declare const TokenServiceCreateRequestSchema: GenMessage<TokenServiceCre
  */
 export type TokenServiceCreateResponse = Message<"metalstack.admin.v2.TokenServiceCreateResponse"> & {
     /**
-     * Token contains the created token
+     * Token contains the created token.
      *
      * @generated from field: metalstack.api.v2.Token token = 1;
      */
     token?: Token | undefined;
     /**
-     * Secret is the body if the JWT token, should be used in API requests as bearer token
+     * Secret is the body if the JWT token, should be used in API requests as bearer token.
      *
      * @generated from field: string secret = 2;
      */

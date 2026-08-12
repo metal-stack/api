@@ -48,19 +48,19 @@ export const AuditServiceGetResponseSchema = /*@__PURE__*/ messageDesc(file_meta
 export var AuditPhase;
 (function (AuditPhase) {
     /**
-     * AUDIT_PHASE_UNSPECIFIED is not specified
+     * AUDIT_PHASE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: AUDIT_PHASE_UNSPECIFIED = 0;
      */
     AuditPhase[AuditPhase["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * AUDIT_PHASE_REQUEST defines an audit trace in the request phase
+     * AUDIT_PHASE_REQUEST defines an audit trace in the request phase.
      *
      * @generated from enum value: AUDIT_PHASE_REQUEST = 1;
      */
     AuditPhase[AuditPhase["REQUEST"] = 1] = "REQUEST";
     /**
-     * AUDIT_PHASE_RESPONSE defines an audit trace in the response phase
+     * AUDIT_PHASE_RESPONSE defines an audit trace in the response phase.
      *
      * @generated from enum value: AUDIT_PHASE_RESPONSE = 2;
      */

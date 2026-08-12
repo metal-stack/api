@@ -26,7 +26,7 @@ const (
 // SizeReservationServiceCreateRequest is the request payload for creating a size reservation.
 type SizeReservationServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeReservation is the size reservation to create
+	// SizeReservation is the size reservation to create.
 	SizeReservation *v2.SizeReservation `protobuf:"bytes,1,opt,name=size_reservation,json=sizeReservation,proto3" json:"size_reservation,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -72,7 +72,7 @@ func (x *SizeReservationServiceCreateRequest) GetSizeReservation() *v2.SizeReser
 // SizeReservationServiceCreateResponse is the response payload for creating a size reservation.
 type SizeReservationServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeReservation contains the created reservation
+	// SizeReservation contains the created reservation.
 	SizeReservation *v2.SizeReservation `protobuf:"bytes,1,opt,name=size_reservation,json=sizeReservation,proto3" json:"size_reservation,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -118,19 +118,19 @@ func (x *SizeReservationServiceCreateResponse) GetSizeReservation() *v2.SizeRese
 // SizeReservationServiceUpdateRequest is the request payload for updating a size reservation.
 type SizeReservationServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this size reservation
+	// Id of this size reservation.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Name of this size reservation
+	// Name of this size reservation.
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this size reservation
+	// Description of this size reservation.
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,4,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Partition ids of this size reservation
+	// Partition ids of this size reservation.
 	Partitions []string `protobuf:"bytes,5,rep,name=partitions,proto3" json:"partitions,omitempty"`
-	// Amount of reservations of this size reservation
+	// Amount of reservations of this size reservation.
 	Amount *int32 `protobuf:"varint,6,opt,name=amount,proto3,oneof" json:"amount,omitempty"`
-	// Labels to update of this size reservation
+	// Labels to update of this size reservation.
 	Labels        *v2.UpdateLabels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -218,7 +218,7 @@ func (x *SizeReservationServiceUpdateRequest) GetLabels() *v2.UpdateLabels {
 // SizeReservationServiceUpdateResponse is the response payload for updating a size reservation.
 type SizeReservationServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeReservation contains the updated reservation
+	// SizeReservation contains the updated reservation.
 	SizeReservation *v2.SizeReservation `protobuf:"bytes,1,opt,name=size_reservation,json=sizeReservation,proto3" json:"size_reservation,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -264,7 +264,7 @@ func (x *SizeReservationServiceUpdateResponse) GetSizeReservation() *v2.SizeRese
 // SizeReservationServiceDeleteRequest is the request payload for deleting a size reservation.
 type SizeReservationServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the size reservation to delete
+	// ID of the size reservation to delete.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -310,7 +310,7 @@ func (x *SizeReservationServiceDeleteRequest) GetId() string {
 // SizeReservationServiceDeleteResponse is the response payload for deleting a size reservation.
 type SizeReservationServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeReservation contains the deleted reservation
+	// SizeReservation contains the deleted reservation.
 	SizeReservation *v2.SizeReservation `protobuf:"bytes,1,opt,name=size_reservation,json=sizeReservation,proto3" json:"size_reservation,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -356,7 +356,7 @@ func (x *SizeReservationServiceDeleteResponse) GetSizeReservation() *v2.SizeRese
 // SizeReservationServiceListRequest is the request payload for listing size reservations.
 type SizeReservationServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for size reservations
+	// Query for size reservations.
 	Query         *v2.SizeReservationQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -402,7 +402,7 @@ func (x *SizeReservationServiceListRequest) GetQuery() *v2.SizeReservationQuery 
 // SizeReservationServiceListResponse is the response payload for listing size reservations.
 type SizeReservationServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeReservations contains the list of reservations
+	// SizeReservations contains the list of reservations.
 	SizeReservations []*v2.SizeReservation `protobuf:"bytes,1,rep,name=size_reservations,json=sizeReservations,proto3" json:"size_reservations,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache

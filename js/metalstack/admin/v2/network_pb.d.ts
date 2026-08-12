@@ -13,7 +13,7 @@ export declare const file_metalstack_admin_v2_network: GenFile;
  */
 export type NetworkServiceGetRequest = Message<"metalstack.admin.v2.NetworkServiceGetRequest"> & {
     /**
-     * ID of the network to get
+     * ID of the network to get.
      *
      * @generated from field: string id = 1;
      */
@@ -31,7 +31,7 @@ export declare const NetworkServiceGetRequestSchema: GenMessage<NetworkServiceGe
  */
 export type NetworkServiceGetResponse = Message<"metalstack.admin.v2.NetworkServiceGetResponse"> & {
     /**
-     * Network contains the requested network
+     * Network contains the requested network.
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
@@ -49,103 +49,103 @@ export declare const NetworkServiceGetResponseSchema: GenMessage<NetworkServiceG
  */
 export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkServiceCreateRequest"> & {
     /**
-     * Id of this network
+     * Id of this network.
      *
      * @generated from field: optional string id = 1;
      */
     id?: string | undefined;
     /**
-     * Name of this network
+     * Name of this network.
      *
      * @generated from field: optional string name = 2;
      */
     name?: string | undefined;
     /**
-     * Description of this network
+     * Description of this network.
      *
      * @generated from field: optional string description = 3;
      */
     description?: string | undefined;
     /**
-     * Partition where this network will be created
+     * Partition where this network will be created.
      *
      * @generated from field: optional string partition = 4;
      */
     partition?: string | undefined;
     /**
-     * Project where this network belongs to
+     * Project where this network belongs to.
      *
      * @generated from field: optional string project = 5;
      */
     project?: string | undefined;
     /**
-     * Type of the network to create
+     * Type of the network to create.
      *
      * @generated from field: metalstack.api.v2.NetworkType type = 6;
      */
     type: NetworkType;
     /**
-     * Labels on this network
+     * Labels on this network.
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 7;
      */
     labels?: Labels | undefined;
     /**
-     * Prefixes in this network
+     * Prefixes in this network.
      *
      * @generated from field: repeated string prefixes = 8;
      */
     prefixes: string[];
     /**
-     * Destination Prefixes in this network
+     * Destination Prefixes in this network.
      *
      * @generated from field: repeated string destination_prefixes = 9;
      */
     destinationPrefixes: string[];
     /**
-     * Default Child Prefix length defines the bitlength of a child network created per addressfamily, if not specified during the allocate request
+     * Default Child Prefix length defines the bitlength of a child network created per addressfamily, if not specified during the allocate request.
      *
      * @generated from field: metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 10;
      */
     defaultChildPrefixLength?: ChildPrefixLength | undefined;
     /**
-     * Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
+     * Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length.
      *
      * @generated from field: metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 11;
      */
     minChildPrefixLength?: ChildPrefixLength | undefined;
     /**
-     * NATType of this network
+     * NATType of this network.
      *
      * @generated from field: optional metalstack.api.v2.NATType nat_type = 12;
      */
     natType?: NATType | undefined;
     /**
-     * VRF of this network has this VNI
+     * VRF of this network has this VNI.
      *
      * @generated from field: optional uint32 vrf = 13;
      */
     vrf?: number | undefined;
     /**
-     * Parent Network points to the id of the parent network if any
+     * Parent Network points to the id of the parent network if any.
      *
      * @generated from field: optional string parent_network = 14;
      */
     parentNetwork?: string | undefined;
     /**
-     * AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
+     * AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced.
      *
      * @generated from field: repeated string additional_announcable_cidrs = 15;
      */
     additionalAnnouncableCidrs: string[];
     /**
-     * Length per addressfamily
+     * Length per addressfamily.
      *
      * @generated from field: optional metalstack.api.v2.ChildPrefixLength length = 16;
      */
     length?: ChildPrefixLength | undefined;
     /**
-     * AddressFamily to create, defaults to the same as the parent
+     * AddressFamily to create, defaults to the same as the parent.
      *
      * @generated from field: optional metalstack.api.v2.NetworkAddressFamily address_family = 17;
      */
@@ -163,67 +163,67 @@ export declare const NetworkServiceCreateRequestSchema: GenMessage<NetworkServic
  */
 export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkServiceUpdateRequest"> & {
     /**
-     * Id of this network
+     * Id of this network.
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * UpdateMeta contains the timestamp and strategy to be used in this update request
+     * UpdateMeta contains the timestamp and strategy to be used in this update request.
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
     updateMeta?: UpdateMeta | undefined;
     /**
-     * Name of this network
+     * Name of this network.
      *
      * @generated from field: optional string name = 3;
      */
     name?: string | undefined;
     /**
-     * Description of this network
+     * Description of this network.
      *
      * @generated from field: optional string description = 4;
      */
     description?: string | undefined;
     /**
-     * Labels to update on this network
+     * Labels to update on this network.
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 5;
      */
     labels?: UpdateLabels | undefined;
     /**
-     * Prefixes in this network
+     * Prefixes in this network.
      *
      * @generated from field: repeated string prefixes = 6;
      */
     prefixes: string[];
     /**
-     * Destination Prefixes in this network
+     * Destination Prefixes in this network.
      *
      * @generated from field: repeated string destination_prefixes = 7;
      */
     destinationPrefixes: string[];
     /**
-     * Default Child Prefix length defines the bit length of a child network created per addressfamily, if not specified during the allocate request
+     * Default Child Prefix length defines the bit length of a child network created per addressfamily, if not specified during the allocate request.
      *
      * @generated from field: optional metalstack.api.v2.ChildPrefixLength default_child_prefix_length = 8;
      */
     defaultChildPrefixLength?: ChildPrefixLength | undefined;
     /**
-     * Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length
+     * Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length.
      *
      * @generated from field: optional metalstack.api.v2.ChildPrefixLength min_child_prefix_length = 9;
      */
     minChildPrefixLength?: ChildPrefixLength | undefined;
     /**
-     * NATType of this network
+     * NATType of this network.
      *
      * @generated from field: optional metalstack.api.v2.NATType nat_type = 10;
      */
     natType?: NATType | undefined;
     /**
-     * AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced
+     * AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced.
      *
      * @generated from field: repeated string additional_announcable_cidrs = 11;
      */
@@ -247,7 +247,7 @@ export declare const NetworkServiceUpdateRequestSchema: GenMessage<NetworkServic
  */
 export type NetworkServiceDeleteRequest = Message<"metalstack.admin.v2.NetworkServiceDeleteRequest"> & {
     /**
-     * ID of the network to get
+     * ID of the network to get.
      *
      * @generated from field: string id = 1;
      */
@@ -265,7 +265,7 @@ export declare const NetworkServiceDeleteRequestSchema: GenMessage<NetworkServic
  */
 export type NetworkServiceListRequest = Message<"metalstack.admin.v2.NetworkServiceListRequest"> & {
     /**
-     * Query specifies which networks to return
+     * Query specifies which networks to return.
      *
      * @generated from field: metalstack.api.v2.NetworkQuery query = 1;
      */
@@ -283,7 +283,7 @@ export declare const NetworkServiceListRequestSchema: GenMessage<NetworkServiceL
  */
 export type NetworkServiceCreateResponse = Message<"metalstack.admin.v2.NetworkServiceCreateResponse"> & {
     /**
-     * Network contains the created network
+     * Network contains the created network.
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
@@ -301,7 +301,7 @@ export declare const NetworkServiceCreateResponseSchema: GenMessage<NetworkServi
  */
 export type NetworkServiceUpdateResponse = Message<"metalstack.admin.v2.NetworkServiceUpdateResponse"> & {
     /**
-     * Network contains the updated network
+     * Network contains the updated network.
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
@@ -319,7 +319,7 @@ export declare const NetworkServiceUpdateResponseSchema: GenMessage<NetworkServi
  */
 export type NetworkServiceDeleteResponse = Message<"metalstack.admin.v2.NetworkServiceDeleteResponse"> & {
     /**
-     * Network contains the deleted network
+     * Network contains the deleted network.
      *
      * @generated from field: metalstack.api.v2.Network network = 1;
      */
@@ -337,7 +337,7 @@ export declare const NetworkServiceDeleteResponseSchema: GenMessage<NetworkServi
  */
 export type NetworkServiceListResponse = Message<"metalstack.admin.v2.NetworkServiceListResponse"> & {
     /**
-     * Networks contains the list of networks
+     * Networks contains the list of networks.
      *
      * @generated from field: repeated metalstack.api.v2.Network networks = 1;
      */

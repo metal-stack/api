@@ -50,9 +50,9 @@ type TenantServiceClient interface {
 	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// Returns the list of all tenants.
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
-	// Add a member to a tenant
+	// Add a member to a tenant.
 	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
-	// RemoveMember removes a member from a tenant
+	// RemoveMember removes a member from a tenant.
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 }
 
@@ -144,9 +144,9 @@ type TenantServiceHandler interface {
 	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// Returns the list of all tenants.
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
-	// Add a member to a tenant
+	// Add a member to a tenant.
 	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
-	// RemoveMember removes a member from a tenant
+	// RemoveMember removes a member from a tenant.
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
 }
 

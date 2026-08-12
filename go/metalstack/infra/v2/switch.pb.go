@@ -27,7 +27,7 @@ const (
 // SwitchServiceGetRequest is the request payload for getting a switch.
 type SwitchServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the switch
+	// Id of the switch.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -73,7 +73,7 @@ func (x *SwitchServiceGetRequest) GetId() string {
 // SwitchServiceGetResponse is the response payload for getting a switch.
 type SwitchServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switch contains the requested switch
+	// Switch contains the requested switch.
 	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -119,7 +119,7 @@ func (x *SwitchServiceGetResponse) GetSwitch() *v2.Switch {
 // SwitchServiceRegisterRequest is the request payload for registering a switch.
 type SwitchServiceRegisterRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switch to register
+	// Switch to register.
 	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -165,7 +165,7 @@ func (x *SwitchServiceRegisterRequest) GetSwitch() *v2.Switch {
 // SwitchServiceRegisterResponse is the response payload for registering a switch.
 type SwitchServiceRegisterResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switch contains the registered switch
+	// Switch contains the registered switch.
 	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -211,15 +211,15 @@ func (x *SwitchServiceRegisterResponse) GetSwitch() *v2.Switch {
 // SwitchServiceHeartbeatRequest is the request payload for sending a switch heartbeat.
 type SwitchServiceHeartbeatRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the switch
+	// Id of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Duration of the sync
+	// Duration of the sync.
 	Duration *durationpb.Duration `protobuf:"bytes,2,opt,name=duration,proto3" json:"duration,omitempty"`
-	// Error if any occurred during the sync
+	// Error if any occurred during the sync.
 	Error *string `protobuf:"bytes,3,opt,name=error,proto3,oneof" json:"error,omitempty"`
-	// PortStates maps port identifiers to the respective port's operational state
+	// PortStates maps port identifiers to the respective port's operational state.
 	PortStates map[string]v2.SwitchPortStatus `protobuf:"bytes,4,rep,name=port_states,json=portStates,proto3" json:"port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.SwitchPortStatus"`
-	// BgpPortStates maps port identifiers to the respective port's BGP state
+	// BgpPortStates maps port identifiers to the respective port's BGP state.
 	BgpPortStates map[string]*v2.SwitchBGPPortState `protobuf:"bytes,5,rep,name=bgp_port_states,json=bgpPortStates,proto3" json:"bgp_port_states,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -293,11 +293,11 @@ func (x *SwitchServiceHeartbeatRequest) GetBgpPortStates() map[string]*v2.Switch
 // SwitchServiceHeartbeatResponse is the response payload for sending a switch heartbeat.
 type SwitchServiceHeartbeatResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the switch
+	// Id of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// LastSync holds information about the last sync
+	// LastSync holds information about the last sync.
 	LastSync *v2.SwitchSync `protobuf:"bytes,2,opt,name=last_sync,json=lastSync,proto3" json:"last_sync,omitempty"`
-	// LastSyncError holds information about the last erroneous sync
+	// LastSyncError holds information about the last erroneous sync.
 	LastSyncError *v2.SwitchSync `protobuf:"bytes,3,opt,name=last_sync_error,json=lastSyncError,proto3" json:"last_sync_error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

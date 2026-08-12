@@ -24,7 +24,7 @@ export declare const MethodServiceListRequestSchema: GenMessage<MethodServiceLis
  */
 export type MethodServiceListResponse = Message<"metalstack.api.v2.MethodServiceListResponse"> & {
     /**
-     * Methods is a list of methods public callable
+     * Methods is a list of methods public callable.
      *
      * @generated from field: repeated string methods = 1;
      */
@@ -53,13 +53,13 @@ export declare const MethodServiceTokenScopedListRequestSchema: GenMessage<Metho
  */
 export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.MethodServiceTokenScopedListResponse"> & {
     /**
-     * Permissions contains a list of methods which can be called
+     * Permissions contains a list of methods which can be called.
      *
      * @generated from field: repeated metalstack.api.v2.MethodPermission permissions = 1;
      */
     permissions: MethodPermission[];
     /**
-     * ProjectRoles associates a project ID with the corresponding role of the token owner
+     * ProjectRoles associates a project ID with the corresponding role of the token owner.
      *
      * @generated from field: map<string, metalstack.api.v2.ProjectRole> project_roles = 2;
      */
@@ -67,7 +67,7 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
         [key: string]: ProjectRole;
     };
     /**
-     * TenantRoles associates a tenant ID with the corresponding role of the token owner
+     * TenantRoles associates a tenant ID with the corresponding role of the token owner.
      *
      * @generated from field: map<string, metalstack.api.v2.TenantRole> tenant_roles = 3;
      */
@@ -75,19 +75,19 @@ export type MethodServiceTokenScopedListResponse = Message<"metalstack.api.v2.Me
         [key: string]: TenantRole;
     };
     /**
-     * AdminRole defines the admin role of the token owner
+     * AdminRole defines the admin role of the token owner.
      *
      * @generated from field: optional metalstack.api.v2.AdminRole admin_role = 4;
      */
     adminRole?: AdminRole | undefined;
     /**
-     * InfraRole defines the infrastructure role of the token owner
+     * InfraRole defines the infrastructure role of the token owner.
      *
      * @generated from field: optional metalstack.api.v2.InfraRole infra_role = 5;
      */
     infraRole?: InfraRole | undefined;
     /**
-     * MachineRoles defines the machine roles of the token owner
+     * MachineRoles defines the machine roles of the token owner.
      *
      * @generated from field: map<string, metalstack.api.v2.MachineRole> machine_roles = 6;
      */

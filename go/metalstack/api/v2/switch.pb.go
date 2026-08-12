@@ -495,13 +495,13 @@ func (x *SwitchOS) GetMetalCoreVersion() string {
 // SwitchNic represents a front panel port and its configuration.
 type SwitchNic struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the switch port
+	// Name of the switch port.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Identifier of the port
+	// Identifier of the port.
 	Identifier string `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	// MAC address of the port
+	// MAC address of the port.
 	Mac string `protobuf:"bytes,3,opt,name=mac,proto3" json:"mac,omitempty"`
-	// VRF name if the port is bound in one
+	// VRF name if the port is bound in one.
 	Vrf *string `protobuf:"bytes,4,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// NicState describes the current state of the switch port.
 	State *NicState `protobuf:"bytes,5,opt,name=state,proto3,oneof" json:"state,omitempty"`
@@ -595,9 +595,9 @@ func (x *SwitchNic) GetBgpPortState() *SwitchBGPPortState {
 // BGPFilter can be used to restrict BGP based on CIDRs and VNIs.
 type BGPFilter struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// CIDRs for which to allow BGP
+	// CIDRs for which to allow BGP.
 	Cidrs []string `protobuf:"bytes,1,rep,name=cidrs,proto3" json:"cidrs,omitempty"`
-	// VNIs for which to allow BGP
+	// VNIs for which to allow BGP.
 	Vnis          []string `protobuf:"bytes,2,rep,name=vnis,proto3" json:"vnis,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

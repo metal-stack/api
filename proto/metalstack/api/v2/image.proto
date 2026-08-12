@@ -26,127 +26,127 @@ service ImageService {
   }
 }
 
-// ImageServiceGetRequest is the request payload for an image get request
+// ImageServiceGetRequest is the request payload for an image get request.
 message ImageServiceGetRequest {
-  // ID of the image to get
+  // ID of the image to get.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// ImageServiceListRequest is the request payload for an image list request
+// ImageServiceListRequest is the request payload for an image list request.
 message ImageServiceListRequest {
-  // Query for images
+  // Query for images.
   ImageQuery query = 1;
 }
 
-// ImageServiceLatestRequest is the request payload for an image latest request
+// ImageServiceLatestRequest is the request payload for an image latest request.
 message ImageServiceLatestRequest {
-  // OS for which the latest image should be fetched
-  // should contain os and major.minor then latest patch version of this os is returned
+  // OS for which the latest image should be fetched.
+  // Should contain os and major.minor then latest patch version of this os is returned.
   string os = 1;
-  // Classification of the image latest image
+  // Classification of the image latest image.
   optional ImageClassification classification = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
-// ImageServiceGetResponse is the response payload for an image get request
+// ImageServiceGetResponse is the response payload for an image get request.
 message ImageServiceGetResponse {
-  // Image the image
+  // Image the image.
   Image image = 1;
 }
 
-// ImageServiceListResponse is the response payload for an image list request
+// ImageServiceListResponse is the response payload for an image list request.
 message ImageServiceListResponse {
-  // Images the images
+  // Images the images.
   repeated Image images = 1;
 }
 
-// ImageServiceLatestResponse is the response payload for an image latest request
+// ImageServiceLatestResponse is the response payload for an image latest request.
 message ImageServiceLatestResponse {
-  // Image which is the latest for one os
+  // Image which is the latest for one os.
   Image image = 1;
 }
 
-// Image
+// Image.
 message Image {
-  // Id of this image
+  // Id of this image.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Meta for this image
+  // Meta for this image.
   Meta meta = 2;
-  // URL where this image is located
+  // URL where this image is located.
   string url = 3 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Name of this image
+  // Name of this image.
   optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this image
+  // Description of this image.
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Features of this image
+  // Features of this image.
   repeated ImageFeature features = 6 [(buf.validate.field).repeated = {
     unique: true
     items: {
       enum: {defined_only: true}
     }
   }];
-  // Classification of this image
+  // Classification of this image.
   ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
 
-  // ExpiresAt usage is not possible after this date
+  // ExpiresAt usage is not possible after this date.
   google.protobuf.Timestamp expires_at = 8;
 }
 
-// ImageUsage reports which machines/firewalls actually use this image
+// ImageUsage reports which machines/firewalls actually use this image.
 message ImageUsage {
-  // Image with usage
+  // Image with usage.
   Image image = 1;
-  // UsedBy the following machines/firewalls
+  // UsedBy the following machines/firewalls.
   repeated string used_by = 2;
 }
 
-// ImageQuery is used to search images
+// ImageQuery is used to search images.
 message ImageQuery {
-  // ID of the image to get
+  // ID of the image to get.
   optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // OS of the image
+  // OS of the image.
   optional string os = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
-  // Version of the Image
+  // Version of the Image.
   optional string version = 3 [(buf.validate.field).string = {
     min_len: 1
     max_len: 128
   }];
-  // Name of the image to query
+  // Name of the image to query.
   optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of the image to query
+  // Description of the image to query.
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Url of the image to query
+  // Url of the image to query.
   optional string url = 6 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Feature of the image to query
+  // Feature of the image to query.
   optional ImageFeature feature = 7 [(buf.validate.field).enum.defined_only = true];
 
-  // Classification of the image to query
+  // Classification of the image to query.
   optional ImageClassification classification = 8 [(buf.validate.field).enum.defined_only = true];
 
-  // Labels lists only images containing the given labels
+  // Labels lists only images containing the given labels.
   optional Labels labels = 9;
 }
 
-// ImageFeature
+// ImageFeature.
 enum ImageFeature {
-  // IMAGE_FEATURE_UNSPECIFIED is not specified
+  // IMAGE_FEATURE_UNSPECIFIED is not specified.
   IMAGE_FEATURE_UNSPECIFIED = 0;
-  // IMAGE_FEATURE_MACHINE indicates this image is usable for a machine
+  // IMAGE_FEATURE_MACHINE indicates this image is usable for a machine.
   IMAGE_FEATURE_MACHINE = 1 [(enum_string_value) = "machine"];
-  // IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall
+  // IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall.
   IMAGE_FEATURE_FIREWALL = 2 [(enum_string_value) = "firewall"];
 }
 
-// Image
+// Image.
 enum ImageClassification {
-  // IMAGE_CLASSIFICATION_UNSPECIFIED is not specified
+  // IMAGE_CLASSIFICATION_UNSPECIFIED is not specified.
   IMAGE_CLASSIFICATION_UNSPECIFIED = 0;
-  // IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview
+  // IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview.
   IMAGE_CLASSIFICATION_PREVIEW = 1 [(enum_string_value) = "preview"];
-  // IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported
+  // IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported.
   IMAGE_CLASSIFICATION_SUPPORTED = 2 [(enum_string_value) = "supported"];
-  // IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated
+  // IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated.
   IMAGE_CLASSIFICATION_DEPRECATED = 3 [(enum_string_value) = "deprecated"];
 }

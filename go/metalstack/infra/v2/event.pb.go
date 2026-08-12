@@ -25,7 +25,7 @@ const (
 // EventServiceSendRequest is the request payload for sending provisioning events.
 type EventServiceSendRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Events grouped by machine IDs
+	// Events grouped by machine IDs.
 	Events        map[string]*v2.MachineProvisioningEvent `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -71,9 +71,9 @@ func (x *EventServiceSendRequest) GetEvents() map[string]*v2.MachineProvisioning
 // EventServiceSendResponse is the response payload for sending provisioning events.
 type EventServiceSendResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Events counts the number of events successfully stored in the database
+	// Events counts the number of events successfully stored in the database.
 	Events uint64 `protobuf:"varint,1,opt,name=events,proto3" json:"events,omitempty"`
-	// Failed contains IDs of all machines whose events could not be stored in the database
+	// Failed contains IDs of all machines whose events could not be stored in the database.
 	Failed        []string `protobuf:"bytes,2,rep,name=failed,proto3" json:"failed,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

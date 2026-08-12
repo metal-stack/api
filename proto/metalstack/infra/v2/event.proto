@@ -16,14 +16,14 @@ service EventService {
 
 // EventServiceSendRequest is the request payload for sending provisioning events.
 message EventServiceSendRequest {
-  // Events grouped by machine IDs
+  // Events grouped by machine IDs.
   map<string, metalstack.api.v2.MachineProvisioningEvent> events = 1;
 }
 
 // EventServiceSendResponse is the response payload for sending provisioning events.
 message EventServiceSendResponse {
-  // Events counts the number of events successfully stored in the database
+  // Events counts the number of events successfully stored in the database.
   uint64 events = 1;
-  // Failed contains IDs of all machines whose events could not be stored in the database
+  // Failed contains IDs of all machines whose events could not be stored in the database.
   repeated string failed = 2;
 }
