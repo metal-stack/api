@@ -23,50 +23,50 @@ export const ComponentSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_
  */
 export const ComponentQuerySchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_component, 1);
 /**
- * ComponentType defines which service is actually pinging
+ * ComponentType defines which service is actually pinging.
  *
  * @generated from enum metalstack.api.v2.ComponentType
  */
 export var ComponentType;
 (function (ComponentType) {
     /**
-     * COMPONENT_TYPE_UNSPECIFIED is unspecified
+     * COMPONENT_TYPE_UNSPECIFIED is unspecified.
      *
      * @generated from enum value: COMPONENT_TYPE_UNSPECIFIED = 0;
      */
     ComponentType[ComponentType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * COMPONENT_TYPE_PIXIECORE is pixiecore
+     * COMPONENT_TYPE_PIXIECORE is pixiecore.
      *
      * @generated from enum value: COMPONENT_TYPE_PIXIECORE = 1;
      */
     ComponentType[ComponentType["PIXIECORE"] = 1] = "PIXIECORE";
     /**
-     * COMPONENT_TYPE_METAL_CORE is metal-core
+     * COMPONENT_TYPE_METAL_CORE is metal-core.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_CORE = 2;
      */
     ComponentType[ComponentType["METAL_CORE"] = 2] = "METAL_CORE";
     /**
-     * COMPONENT_TYPE_METAL_BMC is metal-bmc
+     * COMPONENT_TYPE_METAL_BMC is metal-bmc.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_BMC = 3;
      */
     ComponentType[ComponentType["METAL_BMC"] = 3] = "METAL_BMC";
     /**
-     * COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync
+     * COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC = 4;
      */
     ComponentType[ComponentType["METAL_IMAGE_CACHE_SYNC"] = 4] = "METAL_IMAGE_CACHE_SYNC";
     /**
-     * COMPONENT_TYPE_METAL_CONSOLE is metal-console
+     * COMPONENT_TYPE_METAL_CONSOLE is metal-console.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_CONSOLE = 5;
      */
     ComponentType[ComponentType["METAL_CONSOLE"] = 5] = "METAL_CONSOLE";
     /**
-     * COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter
+     * COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_METRICS_EXPORTER = 6;
      */

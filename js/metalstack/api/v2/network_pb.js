@@ -95,26 +95,26 @@ export const NetworkConsumptionSchema = /*@__PURE__*/ messageDesc(file_metalstac
  */
 export const NetworkUsageSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_network, 16);
 /**
- * NATType defines how and if outgoing traffic is translated
+ * NATType defines how and if outgoing traffic is translated.
  *
  * @generated from enum metalstack.api.v2.NATType
  */
 export var NATType;
 (function (NATType) {
     /**
-     * NAT_TYPE_UNSPECIFIED indicates a unspecified nat type
+     * NAT_TYPE_UNSPECIFIED indicates a unspecified nat type.
      *
      * @generated from enum value: NAT_TYPE_UNSPECIFIED = 0;
      */
     NATType[NATType["NAT_TYPE_UNSPECIFIED"] = 0] = "NAT_TYPE_UNSPECIFIED";
     /**
-     * NAT_TYPE_NONE indicates that no nat is configured
+     * NAT_TYPE_NONE indicates that no nat is configured.
      *
      * @generated from enum value: NAT_TYPE_NONE = 1;
      */
     NATType[NATType["NAT_TYPE_NONE"] = 1] = "NAT_TYPE_NONE";
     /**
-     * NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network
+     * NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network.
      *
      * @generated from enum value: NAT_TYPE_IPV4_MASQUERADE = 2;
      */
@@ -125,20 +125,20 @@ export var NATType;
  */
 export const NATTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_network, 0);
 /**
- * NetworkType indicates the purpose of the network, it cannot be changed after creation
+ * NetworkType indicates the purpose of the network, it cannot be changed after creation.
  *
  * @generated from enum metalstack.api.v2.NetworkType
  */
 export var NetworkType;
 (function (NetworkType) {
     /**
-     * NETWORK_TYPE_UNSPECIFIED indicates a unknown network type
+     * NETWORK_TYPE_UNSPECIFIED indicates a unknown network type.
      *
      * @generated from enum value: NETWORK_TYPE_UNSPECIFIED = 0;
      */
     NetworkType[NetworkType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * NETWORK_TYPE_EXTERNAL indicates network where multiple projects can allocate ips, it offers connectivity to other external networks
+     * NETWORK_TYPE_EXTERNAL indicates network where multiple projects can allocate ips, it offers connectivity to other external networks.
      * In most cases this is the internet network or a network which offers connectivity to legacy datacenter networks.
      * If it is not project scoped everyone can allocate Ips in this network, otherwise only from the same project ip allocation is possible.
      *
@@ -146,22 +146,22 @@ export var NetworkType;
      */
     NetworkType[NetworkType["EXTERNAL"] = 1] = "EXTERNAL";
     /**
-     * NETWORK_TYPE_UNDERLAY indicates a underlay network
-     * The underlay network connects all switches and the firewalls to build a EVPN dataplane
+     * NETWORK_TYPE_UNDERLAY indicates a underlay network.
+     * The underlay network connects all switches and the firewalls to build a EVPN dataplane.
      * It is not project scoped. Is part of the dataplane and reserved for administrative purposes.
      *
      * @generated from enum value: NETWORK_TYPE_UNDERLAY = 2;
      */
     NetworkType[NetworkType["UNDERLAY"] = 2] = "UNDERLAY";
     /**
-     * NETWORK_TYPE_SUPER indicates a super network which is only used to create child networks
+     * NETWORK_TYPE_SUPER indicates a super network which is only used to create child networks.
      * If the vrf id is given, child networks will inherit this vrf.
      * If the vrf id is nil in this network, child vrf is taken from the pool.
      * If the partition is given, child networks inherit the partition.
      * If the partition is nil, child networks also do not have a partition (i.e. requires vrf is distributed across all partitions).
      * If the partition is given, only one super network in that partition can be created.
      * If the partition is nil, multiple super networks can exist. Then, for child network creation the network id must be specified (base networks can be queried by label selector).
-     * For child creation destination prefixes will be inherited
+     * For child creation destination prefixes will be inherited.
      * If this is project scoped, the child project must match, otherwise can be freely specified.
      *
      * @generated from enum value: NETWORK_TYPE_SUPER = 3;
@@ -202,32 +202,32 @@ export var NetworkType;
  */
 export const NetworkTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_network, 1);
 /**
- * NetworkAddressFamily defines the address family of a network
+ * NetworkAddressFamily defines the address family of a network.
  *
  * @generated from enum metalstack.api.v2.NetworkAddressFamily
  */
 export var NetworkAddressFamily;
 (function (NetworkAddressFamily) {
     /**
-     * NETWORK_ADDRESS_FAMILY_UNSPECIFIED is not specified
+     * NETWORK_ADDRESS_FAMILY_UNSPECIFIED is not specified.
      *
      * @generated from enum value: NETWORK_ADDRESS_FAMILY_UNSPECIFIED = 0;
      */
     NetworkAddressFamily[NetworkAddressFamily["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * NETWORK_ADDRESS_FAMILY_V4 defines a network with IPv4 address prefixes
+     * NETWORK_ADDRESS_FAMILY_V4 defines a network with IPv4 address prefixes.
      *
      * @generated from enum value: NETWORK_ADDRESS_FAMILY_V4 = 1;
      */
     NetworkAddressFamily[NetworkAddressFamily["V4"] = 1] = "V4";
     /**
-     * NETWORK_ADDRESS_FAMILY_V6 defines a network with IPv6 address prefixes
+     * NETWORK_ADDRESS_FAMILY_V6 defines a network with IPv6 address prefixes.
      *
      * @generated from enum value: NETWORK_ADDRESS_FAMILY_V6 = 2;
      */
     NetworkAddressFamily[NetworkAddressFamily["V6"] = 2] = "V6";
     /**
-     * NETWORK_ADDRESS_FAMILY_DUAL_STACK defines a network with both IPv4 and IPv6 address prefixes
+     * NETWORK_ADDRESS_FAMILY_DUAL_STACK defines a network with both IPv4 and IPv6 address prefixes.
      *
      * @generated from enum value: NETWORK_ADDRESS_FAMILY_DUAL_STACK = 3;
      */

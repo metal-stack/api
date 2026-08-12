@@ -12,7 +12,7 @@ export declare const file_metalstack_admin_v2_component: GenFile;
  */
 export type ComponentServiceListRequest = Message<"metalstack.admin.v2.ComponentServiceListRequest"> & {
     /**
-     * Query filters components
+     * Query filters components.
      *
      * @generated from field: metalstack.api.v2.ComponentQuery query = 1;
      */
@@ -30,7 +30,7 @@ export declare const ComponentServiceListRequestSchema: GenMessage<ComponentServ
  */
 export type ComponentServiceListResponse = Message<"metalstack.admin.v2.ComponentServiceListResponse"> & {
     /**
-     * Components contains the list of components
+     * Components contains the list of components.
      *
      * @generated from field: repeated metalstack.api.v2.Component components = 1;
      */
@@ -48,7 +48,7 @@ export declare const ComponentServiceListResponseSchema: GenMessage<ComponentSer
  */
 export type ComponentServiceGetRequest = Message<"metalstack.admin.v2.ComponentServiceGetRequest"> & {
     /**
-     * UUID identifies the component to get
+     * UUID identifies the component to get.
      *
      * @generated from field: string uuid = 1;
      */
@@ -66,7 +66,7 @@ export declare const ComponentServiceGetRequestSchema: GenMessage<ComponentServi
  */
 export type ComponentServiceGetResponse = Message<"metalstack.admin.v2.ComponentServiceGetResponse"> & {
     /**
-     * Component contains the retrieved component
+     * Component contains the retrieved component.
      *
      * @generated from field: metalstack.api.v2.Component component = 1;
      */
@@ -84,7 +84,7 @@ export declare const ComponentServiceGetResponseSchema: GenMessage<ComponentServ
  */
 export type ComponentServiceDeleteRequest = Message<"metalstack.admin.v2.ComponentServiceDeleteRequest"> & {
     /**
-     * UUID identifies the component to delete
+     * UUID identifies the component to delete.
      *
      * @generated from field: string uuid = 1;
      */
@@ -102,7 +102,7 @@ export declare const ComponentServiceDeleteRequestSchema: GenMessage<ComponentSe
  */
 export type ComponentServiceDeleteResponse = Message<"metalstack.admin.v2.ComponentServiceDeleteResponse"> & {
     /**
-     * Component contains the deleted component
+     * Component contains the deleted component.
      *
      * @generated from field: metalstack.api.v2.Component component = 1;
      */

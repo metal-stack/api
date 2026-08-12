@@ -11,25 +11,25 @@ export declare const file_metalstack_api_v2_version: GenFile;
  */
 export type Version = Message<"metalstack.api.v2.Version"> & {
     /**
-     * Version of the application
+     * Version of the application.
      *
      * @generated from field: string version = 1;
      */
     version: string;
     /**
-     * Revision of the application
+     * Revision of the application.
      *
      * @generated from field: string revision = 2;
      */
     revision: string;
     /**
-     * GitSHA1 of the application
+     * GitSHA1 of the application.
      *
      * @generated from field: string git_sha1 = 3;
      */
     gitSha1: string;
     /**
-     * BuildDate of the application
+     * BuildDate of the application.
      *
      * @generated from field: string build_date = 4;
      */
@@ -58,7 +58,7 @@ export declare const VersionServiceGetRequestSchema: GenMessage<VersionServiceGe
  */
 export type VersionServiceGetResponse = Message<"metalstack.api.v2.VersionServiceGetResponse"> & {
     /**
-     * Version contains the version of the application
+     * Version contains the version of the application.
      *
      * @generated from field: metalstack.api.v2.Version version = 1;
      */

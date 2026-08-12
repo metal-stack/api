@@ -25,7 +25,7 @@ const (
 // ProjectServiceListRequest is the request payload for listing projects.
 type ProjectServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for projects
+	// Query for projects.
 	Query         *v2.ProjectQuery `protobuf:"bytes,1,opt,name=query,proto3,oneof" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -71,7 +71,7 @@ func (x *ProjectServiceListRequest) GetQuery() *v2.ProjectQuery {
 // ProjectServiceListResponse is the response payload for listing projects.
 type ProjectServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Projects contains the list of projects
+	// Projects contains the list of projects.
 	Projects      []*v2.Project `protobuf:"bytes,1,rep,name=projects,proto3" json:"projects,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

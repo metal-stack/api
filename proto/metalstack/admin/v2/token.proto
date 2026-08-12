@@ -30,21 +30,21 @@ service TokenService {
 
 // TokenServiceListRequest is the request payload for listing tokens.
 message TokenServiceListRequest {
-  // Query for tokens
+  // Query for tokens.
   metalstack.api.v2.TokenQuery query = 1;
 }
 
 // TokenServiceListResponse is the response payload for listing tokens.
 message TokenServiceListResponse {
-  // Tokens contains the list of tokens
+  // Tokens contains the list of tokens.
   repeated metalstack.api.v2.Token tokens = 1;
 }
 
 // TokenServiceRevokeRequest is the request payload for revoking a token.
 message TokenServiceRevokeRequest {
-  // Uuid is the uuid of the token which should be revoked
+  // Uuid is the uuid of the token which should be revoked.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // User is the id of the user for which the token should be revoked
+  // User is the id of the user for which the token should be revoked.
   string user = 2 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
 }
 
@@ -53,16 +53,16 @@ message TokenServiceRevokeResponse {}
 
 // TokenServiceCreateRequest is the request payload for creating a token.
 message TokenServiceCreateRequest {
-  // User this token should be created for, if omitted, user is derived from caller
+  // User this token should be created for, if omitted, user is derived from caller.
   optional string user = 1 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
-  // TokenCreateRequest which should be created
+  // TokenCreateRequest which should be created.
   metalstack.api.v2.TokenServiceCreateRequest token_create_request = 2;
 }
 
 // TokenServiceCreateResponse is the response payload for creating a token.
 message TokenServiceCreateResponse {
-  // Token contains the created token
+  // Token contains the created token.
   metalstack.api.v2.Token token = 1;
-  // Secret is the body if the JWT token, should be used in API requests as bearer token
+  // Secret is the body if the JWT token, should be used in API requests as bearer token.
   string secret = 2;
 }

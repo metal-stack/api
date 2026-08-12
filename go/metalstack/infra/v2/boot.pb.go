@@ -23,12 +23,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// BootServiceDhcpRequest is called once a machine issues a dhcp request
+// BootServiceDhcpRequest is called once a machine issues a dhcp request.
 type BootServiceDhcpRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine
+	// UUID of the machine.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Partition where this machine is located
+	// Partition where this machine is located.
 	Partition     string `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -78,7 +78,7 @@ func (x *BootServiceDhcpRequest) GetPartition() string {
 	return ""
 }
 
-// BootServiceDhcpResponse contains the response to a dhcp request
+// BootServiceDhcpResponse contains the response to a dhcp request.
 type BootServiceDhcpResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -115,12 +115,12 @@ func (*BootServiceDhcpResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{1}
 }
 
-// BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac
+// BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac.
 type BootServiceBootRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Mac address of the machine
+	// Mac address of the machine.
 	Mac string `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
-	// Partition where this machine is located
+	// Partition where this machine is located.
 	Partition     string `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -170,14 +170,14 @@ func (x *BootServiceBootRequest) GetPartition() string {
 	return ""
 }
 
-// BootServiceBootResponse contains additional infos which are required to boot a machine
+// BootServiceBootResponse contains additional infos which are required to boot a machine.
 type BootServiceBootResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Kernel is the url to the linux kernel to boot
+	// Kernel is the url to the linux kernel to boot.
 	Kernel string `protobuf:"bytes,1,opt,name=kernel,proto3" json:"kernel,omitempty"`
-	// Initial ram disk is the url to the initial ram disk to boot
+	// Initial ram disk is the url to the initial ram disk to boot.
 	InitRamDisks []string `protobuf:"bytes,2,rep,name=init_ram_disks,json=initRamDisks,proto3" json:"init_ram_disks,omitempty"`
-	// CMDLine contains kernel command line parameters to boot
+	// CMDLine contains kernel command line parameters to boot.
 	Cmdline       *string `protobuf:"bytes,3,opt,name=cmdline,proto3,oneof" json:"cmdline,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -234,24 +234,24 @@ func (x *BootServiceBootResponse) GetCmdline() string {
 	return ""
 }
 
-// BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible
+// BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible.
 type BootServiceRegisterRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of this machine
+	// UUID of this machine.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Hardware details of this machine
+	// Hardware details of this machine.
 	Hardware *v2.MachineHardware `protobuf:"bytes,2,opt,name=hardware,proto3" json:"hardware,omitempty"`
-	// Bios details of this machine
+	// Bios details of this machine.
 	Bios *v2.MachineBios `protobuf:"bytes,3,opt,name=bios,proto3" json:"bios,omitempty"`
-	// BMC details of this machine
+	// BMC details of this machine.
 	Bmc *v2.MachineBMC `protobuf:"bytes,4,opt,name=bmc,proto3" json:"bmc,omitempty"`
-	// FRU details of this machine
+	// FRU details of this machine.
 	Fru *v2.MachineFRU `protobuf:"bytes,5,opt,name=fru,proto3" json:"fru,omitempty"`
-	// Tags of this machine
+	// Tags of this machine.
 	Tags []string `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
-	// MetalHammer version this machine was booted into
+	// MetalHammer version this machine was booted into.
 	MetalHammerVersion string `protobuf:"bytes,7,opt,name=metal_hammer_version,json=metalHammerVersion,proto3" json:"metal_hammer_version,omitempty"`
-	// Partition where this machine is located
+	// Partition where this machine is located.
 	Partition     string `protobuf:"bytes,8,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -343,14 +343,14 @@ func (x *BootServiceRegisterRequest) GetPartition() string {
 	return ""
 }
 
-// BootServiceRegisterResponse response to a BootServiceRegisterResponse request
+// BootServiceRegisterResponse response to a BootServiceRegisterResponse request.
 type BootServiceRegisterResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of this machine
+	// UUID of this machine.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Size is the calculated size from given hardware details
+	// Size is the calculated size from given hardware details.
 	Size string `protobuf:"bytes,2,opt,name=size,proto3" json:"size,omitempty"`
-	// Partition of this machine
+	// Partition of this machine.
 	Partition     string `protobuf:"bytes,3,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -407,10 +407,10 @@ func (x *BootServiceRegisterResponse) GetPartition() string {
 	return ""
 }
 
-// BootServiceWaitRequest is called when a machine was registered and is waiting for allocation
+// BootServiceWaitRequest is called when a machine was registered and is waiting for allocation.
 type BootServiceWaitRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of this machine
+	// UUID of this machine.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -453,10 +453,10 @@ func (x *BootServiceWaitRequest) GetUuid() string {
 	return ""
 }
 
-// BootServiceWaitResponse response to a wait request
+// BootServiceWaitResponse response to a wait request.
 type BootServiceWaitResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Allocation contains the machine.allocation to actually install the machine
+	// Allocation contains the machine.allocation to actually install the machine.
 	Allocation    *v2.MachineAllocation `protobuf:"bytes,1,opt,name=allocation,proto3" json:"allocation,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -499,12 +499,12 @@ func (x *BootServiceWaitResponse) GetAllocation() *v2.MachineAllocation {
 	return nil
 }
 
-// BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded
+// BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded.
 type BootServiceInstallationSucceededRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to boot
+	// UUID of the machine to boot.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// ConsolePassword
+	// ConsolePassword.
 	ConsolePassword string `protobuf:"bytes,2,opt,name=console_password,json=consolePassword,proto3" json:"console_password,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -554,7 +554,7 @@ func (x *BootServiceInstallationSucceededRequest) GetConsolePassword() string {
 	return ""
 }
 
-// BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest
+// BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest.
 type BootServiceInstallationSucceededResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -591,10 +591,10 @@ func (*BootServiceInstallationSucceededResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_boot_proto_rawDescGZIP(), []int{9}
 }
 
-// BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser
+// BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser.
 type BootServiceSuperUserPasswordRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of this machine
+	// UUID of this machine.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -637,12 +637,12 @@ func (x *BootServiceSuperUserPasswordRequest) GetUuid() string {
 	return ""
 }
 
-// BootServiceSuperUserPasswordResponse the super user password is returned
+// BootServiceSuperUserPasswordResponse the super user password is returned.
 type BootServiceSuperUserPasswordResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// FeatureDisabled on set the superuserpassword in the bmc if this feature is not disabled.
 	FeatureDisabled bool `protobuf:"varint,1,opt,name=feature_disabled,json=featureDisabled,proto3" json:"feature_disabled,omitempty"`
-	// SuperUserPassword is the password of the superuser on the ipmi device
+	// SuperUserPassword is the password of the superuser on the ipmi device.
 	SuperUserPassword string `protobuf:"bytes,2,opt,name=super_user_password,json=superUserPassword,proto3" json:"super_user_password,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache

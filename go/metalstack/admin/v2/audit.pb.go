@@ -26,7 +26,7 @@ const (
 // AuditServiceListRequest is the request payload for listing audit traces.
 type AuditServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for audit traces
+	// Query for audit traces.
 	Query         *v2.AuditQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -72,7 +72,7 @@ func (x *AuditServiceListRequest) GetQuery() *v2.AuditQuery {
 // AuditServiceListResponse is the response payload for listing audit traces.
 type AuditServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Traces contains the list of audit traces
+	// Traces contains the list of audit traces.
 	Traces        []*v2.AuditTrace `protobuf:"bytes,1,rep,name=traces,proto3" json:"traces,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -118,9 +118,9 @@ func (x *AuditServiceListResponse) GetTraces() []*v2.AuditTrace {
 // AuditServiceGetRequest is the request payload for getting an audit trace.
 type AuditServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the audit trace
+	// Uuid of the audit trace.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Phase specifies the audit phase. Defaults to request
+	// Phase specifies the audit phase. Defaults to request.
 	Phase         *v2.AuditPhase `protobuf:"varint,2,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase,oneof" json:"phase,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -173,7 +173,7 @@ func (x *AuditServiceGetRequest) GetPhase() v2.AuditPhase {
 // AuditServiceGetResponse is the response payload for getting an audit trace.
 type AuditServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Trace is the audit trace
+	// Trace is the audit trace.
 	Trace         *v2.AuditTrace `protobuf:"bytes,1,opt,name=trace,proto3" json:"trace,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

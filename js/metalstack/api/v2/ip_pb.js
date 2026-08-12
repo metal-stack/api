@@ -70,26 +70,26 @@ export const IPServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metals
  */
 export const IPServiceDeleteResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_ip, 11);
 /**
- * IPType specifies different IP address types
+ * IPType specifies different IP address types.
  *
  * @generated from enum metalstack.api.v2.IPType
  */
 export var IPType;
 (function (IPType) {
     /**
-     * IP_TYPE_UNSPECIFIED is not specified
+     * IP_TYPE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: IP_TYPE_UNSPECIFIED = 0;
      */
     IPType[IPType["IP_TYPE_UNSPECIFIED"] = 0] = "IP_TYPE_UNSPECIFIED";
     /**
-     * IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage
+     * IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage.
      *
      * @generated from enum value: IP_TYPE_EPHEMERAL = 1;
      */
     IPType[IPType["IP_TYPE_EPHEMERAL"] = 1] = "IP_TYPE_EPHEMERAL";
     /**
-     * IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly
+     * IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly.
      *
      * @generated from enum value: IP_TYPE_STATIC = 2;
      */
@@ -100,26 +100,26 @@ export var IPType;
  */
 export const IPTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_ip, 0);
 /**
- * IPAddressFamily defines either IPv4 or IPv6 Addressfamily
+ * IPAddressFamily defines either IPv4 or IPv6 Addressfamily.
  *
  * @generated from enum metalstack.api.v2.IPAddressFamily
  */
 export var IPAddressFamily;
 (function (IPAddressFamily) {
     /**
-     * IP_ADDRESS_FAMILY_UNSPECIFIED is not specified
+     * IP_ADDRESS_FAMILY_UNSPECIFIED is not specified.
      *
      * @generated from enum value: IP_ADDRESS_FAMILY_UNSPECIFIED = 0;
      */
     IPAddressFamily[IPAddressFamily["IP_ADDRESS_FAMILY_UNSPECIFIED"] = 0] = "IP_ADDRESS_FAMILY_UNSPECIFIED";
     /**
-     * IP_ADDRESS_FAMILY_V4 defines a IPv4 address
+     * IP_ADDRESS_FAMILY_V4 defines a IPv4 address.
      *
      * @generated from enum value: IP_ADDRESS_FAMILY_V4 = 1;
      */
     IPAddressFamily[IPAddressFamily["IP_ADDRESS_FAMILY_V4"] = 1] = "IP_ADDRESS_FAMILY_V4";
     /**
-     * IP_ADDRESS_FAMILY_V6 defines a IPv6 address
+     * IP_ADDRESS_FAMILY_V6 defines a IPv6 address.
      *
      * @generated from enum value: IP_ADDRESS_FAMILY_V6 = 2;
      */

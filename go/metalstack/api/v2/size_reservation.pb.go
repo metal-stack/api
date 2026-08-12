@@ -22,12 +22,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// SizeReservationServiceGetRequest is the request payload for a size get request
+// SizeReservationServiceGetRequest is the request payload for a size get request.
 type SizeReservationServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the size reservation to get
+	// ID of the size reservation to get.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Project of the size reservation
+	// Project of the size reservation.
 	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -77,12 +77,12 @@ func (x *SizeReservationServiceGetRequest) GetProject() string {
 	return ""
 }
 
-// SizeReservationServiceListRequest is the request payload for a size list request
+// SizeReservationServiceListRequest is the request payload for a size list request.
 type SizeReservationServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project of the size reservation
+	// Project of the size reservation.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Query for size reservations
+	// Query for size reservations.
 	Query         *SizeReservationQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -132,10 +132,10 @@ func (x *SizeReservationServiceListRequest) GetQuery() *SizeReservationQuery {
 	return nil
 }
 
-// SizeReservationServiceGetResponse is the response payload for a size reservation get request
+// SizeReservationServiceGetResponse is the response payload for a size reservation get request.
 type SizeReservationServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size reservation
+	// Size reservation.
 	SizeReservation *SizeReservation `protobuf:"bytes,1,opt,name=size_reservation,json=sizeReservation,proto3" json:"size_reservation,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -178,10 +178,10 @@ func (x *SizeReservationServiceGetResponse) GetSizeReservation() *SizeReservatio
 	return nil
 }
 
-// SizeReservationServiceListResponse is the response payload for a size reservation list request
+// SizeReservationServiceListResponse is the response payload for a size reservation list request.
 type SizeReservationServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size reservations
+	// Size reservations.
 	SizeReservations []*SizeReservation `protobuf:"bytes,1,rep,name=size_reservations,json=sizeReservations,proto3" json:"size_reservations,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
@@ -224,24 +224,24 @@ func (x *SizeReservationServiceListResponse) GetSizeReservations() []*SizeReserv
 	return nil
 }
 
-// SizeReservation
+// SizeReservation.
 type SizeReservation struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this size reservation, is generated on creation
+	// Id of this size reservation, is generated on creation.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Meta for this size reservation
+	// Meta for this size reservation.
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
-	// Name of this size reservation
+	// Name of this size reservation.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this size reservation
+	// Description of this size reservation.
 	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	// Project of the size reservation
+	// Project of the size reservation.
 	Project string `protobuf:"bytes,5,opt,name=project,proto3" json:"project,omitempty"`
-	// Size id of this size reservation
+	// Size id of this size reservation.
 	Size string `protobuf:"bytes,6,opt,name=size,proto3" json:"size,omitempty"`
-	// Partition ids of this size reservation
+	// Partition ids of this size reservation.
 	Partitions []string `protobuf:"bytes,7,rep,name=partitions,proto3" json:"partitions,omitempty"`
-	// Amount of reservations of this size reservation
+	// Amount of reservations of this size reservation.
 	Amount        int32 `protobuf:"varint,8,opt,name=amount,proto3" json:"amount,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -333,22 +333,22 @@ func (x *SizeReservation) GetAmount() int32 {
 	return 0
 }
 
-// SizeReservationQuery is used to search size reservations
+// SizeReservationQuery is used to search size reservations.
 type SizeReservationQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the size reservation to get
+	// ID of the size reservation to get.
 	Id *string `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
-	// Name of this size reservation
+	// Name of this size reservation.
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this size reservation
+	// Description of this size reservation.
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Size id of this size reservation
+	// Size id of this size reservation.
 	Size *string `protobuf:"bytes,4,opt,name=size,proto3,oneof" json:"size,omitempty"`
-	// Project of the size reservation
+	// Project of the size reservation.
 	Project *string `protobuf:"bytes,5,opt,name=project,proto3,oneof" json:"project,omitempty"`
-	// Partition of the size reservation
+	// Partition of the size reservation.
 	Partition *string `protobuf:"bytes,6,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
-	// Labels lists only size reservations containing the given labels
+	// Labels lists only size reservations containing the given labels.
 	Labels        *Labels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

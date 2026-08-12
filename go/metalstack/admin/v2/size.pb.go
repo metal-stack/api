@@ -26,7 +26,7 @@ const (
 // SizeServiceCreateRequest is the request payload for creating a size.
 type SizeServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size is the size to create
+	// Size is the size to create.
 	Size          *v2.Size `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -72,7 +72,7 @@ func (x *SizeServiceCreateRequest) GetSize() *v2.Size {
 // SizeServiceCreateResponse is the response payload for creating a size.
 type SizeServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size contains the created size
+	// Size contains the created size.
 	Size          *v2.Size `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -118,17 +118,17 @@ func (x *SizeServiceCreateResponse) GetSize() *v2.Size {
 // SizeServiceUpdateRequest is the request payload for updating a size.
 type SizeServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this size
+	// Id of this size.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Name of this size
+	// Name of this size.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this size
+	// Description of this size.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Constraints which must match that a specific machine is considered of this size
+	// Constraints which must match that a specific machine is considered of this size.
 	Constraints []*v2.SizeConstraint `protobuf:"bytes,5,rep,name=constraints,proto3" json:"constraints,omitempty"`
-	// Labels to update on this size
+	// Labels to update on this size.
 	Labels        *v2.UpdateLabels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -209,7 +209,7 @@ func (x *SizeServiceUpdateRequest) GetLabels() *v2.UpdateLabels {
 // SizeServiceUpdateResponse is the response payload for updating a size.
 type SizeServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size contains the updated size
+	// Size contains the updated size.
 	Size          *v2.Size `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -255,7 +255,7 @@ func (x *SizeServiceUpdateResponse) GetSize() *v2.Size {
 // SizeServiceDeleteRequest is the request payload for deleting a size.
 type SizeServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the size to delete
+	// ID of the size to delete.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -301,7 +301,7 @@ func (x *SizeServiceDeleteRequest) GetId() string {
 // SizeServiceDeleteResponse is the response payload for deleting a size.
 type SizeServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size contains the deleted size
+	// Size contains the deleted size.
 	Size          *v2.Size `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

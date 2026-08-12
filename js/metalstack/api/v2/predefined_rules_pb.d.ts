@@ -5,145 +5,145 @@ import type { MapRules, RepeatedRules, StringRules } from "../../../buf/validate
  */
 export declare const file_metalstack_api_v2_predefined_rules: GenFile;
 /**
- * Macaddress returns true if the given string is a valid macaddress
+ * Macaddress returns true if the given string is a valid macaddress.
  *
  * @generated from extension: optional bool macaddress = 80048951;
  */
 export declare const macaddress: GenExtension<StringRules, boolean>;
 /**
- * IsName returns true if name field satisfies our requirements
+ * IsName returns true if name field satisfies our requirements.
  *
  * @generated from extension: optional bool is_name = 80048952;
  */
 export declare const is_name: GenExtension<StringRules, boolean>;
 /**
- * IsDescription returns true if description field satisfies our requirements
+ * IsDescription returns true if description field satisfies our requirements.
  *
  * @generated from extension: optional bool is_description = 80048953;
  */
 export declare const is_description: GenExtension<StringRules, boolean>;
 /**
- * IsPartition returns true if partition field satisfies our requirements
+ * IsPartition returns true if partition field satisfies our requirements.
  *
  * @generated from extension: optional bool is_partition = 80048954;
  */
 export declare const is_partition: GenExtension<StringRules, boolean>;
 /**
- * IsPrefix validates if the given string is a valid prefix
+ * IsPrefix validates if the given string is a valid prefix.
  *
  * @generated from extension: optional bool is_prefix = 80048955;
  */
 export declare const is_prefix: GenExtension<StringRules, boolean>;
 /**
- * IsUri validates if the given string is a valid URI
+ * IsUri validates if the given string is a valid URI.
  *
  * @generated from extension: optional bool is_uri = 80048956;
  */
 export declare const is_uri: GenExtension<StringRules, boolean>;
 /**
- * IsIpOrHostname validates that the given string is either a ip or a hostname
+ * IsIpOrHostname validates that the given string is either a ip or a hostname.
  *
  * @generated from extension: optional bool is_ip_or_hostname = 80048957;
  */
 export declare const is_ip_or_hostname: GenExtension<StringRules, boolean>;
 /**
- * Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end
+ * Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end.
  *
  * @generated from extension: optional bool trimmed = 80048958;
  */
 export declare const trimmed: GenExtension<StringRules, boolean>;
 /**
- * IsUser returns true if name field satisfies our requirements
+ * IsUser returns true if name field satisfies our requirements.
  *
  * @generated from extension: optional bool is_user = 80048959;
  */
 export declare const is_user: GenExtension<StringRules, boolean>;
 /**
- * IsOption returns true if name field satisfies our requirements
+ * IsOption returns true if name field satisfies our requirements.
  *
  * @generated from extension: optional bool is_option = 80048960;
  */
 export declare const is_option: GenExtension<StringRules, boolean>;
 /**
- * IsKey returns true if name field satisfies our requirements
+ * IsKey returns true if name field satisfies our requirements.
  *
  * @generated from extension: optional bool is_key = 80048961;
  */
 export declare const is_key: GenExtension<StringRules, boolean>;
 /**
- * IsTenantLogin returns true if name field satisfies our requirements
+ * IsTenantLogin returns true if name field satisfies our requirements.
  *
  * @generated from extension: optional bool is_tenant_login = 80048962;
  */
 export declare const is_tenant_login: GenExtension<StringRules, boolean>;
 /**
- * IsTenantSubjectPermission returns true if name field satisfies our requirements
+ * IsTenantSubjectPermission returns true if name field satisfies our requirements.
  *
  * @generated from extension: optional bool is_tenant_subject_permission = 80048963;
  */
 export declare const is_tenant_subject_permission: GenExtension<StringRules, boolean>;
 /**
- * IsProjectSubjectPermission returns true if name field satisfies our requirements
+ * IsProjectSubjectPermission returns true if name field satisfies our requirements.
  *
  * @generated from extension: optional bool is_project_subject_permission = 80048964;
  */
 export declare const is_project_subject_permission: GenExtension<StringRules, boolean>;
 /**
- * IsMachineSubjectPermission returns true if name field satisfies our requirements
+ * IsMachineSubjectPermission returns true if name field satisfies our requirements.
  *
  * @generated from extension: optional bool is_machine_subject_permission = 80048965;
  */
 export declare const is_machine_subject_permission: GenExtension<StringRules, boolean>;
 /**
- * Prefixes validates if a slice of prefixes in string form are valid
+ * Prefixes validates if a slice of prefixes in string form are valid.
  *
  * @generated from extension: optional bool prefixes = 80058951;
  */
 export declare const prefixes: GenExtension<RepeatedRules, boolean>;
 /**
- * Ips validates if a slice of ips in string form are valid
+ * Ips validates if a slice of ips in string form are valid.
  *
  * @generated from extension: optional bool ips = 80058952;
  */
 export declare const ips: GenExtension<RepeatedRules, boolean>;
 /**
- * AreHostAndPort validates if a slice of strings are all in the form of <ip | host>:<port>
+ * AreHostAndPort validates if a slice of strings are all in the form of <ip | host>:<port>.
  *
  * @generated from extension: optional bool are_host_and_port = 80058953;
  */
 export declare const are_host_and_port: GenExtension<RepeatedRules, boolean>;
 /**
- * All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end
+ * All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end.
  *
  * @generated from extension: optional bool all_trimmed = 80058954;
  */
 export declare const all_trimmed: GenExtension<RepeatedRules, boolean>;
 /**
- * Keys and Values trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+ * Keys and Values trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end.
  *
  * @generated from extension: optional bool keys_and_values_trimmed = 80068951;
  */
 export declare const keys_and_values_trimmed: GenExtension<MapRules, boolean>;
 /**
- * Keys trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+ * Keys trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end.
  *
  * @generated from extension: optional bool keys_trimmed = 80068952;
  */
 export declare const keys_trimmed: GenExtension<MapRules, boolean>;
 /**
- * ProjectRolesKeysValid ensures that project roles keys met our requirements
+ * ProjectRolesKeysValid ensures that project roles keys met our requirements.
  *
  * @generated from extension: optional bool project_roles_keys_valid = 80068953;
  */
 export declare const project_roles_keys_valid: GenExtension<MapRules, boolean>;
 /**
- * TenantRolesKeysValid ensures that tenant roles keys met our requirements
+ * TenantRolesKeysValid ensures that tenant roles keys met our requirements.
  *
  * @generated from extension: optional bool tenant_roles_keys_valid = 80068954;
  */
 export declare const tenant_roles_keys_valid: GenExtension<MapRules, boolean>;
 /**
- * MachineRolesKeysValid ensures that machine roles keys met our requirements
+ * MachineRolesKeysValid ensures that machine roles keys met our requirements.
  *
  * @generated from extension: optional bool machine_roles_keys_valid = 80068955;
  */
