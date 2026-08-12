@@ -3,8 +3,8 @@ module github.com/metal-stack/api
 go 1.26
 
 require (
-	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.11-20260709200747-435963d16310.1
-	buf.build/go/protovalidate v1.2.0
+	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.36.12-20260709200747-435963d16310.1
+	buf.build/go/protovalidate v1.3.0
 	connectrpc.com/connect v1.20.0
 	github.com/bufbuild/protocompile v0.14.1
 	github.com/go-task/slim-sprig/v3 v3.0.0
@@ -27,9 +27,9 @@ require (
 	github.com/minio/minlz v1.2.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
-	golang.org/x/exp v0.0.0-20260810151157-a8b543ca52da // indirect
+	golang.org/x/exp v0.0.0-20260811152304-ee035b5b010f // indirect
 	golang.org/x/sys v0.47.0 // indirect
-	golang.org/x/text v0.40.0 // indirect
+	golang.org/x/text v0.41.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260810153831-ec0a7760b754 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260810153831-ec0a7760b754 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
