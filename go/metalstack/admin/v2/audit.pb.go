@@ -118,7 +118,7 @@ func (x *AuditServiceListResponse) GetTraces() []*v2.AuditTrace {
 // AuditServiceGetRequest is the request payload for getting an audit trace.
 type AuditServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the audit trace
+	// Uuid of the audit trace.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Phase specifies the audit phase. Defaults to request.
 	Phase         *v2.AuditPhase `protobuf:"varint,2,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase,oneof" json:"phase,omitempty"`

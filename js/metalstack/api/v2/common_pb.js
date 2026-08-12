@@ -53,25 +53,25 @@ export var TenantRole;
      */
     TenantRole[TenantRole["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method
+     * TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method.
      *
      * @generated from enum value: TENANT_ROLE_OWNER = 1;
      */
     TenantRole[TenantRole["OWNER"] = 1] = "OWNER";
     /**
-     * TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+     * TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method.
      *
      * @generated from enum value: TENANT_ROLE_EDITOR = 2;
      */
     TenantRole[TenantRole["EDITOR"] = 2] = "EDITOR";
     /**
-     * TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+     * TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
      *
      * @generated from enum value: TENANT_ROLE_VIEWER = 3;
      */
     TenantRole[TenantRole["VIEWER"] = 3] = "VIEWER";
     /**
-     * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+     * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method.
      * The guest role is assumed by users who are invited to a tenant's project without them.
      * having a direct membership within the tenant.
      *
@@ -97,19 +97,19 @@ export var ProjectRole;
      */
     ProjectRole[ProjectRole["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method
+     * PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method.
      *
      * @generated from enum value: PROJECT_ROLE_OWNER = 1;
      */
     ProjectRole[ProjectRole["OWNER"] = 1] = "OWNER";
     /**
-     * PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+     * PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method.
      *
      * @generated from enum value: PROJECT_ROLE_EDITOR = 2;
      */
     ProjectRole[ProjectRole["EDITOR"] = 2] = "EDITOR";
     /**
-     * PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+     * PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
      *
      * @generated from enum value: PROJECT_ROLE_VIEWER = 3;
      */
@@ -133,13 +133,13 @@ export var AdminRole;
      */
     AdminRole[AdminRole["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method
+     * ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method.
      *
      * @generated from enum value: ADMIN_ROLE_EDITOR = 1;
      */
     AdminRole[AdminRole["EDITOR"] = 1] = "EDITOR";
     /**
-     * ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+     * ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
      *
      * @generated from enum value: ADMIN_ROLE_VIEWER = 2;
      */
@@ -163,13 +163,13 @@ export var InfraRole;
      */
     InfraRole[InfraRole["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method
+     * INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method.
      *
      * @generated from enum value: INFRA_ROLE_EDITOR = 1;
      */
     InfraRole[InfraRole["EDITOR"] = 1] = "EDITOR";
     /**
-     * INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method
+     * INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method.
      *
      * @generated from enum value: INFRA_ROLE_VIEWER = 2;
      */
@@ -193,13 +193,13 @@ export var MachineRole;
      */
     MachineRole[MachineRole["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method
+     * MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method.
      *
      * @generated from enum value: MACHINE_ROLE_EDITOR = 1;
      */
     MachineRole[MachineRole["EDITOR"] = 1] = "EDITOR";
     /**
-     * MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method
+     * MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method.
      *
      * @generated from enum value: MACHINE_ROLE_VIEWER = 2;
      */
@@ -210,7 +210,7 @@ export var MachineRole;
  */
 export const MachineRoleSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 4);
 /**
- * Visibility of a method
+ * Visibility of a method.
  *
  * @generated from enum metalstack.api.v2.Visibility
  */
@@ -229,7 +229,7 @@ export var Visibility;
      */
     Visibility[Visibility["PUBLIC"] = 1] = "PUBLIC";
     /**
-     * VISIBILITY_SELF restricts calls to the authenticated user only
+     * VISIBILITY_SELF restricts calls to the authenticated user only.
      *
      * @generated from enum value: VISIBILITY_SELF = 2;
      */
@@ -240,9 +240,9 @@ export var Visibility;
  */
 export const VisibilitySchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 5);
 /**
- * Auditing option specified per service method
- * by default all service methods are included
- * add the auditing option if you want to exclude a method in auditing
+ * Auditing option specified per service method.
+ * By default all service methods are included.
+ * Add the auditing option if you want to exclude a method in auditing.
  *
  * @generated from enum metalstack.api.v2.Auditing
  */
@@ -255,13 +255,13 @@ export var Auditing;
      */
     Auditing[Auditing["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * AUDITING_INCLUDED if a method is annotated with this, all calls are audited
+     * AUDITING_INCLUDED if a method is annotated with this, all calls are audited.
      *
      * @generated from enum value: AUDITING_INCLUDED = 1;
      */
     Auditing[Auditing["INCLUDED"] = 1] = "INCLUDED";
     /**
-     * AUDITING_EXCLUDED if a method is annotated with this, no calls are audited
+     * AUDITING_EXCLUDED if a method is annotated with this, no calls are audited.
      *
      * @generated from enum value: AUDITING_EXCLUDED = 2;
      */
@@ -273,27 +273,27 @@ export var Auditing;
 export const AuditingSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 6);
 /**
  * OptimisticLockingStrategy defines how optimistic locking should be handled.
- * It defaults to client side, which requires the UpdatedAt timestamp to be provided
+ * It defaults to client side, which requires the UpdatedAt timestamp to be provided.
  *
  * @generated from enum metalstack.api.v2.OptimisticLockingStrategy
  */
 export var OptimisticLockingStrategy;
 (function (OptimisticLockingStrategy) {
     /**
-     * OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side
+     * OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side.
      *
      * @generated from enum value: OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED = 0;
      */
     OptimisticLockingStrategy[OptimisticLockingStrategy["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified
+     * OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified.
      *
      * @generated from enum value: OPTIMISTIC_LOCKING_STRATEGY_CLIENT = 1;
      */
     OptimisticLockingStrategy[OptimisticLockingStrategy["CLIENT"] = 1] = "CLIENT";
     /**
-     * OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt
-     * and fetches the most recent entity before updating with the given values with the update request
+     * OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt.
+     * and fetches the most recent entity before updating with the given values with the update request.
      *
      * @generated from enum value: OPTIMISTIC_LOCKING_STRATEGY_SERVER = 2;
      */
@@ -346,7 +346,7 @@ export const infra_roles = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 
  */
 export const machine_roles = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 6);
 /**
- * StringValue which can be set to a enum
+ * StringValue which can be set to a enum.
  *
  * @generated from extension: string enum_string_value = 52000;
  */

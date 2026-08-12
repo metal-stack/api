@@ -13,7 +13,7 @@ export declare const file_metalstack_infra_v2_switch: GenFile;
  */
 export type SwitchServiceGetRequest = Message<"metalstack.infra.v2.SwitchServiceGetRequest"> & {
     /**
-     * Id of the switch
+     * Id of the switch.
      *
      * @generated from field: string id = 1;
      */
@@ -49,7 +49,7 @@ export declare const SwitchServiceGetResponseSchema: GenMessage<SwitchServiceGet
  */
 export type SwitchServiceRegisterRequest = Message<"metalstack.infra.v2.SwitchServiceRegisterRequest"> & {
     /**
-     * Switch to register
+     * Switch to register.
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
@@ -85,19 +85,19 @@ export declare const SwitchServiceRegisterResponseSchema: GenMessage<SwitchServi
  */
 export type SwitchServiceHeartbeatRequest = Message<"metalstack.infra.v2.SwitchServiceHeartbeatRequest"> & {
     /**
-     * Id of the switch
+     * Id of the switch.
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * Duration of the sync
+     * Duration of the sync.
      *
      * @generated from field: google.protobuf.Duration duration = 2;
      */
     duration?: Duration | undefined;
     /**
-     * Error if any occurred during the sync
+     * Error if any occurred during the sync.
      *
      * @generated from field: optional string error = 3;
      */
@@ -131,7 +131,7 @@ export declare const SwitchServiceHeartbeatRequestSchema: GenMessage<SwitchServi
  */
 export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.SwitchServiceHeartbeatResponse"> & {
     /**
-     * Id of the switch
+     * Id of the switch.
      *
      * @generated from field: string id = 1;
      */

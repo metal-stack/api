@@ -27,7 +27,7 @@ const (
 // SwitchServiceGetRequest is the request payload for getting a switch.
 type SwitchServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the switch to get
+	// Id of the switch to get.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -165,7 +165,7 @@ func (x *SwitchServiceListRequest) GetQuery() *v2.SwitchQuery {
 // SwitchServiceListResponse is the response payload for listing switches.
 type SwitchServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switches that match the request query
+	// Switches that match the request query.
 	Switches      []*v2.Switch `protobuf:"bytes,1,rep,name=switches,proto3" json:"switches,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -211,14 +211,14 @@ func (x *SwitchServiceListResponse) GetSwitches() []*v2.Switch {
 // SwitchServiceUpdateRequest is the request payload for updating a switch.
 type SwitchServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the switch
+	// ID of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// UpdatedAt is the date when this entity was updated.
 	// Must be part of the update request to ensure optimistic locking.
 	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	// Description of the switch
+	// Description of the switch.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// ReplaceMode is used to mark a switch ready for replacement.
 	ReplaceMode *v2.SwitchReplaceMode `protobuf:"varint,5,opt,name=replace_mode,json=replaceMode,proto3,enum=metalstack.api.v2.SwitchReplaceMode,oneof" json:"replace_mode,omitempty"`
@@ -385,7 +385,7 @@ func (x *SwitchServiceUpdateResponse) GetSwitch() *v2.Switch {
 // SwitchServiceDeleteRequest is the request payload for deleting a switch.
 type SwitchServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the switch
+	// Id of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Force will allow switch deletion despite existing machine connections.
 	Force         bool `protobuf:"varint,2,opt,name=force,proto3" json:"force,omitempty"`
@@ -587,11 +587,11 @@ func (x *SwitchServiceMigrateResponse) GetSwitch() *v2.Switch {
 // SwitchServicePortRequest is the request payload for setting the port status of a switch port.
 type SwitchServicePortRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the switch
+	// Id of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// NicName of the port whose status should be changed
+	// NicName of the port whose status should be changed.
 	NicName string `protobuf:"bytes,2,opt,name=nic_name,json=nicName,proto3" json:"nic_name,omitempty"`
-	// Status that the port should have
+	// Status that the port should have.
 	Status        v2.SwitchPortStatus `protobuf:"varint,3,opt,name=status,proto3,enum=metalstack.api.v2.SwitchPortStatus" json:"status,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -651,7 +651,7 @@ func (x *SwitchServicePortRequest) GetStatus() v2.SwitchPortStatus {
 // SwitchServicePortResponse is the response payload for setting the port status of a switch port.
 type SwitchServicePortResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switch after the port status toggle
+	// Switch after the port status toggle.
 	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -699,7 +699,7 @@ type SwitchServiceConnectedMachinesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Query to filter the switch results.
 	Query *v2.SwitchQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	// MachineQuery to filter the machine results
+	// MachineQuery to filter the machine results.
 	MachineQuery  *v2.MachineQuery `protobuf:"bytes,2,opt,name=machine_query,json=machineQuery,proto3" json:"machine_query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

@@ -52,7 +52,7 @@ export const SizeQuerySchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_
 export var SizeConstraintType;
 (function (SizeConstraintType) {
     /**
-     * SIZE_CONSTRAINT_TYPE_UNSPECIFIED type is not specified
+     * SIZE_CONSTRAINT_TYPE_UNSPECIFIED type is not specified.
      *
      * @generated from enum value: SIZE_CONSTRAINT_TYPE_UNSPECIFIED = 0;
      */

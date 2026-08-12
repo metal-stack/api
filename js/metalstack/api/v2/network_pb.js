@@ -114,7 +114,7 @@ export var NATType;
      */
     NATType[NATType["NAT_TYPE_NONE"] = 1] = "NAT_TYPE_NONE";
     /**
-     * NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network
+     * NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network.
      *
      * @generated from enum value: NAT_TYPE_IPV4_MASQUERADE = 2;
      */
@@ -147,7 +147,7 @@ export var NetworkType;
     NetworkType[NetworkType["EXTERNAL"] = 1] = "EXTERNAL";
     /**
      * NETWORK_TYPE_UNDERLAY indicates a underlay network.
-     * The underlay network connects all switches and the firewalls to build a EVPN dataplane
+     * The underlay network connects all switches and the firewalls to build a EVPN dataplane.
      * It is not project scoped. Is part of the dataplane and reserved for administrative purposes.
      *
      * @generated from enum value: NETWORK_TYPE_UNDERLAY = 2;

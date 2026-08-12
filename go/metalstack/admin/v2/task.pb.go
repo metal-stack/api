@@ -330,7 +330,7 @@ func (*TaskServiceQueuesRequest) Descriptor() ([]byte, []int) {
 // TaskServiceQueuesResponse is the response payload for getting all queues.
 type TaskServiceQueuesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Queues configured for the async system
+	// Queues configured for the async system.
 	Queues        []string `protobuf:"bytes,1,rep,name=queues,proto3" json:"queues,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -504,7 +504,7 @@ type TaskInfo struct {
 	// LastError is the error message from the last failure.
 	LastError string `protobuf:"bytes,8,opt,name=last_error,json=lastError,proto3" json:"last_error,omitempty"`
 	// LastFailedAt is the time of the last failure if any.
-	// If the task has no failures, LastFailedAt is zero time (i.e. time.Time{})
+	// If the task has no failures, LastFailedAt is zero time (i.e. time.Time{}).
 	LastFailedAt *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=last_failed_at,json=lastFailedAt,proto3" json:"last_failed_at,omitempty"`
 	// Timeout is the duration the task can be processed by Handler before being retried.
 	Timeout *durationpb.Duration `protobuf:"bytes,10,opt,name=timeout,proto3" json:"timeout,omitempty"`
@@ -512,17 +512,17 @@ type TaskInfo struct {
 	Deadline *timestamppb.Timestamp `protobuf:"bytes,11,opt,name=deadline,proto3" json:"deadline,omitempty"`
 	// Group is the name of the group in which the task belongs.
 	//
-	// Tasks in the same queue can be grouped together by Group name and will be aggregated into one task
-	// by a Server processing the queue
+	// Tasks in the same queue can be grouped together by Group name and will be aggregated into one task.
+	// by a Server processing the queue.
 	//
 	// Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task.
 	Group string `protobuf:"bytes,12,opt,name=group,proto3" json:"group,omitempty"`
 	// NextProcessAt is the time the task is scheduled to be processed.
-	// Zero if not applicable
+	// Zero if not applicable.
 	NextProcessAt *timestamppb.Timestamp `protobuf:"bytes,13,opt,name=next_process_at,json=nextProcessAt,proto3" json:"next_process_at,omitempty"`
 	// IsOrphaned describes whether the task is left in active state with no worker processing it.
-	// An orphaned task indicates that the worker has crashed or experienced network failures and was not able to
-	// extend its lease on the task
+	// An orphaned task indicates that the worker has crashed or experienced network failures and was not able to.
+	// extend its lease on the task.
 	//
 	// This task will be recovered by running a server against the queue the task is in.
 	// This field is only applicable to tasks with TaskStateActive.
@@ -533,7 +533,7 @@ type TaskInfo struct {
 	// Zero value (i.e. time.Time{}) indicates no value.
 	CompletedAt *timestamppb.Timestamp `protobuf:"bytes,16,opt,name=completed_at,json=completedAt,proto3" json:"completed_at,omitempty"`
 	// Result holds the result data associated with the task.
-	// Use ResultWriter to write result data from the Handler
+	// Use ResultWriter to write result data from the Handler.
 	Result        []byte `protobuf:"bytes,17,opt,name=result,proto3" json:"result,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

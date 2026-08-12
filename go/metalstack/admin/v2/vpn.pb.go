@@ -28,7 +28,7 @@ const (
 // VPNServiceAuthKeyRequest is the request payload for generating a VPN authentication key.
 type VPNServiceAuthKeyRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project for which a VPN authentication key should be generated
+	// Project for which a VPN authentication key should be generated.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// Ephemeral defines if the authentication key should be ephemeral.
 	Ephemeral bool `protobuf:"varint,2,opt,name=ephemeral,proto3" json:"ephemeral,omitempty"`
@@ -109,9 +109,9 @@ type VPNServiceAuthKeyResponse struct {
 	AuthKey string `protobuf:"bytes,2,opt,name=auth_key,json=authKey,proto3" json:"auth_key,omitempty"`
 	// Ephemeral defines if the authentication key should be ephemeral.
 	Ephemeral bool `protobuf:"varint,3,opt,name=ephemeral,proto3" json:"ephemeral,omitempty"`
-	// ExpiresAt this key cannot be used after this timestamp
+	// ExpiresAt this key cannot be used after this timestamp.
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
-	// CreatedAt this key was created at this timestamp
+	// CreatedAt this key was created at this timestamp.
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -231,7 +231,7 @@ func (x *VPNServiceListNodesRequest) GetProject() string {
 // VPNServiceListNodesResponse is the response payload for listing VPN nodes.
 type VPNServiceListNodesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Nodes connected to the VPN
+	// Nodes connected to the VPN.
 	Nodes         []*v2.VPNNode `protobuf:"bytes,1,rep,name=nodes,proto3" json:"nodes,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

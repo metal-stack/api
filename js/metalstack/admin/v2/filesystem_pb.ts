@@ -67,7 +67,7 @@ export const FilesystemServiceCreateResponseSchema: GenMessage<FilesystemService
  */
 export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.FilesystemServiceUpdateRequest"> & {
   /**
-   * Id of this filesystemLayout
+   * Id of this filesystemLayout.
    *
    * @generated from field: string id = 1;
    */
@@ -81,14 +81,14 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
   updateMeta?: UpdateMeta | undefined;
 
   /**
-   * Name of this filesystemLayout
+   * Name of this filesystemLayout.
    *
    * @generated from field: optional string name = 3;
    */
   name?: string | undefined;
 
   /**
-   * Description of this filesystemLayout
+   * Description of this filesystemLayout.
    *
    * @generated from field: optional string description = 4;
    */
@@ -109,7 +109,7 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
   disks: Disk[];
 
   /**
-   * Raid arrays to create
+   * Raid arrays to create.
    *
    * @generated from field: repeated metalstack.api.v2.Raid raid = 7;
    */
@@ -130,7 +130,7 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
   logicalVolumes: LogicalVolume[];
 
   /**
-   * Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
+   * Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts.
    *
    * @generated from field: metalstack.api.v2.FilesystemLayoutConstraints constraints = 10;
    */
@@ -172,7 +172,7 @@ export const FilesystemServiceUpdateResponseSchema: GenMessage<FilesystemService
  */
 export type FilesystemServiceDeleteRequest = Message<"metalstack.admin.v2.FilesystemServiceDeleteRequest"> & {
   /**
-   * ID of the filesystem to delete
+   * ID of the filesystem to delete.
    *
    * @generated from field: string id = 1;
    */
@@ -208,20 +208,20 @@ export const FilesystemServiceDeleteResponseSchema: GenMessage<FilesystemService
   messageDesc(file_metalstack_admin_v2_filesystem, 5);
 
 /**
- * FilesystemServiceMatchRequest
+ * FilesystemServiceMatchRequest.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceMatchRequest
  */
 export type FilesystemServiceMatchRequest = Message<"metalstack.admin.v2.FilesystemServiceMatchRequest"> & {
   /**
    * Match size and image to a filesystem layout.
-   * or match a machine to a filesystem layout
+   * or match a machine to a filesystem layout.
    *
    * @generated from oneof metalstack.admin.v2.FilesystemServiceMatchRequest.match
    */
   match: {
     /**
-     * SizeAndImage
+     * SizeAndImage.
      *
      * @generated from field: metalstack.admin.v2.MatchImageAndSize size_and_image = 1;
      */
@@ -229,7 +229,7 @@ export type FilesystemServiceMatchRequest = Message<"metalstack.admin.v2.Filesys
     case: "sizeAndImage";
   } | {
     /**
-     * MachineAndFilesystemlayout
+     * MachineAndFilesystemlayout.
      *
      * @generated from field: metalstack.admin.v2.MatchMachineAndFilesystemLayout machine_and_filesystemlayout = 2;
      */
@@ -246,20 +246,20 @@ export const FilesystemServiceMatchRequestSchema: GenMessage<FilesystemServiceMa
   messageDesc(file_metalstack_admin_v2_filesystem, 6);
 
 /**
- * MatchImageAndSize
+ * MatchImageAndSize.
  *
  * @generated from message metalstack.admin.v2.MatchImageAndSize
  */
 export type MatchImageAndSize = Message<"metalstack.admin.v2.MatchImageAndSize"> & {
   /**
-   * Size, machine size to try
+   * Size, machine size to try.
    *
    * @generated from field: string size = 1;
    */
   size: string;
 
   /**
-   * Image machine image to try
+   * Image machine image to try.
    *
    * @generated from field: string image = 2;
    */
@@ -274,20 +274,20 @@ export const MatchImageAndSizeSchema: GenMessage<MatchImageAndSize> = /*@__PURE_
   messageDesc(file_metalstack_admin_v2_filesystem, 7);
 
 /**
- * MatchMachineAndFilesystemLayout
+ * MatchMachineAndFilesystemLayout.
  *
  * @generated from message metalstack.admin.v2.MatchMachineAndFilesystemLayout
  */
 export type MatchMachineAndFilesystemLayout = Message<"metalstack.admin.v2.MatchMachineAndFilesystemLayout"> & {
   /**
-   * Machine to check
+   * Machine to check.
    *
    * @generated from field: string machine = 1;
    */
   machine: string;
 
   /**
-   * FilesystemLayout to check
+   * FilesystemLayout to check.
    *
    * @generated from field: string filesystem_layout = 2;
    */
@@ -302,13 +302,13 @@ export const MatchMachineAndFilesystemLayoutSchema: GenMessage<MatchMachineAndFi
   messageDesc(file_metalstack_admin_v2_filesystem, 8);
 
 /**
- * FilesystemServiceMatchResponse
+ * FilesystemServiceMatchResponse.
  *
  * @generated from message metalstack.admin.v2.FilesystemServiceMatchResponse
  */
 export type FilesystemServiceMatchResponse = Message<"metalstack.admin.v2.FilesystemServiceMatchResponse"> & {
   /**
-   * FilesystemLayout the filesystemlayout
+   * FilesystemLayout the filesystemlayout.
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
    */

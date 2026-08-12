@@ -83,13 +83,13 @@ export declare const TokenServiceRevokeResponseSchema: GenMessage<TokenServiceRe
  */
 export type TokenServiceCreateRequest = Message<"metalstack.admin.v2.TokenServiceCreateRequest"> & {
     /**
-     * User this token should be created for, if omitted, user is derived from caller
+     * User this token should be created for, if omitted, user is derived from caller.
      *
      * @generated from field: optional string user = 1;
      */
     user?: string | undefined;
     /**
-     * TokenCreateRequest which should be created
+     * TokenCreateRequest which should be created.
      *
      * @generated from field: metalstack.api.v2.TokenServiceCreateRequest token_create_request = 2;
      */

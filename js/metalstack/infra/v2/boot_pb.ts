@@ -24,7 +24,7 @@ export const file_metalstack_infra_v2_boot: GenFile = /*@__PURE__*/
  */
 export type BootServiceDhcpRequest = Message<"metalstack.infra.v2.BootServiceDhcpRequest"> & {
   /**
-   * UUID of the machine
+   * UUID of the machine.
    *
    * @generated from field: string uuid = 1;
    */
@@ -67,7 +67,7 @@ export const BootServiceDhcpResponseSchema: GenMessage<BootServiceDhcpResponse> 
  */
 export type BootServiceBootRequest = Message<"metalstack.infra.v2.BootServiceBootRequest"> & {
   /**
-   * Mac address of the machine
+   * Mac address of the machine.
    *
    * @generated from field: string mac = 1;
    */
@@ -130,42 +130,42 @@ export const BootServiceBootResponseSchema: GenMessage<BootServiceBootResponse> 
  */
 export type BootServiceRegisterRequest = Message<"metalstack.infra.v2.BootServiceRegisterRequest"> & {
   /**
-   * UUID of this machine
+   * UUID of this machine.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Hardware details of this machine
+   * Hardware details of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineHardware hardware = 2;
    */
   hardware?: MachineHardware | undefined;
 
   /**
-   * Bios details of this machine
+   * Bios details of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineBios bios = 3;
    */
   bios?: MachineBios | undefined;
 
   /**
-   * BMC details of this machine
+   * BMC details of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineBMC bmc = 4;
    */
   bmc?: MachineBMC | undefined;
 
   /**
-   * FRU details of this machine
+   * FRU details of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineFRU fru = 5;
    */
   fru?: MachineFRU | undefined;
 
   /**
-   * Tags of this machine
+   * Tags of this machine.
    *
    * @generated from field: repeated string tags = 6;
    */
@@ -194,13 +194,13 @@ export const BootServiceRegisterRequestSchema: GenMessage<BootServiceRegisterReq
   messageDesc(file_metalstack_infra_v2_boot, 4);
 
 /**
- * BootServiceRegisterResponse response to a BootServiceRegisterResponse request
+ * BootServiceRegisterResponse response to a BootServiceRegisterResponse request.
  *
  * @generated from message metalstack.infra.v2.BootServiceRegisterResponse
  */
 export type BootServiceRegisterResponse = Message<"metalstack.infra.v2.BootServiceRegisterResponse"> & {
   /**
-   * UUID of this machine
+   * UUID of this machine.
    *
    * @generated from field: string uuid = 1;
    */
@@ -214,7 +214,7 @@ export type BootServiceRegisterResponse = Message<"metalstack.infra.v2.BootServi
   size: string;
 
   /**
-   * Partition of this machine
+   * Partition of this machine.
    *
    * @generated from field: string partition = 3;
    */
@@ -235,7 +235,7 @@ export const BootServiceRegisterResponseSchema: GenMessage<BootServiceRegisterRe
  */
 export type BootServiceWaitRequest = Message<"metalstack.infra.v2.BootServiceWaitRequest"> & {
   /**
-   * UUID of this machine
+   * UUID of this machine.
    *
    * @generated from field: string uuid = 1;
    */
@@ -250,7 +250,7 @@ export const BootServiceWaitRequestSchema: GenMessage<BootServiceWaitRequest> = 
   messageDesc(file_metalstack_infra_v2_boot, 6);
 
 /**
- * BootServiceWaitResponse response to a wait request
+ * BootServiceWaitResponse response to a wait request.
  *
  * @generated from message metalstack.infra.v2.BootServiceWaitResponse
  */
@@ -277,14 +277,14 @@ export const BootServiceWaitResponseSchema: GenMessage<BootServiceWaitResponse> 
  */
 export type BootServiceInstallationSucceededRequest = Message<"metalstack.infra.v2.BootServiceInstallationSucceededRequest"> & {
   /**
-   * UUID of the machine to boot
+   * UUID of the machine to boot.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * ConsolePassword
+   * ConsolePassword.
    *
    * @generated from field: string console_password = 2;
    */
@@ -314,13 +314,13 @@ export const BootServiceInstallationSucceededResponseSchema: GenMessage<BootServ
   messageDesc(file_metalstack_infra_v2_boot, 9);
 
 /**
- * BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser
+ * BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser.
  *
  * @generated from message metalstack.infra.v2.BootServiceSuperUserPasswordRequest
  */
 export type BootServiceSuperUserPasswordRequest = Message<"metalstack.infra.v2.BootServiceSuperUserPasswordRequest"> & {
   /**
-   * UUID of this machine
+   * UUID of this machine.
    *
    * @generated from field: string uuid = 1;
    */
@@ -335,7 +335,7 @@ export const BootServiceSuperUserPasswordRequestSchema: GenMessage<BootServiceSu
   messageDesc(file_metalstack_infra_v2_boot, 10);
 
 /**
- * BootServiceSuperUserPasswordResponse the super user password is returned
+ * BootServiceSuperUserPasswordResponse the super user password is returned.
  *
  * @generated from message metalstack.infra.v2.BootServiceSuperUserPasswordResponse
  */

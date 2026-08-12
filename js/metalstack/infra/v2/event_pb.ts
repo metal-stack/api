@@ -22,7 +22,7 @@ export const file_metalstack_infra_v2_event: GenFile = /*@__PURE__*/
  */
 export type EventServiceSendRequest = Message<"metalstack.infra.v2.EventServiceSendRequest"> & {
   /**
-   * Events grouped by machine IDs
+   * Events grouped by machine IDs.
    *
    * @generated from field: map<string, metalstack.api.v2.MachineProvisioningEvent> events = 1;
    */
@@ -43,7 +43,7 @@ export const EventServiceSendRequestSchema: GenMessage<EventServiceSendRequest> 
  */
 export type EventServiceSendResponse = Message<"metalstack.infra.v2.EventServiceSendResponse"> & {
   /**
-   * Events counts the number of events successfully stored in the database
+   * Events counts the number of events successfully stored in the database.
    *
    * @generated from field: uint64 events = 1;
    */

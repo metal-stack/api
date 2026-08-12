@@ -32,27 +32,27 @@ export const file_metalstack_api_v2_token: GenFile = /*@__PURE__*/
  * The api token should be used to authenticate services.
  * In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
  *
- * Message level validation, can be developed using https://protovalidate.com/playground
+ * Message level validation, can be developed using https://protovalidate.com/playground.
  *
  * @generated from message metalstack.api.v2.Token
  */
 export type Token = Message<"metalstack.api.v2.Token"> & {
   /**
-   * Uuid of the jwt token, used to reference it by revoke
+   * Uuid of the jwt token, used to reference it by revoke.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * User who created this token
+   * User who created this token.
    *
    * @generated from field: string user = 2;
    */
   user: string;
 
   /**
-   * Meta for this token
+   * Meta for this token.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 3;
    */
@@ -144,7 +144,7 @@ export const TokenSchema: GenMessage<Token> = /*@__PURE__*/
  */
 export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceCreateRequest"> & {
   /**
-   * Description of the token
+   * Description of the token.
    *
    * @generated from field: string description = 1;
    */
@@ -200,7 +200,7 @@ export type TokenServiceCreateRequest = Message<"metalstack.api.v2.TokenServiceC
   machineRoles: { [key: string]: MachineRole };
 
   /**
-   * Labels on this token
+   * Labels on this token.
    *
    * @generated from field: metalstack.api.v2.Labels labels = 9;
    */
@@ -221,19 +221,18 @@ export const TokenServiceCreateRequestSchema: GenMessage<TokenServiceCreateReque
  */
 export type MethodPermission = Message<"metalstack.api.v2.MethodPermission"> & {
   /**
-   * Subject maybe either the project or the tenant
-   * for which the methods should be allowed
+   * Subject may be either the project or the tenant for which the methods should be allowed.
    *
-   * asterisk (*) can be specified to match any subject
-   * empty string ("") can be specified for requests that do not require a subject, e.g. partition list
-   * otherwise either a projectid or a tenant login should be specified
+   * Asterisk (*) can be specified to match any subject.
+   * Empty string ("") can be specified for requests that do not require a subject, e.g. partition list.
+   * Otherwise either a projectid or a tenant login should be specified.
    *
    * @generated from field: string subject = 1;
    */
   subject: string;
 
   /**
-   * Methods which should be accessible
+   * Methods which should be accessible.
    *
    * @generated from field: repeated string methods = 2;
    */
@@ -331,7 +330,7 @@ export const PermissionsByVisibilitySchema: GenMessage<PermissionsByVisibility> 
  */
 export type PublicPermissions = Message<"metalstack.api.v2.PublicPermissions"> & {
   /**
-   * Methods which should be accessible
+   * Methods which should be accessible.
    *
    * @generated from field: repeated string methods = 2;
    */
@@ -352,7 +351,7 @@ export const PublicPermissionsSchema: GenMessage<PublicPermissions> = /*@__PURE_
  */
 export type SelfPermissions = Message<"metalstack.api.v2.SelfPermissions"> & {
   /**
-   * Methods which should be accessible
+   * Methods which should be accessible.
    *
    * @generated from field: repeated string methods = 2;
    */
@@ -373,14 +372,15 @@ export const SelfPermissionsSchema: GenMessage<SelfPermissions> = /*@__PURE__*/
  */
 export type ProjectPermissions = Message<"metalstack.api.v2.ProjectPermissions"> & {
   /**
-   * asterisk (*) can be specified to match any subject
+   * Project scope for the permissions.
+   * Asterisk (*) can be specified to match any subject.
    *
    * @generated from field: string project = 1;
    */
   project: string;
 
   /**
-   * Methods which should be accessible
+   * Methods which should be accessible.
    *
    * @generated from field: repeated string methods = 2;
    */
@@ -401,15 +401,15 @@ export const ProjectPermissionsSchema: GenMessage<ProjectPermissions> = /*@__PUR
  */
 export type TenantPermissions = Message<"metalstack.api.v2.TenantPermissions"> & {
   /**
-   * Login of the tenant
-   * asterisk (*) can be specified to match any subject
+   * Login of the tenant.
+   * Asterisk (*) can be specified to match any subject.
    *
    * @generated from field: string login = 1;
    */
   login: string;
 
   /**
-   * Methods which should be accessible
+   * Methods which should be accessible.
    *
    * @generated from field: repeated string methods = 2;
    */
@@ -430,7 +430,7 @@ export const TenantPermissionsSchema: GenMessage<TenantPermissions> = /*@__PURE_
  */
 export type AdminPermissions = Message<"metalstack.api.v2.AdminPermissions"> & {
   /**
-   * Methods which should be accessible
+   * Methods which should be accessible.
    *
    * @generated from field: repeated string methods = 2;
    */
@@ -451,15 +451,15 @@ export const AdminPermissionsSchema: GenMessage<AdminPermissions> = /*@__PURE__*
  */
 export type MachinePermissions = Message<"metalstack.api.v2.MachinePermissions"> & {
   /**
-   * UUID of this machine
-   * asterisk (*) can be specified to match any subject
+   * UUID of this machine.
+   * Asterisk (*) can be specified to match any subject.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Methods which should be accessible
+   * Methods which should be accessible.
    *
    * @generated from field: repeated string methods = 2;
    */
@@ -480,7 +480,7 @@ export const MachinePermissionsSchema: GenMessage<MachinePermissions> = /*@__PUR
  */
 export type InfraPermissions = Message<"metalstack.api.v2.InfraPermissions"> & {
   /**
-   * Methods which should be accessible
+   * Methods which should be accessible.
    *
    * @generated from field: repeated string methods = 2;
    */
@@ -501,7 +501,7 @@ export const InfraPermissionsSchema: GenMessage<InfraPermissions> = /*@__PURE__*
  */
 export type TokenServiceCreateResponse = Message<"metalstack.api.v2.TokenServiceCreateResponse"> & {
   /**
-   * Token which was created
+   * Token which was created.
    *
    * @generated from field: metalstack.api.v2.Token token = 1;
    */
@@ -571,7 +571,7 @@ export const TokenServiceListResponseSchema: GenMessage<TokenServiceListResponse
  */
 export type TokenServiceRevokeRequest = Message<"metalstack.api.v2.TokenServiceRevokeRequest"> & {
   /**
-   * Uuid of the token to revoke
+   * Uuid of the token to revoke.
    *
    * @generated from field: string uuid = 1;
    */
@@ -607,7 +607,7 @@ export const TokenServiceRevokeResponseSchema: GenMessage<TokenServiceRevokeResp
  */
 export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceUpdateRequest"> & {
   /**
-   * Uuid of the token to update
+   * Uuid of the token to update.
    *
    * @generated from field: string uuid = 1;
    */
@@ -671,7 +671,7 @@ export type TokenServiceUpdateRequest = Message<"metalstack.api.v2.TokenServiceU
   machineRoles: { [key: string]: MachineRole };
 
   /**
-   * Labels on this token
+   * Labels on this token.
    *
    * @generated from field: metalstack.api.v2.UpdateLabels labels = 10;
    */
@@ -713,7 +713,7 @@ export const TokenServiceUpdateResponseSchema: GenMessage<TokenServiceUpdateResp
  */
 export type TokenServiceGetRequest = Message<"metalstack.api.v2.TokenServiceGetRequest"> & {
   /**
-   * Uuid of the token to get
+   * Uuid of the token to get.
    *
    * @generated from field: string uuid = 1;
    */
@@ -751,7 +751,7 @@ export const TokenServiceGetResponseSchema: GenMessage<TokenServiceGetResponse> 
 /**
  * TokenServiceRefreshRequest is the request payload of a token refresh request.
  * Permissions, Roles and Expiration duration and all other properties are inherited from the calling token.
- * The expiration duration will be calculated from the existing token (exp - iat)
+ * The expiration duration will be calculated from the existing token (exp - iat).
  *
  * @generated from message metalstack.api.v2.TokenServiceRefreshRequest
  */
@@ -772,7 +772,7 @@ export const TokenServiceRefreshRequestSchema: GenMessage<TokenServiceRefreshReq
  */
 export type TokenServiceRefreshResponse = Message<"metalstack.api.v2.TokenServiceRefreshResponse"> & {
   /**
-   * Token which was refreshed
+   * Token which was refreshed.
    *
    * @generated from field: metalstack.api.v2.Token token = 1;
    */
@@ -800,14 +800,14 @@ export const TokenServiceRefreshResponseSchema: GenMessage<TokenServiceRefreshRe
  */
 export type TokenQuery = Message<"metalstack.api.v2.TokenQuery"> & {
   /**
-   * UUID of the token to get
+   * UUID of the token to get.
    *
    * @generated from field: optional string uuid = 1;
    */
   uuid?: string | undefined;
 
   /**
-   * Name of the token user to query
+   * Name of the token user to query.
    * Only useful for admins.
    *
    * @generated from field: optional string user = 2;
@@ -815,7 +815,7 @@ export type TokenQuery = Message<"metalstack.api.v2.TokenQuery"> & {
   user?: string | undefined;
 
   /**
-   * Description of the token to query
+   * Description of the token to query.
    *
    * @generated from field: optional string description = 3;
    */
@@ -829,7 +829,7 @@ export type TokenQuery = Message<"metalstack.api.v2.TokenQuery"> & {
   labels?: Labels | undefined;
 
   /**
-   * Token type of the token to query
+   * Token type of the token to query.
    *
    * @generated from field: optional metalstack.api.v2.TokenType token_type = 5;
    */

@@ -25,7 +25,7 @@ export const file_metalstack_api_v2_audit: GenFile = /*@__PURE__*/
  */
 export type AuditTrace = Message<"metalstack.api.v2.AuditTrace"> & {
   /**
-   * Uuid of the audit trace
+   * Uuid of the audit trace.
    *
    * @generated from field: string uuid = 1;
    */
@@ -95,7 +95,7 @@ export type AuditTrace = Message<"metalstack.api.v2.AuditTrace"> & {
   phase: AuditPhase;
 
   /**
-   * Meta for this audit trace
+   * Meta for this audit trace.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 11;
    */
@@ -116,7 +116,7 @@ export const AuditTraceSchema: GenMessage<AuditTrace> = /*@__PURE__*/
  */
 export type AuditQuery = Message<"metalstack.api.v2.AuditQuery"> & {
   /**
-   * Uuid of the audit trace
+   * Uuid of the audit trace.
    *
    * @generated from field: optional string uuid = 2;
    */
@@ -179,7 +179,7 @@ export type AuditQuery = Message<"metalstack.api.v2.AuditQuery"> & {
   body?: string | undefined;
 
   /**
-   * Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
+   * Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200).
    *
    * @generated from field: optional int32 limit = 11;
    */
@@ -207,7 +207,7 @@ export const AuditQuerySchema: GenMessage<AuditQuery> = /*@__PURE__*/
  */
 export type AuditServiceListRequest = Message<"metalstack.api.v2.AuditServiceListRequest"> & {
   /**
-   * Login for this tenant
+   * Login for this tenant.
    *
    * @generated from field: string login = 1;
    */
@@ -256,14 +256,14 @@ export const AuditServiceListResponseSchema: GenMessage<AuditServiceListResponse
  */
 export type AuditServiceGetRequest = Message<"metalstack.api.v2.AuditServiceGetRequest"> & {
   /**
-   * Login for this tenant
+   * Login for this tenant.
    *
    * @generated from field: string login = 1;
    */
   login: string;
 
   /**
-   * Uuid of the audit trace
+   * Uuid of the audit trace.
    *
    * @generated from field: string uuid = 2;
    */

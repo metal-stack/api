@@ -65,7 +65,7 @@ export const AuditServiceListResponseSchema: GenMessage<AuditServiceListResponse
  */
 export type AuditServiceGetRequest = Message<"metalstack.admin.v2.AuditServiceGetRequest"> & {
   /**
-   * Uuid of the audit trace
+   * Uuid of the audit trace.
    *
    * @generated from field: string uuid = 1;
    */

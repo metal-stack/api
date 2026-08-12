@@ -26,15 +26,15 @@ const (
 // TenantServiceCreateRequest is the request payload for creating a tenant.
 type TenantServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the tenant
+	// Name of the tenant.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of the tenant
+	// Description of the tenant.
 	Description *string `protobuf:"bytes,2,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Email of the tenant, if not set will be inherited from the creator
+	// Email of the tenant, if not set will be inherited from the creator.
 	Email *string `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	// AvatarUrl of the tenant
+	// AvatarUrl of the tenant.
 	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// Labels on the tenant
+	// Labels on the tenant.
 	Labels        *v2.Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -255,11 +255,11 @@ func (x *TenantServiceListResponse) GetNextPage() uint64 {
 // TenantServiceAddMemberRequest is the request payload for adding a member to a tenant.
 type TenantServiceAddMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant to which the member will be added
+	// Login of the tenant to which the member will be added.
 	Tenant string `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// Login of the member to add
+	// Login of the member to add.
 	Member string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
-	// Role to assign to the new member
+	// Role to assign to the new member.
 	Role          v2.TenantRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.TenantRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -365,9 +365,9 @@ func (x *TenantServiceAddMemberResponse) GetTenantMember() *v2.TenantMember {
 // TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant.
 type TenantServiceRemoveMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant from which the member will be removed
+	// Login of the tenant from which the member will be removed.
 	Tenant string `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// Login of the member to remove
+	// Login of the member to remove.
 	Member        string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

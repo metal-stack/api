@@ -49,7 +49,7 @@ export declare const SizeServiceCreateResponseSchema: GenMessage<SizeServiceCrea
  */
 export type SizeServiceUpdateRequest = Message<"metalstack.admin.v2.SizeServiceUpdateRequest"> & {
     /**
-     * Id of this size
+     * Id of this size.
      *
      * @generated from field: string id = 1;
      */
@@ -61,25 +61,25 @@ export type SizeServiceUpdateRequest = Message<"metalstack.admin.v2.SizeServiceU
      */
     updateMeta?: UpdateMeta | undefined;
     /**
-     * Name of this size
+     * Name of this size.
      *
      * @generated from field: optional string name = 3;
      */
     name?: string | undefined;
     /**
-     * Description of this size
+     * Description of this size.
      *
      * @generated from field: optional string description = 4;
      */
     description?: string | undefined;
     /**
-     * Constraints which must match that a specific machine is considered of this size
+     * Constraints which must match that a specific machine is considered of this size.
      *
      * @generated from field: repeated metalstack.api.v2.SizeConstraint constraints = 5;
      */
     constraints: SizeConstraint[];
     /**
-     * Labels to update on this size
+     * Labels to update on this size.
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 6;
      */
@@ -115,7 +115,7 @@ export declare const SizeServiceUpdateResponseSchema: GenMessage<SizeServiceUpda
  */
 export type SizeServiceDeleteRequest = Message<"metalstack.admin.v2.SizeServiceDeleteRequest"> & {
     /**
-     * ID of the size to delete
+     * ID of the size to delete.
      *
      * @generated from field: string id = 1;
      */

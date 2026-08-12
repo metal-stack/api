@@ -210,9 +210,9 @@ func (*TokenServiceRevokeResponse) Descriptor() ([]byte, []int) {
 // TokenServiceCreateRequest is the request payload for creating a token.
 type TokenServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// User this token should be created for, if omitted, user is derived from caller
+	// User this token should be created for, if omitted, user is derived from caller.
 	User *string `protobuf:"bytes,1,opt,name=user,proto3,oneof" json:"user,omitempty"`
-	// TokenCreateRequest which should be created
+	// TokenCreateRequest which should be created.
 	TokenCreateRequest *v2.TokenServiceCreateRequest `protobuf:"bytes,2,opt,name=token_create_request,json=tokenCreateRequest,proto3" json:"token_create_request,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache

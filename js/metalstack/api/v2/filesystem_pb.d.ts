@@ -12,7 +12,7 @@ export declare const file_metalstack_api_v2_filesystem: GenFile;
  */
 export type FilesystemServiceGetRequest = Message<"metalstack.api.v2.FilesystemServiceGetRequest"> & {
     /**
-     * ID of the filesystem to get
+     * ID of the filesystem to get.
      *
      * @generated from field: string id = 1;
      */
@@ -30,7 +30,7 @@ export declare const FilesystemServiceGetRequestSchema: GenMessage<FilesystemSer
  */
 export type FilesystemServiceListRequest = Message<"metalstack.api.v2.FilesystemServiceListRequest"> & {
     /**
-     * ID of the filesystem to get
+     * ID of the filesystem to get.
      *
      * @generated from field: optional string id = 1;
      */
@@ -48,7 +48,7 @@ export declare const FilesystemServiceListRequestSchema: GenMessage<FilesystemSe
  */
 export type FilesystemServiceGetResponse = Message<"metalstack.api.v2.FilesystemServiceGetResponse"> & {
     /**
-     * FilesystemLayout the filesystemlayout
+     * FilesystemLayout the filesystemlayout.
      *
      * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
      */
@@ -66,7 +66,7 @@ export declare const FilesystemServiceGetResponseSchema: GenMessage<FilesystemSe
  */
 export type FilesystemServiceListResponse = Message<"metalstack.api.v2.FilesystemServiceListResponse"> & {
     /**
-     * FilesystemLayouts the filesystemlayouts
+     * FilesystemLayouts the filesystemlayouts.
      *
      * @generated from field: repeated metalstack.api.v2.FilesystemLayout filesystem_layouts = 1;
      */
@@ -78,31 +78,31 @@ export type FilesystemServiceListResponse = Message<"metalstack.api.v2.Filesyste
  */
 export declare const FilesystemServiceListResponseSchema: GenMessage<FilesystemServiceListResponse>;
 /**
- * FilesystemLayout
+ * FilesystemLayout.
  *
  * @generated from message metalstack.api.v2.FilesystemLayout
  */
 export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
     /**
-     * Id of this filesystemLayout
+     * Id of this filesystemLayout.
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * Meta for this filesystemLayout
+     * Meta for this filesystemLayout.
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
     meta?: Meta | undefined;
     /**
-     * Name of this filesystemLayout
+     * Name of this filesystemLayout.
      *
      * @generated from field: optional string name = 3;
      */
     name?: string | undefined;
     /**
-     * Description of this filesystemLayout
+     * Description of this filesystemLayout.
      *
      * @generated from field: optional string description = 4;
      */
@@ -120,7 +120,7 @@ export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
      */
     disks: Disk[];
     /**
-     * raid arrays to create
+     * Raid arrays to create.
      *
      * @generated from field: repeated metalstack.api.v2.Raid raid = 7;
      */
@@ -138,7 +138,7 @@ export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
      */
     logicalVolumes: LogicalVolume[];
     /**
-     * Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
+     * Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts.
      *
      * @generated from field: metalstack.api.v2.FilesystemLayoutConstraints constraints = 10;
      */
@@ -150,24 +150,24 @@ export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
  */
 export declare const FilesystemLayoutSchema: GenMessage<FilesystemLayout>;
 /**
- * FilesystemLayoutConstraints
+ * FilesystemLayoutConstraints.
  *
  * @generated from message metalstack.api.v2.FilesystemLayoutConstraints
  */
 export type FilesystemLayoutConstraints = Message<"metalstack.api.v2.FilesystemLayoutConstraints"> & {
     /**
      * Sizes list of sizes this layout applies to.
-     * this could either be a concrete size, or a asterisk to match all sizes
+     * This could either be a concrete size, or a asterisk to match all sizes.
      *
      * @generated from field: repeated string sizes = 1;
      */
     sizes: string[];
     /**
-     * Images list of images this layout applies to in the following form.
-     * key must be the first part of available images, e.g. the name of the image
-     * value must be a semver match expression with the constraint and the version separated by space
-     * this would match all debian images which are greater or equal 12.0
-     * "debian":">= 12.0"
+     * Images list of images this layout applies to in the following form:
+     * Key must be the first part of available images, e.g. the name of the imag.
+     * Value must be a semver match expression with the constraint and the version separated by space.
+     * This would match all debian images which are greater or equal 12:
+     * "debian": >= 12.0.
      *
      * @generated from field: map<string, string> images = 2;
      */
@@ -181,55 +181,55 @@ export type FilesystemLayoutConstraints = Message<"metalstack.api.v2.FilesystemL
  */
 export declare const FilesystemLayoutConstraintsSchema: GenMessage<FilesystemLayoutConstraints>;
 /**
- * Filesystem
+ * Filesystem.
  *
  * @generated from message metalstack.api.v2.Filesystem
  */
 export type Filesystem = Message<"metalstack.api.v2.Filesystem"> & {
     /**
-     * Device the underlying device where this filesystem should be created
+     * Device the underlying device where this filesystem should be created.
      *
      * @generated from field: string device = 1;
      */
     device: string;
     /**
-     * Format of the filesystem format
+     * Format of the filesystem format.
      *
      * @generated from field: metalstack.api.v2.Format format = 2;
      */
     format: Format;
     /**
-     * Name of this filesystem
+     * Name of this filesystem.
      *
      * @generated from field: optional string name = 3;
      */
     name?: string | undefined;
     /**
-     * Description of this filesystem
+     * Description of this filesystem.
      *
      * @generated from field: optional string description = 4;
      */
     description?: string | undefined;
     /**
-     * Path the mountpoint where this filesystem should be mounted on
+     * Path the mountpoint where this filesystem should be mounted on.
      *
      * @generated from field: optional string path = 5;
      */
     path?: string | undefined;
     /**
-     * Label an optional label for this filesystem
+     * Label an optional label for this filesystem.
      *
      * @generated from field: optional string label = 6;
      */
     label?: string | undefined;
     /**
-     * MountOptions the options to use to mount this filesystem
+     * MountOptions the options to use to mount this filesystem.
      *
      * @generated from field: repeated string mount_options = 7;
      */
     mountOptions: string[];
     /**
-     * CreateOptions the options to use to create (mkfs) this filesystem
+     * CreateOptions the options to use to create (mkfs) this filesystem.
      *
      * @generated from field: repeated string create_options = 8;
      */
@@ -241,13 +241,13 @@ export type Filesystem = Message<"metalstack.api.v2.Filesystem"> & {
  */
 export declare const FilesystemSchema: GenMessage<Filesystem>;
 /**
- * Disk
+ * Disk.
  *
  * @generated from message metalstack.api.v2.Disk
  */
 export type Disk = Message<"metalstack.api.v2.Disk"> & {
     /**
-     * Device the device to create the partitions
+     * Device the device to create the partitions.
      *
      * @generated from field: string device = 1;
      */
@@ -265,13 +265,13 @@ export type Disk = Message<"metalstack.api.v2.Disk"> & {
  */
 export declare const DiskSchema: GenMessage<Disk>;
 /**
- * Raid
+ * Raid.
  *
  * @generated from message metalstack.api.v2.Raid
  */
 export type Raid = Message<"metalstack.api.v2.Raid"> & {
     /**
-     * ArrayName the name of the resulting array device
+     * ArrayName the name of the resulting array device.
      *
      * @generated from field: string array_name = 1;
      */
@@ -289,13 +289,13 @@ export type Raid = Message<"metalstack.api.v2.Raid"> & {
      */
     level: RaidLevel;
     /**
-     * CreateOptions the options to use to create the raid array
+     * CreateOptions the options to use to create the raid array.
      *
      * @generated from field: repeated string create_options = 4;
      */
     createOptions: string[];
     /**
-     * Spares number of spares for the raid array
+     * Spares number of spares for the raid array.
      *
      * @generated from field: int32 spares = 5;
      */
@@ -307,7 +307,7 @@ export type Raid = Message<"metalstack.api.v2.Raid"> & {
  */
 export declare const RaidSchema: GenMessage<Raid>;
 /**
- * DiskPartition
+ * DiskPartition.
  *
  * @generated from message metalstack.api.v2.DiskPartition
  */
@@ -319,19 +319,19 @@ export type DiskPartition = Message<"metalstack.api.v2.DiskPartition"> & {
      */
     number: number;
     /**
-     * Label an optional label for this partition
+     * Label an optional label for this partition.
      *
      * @generated from field: optional string label = 2;
      */
     label?: string | undefined;
     /**
-     * Size in mebibytes (MiB) of this partition
+     * Size in mebibytes (MiB) of this partition.
      *
      * @generated from field: uint64 size = 3;
      */
     size: bigint;
     /**
-     * GPTType the gpt partition table type of this partition
+     * GPTType the gpt partition table type of this partition.
      *
      * @generated from field: optional metalstack.api.v2.GPTType gpt_type = 4;
      */
@@ -343,13 +343,13 @@ export type DiskPartition = Message<"metalstack.api.v2.DiskPartition"> & {
  */
 export declare const DiskPartitionSchema: GenMessage<DiskPartition>;
 /**
- * VolumeGroup
+ * VolumeGroup.
  *
  * @generated from message metalstack.api.v2.VolumeGroup
  */
 export type VolumeGroup = Message<"metalstack.api.v2.VolumeGroup"> & {
     /**
-     * Name the name of the resulting volume group
+     * Name the name of the resulting volume group.
      *
      * @generated from field: string name = 1;
      */
@@ -373,31 +373,31 @@ export type VolumeGroup = Message<"metalstack.api.v2.VolumeGroup"> & {
  */
 export declare const VolumeGroupSchema: GenMessage<VolumeGroup>;
 /**
- * LogicalVolume
+ * LogicalVolume.
  *
  * @generated from message metalstack.api.v2.LogicalVolume
  */
 export type LogicalVolume = Message<"metalstack.api.v2.LogicalVolume"> & {
     /**
-     * Name the name of the logical volume
+     * Name the name of the logical volume.
      *
      * @generated from field: string name = 1;
      */
     name: string;
     /**
-     * VolumeGroup the name of the volume group where to create the logical volume onto
+     * VolumeGroup the name of the volume group where to create the logical volume onto.
      *
      * @generated from field: string volume_group = 2;
      */
     volumeGroup: string;
     /**
-     * Size size in mebibytes (MiB) of this volume
+     * Size size in mebibytes (MiB) of this volume.
      *
      * @generated from field: uint64 size = 3;
      */
     size: bigint;
     /**
-     * LVMType the type of this logical volume can be either linear|striped|raid1
+     * LVMType the type of this logical volume can be either linear|striped|raid1.
      *
      * @generated from field: metalstack.api.v2.LVMType lvm_type = 4;
      */
@@ -409,7 +409,7 @@ export type LogicalVolume = Message<"metalstack.api.v2.LogicalVolume"> & {
  */
 export declare const LogicalVolumeSchema: GenMessage<LogicalVolume>;
 /**
- * LVMType
+ * LVMType.
  *
  * @generated from enum metalstack.api.v2.LVMType
  */
@@ -421,19 +421,19 @@ export declare enum LVMType {
      */
     LVM_TYPE_UNSPECIFIED = 0,
     /**
-     * LVM_TYPE_LINEAR append across all physical volumes
+     * LVM_TYPE_LINEAR append across all physical volumes.
      *
      * @generated from enum value: LVM_TYPE_LINEAR = 1;
      */
     LVM_TYPE_LINEAR = 1,
     /**
-     * LVM_TYPE_STRIPED stripe across all physical volumes
+     * LVM_TYPE_STRIPED stripe across all physical volumes.
      *
      * @generated from enum value: LVM_TYPE_STRIPED = 2;
      */
     LVM_TYPE_STRIPED = 2,
     /**
-     * LVM_TYPE_RAID1 mirror with raid across all physical volumes
+     * LVM_TYPE_RAID1 mirror with raid across all physical volumes.
      *
      * @generated from enum value: LVM_TYPE_RAID1 = 3;
      */
@@ -450,7 +450,7 @@ export declare const LVMTypeSchema: GenEnum<LVMType>;
  */
 export declare enum Format {
     /**
-     * FORMAT_UNSPECIFIED
+     * FORMAT_UNSPECIFIED.
      *
      * @generated from enum value: FORMAT_UNSPECIFIED = 0;
      */
@@ -486,7 +486,7 @@ export declare enum Format {
      */
     TMPFS = 5,
     /**
-     * FORMAT_NONE
+     * FORMAT_NONE.
      *
      * @generated from enum value: FORMAT_NONE = 6;
      */
@@ -509,25 +509,25 @@ export declare enum GPTType {
      */
     GPT_TYPE_UNSPECIFIED = 0,
     /**
-     * GPT_TYPE_BOOT EFI Boot Partition
+     * GPT_TYPE_BOOT EFI Boot Partition.
      *
      * @generated from enum value: GPT_TYPE_BOOT = 1;
      */
     GPT_TYPE_BOOT = 1,
     /**
-     * GPT_TYPE_LINUX Linux Partition
+     * GPT_TYPE_LINUX Linux Partition.
      *
      * @generated from enum value: GPT_TYPE_LINUX = 2;
      */
     GPT_TYPE_LINUX = 2,
     /**
-     * GPT_TYPE_LINUX_RAID Linux Raid Partition
+     * GPT_TYPE_LINUX_RAID Linux Raid Partition.
      *
      * @generated from enum value: GPT_TYPE_LINUX_RAID = 3;
      */
     GPT_TYPE_LINUX_RAID = 3,
     /**
-     * GPT_TYPE_LINUX_LVM Linux LVM Partition
+     * GPT_TYPE_LINUX_LVM Linux LVM Partition.
      *
      * @generated from enum value: GPT_TYPE_LINUX_LVM = 4;
      */

@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ImageFeature
+// ImageFeature.
 type ImageFeature int32
 
 const (
@@ -76,7 +76,7 @@ func (ImageFeature) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_image_proto_rawDescGZIP(), []int{0}
 }
 
-// Image
+// Image.
 type ImageClassification int32
 
 const (
@@ -136,7 +136,7 @@ func (ImageClassification) EnumDescriptor() ([]byte, []int) {
 // ImageServiceGetRequest is the request payload for an image get request.
 type ImageServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the image to get
+	// ID of the image to get.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -228,10 +228,10 @@ func (x *ImageServiceListRequest) GetQuery() *ImageQuery {
 // ImageServiceLatestRequest is the request payload for an image latest request.
 type ImageServiceLatestRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// OS for which the latest image should be fetched
-	// should contain os and major.minor then latest patch version of this os is returned
+	// OS for which the latest image should be fetched.
+	// Should contain os and major.minor then latest patch version of this os is returned.
 	Os string `protobuf:"bytes,1,opt,name=os,proto3" json:"os,omitempty"`
-	// Classification of the image latest image
+	// Classification of the image latest image.
 	Classification *ImageClassification `protobuf:"varint,2,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification,oneof" json:"classification,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
@@ -284,7 +284,7 @@ func (x *ImageServiceLatestRequest) GetClassification() ImageClassification {
 // ImageServiceGetResponse is the response payload for an image get request.
 type ImageServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image the image
+	// Image the image.
 	Image         *Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -330,7 +330,7 @@ func (x *ImageServiceGetResponse) GetImage() *Image {
 // ImageServiceListResponse is the response payload for an image list request.
 type ImageServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Images the images
+	// Images the images.
 	Images        []*Image `protobuf:"bytes,1,rep,name=images,proto3" json:"images,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -376,7 +376,7 @@ func (x *ImageServiceListResponse) GetImages() []*Image {
 // ImageServiceLatestResponse is the response payload for an image latest request.
 type ImageServiceLatestResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image which is the latest for one os
+	// Image which is the latest for one os.
 	Image         *Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -419,22 +419,22 @@ func (x *ImageServiceLatestResponse) GetImage() *Image {
 	return nil
 }
 
-// Image
+// Image.
 type Image struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this image
+	// Id of this image.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Meta for this image
+	// Meta for this image.
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
-	// URL where this image is located
+	// URL where this image is located.
 	Url string `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
-	// Name of this image
+	// Name of this image.
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this image
+	// Description of this image.
 	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Features of this image
+	// Features of this image.
 	Features []ImageFeature `protobuf:"varint,6,rep,packed,name=features,proto3,enum=metalstack.api.v2.ImageFeature" json:"features,omitempty"`
-	// Classification of this image
+	// Classification of this image.
 	Classification ImageClassification `protobuf:"varint,7,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification" json:"classification,omitempty"`
 	// ExpiresAt usage is not possible after this date.
 	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
@@ -531,9 +531,9 @@ func (x *Image) GetExpiresAt() *timestamppb.Timestamp {
 // ImageUsage reports which machines/firewalls actually use this image.
 type ImageUsage struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image with usage
+	// Image with usage.
 	Image *Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
-	// UsedBy the following machines/firewalls
+	// UsedBy the following machines/firewalls.
 	UsedBy        []string `protobuf:"bytes,2,rep,name=used_by,json=usedBy,proto3" json:"used_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -586,21 +586,21 @@ func (x *ImageUsage) GetUsedBy() []string {
 // ImageQuery is used to search images.
 type ImageQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the image to get
+	// ID of the image to get.
 	Id *string `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
-	// OS of the image
+	// OS of the image.
 	Os *string `protobuf:"bytes,2,opt,name=os,proto3,oneof" json:"os,omitempty"`
-	// Version of the Image
+	// Version of the Image.
 	Version *string `protobuf:"bytes,3,opt,name=version,proto3,oneof" json:"version,omitempty"`
-	// Name of the image to query
+	// Name of the image to query.
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of the image to query
+	// Description of the image to query.
 	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Url of the image to query
+	// Url of the image to query.
 	Url *string `protobuf:"bytes,6,opt,name=url,proto3,oneof" json:"url,omitempty"`
-	// Feature of the image to query
+	// Feature of the image to query.
 	Feature *ImageFeature `protobuf:"varint,7,opt,name=feature,proto3,enum=metalstack.api.v2.ImageFeature,oneof" json:"feature,omitempty"`
-	// Classification of the image to query
+	// Classification of the image to query.
 	Classification *ImageClassification `protobuf:"varint,8,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification,oneof" json:"classification,omitempty"`
 	// Labels lists only images containing the given labels.
 	Labels        *Labels `protobuf:"bytes,9,opt,name=labels,proto3,oneof" json:"labels,omitempty"`

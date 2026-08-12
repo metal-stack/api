@@ -30,13 +30,13 @@ type TenantRole int32
 const (
 	// TENANT_ROLE_UNSPECIFIED is not specified.
 	TenantRole_TENANT_ROLE_UNSPECIFIED TenantRole = 0
-	// TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method
+	// TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method.
 	TenantRole_TENANT_ROLE_OWNER TenantRole = 1
-	// TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+	// TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method.
 	TenantRole_TENANT_ROLE_EDITOR TenantRole = 2
-	// TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+	// TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
 	TenantRole_TENANT_ROLE_VIEWER TenantRole = 3
-	// TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+	// TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method.
 	// The guest role is assumed by users who are invited to a tenant's project without them.
 	// having a direct membership within the tenant.
 	TenantRole_TENANT_ROLE_GUEST TenantRole = 4
@@ -93,11 +93,11 @@ type ProjectRole int32
 const (
 	// PROJECT_ROLE_UNSPECIFIED is not specified.
 	ProjectRole_PROJECT_ROLE_UNSPECIFIED ProjectRole = 0
-	// PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method
+	// PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method.
 	ProjectRole_PROJECT_ROLE_OWNER ProjectRole = 1
-	// PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+	// PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method.
 	ProjectRole_PROJECT_ROLE_EDITOR ProjectRole = 2
-	// PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+	// PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
 	ProjectRole_PROJECT_ROLE_VIEWER ProjectRole = 3
 )
 
@@ -150,9 +150,9 @@ type AdminRole int32
 const (
 	// ADMIN_ROLE_UNSPECIFIED is not specified.
 	AdminRole_ADMIN_ROLE_UNSPECIFIED AdminRole = 0
-	// ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method
+	// ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method.
 	AdminRole_ADMIN_ROLE_EDITOR AdminRole = 1
-	// ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+	// ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
 	AdminRole_ADMIN_ROLE_VIEWER AdminRole = 2
 )
 
@@ -203,9 +203,9 @@ type InfraRole int32
 const (
 	// INFRA_ROLE_UNSPECIFIED is not specified.
 	InfraRole_INFRA_ROLE_UNSPECIFIED InfraRole = 0
-	// INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method
+	// INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method.
 	InfraRole_INFRA_ROLE_EDITOR InfraRole = 1
-	// INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method
+	// INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method.
 	InfraRole_INFRA_ROLE_VIEWER InfraRole = 2
 )
 
@@ -256,9 +256,9 @@ type MachineRole int32
 const (
 	// MACHINE_ROLE_UNSPECIFIED is not specified.
 	MachineRole_MACHINE_ROLE_UNSPECIFIED MachineRole = 0
-	// MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method
+	// MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method.
 	MachineRole_MACHINE_ROLE_EDITOR MachineRole = 1
-	// MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method
+	// MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method.
 	MachineRole_MACHINE_ROLE_VIEWER MachineRole = 2
 )
 
@@ -303,7 +303,7 @@ func (MachineRole) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{4}
 }
 
-// Visibility of a method
+// Visibility of a method.
 type Visibility int32
 
 const (
@@ -311,7 +311,7 @@ const (
 	Visibility_VISIBILITY_UNSPECIFIED Visibility = 0
 	// VISIBILITY_PUBLIC specifies that this service is accessible without authentication.
 	Visibility_VISIBILITY_PUBLIC Visibility = 1
-	// VISIBILITY_SELF restricts calls to the authenticated user only
+	// VISIBILITY_SELF restricts calls to the authenticated user only.
 	Visibility_VISIBILITY_SELF Visibility = 2
 )
 
@@ -356,17 +356,17 @@ func (Visibility) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_common_proto_rawDescGZIP(), []int{5}
 }
 
-// Auditing option specified per service method
-// by default all service methods are included
-// add the auditing option if you want to exclude a method in auditing
+// Auditing option specified per service method.
+// By default all service methods are included.
+// Add the auditing option if you want to exclude a method in auditing.
 type Auditing int32
 
 const (
 	// AUDITING_UNSPECIFIED is not specified.
 	Auditing_AUDITING_UNSPECIFIED Auditing = 0
-	// AUDITING_INCLUDED if a method is annotated with this, all calls are audited
+	// AUDITING_INCLUDED if a method is annotated with this, all calls are audited.
 	Auditing_AUDITING_INCLUDED Auditing = 1
-	// AUDITING_EXCLUDED if a method is annotated with this, no calls are audited
+	// AUDITING_EXCLUDED if a method is annotated with this, no calls are audited.
 	Auditing_AUDITING_EXCLUDED Auditing = 2
 )
 
@@ -412,16 +412,16 @@ func (Auditing) EnumDescriptor() ([]byte, []int) {
 }
 
 // OptimisticLockingStrategy defines how optimistic locking should be handled.
-// It defaults to client side, which requires the UpdatedAt timestamp to be provided
+// It defaults to client side, which requires the UpdatedAt timestamp to be provided.
 type OptimisticLockingStrategy int32
 
 const (
-	// OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side
+	// OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side.
 	OptimisticLockingStrategy_OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED OptimisticLockingStrategy = 0
-	// OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified
+	// OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified.
 	OptimisticLockingStrategy_OPTIMISTIC_LOCKING_STRATEGY_CLIENT OptimisticLockingStrategy = 1
-	// OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt
-	// and fetches the most recent entity before updating with the given values with the update request
+	// OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt.
+	// and fetches the most recent entity before updating with the given values with the update request.
 	OptimisticLockingStrategy_OPTIMISTIC_LOCKING_STRATEGY_SERVER OptimisticLockingStrategy = 2
 )
 
@@ -469,7 +469,7 @@ func (OptimisticLockingStrategy) EnumDescriptor() ([]byte, []int) {
 // Paging defines paging for methods with a lot of results.
 type Paging struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Page is used for pagination, if unset only the first page is returned,
+	// Page is used for pagination, if unset only the first page is returned,.
 	// the list response contains then the page number for the next page.
 	Page *uint64 `protobuf:"varint,1,opt,name=page,proto3,oneof" json:"page,omitempty"`
 	// Count is the number of results returned per page, if not given server side defaults apply.
@@ -525,7 +525,7 @@ func (x *Paging) GetCount() uint64 {
 // Labels define additional information to a entity.
 type Labels struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Labels consists labels
+	// Labels consists labels.
 	Labels        map[string]string `protobuf:"bytes,1,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -568,15 +568,15 @@ func (x *Labels) GetLabels() map[string]string {
 	return nil
 }
 
-// Meta of a message
+// Meta of a message.
 type Meta struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tags on this entity
+	// Tags on this entity.
 	Labels *Labels `protobuf:"bytes,1,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	// CreatedAt is the date when this entity was created.
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// UpdatedAt is the date when this entity was updated.
-	// must be part of the update request to ensure optimistic locking
+	// must be part of the update request to ensure optimistic locking.
 	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	// Generation identifies how often this entity was modified since creation.
 	Generation uint64 `protobuf:"varint,4,opt,name=generation,proto3" json:"generation,omitempty"`
@@ -726,7 +726,7 @@ type isUpdateLabels_Strategy interface {
 }
 
 type UpdateLabels_Replace struct {
-	// Replace existing labels with the given ones
+	// Replace existing labels with the given ones.
 	Replace *Labels `protobuf:"bytes,1,opt,name=replace,proto3,oneof"`
 }
 
@@ -798,9 +798,9 @@ func (x *LabelsPatch) GetRemove() []string {
 type UpdateMeta struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UpdatedAt is the date when this entity was updated.
-	// must be part of the update request to ensure optimistic locking
+	// Must be part of the update request to ensure optimistic locking.
 	UpdatedAt *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	// LockingStrategy to be used for this update request
+	// LockingStrategy to be used for this update request.
 	LockingStrategy OptimisticLockingStrategy `protobuf:"varint,2,opt,name=locking_strategy,json=lockingStrategy,proto3,enum=metalstack.api.v2.OptimisticLockingStrategy" json:"locking_strategy,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -951,7 +951,7 @@ var (
 
 // Extension fields to descriptorpb.EnumValueOptions.
 var (
-	// StringValue which can be set to a enum
+	// StringValue which can be set to a enum.
 	//
 	// optional string enum_string_value = 52000;
 	E_EnumStringValue = &file_metalstack_api_v2_common_proto_extTypes[7]

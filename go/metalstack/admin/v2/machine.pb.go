@@ -26,7 +26,7 @@ const (
 // MachineServiceGetRequest is the request payload for a machine get request.
 type MachineServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to get
+	// UUID of the machine to get.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -120,8 +120,8 @@ type MachineServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Query to list one or more machines.
 	Query *v2.MachineQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	// Partition for which machines should be listed, could be left empty if only one partition is present
-	// otherwise an error is thrown that the partition must be specified
+	// Partition for which machines should be listed, could be left empty if only one partition is present.
+	// otherwise an error is thrown that the partition must be specified.
 	Partition     *string `protobuf:"bytes,2,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -220,7 +220,7 @@ func (x *MachineServiceListResponse) GetMachines() []*v2.Machine {
 // MachineServiceDeleteRequest is the request payload for a machine delete request.
 type MachineServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to permanently delete
+	// UUID of the machine to permanently delete.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -312,9 +312,9 @@ func (x *MachineServiceDeleteResponse) GetMachine() *v2.Machine {
 // MachineServiceBMCCommandRequest is the request payload for a machine bmc command.
 type MachineServiceBMCCommandRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to send the command to
+	// UUID of the machine to send the command to.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Command to send to the bmc of the machine
+	// Command to send to the bmc of the machine.
 	Command       v2.MachineBMCCommand `protobuf:"varint,2,opt,name=command,proto3,enum=metalstack.api.v2.MachineBMCCommand" json:"command,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -404,7 +404,7 @@ func (*MachineServiceBMCCommandResponse) Descriptor() ([]byte, []int) {
 // MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
 type MachineServiceGetBMCRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to get
+	// UUID of the machine to get.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -450,7 +450,7 @@ func (x *MachineServiceGetBMCRequest) GetUuid() string {
 // MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
 type MachineServiceGetBMCResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine
+	// UUID of the machine.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// BMC contains the BMC details of this machine.
 	Bmc           *v2.MachineBMCReport `protobuf:"bytes,2,opt,name=bmc,proto3" json:"bmc,omitempty"`
@@ -597,7 +597,7 @@ func (x *MachineServiceListBMCResponse) GetBmcReports() map[string]*v2.MachineBM
 // MachineServiceConsolePasswordRequest is the request payload for getting the console password.
 type MachineServiceConsolePasswordRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to get
+	// UUID of the machine to get.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Reason must be provided why access to the console is requested.
 	// Reason is only forwarded to an audit sink.
@@ -653,9 +653,9 @@ func (x *MachineServiceConsolePasswordRequest) GetReason() string {
 // MachineServiceConsolePasswordResponse is the response payload for getting the console password.
 type MachineServiceConsolePasswordResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to get
+	// UUID of the machine to get.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Password to access the console
+	// Password to access the console.
 	Password      string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -708,12 +708,12 @@ func (x *MachineServiceConsolePasswordResponse) GetPassword() string {
 // MachineServiceSetStateRequest is the request payload for a machine set state request.
 type MachineServiceSetStateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to set the state to
+	// UUID of the machine to set the state to.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// State the state of this machine.
 	// If State set to available, description is also cleared.
 	State v2.MachineState `protobuf:"varint,2,opt,name=state,proto3,enum=metalstack.api.v2.MachineState" json:"state,omitempty"`
-	// Description a description why this machine is in the given state
+	// Description a description why this machine is in the given state.
 	Description   string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

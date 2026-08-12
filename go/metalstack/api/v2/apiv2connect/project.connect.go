@@ -98,7 +98,7 @@ type ProjectServiceClient interface {
 	InviteDelete(context.Context, *v2.ProjectServiceInviteDeleteRequest) (*v2.ProjectServiceInviteDeleteResponse, error)
 	// InvitesList list all invites to a project.
 	InvitesList(context.Context, *v2.ProjectServiceInvitesListRequest) (*v2.ProjectServiceInvitesListResponse, error)
-	// InviteGet get an invite
+	// InviteGet get an invite.
 	InviteGet(context.Context, *v2.ProjectServiceInviteGetRequest) (*v2.ProjectServiceInviteGetResponse, error)
 }
 
@@ -372,7 +372,7 @@ type ProjectServiceHandler interface {
 	InviteDelete(context.Context, *v2.ProjectServiceInviteDeleteRequest) (*v2.ProjectServiceInviteDeleteResponse, error)
 	// InvitesList list all invites to a project.
 	InvitesList(context.Context, *v2.ProjectServiceInvitesListRequest) (*v2.ProjectServiceInvitesListResponse, error)
-	// InviteGet get an invite
+	// InviteGet get an invite.
 	InviteGet(context.Context, *v2.ProjectServiceInviteGetRequest) (*v2.ProjectServiceInviteGetResponse, error)
 }
 

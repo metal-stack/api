@@ -25,7 +25,7 @@ export const file_metalstack_api_v2_image: GenFile = /*@__PURE__*/
  */
 export type ImageServiceGetRequest = Message<"metalstack.api.v2.ImageServiceGetRequest"> & {
   /**
-   * ID of the image to get
+   * ID of the image to get.
    *
    * @generated from field: string id = 1;
    */
@@ -67,15 +67,15 @@ export const ImageServiceListRequestSchema: GenMessage<ImageServiceListRequest> 
  */
 export type ImageServiceLatestRequest = Message<"metalstack.api.v2.ImageServiceLatestRequest"> & {
   /**
-   * OS for which the latest image should be fetched
-   * should contain os and major.minor then latest patch version of this os is returned
+   * OS for which the latest image should be fetched.
+   * Should contain os and major.minor then latest patch version of this os is returned.
    *
    * @generated from field: string os = 1;
    */
   os: string;
 
   /**
-   * Classification of the image latest image
+   * Classification of the image latest image.
    *
    * @generated from field: optional metalstack.api.v2.ImageClassification classification = 2;
    */
@@ -96,7 +96,7 @@ export const ImageServiceLatestRequestSchema: GenMessage<ImageServiceLatestReque
  */
 export type ImageServiceGetResponse = Message<"metalstack.api.v2.ImageServiceGetResponse"> & {
   /**
-   * Image the image
+   * Image the image.
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -117,7 +117,7 @@ export const ImageServiceGetResponseSchema: GenMessage<ImageServiceGetResponse> 
  */
 export type ImageServiceListResponse = Message<"metalstack.api.v2.ImageServiceListResponse"> & {
   /**
-   * Images the images
+   * Images the images.
    *
    * @generated from field: repeated metalstack.api.v2.Image images = 1;
    */
@@ -138,7 +138,7 @@ export const ImageServiceListResponseSchema: GenMessage<ImageServiceListResponse
  */
 export type ImageServiceLatestResponse = Message<"metalstack.api.v2.ImageServiceLatestResponse"> & {
   /**
-   * Image which is the latest for one os
+   * Image which is the latest for one os.
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -153,55 +153,55 @@ export const ImageServiceLatestResponseSchema: GenMessage<ImageServiceLatestResp
   messageDesc(file_metalstack_api_v2_image, 5);
 
 /**
- * Image
+ * Image.
  *
  * @generated from message metalstack.api.v2.Image
  */
 export type Image = Message<"metalstack.api.v2.Image"> & {
   /**
-   * Id of this image
+   * Id of this image.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Meta for this image
+   * Meta for this image.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 2;
    */
   meta?: Meta | undefined;
 
   /**
-   * URL where this image is located
+   * URL where this image is located.
    *
    * @generated from field: string url = 3;
    */
   url: string;
 
   /**
-   * Name of this image
+   * Name of this image.
    *
    * @generated from field: optional string name = 4;
    */
   name?: string | undefined;
 
   /**
-   * Description of this image
+   * Description of this image.
    *
    * @generated from field: optional string description = 5;
    */
   description?: string | undefined;
 
   /**
-   * Features of this image
+   * Features of this image.
    *
    * @generated from field: repeated metalstack.api.v2.ImageFeature features = 6;
    */
   features: ImageFeature[];
 
   /**
-   * Classification of this image
+   * Classification of this image.
    *
    * @generated from field: metalstack.api.v2.ImageClassification classification = 7;
    */
@@ -229,14 +229,14 @@ export const ImageSchema: GenMessage<Image> = /*@__PURE__*/
  */
 export type ImageUsage = Message<"metalstack.api.v2.ImageUsage"> & {
   /**
-   * Image with usage
+   * Image with usage.
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
   image?: Image | undefined;
 
   /**
-   * UsedBy the following machines/firewalls
+   * UsedBy the following machines/firewalls.
    *
    * @generated from field: repeated string used_by = 2;
    */
@@ -257,56 +257,56 @@ export const ImageUsageSchema: GenMessage<ImageUsage> = /*@__PURE__*/
  */
 export type ImageQuery = Message<"metalstack.api.v2.ImageQuery"> & {
   /**
-   * ID of the image to get
+   * ID of the image to get.
    *
    * @generated from field: optional string id = 1;
    */
   id?: string | undefined;
 
   /**
-   * OS of the image
+   * OS of the image.
    *
    * @generated from field: optional string os = 2;
    */
   os?: string | undefined;
 
   /**
-   * Version of the Image
+   * Version of the Image.
    *
    * @generated from field: optional string version = 3;
    */
   version?: string | undefined;
 
   /**
-   * Name of the image to query
+   * Name of the image to query.
    *
    * @generated from field: optional string name = 4;
    */
   name?: string | undefined;
 
   /**
-   * Description of the image to query
+   * Description of the image to query.
    *
    * @generated from field: optional string description = 5;
    */
   description?: string | undefined;
 
   /**
-   * Url of the image to query
+   * Url of the image to query.
    *
    * @generated from field: optional string url = 6;
    */
   url?: string | undefined;
 
   /**
-   * Feature of the image to query
+   * Feature of the image to query.
    *
    * @generated from field: optional metalstack.api.v2.ImageFeature feature = 7;
    */
   feature?: ImageFeature | undefined;
 
   /**
-   * Classification of the image to query
+   * Classification of the image to query.
    *
    * @generated from field: optional metalstack.api.v2.ImageClassification classification = 8;
    */
@@ -328,7 +328,7 @@ export const ImageQuerySchema: GenMessage<ImageQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_image, 8);
 
 /**
- * ImageFeature
+ * ImageFeature.
  *
  * @generated from enum metalstack.api.v2.ImageFeature
  */
@@ -362,7 +362,7 @@ export const ImageFeatureSchema: GenEnum<ImageFeature> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_image, 0);
 
 /**
- * Image
+ * Image.
  *
  * @generated from enum metalstack.api.v2.ImageClassification
  */

@@ -118,19 +118,19 @@ func (x *SizeReservationServiceCreateResponse) GetSizeReservation() *v2.SizeRese
 // SizeReservationServiceUpdateRequest is the request payload for updating a size reservation.
 type SizeReservationServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this size reservation
+	// Id of this size reservation.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Name of this size reservation
+	// Name of this size reservation.
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this size reservation
+	// Description of this size reservation.
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,4,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Partition ids of this size reservation
+	// Partition ids of this size reservation.
 	Partitions []string `protobuf:"bytes,5,rep,name=partitions,proto3" json:"partitions,omitempty"`
-	// Amount of reservations of this size reservation
+	// Amount of reservations of this size reservation.
 	Amount *int32 `protobuf:"varint,6,opt,name=amount,proto3,oneof" json:"amount,omitempty"`
-	// Labels to update of this size reservation
+	// Labels to update of this size reservation.
 	Labels        *v2.UpdateLabels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -264,7 +264,7 @@ func (x *SizeReservationServiceUpdateResponse) GetSizeReservation() *v2.SizeRese
 // SizeReservationServiceDeleteRequest is the request payload for deleting a size reservation.
 type SizeReservationServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the size reservation to delete
+	// ID of the size reservation to delete.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

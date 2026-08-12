@@ -25,9 +25,9 @@ const (
 // SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request.
 type SizeImageConstraintServiceTryRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size to try
+	// Size to try.
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
-	// Image to try
+	// Image to try.
 	Image         string `protobuf:"bytes,2,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,8 +115,7 @@ func (*SizeImageConstraintServiceTryResponse) Descriptor() ([]byte, []int) {
 }
 
 // SizeImageConstraint expresses optional restrictions for specific size to image combinations.
-// this might be required if the support for a specific hardware in a given size is only supported
-// with a newer version of the image.
+// This might be required if the support for a specific hardware in a given size is only supported with a newer version of the image.
 //
 // If the size in question is not found, no restrictions apply.
 // If the image in question is not found, no restrictions apply as well.
@@ -125,13 +124,13 @@ type SizeImageConstraint struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Size where this constraint should apply.
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
-	// ImageConstraints to apply to this size
+	// ImageConstraints to apply to this size.
 	ImageConstraints []*ImageConstraint `protobuf:"bytes,2,rep,name=image_constraints,json=imageConstraints,proto3" json:"image_constraints,omitempty"`
-	// Meta for this size image constraint
+	// Meta for this size image constraint.
 	Meta *Meta `protobuf:"bytes,3,opt,name=meta,proto3" json:"meta,omitempty"`
-	// Name of this size image constraint
+	// Name of this size image constraint.
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this size image constraint
+	// Description of this size image constraint.
 	Description   *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -203,16 +202,16 @@ func (x *SizeImageConstraint) GetDescription() string {
 }
 
 // ImageConstraint defines a constraint for an image.
-// examples:
+// Examples:
 // images:
 //
-//	ubuntu: ">= 20.04.20211011"
-//	debian: ">= 10.0.20210101"
+//	ubuntu: ">= 20.04.20211011
+//	debian: ">= 10.0.20210101
 type ImageConstraint struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image of the constraint
+	// Image of the constraint.
 	Image string `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
-	// SemverMatch which defines in semver match format which image version should apply
+	// SemverMatch which defines in semver match format which image version should apply.
 	SemverMatch   string `protobuf:"bytes,2,opt,name=semver_match,json=semverMatch,proto3" json:"semver_match,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -265,11 +264,11 @@ func (x *ImageConstraint) GetSemverMatch() string {
 // SizeImageConstraintQuery is used to search size image constraints.
 type SizeImageConstraintQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size of the size image constraint
+	// Size of the size image constraint.
 	Size *string `protobuf:"bytes,1,opt,name=size,proto3,oneof" json:"size,omitempty"`
-	// Name of the size image constraint to query
+	// Name of the size image constraint to query.
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of the size image constraint to query
+	// Description of the size image constraint to query.
 	Description   *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

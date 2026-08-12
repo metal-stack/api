@@ -13,7 +13,7 @@ export declare const file_metalstack_api_v2_audit: GenFile;
  */
 export type AuditTrace = Message<"metalstack.api.v2.AuditTrace"> & {
     /**
-     * Uuid of the audit trace
+     * Uuid of the audit trace.
      *
      * @generated from field: string uuid = 1;
      */
@@ -73,7 +73,7 @@ export type AuditTrace = Message<"metalstack.api.v2.AuditTrace"> & {
      */
     phase: AuditPhase;
     /**
-     * Meta for this audit trace
+     * Meta for this audit trace.
      *
      * @generated from field: metalstack.api.v2.Meta meta = 11;
      */
@@ -91,7 +91,7 @@ export declare const AuditTraceSchema: GenMessage<AuditTrace>;
  */
 export type AuditQuery = Message<"metalstack.api.v2.AuditQuery"> & {
     /**
-     * Uuid of the audit trace
+     * Uuid of the audit trace.
      *
      * @generated from field: optional string uuid = 2;
      */
@@ -145,7 +145,7 @@ export type AuditQuery = Message<"metalstack.api.v2.AuditQuery"> & {
      */
     body?: string | undefined;
     /**
-     * Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
+     * Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200).
      *
      * @generated from field: optional int32 limit = 11;
      */
@@ -169,7 +169,7 @@ export declare const AuditQuerySchema: GenMessage<AuditQuery>;
  */
 export type AuditServiceListRequest = Message<"metalstack.api.v2.AuditServiceListRequest"> & {
     /**
-     * Login for this tenant
+     * Login for this tenant.
      *
      * @generated from field: string login = 1;
      */
@@ -211,13 +211,13 @@ export declare const AuditServiceListResponseSchema: GenMessage<AuditServiceList
  */
 export type AuditServiceGetRequest = Message<"metalstack.api.v2.AuditServiceGetRequest"> & {
     /**
-     * Login for this tenant
+     * Login for this tenant.
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
-     * Uuid of the audit trace
+     * Uuid of the audit trace.
      *
      * @generated from field: string uuid = 2;
      */

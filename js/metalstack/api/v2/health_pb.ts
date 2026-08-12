@@ -147,28 +147,28 @@ export const HealthServiceGetResponseSchema: GenMessage<HealthServiceGetResponse
  */
 export enum ServiceStatus {
   /**
-   * SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified
+   * SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified.
    *
    * @generated from enum value: SERVICE_STATUS_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available
+   * SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available.
    *
    * @generated from enum value: SERVICE_STATUS_DEGRADED = 1;
    */
   DEGRADED = 1,
 
   /**
-   * SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected
+   * SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected.
    *
    * @generated from enum value: SERVICE_STATUS_UNHEALTHY = 2;
    */
   UNHEALTHY = 2,
 
   /**
-   * SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional
+   * SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional.
    *
    * @generated from enum value: SERVICE_STATUS_HEALTHY = 3;
    */
@@ -195,56 +195,56 @@ export enum Service {
   UNSPECIFIED = 0,
 
   /**
-   * SERVICE_IPAM the IPAM service
+   * SERVICE_IPAM the IPAM service.
    *
    * @generated from enum value: SERVICE_IPAM = 1;
    */
   IPAM = 1,
 
   /**
-   * SERVICE_RETHINK the RethinkDB
+   * SERVICE_RETHINK the RethinkDB.
    *
    * @generated from enum value: SERVICE_RETHINK = 2;
    */
   RETHINK = 2,
 
   /**
-   * SERVICE_TENANT_APISERVER the tenant-apiserver
+   * SERVICE_TENANT_APISERVER the tenant-apiserver.
    *
    * @generated from enum value: SERVICE_TENANT_APISERVER = 3;
    */
   TENANT_APISERVER = 3,
 
   /**
-   * SERVICE_MACHINES the machine service
+   * SERVICE_MACHINES the machine service.
    *
    * @generated from enum value: SERVICE_MACHINES = 4;
    */
   MACHINES = 4,
 
   /**
-   * SERVICE_AUDIT the auditing
+   * SERVICE_AUDIT the auditing.
    *
    * @generated from enum value: SERVICE_AUDIT = 5;
    */
   AUDIT = 5,
 
   /**
-   * SERVICE_VPN the VPN service
+   * SERVICE_VPN the VPN service.
    *
    * @generated from enum value: SERVICE_VPN = 6;
    */
   VPN = 6,
 
   /**
-   * SERVICE_REDIS the Redis service
+   * SERVICE_REDIS the Redis service.
    *
    * @generated from enum value: SERVICE_REDIS = 7;
    */
   REDIS = 7,
 
   /**
-   * SERVICE_TASKS the tasks service
+   * SERVICE_TASKS the tasks service.
    *
    * @generated from enum value: SERVICE_TASKS = 8;
    */

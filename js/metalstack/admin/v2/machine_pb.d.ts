@@ -12,7 +12,7 @@ export declare const file_metalstack_admin_v2_machine: GenFile;
  */
 export type MachineServiceGetRequest = Message<"metalstack.admin.v2.MachineServiceGetRequest"> & {
     /**
-     * UUID of the machine to get
+     * UUID of the machine to get.
      *
      * @generated from field: string uuid = 1;
      */
@@ -54,8 +54,8 @@ export type MachineServiceListRequest = Message<"metalstack.admin.v2.MachineServ
      */
     query?: MachineQuery | undefined;
     /**
-     * Partition for which machines should be listed, could be left empty if only one partition is present
-     * otherwise an error is thrown that the partition must be specified
+     * Partition for which machines should be listed, could be left empty if only one partition is present.
+     * otherwise an error is thrown that the partition must be specified.
      *
      * @generated from field: optional string partition = 2;
      */
@@ -91,7 +91,7 @@ export declare const MachineServiceListResponseSchema: GenMessage<MachineService
  */
 export type MachineServiceDeleteRequest = Message<"metalstack.admin.v2.MachineServiceDeleteRequest"> & {
     /**
-     * UUID of the machine to permanently delete
+     * UUID of the machine to permanently delete.
      *
      * @generated from field: string uuid = 1;
      */
@@ -127,13 +127,13 @@ export declare const MachineServiceDeleteResponseSchema: GenMessage<MachineServi
  */
 export type MachineServiceBMCCommandRequest = Message<"metalstack.admin.v2.MachineServiceBMCCommandRequest"> & {
     /**
-     * UUID of the machine to send the command to
+     * UUID of the machine to send the command to.
      *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
-     * Command to send to the bmc of the machine
+     * Command to send to the bmc of the machine.
      *
      * @generated from field: metalstack.api.v2.MachineBMCCommand command = 2;
      */
@@ -162,7 +162,7 @@ export declare const MachineServiceBMCCommandResponseSchema: GenMessage<MachineS
  */
 export type MachineServiceGetBMCRequest = Message<"metalstack.admin.v2.MachineServiceGetBMCRequest"> & {
     /**
-     * UUID of the machine to get
+     * UUID of the machine to get.
      *
      * @generated from field: string uuid = 1;
      */
@@ -180,7 +180,7 @@ export declare const MachineServiceGetBMCRequestSchema: GenMessage<MachineServic
  */
 export type MachineServiceGetBMCResponse = Message<"metalstack.admin.v2.MachineServiceGetBMCResponse"> & {
     /**
-     * UUID of the machine
+     * UUID of the machine.
      *
      * @generated from field: string uuid = 1;
      */
@@ -242,7 +242,7 @@ export declare const MachineServiceListBMCResponseSchema: GenMessage<MachineServ
  */
 export type MachineServiceConsolePasswordRequest = Message<"metalstack.admin.v2.MachineServiceConsolePasswordRequest"> & {
     /**
-     * UUID of the machine to get
+     * UUID of the machine to get.
      *
      * @generated from field: string uuid = 1;
      */
@@ -267,13 +267,13 @@ export declare const MachineServiceConsolePasswordRequestSchema: GenMessage<Mach
  */
 export type MachineServiceConsolePasswordResponse = Message<"metalstack.admin.v2.MachineServiceConsolePasswordResponse"> & {
     /**
-     * UUID of the machine to get
+     * UUID of the machine to get.
      *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
-     * Password to access the console
+     * Password to access the console.
      *
      * @generated from field: string password = 2;
      */
@@ -291,7 +291,7 @@ export declare const MachineServiceConsolePasswordResponseSchema: GenMessage<Mac
  */
 export type MachineServiceSetStateRequest = Message<"metalstack.admin.v2.MachineServiceSetStateRequest"> & {
     /**
-     * UUID of the machine to set the state to
+     * UUID of the machine to set the state to.
      *
      * @generated from field: string uuid = 1;
      */
@@ -304,7 +304,7 @@ export type MachineServiceSetStateRequest = Message<"metalstack.admin.v2.Machine
      */
     state: MachineState;
     /**
-     * Description a description why this machine is in the given state
+     * Description a description why this machine is in the given state.
      *
      * @generated from field: string description = 3;
      */

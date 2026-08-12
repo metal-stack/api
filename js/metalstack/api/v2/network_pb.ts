@@ -17,20 +17,20 @@ export const file_metalstack_api_v2_network: GenFile = /*@__PURE__*/
   fileDesc("Ch9tZXRhbHN0YWNrL2FwaS92Mi9uZXR3b3JrLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiJRChhOZXR3b3JrU2VydmljZUdldFJlcXVlc3QSFwoCaWQYASABKAlCC7pICHIGwLOusQIBEhwKB3Byb2plY3QYAiABKAlCC7pICNgBAXIDsAEBIkgKGU5ldHdvcmtTZXJ2aWNlR2V0UmVzcG9uc2USKwoHbmV0d29yaxgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmsi3AMKG05ldHdvcmtTZXJ2aWNlQ3JlYXRlUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABARIeCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECAUgAiAEBEiUKC2Rlc2NyaXB0aW9uGAMgASgJQgu6SAhyBsizrrECAUgBiAEBEiMKCXBhcnRpdGlvbhgEIAEoCUILukgIcgbQs66xAgFIAogBARIpCgZsYWJlbHMYBSABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHMSKAoOcGFyZW50X25ldHdvcmsYBiABKAlCC7pICHIGwLOusQIBSAOIAQESOQoGbGVuZ3RoGAcgASgLMiQubWV0YWxzdGFjay5hcGkudjIuQ2hpbGRQcmVmaXhMZW5ndGhIBIgBARJOCg5hZGRyZXNzX2ZhbWlseRgIIAEoDjInLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtBZGRyZXNzRmFtaWx5Qgi6SAWCAQIQAUgFiAEBQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIMCgpfcGFydGl0aW9uQhEKD19wYXJlbnRfbmV0d29ya0IJCgdfbGVuZ3RoQhEKD19hZGRyZXNzX2ZhbWlseSJLChxOZXR3b3JrU2VydmljZUNyZWF0ZVJlc3BvbnNlEisKB25ldHdvcmsYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrIq4CChtOZXR3b3JrU2VydmljZVVwZGF0ZVJlcXVlc3QSFwoCaWQYASABKAlCC7pICHIGwLOusQIBEjoKC3VwZGF0ZV9tZXRhGAIgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuVXBkYXRlTWV0YUIGukgDyAEBEhkKB3Byb2plY3QYAyABKAlCCLpIBXIDsAEBEh4KBG5hbWUYBCABKAlCC7pICHIGwLOusQIBSACIAQESJQoLZGVzY3JpcHRpb24YBSABKAlCC7pICHIGyLOusQIBSAGIAQESNAoGbGFiZWxzGAYgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuVXBkYXRlTGFiZWxzSAKIAQFCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uQgkKB19sYWJlbHMiSwocTmV0d29ya1NlcnZpY2VVcGRhdGVSZXNwb25zZRIrCgduZXR3b3JrGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTmV0d29yayJpChlOZXR3b3JrU2VydmljZUxpc3RSZXF1ZXN0EhwKB3Byb2plY3QYASABKAlCC7pICNgBAXIDsAEBEi4KBXF1ZXJ5GAIgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1F1ZXJ5IkoKGk5ldHdvcmtTZXJ2aWNlTGlzdFJlc3BvbnNlEiwKCG5ldHdvcmtzGAEgAygLMhoubWV0YWxzdGFjay5hcGkudjIuTmV0d29yayJ1CiVOZXR3b3JrU2VydmljZUxpc3RCYXNlTmV0d29ya3NSZXF1ZXN0EhwKB3Byb2plY3QYASABKAlCC7pICNgBAXIDsAEBEi4KBXF1ZXJ5GAIgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1F1ZXJ5IlYKJk5ldHdvcmtTZXJ2aWNlTGlzdEJhc2VOZXR3b3Jrc1Jlc3BvbnNlEiwKCG5ldHdvcmtzGAEgAygLMhoubWV0YWxzdGFjay5hcGkudjIuTmV0d29yayJRChtOZXR3b3JrU2VydmljZURlbGV0ZVJlcXVlc3QSFwoCaWQYASABKAlCC7pICHIGwLOusQIBEhkKB3Byb2plY3QYAiABKAlCCLpIBXIDsAEBIksKHE5ldHdvcmtTZXJ2aWNlRGVsZXRlUmVzcG9uc2USKwoHbmV0d29yaxgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmsizQYKB05ldHdvcmsSFwoCaWQYASABKAlCC7pICHIGwLOusQIBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEh4KBG5hbWUYAyABKAlCC7pICHIGwLOusQIBSACIAQESJQoLZGVzY3JpcHRpb24YBCABKAlCC7pICHIGyLOusQIBSAGIAQESIwoJcGFydGl0aW9uGAUgASgJQgu6SAhyBtCzrrECAUgCiAEBEh4KB3Byb2plY3QYBiABKAlCCLpIBXIDsAEBSAOIAQESIAoJbmFtZXNwYWNlGAcgASgJQgi6SAVyA7ABAUgEiAEBEh4KCHByZWZpeGVzGAggAygJQgy6SAmSAQa4pLOxAgESKgoUZGVzdGluYXRpb25fcHJlZml4ZXMYCSADKAlCDLpICZIBBriks7ECARJJChtkZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGgYCiABKAsyJC5tZXRhbHN0YWNrLmFwaS52Mi5DaGlsZFByZWZpeExlbmd0aBJFChdtaW5fY2hpbGRfcHJlZml4X2xlbmd0aBgLIAEoCzIkLm1ldGFsc3RhY2suYXBpLnYyLkNoaWxkUHJlZml4TGVuZ3RoEjYKBHR5cGUYDCABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrVHlwZUIIukgFggECEAESNgoIbmF0X3R5cGUYDSABKA4yGi5tZXRhbHN0YWNrLmFwaS52Mi5OQVRUeXBlQgi6SAWCAQIQARIQCgN2cmYYDiABKA1IBYgBARIoCg5wYXJlbnRfbmV0d29yaxgPIAEoCUILukgIcgbAs66xAgFIBogBARIyChxhZGRpdGlvbmFsX2Fubm91bmNhYmxlX2NpZHJzGBAgAygJQgy6SAmSAQa4pLOxAgESOgoLY29uc3VtcHRpb24YESABKAsyJS5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrQ29uc3VtcHRpb25CBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uQgwKCl9wYXJ0aXRpb25CCgoIX3Byb2plY3RCDAoKX25hbWVzcGFjZUIGCgRfdnJmQhEKD19wYXJlbnRfbmV0d29yayLzBQoMTmV0d29ya1F1ZXJ5EhwKAmlkGAEgASgJQgu6SAhyBsCzrrECAUgAiAEBEh4KBG5hbWUYAiABKAlCC7pICHIGwLOusQIBSAGIAQESJQoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBSAKIAQESIwoJcGFydGl0aW9uGAQgASgJQgu6SAhyBtCzrrECAUgDiAEBEh4KB3Byb2plY3QYBSABKAlCCLpIBXIDsAEBSASIAQESIAoJbmFtZXNwYWNlGAYgASgJQgi6SAVyA7ABAUgFiAEBEh4KCHByZWZpeGVzGAcgAygJQgy6SAmSAQa4pLOxAgESKgoUZGVzdGluYXRpb25fcHJlZml4ZXMYCCADKAlCDLpICZIBBriks7ECARIQCgN2cmYYCSABKA1IBogBARIoCg5wYXJlbnRfbmV0d29yaxgKIAEoCUILukgIcgbAs66xAgFIB4gBARJOCg5hZGRyZXNzX2ZhbWlseRgLIAEoDjInLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtBZGRyZXNzRmFtaWx5Qgi6SAWCAQIQAUgIiAEBEjsKBHR5cGUYDCABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrVHlwZUIIukgFggECEAFICYgBARI7CghuYXRfdHlwZRgNIAEoDjIaLm1ldGFsc3RhY2suYXBpLnYyLk5BVFR5cGVCCLpIBYIBAhABSAqIAQESLgoGbGFiZWxzGA4gASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzSAuIAQFCBQoDX2lkQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIMCgpfcGFydGl0aW9uQgoKCF9wcm9qZWN0QgwKCl9uYW1lc3BhY2VCBgoEX3ZyZkIRCg9fcGFyZW50X25ldHdvcmtCEQoPX2FkZHJlc3NfZmFtaWx5QgcKBV90eXBlQgsKCV9uYXRfdHlwZUIJCgdfbGFiZWxzImIKEUNoaWxkUHJlZml4TGVuZ3RoEhwKBGlwdjQYASABKA1CCbpIBioEGCAgAEgAiAEBEh0KBGlwdjYYAiABKA1CCrpIByoFGIABIABIAYgBAUIHCgVfaXB2NEIHCgVfaXB2NiJyChJOZXR3b3JrQ29uc3VtcHRpb24SLQoEaXB2NBgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtVc2FnZRItCgRpcHY2GAIgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1VzYWdlImoKDE5ldHdvcmtVc2FnZRIVCg1hdmFpbGFibGVfaXBzGAEgASgEEhAKCHVzZWRfaXBzGAIgASgEEhoKEmF2YWlsYWJsZV9wcmVmaXhlcxgDIAEoBBIVCg11c2VkX3ByZWZpeGVzGAQgASgEKm0KB05BVFR5cGUSGAoUTkFUX1RZUEVfVU5TUEVDSUZJRUQQABIbCg1OQVRfVFlQRV9OT05FEAEaCIKyGQRub25lEisKGE5BVF9UWVBFX0lQVjRfTUFTUVVFUkFERRACGg2CshkJaXB2NC1tYXNxKq0CCgtOZXR3b3JrVHlwZRIcChhORVRXT1JLX1RZUEVfVU5TUEVDSUZJRUQQABInChVORVRXT1JLX1RZUEVfRVhURVJOQUwQARoMgrIZCGV4dGVybmFsEicKFU5FVFdPUktfVFlQRV9VTkRFUkxBWRACGgyCshkIdW5kZXJsYXkSIQoSTkVUV09SS19UWVBFX1NVUEVSEAMaCYKyGQVzdXBlchI3Ch1ORVRXT1JLX1RZUEVfU1VQRVJfTkFNRVNQQUNFRBAEGhSCshkQc3VwZXItbmFtZXNwYWNlZBIhChJORVRXT1JLX1RZUEVfQ0hJTEQQBRoJgrIZBWNoaWxkEi8KGU5FVFdPUktfVFlQRV9DSElMRF9TSEFSRUQQBhoQgrIZDGNoaWxkLXNoYXJlZCrHAQoUTmV0d29ya0FkZHJlc3NGYW1pbHkSJgoiTkVUV09SS19BRERSRVNTX0ZBTUlMWV9VTlNQRUNJRklFRBAAEicKGU5FVFdPUktfQUREUkVTU19GQU1JTFlfVjQQARoIgrIZBGlwdjQSJwoZTkVUV09SS19BRERSRVNTX0ZBTUlMWV9WNhACGgiCshkEaXB2NhI1CiFORVRXT1JLX0FERFJFU1NfRkFNSUxZX0RVQUxfU1RBQ0sQAxoOgrIZCmR1YWwtc3RhY2sy7QUKDk5ldHdvcmtTZXJ2aWNlEm0KA0dldBIrLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtTZXJ2aWNlR2V0UmVxdWVzdBosLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtTZXJ2aWNlR2V0UmVzcG9uc2UiC8rzGAMBAgPg8xgCEnUKBkNyZWF0ZRIuLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtTZXJ2aWNlQ3JlYXRlUmVxdWVzdBovLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtTZXJ2aWNlQ3JlYXRlUmVzcG9uc2UiCsrzGAIBAuDzGAESdQoGVXBkYXRlEi4ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1NlcnZpY2VVcGRhdGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1NlcnZpY2VVcGRhdGVSZXNwb25zZSIKyvMYAgEC4PMYARJwCgRMaXN0EiwubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1NlcnZpY2VMaXN0UmVxdWVzdBotLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtTZXJ2aWNlTGlzdFJlc3BvbnNlIgvK8xgDAQID4PMYAhKUAQoQTGlzdEJhc2VOZXR3b3JrcxI4Lm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtTZXJ2aWNlTGlzdEJhc2VOZXR3b3Jrc1JlcXVlc3QaOS5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrU2VydmljZUxpc3RCYXNlTmV0d29ya3NSZXNwb25zZSILyvMYAwECA+DzGAISdQoGRGVsZXRlEi4ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1NlcnZpY2VEZWxldGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1NlcnZpY2VEZWxldGVSZXNwb25zZSIKyvMYAgEC4PMYAULCAQoVY29tLm1ldGFsc3RhY2suYXBpLnYyQgxOZXR3b3JrUHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * NetworkServiceGetRequest
+ * NetworkServiceGetRequest.
  *
  * @generated from message metalstack.api.v2.NetworkServiceGetRequest
  */
 export type NetworkServiceGetRequest = Message<"metalstack.api.v2.NetworkServiceGetRequest"> & {
   /**
-   * ID of the network to get
+   * ID of the network to get.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Project of the network
+   * Project of the network.
    *
    * @generated from field: string project = 2;
    */
@@ -45,13 +45,13 @@ export const NetworkServiceGetRequestSchema: GenMessage<NetworkServiceGetRequest
   messageDesc(file_metalstack_api_v2_network, 0);
 
 /**
- * NetworkServiceGetResponse
+ * NetworkServiceGetResponse.
  *
  * @generated from message metalstack.api.v2.NetworkServiceGetResponse
  */
 export type NetworkServiceGetResponse = Message<"metalstack.api.v2.NetworkServiceGetResponse"> & {
   /**
-   * Network which was requested to get
+   * Network which was requested to get.
    *
    * @generated from field: metalstack.api.v2.Network network = 1;
    */
@@ -66,7 +66,7 @@ export const NetworkServiceGetResponseSchema: GenMessage<NetworkServiceGetRespon
   messageDesc(file_metalstack_api_v2_network, 1);
 
 /**
- * NetworkServiceCreateRequest
+ * NetworkServiceCreateRequest.
  *
  * @generated from message metalstack.api.v2.NetworkServiceCreateRequest
  */
@@ -79,14 +79,14 @@ export type NetworkServiceCreateRequest = Message<"metalstack.api.v2.NetworkServ
   project: string;
 
   /**
-   * Name of this network
+   * Name of this network.
    *
    * @generated from field: optional string name = 2;
    */
   name?: string | undefined;
 
   /**
-   * Description of this network
+   * Description of this network.
    *
    * @generated from field: optional string description = 3;
    */
@@ -100,7 +100,7 @@ export type NetworkServiceCreateRequest = Message<"metalstack.api.v2.NetworkServ
   partition?: string | undefined;
 
   /**
-   * Labels on this network
+   * Labels on this network.
    *
    * @generated from field: metalstack.api.v2.Labels labels = 5;
    */
@@ -114,14 +114,14 @@ export type NetworkServiceCreateRequest = Message<"metalstack.api.v2.NetworkServ
   parentNetwork?: string | undefined;
 
   /**
-   * Length per addressfamily
+   * Length per addressfamily.
    *
    * @generated from field: optional metalstack.api.v2.ChildPrefixLength length = 7;
    */
   length?: ChildPrefixLength | undefined;
 
   /**
-   * AddressFamily to create, defaults to the same as the parent
+   * AddressFamily to create, defaults to the same as the parent.
    *
    * @generated from field: optional metalstack.api.v2.NetworkAddressFamily address_family = 8;
    */
@@ -136,7 +136,7 @@ export const NetworkServiceCreateRequestSchema: GenMessage<NetworkServiceCreateR
   messageDesc(file_metalstack_api_v2_network, 2);
 
 /**
- * NetworkServiceCreateResponse
+ * NetworkServiceCreateResponse.
  *
  * @generated from message metalstack.api.v2.NetworkServiceCreateResponse
  */
@@ -157,13 +157,13 @@ export const NetworkServiceCreateResponseSchema: GenMessage<NetworkServiceCreate
   messageDesc(file_metalstack_api_v2_network, 3);
 
 /**
- * NetworkServiceUpdateRequest
+ * NetworkServiceUpdateRequest.
  *
  * @generated from message metalstack.api.v2.NetworkServiceUpdateRequest
  */
 export type NetworkServiceUpdateRequest = Message<"metalstack.api.v2.NetworkServiceUpdateRequest"> & {
   /**
-   * ID of the network to get
+   * ID of the network to get.
    *
    * @generated from field: string id = 1;
    */
@@ -177,28 +177,28 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.api.v2.NetworkServ
   updateMeta?: UpdateMeta | undefined;
 
   /**
-   * Project of the network
+   * Project of the network.
    *
    * @generated from field: string project = 3;
    */
   project: string;
 
   /**
-   * Name of this network
+   * Name of this network.
    *
    * @generated from field: optional string name = 4;
    */
   name?: string | undefined;
 
   /**
-   * Description of this network
+   * Description of this network.
    *
    * @generated from field: optional string description = 5;
    */
   description?: string | undefined;
 
   /**
-   * Labels on this network
+   * Labels on this network.
    *
    * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 6;
    */
@@ -213,7 +213,7 @@ export const NetworkServiceUpdateRequestSchema: GenMessage<NetworkServiceUpdateR
   messageDesc(file_metalstack_api_v2_network, 4);
 
 /**
- * NetworkServiceUpdateResponse
+ * NetworkServiceUpdateResponse.
  *
  * @generated from message metalstack.api.v2.NetworkServiceUpdateResponse
  */
@@ -234,13 +234,13 @@ export const NetworkServiceUpdateResponseSchema: GenMessage<NetworkServiceUpdate
   messageDesc(file_metalstack_api_v2_network, 5);
 
 /**
- * NetworkServiceListRequest
+ * NetworkServiceListRequest.
  *
  * @generated from message metalstack.api.v2.NetworkServiceListRequest
  */
 export type NetworkServiceListRequest = Message<"metalstack.api.v2.NetworkServiceListRequest"> & {
   /**
-   * Project of the networks to list
+   * Project of the networks to list.
    *
    * @generated from field: string project = 1;
    */
@@ -262,7 +262,7 @@ export const NetworkServiceListRequestSchema: GenMessage<NetworkServiceListReque
   messageDesc(file_metalstack_api_v2_network, 6);
 
 /**
- * NetworkServiceListResponse
+ * NetworkServiceListResponse.
  *
  * @generated from message metalstack.api.v2.NetworkServiceListResponse
  */
@@ -283,13 +283,13 @@ export const NetworkServiceListResponseSchema: GenMessage<NetworkServiceListResp
   messageDesc(file_metalstack_api_v2_network, 7);
 
 /**
- * NetworkServiceListRequest
+ * NetworkServiceListRequest.
  *
  * @generated from message metalstack.api.v2.NetworkServiceListBaseNetworksRequest
  */
 export type NetworkServiceListBaseNetworksRequest = Message<"metalstack.api.v2.NetworkServiceListBaseNetworksRequest"> & {
   /**
-   * Project of the base networks to list
+   * Project of the base networks to list.
    *
    * @generated from field: string project = 1;
    */
@@ -311,7 +311,7 @@ export const NetworkServiceListBaseNetworksRequestSchema: GenMessage<NetworkServ
   messageDesc(file_metalstack_api_v2_network, 8);
 
 /**
- * NetworkServiceListResponse
+ * NetworkServiceListResponse.
  *
  * @generated from message metalstack.api.v2.NetworkServiceListBaseNetworksResponse
  */
@@ -332,20 +332,20 @@ export const NetworkServiceListBaseNetworksResponseSchema: GenMessage<NetworkSer
   messageDesc(file_metalstack_api_v2_network, 9);
 
 /**
- * NetworkServiceDeleteRequest
+ * NetworkServiceDeleteRequest.
  *
  * @generated from message metalstack.api.v2.NetworkServiceDeleteRequest
  */
 export type NetworkServiceDeleteRequest = Message<"metalstack.api.v2.NetworkServiceDeleteRequest"> & {
   /**
-   * ID of the network to get
+   * ID of the network to get.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Project of the network
+   * Project of the network.
    *
    * @generated from field: string project = 2;
    */
@@ -360,7 +360,7 @@ export const NetworkServiceDeleteRequestSchema: GenMessage<NetworkServiceDeleteR
   messageDesc(file_metalstack_api_v2_network, 10);
 
 /**
- * NetworkServiceDeleteResponse
+ * NetworkServiceDeleteResponse.
  *
  * @generated from message metalstack.api.v2.NetworkServiceDeleteResponse
  */
@@ -381,34 +381,34 @@ export const NetworkServiceDeleteResponseSchema: GenMessage<NetworkServiceDelete
   messageDesc(file_metalstack_api_v2_network, 11);
 
 /**
- * Network
+ * Network.
  *
  * @generated from message metalstack.api.v2.Network
  */
 export type Network = Message<"metalstack.api.v2.Network"> & {
   /**
-   * Id of this network
+   * Id of this network.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Meta for this network
+   * Meta for this network.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 2;
    */
   meta?: Meta | undefined;
 
   /**
-   * Name of this network
+   * Name of this network.
    *
    * @generated from field: optional string name = 3;
    */
   name?: string | undefined;
 
   /**
-   * Description of this network
+   * Description of this network.
    *
    * @generated from field: optional string description = 4;
    */
@@ -430,21 +430,21 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
 
   /**
    * Namespace if specified, this network is namespaced and can therefore overlap with others.
-   * Will be equal with project most of the time
+   * Will be equal with project most of the time.
    *
    * @generated from field: optional string namespace = 7;
    */
   namespace?: string | undefined;
 
   /**
-   * Prefixes in this network
+   * Prefixes in this network.
    *
    * @generated from field: repeated string prefixes = 8;
    */
   prefixes: string[];
 
   /**
-   * Destination Prefixes in this network
+   * Destination Prefixes in this network.
    *
    * @generated from field: repeated string destination_prefixes = 9;
    */
@@ -465,14 +465,14 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
   minChildPrefixLength?: ChildPrefixLength | undefined;
 
   /**
-   * Type of the network
+   * Type of the network.
    *
    * @generated from field: metalstack.api.v2.NetworkType type = 12;
    */
   type: NetworkType;
 
   /**
-   * NATType of this network
+   * NATType of this network.
    *
    * @generated from field: metalstack.api.v2.NATType nat_type = 13;
    */
@@ -500,7 +500,7 @@ export type Network = Message<"metalstack.api.v2.Network"> & {
   additionalAnnouncableCidrs: string[];
 
   /**
-   * Consumption of IPs and prefixes in this network
+   * Consumption of IPs and prefixes in this network.
    *
    * @generated from field: metalstack.api.v2.NetworkConsumption consumption = 17;
    */
@@ -521,21 +521,21 @@ export const NetworkSchema: GenMessage<Network> = /*@__PURE__*/
  */
 export type NetworkQuery = Message<"metalstack.api.v2.NetworkQuery"> & {
   /**
-   * Id of the network to query
+   * Id of the network to query.
    *
    * @generated from field: optional string id = 1;
    */
   id?: string | undefined;
 
   /**
-   * Name of this network
+   * Name of this network.
    *
    * @generated from field: optional string name = 2;
    */
   name?: string | undefined;
 
   /**
-   * Description of this network
+   * Description of this network.
    *
    * @generated from field: optional string description = 3;
    */
@@ -563,14 +563,14 @@ export type NetworkQuery = Message<"metalstack.api.v2.NetworkQuery"> & {
   namespace?: string | undefined;
 
   /**
-   * Prefixes in this network
+   * Prefixes in this network.
    *
    * @generated from field: repeated string prefixes = 7;
    */
   prefixes: string[];
 
   /**
-   * Destination Prefixes in this network
+   * Destination Prefixes in this network.
    *
    * @generated from field: repeated string destination_prefixes = 8;
    */
@@ -591,28 +591,28 @@ export type NetworkQuery = Message<"metalstack.api.v2.NetworkQuery"> & {
   parentNetwork?: string | undefined;
 
   /**
-   * Addressfamily to query
+   * Addressfamily to query.
    *
    * @generated from field: optional metalstack.api.v2.NetworkAddressFamily address_family = 11;
    */
   addressFamily?: NetworkAddressFamily | undefined;
 
   /**
-   * Type of the network to query for
+   * Type of the network to query for.
    *
    * @generated from field: optional metalstack.api.v2.NetworkType type = 12;
    */
   type?: NetworkType | undefined;
 
   /**
-   * NATType configured
+   * NATType configured.
    *
    * @generated from field: optional metalstack.api.v2.NATType nat_type = 13;
    */
   natType?: NATType | undefined;
 
   /**
-   * Labels on this network
+   * Labels on this network.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 14;
    */
@@ -627,20 +627,20 @@ export const NetworkQuerySchema: GenMessage<NetworkQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_network, 13);
 
 /**
- * ChildPrefixLength
+ * ChildPrefixLength.
  *
  * @generated from message metalstack.api.v2.ChildPrefixLength
  */
 export type ChildPrefixLength = Message<"metalstack.api.v2.ChildPrefixLength"> & {
   /**
-   * IPv4 bit length of this network in this addressfamily
+   * IPv4 bit length of this network in this addressfamily.
    *
    * @generated from field: optional uint32 ipv4 = 1;
    */
   ipv4?: number | undefined;
 
   /**
-   * IPv6 bit length of this network in this addressfamily
+   * IPv6 bit length of this network in this addressfamily.
    *
    * @generated from field: optional uint32 ipv6 = 2;
    */
@@ -661,7 +661,7 @@ export const ChildPrefixLengthSchema: GenMessage<ChildPrefixLength> = /*@__PURE_
  */
 export type NetworkConsumption = Message<"metalstack.api.v2.NetworkConsumption"> & {
   /**
-   * IPv4 network usage
+   * IPv4 network usage.
    *
    * @generated from field: metalstack.api.v2.NetworkUsage ipv4 = 1;
    */
@@ -689,28 +689,28 @@ export const NetworkConsumptionSchema: GenMessage<NetworkConsumption> = /*@__PUR
  */
 export type NetworkUsage = Message<"metalstack.api.v2.NetworkUsage"> & {
   /**
-   * the total available IPs
+   * the total available IPs.
    *
    * @generated from field: uint64 available_ips = 1;
    */
   availableIps: bigint;
 
   /**
-   * the total used IPs
+   * the total used IPs.
    *
    * @generated from field: uint64 used_ips = 2;
    */
   usedIps: bigint;
 
   /**
-   * the total available 2-bit prefixes
+   * the total available 2-bit prefixes.
    *
    * @generated from field: uint64 available_prefixes = 3;
    */
   availablePrefixes: bigint;
 
   /**
-   * the total used Prefixes
+   * the total used Prefixes.
    *
    * @generated from field: uint64 used_prefixes = 4;
    */
@@ -745,7 +745,7 @@ export enum NATType {
   NAT_TYPE_NONE = 1,
 
   /**
-   * NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network
+   * NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network.
    *
    * @generated from enum value: NAT_TYPE_IPV4_MASQUERADE = 2;
    */
@@ -782,7 +782,7 @@ export enum NetworkType {
 
   /**
    * NETWORK_TYPE_UNDERLAY indicates a underlay network.
-   * The underlay network connects all switches and the firewalls to build a EVPN dataplane
+   * The underlay network connects all switches and the firewalls to build a EVPN dataplane.
    * It is not project scoped. Is part of the dataplane and reserved for administrative purposes.
    *
    * @generated from enum value: NETWORK_TYPE_UNDERLAY = 2;

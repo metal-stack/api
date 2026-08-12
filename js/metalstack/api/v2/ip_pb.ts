@@ -23,14 +23,14 @@ export const file_metalstack_api_v2_ip: GenFile = /*@__PURE__*/
  */
 export type IP = Message<"metalstack.api.v2.IP"> & {
   /**
-   * Uuid of this ip
+   * Uuid of this ip.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Meta for this ip
+   * Meta for this ip.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 2;
    */
@@ -44,14 +44,14 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
   ip: string;
 
   /**
-   * Name of this ip
+   * Name of this ip.
    *
    * @generated from field: string name = 4;
    */
   name: string;
 
   /**
-   * Description of this ip
+   * Description of this ip.
    *
    * @generated from field: string description = 5;
    */
@@ -72,7 +72,7 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
   project: string;
 
   /**
-   * Type of this ip
+   * Type of this ip.
    *
    * @generated from field: metalstack.api.v2.IPType type = 8;
    */
@@ -80,7 +80,7 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
 
   /**
    * Namespace if specified this ip is from a namespaced network and can therefore overlap with others.
-   * Will be equal with project most of the time
+   * Will be equal with project most of the time.
    *
    * @generated from field: optional string namespace = 9;
    */
@@ -101,14 +101,14 @@ export const IPSchema: GenMessage<IP> = /*@__PURE__*/
  */
 export type IPServiceGetRequest = Message<"metalstack.api.v2.IPServiceGetRequest"> & {
   /**
-   * IP of the ip to get
+   * IP of the ip to get.
    *
    * @generated from field: string ip = 1;
    */
   ip: string;
 
   /**
-   * Project of the ip
+   * Project of the ip.
    *
    * @generated from field: string project = 2;
    */
@@ -143,56 +143,56 @@ export type IPServiceCreateRequest = Message<"metalstack.api.v2.IPServiceCreateR
   network: string;
 
   /**
-   * Project of the ip
+   * Project of the ip.
    *
    * @generated from field: string project = 2;
    */
   project: string;
 
   /**
-   * Name of the ip
+   * Name of the ip.
    *
    * @generated from field: optional string name = 3;
    */
   name?: string | undefined;
 
   /**
-   * Description of the ip
+   * Description of the ip.
    *
    * @generated from field: optional string description = 4;
    */
   description?: string | undefined;
 
   /**
-   * IP if given try to create this ip if still available
+   * IP if given try to create this ip if still available.
    *
    * @generated from field: optional string ip = 5;
    */
   ip?: string | undefined;
 
   /**
-   * Machine for which this ip should get created
+   * Machine for which this ip should get created.
    *
    * @generated from field: optional string machine = 6;
    */
   machine?: string | undefined;
 
   /**
-   * Labels to put onto the ip
+   * Labels to put onto the ip.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 7;
    */
   labels?: Labels | undefined;
 
   /**
-   * Type of the IP, ether ephemeral (default), or static
+   * Type of the IP, ether ephemeral (default), or static.
    *
    * @generated from field: optional metalstack.api.v2.IPType type = 8;
    */
   type?: IPType | undefined;
 
   /**
-   * Addressfamily of the IP to create, defaults to ipv4
+   * Addressfamily of the IP to create, defaults to ipv4.
    *
    * @generated from field: optional metalstack.api.v2.IPAddressFamily address_family = 9;
    */
@@ -213,7 +213,7 @@ export const IPServiceCreateRequestSchema: GenMessage<IPServiceCreateRequest> = 
  */
 export type IPServiceUpdateRequest = Message<"metalstack.api.v2.IPServiceUpdateRequest"> & {
   /**
-   * Ip the ip address to update
+   * Ip the ip address to update.
    *
    * @generated from field: string ip = 1;
    */
@@ -227,35 +227,35 @@ export type IPServiceUpdateRequest = Message<"metalstack.api.v2.IPServiceUpdateR
   updateMeta?: UpdateMeta | undefined;
 
   /**
-   * Project id of the ip
+   * Project id of the ip.
    *
    * @generated from field: string project = 3;
    */
   project: string;
 
   /**
-   * Name of this ip
+   * Name of this ip.
    *
    * @generated from field: optional string name = 4;
    */
   name?: string | undefined;
 
   /**
-   * Description of this ip
+   * Description of this ip.
    *
    * @generated from field: optional string description = 5;
    */
   description?: string | undefined;
 
   /**
-   * Type of this ip
+   * Type of this ip.
    *
    * @generated from field: optional metalstack.api.v2.IPType type = 6;
    */
   type?: IPType | undefined;
 
   /**
-   * Labels on this ip
+   * Labels on this ip.
    *
    * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 7;
    */
@@ -276,7 +276,7 @@ export const IPServiceUpdateRequestSchema: GenMessage<IPServiceUpdateRequest> = 
  */
 export type IPServiceListRequest = Message<"metalstack.api.v2.IPServiceListRequest"> & {
   /**
-   * Project of the ips to list
+   * Project of the ips to list.
    *
    * @generated from field: string project = 1;
    */
@@ -304,7 +304,7 @@ export const IPServiceListRequestSchema: GenMessage<IPServiceListRequest> = /*@_
  */
 export type IPQuery = Message<"metalstack.api.v2.IPQuery"> & {
   /**
-   * Ip the ip to list
+   * Ip the ip to list.
    *
    * @generated from field: optional string ip = 1;
    */
@@ -318,42 +318,42 @@ export type IPQuery = Message<"metalstack.api.v2.IPQuery"> & {
   network?: string | undefined;
 
   /**
-   * Project of the ips to list
+   * Project of the ips to list.
    *
    * @generated from field: optional string project = 3;
    */
   project?: string | undefined;
 
   /**
-   * Name of this ip
+   * Name of this ip.
    *
    * @generated from field: optional string name = 4;
    */
   name?: string | undefined;
 
   /**
-   * UUID for which these IPs should be filtered
+   * UUID for which these IPs should be filtered.
    *
    * @generated from field: optional string uuid = 5;
    */
   uuid?: string | undefined;
 
   /**
-   * Machine for which these IPs should be filtered
+   * Machine for which these IPs should be filtered.
    *
    * @generated from field: optional string machine = 6;
    */
   machine?: string | undefined;
 
   /**
-   * ParentPrefixCidr for which this ips should get filtered
+   * ParentPrefixCidr for which this ips should get filtered.
    *
    * @generated from field: optional string parent_prefix_cidr = 7;
    */
   parentPrefixCidr?: string | undefined;
 
   /**
-   * Labels for which these IPs should be filtered
+   * Labels for which these IPs should be filtered.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 8;
    */
@@ -395,14 +395,14 @@ export const IPQuerySchema: GenMessage<IPQuery> = /*@__PURE__*/
  */
 export type IPServiceDeleteRequest = Message<"metalstack.api.v2.IPServiceDeleteRequest"> & {
   /**
-   * IP of the ip to delete
+   * IP of the ip to delete.
    *
    * @generated from field: string ip = 1;
    */
   ip: string;
 
   /**
-   * Project of the ip
+   * Project of the ip.
    *
    * @generated from field: string project = 2;
    */
@@ -423,7 +423,7 @@ export const IPServiceDeleteRequestSchema: GenMessage<IPServiceDeleteRequest> = 
  */
 export type IPServiceGetResponse = Message<"metalstack.api.v2.IPServiceGetResponse"> & {
   /**
-   * Ip the ip
+   * Ip the ip.
    *
    * @generated from field: metalstack.api.v2.IP ip = 1;
    */
@@ -444,7 +444,7 @@ export const IPServiceGetResponseSchema: GenMessage<IPServiceGetResponse> = /*@_
  */
 export type IPServiceUpdateResponse = Message<"metalstack.api.v2.IPServiceUpdateResponse"> & {
   /**
-   * Ip the ip
+   * Ip the ip.
    *
    * @generated from field: metalstack.api.v2.IP ip = 1;
    */
@@ -465,7 +465,7 @@ export const IPServiceUpdateResponseSchema: GenMessage<IPServiceUpdateResponse> 
  */
 export type IPServiceCreateResponse = Message<"metalstack.api.v2.IPServiceCreateResponse"> & {
   /**
-   * Ip the ip
+   * Ip the ip.
    *
    * @generated from field: metalstack.api.v2.IP ip = 1;
    */
@@ -486,7 +486,7 @@ export const IPServiceCreateResponseSchema: GenMessage<IPServiceCreateResponse> 
  */
 export type IPServiceListResponse = Message<"metalstack.api.v2.IPServiceListResponse"> & {
   /**
-   * Ips the ips
+   * Ips the ips.
    *
    * @generated from field: repeated metalstack.api.v2.IP ips = 1;
    */
@@ -507,7 +507,7 @@ export const IPServiceListResponseSchema: GenMessage<IPServiceListResponse> = /*
  */
 export type IPServiceDeleteResponse = Message<"metalstack.api.v2.IPServiceDeleteResponse"> & {
   /**
-   * Ip the ip
+   * Ip the ip.
    *
    * @generated from field: metalstack.api.v2.IP ip = 1;
    */

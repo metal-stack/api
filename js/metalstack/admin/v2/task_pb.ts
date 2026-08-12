@@ -129,7 +129,7 @@ export const TaskServiceQueuesRequestSchema: GenMessage<TaskServiceQueuesRequest
  */
 export type TaskServiceQueuesResponse = Message<"metalstack.admin.v2.TaskServiceQueuesResponse"> & {
   /**
-   * Queues configured for the async system
+   * Queues configured for the async system.
    *
    * @generated from field: repeated string queues = 1;
    */
@@ -264,7 +264,7 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
 
   /**
    * LastFailedAt is the time of the last failure if any.
-   * If the task has no failures, LastFailedAt is zero time (i.e. time.Time{})
+   * If the task has no failures, LastFailedAt is zero time (i.e. time.Time{}).
    *
    * @generated from field: google.protobuf.Timestamp last_failed_at = 9;
    */
@@ -287,8 +287,8 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
   /**
    * Group is the name of the group in which the task belongs.
    *
-   * Tasks in the same queue can be grouped together by Group name and will be aggregated into one task
-   * by a Server processing the queue
+   * Tasks in the same queue can be grouped together by Group name and will be aggregated into one task.
+   * by a Server processing the queue.
    *
    * Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task.
    *
@@ -298,7 +298,7 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
 
   /**
    * NextProcessAt is the time the task is scheduled to be processed.
-   * Zero if not applicable
+   * Zero if not applicable.
    *
    * @generated from field: google.protobuf.Timestamp next_process_at = 13;
    */
@@ -306,8 +306,8 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
 
   /**
    * IsOrphaned describes whether the task is left in active state with no worker processing it.
-   * An orphaned task indicates that the worker has crashed or experienced network failures and was not able to
-   * extend its lease on the task
+   * An orphaned task indicates that the worker has crashed or experienced network failures and was not able to.
+   * extend its lease on the task.
    *
    * This task will be recovered by running a server against the queue the task is in.
    * This field is only applicable to tasks with TaskStateActive.
@@ -333,7 +333,7 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
 
   /**
    * Result holds the result data associated with the task.
-   * Use ResultWriter to write result data from the Handler
+   * Use ResultWriter to write result data from the Handler.
    *
    * @generated from field: bytes result = 17;
    */

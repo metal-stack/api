@@ -27,17 +27,17 @@ type User struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login is the login at the provider.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Name of the user
+	// Name of the user.
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// Email of the user
+	// Email of the user.
 	Email string `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	// AvatarUrl of the user
+	// AvatarUrl of the user.
 	AvatarUrl string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
-	// Tenants the user belongs to
+	// Tenants the user belongs to.
 	Tenants []*Tenant `protobuf:"bytes,5,rep,name=tenants,proto3" json:"tenants,omitempty"`
-	// Projects the user belongs to
+	// Projects the user belongs to.
 	Projects []*Project `protobuf:"bytes,6,rep,name=projects,proto3" json:"projects,omitempty"`
-	// DefaultTenant the default tenant that this user belongs to
+	// DefaultTenant the default tenant that this user belongs to.
 	DefaultTenant *Tenant `protobuf:"bytes,7,opt,name=default_tenant,json=defaultTenant,proto3" json:"default_tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

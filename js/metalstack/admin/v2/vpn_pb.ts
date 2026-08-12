@@ -25,7 +25,7 @@ export const file_metalstack_admin_v2_vpn: GenFile = /*@__PURE__*/
  */
 export type VPNServiceAuthKeyRequest = Message<"metalstack.admin.v2.VPNServiceAuthKeyRequest"> & {
   /**
-   * Project for which a VPN authentication key should be generated
+   * Project for which a VPN authentication key should be generated.
    *
    * @generated from field: string project = 1;
    */
@@ -90,14 +90,14 @@ export type VPNServiceAuthKeyResponse = Message<"metalstack.admin.v2.VPNServiceA
   ephemeral: boolean;
 
   /**
-   * ExpiresAt this key cannot be used after this timestamp
+   * ExpiresAt this key cannot be used after this timestamp.
    *
    * @generated from field: google.protobuf.Timestamp expires_at = 4;
    */
   expiresAt?: Timestamp | undefined;
 
   /**
-   * CreatedAt this key was created at this timestamp
+   * CreatedAt this key was created at this timestamp.
    *
    * @generated from field: google.protobuf.Timestamp created_at = 5;
    */
@@ -139,7 +139,7 @@ export const VPNServiceListNodesRequestSchema: GenMessage<VPNServiceListNodesReq
  */
 export type VPNServiceListNodesResponse = Message<"metalstack.admin.v2.VPNServiceListNodesResponse"> & {
   /**
-   * Nodes connected to the VPN
+   * Nodes connected to the VPN.
    *
    * @generated from field: repeated metalstack.api.v2.VPNNode nodes = 1;
    */

@@ -34,9 +34,9 @@ type ComponentServicePingRequest struct {
 	Identifier string `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
 	// StartedAt is the timestamp this service was started.
 	StartedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=started_at,json=startedAt,proto3" json:"started_at,omitempty"`
-	// Interval at which the ping is scheduled, must be between 5 seconds and 1 hour
+	// Interval at which the ping is scheduled, must be between 5 seconds and 1 hour.
 	Interval *durationpb.Duration `protobuf:"bytes,4,opt,name=interval,proto3" json:"interval,omitempty"`
-	// Version of this service
+	// Version of this service.
 	Version       *v2.Version `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

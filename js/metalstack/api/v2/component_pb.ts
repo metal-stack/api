@@ -72,7 +72,7 @@ export type Component = Message<"metalstack.api.v2.Component"> & {
   interval?: Duration | undefined;
 
   /**
-   * Version of this service
+   * Version of this service.
    *
    * @generated from field: metalstack.api.v2.Version version = 7;
    */
@@ -86,7 +86,7 @@ export type Component = Message<"metalstack.api.v2.Component"> & {
   token?: Token | undefined;
 
   /**
-   * Meta for this component
+   * Meta for this component.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 9;
    */
@@ -101,7 +101,7 @@ export const ComponentSchema: GenMessage<Component> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_component, 0);
 
 /**
- * ComponentQuery to query components
+ * ComponentQuery to query components.
  *
  * @generated from message metalstack.api.v2.ComponentQuery
  */

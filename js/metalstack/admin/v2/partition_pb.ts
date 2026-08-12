@@ -25,7 +25,7 @@ export const file_metalstack_admin_v2_partition: GenFile = /*@__PURE__*/
  */
 export type PartitionServiceCreateRequest = Message<"metalstack.admin.v2.PartitionServiceCreateRequest"> & {
   /**
-   * Partition the partition
+   * Partition the partition.
    *
    * @generated from field: metalstack.api.v2.Partition partition = 1;
    */
@@ -46,7 +46,7 @@ export const PartitionServiceCreateRequestSchema: GenMessage<PartitionServiceCre
  */
 export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.PartitionServiceUpdateRequest"> & {
   /**
-   * ID of this partition
+   * ID of this partition.
    *
    * @generated from field: string id = 1;
    */
@@ -60,7 +60,7 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
   updateMeta?: UpdateMeta | undefined;
 
   /**
-   * Description of this partition
+   * Description of this partition.
    *
    * @generated from field: optional string description = 3;
    */
@@ -74,14 +74,14 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
   bootConfiguration?: PartitionBootConfiguration | undefined;
 
   /**
-   * DNSServers for this partition
+   * DNSServers for this partition.
    *
    * @generated from field: repeated metalstack.api.v2.DNSServer dns_servers = 5;
    */
   dnsServers: DNSServer[];
 
   /**
-   * NTPServers for this partition
+   * NTPServers for this partition.
    *
    * @generated from field: repeated metalstack.api.v2.NTPServer ntp_servers = 6;
    */
@@ -89,14 +89,14 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
 
   /**
    * ManagementServiceAddresses defines where the management is reachable.
-   * must be in the form <ip|host>:<port>
+   * must be in the form <ip|host>:<port>.
    *
    * @generated from field: repeated string mgmt_service_addresses = 7;
    */
   mgmtServiceAddresses: string[];
 
   /**
-   * Labels to update on this network
+   * Labels to update on this network.
    *
    * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 8;
    */
@@ -117,7 +117,7 @@ export const PartitionServiceUpdateRequestSchema: GenMessage<PartitionServiceUpd
  */
 export type PartitionServiceDeleteRequest = Message<"metalstack.admin.v2.PartitionServiceDeleteRequest"> & {
   /**
-   * ID of the partition to delete
+   * ID of the partition to delete.
    *
    * @generated from field: string id = 1;
    */
@@ -138,7 +138,7 @@ export const PartitionServiceDeleteRequestSchema: GenMessage<PartitionServiceDel
  */
 export type PartitionServiceCreateResponse = Message<"metalstack.admin.v2.PartitionServiceCreateResponse"> & {
   /**
-   * Partition the partition
+   * Partition the partition.
    *
    * @generated from field: metalstack.api.v2.Partition partition = 1;
    */
@@ -159,7 +159,7 @@ export const PartitionServiceCreateResponseSchema: GenMessage<PartitionServiceCr
  */
 export type PartitionServiceUpdateResponse = Message<"metalstack.admin.v2.PartitionServiceUpdateResponse"> & {
   /**
-   * Partition the partition
+   * Partition the partition.
    *
    * @generated from field: metalstack.api.v2.Partition partition = 1;
    */
@@ -201,21 +201,21 @@ export const PartitionServiceDeleteResponseSchema: GenMessage<PartitionServiceDe
  */
 export type PartitionServiceCapacityRequest = Message<"metalstack.admin.v2.PartitionServiceCapacityRequest"> & {
   /**
-   * ID of the partition to get
+   * ID of the partition to get.
    *
    * @generated from field: optional string id = 1;
    */
   id?: string | undefined;
 
   /**
-   * Size of machines to show the capacity
+   * Size of machines to show the capacity.
    *
    * @generated from field: optional string size = 2;
    */
   size?: string | undefined;
 
   /**
-   * Project of machines to show the capacity
+   * Project of machines to show the capacity.
    *
    * @generated from field: optional string project = 3;
    */
@@ -350,7 +350,7 @@ export type MachineSizeCapacity = Message<"metalstack.admin.v2.MachineSizeCapaci
   free: bigint;
 
   /**
-   * Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or
+   * Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or.
    * not in the machine state "available", e.g. locked or reserved.
    *
    * @generated from field: int64 unavailable = 11;

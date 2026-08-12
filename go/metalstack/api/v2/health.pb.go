@@ -25,13 +25,13 @@ const (
 type ServiceStatus int32
 
 const (
-	// SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified
+	// SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified.
 	ServiceStatus_SERVICE_STATUS_UNSPECIFIED ServiceStatus = 0
-	// SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available
+	// SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available.
 	ServiceStatus_SERVICE_STATUS_DEGRADED ServiceStatus = 1
-	// SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected
+	// SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected.
 	ServiceStatus_SERVICE_STATUS_UNHEALTHY ServiceStatus = 2
-	// SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional
+	// SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional.
 	ServiceStatus_SERVICE_STATUS_HEALTHY ServiceStatus = 3
 )
 
@@ -84,21 +84,21 @@ type Service int32
 const (
 	// SERVICE_UNSPECIFIED is a unknown service.
 	Service_SERVICE_UNSPECIFIED Service = 0
-	// SERVICE_IPAM the IPAM service
+	// SERVICE_IPAM the IPAM service.
 	Service_SERVICE_IPAM Service = 1
-	// SERVICE_RETHINK the RethinkDB
+	// SERVICE_RETHINK the RethinkDB.
 	Service_SERVICE_RETHINK Service = 2
-	// SERVICE_TENANT_APISERVER the tenant-apiserver
+	// SERVICE_TENANT_APISERVER the tenant-apiserver.
 	Service_SERVICE_TENANT_APISERVER Service = 3
-	// SERVICE_MACHINES the machine service
+	// SERVICE_MACHINES the machine service.
 	Service_SERVICE_MACHINES Service = 4
-	// SERVICE_AUDIT the auditing
+	// SERVICE_AUDIT the auditing.
 	Service_SERVICE_AUDIT Service = 5
-	// SERVICE_VPN the VPN service
+	// SERVICE_VPN the VPN service.
 	Service_SERVICE_VPN Service = 6
-	// SERVICE_REDIS the Redis service
+	// SERVICE_REDIS the Redis service.
 	Service_SERVICE_REDIS Service = 7
-	// SERVICE_TASKS the tasks service
+	// SERVICE_TASKS the tasks service.
 	Service_SERVICE_TASKS Service = 8
 )
 

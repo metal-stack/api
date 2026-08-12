@@ -23,14 +23,14 @@ export const file_metalstack_api_v2_size_imageconstraint: GenFile = /*@__PURE__*
  */
 export type SizeImageConstraintServiceTryRequest = Message<"metalstack.api.v2.SizeImageConstraintServiceTryRequest"> & {
   /**
-   * Size to try
+   * Size to try.
    *
    * @generated from field: string size = 1;
    */
   size: string;
 
   /**
-   * Image to try
+   * Image to try.
    *
    * @generated from field: string image = 2;
    */
@@ -61,8 +61,7 @@ export const SizeImageConstraintServiceTryResponseSchema: GenMessage<SizeImageCo
 
 /**
  * SizeImageConstraint expresses optional restrictions for specific size to image combinations.
- * this might be required if the support for a specific hardware in a given size is only supported
- * with a newer version of the image.
+ * This might be required if the support for a specific hardware in a given size is only supported with a newer version of the image.
  *
  * If the size in question is not found, no restrictions apply.
  * If the image in question is not found, no restrictions apply as well.
@@ -79,28 +78,28 @@ export type SizeImageConstraint = Message<"metalstack.api.v2.SizeImageConstraint
   size: string;
 
   /**
-   * ImageConstraints to apply to this size
+   * ImageConstraints to apply to this size.
    *
    * @generated from field: repeated metalstack.api.v2.ImageConstraint image_constraints = 2;
    */
   imageConstraints: ImageConstraint[];
 
   /**
-   * Meta for this size image constraint
+   * Meta for this size image constraint.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 3;
    */
   meta?: Meta | undefined;
 
   /**
-   * Name of this size image constraint
+   * Name of this size image constraint.
    *
    * @generated from field: optional string name = 4;
    */
   name?: string | undefined;
 
   /**
-   * Description of this size image constraint
+   * Description of this size image constraint.
    *
    * @generated from field: optional string description = 5;
    */
@@ -116,23 +115,23 @@ export const SizeImageConstraintSchema: GenMessage<SizeImageConstraint> = /*@__P
 
 /**
  * ImageConstraint defines a constraint for an image.
- * examples:
+ * Examples:
  * images:
- *    ubuntu: ">= 20.04.20211011"
- *    debian: ">= 10.0.20210101"
+ *    ubuntu: ">= 20.04.20211011
+ *    debian: ">= 10.0.20210101
  *
  * @generated from message metalstack.api.v2.ImageConstraint
  */
 export type ImageConstraint = Message<"metalstack.api.v2.ImageConstraint"> & {
   /**
-   * Image of the constraint
+   * Image of the constraint.
    *
    * @generated from field: string image = 1;
    */
   image: string;
 
   /**
-   * SemverMatch which defines in semver match format which image version should apply
+   * SemverMatch which defines in semver match format which image version should apply.
    *
    * @generated from field: string semver_match = 2;
    */
@@ -153,21 +152,21 @@ export const ImageConstraintSchema: GenMessage<ImageConstraint> = /*@__PURE__*/
  */
 export type SizeImageConstraintQuery = Message<"metalstack.api.v2.SizeImageConstraintQuery"> & {
   /**
-   * Size of the size image constraint
+   * Size of the size image constraint.
    *
    * @generated from field: optional string size = 1;
    */
   size?: string | undefined;
 
   /**
-   * Name of the size image constraint to query
+   * Name of the size image constraint to query.
    *
    * @generated from field: optional string name = 2;
    */
   name?: string | undefined;
 
   /**
-   * Description of the size image constraint to query
+   * Description of the size image constraint to query.
    *
    * @generated from field: optional string description = 3;
    */

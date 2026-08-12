@@ -12,7 +12,7 @@ export declare const file_metalstack_api_v2_size: GenFile;
  */
 export type SizeServiceGetRequest = Message<"metalstack.api.v2.SizeServiceGetRequest"> & {
     /**
-     * ID of the size to get
+     * ID of the size to get.
      *
      * @generated from field: string id = 1;
      */
@@ -48,7 +48,7 @@ export declare const SizeServiceListRequestSchema: GenMessage<SizeServiceListReq
  */
 export type SizeServiceGetResponse = Message<"metalstack.api.v2.SizeServiceGetResponse"> & {
     /**
-     * Size the size
+     * Size the size.
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
@@ -66,7 +66,7 @@ export declare const SizeServiceGetResponseSchema: GenMessage<SizeServiceGetResp
  */
 export type SizeServiceListResponse = Message<"metalstack.api.v2.SizeServiceListResponse"> & {
     /**
-     * Sizes the sizes
+     * Sizes the sizes.
      *
      * @generated from field: repeated metalstack.api.v2.Size sizes = 1;
      */
@@ -78,37 +78,37 @@ export type SizeServiceListResponse = Message<"metalstack.api.v2.SizeServiceList
  */
 export declare const SizeServiceListResponseSchema: GenMessage<SizeServiceListResponse>;
 /**
- * Size
+ * Size.
  *
  * @generated from message metalstack.api.v2.Size
  */
 export type Size = Message<"metalstack.api.v2.Size"> & {
     /**
-     * Id of this size
+     * Id of this size.
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * Meta for this size
+     * Meta for this size.
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
     meta?: Meta | undefined;
     /**
-     * Name of this size
+     * Name of this size.
      *
      * @generated from field: optional string name = 3;
      */
     name?: string | undefined;
     /**
-     * Description of this size
+     * Description of this size.
      *
      * @generated from field: optional string description = 4;
      */
     description?: string | undefined;
     /**
-     * Constraints which must match that a specific machine is considered of this size
+     * Constraints which must match that a specific machine is considered of this size.
      *
      * @generated from field: repeated metalstack.api.v2.SizeConstraint constraints = 5;
      */
@@ -126,19 +126,19 @@ export declare const SizeSchema: GenMessage<Size>;
  */
 export type SizeConstraint = Message<"metalstack.api.v2.SizeConstraint"> & {
     /**
-     * Type a machine matches to a size in order to make them easier to categorize
+     * Type a machine matches to a size in order to make them easier to categorize.
      *
      * @generated from field: metalstack.api.v2.SizeConstraintType type = 1;
      */
     type: SizeConstraintType;
     /**
-     * Min the minimum value of the constraint
+     * Min the minimum value of the constraint.
      *
      * @generated from field: uint64 min = 2;
      */
     min: bigint;
     /**
-     * Max the maximum value of the constraint
+     * Max the maximum value of the constraint.
      *
      * @generated from field: uint64 max = 3;
      */
@@ -162,19 +162,19 @@ export declare const SizeConstraintSchema: GenMessage<SizeConstraint>;
  */
 export type SizeQuery = Message<"metalstack.api.v2.SizeQuery"> & {
     /**
-     * ID of the size to get
+     * ID of the size to get.
      *
      * @generated from field: optional string id = 1;
      */
     id?: string | undefined;
     /**
-     * Name of the size to query
+     * Name of the size to query.
      *
      * @generated from field: optional string name = 2;
      */
     name?: string | undefined;
     /**
-     * Description of the size to query
+     * Description of the size to query.
      *
      * @generated from field: optional string description = 3;
      */
@@ -198,7 +198,7 @@ export declare const SizeQuerySchema: GenMessage<SizeQuery>;
  */
 export declare enum SizeConstraintType {
     /**
-     * SIZE_CONSTRAINT_TYPE_UNSPECIFIED type is not specified
+     * SIZE_CONSTRAINT_TYPE_UNSPECIFIED type is not specified.
      *
      * @generated from enum value: SIZE_CONSTRAINT_TYPE_UNSPECIFIED = 0;
      */

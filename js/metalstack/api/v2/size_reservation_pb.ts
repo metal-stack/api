@@ -23,14 +23,14 @@ export const file_metalstack_api_v2_size_reservation: GenFile = /*@__PURE__*/
  */
 export type SizeReservationServiceGetRequest = Message<"metalstack.api.v2.SizeReservationServiceGetRequest"> & {
   /**
-   * ID of the size reservation to get
+   * ID of the size reservation to get.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Project of the size reservation
+   * Project of the size reservation.
    *
    * @generated from field: string project = 2;
    */
@@ -51,7 +51,7 @@ export const SizeReservationServiceGetRequestSchema: GenMessage<SizeReservationS
  */
 export type SizeReservationServiceListRequest = Message<"metalstack.api.v2.SizeReservationServiceListRequest"> & {
   /**
-   * Project of the size reservation
+   * Project of the size reservation.
    *
    * @generated from field: string project = 1;
    */
@@ -79,7 +79,7 @@ export const SizeReservationServiceListRequestSchema: GenMessage<SizeReservation
  */
 export type SizeReservationServiceGetResponse = Message<"metalstack.api.v2.SizeReservationServiceGetResponse"> & {
   /**
-   * Size reservation
+   * Size reservation.
    *
    * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
    */
@@ -100,7 +100,7 @@ export const SizeReservationServiceGetResponseSchema: GenMessage<SizeReservation
  */
 export type SizeReservationServiceListResponse = Message<"metalstack.api.v2.SizeReservationServiceListResponse"> & {
   /**
-   * Size reservations
+   * Size reservations.
    *
    * @generated from field: repeated metalstack.api.v2.SizeReservation size_reservations = 1;
    */
@@ -115,62 +115,62 @@ export const SizeReservationServiceListResponseSchema: GenMessage<SizeReservatio
   messageDesc(file_metalstack_api_v2_size_reservation, 3);
 
 /**
- * SizeReservation
+ * SizeReservation.
  *
  * @generated from message metalstack.api.v2.SizeReservation
  */
 export type SizeReservation = Message<"metalstack.api.v2.SizeReservation"> & {
   /**
-   * Id of this size reservation, is generated on creation
+   * Id of this size reservation, is generated on creation.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Meta for this size reservation
+   * Meta for this size reservation.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 2;
    */
   meta?: Meta | undefined;
 
   /**
-   * Name of this size reservation
+   * Name of this size reservation.
    *
    * @generated from field: string name = 3;
    */
   name: string;
 
   /**
-   * Description of this size reservation
+   * Description of this size reservation.
    *
    * @generated from field: string description = 4;
    */
   description: string;
 
   /**
-   * Project of the size reservation
+   * Project of the size reservation.
    *
    * @generated from field: string project = 5;
    */
   project: string;
 
   /**
-   * Size id of this size reservation
+   * Size id of this size reservation.
    *
    * @generated from field: string size = 6;
    */
   size: string;
 
   /**
-   * Partition ids of this size reservation
+   * Partition ids of this size reservation.
    *
    * @generated from field: repeated string partitions = 7;
    */
   partitions: string[];
 
   /**
-   * Amount of reservations of this size reservation
+   * Amount of reservations of this size reservation.
    *
    * @generated from field: int32 amount = 8;
    */
@@ -191,42 +191,42 @@ export const SizeReservationSchema: GenMessage<SizeReservation> = /*@__PURE__*/
  */
 export type SizeReservationQuery = Message<"metalstack.api.v2.SizeReservationQuery"> & {
   /**
-   * ID of the size reservation to get
+   * ID of the size reservation to get.
    *
    * @generated from field: optional string id = 1;
    */
   id?: string | undefined;
 
   /**
-   * Name of this size reservation
+   * Name of this size reservation.
    *
    * @generated from field: optional string name = 2;
    */
   name?: string | undefined;
 
   /**
-   * Description of this size reservation
+   * Description of this size reservation.
    *
    * @generated from field: optional string description = 3;
    */
   description?: string | undefined;
 
   /**
-   * Size id of this size reservation
+   * Size id of this size reservation.
    *
    * @generated from field: optional string size = 4;
    */
   size?: string | undefined;
 
   /**
-   * Project of the size reservation
+   * Project of the size reservation.
    *
    * @generated from field: optional string project = 5;
    */
   project?: string | undefined;
 
   /**
-   * Partition of the size reservation
+   * Partition of the size reservation.
    *
    * @generated from field: optional string partition = 6;
    */

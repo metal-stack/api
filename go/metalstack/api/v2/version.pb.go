@@ -25,13 +25,13 @@ const (
 // Version represents the version of the application.
 type Version struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Version of the application
+	// Version of the application.
 	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
-	// Revision of the application
+	// Revision of the application.
 	Revision string `protobuf:"bytes,2,opt,name=revision,proto3" json:"revision,omitempty"`
-	// GitSHA1 of the application
+	// GitSHA1 of the application.
 	GitSha1 string `protobuf:"bytes,3,opt,name=git_sha1,json=gitSha1,proto3" json:"git_sha1,omitempty"`
-	// BuildDate of the application
+	// BuildDate of the application.
 	BuildDate     string `protobuf:"bytes,4,opt,name=build_date,json=buildDate,proto3" json:"build_date,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

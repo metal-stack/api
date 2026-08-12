@@ -119,23 +119,23 @@ func (x *ImageServiceCreateResponse) GetImage() *v2.Image {
 // ImageServiceUpdateRequest is the request payload for updating an image.
 type ImageServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this image
+	// Id of this image.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// URL where this image is located
+	// URL where this image is located.
 	Url *string `protobuf:"bytes,3,opt,name=url,proto3,oneof" json:"url,omitempty"`
-	// Name of this image
+	// Name of this image.
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this image
+	// Description of this image.
 	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Features of this image
+	// Features of this image.
 	Features []v2.ImageFeature `protobuf:"varint,6,rep,packed,name=features,proto3,enum=metalstack.api.v2.ImageFeature" json:"features,omitempty"`
-	// Classification of this image
+	// Classification of this image.
 	Classification v2.ImageClassification `protobuf:"varint,7,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification" json:"classification,omitempty"`
 	// ExpiresAt indicates that usage is not possible after this date.
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
-	// Labels to update on this image
+	// Labels to update on this image.
 	Labels        *v2.UpdateLabels `protobuf:"bytes,9,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -283,7 +283,7 @@ func (x *ImageServiceUpdateResponse) GetImage() *v2.Image {
 // ImageServiceDeleteRequest is the request payload for deleting an image.
 type ImageServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the image to delete
+	// ID of the image to delete.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

@@ -56,7 +56,7 @@ export const ImageUsageSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2
  */
 export const ImageQuerySchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_image, 8);
 /**
- * ImageFeature
+ * ImageFeature.
  *
  * @generated from enum metalstack.api.v2.ImageFeature
  */
@@ -86,7 +86,7 @@ export var ImageFeature;
  */
 export const ImageFeatureSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_image, 0);
 /**
- * Image
+ * Image.
  *
  * @generated from enum metalstack.api.v2.ImageClassification
  */

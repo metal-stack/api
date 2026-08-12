@@ -26,7 +26,7 @@ const (
 // NetworkServiceGetRequest is the request payload for getting a network.
 type NetworkServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the network to get
+	// ID of the network to get.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -118,39 +118,39 @@ func (x *NetworkServiceGetResponse) GetNetwork() *v2.Network {
 // NetworkServiceCreateRequest is the request payload for creating a network.
 type NetworkServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this network
+	// Id of this network.
 	Id *string `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
-	// Name of this network
+	// Name of this network.
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this network
+	// Description of this network.
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Partition where this network will be created.
 	Partition *string `protobuf:"bytes,4,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	// Project where this network belongs to.
 	Project *string `protobuf:"bytes,5,opt,name=project,proto3,oneof" json:"project,omitempty"`
-	// Type of the network to create
+	// Type of the network to create.
 	Type v2.NetworkType `protobuf:"varint,6,opt,name=type,proto3,enum=metalstack.api.v2.NetworkType" json:"type,omitempty"`
-	// Labels on this network
+	// Labels on this network.
 	Labels *v2.Labels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
-	// Prefixes in this network
+	// Prefixes in this network.
 	Prefixes []string `protobuf:"bytes,8,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
-	// Destination Prefixes in this network
+	// Destination Prefixes in this network.
 	DestinationPrefixes []string `protobuf:"bytes,9,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
 	// Default Child Prefix length defines the bitlength of a child network created per addressfamily, if not specified during the allocate request.
 	DefaultChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,10,opt,name=default_child_prefix_length,json=defaultChildPrefixLength,proto3" json:"default_child_prefix_length,omitempty"`
 	// Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length.
 	MinChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,11,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3" json:"min_child_prefix_length,omitempty"`
-	// NATType of this network
+	// NATType of this network.
 	NatType *v2.NATType `protobuf:"varint,12,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
-	// VRF of this network has this VNI
+	// VRF of this network has this VNI.
 	Vrf *uint32 `protobuf:"varint,13,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// Parent Network points to the id of the parent network if any.
 	ParentNetwork *string `protobuf:"bytes,14,opt,name=parent_network,json=parentNetwork,proto3,oneof" json:"parent_network,omitempty"`
 	// AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced.
 	AdditionalAnnouncableCidrs []string `protobuf:"bytes,15,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
-	// Length per addressfamily
+	// Length per addressfamily.
 	Length *v2.ChildPrefixLength `protobuf:"bytes,16,opt,name=length,proto3,oneof" json:"length,omitempty"`
-	// AddressFamily to create, defaults to the same as the parent
+	// AddressFamily to create, defaults to the same as the parent.
 	AddressFamily *v2.NetworkAddressFamily `protobuf:"varint,17,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.NetworkAddressFamily,oneof" json:"address_family,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -308,25 +308,25 @@ func (x *NetworkServiceCreateRequest) GetAddressFamily() v2.NetworkAddressFamily
 // NetworkServiceUpdateRequest is the request payload for updating a network.
 type NetworkServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this network
+	// Id of this network.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Name of this network
+	// Name of this network.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this network
+	// Description of this network.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Labels to update on this network
+	// Labels to update on this network.
 	Labels *v2.UpdateLabels `protobuf:"bytes,5,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
-	// Prefixes in this network
+	// Prefixes in this network.
 	Prefixes []string `protobuf:"bytes,6,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
-	// Destination Prefixes in this network
+	// Destination Prefixes in this network.
 	DestinationPrefixes []string `protobuf:"bytes,7,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
 	// Default Child Prefix length defines the bit length of a child network created per addressfamily, if not specified during the allocate request.
 	DefaultChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,8,opt,name=default_child_prefix_length,json=defaultChildPrefixLength,proto3,oneof" json:"default_child_prefix_length,omitempty"`
 	// Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length.
 	MinChildPrefixLength *v2.ChildPrefixLength `protobuf:"bytes,9,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3,oneof" json:"min_child_prefix_length,omitempty"`
-	// NATType of this network
+	// NATType of this network.
 	NatType *v2.NATType `protobuf:"varint,10,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
 	// AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced.
 	AdditionalAnnouncableCidrs []string `protobuf:"bytes,11,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
@@ -453,7 +453,7 @@ func (x *NetworkServiceUpdateRequest) GetForce() bool {
 // NetworkServiceDeleteRequest is the request payload for deleting a network.
 type NetworkServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the network to get
+	// ID of the network to get.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

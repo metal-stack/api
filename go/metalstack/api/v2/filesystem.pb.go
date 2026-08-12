@@ -22,17 +22,17 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// LVMType
+// LVMType.
 type LVMType int32
 
 const (
 	// LVM_TYPE_UNSPECIFIED is not specified.
 	LVMType_LVM_TYPE_UNSPECIFIED LVMType = 0
-	// LVM_TYPE_LINEAR append across all physical volumes
+	// LVM_TYPE_LINEAR append across all physical volumes.
 	LVMType_LVM_TYPE_LINEAR LVMType = 1
-	// LVM_TYPE_STRIPED stripe across all physical volumes
+	// LVM_TYPE_STRIPED stripe across all physical volumes.
 	LVMType_LVM_TYPE_STRIPED LVMType = 2
-	// LVM_TYPE_RAID1 mirror with raid across all physical volumes
+	// LVM_TYPE_RAID1 mirror with raid across all physical volumes.
 	LVMType_LVM_TYPE_RAID1 LVMType = 3
 )
 
@@ -83,7 +83,7 @@ func (LVMType) EnumDescriptor() ([]byte, []int) {
 type Format int32
 
 const (
-	// FORMAT_UNSPECIFIED
+	// FORMAT_UNSPECIFIED.
 	Format_FORMAT_UNSPECIFIED Format = 0
 	// FORMAT_VFAT is used for the UEFI boot partition.
 	Format_FORMAT_VFAT Format = 1
@@ -95,7 +95,7 @@ const (
 	Format_FORMAT_SWAP Format = 4
 	// FORMAT_TMPFS is used for a memory filesystem typically /tmp.
 	Format_FORMAT_TMPFS Format = 5
-	// FORMAT_NONE
+	// FORMAT_NONE.
 	Format_FORMAT_NONE Format = 6
 )
 
@@ -154,13 +154,13 @@ type GPTType int32
 const (
 	// GPT_TYPE_UNSPECIFIED is no specified.
 	GPTType_GPT_TYPE_UNSPECIFIED GPTType = 0
-	// GPT_TYPE_BOOT EFI Boot Partition
+	// GPT_TYPE_BOOT EFI Boot Partition.
 	GPTType_GPT_TYPE_BOOT GPTType = 1
-	// GPT_TYPE_LINUX Linux Partition
+	// GPT_TYPE_LINUX Linux Partition.
 	GPTType_GPT_TYPE_LINUX GPTType = 2
-	// GPT_TYPE_LINUX_RAID Linux Raid Partition
+	// GPT_TYPE_LINUX_RAID Linux Raid Partition.
 	GPTType_GPT_TYPE_LINUX_RAID GPTType = 3
-	// GPT_TYPE_LINUX_LVM Linux LVM Partition
+	// GPT_TYPE_LINUX_LVM Linux LVM Partition.
 	GPTType_GPT_TYPE_LINUX_LVM GPTType = 4
 )
 
@@ -265,7 +265,7 @@ func (RaidLevel) EnumDescriptor() ([]byte, []int) {
 // FilesystemServiceGetRequest is the request payload for a filesystem get request.
 type FilesystemServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the filesystem to get
+	// ID of the filesystem to get.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -311,7 +311,7 @@ func (x *FilesystemServiceGetRequest) GetId() string {
 // FilesystemServiceListRequest is the request payload for a filesystem list request.
 type FilesystemServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the filesystem to get
+	// ID of the filesystem to get.
 	Id            *string `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -357,7 +357,7 @@ func (x *FilesystemServiceListRequest) GetId() string {
 // FilesystemServiceGetResponse is the response payload for a filesystem get request.
 type FilesystemServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// FilesystemLayout the filesystemlayout
+	// FilesystemLayout the filesystemlayout.
 	FilesystemLayout *FilesystemLayout `protobuf:"bytes,1,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
@@ -403,7 +403,7 @@ func (x *FilesystemServiceGetResponse) GetFilesystemLayout() *FilesystemLayout {
 // FilesystemServiceListResponse is the response payload for a filesystem list request.
 type FilesystemServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// FilesystemLayouts the filesystemlayouts
+	// FilesystemLayouts the filesystemlayouts.
 	FilesystemLayouts []*FilesystemLayout `protobuf:"bytes,1,rep,name=filesystem_layouts,json=filesystemLayouts,proto3" json:"filesystem_layouts,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
@@ -446,28 +446,28 @@ func (x *FilesystemServiceListResponse) GetFilesystemLayouts() []*FilesystemLayo
 	return nil
 }
 
-// FilesystemLayout
+// FilesystemLayout.
 type FilesystemLayout struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this filesystemLayout
+	// Id of this filesystemLayout.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Meta for this filesystemLayout
+	// Meta for this filesystemLayout.
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
-	// Name of this filesystemLayout
+	// Name of this filesystemLayout.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this filesystemLayout
+	// Description of this filesystemLayout.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Filesystems is a list of filesystems to create on a machine.
 	Filesystems []*Filesystem `protobuf:"bytes,5,rep,name=filesystems,proto3" json:"filesystems,omitempty"`
 	// Disks list of disks that belong to this layout.
 	Disks []*Disk `protobuf:"bytes,6,rep,name=disks,proto3" json:"disks,omitempty"`
-	// raid arrays to create
+	// Raid arrays to create.
 	Raid []*Raid `protobuf:"bytes,7,rep,name=raid,proto3" json:"raid,omitempty"`
 	// VolumeGroups list of volumegroups to create.
 	VolumeGroups []*VolumeGroup `protobuf:"bytes,8,rep,name=volume_groups,json=volumeGroups,proto3" json:"volume_groups,omitempty"`
 	// LogicalVolumes list of logicalvolumes to create.
 	LogicalVolumes []*LogicalVolume `protobuf:"bytes,9,rep,name=logical_volumes,json=logicalVolumes,proto3" json:"logical_volumes,omitempty"`
-	// Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
+	// Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts.
 	Constraints   *FilesystemLayoutConstraints `protobuf:"bytes,10,opt,name=constraints,proto3" json:"constraints,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -573,17 +573,17 @@ func (x *FilesystemLayout) GetConstraints() *FilesystemLayoutConstraints {
 	return nil
 }
 
-// FilesystemLayoutConstraints
+// FilesystemLayoutConstraints.
 type FilesystemLayoutConstraints struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Sizes list of sizes this layout applies to.
-	// this could either be a concrete size, or a asterisk to match all sizes
+	// This could either be a concrete size, or a asterisk to match all sizes.
 	Sizes []string `protobuf:"bytes,1,rep,name=sizes,proto3" json:"sizes,omitempty"`
-	// Images list of images this layout applies to in the following form.
-	// key must be the first part of available images, e.g. the name of the image
-	// value must be a semver match expression with the constraint and the version separated by space
-	// this would match all debian images which are greater or equal 12.0
-	// "debian":">= 12.0"
+	// Images list of images this layout applies to in the following form:
+	// Key must be the first part of available images, e.g. the name of the imag.
+	// Value must be a semver match expression with the constraint and the version separated by space.
+	// This would match all debian images which are greater or equal 12:
+	// "debian": >= 12.0.
 	Images        map[string]string `protobuf:"bytes,2,rep,name=images,proto3" json:"images,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -633,24 +633,24 @@ func (x *FilesystemLayoutConstraints) GetImages() map[string]string {
 	return nil
 }
 
-// Filesystem
+// Filesystem.
 type Filesystem struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Device the underlying device where this filesystem should be created
+	// Device the underlying device where this filesystem should be created.
 	Device string `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
-	// Format of the filesystem format
+	// Format of the filesystem format.
 	Format Format `protobuf:"varint,2,opt,name=format,proto3,enum=metalstack.api.v2.Format" json:"format,omitempty"`
-	// Name of this filesystem
+	// Name of this filesystem.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this filesystem
+	// Description of this filesystem.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Path the mountpoint where this filesystem should be mounted on
+	// Path the mountpoint where this filesystem should be mounted on.
 	Path *string `protobuf:"bytes,5,opt,name=path,proto3,oneof" json:"path,omitempty"`
-	// Label an optional label for this filesystem
+	// Label an optional label for this filesystem.
 	Label *string `protobuf:"bytes,6,opt,name=label,proto3,oneof" json:"label,omitempty"`
-	// MountOptions the options to use to mount this filesystem
+	// MountOptions the options to use to mount this filesystem.
 	MountOptions []string `protobuf:"bytes,7,rep,name=mount_options,json=mountOptions,proto3" json:"mount_options,omitempty"`
-	// CreateOptions the options to use to create (mkfs) this filesystem
+	// CreateOptions the options to use to create (mkfs) this filesystem.
 	CreateOptions []string `protobuf:"bytes,8,rep,name=create_options,json=createOptions,proto3" json:"create_options,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -742,10 +742,10 @@ func (x *Filesystem) GetCreateOptions() []string {
 	return nil
 }
 
-// Disk
+// Disk.
 type Disk struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Device the device to create the partitions
+	// Device the device to create the partitions.
 	Device string `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
 	// Partitions list of partitions to create on this disk.
 	Partitions    []*DiskPartition `protobuf:"bytes,2,rep,name=partitions,proto3" json:"partitions,omitempty"`
@@ -797,18 +797,18 @@ func (x *Disk) GetPartitions() []*DiskPartition {
 	return nil
 }
 
-// Raid
+// Raid.
 type Raid struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ArrayName the name of the resulting array device
+	// ArrayName the name of the resulting array device.
 	ArrayName string `protobuf:"bytes,1,opt,name=array_name,json=arrayName,proto3" json:"array_name,omitempty"`
 	// Devices list of devices to form the raid array from.
 	Devices []string `protobuf:"bytes,2,rep,name=devices,proto3" json:"devices,omitempty"`
 	// Level raid level to create, should be 0 or 1.
 	Level RaidLevel `protobuf:"varint,3,opt,name=level,proto3,enum=metalstack.api.v2.RaidLevel" json:"level,omitempty"`
-	// CreateOptions the options to use to create the raid array
+	// CreateOptions the options to use to create the raid array.
 	CreateOptions []string `protobuf:"bytes,4,rep,name=create_options,json=createOptions,proto3" json:"create_options,omitempty"`
-	// Spares number of spares for the raid array
+	// Spares number of spares for the raid array.
 	Spares        int32 `protobuf:"varint,5,opt,name=spares,proto3" json:"spares,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -879,16 +879,16 @@ func (x *Raid) GetSpares() int32 {
 	return 0
 }
 
-// DiskPartition
+// DiskPartition.
 type DiskPartition struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Number partition number, will be appended to partitionprefix to create the final devicename.
 	Number uint32 `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
-	// Label an optional label for this partition
+	// Label an optional label for this partition.
 	Label *string `protobuf:"bytes,2,opt,name=label,proto3,oneof" json:"label,omitempty"`
-	// Size in mebibytes (MiB) of this partition
+	// Size in mebibytes (MiB) of this partition.
 	Size uint64 `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
-	// GPTType the gpt partition table type of this partition
+	// GPTType the gpt partition table type of this partition.
 	GptType       *GPTType `protobuf:"varint,4,opt,name=gpt_type,json=gptType,proto3,enum=metalstack.api.v2.GPTType,oneof" json:"gpt_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -952,10 +952,10 @@ func (x *DiskPartition) GetGptType() GPTType {
 	return GPTType_GPT_TYPE_UNSPECIFIED
 }
 
-// VolumeGroup
+// VolumeGroup.
 type VolumeGroup struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name the name of the resulting volume group
+	// Name the name of the resulting volume group.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Devices list of devices to form the volume group from.
 	Devices []string `protobuf:"bytes,2,rep,name=devices,proto3" json:"devices,omitempty"`
@@ -1016,16 +1016,16 @@ func (x *VolumeGroup) GetTags() []string {
 	return nil
 }
 
-// LogicalVolume
+// LogicalVolume.
 type LogicalVolume struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name the name of the logical volume
+	// Name the name of the logical volume.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// VolumeGroup the name of the volume group where to create the logical volume onto
+	// VolumeGroup the name of the volume group where to create the logical volume onto.
 	VolumeGroup string `protobuf:"bytes,2,opt,name=volume_group,json=volumeGroup,proto3" json:"volume_group,omitempty"`
-	// Size size in mebibytes (MiB) of this volume
+	// Size size in mebibytes (MiB) of this volume.
 	Size uint64 `protobuf:"varint,3,opt,name=size,proto3" json:"size,omitempty"`
-	// LVMType the type of this logical volume can be either linear|striped|raid1
+	// LVMType the type of this logical volume can be either linear|striped|raid1.
 	LvmType       LVMType `protobuf:"varint,4,opt,name=lvm_type,json=lvmType,proto3,enum=metalstack.api.v2.LVMType" json:"lvm_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

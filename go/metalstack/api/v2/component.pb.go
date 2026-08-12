@@ -109,11 +109,11 @@ type Component struct {
 	ReportedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=reported_at,json=reportedAt,proto3" json:"reported_at,omitempty"`
 	// Interval at which the ping is scheduled.
 	Interval *durationpb.Duration `protobuf:"bytes,6,opt,name=interval,proto3" json:"interval,omitempty"`
-	// Version of this service
+	// Version of this service.
 	Version *Version `protobuf:"bytes,7,opt,name=version,proto3" json:"version,omitempty"`
 	// Token is the token which is actually used by this microservice.
 	Token *Token `protobuf:"bytes,8,opt,name=token,proto3" json:"token,omitempty"`
-	// Meta for this component
+	// Meta for this component.
 	Meta          *Meta `protobuf:"bytes,9,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -212,7 +212,7 @@ func (x *Component) GetMeta() *Meta {
 	return nil
 }
 
-// ComponentQuery to query components
+// ComponentQuery to query components.
 type ComponentQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID identifies this component.

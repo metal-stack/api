@@ -30,7 +30,7 @@ const (
 	NATType_NAT_TYPE_UNSPECIFIED NATType = 0
 	// NAT_TYPE_NONE indicates that no nat is configured.
 	NATType_NAT_TYPE_NONE NATType = 1
-	// NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network
+	// NAT_TYPE_IPV4_MASQUERADE masquerade ipv4 behind gateway ip when traffic enters this network.
 	NATType_NAT_TYPE_IPV4_MASQUERADE NATType = 2
 )
 
@@ -86,7 +86,7 @@ const (
 	// If it is not project scoped everyone can allocate Ips in this network, otherwise only from the same project ip allocation is possible.
 	NetworkType_NETWORK_TYPE_EXTERNAL NetworkType = 1
 	// NETWORK_TYPE_UNDERLAY indicates a underlay network.
-	// The underlay network connects all switches and the firewalls to build a EVPN dataplane
+	// The underlay network connects all switches and the firewalls to build a EVPN dataplane.
 	// It is not project scoped. Is part of the dataplane and reserved for administrative purposes.
 	NetworkType_NETWORK_TYPE_UNDERLAY NetworkType = 2
 	// NETWORK_TYPE_SUPER indicates a super network which is only used to create child networks.
@@ -224,12 +224,12 @@ func (NetworkAddressFamily) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{2}
 }
 
-// NetworkServiceGetRequest
+// NetworkServiceGetRequest.
 type NetworkServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the network to get
+	// ID of the network to get.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Project of the network
+	// Project of the network.
 	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -279,10 +279,10 @@ func (x *NetworkServiceGetRequest) GetProject() string {
 	return ""
 }
 
-// NetworkServiceGetResponse
+// NetworkServiceGetResponse.
 type NetworkServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Network which was requested to get
+	// Network which was requested to get.
 	Network       *Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -325,24 +325,24 @@ func (x *NetworkServiceGetResponse) GetNetwork() *Network {
 	return nil
 }
 
-// NetworkServiceCreateRequest
+// NetworkServiceCreateRequest.
 type NetworkServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project where this network belongs to.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Name of this network
+	// Name of this network.
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this network
+	// Description of this network.
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Partition where this network will be created.
 	Partition *string `protobuf:"bytes,4,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
-	// Labels on this network
+	// Labels on this network.
 	Labels *Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
 	// Parent Network points to the id of the parent network if any.
 	ParentNetwork *string `protobuf:"bytes,6,opt,name=parent_network,json=parentNetwork,proto3,oneof" json:"parent_network,omitempty"`
-	// Length per addressfamily
+	// Length per addressfamily.
 	Length *ChildPrefixLength `protobuf:"bytes,7,opt,name=length,proto3,oneof" json:"length,omitempty"`
-	// AddressFamily to create, defaults to the same as the parent
+	// AddressFamily to create, defaults to the same as the parent.
 	AddressFamily *NetworkAddressFamily `protobuf:"varint,8,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.NetworkAddressFamily,oneof" json:"address_family,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -434,7 +434,7 @@ func (x *NetworkServiceCreateRequest) GetAddressFamily() NetworkAddressFamily {
 	return NetworkAddressFamily_NETWORK_ADDRESS_FAMILY_UNSPECIFIED
 }
 
-// NetworkServiceCreateResponse
+// NetworkServiceCreateResponse.
 type NetworkServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network is the created network.
@@ -480,20 +480,20 @@ func (x *NetworkServiceCreateResponse) GetNetwork() *Network {
 	return nil
 }
 
-// NetworkServiceUpdateRequest
+// NetworkServiceUpdateRequest.
 type NetworkServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the network to get
+	// ID of the network to get.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Project of the network
+	// Project of the network.
 	Project string `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
-	// Name of this network
+	// Name of this network.
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this network
+	// Description of this network.
 	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Labels on this network
+	// Labels on this network.
 	Labels        *UpdateLabels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -571,7 +571,7 @@ func (x *NetworkServiceUpdateRequest) GetLabels() *UpdateLabels {
 	return nil
 }
 
-// NetworkServiceUpdateResponse
+// NetworkServiceUpdateResponse.
 type NetworkServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network is the updated network.
@@ -617,10 +617,10 @@ func (x *NetworkServiceUpdateResponse) GetNetwork() *Network {
 	return nil
 }
 
-// NetworkServiceListRequest
+// NetworkServiceListRequest.
 type NetworkServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project of the networks to list
+	// Project of the networks to list.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// Query which specifies which networks to return.
 	Query         *NetworkQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
@@ -672,7 +672,7 @@ func (x *NetworkServiceListRequest) GetQuery() *NetworkQuery {
 	return nil
 }
 
-// NetworkServiceListResponse
+// NetworkServiceListResponse.
 type NetworkServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Networks are the requested networks.
@@ -718,10 +718,10 @@ func (x *NetworkServiceListResponse) GetNetworks() []*Network {
 	return nil
 }
 
-// NetworkServiceListRequest
+// NetworkServiceListRequest.
 type NetworkServiceListBaseNetworksRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project of the base networks to list
+	// Project of the base networks to list.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// Query which specifies which networks to return.
 	Query         *NetworkQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
@@ -773,7 +773,7 @@ func (x *NetworkServiceListBaseNetworksRequest) GetQuery() *NetworkQuery {
 	return nil
 }
 
-// NetworkServiceListResponse
+// NetworkServiceListResponse.
 type NetworkServiceListBaseNetworksResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Networks are the requested networks.
@@ -819,12 +819,12 @@ func (x *NetworkServiceListBaseNetworksResponse) GetNetworks() []*Network {
 	return nil
 }
 
-// NetworkServiceDeleteRequest
+// NetworkServiceDeleteRequest.
 type NetworkServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the network to get
+	// ID of the network to get.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Project of the network
+	// Project of the network.
 	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -874,7 +874,7 @@ func (x *NetworkServiceDeleteRequest) GetProject() string {
 	return ""
 }
 
-// NetworkServiceDeleteResponse
+// NetworkServiceDeleteResponse.
 type NetworkServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network is the deleted network.
@@ -920,35 +920,35 @@ func (x *NetworkServiceDeleteResponse) GetNetwork() *Network {
 	return nil
 }
 
-// Network
+// Network.
 type Network struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this network
+	// Id of this network.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Meta for this network
+	// Meta for this network.
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
-	// Name of this network
+	// Name of this network.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this network
+	// Description of this network.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Partition where this network will be created.
 	Partition *string `protobuf:"bytes,5,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	// Project where this network belongs to.
 	Project *string `protobuf:"bytes,6,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	// Namespace if specified, this network is namespaced and can therefore overlap with others.
-	// Will be equal with project most of the time
+	// Will be equal with project most of the time.
 	Namespace *string `protobuf:"bytes,7,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
-	// Prefixes in this network
+	// Prefixes in this network.
 	Prefixes []string `protobuf:"bytes,8,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
-	// Destination Prefixes in this network
+	// Destination Prefixes in this network.
 	DestinationPrefixes []string `protobuf:"bytes,9,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
 	// Default Child Prefix length defines the bit length of a child network created per address family, if not specified during the allocate request.
 	DefaultChildPrefixLength *ChildPrefixLength `protobuf:"bytes,10,opt,name=default_child_prefix_length,json=defaultChildPrefixLength,proto3" json:"default_child_prefix_length,omitempty"`
 	// Min Child Prefix length asserts that during child network creation the requested bit length is greater or equal the min child prefix length.
 	MinChildPrefixLength *ChildPrefixLength `protobuf:"bytes,11,opt,name=min_child_prefix_length,json=minChildPrefixLength,proto3" json:"min_child_prefix_length,omitempty"`
-	// Type of the network
+	// Type of the network.
 	Type NetworkType `protobuf:"varint,12,opt,name=type,proto3,enum=metalstack.api.v2.NetworkType" json:"type,omitempty"`
-	// NATType of this network
+	// NATType of this network.
 	NatType NATType `protobuf:"varint,13,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType" json:"nat_type,omitempty"`
 	// VRF of this network has this VNI.
 	Vrf *uint32 `protobuf:"varint,14,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
@@ -956,7 +956,7 @@ type Network struct {
 	ParentNetwork *string `protobuf:"bytes,15,opt,name=parent_network,json=parentNetwork,proto3,oneof" json:"parent_network,omitempty"`
 	// AdditionalAnnouncableCidrs will be added to the allow list on the switch which prefixes might be announced.
 	AdditionalAnnouncableCidrs []string `protobuf:"bytes,16,rep,name=additional_announcable_cidrs,json=additionalAnnouncableCidrs,proto3" json:"additional_announcable_cidrs,omitempty"`
-	// Consumption of IPs and prefixes in this network
+	// Consumption of IPs and prefixes in this network.
 	Consumption   *NetworkConsumption `protobuf:"bytes,17,opt,name=consumption,proto3" json:"consumption,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1114,11 +1114,11 @@ func (x *Network) GetConsumption() *NetworkConsumption {
 // NetworkQuery defines which networks to query.
 type NetworkQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of the network to query
+	// Id of the network to query.
 	Id *string `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
-	// Name of this network
+	// Name of this network.
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this network
+	// Description of this network.
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Partition where this network will be created.
 	Partition *string `protobuf:"bytes,4,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
@@ -1126,21 +1126,21 @@ type NetworkQuery struct {
 	Project *string `protobuf:"bytes,5,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	// Namespace where this network belongs to.
 	Namespace *string `protobuf:"bytes,6,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
-	// Prefixes in this network
+	// Prefixes in this network.
 	Prefixes []string `protobuf:"bytes,7,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
-	// Destination Prefixes in this network
+	// Destination Prefixes in this network.
 	DestinationPrefixes []string `protobuf:"bytes,8,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
 	// VRF of this network has this VNI.
 	Vrf *uint32 `protobuf:"varint,9,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
 	// Parent Network points to the id of the parent network if any.
 	ParentNetwork *string `protobuf:"bytes,10,opt,name=parent_network,json=parentNetwork,proto3,oneof" json:"parent_network,omitempty"`
-	// Addressfamily to query
+	// Addressfamily to query.
 	AddressFamily *NetworkAddressFamily `protobuf:"varint,11,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.NetworkAddressFamily,oneof" json:"address_family,omitempty"`
-	// Type of the network to query for
+	// Type of the network to query for.
 	Type *NetworkType `protobuf:"varint,12,opt,name=type,proto3,enum=metalstack.api.v2.NetworkType,oneof" json:"type,omitempty"`
-	// NATType configured
+	// NATType configured.
 	NatType *NATType `protobuf:"varint,13,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType,oneof" json:"nat_type,omitempty"`
-	// Labels on this network
+	// Labels on this network.
 	Labels        *Labels `protobuf:"bytes,14,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1274,12 +1274,12 @@ func (x *NetworkQuery) GetLabels() *Labels {
 	return nil
 }
 
-// ChildPrefixLength
+// ChildPrefixLength.
 type ChildPrefixLength struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// IPv4 bit length of this network in this addressfamily
+	// IPv4 bit length of this network in this addressfamily.
 	Ipv4 *uint32 `protobuf:"varint,1,opt,name=ipv4,proto3,oneof" json:"ipv4,omitempty"`
-	// IPv6 bit length of this network in this addressfamily
+	// IPv6 bit length of this network in this addressfamily.
 	Ipv6          *uint32 `protobuf:"varint,2,opt,name=ipv6,proto3,oneof" json:"ipv6,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1332,7 +1332,7 @@ func (x *ChildPrefixLength) GetIpv6() uint32 {
 // NetworkConsumption contains ip and prefix usage by addressfamily.
 type NetworkConsumption struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// IPv4 network usage
+	// IPv4 network usage.
 	Ipv4 *NetworkUsage `protobuf:"bytes,1,opt,name=ipv4,proto3" json:"ipv4,omitempty"`
 	// IPv6 network usage, this can be approximated for high numbers.
 	Ipv6          *NetworkUsage `protobuf:"bytes,2,opt,name=ipv6,proto3" json:"ipv6,omitempty"`
@@ -1387,13 +1387,13 @@ func (x *NetworkConsumption) GetIpv6() *NetworkUsage {
 // NetworkUsage reports core metrics about available and used IPs or Prefixes in a Network.
 type NetworkUsage struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// the total available IPs
+	// the total available IPs.
 	AvailableIps uint64 `protobuf:"varint,1,opt,name=available_ips,json=availableIps,proto3" json:"available_ips,omitempty"`
-	// the total used IPs
+	// the total used IPs.
 	UsedIps uint64 `protobuf:"varint,2,opt,name=used_ips,json=usedIps,proto3" json:"used_ips,omitempty"`
-	// the total available 2-bit prefixes
+	// the total available 2-bit prefixes.
 	AvailablePrefixes uint64 `protobuf:"varint,3,opt,name=available_prefixes,json=availablePrefixes,proto3" json:"available_prefixes,omitempty"`
-	// the total used Prefixes
+	// the total used Prefixes.
 	UsedPrefixes  uint64 `protobuf:"varint,4,opt,name=used_prefixes,json=usedPrefixes,proto3" json:"used_prefixes,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

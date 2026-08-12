@@ -101,14 +101,14 @@ export const WaitForBMCCommandRequestSchema: GenMessage<WaitForBMCCommandRequest
  */
 export type WaitForBMCCommandResponse = Message<"metalstack.infra.v2.WaitForBMCCommandResponse"> & {
   /**
-   * UUID of the machine to send the command to
+   * UUID of the machine to send the command to.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * BmcCommand to execute against the BMC of the machine
+   * BmcCommand to execute against the BMC of the machine.
    *
    * @generated from field: metalstack.api.v2.MachineBMCCommand bmc_command = 2;
    */
@@ -152,7 +152,7 @@ export type BMCCommandDoneRequest = Message<"metalstack.infra.v2.BMCCommandDoneR
   commandId: string;
 
   /**
-   * Error of the command execution, nil if it was successful
+   * Error of the command execution, nil if it was successful.
    *
    * @generated from field: optional string error = 2;
    */

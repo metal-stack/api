@@ -8,43 +8,43 @@ import type { Message } from "@bufbuild/protobuf";
 export declare const file_metalstack_api_v2_project: GenFile;
 /**
  * Project defines a group of resources belonging to a tenant.
- * a tenant can have multiple projects
+ * a tenant can have multiple projects.
  *
  * @generated from message metalstack.api.v2.Project
  */
 export type Project = Message<"metalstack.api.v2.Project"> & {
     /**
-     * Uuid of this project
+     * Uuid of this project.
      *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
-     * Meta for this project
+     * Meta for this project.
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
     meta?: Meta | undefined;
     /**
-     * Name of this project must be unique per tenant
+     * Name of this project must be unique per tenant.
      *
      * @generated from field: string name = 3;
      */
     name: string;
     /**
-     * Description of this project
+     * Description of this project.
      *
      * @generated from field: string description = 4;
      */
     description: string;
     /**
-     * Tenant this project belongs to
+     * Tenant this project belongs to.
      *
      * @generated from field: string tenant = 5;
      */
     tenant: string;
     /**
-     * AvatarUrl of the Project
+     * AvatarUrl of the Project.
      *
      * @generated from field: optional string avatar_url = 6;
      */
@@ -82,13 +82,13 @@ export type ProjectMember = Message<"metalstack.api.v2.ProjectMember"> & {
      */
     inheritedMembership: boolean;
     /**
-     * CreatedAt the date when the member was added to the project
+     * CreatedAt the date when the member was added to the project.
      *
      * @generated from field: google.protobuf.Timestamp created_at = 4;
      */
     createdAt?: Timestamp | undefined;
     /**
-     * Meta for this project member
+     * Meta for this project member.
      *
      * @generated from field: metalstack.api.v2.Meta meta = 5;
      */
@@ -148,13 +148,13 @@ export type ProjectInvite = Message<"metalstack.api.v2.ProjectInvite"> & {
      */
     tenantName: string;
     /**
-     * ExpiresAt the date when this invite expires
+     * ExpiresAt the date when this invite expires.
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
     expiresAt?: Timestamp | undefined;
     /**
-     * JoinedAt the date when the member accepted this invite
+     * JoinedAt the date when the member accepted this invite.
      *
      * @generated from field: google.protobuf.Timestamp joined_at = 9;
      */
@@ -268,7 +268,7 @@ export type ProjectServiceGetResponse = Message<"metalstack.api.v2.ProjectServic
      */
     project?: Project | undefined;
     /**
-     * ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions
+     * ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
      *
      * @generated from field: repeated metalstack.api.v2.ProjectMember project_members = 2;
      */
@@ -287,31 +287,31 @@ export declare const ProjectServiceGetResponseSchema: GenMessage<ProjectServiceG
 export type ProjectServiceCreateRequest = Message<"metalstack.api.v2.ProjectServiceCreateRequest"> & {
     /**
      * Login is the tenant of this project.
-     * TODO: is login really a good name?
+     * TODO: is login really a good name?.
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
-     * Name of this project, unique per tenant
+     * Name of this project, unique per tenant.
      *
      * @generated from field: string name = 2;
      */
     name: string;
     /**
-     * Description of this project
+     * Description of this project.
      *
      * @generated from field: string description = 3;
      */
     description: string;
     /**
-     * Avatar URL of the project
+     * Avatar URL of the project.
      *
      * @generated from field: optional string avatar_url = 4;
      */
     avatarUrl?: string | undefined;
     /**
-     * Labels on the project
+     * Labels on the project.
      *
      * @generated from field: metalstack.api.v2.Labels labels = 5;
      */
@@ -395,25 +395,25 @@ export type ProjectServiceUpdateRequest = Message<"metalstack.api.v2.ProjectServ
      */
     updateMeta?: UpdateMeta | undefined;
     /**
-     * Name of this project unique per tenant
+     * Name of this project unique per tenant.
      *
      * @generated from field: optional string name = 3;
      */
     name?: string | undefined;
     /**
-     * Description of this project
+     * Description of this project.
      *
      * @generated from field: optional string description = 4;
      */
     description?: string | undefined;
     /**
-     * Avatar URL of the project
+     * Avatar URL of the project.
      *
      * @generated from field: optional string avatar_url = 5;
      */
     avatarUrl?: string | undefined;
     /**
-     * Labels on this project
+     * Labels on this project.
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 6;
      */
@@ -455,7 +455,7 @@ export type ProjectServiceInviteRequest = Message<"metalstack.api.v2.ProjectServ
      */
     project: string;
     /**
-     * Role of this user in this project
+     * Role of this user in this project.
      *
      * @generated from field: metalstack.api.v2.ProjectRole role = 2;
      */
@@ -474,8 +474,8 @@ export declare const ProjectServiceInviteRequestSchema: GenMessage<ProjectServic
 export type ProjectServiceInviteResponse = Message<"metalstack.api.v2.ProjectServiceInviteResponse"> & {
     /**
      * Inviter contains a secret which can be sent to a potential user.
-     * can be appended to the invitation endpoint at our cloud console like
-     * console.metalstack.cloud/invite/<secret>
+     * can be appended to the invitation endpoint at our cloud console like.
+     * console.metalstack.cloud/invite/<secret.
      *
      * @generated from field: metalstack.api.v2.ProjectInvite invite = 1;
      */
@@ -511,7 +511,7 @@ export declare const ProjectServiceInvitesListRequestSchema: GenMessage<ProjectS
  */
 export type ProjectServiceInvitesListResponse = Message<"metalstack.api.v2.ProjectServiceInvitesListResponse"> & {
     /**
-     * Invites not already accepted the invitation to this project
+     * Invites not already accepted the invitation to this project.
      *
      * @generated from field: repeated metalstack.api.v2.ProjectInvite invites = 1;
      */
@@ -529,7 +529,7 @@ export declare const ProjectServiceInvitesListResponseSchema: GenMessage<Project
  */
 export type ProjectServiceInviteGetRequest = Message<"metalstack.api.v2.ProjectServiceInviteGetRequest"> & {
     /**
-     * Secret of the invite to list
+     * Secret of the invite to list.
      *
      * @generated from field: string secret = 1;
      */
@@ -600,13 +600,13 @@ export type ProjectServiceAddMemberRequest = Message<"metalstack.api.v2.ProjectS
      */
     project: string;
     /**
-     * Login of the member to add
+     * Login of the member to add.
      *
      * @generated from field: string member = 2;
      */
     member: string;
     /**
-     * Role to assign to the new member
+     * Role to assign to the new member.
      *
      * @generated from field: metalstack.api.v2.ProjectRole role = 3;
      */
@@ -743,13 +743,13 @@ export declare const ProjectServiceInviteAcceptRequestSchema: GenMessage<Project
  */
 export type ProjectServiceInviteAcceptResponse = Message<"metalstack.api.v2.ProjectServiceInviteAcceptResponse"> & {
     /**
-     * Project ID of the project joined
+     * Project ID of the project joined.
      *
      * @generated from field: string project = 1;
      */
     project: string;
     /**
-     * ProjectName of the project joined
+     * ProjectName of the project joined.
      *
      * @generated from field: string project_name = 2;
      */
@@ -773,7 +773,7 @@ export type ProjectServiceInviteDeleteRequest = Message<"metalstack.api.v2.Proje
      */
     project: string;
     /**
-     * Secret of the invite to delete
+     * Secret of the invite to delete.
      *
      * @generated from field: string secret = 2;
      */
@@ -932,7 +932,7 @@ export declare const ProjectService: GenService<{
         output: typeof ProjectServiceInvitesListResponseSchema;
     };
     /**
-     * InviteGet get an invite
+     * InviteGet get an invite.
      *
      * @generated from rpc metalstack.api.v2.ProjectService.InviteGet
      */

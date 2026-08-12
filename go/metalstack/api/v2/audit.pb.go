@@ -79,7 +79,7 @@ func (AuditPhase) EnumDescriptor() ([]byte, []int) {
 // AuditTrace is an audit trace.
 type AuditTrace struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the audit trace
+	// Uuid of the audit trace.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Timestamp is the timestamp when the request arrived at the API.
 	Timestamp *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
@@ -99,7 +99,7 @@ type AuditTrace struct {
 	ResultCode *int32 `protobuf:"varint,9,opt,name=result_code,json=resultCode,proto3,oneof" json:"result_code,omitempty"`
 	// Phase represents the phase of the audit trace.
 	Phase AuditPhase `protobuf:"varint,10,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase" json:"phase,omitempty"`
-	// Meta for this audit trace
+	// Meta for this audit trace.
 	Meta          *Meta `protobuf:"bytes,11,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -215,7 +215,7 @@ func (x *AuditTrace) GetMeta() *Meta {
 // AuditQuery is the query for audit traces.
 type AuditQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the audit trace
+	// Uuid of the audit trace.
 	Uuid *string `protobuf:"bytes,2,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
 	// From describes the start of the time window in which to list audit traces. Defaults to the last eight hours.
 	From *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=from,proto3,oneof" json:"from,omitempty"`
@@ -233,7 +233,7 @@ type AuditQuery struct {
 	ResultCode *int32 `protobuf:"varint,9,opt,name=result_code,json=resultCode,proto3,oneof" json:"result_code,omitempty"`
 	// Body is a string providing text-search of the body field.
 	Body *string `protobuf:"bytes,10,opt,name=body,proto3,oneof" json:"body,omitempty"`
-	// Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
+	// Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200).
 	Limit *int32 `protobuf:"varint,11,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
 	// Phase specifies the audit phase.
 	Phase         *AuditPhase `protobuf:"varint,12,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase,oneof" json:"phase,omitempty"`
@@ -351,7 +351,7 @@ func (x *AuditQuery) GetPhase() AuditPhase {
 // AuditServiceListRequest is the request payload for an audit list request.
 type AuditServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login for this tenant
+	// Login for this tenant.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	// Query for audit traces.
 	Query         *AuditQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
@@ -452,9 +452,9 @@ func (x *AuditServiceListResponse) GetTraces() []*AuditTrace {
 // AuditServiceGetRequest is the request payload of a audit get request.
 type AuditServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login for this tenant
+	// Login for this tenant.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Uuid of the audit trace
+	// Uuid of the audit trace.
 	Uuid string `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// Phase specifies the audit phase. Defaults to request.
 	Phase         *AuditPhase `protobuf:"varint,3,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase,oneof" json:"phase,omitempty"`

@@ -32,13 +32,13 @@ export type ComponentServicePingRequest = Message<"metalstack.infra.v2.Component
      */
     startedAt?: Timestamp | undefined;
     /**
-     * Interval at which the ping is scheduled, must be between 5 seconds and 1 hour
+     * Interval at which the ping is scheduled, must be between 5 seconds and 1 hour.
      *
      * @generated from field: google.protobuf.Duration interval = 4;
      */
     interval?: Duration | undefined;
     /**
-     * Version of this service
+     * Version of this service.
      *
      * @generated from field: metalstack.api.v2.Version version = 5;
      */

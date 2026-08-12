@@ -86,7 +86,7 @@ type TenantServiceClient interface {
 	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
 	// RemoveMember removes a member from a tenant.
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
-	// UpdateMember update a member of a tenant
+	// UpdateMember update a member of a tenant.
 	UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error)
 	// Invite a user to a tenant.
 	Invite(context.Context, *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error)
@@ -96,7 +96,7 @@ type TenantServiceClient interface {
 	InviteDelete(context.Context, *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error)
 	// InvitesList list all invites to a tenant.
 	InvitesList(context.Context, *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error)
-	// InviteGet get an invite
+	// InviteGet get an invite.
 	InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error)
 }
 
@@ -360,7 +360,7 @@ type TenantServiceHandler interface {
 	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
 	// RemoveMember removes a member from a tenant.
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
-	// UpdateMember update a member of a tenant
+	// UpdateMember update a member of a tenant.
 	UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error)
 	// Invite a user to a tenant.
 	Invite(context.Context, *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error)
@@ -370,7 +370,7 @@ type TenantServiceHandler interface {
 	InviteDelete(context.Context, *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error)
 	// InvitesList list all invites to a tenant.
 	InvitesList(context.Context, *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error)
-	// InviteGet get an invite
+	// InviteGet get an invite.
 	InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error)
 }
 

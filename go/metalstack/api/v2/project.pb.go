@@ -24,20 +24,20 @@ const (
 )
 
 // Project defines a group of resources belonging to a tenant.
-// a tenant can have multiple projects
+// a tenant can have multiple projects.
 type Project struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of this project
+	// Uuid of this project.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Meta for this project
+	// Meta for this project.
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
-	// Name of this project must be unique per tenant
+	// Name of this project must be unique per tenant.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this project
+	// Description of this project.
 	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	// Tenant this project belongs to
+	// Tenant this project belongs to.
 	Tenant string `protobuf:"bytes,5,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// AvatarUrl of the Project
+	// AvatarUrl of the Project.
 	AvatarUrl     *string `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -126,9 +126,9 @@ type ProjectMember struct {
 	// This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
 	// Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
 	InheritedMembership bool `protobuf:"varint,3,opt,name=inherited_membership,json=inheritedMembership,proto3" json:"inherited_membership,omitempty"`
-	// CreatedAt the date when the member was added to the project
+	// CreatedAt the date when the member was added to the project.
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	// Meta for this project member
+	// Meta for this project member.
 	Meta          *Meta `protobuf:"bytes,5,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -216,9 +216,9 @@ type ProjectInvite struct {
 	Tenant string `protobuf:"bytes,6,opt,name=tenant,proto3" json:"tenant,omitempty"`
 	// TenantName is the name of the tenant inviting another user to join this project.
 	TenantName string `protobuf:"bytes,7,opt,name=tenant_name,json=tenantName,proto3" json:"tenant_name,omitempty"`
-	// ExpiresAt the date when this invite expires
+	// ExpiresAt the date when this invite expires.
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
-	// JoinedAt the date when the member accepted this invite
+	// JoinedAt the date when the member accepted this invite.
 	JoinedAt      *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -533,7 +533,7 @@ type ProjectServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the project.
 	Project *Project `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions
+	// ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
 	ProjectMembers []*ProjectMember `protobuf:"bytes,2,rep,name=project_members,json=projectMembers,proto3" json:"project_members,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
@@ -587,15 +587,15 @@ func (x *ProjectServiceGetResponse) GetProjectMembers() []*ProjectMember {
 type ProjectServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login is the tenant of this project.
-	// TODO: is login really a good name?
+	// TODO: is login really a good name?.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Name of this project, unique per tenant
+	// Name of this project, unique per tenant.
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this project
+	// Description of this project.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// Avatar URL of the project
+	// Avatar URL of the project.
 	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// Labels on the project
+	// Labels on the project.
 	Labels        *Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -811,13 +811,13 @@ type ProjectServiceUpdateRequest struct {
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Name of this project unique per tenant
+	// Name of this project unique per tenant.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this project
+	// Description of this project.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Avatar URL of the project
+	// Avatar URL of the project.
 	AvatarUrl *string `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// Labels on this project
+	// Labels on this project.
 	Labels        *UpdateLabels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -946,7 +946,7 @@ type ProjectServiceInviteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Role of this user in this project
+	// Role of this user in this project.
 	Role          ProjectRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1000,8 +1000,8 @@ func (x *ProjectServiceInviteRequest) GetRole() ProjectRole {
 type ProjectServiceInviteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Inviter contains a secret which can be sent to a potential user.
-	// can be appended to the invitation endpoint at our cloud console like
-	// console.metalstack.cloud/invite/<secret>
+	// can be appended to the invitation endpoint at our cloud console like.
+	// console.metalstack.cloud/invite/<secret.
 	Invite        *ProjectInvite `protobuf:"bytes,1,opt,name=invite,proto3" json:"invite,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1093,7 +1093,7 @@ func (x *ProjectServiceInvitesListRequest) GetProject() string {
 // ProjectServiceInvitesListResponse is the response payload to a list invites request.
 type ProjectServiceInvitesListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Invites not already accepted the invitation to this project
+	// Invites not already accepted the invitation to this project.
 	Invites       []*ProjectInvite `protobuf:"bytes,1,rep,name=invites,proto3" json:"invites,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1139,7 +1139,7 @@ func (x *ProjectServiceInvitesListResponse) GetInvites() []*ProjectInvite {
 // ProjectServiceInviteGetRequest is the request payload to get a invite.
 type ProjectServiceInviteGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Secret of the invite to list
+	// Secret of the invite to list.
 	Secret        string `protobuf:"bytes,1,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1316,9 +1316,9 @@ type ProjectServiceAddMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Login of the member to add
+	// Login of the member to add.
 	Member string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
-	// Role to assign to the new member
+	// Role to assign to the new member.
 	Role          ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1672,9 +1672,9 @@ func (x *ProjectServiceInviteAcceptRequest) GetSecret() string {
 // ProjectServiceInviteAcceptResponse is the response payload to a accept invite request.
 type ProjectServiceInviteAcceptResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project ID of the project joined
+	// Project ID of the project joined.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// ProjectName of the project joined
+	// ProjectName of the project joined.
 	ProjectName   string `protobuf:"bytes,2,opt,name=project_name,json=projectName,proto3" json:"project_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1729,7 +1729,7 @@ type ProjectServiceInviteDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Secret of the invite to delete
+	// Secret of the invite to delete.
 	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

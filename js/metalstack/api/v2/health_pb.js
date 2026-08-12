@@ -40,25 +40,25 @@ export const HealthServiceGetResponseSchema = /*@__PURE__*/ messageDesc(file_met
 export var ServiceStatus;
 (function (ServiceStatus) {
     /**
-     * SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified
+     * SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified.
      *
      * @generated from enum value: SERVICE_STATUS_UNSPECIFIED = 0;
      */
     ServiceStatus[ServiceStatus["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available
+     * SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available.
      *
      * @generated from enum value: SERVICE_STATUS_DEGRADED = 1;
      */
     ServiceStatus[ServiceStatus["DEGRADED"] = 1] = "DEGRADED";
     /**
-     * SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected
+     * SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected.
      *
      * @generated from enum value: SERVICE_STATUS_UNHEALTHY = 2;
      */
     ServiceStatus[ServiceStatus["UNHEALTHY"] = 2] = "UNHEALTHY";
     /**
-     * SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional
+     * SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional.
      *
      * @generated from enum value: SERVICE_STATUS_HEALTHY = 3;
      */
@@ -82,49 +82,49 @@ export var Service;
      */
     Service[Service["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * SERVICE_IPAM the IPAM service
+     * SERVICE_IPAM the IPAM service.
      *
      * @generated from enum value: SERVICE_IPAM = 1;
      */
     Service[Service["IPAM"] = 1] = "IPAM";
     /**
-     * SERVICE_RETHINK the RethinkDB
+     * SERVICE_RETHINK the RethinkDB.
      *
      * @generated from enum value: SERVICE_RETHINK = 2;
      */
     Service[Service["RETHINK"] = 2] = "RETHINK";
     /**
-     * SERVICE_TENANT_APISERVER the tenant-apiserver
+     * SERVICE_TENANT_APISERVER the tenant-apiserver.
      *
      * @generated from enum value: SERVICE_TENANT_APISERVER = 3;
      */
     Service[Service["TENANT_APISERVER"] = 3] = "TENANT_APISERVER";
     /**
-     * SERVICE_MACHINES the machine service
+     * SERVICE_MACHINES the machine service.
      *
      * @generated from enum value: SERVICE_MACHINES = 4;
      */
     Service[Service["MACHINES"] = 4] = "MACHINES";
     /**
-     * SERVICE_AUDIT the auditing
+     * SERVICE_AUDIT the auditing.
      *
      * @generated from enum value: SERVICE_AUDIT = 5;
      */
     Service[Service["AUDIT"] = 5] = "AUDIT";
     /**
-     * SERVICE_VPN the VPN service
+     * SERVICE_VPN the VPN service.
      *
      * @generated from enum value: SERVICE_VPN = 6;
      */
     Service[Service["VPN"] = 6] = "VPN";
     /**
-     * SERVICE_REDIS the Redis service
+     * SERVICE_REDIS the Redis service.
      *
      * @generated from enum value: SERVICE_REDIS = 7;
      */
     Service[Service["REDIS"] = 7] = "REDIS";
     /**
-     * SERVICE_TASKS the tasks service
+     * SERVICE_TASKS the tasks service.
      *
      * @generated from enum value: SERVICE_TASKS = 8;
      */

@@ -50,7 +50,7 @@ export declare const ImageServiceCreateResponseSchema: GenMessage<ImageServiceCr
  */
 export type ImageServiceUpdateRequest = Message<"metalstack.admin.v2.ImageServiceUpdateRequest"> & {
     /**
-     * Id of this image
+     * Id of this image.
      *
      * @generated from field: string id = 1;
      */
@@ -62,31 +62,31 @@ export type ImageServiceUpdateRequest = Message<"metalstack.admin.v2.ImageServic
      */
     updateMeta?: UpdateMeta | undefined;
     /**
-     * URL where this image is located
+     * URL where this image is located.
      *
      * @generated from field: optional string url = 3;
      */
     url?: string | undefined;
     /**
-     * Name of this image
+     * Name of this image.
      *
      * @generated from field: optional string name = 4;
      */
     name?: string | undefined;
     /**
-     * Description of this image
+     * Description of this image.
      *
      * @generated from field: optional string description = 5;
      */
     description?: string | undefined;
     /**
-     * Features of this image
+     * Features of this image.
      *
      * @generated from field: repeated metalstack.api.v2.ImageFeature features = 6;
      */
     features: ImageFeature[];
     /**
-     * Classification of this image
+     * Classification of this image.
      *
      * @generated from field: metalstack.api.v2.ImageClassification classification = 7;
      */
@@ -98,7 +98,7 @@ export type ImageServiceUpdateRequest = Message<"metalstack.admin.v2.ImageServic
      */
     expiresAt?: Timestamp | undefined;
     /**
-     * Labels to update on this image
+     * Labels to update on this image.
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 9;
      */
@@ -134,7 +134,7 @@ export declare const ImageServiceUpdateResponseSchema: GenMessage<ImageServiceUp
  */
 export type ImageServiceDeleteRequest = Message<"metalstack.admin.v2.ImageServiceDeleteRequest"> & {
     /**
-     * ID of the image to delete
+     * ID of the image to delete.
      *
      * @generated from field: string id = 1;
      */

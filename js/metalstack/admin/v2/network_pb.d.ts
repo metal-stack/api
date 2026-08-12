@@ -13,7 +13,7 @@ export declare const file_metalstack_admin_v2_network: GenFile;
  */
 export type NetworkServiceGetRequest = Message<"metalstack.admin.v2.NetworkServiceGetRequest"> & {
     /**
-     * ID of the network to get
+     * ID of the network to get.
      *
      * @generated from field: string id = 1;
      */
@@ -49,19 +49,19 @@ export declare const NetworkServiceGetResponseSchema: GenMessage<NetworkServiceG
  */
 export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkServiceCreateRequest"> & {
     /**
-     * Id of this network
+     * Id of this network.
      *
      * @generated from field: optional string id = 1;
      */
     id?: string | undefined;
     /**
-     * Name of this network
+     * Name of this network.
      *
      * @generated from field: optional string name = 2;
      */
     name?: string | undefined;
     /**
-     * Description of this network
+     * Description of this network.
      *
      * @generated from field: optional string description = 3;
      */
@@ -79,25 +79,25 @@ export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkSe
      */
     project?: string | undefined;
     /**
-     * Type of the network to create
+     * Type of the network to create.
      *
      * @generated from field: metalstack.api.v2.NetworkType type = 6;
      */
     type: NetworkType;
     /**
-     * Labels on this network
+     * Labels on this network.
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 7;
      */
     labels?: Labels | undefined;
     /**
-     * Prefixes in this network
+     * Prefixes in this network.
      *
      * @generated from field: repeated string prefixes = 8;
      */
     prefixes: string[];
     /**
-     * Destination Prefixes in this network
+     * Destination Prefixes in this network.
      *
      * @generated from field: repeated string destination_prefixes = 9;
      */
@@ -115,13 +115,13 @@ export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkSe
      */
     minChildPrefixLength?: ChildPrefixLength | undefined;
     /**
-     * NATType of this network
+     * NATType of this network.
      *
      * @generated from field: optional metalstack.api.v2.NATType nat_type = 12;
      */
     natType?: NATType | undefined;
     /**
-     * VRF of this network has this VNI
+     * VRF of this network has this VNI.
      *
      * @generated from field: optional uint32 vrf = 13;
      */
@@ -139,13 +139,13 @@ export type NetworkServiceCreateRequest = Message<"metalstack.admin.v2.NetworkSe
      */
     additionalAnnouncableCidrs: string[];
     /**
-     * Length per addressfamily
+     * Length per addressfamily.
      *
      * @generated from field: optional metalstack.api.v2.ChildPrefixLength length = 16;
      */
     length?: ChildPrefixLength | undefined;
     /**
-     * AddressFamily to create, defaults to the same as the parent
+     * AddressFamily to create, defaults to the same as the parent.
      *
      * @generated from field: optional metalstack.api.v2.NetworkAddressFamily address_family = 17;
      */
@@ -163,7 +163,7 @@ export declare const NetworkServiceCreateRequestSchema: GenMessage<NetworkServic
  */
 export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkServiceUpdateRequest"> & {
     /**
-     * Id of this network
+     * Id of this network.
      *
      * @generated from field: string id = 1;
      */
@@ -175,31 +175,31 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkSe
      */
     updateMeta?: UpdateMeta | undefined;
     /**
-     * Name of this network
+     * Name of this network.
      *
      * @generated from field: optional string name = 3;
      */
     name?: string | undefined;
     /**
-     * Description of this network
+     * Description of this network.
      *
      * @generated from field: optional string description = 4;
      */
     description?: string | undefined;
     /**
-     * Labels to update on this network
+     * Labels to update on this network.
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 5;
      */
     labels?: UpdateLabels | undefined;
     /**
-     * Prefixes in this network
+     * Prefixes in this network.
      *
      * @generated from field: repeated string prefixes = 6;
      */
     prefixes: string[];
     /**
-     * Destination Prefixes in this network
+     * Destination Prefixes in this network.
      *
      * @generated from field: repeated string destination_prefixes = 7;
      */
@@ -217,7 +217,7 @@ export type NetworkServiceUpdateRequest = Message<"metalstack.admin.v2.NetworkSe
      */
     minChildPrefixLength?: ChildPrefixLength | undefined;
     /**
-     * NATType of this network
+     * NATType of this network.
      *
      * @generated from field: optional metalstack.api.v2.NATType nat_type = 10;
      */
@@ -247,7 +247,7 @@ export declare const NetworkServiceUpdateRequestSchema: GenMessage<NetworkServic
  */
 export type NetworkServiceDeleteRequest = Message<"metalstack.admin.v2.NetworkServiceDeleteRequest"> & {
     /**
-     * ID of the network to get
+     * ID of the network to get.
      *
      * @generated from field: string id = 1;
      */

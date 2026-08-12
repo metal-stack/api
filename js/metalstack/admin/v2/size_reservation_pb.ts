@@ -67,21 +67,21 @@ export const SizeReservationServiceCreateResponseSchema: GenMessage<SizeReservat
  */
 export type SizeReservationServiceUpdateRequest = Message<"metalstack.admin.v2.SizeReservationServiceUpdateRequest"> & {
   /**
-   * Id of this size reservation
+   * Id of this size reservation.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Name of this size reservation
+   * Name of this size reservation.
    *
    * @generated from field: optional string name = 2;
    */
   name?: string | undefined;
 
   /**
-   * Description of this size reservation
+   * Description of this size reservation.
    *
    * @generated from field: optional string description = 3;
    */
@@ -95,21 +95,21 @@ export type SizeReservationServiceUpdateRequest = Message<"metalstack.admin.v2.S
   updateMeta?: UpdateMeta | undefined;
 
   /**
-   * Partition ids of this size reservation
+   * Partition ids of this size reservation.
    *
    * @generated from field: repeated string partitions = 5;
    */
   partitions: string[];
 
   /**
-   * Amount of reservations of this size reservation
+   * Amount of reservations of this size reservation.
    *
    * @generated from field: optional int32 amount = 6;
    */
   amount?: number | undefined;
 
   /**
-   * Labels to update of this size reservation
+   * Labels to update of this size reservation.
    *
    * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 7;
    */
@@ -151,7 +151,7 @@ export const SizeReservationServiceUpdateResponseSchema: GenMessage<SizeReservat
  */
 export type SizeReservationServiceDeleteRequest = Message<"metalstack.admin.v2.SizeReservationServiceDeleteRequest"> & {
   /**
-   * ID of the size reservation to delete
+   * ID of the size reservation to delete.
    *
    * @generated from field: string id = 1;
    */

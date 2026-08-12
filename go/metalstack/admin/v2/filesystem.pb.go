@@ -118,25 +118,25 @@ func (x *FilesystemServiceCreateResponse) GetFilesystemLayout() *v2.FilesystemLa
 // FilesystemServiceUpdateRequest is the request payload for updating a filesystem.
 type FilesystemServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id of this filesystemLayout
+	// Id of this filesystemLayout.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Name of this filesystemLayout
+	// Name of this filesystemLayout.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this filesystemLayout
+	// Description of this filesystemLayout.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// Filesystems is a list of filesystems to create on a machine.
 	Filesystems []*v2.Filesystem `protobuf:"bytes,5,rep,name=filesystems,proto3" json:"filesystems,omitempty"`
 	// Disks list of disks that belong to this layout.
 	Disks []*v2.Disk `protobuf:"bytes,6,rep,name=disks,proto3" json:"disks,omitempty"`
-	// Raid arrays to create
+	// Raid arrays to create.
 	Raid []*v2.Raid `protobuf:"bytes,7,rep,name=raid,proto3" json:"raid,omitempty"`
 	// VolumeGroups list of volumegroups to create.
 	VolumeGroups []*v2.VolumeGroup `protobuf:"bytes,8,rep,name=volume_groups,json=volumeGroups,proto3" json:"volume_groups,omitempty"`
 	// LogicalVolumes list of logicalvolumes to create.
 	LogicalVolumes []*v2.LogicalVolume `protobuf:"bytes,9,rep,name=logical_volumes,json=logicalVolumes,proto3" json:"logical_volumes,omitempty"`
-	// Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
+	// Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts.
 	Constraints   *v2.FilesystemLayoutConstraints `protobuf:"bytes,10,opt,name=constraints,proto3" json:"constraints,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -291,7 +291,7 @@ func (x *FilesystemServiceUpdateResponse) GetFilesystemLayout() *v2.FilesystemLa
 // FilesystemServiceDeleteRequest is the request payload for deleting a filesystem.
 type FilesystemServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ID of the filesystem to delete
+	// ID of the filesystem to delete.
 	Id            string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -380,11 +380,11 @@ func (x *FilesystemServiceDeleteResponse) GetFilesystemLayout() *v2.FilesystemLa
 	return nil
 }
 
-// FilesystemServiceMatchRequest
+// FilesystemServiceMatchRequest.
 type FilesystemServiceMatchRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Match size and image to a filesystem layout.
-	// or match a machine to a filesystem layout
+	// or match a machine to a filesystem layout.
 	//
 	// Types that are valid to be assigned to Match:
 	//
@@ -455,12 +455,12 @@ type isFilesystemServiceMatchRequest_Match interface {
 }
 
 type FilesystemServiceMatchRequest_SizeAndImage struct {
-	// SizeAndImage
+	// SizeAndImage.
 	SizeAndImage *MatchImageAndSize `protobuf:"bytes,1,opt,name=size_and_image,json=sizeAndImage,proto3,oneof"`
 }
 
 type FilesystemServiceMatchRequest_MachineAndFilesystemlayout struct {
-	// MachineAndFilesystemlayout
+	// MachineAndFilesystemlayout.
 	MachineAndFilesystemlayout *MatchMachineAndFilesystemLayout `protobuf:"bytes,2,opt,name=machine_and_filesystemlayout,json=machineAndFilesystemlayout,proto3,oneof"`
 }
 
@@ -469,12 +469,12 @@ func (*FilesystemServiceMatchRequest_SizeAndImage) isFilesystemServiceMatchReque
 func (*FilesystemServiceMatchRequest_MachineAndFilesystemlayout) isFilesystemServiceMatchRequest_Match() {
 }
 
-// MatchImageAndSize
+// MatchImageAndSize.
 type MatchImageAndSize struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size, machine size to try
+	// Size, machine size to try.
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
-	// Image machine image to try
+	// Image machine image to try.
 	Image         string `protobuf:"bytes,2,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -524,12 +524,12 @@ func (x *MatchImageAndSize) GetImage() string {
 	return ""
 }
 
-// MatchMachineAndFilesystemLayout
+// MatchMachineAndFilesystemLayout.
 type MatchMachineAndFilesystemLayout struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Machine to check
+	// Machine to check.
 	Machine string `protobuf:"bytes,1,opt,name=machine,proto3" json:"machine,omitempty"`
-	// FilesystemLayout to check
+	// FilesystemLayout to check.
 	FilesystemLayout string `protobuf:"bytes,2,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
@@ -579,10 +579,10 @@ func (x *MatchMachineAndFilesystemLayout) GetFilesystemLayout() string {
 	return ""
 }
 
-// FilesystemServiceMatchResponse
+// FilesystemServiceMatchResponse.
 type FilesystemServiceMatchResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// FilesystemLayout the filesystemlayout
+	// FilesystemLayout the filesystemlayout.
 	FilesystemLayout *v2.FilesystemLayout `protobuf:"bytes,1,opt,name=filesystem_layout,json=filesystemLayout,proto3" json:"filesystem_layout,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache

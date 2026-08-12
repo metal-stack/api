@@ -182,9 +182,9 @@ func (x *WaitForBMCCommandRequest) GetPartition() string {
 // WaitForBMCCommandResponse is the response payload for waiting for a BMC command.
 type WaitForBMCCommandResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to send the command to
+	// UUID of the machine to send the command to.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// BmcCommand to execute against the BMC of the machine
+	// BmcCommand to execute against the BMC of the machine.
 	BmcCommand v2.MachineBMCCommand `protobuf:"varint,2,opt,name=bmc_command,json=bmcCommand,proto3,enum=metalstack.api.v2.MachineBMCCommand" json:"bmc_command,omitempty"`
 	// MachineBmc contains connection details of the machine to issue the BMC command to.
 	MachineBmc *v2.MachineBMC `protobuf:"bytes,3,opt,name=machine_bmc,json=machineBmc,proto3" json:"machine_bmc,omitempty"`
@@ -259,7 +259,7 @@ type BMCCommandDoneRequest struct {
 	// CommandId is a unique ID which must be sent back after execution.
 	// It is usually in the form: <machine-uuid>:machine-bmc-command.
 	CommandId string `protobuf:"bytes,1,opt,name=command_id,json=commandId,proto3" json:"command_id,omitempty"`
-	// Error of the command execution, nil if it was successful
+	// Error of the command execution, nil if it was successful.
 	Error         *string `protobuf:"bytes,2,opt,name=error,proto3,oneof" json:"error,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

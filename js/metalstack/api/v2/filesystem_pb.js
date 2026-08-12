@@ -70,7 +70,7 @@ export const VolumeGroupSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v
  */
 export const LogicalVolumeSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_filesystem, 11);
 /**
- * LVMType
+ * LVMType.
  *
  * @generated from enum metalstack.api.v2.LVMType
  */
@@ -83,19 +83,19 @@ export var LVMType;
      */
     LVMType[LVMType["LVM_TYPE_UNSPECIFIED"] = 0] = "LVM_TYPE_UNSPECIFIED";
     /**
-     * LVM_TYPE_LINEAR append across all physical volumes
+     * LVM_TYPE_LINEAR append across all physical volumes.
      *
      * @generated from enum value: LVM_TYPE_LINEAR = 1;
      */
     LVMType[LVMType["LVM_TYPE_LINEAR"] = 1] = "LVM_TYPE_LINEAR";
     /**
-     * LVM_TYPE_STRIPED stripe across all physical volumes
+     * LVM_TYPE_STRIPED stripe across all physical volumes.
      *
      * @generated from enum value: LVM_TYPE_STRIPED = 2;
      */
     LVMType[LVMType["LVM_TYPE_STRIPED"] = 2] = "LVM_TYPE_STRIPED";
     /**
-     * LVM_TYPE_RAID1 mirror with raid across all physical volumes
+     * LVM_TYPE_RAID1 mirror with raid across all physical volumes.
      *
      * @generated from enum value: LVM_TYPE_RAID1 = 3;
      */
@@ -113,7 +113,7 @@ export const LVMTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_files
 export var Format;
 (function (Format) {
     /**
-     * FORMAT_UNSPECIFIED
+     * FORMAT_UNSPECIFIED.
      *
      * @generated from enum value: FORMAT_UNSPECIFIED = 0;
      */
@@ -149,7 +149,7 @@ export var Format;
      */
     Format[Format["TMPFS"] = 5] = "TMPFS";
     /**
-     * FORMAT_NONE
+     * FORMAT_NONE.
      *
      * @generated from enum value: FORMAT_NONE = 6;
      */
@@ -173,25 +173,25 @@ export var GPTType;
      */
     GPTType[GPTType["GPT_TYPE_UNSPECIFIED"] = 0] = "GPT_TYPE_UNSPECIFIED";
     /**
-     * GPT_TYPE_BOOT EFI Boot Partition
+     * GPT_TYPE_BOOT EFI Boot Partition.
      *
      * @generated from enum value: GPT_TYPE_BOOT = 1;
      */
     GPTType[GPTType["GPT_TYPE_BOOT"] = 1] = "GPT_TYPE_BOOT";
     /**
-     * GPT_TYPE_LINUX Linux Partition
+     * GPT_TYPE_LINUX Linux Partition.
      *
      * @generated from enum value: GPT_TYPE_LINUX = 2;
      */
     GPTType[GPTType["GPT_TYPE_LINUX"] = 2] = "GPT_TYPE_LINUX";
     /**
-     * GPT_TYPE_LINUX_RAID Linux Raid Partition
+     * GPT_TYPE_LINUX_RAID Linux Raid Partition.
      *
      * @generated from enum value: GPT_TYPE_LINUX_RAID = 3;
      */
     GPTType[GPTType["GPT_TYPE_LINUX_RAID"] = 3] = "GPT_TYPE_LINUX_RAID";
     /**
-     * GPT_TYPE_LINUX_LVM Linux LVM Partition
+     * GPT_TYPE_LINUX_LVM Linux LVM Partition.
      *
      * @generated from enum value: GPT_TYPE_LINUX_LVM = 4;
      */

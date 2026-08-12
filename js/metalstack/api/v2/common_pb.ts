@@ -23,7 +23,7 @@ export const file_metalstack_api_v2_common: GenFile = /*@__PURE__*/
  */
 export type Paging = Message<"metalstack.api.v2.Paging"> & {
   /**
-   * Page is used for pagination, if unset only the first page is returned,
+   * Page is used for pagination, if unset only the first page is returned,.
    * the list response contains then the page number for the next page.
    *
    * @generated from field: optional uint64 page = 1;
@@ -52,7 +52,7 @@ export const PagingSchema: GenMessage<Paging> = /*@__PURE__*/
  */
 export type Labels = Message<"metalstack.api.v2.Labels"> & {
   /**
-   * Labels consists labels
+   * Labels consists labels.
    *
    * @generated from field: map<string, string> labels = 1;
    */
@@ -67,13 +67,13 @@ export const LabelsSchema: GenMessage<Labels> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_common, 1);
 
 /**
- * Meta of a message
+ * Meta of a message.
  *
  * @generated from message metalstack.api.v2.Meta
  */
 export type Meta = Message<"metalstack.api.v2.Meta"> & {
   /**
-   * Tags on this entity
+   * Tags on this entity.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 1;
    */
@@ -88,7 +88,7 @@ export type Meta = Message<"metalstack.api.v2.Meta"> & {
 
   /**
    * UpdatedAt is the date when this entity was updated.
-   * must be part of the update request to ensure optimistic locking
+   * must be part of the update request to ensure optimistic locking.
    *
    * @generated from field: google.protobuf.Timestamp updated_at = 3;
    */
@@ -130,7 +130,7 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
    */
   strategy: {
     /**
-     * Replace existing labels with the given ones
+     * Replace existing labels with the given ones.
      *
      * @generated from field: metalstack.api.v2.Labels replace = 1;
      */
@@ -190,14 +190,14 @@ export const LabelsPatchSchema: GenMessage<LabelsPatch> = /*@__PURE__*/
 export type UpdateMeta = Message<"metalstack.api.v2.UpdateMeta"> & {
   /**
    * UpdatedAt is the date when this entity was updated.
-   * must be part of the update request to ensure optimistic locking
+   * Must be part of the update request to ensure optimistic locking.
    *
    * @generated from field: google.protobuf.Timestamp updated_at = 1;
    */
   updatedAt?: Timestamp | undefined;
 
   /**
-   * LockingStrategy to be used for this update request
+   * LockingStrategy to be used for this update request.
    *
    * @generated from field: metalstack.api.v2.OptimisticLockingStrategy locking_strategy = 2;
    */
@@ -225,28 +225,28 @@ export enum TenantRole {
   UNSPECIFIED = 0,
 
   /**
-   * TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method
+   * TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method.
    *
    * @generated from enum value: TENANT_ROLE_OWNER = 1;
    */
   OWNER = 1,
 
   /**
-   * TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+   * TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method.
    *
    * @generated from enum value: TENANT_ROLE_EDITOR = 2;
    */
   EDITOR = 2,
 
   /**
-   * TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+   * TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
    *
    * @generated from enum value: TENANT_ROLE_VIEWER = 3;
    */
   VIEWER = 3,
 
   /**
-   * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
+   * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method.
    * The guest role is assumed by users who are invited to a tenant's project without them.
    * having a direct membership within the tenant.
    *
@@ -275,21 +275,21 @@ export enum ProjectRole {
   UNSPECIFIED = 0,
 
   /**
-   * PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method
+   * PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method.
    *
    * @generated from enum value: PROJECT_ROLE_OWNER = 1;
    */
   OWNER = 1,
 
   /**
-   * PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+   * PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method.
    *
    * @generated from enum value: PROJECT_ROLE_EDITOR = 2;
    */
   EDITOR = 2,
 
   /**
-   * PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+   * PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
    *
    * @generated from enum value: PROJECT_ROLE_VIEWER = 3;
    */
@@ -316,14 +316,14 @@ export enum AdminRole {
   UNSPECIFIED = 0,
 
   /**
-   * ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method
+   * ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method.
    *
    * @generated from enum value: ADMIN_ROLE_EDITOR = 1;
    */
   EDITOR = 1,
 
   /**
-   * ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+   * ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
    *
    * @generated from enum value: ADMIN_ROLE_VIEWER = 2;
    */
@@ -350,14 +350,14 @@ export enum InfraRole {
   UNSPECIFIED = 0,
 
   /**
-   * INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method
+   * INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method.
    *
    * @generated from enum value: INFRA_ROLE_EDITOR = 1;
    */
   EDITOR = 1,
 
   /**
-   * INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method
+   * INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method.
    *
    * @generated from enum value: INFRA_ROLE_VIEWER = 2;
    */
@@ -384,14 +384,14 @@ export enum MachineRole {
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method
+   * MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method.
    *
    * @generated from enum value: MACHINE_ROLE_EDITOR = 1;
    */
   EDITOR = 1,
 
   /**
-   * MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method
+   * MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method.
    *
    * @generated from enum value: MACHINE_ROLE_VIEWER = 2;
    */
@@ -405,7 +405,7 @@ export const MachineRoleSchema: GenEnum<MachineRole> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_common, 4);
 
 /**
- * Visibility of a method
+ * Visibility of a method.
  *
  * @generated from enum metalstack.api.v2.Visibility
  */
@@ -425,7 +425,7 @@ export enum Visibility {
   PUBLIC = 1,
 
   /**
-   * VISIBILITY_SELF restricts calls to the authenticated user only
+   * VISIBILITY_SELF restricts calls to the authenticated user only.
    *
    * @generated from enum value: VISIBILITY_SELF = 2;
    */
@@ -439,9 +439,9 @@ export const VisibilitySchema: GenEnum<Visibility> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_common, 5);
 
 /**
- * Auditing option specified per service method
- * by default all service methods are included
- * add the auditing option if you want to exclude a method in auditing
+ * Auditing option specified per service method.
+ * By default all service methods are included.
+ * Add the auditing option if you want to exclude a method in auditing.
  *
  * @generated from enum metalstack.api.v2.Auditing
  */
@@ -454,14 +454,14 @@ export enum Auditing {
   UNSPECIFIED = 0,
 
   /**
-   * AUDITING_INCLUDED if a method is annotated with this, all calls are audited
+   * AUDITING_INCLUDED if a method is annotated with this, all calls are audited.
    *
    * @generated from enum value: AUDITING_INCLUDED = 1;
    */
   INCLUDED = 1,
 
   /**
-   * AUDITING_EXCLUDED if a method is annotated with this, no calls are audited
+   * AUDITING_EXCLUDED if a method is annotated with this, no calls are audited.
    *
    * @generated from enum value: AUDITING_EXCLUDED = 2;
    */
@@ -476,28 +476,28 @@ export const AuditingSchema: GenEnum<Auditing> = /*@__PURE__*/
 
 /**
  * OptimisticLockingStrategy defines how optimistic locking should be handled.
- * It defaults to client side, which requires the UpdatedAt timestamp to be provided
+ * It defaults to client side, which requires the UpdatedAt timestamp to be provided.
  *
  * @generated from enum metalstack.api.v2.OptimisticLockingStrategy
  */
 export enum OptimisticLockingStrategy {
   /**
-   * OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side
+   * OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side.
    *
    * @generated from enum value: OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified
+   * OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified.
    *
    * @generated from enum value: OPTIMISTIC_LOCKING_STRATEGY_CLIENT = 1;
    */
   CLIENT = 1,
 
   /**
-   * OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt
-   * and fetches the most recent entity before updating with the given values with the update request
+   * OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt.
+   * and fetches the most recent entity before updating with the given values with the update request.
    *
    * @generated from enum value: OPTIMISTIC_LOCKING_STRATEGY_SERVER = 2;
    */
@@ -567,7 +567,7 @@ export const machine_roles: GenExtension<MethodOptions, MachineRole[]> = /*@__PU
   extDesc(file_metalstack_api_v2_common, 6);
 
 /**
- * StringValue which can be set to a enum
+ * StringValue which can be set to a enum.
  *
  * @generated from extension: string enum_string_value = 52000;
  */
