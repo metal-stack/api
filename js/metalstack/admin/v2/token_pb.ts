@@ -24,7 +24,7 @@ export const file_metalstack_admin_v2_token: GenFile = /*@__PURE__*/
  */
 export type TokenServiceListRequest = Message<"metalstack.admin.v2.TokenServiceListRequest"> & {
   /**
-   * Query for tokens
+   * Query for tokens.
    *
    * @generated from field: metalstack.api.v2.TokenQuery query = 1;
    */
@@ -45,7 +45,7 @@ export const TokenServiceListRequestSchema: GenMessage<TokenServiceListRequest> 
  */
 export type TokenServiceListResponse = Message<"metalstack.admin.v2.TokenServiceListResponse"> & {
   /**
-   * Tokens contains the list of tokens
+   * Tokens contains the list of tokens.
    *
    * @generated from field: repeated metalstack.api.v2.Token tokens = 1;
    */
@@ -66,14 +66,14 @@ export const TokenServiceListResponseSchema: GenMessage<TokenServiceListResponse
  */
 export type TokenServiceRevokeRequest = Message<"metalstack.admin.v2.TokenServiceRevokeRequest"> & {
   /**
-   * Uuid is the uuid of the token which should be revoked
+   * Uuid is the uuid of the token which should be revoked.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * User is the id of the user for which the token should be revoked
+   * User is the id of the user for which the token should be revoked.
    *
    * @generated from field: string user = 2;
    */
@@ -137,14 +137,14 @@ export const TokenServiceCreateRequestSchema: GenMessage<TokenServiceCreateReque
  */
 export type TokenServiceCreateResponse = Message<"metalstack.admin.v2.TokenServiceCreateResponse"> & {
   /**
-   * Token contains the created token
+   * Token contains the created token.
    *
    * @generated from field: metalstack.api.v2.Token token = 1;
    */
   token?: Token | undefined;
 
   /**
-   * Secret is the body if the JWT token, should be used in API requests as bearer token
+   * Secret is the body if the JWT token, should be used in API requests as bearer token.
    *
    * @generated from field: string secret = 2;
    */

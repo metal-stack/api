@@ -27,7 +27,7 @@ const (
 // ImageServiceCreateRequest is the request payload for creating an image.
 type ImageServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image is the image to create
+	// Image is the image to create.
 	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -73,7 +73,7 @@ func (x *ImageServiceCreateRequest) GetImage() *v2.Image {
 // ImageServiceCreateResponse is the response payload for creating an image.
 type ImageServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image contains the created image
+	// Image contains the created image.
 	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -121,7 +121,7 @@ type ImageServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of this image
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// URL where this image is located
 	Url *string `protobuf:"bytes,3,opt,name=url,proto3,oneof" json:"url,omitempty"`
@@ -133,7 +133,7 @@ type ImageServiceUpdateRequest struct {
 	Features []v2.ImageFeature `protobuf:"varint,6,rep,packed,name=features,proto3,enum=metalstack.api.v2.ImageFeature" json:"features,omitempty"`
 	// Classification of this image
 	Classification v2.ImageClassification `protobuf:"varint,7,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification" json:"classification,omitempty"`
-	// ExpiresAt indicates that usage is not possible after this date
+	// ExpiresAt indicates that usage is not possible after this date.
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	// Labels to update on this image
 	Labels        *v2.UpdateLabels `protobuf:"bytes,9,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
@@ -237,7 +237,7 @@ func (x *ImageServiceUpdateRequest) GetLabels() *v2.UpdateLabels {
 // ImageServiceUpdateResponse is the response payload for updating an image.
 type ImageServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image contains the updated image
+	// Image contains the updated image.
 	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -329,7 +329,7 @@ func (x *ImageServiceDeleteRequest) GetId() string {
 // ImageServiceDeleteResponse is the response payload for deleting an image.
 type ImageServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Image contains the deleted image
+	// Image contains the deleted image.
 	Image         *v2.Image `protobuf:"bytes,1,opt,name=image,proto3" json:"image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -375,7 +375,7 @@ func (x *ImageServiceDeleteResponse) GetImage() *v2.Image {
 // ImageServiceUsageRequest is the request payload for getting image usage.
 type ImageServiceUsageRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for which images the usage should be reported
+	// Query for which images the usage should be reported.
 	Query         *v2.ImageQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -421,7 +421,7 @@ func (x *ImageServiceUsageRequest) GetQuery() *v2.ImageQuery {
 // ImageServiceUsageResponse is the response payload for getting image usage.
 type ImageServiceUsageResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Images contains usage information
+	// Images contains usage information.
 	ImageUsage    []*v2.ImageUsage `protobuf:"bytes,1,rep,name=image_usage,json=imageUsage,proto3" json:"image_usage,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

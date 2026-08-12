@@ -126,20 +126,20 @@ export const TokenServiceRefreshResponseSchema = /*@__PURE__*/ messageDesc(file_
  */
 export const TokenQuerySchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_token, 22);
 /**
- * TokenType specifies different use cases of tokens
+ * TokenType specifies different use cases of tokens.
  *
  * @generated from enum metalstack.api.v2.TokenType
  */
 export var TokenType;
 (function (TokenType) {
     /**
-     * TOKEN_TYPE_UNSPECIFIED is not specified
+     * TOKEN_TYPE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: TOKEN_TYPE_UNSPECIFIED = 0;
      */
     TokenType[TokenType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * TOKEN_TYPE_API is a token for api usage
+     * TOKEN_TYPE_API is a token for api usage.
      *
      * @generated from enum value: TOKEN_TYPE_API = 1;
      */

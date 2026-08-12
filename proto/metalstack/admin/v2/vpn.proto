@@ -29,12 +29,12 @@ service VPNService {
 message VPNServiceAuthKeyRequest {
   // Project for which a VPN authentication key should be generated
   string project = 1 [(buf.validate.field).string.uuid = true];
-  // Ephemeral defines if the authentication key should be ephemeral
+  // Ephemeral defines if the authentication key should be ephemeral.
   bool ephemeral = 2;
-  // Expires defines the duration after which the authentication key expires
+  // Expires defines the duration after which the authentication key expires.
   google.protobuf.Duration expires = 3;
-  // Reason must be provided why access to the VPN is requested
-  // Reason is only forwarded to an audit sink
+  // Reason must be provided why access to the VPN is requested.
+  // Reason is only forwarded to an audit sink.
   string reason = 4 [
     (buf.validate.field).string.min_len = 10,
     (buf.validate.field).string.max_len = 512
@@ -43,12 +43,12 @@ message VPNServiceAuthKeyRequest {
 
 // VPNServiceAuthKeyResponse is the response payload for generating a VPN authentication key.
 message VPNServiceAuthKeyResponse {
-  // Address is the address of the VPN control plane
+  // Address is the address of the VPN control plane.
   string address = 1;
-  // AuthKey is the key to connect to the VPN at the given address
-  // This key can only be seen once
+  // AuthKey is the key to connect to the VPN at the given address.
+  // This key can only be seen once.
   string auth_key = 2;
-  // Ephemeral defines if the authentication key should be ephemeral
+  // Ephemeral defines if the authentication key should be ephemeral.
   bool ephemeral = 3;
   // ExpiresAt this key cannot be used after this timestamp
   google.protobuf.Timestamp expires_at = 4;
@@ -58,7 +58,7 @@ message VPNServiceAuthKeyResponse {
 
 // VPNServiceListNodesRequest is the request payload for listing VPN nodes.
 message VPNServiceListNodesRequest {
-  // Project filters nodes by this project
+  // Project filters nodes by this project.
   optional string project = 1;
 }
 

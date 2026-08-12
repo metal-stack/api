@@ -23,20 +23,20 @@ export const file_metalstack_api_v2_component: GenFile = /*@__PURE__*/
   fileDesc("CiFtZXRhbHN0YWNrL2FwaS92Mi9jb21wb25lbnQucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIokDCglDb21wb25lbnQSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESOAoEdHlwZRgCIAEoDjIgLm1ldGFsc3RhY2suYXBpLnYyLkNvbXBvbmVudFR5cGVCCLpIBYIBAhABEh8KCmlkZW50aWZpZXIYAyABKAlCC7pICHIGwLOusQIBEi4KCnN0YXJ0ZWRfYXQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi8KC3JlcG9ydGVkX2F0GAUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIrCghpbnRlcnZhbBgGIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbhIrCgd2ZXJzaW9uGAcgASgLMhoubWV0YWxzdGFjay5hcGkudjIuVmVyc2lvbhInCgV0b2tlbhgIIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLlRva2VuEiUKBG1ldGEYCSABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhIrMBCg5Db21wb25lbnRRdWVyeRIbCgR1dWlkGAEgASgJQgi6SAVyA7ABAUgAiAEBEj0KBHR5cGUYAiABKA4yIC5tZXRhbHN0YWNrLmFwaS52Mi5Db21wb25lbnRUeXBlQgi6SAWCAQIQAUgBiAEBEiQKCmlkZW50aWZpZXIYAyABKAlCC7pICHIGwLOusQIBSAKIAQFCBwoFX3V1aWRCBwoFX3R5cGVCDQoLX2lkZW50aWZpZXIqjAMKDUNvbXBvbmVudFR5cGUSLwoaQ09NUE9ORU5UX1RZUEVfVU5TUEVDSUZJRUQQABoPgrIZC3Vuc3BlY2lmaWVkEisKGENPTVBPTkVOVF9UWVBFX1BJWElFQ09SRRABGg2CshkJcGl4aWVjb3JlEi0KGUNPTVBPTkVOVF9UWVBFX01FVEFMX0NPUkUQAhoOgrIZCm1ldGFsLWNvcmUSKwoYQ09NUE9ORU5UX1RZUEVfTUVUQUxfQk1DEAMaDYKyGQltZXRhbC1ibWMSRQolQ09NUE9ORU5UX1RZUEVfTUVUQUxfSU1BR0VfQ0FDSEVfU1lOQxAEGhqCshkWbWV0YWwtaW1hZ2UtY2FjaGUtc3luYxIzChxDT01QT05FTlRfVFlQRV9NRVRBTF9DT05TT0xFEAUaEYKyGQ1tZXRhbC1jb25zb2xlEkUKJUNPTVBPTkVOVF9UWVBFX01FVEFMX01FVFJJQ1NfRVhQT1JURVIQBhoagrIZFm1ldGFsLW1ldHJpY3MtZXhwb3J0ZXJCxAEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkIOQ29tcG9uZW50UHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_token, file_metalstack_api_v2_version]);
 
 /**
- * Component represents a microservice connected to our apiserver
+ * Component represents a microservice connected to our apiserver.
  *
  * @generated from message metalstack.api.v2.Component
  */
 export type Component = Message<"metalstack.api.v2.Component"> & {
   /**
-   * UUID identifies this component event
+   * UUID identifies this component event.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Type defines which service is actually pinging
+   * Type defines which service is actually pinging.
    *
    * @generated from field: metalstack.api.v2.ComponentType type = 2;
    */
@@ -51,7 +51,7 @@ export type Component = Message<"metalstack.api.v2.Component"> & {
   identifier: string;
 
   /**
-   * StartedAt is the timestamp this service was started
+   * StartedAt is the timestamp this service was started.
    *
    * @generated from field: google.protobuf.Timestamp started_at = 4;
    */
@@ -107,14 +107,14 @@ export const ComponentSchema: GenMessage<Component> = /*@__PURE__*/
  */
 export type ComponentQuery = Message<"metalstack.api.v2.ComponentQuery"> & {
   /**
-   * UUID identifies this component
+   * UUID identifies this component.
    *
    * @generated from field: optional string uuid = 1;
    */
   uuid?: string | undefined;
 
   /**
-   * Type defines which service is actually pinging
+   * Type defines which service is actually pinging.
    *
    * @generated from field: optional metalstack.api.v2.ComponentType type = 2;
    */
@@ -137,55 +137,55 @@ export const ComponentQuerySchema: GenMessage<ComponentQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_component, 1);
 
 /**
- * ComponentType defines which service is actually pinging
+ * ComponentType defines which service is actually pinging.
  *
  * @generated from enum metalstack.api.v2.ComponentType
  */
 export enum ComponentType {
   /**
-   * COMPONENT_TYPE_UNSPECIFIED is unspecified
+   * COMPONENT_TYPE_UNSPECIFIED is unspecified.
    *
    * @generated from enum value: COMPONENT_TYPE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * COMPONENT_TYPE_PIXIECORE is pixiecore
+   * COMPONENT_TYPE_PIXIECORE is pixiecore.
    *
    * @generated from enum value: COMPONENT_TYPE_PIXIECORE = 1;
    */
   PIXIECORE = 1,
 
   /**
-   * COMPONENT_TYPE_METAL_CORE is metal-core
+   * COMPONENT_TYPE_METAL_CORE is metal-core.
    *
    * @generated from enum value: COMPONENT_TYPE_METAL_CORE = 2;
    */
   METAL_CORE = 2,
 
   /**
-   * COMPONENT_TYPE_METAL_BMC is metal-bmc
+   * COMPONENT_TYPE_METAL_BMC is metal-bmc.
    *
    * @generated from enum value: COMPONENT_TYPE_METAL_BMC = 3;
    */
   METAL_BMC = 3,
 
   /**
-   * COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync
+   * COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync.
    *
    * @generated from enum value: COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC = 4;
    */
   METAL_IMAGE_CACHE_SYNC = 4,
 
   /**
-   * COMPONENT_TYPE_METAL_CONSOLE is metal-console
+   * COMPONENT_TYPE_METAL_CONSOLE is metal-console.
    *
    * @generated from enum value: COMPONENT_TYPE_METAL_CONSOLE = 5;
    */
   METAL_CONSOLE = 5,
 
   /**
-   * COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter
+   * COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter.
    *
    * @generated from enum value: COMPONENT_TYPE_METAL_METRICS_EXPORTER = 6;
    */

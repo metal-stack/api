@@ -22,14 +22,14 @@ export const file_metalstack_admin_v2_task: GenFile = /*@__PURE__*/
  */
 export type TaskServiceGetRequest = Message<"metalstack.admin.v2.TaskServiceGetRequest"> & {
   /**
-   * TaskId is the identifier of the task to get
+   * TaskId is the identifier of the task to get.
    *
    * @generated from field: string task_id = 1;
    */
   taskId: string;
 
   /**
-   * Queue is the queue where this task was scheduled to
+   * Queue is the queue where this task was scheduled to.
    *
    * @generated from field: string queue = 2;
    */
@@ -50,7 +50,7 @@ export const TaskServiceGetRequestSchema: GenMessage<TaskServiceGetRequest> = /*
  */
 export type TaskServiceGetResponse = Message<"metalstack.admin.v2.TaskServiceGetResponse"> & {
   /**
-   * Task contains the task details
+   * Task contains the task details.
    *
    * @generated from field: metalstack.admin.v2.TaskInfo task = 1;
    */
@@ -71,14 +71,14 @@ export const TaskServiceGetResponseSchema: GenMessage<TaskServiceGetResponse> = 
  */
 export type TaskServiceDeleteRequest = Message<"metalstack.admin.v2.TaskServiceDeleteRequest"> & {
   /**
-   * TaskId is the identifier of the task to cancel
+   * TaskId is the identifier of the task to cancel.
    *
    * @generated from field: string task_id = 1;
    */
   taskId: string;
 
   /**
-   * Queue is the queue where this task was scheduled to
+   * Queue is the queue where this task was scheduled to.
    *
    * @generated from field: string queue = 2;
    */
@@ -150,22 +150,22 @@ export const TaskServiceQueuesResponseSchema: GenMessage<TaskServiceQueuesRespon
  */
 export type TaskServiceListRequest = Message<"metalstack.admin.v2.TaskServiceListRequest"> & {
   /**
-   * Queue filters tasks by this queue
-   * Will return tasks from all queues if not specified
+   * Queue filters tasks by this queue.
+   * Will return tasks from all queues if not specified.
    *
    * @generated from field: optional string queue = 1;
    */
   queue?: string | undefined;
 
   /**
-   * Count is the number of tasks to return
+   * Count is the number of tasks to return.
    *
    * @generated from field: optional uint32 count = 2;
    */
   count?: number | undefined;
 
   /**
-   * Page is the page of tasks to return
+   * Page is the page of tasks to return.
    *
    * @generated from field: optional uint32 page = 3;
    */
@@ -186,7 +186,7 @@ export const TaskServiceListRequestSchema: GenMessage<TaskServiceListRequest> = 
  */
 export type TaskServiceListResponse = Message<"metalstack.admin.v2.TaskServiceListResponse"> & {
   /**
-   * Tasks contains the list of requested tasks
+   * Tasks contains the list of requested tasks.
    *
    * @generated from field: repeated metalstack.admin.v2.TaskInfo tasks = 1;
    */
@@ -207,63 +207,63 @@ export const TaskServiceListResponseSchema: GenMessage<TaskServiceListResponse> 
  */
 export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
   /**
-   * ID is the identifier of the task
+   * ID is the identifier of the task.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Queue is the name of the queue in which the task belongs
+   * Queue is the name of the queue in which the task belongs.
    *
    * @generated from field: string queue = 2;
    */
   queue: string;
 
   /**
-   * Type is the type name of the task
+   * Type is the type name of the task.
    *
    * @generated from field: string type = 3;
    */
   type: string;
 
   /**
-   * Payload is the payload data of the task
+   * Payload is the payload data of the task.
    *
    * @generated from field: bytes payload = 4;
    */
   payload: Uint8Array;
 
   /**
-   * State indicates the task state
+   * State indicates the task state.
    *
    * @generated from field: metalstack.admin.v2.TaskState state = 5;
    */
   state: TaskState;
 
   /**
-   * MaxRetry is the maximum number of times the task can be retried
+   * MaxRetry is the maximum number of times the task can be retried.
    *
    * @generated from field: int32 max_retry = 6;
    */
   maxRetry: number;
 
   /**
-   * Retried is the number of times the task has retried so far
+   * Retried is the number of times the task has retried so far.
    *
    * @generated from field: int32 retried = 7;
    */
   retried: number;
 
   /**
-   * LastError is the error message from the last failure
+   * LastError is the error message from the last failure.
    *
    * @generated from field: string last_error = 8;
    */
   lastError: string;
 
   /**
-   * LastFailedAt is the time of the last failure if any
+   * LastFailedAt is the time of the last failure if any.
    * If the task has no failures, LastFailedAt is zero time (i.e. time.Time{})
    *
    * @generated from field: google.protobuf.Timestamp last_failed_at = 9;
@@ -271,33 +271,33 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
   lastFailedAt?: Timestamp | undefined;
 
   /**
-   * Timeout is the duration the task can be processed by Handler before being retried
+   * Timeout is the duration the task can be processed by Handler before being retried.
    *
    * @generated from field: google.protobuf.Duration timeout = 10;
    */
   timeout?: Duration | undefined;
 
   /**
-   * Deadline is the deadline for the task
+   * Deadline is the deadline for the task.
    *
    * @generated from field: google.protobuf.Timestamp deadline = 11;
    */
   deadline?: Timestamp | undefined;
 
   /**
-   * Group is the name of the group in which the task belongs
+   * Group is the name of the group in which the task belongs.
    *
    * Tasks in the same queue can be grouped together by Group name and will be aggregated into one task
    * by a Server processing the queue
    *
-   * Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task
+   * Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task.
    *
    * @generated from field: string group = 12;
    */
   group: string;
 
   /**
-   * NextProcessAt is the time the task is scheduled to be processed
+   * NextProcessAt is the time the task is scheduled to be processed.
    * Zero if not applicable
    *
    * @generated from field: google.protobuf.Timestamp next_process_at = 13;
@@ -305,34 +305,34 @@ export type TaskInfo = Message<"metalstack.admin.v2.TaskInfo"> & {
   nextProcessAt?: Timestamp | undefined;
 
   /**
-   * IsOrphaned describes whether the task is left in active state with no worker processing it
+   * IsOrphaned describes whether the task is left in active state with no worker processing it.
    * An orphaned task indicates that the worker has crashed or experienced network failures and was not able to
    * extend its lease on the task
    *
-   * This task will be recovered by running a server against the queue the task is in
-   * This field is only applicable to tasks with TaskStateActive
+   * This task will be recovered by running a server against the queue the task is in.
+   * This field is only applicable to tasks with TaskStateActive.
    *
    * @generated from field: bool is_orphaned = 14;
    */
   isOrphaned: boolean;
 
   /**
-   * Retention is duration of the retention period after the task is successfully processed
+   * Retention is duration of the retention period after the task is successfully processed.
    *
    * @generated from field: google.protobuf.Duration retention = 15;
    */
   retention?: Duration | undefined;
 
   /**
-   * CompletedAt is the time when the task is processed successfully
-   * Zero value (i.e. time.Time{}) indicates no value
+   * CompletedAt is the time when the task is processed successfully.
+   * Zero value (i.e. time.Time{}) indicates no value.
    *
    * @generated from field: google.protobuf.Timestamp completed_at = 16;
    */
   completedAt?: Timestamp | undefined;
 
   /**
-   * Result holds the result data associated with the task
+   * Result holds the result data associated with the task.
    * Use ResultWriter to write result data from the Handler
    *
    * @generated from field: bytes result = 17;
@@ -354,56 +354,56 @@ export const TaskInfoSchema: GenMessage<TaskInfo> = /*@__PURE__*/
  */
 export enum TaskState {
   /**
-   * TASK_STATE_UNSPECIFIED is not specified
+   * TASK_STATE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: TASK_STATE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * TASK_STATE_ACTIVE indicates that the task is currently being processed by Handler
+   * TASK_STATE_ACTIVE indicates that the task is currently being processed by Handler.
    *
    * @generated from enum value: TASK_STATE_ACTIVE = 1;
    */
   ACTIVE = 1,
 
   /**
-   * TASK_STATE_PENDING indicates that the task is ready to be processed by Handler
+   * TASK_STATE_PENDING indicates that the task is ready to be processed by Handler.
    *
    * @generated from enum value: TASK_STATE_PENDING = 2;
    */
   PENDING = 2,
 
   /**
-   * TASK_STATE_SCHEDULED indicates that the task is scheduled to be processed some time in the future
+   * TASK_STATE_SCHEDULED indicates that the task is scheduled to be processed some time in the future.
    *
    * @generated from enum value: TASK_STATE_SCHEDULED = 3;
    */
   SCHEDULED = 3,
 
   /**
-   * TASK_STATE_RETRY indicates that the task has previously failed and is scheduled to be processed some time in the future
+   * TASK_STATE_RETRY indicates that the task has previously failed and is scheduled to be processed some time in the future.
    *
    * @generated from enum value: TASK_STATE_RETRY = 4;
    */
   RETRY = 4,
 
   /**
-   * TASK_STATE_ARCHIVED indicates that the task is archived and stored for inspection purposes
+   * TASK_STATE_ARCHIVED indicates that the task is archived and stored for inspection purposes.
    *
    * @generated from enum value: TASK_STATE_ARCHIVED = 5;
    */
   ARCHIVED = 5,
 
   /**
-   * TASK_STATE_COMPLETED indicates that the task is processed successfully and retained until the retention TTL expires
+   * TASK_STATE_COMPLETED indicates that the task is processed successfully and retained until the retention TTL expires.
    *
    * @generated from enum value: TASK_STATE_COMPLETED = 6;
    */
   COMPLETED = 6,
 
   /**
-   * TASK_STATE_AGGREGATING indicates that the task is waiting in a group to be aggregated into one task
+   * TASK_STATE_AGGREGATING indicates that the task is waiting in a group to be aggregated into one task.
    *
    * @generated from enum value: TASK_STATE_AGGREGATING = 7;
    */

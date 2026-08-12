@@ -108,7 +108,7 @@ func (x *TenantServiceCreateRequest) GetLabels() *v2.Labels {
 // TenantServiceCreateResponse is the response payload for creating a tenant.
 type TenantServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenant contains the created tenant
+	// Tenant contains the created tenant.
 	Tenant        *v2.Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -154,7 +154,7 @@ func (x *TenantServiceCreateResponse) GetTenant() *v2.Tenant {
 // TenantServiceListRequest is the request payload for listing tenants.
 type TenantServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for tenants
+	// Query for tenants.
 	Query         *v2.TenantQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -200,9 +200,9 @@ func (x *TenantServiceListRequest) GetQuery() *v2.TenantQuery {
 // TenantServiceListResponse is the response payload for listing tenants.
 type TenantServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenants contains the list of tenants
+	// Tenants contains the list of tenants.
 	Tenants []*v2.Tenant `protobuf:"bytes,1,rep,name=tenants,proto3" json:"tenants,omitempty"`
-	// NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request
+	// NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
 	NextPage      *uint64 `protobuf:"varint,2,opt,name=next_page,json=nextPage,proto3,oneof" json:"next_page,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -252,7 +252,7 @@ func (x *TenantServiceListResponse) GetNextPage() uint64 {
 	return 0
 }
 
-// TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+// TenantServiceAddMemberRequest is the request payload for adding a member to a tenant.
 type TenantServiceAddMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login of the tenant to which the member will be added
@@ -316,10 +316,10 @@ func (x *TenantServiceAddMemberRequest) GetRole() v2.TenantRole {
 	return v2.TenantRole(0)
 }
 
-// TenantServiceAddMemberResponse is the response payload for the add member request
+// TenantServiceAddMemberResponse is the response payload for the add member request.
 type TenantServiceAddMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TenantMember is the added tenant member
+	// TenantMember is the added tenant member.
 	TenantMember  *v2.TenantMember `protobuf:"bytes,1,opt,name=tenant_member,json=tenantMember,proto3" json:"tenant_member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -362,7 +362,7 @@ func (x *TenantServiceAddMemberResponse) GetTenantMember() *v2.TenantMember {
 	return nil
 }
 
-// TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant
+// TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant.
 type TenantServiceRemoveMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login of the tenant from which the member will be removed
@@ -417,10 +417,10 @@ func (x *TenantServiceRemoveMemberRequest) GetMember() string {
 	return ""
 }
 
-// TenantServiceRemoveMemberResponse is the response payload for the remove member request
+// TenantServiceRemoveMemberResponse is the response payload for the remove member request.
 type TenantServiceRemoveMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TenantMember is the removed tenant member
+	// TenantMember is the removed tenant member.
 	TenantMember  *v2.TenantMember `protobuf:"bytes,1,opt,name=tenant_member,json=tenantMember,proto3" json:"tenant_member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

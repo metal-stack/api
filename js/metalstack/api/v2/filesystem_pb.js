@@ -77,7 +77,7 @@ export const LogicalVolumeSchema = /*@__PURE__*/ messageDesc(file_metalstack_api
 export var LVMType;
 (function (LVMType) {
     /**
-     * LVM_TYPE_UNSPECIFIED is not specified
+     * LVM_TYPE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: LVM_TYPE_UNSPECIFIED = 0;
      */
@@ -106,7 +106,7 @@ export var LVMType;
  */
 export const LVMTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_filesystem, 0);
 /**
- * Format specifies the filesystem to use on a volume
+ * Format specifies the filesystem to use on a volume.
  *
  * @generated from enum metalstack.api.v2.Format
  */
@@ -119,31 +119,31 @@ export var Format;
      */
     Format[Format["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * FORMAT_VFAT is used for the UEFI boot partition
+     * FORMAT_VFAT is used for the UEFI boot partition.
      *
      * @generated from enum value: FORMAT_VFAT = 1;
      */
     Format[Format["VFAT"] = 1] = "VFAT";
     /**
-     * FORMAT_EXT3 is usually only used for /boot
+     * FORMAT_EXT3 is usually only used for /boot.
      *
      * @generated from enum value: FORMAT_EXT3 = 2;
      */
     Format[Format["EXT3"] = 2] = "EXT3";
     /**
-     * FORMAT_EXT4 is the default fs
+     * FORMAT_EXT4 is the default fs.
      *
      * @generated from enum value: FORMAT_EXT4 = 3;
      */
     Format[Format["EXT4"] = 3] = "EXT4";
     /**
-     * FORMAT_SWAP is for the swap partition
+     * FORMAT_SWAP is for the swap partition.
      *
      * @generated from enum value: FORMAT_SWAP = 4;
      */
     Format[Format["SWAP"] = 4] = "SWAP";
     /**
-     * FORMAT_TMPFS is used for a memory filesystem typically /tmp
+     * FORMAT_TMPFS is used for a memory filesystem typically /tmp.
      *
      * @generated from enum value: FORMAT_TMPFS = 5;
      */
@@ -160,14 +160,14 @@ export var Format;
  */
 export const FormatSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_filesystem, 1);
 /**
- * GPTType specifies the partition type in uefi systems
+ * GPTType specifies the partition type in uefi systems.
  *
  * @generated from enum metalstack.api.v2.GPTType
  */
 export var GPTType;
 (function (GPTType) {
     /**
-     * GPT_TYPE_UNSPECIFIED is no specified
+     * GPT_TYPE_UNSPECIFIED is no specified.
      *
      * @generated from enum value: GPT_TYPE_UNSPECIFIED = 0;
      */
@@ -202,26 +202,26 @@ export var GPTType;
  */
 export const GPTTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_filesystem, 2);
 /**
- * RaidLevel defines howto mirror two or more block devices
+ * RaidLevel defines howto mirror two or more block devices.
  *
  * @generated from enum metalstack.api.v2.RaidLevel
  */
 export var RaidLevel;
 (function (RaidLevel) {
     /**
-     * RAID_LEVEL_UNSPECIFIED is not specified
+     * RAID_LEVEL_UNSPECIFIED is not specified.
      *
      * @generated from enum value: RAID_LEVEL_UNSPECIFIED = 0;
      */
     RaidLevel[RaidLevel["RAID_LEVEL_UNSPECIFIED"] = 0] = "RAID_LEVEL_UNSPECIFIED";
     /**
-     * RAID_LEVEL_0 is a stripe of two or more disks
+     * RAID_LEVEL_0 is a stripe of two or more disks.
      *
      * @generated from enum value: RAID_LEVEL_0 = 1;
      */
     RaidLevel[RaidLevel["RAID_LEVEL_0"] = 1] = "RAID_LEVEL_0";
     /**
-     * RAID_LEVEL_1 is a mirror of two disks
+     * RAID_LEVEL_1 is a mirror of two disks.
      *
      * @generated from enum value: RAID_LEVEL_1 = 2;
      */

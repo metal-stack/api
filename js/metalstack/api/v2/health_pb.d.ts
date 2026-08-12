@@ -11,7 +11,7 @@ export declare const file_metalstack_api_v2_health: GenFile;
  */
 export type Health = Message<"metalstack.api.v2.Health"> & {
     /**
-     * Services contains the health of all individual services
+     * Services contains the health of all individual services.
      *
      * @generated from field: repeated metalstack.api.v2.HealthStatus services = 1;
      */
@@ -29,25 +29,25 @@ export declare const HealthSchema: GenMessage<Health>;
  */
 export type HealthStatus = Message<"metalstack.api.v2.HealthStatus"> & {
     /**
-     * Name is the name of the service
+     * Name is the name of the service.
      *
      * @generated from field: metalstack.api.v2.Service name = 1;
      */
     name: Service;
     /**
-     * Status is the status of this service
+     * Status is the status of this service.
      *
      * @generated from field: metalstack.api.v2.ServiceStatus status = 2;
      */
     status: ServiceStatus;
     /**
-     * Message describes the reason for the unhealthy status if possible
+     * Message describes the reason for the unhealthy status if possible.
      *
      * @generated from field: string message = 3;
      */
     message: string;
     /**
-     * Partitions describes the health of the service by partition
+     * Partitions describes the health of the service by partition.
      *
      * @generated from field: map<string, metalstack.api.v2.PartitionHealth> partitions = 4;
      */
@@ -67,13 +67,13 @@ export declare const HealthStatusSchema: GenMessage<HealthStatus>;
  */
 export type PartitionHealth = Message<"metalstack.api.v2.PartitionHealth"> & {
     /**
-     * Status is the health status of the service in this partition
+     * Status is the health status of the service in this partition.
      *
      * @generated from field: metalstack.api.v2.ServiceStatus status = 1;
      */
     status: ServiceStatus;
     /**
-     * Message describes the reason for the unhealthy status if possible
+     * Message describes the reason for the unhealthy status if possible.
      *
      * @generated from field: string message = 2;
      */
@@ -102,7 +102,7 @@ export declare const HealthServiceGetRequestSchema: GenMessage<HealthServiceGetR
  */
 export type HealthServiceGetResponse = Message<"metalstack.api.v2.HealthServiceGetResponse"> & {
     /**
-     * Health contains the overall health of the system
+     * Health contains the overall health of the system.
      *
      * @generated from field: metalstack.api.v2.Health health = 1;
      */
@@ -155,7 +155,7 @@ export declare const ServiceStatusSchema: GenEnum<ServiceStatus>;
  */
 export declare enum Service {
     /**
-     * SERVICE_UNSPECIFIED is a unknown service
+     * SERVICE_UNSPECIFIED is a unknown service.
      *
      * @generated from enum value: SERVICE_UNSPECIFIED = 0;
      */

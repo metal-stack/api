@@ -58,7 +58,7 @@ export declare const VersionServiceGetRequestSchema: GenMessage<VersionServiceGe
  */
 export type VersionServiceGetResponse = Message<"metalstack.api.v2.VersionServiceGetResponse"> & {
     /**
-     * Version contains the version of the application
+     * Version contains the version of the application.
      *
      * @generated from field: metalstack.api.v2.Version version = 1;
      */

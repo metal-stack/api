@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request
+// SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request.
 type SizeImageConstraintServiceTryRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Size to try
@@ -77,7 +77,7 @@ func (x *SizeImageConstraintServiceTryRequest) GetImage() string {
 	return ""
 }
 
-// SizeImageConstraintServiceTryResponse is the response payload for a size image constraint try request
+// SizeImageConstraintServiceTryResponse is the response payload for a size image constraint try request.
 type SizeImageConstraintServiceTryResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -114,7 +114,7 @@ func (*SizeImageConstraintServiceTryResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_size_imageconstraint_proto_rawDescGZIP(), []int{1}
 }
 
-// SizeImageConstraint expresses optional restrictions for specific size to image combinations
+// SizeImageConstraint expresses optional restrictions for specific size to image combinations.
 // this might be required if the support for a specific hardware in a given size is only supported
 // with a newer version of the image.
 //
@@ -123,7 +123,7 @@ func (*SizeImageConstraintServiceTryResponse) Descriptor() ([]byte, []int) {
 // If the image in question is found, but does not match the given expression, machine creation must be forbidden.
 type SizeImageConstraint struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size where this constraint should apply
+	// Size where this constraint should apply.
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	// ImageConstraints to apply to this size
 	ImageConstraints []*ImageConstraint `protobuf:"bytes,2,rep,name=image_constraints,json=imageConstraints,proto3" json:"image_constraints,omitempty"`
@@ -202,7 +202,7 @@ func (x *SizeImageConstraint) GetDescription() string {
 	return ""
 }
 
-// ImageConstraint defines a constraint for an image
+// ImageConstraint defines a constraint for an image.
 // examples:
 // images:
 //
@@ -262,7 +262,7 @@ func (x *ImageConstraint) GetSemverMatch() string {
 	return ""
 }
 
-// SizeImageConstraintQuery is used to search size image constraints
+// SizeImageConstraintQuery is used to search size image constraints.
 type SizeImageConstraintQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Size of the size image constraint

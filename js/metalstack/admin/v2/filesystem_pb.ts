@@ -25,7 +25,7 @@ export const file_metalstack_admin_v2_filesystem: GenFile = /*@__PURE__*/
  */
 export type FilesystemServiceCreateRequest = Message<"metalstack.admin.v2.FilesystemServiceCreateRequest"> & {
   /**
-   * FilesystemLayout is the filesystem layout to create
+   * FilesystemLayout is the filesystem layout to create.
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
    */
@@ -46,7 +46,7 @@ export const FilesystemServiceCreateRequestSchema: GenMessage<FilesystemServiceC
  */
 export type FilesystemServiceCreateResponse = Message<"metalstack.admin.v2.FilesystemServiceCreateResponse"> & {
   /**
-   * FilesystemLayout contains the created filesystem layout
+   * FilesystemLayout contains the created filesystem layout.
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
    */
@@ -74,7 +74,7 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
   id: string;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
    */
@@ -95,14 +95,14 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
   description?: string | undefined;
 
   /**
-   * Filesystems is a list of filesystems to create on a machine
+   * Filesystems is a list of filesystems to create on a machine.
    *
    * @generated from field: repeated metalstack.api.v2.Filesystem filesystems = 5;
    */
   filesystems: Filesystem[];
 
   /**
-   * Disks list of disks that belong to this layout
+   * Disks list of disks that belong to this layout.
    *
    * @generated from field: repeated metalstack.api.v2.Disk disks = 6;
    */
@@ -116,14 +116,14 @@ export type FilesystemServiceUpdateRequest = Message<"metalstack.admin.v2.Filesy
   raid: Raid[];
 
   /**
-   * VolumeGroups list of volumegroups to create
+   * VolumeGroups list of volumegroups to create.
    *
    * @generated from field: repeated metalstack.api.v2.VolumeGroup volume_groups = 8;
    */
   volumeGroups: VolumeGroup[];
 
   /**
-   * LogicalVolumes list of logicalvolumes to create
+   * LogicalVolumes list of logicalvolumes to create.
    *
    * @generated from field: repeated metalstack.api.v2.LogicalVolume logical_volumes = 9;
    */
@@ -151,7 +151,7 @@ export const FilesystemServiceUpdateRequestSchema: GenMessage<FilesystemServiceU
  */
 export type FilesystemServiceUpdateResponse = Message<"metalstack.admin.v2.FilesystemServiceUpdateResponse"> & {
   /**
-   * FilesystemLayout contains the updated filesystem layout
+   * FilesystemLayout contains the updated filesystem layout.
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
    */
@@ -193,7 +193,7 @@ export const FilesystemServiceDeleteRequestSchema: GenMessage<FilesystemServiceD
  */
 export type FilesystemServiceDeleteResponse = Message<"metalstack.admin.v2.FilesystemServiceDeleteResponse"> & {
   /**
-   * FilesystemLayout contains the deleted filesystem layout
+   * FilesystemLayout contains the deleted filesystem layout.
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
    */
@@ -214,7 +214,7 @@ export const FilesystemServiceDeleteResponseSchema: GenMessage<FilesystemService
  */
 export type FilesystemServiceMatchRequest = Message<"metalstack.admin.v2.FilesystemServiceMatchRequest"> & {
   /**
-   * Match size and image to a filesystem layout
+   * Match size and image to a filesystem layout.
    * or match a machine to a filesystem layout
    *
    * @generated from oneof metalstack.admin.v2.FilesystemServiceMatchRequest.match

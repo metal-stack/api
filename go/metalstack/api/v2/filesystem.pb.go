@@ -26,7 +26,7 @@ const (
 type LVMType int32
 
 const (
-	// LVM_TYPE_UNSPECIFIED is not specified
+	// LVM_TYPE_UNSPECIFIED is not specified.
 	LVMType_LVM_TYPE_UNSPECIFIED LVMType = 0
 	// LVM_TYPE_LINEAR append across all physical volumes
 	LVMType_LVM_TYPE_LINEAR LVMType = 1
@@ -79,21 +79,21 @@ func (LVMType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{0}
 }
 
-// Format specifies the filesystem to use on a volume
+// Format specifies the filesystem to use on a volume.
 type Format int32
 
 const (
 	// FORMAT_UNSPECIFIED
 	Format_FORMAT_UNSPECIFIED Format = 0
-	// FORMAT_VFAT is used for the UEFI boot partition
+	// FORMAT_VFAT is used for the UEFI boot partition.
 	Format_FORMAT_VFAT Format = 1
-	// FORMAT_EXT3 is usually only used for /boot
+	// FORMAT_EXT3 is usually only used for /boot.
 	Format_FORMAT_EXT3 Format = 2
-	// FORMAT_EXT4 is the default fs
+	// FORMAT_EXT4 is the default fs.
 	Format_FORMAT_EXT4 Format = 3
-	// FORMAT_SWAP is for the swap partition
+	// FORMAT_SWAP is for the swap partition.
 	Format_FORMAT_SWAP Format = 4
-	// FORMAT_TMPFS is used for a memory filesystem typically /tmp
+	// FORMAT_TMPFS is used for a memory filesystem typically /tmp.
 	Format_FORMAT_TMPFS Format = 5
 	// FORMAT_NONE
 	Format_FORMAT_NONE Format = 6
@@ -148,11 +148,11 @@ func (Format) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{1}
 }
 
-// GPTType specifies the partition type in uefi systems
+// GPTType specifies the partition type in uefi systems.
 type GPTType int32
 
 const (
-	// GPT_TYPE_UNSPECIFIED is no specified
+	// GPT_TYPE_UNSPECIFIED is no specified.
 	GPTType_GPT_TYPE_UNSPECIFIED GPTType = 0
 	// GPT_TYPE_BOOT EFI Boot Partition
 	GPTType_GPT_TYPE_BOOT GPTType = 1
@@ -209,15 +209,15 @@ func (GPTType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{2}
 }
 
-// RaidLevel defines howto mirror two or more block devices
+// RaidLevel defines howto mirror two or more block devices.
 type RaidLevel int32
 
 const (
-	// RAID_LEVEL_UNSPECIFIED is not specified
+	// RAID_LEVEL_UNSPECIFIED is not specified.
 	RaidLevel_RAID_LEVEL_UNSPECIFIED RaidLevel = 0
-	// RAID_LEVEL_0 is a stripe of two or more disks
+	// RAID_LEVEL_0 is a stripe of two or more disks.
 	RaidLevel_RAID_LEVEL_0 RaidLevel = 1
-	// RAID_LEVEL_1 is a mirror of two disks
+	// RAID_LEVEL_1 is a mirror of two disks.
 	RaidLevel_RAID_LEVEL_1 RaidLevel = 2
 )
 
@@ -262,7 +262,7 @@ func (RaidLevel) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_filesystem_proto_rawDescGZIP(), []int{3}
 }
 
-// FilesystemServiceGetRequest is the request payload for a filesystem get request
+// FilesystemServiceGetRequest is the request payload for a filesystem get request.
 type FilesystemServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the filesystem to get
@@ -308,7 +308,7 @@ func (x *FilesystemServiceGetRequest) GetId() string {
 	return ""
 }
 
-// FilesystemServiceListRequest is the request payload for a filesystem list request
+// FilesystemServiceListRequest is the request payload for a filesystem list request.
 type FilesystemServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the filesystem to get
@@ -354,7 +354,7 @@ func (x *FilesystemServiceListRequest) GetId() string {
 	return ""
 }
 
-// FilesystemServiceGetResponse is the response payload for a filesystem get request
+// FilesystemServiceGetResponse is the response payload for a filesystem get request.
 type FilesystemServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// FilesystemLayout the filesystemlayout
@@ -400,7 +400,7 @@ func (x *FilesystemServiceGetResponse) GetFilesystemLayout() *FilesystemLayout {
 	return nil
 }
 
-// FilesystemServiceListResponse is the response payload for a filesystem list request
+// FilesystemServiceListResponse is the response payload for a filesystem list request.
 type FilesystemServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// FilesystemLayouts the filesystemlayouts
@@ -457,15 +457,15 @@ type FilesystemLayout struct {
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of this filesystemLayout
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Filesystems is a list of filesystems to create on a machine
+	// Filesystems is a list of filesystems to create on a machine.
 	Filesystems []*Filesystem `protobuf:"bytes,5,rep,name=filesystems,proto3" json:"filesystems,omitempty"`
-	// Disks list of disks that belong to this layout
+	// Disks list of disks that belong to this layout.
 	Disks []*Disk `protobuf:"bytes,6,rep,name=disks,proto3" json:"disks,omitempty"`
 	// raid arrays to create
 	Raid []*Raid `protobuf:"bytes,7,rep,name=raid,proto3" json:"raid,omitempty"`
-	// VolumeGroups list of volumegroups to create
+	// VolumeGroups list of volumegroups to create.
 	VolumeGroups []*VolumeGroup `protobuf:"bytes,8,rep,name=volume_groups,json=volumeGroups,proto3" json:"volume_groups,omitempty"`
-	// LogicalVolumes list of logicalvolumes to create
+	// LogicalVolumes list of logicalvolumes to create.
 	LogicalVolumes []*LogicalVolume `protobuf:"bytes,9,rep,name=logical_volumes,json=logicalVolumes,proto3" json:"logical_volumes,omitempty"`
 	// Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
 	Constraints   *FilesystemLayoutConstraints `protobuf:"bytes,10,opt,name=constraints,proto3" json:"constraints,omitempty"`
@@ -576,10 +576,10 @@ func (x *FilesystemLayout) GetConstraints() *FilesystemLayoutConstraints {
 // FilesystemLayoutConstraints
 type FilesystemLayoutConstraints struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Sizes list of sizes this layout applies to
+	// Sizes list of sizes this layout applies to.
 	// this could either be a concrete size, or a asterisk to match all sizes
 	Sizes []string `protobuf:"bytes,1,rep,name=sizes,proto3" json:"sizes,omitempty"`
-	// Images list of images this layout applies to in the following form
+	// Images list of images this layout applies to in the following form.
 	// key must be the first part of available images, e.g. the name of the image
 	// value must be a semver match expression with the constraint and the version separated by space
 	// this would match all debian images which are greater or equal 12.0
@@ -747,7 +747,7 @@ type Disk struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Device the device to create the partitions
 	Device string `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
-	// Partitions list of partitions to create on this disk
+	// Partitions list of partitions to create on this disk.
 	Partitions    []*DiskPartition `protobuf:"bytes,2,rep,name=partitions,proto3" json:"partitions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -802,9 +802,9 @@ type Raid struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ArrayName the name of the resulting array device
 	ArrayName string `protobuf:"bytes,1,opt,name=array_name,json=arrayName,proto3" json:"array_name,omitempty"`
-	// Devices list of devices to form the raid array from
+	// Devices list of devices to form the raid array from.
 	Devices []string `protobuf:"bytes,2,rep,name=devices,proto3" json:"devices,omitempty"`
-	// Level raid level to create, should be 0 or 1
+	// Level raid level to create, should be 0 or 1.
 	Level RaidLevel `protobuf:"varint,3,opt,name=level,proto3,enum=metalstack.api.v2.RaidLevel" json:"level,omitempty"`
 	// CreateOptions the options to use to create the raid array
 	CreateOptions []string `protobuf:"bytes,4,rep,name=create_options,json=createOptions,proto3" json:"create_options,omitempty"`
@@ -882,7 +882,7 @@ func (x *Raid) GetSpares() int32 {
 // DiskPartition
 type DiskPartition struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Number partition number, will be appended to partitionprefix to create the final devicename
+	// Number partition number, will be appended to partitionprefix to create the final devicename.
 	Number uint32 `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
 	// Label an optional label for this partition
 	Label *string `protobuf:"bytes,2,opt,name=label,proto3,oneof" json:"label,omitempty"`
@@ -957,9 +957,9 @@ type VolumeGroup struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Name the name of the resulting volume group
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Devices list of devices to form the volume group from
+	// Devices list of devices to form the volume group from.
 	Devices []string `protobuf:"bytes,2,rep,name=devices,proto3" json:"devices,omitempty"`
-	// Tags list of tags to add to the volume group
+	// Tags list of tags to add to the volume group.
 	Tags          []string `protobuf:"bytes,3,rep,name=tags,proto3" json:"tags,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

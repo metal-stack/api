@@ -19,7 +19,7 @@ export const file_metalstack_api_v2_image: GenFile = /*@__PURE__*/
   fileDesc("Ch1tZXRhbHN0YWNrL2FwaS92Mi9pbWFnZS5wcm90bxIRbWV0YWxzdGFjay5hcGkudjIiMQoWSW1hZ2VTZXJ2aWNlR2V0UmVxdWVzdBIXCgJpZBgBIAEoCUILukgIcgbAs66xAgEiRwoXSW1hZ2VTZXJ2aWNlTGlzdFJlcXVlc3QSLAoFcXVlcnkYASABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZVF1ZXJ5IokBChlJbWFnZVNlcnZpY2VMYXRlc3RSZXF1ZXN0EgoKAm9zGAEgASgJEk0KDmNsYXNzaWZpY2F0aW9uGAIgASgOMiYubWV0YWxzdGFjay5hcGkudjIuSW1hZ2VDbGFzc2lmaWNhdGlvbkIIukgFggECEAFIAIgBAUIRCg9fY2xhc3NpZmljYXRpb24iQgoXSW1hZ2VTZXJ2aWNlR2V0UmVzcG9uc2USJwoFaW1hZ2UYASABKAsyGC5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZSJEChhJbWFnZVNlcnZpY2VMaXN0UmVzcG9uc2USKAoGaW1hZ2VzGAEgAygLMhgubWV0YWxzdGFjay5hcGkudjIuSW1hZ2UiRQoaSW1hZ2VTZXJ2aWNlTGF0ZXN0UmVzcG9uc2USJwoFaW1hZ2UYASABKAsyGC5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZSL/AgoFSW1hZ2USFwoCaWQYASABKAlCC7pICHIGwLOusQIBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEhgKA3VybBgDIAEoCUILukgIcgbgs66xAgESHgoEbmFtZRgEIAEoCUILukgIcgbAs66xAgFIAIgBARIlCgtkZXNjcmlwdGlvbhgFIAEoCUILukgIcgbIs66xAgFIAYgBARJCCghmZWF0dXJlcxgGIAMoDjIfLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlRmVhdHVyZUIPukgMkgEJGAEiBYIBAhABEkgKDmNsYXNzaWZpY2F0aW9uGAcgASgOMiYubWV0YWxzdGFjay5hcGkudjIuSW1hZ2VDbGFzc2lmaWNhdGlvbkIIukgFggECEAESLgoKZXhwaXJlc19hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uIkYKCkltYWdlVXNhZ2USJwoFaW1hZ2UYASABKAsyGC5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZRIPCgd1c2VkX2J5GAIgAygJIvQDCgpJbWFnZVF1ZXJ5EhwKAmlkGAEgASgJQgu6SAhyBsCzrrECAUgAiAEBEhsKAm9zGAIgASgJQgq6SAdyBRACGIABSAGIAQESIAoHdmVyc2lvbhgDIAEoCUIKukgHcgUQARiAAUgCiAEBEh4KBG5hbWUYBCABKAlCC7pICHIGwLOusQIBSAOIAQESJQoLZGVzY3JpcHRpb24YBSABKAlCC7pICHIGyLOusQIBSASIAQESHQoDdXJsGAYgASgJQgu6SAhyBuCzrrECAUgFiAEBEj8KB2ZlYXR1cmUYByABKA4yHy5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZUZlYXR1cmVCCLpIBYIBAhABSAaIAQESTQoOY2xhc3NpZmljYXRpb24YCCABKA4yJi5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZUNsYXNzaWZpY2F0aW9uQgi6SAWCAQIQAUgHiAEBEi4KBmxhYmVscxgJIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gIiAEBQgUKA19pZEIFCgNfb3NCCgoIX3ZlcnNpb25CBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uQgYKBF91cmxCCgoIX2ZlYXR1cmVCEQoPX2NsYXNzaWZpY2F0aW9uQgkKB19sYWJlbHMqfwoMSW1hZ2VGZWF0dXJlEh0KGUlNQUdFX0ZFQVRVUkVfVU5TUEVDSUZJRUQQABImChVJTUFHRV9GRUFUVVJFX01BQ0hJTkUQARoLgrIZB21hY2hpbmUSKAoWSU1BR0VfRkVBVFVSRV9GSVJFV0FMTBACGgyCshkIZmlyZXdhbGwq0gEKE0ltYWdlQ2xhc3NpZmljYXRpb24SJAogSU1BR0VfQ0xBU1NJRklDQVRJT05fVU5TUEVDSUZJRUQQABItChxJTUFHRV9DTEFTU0lGSUNBVElPTl9QUkVWSUVXEAEaC4KyGQdwcmV2aWV3EjEKHklNQUdFX0NMQVNTSUZJQ0FUSU9OX1NVUFBPUlRFRBACGg2CshkJc3VwcG9ydGVkEjMKH0lNQUdFX0NMQVNTSUZJQ0FUSU9OX0RFUFJFQ0FURUQQAxoOgrIZCmRlcHJlY2F0ZWQy0gIKDEltYWdlU2VydmljZRJmCgNHZXQSKS5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZVNlcnZpY2VHZXRSZXF1ZXN0GioubWV0YWxzdGFjay5hcGkudjIuSW1hZ2VTZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGALg8xgCEmkKBExpc3QSKi5tZXRhbHN0YWNrLmFwaS52Mi5JbWFnZVNlcnZpY2VMaXN0UmVxdWVzdBorLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlU2VydmljZUxpc3RSZXNwb25zZSII2PMYAuDzGAISbwoGTGF0ZXN0EiwubWV0YWxzdGFjay5hcGkudjIuSW1hZ2VTZXJ2aWNlTGF0ZXN0UmVxdWVzdBotLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlU2VydmljZUxhdGVzdFJlc3BvbnNlIgjY8xgC4PMYAkLAAQoVY29tLm1ldGFsc3RhY2suYXBpLnYyQgpJbWFnZVByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * ImageServiceGetRequest is the request payload for an image get request
+ * ImageServiceGetRequest is the request payload for an image get request.
  *
  * @generated from message metalstack.api.v2.ImageServiceGetRequest
  */
@@ -40,13 +40,13 @@ export const ImageServiceGetRequestSchema: GenMessage<ImageServiceGetRequest> = 
   messageDesc(file_metalstack_api_v2_image, 0);
 
 /**
- * ImageServiceListRequest is the request payload for an image list request
+ * ImageServiceListRequest is the request payload for an image list request.
  *
  * @generated from message metalstack.api.v2.ImageServiceListRequest
  */
 export type ImageServiceListRequest = Message<"metalstack.api.v2.ImageServiceListRequest"> & {
   /**
-   * Query for images
+   * Query for images.
    *
    * @generated from field: metalstack.api.v2.ImageQuery query = 1;
    */
@@ -61,7 +61,7 @@ export const ImageServiceListRequestSchema: GenMessage<ImageServiceListRequest> 
   messageDesc(file_metalstack_api_v2_image, 1);
 
 /**
- * ImageServiceLatestRequest is the request payload for an image latest request
+ * ImageServiceLatestRequest is the request payload for an image latest request.
  *
  * @generated from message metalstack.api.v2.ImageServiceLatestRequest
  */
@@ -90,7 +90,7 @@ export const ImageServiceLatestRequestSchema: GenMessage<ImageServiceLatestReque
   messageDesc(file_metalstack_api_v2_image, 2);
 
 /**
- * ImageServiceGetResponse is the response payload for an image get request
+ * ImageServiceGetResponse is the response payload for an image get request.
  *
  * @generated from message metalstack.api.v2.ImageServiceGetResponse
  */
@@ -111,7 +111,7 @@ export const ImageServiceGetResponseSchema: GenMessage<ImageServiceGetResponse> 
   messageDesc(file_metalstack_api_v2_image, 3);
 
 /**
- * ImageServiceListResponse is the response payload for an image list request
+ * ImageServiceListResponse is the response payload for an image list request.
  *
  * @generated from message metalstack.api.v2.ImageServiceListResponse
  */
@@ -132,7 +132,7 @@ export const ImageServiceListResponseSchema: GenMessage<ImageServiceListResponse
   messageDesc(file_metalstack_api_v2_image, 4);
 
 /**
- * ImageServiceLatestResponse is the response payload for an image latest request
+ * ImageServiceLatestResponse is the response payload for an image latest request.
  *
  * @generated from message metalstack.api.v2.ImageServiceLatestResponse
  */
@@ -208,7 +208,7 @@ export type Image = Message<"metalstack.api.v2.Image"> & {
   classification: ImageClassification;
 
   /**
-   * ExpiresAt usage is not possible after this date
+   * ExpiresAt usage is not possible after this date.
    *
    * @generated from field: google.protobuf.Timestamp expires_at = 8;
    */
@@ -223,7 +223,7 @@ export const ImageSchema: GenMessage<Image> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_image, 6);
 
 /**
- * ImageUsage reports which machines/firewalls actually use this image
+ * ImageUsage reports which machines/firewalls actually use this image.
  *
  * @generated from message metalstack.api.v2.ImageUsage
  */
@@ -251,7 +251,7 @@ export const ImageUsageSchema: GenMessage<ImageUsage> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_image, 7);
 
 /**
- * ImageQuery is used to search images
+ * ImageQuery is used to search images.
  *
  * @generated from message metalstack.api.v2.ImageQuery
  */
@@ -313,7 +313,7 @@ export type ImageQuery = Message<"metalstack.api.v2.ImageQuery"> & {
   classification?: ImageClassification | undefined;
 
   /**
-   * Labels lists only images containing the given labels
+   * Labels lists only images containing the given labels.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 9;
    */
@@ -334,21 +334,21 @@ export const ImageQuerySchema: GenMessage<ImageQuery> = /*@__PURE__*/
  */
 export enum ImageFeature {
   /**
-   * IMAGE_FEATURE_UNSPECIFIED is not specified
+   * IMAGE_FEATURE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: IMAGE_FEATURE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * IMAGE_FEATURE_MACHINE indicates this image is usable for a machine
+   * IMAGE_FEATURE_MACHINE indicates this image is usable for a machine.
    *
    * @generated from enum value: IMAGE_FEATURE_MACHINE = 1;
    */
   MACHINE = 1,
 
   /**
-   * IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall
+   * IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall.
    *
    * @generated from enum value: IMAGE_FEATURE_FIREWALL = 2;
    */
@@ -368,28 +368,28 @@ export const ImageFeatureSchema: GenEnum<ImageFeature> = /*@__PURE__*/
  */
 export enum ImageClassification {
   /**
-   * IMAGE_CLASSIFICATION_UNSPECIFIED is not specified
+   * IMAGE_CLASSIFICATION_UNSPECIFIED is not specified.
    *
    * @generated from enum value: IMAGE_CLASSIFICATION_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview
+   * IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview.
    *
    * @generated from enum value: IMAGE_CLASSIFICATION_PREVIEW = 1;
    */
   PREVIEW = 1,
 
   /**
-   * IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported
+   * IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported.
    *
    * @generated from enum value: IMAGE_CLASSIFICATION_SUPPORTED = 2;
    */
   SUPPORTED = 2,
 
   /**
-   * IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated
+   * IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated.
    *
    * @generated from enum value: IMAGE_CLASSIFICATION_DEPRECATED = 3;
    */

@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// SizeReservationServiceGetRequest is the request payload for a size get request
+// SizeReservationServiceGetRequest is the request payload for a size get request.
 type SizeReservationServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the size reservation to get
@@ -77,12 +77,12 @@ func (x *SizeReservationServiceGetRequest) GetProject() string {
 	return ""
 }
 
-// SizeReservationServiceListRequest is the request payload for a size list request
+// SizeReservationServiceListRequest is the request payload for a size list request.
 type SizeReservationServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project of the size reservation
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Query for size reservations
+	// Query for size reservations.
 	Query         *SizeReservationQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -132,7 +132,7 @@ func (x *SizeReservationServiceListRequest) GetQuery() *SizeReservationQuery {
 	return nil
 }
 
-// SizeReservationServiceGetResponse is the response payload for a size reservation get request
+// SizeReservationServiceGetResponse is the response payload for a size reservation get request.
 type SizeReservationServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Size reservation
@@ -178,7 +178,7 @@ func (x *SizeReservationServiceGetResponse) GetSizeReservation() *SizeReservatio
 	return nil
 }
 
-// SizeReservationServiceListResponse is the response payload for a size reservation list request
+// SizeReservationServiceListResponse is the response payload for a size reservation list request.
 type SizeReservationServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Size reservations
@@ -333,7 +333,7 @@ func (x *SizeReservation) GetAmount() int32 {
 	return 0
 }
 
-// SizeReservationQuery is used to search size reservations
+// SizeReservationQuery is used to search size reservations.
 type SizeReservationQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the size reservation to get
@@ -348,7 +348,7 @@ type SizeReservationQuery struct {
 	Project *string `protobuf:"bytes,5,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	// Partition of the size reservation
 	Partition *string `protobuf:"bytes,6,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
-	// Labels lists only size reservations containing the given labels
+	// Labels lists only size reservations containing the given labels.
 	Labels        *Labels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

@@ -7,7 +7,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_image: GenFile;
 /**
- * ImageServiceGetRequest is the request payload for an image get request
+ * ImageServiceGetRequest is the request payload for an image get request.
  *
  * @generated from message metalstack.api.v2.ImageServiceGetRequest
  */
@@ -25,13 +25,13 @@ export type ImageServiceGetRequest = Message<"metalstack.api.v2.ImageServiceGetR
  */
 export declare const ImageServiceGetRequestSchema: GenMessage<ImageServiceGetRequest>;
 /**
- * ImageServiceListRequest is the request payload for an image list request
+ * ImageServiceListRequest is the request payload for an image list request.
  *
  * @generated from message metalstack.api.v2.ImageServiceListRequest
  */
 export type ImageServiceListRequest = Message<"metalstack.api.v2.ImageServiceListRequest"> & {
     /**
-     * Query for images
+     * Query for images.
      *
      * @generated from field: metalstack.api.v2.ImageQuery query = 1;
      */
@@ -43,7 +43,7 @@ export type ImageServiceListRequest = Message<"metalstack.api.v2.ImageServiceLis
  */
 export declare const ImageServiceListRequestSchema: GenMessage<ImageServiceListRequest>;
 /**
- * ImageServiceLatestRequest is the request payload for an image latest request
+ * ImageServiceLatestRequest is the request payload for an image latest request.
  *
  * @generated from message metalstack.api.v2.ImageServiceLatestRequest
  */
@@ -68,7 +68,7 @@ export type ImageServiceLatestRequest = Message<"metalstack.api.v2.ImageServiceL
  */
 export declare const ImageServiceLatestRequestSchema: GenMessage<ImageServiceLatestRequest>;
 /**
- * ImageServiceGetResponse is the response payload for an image get request
+ * ImageServiceGetResponse is the response payload for an image get request.
  *
  * @generated from message metalstack.api.v2.ImageServiceGetResponse
  */
@@ -86,7 +86,7 @@ export type ImageServiceGetResponse = Message<"metalstack.api.v2.ImageServiceGet
  */
 export declare const ImageServiceGetResponseSchema: GenMessage<ImageServiceGetResponse>;
 /**
- * ImageServiceListResponse is the response payload for an image list request
+ * ImageServiceListResponse is the response payload for an image list request.
  *
  * @generated from message metalstack.api.v2.ImageServiceListResponse
  */
@@ -104,7 +104,7 @@ export type ImageServiceListResponse = Message<"metalstack.api.v2.ImageServiceLi
  */
 export declare const ImageServiceListResponseSchema: GenMessage<ImageServiceListResponse>;
 /**
- * ImageServiceLatestResponse is the response payload for an image latest request
+ * ImageServiceLatestResponse is the response payload for an image latest request.
  *
  * @generated from message metalstack.api.v2.ImageServiceLatestResponse
  */
@@ -170,7 +170,7 @@ export type Image = Message<"metalstack.api.v2.Image"> & {
      */
     classification: ImageClassification;
     /**
-     * ExpiresAt usage is not possible after this date
+     * ExpiresAt usage is not possible after this date.
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
@@ -182,7 +182,7 @@ export type Image = Message<"metalstack.api.v2.Image"> & {
  */
 export declare const ImageSchema: GenMessage<Image>;
 /**
- * ImageUsage reports which machines/firewalls actually use this image
+ * ImageUsage reports which machines/firewalls actually use this image.
  *
  * @generated from message metalstack.api.v2.ImageUsage
  */
@@ -206,7 +206,7 @@ export type ImageUsage = Message<"metalstack.api.v2.ImageUsage"> & {
  */
 export declare const ImageUsageSchema: GenMessage<ImageUsage>;
 /**
- * ImageQuery is used to search images
+ * ImageQuery is used to search images.
  *
  * @generated from message metalstack.api.v2.ImageQuery
  */
@@ -260,7 +260,7 @@ export type ImageQuery = Message<"metalstack.api.v2.ImageQuery"> & {
      */
     classification?: ImageClassification | undefined;
     /**
-     * Labels lists only images containing the given labels
+     * Labels lists only images containing the given labels.
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 9;
      */
@@ -278,19 +278,19 @@ export declare const ImageQuerySchema: GenMessage<ImageQuery>;
  */
 export declare enum ImageFeature {
     /**
-     * IMAGE_FEATURE_UNSPECIFIED is not specified
+     * IMAGE_FEATURE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: IMAGE_FEATURE_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
-     * IMAGE_FEATURE_MACHINE indicates this image is usable for a machine
+     * IMAGE_FEATURE_MACHINE indicates this image is usable for a machine.
      *
      * @generated from enum value: IMAGE_FEATURE_MACHINE = 1;
      */
     MACHINE = 1,
     /**
-     * IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall
+     * IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall.
      *
      * @generated from enum value: IMAGE_FEATURE_FIREWALL = 2;
      */
@@ -307,25 +307,25 @@ export declare const ImageFeatureSchema: GenEnum<ImageFeature>;
  */
 export declare enum ImageClassification {
     /**
-     * IMAGE_CLASSIFICATION_UNSPECIFIED is not specified
+     * IMAGE_CLASSIFICATION_UNSPECIFIED is not specified.
      *
      * @generated from enum value: IMAGE_CLASSIFICATION_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
-     * IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview
+     * IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview.
      *
      * @generated from enum value: IMAGE_CLASSIFICATION_PREVIEW = 1;
      */
     PREVIEW = 1,
     /**
-     * IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported
+     * IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported.
      *
      * @generated from enum value: IMAGE_CLASSIFICATION_SUPPORTED = 2;
      */
     SUPPORTED = 2,
     /**
-     * IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated
+     * IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated.
      *
      * @generated from enum value: IMAGE_CLASSIFICATION_DEPRECATED = 3;
      */

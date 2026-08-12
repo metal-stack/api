@@ -17,7 +17,7 @@ export const file_metalstack_api_v2_ip: GenFile = /*@__PURE__*/
   fileDesc("ChptZXRhbHN0YWNrL2FwaS92Mi9pcC5wcm90bxIRbWV0YWxzdGFjay5hcGkudjIisQIKAklQEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEhMKAmlwGAMgASgJQge6SARyAnABEhkKBG5hbWUYBCABKAlCC7pICHIGwLOusQIBEiAKC2Rlc2NyaXB0aW9uGAUgASgJQgu6SAhyBsizrrECARIcCgduZXR3b3JrGAYgASgJQgu6SAhyBsCzrrECARIZCgdwcm9qZWN0GAcgASgJQgi6SAVyA7ABARIxCgR0eXBlGAggASgOMhkubWV0YWxzdGFjay5hcGkudjIuSVBUeXBlQgi6SAWCAQIQARIgCgluYW1lc3BhY2UYCSABKAlCCLpIBXIDsAEBSACIAQFCDAoKX25hbWVzcGFjZSJ1ChNJUFNlcnZpY2VHZXRSZXF1ZXN0EhMKAmlwGAEgASgJQge6SARyAnABEhkKB3Byb2plY3QYAiABKAlCCLpIBXIDsAEBEiAKCW5hbWVzcGFjZRgDIAEoCUIIukgFcgOwAQFIAIgBAUIMCgpfbmFtZXNwYWNlItgDChZJUFNlcnZpY2VDcmVhdGVSZXF1ZXN0EhwKB25ldHdvcmsYASABKAlCC7pICHIGwLOusQIBEhkKB3Byb2plY3QYAiABKAlCCLpIBXIDsAEBEh4KBG5hbWUYAyABKAlCC7pICHIGwLOusQIBSACIAQESJQoLZGVzY3JpcHRpb24YBCABKAlCC7pICHIGyLOusQIBSAGIAQESGAoCaXAYBSABKAlCB7pIBHICcAFIAogBARIeCgdtYWNoaW5lGAYgASgJQgi6SAVyA7ABAUgDiAEBEi4KBmxhYmVscxgHIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gEiAEBEjYKBHR5cGUYCCABKA4yGS5tZXRhbHN0YWNrLmFwaS52Mi5JUFR5cGVCCLpIBYIBAhABSAWIAQESSQoOYWRkcmVzc19mYW1pbHkYCSABKA4yIi5tZXRhbHN0YWNrLmFwaS52Mi5JUEFkZHJlc3NGYW1pbHlCCLpIBYIBAhABSAaIAQFCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uQgUKA19pcEIKCghfbWFjaGluZUIJCgdfbGFiZWxzQgcKBV90eXBlQhEKD19hZGRyZXNzX2ZhbWlseSLmAgoWSVBTZXJ2aWNlVXBkYXRlUmVxdWVzdBITCgJpcBgBIAEoCUIHukgEcgJwARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIZCgdwcm9qZWN0GAMgASgJQgi6SAVyA7ABARIeCgRuYW1lGAQgASgJQgu6SAhyBsCzrrECAUgAiAEBEiUKC2Rlc2NyaXB0aW9uGAUgASgJQgu6SAhyBsizrrECAUgBiAEBEjYKBHR5cGUYBiABKA4yGS5tZXRhbHN0YWNrLmFwaS52Mi5JUFR5cGVCCLpIBYIBAhABSAKIAQESNAoGbGFiZWxzGAcgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuVXBkYXRlTGFiZWxzSAOIAQFCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uQgcKBV90eXBlQgkKB19sYWJlbHMiXAoUSVBTZXJ2aWNlTGlzdFJlcXVlc3QSGQoHcHJvamVjdBgBIAEoCUIIukgFcgOwAQESKQoFcXVlcnkYAiABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5JUFF1ZXJ5IswECgdJUFF1ZXJ5EhgKAmlwGAEgASgJQge6SARyAnABSACIAQESIQoHbmV0d29yaxgCIAEoCUILukgIcgbAs66xAgFIAYgBARIeCgdwcm9qZWN0GAMgASgJQgi6SAVyA7ABAUgCiAEBEh4KBG5hbWUYBCABKAlCC7pICHIGwLOusQIBSAOIAQESGwoEdXVpZBgFIAEoCUIIukgFcgOwAQFIBIgBARIeCgdtYWNoaW5lGAYgASgJQgi6SAVyA7ABAUgFiAEBEikKEnBhcmVudF9wcmVmaXhfY2lkchgHIAEoCUIIukgFcgPoAQFIBogBARIuCgZsYWJlbHMYCCABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNIB4gBARI2CgR0eXBlGAkgASgOMhkubWV0YWxzdGFjay5hcGkudjIuSVBUeXBlQgi6SAWCAQIQAUgIiAEBEkkKDmFkZHJlc3NfZmFtaWx5GAogASgOMiIubWV0YWxzdGFjay5hcGkudjIuSVBBZGRyZXNzRmFtaWx5Qgi6SAWCAQIQAUgJiAEBEiAKCW5hbWVzcGFjZRgLIAEoCUIIukgFcgOwAQFICogBAUIFCgNfaXBCCgoIX25ldHdvcmtCCgoIX3Byb2plY3RCBwoFX25hbWVCBwoFX3V1aWRCCgoIX21hY2hpbmVCFQoTX3BhcmVudF9wcmVmaXhfY2lkckIJCgdfbGFiZWxzQgcKBV90eXBlQhEKD19hZGRyZXNzX2ZhbWlseUIMCgpfbmFtZXNwYWNlIkgKFklQU2VydmljZURlbGV0ZVJlcXVlc3QSEwoCaXAYASABKAlCB7pIBHICcAESGQoHcHJvamVjdBgCIAEoCUIIukgFcgOwAQEiOQoUSVBTZXJ2aWNlR2V0UmVzcG9uc2USIQoCaXAYASABKAsyFS5tZXRhbHN0YWNrLmFwaS52Mi5JUCI8ChdJUFNlcnZpY2VVcGRhdGVSZXNwb25zZRIhCgJpcBgBIAEoCzIVLm1ldGFsc3RhY2suYXBpLnYyLklQIjwKF0lQU2VydmljZUNyZWF0ZVJlc3BvbnNlEiEKAmlwGAEgASgLMhUubWV0YWxzdGFjay5hcGkudjIuSVAiOwoVSVBTZXJ2aWNlTGlzdFJlc3BvbnNlEiIKA2lwcxgBIAMoCzIVLm1ldGFsc3RhY2suYXBpLnYyLklQIjwKF0lQU2VydmljZURlbGV0ZVJlc3BvbnNlEiEKAmlwGAEgASgLMhUubWV0YWxzdGFjay5hcGkudjIuSVAqZwoGSVBUeXBlEhcKE0lQX1RZUEVfVU5TUEVDSUZJRUQQABIkChFJUF9UWVBFX0VQSEVNRVJBTBABGg2CshkJZXBoZW1lcmFsEh4KDklQX1RZUEVfU1RBVElDEAIaCoKyGQZzdGF0aWMqfAoPSVBBZGRyZXNzRmFtaWx5EiEKHUlQX0FERFJFU1NfRkFNSUxZX1VOU1BFQ0lGSUVEEAASIgoUSVBfQUREUkVTU19GQU1JTFlfVjQQARoIgrIZBGlwdjQSIgoUSVBfQUREUkVTU19GQU1JTFlfVjYQAhoIgrIZBGlwdjYynwQKCUlQU2VydmljZRJjCgNHZXQSJi5tZXRhbHN0YWNrLmFwaS52Mi5JUFNlcnZpY2VHZXRSZXF1ZXN0GicubWV0YWxzdGFjay5hcGkudjIuSVBTZXJ2aWNlR2V0UmVzcG9uc2UiC8rzGAMBAgPg8xgCEmsKBkNyZWF0ZRIpLm1ldGFsc3RhY2suYXBpLnYyLklQU2VydmljZUNyZWF0ZVJlcXVlc3QaKi5tZXRhbHN0YWNrLmFwaS52Mi5JUFNlcnZpY2VDcmVhdGVSZXNwb25zZSIKyvMYAgEC4PMYARJrCgZVcGRhdGUSKS5tZXRhbHN0YWNrLmFwaS52Mi5JUFNlcnZpY2VVcGRhdGVSZXF1ZXN0GioubWV0YWxzdGFjay5hcGkudjIuSVBTZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCsrzGAIBAuDzGAESZgoETGlzdBInLm1ldGFsc3RhY2suYXBpLnYyLklQU2VydmljZUxpc3RSZXF1ZXN0GigubWV0YWxzdGFjay5hcGkudjIuSVBTZXJ2aWNlTGlzdFJlc3BvbnNlIgvK8xgDAQID4PMYAhJrCgZEZWxldGUSKS5tZXRhbHN0YWNrLmFwaS52Mi5JUFNlcnZpY2VEZWxldGVSZXF1ZXN0GioubWV0YWxzdGFjay5hcGkudjIuSVBTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiCsrzGAIBAuDzGAFCvQEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkIHSXBQcm90b1ABWjVnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FwaS92MjthcGl2MqICA01BWKoCEU1ldGFsc3RhY2suQXBpLlYyygIRTWV0YWxzdGFja1xBcGlcVjLiAh1NZXRhbHN0YWNrXEFwaVxWMlxHUEJNZXRhZGF0YeoCE01ldGFsc3RhY2s6OkFwaTo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * IP is an IP address which can be used as loadbalancer addresses
+ * IP is an IP address which can be used as loadbalancer addresses.
  *
  * @generated from message metalstack.api.v2.IP
  */
@@ -37,7 +37,7 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
   meta?: Meta | undefined;
 
   /**
-   * Ip is either ipv4 or ipv6 address
+   * Ip is either ipv4 or ipv6 address.
    *
    * @generated from field: string ip = 3;
    */
@@ -58,14 +58,14 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
   description: string;
 
   /**
-   * Network is the network this ip belongs to
+   * Network is the network this ip belongs to.
    *
    * @generated from field: string network = 6;
    */
   network: string;
 
   /**
-   * Project where this ip address belongs to
+   * Project where this ip address belongs to.
    *
    * @generated from field: string project = 7;
    */
@@ -79,7 +79,7 @@ export type IP = Message<"metalstack.api.v2.IP"> & {
   type: IPType;
 
   /**
-   * Namespace if specified this ip is from a namespaced network and can therefore overlap with others
+   * Namespace if specified this ip is from a namespaced network and can therefore overlap with others.
    * Will be equal with project most of the time
    *
    * @generated from field: optional string namespace = 9;
@@ -95,7 +95,7 @@ export const IPSchema: GenMessage<IP> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_ip, 0);
 
 /**
- * IPServiceGetRequest is the request payload for an IP get request
+ * IPServiceGetRequest is the request payload for an IP get request.
  *
  * @generated from message metalstack.api.v2.IPServiceGetRequest
  */
@@ -130,13 +130,13 @@ export const IPServiceGetRequestSchema: GenMessage<IPServiceGetRequest> = /*@__P
   messageDesc(file_metalstack_api_v2_ip, 1);
 
 /**
- * IPServiceCreateRequest is the request payload for an IP create request
+ * IPServiceCreateRequest is the request payload for an IP create request.
  *
  * @generated from message metalstack.api.v2.IPServiceCreateRequest
  */
 export type IPServiceCreateRequest = Message<"metalstack.api.v2.IPServiceCreateRequest"> & {
   /**
-   * Network from which the IP should be created
+   * Network from which the IP should be created.
    *
    * @generated from field: string network = 1;
    */
@@ -207,7 +207,7 @@ export const IPServiceCreateRequestSchema: GenMessage<IPServiceCreateRequest> = 
   messageDesc(file_metalstack_api_v2_ip, 2);
 
 /**
- * IPServiceUpdateRequest is the request payload for an IP update request
+ * IPServiceUpdateRequest is the request payload for an IP update request.
  *
  * @generated from message metalstack.api.v2.IPServiceUpdateRequest
  */
@@ -220,7 +220,7 @@ export type IPServiceUpdateRequest = Message<"metalstack.api.v2.IPServiceUpdateR
   ip: string;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
    */
@@ -270,7 +270,7 @@ export const IPServiceUpdateRequestSchema: GenMessage<IPServiceUpdateRequest> = 
   messageDesc(file_metalstack_api_v2_ip, 3);
 
 /**
- * IPServiceListRequest is the request payload for an IP list request
+ * IPServiceListRequest is the request payload for an IP list request.
  *
  * @generated from message metalstack.api.v2.IPServiceListRequest
  */
@@ -283,7 +283,7 @@ export type IPServiceListRequest = Message<"metalstack.api.v2.IPServiceListReque
   project: string;
 
   /**
-   * Query to list one or more IPs
+   * Query to list one or more IPs.
    *
    * @generated from field: metalstack.api.v2.IPQuery query = 2;
    */
@@ -298,7 +298,7 @@ export const IPServiceListRequestSchema: GenMessage<IPServiceListRequest> = /*@_
   messageDesc(file_metalstack_api_v2_ip, 4);
 
 /**
- * IPQuery can be used to query a IP or a list of IP
+ * IPQuery can be used to query a IP or a list of IP.
  *
  * @generated from message metalstack.api.v2.IPQuery
  */
@@ -311,7 +311,7 @@ export type IPQuery = Message<"metalstack.api.v2.IPQuery"> & {
   ip?: string | undefined;
 
   /**
-   * Network from which the IPs are to list
+   * Network from which the IPs are to list.
    *
    * @generated from field: optional string network = 2;
    */
@@ -360,14 +360,14 @@ export type IPQuery = Message<"metalstack.api.v2.IPQuery"> & {
   labels?: Labels | undefined;
 
   /**
-   * Static if set to true, this will be a Static ip
+   * Static if set to true, this will be a Static ip.
    *
    * @generated from field: optional metalstack.api.v2.IPType type = 9;
    */
   type?: IPType | undefined;
 
   /**
-   * Address family of the IPs to list, defaults to all address families
+   * Address family of the IPs to list, defaults to all address families.
    *
    * @generated from field: optional metalstack.api.v2.IPAddressFamily address_family = 10;
    */
@@ -389,7 +389,7 @@ export const IPQuerySchema: GenMessage<IPQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_ip, 5);
 
 /**
- * IPServiceDeleteRequest is the request payload for a ip delete request
+ * IPServiceDeleteRequest is the request payload for a ip delete request.
  *
  * @generated from message metalstack.api.v2.IPServiceDeleteRequest
  */
@@ -417,7 +417,7 @@ export const IPServiceDeleteRequestSchema: GenMessage<IPServiceDeleteRequest> = 
   messageDesc(file_metalstack_api_v2_ip, 6);
 
 /**
- * IPServiceGetResponse is the response payload for an IP get request
+ * IPServiceGetResponse is the response payload for an IP get request.
  *
  * @generated from message metalstack.api.v2.IPServiceGetResponse
  */
@@ -438,7 +438,7 @@ export const IPServiceGetResponseSchema: GenMessage<IPServiceGetResponse> = /*@_
   messageDesc(file_metalstack_api_v2_ip, 7);
 
 /**
- * IPServiceUpdateResponse is the response payload for a ip update request
+ * IPServiceUpdateResponse is the response payload for a ip update request.
  *
  * @generated from message metalstack.api.v2.IPServiceUpdateResponse
  */
@@ -459,7 +459,7 @@ export const IPServiceUpdateResponseSchema: GenMessage<IPServiceUpdateResponse> 
   messageDesc(file_metalstack_api_v2_ip, 8);
 
 /**
- * IPServiceCreateResponse is the response payload for an IP create request
+ * IPServiceCreateResponse is the response payload for an IP create request.
  *
  * @generated from message metalstack.api.v2.IPServiceCreateResponse
  */
@@ -480,7 +480,7 @@ export const IPServiceCreateResponseSchema: GenMessage<IPServiceCreateResponse> 
   messageDesc(file_metalstack_api_v2_ip, 9);
 
 /**
- * IPServiceListResponse is the response payload for an IP list request
+ * IPServiceListResponse is the response payload for an IP list request.
  *
  * @generated from message metalstack.api.v2.IPServiceListResponse
  */
@@ -501,7 +501,7 @@ export const IPServiceListResponseSchema: GenMessage<IPServiceListResponse> = /*
   messageDesc(file_metalstack_api_v2_ip, 10);
 
 /**
- * IPServiceDeleteResponse is the response payload for an IP delete request
+ * IPServiceDeleteResponse is the response payload for an IP delete request.
  *
  * @generated from message metalstack.api.v2.IPServiceDeleteResponse
  */
@@ -522,27 +522,27 @@ export const IPServiceDeleteResponseSchema: GenMessage<IPServiceDeleteResponse> 
   messageDesc(file_metalstack_api_v2_ip, 11);
 
 /**
- * IPType specifies different IP address types
+ * IPType specifies different IP address types.
  *
  * @generated from enum metalstack.api.v2.IPType
  */
 export enum IPType {
   /**
-   * IP_TYPE_UNSPECIFIED is not specified
+   * IP_TYPE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: IP_TYPE_UNSPECIFIED = 0;
    */
   IP_TYPE_UNSPECIFIED = 0,
 
   /**
-   * IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage
+   * IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage.
    *
    * @generated from enum value: IP_TYPE_EPHEMERAL = 1;
    */
   IP_TYPE_EPHEMERAL = 1,
 
   /**
-   * IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly
+   * IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly.
    *
    * @generated from enum value: IP_TYPE_STATIC = 2;
    */
@@ -556,27 +556,27 @@ export const IPTypeSchema: GenEnum<IPType> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_ip, 0);
 
 /**
- * IPAddressFamily defines either IPv4 or IPv6 Addressfamily
+ * IPAddressFamily defines either IPv4 or IPv6 Addressfamily.
  *
  * @generated from enum metalstack.api.v2.IPAddressFamily
  */
 export enum IPAddressFamily {
   /**
-   * IP_ADDRESS_FAMILY_UNSPECIFIED is not specified
+   * IP_ADDRESS_FAMILY_UNSPECIFIED is not specified.
    *
    * @generated from enum value: IP_ADDRESS_FAMILY_UNSPECIFIED = 0;
    */
   IP_ADDRESS_FAMILY_UNSPECIFIED = 0,
 
   /**
-   * IP_ADDRESS_FAMILY_V4 defines a IPv4 address
+   * IP_ADDRESS_FAMILY_V4 defines a IPv4 address.
    *
    * @generated from enum value: IP_ADDRESS_FAMILY_V4 = 1;
    */
   IP_ADDRESS_FAMILY_V4 = 1,
 
   /**
-   * IP_ADDRESS_FAMILY_V6 defines a IPv6 address
+   * IP_ADDRESS_FAMILY_V6 defines a IPv6 address.
    *
    * @generated from enum value: IP_ADDRESS_FAMILY_V6 = 2;
    */

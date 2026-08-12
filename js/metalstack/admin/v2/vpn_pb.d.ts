@@ -19,20 +19,20 @@ export type VPNServiceAuthKeyRequest = Message<"metalstack.admin.v2.VPNServiceAu
      */
     project: string;
     /**
-     * Ephemeral defines if the authentication key should be ephemeral
+     * Ephemeral defines if the authentication key should be ephemeral.
      *
      * @generated from field: bool ephemeral = 2;
      */
     ephemeral: boolean;
     /**
-     * Expires defines the duration after which the authentication key expires
+     * Expires defines the duration after which the authentication key expires.
      *
      * @generated from field: google.protobuf.Duration expires = 3;
      */
     expires?: Duration | undefined;
     /**
-     * Reason must be provided why access to the VPN is requested
-     * Reason is only forwarded to an audit sink
+     * Reason must be provided why access to the VPN is requested.
+     * Reason is only forwarded to an audit sink.
      *
      * @generated from field: string reason = 4;
      */
@@ -50,20 +50,20 @@ export declare const VPNServiceAuthKeyRequestSchema: GenMessage<VPNServiceAuthKe
  */
 export type VPNServiceAuthKeyResponse = Message<"metalstack.admin.v2.VPNServiceAuthKeyResponse"> & {
     /**
-     * Address is the address of the VPN control plane
+     * Address is the address of the VPN control plane.
      *
      * @generated from field: string address = 1;
      */
     address: string;
     /**
-     * AuthKey is the key to connect to the VPN at the given address
-     * This key can only be seen once
+     * AuthKey is the key to connect to the VPN at the given address.
+     * This key can only be seen once.
      *
      * @generated from field: string auth_key = 2;
      */
     authKey: string;
     /**
-     * Ephemeral defines if the authentication key should be ephemeral
+     * Ephemeral defines if the authentication key should be ephemeral.
      *
      * @generated from field: bool ephemeral = 3;
      */
@@ -93,7 +93,7 @@ export declare const VPNServiceAuthKeyResponseSchema: GenMessage<VPNServiceAuthK
  */
 export type VPNServiceListNodesRequest = Message<"metalstack.admin.v2.VPNServiceListNodesRequest"> & {
     /**
-     * Project filters nodes by this project
+     * Project filters nodes by this project.
      *
      * @generated from field: optional string project = 1;
      */

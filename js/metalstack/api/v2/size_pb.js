@@ -45,7 +45,7 @@ export const SizeConstraintSchema = /*@__PURE__*/ messageDesc(file_metalstack_ap
  */
 export const SizeQuerySchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_size, 6);
 /**
- * SizeConstraintType defines the property for which a constraint is defined
+ * SizeConstraintType defines the property for which a constraint is defined.
  *
  * @generated from enum metalstack.api.v2.SizeConstraintType
  */
@@ -58,25 +58,25 @@ export var SizeConstraintType;
      */
     SizeConstraintType[SizeConstraintType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * SIZE_CONSTRAINT_TYPE_CORES defines the number of cores as property
+     * SIZE_CONSTRAINT_TYPE_CORES defines the number of cores as property.
      *
      * @generated from enum value: SIZE_CONSTRAINT_TYPE_CORES = 1;
      */
     SizeConstraintType[SizeConstraintType["CORES"] = 1] = "CORES";
     /**
-     * SIZE_CONSTRAINT_TYPE_MEMORY defines the amount of memory as property
+     * SIZE_CONSTRAINT_TYPE_MEMORY defines the amount of memory as property.
      *
      * @generated from enum value: SIZE_CONSTRAINT_TYPE_MEMORY = 2;
      */
     SizeConstraintType[SizeConstraintType["MEMORY"] = 2] = "MEMORY";
     /**
-     * SIZE_CONSTRAINT_TYPE_STORAGE defines the amount of storage as property
+     * SIZE_CONSTRAINT_TYPE_STORAGE defines the amount of storage as property.
      *
      * @generated from enum value: SIZE_CONSTRAINT_TYPE_STORAGE = 3;
      */
     SizeConstraintType[SizeConstraintType["STORAGE"] = 3] = "STORAGE";
     /**
-     * SIZE_CONSTRAINT_TYPE_GPU defines the number of gpus as property
+     * SIZE_CONSTRAINT_TYPE_GPU defines the number of gpus as property.
      *
      * @generated from enum value: SIZE_CONSTRAINT_TYPE_GPU = 4;
      */

@@ -74,7 +74,7 @@ export const SizeImageConstraintServiceCreateRequestSchema: GenMessage<SizeImage
  */
 export type SizeImageConstraintServiceCreateResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceCreateResponse"> & {
   /**
-   * SizeImageConstraint contains the created constraint
+   * SizeImageConstraint contains the created constraint.
    *
    * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
    */
@@ -102,7 +102,7 @@ export type SizeImageConstraintServiceUpdateRequest = Message<"metalstack.admin.
   size: string;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
    */
@@ -144,7 +144,7 @@ export const SizeImageConstraintServiceUpdateRequestSchema: GenMessage<SizeImage
  */
 export type SizeImageConstraintServiceUpdateResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceUpdateResponse"> & {
   /**
-   * SizeImageConstraint contains the updated constraint
+   * SizeImageConstraint contains the updated constraint.
    *
    * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
    */
@@ -186,7 +186,7 @@ export const SizeImageConstraintServiceDeleteRequestSchema: GenMessage<SizeImage
  */
 export type SizeImageConstraintServiceDeleteResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceDeleteResponse"> & {
   /**
-   * SizeImageConstraint contains the deleted constraint
+   * SizeImageConstraint contains the deleted constraint.
    *
    * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
    */
@@ -228,7 +228,7 @@ export const SizeImageConstraintServiceGetRequestSchema: GenMessage<SizeImageCon
  */
 export type SizeImageConstraintServiceGetResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceGetResponse"> & {
   /**
-   * SizeImageConstraint contains the retrieved constraint
+   * SizeImageConstraint contains the retrieved constraint.
    *
    * @generated from field: metalstack.api.v2.SizeImageConstraint size_image_constraint = 1;
    */
@@ -249,7 +249,7 @@ export const SizeImageConstraintServiceGetResponseSchema: GenMessage<SizeImageCo
  */
 export type SizeImageConstraintServiceListRequest = Message<"metalstack.admin.v2.SizeImageConstraintServiceListRequest"> & {
   /**
-   * Query for size image constraints
+   * Query for size image constraints.
    *
    * @generated from field: metalstack.api.v2.SizeImageConstraintQuery query = 1;
    */
@@ -270,7 +270,7 @@ export const SizeImageConstraintServiceListRequestSchema: GenMessage<SizeImageCo
  */
 export type SizeImageConstraintServiceListResponse = Message<"metalstack.admin.v2.SizeImageConstraintServiceListResponse"> & {
   /**
-   * SizeImageConstraints contains the list of constraints
+   * SizeImageConstraints contains the list of constraints.
    *
    * @generated from field: repeated metalstack.api.v2.SizeImageConstraint size_image_constraints = 1;
    */

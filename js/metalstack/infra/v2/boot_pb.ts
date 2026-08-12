@@ -18,7 +18,7 @@ export const file_metalstack_infra_v2_boot: GenFile = /*@__PURE__*/
   fileDesc("Ch5tZXRhbHN0YWNrL2luZnJhL3YyL2Jvb3QucHJvdG8SE21ldGFsc3RhY2suaW5mcmEudjIiUAoWQm9vdFNlcnZpY2VEaGNwUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIeCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBIhkKF0Jvb3RTZXJ2aWNlRGhjcFJlc3BvbnNlIlIKFkJvb3RTZXJ2aWNlQm9vdFJlcXVlc3QSGAoDbWFjGAEgASgJQgu6SAhyBrizrrECARIeCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBIn0KF0Jvb3RTZXJ2aWNlQm9vdFJlc3BvbnNlEhsKBmtlcm5lbBgBIAEoCUILukgIcgbgs66xAgESFgoOaW5pdF9yYW1fZGlza3MYAiADKAkSIQoHY21kbGluZRgDIAEoCUILukgIcgbIs66xAgFIAIgBAUIKCghfY21kbGluZSLJAgoaQm9vdFNlcnZpY2VSZWdpc3RlclJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESNAoIaGFyZHdhcmUYAiABKAsyIi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lSGFyZHdhcmUSLAoEYmlvcxgDIAEoCzIeLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCaW9zEioKA2JtYxgEIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUMSKgoDZnJ1GAUgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUZSVRIMCgR0YWdzGAYgAygJEikKFG1ldGFsX2hhbW1lcl92ZXJzaW9uGAcgASgJQgu6SAhyBsizrrECARIeCglwYXJ0aXRpb24YCCABKAlCC7pICHIG0LOusQIBInAKG0Jvb3RTZXJ2aWNlUmVnaXN0ZXJSZXNwb25zZRIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIZCgRzaXplGAIgASgJQgu6SAhyBsizrrECARIeCglwYXJ0aXRpb24YAyABKAlCC7pICHIG0LOusQIBIjAKFkJvb3RTZXJ2aWNlV2FpdFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQEiUwoXQm9vdFNlcnZpY2VXYWl0UmVzcG9uc2USOAoKYWxsb2NhdGlvbhgBIAEoCzIkLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVBbGxvY2F0aW9uImcKJ0Jvb3RTZXJ2aWNlSW5zdGFsbGF0aW9uU3VjY2VlZGVkUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIkChBjb25zb2xlX3Bhc3N3b3JkGAIgASgJQgq6SAdyBRACGIABIioKKEJvb3RTZXJ2aWNlSW5zdGFsbGF0aW9uU3VjY2VlZGVkUmVzcG9uc2UiPQojQm9vdFNlcnZpY2VTdXBlclVzZXJQYXNzd29yZFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQEiaQokQm9vdFNlcnZpY2VTdXBlclVzZXJQYXNzd29yZFJlc3BvbnNlEhgKEGZlYXR1cmVfZGlzYWJsZWQYASABKAgSJwoTc3VwZXJfdXNlcl9wYXNzd29yZBgCIAEoCUIKukgHcgUQAhiAATKLBgoLQm9vdFNlcnZpY2USbAoERGhjcBIrLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VEaGNwUmVxdWVzdBosLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VEaGNwUmVzcG9uc2UiCeDzGALq8xgBARJsCgRCb290EisubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZUJvb3RSZXF1ZXN0GiwubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZUJvb3RSZXNwb25zZSIJ4PMYAurzGAEBEpMBChFTdXBlclVzZXJQYXNzd29yZBI4Lm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VTdXBlclVzZXJQYXNzd29yZFJlcXVlc3QaOS5tZXRhbHN0YWNrLmluZnJhLnYyLkJvb3RTZXJ2aWNlU3VwZXJVc2VyUGFzc3dvcmRSZXNwb25zZSIJ4PMYAvLzGAEBEngKCFJlZ2lzdGVyEi8ubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZVJlZ2lzdGVyUmVxdWVzdBowLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VSZWdpc3RlclJlc3BvbnNlIgng8xgC8vMYAQESbgoEV2FpdBIrLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VXYWl0UmVxdWVzdBosLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VXYWl0UmVzcG9uc2UiCeDzGALy8xgBATABEp8BChVJbnN0YWxsYXRpb25TdWNjZWVkZWQSPC5tZXRhbHN0YWNrLmluZnJhLnYyLkJvb3RTZXJ2aWNlSW5zdGFsbGF0aW9uU3VjY2VlZGVkUmVxdWVzdBo9Lm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VJbnN0YWxsYXRpb25TdWNjZWVkZWRSZXNwb25zZSIJ4PMYAvLzGAEBQs0BChdjb20ubWV0YWxzdGFjay5pbmZyYS52MkIJQm9vdFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svaW5mcmEvdjI7aW5mcmF2MqICA01JWKoCE01ldGFsc3RhY2suSW5mcmEuVjLKAhNNZXRhbHN0YWNrXEluZnJhXFYy4gIfTWV0YWxzdGFja1xJbmZyYVxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkluZnJhOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * BootServiceDhcpRequest is called once a machine issues a dhcp request
+ * BootServiceDhcpRequest is called once a machine issues a dhcp request.
  *
  * @generated from message metalstack.infra.v2.BootServiceDhcpRequest
  */
@@ -31,7 +31,7 @@ export type BootServiceDhcpRequest = Message<"metalstack.infra.v2.BootServiceDhc
   uuid: string;
 
   /**
-   * Partition where this machine is located
+   * Partition where this machine is located.
    *
    * @generated from field: string partition = 2;
    */
@@ -46,7 +46,7 @@ export const BootServiceDhcpRequestSchema: GenMessage<BootServiceDhcpRequest> = 
   messageDesc(file_metalstack_infra_v2_boot, 0);
 
 /**
- * BootServiceDhcpResponse contains the response to a dhcp request
+ * BootServiceDhcpResponse contains the response to a dhcp request.
  *
  * @generated from message metalstack.infra.v2.BootServiceDhcpResponse
  */
@@ -61,7 +61,7 @@ export const BootServiceDhcpResponseSchema: GenMessage<BootServiceDhcpResponse> 
   messageDesc(file_metalstack_infra_v2_boot, 1);
 
 /**
- * BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac
+ * BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac.
  *
  * @generated from message metalstack.infra.v2.BootServiceBootRequest
  */
@@ -74,7 +74,7 @@ export type BootServiceBootRequest = Message<"metalstack.infra.v2.BootServiceBoo
   mac: string;
 
   /**
-   * Partition where this machine is located
+   * Partition where this machine is located.
    *
    * @generated from field: string partition = 2;
    */
@@ -89,27 +89,27 @@ export const BootServiceBootRequestSchema: GenMessage<BootServiceBootRequest> = 
   messageDesc(file_metalstack_infra_v2_boot, 2);
 
 /**
- * BootServiceBootResponse contains additional infos which are required to boot a machine
+ * BootServiceBootResponse contains additional infos which are required to boot a machine.
  *
  * @generated from message metalstack.infra.v2.BootServiceBootResponse
  */
 export type BootServiceBootResponse = Message<"metalstack.infra.v2.BootServiceBootResponse"> & {
   /**
-   * Kernel is the url to the linux kernel to boot
+   * Kernel is the url to the linux kernel to boot.
    *
    * @generated from field: string kernel = 1;
    */
   kernel: string;
 
   /**
-   * Initial ram disk is the url to the initial ram disk to boot
+   * Initial ram disk is the url to the initial ram disk to boot.
    *
    * @generated from field: repeated string init_ram_disks = 2;
    */
   initRamDisks: string[];
 
   /**
-   * CMDLine contains kernel command line parameters to boot
+   * CMDLine contains kernel command line parameters to boot.
    *
    * @generated from field: optional string cmdline = 3;
    */
@@ -124,7 +124,7 @@ export const BootServiceBootResponseSchema: GenMessage<BootServiceBootResponse> 
   messageDesc(file_metalstack_infra_v2_boot, 3);
 
 /**
- * BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible
+ * BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible.
  *
  * @generated from message metalstack.infra.v2.BootServiceRegisterRequest
  */
@@ -172,14 +172,14 @@ export type BootServiceRegisterRequest = Message<"metalstack.infra.v2.BootServic
   tags: string[];
 
   /**
-   * MetalHammer version this machine was booted into
+   * MetalHammer version this machine was booted into.
    *
    * @generated from field: string metal_hammer_version = 7;
    */
   metalHammerVersion: string;
 
   /**
-   * Partition where this machine is located
+   * Partition where this machine is located.
    *
    * @generated from field: string partition = 8;
    */
@@ -207,7 +207,7 @@ export type BootServiceRegisterResponse = Message<"metalstack.infra.v2.BootServi
   uuid: string;
 
   /**
-   * Size is the calculated size from given hardware details
+   * Size is the calculated size from given hardware details.
    *
    * @generated from field: string size = 2;
    */
@@ -229,7 +229,7 @@ export const BootServiceRegisterResponseSchema: GenMessage<BootServiceRegisterRe
   messageDesc(file_metalstack_infra_v2_boot, 5);
 
 /**
- * BootServiceWaitRequest is called when a machine was registered and is waiting for allocation
+ * BootServiceWaitRequest is called when a machine was registered and is waiting for allocation.
  *
  * @generated from message metalstack.infra.v2.BootServiceWaitRequest
  */
@@ -256,7 +256,7 @@ export const BootServiceWaitRequestSchema: GenMessage<BootServiceWaitRequest> = 
  */
 export type BootServiceWaitResponse = Message<"metalstack.infra.v2.BootServiceWaitResponse"> & {
   /**
-   * Allocation contains the machine.allocation to actually install the machine
+   * Allocation contains the machine.allocation to actually install the machine.
    *
    * @generated from field: metalstack.api.v2.MachineAllocation allocation = 1;
    */
@@ -271,7 +271,7 @@ export const BootServiceWaitResponseSchema: GenMessage<BootServiceWaitResponse> 
   messageDesc(file_metalstack_infra_v2_boot, 7);
 
 /**
- * BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded
+ * BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded.
  *
  * @generated from message metalstack.infra.v2.BootServiceInstallationSucceededRequest
  */
@@ -299,7 +299,7 @@ export const BootServiceInstallationSucceededRequestSchema: GenMessage<BootServi
   messageDesc(file_metalstack_infra_v2_boot, 8);
 
 /**
- * BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest
+ * BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest.
  *
  * @generated from message metalstack.infra.v2.BootServiceInstallationSucceededResponse
  */
@@ -348,7 +348,7 @@ export type BootServiceSuperUserPasswordResponse = Message<"metalstack.infra.v2.
   featureDisabled: boolean;
 
   /**
-   * SuperUserPassword is the password of the superuser on the ipmi device
+   * SuperUserPassword is the password of the superuser on the ipmi device.
    *
    * @generated from field: string super_user_password = 2;
    */

@@ -17,7 +17,7 @@ export const file_metalstack_api_v2_filesystem: GenFile = /*@__PURE__*/
   fileDesc("CiJtZXRhbHN0YWNrL2FwaS92Mi9maWxlc3lzdGVtLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiI2ChtGaWxlc3lzdGVtU2VydmljZUdldFJlcXVlc3QSFwoCaWQYASABKAlCC7pICHIGwLOusQIBIkMKHEZpbGVzeXN0ZW1TZXJ2aWNlTGlzdFJlcXVlc3QSHAoCaWQYASABKAlCC7pICHIGwLOusQIBSACIAQFCBQoDX2lkIl4KHEZpbGVzeXN0ZW1TZXJ2aWNlR2V0UmVzcG9uc2USPgoRZmlsZXN5c3RlbV9sYXlvdXQYASABKAsyIy5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtTGF5b3V0ImAKHUZpbGVzeXN0ZW1TZXJ2aWNlTGlzdFJlc3BvbnNlEj8KEmZpbGVzeXN0ZW1fbGF5b3V0cxgBIAMoCzIjLm1ldGFsc3RhY2suYXBpLnYyLkZpbGVzeXN0ZW1MYXlvdXQi7AMKEEZpbGVzeXN0ZW1MYXlvdXQSFwoCaWQYASABKAlCC7pICHIGwLOusQIBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEh4KBG5hbWUYAyABKAlCC7pICHIGwLOusQIBSACIAQESJQoLZGVzY3JpcHRpb24YBCABKAlCC7pICHIGyLOusQIBSAGIAQESMgoLZmlsZXN5c3RlbXMYBSADKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtEiYKBWRpc2tzGAYgAygLMhcubWV0YWxzdGFjay5hcGkudjIuRGlzaxIlCgRyYWlkGAcgAygLMhcubWV0YWxzdGFjay5hcGkudjIuUmFpZBI1Cg12b2x1bWVfZ3JvdXBzGAggAygLMh4ubWV0YWxzdGFjay5hcGkudjIuVm9sdW1lR3JvdXASOQoPbG9naWNhbF92b2x1bWVzGAkgAygLMiAubWV0YWxzdGFjay5hcGkudjIuTG9naWNhbFZvbHVtZRJDCgtjb25zdHJhaW50cxgKIAEoCzIuLm1ldGFsc3RhY2suYXBpLnYyLkZpbGVzeXN0ZW1MYXlvdXRDb25zdHJhaW50c0IHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb24ipwEKG0ZpbGVzeXN0ZW1MYXlvdXRDb25zdHJhaW50cxINCgVzaXplcxgBIAMoCRJKCgZpbWFnZXMYAiADKAsyOi5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtTGF5b3V0Q29uc3RyYWludHMuSW1hZ2VzRW50cnkaLQoLSW1hZ2VzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASL1AgoKRmlsZXN5c3RlbRIbCgZkZXZpY2UYASABKAlCC7pICHIGwLOusQIBEjYKBmZvcm1hdBgCIAEoDjIZLm1ldGFsc3RhY2suYXBpLnYyLkZvcm1hdEILukgIyAEBggECEAESHgoEbmFtZRgDIAEoCUILukgIcgbAs66xAgFIAIgBARIlCgtkZXNjcmlwdGlvbhgEIAEoCUILukgIcgbIs66xAgFIAYgBARIdCgRwYXRoGAUgASgJQgq6SAdyBRABGIAgSAKIAQESJQoFbGFiZWwYBiABKAlCEbpIDnIMwLOusQIB8LOusQIBSAOIAQESKwoNbW91bnRfb3B0aW9ucxgHIAMoCUIUukgRkgEOECAYASIIcgaAtK6xAgESLAoOY3JlYXRlX29wdGlvbnMYCCADKAlCFLpIEZIBDhAgGAEiCHIGgLSusQIBQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIHCgVfcGF0aEIICgZfbGFiZWwiXwoERGlzaxIhCgZkZXZpY2UYASABKAlCEbpIDnIMwLOusQIB8LOusQIBEjQKCnBhcnRpdGlvbnMYAiADKAsyIC5tZXRhbHN0YWNrLmFwaS52Mi5EaXNrUGFydGl0aW9uItEBCgRSYWlkEiUKCmFycmF5X25hbWUYASABKAlCEbpIDnIMwLOusQIB8LOusQIBEioKB2RldmljZXMYAiADKAlCGbpIFpIBE9Cks7ECARCAASIIcgbAs66xAgESOAoFbGV2ZWwYAyABKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5SYWlkTGV2ZWxCC7pICMgBAYIBAhABEiwKDmNyZWF0ZV9vcHRpb25zGAQgAygJQhS6SBGSAQ4QIBgBIghyBoC0rrECARIOCgZzcGFyZXMYBSABKAUiqwEKDURpc2tQYXJ0aXRpb24SDgoGbnVtYmVyGAEgASgNEiUKBWxhYmVsGAIgASgJQhG6SA5yDMCzrrECAfCzrrECAUgAiAEBEgwKBHNpemUYAyABKAQSPgoIZ3B0X3R5cGUYBCABKA4yGi5tZXRhbHN0YWNrLmFwaS52Mi5HUFRUeXBlQgu6SAjIAQGCAQIQAUgBiAEBQggKBl9sYWJlbEILCglfZ3B0X3R5cGUifQoLVm9sdW1lR3JvdXASGQoEbmFtZRgBIAEoCUILukgIcgbAs66xAgESKgoHZGV2aWNlcxgCIAMoCUIZukgWkgET0KSzsQIBEIABIghyBsCzrrECARInCgR0YWdzGAMgAygJQhm6SBaSARPQpLOxAgEQgAEiCHIGwLOusQIBIpMBCg1Mb2dpY2FsVm9sdW1lEhkKBG5hbWUYASABKAlCC7pICHIGwLOusQIBEiEKDHZvbHVtZV9ncm91cBgCIAEoCUILukgIcgbAs66xAgESDAoEc2l6ZRgDIAEoBBI2Cghsdm1fdHlwZRgEIAEoDjIaLm1ldGFsc3RhY2suYXBpLnYyLkxWTVR5cGVCCLpIBYIBAhABKoYBCgdMVk1UeXBlEhgKFExWTV9UWVBFX1VOU1BFQ0lGSUVEEAASHwoPTFZNX1RZUEVfTElORUFSEAEaCoKyGQZsaW5lYXISIQoQTFZNX1RZUEVfU1RSSVBFRBACGguCshkHc3RyaXBlZBIdCg5MVk1fVFlQRV9SQUlEMRADGgmCshkFcmFpZDEqxAEKBkZvcm1hdBIWChJGT1JNQVRfVU5TUEVDSUZJRUQQABIZCgtGT1JNQVRfVkZBVBABGgiCshkEdmZhdBIZCgtGT1JNQVRfRVhUMxACGgiCshkEZXh0MxIZCgtGT1JNQVRfRVhUNBADGgiCshkEZXh0NBIZCgtGT1JNQVRfU1dBUBAEGgiCshkEc3dhcBIbCgxGT1JNQVRfVE1QRlMQBRoJgrIZBXRtcGZzEhkKC0ZPUk1BVF9OT05FEAYaCIKyGQRub25lKqMBCgdHUFRUeXBlEhgKFEdQVF9UWVBFX1VOU1BFQ0lGSUVEEAASGwoNR1BUX1RZUEVfQk9PVBABGgiCshkEZWYwMBIcCg5HUFRfVFlQRV9MSU5VWBACGgiCshkEODMwMBIhChNHUFRfVFlQRV9MSU5VWF9SQUlEEAMaCIKyGQRmZDAwEiAKEkdQVF9UWVBFX0xJTlVYX0xWTRAEGgiCshkEOGUwMCpZCglSYWlkTGV2ZWwSGgoWUkFJRF9MRVZFTF9VTlNQRUNJRklFRBAAEhcKDFJBSURfTEVWRUxfMBABGgWCshkBMBIXCgxSQUlEX0xFVkVMXzEQAhoFgrIZATEy+gEKEUZpbGVzeXN0ZW1TZXJ2aWNlEnAKA0dldBIuLm1ldGFsc3RhY2suYXBpLnYyLkZpbGVzeXN0ZW1TZXJ2aWNlR2V0UmVxdWVzdBovLm1ldGFsc3RhY2suYXBpLnYyLkZpbGVzeXN0ZW1TZXJ2aWNlR2V0UmVzcG9uc2UiCNjzGALg8xgCEnMKBExpc3QSLy5tZXRhbHN0YWNrLmFwaS52Mi5GaWxlc3lzdGVtU2VydmljZUxpc3RSZXF1ZXN0GjAubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbVNlcnZpY2VMaXN0UmVzcG9uc2UiCNjzGALg8xgCQsUBChVjb20ubWV0YWxzdGFjay5hcGkudjJCD0ZpbGVzeXN0ZW1Qcm90b1ABWjVnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FwaS92MjthcGl2MqICA01BWKoCEU1ldGFsc3RhY2suQXBpLlYyygIRTWV0YWxzdGFja1xBcGlcVjLiAh1NZXRhbHN0YWNrXEFwaVxWMlxHUEJNZXRhZGF0YeoCE01ldGFsc3RhY2s6OkFwaTo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * FilesystemServiceGetRequest is the request payload for a filesystem get request
+ * FilesystemServiceGetRequest is the request payload for a filesystem get request.
  *
  * @generated from message metalstack.api.v2.FilesystemServiceGetRequest
  */
@@ -38,7 +38,7 @@ export const FilesystemServiceGetRequestSchema: GenMessage<FilesystemServiceGetR
   messageDesc(file_metalstack_api_v2_filesystem, 0);
 
 /**
- * FilesystemServiceListRequest is the request payload for a filesystem list request
+ * FilesystemServiceListRequest is the request payload for a filesystem list request.
  *
  * @generated from message metalstack.api.v2.FilesystemServiceListRequest
  */
@@ -59,7 +59,7 @@ export const FilesystemServiceListRequestSchema: GenMessage<FilesystemServiceLis
   messageDesc(file_metalstack_api_v2_filesystem, 1);
 
 /**
- * FilesystemServiceGetResponse is the response payload for a filesystem get request
+ * FilesystemServiceGetResponse is the response payload for a filesystem get request.
  *
  * @generated from message metalstack.api.v2.FilesystemServiceGetResponse
  */
@@ -80,7 +80,7 @@ export const FilesystemServiceGetResponseSchema: GenMessage<FilesystemServiceGet
   messageDesc(file_metalstack_api_v2_filesystem, 2);
 
 /**
- * FilesystemServiceListResponse is the response payload for a filesystem list request
+ * FilesystemServiceListResponse is the response payload for a filesystem list request.
  *
  * @generated from message metalstack.api.v2.FilesystemServiceListResponse
  */
@@ -135,14 +135,14 @@ export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
   description?: string | undefined;
 
   /**
-   * Filesystems is a list of filesystems to create on a machine
+   * Filesystems is a list of filesystems to create on a machine.
    *
    * @generated from field: repeated metalstack.api.v2.Filesystem filesystems = 5;
    */
   filesystems: Filesystem[];
 
   /**
-   * Disks list of disks that belong to this layout
+   * Disks list of disks that belong to this layout.
    *
    * @generated from field: repeated metalstack.api.v2.Disk disks = 6;
    */
@@ -156,14 +156,14 @@ export type FilesystemLayout = Message<"metalstack.api.v2.FilesystemLayout"> & {
   raid: Raid[];
 
   /**
-   * VolumeGroups list of volumegroups to create
+   * VolumeGroups list of volumegroups to create.
    *
    * @generated from field: repeated metalstack.api.v2.VolumeGroup volume_groups = 8;
    */
   volumeGroups: VolumeGroup[];
 
   /**
-   * LogicalVolumes list of logicalvolumes to create
+   * LogicalVolumes list of logicalvolumes to create.
    *
    * @generated from field: repeated metalstack.api.v2.LogicalVolume logical_volumes = 9;
    */
@@ -191,7 +191,7 @@ export const FilesystemLayoutSchema: GenMessage<FilesystemLayout> = /*@__PURE__*
  */
 export type FilesystemLayoutConstraints = Message<"metalstack.api.v2.FilesystemLayoutConstraints"> & {
   /**
-   * Sizes list of sizes this layout applies to
+   * Sizes list of sizes this layout applies to.
    * this could either be a concrete size, or a asterisk to match all sizes
    *
    * @generated from field: repeated string sizes = 1;
@@ -199,7 +199,7 @@ export type FilesystemLayoutConstraints = Message<"metalstack.api.v2.FilesystemL
   sizes: string[];
 
   /**
-   * Images list of images this layout applies to in the following form
+   * Images list of images this layout applies to in the following form.
    * key must be the first part of available images, e.g. the name of the image
    * value must be a semver match expression with the constraint and the version separated by space
    * this would match all debian images which are greater or equal 12.0
@@ -301,7 +301,7 @@ export type Disk = Message<"metalstack.api.v2.Disk"> & {
   device: string;
 
   /**
-   * Partitions list of partitions to create on this disk
+   * Partitions list of partitions to create on this disk.
    *
    * @generated from field: repeated metalstack.api.v2.DiskPartition partitions = 2;
    */
@@ -329,14 +329,14 @@ export type Raid = Message<"metalstack.api.v2.Raid"> & {
   arrayName: string;
 
   /**
-   * Devices list of devices to form the raid array from
+   * Devices list of devices to form the raid array from.
    *
    * @generated from field: repeated string devices = 2;
    */
   devices: string[];
 
   /**
-   * Level raid level to create, should be 0 or 1
+   * Level raid level to create, should be 0 or 1.
    *
    * @generated from field: metalstack.api.v2.RaidLevel level = 3;
    */
@@ -371,7 +371,7 @@ export const RaidSchema: GenMessage<Raid> = /*@__PURE__*/
  */
 export type DiskPartition = Message<"metalstack.api.v2.DiskPartition"> & {
   /**
-   * Number partition number, will be appended to partitionprefix to create the final devicename
+   * Number partition number, will be appended to partitionprefix to create the final devicename.
    *
    * @generated from field: uint32 number = 1;
    */
@@ -420,14 +420,14 @@ export type VolumeGroup = Message<"metalstack.api.v2.VolumeGroup"> & {
   name: string;
 
   /**
-   * Devices list of devices to form the volume group from
+   * Devices list of devices to form the volume group from.
    *
    * @generated from field: repeated string devices = 2;
    */
   devices: string[];
 
   /**
-   * Tags list of tags to add to the volume group
+   * Tags list of tags to add to the volume group.
    *
    * @generated from field: repeated string tags = 3;
    */
@@ -490,7 +490,7 @@ export const LogicalVolumeSchema: GenMessage<LogicalVolume> = /*@__PURE__*/
  */
 export enum LVMType {
   /**
-   * LVM_TYPE_UNSPECIFIED is not specified
+   * LVM_TYPE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: LVM_TYPE_UNSPECIFIED = 0;
    */
@@ -525,7 +525,7 @@ export const LVMTypeSchema: GenEnum<LVMType> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_filesystem, 0);
 
 /**
- * Format specifies the filesystem to use on a volume
+ * Format specifies the filesystem to use on a volume.
  *
  * @generated from enum metalstack.api.v2.Format
  */
@@ -538,35 +538,35 @@ export enum Format {
   UNSPECIFIED = 0,
 
   /**
-   * FORMAT_VFAT is used for the UEFI boot partition
+   * FORMAT_VFAT is used for the UEFI boot partition.
    *
    * @generated from enum value: FORMAT_VFAT = 1;
    */
   VFAT = 1,
 
   /**
-   * FORMAT_EXT3 is usually only used for /boot
+   * FORMAT_EXT3 is usually only used for /boot.
    *
    * @generated from enum value: FORMAT_EXT3 = 2;
    */
   EXT3 = 2,
 
   /**
-   * FORMAT_EXT4 is the default fs
+   * FORMAT_EXT4 is the default fs.
    *
    * @generated from enum value: FORMAT_EXT4 = 3;
    */
   EXT4 = 3,
 
   /**
-   * FORMAT_SWAP is for the swap partition
+   * FORMAT_SWAP is for the swap partition.
    *
    * @generated from enum value: FORMAT_SWAP = 4;
    */
   SWAP = 4,
 
   /**
-   * FORMAT_TMPFS is used for a memory filesystem typically /tmp
+   * FORMAT_TMPFS is used for a memory filesystem typically /tmp.
    *
    * @generated from enum value: FORMAT_TMPFS = 5;
    */
@@ -587,13 +587,13 @@ export const FormatSchema: GenEnum<Format> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_filesystem, 1);
 
 /**
- * GPTType specifies the partition type in uefi systems
+ * GPTType specifies the partition type in uefi systems.
  *
  * @generated from enum metalstack.api.v2.GPTType
  */
 export enum GPTType {
   /**
-   * GPT_TYPE_UNSPECIFIED is no specified
+   * GPT_TYPE_UNSPECIFIED is no specified.
    *
    * @generated from enum value: GPT_TYPE_UNSPECIFIED = 0;
    */
@@ -635,27 +635,27 @@ export const GPTTypeSchema: GenEnum<GPTType> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_filesystem, 2);
 
 /**
- * RaidLevel defines howto mirror two or more block devices
+ * RaidLevel defines howto mirror two or more block devices.
  *
  * @generated from enum metalstack.api.v2.RaidLevel
  */
 export enum RaidLevel {
   /**
-   * RAID_LEVEL_UNSPECIFIED is not specified
+   * RAID_LEVEL_UNSPECIFIED is not specified.
    *
    * @generated from enum value: RAID_LEVEL_UNSPECIFIED = 0;
    */
   RAID_LEVEL_UNSPECIFIED = 0,
 
   /**
-   * RAID_LEVEL_0 is a stripe of two or more disks
+   * RAID_LEVEL_0 is a stripe of two or more disks.
    *
    * @generated from enum value: RAID_LEVEL_0 = 1;
    */
   RAID_LEVEL_0 = 1,
 
   /**
-   * RAID_LEVEL_1 is a mirror of two disks
+   * RAID_LEVEL_1 is a mirror of two disks.
    *
    * @generated from enum value: RAID_LEVEL_1 = 2;
    */

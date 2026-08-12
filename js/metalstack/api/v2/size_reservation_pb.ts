@@ -17,7 +17,7 @@ export const file_metalstack_api_v2_size_reservation: GenFile = /*@__PURE__*/
   fileDesc("CihtZXRhbHN0YWNrL2FwaS92Mi9zaXplX3Jlc2VydmF0aW9uLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiJTCiBTaXplUmVzZXJ2YXRpb25TZXJ2aWNlR2V0UmVxdWVzdBIUCgJpZBgBIAEoCUIIukgFcgOwAQESGQoHcHJvamVjdBgCIAEoCUIIukgFcgOwAQEidgohU2l6ZVJlc2VydmF0aW9uU2VydmljZUxpc3RSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEjYKBXF1ZXJ5GAIgASgLMicubWV0YWxzdGFjay5hcGkudjIuU2l6ZVJlc2VydmF0aW9uUXVlcnkiYQohU2l6ZVJlc2VydmF0aW9uU2VydmljZUdldFJlc3BvbnNlEjwKEHNpemVfcmVzZXJ2YXRpb24YASABKAsyIi5tZXRhbHN0YWNrLmFwaS52Mi5TaXplUmVzZXJ2YXRpb24iYwoiU2l6ZVJlc2VydmF0aW9uU2VydmljZUxpc3RSZXNwb25zZRI9ChFzaXplX3Jlc2VydmF0aW9ucxgBIAMoCzIiLm1ldGFsc3RhY2suYXBpLnYyLlNpemVSZXNlcnZhdGlvbiKHAgoPU2l6ZVJlc2VydmF0aW9uEhcKAmlkGAEgASgJQgu6SAjYAQFyA7ABARIlCgRtZXRhGAIgASgLMhcubWV0YWxzdGFjay5hcGkudjIuTWV0YRIZCgRuYW1lGAMgASgJQgu6SAhyBsCzrrECARIgCgtkZXNjcmlwdGlvbhgEIAEoCUILukgIcgbIs66xAgESGQoHcHJvamVjdBgFIAEoCUIIukgFcgOwAQESGQoEc2l6ZRgGIAEoCUILukgIcgbAs66xAgESKAoKcGFydGl0aW9ucxgHIAMoCUIUukgRkgEOCAEYASIIcgbQs66xAgESFwoGYW1vdW50GAggASgFQge6SAQaAiAAItsCChRTaXplUmVzZXJ2YXRpb25RdWVyeRIZCgJpZBgBIAEoCUIIukgFcgOwAQFIAIgBARIeCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECAUgBiAEBEiUKC2Rlc2NyaXB0aW9uGAMgASgJQgu6SAhyBsizrrECAUgCiAEBEh4KBHNpemUYBCABKAlCC7pICHIGwLOusQIBSAOIAQESHgoHcHJvamVjdBgFIAEoCUIIukgFcgOwAQFIBIgBARIjCglwYXJ0aXRpb24YBiABKAlCC7pICHIG0LOusQIBSAWIAQESLgoGbGFiZWxzGAcgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzSAaIAQFCBQoDX2lkQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIHCgVfc2l6ZUIKCghfcHJvamVjdEIMCgpfcGFydGl0aW9uQgkKB19sYWJlbHMymgIKFlNpemVSZXNlcnZhdGlvblNlcnZpY2USfQoDR2V0EjMubWV0YWxzdGFjay5hcGkudjIuU2l6ZVJlc2VydmF0aW9uU2VydmljZUdldFJlcXVlc3QaNC5tZXRhbHN0YWNrLmFwaS52Mi5TaXplUmVzZXJ2YXRpb25TZXJ2aWNlR2V0UmVzcG9uc2UiC8rzGAMBAgPg8xgCEoABCgRMaXN0EjQubWV0YWxzdGFjay5hcGkudjIuU2l6ZVJlc2VydmF0aW9uU2VydmljZUxpc3RSZXF1ZXN0GjUubWV0YWxzdGFjay5hcGkudjIuU2l6ZVJlc2VydmF0aW9uU2VydmljZUxpc3RSZXNwb25zZSILyvMYAwECA+DzGAJCygEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkIUU2l6ZVJlc2VydmF0aW9uUHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * SizeReservationServiceGetRequest is the request payload for a size get request
+ * SizeReservationServiceGetRequest is the request payload for a size get request.
  *
  * @generated from message metalstack.api.v2.SizeReservationServiceGetRequest
  */
@@ -45,7 +45,7 @@ export const SizeReservationServiceGetRequestSchema: GenMessage<SizeReservationS
   messageDesc(file_metalstack_api_v2_size_reservation, 0);
 
 /**
- * SizeReservationServiceListRequest is the request payload for a size list request
+ * SizeReservationServiceListRequest is the request payload for a size list request.
  *
  * @generated from message metalstack.api.v2.SizeReservationServiceListRequest
  */
@@ -58,7 +58,7 @@ export type SizeReservationServiceListRequest = Message<"metalstack.api.v2.SizeR
   project: string;
 
   /**
-   * Query for size reservations
+   * Query for size reservations.
    *
    * @generated from field: metalstack.api.v2.SizeReservationQuery query = 2;
    */
@@ -73,7 +73,7 @@ export const SizeReservationServiceListRequestSchema: GenMessage<SizeReservation
   messageDesc(file_metalstack_api_v2_size_reservation, 1);
 
 /**
- * SizeReservationServiceGetResponse is the response payload for a size reservation get request
+ * SizeReservationServiceGetResponse is the response payload for a size reservation get request.
  *
  * @generated from message metalstack.api.v2.SizeReservationServiceGetResponse
  */
@@ -94,7 +94,7 @@ export const SizeReservationServiceGetResponseSchema: GenMessage<SizeReservation
   messageDesc(file_metalstack_api_v2_size_reservation, 2);
 
 /**
- * SizeReservationServiceListResponse is the response payload for a size reservation list request
+ * SizeReservationServiceListResponse is the response payload for a size reservation list request.
  *
  * @generated from message metalstack.api.v2.SizeReservationServiceListResponse
  */
@@ -185,7 +185,7 @@ export const SizeReservationSchema: GenMessage<SizeReservation> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_size_reservation, 4);
 
 /**
- * SizeReservationQuery is used to search size reservations
+ * SizeReservationQuery is used to search size reservations.
  *
  * @generated from message metalstack.api.v2.SizeReservationQuery
  */
@@ -233,7 +233,7 @@ export type SizeReservationQuery = Message<"metalstack.api.v2.SizeReservationQue
   partition?: string | undefined;
 
   /**
-   * Labels lists only size reservations containing the given labels
+   * Labels lists only size reservations containing the given labels.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 7;
    */

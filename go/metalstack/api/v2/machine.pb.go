@@ -24,15 +24,15 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// IPProtocol defines tcp|udp
+// IPProtocol defines tcp|udp.
 type IPProtocol int32
 
 const (
-	// IP_PROTOCOL_UNSPECIFIED is not specified
+	// IP_PROTOCOL_UNSPECIFIED is not specified.
 	IPProtocol_IP_PROTOCOL_UNSPECIFIED IPProtocol = 0
-	// IP_PROTOCOL_TCP is tcp
+	// IP_PROTOCOL_TCP is tcp.
 	IPProtocol_IP_PROTOCOL_TCP IPProtocol = 1
-	// IP_PROTOCOL_UDP is udp
+	// IP_PROTOCOL_UDP is udp.
 	IPProtocol_IP_PROTOCOL_UDP IPProtocol = 2
 )
 
@@ -77,11 +77,11 @@ func (IPProtocol) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{0}
 }
 
-// MachineState defines if the machine was locked or reserved from a operator
+// MachineState defines if the machine was locked or reserved from a operator.
 type MachineState int32
 
 const (
-	// MACHINE_STATE_UNSPECIFIED is not specified
+	// MACHINE_STATE_UNSPECIFIED is not specified.
 	MachineState_MACHINE_STATE_UNSPECIFIED MachineState = 0
 	// MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid
 	MachineState_MACHINE_STATE_TAINTED MachineState = 1
@@ -138,7 +138,7 @@ func (MachineState) EnumDescriptor() ([]byte, []int) {
 type MachineProvisioningEventState int32
 
 const (
-	// MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
+	// MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified.
 	MachineProvisioningEventState_MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED MachineProvisioningEventState = 0
 	// MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop
 	MachineProvisioningEventState_MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP MachineProvisioningEventState = 1
@@ -187,11 +187,11 @@ func (MachineProvisioningEventState) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{2}
 }
 
-// MachineProvisioningEventType defines in which phase the machine actually is
+// MachineProvisioningEventType defines in which phase the machine actually is.
 type MachineProvisioningEventType int32
 
 const (
-	// MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified
+	// MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified.
 	MachineProvisioningEventType_MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED MachineProvisioningEventType = 0
 	// MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive
 	MachineProvisioningEventType_MACHINE_PROVISIONING_EVENT_TYPE_ALIVE MachineProvisioningEventType = 1
@@ -276,11 +276,11 @@ func (MachineProvisioningEventType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{3}
 }
 
-// MachineLiveliness specifies the liveliness of a machine
+// MachineLiveliness specifies the liveliness of a machine.
 type MachineLiveliness int32
 
 const (
-	// MACHINE_LIVELINESS_UNSPECIFIED is not defined
+	// MACHINE_LIVELINESS_UNSPECIFIED is not defined.
 	MachineLiveliness_MACHINE_LIVELINESS_UNSPECIFIED MachineLiveliness = 0
 	// MACHINE_LIVELINESS_ALIVE liveliness is alive
 	MachineLiveliness_MACHINE_LIVELINESS_ALIVE MachineLiveliness = 1
@@ -333,15 +333,15 @@ func (MachineLiveliness) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{4}
 }
 
-// MachineAllocationType defines if this is a machine or a firewall
+// MachineAllocationType defines if this is a machine or a firewall.
 type MachineAllocationType int32
 
 const (
-	// MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified
+	// MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified.
 	MachineAllocationType_MACHINE_ALLOCATION_TYPE_UNSPECIFIED MachineAllocationType = 0
-	// MACHINE_ALLOCATION_TYPE_MACHINE is a machine
+	// MACHINE_ALLOCATION_TYPE_MACHINE is a machine.
 	MachineAllocationType_MACHINE_ALLOCATION_TYPE_MACHINE MachineAllocationType = 1
-	// MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall
+	// MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall.
 	MachineAllocationType_MACHINE_ALLOCATION_TYPE_FIREWALL MachineAllocationType = 2
 )
 
@@ -386,19 +386,19 @@ func (MachineAllocationType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{5}
 }
 
-// MachineBMCCommand defines commands send to the BMC of the machine
+// MachineBMCCommand defines commands send to the BMC of the machine.
 type MachineBMCCommand int32
 
 const (
-	// MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+	// MACHINE_BMC_COMMAND_UNSPECIFIED is not defined.
 	MachineBMCCommand_MACHINE_BMC_COMMAND_UNSPECIFIED MachineBMCCommand = 0
-	// MACHINE_BMC_COMMAND_ON Power on the machine
+	// MACHINE_BMC_COMMAND_ON Power on the machine.
 	MachineBMCCommand_MACHINE_BMC_COMMAND_ON MachineBMCCommand = 1
-	// MACHINE_BMC_COMMAND_OFF Power off the machine
+	// MACHINE_BMC_COMMAND_OFF Power off the machine.
 	MachineBMCCommand_MACHINE_BMC_COMMAND_OFF MachineBMCCommand = 2
-	// MACHINE_BMC_COMMAND_RESET Power reset the machine
+	// MACHINE_BMC_COMMAND_RESET Power reset the machine.
 	MachineBMCCommand_MACHINE_BMC_COMMAND_RESET MachineBMCCommand = 3
-	// MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+	// MACHINE_BMC_COMMAND_CYCLE Power cycle the machine.
 	MachineBMCCommand_MACHINE_BMC_COMMAND_CYCLE MachineBMCCommand = 4
 	// MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios
 	MachineBMCCommand_MACHINE_BMC_COMMAND_BOOT_TO_BIOS MachineBMCCommand = 5
@@ -475,7 +475,7 @@ func (MachineBMCCommand) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{6}
 }
 
-// MachineIssueType defines which type of issue it is
+// MachineIssueType defines which type of issue it is.
 type MachineIssueType int32
 
 const (
@@ -572,7 +572,7 @@ func (MachineIssueType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{7}
 }
 
-// MachineIssueSeverity defines the severity of an issue
+// MachineIssueSeverity defines the severity of an issue.
 type MachineIssueSeverity int32
 
 const (
@@ -629,7 +629,7 @@ func (MachineIssueSeverity) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{8}
 }
 
-// MachineServiceGetRequest is the request payload for a machine get request
+// MachineServiceGetRequest is the request payload for a machine get request.
 type MachineServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to get
@@ -684,10 +684,10 @@ func (x *MachineServiceGetRequest) GetProject() string {
 	return ""
 }
 
-// MachineServiceGetResponse is the response payload for a machine get request
+// MachineServiceGetResponse is the response payload for a machine get request.
 type MachineServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Machine is the machine requested
+	// Machine is the machine requested.
 	Machine       *Machine `protobuf:"bytes,1,opt,name=machine,proto3" json:"machine,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -730,7 +730,7 @@ func (x *MachineServiceGetResponse) GetMachine() *Machine {
 	return nil
 }
 
-// MachineServiceCreateRequest is the request payload for a machine create request
+// MachineServiceCreateRequest is the request payload for a machine create request.
 type MachineServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project of the machine
@@ -750,7 +750,7 @@ type MachineServiceCreateRequest struct {
 	// Size of the machine to create, must be omitted if uuid is given
 	Size *string `protobuf:"bytes,7,opt,name=size,proto3,oneof" json:"size,omitempty"`
 	// Image which should be installed on this machine
-	// The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+	// The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch.
 	// - debian-13.0.20260402
 	// or in a simplified form which omits the patch version
 	// - debian-13.0
@@ -761,9 +761,9 @@ type MachineServiceCreateRequest struct {
 	// Is defaulted by a lookup at the available fsls for this size and image.
 	// Can be specified to test new fsls during development of fsls
 	FilesystemLayout *string `protobuf:"bytes,9,opt,name=filesystem_layout,json=filesystemLayout,proto3,oneof" json:"filesystem_layout,omitempty"`
-	// SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
+	// SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh.
 	SshPublicKeys []string `protobuf:"bytes,10,rep,name=ssh_public_keys,json=sshPublicKeys,proto3" json:"ssh_public_keys,omitempty"`
-	// Userdata contains instructions required to bootstrap the machine
+	// Userdata contains instructions required to bootstrap the machine.
 	// AWS limits the max userdata size to 16k, lets allow twice as much
 	Userdata *string `protobuf:"bytes,11,opt,name=userdata,proto3,oneof" json:"userdata,omitempty"`
 	// Labels to be attached to this machine allocation
@@ -779,7 +779,7 @@ type MachineServiceCreateRequest struct {
 	NtpServers []*NTPServer `protobuf:"bytes,16,rep,name=ntp_servers,json=ntpServers,proto3" json:"ntp_servers,omitempty"`
 	// AllocationType of this machine
 	AllocationType MachineAllocationType `protobuf:"varint,17,opt,name=allocation_type,json=allocationType,proto3,enum=metalstack.api.v2.MachineAllocationType" json:"allocation_type,omitempty"`
-	// FirewallSpec provides firewall specific parameters if allocationType is firewall
+	// FirewallSpec provides firewall specific parameters if allocationType is firewall.
 	FirewallSpec  *FirewallSpec `protobuf:"bytes,18,opt,name=firewall_spec,json=firewallSpec,proto3" json:"firewall_spec,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -941,7 +941,7 @@ func (x *MachineServiceCreateRequest) GetFirewallSpec() *FirewallSpec {
 	return nil
 }
 
-// FirewallSpec contains firewall specific firewall creation parameters
+// FirewallSpec contains firewall specific firewall creation parameters.
 type FirewallSpec struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// FirewallRules to be applied if this is a firewall
@@ -987,7 +987,7 @@ func (x *FirewallSpec) GetFirewallRules() *FirewallRules {
 	return nil
 }
 
-// MachineServiceCreateResponse is the response payload for a machine create request
+// MachineServiceCreateResponse is the response payload for a machine create request.
 type MachineServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine which was created
@@ -1033,12 +1033,12 @@ func (x *MachineServiceCreateResponse) GetMachine() *Machine {
 	return nil
 }
 
-// MachineServiceUpdateRequest is the request payload for a machine update request
+// MachineServiceUpdateRequest is the request payload for a machine update request.
 type MachineServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to modify
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Project of the machine
 	Project string `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
@@ -1124,7 +1124,7 @@ func (x *MachineServiceUpdateRequest) GetSshPublicKeys() []string {
 	return nil
 }
 
-// MachineServiceUpdateResponse is the response payload for a machine update request
+// MachineServiceUpdateResponse is the response payload for a machine update request.
 type MachineServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine which was updated
@@ -1170,12 +1170,12 @@ func (x *MachineServiceUpdateResponse) GetMachine() *Machine {
 	return nil
 }
 
-// MachineServiceListRequest is the request payload for a machine list request
+// MachineServiceListRequest is the request payload for a machine list request.
 type MachineServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project of the machines to list
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Query to list one ore more machines
+	// Query to list one ore more machines.
 	Query         *MachineQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1225,10 +1225,10 @@ func (x *MachineServiceListRequest) GetQuery() *MachineQuery {
 	return nil
 }
 
-// MachineServiceListResponse is the response payload for a machine list request
+// MachineServiceListResponse is the response payload for a machine list request.
 type MachineServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Machines are the machines requested by a list request
+	// Machines are the machines requested by a list request.
 	Machines      []*Machine `protobuf:"bytes,1,rep,name=machines,proto3" json:"machines,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1271,7 +1271,7 @@ func (x *MachineServiceListResponse) GetMachines() []*Machine {
 	return nil
 }
 
-// MachineServiceDeleteRequest is the request payload for a machine delete request
+// MachineServiceDeleteRequest is the request payload for a machine delete request.
 type MachineServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to delete
@@ -1326,7 +1326,7 @@ func (x *MachineServiceDeleteRequest) GetProject() string {
 	return ""
 }
 
-// MachineServiceDeleteResponse is the response payload for a machine delete request
+// MachineServiceDeleteResponse is the response payload for a machine delete request.
 type MachineServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine which was deleted
@@ -1372,7 +1372,7 @@ func (x *MachineServiceDeleteResponse) GetMachine() *Machine {
 	return nil
 }
 
-// MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+// MachineServiceBMCCommandRequest is the request payload for a machine bmc command.
 type MachineServiceBMCCommandRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to send the command to
@@ -1436,7 +1436,7 @@ func (x *MachineServiceBMCCommandRequest) GetCommand() MachineBMCCommand {
 	return MachineBMCCommand_MACHINE_BMC_COMMAND_UNSPECIFIED
 }
 
-// MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+// MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
 type MachineServiceBMCCommandResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1473,7 +1473,7 @@ func (*MachineServiceBMCCommandResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{12}
 }
 
-// MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+// MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
 type MachineServiceGetBMCRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine to get
@@ -1528,12 +1528,12 @@ func (x *MachineServiceGetBMCRequest) GetProject() string {
 	return ""
 }
 
-// MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+// MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
 type MachineServiceGetBMCResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// BMC contains the BMC details of this machine
+	// BMC contains the BMC details of this machine.
 	Bmc           *MachineBMCReport `protobuf:"bytes,2,opt,name=bmc,proto3" json:"bmc,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1592,9 +1592,9 @@ type Machine struct {
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	// Partition where this machine resides
 	Partition *Partition `protobuf:"bytes,3,opt,name=partition,proto3" json:"partition,omitempty"`
-	// Rack where this machine is located
+	// Rack where this machine is located.
 	Rack string `protobuf:"bytes,4,opt,name=rack,proto3" json:"rack,omitempty"`
-	// Room where this machine is located
+	// Room where this machine is located.
 	Room string `protobuf:"bytes,5,opt,name=room,proto3" json:"room,omitempty"`
 	// Size of this machine
 	Size *Size `protobuf:"bytes,6,opt,name=size,proto3" json:"size,omitempty"`
@@ -1602,9 +1602,9 @@ type Machine struct {
 	Hardware *MachineHardware `protobuf:"bytes,7,opt,name=hardware,proto3" json:"hardware,omitempty"`
 	// Allocation details
 	Allocation *MachineAllocation `protobuf:"bytes,8,opt,name=allocation,proto3" json:"allocation,omitempty"`
-	// Status contains several status details related to this machine
+	// Status contains several status details related to this machine.
 	Status *MachineStatus `protobuf:"bytes,9,opt,name=status,proto3" json:"status,omitempty"`
-	// MachineRecentProvisioningEvents contains the recent provisioning events
+	// MachineRecentProvisioningEvents contains the recent provisioning events.
 	RecentProvisioningEvents *MachineRecentProvisioningEvents `protobuf:"bytes,10,opt,name=recent_provisioning_events,json=recentProvisioningEvents,proto3" json:"recent_provisioning_events,omitempty"`
 	unknownFields            protoimpl.UnknownFields
 	sizeCache                protoimpl.SizeCache
@@ -1710,12 +1710,12 @@ func (x *Machine) GetRecentProvisioningEvents() *MachineRecentProvisioningEvents
 	return nil
 }
 
-// MachineStatus contains several status details related to this machine
+// MachineStatus contains several status details related to this machine.
 type MachineStatus struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Condition describes the availability
+	// Condition describes the availability.
 	Condition *MachineCondition `protobuf:"bytes,1,opt,name=condition,proto3" json:"condition,omitempty"`
-	// LEDState indicates the state of the indicator LED on this machine
+	// LEDState indicates the state of the indicator LED on this machine.
 	LedState *MachineChassisIdentifyLEDState `protobuf:"bytes,2,opt,name=led_state,json=ledState,proto3" json:"led_state,omitempty"`
 	// Liveliness of this machine
 	Liveliness MachineLiveliness `protobuf:"varint,3,opt,name=liveliness,proto3,enum=metalstack.api.v2.MachineLiveliness" json:"liveliness,omitempty"`
@@ -1783,7 +1783,7 @@ func (x *MachineStatus) GetMetalHammerVersion() string {
 	return ""
 }
 
-// MachineCondition describes the availability of this machine
+// MachineCondition describes the availability of this machine.
 type MachineCondition struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// State the state of this machine. empty means available for all
@@ -1847,7 +1847,7 @@ func (x *MachineCondition) GetIssuer() string {
 	return ""
 }
 
-// MachineAllocation contains properties if this machine is allocated
+// MachineAllocation contains properties if this machine is allocated.
 type MachineAllocation struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of this machine allocation
@@ -2039,13 +2039,13 @@ func (x *MachineAllocation) GetVpn() *MachineVPN {
 	return nil
 }
 
-// MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired
+// MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired.
 type MachineAllocationNetwork struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network the id of the network that this machine will be placed in
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	// IPs to to attach to this machine additionally
-	// If none given, one ip address is acquired per network for the machine
+	// If none given, one ip address is acquired per network for the machine.
 	// Order of ips is preserved on the loopback interface.
 	Ips           []string `protobuf:"bytes,2,rep,name=ips,proto3" json:"ips,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -2096,12 +2096,12 @@ func (x *MachineAllocationNetwork) GetIps() []string {
 	return nil
 }
 
-// FirewallRules can be defined during firewall allocation
+// FirewallRules can be defined during firewall allocation.
 type FirewallRules struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Egress list of egress rules to be deployed during firewall allocation
+	// Egress list of egress rules to be deployed during firewall allocation.
 	Egress []*FirewallEgressRule `protobuf:"bytes,1,rep,name=egress,proto3" json:"egress,omitempty"`
-	// Ingress list of ingress rules to be deployed during firewall allocation
+	// Ingress list of ingress rules to be deployed during firewall allocation.
 	Ingress       []*FirewallIngressRule `protobuf:"bytes,2,rep,name=ingress,proto3" json:"ingress,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -2151,7 +2151,7 @@ func (x *FirewallRules) GetIngress() []*FirewallIngressRule {
 	return nil
 }
 
-// FirewallEgressRule defines rules for outgoing traffic
+// FirewallEgressRule defines rules for outgoing traffic.
 type FirewallEgressRule struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Protocol the protocol for the rule, defaults to tcp
@@ -2224,7 +2224,7 @@ func (x *FirewallEgressRule) GetComment() string {
 	return ""
 }
 
-// FirewallIngressRule defines rules for incoming traffic
+// FirewallIngressRule defines rules for incoming traffic.
 type FirewallIngressRule struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Protocol the protocol for the rule, defaults to tcp
@@ -2306,26 +2306,26 @@ func (x *FirewallIngressRule) GetComment() string {
 	return ""
 }
 
-// MachineNetwork contains details which network should be created on a allocated machine
+// MachineNetwork contains details which network should be created on a allocated machine.
 type MachineNetwork struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network the networkID of the allocated machine in this vrf
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	// Prefixes the prefixes of this network
 	Prefixes []string `protobuf:"bytes,2,rep,name=prefixes,proto3" json:"prefixes,omitempty"`
-	// DestinationPrefixes prefixes that are reachable within this network
+	// DestinationPrefixes prefixes that are reachable within this network.
 	DestinationPrefixes []string `protobuf:"bytes,3,rep,name=destination_prefixes,json=destinationPrefixes,proto3" json:"destination_prefixes,omitempty"`
 	// IPs the ip addresses of the allocated machine in this vrf
 	Ips []string `protobuf:"bytes,4,rep,name=ips,proto3" json:"ips,omitempty"`
 	// NetworkType the type of network of this vrf
 	NetworkType NetworkType `protobuf:"varint,5,opt,name=network_type,json=networkType,proto3,enum=metalstack.api.v2.NetworkType" json:"network_type,omitempty"`
-	// NatType what type of nat if any should be used
+	// NatType what type of nat if any should be used.
 	NatType NATType `protobuf:"varint,6,opt,name=nat_type,json=natType,proto3,enum=metalstack.api.v2.NATType" json:"nat_type,omitempty"`
 	// VRF the vrf id
 	Vrf uint64 `protobuf:"varint,7,opt,name=vrf,proto3" json:"vrf,omitempty"`
 	// ASN the autonomous system number for this network
 	Asn uint32 `protobuf:"varint,8,opt,name=asn,proto3" json:"asn,omitempty"`
-	// Project is the project uuid associated with this network
+	// Project is the project uuid associated with this network.
 	Project       *string `protobuf:"bytes,9,opt,name=project,proto3,oneof" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -2424,7 +2424,7 @@ func (x *MachineNetwork) GetProject() string {
 	return ""
 }
 
-// MachineHardware contains hardware details
+// MachineHardware contains hardware details.
 type MachineHardware struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Memory the total memory of the machine in bytes
@@ -2506,7 +2506,7 @@ func (x *MachineHardware) GetNics() []*MachineNic {
 	return nil
 }
 
-// MetalCPU contains details of a cpu in this machine
+// MetalCPU contains details of a cpu in this machine.
 type MetalCPU struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Vendor of this cpu
@@ -2579,7 +2579,7 @@ func (x *MetalCPU) GetThreads() uint32 {
 	return 0
 }
 
-// MetalGPU contains details of a gpu in this machine
+// MetalGPU contains details of a gpu in this machine.
 type MetalGPU struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Vendor of this gpu
@@ -2634,7 +2634,7 @@ func (x *MetalGPU) GetModel() string {
 	return ""
 }
 
-// MachineNic contains details of a network interface of this machine
+// MachineNic contains details of a network interface of this machine.
 type MachineNic struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Mac the macaddress of this interface
@@ -2743,7 +2743,7 @@ func (x *MachineNic) GetHostname() string {
 	return ""
 }
 
-// MachineBlockDevice contains details of a block device of this machine
+// MachineBlockDevice contains details of a block device of this machine.
 type MachineBlockDevice struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Name of this block device
@@ -2798,7 +2798,7 @@ func (x *MachineBlockDevice) GetSize() uint64 {
 	return 0
 }
 
-// MachineChassisIdentifyLEDState describes the identifier led state
+// MachineChassisIdentifyLEDState describes the identifier led state.
 type MachineChassisIdentifyLEDState struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Value the state of this chassis identify LED. empty means LED-OFF
@@ -2853,22 +2853,22 @@ func (x *MachineChassisIdentifyLEDState) GetDescription() string {
 	return ""
 }
 
-// MachineBMCReport is sent from the metal-bmc to update bmc and power related details
+// MachineBMCReport is sent from the metal-bmc to update bmc and power related details.
 type MachineBMCReport struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Bmc contains bmc details
+	// Bmc contains bmc details.
 	Bmc *MachineBMC `protobuf:"bytes,1,opt,name=bmc,proto3" json:"bmc,omitempty"`
-	// Bios contains bios details
+	// Bios contains bios details.
 	Bios *MachineBios `protobuf:"bytes,2,opt,name=bios,proto3" json:"bios,omitempty"`
-	// Fru contains field replaceable unit details
+	// Fru contains field replaceable unit details.
 	Fru *MachineFRU `protobuf:"bytes,3,opt,name=fru,proto3" json:"fru,omitempty"`
-	// PowerMetric contains the power statistics of the machine
+	// PowerMetric contains the power statistics of the machine.
 	PowerMetric *MachinePowerMetric `protobuf:"bytes,4,opt,name=power_metric,json=powerMetric,proto3" json:"power_metric,omitempty"`
-	// PowerSupplies contains details about all power supplies and their state
+	// PowerSupplies contains details about all power supplies and their state.
 	PowerSupplies []*MachinePowerSupply `protobuf:"bytes,5,rep,name=power_supplies,json=powerSupplies,proto3" json:"power_supplies,omitempty"`
-	// LedState indicates the state of the indicator LED on this machine
+	// LedState indicates the state of the indicator LED on this machine.
 	LedState *MachineChassisIdentifyLEDState `protobuf:"bytes,6,opt,name=led_state,json=ledState,proto3" json:"led_state,omitempty"`
-	// UpdatedAt contains the date when this data was last updated
+	// UpdatedAt contains the date when this data was last updated.
 	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -2953,7 +2953,7 @@ func (x *MachineBMCReport) GetUpdatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-// MachineBios contains BIOS details of this machine
+// MachineBios contains BIOS details of this machine.
 type MachineBios struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Version the bios version
@@ -3017,7 +3017,7 @@ func (x *MachineBios) GetDate() string {
 	return ""
 }
 
-// MachineBMC describe details of the ipmi or out of band device
+// MachineBMC describe details of the ipmi or out of band device.
 type MachineBMC struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Address of this ipmi device from outside in the form of <ip or hostname>:<port>
@@ -3117,24 +3117,24 @@ func (x *MachineBMC) GetPowerState() string {
 	return ""
 }
 
-// MachineFRU describes details to the machine which are required in case of a necessary replacement
+// MachineFRU describes details to the machine which are required in case of a necessary replacement.
 type MachineFRU struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ChassisPartNumber is the part number of the machine chassis
+	// ChassisPartNumber is the part number of the machine chassis.
 	ChassisPartNumber *string `protobuf:"bytes,1,opt,name=chassis_part_number,json=chassisPartNumber,proto3,oneof" json:"chassis_part_number,omitempty"`
-	// ChassisPartSerial is the serial number of the machine chassis
+	// ChassisPartSerial is the serial number of the machine chassis.
 	ChassisPartSerial *string `protobuf:"bytes,2,opt,name=chassis_part_serial,json=chassisPartSerial,proto3,oneof" json:"chassis_part_serial,omitempty"`
-	// BoardMfg is the short description of the mainboard
+	// BoardMfg is the short description of the mainboard.
 	BoardMfg *string `protobuf:"bytes,3,opt,name=board_mfg,json=boardMfg,proto3,oneof" json:"board_mfg,omitempty"`
-	// BoardMfgSerial is the serial number of the mainboard
+	// BoardMfgSerial is the serial number of the mainboard.
 	BoardMfgSerial *string `protobuf:"bytes,4,opt,name=board_mfg_serial,json=boardMfgSerial,proto3,oneof" json:"board_mfg_serial,omitempty"`
-	// BoardPartNumber is the part number of the mainboard
+	// BoardPartNumber is the part number of the mainboard.
 	BoardPartNumber *string `protobuf:"bytes,5,opt,name=board_part_number,json=boardPartNumber,proto3,oneof" json:"board_part_number,omitempty"`
-	// ProductManufacturer is the manufacturer of the machine
+	// ProductManufacturer is the manufacturer of the machine.
 	ProductManufacturer *string `protobuf:"bytes,6,opt,name=product_manufacturer,json=productManufacturer,proto3,oneof" json:"product_manufacturer,omitempty"`
-	// ProductPartNumber is the part number of the machine
+	// ProductPartNumber is the part number of the machine.
 	ProductPartNumber *string `protobuf:"bytes,7,opt,name=product_part_number,json=productPartNumber,proto3,oneof" json:"product_part_number,omitempty"`
-	// ProductSerial is the serial number of the machine
+	// ProductSerial is the serial number of the machine.
 	ProductSerial *string `protobuf:"bytes,8,opt,name=product_serial,json=productSerial,proto3,oneof" json:"product_serial,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -3226,7 +3226,7 @@ func (x *MachineFRU) GetProductSerial() string {
 	return ""
 }
 
-// MachinePowerMetric contains metrics of the power consumption of a machine
+// MachinePowerMetric contains metrics of the power consumption of a machine.
 type MachinePowerMetric struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// AverageConsumedWatts shall represent the
@@ -3308,7 +3308,7 @@ func (x *MachinePowerMetric) GetMinConsumedWatts() float32 {
 	return 0
 }
 
-// MachinePowerSupply contains details of the power supply of a machine
+// MachinePowerSupply contains details of the power supply of a machine.
 type MachinePowerSupply struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Health of the powersupply
@@ -3372,7 +3372,7 @@ type MachineRecentProvisioningEvents struct {
 	LastEventTime *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=last_event_time,json=lastEventTime,proto3" json:"last_event_time,omitempty"`
 	// LastErrorEvent the last erroneous event received
 	LastErrorEvent *MachineProvisioningEvent `protobuf:"bytes,3,opt,name=last_error_event,json=lastErrorEvent,proto3" json:"last_error_event,omitempty"`
-	// State can be either CrashLoop, FailedReclaim or something else
+	// State can be either CrashLoop, FailedReclaim or something else.
 	State         MachineProvisioningEventState `protobuf:"varint,4,opt,name=state,proto3,enum=metalstack.api.v2.MachineProvisioningEventState" json:"state,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -3436,7 +3436,7 @@ func (x *MachineRecentProvisioningEvents) GetState() MachineProvisioningEventSta
 	return MachineProvisioningEventState_MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED
 }
 
-// MachineProvisioningEvent is an event that has occurred during provisioning
+// MachineProvisioningEvent is an event that has occurred during provisioning.
 type MachineProvisioningEvent struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Time the time that this event was received
@@ -3500,14 +3500,14 @@ func (x *MachineProvisioningEvent) GetMessage() string {
 	return ""
 }
 
-// MachineVPN contains configuration data for the VPN connection
+// MachineVPN contains configuration data for the VPN connection.
 type MachineVPN struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Address of VPN control plane
 	ControlPlaneAddress string `protobuf:"bytes,1,opt,name=control_plane_address,json=controlPlaneAddress,proto3" json:"control_plane_address,omitempty"`
 	// Auth key used to connect to VPN
 	AuthKey string `protobuf:"bytes,2,opt,name=auth_key,json=authKey,proto3" json:"auth_key,omitempty"`
-	// Connected indicate if this machine is connected to the VPN
+	// Connected indicate if this machine is connected to the VPN.
 	Connected bool `protobuf:"varint,3,opt,name=connected,proto3" json:"connected,omitempty"`
 	// IPs of the machine connected to the vpn
 	Ips           []string `protobuf:"bytes,4,rep,name=ips,proto3" json:"ips,omitempty"`
@@ -4349,18 +4349,18 @@ func (x *MachineHardwareQuery) GetCpuCores() uint32 {
 	return 0
 }
 
-// MachineIssuesQuery defines which machine issues should be listed
+// MachineIssuesQuery defines which machine issues should be listed.
 type MachineIssuesQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// MachineQuery to select specific machines
 	MachineQuery *MachineQuery `protobuf:"bytes,1,opt,name=machine_query,json=machineQuery,proto3" json:"machine_query,omitempty"`
-	// Only includes the specified machine issue types
+	// Only includes the specified machine issue types.
 	Only []MachineIssueType `protobuf:"varint,2,rep,packed,name=only,proto3,enum=metalstack.api.v2.MachineIssueType" json:"only,omitempty"`
 	// Omits the specified machine issues
 	Omit []MachineIssueType `protobuf:"varint,3,rep,packed,name=omit,proto3,enum=metalstack.api.v2.MachineIssueType" json:"omit,omitempty"`
-	// Severity filters issue for given severity
+	// Severity filters issue for given severity.
 	Severity *MachineIssueSeverity `protobuf:"varint,4,opt,name=severity,proto3,enum=metalstack.api.v2.MachineIssueSeverity,oneof" json:"severity,omitempty"`
-	// LastErrorThreshold defines the last error threshold
+	// LastErrorThreshold defines the last error threshold.
 	LastErrorThreshold *durationpb.Duration `protobuf:"bytes,5,opt,name=last_error_threshold,json=lastErrorThreshold,proto3" json:"last_error_threshold,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
@@ -4431,7 +4431,7 @@ func (x *MachineIssuesQuery) GetLastErrorThreshold() *durationpb.Duration {
 	return nil
 }
 
-// MachineIssues is a list of issues for a machine
+// MachineIssues is a list of issues for a machine.
 type MachineIssues struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// UUID of the machine for which the issues are listed
@@ -4486,18 +4486,18 @@ func (x *MachineIssues) GetIssues() []*MachineIssue {
 	return nil
 }
 
-// MachineIssue contains details of one issue
+// MachineIssue contains details of one issue.
 type MachineIssue struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Type specifies the issue type (id)
 	Type MachineIssueType `protobuf:"varint,1,opt,name=type,proto3,enum=metalstack.api.v2.MachineIssueType" json:"type,omitempty"`
-	// Severity specifies the severity of an issue
+	// Severity specifies the severity of an issue.
 	Severity MachineIssueSeverity `protobuf:"varint,2,opt,name=severity,proto3,enum=metalstack.api.v2.MachineIssueSeverity" json:"severity,omitempty"`
-	// Description provides an issue description
+	// Description provides an issue description.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// RefURL provides a link to a more detailed issue description in the metal-stack documentation
+	// RefURL provides a link to a more detailed issue description in the metal-stack documentation.
 	ReferenceUrl string `protobuf:"bytes,4,opt,name=reference_url,json=referenceUrl,proto3" json:"reference_url,omitempty"`
-	// Details may contain additional details on an evaluated issue
+	// Details may contain additional details on an evaluated issue.
 	Details       string `protobuf:"bytes,5,opt,name=details,proto3" json:"details,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

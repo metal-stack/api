@@ -20,7 +20,7 @@ service PartitionService {
   }
 }
 
-// Partition is a failure domain with machines and switches
+// Partition is a failure domain with machines and switches.
 message Partition {
   // ID of this partition
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
@@ -28,26 +28,26 @@ message Partition {
   Meta meta = 2;
   // Description of this partition
   string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // PartitionBootConfiguration defines how metal-hammer boots
+  // PartitionBootConfiguration defines how metal-hammer boots.
   PartitionBootConfiguration boot_configuration = 4;
   // DNSServers for this partition
   repeated DNSServer dns_servers = 5 [(buf.validate.field).repeated.max_items = 3];
   // NTPServers for this partition
   repeated NTPServer ntp_servers = 6 [(buf.validate.field).repeated.max_items = 10];
-  // ManagementServiceAddresses defines where the management is reachable
+  // ManagementServiceAddresses defines where the management is reachable.
   // should be in the form <ip|host>:<port>
   repeated string mgmt_service_addresses = 7 [(buf.validate.field).repeated.(metalstack.api.v2.are_host_and_port) = true];
 }
 
-// PartitionQuery is used to search partitions
+// PartitionQuery is used to search partitions.
 message PartitionQuery {
   // ID of the partition to get
   optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // Labels lists only partitions containing the given labels
+  // Labels lists only partitions containing the given labels.
   optional Labels labels = 2;
 }
 
-// PartitionBootConfiguration defines how metal-hammer boots
+// PartitionBootConfiguration defines how metal-hammer boots.
 message PartitionBootConfiguration {
   // ImageURL the url to download the initrd for the boot image
   string image_url = 1 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
@@ -69,26 +69,26 @@ message NTPServer {
   string address = 1 [(buf.validate.field).string.(metalstack.api.v2.is_ip_or_hostname) = true];
 }
 
-// PartitionServiceGetRequest is the request payload for a partition get request
+// PartitionServiceGetRequest is the request payload for a partition get request.
 message PartitionServiceGetRequest {
   // ID of the partition to get
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
-// PartitionServiceListRequest is the request payload for a partition list request
+// PartitionServiceListRequest is the request payload for a partition list request.
 message PartitionServiceListRequest {
-  // Query for partitions
+  // Query for partitions.
   PartitionQuery query = 1;
 }
 
-// PartitionServiceGetResponse is the response payload for a partition get request
+// PartitionServiceGetResponse is the response payload for a partition get request.
 message PartitionServiceGetResponse {
-  // Partition is the partition
+  // Partition is the partition.
   Partition partition = 1;
 }
 
-// PartitionServiceListResponse is the response payload for a partition list request
+// PartitionServiceListResponse is the response payload for a partition list request.
 message PartitionServiceListResponse {
-  // Partitions are the partitions
+  // Partitions are the partitions.
   repeated Partition partitions = 1;
 }

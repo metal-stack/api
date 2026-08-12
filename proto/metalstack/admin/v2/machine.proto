@@ -54,7 +54,7 @@ service MachineService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Issues allows to query issues of machines
+  // Issues allows to query issues of machines.
   rpc Issues(MachineServiceIssuesRequest) returns (MachineServiceIssuesResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
@@ -64,46 +64,46 @@ service MachineService {
 
 // ------------------------ Service Messages ----------------------------------
 
-// MachineServiceGetRequest is the request payload for a machine get request
+// MachineServiceGetRequest is the request payload for a machine get request.
 message MachineServiceGetRequest {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceGetResponse is the response payload for a machine get request
+// MachineServiceGetResponse is the response payload for a machine get request.
 message MachineServiceGetResponse {
-  // Machine is the machine requested
+  // Machine is the machine requested.
   metalstack.api.v2.Machine machine = 1;
 }
 
-// MachineServiceListRequest is the request payload for a machine list request
+// MachineServiceListRequest is the request payload for a machine list request.
 message MachineServiceListRequest {
-  // Query to list one or more machines
+  // Query to list one or more machines.
   metalstack.api.v2.MachineQuery query = 1;
   // Partition for which machines should be listed, could be left empty if only one partition is present
   // otherwise an error is thrown that the partition must be specified
   optional string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
-// MachineServiceListResponse is the response payload for a machine list request
+// MachineServiceListResponse is the response payload for a machine list request.
 message MachineServiceListResponse {
-  // Machines are the machines requested by a list request
+  // Machines are the machines requested by a list request.
   repeated metalstack.api.v2.Machine machines = 1;
 }
 
-// MachineServiceDeleteRequest is the request payload for a machine delete request
+// MachineServiceDeleteRequest is the request payload for a machine delete request.
 message MachineServiceDeleteRequest {
   // UUID of the machine to permanently delete
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceDeleteResponse is the response payload for a machine delete request
+// MachineServiceDeleteResponse is the response payload for a machine delete request.
 message MachineServiceDeleteResponse {
-  // Machine is the machine permanently deleted
+  // Machine is the machine permanently deleted.
   metalstack.api.v2.Machine machine = 1;
 }
 
-// MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+// MachineServiceBMCCommandRequest is the request payload for a machine bmc command.
 message MachineServiceBMCCommandRequest {
   // UUID of the machine to send the command to
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -111,32 +111,32 @@ message MachineServiceBMCCommandRequest {
   metalstack.api.v2.MachineBMCCommand command = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
-// MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+// MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
 message MachineServiceBMCCommandResponse {}
 
-// MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+// MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
 message MachineServiceGetBMCRequest {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+// MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
 message MachineServiceGetBMCResponse {
   // UUID of the machine
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // BMC contains the BMC details of this machine
+  // BMC contains the BMC details of this machine.
   metalstack.api.v2.MachineBMCReport bmc = 2;
 }
 
-// MachineServiceListBMCRequest is the request payload for a machine listbmc request
+// MachineServiceListBMCRequest is the request payload for a machine listbmc request.
 message MachineServiceListBMCRequest {
-  // Query to list one or more BMCs of many machines
+  // Query to list one or more BMCs of many machines.
   metalstack.api.v2.MachineBMCQuery query = 1;
 }
 
-// MachineServiceListBMCResponse is the response payload for a machine listbmc request
+// MachineServiceListBMCResponse is the response payload for a machine listbmc request.
 message MachineServiceListBMCResponse {
-  // BMCReports maps the bmc report per machine uuid
+  // BMCReports maps the bmc report per machine uuid.
   map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 1 [(buf.validate.field).map = {
     keys: {
       string: {uuid: true}
@@ -148,8 +148,8 @@ message MachineServiceListBMCResponse {
 message MachineServiceConsolePasswordRequest {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Reason must be provided why access to the console is requested
-  // Reason is only forwarded to an audit sink
+  // Reason must be provided why access to the console is requested.
+  // Reason is only forwarded to an audit sink.
   string reason = 2 [
     (buf.validate.field).string.min_len = 10,
     (buf.validate.field).string.max_len = 512
@@ -164,7 +164,7 @@ message MachineServiceConsolePasswordResponse {
   string password = 2;
 }
 
-// MachineServiceSetStateRequest is the request payload for a machine set state request
+// MachineServiceSetStateRequest is the request payload for a machine set state request.
 message MachineServiceSetStateRequest {
   // UUID of the machine to set the state to
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -175,20 +175,20 @@ message MachineServiceSetStateRequest {
   string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// MachineServiceSetStateResponse is the response payload for a machine set state request
+// MachineServiceSetStateResponse is the response payload for a machine set state request.
 message MachineServiceSetStateResponse {
   // Machine with the changed state.
   metalstack.api.v2.Machine machine = 1;
 }
 
-// MachineServiceIssuesRequest is the request payload for a machine issues request
+// MachineServiceIssuesRequest is the request payload for a machine issues request.
 message MachineServiceIssuesRequest {
-  // Query which machine issues to include
+  // Query which machine issues to include.
   metalstack.api.v2.MachineIssuesQuery query = 1;
 }
 
-// MachineServiceIssuesResponse is the response payload for a machine issues request
+// MachineServiceIssuesResponse is the response payload for a machine issues request.
 message MachineServiceIssuesResponse {
-  // Issues is the result of the issues query
+  // Issues is the result of the issues query.
   repeated metalstack.api.v2.MachineIssues issues = 1;
 }

@@ -218,63 +218,63 @@ var file_metalstack_api_v2_predefined_rules_proto_extTypes = []protoimpl.Extensi
 
 // Extension fields to validate.StringRules.
 var (
-	// Macaddress returns true if the given string is a valid macaddress
+	// Macaddress returns true if the given string is a valid macaddress.
 	//
 	// optional bool macaddress = 80048951;
 	E_Macaddress = &file_metalstack_api_v2_predefined_rules_proto_extTypes[0]
-	// IsName returns true if name field satisfies our requirements
+	// IsName returns true if name field satisfies our requirements.
 	//
 	// optional bool is_name = 80048952;
 	E_IsName = &file_metalstack_api_v2_predefined_rules_proto_extTypes[1]
-	// IsDescription returns true if description field satisfies our requirements
+	// IsDescription returns true if description field satisfies our requirements.
 	//
 	// optional bool is_description = 80048953;
 	E_IsDescription = &file_metalstack_api_v2_predefined_rules_proto_extTypes[2]
-	// IsPartition returns true if partition field satisfies our requirements
+	// IsPartition returns true if partition field satisfies our requirements.
 	//
 	// optional bool is_partition = 80048954;
 	E_IsPartition = &file_metalstack_api_v2_predefined_rules_proto_extTypes[3]
-	// IsPrefix validates if the given string is a valid prefix
+	// IsPrefix validates if the given string is a valid prefix.
 	//
 	// optional bool is_prefix = 80048955;
 	E_IsPrefix = &file_metalstack_api_v2_predefined_rules_proto_extTypes[4]
-	// IsUri validates if the given string is a valid URI
+	// IsUri validates if the given string is a valid URI.
 	//
 	// optional bool is_uri = 80048956;
 	E_IsUri = &file_metalstack_api_v2_predefined_rules_proto_extTypes[5]
-	// IsIpOrHostname validates that the given string is either a ip or a hostname
+	// IsIpOrHostname validates that the given string is either a ip or a hostname.
 	//
 	// optional bool is_ip_or_hostname = 80048957;
 	E_IsIpOrHostname = &file_metalstack_api_v2_predefined_rules_proto_extTypes[6]
-	// Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end
+	// Trimmed enforces the string to be trimmed, e.g. no whitespaces at the begin and end.
 	//
 	// optional bool trimmed = 80048958;
 	E_Trimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[7]
-	// IsUser returns true if name field satisfies our requirements
+	// IsUser returns true if name field satisfies our requirements.
 	//
 	// optional bool is_user = 80048959;
 	E_IsUser = &file_metalstack_api_v2_predefined_rules_proto_extTypes[8]
-	// IsOption returns true if name field satisfies our requirements
+	// IsOption returns true if name field satisfies our requirements.
 	//
 	// optional bool is_option = 80048960;
 	E_IsOption = &file_metalstack_api_v2_predefined_rules_proto_extTypes[9]
-	// IsKey returns true if name field satisfies our requirements
+	// IsKey returns true if name field satisfies our requirements.
 	//
 	// optional bool is_key = 80048961;
 	E_IsKey = &file_metalstack_api_v2_predefined_rules_proto_extTypes[10]
-	// IsTenantLogin returns true if name field satisfies our requirements
+	// IsTenantLogin returns true if name field satisfies our requirements.
 	//
 	// optional bool is_tenant_login = 80048962;
 	E_IsTenantLogin = &file_metalstack_api_v2_predefined_rules_proto_extTypes[11]
-	// IsTenantSubjectPermission returns true if name field satisfies our requirements
+	// IsTenantSubjectPermission returns true if name field satisfies our requirements.
 	//
 	// optional bool is_tenant_subject_permission = 80048963;
 	E_IsTenantSubjectPermission = &file_metalstack_api_v2_predefined_rules_proto_extTypes[12]
-	// IsProjectSubjectPermission returns true if name field satisfies our requirements
+	// IsProjectSubjectPermission returns true if name field satisfies our requirements.
 	//
 	// optional bool is_project_subject_permission = 80048964;
 	E_IsProjectSubjectPermission = &file_metalstack_api_v2_predefined_rules_proto_extTypes[13]
-	// IsMachineSubjectPermission returns true if name field satisfies our requirements
+	// IsMachineSubjectPermission returns true if name field satisfies our requirements.
 	//
 	// optional bool is_machine_subject_permission = 80048965;
 	E_IsMachineSubjectPermission = &file_metalstack_api_v2_predefined_rules_proto_extTypes[14]
@@ -282,19 +282,19 @@ var (
 
 // Extension fields to validate.RepeatedRules.
 var (
-	// Prefixes validates if a slice of prefixes in string form are valid
+	// Prefixes validates if a slice of prefixes in string form are valid.
 	//
 	// optional bool prefixes = 80058951;
 	E_Prefixes = &file_metalstack_api_v2_predefined_rules_proto_extTypes[15]
-	// Ips validates if a slice of ips in string form are valid
+	// Ips validates if a slice of ips in string form are valid.
 	//
 	// optional bool ips = 80058952;
 	E_Ips = &file_metalstack_api_v2_predefined_rules_proto_extTypes[16]
-	// AreHostAndPort validates if a slice of strings are all in the form of <ip | host>:<port>
+	// AreHostAndPort validates if a slice of strings are all in the form of <ip | host>:<port>.
 	//
 	// optional bool are_host_and_port = 80058953;
 	E_AreHostAndPort = &file_metalstack_api_v2_predefined_rules_proto_extTypes[17]
-	// All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end
+	// All Trimmed enforces all strings to be trimmed, e.g. no whitespaces at the begin and end.
 	//
 	// optional bool all_trimmed = 80058954;
 	E_AllTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[18]
@@ -302,23 +302,23 @@ var (
 
 // Extension fields to validate.MapRules.
 var (
-	// Keys and Values trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+	// Keys and Values trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end.
 	//
 	// optional bool keys_and_values_trimmed = 80068951;
 	E_KeysAndValuesTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[19]
-	// Keys trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end
+	// Keys trimmed enforces all map keys and values to be trimmed, e.g. no whitespaces at the begin and end.
 	//
 	// optional bool keys_trimmed = 80068952;
 	E_KeysTrimmed = &file_metalstack_api_v2_predefined_rules_proto_extTypes[20]
-	// ProjectRolesKeysValid ensures that project roles keys met our requirements
+	// ProjectRolesKeysValid ensures that project roles keys met our requirements.
 	//
 	// optional bool project_roles_keys_valid = 80068953;
 	E_ProjectRolesKeysValid = &file_metalstack_api_v2_predefined_rules_proto_extTypes[21]
-	// TenantRolesKeysValid ensures that tenant roles keys met our requirements
+	// TenantRolesKeysValid ensures that tenant roles keys met our requirements.
 	//
 	// optional bool tenant_roles_keys_valid = 80068954;
 	E_TenantRolesKeysValid = &file_metalstack_api_v2_predefined_rules_proto_extTypes[22]
-	// MachineRolesKeysValid ensures that machine roles keys met our requirements
+	// MachineRolesKeysValid ensures that machine roles keys met our requirements.
 	//
 	// optional bool machine_roles_keys_valid = 80068955;
 	E_MachineRolesKeysValid = &file_metalstack_api_v2_predefined_rules_proto_extTypes[23]

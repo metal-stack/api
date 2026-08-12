@@ -6,7 +6,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_size_imageconstraint: GenFile;
 /**
- * SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request
+ * SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request.
  *
  * @generated from message metalstack.api.v2.SizeImageConstraintServiceTryRequest
  */
@@ -30,7 +30,7 @@ export type SizeImageConstraintServiceTryRequest = Message<"metalstack.api.v2.Si
  */
 export declare const SizeImageConstraintServiceTryRequestSchema: GenMessage<SizeImageConstraintServiceTryRequest>;
 /**
- * SizeImageConstraintServiceTryResponse is the response payload for a size image constraint try request
+ * SizeImageConstraintServiceTryResponse is the response payload for a size image constraint try request.
  *
  * @generated from message metalstack.api.v2.SizeImageConstraintServiceTryResponse
  */
@@ -41,7 +41,7 @@ export type SizeImageConstraintServiceTryResponse = Message<"metalstack.api.v2.S
  */
 export declare const SizeImageConstraintServiceTryResponseSchema: GenMessage<SizeImageConstraintServiceTryResponse>;
 /**
- * SizeImageConstraint expresses optional restrictions for specific size to image combinations
+ * SizeImageConstraint expresses optional restrictions for specific size to image combinations.
  * this might be required if the support for a specific hardware in a given size is only supported
  * with a newer version of the image.
  *
@@ -53,7 +53,7 @@ export declare const SizeImageConstraintServiceTryResponseSchema: GenMessage<Siz
  */
 export type SizeImageConstraint = Message<"metalstack.api.v2.SizeImageConstraint"> & {
     /**
-     * Size where this constraint should apply
+     * Size where this constraint should apply.
      *
      * @generated from field: string size = 1;
      */
@@ -89,7 +89,7 @@ export type SizeImageConstraint = Message<"metalstack.api.v2.SizeImageConstraint
  */
 export declare const SizeImageConstraintSchema: GenMessage<SizeImageConstraint>;
 /**
- * ImageConstraint defines a constraint for an image
+ * ImageConstraint defines a constraint for an image.
  * examples:
  * images:
  *    ubuntu: ">= 20.04.20211011"
@@ -117,7 +117,7 @@ export type ImageConstraint = Message<"metalstack.api.v2.ImageConstraint"> & {
  */
 export declare const ImageConstraintSchema: GenMessage<ImageConstraint>;
 /**
- * SizeImageConstraintQuery is used to search size image constraints
+ * SizeImageConstraintQuery is used to search size image constraints.
  *
  * @generated from message metalstack.api.v2.SizeImageConstraintQuery
  */

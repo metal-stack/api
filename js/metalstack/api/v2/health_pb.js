@@ -76,7 +76,7 @@ export const ServiceStatusSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2
 export var Service;
 (function (Service) {
     /**
-     * SERVICE_UNSPECIFIED is a unknown service
+     * SERVICE_UNSPECIFIED is a unknown service.
      *
      * @generated from enum value: SERVICE_UNSPECIFIED = 0;
      */

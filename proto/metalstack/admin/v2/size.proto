@@ -28,13 +28,13 @@ service SizeService {
 
 // SizeServiceCreateRequest is the request payload for creating a size.
 message SizeServiceCreateRequest {
-  // Size is the size to create
+  // Size is the size to create.
   metalstack.api.v2.Size size = 1;
 }
 
 // SizeServiceCreateResponse is the response payload for creating a size.
 message SizeServiceCreateResponse {
-  // Size contains the created size
+  // Size contains the created size.
   metalstack.api.v2.Size size = 1;
 }
 
@@ -42,7 +42,7 @@ message SizeServiceCreateResponse {
 message SizeServiceUpdateRequest {
   // Id of this size
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  // UpdateMeta contains the timestamp and strategy to be used in this update request.
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of this size
   optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -56,7 +56,7 @@ message SizeServiceUpdateRequest {
 
 // SizeServiceUpdateResponse is the response payload for updating a size.
 message SizeServiceUpdateResponse {
-  // Size contains the updated size
+  // Size contains the updated size.
   metalstack.api.v2.Size size = 1;
 }
 
@@ -68,6 +68,6 @@ message SizeServiceDeleteRequest {
 
 // SizeServiceDeleteResponse is the response payload for deleting a size.
 message SizeServiceDeleteResponse {
-  // Size contains the deleted size
+  // Size contains the deleted size.
   metalstack.api.v2.Size size = 1;
 }

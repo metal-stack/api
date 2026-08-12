@@ -62,7 +62,7 @@ func (*MethodServiceListRequest) Descriptor() ([]byte, []int) {
 // MethodServiceListResponse is the response payload for listing all public methods.
 type MethodServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Methods is a list of methods public callable
+	// Methods is a list of methods public callable.
 	Methods       []string `protobuf:"bytes,1,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -145,17 +145,17 @@ func (*MethodServiceTokenScopedListRequest) Descriptor() ([]byte, []int) {
 // MethodServiceTokenScopedListResponse is the response payload which contains all methods which are callable with the given token.
 type MethodServiceTokenScopedListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Permissions contains a list of methods which can be called
+	// Permissions contains a list of methods which can be called.
 	Permissions []*MethodPermission `protobuf:"bytes,1,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	// ProjectRoles associates a project ID with the corresponding role of the token owner
+	// ProjectRoles associates a project ID with the corresponding role of the token owner.
 	ProjectRoles map[string]ProjectRole `protobuf:"bytes,2,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
-	// TenantRoles associates a tenant ID with the corresponding role of the token owner
+	// TenantRoles associates a tenant ID with the corresponding role of the token owner.
 	TenantRoles map[string]TenantRole `protobuf:"bytes,3,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
-	// AdminRole defines the admin role of the token owner
+	// AdminRole defines the admin role of the token owner.
 	AdminRole *AdminRole `protobuf:"varint,4,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
-	// InfraRole defines the infrastructure role of the token owner
+	// InfraRole defines the infrastructure role of the token owner.
 	InfraRole *InfraRole `protobuf:"varint,5,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
-	// MachineRoles defines the machine roles of the token owner
+	// MachineRoles defines the machine roles of the token owner.
 	MachineRoles  map[string]MachineRole `protobuf:"bytes,6,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

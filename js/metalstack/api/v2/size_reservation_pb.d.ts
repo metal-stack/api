@@ -6,7 +6,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_size_reservation: GenFile;
 /**
- * SizeReservationServiceGetRequest is the request payload for a size get request
+ * SizeReservationServiceGetRequest is the request payload for a size get request.
  *
  * @generated from message metalstack.api.v2.SizeReservationServiceGetRequest
  */
@@ -30,7 +30,7 @@ export type SizeReservationServiceGetRequest = Message<"metalstack.api.v2.SizeRe
  */
 export declare const SizeReservationServiceGetRequestSchema: GenMessage<SizeReservationServiceGetRequest>;
 /**
- * SizeReservationServiceListRequest is the request payload for a size list request
+ * SizeReservationServiceListRequest is the request payload for a size list request.
  *
  * @generated from message metalstack.api.v2.SizeReservationServiceListRequest
  */
@@ -42,7 +42,7 @@ export type SizeReservationServiceListRequest = Message<"metalstack.api.v2.SizeR
      */
     project: string;
     /**
-     * Query for size reservations
+     * Query for size reservations.
      *
      * @generated from field: metalstack.api.v2.SizeReservationQuery query = 2;
      */
@@ -54,7 +54,7 @@ export type SizeReservationServiceListRequest = Message<"metalstack.api.v2.SizeR
  */
 export declare const SizeReservationServiceListRequestSchema: GenMessage<SizeReservationServiceListRequest>;
 /**
- * SizeReservationServiceGetResponse is the response payload for a size reservation get request
+ * SizeReservationServiceGetResponse is the response payload for a size reservation get request.
  *
  * @generated from message metalstack.api.v2.SizeReservationServiceGetResponse
  */
@@ -72,7 +72,7 @@ export type SizeReservationServiceGetResponse = Message<"metalstack.api.v2.SizeR
  */
 export declare const SizeReservationServiceGetResponseSchema: GenMessage<SizeReservationServiceGetResponse>;
 /**
- * SizeReservationServiceListResponse is the response payload for a size reservation list request
+ * SizeReservationServiceListResponse is the response payload for a size reservation list request.
  *
  * @generated from message metalstack.api.v2.SizeReservationServiceListResponse
  */
@@ -150,7 +150,7 @@ export type SizeReservation = Message<"metalstack.api.v2.SizeReservation"> & {
  */
 export declare const SizeReservationSchema: GenMessage<SizeReservation>;
 /**
- * SizeReservationQuery is used to search size reservations
+ * SizeReservationQuery is used to search size reservations.
  *
  * @generated from message metalstack.api.v2.SizeReservationQuery
  */
@@ -192,7 +192,7 @@ export type SizeReservationQuery = Message<"metalstack.api.v2.SizeReservationQue
      */
     partition?: string | undefined;
     /**
-     * Labels lists only size reservations containing the given labels
+     * Labels lists only size reservations containing the given labels.
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 7;
      */

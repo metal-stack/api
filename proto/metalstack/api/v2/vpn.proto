@@ -18,6 +18,6 @@ message VPNNode {
   repeated string ip_addresses = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
   // LastSeen timestamp when this node reached out to the control plane
   google.protobuf.Timestamp last_seen = 5;
-  // Online indicates if this node is online
+  // Online indicates if this node is online.
   bool online = 6;
 }

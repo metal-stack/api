@@ -6,7 +6,7 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_common: GenFile;
 /**
- * Paging defines paging for methods with a lot of results
+ * Paging defines paging for methods with a lot of results.
  *
  * @generated from message metalstack.api.v2.Paging
  */
@@ -19,7 +19,7 @@ export type Paging = Message<"metalstack.api.v2.Paging"> & {
      */
     page?: bigint | undefined;
     /**
-     * Count is the number of results returned per page, if not given server side defaults apply
+     * Count is the number of results returned per page, if not given server side defaults apply.
      *
      * @generated from field: optional uint64 count = 2;
      */
@@ -31,7 +31,7 @@ export type Paging = Message<"metalstack.api.v2.Paging"> & {
  */
 export declare const PagingSchema: GenMessage<Paging>;
 /**
- * Labels define additional information to a entity
+ * Labels define additional information to a entity.
  *
  * @generated from message metalstack.api.v2.Labels
  */
@@ -63,13 +63,13 @@ export type Meta = Message<"metalstack.api.v2.Meta"> & {
      */
     labels?: Labels | undefined;
     /**
-     * CreatedAt is the date when this entity was created
+     * CreatedAt is the date when this entity was created.
      *
      * @generated from field: google.protobuf.Timestamp created_at = 2;
      */
     createdAt?: Timestamp | undefined;
     /**
-     * UpdatedAt is the date when this entity was updated
+     * UpdatedAt is the date when this entity was updated.
      * must be part of the update request to ensure optimistic locking
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 3;
@@ -95,13 +95,13 @@ export type Meta = Message<"metalstack.api.v2.Meta"> & {
  */
 export declare const MetaSchema: GenMessage<Meta>;
 /**
- * UpdateLabels is a message to update labels
+ * UpdateLabels is a message to update labels.
  *
  * @generated from message metalstack.api.v2.UpdateLabels
  */
 export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
     /**
-     * Strategy defines the label update strategy
+     * Strategy defines the label update strategy.
      *
      * @generated from oneof metalstack.api.v2.UpdateLabels.strategy
      */
@@ -115,7 +115,7 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
         case: "replace";
     } | {
         /**
-         * Patch adds, updates or remove given labels without modifying others
+         * Patch adds, updates or remove given labels without modifying others.
          *
          * @generated from field: metalstack.api.v2.LabelsPatch patch = 2;
          */
@@ -132,19 +132,19 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
  */
 export declare const UpdateLabelsSchema: GenMessage<UpdateLabels>;
 /**
- * LabelsPatch adds, updates or remove given labels without modifying others
+ * LabelsPatch adds, updates or remove given labels without modifying others.
  *
  * @generated from message metalstack.api.v2.LabelsPatch
  */
 export type LabelsPatch = Message<"metalstack.api.v2.LabelsPatch"> & {
     /**
-     * Update labels. New ones will be added, existing ones overwritten
+     * Update labels. New ones will be added, existing ones overwritten.
      *
      * @generated from field: metalstack.api.v2.Labels update = 1;
      */
     update?: Labels | undefined;
     /**
-     * Remove labels by key
+     * Remove labels by key.
      *
      * @generated from field: repeated string remove = 2;
      */
@@ -156,13 +156,13 @@ export type LabelsPatch = Message<"metalstack.api.v2.LabelsPatch"> & {
  */
 export declare const LabelsPatchSchema: GenMessage<LabelsPatch>;
 /**
- * UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled
+ * UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled.
  *
  * @generated from message metalstack.api.v2.UpdateMeta
  */
 export type UpdateMeta = Message<"metalstack.api.v2.UpdateMeta"> & {
     /**
-     * UpdatedAt is the date when this entity was updated
+     * UpdatedAt is the date when this entity was updated.
      * must be part of the update request to ensure optimistic locking
      *
      * @generated from field: google.protobuf.Timestamp updated_at = 1;
@@ -181,13 +181,13 @@ export type UpdateMeta = Message<"metalstack.api.v2.UpdateMeta"> & {
  */
 export declare const UpdateMetaSchema: GenMessage<UpdateMeta>;
 /**
- * TenantRole specifies what role a logged in user needs to call this tenant scoped service
+ * TenantRole specifies what role a logged in user needs to call this tenant scoped service.
  *
  * @generated from enum metalstack.api.v2.TenantRole
  */
 export declare enum TenantRole {
     /**
-     * TENANT_ROLE_UNSPECIFIED is not specified
+     * TENANT_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: TENANT_ROLE_UNSPECIFIED = 0;
      */
@@ -212,7 +212,7 @@ export declare enum TenantRole {
     VIEWER = 3,
     /**
      * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
-     * The guest role is assumed by users who are invited to a tenant's project without them
+     * The guest role is assumed by users who are invited to a tenant's project without them.
      * having a direct membership within the tenant.
      *
      * @generated from enum value: TENANT_ROLE_GUEST = 4;
@@ -224,13 +224,13 @@ export declare enum TenantRole {
  */
 export declare const TenantRoleSchema: GenEnum<TenantRole>;
 /**
- * ProjectRole specifies what role a logged in user needs to call this project scoped service
+ * ProjectRole specifies what role a logged in user needs to call this project scoped service.
  *
  * @generated from enum metalstack.api.v2.ProjectRole
  */
 export declare enum ProjectRole {
     /**
-     * PROJECT_ROLE_UNSPECIFIED is not specified
+     * PROJECT_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: PROJECT_ROLE_UNSPECIFIED = 0;
      */
@@ -259,13 +259,13 @@ export declare enum ProjectRole {
  */
 export declare const ProjectRoleSchema: GenEnum<ProjectRole>;
 /**
- * AdminRole specifies what role a logged in user needs to call this admin service
+ * AdminRole specifies what role a logged in user needs to call this admin service.
  *
  * @generated from enum metalstack.api.v2.AdminRole
  */
 export declare enum AdminRole {
     /**
-     * ADMIN_ROLE_UNSPECIFIED is not specified
+     * ADMIN_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: ADMIN_ROLE_UNSPECIFIED = 0;
      */
@@ -288,13 +288,13 @@ export declare enum AdminRole {
  */
 export declare const AdminRoleSchema: GenEnum<AdminRole>;
 /**
- * InfraRole specifies what role a microservice needs to call this infra service
+ * InfraRole specifies what role a microservice needs to call this infra service.
  *
  * @generated from enum metalstack.api.v2.InfraRole
  */
 export declare enum InfraRole {
     /**
-     * INFRA_ROLE_UNSPECIFIED is not specified
+     * INFRA_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: INFRA_ROLE_UNSPECIFIED = 0;
      */
@@ -317,13 +317,13 @@ export declare enum InfraRole {
  */
 export declare const InfraRoleSchema: GenEnum<InfraRole>;
 /**
- * MachineRole specifies what role a microservice needs to call this machine service
+ * MachineRole specifies what role a microservice needs to call this machine service.
  *
  * @generated from enum metalstack.api.v2.MachineRole
  */
 export declare enum MachineRole {
     /**
-     * MACHINE_ROLE_UNSPECIFIED is not specified
+     * MACHINE_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: MACHINE_ROLE_UNSPECIFIED = 0;
      */
@@ -352,13 +352,13 @@ export declare const MachineRoleSchema: GenEnum<MachineRole>;
  */
 export declare enum Visibility {
     /**
-     * VISIBILITY_UNSPECIFIED is not defined
+     * VISIBILITY_UNSPECIFIED is not defined.
      *
      * @generated from enum value: VISIBILITY_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
-     * VISIBILITY_PUBLIC specifies that this service is accessible without authentication
+     * VISIBILITY_PUBLIC specifies that this service is accessible without authentication.
      *
      * @generated from enum value: VISIBILITY_PUBLIC = 1;
      */
@@ -383,7 +383,7 @@ export declare const VisibilitySchema: GenEnum<Visibility>;
  */
 export declare enum Auditing {
     /**
-     * AUDITING_UNSPECIFIED is not specified
+     * AUDITING_UNSPECIFIED is not specified.
      *
      * @generated from enum value: AUDITING_UNSPECIFIED = 0;
      */
@@ -437,43 +437,43 @@ export declare enum OptimisticLockingStrategy {
  */
 export declare const OptimisticLockingStrategySchema: GenEnum<OptimisticLockingStrategy>;
 /**
- * TenantRoles are used to define the tenant role a logged in user must provide to call this method
+ * TenantRoles are used to define the tenant role a logged in user must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.TenantRole tenant_roles = 51000;
  */
 export declare const tenant_roles: GenExtension<MethodOptions, TenantRole[]>;
 /**
- * ProjectRoles are used to define the project role a logged in user must provide to call this method
+ * ProjectRoles are used to define the project role a logged in user must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.ProjectRole project_roles = 51001;
  */
 export declare const project_roles: GenExtension<MethodOptions, ProjectRole[]>;
 /**
- * AdminRoles are used to define the admin role a logged in user must provide to call this method
+ * AdminRoles are used to define the admin role a logged in user must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.AdminRole admin_roles = 51002;
  */
 export declare const admin_roles: GenExtension<MethodOptions, AdminRole[]>;
 /**
- * Visibility defines the visibility of this method, this is used to have public or self visible methods
+ * Visibility defines the visibility of this method, this is used to have public or self visible methods.
  *
  * @generated from extension: metalstack.api.v2.Visibility visibility = 51003;
  */
 export declare const visibility: GenExtension<MethodOptions, Visibility>;
 /**
- * Auditing defines if calls to this method should be audited or not
+ * Auditing defines if calls to this method should be audited or not.
  *
  * @generated from extension: metalstack.api.v2.Auditing auditing = 51004;
  */
 export declare const auditing: GenExtension<MethodOptions, Auditing>;
 /**
- * InfraRoles are used to define the infra role a microservice must provide to call this method
+ * InfraRoles are used to define the infra role a microservice must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.InfraRole infra_roles = 51005;
  */
 export declare const infra_roles: GenExtension<MethodOptions, InfraRole[]>;
 /**
- * MachineRole are used to define which machine role a microservice must provide to call this method
+ * MachineRole are used to define which machine role a microservice must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.MachineRole machine_roles = 51006;
  */

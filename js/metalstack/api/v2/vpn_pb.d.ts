@@ -42,7 +42,7 @@ export type VPNNode = Message<"metalstack.api.v2.VPNNode"> & {
      */
     lastSeen?: Timestamp | undefined;
     /**
-     * Online indicates if this node is online
+     * Online indicates if this node is online.
      *
      * @generated from field: bool online = 6;
      */

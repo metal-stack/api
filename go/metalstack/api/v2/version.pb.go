@@ -135,7 +135,7 @@ func (*VersionServiceGetRequest) Descriptor() ([]byte, []int) {
 // VersionServiceGetResponse is the response payload for getting the version.
 type VersionServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Version contains the version of the application
+	// Version contains the version of the application.
 	Version       *Version `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

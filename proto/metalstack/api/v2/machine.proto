@@ -63,7 +63,7 @@ service MachineService {
 
 // ------------------------ Service Messages ----------------------------------
 
-// MachineServiceGetRequest is the request payload for a machine get request
+// MachineServiceGetRequest is the request payload for a machine get request.
 message MachineServiceGetRequest {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -71,13 +71,13 @@ message MachineServiceGetRequest {
   string project = 2 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceGetResponse is the response payload for a machine get request
+// MachineServiceGetResponse is the response payload for a machine get request.
 message MachineServiceGetResponse {
-  // Machine is the machine requested
+  // Machine is the machine requested.
   Machine machine = 1;
 }
 
-// MachineServiceCreateRequest is the request payload for a machine create request
+// MachineServiceCreateRequest is the request payload for a machine create request.
 message MachineServiceCreateRequest {
   // Project of the machine
   string project = 1 [(buf.validate.field).string.uuid = true];
@@ -96,7 +96,7 @@ message MachineServiceCreateRequest {
   // Size of the machine to create, must be omitted if uuid is given
   optional string size = 7 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Image which should be installed on this machine
-  // The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+  // The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch.
   // - debian-13.0.20260402
   // or in a simplified form which omits the patch version
   // - debian-13.0
@@ -107,7 +107,7 @@ message MachineServiceCreateRequest {
   // Is defaulted by a lookup at the available fsls for this size and image.
   // Can be specified to test new fsls during development of fsls
   optional string filesystem_layout = 9 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
+  // SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh.
   repeated string ssh_public_keys = 10 [
     (buf.validate.field).repeated = {
       // At most 50 keys can be stored.
@@ -120,7 +120,7 @@ message MachineServiceCreateRequest {
     },
     (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
   ];
-  // Userdata contains instructions required to bootstrap the machine
+  // Userdata contains instructions required to bootstrap the machine.
   // AWS limits the max userdata size to 16k, lets allow twice as much
   optional string userdata = 11 [
     (buf.validate.field).string = {max_len: 32768},
@@ -139,27 +139,27 @@ message MachineServiceCreateRequest {
   repeated NTPServer ntp_servers = 16 [(buf.validate.field).repeated.max_items = 10];
   // AllocationType of this machine
   MachineAllocationType allocation_type = 17 [(buf.validate.field).enum.defined_only = true];
-  // FirewallSpec provides firewall specific parameters if allocationType is firewall
+  // FirewallSpec provides firewall specific parameters if allocationType is firewall.
   FirewallSpec firewall_spec = 18;
 }
 
-// FirewallSpec contains firewall specific firewall creation parameters
+// FirewallSpec contains firewall specific firewall creation parameters.
 message FirewallSpec {
   // FirewallRules to be applied if this is a firewall
   FirewallRules firewall_rules = 1;
 }
 
-// MachineServiceCreateResponse is the response payload for a machine create request
+// MachineServiceCreateResponse is the response payload for a machine create request.
 message MachineServiceCreateResponse {
   // Machine which was created
   Machine machine = 1;
 }
 
-// MachineServiceUpdateRequest is the request payload for a machine update request
+// MachineServiceUpdateRequest is the request payload for a machine update request.
 message MachineServiceUpdateRequest {
   // UUID of the machine to modify
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  // UpdateMeta contains the timestamp and strategy to be used in this update request.
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Project of the machine
   string project = 3 [(buf.validate.field).string.uuid = true];
@@ -182,27 +182,27 @@ message MachineServiceUpdateRequest {
   ];
 }
 
-// MachineServiceUpdateResponse is the response payload for a machine update request
+// MachineServiceUpdateResponse is the response payload for a machine update request.
 message MachineServiceUpdateResponse {
   // Machine which was updated
   Machine machine = 1;
 }
 
-// MachineServiceListRequest is the request payload for a machine list request
+// MachineServiceListRequest is the request payload for a machine list request.
 message MachineServiceListRequest {
   // Project of the machines to list
   string project = 1 [(buf.validate.field).string.uuid = true];
-  // Query to list one ore more machines
+  // Query to list one ore more machines.
   MachineQuery query = 2;
 }
 
-// MachineServiceListResponse is the response payload for a machine list request
+// MachineServiceListResponse is the response payload for a machine list request.
 message MachineServiceListResponse {
-  // Machines are the machines requested by a list request
+  // Machines are the machines requested by a list request.
   repeated Machine machines = 1;
 }
 
-// MachineServiceDeleteRequest is the request payload for a machine delete request
+// MachineServiceDeleteRequest is the request payload for a machine delete request.
 message MachineServiceDeleteRequest {
   // UUID of the machine to delete
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -210,13 +210,13 @@ message MachineServiceDeleteRequest {
   string project = 2 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceDeleteResponse is the response payload for a machine delete request
+// MachineServiceDeleteResponse is the response payload for a machine delete request.
 message MachineServiceDeleteResponse {
   // Machine which was deleted
   Machine machine = 1;
 }
 
-// MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+// MachineServiceBMCCommandRequest is the request payload for a machine bmc command.
 message MachineServiceBMCCommandRequest {
   // UUID of the machine to send the command to
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -226,10 +226,10 @@ message MachineServiceBMCCommandRequest {
   MachineBMCCommand command = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
-// MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+// MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
 message MachineServiceBMCCommandResponse {}
 
-// MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+// MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
 message MachineServiceGetBMCRequest {
   // UUID of the machine to get
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -237,11 +237,11 @@ message MachineServiceGetBMCRequest {
   string project = 2 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+// MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
 message MachineServiceGetBMCResponse {
   // UUID of the machine
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // BMC contains the BMC details of this machine
+  // BMC contains the BMC details of this machine.
   MachineBMCReport bmc = 2;
 }
 
@@ -255,9 +255,9 @@ message Machine {
   Meta meta = 2;
   // Partition where this machine resides
   Partition partition = 3;
-  // Rack where this machine is located
+  // Rack where this machine is located.
   string rack = 4 [(buf.validate.field).string = {max_len: 128}];
-  // Room where this machine is located
+  // Room where this machine is located.
   string room = 5 [(buf.validate.field).string = {max_len: 128}];
   // Size of this machine
   Size size = 6;
@@ -265,17 +265,17 @@ message Machine {
   MachineHardware hardware = 7;
   // Allocation details
   MachineAllocation allocation = 8;
-  // Status contains several status details related to this machine
+  // Status contains several status details related to this machine.
   MachineStatus status = 9;
-  // MachineRecentProvisioningEvents contains the recent provisioning events
+  // MachineRecentProvisioningEvents contains the recent provisioning events.
   MachineRecentProvisioningEvents recent_provisioning_events = 10;
 }
 
-// MachineStatus contains several status details related to this machine
+// MachineStatus contains several status details related to this machine.
 message MachineStatus {
-  // Condition describes the availability
+  // Condition describes the availability.
   MachineCondition condition = 1;
-  // LEDState indicates the state of the indicator LED on this machine
+  // LEDState indicates the state of the indicator LED on this machine.
   MachineChassisIdentifyLEDState led_state = 2;
   // Liveliness of this machine
   MachineLiveliness liveliness = 3 [(buf.validate.field).enum.defined_only = true];
@@ -283,7 +283,7 @@ message MachineStatus {
   string metal_hammer_version = 4;
 }
 
-// MachineCondition describes the availability of this machine
+// MachineCondition describes the availability of this machine.
 message MachineCondition {
   // State the state of this machine. empty means available for all
   MachineState state = 1 [(buf.validate.field).enum.defined_only = true];
@@ -293,7 +293,7 @@ message MachineCondition {
   string issuer = 3 [(buf.validate.field).string = {max_len: 256}];
 }
 
-// MachineAllocation contains properties if this machine is allocated
+// MachineAllocation contains properties if this machine is allocated.
 message MachineAllocation {
   // UUID of this machine allocation
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -347,25 +347,25 @@ message MachineAllocation {
   MachineVPN vpn = 17;
 }
 
-// MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired
+// MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired.
 message MachineAllocationNetwork {
   // Network the id of the network that this machine will be placed in
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // IPs to to attach to this machine additionally
-  // If none given, one ip address is acquired per network for the machine
+  // If none given, one ip address is acquired per network for the machine.
   // Order of ips is preserved on the loopback interface.
   repeated string ips = 2 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
-// FirewallRules can be defined during firewall allocation
+// FirewallRules can be defined during firewall allocation.
 message FirewallRules {
-  // Egress list of egress rules to be deployed during firewall allocation
+  // Egress list of egress rules to be deployed during firewall allocation.
   repeated FirewallEgressRule egress = 1;
-  // Ingress list of ingress rules to be deployed during firewall allocation
+  // Ingress list of ingress rules to be deployed during firewall allocation.
   repeated FirewallIngressRule ingress = 2;
 }
 
-// FirewallEgressRule defines rules for outgoing traffic
+// FirewallEgressRule defines rules for outgoing traffic.
 message FirewallEgressRule {
   // Protocol the protocol for the rule, defaults to tcp
   IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
@@ -387,7 +387,7 @@ message FirewallEgressRule {
   }];
 }
 
-// FirewallIngressRule defines rules for incoming traffic
+// FirewallIngressRule defines rules for incoming traffic.
 message FirewallIngressRule {
   // Protocol the protocol for the rule, defaults to tcp
   IPProtocol protocol = 1 [(buf.validate.field).enum.defined_only = true];
@@ -411,39 +411,39 @@ message FirewallIngressRule {
   }];
 }
 
-// IPProtocol defines tcp|udp
+// IPProtocol defines tcp|udp.
 enum IPProtocol {
-  // IP_PROTOCOL_UNSPECIFIED is not specified
+  // IP_PROTOCOL_UNSPECIFIED is not specified.
   IP_PROTOCOL_UNSPECIFIED = 0;
-  // IP_PROTOCOL_TCP is tcp
+  // IP_PROTOCOL_TCP is tcp.
   IP_PROTOCOL_TCP = 1 [(enum_string_value) = "tcp"];
-  // IP_PROTOCOL_UDP is udp
+  // IP_PROTOCOL_UDP is udp.
   IP_PROTOCOL_UDP = 2 [(enum_string_value) = "udp"];
 }
 
-// MachineNetwork contains details which network should be created on a allocated machine
+// MachineNetwork contains details which network should be created on a allocated machine.
 message MachineNetwork {
   // Network the networkID of the allocated machine in this vrf
   string network = 1;
   // Prefixes the prefixes of this network
   repeated string prefixes = 2 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
-  // DestinationPrefixes prefixes that are reachable within this network
+  // DestinationPrefixes prefixes that are reachable within this network.
   repeated string destination_prefixes = 3 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
   // IPs the ip addresses of the allocated machine in this vrf
   repeated string ips = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
   // NetworkType the type of network of this vrf
   NetworkType network_type = 5 [(buf.validate.field).enum.defined_only = true];
-  // NatType what type of nat if any should be used
+  // NatType what type of nat if any should be used.
   NATType nat_type = 6 [(buf.validate.field).enum.defined_only = true];
   // VRF the vrf id
   uint64 vrf = 7;
   // ASN the autonomous system number for this network
   uint32 asn = 8;
-  // Project is the project uuid associated with this network
+  // Project is the project uuid associated with this network.
   optional string project = 9 [(buf.validate.field).string.uuid = true];
 }
 
-// MachineHardware contains hardware details
+// MachineHardware contains hardware details.
 message MachineHardware {
   // Memory the total memory of the machine in bytes
   uint64 memory = 1;
@@ -457,7 +457,7 @@ message MachineHardware {
   repeated MachineNic nics = 5;
 }
 
-// MetalCPU contains details of a cpu in this machine
+// MetalCPU contains details of a cpu in this machine.
 message MetalCPU {
   // Vendor of this cpu
   string vendor = 1 [(buf.validate.field).string = {max_len: 256}];
@@ -469,7 +469,7 @@ message MetalCPU {
   uint32 threads = 4;
 }
 
-// MetalGPU contains details of a gpu in this machine
+// MetalGPU contains details of a gpu in this machine.
 message MetalGPU {
   // Vendor of this gpu
   string vendor = 1 [(buf.validate.field).string = {max_len: 256}];
@@ -477,7 +477,7 @@ message MetalGPU {
   string model = 2 [(buf.validate.field).string = {max_len: 256}];
 }
 
-// MachineNic contains details of a network interface of this machine
+// MachineNic contains details of a network interface of this machine.
 message MachineNic {
   // Mac the macaddress of this interface
   string mac = 1 [(buf.validate.field).string.(macaddress) = true];
@@ -497,7 +497,7 @@ message MachineNic {
   string hostname = 8;
 }
 
-// MachineBlockDevice contains details of a block device of this machine
+// MachineBlockDevice contains details of a block device of this machine.
 message MachineBlockDevice {
   // Name of this block device
   string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -505,9 +505,9 @@ message MachineBlockDevice {
   uint64 size = 2;
 }
 
-// MachineState defines if the machine was locked or reserved from a operator
+// MachineState defines if the machine was locked or reserved from a operator.
 enum MachineState {
-  // MACHINE_STATE_UNSPECIFIED is not specified
+  // MACHINE_STATE_UNSPECIFIED is not specified.
   MACHINE_STATE_UNSPECIFIED = 0 [(enum_string_value) = ""];
   // MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid
   MACHINE_STATE_TAINTED = 1 [(enum_string_value) = "tainted"];
@@ -517,7 +517,7 @@ enum MachineState {
   MACHINE_STATE_AVAILABLE = 3 [(enum_string_value) = "available"];
 }
 
-// MachineChassisIdentifyLEDState describes the identifier led state
+// MachineChassisIdentifyLEDState describes the identifier led state.
 message MachineChassisIdentifyLEDState {
   // Value the state of this chassis identify LED. empty means LED-OFF
   string value = 1 [(buf.validate.field).string = {max_len: 128}];
@@ -525,25 +525,25 @@ message MachineChassisIdentifyLEDState {
   string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// MachineBMCReport is sent from the metal-bmc to update bmc and power related details
+// MachineBMCReport is sent from the metal-bmc to update bmc and power related details.
 message MachineBMCReport {
-  // Bmc contains bmc details
+  // Bmc contains bmc details.
   MachineBMC bmc = 1;
-  // Bios contains bios details
+  // Bios contains bios details.
   MachineBios bios = 2;
-  // Fru contains field replaceable unit details
+  // Fru contains field replaceable unit details.
   MachineFRU fru = 3;
-  // PowerMetric contains the power statistics of the machine
+  // PowerMetric contains the power statistics of the machine.
   MachinePowerMetric power_metric = 4;
-  // PowerSupplies contains details about all power supplies and their state
+  // PowerSupplies contains details about all power supplies and their state.
   repeated MachinePowerSupply power_supplies = 5;
-  // LedState indicates the state of the indicator LED on this machine
+  // LedState indicates the state of the indicator LED on this machine.
   MachineChassisIdentifyLEDState led_state = 6;
-  // UpdatedAt contains the date when this data was last updated
+  // UpdatedAt contains the date when this data was last updated.
   google.protobuf.Timestamp updated_at = 7;
 }
 
-// MachineBios contains BIOS details of this machine
+// MachineBios contains BIOS details of this machine.
 message MachineBios {
   // Version the bios version
   string version = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
@@ -553,7 +553,7 @@ message MachineBios {
   string date = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// MachineBMC describe details of the ipmi or out of band device
+// MachineBMC describe details of the ipmi or out of band device.
 message MachineBMC {
   // Address of this ipmi device from outside in the form of <ip or hostname>:<port>
   string address = 1 [(buf.validate.field).string.host_and_port = true];
@@ -571,27 +571,27 @@ message MachineBMC {
   string power_state = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// MachineFRU describes details to the machine which are required in case of a necessary replacement
+// MachineFRU describes details to the machine which are required in case of a necessary replacement.
 message MachineFRU {
-  // ChassisPartNumber is the part number of the machine chassis
+  // ChassisPartNumber is the part number of the machine chassis.
   optional string chassis_part_number = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // ChassisPartSerial is the serial number of the machine chassis
+  // ChassisPartSerial is the serial number of the machine chassis.
   optional string chassis_part_serial = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // BoardMfg is the short description of the mainboard
+  // BoardMfg is the short description of the mainboard.
   optional string board_mfg = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // BoardMfgSerial is the serial number of the mainboard
+  // BoardMfgSerial is the serial number of the mainboard.
   optional string board_mfg_serial = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // BoardPartNumber is the part number of the mainboard
+  // BoardPartNumber is the part number of the mainboard.
   optional string board_part_number = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // ProductManufacturer is the manufacturer of the machine
+  // ProductManufacturer is the manufacturer of the machine.
   optional string product_manufacturer = 6 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // ProductPartNumber is the part number of the machine
+  // ProductPartNumber is the part number of the machine.
   optional string product_part_number = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // ProductSerial is the serial number of the machine
+  // ProductSerial is the serial number of the machine.
   optional string product_serial = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// MachinePowerMetric contains metrics of the power consumption of a machine
+// MachinePowerMetric contains metrics of the power consumption of a machine.
 message MachinePowerMetric {
   // AverageConsumedWatts shall represent the
   // average power level that occurred averaged over the last IntervalInMin
@@ -612,7 +612,7 @@ message MachinePowerMetric {
   float min_consumed_watts = 4;
 }
 
-// MachinePowerSupply contains details of the power supply of a machine
+// MachinePowerSupply contains details of the power supply of a machine.
 message MachinePowerSupply {
   // Health of the powersupply
   string health = 1;
@@ -628,13 +628,13 @@ message MachineRecentProvisioningEvents {
   google.protobuf.Timestamp last_event_time = 2;
   // LastErrorEvent the last erroneous event received
   MachineProvisioningEvent last_error_event = 3;
-  // State can be either CrashLoop, FailedReclaim or something else
+  // State can be either CrashLoop, FailedReclaim or something else.
   MachineProvisioningEventState state = 4 [(buf.validate.field).enum.defined_only = true];
 }
 
 // MachineProvisioningEventState possible event states
 enum MachineProvisioningEventState {
-  // MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
+  // MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified.
   MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0 [(enum_string_value) = ""];
   // MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop
   MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP = 1 [(enum_string_value) = "crashloop"];
@@ -642,9 +642,9 @@ enum MachineProvisioningEventState {
   MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2 [(enum_string_value) = "failed-reclaim"];
 }
 
-// MachineProvisioningEventType defines in which phase the machine actually is
+// MachineProvisioningEventType defines in which phase the machine actually is.
 enum MachineProvisioningEventType {
-  // MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified
+  // MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified.
   MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
   // MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive
   MACHINE_PROVISIONING_EVENT_TYPE_ALIVE = 1 [(enum_string_value) = "Alive"];
@@ -670,7 +670,7 @@ enum MachineProvisioningEventType {
   MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11 [(enum_string_value) = "Machine Reclaim"];
 }
 
-// MachineProvisioningEvent is an event that has occurred during provisioning
+// MachineProvisioningEvent is an event that has occurred during provisioning.
 message MachineProvisioningEvent {
   // Time the time that this event was received
   google.protobuf.Timestamp time = 1;
@@ -680,21 +680,21 @@ message MachineProvisioningEvent {
   string message = 3;
 }
 
-// MachineVPN contains configuration data for the VPN connection
+// MachineVPN contains configuration data for the VPN connection.
 message MachineVPN {
   // Address of VPN control plane
   string control_plane_address = 1;
   // Auth key used to connect to VPN
   string auth_key = 2;
-  // Connected indicate if this machine is connected to the VPN
+  // Connected indicate if this machine is connected to the VPN.
   bool connected = 3;
   // IPs of the machine connected to the vpn
   repeated string ips = 4 [(buf.validate.field).repeated.(metalstack.api.v2.ips) = true];
 }
 
-// MachineLiveliness specifies the liveliness of a machine
+// MachineLiveliness specifies the liveliness of a machine.
 enum MachineLiveliness {
-  // MACHINE_LIVELINESS_UNSPECIFIED is not defined
+  // MACHINE_LIVELINESS_UNSPECIFIED is not defined.
   MACHINE_LIVELINESS_UNSPECIFIED = 0 [(enum_string_value) = ""];
   // MACHINE_LIVELINESS_ALIVE liveliness is alive
   MACHINE_LIVELINESS_ALIVE = 1 [(enum_string_value) = "alive"];
@@ -704,27 +704,27 @@ enum MachineLiveliness {
   MACHINE_LIVELINESS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
 }
 
-// MachineAllocationType defines if this is a machine or a firewall
+// MachineAllocationType defines if this is a machine or a firewall.
 enum MachineAllocationType {
-  // MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified
+  // MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified.
   MACHINE_ALLOCATION_TYPE_UNSPECIFIED = 0 [(enum_string_value) = ""];
-  // MACHINE_ALLOCATION_TYPE_MACHINE is a machine
+  // MACHINE_ALLOCATION_TYPE_MACHINE is a machine.
   MACHINE_ALLOCATION_TYPE_MACHINE = 1 [(enum_string_value) = "machine"];
-  // MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall
+  // MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall.
   MACHINE_ALLOCATION_TYPE_FIREWALL = 2 [(enum_string_value) = "firewall"];
 }
 
-// MachineBMCCommand defines commands send to the BMC of the machine
+// MachineBMCCommand defines commands send to the BMC of the machine.
 enum MachineBMCCommand {
-  // MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+  // MACHINE_BMC_COMMAND_UNSPECIFIED is not defined.
   MACHINE_BMC_COMMAND_UNSPECIFIED = 0;
-  // MACHINE_BMC_COMMAND_ON Power on the machine
+  // MACHINE_BMC_COMMAND_ON Power on the machine.
   MACHINE_BMC_COMMAND_ON = 1 [(enum_string_value) = "on"];
-  // MACHINE_BMC_COMMAND_OFF Power off the machine
+  // MACHINE_BMC_COMMAND_OFF Power off the machine.
   MACHINE_BMC_COMMAND_OFF = 2 [(enum_string_value) = "off"];
-  // MACHINE_BMC_COMMAND_RESET Power reset the machine
+  // MACHINE_BMC_COMMAND_RESET Power reset the machine.
   MACHINE_BMC_COMMAND_RESET = 3 [(enum_string_value) = "reset"];
-  // MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+  // MACHINE_BMC_COMMAND_CYCLE Power cycle the machine.
   MACHINE_BMC_COMMAND_CYCLE = 4 [(enum_string_value) = "cycle"];
   // MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios
   MACHINE_BMC_COMMAND_BOOT_TO_BIOS = 5 [(enum_string_value) = "boot-to-bios"];
@@ -914,11 +914,11 @@ message MachineHardwareQuery {
 
 // Issues related
 
-// MachineIssuesQuery defines which machine issues should be listed
+// MachineIssuesQuery defines which machine issues should be listed.
 message MachineIssuesQuery {
   // MachineQuery to select specific machines
   metalstack.api.v2.MachineQuery machine_query = 1;
-  // Only includes the specified machine issue types
+  // Only includes the specified machine issue types.
   repeated MachineIssueType only = 2 [(buf.validate.field).repeated = {
     items: {
       enum: {defined_only: true}
@@ -930,13 +930,13 @@ message MachineIssuesQuery {
       enum: {defined_only: true}
     }
   }];
-  // Severity filters issue for given severity
+  // Severity filters issue for given severity.
   optional MachineIssueSeverity severity = 4 [(buf.validate.field).enum.defined_only = true];
-  // LastErrorThreshold defines the last error threshold
+  // LastErrorThreshold defines the last error threshold.
   google.protobuf.Duration last_error_threshold = 5;
 }
 
-// MachineIssues is a list of issues for a machine
+// MachineIssues is a list of issues for a machine.
 message MachineIssues {
   // UUID of the machine for which the issues are listed
   string uuid = 1 [(buf.validate.field).string.uuid = true];
@@ -944,21 +944,21 @@ message MachineIssues {
   repeated MachineIssue issues = 2;
 }
 
-// MachineIssue contains details of one issue
+// MachineIssue contains details of one issue.
 message MachineIssue {
   // Type specifies the issue type (id)
   MachineIssueType type = 1 [(buf.validate.field).enum.defined_only = true];
-  // Severity specifies the severity of an issue
+  // Severity specifies the severity of an issue.
   MachineIssueSeverity severity = 2 [(buf.validate.field).enum.defined_only = true];
-  // Description provides an issue description
+  // Description provides an issue description.
   string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // RefURL provides a link to a more detailed issue description in the metal-stack documentation
+  // RefURL provides a link to a more detailed issue description in the metal-stack documentation.
   string reference_url = 4 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Details may contain additional details on an evaluated issue
+  // Details may contain additional details on an evaluated issue.
   string details = 5;
 }
 
-// MachineIssueType defines which type of issue it is
+// MachineIssueType defines which type of issue it is.
 enum MachineIssueType {
   // MACHINE_ISSUE_TYPE_UNSPECIFIED type is not specified
   MACHINE_ISSUE_TYPE_UNSPECIFIED = 0;
@@ -990,7 +990,7 @@ enum MachineIssueType {
   MACHINE_ISSUE_TYPE_NO_PARTITION = 13 [(enum_string_value) = "no-partition"];
 }
 
-// MachineIssueSeverity defines the severity of an issue
+// MachineIssueSeverity defines the severity of an issue.
 enum MachineIssueSeverity {
   // MACHINE_ISSUE_SEVERITY_UNSPECIFIED severity is not specified
   MACHINE_ISSUE_SEVERITY_UNSPECIFIED = 0;

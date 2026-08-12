@@ -17,7 +17,7 @@ export const file_metalstack_api_v2_size_imageconstraint: GenFile = /*@__PURE__*
   fileDesc("CixtZXRhbHN0YWNrL2FwaS92Mi9zaXplX2ltYWdlY29uc3RyYWludC5wcm90bxIRbWV0YWxzdGFjay5hcGkudjIiXQokU2l6ZUltYWdlQ29uc3RyYWludFNlcnZpY2VUcnlSZXF1ZXN0EhkKBHNpemUYASABKAlCC7pICHIGwLOusQIBEhoKBWltYWdlGAIgASgJQgu6SAhyBsCzrrECASInCiVTaXplSW1hZ2VDb25zdHJhaW50U2VydmljZVRyeVJlc3BvbnNlIvYBChNTaXplSW1hZ2VDb25zdHJhaW50EhkKBHNpemUYASABKAlCC7pICHIGwLOusQIBEj0KEWltYWdlX2NvbnN0cmFpbnRzGAIgAygLMiIubWV0YWxzdGFjay5hcGkudjIuSW1hZ2VDb25zdHJhaW50EiUKBG1ldGEYAyABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEh4KBG5hbWUYBCABKAlCC7pICHIGwLOusQIBSACIAQESJQoLZGVzY3JpcHRpb24YBSABKAlCC7pICHIGyLOusQIBSAGIAQFCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uIlAKD0ltYWdlQ29uc3RyYWludBIaCgVpbWFnZRgBIAEoCUILukgIcgbAs66xAgESIQoMc2VtdmVyX21hdGNoGAIgASgJQgu6SAhyBsizrrECASKjAQoYU2l6ZUltYWdlQ29uc3RyYWludFF1ZXJ5Eh4KBHNpemUYASABKAlCC7pICHIGwLOusQIBSACIAQESHgoEbmFtZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIlCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgFIAogBAUIHCgVfc2l6ZUIHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb24yoQEKGlNpemVJbWFnZUNvbnN0cmFpbnRTZXJ2aWNlEoIBCgNUcnkSNy5tZXRhbHN0YWNrLmFwaS52Mi5TaXplSW1hZ2VDb25zdHJhaW50U2VydmljZVRyeVJlcXVlc3QaOC5tZXRhbHN0YWNrLmFwaS52Mi5TaXplSW1hZ2VDb25zdHJhaW50U2VydmljZVRyeVJlc3BvbnNlIgjY8xgC4PMYAkLOAQoVY29tLm1ldGFsc3RhY2suYXBpLnYyQhhTaXplSW1hZ2Vjb25zdHJhaW50UHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request
+ * SizeImageConstraintServiceTryRequest is the request payload for a size image constraint try request.
  *
  * @generated from message metalstack.api.v2.SizeImageConstraintServiceTryRequest
  */
@@ -45,7 +45,7 @@ export const SizeImageConstraintServiceTryRequestSchema: GenMessage<SizeImageCon
   messageDesc(file_metalstack_api_v2_size_imageconstraint, 0);
 
 /**
- * SizeImageConstraintServiceTryResponse is the response payload for a size image constraint try request
+ * SizeImageConstraintServiceTryResponse is the response payload for a size image constraint try request.
  *
  * @generated from message metalstack.api.v2.SizeImageConstraintServiceTryResponse
  */
@@ -60,7 +60,7 @@ export const SizeImageConstraintServiceTryResponseSchema: GenMessage<SizeImageCo
   messageDesc(file_metalstack_api_v2_size_imageconstraint, 1);
 
 /**
- * SizeImageConstraint expresses optional restrictions for specific size to image combinations
+ * SizeImageConstraint expresses optional restrictions for specific size to image combinations.
  * this might be required if the support for a specific hardware in a given size is only supported
  * with a newer version of the image.
  *
@@ -72,7 +72,7 @@ export const SizeImageConstraintServiceTryResponseSchema: GenMessage<SizeImageCo
  */
 export type SizeImageConstraint = Message<"metalstack.api.v2.SizeImageConstraint"> & {
   /**
-   * Size where this constraint should apply
+   * Size where this constraint should apply.
    *
    * @generated from field: string size = 1;
    */
@@ -115,7 +115,7 @@ export const SizeImageConstraintSchema: GenMessage<SizeImageConstraint> = /*@__P
   messageDesc(file_metalstack_api_v2_size_imageconstraint, 2);
 
 /**
- * ImageConstraint defines a constraint for an image
+ * ImageConstraint defines a constraint for an image.
  * examples:
  * images:
  *    ubuntu: ">= 20.04.20211011"
@@ -147,7 +147,7 @@ export const ImageConstraintSchema: GenMessage<ImageConstraint> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_size_imageconstraint, 3);
 
 /**
- * SizeImageConstraintQuery is used to search size image constraints
+ * SizeImageConstraintQuery is used to search size image constraints.
  *
  * @generated from message metalstack.api.v2.SizeImageConstraintQuery
  */

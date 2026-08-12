@@ -12,7 +12,7 @@ export declare const file_metalstack_admin_v2_audit: GenFile;
  */
 export type AuditServiceListRequest = Message<"metalstack.admin.v2.AuditServiceListRequest"> & {
     /**
-     * Query for audit traces
+     * Query for audit traces.
      *
      * @generated from field: metalstack.api.v2.AuditQuery query = 1;
      */
@@ -30,7 +30,7 @@ export declare const AuditServiceListRequestSchema: GenMessage<AuditServiceListR
  */
 export type AuditServiceListResponse = Message<"metalstack.admin.v2.AuditServiceListResponse"> & {
     /**
-     * Traces contains the list of audit traces
+     * Traces contains the list of audit traces.
      *
      * @generated from field: repeated metalstack.api.v2.AuditTrace traces = 1;
      */
@@ -54,7 +54,7 @@ export type AuditServiceGetRequest = Message<"metalstack.admin.v2.AuditServiceGe
      */
     uuid: string;
     /**
-     * Phase specifies the audit phase. Defaults to request
+     * Phase specifies the audit phase. Defaults to request.
      *
      * @generated from field: optional metalstack.api.v2.AuditPhase phase = 2;
      */
@@ -72,7 +72,7 @@ export declare const AuditServiceGetRequestSchema: GenMessage<AuditServiceGetReq
  */
 export type AuditServiceGetResponse = Message<"metalstack.admin.v2.AuditServiceGetResponse"> & {
     /**
-     * Trace is the audit trace
+     * Trace is the audit trace.
      *
      * @generated from field: metalstack.api.v2.AuditTrace trace = 1;
      */

@@ -26,7 +26,7 @@ export const file_metalstack_api_v2_user: GenFile = /*@__PURE__*/
  */
 export type User = Message<"metalstack.api.v2.User"> & {
   /**
-   * Login is the login at the provider
+   * Login is the login at the provider.
    *
    * @generated from field: string login = 1;
    */
@@ -104,7 +104,7 @@ export const UserServiceGetRequestSchema: GenMessage<UserServiceGetRequest> = /*
  */
 export type UserServiceGetResponse = Message<"metalstack.api.v2.UserServiceGetResponse"> & {
   /**
-   * User contains the authenticated user
+   * User contains the authenticated user.
    *
    * @generated from field: metalstack.api.v2.User user = 1;
    */

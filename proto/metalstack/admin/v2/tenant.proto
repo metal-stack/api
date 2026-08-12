@@ -20,12 +20,12 @@ service TenantService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Add a member to a tenant
+  // Add a member to a tenant.
   rpc AddMember(TenantServiceAddMemberRequest) returns (TenantServiceAddMemberResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // RemoveMember removes a member from a tenant
+  // RemoveMember removes a member from a tenant.
   rpc RemoveMember(TenantServiceRemoveMemberRequest) returns (TenantServiceRemoveMemberResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
@@ -48,25 +48,25 @@ message TenantServiceCreateRequest {
 
 // TenantServiceCreateResponse is the response payload for creating a tenant.
 message TenantServiceCreateResponse {
-  // Tenant contains the created tenant
+  // Tenant contains the created tenant.
   metalstack.api.v2.Tenant tenant = 1;
 }
 
 // TenantServiceListRequest is the request payload for listing tenants.
 message TenantServiceListRequest {
-  // Query for tenants
+  // Query for tenants.
   metalstack.api.v2.TenantQuery query = 1;
 }
 
 // TenantServiceListResponse is the response payload for listing tenants.
 message TenantServiceListResponse {
-  // Tenants contains the list of tenants
+  // Tenants contains the list of tenants.
   repeated metalstack.api.v2.Tenant tenants = 1;
-  // NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request
+  // NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
   optional uint64 next_page = 2;
 }
 
-// TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+// TenantServiceAddMemberRequest is the request payload for adding a member to a tenant.
 message TenantServiceAddMemberRequest {
   // Login of the tenant to which the member will be added
   string tenant = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
@@ -76,13 +76,13 @@ message TenantServiceAddMemberRequest {
   metalstack.api.v2.TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
-// TenantServiceAddMemberResponse is the response payload for the add member request
+// TenantServiceAddMemberResponse is the response payload for the add member request.
 message TenantServiceAddMemberResponse {
-  // TenantMember is the added tenant member
+  // TenantMember is the added tenant member.
   metalstack.api.v2.TenantMember tenant_member = 1;
 }
 
-// TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant
+// TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant.
 message TenantServiceRemoveMemberRequest {
   // Login of the tenant from which the member will be removed
   string tenant = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
@@ -90,8 +90,8 @@ message TenantServiceRemoveMemberRequest {
   string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
-// TenantServiceRemoveMemberResponse is the response payload for the remove member request
+// TenantServiceRemoveMemberResponse is the response payload for the remove member request.
 message TenantServiceRemoveMemberResponse {
-  // TenantMember is the removed tenant member
+  // TenantMember is the removed tenant member.
   metalstack.api.v2.TenantMember tenant_member = 1;
 }

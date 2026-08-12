@@ -17,7 +17,7 @@ export const file_metalstack_api_v2_partition: GenFile = /*@__PURE__*/
   fileDesc("CiFtZXRhbHN0YWNrL2FwaS92Mi9wYXJ0aXRpb24ucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIuACCglQYXJ0aXRpb24SFwoCaWQYASABKAlCC7pICHIG0LOusQIBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEiAKC2Rlc2NyaXB0aW9uGAMgASgJQgu6SAhyBsizrrECARJJChJib290X2NvbmZpZ3VyYXRpb24YBCABKAsyLS5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb25Cb290Q29uZmlndXJhdGlvbhI7CgtkbnNfc2VydmVycxgFIAMoCzIcLm1ldGFsc3RhY2suYXBpLnYyLkROU1NlcnZlckIIukgFkgECEAMSOwoLbnRwX3NlcnZlcnMYBiADKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5OVFBTZXJ2ZXJCCLpIBZIBAhAKEiwKFm1nbXRfc2VydmljZV9hZGRyZXNzZXMYByADKAlCDLpICZIBBsiks7ECASJwCg5QYXJ0aXRpb25RdWVyeRIcCgJpZBgBIAEoCUILukgIcgbQs66xAgFIAIgBARIuCgZsYWJlbHMYAiABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNIAYgBAUIFCgNfaWRCCQoHX2xhYmVscyJ8ChpQYXJ0aXRpb25Cb290Q29uZmlndXJhdGlvbhIeCglpbWFnZV91cmwYASABKAlCC7pICHIG4LOusQIBEh8KCmtlcm5lbF91cmwYAiABKAlCC7pICHIG4LOusQIBEh0KC2NvbW1hbmRsaW5lGAMgASgJQgi6SAVyAxiAICIgCglETlNTZXJ2ZXISEwoCaXAYASABKAlCB7pIBHICcAEiKQoJTlRQU2VydmVyEhwKB2FkZHJlc3MYASABKAlCC7pICHIG6LOusQIBIjUKGlBhcnRpdGlvblNlcnZpY2VHZXRSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBtCzrrECASJPChtQYXJ0aXRpb25TZXJ2aWNlTGlzdFJlcXVlc3QSMAoFcXVlcnkYASABKAsyIS5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb25RdWVyeSJOChtQYXJ0aXRpb25TZXJ2aWNlR2V0UmVzcG9uc2USLwoJcGFydGl0aW9uGAEgASgLMhwubWV0YWxzdGFjay5hcGkudjIuUGFydGl0aW9uIlAKHFBhcnRpdGlvblNlcnZpY2VMaXN0UmVzcG9uc2USMAoKcGFydGl0aW9ucxgBIAMoCzIcLm1ldGFsc3RhY2suYXBpLnYyLlBhcnRpdGlvbjL1AQoQUGFydGl0aW9uU2VydmljZRJuCgNHZXQSLS5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb25TZXJ2aWNlR2V0UmVxdWVzdBouLm1ldGFsc3RhY2suYXBpLnYyLlBhcnRpdGlvblNlcnZpY2VHZXRSZXNwb25zZSII2PMYAuDzGAIScQoETGlzdBIuLm1ldGFsc3RhY2suYXBpLnYyLlBhcnRpdGlvblNlcnZpY2VMaXN0UmVxdWVzdBovLm1ldGFsc3RhY2suYXBpLnYyLlBhcnRpdGlvblNlcnZpY2VMaXN0UmVzcG9uc2UiCNjzGALg8xgCQsQBChVjb20ubWV0YWxzdGFjay5hcGkudjJCDlBhcnRpdGlvblByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * Partition is a failure domain with machines and switches
+ * Partition is a failure domain with machines and switches.
  *
  * @generated from message metalstack.api.v2.Partition
  */
@@ -44,7 +44,7 @@ export type Partition = Message<"metalstack.api.v2.Partition"> & {
   description: string;
 
   /**
-   * PartitionBootConfiguration defines how metal-hammer boots
+   * PartitionBootConfiguration defines how metal-hammer boots.
    *
    * @generated from field: metalstack.api.v2.PartitionBootConfiguration boot_configuration = 4;
    */
@@ -65,7 +65,7 @@ export type Partition = Message<"metalstack.api.v2.Partition"> & {
   ntpServers: NTPServer[];
 
   /**
-   * ManagementServiceAddresses defines where the management is reachable
+   * ManagementServiceAddresses defines where the management is reachable.
    * should be in the form <ip|host>:<port>
    *
    * @generated from field: repeated string mgmt_service_addresses = 7;
@@ -81,7 +81,7 @@ export const PartitionSchema: GenMessage<Partition> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_partition, 0);
 
 /**
- * PartitionQuery is used to search partitions
+ * PartitionQuery is used to search partitions.
  *
  * @generated from message metalstack.api.v2.PartitionQuery
  */
@@ -94,7 +94,7 @@ export type PartitionQuery = Message<"metalstack.api.v2.PartitionQuery"> & {
   id?: string | undefined;
 
   /**
-   * Labels lists only partitions containing the given labels
+   * Labels lists only partitions containing the given labels.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 2;
    */
@@ -109,7 +109,7 @@ export const PartitionQuerySchema: GenMessage<PartitionQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_partition, 1);
 
 /**
- * PartitionBootConfiguration defines how metal-hammer boots
+ * PartitionBootConfiguration defines how metal-hammer boots.
  *
  * @generated from message metalstack.api.v2.PartitionBootConfiguration
  */
@@ -186,7 +186,7 @@ export const NTPServerSchema: GenMessage<NTPServer> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_partition, 4);
 
 /**
- * PartitionServiceGetRequest is the request payload for a partition get request
+ * PartitionServiceGetRequest is the request payload for a partition get request.
  *
  * @generated from message metalstack.api.v2.PartitionServiceGetRequest
  */
@@ -207,13 +207,13 @@ export const PartitionServiceGetRequestSchema: GenMessage<PartitionServiceGetReq
   messageDesc(file_metalstack_api_v2_partition, 5);
 
 /**
- * PartitionServiceListRequest is the request payload for a partition list request
+ * PartitionServiceListRequest is the request payload for a partition list request.
  *
  * @generated from message metalstack.api.v2.PartitionServiceListRequest
  */
 export type PartitionServiceListRequest = Message<"metalstack.api.v2.PartitionServiceListRequest"> & {
   /**
-   * Query for partitions
+   * Query for partitions.
    *
    * @generated from field: metalstack.api.v2.PartitionQuery query = 1;
    */
@@ -228,13 +228,13 @@ export const PartitionServiceListRequestSchema: GenMessage<PartitionServiceListR
   messageDesc(file_metalstack_api_v2_partition, 6);
 
 /**
- * PartitionServiceGetResponse is the response payload for a partition get request
+ * PartitionServiceGetResponse is the response payload for a partition get request.
  *
  * @generated from message metalstack.api.v2.PartitionServiceGetResponse
  */
 export type PartitionServiceGetResponse = Message<"metalstack.api.v2.PartitionServiceGetResponse"> & {
   /**
-   * Partition is the partition
+   * Partition is the partition.
    *
    * @generated from field: metalstack.api.v2.Partition partition = 1;
    */
@@ -249,13 +249,13 @@ export const PartitionServiceGetResponseSchema: GenMessage<PartitionServiceGetRe
   messageDesc(file_metalstack_api_v2_partition, 7);
 
 /**
- * PartitionServiceListResponse is the response payload for a partition list request
+ * PartitionServiceListResponse is the response payload for a partition list request.
  *
  * @generated from message metalstack.api.v2.PartitionServiceListResponse
  */
 export type PartitionServiceListResponse = Message<"metalstack.api.v2.PartitionServiceListResponse"> & {
   /**
-   * Partitions are the partitions
+   * Partitions are the partitions.
    *
    * @generated from field: repeated metalstack.api.v2.Partition partitions = 1;
    */

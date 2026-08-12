@@ -47,7 +47,7 @@ export const SwitchServiceGetRequestSchema: GenMessage<SwitchServiceGetRequest> 
  */
 export type SwitchServiceGetResponse = Message<"metalstack.infra.v2.SwitchServiceGetResponse"> & {
   /**
-   * Switch contains the requested switch
+   * Switch contains the requested switch.
    *
    * @generated from field: metalstack.api.v2.Switch switch = 1;
    */
@@ -89,7 +89,7 @@ export const SwitchServiceRegisterRequestSchema: GenMessage<SwitchServiceRegiste
  */
 export type SwitchServiceRegisterResponse = Message<"metalstack.infra.v2.SwitchServiceRegisterResponse"> & {
   /**
-   * Switch contains the registered switch
+   * Switch contains the registered switch.
    *
    * @generated from field: metalstack.api.v2.Switch switch = 1;
    */
@@ -131,14 +131,14 @@ export type SwitchServiceHeartbeatRequest = Message<"metalstack.infra.v2.SwitchS
   error?: string | undefined;
 
   /**
-   * PortStates maps port identifiers to the respective port's operational state
+   * PortStates maps port identifiers to the respective port's operational state.
    *
    * @generated from field: map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
    */
   portStates: { [key: string]: SwitchPortStatus };
 
   /**
-   * BgpPortStates maps port identifiers to the respective port's BGP state
+   * BgpPortStates maps port identifiers to the respective port's BGP state.
    *
    * @generated from field: map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
    */
@@ -166,14 +166,14 @@ export type SwitchServiceHeartbeatResponse = Message<"metalstack.infra.v2.Switch
   id: string;
 
   /**
-   * LastSync holds information about the last sync
+   * LastSync holds information about the last sync.
    *
    * @generated from field: metalstack.api.v2.SwitchSync last_sync = 2;
    */
   lastSync?: SwitchSync | undefined;
 
   /**
-   * LastSyncError holds information about the last erroneous sync
+   * LastSyncError holds information about the last erroneous sync.
    *
    * @generated from field: metalstack.api.v2.SwitchSync last_sync_error = 3;
    */

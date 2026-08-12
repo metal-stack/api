@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Partition is a failure domain with machines and switches
+// Partition is a failure domain with machines and switches.
 type Partition struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of this partition
@@ -31,13 +31,13 @@ type Partition struct {
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
 	// Description of this partition
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// PartitionBootConfiguration defines how metal-hammer boots
+	// PartitionBootConfiguration defines how metal-hammer boots.
 	BootConfiguration *PartitionBootConfiguration `protobuf:"bytes,4,opt,name=boot_configuration,json=bootConfiguration,proto3" json:"boot_configuration,omitempty"`
 	// DNSServers for this partition
 	DnsServers []*DNSServer `protobuf:"bytes,5,rep,name=dns_servers,json=dnsServers,proto3" json:"dns_servers,omitempty"`
 	// NTPServers for this partition
 	NtpServers []*NTPServer `protobuf:"bytes,6,rep,name=ntp_servers,json=ntpServers,proto3" json:"ntp_servers,omitempty"`
-	// ManagementServiceAddresses defines where the management is reachable
+	// ManagementServiceAddresses defines where the management is reachable.
 	// should be in the form <ip|host>:<port>
 	MgmtServiceAddresses []string `protobuf:"bytes,7,rep,name=mgmt_service_addresses,json=mgmtServiceAddresses,proto3" json:"mgmt_service_addresses,omitempty"`
 	unknownFields        protoimpl.UnknownFields
@@ -123,12 +123,12 @@ func (x *Partition) GetMgmtServiceAddresses() []string {
 	return nil
 }
 
-// PartitionQuery is used to search partitions
+// PartitionQuery is used to search partitions.
 type PartitionQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the partition to get
 	Id *string `protobuf:"bytes,1,opt,name=id,proto3,oneof" json:"id,omitempty"`
-	// Labels lists only partitions containing the given labels
+	// Labels lists only partitions containing the given labels.
 	Labels        *Labels `protobuf:"bytes,2,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -178,7 +178,7 @@ func (x *PartitionQuery) GetLabels() *Labels {
 	return nil
 }
 
-// PartitionBootConfiguration defines how metal-hammer boots
+// PartitionBootConfiguration defines how metal-hammer boots.
 type PartitionBootConfiguration struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ImageURL the url to download the initrd for the boot image
@@ -334,7 +334,7 @@ func (x *NTPServer) GetAddress() string {
 	return ""
 }
 
-// PartitionServiceGetRequest is the request payload for a partition get request
+// PartitionServiceGetRequest is the request payload for a partition get request.
 type PartitionServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the partition to get
@@ -380,10 +380,10 @@ func (x *PartitionServiceGetRequest) GetId() string {
 	return ""
 }
 
-// PartitionServiceListRequest is the request payload for a partition list request
+// PartitionServiceListRequest is the request payload for a partition list request.
 type PartitionServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for partitions
+	// Query for partitions.
 	Query         *PartitionQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -426,10 +426,10 @@ func (x *PartitionServiceListRequest) GetQuery() *PartitionQuery {
 	return nil
 }
 
-// PartitionServiceGetResponse is the response payload for a partition get request
+// PartitionServiceGetResponse is the response payload for a partition get request.
 type PartitionServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Partition is the partition
+	// Partition is the partition.
 	Partition     *Partition `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -472,10 +472,10 @@ func (x *PartitionServiceGetResponse) GetPartition() *Partition {
 	return nil
 }
 
-// PartitionServiceListResponse is the response payload for a partition list request
+// PartitionServiceListResponse is the response payload for a partition list request.
 type PartitionServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Partitions are the partitions
+	// Partitions are the partitions.
 	Partitions    []*Partition `protobuf:"bytes,1,rep,name=partitions,proto3" json:"partitions,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

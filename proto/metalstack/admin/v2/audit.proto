@@ -24,13 +24,13 @@ service AuditService {
 
 // AuditServiceListRequest is the request payload for listing audit traces.
 message AuditServiceListRequest {
-  // Query for audit traces
+  // Query for audit traces.
   metalstack.api.v2.AuditQuery query = 1;
 }
 
 // AuditServiceListResponse is the response payload for listing audit traces.
 message AuditServiceListResponse {
-  // Traces contains the list of audit traces
+  // Traces contains the list of audit traces.
   repeated metalstack.api.v2.AuditTrace traces = 1;
 }
 
@@ -38,12 +38,12 @@ message AuditServiceListResponse {
 message AuditServiceGetRequest {
   // Uuid of the audit trace
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Phase specifies the audit phase. Defaults to request
+  // Phase specifies the audit phase. Defaults to request.
   optional metalstack.api.v2.AuditPhase phase = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
 // AuditServiceGetResponse is the response payload for getting an audit trace.
 message AuditServiceGetResponse {
-  // Trace is the audit trace
+  // Trace is the audit trace.
   metalstack.api.v2.AuditTrace trace = 1;
 }

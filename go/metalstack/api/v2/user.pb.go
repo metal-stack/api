@@ -25,7 +25,7 @@ const (
 // User represents an end user of the platform.
 type User struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login is the login at the provider
+	// Login is the login at the provider.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	// Name of the user
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
@@ -162,7 +162,7 @@ func (*UserServiceGetRequest) Descriptor() ([]byte, []int) {
 // UserServiceGetResponse is the response payload for getting the user.
 type UserServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// User contains the authenticated user
+	// User contains the authenticated user.
 	User          *User `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

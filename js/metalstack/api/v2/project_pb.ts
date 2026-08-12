@@ -19,7 +19,7 @@ export const file_metalstack_api_v2_project: GenFile = /*@__PURE__*/
   fileDesc("Ch9tZXRhbHN0YWNrL2FwaS92Mi9wcm9qZWN0LnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiLAAQoHUHJvamVjdBIMCgR1dWlkGAEgASgJEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEhkKBG5hbWUYAyABKAlCC7pICHIGwLOusQIBEiAKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECARIOCgZ0ZW5hbnQYBSABKAkSJAoKYXZhdGFyX3VybBgGIAEoCUILukgIcgbgs66xAgFIAIgBAUINCgtfYXZhdGFyX3VybCLIAQoNUHJvamVjdE1lbWJlchIKCgJpZBgBIAEoCRI2CgRyb2xlGAIgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGVCCLpIBYIBAhABEhwKFGluaGVyaXRlZF9tZW1iZXJzaGlwGAMgASgIEi4KCmNyZWF0ZWRfYXQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiUKBG1ldGEYBSABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhIpICCg1Qcm9qZWN0SW52aXRlEg4KBnNlY3JldBgBIAEoCRIPCgdwcm9qZWN0GAIgASgJEjYKBHJvbGUYAyABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZUIIukgFggECEAESDgoGam9pbmVkGAQgASgIEhQKDHByb2plY3RfbmFtZRgFIAEoCRIOCgZ0ZW5hbnQYBiABKAkSEwoLdGVuYW50X25hbWUYByABKAkSLgoKZXhwaXJlc19hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJam9pbmVkX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJLChlQcm9qZWN0U2VydmljZUxpc3RSZXF1ZXN0Ei4KBXF1ZXJ5GAEgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFF1ZXJ5IsUBCgxQcm9qZWN0UXVlcnkSGwoEdXVpZBgBIAEoCUIIukgFcgOwAQFIAIgBARIeCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECAUgBiAEBEiAKBnRlbmFudBgDIAEoCUILukgIcgaQtK6xAgFIAogBARIuCgZsYWJlbHMYBCABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNIA4gBAUIHCgVfdXVpZEIHCgVfbmFtZUIJCgdfdGVuYW50QgkKB19sYWJlbHMiSgoaUHJvamVjdFNlcnZpY2VMaXN0UmVzcG9uc2USLAoIcHJvamVjdHMYASADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0IjUKGFByb2plY3RTZXJ2aWNlR2V0UmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABASKDAQoZUHJvamVjdFNlcnZpY2VHZXRSZXNwb25zZRIrCgdwcm9qZWN0GAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdBI5Cg9wcm9qZWN0X21lbWJlcnMYAiADKAsyIC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0TWVtYmVyItYBChtQcm9qZWN0U2VydmljZUNyZWF0ZVJlcXVlc3QSGgoFbG9naW4YASABKAlCC7pICHIGwLOusQIBEhkKBG5hbWUYAiABKAlCC7pICHIGwLOusQIBEiAKC2Rlc2NyaXB0aW9uGAMgASgJQgu6SAhyBsizrrECARIkCgphdmF0YXJfdXJsGAQgASgJQgu6SAhyBuCzrrECAUgAiAEBEikKBmxhYmVscxgFIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0INCgtfYXZhdGFyX3VybCJLChxQcm9qZWN0U2VydmljZUNyZWF0ZVJlc3BvbnNlEisKB3Byb2plY3QYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0IjgKG1Byb2plY3RTZXJ2aWNlRGVsZXRlUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABASJLChxQcm9qZWN0U2VydmljZURlbGV0ZVJlc3BvbnNlEisKB3Byb2plY3QYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0IsoCChtQcm9qZWN0U2VydmljZVVwZGF0ZVJlcXVlc3QSGQoHcHJvamVjdBgBIAEoCUIIukgFcgOwAQESOgoLdXBkYXRlX21ldGEYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVNZXRhQga6SAPIAQESHgoEbmFtZRgDIAEoCUILukgIcgbAs66xAgFIAIgBARIlCgtkZXNjcmlwdGlvbhgEIAEoCUILukgIcgbIs66xAgFIAYgBARIkCgphdmF0YXJfdXJsGAUgASgJQgu6SAhyBuCzrrECAUgCiAEBEjQKBmxhYmVscxgGIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gDiAEBQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkINCgtfYXZhdGFyX3VybEIJCgdfbGFiZWxzIksKHFByb2plY3RTZXJ2aWNlVXBkYXRlUmVzcG9uc2USKwoHcHJvamVjdBgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3QicAobUHJvamVjdFNlcnZpY2VJbnZpdGVSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEjYKBHJvbGUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZUIIukgFggECEAEiUAocUHJvamVjdFNlcnZpY2VJbnZpdGVSZXNwb25zZRIwCgZpbnZpdGUYASABKAsyIC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0SW52aXRlIj0KIFByb2plY3RTZXJ2aWNlSW52aXRlc0xpc3RSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBIlYKIVByb2plY3RTZXJ2aWNlSW52aXRlc0xpc3RSZXNwb25zZRIxCgdpbnZpdGVzGAEgAygLMiAubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdEludml0ZSIwCh5Qcm9qZWN0U2VydmljZUludml0ZUdldFJlcXVlc3QSDgoGc2VjcmV0GAEgASgJIlMKH1Byb2plY3RTZXJ2aWNlSW52aXRlR2V0UmVzcG9uc2USMAoGaW52aXRlGAEgASgLMiAubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdEludml0ZSI3ChpQcm9qZWN0U2VydmljZUxlYXZlUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABASIdChtQcm9qZWN0U2VydmljZUxlYXZlUmVzcG9uc2UikAEKHlByb2plY3RTZXJ2aWNlQWRkTWVtYmVyUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABARIbCgZtZW1iZXIYAiABKAlCC7pICHIGkLSusQIBEjYKBHJvbGUYAyABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZUIIukgFggECEAEiWQofUHJvamVjdFNlcnZpY2VBZGRNZW1iZXJSZXNwb25zZRI2Cg5wcm9qZWN0X21lbWJlchgBIAEoDjIeLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RSb2xlIk4KIVByb2plY3RTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABARIOCgZtZW1iZXIYAiABKAkiJAoiUHJvamVjdFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSKGAQohUHJvamVjdFNlcnZpY2VVcGRhdGVNZW1iZXJSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEg4KBm1lbWJlchgCIAEoCRI2CgRyb2xlGAMgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGVCCLpIBYIBAhABIl4KIlByb2plY3RTZXJ2aWNlVXBkYXRlTWVtYmVyUmVzcG9uc2USOAoOcHJvamVjdF9tZW1iZXIYASABKAsyIC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0TWVtYmVyIjMKIVByb2plY3RTZXJ2aWNlSW52aXRlQWNjZXB0UmVxdWVzdBIOCgZzZWNyZXQYASABKAkiSwoiUHJvamVjdFNlcnZpY2VJbnZpdGVBY2NlcHRSZXNwb25zZRIPCgdwcm9qZWN0GAEgASgJEhQKDHByb2plY3RfbmFtZRgCIAEoCSJOCiFQcm9qZWN0U2VydmljZUludml0ZURlbGV0ZVJlcXVlc3QSGQoHcHJvamVjdBgBIAEoCUIIukgFcgOwAQESDgoGc2VjcmV0GAIgASgJIiQKIlByb2plY3RTZXJ2aWNlSW52aXRlRGVsZXRlUmVzcG9uc2Uy4Q0KDlByb2plY3RTZXJ2aWNlEm0KBExpc3QSLC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUxpc3RSZXF1ZXN0Gi0ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VMaXN0UmVzcG9uc2UiCNjzGALg8xgCEm0KA0dldBIrLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlR2V0UmVxdWVzdBosLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlR2V0UmVzcG9uc2UiC8rzGAMBAgPg8xgCEnUKBkNyZWF0ZRIuLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlQ3JlYXRlUmVxdWVzdBovLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlQ3JlYXRlUmVzcG9uc2UiCsLzGAIBAuDzGAESdAoGRGVsZXRlEi4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VEZWxldGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VEZWxldGVSZXNwb25zZSIJyvMYAQHg8xgBEnUKBlVwZGF0ZRIuLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlVXBkYXRlUmVxdWVzdBovLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCsrzGAIBAuDzGAEScQoFTGVhdmUSLS5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUxlYXZlUmVxdWVzdBouLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlTGVhdmVSZXNwb25zZSIJyvMYAQPg8xgBEn0KCUFkZE1lbWJlchIxLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlQWRkTWVtYmVyUmVxdWVzdBoyLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlQWRkTWVtYmVyUmVzcG9uc2UiCcrzGAEB4PMYARKGAQoMUmVtb3ZlTWVtYmVyEjQubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0GjUubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSIJyvMYAQHg8xgBEoYBCgxVcGRhdGVNZW1iZXISNC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZVVwZGF0ZU1lbWJlclJlcXVlc3QaNS5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZVVwZGF0ZU1lbWJlclJlc3BvbnNlIgnK8xgBAeDzGAESdAoGSW52aXRlEi4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVSZXNwb25zZSIJyvMYAQHg8xgBEoUBCgxJbnZpdGVBY2NlcHQSNC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZUFjY2VwdFJlcXVlc3QaNS5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZUFjY2VwdFJlc3BvbnNlIgjY8xgC4PMYARKGAQoMSW52aXRlRGVsZXRlEjQubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVEZWxldGVSZXF1ZXN0GjUubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVEZWxldGVSZXNwb25zZSIJyvMYAQHg8xgBEoMBCgtJbnZpdGVzTGlzdBIzLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlSW52aXRlc0xpc3RSZXF1ZXN0GjQubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVzTGlzdFJlc3BvbnNlIgnK8xgBAeDzGAISfAoJSW52aXRlR2V0EjEubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVHZXRSZXF1ZXN0GjIubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVHZXRSZXNwb25zZSII2PMYAuDzGAJCwgEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkIMUHJvamVjdFByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * Project defines a group of resources belonging to a tenant
+ * Project defines a group of resources belonging to a tenant.
  * a tenant can have multiple projects
  *
  * @generated from message metalstack.api.v2.Project
@@ -76,20 +76,20 @@ export const ProjectSchema: GenMessage<Project> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_project, 0);
 
 /**
- * ProjectMember defines a user that participates in a project
+ * ProjectMember defines a user that participates in a project.
  *
  * @generated from message metalstack.api.v2.ProjectMember
  */
 export type ProjectMember = Message<"metalstack.api.v2.ProjectMember"> & {
   /**
-   * Id is the user id of the member
+   * Id is the user id of the member.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * Role is the role of the member
+   * Role is the role of the member.
    *
    * @generated from field: metalstack.api.v2.ProjectRole role = 2;
    */
@@ -127,55 +127,55 @@ export const ProjectMemberSchema: GenMessage<ProjectMember> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_project, 1);
 
 /**
- * ProjectInvite defines invite to project
+ * ProjectInvite defines invite to project.
  *
  * @generated from message metalstack.api.v2.ProjectInvite
  */
 export type ProjectInvite = Message<"metalstack.api.v2.ProjectInvite"> & {
   /**
-   * Secret is the secret part of the invite, typically part of the url
+   * Secret is the secret part of the invite, typically part of the url.
    *
    * @generated from field: string secret = 1;
    */
   secret: string;
 
   /**
-   * Project is the project id for which this invite was created
+   * Project is the project id for which this invite was created.
    *
    * @generated from field: string project = 2;
    */
   project: string;
 
   /**
-   * Role is the role in this project the user will get after accepting the invitation
+   * Role is the role in this project the user will get after accepting the invitation.
    *
    * @generated from field: metalstack.api.v2.ProjectRole role = 3;
    */
   role: ProjectRole;
 
   /**
-   * Joined is false as long as a user has not accepted the invite
+   * Joined is false as long as a user has not accepted the invite.
    *
    * @generated from field: bool joined = 4;
    */
   joined: boolean;
 
   /**
-   * ProjectName is the project name for which this invite was created
+   * ProjectName is the project name for which this invite was created.
    *
    * @generated from field: string project_name = 5;
    */
   projectName: string;
 
   /**
-   * Tenant is the login of the tenant inviting another user to join this project
+   * Tenant is the login of the tenant inviting another user to join this project.
    *
    * @generated from field: string tenant = 6;
    */
   tenant: string;
 
   /**
-   * TenantName is the name of the tenant inviting another user to join this project
+   * TenantName is the name of the tenant inviting another user to join this project.
    *
    * @generated from field: string tenant_name = 7;
    */
@@ -204,13 +204,13 @@ export const ProjectInviteSchema: GenMessage<ProjectInvite> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_project, 2);
 
 /**
- * ProjectServiceListRequest is the request payload to list all projects
+ * ProjectServiceListRequest is the request payload to list all projects.
  *
  * @generated from message metalstack.api.v2.ProjectServiceListRequest
  */
 export type ProjectServiceListRequest = Message<"metalstack.api.v2.ProjectServiceListRequest"> & {
   /**
-   * Query for projects
+   * Query for projects.
    *
    * @generated from field: metalstack.api.v2.ProjectQuery query = 1;
    */
@@ -225,34 +225,34 @@ export const ProjectServiceListRequestSchema: GenMessage<ProjectServiceListReque
   messageDesc(file_metalstack_api_v2_project, 3);
 
 /**
- * ProjectQuery is used to search projects
+ * ProjectQuery is used to search projects.
  *
  * @generated from message metalstack.api.v2.ProjectQuery
  */
 export type ProjectQuery = Message<"metalstack.api.v2.ProjectQuery"> & {
   /**
-   * Uuid lists only projects with this uuid
+   * Uuid lists only projects with this uuid.
    *
    * @generated from field: optional string uuid = 1;
    */
   uuid?: string | undefined;
 
   /**
-   * Name lists only projects with this name
+   * Name lists only projects with this name.
    *
    * @generated from field: optional string name = 2;
    */
   name?: string | undefined;
 
   /**
-   * Tenant lists only projects of this tenant
+   * Tenant lists only projects of this tenant.
    *
    * @generated from field: optional string tenant = 3;
    */
   tenant?: string | undefined;
 
   /**
-   * Labels lists only projects containing the given labels
+   * Labels lists only projects containing the given labels.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 4;
    */
@@ -267,13 +267,13 @@ export const ProjectQuerySchema: GenMessage<ProjectQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_project, 4);
 
 /**
- * ProjectServiceListResponse is the response payload to list all projects
+ * ProjectServiceListResponse is the response payload to list all projects.
  *
  * @generated from message metalstack.api.v2.ProjectServiceListResponse
  */
 export type ProjectServiceListResponse = Message<"metalstack.api.v2.ProjectServiceListResponse"> & {
   /**
-   * Projects is a list of all your projects
+   * Projects is a list of all your projects.
    *
    * @generated from field: repeated metalstack.api.v2.Project projects = 1;
    */
@@ -288,13 +288,13 @@ export const ProjectServiceListResponseSchema: GenMessage<ProjectServiceListResp
   messageDesc(file_metalstack_api_v2_project, 5);
 
 /**
- * ProjectServiceGetRequest is the request payload to get a project
+ * ProjectServiceGetRequest is the request payload to get a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceGetRequest
  */
 export type ProjectServiceGetRequest = Message<"metalstack.api.v2.ProjectServiceGetRequest"> & {
   /**
-   * Project is the uuid of the project to get
+   * Project is the uuid of the project to get.
    *
    * @generated from field: string project = 1;
    */
@@ -309,13 +309,13 @@ export const ProjectServiceGetRequestSchema: GenMessage<ProjectServiceGetRequest
   messageDesc(file_metalstack_api_v2_project, 6);
 
 /**
- * ProjectServiceGetResponse is the response payload to get a projects
+ * ProjectServiceGetResponse is the response payload to get a projects.
  *
  * @generated from message metalstack.api.v2.ProjectServiceGetResponse
  */
 export type ProjectServiceGetResponse = Message<"metalstack.api.v2.ProjectServiceGetResponse"> & {
   /**
-   * Project is the project
+   * Project is the project.
    *
    * @generated from field: metalstack.api.v2.Project project = 1;
    */
@@ -337,13 +337,13 @@ export const ProjectServiceGetResponseSchema: GenMessage<ProjectServiceGetRespon
   messageDesc(file_metalstack_api_v2_project, 7);
 
 /**
- * ProjectServiceCreateRequest is the request payload to Create a project
+ * ProjectServiceCreateRequest is the request payload to Create a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceCreateRequest
  */
 export type ProjectServiceCreateRequest = Message<"metalstack.api.v2.ProjectServiceCreateRequest"> & {
   /**
-   * Login is the tenant of this project
+   * Login is the tenant of this project.
    * TODO: is login really a good name?
    *
    * @generated from field: string login = 1;
@@ -387,13 +387,13 @@ export const ProjectServiceCreateRequestSchema: GenMessage<ProjectServiceCreateR
   messageDesc(file_metalstack_api_v2_project, 8);
 
 /**
- * ProjectServiceCreateResponse is the response payload of creation of a project
+ * ProjectServiceCreateResponse is the response payload of creation of a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceCreateResponse
  */
 export type ProjectServiceCreateResponse = Message<"metalstack.api.v2.ProjectServiceCreateResponse"> & {
   /**
-   * Project is the project
+   * Project is the project.
    *
    * @generated from field: metalstack.api.v2.Project project = 1;
    */
@@ -408,13 +408,13 @@ export const ProjectServiceCreateResponseSchema: GenMessage<ProjectServiceCreate
   messageDesc(file_metalstack_api_v2_project, 9);
 
 /**
- * ProjectServiceDeleteRequest is the request payload to delete a project
+ * ProjectServiceDeleteRequest is the request payload to delete a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceDeleteRequest
  */
 export type ProjectServiceDeleteRequest = Message<"metalstack.api.v2.ProjectServiceDeleteRequest"> & {
   /**
-   * Project is the uuid of the project to delete
+   * Project is the uuid of the project to delete.
    *
    * @generated from field: string project = 1;
    */
@@ -429,13 +429,13 @@ export const ProjectServiceDeleteRequestSchema: GenMessage<ProjectServiceDeleteR
   messageDesc(file_metalstack_api_v2_project, 10);
 
 /**
- * ProjectServiceDeleteResponse is the response payload to delete a project
+ * ProjectServiceDeleteResponse is the response payload to delete a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceDeleteResponse
  */
 export type ProjectServiceDeleteResponse = Message<"metalstack.api.v2.ProjectServiceDeleteResponse"> & {
   /**
-   * Project is the project
+   * Project is the project.
    *
    * @generated from field: metalstack.api.v2.Project project = 1;
    */
@@ -450,20 +450,20 @@ export const ProjectServiceDeleteResponseSchema: GenMessage<ProjectServiceDelete
   messageDesc(file_metalstack_api_v2_project, 11);
 
 /**
- * ProjectServiceUpdateRequest is the request payload to update a project
+ * ProjectServiceUpdateRequest is the request payload to update a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceUpdateRequest
  */
 export type ProjectServiceUpdateRequest = Message<"metalstack.api.v2.ProjectServiceUpdateRequest"> & {
   /**
-   * Project is the uuid of the project to get
+   * Project is the uuid of the project to get.
    *
    * @generated from field: string project = 1;
    */
   project: string;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
    */
@@ -506,13 +506,13 @@ export const ProjectServiceUpdateRequestSchema: GenMessage<ProjectServiceUpdateR
   messageDesc(file_metalstack_api_v2_project, 12);
 
 /**
- * ProjectServiceUpdateResponse is the response payload to update a project
+ * ProjectServiceUpdateResponse is the response payload to update a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceUpdateResponse
  */
 export type ProjectServiceUpdateResponse = Message<"metalstack.api.v2.ProjectServiceUpdateResponse"> & {
   /**
-   * Project is the project
+   * Project is the project.
    *
    * @generated from field: metalstack.api.v2.Project project = 1;
    */
@@ -527,13 +527,13 @@ export const ProjectServiceUpdateResponseSchema: GenMessage<ProjectServiceUpdate
   messageDesc(file_metalstack_api_v2_project, 13);
 
 /**
- * ProjectServiceInviteRequest is used to invite a member to a project
+ * ProjectServiceInviteRequest is used to invite a member to a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteRequest
  */
 export type ProjectServiceInviteRequest = Message<"metalstack.api.v2.ProjectServiceInviteRequest"> & {
   /**
-   * Project is the uuid of the project
+   * Project is the uuid of the project.
    *
    * @generated from field: string project = 1;
    */
@@ -555,13 +555,13 @@ export const ProjectServiceInviteRequestSchema: GenMessage<ProjectServiceInviteR
   messageDesc(file_metalstack_api_v2_project, 14);
 
 /**
- * ProjectServiceInviteResponse is the response payload to a invite member request
+ * ProjectServiceInviteResponse is the response payload to a invite member request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteResponse
  */
 export type ProjectServiceInviteResponse = Message<"metalstack.api.v2.ProjectServiceInviteResponse"> & {
   /**
-   * Inviter contains a secret which can be sent to a potential user
+   * Inviter contains a secret which can be sent to a potential user.
    * can be appended to the invitation endpoint at our cloud console like
    * console.metalstack.cloud/invite/<secret>
    *
@@ -578,13 +578,13 @@ export const ProjectServiceInviteResponseSchema: GenMessage<ProjectServiceInvite
   messageDesc(file_metalstack_api_v2_project, 15);
 
 /**
- * ProjectServiceInvitesListRequest is the request payload to a list invites request
+ * ProjectServiceInvitesListRequest is the request payload to a list invites request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInvitesListRequest
  */
 export type ProjectServiceInvitesListRequest = Message<"metalstack.api.v2.ProjectServiceInvitesListRequest"> & {
   /**
-   * Project is the uuid of the project
+   * Project is the uuid of the project.
    *
    * @generated from field: string project = 1;
    */
@@ -599,7 +599,7 @@ export const ProjectServiceInvitesListRequestSchema: GenMessage<ProjectServiceIn
   messageDesc(file_metalstack_api_v2_project, 16);
 
 /**
- * ProjectServiceInvitesListResponse is the response payload to a list invites request
+ * ProjectServiceInvitesListResponse is the response payload to a list invites request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInvitesListResponse
  */
@@ -620,7 +620,7 @@ export const ProjectServiceInvitesListResponseSchema: GenMessage<ProjectServiceI
   messageDesc(file_metalstack_api_v2_project, 17);
 
 /**
- * ProjectServiceInviteGetRequest is the request payload to get a invite
+ * ProjectServiceInviteGetRequest is the request payload to get a invite.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteGetRequest
  */
@@ -641,13 +641,13 @@ export const ProjectServiceInviteGetRequestSchema: GenMessage<ProjectServiceInvi
   messageDesc(file_metalstack_api_v2_project, 18);
 
 /**
- * ProjectServiceInviteGetResponse is the response payload to a get invite request
+ * ProjectServiceInviteGetResponse is the response payload to a get invite request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteGetResponse
  */
 export type ProjectServiceInviteGetResponse = Message<"metalstack.api.v2.ProjectServiceInviteGetResponse"> & {
   /**
-   * Invite is the invite
+   * Invite is the invite.
    *
    * @generated from field: metalstack.api.v2.ProjectInvite invite = 1;
    */
@@ -662,13 +662,13 @@ export const ProjectServiceInviteGetResponseSchema: GenMessage<ProjectServiceInv
   messageDesc(file_metalstack_api_v2_project, 19);
 
 /**
- * ProjectServiceLeaveRequest is used to leave a project
+ * ProjectServiceLeaveRequest is used to leave a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceLeaveRequest
  */
 export type ProjectServiceLeaveRequest = Message<"metalstack.api.v2.ProjectServiceLeaveRequest"> & {
   /**
-   * Project is the uuid of the project
+   * Project is the uuid of the project.
    *
    * @generated from field: string project = 1;
    */
@@ -683,7 +683,7 @@ export const ProjectServiceLeaveRequestSchema: GenMessage<ProjectServiceLeaveReq
   messageDesc(file_metalstack_api_v2_project, 20);
 
 /**
- * ProjectServiceLeaveResponse is the response payload to a leave project request
+ * ProjectServiceLeaveResponse is the response payload to a leave project request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceLeaveResponse
  */
@@ -698,13 +698,13 @@ export const ProjectServiceLeaveResponseSchema: GenMessage<ProjectServiceLeaveRe
   messageDesc(file_metalstack_api_v2_project, 21);
 
 /**
- * ProjectServiceAddMemberRequest is the request payload for adding a member to a project
+ * ProjectServiceAddMemberRequest is the request payload for adding a member to a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceAddMemberRequest
  */
 export type ProjectServiceAddMemberRequest = Message<"metalstack.api.v2.ProjectServiceAddMemberRequest"> & {
   /**
-   * Project is the uuid of the project
+   * Project is the uuid of the project.
    *
    * @generated from field: string project = 1;
    */
@@ -733,13 +733,13 @@ export const ProjectServiceAddMemberRequestSchema: GenMessage<ProjectServiceAddM
   messageDesc(file_metalstack_api_v2_project, 22);
 
 /**
- * ProjectServiceAddMemberResponse is the response payload for the add member request
+ * ProjectServiceAddMemberResponse is the response payload for the add member request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceAddMemberResponse
  */
 export type ProjectServiceAddMemberResponse = Message<"metalstack.api.v2.ProjectServiceAddMemberResponse"> & {
   /**
-   * ProjectRole is the added project member
+   * ProjectRole is the added project member.
    *
    * @generated from field: metalstack.api.v2.ProjectRole project_member = 1;
    */
@@ -754,20 +754,20 @@ export const ProjectServiceAddMemberResponseSchema: GenMessage<ProjectServiceAdd
   messageDesc(file_metalstack_api_v2_project, 23);
 
 /**
- * ProjectServiceRemoveMemberRequest is used to remove a member from a project
+ * ProjectServiceRemoveMemberRequest is used to remove a member from a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceRemoveMemberRequest
  */
 export type ProjectServiceRemoveMemberRequest = Message<"metalstack.api.v2.ProjectServiceRemoveMemberRequest"> & {
   /**
-   * Project is the uuid of the project
+   * Project is the uuid of the project.
    *
    * @generated from field: string project = 1;
    */
   project: string;
 
   /**
-   * Member is the id of the member to remove from this project
+   * Member is the id of the member to remove from this project.
    *
    * @generated from field: string member = 2;
    */
@@ -782,7 +782,7 @@ export const ProjectServiceRemoveMemberRequestSchema: GenMessage<ProjectServiceR
   messageDesc(file_metalstack_api_v2_project, 24);
 
 /**
- * ProjectServiceRemoveMemberResponse is the response payload to a remove member request
+ * ProjectServiceRemoveMemberResponse is the response payload to a remove member request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceRemoveMemberResponse
  */
@@ -797,27 +797,27 @@ export const ProjectServiceRemoveMemberResponseSchema: GenMessage<ProjectService
   messageDesc(file_metalstack_api_v2_project, 25);
 
 /**
- * ProjectServiceUpdateMemberRequest is used to update a member of a project
+ * ProjectServiceUpdateMemberRequest is used to update a member of a project.
  *
  * @generated from message metalstack.api.v2.ProjectServiceUpdateMemberRequest
  */
 export type ProjectServiceUpdateMemberRequest = Message<"metalstack.api.v2.ProjectServiceUpdateMemberRequest"> & {
   /**
-   * Project is the uuid of the project
+   * Project is the uuid of the project.
    *
    * @generated from field: string project = 1;
    */
   project: string;
 
   /**
-   * Member is the id of the member to remove from this project
+   * Member is the id of the member to remove from this project.
    *
    * @generated from field: string member = 2;
    */
   member: string;
 
   /**
-   * Role is the role in this project the user will get after the update
+   * Role is the role in this project the user will get after the update.
    *
    * @generated from field: metalstack.api.v2.ProjectRole role = 3;
    */
@@ -832,13 +832,13 @@ export const ProjectServiceUpdateMemberRequestSchema: GenMessage<ProjectServiceU
   messageDesc(file_metalstack_api_v2_project, 26);
 
 /**
- * ProjectServiceUpdateMemberResponse is the response payload to a update member request
+ * ProjectServiceUpdateMemberResponse is the response payload to a update member request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceUpdateMemberResponse
  */
 export type ProjectServiceUpdateMemberResponse = Message<"metalstack.api.v2.ProjectServiceUpdateMemberResponse"> & {
   /**
-   * ProjectMember is the updated project member
+   * ProjectMember is the updated project member.
    *
    * @generated from field: metalstack.api.v2.ProjectMember project_member = 1;
    */
@@ -853,13 +853,13 @@ export const ProjectServiceUpdateMemberResponseSchema: GenMessage<ProjectService
   messageDesc(file_metalstack_api_v2_project, 27);
 
 /**
- * ProjectServiceInviteAcceptRequest is the request payload to a accept invite request
+ * ProjectServiceInviteAcceptRequest is the request payload to a accept invite request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteAcceptRequest
  */
 export type ProjectServiceInviteAcceptRequest = Message<"metalstack.api.v2.ProjectServiceInviteAcceptRequest"> & {
   /**
-   * Secret is the invitation secret part of the invitation url
+   * Secret is the invitation secret part of the invitation url.
    *
    * @generated from field: string secret = 1;
    */
@@ -874,7 +874,7 @@ export const ProjectServiceInviteAcceptRequestSchema: GenMessage<ProjectServiceI
   messageDesc(file_metalstack_api_v2_project, 28);
 
 /**
- * ProjectServiceInviteAcceptResponse is the response payload to a accept invite request
+ * ProjectServiceInviteAcceptResponse is the response payload to a accept invite request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteAcceptResponse
  */
@@ -902,13 +902,13 @@ export const ProjectServiceInviteAcceptResponseSchema: GenMessage<ProjectService
   messageDesc(file_metalstack_api_v2_project, 29);
 
 /**
- * ProjectServiceInviteDeleteRequest is the request payload to a delete invite
+ * ProjectServiceInviteDeleteRequest is the request payload to a delete invite.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteDeleteRequest
  */
 export type ProjectServiceInviteDeleteRequest = Message<"metalstack.api.v2.ProjectServiceInviteDeleteRequest"> & {
   /**
-   * Project is the uuid of the project
+   * Project is the uuid of the project.
    *
    * @generated from field: string project = 1;
    */
@@ -930,7 +930,7 @@ export const ProjectServiceInviteDeleteRequestSchema: GenMessage<ProjectServiceI
   messageDesc(file_metalstack_api_v2_project, 30);
 
 /**
- * ProjectServiceInviteDeleteResponse is the response payload of a delete invite request
+ * ProjectServiceInviteDeleteResponse is the response payload of a delete invite request.
  *
  * @generated from message metalstack.api.v2.ProjectServiceInviteDeleteResponse
  */
@@ -971,7 +971,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceGetResponseSchema;
   },
   /**
-   * Create a project
+   * Create a project.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.Create
    */
@@ -981,7 +981,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceCreateResponseSchema;
   },
   /**
-   * Delete a project
+   * Delete a project.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.Delete
    */
@@ -991,7 +991,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceDeleteResponseSchema;
   },
   /**
-   * Update a project
+   * Update a project.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.Update
    */
@@ -1001,7 +1001,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceUpdateResponseSchema;
   },
   /**
-   * Leave project
+   * Leave project.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.Leave
    */
@@ -1011,7 +1011,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceLeaveResponseSchema;
   },
   /**
-   * AddMember adds a user to a project
+   * AddMember adds a user to a project.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.AddMember
    */
@@ -1021,7 +1021,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceAddMemberResponseSchema;
   },
   /**
-   * RemoveMember removes a user from a project
+   * RemoveMember removes a user from a project.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.RemoveMember
    */
@@ -1031,7 +1031,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceRemoveMemberResponseSchema;
   },
   /**
-   * UpdateMember updates a user for a project
+   * UpdateMember updates a user for a project.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.UpdateMember
    */
@@ -1041,7 +1041,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceUpdateMemberResponseSchema;
   },
   /**
-   * Invite a user to a project
+   * Invite a user to a project.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.Invite
    */
@@ -1051,7 +1051,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceInviteResponseSchema;
   },
   /**
-   * InviteAccept is called by a user to accept an invitation
+   * InviteAccept is called by a user to accept an invitation.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.InviteAccept
    */
@@ -1061,7 +1061,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceInviteAcceptResponseSchema;
   },
   /**
-   * InviteDelete deletes a pending invitation
+   * InviteDelete deletes a pending invitation.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.InviteDelete
    */
@@ -1071,7 +1071,7 @@ export const ProjectService: GenService<{
     output: typeof ProjectServiceInviteDeleteResponseSchema;
   },
   /**
-   * InvitesList list all invites to a project
+   * InvitesList list all invites to a project.
    *
    * @generated from rpc metalstack.api.v2.ProjectService.InvitesList
    */

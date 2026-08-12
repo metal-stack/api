@@ -28,21 +28,21 @@ export const file_metalstack_infra_v2_component: GenFile = /*@__PURE__*/
  */
 export type ComponentServicePingRequest = Message<"metalstack.infra.v2.ComponentServicePingRequest"> & {
   /**
-   * Type defines which service is actually pinging
+   * Type defines which service is actually pinging.
    *
    * @generated from field: metalstack.api.v2.ComponentType type = 1;
    */
   type: ComponentType;
 
   /**
-   * Identifier is a unique identifier of this service, for example if two instances are running, this might be the pod ID
+   * Identifier is a unique identifier of this service, for example if two instances are running, this might be the pod ID.
    *
    * @generated from field: string identifier = 2;
    */
   identifier: string;
 
   /**
-   * StartedAt is the timestamp this service was started
+   * StartedAt is the timestamp this service was started.
    *
    * @generated from field: google.protobuf.Timestamp started_at = 3;
    */

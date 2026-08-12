@@ -26,19 +26,19 @@ service ImageService {
   }
 }
 
-// ImageServiceGetRequest is the request payload for an image get request
+// ImageServiceGetRequest is the request payload for an image get request.
 message ImageServiceGetRequest {
   // ID of the image to get
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
-// ImageServiceListRequest is the request payload for an image list request
+// ImageServiceListRequest is the request payload for an image list request.
 message ImageServiceListRequest {
-  // Query for images
+  // Query for images.
   ImageQuery query = 1;
 }
 
-// ImageServiceLatestRequest is the request payload for an image latest request
+// ImageServiceLatestRequest is the request payload for an image latest request.
 message ImageServiceLatestRequest {
   // OS for which the latest image should be fetched
   // should contain os and major.minor then latest patch version of this os is returned
@@ -47,19 +47,19 @@ message ImageServiceLatestRequest {
   optional ImageClassification classification = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
-// ImageServiceGetResponse is the response payload for an image get request
+// ImageServiceGetResponse is the response payload for an image get request.
 message ImageServiceGetResponse {
   // Image the image
   Image image = 1;
 }
 
-// ImageServiceListResponse is the response payload for an image list request
+// ImageServiceListResponse is the response payload for an image list request.
 message ImageServiceListResponse {
   // Images the images
   repeated Image images = 1;
 }
 
-// ImageServiceLatestResponse is the response payload for an image latest request
+// ImageServiceLatestResponse is the response payload for an image latest request.
 message ImageServiceLatestResponse {
   // Image which is the latest for one os
   Image image = 1;
@@ -87,11 +87,11 @@ message Image {
   // Classification of this image
   ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
 
-  // ExpiresAt usage is not possible after this date
+  // ExpiresAt usage is not possible after this date.
   google.protobuf.Timestamp expires_at = 8;
 }
 
-// ImageUsage reports which machines/firewalls actually use this image
+// ImageUsage reports which machines/firewalls actually use this image.
 message ImageUsage {
   // Image with usage
   Image image = 1;
@@ -99,7 +99,7 @@ message ImageUsage {
   repeated string used_by = 2;
 }
 
-// ImageQuery is used to search images
+// ImageQuery is used to search images.
 message ImageQuery {
   // ID of the image to get
   optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -125,28 +125,28 @@ message ImageQuery {
   // Classification of the image to query
   optional ImageClassification classification = 8 [(buf.validate.field).enum.defined_only = true];
 
-  // Labels lists only images containing the given labels
+  // Labels lists only images containing the given labels.
   optional Labels labels = 9;
 }
 
 // ImageFeature
 enum ImageFeature {
-  // IMAGE_FEATURE_UNSPECIFIED is not specified
+  // IMAGE_FEATURE_UNSPECIFIED is not specified.
   IMAGE_FEATURE_UNSPECIFIED = 0;
-  // IMAGE_FEATURE_MACHINE indicates this image is usable for a machine
+  // IMAGE_FEATURE_MACHINE indicates this image is usable for a machine.
   IMAGE_FEATURE_MACHINE = 1 [(enum_string_value) = "machine"];
-  // IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall
+  // IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall.
   IMAGE_FEATURE_FIREWALL = 2 [(enum_string_value) = "firewall"];
 }
 
 // Image
 enum ImageClassification {
-  // IMAGE_CLASSIFICATION_UNSPECIFIED is not specified
+  // IMAGE_CLASSIFICATION_UNSPECIFIED is not specified.
   IMAGE_CLASSIFICATION_UNSPECIFIED = 0;
-  // IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview
+  // IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview.
   IMAGE_CLASSIFICATION_PREVIEW = 1 [(enum_string_value) = "preview"];
-  // IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported
+  // IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported.
   IMAGE_CLASSIFICATION_SUPPORTED = 2 [(enum_string_value) = "supported"];
-  // IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated
+  // IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated.
   IMAGE_CLASSIFICATION_DEPRECATED = 3 [(enum_string_value) = "deprecated"];
 }

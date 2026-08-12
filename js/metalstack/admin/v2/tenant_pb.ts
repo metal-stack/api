@@ -74,7 +74,7 @@ export const TenantServiceCreateRequestSchema: GenMessage<TenantServiceCreateReq
  */
 export type TenantServiceCreateResponse = Message<"metalstack.admin.v2.TenantServiceCreateResponse"> & {
   /**
-   * Tenant contains the created tenant
+   * Tenant contains the created tenant.
    *
    * @generated from field: metalstack.api.v2.Tenant tenant = 1;
    */
@@ -95,7 +95,7 @@ export const TenantServiceCreateResponseSchema: GenMessage<TenantServiceCreateRe
  */
 export type TenantServiceListRequest = Message<"metalstack.admin.v2.TenantServiceListRequest"> & {
   /**
-   * Query for tenants
+   * Query for tenants.
    *
    * @generated from field: metalstack.api.v2.TenantQuery query = 1;
    */
@@ -116,14 +116,14 @@ export const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest
  */
 export type TenantServiceListResponse = Message<"metalstack.admin.v2.TenantServiceListResponse"> & {
   /**
-   * Tenants contains the list of tenants
+   * Tenants contains the list of tenants.
    *
    * @generated from field: repeated metalstack.api.v2.Tenant tenants = 1;
    */
   tenants: Tenant[];
 
   /**
-   * NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request
+   * NextPage is used for pagination, returns the next page to be fetched and must then be provided in the list request.
    *
    * @generated from field: optional uint64 next_page = 2;
    */
@@ -138,7 +138,7 @@ export const TenantServiceListResponseSchema: GenMessage<TenantServiceListRespon
   messageDesc(file_metalstack_admin_v2_tenant, 3);
 
 /**
- * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+ * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant.
  *
  * @generated from message metalstack.admin.v2.TenantServiceAddMemberRequest
  */
@@ -173,13 +173,13 @@ export const TenantServiceAddMemberRequestSchema: GenMessage<TenantServiceAddMem
   messageDesc(file_metalstack_admin_v2_tenant, 4);
 
 /**
- * TenantServiceAddMemberResponse is the response payload for the add member request
+ * TenantServiceAddMemberResponse is the response payload for the add member request.
  *
  * @generated from message metalstack.admin.v2.TenantServiceAddMemberResponse
  */
 export type TenantServiceAddMemberResponse = Message<"metalstack.admin.v2.TenantServiceAddMemberResponse"> & {
   /**
-   * TenantMember is the added tenant member
+   * TenantMember is the added tenant member.
    *
    * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
    */
@@ -194,7 +194,7 @@ export const TenantServiceAddMemberResponseSchema: GenMessage<TenantServiceAddMe
   messageDesc(file_metalstack_admin_v2_tenant, 5);
 
 /**
- * TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant
+ * TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant.
  *
  * @generated from message metalstack.admin.v2.TenantServiceRemoveMemberRequest
  */
@@ -222,13 +222,13 @@ export const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantServiceRem
   messageDesc(file_metalstack_admin_v2_tenant, 6);
 
 /**
- * TenantServiceRemoveMemberResponse is the response payload for the remove member request
+ * TenantServiceRemoveMemberResponse is the response payload for the remove member request.
  *
  * @generated from message metalstack.admin.v2.TenantServiceRemoveMemberResponse
  */
 export type TenantServiceRemoveMemberResponse = Message<"metalstack.admin.v2.TenantServiceRemoveMemberResponse"> & {
   /**
-   * TenantMember is the removed tenant member
+   * TenantMember is the removed tenant member.
    *
    * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
    */
@@ -269,7 +269,7 @@ export const TenantService: GenService<{
     output: typeof TenantServiceListResponseSchema;
   },
   /**
-   * Add a member to a tenant
+   * Add a member to a tenant.
    *
    * @generated from rpc metalstack.admin.v2.TenantService.AddMember
    */
@@ -279,7 +279,7 @@ export const TenantService: GenService<{
     output: typeof TenantServiceAddMemberResponseSchema;
   },
   /**
-   * RemoveMember removes a member from a tenant
+   * RemoveMember removes a member from a tenant.
    *
    * @generated from rpc metalstack.admin.v2.TenantService.RemoveMember
    */

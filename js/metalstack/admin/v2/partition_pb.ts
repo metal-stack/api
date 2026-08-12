@@ -19,7 +19,7 @@ export const file_metalstack_admin_v2_partition: GenFile = /*@__PURE__*/
   fileDesc("CiNtZXRhbHN0YWNrL2FkbWluL3YyL3BhcnRpdGlvbi5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiJQCh1QYXJ0aXRpb25TZXJ2aWNlQ3JlYXRlUmVxdWVzdBIvCglwYXJ0aXRpb24YASABKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb24i3wMKHVBhcnRpdGlvblNlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBtCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIlCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgFIAIgBARJJChJib290X2NvbmZpZ3VyYXRpb24YBCABKAsyLS5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb25Cb290Q29uZmlndXJhdGlvbhI7CgtkbnNfc2VydmVycxgFIAMoCzIcLm1ldGFsc3RhY2suYXBpLnYyLkROU1NlcnZlckIIukgFkgECEAMSOwoLbnRwX3NlcnZlcnMYBiADKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5OVFBTZXJ2ZXJCCLpIBZIBAhAKEiwKFm1nbXRfc2VydmljZV9hZGRyZXNzZXMYByADKAlCDLpICZIBBsiks7ECARI0CgZsYWJlbHMYCCABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVMYWJlbHNIAYgBAUIOCgxfZGVzY3JpcHRpb25CCQoHX2xhYmVscyI4Ch1QYXJ0aXRpb25TZXJ2aWNlRGVsZXRlUmVxdWVzdBIXCgJpZBgBIAEoCUILukgIcgbQs66xAgEiUQoeUGFydGl0aW9uU2VydmljZUNyZWF0ZVJlc3BvbnNlEi8KCXBhcnRpdGlvbhgBIAEoCzIcLm1ldGFsc3RhY2suYXBpLnYyLlBhcnRpdGlvbiJRCh5QYXJ0aXRpb25TZXJ2aWNlVXBkYXRlUmVzcG9uc2USLwoJcGFydGl0aW9uGAEgASgLMhwubWV0YWxzdGFjay5hcGkudjIuUGFydGl0aW9uIlEKHlBhcnRpdGlvblNlcnZpY2VEZWxldGVSZXNwb25zZRIvCglwYXJ0aXRpb24YASABKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5QYXJ0aXRpb24imwEKH1BhcnRpdGlvblNlcnZpY2VDYXBhY2l0eVJlcXVlc3QSHAoCaWQYASABKAlCC7pICHIG0LOusQIBSACIAQESHgoEc2l6ZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIeCgdwcm9qZWN0GAMgASgJQgi6SAVyA7ABAUgCiAEBQgUKA19pZEIHCgVfc2l6ZUIKCghfcHJvamVjdCJmCiBQYXJ0aXRpb25TZXJ2aWNlQ2FwYWNpdHlSZXNwb25zZRJCChJwYXJ0aXRpb25fY2FwYWNpdHkYASADKAsyJi5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvbkNhcGFjaXR5In4KEVBhcnRpdGlvbkNhcGFjaXR5Eh4KCXBhcnRpdGlvbhgBIAEoCUILukgIcgbQs66xAgESSQoXbWFjaGluZV9zaXplX2NhcGFjaXRpZXMYAiADKAsyKC5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTaXplQ2FwYWNpdHki0QIKE01hY2hpbmVTaXplQ2FwYWNpdHkSGQoEc2l6ZRgCIAEoCUILukgIcgbAs66xAgESDQoFdG90YWwYAyABKAMSEwoLcGhvbmVkX2hvbWUYBCABKAMSDwoHd2FpdGluZxgFIAEoAxINCgVvdGhlchgGIAEoAxIWCg5vdGhlcl9tYWNoaW5lcxgHIAMoCRIRCglhbGxvY2F0ZWQYCCABKAMSEwoLYWxsb2NhdGFibGUYCSABKAMSDAoEZnJlZRgKIAEoAxITCgt1bmF2YWlsYWJsZRgLIAEoAxIOCgZmYXVsdHkYDCABKAMSFwoPZmF1bHR5X21hY2hpbmVzGA0gAygJEhQKDHJlc2VydmF0aW9ucxgOIAEoAxIZChF1c2VkX3Jlc2VydmF0aW9ucxgPIAEoAxIeChZyZW1haW5pbmdfcmVzZXJ2YXRpb25zGBAgASgDMpIEChBQYXJ0aXRpb25TZXJ2aWNlEnwKBkNyZWF0ZRIyLm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZUNyZWF0ZVJlcXVlc3QaMy5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnwKBlVwZGF0ZRIyLm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZVVwZGF0ZVJlcXVlc3QaMy5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VVcGRhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnwKBkRlbGV0ZRIyLm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZURlbGV0ZVJlcXVlc3QaMy5tZXRhbHN0YWNrLmFkbWluLnYyLlBhcnRpdGlvblNlcnZpY2VEZWxldGVSZXNwb25zZSIJ0vMYAQHg8xgBEoMBCghDYXBhY2l0eRI0Lm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZUNhcGFjaXR5UmVxdWVzdBo1Lm1ldGFsc3RhY2suYWRtaW4udjIuUGFydGl0aW9uU2VydmljZUNhcGFjaXR5UmVzcG9uc2UiCtLzGAICAeDzGAJC0gEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQg5QYXJ0aXRpb25Qcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_partition, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * PartitionServiceCreateRequest is the request payload for a partition create request
+ * PartitionServiceCreateRequest is the request payload for a partition create request.
  *
  * @generated from message metalstack.admin.v2.PartitionServiceCreateRequest
  */
@@ -53,7 +53,7 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
   id: string;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
    */
@@ -67,7 +67,7 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
   description?: string | undefined;
 
   /**
-   * PartitionBootConfiguration defines how metal-hammer boots
+   * PartitionBootConfiguration defines how metal-hammer boots.
    *
    * @generated from field: metalstack.api.v2.PartitionBootConfiguration boot_configuration = 4;
    */
@@ -88,7 +88,7 @@ export type PartitionServiceUpdateRequest = Message<"metalstack.admin.v2.Partiti
   ntpServers: NTPServer[];
 
   /**
-   * ManagementServiceAddresses defines where the management is reachable
+   * ManagementServiceAddresses defines where the management is reachable.
    * must be in the form <ip|host>:<port>
    *
    * @generated from field: repeated string mgmt_service_addresses = 7;
@@ -111,7 +111,7 @@ export const PartitionServiceUpdateRequestSchema: GenMessage<PartitionServiceUpd
   messageDesc(file_metalstack_admin_v2_partition, 1);
 
 /**
- * PartitionServiceDeleteRequest is the request payload for a partition delete request
+ * PartitionServiceDeleteRequest is the request payload for a partition delete request.
  *
  * @generated from message metalstack.admin.v2.PartitionServiceDeleteRequest
  */
@@ -132,7 +132,7 @@ export const PartitionServiceDeleteRequestSchema: GenMessage<PartitionServiceDel
   messageDesc(file_metalstack_admin_v2_partition, 2);
 
 /**
- * PartitionServiceCreateResponse is the response payload for a partition create request
+ * PartitionServiceCreateResponse is the response payload for a partition create request.
  *
  * @generated from message metalstack.admin.v2.PartitionServiceCreateResponse
  */
@@ -153,7 +153,7 @@ export const PartitionServiceCreateResponseSchema: GenMessage<PartitionServiceCr
   messageDesc(file_metalstack_admin_v2_partition, 3);
 
 /**
- * PartitionServiceUpdateResponse is the response payload for a partition update request
+ * PartitionServiceUpdateResponse is the response payload for a partition update request.
  *
  * @generated from message metalstack.admin.v2.PartitionServiceUpdateResponse
  */
@@ -180,7 +180,7 @@ export const PartitionServiceUpdateResponseSchema: GenMessage<PartitionServiceUp
  */
 export type PartitionServiceDeleteResponse = Message<"metalstack.admin.v2.PartitionServiceDeleteResponse"> & {
   /**
-   * Partition contains the deleted partition
+   * Partition contains the deleted partition.
    *
    * @generated from field: metalstack.api.v2.Partition partition = 1;
    */
@@ -230,13 +230,13 @@ export const PartitionServiceCapacityRequestSchema: GenMessage<PartitionServiceC
   messageDesc(file_metalstack_admin_v2_partition, 6);
 
 /**
- * PartitionServiceCapacityResponse is the response payload for a partition capacity request
+ * PartitionServiceCapacityResponse is the response payload for a partition capacity request.
  *
  * @generated from message metalstack.admin.v2.PartitionServiceCapacityResponse
  */
 export type PartitionServiceCapacityResponse = Message<"metalstack.admin.v2.PartitionServiceCapacityResponse"> & {
   /**
-   * PartitionCapacity is a capacity report per partition
+   * PartitionCapacity is a capacity report per partition.
    *
    * @generated from field: repeated metalstack.admin.v2.PartitionCapacity partition_capacity = 1;
    */
@@ -251,7 +251,7 @@ export const PartitionServiceCapacityResponseSchema: GenMessage<PartitionService
   messageDesc(file_metalstack_admin_v2_partition, 7);
 
 /**
- * PartitionCapacity is the capacity of one partition
+ * PartitionCapacity is the capacity of one partition.
  *
  * @generated from message metalstack.admin.v2.PartitionCapacity
  */
@@ -279,7 +279,7 @@ export const PartitionCapacitySchema: GenMessage<PartitionCapacity> = /*@__PURE_
   messageDesc(file_metalstack_admin_v2_partition, 8);
 
 /**
- * ServerCapacity is the capacity of one server type, eg machine size
+ * ServerCapacity is the capacity of one server type, eg machine size.
  *
  * @generated from message metalstack.admin.v2.MachineSizeCapacity
  */

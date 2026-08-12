@@ -40,14 +40,14 @@ export const LabelsPatchSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v
  */
 export const UpdateMetaSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_common, 5);
 /**
- * TenantRole specifies what role a logged in user needs to call this tenant scoped service
+ * TenantRole specifies what role a logged in user needs to call this tenant scoped service.
  *
  * @generated from enum metalstack.api.v2.TenantRole
  */
 export var TenantRole;
 (function (TenantRole) {
     /**
-     * TENANT_ROLE_UNSPECIFIED is not specified
+     * TENANT_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: TENANT_ROLE_UNSPECIFIED = 0;
      */
@@ -72,7 +72,7 @@ export var TenantRole;
     TenantRole[TenantRole["VIEWER"] = 3] = "VIEWER";
     /**
      * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
-     * The guest role is assumed by users who are invited to a tenant's project without them
+     * The guest role is assumed by users who are invited to a tenant's project without them.
      * having a direct membership within the tenant.
      *
      * @generated from enum value: TENANT_ROLE_GUEST = 4;
@@ -84,14 +84,14 @@ export var TenantRole;
  */
 export const TenantRoleSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 0);
 /**
- * ProjectRole specifies what role a logged in user needs to call this project scoped service
+ * ProjectRole specifies what role a logged in user needs to call this project scoped service.
  *
  * @generated from enum metalstack.api.v2.ProjectRole
  */
 export var ProjectRole;
 (function (ProjectRole) {
     /**
-     * PROJECT_ROLE_UNSPECIFIED is not specified
+     * PROJECT_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: PROJECT_ROLE_UNSPECIFIED = 0;
      */
@@ -120,14 +120,14 @@ export var ProjectRole;
  */
 export const ProjectRoleSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 1);
 /**
- * AdminRole specifies what role a logged in user needs to call this admin service
+ * AdminRole specifies what role a logged in user needs to call this admin service.
  *
  * @generated from enum metalstack.api.v2.AdminRole
  */
 export var AdminRole;
 (function (AdminRole) {
     /**
-     * ADMIN_ROLE_UNSPECIFIED is not specified
+     * ADMIN_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: ADMIN_ROLE_UNSPECIFIED = 0;
      */
@@ -150,14 +150,14 @@ export var AdminRole;
  */
 export const AdminRoleSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 2);
 /**
- * InfraRole specifies what role a microservice needs to call this infra service
+ * InfraRole specifies what role a microservice needs to call this infra service.
  *
  * @generated from enum metalstack.api.v2.InfraRole
  */
 export var InfraRole;
 (function (InfraRole) {
     /**
-     * INFRA_ROLE_UNSPECIFIED is not specified
+     * INFRA_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: INFRA_ROLE_UNSPECIFIED = 0;
      */
@@ -180,14 +180,14 @@ export var InfraRole;
  */
 export const InfraRoleSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 3);
 /**
- * MachineRole specifies what role a microservice needs to call this machine service
+ * MachineRole specifies what role a microservice needs to call this machine service.
  *
  * @generated from enum metalstack.api.v2.MachineRole
  */
 export var MachineRole;
 (function (MachineRole) {
     /**
-     * MACHINE_ROLE_UNSPECIFIED is not specified
+     * MACHINE_ROLE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: MACHINE_ROLE_UNSPECIFIED = 0;
      */
@@ -217,13 +217,13 @@ export const MachineRoleSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_c
 export var Visibility;
 (function (Visibility) {
     /**
-     * VISIBILITY_UNSPECIFIED is not defined
+     * VISIBILITY_UNSPECIFIED is not defined.
      *
      * @generated from enum value: VISIBILITY_UNSPECIFIED = 0;
      */
     Visibility[Visibility["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * VISIBILITY_PUBLIC specifies that this service is accessible without authentication
+     * VISIBILITY_PUBLIC specifies that this service is accessible without authentication.
      *
      * @generated from enum value: VISIBILITY_PUBLIC = 1;
      */
@@ -249,7 +249,7 @@ export const VisibilitySchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_co
 export var Auditing;
 (function (Auditing) {
     /**
-     * AUDITING_UNSPECIFIED is not specified
+     * AUDITING_UNSPECIFIED is not specified.
      *
      * @generated from enum value: AUDITING_UNSPECIFIED = 0;
      */
@@ -304,43 +304,43 @@ export var OptimisticLockingStrategy;
  */
 export const OptimisticLockingStrategySchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_common, 7);
 /**
- * TenantRoles are used to define the tenant role a logged in user must provide to call this method
+ * TenantRoles are used to define the tenant role a logged in user must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.TenantRole tenant_roles = 51000;
  */
 export const tenant_roles = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 0);
 /**
- * ProjectRoles are used to define the project role a logged in user must provide to call this method
+ * ProjectRoles are used to define the project role a logged in user must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.ProjectRole project_roles = 51001;
  */
 export const project_roles = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 1);
 /**
- * AdminRoles are used to define the admin role a logged in user must provide to call this method
+ * AdminRoles are used to define the admin role a logged in user must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.AdminRole admin_roles = 51002;
  */
 export const admin_roles = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 2);
 /**
- * Visibility defines the visibility of this method, this is used to have public or self visible methods
+ * Visibility defines the visibility of this method, this is used to have public or self visible methods.
  *
  * @generated from extension: metalstack.api.v2.Visibility visibility = 51003;
  */
 export const visibility = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 3);
 /**
- * Auditing defines if calls to this method should be audited or not
+ * Auditing defines if calls to this method should be audited or not.
  *
  * @generated from extension: metalstack.api.v2.Auditing auditing = 51004;
  */
 export const auditing = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 4);
 /**
- * InfraRoles are used to define the infra role a microservice must provide to call this method
+ * InfraRoles are used to define the infra role a microservice must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.InfraRole infra_roles = 51005;
  */
 export const infra_roles = /*@__PURE__*/ extDesc(file_metalstack_api_v2_common, 5);
 /**
- * MachineRole are used to define which machine role a microservice must provide to call this method
+ * MachineRole are used to define which machine role a microservice must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.MachineRole machine_roles = 51006;
  */

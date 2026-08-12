@@ -63,19 +63,19 @@ export const ImageQuerySchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2
 export var ImageFeature;
 (function (ImageFeature) {
     /**
-     * IMAGE_FEATURE_UNSPECIFIED is not specified
+     * IMAGE_FEATURE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: IMAGE_FEATURE_UNSPECIFIED = 0;
      */
     ImageFeature[ImageFeature["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * IMAGE_FEATURE_MACHINE indicates this image is usable for a machine
+     * IMAGE_FEATURE_MACHINE indicates this image is usable for a machine.
      *
      * @generated from enum value: IMAGE_FEATURE_MACHINE = 1;
      */
     ImageFeature[ImageFeature["MACHINE"] = 1] = "MACHINE";
     /**
-     * IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall
+     * IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall.
      *
      * @generated from enum value: IMAGE_FEATURE_FIREWALL = 2;
      */
@@ -93,25 +93,25 @@ export const ImageFeatureSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_
 export var ImageClassification;
 (function (ImageClassification) {
     /**
-     * IMAGE_CLASSIFICATION_UNSPECIFIED is not specified
+     * IMAGE_CLASSIFICATION_UNSPECIFIED is not specified.
      *
      * @generated from enum value: IMAGE_CLASSIFICATION_UNSPECIFIED = 0;
      */
     ImageClassification[ImageClassification["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview
+     * IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview.
      *
      * @generated from enum value: IMAGE_CLASSIFICATION_PREVIEW = 1;
      */
     ImageClassification[ImageClassification["PREVIEW"] = 1] = "PREVIEW";
     /**
-     * IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported
+     * IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported.
      *
      * @generated from enum value: IMAGE_CLASSIFICATION_SUPPORTED = 2;
      */
     ImageClassification[ImageClassification["SUPPORTED"] = 2] = "SUPPORTED";
     /**
-     * IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated
+     * IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated.
      *
      * @generated from enum value: IMAGE_CLASSIFICATION_DEPRECATED = 3;
      */

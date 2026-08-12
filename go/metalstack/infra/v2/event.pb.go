@@ -73,7 +73,7 @@ type EventServiceSendResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Events counts the number of events successfully stored in the database
 	Events uint64 `protobuf:"varint,1,opt,name=events,proto3" json:"events,omitempty"`
-	// Failed contains IDs of all machines whose events could not be stored in the database
+	// Failed contains IDs of all machines whose events could not be stored in the database.
 	Failed        []string `protobuf:"bytes,2,rep,name=failed,proto3" json:"failed,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

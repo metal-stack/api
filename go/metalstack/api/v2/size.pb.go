@@ -22,19 +22,19 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// SizeConstraintType defines the property for which a constraint is defined
+// SizeConstraintType defines the property for which a constraint is defined.
 type SizeConstraintType int32
 
 const (
 	// SIZE_CONSTRAINT_TYPE_UNSPECIFIED type is not specified
 	SizeConstraintType_SIZE_CONSTRAINT_TYPE_UNSPECIFIED SizeConstraintType = 0
-	// SIZE_CONSTRAINT_TYPE_CORES defines the number of cores as property
+	// SIZE_CONSTRAINT_TYPE_CORES defines the number of cores as property.
 	SizeConstraintType_SIZE_CONSTRAINT_TYPE_CORES SizeConstraintType = 1
-	// SIZE_CONSTRAINT_TYPE_MEMORY defines the amount of memory as property
+	// SIZE_CONSTRAINT_TYPE_MEMORY defines the amount of memory as property.
 	SizeConstraintType_SIZE_CONSTRAINT_TYPE_MEMORY SizeConstraintType = 2
-	// SIZE_CONSTRAINT_TYPE_STORAGE defines the amount of storage as property
+	// SIZE_CONSTRAINT_TYPE_STORAGE defines the amount of storage as property.
 	SizeConstraintType_SIZE_CONSTRAINT_TYPE_STORAGE SizeConstraintType = 3
-	// SIZE_CONSTRAINT_TYPE_GPU defines the number of gpus as property
+	// SIZE_CONSTRAINT_TYPE_GPU defines the number of gpus as property.
 	SizeConstraintType_SIZE_CONSTRAINT_TYPE_GPU SizeConstraintType = 4
 )
 
@@ -83,7 +83,7 @@ func (SizeConstraintType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_size_proto_rawDescGZIP(), []int{0}
 }
 
-// SizeServiceGetRequest is the request payload for a size get request
+// SizeServiceGetRequest is the request payload for a size get request.
 type SizeServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the size to get
@@ -129,10 +129,10 @@ func (x *SizeServiceGetRequest) GetId() string {
 	return ""
 }
 
-// SizeServiceListRequest is the request payload for a size list request
+// SizeServiceListRequest is the request payload for a size list request.
 type SizeServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for sizes
+	// Query for sizes.
 	Query         *SizeQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -175,7 +175,7 @@ func (x *SizeServiceListRequest) GetQuery() *SizeQuery {
 	return nil
 }
 
-// SizeServiceGetResponse is the response payload for a size get request
+// SizeServiceGetResponse is the response payload for a size get request.
 type SizeServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Size the size
@@ -221,7 +221,7 @@ func (x *SizeServiceGetResponse) GetSize() *Size {
 	return nil
 }
 
-// SizeServiceListResponse is the response payload for a size list request
+// SizeServiceListResponse is the response payload for a size list request.
 type SizeServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Sizes the sizes
@@ -358,7 +358,7 @@ type SizeConstraint struct {
 	Min uint64 `protobuf:"varint,2,opt,name=min,proto3" json:"min,omitempty"`
 	// Max the maximum value of the constraint
 	Max uint64 `protobuf:"varint,3,opt,name=max,proto3" json:"max,omitempty"`
-	// Identifier glob pattern which matches to the given type, for example gpu pci id
+	// Identifier glob pattern which matches to the given type, for example gpu pci id.
 	Identifier    *string `protobuf:"bytes,4,opt,name=identifier,proto3,oneof" json:"identifier,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -422,7 +422,7 @@ func (x *SizeConstraint) GetIdentifier() string {
 	return ""
 }
 
-// SizeQuery is used to search sizes
+// SizeQuery is used to search sizes.
 type SizeQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the size to get
@@ -431,7 +431,7 @@ type SizeQuery struct {
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	// Description of the size to query
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Labels lists only sizes containing the given labels
+	// Labels lists only sizes containing the given labels.
 	Labels        *Labels `protobuf:"bytes,4,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

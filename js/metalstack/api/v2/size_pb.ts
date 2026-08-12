@@ -17,7 +17,7 @@ export const file_metalstack_api_v2_size: GenFile = /*@__PURE__*/
   fileDesc("ChxtZXRhbHN0YWNrL2FwaS92Mi9zaXplLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiIwChVTaXplU2VydmljZUdldFJlcXVlc3QSFwoCaWQYASABKAlCC7pICHIGwLOusQIBIkUKFlNpemVTZXJ2aWNlTGlzdFJlcXVlc3QSKwoFcXVlcnkYASABKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5TaXplUXVlcnkiPwoWU2l6ZVNlcnZpY2VHZXRSZXNwb25zZRIlCgRzaXplGAEgASgLMhcubWV0YWxzdGFjay5hcGkudjIuU2l6ZSJBChdTaXplU2VydmljZUxpc3RSZXNwb25zZRImCgVzaXplcxgBIAMoCzIXLm1ldGFsc3RhY2suYXBpLnYyLlNpemUi3gEKBFNpemUSFwoCaWQYASABKAlCC7pICHIGwLOusQIBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEh4KBG5hbWUYAyABKAlCC7pICHIGwLOusQIBSACIAQESJQoLZGVzY3JpcHRpb24YBCABKAlCC7pICHIGyLOusQIBSAGIAQESNgoLY29uc3RyYWludHMYBSADKAsyIS5tZXRhbHN0YWNrLmFwaS52Mi5TaXplQ29uc3RyYWludEIHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb24inQEKDlNpemVDb25zdHJhaW50Ej0KBHR5cGUYASABKA4yJS5tZXRhbHN0YWNrLmFwaS52Mi5TaXplQ29uc3RyYWludFR5cGVCCLpIBYIBAhABEgsKA21pbhgCIAEoBBILCgNtYXgYAyABKAQSIwoKaWRlbnRpZmllchgEIAEoCUIKukgHcgUQABiAAUgAiAEBQg0KC19pZGVudGlmaWVyIssBCglTaXplUXVlcnkSHAoCaWQYASABKAlCC7pICHIGwLOusQIBSACIAQESHgoEbmFtZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIlCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgFIAogBARIuCgZsYWJlbHMYBCABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNIA4gBAUIFCgNfaWRCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uQgkKB19sYWJlbHMq6AEKElNpemVDb25zdHJhaW50VHlwZRIkCiBTSVpFX0NPTlNUUkFJTlRfVFlQRV9VTlNQRUNJRklFRBAAEikKGlNJWkVfQ09OU1RSQUlOVF9UWVBFX0NPUkVTEAEaCYKyGQVjb3JlcxIrChtTSVpFX0NPTlNUUkFJTlRfVFlQRV9NRU1PUlkQAhoKgrIZBm1lbW9yeRItChxTSVpFX0NPTlNUUkFJTlRfVFlQRV9TVE9SQUdFEAMaC4KyGQdzdG9yYWdlEiUKGFNJWkVfQ09OU1RSQUlOVF9UWVBFX0dQVRAEGgeCshkDZ3B1MtwBCgtTaXplU2VydmljZRJkCgNHZXQSKC5tZXRhbHN0YWNrLmFwaS52Mi5TaXplU2VydmljZUdldFJlcXVlc3QaKS5tZXRhbHN0YWNrLmFwaS52Mi5TaXplU2VydmljZUdldFJlc3BvbnNlIgjY8xgC4PMYAhJnCgRMaXN0EikubWV0YWxzdGFjay5hcGkudjIuU2l6ZVNlcnZpY2VMaXN0UmVxdWVzdBoqLm1ldGFsc3RhY2suYXBpLnYyLlNpemVTZXJ2aWNlTGlzdFJlc3BvbnNlIgjY8xgC4PMYAkK/AQoVY29tLm1ldGFsc3RhY2suYXBpLnYyQglTaXplUHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * SizeServiceGetRequest is the request payload for a size get request
+ * SizeServiceGetRequest is the request payload for a size get request.
  *
  * @generated from message metalstack.api.v2.SizeServiceGetRequest
  */
@@ -38,13 +38,13 @@ export const SizeServiceGetRequestSchema: GenMessage<SizeServiceGetRequest> = /*
   messageDesc(file_metalstack_api_v2_size, 0);
 
 /**
- * SizeServiceListRequest is the request payload for a size list request
+ * SizeServiceListRequest is the request payload for a size list request.
  *
  * @generated from message metalstack.api.v2.SizeServiceListRequest
  */
 export type SizeServiceListRequest = Message<"metalstack.api.v2.SizeServiceListRequest"> & {
   /**
-   * Query for sizes
+   * Query for sizes.
    *
    * @generated from field: metalstack.api.v2.SizeQuery query = 1;
    */
@@ -59,7 +59,7 @@ export const SizeServiceListRequestSchema: GenMessage<SizeServiceListRequest> = 
   messageDesc(file_metalstack_api_v2_size, 1);
 
 /**
- * SizeServiceGetResponse is the response payload for a size get request
+ * SizeServiceGetResponse is the response payload for a size get request.
  *
  * @generated from message metalstack.api.v2.SizeServiceGetResponse
  */
@@ -80,7 +80,7 @@ export const SizeServiceGetResponseSchema: GenMessage<SizeServiceGetResponse> = 
   messageDesc(file_metalstack_api_v2_size, 2);
 
 /**
- * SizeServiceListResponse is the response payload for a size list request
+ * SizeServiceListResponse is the response payload for a size list request.
  *
  * @generated from message metalstack.api.v2.SizeServiceListResponse
  */
@@ -177,7 +177,7 @@ export type SizeConstraint = Message<"metalstack.api.v2.SizeConstraint"> & {
   max: bigint;
 
   /**
-   * Identifier glob pattern which matches to the given type, for example gpu pci id
+   * Identifier glob pattern which matches to the given type, for example gpu pci id.
    *
    * @generated from field: optional string identifier = 4;
    */
@@ -192,7 +192,7 @@ export const SizeConstraintSchema: GenMessage<SizeConstraint> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_size, 5);
 
 /**
- * SizeQuery is used to search sizes
+ * SizeQuery is used to search sizes.
  *
  * @generated from message metalstack.api.v2.SizeQuery
  */
@@ -219,7 +219,7 @@ export type SizeQuery = Message<"metalstack.api.v2.SizeQuery"> & {
   description?: string | undefined;
 
   /**
-   * Labels lists only sizes containing the given labels
+   * Labels lists only sizes containing the given labels.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 4;
    */
@@ -234,7 +234,7 @@ export const SizeQuerySchema: GenMessage<SizeQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_size, 6);
 
 /**
- * SizeConstraintType defines the property for which a constraint is defined
+ * SizeConstraintType defines the property for which a constraint is defined.
  *
  * @generated from enum metalstack.api.v2.SizeConstraintType
  */
@@ -247,28 +247,28 @@ export enum SizeConstraintType {
   UNSPECIFIED = 0,
 
   /**
-   * SIZE_CONSTRAINT_TYPE_CORES defines the number of cores as property
+   * SIZE_CONSTRAINT_TYPE_CORES defines the number of cores as property.
    *
    * @generated from enum value: SIZE_CONSTRAINT_TYPE_CORES = 1;
    */
   CORES = 1,
 
   /**
-   * SIZE_CONSTRAINT_TYPE_MEMORY defines the amount of memory as property
+   * SIZE_CONSTRAINT_TYPE_MEMORY defines the amount of memory as property.
    *
    * @generated from enum value: SIZE_CONSTRAINT_TYPE_MEMORY = 2;
    */
   MEMORY = 2,
 
   /**
-   * SIZE_CONSTRAINT_TYPE_STORAGE defines the amount of storage as property
+   * SIZE_CONSTRAINT_TYPE_STORAGE defines the amount of storage as property.
    *
    * @generated from enum value: SIZE_CONSTRAINT_TYPE_STORAGE = 3;
    */
   STORAGE = 3,
 
   /**
-   * SIZE_CONSTRAINT_TYPE_GPU defines the number of gpus as property
+   * SIZE_CONSTRAINT_TYPE_GPU defines the number of gpus as property.
    *
    * @generated from enum value: SIZE_CONSTRAINT_TYPE_GPU = 4;
    */

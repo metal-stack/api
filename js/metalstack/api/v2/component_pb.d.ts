@@ -9,19 +9,19 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_component: GenFile;
 /**
- * Component represents a microservice connected to our apiserver
+ * Component represents a microservice connected to our apiserver.
  *
  * @generated from message metalstack.api.v2.Component
  */
 export type Component = Message<"metalstack.api.v2.Component"> & {
     /**
-     * UUID identifies this component event
+     * UUID identifies this component event.
      *
      * @generated from field: string uuid = 1;
      */
     uuid: string;
     /**
-     * Type defines which service is actually pinging
+     * Type defines which service is actually pinging.
      *
      * @generated from field: metalstack.api.v2.ComponentType type = 2;
      */
@@ -34,7 +34,7 @@ export type Component = Message<"metalstack.api.v2.Component"> & {
      */
     identifier: string;
     /**
-     * StartedAt is the timestamp this service was started
+     * StartedAt is the timestamp this service was started.
      *
      * @generated from field: google.protobuf.Timestamp started_at = 4;
      */
@@ -82,13 +82,13 @@ export declare const ComponentSchema: GenMessage<Component>;
  */
 export type ComponentQuery = Message<"metalstack.api.v2.ComponentQuery"> & {
     /**
-     * UUID identifies this component
+     * UUID identifies this component.
      *
      * @generated from field: optional string uuid = 1;
      */
     uuid?: string | undefined;
     /**
-     * Type defines which service is actually pinging
+     * Type defines which service is actually pinging.
      *
      * @generated from field: optional metalstack.api.v2.ComponentType type = 2;
      */
@@ -107,49 +107,49 @@ export type ComponentQuery = Message<"metalstack.api.v2.ComponentQuery"> & {
  */
 export declare const ComponentQuerySchema: GenMessage<ComponentQuery>;
 /**
- * ComponentType defines which service is actually pinging
+ * ComponentType defines which service is actually pinging.
  *
  * @generated from enum metalstack.api.v2.ComponentType
  */
 export declare enum ComponentType {
     /**
-     * COMPONENT_TYPE_UNSPECIFIED is unspecified
+     * COMPONENT_TYPE_UNSPECIFIED is unspecified.
      *
      * @generated from enum value: COMPONENT_TYPE_UNSPECIFIED = 0;
      */
     UNSPECIFIED = 0,
     /**
-     * COMPONENT_TYPE_PIXIECORE is pixiecore
+     * COMPONENT_TYPE_PIXIECORE is pixiecore.
      *
      * @generated from enum value: COMPONENT_TYPE_PIXIECORE = 1;
      */
     PIXIECORE = 1,
     /**
-     * COMPONENT_TYPE_METAL_CORE is metal-core
+     * COMPONENT_TYPE_METAL_CORE is metal-core.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_CORE = 2;
      */
     METAL_CORE = 2,
     /**
-     * COMPONENT_TYPE_METAL_BMC is metal-bmc
+     * COMPONENT_TYPE_METAL_BMC is metal-bmc.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_BMC = 3;
      */
     METAL_BMC = 3,
     /**
-     * COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync
+     * COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC = 4;
      */
     METAL_IMAGE_CACHE_SYNC = 4,
     /**
-     * COMPONENT_TYPE_METAL_CONSOLE is metal-console
+     * COMPONENT_TYPE_METAL_CONSOLE is metal-console.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_CONSOLE = 5;
      */
     METAL_CONSOLE = 5,
     /**
-     * COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter
+     * COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter.
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_METRICS_EXPORTER = 6;
      */

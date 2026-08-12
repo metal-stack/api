@@ -18,7 +18,7 @@ export const file_metalstack_admin_v2_machine: GenFile = /*@__PURE__*/
   fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL21hY2hpbmUucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMgoYTWFjaGluZVNlcnZpY2VHZXRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIkgKGU1hY2hpbmVTZXJ2aWNlR2V0UmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUifgoZTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBIuCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeRIjCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBSACIAQFCDAoKX3BhcnRpdGlvbiJKChpNYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZRIsCghtYWNoaW5lcxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiNQobTWFjaGluZVNlcnZpY2VEZWxldGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBIksKHE1hY2hpbmVTZXJ2aWNlRGVsZXRlUmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiegofTWFjaGluZVNlcnZpY2VCTUNDb21tYW5kUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI/Cgdjb21tYW5kGAIgASgOMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ0NvbW1hbmRCCLpIBYIBAhABIiIKIE1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlc3BvbnNlIjUKG01hY2hpbmVTZXJ2aWNlR2V0Qk1DUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJoChxNYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjAKA2JtYxgCIAEoCzIjLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNSZXBvcnQiUQocTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVxdWVzdBIxCgVxdWVyeRgBIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNRdWVyeSLfAQodTWFjaGluZVNlcnZpY2VMaXN0Qk1DUmVzcG9uc2USZgoLYm1jX3JlcG9ydHMYASADKAsyQi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdEJNQ1Jlc3BvbnNlLkJtY1JlcG9ydHNFbnRyeUINukgKmgEHIgVyA7ABARpWCg9CbWNSZXBvcnRzRW50cnkSCwoDa2V5GAEgASgJEjIKBXZhbHVlGAIgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQ1JlcG9ydDoCOAEiWgokTWFjaGluZVNlcnZpY2VDb25zb2xlUGFzc3dvcmRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhoKBnJlYXNvbhgCIAEoCUIKukgHcgUQChiABCJRCiVNYWNoaW5lU2VydmljZUNvbnNvbGVQYXNzd29yZFJlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhAKCHBhc3N3b3JkGAIgASgJIpMBCh1NYWNoaW5lU2VydmljZVNldFN0YXRlUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI4CgVzdGF0ZRgCIAEoDjIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTdGF0ZUIIukgFggECEAESIAoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBIk0KHk1hY2hpbmVTZXJ2aWNlU2V0U3RhdGVSZXNwb25zZRIrCgdtYWNoaW5lGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZSJTChtNYWNoaW5lU2VydmljZUlzc3Vlc1JlcXVlc3QSNAoFcXVlcnkYASABKAsyJS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lSXNzdWVzUXVlcnkiUAocTWFjaGluZVNlcnZpY2VJc3N1ZXNSZXNwb25zZRIwCgZpc3N1ZXMYASADKAsyIC5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lSXNzdWVzMoMJCg5NYWNoaW5lU2VydmljZRJwCgNHZXQSLS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlR2V0UmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VHZXRSZXNwb25zZSIK0vMYAgEC4PMYAhJzCgRMaXN0Ei4ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYAhJ4CgZEZWxldGUSMC5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlRGVsZXRlUmVxdWVzdBoxLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VEZWxldGVSZXNwb25zZSIJ0vMYAQHg8xgBEoQBCgpCTUNDb21tYW5kEjQubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUJNQ0NvbW1hbmRSZXF1ZXN0GjUubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUJNQ0NvbW1hbmRSZXNwb25zZSIJ0vMYAQHg8xgBEnkKBkdldEJNQxIwLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VHZXRCTUNSZXF1ZXN0GjEubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlIgrS8xgCAQLg8xgBEnwKB0xpc3RCTUMSMS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdEJNQ1JlcXVlc3QaMi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdEJNQ1Jlc3BvbnNlIgrS8xgCAQLg8xgBEpQBCg9Db25zb2xlUGFzc3dvcmQSOS5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlQ29uc29sZVBhc3N3b3JkUmVxdWVzdBo6Lm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VDb25zb2xlUGFzc3dvcmRSZXNwb25zZSIK0vMYAgEC4PMYARJ+CghTZXRTdGF0ZRIyLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VTZXRTdGF0ZVJlcXVlc3QaMy5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVTZXJ2aWNlU2V0U3RhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnkKBklzc3VlcxIwLm1ldGFsc3RhY2suYWRtaW4udjIuTWFjaGluZVNlcnZpY2VJc3N1ZXNSZXF1ZXN0GjEubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lU2VydmljZUlzc3Vlc1Jlc3BvbnNlIgrS8xgCAQLg8xgCQtABChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIMTWFjaGluZVByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * MachineServiceGetRequest is the request payload for a machine get request
+ * MachineServiceGetRequest is the request payload for a machine get request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceGetRequest
  */
@@ -39,13 +39,13 @@ export const MachineServiceGetRequestSchema: GenMessage<MachineServiceGetRequest
   messageDesc(file_metalstack_admin_v2_machine, 0);
 
 /**
- * MachineServiceGetResponse is the response payload for a machine get request
+ * MachineServiceGetResponse is the response payload for a machine get request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceGetResponse
  */
 export type MachineServiceGetResponse = Message<"metalstack.admin.v2.MachineServiceGetResponse"> & {
   /**
-   * Machine is the machine requested
+   * Machine is the machine requested.
    *
    * @generated from field: metalstack.api.v2.Machine machine = 1;
    */
@@ -60,13 +60,13 @@ export const MachineServiceGetResponseSchema: GenMessage<MachineServiceGetRespon
   messageDesc(file_metalstack_admin_v2_machine, 1);
 
 /**
- * MachineServiceListRequest is the request payload for a machine list request
+ * MachineServiceListRequest is the request payload for a machine list request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceListRequest
  */
 export type MachineServiceListRequest = Message<"metalstack.admin.v2.MachineServiceListRequest"> & {
   /**
-   * Query to list one or more machines
+   * Query to list one or more machines.
    *
    * @generated from field: metalstack.api.v2.MachineQuery query = 1;
    */
@@ -89,13 +89,13 @@ export const MachineServiceListRequestSchema: GenMessage<MachineServiceListReque
   messageDesc(file_metalstack_admin_v2_machine, 2);
 
 /**
- * MachineServiceListResponse is the response payload for a machine list request
+ * MachineServiceListResponse is the response payload for a machine list request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceListResponse
  */
 export type MachineServiceListResponse = Message<"metalstack.admin.v2.MachineServiceListResponse"> & {
   /**
-   * Machines are the machines requested by a list request
+   * Machines are the machines requested by a list request.
    *
    * @generated from field: repeated metalstack.api.v2.Machine machines = 1;
    */
@@ -110,7 +110,7 @@ export const MachineServiceListResponseSchema: GenMessage<MachineServiceListResp
   messageDesc(file_metalstack_admin_v2_machine, 3);
 
 /**
- * MachineServiceDeleteRequest is the request payload for a machine delete request
+ * MachineServiceDeleteRequest is the request payload for a machine delete request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceDeleteRequest
  */
@@ -131,13 +131,13 @@ export const MachineServiceDeleteRequestSchema: GenMessage<MachineServiceDeleteR
   messageDesc(file_metalstack_admin_v2_machine, 4);
 
 /**
- * MachineServiceDeleteResponse is the response payload for a machine delete request
+ * MachineServiceDeleteResponse is the response payload for a machine delete request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceDeleteResponse
  */
 export type MachineServiceDeleteResponse = Message<"metalstack.admin.v2.MachineServiceDeleteResponse"> & {
   /**
-   * Machine is the machine permanently deleted
+   * Machine is the machine permanently deleted.
    *
    * @generated from field: metalstack.api.v2.Machine machine = 1;
    */
@@ -152,7 +152,7 @@ export const MachineServiceDeleteResponseSchema: GenMessage<MachineServiceDelete
   messageDesc(file_metalstack_admin_v2_machine, 5);
 
 /**
- * MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+ * MachineServiceBMCCommandRequest is the request payload for a machine bmc command.
  *
  * @generated from message metalstack.admin.v2.MachineServiceBMCCommandRequest
  */
@@ -180,7 +180,7 @@ export const MachineServiceBMCCommandRequestSchema: GenMessage<MachineServiceBMC
   messageDesc(file_metalstack_admin_v2_machine, 6);
 
 /**
- * MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+ * MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
  *
  * @generated from message metalstack.admin.v2.MachineServiceBMCCommandResponse
  */
@@ -195,7 +195,7 @@ export const MachineServiceBMCCommandResponseSchema: GenMessage<MachineServiceBM
   messageDesc(file_metalstack_admin_v2_machine, 7);
 
 /**
- * MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+ * MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceGetBMCRequest
  */
@@ -216,7 +216,7 @@ export const MachineServiceGetBMCRequestSchema: GenMessage<MachineServiceGetBMCR
   messageDesc(file_metalstack_admin_v2_machine, 8);
 
 /**
- * MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+ * MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceGetBMCResponse
  */
@@ -229,7 +229,7 @@ export type MachineServiceGetBMCResponse = Message<"metalstack.admin.v2.MachineS
   uuid: string;
 
   /**
-   * BMC contains the BMC details of this machine
+   * BMC contains the BMC details of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineBMCReport bmc = 2;
    */
@@ -244,13 +244,13 @@ export const MachineServiceGetBMCResponseSchema: GenMessage<MachineServiceGetBMC
   messageDesc(file_metalstack_admin_v2_machine, 9);
 
 /**
- * MachineServiceListBMCRequest is the request payload for a machine listbmc request
+ * MachineServiceListBMCRequest is the request payload for a machine listbmc request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceListBMCRequest
  */
 export type MachineServiceListBMCRequest = Message<"metalstack.admin.v2.MachineServiceListBMCRequest"> & {
   /**
-   * Query to list one or more BMCs of many machines
+   * Query to list one or more BMCs of many machines.
    *
    * @generated from field: metalstack.api.v2.MachineBMCQuery query = 1;
    */
@@ -265,13 +265,13 @@ export const MachineServiceListBMCRequestSchema: GenMessage<MachineServiceListBM
   messageDesc(file_metalstack_admin_v2_machine, 10);
 
 /**
- * MachineServiceListBMCResponse is the response payload for a machine listbmc request
+ * MachineServiceListBMCResponse is the response payload for a machine listbmc request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceListBMCResponse
  */
 export type MachineServiceListBMCResponse = Message<"metalstack.admin.v2.MachineServiceListBMCResponse"> & {
   /**
-   * BMCReports maps the bmc report per machine uuid
+   * BMCReports maps the bmc report per machine uuid.
    *
    * @generated from field: map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 1;
    */
@@ -299,8 +299,8 @@ export type MachineServiceConsolePasswordRequest = Message<"metalstack.admin.v2.
   uuid: string;
 
   /**
-   * Reason must be provided why access to the console is requested
-   * Reason is only forwarded to an audit sink
+   * Reason must be provided why access to the console is requested.
+   * Reason is only forwarded to an audit sink.
    *
    * @generated from field: string reason = 2;
    */
@@ -343,7 +343,7 @@ export const MachineServiceConsolePasswordResponseSchema: GenMessage<MachineServ
   messageDesc(file_metalstack_admin_v2_machine, 13);
 
 /**
- * MachineServiceSetStateRequest is the request payload for a machine set state request
+ * MachineServiceSetStateRequest is the request payload for a machine set state request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceSetStateRequest
  */
@@ -379,7 +379,7 @@ export const MachineServiceSetStateRequestSchema: GenMessage<MachineServiceSetSt
   messageDesc(file_metalstack_admin_v2_machine, 14);
 
 /**
- * MachineServiceSetStateResponse is the response payload for a machine set state request
+ * MachineServiceSetStateResponse is the response payload for a machine set state request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceSetStateResponse
  */
@@ -400,13 +400,13 @@ export const MachineServiceSetStateResponseSchema: GenMessage<MachineServiceSetS
   messageDesc(file_metalstack_admin_v2_machine, 15);
 
 /**
- * MachineServiceIssuesRequest is the request payload for a machine issues request
+ * MachineServiceIssuesRequest is the request payload for a machine issues request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceIssuesRequest
  */
 export type MachineServiceIssuesRequest = Message<"metalstack.admin.v2.MachineServiceIssuesRequest"> & {
   /**
-   * Query which machine issues to include
+   * Query which machine issues to include.
    *
    * @generated from field: metalstack.api.v2.MachineIssuesQuery query = 1;
    */
@@ -421,13 +421,13 @@ export const MachineServiceIssuesRequestSchema: GenMessage<MachineServiceIssuesR
   messageDesc(file_metalstack_admin_v2_machine, 16);
 
 /**
- * MachineServiceIssuesResponse is the response payload for a machine issues request
+ * MachineServiceIssuesResponse is the response payload for a machine issues request.
  *
  * @generated from message metalstack.admin.v2.MachineServiceIssuesResponse
  */
 export type MachineServiceIssuesResponse = Message<"metalstack.admin.v2.MachineServiceIssuesResponse"> & {
   /**
-   * Issues is the result of the issues query
+   * Issues is the result of the issues query.
    *
    * @generated from field: repeated metalstack.api.v2.MachineIssues issues = 1;
    */
@@ -528,7 +528,7 @@ export const MachineService: GenService<{
     output: typeof MachineServiceSetStateResponseSchema;
   },
   /**
-   * Issues allows to query issues of machines
+   * Issues allows to query issues of machines.
    *
    * @generated from rpc metalstack.admin.v2.MachineService.Issues
    */

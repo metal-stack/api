@@ -19,7 +19,7 @@ service UserService {
 
 // User represents an end user of the platform.
 message User {
-  // Login is the login at the provider
+  // Login is the login at the provider.
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Name of the user
   string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -40,6 +40,6 @@ message UserServiceGetRequest {}
 
 // UserServiceGetResponse is the response payload for getting the user.
 message UserServiceGetResponse {
-  // User contains the authenticated user
+  // User contains the authenticated user.
   User user = 1;
 }

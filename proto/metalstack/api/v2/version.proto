@@ -32,6 +32,6 @@ message VersionServiceGetRequest {}
 
 // VersionServiceGetResponse is the response payload for getting the version.
 message VersionServiceGetResponse {
-  // Version contains the version of the application
+  // Version contains the version of the application.
   Version version = 1;
 }

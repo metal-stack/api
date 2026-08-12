@@ -24,6 +24,6 @@ message EventServiceSendRequest {
 message EventServiceSendResponse {
   // Events counts the number of events successfully stored in the database
   uint64 events = 1;
-  // Failed contains IDs of all machines whose events could not be stored in the database
+  // Failed contains IDs of all machines whose events could not be stored in the database.
   repeated string failed = 2;
 }

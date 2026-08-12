@@ -29,7 +29,7 @@ export const file_metalstack_api_v2_machine: GenFile = /*@__PURE__*/
   fileDesc("Ch9tZXRhbHN0YWNrL2FwaS92Mi9tYWNoaW5lLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiJNChhNYWNoaW5lU2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGQoHcHJvamVjdBgCIAEoCUIIukgFcgOwAQEiSAoZTWFjaGluZVNlcnZpY2VHZXRSZXNwb25zZRIrCgdtYWNoaW5lGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZSKVBwobTWFjaGluZVNlcnZpY2VDcmVhdGVSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEhsKBHV1aWQYAiABKAlCCLpIBXIDsAEBSACIAQESGQoEbmFtZRgDIAEoCUILukgIcgbAs66xAgESJQoLZGVzY3JpcHRpb24YBCABKAlCC7pICHIGyLOusQIBSAGIAQESHgoIaG9zdG5hbWUYBSABKAlCB7pIBHICaAFIAogBARIjCglwYXJ0aXRpb24YBiABKAlCC7pICHIG0LOusQIBSAOIAQESHgoEc2l6ZRgHIAEoCUILukgIcgbAs66xAgFIBIgBARIaCgVpbWFnZRgIIAEoCUILukgIcgbAs66xAgESKwoRZmlsZXN5c3RlbV9sYXlvdXQYCSABKAlCC7pICHIGwLOusQIBSAWIAQESMQoPc3NoX3B1YmxpY19rZXlzGAogAygJQhi6SBWSARLQpLOxAgEQMiIIcgaItK6xAgESJgoIdXNlcmRhdGEYCyABKAlCD7pIDHIK8LOusQIBGICAAkgGiAEBEikKBmxhYmVscxgMIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVscxJHCghuZXR3b3JrcxgNIAMoCzIrLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVBbGxvY2F0aW9uTmV0d29ya0IIukgFkgECCAESIAoOcGxhY2VtZW50X3RhZ3MYDiADKAlCCLpIBZIBAhBAEjsKC2Ruc19zZXJ2ZXJzGA8gAygLMhwubWV0YWxzdGFjay5hcGkudjIuRE5TU2VydmVyQgi6SAWSAQIQAxI7CgtudHBfc2VydmVycxgQIAMoCzIcLm1ldGFsc3RhY2suYXBpLnYyLk5UUFNlcnZlckIIukgFkgECEAoSSwoPYWxsb2NhdGlvbl90eXBlGBEgASgOMigubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUFsbG9jYXRpb25UeXBlQgi6SAWCAQIQARI2Cg1maXJld2FsbF9zcGVjGBIgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuRmlyZXdhbGxTcGVjQgcKBV91dWlkQg4KDF9kZXNjcmlwdGlvbkILCglfaG9zdG5hbWVCDAoKX3BhcnRpdGlvbkIHCgVfc2l6ZUIUChJfZmlsZXN5c3RlbV9sYXlvdXRCCwoJX3VzZXJkYXRhIkgKDEZpcmV3YWxsU3BlYxI4Cg5maXJld2FsbF9ydWxlcxgBIAEoCzIgLm1ldGFsc3RhY2suYXBpLnYyLkZpcmV3YWxsUnVsZXMiSwocTWFjaGluZVNlcnZpY2VDcmVhdGVSZXNwb25zZRIrCgdtYWNoaW5lGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZSK3AgobTWFjaGluZVNlcnZpY2VVcGRhdGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjoKC3VwZGF0ZV9tZXRhGAIgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuVXBkYXRlTWV0YUIGukgDyAEBEhkKB3Byb2plY3QYAyABKAlCCLpIBXIDsAEBEiUKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECAUgAiAEBEjQKBmxhYmVscxgFIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gBiAEBEjEKD3NzaF9wdWJsaWNfa2V5cxgGIAMoCUIYukgVkgES0KSzsQIBEDIiCHIGiLSusQIBQg4KDF9kZXNjcmlwdGlvbkIJCgdfbGFiZWxzIksKHE1hY2hpbmVTZXJ2aWNlVXBkYXRlUmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiZgoZTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABARIuCgVxdWVyeRgCIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeSJKChpNYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZRIsCghtYWNoaW5lcxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiUAobTWFjaGluZVNlcnZpY2VEZWxldGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhkKB3Byb2plY3QYAiABKAlCCLpIBXIDsAEBIksKHE1hY2hpbmVTZXJ2aWNlRGVsZXRlUmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUilQEKH01hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGQoHcHJvamVjdBgCIAEoCUIIukgFcgOwAQESPwoHY29tbWFuZBgDIAEoDjIkLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNDb21tYW5kQgi6SAWCAQIQASIiCiBNYWNoaW5lU2VydmljZUJNQ0NvbW1hbmRSZXNwb25zZSJQChtNYWNoaW5lU2VydmljZUdldEJNQ1JlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGQoHcHJvamVjdBgCIAEoCUIIukgFcgOwAQEiaAocTWFjaGluZVNlcnZpY2VHZXRCTUNSZXNwb25zZRIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIwCgNibWMYAiABKAsyIy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQk1DUmVwb3J0IsoDCgdNYWNoaW5lEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEi8KCXBhcnRpdGlvbhgDIAEoCzIcLm1ldGFsc3RhY2suYXBpLnYyLlBhcnRpdGlvbhIWCgRyYWNrGAQgASgJQgi6SAVyAxiAARIWCgRyb29tGAUgASgJQgi6SAVyAxiAARIlCgRzaXplGAYgASgLMhcubWV0YWxzdGFjay5hcGkudjIuU2l6ZRI0CghoYXJkd2FyZRgHIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVIYXJkd2FyZRI4CgphbGxvY2F0aW9uGAggASgLMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUFsbG9jYXRpb24SMAoGc3RhdHVzGAkgASgLMiAubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVN0YXR1cxJWChpyZWNlbnRfcHJvdmlzaW9uaW5nX2V2ZW50cxgKIAEoCzIyLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVSZWNlbnRQcm92aXNpb25pbmdFdmVudHMi7wEKDU1hY2hpbmVTdGF0dXMSNgoJY29uZGl0aW9uGAEgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUNvbmRpdGlvbhJECglsZWRfc3RhdGUYAiABKAsyMS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQ2hhc3Npc0lkZW50aWZ5TEVEU3RhdGUSQgoKbGl2ZWxpbmVzcxgDIAEoDjIkLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVMaXZlbGluZXNzQgi6SAWCAQIQARIcChRtZXRhbF9oYW1tZXJfdmVyc2lvbhgEIAEoCSKIAQoQTWFjaGluZUNvbmRpdGlvbhI4CgVzdGF0ZRgBIAEoDjIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTdGF0ZUIIukgFggECEAESIAoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBEhgKBmlzc3VlchgDIAEoCUIIukgFcgMYgAIihAYKEU1hY2hpbmVBbGxvY2F0aW9uEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEhkKBG5hbWUYAyABKAlCC7pICHIGwLOusQIBEiAKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECARIcCgpjcmVhdGVkX2J5GAUgASgJQgi6SAVyAxiAARIZCgdwcm9qZWN0GAYgASgJQgi6SAVyA7ABARInCgVpbWFnZRgHIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlEj4KEWZpbGVzeXN0ZW1fbGF5b3V0GAggASgLMiMubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbUxheW91dBIzCghuZXR3b3JrcxgJIAMoCzIhLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVOZXR3b3JrEhkKCGhvc3RuYW1lGAogASgJQge6SARyAmgBEjEKD3NzaF9wdWJsaWNfa2V5cxgLIAMoCUIYukgVkgES0KSzsQIBEDIiCHIGiLSusQIBEiEKCHVzZXJkYXRhGAwgASgJQg+6SAxyCvCzrrECARiAgAISSwoPYWxsb2NhdGlvbl90eXBlGA0gASgOMigubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUFsbG9jYXRpb25UeXBlQgi6SAWCAQIQARI4Cg5maXJld2FsbF9ydWxlcxgOIAEoCzIgLm1ldGFsc3RhY2suYXBpLnYyLkZpcmV3YWxsUnVsZXMSOwoLZG5zX3NlcnZlcnMYDyADKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5ETlNTZXJ2ZXJCCLpIBZIBAhADEjsKC250cF9zZXJ2ZXJzGBAgAygLMhwubWV0YWxzdGFjay5hcGkudjIuTlRQU2VydmVyQgi6SAWSAQIQChIqCgN2cG4YESABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lVlBOIlMKGE1hY2hpbmVBbGxvY2F0aW9uTmV0d29yaxIcCgduZXR3b3JrGAEgASgJQgu6SAhyBsCzrrECARIZCgNpcHMYAiADKAlCDLpICZIBBsCks7ECASJ/Cg1GaXJld2FsbFJ1bGVzEjUKBmVncmVzcxgBIAMoCzIlLm1ldGFsc3RhY2suYXBpLnYyLkZpcmV3YWxsRWdyZXNzUnVsZRI3CgdpbmdyZXNzGAIgAygLMiYubWV0YWxzdGFjay5hcGkudjIuRmlyZXdhbGxJbmdyZXNzUnVsZSKyAQoSRmlyZXdhbGxFZ3Jlc3NSdWxlEjkKCHByb3RvY29sGAEgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuSVBQcm90b2NvbEIIukgFggECEAESHQoFcG9ydHMYAiADKA1CDrpIC5IBCCIGKgQY/P8DEhgKAnRvGAMgAygJQgy6SAmSAQa4pLOxAgESKAoHY29tbWVudBgEIAEoCUIXukgU2AEBcg8YZDILXlthLXpfIC1dKiQizwEKE0ZpcmV3YWxsSW5ncmVzc1J1bGUSOQoIcHJvdG9jb2wYASABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5JUFByb3RvY29sQgi6SAWCAQIQARIdCgVwb3J0cxgCIAMoDUIOukgLkgEIIgYqBBj8/wMSGAoCdG8YAyADKAlCDLpICZIBBriks7ECARIaCgRmcm9tGAQgAygJQgy6SAmSAQa4pLOxAgESKAoHY29tbWVudBgFIAEoCUIXukgU2AEBcg8YZDILXlthLXpfIC1dKiQixgIKDk1hY2hpbmVOZXR3b3JrEg8KB25ldHdvcmsYASABKAkSHgoIcHJlZml4ZXMYAiADKAlCDLpICZIBBriks7ECARIqChRkZXN0aW5hdGlvbl9wcmVmaXhlcxgDIAMoCUIMukgJkgEGuKSzsQIBEhkKA2lwcxgEIAMoCUIMukgJkgEGwKSzsQIBEj4KDG5ldHdvcmtfdHlwZRgFIAEoDjIeLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtUeXBlQgi6SAWCAQIQARI2CghuYXRfdHlwZRgGIAEoDjIaLm1ldGFsc3RhY2suYXBpLnYyLk5BVFR5cGVCCLpIBYIBAhABEgsKA3ZyZhgHIAEoBBILCgNhc24YCCABKA0SHgoHcHJvamVjdBgJIAEoCUIIukgFcgOwAQFIAIgBAUIKCghfcHJvamVjdCLaAQoPTWFjaGluZUhhcmR3YXJlEg4KBm1lbW9yeRgBIAEoBBI0CgVkaXNrcxgCIAMoCzIlLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCbG9ja0RldmljZRIpCgRjcHVzGAMgAygLMhsubWV0YWxzdGFjay5hcGkudjIuTWV0YWxDUFUSKQoEZ3B1cxgEIAMoCzIbLm1ldGFsc3RhY2suYXBpLnYyLk1ldGFsR1BVEisKBG5pY3MYBSADKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lTmljIl0KCE1ldGFsQ1BVEhgKBnZlbmRvchgBIAEoCUIIukgFcgMYgAISFwoFbW9kZWwYAiABKAlCCLpIBXIDGIACEg0KBWNvcmVzGAMgASgNEg8KB3RocmVhZHMYBCABKA0iPQoITWV0YWxHUFUSGAoGdmVuZG9yGAEgASgJQgi6SAVyAxiAAhIXCgVtb2RlbBgCIAEoCUIIukgFcgMYgAIi5QEKCk1hY2hpbmVOaWMSGAoDbWFjGAEgASgJQgu6SAhyBrizrrECARIZCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECARIcCgppZGVudGlmaWVyGAMgASgJQgi6SAVyAxiAARIYCgZ2ZW5kb3IYBCABKAlCCLpIBXIDGIABEhcKBW1vZGVsGAUgASgJQgi6SAVyAxiAARINCgVzcGVlZBgGIAEoBBIwCgluZWlnaGJvcnMYByADKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lTmljEhAKCGhvc3RuYW1lGAggASgJIj0KEk1hY2hpbmVCbG9ja0RldmljZRIZCgRuYW1lGAEgASgJQgu6SAhyBsCzrrECARIMCgRzaXplGAIgASgEIlsKHk1hY2hpbmVDaGFzc2lzSWRlbnRpZnlMRURTdGF0ZRIXCgV2YWx1ZRgBIAEoCUIIukgFcgMYgAESIAoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBIooDChBNYWNoaW5lQk1DUmVwb3J0EioKA2JtYxgBIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUMSLAoEYmlvcxgCIAEoCzIeLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCaW9zEioKA2ZydRgDIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVGUlUSOwoMcG93ZXJfbWV0cmljGAQgASgLMiUubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVBvd2VyTWV0cmljEj0KDnBvd2VyX3N1cHBsaWVzGAUgAygLMiUubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVBvd2VyU3VwcGx5EkQKCWxlZF9zdGF0ZRgGIAEoCzIxLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVDaGFzc2lzSWRlbnRpZnlMRURTdGF0ZRIuCgp1cGRhdGVkX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJjCgtNYWNoaW5lQmlvcxIcCgd2ZXJzaW9uGAEgASgJQgu6SAhyBsizrrECARIbCgZ2ZW5kb3IYAiABKAlCC7pICHIGyLOusQIBEhkKBGRhdGUYAyABKAlCC7pICHIGyLOusQIBItsBCgpNYWNoaW5lQk1DEhkKB2FkZHJlc3MYASABKAlCCLpIBXIDgAIBEhgKA21hYxgCIAEoCUILukgIcga4s66xAgESGQoEdXNlchgDIAEoCUILukgIcgbIs66xAgESHQoIcGFzc3dvcmQYBCABKAlCC7pICHIGyLOusQIBEh4KCWludGVyZmFjZRgFIAEoCUILukgIcgbIs66xAgESHAoHdmVyc2lvbhgGIAEoCUILukgIcgbIs66xAgESIAoLcG93ZXJfc3RhdGUYByABKAlCC7pICHIGyLOusQIBIp4ECgpNYWNoaW5lRlJVEi0KE2NoYXNzaXNfcGFydF9udW1iZXIYASABKAlCC7pICHIGyLOusQIBSACIAQESLQoTY2hhc3Npc19wYXJ0X3NlcmlhbBgCIAEoCUILukgIcgbIs66xAgFIAYgBARIjCglib2FyZF9tZmcYAyABKAlCC7pICHIGyLOusQIBSAKIAQESKgoQYm9hcmRfbWZnX3NlcmlhbBgEIAEoCUILukgIcgbIs66xAgFIA4gBARIrChFib2FyZF9wYXJ0X251bWJlchgFIAEoCUILukgIcgbIs66xAgFIBIgBARIuChRwcm9kdWN0X21hbnVmYWN0dXJlchgGIAEoCUILukgIcgbIs66xAgFIBYgBARItChNwcm9kdWN0X3BhcnRfbnVtYmVyGAcgASgJQgu6SAhyBsizrrECAUgGiAEBEigKDnByb2R1Y3Rfc2VyaWFsGAggASgJQgu6SAhyBsizrrECAUgHiAEBQhYKFF9jaGFzc2lzX3BhcnRfbnVtYmVyQhYKFF9jaGFzc2lzX3BhcnRfc2VyaWFsQgwKCl9ib2FyZF9tZmdCEwoRX2JvYXJkX21mZ19zZXJpYWxCFAoSX2JvYXJkX3BhcnRfbnVtYmVyQhcKFV9wcm9kdWN0X21hbnVmYWN0dXJlckIWChRfcHJvZHVjdF9wYXJ0X251bWJlckIRCg9fcHJvZHVjdF9zZXJpYWwihQEKEk1hY2hpbmVQb3dlck1ldHJpYxIeChZhdmVyYWdlX2NvbnN1bWVkX3dhdHRzGAEgASgCEhcKD2ludGVydmFsX2luX21pbhgCIAEoAhIaChJtYXhfY29uc3VtZWRfd2F0dHMYAyABKAISGgoSbWluX2NvbnN1bWVkX3dhdHRzGAQgASgCIjMKEk1hY2hpbmVQb3dlclN1cHBseRIOCgZoZWFsdGgYASABKAkSDQoFc3RhdGUYAiABKAkipQIKH01hY2hpbmVSZWNlbnRQcm92aXNpb25pbmdFdmVudHMSOwoGZXZlbnRzGAEgAygLMisubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50EjMKD2xhc3RfZXZlbnRfdGltZRgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASRQoQbGFzdF9lcnJvcl9ldmVudBgDIAEoCzIrLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVQcm92aXNpb25pbmdFdmVudBJJCgVzdGF0ZRgEIAEoDjIwLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVQcm92aXNpb25pbmdFdmVudFN0YXRlQgi6SAWCAQIQASKfAQoYTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50EigKBHRpbWUYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEkgKBWV2ZW50GAIgASgOMi8ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50VHlwZUIIukgFggECEAESDwoHbWVzc2FnZRgDIAEoCSJrCgpNYWNoaW5lVlBOEh0KFWNvbnRyb2xfcGxhbmVfYWRkcmVzcxgBIAEoCRIQCghhdXRoX2tleRgCIAEoCRIRCgljb25uZWN0ZWQYAyABKAgSGQoDaXBzGAQgAygJQgy6SAmSAQbApLOxAgEi5gcKDE1hY2hpbmVRdWVyeRIbCgR1dWlkGAEgASgJQgi6SAVyA7ABAUgAiAEBEh4KBG5hbWUYAiABKAlCC7pICHIGwLOusQIBSAGIAQESIwoJcGFydGl0aW9uGAMgASgJQgu6SAhyBtCzrrECAUgCiAEBEh4KBHNpemUYBCABKAlCC7pICHIGwLOusQIBSAOIAQESHgoEcmFjaxgFIAEoCUILukgIcgbAs66xAgFIBIgBARIeCgRyb29tGAYgASgJQgu6SAhyBsCzrrECAUgFiAEBEi4KBmxhYmVscxgHIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gGiAEBEkIKCmFsbG9jYXRpb24YCCABKAsyKS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQWxsb2NhdGlvblF1ZXJ5SAeIAQESPAoHbmV0d29yaxgJIAEoCzImLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVOZXR3b3JrUXVlcnlICIgBARI0CgNuaWMYCiABKAsyIi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lTmljUXVlcnlICYgBARI2CgRkaXNrGAsgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZURpc2tRdWVyeUgKiAEBEjQKA2JtYxgMIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNRdWVyeUgLiAEBEjQKA2ZydRgNIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVGUlVRdWVyeUgMiAEBEj4KCGhhcmR3YXJlGA4gASgLMicubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUhhcmR3YXJlUXVlcnlIDYgBARIzCgVzdGF0ZRgPIAEoDjIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTdGF0ZUgOiAEBEhQKB3dhaXRpbmcYECABKAhID4gBARIZCgxwcmVhbGxvY2F0ZWQYESABKAhIEIgBARIaCg1ub3RfYWxsb2NhdGVkGBIgASgISBGIAQFCBwoFX3V1aWRCBwoFX25hbWVCDAoKX3BhcnRpdGlvbkIHCgVfc2l6ZUIHCgVfcmFja0IHCgVfcm9vbUIJCgdfbGFiZWxzQg0KC19hbGxvY2F0aW9uQgoKCF9uZXR3b3JrQgYKBF9uaWNCBwoFX2Rpc2tCBgoEX2JtY0IGCgRfZnJ1QgsKCV9oYXJkd2FyZUIICgZfc3RhdGVCCgoIX3dhaXRpbmdCDwoNX3ByZWFsbG9jYXRlZEIQCg5fbm90X2FsbG9jYXRlZCKIBAoWTWFjaGluZUFsbG9jYXRpb25RdWVyeRIbCgR1dWlkGAEgASgJQgi6SAVyA7ABAUgAiAEBEh4KBG5hbWUYAiABKAlCC7pICHIGwLOusQIBSAGIAQESHgoHcHJvamVjdBgDIAEoCUIIukgFcgOwAQFIAogBARIfCgVpbWFnZRgEIAEoCUILukgIcgbAs66xAgFIA4gBARIrChFmaWxlc3lzdGVtX2xheW91dBgFIAEoCUILukgIcgbAs66xAgFIBIgBARIeCghob3N0bmFtZRgGIAEoCUIHukgEcgJoAUgFiAEBElAKD2FsbG9jYXRpb25fdHlwZRgHIAEoDjIoLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVBbGxvY2F0aW9uVHlwZUIIukgFggECEAFIBogBARIuCgZsYWJlbHMYCCABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNIB4gBARIvCgN2cG4YCSABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lVlBOSAiIAQFCBwoFX3V1aWRCBwoFX25hbWVCCgoIX3Byb2plY3RCCAoGX2ltYWdlQhQKEl9maWxlc3lzdGVtX2xheW91dEILCglfaG9zdG5hbWVCEgoQX2FsbG9jYXRpb25fdHlwZUIJCgdfbGFiZWxzQgYKBF92cG4iqgEKE01hY2hpbmVOZXR3b3JrUXVlcnkSEAoIbmV0d29ya3MYASADKAkSHgoIcHJlZml4ZXMYAiADKAlCDLpICZIBBriks7ECARIqChRkZXN0aW5hdGlvbl9wcmVmaXhlcxgDIAMoCUIMukgJkgEGuKSzsQIBEhkKA2lwcxgEIAMoCUIMukgJkgEGwKSzsQIBEgwKBHZyZnMYBSADKAQSDAoEYXNucxgGIAMoDSKvAQoPTWFjaGluZU5pY1F1ZXJ5EiIKBG1hY3MYASADKAlCFLpIEZIBDhBkGAEiCHIGuLOusQIBEiAKBW5hbWVzGAIgAygJQhG6SA6SAQsQZBgBIgVyAxiAARIrCg1uZWlnaGJvcl9tYWNzGAMgAygJQhS6SBGSAQ4QZBgBIghyBrizrrECARIpCg5uZWlnaGJvcl9uYW1lcxgEIAMoCUIRukgOkgELEGQYASIFcgMYgAEiSwoQTWFjaGluZURpc2tRdWVyeRIeCgVuYW1lcxgBIAMoCUIPukgMkgEJEGQiBXIDGIABEhcKBXNpemVzGAIgAygEQgi6SAWSAQIQZCK5AQoPTWFjaGluZUJNQ1F1ZXJ5Eh0KB2FkZHJlc3MYASABKAlCB7pIBHICcAFIAIgBARIdCgNtYWMYAiABKAlCC7pICHIGuLOusQIBSAGIAQESGwoEdXNlchgDIAEoCUIIukgFcgMYgAFIAogBARIgCglpbnRlcmZhY2UYBCABKAlCCLpIBXIDGIABSAOIAQFCCgoIX2FkZHJlc3NCBgoEX21hY0IHCgVfdXNlckIMCgpfaW50ZXJmYWNlIoMECg9NYWNoaW5lRlJVUXVlcnkSKgoTY2hhc3Npc19wYXJ0X251bWJlchgBIAEoCUIIukgFcgMYgAFIAIgBARIqChNjaGFzc2lzX3BhcnRfc2VyaWFsGAIgASgJQgi6SAVyAxiAAUgBiAEBEiAKCWJvYXJkX21mZxgDIAEoCUIIukgFcgMYgAFIAogBARIjCgxib2FyZF9zZXJpYWwYBCABKAlCCLpIBXIDGIABSAOIAQESKAoRYm9hcmRfcGFydF9udW1iZXIYBSABKAlCCLpIBXIDGIABSASIAQESKwoUcHJvZHVjdF9tYW51ZmFjdHVyZXIYBiABKAlCCLpIBXIDGIABSAWIAQESKgoTcHJvZHVjdF9wYXJ0X251bWJlchgHIAEoCUIIukgFcgMYgAFIBogBARIlCg5wcm9kdWN0X3NlcmlhbBgIIAEoCUIIukgFcgMYgAFIB4gBAUIWChRfY2hhc3Npc19wYXJ0X251bWJlckIWChRfY2hhc3Npc19wYXJ0X3NlcmlhbEIMCgpfYm9hcmRfbWZnQg8KDV9ib2FyZF9zZXJpYWxCFAoSX2JvYXJkX3BhcnRfbnVtYmVyQhcKFV9wcm9kdWN0X21hbnVmYWN0dXJlckIWChRfcHJvZHVjdF9wYXJ0X251bWJlckIRCg9fcHJvZHVjdF9zZXJpYWwiXAoUTWFjaGluZUhhcmR3YXJlUXVlcnkSEwoGbWVtb3J5GAEgASgESACIAQESFgoJY3B1X2NvcmVzGAIgASgNSAGIAQFCCQoHX21lbW9yeUIMCgpfY3B1X2NvcmVzIuACChJNYWNoaW5lSXNzdWVzUXVlcnkSNgoNbWFjaGluZV9xdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeRJACgRvbmx5GAIgAygOMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUlzc3VlVHlwZUINukgKkgEHIgWCAQIQARJACgRvbWl0GAMgAygOMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUlzc3VlVHlwZUINukgKkgEHIgWCAQIQARJICghzZXZlcml0eRgEIAEoDjInLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVJc3N1ZVNldmVyaXR5Qgi6SAWCAQIQAUgAiAEBEjcKFGxhc3RfZXJyb3JfdGhyZXNob2xkGAUgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQgsKCV9zZXZlcml0eSJYCg1NYWNoaW5lSXNzdWVzEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEi8KBmlzc3VlcxgCIAMoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVJc3N1ZSLnAQoMTWFjaGluZUlzc3VlEjsKBHR5cGUYASABKA4yIy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lSXNzdWVUeXBlQgi6SAWCAQIQARJDCghzZXZlcml0eRgCIAEoDjInLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVJc3N1ZVNldmVyaXR5Qgi6SAWCAQIQARIgCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgESIgoNcmVmZXJlbmNlX3VybBgEIAEoCUILukgIcgbgs66xAgESDwoHZGV0YWlscxgFIAEoCSplCgpJUFByb3RvY29sEhsKF0lQX1BST1RPQ09MX1VOU1BFQ0lGSUVEEAASHAoPSVBfUFJPVE9DT0xfVENQEAEaB4KyGQN0Y3ASHAoPSVBfUFJPVE9DT0xfVURQEAIaB4KyGQN1ZHAqrQEKDE1hY2hpbmVTdGF0ZRIjChlNQUNISU5FX1NUQVRFX1VOU1BFQ0lGSUVEEAAaBIKyGQASJgoVTUFDSElORV9TVEFURV9UQUlOVEVEEAEaC4KyGQd0YWludGVkEiQKFE1BQ0hJTkVfU1RBVEVfTE9DS0VEEAIaCoKyGQZsb2NrZWQSKgoXTUFDSElORV9TVEFURV9BVkFJTEFCTEUQAxoNgrIZCWF2YWlsYWJsZSrfAQodTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50U3RhdGUSNgosTUFDSElORV9QUk9WSVNJT05JTkdfRVZFTlRfU1RBVEVfVU5TUEVDSUZJRUQQABoEgrIZABI9CipNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9TVEFURV9DUkFTSExPT1AQARoNgrIZCWNyYXNobG9vcBJHCi9NQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9TVEFURV9GQUlMRURfUkVDTEFJTRACGhKCshkOZmFpbGVkLXJlY2xhaW0qnwYKHE1hY2hpbmVQcm92aXNpb25pbmdFdmVudFR5cGUSLworTUFDSElORV9QUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9VTlNQRUNJRklFRBAAEjQKJU1BQ0hJTkVfUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfQUxJVkUQARoJgrIZBUFsaXZlEjgKJ01BQ0hJTkVfUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfQ1JBU0hFRBACGguCshkHQ3Jhc2hlZBJACitNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BYRV9CT09USU5HEAMaD4KyGQtQWEUgQm9vdGluZxJGCi5NQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BMQU5ORURfUkVCT09UEAQaEoKyGQ5QbGFubmVkIFJlYm9vdBI8CilNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BSRVBBUklORxAFGg2CshkJUHJlcGFyaW5nEkAKK01BQ0hJTkVfUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfUkVHSVNURVJJTkcQBhoPgrIZC1JlZ2lzdGVyaW5nEjgKJ01BQ0hJTkVfUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfV0FJVElORxAHGguCshkHV2FpdGluZxI+CipNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX0lOU1RBTExJTkcQCBoOgrIZCkluc3RhbGxpbmcSTgoyTUFDSElORV9QUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9CT09USU5HX05FV19LRVJORUwQCRoWgrIZEkJvb3RpbmcgTmV3IEtlcm5lbBJACitNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BIT05FRF9IT01FEAoaD4KyGQtQaG9uZWQgSG9tZRJICi9NQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX01BQ0hJTkVfUkVDTEFJTRALGhOCshkPTWFjaGluZSBSZWNsYWltKroBChFNYWNoaW5lTGl2ZWxpbmVzcxIoCh5NQUNISU5FX0xJVkVMSU5FU1NfVU5TUEVDSUZJRUQQABoEgrIZABInChhNQUNISU5FX0xJVkVMSU5FU1NfQUxJVkUQARoJgrIZBWFsaXZlEiUKF01BQ0hJTkVfTElWRUxJTkVTU19ERUFEEAIaCIKyGQRkZWFkEisKGk1BQ0hJTkVfTElWRUxJTkVTU19VTktOT1dOEAMaC4KyGQd1bmtub3duKqwBChVNYWNoaW5lQWxsb2NhdGlvblR5cGUSLQojTUFDSElORV9BTExPQ0FUSU9OX1RZUEVfVU5TUEVDSUZJRUQQABoEgrIZABIwCh9NQUNISU5FX0FMTE9DQVRJT05fVFlQRV9NQUNISU5FEAEaC4KyGQdtYWNoaW5lEjIKIE1BQ0hJTkVfQUxMT0NBVElPTl9UWVBFX0ZJUkVXQUxMEAIaDIKyGQhmaXJld2FsbCr+BAoRTWFjaGluZUJNQ0NvbW1hbmQSIwofTUFDSElORV9CTUNfQ09NTUFORF9VTlNQRUNJRklFRBAAEiIKFk1BQ0hJTkVfQk1DX0NPTU1BTkRfT04QARoGgrIZAm9uEiQKF01BQ0hJTkVfQk1DX0NPTU1BTkRfT0ZGEAIaB4KyGQNvZmYSKAoZTUFDSElORV9CTUNfQ09NTUFORF9SRVNFVBADGgmCshkFcmVzZXQSKAoZTUFDSElORV9CTUNfQ09NTUFORF9DWUNMRRAEGgmCshkFY3ljbGUSNgogTUFDSElORV9CTUNfQ09NTUFORF9CT09UX1RPX0JJT1MQBRoQgrIZDGJvb3QtdG8tYmlvcxI6CiJNQUNISU5FX0JNQ19DT01NQU5EX0JPT1RfRlJPTV9ESVNLEAYaEoKyGQ5ib290LWZyb20tZGlzaxI4CiFNQUNISU5FX0JNQ19DT01NQU5EX0JPT1RfRlJPTV9QWEUQBxoRgrIZDWJvb3QtZnJvbS1weGUSPAojTUFDSElORV9CTUNfQ09NTUFORF9JREVOVElGWV9MRURfT04QCBoTgrIZD2lkZW50aWZ5LWxlZC1vbhI+CiRNQUNISU5FX0JNQ19DT01NQU5EX0lERU5USUZZX0xFRF9PRkYQCRoUgrIZEGlkZW50aWZ5LWxlZC1vZmYSPAojTUFDSElORV9CTUNfQ09NTUFORF9NQUNISU5FX0RFTEVURUQQChoTgrIZD21hY2hpbmUtZGVsZXRlZBI8CiNNQUNISU5FX0JNQ19DT01NQU5EX01BQ0hJTkVfQ1JFQVRFRBALGhOCshkPbWFjaGluZS1jcmVhdGVkKvMGChBNYWNoaW5lSXNzdWVUeXBlEiIKHk1BQ0hJTkVfSVNTVUVfVFlQRV9VTlNQRUNJRklFRBAAEjkKIU1BQ0hJTkVfSVNTVUVfVFlQRV9BU05fVU5JUVVFTkVTUxABGhKCshkOYXNuLW5vdC11bmlxdWUSPwokTUFDSElORV9JU1NVRV9UWVBFX0JNQ19JTkZPX09VVERBVEVEEAIaFYKyGRFibWMtaW5mby1vdXRkYXRlZBJCCiZNQUNISU5FX0lTU1VFX1RZUEVfQk1DX05PTl9ESVNUSU5DVF9JUBADGhaCshkSYm1jLW5vLWRpc3RpbmN0LWlwEjkKIU1BQ0hJTkVfSVNTVUVfVFlQRV9CTUNfV0lUSE9VVF9JUBAEGhKCshkOYm1jLXdpdGhvdXQtaXASOwoiTUFDSElORV9JU1NVRV9UWVBFX0JNQ19XSVRIT1VUX01BQxAFGhOCshkPYm1jLXdpdGhvdXQtbWFjEjAKHU1BQ0hJTkVfSVNTVUVfVFlQRV9DUkFTSF9MT09QEAYaDYKyGQljcmFzaGxvb3ASSQopTUFDSElORV9JU1NVRV9UWVBFX0ZBSUxFRF9NQUNISU5FX1JFQ0xBSU0QBxoagrIZFmZhaWxlZC1tYWNoaW5lLXJlY2xhaW0SPQojTUFDSElORV9JU1NVRV9UWVBFX0xBU1RfRVZFTlRfRVJST1IQCBoUgrIZEGxhc3QtZXZlbnQtZXJyb3ISOwoiTUFDSElORV9JU1NVRV9UWVBFX0xJVkVMSU5FU1NfREVBRBAJGhOCshkPbGl2ZWxpbmVzcy1kZWFkEk0KK01BQ0hJTkVfSVNTVUVfVFlQRV9MSVZFTElORVNTX05PVF9BVkFJTEFCTEUQChocgrIZGGxpdmVsaW5lc3Mtbm90LWF2YWlsYWJsZRJBCiVNQUNISU5FX0lTU1VFX1RZUEVfTElWRUxJTkVTU19VTktOT1dOEAsaFoKyGRJsaXZlbGluZXNzLXVua25vd24SQQolTUFDSElORV9JU1NVRV9UWVBFX05PX0VWRU5UX0NPTlRBSU5FUhAMGhaCshkSbm8tZXZlbnQtY29udGFpbmVyEjUKH01BQ0hJTkVfSVNTVUVfVFlQRV9OT19QQVJUSVRJT04QDRoQgrIZDG5vLXBhcnRpdGlvbirLAQoUTWFjaGluZUlzc3VlU2V2ZXJpdHkSJgoiTUFDSElORV9JU1NVRV9TRVZFUklUWV9VTlNQRUNJRklFRBAAEisKHE1BQ0hJTkVfSVNTVUVfU0VWRVJJVFlfTUlOT1IQARoJgrIZBW1pbm9yEisKHE1BQ0hJTkVfSVNTVUVfU0VWRVJJVFlfTUFKT1IQAhoJgrIZBW1ham9yEjEKH01BQ0hJTkVfSVNTVUVfU0VWRVJJVFlfQ1JJVElDQUwQAxoMgrIZCGNyaXRpY2FsMtEGCg5NYWNoaW5lU2VydmljZRJtCgNHZXQSKy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUdldFJlcXVlc3QaLC5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUdldFJlc3BvbnNlIgvK8xgDAQID4PMYAhJ1CgZDcmVhdGUSLi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUNyZWF0ZVJlcXVlc3QaLy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUNyZWF0ZVJlc3BvbnNlIgrK8xgCAQLg8xgBEnUKBlVwZGF0ZRIuLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTZXJ2aWNlVXBkYXRlUmVxdWVzdBovLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCsrzGAIBAuDzGAEScAoETGlzdBIsLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdFJlcXVlc3QaLS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZSILyvMYAwECA+DzGAISdQoGRGVsZXRlEi4ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVNlcnZpY2VEZWxldGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVNlcnZpY2VEZWxldGVSZXNwb25zZSIKyvMYAgEC4PMYARKBAQoKQk1DQ29tbWFuZBIyLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlcXVlc3QaMy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUJNQ0NvbW1hbmRSZXNwb25zZSIKyvMYAgEC4PMYARJ1CgZHZXRCTUMSLi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUdldEJNQ1JlcXVlc3QaLy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlIgrK8xgCAQLg8xgBQsIBChVjb20ubWV0YWxzdGFjay5hcGkudjJCDE1hY2hpbmVQcm90b1ABWjVnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FwaS92MjthcGl2MqICA01BWKoCEU1ldGFsc3RhY2suQXBpLlYyygIRTWV0YWxzdGFja1xBcGlcVjLiAh1NZXRhbHN0YWNrXEFwaVxWMlxHUEJNZXRhZGF0YeoCE01ldGFsc3RhY2s6OkFwaTo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_filesystem, file_metalstack_api_v2_image, file_metalstack_api_v2_network, file_metalstack_api_v2_partition, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_size]);
 
 /**
- * MachineServiceGetRequest is the request payload for a machine get request
+ * MachineServiceGetRequest is the request payload for a machine get request.
  *
  * @generated from message metalstack.api.v2.MachineServiceGetRequest
  */
@@ -57,13 +57,13 @@ export const MachineServiceGetRequestSchema: GenMessage<MachineServiceGetRequest
   messageDesc(file_metalstack_api_v2_machine, 0);
 
 /**
- * MachineServiceGetResponse is the response payload for a machine get request
+ * MachineServiceGetResponse is the response payload for a machine get request.
  *
  * @generated from message metalstack.api.v2.MachineServiceGetResponse
  */
 export type MachineServiceGetResponse = Message<"metalstack.api.v2.MachineServiceGetResponse"> & {
   /**
-   * Machine is the machine requested
+   * Machine is the machine requested.
    *
    * @generated from field: metalstack.api.v2.Machine machine = 1;
    */
@@ -78,7 +78,7 @@ export const MachineServiceGetResponseSchema: GenMessage<MachineServiceGetRespon
   messageDesc(file_metalstack_api_v2_machine, 1);
 
 /**
- * MachineServiceCreateRequest is the request payload for a machine create request
+ * MachineServiceCreateRequest is the request payload for a machine create request.
  *
  * @generated from message metalstack.api.v2.MachineServiceCreateRequest
  */
@@ -136,7 +136,7 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
 
   /**
    * Image which should be installed on this machine
-   * The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
+   * The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch.
    * - debian-13.0.20260402
    * or in a simplified form which omits the patch version
    * - debian-13.0
@@ -157,14 +157,14 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
   filesystemLayout?: string | undefined;
 
   /**
-   * SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
+   * SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh.
    *
    * @generated from field: repeated string ssh_public_keys = 10;
    */
   sshPublicKeys: string[];
 
   /**
-   * Userdata contains instructions required to bootstrap the machine
+   * Userdata contains instructions required to bootstrap the machine.
    * AWS limits the max userdata size to 16k, lets allow twice as much
    *
    * @generated from field: optional string userdata = 11;
@@ -215,7 +215,7 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
   allocationType: MachineAllocationType;
 
   /**
-   * FirewallSpec provides firewall specific parameters if allocationType is firewall
+   * FirewallSpec provides firewall specific parameters if allocationType is firewall.
    *
    * @generated from field: metalstack.api.v2.FirewallSpec firewall_spec = 18;
    */
@@ -230,7 +230,7 @@ export const MachineServiceCreateRequestSchema: GenMessage<MachineServiceCreateR
   messageDesc(file_metalstack_api_v2_machine, 2);
 
 /**
- * FirewallSpec contains firewall specific firewall creation parameters
+ * FirewallSpec contains firewall specific firewall creation parameters.
  *
  * @generated from message metalstack.api.v2.FirewallSpec
  */
@@ -251,7 +251,7 @@ export const FirewallSpecSchema: GenMessage<FirewallSpec> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 3);
 
 /**
- * MachineServiceCreateResponse is the response payload for a machine create request
+ * MachineServiceCreateResponse is the response payload for a machine create request.
  *
  * @generated from message metalstack.api.v2.MachineServiceCreateResponse
  */
@@ -272,7 +272,7 @@ export const MachineServiceCreateResponseSchema: GenMessage<MachineServiceCreate
   messageDesc(file_metalstack_api_v2_machine, 4);
 
 /**
- * MachineServiceUpdateRequest is the request payload for a machine update request
+ * MachineServiceUpdateRequest is the request payload for a machine update request.
  *
  * @generated from message metalstack.api.v2.MachineServiceUpdateRequest
  */
@@ -285,7 +285,7 @@ export type MachineServiceUpdateRequest = Message<"metalstack.api.v2.MachineServ
   uuid: string;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
    */
@@ -328,7 +328,7 @@ export const MachineServiceUpdateRequestSchema: GenMessage<MachineServiceUpdateR
   messageDesc(file_metalstack_api_v2_machine, 5);
 
 /**
- * MachineServiceUpdateResponse is the response payload for a machine update request
+ * MachineServiceUpdateResponse is the response payload for a machine update request.
  *
  * @generated from message metalstack.api.v2.MachineServiceUpdateResponse
  */
@@ -349,7 +349,7 @@ export const MachineServiceUpdateResponseSchema: GenMessage<MachineServiceUpdate
   messageDesc(file_metalstack_api_v2_machine, 6);
 
 /**
- * MachineServiceListRequest is the request payload for a machine list request
+ * MachineServiceListRequest is the request payload for a machine list request.
  *
  * @generated from message metalstack.api.v2.MachineServiceListRequest
  */
@@ -362,7 +362,7 @@ export type MachineServiceListRequest = Message<"metalstack.api.v2.MachineServic
   project: string;
 
   /**
-   * Query to list one ore more machines
+   * Query to list one ore more machines.
    *
    * @generated from field: metalstack.api.v2.MachineQuery query = 2;
    */
@@ -377,13 +377,13 @@ export const MachineServiceListRequestSchema: GenMessage<MachineServiceListReque
   messageDesc(file_metalstack_api_v2_machine, 7);
 
 /**
- * MachineServiceListResponse is the response payload for a machine list request
+ * MachineServiceListResponse is the response payload for a machine list request.
  *
  * @generated from message metalstack.api.v2.MachineServiceListResponse
  */
 export type MachineServiceListResponse = Message<"metalstack.api.v2.MachineServiceListResponse"> & {
   /**
-   * Machines are the machines requested by a list request
+   * Machines are the machines requested by a list request.
    *
    * @generated from field: repeated metalstack.api.v2.Machine machines = 1;
    */
@@ -398,7 +398,7 @@ export const MachineServiceListResponseSchema: GenMessage<MachineServiceListResp
   messageDesc(file_metalstack_api_v2_machine, 8);
 
 /**
- * MachineServiceDeleteRequest is the request payload for a machine delete request
+ * MachineServiceDeleteRequest is the request payload for a machine delete request.
  *
  * @generated from message metalstack.api.v2.MachineServiceDeleteRequest
  */
@@ -426,7 +426,7 @@ export const MachineServiceDeleteRequestSchema: GenMessage<MachineServiceDeleteR
   messageDesc(file_metalstack_api_v2_machine, 9);
 
 /**
- * MachineServiceDeleteResponse is the response payload for a machine delete request
+ * MachineServiceDeleteResponse is the response payload for a machine delete request.
  *
  * @generated from message metalstack.api.v2.MachineServiceDeleteResponse
  */
@@ -447,7 +447,7 @@ export const MachineServiceDeleteResponseSchema: GenMessage<MachineServiceDelete
   messageDesc(file_metalstack_api_v2_machine, 10);
 
 /**
- * MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+ * MachineServiceBMCCommandRequest is the request payload for a machine bmc command.
  *
  * @generated from message metalstack.api.v2.MachineServiceBMCCommandRequest
  */
@@ -482,7 +482,7 @@ export const MachineServiceBMCCommandRequestSchema: GenMessage<MachineServiceBMC
   messageDesc(file_metalstack_api_v2_machine, 11);
 
 /**
- * MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+ * MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
  *
  * @generated from message metalstack.api.v2.MachineServiceBMCCommandResponse
  */
@@ -497,7 +497,7 @@ export const MachineServiceBMCCommandResponseSchema: GenMessage<MachineServiceBM
   messageDesc(file_metalstack_api_v2_machine, 12);
 
 /**
- * MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+ * MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
  *
  * @generated from message metalstack.api.v2.MachineServiceGetBMCRequest
  */
@@ -525,7 +525,7 @@ export const MachineServiceGetBMCRequestSchema: GenMessage<MachineServiceGetBMCR
   messageDesc(file_metalstack_api_v2_machine, 13);
 
 /**
- * MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+ * MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
  *
  * @generated from message metalstack.api.v2.MachineServiceGetBMCResponse
  */
@@ -538,7 +538,7 @@ export type MachineServiceGetBMCResponse = Message<"metalstack.api.v2.MachineSer
   uuid: string;
 
   /**
-   * BMC contains the BMC details of this machine
+   * BMC contains the BMC details of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineBMCReport bmc = 2;
    */
@@ -580,14 +580,14 @@ export type Machine = Message<"metalstack.api.v2.Machine"> & {
   partition?: Partition | undefined;
 
   /**
-   * Rack where this machine is located
+   * Rack where this machine is located.
    *
    * @generated from field: string rack = 4;
    */
   rack: string;
 
   /**
-   * Room where this machine is located
+   * Room where this machine is located.
    *
    * @generated from field: string room = 5;
    */
@@ -615,14 +615,14 @@ export type Machine = Message<"metalstack.api.v2.Machine"> & {
   allocation?: MachineAllocation | undefined;
 
   /**
-   * Status contains several status details related to this machine
+   * Status contains several status details related to this machine.
    *
    * @generated from field: metalstack.api.v2.MachineStatus status = 9;
    */
   status?: MachineStatus | undefined;
 
   /**
-   * MachineRecentProvisioningEvents contains the recent provisioning events
+   * MachineRecentProvisioningEvents contains the recent provisioning events.
    *
    * @generated from field: metalstack.api.v2.MachineRecentProvisioningEvents recent_provisioning_events = 10;
    */
@@ -637,20 +637,20 @@ export const MachineSchema: GenMessage<Machine> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 15);
 
 /**
- * MachineStatus contains several status details related to this machine
+ * MachineStatus contains several status details related to this machine.
  *
  * @generated from message metalstack.api.v2.MachineStatus
  */
 export type MachineStatus = Message<"metalstack.api.v2.MachineStatus"> & {
   /**
-   * Condition describes the availability
+   * Condition describes the availability.
    *
    * @generated from field: metalstack.api.v2.MachineCondition condition = 1;
    */
   condition?: MachineCondition | undefined;
 
   /**
-   * LEDState indicates the state of the indicator LED on this machine
+   * LEDState indicates the state of the indicator LED on this machine.
    *
    * @generated from field: metalstack.api.v2.MachineChassisIdentifyLEDState led_state = 2;
    */
@@ -679,7 +679,7 @@ export const MachineStatusSchema: GenMessage<MachineStatus> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 16);
 
 /**
- * MachineCondition describes the availability of this machine
+ * MachineCondition describes the availability of this machine.
  *
  * @generated from message metalstack.api.v2.MachineCondition
  */
@@ -714,7 +714,7 @@ export const MachineConditionSchema: GenMessage<MachineCondition> = /*@__PURE__*
   messageDesc(file_metalstack_api_v2_machine, 17);
 
 /**
- * MachineAllocation contains properties if this machine is allocated
+ * MachineAllocation contains properties if this machine is allocated.
  *
  * @generated from message metalstack.api.v2.MachineAllocation
  */
@@ -849,7 +849,7 @@ export const MachineAllocationSchema: GenMessage<MachineAllocation> = /*@__PURE_
   messageDesc(file_metalstack_api_v2_machine, 18);
 
 /**
- * MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired
+ * MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired.
  *
  * @generated from message metalstack.api.v2.MachineAllocationNetwork
  */
@@ -863,7 +863,7 @@ export type MachineAllocationNetwork = Message<"metalstack.api.v2.MachineAllocat
 
   /**
    * IPs to to attach to this machine additionally
-   * If none given, one ip address is acquired per network for the machine
+   * If none given, one ip address is acquired per network for the machine.
    * Order of ips is preserved on the loopback interface.
    *
    * @generated from field: repeated string ips = 2;
@@ -879,20 +879,20 @@ export const MachineAllocationNetworkSchema: GenMessage<MachineAllocationNetwork
   messageDesc(file_metalstack_api_v2_machine, 19);
 
 /**
- * FirewallRules can be defined during firewall allocation
+ * FirewallRules can be defined during firewall allocation.
  *
  * @generated from message metalstack.api.v2.FirewallRules
  */
 export type FirewallRules = Message<"metalstack.api.v2.FirewallRules"> & {
   /**
-   * Egress list of egress rules to be deployed during firewall allocation
+   * Egress list of egress rules to be deployed during firewall allocation.
    *
    * @generated from field: repeated metalstack.api.v2.FirewallEgressRule egress = 1;
    */
   egress: FirewallEgressRule[];
 
   /**
-   * Ingress list of ingress rules to be deployed during firewall allocation
+   * Ingress list of ingress rules to be deployed during firewall allocation.
    *
    * @generated from field: repeated metalstack.api.v2.FirewallIngressRule ingress = 2;
    */
@@ -907,7 +907,7 @@ export const FirewallRulesSchema: GenMessage<FirewallRules> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 20);
 
 /**
- * FirewallEgressRule defines rules for outgoing traffic
+ * FirewallEgressRule defines rules for outgoing traffic.
  *
  * @generated from message metalstack.api.v2.FirewallEgressRule
  */
@@ -949,7 +949,7 @@ export const FirewallEgressRuleSchema: GenMessage<FirewallEgressRule> = /*@__PUR
   messageDesc(file_metalstack_api_v2_machine, 21);
 
 /**
- * FirewallIngressRule defines rules for incoming traffic
+ * FirewallIngressRule defines rules for incoming traffic.
  *
  * @generated from message metalstack.api.v2.FirewallIngressRule
  */
@@ -998,7 +998,7 @@ export const FirewallIngressRuleSchema: GenMessage<FirewallIngressRule> = /*@__P
   messageDesc(file_metalstack_api_v2_machine, 22);
 
 /**
- * MachineNetwork contains details which network should be created on a allocated machine
+ * MachineNetwork contains details which network should be created on a allocated machine.
  *
  * @generated from message metalstack.api.v2.MachineNetwork
  */
@@ -1018,7 +1018,7 @@ export type MachineNetwork = Message<"metalstack.api.v2.MachineNetwork"> & {
   prefixes: string[];
 
   /**
-   * DestinationPrefixes prefixes that are reachable within this network
+   * DestinationPrefixes prefixes that are reachable within this network.
    *
    * @generated from field: repeated string destination_prefixes = 3;
    */
@@ -1039,7 +1039,7 @@ export type MachineNetwork = Message<"metalstack.api.v2.MachineNetwork"> & {
   networkType: NetworkType;
 
   /**
-   * NatType what type of nat if any should be used
+   * NatType what type of nat if any should be used.
    *
    * @generated from field: metalstack.api.v2.NATType nat_type = 6;
    */
@@ -1060,7 +1060,7 @@ export type MachineNetwork = Message<"metalstack.api.v2.MachineNetwork"> & {
   asn: number;
 
   /**
-   * Project is the project uuid associated with this network
+   * Project is the project uuid associated with this network.
    *
    * @generated from field: optional string project = 9;
    */
@@ -1075,7 +1075,7 @@ export const MachineNetworkSchema: GenMessage<MachineNetwork> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 23);
 
 /**
- * MachineHardware contains hardware details
+ * MachineHardware contains hardware details.
  *
  * @generated from message metalstack.api.v2.MachineHardware
  */
@@ -1124,7 +1124,7 @@ export const MachineHardwareSchema: GenMessage<MachineHardware> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 24);
 
 /**
- * MetalCPU contains details of a cpu in this machine
+ * MetalCPU contains details of a cpu in this machine.
  *
  * @generated from message metalstack.api.v2.MetalCPU
  */
@@ -1166,7 +1166,7 @@ export const MetalCPUSchema: GenMessage<MetalCPU> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 25);
 
 /**
- * MetalGPU contains details of a gpu in this machine
+ * MetalGPU contains details of a gpu in this machine.
  *
  * @generated from message metalstack.api.v2.MetalGPU
  */
@@ -1194,7 +1194,7 @@ export const MetalGPUSchema: GenMessage<MetalGPU> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 26);
 
 /**
- * MachineNic contains details of a network interface of this machine
+ * MachineNic contains details of a network interface of this machine.
  *
  * @generated from message metalstack.api.v2.MachineNic
  */
@@ -1264,7 +1264,7 @@ export const MachineNicSchema: GenMessage<MachineNic> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 27);
 
 /**
- * MachineBlockDevice contains details of a block device of this machine
+ * MachineBlockDevice contains details of a block device of this machine.
  *
  * @generated from message metalstack.api.v2.MachineBlockDevice
  */
@@ -1292,7 +1292,7 @@ export const MachineBlockDeviceSchema: GenMessage<MachineBlockDevice> = /*@__PUR
   messageDesc(file_metalstack_api_v2_machine, 28);
 
 /**
- * MachineChassisIdentifyLEDState describes the identifier led state
+ * MachineChassisIdentifyLEDState describes the identifier led state.
  *
  * @generated from message metalstack.api.v2.MachineChassisIdentifyLEDState
  */
@@ -1320,55 +1320,55 @@ export const MachineChassisIdentifyLEDStateSchema: GenMessage<MachineChassisIden
   messageDesc(file_metalstack_api_v2_machine, 29);
 
 /**
- * MachineBMCReport is sent from the metal-bmc to update bmc and power related details
+ * MachineBMCReport is sent from the metal-bmc to update bmc and power related details.
  *
  * @generated from message metalstack.api.v2.MachineBMCReport
  */
 export type MachineBMCReport = Message<"metalstack.api.v2.MachineBMCReport"> & {
   /**
-   * Bmc contains bmc details
+   * Bmc contains bmc details.
    *
    * @generated from field: metalstack.api.v2.MachineBMC bmc = 1;
    */
   bmc?: MachineBMC | undefined;
 
   /**
-   * Bios contains bios details
+   * Bios contains bios details.
    *
    * @generated from field: metalstack.api.v2.MachineBios bios = 2;
    */
   bios?: MachineBios | undefined;
 
   /**
-   * Fru contains field replaceable unit details
+   * Fru contains field replaceable unit details.
    *
    * @generated from field: metalstack.api.v2.MachineFRU fru = 3;
    */
   fru?: MachineFRU | undefined;
 
   /**
-   * PowerMetric contains the power statistics of the machine
+   * PowerMetric contains the power statistics of the machine.
    *
    * @generated from field: metalstack.api.v2.MachinePowerMetric power_metric = 4;
    */
   powerMetric?: MachinePowerMetric | undefined;
 
   /**
-   * PowerSupplies contains details about all power supplies and their state
+   * PowerSupplies contains details about all power supplies and their state.
    *
    * @generated from field: repeated metalstack.api.v2.MachinePowerSupply power_supplies = 5;
    */
   powerSupplies: MachinePowerSupply[];
 
   /**
-   * LedState indicates the state of the indicator LED on this machine
+   * LedState indicates the state of the indicator LED on this machine.
    *
    * @generated from field: metalstack.api.v2.MachineChassisIdentifyLEDState led_state = 6;
    */
   ledState?: MachineChassisIdentifyLEDState | undefined;
 
   /**
-   * UpdatedAt contains the date when this data was last updated
+   * UpdatedAt contains the date when this data was last updated.
    *
    * @generated from field: google.protobuf.Timestamp updated_at = 7;
    */
@@ -1383,7 +1383,7 @@ export const MachineBMCReportSchema: GenMessage<MachineBMCReport> = /*@__PURE__*
   messageDesc(file_metalstack_api_v2_machine, 30);
 
 /**
- * MachineBios contains BIOS details of this machine
+ * MachineBios contains BIOS details of this machine.
  *
  * @generated from message metalstack.api.v2.MachineBios
  */
@@ -1418,7 +1418,7 @@ export const MachineBiosSchema: GenMessage<MachineBios> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 31);
 
 /**
- * MachineBMC describe details of the ipmi or out of band device
+ * MachineBMC describe details of the ipmi or out of band device.
  *
  * @generated from message metalstack.api.v2.MachineBMC
  */
@@ -1481,62 +1481,62 @@ export const MachineBMCSchema: GenMessage<MachineBMC> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 32);
 
 /**
- * MachineFRU describes details to the machine which are required in case of a necessary replacement
+ * MachineFRU describes details to the machine which are required in case of a necessary replacement.
  *
  * @generated from message metalstack.api.v2.MachineFRU
  */
 export type MachineFRU = Message<"metalstack.api.v2.MachineFRU"> & {
   /**
-   * ChassisPartNumber is the part number of the machine chassis
+   * ChassisPartNumber is the part number of the machine chassis.
    *
    * @generated from field: optional string chassis_part_number = 1;
    */
   chassisPartNumber?: string | undefined;
 
   /**
-   * ChassisPartSerial is the serial number of the machine chassis
+   * ChassisPartSerial is the serial number of the machine chassis.
    *
    * @generated from field: optional string chassis_part_serial = 2;
    */
   chassisPartSerial?: string | undefined;
 
   /**
-   * BoardMfg is the short description of the mainboard
+   * BoardMfg is the short description of the mainboard.
    *
    * @generated from field: optional string board_mfg = 3;
    */
   boardMfg?: string | undefined;
 
   /**
-   * BoardMfgSerial is the serial number of the mainboard
+   * BoardMfgSerial is the serial number of the mainboard.
    *
    * @generated from field: optional string board_mfg_serial = 4;
    */
   boardMfgSerial?: string | undefined;
 
   /**
-   * BoardPartNumber is the part number of the mainboard
+   * BoardPartNumber is the part number of the mainboard.
    *
    * @generated from field: optional string board_part_number = 5;
    */
   boardPartNumber?: string | undefined;
 
   /**
-   * ProductManufacturer is the manufacturer of the machine
+   * ProductManufacturer is the manufacturer of the machine.
    *
    * @generated from field: optional string product_manufacturer = 6;
    */
   productManufacturer?: string | undefined;
 
   /**
-   * ProductPartNumber is the part number of the machine
+   * ProductPartNumber is the part number of the machine.
    *
    * @generated from field: optional string product_part_number = 7;
    */
   productPartNumber?: string | undefined;
 
   /**
-   * ProductSerial is the serial number of the machine
+   * ProductSerial is the serial number of the machine.
    *
    * @generated from field: optional string product_serial = 8;
    */
@@ -1551,7 +1551,7 @@ export const MachineFRUSchema: GenMessage<MachineFRU> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 33);
 
 /**
- * MachinePowerMetric contains metrics of the power consumption of a machine
+ * MachinePowerMetric contains metrics of the power consumption of a machine.
  *
  * @generated from message metalstack.api.v2.MachinePowerMetric
  */
@@ -1602,7 +1602,7 @@ export const MachinePowerMetricSchema: GenMessage<MachinePowerMetric> = /*@__PUR
   messageDesc(file_metalstack_api_v2_machine, 34);
 
 /**
- * MachinePowerSupply contains details of the power supply of a machine
+ * MachinePowerSupply contains details of the power supply of a machine.
  *
  * @generated from message metalstack.api.v2.MachinePowerSupply
  */
@@ -1657,7 +1657,7 @@ export type MachineRecentProvisioningEvents = Message<"metalstack.api.v2.Machine
   lastErrorEvent?: MachineProvisioningEvent | undefined;
 
   /**
-   * State can be either CrashLoop, FailedReclaim or something else
+   * State can be either CrashLoop, FailedReclaim or something else.
    *
    * @generated from field: metalstack.api.v2.MachineProvisioningEventState state = 4;
    */
@@ -1672,7 +1672,7 @@ export const MachineRecentProvisioningEventsSchema: GenMessage<MachineRecentProv
   messageDesc(file_metalstack_api_v2_machine, 36);
 
 /**
- * MachineProvisioningEvent is an event that has occurred during provisioning
+ * MachineProvisioningEvent is an event that has occurred during provisioning.
  *
  * @generated from message metalstack.api.v2.MachineProvisioningEvent
  */
@@ -1707,7 +1707,7 @@ export const MachineProvisioningEventSchema: GenMessage<MachineProvisioningEvent
   messageDesc(file_metalstack_api_v2_machine, 37);
 
 /**
- * MachineVPN contains configuration data for the VPN connection
+ * MachineVPN contains configuration data for the VPN connection.
  *
  * @generated from message metalstack.api.v2.MachineVPN
  */
@@ -1727,7 +1727,7 @@ export type MachineVPN = Message<"metalstack.api.v2.MachineVPN"> & {
   authKey: string;
 
   /**
-   * Connected indicate if this machine is connected to the VPN
+   * Connected indicate if this machine is connected to the VPN.
    *
    * @generated from field: bool connected = 3;
    */
@@ -2235,7 +2235,7 @@ export const MachineHardwareQuerySchema: GenMessage<MachineHardwareQuery> = /*@_
   messageDesc(file_metalstack_api_v2_machine, 46);
 
 /**
- * MachineIssuesQuery defines which machine issues should be listed
+ * MachineIssuesQuery defines which machine issues should be listed.
  *
  * @generated from message metalstack.api.v2.MachineIssuesQuery
  */
@@ -2248,7 +2248,7 @@ export type MachineIssuesQuery = Message<"metalstack.api.v2.MachineIssuesQuery">
   machineQuery?: MachineQuery | undefined;
 
   /**
-   * Only includes the specified machine issue types
+   * Only includes the specified machine issue types.
    *
    * @generated from field: repeated metalstack.api.v2.MachineIssueType only = 2;
    */
@@ -2262,14 +2262,14 @@ export type MachineIssuesQuery = Message<"metalstack.api.v2.MachineIssuesQuery">
   omit: MachineIssueType[];
 
   /**
-   * Severity filters issue for given severity
+   * Severity filters issue for given severity.
    *
    * @generated from field: optional metalstack.api.v2.MachineIssueSeverity severity = 4;
    */
   severity?: MachineIssueSeverity | undefined;
 
   /**
-   * LastErrorThreshold defines the last error threshold
+   * LastErrorThreshold defines the last error threshold.
    *
    * @generated from field: google.protobuf.Duration last_error_threshold = 5;
    */
@@ -2284,7 +2284,7 @@ export const MachineIssuesQuerySchema: GenMessage<MachineIssuesQuery> = /*@__PUR
   messageDesc(file_metalstack_api_v2_machine, 47);
 
 /**
- * MachineIssues is a list of issues for a machine
+ * MachineIssues is a list of issues for a machine.
  *
  * @generated from message metalstack.api.v2.MachineIssues
  */
@@ -2312,7 +2312,7 @@ export const MachineIssuesSchema: GenMessage<MachineIssues> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 48);
 
 /**
- * MachineIssue contains details of one issue
+ * MachineIssue contains details of one issue.
  *
  * @generated from message metalstack.api.v2.MachineIssue
  */
@@ -2325,28 +2325,28 @@ export type MachineIssue = Message<"metalstack.api.v2.MachineIssue"> & {
   type: MachineIssueType;
 
   /**
-   * Severity specifies the severity of an issue
+   * Severity specifies the severity of an issue.
    *
    * @generated from field: metalstack.api.v2.MachineIssueSeverity severity = 2;
    */
   severity: MachineIssueSeverity;
 
   /**
-   * Description provides an issue description
+   * Description provides an issue description.
    *
    * @generated from field: string description = 3;
    */
   description: string;
 
   /**
-   * RefURL provides a link to a more detailed issue description in the metal-stack documentation
+   * RefURL provides a link to a more detailed issue description in the metal-stack documentation.
    *
    * @generated from field: string reference_url = 4;
    */
   referenceUrl: string;
 
   /**
-   * Details may contain additional details on an evaluated issue
+   * Details may contain additional details on an evaluated issue.
    *
    * @generated from field: string details = 5;
    */
@@ -2361,27 +2361,27 @@ export const MachineIssueSchema: GenMessage<MachineIssue> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 49);
 
 /**
- * IPProtocol defines tcp|udp
+ * IPProtocol defines tcp|udp.
  *
  * @generated from enum metalstack.api.v2.IPProtocol
  */
 export enum IPProtocol {
   /**
-   * IP_PROTOCOL_UNSPECIFIED is not specified
+   * IP_PROTOCOL_UNSPECIFIED is not specified.
    *
    * @generated from enum value: IP_PROTOCOL_UNSPECIFIED = 0;
    */
   IP_PROTOCOL_UNSPECIFIED = 0,
 
   /**
-   * IP_PROTOCOL_TCP is tcp
+   * IP_PROTOCOL_TCP is tcp.
    *
    * @generated from enum value: IP_PROTOCOL_TCP = 1;
    */
   IP_PROTOCOL_TCP = 1,
 
   /**
-   * IP_PROTOCOL_UDP is udp
+   * IP_PROTOCOL_UDP is udp.
    *
    * @generated from enum value: IP_PROTOCOL_UDP = 2;
    */
@@ -2395,13 +2395,13 @@ export const IPProtocolSchema: GenEnum<IPProtocol> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_machine, 0);
 
 /**
- * MachineState defines if the machine was locked or reserved from a operator
+ * MachineState defines if the machine was locked or reserved from a operator.
  *
  * @generated from enum metalstack.api.v2.MachineState
  */
 export enum MachineState {
   /**
-   * MACHINE_STATE_UNSPECIFIED is not specified
+   * MACHINE_STATE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: MACHINE_STATE_UNSPECIFIED = 0;
    */
@@ -2442,7 +2442,7 @@ export const MachineStateSchema: GenEnum<MachineState> = /*@__PURE__*/
  */
 export enum MachineProvisioningEventState {
   /**
-   * MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
+   * MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0;
    */
@@ -2470,13 +2470,13 @@ export const MachineProvisioningEventStateSchema: GenEnum<MachineProvisioningEve
   enumDesc(file_metalstack_api_v2_machine, 2);
 
 /**
- * MachineProvisioningEventType defines in which phase the machine actually is
+ * MachineProvisioningEventType defines in which phase the machine actually is.
  *
  * @generated from enum metalstack.api.v2.MachineProvisioningEventType
  */
 export enum MachineProvisioningEventType {
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified
+   * MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
    */
@@ -2567,13 +2567,13 @@ export const MachineProvisioningEventTypeSchema: GenEnum<MachineProvisioningEven
   enumDesc(file_metalstack_api_v2_machine, 3);
 
 /**
- * MachineLiveliness specifies the liveliness of a machine
+ * MachineLiveliness specifies the liveliness of a machine.
  *
  * @generated from enum metalstack.api.v2.MachineLiveliness
  */
 export enum MachineLiveliness {
   /**
-   * MACHINE_LIVELINESS_UNSPECIFIED is not defined
+   * MACHINE_LIVELINESS_UNSPECIFIED is not defined.
    *
    * @generated from enum value: MACHINE_LIVELINESS_UNSPECIFIED = 0;
    */
@@ -2608,27 +2608,27 @@ export const MachineLivelinessSchema: GenEnum<MachineLiveliness> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_machine, 4);
 
 /**
- * MachineAllocationType defines if this is a machine or a firewall
+ * MachineAllocationType defines if this is a machine or a firewall.
  *
  * @generated from enum metalstack.api.v2.MachineAllocationType
  */
 export enum MachineAllocationType {
   /**
-   * MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified
+   * MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified.
    *
    * @generated from enum value: MACHINE_ALLOCATION_TYPE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_ALLOCATION_TYPE_MACHINE is a machine
+   * MACHINE_ALLOCATION_TYPE_MACHINE is a machine.
    *
    * @generated from enum value: MACHINE_ALLOCATION_TYPE_MACHINE = 1;
    */
   MACHINE = 1,
 
   /**
-   * MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall
+   * MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall.
    *
    * @generated from enum value: MACHINE_ALLOCATION_TYPE_FIREWALL = 2;
    */
@@ -2642,41 +2642,41 @@ export const MachineAllocationTypeSchema: GenEnum<MachineAllocationType> = /*@__
   enumDesc(file_metalstack_api_v2_machine, 5);
 
 /**
- * MachineBMCCommand defines commands send to the BMC of the machine
+ * MachineBMCCommand defines commands send to the BMC of the machine.
  *
  * @generated from enum metalstack.api.v2.MachineBMCCommand
  */
 export enum MachineBMCCommand {
   /**
-   * MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+   * MACHINE_BMC_COMMAND_UNSPECIFIED is not defined.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_UNSPECIFIED = 0;
    */
   MACHINE_BMC_COMMAND_UNSPECIFIED = 0,
 
   /**
-   * MACHINE_BMC_COMMAND_ON Power on the machine
+   * MACHINE_BMC_COMMAND_ON Power on the machine.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_ON = 1;
    */
   MACHINE_BMC_COMMAND_ON = 1,
 
   /**
-   * MACHINE_BMC_COMMAND_OFF Power off the machine
+   * MACHINE_BMC_COMMAND_OFF Power off the machine.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_OFF = 2;
    */
   MACHINE_BMC_COMMAND_OFF = 2,
 
   /**
-   * MACHINE_BMC_COMMAND_RESET Power reset the machine
+   * MACHINE_BMC_COMMAND_RESET Power reset the machine.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_RESET = 3;
    */
   MACHINE_BMC_COMMAND_RESET = 3,
 
   /**
-   * MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+   * MACHINE_BMC_COMMAND_CYCLE Power cycle the machine.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_CYCLE = 4;
    */
@@ -2739,7 +2739,7 @@ export const MachineBMCCommandSchema: GenEnum<MachineBMCCommand> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_machine, 6);
 
 /**
- * MachineIssueType defines which type of issue it is
+ * MachineIssueType defines which type of issue it is.
  *
  * @generated from enum metalstack.api.v2.MachineIssueType
  */
@@ -2850,7 +2850,7 @@ export const MachineIssueTypeSchema: GenEnum<MachineIssueType> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_machine, 7);
 
 /**
- * MachineIssueSeverity defines the severity of an issue
+ * MachineIssueSeverity defines the severity of an issue.
  *
  * @generated from enum metalstack.api.v2.MachineIssueSeverity
  */

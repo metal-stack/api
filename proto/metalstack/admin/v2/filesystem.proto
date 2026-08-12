@@ -34,13 +34,13 @@ service FilesystemService {
 
 // FilesystemServiceCreateRequest is the request payload for creating a filesystem.
 message FilesystemServiceCreateRequest {
-  // FilesystemLayout is the filesystem layout to create
+  // FilesystemLayout is the filesystem layout to create.
   metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemServiceCreateResponse is the response payload for creating a filesystem.
 message FilesystemServiceCreateResponse {
-  // FilesystemLayout contains the created filesystem layout
+  // FilesystemLayout contains the created filesystem layout.
   metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
@@ -48,21 +48,21 @@ message FilesystemServiceCreateResponse {
 message FilesystemServiceUpdateRequest {
   // Id of this filesystemLayout
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  // UpdateMeta contains the timestamp and strategy to be used in this update request.
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of this filesystemLayout
   optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this filesystemLayout
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Filesystems is a list of filesystems to create on a machine
+  // Filesystems is a list of filesystems to create on a machine.
   repeated metalstack.api.v2.Filesystem filesystems = 5;
-  // Disks list of disks that belong to this layout
+  // Disks list of disks that belong to this layout.
   repeated metalstack.api.v2.Disk disks = 6;
   // Raid arrays to create
   repeated metalstack.api.v2.Raid raid = 7;
-  // VolumeGroups list of volumegroups to create
+  // VolumeGroups list of volumegroups to create.
   repeated metalstack.api.v2.VolumeGroup volume_groups = 8;
-  // LogicalVolumes list of logicalvolumes to create
+  // LogicalVolumes list of logicalvolumes to create.
   repeated metalstack.api.v2.LogicalVolume logical_volumes = 9;
   // Constraints which must match that this layout is taken, if sizes and images are empty these are develop layouts
   metalstack.api.v2.FilesystemLayoutConstraints constraints = 10;
@@ -70,7 +70,7 @@ message FilesystemServiceUpdateRequest {
 
 // FilesystemServiceUpdateResponse is the response payload for updating a filesystem.
 message FilesystemServiceUpdateResponse {
-  // FilesystemLayout contains the updated filesystem layout
+  // FilesystemLayout contains the updated filesystem layout.
   metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
@@ -82,13 +82,13 @@ message FilesystemServiceDeleteRequest {
 
 // FilesystemServiceDeleteResponse is the response payload for deleting a filesystem.
 message FilesystemServiceDeleteResponse {
-  // FilesystemLayout contains the deleted filesystem layout
+  // FilesystemLayout contains the deleted filesystem layout.
   metalstack.api.v2.FilesystemLayout filesystem_layout = 1;
 }
 
 // FilesystemServiceMatchRequest
 message FilesystemServiceMatchRequest {
-  // Match size and image to a filesystem layout
+  // Match size and image to a filesystem layout.
   // or match a machine to a filesystem layout
   oneof match {
     // ensure at least one match is specified

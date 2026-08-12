@@ -23,7 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// PartitionServiceCreateRequest is the request payload for a partition create request
+// PartitionServiceCreateRequest is the request payload for a partition create request.
 type PartitionServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Partition the partition
@@ -74,17 +74,17 @@ type PartitionServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of this partition
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Description of this partition
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// PartitionBootConfiguration defines how metal-hammer boots
+	// PartitionBootConfiguration defines how metal-hammer boots.
 	BootConfiguration *v2.PartitionBootConfiguration `protobuf:"bytes,4,opt,name=boot_configuration,json=bootConfiguration,proto3" json:"boot_configuration,omitempty"`
 	// DNSServers for this partition
 	DnsServers []*v2.DNSServer `protobuf:"bytes,5,rep,name=dns_servers,json=dnsServers,proto3" json:"dns_servers,omitempty"`
 	// NTPServers for this partition
 	NtpServers []*v2.NTPServer `protobuf:"bytes,6,rep,name=ntp_servers,json=ntpServers,proto3" json:"ntp_servers,omitempty"`
-	// ManagementServiceAddresses defines where the management is reachable
+	// ManagementServiceAddresses defines where the management is reachable.
 	// must be in the form <ip|host>:<port>
 	MgmtServiceAddresses []string `protobuf:"bytes,7,rep,name=mgmt_service_addresses,json=mgmtServiceAddresses,proto3" json:"mgmt_service_addresses,omitempty"`
 	// Labels to update on this network
@@ -179,7 +179,7 @@ func (x *PartitionServiceUpdateRequest) GetLabels() *v2.UpdateLabels {
 	return nil
 }
 
-// PartitionServiceDeleteRequest is the request payload for a partition delete request
+// PartitionServiceDeleteRequest is the request payload for a partition delete request.
 type PartitionServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the partition to delete
@@ -225,7 +225,7 @@ func (x *PartitionServiceDeleteRequest) GetId() string {
 	return ""
 }
 
-// PartitionServiceCreateResponse is the response payload for a partition create request
+// PartitionServiceCreateResponse is the response payload for a partition create request.
 type PartitionServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Partition the partition
@@ -271,7 +271,7 @@ func (x *PartitionServiceCreateResponse) GetPartition() *v2.Partition {
 	return nil
 }
 
-// PartitionServiceUpdateResponse is the response payload for a partition update request
+// PartitionServiceUpdateResponse is the response payload for a partition update request.
 type PartitionServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Partition the partition
@@ -320,7 +320,7 @@ func (x *PartitionServiceUpdateResponse) GetPartition() *v2.Partition {
 // PartitionServiceDeleteResponse is the response payload for deleting a partition.
 type PartitionServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Partition contains the deleted partition
+	// Partition contains the deleted partition.
 	Partition     *v2.Partition `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -427,10 +427,10 @@ func (x *PartitionServiceCapacityRequest) GetProject() string {
 	return ""
 }
 
-// PartitionServiceCapacityResponse is the response payload for a partition capacity request
+// PartitionServiceCapacityResponse is the response payload for a partition capacity request.
 type PartitionServiceCapacityResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// PartitionCapacity is a capacity report per partition
+	// PartitionCapacity is a capacity report per partition.
 	PartitionCapacity []*PartitionCapacity `protobuf:"bytes,1,rep,name=partition_capacity,json=partitionCapacity,proto3" json:"partition_capacity,omitempty"`
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
@@ -473,7 +473,7 @@ func (x *PartitionServiceCapacityResponse) GetPartitionCapacity() []*PartitionCa
 	return nil
 }
 
-// PartitionCapacity is the capacity of one partition
+// PartitionCapacity is the capacity of one partition.
 type PartitionCapacity struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Partition of which this capacity is reported.
@@ -528,7 +528,7 @@ func (x *PartitionCapacity) GetMachineSizeCapacities() []*MachineSizeCapacity {
 	return nil
 }
 
-// ServerCapacity is the capacity of one server type, eg machine size
+// ServerCapacity is the capacity of one server type, eg machine size.
 type MachineSizeCapacity struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Size is the size id correlating to all counts in this server capacity.

@@ -27,11 +27,11 @@ const (
 type ImageFeature int32
 
 const (
-	// IMAGE_FEATURE_UNSPECIFIED is not specified
+	// IMAGE_FEATURE_UNSPECIFIED is not specified.
 	ImageFeature_IMAGE_FEATURE_UNSPECIFIED ImageFeature = 0
-	// IMAGE_FEATURE_MACHINE indicates this image is usable for a machine
+	// IMAGE_FEATURE_MACHINE indicates this image is usable for a machine.
 	ImageFeature_IMAGE_FEATURE_MACHINE ImageFeature = 1
-	// IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall
+	// IMAGE_FEATURE_FIREWALL indicates this image is usable for a firewall.
 	ImageFeature_IMAGE_FEATURE_FIREWALL ImageFeature = 2
 )
 
@@ -80,13 +80,13 @@ func (ImageFeature) EnumDescriptor() ([]byte, []int) {
 type ImageClassification int32
 
 const (
-	// IMAGE_CLASSIFICATION_UNSPECIFIED is not specified
+	// IMAGE_CLASSIFICATION_UNSPECIFIED is not specified.
 	ImageClassification_IMAGE_CLASSIFICATION_UNSPECIFIED ImageClassification = 0
-	// IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview
+	// IMAGE_CLASSIFICATION_PREVIEW indicates that this image is in preview.
 	ImageClassification_IMAGE_CLASSIFICATION_PREVIEW ImageClassification = 1
-	// IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported
+	// IMAGE_CLASSIFICATION_SUPPORTED indicates that this image is supported.
 	ImageClassification_IMAGE_CLASSIFICATION_SUPPORTED ImageClassification = 2
-	// IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated
+	// IMAGE_CLASSIFICATION_DEPRECATED indicates that this image is deprecated.
 	ImageClassification_IMAGE_CLASSIFICATION_DEPRECATED ImageClassification = 3
 )
 
@@ -133,7 +133,7 @@ func (ImageClassification) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_image_proto_rawDescGZIP(), []int{1}
 }
 
-// ImageServiceGetRequest is the request payload for an image get request
+// ImageServiceGetRequest is the request payload for an image get request.
 type ImageServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the image to get
@@ -179,10 +179,10 @@ func (x *ImageServiceGetRequest) GetId() string {
 	return ""
 }
 
-// ImageServiceListRequest is the request payload for an image list request
+// ImageServiceListRequest is the request payload for an image list request.
 type ImageServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for images
+	// Query for images.
 	Query         *ImageQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -225,7 +225,7 @@ func (x *ImageServiceListRequest) GetQuery() *ImageQuery {
 	return nil
 }
 
-// ImageServiceLatestRequest is the request payload for an image latest request
+// ImageServiceLatestRequest is the request payload for an image latest request.
 type ImageServiceLatestRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// OS for which the latest image should be fetched
@@ -281,7 +281,7 @@ func (x *ImageServiceLatestRequest) GetClassification() ImageClassification {
 	return ImageClassification_IMAGE_CLASSIFICATION_UNSPECIFIED
 }
 
-// ImageServiceGetResponse is the response payload for an image get request
+// ImageServiceGetResponse is the response payload for an image get request.
 type ImageServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Image the image
@@ -327,7 +327,7 @@ func (x *ImageServiceGetResponse) GetImage() *Image {
 	return nil
 }
 
-// ImageServiceListResponse is the response payload for an image list request
+// ImageServiceListResponse is the response payload for an image list request.
 type ImageServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Images the images
@@ -373,7 +373,7 @@ func (x *ImageServiceListResponse) GetImages() []*Image {
 	return nil
 }
 
-// ImageServiceLatestResponse is the response payload for an image latest request
+// ImageServiceLatestResponse is the response payload for an image latest request.
 type ImageServiceLatestResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Image which is the latest for one os
@@ -436,7 +436,7 @@ type Image struct {
 	Features []ImageFeature `protobuf:"varint,6,rep,packed,name=features,proto3,enum=metalstack.api.v2.ImageFeature" json:"features,omitempty"`
 	// Classification of this image
 	Classification ImageClassification `protobuf:"varint,7,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification" json:"classification,omitempty"`
-	// ExpiresAt usage is not possible after this date
+	// ExpiresAt usage is not possible after this date.
 	ExpiresAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -528,7 +528,7 @@ func (x *Image) GetExpiresAt() *timestamppb.Timestamp {
 	return nil
 }
 
-// ImageUsage reports which machines/firewalls actually use this image
+// ImageUsage reports which machines/firewalls actually use this image.
 type ImageUsage struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Image with usage
@@ -583,7 +583,7 @@ func (x *ImageUsage) GetUsedBy() []string {
 	return nil
 }
 
-// ImageQuery is used to search images
+// ImageQuery is used to search images.
 type ImageQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// ID of the image to get
@@ -602,7 +602,7 @@ type ImageQuery struct {
 	Feature *ImageFeature `protobuf:"varint,7,opt,name=feature,proto3,enum=metalstack.api.v2.ImageFeature,oneof" json:"feature,omitempty"`
 	// Classification of the image to query
 	Classification *ImageClassification `protobuf:"varint,8,opt,name=classification,proto3,enum=metalstack.api.v2.ImageClassification,oneof" json:"classification,omitempty"`
-	// Labels lists only images containing the given labels
+	// Labels lists only images containing the given labels.
 	Labels        *Labels `protobuf:"bytes,9,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

@@ -19,7 +19,7 @@ service TenantService {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Get a tenant
+  // Get a tenant.
   rpc Get(TenantServiceGetRequest) returns (TenantServiceGetResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
@@ -27,32 +27,32 @@ service TenantService {
     option (tenant_roles) = TENANT_ROLE_GUEST;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // Update a tenant
+  // Update a tenant.
   rpc Update(TenantServiceUpdateRequest) returns (TenantServiceUpdateResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // Delete a tenant
+  // Delete a tenant.
   rpc Delete(TenantServiceDeleteRequest) returns (TenantServiceDeleteResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (auditing) = AUDITING_INCLUDED;
   }
 
-  // Leave removes a member from a tenant
+  // Leave removes a member from a tenant.
   rpc Leave(TenantServiceLeaveRequest) returns (TenantServiceLeaveResponse) {
     option (tenant_roles) = TENANT_ROLE_VIEWER;
     option (auditing) = AUDITING_INCLUDED;
   }
 
-  // AddMember adds a member to a tenant
+  // AddMember adds a member to a tenant.
   rpc AddMember(TenantServiceAddMemberRequest) returns (TenantServiceAddMemberResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (tenant_roles) = TENANT_ROLE_EDITOR;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // RemoveMember removes a member from a tenant
+  // RemoveMember removes a member from a tenant.
   rpc RemoveMember(TenantServiceRemoveMemberRequest) returns (TenantServiceRemoveMemberResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
@@ -64,22 +64,22 @@ service TenantService {
     option (auditing) = AUDITING_INCLUDED;
   }
 
-  // Invite a user to a tenant
+  // Invite a user to a tenant.
   rpc Invite(TenantServiceInviteRequest) returns (TenantServiceInviteResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // InviteAccept is called from a user to accept an invitation
+  // InviteAccept is called from a user to accept an invitation.
   rpc InviteAccept(TenantServiceInviteAcceptRequest) returns (TenantServiceInviteAcceptResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // InviteDelete deletes a pending invitation
+  // InviteDelete deletes a pending invitation.
   rpc InviteDelete(TenantServiceInviteDeleteRequest) returns (TenantServiceInviteDeleteResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // InvitesList list all invites to a tenant
+  // InvitesList list all invites to a tenant.
   rpc InvitesList(TenantServiceInvitesListRequest) returns (TenantServiceInvitesListResponse) {
     option (tenant_roles) = TENANT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
@@ -91,7 +91,7 @@ service TenantService {
   }
 }
 
-// Tenant is a customer of the platform
+// Tenant is a customer of the platform.
 message Tenant {
   // Login of the tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
@@ -109,11 +109,11 @@ message Tenant {
   string created_by = 7;
 }
 
-// TenantMember defines a user that participates in a tenant
+// TenantMember defines a user that participates in a tenant.
 message TenantMember {
-  // Id is the user id of the member
+  // Id is the user id of the member.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Role is the role of the member
+  // Role is the role of the member.
   TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
   // Projects in which a user is a direct member
   repeated string projects = 3;
@@ -123,21 +123,21 @@ message TenantMember {
   Meta meta = 5;
 }
 
-// TenantInvite defines invite to tenant
+// TenantInvite defines invite to tenant.
 message TenantInvite {
-  // Secret is the secret part of the invite, typically part of the url
+  // Secret is the secret part of the invite, typically part of the url.
   string secret = 1;
-  // TargetTenant is the tenant id for which this invite was created
+  // TargetTenant is the tenant id for which this invite was created.
   string target_tenant = 2;
-  // Role is the role in this tenant the user will get after accepting the invitation
+  // Role is the role in this tenant the user will get after accepting the invitation.
   TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
-  // Joined is false as long as a user has not accepted the invite
+  // Joined is false as long as a user has not accepted the invite.
   bool joined = 4;
-  // TargetTenantName is the tenant name for which this invite was created
+  // TargetTenantName is the tenant name for which this invite was created.
   string target_tenant_name = 5;
-  // Tenant is the login of the tenant inviting another user to join this tenant
+  // Tenant is the login of the tenant inviting another user to join this tenant.
   string tenant = 6;
-  // TenantName is the name of the tenant inviting another user to join this tenant
+  // TenantName is the name of the tenant inviting another user to join this tenant.
   string tenant_name = 7;
   // ExpiresAt the date when this invite expires
   google.protobuf.Timestamp expires_at = 8;
@@ -145,31 +145,31 @@ message TenantInvite {
   google.protobuf.Timestamp joined_at = 9;
 }
 
-// TenantServiceListRequest is the request payload of the tenant list request
+// TenantServiceListRequest is the request payload of the tenant list request.
 message TenantServiceListRequest {
-  // Query for tenants
+  // Query for tenants.
   TenantQuery query = 1;
 }
 
-// TenantQuery is used to search tenants
+// TenantQuery is used to search tenants.
 message TenantQuery {
-  // Id filters tenants by login
+  // Id filters tenants by login.
   optional string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Name filters tenants by name
+  // Name filters tenants by name.
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Labels lists only projects containing the given labels
+  // Labels lists only projects containing the given labels.
   optional Labels labels = 3;
-  // Paging details for the list request
+  // Paging details for the list request.
   Paging paging = 4;
 }
 
-// TenantServiceGetRequest is the request payload of the tenant get request
+// TenantServiceGetRequest is the request payload of the tenant get request.
 message TenantServiceGetRequest {
   // Login of the tenant
   string login = 1;
 }
 
-// TenantServiceCreateRequest is the request payload of the tenant create request
+// TenantServiceCreateRequest is the request payload of the tenant create request.
 message TenantServiceCreateRequest {
   // Name of this tenant
   string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -183,11 +183,11 @@ message TenantServiceCreateRequest {
   Labels labels = 5;
 }
 
-// TenantServiceUpdateRequest is the request payload of the tenant update request
+// TenantServiceUpdateRequest is the request payload of the tenant update request.
 message TenantServiceUpdateRequest {
   // Login of the tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  // UpdateMeta contains the timestamp and strategy to be used in this update request.
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
   // Name of the tenant
   optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -201,45 +201,45 @@ message TenantServiceUpdateRequest {
   optional UpdateLabels labels = 7;
 }
 
-// TenantServiceDeleteRequest is the request payload of the tenant delete request
+// TenantServiceDeleteRequest is the request payload of the tenant delete request.
 message TenantServiceDeleteRequest {
   // Login of the tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
-// TenantServiceGetResponse is the response payload of the tenant get request
+// TenantServiceGetResponse is the response payload of the tenant get request.
 message TenantServiceGetResponse {
-  // Tenant is the tenant
+  // Tenant is the tenant.
   Tenant tenant = 1;
   // TenantMembers of this tenant
   repeated TenantMember tenant_members = 2;
 }
 
-// TenantServiceListResponse is the response payload of the tenant list request
+// TenantServiceListResponse is the response payload of the tenant list request.
 message TenantServiceListResponse {
-  // Tenants is the list of tenants
+  // Tenants is the list of tenants.
   repeated Tenant tenants = 1;
 }
 
-// TenantServiceCreateResponse is the response payload of the tenant create request
+// TenantServiceCreateResponse is the response payload of the tenant create request.
 message TenantServiceCreateResponse {
-  // Tenant is the tenant
+  // Tenant is the tenant.
   Tenant tenant = 1;
 }
 
-// TenantServiceUpdateResponse is the response payload of the tenant update request
+// TenantServiceUpdateResponse is the response payload of the tenant update request.
 message TenantServiceUpdateResponse {
-  // Tenant is the tenant
+  // Tenant is the tenant.
   Tenant tenant = 1;
 }
 
-// TenantServiceDeleteResponse is the response payload of the tenant delete request
+// TenantServiceDeleteResponse is the response payload of the tenant delete request.
 message TenantServiceDeleteResponse {
-  // Tenant is the tenant
+  // Tenant is the tenant.
   Tenant tenant = 1;
 }
 
-// TenantServiceInviteRequest is used to invite a member to a tenant
+// TenantServiceInviteRequest is used to invite a member to a tenant.
 message TenantServiceInviteRequest {
   // Login of the tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
@@ -247,68 +247,68 @@ message TenantServiceInviteRequest {
   TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
-// TenantServiceInviteRequest is the response payload to a invite member request
+// TenantServiceInviteRequest is the response payload to a invite member request.
 message TenantServiceInviteResponse {
-  // Invite contains a secret which can be sent to a potential user
+  // Invite contains a secret which can be sent to a potential user.
   // can be appended to the invitation endpoint at our cloud console like
   // console.metalstack.cloud/invite/<secret>
   TenantInvite invite = 1;
 }
 
-// TenantServiceInvitesListRequest is the request payload to a list invites request
+// TenantServiceInvitesListRequest is the request payload to a list invites request.
 message TenantServiceInvitesListRequest {
   // Login of the tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
-// TenantServiceInvitesListResponse is the response payload to a list invites request
+// TenantServiceInvitesListResponse is the response payload to a list invites request.
 message TenantServiceInvitesListResponse {
   // Invites that have not yet accepted the invitation to this tenant
   repeated TenantInvite invites = 1;
 }
 
-// TenantServiceInviteGetRequest is the request payload to get a invite
+// TenantServiceInviteGetRequest is the request payload to get a invite.
 message TenantServiceInviteGetRequest {
   // Secret of the invite to get
   string secret = 1;
 }
 
-// TenantServiceInviteGetResponse is the response payload to a get invite request
+// TenantServiceInviteGetResponse is the response payload to a get invite request.
 message TenantServiceInviteGetResponse {
-  // Invite is the invite
+  // Invite is the invite.
   TenantInvite invite = 1;
 }
 
-// TenantServiceRemoveMemberRequest is used to remove a member from a tenant
+// TenantServiceRemoveMemberRequest is used to remove a member from a tenant.
 message TenantServiceRemoveMemberRequest {
   // Login of the tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Member is the id of the member to remove from this tenant
+  // Member is the id of the member to remove from this tenant.
   string member = 2;
 }
 
-// TenantServiceLeaveTenantRequest is used to leave a tenant
+// TenantServiceLeaveTenantRequest is used to leave a tenant.
 message TenantServiceLeaveRequest {
   // Login of the tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
-// TenantServiceLeaveTenantResponse is the response payload to a leave tenant request
+// TenantServiceLeaveTenantResponse is the response payload to a leave tenant request.
 message TenantServiceLeaveResponse {}
 
-// TenantServiceRemoveMemberResponse is the response payload to a remove member request
+// TenantServiceRemoveMemberResponse is the response payload to a remove member request.
 message TenantServiceRemoveMemberResponse {
-  // TenantMember is the removed tenant member
+  // TenantMember is the removed tenant member.
   TenantMember tenant_member = 1;
 }
 
-// TenantServiceInviteAcceptRequest is the request payload to a accept invite request
+// TenantServiceInviteAcceptRequest is the request payload to a accept invite request.
 message TenantServiceInviteAcceptRequest {
-  // Secret is the invitation secret part of the invitation url
+  // Secret is the invitation secret part of the invitation url.
   string secret = 1;
 }
 
-// TenantServiceInviteAcceptResponse is the response payload to a accept invite request
+// TenantServiceInviteAcceptResponse is the response payload to a accept invite request.
 message TenantServiceInviteAcceptResponse {
   // Tenant ID of the joined tenant
   string tenant = 1;
@@ -316,7 +316,7 @@ message TenantServiceInviteAcceptResponse {
   string tenant_name = 2;
 }
 
-// TenantServiceInviteDeleteRequest is the request payload to a delete invite
+// TenantServiceInviteDeleteRequest is the request payload to a delete invite.
 message TenantServiceInviteDeleteRequest {
   // Login of the tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
@@ -324,10 +324,10 @@ message TenantServiceInviteDeleteRequest {
   string secret = 2;
 }
 
-// TenantServiceInviteDeleteResponse is the response payload of a delete invite request
+// TenantServiceInviteDeleteResponse is the response payload of a delete invite request.
 message TenantServiceInviteDeleteResponse {}
 
-// TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+// TenantServiceAddMemberRequest is the request payload for adding a member to a tenant.
 message TenantServiceAddMemberRequest {
   // Login of the tenant to which the member will be added
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
@@ -337,24 +337,24 @@ message TenantServiceAddMemberRequest {
   TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
-// TenantServiceAddMemberResponse is the response payload for the add member request
+// TenantServiceAddMemberResponse is the response payload for the add member request.
 message TenantServiceAddMemberResponse {
-  // TenantMember is the added tenant member
+  // TenantMember is the added tenant member.
   TenantMember tenant_member = 1;
 }
 
-// TenantServiceUpdateMemberRequest is used to update a member from a tenant
+// TenantServiceUpdateMemberRequest is used to update a member from a tenant.
 message TenantServiceUpdateMemberRequest {
   // Login of the tenant
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Member is the id of the member to update in this tenant
+  // Member is the id of the member to update in this tenant.
   string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Role of this user in this tenant
   TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
-// TenantServiceUpdateMemberResponse is the response payload to a update member request
+// TenantServiceUpdateMemberResponse is the response payload to a update member request.
 message TenantServiceUpdateMemberResponse {
-  // TenantMember is the updated membership
+  // TenantMember is the updated membership.
   TenantMember tenant_member = 1;
 }

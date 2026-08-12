@@ -50,7 +50,7 @@ export type EventServiceSendResponse = Message<"metalstack.infra.v2.EventService
   events: bigint;
 
   /**
-   * Failed contains IDs of all machines whose events could not be stored in the database
+   * Failed contains IDs of all machines whose events could not be stored in the database.
    *
    * @generated from field: repeated string failed = 2;
    */

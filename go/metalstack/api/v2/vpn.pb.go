@@ -36,7 +36,7 @@ type VPNNode struct {
 	IpAddresses []string `protobuf:"bytes,4,rep,name=ip_addresses,json=ipAddresses,proto3" json:"ip_addresses,omitempty"`
 	// LastSeen timestamp when this node reached out to the control plane
 	LastSeen *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
-	// Online indicates if this node is online
+	// Online indicates if this node is online.
 	Online        bool `protobuf:"varint,6,opt,name=online,proto3" json:"online,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

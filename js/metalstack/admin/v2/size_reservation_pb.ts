@@ -25,7 +25,7 @@ export const file_metalstack_admin_v2_size_reservation: GenFile = /*@__PURE__*/
  */
 export type SizeReservationServiceCreateRequest = Message<"metalstack.admin.v2.SizeReservationServiceCreateRequest"> & {
   /**
-   * SizeReservation is the size reservation to create
+   * SizeReservation is the size reservation to create.
    *
    * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
    */
@@ -46,7 +46,7 @@ export const SizeReservationServiceCreateRequestSchema: GenMessage<SizeReservati
  */
 export type SizeReservationServiceCreateResponse = Message<"metalstack.admin.v2.SizeReservationServiceCreateResponse"> & {
   /**
-   * SizeReservation contains the created reservation
+   * SizeReservation contains the created reservation.
    *
    * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
    */
@@ -88,7 +88,7 @@ export type SizeReservationServiceUpdateRequest = Message<"metalstack.admin.v2.S
   description?: string | undefined;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 4;
    */
@@ -130,7 +130,7 @@ export const SizeReservationServiceUpdateRequestSchema: GenMessage<SizeReservati
  */
 export type SizeReservationServiceUpdateResponse = Message<"metalstack.admin.v2.SizeReservationServiceUpdateResponse"> & {
   /**
-   * SizeReservation contains the updated reservation
+   * SizeReservation contains the updated reservation.
    *
    * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
    */
@@ -172,7 +172,7 @@ export const SizeReservationServiceDeleteRequestSchema: GenMessage<SizeReservati
  */
 export type SizeReservationServiceDeleteResponse = Message<"metalstack.admin.v2.SizeReservationServiceDeleteResponse"> & {
   /**
-   * SizeReservation contains the deleted reservation
+   * SizeReservation contains the deleted reservation.
    *
    * @generated from field: metalstack.api.v2.SizeReservation size_reservation = 1;
    */
@@ -193,7 +193,7 @@ export const SizeReservationServiceDeleteResponseSchema: GenMessage<SizeReservat
  */
 export type SizeReservationServiceListRequest = Message<"metalstack.admin.v2.SizeReservationServiceListRequest"> & {
   /**
-   * Query for size reservations
+   * Query for size reservations.
    *
    * @generated from field: metalstack.api.v2.SizeReservationQuery query = 1;
    */
@@ -214,7 +214,7 @@ export const SizeReservationServiceListRequestSchema: GenMessage<SizeReservation
  */
 export type SizeReservationServiceListResponse = Message<"metalstack.admin.v2.SizeReservationServiceListResponse"> & {
   /**
-   * SizeReservations contains the list of reservations
+   * SizeReservations contains the list of reservations.
    *
    * @generated from field: repeated metalstack.api.v2.SizeReservation size_reservations = 1;
    */

@@ -28,9 +28,9 @@ service BMCService {
 
 // UpdateBMCInfoRequest is the request payload for updating BMC information.
 message UpdateBMCInfoRequest {
-  // Partition is the partition ID where metal-bmc wants to receive events
+  // Partition is the partition ID where metal-bmc wants to receive events.
   string partition = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // BmcReports maps the BMC report per machine UUID
+  // BmcReports maps the BMC report per machine UUID.
   map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 2 [(buf.validate.field).map = {
     keys: {
       string: {uuid: true}
@@ -40,15 +40,15 @@ message UpdateBMCInfoRequest {
 
 // UpdateBMCInfoResponse is the response payload for updating BMC information.
 message UpdateBMCInfoResponse {
-  // UpdatedMachines is a slice of machine UUIDs which were updated
+  // UpdatedMachines is a slice of machine UUIDs which were updated.
   repeated string updated_machines = 1;
-  // CreatedMachines is a slice of machine UUIDs which were created
+  // CreatedMachines is a slice of machine UUIDs which were created.
   repeated string created_machines = 2;
 }
 
 // WaitForBMCCommandRequest is the request payload for waiting for a BMC command.
 message WaitForBMCCommandRequest {
-  // Partition is the partition ID where metal-bmc wants to receive BMC commands
+  // Partition is the partition ID where metal-bmc wants to receive BMC commands.
   string partition = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
@@ -58,17 +58,17 @@ message WaitForBMCCommandResponse {
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // BmcCommand to execute against the BMC of the machine
   metalstack.api.v2.MachineBMCCommand bmc_command = 2;
-  // MachineBmc contains connection details of the machine to issue the BMC command to
+  // MachineBmc contains connection details of the machine to issue the BMC command to.
   metalstack.api.v2.MachineBMC machine_bmc = 3;
-  // CommandId is a unique ID which must be sent back after execution
-  // It is usually in the form: <machine-uuid>:machine-bmc-command:<command>
+  // CommandId is a unique ID which must be sent back after execution.
+  // It is usually in the form: <machine-uuid>:machine-bmc-command:<command>.
   string command_id = 4;
 }
 
 // BMCCommandDoneRequest must be returned after command execution.
 message BMCCommandDoneRequest {
-  // CommandId is a unique ID which must be sent back after execution
-  // It is usually in the form: <machine-uuid>:machine-bmc-command
+  // CommandId is a unique ID which must be sent back after execution.
+  // It is usually in the form: <machine-uuid>:machine-bmc-command.
   string command_id = 1;
   // Error of the command execution, nil if it was successful
   optional string error = 2;

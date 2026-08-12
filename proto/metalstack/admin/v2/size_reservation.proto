@@ -34,13 +34,13 @@ service SizeReservationService {
 
 // SizeReservationServiceCreateRequest is the request payload for creating a size reservation.
 message SizeReservationServiceCreateRequest {
-  // SizeReservation is the size reservation to create
+  // SizeReservation is the size reservation to create.
   metalstack.api.v2.SizeReservation size_reservation = 1;
 }
 
 // SizeReservationServiceCreateResponse is the response payload for creating a size reservation.
 message SizeReservationServiceCreateResponse {
-  // SizeReservation contains the created reservation
+  // SizeReservation contains the created reservation.
   metalstack.api.v2.SizeReservation size_reservation = 1;
 }
 
@@ -52,7 +52,7 @@ message SizeReservationServiceUpdateRequest {
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Description of this size reservation
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  // UpdateMeta contains the timestamp and strategy to be used in this update request.
   metalstack.api.v2.UpdateMeta update_meta = 4 [(buf.validate.field).required = true];
   // Partition ids of this size reservation
   repeated string partitions = 5 [
@@ -68,7 +68,7 @@ message SizeReservationServiceUpdateRequest {
 
 // SizeReservationServiceUpdateResponse is the response payload for updating a size reservation.
 message SizeReservationServiceUpdateResponse {
-  // SizeReservation contains the updated reservation
+  // SizeReservation contains the updated reservation.
   metalstack.api.v2.SizeReservation size_reservation = 1;
 }
 
@@ -80,18 +80,18 @@ message SizeReservationServiceDeleteRequest {
 
 // SizeReservationServiceDeleteResponse is the response payload for deleting a size reservation.
 message SizeReservationServiceDeleteResponse {
-  // SizeReservation contains the deleted reservation
+  // SizeReservation contains the deleted reservation.
   metalstack.api.v2.SizeReservation size_reservation = 1;
 }
 
 // SizeReservationServiceListRequest is the request payload for listing size reservations.
 message SizeReservationServiceListRequest {
-  // Query for size reservations
+  // Query for size reservations.
   metalstack.api.v2.SizeReservationQuery query = 1;
 }
 
 // SizeReservationServiceListResponse is the response payload for listing size reservations.
 message SizeReservationServiceListResponse {
-  // SizeReservations contains the list of reservations
+  // SizeReservations contains the list of reservations.
   repeated metalstack.api.v2.SizeReservation size_reservations = 1;
 }

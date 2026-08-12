@@ -13,7 +13,7 @@ export declare const file_metalstack_admin_v2_size: GenFile;
  */
 export type SizeServiceCreateRequest = Message<"metalstack.admin.v2.SizeServiceCreateRequest"> & {
     /**
-     * Size is the size to create
+     * Size is the size to create.
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
@@ -31,7 +31,7 @@ export declare const SizeServiceCreateRequestSchema: GenMessage<SizeServiceCreat
  */
 export type SizeServiceCreateResponse = Message<"metalstack.admin.v2.SizeServiceCreateResponse"> & {
     /**
-     * Size contains the created size
+     * Size contains the created size.
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
@@ -55,7 +55,7 @@ export type SizeServiceUpdateRequest = Message<"metalstack.admin.v2.SizeServiceU
      */
     id: string;
     /**
-     * UpdateMeta contains the timestamp and strategy to be used in this update request
+     * UpdateMeta contains the timestamp and strategy to be used in this update request.
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
@@ -97,7 +97,7 @@ export declare const SizeServiceUpdateRequestSchema: GenMessage<SizeServiceUpdat
  */
 export type SizeServiceUpdateResponse = Message<"metalstack.admin.v2.SizeServiceUpdateResponse"> & {
     /**
-     * Size contains the updated size
+     * Size contains the updated size.
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */
@@ -133,7 +133,7 @@ export declare const SizeServiceDeleteRequestSchema: GenMessage<SizeServiceDelet
  */
 export type SizeServiceDeleteResponse = Message<"metalstack.admin.v2.SizeServiceDeleteResponse"> & {
     /**
-     * Size contains the deleted size
+     * Size contains the deleted size.
      *
      * @generated from field: metalstack.api.v2.Size size = 1;
      */

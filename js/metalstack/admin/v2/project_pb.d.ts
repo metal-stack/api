@@ -12,7 +12,7 @@ export declare const file_metalstack_admin_v2_project: GenFile;
  */
 export type ProjectServiceListRequest = Message<"metalstack.admin.v2.ProjectServiceListRequest"> & {
     /**
-     * Query for projects
+     * Query for projects.
      *
      * @generated from field: optional metalstack.api.v2.ProjectQuery query = 1;
      */
@@ -30,7 +30,7 @@ export declare const ProjectServiceListRequestSchema: GenMessage<ProjectServiceL
  */
 export type ProjectServiceListResponse = Message<"metalstack.admin.v2.ProjectServiceListResponse"> & {
     /**
-     * Projects contains the list of projects
+     * Projects contains the list of projects.
      *
      * @generated from field: repeated metalstack.api.v2.Project projects = 1;
      */

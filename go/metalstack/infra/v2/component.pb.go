@@ -28,11 +28,11 @@ const (
 // ComponentServicePingRequest is the request payload for pinging a microservice.
 type ComponentServicePingRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Type defines which service is actually pinging
+	// Type defines which service is actually pinging.
 	Type v2.ComponentType `protobuf:"varint,1,opt,name=type,proto3,enum=metalstack.api.v2.ComponentType" json:"type,omitempty"`
-	// Identifier is a unique identifier of this service, for example if two instances are running, this might be the pod ID
+	// Identifier is a unique identifier of this service, for example if two instances are running, this might be the pod ID.
 	Identifier string `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	// StartedAt is the timestamp this service was started
+	// StartedAt is the timestamp this service was started.
 	StartedAt *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=started_at,json=startedAt,proto3" json:"started_at,omitempty"`
 	// Interval at which the ping is scheduled, must be between 5 seconds and 1 hour
 	Interval *durationpb.Duration `protobuf:"bytes,4,opt,name=interval,proto3" json:"interval,omitempty"`

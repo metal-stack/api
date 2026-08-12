@@ -266,26 +266,26 @@ export const MachineIssuesSchema = /*@__PURE__*/ messageDesc(file_metalstack_api
  */
 export const MachineIssueSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_machine, 49);
 /**
- * IPProtocol defines tcp|udp
+ * IPProtocol defines tcp|udp.
  *
  * @generated from enum metalstack.api.v2.IPProtocol
  */
 export var IPProtocol;
 (function (IPProtocol) {
     /**
-     * IP_PROTOCOL_UNSPECIFIED is not specified
+     * IP_PROTOCOL_UNSPECIFIED is not specified.
      *
      * @generated from enum value: IP_PROTOCOL_UNSPECIFIED = 0;
      */
     IPProtocol[IPProtocol["IP_PROTOCOL_UNSPECIFIED"] = 0] = "IP_PROTOCOL_UNSPECIFIED";
     /**
-     * IP_PROTOCOL_TCP is tcp
+     * IP_PROTOCOL_TCP is tcp.
      *
      * @generated from enum value: IP_PROTOCOL_TCP = 1;
      */
     IPProtocol[IPProtocol["IP_PROTOCOL_TCP"] = 1] = "IP_PROTOCOL_TCP";
     /**
-     * IP_PROTOCOL_UDP is udp
+     * IP_PROTOCOL_UDP is udp.
      *
      * @generated from enum value: IP_PROTOCOL_UDP = 2;
      */
@@ -296,14 +296,14 @@ export var IPProtocol;
  */
 export const IPProtocolSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 0);
 /**
- * MachineState defines if the machine was locked or reserved from a operator
+ * MachineState defines if the machine was locked or reserved from a operator.
  *
  * @generated from enum metalstack.api.v2.MachineState
  */
 export var MachineState;
 (function (MachineState) {
     /**
-     * MACHINE_STATE_UNSPECIFIED is not specified
+     * MACHINE_STATE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: MACHINE_STATE_UNSPECIFIED = 0;
      */
@@ -339,7 +339,7 @@ export const MachineStateSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_
 export var MachineProvisioningEventState;
 (function (MachineProvisioningEventState) {
     /**
-     * MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
+     * MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0;
      */
@@ -362,14 +362,14 @@ export var MachineProvisioningEventState;
  */
 export const MachineProvisioningEventStateSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 2);
 /**
- * MachineProvisioningEventType defines in which phase the machine actually is
+ * MachineProvisioningEventType defines in which phase the machine actually is.
  *
  * @generated from enum metalstack.api.v2.MachineProvisioningEventType
  */
 export var MachineProvisioningEventType;
 (function (MachineProvisioningEventType) {
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified
+     * MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
      */
@@ -446,14 +446,14 @@ export var MachineProvisioningEventType;
  */
 export const MachineProvisioningEventTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 3);
 /**
- * MachineLiveliness specifies the liveliness of a machine
+ * MachineLiveliness specifies the liveliness of a machine.
  *
  * @generated from enum metalstack.api.v2.MachineLiveliness
  */
 export var MachineLiveliness;
 (function (MachineLiveliness) {
     /**
-     * MACHINE_LIVELINESS_UNSPECIFIED is not defined
+     * MACHINE_LIVELINESS_UNSPECIFIED is not defined.
      *
      * @generated from enum value: MACHINE_LIVELINESS_UNSPECIFIED = 0;
      */
@@ -482,26 +482,26 @@ export var MachineLiveliness;
  */
 export const MachineLivelinessSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 4);
 /**
- * MachineAllocationType defines if this is a machine or a firewall
+ * MachineAllocationType defines if this is a machine or a firewall.
  *
  * @generated from enum metalstack.api.v2.MachineAllocationType
  */
 export var MachineAllocationType;
 (function (MachineAllocationType) {
     /**
-     * MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified
+     * MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified.
      *
      * @generated from enum value: MACHINE_ALLOCATION_TYPE_UNSPECIFIED = 0;
      */
     MachineAllocationType[MachineAllocationType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * MACHINE_ALLOCATION_TYPE_MACHINE is a machine
+     * MACHINE_ALLOCATION_TYPE_MACHINE is a machine.
      *
      * @generated from enum value: MACHINE_ALLOCATION_TYPE_MACHINE = 1;
      */
     MachineAllocationType[MachineAllocationType["MACHINE"] = 1] = "MACHINE";
     /**
-     * MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall
+     * MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall.
      *
      * @generated from enum value: MACHINE_ALLOCATION_TYPE_FIREWALL = 2;
      */
@@ -512,38 +512,38 @@ export var MachineAllocationType;
  */
 export const MachineAllocationTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 5);
 /**
- * MachineBMCCommand defines commands send to the BMC of the machine
+ * MachineBMCCommand defines commands send to the BMC of the machine.
  *
  * @generated from enum metalstack.api.v2.MachineBMCCommand
  */
 export var MachineBMCCommand;
 (function (MachineBMCCommand) {
     /**
-     * MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+     * MACHINE_BMC_COMMAND_UNSPECIFIED is not defined.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_UNSPECIFIED = 0;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_UNSPECIFIED"] = 0] = "MACHINE_BMC_COMMAND_UNSPECIFIED";
     /**
-     * MACHINE_BMC_COMMAND_ON Power on the machine
+     * MACHINE_BMC_COMMAND_ON Power on the machine.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_ON = 1;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_ON"] = 1] = "MACHINE_BMC_COMMAND_ON";
     /**
-     * MACHINE_BMC_COMMAND_OFF Power off the machine
+     * MACHINE_BMC_COMMAND_OFF Power off the machine.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_OFF = 2;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_OFF"] = 2] = "MACHINE_BMC_COMMAND_OFF";
     /**
-     * MACHINE_BMC_COMMAND_RESET Power reset the machine
+     * MACHINE_BMC_COMMAND_RESET Power reset the machine.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_RESET = 3;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_RESET"] = 3] = "MACHINE_BMC_COMMAND_RESET";
     /**
-     * MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+     * MACHINE_BMC_COMMAND_CYCLE Power cycle the machine.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_CYCLE = 4;
      */
@@ -596,7 +596,7 @@ export var MachineBMCCommand;
  */
 export const MachineBMCCommandSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 6);
 /**
- * MachineIssueType defines which type of issue it is
+ * MachineIssueType defines which type of issue it is.
  *
  * @generated from enum metalstack.api.v2.MachineIssueType
  */
@@ -692,7 +692,7 @@ export var MachineIssueType;
  */
 export const MachineIssueTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 7);
 /**
- * MachineIssueSeverity defines the severity of an issue
+ * MachineIssueSeverity defines the severity of an issue.
  *
  * @generated from enum metalstack.api.v2.MachineIssueSeverity
  */

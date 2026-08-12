@@ -27,11 +27,11 @@ const (
 type AuditPhase int32
 
 const (
-	// AUDIT_PHASE_UNSPECIFIED is not specified
+	// AUDIT_PHASE_UNSPECIFIED is not specified.
 	AuditPhase_AUDIT_PHASE_UNSPECIFIED AuditPhase = 0
-	// AUDIT_PHASE_REQUEST defines an audit trace in the request phase
+	// AUDIT_PHASE_REQUEST defines an audit trace in the request phase.
 	AuditPhase_AUDIT_PHASE_REQUEST AuditPhase = 1
-	// AUDIT_PHASE_RESPONSE defines an audit trace in the response phase
+	// AUDIT_PHASE_RESPONSE defines an audit trace in the response phase.
 	AuditPhase_AUDIT_PHASE_RESPONSE AuditPhase = 2
 )
 
@@ -81,23 +81,23 @@ type AuditTrace struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the audit trace
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Timestamp is the timestamp when the request arrived at the API
+	// Timestamp is the timestamp when the request arrived at the API.
 	Timestamp *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	// User is the login user who called the API method
+	// User is the login user who called the API method.
 	User string `protobuf:"bytes,3,opt,name=user,proto3" json:"user,omitempty"`
-	// Tenant is the tenant targeted by the API call
+	// Tenant is the tenant targeted by the API call.
 	Tenant string `protobuf:"bytes,4,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// Project is the project targeted by the API call
+	// Project is the project targeted by the API call.
 	Project *string `protobuf:"bytes,5,opt,name=project,proto3,oneof" json:"project,omitempty"`
-	// Method is the API method that was called
+	// Method is the API method that was called.
 	Method string `protobuf:"bytes,6,opt,name=method,proto3" json:"method,omitempty"`
-	// Body is the payload of the API call. In the request phase this contains the payload sent by the client, in the response phase it contains the payload returned by the API server
+	// Body is the payload of the API call. In the request phase this contains the payload sent by the client, in the response phase it contains the payload returned by the API server.
 	Body *string `protobuf:"bytes,7,opt,name=body,proto3,oneof" json:"body,omitempty"`
-	// SourceIP contains the source IP address of the API call
+	// SourceIP contains the source IP address of the API call.
 	SourceIp string `protobuf:"bytes,8,opt,name=source_ip,json=sourceIp,proto3" json:"source_ip,omitempty"`
-	// ResultCode is a status code describing the result of the API call. It is set for traces in the response phase and contains official gRPC status codes
+	// ResultCode is a status code describing the result of the API call. It is set for traces in the response phase and contains official gRPC status codes.
 	ResultCode *int32 `protobuf:"varint,9,opt,name=result_code,json=resultCode,proto3,oneof" json:"result_code,omitempty"`
-	// Phase represents the phase of the audit trace
+	// Phase represents the phase of the audit trace.
 	Phase AuditPhase `protobuf:"varint,10,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase" json:"phase,omitempty"`
 	// Meta for this audit trace
 	Meta          *Meta `protobuf:"bytes,11,opt,name=meta,proto3" json:"meta,omitempty"`
@@ -212,30 +212,30 @@ func (x *AuditTrace) GetMeta() *Meta {
 	return nil
 }
 
-// AuditQuery is the query for audit traces
+// AuditQuery is the query for audit traces.
 type AuditQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Uuid of the audit trace
 	Uuid *string `protobuf:"bytes,2,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	// From describes the start of the time window in which to list audit traces. Defaults to the last eight hours
+	// From describes the start of the time window in which to list audit traces. Defaults to the last eight hours.
 	From *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=from,proto3,oneof" json:"from,omitempty"`
-	// To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued
+	// To describes the end of the time window in which to list audit traces. Defaults to the time the request was issued.
 	To *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=to,proto3,oneof" json:"to,omitempty"`
-	// User is the user who called the api method
+	// User is the user who called the api method.
 	User *string `protobuf:"bytes,5,opt,name=user,proto3,oneof" json:"user,omitempty"`
-	// Project is the project targeted by the api call
+	// Project is the project targeted by the api call.
 	Project *string `protobuf:"bytes,6,opt,name=project,proto3,oneof" json:"project,omitempty"`
-	// Method is the api method that was called
+	// Method is the api method that was called.
 	Method *string `protobuf:"bytes,7,opt,name=method,proto3,oneof" json:"method,omitempty"`
-	// Source IP contains the ip address of the caller
+	// Source IP contains the ip address of the caller.
 	SourceIp *string `protobuf:"bytes,8,opt,name=source_ip,json=sourceIp,proto3,oneof" json:"source_ip,omitempty"`
-	// Result Code is a string describing the result of the api call
+	// Result Code is a string describing the result of the api call.
 	ResultCode *int32 `protobuf:"varint,9,opt,name=result_code,json=resultCode,proto3,oneof" json:"result_code,omitempty"`
-	// Body is a string providing text-search of the body field
+	// Body is a string providing text-search of the body field.
 	Body *string `protobuf:"bytes,10,opt,name=body,proto3,oneof" json:"body,omitempty"`
 	// Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
 	Limit *int32 `protobuf:"varint,11,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
-	// Phase specifies the audit phase
+	// Phase specifies the audit phase.
 	Phase         *AuditPhase `protobuf:"varint,12,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase,oneof" json:"phase,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -348,12 +348,12 @@ func (x *AuditQuery) GetPhase() AuditPhase {
 	return AuditPhase_AUDIT_PHASE_UNSPECIFIED
 }
 
-// AuditServiceListRequest is the request payload for an audit list request
+// AuditServiceListRequest is the request payload for an audit list request.
 type AuditServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login for this tenant
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Query for audit traces
+	// Query for audit traces.
 	Query         *AuditQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -403,10 +403,10 @@ func (x *AuditServiceListRequest) GetQuery() *AuditQuery {
 	return nil
 }
 
-// AuditServiceListResponse is the response payload of a audit list request
+// AuditServiceListResponse is the response payload of a audit list request.
 type AuditServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Traces is a list of audit traces
+	// Traces is a list of audit traces.
 	Traces        []*AuditTrace `protobuf:"bytes,1,rep,name=traces,proto3" json:"traces,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -449,14 +449,14 @@ func (x *AuditServiceListResponse) GetTraces() []*AuditTrace {
 	return nil
 }
 
-// AuditServiceGetRequest is the request payload of a audit get request
+// AuditServiceGetRequest is the request payload of a audit get request.
 type AuditServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Login for this tenant
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	// Uuid of the audit trace
 	Uuid string `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Phase specifies the audit phase. Defaults to request
+	// Phase specifies the audit phase. Defaults to request.
 	Phase         *AuditPhase `protobuf:"varint,3,opt,name=phase,proto3,enum=metalstack.api.v2.AuditPhase,oneof" json:"phase,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -513,10 +513,10 @@ func (x *AuditServiceGetRequest) GetPhase() AuditPhase {
 	return AuditPhase_AUDIT_PHASE_UNSPECIFIED
 }
 
-// AuditServiceGetResponse is the response payload of a audit get request
+// AuditServiceGetResponse is the response payload of a audit get request.
 type AuditServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Trace is the audit trace
+	// Trace is the audit trace.
 	Trace         *AuditTrace `protobuf:"bytes,1,opt,name=trace,proto3" json:"trace,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
