@@ -66,7 +66,7 @@ service MachineService {
 
 // MachineServiceGetRequest is the request payload for a machine get request.
 message MachineServiceGetRequest {
-  // UUID of the machine to get
+  // UUID of the machine to get.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
@@ -80,8 +80,8 @@ message MachineServiceGetResponse {
 message MachineServiceListRequest {
   // Query to list one or more machines.
   metalstack.api.v2.MachineQuery query = 1;
-  // Partition for which machines should be listed, could be left empty if only one partition is present
-  // otherwise an error is thrown that the partition must be specified
+  // Partition for which machines should be listed, could be left empty if only one partition is present.
+  // otherwise an error is thrown that the partition must be specified.
   optional string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
@@ -93,7 +93,7 @@ message MachineServiceListResponse {
 
 // MachineServiceDeleteRequest is the request payload for a machine delete request.
 message MachineServiceDeleteRequest {
-  // UUID of the machine to permanently delete
+  // UUID of the machine to permanently delete.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
@@ -105,9 +105,9 @@ message MachineServiceDeleteResponse {
 
 // MachineServiceBMCCommandRequest is the request payload for a machine bmc command.
 message MachineServiceBMCCommandRequest {
-  // UUID of the machine to send the command to
+  // UUID of the machine to send the command to.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Command to send to the bmc of the machine
+  // Command to send to the bmc of the machine.
   metalstack.api.v2.MachineBMCCommand command = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
@@ -116,13 +116,13 @@ message MachineServiceBMCCommandResponse {}
 
 // MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
 message MachineServiceGetBMCRequest {
-  // UUID of the machine to get
+  // UUID of the machine to get.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
 // MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
 message MachineServiceGetBMCResponse {
-  // UUID of the machine
+  // UUID of the machine.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // BMC contains the BMC details of this machine.
   metalstack.api.v2.MachineBMCReport bmc = 2;
@@ -146,7 +146,7 @@ message MachineServiceListBMCResponse {
 
 // MachineServiceConsolePasswordRequest is the request payload for getting the console password.
 message MachineServiceConsolePasswordRequest {
-  // UUID of the machine to get
+  // UUID of the machine to get.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Reason must be provided why access to the console is requested.
   // Reason is only forwarded to an audit sink.
@@ -158,20 +158,20 @@ message MachineServiceConsolePasswordRequest {
 
 // MachineServiceConsolePasswordResponse is the response payload for getting the console password.
 message MachineServiceConsolePasswordResponse {
-  // UUID of the machine to get
+  // UUID of the machine to get.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Password to access the console
+  // Password to access the console.
   string password = 2;
 }
 
 // MachineServiceSetStateRequest is the request payload for a machine set state request.
 message MachineServiceSetStateRequest {
-  // UUID of the machine to set the state to
+  // UUID of the machine to set the state to.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // State the state of this machine.
   // If State set to available, description is also cleared.
   metalstack.api.v2.MachineState state = 2 [(buf.validate.field).enum.defined_only = true];
-  // Description a description why this machine is in the given state
+  // Description a description why this machine is in the given state.
   string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 

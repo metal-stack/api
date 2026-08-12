@@ -27,12 +27,12 @@ message ComponentServicePingRequest {
   string identifier = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // StartedAt is the timestamp this service was started.
   google.protobuf.Timestamp started_at = 3 [(buf.validate.field).timestamp.lt_now = true];
-  // Interval at which the ping is scheduled, must be between 5 seconds and 1 hour
+  // Interval at which the ping is scheduled, must be between 5 seconds and 1 hour.
   google.protobuf.Duration interval = 4 [(buf.validate.field).duration = {
     gte: {seconds: 5}
     lte: {seconds: 3600}
   }];
-  // Version of this service
+  // Version of this service.
   metalstack.api.v2.Version version = 5;
 }
 

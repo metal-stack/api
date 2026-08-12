@@ -25,15 +25,15 @@ message Component {
   google.protobuf.Timestamp reported_at = 5;
   // Interval at which the ping is scheduled.
   google.protobuf.Duration interval = 6;
-  // Version of this service
+  // Version of this service.
   metalstack.api.v2.Version version = 7;
   // Token is the token which is actually used by this microservice.
   Token token = 8;
-  // Meta for this component
+  // Meta for this component.
   Meta meta = 9;
 }
 
-// ComponentQuery to query components
+// ComponentQuery to query components.
 message ComponentQuery {
   // UUID identifies this component.
   optional string uuid = 1 [(buf.validate.field).string.uuid = true];

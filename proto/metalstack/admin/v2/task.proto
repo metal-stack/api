@@ -63,7 +63,7 @@ message TaskServiceQueuesRequest {}
 
 // TaskServiceQueuesResponse is the response payload for getting all queues.
 message TaskServiceQueuesResponse {
-  // Queues configured for the async system
+  // Queues configured for the async system.
   repeated string queues = 1;
 }
 
@@ -103,7 +103,7 @@ message TaskInfo {
   // LastError is the error message from the last failure.
   string last_error = 8;
   // LastFailedAt is the time of the last failure if any.
-  // If the task has no failures, LastFailedAt is zero time (i.e. time.Time{})
+  // If the task has no failures, LastFailedAt is zero time (i.e. time.Time{}).
   google.protobuf.Timestamp last_failed_at = 9;
   // Timeout is the duration the task can be processed by Handler before being retried.
   google.protobuf.Duration timeout = 10;
@@ -111,17 +111,17 @@ message TaskInfo {
   google.protobuf.Timestamp deadline = 11;
   // Group is the name of the group in which the task belongs.
   //
-  // Tasks in the same queue can be grouped together by Group name and will be aggregated into one task
-  // by a Server processing the queue
+  // Tasks in the same queue can be grouped together by Group name and will be aggregated into one task.
+  // by a Server processing the queue.
   //
   // Empty string (default) indicates task does not belong to any groups, and no aggregation will be applied to the task.
   string group = 12;
   // NextProcessAt is the time the task is scheduled to be processed.
-  // Zero if not applicable
+  // Zero if not applicable.
   google.protobuf.Timestamp next_process_at = 13;
   // IsOrphaned describes whether the task is left in active state with no worker processing it.
-  // An orphaned task indicates that the worker has crashed or experienced network failures and was not able to
-  // extend its lease on the task
+  // An orphaned task indicates that the worker has crashed or experienced network failures and was not able to.
+  // extend its lease on the task.
   //
   // This task will be recovered by running a server against the queue the task is in.
   // This field is only applicable to tasks with TaskStateActive.
@@ -132,7 +132,7 @@ message TaskInfo {
   // Zero value (i.e. time.Time{}) indicates no value.
   google.protobuf.Timestamp completed_at = 16;
   // Result holds the result data associated with the task.
-  // Use ResultWriter to write result data from the Handler
+  // Use ResultWriter to write result data from the Handler.
   bytes result = 17;
 }
 

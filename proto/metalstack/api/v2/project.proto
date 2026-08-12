@@ -80,7 +80,7 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_OWNER;
     option (auditing) = AUDITING_EXCLUDED;
   }
-  // InviteGet get an invite
+  // InviteGet get an invite.
   rpc InviteGet(ProjectServiceInviteGetRequest) returns (ProjectServiceInviteGetResponse) {
     option (visibility) = VISIBILITY_SELF;
     option (auditing) = AUDITING_EXCLUDED;
@@ -88,19 +88,19 @@ service ProjectService {
 }
 
 // Project defines a group of resources belonging to a tenant.
-// a tenant can have multiple projects
+// a tenant can have multiple projects.
 message Project {
-  // Uuid of this project
+  // Uuid of this project.
   string uuid = 1;
-  // Meta for this project
+  // Meta for this project.
   Meta meta = 2;
-  // Name of this project must be unique per tenant
+  // Name of this project must be unique per tenant.
   string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this project
+  // Description of this project.
   string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Tenant this project belongs to
+  // Tenant this project belongs to.
   string tenant = 5;
-  // AvatarUrl of the Project
+  // AvatarUrl of the Project.
   optional string avatar_url = 6 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
 }
 
@@ -114,9 +114,9 @@ message ProjectMember {
   // This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
   // Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
   bool inherited_membership = 3;
-  // CreatedAt the date when the member was added to the project
+  // CreatedAt the date when the member was added to the project.
   google.protobuf.Timestamp created_at = 4;
-  // Meta for this project member
+  // Meta for this project member.
   Meta meta = 5;
 }
 
@@ -136,9 +136,9 @@ message ProjectInvite {
   string tenant = 6;
   // TenantName is the name of the tenant inviting another user to join this project.
   string tenant_name = 7;
-  // ExpiresAt the date when this invite expires
+  // ExpiresAt the date when this invite expires.
   google.protobuf.Timestamp expires_at = 8;
-  // JoinedAt the date when the member accepted this invite
+  // JoinedAt the date when the member accepted this invite.
   google.protobuf.Timestamp joined_at = 9;
 }
 
@@ -176,22 +176,22 @@ message ProjectServiceGetRequest {
 message ProjectServiceGetResponse {
   // Project is the project.
   Project project = 1;
-  // ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions
+  // ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
   repeated ProjectMember project_members = 2;
 }
 
 // ProjectServiceCreateRequest is the request payload to Create a project.
 message ProjectServiceCreateRequest {
   // Login is the tenant of this project.
-  // TODO: is login really a good name?
+  // TODO: is login really a good name?.
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Name of this project, unique per tenant
+  // Name of this project, unique per tenant.
   string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this project
+  // Description of this project.
   string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Avatar URL of the project
+  // Avatar URL of the project.
   optional string avatar_url = 4 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Labels on the project
+  // Labels on the project.
   Labels labels = 5;
 }
 
@@ -219,13 +219,13 @@ message ProjectServiceUpdateRequest {
   string project = 1 [(buf.validate.field).string.uuid = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request.
   UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
-  // Name of this project unique per tenant
+  // Name of this project unique per tenant.
   optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this project
+  // Description of this project.
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Avatar URL of the project
+  // Avatar URL of the project.
   optional string avatar_url = 5 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Labels on this project
+  // Labels on this project.
   optional UpdateLabels labels = 6;
 }
 
@@ -240,15 +240,15 @@ message ProjectServiceInviteRequest {
   // Project is the uuid of the project.
   string project = 1 [(buf.validate.field).string.uuid = true];
 
-  // Role of this user in this project
+  // Role of this user in this project.
   ProjectRole role = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
 // ProjectServiceInviteResponse is the response payload to a invite member request.
 message ProjectServiceInviteResponse {
   // Inviter contains a secret which can be sent to a potential user.
-  // can be appended to the invitation endpoint at our cloud console like
-  // console.metalstack.cloud/invite/<secret>
+  // can be appended to the invitation endpoint at our cloud console like.
+  // console.metalstack.cloud/invite/<secret.
   ProjectInvite invite = 1;
 }
 
@@ -260,13 +260,13 @@ message ProjectServiceInvitesListRequest {
 
 // ProjectServiceInvitesListResponse is the response payload to a list invites request.
 message ProjectServiceInvitesListResponse {
-  // Invites not already accepted the invitation to this project
+  // Invites not already accepted the invitation to this project.
   repeated ProjectInvite invites = 1;
 }
 
 // ProjectServiceInviteGetRequest is the request payload to get a invite.
 message ProjectServiceInviteGetRequest {
-  // Secret of the invite to list
+  // Secret of the invite to list.
   string secret = 1;
 }
 
@@ -289,9 +289,9 @@ message ProjectServiceLeaveResponse {}
 message ProjectServiceAddMemberRequest {
   // Project is the uuid of the project.
   string project = 1 [(buf.validate.field).string.uuid = true];
-  // Login of the member to add
+  // Login of the member to add.
   string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Role to assign to the new member
+  // Role to assign to the new member.
   ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
@@ -336,9 +336,9 @@ message ProjectServiceInviteAcceptRequest {
 
 // ProjectServiceInviteAcceptResponse is the response payload to a accept invite request.
 message ProjectServiceInviteAcceptResponse {
-  // Project ID of the project joined
+  // Project ID of the project joined.
   string project = 1;
-  // ProjectName of the project joined
+  // ProjectName of the project joined.
   string project_name = 2;
 }
 
@@ -346,7 +346,7 @@ message ProjectServiceInviteAcceptResponse {
 message ProjectServiceInviteDeleteRequest {
   // Project is the uuid of the project.
   string project = 1 [(buf.validate.field).string.uuid = true];
-  // Secret of the invite to delete
+  // Secret of the invite to delete.
   string secret = 2;
 }
 

@@ -22,7 +22,7 @@ service SizeService {
 
 // SizeServiceGetRequest is the request payload for a size get request.
 message SizeServiceGetRequest {
-  // ID of the size to get
+  // ID of the size to get.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
@@ -34,37 +34,37 @@ message SizeServiceListRequest {
 
 // SizeServiceGetResponse is the response payload for a size get request.
 message SizeServiceGetResponse {
-  // Size the size
+  // Size the size.
   Size size = 1;
 }
 
 // SizeServiceListResponse is the response payload for a size list request.
 message SizeServiceListResponse {
-  // Sizes the sizes
+  // Sizes the sizes.
   repeated Size sizes = 1;
 }
 
-// Size
+// Size.
 message Size {
-  // Id of this size
+  // Id of this size.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Meta for this size
+  // Meta for this size.
   Meta meta = 2;
-  // Name of this size
+  // Name of this size.
   optional string name = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this size
+  // Description of this size.
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Constraints which must match that a specific machine is considered of this size
+  // Constraints which must match that a specific machine is considered of this size.
   repeated SizeConstraint constraints = 5;
 }
 
 // SizeConstraint defines the boundaries for certain type of machine property which must match to identify this machine as this size.
 message SizeConstraint {
-  // Type a machine matches to a size in order to make them easier to categorize
+  // Type a machine matches to a size in order to make them easier to categorize.
   SizeConstraintType type = 1 [(buf.validate.field).enum.defined_only = true];
-  // Min the minimum value of the constraint
+  // Min the minimum value of the constraint.
   uint64 min = 2;
-  // Max the maximum value of the constraint
+  // Max the maximum value of the constraint.
   uint64 max = 3;
   // Identifier glob pattern which matches to the given type, for example gpu pci id.
   optional string identifier = 4 [(buf.validate.field).string = {
@@ -75,7 +75,7 @@ message SizeConstraint {
 
 // SizeConstraintType defines the property for which a constraint is defined.
 enum SizeConstraintType {
-  // SIZE_CONSTRAINT_TYPE_UNSPECIFIED type is not specified
+  // SIZE_CONSTRAINT_TYPE_UNSPECIFIED type is not specified.
   SIZE_CONSTRAINT_TYPE_UNSPECIFIED = 0;
   // SIZE_CONSTRAINT_TYPE_CORES defines the number of cores as property.
   SIZE_CONSTRAINT_TYPE_CORES = 1 [(enum_string_value) = "cores"];
@@ -89,11 +89,11 @@ enum SizeConstraintType {
 
 // SizeQuery is used to search sizes.
 message SizeQuery {
-  // ID of the size to get
+  // ID of the size to get.
   optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Name of the size to query
+  // Name of the size to query.
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of the size to query
+  // Description of the size to query.
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Labels lists only sizes containing the given labels.
   optional Labels labels = 4;

@@ -46,23 +46,23 @@ message SizeReservationServiceCreateResponse {
 
 // SizeReservationServiceUpdateRequest is the request payload for updating a size reservation.
 message SizeReservationServiceUpdateRequest {
-  // Id of this size reservation
+  // Id of this size reservation.
   string id = 1 [(buf.validate.field).string.uuid = true];
-  // Name of this size reservation
+  // Name of this size reservation.
   optional string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this size reservation
+  // Description of this size reservation.
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request.
   metalstack.api.v2.UpdateMeta update_meta = 4 [(buf.validate.field).required = true];
-  // Partition ids of this size reservation
+  // Partition ids of this size reservation.
   repeated string partitions = 5 [
     (buf.validate.field).repeated.min_items = 1,
     (buf.validate.field).repeated.unique = true,
     (buf.validate.field).repeated.items.string.(metalstack.api.v2.is_partition) = true
   ];
-  // Amount of reservations of this size reservation
+  // Amount of reservations of this size reservation.
   optional int32 amount = 6 [(buf.validate.field).int32.gt = 0];
-  // Labels to update of this size reservation
+  // Labels to update of this size reservation.
   optional metalstack.api.v2.UpdateLabels labels = 7;
 }
 
@@ -74,7 +74,7 @@ message SizeReservationServiceUpdateResponse {
 
 // SizeReservationServiceDeleteRequest is the request payload for deleting a size reservation.
 message SizeReservationServiceDeleteRequest {
-  // ID of the size reservation to delete
+  // ID of the size reservation to delete.
   string id = 1 [(buf.validate.field).string.uuid = true];
 }
 

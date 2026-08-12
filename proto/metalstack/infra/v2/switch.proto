@@ -30,7 +30,7 @@ service SwitchService {
 
 // SwitchServiceGetRequest is the request payload for getting a switch.
 message SwitchServiceGetRequest {
-  // Id of the switch
+  // Id of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
@@ -45,7 +45,7 @@ message SwitchServiceGetResponse {
 
 // SwitchServiceRegisterRequest is the request payload for registering a switch.
 message SwitchServiceRegisterRequest {
-  // Switch to register
+  // Switch to register.
   metalstack.api.v2.Switch switch = 1;
 }
 
@@ -57,14 +57,14 @@ message SwitchServiceRegisterResponse {
 
 // SwitchServiceHeartbeatRequest is the request payload for sending a switch heartbeat.
 message SwitchServiceHeartbeatRequest {
-  // Id of the switch
+  // Id of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
   }];
-  // Duration of the sync
+  // Duration of the sync.
   google.protobuf.Duration duration = 2;
-  // Error if any occurred during the sync
+  // Error if any occurred during the sync.
   optional string error = 3;
   // PortStates maps port identifiers to the respective port's operational state.
   map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
@@ -74,7 +74,7 @@ message SwitchServiceHeartbeatRequest {
 
 // SwitchServiceHeartbeatResponse is the response payload for sending a switch heartbeat.
 message SwitchServiceHeartbeatResponse {
-  // Id of the switch
+  // Id of the switch.
   string id = 1;
   // LastSync holds information about the last sync.
   metalstack.api.v2.SwitchSync last_sync = 2;

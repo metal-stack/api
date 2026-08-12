@@ -36,7 +36,7 @@ message AuditServiceListResponse {
 
 // AuditServiceGetRequest is the request payload for getting an audit trace.
 message AuditServiceGetRequest {
-  // Uuid of the audit trace
+  // Uuid of the audit trace.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Phase specifies the audit phase. Defaults to request.
   optional metalstack.api.v2.AuditPhase phase = 2 [(buf.validate.field).enum.defined_only = true];

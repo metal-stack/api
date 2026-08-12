@@ -34,15 +34,15 @@ service TenantService {
 
 // TenantServiceCreateRequest is the request payload for creating a tenant.
 message TenantServiceCreateRequest {
-  // Name of the tenant
+  // Name of the tenant.
   string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Description of the tenant
+  // Description of the tenant.
   optional string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Email of the tenant, if not set will be inherited from the creator
+  // Email of the tenant, if not set will be inherited from the creator.
   optional string email = 3 [(buf.validate.field).string.email = true];
-  // AvatarUrl of the tenant
+  // AvatarUrl of the tenant.
   optional string avatar_url = 4 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Labels on the tenant
+  // Labels on the tenant.
   metalstack.api.v2.Labels labels = 5;
 }
 
@@ -68,11 +68,11 @@ message TenantServiceListResponse {
 
 // TenantServiceAddMemberRequest is the request payload for adding a member to a tenant.
 message TenantServiceAddMemberRequest {
-  // Login of the tenant to which the member will be added
+  // Login of the tenant to which the member will be added.
   string tenant = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Login of the member to add
+  // Login of the member to add.
   string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Role to assign to the new member
+  // Role to assign to the new member.
   metalstack.api.v2.TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
@@ -84,9 +84,9 @@ message TenantServiceAddMemberResponse {
 
 // TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant.
 message TenantServiceRemoveMemberRequest {
-  // Login of the tenant from which the member will be removed
+  // Login of the tenant from which the member will be removed.
   string tenant = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Login of the member to remove
+  // Login of the member to remove.
   string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 

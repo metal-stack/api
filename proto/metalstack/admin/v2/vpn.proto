@@ -27,7 +27,7 @@ service VPNService {
 
 // VPNServiceAuthKeyRequest is the request payload for generating a VPN authentication key.
 message VPNServiceAuthKeyRequest {
-  // Project for which a VPN authentication key should be generated
+  // Project for which a VPN authentication key should be generated.
   string project = 1 [(buf.validate.field).string.uuid = true];
   // Ephemeral defines if the authentication key should be ephemeral.
   bool ephemeral = 2;
@@ -50,9 +50,9 @@ message VPNServiceAuthKeyResponse {
   string auth_key = 2;
   // Ephemeral defines if the authentication key should be ephemeral.
   bool ephemeral = 3;
-  // ExpiresAt this key cannot be used after this timestamp
+  // ExpiresAt this key cannot be used after this timestamp.
   google.protobuf.Timestamp expires_at = 4;
-  // CreatedAt this key was created at this timestamp
+  // CreatedAt this key was created at this timestamp.
   google.protobuf.Timestamp created_at = 5;
 }
 
@@ -64,6 +64,6 @@ message VPNServiceListNodesRequest {
 
 // VPNServiceListNodesResponse is the response payload for listing VPN nodes.
 message VPNServiceListNodesResponse {
-  // Nodes connected to the VPN
+  // Nodes connected to the VPN.
   repeated metalstack.api.v2.VPNNode nodes = 1;
 }

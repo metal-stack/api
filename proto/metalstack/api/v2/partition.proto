@@ -22,26 +22,26 @@ service PartitionService {
 
 // Partition is a failure domain with machines and switches.
 message Partition {
-  // ID of this partition
+  // ID of this partition.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // Meta for this partition
+  // Meta for this partition.
   Meta meta = 2;
-  // Description of this partition
+  // Description of this partition.
   string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // PartitionBootConfiguration defines how metal-hammer boots.
   PartitionBootConfiguration boot_configuration = 4;
-  // DNSServers for this partition
+  // DNSServers for this partition.
   repeated DNSServer dns_servers = 5 [(buf.validate.field).repeated.max_items = 3];
-  // NTPServers for this partition
+  // NTPServers for this partition.
   repeated NTPServer ntp_servers = 6 [(buf.validate.field).repeated.max_items = 10];
   // ManagementServiceAddresses defines where the management is reachable.
-  // should be in the form <ip|host>:<port>
+  // should be in the form <ip|host>:<port>.
   repeated string mgmt_service_addresses = 7 [(buf.validate.field).repeated.(metalstack.api.v2.are_host_and_port) = true];
 }
 
 // PartitionQuery is used to search partitions.
 message PartitionQuery {
-  // ID of the partition to get
+  // ID of the partition to get.
   optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Labels lists only partitions containing the given labels.
   optional Labels labels = 2;
@@ -49,29 +49,29 @@ message PartitionQuery {
 
 // PartitionBootConfiguration defines how metal-hammer boots.
 message PartitionBootConfiguration {
-  // ImageURL the url to download the initrd for the boot image
+  // ImageURL the url to download the initrd for the boot image.
   string image_url = 1 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // KernelURL the url to download the kernel for the boot image
+  // KernelURL the url to download the kernel for the boot image.
   string kernel_url = 2 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Commandline the kernel command line for the boot image
+  // Commandline the kernel command line for the boot image.
   string commandline = 3 [(buf.validate.field).string.max_len = 4096];
 }
 
-// DNSServer
+// DNSServer.
 message DNSServer {
-  // IP address of this dns server
+  // IP address of this dns server.
   string ip = 1 [(buf.validate.field).string.ip = true];
 }
 
-// NTPServer
+// NTPServer.
 message NTPServer {
-  // Address either as ip or hostname
+  // Address either as ip or hostname.
   string address = 1 [(buf.validate.field).string.(metalstack.api.v2.is_ip_or_hostname) = true];
 }
 
 // PartitionServiceGetRequest is the request payload for a partition get request.
 message PartitionServiceGetRequest {
-  // ID of the partition to get
+  // ID of the partition to get.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 

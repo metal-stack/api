@@ -17,13 +17,13 @@ service VersionService {
 
 // Version represents the version of the application.
 message Version {
-  // Version of the application
+  // Version of the application.
   string version = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Revision of the application
+  // Revision of the application.
   string revision = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // GitSHA1 of the application
+  // GitSHA1 of the application.
   string git_sha1 = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // BuildDate of the application
+  // BuildDate of the application.
   string build_date = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 

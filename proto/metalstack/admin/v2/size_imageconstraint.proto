@@ -40,15 +40,15 @@ service SizeImageConstraintService {
 
 // SizeImageConstraintServiceCreateRequest is the request payload for creating a size image constraint.
 message SizeImageConstraintServiceCreateRequest {
-  // Size of the constraint
+  // Size of the constraint.
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // ImageConstraints to apply to this size
+  // ImageConstraints to apply to this size.
   repeated metalstack.api.v2.ImageConstraint image_constraints = 2;
-  // Meta for this size image constraint
+  // Meta for this size image constraint.
   metalstack.api.v2.Meta meta = 3;
-  // Name of this size image constraint
+  // Name of this size image constraint.
   optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this size image constraint
+  // Description of this size image constraint.
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
@@ -60,15 +60,15 @@ message SizeImageConstraintServiceCreateResponse {
 
 // SizeImageConstraintServiceUpdateRequest is the request payload for updating a size image constraint.
 message SizeImageConstraintServiceUpdateRequest {
-  // Size of the image constraint to update
+  // Size of the image constraint to update.
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request.
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
-  // ImageConstraints to apply to this size
+  // ImageConstraints to apply to this size.
   repeated metalstack.api.v2.ImageConstraint image_constraints = 3;
-  // Name of this size image constraint
+  // Name of this size image constraint.
   optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this size image constraint
+  // Description of this size image constraint.
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
@@ -80,7 +80,7 @@ message SizeImageConstraintServiceUpdateResponse {
 
 // SizeImageConstraintServiceDeleteRequest is the request payload for deleting a size image constraint.
 message SizeImageConstraintServiceDeleteRequest {
-  // Size of the constraint
+  // Size of the constraint.
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
@@ -92,7 +92,7 @@ message SizeImageConstraintServiceDeleteResponse {
 
 // SizeImageConstraintServiceGetRequest is the request payload for getting a size image constraint.
 message SizeImageConstraintServiceGetRequest {
-  // Size of the constraint
+  // Size of the constraint.
   string size = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 

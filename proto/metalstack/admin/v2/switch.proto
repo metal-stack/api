@@ -53,7 +53,7 @@ service SwitchService {
 
 // SwitchServiceGetRequest is the request payload for getting a switch.
 message SwitchServiceGetRequest {
-  // Id of the switch to get
+  // Id of the switch to get.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
@@ -74,13 +74,13 @@ message SwitchServiceListRequest {
 
 // SwitchServiceListResponse is the response payload for listing switches.
 message SwitchServiceListResponse {
-  // Switches that match the request query
+  // Switches that match the request query.
   repeated metalstack.api.v2.Switch switches = 1;
 }
 
 // SwitchServiceUpdateRequest is the request payload for updating a switch.
 message SwitchServiceUpdateRequest {
-  // ID of the switch
+  // ID of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
@@ -90,7 +90,7 @@ message SwitchServiceUpdateRequest {
   // UpdatedAt is the date when this entity was updated.
   // Must be part of the update request to ensure optimistic locking.
   google.protobuf.Timestamp updated_at = 3;
-  // Description of the switch
+  // Description of the switch.
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // ReplaceMode is used to mark a switch ready for replacement.
   optional metalstack.api.v2.SwitchReplaceMode replace_mode = 5 [(buf.validate.field).enum.defined_only = true];
@@ -114,7 +114,7 @@ message SwitchServiceUpdateResponse {
 
 // SwitchServiceDeleteRequest is the request payload for deleting a switch.
 message SwitchServiceDeleteRequest {
-  // Id of the switch
+  // Id of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
@@ -151,20 +151,20 @@ message SwitchServiceMigrateResponse {
 
 // SwitchServicePortRequest is the request payload for setting the port status of a switch port.
 message SwitchServicePortRequest {
-  // Id of the switch
+  // Id of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
   }];
-  // NicName of the port whose status should be changed
+  // NicName of the port whose status should be changed.
   string nic_name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Status that the port should have
+  // Status that the port should have.
   metalstack.api.v2.SwitchPortStatus status = 3 [(buf.validate.field).enum.defined_only = true];
 }
 
 // SwitchServicePortResponse is the response payload for setting the port status of a switch port.
 message SwitchServicePortResponse {
-  // Switch after the port status toggle
+  // Switch after the port status toggle.
   metalstack.api.v2.Switch switch = 1;
 }
 
@@ -172,7 +172,7 @@ message SwitchServicePortResponse {
 message SwitchServiceConnectedMachinesRequest {
   // Query to filter the switch results.
   metalstack.api.v2.SwitchQuery query = 1;
-  // MachineQuery to filter the machine results
+  // MachineQuery to filter the machine results.
   metalstack.api.v2.MachineQuery machine_query = 2;
 }
 

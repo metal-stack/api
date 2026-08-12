@@ -15,13 +15,13 @@ service HealthService {
 
 // ServiceStatus defines the status of a service.
 enum ServiceStatus {
-  // SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified
+  // SERVICE_STATUS_UNSPECIFIED service status is not known or unspecified.
   SERVICE_STATUS_UNSPECIFIED = 0;
-  // SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available
+  // SERVICE_STATUS_DEGRADED the service is in degraded status, not the whole functionality is available.
   SERVICE_STATUS_DEGRADED = 1;
-  // SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected
+  // SERVICE_STATUS_UNHEALTHY the service is in unhealthy status, serious impact is expected.
   SERVICE_STATUS_UNHEALTHY = 2;
-  // SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional
+  // SERVICE_STATUS_HEALTHY the service is in healthy status, for example fully functional.
   SERVICE_STATUS_HEALTHY = 3;
 }
 
@@ -29,21 +29,21 @@ enum ServiceStatus {
 enum Service {
   // SERVICE_UNSPECIFIED is a unknown service.
   SERVICE_UNSPECIFIED = 0;
-  // SERVICE_IPAM the IPAM service
+  // SERVICE_IPAM the IPAM service.
   SERVICE_IPAM = 1 [(enum_string_value) = "ipam"];
-  // SERVICE_RETHINK the RethinkDB
+  // SERVICE_RETHINK the RethinkDB.
   SERVICE_RETHINK = 2 [(enum_string_value) = "rethinkdb"];
-  // SERVICE_TENANT_APISERVER the tenant-apiserver
+  // SERVICE_TENANT_APISERVER the tenant-apiserver.
   SERVICE_TENANT_APISERVER = 3 [(enum_string_value) = "tenant-apiserver"];
-  // SERVICE_MACHINES the machine service
+  // SERVICE_MACHINES the machine service.
   SERVICE_MACHINES = 4 [(enum_string_value) = "machines"];
-  // SERVICE_AUDIT the auditing
+  // SERVICE_AUDIT the auditing.
   SERVICE_AUDIT = 5 [(enum_string_value) = "audit"];
-  // SERVICE_VPN the VPN service
+  // SERVICE_VPN the VPN service.
   SERVICE_VPN = 6 [(enum_string_value) = "vpn"];
-  // SERVICE_REDIS the Redis service
+  // SERVICE_REDIS the Redis service.
   SERVICE_REDIS = 7 [(enum_string_value) = "redis"];
-  // SERVICE_TASKS the tasks service
+  // SERVICE_TASKS the tasks service.
   SERVICE_TASKS = 8 [(enum_string_value) = "tasks"];
 }
 

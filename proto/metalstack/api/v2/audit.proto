@@ -33,7 +33,7 @@ enum AuditPhase {
 
 // AuditTrace is an audit trace.
 message AuditTrace {
-  // Uuid of the audit trace
+  // Uuid of the audit trace.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Timestamp is the timestamp when the request arrived at the API.
   google.protobuf.Timestamp timestamp = 2;
@@ -53,13 +53,13 @@ message AuditTrace {
   optional int32 result_code = 9;
   // Phase represents the phase of the audit trace.
   AuditPhase phase = 10;
-  // Meta for this audit trace
+  // Meta for this audit trace.
   Meta meta = 11;
 }
 
 // AuditQuery is the query for audit traces.
 message AuditQuery {
-  // Uuid of the audit trace
+  // Uuid of the audit trace.
   optional string uuid = 2 [(buf.validate.field).string.uuid = true];
   // From describes the start of the time window in which to list audit traces. Defaults to the last eight hours.
   optional google.protobuf.Timestamp from = 3;
@@ -83,7 +83,7 @@ message AuditQuery {
     min_len: 2
     max_len: 256
   }];
-  // Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200)
+  // Limit is a number limiting the length of the response (min: 1, max: 1000, defaults to 200).
   optional int32 limit = 11 [(buf.validate.field).int32 = {
     gt: 0
     lte: 1000
@@ -94,7 +94,7 @@ message AuditQuery {
 
 // AuditServiceListRequest is the request payload for an audit list request.
 message AuditServiceListRequest {
-  // Login for this tenant
+  // Login for this tenant.
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Query for audit traces.
   AuditQuery query = 2;
@@ -108,9 +108,9 @@ message AuditServiceListResponse {
 
 // AuditServiceGetRequest is the request payload of a audit get request.
 message AuditServiceGetRequest {
-  // Login for this tenant
+  // Login for this tenant.
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Uuid of the audit trace
+  // Uuid of the audit trace.
   string uuid = 2 [(buf.validate.field).string.uuid = true];
   // Phase specifies the audit phase. Defaults to request.
   optional AuditPhase phase = 3 [(buf.validate.field).enum.defined_only = true];

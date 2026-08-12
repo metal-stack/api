@@ -53,9 +53,9 @@ message TokenServiceRevokeResponse {}
 
 // TokenServiceCreateRequest is the request payload for creating a token.
 message TokenServiceCreateRequest {
-  // User this token should be created for, if omitted, user is derived from caller
+  // User this token should be created for, if omitted, user is derived from caller.
   optional string user = 1 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
-  // TokenCreateRequest which should be created
+  // TokenCreateRequest which should be created.
   metalstack.api.v2.TokenServiceCreateRequest token_create_request = 2;
 }
 

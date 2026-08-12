@@ -54,9 +54,9 @@ message WaitForBMCCommandRequest {
 
 // WaitForBMCCommandResponse is the response payload for waiting for a BMC command.
 message WaitForBMCCommandResponse {
-  // UUID of the machine to send the command to
+  // UUID of the machine to send the command to.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // BmcCommand to execute against the BMC of the machine
+  // BmcCommand to execute against the BMC of the machine.
   metalstack.api.v2.MachineBMCCommand bmc_command = 2;
   // MachineBmc contains connection details of the machine to issue the BMC command to.
   metalstack.api.v2.MachineBMC machine_bmc = 3;
@@ -70,7 +70,7 @@ message BMCCommandDoneRequest {
   // CommandId is a unique ID which must be sent back after execution.
   // It is usually in the form: <machine-uuid>:machine-bmc-command.
   string command_id = 1;
-  // Error of the command execution, nil if it was successful
+  // Error of the command execution, nil if it was successful.
   optional string error = 2;
 }
 

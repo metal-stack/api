@@ -55,13 +55,13 @@ service TokenService {
 // The api token should be used to authenticate services.
 // In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
 message Token {
-  // Message level validation, can be developed using https://protovalidate.com/playground
+  // Message level validation, can be developed using https://protovalidate.com/playground.
 
-  // Uuid of the jwt token, used to reference it by revoke
+  // Uuid of the jwt token, used to reference it by revoke.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // User who created this token
+  // User who created this token.
   string user = 2 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
-  // Meta for this token
+  // Meta for this token.
   Meta meta = 3;
   // Description is a user given description of this token.
   string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
@@ -116,7 +116,7 @@ enum TokenType {
 
 // TokenServiceCreateRequest is the request payload to create a token.
 message TokenServiceCreateRequest {
-  // Description of the token
+  // Description of the token.
   string description = 1 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Permissions is a list of service methods this token can be used for.
   repeated PermissionsByVisibility permissions = 2 [(buf.validate.field).repeated.max_items = 100];
@@ -154,20 +154,19 @@ message TokenServiceCreateRequest {
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
-  // Labels on this token
+  // Labels on this token.
   Labels labels = 9;
 }
 
 // MethodPermission is a mapping from a subject/project to a service method.
 message MethodPermission {
-  // Subject maybe either the project or the tenant
-  // for which the methods should be allowed
+  // Subject may be either the project or the tenant for which the methods should be allowed.
   //
-  // asterisk (*) can be specified to match any subject
-  // empty string ("") can be specified for requests that do not require a subject, e.g. partition list
-  // otherwise either a projectid or a tenant login should be specified
+  // Asterisk (*) can be specified to match any subject.
+  // Empty string ("") can be specified for requests that do not require a subject, e.g. partition list.
+  // Otherwise either a projectid or a tenant login should be specified.
   string subject = 1 [(buf.validate.field).string = {max_len: 256}];
-  // Methods which should be accessible
+  // Methods which should be accessible.
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
 
@@ -194,58 +193,59 @@ message PermissionsByVisibility {
 
 // PublicPermissions carries public method permissions.
 message PublicPermissions {
-  // Methods which should be accessible
+  // Methods which should be accessible.
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
 
 // SelfPermissions carries self method permissions.
 message SelfPermissions {
-  // Methods which should be accessible
+  // Methods which should be accessible.
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
 
 // ProjectPermissions carries project method permissions.
 message ProjectPermissions {
-  // asterisk (*) can be specified to match any subject
+  // Project scope for the permissions.
+  // Asterisk (*) can be specified to match any subject.
   string project = 1 [(buf.validate.field).string.(metalstack.api.v2.is_project_subject_permission) = true];
-  // Methods which should be accessible
+  // Methods which should be accessible.
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
 
 // TenantPermissions carries tenant method permissions.
 message TenantPermissions {
-  // Login of the tenant
-  // asterisk (*) can be specified to match any subject
+  // Login of the tenant.
+  // Asterisk (*) can be specified to match any subject.
   string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_subject_permission) = true];
 
-  // Methods which should be accessible
+  // Methods which should be accessible.
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
 
 // AdminPermissions carries admin method permissions.
 message AdminPermissions {
-  // Methods which should be accessible
+  // Methods which should be accessible.
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
 
 // MachinePermissions carries machine method permissions.
 message MachinePermissions {
-  // UUID of this machine
-  // asterisk (*) can be specified to match any subject
+  // UUID of this machine.
+  // Asterisk (*) can be specified to match any subject.
   string uuid = 1 [(buf.validate.field).string.(metalstack.api.v2.is_machine_subject_permission) = true];
-  // Methods which should be accessible
+  // Methods which should be accessible.
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
 
 // InfraPermissions carries infra method permissions.
 message InfraPermissions {
-  // Methods which should be accessible
+  // Methods which should be accessible.
   repeated string methods = 2 [(buf.validate.field).repeated.max_items = 500];
 }
 
 // TokenServiceCreateResponse is the response payload of a token create request.
 message TokenServiceCreateResponse {
-  // Token which was created
+  // Token which was created.
   Token token = 1;
   // Secret is the body of the JWT token, should be used in API requests as bearer token.
   string secret = 2;
@@ -265,7 +265,7 @@ message TokenServiceListResponse {
 
 // TokenServiceRevokeRequest is the request payload of a token revoke request.
 message TokenServiceRevokeRequest {
-  // Uuid of the token to revoke
+  // Uuid of the token to revoke.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
@@ -274,7 +274,7 @@ message TokenServiceRevokeResponse {}
 
 // TokenServiceUpdateRequest is the request payload of a token update request.
 message TokenServiceUpdateRequest {
-  // Uuid of the token to update
+  // Uuid of the token to update.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request.
   // TokenUpdate is not guarded with optlock in the backend.
@@ -311,7 +311,7 @@ message TokenServiceUpdateRequest {
     },
     (buf.validate.field).map.(metalstack.api.v2.keys_trimmed) = true
   ];
-  // Labels on this token
+  // Labels on this token.
   UpdateLabels labels = 10;
 }
 
@@ -323,7 +323,7 @@ message TokenServiceUpdateResponse {
 
 // TokenServiceGetRequest is the request payload of a token get request.
 message TokenServiceGetRequest {
-  // Uuid of the token to get
+  // Uuid of the token to get.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
@@ -335,12 +335,12 @@ message TokenServiceGetResponse {
 
 // TokenServiceRefreshRequest is the request payload of a token refresh request.
 // Permissions, Roles and Expiration duration and all other properties are inherited from the calling token.
-// The expiration duration will be calculated from the existing token (exp - iat)
+// The expiration duration will be calculated from the existing token (exp - iat).
 message TokenServiceRefreshRequest {}
 
 // TokenServiceRefreshResponse is the response payload of a token refresh request.
 message TokenServiceRefreshResponse {
-  // Token which was refreshed
+  // Token which was refreshed.
   Token token = 1;
   // Secret is the body of the JWT token, should be used in API requests as bearer token.
   string secret = 2;
@@ -348,15 +348,15 @@ message TokenServiceRefreshResponse {
 
 // TokenQuery is used to search tokens.
 message TokenQuery {
-  // UUID of the token to get
+  // UUID of the token to get.
   optional string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Name of the token user to query
+  // Name of the token user to query.
   // Only useful for admins.
   optional string user = 2 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
-  // Description of the token to query
+  // Description of the token to query.
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // Labels lists only tokens containing the given labels.
   optional Labels labels = 4;
-  // Token type of the token to query
+  // Token type of the token to query.
   optional TokenType token_type = 5 [(buf.validate.field).enum.defined_only = true];
 }
