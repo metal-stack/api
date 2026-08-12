@@ -24,13 +24,13 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// TokenType specifies different use cases of tokens
+// TokenType specifies different use cases of tokens.
 type TokenType int32
 
 const (
-	// TOKEN_TYPE_UNSPECIFIED is not specified
+	// TOKEN_TYPE_UNSPECIFIED is not specified.
 	TokenType_TOKEN_TYPE_UNSPECIFIED TokenType = 0
-	// TOKEN_TYPE_API is a token for api usage
+	// TOKEN_TYPE_API is a token for api usage.
 	TokenType_TOKEN_TYPE_API TokenType = 1
 	// TOKEN_TYPE_USER is a token to access the api with cli, a web application or other user induced actions.
 	TokenType_TOKEN_TYPE_USER TokenType = 2
@@ -77,12 +77,12 @@ func (TokenType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_token_proto_rawDescGZIP(), []int{0}
 }
 
-// Token generates a jwt authentication token to access the api
+// Token generates a jwt authentication token to access the api.
 //
-// # There are two different types of tokens, api- and user- tokens
+// There are two different types of tokens, api- and user- tokens.
 //
 // A user token is used to authenticate end user requests for example from a cli.
-// The configured roles in a user token are expanded in the api server
+// The configured roles in a user token are expanded in the api server.
 // based on the memberships in other projects and tenants based on the role granted there.
 // User tokens will never contain permissions.
 // Permissions are always derived from the tenant and project roles and memberships.
@@ -91,32 +91,32 @@ func (TokenType) EnumDescriptor() ([]byte, []int) {
 // In contrast to a user token, the api token permissions and roles apply as configured during the token create process.
 type Token struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the jwt token, used to reference it by revoke
+	// Uuid of the jwt token, used to reference it by revoke.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// User who created this token
+	// User who created this token.
 	User string `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
-	// Meta for this token
+	// Meta for this token.
 	Meta *Meta `protobuf:"bytes,3,opt,name=meta,proto3" json:"meta,omitempty"`
 	// Description is a user given description of this token.
 	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	// Permissions is a list of service methods this token can be used for
+	// Permissions is a list of service methods this token can be used for.
 	Permissions []*MethodPermission `protobuf:"bytes,5,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	// Expires gives the date in the future after which this token can not be used anymore
+	// Expires gives the date in the future after which this token can not be used anymore.
 	Expires *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=expires,proto3" json:"expires,omitempty"`
-	// IssuedAt gives the date when this token was created
+	// IssuedAt gives the date when this token was created.
 	IssuedAt *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=issued_at,json=issuedAt,proto3" json:"issued_at,omitempty"`
-	// TokenType describes the type of this token
+	// TokenType describes the type of this token.
 	TokenType TokenType `protobuf:"varint,8,opt,name=token_type,json=tokenType,proto3,enum=metalstack.api.v2.TokenType" json:"token_type,omitempty"`
-	// ProjectRoles associates a project id with the corresponding role of the token owner
+	// ProjectRoles associates a project id with the corresponding role of the token owner.
 	ProjectRoles map[string]ProjectRole `protobuf:"bytes,9,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
-	// TenantRoles associates a tenant id with the corresponding role of the token owner
+	// TenantRoles associates a tenant id with the corresponding role of the token owner.
 	TenantRoles map[string]TenantRole `protobuf:"bytes,10,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
-	// AdminRole defines the admin role of the token owner
+	// AdminRole defines the admin role of the token owner.
 	AdminRole *AdminRole `protobuf:"varint,11,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
-	// InfraRole defines the infrastructure role of the token owner
+	// InfraRole defines the infrastructure role of the token owner.
 	InfraRole *InfraRole `protobuf:"varint,12,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
-	// MachineRoles associates a machine uuid with the corresponding role of the token owner
-	// TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead
+	// MachineRoles associates a machine uuid with the corresponding role of the token owner.
+	// TODO: decide if we need this map from machine.uuid->role, we could instead use the subject in the token instead.
 	MachineRoles  map[string]MachineRole `protobuf:"bytes,13,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -243,26 +243,26 @@ func (x *Token) GetMachineRoles() map[string]MachineRole {
 	return nil
 }
 
-// TokenServiceCreateRequest is the request payload to create a token
+// TokenServiceCreateRequest is the request payload to create a token.
 type TokenServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Description of the token
+	// Description of the token.
 	Description string `protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
-	// Permissions is a list of service methods this token can be used for
+	// Permissions is a list of service methods this token can be used for.
 	Permissions []*PermissionsByVisibility `protobuf:"bytes,2,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	// Expires gives the duration since now, after which this token can not be used anymore
+	// Expires gives the duration since now, after which this token can not be used anymore.
 	Expires *durationpb.Duration `protobuf:"bytes,3,opt,name=expires,proto3" json:"expires,omitempty"`
-	// ProjectRoles associates a project id with the corresponding role of the token owner
+	// ProjectRoles associates a project id with the corresponding role of the token owner.
 	ProjectRoles map[string]ProjectRole `protobuf:"bytes,4,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
-	// TenantRoles associates a tenant id with the corresponding role of the token owner
+	// TenantRoles associates a tenant id with the corresponding role of the token owner.
 	TenantRoles map[string]TenantRole `protobuf:"bytes,5,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
-	// AdminRole defines the admin role of the token owner
+	// AdminRole defines the admin role of the token owner.
 	AdminRole *AdminRole `protobuf:"varint,6,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
-	// InfraRole defines the infrastructure role of the token owner
+	// InfraRole defines the infrastructure role of the token owner.
 	InfraRole *InfraRole `protobuf:"varint,7,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
-	// MachineRoles associates a machine uuid with the corresponding role of the token owner
+	// MachineRoles associates a machine uuid with the corresponding role of the token owner.
 	MachineRoles map[string]MachineRole `protobuf:"bytes,8,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
-	// Labels on this token
+	// Labels on this token.
 	Labels        *Labels `protobuf:"bytes,9,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -361,17 +361,16 @@ func (x *TokenServiceCreateRequest) GetLabels() *Labels {
 	return nil
 }
 
-// MethodPermission is a mapping from a subject/project to a service method
+// MethodPermission is a mapping from a subject/project to a service method.
 type MethodPermission struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Subject maybe either the project or the tenant
-	// for which the methods should be allowed
+	// Subject may be either the project or the tenant for which the methods should be allowed.
 	//
-	// asterisk (*) can be specified to match any subject
-	// empty string ("") can be specified for requests that do not require a subject, e.g. partition list
-	// otherwise either a projectid or a tenant login should be specified
+	// Asterisk (*) can be specified to match any subject.
+	// Empty string ("") can be specified for requests that do not require a subject, e.g. partition list.
+	// Otherwise either a projectid or a tenant login should be specified.
 	Subject string `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
-	// Methods which should be accessible
+	// Methods which should be accessible.
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -421,10 +420,10 @@ func (x *MethodPermission) GetMethods() []string {
 	return nil
 }
 
-// PermissionsByVisibility contains method permissions by visibility
+// PermissionsByVisibility contains method permissions by visibility.
 type PermissionsByVisibility struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Visibility defines the visibility of the requested method permissions
+	// Visibility defines the visibility of the requested method permissions.
 	//
 	// Types that are valid to be assigned to Visibility:
 	//
@@ -545,37 +544,37 @@ type isPermissionsByVisibility_Visibility interface {
 }
 
 type PermissionsByVisibility_Public struct {
-	// PublicPermissions carries public method permissions
+	// PublicPermissions carries public method permissions.
 	Public *PublicPermissions `protobuf:"bytes,1,opt,name=public,proto3,oneof"`
 }
 
 type PermissionsByVisibility_Self struct {
-	// SelfPermissions carries self method permissions
+	// SelfPermissions carries self method permissions.
 	Self *SelfPermissions `protobuf:"bytes,2,opt,name=self,proto3,oneof"`
 }
 
 type PermissionsByVisibility_Project struct {
-	// ProjectPermissions carries project method permissions
+	// ProjectPermissions carries project method permissions.
 	Project *ProjectPermissions `protobuf:"bytes,3,opt,name=project,proto3,oneof"`
 }
 
 type PermissionsByVisibility_Tenant struct {
-	// TenantPermissions carries tenant method permissions
+	// TenantPermissions carries tenant method permissions.
 	Tenant *TenantPermissions `protobuf:"bytes,4,opt,name=tenant,proto3,oneof"`
 }
 
 type PermissionsByVisibility_Admin struct {
-	// AdminPermissions carries admin method permissions
+	// AdminPermissions carries admin method permissions.
 	Admin *AdminPermissions `protobuf:"bytes,5,opt,name=admin,proto3,oneof"`
 }
 
 type PermissionsByVisibility_Machine struct {
-	// MachinePermissions carries machine method permissions
+	// MachinePermissions carries machine method permissions.
 	Machine *MachinePermissions `protobuf:"bytes,6,opt,name=machine,proto3,oneof"`
 }
 
 type PermissionsByVisibility_Infra struct {
-	// InfraPermissions carries infra method permissions
+	// InfraPermissions carries infra method permissions.
 	Infra *InfraPermissions `protobuf:"bytes,7,opt,name=infra,proto3,oneof"`
 }
 
@@ -593,10 +592,10 @@ func (*PermissionsByVisibility_Machine) isPermissionsByVisibility_Visibility() {
 
 func (*PermissionsByVisibility_Infra) isPermissionsByVisibility_Visibility() {}
 
-// PublicPermissions carries public method permissions
+// PublicPermissions carries public method permissions.
 type PublicPermissions struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Methods which should be accessible
+	// Methods which should be accessible.
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -639,10 +638,10 @@ func (x *PublicPermissions) GetMethods() []string {
 	return nil
 }
 
-// SelfPermissions carries self method permissions
+// SelfPermissions carries self method permissions.
 type SelfPermissions struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Methods which should be accessible
+	// Methods which should be accessible.
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -685,12 +684,13 @@ func (x *SelfPermissions) GetMethods() []string {
 	return nil
 }
 
-// ProjectPermissions carries project method permissions
+// ProjectPermissions carries project method permissions.
 type ProjectPermissions struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// asterisk (*) can be specified to match any subject
+	// Project scope for the permissions.
+	// Asterisk (*) can be specified to match any subject.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Methods which should be accessible
+	// Methods which should be accessible.
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -740,13 +740,13 @@ func (x *ProjectPermissions) GetMethods() []string {
 	return nil
 }
 
-// TenantPermissions carries tenant method permissions
+// TenantPermissions carries tenant method permissions.
 type TenantPermissions struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
-	// asterisk (*) can be specified to match any subject
+	// Login of the tenant.
+	// Asterisk (*) can be specified to match any subject.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Methods which should be accessible
+	// Methods which should be accessible.
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -796,10 +796,10 @@ func (x *TenantPermissions) GetMethods() []string {
 	return nil
 }
 
-// AdminPermissions carries admin method permissions
+// AdminPermissions carries admin method permissions.
 type AdminPermissions struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Methods which should be accessible
+	// Methods which should be accessible.
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -842,13 +842,13 @@ func (x *AdminPermissions) GetMethods() []string {
 	return nil
 }
 
-// MachinePermissions carries machine method permissions
+// MachinePermissions carries machine method permissions.
 type MachinePermissions struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of this machine
-	// asterisk (*) can be specified to match any subject
+	// UUID of this machine.
+	// Asterisk (*) can be specified to match any subject.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Methods which should be accessible
+	// Methods which should be accessible.
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -898,10 +898,10 @@ func (x *MachinePermissions) GetMethods() []string {
 	return nil
 }
 
-// InfraPermissions carries infra method permissions
+// InfraPermissions carries infra method permissions.
 type InfraPermissions struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Methods which should be accessible
+	// Methods which should be accessible.
 	Methods       []string `protobuf:"bytes,2,rep,name=methods,proto3" json:"methods,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -944,12 +944,12 @@ func (x *InfraPermissions) GetMethods() []string {
 	return nil
 }
 
-// TokenServiceCreateResponse is the response payload of a token create request
+// TokenServiceCreateResponse is the response payload of a token create request.
 type TokenServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Token which was created
+	// Token which was created.
 	Token *Token `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	// Secret is the body of the JWT token, should be used in API requests as bearer token
+	// Secret is the body of the JWT token, should be used in API requests as bearer token.
 	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -999,10 +999,10 @@ func (x *TokenServiceCreateResponse) GetSecret() string {
 	return ""
 }
 
-// TokenServiceListRequest is the request payload to list tokens
+// TokenServiceListRequest is the request payload to list tokens.
 type TokenServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for tokens
+	// Query for tokens.
 	Query         *TokenQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1045,10 +1045,10 @@ func (x *TokenServiceListRequest) GetQuery() *TokenQuery {
 	return nil
 }
 
-// TokenServiceListResponse is the response payload of a token list request
+// TokenServiceListResponse is the response payload of a token list request.
 type TokenServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tokens is a list of tokens without the secrets
+	// Tokens is a list of tokens without the secrets.
 	Tokens        []*Token `protobuf:"bytes,1,rep,name=tokens,proto3" json:"tokens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1091,10 +1091,10 @@ func (x *TokenServiceListResponse) GetTokens() []*Token {
 	return nil
 }
 
-// TokenServiceRevokeRequest is the request payload of a token revoke request
+// TokenServiceRevokeRequest is the request payload of a token revoke request.
 type TokenServiceRevokeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the token to revoke
+	// Uuid of the token to revoke.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1137,7 +1137,7 @@ func (x *TokenServiceRevokeRequest) GetUuid() string {
 	return ""
 }
 
-// TokenServiceRevokeResponse is the response payload of a token revoke request
+// TokenServiceRevokeResponse is the response payload of a token revoke request.
 type TokenServiceRevokeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1174,29 +1174,29 @@ func (*TokenServiceRevokeResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_token_proto_rawDescGZIP(), []int{15}
 }
 
-// TokenServiceUpdateRequest is the request payload of a token update request
+// TokenServiceUpdateRequest is the request payload of a token update request.
 type TokenServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the token to update
+	// Uuid of the token to update.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
-	// TokenUpdate is not guarded with optlock in the backend
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
+	// TokenUpdate is not guarded with optlock in the backend.
 	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	// Description is a user given description of this token.
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Permissions is a list of service methods this token can be used for
+	// Permissions is a list of service methods this token can be used for.
 	Permissions []*PermissionsByVisibility `protobuf:"bytes,4,rep,name=permissions,proto3" json:"permissions,omitempty"`
-	// ProjectRoles associates a project id with the corresponding role of the token owner
+	// ProjectRoles associates a project id with the corresponding role of the token owner.
 	ProjectRoles map[string]ProjectRole `protobuf:"bytes,5,rep,name=project_roles,json=projectRoles,proto3" json:"project_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.ProjectRole"`
-	// TenantRoles associates a tenant id with the corresponding role of the token owner
+	// TenantRoles associates a tenant id with the corresponding role of the token owner.
 	TenantRoles map[string]TenantRole `protobuf:"bytes,6,rep,name=tenant_roles,json=tenantRoles,proto3" json:"tenant_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.TenantRole"`
-	// AdminRole defines the admin role of the token owner
+	// AdminRole defines the admin role of the token owner.
 	AdminRole *AdminRole `protobuf:"varint,7,opt,name=admin_role,json=adminRole,proto3,enum=metalstack.api.v2.AdminRole,oneof" json:"admin_role,omitempty"`
-	// InfraRole defines the infrastructure role of the token owner
+	// InfraRole defines the infrastructure role of the token owner.
 	InfraRole *InfraRole `protobuf:"varint,8,opt,name=infra_role,json=infraRole,proto3,enum=metalstack.api.v2.InfraRole,oneof" json:"infra_role,omitempty"`
-	// MachineRoles associates a machine uuid with the corresponding role of the token owner
+	// MachineRoles associates a machine uuid with the corresponding role of the token owner.
 	MachineRoles map[string]MachineRole `protobuf:"bytes,9,rep,name=machine_roles,json=machineRoles,proto3" json:"machine_roles,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=metalstack.api.v2.MachineRole"`
-	// Labels on this token
+	// Labels on this token.
 	Labels        *UpdateLabels `protobuf:"bytes,10,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1302,10 +1302,10 @@ func (x *TokenServiceUpdateRequest) GetLabels() *UpdateLabels {
 	return nil
 }
 
-// TokenServiceUpdateResponse is the response payload of a token update request
+// TokenServiceUpdateResponse is the response payload of a token update request.
 type TokenServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Token is the updated token
+	// Token is the updated token.
 	Token         *Token `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1348,10 +1348,10 @@ func (x *TokenServiceUpdateResponse) GetToken() *Token {
 	return nil
 }
 
-// TokenServiceGetRequest is the request payload of a token get request
+// TokenServiceGetRequest is the request payload of a token get request.
 type TokenServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of the token to get
+	// Uuid of the token to get.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1394,10 +1394,10 @@ func (x *TokenServiceGetRequest) GetUuid() string {
 	return ""
 }
 
-// TokenServiceGetResponse is the response payload of a token get request
+// TokenServiceGetResponse is the response payload of a token get request.
 type TokenServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Token is the token
+	// Token is the token.
 	Token         *Token `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1440,9 +1440,9 @@ func (x *TokenServiceGetResponse) GetToken() *Token {
 	return nil
 }
 
-// TokenServiceRefreshRequest is the request payload of a token refresh request
+// TokenServiceRefreshRequest is the request payload of a token refresh request.
 // Permissions, Roles and Expiration duration and all other properties are inherited from the calling token.
-// The expiration duration will be calculated from the existing token (exp - iat)
+// The expiration duration will be calculated from the existing token (exp - iat).
 type TokenServiceRefreshRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1479,12 +1479,12 @@ func (*TokenServiceRefreshRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_token_proto_rawDescGZIP(), []int{20}
 }
 
-// TokenServiceRefreshResponse is the response payload of a token refresh request
+// TokenServiceRefreshResponse is the response payload of a token refresh request.
 type TokenServiceRefreshResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Token which was refreshed
+	// Token which was refreshed.
 	Token *Token `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	// Secret is the body of the JWT token, should be used in API requests as bearer token
+	// Secret is the body of the JWT token, should be used in API requests as bearer token.
 	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1534,19 +1534,19 @@ func (x *TokenServiceRefreshResponse) GetSecret() string {
 	return ""
 }
 
-// TokenQuery is used to search tokens
+// TokenQuery is used to search tokens.
 type TokenQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the token to get
+	// UUID of the token to get.
 	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	// Name of the token user to query
+	// Name of the token user to query.
 	// Only useful for admins.
 	User *string `protobuf:"bytes,2,opt,name=user,proto3,oneof" json:"user,omitempty"`
-	// Description of the token to query
+	// Description of the token to query.
 	Description *string `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Labels lists only tokens containing the given labels
+	// Labels lists only tokens containing the given labels.
 	Labels *Labels `protobuf:"bytes,4,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
-	// Token type of the token to query
+	// Token type of the token to query.
 	TokenType     *TokenType `protobuf:"varint,5,opt,name=token_type,json=tokenType,proto3,enum=metalstack.api.v2.TokenType,oneof" json:"token_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

@@ -17,13 +17,13 @@ export const file_metalstack_api_v2_common: GenFile = /*@__PURE__*/
   fileDesc("Ch5tZXRhbHN0YWNrL2FwaS92Mi9jb21tb24ucHJvdG8SEW1ldGFsc3RhY2suYXBpLnYyIkIKBlBhZ2luZxIRCgRwYWdlGAEgASgESACIAQESEgoFY291bnQYAiABKARIAYgBAUIHCgVfcGFnZUIICgZfY291bnQijgEKBkxhYmVscxJVCgZsYWJlbHMYASADKAsyJS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHMuTGFiZWxzRW50cnlCHrpIG5oBGLiVuLECASIHcgUQARiAAioHcgUQABiAAhotCgtMYWJlbHNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIukBCgRNZXRhEi4KBmxhYmVscxgBIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gAiAEBEi4KCmNyZWF0ZWRfYXQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi4KCnVwZGF0ZWRfYXQYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhIKCmdlbmVyYXRpb24YBCABKAQSHQoQZGVsZXRpb25fdGFza19pZBgFIAEoCUgBiAEBQgkKB19sYWJlbHNCEwoRX2RlbGV0aW9uX3Rhc2tfaWQigAEKDFVwZGF0ZUxhYmVscxIsCgdyZXBsYWNlGAEgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzSAASLwoFcGF0Y2gYAiABKAsyHi5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNQYXRjaEgAQhEKCHN0cmF0ZWd5EgW6SAIIASJcCgtMYWJlbHNQYXRjaBIpCgZ1cGRhdGUYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHMSIgoGcmVtb3ZlGAIgAygJQhK6SA+SAQwYASIIcgbws66xAgEijgEKClVwZGF0ZU1ldGESLgoKdXBkYXRlZF9hdBgBIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASUAoQbG9ja2luZ19zdHJhdGVneRgCIAEoDjIsLm1ldGFsc3RhY2suYXBpLnYyLk9wdGltaXN0aWNMb2NraW5nU3RyYXRlZ3lCCLpIBYIBAhABKocBCgpUZW5hbnRSb2xlEhsKF1RFTkFOVF9ST0xFX1VOU1BFQ0lGSUVEEAASFQoRVEVOQU5UX1JPTEVfT1dORVIQARIWChJURU5BTlRfUk9MRV9FRElUT1IQAhIWChJURU5BTlRfUk9MRV9WSUVXRVIQAxIVChFURU5BTlRfUk9MRV9HVUVTVBAEKnUKC1Byb2plY3RSb2xlEhwKGFBST0pFQ1RfUk9MRV9VTlNQRUNJRklFRBAAEhYKElBST0pFQ1RfUk9MRV9PV05FUhABEhcKE1BST0pFQ1RfUk9MRV9FRElUT1IQAhIXChNQUk9KRUNUX1JPTEVfVklFV0VSEAMqVQoJQWRtaW5Sb2xlEhoKFkFETUlOX1JPTEVfVU5TUEVDSUZJRUQQABIVChFBRE1JTl9ST0xFX0VESVRPUhABEhUKEUFETUlOX1JPTEVfVklFV0VSEAIqVQoJSW5mcmFSb2xlEhoKFklORlJBX1JPTEVfVU5TUEVDSUZJRUQQABIVChFJTkZSQV9ST0xFX0VESVRPUhABEhUKEUlORlJBX1JPTEVfVklFV0VSEAIqXQoLTWFjaGluZVJvbGUSHAoYTUFDSElORV9ST0xFX1VOU1BFQ0lGSUVEEAASFwoTTUFDSElORV9ST0xFX0VESVRPUhABEhcKE01BQ0hJTkVfUk9MRV9WSUVXRVIQAipUCgpWaXNpYmlsaXR5EhoKFlZJU0lCSUxJVFlfVU5TUEVDSUZJRUQQABIVChFWSVNJQklMSVRZX1BVQkxJQxABEhMKD1ZJU0lCSUxJVFlfU0VMRhACKlIKCEF1ZGl0aW5nEhgKFEFVRElUSU5HX1VOU1BFQ0lGSUVEEAASFQoRQVVESVRJTkdfSU5DTFVERUQQARIVChFBVURJVElOR19FWENMVURFRBACKpgBChlPcHRpbWlzdGljTG9ja2luZ1N0cmF0ZWd5EisKJ09QVElNSVNUSUNfTE9DS0lOR19TVFJBVEVHWV9VTlNQRUNJRklFRBAAEiYKIk9QVElNSVNUSUNfTE9DS0lOR19TVFJBVEVHWV9DTElFTlQQARImCiJPUFRJTUlTVElDX0xPQ0tJTkdfU1RSQVRFR1lfU0VSVkVSEAI6YgoMdGVuYW50X3JvbGVzEh4uZ29vZ2xlLnByb3RvYnVmLk1ldGhvZE9wdGlvbnMYuI4DIAMoDjIdLm1ldGFsc3RhY2suYXBpLnYyLlRlbmFudFJvbGVSC3RlbmFudFJvbGVzOmUKDXByb2plY3Rfcm9sZXMSHi5nb29nbGUucHJvdG9idWYuTWV0aG9kT3B0aW9ucxi5jgMgAygOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGVSDHByb2plY3RSb2xlczpfCgthZG1pbl9yb2xlcxIeLmdvb2dsZS5wcm90b2J1Zi5NZXRob2RPcHRpb25zGLqOAyADKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5BZG1pblJvbGVSCmFkbWluUm9sZXM6XwoKdmlzaWJpbGl0eRIeLmdvb2dsZS5wcm90b2J1Zi5NZXRob2RPcHRpb25zGLuOAyABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5WaXNpYmlsaXR5Ugp2aXNpYmlsaXR5OlkKCGF1ZGl0aW5nEh4uZ29vZ2xlLnByb3RvYnVmLk1ldGhvZE9wdGlvbnMYvI4DIAEoDjIbLm1ldGFsc3RhY2suYXBpLnYyLkF1ZGl0aW5nUghhdWRpdGluZzpfCgtpbmZyYV9yb2xlcxIeLmdvb2dsZS5wcm90b2J1Zi5NZXRob2RPcHRpb25zGL2OAyADKA4yHC5tZXRhbHN0YWNrLmFwaS52Mi5JbmZyYVJvbGVSCmluZnJhUm9sZXM6ZQoNbWFjaGluZV9yb2xlcxIeLmdvb2dsZS5wcm90b2J1Zi5NZXRob2RPcHRpb25zGL6OAyADKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lUm9sZVIMbWFjaGluZVJvbGVzOk8KEWVudW1fc3RyaW5nX3ZhbHVlEiEuZ29vZ2xlLnByb3RvYnVmLkVudW1WYWx1ZU9wdGlvbnMYoJYDIAEoCVIPZW51bVN0cmluZ1ZhbHVlQsEBChVjb20ubWV0YWxzdGFjay5hcGkudjJCC0NvbW1vblByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_descriptor, file_google_protobuf_timestamp, file_metalstack_api_v2_predefined_rules]);
 
 /**
- * Paging defines paging for methods with a lot of results
+ * Paging defines paging for methods with a lot of results.
  *
  * @generated from message metalstack.api.v2.Paging
  */
 export type Paging = Message<"metalstack.api.v2.Paging"> & {
   /**
-   * Page is used for pagination, if unset only the first page is returned,
+   * Page is used for pagination, if unset only the first page is returned,.
    * the list response contains then the page number for the next page.
    *
    * @generated from field: optional uint64 page = 1;
@@ -31,7 +31,7 @@ export type Paging = Message<"metalstack.api.v2.Paging"> & {
   page?: bigint | undefined;
 
   /**
-   * Count is the number of results returned per page, if not given server side defaults apply
+   * Count is the number of results returned per page, if not given server side defaults apply.
    *
    * @generated from field: optional uint64 count = 2;
    */
@@ -46,13 +46,13 @@ export const PagingSchema: GenMessage<Paging> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_common, 0);
 
 /**
- * Labels define additional information to a entity
+ * Labels define additional information to a entity.
  *
  * @generated from message metalstack.api.v2.Labels
  */
 export type Labels = Message<"metalstack.api.v2.Labels"> & {
   /**
-   * Labels consists labels
+   * Labels consists labels.
    *
    * @generated from field: map<string, string> labels = 1;
    */
@@ -67,28 +67,28 @@ export const LabelsSchema: GenMessage<Labels> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_common, 1);
 
 /**
- * Meta of a message
+ * Meta of a message.
  *
  * @generated from message metalstack.api.v2.Meta
  */
 export type Meta = Message<"metalstack.api.v2.Meta"> & {
   /**
-   * Tags on this entity
+   * Tags on this entity.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 1;
    */
   labels?: Labels | undefined;
 
   /**
-   * CreatedAt is the date when this entity was created
+   * CreatedAt is the date when this entity was created.
    *
    * @generated from field: google.protobuf.Timestamp created_at = 2;
    */
   createdAt?: Timestamp | undefined;
 
   /**
-   * UpdatedAt is the date when this entity was updated
-   * must be part of the update request to ensure optimistic locking
+   * UpdatedAt is the date when this entity was updated.
+   * must be part of the update request to ensure optimistic locking.
    *
    * @generated from field: google.protobuf.Timestamp updated_at = 3;
    */
@@ -118,19 +118,19 @@ export const MetaSchema: GenMessage<Meta> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_common, 2);
 
 /**
- * UpdateLabels is a message to update labels
+ * UpdateLabels is a message to update labels.
  *
  * @generated from message metalstack.api.v2.UpdateLabels
  */
 export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
   /**
-   * Strategy defines the label update strategy
+   * Strategy defines the label update strategy.
    *
    * @generated from oneof metalstack.api.v2.UpdateLabels.strategy
    */
   strategy: {
     /**
-     * Replace existing labels with the given ones
+     * Replace existing labels with the given ones.
      *
      * @generated from field: metalstack.api.v2.Labels replace = 1;
      */
@@ -138,7 +138,7 @@ export type UpdateLabels = Message<"metalstack.api.v2.UpdateLabels"> & {
     case: "replace";
   } | {
     /**
-     * Patch adds, updates or remove given labels without modifying others
+     * Patch adds, updates or remove given labels without modifying others.
      *
      * @generated from field: metalstack.api.v2.LabelsPatch patch = 2;
      */
@@ -155,20 +155,20 @@ export const UpdateLabelsSchema: GenMessage<UpdateLabels> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_common, 3);
 
 /**
- * LabelsPatch adds, updates or remove given labels without modifying others
+ * LabelsPatch adds, updates or remove given labels without modifying others.
  *
  * @generated from message metalstack.api.v2.LabelsPatch
  */
 export type LabelsPatch = Message<"metalstack.api.v2.LabelsPatch"> & {
   /**
-   * Update labels. New ones will be added, existing ones overwritten
+   * Update labels. New ones will be added, existing ones overwritten.
    *
    * @generated from field: metalstack.api.v2.Labels update = 1;
    */
   update?: Labels | undefined;
 
   /**
-   * Remove labels by key
+   * Remove labels by key.
    *
    * @generated from field: repeated string remove = 2;
    */
@@ -183,21 +183,21 @@ export const LabelsPatchSchema: GenMessage<LabelsPatch> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_common, 4);
 
 /**
- * UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled
+ * UpdateMeta must be provided with every UpdateRequest to define how optimistic locking should be handled.
  *
  * @generated from message metalstack.api.v2.UpdateMeta
  */
 export type UpdateMeta = Message<"metalstack.api.v2.UpdateMeta"> & {
   /**
-   * UpdatedAt is the date when this entity was updated
-   * must be part of the update request to ensure optimistic locking
+   * UpdatedAt is the date when this entity was updated.
+   * Must be part of the update request to ensure optimistic locking.
    *
    * @generated from field: google.protobuf.Timestamp updated_at = 1;
    */
   updatedAt?: Timestamp | undefined;
 
   /**
-   * LockingStrategy to be used for this update request
+   * LockingStrategy to be used for this update request.
    *
    * @generated from field: metalstack.api.v2.OptimisticLockingStrategy locking_strategy = 2;
    */
@@ -212,42 +212,42 @@ export const UpdateMetaSchema: GenMessage<UpdateMeta> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_common, 5);
 
 /**
- * TenantRole specifies what role a logged in user needs to call this tenant scoped service
+ * TenantRole specifies what role a logged in user needs to call this tenant scoped service.
  *
  * @generated from enum metalstack.api.v2.TenantRole
  */
 export enum TenantRole {
   /**
-   * TENANT_ROLE_UNSPECIFIED is not specified
+   * TENANT_ROLE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: TENANT_ROLE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method
+   * TENANT_ROLE_OWNER the logged in user needs at least owner role to call this method.
    *
    * @generated from enum value: TENANT_ROLE_OWNER = 1;
    */
   OWNER = 1,
 
   /**
-   * TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+   * TENANT_ROLE_EDITOR the logged in user needs at least editor role to call this method.
    *
    * @generated from enum value: TENANT_ROLE_EDITOR = 2;
    */
   EDITOR = 2,
 
   /**
-   * TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+   * TENANT_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
    *
    * @generated from enum value: TENANT_ROLE_VIEWER = 3;
    */
   VIEWER = 3,
 
   /**
-   * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method
-   * The guest role is assumed by users who are invited to a tenant's project without them
+   * TENANT_ROLE_GUEST the logged in user needs at least guest role to call this method.
+   * The guest role is assumed by users who are invited to a tenant's project without them.
    * having a direct membership within the tenant.
    *
    * @generated from enum value: TENANT_ROLE_GUEST = 4;
@@ -262,34 +262,34 @@ export const TenantRoleSchema: GenEnum<TenantRole> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_common, 0);
 
 /**
- * ProjectRole specifies what role a logged in user needs to call this project scoped service
+ * ProjectRole specifies what role a logged in user needs to call this project scoped service.
  *
  * @generated from enum metalstack.api.v2.ProjectRole
  */
 export enum ProjectRole {
   /**
-   * PROJECT_ROLE_UNSPECIFIED is not specified
+   * PROJECT_ROLE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: PROJECT_ROLE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method
+   * PROJECT_ROLE_OWNER the logged in user needs at least owner role to call this method.
    *
    * @generated from enum value: PROJECT_ROLE_OWNER = 1;
    */
   OWNER = 1,
 
   /**
-   * PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method
+   * PROJECT_ROLE_EDITOR the logged in user needs at least editor role to call this method.
    *
    * @generated from enum value: PROJECT_ROLE_EDITOR = 2;
    */
   EDITOR = 2,
 
   /**
-   * PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+   * PROJECT_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
    *
    * @generated from enum value: PROJECT_ROLE_VIEWER = 3;
    */
@@ -303,27 +303,27 @@ export const ProjectRoleSchema: GenEnum<ProjectRole> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_common, 1);
 
 /**
- * AdminRole specifies what role a logged in user needs to call this admin service
+ * AdminRole specifies what role a logged in user needs to call this admin service.
  *
  * @generated from enum metalstack.api.v2.AdminRole
  */
 export enum AdminRole {
   /**
-   * ADMIN_ROLE_UNSPECIFIED is not specified
+   * ADMIN_ROLE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: ADMIN_ROLE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method
+   * ADMIN_ROLE_EDITOR the logged in user needs at least editor role to call this method.
    *
    * @generated from enum value: ADMIN_ROLE_EDITOR = 1;
    */
   EDITOR = 1,
 
   /**
-   * ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method
+   * ADMIN_ROLE_VIEWER the logged in user needs at least viewer role to call this method.
    *
    * @generated from enum value: ADMIN_ROLE_VIEWER = 2;
    */
@@ -337,27 +337,27 @@ export const AdminRoleSchema: GenEnum<AdminRole> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_common, 2);
 
 /**
- * InfraRole specifies what role a microservice needs to call this infra service
+ * InfraRole specifies what role a microservice needs to call this infra service.
  *
  * @generated from enum metalstack.api.v2.InfraRole
  */
 export enum InfraRole {
   /**
-   * INFRA_ROLE_UNSPECIFIED is not specified
+   * INFRA_ROLE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: INFRA_ROLE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method
+   * INFRA_ROLE_EDITOR a microservice needs at least editor role to call this method.
    *
    * @generated from enum value: INFRA_ROLE_EDITOR = 1;
    */
   EDITOR = 1,
 
   /**
-   * INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method
+   * INFRA_ROLE_VIEWER a microservice needs at least viewer role to call this method.
    *
    * @generated from enum value: INFRA_ROLE_VIEWER = 2;
    */
@@ -371,27 +371,27 @@ export const InfraRoleSchema: GenEnum<InfraRole> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_common, 3);
 
 /**
- * MachineRole specifies what role a microservice needs to call this machine service
+ * MachineRole specifies what role a microservice needs to call this machine service.
  *
  * @generated from enum metalstack.api.v2.MachineRole
  */
 export enum MachineRole {
   /**
-   * MACHINE_ROLE_UNSPECIFIED is not specified
+   * MACHINE_ROLE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: MACHINE_ROLE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method
+   * MACHINE_ROLE_EDITOR a microservice needs at least editor role to call this method.
    *
    * @generated from enum value: MACHINE_ROLE_EDITOR = 1;
    */
   EDITOR = 1,
 
   /**
-   * MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method
+   * MACHINE_ROLE_VIEWER a microservice needs at least viewer role to call this method.
    *
    * @generated from enum value: MACHINE_ROLE_VIEWER = 2;
    */
@@ -405,27 +405,27 @@ export const MachineRoleSchema: GenEnum<MachineRole> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_common, 4);
 
 /**
- * Visibility of a method
+ * Visibility of a method.
  *
  * @generated from enum metalstack.api.v2.Visibility
  */
 export enum Visibility {
   /**
-   * VISIBILITY_UNSPECIFIED is not defined
+   * VISIBILITY_UNSPECIFIED is not defined.
    *
    * @generated from enum value: VISIBILITY_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * VISIBILITY_PUBLIC specifies that this service is accessible without authentication
+   * VISIBILITY_PUBLIC specifies that this service is accessible without authentication.
    *
    * @generated from enum value: VISIBILITY_PUBLIC = 1;
    */
   PUBLIC = 1,
 
   /**
-   * VISIBILITY_SELF restricts calls to the authenticated user only
+   * VISIBILITY_SELF restricts calls to the authenticated user only.
    *
    * @generated from enum value: VISIBILITY_SELF = 2;
    */
@@ -439,29 +439,29 @@ export const VisibilitySchema: GenEnum<Visibility> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_common, 5);
 
 /**
- * Auditing option specified per service method
- * by default all service methods are included
- * add the auditing option if you want to exclude a method in auditing
+ * Auditing option specified per service method.
+ * By default all service methods are included.
+ * Add the auditing option if you want to exclude a method in auditing.
  *
  * @generated from enum metalstack.api.v2.Auditing
  */
 export enum Auditing {
   /**
-   * AUDITING_UNSPECIFIED is not specified
+   * AUDITING_UNSPECIFIED is not specified.
    *
    * @generated from enum value: AUDITING_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * AUDITING_INCLUDED if a method is annotated with this, all calls are audited
+   * AUDITING_INCLUDED if a method is annotated with this, all calls are audited.
    *
    * @generated from enum value: AUDITING_INCLUDED = 1;
    */
   INCLUDED = 1,
 
   /**
-   * AUDITING_EXCLUDED if a method is annotated with this, no calls are audited
+   * AUDITING_EXCLUDED if a method is annotated with this, no calls are audited.
    *
    * @generated from enum value: AUDITING_EXCLUDED = 2;
    */
@@ -476,28 +476,28 @@ export const AuditingSchema: GenEnum<Auditing> = /*@__PURE__*/
 
 /**
  * OptimisticLockingStrategy defines how optimistic locking should be handled.
- * It defaults to client side, which requires the UpdatedAt timestamp to be provided
+ * It defaults to client side, which requires the UpdatedAt timestamp to be provided.
  *
  * @generated from enum metalstack.api.v2.OptimisticLockingStrategy
  */
 export enum OptimisticLockingStrategy {
   /**
-   * OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side
+   * OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED same as client side.
    *
    * @generated from enum value: OPTIMISTIC_LOCKING_STRATEGY_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified
+   * OPTIMISTIC_LOCKING_STRATEGY_CLIENT requires UpdatedAt to be specified.
    *
    * @generated from enum value: OPTIMISTIC_LOCKING_STRATEGY_CLIENT = 1;
    */
   CLIENT = 1,
 
   /**
-   * OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt
-   * and fetches the most recent entity before updating with the given values with the update request
+   * OPTIMISTIC_LOCKING_STRATEGY_SERVER allows to omit UpdatedAt.
+   * and fetches the most recent entity before updating with the given values with the update request.
    *
    * @generated from enum value: OPTIMISTIC_LOCKING_STRATEGY_SERVER = 2;
    */
@@ -511,7 +511,7 @@ export const OptimisticLockingStrategySchema: GenEnum<OptimisticLockingStrategy>
   enumDesc(file_metalstack_api_v2_common, 7);
 
 /**
- * TenantRoles are used to define the tenant role a logged in user must provide to call this method
+ * TenantRoles are used to define the tenant role a logged in user must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.TenantRole tenant_roles = 51000;
  */
@@ -519,7 +519,7 @@ export const tenant_roles: GenExtension<MethodOptions, TenantRole[]> = /*@__PURE
   extDesc(file_metalstack_api_v2_common, 0);
 
 /**
- * ProjectRoles are used to define the project role a logged in user must provide to call this method
+ * ProjectRoles are used to define the project role a logged in user must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.ProjectRole project_roles = 51001;
  */
@@ -527,7 +527,7 @@ export const project_roles: GenExtension<MethodOptions, ProjectRole[]> = /*@__PU
   extDesc(file_metalstack_api_v2_common, 1);
 
 /**
- * AdminRoles are used to define the admin role a logged in user must provide to call this method
+ * AdminRoles are used to define the admin role a logged in user must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.AdminRole admin_roles = 51002;
  */
@@ -535,7 +535,7 @@ export const admin_roles: GenExtension<MethodOptions, AdminRole[]> = /*@__PURE__
   extDesc(file_metalstack_api_v2_common, 2);
 
 /**
- * Visibility defines the visibility of this method, this is used to have public or self visible methods
+ * Visibility defines the visibility of this method, this is used to have public or self visible methods.
  *
  * @generated from extension: metalstack.api.v2.Visibility visibility = 51003;
  */
@@ -543,7 +543,7 @@ export const visibility: GenExtension<MethodOptions, Visibility> = /*@__PURE__*/
   extDesc(file_metalstack_api_v2_common, 3);
 
 /**
- * Auditing defines if calls to this method should be audited or not
+ * Auditing defines if calls to this method should be audited or not.
  *
  * @generated from extension: metalstack.api.v2.Auditing auditing = 51004;
  */
@@ -551,7 +551,7 @@ export const auditing: GenExtension<MethodOptions, Auditing> = /*@__PURE__*/
   extDesc(file_metalstack_api_v2_common, 4);
 
 /**
- * InfraRoles are used to define the infra role a microservice must provide to call this method
+ * InfraRoles are used to define the infra role a microservice must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.InfraRole infra_roles = 51005;
  */
@@ -559,7 +559,7 @@ export const infra_roles: GenExtension<MethodOptions, InfraRole[]> = /*@__PURE__
   extDesc(file_metalstack_api_v2_common, 5);
 
 /**
- * MachineRole are used to define which machine role a microservice must provide to call this method
+ * MachineRole are used to define which machine role a microservice must provide to call this method.
  *
  * @generated from extension: repeated metalstack.api.v2.MachineRole machine_roles = 51006;
  */
@@ -567,7 +567,7 @@ export const machine_roles: GenExtension<MethodOptions, MachineRole[]> = /*@__PU
   extDesc(file_metalstack_api_v2_common, 6);
 
 /**
- * StringValue which can be set to a enum
+ * StringValue which can be set to a enum.
  *
  * @generated from extension: string enum_string_value = 52000;
  */

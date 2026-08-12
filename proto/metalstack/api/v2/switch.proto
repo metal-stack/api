@@ -64,13 +64,13 @@ message SwitchOS {
 
 // SwitchNic represents a front panel port and its configuration.
 message SwitchNic {
-  // Name of the switch port
+  // Name of the switch port.
   string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Identifier of the port
+  // Identifier of the port.
   string identifier = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // MAC address of the port
+  // MAC address of the port.
   string mac = 3 [(buf.validate.field).string.(macaddress) = true];
-  // VRF name if the port is bound in one
+  // VRF name if the port is bound in one.
   optional string vrf = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // NicState describes the current state of the switch port.
   optional NicState state = 5;
@@ -82,9 +82,9 @@ message SwitchNic {
 
 // BGPFilter can be used to restrict BGP based on CIDRs and VNIs.
 message BGPFilter {
-  // CIDRs for which to allow BGP
+  // CIDRs for which to allow BGP.
   repeated string cidrs = 1 [(buf.validate.field).repeated.(metalstack.api.v2.prefixes) = true];
-  // VNIs for which to allow BGP
+  // VNIs for which to allow BGP.
   repeated string vnis = 2 [(buf.validate.field).repeated.items.string = {
     min_len: 2
     max_len: 128

@@ -74,29 +74,29 @@ type TenantServiceClient interface {
 	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// Returns the list of tenants.
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
-	// Get a tenant
+	// Get a tenant.
 	Get(context.Context, *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error)
-	// Update a tenant
+	// Update a tenant.
 	Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error)
-	// Delete a tenant
+	// Delete a tenant.
 	Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error)
-	// Leave removes a member from a tenant
+	// Leave removes a member from a tenant.
 	Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error)
-	// AddMember adds a member to a tenant
+	// AddMember adds a member to a tenant.
 	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
-	// RemoveMember removes a member from a tenant
+	// RemoveMember removes a member from a tenant.
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
-	// UpdateMember update a member of a tenant
+	// UpdateMember update a member of a tenant.
 	UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error)
-	// Invite a user to a tenant
+	// Invite a user to a tenant.
 	Invite(context.Context, *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error)
-	// InviteAccept is called from a user to accept an invitation
+	// InviteAccept is called from a user to accept an invitation.
 	InviteAccept(context.Context, *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error)
-	// InviteDelete deletes a pending invitation
+	// InviteDelete deletes a pending invitation.
 	InviteDelete(context.Context, *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error)
-	// InvitesList list all invites to a tenant
+	// InvitesList list all invites to a tenant.
 	InvitesList(context.Context, *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error)
-	// InviteGet get an invite
+	// InviteGet get an invite.
 	InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error)
 }
 
@@ -348,29 +348,29 @@ type TenantServiceHandler interface {
 	Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error)
 	// Returns the list of tenants.
 	List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error)
-	// Get a tenant
+	// Get a tenant.
 	Get(context.Context, *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error)
-	// Update a tenant
+	// Update a tenant.
 	Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error)
-	// Delete a tenant
+	// Delete a tenant.
 	Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error)
-	// Leave removes a member from a tenant
+	// Leave removes a member from a tenant.
 	Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error)
-	// AddMember adds a member to a tenant
+	// AddMember adds a member to a tenant.
 	AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error)
-	// RemoveMember removes a member from a tenant
+	// RemoveMember removes a member from a tenant.
 	RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error)
-	// UpdateMember update a member of a tenant
+	// UpdateMember update a member of a tenant.
 	UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error)
-	// Invite a user to a tenant
+	// Invite a user to a tenant.
 	Invite(context.Context, *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error)
-	// InviteAccept is called from a user to accept an invitation
+	// InviteAccept is called from a user to accept an invitation.
 	InviteAccept(context.Context, *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error)
-	// InviteDelete deletes a pending invitation
+	// InviteDelete deletes a pending invitation.
 	InviteDelete(context.Context, *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error)
-	// InvitesList list all invites to a tenant
+	// InvitesList list all invites to a tenant.
 	InvitesList(context.Context, *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error)
-	// InviteGet get an invite
+	// InviteGet get an invite.
 	InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error)
 }
 

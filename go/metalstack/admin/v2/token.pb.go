@@ -26,7 +26,7 @@ const (
 // TokenServiceListRequest is the request payload for listing tokens.
 type TokenServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for tokens
+	// Query for tokens.
 	Query         *v2.TokenQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -72,7 +72,7 @@ func (x *TokenServiceListRequest) GetQuery() *v2.TokenQuery {
 // TokenServiceListResponse is the response payload for listing tokens.
 type TokenServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tokens contains the list of tokens
+	// Tokens contains the list of tokens.
 	Tokens        []*v2.Token `protobuf:"bytes,1,rep,name=tokens,proto3" json:"tokens,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -118,9 +118,9 @@ func (x *TokenServiceListResponse) GetTokens() []*v2.Token {
 // TokenServiceRevokeRequest is the request payload for revoking a token.
 type TokenServiceRevokeRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid is the uuid of the token which should be revoked
+	// Uuid is the uuid of the token which should be revoked.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// User is the id of the user for which the token should be revoked
+	// User is the id of the user for which the token should be revoked.
 	User          string `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -210,9 +210,9 @@ func (*TokenServiceRevokeResponse) Descriptor() ([]byte, []int) {
 // TokenServiceCreateRequest is the request payload for creating a token.
 type TokenServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// User this token should be created for, if omitted, user is derived from caller
+	// User this token should be created for, if omitted, user is derived from caller.
 	User *string `protobuf:"bytes,1,opt,name=user,proto3,oneof" json:"user,omitempty"`
-	// TokenCreateRequest which should be created
+	// TokenCreateRequest which should be created.
 	TokenCreateRequest *v2.TokenServiceCreateRequest `protobuf:"bytes,2,opt,name=token_create_request,json=tokenCreateRequest,proto3" json:"token_create_request,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
@@ -265,9 +265,9 @@ func (x *TokenServiceCreateRequest) GetTokenCreateRequest() *v2.TokenServiceCrea
 // TokenServiceCreateResponse is the response payload for creating a token.
 type TokenServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Token contains the created token
+	// Token contains the created token.
 	Token *v2.Token `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	// Secret is the body if the JWT token, should be used in API requests as bearer token
+	// Secret is the body if the JWT token, should be used in API requests as bearer token.
 	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

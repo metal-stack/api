@@ -181,28 +181,28 @@ export const SwitchOSSchema: GenMessage<SwitchOS> = /*@__PURE__*/
  */
 export type SwitchNic = Message<"metalstack.api.v2.SwitchNic"> & {
   /**
-   * Name of the switch port
+   * Name of the switch port.
    *
    * @generated from field: string name = 1;
    */
   name: string;
 
   /**
-   * Identifier of the port
+   * Identifier of the port.
    *
    * @generated from field: string identifier = 2;
    */
   identifier: string;
 
   /**
-   * MAC address of the port
+   * MAC address of the port.
    *
    * @generated from field: string mac = 3;
    */
   mac: string;
 
   /**
-   * VRF name if the port is bound in one
+   * VRF name if the port is bound in one.
    *
    * @generated from field: optional string vrf = 4;
    */
@@ -244,14 +244,14 @@ export const SwitchNicSchema: GenMessage<SwitchNic> = /*@__PURE__*/
  */
 export type BGPFilter = Message<"metalstack.api.v2.BGPFilter"> & {
   /**
-   * CIDRs for which to allow BGP
+   * CIDRs for which to allow BGP.
    *
    * @generated from field: repeated string cidrs = 1;
    */
   cidrs: string[];
 
   /**
-   * VNIs for which to allow BGP
+   * VNIs for which to allow BGP.
    *
    * @generated from field: repeated string vnis = 2;
    */

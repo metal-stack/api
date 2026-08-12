@@ -35,70 +35,70 @@ service ImageService {
 
 // ImageServiceCreateRequest is the request payload for creating an image.
 message ImageServiceCreateRequest {
-  // Image is the image to create
+  // Image is the image to create.
   metalstack.api.v2.Image image = 1;
 }
 
 // ImageServiceCreateResponse is the response payload for creating an image.
 message ImageServiceCreateResponse {
-  // Image contains the created image
+  // Image contains the created image.
   metalstack.api.v2.Image image = 1;
 }
 
 // ImageServiceUpdateRequest is the request payload for updating an image.
 message ImageServiceUpdateRequest {
-  // Id of this image
+  // Id of this image.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  // UpdateMeta contains the timestamp and strategy to be used in this update request.
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
-  // URL where this image is located
+  // URL where this image is located.
   optional string url = 3 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Name of this image
+  // Name of this image.
   optional string name = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this image
+  // Description of this image.
   optional string description = 5 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Features of this image
+  // Features of this image.
   repeated metalstack.api.v2.ImageFeature features = 6 [(buf.validate.field).repeated = {
     unique: true
     items: {
       enum: {defined_only: true}
     }
   }];
-  // Classification of this image
+  // Classification of this image.
   metalstack.api.v2.ImageClassification classification = 7 [(buf.validate.field).enum.defined_only = true];
 
-  // ExpiresAt indicates that usage is not possible after this date
+  // ExpiresAt indicates that usage is not possible after this date.
   google.protobuf.Timestamp expires_at = 8;
-  // Labels to update on this image
+  // Labels to update on this image.
   optional metalstack.api.v2.UpdateLabels labels = 9;
 }
 
 // ImageServiceUpdateResponse is the response payload for updating an image.
 message ImageServiceUpdateResponse {
-  // Image contains the updated image
+  // Image contains the updated image.
   metalstack.api.v2.Image image = 1;
 }
 
 // ImageServiceDeleteRequest is the request payload for deleting an image.
 message ImageServiceDeleteRequest {
-  // ID of the image to delete
+  // ID of the image to delete.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
 }
 
 // ImageServiceDeleteResponse is the response payload for deleting an image.
 message ImageServiceDeleteResponse {
-  // Image contains the deleted image
+  // Image contains the deleted image.
   metalstack.api.v2.Image image = 1;
 }
 
 // ImageServiceUsageRequest is the request payload for getting image usage.
 message ImageServiceUsageRequest {
-  // Query for which images the usage should be reported
+  // Query for which images the usage should be reported.
   metalstack.api.v2.ImageQuery query = 1;
 }
 
 // ImageServiceUsageResponse is the response payload for getting image usage.
 message ImageServiceUsageResponse {
-  // Images contains usage information
+  // Images contains usage information.
   repeated metalstack.api.v2.ImageUsage image_usage = 1;
 }

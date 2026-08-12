@@ -12,7 +12,7 @@ export declare const file_metalstack_admin_v2_ip: GenFile;
  */
 export type IPServiceListRequest = Message<"metalstack.admin.v2.IPServiceListRequest"> & {
     /**
-     * Query to search for IP addresses
+     * Query to search for IP addresses.
      *
      * @generated from field: metalstack.api.v2.IPQuery query = 1;
      */
@@ -30,7 +30,7 @@ export declare const IPServiceListRequestSchema: GenMessage<IPServiceListRequest
  */
 export type IPServiceListResponse = Message<"metalstack.admin.v2.IPServiceListResponse"> & {
     /**
-     * IPs contains the list of IP addresses
+     * IPs contains the list of IP addresses.
      *
      * @generated from field: repeated metalstack.api.v2.IP ips = 1;
      */
