@@ -94,7 +94,7 @@ message SwitchServiceUpdateRequest {
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // ReplaceMode is used to mark a switch ready for replacement.
   optional metalstack.api.v2.SwitchReplaceMode replace_mode = 5 [(buf.validate.field).enum.defined_only = true];
-  // ManagementIp is the switch's IP for management access
+  // ManagementIp is the switch's IP for management access.
   optional string management_ip = 6 [(buf.validate.field).string.ip = true];
   // ManagementUser is the user name to use for management access.
   optional string management_user = 7 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];

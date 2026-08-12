@@ -23,10 +23,10 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// MachineServiceGetRequest is the request payload for a machine get request
+// MachineServiceGetRequest is the request payload for a machine get request.
 type MachineServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to get
+	// UUID of the machine to get.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -69,10 +69,10 @@ func (x *MachineServiceGetRequest) GetUuid() string {
 	return ""
 }
 
-// MachineServiceGetResponse is the response payload for a machine get request
+// MachineServiceGetResponse is the response payload for a machine get request.
 type MachineServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Machine is the machine requested
+	// Machine is the machine requested.
 	Machine       *v2.Machine `protobuf:"bytes,1,opt,name=machine,proto3" json:"machine,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,13 +115,13 @@ func (x *MachineServiceGetResponse) GetMachine() *v2.Machine {
 	return nil
 }
 
-// MachineServiceListRequest is the request payload for a machine list request
+// MachineServiceListRequest is the request payload for a machine list request.
 type MachineServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query to list one or more machines
+	// Query to list one or more machines.
 	Query *v2.MachineQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	// Partition for which machines should be listed, could be left empty if only one partition is present
-	// otherwise an error is thrown that the partition must be specified
+	// Partition for which machines should be listed, could be left empty if only one partition is present.
+	// otherwise an error is thrown that the partition must be specified.
 	Partition     *string `protobuf:"bytes,2,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -171,10 +171,10 @@ func (x *MachineServiceListRequest) GetPartition() string {
 	return ""
 }
 
-// MachineServiceListResponse is the response payload for a machine list request
+// MachineServiceListResponse is the response payload for a machine list request.
 type MachineServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Machines are the machines requested by a list request
+	// Machines are the machines requested by a list request.
 	Machines      []*v2.Machine `protobuf:"bytes,1,rep,name=machines,proto3" json:"machines,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -217,10 +217,10 @@ func (x *MachineServiceListResponse) GetMachines() []*v2.Machine {
 	return nil
 }
 
-// MachineServiceDeleteRequest is the request payload for a machine delete request
+// MachineServiceDeleteRequest is the request payload for a machine delete request.
 type MachineServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to permanently delete
+	// UUID of the machine to permanently delete.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -263,10 +263,10 @@ func (x *MachineServiceDeleteRequest) GetUuid() string {
 	return ""
 }
 
-// MachineServiceDeleteResponse is the response payload for a machine delete request
+// MachineServiceDeleteResponse is the response payload for a machine delete request.
 type MachineServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Machine is the machine permanently deleted
+	// Machine is the machine permanently deleted.
 	Machine       *v2.Machine `protobuf:"bytes,1,opt,name=machine,proto3" json:"machine,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -309,12 +309,12 @@ func (x *MachineServiceDeleteResponse) GetMachine() *v2.Machine {
 	return nil
 }
 
-// MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+// MachineServiceBMCCommandRequest is the request payload for a machine bmc command.
 type MachineServiceBMCCommandRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to send the command to
+	// UUID of the machine to send the command to.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Command to send to the bmc of the machine
+	// Command to send to the bmc of the machine.
 	Command       v2.MachineBMCCommand `protobuf:"varint,2,opt,name=command,proto3,enum=metalstack.api.v2.MachineBMCCommand" json:"command,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -364,7 +364,7 @@ func (x *MachineServiceBMCCommandRequest) GetCommand() v2.MachineBMCCommand {
 	return v2.MachineBMCCommand(0)
 }
 
-// MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+// MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
 type MachineServiceBMCCommandResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -401,10 +401,10 @@ func (*MachineServiceBMCCommandResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_machine_proto_rawDescGZIP(), []int{7}
 }
 
-// MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+// MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
 type MachineServiceGetBMCRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to get
+	// UUID of the machine to get.
 	Uuid          string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -447,12 +447,12 @@ func (x *MachineServiceGetBMCRequest) GetUuid() string {
 	return ""
 }
 
-// MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+// MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
 type MachineServiceGetBMCResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine
+	// UUID of the machine.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// BMC contains the BMC details of this machine
+	// BMC contains the BMC details of this machine.
 	Bmc           *v2.MachineBMCReport `protobuf:"bytes,2,opt,name=bmc,proto3" json:"bmc,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -502,10 +502,10 @@ func (x *MachineServiceGetBMCResponse) GetBmc() *v2.MachineBMCReport {
 	return nil
 }
 
-// MachineServiceListBMCRequest is the request payload for a machine listbmc request
+// MachineServiceListBMCRequest is the request payload for a machine listbmc request.
 type MachineServiceListBMCRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query to list one or more BMCs of many machines
+	// Query to list one or more BMCs of many machines.
 	Query         *v2.MachineBMCQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -548,10 +548,10 @@ func (x *MachineServiceListBMCRequest) GetQuery() *v2.MachineBMCQuery {
 	return nil
 }
 
-// MachineServiceListBMCResponse is the response payload for a machine listbmc request
+// MachineServiceListBMCResponse is the response payload for a machine listbmc request.
 type MachineServiceListBMCResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// BMCReports maps the bmc report per machine uuid
+	// BMCReports maps the bmc report per machine uuid.
 	BmcReports    map[string]*v2.MachineBMCReport `protobuf:"bytes,1,rep,name=bmc_reports,json=bmcReports,proto3" json:"bmc_reports,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -597,10 +597,10 @@ func (x *MachineServiceListBMCResponse) GetBmcReports() map[string]*v2.MachineBM
 // MachineServiceConsolePasswordRequest is the request payload for getting the console password.
 type MachineServiceConsolePasswordRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to get
+	// UUID of the machine to get.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Reason must be provided why access to the console is requested
-	// Reason is only forwarded to an audit sink
+	// Reason must be provided why access to the console is requested.
+	// Reason is only forwarded to an audit sink.
 	Reason        string `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -653,9 +653,9 @@ func (x *MachineServiceConsolePasswordRequest) GetReason() string {
 // MachineServiceConsolePasswordResponse is the response payload for getting the console password.
 type MachineServiceConsolePasswordResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to get
+	// UUID of the machine to get.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Password to access the console
+	// Password to access the console.
 	Password      string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -705,15 +705,15 @@ func (x *MachineServiceConsolePasswordResponse) GetPassword() string {
 	return ""
 }
 
-// MachineServiceSetStateRequest is the request payload for a machine set state request
+// MachineServiceSetStateRequest is the request payload for a machine set state request.
 type MachineServiceSetStateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID of the machine to set the state to
+	// UUID of the machine to set the state to.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
 	// State the state of this machine.
 	// If State set to available, description is also cleared.
 	State v2.MachineState `protobuf:"varint,2,opt,name=state,proto3,enum=metalstack.api.v2.MachineState" json:"state,omitempty"`
-	// Description a description why this machine is in the given state
+	// Description a description why this machine is in the given state.
 	Description   string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -770,7 +770,7 @@ func (x *MachineServiceSetStateRequest) GetDescription() string {
 	return ""
 }
 
-// MachineServiceSetStateResponse is the response payload for a machine set state request
+// MachineServiceSetStateResponse is the response payload for a machine set state request.
 type MachineServiceSetStateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Machine with the changed state.
@@ -816,10 +816,10 @@ func (x *MachineServiceSetStateResponse) GetMachine() *v2.Machine {
 	return nil
 }
 
-// MachineServiceIssuesRequest is the request payload for a machine issues request
+// MachineServiceIssuesRequest is the request payload for a machine issues request.
 type MachineServiceIssuesRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query which machine issues to include
+	// Query which machine issues to include.
 	Query         *v2.MachineIssuesQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -862,10 +862,10 @@ func (x *MachineServiceIssuesRequest) GetQuery() *v2.MachineIssuesQuery {
 	return nil
 }
 
-// MachineServiceIssuesResponse is the response payload for a machine issues request
+// MachineServiceIssuesResponse is the response payload for a machine issues request.
 type MachineServiceIssuesResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Issues is the result of the issues query
+	// Issues is the result of the issues query.
 	Issues        []*v2.MachineIssues `protobuf:"bytes,1,rep,name=issues,proto3" json:"issues,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

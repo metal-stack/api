@@ -29,36 +29,36 @@ service ComponentService {
 
 // ComponentServiceListRequest is the request payload for listing components.
 message ComponentServiceListRequest {
-  // Query filters components
+  // Query filters components.
   metalstack.api.v2.ComponentQuery query = 1;
 }
 
 // ComponentServiceListResponse is the response payload for listing components.
 message ComponentServiceListResponse {
-  // Components contains the list of components
+  // Components contains the list of components.
   repeated metalstack.api.v2.Component components = 1;
 }
 
 // ComponentServiceGetRequest is the request payload for getting a component.
 message ComponentServiceGetRequest {
-  // UUID identifies the component to get
+  // UUID identifies the component to get.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
 // ComponentServiceGetResponse is the response payload for getting a component.
 message ComponentServiceGetResponse {
-  // Component contains the retrieved component
+  // Component contains the retrieved component.
   metalstack.api.v2.Component component = 1;
 }
 
 // ComponentServiceDeleteRequest is the request payload for deleting a component.
 message ComponentServiceDeleteRequest {
-  // UUID identifies the component to delete
+  // UUID identifies the component to delete.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
 // ComponentServiceDeleteResponse is the response payload for deleting a component.
 message ComponentServiceDeleteResponse {
-  // Component contains the deleted component
+  // Component contains the deleted component.
   metalstack.api.v2.Component component = 1;
 }

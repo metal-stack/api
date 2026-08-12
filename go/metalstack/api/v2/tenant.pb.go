@@ -23,22 +23,22 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Tenant is a customer of the platform
+// Tenant is a customer of the platform.
 type Tenant struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Meta for this tenant
+	// Meta for this tenant.
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
-	// Name of the tenant
+	// Name of the tenant.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Email of the tenant
+	// Email of the tenant.
 	Email string `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
-	// Description of this tenant
+	// Description of this tenant.
 	Description string `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
-	// AvatarUrl of the tenant
+	// AvatarUrl of the tenant.
 	AvatarUrl string `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
-	// CreatedBy stores who created this tenant
+	// CreatedBy stores who created this tenant.
 	CreatedBy     string `protobuf:"bytes,7,opt,name=created_by,json=createdBy,proto3" json:"created_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -123,18 +123,18 @@ func (x *Tenant) GetCreatedBy() string {
 	return ""
 }
 
-// TenantMember defines a user that participates in a tenant
+// TenantMember defines a user that participates in a tenant.
 type TenantMember struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id is the user id of the member
+	// Id is the user id of the member.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Role is the role of the member
+	// Role is the role of the member.
 	Role TenantRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.TenantRole" json:"role,omitempty"`
-	// Projects in which a user is a direct member
+	// Projects in which a user is a direct member.
 	Projects []string `protobuf:"bytes,3,rep,name=projects,proto3" json:"projects,omitempty"`
-	// CreatedAt the date when the member was added to the tenant
+	// CreatedAt the date when the member was added to the tenant.
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	// Meta for this tenant member
+	// Meta for this tenant member.
 	Meta          *Meta `protobuf:"bytes,5,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -205,26 +205,26 @@ func (x *TenantMember) GetMeta() *Meta {
 	return nil
 }
 
-// TenantInvite defines invite to tenant
+// TenantInvite defines invite to tenant.
 type TenantInvite struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Secret is the secret part of the invite, typically part of the url
+	// Secret is the secret part of the invite, typically part of the url.
 	Secret string `protobuf:"bytes,1,opt,name=secret,proto3" json:"secret,omitempty"`
-	// TargetTenant is the tenant id for which this invite was created
+	// TargetTenant is the tenant id for which this invite was created.
 	TargetTenant string `protobuf:"bytes,2,opt,name=target_tenant,json=targetTenant,proto3" json:"target_tenant,omitempty"`
-	// Role is the role in this tenant the user will get after accepting the invitation
+	// Role is the role in this tenant the user will get after accepting the invitation.
 	Role TenantRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.TenantRole" json:"role,omitempty"`
-	// Joined is false as long as a user has not accepted the invite
+	// Joined is false as long as a user has not accepted the invite.
 	Joined bool `protobuf:"varint,4,opt,name=joined,proto3" json:"joined,omitempty"`
-	// TargetTenantName is the tenant name for which this invite was created
+	// TargetTenantName is the tenant name for which this invite was created.
 	TargetTenantName string `protobuf:"bytes,5,opt,name=target_tenant_name,json=targetTenantName,proto3" json:"target_tenant_name,omitempty"`
-	// Tenant is the login of the tenant inviting another user to join this tenant
+	// Tenant is the login of the tenant inviting another user to join this tenant.
 	Tenant string `protobuf:"bytes,6,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// TenantName is the name of the tenant inviting another user to join this tenant
+	// TenantName is the name of the tenant inviting another user to join this tenant.
 	TenantName string `protobuf:"bytes,7,opt,name=tenant_name,json=tenantName,proto3" json:"tenant_name,omitempty"`
-	// ExpiresAt the date when this invite expires
+	// ExpiresAt the date when this invite expires.
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
-	// JoinedAt the date when the member accepted this invite
+	// JoinedAt the date when the member accepted this invite.
 	JoinedAt      *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -323,10 +323,10 @@ func (x *TenantInvite) GetJoinedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-// TenantServiceListRequest is the request payload of the tenant list request
+// TenantServiceListRequest is the request payload of the tenant list request.
 type TenantServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for tenants
+	// Query for tenants.
 	Query         *TenantQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -369,16 +369,16 @@ func (x *TenantServiceListRequest) GetQuery() *TenantQuery {
 	return nil
 }
 
-// TenantQuery is used to search tenants
+// TenantQuery is used to search tenants.
 type TenantQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id filters tenants by login
+	// Id filters tenants by login.
 	Login *string `protobuf:"bytes,1,opt,name=login,proto3,oneof" json:"login,omitempty"`
-	// Name filters tenants by name
+	// Name filters tenants by name.
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Labels lists only projects containing the given labels
+	// Labels lists only projects containing the given labels.
 	Labels *Labels `protobuf:"bytes,3,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
-	// Paging details for the list request
+	// Paging details for the list request.
 	Paging        *Paging `protobuf:"bytes,4,opt,name=paging,proto3" json:"paging,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -442,10 +442,10 @@ func (x *TenantQuery) GetPaging() *Paging {
 	return nil
 }
 
-// TenantServiceGetRequest is the request payload of the tenant get request
+// TenantServiceGetRequest is the request payload of the tenant get request.
 type TenantServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login         string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -488,18 +488,18 @@ func (x *TenantServiceGetRequest) GetLogin() string {
 	return ""
 }
 
-// TenantServiceCreateRequest is the request payload of the tenant create request
+// TenantServiceCreateRequest is the request payload of the tenant create request.
 type TenantServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of this tenant
+	// Name of this tenant.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this tenant
+	// Description of this tenant.
 	Description *string `protobuf:"bytes,2,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Email of the tenant, if not set will be inherited from the creator
+	// Email of the tenant, if not set will be inherited from the creator.
 	Email *string `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	// AvatarUrl of the tenant
+	// AvatarUrl of the tenant.
 	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// Labels on the tenant
+	// Labels on the tenant.
 	Labels        *Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -570,22 +570,22 @@ func (x *TenantServiceCreateRequest) GetLabels() *Labels {
 	return nil
 }
 
-// TenantServiceUpdateRequest is the request payload of the tenant update request
+// TenantServiceUpdateRequest is the request payload of the tenant update request.
 type TenantServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Name of the tenant
+	// Name of the tenant.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Email of the tenant
+	// Email of the tenant.
 	Email *string `protobuf:"bytes,4,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	// Description of this tenant
+	// Description of this tenant.
 	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// AvatarUrl of the tenant
+	// AvatarUrl of the tenant.
 	AvatarUrl *string `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// Labels on the tenant
+	// Labels on the tenant.
 	Labels        *UpdateLabels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -670,10 +670,10 @@ func (x *TenantServiceUpdateRequest) GetLabels() *UpdateLabels {
 	return nil
 }
 
-// TenantServiceDeleteRequest is the request payload of the tenant delete request
+// TenantServiceDeleteRequest is the request payload of the tenant delete request.
 type TenantServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login         string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -716,12 +716,12 @@ func (x *TenantServiceDeleteRequest) GetLogin() string {
 	return ""
 }
 
-// TenantServiceGetResponse is the response payload of the tenant get request
+// TenantServiceGetResponse is the response payload of the tenant get request.
 type TenantServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenant is the tenant
+	// Tenant is the tenant.
 	Tenant *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// TenantMembers of this tenant
+	// TenantMembers of this tenant.
 	TenantMembers []*TenantMember `protobuf:"bytes,2,rep,name=tenant_members,json=tenantMembers,proto3" json:"tenant_members,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -771,10 +771,10 @@ func (x *TenantServiceGetResponse) GetTenantMembers() []*TenantMember {
 	return nil
 }
 
-// TenantServiceListResponse is the response payload of the tenant list request
+// TenantServiceListResponse is the response payload of the tenant list request.
 type TenantServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenants is the list of tenants
+	// Tenants is the list of tenants.
 	Tenants       []*Tenant `protobuf:"bytes,1,rep,name=tenants,proto3" json:"tenants,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -817,10 +817,10 @@ func (x *TenantServiceListResponse) GetTenants() []*Tenant {
 	return nil
 }
 
-// TenantServiceCreateResponse is the response payload of the tenant create request
+// TenantServiceCreateResponse is the response payload of the tenant create request.
 type TenantServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenant is the tenant
+	// Tenant is the tenant.
 	Tenant        *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -863,10 +863,10 @@ func (x *TenantServiceCreateResponse) GetTenant() *Tenant {
 	return nil
 }
 
-// TenantServiceUpdateResponse is the response payload of the tenant update request
+// TenantServiceUpdateResponse is the response payload of the tenant update request.
 type TenantServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenant is the tenant
+	// Tenant is the tenant.
 	Tenant        *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -909,10 +909,10 @@ func (x *TenantServiceUpdateResponse) GetTenant() *Tenant {
 	return nil
 }
 
-// TenantServiceDeleteResponse is the response payload of the tenant delete request
+// TenantServiceDeleteResponse is the response payload of the tenant delete request.
 type TenantServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenant is the tenant
+	// Tenant is the tenant.
 	Tenant        *Tenant `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -955,12 +955,12 @@ func (x *TenantServiceDeleteResponse) GetTenant() *Tenant {
 	return nil
 }
 
-// TenantServiceInviteRequest is used to invite a member to a tenant
+// TenantServiceInviteRequest is used to invite a member to a tenant.
 type TenantServiceInviteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Role of this user in this tenant
+	// Role of this user in this tenant.
 	Role          TenantRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.TenantRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1010,12 +1010,10 @@ func (x *TenantServiceInviteRequest) GetRole() TenantRole {
 	return TenantRole_TENANT_ROLE_UNSPECIFIED
 }
 
-// TenantServiceInviteRequest is the response payload to a invite member request
+// TenantServiceInviteRequest is the response payload to a invite member request.
 type TenantServiceInviteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Invite contains a secret which can be sent to a potential user
-	// can be appended to the invitation endpoint at our cloud console like
-	// console.metalstack.cloud/invite/<secret>
+	// Invite contains a secret which can be sent to a potential user.
 	Invite        *TenantInvite `protobuf:"bytes,1,opt,name=invite,proto3" json:"invite,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1058,10 +1056,10 @@ func (x *TenantServiceInviteResponse) GetInvite() *TenantInvite {
 	return nil
 }
 
-// TenantServiceInvitesListRequest is the request payload to a list invites request
+// TenantServiceInvitesListRequest is the request payload to a list invites request.
 type TenantServiceInvitesListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login         string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1104,10 +1102,10 @@ func (x *TenantServiceInvitesListRequest) GetLogin() string {
 	return ""
 }
 
-// TenantServiceInvitesListResponse is the response payload to a list invites request
+// TenantServiceInvitesListResponse is the response payload to a list invites request.
 type TenantServiceInvitesListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Invites that have not yet accepted the invitation to this tenant
+	// Invites that have not yet accepted the invitation to this tenant.
 	Invites       []*TenantInvite `protobuf:"bytes,1,rep,name=invites,proto3" json:"invites,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1150,10 +1148,10 @@ func (x *TenantServiceInvitesListResponse) GetInvites() []*TenantInvite {
 	return nil
 }
 
-// TenantServiceInviteGetRequest is the request payload to get a invite
+// TenantServiceInviteGetRequest is the request payload to get a invite.
 type TenantServiceInviteGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Secret of the invite to get
+	// Secret of the invite to get.
 	Secret        string `protobuf:"bytes,1,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1196,10 +1194,10 @@ func (x *TenantServiceInviteGetRequest) GetSecret() string {
 	return ""
 }
 
-// TenantServiceInviteGetResponse is the response payload to a get invite request
+// TenantServiceInviteGetResponse is the response payload to a get invite request.
 type TenantServiceInviteGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Invite is the invite
+	// Invite is the invite.
 	Invite        *TenantInvite `protobuf:"bytes,1,opt,name=invite,proto3" json:"invite,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1242,12 +1240,12 @@ func (x *TenantServiceInviteGetResponse) GetInvite() *TenantInvite {
 	return nil
 }
 
-// TenantServiceRemoveMemberRequest is used to remove a member from a tenant
+// TenantServiceRemoveMemberRequest is used to remove a member from a tenant.
 type TenantServiceRemoveMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Member is the id of the member to remove from this tenant
+	// Member is the id of the member to remove from this tenant.
 	Member        string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1297,10 +1295,10 @@ func (x *TenantServiceRemoveMemberRequest) GetMember() string {
 	return ""
 }
 
-// TenantServiceLeaveTenantRequest is used to leave a tenant
+// TenantServiceLeaveTenantRequest is used to leave a tenant.
 type TenantServiceLeaveRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login         string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1343,7 +1341,7 @@ func (x *TenantServiceLeaveRequest) GetLogin() string {
 	return ""
 }
 
-// TenantServiceLeaveTenantResponse is the response payload to a leave tenant request
+// TenantServiceLeaveTenantResponse is the response payload to a leave tenant request.
 type TenantServiceLeaveResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1380,10 +1378,10 @@ func (*TenantServiceLeaveResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_tenant_proto_rawDescGZIP(), []int{22}
 }
 
-// TenantServiceRemoveMemberResponse is the response payload to a remove member request
+// TenantServiceRemoveMemberResponse is the response payload to a remove member request.
 type TenantServiceRemoveMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TenantMember is the removed tenant member
+	// TenantMember is the removed tenant member.
 	TenantMember  *TenantMember `protobuf:"bytes,1,opt,name=tenant_member,json=tenantMember,proto3" json:"tenant_member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1426,10 +1424,10 @@ func (x *TenantServiceRemoveMemberResponse) GetTenantMember() *TenantMember {
 	return nil
 }
 
-// TenantServiceInviteAcceptRequest is the request payload to a accept invite request
+// TenantServiceInviteAcceptRequest is the request payload to a accept invite request.
 type TenantServiceInviteAcceptRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Secret is the invitation secret part of the invitation url
+	// Secret is the invitation secret part of the invitation url.
 	Secret        string `protobuf:"bytes,1,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1472,12 +1470,12 @@ func (x *TenantServiceInviteAcceptRequest) GetSecret() string {
 	return ""
 }
 
-// TenantServiceInviteAcceptResponse is the response payload to a accept invite request
+// TenantServiceInviteAcceptResponse is the response payload to a accept invite request.
 type TenantServiceInviteAcceptResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Tenant ID of the joined tenant
+	// Tenant ID of the joined tenant.
 	Tenant string `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// TenantName of the joined tenant
+	// TenantName of the joined tenant.
 	TenantName    string `protobuf:"bytes,2,opt,name=tenant_name,json=tenantName,proto3" json:"tenant_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1527,12 +1525,12 @@ func (x *TenantServiceInviteAcceptResponse) GetTenantName() string {
 	return ""
 }
 
-// TenantServiceInviteDeleteRequest is the request payload to a delete invite
+// TenantServiceInviteDeleteRequest is the request payload to a delete invite.
 type TenantServiceInviteDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Secret of the invite to delete
+	// Secret of the invite to delete.
 	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1582,7 +1580,7 @@ func (x *TenantServiceInviteDeleteRequest) GetSecret() string {
 	return ""
 }
 
-// TenantServiceInviteDeleteResponse is the response payload of a delete invite request
+// TenantServiceInviteDeleteResponse is the response payload of a delete invite request.
 type TenantServiceInviteDeleteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1619,14 +1617,14 @@ func (*TenantServiceInviteDeleteResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_tenant_proto_rawDescGZIP(), []int{27}
 }
 
-// TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+// TenantServiceAddMemberRequest is the request payload for adding a member to a tenant.
 type TenantServiceAddMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant to which the member will be added
+	// Login of the tenant to which the member will be added.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Login of the member to add
+	// Login of the member to add.
 	Member string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
-	// Role to assign to the new member
+	// Role to assign to the new member.
 	Role          TenantRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.TenantRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1683,10 +1681,10 @@ func (x *TenantServiceAddMemberRequest) GetRole() TenantRole {
 	return TenantRole_TENANT_ROLE_UNSPECIFIED
 }
 
-// TenantServiceAddMemberResponse is the response payload for the add member request
+// TenantServiceAddMemberResponse is the response payload for the add member request.
 type TenantServiceAddMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TenantMember is the added tenant member
+	// TenantMember is the added tenant member.
 	TenantMember  *TenantMember `protobuf:"bytes,1,opt,name=tenant_member,json=tenantMember,proto3" json:"tenant_member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1729,14 +1727,14 @@ func (x *TenantServiceAddMemberResponse) GetTenantMember() *TenantMember {
 	return nil
 }
 
-// TenantServiceUpdateMemberRequest is used to update a member from a tenant
+// TenantServiceUpdateMemberRequest is used to update a member from a tenant.
 type TenantServiceUpdateMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login of the tenant
+	// Login of the tenant.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Member is the id of the member to update in this tenant
+	// Member is the id of the member to update in this tenant.
 	Member string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
-	// Role of this user in this tenant
+	// Role of this user in this tenant.
 	Role          TenantRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.TenantRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1793,10 +1791,10 @@ func (x *TenantServiceUpdateMemberRequest) GetRole() TenantRole {
 	return TenantRole_TENANT_ROLE_UNSPECIFIED
 }
 
-// TenantServiceUpdateMemberResponse is the response payload to a update member request
+// TenantServiceUpdateMemberResponse is the response payload to a update member request.
 type TenantServiceUpdateMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TenantMember is the updated membership
+	// TenantMember is the updated membership.
 	TenantMember  *TenantMember `protobuf:"bytes,1,opt,name=tenant_member,json=tenantMember,proto3" json:"tenant_member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache

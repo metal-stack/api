@@ -17,12 +17,12 @@ service ProjectService {
 
 // ProjectServiceListRequest is the request payload for listing projects.
 message ProjectServiceListRequest {
-  // Query for projects
+  // Query for projects.
   optional metalstack.api.v2.ProjectQuery query = 1;
 }
 
 // ProjectServiceListResponse is the response payload for listing projects.
 message ProjectServiceListResponse {
-  // Projects contains the list of projects
+  // Projects contains the list of projects.
   repeated metalstack.api.v2.Project projects = 1;
 }

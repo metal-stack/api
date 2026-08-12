@@ -26,15 +26,15 @@ const (
 // SizeImageConstraintServiceCreateRequest is the request payload for creating a size image constraint.
 type SizeImageConstraintServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size of the constraint
+	// Size of the constraint.
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
-	// ImageConstraints to apply to this size
+	// ImageConstraints to apply to this size.
 	ImageConstraints []*v2.ImageConstraint `protobuf:"bytes,2,rep,name=image_constraints,json=imageConstraints,proto3" json:"image_constraints,omitempty"`
-	// Meta for this size image constraint
+	// Meta for this size image constraint.
 	Meta *v2.Meta `protobuf:"bytes,3,opt,name=meta,proto3" json:"meta,omitempty"`
-	// Name of this size image constraint
+	// Name of this size image constraint.
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this size image constraint
+	// Description of this size image constraint.
 	Description   *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -108,7 +108,7 @@ func (x *SizeImageConstraintServiceCreateRequest) GetDescription() string {
 // SizeImageConstraintServiceCreateResponse is the response payload for creating a size image constraint.
 type SizeImageConstraintServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeImageConstraint contains the created constraint
+	// SizeImageConstraint contains the created constraint.
 	SizeImageConstraint *v2.SizeImageConstraint `protobuf:"bytes,1,opt,name=size_image_constraint,json=sizeImageConstraint,proto3" json:"size_image_constraint,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
@@ -154,15 +154,15 @@ func (x *SizeImageConstraintServiceCreateResponse) GetSizeImageConstraint() *v2.
 // SizeImageConstraintServiceUpdateRequest is the request payload for updating a size image constraint.
 type SizeImageConstraintServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size of the image constraint to update
+	// Size of the image constraint to update.
 	Size string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *v2.UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// ImageConstraints to apply to this size
+	// ImageConstraints to apply to this size.
 	ImageConstraints []*v2.ImageConstraint `protobuf:"bytes,3,rep,name=image_constraints,json=imageConstraints,proto3" json:"image_constraints,omitempty"`
-	// Name of this size image constraint
+	// Name of this size image constraint.
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this size image constraint
+	// Description of this size image constraint.
 	Description   *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -236,7 +236,7 @@ func (x *SizeImageConstraintServiceUpdateRequest) GetDescription() string {
 // SizeImageConstraintServiceUpdateResponse is the response payload for updating a size image constraint.
 type SizeImageConstraintServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeImageConstraint contains the updated constraint
+	// SizeImageConstraint contains the updated constraint.
 	SizeImageConstraint *v2.SizeImageConstraint `protobuf:"bytes,1,opt,name=size_image_constraint,json=sizeImageConstraint,proto3" json:"size_image_constraint,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
@@ -282,7 +282,7 @@ func (x *SizeImageConstraintServiceUpdateResponse) GetSizeImageConstraint() *v2.
 // SizeImageConstraintServiceDeleteRequest is the request payload for deleting a size image constraint.
 type SizeImageConstraintServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size of the constraint
+	// Size of the constraint.
 	Size          string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -328,7 +328,7 @@ func (x *SizeImageConstraintServiceDeleteRequest) GetSize() string {
 // SizeImageConstraintServiceDeleteResponse is the response payload for deleting a size image constraint.
 type SizeImageConstraintServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeImageConstraint contains the deleted constraint
+	// SizeImageConstraint contains the deleted constraint.
 	SizeImageConstraint *v2.SizeImageConstraint `protobuf:"bytes,1,opt,name=size_image_constraint,json=sizeImageConstraint,proto3" json:"size_image_constraint,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
@@ -374,7 +374,7 @@ func (x *SizeImageConstraintServiceDeleteResponse) GetSizeImageConstraint() *v2.
 // SizeImageConstraintServiceGetRequest is the request payload for getting a size image constraint.
 type SizeImageConstraintServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Size of the constraint
+	// Size of the constraint.
 	Size          string `protobuf:"bytes,1,opt,name=size,proto3" json:"size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -420,7 +420,7 @@ func (x *SizeImageConstraintServiceGetRequest) GetSize() string {
 // SizeImageConstraintServiceGetResponse is the response payload for getting a size image constraint.
 type SizeImageConstraintServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeImageConstraint contains the retrieved constraint
+	// SizeImageConstraint contains the retrieved constraint.
 	SizeImageConstraint *v2.SizeImageConstraint `protobuf:"bytes,1,opt,name=size_image_constraint,json=sizeImageConstraint,proto3" json:"size_image_constraint,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
@@ -466,7 +466,7 @@ func (x *SizeImageConstraintServiceGetResponse) GetSizeImageConstraint() *v2.Siz
 // SizeImageConstraintServiceListRequest is the request payload for listing size image constraints.
 type SizeImageConstraintServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for size image constraints
+	// Query for size image constraints.
 	Query         *v2.SizeImageConstraintQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -512,7 +512,7 @@ func (x *SizeImageConstraintServiceListRequest) GetQuery() *v2.SizeImageConstrai
 // SizeImageConstraintServiceListResponse is the response payload for listing size image constraints.
 type SizeImageConstraintServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// SizeImageConstraints contains the list of constraints
+	// SizeImageConstraints contains the list of constraints.
 	SizeImageConstraints []*v2.SizeImageConstraint `protobuf:"bytes,1,rep,name=size_image_constraints,json=sizeImageConstraints,proto3" json:"size_image_constraints,omitempty"`
 	unknownFields        protoimpl.UnknownFields
 	sizeCache            protoimpl.SizeCache

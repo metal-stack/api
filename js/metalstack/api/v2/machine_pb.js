@@ -266,26 +266,26 @@ export const MachineIssuesSchema = /*@__PURE__*/ messageDesc(file_metalstack_api
  */
 export const MachineIssueSchema = /*@__PURE__*/ messageDesc(file_metalstack_api_v2_machine, 49);
 /**
- * IPProtocol defines tcp|udp
+ * IPProtocol defines tcp|udp.
  *
  * @generated from enum metalstack.api.v2.IPProtocol
  */
 export var IPProtocol;
 (function (IPProtocol) {
     /**
-     * IP_PROTOCOL_UNSPECIFIED is not specified
+     * IP_PROTOCOL_UNSPECIFIED is not specified.
      *
      * @generated from enum value: IP_PROTOCOL_UNSPECIFIED = 0;
      */
     IPProtocol[IPProtocol["IP_PROTOCOL_UNSPECIFIED"] = 0] = "IP_PROTOCOL_UNSPECIFIED";
     /**
-     * IP_PROTOCOL_TCP is tcp
+     * IP_PROTOCOL_TCP is tcp.
      *
      * @generated from enum value: IP_PROTOCOL_TCP = 1;
      */
     IPProtocol[IPProtocol["IP_PROTOCOL_TCP"] = 1] = "IP_PROTOCOL_TCP";
     /**
-     * IP_PROTOCOL_UDP is udp
+     * IP_PROTOCOL_UDP is udp.
      *
      * @generated from enum value: IP_PROTOCOL_UDP = 2;
      */
@@ -296,32 +296,32 @@ export var IPProtocol;
  */
 export const IPProtocolSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 0);
 /**
- * MachineState defines if the machine was locked or reserved from a operator
+ * MachineState defines if the machine was locked or reserved from a operator.
  *
  * @generated from enum metalstack.api.v2.MachineState
  */
 export var MachineState;
 (function (MachineState) {
     /**
-     * MACHINE_STATE_UNSPECIFIED is not specified
+     * MACHINE_STATE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: MACHINE_STATE_UNSPECIFIED = 0;
      */
     MachineState[MachineState["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid
+     * MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uui.
      *
      * @generated from enum value: MACHINE_STATE_TAINTED = 1;
      */
     MachineState[MachineState["TAINTED"] = 1] = "TAINTED";
     /**
-     * MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or deleted
+     * MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or delete.
      *
      * @generated from enum value: MACHINE_STATE_LOCKED = 2;
      */
     MachineState[MachineState["LOCKED"] = 2] = "LOCKED";
     /**
-     * MACHINE_STATE_AVAILABLE this machine is available for all
+     * MACHINE_STATE_AVAILABLE this machine is available for all.
      *
      * @generated from enum value: MACHINE_STATE_AVAILABLE = 3;
      */
@@ -332,26 +332,26 @@ export var MachineState;
  */
 export const MachineStateSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 1);
 /**
- * MachineProvisioningEventState possible event states
+ * MachineProvisioningEventState possible event states.
  *
  * @generated from enum metalstack.api.v2.MachineProvisioningEventState
  */
 export var MachineProvisioningEventState;
 (function (MachineProvisioningEventState) {
     /**
-     * MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
+     * MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0;
      */
     MachineProvisioningEventState[MachineProvisioningEventState["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop
+     * MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP = 1;
      */
     MachineProvisioningEventState[MachineProvisioningEventState["CRASHLOOP"] = 1] = "CRASHLOOP";
     /**
-     * MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim
+     * MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2;
      */
@@ -362,80 +362,80 @@ export var MachineProvisioningEventState;
  */
 export const MachineProvisioningEventStateSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 2);
 /**
- * MachineProvisioningEventType defines in which phase the machine actually is
+ * MachineProvisioningEventType defines in which phase the machine actually is.
  *
  * @generated from enum metalstack.api.v2.MachineProvisioningEventType
  */
 export var MachineProvisioningEventType;
 (function (MachineProvisioningEventType) {
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified
+     * MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive
+     * MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_ALIVE = 1;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["ALIVE"] = 1] = "ALIVE";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_CRASHED machine crashed
+     * MACHINE_PROVISIONING_EVENT_TYPE_CRASHED machine crashed.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_CRASHED = 2;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["CRASHED"] = 2] = "CRASHED";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING machine is pxe booting into metal-hammer
+     * MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING machine is pxe booting into metal-hammer.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING = 3;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["PXE_BOOTING"] = 3] = "PXE_BOOTING";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT machine got a reboot instruction
+     * MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT machine got a reboot instruction.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT = 4;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["PLANNED_REBOOT"] = 4] = "PLANNED_REBOOT";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_PREPARING metal-hammer is preparing the machine
+     * MACHINE_PROVISIONING_EVENT_TYPE_PREPARING metal-hammer is preparing the machine.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_PREPARING = 5;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["PREPARING"] = 5] = "PREPARING";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING metal-hammer registers machine at the apiserver
+     * MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING metal-hammer registers machine at the apiserver.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING = 6;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["REGISTERING"] = 6] = "REGISTERING";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_WAITING machine is waiting for installation
+     * MACHINE_PROVISIONING_EVENT_TYPE_WAITING machine is waiting for installation.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_WAITING = 7;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["WAITING"] = 7] = "WAITING";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING metal-hammer is installing the desired os
+     * MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING metal-hammer is installing the desired os.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING = 8;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["INSTALLING"] = 8] = "INSTALLING";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL metal-hammer completed installation and boots into target os
+     * MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL metal-hammer completed installation and boots into target os.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL = 9;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["BOOTING_NEW_KERNEL"] = 9] = "BOOTING_NEW_KERNEL";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME machine is installed and phones home
+     * MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME machine is installed and phones home.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME = 10;
      */
     MachineProvisioningEventType[MachineProvisioningEventType["PHONED_HOME"] = 10] = "PHONED_HOME";
     /**
-     * MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM machine is not allocated, but phones home
+     * MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM machine is not allocated, but phones home.
      *
      * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11;
      */
@@ -446,32 +446,32 @@ export var MachineProvisioningEventType;
  */
 export const MachineProvisioningEventTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 3);
 /**
- * MachineLiveliness specifies the liveliness of a machine
+ * MachineLiveliness specifies the liveliness of a machine.
  *
  * @generated from enum metalstack.api.v2.MachineLiveliness
  */
 export var MachineLiveliness;
 (function (MachineLiveliness) {
     /**
-     * MACHINE_LIVELINESS_UNSPECIFIED is not defined
+     * MACHINE_LIVELINESS_UNSPECIFIED is not defined.
      *
      * @generated from enum value: MACHINE_LIVELINESS_UNSPECIFIED = 0;
      */
     MachineLiveliness[MachineLiveliness["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * MACHINE_LIVELINESS_ALIVE liveliness is alive
+     * MACHINE_LIVELINESS_ALIVE liveliness is alive.
      *
      * @generated from enum value: MACHINE_LIVELINESS_ALIVE = 1;
      */
     MachineLiveliness[MachineLiveliness["ALIVE"] = 1] = "ALIVE";
     /**
-     * MACHINE_LIVELINESS_DEAD liveliness is dead
+     * MACHINE_LIVELINESS_DEAD liveliness is dead.
      *
      * @generated from enum value: MACHINE_LIVELINESS_DEAD = 2;
      */
     MachineLiveliness[MachineLiveliness["DEAD"] = 2] = "DEAD";
     /**
-     * MACHINE_LIVELINESS_UNKNOWN liveliness is unknown
+     * MACHINE_LIVELINESS_UNKNOWN liveliness is unknown.
      *
      * @generated from enum value: MACHINE_LIVELINESS_UNKNOWN = 3;
      */
@@ -482,26 +482,26 @@ export var MachineLiveliness;
  */
 export const MachineLivelinessSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 4);
 /**
- * MachineAllocationType defines if this is a machine or a firewall
+ * MachineAllocationType defines if this is a machine or a firewall.
  *
  * @generated from enum metalstack.api.v2.MachineAllocationType
  */
 export var MachineAllocationType;
 (function (MachineAllocationType) {
     /**
-     * MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified
+     * MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified.
      *
      * @generated from enum value: MACHINE_ALLOCATION_TYPE_UNSPECIFIED = 0;
      */
     MachineAllocationType[MachineAllocationType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * MACHINE_ALLOCATION_TYPE_MACHINE is a machine
+     * MACHINE_ALLOCATION_TYPE_MACHINE is a machine.
      *
      * @generated from enum value: MACHINE_ALLOCATION_TYPE_MACHINE = 1;
      */
     MachineAllocationType[MachineAllocationType["MACHINE"] = 1] = "MACHINE";
     /**
-     * MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall
+     * MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall.
      *
      * @generated from enum value: MACHINE_ALLOCATION_TYPE_FIREWALL = 2;
      */
@@ -512,80 +512,80 @@ export var MachineAllocationType;
  */
 export const MachineAllocationTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 5);
 /**
- * MachineBMCCommand defines commands send to the BMC of the machine
+ * MachineBMCCommand defines commands send to the BMC of the machine.
  *
  * @generated from enum metalstack.api.v2.MachineBMCCommand
  */
 export var MachineBMCCommand;
 (function (MachineBMCCommand) {
     /**
-     * MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+     * MACHINE_BMC_COMMAND_UNSPECIFIED is not defined.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_UNSPECIFIED = 0;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_UNSPECIFIED"] = 0] = "MACHINE_BMC_COMMAND_UNSPECIFIED";
     /**
-     * MACHINE_BMC_COMMAND_ON Power on the machine
+     * MACHINE_BMC_COMMAND_ON Power on the machine.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_ON = 1;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_ON"] = 1] = "MACHINE_BMC_COMMAND_ON";
     /**
-     * MACHINE_BMC_COMMAND_OFF Power off the machine
+     * MACHINE_BMC_COMMAND_OFF Power off the machine.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_OFF = 2;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_OFF"] = 2] = "MACHINE_BMC_COMMAND_OFF";
     /**
-     * MACHINE_BMC_COMMAND_RESET Power reset the machine
+     * MACHINE_BMC_COMMAND_RESET Power reset the machine.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_RESET = 3;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_RESET"] = 3] = "MACHINE_BMC_COMMAND_RESET";
     /**
-     * MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+     * MACHINE_BMC_COMMAND_CYCLE Power cycle the machine.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_CYCLE = 4;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_CYCLE"] = 4] = "MACHINE_BMC_COMMAND_CYCLE";
     /**
-     * MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios
+     * MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_BOOT_TO_BIOS = 5;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_BOOT_TO_BIOS"] = 5] = "MACHINE_BMC_COMMAND_BOOT_TO_BIOS";
     /**
-     * MACHINE_BMC_COMMAND_BOOT_FROM_DISK boot the machine from hard disk
+     * MACHINE_BMC_COMMAND_BOOT_FROM_DISK boot the machine from hard disk.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_BOOT_FROM_DISK = 6;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_BOOT_FROM_DISK"] = 6] = "MACHINE_BMC_COMMAND_BOOT_FROM_DISK";
     /**
-     * MACHINE_BMC_COMMAND_BOOT_FROM_PXE boot the machine from pxe
+     * MACHINE_BMC_COMMAND_BOOT_FROM_PXE boot the machine from pxe.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_BOOT_FROM_PXE = 7;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_BOOT_FROM_PXE"] = 7] = "MACHINE_BMC_COMMAND_BOOT_FROM_PXE";
     /**
-     * MACHINE_BMC_COMMAND_IDENTIFY_LED_ON set identify led of the machine chassis to on
+     * MACHINE_BMC_COMMAND_IDENTIFY_LED_ON set identify led of the machine chassis to on.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_IDENTIFY_LED_ON = 8;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_IDENTIFY_LED_ON"] = 8] = "MACHINE_BMC_COMMAND_IDENTIFY_LED_ON";
     /**
-     * MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off
+     * MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF"] = 9] = "MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF";
     /**
-     * MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe
+     * MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_MACHINE_DELETED = 10;
      */
     MachineBMCCommand[MachineBMCCommand["MACHINE_BMC_COMMAND_MACHINE_DELETED"] = 10] = "MACHINE_BMC_COMMAND_MACHINE_DELETED";
     /**
-     * MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was created to set the boot order to boot from disk
+     * MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was created to set the boot order to boot from disk.
      *
      * @generated from enum value: MACHINE_BMC_COMMAND_MACHINE_CREATED = 11;
      */
@@ -596,92 +596,92 @@ export var MachineBMCCommand;
  */
 export const MachineBMCCommandSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 6);
 /**
- * MachineIssueType defines which type of issue it is
+ * MachineIssueType defines which type of issue it is.
  *
  * @generated from enum metalstack.api.v2.MachineIssueType
  */
 export var MachineIssueType;
 (function (MachineIssueType) {
     /**
-     * MACHINE_ISSUE_TYPE_UNSPECIFIED type is not specified
+     * MACHINE_ISSUE_TYPE_UNSPECIFIED type is not specified.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_UNSPECIFIED = 0;
      */
     MachineIssueType[MachineIssueType["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * MACHINE_ISSUE_TYPE_ASN_UNIQUENESS machine asn is not unique
+     * MACHINE_ISSUE_TYPE_ASN_UNIQUENESS machine asn is not unique.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_ASN_UNIQUENESS = 1;
      */
     MachineIssueType[MachineIssueType["ASN_UNIQUENESS"] = 1] = "ASN_UNIQUENESS";
     /**
-     * MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED machine bmc info out of date
+     * MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED machine bmc info out of date.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED = 2;
      */
     MachineIssueType[MachineIssueType["BMC_INFO_OUTDATED"] = 2] = "BMC_INFO_OUTDATED";
     /**
-     * MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP machine bmc ip is not distinct
+     * MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP machine bmc ip is not distinct.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP = 3;
      */
     MachineIssueType[MachineIssueType["BMC_NON_DISTINCT_IP"] = 3] = "BMC_NON_DISTINCT_IP";
     /**
-     * MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP machine bmc without ip
+     * MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP machine bmc without ip.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP = 4;
      */
     MachineIssueType[MachineIssueType["BMC_WITHOUT_IP"] = 4] = "BMC_WITHOUT_IP";
     /**
-     * MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC machine bmc without mac address
+     * MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC machine bmc without mac address.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC = 5;
      */
     MachineIssueType[MachineIssueType["BMC_WITHOUT_MAC"] = 5] = "BMC_WITHOUT_MAC";
     /**
-     * MACHINE_ISSUE_TYPE_CRASH_LOOP machine is in crashloop
+     * MACHINE_ISSUE_TYPE_CRASH_LOOP machine is in crashloop.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_CRASH_LOOP = 6;
      */
     MachineIssueType[MachineIssueType["CRASH_LOOP"] = 6] = "CRASH_LOOP";
     /**
-     * MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM machine was not freed after delete
+     * MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM machine was not freed after delete.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM = 7;
      */
     MachineIssueType[MachineIssueType["FAILED_MACHINE_RECLAIM"] = 7] = "FAILED_MACHINE_RECLAIM";
     /**
-     * MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR machine last event error
+     * MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR machine last event error.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR = 8;
      */
     MachineIssueType[MachineIssueType["LAST_EVENT_ERROR"] = 8] = "LAST_EVENT_ERROR";
     /**
-     * MACHINE_ISSUE_TYPE_LIVELINESS_DEAD machine is dead
+     * MACHINE_ISSUE_TYPE_LIVELINESS_DEAD machine is dead.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_LIVELINESS_DEAD = 9;
      */
     MachineIssueType[MachineIssueType["LIVELINESS_DEAD"] = 9] = "LIVELINESS_DEAD";
     /**
-     * MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE machine liveliness is not available
+     * MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE machine liveliness is not available.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE = 10;
      */
     MachineIssueType[MachineIssueType["LIVELINESS_NOT_AVAILABLE"] = 10] = "LIVELINESS_NOT_AVAILABLE";
     /**
-     * MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN machine liveliness is unknown
+     * MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN machine liveliness is unknown.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN = 11;
      */
     MachineIssueType[MachineIssueType["LIVELINESS_UNKNOWN"] = 11] = "LIVELINESS_UNKNOWN";
     /**
-     * MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER machine does not have a event container
+     * MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER machine does not have a event container.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER = 12;
      */
     MachineIssueType[MachineIssueType["NO_EVENT_CONTAINER"] = 12] = "NO_EVENT_CONTAINER";
     /**
-     * MACHINE_ISSUE_TYPE_NO_PARTITION no partition set
+     * MACHINE_ISSUE_TYPE_NO_PARTITION no partition set.
      *
      * @generated from enum value: MACHINE_ISSUE_TYPE_NO_PARTITION = 13;
      */
@@ -692,32 +692,32 @@ export var MachineIssueType;
  */
 export const MachineIssueTypeSchema = /*@__PURE__*/ enumDesc(file_metalstack_api_v2_machine, 7);
 /**
- * MachineIssueSeverity defines the severity of an issue
+ * MachineIssueSeverity defines the severity of an issue.
  *
  * @generated from enum metalstack.api.v2.MachineIssueSeverity
  */
 export var MachineIssueSeverity;
 (function (MachineIssueSeverity) {
     /**
-     * MACHINE_ISSUE_SEVERITY_UNSPECIFIED severity is not specified
+     * MACHINE_ISSUE_SEVERITY_UNSPECIFIED severity is not specified.
      *
      * @generated from enum value: MACHINE_ISSUE_SEVERITY_UNSPECIFIED = 0;
      */
     MachineIssueSeverity[MachineIssueSeverity["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * MACHINE_ISSUE_SEVERITY_MINOR machine issues is of severity minor
+     * MACHINE_ISSUE_SEVERITY_MINOR machine issues is of severity minor.
      *
      * @generated from enum value: MACHINE_ISSUE_SEVERITY_MINOR = 1;
      */
     MachineIssueSeverity[MachineIssueSeverity["MINOR"] = 1] = "MINOR";
     /**
-     * MACHINE_ISSUE_SEVERITY_MAJOR machine issues is of severity major
+     * MACHINE_ISSUE_SEVERITY_MAJOR machine issues is of severity major.
      *
      * @generated from enum value: MACHINE_ISSUE_SEVERITY_MAJOR = 2;
      */
     MachineIssueSeverity[MachineIssueSeverity["MAJOR"] = 2] = "MAJOR";
     /**
-     * MACHINE_ISSUE_SEVERITY_CRITICAL machine issues is of severity critical
+     * MACHINE_ISSUE_SEVERITY_CRITICAL machine issues is of severity critical.
      *
      * @generated from enum value: MACHINE_ISSUE_SEVERITY_CRITICAL = 3;
      */

@@ -61,49 +61,49 @@ export const TaskInfoSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2
 export var TaskState;
 (function (TaskState) {
     /**
-     * TASK_STATE_UNSPECIFIED is not specified
+     * TASK_STATE_UNSPECIFIED is not specified.
      *
      * @generated from enum value: TASK_STATE_UNSPECIFIED = 0;
      */
     TaskState[TaskState["UNSPECIFIED"] = 0] = "UNSPECIFIED";
     /**
-     * TASK_STATE_ACTIVE indicates that the task is currently being processed by Handler
+     * TASK_STATE_ACTIVE indicates that the task is currently being processed by Handler.
      *
      * @generated from enum value: TASK_STATE_ACTIVE = 1;
      */
     TaskState[TaskState["ACTIVE"] = 1] = "ACTIVE";
     /**
-     * TASK_STATE_PENDING indicates that the task is ready to be processed by Handler
+     * TASK_STATE_PENDING indicates that the task is ready to be processed by Handler.
      *
      * @generated from enum value: TASK_STATE_PENDING = 2;
      */
     TaskState[TaskState["PENDING"] = 2] = "PENDING";
     /**
-     * TASK_STATE_SCHEDULED indicates that the task is scheduled to be processed some time in the future
+     * TASK_STATE_SCHEDULED indicates that the task is scheduled to be processed some time in the future.
      *
      * @generated from enum value: TASK_STATE_SCHEDULED = 3;
      */
     TaskState[TaskState["SCHEDULED"] = 3] = "SCHEDULED";
     /**
-     * TASK_STATE_RETRY indicates that the task has previously failed and is scheduled to be processed some time in the future
+     * TASK_STATE_RETRY indicates that the task has previously failed and is scheduled to be processed some time in the future.
      *
      * @generated from enum value: TASK_STATE_RETRY = 4;
      */
     TaskState[TaskState["RETRY"] = 4] = "RETRY";
     /**
-     * TASK_STATE_ARCHIVED indicates that the task is archived and stored for inspection purposes
+     * TASK_STATE_ARCHIVED indicates that the task is archived and stored for inspection purposes.
      *
      * @generated from enum value: TASK_STATE_ARCHIVED = 5;
      */
     TaskState[TaskState["ARCHIVED"] = 5] = "ARCHIVED";
     /**
-     * TASK_STATE_COMPLETED indicates that the task is processed successfully and retained until the retention TTL expires
+     * TASK_STATE_COMPLETED indicates that the task is processed successfully and retained until the retention TTL expires.
      *
      * @generated from enum value: TASK_STATE_COMPLETED = 6;
      */
     TaskState[TaskState["COMPLETED"] = 6] = "COMPLETED";
     /**
-     * TASK_STATE_AGGREGATING indicates that the task is waiting in a group to be aggregated into one task
+     * TASK_STATE_AGGREGATING indicates that the task is waiting in a group to be aggregated into one task.
      *
      * @generated from enum value: TASK_STATE_AGGREGATING = 7;
      */

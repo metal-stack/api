@@ -32,74 +32,74 @@ service PartitionService {
   }
 }
 
-// PartitionServiceCreateRequest is the request payload for a partition create request
+// PartitionServiceCreateRequest is the request payload for a partition create request.
 message PartitionServiceCreateRequest {
-  // Partition the partition
+  // Partition the partition.
   metalstack.api.v2.Partition partition = 1;
 }
 
 // PartitionServiceUpdateRequest is the request payload for updating a partition.
 message PartitionServiceUpdateRequest {
-  // ID of this partition
+  // ID of this partition.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // UpdateMeta contains the timestamp and strategy to be used in this update request
+  // UpdateMeta contains the timestamp and strategy to be used in this update request.
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
-  // Description of this partition
+  // Description of this partition.
   optional string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // PartitionBootConfiguration defines how metal-hammer boots
+  // PartitionBootConfiguration defines how metal-hammer boots.
   metalstack.api.v2.PartitionBootConfiguration boot_configuration = 4;
-  // DNSServers for this partition
+  // DNSServers for this partition.
   repeated metalstack.api.v2.DNSServer dns_servers = 5 [(buf.validate.field).repeated.max_items = 3];
-  // NTPServers for this partition
+  // NTPServers for this partition.
   repeated metalstack.api.v2.NTPServer ntp_servers = 6 [(buf.validate.field).repeated.max_items = 10];
-  // ManagementServiceAddresses defines where the management is reachable
-  // must be in the form <ip|host>:<port>
+  // ManagementServiceAddresses defines where the management is reachable.
+  // must be in the form <ip|host>:<port>.
   repeated string mgmt_service_addresses = 7 [(buf.validate.field).repeated.(metalstack.api.v2.are_host_and_port) = true];
-  // Labels to update on this network
+  // Labels to update on this network.
   optional metalstack.api.v2.UpdateLabels labels = 8;
 }
 
-// PartitionServiceDeleteRequest is the request payload for a partition delete request
+// PartitionServiceDeleteRequest is the request payload for a partition delete request.
 message PartitionServiceDeleteRequest {
-  // ID of the partition to delete
+  // ID of the partition to delete.
   string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
-// PartitionServiceCreateResponse is the response payload for a partition create request
+// PartitionServiceCreateResponse is the response payload for a partition create request.
 message PartitionServiceCreateResponse {
-  // Partition the partition
+  // Partition the partition.
   metalstack.api.v2.Partition partition = 1;
 }
 
-// PartitionServiceUpdateResponse is the response payload for a partition update request
+// PartitionServiceUpdateResponse is the response payload for a partition update request.
 message PartitionServiceUpdateResponse {
-  // Partition the partition
+  // Partition the partition.
   metalstack.api.v2.Partition partition = 1;
 }
 
 // PartitionServiceDeleteResponse is the response payload for deleting a partition.
 message PartitionServiceDeleteResponse {
-  // Partition contains the deleted partition
+  // Partition contains the deleted partition.
   metalstack.api.v2.Partition partition = 1;
 }
 
 // PartitionServiceCapacityRequest is the request payload for getting partition capacity.
 message PartitionServiceCapacityRequest {
-  // ID of the partition to get
+  // ID of the partition to get.
   optional string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
-  // Size of machines to show the capacity
+  // Size of machines to show the capacity.
   optional string size = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Project of machines to show the capacity
+  // Project of machines to show the capacity.
   optional string project = 3 [(buf.validate.field).string.uuid = true];
 }
 
-// PartitionServiceCapacityResponse is the response payload for a partition capacity request
+// PartitionServiceCapacityResponse is the response payload for a partition capacity request.
 message PartitionServiceCapacityResponse {
-  // PartitionCapacity is a capacity report per partition
+  // PartitionCapacity is a capacity report per partition.
   repeated PartitionCapacity partition_capacity = 1;
 }
 
-// PartitionCapacity is the capacity of one partition
+// PartitionCapacity is the capacity of one partition.
 message PartitionCapacity {
   // Partition of which this capacity is reported.
   string partition = 1 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
@@ -107,7 +107,7 @@ message PartitionCapacity {
   repeated MachineSizeCapacity machine_size_capacities = 2;
 }
 
-// ServerCapacity is the capacity of one server type, eg machine size
+// ServerCapacity is the capacity of one server type, eg machine size.
 message MachineSizeCapacity {
   // Size is the size id correlating to all counts in this server capacity.
   string size = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
@@ -131,7 +131,7 @@ message MachineSizeCapacity {
   // Free is the amount of machines in a partition that can be freely allocated at any given moment by a project.
   // Effectively this is the amount of waiting machines minus the machines that are unavailable due to machine state or un-allocatable due to size reservations.
   int64 free = 10;
-  // Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or
+  // Unavailable is the amount of machine in a partition that are currently not allocatable because they are not waiting or.
   // not in the machine state "available", e.g. locked or reserved.
   int64 unavailable = 11;
 

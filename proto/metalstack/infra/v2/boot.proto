@@ -46,102 +46,102 @@ service BootService {
   }
 }
 
-// BootServiceDhcpRequest is called once a machine issues a dhcp request
+// BootServiceDhcpRequest is called once a machine issues a dhcp request.
 message BootServiceDhcpRequest {
-  // UUID of the machine
+  // UUID of the machine.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Partition where this machine is located
+  // Partition where this machine is located.
   string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
-// BootServiceDhcpResponse contains the response to a dhcp request
+// BootServiceDhcpResponse contains the response to a dhcp request.
 message BootServiceDhcpResponse {}
 
-// BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac
+// BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac.
 message BootServiceBootRequest {
-  // Mac address of the machine
+  // Mac address of the machine.
   string mac = 1 [(buf.validate.field).string.(metalstack.api.v2.macaddress) = true];
-  // Partition where this machine is located
+  // Partition where this machine is located.
   string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
-// BootServiceBootResponse contains additional infos which are required to boot a machine
+// BootServiceBootResponse contains additional infos which are required to boot a machine.
 message BootServiceBootResponse {
-  // Kernel is the url to the linux kernel to boot
+  // Kernel is the url to the linux kernel to boot.
   string kernel = 1 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Initial ram disk is the url to the initial ram disk to boot
+  // Initial ram disk is the url to the initial ram disk to boot.
   repeated string init_ram_disks = 2;
-  // CMDLine contains kernel command line parameters to boot
+  // CMDLine contains kernel command line parameters to boot.
   optional string cmdline = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
-// BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible
+// BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible.
 message BootServiceRegisterRequest {
-  // UUID of this machine
+  // UUID of this machine.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Hardware details of this machine
+  // Hardware details of this machine.
   metalstack.api.v2.MachineHardware hardware = 2;
-  // Bios details of this machine
+  // Bios details of this machine.
   metalstack.api.v2.MachineBios bios = 3;
-  // BMC details of this machine
+  // BMC details of this machine.
   metalstack.api.v2.MachineBMC bmc = 4;
-  // FRU details of this machine
+  // FRU details of this machine.
   metalstack.api.v2.MachineFRU fru = 5;
-  // Tags of this machine
+  // Tags of this machine.
   repeated string tags = 6;
-  // MetalHammer version this machine was booted into
+  // MetalHammer version this machine was booted into.
   string metal_hammer_version = 7 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Partition where this machine is located
+  // Partition where this machine is located.
   string partition = 8 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
-// BootServiceRegisterResponse response to a BootServiceRegisterResponse request
+// BootServiceRegisterResponse response to a BootServiceRegisterResponse request.
 message BootServiceRegisterResponse {
-  // UUID of this machine
+  // UUID of this machine.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // Size is the calculated size from given hardware details
+  // Size is the calculated size from given hardware details.
   string size = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Partition of this machine
+  // Partition of this machine.
   string partition = 3 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
-// BootServiceWaitRequest is called when a machine was registered and is waiting for allocation
+// BootServiceWaitRequest is called when a machine was registered and is waiting for allocation.
 message BootServiceWaitRequest {
-  // UUID of this machine
+  // UUID of this machine.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// BootServiceWaitResponse response to a wait request
+// BootServiceWaitResponse response to a wait request.
 message BootServiceWaitResponse {
-  // Allocation contains the machine.allocation to actually install the machine
+  // Allocation contains the machine.allocation to actually install the machine.
   metalstack.api.v2.MachineAllocation allocation = 1;
 }
 
-// BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded
+// BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded.
 message BootServiceInstallationSucceededRequest {
-  // UUID of the machine to boot
+  // UUID of the machine to boot.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // ConsolePassword
+  // ConsolePassword.
   string console_password = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128
   }];
 }
 
-// BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest
+// BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest.
 message BootServiceInstallationSucceededResponse {}
 
-// BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser
+// BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser.
 message BootServiceSuperUserPasswordRequest {
-  // UUID of this machine
+  // UUID of this machine.
   string uuid = 1 [(buf.validate.field).string.uuid = true];
 }
 
-// BootServiceSuperUserPasswordResponse the super user password is returned
+// BootServiceSuperUserPasswordResponse the super user password is returned.
 message BootServiceSuperUserPasswordResponse {
   // FeatureDisabled on set the superuserpassword in the bmc if this feature is not disabled.
   bool feature_disabled = 1;
-  // SuperUserPassword is the password of the superuser on the ipmi device
+  // SuperUserPassword is the password of the superuser on the ipmi device.
   string super_user_password = 2 [(buf.validate.field).string = {
     min_len: 2
     max_len: 128

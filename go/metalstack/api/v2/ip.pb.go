@@ -22,15 +22,15 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// IPType specifies different IP address types
+// IPType specifies different IP address types.
 type IPType int32
 
 const (
-	// IP_TYPE_UNSPECIFIED is not specified
+	// IP_TYPE_UNSPECIFIED is not specified.
 	IPType_IP_TYPE_UNSPECIFIED IPType = 0
-	// IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage
+	// IP_TYPE_EPHEMERAL defines an ephemeral IP address which is freed/deleted after usage.
 	IPType_IP_TYPE_EPHEMERAL IPType = 1
-	// IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly
+	// IP_TYPE_STATIC defines a static ip address which must be freed/deleted explicitly.
 	IPType_IP_TYPE_STATIC IPType = 2
 )
 
@@ -75,15 +75,15 @@ func (IPType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_ip_proto_rawDescGZIP(), []int{0}
 }
 
-// IPAddressFamily defines either IPv4 or IPv6 Addressfamily
+// IPAddressFamily defines either IPv4 or IPv6 Addressfamily.
 type IPAddressFamily int32
 
 const (
-	// IP_ADDRESS_FAMILY_UNSPECIFIED is not specified
+	// IP_ADDRESS_FAMILY_UNSPECIFIED is not specified.
 	IPAddressFamily_IP_ADDRESS_FAMILY_UNSPECIFIED IPAddressFamily = 0
-	// IP_ADDRESS_FAMILY_V4 defines a IPv4 address
+	// IP_ADDRESS_FAMILY_V4 defines a IPv4 address.
 	IPAddressFamily_IP_ADDRESS_FAMILY_V4 IPAddressFamily = 1
-	// IP_ADDRESS_FAMILY_V6 defines a IPv6 address
+	// IP_ADDRESS_FAMILY_V6 defines a IPv6 address.
 	IPAddressFamily_IP_ADDRESS_FAMILY_V6 IPAddressFamily = 2
 )
 
@@ -128,27 +128,27 @@ func (IPAddressFamily) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_ip_proto_rawDescGZIP(), []int{1}
 }
 
-// IP is an IP address which can be used as loadbalancer addresses
+// IP is an IP address which can be used as loadbalancer addresses.
 type IP struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of this ip
+	// Uuid of this ip.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Meta for this ip
+	// Meta for this ip.
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
-	// Ip is either ipv4 or ipv6 address
+	// Ip is either ipv4 or ipv6 address.
 	Ip string `protobuf:"bytes,3,opt,name=ip,proto3" json:"ip,omitempty"`
-	// Name of this ip
+	// Name of this ip.
 	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this ip
+	// Description of this ip.
 	Description string `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
-	// Network is the network this ip belongs to
+	// Network is the network this ip belongs to.
 	Network string `protobuf:"bytes,6,opt,name=network,proto3" json:"network,omitempty"`
-	// Project where this ip address belongs to
+	// Project where this ip address belongs to.
 	Project string `protobuf:"bytes,7,opt,name=project,proto3" json:"project,omitempty"`
-	// Type of this ip
+	// Type of this ip.
 	Type IPType `protobuf:"varint,8,opt,name=type,proto3,enum=metalstack.api.v2.IPType" json:"type,omitempty"`
-	// Namespace if specified this ip is from a namespaced network and can therefore overlap with others
-	// Will be equal with project most of the time
+	// Namespace if specified this ip is from a namespaced network and can therefore overlap with others.
+	// Will be equal with project most of the time.
 	Namespace     *string `protobuf:"bytes,9,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -247,12 +247,12 @@ func (x *IP) GetNamespace() string {
 	return ""
 }
 
-// IPServiceGetRequest is the request payload for an IP get request
+// IPServiceGetRequest is the request payload for an IP get request.
 type IPServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// IP of the ip to get
+	// IP of the ip to get.
 	Ip string `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
-	// Project of the ip
+	// Project of the ip.
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	// Namespace can be specified to get the ip of a namespace.
 	Namespace     *string `protobuf:"bytes,3,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
@@ -311,26 +311,26 @@ func (x *IPServiceGetRequest) GetNamespace() string {
 	return ""
 }
 
-// IPServiceCreateRequest is the request payload for an IP create request
+// IPServiceCreateRequest is the request payload for an IP create request.
 type IPServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Network from which the IP should be created
+	// Network from which the IP should be created.
 	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
-	// Project of the ip
+	// Project of the ip.
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
-	// Name of the ip
+	// Name of the ip.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of the ip
+	// Description of the ip.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// IP if given try to create this ip if still available
+	// IP if given try to create this ip if still available.
 	Ip *string `protobuf:"bytes,5,opt,name=ip,proto3,oneof" json:"ip,omitempty"`
-	// Machine for which this ip should get created
+	// Machine for which this ip should get created.
 	Machine *string `protobuf:"bytes,6,opt,name=machine,proto3,oneof" json:"machine,omitempty"`
-	// Labels to put onto the ip
+	// Labels to put onto the ip.
 	Labels *Labels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
-	// Type of the IP, ether ephemeral (default), or static
+	// Type of the IP, ether ephemeral (default), or static.
 	Type *IPType `protobuf:"varint,8,opt,name=type,proto3,enum=metalstack.api.v2.IPType,oneof" json:"type,omitempty"`
-	// Addressfamily of the IP to create, defaults to ipv4
+	// Addressfamily of the IP to create, defaults to ipv4.
 	AddressFamily *IPAddressFamily `protobuf:"varint,9,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -429,22 +429,22 @@ func (x *IPServiceCreateRequest) GetAddressFamily() IPAddressFamily {
 	return IPAddressFamily_IP_ADDRESS_FAMILY_UNSPECIFIED
 }
 
-// IPServiceUpdateRequest is the request payload for an IP update request
+// IPServiceUpdateRequest is the request payload for an IP update request.
 type IPServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ip the ip address to update
+	// Ip the ip address to update.
 	Ip string `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Project id of the ip
+	// Project id of the ip.
 	Project string `protobuf:"bytes,3,opt,name=project,proto3" json:"project,omitempty"`
-	// Name of this ip
+	// Name of this ip.
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this ip
+	// Description of this ip.
 	Description *string `protobuf:"bytes,5,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Type of this ip
+	// Type of this ip.
 	Type *IPType `protobuf:"varint,6,opt,name=type,proto3,enum=metalstack.api.v2.IPType,oneof" json:"type,omitempty"`
-	// Labels on this ip
+	// Labels on this ip.
 	Labels        *UpdateLabels `protobuf:"bytes,7,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -529,12 +529,12 @@ func (x *IPServiceUpdateRequest) GetLabels() *UpdateLabels {
 	return nil
 }
 
-// IPServiceListRequest is the request payload for an IP list request
+// IPServiceListRequest is the request payload for an IP list request.
 type IPServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project of the ips to list
+	// Project of the ips to list.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Query to list one or more IPs
+	// Query to list one or more IPs.
 	Query         *IPQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -584,28 +584,28 @@ func (x *IPServiceListRequest) GetQuery() *IPQuery {
 	return nil
 }
 
-// IPQuery can be used to query a IP or a list of IP
+// IPQuery can be used to query a IP or a list of IP.
 type IPQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ip the ip to list
+	// Ip the ip to list.
 	Ip *string `protobuf:"bytes,1,opt,name=ip,proto3,oneof" json:"ip,omitempty"`
-	// Network from which the IPs are to list
+	// Network from which the IPs are to list.
 	Network *string `protobuf:"bytes,2,opt,name=network,proto3,oneof" json:"network,omitempty"`
-	// Project of the ips to list
+	// Project of the ips to list.
 	Project *string `protobuf:"bytes,3,opt,name=project,proto3,oneof" json:"project,omitempty"`
-	// Name of this ip
+	// Name of this ip.
 	Name *string `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// UUID for which these IPs should be filtered
+	// UUID for which these IPs should be filtered.
 	Uuid *string `protobuf:"bytes,5,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	// Machine for which these IPs should be filtered
+	// Machine for which these IPs should be filtered.
 	Machine *string `protobuf:"bytes,6,opt,name=machine,proto3,oneof" json:"machine,omitempty"`
-	// ParentPrefixCidr for which this ips should get filtered
+	// ParentPrefixCidr for which this ips should get filtered.
 	ParentPrefixCidr *string `protobuf:"bytes,7,opt,name=parent_prefix_cidr,json=parentPrefixCidr,proto3,oneof" json:"parent_prefix_cidr,omitempty"`
-	// Labels for which these IPs should be filtered
+	// Labels for which these IPs should be filtered.
 	Labels *Labels `protobuf:"bytes,8,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
-	// Static if set to true, this will be a Static ip
+	// Static if set to true, this will be a Static ip.
 	Type *IPType `protobuf:"varint,9,opt,name=type,proto3,enum=metalstack.api.v2.IPType,oneof" json:"type,omitempty"`
-	// Address family of the IPs to list, defaults to all address families
+	// Address family of the IPs to list, defaults to all address families.
 	AddressFamily *IPAddressFamily `protobuf:"varint,10,opt,name=address_family,json=addressFamily,proto3,enum=metalstack.api.v2.IPAddressFamily,oneof" json:"address_family,omitempty"`
 	// Namespace can be specified to get the ip of a namespace.
 	Namespace     *string `protobuf:"bytes,11,opt,name=namespace,proto3,oneof" json:"namespace,omitempty"`
@@ -720,12 +720,12 @@ func (x *IPQuery) GetNamespace() string {
 	return ""
 }
 
-// IPServiceDeleteRequest is the request payload for a ip delete request
+// IPServiceDeleteRequest is the request payload for a ip delete request.
 type IPServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// IP of the ip to delete
+	// IP of the ip to delete.
 	Ip string `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
-	// Project of the ip
+	// Project of the ip.
 	Project       string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -775,10 +775,10 @@ func (x *IPServiceDeleteRequest) GetProject() string {
 	return ""
 }
 
-// IPServiceGetResponse is the response payload for an IP get request
+// IPServiceGetResponse is the response payload for an IP get request.
 type IPServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ip the ip
+	// Ip the ip.
 	Ip            *IP `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -821,10 +821,10 @@ func (x *IPServiceGetResponse) GetIp() *IP {
 	return nil
 }
 
-// IPServiceUpdateResponse is the response payload for a ip update request
+// IPServiceUpdateResponse is the response payload for a ip update request.
 type IPServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ip the ip
+	// Ip the ip.
 	Ip            *IP `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -867,10 +867,10 @@ func (x *IPServiceUpdateResponse) GetIp() *IP {
 	return nil
 }
 
-// IPServiceCreateResponse is the response payload for an IP create request
+// IPServiceCreateResponse is the response payload for an IP create request.
 type IPServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ip the ip
+	// Ip the ip.
 	Ip            *IP `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -913,10 +913,10 @@ func (x *IPServiceCreateResponse) GetIp() *IP {
 	return nil
 }
 
-// IPServiceListResponse is the response payload for an IP list request
+// IPServiceListResponse is the response payload for an IP list request.
 type IPServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ips the ips
+	// Ips the ips.
 	Ips           []*IP `protobuf:"bytes,1,rep,name=ips,proto3" json:"ips,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -959,10 +959,10 @@ func (x *IPServiceListResponse) GetIps() []*IP {
 	return nil
 }
 
-// IPServiceDeleteResponse is the response payload for an IP delete request
+// IPServiceDeleteResponse is the response payload for an IP delete request.
 type IPServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ip the ip
+	// Ip the ip.
 	Ip            *IP `protobuf:"bytes,1,opt,name=ip,proto3" json:"ip,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
