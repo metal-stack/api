@@ -23,21 +23,21 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Project defines a group of resources belonging to a tenant
-// a tenant can have multiple projects
+// Project defines a group of resources belonging to a tenant.
+// a tenant can have multiple projects.
 type Project struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid of this project
+	// Uuid of this project.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Meta for this project
+	// Meta for this project.
 	Meta *Meta `protobuf:"bytes,2,opt,name=meta,proto3" json:"meta,omitempty"`
-	// Name of this project must be unique per tenant
+	// Name of this project must be unique per tenant.
 	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this project
+	// Description of this project.
 	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	// Tenant this project belongs to
+	// Tenant this project belongs to.
 	Tenant string `protobuf:"bytes,5,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// AvatarUrl of the Project
+	// AvatarUrl of the Project.
 	AvatarUrl     *string `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,20 +115,20 @@ func (x *Project) GetAvatarUrl() string {
 	return ""
 }
 
-// ProjectMember defines a user that participates in a project
+// ProjectMember defines a user that participates in a project.
 type ProjectMember struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Id is the user id of the member
+	// Id is the user id of the member.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// Role is the role of the member
+	// Role is the role of the member.
 	Role ProjectRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
 	// InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
 	// This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
 	// Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
 	InheritedMembership bool `protobuf:"varint,3,opt,name=inherited_membership,json=inheritedMembership,proto3" json:"inherited_membership,omitempty"`
-	// CreatedAt the date when the member was added to the project
+	// CreatedAt the date when the member was added to the project.
 	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	// Meta for this project member
+	// Meta for this project member.
 	Meta          *Meta `protobuf:"bytes,5,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -199,26 +199,26 @@ func (x *ProjectMember) GetMeta() *Meta {
 	return nil
 }
 
-// ProjectInvite defines invite to project
+// ProjectInvite defines invite to project.
 type ProjectInvite struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Secret is the secret part of the invite, typically part of the url
+	// Secret is the secret part of the invite, typically part of the url.
 	Secret string `protobuf:"bytes,1,opt,name=secret,proto3" json:"secret,omitempty"`
-	// Project is the project id for which this invite was created
+	// Project is the project id for which this invite was created.
 	Project string `protobuf:"bytes,2,opt,name=project,proto3" json:"project,omitempty"`
-	// Role is the role in this project the user will get after accepting the invitation
+	// Role is the role in this project the user will get after accepting the invitation.
 	Role ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
-	// Joined is false as long as a user has not accepted the invite
+	// Joined is false as long as a user has not accepted the invite.
 	Joined bool `protobuf:"varint,4,opt,name=joined,proto3" json:"joined,omitempty"`
-	// ProjectName is the project name for which this invite was created
+	// ProjectName is the project name for which this invite was created.
 	ProjectName string `protobuf:"bytes,5,opt,name=project_name,json=projectName,proto3" json:"project_name,omitempty"`
-	// Tenant is the login of the tenant inviting another user to join this project
+	// Tenant is the login of the tenant inviting another user to join this project.
 	Tenant string `protobuf:"bytes,6,opt,name=tenant,proto3" json:"tenant,omitempty"`
-	// TenantName is the name of the tenant inviting another user to join this project
+	// TenantName is the name of the tenant inviting another user to join this project.
 	TenantName string `protobuf:"bytes,7,opt,name=tenant_name,json=tenantName,proto3" json:"tenant_name,omitempty"`
-	// ExpiresAt the date when this invite expires
+	// ExpiresAt the date when this invite expires.
 	ExpiresAt *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=expires_at,json=expiresAt,proto3" json:"expires_at,omitempty"`
-	// JoinedAt the date when the member accepted this invite
+	// JoinedAt the date when the member accepted this invite.
 	JoinedAt      *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=joined_at,json=joinedAt,proto3" json:"joined_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -317,10 +317,10 @@ func (x *ProjectInvite) GetJoinedAt() *timestamppb.Timestamp {
 	return nil
 }
 
-// ProjectServiceListRequest is the request payload to list all projects
+// ProjectServiceListRequest is the request payload to list all projects.
 type ProjectServiceListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Query for projects
+	// Query for projects.
 	Query         *ProjectQuery `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -363,16 +363,16 @@ func (x *ProjectServiceListRequest) GetQuery() *ProjectQuery {
 	return nil
 }
 
-// ProjectQuery is used to search projects
+// ProjectQuery is used to search projects.
 type ProjectQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uuid lists only projects with this uuid
+	// Uuid lists only projects with this uuid.
 	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	// Name lists only projects with this name
+	// Name lists only projects with this name.
 	Name *string `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Tenant lists only projects of this tenant
+	// Tenant lists only projects of this tenant.
 	Tenant *string `protobuf:"bytes,3,opt,name=tenant,proto3,oneof" json:"tenant,omitempty"`
-	// Labels lists only projects containing the given labels
+	// Labels lists only projects containing the given labels.
 	Labels        *Labels `protobuf:"bytes,4,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -436,10 +436,10 @@ func (x *ProjectQuery) GetLabels() *Labels {
 	return nil
 }
 
-// ProjectServiceListResponse is the response payload to list all projects
+// ProjectServiceListResponse is the response payload to list all projects.
 type ProjectServiceListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Projects is a list of all your projects
+	// Projects is a list of all your projects.
 	Projects      []*Project `protobuf:"bytes,1,rep,name=projects,proto3" json:"projects,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -482,10 +482,10 @@ func (x *ProjectServiceListResponse) GetProjects() []*Project {
 	return nil
 }
 
-// ProjectServiceGetRequest is the request payload to get a project
+// ProjectServiceGetRequest is the request payload to get a project.
 type ProjectServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project to get
+	// Project is the uuid of the project to get.
 	Project       string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -528,12 +528,12 @@ func (x *ProjectServiceGetRequest) GetProject() string {
 	return ""
 }
 
-// ProjectServiceGetResponse is the response payload to get a projects
+// ProjectServiceGetResponse is the response payload to get a projects.
 type ProjectServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the project
+	// Project is the project.
 	Project *Project `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions
+	// ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
 	ProjectMembers []*ProjectMember `protobuf:"bytes,2,rep,name=project_members,json=projectMembers,proto3" json:"project_members,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
@@ -583,19 +583,19 @@ func (x *ProjectServiceGetResponse) GetProjectMembers() []*ProjectMember {
 	return nil
 }
 
-// ProjectServiceCreateRequest is the request payload to Create a project
+// ProjectServiceCreateRequest is the request payload to Create a project.
 type ProjectServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login is the tenant of this project
-	// TODO: is login really a good name?
+	// Login is the tenant of this project.
+	// TODO: is login really a good name?.
 	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Name of this project, unique per tenant
+	// Name of this project, unique per tenant.
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this project
+	// Description of this project.
 	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// Avatar URL of the project
+	// Avatar URL of the project.
 	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// Labels on the project
+	// Labels on the project.
 	Labels        *Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -666,10 +666,10 @@ func (x *ProjectServiceCreateRequest) GetLabels() *Labels {
 	return nil
 }
 
-// ProjectServiceCreateResponse is the response payload of creation of a project
+// ProjectServiceCreateResponse is the response payload of creation of a project.
 type ProjectServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the project
+	// Project is the project.
 	Project       *Project `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -712,10 +712,10 @@ func (x *ProjectServiceCreateResponse) GetProject() *Project {
 	return nil
 }
 
-// ProjectServiceDeleteRequest is the request payload to delete a project
+// ProjectServiceDeleteRequest is the request payload to delete a project.
 type ProjectServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project to delete
+	// Project is the uuid of the project to delete.
 	Project       string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -758,10 +758,10 @@ func (x *ProjectServiceDeleteRequest) GetProject() string {
 	return ""
 }
 
-// ProjectServiceDeleteResponse is the response payload to delete a project
+// ProjectServiceDeleteResponse is the response payload to delete a project.
 type ProjectServiceDeleteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the project
+	// Project is the project.
 	Project       *Project `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -804,20 +804,20 @@ func (x *ProjectServiceDeleteResponse) GetProject() *Project {
 	return nil
 }
 
-// ProjectServiceUpdateRequest is the request payload to update a project
+// ProjectServiceUpdateRequest is the request payload to update a project.
 type ProjectServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project to get
+	// Project is the uuid of the project to get.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// UpdateMeta contains the timestamp and strategy to be used in this update request
+	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta *UpdateMeta `protobuf:"bytes,2,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
-	// Name of this project unique per tenant
+	// Name of this project unique per tenant.
 	Name *string `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	// Description of this project
+	// Description of this project.
 	Description *string `protobuf:"bytes,4,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Avatar URL of the project
+	// Avatar URL of the project.
 	AvatarUrl *string `protobuf:"bytes,5,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// Labels on this project
+	// Labels on this project.
 	Labels        *UpdateLabels `protobuf:"bytes,6,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -895,10 +895,10 @@ func (x *ProjectServiceUpdateRequest) GetLabels() *UpdateLabels {
 	return nil
 }
 
-// ProjectServiceUpdateResponse is the response payload to update a project
+// ProjectServiceUpdateResponse is the response payload to update a project.
 type ProjectServiceUpdateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the project
+	// Project is the project.
 	Project       *Project `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -941,12 +941,12 @@ func (x *ProjectServiceUpdateResponse) GetProject() *Project {
 	return nil
 }
 
-// ProjectServiceInviteRequest is used to invite a member to a project
+// ProjectServiceInviteRequest is used to invite a member to a project.
 type ProjectServiceInviteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project
+	// Project is the uuid of the project.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Role of this user in this project
+	// Role of this user in this project.
 	Role          ProjectRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -996,12 +996,12 @@ func (x *ProjectServiceInviteRequest) GetRole() ProjectRole {
 	return ProjectRole_PROJECT_ROLE_UNSPECIFIED
 }
 
-// ProjectServiceInviteResponse is the response payload to a invite member request
+// ProjectServiceInviteResponse is the response payload to a invite member request.
 type ProjectServiceInviteResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Inviter contains a secret which can be sent to a potential user
-	// can be appended to the invitation endpoint at our cloud console like
-	// console.metalstack.cloud/invite/<secret>
+	// Inviter contains a secret which can be sent to a potential user.
+	// can be appended to the invitation endpoint at our cloud console like.
+	// console.metalstack.cloud/invite/<secret.
 	Invite        *ProjectInvite `protobuf:"bytes,1,opt,name=invite,proto3" json:"invite,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1044,10 +1044,10 @@ func (x *ProjectServiceInviteResponse) GetInvite() *ProjectInvite {
 	return nil
 }
 
-// ProjectServiceInvitesListRequest is the request payload to a list invites request
+// ProjectServiceInvitesListRequest is the request payload to a list invites request.
 type ProjectServiceInvitesListRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project
+	// Project is the uuid of the project.
 	Project       string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1090,10 +1090,10 @@ func (x *ProjectServiceInvitesListRequest) GetProject() string {
 	return ""
 }
 
-// ProjectServiceInvitesListResponse is the response payload to a list invites request
+// ProjectServiceInvitesListResponse is the response payload to a list invites request.
 type ProjectServiceInvitesListResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Invites not already accepted the invitation to this project
+	// Invites not already accepted the invitation to this project.
 	Invites       []*ProjectInvite `protobuf:"bytes,1,rep,name=invites,proto3" json:"invites,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1136,10 +1136,10 @@ func (x *ProjectServiceInvitesListResponse) GetInvites() []*ProjectInvite {
 	return nil
 }
 
-// ProjectServiceInviteGetRequest is the request payload to get a invite
+// ProjectServiceInviteGetRequest is the request payload to get a invite.
 type ProjectServiceInviteGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Secret of the invite to list
+	// Secret of the invite to list.
 	Secret        string `protobuf:"bytes,1,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1182,10 +1182,10 @@ func (x *ProjectServiceInviteGetRequest) GetSecret() string {
 	return ""
 }
 
-// ProjectServiceInviteGetResponse is the response payload to a get invite request
+// ProjectServiceInviteGetResponse is the response payload to a get invite request.
 type ProjectServiceInviteGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Invite is the invite
+	// Invite is the invite.
 	Invite        *ProjectInvite `protobuf:"bytes,1,opt,name=invite,proto3" json:"invite,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1228,10 +1228,10 @@ func (x *ProjectServiceInviteGetResponse) GetInvite() *ProjectInvite {
 	return nil
 }
 
-// ProjectServiceLeaveRequest is used to leave a project
+// ProjectServiceLeaveRequest is used to leave a project.
 type ProjectServiceLeaveRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project
+	// Project is the uuid of the project.
 	Project       string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1274,7 +1274,7 @@ func (x *ProjectServiceLeaveRequest) GetProject() string {
 	return ""
 }
 
-// ProjectServiceLeaveResponse is the response payload to a leave project request
+// ProjectServiceLeaveResponse is the response payload to a leave project request.
 type ProjectServiceLeaveResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1311,14 +1311,14 @@ func (*ProjectServiceLeaveResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{21}
 }
 
-// ProjectServiceAddMemberRequest is the request payload for adding a member to a project
+// ProjectServiceAddMemberRequest is the request payload for adding a member to a project.
 type ProjectServiceAddMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project
+	// Project is the uuid of the project.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Login of the member to add
+	// Login of the member to add.
 	Member string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
-	// Role to assign to the new member
+	// Role to assign to the new member.
 	Role          ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1375,10 +1375,10 @@ func (x *ProjectServiceAddMemberRequest) GetRole() ProjectRole {
 	return ProjectRole_PROJECT_ROLE_UNSPECIFIED
 }
 
-// ProjectServiceAddMemberResponse is the response payload for the add member request
+// ProjectServiceAddMemberResponse is the response payload for the add member request.
 type ProjectServiceAddMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ProjectRole is the added project member
+	// ProjectRole is the added project member.
 	ProjectMember ProjectRole `protobuf:"varint,1,opt,name=project_member,json=projectMember,proto3,enum=metalstack.api.v2.ProjectRole" json:"project_member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1421,12 +1421,12 @@ func (x *ProjectServiceAddMemberResponse) GetProjectMember() ProjectRole {
 	return ProjectRole_PROJECT_ROLE_UNSPECIFIED
 }
 
-// ProjectServiceRemoveMemberRequest is used to remove a member from a project
+// ProjectServiceRemoveMemberRequest is used to remove a member from a project.
 type ProjectServiceRemoveMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project
+	// Project is the uuid of the project.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Member is the id of the member to remove from this project
+	// Member is the id of the member to remove from this project.
 	Member        string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1476,7 +1476,7 @@ func (x *ProjectServiceRemoveMemberRequest) GetMember() string {
 	return ""
 }
 
-// ProjectServiceRemoveMemberResponse is the response payload to a remove member request
+// ProjectServiceRemoveMemberResponse is the response payload to a remove member request.
 type ProjectServiceRemoveMemberResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1513,14 +1513,14 @@ func (*ProjectServiceRemoveMemberResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_project_proto_rawDescGZIP(), []int{25}
 }
 
-// ProjectServiceUpdateMemberRequest is used to update a member of a project
+// ProjectServiceUpdateMemberRequest is used to update a member of a project.
 type ProjectServiceUpdateMemberRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project
+	// Project is the uuid of the project.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Member is the id of the member to remove from this project
+	// Member is the id of the member to remove from this project.
 	Member string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
-	// Role is the role in this project the user will get after the update
+	// Role is the role in this project the user will get after the update.
 	Role          ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1577,10 +1577,10 @@ func (x *ProjectServiceUpdateMemberRequest) GetRole() ProjectRole {
 	return ProjectRole_PROJECT_ROLE_UNSPECIFIED
 }
 
-// ProjectServiceUpdateMemberResponse is the response payload to a update member request
+// ProjectServiceUpdateMemberResponse is the response payload to a update member request.
 type ProjectServiceUpdateMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// ProjectMember is the updated project member
+	// ProjectMember is the updated project member.
 	ProjectMember *ProjectMember `protobuf:"bytes,1,opt,name=project_member,json=projectMember,proto3" json:"project_member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1623,10 +1623,10 @@ func (x *ProjectServiceUpdateMemberResponse) GetProjectMember() *ProjectMember {
 	return nil
 }
 
-// ProjectServiceInviteAcceptRequest is the request payload to a accept invite request
+// ProjectServiceInviteAcceptRequest is the request payload to a accept invite request.
 type ProjectServiceInviteAcceptRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Secret is the invitation secret part of the invitation url
+	// Secret is the invitation secret part of the invitation url.
 	Secret        string `protobuf:"bytes,1,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1669,12 +1669,12 @@ func (x *ProjectServiceInviteAcceptRequest) GetSecret() string {
 	return ""
 }
 
-// ProjectServiceInviteAcceptResponse is the response payload to a accept invite request
+// ProjectServiceInviteAcceptResponse is the response payload to a accept invite request.
 type ProjectServiceInviteAcceptResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project ID of the project joined
+	// Project ID of the project joined.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// ProjectName of the project joined
+	// ProjectName of the project joined.
 	ProjectName   string `protobuf:"bytes,2,opt,name=project_name,json=projectName,proto3" json:"project_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1724,12 +1724,12 @@ func (x *ProjectServiceInviteAcceptResponse) GetProjectName() string {
 	return ""
 }
 
-// ProjectServiceInviteDeleteRequest is the request payload to a delete invite
+// ProjectServiceInviteDeleteRequest is the request payload to a delete invite.
 type ProjectServiceInviteDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project is the uuid of the project
+	// Project is the uuid of the project.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Secret of the invite to delete
+	// Secret of the invite to delete.
 	Secret        string `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1779,7 +1779,7 @@ func (x *ProjectServiceInviteDeleteRequest) GetSecret() string {
 	return ""
 }
 
-// ProjectServiceInviteDeleteResponse is the response payload of a delete invite request
+// ProjectServiceInviteDeleteResponse is the response payload of a delete invite request.
 type ProjectServiceInviteDeleteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields

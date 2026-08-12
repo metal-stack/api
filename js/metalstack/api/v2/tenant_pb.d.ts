@@ -7,49 +7,49 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_tenant: GenFile;
 /**
- * Tenant is a customer of the platform
+ * Tenant is a customer of the platform.
  *
  * @generated from message metalstack.api.v2.Tenant
  */
 export type Tenant = Message<"metalstack.api.v2.Tenant"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
-     * Meta for this tenant
+     * Meta for this tenant.
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
     meta?: Meta | undefined;
     /**
-     * Name of the tenant
+     * Name of the tenant.
      *
      * @generated from field: string name = 3;
      */
     name: string;
     /**
-     * Email of the tenant
+     * Email of the tenant.
      *
      * @generated from field: string email = 4;
      */
     email: string;
     /**
-     * Description of this tenant
+     * Description of this tenant.
      *
      * @generated from field: string description = 5;
      */
     description: string;
     /**
-     * AvatarUrl of the tenant
+     * AvatarUrl of the tenant.
      *
      * @generated from field: string avatar_url = 6;
      */
     avatarUrl: string;
     /**
-     * CreatedBy stores who created this tenant
+     * CreatedBy stores who created this tenant.
      *
      * @generated from field: string created_by = 7;
      */
@@ -61,37 +61,37 @@ export type Tenant = Message<"metalstack.api.v2.Tenant"> & {
  */
 export declare const TenantSchema: GenMessage<Tenant>;
 /**
- * TenantMember defines a user that participates in a tenant
+ * TenantMember defines a user that participates in a tenant.
  *
  * @generated from message metalstack.api.v2.TenantMember
  */
 export type TenantMember = Message<"metalstack.api.v2.TenantMember"> & {
     /**
-     * Id is the user id of the member
+     * Id is the user id of the member.
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * Role is the role of the member
+     * Role is the role of the member.
      *
      * @generated from field: metalstack.api.v2.TenantRole role = 2;
      */
     role: TenantRole;
     /**
-     * Projects in which a user is a direct member
+     * Projects in which a user is a direct member.
      *
      * @generated from field: repeated string projects = 3;
      */
     projects: string[];
     /**
-     * CreatedAt the date when the member was added to the tenant
+     * CreatedAt the date when the member was added to the tenant.
      *
      * @generated from field: google.protobuf.Timestamp created_at = 4;
      */
     createdAt?: Timestamp | undefined;
     /**
-     * Meta for this tenant member
+     * Meta for this tenant member.
      *
      * @generated from field: metalstack.api.v2.Meta meta = 5;
      */
@@ -103,61 +103,61 @@ export type TenantMember = Message<"metalstack.api.v2.TenantMember"> & {
  */
 export declare const TenantMemberSchema: GenMessage<TenantMember>;
 /**
- * TenantInvite defines invite to tenant
+ * TenantInvite defines invite to tenant.
  *
  * @generated from message metalstack.api.v2.TenantInvite
  */
 export type TenantInvite = Message<"metalstack.api.v2.TenantInvite"> & {
     /**
-     * Secret is the secret part of the invite, typically part of the url
+     * Secret is the secret part of the invite, typically part of the url.
      *
      * @generated from field: string secret = 1;
      */
     secret: string;
     /**
-     * TargetTenant is the tenant id for which this invite was created
+     * TargetTenant is the tenant id for which this invite was created.
      *
      * @generated from field: string target_tenant = 2;
      */
     targetTenant: string;
     /**
-     * Role is the role in this tenant the user will get after accepting the invitation
+     * Role is the role in this tenant the user will get after accepting the invitation.
      *
      * @generated from field: metalstack.api.v2.TenantRole role = 3;
      */
     role: TenantRole;
     /**
-     * Joined is false as long as a user has not accepted the invite
+     * Joined is false as long as a user has not accepted the invite.
      *
      * @generated from field: bool joined = 4;
      */
     joined: boolean;
     /**
-     * TargetTenantName is the tenant name for which this invite was created
+     * TargetTenantName is the tenant name for which this invite was created.
      *
      * @generated from field: string target_tenant_name = 5;
      */
     targetTenantName: string;
     /**
-     * Tenant is the login of the tenant inviting another user to join this tenant
+     * Tenant is the login of the tenant inviting another user to join this tenant.
      *
      * @generated from field: string tenant = 6;
      */
     tenant: string;
     /**
-     * TenantName is the name of the tenant inviting another user to join this tenant
+     * TenantName is the name of the tenant inviting another user to join this tenant.
      *
      * @generated from field: string tenant_name = 7;
      */
     tenantName: string;
     /**
-     * ExpiresAt the date when this invite expires
+     * ExpiresAt the date when this invite expires.
      *
      * @generated from field: google.protobuf.Timestamp expires_at = 8;
      */
     expiresAt?: Timestamp | undefined;
     /**
-     * JoinedAt the date when the member accepted this invite
+     * JoinedAt the date when the member accepted this invite.
      *
      * @generated from field: google.protobuf.Timestamp joined_at = 9;
      */
@@ -169,13 +169,13 @@ export type TenantInvite = Message<"metalstack.api.v2.TenantInvite"> & {
  */
 export declare const TenantInviteSchema: GenMessage<TenantInvite>;
 /**
- * TenantServiceListRequest is the request payload of the tenant list request
+ * TenantServiceListRequest is the request payload of the tenant list request.
  *
  * @generated from message metalstack.api.v2.TenantServiceListRequest
  */
 export type TenantServiceListRequest = Message<"metalstack.api.v2.TenantServiceListRequest"> & {
     /**
-     * Query for tenants
+     * Query for tenants.
      *
      * @generated from field: metalstack.api.v2.TenantQuery query = 1;
      */
@@ -187,31 +187,31 @@ export type TenantServiceListRequest = Message<"metalstack.api.v2.TenantServiceL
  */
 export declare const TenantServiceListRequestSchema: GenMessage<TenantServiceListRequest>;
 /**
- * TenantQuery is used to search tenants
+ * TenantQuery is used to search tenants.
  *
  * @generated from message metalstack.api.v2.TenantQuery
  */
 export type TenantQuery = Message<"metalstack.api.v2.TenantQuery"> & {
     /**
-     * Id filters tenants by login
+     * Id filters tenants by login.
      *
      * @generated from field: optional string login = 1;
      */
     login?: string | undefined;
     /**
-     * Name filters tenants by name
+     * Name filters tenants by name.
      *
      * @generated from field: optional string name = 2;
      */
     name?: string | undefined;
     /**
-     * Labels lists only projects containing the given labels
+     * Labels lists only projects containing the given labels.
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 3;
      */
     labels?: Labels | undefined;
     /**
-     * Paging details for the list request
+     * Paging details for the list request.
      *
      * @generated from field: metalstack.api.v2.Paging paging = 4;
      */
@@ -223,13 +223,13 @@ export type TenantQuery = Message<"metalstack.api.v2.TenantQuery"> & {
  */
 export declare const TenantQuerySchema: GenMessage<TenantQuery>;
 /**
- * TenantServiceGetRequest is the request payload of the tenant get request
+ * TenantServiceGetRequest is the request payload of the tenant get request.
  *
  * @generated from message metalstack.api.v2.TenantServiceGetRequest
  */
 export type TenantServiceGetRequest = Message<"metalstack.api.v2.TenantServiceGetRequest"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
@@ -241,37 +241,37 @@ export type TenantServiceGetRequest = Message<"metalstack.api.v2.TenantServiceGe
  */
 export declare const TenantServiceGetRequestSchema: GenMessage<TenantServiceGetRequest>;
 /**
- * TenantServiceCreateRequest is the request payload of the tenant create request
+ * TenantServiceCreateRequest is the request payload of the tenant create request.
  *
  * @generated from message metalstack.api.v2.TenantServiceCreateRequest
  */
 export type TenantServiceCreateRequest = Message<"metalstack.api.v2.TenantServiceCreateRequest"> & {
     /**
-     * Name of this tenant
+     * Name of this tenant.
      *
      * @generated from field: string name = 1;
      */
     name: string;
     /**
-     * Description of this tenant
+     * Description of this tenant.
      *
      * @generated from field: optional string description = 2;
      */
     description?: string | undefined;
     /**
-     * Email of the tenant, if not set will be inherited from the creator
+     * Email of the tenant, if not set will be inherited from the creator.
      *
      * @generated from field: optional string email = 3;
      */
     email?: string | undefined;
     /**
-     * AvatarUrl of the tenant
+     * AvatarUrl of the tenant.
      *
      * @generated from field: optional string avatar_url = 4;
      */
     avatarUrl?: string | undefined;
     /**
-     * Labels on the tenant
+     * Labels on the tenant.
      *
      * @generated from field: metalstack.api.v2.Labels labels = 5;
      */
@@ -283,49 +283,49 @@ export type TenantServiceCreateRequest = Message<"metalstack.api.v2.TenantServic
  */
 export declare const TenantServiceCreateRequestSchema: GenMessage<TenantServiceCreateRequest>;
 /**
- * TenantServiceUpdateRequest is the request payload of the tenant update request
+ * TenantServiceUpdateRequest is the request payload of the tenant update request.
  *
  * @generated from message metalstack.api.v2.TenantServiceUpdateRequest
  */
 export type TenantServiceUpdateRequest = Message<"metalstack.api.v2.TenantServiceUpdateRequest"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
-     * UpdateMeta contains the timestamp and strategy to be used in this update request
+     * UpdateMeta contains the timestamp and strategy to be used in this update request.
      *
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
      */
     updateMeta?: UpdateMeta | undefined;
     /**
-     * Name of the tenant
+     * Name of the tenant.
      *
      * @generated from field: optional string name = 3;
      */
     name?: string | undefined;
     /**
-     * Email of the tenant
+     * Email of the tenant.
      *
      * @generated from field: optional string email = 4;
      */
     email?: string | undefined;
     /**
-     * Description of this tenant
+     * Description of this tenant.
      *
      * @generated from field: optional string description = 5;
      */
     description?: string | undefined;
     /**
-     * AvatarUrl of the tenant
+     * AvatarUrl of the tenant.
      *
      * @generated from field: optional string avatar_url = 6;
      */
     avatarUrl?: string | undefined;
     /**
-     * Labels on the tenant
+     * Labels on the tenant.
      *
      * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 7;
      */
@@ -337,13 +337,13 @@ export type TenantServiceUpdateRequest = Message<"metalstack.api.v2.TenantServic
  */
 export declare const TenantServiceUpdateRequestSchema: GenMessage<TenantServiceUpdateRequest>;
 /**
- * TenantServiceDeleteRequest is the request payload of the tenant delete request
+ * TenantServiceDeleteRequest is the request payload of the tenant delete request.
  *
  * @generated from message metalstack.api.v2.TenantServiceDeleteRequest
  */
 export type TenantServiceDeleteRequest = Message<"metalstack.api.v2.TenantServiceDeleteRequest"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
@@ -355,19 +355,19 @@ export type TenantServiceDeleteRequest = Message<"metalstack.api.v2.TenantServic
  */
 export declare const TenantServiceDeleteRequestSchema: GenMessage<TenantServiceDeleteRequest>;
 /**
- * TenantServiceGetResponse is the response payload of the tenant get request
+ * TenantServiceGetResponse is the response payload of the tenant get request.
  *
  * @generated from message metalstack.api.v2.TenantServiceGetResponse
  */
 export type TenantServiceGetResponse = Message<"metalstack.api.v2.TenantServiceGetResponse"> & {
     /**
-     * Tenant is the tenant
+     * Tenant is the tenant.
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
     tenant?: Tenant | undefined;
     /**
-     * TenantMembers of this tenant
+     * TenantMembers of this tenant.
      *
      * @generated from field: repeated metalstack.api.v2.TenantMember tenant_members = 2;
      */
@@ -379,13 +379,13 @@ export type TenantServiceGetResponse = Message<"metalstack.api.v2.TenantServiceG
  */
 export declare const TenantServiceGetResponseSchema: GenMessage<TenantServiceGetResponse>;
 /**
- * TenantServiceListResponse is the response payload of the tenant list request
+ * TenantServiceListResponse is the response payload of the tenant list request.
  *
  * @generated from message metalstack.api.v2.TenantServiceListResponse
  */
 export type TenantServiceListResponse = Message<"metalstack.api.v2.TenantServiceListResponse"> & {
     /**
-     * Tenants is the list of tenants
+     * Tenants is the list of tenants.
      *
      * @generated from field: repeated metalstack.api.v2.Tenant tenants = 1;
      */
@@ -397,13 +397,13 @@ export type TenantServiceListResponse = Message<"metalstack.api.v2.TenantService
  */
 export declare const TenantServiceListResponseSchema: GenMessage<TenantServiceListResponse>;
 /**
- * TenantServiceCreateResponse is the response payload of the tenant create request
+ * TenantServiceCreateResponse is the response payload of the tenant create request.
  *
  * @generated from message metalstack.api.v2.TenantServiceCreateResponse
  */
 export type TenantServiceCreateResponse = Message<"metalstack.api.v2.TenantServiceCreateResponse"> & {
     /**
-     * Tenant is the tenant
+     * Tenant is the tenant.
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
@@ -415,13 +415,13 @@ export type TenantServiceCreateResponse = Message<"metalstack.api.v2.TenantServi
  */
 export declare const TenantServiceCreateResponseSchema: GenMessage<TenantServiceCreateResponse>;
 /**
- * TenantServiceUpdateResponse is the response payload of the tenant update request
+ * TenantServiceUpdateResponse is the response payload of the tenant update request.
  *
  * @generated from message metalstack.api.v2.TenantServiceUpdateResponse
  */
 export type TenantServiceUpdateResponse = Message<"metalstack.api.v2.TenantServiceUpdateResponse"> & {
     /**
-     * Tenant is the tenant
+     * Tenant is the tenant.
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
@@ -433,13 +433,13 @@ export type TenantServiceUpdateResponse = Message<"metalstack.api.v2.TenantServi
  */
 export declare const TenantServiceUpdateResponseSchema: GenMessage<TenantServiceUpdateResponse>;
 /**
- * TenantServiceDeleteResponse is the response payload of the tenant delete request
+ * TenantServiceDeleteResponse is the response payload of the tenant delete request.
  *
  * @generated from message metalstack.api.v2.TenantServiceDeleteResponse
  */
 export type TenantServiceDeleteResponse = Message<"metalstack.api.v2.TenantServiceDeleteResponse"> & {
     /**
-     * Tenant is the tenant
+     * Tenant is the tenant.
      *
      * @generated from field: metalstack.api.v2.Tenant tenant = 1;
      */
@@ -451,19 +451,19 @@ export type TenantServiceDeleteResponse = Message<"metalstack.api.v2.TenantServi
  */
 export declare const TenantServiceDeleteResponseSchema: GenMessage<TenantServiceDeleteResponse>;
 /**
- * TenantServiceInviteRequest is used to invite a member to a tenant
+ * TenantServiceInviteRequest is used to invite a member to a tenant.
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteRequest
  */
 export type TenantServiceInviteRequest = Message<"metalstack.api.v2.TenantServiceInviteRequest"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
-     * Role of this user in this tenant
+     * Role of this user in this tenant.
      *
      * @generated from field: metalstack.api.v2.TenantRole role = 2;
      */
@@ -475,15 +475,13 @@ export type TenantServiceInviteRequest = Message<"metalstack.api.v2.TenantServic
  */
 export declare const TenantServiceInviteRequestSchema: GenMessage<TenantServiceInviteRequest>;
 /**
- * TenantServiceInviteRequest is the response payload to a invite member request
+ * TenantServiceInviteRequest is the response payload to a invite member request.
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteResponse
  */
 export type TenantServiceInviteResponse = Message<"metalstack.api.v2.TenantServiceInviteResponse"> & {
     /**
-     * Invite contains a secret which can be sent to a potential user
-     * can be appended to the invitation endpoint at our cloud console like
-     * console.metalstack.cloud/invite/<secret>
+     * Invite contains a secret which can be sent to a potential user.
      *
      * @generated from field: metalstack.api.v2.TenantInvite invite = 1;
      */
@@ -495,13 +493,13 @@ export type TenantServiceInviteResponse = Message<"metalstack.api.v2.TenantServi
  */
 export declare const TenantServiceInviteResponseSchema: GenMessage<TenantServiceInviteResponse>;
 /**
- * TenantServiceInvitesListRequest is the request payload to a list invites request
+ * TenantServiceInvitesListRequest is the request payload to a list invites request.
  *
  * @generated from message metalstack.api.v2.TenantServiceInvitesListRequest
  */
 export type TenantServiceInvitesListRequest = Message<"metalstack.api.v2.TenantServiceInvitesListRequest"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
@@ -513,13 +511,13 @@ export type TenantServiceInvitesListRequest = Message<"metalstack.api.v2.TenantS
  */
 export declare const TenantServiceInvitesListRequestSchema: GenMessage<TenantServiceInvitesListRequest>;
 /**
- * TenantServiceInvitesListResponse is the response payload to a list invites request
+ * TenantServiceInvitesListResponse is the response payload to a list invites request.
  *
  * @generated from message metalstack.api.v2.TenantServiceInvitesListResponse
  */
 export type TenantServiceInvitesListResponse = Message<"metalstack.api.v2.TenantServiceInvitesListResponse"> & {
     /**
-     * Invites that have not yet accepted the invitation to this tenant
+     * Invites that have not yet accepted the invitation to this tenant.
      *
      * @generated from field: repeated metalstack.api.v2.TenantInvite invites = 1;
      */
@@ -531,13 +529,13 @@ export type TenantServiceInvitesListResponse = Message<"metalstack.api.v2.Tenant
  */
 export declare const TenantServiceInvitesListResponseSchema: GenMessage<TenantServiceInvitesListResponse>;
 /**
- * TenantServiceInviteGetRequest is the request payload to get a invite
+ * TenantServiceInviteGetRequest is the request payload to get a invite.
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteGetRequest
  */
 export type TenantServiceInviteGetRequest = Message<"metalstack.api.v2.TenantServiceInviteGetRequest"> & {
     /**
-     * Secret of the invite to get
+     * Secret of the invite to get.
      *
      * @generated from field: string secret = 1;
      */
@@ -549,13 +547,13 @@ export type TenantServiceInviteGetRequest = Message<"metalstack.api.v2.TenantSer
  */
 export declare const TenantServiceInviteGetRequestSchema: GenMessage<TenantServiceInviteGetRequest>;
 /**
- * TenantServiceInviteGetResponse is the response payload to a get invite request
+ * TenantServiceInviteGetResponse is the response payload to a get invite request.
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteGetResponse
  */
 export type TenantServiceInviteGetResponse = Message<"metalstack.api.v2.TenantServiceInviteGetResponse"> & {
     /**
-     * Invite is the invite
+     * Invite is the invite.
      *
      * @generated from field: metalstack.api.v2.TenantInvite invite = 1;
      */
@@ -567,19 +565,19 @@ export type TenantServiceInviteGetResponse = Message<"metalstack.api.v2.TenantSe
  */
 export declare const TenantServiceInviteGetResponseSchema: GenMessage<TenantServiceInviteGetResponse>;
 /**
- * TenantServiceRemoveMemberRequest is used to remove a member from a tenant
+ * TenantServiceRemoveMemberRequest is used to remove a member from a tenant.
  *
  * @generated from message metalstack.api.v2.TenantServiceRemoveMemberRequest
  */
 export type TenantServiceRemoveMemberRequest = Message<"metalstack.api.v2.TenantServiceRemoveMemberRequest"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
-     * Member is the id of the member to remove from this tenant
+     * Member is the id of the member to remove from this tenant.
      *
      * @generated from field: string member = 2;
      */
@@ -591,13 +589,13 @@ export type TenantServiceRemoveMemberRequest = Message<"metalstack.api.v2.Tenant
  */
 export declare const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantServiceRemoveMemberRequest>;
 /**
- * TenantServiceLeaveTenantRequest is used to leave a tenant
+ * TenantServiceLeaveTenantRequest is used to leave a tenant.
  *
  * @generated from message metalstack.api.v2.TenantServiceLeaveRequest
  */
 export type TenantServiceLeaveRequest = Message<"metalstack.api.v2.TenantServiceLeaveRequest"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
@@ -609,7 +607,7 @@ export type TenantServiceLeaveRequest = Message<"metalstack.api.v2.TenantService
  */
 export declare const TenantServiceLeaveRequestSchema: GenMessage<TenantServiceLeaveRequest>;
 /**
- * TenantServiceLeaveTenantResponse is the response payload to a leave tenant request
+ * TenantServiceLeaveTenantResponse is the response payload to a leave tenant request.
  *
  * @generated from message metalstack.api.v2.TenantServiceLeaveResponse
  */
@@ -620,13 +618,13 @@ export type TenantServiceLeaveResponse = Message<"metalstack.api.v2.TenantServic
  */
 export declare const TenantServiceLeaveResponseSchema: GenMessage<TenantServiceLeaveResponse>;
 /**
- * TenantServiceRemoveMemberResponse is the response payload to a remove member request
+ * TenantServiceRemoveMemberResponse is the response payload to a remove member request.
  *
  * @generated from message metalstack.api.v2.TenantServiceRemoveMemberResponse
  */
 export type TenantServiceRemoveMemberResponse = Message<"metalstack.api.v2.TenantServiceRemoveMemberResponse"> & {
     /**
-     * TenantMember is the removed tenant member
+     * TenantMember is the removed tenant member.
      *
      * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
      */
@@ -638,13 +636,13 @@ export type TenantServiceRemoveMemberResponse = Message<"metalstack.api.v2.Tenan
  */
 export declare const TenantServiceRemoveMemberResponseSchema: GenMessage<TenantServiceRemoveMemberResponse>;
 /**
- * TenantServiceInviteAcceptRequest is the request payload to a accept invite request
+ * TenantServiceInviteAcceptRequest is the request payload to a accept invite request.
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteAcceptRequest
  */
 export type TenantServiceInviteAcceptRequest = Message<"metalstack.api.v2.TenantServiceInviteAcceptRequest"> & {
     /**
-     * Secret is the invitation secret part of the invitation url
+     * Secret is the invitation secret part of the invitation url.
      *
      * @generated from field: string secret = 1;
      */
@@ -656,19 +654,19 @@ export type TenantServiceInviteAcceptRequest = Message<"metalstack.api.v2.Tenant
  */
 export declare const TenantServiceInviteAcceptRequestSchema: GenMessage<TenantServiceInviteAcceptRequest>;
 /**
- * TenantServiceInviteAcceptResponse is the response payload to a accept invite request
+ * TenantServiceInviteAcceptResponse is the response payload to a accept invite request.
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteAcceptResponse
  */
 export type TenantServiceInviteAcceptResponse = Message<"metalstack.api.v2.TenantServiceInviteAcceptResponse"> & {
     /**
-     * Tenant ID of the joined tenant
+     * Tenant ID of the joined tenant.
      *
      * @generated from field: string tenant = 1;
      */
     tenant: string;
     /**
-     * TenantName of the joined tenant
+     * TenantName of the joined tenant.
      *
      * @generated from field: string tenant_name = 2;
      */
@@ -680,19 +678,19 @@ export type TenantServiceInviteAcceptResponse = Message<"metalstack.api.v2.Tenan
  */
 export declare const TenantServiceInviteAcceptResponseSchema: GenMessage<TenantServiceInviteAcceptResponse>;
 /**
- * TenantServiceInviteDeleteRequest is the request payload to a delete invite
+ * TenantServiceInviteDeleteRequest is the request payload to a delete invite.
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteDeleteRequest
  */
 export type TenantServiceInviteDeleteRequest = Message<"metalstack.api.v2.TenantServiceInviteDeleteRequest"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
-     * Secret of the invite to delete
+     * Secret of the invite to delete.
      *
      * @generated from field: string secret = 2;
      */
@@ -704,7 +702,7 @@ export type TenantServiceInviteDeleteRequest = Message<"metalstack.api.v2.Tenant
  */
 export declare const TenantServiceInviteDeleteRequestSchema: GenMessage<TenantServiceInviteDeleteRequest>;
 /**
- * TenantServiceInviteDeleteResponse is the response payload of a delete invite request
+ * TenantServiceInviteDeleteResponse is the response payload of a delete invite request.
  *
  * @generated from message metalstack.api.v2.TenantServiceInviteDeleteResponse
  */
@@ -715,25 +713,25 @@ export type TenantServiceInviteDeleteResponse = Message<"metalstack.api.v2.Tenan
  */
 export declare const TenantServiceInviteDeleteResponseSchema: GenMessage<TenantServiceInviteDeleteResponse>;
 /**
- * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant
+ * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant.
  *
  * @generated from message metalstack.api.v2.TenantServiceAddMemberRequest
  */
 export type TenantServiceAddMemberRequest = Message<"metalstack.api.v2.TenantServiceAddMemberRequest"> & {
     /**
-     * Login of the tenant to which the member will be added
+     * Login of the tenant to which the member will be added.
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
-     * Login of the member to add
+     * Login of the member to add.
      *
      * @generated from field: string member = 2;
      */
     member: string;
     /**
-     * Role to assign to the new member
+     * Role to assign to the new member.
      *
      * @generated from field: metalstack.api.v2.TenantRole role = 3;
      */
@@ -745,13 +743,13 @@ export type TenantServiceAddMemberRequest = Message<"metalstack.api.v2.TenantSer
  */
 export declare const TenantServiceAddMemberRequestSchema: GenMessage<TenantServiceAddMemberRequest>;
 /**
- * TenantServiceAddMemberResponse is the response payload for the add member request
+ * TenantServiceAddMemberResponse is the response payload for the add member request.
  *
  * @generated from message metalstack.api.v2.TenantServiceAddMemberResponse
  */
 export type TenantServiceAddMemberResponse = Message<"metalstack.api.v2.TenantServiceAddMemberResponse"> & {
     /**
-     * TenantMember is the added tenant member
+     * TenantMember is the added tenant member.
      *
      * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
      */
@@ -763,25 +761,25 @@ export type TenantServiceAddMemberResponse = Message<"metalstack.api.v2.TenantSe
  */
 export declare const TenantServiceAddMemberResponseSchema: GenMessage<TenantServiceAddMemberResponse>;
 /**
- * TenantServiceUpdateMemberRequest is used to update a member from a tenant
+ * TenantServiceUpdateMemberRequest is used to update a member from a tenant.
  *
  * @generated from message metalstack.api.v2.TenantServiceUpdateMemberRequest
  */
 export type TenantServiceUpdateMemberRequest = Message<"metalstack.api.v2.TenantServiceUpdateMemberRequest"> & {
     /**
-     * Login of the tenant
+     * Login of the tenant.
      *
      * @generated from field: string login = 1;
      */
     login: string;
     /**
-     * Member is the id of the member to update in this tenant
+     * Member is the id of the member to update in this tenant.
      *
      * @generated from field: string member = 2;
      */
     member: string;
     /**
-     * Role of this user in this tenant
+     * Role of this user in this tenant.
      *
      * @generated from field: metalstack.api.v2.TenantRole role = 3;
      */
@@ -793,13 +791,13 @@ export type TenantServiceUpdateMemberRequest = Message<"metalstack.api.v2.Tenant
  */
 export declare const TenantServiceUpdateMemberRequestSchema: GenMessage<TenantServiceUpdateMemberRequest>;
 /**
- * TenantServiceUpdateMemberResponse is the response payload to a update member request
+ * TenantServiceUpdateMemberResponse is the response payload to a update member request.
  *
  * @generated from message metalstack.api.v2.TenantServiceUpdateMemberResponse
  */
 export type TenantServiceUpdateMemberResponse = Message<"metalstack.api.v2.TenantServiceUpdateMemberResponse"> & {
     /**
-     * TenantMember is the updated membership
+     * TenantMember is the updated membership.
      *
      * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
      */
@@ -837,7 +835,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceListResponseSchema;
     };
     /**
-     * Get a tenant
+     * Get a tenant.
      *
      * @generated from rpc metalstack.api.v2.TenantService.Get
      */
@@ -847,7 +845,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceGetResponseSchema;
     };
     /**
-     * Update a tenant
+     * Update a tenant.
      *
      * @generated from rpc metalstack.api.v2.TenantService.Update
      */
@@ -857,7 +855,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceUpdateResponseSchema;
     };
     /**
-     * Delete a tenant
+     * Delete a tenant.
      *
      * @generated from rpc metalstack.api.v2.TenantService.Delete
      */
@@ -867,7 +865,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceDeleteResponseSchema;
     };
     /**
-     * Leave removes a member from a tenant
+     * Leave removes a member from a tenant.
      *
      * @generated from rpc metalstack.api.v2.TenantService.Leave
      */
@@ -877,7 +875,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceLeaveResponseSchema;
     };
     /**
-     * AddMember adds a member to a tenant
+     * AddMember adds a member to a tenant.
      *
      * @generated from rpc metalstack.api.v2.TenantService.AddMember
      */
@@ -887,7 +885,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceAddMemberResponseSchema;
     };
     /**
-     * RemoveMember removes a member from a tenant
+     * RemoveMember removes a member from a tenant.
      *
      * @generated from rpc metalstack.api.v2.TenantService.RemoveMember
      */
@@ -897,7 +895,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceRemoveMemberResponseSchema;
     };
     /**
-     * UpdateMember update a member of a tenant
+     * UpdateMember update a member of a tenant.
      *
      * @generated from rpc metalstack.api.v2.TenantService.UpdateMember
      */
@@ -907,7 +905,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceUpdateMemberResponseSchema;
     };
     /**
-     * Invite a user to a tenant
+     * Invite a user to a tenant.
      *
      * @generated from rpc metalstack.api.v2.TenantService.Invite
      */
@@ -917,7 +915,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceInviteResponseSchema;
     };
     /**
-     * InviteAccept is called from a user to accept an invitation
+     * InviteAccept is called from a user to accept an invitation.
      *
      * @generated from rpc metalstack.api.v2.TenantService.InviteAccept
      */
@@ -927,7 +925,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceInviteAcceptResponseSchema;
     };
     /**
-     * InviteDelete deletes a pending invitation
+     * InviteDelete deletes a pending invitation.
      *
      * @generated from rpc metalstack.api.v2.TenantService.InviteDelete
      */
@@ -937,7 +935,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceInviteDeleteResponseSchema;
     };
     /**
-     * InvitesList list all invites to a tenant
+     * InvitesList list all invites to a tenant.
      *
      * @generated from rpc metalstack.api.v2.TenantService.InvitesList
      */
@@ -947,7 +945,7 @@ export declare const TenantService: GenService<{
         output: typeof TenantServiceInvitesListResponseSchema;
     };
     /**
-     * InviteGet get an invite
+     * InviteGet get an invite.
      *
      * @generated from rpc metalstack.api.v2.TenantService.InviteGet
      */

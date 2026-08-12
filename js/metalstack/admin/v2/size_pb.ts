@@ -25,7 +25,7 @@ export const file_metalstack_admin_v2_size: GenFile = /*@__PURE__*/
  */
 export type SizeServiceCreateRequest = Message<"metalstack.admin.v2.SizeServiceCreateRequest"> & {
   /**
-   * Size is the size to create
+   * Size is the size to create.
    *
    * @generated from field: metalstack.api.v2.Size size = 1;
    */
@@ -46,7 +46,7 @@ export const SizeServiceCreateRequestSchema: GenMessage<SizeServiceCreateRequest
  */
 export type SizeServiceCreateResponse = Message<"metalstack.admin.v2.SizeServiceCreateResponse"> & {
   /**
-   * Size contains the created size
+   * Size contains the created size.
    *
    * @generated from field: metalstack.api.v2.Size size = 1;
    */
@@ -67,42 +67,42 @@ export const SizeServiceCreateResponseSchema: GenMessage<SizeServiceCreateRespon
  */
 export type SizeServiceUpdateRequest = Message<"metalstack.admin.v2.SizeServiceUpdateRequest"> & {
   /**
-   * Id of this size
+   * Id of this size.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
    */
   updateMeta?: UpdateMeta | undefined;
 
   /**
-   * Name of this size
+   * Name of this size.
    *
    * @generated from field: optional string name = 3;
    */
   name?: string | undefined;
 
   /**
-   * Description of this size
+   * Description of this size.
    *
    * @generated from field: optional string description = 4;
    */
   description?: string | undefined;
 
   /**
-   * Constraints which must match that a specific machine is considered of this size
+   * Constraints which must match that a specific machine is considered of this size.
    *
    * @generated from field: repeated metalstack.api.v2.SizeConstraint constraints = 5;
    */
   constraints: SizeConstraint[];
 
   /**
-   * Labels to update on this size
+   * Labels to update on this size.
    *
    * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 6;
    */
@@ -123,7 +123,7 @@ export const SizeServiceUpdateRequestSchema: GenMessage<SizeServiceUpdateRequest
  */
 export type SizeServiceUpdateResponse = Message<"metalstack.admin.v2.SizeServiceUpdateResponse"> & {
   /**
-   * Size contains the updated size
+   * Size contains the updated size.
    *
    * @generated from field: metalstack.api.v2.Size size = 1;
    */
@@ -144,7 +144,7 @@ export const SizeServiceUpdateResponseSchema: GenMessage<SizeServiceUpdateRespon
  */
 export type SizeServiceDeleteRequest = Message<"metalstack.admin.v2.SizeServiceDeleteRequest"> & {
   /**
-   * ID of the size to delete
+   * ID of the size to delete.
    *
    * @generated from field: string id = 1;
    */
@@ -165,7 +165,7 @@ export const SizeServiceDeleteRequestSchema: GenMessage<SizeServiceDeleteRequest
  */
 export type SizeServiceDeleteResponse = Message<"metalstack.admin.v2.SizeServiceDeleteResponse"> & {
   /**
-   * Size contains the deleted size
+   * Size contains the deleted size.
    *
    * @generated from field: metalstack.api.v2.Size size = 1;
    */

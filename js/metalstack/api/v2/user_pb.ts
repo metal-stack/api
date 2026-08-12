@@ -26,49 +26,49 @@ export const file_metalstack_api_v2_user: GenFile = /*@__PURE__*/
  */
 export type User = Message<"metalstack.api.v2.User"> & {
   /**
-   * Login is the login at the provider
+   * Login is the login at the provider.
    *
    * @generated from field: string login = 1;
    */
   login: string;
 
   /**
-   * Name of the user
+   * Name of the user.
    *
    * @generated from field: string name = 2;
    */
   name: string;
 
   /**
-   * Email of the user
+   * Email of the user.
    *
    * @generated from field: string email = 3;
    */
   email: string;
 
   /**
-   * AvatarUrl of the user
+   * AvatarUrl of the user.
    *
    * @generated from field: string avatar_url = 4;
    */
   avatarUrl: string;
 
   /**
-   * Tenants the user belongs to
+   * Tenants the user belongs to.
    *
    * @generated from field: repeated metalstack.api.v2.Tenant tenants = 5;
    */
   tenants: Tenant[];
 
   /**
-   * Projects the user belongs to
+   * Projects the user belongs to.
    *
    * @generated from field: repeated metalstack.api.v2.Project projects = 6;
    */
   projects: Project[];
 
   /**
-   * DefaultTenant the default tenant that this user belongs to
+   * DefaultTenant the default tenant that this user belongs to.
    *
    * @generated from field: metalstack.api.v2.Tenant default_tenant = 7;
    */
@@ -104,7 +104,7 @@ export const UserServiceGetRequestSchema: GenMessage<UserServiceGetRequest> = /*
  */
 export type UserServiceGetResponse = Message<"metalstack.api.v2.UserServiceGetResponse"> & {
   /**
-   * User contains the authenticated user
+   * User contains the authenticated user.
    *
    * @generated from field: metalstack.api.v2.User user = 1;
    */

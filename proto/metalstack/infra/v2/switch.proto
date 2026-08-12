@@ -30,7 +30,7 @@ service SwitchService {
 
 // SwitchServiceGetRequest is the request payload for getting a switch.
 message SwitchServiceGetRequest {
-  // Id of the switch
+  // Id of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
@@ -39,45 +39,45 @@ message SwitchServiceGetRequest {
 
 // SwitchServiceGetResponse is the response payload for getting a switch.
 message SwitchServiceGetResponse {
-  // Switch contains the requested switch
+  // Switch contains the requested switch.
   metalstack.api.v2.Switch switch = 1;
 }
 
 // SwitchServiceRegisterRequest is the request payload for registering a switch.
 message SwitchServiceRegisterRequest {
-  // Switch to register
+  // Switch to register.
   metalstack.api.v2.Switch switch = 1;
 }
 
 // SwitchServiceRegisterResponse is the response payload for registering a switch.
 message SwitchServiceRegisterResponse {
-  // Switch contains the registered switch
+  // Switch contains the registered switch.
   metalstack.api.v2.Switch switch = 1;
 }
 
 // SwitchServiceHeartbeatRequest is the request payload for sending a switch heartbeat.
 message SwitchServiceHeartbeatRequest {
-  // Id of the switch
+  // Id of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
   }];
-  // Duration of the sync
+  // Duration of the sync.
   google.protobuf.Duration duration = 2;
-  // Error if any occurred during the sync
+  // Error if any occurred during the sync.
   optional string error = 3;
-  // PortStates maps port identifiers to the respective port's operational state
+  // PortStates maps port identifiers to the respective port's operational state.
   map<string, metalstack.api.v2.SwitchPortStatus> port_states = 4;
-  // BgpPortStates maps port identifiers to the respective port's BGP state
+  // BgpPortStates maps port identifiers to the respective port's BGP state.
   map<string, metalstack.api.v2.SwitchBGPPortState> bgp_port_states = 5;
 }
 
 // SwitchServiceHeartbeatResponse is the response payload for sending a switch heartbeat.
 message SwitchServiceHeartbeatResponse {
-  // Id of the switch
+  // Id of the switch.
   string id = 1;
-  // LastSync holds information about the last sync
+  // LastSync holds information about the last sync.
   metalstack.api.v2.SwitchSync last_sync = 2;
-  // LastSyncError holds information about the last erroneous sync
+  // LastSyncError holds information about the last erroneous sync.
   metalstack.api.v2.SwitchSync last_sync_error = 3;
 }

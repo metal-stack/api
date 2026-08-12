@@ -6,50 +6,50 @@ import type { Message } from "@bufbuild/protobuf";
  */
 export declare const file_metalstack_api_v2_partition: GenFile;
 /**
- * Partition is a failure domain with machines and switches
+ * Partition is a failure domain with machines and switches.
  *
  * @generated from message metalstack.api.v2.Partition
  */
 export type Partition = Message<"metalstack.api.v2.Partition"> & {
     /**
-     * ID of this partition
+     * ID of this partition.
      *
      * @generated from field: string id = 1;
      */
     id: string;
     /**
-     * Meta for this partition
+     * Meta for this partition.
      *
      * @generated from field: metalstack.api.v2.Meta meta = 2;
      */
     meta?: Meta | undefined;
     /**
-     * Description of this partition
+     * Description of this partition.
      *
      * @generated from field: string description = 3;
      */
     description: string;
     /**
-     * PartitionBootConfiguration defines how metal-hammer boots
+     * PartitionBootConfiguration defines how metal-hammer boots.
      *
      * @generated from field: metalstack.api.v2.PartitionBootConfiguration boot_configuration = 4;
      */
     bootConfiguration?: PartitionBootConfiguration | undefined;
     /**
-     * DNSServers for this partition
+     * DNSServers for this partition.
      *
      * @generated from field: repeated metalstack.api.v2.DNSServer dns_servers = 5;
      */
     dnsServers: DNSServer[];
     /**
-     * NTPServers for this partition
+     * NTPServers for this partition.
      *
      * @generated from field: repeated metalstack.api.v2.NTPServer ntp_servers = 6;
      */
     ntpServers: NTPServer[];
     /**
-     * ManagementServiceAddresses defines where the management is reachable
-     * should be in the form <ip|host>:<port>
+     * ManagementServiceAddresses defines where the management is reachable.
+     * should be in the form <ip|host>:<port>.
      *
      * @generated from field: repeated string mgmt_service_addresses = 7;
      */
@@ -61,19 +61,19 @@ export type Partition = Message<"metalstack.api.v2.Partition"> & {
  */
 export declare const PartitionSchema: GenMessage<Partition>;
 /**
- * PartitionQuery is used to search partitions
+ * PartitionQuery is used to search partitions.
  *
  * @generated from message metalstack.api.v2.PartitionQuery
  */
 export type PartitionQuery = Message<"metalstack.api.v2.PartitionQuery"> & {
     /**
-     * ID of the partition to get
+     * ID of the partition to get.
      *
      * @generated from field: optional string id = 1;
      */
     id?: string | undefined;
     /**
-     * Labels lists only partitions containing the given labels
+     * Labels lists only partitions containing the given labels.
      *
      * @generated from field: optional metalstack.api.v2.Labels labels = 2;
      */
@@ -85,25 +85,25 @@ export type PartitionQuery = Message<"metalstack.api.v2.PartitionQuery"> & {
  */
 export declare const PartitionQuerySchema: GenMessage<PartitionQuery>;
 /**
- * PartitionBootConfiguration defines how metal-hammer boots
+ * PartitionBootConfiguration defines how metal-hammer boots.
  *
  * @generated from message metalstack.api.v2.PartitionBootConfiguration
  */
 export type PartitionBootConfiguration = Message<"metalstack.api.v2.PartitionBootConfiguration"> & {
     /**
-     * ImageURL the url to download the initrd for the boot image
+     * ImageURL the url to download the initrd for the boot image.
      *
      * @generated from field: string image_url = 1;
      */
     imageUrl: string;
     /**
-     * KernelURL the url to download the kernel for the boot image
+     * KernelURL the url to download the kernel for the boot image.
      *
      * @generated from field: string kernel_url = 2;
      */
     kernelUrl: string;
     /**
-     * Commandline the kernel command line for the boot image
+     * Commandline the kernel command line for the boot image.
      *
      * @generated from field: string commandline = 3;
      */
@@ -115,13 +115,13 @@ export type PartitionBootConfiguration = Message<"metalstack.api.v2.PartitionBoo
  */
 export declare const PartitionBootConfigurationSchema: GenMessage<PartitionBootConfiguration>;
 /**
- * DNSServer
+ * DNSServer.
  *
  * @generated from message metalstack.api.v2.DNSServer
  */
 export type DNSServer = Message<"metalstack.api.v2.DNSServer"> & {
     /**
-     * IP address of this dns server
+     * IP address of this dns server.
      *
      * @generated from field: string ip = 1;
      */
@@ -133,13 +133,13 @@ export type DNSServer = Message<"metalstack.api.v2.DNSServer"> & {
  */
 export declare const DNSServerSchema: GenMessage<DNSServer>;
 /**
- * NTPServer
+ * NTPServer.
  *
  * @generated from message metalstack.api.v2.NTPServer
  */
 export type NTPServer = Message<"metalstack.api.v2.NTPServer"> & {
     /**
-     * Address either as ip or hostname
+     * Address either as ip or hostname.
      *
      * @generated from field: string address = 1;
      */
@@ -151,13 +151,13 @@ export type NTPServer = Message<"metalstack.api.v2.NTPServer"> & {
  */
 export declare const NTPServerSchema: GenMessage<NTPServer>;
 /**
- * PartitionServiceGetRequest is the request payload for a partition get request
+ * PartitionServiceGetRequest is the request payload for a partition get request.
  *
  * @generated from message metalstack.api.v2.PartitionServiceGetRequest
  */
 export type PartitionServiceGetRequest = Message<"metalstack.api.v2.PartitionServiceGetRequest"> & {
     /**
-     * ID of the partition to get
+     * ID of the partition to get.
      *
      * @generated from field: string id = 1;
      */
@@ -169,13 +169,13 @@ export type PartitionServiceGetRequest = Message<"metalstack.api.v2.PartitionSer
  */
 export declare const PartitionServiceGetRequestSchema: GenMessage<PartitionServiceGetRequest>;
 /**
- * PartitionServiceListRequest is the request payload for a partition list request
+ * PartitionServiceListRequest is the request payload for a partition list request.
  *
  * @generated from message metalstack.api.v2.PartitionServiceListRequest
  */
 export type PartitionServiceListRequest = Message<"metalstack.api.v2.PartitionServiceListRequest"> & {
     /**
-     * Query for partitions
+     * Query for partitions.
      *
      * @generated from field: metalstack.api.v2.PartitionQuery query = 1;
      */
@@ -187,13 +187,13 @@ export type PartitionServiceListRequest = Message<"metalstack.api.v2.PartitionSe
  */
 export declare const PartitionServiceListRequestSchema: GenMessage<PartitionServiceListRequest>;
 /**
- * PartitionServiceGetResponse is the response payload for a partition get request
+ * PartitionServiceGetResponse is the response payload for a partition get request.
  *
  * @generated from message metalstack.api.v2.PartitionServiceGetResponse
  */
 export type PartitionServiceGetResponse = Message<"metalstack.api.v2.PartitionServiceGetResponse"> & {
     /**
-     * Partition is the partition
+     * Partition is the partition.
      *
      * @generated from field: metalstack.api.v2.Partition partition = 1;
      */
@@ -205,13 +205,13 @@ export type PartitionServiceGetResponse = Message<"metalstack.api.v2.PartitionSe
  */
 export declare const PartitionServiceGetResponseSchema: GenMessage<PartitionServiceGetResponse>;
 /**
- * PartitionServiceListResponse is the response payload for a partition list request
+ * PartitionServiceListResponse is the response payload for a partition list request.
  *
  * @generated from message metalstack.api.v2.PartitionServiceListResponse
  */
 export type PartitionServiceListResponse = Message<"metalstack.api.v2.PartitionServiceListResponse"> & {
     /**
-     * Partitions are the partitions
+     * Partitions are the partitions.
      *
      * @generated from field: repeated metalstack.api.v2.Partition partitions = 1;
      */

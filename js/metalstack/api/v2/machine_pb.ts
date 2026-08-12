@@ -29,20 +29,20 @@ export const file_metalstack_api_v2_machine: GenFile = /*@__PURE__*/
   fileDesc("Ch9tZXRhbHN0YWNrL2FwaS92Mi9tYWNoaW5lLnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiJNChhNYWNoaW5lU2VydmljZUdldFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGQoHcHJvamVjdBgCIAEoCUIIukgFcgOwAQEiSAoZTWFjaGluZVNlcnZpY2VHZXRSZXNwb25zZRIrCgdtYWNoaW5lGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZSKVBwobTWFjaGluZVNlcnZpY2VDcmVhdGVSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEhsKBHV1aWQYAiABKAlCCLpIBXIDsAEBSACIAQESGQoEbmFtZRgDIAEoCUILukgIcgbAs66xAgESJQoLZGVzY3JpcHRpb24YBCABKAlCC7pICHIGyLOusQIBSAGIAQESHgoIaG9zdG5hbWUYBSABKAlCB7pIBHICaAFIAogBARIjCglwYXJ0aXRpb24YBiABKAlCC7pICHIG0LOusQIBSAOIAQESHgoEc2l6ZRgHIAEoCUILukgIcgbAs66xAgFIBIgBARIaCgVpbWFnZRgIIAEoCUILukgIcgbAs66xAgESKwoRZmlsZXN5c3RlbV9sYXlvdXQYCSABKAlCC7pICHIGwLOusQIBSAWIAQESMQoPc3NoX3B1YmxpY19rZXlzGAogAygJQhi6SBWSARLQpLOxAgEQMiIIcgaItK6xAgESJgoIdXNlcmRhdGEYCyABKAlCD7pIDHIK8LOusQIBGICAAkgGiAEBEikKBmxhYmVscxgMIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVscxJHCghuZXR3b3JrcxgNIAMoCzIrLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVBbGxvY2F0aW9uTmV0d29ya0IIukgFkgECCAESIAoOcGxhY2VtZW50X3RhZ3MYDiADKAlCCLpIBZIBAhBAEjsKC2Ruc19zZXJ2ZXJzGA8gAygLMhwubWV0YWxzdGFjay5hcGkudjIuRE5TU2VydmVyQgi6SAWSAQIQAxI7CgtudHBfc2VydmVycxgQIAMoCzIcLm1ldGFsc3RhY2suYXBpLnYyLk5UUFNlcnZlckIIukgFkgECEAoSSwoPYWxsb2NhdGlvbl90eXBlGBEgASgOMigubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUFsbG9jYXRpb25UeXBlQgi6SAWCAQIQARI2Cg1maXJld2FsbF9zcGVjGBIgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuRmlyZXdhbGxTcGVjQgcKBV91dWlkQg4KDF9kZXNjcmlwdGlvbkILCglfaG9zdG5hbWVCDAoKX3BhcnRpdGlvbkIHCgVfc2l6ZUIUChJfZmlsZXN5c3RlbV9sYXlvdXRCCwoJX3VzZXJkYXRhIkgKDEZpcmV3YWxsU3BlYxI4Cg5maXJld2FsbF9ydWxlcxgBIAEoCzIgLm1ldGFsc3RhY2suYXBpLnYyLkZpcmV3YWxsUnVsZXMiSwocTWFjaGluZVNlcnZpY2VDcmVhdGVSZXNwb25zZRIrCgdtYWNoaW5lGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZSK3AgobTWFjaGluZVNlcnZpY2VVcGRhdGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEjoKC3VwZGF0ZV9tZXRhGAIgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuVXBkYXRlTWV0YUIGukgDyAEBEhkKB3Byb2plY3QYAyABKAlCCLpIBXIDsAEBEiUKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECAUgAiAEBEjQKBmxhYmVscxgFIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gBiAEBEjEKD3NzaF9wdWJsaWNfa2V5cxgGIAMoCUIYukgVkgES0KSzsQIBEDIiCHIGiLSusQIBQg4KDF9kZXNjcmlwdGlvbkIJCgdfbGFiZWxzIksKHE1hY2hpbmVTZXJ2aWNlVXBkYXRlUmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiZgoZTWFjaGluZVNlcnZpY2VMaXN0UmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABARIuCgVxdWVyeRgCIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeSJKChpNYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZRIsCghtYWNoaW5lcxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUiUAobTWFjaGluZVNlcnZpY2VEZWxldGVSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhkKB3Byb2plY3QYAiABKAlCCLpIBXIDsAEBIksKHE1hY2hpbmVTZXJ2aWNlRGVsZXRlUmVzcG9uc2USKwoHbWFjaGluZRgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmUilQEKH01hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGQoHcHJvamVjdBgCIAEoCUIIukgFcgOwAQESPwoHY29tbWFuZBgDIAEoDjIkLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNDb21tYW5kQgi6SAWCAQIQASIiCiBNYWNoaW5lU2VydmljZUJNQ0NvbW1hbmRSZXNwb25zZSJQChtNYWNoaW5lU2VydmljZUdldEJNQ1JlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGQoHcHJvamVjdBgCIAEoCUIIukgFcgOwAQEiaAocTWFjaGluZVNlcnZpY2VHZXRCTUNSZXNwb25zZRIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIwCgNibWMYAiABKAsyIy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQk1DUmVwb3J0IsoDCgdNYWNoaW5lEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEi8KCXBhcnRpdGlvbhgDIAEoCzIcLm1ldGFsc3RhY2suYXBpLnYyLlBhcnRpdGlvbhIWCgRyYWNrGAQgASgJQgi6SAVyAxiAARIWCgRyb29tGAUgASgJQgi6SAVyAxiAARIlCgRzaXplGAYgASgLMhcubWV0YWxzdGFjay5hcGkudjIuU2l6ZRI0CghoYXJkd2FyZRgHIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVIYXJkd2FyZRI4CgphbGxvY2F0aW9uGAggASgLMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUFsbG9jYXRpb24SMAoGc3RhdHVzGAkgASgLMiAubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVN0YXR1cxJWChpyZWNlbnRfcHJvdmlzaW9uaW5nX2V2ZW50cxgKIAEoCzIyLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVSZWNlbnRQcm92aXNpb25pbmdFdmVudHMi7wEKDU1hY2hpbmVTdGF0dXMSNgoJY29uZGl0aW9uGAEgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUNvbmRpdGlvbhJECglsZWRfc3RhdGUYAiABKAsyMS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQ2hhc3Npc0lkZW50aWZ5TEVEU3RhdGUSQgoKbGl2ZWxpbmVzcxgDIAEoDjIkLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVMaXZlbGluZXNzQgi6SAWCAQIQARIcChRtZXRhbF9oYW1tZXJfdmVyc2lvbhgEIAEoCSKIAQoQTWFjaGluZUNvbmRpdGlvbhI4CgVzdGF0ZRgBIAEoDjIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTdGF0ZUIIukgFggECEAESIAoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBEhgKBmlzc3VlchgDIAEoCUIIukgFcgMYgAIihAYKEU1hY2hpbmVBbGxvY2F0aW9uEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEhkKBG5hbWUYAyABKAlCC7pICHIGwLOusQIBEiAKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECARIcCgpjcmVhdGVkX2J5GAUgASgJQgi6SAVyAxiAARIZCgdwcm9qZWN0GAYgASgJQgi6SAVyA7ABARInCgVpbWFnZRgHIAEoCzIYLm1ldGFsc3RhY2suYXBpLnYyLkltYWdlEj4KEWZpbGVzeXN0ZW1fbGF5b3V0GAggASgLMiMubWV0YWxzdGFjay5hcGkudjIuRmlsZXN5c3RlbUxheW91dBIzCghuZXR3b3JrcxgJIAMoCzIhLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVOZXR3b3JrEhkKCGhvc3RuYW1lGAogASgJQge6SARyAmgBEjEKD3NzaF9wdWJsaWNfa2V5cxgLIAMoCUIYukgVkgES0KSzsQIBEDIiCHIGiLSusQIBEiEKCHVzZXJkYXRhGAwgASgJQg+6SAxyCvCzrrECARiAgAISSwoPYWxsb2NhdGlvbl90eXBlGA0gASgOMigubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUFsbG9jYXRpb25UeXBlQgi6SAWCAQIQARI4Cg5maXJld2FsbF9ydWxlcxgOIAEoCzIgLm1ldGFsc3RhY2suYXBpLnYyLkZpcmV3YWxsUnVsZXMSOwoLZG5zX3NlcnZlcnMYDyADKAsyHC5tZXRhbHN0YWNrLmFwaS52Mi5ETlNTZXJ2ZXJCCLpIBZIBAhADEjsKC250cF9zZXJ2ZXJzGBAgAygLMhwubWV0YWxzdGFjay5hcGkudjIuTlRQU2VydmVyQgi6SAWSAQIQChIqCgN2cG4YESABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lVlBOIlMKGE1hY2hpbmVBbGxvY2F0aW9uTmV0d29yaxIcCgduZXR3b3JrGAEgASgJQgu6SAhyBsCzrrECARIZCgNpcHMYAiADKAlCDLpICZIBBsCks7ECASJ/Cg1GaXJld2FsbFJ1bGVzEjUKBmVncmVzcxgBIAMoCzIlLm1ldGFsc3RhY2suYXBpLnYyLkZpcmV3YWxsRWdyZXNzUnVsZRI3CgdpbmdyZXNzGAIgAygLMiYubWV0YWxzdGFjay5hcGkudjIuRmlyZXdhbGxJbmdyZXNzUnVsZSKyAQoSRmlyZXdhbGxFZ3Jlc3NSdWxlEjkKCHByb3RvY29sGAEgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuSVBQcm90b2NvbEIIukgFggECEAESHQoFcG9ydHMYAiADKA1CDrpIC5IBCCIGKgQY/P8DEhgKAnRvGAMgAygJQgy6SAmSAQa4pLOxAgESKAoHY29tbWVudBgEIAEoCUIXukgU2AEBcg8YZDILXlthLXpfIC1dKiQizwEKE0ZpcmV3YWxsSW5ncmVzc1J1bGUSOQoIcHJvdG9jb2wYASABKA4yHS5tZXRhbHN0YWNrLmFwaS52Mi5JUFByb3RvY29sQgi6SAWCAQIQARIdCgVwb3J0cxgCIAMoDUIOukgLkgEIIgYqBBj8/wMSGAoCdG8YAyADKAlCDLpICZIBBriks7ECARIaCgRmcm9tGAQgAygJQgy6SAmSAQa4pLOxAgESKAoHY29tbWVudBgFIAEoCUIXukgU2AEBcg8YZDILXlthLXpfIC1dKiQixgIKDk1hY2hpbmVOZXR3b3JrEg8KB25ldHdvcmsYASABKAkSHgoIcHJlZml4ZXMYAiADKAlCDLpICZIBBriks7ECARIqChRkZXN0aW5hdGlvbl9wcmVmaXhlcxgDIAMoCUIMukgJkgEGuKSzsQIBEhkKA2lwcxgEIAMoCUIMukgJkgEGwKSzsQIBEj4KDG5ldHdvcmtfdHlwZRgFIAEoDjIeLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtUeXBlQgi6SAWCAQIQARI2CghuYXRfdHlwZRgGIAEoDjIaLm1ldGFsc3RhY2suYXBpLnYyLk5BVFR5cGVCCLpIBYIBAhABEgsKA3ZyZhgHIAEoBBILCgNhc24YCCABKA0SHgoHcHJvamVjdBgJIAEoCUIIukgFcgOwAQFIAIgBAUIKCghfcHJvamVjdCLaAQoPTWFjaGluZUhhcmR3YXJlEg4KBm1lbW9yeRgBIAEoBBI0CgVkaXNrcxgCIAMoCzIlLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCbG9ja0RldmljZRIpCgRjcHVzGAMgAygLMhsubWV0YWxzdGFjay5hcGkudjIuTWV0YWxDUFUSKQoEZ3B1cxgEIAMoCzIbLm1ldGFsc3RhY2suYXBpLnYyLk1ldGFsR1BVEisKBG5pY3MYBSADKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lTmljIl0KCE1ldGFsQ1BVEhgKBnZlbmRvchgBIAEoCUIIukgFcgMYgAISFwoFbW9kZWwYAiABKAlCCLpIBXIDGIACEg0KBWNvcmVzGAMgASgNEg8KB3RocmVhZHMYBCABKA0iPQoITWV0YWxHUFUSGAoGdmVuZG9yGAEgASgJQgi6SAVyAxiAAhIXCgVtb2RlbBgCIAEoCUIIukgFcgMYgAIi5QEKCk1hY2hpbmVOaWMSGAoDbWFjGAEgASgJQgu6SAhyBrizrrECARIZCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECARIcCgppZGVudGlmaWVyGAMgASgJQgi6SAVyAxiAARIYCgZ2ZW5kb3IYBCABKAlCCLpIBXIDGIABEhcKBW1vZGVsGAUgASgJQgi6SAVyAxiAARINCgVzcGVlZBgGIAEoBBIwCgluZWlnaGJvcnMYByADKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lTmljEhAKCGhvc3RuYW1lGAggASgJIj0KEk1hY2hpbmVCbG9ja0RldmljZRIZCgRuYW1lGAEgASgJQgu6SAhyBsCzrrECARIMCgRzaXplGAIgASgEIlsKHk1hY2hpbmVDaGFzc2lzSWRlbnRpZnlMRURTdGF0ZRIXCgV2YWx1ZRgBIAEoCUIIukgFcgMYgAESIAoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBIooDChBNYWNoaW5lQk1DUmVwb3J0EioKA2JtYxgBIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUMSLAoEYmlvcxgCIAEoCzIeLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCaW9zEioKA2ZydRgDIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVGUlUSOwoMcG93ZXJfbWV0cmljGAQgASgLMiUubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVBvd2VyTWV0cmljEj0KDnBvd2VyX3N1cHBsaWVzGAUgAygLMiUubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVBvd2VyU3VwcGx5EkQKCWxlZF9zdGF0ZRgGIAEoCzIxLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVDaGFzc2lzSWRlbnRpZnlMRURTdGF0ZRIuCgp1cGRhdGVkX2F0GAcgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJjCgtNYWNoaW5lQmlvcxIcCgd2ZXJzaW9uGAEgASgJQgu6SAhyBsizrrECARIbCgZ2ZW5kb3IYAiABKAlCC7pICHIGyLOusQIBEhkKBGRhdGUYAyABKAlCC7pICHIGyLOusQIBItsBCgpNYWNoaW5lQk1DEhkKB2FkZHJlc3MYASABKAlCCLpIBXIDgAIBEhgKA21hYxgCIAEoCUILukgIcga4s66xAgESGQoEdXNlchgDIAEoCUILukgIcgbIs66xAgESHQoIcGFzc3dvcmQYBCABKAlCC7pICHIGyLOusQIBEh4KCWludGVyZmFjZRgFIAEoCUILukgIcgbIs66xAgESHAoHdmVyc2lvbhgGIAEoCUILukgIcgbIs66xAgESIAoLcG93ZXJfc3RhdGUYByABKAlCC7pICHIGyLOusQIBIp4ECgpNYWNoaW5lRlJVEi0KE2NoYXNzaXNfcGFydF9udW1iZXIYASABKAlCC7pICHIGyLOusQIBSACIAQESLQoTY2hhc3Npc19wYXJ0X3NlcmlhbBgCIAEoCUILukgIcgbIs66xAgFIAYgBARIjCglib2FyZF9tZmcYAyABKAlCC7pICHIGyLOusQIBSAKIAQESKgoQYm9hcmRfbWZnX3NlcmlhbBgEIAEoCUILukgIcgbIs66xAgFIA4gBARIrChFib2FyZF9wYXJ0X251bWJlchgFIAEoCUILukgIcgbIs66xAgFIBIgBARIuChRwcm9kdWN0X21hbnVmYWN0dXJlchgGIAEoCUILukgIcgbIs66xAgFIBYgBARItChNwcm9kdWN0X3BhcnRfbnVtYmVyGAcgASgJQgu6SAhyBsizrrECAUgGiAEBEigKDnByb2R1Y3Rfc2VyaWFsGAggASgJQgu6SAhyBsizrrECAUgHiAEBQhYKFF9jaGFzc2lzX3BhcnRfbnVtYmVyQhYKFF9jaGFzc2lzX3BhcnRfc2VyaWFsQgwKCl9ib2FyZF9tZmdCEwoRX2JvYXJkX21mZ19zZXJpYWxCFAoSX2JvYXJkX3BhcnRfbnVtYmVyQhcKFV9wcm9kdWN0X21hbnVmYWN0dXJlckIWChRfcHJvZHVjdF9wYXJ0X251bWJlckIRCg9fcHJvZHVjdF9zZXJpYWwihQEKEk1hY2hpbmVQb3dlck1ldHJpYxIeChZhdmVyYWdlX2NvbnN1bWVkX3dhdHRzGAEgASgCEhcKD2ludGVydmFsX2luX21pbhgCIAEoAhIaChJtYXhfY29uc3VtZWRfd2F0dHMYAyABKAISGgoSbWluX2NvbnN1bWVkX3dhdHRzGAQgASgCIjMKEk1hY2hpbmVQb3dlclN1cHBseRIOCgZoZWFsdGgYASABKAkSDQoFc3RhdGUYAiABKAkipQIKH01hY2hpbmVSZWNlbnRQcm92aXNpb25pbmdFdmVudHMSOwoGZXZlbnRzGAEgAygLMisubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50EjMKD2xhc3RfZXZlbnRfdGltZRgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASRQoQbGFzdF9lcnJvcl9ldmVudBgDIAEoCzIrLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVQcm92aXNpb25pbmdFdmVudBJJCgVzdGF0ZRgEIAEoDjIwLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVQcm92aXNpb25pbmdFdmVudFN0YXRlQgi6SAWCAQIQASKfAQoYTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50EigKBHRpbWUYASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEkgKBWV2ZW50GAIgASgOMi8ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50VHlwZUIIukgFggECEAESDwoHbWVzc2FnZRgDIAEoCSJrCgpNYWNoaW5lVlBOEh0KFWNvbnRyb2xfcGxhbmVfYWRkcmVzcxgBIAEoCRIQCghhdXRoX2tleRgCIAEoCRIRCgljb25uZWN0ZWQYAyABKAgSGQoDaXBzGAQgAygJQgy6SAmSAQbApLOxAgEi5gcKDE1hY2hpbmVRdWVyeRIbCgR1dWlkGAEgASgJQgi6SAVyA7ABAUgAiAEBEh4KBG5hbWUYAiABKAlCC7pICHIGwLOusQIBSAGIAQESIwoJcGFydGl0aW9uGAMgASgJQgu6SAhyBtCzrrECAUgCiAEBEh4KBHNpemUYBCABKAlCC7pICHIGwLOusQIBSAOIAQESHgoEcmFjaxgFIAEoCUILukgIcgbAs66xAgFIBIgBARIeCgRyb29tGAYgASgJQgu6SAhyBsCzrrECAUgFiAEBEi4KBmxhYmVscxgHIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gGiAEBEkIKCmFsbG9jYXRpb24YCCABKAsyKS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lQWxsb2NhdGlvblF1ZXJ5SAeIAQESPAoHbmV0d29yaxgJIAEoCzImLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVOZXR3b3JrUXVlcnlICIgBARI0CgNuaWMYCiABKAsyIi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lTmljUXVlcnlICYgBARI2CgRkaXNrGAsgASgLMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZURpc2tRdWVyeUgKiAEBEjQKA2JtYxgMIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUNRdWVyeUgLiAEBEjQKA2ZydRgNIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVGUlVRdWVyeUgMiAEBEj4KCGhhcmR3YXJlGA4gASgLMicubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUhhcmR3YXJlUXVlcnlIDYgBARIzCgVzdGF0ZRgPIAEoDjIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTdGF0ZUgOiAEBEhQKB3dhaXRpbmcYECABKAhID4gBARIZCgxwcmVhbGxvY2F0ZWQYESABKAhIEIgBARIaCg1ub3RfYWxsb2NhdGVkGBIgASgISBGIAQFCBwoFX3V1aWRCBwoFX25hbWVCDAoKX3BhcnRpdGlvbkIHCgVfc2l6ZUIHCgVfcmFja0IHCgVfcm9vbUIJCgdfbGFiZWxzQg0KC19hbGxvY2F0aW9uQgoKCF9uZXR3b3JrQgYKBF9uaWNCBwoFX2Rpc2tCBgoEX2JtY0IGCgRfZnJ1QgsKCV9oYXJkd2FyZUIICgZfc3RhdGVCCgoIX3dhaXRpbmdCDwoNX3ByZWFsbG9jYXRlZEIQCg5fbm90X2FsbG9jYXRlZCKIBAoWTWFjaGluZUFsbG9jYXRpb25RdWVyeRIbCgR1dWlkGAEgASgJQgi6SAVyA7ABAUgAiAEBEh4KBG5hbWUYAiABKAlCC7pICHIGwLOusQIBSAGIAQESHgoHcHJvamVjdBgDIAEoCUIIukgFcgOwAQFIAogBARIfCgVpbWFnZRgEIAEoCUILukgIcgbAs66xAgFIA4gBARIrChFmaWxlc3lzdGVtX2xheW91dBgFIAEoCUILukgIcgbAs66xAgFIBIgBARIeCghob3N0bmFtZRgGIAEoCUIHukgEcgJoAUgFiAEBElAKD2FsbG9jYXRpb25fdHlwZRgHIAEoDjIoLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVBbGxvY2F0aW9uVHlwZUIIukgFggECEAFIBogBARIuCgZsYWJlbHMYCCABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNIB4gBARIvCgN2cG4YCSABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lVlBOSAiIAQFCBwoFX3V1aWRCBwoFX25hbWVCCgoIX3Byb2plY3RCCAoGX2ltYWdlQhQKEl9maWxlc3lzdGVtX2xheW91dEILCglfaG9zdG5hbWVCEgoQX2FsbG9jYXRpb25fdHlwZUIJCgdfbGFiZWxzQgYKBF92cG4iqgEKE01hY2hpbmVOZXR3b3JrUXVlcnkSEAoIbmV0d29ya3MYASADKAkSHgoIcHJlZml4ZXMYAiADKAlCDLpICZIBBriks7ECARIqChRkZXN0aW5hdGlvbl9wcmVmaXhlcxgDIAMoCUIMukgJkgEGuKSzsQIBEhkKA2lwcxgEIAMoCUIMukgJkgEGwKSzsQIBEgwKBHZyZnMYBSADKAQSDAoEYXNucxgGIAMoDSKvAQoPTWFjaGluZU5pY1F1ZXJ5EiIKBG1hY3MYASADKAlCFLpIEZIBDhBkGAEiCHIGuLOusQIBEiAKBW5hbWVzGAIgAygJQhG6SA6SAQsQZBgBIgVyAxiAARIrCg1uZWlnaGJvcl9tYWNzGAMgAygJQhS6SBGSAQ4QZBgBIghyBrizrrECARIpCg5uZWlnaGJvcl9uYW1lcxgEIAMoCUIRukgOkgELEGQYASIFcgMYgAEiSwoQTWFjaGluZURpc2tRdWVyeRIeCgVuYW1lcxgBIAMoCUIPukgMkgEJEGQiBXIDGIABEhcKBXNpemVzGAIgAygEQgi6SAWSAQIQZCK5AQoPTWFjaGluZUJNQ1F1ZXJ5Eh0KB2FkZHJlc3MYASABKAlCB7pIBHICcAFIAIgBARIdCgNtYWMYAiABKAlCC7pICHIGuLOusQIBSAGIAQESGwoEdXNlchgDIAEoCUIIukgFcgMYgAFIAogBARIgCglpbnRlcmZhY2UYBCABKAlCCLpIBXIDGIABSAOIAQFCCgoIX2FkZHJlc3NCBgoEX21hY0IHCgVfdXNlckIMCgpfaW50ZXJmYWNlIoMECg9NYWNoaW5lRlJVUXVlcnkSKgoTY2hhc3Npc19wYXJ0X251bWJlchgBIAEoCUIIukgFcgMYgAFIAIgBARIqChNjaGFzc2lzX3BhcnRfc2VyaWFsGAIgASgJQgi6SAVyAxiAAUgBiAEBEiAKCWJvYXJkX21mZxgDIAEoCUIIukgFcgMYgAFIAogBARIjCgxib2FyZF9zZXJpYWwYBCABKAlCCLpIBXIDGIABSAOIAQESKAoRYm9hcmRfcGFydF9udW1iZXIYBSABKAlCCLpIBXIDGIABSASIAQESKwoUcHJvZHVjdF9tYW51ZmFjdHVyZXIYBiABKAlCCLpIBXIDGIABSAWIAQESKgoTcHJvZHVjdF9wYXJ0X251bWJlchgHIAEoCUIIukgFcgMYgAFIBogBARIlCg5wcm9kdWN0X3NlcmlhbBgIIAEoCUIIukgFcgMYgAFIB4gBAUIWChRfY2hhc3Npc19wYXJ0X251bWJlckIWChRfY2hhc3Npc19wYXJ0X3NlcmlhbEIMCgpfYm9hcmRfbWZnQg8KDV9ib2FyZF9zZXJpYWxCFAoSX2JvYXJkX3BhcnRfbnVtYmVyQhcKFV9wcm9kdWN0X21hbnVmYWN0dXJlckIWChRfcHJvZHVjdF9wYXJ0X251bWJlckIRCg9fcHJvZHVjdF9zZXJpYWwiXAoUTWFjaGluZUhhcmR3YXJlUXVlcnkSEwoGbWVtb3J5GAEgASgESACIAQESFgoJY3B1X2NvcmVzGAIgASgNSAGIAQFCCQoHX21lbW9yeUIMCgpfY3B1X2NvcmVzIuACChJNYWNoaW5lSXNzdWVzUXVlcnkSNgoNbWFjaGluZV9xdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVRdWVyeRJACgRvbmx5GAIgAygOMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUlzc3VlVHlwZUINukgKkgEHIgWCAQIQARJACgRvbWl0GAMgAygOMiMubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUlzc3VlVHlwZUINukgKkgEHIgWCAQIQARJICghzZXZlcml0eRgEIAEoDjInLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVJc3N1ZVNldmVyaXR5Qgi6SAWCAQIQAUgAiAEBEjcKFGxhc3RfZXJyb3JfdGhyZXNob2xkGAUgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uQgsKCV9zZXZlcml0eSJYCg1NYWNoaW5lSXNzdWVzEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEi8KBmlzc3VlcxgCIAMoCzIfLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVJc3N1ZSLnAQoMTWFjaGluZUlzc3VlEjsKBHR5cGUYASABKA4yIy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lSXNzdWVUeXBlQgi6SAWCAQIQARJDCghzZXZlcml0eRgCIAEoDjInLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVJc3N1ZVNldmVyaXR5Qgi6SAWCAQIQARIgCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgESIgoNcmVmZXJlbmNlX3VybBgEIAEoCUILukgIcgbgs66xAgESDwoHZGV0YWlscxgFIAEoCSplCgpJUFByb3RvY29sEhsKF0lQX1BST1RPQ09MX1VOU1BFQ0lGSUVEEAASHAoPSVBfUFJPVE9DT0xfVENQEAEaB4KyGQN0Y3ASHAoPSVBfUFJPVE9DT0xfVURQEAIaB4KyGQN1ZHAqrQEKDE1hY2hpbmVTdGF0ZRIjChlNQUNISU5FX1NUQVRFX1VOU1BFQ0lGSUVEEAAaBIKyGQASJgoVTUFDSElORV9TVEFURV9UQUlOVEVEEAEaC4KyGQd0YWludGVkEiQKFE1BQ0hJTkVfU1RBVEVfTE9DS0VEEAIaCoKyGQZsb2NrZWQSKgoXTUFDSElORV9TVEFURV9BVkFJTEFCTEUQAxoNgrIZCWF2YWlsYWJsZSrfAQodTWFjaGluZVByb3Zpc2lvbmluZ0V2ZW50U3RhdGUSNgosTUFDSElORV9QUk9WSVNJT05JTkdfRVZFTlRfU1RBVEVfVU5TUEVDSUZJRUQQABoEgrIZABI9CipNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9TVEFURV9DUkFTSExPT1AQARoNgrIZCWNyYXNobG9vcBJHCi9NQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9TVEFURV9GQUlMRURfUkVDTEFJTRACGhKCshkOZmFpbGVkLXJlY2xhaW0qnwYKHE1hY2hpbmVQcm92aXNpb25pbmdFdmVudFR5cGUSLworTUFDSElORV9QUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9VTlNQRUNJRklFRBAAEjQKJU1BQ0hJTkVfUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfQUxJVkUQARoJgrIZBUFsaXZlEjgKJ01BQ0hJTkVfUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfQ1JBU0hFRBACGguCshkHQ3Jhc2hlZBJACitNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BYRV9CT09USU5HEAMaD4KyGQtQWEUgQm9vdGluZxJGCi5NQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BMQU5ORURfUkVCT09UEAQaEoKyGQ5QbGFubmVkIFJlYm9vdBI8CilNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BSRVBBUklORxAFGg2CshkJUHJlcGFyaW5nEkAKK01BQ0hJTkVfUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfUkVHSVNURVJJTkcQBhoPgrIZC1JlZ2lzdGVyaW5nEjgKJ01BQ0hJTkVfUFJPVklTSU9OSU5HX0VWRU5UX1RZUEVfV0FJVElORxAHGguCshkHV2FpdGluZxI+CipNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX0lOU1RBTExJTkcQCBoOgrIZCkluc3RhbGxpbmcSTgoyTUFDSElORV9QUk9WSVNJT05JTkdfRVZFTlRfVFlQRV9CT09USU5HX05FV19LRVJORUwQCRoWgrIZEkJvb3RpbmcgTmV3IEtlcm5lbBJACitNQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX1BIT05FRF9IT01FEAoaD4KyGQtQaG9uZWQgSG9tZRJICi9NQUNISU5FX1BST1ZJU0lPTklOR19FVkVOVF9UWVBFX01BQ0hJTkVfUkVDTEFJTRALGhOCshkPTWFjaGluZSBSZWNsYWltKroBChFNYWNoaW5lTGl2ZWxpbmVzcxIoCh5NQUNISU5FX0xJVkVMSU5FU1NfVU5TUEVDSUZJRUQQABoEgrIZABInChhNQUNISU5FX0xJVkVMSU5FU1NfQUxJVkUQARoJgrIZBWFsaXZlEiUKF01BQ0hJTkVfTElWRUxJTkVTU19ERUFEEAIaCIKyGQRkZWFkEisKGk1BQ0hJTkVfTElWRUxJTkVTU19VTktOT1dOEAMaC4KyGQd1bmtub3duKqwBChVNYWNoaW5lQWxsb2NhdGlvblR5cGUSLQojTUFDSElORV9BTExPQ0FUSU9OX1RZUEVfVU5TUEVDSUZJRUQQABoEgrIZABIwCh9NQUNISU5FX0FMTE9DQVRJT05fVFlQRV9NQUNISU5FEAEaC4KyGQdtYWNoaW5lEjIKIE1BQ0hJTkVfQUxMT0NBVElPTl9UWVBFX0ZJUkVXQUxMEAIaDIKyGQhmaXJld2FsbCr+BAoRTWFjaGluZUJNQ0NvbW1hbmQSIwofTUFDSElORV9CTUNfQ09NTUFORF9VTlNQRUNJRklFRBAAEiIKFk1BQ0hJTkVfQk1DX0NPTU1BTkRfT04QARoGgrIZAm9uEiQKF01BQ0hJTkVfQk1DX0NPTU1BTkRfT0ZGEAIaB4KyGQNvZmYSKAoZTUFDSElORV9CTUNfQ09NTUFORF9SRVNFVBADGgmCshkFcmVzZXQSKAoZTUFDSElORV9CTUNfQ09NTUFORF9DWUNMRRAEGgmCshkFY3ljbGUSNgogTUFDSElORV9CTUNfQ09NTUFORF9CT09UX1RPX0JJT1MQBRoQgrIZDGJvb3QtdG8tYmlvcxI6CiJNQUNISU5FX0JNQ19DT01NQU5EX0JPT1RfRlJPTV9ESVNLEAYaEoKyGQ5ib290LWZyb20tZGlzaxI4CiFNQUNISU5FX0JNQ19DT01NQU5EX0JPT1RfRlJPTV9QWEUQBxoRgrIZDWJvb3QtZnJvbS1weGUSPAojTUFDSElORV9CTUNfQ09NTUFORF9JREVOVElGWV9MRURfT04QCBoTgrIZD2lkZW50aWZ5LWxlZC1vbhI+CiRNQUNISU5FX0JNQ19DT01NQU5EX0lERU5USUZZX0xFRF9PRkYQCRoUgrIZEGlkZW50aWZ5LWxlZC1vZmYSPAojTUFDSElORV9CTUNfQ09NTUFORF9NQUNISU5FX0RFTEVURUQQChoTgrIZD21hY2hpbmUtZGVsZXRlZBI8CiNNQUNISU5FX0JNQ19DT01NQU5EX01BQ0hJTkVfQ1JFQVRFRBALGhOCshkPbWFjaGluZS1jcmVhdGVkKvMGChBNYWNoaW5lSXNzdWVUeXBlEiIKHk1BQ0hJTkVfSVNTVUVfVFlQRV9VTlNQRUNJRklFRBAAEjkKIU1BQ0hJTkVfSVNTVUVfVFlQRV9BU05fVU5JUVVFTkVTUxABGhKCshkOYXNuLW5vdC11bmlxdWUSPwokTUFDSElORV9JU1NVRV9UWVBFX0JNQ19JTkZPX09VVERBVEVEEAIaFYKyGRFibWMtaW5mby1vdXRkYXRlZBJCCiZNQUNISU5FX0lTU1VFX1RZUEVfQk1DX05PTl9ESVNUSU5DVF9JUBADGhaCshkSYm1jLW5vLWRpc3RpbmN0LWlwEjkKIU1BQ0hJTkVfSVNTVUVfVFlQRV9CTUNfV0lUSE9VVF9JUBAEGhKCshkOYm1jLXdpdGhvdXQtaXASOwoiTUFDSElORV9JU1NVRV9UWVBFX0JNQ19XSVRIT1VUX01BQxAFGhOCshkPYm1jLXdpdGhvdXQtbWFjEjAKHU1BQ0hJTkVfSVNTVUVfVFlQRV9DUkFTSF9MT09QEAYaDYKyGQljcmFzaGxvb3ASSQopTUFDSElORV9JU1NVRV9UWVBFX0ZBSUxFRF9NQUNISU5FX1JFQ0xBSU0QBxoagrIZFmZhaWxlZC1tYWNoaW5lLXJlY2xhaW0SPQojTUFDSElORV9JU1NVRV9UWVBFX0xBU1RfRVZFTlRfRVJST1IQCBoUgrIZEGxhc3QtZXZlbnQtZXJyb3ISOwoiTUFDSElORV9JU1NVRV9UWVBFX0xJVkVMSU5FU1NfREVBRBAJGhOCshkPbGl2ZWxpbmVzcy1kZWFkEk0KK01BQ0hJTkVfSVNTVUVfVFlQRV9MSVZFTElORVNTX05PVF9BVkFJTEFCTEUQChocgrIZGGxpdmVsaW5lc3Mtbm90LWF2YWlsYWJsZRJBCiVNQUNISU5FX0lTU1VFX1RZUEVfTElWRUxJTkVTU19VTktOT1dOEAsaFoKyGRJsaXZlbGluZXNzLXVua25vd24SQQolTUFDSElORV9JU1NVRV9UWVBFX05PX0VWRU5UX0NPTlRBSU5FUhAMGhaCshkSbm8tZXZlbnQtY29udGFpbmVyEjUKH01BQ0hJTkVfSVNTVUVfVFlQRV9OT19QQVJUSVRJT04QDRoQgrIZDG5vLXBhcnRpdGlvbirLAQoUTWFjaGluZUlzc3VlU2V2ZXJpdHkSJgoiTUFDSElORV9JU1NVRV9TRVZFUklUWV9VTlNQRUNJRklFRBAAEisKHE1BQ0hJTkVfSVNTVUVfU0VWRVJJVFlfTUlOT1IQARoJgrIZBW1pbm9yEisKHE1BQ0hJTkVfSVNTVUVfU0VWRVJJVFlfTUFKT1IQAhoJgrIZBW1ham9yEjEKH01BQ0hJTkVfSVNTVUVfU0VWRVJJVFlfQ1JJVElDQUwQAxoMgrIZCGNyaXRpY2FsMtEGCg5NYWNoaW5lU2VydmljZRJtCgNHZXQSKy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUdldFJlcXVlc3QaLC5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUdldFJlc3BvbnNlIgvK8xgDAQID4PMYAhJ1CgZDcmVhdGUSLi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUNyZWF0ZVJlcXVlc3QaLy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUNyZWF0ZVJlc3BvbnNlIgrK8xgCAQLg8xgBEnUKBlVwZGF0ZRIuLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTZXJ2aWNlVXBkYXRlUmVxdWVzdBovLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCsrzGAIBAuDzGAEScAoETGlzdBIsLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTZXJ2aWNlTGlzdFJlcXVlc3QaLS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUxpc3RSZXNwb25zZSILyvMYAwECA+DzGAISdQoGRGVsZXRlEi4ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVNlcnZpY2VEZWxldGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZVNlcnZpY2VEZWxldGVSZXNwb25zZSIKyvMYAgEC4PMYARKBAQoKQk1DQ29tbWFuZBIyLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVTZXJ2aWNlQk1DQ29tbWFuZFJlcXVlc3QaMy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUJNQ0NvbW1hbmRSZXNwb25zZSIKyvMYAgEC4PMYARJ1CgZHZXRCTUMSLi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUdldEJNQ1JlcXVlc3QaLy5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lU2VydmljZUdldEJNQ1Jlc3BvbnNlIgrK8xgCAQLg8xgBQsIBChVjb20ubWV0YWxzdGFjay5hcGkudjJCDE1hY2hpbmVQcm90b1ABWjVnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FwaS92MjthcGl2MqICA01BWKoCEU1ldGFsc3RhY2suQXBpLlYyygIRTWV0YWxzdGFja1xBcGlcVjLiAh1NZXRhbHN0YWNrXEFwaVxWMlxHUEJNZXRhZGF0YeoCE01ldGFsc3RhY2s6OkFwaTo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_google_protobuf_duration, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_filesystem, file_metalstack_api_v2_image, file_metalstack_api_v2_network, file_metalstack_api_v2_partition, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_size]);
 
 /**
- * MachineServiceGetRequest is the request payload for a machine get request
+ * MachineServiceGetRequest is the request payload for a machine get request.
  *
  * @generated from message metalstack.api.v2.MachineServiceGetRequest
  */
 export type MachineServiceGetRequest = Message<"metalstack.api.v2.MachineServiceGetRequest"> & {
   /**
-   * UUID of the machine to get
+   * UUID of the machine to get.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Project of the machine
+   * Project of the machine.
    *
    * @generated from field: string project = 2;
    */
@@ -57,13 +57,13 @@ export const MachineServiceGetRequestSchema: GenMessage<MachineServiceGetRequest
   messageDesc(file_metalstack_api_v2_machine, 0);
 
 /**
- * MachineServiceGetResponse is the response payload for a machine get request
+ * MachineServiceGetResponse is the response payload for a machine get request.
  *
  * @generated from message metalstack.api.v2.MachineServiceGetResponse
  */
 export type MachineServiceGetResponse = Message<"metalstack.api.v2.MachineServiceGetResponse"> & {
   /**
-   * Machine is the machine requested
+   * Machine is the machine requested.
    *
    * @generated from field: metalstack.api.v2.Machine machine = 1;
    */
@@ -78,13 +78,13 @@ export const MachineServiceGetResponseSchema: GenMessage<MachineServiceGetRespon
   messageDesc(file_metalstack_api_v2_machine, 1);
 
 /**
- * MachineServiceCreateRequest is the request payload for a machine create request
+ * MachineServiceCreateRequest is the request payload for a machine create request.
  *
  * @generated from message metalstack.api.v2.MachineServiceCreateRequest
  */
 export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServiceCreateRequest"> & {
   /**
-   * Project of the machine
+   * Project of the machine.
    *
    * @generated from field: string project = 1;
    */
@@ -93,86 +93,86 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
   /**
    * UUID if this field is set, this specific machine will be allocated if it is not in available state and not currently allocated.
    * this field takes precedence over size and partition.
-   * Can only be used with ADMIN_ROLE_EDITOR
+   * Can only be used with ADMIN_ROLE_EDITOR.
    *
    * @generated from field: optional string uuid = 2;
    */
   uuid?: string | undefined;
 
   /**
-   * Name of this machine
+   * Name of this machine.
    *
    * @generated from field: string name = 3;
    */
   name: string;
 
   /**
-   * Description for this machine
+   * Description for this machine.
    *
    * @generated from field: optional string description = 4;
    */
   description?: string | undefined;
 
   /**
-   * Hostname the hostname for the allocated machine (defaults to metal)
+   * Hostname the hostname for the allocated machine (defaults to metal).
    *
    * @generated from field: optional string hostname = 5;
    */
   hostname?: string | undefined;
 
   /**
-   * Partition the partition id to assign this machine to, must be omitted if uuid is given
+   * Partition the partition id to assign this machine to, must be omitted if uuid is given.
    *
    * @generated from field: optional string partition = 6;
    */
   partition?: string | undefined;
 
   /**
-   * Size of the machine to create, must be omitted if uuid is given
+   * Size of the machine to create, must be omitted if uuid is given.
    *
    * @generated from field: optional string size = 7;
    */
   size?: string | undefined;
 
   /**
-   * Image which should be installed on this machine
+   * Image which should be installed on this machine.
    * The image can be specified either in the fully qualified form, e.g. including os, major, minor and patch
-   * - debian-13.0.20260402
-   * or in a simplified form which omits the patch version
-   * - debian-13.0
-   * If the fully qualified form is specified, exactly this image is taken regardless of the image classification
-   * if the short form is given, only the most recent images which has image classification supported is used.
+   * - debian-13.0.2026040
+   * - or in a simplified form which omits the patch version.
+   * - debian-13.
+   * If the fully qualified form is specified, exactly this image is taken regardless of the image classification.
+   * If the short form is given, only the most recent images which has image classification supported is used.
    *
    * @generated from field: string image = 8;
    */
   image: string;
 
   /**
-   * FilesystemLayout which should be applied for the operating system installation
+   * FilesystemLayout which should be applied for the operating system installation.
    * Is defaulted by a lookup at the available fsls for this size and image.
-   * Can be specified to test new fsls during development of fsls
+   * Can be specified to test new fsls during development of fsls.
    *
    * @generated from field: optional string filesystem_layout = 9;
    */
   filesystemLayout?: string | undefined;
 
   /**
-   * SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh
+   * SSHPublicKeys defines the ssh public key to be installed on the machine to access it via ssh.
    *
    * @generated from field: repeated string ssh_public_keys = 10;
    */
   sshPublicKeys: string[];
 
   /**
-   * Userdata contains instructions required to bootstrap the machine
-   * AWS limits the max userdata size to 16k, lets allow twice as much
+   * Userdata contains instructions required to bootstrap the machine.
+   * AWS limits the max userdata size to 16k, lets allow twice as much.
    *
    * @generated from field: optional string userdata = 11;
    */
   userdata?: string | undefined;
 
   /**
-   * Labels to be attached to this machine allocation
+   * Labels to be attached to this machine allocation.
    *
    * @generated from field: metalstack.api.v2.Labels labels = 12;
    */
@@ -187,35 +187,35 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
 
   /**
    * PlacementTags by default machines are spread across the racks inside a partition for every project.
-   * if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags
+   * if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags.
    *
    * @generated from field: repeated string placement_tags = 14;
    */
   placementTags: string[];
 
   /**
-   * DNSServer the dns servers used for the machine
+   * DNSServer the dns servers used for the machine.
    *
    * @generated from field: repeated metalstack.api.v2.DNSServer dns_servers = 15;
    */
   dnsServers: DNSServer[];
 
   /**
-   * NTPServer the ntp servers used for the machine
+   * NTPServer the ntp servers used for the machine.
    *
    * @generated from field: repeated metalstack.api.v2.NTPServer ntp_servers = 16;
    */
   ntpServers: NTPServer[];
 
   /**
-   * AllocationType of this machine
+   * AllocationType of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineAllocationType allocation_type = 17;
    */
   allocationType: MachineAllocationType;
 
   /**
-   * FirewallSpec provides firewall specific parameters if allocationType is firewall
+   * FirewallSpec provides firewall specific parameters if allocationType is firewall.
    *
    * @generated from field: metalstack.api.v2.FirewallSpec firewall_spec = 18;
    */
@@ -230,13 +230,13 @@ export const MachineServiceCreateRequestSchema: GenMessage<MachineServiceCreateR
   messageDesc(file_metalstack_api_v2_machine, 2);
 
 /**
- * FirewallSpec contains firewall specific firewall creation parameters
+ * FirewallSpec contains firewall specific firewall creation parameters.
  *
  * @generated from message metalstack.api.v2.FirewallSpec
  */
 export type FirewallSpec = Message<"metalstack.api.v2.FirewallSpec"> & {
   /**
-   * FirewallRules to be applied if this is a firewall
+   * FirewallRules to be applied if this is a firewall.
    *
    * @generated from field: metalstack.api.v2.FirewallRules firewall_rules = 1;
    */
@@ -251,13 +251,13 @@ export const FirewallSpecSchema: GenMessage<FirewallSpec> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 3);
 
 /**
- * MachineServiceCreateResponse is the response payload for a machine create request
+ * MachineServiceCreateResponse is the response payload for a machine create request.
  *
  * @generated from message metalstack.api.v2.MachineServiceCreateResponse
  */
 export type MachineServiceCreateResponse = Message<"metalstack.api.v2.MachineServiceCreateResponse"> & {
   /**
-   * Machine which was created
+   * Machine which was created.
    *
    * @generated from field: metalstack.api.v2.Machine machine = 1;
    */
@@ -272,48 +272,48 @@ export const MachineServiceCreateResponseSchema: GenMessage<MachineServiceCreate
   messageDesc(file_metalstack_api_v2_machine, 4);
 
 /**
- * MachineServiceUpdateRequest is the request payload for a machine update request
+ * MachineServiceUpdateRequest is the request payload for a machine update request.
  *
  * @generated from message metalstack.api.v2.MachineServiceUpdateRequest
  */
 export type MachineServiceUpdateRequest = Message<"metalstack.api.v2.MachineServiceUpdateRequest"> & {
   /**
-   * UUID of the machine to modify
+   * UUID of the machine to modify.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
    */
   updateMeta?: UpdateMeta | undefined;
 
   /**
-   * Project of the machine
+   * Project of the machine.
    *
    * @generated from field: string project = 3;
    */
   project: string;
 
   /**
-   * Description of this machine allocation
+   * Description of this machine allocation.
    *
    * @generated from field: optional string description = 4;
    */
   description?: string | undefined;
 
   /**
-   * Labels to update on this machine allocation
+   * Labels to update on this machine allocation.
    *
    * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 5;
    */
   labels?: UpdateLabels | undefined;
 
   /**
-   * SSHPublicKeys which should be update of this machine allocation
+   * SSHPublicKeys which should be update of this machine allocation.
    *
    * @generated from field: repeated string ssh_public_keys = 6;
    */
@@ -328,13 +328,13 @@ export const MachineServiceUpdateRequestSchema: GenMessage<MachineServiceUpdateR
   messageDesc(file_metalstack_api_v2_machine, 5);
 
 /**
- * MachineServiceUpdateResponse is the response payload for a machine update request
+ * MachineServiceUpdateResponse is the response payload for a machine update request.
  *
  * @generated from message metalstack.api.v2.MachineServiceUpdateResponse
  */
 export type MachineServiceUpdateResponse = Message<"metalstack.api.v2.MachineServiceUpdateResponse"> & {
   /**
-   * Machine which was updated
+   * Machine which was updated.
    *
    * @generated from field: metalstack.api.v2.Machine machine = 1;
    */
@@ -349,20 +349,20 @@ export const MachineServiceUpdateResponseSchema: GenMessage<MachineServiceUpdate
   messageDesc(file_metalstack_api_v2_machine, 6);
 
 /**
- * MachineServiceListRequest is the request payload for a machine list request
+ * MachineServiceListRequest is the request payload for a machine list request.
  *
  * @generated from message metalstack.api.v2.MachineServiceListRequest
  */
 export type MachineServiceListRequest = Message<"metalstack.api.v2.MachineServiceListRequest"> & {
   /**
-   * Project of the machines to list
+   * Project of the machines to list.
    *
    * @generated from field: string project = 1;
    */
   project: string;
 
   /**
-   * Query to list one ore more machines
+   * Query to list one ore more machines.
    *
    * @generated from field: metalstack.api.v2.MachineQuery query = 2;
    */
@@ -377,13 +377,13 @@ export const MachineServiceListRequestSchema: GenMessage<MachineServiceListReque
   messageDesc(file_metalstack_api_v2_machine, 7);
 
 /**
- * MachineServiceListResponse is the response payload for a machine list request
+ * MachineServiceListResponse is the response payload for a machine list request.
  *
  * @generated from message metalstack.api.v2.MachineServiceListResponse
  */
 export type MachineServiceListResponse = Message<"metalstack.api.v2.MachineServiceListResponse"> & {
   /**
-   * Machines are the machines requested by a list request
+   * Machines are the machines requested by a list request.
    *
    * @generated from field: repeated metalstack.api.v2.Machine machines = 1;
    */
@@ -398,20 +398,20 @@ export const MachineServiceListResponseSchema: GenMessage<MachineServiceListResp
   messageDesc(file_metalstack_api_v2_machine, 8);
 
 /**
- * MachineServiceDeleteRequest is the request payload for a machine delete request
+ * MachineServiceDeleteRequest is the request payload for a machine delete request.
  *
  * @generated from message metalstack.api.v2.MachineServiceDeleteRequest
  */
 export type MachineServiceDeleteRequest = Message<"metalstack.api.v2.MachineServiceDeleteRequest"> & {
   /**
-   * UUID of the machine to delete
+   * UUID of the machine to delete.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Project of the machine
+   * Project of the machine.
    *
    * @generated from field: string project = 2;
    */
@@ -426,13 +426,13 @@ export const MachineServiceDeleteRequestSchema: GenMessage<MachineServiceDeleteR
   messageDesc(file_metalstack_api_v2_machine, 9);
 
 /**
- * MachineServiceDeleteResponse is the response payload for a machine delete request
+ * MachineServiceDeleteResponse is the response payload for a machine delete request.
  *
  * @generated from message metalstack.api.v2.MachineServiceDeleteResponse
  */
 export type MachineServiceDeleteResponse = Message<"metalstack.api.v2.MachineServiceDeleteResponse"> & {
   /**
-   * Machine which was deleted
+   * Machine which was deleted.
    *
    * @generated from field: metalstack.api.v2.Machine machine = 1;
    */
@@ -447,27 +447,27 @@ export const MachineServiceDeleteResponseSchema: GenMessage<MachineServiceDelete
   messageDesc(file_metalstack_api_v2_machine, 10);
 
 /**
- * MachineServiceBMCCommandRequest is the request payload for a machine bmc command
+ * MachineServiceBMCCommandRequest is the request payload for a machine bmc command.
  *
  * @generated from message metalstack.api.v2.MachineServiceBMCCommandRequest
  */
 export type MachineServiceBMCCommandRequest = Message<"metalstack.api.v2.MachineServiceBMCCommandRequest"> & {
   /**
-   * UUID of the machine to send the command to
+   * UUID of the machine to send the command to.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Project of the machine
+   * Project of the machine.
    *
    * @generated from field: string project = 2;
    */
   project: string;
 
   /**
-   * Command to send to the bmc of the machine
+   * Command to send to the bmc of the machine.
    *
    * @generated from field: metalstack.api.v2.MachineBMCCommand command = 3;
    */
@@ -482,7 +482,7 @@ export const MachineServiceBMCCommandRequestSchema: GenMessage<MachineServiceBMC
   messageDesc(file_metalstack_api_v2_machine, 11);
 
 /**
- * MachineServiceBMCCommandResponse is the response payload for a machine bmc command
+ * MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
  *
  * @generated from message metalstack.api.v2.MachineServiceBMCCommandResponse
  */
@@ -497,20 +497,20 @@ export const MachineServiceBMCCommandResponseSchema: GenMessage<MachineServiceBM
   messageDesc(file_metalstack_api_v2_machine, 12);
 
 /**
- * MachineServiceGetBMCRequest is the request payload for a machine getbmc request
+ * MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
  *
  * @generated from message metalstack.api.v2.MachineServiceGetBMCRequest
  */
 export type MachineServiceGetBMCRequest = Message<"metalstack.api.v2.MachineServiceGetBMCRequest"> & {
   /**
-   * UUID of the machine to get
+   * UUID of the machine to get.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Project of the machine
+   * Project of the machine.
    *
    * @generated from field: string project = 2;
    */
@@ -525,20 +525,20 @@ export const MachineServiceGetBMCRequestSchema: GenMessage<MachineServiceGetBMCR
   messageDesc(file_metalstack_api_v2_machine, 13);
 
 /**
- * MachineServiceGetBMCResponse is the response payload for a machine getbmc request
+ * MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
  *
  * @generated from message metalstack.api.v2.MachineServiceGetBMCResponse
  */
 export type MachineServiceGetBMCResponse = Message<"metalstack.api.v2.MachineServiceGetBMCResponse"> & {
   /**
-   * UUID of the machine
+   * UUID of the machine.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * BMC contains the BMC details of this machine
+   * BMC contains the BMC details of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineBMCReport bmc = 2;
    */
@@ -559,70 +559,70 @@ export const MachineServiceGetBMCResponseSchema: GenMessage<MachineServiceGetBMC
  */
 export type Machine = Message<"metalstack.api.v2.Machine"> & {
   /**
-   * UUID of this machine
+   * UUID of this machine.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Meta for this machine
+   * Meta for this machine.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 2;
    */
   meta?: Meta | undefined;
 
   /**
-   * Partition where this machine resides
+   * Partition where this machine resides.
    *
    * @generated from field: metalstack.api.v2.Partition partition = 3;
    */
   partition?: Partition | undefined;
 
   /**
-   * Rack where this machine is located
+   * Rack where this machine is located.
    *
    * @generated from field: string rack = 4;
    */
   rack: string;
 
   /**
-   * Room where this machine is located
+   * Room where this machine is located.
    *
    * @generated from field: string room = 5;
    */
   room: string;
 
   /**
-   * Size of this machine
+   * Size of this machine.
    *
    * @generated from field: metalstack.api.v2.Size size = 6;
    */
   size?: Size | undefined;
 
   /**
-   * Hardware specs of this machine
+   * Hardware specs of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineHardware hardware = 7;
    */
   hardware?: MachineHardware | undefined;
 
   /**
-   * Allocation details
+   * Allocation details.
    *
    * @generated from field: metalstack.api.v2.MachineAllocation allocation = 8;
    */
   allocation?: MachineAllocation | undefined;
 
   /**
-   * Status contains several status details related to this machine
+   * Status contains several status details related to this machine.
    *
    * @generated from field: metalstack.api.v2.MachineStatus status = 9;
    */
   status?: MachineStatus | undefined;
 
   /**
-   * MachineRecentProvisioningEvents contains the recent provisioning events
+   * MachineRecentProvisioningEvents contains the recent provisioning events.
    *
    * @generated from field: metalstack.api.v2.MachineRecentProvisioningEvents recent_provisioning_events = 10;
    */
@@ -637,34 +637,34 @@ export const MachineSchema: GenMessage<Machine> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 15);
 
 /**
- * MachineStatus contains several status details related to this machine
+ * MachineStatus contains several status details related to this machine.
  *
  * @generated from message metalstack.api.v2.MachineStatus
  */
 export type MachineStatus = Message<"metalstack.api.v2.MachineStatus"> & {
   /**
-   * Condition describes the availability
+   * Condition describes the availability.
    *
    * @generated from field: metalstack.api.v2.MachineCondition condition = 1;
    */
   condition?: MachineCondition | undefined;
 
   /**
-   * LEDState indicates the state of the indicator LED on this machine
+   * LEDState indicates the state of the indicator LED on this machine.
    *
    * @generated from field: metalstack.api.v2.MachineChassisIdentifyLEDState led_state = 2;
    */
   ledState?: MachineChassisIdentifyLEDState | undefined;
 
   /**
-   * Liveliness of this machine
+   * Liveliness of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineLiveliness liveliness = 3;
    */
   liveliness: MachineLiveliness;
 
   /**
-   * MetalHammerVersion the version of metal hammer which put the machine in waiting state
+   * MetalHammerVersion the version of metal hammer which put the machine in waiting state.
    *
    * @generated from field: string metal_hammer_version = 4;
    */
@@ -679,27 +679,27 @@ export const MachineStatusSchema: GenMessage<MachineStatus> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 16);
 
 /**
- * MachineCondition describes the availability of this machine
+ * MachineCondition describes the availability of this machine.
  *
  * @generated from message metalstack.api.v2.MachineCondition
  */
 export type MachineCondition = Message<"metalstack.api.v2.MachineCondition"> & {
   /**
-   * State the state of this machine. empty means available for all
+   * State the state of this machine. empty means available for al.
    *
    * @generated from field: metalstack.api.v2.MachineState state = 1;
    */
   state: MachineState;
 
   /**
-   * Description a description why this machine is in the given state
+   * Description a description why this machine is in the given state.
    *
    * @generated from field: string description = 2;
    */
   description: string;
 
   /**
-   * Issuer the user that changed the state
+   * Issuer the user that changed the state.
    *
    * @generated from field: string issuer = 3;
    */
@@ -714,69 +714,69 @@ export const MachineConditionSchema: GenMessage<MachineCondition> = /*@__PURE__*
   messageDesc(file_metalstack_api_v2_machine, 17);
 
 /**
- * MachineAllocation contains properties if this machine is allocated
+ * MachineAllocation contains properties if this machine is allocated.
  *
  * @generated from message metalstack.api.v2.MachineAllocation
  */
 export type MachineAllocation = Message<"metalstack.api.v2.MachineAllocation"> & {
   /**
-   * UUID of this machine allocation
+   * UUID of this machine allocation.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Meta for this machine allocation
+   * Meta for this machine allocation.
    *
    * @generated from field: metalstack.api.v2.Meta meta = 2;
    */
   meta?: Meta | undefined;
 
   /**
-   * Name of this allocation
+   * Name of this allocation.
    *
    * @generated from field: string name = 3;
    */
   name: string;
 
   /**
-   * Description of this allocation
+   * Description of this allocation.
    *
    * @generated from field: string description = 4;
    */
   description: string;
 
   /**
-   * Created By indicates who created this machine allocation
+   * Created By indicates who created this machine allocation.
    *
    * @generated from field: string created_by = 5;
    */
   createdBy: string;
 
   /**
-   * Project of the allocation
+   * Project of the allocation.
    *
    * @generated from field: string project = 6;
    */
   project: string;
 
   /**
-   * Image to be used to install on this machine
+   * Image to be used to install on this machine.
    *
    * @generated from field: metalstack.api.v2.Image image = 7;
    */
   image?: Image | undefined;
 
   /**
-   * FilesystemLayout to create on the disks
+   * FilesystemLayout to create on the disks.
    *
    * @generated from field: metalstack.api.v2.FilesystemLayout filesystem_layout = 8;
    */
   filesystemLayout?: FilesystemLayout | undefined;
 
   /**
-   * Networks this machine should be attached to
+   * Networks this machine should be attached to.
    * Order of ips of external networks will be preserved.
    *
    * @generated from field: repeated metalstack.api.v2.MachineNetwork networks = 9;
@@ -784,14 +784,14 @@ export type MachineAllocation = Message<"metalstack.api.v2.MachineAllocation"> &
   networks: MachineNetwork[];
 
   /**
-   * Hostname of the allocated machine
+   * Hostname of the allocated machine.
    *
    * @generated from field: string hostname = 10;
    */
   hostname: string;
 
   /**
-   * SSHPublicKeys which should be installed on this machine
+   * SSHPublicKeys which should be installed on this machine.
    *
    * @generated from field: repeated string ssh_public_keys = 11;
    */
@@ -799,42 +799,42 @@ export type MachineAllocation = Message<"metalstack.api.v2.MachineAllocation"> &
 
   /**
    * Userdata contains instructions required to bootstrap the machine.
-   * AWS limits the max userdata size to 16k, lets allow twice as much
+   * AWS limits the max userdata size to 16k, lets allow twice as much.
    *
    * @generated from field: string userdata = 12;
    */
   userdata: string;
 
   /**
-   * AllocationType of this machine
+   * AllocationType of this machine.
    *
    * @generated from field: metalstack.api.v2.MachineAllocationType allocation_type = 13;
    */
   allocationType: MachineAllocationType;
 
   /**
-   * FirewallRules to be applied if this is a firewall
+   * FirewallRules to be applied if this is a firewall.
    *
    * @generated from field: metalstack.api.v2.FirewallRules firewall_rules = 14;
    */
   firewallRules?: FirewallRules | undefined;
 
   /**
-   * DNSServers for this machine
+   * DNSServers for this machine.
    *
    * @generated from field: repeated metalstack.api.v2.DNSServer dns_servers = 15;
    */
   dnsServers: DNSServer[];
 
   /**
-   * NTPServers for this machine
+   * NTPServers for this machine.
    *
    * @generated from field: repeated metalstack.api.v2.NTPServer ntp_servers = 16;
    */
   ntpServers: NTPServer[];
 
   /**
-   * VPN connection configuration
+   * VPN connection configuration.
    *
    * @generated from field: metalstack.api.v2.MachineVPN vpn = 17;
    */
@@ -849,21 +849,21 @@ export const MachineAllocationSchema: GenMessage<MachineAllocation> = /*@__PURE_
   messageDesc(file_metalstack_api_v2_machine, 18);
 
 /**
- * MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired
+ * MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired.
  *
  * @generated from message metalstack.api.v2.MachineAllocationNetwork
  */
 export type MachineAllocationNetwork = Message<"metalstack.api.v2.MachineAllocationNetwork"> & {
   /**
-   * Network the id of the network that this machine will be placed in
+   * Network the id of the network that this machine will be placed in.
    *
    * @generated from field: string network = 1;
    */
   network: string;
 
   /**
-   * IPs to to attach to this machine additionally
-   * If none given, one ip address is acquired per network for the machine
+   * IPs to to attach to this machine additionally.
+   * If none given, one ip address is acquired per network for the machine.
    * Order of ips is preserved on the loopback interface.
    *
    * @generated from field: repeated string ips = 2;
@@ -879,20 +879,20 @@ export const MachineAllocationNetworkSchema: GenMessage<MachineAllocationNetwork
   messageDesc(file_metalstack_api_v2_machine, 19);
 
 /**
- * FirewallRules can be defined during firewall allocation
+ * FirewallRules can be defined during firewall allocation.
  *
  * @generated from message metalstack.api.v2.FirewallRules
  */
 export type FirewallRules = Message<"metalstack.api.v2.FirewallRules"> & {
   /**
-   * Egress list of egress rules to be deployed during firewall allocation
+   * Egress list of egress rules to be deployed during firewall allocation.
    *
    * @generated from field: repeated metalstack.api.v2.FirewallEgressRule egress = 1;
    */
   egress: FirewallEgressRule[];
 
   /**
-   * Ingress list of ingress rules to be deployed during firewall allocation
+   * Ingress list of ingress rules to be deployed during firewall allocation.
    *
    * @generated from field: repeated metalstack.api.v2.FirewallIngressRule ingress = 2;
    */
@@ -907,34 +907,34 @@ export const FirewallRulesSchema: GenMessage<FirewallRules> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 20);
 
 /**
- * FirewallEgressRule defines rules for outgoing traffic
+ * FirewallEgressRule defines rules for outgoing traffic.
  *
  * @generated from message metalstack.api.v2.FirewallEgressRule
  */
 export type FirewallEgressRule = Message<"metalstack.api.v2.FirewallEgressRule"> & {
   /**
-   * Protocol the protocol for the rule, defaults to tcp
+   * Protocol the protocol for the rule, defaults to tcp.
    *
    * @generated from field: metalstack.api.v2.IPProtocol protocol = 1;
    */
   protocol: IPProtocol;
 
   /**
-   * Ports the ports affected by this rule
+   * Ports the ports affected by this rule.
    *
    * @generated from field: repeated uint32 ports = 2;
    */
   ports: number[];
 
   /**
-   * To the destination cidrs affected by this rule
+   * To the destination cidrs affected by this rule.
    *
    * @generated from field: repeated string to = 3;
    */
   to: string[];
 
   /**
-   * Comment for this rule
+   * Comment for this rule.
    *
    * @generated from field: string comment = 4;
    */
@@ -949,41 +949,41 @@ export const FirewallEgressRuleSchema: GenMessage<FirewallEgressRule> = /*@__PUR
   messageDesc(file_metalstack_api_v2_machine, 21);
 
 /**
- * FirewallIngressRule defines rules for incoming traffic
+ * FirewallIngressRule defines rules for incoming traffic.
  *
  * @generated from message metalstack.api.v2.FirewallIngressRule
  */
 export type FirewallIngressRule = Message<"metalstack.api.v2.FirewallIngressRule"> & {
   /**
-   * Protocol the protocol for the rule, defaults to tcp
+   * Protocol the protocol for the rule, defaults to tcp.
    *
    * @generated from field: metalstack.api.v2.IPProtocol protocol = 1;
    */
   protocol: IPProtocol;
 
   /**
-   * Ports the ports affected by this rule
+   * Ports the ports affected by this rule.
    *
    * @generated from field: repeated uint32 ports = 2;
    */
   ports: number[];
 
   /**
-   * To the destination cidrs affected by this rule
+   * To the destination cidrs affected by this rule.
    *
    * @generated from field: repeated string to = 3;
    */
   to: string[];
 
   /**
-   * From the source cidrs affected by this rule
+   * From the source cidrs affected by this rule.
    *
    * @generated from field: repeated string from = 4;
    */
   from: string[];
 
   /**
-   * Comment for this rule
+   * Comment for this rule.
    *
    * @generated from field: string comment = 5;
    */
@@ -998,69 +998,69 @@ export const FirewallIngressRuleSchema: GenMessage<FirewallIngressRule> = /*@__P
   messageDesc(file_metalstack_api_v2_machine, 22);
 
 /**
- * MachineNetwork contains details which network should be created on a allocated machine
+ * MachineNetwork contains details which network should be created on a allocated machine.
  *
  * @generated from message metalstack.api.v2.MachineNetwork
  */
 export type MachineNetwork = Message<"metalstack.api.v2.MachineNetwork"> & {
   /**
-   * Network the networkID of the allocated machine in this vrf
+   * Network the networkID of the allocated machine in this vrf.
    *
    * @generated from field: string network = 1;
    */
   network: string;
 
   /**
-   * Prefixes the prefixes of this network
+   * Prefixes the prefixes of this network.
    *
    * @generated from field: repeated string prefixes = 2;
    */
   prefixes: string[];
 
   /**
-   * DestinationPrefixes prefixes that are reachable within this network
+   * DestinationPrefixes prefixes that are reachable within this network.
    *
    * @generated from field: repeated string destination_prefixes = 3;
    */
   destinationPrefixes: string[];
 
   /**
-   * IPs the ip addresses of the allocated machine in this vrf
+   * IPs the ip addresses of the allocated machine in this vrf.
    *
    * @generated from field: repeated string ips = 4;
    */
   ips: string[];
 
   /**
-   * NetworkType the type of network of this vrf
+   * NetworkType the type of network of this vrf.
    *
    * @generated from field: metalstack.api.v2.NetworkType network_type = 5;
    */
   networkType: NetworkType;
 
   /**
-   * NatType what type of nat if any should be used
+   * NatType what type of nat if any should be used.
    *
    * @generated from field: metalstack.api.v2.NATType nat_type = 6;
    */
   natType: NATType;
 
   /**
-   * VRF the vrf id
+   * VRF the vrf id.
    *
    * @generated from field: uint64 vrf = 7;
    */
   vrf: bigint;
 
   /**
-   * ASN the autonomous system number for this network
+   * ASN the autonomous system number for this network.
    *
    * @generated from field: uint32 asn = 8;
    */
   asn: number;
 
   /**
-   * Project is the project uuid associated with this network
+   * Project is the project uuid associated with this network.
    *
    * @generated from field: optional string project = 9;
    */
@@ -1075,41 +1075,41 @@ export const MachineNetworkSchema: GenMessage<MachineNetwork> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 23);
 
 /**
- * MachineHardware contains hardware details
+ * MachineHardware contains hardware details.
  *
  * @generated from message metalstack.api.v2.MachineHardware
  */
 export type MachineHardware = Message<"metalstack.api.v2.MachineHardware"> & {
   /**
-   * Memory the total memory of the machine in bytes
+   * Memory the total memory of the machine in bytes.
    *
    * @generated from field: uint64 memory = 1;
    */
   memory: bigint;
 
   /**
-   * Disks the list of block devices of this machine
+   * Disks the list of block devices of this machine.
    *
    * @generated from field: repeated metalstack.api.v2.MachineBlockDevice disks = 2;
    */
   disks: MachineBlockDevice[];
 
   /**
-   * CPUs the cpu details
+   * CPUs the cpu details.
    *
    * @generated from field: repeated metalstack.api.v2.MetalCPU cpus = 3;
    */
   cpus: MetalCPU[];
 
   /**
-   * GPUs the gpu details
+   * GPUs the gpu details.
    *
    * @generated from field: repeated metalstack.api.v2.MetalGPU gpus = 4;
    */
   gpus: MetalGPU[];
 
   /**
-   * Nics the list of network interfaces of this machine
+   * Nics the list of network interfaces of this machine.
    *
    * @generated from field: repeated metalstack.api.v2.MachineNic nics = 5;
    */
@@ -1124,34 +1124,34 @@ export const MachineHardwareSchema: GenMessage<MachineHardware> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 24);
 
 /**
- * MetalCPU contains details of a cpu in this machine
+ * MetalCPU contains details of a cpu in this machine.
  *
  * @generated from message metalstack.api.v2.MetalCPU
  */
 export type MetalCPU = Message<"metalstack.api.v2.MetalCPU"> & {
   /**
-   * Vendor of this cpu
+   * Vendor of this cpu.
    *
    * @generated from field: string vendor = 1;
    */
   vendor: string;
 
   /**
-   * Model of this cpu
+   * Model of this cpu.
    *
    * @generated from field: string model = 2;
    */
   model: string;
 
   /**
-   * Cores of this cpu
+   * Cores of this cpu.
    *
    * @generated from field: uint32 cores = 3;
    */
   cores: number;
 
   /**
-   * Threads of this cpu
+   * Threads of this cpu.
    *
    * @generated from field: uint32 threads = 4;
    */
@@ -1166,20 +1166,20 @@ export const MetalCPUSchema: GenMessage<MetalCPU> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 25);
 
 /**
- * MetalGPU contains details of a gpu in this machine
+ * MetalGPU contains details of a gpu in this machine.
  *
  * @generated from message metalstack.api.v2.MetalGPU
  */
 export type MetalGPU = Message<"metalstack.api.v2.MetalGPU"> & {
   /**
-   * Vendor of this gpu
+   * Vendor of this gpu.
    *
    * @generated from field: string vendor = 1;
    */
   vendor: string;
 
   /**
-   * Model of this gpu
+   * Model of this gpu.
    *
    * @generated from field: string model = 2;
    */
@@ -1194,62 +1194,62 @@ export const MetalGPUSchema: GenMessage<MetalGPU> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 26);
 
 /**
- * MachineNic contains details of a network interface of this machine
+ * MachineNic contains details of a network interface of this machine.
  *
  * @generated from message metalstack.api.v2.MachineNic
  */
 export type MachineNic = Message<"metalstack.api.v2.MachineNic"> & {
   /**
-   * Mac the macaddress of this interface
+   * Mac the macaddress of this interface.
    *
    * @generated from field: string mac = 1;
    */
   mac: string;
 
   /**
-   * Name of this interface
+   * Name of this interface.
    *
    * @generated from field: string name = 2;
    */
   name: string;
 
   /**
-   * Identifier the unique identifier of this network interface
+   * Identifier the unique identifier of this network interface.
    *
    * @generated from field: string identifier = 3;
    */
   identifier: string;
 
   /**
-   * Vendor of this network card
+   * Vendor of this network card.
    *
    * @generated from field: string vendor = 4;
    */
   vendor: string;
 
   /**
-   * Model of this network card
+   * Model of this network card.
    *
    * @generated from field: string model = 5;
    */
   model: string;
 
   /**
-   * Speed in bits/second of this network card
+   * Speed in bits/second of this network card.
    *
    * @generated from field: uint64 speed = 6;
    */
   speed: bigint;
 
   /**
-   * Neighbors the neighbors visible to this network interface
+   * Neighbors the neighbors visible to this network interface.
    *
    * @generated from field: repeated metalstack.api.v2.MachineNic neighbors = 7;
    */
   neighbors: MachineNic[];
 
   /**
-   * Hostname the nic belongs to
+   * Hostname the nic belongs to.
    *
    * @generated from field: string hostname = 8;
    */
@@ -1264,20 +1264,20 @@ export const MachineNicSchema: GenMessage<MachineNic> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 27);
 
 /**
- * MachineBlockDevice contains details of a block device of this machine
+ * MachineBlockDevice contains details of a block device of this machine.
  *
  * @generated from message metalstack.api.v2.MachineBlockDevice
  */
 export type MachineBlockDevice = Message<"metalstack.api.v2.MachineBlockDevice"> & {
   /**
-   * Name of this block device
+   * Name of this block device.
    *
    * @generated from field: string name = 1;
    */
   name: string;
 
   /**
-   * Size of this block device in bytes
+   * Size of this block device in bytes.
    *
    * @generated from field: uint64 size = 2;
    */
@@ -1292,20 +1292,20 @@ export const MachineBlockDeviceSchema: GenMessage<MachineBlockDevice> = /*@__PUR
   messageDesc(file_metalstack_api_v2_machine, 28);
 
 /**
- * MachineChassisIdentifyLEDState describes the identifier led state
+ * MachineChassisIdentifyLEDState describes the identifier led state.
  *
  * @generated from message metalstack.api.v2.MachineChassisIdentifyLEDState
  */
 export type MachineChassisIdentifyLEDState = Message<"metalstack.api.v2.MachineChassisIdentifyLEDState"> & {
   /**
-   * Value the state of this chassis identify LED. empty means LED-OFF
+   * Value the state of this chassis identify LED. empty means LED-OF.
    *
    * @generated from field: string value = 1;
    */
   value: string;
 
   /**
-   * Description a description why this chassis identify LED is in the given state
+   * Description a description why this chassis identify LED is in the given state.
    *
    * @generated from field: string description = 2;
    */
@@ -1320,55 +1320,55 @@ export const MachineChassisIdentifyLEDStateSchema: GenMessage<MachineChassisIden
   messageDesc(file_metalstack_api_v2_machine, 29);
 
 /**
- * MachineBMCReport is sent from the metal-bmc to update bmc and power related details
+ * MachineBMCReport is sent from the metal-bmc to update bmc and power related details.
  *
  * @generated from message metalstack.api.v2.MachineBMCReport
  */
 export type MachineBMCReport = Message<"metalstack.api.v2.MachineBMCReport"> & {
   /**
-   * Bmc contains bmc details
+   * Bmc contains bmc details.
    *
    * @generated from field: metalstack.api.v2.MachineBMC bmc = 1;
    */
   bmc?: MachineBMC | undefined;
 
   /**
-   * Bios contains bios details
+   * Bios contains bios details.
    *
    * @generated from field: metalstack.api.v2.MachineBios bios = 2;
    */
   bios?: MachineBios | undefined;
 
   /**
-   * Fru contains field replaceable unit details
+   * Fru contains field replaceable unit details.
    *
    * @generated from field: metalstack.api.v2.MachineFRU fru = 3;
    */
   fru?: MachineFRU | undefined;
 
   /**
-   * PowerMetric contains the power statistics of the machine
+   * PowerMetric contains the power statistics of the machine.
    *
    * @generated from field: metalstack.api.v2.MachinePowerMetric power_metric = 4;
    */
   powerMetric?: MachinePowerMetric | undefined;
 
   /**
-   * PowerSupplies contains details about all power supplies and their state
+   * PowerSupplies contains details about all power supplies and their state.
    *
    * @generated from field: repeated metalstack.api.v2.MachinePowerSupply power_supplies = 5;
    */
   powerSupplies: MachinePowerSupply[];
 
   /**
-   * LedState indicates the state of the indicator LED on this machine
+   * LedState indicates the state of the indicator LED on this machine.
    *
    * @generated from field: metalstack.api.v2.MachineChassisIdentifyLEDState led_state = 6;
    */
   ledState?: MachineChassisIdentifyLEDState | undefined;
 
   /**
-   * UpdatedAt contains the date when this data was last updated
+   * UpdatedAt contains the date when this data was last updated.
    *
    * @generated from field: google.protobuf.Timestamp updated_at = 7;
    */
@@ -1383,27 +1383,27 @@ export const MachineBMCReportSchema: GenMessage<MachineBMCReport> = /*@__PURE__*
   messageDesc(file_metalstack_api_v2_machine, 30);
 
 /**
- * MachineBios contains BIOS details of this machine
+ * MachineBios contains BIOS details of this machine.
  *
  * @generated from message metalstack.api.v2.MachineBios
  */
 export type MachineBios = Message<"metalstack.api.v2.MachineBios"> & {
   /**
-   * Version the bios version
+   * Version the bios version.
    *
    * @generated from field: string version = 1;
    */
   version: string;
 
   /**
-   * Vendor the bios vendor
+   * Vendor the bios vendor.
    *
    * @generated from field: string vendor = 2;
    */
   vendor: string;
 
   /**
-   * Date the bios date as string because every vendor has different ideas how to describe the date
+   * Date the bios date as string because every vendor has different ideas how to describe the date.
    *
    * @generated from field: string date = 3;
    */
@@ -1418,55 +1418,55 @@ export const MachineBiosSchema: GenMessage<MachineBios> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 31);
 
 /**
- * MachineBMC describe details of the ipmi or out of band device
+ * MachineBMC describe details of the ipmi or out of band device.
  *
  * @generated from message metalstack.api.v2.MachineBMC
  */
 export type MachineBMC = Message<"metalstack.api.v2.MachineBMC"> & {
   /**
-   * Address of this ipmi device from outside in the form of <ip or hostname>:<port>
+   * Address of this ipmi device from outside in the form of <ip or hostname>:<port>.
    *
    * @generated from field: string address = 1;
    */
   address: string;
 
   /**
-   * Mac address of the network interface of this ipmi device
+   * Mac address of the network interface of this ipmi device.
    *
    * @generated from field: string mac = 2;
    */
   mac: string;
 
   /**
-   * User of this ipmi device
+   * User of this ipmi device.
    *
    * @generated from field: string user = 3;
    */
   user: string;
 
   /**
-   * Password of this ipmi device
+   * Password of this ipmi device.
    *
    * @generated from field: string password = 4;
    */
   password: string;
 
   /**
-   * Interface of this ipmi device
+   * Interface of this ipmi device.
    *
    * @generated from field: string interface = 5;
    */
   interface: string;
 
   /**
-   * Version of this bmc device
+   * Version of this bmc device.
    *
    * @generated from field: string version = 6;
    */
   version: string;
 
   /**
-   * PowerState of this machine
+   * PowerState of this machine.
    *
    * @generated from field: string power_state = 7;
    */
@@ -1481,62 +1481,62 @@ export const MachineBMCSchema: GenMessage<MachineBMC> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 32);
 
 /**
- * MachineFRU describes details to the machine which are required in case of a necessary replacement
+ * MachineFRU describes details to the machine which are required in case of a necessary replacement.
  *
  * @generated from message metalstack.api.v2.MachineFRU
  */
 export type MachineFRU = Message<"metalstack.api.v2.MachineFRU"> & {
   /**
-   * ChassisPartNumber is the part number of the machine chassis
+   * ChassisPartNumber is the part number of the machine chassis.
    *
    * @generated from field: optional string chassis_part_number = 1;
    */
   chassisPartNumber?: string | undefined;
 
   /**
-   * ChassisPartSerial is the serial number of the machine chassis
+   * ChassisPartSerial is the serial number of the machine chassis.
    *
    * @generated from field: optional string chassis_part_serial = 2;
    */
   chassisPartSerial?: string | undefined;
 
   /**
-   * BoardMfg is the short description of the mainboard
+   * BoardMfg is the short description of the mainboard.
    *
    * @generated from field: optional string board_mfg = 3;
    */
   boardMfg?: string | undefined;
 
   /**
-   * BoardMfgSerial is the serial number of the mainboard
+   * BoardMfgSerial is the serial number of the mainboard.
    *
    * @generated from field: optional string board_mfg_serial = 4;
    */
   boardMfgSerial?: string | undefined;
 
   /**
-   * BoardPartNumber is the part number of the mainboard
+   * BoardPartNumber is the part number of the mainboard.
    *
    * @generated from field: optional string board_part_number = 5;
    */
   boardPartNumber?: string | undefined;
 
   /**
-   * ProductManufacturer is the manufacturer of the machine
+   * ProductManufacturer is the manufacturer of the machine.
    *
    * @generated from field: optional string product_manufacturer = 6;
    */
   productManufacturer?: string | undefined;
 
   /**
-   * ProductPartNumber is the part number of the machine
+   * ProductPartNumber is the part number of the machine.
    *
    * @generated from field: optional string product_part_number = 7;
    */
   productPartNumber?: string | undefined;
 
   /**
-   * ProductSerial is the serial number of the machine
+   * ProductSerial is the serial number of the machine.
    *
    * @generated from field: optional string product_serial = 8;
    */
@@ -1551,24 +1551,20 @@ export const MachineFRUSchema: GenMessage<MachineFRU> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 33);
 
 /**
- * MachinePowerMetric contains metrics of the power consumption of a machine
+ * MachinePowerMetric contains metrics of the power consumption of a machine.
  *
  * @generated from message metalstack.api.v2.MachinePowerMetric
  */
 export type MachinePowerMetric = Message<"metalstack.api.v2.MachinePowerMetric"> & {
   /**
-   * AverageConsumedWatts shall represent the
-   * average power level that occurred averaged over the last IntervalInMin
-   * minutes.
+   * AverageConsumedWatts shall represent the average power level that occurred averaged over the last IntervalInMin minutes.
    *
    * @generated from field: float average_consumed_watts = 1;
    */
   averageConsumedWatts: number;
 
   /**
-   * IntervalInMin shall represent the time
-   * interval (or window), in minutes, in which the PowerMetrics properties
-   * are measured over.
+   * IntervalInMin shall represent the time interval (or window), in minutes, in which the PowerMetrics properties are measured over.
    * Should be an integer, but some Dell implementations return as a float.
    *
    * @generated from field: float interval_in_min = 2;
@@ -1576,18 +1572,14 @@ export type MachinePowerMetric = Message<"metalstack.api.v2.MachinePowerMetric">
   intervalInMin: number;
 
   /**
-   * MaxConsumedWatts shall represent the
-   * maximum power level in watts that occurred within the last
-   * IntervalInMin minutes.
+   * MaxConsumedWatts shall represent the maximum power level in watts that occurred within the last IntervalInMin minutes.
    *
    * @generated from field: float max_consumed_watts = 3;
    */
   maxConsumedWatts: number;
 
   /**
-   * MinConsumedWatts shall represent the
-   * minimum power level in watts that occurred within the last
-   * IntervalInMin minutes.
+   * MinConsumedWatts shall represent the minimum power level in watts that occurred within the last IntervalInMin minutes.
    *
    * @generated from field: float min_consumed_watts = 4;
    */
@@ -1602,20 +1594,20 @@ export const MachinePowerMetricSchema: GenMessage<MachinePowerMetric> = /*@__PUR
   messageDesc(file_metalstack_api_v2_machine, 34);
 
 /**
- * MachinePowerSupply contains details of the power supply of a machine
+ * MachinePowerSupply contains details of the power supply of a machine.
  *
  * @generated from message metalstack.api.v2.MachinePowerSupply
  */
 export type MachinePowerSupply = Message<"metalstack.api.v2.MachinePowerSupply"> & {
   /**
-   * Health of the powersupply
+   * Health of the powersupply.
    *
    * @generated from field: string health = 1;
    */
   health: string;
 
   /**
-   * State of the powersupply
+   * State of the powersupply.
    *
    * @generated from field: string state = 2;
    */
@@ -1630,34 +1622,34 @@ export const MachinePowerSupplySchema: GenMessage<MachinePowerSupply> = /*@__PUR
   messageDesc(file_metalstack_api_v2_machine, 35);
 
 /**
- * MachineRecentProvisioningEvents the recent provisioning events for this machine
+ * MachineRecentProvisioningEvents the recent provisioning events for this machine.
  *
  * @generated from message metalstack.api.v2.MachineRecentProvisioningEvents
  */
 export type MachineRecentProvisioningEvents = Message<"metalstack.api.v2.MachineRecentProvisioningEvents"> & {
   /**
-   * Events the log of recent machine provisioning events
+   * Events the log of recent machine provisioning events.
    *
    * @generated from field: repeated metalstack.api.v2.MachineProvisioningEvent events = 1;
    */
   events: MachineProvisioningEvent[];
 
   /**
-   * LastEventTime the time where the last event was received
+   * LastEventTime the time where the last event was received.
    *
    * @generated from field: google.protobuf.Timestamp last_event_time = 2;
    */
   lastEventTime?: Timestamp | undefined;
 
   /**
-   * LastErrorEvent the last erroneous event received
+   * LastErrorEvent the last erroneous event received.
    *
    * @generated from field: metalstack.api.v2.MachineProvisioningEvent last_error_event = 3;
    */
   lastErrorEvent?: MachineProvisioningEvent | undefined;
 
   /**
-   * State can be either CrashLoop, FailedReclaim or something else
+   * State can be either CrashLoop, FailedReclaim or something else.
    *
    * @generated from field: metalstack.api.v2.MachineProvisioningEventState state = 4;
    */
@@ -1672,27 +1664,27 @@ export const MachineRecentProvisioningEventsSchema: GenMessage<MachineRecentProv
   messageDesc(file_metalstack_api_v2_machine, 36);
 
 /**
- * MachineProvisioningEvent is an event that has occurred during provisioning
+ * MachineProvisioningEvent is an event that has occurred during provisioning.
  *
  * @generated from message metalstack.api.v2.MachineProvisioningEvent
  */
 export type MachineProvisioningEvent = Message<"metalstack.api.v2.MachineProvisioningEvent"> & {
   /**
-   * Time the time that this event was received
+   * Time the time that this event was received.
    *
    * @generated from field: google.protobuf.Timestamp time = 1;
    */
   time?: Timestamp | undefined;
 
   /**
-   * Event the event emitted by the machine
+   * Event the event emitted by the machine.
    *
    * @generated from field: metalstack.api.v2.MachineProvisioningEventType event = 2;
    */
   event: MachineProvisioningEventType;
 
   /**
-   * Message an additional message to add to the event
+   * Message an additional message to add to the event.
    *
    * @generated from field: string message = 3;
    */
@@ -1707,34 +1699,34 @@ export const MachineProvisioningEventSchema: GenMessage<MachineProvisioningEvent
   messageDesc(file_metalstack_api_v2_machine, 37);
 
 /**
- * MachineVPN contains configuration data for the VPN connection
+ * MachineVPN contains configuration data for the VPN connection.
  *
  * @generated from message metalstack.api.v2.MachineVPN
  */
 export type MachineVPN = Message<"metalstack.api.v2.MachineVPN"> & {
   /**
-   * Address of VPN control plane
+   * Address of VPN control plane.
    *
    * @generated from field: string control_plane_address = 1;
    */
   controlPlaneAddress: string;
 
   /**
-   * Auth key used to connect to VPN
+   * Auth key used to connect to VPN.
    *
    * @generated from field: string auth_key = 2;
    */
   authKey: string;
 
   /**
-   * Connected indicate if this machine is connected to the VPN
+   * Connected indicate if this machine is connected to the VPN.
    *
    * @generated from field: bool connected = 3;
    */
   connected: boolean;
 
   /**
-   * IPs of the machine connected to the vpn
+   * IPs of the machine connected to the vpn.
    *
    * @generated from field: repeated string ips = 4;
    */
@@ -1755,105 +1747,105 @@ export const MachineVPNSchema: GenMessage<MachineVPN> = /*@__PURE__*/
  */
 export type MachineQuery = Message<"metalstack.api.v2.MachineQuery"> & {
   /**
-   * UUID of the machine to get
+   * UUID of the machine to get.
    *
    * @generated from field: optional string uuid = 1;
    */
   uuid?: string | undefined;
 
   /**
-   * Name of the machine to get
+   * Name of the machine to get.
    *
    * @generated from field: optional string name = 2;
    */
   name?: string | undefined;
 
   /**
-   * Partition of the machine to get
+   * Partition of the machine to get.
    *
    * @generated from field: optional string partition = 3;
    */
   partition?: string | undefined;
 
   /**
-   * Size of the machine to get
+   * Size of the machine to get.
    *
    * @generated from field: optional string size = 4;
    */
   size?: string | undefined;
 
   /**
-   * Rack of the machine to get
+   * Rack of the machine to get.
    *
    * @generated from field: optional string rack = 5;
    */
   rack?: string | undefined;
 
   /**
-   * Room of the machine to get
+   * Room of the machine to get.
    *
    * @generated from field: optional string room = 6;
    */
   room?: string | undefined;
 
   /**
-   * Labels for which this machine should get filtered
+   * Labels for which this machine should get filtered.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 7;
    */
   labels?: Labels | undefined;
 
   /**
-   * Allocation specific machine queries
+   * Allocation specific machine queries.
    *
    * @generated from field: optional metalstack.api.v2.MachineAllocationQuery allocation = 8;
    */
   allocation?: MachineAllocationQuery | undefined;
 
   /**
-   * Network specific machine queries
+   * Network specific machine queries.
    *
    * @generated from field: optional metalstack.api.v2.MachineNetworkQuery network = 9;
    */
   network?: MachineNetworkQuery | undefined;
 
   /**
-   * Nic specific machine queries
+   * Nic specific machine queries.
    *
    * @generated from field: optional metalstack.api.v2.MachineNicQuery nic = 10;
    */
   nic?: MachineNicQuery | undefined;
 
   /**
-   * Disk specific machine queries
+   * Disk specific machine queries.
    *
    * @generated from field: optional metalstack.api.v2.MachineDiskQuery disk = 11;
    */
   disk?: MachineDiskQuery | undefined;
 
   /**
-   * Bmc specific machine queries
+   * Bmc specific machine queries.
    *
    * @generated from field: optional metalstack.api.v2.MachineBMCQuery bmc = 12;
    */
   bmc?: MachineBMCQuery | undefined;
 
   /**
-   * Fru specific machine queries
+   * Fru specific machine queries.
    *
    * @generated from field: optional metalstack.api.v2.MachineFRUQuery fru = 13;
    */
   fru?: MachineFRUQuery | undefined;
 
   /**
-   * Hardware specific machine query
+   * Hardware specific machine query.
    *
    * @generated from field: optional metalstack.api.v2.MachineHardwareQuery hardware = 14;
    */
   hardware?: MachineHardwareQuery | undefined;
 
   /**
-   * State this machine has
+   * State this machine has.
    *
    * @generated from field: optional metalstack.api.v2.MachineState state = 15;
    */
@@ -1892,69 +1884,69 @@ export const MachineQuerySchema: GenMessage<MachineQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 39);
 
 /**
- * MachineAllocationQuery allocation specific query parameters
+ * MachineAllocationQuery allocation specific query parameters.
  *
  * @generated from message metalstack.api.v2.MachineAllocationQuery
  */
 export type MachineAllocationQuery = Message<"metalstack.api.v2.MachineAllocationQuery"> & {
   /**
-   * UUID of the allocation of the machine to get
+   * UUID of the allocation of the machine to get.
    *
    * @generated from field: optional string uuid = 1;
    */
   uuid?: string | undefined;
 
   /**
-   * Name of the machine to get
+   * Name of the machine to get.
    *
    * @generated from field: optional string name = 2;
    */
   name?: string | undefined;
 
   /**
-   * Project of the machine to get
+   * Project of the machine to get.
    *
    * @generated from field: optional string project = 3;
    */
   project?: string | undefined;
 
   /**
-   * Image of the machine to get
+   * Image of the machine to get.
    *
    * @generated from field: optional string image = 4;
    */
   image?: string | undefined;
 
   /**
-   * FilesystemLayout of the machine to get
+   * FilesystemLayout of the machine to get.
    *
    * @generated from field: optional string filesystem_layout = 5;
    */
   filesystemLayout?: string | undefined;
 
   /**
-   * Hostname of the machine to get
+   * Hostname of the machine to get.
    *
    * @generated from field: optional string hostname = 6;
    */
   hostname?: string | undefined;
 
   /**
-   * AllocationType of this machine
+   * AllocationType of this machine.
    *
    * @generated from field: optional metalstack.api.v2.MachineAllocationType allocation_type = 7;
    */
   allocationType?: MachineAllocationType | undefined;
 
   /**
-   * Labels for which this machine allocation should get filtered
+   * Labels for which this machine allocation should get filtered.
    *
    * @generated from field: optional metalstack.api.v2.Labels labels = 8;
    */
   labels?: Labels | undefined;
 
   /**
-   * VPN query if this machine has a vpn configuration
+   * VPN query if this machine has a vpn configuration.
    *
    * @generated from field: optional metalstack.api.v2.MachineVPN vpn = 9;
    */
@@ -1969,48 +1961,48 @@ export const MachineAllocationQuerySchema: GenMessage<MachineAllocationQuery> = 
   messageDesc(file_metalstack_api_v2_machine, 40);
 
 /**
- * MachineNetworkQuery network specific machine queries
+ * MachineNetworkQuery network specific machine queries.
  *
  * @generated from message metalstack.api.v2.MachineNetworkQuery
  */
 export type MachineNetworkQuery = Message<"metalstack.api.v2.MachineNetworkQuery"> & {
   /**
-   * Networks this machine is connected to
+   * Networks this machine is connected to.
    *
    * @generated from field: repeated string networks = 1;
    */
   networks: string[];
 
   /**
-   * Prefixes this machine is connected to
+   * Prefixes this machine is connected to.
    *
    * @generated from field: repeated string prefixes = 2;
    */
   prefixes: string[];
 
   /**
-   * DestinationPrefixes this machine is connected to
+   * DestinationPrefixes this machine is connected to.
    *
    * @generated from field: repeated string destination_prefixes = 3;
    */
   destinationPrefixes: string[];
 
   /**
-   * IPs this machine has
+   * IPs this machine has.
    *
    * @generated from field: repeated string ips = 4;
    */
   ips: string[];
 
   /**
-   * VRFs this machine is connected to
+   * VRFs this machine is connected to.
    *
    * @generated from field: repeated uint64 vrfs = 5;
    */
   vrfs: bigint[];
 
   /**
-   * ASNs this machine is connected to
+   * ASNs this machine is connected to.
    *
    * @generated from field: repeated uint32 asns = 6;
    */
@@ -2025,34 +2017,34 @@ export const MachineNetworkQuerySchema: GenMessage<MachineNetworkQuery> = /*@__P
   messageDesc(file_metalstack_api_v2_machine, 41);
 
 /**
- * MachineNicQuery nic specific machine queries
+ * MachineNicQuery nic specific machine queries.
  *
  * @generated from message metalstack.api.v2.MachineNicQuery
  */
 export type MachineNicQuery = Message<"metalstack.api.v2.MachineNicQuery"> & {
   /**
-   * Macs this machine nic has
+   * Macs this machine nic has.
    *
    * @generated from field: repeated string macs = 1;
    */
   macs: string[];
 
   /**
-   * Names this machine nic has
+   * Names this machine nic has.
    *
    * @generated from field: repeated string names = 2;
    */
   names: string[];
 
   /**
-   * NeighborMacs this machine nic has
+   * NeighborMacs this machine nic has.
    *
    * @generated from field: repeated string neighbor_macs = 3;
    */
   neighborMacs: string[];
 
   /**
-   * NeighborNames this machine nic has
+   * NeighborNames this machine nic has.
    *
    * @generated from field: repeated string neighbor_names = 4;
    */
@@ -2067,20 +2059,20 @@ export const MachineNicQuerySchema: GenMessage<MachineNicQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 42);
 
 /**
- * MachineDiskQuery disk specific machine queries
+ * MachineDiskQuery disk specific machine queries.
  *
  * @generated from message metalstack.api.v2.MachineDiskQuery
  */
 export type MachineDiskQuery = Message<"metalstack.api.v2.MachineDiskQuery"> & {
   /**
-   * Names of disks in this machine
+   * Names of disks in this machine.
    *
    * @generated from field: repeated string names = 1;
    */
   names: string[];
 
   /**
-   * Sizes of disks in this machine
+   * Sizes of disks in this machine.
    *
    * @generated from field: repeated uint64 sizes = 2;
    */
@@ -2095,34 +2087,34 @@ export const MachineDiskQuerySchema: GenMessage<MachineDiskQuery> = /*@__PURE__*
   messageDesc(file_metalstack_api_v2_machine, 43);
 
 /**
- * MachineBMCQuery machine ipmi or bmc specific machine queries
+ * MachineBMCQuery machine ipmi or bmc specific machine queries.
  *
  * @generated from message metalstack.api.v2.MachineBMCQuery
  */
 export type MachineBMCQuery = Message<"metalstack.api.v2.MachineBMCQuery"> & {
   /**
-   * Address of the ipmi system of this machine
+   * Address of the ipmi system of this machine.
    *
    * @generated from field: optional string address = 1;
    */
   address?: string | undefined;
 
   /**
-   * Mac of the ipmi system of this machine
+   * Mac of the ipmi system of this machine.
    *
    * @generated from field: optional string mac = 2;
    */
   mac?: string | undefined;
 
   /**
-   * User of the ipmi system of this machine
+   * User of the ipmi system of this machine.
    *
    * @generated from field: optional string user = 3;
    */
   user?: string | undefined;
 
   /**
-   * Interface of the ipmi system of this machine
+   * Interface of the ipmi system of this machine.
    *
    * @generated from field: optional string interface = 4;
    */
@@ -2137,62 +2129,62 @@ export const MachineBMCQuerySchema: GenMessage<MachineBMCQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 44);
 
 /**
- * MachineFRUQuery machine fru specific machine queries
+ * MachineFRUQuery machine fru specific machine queries.
  *
  * @generated from message metalstack.api.v2.MachineFRUQuery
  */
 export type MachineFRUQuery = Message<"metalstack.api.v2.MachineFRUQuery"> & {
   /**
-   * ChassisPartNumber of this machine
+   * ChassisPartNumber of this machine.
    *
    * @generated from field: optional string chassis_part_number = 1;
    */
   chassisPartNumber?: string | undefined;
 
   /**
-   * ChassisPartSerial of this machine
+   * ChassisPartSerial of this machine.
    *
    * @generated from field: optional string chassis_part_serial = 2;
    */
   chassisPartSerial?: string | undefined;
 
   /**
-   * BoardMFG of this machine
+   * BoardMFG of this machine.
    *
    * @generated from field: optional string board_mfg = 3;
    */
   boardMfg?: string | undefined;
 
   /**
-   * BoardSerial of this machine
+   * BoardSerial of this machine.
    *
    * @generated from field: optional string board_serial = 4;
    */
   boardSerial?: string | undefined;
 
   /**
-   * BoardPartNumber of this machine
+   * BoardPartNumber of this machine.
    *
    * @generated from field: optional string board_part_number = 5;
    */
   boardPartNumber?: string | undefined;
 
   /**
-   * ProductManufacturer of this machine
+   * ProductManufacturer of this machine.
    *
    * @generated from field: optional string product_manufacturer = 6;
    */
   productManufacturer?: string | undefined;
 
   /**
-   * ProductPartNumber of this machine
+   * ProductPartNumber of this machine.
    *
    * @generated from field: optional string product_part_number = 7;
    */
   productPartNumber?: string | undefined;
 
   /**
-   * ProductSerial of this machine
+   * ProductSerial of this machine.
    *
    * @generated from field: optional string product_serial = 8;
    */
@@ -2207,20 +2199,20 @@ export const MachineFRUQuerySchema: GenMessage<MachineFRUQuery> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 45);
 
 /**
- * MachineHardwareQuery machine hardware specific machine queries
+ * MachineHardwareQuery machine hardware specific machine queries.
  *
  * @generated from message metalstack.api.v2.MachineHardwareQuery
  */
 export type MachineHardwareQuery = Message<"metalstack.api.v2.MachineHardwareQuery"> & {
   /**
-   * Memory the total memory of the machine in bytes
+   * Memory the total memory of the machine in bytes.
    *
    * @generated from field: optional uint64 memory = 1;
    */
   memory?: bigint | undefined;
 
   /**
-   * CPUCores the number of cpu cores
+   * CPUCores the number of cpu cores.
    *
    * @generated from field: optional uint32 cpu_cores = 2;
    */
@@ -2235,41 +2227,41 @@ export const MachineHardwareQuerySchema: GenMessage<MachineHardwareQuery> = /*@_
   messageDesc(file_metalstack_api_v2_machine, 46);
 
 /**
- * MachineIssuesQuery defines which machine issues should be listed
+ * MachineIssuesQuery defines which machine issues should be listed.
  *
  * @generated from message metalstack.api.v2.MachineIssuesQuery
  */
 export type MachineIssuesQuery = Message<"metalstack.api.v2.MachineIssuesQuery"> & {
   /**
-   * MachineQuery to select specific machines
+   * MachineQuery to select specific machines.
    *
    * @generated from field: metalstack.api.v2.MachineQuery machine_query = 1;
    */
   machineQuery?: MachineQuery | undefined;
 
   /**
-   * Only includes the specified machine issue types
+   * Only includes the specified machine issue types.
    *
    * @generated from field: repeated metalstack.api.v2.MachineIssueType only = 2;
    */
   only: MachineIssueType[];
 
   /**
-   * Omits the specified machine issues
+   * Omits the specified machine issues.
    *
    * @generated from field: repeated metalstack.api.v2.MachineIssueType omit = 3;
    */
   omit: MachineIssueType[];
 
   /**
-   * Severity filters issue for given severity
+   * Severity filters issue for given severity.
    *
    * @generated from field: optional metalstack.api.v2.MachineIssueSeverity severity = 4;
    */
   severity?: MachineIssueSeverity | undefined;
 
   /**
-   * LastErrorThreshold defines the last error threshold
+   * LastErrorThreshold defines the last error threshold.
    *
    * @generated from field: google.protobuf.Duration last_error_threshold = 5;
    */
@@ -2284,20 +2276,20 @@ export const MachineIssuesQuerySchema: GenMessage<MachineIssuesQuery> = /*@__PUR
   messageDesc(file_metalstack_api_v2_machine, 47);
 
 /**
- * MachineIssues is a list of issues for a machine
+ * MachineIssues is a list of issues for a machine.
  *
  * @generated from message metalstack.api.v2.MachineIssues
  */
 export type MachineIssues = Message<"metalstack.api.v2.MachineIssues"> & {
   /**
-   * UUID of the machine for which the issues are listed
+   * UUID of the machine for which the issues are listed.
    *
    * @generated from field: string uuid = 1;
    */
   uuid: string;
 
   /**
-   * Issues of this machine
+   * Issues of this machine.
    *
    * @generated from field: repeated metalstack.api.v2.MachineIssue issues = 2;
    */
@@ -2312,41 +2304,41 @@ export const MachineIssuesSchema: GenMessage<MachineIssues> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 48);
 
 /**
- * MachineIssue contains details of one issue
+ * MachineIssue contains details of one issue.
  *
  * @generated from message metalstack.api.v2.MachineIssue
  */
 export type MachineIssue = Message<"metalstack.api.v2.MachineIssue"> & {
   /**
-   * Type specifies the issue type (id)
+   * Type specifies the issue type (id).
    *
    * @generated from field: metalstack.api.v2.MachineIssueType type = 1;
    */
   type: MachineIssueType;
 
   /**
-   * Severity specifies the severity of an issue
+   * Severity specifies the severity of an issue.
    *
    * @generated from field: metalstack.api.v2.MachineIssueSeverity severity = 2;
    */
   severity: MachineIssueSeverity;
 
   /**
-   * Description provides an issue description
+   * Description provides an issue description.
    *
    * @generated from field: string description = 3;
    */
   description: string;
 
   /**
-   * RefURL provides a link to a more detailed issue description in the metal-stack documentation
+   * RefURL provides a link to a more detailed issue description in the metal-stack documentation.
    *
    * @generated from field: string reference_url = 4;
    */
   referenceUrl: string;
 
   /**
-   * Details may contain additional details on an evaluated issue
+   * Details may contain additional details on an evaluated issue.
    *
    * @generated from field: string details = 5;
    */
@@ -2361,27 +2353,27 @@ export const MachineIssueSchema: GenMessage<MachineIssue> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_machine, 49);
 
 /**
- * IPProtocol defines tcp|udp
+ * IPProtocol defines tcp|udp.
  *
  * @generated from enum metalstack.api.v2.IPProtocol
  */
 export enum IPProtocol {
   /**
-   * IP_PROTOCOL_UNSPECIFIED is not specified
+   * IP_PROTOCOL_UNSPECIFIED is not specified.
    *
    * @generated from enum value: IP_PROTOCOL_UNSPECIFIED = 0;
    */
   IP_PROTOCOL_UNSPECIFIED = 0,
 
   /**
-   * IP_PROTOCOL_TCP is tcp
+   * IP_PROTOCOL_TCP is tcp.
    *
    * @generated from enum value: IP_PROTOCOL_TCP = 1;
    */
   IP_PROTOCOL_TCP = 1,
 
   /**
-   * IP_PROTOCOL_UDP is udp
+   * IP_PROTOCOL_UDP is udp.
    *
    * @generated from enum value: IP_PROTOCOL_UDP = 2;
    */
@@ -2395,34 +2387,34 @@ export const IPProtocolSchema: GenEnum<IPProtocol> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_machine, 0);
 
 /**
- * MachineState defines if the machine was locked or reserved from a operator
+ * MachineState defines if the machine was locked or reserved from a operator.
  *
  * @generated from enum metalstack.api.v2.MachineState
  */
 export enum MachineState {
   /**
-   * MACHINE_STATE_UNSPECIFIED is not specified
+   * MACHINE_STATE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: MACHINE_STATE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uuid
+   * MACHINE_STATE_TAINTED this machine is tainted, i.e. this machine is not considered during random machine allocation, but still by specifying the uui.
    *
    * @generated from enum value: MACHINE_STATE_TAINTED = 1;
    */
   TAINTED = 1,
 
   /**
-   * MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or deleted
+   * MACHINE_STATE_LOCKED this machine is locked, i.e. this machine cannot be allocated or delete.
    *
    * @generated from enum value: MACHINE_STATE_LOCKED = 2;
    */
   LOCKED = 2,
 
   /**
-   * MACHINE_STATE_AVAILABLE this machine is available for all
+   * MACHINE_STATE_AVAILABLE this machine is available for all.
    *
    * @generated from enum value: MACHINE_STATE_AVAILABLE = 3;
    */
@@ -2436,27 +2428,27 @@ export const MachineStateSchema: GenEnum<MachineState> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_machine, 1);
 
 /**
- * MachineProvisioningEventState possible event states
+ * MachineProvisioningEventState possible event states.
  *
  * @generated from enum metalstack.api.v2.MachineProvisioningEventState
  */
 export enum MachineProvisioningEventState {
   /**
-   * MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified
+   * MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_STATE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop
+   * MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP machine is in crash loop.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_STATE_CRASHLOOP = 1;
    */
   CRASHLOOP = 1,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim
+   * MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM machine is in failed reclaim.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_STATE_FAILED_RECLAIM = 2;
    */
@@ -2470,90 +2462,90 @@ export const MachineProvisioningEventStateSchema: GenEnum<MachineProvisioningEve
   enumDesc(file_metalstack_api_v2_machine, 2);
 
 /**
- * MachineProvisioningEventType defines in which phase the machine actually is
+ * MachineProvisioningEventType defines in which phase the machine actually is.
  *
  * @generated from enum metalstack.api.v2.MachineProvisioningEventType
  */
 export enum MachineProvisioningEventType {
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified
+   * MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED is not specified.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive
+   * MACHINE_PROVISIONING_EVENT_TYPE_ALIVE machine is alive.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_ALIVE = 1;
    */
   ALIVE = 1,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_CRASHED machine crashed
+   * MACHINE_PROVISIONING_EVENT_TYPE_CRASHED machine crashed.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_CRASHED = 2;
    */
   CRASHED = 2,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING machine is pxe booting into metal-hammer
+   * MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING machine is pxe booting into metal-hammer.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_PXE_BOOTING = 3;
    */
   PXE_BOOTING = 3,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT machine got a reboot instruction
+   * MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT machine got a reboot instruction.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_PLANNED_REBOOT = 4;
    */
   PLANNED_REBOOT = 4,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_PREPARING metal-hammer is preparing the machine
+   * MACHINE_PROVISIONING_EVENT_TYPE_PREPARING metal-hammer is preparing the machine.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_PREPARING = 5;
    */
   PREPARING = 5,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING metal-hammer registers machine at the apiserver
+   * MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING metal-hammer registers machine at the apiserver.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_REGISTERING = 6;
    */
   REGISTERING = 6,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_WAITING machine is waiting for installation
+   * MACHINE_PROVISIONING_EVENT_TYPE_WAITING machine is waiting for installation.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_WAITING = 7;
    */
   WAITING = 7,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING metal-hammer is installing the desired os
+   * MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING metal-hammer is installing the desired os.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_INSTALLING = 8;
    */
   INSTALLING = 8,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL metal-hammer completed installation and boots into target os
+   * MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL metal-hammer completed installation and boots into target os.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_BOOTING_NEW_KERNEL = 9;
    */
   BOOTING_NEW_KERNEL = 9,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME machine is installed and phones home
+   * MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME machine is installed and phones home.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_PHONED_HOME = 10;
    */
   PHONED_HOME = 10,
 
   /**
-   * MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM machine is not allocated, but phones home
+   * MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM machine is not allocated, but phones home.
    *
    * @generated from enum value: MACHINE_PROVISIONING_EVENT_TYPE_MACHINE_RECLAIM = 11;
    */
@@ -2567,34 +2559,34 @@ export const MachineProvisioningEventTypeSchema: GenEnum<MachineProvisioningEven
   enumDesc(file_metalstack_api_v2_machine, 3);
 
 /**
- * MachineLiveliness specifies the liveliness of a machine
+ * MachineLiveliness specifies the liveliness of a machine.
  *
  * @generated from enum metalstack.api.v2.MachineLiveliness
  */
 export enum MachineLiveliness {
   /**
-   * MACHINE_LIVELINESS_UNSPECIFIED is not defined
+   * MACHINE_LIVELINESS_UNSPECIFIED is not defined.
    *
    * @generated from enum value: MACHINE_LIVELINESS_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_LIVELINESS_ALIVE liveliness is alive
+   * MACHINE_LIVELINESS_ALIVE liveliness is alive.
    *
    * @generated from enum value: MACHINE_LIVELINESS_ALIVE = 1;
    */
   ALIVE = 1,
 
   /**
-   * MACHINE_LIVELINESS_DEAD liveliness is dead
+   * MACHINE_LIVELINESS_DEAD liveliness is dead.
    *
    * @generated from enum value: MACHINE_LIVELINESS_DEAD = 2;
    */
   DEAD = 2,
 
   /**
-   * MACHINE_LIVELINESS_UNKNOWN liveliness is unknown
+   * MACHINE_LIVELINESS_UNKNOWN liveliness is unknown.
    *
    * @generated from enum value: MACHINE_LIVELINESS_UNKNOWN = 3;
    */
@@ -2608,27 +2600,27 @@ export const MachineLivelinessSchema: GenEnum<MachineLiveliness> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_machine, 4);
 
 /**
- * MachineAllocationType defines if this is a machine or a firewall
+ * MachineAllocationType defines if this is a machine or a firewall.
  *
  * @generated from enum metalstack.api.v2.MachineAllocationType
  */
 export enum MachineAllocationType {
   /**
-   * MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified
+   * MACHINE_ALLOCATION_TYPE_UNSPECIFIED is unspecified.
    *
    * @generated from enum value: MACHINE_ALLOCATION_TYPE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_ALLOCATION_TYPE_MACHINE is a machine
+   * MACHINE_ALLOCATION_TYPE_MACHINE is a machine.
    *
    * @generated from enum value: MACHINE_ALLOCATION_TYPE_MACHINE = 1;
    */
   MACHINE = 1,
 
   /**
-   * MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall
+   * MACHINE_ALLOCATION_TYPE_FIREWALL is a firewall.
    *
    * @generated from enum value: MACHINE_ALLOCATION_TYPE_FIREWALL = 2;
    */
@@ -2642,90 +2634,90 @@ export const MachineAllocationTypeSchema: GenEnum<MachineAllocationType> = /*@__
   enumDesc(file_metalstack_api_v2_machine, 5);
 
 /**
- * MachineBMCCommand defines commands send to the BMC of the machine
+ * MachineBMCCommand defines commands send to the BMC of the machine.
  *
  * @generated from enum metalstack.api.v2.MachineBMCCommand
  */
 export enum MachineBMCCommand {
   /**
-   * MACHINE_BMC_COMMAND_UNSPECIFIED is not defined
+   * MACHINE_BMC_COMMAND_UNSPECIFIED is not defined.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_UNSPECIFIED = 0;
    */
   MACHINE_BMC_COMMAND_UNSPECIFIED = 0,
 
   /**
-   * MACHINE_BMC_COMMAND_ON Power on the machine
+   * MACHINE_BMC_COMMAND_ON Power on the machine.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_ON = 1;
    */
   MACHINE_BMC_COMMAND_ON = 1,
 
   /**
-   * MACHINE_BMC_COMMAND_OFF Power off the machine
+   * MACHINE_BMC_COMMAND_OFF Power off the machine.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_OFF = 2;
    */
   MACHINE_BMC_COMMAND_OFF = 2,
 
   /**
-   * MACHINE_BMC_COMMAND_RESET Power reset the machine
+   * MACHINE_BMC_COMMAND_RESET Power reset the machine.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_RESET = 3;
    */
   MACHINE_BMC_COMMAND_RESET = 3,
 
   /**
-   * MACHINE_BMC_COMMAND_CYCLE Power cycle the machine
+   * MACHINE_BMC_COMMAND_CYCLE Power cycle the machine.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_CYCLE = 4;
    */
   MACHINE_BMC_COMMAND_CYCLE = 4,
 
   /**
-   * MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios
+   * MACHINE_BMC_COMMAND_BOOT_TO_BIOS boot the machine into bios.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_BOOT_TO_BIOS = 5;
    */
   MACHINE_BMC_COMMAND_BOOT_TO_BIOS = 5,
 
   /**
-   * MACHINE_BMC_COMMAND_BOOT_FROM_DISK boot the machine from hard disk
+   * MACHINE_BMC_COMMAND_BOOT_FROM_DISK boot the machine from hard disk.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_BOOT_FROM_DISK = 6;
    */
   MACHINE_BMC_COMMAND_BOOT_FROM_DISK = 6,
 
   /**
-   * MACHINE_BMC_COMMAND_BOOT_FROM_PXE boot the machine from pxe
+   * MACHINE_BMC_COMMAND_BOOT_FROM_PXE boot the machine from pxe.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_BOOT_FROM_PXE = 7;
    */
   MACHINE_BMC_COMMAND_BOOT_FROM_PXE = 7,
 
   /**
-   * MACHINE_BMC_COMMAND_IDENTIFY_LED_ON set identify led of the machine chassis to on
+   * MACHINE_BMC_COMMAND_IDENTIFY_LED_ON set identify led of the machine chassis to on.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_IDENTIFY_LED_ON = 8;
    */
   MACHINE_BMC_COMMAND_IDENTIFY_LED_ON = 8,
 
   /**
-   * MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off
+   * MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF set identify led of the machine chassis to off.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9;
    */
   MACHINE_BMC_COMMAND_IDENTIFY_LED_OFF = 9,
 
   /**
-   * MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe
+   * MACHINE_BMC_COMMAND_MACHINE_DELETED should be called if the machine was deleted to power cycle and boot into pxe.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_MACHINE_DELETED = 10;
    */
   MACHINE_BMC_COMMAND_MACHINE_DELETED = 10,
 
   /**
-   * MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was created to set the boot order to boot from disk
+   * MACHINE_BMC_COMMAND_MACHINE_CREATED should be called if the machine was created to set the boot order to boot from disk.
    *
    * @generated from enum value: MACHINE_BMC_COMMAND_MACHINE_CREATED = 11;
    */
@@ -2739,104 +2731,104 @@ export const MachineBMCCommandSchema: GenEnum<MachineBMCCommand> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_machine, 6);
 
 /**
- * MachineIssueType defines which type of issue it is
+ * MachineIssueType defines which type of issue it is.
  *
  * @generated from enum metalstack.api.v2.MachineIssueType
  */
 export enum MachineIssueType {
   /**
-   * MACHINE_ISSUE_TYPE_UNSPECIFIED type is not specified
+   * MACHINE_ISSUE_TYPE_UNSPECIFIED type is not specified.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_ISSUE_TYPE_ASN_UNIQUENESS machine asn is not unique
+   * MACHINE_ISSUE_TYPE_ASN_UNIQUENESS machine asn is not unique.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_ASN_UNIQUENESS = 1;
    */
   ASN_UNIQUENESS = 1,
 
   /**
-   * MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED machine bmc info out of date
+   * MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED machine bmc info out of date.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_INFO_OUTDATED = 2;
    */
   BMC_INFO_OUTDATED = 2,
 
   /**
-   * MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP machine bmc ip is not distinct
+   * MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP machine bmc ip is not distinct.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_NON_DISTINCT_IP = 3;
    */
   BMC_NON_DISTINCT_IP = 3,
 
   /**
-   * MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP machine bmc without ip
+   * MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP machine bmc without ip.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_WITHOUT_IP = 4;
    */
   BMC_WITHOUT_IP = 4,
 
   /**
-   * MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC machine bmc without mac address
+   * MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC machine bmc without mac address.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_BMC_WITHOUT_MAC = 5;
    */
   BMC_WITHOUT_MAC = 5,
 
   /**
-   * MACHINE_ISSUE_TYPE_CRASH_LOOP machine is in crashloop
+   * MACHINE_ISSUE_TYPE_CRASH_LOOP machine is in crashloop.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_CRASH_LOOP = 6;
    */
   CRASH_LOOP = 6,
 
   /**
-   * MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM machine was not freed after delete
+   * MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM machine was not freed after delete.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_FAILED_MACHINE_RECLAIM = 7;
    */
   FAILED_MACHINE_RECLAIM = 7,
 
   /**
-   * MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR machine last event error
+   * MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR machine last event error.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_LAST_EVENT_ERROR = 8;
    */
   LAST_EVENT_ERROR = 8,
 
   /**
-   * MACHINE_ISSUE_TYPE_LIVELINESS_DEAD machine is dead
+   * MACHINE_ISSUE_TYPE_LIVELINESS_DEAD machine is dead.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_LIVELINESS_DEAD = 9;
    */
   LIVELINESS_DEAD = 9,
 
   /**
-   * MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE machine liveliness is not available
+   * MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE machine liveliness is not available.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_LIVELINESS_NOT_AVAILABLE = 10;
    */
   LIVELINESS_NOT_AVAILABLE = 10,
 
   /**
-   * MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN machine liveliness is unknown
+   * MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN machine liveliness is unknown.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_LIVELINESS_UNKNOWN = 11;
    */
   LIVELINESS_UNKNOWN = 11,
 
   /**
-   * MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER machine does not have a event container
+   * MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER machine does not have a event container.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_NO_EVENT_CONTAINER = 12;
    */
   NO_EVENT_CONTAINER = 12,
 
   /**
-   * MACHINE_ISSUE_TYPE_NO_PARTITION no partition set
+   * MACHINE_ISSUE_TYPE_NO_PARTITION no partition set.
    *
    * @generated from enum value: MACHINE_ISSUE_TYPE_NO_PARTITION = 13;
    */
@@ -2850,34 +2842,34 @@ export const MachineIssueTypeSchema: GenEnum<MachineIssueType> = /*@__PURE__*/
   enumDesc(file_metalstack_api_v2_machine, 7);
 
 /**
- * MachineIssueSeverity defines the severity of an issue
+ * MachineIssueSeverity defines the severity of an issue.
  *
  * @generated from enum metalstack.api.v2.MachineIssueSeverity
  */
 export enum MachineIssueSeverity {
   /**
-   * MACHINE_ISSUE_SEVERITY_UNSPECIFIED severity is not specified
+   * MACHINE_ISSUE_SEVERITY_UNSPECIFIED severity is not specified.
    *
    * @generated from enum value: MACHINE_ISSUE_SEVERITY_UNSPECIFIED = 0;
    */
   UNSPECIFIED = 0,
 
   /**
-   * MACHINE_ISSUE_SEVERITY_MINOR machine issues is of severity minor
+   * MACHINE_ISSUE_SEVERITY_MINOR machine issues is of severity minor.
    *
    * @generated from enum value: MACHINE_ISSUE_SEVERITY_MINOR = 1;
    */
   MINOR = 1,
 
   /**
-   * MACHINE_ISSUE_SEVERITY_MAJOR machine issues is of severity major
+   * MACHINE_ISSUE_SEVERITY_MAJOR machine issues is of severity major.
    *
    * @generated from enum value: MACHINE_ISSUE_SEVERITY_MAJOR = 2;
    */
   MAJOR = 2,
 
   /**
-   * MACHINE_ISSUE_SEVERITY_CRITICAL machine issues is of severity critical
+   * MACHINE_ISSUE_SEVERITY_CRITICAL machine issues is of severity critical.
    *
    * @generated from enum value: MACHINE_ISSUE_SEVERITY_CRITICAL = 3;
    */

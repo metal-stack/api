@@ -24,23 +24,23 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ComponentType defines which service is actually pinging
+// ComponentType defines which service is actually pinging.
 type ComponentType int32
 
 const (
-	// COMPONENT_TYPE_UNSPECIFIED is unspecified
+	// COMPONENT_TYPE_UNSPECIFIED is unspecified.
 	ComponentType_COMPONENT_TYPE_UNSPECIFIED ComponentType = 0
-	// COMPONENT_TYPE_PIXIECORE is pixiecore
+	// COMPONENT_TYPE_PIXIECORE is pixiecore.
 	ComponentType_COMPONENT_TYPE_PIXIECORE ComponentType = 1
-	// COMPONENT_TYPE_METAL_CORE is metal-core
+	// COMPONENT_TYPE_METAL_CORE is metal-core.
 	ComponentType_COMPONENT_TYPE_METAL_CORE ComponentType = 2
-	// COMPONENT_TYPE_METAL_BMC is metal-bmc
+	// COMPONENT_TYPE_METAL_BMC is metal-bmc.
 	ComponentType_COMPONENT_TYPE_METAL_BMC ComponentType = 3
-	// COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync
+	// COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC is metal-image-cache-sync.
 	ComponentType_COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC ComponentType = 4
-	// COMPONENT_TYPE_METAL_CONSOLE is metal-console
+	// COMPONENT_TYPE_METAL_CONSOLE is metal-console.
 	ComponentType_COMPONENT_TYPE_METAL_CONSOLE ComponentType = 5
-	// COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter
+	// COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter.
 	ComponentType_COMPONENT_TYPE_METAL_METRICS_EXPORTER ComponentType = 6
 )
 
@@ -93,27 +93,27 @@ func (ComponentType) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_component_proto_rawDescGZIP(), []int{0}
 }
 
-// Component represents a microservice connected to our apiserver
+// Component represents a microservice connected to our apiserver.
 type Component struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID identifies this component event
+	// UUID identifies this component event.
 	Uuid string `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	// Type defines which service is actually pinging
+	// Type defines which service is actually pinging.
 	Type ComponentType `protobuf:"varint,2,opt,name=type,proto3,enum=metalstack.api.v2.ComponentType" json:"type,omitempty"`
 	// Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
 	// micro_service and identifier guarantee uniqueness.
 	Identifier string `protobuf:"bytes,3,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	// StartedAt is the timestamp this service was started
+	// StartedAt is the timestamp this service was started.
 	StartedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=started_at,json=startedAt,proto3" json:"started_at,omitempty"`
 	// ReportedAt is the timestamp this service sent this ping.
 	ReportedAt *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=reported_at,json=reportedAt,proto3" json:"reported_at,omitempty"`
 	// Interval at which the ping is scheduled.
 	Interval *durationpb.Duration `protobuf:"bytes,6,opt,name=interval,proto3" json:"interval,omitempty"`
-	// Version of this service
+	// Version of this service.
 	Version *Version `protobuf:"bytes,7,opt,name=version,proto3" json:"version,omitempty"`
 	// Token is the token which is actually used by this microservice.
 	Token *Token `protobuf:"bytes,8,opt,name=token,proto3" json:"token,omitempty"`
-	// Meta for this component
+	// Meta for this component.
 	Meta          *Meta `protobuf:"bytes,9,opt,name=meta,proto3" json:"meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -212,12 +212,12 @@ func (x *Component) GetMeta() *Meta {
 	return nil
 }
 
-// ComponentQuery to query components
+// ComponentQuery to query components.
 type ComponentQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// UUID identifies this component
+	// UUID identifies this component.
 	Uuid *string `protobuf:"bytes,1,opt,name=uuid,proto3,oneof" json:"uuid,omitempty"`
-	// Type defines which service is actually pinging
+	// Type defines which service is actually pinging.
 	Type *ComponentType `protobuf:"varint,2,opt,name=type,proto3,enum=metalstack.api.v2.ComponentType,oneof" json:"type,omitempty"`
 	// Identifier is a unique identifier of this service, e.g. if two instance are running, this might be the pod id.
 	// micro_service and identifier guarantee uniqueness.

@@ -25,29 +25,29 @@ export const file_metalstack_admin_v2_vpn: GenFile = /*@__PURE__*/
  */
 export type VPNServiceAuthKeyRequest = Message<"metalstack.admin.v2.VPNServiceAuthKeyRequest"> & {
   /**
-   * Project for which a VPN authentication key should be generated
+   * Project for which a VPN authentication key should be generated.
    *
    * @generated from field: string project = 1;
    */
   project: string;
 
   /**
-   * Ephemeral defines if the authentication key should be ephemeral
+   * Ephemeral defines if the authentication key should be ephemeral.
    *
    * @generated from field: bool ephemeral = 2;
    */
   ephemeral: boolean;
 
   /**
-   * Expires defines the duration after which the authentication key expires
+   * Expires defines the duration after which the authentication key expires.
    *
    * @generated from field: google.protobuf.Duration expires = 3;
    */
   expires?: Duration | undefined;
 
   /**
-   * Reason must be provided why access to the VPN is requested
-   * Reason is only forwarded to an audit sink
+   * Reason must be provided why access to the VPN is requested.
+   * Reason is only forwarded to an audit sink.
    *
    * @generated from field: string reason = 4;
    */
@@ -68,36 +68,36 @@ export const VPNServiceAuthKeyRequestSchema: GenMessage<VPNServiceAuthKeyRequest
  */
 export type VPNServiceAuthKeyResponse = Message<"metalstack.admin.v2.VPNServiceAuthKeyResponse"> & {
   /**
-   * Address is the address of the VPN control plane
+   * Address is the address of the VPN control plane.
    *
    * @generated from field: string address = 1;
    */
   address: string;
 
   /**
-   * AuthKey is the key to connect to the VPN at the given address
-   * This key can only be seen once
+   * AuthKey is the key to connect to the VPN at the given address.
+   * This key can only be seen once.
    *
    * @generated from field: string auth_key = 2;
    */
   authKey: string;
 
   /**
-   * Ephemeral defines if the authentication key should be ephemeral
+   * Ephemeral defines if the authentication key should be ephemeral.
    *
    * @generated from field: bool ephemeral = 3;
    */
   ephemeral: boolean;
 
   /**
-   * ExpiresAt this key cannot be used after this timestamp
+   * ExpiresAt this key cannot be used after this timestamp.
    *
    * @generated from field: google.protobuf.Timestamp expires_at = 4;
    */
   expiresAt?: Timestamp | undefined;
 
   /**
-   * CreatedAt this key was created at this timestamp
+   * CreatedAt this key was created at this timestamp.
    *
    * @generated from field: google.protobuf.Timestamp created_at = 5;
    */
@@ -118,7 +118,7 @@ export const VPNServiceAuthKeyResponseSchema: GenMessage<VPNServiceAuthKeyRespon
  */
 export type VPNServiceListNodesRequest = Message<"metalstack.admin.v2.VPNServiceListNodesRequest"> & {
   /**
-   * Project filters nodes by this project
+   * Project filters nodes by this project.
    *
    * @generated from field: optional string project = 1;
    */
@@ -139,7 +139,7 @@ export const VPNServiceListNodesRequestSchema: GenMessage<VPNServiceListNodesReq
  */
 export type VPNServiceListNodesResponse = Message<"metalstack.admin.v2.VPNServiceListNodesResponse"> & {
   /**
-   * Nodes connected to the VPN
+   * Nodes connected to the VPN.
    *
    * @generated from field: repeated metalstack.api.v2.VPNNode nodes = 1;
    */

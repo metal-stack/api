@@ -27,7 +27,7 @@ export const file_metalstack_admin_v2_image: GenFile = /*@__PURE__*/
  */
 export type ImageServiceCreateRequest = Message<"metalstack.admin.v2.ImageServiceCreateRequest"> & {
   /**
-   * Image is the image to create
+   * Image is the image to create.
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -48,7 +48,7 @@ export const ImageServiceCreateRequestSchema: GenMessage<ImageServiceCreateReque
  */
 export type ImageServiceCreateResponse = Message<"metalstack.admin.v2.ImageServiceCreateResponse"> & {
   /**
-   * Image contains the created image
+   * Image contains the created image.
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -69,63 +69,63 @@ export const ImageServiceCreateResponseSchema: GenMessage<ImageServiceCreateResp
  */
 export type ImageServiceUpdateRequest = Message<"metalstack.admin.v2.ImageServiceUpdateRequest"> & {
   /**
-   * Id of this image
+   * Id of this image.
    *
    * @generated from field: string id = 1;
    */
   id: string;
 
   /**
-   * UpdateMeta contains the timestamp and strategy to be used in this update request
+   * UpdateMeta contains the timestamp and strategy to be used in this update request.
    *
    * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 2;
    */
   updateMeta?: UpdateMeta | undefined;
 
   /**
-   * URL where this image is located
+   * URL where this image is located.
    *
    * @generated from field: optional string url = 3;
    */
   url?: string | undefined;
 
   /**
-   * Name of this image
+   * Name of this image.
    *
    * @generated from field: optional string name = 4;
    */
   name?: string | undefined;
 
   /**
-   * Description of this image
+   * Description of this image.
    *
    * @generated from field: optional string description = 5;
    */
   description?: string | undefined;
 
   /**
-   * Features of this image
+   * Features of this image.
    *
    * @generated from field: repeated metalstack.api.v2.ImageFeature features = 6;
    */
   features: ImageFeature[];
 
   /**
-   * Classification of this image
+   * Classification of this image.
    *
    * @generated from field: metalstack.api.v2.ImageClassification classification = 7;
    */
   classification: ImageClassification;
 
   /**
-   * ExpiresAt indicates that usage is not possible after this date
+   * ExpiresAt indicates that usage is not possible after this date.
    *
    * @generated from field: google.protobuf.Timestamp expires_at = 8;
    */
   expiresAt?: Timestamp | undefined;
 
   /**
-   * Labels to update on this image
+   * Labels to update on this image.
    *
    * @generated from field: optional metalstack.api.v2.UpdateLabels labels = 9;
    */
@@ -146,7 +146,7 @@ export const ImageServiceUpdateRequestSchema: GenMessage<ImageServiceUpdateReque
  */
 export type ImageServiceUpdateResponse = Message<"metalstack.admin.v2.ImageServiceUpdateResponse"> & {
   /**
-   * Image contains the updated image
+   * Image contains the updated image.
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -167,7 +167,7 @@ export const ImageServiceUpdateResponseSchema: GenMessage<ImageServiceUpdateResp
  */
 export type ImageServiceDeleteRequest = Message<"metalstack.admin.v2.ImageServiceDeleteRequest"> & {
   /**
-   * ID of the image to delete
+   * ID of the image to delete.
    *
    * @generated from field: string id = 1;
    */
@@ -188,7 +188,7 @@ export const ImageServiceDeleteRequestSchema: GenMessage<ImageServiceDeleteReque
  */
 export type ImageServiceDeleteResponse = Message<"metalstack.admin.v2.ImageServiceDeleteResponse"> & {
   /**
-   * Image contains the deleted image
+   * Image contains the deleted image.
    *
    * @generated from field: metalstack.api.v2.Image image = 1;
    */
@@ -209,7 +209,7 @@ export const ImageServiceDeleteResponseSchema: GenMessage<ImageServiceDeleteResp
  */
 export type ImageServiceUsageRequest = Message<"metalstack.admin.v2.ImageServiceUsageRequest"> & {
   /**
-   * Query for which images the usage should be reported
+   * Query for which images the usage should be reported.
    *
    * @generated from field: metalstack.api.v2.ImageQuery query = 1;
    */
@@ -230,7 +230,7 @@ export const ImageServiceUsageRequestSchema: GenMessage<ImageServiceUsageRequest
  */
 export type ImageServiceUsageResponse = Message<"metalstack.admin.v2.ImageServiceUsageResponse"> & {
   /**
-   * Images contains usage information
+   * Images contains usage information.
    *
    * @generated from field: repeated metalstack.api.v2.ImageUsage image_usage = 1;
    */
