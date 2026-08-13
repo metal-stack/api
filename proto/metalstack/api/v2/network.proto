@@ -267,6 +267,14 @@ message NetworkUsage {
   uint64 used_prefixes = 4;
 }
 
+// ExternalNetworkMembers that participate in a network.
+message ExternalNetworkMembers {
+  // Switch the external members are connected to.
+  string switch = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Ports of the switch that participate in the network.
+  repeated string ports = 2;
+}
+
 // NATType defines how and if outgoing traffic is translated.
 enum NATType {
   // NAT_TYPE_UNSPECIFIED indicates a unspecified nat type.

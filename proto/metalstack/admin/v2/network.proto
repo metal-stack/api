@@ -6,6 +6,7 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/network.proto";
 import "metalstack/api/v2/predefined_rules.proto";
+import "metalstack/api/v2/switch.proto";
 
 // NetworkService provides network management operations.
 service NetworkService {
@@ -35,6 +36,16 @@ service NetworkService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // Adds an external member to a network.
+  rpc AddExternalMember(NetworkServiceAddExternalMemberRequest) returns (NetworkServiceAddExternalMemberResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Removes an external member from a network.
+  rpc RemoveExternalMember(NetworkServiceRemoveExternalMemberRequest) returns (NetworkServiceRemoveExternalMemberResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
@@ -129,6 +140,22 @@ message NetworkServiceListRequest {
   metalstack.api.v2.NetworkQuery query = 1;
 }
 
+// NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.
+message NetworkServiceAddExternalMemberRequest {
+  // ID of the network to add the member to.
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // SwitchPorts contains the ports of a switch that should be added to the network.
+  metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
+}
+
+// NetworkServiceRemoveExternalMemberRequest is the request payload for removing an external member from a network.
+message NetworkServiceRemoveExternalMemberRequest {
+  // ID of the network to remove the member from.
+  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // SwitchPorts contains the ports of a switch that should be removed from the network.
+  metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
+}
+
 // NetworkServiceCreateResponse is the response payload for creating a network.
 message NetworkServiceCreateResponse {
   // Network contains the created network.
@@ -151,4 +178,16 @@ message NetworkServiceDeleteResponse {
 message NetworkServiceListResponse {
   // Networks contains the list of networks.
   repeated metalstack.api.v2.Network networks = 1;
+}
+
+// NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.
+message NetworkServiceAddExternalMemberResponse {
+  // Switch contains the updated switch.
+  metalstack.api.v2.Switch switch = 1;
+}
+
+// NetworkServiceRemoveExternalMemberResponse is the response payload for removing an external member from a network.
+message NetworkServiceRemoveExternalMemberResponse {
+  // Switch contains the updated switch.
+  metalstack.api.v2.Switch switch = 1;
 }
