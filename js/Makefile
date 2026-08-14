@@ -16,7 +16,7 @@ ifeq ($(CI),true)
 	yq e -i -o=json ".version=\"$(VERSION_STRIPPED)\"" package.json &&\
 	yq e -o=json ".version" package.json
 endif
-	cd .. && bun run build
+	bun run build
 
 .PHONY: test
 test:

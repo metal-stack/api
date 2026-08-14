@@ -2,16 +2,15 @@ import { describe, it, expect } from "bun:test";
 import { create } from "@bufbuild/protobuf";
 import type { DescMessage, MessageShape } from "@bufbuild/protobuf";
 import {
+  VersionSchema,
   VersionServiceGetRequestSchema,
   VersionServiceGetResponseSchema,
-  VersionService,
 } from "./metalstack/api/v2/version_pb";
 import type { UnaryResponse } from "@connectrpc/connect";
 import { newClient } from "./client";
 import { newTestInterceptor } from "./test-interceptor";
 
 function unaryResponse<Req extends DescMessage, Res extends DescMessage>(
-  schema: Req,
   message: MessageShape<Res>,
 ): UnaryResponse<Req, Res> {
   return {
@@ -34,9 +33,11 @@ describe("client", () => {
             wantRequest: create(VersionServiceGetRequestSchema, {}),
             wantRequestSchema: VersionServiceGetRequestSchema,
             wantResponse: () =>
-              unaryResponse(VersionServiceGetRequestSchema, {
-                version: { version: "1.0", revision: "", gitSha1: "", buildDate: "" },
-              }),
+              unaryResponse(
+                create(VersionServiceGetResponseSchema, {
+                  version: create(VersionSchema, { version: "1.0" }),
+                }),
+              ),
           },
         ]),
       ],
