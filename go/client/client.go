@@ -122,37 +122,6 @@ type (
 	}
 )
 
-func New(config *DialConfig) (Client, error) {
-	err := config.parse()
-	if err != nil {
-		return nil, err
-	}
-
-	c := &client{
-		config:       config,
-		interceptors: []connect.Interceptor{},
-	}
-
-	if config.Token != "" {
-		// The token renewing interceptor must run before the auth interceptor so
-		// that the auth header is stamped with a freshly renewed/re-read token.
-		if config.TokenRenewal != nil || config.TokenFile != "" {
-			tokenRenewingInterceptor := &tokenRenewingInterceptor{config: config, client: c}
-			c.interceptors = append(c.interceptors, tokenRenewingInterceptor)
-		}
-
-		authInterceptor := &authInterceptor{config: config}
-		c.interceptors = append(c.interceptors, authInterceptor)
-	}
-	if config.Log != nil {
-		loggingInterceptor := &loggingInterceptor{config: config}
-		c.interceptors = append(c.interceptors, loggingInterceptor)
-	}
-	c.interceptors = append(c.interceptors, config.Interceptors...)
-
-	return c, nil
-}
-
 func (c *client) Adminv2() Adminv2 {
 	a := &adminv2{
 		auditservice: adminv2connect.NewAuditServiceClient(
