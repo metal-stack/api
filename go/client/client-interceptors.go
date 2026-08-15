@@ -101,9 +101,6 @@ func (i *tokenRenewingInterceptor) WrapStreamingHandler(next connect.StreamingHa
 }
 
 func (i *tokenRenewingInterceptor) renewTokenIfNeeded() error {
-	if i.config.expiresAt.IsZero() {
-		return nil
-	}
 	if i.renewing.Load() {
 		return nil
 	}
@@ -135,11 +132,15 @@ func (i *tokenRenewingInterceptor) renewTokenIfNeeded() error {
 		defer i.Unlock()
 
 		i.config.Token = newToken
-		err = i.config.parse()
+		err = i.config.parseTokenClaims()
 		if err != nil {
 			return fmt.Errorf("unable to parse token %w", err)
 		}
 		i.config.tokenFileLastRead = time.Now()
+		return nil
+	}
+
+	if i.config.expiresAt.IsZero() {
 		return nil
 	}
 
