@@ -9,10 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { describe, it, expect } from "bun:test";
 import { create } from "@bufbuild/protobuf";
-import { VersionServiceGetRequestSchema, } from "./metalstack/api/v2/version_pb";
+import { VersionSchema, VersionServiceGetRequestSchema, VersionServiceGetResponseSchema, } from "./metalstack/api/v2/version_pb";
 import { newClient } from "./client";
 import { newTestInterceptor } from "./test-interceptor";
-function unaryResponse(schema, message) {
+function unaryResponse(message) {
     return {
         stream: false,
         message: message,
@@ -32,9 +32,9 @@ describe("client", () => {
                     {
                         wantRequest: create(VersionServiceGetRequestSchema, {}),
                         wantRequestSchema: VersionServiceGetRequestSchema,
-                        wantResponse: () => unaryResponse(VersionServiceGetRequestSchema, {
-                            version: { version: "1.0", revision: "", gitSha1: "", buildDate: "" },
-                        }),
+                        wantResponse: () => unaryResponse(create(VersionServiceGetResponseSchema, {
+                            version: create(VersionSchema, { version: "1.0" }),
+                        })),
                     },
                 ]),
             ],
