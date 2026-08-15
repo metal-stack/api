@@ -26,11 +26,15 @@ type (
 	DialConfig struct {
 		// BaseUrl points to the apiv2 url where the apiserver is reachable
 		BaseURL string
-		// Token to be used to talk to the apiserver
+		// Token to be used to talk to the apiserver, the string representation of the token.
+		// If Token is specified, TokenFile cannot be specified.
+		// It is possible to renew this token automatically, see TokenRenewal.
 		Token string
-		// Tokenfile which contains the token, is only read if token is empty
+		// Tokenfile path to a file containing the string representation of the token.
+		// If Tokenfile is specified, Token cannot be specified.
+		// Token renewal must be done from outside
 		TokenFile string
-		// Duration between token file re-reads
+		// Duration between token file re-reads, optional, defaults to 5min if not specified.
 		TokenFileRereadDuration time.Duration
 
 		// Optional client Interceptors
@@ -40,6 +44,7 @@ type (
 		// TokenRenewal defines if and how the token should be renewed
 		TokenRenewal *TokenRenewal
 
+		// Transport optional, can be used to configure how the http transport works.
 		Transport http.RoundTripper
 
 		Log *slog.Logger
@@ -95,7 +100,6 @@ func New(config *DialConfig) (Client, error) {
 
 	return c, nil
 }
-
 
 func (d *DialConfig) HttpClient() *http.Client {
 	transport := http.DefaultTransport
