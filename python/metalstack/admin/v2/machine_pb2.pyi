@@ -77,8 +77,8 @@ class MachineServiceGetBMCResponse(_message.Message):
 class MachineServiceListBMCRequest(_message.Message):
     __slots__ = ("query",)
     QUERY_FIELD_NUMBER: _ClassVar[int]
-    query: _machine_pb2.MachineBMCQuery
-    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineBMCQuery, _Mapping]] = ...) -> None: ...
+    query: _machine_pb2.MachineQuery
+    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineQuery, _Mapping]] = ...) -> None: ...
 
 class MachineServiceListBMCResponse(_message.Message):
     __slots__ = ("bmc_reports",)

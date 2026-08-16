@@ -166,6 +166,7 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
   /**
    * Userdata contains instructions required to bootstrap the machine.
    * AWS limits the max userdata size to 16k, lets allow twice as much.
+   * Must be base64 encoded
    *
    * @generated from field: optional string userdata = 11;
    */

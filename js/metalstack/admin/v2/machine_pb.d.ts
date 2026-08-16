@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineIssues, MachineIssuesQuery, MachineQuery, MachineState } from "../../api/v2/machine_pb";
+import type { Machine, MachineBMCCommand, MachineBMCReport, MachineIssues, MachineIssuesQuery, MachineQuery, MachineState } from "../../api/v2/machine_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/machine.proto.
@@ -206,9 +206,9 @@ export type MachineServiceListBMCRequest = Message<"metalstack.admin.v2.MachineS
     /**
      * Query to list one or more BMCs of many machines.
      *
-     * @generated from field: metalstack.api.v2.MachineBMCQuery query = 1;
+     * @generated from field: metalstack.api.v2.MachineQuery query = 1;
      */
-    query?: MachineBMCQuery | undefined;
+    query?: MachineQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceListBMCRequest.

@@ -11989,7 +11989,8 @@ Can be specified to test new fsls during development of fsls. </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Userdata contains instructions required to bootstrap the machine.
-AWS limits the max userdata size to 16k, lets allow twice as much. </p></td>
+AWS limits the max userdata size to 16k, lets allow twice as much.
+Must be base64 encoded </p></td>
                 </tr>
               
                 <tr>
@@ -13389,7 +13390,7 @@ Reason is only forwarded to an audit sink. </p></td>
               
                 <tr>
                   <td>query</td>
-                  <td><a href="#metalstack.api.v2.MachineBMCQuery">metalstack.api.v2.MachineBMCQuery</a></td>
+                  <td><a href="#metalstack.api.v2.MachineQuery">metalstack.api.v2.MachineQuery</a></td>
                   <td></td>
                   <td><p>Query to list one or more BMCs of many machines. </p></td>
                 </tr>

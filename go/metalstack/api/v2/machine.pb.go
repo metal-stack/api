@@ -765,6 +765,7 @@ type MachineServiceCreateRequest struct {
 	SshPublicKeys []string `protobuf:"bytes,10,rep,name=ssh_public_keys,json=sshPublicKeys,proto3" json:"ssh_public_keys,omitempty"`
 	// Userdata contains instructions required to bootstrap the machine.
 	// AWS limits the max userdata size to 16k, lets allow twice as much.
+	// Must be base64 encoded
 	Userdata *string `protobuf:"bytes,11,opt,name=userdata,proto3,oneof" json:"userdata,omitempty"`
 	// Labels to be attached to this machine allocation.
 	Labels *Labels `protobuf:"bytes,12,opt,name=labels,proto3" json:"labels,omitempty"`

@@ -131,7 +131,7 @@ message MachineServiceGetBMCResponse {
 // MachineServiceListBMCRequest is the request payload for a machine listbmc request.
 message MachineServiceListBMCRequest {
   // Query to list one or more BMCs of many machines.
-  metalstack.api.v2.MachineBMCQuery query = 1;
+  metalstack.api.v2.MachineQuery query = 1;
 }
 
 // MachineServiceListBMCResponse is the response payload for a machine listbmc request.
