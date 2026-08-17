@@ -132,6 +132,7 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
     /**
      * Userdata contains instructions required to bootstrap the machine.
      * AWS limits the max userdata size to 16k, lets allow twice as much.
+     * Must be base64 encoded.
      *
      * @generated from field: optional string userdata = 11;
      */
@@ -149,12 +150,12 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
      */
     networks: MachineAllocationNetwork[];
     /**
-     * PlacementTags by default machines are spread across the racks inside a partition for every project.
-     * if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags.
+     * PlacementLabels by default machines are spread across the racks inside a partition for every project.
+     * if placement labels are provided, the machine candidate has an additional anti-affinity to other machines having the same labels.
      *
-     * @generated from field: repeated string placement_tags = 14;
+     * @generated from field: metalstack.api.v2.Labels placement_labels = 14;
      */
-    placementTags: string[];
+    placementLabels?: Labels | undefined;
     /**
      * DNSServer the dns servers used for the machine.
      *
@@ -708,6 +709,13 @@ export type MachineAllocation = Message<"metalstack.api.v2.MachineAllocation"> &
      * @generated from field: metalstack.api.v2.MachineVPN vpn = 17;
      */
     vpn?: MachineVPN | undefined;
+    /**
+     * PlacementLabels by default machines are spread across the racks inside a partition for every project.
+     * if placement labels are provided, the machine candidate has an additional anti-affinity to other machines having the same labels.
+     *
+     * @generated from field: metalstack.api.v2.Labels placement_labels = 18;
+     */
+    placementLabels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.MachineAllocation.

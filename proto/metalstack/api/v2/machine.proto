@@ -122,17 +122,19 @@ message MachineServiceCreateRequest {
   ];
   // Userdata contains instructions required to bootstrap the machine.
   // AWS limits the max userdata size to 16k, lets allow twice as much.
+  // Must be base64 encoded.
   optional string userdata = 11 [
     (buf.validate.field).string = {max_len: 32768},
-    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true,
+    (buf.validate.field).string.(metalstack.api.v2.is_base64) = true
   ];
   // Labels to be attached to this machine allocation.
   Labels labels = 12;
   // Networks the networks that this machine will be placed in.
   repeated MachineAllocationNetwork networks = 13 [(buf.validate.field).repeated.min_items = 1];
-  // PlacementTags by default machines are spread across the racks inside a partition for every project.
-  // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags.
-  repeated string placement_tags = 14 [(buf.validate.field).repeated.max_items = 64];
+  // PlacementLabels by default machines are spread across the racks inside a partition for every project.
+  // if placement labels are provided, the machine candidate has an additional anti-affinity to other machines having the same labels.
+  Labels placement_labels = 14;
   // DNSServer the dns servers used for the machine.
   repeated DNSServer dns_servers = 15 [(buf.validate.field).repeated.max_items = 3];
   // NTPServer the ntp servers used for the machine.
@@ -345,6 +347,9 @@ message MachineAllocation {
   repeated NTPServer ntp_servers = 16 [(buf.validate.field).repeated.max_items = 10];
   // VPN connection configuration.
   MachineVPN vpn = 17;
+  // PlacementLabels by default machines are spread across the racks inside a partition for every project.
+  // if placement labels are provided, the machine candidate has an additional anti-affinity to other machines having the same labels.
+  Labels placement_labels = 18;
 }
 
 // MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired.
