@@ -33,6 +33,8 @@ IS_PROJECT_SUBJECT_PERMISSION_FIELD_NUMBER: _ClassVar[int]
 is_project_subject_permission: _descriptor.FieldDescriptor
 IS_MACHINE_SUBJECT_PERMISSION_FIELD_NUMBER: _ClassVar[int]
 is_machine_subject_permission: _descriptor.FieldDescriptor
+IS_BASE64_FIELD_NUMBER: _ClassVar[int]
+is_base64: _descriptor.FieldDescriptor
 PREFIXES_FIELD_NUMBER: _ClassVar[int]
 prefixes: _descriptor.FieldDescriptor
 IPS_FIELD_NUMBER: _ClassVar[int]

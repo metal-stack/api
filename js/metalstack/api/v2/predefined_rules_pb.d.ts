@@ -95,6 +95,12 @@ export declare const is_project_subject_permission: GenExtension<StringRules, bo
  */
 export declare const is_machine_subject_permission: GenExtension<StringRules, boolean>;
 /**
+ * IsBase64 ensures the given string is base64 encoded
+ *
+ * @generated from extension: optional bool is_base64 = 80048966;
+ */
+export declare const is_base64: GenExtension<StringRules, boolean>;
+/**
  * Prefixes validates if a slice of prefixes in string form are valid.
  *
  * @generated from extension: optional bool prefixes = 80058951;
