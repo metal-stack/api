@@ -140,20 +140,29 @@ message NetworkServiceListRequest {
   metalstack.api.v2.NetworkQuery query = 1;
 }
 
+// NetworkServiceListExternalMemberRequest is the request payload for listing external members of a network.
+message NetworkServiceListExternalMemberRequest {
+  // Network to list the members for.
+  string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Query specifies additional filters for the list request.
+  metalstack.api.v2.ExternalNetworkMemberQuery query = 2;
+}
+
 // NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.
 message NetworkServiceAddExternalMemberRequest {
-  // ID of the network to add the member to.
-  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Network to add the member to.
+  string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // SwitchPorts contains the ports of a switch that should be added to the network.
-  metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
+  // Make sure to add both switches of a rack and the same ports of both in the same request.
+  repeated metalstack.api.v2.ExternalNetworkMembers switch_ports = 2 [(buf.validate.field).repeated.max_items = 8];
 }
 
 // NetworkServiceRemoveExternalMemberRequest is the request payload for removing an external member from a network.
 message NetworkServiceRemoveExternalMemberRequest {
-  // ID of the network to remove the member from.
-  string id = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Network to remove the member from.
+  string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // SwitchPorts contains the ports of a switch that should be removed from the network.
-  metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
+  repeated metalstack.api.v2.ExternalNetworkMembers switch_ports = 2 [(buf.validate.field).repeated.max_items = 8];
 }
 
 // NetworkServiceCreateResponse is the response payload for creating a network.
@@ -178,6 +187,12 @@ message NetworkServiceDeleteResponse {
 message NetworkServiceListResponse {
   // Networks contains the list of networks.
   repeated metalstack.api.v2.Network networks = 1;
+}
+
+// NetworkServiceListExternalMemberResponse is the response payload for listing external members of a network.
+message NetworkServiceListExternalMemberResponse {
+  // Members are the queried external members of the network.
+  repeated metalstack.api.v2.ExternalNetworkMembers members = 1;
 }
 
 // NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.
