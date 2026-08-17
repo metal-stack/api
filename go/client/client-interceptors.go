@@ -101,9 +101,6 @@ func (i *tokenRenewingInterceptor) WrapStreamingHandler(next connect.StreamingHa
 }
 
 func (i *tokenRenewingInterceptor) renewTokenIfNeeded() error {
-	if i.config.expiresAt.IsZero() {
-		return nil
-	}
 	if i.renewing.Load() {
 		return nil
 	}
@@ -111,35 +108,47 @@ func (i *tokenRenewingInterceptor) renewTokenIfNeeded() error {
 		i.config.Log = slog.Default()
 	}
 
-	if !i.config.tokenFileLastRead.IsZero() {
-		// The token is refreshed by a sidecar, this means we should periodically read the tokenfile
-		// and store the token in config instead und update the tokenFileLastRead afterwards
-		if time.Since(i.config.tokenFileLastRead) < i.config.TokenFileRereadDuration {
-			return nil
-		}
-		i.config.Log.Info("tokenfile specified, re-reading content")
+	if i.config.TokenFile != "" {
+		return i.rereadTokenFile()
+	}
 
-		content, err := os.ReadFile(i.config.TokenFile)
-		if err != nil {
-			return fmt.Errorf("unable to read tokenfile %w", err)
-		}
-		newToken := string(content)
-		if i.config.Token == newToken {
-			return nil
-		}
+	return i.renewToken()
+}
 
-		i.renewing.Store(true)
-		defer i.renewing.Store(false)
+func (i *tokenRenewingInterceptor) rereadTokenFile() error {
+	// The token is refreshed by a sidecar, this means we should periodically read the tokenfile
+	// and store the token in config instead und update the tokenFileLastRead afterwards
+	if time.Since(i.config.tokenFileLastRead) < i.config.TokenFileRereadDuration {
+		return nil
+	}
+	i.config.Log.Info("tokenfile specified, re-reading content")
 
-		i.Lock()
-		defer i.Unlock()
+	content, err := os.ReadFile(i.config.TokenFile)
+	if err != nil {
+		return fmt.Errorf("unable to read tokenfile %w", err)
+	}
+	newToken := string(content)
+	if i.config.Token == newToken {
+		return nil
+	}
 
-		i.config.Token = newToken
-		err = i.config.parse()
-		if err != nil {
-			return fmt.Errorf("unable to parse token %w", err)
-		}
-		i.config.tokenFileLastRead = time.Now()
+	i.renewing.Store(true)
+	defer i.renewing.Store(false)
+
+	i.Lock()
+	defer i.Unlock()
+
+	i.config.Token = newToken
+	err = i.config.parseTokenClaims()
+	if err != nil {
+		return fmt.Errorf("unable to parse token %w", err)
+	}
+	i.config.tokenFileLastRead = time.Now()
+	return nil
+}
+
+func (i *tokenRenewingInterceptor) renewToken() error {
+	if i.config.expiresAt.IsZero() {
 		return nil
 	}
 
