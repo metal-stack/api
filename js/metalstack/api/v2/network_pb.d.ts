@@ -529,6 +529,30 @@ export type NetworkQuery = Message<"metalstack.api.v2.NetworkQuery"> & {
  */
 export declare const NetworkQuerySchema: GenMessage<NetworkQuery>;
 /**
+ * ExternalNetworkMemberQuery defines which filters to apply when looking up external network members.
+ *
+ * @generated from message metalstack.api.v2.ExternalNetworkMemberQuery
+ */
+export type ExternalNetworkMemberQuery = Message<"metalstack.api.v2.ExternalNetworkMemberQuery"> & {
+    /**
+     * Switch whose ports are queried.
+     *
+     * @generated from field: optional string switch = 1;
+     */
+    switch?: string | undefined;
+    /**
+     * Rack for which the members of the network are queried.
+     *
+     * @generated from field: optional string rack = 2;
+     */
+    rack?: string | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.ExternalNetworkMemberQuery.
+ * Use `create(ExternalNetworkMemberQuerySchema)` to create a new message.
+ */
+export declare const ExternalNetworkMemberQuerySchema: GenMessage<ExternalNetworkMemberQuery>;
+/**
  * ChildPrefixLength.
  *
  * @generated from message metalstack.api.v2.ChildPrefixLength
@@ -613,7 +637,7 @@ export type NetworkUsage = Message<"metalstack.api.v2.NetworkUsage"> & {
  */
 export declare const NetworkUsageSchema: GenMessage<NetworkUsage>;
 /**
- * ExternalNetworkMembers that participate in a network.
+ * ExternalNetworkMembers are the ports of a switch that participate in a network and are connected to machines not known to metal-stack.
  *
  * @generated from message metalstack.api.v2.ExternalNetworkMembers
  */

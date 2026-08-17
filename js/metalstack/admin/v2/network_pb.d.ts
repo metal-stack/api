@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Labels, UpdateLabels, UpdateMeta } from "../../api/v2/common_pb";
-import type { ChildPrefixLength, ExternalNetworkMembers, NATType, Network, NetworkAddressFamily, NetworkQuery, NetworkType } from "../../api/v2/network_pb";
+import type { ChildPrefixLength, ExternalNetworkMemberQuery, ExternalNetworkMembers, NATType, Network, NetworkAddressFamily, NetworkQuery, NetworkType } from "../../api/v2/network_pb";
 import type { Switch } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -278,23 +278,48 @@ export type NetworkServiceListRequest = Message<"metalstack.admin.v2.NetworkServ
  */
 export declare const NetworkServiceListRequestSchema: GenMessage<NetworkServiceListRequest>;
 /**
+ * NetworkServiceListExternalMemberRequest is the request payload for listing external members of a network.
+ *
+ * @generated from message metalstack.admin.v2.NetworkServiceListExternalMemberRequest
+ */
+export type NetworkServiceListExternalMemberRequest = Message<"metalstack.admin.v2.NetworkServiceListExternalMemberRequest"> & {
+    /**
+     * Network to list the members for.
+     *
+     * @generated from field: string network = 1;
+     */
+    network: string;
+    /**
+     * Query specifies additional filters for the list request.
+     *
+     * @generated from field: metalstack.api.v2.ExternalNetworkMemberQuery query = 2;
+     */
+    query?: ExternalNetworkMemberQuery | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.NetworkServiceListExternalMemberRequest.
+ * Use `create(NetworkServiceListExternalMemberRequestSchema)` to create a new message.
+ */
+export declare const NetworkServiceListExternalMemberRequestSchema: GenMessage<NetworkServiceListExternalMemberRequest>;
+/**
  * NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceAddExternalMemberRequest
  */
 export type NetworkServiceAddExternalMemberRequest = Message<"metalstack.admin.v2.NetworkServiceAddExternalMemberRequest"> & {
     /**
-     * ID of the network to add the member to.
+     * Network to add the member to.
      *
-     * @generated from field: string id = 1;
+     * @generated from field: string network = 1;
      */
-    id: string;
+    network: string;
     /**
      * SwitchPorts contains the ports of a switch that should be added to the network.
+     * Make sure to add both switches of a rack and the same ports of both in the same request.
      *
-     * @generated from field: metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
+     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
      */
-    switchPorts?: ExternalNetworkMembers | undefined;
+    switchPorts: ExternalNetworkMembers[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMemberRequest.
@@ -308,17 +333,17 @@ export declare const NetworkServiceAddExternalMemberRequestSchema: GenMessage<Ne
  */
 export type NetworkServiceRemoveExternalMemberRequest = Message<"metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest"> & {
     /**
-     * ID of the network to remove the member from.
+     * Network to remove the member from.
      *
-     * @generated from field: string id = 1;
+     * @generated from field: string network = 1;
      */
-    id: string;
+    network: string;
     /**
      * SwitchPorts contains the ports of a switch that should be removed from the network.
      *
-     * @generated from field: metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
+     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
      */
-    switchPorts?: ExternalNetworkMembers | undefined;
+    switchPorts: ExternalNetworkMembers[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest.
@@ -397,6 +422,24 @@ export type NetworkServiceListResponse = Message<"metalstack.admin.v2.NetworkSer
  * Use `create(NetworkServiceListResponseSchema)` to create a new message.
  */
 export declare const NetworkServiceListResponseSchema: GenMessage<NetworkServiceListResponse>;
+/**
+ * NetworkServiceListExternalMemberResponse is the response payload for listing external members of a network.
+ *
+ * @generated from message metalstack.admin.v2.NetworkServiceListExternalMemberResponse
+ */
+export type NetworkServiceListExternalMemberResponse = Message<"metalstack.admin.v2.NetworkServiceListExternalMemberResponse"> & {
+    /**
+     * Members are the queried external members of the network.
+     *
+     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMembers members = 1;
+     */
+    members: ExternalNetworkMembers[];
+};
+/**
+ * Describes the message metalstack.admin.v2.NetworkServiceListExternalMemberResponse.
+ * Use `create(NetworkServiceListExternalMemberResponseSchema)` to create a new message.
+ */
+export declare const NetworkServiceListExternalMemberResponseSchema: GenMessage<NetworkServiceListExternalMemberResponse>;
 /**
  * NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.
  *

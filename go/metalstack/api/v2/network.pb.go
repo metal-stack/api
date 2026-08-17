@@ -1274,6 +1274,61 @@ func (x *NetworkQuery) GetLabels() *Labels {
 	return nil
 }
 
+// ExternalNetworkMemberQuery defines which filters to apply when looking up external network members.
+type ExternalNetworkMemberQuery struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Switch whose ports are queried.
+	Switch *string `protobuf:"bytes,1,opt,name=switch,proto3,oneof" json:"switch,omitempty"`
+	// Rack for which the members of the network are queried.
+	Rack          *string `protobuf:"bytes,2,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExternalNetworkMemberQuery) Reset() {
+	*x = ExternalNetworkMemberQuery{}
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExternalNetworkMemberQuery) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExternalNetworkMemberQuery) ProtoMessage() {}
+
+func (x *ExternalNetworkMemberQuery) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExternalNetworkMemberQuery.ProtoReflect.Descriptor instead.
+func (*ExternalNetworkMemberQuery) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ExternalNetworkMemberQuery) GetSwitch() string {
+	if x != nil && x.Switch != nil {
+		return *x.Switch
+	}
+	return ""
+}
+
+func (x *ExternalNetworkMemberQuery) GetRack() string {
+	if x != nil && x.Rack != nil {
+		return *x.Rack
+	}
+	return ""
+}
+
 // ChildPrefixLength.
 type ChildPrefixLength struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -1287,7 +1342,7 @@ type ChildPrefixLength struct {
 
 func (x *ChildPrefixLength) Reset() {
 	*x = ChildPrefixLength{}
-	mi := &file_metalstack_api_v2_network_proto_msgTypes[14]
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1299,7 +1354,7 @@ func (x *ChildPrefixLength) String() string {
 func (*ChildPrefixLength) ProtoMessage() {}
 
 func (x *ChildPrefixLength) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_network_proto_msgTypes[14]
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1312,7 +1367,7 @@ func (x *ChildPrefixLength) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ChildPrefixLength.ProtoReflect.Descriptor instead.
 func (*ChildPrefixLength) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{14}
+	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ChildPrefixLength) GetIpv4() uint32 {
@@ -1342,7 +1397,7 @@ type NetworkConsumption struct {
 
 func (x *NetworkConsumption) Reset() {
 	*x = NetworkConsumption{}
-	mi := &file_metalstack_api_v2_network_proto_msgTypes[15]
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1354,7 +1409,7 @@ func (x *NetworkConsumption) String() string {
 func (*NetworkConsumption) ProtoMessage() {}
 
 func (x *NetworkConsumption) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_network_proto_msgTypes[15]
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1367,7 +1422,7 @@ func (x *NetworkConsumption) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkConsumption.ProtoReflect.Descriptor instead.
 func (*NetworkConsumption) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{15}
+	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *NetworkConsumption) GetIpv4() *NetworkUsage {
@@ -1401,7 +1456,7 @@ type NetworkUsage struct {
 
 func (x *NetworkUsage) Reset() {
 	*x = NetworkUsage{}
-	mi := &file_metalstack_api_v2_network_proto_msgTypes[16]
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1413,7 +1468,7 @@ func (x *NetworkUsage) String() string {
 func (*NetworkUsage) ProtoMessage() {}
 
 func (x *NetworkUsage) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_network_proto_msgTypes[16]
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1426,7 +1481,7 @@ func (x *NetworkUsage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkUsage.ProtoReflect.Descriptor instead.
 func (*NetworkUsage) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{16}
+	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *NetworkUsage) GetAvailableIps() uint64 {
@@ -1457,7 +1512,7 @@ func (x *NetworkUsage) GetUsedPrefixes() uint64 {
 	return 0
 }
 
-// ExternalNetworkMembers that participate in a network.
+// ExternalNetworkMembers are the ports of a switch that participate in a network and are connected to machines not known to metal-stack.
 type ExternalNetworkMembers struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Switch the external members are connected to.
@@ -1470,7 +1525,7 @@ type ExternalNetworkMembers struct {
 
 func (x *ExternalNetworkMembers) Reset() {
 	*x = ExternalNetworkMembers{}
-	mi := &file_metalstack_api_v2_network_proto_msgTypes[17]
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1482,7 +1537,7 @@ func (x *ExternalNetworkMembers) String() string {
 func (*ExternalNetworkMembers) ProtoMessage() {}
 
 func (x *ExternalNetworkMembers) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_network_proto_msgTypes[17]
+	mi := &file_metalstack_api_v2_network_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1495,7 +1550,7 @@ func (x *ExternalNetworkMembers) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExternalNetworkMembers.ProtoReflect.Descriptor instead.
 func (*ExternalNetworkMembers) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{17}
+	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ExternalNetworkMembers) GetSwitch() string {
@@ -1628,7 +1683,13 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x0f_address_familyB\a\n" +
 	"\x05_typeB\v\n" +
 	"\t_nat_typeB\t\n" +
-	"\a_labels\"n\n" +
+	"\a_labels\"\x82\x01\n" +
+	"\x1aExternalNetworkMemberQuery\x12*\n" +
+	"\x06switch\x18\x01 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01H\x00R\x06switch\x88\x01\x01\x12$\n" +
+	"\x04rack\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04rack\x88\x01\x01B\t\n" +
+	"\a_switchB\a\n" +
+	"\x05_rack\"n\n" +
 	"\x11ChildPrefixLength\x12\"\n" +
 	"\x04ipv4\x18\x01 \x01(\rB\t\xbaH\x06*\x04\x18  \x00H\x00R\x04ipv4\x88\x01\x01\x12#\n" +
 	"\x04ipv6\x18\x02 \x01(\rB\n" +
@@ -1642,10 +1703,10 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\ravailable_ips\x18\x01 \x01(\x04R\favailableIps\x12\x19\n" +
 	"\bused_ips\x18\x02 \x01(\x04R\ausedIps\x12-\n" +
 	"\x12available_prefixes\x18\x03 \x01(\x04R\x11availablePrefixes\x12#\n" +
-	"\rused_prefixes\x18\x04 \x01(\x04R\fusedPrefixes\"S\n" +
+	"\rused_prefixes\x18\x04 \x01(\x04R\fusedPrefixes\"d\n" +
 	"\x16ExternalNetworkMembers\x12#\n" +
-	"\x06switch\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x06switch\x12\x14\n" +
-	"\x05ports\x18\x02 \x03(\tR\x05ports*m\n" +
+	"\x06switch\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x06switch\x12%\n" +
+	"\x05ports\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\tФ\xb3\xb1\x02\x01\x10\x80\x10R\x05ports*m\n" +
 	"\aNATType\x12\x18\n" +
 	"\x14NAT_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\rNAT_TYPE_NONE\x10\x01\x1a\b\x82\xb2\x19\x04none\x12+\n" +
@@ -1689,7 +1750,7 @@ func file_metalstack_api_v2_network_proto_rawDescGZIP() []byte {
 }
 
 var file_metalstack_api_v2_network_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_metalstack_api_v2_network_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
+var file_metalstack_api_v2_network_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_metalstack_api_v2_network_proto_goTypes = []any{
 	(NATType)(0),                                   // 0: metalstack.api.v2.NATType
 	(NetworkType)(0),                               // 1: metalstack.api.v2.NetworkType
@@ -1708,41 +1769,42 @@ var file_metalstack_api_v2_network_proto_goTypes = []any{
 	(*NetworkServiceDeleteResponse)(nil),           // 14: metalstack.api.v2.NetworkServiceDeleteResponse
 	(*Network)(nil),                                // 15: metalstack.api.v2.Network
 	(*NetworkQuery)(nil),                           // 16: metalstack.api.v2.NetworkQuery
-	(*ChildPrefixLength)(nil),                      // 17: metalstack.api.v2.ChildPrefixLength
-	(*NetworkConsumption)(nil),                     // 18: metalstack.api.v2.NetworkConsumption
-	(*NetworkUsage)(nil),                           // 19: metalstack.api.v2.NetworkUsage
-	(*ExternalNetworkMembers)(nil),                 // 20: metalstack.api.v2.ExternalNetworkMembers
-	(*Labels)(nil),                                 // 21: metalstack.api.v2.Labels
-	(*UpdateMeta)(nil),                             // 22: metalstack.api.v2.UpdateMeta
-	(*UpdateLabels)(nil),                           // 23: metalstack.api.v2.UpdateLabels
-	(*Meta)(nil),                                   // 24: metalstack.api.v2.Meta
+	(*ExternalNetworkMemberQuery)(nil),             // 17: metalstack.api.v2.ExternalNetworkMemberQuery
+	(*ChildPrefixLength)(nil),                      // 18: metalstack.api.v2.ChildPrefixLength
+	(*NetworkConsumption)(nil),                     // 19: metalstack.api.v2.NetworkConsumption
+	(*NetworkUsage)(nil),                           // 20: metalstack.api.v2.NetworkUsage
+	(*ExternalNetworkMembers)(nil),                 // 21: metalstack.api.v2.ExternalNetworkMembers
+	(*Labels)(nil),                                 // 22: metalstack.api.v2.Labels
+	(*UpdateMeta)(nil),                             // 23: metalstack.api.v2.UpdateMeta
+	(*UpdateLabels)(nil),                           // 24: metalstack.api.v2.UpdateLabels
+	(*Meta)(nil),                                   // 25: metalstack.api.v2.Meta
 }
 var file_metalstack_api_v2_network_proto_depIdxs = []int32{
 	15, // 0: metalstack.api.v2.NetworkServiceGetResponse.network:type_name -> metalstack.api.v2.Network
-	21, // 1: metalstack.api.v2.NetworkServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
-	17, // 2: metalstack.api.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
+	22, // 1: metalstack.api.v2.NetworkServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	18, // 2: metalstack.api.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
 	2,  // 3: metalstack.api.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.NetworkAddressFamily
 	15, // 4: metalstack.api.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
-	22, // 5: metalstack.api.v2.NetworkServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	23, // 6: metalstack.api.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	23, // 5: metalstack.api.v2.NetworkServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	24, // 6: metalstack.api.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	15, // 7: metalstack.api.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
 	16, // 8: metalstack.api.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
 	15, // 9: metalstack.api.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
 	16, // 10: metalstack.api.v2.NetworkServiceListBaseNetworksRequest.query:type_name -> metalstack.api.v2.NetworkQuery
 	15, // 11: metalstack.api.v2.NetworkServiceListBaseNetworksResponse.networks:type_name -> metalstack.api.v2.Network
 	15, // 12: metalstack.api.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
-	24, // 13: metalstack.api.v2.Network.meta:type_name -> metalstack.api.v2.Meta
-	17, // 14: metalstack.api.v2.Network.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	17, // 15: metalstack.api.v2.Network.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	25, // 13: metalstack.api.v2.Network.meta:type_name -> metalstack.api.v2.Meta
+	18, // 14: metalstack.api.v2.Network.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	18, // 15: metalstack.api.v2.Network.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
 	1,  // 16: metalstack.api.v2.Network.type:type_name -> metalstack.api.v2.NetworkType
 	0,  // 17: metalstack.api.v2.Network.nat_type:type_name -> metalstack.api.v2.NATType
-	18, // 18: metalstack.api.v2.Network.consumption:type_name -> metalstack.api.v2.NetworkConsumption
+	19, // 18: metalstack.api.v2.Network.consumption:type_name -> metalstack.api.v2.NetworkConsumption
 	2,  // 19: metalstack.api.v2.NetworkQuery.address_family:type_name -> metalstack.api.v2.NetworkAddressFamily
 	1,  // 20: metalstack.api.v2.NetworkQuery.type:type_name -> metalstack.api.v2.NetworkType
 	0,  // 21: metalstack.api.v2.NetworkQuery.nat_type:type_name -> metalstack.api.v2.NATType
-	21, // 22: metalstack.api.v2.NetworkQuery.labels:type_name -> metalstack.api.v2.Labels
-	19, // 23: metalstack.api.v2.NetworkConsumption.ipv4:type_name -> metalstack.api.v2.NetworkUsage
-	19, // 24: metalstack.api.v2.NetworkConsumption.ipv6:type_name -> metalstack.api.v2.NetworkUsage
+	22, // 22: metalstack.api.v2.NetworkQuery.labels:type_name -> metalstack.api.v2.Labels
+	20, // 23: metalstack.api.v2.NetworkConsumption.ipv4:type_name -> metalstack.api.v2.NetworkUsage
+	20, // 24: metalstack.api.v2.NetworkConsumption.ipv6:type_name -> metalstack.api.v2.NetworkUsage
 	3,  // 25: metalstack.api.v2.NetworkService.Get:input_type -> metalstack.api.v2.NetworkServiceGetRequest
 	5,  // 26: metalstack.api.v2.NetworkService.Create:input_type -> metalstack.api.v2.NetworkServiceCreateRequest
 	7,  // 27: metalstack.api.v2.NetworkService.Update:input_type -> metalstack.api.v2.NetworkServiceUpdateRequest
@@ -1774,13 +1836,14 @@ func file_metalstack_api_v2_network_proto_init() {
 	file_metalstack_api_v2_network_proto_msgTypes[12].OneofWrappers = []any{}
 	file_metalstack_api_v2_network_proto_msgTypes[13].OneofWrappers = []any{}
 	file_metalstack_api_v2_network_proto_msgTypes[14].OneofWrappers = []any{}
+	file_metalstack_api_v2_network_proto_msgTypes[15].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_network_proto_rawDesc), len(file_metalstack_api_v2_network_proto_rawDesc)),
 			NumEnums:      3,
-			NumMessages:   18,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
