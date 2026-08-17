@@ -26,11 +26,15 @@ type (
 	DialConfig struct {
 		// BaseUrl points to the apiv2 url where the apiserver is reachable
 		BaseURL string
-		// Token to be used to talk to the apiserver
+		// Token to be used to talk to the apiserver, the string representation of the token.
+		// If Token is specified, TokenFile cannot be specified.
+		// It is possible to renew this token automatically, see TokenRenewal.
 		Token string
-		// Tokenfile which contains the token, is only read if token is empty
+		// Tokenfile path to a file containing the string representation of the token.
+		// If Tokenfile is specified, Token cannot be specified.
+		// Token renewal must be done from outside
 		TokenFile string
-		// Duration between token file re-reads
+		// Duration between token file re-reads, optional, defaults to 5min if not specified.
 		TokenFileRereadDuration time.Duration
 
 		// Optional client Interceptors
@@ -40,6 +44,7 @@ type (
 		// TokenRenewal defines if and how the token should be renewed
 		TokenRenewal *TokenRenewal
 
+		// Transport optional, can be used to configure how the http transport works.
 		Transport http.RoundTripper
 
 		Log *slog.Logger
@@ -57,6 +62,44 @@ type (
 
 	PersistTokenFn func(token string) error
 )
+
+func New(config *DialConfig) (Client, error) {
+	err := config.parse()
+	if err != nil {
+		return nil, err
+	}
+
+	c := &client{
+		config:       config,
+		interceptors: []connect.Interceptor{},
+	}
+
+	if config.Token != "" {
+		authInterceptor := &authInterceptor{config: config}
+		c.interceptors = append(c.interceptors, authInterceptor)
+
+		if config.TokenRenewal != nil {
+			tokenRenewingInterceptor := &tokenRenewingInterceptor{config: config, client: c}
+			c.interceptors = append(c.interceptors, tokenRenewingInterceptor)
+		}
+	}
+
+	if config.TokenFile != "" {
+		authInterceptor := &authInterceptor{config: config}
+		c.interceptors = append(c.interceptors, authInterceptor)
+
+		tokenRenewingInterceptor := &tokenRenewingInterceptor{config: config, client: c}
+		c.interceptors = append(c.interceptors, tokenRenewingInterceptor)
+	}
+
+	if config.Log != nil {
+		loggingInterceptor := &loggingInterceptor{config: config}
+		c.interceptors = append(c.interceptors, loggingInterceptor)
+	}
+	c.interceptors = append(c.interceptors, config.Interceptors...)
+
+	return c, nil
+}
 
 func (d *DialConfig) HttpClient() *http.Client {
 	transport := http.DefaultTransport
@@ -111,6 +154,13 @@ func (dc *DialConfig) parse() error {
 		return nil
 	}
 
+	return dc.parseTokenClaims()
+}
+
+// parseTokenClaims extracts expiresAt and issuedAt from the current Token.
+// It is called both when initially parsing the config and when a tokenfile
+// token is re-read, in which case only the claims need to be refreshed.
+func (dc *DialConfig) parseTokenClaims() error {
 	parsed, err := jwt.Parse(dc.Token, nil)
 	if err != nil && !errors.Is(err, jwt.ErrTokenUnverifiable) {
 		return fmt.Errorf("unable to parse token:%w", err)
