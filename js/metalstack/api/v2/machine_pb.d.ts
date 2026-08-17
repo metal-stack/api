@@ -132,7 +132,7 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
     /**
      * Userdata contains instructions required to bootstrap the machine.
      * AWS limits the max userdata size to 16k, lets allow twice as much.
-     * Must be base64 encoded
+     * Must be base64 encoded.
      *
      * @generated from field: optional string userdata = 11;
      */
@@ -150,12 +150,12 @@ export type MachineServiceCreateRequest = Message<"metalstack.api.v2.MachineServ
      */
     networks: MachineAllocationNetwork[];
     /**
-     * PlacementTags by default machines are spread across the racks inside a partition for every project.
-     * if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags.
+     * PlacementLabels by default machines are spread across the racks inside a partition for every project.
+     * if placement labels are provided, the machine candidate has an additional anti-affinity to other machines having the same labels.
      *
-     * @generated from field: repeated string placement_tags = 14;
+     * @generated from field: metalstack.api.v2.Labels placement_labels = 14;
      */
-    placementTags: string[];
+    placementLabels?: Labels | undefined;
     /**
      * DNSServer the dns servers used for the machine.
      *
@@ -444,17 +444,11 @@ export declare const MachineServiceGetBMCRequestSchema: GenMessage<MachineServic
  */
 export type MachineServiceGetBMCResponse = Message<"metalstack.api.v2.MachineServiceGetBMCResponse"> & {
     /**
-     * UUID of the machine.
+     * BMCDetails contains the BMC details of this machine.
      *
-     * @generated from field: string uuid = 1;
+     * @generated from field: metalstack.api.v2.MachineBMCDetails bmc_details = 6;
      */
-    uuid: string;
-    /**
-     * BMC contains the BMC details of this machine.
-     *
-     * @generated from field: metalstack.api.v2.MachineBMCReport bmc = 2;
-     */
-    bmc?: MachineBMCReport | undefined;
+    bmcDetails?: MachineBMCDetails | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.MachineServiceGetBMCResponse.
@@ -709,6 +703,13 @@ export type MachineAllocation = Message<"metalstack.api.v2.MachineAllocation"> &
      * @generated from field: metalstack.api.v2.MachineVPN vpn = 17;
      */
     vpn?: MachineVPN | undefined;
+    /**
+     * PlacementLabels by default machines are spread across the racks inside a partition for every project.
+     * if placement labels are provided, the machine candidate has an additional anti-affinity to other machines having the same labels.
+     *
+     * @generated from field: metalstack.api.v2.Labels placement_labels = 18;
+     */
+    placementLabels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.MachineAllocation.
@@ -1120,51 +1121,105 @@ export type MachineChassisIdentifyLEDState = Message<"metalstack.api.v2.MachineC
  */
 export declare const MachineChassisIdentifyLEDStateSchema: GenMessage<MachineChassisIdentifyLEDState>;
 /**
+ * MachineBMCDetails contains machine and bmc details of a machine.
+ *
+ * @generated from message metalstack.api.v2.MachineBMCDetails
+ */
+export type MachineBMCDetails = Message<"metalstack.api.v2.MachineBMCDetails"> & {
+    /**
+     * UUID of this machine.
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Partition where this machine resides.
+     *
+     * @generated from field: string partition = 2;
+     */
+    partition: string;
+    /**
+     * Rack where this machine is located.
+     *
+     * @generated from field: string rack = 3;
+     */
+    rack: string;
+    /**
+     * Room where this machine is located.
+     *
+     * @generated from field: string room = 4;
+     */
+    room: string;
+    /**
+     * Size of this machine.
+     *
+     * @generated from field: string size = 5;
+     */
+    size: string;
+    /**
+     * BMCReport contains the bmc details.
+     *
+     * @generated from field: metalstack.api.v2.MachineBMCReport bmc_report = 6;
+     */
+    bmcReport?: MachineBMCReport | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.MachineBMCDetails.
+ * Use `create(MachineBMCDetailsSchema)` to create a new message.
+ */
+export declare const MachineBMCDetailsSchema: GenMessage<MachineBMCDetails>;
+/**
  * MachineBMCReport is sent from the metal-bmc to update bmc and power related details.
  *
  * @generated from message metalstack.api.v2.MachineBMCReport
  */
 export type MachineBMCReport = Message<"metalstack.api.v2.MachineBMCReport"> & {
     /**
+     * UUID of the machine.
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
      * Bmc contains bmc details.
      *
-     * @generated from field: metalstack.api.v2.MachineBMC bmc = 1;
+     * @generated from field: metalstack.api.v2.MachineBMC bmc = 2;
      */
     bmc?: MachineBMC | undefined;
     /**
      * Bios contains bios details.
      *
-     * @generated from field: metalstack.api.v2.MachineBios bios = 2;
+     * @generated from field: metalstack.api.v2.MachineBios bios = 3;
      */
     bios?: MachineBios | undefined;
     /**
      * Fru contains field replaceable unit details.
      *
-     * @generated from field: metalstack.api.v2.MachineFRU fru = 3;
+     * @generated from field: metalstack.api.v2.MachineFRU fru = 4;
      */
     fru?: MachineFRU | undefined;
     /**
      * PowerMetric contains the power statistics of the machine.
      *
-     * @generated from field: metalstack.api.v2.MachinePowerMetric power_metric = 4;
+     * @generated from field: metalstack.api.v2.MachinePowerMetric power_metric = 5;
      */
     powerMetric?: MachinePowerMetric | undefined;
     /**
      * PowerSupplies contains details about all power supplies and their state.
      *
-     * @generated from field: repeated metalstack.api.v2.MachinePowerSupply power_supplies = 5;
+     * @generated from field: repeated metalstack.api.v2.MachinePowerSupply power_supplies = 6;
      */
     powerSupplies: MachinePowerSupply[];
     /**
      * LedState indicates the state of the indicator LED on this machine.
      *
-     * @generated from field: metalstack.api.v2.MachineChassisIdentifyLEDState led_state = 6;
+     * @generated from field: metalstack.api.v2.MachineChassisIdentifyLEDState led_state = 7;
      */
     ledState?: MachineChassisIdentifyLEDState | undefined;
     /**
      * UpdatedAt contains the date when this data was last updated.
      *
-     * @generated from field: google.protobuf.Timestamp updated_at = 7;
+     * @generated from field: google.protobuf.Timestamp updated_at = 8;
      */
     updatedAt?: Timestamp | undefined;
 };

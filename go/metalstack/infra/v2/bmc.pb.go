@@ -28,8 +28,8 @@ type UpdateBMCInfoRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Partition is the partition ID where metal-bmc wants to receive events.
 	Partition string `protobuf:"bytes,1,opt,name=partition,proto3" json:"partition,omitempty"`
-	// BmcReports maps the BMC report per machine UUID.
-	BmcReports    map[string]*v2.MachineBMCReport `protobuf:"bytes,2,rep,name=bmc_reports,json=bmcReports,proto3" json:"bmc_reports,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// BmcReports contains bmc details of a machine.
+	BmcReports    []*v2.MachineBMCReport `protobuf:"bytes,2,rep,name=bmc_reports,json=bmcReports,proto3" json:"bmc_reports,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -71,7 +71,7 @@ func (x *UpdateBMCInfoRequest) GetPartition() string {
 	return ""
 }
 
-func (x *UpdateBMCInfoRequest) GetBmcReports() map[string]*v2.MachineBMCReport {
+func (x *UpdateBMCInfoRequest) GetBmcReports() []*v2.MachineBMCReport {
 	if x != nil {
 		return x.BmcReports
 	}
@@ -350,15 +350,11 @@ var File_metalstack_infra_v2_bmc_proto protoreflect.FileDescriptor
 
 const file_metalstack_infra_v2_bmc_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmetalstack/infra/v2/bmc.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x90\x02\n" +
+	"\x1dmetalstack/infra/v2/bmc.proto\x12\x13metalstack.infra.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x87\x01\n" +
 	"\x14UpdateBMCInfoRequest\x12)\n" +
-	"\tpartition\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12i\n" +
-	"\vbmc_reports\x18\x02 \x03(\v29.metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntryB\r\xbaH\n" +
-	"\x9a\x01\a\"\x05r\x03\xb0\x01\x01R\n" +
-	"bmcReports\x1ab\n" +
-	"\x0fBmcReportsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x129\n" +
-	"\x05value\x18\x02 \x01(\v2#.metalstack.api.v2.MachineBMCReportR\x05value:\x028\x01\"m\n" +
+	"\tpartition\x18\x01 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12D\n" +
+	"\vbmc_reports\x18\x02 \x03(\v2#.metalstack.api.v2.MachineBMCReportR\n" +
+	"bmcReports\"m\n" +
 	"\x15UpdateBMCInfoResponse\x12)\n" +
 	"\x10updated_machines\x18\x01 \x03(\tR\x0fupdatedMachines\x12)\n" +
 	"\x10created_machines\x18\x02 \x03(\tR\x0fcreatedMachines\"E\n" +
@@ -397,7 +393,7 @@ func file_metalstack_infra_v2_bmc_proto_rawDescGZIP() []byte {
 	return file_metalstack_infra_v2_bmc_proto_rawDescData
 }
 
-var file_metalstack_infra_v2_bmc_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_metalstack_infra_v2_bmc_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_metalstack_infra_v2_bmc_proto_goTypes = []any{
 	(*UpdateBMCInfoRequest)(nil),      // 0: metalstack.infra.v2.UpdateBMCInfoRequest
 	(*UpdateBMCInfoResponse)(nil),     // 1: metalstack.infra.v2.UpdateBMCInfoResponse
@@ -405,27 +401,25 @@ var file_metalstack_infra_v2_bmc_proto_goTypes = []any{
 	(*WaitForBMCCommandResponse)(nil), // 3: metalstack.infra.v2.WaitForBMCCommandResponse
 	(*BMCCommandDoneRequest)(nil),     // 4: metalstack.infra.v2.BMCCommandDoneRequest
 	(*BMCCommandDoneResponse)(nil),    // 5: metalstack.infra.v2.BMCCommandDoneResponse
-	nil,                               // 6: metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry
+	(*v2.MachineBMCReport)(nil),       // 6: metalstack.api.v2.MachineBMCReport
 	(v2.MachineBMCCommand)(0),         // 7: metalstack.api.v2.MachineBMCCommand
 	(*v2.MachineBMC)(nil),             // 8: metalstack.api.v2.MachineBMC
-	(*v2.MachineBMCReport)(nil),       // 9: metalstack.api.v2.MachineBMCReport
 }
 var file_metalstack_infra_v2_bmc_proto_depIdxs = []int32{
-	6, // 0: metalstack.infra.v2.UpdateBMCInfoRequest.bmc_reports:type_name -> metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry
+	6, // 0: metalstack.infra.v2.UpdateBMCInfoRequest.bmc_reports:type_name -> metalstack.api.v2.MachineBMCReport
 	7, // 1: metalstack.infra.v2.WaitForBMCCommandResponse.bmc_command:type_name -> metalstack.api.v2.MachineBMCCommand
 	8, // 2: metalstack.infra.v2.WaitForBMCCommandResponse.machine_bmc:type_name -> metalstack.api.v2.MachineBMC
-	9, // 3: metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry.value:type_name -> metalstack.api.v2.MachineBMCReport
-	0, // 4: metalstack.infra.v2.BMCService.UpdateBMCInfo:input_type -> metalstack.infra.v2.UpdateBMCInfoRequest
-	2, // 5: metalstack.infra.v2.BMCService.WaitForBMCCommand:input_type -> metalstack.infra.v2.WaitForBMCCommandRequest
-	4, // 6: metalstack.infra.v2.BMCService.BMCCommandDone:input_type -> metalstack.infra.v2.BMCCommandDoneRequest
-	1, // 7: metalstack.infra.v2.BMCService.UpdateBMCInfo:output_type -> metalstack.infra.v2.UpdateBMCInfoResponse
-	3, // 8: metalstack.infra.v2.BMCService.WaitForBMCCommand:output_type -> metalstack.infra.v2.WaitForBMCCommandResponse
-	5, // 9: metalstack.infra.v2.BMCService.BMCCommandDone:output_type -> metalstack.infra.v2.BMCCommandDoneResponse
-	7, // [7:10] is the sub-list for method output_type
-	4, // [4:7] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	0, // 3: metalstack.infra.v2.BMCService.UpdateBMCInfo:input_type -> metalstack.infra.v2.UpdateBMCInfoRequest
+	2, // 4: metalstack.infra.v2.BMCService.WaitForBMCCommand:input_type -> metalstack.infra.v2.WaitForBMCCommandRequest
+	4, // 5: metalstack.infra.v2.BMCService.BMCCommandDone:input_type -> metalstack.infra.v2.BMCCommandDoneRequest
+	1, // 6: metalstack.infra.v2.BMCService.UpdateBMCInfo:output_type -> metalstack.infra.v2.UpdateBMCInfoResponse
+	3, // 7: metalstack.infra.v2.BMCService.WaitForBMCCommand:output_type -> metalstack.infra.v2.WaitForBMCCommandResponse
+	5, // 8: metalstack.infra.v2.BMCService.BMCCommandDone:output_type -> metalstack.infra.v2.BMCCommandDoneResponse
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_infra_v2_bmc_proto_init() }
@@ -440,7 +434,7 @@ func file_metalstack_infra_v2_bmc_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_infra_v2_bmc_proto_rawDesc), len(file_metalstack_infra_v2_bmc_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -179,7 +179,7 @@ class MachineServiceGetResponse(_message.Message):
     def __init__(self, machine: _Optional[_Union[Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceCreateRequest(_message.Message):
-    __slots__ = ("project", "uuid", "name", "description", "hostname", "partition", "size", "image", "filesystem_layout", "ssh_public_keys", "userdata", "labels", "networks", "placement_tags", "dns_servers", "ntp_servers", "allocation_type", "firewall_spec")
+    __slots__ = ("project", "uuid", "name", "description", "hostname", "partition", "size", "image", "filesystem_layout", "ssh_public_keys", "userdata", "labels", "networks", "placement_labels", "dns_servers", "ntp_servers", "allocation_type", "firewall_spec")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     UUID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -193,7 +193,7 @@ class MachineServiceCreateRequest(_message.Message):
     USERDATA_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
     NETWORKS_FIELD_NUMBER: _ClassVar[int]
-    PLACEMENT_TAGS_FIELD_NUMBER: _ClassVar[int]
+    PLACEMENT_LABELS_FIELD_NUMBER: _ClassVar[int]
     DNS_SERVERS_FIELD_NUMBER: _ClassVar[int]
     NTP_SERVERS_FIELD_NUMBER: _ClassVar[int]
     ALLOCATION_TYPE_FIELD_NUMBER: _ClassVar[int]
@@ -211,12 +211,12 @@ class MachineServiceCreateRequest(_message.Message):
     userdata: str
     labels: _common_pb2.Labels
     networks: _containers.RepeatedCompositeFieldContainer[MachineAllocationNetwork]
-    placement_tags: _containers.RepeatedScalarFieldContainer[str]
+    placement_labels: _common_pb2.Labels
     dns_servers: _containers.RepeatedCompositeFieldContainer[_partition_pb2.DNSServer]
     ntp_servers: _containers.RepeatedCompositeFieldContainer[_partition_pb2.NTPServer]
     allocation_type: MachineAllocationType
     firewall_spec: FirewallSpec
-    def __init__(self, project: _Optional[str] = ..., uuid: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., hostname: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineAllocationNetwork, _Mapping]]] = ..., placement_tags: _Optional[_Iterable[str]] = ..., dns_servers: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_servers: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_spec: _Optional[_Union[FirewallSpec, _Mapping]] = ...) -> None: ...
+    def __init__(self, project: _Optional[str] = ..., uuid: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., hostname: _Optional[str] = ..., partition: _Optional[str] = ..., size: _Optional[str] = ..., image: _Optional[str] = ..., filesystem_layout: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineAllocationNetwork, _Mapping]]] = ..., placement_labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., dns_servers: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_servers: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_spec: _Optional[_Union[FirewallSpec, _Mapping]] = ...) -> None: ...
 
 class FirewallSpec(_message.Message):
     __slots__ = ("firewall_rules",)
@@ -303,12 +303,10 @@ class MachineServiceGetBMCRequest(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
 
 class MachineServiceGetBMCResponse(_message.Message):
-    __slots__ = ("uuid", "bmc")
-    UUID_FIELD_NUMBER: _ClassVar[int]
-    BMC_FIELD_NUMBER: _ClassVar[int]
-    uuid: str
-    bmc: MachineBMCReport
-    def __init__(self, uuid: _Optional[str] = ..., bmc: _Optional[_Union[MachineBMCReport, _Mapping]] = ...) -> None: ...
+    __slots__ = ("bmc_details",)
+    BMC_DETAILS_FIELD_NUMBER: _ClassVar[int]
+    bmc_details: MachineBMCDetails
+    def __init__(self, bmc_details: _Optional[_Union[MachineBMCDetails, _Mapping]] = ...) -> None: ...
 
 class Machine(_message.Message):
     __slots__ = ("uuid", "meta", "partition", "rack", "room", "size", "hardware", "allocation", "status", "recent_provisioning_events")
@@ -357,7 +355,7 @@ class MachineCondition(_message.Message):
     def __init__(self, state: _Optional[_Union[MachineState, str]] = ..., description: _Optional[str] = ..., issuer: _Optional[str] = ...) -> None: ...
 
 class MachineAllocation(_message.Message):
-    __slots__ = ("uuid", "meta", "name", "description", "created_by", "project", "image", "filesystem_layout", "networks", "hostname", "ssh_public_keys", "userdata", "allocation_type", "firewall_rules", "dns_servers", "ntp_servers", "vpn")
+    __slots__ = ("uuid", "meta", "name", "description", "created_by", "project", "image", "filesystem_layout", "networks", "hostname", "ssh_public_keys", "userdata", "allocation_type", "firewall_rules", "dns_servers", "ntp_servers", "vpn", "placement_labels")
     UUID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
@@ -375,6 +373,7 @@ class MachineAllocation(_message.Message):
     DNS_SERVERS_FIELD_NUMBER: _ClassVar[int]
     NTP_SERVERS_FIELD_NUMBER: _ClassVar[int]
     VPN_FIELD_NUMBER: _ClassVar[int]
+    PLACEMENT_LABELS_FIELD_NUMBER: _ClassVar[int]
     uuid: str
     meta: _common_pb2.Meta
     name: str
@@ -392,7 +391,8 @@ class MachineAllocation(_message.Message):
     dns_servers: _containers.RepeatedCompositeFieldContainer[_partition_pb2.DNSServer]
     ntp_servers: _containers.RepeatedCompositeFieldContainer[_partition_pb2.NTPServer]
     vpn: MachineVPN
-    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., created_by: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineNetwork, _Mapping]]] = ..., hostname: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ..., dns_servers: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_servers: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ...) -> None: ...
+    placement_labels: _common_pb2.Labels
+    def __init__(self, uuid: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., created_by: _Optional[str] = ..., project: _Optional[str] = ..., image: _Optional[_Union[_image_pb2.Image, _Mapping]] = ..., filesystem_layout: _Optional[_Union[_filesystem_pb2.FilesystemLayout, _Mapping]] = ..., networks: _Optional[_Iterable[_Union[MachineNetwork, _Mapping]]] = ..., hostname: _Optional[str] = ..., ssh_public_keys: _Optional[_Iterable[str]] = ..., userdata: _Optional[str] = ..., allocation_type: _Optional[_Union[MachineAllocationType, str]] = ..., firewall_rules: _Optional[_Union[FirewallRules, _Mapping]] = ..., dns_servers: _Optional[_Iterable[_Union[_partition_pb2.DNSServer, _Mapping]]] = ..., ntp_servers: _Optional[_Iterable[_Union[_partition_pb2.NTPServer, _Mapping]]] = ..., vpn: _Optional[_Union[MachineVPN, _Mapping]] = ..., placement_labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class MachineAllocationNetwork(_message.Message):
     __slots__ = ("network", "ips")
@@ -527,8 +527,25 @@ class MachineChassisIdentifyLEDState(_message.Message):
     description: str
     def __init__(self, value: _Optional[str] = ..., description: _Optional[str] = ...) -> None: ...
 
+class MachineBMCDetails(_message.Message):
+    __slots__ = ("uuid", "partition", "rack", "room", "size", "bmc_report")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
+    ROOM_FIELD_NUMBER: _ClassVar[int]
+    SIZE_FIELD_NUMBER: _ClassVar[int]
+    BMC_REPORT_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    partition: str
+    rack: str
+    room: str
+    size: str
+    bmc_report: MachineBMCReport
+    def __init__(self, uuid: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., room: _Optional[str] = ..., size: _Optional[str] = ..., bmc_report: _Optional[_Union[MachineBMCReport, _Mapping]] = ...) -> None: ...
+
 class MachineBMCReport(_message.Message):
-    __slots__ = ("bmc", "bios", "fru", "power_metric", "power_supplies", "led_state", "updated_at")
+    __slots__ = ("uuid", "bmc", "bios", "fru", "power_metric", "power_supplies", "led_state", "updated_at")
+    UUID_FIELD_NUMBER: _ClassVar[int]
     BMC_FIELD_NUMBER: _ClassVar[int]
     BIOS_FIELD_NUMBER: _ClassVar[int]
     FRU_FIELD_NUMBER: _ClassVar[int]
@@ -536,6 +553,7 @@ class MachineBMCReport(_message.Message):
     POWER_SUPPLIES_FIELD_NUMBER: _ClassVar[int]
     LED_STATE_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
     bmc: MachineBMC
     bios: MachineBios
     fru: MachineFRU
@@ -543,7 +561,7 @@ class MachineBMCReport(_message.Message):
     power_supplies: _containers.RepeatedCompositeFieldContainer[MachinePowerSupply]
     led_state: MachineChassisIdentifyLEDState
     updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, bmc: _Optional[_Union[MachineBMC, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., fru: _Optional[_Union[MachineFRU, _Mapping]] = ..., power_metric: _Optional[_Union[MachinePowerMetric, _Mapping]] = ..., power_supplies: _Optional[_Iterable[_Union[MachinePowerSupply, _Mapping]]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., bmc: _Optional[_Union[MachineBMC, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., fru: _Optional[_Union[MachineFRU, _Mapping]] = ..., power_metric: _Optional[_Union[MachinePowerMetric, _Mapping]] = ..., power_supplies: _Optional[_Iterable[_Union[MachinePowerSupply, _Mapping]]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class MachineBios(_message.Message):
     __slots__ = ("version", "vendor", "date")

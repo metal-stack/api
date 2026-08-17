@@ -99,6 +99,12 @@ extend buf.validate.StringRules {
     message: "must be '*' or a uuid"
     expression: "this == '*' || this.matches('^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$')"
   }];
+  // IsBase64 ensures the given string is base64 encoded
+  optional bool is_base64 = 80048966 [(buf.validate.predefined).cel = {
+    id: "string.is_base64"
+    message: "string must be valid base64"
+    expression: "this.size() % 4 == 0 && this.matches('^[A-Za-z0-9+/]*={0,2}$')"
+  }];
 }
 
 extend buf.validate.RepeatedRules {

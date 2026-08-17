@@ -122,18 +122,19 @@ message MachineServiceCreateRequest {
   ];
   // Userdata contains instructions required to bootstrap the machine.
   // AWS limits the max userdata size to 16k, lets allow twice as much.
-  // Must be base64 encoded
+  // Must be base64 encoded.
   optional string userdata = 11 [
     (buf.validate.field).string = {max_len: 32768},
-    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true
+    (buf.validate.field).string.(metalstack.api.v2.trimmed) = true,
+    (buf.validate.field).string.(metalstack.api.v2.is_base64) = true
   ];
   // Labels to be attached to this machine allocation.
   Labels labels = 12;
   // Networks the networks that this machine will be placed in.
   repeated MachineAllocationNetwork networks = 13 [(buf.validate.field).repeated.min_items = 1];
-  // PlacementTags by default machines are spread across the racks inside a partition for every project.
-  // if placement tags are provided, the machine candidate has an additional anti-affinity to other machines having the same tags.
-  repeated string placement_tags = 14 [(buf.validate.field).repeated.max_items = 64];
+  // PlacementLabels by default machines are spread across the racks inside a partition for every project.
+  // if placement labels are provided, the machine candidate has an additional anti-affinity to other machines having the same labels.
+  Labels placement_labels = 14;
   // DNSServer the dns servers used for the machine.
   repeated DNSServer dns_servers = 15 [(buf.validate.field).repeated.max_items = 3];
   // NTPServer the ntp servers used for the machine.
@@ -240,10 +241,8 @@ message MachineServiceGetBMCRequest {
 
 // MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
 message MachineServiceGetBMCResponse {
-  // UUID of the machine.
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // BMC contains the BMC details of this machine.
-  MachineBMCReport bmc = 2;
+  // BMCDetails contains the BMC details of this machine.
+  MachineBMCDetails bmc_details = 6;
 }
 
 // --------------- Types ----------------------------------------------------------
@@ -346,6 +345,9 @@ message MachineAllocation {
   repeated NTPServer ntp_servers = 16 [(buf.validate.field).repeated.max_items = 10];
   // VPN connection configuration.
   MachineVPN vpn = 17;
+  // PlacementLabels by default machines are spread across the racks inside a partition for every project.
+  // if placement labels are provided, the machine candidate has an additional anti-affinity to other machines having the same labels.
+  Labels placement_labels = 18;
 }
 
 // MachineAllocationNetwork defines which network should be attached to a machine and if ips should be autoacquired.
@@ -526,22 +528,40 @@ message MachineChassisIdentifyLEDState {
   string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
+// MachineBMCDetails contains machine and bmc details of a machine.
+message MachineBMCDetails {
+  // UUID of this machine.
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Partition where this machine resides.
+  string partition = 2 [(buf.validate.field).string = {max_len: 128}];
+  // Rack where this machine is located.
+  string rack = 3 [(buf.validate.field).string = {max_len: 128}];
+  // Room where this machine is located.
+  string room = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Size of this machine.
+  string size = 5 [(buf.validate.field).string = {max_len: 128}];
+  // BMCReport contains the bmc details.
+  MachineBMCReport bmc_report = 6;
+}
+
 // MachineBMCReport is sent from the metal-bmc to update bmc and power related details.
 message MachineBMCReport {
+  // UUID of the machine.
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Bmc contains bmc details.
-  MachineBMC bmc = 1;
+  MachineBMC bmc = 2;
   // Bios contains bios details.
-  MachineBios bios = 2;
+  MachineBios bios = 3;
   // Fru contains field replaceable unit details.
-  MachineFRU fru = 3;
+  MachineFRU fru = 4;
   // PowerMetric contains the power statistics of the machine.
-  MachinePowerMetric power_metric = 4;
+  MachinePowerMetric power_metric = 5;
   // PowerSupplies contains details about all power supplies and their state.
-  repeated MachinePowerSupply power_supplies = 5;
+  repeated MachinePowerSupply power_supplies = 6;
   // LedState indicates the state of the indicator LED on this machine.
-  MachineChassisIdentifyLEDState led_state = 6;
+  MachineChassisIdentifyLEDState led_state = 7;
   // UpdatedAt contains the date when this data was last updated.
-  google.protobuf.Timestamp updated_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
 }
 
 // MachineBios contains BIOS details of this machine.
