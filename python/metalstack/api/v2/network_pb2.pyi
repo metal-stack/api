@@ -248,3 +248,11 @@ class NetworkUsage(_message.Message):
     available_prefixes: int
     used_prefixes: int
     def __init__(self, available_ips: _Optional[int] = ..., used_ips: _Optional[int] = ..., available_prefixes: _Optional[int] = ..., used_prefixes: _Optional[int] = ...) -> None: ...
+
+class ExternalNetworkMembers(_message.Message):
+    __slots__ = ("switch", "ports")
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    PORTS_FIELD_NUMBER: _ClassVar[int]
+    switch: str
+    ports: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, switch: _Optional[str] = ..., ports: _Optional[_Iterable[str]] = ...) -> None: ...

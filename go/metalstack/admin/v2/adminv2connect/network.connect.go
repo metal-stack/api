@@ -43,6 +43,12 @@ const (
 	NetworkServiceDeleteProcedure = "/metalstack.admin.v2.NetworkService/Delete"
 	// NetworkServiceListProcedure is the fully-qualified name of the NetworkService's List RPC.
 	NetworkServiceListProcedure = "/metalstack.admin.v2.NetworkService/List"
+	// NetworkServiceAddExternalMemberProcedure is the fully-qualified name of the NetworkService's
+	// AddExternalMember RPC.
+	NetworkServiceAddExternalMemberProcedure = "/metalstack.admin.v2.NetworkService/AddExternalMember"
+	// NetworkServiceRemoveExternalMemberProcedure is the fully-qualified name of the NetworkService's
+	// RemoveExternalMember RPC.
+	NetworkServiceRemoveExternalMemberProcedure = "/metalstack.admin.v2.NetworkService/RemoveExternalMember"
 )
 
 // NetworkServiceClient is a client for the metalstack.admin.v2.NetworkService service.
@@ -57,6 +63,10 @@ type NetworkServiceClient interface {
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 	// Returns the list of all networks.
 	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
+	// Adds an external member to a network.
+	AddExternalMember(context.Context, *v2.NetworkServiceAddExternalMemberRequest) (*v2.NetworkServiceAddExternalMemberResponse, error)
+	// Removes an external member from a network.
+	RemoveExternalMember(context.Context, *v2.NetworkServiceRemoveExternalMemberRequest) (*v2.NetworkServiceRemoveExternalMemberResponse, error)
 }
 
 // NewNetworkServiceClient constructs a client for the metalstack.admin.v2.NetworkService service.
@@ -100,16 +110,30 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(networkServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
+		addExternalMember: connect.NewClient[v2.NetworkServiceAddExternalMemberRequest, v2.NetworkServiceAddExternalMemberResponse](
+			httpClient,
+			baseURL+NetworkServiceAddExternalMemberProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("AddExternalMember")),
+			connect.WithClientOptions(opts...),
+		),
+		removeExternalMember: connect.NewClient[v2.NetworkServiceRemoveExternalMemberRequest, v2.NetworkServiceRemoveExternalMemberResponse](
+			httpClient,
+			baseURL+NetworkServiceRemoveExternalMemberProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("RemoveExternalMember")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // networkServiceClient implements NetworkServiceClient.
 type networkServiceClient struct {
-	get    *connect.Client[v2.NetworkServiceGetRequest, v2.NetworkServiceGetResponse]
-	create *connect.Client[v2.NetworkServiceCreateRequest, v2.NetworkServiceCreateResponse]
-	update *connect.Client[v2.NetworkServiceUpdateRequest, v2.NetworkServiceUpdateResponse]
-	delete *connect.Client[v2.NetworkServiceDeleteRequest, v2.NetworkServiceDeleteResponse]
-	list   *connect.Client[v2.NetworkServiceListRequest, v2.NetworkServiceListResponse]
+	get                  *connect.Client[v2.NetworkServiceGetRequest, v2.NetworkServiceGetResponse]
+	create               *connect.Client[v2.NetworkServiceCreateRequest, v2.NetworkServiceCreateResponse]
+	update               *connect.Client[v2.NetworkServiceUpdateRequest, v2.NetworkServiceUpdateResponse]
+	delete               *connect.Client[v2.NetworkServiceDeleteRequest, v2.NetworkServiceDeleteResponse]
+	list                 *connect.Client[v2.NetworkServiceListRequest, v2.NetworkServiceListResponse]
+	addExternalMember    *connect.Client[v2.NetworkServiceAddExternalMemberRequest, v2.NetworkServiceAddExternalMemberResponse]
+	removeExternalMember *connect.Client[v2.NetworkServiceRemoveExternalMemberRequest, v2.NetworkServiceRemoveExternalMemberResponse]
 }
 
 // Get calls metalstack.admin.v2.NetworkService.Get.
@@ -157,6 +181,24 @@ func (c *networkServiceClient) List(ctx context.Context, req *v2.NetworkServiceL
 	return nil, err
 }
 
+// AddExternalMember calls metalstack.admin.v2.NetworkService.AddExternalMember.
+func (c *networkServiceClient) AddExternalMember(ctx context.Context, req *v2.NetworkServiceAddExternalMemberRequest) (*v2.NetworkServiceAddExternalMemberResponse, error) {
+	response, err := c.addExternalMember.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// RemoveExternalMember calls metalstack.admin.v2.NetworkService.RemoveExternalMember.
+func (c *networkServiceClient) RemoveExternalMember(ctx context.Context, req *v2.NetworkServiceRemoveExternalMemberRequest) (*v2.NetworkServiceRemoveExternalMemberResponse, error) {
+	response, err := c.removeExternalMember.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // NetworkServiceHandler is an implementation of the metalstack.admin.v2.NetworkService service.
 type NetworkServiceHandler interface {
 	// Returns the network with the specified ID.
@@ -169,6 +211,10 @@ type NetworkServiceHandler interface {
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 	// Returns the list of all networks.
 	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
+	// Adds an external member to a network.
+	AddExternalMember(context.Context, *v2.NetworkServiceAddExternalMemberRequest) (*v2.NetworkServiceAddExternalMemberResponse, error)
+	// Removes an external member from a network.
+	RemoveExternalMember(context.Context, *v2.NetworkServiceRemoveExternalMemberRequest) (*v2.NetworkServiceRemoveExternalMemberResponse, error)
 }
 
 // NewNetworkServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -208,6 +254,18 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 		connect.WithSchema(networkServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
+	networkServiceAddExternalMemberHandler := connect.NewUnaryHandlerSimple(
+		NetworkServiceAddExternalMemberProcedure,
+		svc.AddExternalMember,
+		connect.WithSchema(networkServiceMethods.ByName("AddExternalMember")),
+		connect.WithHandlerOptions(opts...),
+	)
+	networkServiceRemoveExternalMemberHandler := connect.NewUnaryHandlerSimple(
+		NetworkServiceRemoveExternalMemberProcedure,
+		svc.RemoveExternalMember,
+		connect.WithSchema(networkServiceMethods.ByName("RemoveExternalMember")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.NetworkService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case NetworkServiceGetProcedure:
@@ -220,6 +278,10 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 			networkServiceDeleteHandler.ServeHTTP(w, r)
 		case NetworkServiceListProcedure:
 			networkServiceListHandler.ServeHTTP(w, r)
+		case NetworkServiceAddExternalMemberProcedure:
+			networkServiceAddExternalMemberHandler.ServeHTTP(w, r)
+		case NetworkServiceRemoveExternalMemberProcedure:
+			networkServiceRemoveExternalMemberHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -247,4 +309,12 @@ func (UnimplementedNetworkServiceHandler) Delete(context.Context, *v2.NetworkSer
 
 func (UnimplementedNetworkServiceHandler) List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.List is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) AddExternalMember(context.Context, *v2.NetworkServiceAddExternalMemberRequest) (*v2.NetworkServiceAddExternalMemberResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.AddExternalMember is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) RemoveExternalMember(context.Context, *v2.NetworkServiceRemoveExternalMemberRequest) (*v2.NetworkServiceRemoveExternalMemberResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.RemoveExternalMember is not implemented"))
 }

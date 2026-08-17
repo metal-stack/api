@@ -613,6 +613,30 @@ export type NetworkUsage = Message<"metalstack.api.v2.NetworkUsage"> & {
  */
 export declare const NetworkUsageSchema: GenMessage<NetworkUsage>;
 /**
+ * ExternalNetworkMembers that participate in a network.
+ *
+ * @generated from message metalstack.api.v2.ExternalNetworkMembers
+ */
+export type ExternalNetworkMembers = Message<"metalstack.api.v2.ExternalNetworkMembers"> & {
+    /**
+     * Switch the external members are connected to.
+     *
+     * @generated from field: string switch = 1;
+     */
+    switch: string;
+    /**
+     * Ports of the switch that participate in the network.
+     *
+     * @generated from field: repeated string ports = 2;
+     */
+    ports: string[];
+};
+/**
+ * Describes the message metalstack.api.v2.ExternalNetworkMembers.
+ * Use `create(ExternalNetworkMembersSchema)` to create a new message.
+ */
+export declare const ExternalNetworkMembersSchema: GenMessage<ExternalNetworkMembers>;
+/**
  * NATType defines how and if outgoing traffic is translated.
  *
  * @generated from enum metalstack.api.v2.NATType
