@@ -3,7 +3,7 @@
   "description": "metal-stack api typescript client",
   "repository": "https://github.com/metal-stack/api.git",
   "scripts": {
-    "build": "tsc --project tsconfig.json",
+    "build": "tsc --project js/tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "metal-stack.io",
@@ -18,7 +18,7 @@
     "typescript": "^7.0.2"
   },
   "files": [
-    "./*"
+    "js/*"
   ],
   "version": "0.0.0"
 }

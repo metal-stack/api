@@ -12,10 +12,11 @@ clean:
 .PHONY: build
 build: install
 ifeq ($(CI),true)
+	cd .. &&\
 	yq e -i -o=json ".version=\"$(VERSION_STRIPPED)\"" package.json &&\
 	yq e -o=json ".version" package.json
 endif
-	bun run build
+	cd .. && bun run build
 
 .PHONY: test
 test:
