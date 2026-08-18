@@ -69,7 +69,7 @@ message SwitchNic {
   // Identifier of the port.
   string identifier = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // MAC address of the port.
-  string mac = 3 [(buf.validate.field).string.(macaddress) = true];
+  optional string mac = 3 [(buf.validate.field).string.(macaddress) = true];
   // VRF name if the port is bound in one.
   optional string vrf = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // NicState describes the current state of the switch port.

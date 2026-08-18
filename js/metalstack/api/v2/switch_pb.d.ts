@@ -160,9 +160,9 @@ export type SwitchNic = Message<"metalstack.api.v2.SwitchNic"> & {
     /**
      * MAC address of the port.
      *
-     * @generated from field: string mac = 3;
+     * @generated from field: optional string mac = 3;
      */
-    mac: string;
+    mac?: string | undefined;
     /**
      * VRF name if the port is bound in one.
      *
