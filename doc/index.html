@@ -1270,6 +1270,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.MachineBMCDetails"><span class="badge">M</span>MachineBMCDetails</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.MachineBMCQuery"><span class="badge">M</span>MachineBMCQuery</a>
                 </li>
               
@@ -1538,10 +1542,6 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.MachineServiceListBMCResponse"><span class="badge">M</span>MachineServiceListBMCResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry"><span class="badge">M</span>MachineServiceListBMCResponse.BmcReportsEntry</a>
                 </li>
               
                 <li>
@@ -2669,10 +2669,6 @@
               
                 <li>
                   <a href="#metalstack.infra.v2.UpdateBMCInfoRequest"><span class="badge">M</span>UpdateBMCInfoRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry"><span class="badge">M</span>UpdateBMCInfoRequest.BmcReportsEntry</a>
                 </li>
               
                 <li>
@@ -10662,6 +10658,65 @@ Order of ips is preserved on the loopback interface. </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.MachineBMCDetails">MachineBMCDetails</h3>
+        <p>MachineBMCDetails contains machine and bmc details of a machine.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of this machine. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition where this machine resides. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rack</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Rack where this machine is located. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>room</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Room where this machine is located. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>size</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Size of this machine. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>bmc_report</td>
+                  <td><a href="#metalstack.api.v2.MachineBMCReport">MachineBMCReport</a></td>
+                  <td></td>
+                  <td><p>BMCReport contains the bmc details. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.MachineBMCQuery">MachineBMCQuery</h3>
         <p>MachineBMCQuery machine ipmi or bmc specific machine queries.</p>
 
@@ -10716,6 +10771,13 @@ Order of ips is preserved on the loopback interface. </p></td>
               <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
             </thead>
             <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine. </p></td>
+                </tr>
               
                 <tr>
                   <td>bmc</td>
@@ -12191,17 +12253,10 @@ if placement labels are provided, the machine candidate has an additional anti-a
             <tbody>
               
                 <tr>
-                  <td>uuid</td>
-                  <td><a href="#string">string</a></td>
+                  <td>bmc_details</td>
+                  <td><a href="#metalstack.api.v2.MachineBMCDetails">MachineBMCDetails</a></td>
                   <td></td>
-                  <td><p>UUID of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>bmc</td>
-                  <td><a href="#metalstack.api.v2.MachineBMCReport">MachineBMCReport</a></td>
-                  <td></td>
-                  <td><p>BMC contains the BMC details of this machine. </p></td>
+                  <td><p>BMCDetails contains the BMC details of this machine. </p></td>
                 </tr>
               
             </tbody>
@@ -13282,17 +13337,10 @@ Reason is only forwarded to an audit sink. </p></td>
             <tbody>
               
                 <tr>
-                  <td>uuid</td>
-                  <td><a href="#string">string</a></td>
+                  <td>bmc_details</td>
+                  <td><a href="#metalstack.api.v2.MachineBMCDetails">metalstack.api.v2.MachineBMCDetails</a></td>
                   <td></td>
-                  <td><p>UUID of the machine. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>bmc</td>
-                  <td><a href="#metalstack.api.v2.MachineBMCReport">metalstack.api.v2.MachineBMCReport</a></td>
-                  <td></td>
-                  <td><p>BMC contains the BMC details of this machine. </p></td>
+                  <td><p>BMCDetails of the machine. </p></td>
                 </tr>
               
             </tbody>
@@ -13410,7 +13458,7 @@ Reason is only forwarded to an audit sink. </p></td>
               
                 <tr>
                   <td>query</td>
-                  <td><a href="#metalstack.api.v2.MachineBMCQuery">metalstack.api.v2.MachineBMCQuery</a></td>
+                  <td><a href="#metalstack.api.v2.MachineQuery">metalstack.api.v2.MachineQuery</a></td>
                   <td></td>
                   <td><p>Query to list one or more BMCs of many machines. </p></td>
                 </tr>
@@ -13433,41 +13481,10 @@ Reason is only forwarded to an audit sink. </p></td>
             <tbody>
               
                 <tr>
-                  <td>bmc_reports</td>
-                  <td><a href="#metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry">MachineServiceListBMCResponse.BmcReportsEntry</a></td>
+                  <td>bmc_details</td>
+                  <td><a href="#metalstack.api.v2.MachineBMCDetails">metalstack.api.v2.MachineBMCDetails</a></td>
                   <td>repeated</td>
-                  <td><p>BMCReports maps the bmc report per machine uuid. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.admin.v2.MachineServiceListBMCResponse.BmcReportsEntry">MachineServiceListBMCResponse.BmcReportsEntry</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>key</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>value</td>
-                  <td><a href="#metalstack.api.v2.MachineBMCReport">metalstack.api.v2.MachineBMCReport</a></td>
-                  <td></td>
-                  <td><p> </p></td>
+                  <td><p>BMCDetails of the machines. </p></td>
                 </tr>
               
             </tbody>
@@ -21511,40 +21528,9 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command. </p></td>
               
                 <tr>
                   <td>bmc_reports</td>
-                  <td><a href="#metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry">UpdateBMCInfoRequest.BmcReportsEntry</a></td>
-                  <td>repeated</td>
-                  <td><p>BmcReports maps the BMC report per machine UUID. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.infra.v2.UpdateBMCInfoRequest.BmcReportsEntry">UpdateBMCInfoRequest.BmcReportsEntry</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>key</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-                <tr>
-                  <td>value</td>
                   <td><a href="#metalstack.api.v2.MachineBMCReport">metalstack.api.v2.MachineBMCReport</a></td>
-                  <td></td>
-                  <td><p> </p></td>
+                  <td>repeated</td>
+                  <td><p>BmcReports contains bmc details of a machine. </p></td>
                 </tr>
               
             </tbody>

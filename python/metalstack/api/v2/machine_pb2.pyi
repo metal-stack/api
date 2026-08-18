@@ -303,12 +303,10 @@ class MachineServiceGetBMCRequest(_message.Message):
     def __init__(self, uuid: _Optional[str] = ..., project: _Optional[str] = ...) -> None: ...
 
 class MachineServiceGetBMCResponse(_message.Message):
-    __slots__ = ("uuid", "bmc")
-    UUID_FIELD_NUMBER: _ClassVar[int]
-    BMC_FIELD_NUMBER: _ClassVar[int]
-    uuid: str
-    bmc: MachineBMCReport
-    def __init__(self, uuid: _Optional[str] = ..., bmc: _Optional[_Union[MachineBMCReport, _Mapping]] = ...) -> None: ...
+    __slots__ = ("bmc_details",)
+    BMC_DETAILS_FIELD_NUMBER: _ClassVar[int]
+    bmc_details: MachineBMCDetails
+    def __init__(self, bmc_details: _Optional[_Union[MachineBMCDetails, _Mapping]] = ...) -> None: ...
 
 class Machine(_message.Message):
     __slots__ = ("uuid", "meta", "partition", "rack", "room", "size", "hardware", "allocation", "status", "recent_provisioning_events")
@@ -529,8 +527,25 @@ class MachineChassisIdentifyLEDState(_message.Message):
     description: str
     def __init__(self, value: _Optional[str] = ..., description: _Optional[str] = ...) -> None: ...
 
+class MachineBMCDetails(_message.Message):
+    __slots__ = ("uuid", "partition", "rack", "room", "size", "bmc_report")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
+    ROOM_FIELD_NUMBER: _ClassVar[int]
+    SIZE_FIELD_NUMBER: _ClassVar[int]
+    BMC_REPORT_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    partition: str
+    rack: str
+    room: str
+    size: str
+    bmc_report: MachineBMCReport
+    def __init__(self, uuid: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., room: _Optional[str] = ..., size: _Optional[str] = ..., bmc_report: _Optional[_Union[MachineBMCReport, _Mapping]] = ...) -> None: ...
+
 class MachineBMCReport(_message.Message):
-    __slots__ = ("bmc", "bios", "fru", "power_metric", "power_supplies", "led_state", "updated_at")
+    __slots__ = ("uuid", "bmc", "bios", "fru", "power_metric", "power_supplies", "led_state", "updated_at")
+    UUID_FIELD_NUMBER: _ClassVar[int]
     BMC_FIELD_NUMBER: _ClassVar[int]
     BIOS_FIELD_NUMBER: _ClassVar[int]
     FRU_FIELD_NUMBER: _ClassVar[int]
@@ -538,6 +553,7 @@ class MachineBMCReport(_message.Message):
     POWER_SUPPLIES_FIELD_NUMBER: _ClassVar[int]
     LED_STATE_FIELD_NUMBER: _ClassVar[int]
     UPDATED_AT_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
     bmc: MachineBMC
     bios: MachineBios
     fru: MachineFRU
@@ -545,7 +561,7 @@ class MachineBMCReport(_message.Message):
     power_supplies: _containers.RepeatedCompositeFieldContainer[MachinePowerSupply]
     led_state: MachineChassisIdentifyLEDState
     updated_at: _timestamp_pb2.Timestamp
-    def __init__(self, bmc: _Optional[_Union[MachineBMC, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., fru: _Optional[_Union[MachineFRU, _Mapping]] = ..., power_metric: _Optional[_Union[MachinePowerMetric, _Mapping]] = ..., power_supplies: _Optional[_Iterable[_Union[MachinePowerSupply, _Mapping]]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    def __init__(self, uuid: _Optional[str] = ..., bmc: _Optional[_Union[MachineBMC, _Mapping]] = ..., bios: _Optional[_Union[MachineBios, _Mapping]] = ..., fru: _Optional[_Union[MachineFRU, _Mapping]] = ..., power_metric: _Optional[_Union[MachinePowerMetric, _Mapping]] = ..., power_supplies: _Optional[_Iterable[_Union[MachinePowerSupply, _Mapping]]] = ..., led_state: _Optional[_Union[MachineChassisIdentifyLEDState, _Mapping]] = ..., updated_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
 
 class MachineBios(_message.Message):
     __slots__ = ("version", "vendor", "date")
