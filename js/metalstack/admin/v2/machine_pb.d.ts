@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Machine, MachineBMCCommand, MachineBMCQuery, MachineBMCReport, MachineIssues, MachineIssuesQuery, MachineQuery, MachineState } from "../../api/v2/machine_pb";
+import type { Machine, MachineBMCCommand, MachineBMCDetails, MachineIssues, MachineIssuesQuery, MachineQuery, MachineState } from "../../api/v2/machine_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/machine.proto.
@@ -180,17 +180,11 @@ export declare const MachineServiceGetBMCRequestSchema: GenMessage<MachineServic
  */
 export type MachineServiceGetBMCResponse = Message<"metalstack.admin.v2.MachineServiceGetBMCResponse"> & {
     /**
-     * UUID of the machine.
+     * BMCDetails of the machine.
      *
-     * @generated from field: string uuid = 1;
+     * @generated from field: metalstack.api.v2.MachineBMCDetails bmc_details = 1;
      */
-    uuid: string;
-    /**
-     * BMC contains the BMC details of this machine.
-     *
-     * @generated from field: metalstack.api.v2.MachineBMCReport bmc = 2;
-     */
-    bmc?: MachineBMCReport | undefined;
+    bmcDetails?: MachineBMCDetails | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceGetBMCResponse.
@@ -206,9 +200,9 @@ export type MachineServiceListBMCRequest = Message<"metalstack.admin.v2.MachineS
     /**
      * Query to list one or more BMCs of many machines.
      *
-     * @generated from field: metalstack.api.v2.MachineBMCQuery query = 1;
+     * @generated from field: metalstack.api.v2.MachineQuery query = 1;
      */
-    query?: MachineBMCQuery | undefined;
+    query?: MachineQuery | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceListBMCRequest.
@@ -222,13 +216,11 @@ export declare const MachineServiceListBMCRequestSchema: GenMessage<MachineServi
  */
 export type MachineServiceListBMCResponse = Message<"metalstack.admin.v2.MachineServiceListBMCResponse"> & {
     /**
-     * BMCReports maps the bmc report per machine uuid.
+     * BMCDetails of the machines.
      *
-     * @generated from field: map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 1;
+     * @generated from field: repeated metalstack.api.v2.MachineBMCDetails bmc_details = 1;
      */
-    bmcReports: {
-        [key: string]: MachineBMCReport;
-    };
+    bmcDetails: MachineBMCDetails[];
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceListBMCResponse.
