@@ -1512,8 +1512,8 @@ func (x *NetworkUsage) GetUsedPrefixes() uint64 {
 	return 0
 }
 
-// ExternalNetworkMembers are the ports of a switch that participate in a network and are connected to machines not known to metal-stack.
-type ExternalNetworkMembers struct {
+// ExternalNetworkMember contains the ports of a switch that participate in a network and are connected to machines not known to metal-stack.
+type ExternalNetworkMember struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Switch the external members are connected to.
 	Switch string `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
@@ -1523,20 +1523,20 @@ type ExternalNetworkMembers struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ExternalNetworkMembers) Reset() {
-	*x = ExternalNetworkMembers{}
+func (x *ExternalNetworkMember) Reset() {
+	*x = ExternalNetworkMember{}
 	mi := &file_metalstack_api_v2_network_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ExternalNetworkMembers) String() string {
+func (x *ExternalNetworkMember) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ExternalNetworkMembers) ProtoMessage() {}
+func (*ExternalNetworkMember) ProtoMessage() {}
 
-func (x *ExternalNetworkMembers) ProtoReflect() protoreflect.Message {
+func (x *ExternalNetworkMember) ProtoReflect() protoreflect.Message {
 	mi := &file_metalstack_api_v2_network_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1548,19 +1548,19 @@ func (x *ExternalNetworkMembers) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ExternalNetworkMembers.ProtoReflect.Descriptor instead.
-func (*ExternalNetworkMembers) Descriptor() ([]byte, []int) {
+// Deprecated: Use ExternalNetworkMember.ProtoReflect.Descriptor instead.
+func (*ExternalNetworkMember) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_network_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *ExternalNetworkMembers) GetSwitch() string {
+func (x *ExternalNetworkMember) GetSwitch() string {
 	if x != nil {
 		return x.Switch
 	}
 	return ""
 }
 
-func (x *ExternalNetworkMembers) GetPorts() []string {
+func (x *ExternalNetworkMember) GetPorts() []string {
 	if x != nil {
 		return x.Ports
 	}
@@ -1703,8 +1703,8 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\ravailable_ips\x18\x01 \x01(\x04R\favailableIps\x12\x19\n" +
 	"\bused_ips\x18\x02 \x01(\x04R\ausedIps\x12-\n" +
 	"\x12available_prefixes\x18\x03 \x01(\x04R\x11availablePrefixes\x12#\n" +
-	"\rused_prefixes\x18\x04 \x01(\x04R\fusedPrefixes\"d\n" +
-	"\x16ExternalNetworkMembers\x12#\n" +
+	"\rused_prefixes\x18\x04 \x01(\x04R\fusedPrefixes\"c\n" +
+	"\x15ExternalNetworkMember\x12#\n" +
 	"\x06switch\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x06switch\x12%\n" +
 	"\x05ports\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\tФ\xb3\xb1\x02\x01\x10\x80\x10R\x05ports*m\n" +
 	"\aNATType\x12\x18\n" +
@@ -1773,7 +1773,7 @@ var file_metalstack_api_v2_network_proto_goTypes = []any{
 	(*ChildPrefixLength)(nil),                      // 18: metalstack.api.v2.ChildPrefixLength
 	(*NetworkConsumption)(nil),                     // 19: metalstack.api.v2.NetworkConsumption
 	(*NetworkUsage)(nil),                           // 20: metalstack.api.v2.NetworkUsage
-	(*ExternalNetworkMembers)(nil),                 // 21: metalstack.api.v2.ExternalNetworkMembers
+	(*ExternalNetworkMember)(nil),                  // 21: metalstack.api.v2.ExternalNetworkMember
 	(*Labels)(nil),                                 // 22: metalstack.api.v2.Labels
 	(*UpdateMeta)(nil),                             // 23: metalstack.api.v2.UpdateMeta
 	(*UpdateLabels)(nil),                           // 24: metalstack.api.v2.UpdateLabels

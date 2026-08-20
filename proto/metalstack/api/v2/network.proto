@@ -278,8 +278,8 @@ message NetworkUsage {
   uint64 used_prefixes = 4;
 }
 
-// ExternalNetworkMembers are the ports of a switch that participate in a network and are connected to machines not known to metal-stack.
-message ExternalNetworkMembers {
+// ExternalNetworkMember contains the ports of a switch that participate in a network and are connected to machines not known to metal-stack.
+message ExternalNetworkMember {
   // Switch the external members are connected to.
   string switch = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Ports of the switch that participate in the network.

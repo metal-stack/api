@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Labels, UpdateLabels, UpdateMeta } from "../../api/v2/common_pb";
-import type { ChildPrefixLength, ExternalNetworkMemberQuery, ExternalNetworkMembers, NATType, Network, NetworkAddressFamily, NetworkQuery, NetworkType } from "../../api/v2/network_pb";
+import type { ChildPrefixLength, ExternalNetworkMember, ExternalNetworkMemberQuery, NATType, Network, NetworkAddressFamily, NetworkQuery, NetworkType } from "../../api/v2/network_pb";
 import type { Switch } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -317,9 +317,9 @@ export type NetworkServiceAddExternalMemberRequest = Message<"metalstack.admin.v
      * SwitchPorts contains the ports of a switch that should be added to the network.
      * Make sure to add both switches of a rack and the same ports of both in the same request.
      *
-     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
+     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember switch_ports = 2;
      */
-    switchPorts: ExternalNetworkMembers[];
+    switchPorts: ExternalNetworkMember[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMemberRequest.
@@ -341,9 +341,9 @@ export type NetworkServiceRemoveExternalMemberRequest = Message<"metalstack.admi
     /**
      * SwitchPorts contains the ports of a switch that should be removed from the network.
      *
-     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMembers switch_ports = 2;
+     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember switch_ports = 2;
      */
-    switchPorts: ExternalNetworkMembers[];
+    switchPorts: ExternalNetworkMember[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest.
@@ -431,9 +431,9 @@ export type NetworkServiceListExternalMembersResponse = Message<"metalstack.admi
     /**
      * Members are the queried external members of the network.
      *
-     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMembers members = 1;
+     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember members = 1;
      */
-    members: ExternalNetworkMembers[];
+    members: ExternalNetworkMember[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceListExternalMembersResponse.

@@ -1045,11 +1045,11 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.ExternalNetworkMemberQuery"><span class="badge">M</span>ExternalNetworkMemberQuery</a>
+                  <a href="#metalstack.api.v2.ExternalNetworkMember"><span class="badge">M</span>ExternalNetworkMember</a>
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.ExternalNetworkMembers"><span class="badge">M</span>ExternalNetworkMembers</a>
+                  <a href="#metalstack.api.v2.ExternalNetworkMemberQuery"><span class="badge">M</span>ExternalNetworkMemberQuery</a>
                 </li>
               
                 <li>
@@ -8551,6 +8551,37 @@ Will be equal with project most of the time. </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.ExternalNetworkMember">ExternalNetworkMember</h3>
+        <p>ExternalNetworkMember contains the ports of a switch that participate in a network and are connected to machines not known to metal-stack.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>switch</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Switch the external members are connected to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ports</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Ports of the switch that participate in the network. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.ExternalNetworkMemberQuery">ExternalNetworkMemberQuery</h3>
         <p>ExternalNetworkMemberQuery defines which filters to apply when looking up external network members.</p>
 
@@ -8573,37 +8604,6 @@ Will be equal with project most of the time. </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>Rack for which the members of the network are queried. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.ExternalNetworkMembers">ExternalNetworkMembers</h3>
-        <p>ExternalNetworkMembers are the ports of a switch that participate in a network and are connected to machines not known to metal-stack.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>switch</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Switch the external members are connected to. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ports</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Ports of the switch that participate in the network. </p></td>
                 </tr>
               
             </tbody>
@@ -14571,7 +14571,7 @@ If State set to available, description is also cleared. </p></td>
               
                 <tr>
                   <td>switch_ports</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMembers">metalstack.api.v2.ExternalNetworkMembers</a></td>
+                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
                   <td>repeated</td>
                   <td><p>SwitchPorts contains the ports of a switch that should be added to the network.
 Make sure to add both switches of a rack and the same ports of both in the same request. </p></td>
@@ -14907,7 +14907,7 @@ Make sure to add both switches of a rack and the same ports of both in the same 
               
                 <tr>
                   <td>members</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMembers">metalstack.api.v2.ExternalNetworkMembers</a></td>
+                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
                   <td>repeated</td>
                   <td><p>Members are the queried external members of the network. </p></td>
                 </tr>
@@ -14986,7 +14986,7 @@ Make sure to add both switches of a rack and the same ports of both in the same 
               
                 <tr>
                   <td>switch_ports</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMembers">metalstack.api.v2.ExternalNetworkMembers</a></td>
+                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
                   <td>repeated</td>
                   <td><p>SwitchPorts contains the ports of a switch that should be removed from the network. </p></td>
                 </tr>

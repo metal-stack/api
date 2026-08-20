@@ -257,7 +257,7 @@ class NetworkUsage(_message.Message):
     used_prefixes: int
     def __init__(self, available_ips: _Optional[int] = ..., used_ips: _Optional[int] = ..., available_prefixes: _Optional[int] = ..., used_prefixes: _Optional[int] = ...) -> None: ...
 
-class ExternalNetworkMembers(_message.Message):
+class ExternalNetworkMember(_message.Message):
     __slots__ = ("switch", "ports")
     SWITCH_FIELD_NUMBER: _ClassVar[int]
     PORTS_FIELD_NUMBER: _ClassVar[int]
