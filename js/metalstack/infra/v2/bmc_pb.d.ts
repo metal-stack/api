@@ -18,13 +18,11 @@ export type UpdateBMCInfoRequest = Message<"metalstack.infra.v2.UpdateBMCInfoReq
      */
     partition: string;
     /**
-     * BmcReports maps the BMC report per machine UUID.
+     * BmcReports contains bmc details of a machine.
      *
-     * @generated from field: map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 2;
+     * @generated from field: repeated metalstack.api.v2.MachineBMCReport bmc_reports = 2;
      */
-    bmcReports: {
-        [key: string]: MachineBMCReport;
-    };
+    bmcReports: MachineBMCReport[];
 };
 /**
  * Describes the message metalstack.infra.v2.UpdateBMCInfoRequest.

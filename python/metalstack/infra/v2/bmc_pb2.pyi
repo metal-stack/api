@@ -12,18 +12,11 @@ DESCRIPTOR: _descriptor.FileDescriptor
 
 class UpdateBMCInfoRequest(_message.Message):
     __slots__ = ("partition", "bmc_reports")
-    class BmcReportsEntry(_message.Message):
-        __slots__ = ("key", "value")
-        KEY_FIELD_NUMBER: _ClassVar[int]
-        VALUE_FIELD_NUMBER: _ClassVar[int]
-        key: str
-        value: _machine_pb2.MachineBMCReport
-        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[_machine_pb2.MachineBMCReport, _Mapping]] = ...) -> None: ...
     PARTITION_FIELD_NUMBER: _ClassVar[int]
     BMC_REPORTS_FIELD_NUMBER: _ClassVar[int]
     partition: str
-    bmc_reports: _containers.MessageMap[str, _machine_pb2.MachineBMCReport]
-    def __init__(self, partition: _Optional[str] = ..., bmc_reports: _Optional[_Mapping[str, _machine_pb2.MachineBMCReport]] = ...) -> None: ...
+    bmc_reports: _containers.RepeatedCompositeFieldContainer[_machine_pb2.MachineBMCReport]
+    def __init__(self, partition: _Optional[str] = ..., bmc_reports: _Optional[_Iterable[_Union[_machine_pb2.MachineBMCReport, _Mapping]]] = ...) -> None: ...
 
 class UpdateBMCInfoResponse(_message.Message):
     __slots__ = ("updated_machines", "created_machines")

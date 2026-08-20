@@ -31,11 +31,13 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
-        run: cd js && bun install --frozen-lockfile
+        working-directory: js
+        run: bun install --frozen-lockfile
 
       - name: build
         run: make build
 
       - name: Publish to npm
+        working-directory: js
         run: bunx npm@11.8.0 publish --provenance # workaround for bun not supporting trusted publishing of npm (https://github.com/oven-sh/bun/issues/15601)
         if: github.event_name == 'release'
