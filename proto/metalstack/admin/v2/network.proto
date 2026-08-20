@@ -37,6 +37,12 @@ service NetworkService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
+  // Lists external members of a network.
+  rpc ListExternalMembers(NetworkServiceListExternalMembersRequest) returns (NetworkServiceListExternalMembersResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
   // Adds an external member to a network.
   rpc AddExternalMember(NetworkServiceAddExternalMemberRequest) returns (NetworkServiceAddExternalMemberResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
@@ -140,8 +146,8 @@ message NetworkServiceListRequest {
   metalstack.api.v2.NetworkQuery query = 1;
 }
 
-// NetworkServiceListExternalMemberRequest is the request payload for listing external members of a network.
-message NetworkServiceListExternalMemberRequest {
+// NetworkServiceListExternalMembersRequest is the request payload for listing external members of a network.
+message NetworkServiceListExternalMembersRequest {
   // Network to list the members for.
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Query specifies additional filters for the list request.
@@ -189,8 +195,8 @@ message NetworkServiceListResponse {
   repeated metalstack.api.v2.Network networks = 1;
 }
 
-// NetworkServiceListExternalMemberResponse is the response payload for listing external members of a network.
-message NetworkServiceListExternalMemberResponse {
+// NetworkServiceListExternalMembersResponse is the response payload for listing external members of a network.
+message NetworkServiceListExternalMembersResponse {
   // Members are the queried external members of the network.
   repeated metalstack.api.v2.ExternalNetworkMembers members = 1;
 }

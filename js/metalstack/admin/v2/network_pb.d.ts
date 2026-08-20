@@ -278,11 +278,11 @@ export type NetworkServiceListRequest = Message<"metalstack.admin.v2.NetworkServ
  */
 export declare const NetworkServiceListRequestSchema: GenMessage<NetworkServiceListRequest>;
 /**
- * NetworkServiceListExternalMemberRequest is the request payload for listing external members of a network.
+ * NetworkServiceListExternalMembersRequest is the request payload for listing external members of a network.
  *
- * @generated from message metalstack.admin.v2.NetworkServiceListExternalMemberRequest
+ * @generated from message metalstack.admin.v2.NetworkServiceListExternalMembersRequest
  */
-export type NetworkServiceListExternalMemberRequest = Message<"metalstack.admin.v2.NetworkServiceListExternalMemberRequest"> & {
+export type NetworkServiceListExternalMembersRequest = Message<"metalstack.admin.v2.NetworkServiceListExternalMembersRequest"> & {
     /**
      * Network to list the members for.
      *
@@ -297,10 +297,10 @@ export type NetworkServiceListExternalMemberRequest = Message<"metalstack.admin.
     query?: ExternalNetworkMemberQuery | undefined;
 };
 /**
- * Describes the message metalstack.admin.v2.NetworkServiceListExternalMemberRequest.
- * Use `create(NetworkServiceListExternalMemberRequestSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.NetworkServiceListExternalMembersRequest.
+ * Use `create(NetworkServiceListExternalMembersRequestSchema)` to create a new message.
  */
-export declare const NetworkServiceListExternalMemberRequestSchema: GenMessage<NetworkServiceListExternalMemberRequest>;
+export declare const NetworkServiceListExternalMembersRequestSchema: GenMessage<NetworkServiceListExternalMembersRequest>;
 /**
  * NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.
  *
@@ -423,11 +423,11 @@ export type NetworkServiceListResponse = Message<"metalstack.admin.v2.NetworkSer
  */
 export declare const NetworkServiceListResponseSchema: GenMessage<NetworkServiceListResponse>;
 /**
- * NetworkServiceListExternalMemberResponse is the response payload for listing external members of a network.
+ * NetworkServiceListExternalMembersResponse is the response payload for listing external members of a network.
  *
- * @generated from message metalstack.admin.v2.NetworkServiceListExternalMemberResponse
+ * @generated from message metalstack.admin.v2.NetworkServiceListExternalMembersResponse
  */
-export type NetworkServiceListExternalMemberResponse = Message<"metalstack.admin.v2.NetworkServiceListExternalMemberResponse"> & {
+export type NetworkServiceListExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceListExternalMembersResponse"> & {
     /**
      * Members are the queried external members of the network.
      *
@@ -436,10 +436,10 @@ export type NetworkServiceListExternalMemberResponse = Message<"metalstack.admin
     members: ExternalNetworkMembers[];
 };
 /**
- * Describes the message metalstack.admin.v2.NetworkServiceListExternalMemberResponse.
- * Use `create(NetworkServiceListExternalMemberResponseSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.NetworkServiceListExternalMembersResponse.
+ * Use `create(NetworkServiceListExternalMembersResponseSchema)` to create a new message.
  */
-export declare const NetworkServiceListExternalMemberResponseSchema: GenMessage<NetworkServiceListExternalMemberResponse>;
+export declare const NetworkServiceListExternalMembersResponseSchema: GenMessage<NetworkServiceListExternalMembersResponse>;
 /**
  * NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.
  *
@@ -531,6 +531,16 @@ export declare const NetworkService: GenService<{
         methodKind: "unary";
         input: typeof NetworkServiceListRequestSchema;
         output: typeof NetworkServiceListResponseSchema;
+    };
+    /**
+     * Lists external members of a network.
+     *
+     * @generated from rpc metalstack.admin.v2.NetworkService.ListExternalMembers
+     */
+    listExternalMembers: {
+        methodKind: "unary";
+        input: typeof NetworkServiceListExternalMembersRequestSchema;
+        output: typeof NetworkServiceListExternalMembersResponseSchema;
     };
     /**
      * Adds an external member to a network.

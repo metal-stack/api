@@ -101,7 +101,7 @@ class NetworkServiceListRequest(_message.Message):
     query: _network_pb2.NetworkQuery
     def __init__(self, query: _Optional[_Union[_network_pb2.NetworkQuery, _Mapping]] = ...) -> None: ...
 
-class NetworkServiceListExternalMemberRequest(_message.Message):
+class NetworkServiceListExternalMembersRequest(_message.Message):
     __slots__ = ("network", "query")
     NETWORK_FIELD_NUMBER: _ClassVar[int]
     QUERY_FIELD_NUMBER: _ClassVar[int]
@@ -149,7 +149,7 @@ class NetworkServiceListResponse(_message.Message):
     networks: _containers.RepeatedCompositeFieldContainer[_network_pb2.Network]
     def __init__(self, networks: _Optional[_Iterable[_Union[_network_pb2.Network, _Mapping]]] = ...) -> None: ...
 
-class NetworkServiceListExternalMemberResponse(_message.Message):
+class NetworkServiceListExternalMembersResponse(_message.Message):
     __slots__ = ("members",)
     MEMBERS_FIELD_NUMBER: _ClassVar[int]
     members: _containers.RepeatedCompositeFieldContainer[_network_pb2.ExternalNetworkMembers]
