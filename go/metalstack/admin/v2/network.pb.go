@@ -542,6 +542,172 @@ func (x *NetworkServiceListRequest) GetQuery() *v2.NetworkQuery {
 	return nil
 }
 
+// NetworkServiceListExternalMembersRequest is the request payload for listing external members of a network.
+type NetworkServiceListExternalMembersRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Network to list the members for.
+	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	// Query specifies additional filters for the list request.
+	Query         *v2.ExternalNetworkMemberQuery `protobuf:"bytes,2,opt,name=query,proto3" json:"query,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkServiceListExternalMembersRequest) Reset() {
+	*x = NetworkServiceListExternalMembersRequest{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceListExternalMembersRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceListExternalMembersRequest) ProtoMessage() {}
+
+func (x *NetworkServiceListExternalMembersRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceListExternalMembersRequest.ProtoReflect.Descriptor instead.
+func (*NetworkServiceListExternalMembersRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *NetworkServiceListExternalMembersRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *NetworkServiceListExternalMembersRequest) GetQuery() *v2.ExternalNetworkMemberQuery {
+	if x != nil {
+		return x.Query
+	}
+	return nil
+}
+
+// NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.
+type NetworkServiceAddExternalMemberRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Network to add the member to.
+	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	// SwitchPorts contains the ports of a switch that should be added to the network.
+	// Make sure to add both switches of a rack and the same ports of both in the same request.
+	SwitchPorts   []*v2.ExternalNetworkMember `protobuf:"bytes,2,rep,name=switch_ports,json=switchPorts,proto3" json:"switch_ports,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkServiceAddExternalMemberRequest) Reset() {
+	*x = NetworkServiceAddExternalMemberRequest{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceAddExternalMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceAddExternalMemberRequest) ProtoMessage() {}
+
+func (x *NetworkServiceAddExternalMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceAddExternalMemberRequest.ProtoReflect.Descriptor instead.
+func (*NetworkServiceAddExternalMemberRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *NetworkServiceAddExternalMemberRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *NetworkServiceAddExternalMemberRequest) GetSwitchPorts() []*v2.ExternalNetworkMember {
+	if x != nil {
+		return x.SwitchPorts
+	}
+	return nil
+}
+
+// NetworkServiceRemoveExternalMemberRequest is the request payload for removing an external member from a network.
+type NetworkServiceRemoveExternalMemberRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Network to remove the member from.
+	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	// SwitchPorts contains the ports of a switch that should be removed from the network.
+	SwitchPorts   []*v2.ExternalNetworkMember `protobuf:"bytes,2,rep,name=switch_ports,json=switchPorts,proto3" json:"switch_ports,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkServiceRemoveExternalMemberRequest) Reset() {
+	*x = NetworkServiceRemoveExternalMemberRequest{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceRemoveExternalMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceRemoveExternalMemberRequest) ProtoMessage() {}
+
+func (x *NetworkServiceRemoveExternalMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceRemoveExternalMemberRequest.ProtoReflect.Descriptor instead.
+func (*NetworkServiceRemoveExternalMemberRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *NetworkServiceRemoveExternalMemberRequest) GetNetwork() string {
+	if x != nil {
+		return x.Network
+	}
+	return ""
+}
+
+func (x *NetworkServiceRemoveExternalMemberRequest) GetSwitchPorts() []*v2.ExternalNetworkMember {
+	if x != nil {
+		return x.SwitchPorts
+	}
+	return nil
+}
+
 // NetworkServiceCreateResponse is the response payload for creating a network.
 type NetworkServiceCreateResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -553,7 +719,7 @@ type NetworkServiceCreateResponse struct {
 
 func (x *NetworkServiceCreateResponse) Reset() {
 	*x = NetworkServiceCreateResponse{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[6]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -565,7 +731,7 @@ func (x *NetworkServiceCreateResponse) String() string {
 func (*NetworkServiceCreateResponse) ProtoMessage() {}
 
 func (x *NetworkServiceCreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[6]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -578,7 +744,7 @@ func (x *NetworkServiceCreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceCreateResponse.ProtoReflect.Descriptor instead.
 func (*NetworkServiceCreateResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{6}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *NetworkServiceCreateResponse) GetNetwork() *v2.Network {
@@ -599,7 +765,7 @@ type NetworkServiceUpdateResponse struct {
 
 func (x *NetworkServiceUpdateResponse) Reset() {
 	*x = NetworkServiceUpdateResponse{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[7]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -611,7 +777,7 @@ func (x *NetworkServiceUpdateResponse) String() string {
 func (*NetworkServiceUpdateResponse) ProtoMessage() {}
 
 func (x *NetworkServiceUpdateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[7]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -624,7 +790,7 @@ func (x *NetworkServiceUpdateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceUpdateResponse.ProtoReflect.Descriptor instead.
 func (*NetworkServiceUpdateResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{7}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *NetworkServiceUpdateResponse) GetNetwork() *v2.Network {
@@ -645,7 +811,7 @@ type NetworkServiceDeleteResponse struct {
 
 func (x *NetworkServiceDeleteResponse) Reset() {
 	*x = NetworkServiceDeleteResponse{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[8]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -657,7 +823,7 @@ func (x *NetworkServiceDeleteResponse) String() string {
 func (*NetworkServiceDeleteResponse) ProtoMessage() {}
 
 func (x *NetworkServiceDeleteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[8]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -670,7 +836,7 @@ func (x *NetworkServiceDeleteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceDeleteResponse.ProtoReflect.Descriptor instead.
 func (*NetworkServiceDeleteResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{8}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *NetworkServiceDeleteResponse) GetNetwork() *v2.Network {
@@ -691,7 +857,7 @@ type NetworkServiceListResponse struct {
 
 func (x *NetworkServiceListResponse) Reset() {
 	*x = NetworkServiceListResponse{}
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[9]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -703,7 +869,7 @@ func (x *NetworkServiceListResponse) String() string {
 func (*NetworkServiceListResponse) ProtoMessage() {}
 
 func (x *NetworkServiceListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_admin_v2_network_proto_msgTypes[9]
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -716,7 +882,7 @@ func (x *NetworkServiceListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NetworkServiceListResponse.ProtoReflect.Descriptor instead.
 func (*NetworkServiceListResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{9}
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *NetworkServiceListResponse) GetNetworks() []*v2.Network {
@@ -726,11 +892,149 @@ func (x *NetworkServiceListResponse) GetNetworks() []*v2.Network {
 	return nil
 }
 
+// NetworkServiceListExternalMembersResponse is the response payload for listing external members of a network.
+type NetworkServiceListExternalMembersResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Members are the queried external members of the network.
+	Members       []*v2.ExternalNetworkMember `protobuf:"bytes,1,rep,name=members,proto3" json:"members,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkServiceListExternalMembersResponse) Reset() {
+	*x = NetworkServiceListExternalMembersResponse{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceListExternalMembersResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceListExternalMembersResponse) ProtoMessage() {}
+
+func (x *NetworkServiceListExternalMembersResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceListExternalMembersResponse.ProtoReflect.Descriptor instead.
+func (*NetworkServiceListExternalMembersResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *NetworkServiceListExternalMembersResponse) GetMembers() []*v2.ExternalNetworkMember {
+	if x != nil {
+		return x.Members
+	}
+	return nil
+}
+
+// NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.
+type NetworkServiceAddExternalMemberResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Switch contains the updated switch.
+	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkServiceAddExternalMemberResponse) Reset() {
+	*x = NetworkServiceAddExternalMemberResponse{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceAddExternalMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceAddExternalMemberResponse) ProtoMessage() {}
+
+func (x *NetworkServiceAddExternalMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceAddExternalMemberResponse.ProtoReflect.Descriptor instead.
+func (*NetworkServiceAddExternalMemberResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *NetworkServiceAddExternalMemberResponse) GetSwitch() *v2.Switch {
+	if x != nil {
+		return x.Switch
+	}
+	return nil
+}
+
+// NetworkServiceRemoveExternalMemberResponse is the response payload for removing an external member from a network.
+type NetworkServiceRemoveExternalMemberResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Switch contains the updated switch.
+	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NetworkServiceRemoveExternalMemberResponse) Reset() {
+	*x = NetworkServiceRemoveExternalMemberResponse{}
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NetworkServiceRemoveExternalMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NetworkServiceRemoveExternalMemberResponse) ProtoMessage() {}
+
+func (x *NetworkServiceRemoveExternalMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_network_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NetworkServiceRemoveExternalMemberResponse.ProtoReflect.Descriptor instead.
+func (*NetworkServiceRemoveExternalMemberResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *NetworkServiceRemoveExternalMemberResponse) GetSwitch() *v2.Switch {
+	if x != nil {
+		return x.Switch
+	}
+	return nil
+}
+
 var File_metalstack_admin_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a(metalstack/api/v2/predefined_rules.proto\"7\n" +
+	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/switch.proto\"7\n" +
 	"\x18NetworkServiceGetRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
@@ -792,7 +1096,16 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x1bNetworkServiceDeleteRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"R\n" +
 	"\x19NetworkServiceListRequest\x125\n" +
-	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.NetworkQueryR\x05query\"T\n" +
+	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.NetworkQueryR\x05query\"\x96\x01\n" +
+	"(NetworkServiceListExternalMembersRequest\x12%\n" +
+	"\anetwork\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anetwork\x12C\n" +
+	"\x05query\x18\x02 \x01(\v2-.metalstack.api.v2.ExternalNetworkMemberQueryR\x05query\"\xa6\x01\n" +
+	"&NetworkServiceAddExternalMemberRequest\x12%\n" +
+	"\anetwork\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anetwork\x12U\n" +
+	"\fswitch_ports\x18\x02 \x03(\v2(.metalstack.api.v2.ExternalNetworkMemberB\b\xbaH\x05\x92\x01\x02\x10\bR\vswitchPorts\"\xa9\x01\n" +
+	")NetworkServiceRemoveExternalMemberRequest\x12%\n" +
+	"\anetwork\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anetwork\x12U\n" +
+	"\fswitch_ports\x18\x02 \x03(\v2(.metalstack.api.v2.ExternalNetworkMemberB\b\xbaH\x05\x92\x01\x02\x10\bR\vswitchPorts\"T\n" +
 	"\x1cNetworkServiceCreateResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"T\n" +
 	"\x1cNetworkServiceUpdateResponse\x124\n" +
@@ -800,7 +1113,13 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x1cNetworkServiceDeleteResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"T\n" +
 	"\x1aNetworkServiceListResponse\x126\n" +
-	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks2\xe5\x04\n" +
+	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"o\n" +
+	")NetworkServiceListExternalMembersResponse\x12B\n" +
+	"\amembers\x18\x01 \x03(\v2(.metalstack.api.v2.ExternalNetworkMemberR\amembers\"\\\n" +
+	"'NetworkServiceAddExternalMemberResponse\x121\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"_\n" +
+	"*NetworkServiceRemoveExternalMemberResponse\x121\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch2\xc9\b\n" +
 	"\x0eNetworkService\x12p\n" +
 	"\x03Get\x12-.metalstack.admin.v2.NetworkServiceGetRequest\x1a..metalstack.admin.v2.NetworkServiceGetResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12x\n" +
@@ -808,7 +1127,11 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x06Update\x120.metalstack.admin.v2.NetworkServiceUpdateRequest\x1a1.metalstack.admin.v2.NetworkServiceUpdateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12x\n" +
 	"\x06Delete\x120.metalstack.admin.v2.NetworkServiceDeleteRequest\x1a1.metalstack.admin.v2.NetworkServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12s\n" +
 	"\x04List\x12..metalstack.admin.v2.NetworkServiceListRequest\x1a/.metalstack.admin.v2.NetworkServiceListResponse\"\n" +
-	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02B\xd0\x01\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12\xa0\x01\n" +
+	"\x13ListExternalMembers\x12=.metalstack.admin.v2.NetworkServiceListExternalMembersRequest\x1a>.metalstack.admin.v2.NetworkServiceListExternalMembersResponse\"\n" +
+	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12\x99\x01\n" +
+	"\x11AddExternalMember\x12;.metalstack.admin.v2.NetworkServiceAddExternalMemberRequest\x1a<.metalstack.admin.v2.NetworkServiceAddExternalMemberResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\xa2\x01\n" +
+	"\x14RemoveExternalMember\x12>.metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest\x1a?.metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01B\xd0\x01\n" +
 	"\x17com.metalstack.admin.v2B\fNetworkProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (
@@ -823,62 +1146,83 @@ func file_metalstack_admin_v2_network_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_network_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_network_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_metalstack_admin_v2_network_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_metalstack_admin_v2_network_proto_goTypes = []any{
-	(*NetworkServiceGetRequest)(nil),     // 0: metalstack.admin.v2.NetworkServiceGetRequest
-	(*NetworkServiceGetResponse)(nil),    // 1: metalstack.admin.v2.NetworkServiceGetResponse
-	(*NetworkServiceCreateRequest)(nil),  // 2: metalstack.admin.v2.NetworkServiceCreateRequest
-	(*NetworkServiceUpdateRequest)(nil),  // 3: metalstack.admin.v2.NetworkServiceUpdateRequest
-	(*NetworkServiceDeleteRequest)(nil),  // 4: metalstack.admin.v2.NetworkServiceDeleteRequest
-	(*NetworkServiceListRequest)(nil),    // 5: metalstack.admin.v2.NetworkServiceListRequest
-	(*NetworkServiceCreateResponse)(nil), // 6: metalstack.admin.v2.NetworkServiceCreateResponse
-	(*NetworkServiceUpdateResponse)(nil), // 7: metalstack.admin.v2.NetworkServiceUpdateResponse
-	(*NetworkServiceDeleteResponse)(nil), // 8: metalstack.admin.v2.NetworkServiceDeleteResponse
-	(*NetworkServiceListResponse)(nil),   // 9: metalstack.admin.v2.NetworkServiceListResponse
-	(*v2.Network)(nil),                   // 10: metalstack.api.v2.Network
-	(v2.NetworkType)(0),                  // 11: metalstack.api.v2.NetworkType
-	(*v2.Labels)(nil),                    // 12: metalstack.api.v2.Labels
-	(*v2.ChildPrefixLength)(nil),         // 13: metalstack.api.v2.ChildPrefixLength
-	(v2.NATType)(0),                      // 14: metalstack.api.v2.NATType
-	(v2.NetworkAddressFamily)(0),         // 15: metalstack.api.v2.NetworkAddressFamily
-	(*v2.UpdateMeta)(nil),                // 16: metalstack.api.v2.UpdateMeta
-	(*v2.UpdateLabels)(nil),              // 17: metalstack.api.v2.UpdateLabels
-	(*v2.NetworkQuery)(nil),              // 18: metalstack.api.v2.NetworkQuery
+	(*NetworkServiceGetRequest)(nil),                   // 0: metalstack.admin.v2.NetworkServiceGetRequest
+	(*NetworkServiceGetResponse)(nil),                  // 1: metalstack.admin.v2.NetworkServiceGetResponse
+	(*NetworkServiceCreateRequest)(nil),                // 2: metalstack.admin.v2.NetworkServiceCreateRequest
+	(*NetworkServiceUpdateRequest)(nil),                // 3: metalstack.admin.v2.NetworkServiceUpdateRequest
+	(*NetworkServiceDeleteRequest)(nil),                // 4: metalstack.admin.v2.NetworkServiceDeleteRequest
+	(*NetworkServiceListRequest)(nil),                  // 5: metalstack.admin.v2.NetworkServiceListRequest
+	(*NetworkServiceListExternalMembersRequest)(nil),   // 6: metalstack.admin.v2.NetworkServiceListExternalMembersRequest
+	(*NetworkServiceAddExternalMemberRequest)(nil),     // 7: metalstack.admin.v2.NetworkServiceAddExternalMemberRequest
+	(*NetworkServiceRemoveExternalMemberRequest)(nil),  // 8: metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest
+	(*NetworkServiceCreateResponse)(nil),               // 9: metalstack.admin.v2.NetworkServiceCreateResponse
+	(*NetworkServiceUpdateResponse)(nil),               // 10: metalstack.admin.v2.NetworkServiceUpdateResponse
+	(*NetworkServiceDeleteResponse)(nil),               // 11: metalstack.admin.v2.NetworkServiceDeleteResponse
+	(*NetworkServiceListResponse)(nil),                 // 12: metalstack.admin.v2.NetworkServiceListResponse
+	(*NetworkServiceListExternalMembersResponse)(nil),  // 13: metalstack.admin.v2.NetworkServiceListExternalMembersResponse
+	(*NetworkServiceAddExternalMemberResponse)(nil),    // 14: metalstack.admin.v2.NetworkServiceAddExternalMemberResponse
+	(*NetworkServiceRemoveExternalMemberResponse)(nil), // 15: metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse
+	(*v2.Network)(nil),                                 // 16: metalstack.api.v2.Network
+	(v2.NetworkType)(0),                                // 17: metalstack.api.v2.NetworkType
+	(*v2.Labels)(nil),                                  // 18: metalstack.api.v2.Labels
+	(*v2.ChildPrefixLength)(nil),                       // 19: metalstack.api.v2.ChildPrefixLength
+	(v2.NATType)(0),                                    // 20: metalstack.api.v2.NATType
+	(v2.NetworkAddressFamily)(0),                       // 21: metalstack.api.v2.NetworkAddressFamily
+	(*v2.UpdateMeta)(nil),                              // 22: metalstack.api.v2.UpdateMeta
+	(*v2.UpdateLabels)(nil),                            // 23: metalstack.api.v2.UpdateLabels
+	(*v2.NetworkQuery)(nil),                            // 24: metalstack.api.v2.NetworkQuery
+	(*v2.ExternalNetworkMemberQuery)(nil),              // 25: metalstack.api.v2.ExternalNetworkMemberQuery
+	(*v2.ExternalNetworkMember)(nil),                   // 26: metalstack.api.v2.ExternalNetworkMember
+	(*v2.Switch)(nil),                                  // 27: metalstack.api.v2.Switch
 }
 var file_metalstack_admin_v2_network_proto_depIdxs = []int32{
-	10, // 0: metalstack.admin.v2.NetworkServiceGetResponse.network:type_name -> metalstack.api.v2.Network
-	11, // 1: metalstack.admin.v2.NetworkServiceCreateRequest.type:type_name -> metalstack.api.v2.NetworkType
-	12, // 2: metalstack.admin.v2.NetworkServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
-	13, // 3: metalstack.admin.v2.NetworkServiceCreateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	13, // 4: metalstack.admin.v2.NetworkServiceCreateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	14, // 5: metalstack.admin.v2.NetworkServiceCreateRequest.nat_type:type_name -> metalstack.api.v2.NATType
-	13, // 6: metalstack.admin.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
-	15, // 7: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.NetworkAddressFamily
-	16, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	17, // 9: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
-	13, // 10: metalstack.admin.v2.NetworkServiceUpdateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	13, // 11: metalstack.admin.v2.NetworkServiceUpdateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
-	14, // 12: metalstack.admin.v2.NetworkServiceUpdateRequest.nat_type:type_name -> metalstack.api.v2.NATType
-	18, // 13: metalstack.admin.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
-	10, // 14: metalstack.admin.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
-	10, // 15: metalstack.admin.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
-	10, // 16: metalstack.admin.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
-	10, // 17: metalstack.admin.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
-	0,  // 18: metalstack.admin.v2.NetworkService.Get:input_type -> metalstack.admin.v2.NetworkServiceGetRequest
-	2,  // 19: metalstack.admin.v2.NetworkService.Create:input_type -> metalstack.admin.v2.NetworkServiceCreateRequest
-	3,  // 20: metalstack.admin.v2.NetworkService.Update:input_type -> metalstack.admin.v2.NetworkServiceUpdateRequest
-	4,  // 21: metalstack.admin.v2.NetworkService.Delete:input_type -> metalstack.admin.v2.NetworkServiceDeleteRequest
-	5,  // 22: metalstack.admin.v2.NetworkService.List:input_type -> metalstack.admin.v2.NetworkServiceListRequest
-	1,  // 23: metalstack.admin.v2.NetworkService.Get:output_type -> metalstack.admin.v2.NetworkServiceGetResponse
-	6,  // 24: metalstack.admin.v2.NetworkService.Create:output_type -> metalstack.admin.v2.NetworkServiceCreateResponse
-	7,  // 25: metalstack.admin.v2.NetworkService.Update:output_type -> metalstack.admin.v2.NetworkServiceUpdateResponse
-	8,  // 26: metalstack.admin.v2.NetworkService.Delete:output_type -> metalstack.admin.v2.NetworkServiceDeleteResponse
-	9,  // 27: metalstack.admin.v2.NetworkService.List:output_type -> metalstack.admin.v2.NetworkServiceListResponse
-	23, // [23:28] is the sub-list for method output_type
-	18, // [18:23] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	16, // 0: metalstack.admin.v2.NetworkServiceGetResponse.network:type_name -> metalstack.api.v2.Network
+	17, // 1: metalstack.admin.v2.NetworkServiceCreateRequest.type:type_name -> metalstack.api.v2.NetworkType
+	18, // 2: metalstack.admin.v2.NetworkServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	19, // 3: metalstack.admin.v2.NetworkServiceCreateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	19, // 4: metalstack.admin.v2.NetworkServiceCreateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	20, // 5: metalstack.admin.v2.NetworkServiceCreateRequest.nat_type:type_name -> metalstack.api.v2.NATType
+	19, // 6: metalstack.admin.v2.NetworkServiceCreateRequest.length:type_name -> metalstack.api.v2.ChildPrefixLength
+	21, // 7: metalstack.admin.v2.NetworkServiceCreateRequest.address_family:type_name -> metalstack.api.v2.NetworkAddressFamily
+	22, // 8: metalstack.admin.v2.NetworkServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	23, // 9: metalstack.admin.v2.NetworkServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	19, // 10: metalstack.admin.v2.NetworkServiceUpdateRequest.default_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	19, // 11: metalstack.admin.v2.NetworkServiceUpdateRequest.min_child_prefix_length:type_name -> metalstack.api.v2.ChildPrefixLength
+	20, // 12: metalstack.admin.v2.NetworkServiceUpdateRequest.nat_type:type_name -> metalstack.api.v2.NATType
+	24, // 13: metalstack.admin.v2.NetworkServiceListRequest.query:type_name -> metalstack.api.v2.NetworkQuery
+	25, // 14: metalstack.admin.v2.NetworkServiceListExternalMembersRequest.query:type_name -> metalstack.api.v2.ExternalNetworkMemberQuery
+	26, // 15: metalstack.admin.v2.NetworkServiceAddExternalMemberRequest.switch_ports:type_name -> metalstack.api.v2.ExternalNetworkMember
+	26, // 16: metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest.switch_ports:type_name -> metalstack.api.v2.ExternalNetworkMember
+	16, // 17: metalstack.admin.v2.NetworkServiceCreateResponse.network:type_name -> metalstack.api.v2.Network
+	16, // 18: metalstack.admin.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
+	16, // 19: metalstack.admin.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
+	16, // 20: metalstack.admin.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
+	26, // 21: metalstack.admin.v2.NetworkServiceListExternalMembersResponse.members:type_name -> metalstack.api.v2.ExternalNetworkMember
+	27, // 22: metalstack.admin.v2.NetworkServiceAddExternalMemberResponse.switch:type_name -> metalstack.api.v2.Switch
+	27, // 23: metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse.switch:type_name -> metalstack.api.v2.Switch
+	0,  // 24: metalstack.admin.v2.NetworkService.Get:input_type -> metalstack.admin.v2.NetworkServiceGetRequest
+	2,  // 25: metalstack.admin.v2.NetworkService.Create:input_type -> metalstack.admin.v2.NetworkServiceCreateRequest
+	3,  // 26: metalstack.admin.v2.NetworkService.Update:input_type -> metalstack.admin.v2.NetworkServiceUpdateRequest
+	4,  // 27: metalstack.admin.v2.NetworkService.Delete:input_type -> metalstack.admin.v2.NetworkServiceDeleteRequest
+	5,  // 28: metalstack.admin.v2.NetworkService.List:input_type -> metalstack.admin.v2.NetworkServiceListRequest
+	6,  // 29: metalstack.admin.v2.NetworkService.ListExternalMembers:input_type -> metalstack.admin.v2.NetworkServiceListExternalMembersRequest
+	7,  // 30: metalstack.admin.v2.NetworkService.AddExternalMember:input_type -> metalstack.admin.v2.NetworkServiceAddExternalMemberRequest
+	8,  // 31: metalstack.admin.v2.NetworkService.RemoveExternalMember:input_type -> metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest
+	1,  // 32: metalstack.admin.v2.NetworkService.Get:output_type -> metalstack.admin.v2.NetworkServiceGetResponse
+	9,  // 33: metalstack.admin.v2.NetworkService.Create:output_type -> metalstack.admin.v2.NetworkServiceCreateResponse
+	10, // 34: metalstack.admin.v2.NetworkService.Update:output_type -> metalstack.admin.v2.NetworkServiceUpdateResponse
+	11, // 35: metalstack.admin.v2.NetworkService.Delete:output_type -> metalstack.admin.v2.NetworkServiceDeleteResponse
+	12, // 36: metalstack.admin.v2.NetworkService.List:output_type -> metalstack.admin.v2.NetworkServiceListResponse
+	13, // 37: metalstack.admin.v2.NetworkService.ListExternalMembers:output_type -> metalstack.admin.v2.NetworkServiceListExternalMembersResponse
+	14, // 38: metalstack.admin.v2.NetworkService.AddExternalMember:output_type -> metalstack.admin.v2.NetworkServiceAddExternalMemberResponse
+	15, // 39: metalstack.admin.v2.NetworkService.RemoveExternalMember:output_type -> metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse
+	32, // [32:40] is the sub-list for method output_type
+	24, // [24:32] is the sub-list for method input_type
+	24, // [24:24] is the sub-list for extension type_name
+	24, // [24:24] is the sub-list for extension extendee
+	0,  // [0:24] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_network_proto_init() }
@@ -894,7 +1238,7 @@ func file_metalstack_admin_v2_network_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_network_proto_rawDesc), len(file_metalstack_admin_v2_network_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

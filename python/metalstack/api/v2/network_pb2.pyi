@@ -221,6 +221,14 @@ class NetworkQuery(_message.Message):
     labels: _common_pb2.Labels
     def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., partition: _Optional[str] = ..., project: _Optional[str] = ..., namespace: _Optional[str] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., vrf: _Optional[int] = ..., parent_network: _Optional[str] = ..., address_family: _Optional[_Union[NetworkAddressFamily, str]] = ..., type: _Optional[_Union[NetworkType, str]] = ..., nat_type: _Optional[_Union[NATType, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
+class ExternalNetworkMemberQuery(_message.Message):
+    __slots__ = ("switch", "rack")
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
+    switch: str
+    rack: str
+    def __init__(self, switch: _Optional[str] = ..., rack: _Optional[str] = ...) -> None: ...
+
 class ChildPrefixLength(_message.Message):
     __slots__ = ("ipv4", "ipv6")
     IPV4_FIELD_NUMBER: _ClassVar[int]
@@ -248,3 +256,11 @@ class NetworkUsage(_message.Message):
     available_prefixes: int
     used_prefixes: int
     def __init__(self, available_ips: _Optional[int] = ..., used_ips: _Optional[int] = ..., available_prefixes: _Optional[int] = ..., used_prefixes: _Optional[int] = ...) -> None: ...
+
+class ExternalNetworkMember(_message.Message):
+    __slots__ = ("switch", "ports")
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    PORTS_FIELD_NUMBER: _ClassVar[int]
+    switch: str
+    ports: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, switch: _Optional[str] = ..., ports: _Optional[_Iterable[str]] = ...) -> None: ...

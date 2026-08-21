@@ -233,6 +233,17 @@ message NetworkQuery {
   optional Labels labels = 14;
 }
 
+// ExternalNetworkMemberQuery defines which filters to apply when looking up external network members.
+message ExternalNetworkMemberQuery {
+  // Switch whose ports are queried.
+  optional string switch = 1 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+  // Rack for which the members of the network are queried.
+  optional string rack = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+}
+
 // ChildPrefixLength.
 message ChildPrefixLength {
   // IPv4 bit length of this network in this addressfamily.
@@ -265,6 +276,17 @@ message NetworkUsage {
   uint64 available_prefixes = 3;
   // the total used Prefixes.
   uint64 used_prefixes = 4;
+}
+
+// ExternalNetworkMember contains the ports of a switch that participate in a network and are connected to machines not known to metal-stack.
+message ExternalNetworkMember {
+  // Switch the external members are connected to.
+  string switch = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Ports of the switch that participate in the network.
+  repeated string ports = 2 [
+    (buf.validate.field).repeated.max_items = 2048,
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
 }
 
 // NATType defines how and if outgoing traffic is translated.
