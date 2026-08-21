@@ -122,26 +122,20 @@ message MachineServiceGetBMCRequest {
 
 // MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
 message MachineServiceGetBMCResponse {
-  // UUID of the machine.
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // BMC contains the BMC details of this machine.
-  metalstack.api.v2.MachineBMCReport bmc = 2;
+  // BMCDetails of the machine.
+  metalstack.api.v2.MachineBMCDetails bmc_details = 1;
 }
 
 // MachineServiceListBMCRequest is the request payload for a machine listbmc request.
 message MachineServiceListBMCRequest {
   // Query to list one or more BMCs of many machines.
-  metalstack.api.v2.MachineBMCQuery query = 1;
+  metalstack.api.v2.MachineQuery query = 1;
 }
 
 // MachineServiceListBMCResponse is the response payload for a machine listbmc request.
 message MachineServiceListBMCResponse {
-  // BMCReports maps the bmc report per machine uuid.
-  map<string, metalstack.api.v2.MachineBMCReport> bmc_reports = 1 [(buf.validate.field).map = {
-    keys: {
-      string: {uuid: true}
-    }
-  }];
+  // BMCDetails of the machines.
+  repeated metalstack.api.v2.MachineBMCDetails bmc_details = 1;
 }
 
 // MachineServiceConsolePasswordRequest is the request payload for getting the console password.

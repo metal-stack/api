@@ -67,31 +67,22 @@ class MachineServiceGetBMCRequest(_message.Message):
     def __init__(self, uuid: _Optional[str] = ...) -> None: ...
 
 class MachineServiceGetBMCResponse(_message.Message):
-    __slots__ = ("uuid", "bmc")
-    UUID_FIELD_NUMBER: _ClassVar[int]
-    BMC_FIELD_NUMBER: _ClassVar[int]
-    uuid: str
-    bmc: _machine_pb2.MachineBMCReport
-    def __init__(self, uuid: _Optional[str] = ..., bmc: _Optional[_Union[_machine_pb2.MachineBMCReport, _Mapping]] = ...) -> None: ...
+    __slots__ = ("bmc_details",)
+    BMC_DETAILS_FIELD_NUMBER: _ClassVar[int]
+    bmc_details: _machine_pb2.MachineBMCDetails
+    def __init__(self, bmc_details: _Optional[_Union[_machine_pb2.MachineBMCDetails, _Mapping]] = ...) -> None: ...
 
 class MachineServiceListBMCRequest(_message.Message):
     __slots__ = ("query",)
     QUERY_FIELD_NUMBER: _ClassVar[int]
-    query: _machine_pb2.MachineBMCQuery
-    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineBMCQuery, _Mapping]] = ...) -> None: ...
+    query: _machine_pb2.MachineQuery
+    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineQuery, _Mapping]] = ...) -> None: ...
 
 class MachineServiceListBMCResponse(_message.Message):
-    __slots__ = ("bmc_reports",)
-    class BmcReportsEntry(_message.Message):
-        __slots__ = ("key", "value")
-        KEY_FIELD_NUMBER: _ClassVar[int]
-        VALUE_FIELD_NUMBER: _ClassVar[int]
-        key: str
-        value: _machine_pb2.MachineBMCReport
-        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[_machine_pb2.MachineBMCReport, _Mapping]] = ...) -> None: ...
-    BMC_REPORTS_FIELD_NUMBER: _ClassVar[int]
-    bmc_reports: _containers.MessageMap[str, _machine_pb2.MachineBMCReport]
-    def __init__(self, bmc_reports: _Optional[_Mapping[str, _machine_pb2.MachineBMCReport]] = ...) -> None: ...
+    __slots__ = ("bmc_details",)
+    BMC_DETAILS_FIELD_NUMBER: _ClassVar[int]
+    bmc_details: _containers.RepeatedCompositeFieldContainer[_machine_pb2.MachineBMCDetails]
+    def __init__(self, bmc_details: _Optional[_Iterable[_Union[_machine_pb2.MachineBMCDetails, _Mapping]]] = ...) -> None: ...
 
 class MachineServiceConsolePasswordRequest(_message.Message):
     __slots__ = ("uuid", "reason")

@@ -2,6 +2,7 @@ from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import network_pb2 as _network_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
+from metalstack.api.v2 import switch_pb2 as _switch_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -100,6 +101,30 @@ class NetworkServiceListRequest(_message.Message):
     query: _network_pb2.NetworkQuery
     def __init__(self, query: _Optional[_Union[_network_pb2.NetworkQuery, _Mapping]] = ...) -> None: ...
 
+class NetworkServiceListExternalMembersRequest(_message.Message):
+    __slots__ = ("network", "query")
+    NETWORK_FIELD_NUMBER: _ClassVar[int]
+    QUERY_FIELD_NUMBER: _ClassVar[int]
+    network: str
+    query: _network_pb2.ExternalNetworkMemberQuery
+    def __init__(self, network: _Optional[str] = ..., query: _Optional[_Union[_network_pb2.ExternalNetworkMemberQuery, _Mapping]] = ...) -> None: ...
+
+class NetworkServiceAddExternalMemberRequest(_message.Message):
+    __slots__ = ("network", "switch_ports")
+    NETWORK_FIELD_NUMBER: _ClassVar[int]
+    SWITCH_PORTS_FIELD_NUMBER: _ClassVar[int]
+    network: str
+    switch_ports: _containers.RepeatedCompositeFieldContainer[_network_pb2.ExternalNetworkMember]
+    def __init__(self, network: _Optional[str] = ..., switch_ports: _Optional[_Iterable[_Union[_network_pb2.ExternalNetworkMember, _Mapping]]] = ...) -> None: ...
+
+class NetworkServiceRemoveExternalMemberRequest(_message.Message):
+    __slots__ = ("network", "switch_ports")
+    NETWORK_FIELD_NUMBER: _ClassVar[int]
+    SWITCH_PORTS_FIELD_NUMBER: _ClassVar[int]
+    network: str
+    switch_ports: _containers.RepeatedCompositeFieldContainer[_network_pb2.ExternalNetworkMember]
+    def __init__(self, network: _Optional[str] = ..., switch_ports: _Optional[_Iterable[_Union[_network_pb2.ExternalNetworkMember, _Mapping]]] = ...) -> None: ...
+
 class NetworkServiceCreateResponse(_message.Message):
     __slots__ = ("network",)
     NETWORK_FIELD_NUMBER: _ClassVar[int]
@@ -123,3 +148,21 @@ class NetworkServiceListResponse(_message.Message):
     NETWORKS_FIELD_NUMBER: _ClassVar[int]
     networks: _containers.RepeatedCompositeFieldContainer[_network_pb2.Network]
     def __init__(self, networks: _Optional[_Iterable[_Union[_network_pb2.Network, _Mapping]]] = ...) -> None: ...
+
+class NetworkServiceListExternalMembersResponse(_message.Message):
+    __slots__ = ("members",)
+    MEMBERS_FIELD_NUMBER: _ClassVar[int]
+    members: _containers.RepeatedCompositeFieldContainer[_network_pb2.ExternalNetworkMember]
+    def __init__(self, members: _Optional[_Iterable[_Union[_network_pb2.ExternalNetworkMember, _Mapping]]] = ...) -> None: ...
+
+class NetworkServiceAddExternalMemberResponse(_message.Message):
+    __slots__ = ("switch",)
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    switch: _switch_pb2.Switch
+    def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+
+class NetworkServiceRemoveExternalMemberResponse(_message.Message):
+    __slots__ = ("switch",)
+    SWITCH_FIELD_NUMBER: _ClassVar[int]
+    switch: _switch_pb2.Switch
+    def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...

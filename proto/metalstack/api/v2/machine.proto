@@ -241,10 +241,8 @@ message MachineServiceGetBMCRequest {
 
 // MachineServiceGetBMCResponse is the response payload for a machine getbmc request.
 message MachineServiceGetBMCResponse {
-  // UUID of the machine.
-  string uuid = 1 [(buf.validate.field).string.uuid = true];
-  // BMC contains the BMC details of this machine.
-  MachineBMCReport bmc = 2;
+  // BMCDetails contains the BMC details of this machine.
+  MachineBMCDetails bmc_details = 6;
 }
 
 // --------------- Types ----------------------------------------------------------
@@ -530,22 +528,40 @@ message MachineChassisIdentifyLEDState {
   string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
 }
 
+// MachineBMCDetails contains machine and bmc details of a machine.
+message MachineBMCDetails {
+  // UUID of this machine.
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Partition where this machine resides.
+  string partition = 2 [(buf.validate.field).string = {max_len: 128}];
+  // Rack where this machine is located.
+  string rack = 3 [(buf.validate.field).string = {max_len: 128}];
+  // Room where this machine is located.
+  string room = 4 [(buf.validate.field).string = {max_len: 128}];
+  // Size of this machine.
+  string size = 5 [(buf.validate.field).string = {max_len: 128}];
+  // BMCReport contains the bmc details.
+  MachineBMCReport bmc_report = 6;
+}
+
 // MachineBMCReport is sent from the metal-bmc to update bmc and power related details.
 message MachineBMCReport {
+  // UUID of the machine.
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
   // Bmc contains bmc details.
-  MachineBMC bmc = 1;
+  MachineBMC bmc = 2;
   // Bios contains bios details.
-  MachineBios bios = 2;
+  MachineBios bios = 3;
   // Fru contains field replaceable unit details.
-  MachineFRU fru = 3;
+  MachineFRU fru = 4;
   // PowerMetric contains the power statistics of the machine.
-  MachinePowerMetric power_metric = 4;
+  MachinePowerMetric power_metric = 5;
   // PowerSupplies contains details about all power supplies and their state.
-  repeated MachinePowerSupply power_supplies = 5;
+  repeated MachinePowerSupply power_supplies = 6;
   // LedState indicates the state of the indicator LED on this machine.
-  MachineChassisIdentifyLEDState led_state = 6;
+  MachineChassisIdentifyLEDState led_state = 7;
   // UpdatedAt contains the date when this data was last updated.
-  google.protobuf.Timestamp updated_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
 }
 
 // MachineBios contains BIOS details of this machine.
