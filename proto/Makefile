@@ -1,35 +1,35 @@
 MAKEFLAGS += --no-print-directory
 BUF_VERSION := 1.72.0
-
-.ONESHELL:
-_gobuf:
-	docker build --tag gobuf - <<-'EOT'
-	FROM golang:1.26 AS gobase
-	FROM bufbuild/buf:${BUF_VERSION} AS buf
-
-	FROM gobase
-	COPY --from=buf /usr/local/bin/buf /usr/local/bin/buf
-	EOT
-
+PROTODIR := $(PWD)/proto
+	
 _buf:
 	docker run --rm \
 		--entrypoint sh \
 		-v $(PWD)/..:/workspace \
 		-w /workspace/proto \
-		gobuf \
+		bufbuild/buf:$(BUF_VERSION) \
 		-c "buf $(CMD) && chown -R $(shell id -u):$(shell id -g) /workspace"
 
 .PHONY: protolint
-protolint: _gobuf
+protolint:
 	@$(MAKE)	_buf	CMD="format -w"
 	@$(MAKE)	_buf	CMD="lint -v"
 # 	@$(MAKE)	_buf	CMD="breaking --against 'https://github.com/metal-stack/api.git#branch=main,subdir=proto'"
 
 .PHONY: protoc
-protoc: _gobuf
+protoc: _install-protoc-gen-mcp
 	@$(MAKE)	_buf	CMD="generate -v"
-	# Brutally fix interfaces, must be fixed upstream: https://github.com/redpanda-data/protoc-gen-go-mcp/pull/51
-	find ../go/metalstack -name '*.pb.mcp.go' \
-		-exec sed -i '/^\tgrpc "google.golang.org\/grpc"$$/d' {} +
-	find ../go/metalstack -name '*.pb.mcp.go' \
-		-exec sed -i 's/, opts \.\.\.grpc\.CallOption//g' {} +
+
+.ONESHELL:
+.PHONY: _install-protoc-gen-mcp
+_install-protoc-gen-mcp:
+	cd /tmp
+	rm -rf protoc-gen-go-mcp
+	# TODO once https://github.com/redpanda-data/protoc-gen-go-mcp/pull/51 is merged, we can use upstream
+	git clone --single-branch --branch support-connect-simple https://github.com/majst01/protoc-gen-go-mcp.git
+	cd protoc-gen-go-mcp
+	# TODO GOEXPERIMENT can be removed once upgraded to go-1.27
+	CGO_ENABLED=0 GOEXPERIMENT=nojsonv2 go build ./cmd/protoc-gen-go-mcp
+	cp protoc-gen-go-mcp $(PROTODIR)/
+	cd $(PROTODIR)
+

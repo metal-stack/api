@@ -11,8 +11,9 @@ import (
 	"connectrpc.com/connect"
 	"context"
 	"encoding/json"
-	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 	"google.golang.org/protobuf/encoding/protojson"
+
+	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 )
 
 var (
