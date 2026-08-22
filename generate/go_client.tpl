@@ -6,9 +6,11 @@ import (
 
 	"connectrpc.com/connect"
 	compress "github.com/klauspost/connect-compress/v2"
+	"github.com/redpanda-data/protoc-gen-go-mcp/pkg/runtime"
 
 {{ range $name, $api := . -}}
 	"github.com/metal-stack/api/go{{ $api.Path }}/{{ $api.Name }}connect"
+	"github.com/metal-stack/api/go{{ $api.Path }}/{{ $api.Name }}mcp"
 {{ end }}
 )
 
@@ -60,5 +62,16 @@ func (c  *{{ $name }} ) {{ $svc.Name | trimSuffix "Service" }}() {{ $name }}conn
 	return c.{{ $svc.Name | lower }}
 }
 {{ end }}
+
+{{ end }}
+
+
+{{ range $name, $api := . -}}
+
+func ForwardTo{{ $name | title }}(c {{ $name | title }}, mcps runtime.MCPServer, opts ...runtime.Option) {
+{{ range $svc := $api.Services -}}
+	{{ $name }}mcp.ForwardTo{{ $svc.Name }}Client(mcps, c.{{ $svc.Name | trimSuffix "Service" }}(), opts...)
+{{ end -}}
+}
 
 {{ end }}
