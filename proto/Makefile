@@ -1,6 +1,6 @@
 MAKEFLAGS += --no-print-directory
 BUF_VERSION := 1.72.0
-PROTODIR := $(PWD)/proto
+PROTODIR := $(shell pwd)
 	
 _buf:
 	docker run --rm \
@@ -31,5 +31,4 @@ _install-protoc-gen-mcp:
 	# TODO GOEXPERIMENT can be removed once upgraded to go-1.27
 	CGO_ENABLED=0 GOEXPERIMENT=nojsonv2 go build ./cmd/protoc-gen-go-mcp
 	cp protoc-gen-go-mcp $(PROTODIR)/
-	cd $(PROTODIR)
 
