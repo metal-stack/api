@@ -498,7 +498,7 @@ func (c *infrav2) Switch() infrav2connect.SwitchServiceClient {
 	return c.switchservice
 }
 
-func ForwardToAdminv2(c Adminv2, mcps runtime.MCPServer, opts ...runtime.Option) {
+func (c *adminv2) EnableMCP(mcps runtime.MCPServer, opts ...runtime.Option) {
 	adminv2mcp.ForwardToAuditServiceClient(mcps, c.Audit(), opts...)
 	adminv2mcp.ForwardToComponentServiceClient(mcps, c.Component(), opts...)
 	adminv2mcp.ForwardToFilesystemServiceClient(mcps, c.Filesystem(), opts...)
@@ -518,7 +518,7 @@ func ForwardToAdminv2(c Adminv2, mcps runtime.MCPServer, opts ...runtime.Option)
 	adminv2mcp.ForwardToVPNServiceClient(mcps, c.VPN(), opts...)
 }
 
-func ForwardToApiv2(c Apiv2, mcps runtime.MCPServer, opts ...runtime.Option) {
+func (c *apiv2) EnableMCP(mcps runtime.MCPServer, opts ...runtime.Option) {
 	apiv2mcp.ForwardToAuditServiceClient(mcps, c.Audit(), opts...)
 	apiv2mcp.ForwardToFilesystemServiceClient(mcps, c.Filesystem(), opts...)
 	apiv2mcp.ForwardToHealthServiceClient(mcps, c.Health(), opts...)
@@ -538,7 +538,7 @@ func ForwardToApiv2(c Apiv2, mcps runtime.MCPServer, opts ...runtime.Option) {
 	apiv2mcp.ForwardToVersionServiceClient(mcps, c.Version(), opts...)
 }
 
-func ForwardToInfrav2(c Infrav2, mcps runtime.MCPServer, opts ...runtime.Option) {
+func (c *infrav2) EnableMCP(mcps runtime.MCPServer, opts ...runtime.Option) {
 	infrav2mcp.ForwardToBMCServiceClient(mcps, c.BMC(), opts...)
 	infrav2mcp.ForwardToBootServiceClient(mcps, c.Boot(), opts...)
 	infrav2mcp.ForwardToComponentServiceClient(mcps, c.Component(), opts...)

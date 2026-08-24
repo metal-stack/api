@@ -68,7 +68,7 @@ func (c  *{{ $name }} ) {{ $svc.Name | trimSuffix "Service" }}() {{ $name }}conn
 
 {{ range $name, $api := . -}}
 
-func ForwardTo{{ $name | title }}(c {{ $name | title }}, mcps runtime.MCPServer, opts ...runtime.Option) {
+func (c  *{{ $name }} ) EnableMCP(mcps runtime.MCPServer, opts ...runtime.Option) {
 {{ range $svc := $api.Services -}}
 	{{ $name }}mcp.ForwardTo{{ $svc.Name }}Client(mcps, c.{{ $svc.Name | trimSuffix "Service" }}(), opts...)
 {{ end -}}
