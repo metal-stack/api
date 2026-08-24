@@ -31,6 +31,7 @@ type (
 {{ range $svc := $api.Services -}}
 	{{ $svc.Name | trimSuffix "Service" }}() {{ $name }}connect.{{ $svc.Name }}Client
 {{ end }}
+	EnableMCP(mcps runtime.MCPServer, opts ...runtime.Option)
 	}
 
     {{ $name }} struct {

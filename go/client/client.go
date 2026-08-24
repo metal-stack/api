@@ -47,6 +47,8 @@ type (
 		Tenant() adminv2connect.TenantServiceClient
 		Token() adminv2connect.TokenServiceClient
 		VPN() adminv2connect.VPNServiceClient
+
+		EnableMCP(mcps runtime.MCPServer, opts ...runtime.Option)
 	}
 
 	adminv2 struct {
@@ -87,6 +89,8 @@ type (
 		Token() apiv2connect.TokenServiceClient
 		User() apiv2connect.UserServiceClient
 		Version() apiv2connect.VersionServiceClient
+
+		EnableMCP(mcps runtime.MCPServer, opts ...runtime.Option)
 	}
 
 	apiv2 struct {
@@ -115,6 +119,8 @@ type (
 		Component() infrav2connect.ComponentServiceClient
 		Event() infrav2connect.EventServiceClient
 		Switch() infrav2connect.SwitchServiceClient
+
+		EnableMCP(mcps runtime.MCPServer, opts ...runtime.Option)
 	}
 
 	infrav2 struct {
