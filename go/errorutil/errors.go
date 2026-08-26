@@ -97,6 +97,11 @@ func PermissionDenied(format string, args ...any) error {
 	return connect.NewError(connect.CodePermissionDenied, fmt.Errorf(format, args...))
 }
 
+// Unimplemented creates a new Unimplemented error (Connect Code 12) with a formatted error message.
+func Unimplemented(format string, args ...any) error {
+	return connect.NewError(connect.CodeUnimplemented, fmt.Errorf(format, args...))
+}
+
 // NewNotFound creates a new Not Found error (Connect Code 5) from an underlying error.
 func NewNotFound(err error) error {
 	return connect.NewError(connect.CodeNotFound, err)
@@ -140,6 +145,11 @@ func NewResourceExhausted(err error) error {
 // NewPermissionDenied creates a new Permission Denied error (Connect Code 7) from an underlying error.
 func NewPermissionDenied(err error) error {
 	return connect.NewError(connect.CodePermissionDenied, err)
+}
+
+// NewUnimplemented creates a new Unimplemented error (Connect Code 12) from an underlying error.
+func NewUnimplemented(err error) error {
+	return connect.NewError(connect.CodeUnimplemented, err)
 }
 
 // IsNotFound reports whether the error is a Not Found error (Connect Code 5).
@@ -194,6 +204,12 @@ func IsResourceExhausted(err error) bool {
 func IsPermissionDenied(err error) bool {
 	connectErr := Convert(err)
 	return connectErr.Code() == connect.CodePermissionDenied
+}
+
+// IsUnimplemented reports whether the error is a Unimplemented error (Connect Code 12).
+func IsUnimplemented(err error) bool {
+	connectErr := Convert(err)
+	return connectErr.Code() == connect.CodeUnimplemented
 }
 
 // WrapConnectErr wraps the error into a connect.Error with the given code if it is not already a connect.Error.

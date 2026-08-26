@@ -76,6 +76,11 @@ func TestIsErrFns(t *testing.T) {
 			errFn: IsUnauthenticated,
 			code:  connect.CodeUnauthenticated,
 		},
+		{
+			name:  "unimplemented",
+			errFn: IsUnimplemented,
+			code:  connect.CodeUnimplemented,
+		},
 	} {
 		tests := []struct {
 			name    string
