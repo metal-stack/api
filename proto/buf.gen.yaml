@@ -13,22 +13,22 @@ managed:
       value: github.com/metal-stack/api/go
 plugins:
   # go
-  - remote: buf.build/protocolbuffers/go:v1.36.11
+  - remote: buf.build/protocolbuffers/go:v1.36.12
     out: ../go
     opt: paths=source_relative
   - remote: buf.build/connectrpc/go:v1.20.0
     out: ../go
     opt: paths=source_relative,simple
   # python
-  - remote: buf.build/protocolbuffers/python:v35.1
+  - remote: buf.build/protocolbuffers/python:v36.0
     out: ../python
     include_imports: True
-  - remote: buf.build/protocolbuffers/pyi:v35.1
+  - remote: buf.build/protocolbuffers/pyi:v36.0
     out: ../python
   - remote: buf.build/connectrpc/python:v0.10.1
     out: ../python
   # js
-  - remote: buf.build/bufbuild/es:v2.13.0
+  - remote: buf.build/bufbuild/es:v2.14.0
     include_imports: true
     out: ../js
     opt: target=ts

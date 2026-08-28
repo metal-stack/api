@@ -24,6 +24,7 @@ class ComponentType(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC: _ClassVar[ComponentType]
     COMPONENT_TYPE_METAL_CONSOLE: _ClassVar[ComponentType]
     COMPONENT_TYPE_METAL_METRICS_EXPORTER: _ClassVar[ComponentType]
+    COMPONENT_TYPE_EXTERNAL_APPLICATION: _ClassVar[ComponentType]
 COMPONENT_TYPE_UNSPECIFIED: ComponentType
 COMPONENT_TYPE_PIXIECORE: ComponentType
 COMPONENT_TYPE_METAL_CORE: ComponentType
@@ -31,6 +32,7 @@ COMPONENT_TYPE_METAL_BMC: ComponentType
 COMPONENT_TYPE_METAL_IMAGE_CACHE_SYNC: ComponentType
 COMPONENT_TYPE_METAL_CONSOLE: ComponentType
 COMPONENT_TYPE_METAL_METRICS_EXPORTER: ComponentType
+COMPONENT_TYPE_EXTERNAL_APPLICATION: ComponentType
 
 class Component(_message.Message):
     __slots__ = ("uuid", "type", "identifier", "started_at", "reported_at", "interval", "version", "token", "meta")
