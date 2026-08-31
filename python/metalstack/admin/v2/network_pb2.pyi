@@ -110,20 +110,24 @@ class NetworkServiceListExternalMembersRequest(_message.Message):
     def __init__(self, network: _Optional[str] = ..., query: _Optional[_Union[_network_pb2.ExternalNetworkMemberQuery, _Mapping]] = ...) -> None: ...
 
 class NetworkServiceAddExternalMembersRequest(_message.Message):
-    __slots__ = ("network", "switch_ports")
+    __slots__ = ("network", "rack", "ports")
     NETWORK_FIELD_NUMBER: _ClassVar[int]
-    SWITCH_PORTS_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
+    PORTS_FIELD_NUMBER: _ClassVar[int]
     network: str
-    switch_ports: _containers.RepeatedCompositeFieldContainer[_network_pb2.ExternalNetworkMember]
-    def __init__(self, network: _Optional[str] = ..., switch_ports: _Optional[_Iterable[_Union[_network_pb2.ExternalNetworkMember, _Mapping]]] = ...) -> None: ...
+    rack: str
+    ports: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, network: _Optional[str] = ..., rack: _Optional[str] = ..., ports: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class NetworkServiceRemoveExternalMembersRequest(_message.Message):
-    __slots__ = ("network", "switch_ports")
+    __slots__ = ("network", "rack", "ports")
     NETWORK_FIELD_NUMBER: _ClassVar[int]
-    SWITCH_PORTS_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
+    PORTS_FIELD_NUMBER: _ClassVar[int]
     network: str
-    switch_ports: _containers.RepeatedCompositeFieldContainer[_network_pb2.ExternalNetworkMember]
-    def __init__(self, network: _Optional[str] = ..., switch_ports: _Optional[_Iterable[_Union[_network_pb2.ExternalNetworkMember, _Mapping]]] = ...) -> None: ...
+    rack: str
+    ports: _containers.RepeatedScalarFieldContainer[str]
+    def __init__(self, network: _Optional[str] = ..., rack: _Optional[str] = ..., ports: _Optional[_Iterable[str]] = ...) -> None: ...
 
 class NetworkServiceCreateResponse(_message.Message):
     __slots__ = ("network",)

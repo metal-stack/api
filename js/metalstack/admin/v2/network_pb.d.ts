@@ -314,12 +314,17 @@ export type NetworkServiceAddExternalMembersRequest = Message<"metalstack.admin.
      */
     network: string;
     /**
-     * SwitchPorts contains the ports of a switch that should be added to the network.
-     * Make sure to add both switches of a rack and the same ports of both in the same request.
+     * Rack the members are connected to.
      *
-     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember switch_ports = 2;
+     * @generated from field: string rack = 2;
      */
-    switchPorts: ExternalNetworkMember[];
+    rack: string;
+    /**
+     * Ports of the switches to add to the network.
+     *
+     * @generated from field: repeated string ports = 3;
+     */
+    ports: string[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMembersRequest.
@@ -339,11 +344,17 @@ export type NetworkServiceRemoveExternalMembersRequest = Message<"metalstack.adm
      */
     network: string;
     /**
-     * SwitchPorts contains the ports of a switch that should be removed from the network.
+     * Rack the members are connected to.
      *
-     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember switch_ports = 2;
+     * @generated from field: string rack = 2;
      */
-    switchPorts: ExternalNetworkMember[];
+    rack: string;
+    /**
+     * Ports of the switches to remove from the network.
+     *
+     * @generated from field: repeated string ports = 3;
+     */
+    ports: string[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest.

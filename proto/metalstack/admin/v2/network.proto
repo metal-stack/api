@@ -158,17 +158,26 @@ message NetworkServiceListExternalMembersRequest {
 message NetworkServiceAddExternalMembersRequest {
   // Network to add the member to.
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // SwitchPorts contains the ports of a switch that should be added to the network.
-  // Make sure to add both switches of a rack and the same ports of both in the same request.
-  repeated metalstack.api.v2.ExternalNetworkMember switch_ports = 2 [(buf.validate.field).repeated.max_items = 8];
+  // Rack the members are connected to.
+  string rack = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Ports of the switches to add to the network.
+  repeated string ports = 3 [
+    (buf.validate.field).repeated.max_items = 2048,
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
 }
 
 // NetworkServiceRemoveExternalMemberRequest is the request payload for removing an external member from a network.
 message NetworkServiceRemoveExternalMembersRequest {
   // Network to remove the member from.
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // SwitchPorts contains the ports of a switch that should be removed from the network.
-  repeated metalstack.api.v2.ExternalNetworkMember switch_ports = 2 [(buf.validate.field).repeated.max_items = 8];
+  // Rack the members are connected to.
+  string rack = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Ports of the switches to remove from the network.
+  repeated string ports = 3 [
+    (buf.validate.field).repeated.max_items = 2048,
+    (buf.validate.field).repeated.(metalstack.api.v2.all_trimmed) = true
+  ];
 }
 
 // NetworkServiceCreateResponse is the response payload for creating a network.

@@ -14583,11 +14583,17 @@ If State set to available, description is also cleared. </p></td>
                 </tr>
               
                 <tr>
-                  <td>switch_ports</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
+                  <td>rack</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Rack the members are connected to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ports</td>
+                  <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>SwitchPorts contains the ports of a switch that should be added to the network.
-Make sure to add both switches of a rack and the same ports of both in the same request. </p></td>
+                  <td><p>Ports of the switches to add to the network. </p></td>
                 </tr>
               
             </tbody>
@@ -14998,10 +15004,17 @@ Make sure to add both switches of a rack and the same ports of both in the same 
                 </tr>
               
                 <tr>
-                  <td>switch_ports</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
+                  <td>rack</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Rack the members are connected to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ports</td>
+                  <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>SwitchPorts contains the ports of a switch that should be removed from the network. </p></td>
+                  <td><p>Ports of the switches to remove from the network. </p></td>
                 </tr>
               
             </tbody>
