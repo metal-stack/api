@@ -44,12 +44,12 @@ service NetworkService {
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
   // Adds an external member to a network.
-  rpc AddExternalMember(NetworkServiceAddExternalMemberRequest) returns (NetworkServiceAddExternalMemberResponse) {
+  rpc AddExternalMembers(NetworkServiceAddExternalMembersRequest) returns (NetworkServiceAddExternalMembersResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Removes an external member from a network.
-  rpc RemoveExternalMember(NetworkServiceRemoveExternalMemberRequest) returns (NetworkServiceRemoveExternalMemberResponse) {
+  rpc RemoveExternalMembers(NetworkServiceRemoveExternalMembersRequest) returns (NetworkServiceRemoveExternalMembersResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
@@ -155,7 +155,7 @@ message NetworkServiceListExternalMembersRequest {
 }
 
 // NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.
-message NetworkServiceAddExternalMemberRequest {
+message NetworkServiceAddExternalMembersRequest {
   // Network to add the member to.
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // SwitchPorts contains the ports of a switch that should be added to the network.
@@ -164,7 +164,7 @@ message NetworkServiceAddExternalMemberRequest {
 }
 
 // NetworkServiceRemoveExternalMemberRequest is the request payload for removing an external member from a network.
-message NetworkServiceRemoveExternalMemberRequest {
+message NetworkServiceRemoveExternalMembersRequest {
   // Network to remove the member from.
   string network = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // SwitchPorts contains the ports of a switch that should be removed from the network.
@@ -202,13 +202,13 @@ message NetworkServiceListExternalMembersResponse {
 }
 
 // NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.
-message NetworkServiceAddExternalMemberResponse {
+message NetworkServiceAddExternalMembersResponse {
   // Switch contains the updated switch.
   metalstack.api.v2.Switch switch = 1;
 }
 
 // NetworkServiceRemoveExternalMemberResponse is the response payload for removing an external member from a network.
-message NetworkServiceRemoveExternalMemberResponse {
+message NetworkServiceRemoveExternalMembersResponse {
   // Switch contains the updated switch.
   metalstack.api.v2.Switch switch = 1;
 }
