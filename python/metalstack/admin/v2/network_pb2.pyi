@@ -156,13 +156,13 @@ class NetworkServiceListExternalMembersResponse(_message.Message):
     def __init__(self, members: _Optional[_Iterable[_Union[_network_pb2.ExternalNetworkMember, _Mapping]]] = ...) -> None: ...
 
 class NetworkServiceAddExternalMembersResponse(_message.Message):
-    __slots__ = ("switch",)
-    SWITCH_FIELD_NUMBER: _ClassVar[int]
-    switch: _switch_pb2.Switch
-    def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+    __slots__ = ("switches",)
+    SWITCHES_FIELD_NUMBER: _ClassVar[int]
+    switches: _containers.RepeatedCompositeFieldContainer[_switch_pb2.Switch]
+    def __init__(self, switches: _Optional[_Iterable[_Union[_switch_pb2.Switch, _Mapping]]] = ...) -> None: ...
 
 class NetworkServiceRemoveExternalMembersResponse(_message.Message):
-    __slots__ = ("switch",)
-    SWITCH_FIELD_NUMBER: _ClassVar[int]
-    switch: _switch_pb2.Switch
-    def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+    __slots__ = ("switches",)
+    SWITCHES_FIELD_NUMBER: _ClassVar[int]
+    switches: _containers.RepeatedCompositeFieldContainer[_switch_pb2.Switch]
+    def __init__(self, switches: _Optional[_Iterable[_Union[_switch_pb2.Switch, _Mapping]]] = ...) -> None: ...

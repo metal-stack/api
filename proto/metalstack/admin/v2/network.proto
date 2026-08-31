@@ -203,12 +203,12 @@ message NetworkServiceListExternalMembersResponse {
 
 // NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.
 message NetworkServiceAddExternalMembersResponse {
-  // Switch contains the updated switch.
-  metalstack.api.v2.Switch switch = 1;
+  // Switch contains the updated switches.
+  repeated metalstack.api.v2.Switch switches = 1;
 }
 
 // NetworkServiceRemoveExternalMemberResponse is the response payload for removing an external member from a network.
 message NetworkServiceRemoveExternalMembersResponse {
-  // Switch contains the updated switch.
-  metalstack.api.v2.Switch switch = 1;
+  // Switch contains the updated switches.
+  repeated metalstack.api.v2.Switch switches = 1;
 }

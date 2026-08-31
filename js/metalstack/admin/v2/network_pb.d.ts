@@ -447,11 +447,11 @@ export declare const NetworkServiceListExternalMembersResponseSchema: GenMessage
  */
 export type NetworkServiceAddExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceAddExternalMembersResponse"> & {
     /**
-     * Switch contains the updated switch.
+     * Switch contains the updated switches.
      *
-     * @generated from field: metalstack.api.v2.Switch switch = 1;
+     * @generated from field: repeated metalstack.api.v2.Switch switches = 1;
      */
-    switch?: Switch | undefined;
+    switches: Switch[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMembersResponse.
@@ -465,11 +465,11 @@ export declare const NetworkServiceAddExternalMembersResponseSchema: GenMessage<
  */
 export type NetworkServiceRemoveExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse"> & {
     /**
-     * Switch contains the updated switch.
+     * Switch contains the updated switches.
      *
-     * @generated from field: metalstack.api.v2.Switch switch = 1;
+     * @generated from field: repeated metalstack.api.v2.Switch switches = 1;
      */
-    switch?: Switch | undefined;
+    switches: Switch[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse.
