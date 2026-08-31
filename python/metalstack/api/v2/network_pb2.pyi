@@ -222,12 +222,14 @@ class NetworkQuery(_message.Message):
     def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., partition: _Optional[str] = ..., project: _Optional[str] = ..., namespace: _Optional[str] = ..., prefixes: _Optional[_Iterable[str]] = ..., destination_prefixes: _Optional[_Iterable[str]] = ..., vrf: _Optional[int] = ..., parent_network: _Optional[str] = ..., address_family: _Optional[_Union[NetworkAddressFamily, str]] = ..., type: _Optional[_Union[NetworkType, str]] = ..., nat_type: _Optional[_Union[NATType, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class ExternalNetworkMemberQuery(_message.Message):
-    __slots__ = ("switch", "rack")
+    __slots__ = ("switch", "rack", "partition")
     SWITCH_FIELD_NUMBER: _ClassVar[int]
     RACK_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
     switch: str
     rack: str
-    def __init__(self, switch: _Optional[str] = ..., rack: _Optional[str] = ...) -> None: ...
+    partition: str
+    def __init__(self, switch: _Optional[str] = ..., rack: _Optional[str] = ..., partition: _Optional[str] = ...) -> None: ...
 
 class ChildPrefixLength(_message.Message):
     __slots__ = ("ipv4", "ipv6")

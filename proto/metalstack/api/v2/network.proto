@@ -242,6 +242,8 @@ message ExternalNetworkMemberQuery {
   }];
   // Rack for which the members of the network are queried.
   optional string rack = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Partition where the members of the network reside..
+  optional string partition = 3 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
 }
 
 // ChildPrefixLength.

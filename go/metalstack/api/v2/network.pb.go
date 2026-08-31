@@ -1280,7 +1280,9 @@ type ExternalNetworkMemberQuery struct {
 	// Switch whose ports are queried.
 	Switch *string `protobuf:"bytes,1,opt,name=switch,proto3,oneof" json:"switch,omitempty"`
 	// Rack for which the members of the network are queried.
-	Rack          *string `protobuf:"bytes,2,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
+	Rack *string `protobuf:"bytes,2,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
+	// Partition where the members of the network reside..
+	Partition     *string `protobuf:"bytes,3,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1325,6 +1327,13 @@ func (x *ExternalNetworkMemberQuery) GetSwitch() string {
 func (x *ExternalNetworkMemberQuery) GetRack() string {
 	if x != nil && x.Rack != nil {
 		return *x.Rack
+	}
+	return ""
+}
+
+func (x *ExternalNetworkMemberQuery) GetPartition() string {
+	if x != nil && x.Partition != nil {
+		return *x.Partition
 	}
 	return ""
 }
@@ -1683,13 +1692,16 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\x0f_address_familyB\a\n" +
 	"\x05_typeB\v\n" +
 	"\t_nat_typeB\t\n" +
-	"\a_labels\"\x82\x01\n" +
+	"\a_labels\"\xc0\x01\n" +
 	"\x1aExternalNetworkMemberQuery\x12*\n" +
 	"\x06switch\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01H\x00R\x06switch\x88\x01\x01\x12$\n" +
-	"\x04rack\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04rack\x88\x01\x01B\t\n" +
+	"\x04rack\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04rack\x88\x01\x01\x12.\n" +
+	"\tpartition\x18\x03 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01H\x02R\tpartition\x88\x01\x01B\t\n" +
 	"\a_switchB\a\n" +
-	"\x05_rack\"n\n" +
+	"\x05_rackB\f\n" +
+	"\n" +
+	"_partition\"n\n" +
 	"\x11ChildPrefixLength\x12\"\n" +
 	"\x04ipv4\x18\x01 \x01(\rB\t\xbaH\x06*\x04\x18  \x00H\x00R\x04ipv4\x88\x01\x01\x12#\n" +
 	"\x04ipv6\x18\x02 \x01(\rB\n" +
