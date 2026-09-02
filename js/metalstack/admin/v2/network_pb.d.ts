@@ -440,9 +440,15 @@ export declare const NetworkServiceListResponseSchema: GenMessage<NetworkService
  */
 export type NetworkServiceListExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceListExternalMembersResponse"> & {
     /**
+     * Network whose members are queried.
+     *
+     * @generated from field: string network = 1;
+     */
+    network: string;
+    /**
      * Members are the queried external members of the network.
      *
-     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember members = 1;
+     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember members = 2;
      */
     members: ExternalNetworkMember[];
 };
@@ -458,9 +464,15 @@ export declare const NetworkServiceListExternalMembersResponseSchema: GenMessage
  */
 export type NetworkServiceAddExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceAddExternalMembersResponse"> & {
     /**
+     * Network the members were added to.
+     *
+     * @generated from field: metalstack.api.v2.Network network = 1;
+     */
+    network?: Network | undefined;
+    /**
      * Switch contains the updated switches.
      *
-     * @generated from field: repeated metalstack.api.v2.Switch switches = 1;
+     * @generated from field: repeated metalstack.api.v2.Switch switches = 2;
      */
     switches: Switch[];
 };
@@ -476,9 +488,15 @@ export declare const NetworkServiceAddExternalMembersResponseSchema: GenMessage<
  */
 export type NetworkServiceRemoveExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse"> & {
     /**
+     * Network the members were removed from.
+     *
+     * @generated from field: metalstack.api.v2.Network network = 1;
+     */
+    network?: Network | undefined;
+    /**
      * Switch contains the updated switches.
      *
-     * @generated from field: repeated metalstack.api.v2.Switch switches = 1;
+     * @generated from field: repeated metalstack.api.v2.Switch switches = 2;
      */
     switches: Switch[];
 };
