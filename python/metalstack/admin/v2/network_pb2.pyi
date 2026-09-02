@@ -154,19 +154,25 @@ class NetworkServiceListResponse(_message.Message):
     def __init__(self, networks: _Optional[_Iterable[_Union[_network_pb2.Network, _Mapping]]] = ...) -> None: ...
 
 class NetworkServiceListExternalMembersResponse(_message.Message):
-    __slots__ = ("members",)
+    __slots__ = ("network", "members")
+    NETWORK_FIELD_NUMBER: _ClassVar[int]
     MEMBERS_FIELD_NUMBER: _ClassVar[int]
+    network: str
     members: _containers.RepeatedCompositeFieldContainer[_network_pb2.ExternalNetworkMember]
-    def __init__(self, members: _Optional[_Iterable[_Union[_network_pb2.ExternalNetworkMember, _Mapping]]] = ...) -> None: ...
+    def __init__(self, network: _Optional[str] = ..., members: _Optional[_Iterable[_Union[_network_pb2.ExternalNetworkMember, _Mapping]]] = ...) -> None: ...
 
 class NetworkServiceAddExternalMembersResponse(_message.Message):
-    __slots__ = ("switches",)
+    __slots__ = ("network", "switches")
+    NETWORK_FIELD_NUMBER: _ClassVar[int]
     SWITCHES_FIELD_NUMBER: _ClassVar[int]
+    network: _network_pb2.Network
     switches: _containers.RepeatedCompositeFieldContainer[_switch_pb2.Switch]
-    def __init__(self, switches: _Optional[_Iterable[_Union[_switch_pb2.Switch, _Mapping]]] = ...) -> None: ...
+    def __init__(self, network: _Optional[_Union[_network_pb2.Network, _Mapping]] = ..., switches: _Optional[_Iterable[_Union[_switch_pb2.Switch, _Mapping]]] = ...) -> None: ...
 
 class NetworkServiceRemoveExternalMembersResponse(_message.Message):
-    __slots__ = ("switches",)
+    __slots__ = ("network", "switches")
+    NETWORK_FIELD_NUMBER: _ClassVar[int]
     SWITCHES_FIELD_NUMBER: _ClassVar[int]
+    network: _network_pb2.Network
     switches: _containers.RepeatedCompositeFieldContainer[_switch_pb2.Switch]
-    def __init__(self, switches: _Optional[_Iterable[_Union[_switch_pb2.Switch, _Mapping]]] = ...) -> None: ...
+    def __init__(self, network: _Optional[_Union[_network_pb2.Network, _Mapping]] = ..., switches: _Optional[_Iterable[_Union[_switch_pb2.Switch, _Mapping]]] = ...) -> None: ...
