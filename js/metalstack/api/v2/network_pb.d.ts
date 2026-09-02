@@ -546,6 +546,12 @@ export type ExternalNetworkMemberQuery = Message<"metalstack.api.v2.ExternalNetw
      * @generated from field: optional string rack = 2;
      */
     rack?: string | undefined;
+    /**
+     * Partition where the members of the network reside..
+     *
+     * @generated from field: optional string partition = 3;
+     */
+    partition?: string | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ExternalNetworkMemberQuery.

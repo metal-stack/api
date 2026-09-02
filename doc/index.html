@@ -1659,11 +1659,11 @@
             <ul>
               
                 <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceAddExternalMemberRequest"><span class="badge">M</span>NetworkServiceAddExternalMemberRequest</a>
+                  <a href="#metalstack.admin.v2.NetworkServiceAddExternalMembersRequest"><span class="badge">M</span>NetworkServiceAddExternalMembersRequest</a>
                 </li>
               
                 <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceAddExternalMemberResponse"><span class="badge">M</span>NetworkServiceAddExternalMemberResponse</a>
+                  <a href="#metalstack.admin.v2.NetworkServiceAddExternalMembersResponse"><span class="badge">M</span>NetworkServiceAddExternalMembersResponse</a>
                 </li>
               
                 <li>
@@ -1707,11 +1707,11 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest"><span class="badge">M</span>NetworkServiceRemoveExternalMemberRequest</a>
+                  <a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest"><span class="badge">M</span>NetworkServiceRemoveExternalMembersRequest</a>
                 </li>
               
                 <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse"><span class="badge">M</span>NetworkServiceRemoveExternalMemberResponse</a>
+                  <a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse"><span class="badge">M</span>NetworkServiceRemoveExternalMembersResponse</a>
                 </li>
               
                 <li>
@@ -8612,6 +8612,13 @@ Will be equal with project most of the time. </p></td>
                   <td><p>Rack for which the members of the network are queried. </p></td>
                 </tr>
               
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Partition where the members of the network reside.. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -14558,7 +14565,7 @@ If State set to available, description is also cleared. </p></td>
       <p></p>
 
       
-        <h3 id="metalstack.admin.v2.NetworkServiceAddExternalMemberRequest">NetworkServiceAddExternalMemberRequest</h3>
+        <h3 id="metalstack.admin.v2.NetworkServiceAddExternalMembersRequest">NetworkServiceAddExternalMembersRequest</h3>
         <p>NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.</p>
 
         
@@ -14576,11 +14583,17 @@ If State set to available, description is also cleared. </p></td>
                 </tr>
               
                 <tr>
-                  <td>switch_ports</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
+                  <td>rack</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Rack the members are connected to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ports</td>
+                  <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>SwitchPorts contains the ports of a switch that should be added to the network.
-Make sure to add both switches of a rack and the same ports of both in the same request. </p></td>
+                  <td><p>Ports of the switches to add to the network. </p></td>
                 </tr>
               
             </tbody>
@@ -14590,7 +14603,7 @@ Make sure to add both switches of a rack and the same ports of both in the same 
 
         
       
-        <h3 id="metalstack.admin.v2.NetworkServiceAddExternalMemberResponse">NetworkServiceAddExternalMemberResponse</h3>
+        <h3 id="metalstack.admin.v2.NetworkServiceAddExternalMembersResponse">NetworkServiceAddExternalMembersResponse</h3>
         <p>NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.</p>
 
         
@@ -14601,10 +14614,10 @@ Make sure to add both switches of a rack and the same ports of both in the same 
             <tbody>
               
                 <tr>
-                  <td>switch</td>
+                  <td>switches</td>
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
-                  <td></td>
-                  <td><p>Switch contains the updated switch. </p></td>
+                  <td>repeated</td>
+                  <td><p>Switch contains the updated switches. </p></td>
                 </tr>
               
             </tbody>
@@ -14973,7 +14986,7 @@ Make sure to add both switches of a rack and the same ports of both in the same 
 
         
       
-        <h3 id="metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest">NetworkServiceRemoveExternalMemberRequest</h3>
+        <h3 id="metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest">NetworkServiceRemoveExternalMembersRequest</h3>
         <p>NetworkServiceRemoveExternalMemberRequest is the request payload for removing an external member from a network.</p>
 
         
@@ -14991,10 +15004,17 @@ Make sure to add both switches of a rack and the same ports of both in the same 
                 </tr>
               
                 <tr>
-                  <td>switch_ports</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
+                  <td>rack</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Rack the members are connected to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>ports</td>
+                  <td><a href="#string">string</a></td>
                   <td>repeated</td>
-                  <td><p>SwitchPorts contains the ports of a switch that should be removed from the network. </p></td>
+                  <td><p>Ports of the switches to remove from the network. </p></td>
                 </tr>
               
             </tbody>
@@ -15004,7 +15024,7 @@ Make sure to add both switches of a rack and the same ports of both in the same 
 
         
       
-        <h3 id="metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse">NetworkServiceRemoveExternalMemberResponse</h3>
+        <h3 id="metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse">NetworkServiceRemoveExternalMembersResponse</h3>
         <p>NetworkServiceRemoveExternalMemberResponse is the response payload for removing an external member from a network.</p>
 
         
@@ -15015,10 +15035,10 @@ Make sure to add both switches of a rack and the same ports of both in the same 
             <tbody>
               
                 <tr>
-                  <td>switch</td>
+                  <td>switches</td>
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
-                  <td></td>
-                  <td><p>Switch contains the updated switch. </p></td>
+                  <td>repeated</td>
+                  <td><p>Switch contains the updated switches. </p></td>
                 </tr>
               
             </tbody>
@@ -15210,16 +15230,16 @@ Make sure to add both switches of a rack and the same ports of both in the same 
               </tr>
             
               <tr>
-                <td>AddExternalMember</td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceAddExternalMemberRequest">NetworkServiceAddExternalMemberRequest</a></td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceAddExternalMemberResponse">NetworkServiceAddExternalMemberResponse</a></td>
+                <td>AddExternalMembers</td>
+                <td><a href="#metalstack.admin.v2.NetworkServiceAddExternalMembersRequest">NetworkServiceAddExternalMembersRequest</a></td>
+                <td><a href="#metalstack.admin.v2.NetworkServiceAddExternalMembersResponse">NetworkServiceAddExternalMembersResponse</a></td>
                 <td><p>Adds an external member to a network.</p></td>
               </tr>
             
               <tr>
-                <td>RemoveExternalMember</td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest">NetworkServiceRemoveExternalMemberRequest</a></td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse">NetworkServiceRemoveExternalMemberResponse</a></td>
+                <td>RemoveExternalMembers</td>
+                <td><a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest">NetworkServiceRemoveExternalMembersRequest</a></td>
+                <td><a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse">NetworkServiceRemoveExternalMembersResponse</a></td>
                 <td><p>Removes an external member from a network.</p></td>
               </tr>
             

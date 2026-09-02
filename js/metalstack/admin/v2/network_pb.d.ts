@@ -304,9 +304,9 @@ export declare const NetworkServiceListExternalMembersRequestSchema: GenMessage<
 /**
  * NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.
  *
- * @generated from message metalstack.admin.v2.NetworkServiceAddExternalMemberRequest
+ * @generated from message metalstack.admin.v2.NetworkServiceAddExternalMembersRequest
  */
-export type NetworkServiceAddExternalMemberRequest = Message<"metalstack.admin.v2.NetworkServiceAddExternalMemberRequest"> & {
+export type NetworkServiceAddExternalMembersRequest = Message<"metalstack.admin.v2.NetworkServiceAddExternalMembersRequest"> & {
     /**
      * Network to add the member to.
      *
@@ -314,24 +314,29 @@ export type NetworkServiceAddExternalMemberRequest = Message<"metalstack.admin.v
      */
     network: string;
     /**
-     * SwitchPorts contains the ports of a switch that should be added to the network.
-     * Make sure to add both switches of a rack and the same ports of both in the same request.
+     * Rack the members are connected to.
      *
-     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember switch_ports = 2;
+     * @generated from field: string rack = 2;
      */
-    switchPorts: ExternalNetworkMember[];
+    rack: string;
+    /**
+     * Ports of the switches to add to the network.
+     *
+     * @generated from field: repeated string ports = 3;
+     */
+    ports: string[];
 };
 /**
- * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMemberRequest.
- * Use `create(NetworkServiceAddExternalMemberRequestSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMembersRequest.
+ * Use `create(NetworkServiceAddExternalMembersRequestSchema)` to create a new message.
  */
-export declare const NetworkServiceAddExternalMemberRequestSchema: GenMessage<NetworkServiceAddExternalMemberRequest>;
+export declare const NetworkServiceAddExternalMembersRequestSchema: GenMessage<NetworkServiceAddExternalMembersRequest>;
 /**
  * NetworkServiceRemoveExternalMemberRequest is the request payload for removing an external member from a network.
  *
- * @generated from message metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest
+ * @generated from message metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest
  */
-export type NetworkServiceRemoveExternalMemberRequest = Message<"metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest"> & {
+export type NetworkServiceRemoveExternalMembersRequest = Message<"metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest"> & {
     /**
      * Network to remove the member from.
      *
@@ -339,17 +344,23 @@ export type NetworkServiceRemoveExternalMemberRequest = Message<"metalstack.admi
      */
     network: string;
     /**
-     * SwitchPorts contains the ports of a switch that should be removed from the network.
+     * Rack the members are connected to.
      *
-     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember switch_ports = 2;
+     * @generated from field: string rack = 2;
      */
-    switchPorts: ExternalNetworkMember[];
+    rack: string;
+    /**
+     * Ports of the switches to remove from the network.
+     *
+     * @generated from field: repeated string ports = 3;
+     */
+    ports: string[];
 };
 /**
- * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMemberRequest.
- * Use `create(NetworkServiceRemoveExternalMemberRequestSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest.
+ * Use `create(NetworkServiceRemoveExternalMembersRequestSchema)` to create a new message.
  */
-export declare const NetworkServiceRemoveExternalMemberRequestSchema: GenMessage<NetworkServiceRemoveExternalMemberRequest>;
+export declare const NetworkServiceRemoveExternalMembersRequestSchema: GenMessage<NetworkServiceRemoveExternalMembersRequest>;
 /**
  * NetworkServiceCreateResponse is the response payload for creating a network.
  *
@@ -443,39 +454,39 @@ export declare const NetworkServiceListExternalMembersResponseSchema: GenMessage
 /**
  * NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.
  *
- * @generated from message metalstack.admin.v2.NetworkServiceAddExternalMemberResponse
+ * @generated from message metalstack.admin.v2.NetworkServiceAddExternalMembersResponse
  */
-export type NetworkServiceAddExternalMemberResponse = Message<"metalstack.admin.v2.NetworkServiceAddExternalMemberResponse"> & {
+export type NetworkServiceAddExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceAddExternalMembersResponse"> & {
     /**
-     * Switch contains the updated switch.
+     * Switch contains the updated switches.
      *
-     * @generated from field: metalstack.api.v2.Switch switch = 1;
+     * @generated from field: repeated metalstack.api.v2.Switch switches = 1;
      */
-    switch?: Switch | undefined;
+    switches: Switch[];
 };
 /**
- * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMemberResponse.
- * Use `create(NetworkServiceAddExternalMemberResponseSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMembersResponse.
+ * Use `create(NetworkServiceAddExternalMembersResponseSchema)` to create a new message.
  */
-export declare const NetworkServiceAddExternalMemberResponseSchema: GenMessage<NetworkServiceAddExternalMemberResponse>;
+export declare const NetworkServiceAddExternalMembersResponseSchema: GenMessage<NetworkServiceAddExternalMembersResponse>;
 /**
  * NetworkServiceRemoveExternalMemberResponse is the response payload for removing an external member from a network.
  *
- * @generated from message metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse
+ * @generated from message metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse
  */
-export type NetworkServiceRemoveExternalMemberResponse = Message<"metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse"> & {
+export type NetworkServiceRemoveExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse"> & {
     /**
-     * Switch contains the updated switch.
+     * Switch contains the updated switches.
      *
-     * @generated from field: metalstack.api.v2.Switch switch = 1;
+     * @generated from field: repeated metalstack.api.v2.Switch switches = 1;
      */
-    switch?: Switch | undefined;
+    switches: Switch[];
 };
 /**
- * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMemberResponse.
- * Use `create(NetworkServiceRemoveExternalMemberResponseSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse.
+ * Use `create(NetworkServiceRemoveExternalMembersResponseSchema)` to create a new message.
  */
-export declare const NetworkServiceRemoveExternalMemberResponseSchema: GenMessage<NetworkServiceRemoveExternalMemberResponse>;
+export declare const NetworkServiceRemoveExternalMembersResponseSchema: GenMessage<NetworkServiceRemoveExternalMembersResponse>;
 /**
  * NetworkService provides network management operations.
  *
@@ -545,21 +556,21 @@ export declare const NetworkService: GenService<{
     /**
      * Adds an external member to a network.
      *
-     * @generated from rpc metalstack.admin.v2.NetworkService.AddExternalMember
+     * @generated from rpc metalstack.admin.v2.NetworkService.AddExternalMembers
      */
-    addExternalMember: {
+    addExternalMembers: {
         methodKind: "unary";
-        input: typeof NetworkServiceAddExternalMemberRequestSchema;
-        output: typeof NetworkServiceAddExternalMemberResponseSchema;
+        input: typeof NetworkServiceAddExternalMembersRequestSchema;
+        output: typeof NetworkServiceAddExternalMembersResponseSchema;
     };
     /**
      * Removes an external member from a network.
      *
-     * @generated from rpc metalstack.admin.v2.NetworkService.RemoveExternalMember
+     * @generated from rpc metalstack.admin.v2.NetworkService.RemoveExternalMembers
      */
-    removeExternalMember: {
+    removeExternalMembers: {
         methodKind: "unary";
-        input: typeof NetworkServiceRemoveExternalMemberRequestSchema;
-        output: typeof NetworkServiceRemoveExternalMemberResponseSchema;
+        input: typeof NetworkServiceRemoveExternalMembersRequestSchema;
+        output: typeof NetworkServiceRemoveExternalMembersResponseSchema;
     };
 }>;
