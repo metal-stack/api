@@ -78,6 +78,8 @@ message SwitchNic {
   optional BGPFilter bgp_filter = 6;
   // BGPPortState represents the current BGP status of the port.
   optional SwitchBGPPortState bgp_port_state = 7;
+  // Membership indicates whether the port is connected to an internal or external host.
+  SwitchPortMembership membership = 8;
 }
 
 // BGPFilter can be used to restrict BGP based on CIDRs and VNIs.
@@ -232,4 +234,17 @@ enum SwitchPortStatus {
   SWITCH_PORT_STATUS_DOWN = 2 [(enum_string_value) = "down"];
   // SWITCH_PORT_STATUS_UNKNOWN means the status of this port is unknown.
   SWITCH_PORT_STATUS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
+}
+
+// SwitchPortMembership indicates whether a switch port is connected to an internal or an external host.
+enum SwitchPortMembership {
+  // SWITCH_PORT_MEMBERSHIP_UNSPECIFIED is not specified.
+  SWITCH_PORT_MEMBERSHIP_UNSPECIFIED = 0;
+  // SWITCH_PORT_MEMBERSHIP_UNMANAGED is a port that isn't connected to any host yet.
+  SWITCH_PORT_MEMBERSHIP_UNMANAGED = 1;
+  // SWITCH_PORT_MEMBERSHIP_INTERNAL is port that is connected to a host that is registered at the api, e.g. a registered machine.
+  SWITCH_PORT_MEMBERSHIP_INTERNAL = 2;
+  // SWITCH_PORT_MEMBERSHIP_EXTERNAL is port that is connected to a host that is not registered at the api.
+  // This value allows connecting an external system to a network managed by us.
+  SWITCH_PORT_MEMBERSHIP_EXTERNAL = 3;
 }

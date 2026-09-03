@@ -1641,6 +1641,10 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.api.v2.SwitchPortMembership"><span class="badge">E</span>SwitchPortMembership</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.api.v2.SwitchPortStatus"><span class="badge">E</span>SwitchPortStatus</a>
                 </li>
               
@@ -14149,6 +14153,13 @@ If State set to available, description is also cleared. </p></td>
                   <td><p>BGPPortState represents the current BGP status of the port. </p></td>
                 </tr>
               
+                <tr>
+                  <td>membership</td>
+                  <td><a href="#metalstack.api.v2.SwitchPortMembership">SwitchPortMembership</a></td>
+                  <td></td>
+                  <td><p>Membership indicates whether the port is connected to an internal or external host. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -14484,6 +14495,42 @@ If State set to available, description is also cleared. </p></td>
                 <td>SWITCH_OS_VENDOR_SONIC</td>
                 <td>2</td>
                 <td><p>SWITCH_OS_VENDOR_SONIC means this switch is running on SONiC NOS.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.SwitchPortMembership">SwitchPortMembership</h3>
+        <p>SwitchPortMembership indicates whether a switch port is connected to an internal or an external host.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>SWITCH_PORT_MEMBERSHIP_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>SWITCH_PORT_MEMBERSHIP_UNSPECIFIED is not specified.</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_PORT_MEMBERSHIP_UNMANAGED</td>
+                <td>1</td>
+                <td><p>SWITCH_PORT_MEMBERSHIP_UNMANAGED is a port that isn&#39;t connected to any host yet.</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_PORT_MEMBERSHIP_INTERNAL</td>
+                <td>2</td>
+                <td><p>SWITCH_PORT_MEMBERSHIP_INTERNAL is port that is connected to a host that is registered at the api, e.g. a registered machine.</p></td>
+              </tr>
+            
+              <tr>
+                <td>SWITCH_PORT_MEMBERSHIP_EXTERNAL</td>
+                <td>3</td>
+                <td><p>SWITCH_PORT_MEMBERSHIP_EXTERNAL is port that is connected to a host that is not registered at the api.
+This value allows connecting an external system to a network managed by us.</p></td>
               </tr>
             
           </tbody>

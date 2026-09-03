@@ -13,7 +13,7 @@ _buf:
 protolint:
 	@$(MAKE)	_buf	CMD="format -w"
 	@$(MAKE)	_buf	CMD="lint -v"
-	# @$(MAKE)	_buf	CMD="breaking --against 'https://github.com/metal-stack/api.git#branch=main,subdir=proto'"
+	@$(MAKE)	_buf	CMD="breaking --against 'https://github.com/metal-stack/api.git#branch=main,subdir=proto'"
 
 .PHONY: protoc
 protoc:

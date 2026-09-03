@@ -43,6 +43,13 @@ class SwitchPortStatus(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SWITCH_PORT_STATUS_UP: _ClassVar[SwitchPortStatus]
     SWITCH_PORT_STATUS_DOWN: _ClassVar[SwitchPortStatus]
     SWITCH_PORT_STATUS_UNKNOWN: _ClassVar[SwitchPortStatus]
+
+class SwitchPortMembership(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = ()
+    SWITCH_PORT_MEMBERSHIP_UNSPECIFIED: _ClassVar[SwitchPortMembership]
+    SWITCH_PORT_MEMBERSHIP_UNMANAGED: _ClassVar[SwitchPortMembership]
+    SWITCH_PORT_MEMBERSHIP_INTERNAL: _ClassVar[SwitchPortMembership]
+    SWITCH_PORT_MEMBERSHIP_EXTERNAL: _ClassVar[SwitchPortMembership]
 BGP_STATE_UNSPECIFIED: BGPState
 BGP_STATE_IDLE: BGPState
 BGP_STATE_CONNECT: BGPState
@@ -60,6 +67,10 @@ SWITCH_PORT_STATUS_UNSPECIFIED: SwitchPortStatus
 SWITCH_PORT_STATUS_UP: SwitchPortStatus
 SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
 SWITCH_PORT_STATUS_UNKNOWN: SwitchPortStatus
+SWITCH_PORT_MEMBERSHIP_UNSPECIFIED: SwitchPortMembership
+SWITCH_PORT_MEMBERSHIP_UNMANAGED: SwitchPortMembership
+SWITCH_PORT_MEMBERSHIP_INTERNAL: SwitchPortMembership
+SWITCH_PORT_MEMBERSHIP_EXTERNAL: SwitchPortMembership
 
 class Switch(_message.Message):
     __slots__ = ("id", "meta", "description", "rack", "room", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections", "last_sync", "last_sync_error")
@@ -106,7 +117,7 @@ class SwitchOS(_message.Message):
     def __init__(self, vendor: _Optional[_Union[SwitchOSVendor, str]] = ..., version: _Optional[str] = ..., metal_core_version: _Optional[str] = ...) -> None: ...
 
 class SwitchNic(_message.Message):
-    __slots__ = ("name", "identifier", "mac", "vrf", "state", "bgp_filter", "bgp_port_state")
+    __slots__ = ("name", "identifier", "mac", "vrf", "state", "bgp_filter", "bgp_port_state", "membership")
     NAME_FIELD_NUMBER: _ClassVar[int]
     IDENTIFIER_FIELD_NUMBER: _ClassVar[int]
     MAC_FIELD_NUMBER: _ClassVar[int]
@@ -114,6 +125,7 @@ class SwitchNic(_message.Message):
     STATE_FIELD_NUMBER: _ClassVar[int]
     BGP_FILTER_FIELD_NUMBER: _ClassVar[int]
     BGP_PORT_STATE_FIELD_NUMBER: _ClassVar[int]
+    MEMBERSHIP_FIELD_NUMBER: _ClassVar[int]
     name: str
     identifier: str
     mac: str
@@ -121,7 +133,8 @@ class SwitchNic(_message.Message):
     state: NicState
     bgp_filter: BGPFilter
     bgp_port_state: SwitchBGPPortState
-    def __init__(self, name: _Optional[str] = ..., identifier: _Optional[str] = ..., mac: _Optional[str] = ..., vrf: _Optional[str] = ..., state: _Optional[_Union[NicState, _Mapping]] = ..., bgp_filter: _Optional[_Union[BGPFilter, _Mapping]] = ..., bgp_port_state: _Optional[_Union[SwitchBGPPortState, _Mapping]] = ...) -> None: ...
+    membership: SwitchPortMembership
+    def __init__(self, name: _Optional[str] = ..., identifier: _Optional[str] = ..., mac: _Optional[str] = ..., vrf: _Optional[str] = ..., state: _Optional[_Union[NicState, _Mapping]] = ..., bgp_filter: _Optional[_Union[BGPFilter, _Mapping]] = ..., bgp_port_state: _Optional[_Union[SwitchBGPPortState, _Mapping]] = ..., membership: _Optional[_Union[SwitchPortMembership, str]] = ...) -> None: ...
 
 class BGPFilter(_message.Message):
     __slots__ = ("cidrs", "vnis")
