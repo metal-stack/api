@@ -241,10 +241,10 @@ enum SwitchPortMembership {
   // SWITCH_PORT_MEMBERSHIP_UNSPECIFIED is not specified.
   SWITCH_PORT_MEMBERSHIP_UNSPECIFIED = 0;
   // SWITCH_PORT_MEMBERSHIP_UNMANAGED is a port that isn't connected to any host yet.
-  SWITCH_PORT_MEMBERSHIP_UNMANAGED = 1;
+  SWITCH_PORT_MEMBERSHIP_UNMANAGED = 1 [(enum_string_value) = "unmanaged"];
   // SWITCH_PORT_MEMBERSHIP_INTERNAL is port that is connected to a host that is registered at the api, e.g. a registered machine.
-  SWITCH_PORT_MEMBERSHIP_INTERNAL = 2;
+  SWITCH_PORT_MEMBERSHIP_INTERNAL = 2 [(enum_string_value) = "internal"];
   // SWITCH_PORT_MEMBERSHIP_EXTERNAL is port that is connected to a host that is not registered at the api.
   // This value allows connecting an external system to a network managed by us.
-  SWITCH_PORT_MEMBERSHIP_EXTERNAL = 3;
+  SWITCH_PORT_MEMBERSHIP_EXTERNAL = 3 [(enum_string_value) = "external"];
 }

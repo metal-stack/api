@@ -1401,12 +1401,12 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x1eSWITCH_PORT_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x15SWITCH_PORT_STATUS_UP\x10\x01\x1a\x06\x82\xb2\x19\x02up\x12%\n" +
 	"\x17SWITCH_PORT_STATUS_DOWN\x10\x02\x1a\b\x82\xb2\x19\x04down\x12+\n" +
-	"\x1aSWITCH_PORT_STATUS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknown*\xae\x01\n" +
+	"\x1aSWITCH_PORT_STATUS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknown*\xd9\x01\n" +
 	"\x14SwitchPortMembership\x12&\n" +
-	"\"SWITCH_PORT_MEMBERSHIP_UNSPECIFIED\x10\x00\x12$\n" +
-	" SWITCH_PORT_MEMBERSHIP_UNMANAGED\x10\x01\x12#\n" +
-	"\x1fSWITCH_PORT_MEMBERSHIP_INTERNAL\x10\x02\x12#\n" +
-	"\x1fSWITCH_PORT_MEMBERSHIP_EXTERNAL\x10\x03B\xc1\x01\n" +
+	"\"SWITCH_PORT_MEMBERSHIP_UNSPECIFIED\x10\x00\x123\n" +
+	" SWITCH_PORT_MEMBERSHIP_UNMANAGED\x10\x01\x1a\r\x82\xb2\x19\tunmanaged\x121\n" +
+	"\x1fSWITCH_PORT_MEMBERSHIP_INTERNAL\x10\x02\x1a\f\x82\xb2\x19\binternal\x121\n" +
+	"\x1fSWITCH_PORT_MEMBERSHIP_EXTERNAL\x10\x03\x1a\f\x82\xb2\x19\bexternalB\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vSwitchProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (
