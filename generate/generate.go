@@ -4,12 +4,12 @@ import (
 	"bytes"
 	"fmt"
 	"go/format"
-	"text/template"
 	"os"
 	"path"
 	"path/filepath"
 	"slices"
 	"strings"
+	"text/template"
 
 	sprig "github.com/go-task/slim-sprig/v3"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
