@@ -913,7 +913,7 @@ func (x *NetworkServiceListResponse) GetNetworks() []*v2.Network {
 type NetworkServiceListExternalMembersResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network whose members are queried.
-	Network string `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	Network *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
 	// Members are the queried external members of the network.
 	Members       []*v2.ExternalNetworkMember `protobuf:"bytes,2,rep,name=members,proto3" json:"members,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -950,11 +950,11 @@ func (*NetworkServiceListExternalMembersResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_network_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *NetworkServiceListExternalMembersResponse) GetNetwork() string {
+func (x *NetworkServiceListExternalMembersResponse) GetNetwork() *v2.Network {
 	if x != nil {
 		return x.Network
 	}
-	return ""
+	return nil
 }
 
 func (x *NetworkServiceListExternalMembersResponse) GetMembers() []*v2.ExternalNetworkMember {
@@ -969,8 +969,8 @@ type NetworkServiceAddExternalMembersResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network the members were added to.
 	Network *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
-	// Switch contains the updated switches.
-	Switches      []*v2.Switch `protobuf:"bytes,2,rep,name=switches,proto3" json:"switches,omitempty"`
+	// Members are the updated external members of the network.
+	Members       []*v2.ExternalNetworkMember `protobuf:"bytes,2,rep,name=members,proto3" json:"members,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1012,9 +1012,9 @@ func (x *NetworkServiceAddExternalMembersResponse) GetNetwork() *v2.Network {
 	return nil
 }
 
-func (x *NetworkServiceAddExternalMembersResponse) GetSwitches() []*v2.Switch {
+func (x *NetworkServiceAddExternalMembersResponse) GetMembers() []*v2.ExternalNetworkMember {
 	if x != nil {
-		return x.Switches
+		return x.Members
 	}
 	return nil
 }
@@ -1024,8 +1024,8 @@ type NetworkServiceRemoveExternalMembersResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Network the members were removed from.
 	Network *v2.Network `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
-	// Switch contains the updated switches.
-	Switches      []*v2.Switch `protobuf:"bytes,2,rep,name=switches,proto3" json:"switches,omitempty"`
+	// Members are the updated external members of the network.
+	Members       []*v2.ExternalNetworkMember `protobuf:"bytes,2,rep,name=members,proto3" json:"members,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1067,9 +1067,9 @@ func (x *NetworkServiceRemoveExternalMembersResponse) GetNetwork() *v2.Network {
 	return nil
 }
 
-func (x *NetworkServiceRemoveExternalMembersResponse) GetSwitches() []*v2.Switch {
+func (x *NetworkServiceRemoveExternalMembersResponse) GetMembers() []*v2.ExternalNetworkMember {
 	if x != nil {
-		return x.Switches
+		return x.Members
 	}
 	return nil
 }
@@ -1078,7 +1078,7 @@ var File_metalstack_admin_v2_network_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/switch.proto\"7\n" +
+	"!metalstack/admin/v2/network.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a(metalstack/api/v2/predefined_rules.proto\"7\n" +
 	"\x18NetworkServiceGetRequest\x12\x1b\n" +
 	"\x02id\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x02id\"Q\n" +
 	"\x19NetworkServiceGetResponse\x124\n" +
@@ -1159,16 +1159,16 @@ const file_metalstack_admin_v2_network_proto_rawDesc = "" +
 	"\x1cNetworkServiceDeleteResponse\x124\n" +
 	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\"T\n" +
 	"\x1aNetworkServiceListResponse\x126\n" +
-	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"\x89\x01\n" +
-	")NetworkServiceListExternalMembersResponse\x12\x18\n" +
-	"\anetwork\x18\x01 \x01(\tR\anetwork\x12B\n" +
-	"\amembers\x18\x02 \x03(\v2(.metalstack.api.v2.ExternalNetworkMemberR\amembers\"\x97\x01\n" +
+	"\bnetworks\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\bnetworks\"\xa5\x01\n" +
+	")NetworkServiceListExternalMembersResponse\x124\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\x12B\n" +
+	"\amembers\x18\x02 \x03(\v2(.metalstack.api.v2.ExternalNetworkMemberR\amembers\"\xa4\x01\n" +
 	"(NetworkServiceAddExternalMembersResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\x125\n" +
-	"\bswitches\x18\x02 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\x9a\x01\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\x12B\n" +
+	"\amembers\x18\x02 \x03(\v2(.metalstack.api.v2.ExternalNetworkMemberR\amembers\"\xa7\x01\n" +
 	"+NetworkServiceRemoveExternalMembersResponse\x124\n" +
-	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\x125\n" +
-	"\bswitches\x18\x02 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches2\xcf\b\n" +
+	"\anetwork\x18\x01 \x01(\v2\x1a.metalstack.api.v2.NetworkR\anetwork\x12B\n" +
+	"\amembers\x18\x02 \x03(\v2(.metalstack.api.v2.ExternalNetworkMemberR\amembers2\xcf\b\n" +
 	"\x0eNetworkService\x12p\n" +
 	"\x03Get\x12-.metalstack.admin.v2.NetworkServiceGetRequest\x1a..metalstack.admin.v2.NetworkServiceGetResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12x\n" +
@@ -1224,7 +1224,6 @@ var file_metalstack_admin_v2_network_proto_goTypes = []any{
 	(*v2.NetworkQuery)(nil),                             // 24: metalstack.api.v2.NetworkQuery
 	(*v2.ExternalNetworkMemberQuery)(nil),               // 25: metalstack.api.v2.ExternalNetworkMemberQuery
 	(*v2.ExternalNetworkMember)(nil),                    // 26: metalstack.api.v2.ExternalNetworkMember
-	(*v2.Switch)(nil),                                   // 27: metalstack.api.v2.Switch
 }
 var file_metalstack_admin_v2_network_proto_depIdxs = []int32{
 	16, // 0: metalstack.admin.v2.NetworkServiceGetResponse.network:type_name -> metalstack.api.v2.Network
@@ -1246,32 +1245,33 @@ var file_metalstack_admin_v2_network_proto_depIdxs = []int32{
 	16, // 16: metalstack.admin.v2.NetworkServiceUpdateResponse.network:type_name -> metalstack.api.v2.Network
 	16, // 17: metalstack.admin.v2.NetworkServiceDeleteResponse.network:type_name -> metalstack.api.v2.Network
 	16, // 18: metalstack.admin.v2.NetworkServiceListResponse.networks:type_name -> metalstack.api.v2.Network
-	26, // 19: metalstack.admin.v2.NetworkServiceListExternalMembersResponse.members:type_name -> metalstack.api.v2.ExternalNetworkMember
-	16, // 20: metalstack.admin.v2.NetworkServiceAddExternalMembersResponse.network:type_name -> metalstack.api.v2.Network
-	27, // 21: metalstack.admin.v2.NetworkServiceAddExternalMembersResponse.switches:type_name -> metalstack.api.v2.Switch
-	16, // 22: metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse.network:type_name -> metalstack.api.v2.Network
-	27, // 23: metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse.switches:type_name -> metalstack.api.v2.Switch
-	0,  // 24: metalstack.admin.v2.NetworkService.Get:input_type -> metalstack.admin.v2.NetworkServiceGetRequest
-	2,  // 25: metalstack.admin.v2.NetworkService.Create:input_type -> metalstack.admin.v2.NetworkServiceCreateRequest
-	3,  // 26: metalstack.admin.v2.NetworkService.Update:input_type -> metalstack.admin.v2.NetworkServiceUpdateRequest
-	4,  // 27: metalstack.admin.v2.NetworkService.Delete:input_type -> metalstack.admin.v2.NetworkServiceDeleteRequest
-	5,  // 28: metalstack.admin.v2.NetworkService.List:input_type -> metalstack.admin.v2.NetworkServiceListRequest
-	6,  // 29: metalstack.admin.v2.NetworkService.ListExternalMembers:input_type -> metalstack.admin.v2.NetworkServiceListExternalMembersRequest
-	7,  // 30: metalstack.admin.v2.NetworkService.AddExternalMembers:input_type -> metalstack.admin.v2.NetworkServiceAddExternalMembersRequest
-	8,  // 31: metalstack.admin.v2.NetworkService.RemoveExternalMembers:input_type -> metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest
-	1,  // 32: metalstack.admin.v2.NetworkService.Get:output_type -> metalstack.admin.v2.NetworkServiceGetResponse
-	9,  // 33: metalstack.admin.v2.NetworkService.Create:output_type -> metalstack.admin.v2.NetworkServiceCreateResponse
-	10, // 34: metalstack.admin.v2.NetworkService.Update:output_type -> metalstack.admin.v2.NetworkServiceUpdateResponse
-	11, // 35: metalstack.admin.v2.NetworkService.Delete:output_type -> metalstack.admin.v2.NetworkServiceDeleteResponse
-	12, // 36: metalstack.admin.v2.NetworkService.List:output_type -> metalstack.admin.v2.NetworkServiceListResponse
-	13, // 37: metalstack.admin.v2.NetworkService.ListExternalMembers:output_type -> metalstack.admin.v2.NetworkServiceListExternalMembersResponse
-	14, // 38: metalstack.admin.v2.NetworkService.AddExternalMembers:output_type -> metalstack.admin.v2.NetworkServiceAddExternalMembersResponse
-	15, // 39: metalstack.admin.v2.NetworkService.RemoveExternalMembers:output_type -> metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse
-	32, // [32:40] is the sub-list for method output_type
-	24, // [24:32] is the sub-list for method input_type
-	24, // [24:24] is the sub-list for extension type_name
-	24, // [24:24] is the sub-list for extension extendee
-	0,  // [0:24] is the sub-list for field type_name
+	16, // 19: metalstack.admin.v2.NetworkServiceListExternalMembersResponse.network:type_name -> metalstack.api.v2.Network
+	26, // 20: metalstack.admin.v2.NetworkServiceListExternalMembersResponse.members:type_name -> metalstack.api.v2.ExternalNetworkMember
+	16, // 21: metalstack.admin.v2.NetworkServiceAddExternalMembersResponse.network:type_name -> metalstack.api.v2.Network
+	26, // 22: metalstack.admin.v2.NetworkServiceAddExternalMembersResponse.members:type_name -> metalstack.api.v2.ExternalNetworkMember
+	16, // 23: metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse.network:type_name -> metalstack.api.v2.Network
+	26, // 24: metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse.members:type_name -> metalstack.api.v2.ExternalNetworkMember
+	0,  // 25: metalstack.admin.v2.NetworkService.Get:input_type -> metalstack.admin.v2.NetworkServiceGetRequest
+	2,  // 26: metalstack.admin.v2.NetworkService.Create:input_type -> metalstack.admin.v2.NetworkServiceCreateRequest
+	3,  // 27: metalstack.admin.v2.NetworkService.Update:input_type -> metalstack.admin.v2.NetworkServiceUpdateRequest
+	4,  // 28: metalstack.admin.v2.NetworkService.Delete:input_type -> metalstack.admin.v2.NetworkServiceDeleteRequest
+	5,  // 29: metalstack.admin.v2.NetworkService.List:input_type -> metalstack.admin.v2.NetworkServiceListRequest
+	6,  // 30: metalstack.admin.v2.NetworkService.ListExternalMembers:input_type -> metalstack.admin.v2.NetworkServiceListExternalMembersRequest
+	7,  // 31: metalstack.admin.v2.NetworkService.AddExternalMembers:input_type -> metalstack.admin.v2.NetworkServiceAddExternalMembersRequest
+	8,  // 32: metalstack.admin.v2.NetworkService.RemoveExternalMembers:input_type -> metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest
+	1,  // 33: metalstack.admin.v2.NetworkService.Get:output_type -> metalstack.admin.v2.NetworkServiceGetResponse
+	9,  // 34: metalstack.admin.v2.NetworkService.Create:output_type -> metalstack.admin.v2.NetworkServiceCreateResponse
+	10, // 35: metalstack.admin.v2.NetworkService.Update:output_type -> metalstack.admin.v2.NetworkServiceUpdateResponse
+	11, // 36: metalstack.admin.v2.NetworkService.Delete:output_type -> metalstack.admin.v2.NetworkServiceDeleteResponse
+	12, // 37: metalstack.admin.v2.NetworkService.List:output_type -> metalstack.admin.v2.NetworkServiceListResponse
+	13, // 38: metalstack.admin.v2.NetworkService.ListExternalMembers:output_type -> metalstack.admin.v2.NetworkServiceListExternalMembersResponse
+	14, // 39: metalstack.admin.v2.NetworkService.AddExternalMembers:output_type -> metalstack.admin.v2.NetworkServiceAddExternalMembersResponse
+	15, // 40: metalstack.admin.v2.NetworkService.RemoveExternalMembers:output_type -> metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse
+	33, // [33:41] is the sub-list for method output_type
+	25, // [25:33] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_network_proto_init() }

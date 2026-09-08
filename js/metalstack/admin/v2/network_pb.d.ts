@@ -1,7 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Labels, UpdateLabels, UpdateMeta } from "../../api/v2/common_pb";
 import type { ChildPrefixLength, ExternalNetworkMember, ExternalNetworkMemberQuery, NATType, Network, NetworkAddressFamily, NetworkQuery, NetworkType } from "../../api/v2/network_pb";
-import type { Switch } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/network.proto.
@@ -442,9 +441,9 @@ export type NetworkServiceListExternalMembersResponse = Message<"metalstack.admi
     /**
      * Network whose members are queried.
      *
-     * @generated from field: string network = 1;
+     * @generated from field: metalstack.api.v2.Network network = 1;
      */
-    network: string;
+    network?: Network | undefined;
     /**
      * Members are the queried external members of the network.
      *
@@ -470,11 +469,11 @@ export type NetworkServiceAddExternalMembersResponse = Message<"metalstack.admin
      */
     network?: Network | undefined;
     /**
-     * Switch contains the updated switches.
+     * Members are the updated external members of the network.
      *
-     * @generated from field: repeated metalstack.api.v2.Switch switches = 2;
+     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember members = 2;
      */
-    switches: Switch[];
+    members: ExternalNetworkMember[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMembersResponse.
@@ -494,11 +493,11 @@ export type NetworkServiceRemoveExternalMembersResponse = Message<"metalstack.ad
      */
     network?: Network | undefined;
     /**
-     * Switch contains the updated switches.
+     * Members are the updated external members of the network.
      *
-     * @generated from field: repeated metalstack.api.v2.Switch switches = 2;
+     * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember members = 2;
      */
-    switches: Switch[];
+    members: ExternalNetworkMember[];
 };
 /**
  * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse.
