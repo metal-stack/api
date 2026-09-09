@@ -647,7 +647,7 @@ export type ExternalNetworkMemberQuery = Message<"metalstack.api.v2.ExternalNetw
   rack?: string | undefined;
 
   /**
-   * Partition where the members of the network reside..
+   * Partition where the members of the network reside.
    *
    * @generated from field: optional string partition = 3;
    */

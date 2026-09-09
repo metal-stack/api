@@ -1281,7 +1281,7 @@ type ExternalNetworkMemberQuery struct {
 	Switch *string `protobuf:"bytes,1,opt,name=switch,proto3,oneof" json:"switch,omitempty"`
 	// Rack for which the members of the network are queried.
 	Rack *string `protobuf:"bytes,2,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
-	// Partition where the members of the network reside..
+	// Partition where the members of the network reside.
 	Partition     *string `protobuf:"bytes,3,opt,name=partition,proto3,oneof" json:"partition,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
