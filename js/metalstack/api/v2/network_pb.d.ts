@@ -655,9 +655,21 @@ export type ExternalNetworkMember = Message<"metalstack.api.v2.ExternalNetworkMe
      */
     switch: string;
     /**
+     * Partition of the switch.
+     *
+     * @generated from field: string partition = 2;
+     */
+    partition: string;
+    /**
+     * Rack of the switch.
+     *
+     * @generated from field: optional string rack = 3;
+     */
+    rack?: string | undefined;
+    /**
      * Ports of the switch that participate in the network.
      *
-     * @generated from field: repeated string ports = 2;
+     * @generated from field: repeated string ports = 4;
      */
     ports: string[];
 };

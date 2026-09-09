@@ -1526,8 +1526,12 @@ type ExternalNetworkMember struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Switch the external members are connected to.
 	Switch string `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
+	// Partition of the switch.
+	Partition string `protobuf:"bytes,2,opt,name=partition,proto3" json:"partition,omitempty"`
+	// Rack of the switch.
+	Rack *string `protobuf:"bytes,3,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
 	// Ports of the switch that participate in the network.
-	Ports         []string `protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty"`
+	Ports         []string `protobuf:"bytes,4,rep,name=ports,proto3" json:"ports,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1565,6 +1569,20 @@ func (*ExternalNetworkMember) Descriptor() ([]byte, []int) {
 func (x *ExternalNetworkMember) GetSwitch() string {
 	if x != nil {
 		return x.Switch
+	}
+	return ""
+}
+
+func (x *ExternalNetworkMember) GetPartition() string {
+	if x != nil {
+		return x.Partition
+	}
+	return ""
+}
+
+func (x *ExternalNetworkMember) GetRack() string {
+	if x != nil && x.Rack != nil {
+		return *x.Rack
 	}
 	return ""
 }
@@ -1715,10 +1733,13 @@ const file_metalstack_api_v2_network_proto_rawDesc = "" +
 	"\ravailable_ips\x18\x01 \x01(\x04R\favailableIps\x12\x19\n" +
 	"\bused_ips\x18\x02 \x01(\x04R\ausedIps\x12-\n" +
 	"\x12available_prefixes\x18\x03 \x01(\x04R\x11availablePrefixes\x12#\n" +
-	"\rused_prefixes\x18\x04 \x01(\x04R\fusedPrefixes\"c\n" +
+	"\rused_prefixes\x18\x04 \x01(\x04R\fusedPrefixes\"\xbd\x01\n" +
 	"\x15ExternalNetworkMember\x12#\n" +
-	"\x06switch\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x06switch\x12%\n" +
-	"\x05ports\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\tФ\xb3\xb1\x02\x01\x10\x80\x10R\x05ports*m\n" +
+	"\x06switch\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x06switch\x12)\n" +
+	"\tpartition\x18\x02 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12$\n" +
+	"\x04rack\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04rack\x88\x01\x01\x12%\n" +
+	"\x05ports\x18\x04 \x03(\tB\x0f\xbaH\f\x92\x01\tФ\xb3\xb1\x02\x01\x10\x80\x10R\x05portsB\a\n" +
+	"\x05_rack*m\n" +
 	"\aNATType\x12\x18\n" +
 	"\x14NAT_TYPE_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\rNAT_TYPE_NONE\x10\x01\x1a\b\x82\xb2\x19\x04none\x12+\n" +
@@ -1849,6 +1870,7 @@ func file_metalstack_api_v2_network_proto_init() {
 	file_metalstack_api_v2_network_proto_msgTypes[13].OneofWrappers = []any{}
 	file_metalstack_api_v2_network_proto_msgTypes[14].OneofWrappers = []any{}
 	file_metalstack_api_v2_network_proto_msgTypes[15].OneofWrappers = []any{}
+	file_metalstack_api_v2_network_proto_msgTypes[18].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

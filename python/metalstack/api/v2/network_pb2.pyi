@@ -260,9 +260,13 @@ class NetworkUsage(_message.Message):
     def __init__(self, available_ips: _Optional[int] = ..., used_ips: _Optional[int] = ..., available_prefixes: _Optional[int] = ..., used_prefixes: _Optional[int] = ...) -> None: ...
 
 class ExternalNetworkMember(_message.Message):
-    __slots__ = ("switch", "ports")
+    __slots__ = ("switch", "partition", "rack", "ports")
     SWITCH_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
     PORTS_FIELD_NUMBER: _ClassVar[int]
     switch: str
+    partition: str
+    rack: str
     ports: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, switch: _Optional[str] = ..., ports: _Optional[_Iterable[str]] = ...) -> None: ...
+    def __init__(self, switch: _Optional[str] = ..., partition: _Optional[str] = ..., rack: _Optional[str] = ..., ports: _Optional[_Iterable[str]] = ...) -> None: ...
