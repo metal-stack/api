@@ -287,7 +287,7 @@ message ExternalNetworkMember {
   // Partition of the switch.
   string partition = 2 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
   // Rack of the switch.
-  optional string rack = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  string rack = 3 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Ports of the switch that participate in the network.
   repeated string ports = 4 [
     (buf.validate.field).repeated.max_items = 2048,

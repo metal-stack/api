@@ -663,9 +663,9 @@ export type ExternalNetworkMember = Message<"metalstack.api.v2.ExternalNetworkMe
     /**
      * Rack of the switch.
      *
-     * @generated from field: optional string rack = 3;
+     * @generated from field: string rack = 3;
      */
-    rack?: string | undefined;
+    rack: string;
     /**
      * Ports of the switch that participate in the network.
      *
