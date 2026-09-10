@@ -96,7 +96,7 @@ message BGPFilter {
 // SwitchBGPPortState holds information about the BGP state of a port.
 message SwitchBGPPortState {
   // Neighbor of this port.
-  string neighbor = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  optional string neighbor = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // PeerGroup of this port.
   string peer_group = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // VrfName of the VRF this port is bound to.

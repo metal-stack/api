@@ -232,9 +232,9 @@ export type SwitchBGPPortState = Message<"metalstack.api.v2.SwitchBGPPortState">
     /**
      * Neighbor of this port.
      *
-     * @generated from field: string neighbor = 1;
+     * @generated from field: optional string neighbor = 1;
      */
-    neighbor: string;
+    neighbor?: string | undefined;
     /**
      * PeerGroup of this port.
      *

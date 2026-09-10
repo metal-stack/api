@@ -718,7 +718,7 @@ func (x *BGPFilter) GetVnis() []string {
 type SwitchBGPPortState struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Neighbor of this port.
-	Neighbor string `protobuf:"bytes,1,opt,name=neighbor,proto3" json:"neighbor,omitempty"`
+	Neighbor *string `protobuf:"bytes,1,opt,name=neighbor,proto3,oneof" json:"neighbor,omitempty"`
 	// PeerGroup of this port.
 	PeerGroup string `protobuf:"bytes,2,opt,name=peer_group,json=peerGroup,proto3" json:"peer_group,omitempty"`
 	// VrfName of the VRF this port is bound to.
@@ -766,8 +766,8 @@ func (*SwitchBGPPortState) Descriptor() ([]byte, []int) {
 }
 
 func (x *SwitchBGPPortState) GetNeighbor() string {
-	if x != nil {
-		return x.Neighbor
+	if x != nil && x.Neighbor != nil {
+		return *x.Neighbor
 	}
 	return ""
 }
@@ -1325,16 +1325,17 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x0f_bgp_port_state\"T\n" +
 	"\tBGPFilter\x12\"\n" +
 	"\x05cidrs\x18\x01 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x05cidrs\x12#\n" +
-	"\x04vnis\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\"\ar\x05\x10\x02\x18\x80\x01R\x04vnis\"\x92\x03\n" +
-	"\x12SwitchBGPPortState\x12'\n" +
-	"\bneighbor\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\bneighbor\x12*\n" +
+	"\x04vnis\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\"\ar\x05\x10\x02\x18\x80\x01R\x04vnis\"\xa4\x03\n" +
+	"\x12SwitchBGPPortState\x12,\n" +
+	"\bneighbor\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\bneighbor\x88\x01\x01\x12*\n" +
 	"\n" +
 	"peer_group\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\tpeerGroup\x12&\n" +
 	"\bvrf_name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\avrfName\x12B\n" +
 	"\tbgp_state\x18\x04 \x01(\x0e2\x1b.metalstack.api.v2.BGPStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\bbgpState\x12S\n" +
 	"\x18bgp_timer_up_established\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\x15bgpTimerUpEstablished\x12.\n" +
 	"\x13sent_prefix_counter\x18\x06 \x01(\x04R\x11sentPrefixCounter\x126\n" +
-	"\x17accepted_prefix_counter\x18\a \x01(\x04R\x15acceptedPrefixCounter\"\xab\x01\n" +
+	"\x17accepted_prefix_counter\x18\a \x01(\x04R\x15acceptedPrefixCounterB\v\n" +
+	"\t_neighbor\"\xab\x01\n" +
 	"\bNicState\x12L\n" +
 	"\adesired\x18\x01 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\adesired\x88\x01\x01\x12E\n" +
 	"\x06actual\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06actualB\n" +
@@ -1490,6 +1491,7 @@ func file_metalstack_api_v2_switch_proto_init() {
 	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_switch_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[2].OneofWrappers = []any{}
+	file_metalstack_api_v2_switch_proto_msgTypes[4].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[5].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[7].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[8].OneofWrappers = []any{}
