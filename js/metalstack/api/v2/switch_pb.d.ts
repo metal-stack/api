@@ -160,7 +160,8 @@ export type SwitchNic = Message<"metalstack.api.v2.SwitchNic"> & {
     /**
      * MAC address of the port.
      *
-     * @generated from field: optional string mac = 3;
+     * @generated from field: optional string mac = 3 [deprecated = true];
+     * @deprecated
      */
     mac?: string | undefined;
     /**

@@ -20,5 +20,5 @@
   "files": [
     "./*"
   ],
-  "version": "0.0.0"
+  "version": "deprecate-switchnic-mac"
 }
