@@ -499,7 +499,7 @@ type SwitchNic struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Identifier of the port.
 	Identifier string `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	// MAC address of the port.
+	// MAC address of the port. This field is deprecated because it was only necessary before SONiC was supported. For SONiC, all these addresses are identical and do not provide any benefit. It will be dropped once the metal-api has been dropped.
 	//
 	// Deprecated: Marked as deprecated in metalstack/api/v2/switch.proto.
 	Mac *string `protobuf:"bytes,3,opt,name=mac,proto3,oneof" json:"mac,omitempty"`
