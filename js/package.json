@@ -20,5 +20,5 @@
   "files": [
     "./*"
   ],
-  "version": "deprecate-switchnic-mac"
+  "version": "explicit-external-member-field"
 }

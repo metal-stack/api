@@ -62,7 +62,7 @@ type SwitchServiceClient interface {
 	Delete(context.Context, *v2.SwitchServiceDeleteRequest) (*v2.SwitchServiceDeleteResponse, error)
 	// Migrates a switch.
 	Migrate(context.Context, *v2.SwitchServiceMigrateRequest) (*v2.SwitchServiceMigrateResponse, error)
-	// Sets the port status of a switch port.
+	// Sets the port config of a switch port.
 	Port(context.Context, *v2.SwitchServicePortRequest) (*v2.SwitchServicePortResponse, error)
 	// Returns all switches with their machine connections.
 	ConnectedMachines(context.Context, *v2.SwitchServiceConnectedMachinesRequest) (*v2.SwitchServiceConnectedMachinesResponse, error)
@@ -210,7 +210,7 @@ type SwitchServiceHandler interface {
 	Delete(context.Context, *v2.SwitchServiceDeleteRequest) (*v2.SwitchServiceDeleteResponse, error)
 	// Migrates a switch.
 	Migrate(context.Context, *v2.SwitchServiceMigrateRequest) (*v2.SwitchServiceMigrateResponse, error)
-	// Sets the port status of a switch port.
+	// Sets the port config of a switch port.
 	Port(context.Context, *v2.SwitchServicePortRequest) (*v2.SwitchServicePortResponse, error)
 	// Returns all switches with their machine connections.
 	ConnectedMachines(context.Context, *v2.SwitchServiceConnectedMachinesRequest) (*v2.SwitchServiceConnectedMachinesResponse, error)

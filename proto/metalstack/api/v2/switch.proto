@@ -78,6 +78,8 @@ message SwitchNic {
   optional BGPFilter bgp_filter = 6;
   // BGPPortState represents the current BGP status of the port.
   optional SwitchBGPPortState bgp_port_state = 7;
+  // Membership indicates whether the port is connected to an internal or external host.
+  SwitchPortMembership membership = 8;
 }
 
 // BGPFilter can be used to restrict BGP based on CIDRs and VNIs.
@@ -94,7 +96,7 @@ message BGPFilter {
 // SwitchBGPPortState holds information about the BGP state of a port.
 message SwitchBGPPortState {
   // Neighbor of this port.
-  string neighbor = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  optional string neighbor = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // PeerGroup of this port.
   string peer_group = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // VrfName of the VRF this port is bound to.
@@ -184,6 +186,16 @@ message SwitchNicWithMachine {
   metalstack.api.v2.MachineFRU fru = 3;
 }
 
+// StaticPortConfig is a config that is statically applied to a port.
+message StaticPortConfig {
+  // Status is the administrative status of the port.
+  SwitchPortStatus status = 1 [(buf.validate.field).enum.defined_only = true];
+  // Membership specifies whether this port is connected to a registered machine or to an external host or if it is unmanaged.
+  SwitchPortMembership membership = 2;
+  // Network the port is a member of.
+  optional string network = 3;
+}
+
 // BGPState represents the state of a BGP session.
 enum BGPState {
   // BGP_STATE_UNSPECIFIED is not specified.
@@ -232,4 +244,17 @@ enum SwitchPortStatus {
   SWITCH_PORT_STATUS_DOWN = 2 [(enum_string_value) = "down"];
   // SWITCH_PORT_STATUS_UNKNOWN means the status of this port is unknown.
   SWITCH_PORT_STATUS_UNKNOWN = 3 [(enum_string_value) = "unknown"];
+}
+
+// SwitchPortMembership indicates whether a switch port is connected to an internal or an external host.
+enum SwitchPortMembership {
+  // SWITCH_PORT_MEMBERSHIP_UNSPECIFIED is not specified.
+  SWITCH_PORT_MEMBERSHIP_UNSPECIFIED = 0;
+  // SWITCH_PORT_MEMBERSHIP_UNMANAGED is a port that isn't connected to any host yet.
+  SWITCH_PORT_MEMBERSHIP_UNMANAGED = 1 [(enum_string_value) = "unmanaged"];
+  // SWITCH_PORT_MEMBERSHIP_INTERNAL is port that is connected to a host that is registered at the api, e.g. a registered machine.
+  SWITCH_PORT_MEMBERSHIP_INTERNAL = 2 [(enum_string_value) = "internal"];
+  // SWITCH_PORT_MEMBERSHIP_EXTERNAL is port that is connected to a host that is not registered at the api.
+  // This value allows connecting an external system to a network managed by us.
+  SWITCH_PORT_MEMBERSHIP_EXTERNAL = 3 [(enum_string_value) = "external"];
 }

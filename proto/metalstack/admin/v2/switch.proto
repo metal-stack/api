@@ -38,7 +38,7 @@ service SwitchService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
-  // Sets the port status of a switch port.
+  // Sets the port config of a switch port.
   rpc Port(SwitchServicePortRequest) returns (SwitchServicePortResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
@@ -149,22 +149,22 @@ message SwitchServiceMigrateResponse {
   metalstack.api.v2.Switch switch = 1;
 }
 
-// SwitchServicePortRequest is the request payload for setting the port status of a switch port.
+// SwitchServicePortRequest is the request payload for setting the port config of a switch port.
 message SwitchServicePortRequest {
   // Id of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
     [metalstack.api.v2.is_name]: true
   }];
-  // NicName of the port whose status should be changed.
+  // NicName of the affected port.
   string nic_name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Status that the port should have.
-  metalstack.api.v2.SwitchPortStatus status = 3 [(buf.validate.field).enum.defined_only = true];
+  // Config is the desired port config.
+  metalstack.api.v2.StaticPortConfig config = 3;
 }
 
-// SwitchServicePortResponse is the response payload for setting the port status of a switch port.
+// SwitchServicePortResponse is the response payload for setting the port config of a switch port.
 message SwitchServicePortResponse {
-  // Switch after the port status toggle.
+  // Switch after the update.
   metalstack.api.v2.Switch switch = 1;
 }
 

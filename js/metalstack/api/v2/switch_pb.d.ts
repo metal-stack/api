@@ -188,6 +188,12 @@ export type SwitchNic = Message<"metalstack.api.v2.SwitchNic"> & {
      * @generated from field: optional metalstack.api.v2.SwitchBGPPortState bgp_port_state = 7;
      */
     bgpPortState?: SwitchBGPPortState | undefined;
+    /**
+     * Membership indicates whether the port is connected to an internal or external host.
+     *
+     * @generated from field: metalstack.api.v2.SwitchPortMembership membership = 8;
+     */
+    membership: SwitchPortMembership;
 };
 /**
  * Describes the message metalstack.api.v2.SwitchNic.
@@ -227,9 +233,9 @@ export type SwitchBGPPortState = Message<"metalstack.api.v2.SwitchBGPPortState">
     /**
      * Neighbor of this port.
      *
-     * @generated from field: string neighbor = 1;
+     * @generated from field: optional string neighbor = 1;
      */
-    neighbor: string;
+    neighbor?: string | undefined;
     /**
      * PeerGroup of this port.
      *
@@ -489,6 +495,36 @@ export type SwitchNicWithMachine = Message<"metalstack.api.v2.SwitchNicWithMachi
  */
 export declare const SwitchNicWithMachineSchema: GenMessage<SwitchNicWithMachine>;
 /**
+ * StaticPortConfig is a config that is statically applied to a port.
+ *
+ * @generated from message metalstack.api.v2.StaticPortConfig
+ */
+export type StaticPortConfig = Message<"metalstack.api.v2.StaticPortConfig"> & {
+    /**
+     * Status is the administrative status of the port.
+     *
+     * @generated from field: metalstack.api.v2.SwitchPortStatus status = 1;
+     */
+    status: SwitchPortStatus;
+    /**
+     * Membership specifies whether this port is connected to a registered machine or to an external host or if it is unmanaged.
+     *
+     * @generated from field: metalstack.api.v2.SwitchPortMembership membership = 2;
+     */
+    membership: SwitchPortMembership;
+    /**
+     * Network the port is a member of.
+     *
+     * @generated from field: optional string network = 3;
+     */
+    network?: string | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.StaticPortConfig.
+ * Use `create(StaticPortConfigSchema)` to create a new message.
+ */
+export declare const StaticPortConfigSchema: GenMessage<StaticPortConfig>;
+/**
  * BGPState represents the state of a BGP session.
  *
  * @generated from enum metalstack.api.v2.BGPState
@@ -634,3 +670,39 @@ export declare enum SwitchPortStatus {
  * Describes the enum metalstack.api.v2.SwitchPortStatus.
  */
 export declare const SwitchPortStatusSchema: GenEnum<SwitchPortStatus>;
+/**
+ * SwitchPortMembership indicates whether a switch port is connected to an internal or an external host.
+ *
+ * @generated from enum metalstack.api.v2.SwitchPortMembership
+ */
+export declare enum SwitchPortMembership {
+    /**
+     * SWITCH_PORT_MEMBERSHIP_UNSPECIFIED is not specified.
+     *
+     * @generated from enum value: SWITCH_PORT_MEMBERSHIP_UNSPECIFIED = 0;
+     */
+    UNSPECIFIED = 0,
+    /**
+     * SWITCH_PORT_MEMBERSHIP_UNMANAGED is a port that isn't connected to any host yet.
+     *
+     * @generated from enum value: SWITCH_PORT_MEMBERSHIP_UNMANAGED = 1;
+     */
+    UNMANAGED = 1,
+    /**
+     * SWITCH_PORT_MEMBERSHIP_INTERNAL is port that is connected to a host that is registered at the api, e.g. a registered machine.
+     *
+     * @generated from enum value: SWITCH_PORT_MEMBERSHIP_INTERNAL = 2;
+     */
+    INTERNAL = 2,
+    /**
+     * SWITCH_PORT_MEMBERSHIP_EXTERNAL is port that is connected to a host that is not registered at the api.
+     * This value allows connecting an external system to a network managed by us.
+     *
+     * @generated from enum value: SWITCH_PORT_MEMBERSHIP_EXTERNAL = 3;
+     */
+    EXTERNAL = 3
+}
+/**
+ * Describes the enum metalstack.api.v2.SwitchPortMembership.
+ */
+export declare const SwitchPortMembershipSchema: GenEnum<SwitchPortMembership>;

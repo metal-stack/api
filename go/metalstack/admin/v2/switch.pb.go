@@ -584,15 +584,15 @@ func (x *SwitchServiceMigrateResponse) GetSwitch() *v2.Switch {
 	return nil
 }
 
-// SwitchServicePortRequest is the request payload for setting the port status of a switch port.
+// SwitchServicePortRequest is the request payload for setting the port config of a switch port.
 type SwitchServicePortRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Id of the switch.
 	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	// NicName of the port whose status should be changed.
+	// NicName of the affected port.
 	NicName string `protobuf:"bytes,2,opt,name=nic_name,json=nicName,proto3" json:"nic_name,omitempty"`
-	// Status that the port should have.
-	Status        v2.SwitchPortStatus `protobuf:"varint,3,opt,name=status,proto3,enum=metalstack.api.v2.SwitchPortStatus" json:"status,omitempty"`
+	// Config is the desired port config.
+	Config        *v2.StaticPortConfig `protobuf:"bytes,3,opt,name=config,proto3" json:"config,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -641,17 +641,17 @@ func (x *SwitchServicePortRequest) GetNicName() string {
 	return ""
 }
 
-func (x *SwitchServicePortRequest) GetStatus() v2.SwitchPortStatus {
+func (x *SwitchServicePortRequest) GetConfig() *v2.StaticPortConfig {
 	if x != nil {
-		return x.Status
+		return x.Config
 	}
-	return v2.SwitchPortStatus(0)
+	return nil
 }
 
-// SwitchServicePortResponse is the response payload for setting the port status of a switch port.
+// SwitchServicePortResponse is the response payload for setting the port config of a switch port.
 type SwitchServicePortResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switch after the port status toggle.
+	// Switch after the update.
 	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -846,12 +846,12 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"new_switch\x18\x02 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\tnewSwitch\"Q\n" +
 	"\x1cSwitchServiceMigrateResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xa8\x01\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\x9e\x01\n" +
 	"\x18SwitchServicePortRequest\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12&\n" +
-	"\bnic_name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anicName\x12E\n" +
-	"\x06status\x18\x03 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status\"N\n" +
+	"\bnic_name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\anicName\x12;\n" +
+	"\x06config\x18\x03 \x01(\v2#.metalstack.api.v2.StaticPortConfigR\x06config\"N\n" +
 	"\x19SwitchServicePortResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xa3\x01\n" +
 	"%SwitchServiceConnectedMachinesRequest\x124\n" +
@@ -907,7 +907,7 @@ var file_metalstack_admin_v2_switch_proto_goTypes = []any{
 	(v2.SwitchReplaceMode)(0),                      // 18: metalstack.api.v2.SwitchReplaceMode
 	(*v2.SwitchNic)(nil),                           // 19: metalstack.api.v2.SwitchNic
 	(*v2.SwitchOS)(nil),                            // 20: metalstack.api.v2.SwitchOS
-	(v2.SwitchPortStatus)(0),                       // 21: metalstack.api.v2.SwitchPortStatus
+	(*v2.StaticPortConfig)(nil),                    // 21: metalstack.api.v2.StaticPortConfig
 	(*v2.MachineQuery)(nil),                        // 22: metalstack.api.v2.MachineQuery
 	(*v2.SwitchWithMachines)(nil),                  // 23: metalstack.api.v2.SwitchWithMachines
 }
@@ -923,7 +923,7 @@ var file_metalstack_admin_v2_switch_proto_depIdxs = []int32{
 	14, // 8: metalstack.admin.v2.SwitchServiceUpdateResponse.switch:type_name -> metalstack.api.v2.Switch
 	14, // 9: metalstack.admin.v2.SwitchServiceDeleteResponse.switch:type_name -> metalstack.api.v2.Switch
 	14, // 10: metalstack.admin.v2.SwitchServiceMigrateResponse.switch:type_name -> metalstack.api.v2.Switch
-	21, // 11: metalstack.admin.v2.SwitchServicePortRequest.status:type_name -> metalstack.api.v2.SwitchPortStatus
+	21, // 11: metalstack.admin.v2.SwitchServicePortRequest.config:type_name -> metalstack.api.v2.StaticPortConfig
 	14, // 12: metalstack.admin.v2.SwitchServicePortResponse.switch:type_name -> metalstack.api.v2.Switch
 	15, // 13: metalstack.admin.v2.SwitchServiceConnectedMachinesRequest.query:type_name -> metalstack.api.v2.SwitchQuery
 	22, // 14: metalstack.admin.v2.SwitchServiceConnectedMachinesRequest.machine_query:type_name -> metalstack.api.v2.MachineQuery

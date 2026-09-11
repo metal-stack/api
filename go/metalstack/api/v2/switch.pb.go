@@ -256,6 +256,64 @@ func (SwitchPortStatus) EnumDescriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{3}
 }
 
+// SwitchPortMembership indicates whether a switch port is connected to an internal or an external host.
+type SwitchPortMembership int32
+
+const (
+	// SWITCH_PORT_MEMBERSHIP_UNSPECIFIED is not specified.
+	SwitchPortMembership_SWITCH_PORT_MEMBERSHIP_UNSPECIFIED SwitchPortMembership = 0
+	// SWITCH_PORT_MEMBERSHIP_UNMANAGED is a port that isn't connected to any host yet.
+	SwitchPortMembership_SWITCH_PORT_MEMBERSHIP_UNMANAGED SwitchPortMembership = 1
+	// SWITCH_PORT_MEMBERSHIP_INTERNAL is port that is connected to a host that is registered at the api, e.g. a registered machine.
+	SwitchPortMembership_SWITCH_PORT_MEMBERSHIP_INTERNAL SwitchPortMembership = 2
+	// SWITCH_PORT_MEMBERSHIP_EXTERNAL is port that is connected to a host that is not registered at the api.
+	// This value allows connecting an external system to a network managed by us.
+	SwitchPortMembership_SWITCH_PORT_MEMBERSHIP_EXTERNAL SwitchPortMembership = 3
+)
+
+// Enum value maps for SwitchPortMembership.
+var (
+	SwitchPortMembership_name = map[int32]string{
+		0: "SWITCH_PORT_MEMBERSHIP_UNSPECIFIED",
+		1: "SWITCH_PORT_MEMBERSHIP_UNMANAGED",
+		2: "SWITCH_PORT_MEMBERSHIP_INTERNAL",
+		3: "SWITCH_PORT_MEMBERSHIP_EXTERNAL",
+	}
+	SwitchPortMembership_value = map[string]int32{
+		"SWITCH_PORT_MEMBERSHIP_UNSPECIFIED": 0,
+		"SWITCH_PORT_MEMBERSHIP_UNMANAGED":   1,
+		"SWITCH_PORT_MEMBERSHIP_INTERNAL":    2,
+		"SWITCH_PORT_MEMBERSHIP_EXTERNAL":    3,
+	}
+)
+
+func (x SwitchPortMembership) Enum() *SwitchPortMembership {
+	p := new(SwitchPortMembership)
+	*p = x
+	return p
+}
+
+func (x SwitchPortMembership) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (SwitchPortMembership) Descriptor() protoreflect.EnumDescriptor {
+	return file_metalstack_api_v2_switch_proto_enumTypes[4].Descriptor()
+}
+
+func (SwitchPortMembership) Type() protoreflect.EnumType {
+	return &file_metalstack_api_v2_switch_proto_enumTypes[4]
+}
+
+func (x SwitchPortMembership) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use SwitchPortMembership.Descriptor instead.
+func (SwitchPortMembership) EnumDescriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{4}
+}
+
 // Switch represents a network switch.
 type Switch struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -510,7 +568,9 @@ type SwitchNic struct {
 	// BGPFilter optionally configured on a port.
 	BgpFilter *BGPFilter `protobuf:"bytes,6,opt,name=bgp_filter,json=bgpFilter,proto3,oneof" json:"bgp_filter,omitempty"`
 	// BGPPortState represents the current BGP status of the port.
-	BgpPortState  *SwitchBGPPortState `protobuf:"bytes,7,opt,name=bgp_port_state,json=bgpPortState,proto3,oneof" json:"bgp_port_state,omitempty"`
+	BgpPortState *SwitchBGPPortState `protobuf:"bytes,7,opt,name=bgp_port_state,json=bgpPortState,proto3,oneof" json:"bgp_port_state,omitempty"`
+	// Membership indicates whether the port is connected to an internal or external host.
+	Membership    SwitchPortMembership `protobuf:"varint,8,opt,name=membership,proto3,enum=metalstack.api.v2.SwitchPortMembership" json:"membership,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -595,6 +655,13 @@ func (x *SwitchNic) GetBgpPortState() *SwitchBGPPortState {
 	return nil
 }
 
+func (x *SwitchNic) GetMembership() SwitchPortMembership {
+	if x != nil {
+		return x.Membership
+	}
+	return SwitchPortMembership_SWITCH_PORT_MEMBERSHIP_UNSPECIFIED
+}
+
 // BGPFilter can be used to restrict BGP based on CIDRs and VNIs.
 type BGPFilter struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -654,7 +721,7 @@ func (x *BGPFilter) GetVnis() []string {
 type SwitchBGPPortState struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Neighbor of this port.
-	Neighbor string `protobuf:"bytes,1,opt,name=neighbor,proto3" json:"neighbor,omitempty"`
+	Neighbor *string `protobuf:"bytes,1,opt,name=neighbor,proto3,oneof" json:"neighbor,omitempty"`
 	// PeerGroup of this port.
 	PeerGroup string `protobuf:"bytes,2,opt,name=peer_group,json=peerGroup,proto3" json:"peer_group,omitempty"`
 	// VrfName of the VRF this port is bound to.
@@ -702,8 +769,8 @@ func (*SwitchBGPPortState) Descriptor() ([]byte, []int) {
 }
 
 func (x *SwitchBGPPortState) GetNeighbor() string {
-	if x != nil {
-		return x.Neighbor
+	if x != nil && x.Neighbor != nil {
+		return *x.Neighbor
 	}
 	return ""
 }
@@ -1207,6 +1274,70 @@ func (x *SwitchNicWithMachine) GetFru() *MachineFRU {
 	return nil
 }
 
+// StaticPortConfig is a config that is statically applied to a port.
+type StaticPortConfig struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Status is the administrative status of the port.
+	Status SwitchPortStatus `protobuf:"varint,1,opt,name=status,proto3,enum=metalstack.api.v2.SwitchPortStatus" json:"status,omitempty"`
+	// Membership specifies whether this port is connected to a registered machine or to an external host or if it is unmanaged.
+	Membership SwitchPortMembership `protobuf:"varint,2,opt,name=membership,proto3,enum=metalstack.api.v2.SwitchPortMembership" json:"membership,omitempty"`
+	// Network the port is a member of.
+	Network       *string `protobuf:"bytes,3,opt,name=network,proto3,oneof" json:"network,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StaticPortConfig) Reset() {
+	*x = StaticPortConfig{}
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StaticPortConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StaticPortConfig) ProtoMessage() {}
+
+func (x *StaticPortConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StaticPortConfig.ProtoReflect.Descriptor instead.
+func (*StaticPortConfig) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *StaticPortConfig) GetStatus() SwitchPortStatus {
+	if x != nil {
+		return x.Status
+	}
+	return SwitchPortStatus_SWITCH_PORT_STATUS_UNSPECIFIED
+}
+
+func (x *StaticPortConfig) GetMembership() SwitchPortMembership {
+	if x != nil {
+		return x.Membership
+	}
+	return SwitchPortMembership_SWITCH_PORT_MEMBERSHIP_UNSPECIFIED
+}
+
+func (x *StaticPortConfig) GetNetwork() string {
+	if x != nil && x.Network != nil {
+		return *x.Network
+	}
+	return ""
+}
+
 var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
@@ -1239,7 +1370,7 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\bSwitchOS\x12C\n" +
 	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06vendor\x12%\n" +
 	"\aversion\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\aversion\x129\n" +
-	"\x12metal_core_version\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x10metalCoreVersion\"\xa0\x03\n" +
+	"\x12metal_core_version\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x10metalCoreVersion\"\xe9\x03\n" +
 	"\tSwitchNic\x12\x1f\n" +
 	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12+\n" +
 	"\n" +
@@ -1250,7 +1381,10 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x05state\x18\x05 \x01(\v2\x1b.metalstack.api.v2.NicStateH\x02R\x05state\x88\x01\x01\x12@\n" +
 	"\n" +
 	"bgp_filter\x18\x06 \x01(\v2\x1c.metalstack.api.v2.BGPFilterH\x03R\tbgpFilter\x88\x01\x01\x12P\n" +
-	"\x0ebgp_port_state\x18\a \x01(\v2%.metalstack.api.v2.SwitchBGPPortStateH\x04R\fbgpPortState\x88\x01\x01B\x06\n" +
+	"\x0ebgp_port_state\x18\a \x01(\v2%.metalstack.api.v2.SwitchBGPPortStateH\x04R\fbgpPortState\x88\x01\x01\x12G\n" +
+	"\n" +
+	"membership\x18\b \x01(\x0e2'.metalstack.api.v2.SwitchPortMembershipR\n" +
+	"membershipB\x06\n" +
 	"\x04_macB\x06\n" +
 	"\x04_vrfB\b\n" +
 	"\x06_stateB\r\n" +
@@ -1258,16 +1392,17 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x0f_bgp_port_state\"T\n" +
 	"\tBGPFilter\x12\"\n" +
 	"\x05cidrs\x18\x01 \x03(\tB\f\xbaH\t\x92\x01\x06\xb8\xa4\xb3\xb1\x02\x01R\x05cidrs\x12#\n" +
-	"\x04vnis\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\"\ar\x05\x10\x02\x18\x80\x01R\x04vnis\"\x92\x03\n" +
-	"\x12SwitchBGPPortState\x12'\n" +
-	"\bneighbor\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\bneighbor\x12*\n" +
+	"\x04vnis\x18\x02 \x03(\tB\x0f\xbaH\f\x92\x01\t\"\ar\x05\x10\x02\x18\x80\x01R\x04vnis\"\xa4\x03\n" +
+	"\x12SwitchBGPPortState\x12,\n" +
+	"\bneighbor\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\bneighbor\x88\x01\x01\x12*\n" +
 	"\n" +
 	"peer_group\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\tpeerGroup\x12&\n" +
 	"\bvrf_name\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\avrfName\x12B\n" +
 	"\tbgp_state\x18\x04 \x01(\x0e2\x1b.metalstack.api.v2.BGPStateB\b\xbaH\x05\x82\x01\x02\x10\x01R\bbgpState\x12S\n" +
 	"\x18bgp_timer_up_established\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\x15bgpTimerUpEstablished\x12.\n" +
 	"\x13sent_prefix_counter\x18\x06 \x01(\x04R\x11sentPrefixCounter\x126\n" +
-	"\x17accepted_prefix_counter\x18\a \x01(\x04R\x15acceptedPrefixCounter\"\xab\x01\n" +
+	"\x17accepted_prefix_counter\x18\a \x01(\x04R\x15acceptedPrefixCounterB\v\n" +
+	"\t_neighbor\"\xab\x01\n" +
 	"\bNicState\x12L\n" +
 	"\adesired\x18\x01 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\adesired\x88\x01\x01\x12E\n" +
 	"\x06actual\x18\x02 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06actualB\n" +
@@ -1312,7 +1447,15 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x14SwitchNicWithMachine\x12.\n" +
 	"\x03nic\x18\x01 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\x124\n" +
 	"\amachine\x18\x02 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\x12/\n" +
-	"\x03fru\x18\x03 \x01(\v2\x1d.metalstack.api.v2.MachineFRUR\x03fru*\x89\x02\n" +
+	"\x03fru\x18\x03 \x01(\v2\x1d.metalstack.api.v2.MachineFRUR\x03fru\"\xcd\x01\n" +
+	"\x10StaticPortConfig\x12E\n" +
+	"\x06status\x18\x01 \x01(\x0e2#.metalstack.api.v2.SwitchPortStatusB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06status\x12G\n" +
+	"\n" +
+	"membership\x18\x02 \x01(\x0e2'.metalstack.api.v2.SwitchPortMembershipR\n" +
+	"membership\x12\x1d\n" +
+	"\anetwork\x18\x03 \x01(\tH\x00R\anetwork\x88\x01\x01B\n" +
+	"\n" +
+	"\b_network*\x89\x02\n" +
 	"\bBGPState\x12\x19\n" +
 	"\x15BGP_STATE_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x0eBGP_STATE_IDLE\x10\x01\x1a\b\x82\xb2\x19\x04Idle\x12\"\n" +
@@ -1334,7 +1477,12 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x1eSWITCH_PORT_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x15SWITCH_PORT_STATUS_UP\x10\x01\x1a\x06\x82\xb2\x19\x02up\x12%\n" +
 	"\x17SWITCH_PORT_STATUS_DOWN\x10\x02\x1a\b\x82\xb2\x19\x04down\x12+\n" +
-	"\x1aSWITCH_PORT_STATUS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknownB\xc1\x01\n" +
+	"\x1aSWITCH_PORT_STATUS_UNKNOWN\x10\x03\x1a\v\x82\xb2\x19\aunknown*\xd9\x01\n" +
+	"\x14SwitchPortMembership\x12&\n" +
+	"\"SWITCH_PORT_MEMBERSHIP_UNSPECIFIED\x10\x00\x123\n" +
+	" SWITCH_PORT_MEMBERSHIP_UNMANAGED\x10\x01\x1a\r\x82\xb2\x19\tunmanaged\x121\n" +
+	"\x1fSWITCH_PORT_MEMBERSHIP_INTERNAL\x10\x02\x1a\f\x82\xb2\x19\binternal\x121\n" +
+	"\x1fSWITCH_PORT_MEMBERSHIP_EXTERNAL\x10\x03\x1a\f\x82\xb2\x19\bexternalB\xc1\x01\n" +
 	"\x15com.metalstack.api.v2B\vSwitchProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3"
 
 var (
@@ -1349,61 +1497,66 @@ func file_metalstack_api_v2_switch_proto_rawDescGZIP() []byte {
 	return file_metalstack_api_v2_switch_proto_rawDescData
 }
 
-var file_metalstack_api_v2_switch_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_metalstack_api_v2_switch_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
+var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_metalstack_api_v2_switch_proto_goTypes = []any{
 	(BGPState)(0),                 // 0: metalstack.api.v2.BGPState
 	(SwitchReplaceMode)(0),        // 1: metalstack.api.v2.SwitchReplaceMode
 	(SwitchOSVendor)(0),           // 2: metalstack.api.v2.SwitchOSVendor
 	(SwitchPortStatus)(0),         // 3: metalstack.api.v2.SwitchPortStatus
-	(*Switch)(nil),                // 4: metalstack.api.v2.Switch
-	(*SwitchOS)(nil),              // 5: metalstack.api.v2.SwitchOS
-	(*SwitchNic)(nil),             // 6: metalstack.api.v2.SwitchNic
-	(*BGPFilter)(nil),             // 7: metalstack.api.v2.BGPFilter
-	(*SwitchBGPPortState)(nil),    // 8: metalstack.api.v2.SwitchBGPPortState
-	(*NicState)(nil),              // 9: metalstack.api.v2.NicState
-	(*MachineConnection)(nil),     // 10: metalstack.api.v2.MachineConnection
-	(*SwitchQuery)(nil),           // 11: metalstack.api.v2.SwitchQuery
-	(*SwitchOSQuery)(nil),         // 12: metalstack.api.v2.SwitchOSQuery
-	(*SwitchSync)(nil),            // 13: metalstack.api.v2.SwitchSync
-	(*SwitchWithMachines)(nil),    // 14: metalstack.api.v2.SwitchWithMachines
-	(*SwitchNicWithMachine)(nil),  // 15: metalstack.api.v2.SwitchNicWithMachine
-	(*Meta)(nil),                  // 16: metalstack.api.v2.Meta
-	(*timestamppb.Timestamp)(nil), // 17: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),   // 18: google.protobuf.Duration
-	(*Machine)(nil),               // 19: metalstack.api.v2.Machine
-	(*MachineFRU)(nil),            // 20: metalstack.api.v2.MachineFRU
+	(SwitchPortMembership)(0),     // 4: metalstack.api.v2.SwitchPortMembership
+	(*Switch)(nil),                // 5: metalstack.api.v2.Switch
+	(*SwitchOS)(nil),              // 6: metalstack.api.v2.SwitchOS
+	(*SwitchNic)(nil),             // 7: metalstack.api.v2.SwitchNic
+	(*BGPFilter)(nil),             // 8: metalstack.api.v2.BGPFilter
+	(*SwitchBGPPortState)(nil),    // 9: metalstack.api.v2.SwitchBGPPortState
+	(*NicState)(nil),              // 10: metalstack.api.v2.NicState
+	(*MachineConnection)(nil),     // 11: metalstack.api.v2.MachineConnection
+	(*SwitchQuery)(nil),           // 12: metalstack.api.v2.SwitchQuery
+	(*SwitchOSQuery)(nil),         // 13: metalstack.api.v2.SwitchOSQuery
+	(*SwitchSync)(nil),            // 14: metalstack.api.v2.SwitchSync
+	(*SwitchWithMachines)(nil),    // 15: metalstack.api.v2.SwitchWithMachines
+	(*SwitchNicWithMachine)(nil),  // 16: metalstack.api.v2.SwitchNicWithMachine
+	(*StaticPortConfig)(nil),      // 17: metalstack.api.v2.StaticPortConfig
+	(*Meta)(nil),                  // 18: metalstack.api.v2.Meta
+	(*timestamppb.Timestamp)(nil), // 19: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),   // 20: google.protobuf.Duration
+	(*Machine)(nil),               // 21: metalstack.api.v2.Machine
+	(*MachineFRU)(nil),            // 22: metalstack.api.v2.MachineFRU
 }
 var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
-	16, // 0: metalstack.api.v2.Switch.meta:type_name -> metalstack.api.v2.Meta
+	18, // 0: metalstack.api.v2.Switch.meta:type_name -> metalstack.api.v2.Meta
 	1,  // 1: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
-	6,  // 2: metalstack.api.v2.Switch.nics:type_name -> metalstack.api.v2.SwitchNic
-	5,  // 3: metalstack.api.v2.Switch.os:type_name -> metalstack.api.v2.SwitchOS
-	10, // 4: metalstack.api.v2.Switch.machine_connections:type_name -> metalstack.api.v2.MachineConnection
-	13, // 5: metalstack.api.v2.Switch.last_sync:type_name -> metalstack.api.v2.SwitchSync
-	13, // 6: metalstack.api.v2.Switch.last_sync_error:type_name -> metalstack.api.v2.SwitchSync
+	7,  // 2: metalstack.api.v2.Switch.nics:type_name -> metalstack.api.v2.SwitchNic
+	6,  // 3: metalstack.api.v2.Switch.os:type_name -> metalstack.api.v2.SwitchOS
+	11, // 4: metalstack.api.v2.Switch.machine_connections:type_name -> metalstack.api.v2.MachineConnection
+	14, // 5: metalstack.api.v2.Switch.last_sync:type_name -> metalstack.api.v2.SwitchSync
+	14, // 6: metalstack.api.v2.Switch.last_sync_error:type_name -> metalstack.api.v2.SwitchSync
 	2,  // 7: metalstack.api.v2.SwitchOS.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
-	9,  // 8: metalstack.api.v2.SwitchNic.state:type_name -> metalstack.api.v2.NicState
-	7,  // 9: metalstack.api.v2.SwitchNic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
-	8,  // 10: metalstack.api.v2.SwitchNic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
-	0,  // 11: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
-	17, // 12: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Timestamp
-	3,  // 13: metalstack.api.v2.NicState.desired:type_name -> metalstack.api.v2.SwitchPortStatus
-	3,  // 14: metalstack.api.v2.NicState.actual:type_name -> metalstack.api.v2.SwitchPortStatus
-	6,  // 15: metalstack.api.v2.MachineConnection.nic:type_name -> metalstack.api.v2.SwitchNic
-	12, // 16: metalstack.api.v2.SwitchQuery.os:type_name -> metalstack.api.v2.SwitchOSQuery
-	2,  // 17: metalstack.api.v2.SwitchOSQuery.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
-	17, // 18: metalstack.api.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
-	18, // 19: metalstack.api.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
-	15, // 20: metalstack.api.v2.SwitchWithMachines.connections:type_name -> metalstack.api.v2.SwitchNicWithMachine
-	6,  // 21: metalstack.api.v2.SwitchNicWithMachine.nic:type_name -> metalstack.api.v2.SwitchNic
-	19, // 22: metalstack.api.v2.SwitchNicWithMachine.machine:type_name -> metalstack.api.v2.Machine
-	20, // 23: metalstack.api.v2.SwitchNicWithMachine.fru:type_name -> metalstack.api.v2.MachineFRU
-	24, // [24:24] is the sub-list for method output_type
-	24, // [24:24] is the sub-list for method input_type
-	24, // [24:24] is the sub-list for extension type_name
-	24, // [24:24] is the sub-list for extension extendee
-	0,  // [0:24] is the sub-list for field type_name
+	10, // 8: metalstack.api.v2.SwitchNic.state:type_name -> metalstack.api.v2.NicState
+	8,  // 9: metalstack.api.v2.SwitchNic.bgp_filter:type_name -> metalstack.api.v2.BGPFilter
+	9,  // 10: metalstack.api.v2.SwitchNic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
+	4,  // 11: metalstack.api.v2.SwitchNic.membership:type_name -> metalstack.api.v2.SwitchPortMembership
+	0,  // 12: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
+	19, // 13: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Timestamp
+	3,  // 14: metalstack.api.v2.NicState.desired:type_name -> metalstack.api.v2.SwitchPortStatus
+	3,  // 15: metalstack.api.v2.NicState.actual:type_name -> metalstack.api.v2.SwitchPortStatus
+	7,  // 16: metalstack.api.v2.MachineConnection.nic:type_name -> metalstack.api.v2.SwitchNic
+	13, // 17: metalstack.api.v2.SwitchQuery.os:type_name -> metalstack.api.v2.SwitchOSQuery
+	2,  // 18: metalstack.api.v2.SwitchOSQuery.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
+	19, // 19: metalstack.api.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
+	20, // 20: metalstack.api.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
+	16, // 21: metalstack.api.v2.SwitchWithMachines.connections:type_name -> metalstack.api.v2.SwitchNicWithMachine
+	7,  // 22: metalstack.api.v2.SwitchNicWithMachine.nic:type_name -> metalstack.api.v2.SwitchNic
+	21, // 23: metalstack.api.v2.SwitchNicWithMachine.machine:type_name -> metalstack.api.v2.Machine
+	22, // 24: metalstack.api.v2.SwitchNicWithMachine.fru:type_name -> metalstack.api.v2.MachineFRU
+	3,  // 25: metalstack.api.v2.StaticPortConfig.status:type_name -> metalstack.api.v2.SwitchPortStatus
+	4,  // 26: metalstack.api.v2.StaticPortConfig.membership:type_name -> metalstack.api.v2.SwitchPortMembership
+	27, // [27:27] is the sub-list for method output_type
+	27, // [27:27] is the sub-list for method input_type
+	27, // [27:27] is the sub-list for extension type_name
+	27, // [27:27] is the sub-list for extension extendee
+	0,  // [0:27] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_switch_proto_init() }
@@ -1416,17 +1569,19 @@ func file_metalstack_api_v2_switch_proto_init() {
 	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_switch_proto_msgTypes[0].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[2].OneofWrappers = []any{}
+	file_metalstack_api_v2_switch_proto_msgTypes[4].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[5].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[7].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[8].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[9].OneofWrappers = []any{}
+	file_metalstack_api_v2_switch_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_switch_proto_rawDesc), len(file_metalstack_api_v2_switch_proto_rawDesc)),
-			NumEnums:      4,
-			NumMessages:   12,
+			NumEnums:      5,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

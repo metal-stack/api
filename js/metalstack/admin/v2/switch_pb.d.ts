@@ -2,7 +2,7 @@ import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegen
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { UpdateMeta } from "../../api/v2/common_pb";
 import type { MachineQuery } from "../../api/v2/machine_pb";
-import type { Switch, SwitchNic, SwitchOS, SwitchPortStatus, SwitchQuery, SwitchReplaceMode, SwitchWithMachines } from "../../api/v2/switch_pb";
+import type { StaticPortConfig, Switch, SwitchNic, SwitchOS, SwitchQuery, SwitchReplaceMode, SwitchWithMachines } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/switch.proto.
@@ -256,7 +256,7 @@ export type SwitchServiceMigrateResponse = Message<"metalstack.admin.v2.SwitchSe
  */
 export declare const SwitchServiceMigrateResponseSchema: GenMessage<SwitchServiceMigrateResponse>;
 /**
- * SwitchServicePortRequest is the request payload for setting the port status of a switch port.
+ * SwitchServicePortRequest is the request payload for setting the port config of a switch port.
  *
  * @generated from message metalstack.admin.v2.SwitchServicePortRequest
  */
@@ -268,17 +268,17 @@ export type SwitchServicePortRequest = Message<"metalstack.admin.v2.SwitchServic
      */
     id: string;
     /**
-     * NicName of the port whose status should be changed.
+     * NicName of the affected port.
      *
      * @generated from field: string nic_name = 2;
      */
     nicName: string;
     /**
-     * Status that the port should have.
+     * Config is the desired port config.
      *
-     * @generated from field: metalstack.api.v2.SwitchPortStatus status = 3;
+     * @generated from field: metalstack.api.v2.StaticPortConfig config = 3;
      */
-    status: SwitchPortStatus;
+    config?: StaticPortConfig | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServicePortRequest.
@@ -286,13 +286,13 @@ export type SwitchServicePortRequest = Message<"metalstack.admin.v2.SwitchServic
  */
 export declare const SwitchServicePortRequestSchema: GenMessage<SwitchServicePortRequest>;
 /**
- * SwitchServicePortResponse is the response payload for setting the port status of a switch port.
+ * SwitchServicePortResponse is the response payload for setting the port config of a switch port.
  *
  * @generated from message metalstack.admin.v2.SwitchServicePortResponse
  */
 export type SwitchServicePortResponse = Message<"metalstack.admin.v2.SwitchServicePortResponse"> & {
     /**
-     * Switch after the port status toggle.
+     * Switch after the update.
      *
      * @generated from field: metalstack.api.v2.Switch switch = 1;
      */
@@ -402,7 +402,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServiceMigrateResponseSchema;
     };
     /**
-     * Sets the port status of a switch port.
+     * Sets the port config of a switch port.
      *
      * @generated from rpc metalstack.admin.v2.SwitchService.Port
      */
