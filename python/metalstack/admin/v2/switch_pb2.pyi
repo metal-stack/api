@@ -97,14 +97,14 @@ class SwitchServiceMigrateResponse(_message.Message):
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
 
 class SwitchServicePortRequest(_message.Message):
-    __slots__ = ("id", "nic_name", "status")
+    __slots__ = ("id", "nic_name", "config")
     ID_FIELD_NUMBER: _ClassVar[int]
     NIC_NAME_FIELD_NUMBER: _ClassVar[int]
-    STATUS_FIELD_NUMBER: _ClassVar[int]
+    CONFIG_FIELD_NUMBER: _ClassVar[int]
     id: str
     nic_name: str
-    status: _switch_pb2.SwitchPortStatus
-    def __init__(self, id: _Optional[str] = ..., nic_name: _Optional[str] = ..., status: _Optional[_Union[_switch_pb2.SwitchPortStatus, str]] = ...) -> None: ...
+    config: _switch_pb2.StaticPortConfig
+    def __init__(self, id: _Optional[str] = ..., nic_name: _Optional[str] = ..., config: _Optional[_Union[_switch_pb2.StaticPortConfig, _Mapping]] = ...) -> None: ...
 
 class SwitchServicePortResponse(_message.Message):
     __slots__ = ("switch",)

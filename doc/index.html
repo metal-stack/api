@@ -17321,6 +17321,13 @@ console.metalstack.cloud/invite/&lt;secret. </p></td>
             <tbody>
               
                 <tr>
+                  <td>status</td>
+                  <td><a href="#metalstack.api.v2.SwitchPortStatus">SwitchPortStatus</a></td>
+                  <td></td>
+                  <td><p>Status is the administrative status of the port. </p></td>
+                </tr>
+              
+                <tr>
                   <td>membership</td>
                   <td><a href="#metalstack.api.v2.SwitchPortMembership">SwitchPortMembership</a></td>
                   <td></td>
@@ -18330,7 +18337,7 @@ This value allows connecting an external system to a network managed by us.</p><
         
       
         <h3 id="metalstack.admin.v2.SwitchServicePortRequest">SwitchServicePortRequest</h3>
-        <p>SwitchServicePortRequest is the request payload for setting the port status of a switch port.</p>
+        <p>SwitchServicePortRequest is the request payload for setting the port config of a switch port.</p>
 
         
           <table class="field-table">
@@ -18350,14 +18357,14 @@ This value allows connecting an external system to a network managed by us.</p><
                   <td>nic_name</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>NicName of the port whose status should be changed. </p></td>
+                  <td><p>NicName of the affected port. </p></td>
                 </tr>
               
                 <tr>
-                  <td>status</td>
-                  <td><a href="#metalstack.api.v2.SwitchPortStatus">metalstack.api.v2.SwitchPortStatus</a></td>
+                  <td>config</td>
+                  <td><a href="#metalstack.api.v2.StaticPortConfig">metalstack.api.v2.StaticPortConfig</a></td>
                   <td></td>
-                  <td><p>Status that the port should have. </p></td>
+                  <td><p>Config is the desired port config. </p></td>
                 </tr>
               
             </tbody>
@@ -18368,7 +18375,7 @@ This value allows connecting an external system to a network managed by us.</p><
         
       
         <h3 id="metalstack.admin.v2.SwitchServicePortResponse">SwitchServicePortResponse</h3>
-        <p>SwitchServicePortResponse is the response payload for setting the port status of a switch port.</p>
+        <p>SwitchServicePortResponse is the response payload for setting the port config of a switch port.</p>
 
         
           <table class="field-table">
@@ -18381,7 +18388,7 @@ This value allows connecting an external system to a network managed by us.</p><
                   <td>switch</td>
                   <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
                   <td></td>
-                  <td><p>Switch after the port status toggle. </p></td>
+                  <td><p>Switch after the update. </p></td>
                 </tr>
               
             </tbody>

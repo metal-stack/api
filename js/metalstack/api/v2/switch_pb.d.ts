@@ -501,15 +501,21 @@ export declare const SwitchNicWithMachineSchema: GenMessage<SwitchNicWithMachine
  */
 export type StaticPortConfig = Message<"metalstack.api.v2.StaticPortConfig"> & {
     /**
+     * Status is the administrative status of the port.
+     *
+     * @generated from field: metalstack.api.v2.SwitchPortStatus status = 1;
+     */
+    status: SwitchPortStatus;
+    /**
      * Membership specifies whether this port is connected to a registered machine or to an external host or if it is unmanaged.
      *
-     * @generated from field: metalstack.api.v2.SwitchPortMembership membership = 1;
+     * @generated from field: metalstack.api.v2.SwitchPortMembership membership = 2;
      */
     membership: SwitchPortMembership;
     /**
      * Network the port is a member of.
      *
-     * @generated from field: optional string network = 2;
+     * @generated from field: optional string network = 3;
      */
     network?: string | undefined;
 };

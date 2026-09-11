@@ -188,10 +188,12 @@ message SwitchNicWithMachine {
 
 // StaticPortConfig is a config that is statically applied to a port.
 message StaticPortConfig {
+  // Status is the administrative status of the port.
+  SwitchPortStatus status = 1 [(buf.validate.field).enum.defined_only = true];
   // Membership specifies whether this port is connected to a registered machine or to an external host or if it is unmanaged.
-  SwitchPortMembership membership = 1;
+  SwitchPortMembership membership = 2;
   // Network the port is a member of.
-  optional string network = 2;
+  optional string network = 3;
 }
 
 // BGPState represents the state of a BGP session.

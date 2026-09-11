@@ -235,9 +235,11 @@ class SwitchNicWithMachine(_message.Message):
     def __init__(self, nic: _Optional[_Union[SwitchNic, _Mapping]] = ..., machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ..., fru: _Optional[_Union[_machine_pb2.MachineFRU, _Mapping]] = ...) -> None: ...
 
 class StaticPortConfig(_message.Message):
-    __slots__ = ("membership", "network")
+    __slots__ = ("status", "membership", "network")
+    STATUS_FIELD_NUMBER: _ClassVar[int]
     MEMBERSHIP_FIELD_NUMBER: _ClassVar[int]
     NETWORK_FIELD_NUMBER: _ClassVar[int]
+    status: SwitchPortStatus
     membership: SwitchPortMembership
     network: str
-    def __init__(self, membership: _Optional[_Union[SwitchPortMembership, str]] = ..., network: _Optional[str] = ...) -> None: ...
+    def __init__(self, status: _Optional[_Union[SwitchPortStatus, str]] = ..., membership: _Optional[_Union[SwitchPortMembership, str]] = ..., network: _Optional[str] = ...) -> None: ...
