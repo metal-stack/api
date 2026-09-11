@@ -499,7 +499,9 @@ type SwitchNic struct {
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Identifier of the port.
 	Identifier string `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
-	// MAC address of the port.
+	// MAC address of the port. This field is deprecated because it was only necessary before SONiC was supported. For SONiC, all these addresses are identical and do not provide any benefit. It will be dropped once the metal-api has been dropped.
+	//
+	// Deprecated: Marked as deprecated in metalstack/api/v2/switch.proto.
 	Mac *string `protobuf:"bytes,3,opt,name=mac,proto3,oneof" json:"mac,omitempty"`
 	// VRF name if the port is bound in one.
 	Vrf *string `protobuf:"bytes,4,opt,name=vrf,proto3,oneof" json:"vrf,omitempty"`
@@ -557,6 +559,7 @@ func (x *SwitchNic) GetIdentifier() string {
 	return ""
 }
 
+// Deprecated: Marked as deprecated in metalstack/api/v2/switch.proto.
 func (x *SwitchNic) GetMac() string {
 	if x != nil && x.Mac != nil {
 		return *x.Mac
@@ -1236,13 +1239,13 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\bSwitchOS\x12C\n" +
 	"\x06vendor\x18\x01 \x01(\x0e2!.metalstack.api.v2.SwitchOSVendorB\b\xbaH\x05\x82\x01\x02\x10\x01R\x06vendor\x12%\n" +
 	"\aversion\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\aversion\x129\n" +
-	"\x12metal_core_version\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x10metalCoreVersion\"\xa9\x03\n" +
+	"\x12metal_core_version\x18\x03 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x10metalCoreVersion\"\xa0\x03\n" +
 	"\tSwitchNic\x12\x1f\n" +
 	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12+\n" +
 	"\n" +
 	"identifier\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\n" +
-	"identifier\x12\"\n" +
-	"\x03mac\x18\x03 \x01(\tB\v\xbaH\br\x06\xb8\xb3\xae\xb1\x02\x01H\x00R\x03mac\x88\x01\x01\x12\"\n" +
+	"identifier\x12\x19\n" +
+	"\x03mac\x18\x03 \x01(\tB\x02\x18\x01H\x00R\x03mac\x88\x01\x01\x12\"\n" +
 	"\x03vrf\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x03vrf\x88\x01\x01\x126\n" +
 	"\x05state\x18\x05 \x01(\v2\x1b.metalstack.api.v2.NicStateH\x02R\x05state\x88\x01\x01\x12@\n" +
 	"\n" +

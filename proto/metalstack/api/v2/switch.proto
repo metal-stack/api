@@ -68,8 +68,8 @@ message SwitchNic {
   string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Identifier of the port.
   string identifier = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // MAC address of the port.
-  optional string mac = 3 [(buf.validate.field).string.(macaddress) = true];
+  // MAC address of the port. This field is deprecated because it was only necessary before SONiC was supported. For SONiC, all these addresses are identical and do not provide any benefit. It will be dropped once the metal-api has been dropped.
+  optional string mac = 3 [deprecated = true];
   // VRF name if the port is bound in one.
   optional string vrf = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // NicState describes the current state of the switch port.
