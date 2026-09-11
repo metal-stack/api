@@ -1274,6 +1274,61 @@ func (x *SwitchNicWithMachine) GetFru() *MachineFRU {
 	return nil
 }
 
+// StaticPortConfig is a config that is statically applied to a port.
+type StaticPortConfig struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Membership specifies whether this port is connected to a registered machine or to an external host or if it is unmanaged.
+	Membership SwitchPortMembership `protobuf:"varint,1,opt,name=membership,proto3,enum=metalstack.api.v2.SwitchPortMembership" json:"membership,omitempty"`
+	// Network the port is a member of.
+	Network       *string `protobuf:"bytes,2,opt,name=network,proto3,oneof" json:"network,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StaticPortConfig) Reset() {
+	*x = StaticPortConfig{}
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StaticPortConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StaticPortConfig) ProtoMessage() {}
+
+func (x *StaticPortConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_switch_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StaticPortConfig.ProtoReflect.Descriptor instead.
+func (*StaticPortConfig) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_switch_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *StaticPortConfig) GetMembership() SwitchPortMembership {
+	if x != nil {
+		return x.Membership
+	}
+	return SwitchPortMembership_SWITCH_PORT_MEMBERSHIP_UNSPECIFIED
+}
+
+func (x *StaticPortConfig) GetNetwork() string {
+	if x != nil && x.Network != nil {
+		return *x.Network
+	}
+	return ""
+}
+
 var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
@@ -1383,7 +1438,14 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x14SwitchNicWithMachine\x12.\n" +
 	"\x03nic\x18\x01 \x01(\v2\x1c.metalstack.api.v2.SwitchNicR\x03nic\x124\n" +
 	"\amachine\x18\x02 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\x12/\n" +
-	"\x03fru\x18\x03 \x01(\v2\x1d.metalstack.api.v2.MachineFRUR\x03fru*\x89\x02\n" +
+	"\x03fru\x18\x03 \x01(\v2\x1d.metalstack.api.v2.MachineFRUR\x03fru\"\x86\x01\n" +
+	"\x10StaticPortConfig\x12G\n" +
+	"\n" +
+	"membership\x18\x01 \x01(\x0e2'.metalstack.api.v2.SwitchPortMembershipR\n" +
+	"membership\x12\x1d\n" +
+	"\anetwork\x18\x02 \x01(\tH\x00R\anetwork\x88\x01\x01B\n" +
+	"\n" +
+	"\b_network*\x89\x02\n" +
 	"\bBGPState\x12\x19\n" +
 	"\x15BGP_STATE_UNSPECIFIED\x10\x00\x12\x1c\n" +
 	"\x0eBGP_STATE_IDLE\x10\x01\x1a\b\x82\xb2\x19\x04Idle\x12\"\n" +
@@ -1426,7 +1488,7 @@ func file_metalstack_api_v2_switch_proto_rawDescGZIP() []byte {
 }
 
 var file_metalstack_api_v2_switch_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
-var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_metalstack_api_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_metalstack_api_v2_switch_proto_goTypes = []any{
 	(BGPState)(0),                 // 0: metalstack.api.v2.BGPState
 	(SwitchReplaceMode)(0),        // 1: metalstack.api.v2.SwitchReplaceMode
@@ -1445,14 +1507,15 @@ var file_metalstack_api_v2_switch_proto_goTypes = []any{
 	(*SwitchSync)(nil),            // 14: metalstack.api.v2.SwitchSync
 	(*SwitchWithMachines)(nil),    // 15: metalstack.api.v2.SwitchWithMachines
 	(*SwitchNicWithMachine)(nil),  // 16: metalstack.api.v2.SwitchNicWithMachine
-	(*Meta)(nil),                  // 17: metalstack.api.v2.Meta
-	(*timestamppb.Timestamp)(nil), // 18: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),   // 19: google.protobuf.Duration
-	(*Machine)(nil),               // 20: metalstack.api.v2.Machine
-	(*MachineFRU)(nil),            // 21: metalstack.api.v2.MachineFRU
+	(*StaticPortConfig)(nil),      // 17: metalstack.api.v2.StaticPortConfig
+	(*Meta)(nil),                  // 18: metalstack.api.v2.Meta
+	(*timestamppb.Timestamp)(nil), // 19: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),   // 20: google.protobuf.Duration
+	(*Machine)(nil),               // 21: metalstack.api.v2.Machine
+	(*MachineFRU)(nil),            // 22: metalstack.api.v2.MachineFRU
 }
 var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
-	17, // 0: metalstack.api.v2.Switch.meta:type_name -> metalstack.api.v2.Meta
+	18, // 0: metalstack.api.v2.Switch.meta:type_name -> metalstack.api.v2.Meta
 	1,  // 1: metalstack.api.v2.Switch.replace_mode:type_name -> metalstack.api.v2.SwitchReplaceMode
 	7,  // 2: metalstack.api.v2.Switch.nics:type_name -> metalstack.api.v2.SwitchNic
 	6,  // 3: metalstack.api.v2.Switch.os:type_name -> metalstack.api.v2.SwitchOS
@@ -1465,23 +1528,24 @@ var file_metalstack_api_v2_switch_proto_depIdxs = []int32{
 	9,  // 10: metalstack.api.v2.SwitchNic.bgp_port_state:type_name -> metalstack.api.v2.SwitchBGPPortState
 	4,  // 11: metalstack.api.v2.SwitchNic.membership:type_name -> metalstack.api.v2.SwitchPortMembership
 	0,  // 12: metalstack.api.v2.SwitchBGPPortState.bgp_state:type_name -> metalstack.api.v2.BGPState
-	18, // 13: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Timestamp
+	19, // 13: metalstack.api.v2.SwitchBGPPortState.bgp_timer_up_established:type_name -> google.protobuf.Timestamp
 	3,  // 14: metalstack.api.v2.NicState.desired:type_name -> metalstack.api.v2.SwitchPortStatus
 	3,  // 15: metalstack.api.v2.NicState.actual:type_name -> metalstack.api.v2.SwitchPortStatus
 	7,  // 16: metalstack.api.v2.MachineConnection.nic:type_name -> metalstack.api.v2.SwitchNic
 	13, // 17: metalstack.api.v2.SwitchQuery.os:type_name -> metalstack.api.v2.SwitchOSQuery
 	2,  // 18: metalstack.api.v2.SwitchOSQuery.vendor:type_name -> metalstack.api.v2.SwitchOSVendor
-	18, // 19: metalstack.api.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
-	19, // 20: metalstack.api.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
+	19, // 19: metalstack.api.v2.SwitchSync.time:type_name -> google.protobuf.Timestamp
+	20, // 20: metalstack.api.v2.SwitchSync.duration:type_name -> google.protobuf.Duration
 	16, // 21: metalstack.api.v2.SwitchWithMachines.connections:type_name -> metalstack.api.v2.SwitchNicWithMachine
 	7,  // 22: metalstack.api.v2.SwitchNicWithMachine.nic:type_name -> metalstack.api.v2.SwitchNic
-	20, // 23: metalstack.api.v2.SwitchNicWithMachine.machine:type_name -> metalstack.api.v2.Machine
-	21, // 24: metalstack.api.v2.SwitchNicWithMachine.fru:type_name -> metalstack.api.v2.MachineFRU
-	25, // [25:25] is the sub-list for method output_type
-	25, // [25:25] is the sub-list for method input_type
-	25, // [25:25] is the sub-list for extension type_name
-	25, // [25:25] is the sub-list for extension extendee
-	0,  // [0:25] is the sub-list for field type_name
+	21, // 23: metalstack.api.v2.SwitchNicWithMachine.machine:type_name -> metalstack.api.v2.Machine
+	22, // 24: metalstack.api.v2.SwitchNicWithMachine.fru:type_name -> metalstack.api.v2.MachineFRU
+	4,  // 25: metalstack.api.v2.StaticPortConfig.membership:type_name -> metalstack.api.v2.SwitchPortMembership
+	26, // [26:26] is the sub-list for method output_type
+	26, // [26:26] is the sub-list for method input_type
+	26, // [26:26] is the sub-list for extension type_name
+	26, // [26:26] is the sub-list for extension extendee
+	0,  // [0:26] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_switch_proto_init() }
@@ -1499,13 +1563,14 @@ func file_metalstack_api_v2_switch_proto_init() {
 	file_metalstack_api_v2_switch_proto_msgTypes[7].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[8].OneofWrappers = []any{}
 	file_metalstack_api_v2_switch_proto_msgTypes[9].OneofWrappers = []any{}
+	file_metalstack_api_v2_switch_proto_msgTypes[12].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_switch_proto_rawDesc), len(file_metalstack_api_v2_switch_proto_rawDesc)),
 			NumEnums:      5,
-			NumMessages:   12,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

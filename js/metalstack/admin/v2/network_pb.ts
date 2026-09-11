@@ -7,7 +7,7 @@ import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import type { Labels, UpdateLabels, UpdateMeta } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
-import type { ChildPrefixLength, ExternalNetworkMember, ExternalNetworkMemberQuery, NATType, Network, NetworkAddressFamily, NetworkQuery, NetworkType } from "../../api/v2/network_pb";
+import type { ChildPrefixLength, NATType, Network, NetworkAddressFamily, NetworkQuery, NetworkType } from "../../api/v2/network_pb";
 import { file_metalstack_api_v2_network } from "../../api/v2/network_pb";
 import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/network.proto.
  */
 export const file_metalstack_admin_v2_network: GenFile = /*@__PURE__*/
-  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL25ldHdvcmsucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMwoYTmV0d29ya1NlcnZpY2VHZXRSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECASJIChlOZXR3b3JrU2VydmljZUdldFJlc3BvbnNlEisKB25ldHdvcmsYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrItAHChtOZXR3b3JrU2VydmljZUNyZWF0ZVJlcXVlc3QSHAoCaWQYASABKAlCC7pICHIGwLOusQIBSACIAQESHgoEbmFtZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIlCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgFIAogBARIjCglwYXJ0aXRpb24YBCABKAlCC7pICHIG0LOusQIBSAOIAQESHgoHcHJvamVjdBgFIAEoCUIIukgFcgOwAQFIBIgBARI2CgR0eXBlGAYgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1R5cGVCCLpIBYIBAhABEi4KBmxhYmVscxgHIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gFiAEBEh4KCHByZWZpeGVzGAggAygJQgy6SAmSAQa4pLOxAgESKgoUZGVzdGluYXRpb25fcHJlZml4ZXMYCSADKAlCDLpICZIBBriks7ECARJJChtkZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGgYCiABKAsyJC5tZXRhbHN0YWNrLmFwaS52Mi5DaGlsZFByZWZpeExlbmd0aBJFChdtaW5fY2hpbGRfcHJlZml4X2xlbmd0aBgLIAEoCzIkLm1ldGFsc3RhY2suYXBpLnYyLkNoaWxkUHJlZml4TGVuZ3RoEjsKCG5hdF90eXBlGAwgASgOMhoubWV0YWxzdGFjay5hcGkudjIuTkFUVHlwZUIIukgFggECEAFIBogBARIQCgN2cmYYDSABKA1IB4gBARIoCg5wYXJlbnRfbmV0d29yaxgOIAEoCUILukgIcgbAs66xAgFICIgBARIyChxhZGRpdGlvbmFsX2Fubm91bmNhYmxlX2NpZHJzGA8gAygJQgy6SAmSAQa4pLOxAgESOQoGbGVuZ3RoGBAgASgLMiQubWV0YWxzdGFjay5hcGkudjIuQ2hpbGRQcmVmaXhMZW5ndGhICYgBARJOCg5hZGRyZXNzX2ZhbWlseRgRIAEoDjInLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtBZGRyZXNzRmFtaWx5Qgi6SAWCAQIQAUgKiAEBQgUKA19pZEIHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb25CDAoKX3BhcnRpdGlvbkIKCghfcHJvamVjdEIJCgdfbGFiZWxzQgsKCV9uYXRfdHlwZUIGCgRfdnJmQhEKD19wYXJlbnRfbmV0d29ya0IJCgdfbGVuZ3RoQhEKD19hZGRyZXNzX2ZhbWlseSLEBQobTmV0d29ya1NlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIeCgRuYW1lGAMgASgJQgu6SAhyBsCzrrECAUgAiAEBEiUKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECAUgBiAEBEjQKBmxhYmVscxgFIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gCiAEBEh4KCHByZWZpeGVzGAYgAygJQgy6SAmSAQa4pLOxAgESKgoUZGVzdGluYXRpb25fcHJlZml4ZXMYByADKAlCDLpICZIBBriks7ECARJOChtkZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGgYCCABKAsyJC5tZXRhbHN0YWNrLmFwaS52Mi5DaGlsZFByZWZpeExlbmd0aEgDiAEBEkoKF21pbl9jaGlsZF9wcmVmaXhfbGVuZ3RoGAkgASgLMiQubWV0YWxzdGFjay5hcGkudjIuQ2hpbGRQcmVmaXhMZW5ndGhIBIgBARI7CghuYXRfdHlwZRgKIAEoDjIaLm1ldGFsc3RhY2suYXBpLnYyLk5BVFR5cGVCCLpIBYIBAhABSAWIAQESMgocYWRkaXRpb25hbF9hbm5vdW5jYWJsZV9jaWRycxgLIAMoCUIMukgJkgEGuKSzsQIBEg0KBWZvcmNlGAwgASgIQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIJCgdfbGFiZWxzQh4KHF9kZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGhCGgoYX21pbl9jaGlsZF9wcmVmaXhfbGVuZ3RoQgsKCV9uYXRfdHlwZSI2ChtOZXR3b3JrU2VydmljZURlbGV0ZVJlcXVlc3QSFwoCaWQYASABKAlCC7pICHIGwLOusQIBIksKGU5ldHdvcmtTZXJ2aWNlTGlzdFJlcXVlc3QSLgoFcXVlcnkYASABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrUXVlcnkihgEKKE5ldHdvcmtTZXJ2aWNlTGlzdEV4dGVybmFsTWVtYmVyc1JlcXVlc3QSHAoHbmV0d29yaxgBIAEoCUILukgIcgbAs66xAgESPAoFcXVlcnkYAiABKAsyLS5tZXRhbHN0YWNrLmFwaS52Mi5FeHRlcm5hbE5ldHdvcmtNZW1iZXJRdWVyeSKCAQonTmV0d29ya1NlcnZpY2VBZGRFeHRlcm5hbE1lbWJlcnNSZXF1ZXN0EhwKB25ldHdvcmsYASABKAlCC7pICHIGwLOusQIBEhkKBHJhY2sYAiABKAlCC7pICHIGwLOusQIBEh4KBXBvcnRzGAMgAygJQg+6SAySAQnQpLOxAgEQgBAihQEKKk5ldHdvcmtTZXJ2aWNlUmVtb3ZlRXh0ZXJuYWxNZW1iZXJzUmVxdWVzdBIcCgduZXR3b3JrGAEgASgJQgu6SAhyBsCzrrECARIZCgRyYWNrGAIgASgJQgu6SAhyBsCzrrECARIeCgVwb3J0cxgDIAMoCUIPukgMkgEJ0KSzsQIBEIAQIksKHE5ldHdvcmtTZXJ2aWNlQ3JlYXRlUmVzcG9uc2USKwoHbmV0d29yaxgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmsiSwocTmV0d29ya1NlcnZpY2VVcGRhdGVSZXNwb25zZRIrCgduZXR3b3JrGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTmV0d29yayJLChxOZXR3b3JrU2VydmljZURlbGV0ZVJlc3BvbnNlEisKB25ldHdvcmsYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrIkoKGk5ldHdvcmtTZXJ2aWNlTGlzdFJlc3BvbnNlEiwKCG5ldHdvcmtzGAEgAygLMhoubWV0YWxzdGFjay5hcGkudjIuTmV0d29yayKTAQopTmV0d29ya1NlcnZpY2VMaXN0RXh0ZXJuYWxNZW1iZXJzUmVzcG9uc2USKwoHbmV0d29yaxgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmsSOQoHbWVtYmVycxgCIAMoCzIoLm1ldGFsc3RhY2suYXBpLnYyLkV4dGVybmFsTmV0d29ya01lbWJlciKSAQooTmV0d29ya1NlcnZpY2VBZGRFeHRlcm5hbE1lbWJlcnNSZXNwb25zZRIrCgduZXR3b3JrGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTmV0d29yaxI5CgdtZW1iZXJzGAIgAygLMigubWV0YWxzdGFjay5hcGkudjIuRXh0ZXJuYWxOZXR3b3JrTWVtYmVyIpUBCitOZXR3b3JrU2VydmljZVJlbW92ZUV4dGVybmFsTWVtYmVyc1Jlc3BvbnNlEisKB25ldHdvcmsYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrEjkKB21lbWJlcnMYAiADKAsyKC5tZXRhbHN0YWNrLmFwaS52Mi5FeHRlcm5hbE5ldHdvcmtNZW1iZXIyzwgKDk5ldHdvcmtTZXJ2aWNlEnAKA0dldBItLm1ldGFsc3RhY2suYWRtaW4udjIuTmV0d29ya1NlcnZpY2VHZXRSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZUdldFJlc3BvbnNlIgrS8xgCAQLg8xgCEngKBkNyZWF0ZRIwLm1ldGFsc3RhY2suYWRtaW4udjIuTmV0d29ya1NlcnZpY2VDcmVhdGVSZXF1ZXN0GjEubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZUNyZWF0ZVJlc3BvbnNlIgnS8xgBAeDzGAESeAoGVXBkYXRlEjAubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZVVwZGF0ZVJlcXVlc3QaMS5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCdLzGAEB4PMYARJ4CgZEZWxldGUSMC5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlRGVsZXRlUmVxdWVzdBoxLm1ldGFsc3RhY2suYWRtaW4udjIuTmV0d29ya1NlcnZpY2VEZWxldGVSZXNwb25zZSIJ0vMYAQHg8xgBEnMKBExpc3QSLi5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlTGlzdFJlcXVlc3QaLy5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgCEqABChNMaXN0RXh0ZXJuYWxNZW1iZXJzEj0ubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZUxpc3RFeHRlcm5hbE1lbWJlcnNSZXF1ZXN0Gj4ubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZUxpc3RFeHRlcm5hbE1lbWJlcnNSZXNwb25zZSIK0vMYAgEC4PMYAhKcAQoSQWRkRXh0ZXJuYWxNZW1iZXJzEjwubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZUFkZEV4dGVybmFsTWVtYmVyc1JlcXVlc3QaPS5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlQWRkRXh0ZXJuYWxNZW1iZXJzUmVzcG9uc2UiCdLzGAEB4PMYARKlAQoVUmVtb3ZlRXh0ZXJuYWxNZW1iZXJzEj8ubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZVJlbW92ZUV4dGVybmFsTWVtYmVyc1JlcXVlc3QaQC5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlUmVtb3ZlRXh0ZXJuYWxNZW1iZXJzUmVzcG9uc2UiCdLzGAEB4PMYAULQAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCDE5ldHdvcmtQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_network, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL25ldHdvcmsucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiMwoYTmV0d29ya1NlcnZpY2VHZXRSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECASJIChlOZXR3b3JrU2VydmljZUdldFJlc3BvbnNlEisKB25ldHdvcmsYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrItAHChtOZXR3b3JrU2VydmljZUNyZWF0ZVJlcXVlc3QSHAoCaWQYASABKAlCC7pICHIGwLOusQIBSACIAQESHgoEbmFtZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIlCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgFIAogBARIjCglwYXJ0aXRpb24YBCABKAlCC7pICHIG0LOusQIBSAOIAQESHgoHcHJvamVjdBgFIAEoCUIIukgFcgOwAQFIBIgBARI2CgR0eXBlGAYgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuTmV0d29ya1R5cGVCCLpIBYIBAhABEi4KBmxhYmVscxgHIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0gFiAEBEh4KCHByZWZpeGVzGAggAygJQgy6SAmSAQa4pLOxAgESKgoUZGVzdGluYXRpb25fcHJlZml4ZXMYCSADKAlCDLpICZIBBriks7ECARJJChtkZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGgYCiABKAsyJC5tZXRhbHN0YWNrLmFwaS52Mi5DaGlsZFByZWZpeExlbmd0aBJFChdtaW5fY2hpbGRfcHJlZml4X2xlbmd0aBgLIAEoCzIkLm1ldGFsc3RhY2suYXBpLnYyLkNoaWxkUHJlZml4TGVuZ3RoEjsKCG5hdF90eXBlGAwgASgOMhoubWV0YWxzdGFjay5hcGkudjIuTkFUVHlwZUIIukgFggECEAFIBogBARIQCgN2cmYYDSABKA1IB4gBARIoCg5wYXJlbnRfbmV0d29yaxgOIAEoCUILukgIcgbAs66xAgFICIgBARIyChxhZGRpdGlvbmFsX2Fubm91bmNhYmxlX2NpZHJzGA8gAygJQgy6SAmSAQa4pLOxAgESOQoGbGVuZ3RoGBAgASgLMiQubWV0YWxzdGFjay5hcGkudjIuQ2hpbGRQcmVmaXhMZW5ndGhICYgBARJOCg5hZGRyZXNzX2ZhbWlseRgRIAEoDjInLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmtBZGRyZXNzRmFtaWx5Qgi6SAWCAQIQAUgKiAEBQgUKA19pZEIHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb25CDAoKX3BhcnRpdGlvbkIKCghfcHJvamVjdEIJCgdfbGFiZWxzQgsKCV9uYXRfdHlwZUIGCgRfdnJmQhEKD19wYXJlbnRfbmV0d29ya0IJCgdfbGVuZ3RoQhEKD19hZGRyZXNzX2ZhbWlseSLEBQobTmV0d29ya1NlcnZpY2VVcGRhdGVSZXF1ZXN0EhcKAmlkGAEgASgJQgu6SAhyBsCzrrECARI6Cgt1cGRhdGVfbWV0YRgCIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZU1ldGFCBrpIA8gBARIeCgRuYW1lGAMgASgJQgu6SAhyBsCzrrECAUgAiAEBEiUKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECAUgBiAEBEjQKBmxhYmVscxgFIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gCiAEBEh4KCHByZWZpeGVzGAYgAygJQgy6SAmSAQa4pLOxAgESKgoUZGVzdGluYXRpb25fcHJlZml4ZXMYByADKAlCDLpICZIBBriks7ECARJOChtkZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGgYCCABKAsyJC5tZXRhbHN0YWNrLmFwaS52Mi5DaGlsZFByZWZpeExlbmd0aEgDiAEBEkoKF21pbl9jaGlsZF9wcmVmaXhfbGVuZ3RoGAkgASgLMiQubWV0YWxzdGFjay5hcGkudjIuQ2hpbGRQcmVmaXhMZW5ndGhIBIgBARI7CghuYXRfdHlwZRgKIAEoDjIaLm1ldGFsc3RhY2suYXBpLnYyLk5BVFR5cGVCCLpIBYIBAhABSAWIAQESMgocYWRkaXRpb25hbF9hbm5vdW5jYWJsZV9jaWRycxgLIAMoCUIMukgJkgEGuKSzsQIBEg0KBWZvcmNlGAwgASgIQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIJCgdfbGFiZWxzQh4KHF9kZWZhdWx0X2NoaWxkX3ByZWZpeF9sZW5ndGhCGgoYX21pbl9jaGlsZF9wcmVmaXhfbGVuZ3RoQgsKCV9uYXRfdHlwZSI2ChtOZXR3b3JrU2VydmljZURlbGV0ZVJlcXVlc3QSFwoCaWQYASABKAlCC7pICHIGwLOusQIBIksKGU5ldHdvcmtTZXJ2aWNlTGlzdFJlcXVlc3QSLgoFcXVlcnkYASABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrUXVlcnkiSwocTmV0d29ya1NlcnZpY2VDcmVhdGVSZXNwb25zZRIrCgduZXR3b3JrGAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuTmV0d29yayJLChxOZXR3b3JrU2VydmljZVVwZGF0ZVJlc3BvbnNlEisKB25ldHdvcmsYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrIksKHE5ldHdvcmtTZXJ2aWNlRGVsZXRlUmVzcG9uc2USKwoHbmV0d29yaxgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLk5ldHdvcmsiSgoaTmV0d29ya1NlcnZpY2VMaXN0UmVzcG9uc2USLAoIbmV0d29ya3MYASADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5OZXR3b3JrMuUECg5OZXR3b3JrU2VydmljZRJwCgNHZXQSLS5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlR2V0UmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuTmV0d29ya1NlcnZpY2VHZXRSZXNwb25zZSIK0vMYAgEC4PMYAhJ4CgZDcmVhdGUSMC5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlQ3JlYXRlUmVxdWVzdBoxLm1ldGFsc3RhY2suYWRtaW4udjIuTmV0d29ya1NlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEngKBlVwZGF0ZRIwLm1ldGFsc3RhY2suYWRtaW4udjIuTmV0d29ya1NlcnZpY2VVcGRhdGVSZXF1ZXN0GjEubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZVVwZGF0ZVJlc3BvbnNlIgnS8xgBAeDzGAESeAoGRGVsZXRlEjAubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZURlbGV0ZVJlcXVlc3QaMS5tZXRhbHN0YWNrLmFkbWluLnYyLk5ldHdvcmtTZXJ2aWNlRGVsZXRlUmVzcG9uc2UiCdLzGAEB4PMYARJzCgRMaXN0Ei4ubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZUxpc3RSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hZG1pbi52Mi5OZXR3b3JrU2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYAkLQAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCDE5ldHdvcmtQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_network, file_metalstack_api_v2_predefined_rules]);
 
 /**
  * NetworkServiceGetRequest is the request payload for getting a network.
@@ -334,104 +334,6 @@ export const NetworkServiceListRequestSchema: GenMessage<NetworkServiceListReque
   messageDesc(file_metalstack_admin_v2_network, 5);
 
 /**
- * NetworkServiceListExternalMembersRequest is the request payload for listing external members of a network.
- *
- * @generated from message metalstack.admin.v2.NetworkServiceListExternalMembersRequest
- */
-export type NetworkServiceListExternalMembersRequest = Message<"metalstack.admin.v2.NetworkServiceListExternalMembersRequest"> & {
-  /**
-   * Network to list the members for.
-   *
-   * @generated from field: string network = 1;
-   */
-  network: string;
-
-  /**
-   * Query specifies additional filters for the list request.
-   *
-   * @generated from field: metalstack.api.v2.ExternalNetworkMemberQuery query = 2;
-   */
-  query?: ExternalNetworkMemberQuery | undefined;
-};
-
-/**
- * Describes the message metalstack.admin.v2.NetworkServiceListExternalMembersRequest.
- * Use `create(NetworkServiceListExternalMembersRequestSchema)` to create a new message.
- */
-export const NetworkServiceListExternalMembersRequestSchema: GenMessage<NetworkServiceListExternalMembersRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 6);
-
-/**
- * NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.
- *
- * @generated from message metalstack.admin.v2.NetworkServiceAddExternalMembersRequest
- */
-export type NetworkServiceAddExternalMembersRequest = Message<"metalstack.admin.v2.NetworkServiceAddExternalMembersRequest"> & {
-  /**
-   * Network to add the member to.
-   *
-   * @generated from field: string network = 1;
-   */
-  network: string;
-
-  /**
-   * Rack the members are connected to.
-   *
-   * @generated from field: string rack = 2;
-   */
-  rack: string;
-
-  /**
-   * Ports of the switches to add to the network.
-   *
-   * @generated from field: repeated string ports = 3;
-   */
-  ports: string[];
-};
-
-/**
- * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMembersRequest.
- * Use `create(NetworkServiceAddExternalMembersRequestSchema)` to create a new message.
- */
-export const NetworkServiceAddExternalMembersRequestSchema: GenMessage<NetworkServiceAddExternalMembersRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 7);
-
-/**
- * NetworkServiceRemoveExternalMemberRequest is the request payload for removing an external member from a network.
- *
- * @generated from message metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest
- */
-export type NetworkServiceRemoveExternalMembersRequest = Message<"metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest"> & {
-  /**
-   * Network to remove the member from.
-   *
-   * @generated from field: string network = 1;
-   */
-  network: string;
-
-  /**
-   * Rack the members are connected to.
-   *
-   * @generated from field: string rack = 2;
-   */
-  rack: string;
-
-  /**
-   * Ports of the switches to remove from the network.
-   *
-   * @generated from field: repeated string ports = 3;
-   */
-  ports: string[];
-};
-
-/**
- * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest.
- * Use `create(NetworkServiceRemoveExternalMembersRequestSchema)` to create a new message.
- */
-export const NetworkServiceRemoveExternalMembersRequestSchema: GenMessage<NetworkServiceRemoveExternalMembersRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 8);
-
-/**
  * NetworkServiceCreateResponse is the response payload for creating a network.
  *
  * @generated from message metalstack.admin.v2.NetworkServiceCreateResponse
@@ -450,7 +352,7 @@ export type NetworkServiceCreateResponse = Message<"metalstack.admin.v2.NetworkS
  * Use `create(NetworkServiceCreateResponseSchema)` to create a new message.
  */
 export const NetworkServiceCreateResponseSchema: GenMessage<NetworkServiceCreateResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 9);
+  messageDesc(file_metalstack_admin_v2_network, 6);
 
 /**
  * NetworkServiceUpdateResponse is the response payload for updating a network.
@@ -471,7 +373,7 @@ export type NetworkServiceUpdateResponse = Message<"metalstack.admin.v2.NetworkS
  * Use `create(NetworkServiceUpdateResponseSchema)` to create a new message.
  */
 export const NetworkServiceUpdateResponseSchema: GenMessage<NetworkServiceUpdateResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 10);
+  messageDesc(file_metalstack_admin_v2_network, 7);
 
 /**
  * NetworkServiceDeleteResponse is the response payload for deleting a network.
@@ -492,7 +394,7 @@ export type NetworkServiceDeleteResponse = Message<"metalstack.admin.v2.NetworkS
  * Use `create(NetworkServiceDeleteResponseSchema)` to create a new message.
  */
 export const NetworkServiceDeleteResponseSchema: GenMessage<NetworkServiceDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 11);
+  messageDesc(file_metalstack_admin_v2_network, 8);
 
 /**
  * NetworkServiceListResponse is the response payload for listing networks.
@@ -513,91 +415,7 @@ export type NetworkServiceListResponse = Message<"metalstack.admin.v2.NetworkSer
  * Use `create(NetworkServiceListResponseSchema)` to create a new message.
  */
 export const NetworkServiceListResponseSchema: GenMessage<NetworkServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 12);
-
-/**
- * NetworkServiceListExternalMembersResponse is the response payload for listing external members of a network.
- *
- * @generated from message metalstack.admin.v2.NetworkServiceListExternalMembersResponse
- */
-export type NetworkServiceListExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceListExternalMembersResponse"> & {
-  /**
-   * Network whose members are queried.
-   *
-   * @generated from field: metalstack.api.v2.Network network = 1;
-   */
-  network?: Network | undefined;
-
-  /**
-   * Members are the queried external members of the network.
-   *
-   * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember members = 2;
-   */
-  members: ExternalNetworkMember[];
-};
-
-/**
- * Describes the message metalstack.admin.v2.NetworkServiceListExternalMembersResponse.
- * Use `create(NetworkServiceListExternalMembersResponseSchema)` to create a new message.
- */
-export const NetworkServiceListExternalMembersResponseSchema: GenMessage<NetworkServiceListExternalMembersResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 13);
-
-/**
- * NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.
- *
- * @generated from message metalstack.admin.v2.NetworkServiceAddExternalMembersResponse
- */
-export type NetworkServiceAddExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceAddExternalMembersResponse"> & {
-  /**
-   * Network the members were added to.
-   *
-   * @generated from field: metalstack.api.v2.Network network = 1;
-   */
-  network?: Network | undefined;
-
-  /**
-   * Members are the updated external members of the network.
-   *
-   * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember members = 2;
-   */
-  members: ExternalNetworkMember[];
-};
-
-/**
- * Describes the message metalstack.admin.v2.NetworkServiceAddExternalMembersResponse.
- * Use `create(NetworkServiceAddExternalMembersResponseSchema)` to create a new message.
- */
-export const NetworkServiceAddExternalMembersResponseSchema: GenMessage<NetworkServiceAddExternalMembersResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 14);
-
-/**
- * NetworkServiceRemoveExternalMemberResponse is the response payload for removing an external member from a network.
- *
- * @generated from message metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse
- */
-export type NetworkServiceRemoveExternalMembersResponse = Message<"metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse"> & {
-  /**
-   * Network the members were removed from.
-   *
-   * @generated from field: metalstack.api.v2.Network network = 1;
-   */
-  network?: Network | undefined;
-
-  /**
-   * Members are the updated external members of the network.
-   *
-   * @generated from field: repeated metalstack.api.v2.ExternalNetworkMember members = 2;
-   */
-  members: ExternalNetworkMember[];
-};
-
-/**
- * Describes the message metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse.
- * Use `create(NetworkServiceRemoveExternalMembersResponseSchema)` to create a new message.
- */
-export const NetworkServiceRemoveExternalMembersResponseSchema: GenMessage<NetworkServiceRemoveExternalMembersResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_network, 15);
+  messageDesc(file_metalstack_admin_v2_network, 9);
 
 /**
  * NetworkService provides network management operations.
@@ -654,36 +472,6 @@ export const NetworkService: GenService<{
     methodKind: "unary";
     input: typeof NetworkServiceListRequestSchema;
     output: typeof NetworkServiceListResponseSchema;
-  },
-  /**
-   * Lists external members of a network.
-   *
-   * @generated from rpc metalstack.admin.v2.NetworkService.ListExternalMembers
-   */
-  listExternalMembers: {
-    methodKind: "unary";
-    input: typeof NetworkServiceListExternalMembersRequestSchema;
-    output: typeof NetworkServiceListExternalMembersResponseSchema;
-  },
-  /**
-   * Adds an external member to a network.
-   *
-   * @generated from rpc metalstack.admin.v2.NetworkService.AddExternalMembers
-   */
-  addExternalMembers: {
-    methodKind: "unary";
-    input: typeof NetworkServiceAddExternalMembersRequestSchema;
-    output: typeof NetworkServiceAddExternalMembersResponseSchema;
-  },
-  /**
-   * Removes an external member from a network.
-   *
-   * @generated from rpc metalstack.admin.v2.NetworkService.RemoveExternalMembers
-   */
-  removeExternalMembers: {
-    methodKind: "unary";
-    input: typeof NetworkServiceRemoveExternalMembersRequestSchema;
-    output: typeof NetworkServiceRemoveExternalMembersResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_admin_v2_network, 0);

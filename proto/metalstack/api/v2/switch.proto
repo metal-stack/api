@@ -186,6 +186,14 @@ message SwitchNicWithMachine {
   metalstack.api.v2.MachineFRU fru = 3;
 }
 
+// StaticPortConfig is a config that is statically applied to a port.
+message StaticPortConfig {
+  // Membership specifies whether this port is connected to a registered machine or to an external host or if it is unmanaged.
+  SwitchPortMembership membership = 1;
+  // Network the port is a member of.
+  optional string network = 2;
+}
+
 // BGPState represents the state of a BGP session.
 enum BGPState {
   // BGP_STATE_UNSPECIFIED is not specified.

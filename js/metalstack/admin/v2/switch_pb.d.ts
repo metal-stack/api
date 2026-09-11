@@ -402,7 +402,7 @@ export declare const SwitchService: GenService<{
         output: typeof SwitchServiceMigrateResponseSchema;
     };
     /**
-     * Sets the port status of a switch port.
+     * Sets the port config of a switch port.
      *
      * @generated from rpc metalstack.admin.v2.SwitchService.Port
      */

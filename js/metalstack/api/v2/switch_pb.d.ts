@@ -495,6 +495,30 @@ export type SwitchNicWithMachine = Message<"metalstack.api.v2.SwitchNicWithMachi
  */
 export declare const SwitchNicWithMachineSchema: GenMessage<SwitchNicWithMachine>;
 /**
+ * StaticPortConfig is a config that is statically applied to a port.
+ *
+ * @generated from message metalstack.api.v2.StaticPortConfig
+ */
+export type StaticPortConfig = Message<"metalstack.api.v2.StaticPortConfig"> & {
+    /**
+     * Membership specifies whether this port is connected to a registered machine or to an external host or if it is unmanaged.
+     *
+     * @generated from field: metalstack.api.v2.SwitchPortMembership membership = 1;
+     */
+    membership: SwitchPortMembership;
+    /**
+     * Network the port is a member of.
+     *
+     * @generated from field: optional string network = 2;
+     */
+    network?: string | undefined;
+};
+/**
+ * Describes the message metalstack.api.v2.StaticPortConfig.
+ * Use `create(StaticPortConfigSchema)` to create a new message.
+ */
+export declare const StaticPortConfigSchema: GenMessage<StaticPortConfig>;
+/**
  * BGPState represents the state of a BGP session.
  *
  * @generated from enum metalstack.api.v2.BGPState

@@ -1045,14 +1045,6 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.api.v2.ExternalNetworkMember"><span class="badge">M</span>ExternalNetworkMember</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.api.v2.ExternalNetworkMemberQuery"><span class="badge">M</span>ExternalNetworkMemberQuery</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.api.v2.Network"><span class="badge">M</span>Network</a>
                 </li>
               
@@ -1584,14 +1576,6 @@
             <ul>
               
                 <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceAddExternalMembersRequest"><span class="badge">M</span>NetworkServiceAddExternalMembersRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceAddExternalMembersResponse"><span class="badge">M</span>NetworkServiceAddExternalMembersResponse</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.admin.v2.NetworkServiceCreateRequest"><span class="badge">M</span>NetworkServiceCreateRequest</a>
                 </li>
               
@@ -1616,27 +1600,11 @@
                 </li>
               
                 <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceListExternalMembersRequest"><span class="badge">M</span>NetworkServiceListExternalMembersRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceListExternalMembersResponse"><span class="badge">M</span>NetworkServiceListExternalMembersResponse</a>
-                </li>
-              
-                <li>
                   <a href="#metalstack.admin.v2.NetworkServiceListRequest"><span class="badge">M</span>NetworkServiceListRequest</a>
                 </li>
               
                 <li>
                   <a href="#metalstack.admin.v2.NetworkServiceListResponse"><span class="badge">M</span>NetworkServiceListResponse</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest"><span class="badge">M</span>NetworkServiceRemoveExternalMembersRequest</a>
-                </li>
-              
-                <li>
-                  <a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse"><span class="badge">M</span>NetworkServiceRemoveExternalMembersResponse</a>
                 </li>
               
                 <li>
@@ -2108,6 +2076,10 @@
               
                 <li>
                   <a href="#metalstack.api.v2.NicState"><span class="badge">M</span>NicState</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.StaticPortConfig"><span class="badge">M</span>StaticPortConfig</a>
                 </li>
               
                 <li>
@@ -8561,89 +8533,6 @@ Will be equal with project most of the time. </p></td>
 
         
       
-        <h3 id="metalstack.api.v2.ExternalNetworkMember">ExternalNetworkMember</h3>
-        <p>ExternalNetworkMember contains the ports of a switch that participate in a network and are connected to machines not known to metal-stack.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>switch</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Switch the external members are connected to. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>partition</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Partition of the switch. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>rack</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Rack of the switch. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ports</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Ports of the switch that participate in the network. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.api.v2.ExternalNetworkMemberQuery">ExternalNetworkMemberQuery</h3>
-        <p>ExternalNetworkMemberQuery defines which filters to apply when looking up external network members.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>switch</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Switch whose ports are queried. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>rack</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Rack for which the members of the network are queried. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>partition</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Partition where the members of the network reside. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="metalstack.api.v2.Network">Network</h3>
         <p>Network.</p>
 
@@ -13827,75 +13716,6 @@ If State set to available, description is also cleared. </p></td>
       <p></p>
 
       
-        <h3 id="metalstack.admin.v2.NetworkServiceAddExternalMembersRequest">NetworkServiceAddExternalMembersRequest</h3>
-        <p>NetworkServiceAddExternalMemberRequest is the request payload for adding an external member to a network.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>network</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Network to add the member to. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>rack</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Rack the members are connected to. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ports</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Ports of the switches to add to the network. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.admin.v2.NetworkServiceAddExternalMembersResponse">NetworkServiceAddExternalMembersResponse</h3>
-        <p>NetworkServiceAddExternalMemberResponse is the response payload for adding an external member to a network.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>network</td>
-                  <td><a href="#metalstack.api.v2.Network">metalstack.api.v2.Network</a></td>
-                  <td></td>
-                  <td><p>Network the members were added to. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>members</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
-                  <td>repeated</td>
-                  <td><p>Members are the updated external members of the network. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="metalstack.admin.v2.NetworkServiceCreateRequest">NetworkServiceCreateRequest</h3>
         <p>NetworkServiceCreateRequest is the request payload for creating a network.</p>
 
@@ -14152,68 +13972,6 @@ If State set to available, description is also cleared. </p></td>
 
         
       
-        <h3 id="metalstack.admin.v2.NetworkServiceListExternalMembersRequest">NetworkServiceListExternalMembersRequest</h3>
-        <p>NetworkServiceListExternalMembersRequest is the request payload for listing external members of a network.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>network</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Network to list the members for. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>query</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMemberQuery">metalstack.api.v2.ExternalNetworkMemberQuery</a></td>
-                  <td></td>
-                  <td><p>Query specifies additional filters for the list request. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.admin.v2.NetworkServiceListExternalMembersResponse">NetworkServiceListExternalMembersResponse</h3>
-        <p>NetworkServiceListExternalMembersResponse is the response payload for listing external members of a network.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>network</td>
-                  <td><a href="#metalstack.api.v2.Network">metalstack.api.v2.Network</a></td>
-                  <td></td>
-                  <td><p>Network whose members are queried. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>members</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
-                  <td>repeated</td>
-                  <td><p>Members are the queried external members of the network. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
         <h3 id="metalstack.admin.v2.NetworkServiceListRequest">NetworkServiceListRequest</h3>
         <p>NetworkServiceListRequest is the request payload for listing networks.</p>
 
@@ -14253,75 +14011,6 @@ If State set to available, description is also cleared. </p></td>
                   <td><a href="#metalstack.api.v2.Network">metalstack.api.v2.Network</a></td>
                   <td>repeated</td>
                   <td><p>Networks contains the list of networks. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest">NetworkServiceRemoveExternalMembersRequest</h3>
-        <p>NetworkServiceRemoveExternalMemberRequest is the request payload for removing an external member from a network.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>network</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Network to remove the member from. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>rack</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Rack the members are connected to. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>ports</td>
-                  <td><a href="#string">string</a></td>
-                  <td>repeated</td>
-                  <td><p>Ports of the switches to remove from the network. </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse">NetworkServiceRemoveExternalMembersResponse</h3>
-        <p>NetworkServiceRemoveExternalMemberResponse is the response payload for removing an external member from a network.</p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>network</td>
-                  <td><a href="#metalstack.api.v2.Network">metalstack.api.v2.Network</a></td>
-                  <td></td>
-                  <td><p>Network the members were removed from. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>members</td>
-                  <td><a href="#metalstack.api.v2.ExternalNetworkMember">metalstack.api.v2.ExternalNetworkMember</a></td>
-                  <td>repeated</td>
-                  <td><p>Members are the updated external members of the network. </p></td>
                 </tr>
               
             </tbody>
@@ -14503,27 +14192,6 @@ If State set to available, description is also cleared. </p></td>
                 <td><a href="#metalstack.admin.v2.NetworkServiceListRequest">NetworkServiceListRequest</a></td>
                 <td><a href="#metalstack.admin.v2.NetworkServiceListResponse">NetworkServiceListResponse</a></td>
                 <td><p>Returns the list of all networks.</p></td>
-              </tr>
-            
-              <tr>
-                <td>ListExternalMembers</td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceListExternalMembersRequest">NetworkServiceListExternalMembersRequest</a></td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceListExternalMembersResponse">NetworkServiceListExternalMembersResponse</a></td>
-                <td><p>Lists external members of a network.</p></td>
-              </tr>
-            
-              <tr>
-                <td>AddExternalMembers</td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceAddExternalMembersRequest">NetworkServiceAddExternalMembersRequest</a></td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceAddExternalMembersResponse">NetworkServiceAddExternalMembersResponse</a></td>
-                <td><p>Adds an external member to a network.</p></td>
-              </tr>
-            
-              <tr>
-                <td>RemoveExternalMembers</td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMembersRequest">NetworkServiceRemoveExternalMembersRequest</a></td>
-                <td><a href="#metalstack.admin.v2.NetworkServiceRemoveExternalMembersResponse">NetworkServiceRemoveExternalMembersResponse</a></td>
-                <td><p>Removes an external member from a network.</p></td>
               </tr>
             
           </tbody>
@@ -17642,6 +17310,37 @@ console.metalstack.cloud/invite/&lt;secret. </p></td>
 
         
       
+        <h3 id="metalstack.api.v2.StaticPortConfig">StaticPortConfig</h3>
+        <p>StaticPortConfig is a config that is statically applied to a port.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>membership</td>
+                  <td><a href="#metalstack.api.v2.SwitchPortMembership">SwitchPortMembership</a></td>
+                  <td></td>
+                  <td><p>Membership specifies whether this port is connected to a registered machine or to an external host or if it is unmanaged. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>network</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Network the port is a member of. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.api.v2.Switch">Switch</h3>
         <p>Switch represents a network switch.</p>
 
@@ -18857,7 +18556,7 @@ Must be part of the update request to ensure optimistic locking. </p></td>
                 <td>Port</td>
                 <td><a href="#metalstack.admin.v2.SwitchServicePortRequest">SwitchServicePortRequest</a></td>
                 <td><a href="#metalstack.admin.v2.SwitchServicePortResponse">SwitchServicePortResponse</a></td>
-                <td><p>Sets the port status of a switch port.</p></td>
+                <td><p>Sets the port config of a switch port.</p></td>
               </tr>
             
               <tr>
