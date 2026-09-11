@@ -158,9 +158,10 @@ export type SwitchNic = Message<"metalstack.api.v2.SwitchNic"> & {
      */
     identifier: string;
     /**
-     * MAC address of the port.
+     * MAC address of the port. This field is deprecated because it was only necessary before SONiC was supported. For SONiC, all these addresses are identical and do not provide any benefit. It will be dropped once the metal-api has been dropped.
      *
-     * @generated from field: optional string mac = 3;
+     * @generated from field: optional string mac = 3 [deprecated = true];
+     * @deprecated
      */
     mac?: string | undefined;
     /**
