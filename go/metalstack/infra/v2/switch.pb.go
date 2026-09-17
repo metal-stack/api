@@ -390,7 +390,7 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\rSwitchService\x12n\n" +
 	"\x03Get\x12,.metalstack.infra.v2.SwitchServiceGetRequest\x1a-.metalstack.infra.v2.SwitchServiceGetResponse\"\n" +
 	"\xe0\xf3\x18\x02\xea\xf3\x18\x02\x01\x02\x12|\n" +
-	"\bRegister\x121.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a2.metalstack.infra.v2.SwitchServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x7f\n" +
+	"\bRegister\x121.metalstack.infra.v2.SwitchServiceRegisterRequest\x1a2.metalstack.infra.v2.SwitchServiceRegisterResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01\x12\x7f\n" +
 	"\tHeartbeat\x122.metalstack.infra.v2.SwitchServiceHeartbeatRequest\x1a3.metalstack.infra.v2.SwitchServiceHeartbeatResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01B\xcf\x01\n" +
 	"\x17com.metalstack.infra.v2B\vSwitchProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
