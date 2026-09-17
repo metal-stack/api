@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+
+// EnvironmentService serves environment related functions
+service EnvironmentService {
+  // Info returns information on the installation environment of the metal-stack installation.
+  rpc Info(EnvironmentServiceInfoRequest) returns (EnvironmentServiceInfoResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+}
+
+// EnvironmentServiceInfoRequest is the request payload to retrieve info about the environment.
+message EnvironmentServiceInfoRequest {}
+
+// EnvironmentServiceInfoResponse is the response payload which contains the info about the environment.
+message EnvironmentServiceInfoResponse {
+  // ConsoleURL is the URL to the metalstack.cloud cloud console (aka frontend).
+  optional string metal_console_port = 1 [(buf.validate.field).string.uri = true];
+  // AfterLoginURL is the URL to redirect clients to after successful login.
+  optional string after_login_url = 2 [(buf.validate.field).string.uri = true];
+}
