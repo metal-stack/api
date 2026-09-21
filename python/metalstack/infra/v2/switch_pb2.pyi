@@ -8,7 +8,7 @@ from metalstack.api.v2 import switch_pb2 as _switch_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from collections.abc import Mapping as _Mapping
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
 from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
@@ -26,10 +26,36 @@ class SwitchServiceGetResponse(_message.Message):
     def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
 
 class SwitchServiceRegisterRequest(_message.Message):
-    __slots__ = ("switch",)
-    SWITCH_FIELD_NUMBER: _ClassVar[int]
-    switch: _switch_pb2.Switch
-    def __init__(self, switch: _Optional[_Union[_switch_pb2.Switch, _Mapping]] = ...) -> None: ...
+    __slots__ = ("id", "meta", "rack", "room", "partition", "management_ip", "management_user", "nics", "os")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    META_FIELD_NUMBER: _ClassVar[int]
+    RACK_FIELD_NUMBER: _ClassVar[int]
+    ROOM_FIELD_NUMBER: _ClassVar[int]
+    PARTITION_FIELD_NUMBER: _ClassVar[int]
+    MANAGEMENT_IP_FIELD_NUMBER: _ClassVar[int]
+    MANAGEMENT_USER_FIELD_NUMBER: _ClassVar[int]
+    NICS_FIELD_NUMBER: _ClassVar[int]
+    OS_FIELD_NUMBER: _ClassVar[int]
+    id: str
+    meta: _common_pb2.Meta
+    rack: str
+    room: str
+    partition: str
+    management_ip: str
+    management_user: str
+    nics: _containers.RepeatedCompositeFieldContainer[SwitchRegisterNic]
+    os: _switch_pb2.SwitchOS
+    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., rack: _Optional[str] = ..., room: _Optional[str] = ..., partition: _Optional[str] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchRegisterNic, _Mapping]]] = ..., os: _Optional[_Union[_switch_pb2.SwitchOS, _Mapping]] = ...) -> None: ...
+
+class SwitchRegisterNic(_message.Message):
+    __slots__ = ("name", "identifier", "state")
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    IDENTIFIER_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
+    name: str
+    identifier: str
+    state: _switch_pb2.NicState
+    def __init__(self, name: _Optional[str] = ..., identifier: _Optional[str] = ..., state: _Optional[_Union[_switch_pb2.NicState, _Mapping]] = ...) -> None: ...
 
 class SwitchServiceRegisterResponse(_message.Message):
     __slots__ = ("switch",)

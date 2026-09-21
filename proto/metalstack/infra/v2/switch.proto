@@ -45,8 +45,43 @@ message SwitchServiceGetResponse {
 
 // SwitchServiceRegisterRequest is the request payload for registering a switch.
 message SwitchServiceRegisterRequest {
-  // Switch to register.
-  metalstack.api.v2.Switch switch = 1;
+  reserved 1;
+  reserved "switch";
+
+  // Id of the switch.
+  string id = 2 [(buf.validate.field).string = {
+    hostname: true
+    [metalstack.api.v2.is_name]: true
+  }];
+  // Meta for this switch.
+  metalstack.api.v2.Meta meta = 3;
+  // Rack ID if the switch resides in a rack.
+  optional string rack = 4 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Room ID if the switch resides in a room.
+  optional string room = 5 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Partition the switch belongs to.
+  string partition = 6 [(buf.validate.field).string.(metalstack.api.v2.is_partition) = true];
+  // ManagementIp is the switch's IP for management access.
+  string management_ip = 7 [(buf.validate.field).string.ip = true];
+  // ManagementUser is the user name to use for management access.
+  optional string management_user = 8 [(buf.validate.field).string = {
+    min_len: 2
+    max_len: 128
+  }];
+  // Nics are the front panel ports of the switch.
+  repeated SwitchRegisterNic nics = 9;
+  // SwitchOs is the OS running on the switch.
+  metalstack.api.v2.SwitchOS os = 10;
+}
+
+// SwitchRegisterNic is the switch nic used when registering a switch at the api.
+message SwitchRegisterNic {
+  // Name of the switch port.
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Identifier of the port.
+  string identifier = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // NicState describes the current state of the switch port.
+  metalstack.api.v2.NicState state = 3;
 }
 
 // SwitchServiceRegisterResponse is the response payload for registering a switch.

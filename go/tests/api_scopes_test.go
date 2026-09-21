@@ -154,7 +154,11 @@ func Test_FieldNumbering(t *testing.T) {
 						// }
 						firstField = false
 					} else {
-						if lastNumber+1 != *field.Number {
+						if slices.ContainsFunc(mt.ReservedRange, func(rng *descriptorpb.DescriptorProto_ReservedRange) bool {
+							return *field.Number >= *rng.Start && *field.Number <= *rng.End
+						}) {
+							// this is fine
+						} else if lastNumber+1 != *field.Number {
 							errs = append(errs, fmt.Errorf("%s %s %s %d != %d", filename, *mt.Name, *field.Name, lastNumber+1, *field.Number))
 						}
 					}

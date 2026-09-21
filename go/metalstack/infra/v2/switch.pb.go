@@ -119,8 +119,24 @@ func (x *SwitchServiceGetResponse) GetSwitch() *v2.Switch {
 // SwitchServiceRegisterRequest is the request payload for registering a switch.
 type SwitchServiceRegisterRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Switch to register.
-	Switch        *v2.Switch `protobuf:"bytes,1,opt,name=switch,proto3" json:"switch,omitempty"`
+	// Id of the switch.
+	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	// Meta for this switch.
+	Meta *v2.Meta `protobuf:"bytes,3,opt,name=meta,proto3" json:"meta,omitempty"`
+	// Rack ID if the switch resides in a rack.
+	Rack *string `protobuf:"bytes,4,opt,name=rack,proto3,oneof" json:"rack,omitempty"`
+	// Room ID if the switch resides in a room.
+	Room *string `protobuf:"bytes,5,opt,name=room,proto3,oneof" json:"room,omitempty"`
+	// Partition the switch belongs to.
+	Partition string `protobuf:"bytes,6,opt,name=partition,proto3" json:"partition,omitempty"`
+	// ManagementIp is the switch's IP for management access.
+	ManagementIp string `protobuf:"bytes,7,opt,name=management_ip,json=managementIp,proto3" json:"management_ip,omitempty"`
+	// ManagementUser is the user name to use for management access.
+	ManagementUser *string `protobuf:"bytes,8,opt,name=management_user,json=managementUser,proto3,oneof" json:"management_user,omitempty"`
+	// Nics are the front panel ports of the switch.
+	Nics []*SwitchRegisterNic `protobuf:"bytes,9,rep,name=nics,proto3" json:"nics,omitempty"`
+	// SwitchOs is the OS running on the switch.
+	Os            *v2.SwitchOS `protobuf:"bytes,10,opt,name=os,proto3" json:"os,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -155,9 +171,129 @@ func (*SwitchServiceRegisterRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *SwitchServiceRegisterRequest) GetSwitch() *v2.Switch {
+func (x *SwitchServiceRegisterRequest) GetId() string {
 	if x != nil {
-		return x.Switch
+		return x.Id
+	}
+	return ""
+}
+
+func (x *SwitchServiceRegisterRequest) GetMeta() *v2.Meta {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *SwitchServiceRegisterRequest) GetRack() string {
+	if x != nil && x.Rack != nil {
+		return *x.Rack
+	}
+	return ""
+}
+
+func (x *SwitchServiceRegisterRequest) GetRoom() string {
+	if x != nil && x.Room != nil {
+		return *x.Room
+	}
+	return ""
+}
+
+func (x *SwitchServiceRegisterRequest) GetPartition() string {
+	if x != nil {
+		return x.Partition
+	}
+	return ""
+}
+
+func (x *SwitchServiceRegisterRequest) GetManagementIp() string {
+	if x != nil {
+		return x.ManagementIp
+	}
+	return ""
+}
+
+func (x *SwitchServiceRegisterRequest) GetManagementUser() string {
+	if x != nil && x.ManagementUser != nil {
+		return *x.ManagementUser
+	}
+	return ""
+}
+
+func (x *SwitchServiceRegisterRequest) GetNics() []*SwitchRegisterNic {
+	if x != nil {
+		return x.Nics
+	}
+	return nil
+}
+
+func (x *SwitchServiceRegisterRequest) GetOs() *v2.SwitchOS {
+	if x != nil {
+		return x.Os
+	}
+	return nil
+}
+
+// SwitchRegisterNic is the switch nic used when registering a switch at the api.
+type SwitchRegisterNic struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Name of the switch port.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Identifier of the port.
+	Identifier string `protobuf:"bytes,2,opt,name=identifier,proto3" json:"identifier,omitempty"`
+	// NicState describes the current state of the switch port.
+	State         *v2.NicState `protobuf:"bytes,3,opt,name=state,proto3" json:"state,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SwitchRegisterNic) Reset() {
+	*x = SwitchRegisterNic{}
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SwitchRegisterNic) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SwitchRegisterNic) ProtoMessage() {}
+
+func (x *SwitchRegisterNic) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SwitchRegisterNic.ProtoReflect.Descriptor instead.
+func (*SwitchRegisterNic) Descriptor() ([]byte, []int) {
+	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SwitchRegisterNic) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *SwitchRegisterNic) GetIdentifier() string {
+	if x != nil {
+		return x.Identifier
+	}
+	return ""
+}
+
+func (x *SwitchRegisterNic) GetState() *v2.NicState {
+	if x != nil {
+		return x.State
 	}
 	return nil
 }
@@ -173,7 +309,7 @@ type SwitchServiceRegisterResponse struct {
 
 func (x *SwitchServiceRegisterResponse) Reset() {
 	*x = SwitchServiceRegisterResponse{}
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[3]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -185,7 +321,7 @@ func (x *SwitchServiceRegisterResponse) String() string {
 func (*SwitchServiceRegisterResponse) ProtoMessage() {}
 
 func (x *SwitchServiceRegisterResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[3]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -198,7 +334,7 @@ func (x *SwitchServiceRegisterResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwitchServiceRegisterResponse.ProtoReflect.Descriptor instead.
 func (*SwitchServiceRegisterResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{3}
+	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SwitchServiceRegisterResponse) GetSwitch() *v2.Switch {
@@ -227,7 +363,7 @@ type SwitchServiceHeartbeatRequest struct {
 
 func (x *SwitchServiceHeartbeatRequest) Reset() {
 	*x = SwitchServiceHeartbeatRequest{}
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[4]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -239,7 +375,7 @@ func (x *SwitchServiceHeartbeatRequest) String() string {
 func (*SwitchServiceHeartbeatRequest) ProtoMessage() {}
 
 func (x *SwitchServiceHeartbeatRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[4]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -252,7 +388,7 @@ func (x *SwitchServiceHeartbeatRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwitchServiceHeartbeatRequest.ProtoReflect.Descriptor instead.
 func (*SwitchServiceHeartbeatRequest) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{4}
+	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SwitchServiceHeartbeatRequest) GetId() string {
@@ -305,7 +441,7 @@ type SwitchServiceHeartbeatResponse struct {
 
 func (x *SwitchServiceHeartbeatResponse) Reset() {
 	*x = SwitchServiceHeartbeatResponse{}
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[5]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -317,7 +453,7 @@ func (x *SwitchServiceHeartbeatResponse) String() string {
 func (*SwitchServiceHeartbeatResponse) ProtoMessage() {}
 
 func (x *SwitchServiceHeartbeatResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[5]
+	mi := &file_metalstack_infra_v2_switch_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -330,7 +466,7 @@ func (x *SwitchServiceHeartbeatResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SwitchServiceHeartbeatResponse.ProtoReflect.Descriptor instead.
 func (*SwitchServiceHeartbeatResponse) Descriptor() ([]byte, []int) {
-	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{5}
+	return file_metalstack_infra_v2_switch_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *SwitchServiceHeartbeatResponse) GetId() string {
@@ -363,9 +499,29 @@ const file_metalstack_infra_v2_switch_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\"M\n" +
 	"\x18SwitchServiceGetResponse\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"Q\n" +
-	"\x1cSwitchServiceRegisterRequest\x121\n" +
-	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"R\n" +
+	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xe6\x03\n" +
+	"\x1cSwitchServiceRegisterRequest\x12\x1d\n" +
+	"\x02id\x18\x02 \x01(\tB\r\xbaH\n" +
+	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12+\n" +
+	"\x04meta\x18\x03 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12$\n" +
+	"\x04rack\x18\x04 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x00R\x04rack\x88\x01\x01\x12$\n" +
+	"\x04room\x18\x05 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01H\x01R\x04room\x88\x01\x01\x12)\n" +
+	"\tpartition\x18\x06 \x01(\tB\v\xbaH\br\x06г\xae\xb1\x02\x01R\tpartition\x12,\n" +
+	"\rmanagement_ip\x18\a \x01(\tB\a\xbaH\x04r\x02p\x01R\fmanagementIp\x128\n" +
+	"\x0fmanagement_user\x18\b \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x02\x18\x80\x01H\x02R\x0emanagementUser\x88\x01\x01\x12:\n" +
+	"\x04nics\x18\t \x03(\v2&.metalstack.infra.v2.SwitchRegisterNicR\x04nics\x12+\n" +
+	"\x02os\x18\n" +
+	" \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02osB\a\n" +
+	"\x05_rackB\a\n" +
+	"\x05_roomB\x12\n" +
+	"\x10_management_userJ\x04\b\x01\x10\x02R\x06switch\"\x94\x01\n" +
+	"\x11SwitchRegisterNic\x12\x1f\n" +
+	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12+\n" +
+	"\n" +
+	"identifier\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\n" +
+	"identifier\x121\n" +
+	"\x05state\x18\x03 \x01(\v2\x1b.metalstack.api.v2.NicStateR\x05state\"R\n" +
 	"\x1dSwitchServiceRegisterResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"\xbb\x04\n" +
 	"\x1dSwitchServiceHeartbeatRequest\x12\x1d\n" +
@@ -406,44 +562,51 @@ func file_metalstack_infra_v2_switch_proto_rawDescGZIP() []byte {
 	return file_metalstack_infra_v2_switch_proto_rawDescData
 }
 
-var file_metalstack_infra_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_metalstack_infra_v2_switch_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_metalstack_infra_v2_switch_proto_goTypes = []any{
 	(*SwitchServiceGetRequest)(nil),        // 0: metalstack.infra.v2.SwitchServiceGetRequest
 	(*SwitchServiceGetResponse)(nil),       // 1: metalstack.infra.v2.SwitchServiceGetResponse
 	(*SwitchServiceRegisterRequest)(nil),   // 2: metalstack.infra.v2.SwitchServiceRegisterRequest
-	(*SwitchServiceRegisterResponse)(nil),  // 3: metalstack.infra.v2.SwitchServiceRegisterResponse
-	(*SwitchServiceHeartbeatRequest)(nil),  // 4: metalstack.infra.v2.SwitchServiceHeartbeatRequest
-	(*SwitchServiceHeartbeatResponse)(nil), // 5: metalstack.infra.v2.SwitchServiceHeartbeatResponse
-	nil,                                    // 6: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
-	nil,                                    // 7: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
-	(*v2.Switch)(nil),                      // 8: metalstack.api.v2.Switch
-	(*durationpb.Duration)(nil),            // 9: google.protobuf.Duration
-	(*v2.SwitchSync)(nil),                  // 10: metalstack.api.v2.SwitchSync
-	(v2.SwitchPortStatus)(0),               // 11: metalstack.api.v2.SwitchPortStatus
-	(*v2.SwitchBGPPortState)(nil),          // 12: metalstack.api.v2.SwitchBGPPortState
+	(*SwitchRegisterNic)(nil),              // 3: metalstack.infra.v2.SwitchRegisterNic
+	(*SwitchServiceRegisterResponse)(nil),  // 4: metalstack.infra.v2.SwitchServiceRegisterResponse
+	(*SwitchServiceHeartbeatRequest)(nil),  // 5: metalstack.infra.v2.SwitchServiceHeartbeatRequest
+	(*SwitchServiceHeartbeatResponse)(nil), // 6: metalstack.infra.v2.SwitchServiceHeartbeatResponse
+	nil,                                    // 7: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
+	nil,                                    // 8: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
+	(*v2.Switch)(nil),                      // 9: metalstack.api.v2.Switch
+	(*v2.Meta)(nil),                        // 10: metalstack.api.v2.Meta
+	(*v2.SwitchOS)(nil),                    // 11: metalstack.api.v2.SwitchOS
+	(*v2.NicState)(nil),                    // 12: metalstack.api.v2.NicState
+	(*durationpb.Duration)(nil),            // 13: google.protobuf.Duration
+	(*v2.SwitchSync)(nil),                  // 14: metalstack.api.v2.SwitchSync
+	(v2.SwitchPortStatus)(0),               // 15: metalstack.api.v2.SwitchPortStatus
+	(*v2.SwitchBGPPortState)(nil),          // 16: metalstack.api.v2.SwitchBGPPortState
 }
 var file_metalstack_infra_v2_switch_proto_depIdxs = []int32{
-	8,  // 0: metalstack.infra.v2.SwitchServiceGetResponse.switch:type_name -> metalstack.api.v2.Switch
-	8,  // 1: metalstack.infra.v2.SwitchServiceRegisterRequest.switch:type_name -> metalstack.api.v2.Switch
-	8,  // 2: metalstack.infra.v2.SwitchServiceRegisterResponse.switch:type_name -> metalstack.api.v2.Switch
-	9,  // 3: metalstack.infra.v2.SwitchServiceHeartbeatRequest.duration:type_name -> google.protobuf.Duration
-	6,  // 4: metalstack.infra.v2.SwitchServiceHeartbeatRequest.port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
-	7,  // 5: metalstack.infra.v2.SwitchServiceHeartbeatRequest.bgp_port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
-	10, // 6: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync:type_name -> metalstack.api.v2.SwitchSync
-	10, // 7: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync_error:type_name -> metalstack.api.v2.SwitchSync
-	11, // 8: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry.value:type_name -> metalstack.api.v2.SwitchPortStatus
-	12, // 9: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry.value:type_name -> metalstack.api.v2.SwitchBGPPortState
-	0,  // 10: metalstack.infra.v2.SwitchService.Get:input_type -> metalstack.infra.v2.SwitchServiceGetRequest
-	2,  // 11: metalstack.infra.v2.SwitchService.Register:input_type -> metalstack.infra.v2.SwitchServiceRegisterRequest
-	4,  // 12: metalstack.infra.v2.SwitchService.Heartbeat:input_type -> metalstack.infra.v2.SwitchServiceHeartbeatRequest
-	1,  // 13: metalstack.infra.v2.SwitchService.Get:output_type -> metalstack.infra.v2.SwitchServiceGetResponse
-	3,  // 14: metalstack.infra.v2.SwitchService.Register:output_type -> metalstack.infra.v2.SwitchServiceRegisterResponse
-	5,  // 15: metalstack.infra.v2.SwitchService.Heartbeat:output_type -> metalstack.infra.v2.SwitchServiceHeartbeatResponse
-	13, // [13:16] is the sub-list for method output_type
-	10, // [10:13] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	9,  // 0: metalstack.infra.v2.SwitchServiceGetResponse.switch:type_name -> metalstack.api.v2.Switch
+	10, // 1: metalstack.infra.v2.SwitchServiceRegisterRequest.meta:type_name -> metalstack.api.v2.Meta
+	3,  // 2: metalstack.infra.v2.SwitchServiceRegisterRequest.nics:type_name -> metalstack.infra.v2.SwitchRegisterNic
+	11, // 3: metalstack.infra.v2.SwitchServiceRegisterRequest.os:type_name -> metalstack.api.v2.SwitchOS
+	12, // 4: metalstack.infra.v2.SwitchRegisterNic.state:type_name -> metalstack.api.v2.NicState
+	9,  // 5: metalstack.infra.v2.SwitchServiceRegisterResponse.switch:type_name -> metalstack.api.v2.Switch
+	13, // 6: metalstack.infra.v2.SwitchServiceHeartbeatRequest.duration:type_name -> google.protobuf.Duration
+	7,  // 7: metalstack.infra.v2.SwitchServiceHeartbeatRequest.port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry
+	8,  // 8: metalstack.infra.v2.SwitchServiceHeartbeatRequest.bgp_port_states:type_name -> metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry
+	14, // 9: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync:type_name -> metalstack.api.v2.SwitchSync
+	14, // 10: metalstack.infra.v2.SwitchServiceHeartbeatResponse.last_sync_error:type_name -> metalstack.api.v2.SwitchSync
+	15, // 11: metalstack.infra.v2.SwitchServiceHeartbeatRequest.PortStatesEntry.value:type_name -> metalstack.api.v2.SwitchPortStatus
+	16, // 12: metalstack.infra.v2.SwitchServiceHeartbeatRequest.BgpPortStatesEntry.value:type_name -> metalstack.api.v2.SwitchBGPPortState
+	0,  // 13: metalstack.infra.v2.SwitchService.Get:input_type -> metalstack.infra.v2.SwitchServiceGetRequest
+	2,  // 14: metalstack.infra.v2.SwitchService.Register:input_type -> metalstack.infra.v2.SwitchServiceRegisterRequest
+	5,  // 15: metalstack.infra.v2.SwitchService.Heartbeat:input_type -> metalstack.infra.v2.SwitchServiceHeartbeatRequest
+	1,  // 16: metalstack.infra.v2.SwitchService.Get:output_type -> metalstack.infra.v2.SwitchServiceGetResponse
+	4,  // 17: metalstack.infra.v2.SwitchService.Register:output_type -> metalstack.infra.v2.SwitchServiceRegisterResponse
+	6,  // 18: metalstack.infra.v2.SwitchService.Heartbeat:output_type -> metalstack.infra.v2.SwitchServiceHeartbeatResponse
+	16, // [16:19] is the sub-list for method output_type
+	13, // [13:16] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_infra_v2_switch_proto_init() }
@@ -451,14 +614,15 @@ func file_metalstack_infra_v2_switch_proto_init() {
 	if File_metalstack_infra_v2_switch_proto != nil {
 		return
 	}
-	file_metalstack_infra_v2_switch_proto_msgTypes[4].OneofWrappers = []any{}
+	file_metalstack_infra_v2_switch_proto_msgTypes[2].OneofWrappers = []any{}
+	file_metalstack_infra_v2_switch_proto_msgTypes[5].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_infra_v2_switch_proto_rawDesc), len(file_metalstack_infra_v2_switch_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

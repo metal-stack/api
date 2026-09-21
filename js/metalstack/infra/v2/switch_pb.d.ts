@@ -1,6 +1,7 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Duration } from "@bufbuild/protobuf/wkt";
-import type { Switch, SwitchBGPPortState, SwitchPortStatus, SwitchSync } from "../../api/v2/switch_pb";
+import type { Meta } from "../../api/v2/common_pb";
+import type { NicState, Switch, SwitchBGPPortState, SwitchOS, SwitchPortStatus, SwitchSync } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/infra/v2/switch.proto.
@@ -49,17 +50,95 @@ export declare const SwitchServiceGetResponseSchema: GenMessage<SwitchServiceGet
  */
 export type SwitchServiceRegisterRequest = Message<"metalstack.infra.v2.SwitchServiceRegisterRequest"> & {
     /**
-     * Switch to register.
+     * Id of the switch.
      *
-     * @generated from field: metalstack.api.v2.Switch switch = 1;
+     * @generated from field: string id = 2;
      */
-    switch?: Switch | undefined;
+    id: string;
+    /**
+     * Meta for this switch.
+     *
+     * @generated from field: metalstack.api.v2.Meta meta = 3;
+     */
+    meta?: Meta | undefined;
+    /**
+     * Rack ID if the switch resides in a rack.
+     *
+     * @generated from field: optional string rack = 4;
+     */
+    rack?: string | undefined;
+    /**
+     * Room ID if the switch resides in a room.
+     *
+     * @generated from field: optional string room = 5;
+     */
+    room?: string | undefined;
+    /**
+     * Partition the switch belongs to.
+     *
+     * @generated from field: string partition = 6;
+     */
+    partition: string;
+    /**
+     * ManagementIp is the switch's IP for management access.
+     *
+     * @generated from field: string management_ip = 7;
+     */
+    managementIp: string;
+    /**
+     * ManagementUser is the user name to use for management access.
+     *
+     * @generated from field: optional string management_user = 8;
+     */
+    managementUser?: string | undefined;
+    /**
+     * Nics are the front panel ports of the switch.
+     *
+     * @generated from field: repeated metalstack.infra.v2.SwitchRegisterNic nics = 9;
+     */
+    nics: SwitchRegisterNic[];
+    /**
+     * SwitchOs is the OS running on the switch.
+     *
+     * @generated from field: metalstack.api.v2.SwitchOS os = 10;
+     */
+    os?: SwitchOS | undefined;
 };
 /**
  * Describes the message metalstack.infra.v2.SwitchServiceRegisterRequest.
  * Use `create(SwitchServiceRegisterRequestSchema)` to create a new message.
  */
 export declare const SwitchServiceRegisterRequestSchema: GenMessage<SwitchServiceRegisterRequest>;
+/**
+ * SwitchRegisterNic is the switch nic used when registering a switch at the api.
+ *
+ * @generated from message metalstack.infra.v2.SwitchRegisterNic
+ */
+export type SwitchRegisterNic = Message<"metalstack.infra.v2.SwitchRegisterNic"> & {
+    /**
+     * Name of the switch port.
+     *
+     * @generated from field: string name = 1;
+     */
+    name: string;
+    /**
+     * Identifier of the port.
+     *
+     * @generated from field: string identifier = 2;
+     */
+    identifier: string;
+    /**
+     * NicState describes the current state of the switch port.
+     *
+     * @generated from field: metalstack.api.v2.NicState state = 3;
+     */
+    state?: NicState | undefined;
+};
+/**
+ * Describes the message metalstack.infra.v2.SwitchRegisterNic.
+ * Use `create(SwitchRegisterNicSchema)` to create a new message.
+ */
+export declare const SwitchRegisterNicSchema: GenMessage<SwitchRegisterNic>;
 /**
  * SwitchServiceRegisterResponse is the response payload for registering a switch.
  *

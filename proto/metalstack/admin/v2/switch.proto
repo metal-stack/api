@@ -3,7 +3,6 @@ syntax = "proto3";
 package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
-import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/machine.proto";
 import "metalstack/api/v2/predefined_rules.proto";
@@ -80,6 +79,13 @@ message SwitchServiceListResponse {
 
 // SwitchServiceUpdateRequest is the request payload for updating a switch.
 message SwitchServiceUpdateRequest {
+  reserved 3;
+  reserved "updated_at";
+  reserved 9;
+  reserved "nics";
+  reserved 10;
+  reserved "os";
+
   // ID of the switch.
   string id = 1 [(buf.validate.field).string = {
     hostname: true
@@ -87,9 +93,6 @@ message SwitchServiceUpdateRequest {
   }];
   // UpdateMeta contains the timestamp and strategy to be used in this update request.
   metalstack.api.v2.UpdateMeta update_meta = 2 [(buf.validate.field).required = true];
-  // UpdatedAt is the date when this entity was updated.
-  // Must be part of the update request to ensure optimistic locking.
-  google.protobuf.Timestamp updated_at = 3;
   // Description of the switch.
   optional string description = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
   // ReplaceMode is used to mark a switch ready for replacement.
@@ -100,10 +103,6 @@ message SwitchServiceUpdateRequest {
   optional string management_user = 7 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // ConsoleCommand is the command for accessing the switch's console.
   optional string console_command = 8 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Nics are the front panel ports of the switch.
-  repeated metalstack.api.v2.SwitchNic nics = 9;
-  // SwitchOs is the OS running on the switch.
-  optional metalstack.api.v2.SwitchOS os = 10;
 }
 
 // SwitchServiceUpdateResponse is the response payload for updating a switch.
