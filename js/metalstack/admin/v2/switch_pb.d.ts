@@ -1,8 +1,7 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { UpdateMeta } from "../../api/v2/common_pb";
 import type { MachineQuery } from "../../api/v2/machine_pb";
-import type { Switch, SwitchNic, SwitchOS, SwitchPortStatus, SwitchQuery, SwitchReplaceMode, SwitchWithMachines } from "../../api/v2/switch_pb";
+import type { Switch, SwitchPortStatus, SwitchQuery, SwitchReplaceMode, SwitchWithMachines } from "../../api/v2/switch_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/switch.proto.
@@ -99,13 +98,6 @@ export type SwitchServiceUpdateRequest = Message<"metalstack.admin.v2.SwitchServ
      */
     updateMeta?: UpdateMeta | undefined;
     /**
-     * UpdatedAt is the date when this entity was updated.
-     * Must be part of the update request to ensure optimistic locking.
-     *
-     * @generated from field: google.protobuf.Timestamp updated_at = 3;
-     */
-    updatedAt?: Timestamp | undefined;
-    /**
      * Description of the switch.
      *
      * @generated from field: optional string description = 4;
@@ -135,18 +127,6 @@ export type SwitchServiceUpdateRequest = Message<"metalstack.admin.v2.SwitchServ
      * @generated from field: optional string console_command = 8;
      */
     consoleCommand?: string | undefined;
-    /**
-     * Nics are the front panel ports of the switch.
-     *
-     * @generated from field: repeated metalstack.api.v2.SwitchNic nics = 9;
-     */
-    nics: SwitchNic[];
-    /**
-     * SwitchOs is the OS running on the switch.
-     *
-     * @generated from field: optional metalstack.api.v2.SwitchOS os = 10;
-     */
-    os?: SwitchOS | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.SwitchServiceUpdateRequest.

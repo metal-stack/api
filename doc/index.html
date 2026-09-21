@@ -2844,6 +2844,10 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.infra.v2.SwitchRegisterNic"><span class="badge">M</span>SwitchRegisterNic</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.infra.v2.SwitchServiceGetRequest"><span class="badge">M</span>SwitchServiceGetRequest</a>
                 </li>
               
@@ -18656,14 +18660,6 @@ console.metalstack.cloud/invite/&lt;secret. </p></td>
                 </tr>
               
                 <tr>
-                  <td>updated_at</td>
-                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
-                  <td></td>
-                  <td><p>UpdatedAt is the date when this entity was updated.
-Must be part of the update request to ensure optimistic locking. </p></td>
-                </tr>
-              
-                <tr>
                   <td>description</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
@@ -18696,20 +18692,6 @@ Must be part of the update request to ensure optimistic locking. </p></td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
                   <td><p>ConsoleCommand is the command for accessing the switch&#39;s console. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>nics</td>
-                  <td><a href="#metalstack.api.v2.SwitchNic">metalstack.api.v2.SwitchNic</a></td>
-                  <td>repeated</td>
-                  <td><p>Nics are the front panel ports of the switch. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>os</td>
-                  <td><a href="#metalstack.api.v2.SwitchOS">metalstack.api.v2.SwitchOS</a></td>
-                  <td>optional</td>
-                  <td><p>SwitchOs is the OS running on the switch. </p></td>
                 </tr>
               
             </tbody>
@@ -22675,6 +22657,44 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&
       <p></p>
 
       
+        <h3 id="metalstack.infra.v2.SwitchRegisterNic">SwitchRegisterNic</h3>
+        <p>SwitchRegisterNic is the switch nic used when registering a switch at the api.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of the switch port. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>identifier</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Identifier of the port. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#metalstack.api.v2.NicState">metalstack.api.v2.NicState</a></td>
+                  <td></td>
+                  <td><p>NicState describes the current state of the switch port. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.infra.v2.SwitchServiceGetRequest">SwitchServiceGetRequest</h3>
         <p>SwitchServiceGetRequest is the request payload for getting a switch.</p>
 
@@ -22886,10 +22906,66 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&
             <tbody>
               
                 <tr>
-                  <td>switch</td>
-                  <td><a href="#metalstack.api.v2.Switch">metalstack.api.v2.Switch</a></td>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p>Switch to register. </p></td>
+                  <td><p>Id of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">metalstack.api.v2.Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>rack</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Rack ID if the switch resides in a rack. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>room</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Room ID if the switch resides in a room. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>partition</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Partition the switch belongs to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>management_ip</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>ManagementIp is the switch&#39;s IP for management access. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>management_user</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>ManagementUser is the user name to use for management access. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>nics</td>
+                  <td><a href="#metalstack.infra.v2.SwitchRegisterNic">SwitchRegisterNic</a></td>
+                  <td>repeated</td>
+                  <td><p>Nics are the front panel ports of the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>os</td>
+                  <td><a href="#metalstack.api.v2.SwitchOS">metalstack.api.v2.SwitchOS</a></td>
+                  <td></td>
+                  <td><p>SwitchOs is the OS running on the switch. </p></td>
                 </tr>
               
             </tbody>
