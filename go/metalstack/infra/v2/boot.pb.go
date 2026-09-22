@@ -741,12 +741,12 @@ const file_metalstack_infra_v2_boot_proto_rawDesc = "" +
 	"\x13super_user_password\x18\x02 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\x8b\x06\n" +
 	"\vBootService\x12l\n" +
-	"\x04Dhcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12l\n" +
-	"\x04Boot\x12+.metalstack.infra.v2.BootServiceBootRequest\x1a,.metalstack.infra.v2.BootServiceBootResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x93\x01\n" +
-	"\x11SuperUserPassword\x128.metalstack.infra.v2.BootServiceSuperUserPasswordRequest\x1a9.metalstack.infra.v2.BootServiceSuperUserPasswordResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01\x12x\n" +
-	"\bRegister\x12/.metalstack.infra.v2.BootServiceRegisterRequest\x1a0.metalstack.infra.v2.BootServiceRegisterResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01\x12n\n" +
-	"\x04Wait\x12+.metalstack.infra.v2.BootServiceWaitRequest\x1a,.metalstack.infra.v2.BootServiceWaitResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x010\x01\x12\x9f\x01\n" +
-	"\x15InstallationSucceeded\x12<.metalstack.infra.v2.BootServiceInstallationSucceededRequest\x1a=.metalstack.infra.v2.BootServiceInstallationSucceededResponse\"\t\xe0\xf3\x18\x02\xf2\xf3\x18\x01\x01B\xcd\x01\n" +
+	"\x04Dhcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01\x12l\n" +
+	"\x04Boot\x12+.metalstack.infra.v2.BootServiceBootRequest\x1a,.metalstack.infra.v2.BootServiceBootResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01\x12\x93\x01\n" +
+	"\x11SuperUserPassword\x128.metalstack.infra.v2.BootServiceSuperUserPasswordRequest\x1a9.metalstack.infra.v2.BootServiceSuperUserPasswordResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x12x\n" +
+	"\bRegister\x12/.metalstack.infra.v2.BootServiceRegisterRequest\x1a0.metalstack.infra.v2.BootServiceRegisterResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x12n\n" +
+	"\x04Wait\x12+.metalstack.infra.v2.BootServiceWaitRequest\x1a,.metalstack.infra.v2.BootServiceWaitResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x010\x01\x12\x9f\x01\n" +
+	"\x15InstallationSucceeded\x12<.metalstack.infra.v2.BootServiceInstallationSucceededRequest\x1a=.metalstack.infra.v2.BootServiceInstallationSucceededResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01B\xcd\x01\n" +
 	"\x17com.metalstack.infra.v2B\tBootProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 
 var (
