@@ -37,6 +37,9 @@ const (
 	BootServiceDhcpProcedure = "/metalstack.infra.v2.BootService/Dhcp"
 	// BootServiceBootProcedure is the fully-qualified name of the BootService's Boot RPC.
 	BootServiceBootProcedure = "/metalstack.infra.v2.BootService/Boot"
+	// BootServiceMachineTokenProcedure is the fully-qualified name of the BootService's MachineToken
+	// RPC.
+	BootServiceMachineTokenProcedure = "/metalstack.infra.v2.BootService/MachineToken"
 	// BootServiceSuperUserPasswordProcedure is the fully-qualified name of the BootService's
 	// SuperUserPassword RPC.
 	BootServiceSuperUserPasswordProcedure = "/metalstack.infra.v2.BootService/SuperUserPassword"
@@ -55,6 +58,8 @@ type BootServiceClient interface {
 	Dhcp(context.Context, *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error)
 	// Boot is called from pixie once the machine got the first DHCP response and ipxe asks for subsequent kernel and initrd.
 	Boot(context.Context, *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error)
+	// MachineToken is called from pixie to create machine role token for the metal-hammer. This way it does not need to have an admin token for token creation.
+	MachineToken(context.Context, *v2.BootServiceMachineTokenRequest) (*v2.BootServiceMachineTokenResponse, error)
 	// SuperUserPassword returns the configured root password for the BMC.
 	SuperUserPassword(context.Context, *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error)
 	// Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all details about that machine.
@@ -88,6 +93,12 @@ func NewBootServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(bootServiceMethods.ByName("Boot")),
 			connect.WithClientOptions(opts...),
 		),
+		machineToken: connect.NewClient[v2.BootServiceMachineTokenRequest, v2.BootServiceMachineTokenResponse](
+			httpClient,
+			baseURL+BootServiceMachineTokenProcedure,
+			connect.WithSchema(bootServiceMethods.ByName("MachineToken")),
+			connect.WithClientOptions(opts...),
+		),
 		superUserPassword: connect.NewClient[v2.BootServiceSuperUserPasswordRequest, v2.BootServiceSuperUserPasswordResponse](
 			httpClient,
 			baseURL+BootServiceSuperUserPasswordProcedure,
@@ -119,6 +130,7 @@ func NewBootServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 type bootServiceClient struct {
 	dhcp                  *connect.Client[v2.BootServiceDhcpRequest, v2.BootServiceDhcpResponse]
 	boot                  *connect.Client[v2.BootServiceBootRequest, v2.BootServiceBootResponse]
+	machineToken          *connect.Client[v2.BootServiceMachineTokenRequest, v2.BootServiceMachineTokenResponse]
 	superUserPassword     *connect.Client[v2.BootServiceSuperUserPasswordRequest, v2.BootServiceSuperUserPasswordResponse]
 	register              *connect.Client[v2.BootServiceRegisterRequest, v2.BootServiceRegisterResponse]
 	wait                  *connect.Client[v2.BootServiceWaitRequest, v2.BootServiceWaitResponse]
@@ -137,6 +149,15 @@ func (c *bootServiceClient) Dhcp(ctx context.Context, req *v2.BootServiceDhcpReq
 // Boot calls metalstack.infra.v2.BootService.Boot.
 func (c *bootServiceClient) Boot(ctx context.Context, req *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error) {
 	response, err := c.boot.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// MachineToken calls metalstack.infra.v2.BootService.MachineToken.
+func (c *bootServiceClient) MachineToken(ctx context.Context, req *v2.BootServiceMachineTokenRequest) (*v2.BootServiceMachineTokenResponse, error) {
+	response, err := c.machineToken.CallUnary(ctx, connect.NewRequest(req))
 	if response != nil {
 		return response.Msg, err
 	}
@@ -181,6 +202,8 @@ type BootServiceHandler interface {
 	Dhcp(context.Context, *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error)
 	// Boot is called from pixie once the machine got the first DHCP response and ipxe asks for subsequent kernel and initrd.
 	Boot(context.Context, *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error)
+	// MachineToken is called from pixie to create machine role token for the metal-hammer. This way it does not need to have an admin token for token creation.
+	MachineToken(context.Context, *v2.BootServiceMachineTokenRequest) (*v2.BootServiceMachineTokenResponse, error)
 	// SuperUserPassword returns the configured root password for the BMC.
 	SuperUserPassword(context.Context, *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error)
 	// Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all details about that machine.
@@ -208,6 +231,12 @@ func NewBootServiceHandler(svc BootServiceHandler, opts ...connect.HandlerOption
 		BootServiceBootProcedure,
 		svc.Boot,
 		connect.WithSchema(bootServiceMethods.ByName("Boot")),
+		connect.WithHandlerOptions(opts...),
+	)
+	bootServiceMachineTokenHandler := connect.NewUnaryHandlerSimple(
+		BootServiceMachineTokenProcedure,
+		svc.MachineToken,
+		connect.WithSchema(bootServiceMethods.ByName("MachineToken")),
 		connect.WithHandlerOptions(opts...),
 	)
 	bootServiceSuperUserPasswordHandler := connect.NewUnaryHandlerSimple(
@@ -240,6 +269,8 @@ func NewBootServiceHandler(svc BootServiceHandler, opts ...connect.HandlerOption
 			bootServiceDhcpHandler.ServeHTTP(w, r)
 		case BootServiceBootProcedure:
 			bootServiceBootHandler.ServeHTTP(w, r)
+		case BootServiceMachineTokenProcedure:
+			bootServiceMachineTokenHandler.ServeHTTP(w, r)
 		case BootServiceSuperUserPasswordProcedure:
 			bootServiceSuperUserPasswordHandler.ServeHTTP(w, r)
 		case BootServiceRegisterProcedure:
@@ -263,6 +294,10 @@ func (UnimplementedBootServiceHandler) Dhcp(context.Context, *v2.BootServiceDhcp
 
 func (UnimplementedBootServiceHandler) Boot(context.Context, *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Boot is not implemented"))
+}
+
+func (UnimplementedBootServiceHandler) MachineToken(context.Context, *v2.BootServiceMachineTokenRequest) (*v2.BootServiceMachineTokenResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.MachineToken is not implemented"))
 }
 
 func (UnimplementedBootServiceHandler) SuperUserPassword(context.Context, *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error) {
