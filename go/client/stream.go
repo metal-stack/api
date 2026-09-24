@@ -9,16 +9,18 @@ import (
 	"connectrpc.com/connect"
 )
 
-type StreamFunc[T any] func(ctx context.Context) (*connect.ServerStreamForClient[T], error)
-
-type StreamOption func(*streamOptions)
-
-type streamOptions struct {
-	backoff time.Duration
-	log     *slog.Logger
-}
-
 const defaultStreamBackoff = time.Second
+
+type (
+	StreamFunc[T any] func(ctx context.Context) (*connect.ServerStreamForClient[T], error)
+
+	StreamOption func(*streamOptions)
+
+	streamOptions struct {
+		backoff time.Duration
+		log     *slog.Logger
+	}
+)
 
 func WithStreamBackoff(d time.Duration) StreamOption {
 	return func(o *streamOptions) {
@@ -52,6 +54,7 @@ func ReconnectingStreamRead[T any](ctx context.Context, open StreamFunc[T], opts
 		messages   = make(chan *T)
 		errorsChan = make(chan error)
 	)
+
 	for _, opt := range opts {
 		opt(options)
 	}
