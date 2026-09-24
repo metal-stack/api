@@ -229,7 +229,11 @@ message MachineServiceBMCCommandRequest {
 }
 
 // MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
-message MachineServiceBMCCommandResponse {}
+message MachineServiceBMCCommandResponse {
+  // TaskId is the identifier of the task that managed the bmc command execution.
+  // Only useful for admins.
+  string task_id = 1;
+}
 
 // MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
 message MachineServiceGetBMCRequest {

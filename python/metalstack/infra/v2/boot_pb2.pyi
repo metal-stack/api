@@ -1,7 +1,11 @@
+import datetime
+
 from buf.validate import validate_pb2 as _validate_pb2
+from google.protobuf import duration_pb2 as _duration_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import machine_pb2 as _machine_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
+from metalstack.api.v2 import token_pb2 as _token_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -21,6 +25,26 @@ class BootServiceDhcpRequest(_message.Message):
 class BootServiceDhcpResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
+
+class BootServiceMachineTokenRequest(_message.Message):
+    __slots__ = ("uuid", "user", "expires", "labels")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    USER_FIELD_NUMBER: _ClassVar[int]
+    EXPIRES_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    user: str
+    expires: _duration_pb2.Duration
+    labels: _common_pb2.Labels
+    def __init__(self, uuid: _Optional[str] = ..., user: _Optional[str] = ..., expires: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
+
+class BootServiceMachineTokenResponse(_message.Message):
+    __slots__ = ("token", "secret")
+    TOKEN_FIELD_NUMBER: _ClassVar[int]
+    SECRET_FIELD_NUMBER: _ClassVar[int]
+    token: _token_pb2.Token
+    secret: str
+    def __init__(self, token: _Optional[_Union[_token_pb2.Token, _Mapping]] = ..., secret: _Optional[str] = ...) -> None: ...
 
 class BootServiceBootRequest(_message.Message):
     __slots__ = ("mac", "partition")

@@ -2755,6 +2755,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.infra.v2.BootServiceMachineTokenRequest"><span class="badge">M</span>BootServiceMachineTokenRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceMachineTokenResponse"><span class="badge">M</span>BootServiceMachineTokenResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.infra.v2.BootServiceRegisterRequest"><span class="badge">M</span>BootServiceRegisterRequest</a>
                 </li>
               
@@ -12080,6 +12088,24 @@ Only useful for admins. </p></td>
         <p>MachineServiceBMCCommandResponse is the response payload for a machine bmc command.</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>task_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>TaskId is the identifier of the task that managed the bmc command execution.
+Only useful for admins. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -13295,6 +13321,23 @@ if placement labels are provided, the machine candidate has an additional anti-a
         <p>MachineServiceBMCCommandResponse is the response payload for a machine bmc command.</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>task_id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>TaskId is the identifier of the task that managed the bmc command execution. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -22182,6 +22225,82 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&
 
         
       
+        <h3 id="metalstack.infra.v2.BootServiceMachineTokenRequest">BootServiceMachineTokenRequest</h3>
+        <p>TokenServiceCreateRequest is the request payload for creating a machine token.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine that will get the machine token. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>user</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>User this token should be created for, it must be labelled in the backend with &#34;tenant.metal-stack.io/machine-bootstrapper&#34; </p></td>
+                </tr>
+              
+                <tr>
+                  <td>expires</td>
+                  <td><a href="#google.protobuf.Duration">google.protobuf.Duration</a></td>
+                  <td></td>
+                  <td><p>Expires gives the duration since now, after which this token can not be used anymore. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">metalstack.api.v2.Labels</a></td>
+                  <td></td>
+                  <td><p>Labels for this token. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceMachineTokenResponse">BootServiceMachineTokenResponse</h3>
+        <p>TokenServiceCreateResponse is the response payload for the created machine token.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>token</td>
+                  <td><a href="#metalstack.api.v2.Token">metalstack.api.v2.Token</a></td>
+                  <td></td>
+                  <td><p>Token contains the created token. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>secret</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Secret is the body if the JWT token, should be used in API requests as bearer token. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.infra.v2.BootServiceRegisterRequest">BootServiceRegisterRequest</h3>
         <p>BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible.</p>
 
@@ -22422,6 +22541,13 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&
                 <td><a href="#metalstack.infra.v2.BootServiceBootRequest">BootServiceBootRequest</a></td>
                 <td><a href="#metalstack.infra.v2.BootServiceBootResponse">BootServiceBootResponse</a></td>
                 <td><p>Boot is called from pixie once the machine got the first DHCP response and ipxe asks for subsequent kernel and initrd.</p></td>
+              </tr>
+            
+              <tr>
+                <td>MachineToken</td>
+                <td><a href="#metalstack.infra.v2.BootServiceMachineTokenRequest">BootServiceMachineTokenRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceMachineTokenResponse">BootServiceMachineTokenResponse</a></td>
+                <td><p>MachineToken is called from pixie to create machine role token for the metal-hammer. This way it does not need to have an admin token for token creation.</p></td>
               </tr>
             
               <tr>

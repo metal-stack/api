@@ -5,17 +5,22 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
+import type { Duration } from "@bufbuild/protobuf/wkt";
+import { file_google_protobuf_duration } from "@bufbuild/protobuf/wkt";
+import type { Labels } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
 import type { MachineAllocation, MachineBios, MachineBMC, MachineFRU, MachineHardware } from "../../api/v2/machine_pb";
 import { file_metalstack_api_v2_machine } from "../../api/v2/machine_pb";
 import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
+import type { Token } from "../../api/v2/token_pb";
+import { file_metalstack_api_v2_token } from "../../api/v2/token_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file metalstack/infra/v2/boot.proto.
  */
 export const file_metalstack_infra_v2_boot: GenFile = /*@__PURE__*/
-  fileDesc("Ch5tZXRhbHN0YWNrL2luZnJhL3YyL2Jvb3QucHJvdG8SE21ldGFsc3RhY2suaW5mcmEudjIiUAoWQm9vdFNlcnZpY2VEaGNwUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIeCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBIhkKF0Jvb3RTZXJ2aWNlRGhjcFJlc3BvbnNlIlIKFkJvb3RTZXJ2aWNlQm9vdFJlcXVlc3QSGAoDbWFjGAEgASgJQgu6SAhyBrizrrECARIeCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBIn0KF0Jvb3RTZXJ2aWNlQm9vdFJlc3BvbnNlEhsKBmtlcm5lbBgBIAEoCUILukgIcgbgs66xAgESFgoOaW5pdF9yYW1fZGlza3MYAiADKAkSIQoHY21kbGluZRgDIAEoCUILukgIcgbIs66xAgFIAIgBAUIKCghfY21kbGluZSLJAgoaQm9vdFNlcnZpY2VSZWdpc3RlclJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESNAoIaGFyZHdhcmUYAiABKAsyIi5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lSGFyZHdhcmUSLAoEYmlvcxgDIAEoCzIeLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCaW9zEioKA2JtYxgEIAEoCzIdLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVCTUMSKgoDZnJ1GAUgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUZSVRIMCgR0YWdzGAYgAygJEikKFG1ldGFsX2hhbW1lcl92ZXJzaW9uGAcgASgJQgu6SAhyBsizrrECARIeCglwYXJ0aXRpb24YCCABKAlCC7pICHIG0LOusQIBInAKG0Jvb3RTZXJ2aWNlUmVnaXN0ZXJSZXNwb25zZRIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIZCgRzaXplGAIgASgJQgu6SAhyBsizrrECARIeCglwYXJ0aXRpb24YAyABKAlCC7pICHIG0LOusQIBIjAKFkJvb3RTZXJ2aWNlV2FpdFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQEiUwoXQm9vdFNlcnZpY2VXYWl0UmVzcG9uc2USOAoKYWxsb2NhdGlvbhgBIAEoCzIkLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVBbGxvY2F0aW9uImcKJ0Jvb3RTZXJ2aWNlSW5zdGFsbGF0aW9uU3VjY2VlZGVkUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIkChBjb25zb2xlX3Bhc3N3b3JkGAIgASgJQgq6SAdyBRACGIABIioKKEJvb3RTZXJ2aWNlSW5zdGFsbGF0aW9uU3VjY2VlZGVkUmVzcG9uc2UiPQojQm9vdFNlcnZpY2VTdXBlclVzZXJQYXNzd29yZFJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQEiaQokQm9vdFNlcnZpY2VTdXBlclVzZXJQYXNzd29yZFJlc3BvbnNlEhgKEGZlYXR1cmVfZGlzYWJsZWQYASABKAgSJwoTc3VwZXJfdXNlcl9wYXNzd29yZBgCIAEoCUIKukgHcgUQAhiAATKLBgoLQm9vdFNlcnZpY2USbAoERGhjcBIrLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VEaGNwUmVxdWVzdBosLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VEaGNwUmVzcG9uc2UiCeDzGAHq8xgBARJsCgRCb290EisubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZUJvb3RSZXF1ZXN0GiwubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZUJvb3RSZXNwb25zZSIJ4PMYAerzGAEBEpMBChFTdXBlclVzZXJQYXNzd29yZBI4Lm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VTdXBlclVzZXJQYXNzd29yZFJlcXVlc3QaOS5tZXRhbHN0YWNrLmluZnJhLnYyLkJvb3RTZXJ2aWNlU3VwZXJVc2VyUGFzc3dvcmRSZXNwb25zZSIJ4PMYAfLzGAEBEngKCFJlZ2lzdGVyEi8ubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZVJlZ2lzdGVyUmVxdWVzdBowLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VSZWdpc3RlclJlc3BvbnNlIgng8xgB8vMYAQESbgoEV2FpdBIrLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VXYWl0UmVxdWVzdBosLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VXYWl0UmVzcG9uc2UiCeDzGAHy8xgBATABEp8BChVJbnN0YWxsYXRpb25TdWNjZWVkZWQSPC5tZXRhbHN0YWNrLmluZnJhLnYyLkJvb3RTZXJ2aWNlSW5zdGFsbGF0aW9uU3VjY2VlZGVkUmVxdWVzdBo9Lm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VJbnN0YWxsYXRpb25TdWNjZWVkZWRSZXNwb25zZSIJ4PMYAfLzGAEBQs0BChdjb20ubWV0YWxzdGFjay5pbmZyYS52MkIJQm9vdFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svaW5mcmEvdjI7aW5mcmF2MqICA01JWKoCE01ldGFsc3RhY2suSW5mcmEuVjLKAhNNZXRhbHN0YWNrXEluZnJhXFYy4gIfTWV0YWxzdGFja1xJbmZyYVxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkluZnJhOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("Ch5tZXRhbHN0YWNrL2luZnJhL3YyL2Jvb3QucHJvdG8SE21ldGFsc3RhY2suaW5mcmEudjIiUAoWQm9vdFNlcnZpY2VEaGNwUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARIeCglwYXJ0aXRpb24YAiABKAlCC7pICHIG0LOusQIBIhkKF0Jvb3RTZXJ2aWNlRGhjcFJlc3BvbnNlIr0BCh5Cb290U2VydmljZU1hY2hpbmVUb2tlblJlcXVlc3QSFgoEdXVpZBgBIAEoCUIIukgFcgOwAQESGQoEdXNlchgCIAEoCUILukgIcgb4s66xAgESPQoHZXhwaXJlcxgDIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvbkIRukgOqgELGgQIgPUkMgMI2AQSKQoGbGFiZWxzGAQgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzIloKH0Jvb3RTZXJ2aWNlTWFjaGluZVRva2VuUmVzcG9uc2USJwoFdG9rZW4YASABKAsyGC5tZXRhbHN0YWNrLmFwaS52Mi5Ub2tlbhIOCgZzZWNyZXQYAiABKAkiUgoWQm9vdFNlcnZpY2VCb290UmVxdWVzdBIYCgNtYWMYASABKAlCC7pICHIGuLOusQIBEh4KCXBhcnRpdGlvbhgCIAEoCUILukgIcgbQs66xAgEifQoXQm9vdFNlcnZpY2VCb290UmVzcG9uc2USGwoGa2VybmVsGAEgASgJQgu6SAhyBuCzrrECARIWCg5pbml0X3JhbV9kaXNrcxgCIAMoCRIhCgdjbWRsaW5lGAMgASgJQgu6SAhyBsizrrECAUgAiAEBQgoKCF9jbWRsaW5lIskCChpCb290U2VydmljZVJlZ2lzdGVyUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABARI0CghoYXJkd2FyZRgCIAEoCzIiLm1ldGFsc3RhY2suYXBpLnYyLk1hY2hpbmVIYXJkd2FyZRIsCgRiaW9zGAMgASgLMh4ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJpb3MSKgoDYm1jGAQgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUJNQxIqCgNmcnUYBSABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lRlJVEgwKBHRhZ3MYBiADKAkSKQoUbWV0YWxfaGFtbWVyX3ZlcnNpb24YByABKAlCC7pICHIGyLOusQIBEh4KCXBhcnRpdGlvbhgIIAEoCUILukgIcgbQs66xAgEicAobQm9vdFNlcnZpY2VSZWdpc3RlclJlc3BvbnNlEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEhkKBHNpemUYAiABKAlCC7pICHIGyLOusQIBEh4KCXBhcnRpdGlvbhgDIAEoCUILukgIcgbQs66xAgEiMAoWQm9vdFNlcnZpY2VXYWl0UmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJTChdCb290U2VydmljZVdhaXRSZXNwb25zZRI4CgphbGxvY2F0aW9uGAEgASgLMiQubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZUFsbG9jYXRpb24iZwonQm9vdFNlcnZpY2VJbnN0YWxsYXRpb25TdWNjZWVkZWRSZXF1ZXN0EhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEiQKEGNvbnNvbGVfcGFzc3dvcmQYAiABKAlCCrpIB3IFEAIYgAEiKgooQm9vdFNlcnZpY2VJbnN0YWxsYXRpb25TdWNjZWVkZWRSZXNwb25zZSI9CiNCb290U2VydmljZVN1cGVyVXNlclBhc3N3b3JkUmVxdWVzdBIWCgR1dWlkGAEgASgJQgi6SAVyA7ABASJpCiRCb290U2VydmljZVN1cGVyVXNlclBhc3N3b3JkUmVzcG9uc2USGAoQZmVhdHVyZV9kaXNhYmxlZBgBIAEoCBInChNzdXBlcl91c2VyX3Bhc3N3b3JkGAIgASgJQgq6SAdyBRACGIABMpIHCgtCb290U2VydmljZRJsCgREaGNwEisubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZURoY3BSZXF1ZXN0GiwubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZURoY3BSZXNwb25zZSIJ4PMYAerzGAEBEmwKBEJvb3QSKy5tZXRhbHN0YWNrLmluZnJhLnYyLkJvb3RTZXJ2aWNlQm9vdFJlcXVlc3QaLC5tZXRhbHN0YWNrLmluZnJhLnYyLkJvb3RTZXJ2aWNlQm9vdFJlc3BvbnNlIgng8xgB6vMYAQEShAEKDE1hY2hpbmVUb2tlbhIzLm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VNYWNoaW5lVG9rZW5SZXF1ZXN0GjQubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZU1hY2hpbmVUb2tlblJlc3BvbnNlIgng8xgB6vMYAQESkwEKEVN1cGVyVXNlclBhc3N3b3JkEjgubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZVN1cGVyVXNlclBhc3N3b3JkUmVxdWVzdBo5Lm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VTdXBlclVzZXJQYXNzd29yZFJlc3BvbnNlIgng8xgB8vMYAQESeAoIUmVnaXN0ZXISLy5tZXRhbHN0YWNrLmluZnJhLnYyLkJvb3RTZXJ2aWNlUmVnaXN0ZXJSZXF1ZXN0GjAubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZVJlZ2lzdGVyUmVzcG9uc2UiCeDzGAHy8xgBARJuCgRXYWl0EisubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZVdhaXRSZXF1ZXN0GiwubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZVdhaXRSZXNwb25zZSIJ4PMYAfLzGAEBMAESnwEKFUluc3RhbGxhdGlvblN1Y2NlZWRlZBI8Lm1ldGFsc3RhY2suaW5mcmEudjIuQm9vdFNlcnZpY2VJbnN0YWxsYXRpb25TdWNjZWVkZWRSZXF1ZXN0Gj0ubWV0YWxzdGFjay5pbmZyYS52Mi5Cb290U2VydmljZUluc3RhbGxhdGlvblN1Y2NlZWRlZFJlc3BvbnNlIgng8xgB8vMYAQFCzQEKF2NvbS5tZXRhbHN0YWNrLmluZnJhLnYyQglCb290UHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9pbmZyYS92MjtpbmZyYXYyogIDTUlYqgITTWV0YWxzdGFjay5JbmZyYS5WMsoCE01ldGFsc3RhY2tcSW5mcmFcVjLiAh9NZXRhbHN0YWNrXEluZnJhXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6SW5mcmE6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_duration, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_token]);
 
 /**
  * BootServiceDhcpRequest is called once a machine issues a dhcp request.
@@ -61,6 +66,76 @@ export const BootServiceDhcpResponseSchema: GenMessage<BootServiceDhcpResponse> 
   messageDesc(file_metalstack_infra_v2_boot, 1);
 
 /**
+ * TokenServiceCreateRequest is the request payload for creating a machine token.
+ *
+ * @generated from message metalstack.infra.v2.BootServiceMachineTokenRequest
+ */
+export type BootServiceMachineTokenRequest = Message<"metalstack.infra.v2.BootServiceMachineTokenRequest"> & {
+  /**
+   * UUID of the machine that will get the machine token.
+   *
+   * @generated from field: string uuid = 1;
+   */
+  uuid: string;
+
+  /**
+   * User this token should be created for, it must be labelled in the backend with "tenant.metal-stack.io/machine-bootstrapper"
+   *
+   * @generated from field: string user = 2;
+   */
+  user: string;
+
+  /**
+   * Expires gives the duration since now, after which this token can not be used anymore.
+   *
+   * @generated from field: google.protobuf.Duration expires = 3;
+   */
+  expires?: Duration | undefined;
+
+  /**
+   * Labels for this token.
+   *
+   * @generated from field: metalstack.api.v2.Labels labels = 4;
+   */
+  labels?: Labels | undefined;
+};
+
+/**
+ * Describes the message metalstack.infra.v2.BootServiceMachineTokenRequest.
+ * Use `create(BootServiceMachineTokenRequestSchema)` to create a new message.
+ */
+export const BootServiceMachineTokenRequestSchema: GenMessage<BootServiceMachineTokenRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_infra_v2_boot, 2);
+
+/**
+ * TokenServiceCreateResponse is the response payload for the created machine token.
+ *
+ * @generated from message metalstack.infra.v2.BootServiceMachineTokenResponse
+ */
+export type BootServiceMachineTokenResponse = Message<"metalstack.infra.v2.BootServiceMachineTokenResponse"> & {
+  /**
+   * Token contains the created token.
+   *
+   * @generated from field: metalstack.api.v2.Token token = 1;
+   */
+  token?: Token | undefined;
+
+  /**
+   * Secret is the body if the JWT token, should be used in API requests as bearer token.
+   *
+   * @generated from field: string secret = 2;
+   */
+  secret: string;
+};
+
+/**
+ * Describes the message metalstack.infra.v2.BootServiceMachineTokenResponse.
+ * Use `create(BootServiceMachineTokenResponseSchema)` to create a new message.
+ */
+export const BootServiceMachineTokenResponseSchema: GenMessage<BootServiceMachineTokenResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_infra_v2_boot, 3);
+
+/**
  * BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac.
  *
  * @generated from message metalstack.infra.v2.BootServiceBootRequest
@@ -86,7 +161,7 @@ export type BootServiceBootRequest = Message<"metalstack.infra.v2.BootServiceBoo
  * Use `create(BootServiceBootRequestSchema)` to create a new message.
  */
 export const BootServiceBootRequestSchema: GenMessage<BootServiceBootRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 2);
+  messageDesc(file_metalstack_infra_v2_boot, 4);
 
 /**
  * BootServiceBootResponse contains additional infos which are required to boot a machine.
@@ -121,7 +196,7 @@ export type BootServiceBootResponse = Message<"metalstack.infra.v2.BootServiceBo
  * Use `create(BootServiceBootResponseSchema)` to create a new message.
  */
 export const BootServiceBootResponseSchema: GenMessage<BootServiceBootResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 3);
+  messageDesc(file_metalstack_infra_v2_boot, 5);
 
 /**
  * BootServiceRegisterRequest is called from metal-hammer to register a machine with as much hardware details as possible.
@@ -191,7 +266,7 @@ export type BootServiceRegisterRequest = Message<"metalstack.infra.v2.BootServic
  * Use `create(BootServiceRegisterRequestSchema)` to create a new message.
  */
 export const BootServiceRegisterRequestSchema: GenMessage<BootServiceRegisterRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 4);
+  messageDesc(file_metalstack_infra_v2_boot, 6);
 
 /**
  * BootServiceRegisterResponse response to a BootServiceRegisterResponse request.
@@ -226,7 +301,7 @@ export type BootServiceRegisterResponse = Message<"metalstack.infra.v2.BootServi
  * Use `create(BootServiceRegisterResponseSchema)` to create a new message.
  */
 export const BootServiceRegisterResponseSchema: GenMessage<BootServiceRegisterResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 5);
+  messageDesc(file_metalstack_infra_v2_boot, 7);
 
 /**
  * BootServiceWaitRequest is called when a machine was registered and is waiting for allocation.
@@ -247,7 +322,7 @@ export type BootServiceWaitRequest = Message<"metalstack.infra.v2.BootServiceWai
  * Use `create(BootServiceWaitRequestSchema)` to create a new message.
  */
 export const BootServiceWaitRequestSchema: GenMessage<BootServiceWaitRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 6);
+  messageDesc(file_metalstack_infra_v2_boot, 8);
 
 /**
  * BootServiceWaitResponse response to a wait request.
@@ -268,7 +343,7 @@ export type BootServiceWaitResponse = Message<"metalstack.infra.v2.BootServiceWa
  * Use `create(BootServiceWaitResponseSchema)` to create a new message.
  */
 export const BootServiceWaitResponseSchema: GenMessage<BootServiceWaitResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 7);
+  messageDesc(file_metalstack_infra_v2_boot, 9);
 
 /**
  * BootServiceInstallationSucceededRequest is sent from metal-hammer to the api to report the installation succeeded.
@@ -296,7 +371,7 @@ export type BootServiceInstallationSucceededRequest = Message<"metalstack.infra.
  * Use `create(BootServiceInstallationSucceededRequestSchema)` to create a new message.
  */
 export const BootServiceInstallationSucceededRequestSchema: GenMessage<BootServiceInstallationSucceededRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 8);
+  messageDesc(file_metalstack_infra_v2_boot, 10);
 
 /**
  * BootServiceInstallationSucceededResponse is the response to a BootServiceInstallationSucceededRequest.
@@ -311,7 +386,7 @@ export type BootServiceInstallationSucceededResponse = Message<"metalstack.infra
  * Use `create(BootServiceInstallationSucceededResponseSchema)` to create a new message.
  */
 export const BootServiceInstallationSucceededResponseSchema: GenMessage<BootServiceInstallationSucceededResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 9);
+  messageDesc(file_metalstack_infra_v2_boot, 11);
 
 /**
  * BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser.
@@ -332,7 +407,7 @@ export type BootServiceSuperUserPasswordRequest = Message<"metalstack.infra.v2.B
  * Use `create(BootServiceSuperUserPasswordRequestSchema)` to create a new message.
  */
 export const BootServiceSuperUserPasswordRequestSchema: GenMessage<BootServiceSuperUserPasswordRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 10);
+  messageDesc(file_metalstack_infra_v2_boot, 12);
 
 /**
  * BootServiceSuperUserPasswordResponse the super user password is returned.
@@ -360,7 +435,7 @@ export type BootServiceSuperUserPasswordResponse = Message<"metalstack.infra.v2.
  * Use `create(BootServiceSuperUserPasswordResponseSchema)` to create a new message.
  */
 export const BootServiceSuperUserPasswordResponseSchema: GenMessage<BootServiceSuperUserPasswordResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_infra_v2_boot, 11);
+  messageDesc(file_metalstack_infra_v2_boot, 13);
 
 /**
  * BootService provides boot-related operations for pixiecore and metal-hammer.
@@ -389,6 +464,16 @@ export const BootService: GenService<{
     methodKind: "unary";
     input: typeof BootServiceBootRequestSchema;
     output: typeof BootServiceBootResponseSchema;
+  },
+  /**
+   * MachineToken is called from pixie to create machine role token for the metal-hammer. This way it does not need to have an admin token for token creation.
+   *
+   * @generated from rpc metalstack.infra.v2.BootService.MachineToken
+   */
+  machineToken: {
+    methodKind: "unary";
+    input: typeof BootServiceMachineTokenRequestSchema;
+    output: typeof BootServiceMachineTokenResponseSchema;
   },
   /**
    * SuperUserPassword returns the configured root password for the BMC.

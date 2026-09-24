@@ -23,12 +23,14 @@ _sym_db = _symbol_database.Default()
 
 
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
+from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
 from metalstack.api.v2 import machine_pb2 as metalstack_dot_api_dot_v2_dot_machine__pb2
 from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
+from metalstack.api.v2 import token_pb2 as metalstack_dot_api_dot_v2_dot_token__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"a\n\x16\x42ootServiceDhcpRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12)\n\tpartition\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"\x19\n\x17\x42ootServiceDhcpResponse\"b\n\x16\x42ootServiceBootRequest\x12\x1d\n\x03mac\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xb8\xb3\xae\xb1\x02\x01R\x03mac\x12)\n\tpartition\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"\x9c\x01\n\x17\x42ootServiceBootResponse\x12#\n\x06kernel\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xe0\xb3\xae\xb1\x02\x01R\x06kernel\x12$\n\x0einit_ram_disks\x18\x02 \x03(\tR\x0cinitRamDisks\x12*\n\x07\x63mdline\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x00R\x07\x63mdline\x88\x01\x01\x42\n\n\x08_cmdline\"\x8e\x03\n\x1a\x42ootServiceRegisterRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12>\n\x08hardware\x18\x02 \x01(\x0b\x32\".metalstack.api.v2.MachineHardwareR\x08hardware\x12\x32\n\x04\x62ios\x18\x03 \x01(\x0b\x32\x1e.metalstack.api.v2.MachineBiosR\x04\x62ios\x12/\n\x03\x62mc\x18\x04 \x01(\x0b\x32\x1d.metalstack.api.v2.MachineBMCR\x03\x62mc\x12/\n\x03\x66ru\x18\x05 \x01(\x0b\x32\x1d.metalstack.api.v2.MachineFRUR\x03\x66ru\x12\x12\n\x04tags\x18\x06 \x03(\tR\x04tags\x12=\n\x14metal_hammer_version\x18\x07 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x12metalHammerVersion\x12)\n\tpartition\x18\x08 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"\x87\x01\n\x1b\x42ootServiceRegisterResponse\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n\x04size\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x04size\x12)\n\tpartition\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"6\n\x16\x42ootServiceWaitRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"_\n\x17\x42ootServiceWaitResponse\x12\x44\n\nallocation\x18\x01 \x01(\x0b\x32$.metalstack.api.v2.MachineAllocationR\nallocation\"~\n\'BootServiceInstallationSucceededRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x35\n\x10\x63onsole_password\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0f\x63onsolePassword\"*\n(BootServiceInstallationSucceededResponse\"C\n#BootServiceSuperUserPasswordRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x8d\x01\n$BootServiceSuperUserPasswordResponse\x12)\n\x10\x66\x65\x61ture_disabled\x18\x01 \x01(\x08R\x0f\x66\x65\x61tureDisabled\x12:\n\x13super_user_password\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\x8b\x06\n\x0b\x42ootService\x12l\n\x04\x44hcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01\x12l\n\x04\x42oot\x12+.metalstack.infra.v2.BootServiceBootRequest\x1a,.metalstack.infra.v2.BootServiceBootResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01\x12\x93\x01\n\x11SuperUserPassword\x12\x38.metalstack.infra.v2.BootServiceSuperUserPasswordRequest\x1a\x39.metalstack.infra.v2.BootServiceSuperUserPasswordResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x12x\n\x08Register\x12/.metalstack.infra.v2.BootServiceRegisterRequest\x1a\x30.metalstack.infra.v2.BootServiceRegisterResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x12n\n\x04Wait\x12+.metalstack.infra.v2.BootServiceWaitRequest\x1a,.metalstack.infra.v2.BootServiceWaitResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x30\x01\x12\x9f\x01\n\x15InstallationSucceeded\x12<.metalstack.infra.v2.BootServiceInstallationSucceededRequest\x1a=.metalstack.infra.v2.BootServiceInstallationSucceededResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x42\xcd\x01\n\x17\x63om.metalstack.infra.v2B\tBootProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1emetalstack/infra/v2/boot.proto\x12\x13metalstack.infra.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1dmetalstack/api/v2/token.proto\"a\n\x16\x42ootServiceDhcpRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12)\n\tpartition\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"\x19\n\x17\x42ootServiceDhcpResponse\"\xda\x01\n\x1e\x42ootServiceMachineTokenRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n\x04user\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xf8\xb3\xae\xb1\x02\x01R\x04user\x12\x46\n\x07\x65xpires\x18\x03 \x01(\x0b\x32\x19.google.protobuf.DurationB\x11\xbaH\x0e\xaa\x01\x0b\x1a\x04\x08\x80\xf5$2\x03\x08\xd8\x04R\x07\x65xpires\x12\x31\n\x06labels\x18\x04 \x01(\x0b\x32\x19.metalstack.api.v2.LabelsR\x06labels\"i\n\x1f\x42ootServiceMachineTokenResponse\x12.\n\x05token\x18\x01 \x01(\x0b\x32\x18.metalstack.api.v2.TokenR\x05token\x12\x16\n\x06secret\x18\x02 \x01(\tR\x06secret\"b\n\x16\x42ootServiceBootRequest\x12\x1d\n\x03mac\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xb8\xb3\xae\xb1\x02\x01R\x03mac\x12)\n\tpartition\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"\x9c\x01\n\x17\x42ootServiceBootResponse\x12#\n\x06kernel\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\xe0\xb3\xae\xb1\x02\x01R\x06kernel\x12$\n\x0einit_ram_disks\x18\x02 \x03(\tR\x0cinitRamDisks\x12*\n\x07\x63mdline\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01H\x00R\x07\x63mdline\x88\x01\x01\x42\n\n\x08_cmdline\"\x8e\x03\n\x1a\x42ootServiceRegisterRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12>\n\x08hardware\x18\x02 \x01(\x0b\x32\".metalstack.api.v2.MachineHardwareR\x08hardware\x12\x32\n\x04\x62ios\x18\x03 \x01(\x0b\x32\x1e.metalstack.api.v2.MachineBiosR\x04\x62ios\x12/\n\x03\x62mc\x18\x04 \x01(\x0b\x32\x1d.metalstack.api.v2.MachineBMCR\x03\x62mc\x12/\n\x03\x66ru\x18\x05 \x01(\x0b\x32\x1d.metalstack.api.v2.MachineFRUR\x03\x66ru\x12\x12\n\x04tags\x18\x06 \x03(\tR\x04tags\x12=\n\x14metal_hammer_version\x18\x07 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x12metalHammerVersion\x12)\n\tpartition\x18\x08 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"\x87\x01\n\x1b\x42ootServiceRegisterResponse\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1f\n\x04size\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x04size\x12)\n\tpartition\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01R\tpartition\"6\n\x16\x42ootServiceWaitRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"_\n\x17\x42ootServiceWaitResponse\x12\x44\n\nallocation\x18\x01 \x01(\x0b\x32$.metalstack.api.v2.MachineAllocationR\nallocation\"~\n\'BootServiceInstallationSucceededRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x35\n\x10\x63onsole_password\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x0f\x63onsolePassword\"*\n(BootServiceInstallationSucceededResponse\"C\n#BootServiceSuperUserPasswordRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"\x8d\x01\n$BootServiceSuperUserPasswordResponse\x12)\n\x10\x66\x65\x61ture_disabled\x18\x01 \x01(\x08R\x0f\x66\x65\x61tureDisabled\x12:\n\x13super_user_password\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\x02\x18\x80\x01R\x11superUserPassword2\x92\x07\n\x0b\x42ootService\x12l\n\x04\x44hcp\x12+.metalstack.infra.v2.BootServiceDhcpRequest\x1a,.metalstack.infra.v2.BootServiceDhcpResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01\x12l\n\x04\x42oot\x12+.metalstack.infra.v2.BootServiceBootRequest\x1a,.metalstack.infra.v2.BootServiceBootResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01\x12\x84\x01\n\x0cMachineToken\x12\x33.metalstack.infra.v2.BootServiceMachineTokenRequest\x1a\x34.metalstack.infra.v2.BootServiceMachineTokenResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01\x12\x93\x01\n\x11SuperUserPassword\x12\x38.metalstack.infra.v2.BootServiceSuperUserPasswordRequest\x1a\x39.metalstack.infra.v2.BootServiceSuperUserPasswordResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x12x\n\x08Register\x12/.metalstack.infra.v2.BootServiceRegisterRequest\x1a\x30.metalstack.infra.v2.BootServiceRegisterResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x12n\n\x04Wait\x12+.metalstack.infra.v2.BootServiceWaitRequest\x1a,.metalstack.infra.v2.BootServiceWaitResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x30\x01\x12\x9f\x01\n\x15InstallationSucceeded\x12<.metalstack.infra.v2.BootServiceInstallationSucceededRequest\x1a=.metalstack.infra.v2.BootServiceInstallationSucceededResponse\"\t\xe0\xf3\x18\x01\xf2\xf3\x18\x01\x01\x42\xcd\x01\n\x17\x63om.metalstack.infra.v2B\tBootProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -40,6 +42,12 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_BOOTSERVICEDHCPREQUEST'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
   _globals['_BOOTSERVICEDHCPREQUEST'].fields_by_name['partition']._loaded_options = None
   _globals['_BOOTSERVICEDHCPREQUEST'].fields_by_name['partition']._serialized_options = b'\272H\010r\006\320\263\256\261\002\001'
+  _globals['_BOOTSERVICEMACHINETOKENREQUEST'].fields_by_name['uuid']._loaded_options = None
+  _globals['_BOOTSERVICEMACHINETOKENREQUEST'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
+  _globals['_BOOTSERVICEMACHINETOKENREQUEST'].fields_by_name['user']._loaded_options = None
+  _globals['_BOOTSERVICEMACHINETOKENREQUEST'].fields_by_name['user']._serialized_options = b'\272H\010r\006\370\263\256\261\002\001'
+  _globals['_BOOTSERVICEMACHINETOKENREQUEST'].fields_by_name['expires']._loaded_options = None
+  _globals['_BOOTSERVICEMACHINETOKENREQUEST'].fields_by_name['expires']._serialized_options = b'\272H\016\252\001\013\032\004\010\200\365$2\003\010\330\004'
   _globals['_BOOTSERVICEBOOTREQUEST'].fields_by_name['mac']._loaded_options = None
   _globals['_BOOTSERVICEBOOTREQUEST'].fields_by_name['mac']._serialized_options = b'\272H\010r\006\270\263\256\261\002\001'
   _globals['_BOOTSERVICEBOOTREQUEST'].fields_by_name['partition']._loaded_options = None
@@ -74,6 +82,8 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_BOOTSERVICE'].methods_by_name['Dhcp']._serialized_options = b'\340\363\030\001\352\363\030\001\001'
   _globals['_BOOTSERVICE'].methods_by_name['Boot']._loaded_options = None
   _globals['_BOOTSERVICE'].methods_by_name['Boot']._serialized_options = b'\340\363\030\001\352\363\030\001\001'
+  _globals['_BOOTSERVICE'].methods_by_name['MachineToken']._loaded_options = None
+  _globals['_BOOTSERVICE'].methods_by_name['MachineToken']._serialized_options = b'\340\363\030\001\352\363\030\001\001'
   _globals['_BOOTSERVICE'].methods_by_name['SuperUserPassword']._loaded_options = None
   _globals['_BOOTSERVICE'].methods_by_name['SuperUserPassword']._serialized_options = b'\340\363\030\001\362\363\030\001\001'
   _globals['_BOOTSERVICE'].methods_by_name['Register']._loaded_options = None
@@ -82,30 +92,34 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_BOOTSERVICE'].methods_by_name['Wait']._serialized_options = b'\340\363\030\001\362\363\030\001\001'
   _globals['_BOOTSERVICE'].methods_by_name['InstallationSucceeded']._loaded_options = None
   _globals['_BOOTSERVICE'].methods_by_name['InstallationSucceeded']._serialized_options = b'\340\363\030\001\362\363\030\001\001'
-  _globals['_BOOTSERVICEDHCPREQUEST']._serialized_start=191
-  _globals['_BOOTSERVICEDHCPREQUEST']._serialized_end=288
-  _globals['_BOOTSERVICEDHCPRESPONSE']._serialized_start=290
-  _globals['_BOOTSERVICEDHCPRESPONSE']._serialized_end=315
-  _globals['_BOOTSERVICEBOOTREQUEST']._serialized_start=317
-  _globals['_BOOTSERVICEBOOTREQUEST']._serialized_end=415
-  _globals['_BOOTSERVICEBOOTRESPONSE']._serialized_start=418
-  _globals['_BOOTSERVICEBOOTRESPONSE']._serialized_end=574
-  _globals['_BOOTSERVICEREGISTERREQUEST']._serialized_start=577
-  _globals['_BOOTSERVICEREGISTERREQUEST']._serialized_end=975
-  _globals['_BOOTSERVICEREGISTERRESPONSE']._serialized_start=978
-  _globals['_BOOTSERVICEREGISTERRESPONSE']._serialized_end=1113
-  _globals['_BOOTSERVICEWAITREQUEST']._serialized_start=1115
-  _globals['_BOOTSERVICEWAITREQUEST']._serialized_end=1169
-  _globals['_BOOTSERVICEWAITRESPONSE']._serialized_start=1171
-  _globals['_BOOTSERVICEWAITRESPONSE']._serialized_end=1266
-  _globals['_BOOTSERVICEINSTALLATIONSUCCEEDEDREQUEST']._serialized_start=1268
-  _globals['_BOOTSERVICEINSTALLATIONSUCCEEDEDREQUEST']._serialized_end=1394
-  _globals['_BOOTSERVICEINSTALLATIONSUCCEEDEDRESPONSE']._serialized_start=1396
-  _globals['_BOOTSERVICEINSTALLATIONSUCCEEDEDRESPONSE']._serialized_end=1438
-  _globals['_BOOTSERVICESUPERUSERPASSWORDREQUEST']._serialized_start=1440
-  _globals['_BOOTSERVICESUPERUSERPASSWORDREQUEST']._serialized_end=1507
-  _globals['_BOOTSERVICESUPERUSERPASSWORDRESPONSE']._serialized_start=1510
-  _globals['_BOOTSERVICESUPERUSERPASSWORDRESPONSE']._serialized_end=1651
-  _globals['_BOOTSERVICE']._serialized_start=1654
-  _globals['_BOOTSERVICE']._serialized_end=2433
+  _globals['_BOOTSERVICEDHCPREQUEST']._serialized_start=254
+  _globals['_BOOTSERVICEDHCPREQUEST']._serialized_end=351
+  _globals['_BOOTSERVICEDHCPRESPONSE']._serialized_start=353
+  _globals['_BOOTSERVICEDHCPRESPONSE']._serialized_end=378
+  _globals['_BOOTSERVICEMACHINETOKENREQUEST']._serialized_start=381
+  _globals['_BOOTSERVICEMACHINETOKENREQUEST']._serialized_end=599
+  _globals['_BOOTSERVICEMACHINETOKENRESPONSE']._serialized_start=601
+  _globals['_BOOTSERVICEMACHINETOKENRESPONSE']._serialized_end=706
+  _globals['_BOOTSERVICEBOOTREQUEST']._serialized_start=708
+  _globals['_BOOTSERVICEBOOTREQUEST']._serialized_end=806
+  _globals['_BOOTSERVICEBOOTRESPONSE']._serialized_start=809
+  _globals['_BOOTSERVICEBOOTRESPONSE']._serialized_end=965
+  _globals['_BOOTSERVICEREGISTERREQUEST']._serialized_start=968
+  _globals['_BOOTSERVICEREGISTERREQUEST']._serialized_end=1366
+  _globals['_BOOTSERVICEREGISTERRESPONSE']._serialized_start=1369
+  _globals['_BOOTSERVICEREGISTERRESPONSE']._serialized_end=1504
+  _globals['_BOOTSERVICEWAITREQUEST']._serialized_start=1506
+  _globals['_BOOTSERVICEWAITREQUEST']._serialized_end=1560
+  _globals['_BOOTSERVICEWAITRESPONSE']._serialized_start=1562
+  _globals['_BOOTSERVICEWAITRESPONSE']._serialized_end=1657
+  _globals['_BOOTSERVICEINSTALLATIONSUCCEEDEDREQUEST']._serialized_start=1659
+  _globals['_BOOTSERVICEINSTALLATIONSUCCEEDEDREQUEST']._serialized_end=1785
+  _globals['_BOOTSERVICEINSTALLATIONSUCCEEDEDRESPONSE']._serialized_start=1787
+  _globals['_BOOTSERVICEINSTALLATIONSUCCEEDEDRESPONSE']._serialized_end=1829
+  _globals['_BOOTSERVICESUPERUSERPASSWORDREQUEST']._serialized_start=1831
+  _globals['_BOOTSERVICESUPERUSERPASSWORDREQUEST']._serialized_end=1898
+  _globals['_BOOTSERVICESUPERUSERPASSWORDRESPONSE']._serialized_start=1901
+  _globals['_BOOTSERVICESUPERUSERPASSWORDRESPONSE']._serialized_end=2042
+  _globals['_BOOTSERVICE']._serialized_start=2045
+  _globals['_BOOTSERVICE']._serialized_end=2959
 # @@protoc_insertion_point(module_scope)

@@ -1,5 +1,8 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import type { Duration } from "@bufbuild/protobuf/wkt";
+import type { Labels } from "../../api/v2/common_pb";
 import type { MachineAllocation, MachineBios, MachineBMC, MachineFRU, MachineHardware } from "../../api/v2/machine_pb";
+import type { Token } from "../../api/v2/token_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/infra/v2/boot.proto.
@@ -40,6 +43,66 @@ export type BootServiceDhcpResponse = Message<"metalstack.infra.v2.BootServiceDh
  * Use `create(BootServiceDhcpResponseSchema)` to create a new message.
  */
 export declare const BootServiceDhcpResponseSchema: GenMessage<BootServiceDhcpResponse>;
+/**
+ * TokenServiceCreateRequest is the request payload for creating a machine token.
+ *
+ * @generated from message metalstack.infra.v2.BootServiceMachineTokenRequest
+ */
+export type BootServiceMachineTokenRequest = Message<"metalstack.infra.v2.BootServiceMachineTokenRequest"> & {
+    /**
+     * UUID of the machine that will get the machine token.
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * User this token should be created for, it must be labelled in the backend with "tenant.metal-stack.io/machine-bootstrapper"
+     *
+     * @generated from field: string user = 2;
+     */
+    user: string;
+    /**
+     * Expires gives the duration since now, after which this token can not be used anymore.
+     *
+     * @generated from field: google.protobuf.Duration expires = 3;
+     */
+    expires?: Duration | undefined;
+    /**
+     * Labels for this token.
+     *
+     * @generated from field: metalstack.api.v2.Labels labels = 4;
+     */
+    labels?: Labels | undefined;
+};
+/**
+ * Describes the message metalstack.infra.v2.BootServiceMachineTokenRequest.
+ * Use `create(BootServiceMachineTokenRequestSchema)` to create a new message.
+ */
+export declare const BootServiceMachineTokenRequestSchema: GenMessage<BootServiceMachineTokenRequest>;
+/**
+ * TokenServiceCreateResponse is the response payload for the created machine token.
+ *
+ * @generated from message metalstack.infra.v2.BootServiceMachineTokenResponse
+ */
+export type BootServiceMachineTokenResponse = Message<"metalstack.infra.v2.BootServiceMachineTokenResponse"> & {
+    /**
+     * Token contains the created token.
+     *
+     * @generated from field: metalstack.api.v2.Token token = 1;
+     */
+    token?: Token | undefined;
+    /**
+     * Secret is the body if the JWT token, should be used in API requests as bearer token.
+     *
+     * @generated from field: string secret = 2;
+     */
+    secret: string;
+};
+/**
+ * Describes the message metalstack.infra.v2.BootServiceMachineTokenResponse.
+ * Use `create(BootServiceMachineTokenResponseSchema)` to create a new message.
+ */
+export declare const BootServiceMachineTokenResponseSchema: GenMessage<BootServiceMachineTokenResponse>;
 /**
  * BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac.
  *
@@ -324,6 +387,16 @@ export declare const BootService: GenService<{
         methodKind: "unary";
         input: typeof BootServiceBootRequestSchema;
         output: typeof BootServiceBootResponseSchema;
+    };
+    /**
+     * MachineToken is called from pixie to create machine role token for the metal-hammer. This way it does not need to have an admin token for token creation.
+     *
+     * @generated from rpc metalstack.infra.v2.BootService.MachineToken
+     */
+    machineToken: {
+        methodKind: "unary";
+        input: typeof BootServiceMachineTokenRequestSchema;
+        output: typeof BootServiceMachineTokenResponseSchema;
     };
     /**
      * SuperUserPassword returns the configured root password for the BMC.
