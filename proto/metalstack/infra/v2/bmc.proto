@@ -12,12 +12,12 @@ service BMCService {
   // Updates BMC information.
   rpc UpdateBMCInfo(UpdateBMCInfoRequest) returns (UpdateBMCInfoResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // WaitForBMCCommand is called by the metal-bmc and returns a BMC command to execute.
   rpc WaitForBMCCommand(WaitForBMCCommandRequest) returns (stream WaitForBMCCommandResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // BMCCommandDone must be called from metal-bmc after the command execution.
   rpc BMCCommandDone(BMCCommandDoneRequest) returns (BMCCommandDoneResponse) {

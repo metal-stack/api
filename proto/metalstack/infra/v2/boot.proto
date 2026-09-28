@@ -3,9 +3,11 @@ syntax = "proto3";
 package metalstack.infra.v2;
 
 import "buf/validate/validate.proto";
+import "google/protobuf/duration.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/machine.proto";
 import "metalstack/api/v2/predefined_rules.proto";
+import "metalstack/api/v2/token.proto";
 
 // BootService provides boot-related operations for pixiecore and metal-hammer.
 service BootService {
@@ -14,12 +16,17 @@ service BootService {
   // Dhcp handles the first DHCP request (option 97). A ProvisioningEventPXEBooting is fired.
   rpc Dhcp(BootServiceDhcpRequest) returns (BootServiceDhcpResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Boot is called from pixie once the machine got the first DHCP response and ipxe asks for subsequent kernel and initrd.
   rpc Boot(BootServiceBootRequest) returns (BootServiceBootResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // MachineToken is called from pixie to create machine role token for the metal-hammer. This way it does not need to have an admin token for token creation.
+  rpc MachineToken(BootServiceMachineTokenRequest) returns (BootServiceMachineTokenResponse) {
+    option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 
   // Metal Hammer
@@ -27,22 +34,22 @@ service BootService {
   // SuperUserPassword returns the configured root password for the BMC.
   rpc SuperUserPassword(BootServiceSuperUserPasswordRequest) returns (BootServiceSuperUserPasswordResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all details about that machine.
   rpc Register(BootServiceRegisterRequest) returns (BootServiceRegisterResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Wait is a hanging call that waits until the machine gets allocated by a user.
   rpc Wait(BootServiceWaitRequest) returns (stream BootServiceWaitResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // InstallationSucceeded tells metal-apiserver that installation was successful.
   rpc InstallationSucceeded(BootServiceInstallationSucceededRequest) returns (BootServiceInstallationSucceededResponse) {
     option (metalstack.api.v2.machine_roles) = MACHINE_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
@@ -56,6 +63,30 @@ message BootServiceDhcpRequest {
 
 // BootServiceDhcpResponse contains the response to a dhcp request.
 message BootServiceDhcpResponse {}
+
+// TokenServiceCreateRequest is the request payload for creating a machine token.
+message BootServiceMachineTokenRequest {
+  // UUID of the machine that will get the machine token.
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // User this token should be created for, it must be labelled in the backend with "tenant.metal-stack.io/machine-bootstrapper"
+  string user = 2 [(buf.validate.field).string.(metalstack.api.v2.is_user) = true];
+  // Expires gives the duration since now, after which this token can not be used anymore.
+  google.protobuf.Duration expires = 3 [(buf.validate.field).duration = {
+    // Max token lifetime is a week, the metal-hammer reboots the machine after three days.
+    lt: {seconds: 604800}
+    gte: {seconds: 600}
+  }];
+  // Labels for this token.
+  metalstack.api.v2.Labels labels = 4;
+}
+
+// TokenServiceCreateResponse is the response payload for the created machine token.
+message BootServiceMachineTokenResponse {
+  // Token contains the created token.
+  metalstack.api.v2.Token token = 1;
+  // Secret is the body if the JWT token, should be used in API requests as bearer token.
+  string secret = 2;
+}
 
 // BootServiceBootRequest is called to get specified parameters to boot a machine with the given mac.
 message BootServiceBootRequest {
