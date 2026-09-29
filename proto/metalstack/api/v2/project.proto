@@ -297,8 +297,8 @@ message ProjectServiceAddMemberRequest {
 
 // ProjectServiceAddMemberResponse is the response payload for the add member request.
 message ProjectServiceAddMemberResponse {
-  // ProjectRole is the added project member.
-  ProjectRole project_member = 1;
+  // ProjectMember is the added project member.
+  ProjectMember project_member = 1;
 }
 
 // ProjectServiceRemoveMemberRequest is used to remove a member from a project.
@@ -310,7 +310,10 @@ message ProjectServiceRemoveMemberRequest {
 }
 
 // ProjectServiceRemoveMemberResponse is the response payload to a remove member request.
-message ProjectServiceRemoveMemberResponse {}
+message ProjectServiceRemoveMemberResponse {
+  // ProjectMember is the removed project member.
+  ProjectMember project_member = 1;
+}
 
 // ProjectServiceUpdateMemberRequest is used to update a member of a project.
 message ProjectServiceUpdateMemberRequest {

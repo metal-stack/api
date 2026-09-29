@@ -2688,6 +2688,36 @@
         
           
           <li>
+            <a href="#metalstack%2fcli%2fv2%2fproject.proto">metalstack/cli/v2/project.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.cli.v2.ProjectMember"><span class="badge">M</span>ProjectMember</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fcli%2fv2%2ftenant.proto">metalstack/cli/v2/tenant.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.cli.v2.TenantMember"><span class="badge">M</span>TenantMember</a>
+                </li>
+              
+              
+              
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2finfra%2fv2%2fbmc.proto">metalstack/infra/v2/bmc.proto</a>
             <ul>
               
@@ -16094,9 +16124,9 @@ Inherited memberships are not included in member lists for users with guest perm
               
                 <tr>
                   <td>project_member</td>
-                  <td><a href="#metalstack.api.v2.ProjectRole">ProjectRole</a></td>
+                  <td><a href="#metalstack.api.v2.ProjectMember">ProjectMember</a></td>
                   <td></td>
-                  <td><p>ProjectRole is the added project member. </p></td>
+                  <td><p>ProjectMember is the added project member. </p></td>
                 </tr>
               
             </tbody>
@@ -16646,6 +16676,23 @@ console.metalstack.cloud/invite/&lt;secret. </p></td>
         <p>ProjectServiceRemoveMemberResponse is the response payload to a remove member request.</p>
 
         
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project_member</td>
+                  <td><a href="#metalstack.api.v2.ProjectMember">ProjectMember</a></td>
+                  <td></td>
+                  <td><p>ProjectMember is the removed project member. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
 
         
       
@@ -21854,6 +21901,96 @@ This key can only be seen once. </p></td>
         </table>
 
         
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/cli/v2/project.proto">metalstack/cli/v2/project.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.cli.v2.ProjectMember">ProjectMember</h3>
+        <p>ProjectMember defines a user that participates in a project.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>project is the project id to which the member belongs. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project_member</td>
+                  <td><a href="#metalstack.api.v2.ProjectMember">metalstack.api.v2.ProjectMember</a></td>
+                  <td></td>
+                  <td><p>ProjectMember is the project member. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/cli/v2/tenant.proto">metalstack/cli/v2/tenant.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.cli.v2.TenantMember">TenantMember</h3>
+        <p>TenantMember defines a user that participates in a tenant.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>tenant</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>tenant is the login tenant to which the member belongs. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>tenant_member</td>
+                  <td><a href="#metalstack.api.v2.TenantMember">metalstack.api.v2.TenantMember</a></td>
+                  <td></td>
+                  <td><p>TenantMember is the tenant member. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
     
       
       <div class="file-heading">

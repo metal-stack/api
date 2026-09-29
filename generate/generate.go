@@ -278,6 +278,13 @@ func svcs(root string) (map[string]api, error) {
 		_, name, _ := strings.Cut(*fd.Package, "metalstack.")
 		name = strings.ReplaceAll(name, ".", "")
 
+		switch name {
+		case "cliv2":
+			continue
+		default:
+			// noop
+		}
+
 		a, ok := result[name]
 		if !ok {
 			a = api{

@@ -4,6 +4,7 @@ clean:
 	rm -rf metalstack/admin
 	rm -rf metalstack/api
 	rm -rf metalstack/infra
+	rm -rf metalstack/cli
 
 .PHONY: generate
 generate:

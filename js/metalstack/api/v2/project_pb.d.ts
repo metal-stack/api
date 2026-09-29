@@ -624,11 +624,11 @@ export declare const ProjectServiceAddMemberRequestSchema: GenMessage<ProjectSer
  */
 export type ProjectServiceAddMemberResponse = Message<"metalstack.api.v2.ProjectServiceAddMemberResponse"> & {
     /**
-     * ProjectRole is the added project member.
+     * ProjectMember is the added project member.
      *
-     * @generated from field: metalstack.api.v2.ProjectRole project_member = 1;
+     * @generated from field: metalstack.api.v2.ProjectMember project_member = 1;
      */
-    projectMember: ProjectRole;
+    projectMember?: ProjectMember | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectServiceAddMemberResponse.
@@ -664,7 +664,14 @@ export declare const ProjectServiceRemoveMemberRequestSchema: GenMessage<Project
  *
  * @generated from message metalstack.api.v2.ProjectServiceRemoveMemberResponse
  */
-export type ProjectServiceRemoveMemberResponse = Message<"metalstack.api.v2.ProjectServiceRemoveMemberResponse"> & {};
+export type ProjectServiceRemoveMemberResponse = Message<"metalstack.api.v2.ProjectServiceRemoveMemberResponse"> & {
+    /**
+     * ProjectMember is the removed project member.
+     *
+     * @generated from field: metalstack.api.v2.ProjectMember project_member = 1;
+     */
+    projectMember?: ProjectMember | undefined;
+};
 /**
  * Describes the message metalstack.api.v2.ProjectServiceRemoveMemberResponse.
  * Use `create(ProjectServiceRemoveMemberResponseSchema)` to create a new message.
