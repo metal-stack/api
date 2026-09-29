@@ -274,8 +274,9 @@ const file_metalstack_admin_v2_project_proto_rawDesc = "" +
 	"\n" +
 	"\b_project\"T\n" +
 	"\x1cProjectServiceCreateResponse\x124\n" +
-	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject2\x85\x01\n" +
-	"\x0eProjectService\x12s\n" +
+	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject2\xff\x01\n" +
+	"\x0eProjectService\x12x\n" +
+	"\x06Create\x120.metalstack.admin.v2.ProjectServiceCreateRequest\x1a1.metalstack.admin.v2.ProjectServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12s\n" +
 	"\x04List\x12..metalstack.admin.v2.ProjectServiceListRequest\x1a/.metalstack.admin.v2.ProjectServiceListResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02B\xd0\x01\n" +
 	"\x17com.metalstack.admin.v2B\fProjectProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
@@ -307,10 +308,12 @@ var file_metalstack_admin_v2_project_proto_depIdxs = []int32{
 	5, // 1: metalstack.admin.v2.ProjectServiceListResponse.projects:type_name -> metalstack.api.v2.Project
 	6, // 2: metalstack.admin.v2.ProjectServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
 	5, // 3: metalstack.admin.v2.ProjectServiceCreateResponse.project:type_name -> metalstack.api.v2.Project
-	0, // 4: metalstack.admin.v2.ProjectService.List:input_type -> metalstack.admin.v2.ProjectServiceListRequest
-	1, // 5: metalstack.admin.v2.ProjectService.List:output_type -> metalstack.admin.v2.ProjectServiceListResponse
-	5, // [5:6] is the sub-list for method output_type
-	4, // [4:5] is the sub-list for method input_type
+	2, // 4: metalstack.admin.v2.ProjectService.Create:input_type -> metalstack.admin.v2.ProjectServiceCreateRequest
+	0, // 5: metalstack.admin.v2.ProjectService.List:input_type -> metalstack.admin.v2.ProjectServiceListRequest
+	3, // 6: metalstack.admin.v2.ProjectService.Create:output_type -> metalstack.admin.v2.ProjectServiceCreateResponse
+	1, // 7: metalstack.admin.v2.ProjectService.List:output_type -> metalstack.admin.v2.ProjectServiceListResponse
+	6, // [6:8] is the sub-list for method output_type
+	4, // [4:6] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
 	4, // [4:4] is the sub-list for extension extendee
 	0, // [0:4] is the sub-list for field type_name

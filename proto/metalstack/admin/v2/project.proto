@@ -9,6 +9,11 @@ import "metalstack/api/v2/project.proto";
 
 // ProjectService provides project management operations.
 service ProjectService {
+  // Creates a new project.
+  rpc Create(ProjectServiceCreateRequest) returns (ProjectServiceCreateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
   // Returns the list of projects matching the filter criteria.
   rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;

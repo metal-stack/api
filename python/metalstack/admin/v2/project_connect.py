@@ -18,6 +18,9 @@ import metalstack.admin.v2.project_pb2 as metalstack_dot_admin_dot_v2_dot_projec
 
 
 class ProjectService(Protocol):
+    async def create(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
     async def list(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
@@ -27,6 +30,16 @@ class ProjectServiceASGIApplication(ConnectASGIApplication[ProjectService]):
         super().__init__(
             service=service,
             endpoints=lambda svc: {
+                "/metalstack.admin.v2.ProjectService/Create": Endpoint.unary(
+                    method=MethodInfo(
+                        name="Create",
+                        service_name="metalstack.admin.v2.ProjectService",
+                        input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.create,
+                ),
                 "/metalstack.admin.v2.ProjectService/List": Endpoint.unary(
                     method=MethodInfo(
                         name="List",
@@ -51,6 +64,26 @@ class ProjectServiceASGIApplication(ConnectASGIApplication[ProjectService]):
 
 
 class ProjectServiceClient(ConnectClient):
+    async def create(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Create",
+                service_name="metalstack.admin.v2.ProjectService",
+                input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
     async def list(
         self,
         request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListRequest,
@@ -76,6 +109,8 @@ class ProjectServiceClient(ConnectClient):
 
 
 class ProjectServiceSync(Protocol):
+    def create(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def list(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
@@ -84,6 +119,16 @@ class ProjectServiceWSGIApplication(ConnectWSGIApplication):
     def __init__(self, service: ProjectServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
+                "/metalstack.admin.v2.ProjectService/Create": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="Create",
+                        service_name="metalstack.admin.v2.ProjectService",
+                        input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.create,
+                ),
                 "/metalstack.admin.v2.ProjectService/List": EndpointSync.unary(
                     method=MethodInfo(
                         name="List",
@@ -108,6 +153,26 @@ class ProjectServiceWSGIApplication(ConnectWSGIApplication):
 
 
 class ProjectServiceClientSync(ConnectClientSync):
+    def create(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="Create",
+                service_name="metalstack.admin.v2.ProjectService",
+                input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateRequest,
+                output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
     def list(
         self,
         request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListRequest,

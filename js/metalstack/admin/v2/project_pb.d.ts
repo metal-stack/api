@@ -115,6 +115,16 @@ export declare const ProjectServiceCreateResponseSchema: GenMessage<ProjectServi
  */
 export declare const ProjectService: GenService<{
     /**
+     * Creates a new project.
+     *
+     * @generated from rpc metalstack.admin.v2.ProjectService.Create
+     */
+    create: {
+        methodKind: "unary";
+        input: typeof ProjectServiceCreateRequestSchema;
+        output: typeof ProjectServiceCreateResponseSchema;
+    };
+    /**
      * Returns the list of projects matching the filter criteria.
      *
      * @generated from rpc metalstack.admin.v2.ProjectService.List
