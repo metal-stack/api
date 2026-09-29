@@ -35,7 +35,9 @@ type TenantServiceCreateRequest struct {
 	// AvatarUrl of the tenant.
 	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
 	// Labels on the tenant.
-	Labels        *v2.Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
+	Labels *v2.Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
+	// Login of the tenant.
+	Login         *string `protobuf:"bytes,6,opt,name=login,proto3,oneof" json:"login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -103,6 +105,13 @@ func (x *TenantServiceCreateRequest) GetLabels() *v2.Labels {
 		return x.Labels
 	}
 	return nil
+}
+
+func (x *TenantServiceCreateRequest) GetLogin() string {
+	if x != nil && x.Login != nil {
+		return *x.Login
+	}
+	return ""
 }
 
 // TenantServiceCreateResponse is the response payload for creating a tenant.
@@ -467,17 +476,19 @@ var File_metalstack_admin_v2_tenant_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xa2\x02\n" +
+	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xd4\x02\n" +
 	"\x1aTenantServiceCreateRequest\x12\x1f\n" +
-	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x04name\x122\n" +
+	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x122\n" +
 	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12\"\n" +
 	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x12/\n" +
 	"\n" +
 	"avatar_url\x18\x04 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01H\x02R\tavatarUrl\x88\x01\x01\x121\n" +
-	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labelsB\x0e\n" +
+	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12&\n" +
+	"\x05login\x18\x06 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01H\x03R\x05login\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\b\n" +
 	"\x06_emailB\r\n" +
-	"\v_avatar_url\"P\n" +
+	"\v_avatar_urlB\b\n" +
+	"\x06_login\"P\n" +
 	"\x1bTenantServiceCreateResponse\x121\n" +
 	"\x06tenant\x18\x01 \x01(\v2\x19.metalstack.api.v2.TenantR\x06tenant\"P\n" +
 	"\x18TenantServiceListRequest\x124\n" +

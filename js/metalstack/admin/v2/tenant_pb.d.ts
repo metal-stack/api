@@ -42,6 +42,12 @@ export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServ
      * @generated from field: metalstack.api.v2.Labels labels = 5;
      */
     labels?: Labels | undefined;
+    /**
+     * Login of the tenant.
+     *
+     * @generated from field: optional string login = 6;
+     */
+    login?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceCreateRequest.

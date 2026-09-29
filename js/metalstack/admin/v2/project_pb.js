@@ -2,12 +2,14 @@
 // @generated from file metalstack/admin/v2/project.proto (package metalstack.admin.v2, syntax proto3)
 /* eslint-disable */
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
+import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
+import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
 import { file_metalstack_api_v2_project } from "../../api/v2/project_pb";
 /**
  * Describes the file metalstack/admin/v2/project.proto.
  */
-export const file_metalstack_admin_v2_project = /*@__PURE__*/ fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL3Byb2plY3QucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiWgoZUHJvamVjdFNlcnZpY2VMaXN0UmVxdWVzdBIzCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RRdWVyeUgAiAEBQggKBl9xdWVyeSJKChpQcm9qZWN0U2VydmljZUxpc3RSZXNwb25zZRIsCghwcm9qZWN0cxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3QyhQEKDlByb2plY3RTZXJ2aWNlEnMKBExpc3QSLi5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlcXVlc3QaLy5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgCQtABChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIMUHJvamVjdFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_metalstack_api_v2_common, file_metalstack_api_v2_project]);
+export const file_metalstack_admin_v2_project = /*@__PURE__*/ fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL3Byb2plY3QucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiWgoZUHJvamVjdFNlcnZpY2VMaXN0UmVxdWVzdBIzCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RRdWVyeUgAiAEBQggKBl9xdWVyeSJKChpQcm9qZWN0U2VydmljZUxpc3RSZXNwb25zZRIsCghwcm9qZWN0cxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3QiggIKG1Byb2plY3RTZXJ2aWNlQ3JlYXRlUmVxdWVzdBIaCgVsb2dpbhgBIAEoCUILukgIcgbAs66xAgESGQoEbmFtZRgCIAEoCUILukgIcgbAs66xAgESIAoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBEiQKCmF2YXRhcl91cmwYBCABKAlCC7pICHIG4LOusQIBSACIAQESKQoGbGFiZWxzGAUgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzEh4KB3Byb2plY3QYBiABKAlCCLpIBXIDsAEBSAGIAQFCDQoLX2F2YXRhcl91cmxCCgoIX3Byb2plY3QiSwocUHJvamVjdFNlcnZpY2VDcmVhdGVSZXNwb25zZRIrCgdwcm9qZWN0GAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdDKFAQoOUHJvamVjdFNlcnZpY2UScwoETGlzdBIuLm1ldGFsc3RhY2suYWRtaW4udjIuUHJvamVjdFNlcnZpY2VMaXN0UmVxdWVzdBovLm1ldGFsc3RhY2suYWRtaW4udjIuUHJvamVjdFNlcnZpY2VMaXN0UmVzcG9uc2UiCtLzGAIBAuDzGAJC0AEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgxQcm9qZWN0UHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hZG1pbi92MjthZG1pbnYyogIDTUFYqgITTWV0YWxzdGFjay5BZG1pbi5WMsoCE01ldGFsc3RhY2tcQWRtaW5cVjLiAh9NZXRhbHN0YWNrXEFkbWluXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6QWRtaW46OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_project]);
 /**
  * Describes the message metalstack.admin.v2.ProjectServiceListRequest.
  * Use `create(ProjectServiceListRequestSchema)` to create a new message.
@@ -18,6 +20,16 @@ export const ProjectServiceListRequestSchema = /*@__PURE__*/ messageDesc(file_me
  * Use `create(ProjectServiceListResponseSchema)` to create a new message.
  */
 export const ProjectServiceListResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_project, 1);
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceCreateRequest.
+ * Use `create(ProjectServiceCreateRequestSchema)` to create a new message.
+ */
+export const ProjectServiceCreateRequestSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_project, 2);
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceCreateResponse.
+ * Use `create(ProjectServiceCreateResponseSchema)` to create a new message.
+ */
+export const ProjectServiceCreateResponseSchema = /*@__PURE__*/ messageDesc(file_metalstack_admin_v2_project, 3);
 /**
  * ProjectService provides project management operations.
  *

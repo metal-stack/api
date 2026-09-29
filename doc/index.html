@@ -1936,6 +1936,14 @@
             <ul>
               
                 <li>
+                  <a href="#metalstack.admin.v2.ProjectServiceCreateRequest"><span class="badge">M</span>ProjectServiceCreateRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.ProjectServiceCreateResponse"><span class="badge">M</span>ProjectServiceCreateResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.ProjectServiceListRequest"><span class="badge">M</span>ProjectServiceListRequest</a>
                 </li>
               
@@ -16965,6 +16973,89 @@ console.metalstack.cloud/invite/&lt;secret. </p></td>
       <p></p>
 
       
+        <h3 id="metalstack.admin.v2.ProjectServiceCreateRequest">ProjectServiceCreateRequest</h3>
+        <p>ProjectServiceCreateRequest is the request payload to Create a project.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login is the tenant of this project. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of this project, unique per tenant. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>description</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Description of this project. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>avatar_url</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Avatar URL of the project. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>labels</td>
+                  <td><a href="#metalstack.api.v2.Labels">metalstack.api.v2.Labels</a></td>
+                  <td></td>
+                  <td><p>Labels on the project. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Project is the uuid of the project. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.ProjectServiceCreateResponse">ProjectServiceCreateResponse</h3>
+        <p>ProjectServiceCreateResponse is the response payload for creating a project.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>project</td>
+                  <td><a href="#metalstack.api.v2.Project">metalstack.api.v2.Project</a></td>
+                  <td></td>
+                  <td><p>Project contains the created project. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.ProjectServiceListRequest">ProjectServiceListRequest</h3>
         <p>ProjectServiceListRequest is the request payload for listing projects.</p>
 
@@ -20601,6 +20692,13 @@ Will return tasks from all queues if not specified. </p></td>
                   <td><a href="#metalstack.api.v2.Labels">metalstack.api.v2.Labels</a></td>
                   <td></td>
                   <td><p>Labels on the tenant. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Login of the tenant. </p></td>
                 </tr>
               
             </tbody>

@@ -1,4 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import type { Labels } from "../../api/v2/common_pb";
 import type { Project, ProjectQuery } from "../../api/v2/project_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -41,6 +42,72 @@ export type ProjectServiceListResponse = Message<"metalstack.admin.v2.ProjectSer
  * Use `create(ProjectServiceListResponseSchema)` to create a new message.
  */
 export declare const ProjectServiceListResponseSchema: GenMessage<ProjectServiceListResponse>;
+/**
+ * ProjectServiceCreateRequest is the request payload to Create a project.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceCreateRequest
+ */
+export type ProjectServiceCreateRequest = Message<"metalstack.admin.v2.ProjectServiceCreateRequest"> & {
+    /**
+     * Login is the tenant of this project.
+     *
+     * @generated from field: string login = 1;
+     */
+    login: string;
+    /**
+     * Name of this project, unique per tenant.
+     *
+     * @generated from field: string name = 2;
+     */
+    name: string;
+    /**
+     * Description of this project.
+     *
+     * @generated from field: string description = 3;
+     */
+    description: string;
+    /**
+     * Avatar URL of the project.
+     *
+     * @generated from field: optional string avatar_url = 4;
+     */
+    avatarUrl?: string | undefined;
+    /**
+     * Labels on the project.
+     *
+     * @generated from field: metalstack.api.v2.Labels labels = 5;
+     */
+    labels?: Labels | undefined;
+    /**
+     * Project is the uuid of the project.
+     *
+     * @generated from field: optional string project = 6;
+     */
+    project?: string | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceCreateRequest.
+ * Use `create(ProjectServiceCreateRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceCreateRequestSchema: GenMessage<ProjectServiceCreateRequest>;
+/**
+ * ProjectServiceCreateResponse is the response payload for creating a project.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceCreateResponse
+ */
+export type ProjectServiceCreateResponse = Message<"metalstack.admin.v2.ProjectServiceCreateResponse"> & {
+    /**
+     * Project contains the created project.
+     *
+     * @generated from field: metalstack.api.v2.Project project = 1;
+     */
+    project?: Project | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceCreateResponse.
+ * Use `create(ProjectServiceCreateResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceCreateResponseSchema: GenMessage<ProjectServiceCreateResponse>;
 /**
  * ProjectService provides project management operations.
  *
