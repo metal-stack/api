@@ -2771,6 +2771,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.infra.v2.BootServiceSendEventRequest"><span class="badge">M</span>BootServiceSendEventRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.infra.v2.BootServiceSendEventResponse"><span class="badge">M</span>BootServiceSendEventResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.infra.v2.BootServiceSuperUserPasswordRequest"><span class="badge">M</span>BootServiceSuperUserPasswordRequest</a>
                 </li>
               
@@ -22412,6 +22420,44 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&
 
         
       
+        <h3 id="metalstack.infra.v2.BootServiceSendEventRequest">BootServiceSendEventRequest</h3>
+        <p>BootServiceEventSendRequest is the request payload for sending a provisioning event.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>uuid</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>UUID of the machine. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>event</td>
+                  <td><a href="#metalstack.api.v2.MachineProvisioningEvent">metalstack.api.v2.MachineProvisioningEvent</a></td>
+                  <td></td>
+                  <td><p>Event is the machine provisioning event. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.infra.v2.BootServiceSendEventResponse">BootServiceSendEventResponse</h3>
+        <p>BootServiceEventSendResponse is the response payload for sending provisioning events.</p>
+
+        
+
+        
+      
         <h3 id="metalstack.infra.v2.BootServiceSuperUserPasswordRequest">BootServiceSuperUserPasswordRequest</h3>
         <p>BootServiceSuperUserPasswordRequest this call returns the password for the machine superuser.</p>
 
@@ -22576,6 +22622,13 @@ It is usually in the form: &lt;machine-uuid&gt;:machine-bmc-command:&lt;command&
                 <td><a href="#metalstack.infra.v2.BootServiceInstallationSucceededRequest">BootServiceInstallationSucceededRequest</a></td>
                 <td><a href="#metalstack.infra.v2.BootServiceInstallationSucceededResponse">BootServiceInstallationSucceededResponse</a></td>
                 <td><p>InstallationSucceeded tells metal-apiserver that installation was successful.</p></td>
+              </tr>
+            
+              <tr>
+                <td>SendEvent</td>
+                <td><a href="#metalstack.infra.v2.BootServiceSendEventRequest">BootServiceSendEventRequest</a></td>
+                <td><a href="#metalstack.infra.v2.BootServiceSendEventResponse">BootServiceSendEventResponse</a></td>
+                <td><p>SendEvent is used to send provisioning events to the metal-apiserver.</p></td>
               </tr>
             
           </tbody>

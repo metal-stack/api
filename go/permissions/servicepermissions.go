@@ -179,6 +179,7 @@ func GetServicePermissions() *ServicePermissions {
 				apiv2.MachineRole_MACHINE_ROLE_EDITOR: map[string]struct{}{
 					"/metalstack.infra.v2.BootService/InstallationSucceeded": {},
 					"/metalstack.infra.v2.BootService/Register":              {},
+					"/metalstack.infra.v2.BootService/SendEvent":             {},
 					"/metalstack.infra.v2.BootService/SuperUserPassword":     {},
 					"/metalstack.infra.v2.BootService/Wait":                  {},
 				},
@@ -434,6 +435,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.infra.v2.BootService/InstallationSucceeded":         {},
 			"/metalstack.infra.v2.BootService/MachineToken":                  {},
 			"/metalstack.infra.v2.BootService/Register":                      {},
+			"/metalstack.infra.v2.BootService/SendEvent":                     {},
 			"/metalstack.infra.v2.BootService/SuperUserPassword":             {},
 			"/metalstack.infra.v2.BootService/Wait":                          {},
 			"/metalstack.infra.v2.ComponentService/Ping":                     {},
@@ -563,6 +565,7 @@ func GetServicePermissions() *ServicePermissions {
 			Machine: map[string]bool{
 				"/metalstack.infra.v2.BootService/InstallationSucceeded": true,
 				"/metalstack.infra.v2.BootService/Register":              true,
+				"/metalstack.infra.v2.BootService/SendEvent":             true,
 				"/metalstack.infra.v2.BootService/SuperUserPassword":     true,
 				"/metalstack.infra.v2.BootService/Wait":                  true,
 			},
@@ -762,6 +765,7 @@ func GetServicePermissions() *ServicePermissions {
 			"/metalstack.infra.v2.BootService/InstallationSucceeded":    true,
 			"/metalstack.infra.v2.BootService/MachineToken":             true,
 			"/metalstack.infra.v2.BootService/Register":                 true,
+			"/metalstack.infra.v2.BootService/SendEvent":                true,
 			"/metalstack.infra.v2.BootService/SuperUserPassword":        true,
 			"/metalstack.infra.v2.BootService/Wait":                     true,
 			"/metalstack.infra.v2.ComponentService/Ping":                false,
