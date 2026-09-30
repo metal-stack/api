@@ -30,10 +30,12 @@ import metalstack.api.v2.method_connect as api_method_connect
 import metalstack.api.v2.network_connect as api_network_connect
 import metalstack.api.v2.partition_connect as api_partition_connect
 import metalstack.api.v2.project_connect as api_project_connect
+import metalstack.api.v2.project_member_connect as api_project_member_connect
 import metalstack.api.v2.size_connect as api_size_connect
 import metalstack.api.v2.size_imageconstraint_connect as api_size_imageconstraint_connect
 import metalstack.api.v2.size_reservation_connect as api_size_reservation_connect
 import metalstack.api.v2.tenant_connect as api_tenant_connect
+import metalstack.api.v2.tenant_member_connect as api_tenant_member_connect
 import metalstack.api.v2.token_connect as api_token_connect
 import metalstack.api.v2.user_connect as api_user_connect
 import metalstack.api.v2.version_connect as api_version_connect
@@ -167,6 +169,9 @@ class Client:
         def project(self):
             return api_project_connect.ProjectServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
+        def project_member(self):
+            return api_project_member_connect.ProjectMemberServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
+
         def size(self):
             return api_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
@@ -178,6 +183,9 @@ class Client:
 
         def tenant(self):
             return api_tenant_connect.TenantServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
+
+        def tenant_member(self):
+            return api_tenant_member_connect.TenantMemberServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def token(self):
             return api_token_connect.TokenServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)

@@ -30,20 +30,6 @@ class Tenant(_message.Message):
     created_by: str
     def __init__(self, login: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., name: _Optional[str] = ..., email: _Optional[str] = ..., description: _Optional[str] = ..., avatar_url: _Optional[str] = ..., created_by: _Optional[str] = ...) -> None: ...
 
-class TenantMember(_message.Message):
-    __slots__ = ("id", "role", "projects", "created_at", "meta")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    ROLE_FIELD_NUMBER: _ClassVar[int]
-    PROJECTS_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
-    META_FIELD_NUMBER: _ClassVar[int]
-    id: str
-    role: _common_pb2.TenantRole
-    projects: _containers.RepeatedScalarFieldContainer[str]
-    created_at: _timestamp_pb2.Timestamp
-    meta: _common_pb2.Meta
-    def __init__(self, id: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., projects: _Optional[_Iterable[str]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ...) -> None: ...
-
 class TenantInvite(_message.Message):
     __slots__ = ("secret", "target_tenant", "role", "joined", "target_tenant_name", "tenant", "tenant_name", "expires_at", "joined_at")
     SECRET_FIELD_NUMBER: _ClassVar[int]
@@ -129,12 +115,10 @@ class TenantServiceDeleteRequest(_message.Message):
     def __init__(self, login: _Optional[str] = ...) -> None: ...
 
 class TenantServiceGetResponse(_message.Message):
-    __slots__ = ("tenant", "tenant_members")
+    __slots__ = ("tenant",)
     TENANT_FIELD_NUMBER: _ClassVar[int]
-    TENANT_MEMBERS_FIELD_NUMBER: _ClassVar[int]
     tenant: Tenant
-    tenant_members: _containers.RepeatedCompositeFieldContainer[TenantMember]
-    def __init__(self, tenant: _Optional[_Union[Tenant, _Mapping]] = ..., tenant_members: _Optional[_Iterable[_Union[TenantMember, _Mapping]]] = ...) -> None: ...
+    def __init__(self, tenant: _Optional[_Union[Tenant, _Mapping]] = ...) -> None: ...
 
 class TenantServiceListResponse(_message.Message):
     __slots__ = ("tenants",)
@@ -198,30 +182,6 @@ class TenantServiceInviteGetResponse(_message.Message):
     invite: TenantInvite
     def __init__(self, invite: _Optional[_Union[TenantInvite, _Mapping]] = ...) -> None: ...
 
-class TenantServiceRemoveMemberRequest(_message.Message):
-    __slots__ = ("login", "member")
-    LOGIN_FIELD_NUMBER: _ClassVar[int]
-    MEMBER_FIELD_NUMBER: _ClassVar[int]
-    login: str
-    member: str
-    def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
-
-class TenantServiceLeaveRequest(_message.Message):
-    __slots__ = ("login",)
-    LOGIN_FIELD_NUMBER: _ClassVar[int]
-    login: str
-    def __init__(self, login: _Optional[str] = ...) -> None: ...
-
-class TenantServiceLeaveResponse(_message.Message):
-    __slots__ = ()
-    def __init__(self) -> None: ...
-
-class TenantServiceRemoveMemberResponse(_message.Message):
-    __slots__ = ("tenant_member",)
-    TENANT_MEMBER_FIELD_NUMBER: _ClassVar[int]
-    tenant_member: TenantMember
-    def __init__(self, tenant_member: _Optional[_Union[TenantMember, _Mapping]] = ...) -> None: ...
-
 class TenantServiceInviteAcceptRequest(_message.Message):
     __slots__ = ("secret",)
     SECRET_FIELD_NUMBER: _ClassVar[int]
@@ -247,35 +207,3 @@ class TenantServiceInviteDeleteRequest(_message.Message):
 class TenantServiceInviteDeleteResponse(_message.Message):
     __slots__ = ()
     def __init__(self) -> None: ...
-
-class TenantServiceAddMemberRequest(_message.Message):
-    __slots__ = ("login", "member", "role")
-    LOGIN_FIELD_NUMBER: _ClassVar[int]
-    MEMBER_FIELD_NUMBER: _ClassVar[int]
-    ROLE_FIELD_NUMBER: _ClassVar[int]
-    login: str
-    member: str
-    role: _common_pb2.TenantRole
-    def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ...) -> None: ...
-
-class TenantServiceAddMemberResponse(_message.Message):
-    __slots__ = ("tenant_member",)
-    TENANT_MEMBER_FIELD_NUMBER: _ClassVar[int]
-    tenant_member: TenantMember
-    def __init__(self, tenant_member: _Optional[_Union[TenantMember, _Mapping]] = ...) -> None: ...
-
-class TenantServiceUpdateMemberRequest(_message.Message):
-    __slots__ = ("login", "member", "role")
-    LOGIN_FIELD_NUMBER: _ClassVar[int]
-    MEMBER_FIELD_NUMBER: _ClassVar[int]
-    ROLE_FIELD_NUMBER: _ClassVar[int]
-    login: str
-    member: str
-    role: _common_pb2.TenantRole
-    def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ...) -> None: ...
-
-class TenantServiceUpdateMemberResponse(_message.Message):
-    __slots__ = ("tenant_member",)
-    TENANT_MEMBER_FIELD_NUMBER: _ClassVar[int]
-    tenant_member: TenantMember
-    def __init__(self, tenant_member: _Optional[_Union[TenantMember, _Mapping]] = ...) -> None: ...

@@ -6,6 +6,7 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/tenant.proto";
+import "metalstack/api/v2/tenant_member.proto";
 
 // TenantService provides tenant management operations.
 service TenantService {
@@ -80,8 +81,8 @@ message TenantServiceAddMemberRequest {
 
 // TenantServiceAddMemberResponse is the response payload for the add member request.
 message TenantServiceAddMemberResponse {
-  // TenantMember is the added tenant member.
-  metalstack.api.v2.TenantMember tenant_member = 1;
+  // Member is the added tenant member.
+  metalstack.api.v2.TenantMember member = 1;
 }
 
 // TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant.
@@ -94,6 +95,6 @@ message TenantServiceRemoveMemberRequest {
 
 // TenantServiceRemoveMemberResponse is the response payload for the remove member request.
 message TenantServiceRemoveMemberResponse {
-  // TenantMember is the removed tenant member.
-  metalstack.api.v2.TenantMember tenant_member = 1;
+  // Member is the removed tenant member.
+  metalstack.api.v2.TenantMember member = 1;
 }

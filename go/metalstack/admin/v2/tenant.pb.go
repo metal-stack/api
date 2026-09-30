@@ -328,8 +328,8 @@ func (x *TenantServiceAddMemberRequest) GetRole() v2.TenantRole {
 // TenantServiceAddMemberResponse is the response payload for the add member request.
 type TenantServiceAddMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TenantMember is the added tenant member.
-	TenantMember  *v2.TenantMember `protobuf:"bytes,1,opt,name=tenant_member,json=tenantMember,proto3" json:"tenant_member,omitempty"`
+	// Member is the added tenant member.
+	Member        *v2.TenantMember `protobuf:"bytes,1,opt,name=member,proto3" json:"member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -364,9 +364,9 @@ func (*TenantServiceAddMemberResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_tenant_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *TenantServiceAddMemberResponse) GetTenantMember() *v2.TenantMember {
+func (x *TenantServiceAddMemberResponse) GetMember() *v2.TenantMember {
 	if x != nil {
-		return x.TenantMember
+		return x.Member
 	}
 	return nil
 }
@@ -429,8 +429,8 @@ func (x *TenantServiceRemoveMemberRequest) GetMember() string {
 // TenantServiceRemoveMemberResponse is the response payload for the remove member request.
 type TenantServiceRemoveMemberResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// TenantMember is the removed tenant member.
-	TenantMember  *v2.TenantMember `protobuf:"bytes,1,opt,name=tenant_member,json=tenantMember,proto3" json:"tenant_member,omitempty"`
+	// Member is the removed tenant member.
+	Member        *v2.TenantMember `protobuf:"bytes,1,opt,name=member,proto3" json:"member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -465,9 +465,9 @@ func (*TenantServiceRemoveMemberResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_tenant_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *TenantServiceRemoveMemberResponse) GetTenantMember() *v2.TenantMember {
+func (x *TenantServiceRemoveMemberResponse) GetMember() *v2.TenantMember {
 	if x != nil {
-		return x.TenantMember
+		return x.Member
 	}
 	return nil
 }
@@ -476,7 +476,7 @@ var File_metalstack_admin_v2_tenant_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\"\xd4\x02\n" +
+	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\x1a%metalstack/api/v2/tenant_member.proto\"\xd4\x02\n" +
 	"\x1aTenantServiceCreateRequest\x12\x1f\n" +
 	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x122\n" +
 	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12\"\n" +
@@ -501,14 +501,14 @@ const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\x1dTenantServiceAddMemberRequest\x12#\n" +
 	"\x06tenant\x18\x01 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06tenant\x12#\n" +
 	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12;\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"f\n" +
-	"\x1eTenantServiceAddMemberResponse\x12D\n" +
-	"\rtenant_member\x18\x01 \x01(\v2\x1f.metalstack.api.v2.TenantMemberR\ftenantMember\"l\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"Y\n" +
+	"\x1eTenantServiceAddMemberResponse\x127\n" +
+	"\x06member\x18\x01 \x01(\v2\x1f.metalstack.api.v2.TenantMemberR\x06member\"l\n" +
 	" TenantServiceRemoveMemberRequest\x12#\n" +
 	"\x06tenant\x18\x01 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06tenant\x12#\n" +
-	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\"i\n" +
-	"!TenantServiceRemoveMemberResponse\x12D\n" +
-	"\rtenant_member\x18\x01 \x01(\v2\x1f.metalstack.api.v2.TenantMemberR\ftenantMember2\x86\x04\n" +
+	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\"\\\n" +
+	"!TenantServiceRemoveMemberResponse\x127\n" +
+	"\x06member\x18\x01 \x01(\v2\x1f.metalstack.api.v2.TenantMemberR\x06member2\x86\x04\n" +
 	"\rTenantService\x12v\n" +
 	"\x06Create\x12/.metalstack.admin.v2.TenantServiceCreateRequest\x1a0.metalstack.admin.v2.TenantServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12q\n" +
 	"\x04List\x12-.metalstack.admin.v2.TenantServiceListRequest\x1a..metalstack.admin.v2.TenantServiceListResponse\"\n" +
@@ -551,8 +551,8 @@ var file_metalstack_admin_v2_tenant_proto_depIdxs = []int32{
 	10, // 2: metalstack.admin.v2.TenantServiceListRequest.query:type_name -> metalstack.api.v2.TenantQuery
 	9,  // 3: metalstack.admin.v2.TenantServiceListResponse.tenants:type_name -> metalstack.api.v2.Tenant
 	11, // 4: metalstack.admin.v2.TenantServiceAddMemberRequest.role:type_name -> metalstack.api.v2.TenantRole
-	12, // 5: metalstack.admin.v2.TenantServiceAddMemberResponse.tenant_member:type_name -> metalstack.api.v2.TenantMember
-	12, // 6: metalstack.admin.v2.TenantServiceRemoveMemberResponse.tenant_member:type_name -> metalstack.api.v2.TenantMember
+	12, // 5: metalstack.admin.v2.TenantServiceAddMemberResponse.member:type_name -> metalstack.api.v2.TenantMember
+	12, // 6: metalstack.admin.v2.TenantServiceRemoveMemberResponse.member:type_name -> metalstack.api.v2.TenantMember
 	0,  // 7: metalstack.admin.v2.TenantService.Create:input_type -> metalstack.admin.v2.TenantServiceCreateRequest
 	2,  // 8: metalstack.admin.v2.TenantService.List:input_type -> metalstack.admin.v2.TenantServiceListRequest
 	4,  // 9: metalstack.admin.v2.TenantService.AddMember:input_type -> metalstack.admin.v2.TenantServiceAddMemberRequest

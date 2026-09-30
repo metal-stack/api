@@ -1,0 +1,163 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+
+// TenantMemberService provides tenant member management operations.
+service TenantMemberService {
+  // Creates a new tenant member.
+  rpc Create(TenantMemberServiceCreateRequest) returns (TenantMemberServiceCreateResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // Returns the list of tenant members.
+  rpc List(TenantMemberServiceListRequest) returns (TenantMemberServiceListResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (tenant_roles) = TENANT_ROLE_GUEST;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Get a tenant member.
+  rpc Get(TenantMemberServiceGetRequest) returns (TenantMemberServiceGetResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (tenant_roles) = TENANT_ROLE_GUEST;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // Update a tenant member.
+  rpc Update(TenantMemberServiceUpdateRequest) returns (TenantMemberServiceUpdateResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // Delete a tenant.
+  rpc Delete(TenantMemberServiceDeleteRequest) returns (TenantMemberServiceDeleteResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+
+  // Leave removes a member from a tenant.
+  rpc Leave(TenantMemberServiceLeaveRequest) returns (TenantMemberServiceLeaveResponse) {
+    option (visibility) = VISIBILITY_SELF;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+}
+
+// TenantMember defines a user that participates in a tenant.
+message TenantMember {
+  // Member is the user id of the member.
+  string member = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Role is the role of the member.
+  TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
+  // Projects in which a user is a direct member.
+  repeated string projects = 3;
+  // CreatedAt the date when the member was added to the tenant.
+  google.protobuf.Timestamp created_at = 4;
+  // Meta for this tenant member.
+  Meta meta = 5;
+  // Tenant is the tenant that this member participates in.
+  string tenant = 6 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+}
+
+// TenantMemberServiceListRequest is the request payload of the tenant member list request.
+message TenantMemberServiceListRequest {
+  // Login of the tenant.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Query for tenant members.
+  TenantMemberQuery query = 2;
+}
+
+// TenantMemberQuery is used to search tenant members.
+message TenantMemberQuery {
+  // Member is the user id of the member.
+  optional string member = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Role is the role of the member.
+  optional TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
+  // Projects in which a user is a direct member.
+  repeated string projects = 3;
+}
+
+// TenantMemberServiceGetRequest is the request payload of the tenant member get request.
+message TenantMemberServiceGetRequest {
+  // Login of the tenant.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Member is the user id of the member.
+  string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+}
+
+// TenantMemberServiceDeleteRequest is used to remove a member from a tenant.
+message TenantMemberServiceDeleteRequest {
+  // Login of the tenant.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Member is the id of the member to remove from this tenant.
+  string member = 2;
+}
+
+// TenantMemberServiceCreateRequest is the request payload for adding a member to a tenant.
+message TenantMemberServiceCreateRequest {
+  // Login of the tenant to which the member will be added.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Login of the member to add.
+  string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Role to assign to the new member.
+  TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
+}
+
+// TenantMemberServiceUpdateRequest is used to update a member from a tenant.
+message TenantMemberServiceUpdateRequest {
+  // Login of the tenant.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Member is the id of the member to update in this tenant.
+  string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Role of this user in this tenant.
+  optional TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
+  // UpdateMeta contains the timestamp and strategy to be used in this update request.
+  UpdateMeta update_meta = 4 [(buf.validate.field).required = true];
+}
+
+// TenantMemberServiceGetResponse is the response payload of the tenant member get request.
+message TenantMemberServiceGetResponse {
+  // Member is the member of this tenant.
+  TenantMember member = 1;
+}
+
+// TenantMemberServiceListResponse is the response payload of the tenant member list request.
+message TenantMemberServiceListResponse {
+  // Members is the list of tenant members.
+  repeated TenantMember members = 1;
+}
+
+// TenantMemberServiceCreateResponse is the response payload of the tenant member create request.
+message TenantMemberServiceCreateResponse {
+  // Member is the member of this tenant.
+  TenantMember member = 1;
+}
+
+// TenantMemberServiceUpdateResponse is the response payload of the tenant member update request.
+message TenantMemberServiceUpdateResponse {
+  // Member is the member of this tenant.
+  TenantMember member = 1;
+}
+
+// TenantMemberServiceDeleteResponse is the response payload of the tenant member delete request.
+message TenantMemberServiceDeleteResponse {
+  // Member is the member of this tenant.
+  TenantMember member = 1;
+}
+
+// TenantMemberServiceLeaveRequest is used to leave a tenant. This way a member is not required to ask a tenant owner to remove him.
+message TenantMemberServiceLeaveRequest {
+  // Login of the tenant that the user wants to leave.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+}
+
+// TenantMemberServiceLeaveResponse is the response payload to a leave tenant request.
+message TenantMemberServiceLeaveResponse {
+  // Member is the member of this tenant.
+  TenantMember member = 1;
+}

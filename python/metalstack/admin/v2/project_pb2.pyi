@@ -2,6 +2,7 @@ from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import project_pb2 as _project_pb2
+from metalstack.api.v2 import project_member_pb2 as _project_member_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -43,3 +44,33 @@ class ProjectServiceCreateResponse(_message.Message):
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     project: _project_pb2.Project
     def __init__(self, project: _Optional[_Union[_project_pb2.Project, _Mapping]] = ...) -> None: ...
+
+class ProjectServiceAddMemberRequest(_message.Message):
+    __slots__ = ("project", "member", "role")
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    ROLE_FIELD_NUMBER: _ClassVar[int]
+    project: str
+    member: str
+    role: _common_pb2.ProjectRole
+    def __init__(self, project: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ...) -> None: ...
+
+class ProjectServiceAddMemberResponse(_message.Message):
+    __slots__ = ("member",)
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    member: _project_member_pb2.ProjectMember
+    def __init__(self, member: _Optional[_Union[_project_member_pb2.ProjectMember, _Mapping]] = ...) -> None: ...
+
+class ProjectServiceRemoveMemberRequest(_message.Message):
+    __slots__ = ("project", "member")
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    project: str
+    member: str
+    def __init__(self, project: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
+
+class ProjectServiceRemoveMemberResponse(_message.Message):
+    __slots__ = ("member",)
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    member: _project_member_pb2.ProjectMember
+    def __init__(self, member: _Optional[_Union[_project_member_pb2.ProjectMember, _Mapping]] = ...) -> None: ...

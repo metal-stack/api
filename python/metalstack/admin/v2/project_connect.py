@@ -24,6 +24,12 @@ class ProjectService(Protocol):
     async def list(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def add_member(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
+    async def remove_member(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class ProjectServiceASGIApplication(ConnectASGIApplication[ProjectService]):
     def __init__(self, service: ProjectService | AsyncGenerator[ProjectService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
@@ -49,6 +55,26 @@ class ProjectServiceASGIApplication(ConnectASGIApplication[ProjectService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.list,
+                ),
+                "/metalstack.admin.v2.ProjectService/AddMember": Endpoint.unary(
+                    method=MethodInfo(
+                        name="AddMember",
+                        service_name="metalstack.admin.v2.ProjectService",
+                        input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.add_member,
+                ),
+                "/metalstack.admin.v2.ProjectService/RemoveMember": Endpoint.unary(
+                    method=MethodInfo(
+                        name="RemoveMember",
+                        service_name="metalstack.admin.v2.ProjectService",
+                        input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.remove_member,
                 ),
             },
             interceptors=interceptors,
@@ -104,6 +130,46 @@ class ProjectServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def add_member(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="AddMember",
+                service_name="metalstack.admin.v2.ProjectService",
+                input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberRequest,
+                output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    async def remove_member(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="RemoveMember",
+                service_name="metalstack.admin.v2.ProjectService",
+                input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
+                output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 
 
@@ -112,6 +178,10 @@ class ProjectServiceSync(Protocol):
     def create(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceCreateResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def list(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def add_member(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def remove_member(self, request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -138,6 +208,26 @@ class ProjectServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.list,
+                ),
+                "/metalstack.admin.v2.ProjectService/AddMember": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="AddMember",
+                        service_name="metalstack.admin.v2.ProjectService",
+                        input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.add_member,
+                ),
+                "/metalstack.admin.v2.ProjectService/RemoveMember": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="RemoveMember",
+                        service_name="metalstack.admin.v2.ProjectService",
+                        input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.remove_member,
                 ),
             },
             interceptors=interceptors,
@@ -187,6 +277,46 @@ class ProjectServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.ProjectService",
                 input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListRequest,
                 output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceListResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def add_member(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="AddMember",
+                service_name="metalstack.admin.v2.ProjectService",
+                input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberRequest,
+                output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceAddMemberResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def remove_member(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="RemoveMember",
+                service_name="metalstack.admin.v2.ProjectService",
+                input=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberRequest,
+                output=metalstack_dot_admin_dot_v2_dot_project__pb2.ProjectServiceRemoveMemberResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
