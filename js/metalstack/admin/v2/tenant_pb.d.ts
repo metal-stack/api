@@ -1,6 +1,7 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Labels, TenantRole } from "../../api/v2/common_pb";
-import type { Tenant, TenantMember, TenantQuery } from "../../api/v2/tenant_pb";
+import type { Tenant, TenantQuery } from "../../api/v2/tenant_pb";
+import type { TenantMember } from "../../api/v2/tenant_member_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/tenant.proto.
@@ -42,6 +43,12 @@ export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServ
      * @generated from field: metalstack.api.v2.Labels labels = 5;
      */
     labels?: Labels | undefined;
+    /**
+     * Login of the tenant.
+     *
+     * @generated from field: optional string login = 6;
+     */
+    login?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceCreateRequest.
@@ -145,11 +152,11 @@ export declare const TenantServiceAddMemberRequestSchema: GenMessage<TenantServi
  */
 export type TenantServiceAddMemberResponse = Message<"metalstack.admin.v2.TenantServiceAddMemberResponse"> & {
     /**
-     * TenantMember is the added tenant member.
+     * Member is the added tenant member.
      *
-     * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
+     * @generated from field: metalstack.api.v2.TenantMember member = 1;
      */
-    tenantMember?: TenantMember | undefined;
+    member?: TenantMember | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceAddMemberResponse.
@@ -187,11 +194,11 @@ export declare const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantSe
  */
 export type TenantServiceRemoveMemberResponse = Message<"metalstack.admin.v2.TenantServiceRemoveMemberResponse"> & {
     /**
-     * TenantMember is the removed tenant member.
+     * Member is the removed tenant member.
      *
-     * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
+     * @generated from field: metalstack.api.v2.TenantMember member = 1;
      */
-    tenantMember?: TenantMember | undefined;
+    member?: TenantMember | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceRemoveMemberResponse.

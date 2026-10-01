@@ -1,5 +1,8 @@
+from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import project_pb2 as _project_pb2
+from metalstack.api.v2 import project_member_pb2 as _project_member_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -19,3 +22,55 @@ class ProjectServiceListResponse(_message.Message):
     PROJECTS_FIELD_NUMBER: _ClassVar[int]
     projects: _containers.RepeatedCompositeFieldContainer[_project_pb2.Project]
     def __init__(self, projects: _Optional[_Iterable[_Union[_project_pb2.Project, _Mapping]]] = ...) -> None: ...
+
+class ProjectServiceCreateRequest(_message.Message):
+    __slots__ = ("login", "name", "description", "avatar_url", "labels", "project")
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    AVATAR_URL_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    login: str
+    name: str
+    description: str
+    avatar_url: str
+    labels: _common_pb2.Labels
+    project: str
+    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., avatar_url: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., project: _Optional[str] = ...) -> None: ...
+
+class ProjectServiceCreateResponse(_message.Message):
+    __slots__ = ("project",)
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    project: _project_pb2.Project
+    def __init__(self, project: _Optional[_Union[_project_pb2.Project, _Mapping]] = ...) -> None: ...
+
+class ProjectServiceAddMemberRequest(_message.Message):
+    __slots__ = ("project", "member", "role")
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    ROLE_FIELD_NUMBER: _ClassVar[int]
+    project: str
+    member: str
+    role: _common_pb2.ProjectRole
+    def __init__(self, project: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ...) -> None: ...
+
+class ProjectServiceAddMemberResponse(_message.Message):
+    __slots__ = ("member",)
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    member: _project_member_pb2.ProjectMember
+    def __init__(self, member: _Optional[_Union[_project_member_pb2.ProjectMember, _Mapping]] = ...) -> None: ...
+
+class ProjectServiceRemoveMemberRequest(_message.Message):
+    __slots__ = ("project", "member")
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    project: str
+    member: str
+    def __init__(self, project: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
+
+class ProjectServiceRemoveMemberResponse(_message.Message):
+    __slots__ = ("member",)
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    member: _project_member_pb2.ProjectMember
+    def __init__(self, member: _Optional[_Union[_project_member_pb2.ProjectMember, _Mapping]] = ...) -> None: ...
