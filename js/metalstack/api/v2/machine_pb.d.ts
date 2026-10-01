@@ -1029,8 +1029,7 @@ export type MachineNic = Message<"metalstack.api.v2.MachineNic"> & {
     /**
      * Mac the macaddress of this interface.
      *
-     * @generated from field: string mac = 1 [deprecated = true];
-     * @deprecated
+     * @generated from field: string mac = 1;
      */
     mac: string;
     /**
