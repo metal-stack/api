@@ -1,7 +1,7 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Duration } from "@bufbuild/protobuf/wkt";
 import type { Labels } from "../../api/v2/common_pb";
-import type { MachineAllocation, MachineBios, MachineBMC, MachineFRU, MachineHardware } from "../../api/v2/machine_pb";
+import type { MachineAllocation, MachineBios, MachineBMC, MachineFRU, MachineHardware, MachineProvisioningEvent } from "../../api/v2/machine_pb";
 import type { Token } from "../../api/v2/token_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -361,6 +361,41 @@ export type BootServiceSuperUserPasswordResponse = Message<"metalstack.infra.v2.
  */
 export declare const BootServiceSuperUserPasswordResponseSchema: GenMessage<BootServiceSuperUserPasswordResponse>;
 /**
+ * BootServiceEventSendRequest is the request payload for sending a provisioning event.
+ *
+ * @generated from message metalstack.infra.v2.BootServiceSendEventRequest
+ */
+export type BootServiceSendEventRequest = Message<"metalstack.infra.v2.BootServiceSendEventRequest"> & {
+    /**
+     * UUID of the machine.
+     *
+     * @generated from field: string uuid = 1;
+     */
+    uuid: string;
+    /**
+     * Event is the machine provisioning event.
+     *
+     * @generated from field: metalstack.api.v2.MachineProvisioningEvent event = 2;
+     */
+    event?: MachineProvisioningEvent | undefined;
+};
+/**
+ * Describes the message metalstack.infra.v2.BootServiceSendEventRequest.
+ * Use `create(BootServiceSendEventRequestSchema)` to create a new message.
+ */
+export declare const BootServiceSendEventRequestSchema: GenMessage<BootServiceSendEventRequest>;
+/**
+ * BootServiceEventSendResponse is the response payload for sending provisioning events.
+ *
+ * @generated from message metalstack.infra.v2.BootServiceSendEventResponse
+ */
+export type BootServiceSendEventResponse = Message<"metalstack.infra.v2.BootServiceSendEventResponse"> & {};
+/**
+ * Describes the message metalstack.infra.v2.BootServiceSendEventResponse.
+ * Use `create(BootServiceSendEventResponseSchema)` to create a new message.
+ */
+export declare const BootServiceSendEventResponseSchema: GenMessage<BootServiceSendEventResponse>;
+/**
  * BootService provides boot-related operations for pixiecore and metal-hammer.
  *
  * Pixiecore
@@ -437,5 +472,15 @@ export declare const BootService: GenService<{
         methodKind: "unary";
         input: typeof BootServiceInstallationSucceededRequestSchema;
         output: typeof BootServiceInstallationSucceededResponseSchema;
+    };
+    /**
+     * SendEvent is used to send provisioning events to the metal-apiserver.
+     *
+     * @generated from rpc metalstack.infra.v2.BootService.SendEvent
+     */
+    sendEvent: {
+        methodKind: "unary";
+        input: typeof BootServiceSendEventRequestSchema;
+        output: typeof BootServiceSendEventResponseSchema;
     };
 }>;
