@@ -229,7 +229,11 @@ message MachineServiceBMCCommandRequest {
 }
 
 // MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
-message MachineServiceBMCCommandResponse {}
+message MachineServiceBMCCommandResponse {
+  // TaskId is the identifier of the task that managed the bmc command execution.
+  // Only useful for admins.
+  string task_id = 1;
+}
 
 // MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
 message MachineServiceGetBMCRequest {
@@ -483,7 +487,7 @@ message MetalGPU {
 // MachineNic contains details of a network interface of this machine.
 message MachineNic {
   // Mac the macaddress of this interface.
-  string mac = 1 [(buf.validate.field).string.(macaddress) = true];
+  string mac = 1 [deprecated = true];
   // Name of this interface.
   string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Identifier the unique identifier of this network interface.

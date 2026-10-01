@@ -1439,7 +1439,10 @@ func (x *MachineServiceBMCCommandRequest) GetCommand() MachineBMCCommand {
 
 // MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
 type MachineServiceBMCCommandResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// TaskId is the identifier of the task that managed the bmc command execution.
+	// Only useful for admins.
+	TaskId        string `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1472,6 +1475,13 @@ func (x *MachineServiceBMCCommandResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use MachineServiceBMCCommandResponse.ProtoReflect.Descriptor instead.
 func (*MachineServiceBMCCommandResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *MachineServiceBMCCommandResponse) GetTaskId() string {
+	if x != nil {
+		return x.TaskId
+	}
+	return ""
 }
 
 // MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
@@ -2640,6 +2650,8 @@ func (x *MetalGPU) GetModel() string {
 type MachineNic struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Mac the macaddress of this interface.
+	//
+	// Deprecated: Marked as deprecated in metalstack/api/v2/machine.proto.
 	Mac string `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Name of this interface.
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
@@ -2689,6 +2701,7 @@ func (*MachineNic) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{27}
 }
 
+// Deprecated: Marked as deprecated in metalstack/api/v2/machine.proto.
 func (x *MachineNic) GetMac() string {
 	if x != nil {
 		return x.Mac
@@ -4732,8 +4745,9 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\x1fMachineServiceBMCCommandRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12H\n" +
-	"\acommand\x18\x03 \x01(\x0e2$.metalstack.api.v2.MachineBMCCommandB\b\xbaH\x05\x82\x01\x02\x10\x01R\acommand\"\"\n" +
-	" MachineServiceBMCCommandResponse\"_\n" +
+	"\acommand\x18\x03 \x01(\x0e2$.metalstack.api.v2.MachineBMCCommandB\b\xbaH\x05\x82\x01\x02\x10\x01R\acommand\";\n" +
+	" MachineServiceBMCCommandResponse\x12\x17\n" +
+	"\atask_id\x18\x01 \x01(\tR\x06taskId\"_\n" +
 	"\x1bMachineServiceGetBMCRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n" +
 	"\aproject\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"e\n" +
@@ -4832,10 +4846,10 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\athreads\x18\x04 \x01(\rR\athreads\"L\n" +
 	"\bMetalGPU\x12 \n" +
 	"\x06vendor\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06vendor\x12\x1e\n" +
-	"\x05model\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x05model\"\xa7\x02\n" +
+	"\x05model\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x05model\"\x9e\x02\n" +
 	"\n" +
-	"MachineNic\x12\x1d\n" +
-	"\x03mac\x18\x01 \x01(\tB\v\xbaH\br\x06\xb8\xb3\xae\xb1\x02\x01R\x03mac\x12\x1f\n" +
+	"MachineNic\x12\x14\n" +
+	"\x03mac\x18\x01 \x01(\tB\x02\x18\x01R\x03mac\x12\x1f\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12(\n" +
 	"\n" +
 	"identifier\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\n" +

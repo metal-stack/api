@@ -407,7 +407,15 @@ export declare const MachineServiceBMCCommandRequestSchema: GenMessage<MachineSe
  *
  * @generated from message metalstack.api.v2.MachineServiceBMCCommandResponse
  */
-export type MachineServiceBMCCommandResponse = Message<"metalstack.api.v2.MachineServiceBMCCommandResponse"> & {};
+export type MachineServiceBMCCommandResponse = Message<"metalstack.api.v2.MachineServiceBMCCommandResponse"> & {
+    /**
+     * TaskId is the identifier of the task that managed the bmc command execution.
+     * Only useful for admins.
+     *
+     * @generated from field: string task_id = 1;
+     */
+    taskId: string;
+};
 /**
  * Describes the message metalstack.api.v2.MachineServiceBMCCommandResponse.
  * Use `create(MachineServiceBMCCommandResponseSchema)` to create a new message.
@@ -1021,7 +1029,8 @@ export type MachineNic = Message<"metalstack.api.v2.MachineNic"> & {
     /**
      * Mac the macaddress of this interface.
      *
-     * @generated from field: string mac = 1;
+     * @generated from field: string mac = 1 [deprecated = true];
+     * @deprecated
      */
     mac: string;
     /**

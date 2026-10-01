@@ -366,7 +366,9 @@ func (x *MachineServiceBMCCommandRequest) GetCommand() v2.MachineBMCCommand {
 
 // MachineServiceBMCCommandResponse is the response payload for a machine bmc command.
 type MachineServiceBMCCommandResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// TaskId is the identifier of the task that managed the bmc command execution.
+	TaskId        string `protobuf:"bytes,1,opt,name=task_id,json=taskId,proto3" json:"task_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -399,6 +401,13 @@ func (x *MachineServiceBMCCommandResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use MachineServiceBMCCommandResponse.ProtoReflect.Descriptor instead.
 func (*MachineServiceBMCCommandResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_machine_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *MachineServiceBMCCommandResponse) GetTaskId() string {
+	if x != nil {
+		return x.TaskId
+	}
+	return ""
 }
 
 // MachineServiceGetBMCRequest is the request payload for a machine getbmc request.
@@ -921,8 +930,9 @@ const file_metalstack_admin_v2_machine_proto_rawDesc = "" +
 	"\amachine\x18\x01 \x01(\v2\x1a.metalstack.api.v2.MachineR\amachine\"\x89\x01\n" +
 	"\x1fMachineServiceBMCCommandRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12H\n" +
-	"\acommand\x18\x02 \x01(\x0e2$.metalstack.api.v2.MachineBMCCommandB\b\xbaH\x05\x82\x01\x02\x10\x01R\acommand\"\"\n" +
-	" MachineServiceBMCCommandResponse\";\n" +
+	"\acommand\x18\x02 \x01(\x0e2$.metalstack.api.v2.MachineBMCCommandB\b\xbaH\x05\x82\x01\x02\x10\x01R\acommand\";\n" +
+	" MachineServiceBMCCommandResponse\x12\x17\n" +
+	"\atask_id\x18\x01 \x01(\tR\x06taskId\";\n" +
 	"\x1bMachineServiceGetBMCRequest\x12\x1c\n" +
 	"\x04uuid\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"e\n" +
 	"\x1cMachineServiceGetBMCResponse\x12E\n" +

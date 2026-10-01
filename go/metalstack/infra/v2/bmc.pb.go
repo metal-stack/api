@@ -376,8 +376,8 @@ const file_metalstack_infra_v2_bmc_proto_rawDesc = "" +
 	"\x16BMCCommandDoneResponse2\xf6\x02\n" +
 	"\n" +
 	"BMCService\x12q\n" +
-	"\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x01\x12\x7f\n" +
-	"\x11WaitForBMCCommand\x12-.metalstack.infra.v2.WaitForBMCCommandRequest\x1a..metalstack.infra.v2.WaitForBMCCommandResponse\"\t\xe0\xf3\x18\x02\xea\xf3\x18\x01\x010\x01\x12t\n" +
+	"\rUpdateBMCInfo\x12).metalstack.infra.v2.UpdateBMCInfoRequest\x1a*.metalstack.infra.v2.UpdateBMCInfoResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01\x12\x7f\n" +
+	"\x11WaitForBMCCommand\x12-.metalstack.infra.v2.WaitForBMCCommandRequest\x1a..metalstack.infra.v2.WaitForBMCCommandResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x010\x01\x12t\n" +
 	"\x0eBMCCommandDone\x12*.metalstack.infra.v2.BMCCommandDoneRequest\x1a+.metalstack.infra.v2.BMCCommandDoneResponse\"\t\xe0\xf3\x18\x01\xea\xf3\x18\x01\x01B\xcc\x01\n" +
 	"\x17com.metalstack.infra.v2B\bBmcProtoP\x01Z9github.com/metal-stack/api/go/metalstack/infra/v2;infrav2\xa2\x02\x03MIX\xaa\x02\x13Metalstack.Infra.V2\xca\x02\x13Metalstack\\Infra\\V2\xe2\x02\x1fMetalstack\\Infra\\V2\\GPBMetadata\xea\x02\x15Metalstack::Infra::V2b\x06proto3"
 

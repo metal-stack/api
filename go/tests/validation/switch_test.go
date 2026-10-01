@@ -13,7 +13,6 @@ func TestValidateSwitch(t *testing.T) {
 			msg: &apiv2.SwitchNic{
 				Name:       "eth0",
 				Identifier: "swp1",
-				Mac:        new("abc"),
 				Vrf:        new("10"),
 			},
 			wantErr:          true,
@@ -24,7 +23,6 @@ func TestValidateSwitch(t *testing.T) {
 			msg: &apiv2.SwitchNic{
 				Name:       "eth0",
 				Identifier: "swp1",
-				Mac:        new("00:80:41:ae:fd:7e"),
 				Vrf:        new("10"),
 			},
 			wantErr: false,
@@ -34,7 +32,6 @@ func TestValidateSwitch(t *testing.T) {
 			msg: &apiv2.SwitchNic{
 				Name:       "eth0",
 				Identifier: "swp1",
-				Mac:        new("00:80:41:AE:FD:7E"),
 				Vrf:        new("10"),
 			},
 			wantErr: false,
