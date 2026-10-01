@@ -20,5 +20,5 @@
   "files": [
     "./*"
   ],
-  "version": "deprecate-switchnic-mac"
+  "version": "cleanup-network-externalmembers"
 }
