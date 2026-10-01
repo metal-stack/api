@@ -131,3 +131,15 @@ class BootServiceSuperUserPasswordResponse(_message.Message):
     feature_disabled: bool
     super_user_password: str
     def __init__(self, feature_disabled: _Optional[bool] = ..., super_user_password: _Optional[str] = ...) -> None: ...
+
+class BootServiceSendEventRequest(_message.Message):
+    __slots__ = ("uuid", "event")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    EVENT_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    event: _machine_pb2.MachineProvisioningEvent
+    def __init__(self, uuid: _Optional[str] = ..., event: _Optional[_Union[_machine_pb2.MachineProvisioningEvent, _Mapping]] = ...) -> None: ...
+
+class BootServiceSendEventResponse(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...

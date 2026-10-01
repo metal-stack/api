@@ -50,6 +50,8 @@ const (
 	// BootServiceInstallationSucceededProcedure is the fully-qualified name of the BootService's
 	// InstallationSucceeded RPC.
 	BootServiceInstallationSucceededProcedure = "/metalstack.infra.v2.BootService/InstallationSucceeded"
+	// BootServiceSendEventProcedure is the fully-qualified name of the BootService's SendEvent RPC.
+	BootServiceSendEventProcedure = "/metalstack.infra.v2.BootService/SendEvent"
 )
 
 // BootServiceClient is a client for the metalstack.infra.v2.BootService service.
@@ -68,6 +70,8 @@ type BootServiceClient interface {
 	Wait(context.Context, *v2.BootServiceWaitRequest) (*connect.ServerStreamForClient[v2.BootServiceWaitResponse], error)
 	// InstallationSucceeded tells metal-apiserver that installation was successful.
 	InstallationSucceeded(context.Context, *v2.BootServiceInstallationSucceededRequest) (*v2.BootServiceInstallationSucceededResponse, error)
+	// SendEvent is used to send provisioning events to the metal-apiserver.
+	SendEvent(context.Context, *v2.BootServiceSendEventRequest) (*v2.BootServiceSendEventResponse, error)
 }
 
 // NewBootServiceClient constructs a client for the metalstack.infra.v2.BootService service. By
@@ -123,6 +127,12 @@ func NewBootServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(bootServiceMethods.ByName("InstallationSucceeded")),
 			connect.WithClientOptions(opts...),
 		),
+		sendEvent: connect.NewClient[v2.BootServiceSendEventRequest, v2.BootServiceSendEventResponse](
+			httpClient,
+			baseURL+BootServiceSendEventProcedure,
+			connect.WithSchema(bootServiceMethods.ByName("SendEvent")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -135,6 +145,7 @@ type bootServiceClient struct {
 	register              *connect.Client[v2.BootServiceRegisterRequest, v2.BootServiceRegisterResponse]
 	wait                  *connect.Client[v2.BootServiceWaitRequest, v2.BootServiceWaitResponse]
 	installationSucceeded *connect.Client[v2.BootServiceInstallationSucceededRequest, v2.BootServiceInstallationSucceededResponse]
+	sendEvent             *connect.Client[v2.BootServiceSendEventRequest, v2.BootServiceSendEventResponse]
 }
 
 // Dhcp calls metalstack.infra.v2.BootService.Dhcp.
@@ -196,6 +207,15 @@ func (c *bootServiceClient) InstallationSucceeded(ctx context.Context, req *v2.B
 	return nil, err
 }
 
+// SendEvent calls metalstack.infra.v2.BootService.SendEvent.
+func (c *bootServiceClient) SendEvent(ctx context.Context, req *v2.BootServiceSendEventRequest) (*v2.BootServiceSendEventResponse, error) {
+	response, err := c.sendEvent.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // BootServiceHandler is an implementation of the metalstack.infra.v2.BootService service.
 type BootServiceHandler interface {
 	// Dhcp handles the first DHCP request (option 97). A ProvisioningEventPXEBooting is fired.
@@ -212,6 +232,8 @@ type BootServiceHandler interface {
 	Wait(context.Context, *v2.BootServiceWaitRequest, *connect.ServerStream[v2.BootServiceWaitResponse]) error
 	// InstallationSucceeded tells metal-apiserver that installation was successful.
 	InstallationSucceeded(context.Context, *v2.BootServiceInstallationSucceededRequest) (*v2.BootServiceInstallationSucceededResponse, error)
+	// SendEvent is used to send provisioning events to the metal-apiserver.
+	SendEvent(context.Context, *v2.BootServiceSendEventRequest) (*v2.BootServiceSendEventResponse, error)
 }
 
 // NewBootServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -263,6 +285,12 @@ func NewBootServiceHandler(svc BootServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(bootServiceMethods.ByName("InstallationSucceeded")),
 		connect.WithHandlerOptions(opts...),
 	)
+	bootServiceSendEventHandler := connect.NewUnaryHandlerSimple(
+		BootServiceSendEventProcedure,
+		svc.SendEvent,
+		connect.WithSchema(bootServiceMethods.ByName("SendEvent")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.infra.v2.BootService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case BootServiceDhcpProcedure:
@@ -279,6 +307,8 @@ func NewBootServiceHandler(svc BootServiceHandler, opts ...connect.HandlerOption
 			bootServiceWaitHandler.ServeHTTP(w, r)
 		case BootServiceInstallationSucceededProcedure:
 			bootServiceInstallationSucceededHandler.ServeHTTP(w, r)
+		case BootServiceSendEventProcedure:
+			bootServiceSendEventHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -314,4 +344,8 @@ func (UnimplementedBootServiceHandler) Wait(context.Context, *v2.BootServiceWait
 
 func (UnimplementedBootServiceHandler) InstallationSucceeded(context.Context, *v2.BootServiceInstallationSucceededRequest) (*v2.BootServiceInstallationSucceededResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.InstallationSucceeded is not implemented"))
+}
+
+func (UnimplementedBootServiceHandler) SendEvent(context.Context, *v2.BootServiceSendEventRequest) (*v2.BootServiceSendEventResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.SendEvent is not implemented"))
 }

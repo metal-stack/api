@@ -39,6 +39,9 @@ class BootService(Protocol):
     async def installation_succeeded(self, request: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceInstallationSucceededRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceInstallationSucceededResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def send_event(self, request: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class BootServiceASGIApplication(ConnectASGIApplication[BootService]):
     def __init__(self, service: BootService | AsyncGenerator[BootService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
@@ -114,6 +117,16 @@ class BootServiceASGIApplication(ConnectASGIApplication[BootService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.installation_succeeded,
+                ),
+                "/metalstack.infra.v2.BootService/SendEvent": Endpoint.unary(
+                    method=MethodInfo(
+                        name="SendEvent",
+                        service_name="metalstack.infra.v2.BootService",
+                        input=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.send_event,
                 ),
             },
             interceptors=interceptors,
@@ -269,6 +282,26 @@ class BootServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def send_event(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="SendEvent",
+                service_name="metalstack.infra.v2.BootService",
+                input=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventRequest,
+                output=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 
 
@@ -287,6 +320,8 @@ class BootServiceSync(Protocol):
     def wait(self, request: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceWaitRequest, ctx: RequestContext) -> Iterator[metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceWaitResponse]:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def installation_succeeded(self, request: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceInstallationSucceededRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceInstallationSucceededResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def send_event(self, request: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventRequest, ctx: RequestContext) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -363,6 +398,16 @@ class BootServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.installation_succeeded,
+                ),
+                "/metalstack.infra.v2.BootService/SendEvent": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="SendEvent",
+                        service_name="metalstack.infra.v2.BootService",
+                        input=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventRequest,
+                        output=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.send_event,
                 ),
             },
             interceptors=interceptors,
@@ -512,6 +557,26 @@ class BootServiceClientSync(ConnectClientSync):
                 service_name="metalstack.infra.v2.BootService",
                 input=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceInstallationSucceededRequest,
                 output=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceInstallationSucceededResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def send_event(
+        self,
+        request: metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="SendEvent",
+                service_name="metalstack.infra.v2.BootService",
+                input=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventRequest,
+                output=metalstack_dot_infra_dot_v2_dot_boot__pb2.BootServiceSendEventResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
