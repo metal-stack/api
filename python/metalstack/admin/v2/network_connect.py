@@ -33,15 +33,6 @@ class NetworkService(Protocol):
     async def list(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
-    async def list_external_members(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-
-    async def add_external_members(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-
-    async def remove_external_members(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-
 
 class NetworkServiceASGIApplication(ConnectASGIApplication[NetworkService]):
     def __init__(self, service: NetworkService | AsyncGenerator[NetworkService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
@@ -97,36 +88,6 @@ class NetworkServiceASGIApplication(ConnectASGIApplication[NetworkService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.list,
-                ),
-                "/metalstack.admin.v2.NetworkService/ListExternalMembers": Endpoint.unary(
-                    method=MethodInfo(
-                        name="ListExternalMembers",
-                        service_name="metalstack.admin.v2.NetworkService",
-                        input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=svc.list_external_members,
-                ),
-                "/metalstack.admin.v2.NetworkService/AddExternalMembers": Endpoint.unary(
-                    method=MethodInfo(
-                        name="AddExternalMembers",
-                        service_name="metalstack.admin.v2.NetworkService",
-                        input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=svc.add_external_members,
-                ),
-                "/metalstack.admin.v2.NetworkService/RemoveExternalMembers": Endpoint.unary(
-                    method=MethodInfo(
-                        name="RemoveExternalMembers",
-                        service_name="metalstack.admin.v2.NetworkService",
-                        input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=svc.remove_external_members,
                 ),
             },
             interceptors=interceptors,
@@ -242,66 +203,6 @@ class NetworkServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
-    async def list_external_members(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersResponse:
-        return await self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="ListExternalMembers",
-                service_name="metalstack.admin.v2.NetworkService",
-                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersRequest,
-                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-    async def add_external_members(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersResponse:
-        return await self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="AddExternalMembers",
-                service_name="metalstack.admin.v2.NetworkService",
-                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersRequest,
-                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-    async def remove_external_members(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersResponse:
-        return await self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="RemoveExternalMembers",
-                service_name="metalstack.admin.v2.NetworkService",
-                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersRequest,
-                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
 
 
 
@@ -316,12 +217,6 @@ class NetworkServiceSync(Protocol):
     def delete(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceDeleteResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def list(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-    def list_external_members(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-    def add_external_members(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-    def remove_external_members(self, request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -378,36 +273,6 @@ class NetworkServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.list,
-                ),
-                "/metalstack.admin.v2.NetworkService/ListExternalMembers": EndpointSync.unary(
-                    method=MethodInfo(
-                        name="ListExternalMembers",
-                        service_name="metalstack.admin.v2.NetworkService",
-                        input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.list_external_members,
-                ),
-                "/metalstack.admin.v2.NetworkService/AddExternalMembers": EndpointSync.unary(
-                    method=MethodInfo(
-                        name="AddExternalMembers",
-                        service_name="metalstack.admin.v2.NetworkService",
-                        input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.add_external_members,
-                ),
-                "/metalstack.admin.v2.NetworkService/RemoveExternalMembers": EndpointSync.unary(
-                    method=MethodInfo(
-                        name="RemoveExternalMembers",
-                        service_name="metalstack.admin.v2.NetworkService",
-                        input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.remove_external_members,
                 ),
             },
             interceptors=interceptors,
@@ -517,66 +382,6 @@ class NetworkServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.NetworkService",
                 input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListRequest,
                 output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-    def list_external_members(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersResponse:
-        return self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="ListExternalMembers",
-                service_name="metalstack.admin.v2.NetworkService",
-                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersRequest,
-                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceListExternalMembersResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-    def add_external_members(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersResponse:
-        return self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="AddExternalMembers",
-                service_name="metalstack.admin.v2.NetworkService",
-                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersRequest,
-                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceAddExternalMembersResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-    def remove_external_members(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersResponse:
-        return self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="RemoveExternalMembers",
-                service_name="metalstack.admin.v2.NetworkService",
-                input=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersRequest,
-                output=metalstack_dot_admin_dot_v2_dot_network__pb2.NetworkServiceRemoveExternalMembersResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
