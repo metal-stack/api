@@ -4,16 +4,21 @@
 
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
+import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
+import type { Labels, ProjectRole } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
+import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
 import type { Project, ProjectQuery } from "../../api/v2/project_pb";
 import { file_metalstack_api_v2_project } from "../../api/v2/project_pb";
+import type { ProjectMember } from "../../api/v2/project_member_pb";
+import { file_metalstack_api_v2_project_member } from "../../api/v2/project_member_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file metalstack/admin/v2/project.proto.
  */
 export const file_metalstack_admin_v2_project: GenFile = /*@__PURE__*/
-  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL3Byb2plY3QucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiWgoZUHJvamVjdFNlcnZpY2VMaXN0UmVxdWVzdBIzCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RRdWVyeUgAiAEBQggKBl9xdWVyeSJKChpQcm9qZWN0U2VydmljZUxpc3RSZXNwb25zZRIsCghwcm9qZWN0cxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3QyhQEKDlByb2plY3RTZXJ2aWNlEnMKBExpc3QSLi5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlcXVlc3QaLy5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgCQtABChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIMUHJvamVjdFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_metalstack_api_v2_common, file_metalstack_api_v2_project]);
+  fileDesc("CiFtZXRhbHN0YWNrL2FkbWluL3YyL3Byb2plY3QucHJvdG8SE21ldGFsc3RhY2suYWRtaW4udjIiWgoZUHJvamVjdFNlcnZpY2VMaXN0UmVxdWVzdBIzCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RRdWVyeUgAiAEBQggKBl9xdWVyeSJKChpQcm9qZWN0U2VydmljZUxpc3RSZXNwb25zZRIsCghwcm9qZWN0cxgBIAMoCzIaLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3QiggIKG1Byb2plY3RTZXJ2aWNlQ3JlYXRlUmVxdWVzdBIaCgVsb2dpbhgBIAEoCUILukgIcgbAs66xAgESGQoEbmFtZRgCIAEoCUILukgIcgbAs66xAgESIAoLZGVzY3JpcHRpb24YAyABKAlCC7pICHIGyLOusQIBEiQKCmF2YXRhcl91cmwYBCABKAlCC7pICHIG4LOusQIBSACIAQESKQoGbGFiZWxzGAUgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzEh4KB3Byb2plY3QYBiABKAlCCLpIBXIDsAEBSAGIAQFCDQoLX2F2YXRhcl91cmxCCgoIX3Byb2plY3QiSwocUHJvamVjdFNlcnZpY2VDcmVhdGVSZXNwb25zZRIrCgdwcm9qZWN0GAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdCKQAQoeUHJvamVjdFNlcnZpY2VBZGRNZW1iZXJSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEhsKBm1lbWJlchgCIAEoCUILukgIcgaQtK6xAgESNgoEcm9sZRgDIAEoDjIeLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RSb2xlQgi6SAWCAQIQASJTCh9Qcm9qZWN0U2VydmljZUFkZE1lbWJlclJlc3BvbnNlEjAKBm1lbWJlchgBIAEoCzIgLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RNZW1iZXIiWwohUHJvamVjdFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEhsKBm1lbWJlchgCIAEoCUILukgIcgaQtK6xAgEiVgoiUHJvamVjdFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZRIwCgZtZW1iZXIYASABKAsyIC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0TWVtYmVyMpAECg5Qcm9qZWN0U2VydmljZRJ4CgZDcmVhdGUSMC5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlQ3JlYXRlUmVxdWVzdBoxLm1ldGFsc3RhY2suYWRtaW4udjIuUHJvamVjdFNlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnMKBExpc3QSLi5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlcXVlc3QaLy5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgCEoEBCglBZGRNZW1iZXISMy5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlQWRkTWVtYmVyUmVxdWVzdBo0Lm1ldGFsc3RhY2suYWRtaW4udjIuUHJvamVjdFNlcnZpY2VBZGRNZW1iZXJSZXNwb25zZSIJ0vMYAQHg8xgBEooBCgxSZW1vdmVNZW1iZXISNi5tZXRhbHN0YWNrLmFkbWluLnYyLlByb2plY3RTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVxdWVzdBo3Lm1ldGFsc3RhY2suYWRtaW4udjIuUHJvamVjdFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSIJ0vMYAQHg8xgBQtABChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkIMUHJvamVjdFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_project, file_metalstack_api_v2_project_member]);
 
 /**
  * ProjectServiceListRequest is the request payload for listing projects.
@@ -58,11 +63,203 @@ export const ProjectServiceListResponseSchema: GenMessage<ProjectServiceListResp
   messageDesc(file_metalstack_admin_v2_project, 1);
 
 /**
+ * ProjectServiceCreateRequest is the request payload to Create a project.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceCreateRequest
+ */
+export type ProjectServiceCreateRequest = Message<"metalstack.admin.v2.ProjectServiceCreateRequest"> & {
+  /**
+   * Login is the tenant of this project.
+   *
+   * @generated from field: string login = 1;
+   */
+  login: string;
+
+  /**
+   * Name of this project, unique per tenant.
+   *
+   * @generated from field: string name = 2;
+   */
+  name: string;
+
+  /**
+   * Description of this project.
+   *
+   * @generated from field: string description = 3;
+   */
+  description: string;
+
+  /**
+   * Avatar URL of the project.
+   *
+   * @generated from field: optional string avatar_url = 4;
+   */
+  avatarUrl?: string | undefined;
+
+  /**
+   * Labels on the project.
+   *
+   * @generated from field: metalstack.api.v2.Labels labels = 5;
+   */
+  labels?: Labels | undefined;
+
+  /**
+   * Project is the uuid of the project.
+   *
+   * @generated from field: optional string project = 6;
+   */
+  project?: string | undefined;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceCreateRequest.
+ * Use `create(ProjectServiceCreateRequestSchema)` to create a new message.
+ */
+export const ProjectServiceCreateRequestSchema: GenMessage<ProjectServiceCreateRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_project, 2);
+
+/**
+ * ProjectServiceCreateResponse is the response payload for creating a project.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceCreateResponse
+ */
+export type ProjectServiceCreateResponse = Message<"metalstack.admin.v2.ProjectServiceCreateResponse"> & {
+  /**
+   * Project contains the created project.
+   *
+   * @generated from field: metalstack.api.v2.Project project = 1;
+   */
+  project?: Project | undefined;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceCreateResponse.
+ * Use `create(ProjectServiceCreateResponseSchema)` to create a new message.
+ */
+export const ProjectServiceCreateResponseSchema: GenMessage<ProjectServiceCreateResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_project, 3);
+
+/**
+ * ProjectServiceAddMemberRequest is the request payload for adding a member to a tenant.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceAddMemberRequest
+ */
+export type ProjectServiceAddMemberRequest = Message<"metalstack.admin.v2.ProjectServiceAddMemberRequest"> & {
+  /**
+   * Project is the uuid of the project.
+   *
+   * @generated from field: string project = 1;
+   */
+  project: string;
+
+  /**
+   * Login of the member to add.
+   *
+   * @generated from field: string member = 2;
+   */
+  member: string;
+
+  /**
+   * Role to assign to the new member.
+   *
+   * @generated from field: metalstack.api.v2.ProjectRole role = 3;
+   */
+  role: ProjectRole;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceAddMemberRequest.
+ * Use `create(ProjectServiceAddMemberRequestSchema)` to create a new message.
+ */
+export const ProjectServiceAddMemberRequestSchema: GenMessage<ProjectServiceAddMemberRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_project, 4);
+
+/**
+ * ProjectServiceAddMemberResponse is the response payload for the add member request.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceAddMemberResponse
+ */
+export type ProjectServiceAddMemberResponse = Message<"metalstack.admin.v2.ProjectServiceAddMemberResponse"> & {
+  /**
+   * Member is the added project member.
+   *
+   * @generated from field: metalstack.api.v2.ProjectMember member = 1;
+   */
+  member?: ProjectMember | undefined;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceAddMemberResponse.
+ * Use `create(ProjectServiceAddMemberResponseSchema)` to create a new message.
+ */
+export const ProjectServiceAddMemberResponseSchema: GenMessage<ProjectServiceAddMemberResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_project, 5);
+
+/**
+ * ProjectServiceRemoveMemberRequest is the request payload for removing a member from a project.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceRemoveMemberRequest
+ */
+export type ProjectServiceRemoveMemberRequest = Message<"metalstack.admin.v2.ProjectServiceRemoveMemberRequest"> & {
+  /**
+   * Project is the uuid of the project.
+   *
+   * @generated from field: string project = 1;
+   */
+  project: string;
+
+  /**
+   * Login of the member to remove.
+   *
+   * @generated from field: string member = 2;
+   */
+  member: string;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceRemoveMemberRequest.
+ * Use `create(ProjectServiceRemoveMemberRequestSchema)` to create a new message.
+ */
+export const ProjectServiceRemoveMemberRequestSchema: GenMessage<ProjectServiceRemoveMemberRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_project, 6);
+
+/**
+ * ProjectServiceRemoveMemberResponse is the response payload for the remove member request.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceRemoveMemberResponse
+ */
+export type ProjectServiceRemoveMemberResponse = Message<"metalstack.admin.v2.ProjectServiceRemoveMemberResponse"> & {
+  /**
+   * Member is the removed project member.
+   *
+   * @generated from field: metalstack.api.v2.ProjectMember member = 1;
+   */
+  member?: ProjectMember | undefined;
+};
+
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceRemoveMemberResponse.
+ * Use `create(ProjectServiceRemoveMemberResponseSchema)` to create a new message.
+ */
+export const ProjectServiceRemoveMemberResponseSchema: GenMessage<ProjectServiceRemoveMemberResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_project, 7);
+
+/**
  * ProjectService provides project management operations.
  *
  * @generated from service metalstack.admin.v2.ProjectService
  */
 export const ProjectService: GenService<{
+  /**
+   * Creates a new project.
+   *
+   * @generated from rpc metalstack.admin.v2.ProjectService.Create
+   */
+  create: {
+    methodKind: "unary";
+    input: typeof ProjectServiceCreateRequestSchema;
+    output: typeof ProjectServiceCreateResponseSchema;
+  },
   /**
    * Returns the list of projects matching the filter criteria.
    *
@@ -72,6 +269,26 @@ export const ProjectService: GenService<{
     methodKind: "unary";
     input: typeof ProjectServiceListRequestSchema;
     output: typeof ProjectServiceListResponseSchema;
+  },
+  /**
+   * Add a member to a project.
+   *
+   * @generated from rpc metalstack.admin.v2.ProjectService.AddMember
+   */
+  addMember: {
+    methodKind: "unary";
+    input: typeof ProjectServiceAddMemberRequestSchema;
+    output: typeof ProjectServiceAddMemberResponseSchema;
+  },
+  /**
+   * RemoveMember removes a member from a project.
+   *
+   * @generated from rpc metalstack.admin.v2.ProjectService.RemoveMember
+   */
+  removeMember: {
+    methodKind: "unary";
+    input: typeof ProjectServiceRemoveMemberRequestSchema;
+    output: typeof ProjectServiceRemoveMemberResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_admin_v2_project, 0);

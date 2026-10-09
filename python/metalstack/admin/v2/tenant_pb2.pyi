@@ -2,6 +2,7 @@ from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import tenant_pb2 as _tenant_pb2
+from metalstack.api.v2 import tenant_member_pb2 as _tenant_member_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -11,18 +12,20 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class TenantServiceCreateRequest(_message.Message):
-    __slots__ = ("name", "description", "email", "avatar_url", "labels")
+    __slots__ = ("name", "description", "email", "avatar_url", "labels", "login")
     NAME_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
     EMAIL_FIELD_NUMBER: _ClassVar[int]
     AVATAR_URL_FIELD_NUMBER: _ClassVar[int]
     LABELS_FIELD_NUMBER: _ClassVar[int]
+    LOGIN_FIELD_NUMBER: _ClassVar[int]
     name: str
     description: str
     email: str
     avatar_url: str
     labels: _common_pb2.Labels
-    def __init__(self, name: _Optional[str] = ..., description: _Optional[str] = ..., email: _Optional[str] = ..., avatar_url: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
+    login: str
+    def __init__(self, name: _Optional[str] = ..., description: _Optional[str] = ..., email: _Optional[str] = ..., avatar_url: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., login: _Optional[str] = ...) -> None: ...
 
 class TenantServiceCreateResponse(_message.Message):
     __slots__ = ("tenant",)
@@ -55,10 +58,10 @@ class TenantServiceAddMemberRequest(_message.Message):
     def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ...) -> None: ...
 
 class TenantServiceAddMemberResponse(_message.Message):
-    __slots__ = ("tenant_member",)
-    TENANT_MEMBER_FIELD_NUMBER: _ClassVar[int]
-    tenant_member: _tenant_pb2.TenantMember
-    def __init__(self, tenant_member: _Optional[_Union[_tenant_pb2.TenantMember, _Mapping]] = ...) -> None: ...
+    __slots__ = ("member",)
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    member: _tenant_member_pb2.TenantMember
+    def __init__(self, member: _Optional[_Union[_tenant_member_pb2.TenantMember, _Mapping]] = ...) -> None: ...
 
 class TenantServiceRemoveMemberRequest(_message.Message):
     __slots__ = ("tenant", "member")
@@ -69,7 +72,7 @@ class TenantServiceRemoveMemberRequest(_message.Message):
     def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
 
 class TenantServiceRemoveMemberResponse(_message.Message):
-    __slots__ = ("tenant_member",)
-    TENANT_MEMBER_FIELD_NUMBER: _ClassVar[int]
-    tenant_member: _tenant_pb2.TenantMember
-    def __init__(self, tenant_member: _Optional[_Union[_tenant_pb2.TenantMember, _Mapping]] = ...) -> None: ...
+    __slots__ = ("member",)
+    MEMBER_FIELD_NUMBER: _ClassVar[int]
+    member: _tenant_member_pb2.TenantMember
+    def __init__(self, member: _Optional[_Union[_tenant_member_pb2.TenantMember, _Mapping]] = ...) -> None: ...

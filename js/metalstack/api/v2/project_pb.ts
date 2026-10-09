@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/api/v2/project.proto.
  */
 export const file_metalstack_api_v2_project: GenFile = /*@__PURE__*/
-  fileDesc("Ch9tZXRhbHN0YWNrL2FwaS92Mi9wcm9qZWN0LnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiLAAQoHUHJvamVjdBIMCgR1dWlkGAEgASgJEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEhkKBG5hbWUYAyABKAlCC7pICHIGwLOusQIBEiAKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECARIOCgZ0ZW5hbnQYBSABKAkSJAoKYXZhdGFyX3VybBgGIAEoCUILukgIcgbgs66xAgFIAIgBAUINCgtfYXZhdGFyX3VybCLIAQoNUHJvamVjdE1lbWJlchIKCgJpZBgBIAEoCRI2CgRyb2xlGAIgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGVCCLpIBYIBAhABEhwKFGluaGVyaXRlZF9tZW1iZXJzaGlwGAMgASgIEi4KCmNyZWF0ZWRfYXQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEiUKBG1ldGEYBSABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhIpICCg1Qcm9qZWN0SW52aXRlEg4KBnNlY3JldBgBIAEoCRIPCgdwcm9qZWN0GAIgASgJEjYKBHJvbGUYAyABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZUIIukgFggECEAESDgoGam9pbmVkGAQgASgIEhQKDHByb2plY3RfbmFtZRgFIAEoCRIOCgZ0ZW5hbnQYBiABKAkSEwoLdGVuYW50X25hbWUYByABKAkSLgoKZXhwaXJlc19hdBgIIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLQoJam9pbmVkX2F0GAkgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCJLChlQcm9qZWN0U2VydmljZUxpc3RSZXF1ZXN0Ei4KBXF1ZXJ5GAEgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFF1ZXJ5IsUBCgxQcm9qZWN0UXVlcnkSGwoEdXVpZBgBIAEoCUIIukgFcgOwAQFIAIgBARIeCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECAUgBiAEBEiAKBnRlbmFudBgDIAEoCUILukgIcgaQtK6xAgFIAogBARIuCgZsYWJlbHMYBCABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNIA4gBAUIHCgVfdXVpZEIHCgVfbmFtZUIJCgdfdGVuYW50QgkKB19sYWJlbHMiSgoaUHJvamVjdFNlcnZpY2VMaXN0UmVzcG9uc2USLAoIcHJvamVjdHMYASADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0IjUKGFByb2plY3RTZXJ2aWNlR2V0UmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABASKDAQoZUHJvamVjdFNlcnZpY2VHZXRSZXNwb25zZRIrCgdwcm9qZWN0GAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdBI5Cg9wcm9qZWN0X21lbWJlcnMYAiADKAsyIC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0TWVtYmVyItYBChtQcm9qZWN0U2VydmljZUNyZWF0ZVJlcXVlc3QSGgoFbG9naW4YASABKAlCC7pICHIGwLOusQIBEhkKBG5hbWUYAiABKAlCC7pICHIGwLOusQIBEiAKC2Rlc2NyaXB0aW9uGAMgASgJQgu6SAhyBsizrrECARIkCgphdmF0YXJfdXJsGAQgASgJQgu6SAhyBuCzrrECAUgAiAEBEikKBmxhYmVscxgFIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0INCgtfYXZhdGFyX3VybCJLChxQcm9qZWN0U2VydmljZUNyZWF0ZVJlc3BvbnNlEisKB3Byb2plY3QYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0IjgKG1Byb2plY3RTZXJ2aWNlRGVsZXRlUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABASJLChxQcm9qZWN0U2VydmljZURlbGV0ZVJlc3BvbnNlEisKB3Byb2plY3QYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0IsoCChtQcm9qZWN0U2VydmljZVVwZGF0ZVJlcXVlc3QSGQoHcHJvamVjdBgBIAEoCUIIukgFcgOwAQESOgoLdXBkYXRlX21ldGEYAiABKAsyHS5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVNZXRhQga6SAPIAQESHgoEbmFtZRgDIAEoCUILukgIcgbAs66xAgFIAIgBARIlCgtkZXNjcmlwdGlvbhgEIAEoCUILukgIcgbIs66xAgFIAYgBARIkCgphdmF0YXJfdXJsGAUgASgJQgu6SAhyBuCzrrECAUgCiAEBEjQKBmxhYmVscxgGIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlVwZGF0ZUxhYmVsc0gDiAEBQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkINCgtfYXZhdGFyX3VybEIJCgdfbGFiZWxzIksKHFByb2plY3RTZXJ2aWNlVXBkYXRlUmVzcG9uc2USKwoHcHJvamVjdBgBIAEoCzIaLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3QicAobUHJvamVjdFNlcnZpY2VJbnZpdGVSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEjYKBHJvbGUYAiABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZUIIukgFggECEAEiUAocUHJvamVjdFNlcnZpY2VJbnZpdGVSZXNwb25zZRIwCgZpbnZpdGUYASABKAsyIC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0SW52aXRlIj0KIFByb2plY3RTZXJ2aWNlSW52aXRlc0xpc3RSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBIlYKIVByb2plY3RTZXJ2aWNlSW52aXRlc0xpc3RSZXNwb25zZRIxCgdpbnZpdGVzGAEgAygLMiAubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdEludml0ZSIwCh5Qcm9qZWN0U2VydmljZUludml0ZUdldFJlcXVlc3QSDgoGc2VjcmV0GAEgASgJIlMKH1Byb2plY3RTZXJ2aWNlSW52aXRlR2V0UmVzcG9uc2USMAoGaW52aXRlGAEgASgLMiAubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdEludml0ZSI3ChpQcm9qZWN0U2VydmljZUxlYXZlUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABASIdChtQcm9qZWN0U2VydmljZUxlYXZlUmVzcG9uc2UikAEKHlByb2plY3RTZXJ2aWNlQWRkTWVtYmVyUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABARIbCgZtZW1iZXIYAiABKAlCC7pICHIGkLSusQIBEjYKBHJvbGUYAyABKA4yHi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0Um9sZUIIukgFggECEAEiWQofUHJvamVjdFNlcnZpY2VBZGRNZW1iZXJSZXNwb25zZRI2Cg5wcm9qZWN0X21lbWJlchgBIAEoDjIeLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RSb2xlIk4KIVByb2plY3RTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABARIOCgZtZW1iZXIYAiABKAkiJAoiUHJvamVjdFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSKGAQohUHJvamVjdFNlcnZpY2VVcGRhdGVNZW1iZXJSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEg4KBm1lbWJlchgCIAEoCRI2CgRyb2xlGAMgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGVCCLpIBYIBAhABIl4KIlByb2plY3RTZXJ2aWNlVXBkYXRlTWVtYmVyUmVzcG9uc2USOAoOcHJvamVjdF9tZW1iZXIYASABKAsyIC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0TWVtYmVyIjMKIVByb2plY3RTZXJ2aWNlSW52aXRlQWNjZXB0UmVxdWVzdBIOCgZzZWNyZXQYASABKAkiSwoiUHJvamVjdFNlcnZpY2VJbnZpdGVBY2NlcHRSZXNwb25zZRIPCgdwcm9qZWN0GAEgASgJEhQKDHByb2plY3RfbmFtZRgCIAEoCSJOCiFQcm9qZWN0U2VydmljZUludml0ZURlbGV0ZVJlcXVlc3QSGQoHcHJvamVjdBgBIAEoCUIIukgFcgOwAQESDgoGc2VjcmV0GAIgASgJIiQKIlByb2plY3RTZXJ2aWNlSW52aXRlRGVsZXRlUmVzcG9uc2Uy4Q0KDlByb2plY3RTZXJ2aWNlEm0KBExpc3QSLC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUxpc3RSZXF1ZXN0Gi0ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VMaXN0UmVzcG9uc2UiCNjzGALg8xgCEm0KA0dldBIrLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlR2V0UmVxdWVzdBosLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlR2V0UmVzcG9uc2UiC8rzGAMBAgPg8xgCEnUKBkNyZWF0ZRIuLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlQ3JlYXRlUmVxdWVzdBovLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlQ3JlYXRlUmVzcG9uc2UiCsLzGAIBAuDzGAESdAoGRGVsZXRlEi4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VEZWxldGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VEZWxldGVSZXNwb25zZSIJyvMYAQHg8xgBEnUKBlVwZGF0ZRIuLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlVXBkYXRlUmVxdWVzdBovLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlVXBkYXRlUmVzcG9uc2UiCsrzGAIBAuDzGAEScQoFTGVhdmUSLS5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUxlYXZlUmVxdWVzdBouLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlTGVhdmVSZXNwb25zZSIJyvMYAQPg8xgBEn0KCUFkZE1lbWJlchIxLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlQWRkTWVtYmVyUmVxdWVzdBoyLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlQWRkTWVtYmVyUmVzcG9uc2UiCcrzGAEB4PMYARKGAQoMUmVtb3ZlTWVtYmVyEjQubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0GjUubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZSIJyvMYAQHg8xgBEoYBCgxVcGRhdGVNZW1iZXISNC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZVVwZGF0ZU1lbWJlclJlcXVlc3QaNS5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZVVwZGF0ZU1lbWJlclJlc3BvbnNlIgnK8xgBAeDzGAESdAoGSW52aXRlEi4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVSZXNwb25zZSIJyvMYAQHg8xgBEoUBCgxJbnZpdGVBY2NlcHQSNC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZUFjY2VwdFJlcXVlc3QaNS5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZUFjY2VwdFJlc3BvbnNlIgjY8xgC4PMYARKGAQoMSW52aXRlRGVsZXRlEjQubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVEZWxldGVSZXF1ZXN0GjUubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVEZWxldGVSZXNwb25zZSIJyvMYAQHg8xgBEoMBCgtJbnZpdGVzTGlzdBIzLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlSW52aXRlc0xpc3RSZXF1ZXN0GjQubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVzTGlzdFJlc3BvbnNlIgnK8xgBAeDzGAISfAoJSW52aXRlR2V0EjEubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVHZXRSZXF1ZXN0GjIubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVHZXRSZXNwb25zZSII2PMYAuDzGAJCwgEKFWNvbS5tZXRhbHN0YWNrLmFwaS52MkIMUHJvamVjdFByb3RvUAFaNWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYXBpL3YyO2FwaXYyogIDTUFYqgIRTWV0YWxzdGFjay5BcGkuVjLKAhFNZXRhbHN0YWNrXEFwaVxWMuICHU1ldGFsc3RhY2tcQXBpXFYyXEdQQk1ldGFkYXRh6gITTWV0YWxzdGFjazo6QXBpOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
+  fileDesc("Ch9tZXRhbHN0YWNrL2FwaS92Mi9wcm9qZWN0LnByb3RvEhFtZXRhbHN0YWNrLmFwaS52MiLAAQoHUHJvamVjdBIMCgR1dWlkGAEgASgJEiUKBG1ldGEYAiABKAsyFy5tZXRhbHN0YWNrLmFwaS52Mi5NZXRhEhkKBG5hbWUYAyABKAlCC7pICHIGwLOusQIBEiAKC2Rlc2NyaXB0aW9uGAQgASgJQgu6SAhyBsizrrECARIOCgZ0ZW5hbnQYBSABKAkSJAoKYXZhdGFyX3VybBgGIAEoCUILukgIcgbgs66xAgFIAIgBAUINCgtfYXZhdGFyX3VybCKSAgoNUHJvamVjdEludml0ZRIOCgZzZWNyZXQYASABKAkSDwoHcHJvamVjdBgCIAEoCRI2CgRyb2xlGAMgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGVCCLpIBYIBAhABEg4KBmpvaW5lZBgEIAEoCBIUCgxwcm9qZWN0X25hbWUYBSABKAkSDgoGdGVuYW50GAYgASgJEhMKC3RlbmFudF9uYW1lGAcgASgJEi4KCmV4cGlyZXNfYXQYCCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEi0KCWpvaW5lZF9hdBgJIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiSwoZUHJvamVjdFNlcnZpY2VMaXN0UmVxdWVzdBIuCgVxdWVyeRgBIAEoCzIfLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RRdWVyeSLFAQoMUHJvamVjdFF1ZXJ5EhsKBHV1aWQYASABKAlCCLpIBXIDsAEBSACIAQESHgoEbmFtZRgCIAEoCUILukgIcgbAs66xAgFIAYgBARIgCgZ0ZW5hbnQYAyABKAlCC7pICHIGkLSusQIBSAKIAQESLgoGbGFiZWxzGAQgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzSAOIAQFCBwoFX3V1aWRCBwoFX25hbWVCCQoHX3RlbmFudEIJCgdfbGFiZWxzIkoKGlByb2plY3RTZXJ2aWNlTGlzdFJlc3BvbnNlEiwKCHByb2plY3RzGAEgAygLMhoubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdCI1ChhQcm9qZWN0U2VydmljZUdldFJlcXVlc3QSGQoHcHJvamVjdBgBIAEoCUIIukgFcgOwAQEiSAoZUHJvamVjdFNlcnZpY2VHZXRSZXNwb25zZRIrCgdwcm9qZWN0GAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdCLWAQobUHJvamVjdFNlcnZpY2VDcmVhdGVSZXF1ZXN0EhoKBWxvZ2luGAEgASgJQgu6SAhyBsCzrrECARIZCgRuYW1lGAIgASgJQgu6SAhyBsCzrrECARIgCgtkZXNjcmlwdGlvbhgDIAEoCUILukgIcgbIs66xAgESJAoKYXZhdGFyX3VybBgEIAEoCUILukgIcgbgs66xAgFIAIgBARIpCgZsYWJlbHMYBSABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5MYWJlbHNCDQoLX2F2YXRhcl91cmwiSwocUHJvamVjdFNlcnZpY2VDcmVhdGVSZXNwb25zZRIrCgdwcm9qZWN0GAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdCI4ChtQcm9qZWN0U2VydmljZURlbGV0ZVJlcXVlc3QSGQoHcHJvamVjdBgBIAEoCUIIukgFcgOwAQEiSwocUHJvamVjdFNlcnZpY2VEZWxldGVSZXNwb25zZRIrCgdwcm9qZWN0GAEgASgLMhoubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdCLKAgobUHJvamVjdFNlcnZpY2VVcGRhdGVSZXF1ZXN0EhkKB3Byb2plY3QYASABKAlCCLpIBXIDsAEBEjoKC3VwZGF0ZV9tZXRhGAIgASgLMh0ubWV0YWxzdGFjay5hcGkudjIuVXBkYXRlTWV0YUIGukgDyAEBEh4KBG5hbWUYAyABKAlCC7pICHIGwLOusQIBSACIAQESJQoLZGVzY3JpcHRpb24YBCABKAlCC7pICHIGyLOusQIBSAGIAQESJAoKYXZhdGFyX3VybBgFIAEoCUILukgIcgbgs66xAgFIAogBARI0CgZsYWJlbHMYBiABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5VcGRhdGVMYWJlbHNIA4gBAUIHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb25CDQoLX2F2YXRhcl91cmxCCQoHX2xhYmVscyJLChxQcm9qZWN0U2VydmljZVVwZGF0ZVJlc3BvbnNlEisKB3Byb2plY3QYASABKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0InAKG1Byb2plY3RTZXJ2aWNlSW52aXRlUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABARI2CgRyb2xlGAIgASgOMh4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFJvbGVCCLpIBYIBAhABIlAKHFByb2plY3RTZXJ2aWNlSW52aXRlUmVzcG9uc2USMAoGaW52aXRlGAEgASgLMiAubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdEludml0ZSI9CiBQcm9qZWN0U2VydmljZUludml0ZXNMaXN0UmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABASJWCiFQcm9qZWN0U2VydmljZUludml0ZXNMaXN0UmVzcG9uc2USMQoHaW52aXRlcxgBIAMoCzIgLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RJbnZpdGUiMAoeUHJvamVjdFNlcnZpY2VJbnZpdGVHZXRSZXF1ZXN0Eg4KBnNlY3JldBgBIAEoCSJTCh9Qcm9qZWN0U2VydmljZUludml0ZUdldFJlc3BvbnNlEjAKBmludml0ZRgBIAEoCzIgLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RJbnZpdGUiMwohUHJvamVjdFNlcnZpY2VJbnZpdGVBY2NlcHRSZXF1ZXN0Eg4KBnNlY3JldBgBIAEoCSJLCiJQcm9qZWN0U2VydmljZUludml0ZUFjY2VwdFJlc3BvbnNlEg8KB3Byb2plY3QYASABKAkSFAoMcHJvamVjdF9uYW1lGAIgASgJIk4KIVByb2plY3RTZXJ2aWNlSW52aXRlRGVsZXRlUmVxdWVzdBIZCgdwcm9qZWN0GAEgASgJQgi6SAVyA7ABARIOCgZzZWNyZXQYAiABKAkiJAoiUHJvamVjdFNlcnZpY2VJbnZpdGVEZWxldGVSZXNwb25zZTLdCQoOUHJvamVjdFNlcnZpY2USbQoETGlzdBIsLm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlTGlzdFJlcXVlc3QaLS5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUxpc3RSZXNwb25zZSII2PMYAuDzGAISbQoDR2V0EisubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VHZXRSZXF1ZXN0GiwubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VHZXRSZXNwb25zZSILyvMYAwECA+DzGAISdQoGQ3JlYXRlEi4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VDcmVhdGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VDcmVhdGVSZXNwb25zZSIKwvMYAgEC4PMYARJ0CgZEZWxldGUSLi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZURlbGV0ZVJlcXVlc3QaLy5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZURlbGV0ZVJlc3BvbnNlIgnK8xgBAeDzGAESdQoGVXBkYXRlEi4ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VVcGRhdGVSZXF1ZXN0Gi8ubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VVcGRhdGVSZXNwb25zZSIKyvMYAgEC4PMYARJ0CgZJbnZpdGUSLi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZVJlcXVlc3QaLy5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZVJlc3BvbnNlIgnK8xgBAeDzGAEShQEKDEludml0ZUFjY2VwdBI0Lm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlSW52aXRlQWNjZXB0UmVxdWVzdBo1Lm1ldGFsc3RhY2suYXBpLnYyLlByb2plY3RTZXJ2aWNlSW52aXRlQWNjZXB0UmVzcG9uc2UiCNjzGALg8xgBEoYBCgxJbnZpdGVEZWxldGUSNC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZURlbGV0ZVJlcXVlc3QaNS5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZURlbGV0ZVJlc3BvbnNlIgnK8xgBAeDzGAESgwEKC0ludml0ZXNMaXN0EjMubWV0YWxzdGFjay5hcGkudjIuUHJvamVjdFNlcnZpY2VJbnZpdGVzTGlzdFJlcXVlc3QaNC5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZXNMaXN0UmVzcG9uc2UiCcrzGAEB4PMYAhJ8CglJbnZpdGVHZXQSMS5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZUdldFJlcXVlc3QaMi5tZXRhbHN0YWNrLmFwaS52Mi5Qcm9qZWN0U2VydmljZUludml0ZUdldFJlc3BvbnNlIgjY8xgC4PMYAkLCAQoVY29tLm1ldGFsc3RhY2suYXBpLnYyQgxQcm9qZWN0UHJvdG9QAVo1Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hcGkvdjI7YXBpdjKiAgNNQViqAhFNZXRhbHN0YWNrLkFwaS5WMsoCEU1ldGFsc3RhY2tcQXBpXFYy4gIdTWV0YWxzdGFja1xBcGlcVjJcR1BCTWV0YWRhdGHqAhNNZXRhbHN0YWNrOjpBcGk6OlYyYgZwcm90bzM", [file_buf_validate_validate, file_google_protobuf_timestamp, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules]);
 
 /**
  * Project defines a group of resources belonging to a tenant.
@@ -74,57 +74,6 @@ export type Project = Message<"metalstack.api.v2.Project"> & {
  */
 export const ProjectSchema: GenMessage<Project> = /*@__PURE__*/
   messageDesc(file_metalstack_api_v2_project, 0);
-
-/**
- * ProjectMember defines a user that participates in a project.
- *
- * @generated from message metalstack.api.v2.ProjectMember
- */
-export type ProjectMember = Message<"metalstack.api.v2.ProjectMember"> & {
-  /**
-   * Id is the user id of the member.
-   *
-   * @generated from field: string id = 1;
-   */
-  id: string;
-
-  /**
-   * Role is the role of the member.
-   *
-   * @generated from field: metalstack.api.v2.ProjectRole role = 2;
-   */
-  role: ProjectRole;
-
-  /**
-   * InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
-   * This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
-   * Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
-   *
-   * @generated from field: bool inherited_membership = 3;
-   */
-  inheritedMembership: boolean;
-
-  /**
-   * CreatedAt the date when the member was added to the project.
-   *
-   * @generated from field: google.protobuf.Timestamp created_at = 4;
-   */
-  createdAt?: Timestamp | undefined;
-
-  /**
-   * Meta for this project member.
-   *
-   * @generated from field: metalstack.api.v2.Meta meta = 5;
-   */
-  meta?: Meta | undefined;
-};
-
-/**
- * Describes the message metalstack.api.v2.ProjectMember.
- * Use `create(ProjectMemberSchema)` to create a new message.
- */
-export const ProjectMemberSchema: GenMessage<ProjectMember> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 1);
 
 /**
  * ProjectInvite defines invite to project.
@@ -201,7 +150,7 @@ export type ProjectInvite = Message<"metalstack.api.v2.ProjectInvite"> & {
  * Use `create(ProjectInviteSchema)` to create a new message.
  */
 export const ProjectInviteSchema: GenMessage<ProjectInvite> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 2);
+  messageDesc(file_metalstack_api_v2_project, 1);
 
 /**
  * ProjectServiceListRequest is the request payload to list all projects.
@@ -222,7 +171,7 @@ export type ProjectServiceListRequest = Message<"metalstack.api.v2.ProjectServic
  * Use `create(ProjectServiceListRequestSchema)` to create a new message.
  */
 export const ProjectServiceListRequestSchema: GenMessage<ProjectServiceListRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 3);
+  messageDesc(file_metalstack_api_v2_project, 2);
 
 /**
  * ProjectQuery is used to search projects.
@@ -264,7 +213,7 @@ export type ProjectQuery = Message<"metalstack.api.v2.ProjectQuery"> & {
  * Use `create(ProjectQuerySchema)` to create a new message.
  */
 export const ProjectQuerySchema: GenMessage<ProjectQuery> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 4);
+  messageDesc(file_metalstack_api_v2_project, 3);
 
 /**
  * ProjectServiceListResponse is the response payload to list all projects.
@@ -285,7 +234,7 @@ export type ProjectServiceListResponse = Message<"metalstack.api.v2.ProjectServi
  * Use `create(ProjectServiceListResponseSchema)` to create a new message.
  */
 export const ProjectServiceListResponseSchema: GenMessage<ProjectServiceListResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 5);
+  messageDesc(file_metalstack_api_v2_project, 4);
 
 /**
  * ProjectServiceGetRequest is the request payload to get a project.
@@ -306,7 +255,7 @@ export type ProjectServiceGetRequest = Message<"metalstack.api.v2.ProjectService
  * Use `create(ProjectServiceGetRequestSchema)` to create a new message.
  */
 export const ProjectServiceGetRequestSchema: GenMessage<ProjectServiceGetRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 6);
+  messageDesc(file_metalstack_api_v2_project, 5);
 
 /**
  * ProjectServiceGetResponse is the response payload to get a projects.
@@ -320,13 +269,6 @@ export type ProjectServiceGetResponse = Message<"metalstack.api.v2.ProjectServic
    * @generated from field: metalstack.api.v2.Project project = 1;
    */
   project?: Project | undefined;
-
-  /**
-   * ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
-   *
-   * @generated from field: repeated metalstack.api.v2.ProjectMember project_members = 2;
-   */
-  projectMembers: ProjectMember[];
 };
 
 /**
@@ -334,7 +276,7 @@ export type ProjectServiceGetResponse = Message<"metalstack.api.v2.ProjectServic
  * Use `create(ProjectServiceGetResponseSchema)` to create a new message.
  */
 export const ProjectServiceGetResponseSchema: GenMessage<ProjectServiceGetResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 7);
+  messageDesc(file_metalstack_api_v2_project, 6);
 
 /**
  * ProjectServiceCreateRequest is the request payload to Create a project.
@@ -384,7 +326,7 @@ export type ProjectServiceCreateRequest = Message<"metalstack.api.v2.ProjectServ
  * Use `create(ProjectServiceCreateRequestSchema)` to create a new message.
  */
 export const ProjectServiceCreateRequestSchema: GenMessage<ProjectServiceCreateRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 8);
+  messageDesc(file_metalstack_api_v2_project, 7);
 
 /**
  * ProjectServiceCreateResponse is the response payload of creation of a project.
@@ -405,7 +347,7 @@ export type ProjectServiceCreateResponse = Message<"metalstack.api.v2.ProjectSer
  * Use `create(ProjectServiceCreateResponseSchema)` to create a new message.
  */
 export const ProjectServiceCreateResponseSchema: GenMessage<ProjectServiceCreateResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 9);
+  messageDesc(file_metalstack_api_v2_project, 8);
 
 /**
  * ProjectServiceDeleteRequest is the request payload to delete a project.
@@ -426,7 +368,7 @@ export type ProjectServiceDeleteRequest = Message<"metalstack.api.v2.ProjectServ
  * Use `create(ProjectServiceDeleteRequestSchema)` to create a new message.
  */
 export const ProjectServiceDeleteRequestSchema: GenMessage<ProjectServiceDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 10);
+  messageDesc(file_metalstack_api_v2_project, 9);
 
 /**
  * ProjectServiceDeleteResponse is the response payload to delete a project.
@@ -447,7 +389,7 @@ export type ProjectServiceDeleteResponse = Message<"metalstack.api.v2.ProjectSer
  * Use `create(ProjectServiceDeleteResponseSchema)` to create a new message.
  */
 export const ProjectServiceDeleteResponseSchema: GenMessage<ProjectServiceDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 11);
+  messageDesc(file_metalstack_api_v2_project, 10);
 
 /**
  * ProjectServiceUpdateRequest is the request payload to update a project.
@@ -503,7 +445,7 @@ export type ProjectServiceUpdateRequest = Message<"metalstack.api.v2.ProjectServ
  * Use `create(ProjectServiceUpdateRequestSchema)` to create a new message.
  */
 export const ProjectServiceUpdateRequestSchema: GenMessage<ProjectServiceUpdateRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 12);
+  messageDesc(file_metalstack_api_v2_project, 11);
 
 /**
  * ProjectServiceUpdateResponse is the response payload to update a project.
@@ -524,7 +466,7 @@ export type ProjectServiceUpdateResponse = Message<"metalstack.api.v2.ProjectSer
  * Use `create(ProjectServiceUpdateResponseSchema)` to create a new message.
  */
 export const ProjectServiceUpdateResponseSchema: GenMessage<ProjectServiceUpdateResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 13);
+  messageDesc(file_metalstack_api_v2_project, 12);
 
 /**
  * ProjectServiceInviteRequest is used to invite a member to a project.
@@ -552,7 +494,7 @@ export type ProjectServiceInviteRequest = Message<"metalstack.api.v2.ProjectServ
  * Use `create(ProjectServiceInviteRequestSchema)` to create a new message.
  */
 export const ProjectServiceInviteRequestSchema: GenMessage<ProjectServiceInviteRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 14);
+  messageDesc(file_metalstack_api_v2_project, 13);
 
 /**
  * ProjectServiceInviteResponse is the response payload to a invite member request.
@@ -575,7 +517,7 @@ export type ProjectServiceInviteResponse = Message<"metalstack.api.v2.ProjectSer
  * Use `create(ProjectServiceInviteResponseSchema)` to create a new message.
  */
 export const ProjectServiceInviteResponseSchema: GenMessage<ProjectServiceInviteResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 15);
+  messageDesc(file_metalstack_api_v2_project, 14);
 
 /**
  * ProjectServiceInvitesListRequest is the request payload to a list invites request.
@@ -596,7 +538,7 @@ export type ProjectServiceInvitesListRequest = Message<"metalstack.api.v2.Projec
  * Use `create(ProjectServiceInvitesListRequestSchema)` to create a new message.
  */
 export const ProjectServiceInvitesListRequestSchema: GenMessage<ProjectServiceInvitesListRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 16);
+  messageDesc(file_metalstack_api_v2_project, 15);
 
 /**
  * ProjectServiceInvitesListResponse is the response payload to a list invites request.
@@ -617,7 +559,7 @@ export type ProjectServiceInvitesListResponse = Message<"metalstack.api.v2.Proje
  * Use `create(ProjectServiceInvitesListResponseSchema)` to create a new message.
  */
 export const ProjectServiceInvitesListResponseSchema: GenMessage<ProjectServiceInvitesListResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 17);
+  messageDesc(file_metalstack_api_v2_project, 16);
 
 /**
  * ProjectServiceInviteGetRequest is the request payload to get a invite.
@@ -638,7 +580,7 @@ export type ProjectServiceInviteGetRequest = Message<"metalstack.api.v2.ProjectS
  * Use `create(ProjectServiceInviteGetRequestSchema)` to create a new message.
  */
 export const ProjectServiceInviteGetRequestSchema: GenMessage<ProjectServiceInviteGetRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 18);
+  messageDesc(file_metalstack_api_v2_project, 17);
 
 /**
  * ProjectServiceInviteGetResponse is the response payload to a get invite request.
@@ -659,198 +601,7 @@ export type ProjectServiceInviteGetResponse = Message<"metalstack.api.v2.Project
  * Use `create(ProjectServiceInviteGetResponseSchema)` to create a new message.
  */
 export const ProjectServiceInviteGetResponseSchema: GenMessage<ProjectServiceInviteGetResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 19);
-
-/**
- * ProjectServiceLeaveRequest is used to leave a project.
- *
- * @generated from message metalstack.api.v2.ProjectServiceLeaveRequest
- */
-export type ProjectServiceLeaveRequest = Message<"metalstack.api.v2.ProjectServiceLeaveRequest"> & {
-  /**
-   * Project is the uuid of the project.
-   *
-   * @generated from field: string project = 1;
-   */
-  project: string;
-};
-
-/**
- * Describes the message metalstack.api.v2.ProjectServiceLeaveRequest.
- * Use `create(ProjectServiceLeaveRequestSchema)` to create a new message.
- */
-export const ProjectServiceLeaveRequestSchema: GenMessage<ProjectServiceLeaveRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 20);
-
-/**
- * ProjectServiceLeaveResponse is the response payload to a leave project request.
- *
- * @generated from message metalstack.api.v2.ProjectServiceLeaveResponse
- */
-export type ProjectServiceLeaveResponse = Message<"metalstack.api.v2.ProjectServiceLeaveResponse"> & {
-};
-
-/**
- * Describes the message metalstack.api.v2.ProjectServiceLeaveResponse.
- * Use `create(ProjectServiceLeaveResponseSchema)` to create a new message.
- */
-export const ProjectServiceLeaveResponseSchema: GenMessage<ProjectServiceLeaveResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 21);
-
-/**
- * ProjectServiceAddMemberRequest is the request payload for adding a member to a project.
- *
- * @generated from message metalstack.api.v2.ProjectServiceAddMemberRequest
- */
-export type ProjectServiceAddMemberRequest = Message<"metalstack.api.v2.ProjectServiceAddMemberRequest"> & {
-  /**
-   * Project is the uuid of the project.
-   *
-   * @generated from field: string project = 1;
-   */
-  project: string;
-
-  /**
-   * Login of the member to add.
-   *
-   * @generated from field: string member = 2;
-   */
-  member: string;
-
-  /**
-   * Role to assign to the new member.
-   *
-   * @generated from field: metalstack.api.v2.ProjectRole role = 3;
-   */
-  role: ProjectRole;
-};
-
-/**
- * Describes the message metalstack.api.v2.ProjectServiceAddMemberRequest.
- * Use `create(ProjectServiceAddMemberRequestSchema)` to create a new message.
- */
-export const ProjectServiceAddMemberRequestSchema: GenMessage<ProjectServiceAddMemberRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 22);
-
-/**
- * ProjectServiceAddMemberResponse is the response payload for the add member request.
- *
- * @generated from message metalstack.api.v2.ProjectServiceAddMemberResponse
- */
-export type ProjectServiceAddMemberResponse = Message<"metalstack.api.v2.ProjectServiceAddMemberResponse"> & {
-  /**
-   * ProjectRole is the added project member.
-   *
-   * @generated from field: metalstack.api.v2.ProjectRole project_member = 1;
-   */
-  projectMember: ProjectRole;
-};
-
-/**
- * Describes the message metalstack.api.v2.ProjectServiceAddMemberResponse.
- * Use `create(ProjectServiceAddMemberResponseSchema)` to create a new message.
- */
-export const ProjectServiceAddMemberResponseSchema: GenMessage<ProjectServiceAddMemberResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 23);
-
-/**
- * ProjectServiceRemoveMemberRequest is used to remove a member from a project.
- *
- * @generated from message metalstack.api.v2.ProjectServiceRemoveMemberRequest
- */
-export type ProjectServiceRemoveMemberRequest = Message<"metalstack.api.v2.ProjectServiceRemoveMemberRequest"> & {
-  /**
-   * Project is the uuid of the project.
-   *
-   * @generated from field: string project = 1;
-   */
-  project: string;
-
-  /**
-   * Member is the id of the member to remove from this project.
-   *
-   * @generated from field: string member = 2;
-   */
-  member: string;
-};
-
-/**
- * Describes the message metalstack.api.v2.ProjectServiceRemoveMemberRequest.
- * Use `create(ProjectServiceRemoveMemberRequestSchema)` to create a new message.
- */
-export const ProjectServiceRemoveMemberRequestSchema: GenMessage<ProjectServiceRemoveMemberRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 24);
-
-/**
- * ProjectServiceRemoveMemberResponse is the response payload to a remove member request.
- *
- * @generated from message metalstack.api.v2.ProjectServiceRemoveMemberResponse
- */
-export type ProjectServiceRemoveMemberResponse = Message<"metalstack.api.v2.ProjectServiceRemoveMemberResponse"> & {
-};
-
-/**
- * Describes the message metalstack.api.v2.ProjectServiceRemoveMemberResponse.
- * Use `create(ProjectServiceRemoveMemberResponseSchema)` to create a new message.
- */
-export const ProjectServiceRemoveMemberResponseSchema: GenMessage<ProjectServiceRemoveMemberResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 25);
-
-/**
- * ProjectServiceUpdateMemberRequest is used to update a member of a project.
- *
- * @generated from message metalstack.api.v2.ProjectServiceUpdateMemberRequest
- */
-export type ProjectServiceUpdateMemberRequest = Message<"metalstack.api.v2.ProjectServiceUpdateMemberRequest"> & {
-  /**
-   * Project is the uuid of the project.
-   *
-   * @generated from field: string project = 1;
-   */
-  project: string;
-
-  /**
-   * Member is the id of the member to remove from this project.
-   *
-   * @generated from field: string member = 2;
-   */
-  member: string;
-
-  /**
-   * Role is the role in this project the user will get after the update.
-   *
-   * @generated from field: metalstack.api.v2.ProjectRole role = 3;
-   */
-  role: ProjectRole;
-};
-
-/**
- * Describes the message metalstack.api.v2.ProjectServiceUpdateMemberRequest.
- * Use `create(ProjectServiceUpdateMemberRequestSchema)` to create a new message.
- */
-export const ProjectServiceUpdateMemberRequestSchema: GenMessage<ProjectServiceUpdateMemberRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 26);
-
-/**
- * ProjectServiceUpdateMemberResponse is the response payload to a update member request.
- *
- * @generated from message metalstack.api.v2.ProjectServiceUpdateMemberResponse
- */
-export type ProjectServiceUpdateMemberResponse = Message<"metalstack.api.v2.ProjectServiceUpdateMemberResponse"> & {
-  /**
-   * ProjectMember is the updated project member.
-   *
-   * @generated from field: metalstack.api.v2.ProjectMember project_member = 1;
-   */
-  projectMember?: ProjectMember | undefined;
-};
-
-/**
- * Describes the message metalstack.api.v2.ProjectServiceUpdateMemberResponse.
- * Use `create(ProjectServiceUpdateMemberResponseSchema)` to create a new message.
- */
-export const ProjectServiceUpdateMemberResponseSchema: GenMessage<ProjectServiceUpdateMemberResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 27);
+  messageDesc(file_metalstack_api_v2_project, 18);
 
 /**
  * ProjectServiceInviteAcceptRequest is the request payload to a accept invite request.
@@ -871,7 +622,7 @@ export type ProjectServiceInviteAcceptRequest = Message<"metalstack.api.v2.Proje
  * Use `create(ProjectServiceInviteAcceptRequestSchema)` to create a new message.
  */
 export const ProjectServiceInviteAcceptRequestSchema: GenMessage<ProjectServiceInviteAcceptRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 28);
+  messageDesc(file_metalstack_api_v2_project, 19);
 
 /**
  * ProjectServiceInviteAcceptResponse is the response payload to a accept invite request.
@@ -899,7 +650,7 @@ export type ProjectServiceInviteAcceptResponse = Message<"metalstack.api.v2.Proj
  * Use `create(ProjectServiceInviteAcceptResponseSchema)` to create a new message.
  */
 export const ProjectServiceInviteAcceptResponseSchema: GenMessage<ProjectServiceInviteAcceptResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 29);
+  messageDesc(file_metalstack_api_v2_project, 20);
 
 /**
  * ProjectServiceInviteDeleteRequest is the request payload to a delete invite.
@@ -927,7 +678,7 @@ export type ProjectServiceInviteDeleteRequest = Message<"metalstack.api.v2.Proje
  * Use `create(ProjectServiceInviteDeleteRequestSchema)` to create a new message.
  */
 export const ProjectServiceInviteDeleteRequestSchema: GenMessage<ProjectServiceInviteDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 30);
+  messageDesc(file_metalstack_api_v2_project, 21);
 
 /**
  * ProjectServiceInviteDeleteResponse is the response payload of a delete invite request.
@@ -942,7 +693,7 @@ export type ProjectServiceInviteDeleteResponse = Message<"metalstack.api.v2.Proj
  * Use `create(ProjectServiceInviteDeleteResponseSchema)` to create a new message.
  */
 export const ProjectServiceInviteDeleteResponseSchema: GenMessage<ProjectServiceInviteDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_api_v2_project, 31);
+  messageDesc(file_metalstack_api_v2_project, 22);
 
 /**
  * ProjectService provides project management operations.
@@ -999,46 +750,6 @@ export const ProjectService: GenService<{
     methodKind: "unary";
     input: typeof ProjectServiceUpdateRequestSchema;
     output: typeof ProjectServiceUpdateResponseSchema;
-  },
-  /**
-   * Leave project.
-   *
-   * @generated from rpc metalstack.api.v2.ProjectService.Leave
-   */
-  leave: {
-    methodKind: "unary";
-    input: typeof ProjectServiceLeaveRequestSchema;
-    output: typeof ProjectServiceLeaveResponseSchema;
-  },
-  /**
-   * AddMember adds a user to a project.
-   *
-   * @generated from rpc metalstack.api.v2.ProjectService.AddMember
-   */
-  addMember: {
-    methodKind: "unary";
-    input: typeof ProjectServiceAddMemberRequestSchema;
-    output: typeof ProjectServiceAddMemberResponseSchema;
-  },
-  /**
-   * RemoveMember removes a user from a project.
-   *
-   * @generated from rpc metalstack.api.v2.ProjectService.RemoveMember
-   */
-  removeMember: {
-    methodKind: "unary";
-    input: typeof ProjectServiceRemoveMemberRequestSchema;
-    output: typeof ProjectServiceRemoveMemberResponseSchema;
-  },
-  /**
-   * UpdateMember updates a user for a project.
-   *
-   * @generated from rpc metalstack.api.v2.ProjectService.UpdateMember
-   */
-  updateMember: {
-    methodKind: "unary";
-    input: typeof ProjectServiceUpdateMemberRequestSchema;
-    output: typeof ProjectServiceUpdateMemberResponseSchema;
   },
   /**
    * Invite a user to a project.
