@@ -3,10 +3,6 @@ package client
 
 import (
 	"context"
-
-	"connectrpc.com/connect"
-	compress "github.com/klauspost/connect-compress/v2"
-
 {{ range $name, $api := . -}}
 	"github.com/metal-stack/api/go{{ $api.Path }}/{{ $api.Name }}connect"
 {{ end }}
@@ -18,11 +14,6 @@ type (
 	{{ $name | title }}() {{ $name | title }}
 {{ end }}
 	Ping(context.Context, *PingConfig)
-	}
-	client struct {
-		config *DialConfig
-
-		interceptors []connect.Interceptor
 	}
 {{ range $name, $api := . -}}
 	{{ $name | title }} interface {
@@ -44,12 +35,7 @@ type (
 func (c *client) {{ $name | title }}() {{ $name | title }} {
 	a := &{{ $name }}{
 {{ range $svc := $api.Services -}}
-	{{ $svc.Name | lower }}:  {{ $name }}connect.New{{ $svc.Name }}Client(
-		c.config.HttpClient(),
-		c.config.BaseURL,
-		connect.WithInterceptors(c.interceptors...),
-		compress.WithAll(compress.LevelBalanced),
-	),
+	{{ $svc.Name | lower }}:  {{ $name }}connect.New{{ $svc.Name }}Client(c.httpClient),
 {{ end }}
 	}
 	return a

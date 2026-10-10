@@ -5,36 +5,37 @@
 package infrav2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/infra/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// ComponentServiceName is the fully-qualified name of the ComponentService service.
 	ComponentServiceName = "metalstack.infra.v2.ComponentService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ComponentServicePingProcedure is the fully-qualified name of the ComponentService's Ping RPC.
+	// ComponentServicePingProcedure is the procedure name of the ComponentService's Ping RPC.
 	ComponentServicePingProcedure = "/metalstack.infra.v2.ComponentService/Ping"
+)
+
+var (
+	componentServicePingSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_component_proto.Services().ByName("ComponentService").Methods().ByName("Ping"),
+			Procedure:  ComponentServicePingProcedure,
+		}
+	})
 )
 
 // ComponentServiceClient is a client for the metalstack.infra.v2.ComponentService service.
@@ -44,37 +45,9 @@ type ComponentServiceClient interface {
 }
 
 // NewComponentServiceClient constructs a client for the metalstack.infra.v2.ComponentService
-// service. By default, it uses the Connect protocol with the binary Protobuf Codec, asks for
-// gzipped responses, and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply
-// the connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewComponentServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ComponentServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	componentServiceMethods := v2.File_metalstack_infra_v2_component_proto.Services().ByName("ComponentService").Methods()
-	return &componentServiceClient{
-		ping: connect.NewClient[v2.ComponentServicePingRequest, v2.ComponentServicePingResponse](
-			httpClient,
-			baseURL+ComponentServicePingProcedure,
-			connect.WithSchema(componentServiceMethods.ByName("Ping")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// componentServiceClient implements ComponentServiceClient.
-type componentServiceClient struct {
-	ping *connect.Client[v2.ComponentServicePingRequest, v2.ComponentServicePingResponse]
-}
-
-// Ping calls metalstack.infra.v2.ComponentService.Ping.
-func (c *componentServiceClient) Ping(ctx context.Context, req *v2.ComponentServicePingRequest) (*v2.ComponentServicePingResponse, error) {
-	response, err := c.ping.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// service. Multiple service clients may share a single connect.Client.
+func NewComponentServiceClient(client *connect.Client) ComponentServiceClient {
+	return &componentServiceClient{client: client}
 }
 
 // ComponentServiceHandler is an implementation of the metalstack.infra.v2.ComponentService service.
@@ -83,32 +56,44 @@ type ComponentServiceHandler interface {
 	Ping(context.Context, *v2.ComponentServicePingRequest) (*v2.ComponentServicePingResponse, error)
 }
 
-// NewComponentServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewComponentServiceHandler(svc ComponentServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	componentServiceMethods := v2.File_metalstack_infra_v2_component_proto.Services().ByName("ComponentService").Methods()
-	componentServicePingHandler := connect.NewUnaryHandlerSimple(
-		ComponentServicePingProcedure,
-		svc.Ping,
-		connect.WithSchema(componentServiceMethods.ByName("Ping")),
-		connect.WithHandlerOptions(opts...),
+// RegisterComponentServiceHandler registers svc as the metalstack.infra.v2.ComponentService
+// implementation on server.
+func RegisterComponentServiceHandler(server *connect.Server, svc ComponentServiceHandler) {
+	adapter := componentServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: componentServicePingSpec(), Handler: adapter.ping},
 	)
-	return "/metalstack.infra.v2.ComponentService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case ComponentServicePingProcedure:
-			componentServicePingHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedComponentServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedComponentServiceHandler struct{}
 
 func (UnimplementedComponentServiceHandler) Ping(context.Context, *v2.ComponentServicePingRequest) (*v2.ComponentServicePingResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.ComponentService.Ping is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.ComponentService.Ping is not implemented")
+}
+
+type componentServiceClient struct {
+	client *connect.Client
+}
+
+func (c *componentServiceClient) Ping(ctx context.Context, req *v2.ComponentServicePingRequest) (*v2.ComponentServicePingResponse, error) {
+	var res v2.ComponentServicePingResponse
+	if err := c.client.CallUnary(ctx, componentServicePingSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type componentServiceHandler struct{ svc ComponentServiceHandler }
+
+func (h componentServiceHandler) ping(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ComponentServicePingRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Ping(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

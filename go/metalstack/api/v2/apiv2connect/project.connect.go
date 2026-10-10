@@ -5,69 +5,158 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// ProjectServiceName is the fully-qualified name of the ProjectService service.
 	ProjectServiceName = "metalstack.api.v2.ProjectService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ProjectServiceListProcedure is the fully-qualified name of the ProjectService's List RPC.
+	// ProjectServiceListProcedure is the procedure name of the ProjectService's List RPC.
 	ProjectServiceListProcedure = "/metalstack.api.v2.ProjectService/List"
-	// ProjectServiceGetProcedure is the fully-qualified name of the ProjectService's Get RPC.
+	// ProjectServiceGetProcedure is the procedure name of the ProjectService's Get RPC.
 	ProjectServiceGetProcedure = "/metalstack.api.v2.ProjectService/Get"
-	// ProjectServiceCreateProcedure is the fully-qualified name of the ProjectService's Create RPC.
+	// ProjectServiceCreateProcedure is the procedure name of the ProjectService's Create RPC.
 	ProjectServiceCreateProcedure = "/metalstack.api.v2.ProjectService/Create"
-	// ProjectServiceDeleteProcedure is the fully-qualified name of the ProjectService's Delete RPC.
+	// ProjectServiceDeleteProcedure is the procedure name of the ProjectService's Delete RPC.
 	ProjectServiceDeleteProcedure = "/metalstack.api.v2.ProjectService/Delete"
-	// ProjectServiceUpdateProcedure is the fully-qualified name of the ProjectService's Update RPC.
+	// ProjectServiceUpdateProcedure is the procedure name of the ProjectService's Update RPC.
 	ProjectServiceUpdateProcedure = "/metalstack.api.v2.ProjectService/Update"
-	// ProjectServiceLeaveProcedure is the fully-qualified name of the ProjectService's Leave RPC.
+	// ProjectServiceLeaveProcedure is the procedure name of the ProjectService's Leave RPC.
 	ProjectServiceLeaveProcedure = "/metalstack.api.v2.ProjectService/Leave"
-	// ProjectServiceAddMemberProcedure is the fully-qualified name of the ProjectService's AddMember
-	// RPC.
+	// ProjectServiceAddMemberProcedure is the procedure name of the ProjectService's AddMember RPC.
 	ProjectServiceAddMemberProcedure = "/metalstack.api.v2.ProjectService/AddMember"
-	// ProjectServiceRemoveMemberProcedure is the fully-qualified name of the ProjectService's
-	// RemoveMember RPC.
-	ProjectServiceRemoveMemberProcedure = "/metalstack.api.v2.ProjectService/RemoveMember"
-	// ProjectServiceUpdateMemberProcedure is the fully-qualified name of the ProjectService's
-	// UpdateMember RPC.
-	ProjectServiceUpdateMemberProcedure = "/metalstack.api.v2.ProjectService/UpdateMember"
-	// ProjectServiceInviteProcedure is the fully-qualified name of the ProjectService's Invite RPC.
-	ProjectServiceInviteProcedure = "/metalstack.api.v2.ProjectService/Invite"
-	// ProjectServiceInviteAcceptProcedure is the fully-qualified name of the ProjectService's
-	// InviteAccept RPC.
-	ProjectServiceInviteAcceptProcedure = "/metalstack.api.v2.ProjectService/InviteAccept"
-	// ProjectServiceInviteDeleteProcedure is the fully-qualified name of the ProjectService's
-	// InviteDelete RPC.
-	ProjectServiceInviteDeleteProcedure = "/metalstack.api.v2.ProjectService/InviteDelete"
-	// ProjectServiceInvitesListProcedure is the fully-qualified name of the ProjectService's
-	// InvitesList RPC.
-	ProjectServiceInvitesListProcedure = "/metalstack.api.v2.ProjectService/InvitesList"
-	// ProjectServiceInviteGetProcedure is the fully-qualified name of the ProjectService's InviteGet
+	// ProjectServiceRemoveMemberProcedure is the procedure name of the ProjectService's RemoveMember
 	// RPC.
+	ProjectServiceRemoveMemberProcedure = "/metalstack.api.v2.ProjectService/RemoveMember"
+	// ProjectServiceUpdateMemberProcedure is the procedure name of the ProjectService's UpdateMember
+	// RPC.
+	ProjectServiceUpdateMemberProcedure = "/metalstack.api.v2.ProjectService/UpdateMember"
+	// ProjectServiceInviteProcedure is the procedure name of the ProjectService's Invite RPC.
+	ProjectServiceInviteProcedure = "/metalstack.api.v2.ProjectService/Invite"
+	// ProjectServiceInviteAcceptProcedure is the procedure name of the ProjectService's InviteAccept
+	// RPC.
+	ProjectServiceInviteAcceptProcedure = "/metalstack.api.v2.ProjectService/InviteAccept"
+	// ProjectServiceInviteDeleteProcedure is the procedure name of the ProjectService's InviteDelete
+	// RPC.
+	ProjectServiceInviteDeleteProcedure = "/metalstack.api.v2.ProjectService/InviteDelete"
+	// ProjectServiceInvitesListProcedure is the procedure name of the ProjectService's InvitesList RPC.
+	ProjectServiceInvitesListProcedure = "/metalstack.api.v2.ProjectService/InvitesList"
+	// ProjectServiceInviteGetProcedure is the procedure name of the ProjectService's InviteGet RPC.
 	ProjectServiceInviteGetProcedure = "/metalstack.api.v2.ProjectService/InviteGet"
+)
+
+var (
+	projectServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("List"),
+			Procedure:  ProjectServiceListProcedure,
+		}
+	})
+	projectServiceGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("Get"),
+			Procedure:  ProjectServiceGetProcedure,
+		}
+	})
+	projectServiceCreateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("Create"),
+			Procedure:  ProjectServiceCreateProcedure,
+		}
+	})
+	projectServiceDeleteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("Delete"),
+			Procedure:  ProjectServiceDeleteProcedure,
+		}
+	})
+	projectServiceUpdateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("Update"),
+			Procedure:  ProjectServiceUpdateProcedure,
+		}
+	})
+	projectServiceLeaveSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("Leave"),
+			Procedure:  ProjectServiceLeaveProcedure,
+		}
+	})
+	projectServiceAddMemberSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("AddMember"),
+			Procedure:  ProjectServiceAddMemberProcedure,
+		}
+	})
+	projectServiceRemoveMemberSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("RemoveMember"),
+			Procedure:  ProjectServiceRemoveMemberProcedure,
+		}
+	})
+	projectServiceUpdateMemberSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("UpdateMember"),
+			Procedure:  ProjectServiceUpdateMemberProcedure,
+		}
+	})
+	projectServiceInviteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("Invite"),
+			Procedure:  ProjectServiceInviteProcedure,
+		}
+	})
+	projectServiceInviteAcceptSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("InviteAccept"),
+			Procedure:  ProjectServiceInviteAcceptProcedure,
+		}
+	})
+	projectServiceInviteDeleteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("InviteDelete"),
+			Procedure:  ProjectServiceInviteDeleteProcedure,
+		}
+	})
+	projectServiceInvitesListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("InvitesList"),
+			Procedure:  ProjectServiceInvitesListProcedure,
+		}
+	})
+	projectServiceInviteGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("InviteGet"),
+			Procedure:  ProjectServiceInviteGetProcedure,
+		}
+	})
 )
 
 // ProjectServiceClient is a client for the metalstack.api.v2.ProjectService service.
@@ -102,246 +191,10 @@ type ProjectServiceClient interface {
 	InviteGet(context.Context, *v2.ProjectServiceInviteGetRequest) (*v2.ProjectServiceInviteGetResponse, error)
 }
 
-// NewProjectServiceClient constructs a client for the metalstack.api.v2.ProjectService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ProjectServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	projectServiceMethods := v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods()
-	return &projectServiceClient{
-		list: connect.NewClient[v2.ProjectServiceListRequest, v2.ProjectServiceListResponse](
-			httpClient,
-			baseURL+ProjectServiceListProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-		get: connect.NewClient[v2.ProjectServiceGetRequest, v2.ProjectServiceGetResponse](
-			httpClient,
-			baseURL+ProjectServiceGetProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		create: connect.NewClient[v2.ProjectServiceCreateRequest, v2.ProjectServiceCreateResponse](
-			httpClient,
-			baseURL+ProjectServiceCreateProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("Create")),
-			connect.WithClientOptions(opts...),
-		),
-		delete: connect.NewClient[v2.ProjectServiceDeleteRequest, v2.ProjectServiceDeleteResponse](
-			httpClient,
-			baseURL+ProjectServiceDeleteProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("Delete")),
-			connect.WithClientOptions(opts...),
-		),
-		update: connect.NewClient[v2.ProjectServiceUpdateRequest, v2.ProjectServiceUpdateResponse](
-			httpClient,
-			baseURL+ProjectServiceUpdateProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("Update")),
-			connect.WithClientOptions(opts...),
-		),
-		leave: connect.NewClient[v2.ProjectServiceLeaveRequest, v2.ProjectServiceLeaveResponse](
-			httpClient,
-			baseURL+ProjectServiceLeaveProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("Leave")),
-			connect.WithClientOptions(opts...),
-		),
-		addMember: connect.NewClient[v2.ProjectServiceAddMemberRequest, v2.ProjectServiceAddMemberResponse](
-			httpClient,
-			baseURL+ProjectServiceAddMemberProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("AddMember")),
-			connect.WithClientOptions(opts...),
-		),
-		removeMember: connect.NewClient[v2.ProjectServiceRemoveMemberRequest, v2.ProjectServiceRemoveMemberResponse](
-			httpClient,
-			baseURL+ProjectServiceRemoveMemberProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("RemoveMember")),
-			connect.WithClientOptions(opts...),
-		),
-		updateMember: connect.NewClient[v2.ProjectServiceUpdateMemberRequest, v2.ProjectServiceUpdateMemberResponse](
-			httpClient,
-			baseURL+ProjectServiceUpdateMemberProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("UpdateMember")),
-			connect.WithClientOptions(opts...),
-		),
-		invite: connect.NewClient[v2.ProjectServiceInviteRequest, v2.ProjectServiceInviteResponse](
-			httpClient,
-			baseURL+ProjectServiceInviteProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("Invite")),
-			connect.WithClientOptions(opts...),
-		),
-		inviteAccept: connect.NewClient[v2.ProjectServiceInviteAcceptRequest, v2.ProjectServiceInviteAcceptResponse](
-			httpClient,
-			baseURL+ProjectServiceInviteAcceptProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("InviteAccept")),
-			connect.WithClientOptions(opts...),
-		),
-		inviteDelete: connect.NewClient[v2.ProjectServiceInviteDeleteRequest, v2.ProjectServiceInviteDeleteResponse](
-			httpClient,
-			baseURL+ProjectServiceInviteDeleteProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("InviteDelete")),
-			connect.WithClientOptions(opts...),
-		),
-		invitesList: connect.NewClient[v2.ProjectServiceInvitesListRequest, v2.ProjectServiceInvitesListResponse](
-			httpClient,
-			baseURL+ProjectServiceInvitesListProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("InvitesList")),
-			connect.WithClientOptions(opts...),
-		),
-		inviteGet: connect.NewClient[v2.ProjectServiceInviteGetRequest, v2.ProjectServiceInviteGetResponse](
-			httpClient,
-			baseURL+ProjectServiceInviteGetProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("InviteGet")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// projectServiceClient implements ProjectServiceClient.
-type projectServiceClient struct {
-	list         *connect.Client[v2.ProjectServiceListRequest, v2.ProjectServiceListResponse]
-	get          *connect.Client[v2.ProjectServiceGetRequest, v2.ProjectServiceGetResponse]
-	create       *connect.Client[v2.ProjectServiceCreateRequest, v2.ProjectServiceCreateResponse]
-	delete       *connect.Client[v2.ProjectServiceDeleteRequest, v2.ProjectServiceDeleteResponse]
-	update       *connect.Client[v2.ProjectServiceUpdateRequest, v2.ProjectServiceUpdateResponse]
-	leave        *connect.Client[v2.ProjectServiceLeaveRequest, v2.ProjectServiceLeaveResponse]
-	addMember    *connect.Client[v2.ProjectServiceAddMemberRequest, v2.ProjectServiceAddMemberResponse]
-	removeMember *connect.Client[v2.ProjectServiceRemoveMemberRequest, v2.ProjectServiceRemoveMemberResponse]
-	updateMember *connect.Client[v2.ProjectServiceUpdateMemberRequest, v2.ProjectServiceUpdateMemberResponse]
-	invite       *connect.Client[v2.ProjectServiceInviteRequest, v2.ProjectServiceInviteResponse]
-	inviteAccept *connect.Client[v2.ProjectServiceInviteAcceptRequest, v2.ProjectServiceInviteAcceptResponse]
-	inviteDelete *connect.Client[v2.ProjectServiceInviteDeleteRequest, v2.ProjectServiceInviteDeleteResponse]
-	invitesList  *connect.Client[v2.ProjectServiceInvitesListRequest, v2.ProjectServiceInvitesListResponse]
-	inviteGet    *connect.Client[v2.ProjectServiceInviteGetRequest, v2.ProjectServiceInviteGetResponse]
-}
-
-// List calls metalstack.api.v2.ProjectService.List.
-func (c *projectServiceClient) List(ctx context.Context, req *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Get calls metalstack.api.v2.ProjectService.Get.
-func (c *projectServiceClient) Get(ctx context.Context, req *v2.ProjectServiceGetRequest) (*v2.ProjectServiceGetResponse, error) {
-	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Create calls metalstack.api.v2.ProjectService.Create.
-func (c *projectServiceClient) Create(ctx context.Context, req *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error) {
-	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Delete calls metalstack.api.v2.ProjectService.Delete.
-func (c *projectServiceClient) Delete(ctx context.Context, req *v2.ProjectServiceDeleteRequest) (*v2.ProjectServiceDeleteResponse, error) {
-	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Update calls metalstack.api.v2.ProjectService.Update.
-func (c *projectServiceClient) Update(ctx context.Context, req *v2.ProjectServiceUpdateRequest) (*v2.ProjectServiceUpdateResponse, error) {
-	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Leave calls metalstack.api.v2.ProjectService.Leave.
-func (c *projectServiceClient) Leave(ctx context.Context, req *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error) {
-	response, err := c.leave.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// AddMember calls metalstack.api.v2.ProjectService.AddMember.
-func (c *projectServiceClient) AddMember(ctx context.Context, req *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error) {
-	response, err := c.addMember.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// RemoveMember calls metalstack.api.v2.ProjectService.RemoveMember.
-func (c *projectServiceClient) RemoveMember(ctx context.Context, req *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error) {
-	response, err := c.removeMember.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// UpdateMember calls metalstack.api.v2.ProjectService.UpdateMember.
-func (c *projectServiceClient) UpdateMember(ctx context.Context, req *v2.ProjectServiceUpdateMemberRequest) (*v2.ProjectServiceUpdateMemberResponse, error) {
-	response, err := c.updateMember.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Invite calls metalstack.api.v2.ProjectService.Invite.
-func (c *projectServiceClient) Invite(ctx context.Context, req *v2.ProjectServiceInviteRequest) (*v2.ProjectServiceInviteResponse, error) {
-	response, err := c.invite.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// InviteAccept calls metalstack.api.v2.ProjectService.InviteAccept.
-func (c *projectServiceClient) InviteAccept(ctx context.Context, req *v2.ProjectServiceInviteAcceptRequest) (*v2.ProjectServiceInviteAcceptResponse, error) {
-	response, err := c.inviteAccept.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// InviteDelete calls metalstack.api.v2.ProjectService.InviteDelete.
-func (c *projectServiceClient) InviteDelete(ctx context.Context, req *v2.ProjectServiceInviteDeleteRequest) (*v2.ProjectServiceInviteDeleteResponse, error) {
-	response, err := c.inviteDelete.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// InvitesList calls metalstack.api.v2.ProjectService.InvitesList.
-func (c *projectServiceClient) InvitesList(ctx context.Context, req *v2.ProjectServiceInvitesListRequest) (*v2.ProjectServiceInvitesListResponse, error) {
-	response, err := c.invitesList.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// InviteGet calls metalstack.api.v2.ProjectService.InviteGet.
-func (c *projectServiceClient) InviteGet(ctx context.Context, req *v2.ProjectServiceInviteGetRequest) (*v2.ProjectServiceInviteGetResponse, error) {
-	response, err := c.inviteGet.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewProjectServiceClient constructs a client for the metalstack.api.v2.ProjectService service.
+// Multiple service clients may share a single connect.Client.
+func NewProjectServiceClient(client *connect.Client) ProjectServiceClient {
+	return &projectServiceClient{client: client}
 }
 
 // ProjectServiceHandler is an implementation of the metalstack.api.v2.ProjectService service.
@@ -376,188 +229,369 @@ type ProjectServiceHandler interface {
 	InviteGet(context.Context, *v2.ProjectServiceInviteGetRequest) (*v2.ProjectServiceInviteGetResponse, error)
 }
 
-// NewProjectServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	projectServiceMethods := v2.File_metalstack_api_v2_project_proto.Services().ByName("ProjectService").Methods()
-	projectServiceListHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceListProcedure,
-		svc.List,
-		connect.WithSchema(projectServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
+// RegisterProjectServiceHandler registers svc as the metalstack.api.v2.ProjectService
+// implementation on server.
+func RegisterProjectServiceHandler(server *connect.Server, svc ProjectServiceHandler) {
+	adapter := projectServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: projectServiceListSpec(), Handler: adapter.list},
+		connect.Method{Spec: projectServiceGetSpec(), Handler: adapter.get},
+		connect.Method{Spec: projectServiceCreateSpec(), Handler: adapter.create},
+		connect.Method{Spec: projectServiceDeleteSpec(), Handler: adapter.delete},
+		connect.Method{Spec: projectServiceUpdateSpec(), Handler: adapter.update},
+		connect.Method{Spec: projectServiceLeaveSpec(), Handler: adapter.leave},
+		connect.Method{Spec: projectServiceAddMemberSpec(), Handler: adapter.addMember},
+		connect.Method{Spec: projectServiceRemoveMemberSpec(), Handler: adapter.removeMember},
+		connect.Method{Spec: projectServiceUpdateMemberSpec(), Handler: adapter.updateMember},
+		connect.Method{Spec: projectServiceInviteSpec(), Handler: adapter.invite},
+		connect.Method{Spec: projectServiceInviteAcceptSpec(), Handler: adapter.inviteAccept},
+		connect.Method{Spec: projectServiceInviteDeleteSpec(), Handler: adapter.inviteDelete},
+		connect.Method{Spec: projectServiceInvitesListSpec(), Handler: adapter.invitesList},
+		connect.Method{Spec: projectServiceInviteGetSpec(), Handler: adapter.inviteGet},
 	)
-	projectServiceGetHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(projectServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceCreateHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceCreateProcedure,
-		svc.Create,
-		connect.WithSchema(projectServiceMethods.ByName("Create")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceDeleteHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceDeleteProcedure,
-		svc.Delete,
-		connect.WithSchema(projectServiceMethods.ByName("Delete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceUpdateHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceUpdateProcedure,
-		svc.Update,
-		connect.WithSchema(projectServiceMethods.ByName("Update")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceLeaveHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceLeaveProcedure,
-		svc.Leave,
-		connect.WithSchema(projectServiceMethods.ByName("Leave")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceAddMemberHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceAddMemberProcedure,
-		svc.AddMember,
-		connect.WithSchema(projectServiceMethods.ByName("AddMember")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceRemoveMemberHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceRemoveMemberProcedure,
-		svc.RemoveMember,
-		connect.WithSchema(projectServiceMethods.ByName("RemoveMember")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceUpdateMemberHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceUpdateMemberProcedure,
-		svc.UpdateMember,
-		connect.WithSchema(projectServiceMethods.ByName("UpdateMember")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceInviteHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceInviteProcedure,
-		svc.Invite,
-		connect.WithSchema(projectServiceMethods.ByName("Invite")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceInviteAcceptHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceInviteAcceptProcedure,
-		svc.InviteAccept,
-		connect.WithSchema(projectServiceMethods.ByName("InviteAccept")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceInviteDeleteHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceInviteDeleteProcedure,
-		svc.InviteDelete,
-		connect.WithSchema(projectServiceMethods.ByName("InviteDelete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceInvitesListHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceInvitesListProcedure,
-		svc.InvitesList,
-		connect.WithSchema(projectServiceMethods.ByName("InvitesList")),
-		connect.WithHandlerOptions(opts...),
-	)
-	projectServiceInviteGetHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceInviteGetProcedure,
-		svc.InviteGet,
-		connect.WithSchema(projectServiceMethods.ByName("InviteGet")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.api.v2.ProjectService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case ProjectServiceListProcedure:
-			projectServiceListHandler.ServeHTTP(w, r)
-		case ProjectServiceGetProcedure:
-			projectServiceGetHandler.ServeHTTP(w, r)
-		case ProjectServiceCreateProcedure:
-			projectServiceCreateHandler.ServeHTTP(w, r)
-		case ProjectServiceDeleteProcedure:
-			projectServiceDeleteHandler.ServeHTTP(w, r)
-		case ProjectServiceUpdateProcedure:
-			projectServiceUpdateHandler.ServeHTTP(w, r)
-		case ProjectServiceLeaveProcedure:
-			projectServiceLeaveHandler.ServeHTTP(w, r)
-		case ProjectServiceAddMemberProcedure:
-			projectServiceAddMemberHandler.ServeHTTP(w, r)
-		case ProjectServiceRemoveMemberProcedure:
-			projectServiceRemoveMemberHandler.ServeHTTP(w, r)
-		case ProjectServiceUpdateMemberProcedure:
-			projectServiceUpdateMemberHandler.ServeHTTP(w, r)
-		case ProjectServiceInviteProcedure:
-			projectServiceInviteHandler.ServeHTTP(w, r)
-		case ProjectServiceInviteAcceptProcedure:
-			projectServiceInviteAcceptHandler.ServeHTTP(w, r)
-		case ProjectServiceInviteDeleteProcedure:
-			projectServiceInviteDeleteHandler.ServeHTTP(w, r)
-		case ProjectServiceInvitesListProcedure:
-			projectServiceInvitesListHandler.ServeHTTP(w, r)
-		case ProjectServiceInviteGetProcedure:
-			projectServiceInviteGetHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedProjectServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedProjectServiceHandler struct{}
 
 func (UnimplementedProjectServiceHandler) List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.List is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) Get(context.Context, *v2.ProjectServiceGetRequest) (*v2.ProjectServiceGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.Get is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.Get is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) Create(context.Context, *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.Create is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.Create is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) Delete(context.Context, *v2.ProjectServiceDeleteRequest) (*v2.ProjectServiceDeleteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.Delete is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.Delete is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) Update(context.Context, *v2.ProjectServiceUpdateRequest) (*v2.ProjectServiceUpdateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.Update is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.Update is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) Leave(context.Context, *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.Leave is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.Leave is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) AddMember(context.Context, *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.AddMember is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.AddMember is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) RemoveMember(context.Context, *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.RemoveMember is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.RemoveMember is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) UpdateMember(context.Context, *v2.ProjectServiceUpdateMemberRequest) (*v2.ProjectServiceUpdateMemberResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.UpdateMember is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.UpdateMember is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) Invite(context.Context, *v2.ProjectServiceInviteRequest) (*v2.ProjectServiceInviteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.Invite is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.Invite is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) InviteAccept(context.Context, *v2.ProjectServiceInviteAcceptRequest) (*v2.ProjectServiceInviteAcceptResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.InviteAccept is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.InviteAccept is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) InviteDelete(context.Context, *v2.ProjectServiceInviteDeleteRequest) (*v2.ProjectServiceInviteDeleteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.InviteDelete is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.InviteDelete is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) InvitesList(context.Context, *v2.ProjectServiceInvitesListRequest) (*v2.ProjectServiceInvitesListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.InvitesList is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.InvitesList is not implemented")
 }
 
 func (UnimplementedProjectServiceHandler) InviteGet(context.Context, *v2.ProjectServiceInviteGetRequest) (*v2.ProjectServiceInviteGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ProjectService.InviteGet is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ProjectService.InviteGet is not implemented")
+}
+
+type projectServiceClient struct {
+	client *connect.Client
+}
+
+func (c *projectServiceClient) List(ctx context.Context, req *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error) {
+	var res v2.ProjectServiceListResponse
+	if err := c.client.CallUnary(ctx, projectServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) Get(ctx context.Context, req *v2.ProjectServiceGetRequest) (*v2.ProjectServiceGetResponse, error) {
+	var res v2.ProjectServiceGetResponse
+	if err := c.client.CallUnary(ctx, projectServiceGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) Create(ctx context.Context, req *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error) {
+	var res v2.ProjectServiceCreateResponse
+	if err := c.client.CallUnary(ctx, projectServiceCreateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) Delete(ctx context.Context, req *v2.ProjectServiceDeleteRequest) (*v2.ProjectServiceDeleteResponse, error) {
+	var res v2.ProjectServiceDeleteResponse
+	if err := c.client.CallUnary(ctx, projectServiceDeleteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) Update(ctx context.Context, req *v2.ProjectServiceUpdateRequest) (*v2.ProjectServiceUpdateResponse, error) {
+	var res v2.ProjectServiceUpdateResponse
+	if err := c.client.CallUnary(ctx, projectServiceUpdateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) Leave(ctx context.Context, req *v2.ProjectServiceLeaveRequest) (*v2.ProjectServiceLeaveResponse, error) {
+	var res v2.ProjectServiceLeaveResponse
+	if err := c.client.CallUnary(ctx, projectServiceLeaveSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) AddMember(ctx context.Context, req *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error) {
+	var res v2.ProjectServiceAddMemberResponse
+	if err := c.client.CallUnary(ctx, projectServiceAddMemberSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) RemoveMember(ctx context.Context, req *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error) {
+	var res v2.ProjectServiceRemoveMemberResponse
+	if err := c.client.CallUnary(ctx, projectServiceRemoveMemberSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) UpdateMember(ctx context.Context, req *v2.ProjectServiceUpdateMemberRequest) (*v2.ProjectServiceUpdateMemberResponse, error) {
+	var res v2.ProjectServiceUpdateMemberResponse
+	if err := c.client.CallUnary(ctx, projectServiceUpdateMemberSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) Invite(ctx context.Context, req *v2.ProjectServiceInviteRequest) (*v2.ProjectServiceInviteResponse, error) {
+	var res v2.ProjectServiceInviteResponse
+	if err := c.client.CallUnary(ctx, projectServiceInviteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) InviteAccept(ctx context.Context, req *v2.ProjectServiceInviteAcceptRequest) (*v2.ProjectServiceInviteAcceptResponse, error) {
+	var res v2.ProjectServiceInviteAcceptResponse
+	if err := c.client.CallUnary(ctx, projectServiceInviteAcceptSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) InviteDelete(ctx context.Context, req *v2.ProjectServiceInviteDeleteRequest) (*v2.ProjectServiceInviteDeleteResponse, error) {
+	var res v2.ProjectServiceInviteDeleteResponse
+	if err := c.client.CallUnary(ctx, projectServiceInviteDeleteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) InvitesList(ctx context.Context, req *v2.ProjectServiceInvitesListRequest) (*v2.ProjectServiceInvitesListResponse, error) {
+	var res v2.ProjectServiceInvitesListResponse
+	if err := c.client.CallUnary(ctx, projectServiceInvitesListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *projectServiceClient) InviteGet(ctx context.Context, req *v2.ProjectServiceInviteGetRequest) (*v2.ProjectServiceInviteGetResponse, error) {
+	var res v2.ProjectServiceInviteGetResponse
+	if err := c.client.CallUnary(ctx, projectServiceInviteGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type projectServiceHandler struct{ svc ProjectServiceHandler }
+
+func (h projectServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) get(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Get(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) create(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceCreateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Create(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) delete(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceDeleteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Delete(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) update(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceUpdateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Update(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) leave(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceLeaveRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Leave(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) addMember(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceAddMemberRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.AddMember(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) removeMember(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceRemoveMemberRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.RemoveMember(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) updateMember(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceUpdateMemberRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.UpdateMember(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) invite(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceInviteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Invite(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) inviteAccept(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceInviteAcceptRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.InviteAccept(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) inviteDelete(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceInviteDeleteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.InviteDelete(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) invitesList(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceInvitesListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.InvitesList(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h projectServiceHandler) inviteGet(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceInviteGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.InviteGet(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

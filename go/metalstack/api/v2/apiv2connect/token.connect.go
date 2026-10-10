@@ -5,46 +5,82 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// TokenServiceName is the fully-qualified name of the TokenService service.
 	TokenServiceName = "metalstack.api.v2.TokenService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// TokenServiceGetProcedure is the fully-qualified name of the TokenService's Get RPC.
+	// TokenServiceGetProcedure is the procedure name of the TokenService's Get RPC.
 	TokenServiceGetProcedure = "/metalstack.api.v2.TokenService/Get"
-	// TokenServiceCreateProcedure is the fully-qualified name of the TokenService's Create RPC.
+	// TokenServiceCreateProcedure is the procedure name of the TokenService's Create RPC.
 	TokenServiceCreateProcedure = "/metalstack.api.v2.TokenService/Create"
-	// TokenServiceUpdateProcedure is the fully-qualified name of the TokenService's Update RPC.
+	// TokenServiceUpdateProcedure is the procedure name of the TokenService's Update RPC.
 	TokenServiceUpdateProcedure = "/metalstack.api.v2.TokenService/Update"
-	// TokenServiceListProcedure is the fully-qualified name of the TokenService's List RPC.
+	// TokenServiceListProcedure is the procedure name of the TokenService's List RPC.
 	TokenServiceListProcedure = "/metalstack.api.v2.TokenService/List"
-	// TokenServiceRevokeProcedure is the fully-qualified name of the TokenService's Revoke RPC.
+	// TokenServiceRevokeProcedure is the procedure name of the TokenService's Revoke RPC.
 	TokenServiceRevokeProcedure = "/metalstack.api.v2.TokenService/Revoke"
-	// TokenServiceRefreshProcedure is the fully-qualified name of the TokenService's Refresh RPC.
+	// TokenServiceRefreshProcedure is the procedure name of the TokenService's Refresh RPC.
 	TokenServiceRefreshProcedure = "/metalstack.api.v2.TokenService/Refresh"
+)
+
+var (
+	tokenServiceGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_token_proto.Services().ByName("TokenService").Methods().ByName("Get"),
+			Procedure:  TokenServiceGetProcedure,
+		}
+	})
+	tokenServiceCreateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_token_proto.Services().ByName("TokenService").Methods().ByName("Create"),
+			Procedure:  TokenServiceCreateProcedure,
+		}
+	})
+	tokenServiceUpdateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_token_proto.Services().ByName("TokenService").Methods().ByName("Update"),
+			Procedure:  TokenServiceUpdateProcedure,
+		}
+	})
+	tokenServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_token_proto.Services().ByName("TokenService").Methods().ByName("List"),
+			Procedure:  TokenServiceListProcedure,
+		}
+	})
+	tokenServiceRevokeSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_token_proto.Services().ByName("TokenService").Methods().ByName("Revoke"),
+			Procedure:  TokenServiceRevokeProcedure,
+		}
+	})
+	tokenServiceRefreshSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_token_proto.Services().ByName("TokenService").Methods().ByName("Refresh"),
+			Procedure:  TokenServiceRefreshProcedure,
+		}
+	})
 )
 
 // TokenServiceClient is a client for the metalstack.api.v2.TokenService service.
@@ -63,118 +99,10 @@ type TokenServiceClient interface {
 	Refresh(context.Context, *v2.TokenServiceRefreshRequest) (*v2.TokenServiceRefreshResponse, error)
 }
 
-// NewTokenServiceClient constructs a client for the metalstack.api.v2.TokenService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewTokenServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) TokenServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	tokenServiceMethods := v2.File_metalstack_api_v2_token_proto.Services().ByName("TokenService").Methods()
-	return &tokenServiceClient{
-		get: connect.NewClient[v2.TokenServiceGetRequest, v2.TokenServiceGetResponse](
-			httpClient,
-			baseURL+TokenServiceGetProcedure,
-			connect.WithSchema(tokenServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		create: connect.NewClient[v2.TokenServiceCreateRequest, v2.TokenServiceCreateResponse](
-			httpClient,
-			baseURL+TokenServiceCreateProcedure,
-			connect.WithSchema(tokenServiceMethods.ByName("Create")),
-			connect.WithClientOptions(opts...),
-		),
-		update: connect.NewClient[v2.TokenServiceUpdateRequest, v2.TokenServiceUpdateResponse](
-			httpClient,
-			baseURL+TokenServiceUpdateProcedure,
-			connect.WithSchema(tokenServiceMethods.ByName("Update")),
-			connect.WithClientOptions(opts...),
-		),
-		list: connect.NewClient[v2.TokenServiceListRequest, v2.TokenServiceListResponse](
-			httpClient,
-			baseURL+TokenServiceListProcedure,
-			connect.WithSchema(tokenServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-		revoke: connect.NewClient[v2.TokenServiceRevokeRequest, v2.TokenServiceRevokeResponse](
-			httpClient,
-			baseURL+TokenServiceRevokeProcedure,
-			connect.WithSchema(tokenServiceMethods.ByName("Revoke")),
-			connect.WithClientOptions(opts...),
-		),
-		refresh: connect.NewClient[v2.TokenServiceRefreshRequest, v2.TokenServiceRefreshResponse](
-			httpClient,
-			baseURL+TokenServiceRefreshProcedure,
-			connect.WithSchema(tokenServiceMethods.ByName("Refresh")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// tokenServiceClient implements TokenServiceClient.
-type tokenServiceClient struct {
-	get     *connect.Client[v2.TokenServiceGetRequest, v2.TokenServiceGetResponse]
-	create  *connect.Client[v2.TokenServiceCreateRequest, v2.TokenServiceCreateResponse]
-	update  *connect.Client[v2.TokenServiceUpdateRequest, v2.TokenServiceUpdateResponse]
-	list    *connect.Client[v2.TokenServiceListRequest, v2.TokenServiceListResponse]
-	revoke  *connect.Client[v2.TokenServiceRevokeRequest, v2.TokenServiceRevokeResponse]
-	refresh *connect.Client[v2.TokenServiceRefreshRequest, v2.TokenServiceRefreshResponse]
-}
-
-// Get calls metalstack.api.v2.TokenService.Get.
-func (c *tokenServiceClient) Get(ctx context.Context, req *v2.TokenServiceGetRequest) (*v2.TokenServiceGetResponse, error) {
-	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Create calls metalstack.api.v2.TokenService.Create.
-func (c *tokenServiceClient) Create(ctx context.Context, req *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error) {
-	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Update calls metalstack.api.v2.TokenService.Update.
-func (c *tokenServiceClient) Update(ctx context.Context, req *v2.TokenServiceUpdateRequest) (*v2.TokenServiceUpdateResponse, error) {
-	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// List calls metalstack.api.v2.TokenService.List.
-func (c *tokenServiceClient) List(ctx context.Context, req *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Revoke calls metalstack.api.v2.TokenService.Revoke.
-func (c *tokenServiceClient) Revoke(ctx context.Context, req *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error) {
-	response, err := c.revoke.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Refresh calls metalstack.api.v2.TokenService.Refresh.
-func (c *tokenServiceClient) Refresh(ctx context.Context, req *v2.TokenServiceRefreshRequest) (*v2.TokenServiceRefreshResponse, error) {
-	response, err := c.refresh.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewTokenServiceClient constructs a client for the metalstack.api.v2.TokenService service.
+// Multiple service clients may share a single connect.Client.
+func NewTokenServiceClient(client *connect.Client) TokenServiceClient {
+	return &tokenServiceClient{client: client}
 }
 
 // TokenServiceHandler is an implementation of the metalstack.api.v2.TokenService service.
@@ -193,92 +121,169 @@ type TokenServiceHandler interface {
 	Refresh(context.Context, *v2.TokenServiceRefreshRequest) (*v2.TokenServiceRefreshResponse, error)
 }
 
-// NewTokenServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewTokenServiceHandler(svc TokenServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	tokenServiceMethods := v2.File_metalstack_api_v2_token_proto.Services().ByName("TokenService").Methods()
-	tokenServiceGetHandler := connect.NewUnaryHandlerSimple(
-		TokenServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(tokenServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
+// RegisterTokenServiceHandler registers svc as the metalstack.api.v2.TokenService implementation on
+// server.
+func RegisterTokenServiceHandler(server *connect.Server, svc TokenServiceHandler) {
+	adapter := tokenServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: tokenServiceGetSpec(), Handler: adapter.get},
+		connect.Method{Spec: tokenServiceCreateSpec(), Handler: adapter.create},
+		connect.Method{Spec: tokenServiceUpdateSpec(), Handler: adapter.update},
+		connect.Method{Spec: tokenServiceListSpec(), Handler: adapter.list},
+		connect.Method{Spec: tokenServiceRevokeSpec(), Handler: adapter.revoke},
+		connect.Method{Spec: tokenServiceRefreshSpec(), Handler: adapter.refresh},
 	)
-	tokenServiceCreateHandler := connect.NewUnaryHandlerSimple(
-		TokenServiceCreateProcedure,
-		svc.Create,
-		connect.WithSchema(tokenServiceMethods.ByName("Create")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tokenServiceUpdateHandler := connect.NewUnaryHandlerSimple(
-		TokenServiceUpdateProcedure,
-		svc.Update,
-		connect.WithSchema(tokenServiceMethods.ByName("Update")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tokenServiceListHandler := connect.NewUnaryHandlerSimple(
-		TokenServiceListProcedure,
-		svc.List,
-		connect.WithSchema(tokenServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tokenServiceRevokeHandler := connect.NewUnaryHandlerSimple(
-		TokenServiceRevokeProcedure,
-		svc.Revoke,
-		connect.WithSchema(tokenServiceMethods.ByName("Revoke")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tokenServiceRefreshHandler := connect.NewUnaryHandlerSimple(
-		TokenServiceRefreshProcedure,
-		svc.Refresh,
-		connect.WithSchema(tokenServiceMethods.ByName("Refresh")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.api.v2.TokenService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case TokenServiceGetProcedure:
-			tokenServiceGetHandler.ServeHTTP(w, r)
-		case TokenServiceCreateProcedure:
-			tokenServiceCreateHandler.ServeHTTP(w, r)
-		case TokenServiceUpdateProcedure:
-			tokenServiceUpdateHandler.ServeHTTP(w, r)
-		case TokenServiceListProcedure:
-			tokenServiceListHandler.ServeHTTP(w, r)
-		case TokenServiceRevokeProcedure:
-			tokenServiceRevokeHandler.ServeHTTP(w, r)
-		case TokenServiceRefreshProcedure:
-			tokenServiceRefreshHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedTokenServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTokenServiceHandler struct{}
 
 func (UnimplementedTokenServiceHandler) Get(context.Context, *v2.TokenServiceGetRequest) (*v2.TokenServiceGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TokenService.Get is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TokenService.Get is not implemented")
 }
 
 func (UnimplementedTokenServiceHandler) Create(context.Context, *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TokenService.Create is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TokenService.Create is not implemented")
 }
 
 func (UnimplementedTokenServiceHandler) Update(context.Context, *v2.TokenServiceUpdateRequest) (*v2.TokenServiceUpdateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TokenService.Update is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TokenService.Update is not implemented")
 }
 
 func (UnimplementedTokenServiceHandler) List(context.Context, *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TokenService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TokenService.List is not implemented")
 }
 
 func (UnimplementedTokenServiceHandler) Revoke(context.Context, *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TokenService.Revoke is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TokenService.Revoke is not implemented")
 }
 
 func (UnimplementedTokenServiceHandler) Refresh(context.Context, *v2.TokenServiceRefreshRequest) (*v2.TokenServiceRefreshResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TokenService.Refresh is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TokenService.Refresh is not implemented")
+}
+
+type tokenServiceClient struct {
+	client *connect.Client
+}
+
+func (c *tokenServiceClient) Get(ctx context.Context, req *v2.TokenServiceGetRequest) (*v2.TokenServiceGetResponse, error) {
+	var res v2.TokenServiceGetResponse
+	if err := c.client.CallUnary(ctx, tokenServiceGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tokenServiceClient) Create(ctx context.Context, req *v2.TokenServiceCreateRequest) (*v2.TokenServiceCreateResponse, error) {
+	var res v2.TokenServiceCreateResponse
+	if err := c.client.CallUnary(ctx, tokenServiceCreateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tokenServiceClient) Update(ctx context.Context, req *v2.TokenServiceUpdateRequest) (*v2.TokenServiceUpdateResponse, error) {
+	var res v2.TokenServiceUpdateResponse
+	if err := c.client.CallUnary(ctx, tokenServiceUpdateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tokenServiceClient) List(ctx context.Context, req *v2.TokenServiceListRequest) (*v2.TokenServiceListResponse, error) {
+	var res v2.TokenServiceListResponse
+	if err := c.client.CallUnary(ctx, tokenServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tokenServiceClient) Revoke(ctx context.Context, req *v2.TokenServiceRevokeRequest) (*v2.TokenServiceRevokeResponse, error) {
+	var res v2.TokenServiceRevokeResponse
+	if err := c.client.CallUnary(ctx, tokenServiceRevokeSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tokenServiceClient) Refresh(ctx context.Context, req *v2.TokenServiceRefreshRequest) (*v2.TokenServiceRefreshResponse, error) {
+	var res v2.TokenServiceRefreshResponse
+	if err := c.client.CallUnary(ctx, tokenServiceRefreshSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type tokenServiceHandler struct{ svc TokenServiceHandler }
+
+func (h tokenServiceHandler) get(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TokenServiceGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Get(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tokenServiceHandler) create(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TokenServiceCreateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Create(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tokenServiceHandler) update(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TokenServiceUpdateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Update(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tokenServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TokenServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tokenServiceHandler) revoke(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TokenServiceRevokeRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Revoke(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tokenServiceHandler) refresh(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TokenServiceRefreshRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Refresh(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

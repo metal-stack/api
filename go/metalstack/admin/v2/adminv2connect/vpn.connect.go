@@ -5,38 +5,46 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// VPNServiceName is the fully-qualified name of the VPNService service.
 	VPNServiceName = "metalstack.admin.v2.VPNService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// VPNServiceAuthKeyProcedure is the fully-qualified name of the VPNService's AuthKey RPC.
+	// VPNServiceAuthKeyProcedure is the procedure name of the VPNService's AuthKey RPC.
 	VPNServiceAuthKeyProcedure = "/metalstack.admin.v2.VPNService/AuthKey"
-	// VPNServiceListNodesProcedure is the fully-qualified name of the VPNService's ListNodes RPC.
+	// VPNServiceListNodesProcedure is the procedure name of the VPNService's ListNodes RPC.
 	VPNServiceListNodesProcedure = "/metalstack.admin.v2.VPNService/ListNodes"
+)
+
+var (
+	vPNServiceAuthKeySpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_vpn_proto.Services().ByName("VPNService").Methods().ByName("AuthKey"),
+			Procedure:  VPNServiceAuthKeyProcedure,
+		}
+	})
+	vPNServiceListNodesSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_vpn_proto.Services().ByName("VPNService").Methods().ByName("ListNodes"),
+			Procedure:  VPNServiceListNodesProcedure,
+		}
+	})
 )
 
 // VPNServiceClient is a client for the metalstack.admin.v2.VPNService service.
@@ -47,54 +55,10 @@ type VPNServiceClient interface {
 	ListNodes(context.Context, *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error)
 }
 
-// NewVPNServiceClient constructs a client for the metalstack.admin.v2.VPNService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewVPNServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) VPNServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	vPNServiceMethods := v2.File_metalstack_admin_v2_vpn_proto.Services().ByName("VPNService").Methods()
-	return &vPNServiceClient{
-		authKey: connect.NewClient[v2.VPNServiceAuthKeyRequest, v2.VPNServiceAuthKeyResponse](
-			httpClient,
-			baseURL+VPNServiceAuthKeyProcedure,
-			connect.WithSchema(vPNServiceMethods.ByName("AuthKey")),
-			connect.WithClientOptions(opts...),
-		),
-		listNodes: connect.NewClient[v2.VPNServiceListNodesRequest, v2.VPNServiceListNodesResponse](
-			httpClient,
-			baseURL+VPNServiceListNodesProcedure,
-			connect.WithSchema(vPNServiceMethods.ByName("ListNodes")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// vPNServiceClient implements VPNServiceClient.
-type vPNServiceClient struct {
-	authKey   *connect.Client[v2.VPNServiceAuthKeyRequest, v2.VPNServiceAuthKeyResponse]
-	listNodes *connect.Client[v2.VPNServiceListNodesRequest, v2.VPNServiceListNodesResponse]
-}
-
-// AuthKey calls metalstack.admin.v2.VPNService.AuthKey.
-func (c *vPNServiceClient) AuthKey(ctx context.Context, req *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error) {
-	response, err := c.authKey.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// ListNodes calls metalstack.admin.v2.VPNService.ListNodes.
-func (c *vPNServiceClient) ListNodes(ctx context.Context, req *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error) {
-	response, err := c.listNodes.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewVPNServiceClient constructs a client for the metalstack.admin.v2.VPNService service. Multiple
+// service clients may share a single connect.Client.
+func NewVPNServiceClient(client *connect.Client) VPNServiceClient {
+	return &vPNServiceClient{client: client}
 }
 
 // VPNServiceHandler is an implementation of the metalstack.admin.v2.VPNService service.
@@ -105,44 +69,69 @@ type VPNServiceHandler interface {
 	ListNodes(context.Context, *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error)
 }
 
-// NewVPNServiceHandler builds an HTTP handler from the service implementation. It returns the path
-// on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewVPNServiceHandler(svc VPNServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	vPNServiceMethods := v2.File_metalstack_admin_v2_vpn_proto.Services().ByName("VPNService").Methods()
-	vPNServiceAuthKeyHandler := connect.NewUnaryHandlerSimple(
-		VPNServiceAuthKeyProcedure,
-		svc.AuthKey,
-		connect.WithSchema(vPNServiceMethods.ByName("AuthKey")),
-		connect.WithHandlerOptions(opts...),
+// RegisterVPNServiceHandler registers svc as the metalstack.admin.v2.VPNService implementation on
+// server.
+func RegisterVPNServiceHandler(server *connect.Server, svc VPNServiceHandler) {
+	adapter := vPNServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: vPNServiceAuthKeySpec(), Handler: adapter.authKey},
+		connect.Method{Spec: vPNServiceListNodesSpec(), Handler: adapter.listNodes},
 	)
-	vPNServiceListNodesHandler := connect.NewUnaryHandlerSimple(
-		VPNServiceListNodesProcedure,
-		svc.ListNodes,
-		connect.WithSchema(vPNServiceMethods.ByName("ListNodes")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.admin.v2.VPNService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case VPNServiceAuthKeyProcedure:
-			vPNServiceAuthKeyHandler.ServeHTTP(w, r)
-		case VPNServiceListNodesProcedure:
-			vPNServiceListNodesHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedVPNServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedVPNServiceHandler struct{}
 
 func (UnimplementedVPNServiceHandler) AuthKey(context.Context, *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.VPNService.AuthKey is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.VPNService.AuthKey is not implemented")
 }
 
 func (UnimplementedVPNServiceHandler) ListNodes(context.Context, *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.VPNService.ListNodes is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.VPNService.ListNodes is not implemented")
+}
+
+type vPNServiceClient struct {
+	client *connect.Client
+}
+
+func (c *vPNServiceClient) AuthKey(ctx context.Context, req *v2.VPNServiceAuthKeyRequest) (*v2.VPNServiceAuthKeyResponse, error) {
+	var res v2.VPNServiceAuthKeyResponse
+	if err := c.client.CallUnary(ctx, vPNServiceAuthKeySpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *vPNServiceClient) ListNodes(ctx context.Context, req *v2.VPNServiceListNodesRequest) (*v2.VPNServiceListNodesResponse, error) {
+	var res v2.VPNServiceListNodesResponse
+	if err := c.client.CallUnary(ctx, vPNServiceListNodesSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type vPNServiceHandler struct{ svc VPNServiceHandler }
+
+func (h vPNServiceHandler) authKey(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.VPNServiceAuthKeyRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.AuthKey(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h vPNServiceHandler) listNodes(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.VPNServiceListNodesRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.ListNodes(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

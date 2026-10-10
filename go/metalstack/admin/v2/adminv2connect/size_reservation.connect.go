@@ -5,46 +5,68 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// SizeReservationServiceName is the fully-qualified name of the SizeReservationService service.
 	SizeReservationServiceName = "metalstack.admin.v2.SizeReservationService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// SizeReservationServiceCreateProcedure is the fully-qualified name of the SizeReservationService's
+	// SizeReservationServiceCreateProcedure is the procedure name of the SizeReservationService's
 	// Create RPC.
 	SizeReservationServiceCreateProcedure = "/metalstack.admin.v2.SizeReservationService/Create"
-	// SizeReservationServiceUpdateProcedure is the fully-qualified name of the SizeReservationService's
+	// SizeReservationServiceUpdateProcedure is the procedure name of the SizeReservationService's
 	// Update RPC.
 	SizeReservationServiceUpdateProcedure = "/metalstack.admin.v2.SizeReservationService/Update"
-	// SizeReservationServiceDeleteProcedure is the fully-qualified name of the SizeReservationService's
+	// SizeReservationServiceDeleteProcedure is the procedure name of the SizeReservationService's
 	// Delete RPC.
 	SizeReservationServiceDeleteProcedure = "/metalstack.admin.v2.SizeReservationService/Delete"
-	// SizeReservationServiceListProcedure is the fully-qualified name of the SizeReservationService's
-	// List RPC.
+	// SizeReservationServiceListProcedure is the procedure name of the SizeReservationService's List
+	// RPC.
 	SizeReservationServiceListProcedure = "/metalstack.admin.v2.SizeReservationService/List"
+)
+
+var (
+	sizeReservationServiceCreateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_size_reservation_proto.Services().ByName("SizeReservationService").Methods().ByName("Create"),
+			Procedure:  SizeReservationServiceCreateProcedure,
+		}
+	})
+	sizeReservationServiceUpdateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_size_reservation_proto.Services().ByName("SizeReservationService").Methods().ByName("Update"),
+			Procedure:  SizeReservationServiceUpdateProcedure,
+		}
+	})
+	sizeReservationServiceDeleteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_size_reservation_proto.Services().ByName("SizeReservationService").Methods().ByName("Delete"),
+			Procedure:  SizeReservationServiceDeleteProcedure,
+		}
+	})
+	sizeReservationServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_size_reservation_proto.Services().ByName("SizeReservationService").Methods().ByName("List"),
+			Procedure:  SizeReservationServiceListProcedure,
+		}
+	})
 )
 
 // SizeReservationServiceClient is a client for the metalstack.admin.v2.SizeReservationService
@@ -61,85 +83,10 @@ type SizeReservationServiceClient interface {
 }
 
 // NewSizeReservationServiceClient constructs a client for the
-// metalstack.admin.v2.SizeReservationService service. By default, it uses the Connect protocol with
-// the binary Protobuf Codec, asks for gzipped responses, and sends uncompressed requests. To use
-// the gRPC or gRPC-Web protocols, supply the connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewSizeReservationServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) SizeReservationServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	sizeReservationServiceMethods := v2.File_metalstack_admin_v2_size_reservation_proto.Services().ByName("SizeReservationService").Methods()
-	return &sizeReservationServiceClient{
-		create: connect.NewClient[v2.SizeReservationServiceCreateRequest, v2.SizeReservationServiceCreateResponse](
-			httpClient,
-			baseURL+SizeReservationServiceCreateProcedure,
-			connect.WithSchema(sizeReservationServiceMethods.ByName("Create")),
-			connect.WithClientOptions(opts...),
-		),
-		update: connect.NewClient[v2.SizeReservationServiceUpdateRequest, v2.SizeReservationServiceUpdateResponse](
-			httpClient,
-			baseURL+SizeReservationServiceUpdateProcedure,
-			connect.WithSchema(sizeReservationServiceMethods.ByName("Update")),
-			connect.WithClientOptions(opts...),
-		),
-		delete: connect.NewClient[v2.SizeReservationServiceDeleteRequest, v2.SizeReservationServiceDeleteResponse](
-			httpClient,
-			baseURL+SizeReservationServiceDeleteProcedure,
-			connect.WithSchema(sizeReservationServiceMethods.ByName("Delete")),
-			connect.WithClientOptions(opts...),
-		),
-		list: connect.NewClient[v2.SizeReservationServiceListRequest, v2.SizeReservationServiceListResponse](
-			httpClient,
-			baseURL+SizeReservationServiceListProcedure,
-			connect.WithSchema(sizeReservationServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// sizeReservationServiceClient implements SizeReservationServiceClient.
-type sizeReservationServiceClient struct {
-	create *connect.Client[v2.SizeReservationServiceCreateRequest, v2.SizeReservationServiceCreateResponse]
-	update *connect.Client[v2.SizeReservationServiceUpdateRequest, v2.SizeReservationServiceUpdateResponse]
-	delete *connect.Client[v2.SizeReservationServiceDeleteRequest, v2.SizeReservationServiceDeleteResponse]
-	list   *connect.Client[v2.SizeReservationServiceListRequest, v2.SizeReservationServiceListResponse]
-}
-
-// Create calls metalstack.admin.v2.SizeReservationService.Create.
-func (c *sizeReservationServiceClient) Create(ctx context.Context, req *v2.SizeReservationServiceCreateRequest) (*v2.SizeReservationServiceCreateResponse, error) {
-	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Update calls metalstack.admin.v2.SizeReservationService.Update.
-func (c *sizeReservationServiceClient) Update(ctx context.Context, req *v2.SizeReservationServiceUpdateRequest) (*v2.SizeReservationServiceUpdateResponse, error) {
-	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Delete calls metalstack.admin.v2.SizeReservationService.Delete.
-func (c *sizeReservationServiceClient) Delete(ctx context.Context, req *v2.SizeReservationServiceDeleteRequest) (*v2.SizeReservationServiceDeleteResponse, error) {
-	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// List calls metalstack.admin.v2.SizeReservationService.List.
-func (c *sizeReservationServiceClient) List(ctx context.Context, req *v2.SizeReservationServiceListRequest) (*v2.SizeReservationServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// metalstack.admin.v2.SizeReservationService service. Multiple service clients may share a single
+// connect.Client.
+func NewSizeReservationServiceClient(client *connect.Client) SizeReservationServiceClient {
+	return &sizeReservationServiceClient{client: client}
 }
 
 // SizeReservationServiceHandler is an implementation of the
@@ -155,68 +102,119 @@ type SizeReservationServiceHandler interface {
 	List(context.Context, *v2.SizeReservationServiceListRequest) (*v2.SizeReservationServiceListResponse, error)
 }
 
-// NewSizeReservationServiceHandler builds an HTTP handler from the service implementation. It
-// returns the path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewSizeReservationServiceHandler(svc SizeReservationServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	sizeReservationServiceMethods := v2.File_metalstack_admin_v2_size_reservation_proto.Services().ByName("SizeReservationService").Methods()
-	sizeReservationServiceCreateHandler := connect.NewUnaryHandlerSimple(
-		SizeReservationServiceCreateProcedure,
-		svc.Create,
-		connect.WithSchema(sizeReservationServiceMethods.ByName("Create")),
-		connect.WithHandlerOptions(opts...),
+// RegisterSizeReservationServiceHandler registers svc as the
+// metalstack.admin.v2.SizeReservationService implementation on server.
+func RegisterSizeReservationServiceHandler(server *connect.Server, svc SizeReservationServiceHandler) {
+	adapter := sizeReservationServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: sizeReservationServiceCreateSpec(), Handler: adapter.create},
+		connect.Method{Spec: sizeReservationServiceUpdateSpec(), Handler: adapter.update},
+		connect.Method{Spec: sizeReservationServiceDeleteSpec(), Handler: adapter.delete},
+		connect.Method{Spec: sizeReservationServiceListSpec(), Handler: adapter.list},
 	)
-	sizeReservationServiceUpdateHandler := connect.NewUnaryHandlerSimple(
-		SizeReservationServiceUpdateProcedure,
-		svc.Update,
-		connect.WithSchema(sizeReservationServiceMethods.ByName("Update")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sizeReservationServiceDeleteHandler := connect.NewUnaryHandlerSimple(
-		SizeReservationServiceDeleteProcedure,
-		svc.Delete,
-		connect.WithSchema(sizeReservationServiceMethods.ByName("Delete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sizeReservationServiceListHandler := connect.NewUnaryHandlerSimple(
-		SizeReservationServiceListProcedure,
-		svc.List,
-		connect.WithSchema(sizeReservationServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.admin.v2.SizeReservationService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case SizeReservationServiceCreateProcedure:
-			sizeReservationServiceCreateHandler.ServeHTTP(w, r)
-		case SizeReservationServiceUpdateProcedure:
-			sizeReservationServiceUpdateHandler.ServeHTTP(w, r)
-		case SizeReservationServiceDeleteProcedure:
-			sizeReservationServiceDeleteHandler.ServeHTTP(w, r)
-		case SizeReservationServiceListProcedure:
-			sizeReservationServiceListHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedSizeReservationServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSizeReservationServiceHandler struct{}
 
 func (UnimplementedSizeReservationServiceHandler) Create(context.Context, *v2.SizeReservationServiceCreateRequest) (*v2.SizeReservationServiceCreateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeReservationService.Create is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.SizeReservationService.Create is not implemented")
 }
 
 func (UnimplementedSizeReservationServiceHandler) Update(context.Context, *v2.SizeReservationServiceUpdateRequest) (*v2.SizeReservationServiceUpdateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeReservationService.Update is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.SizeReservationService.Update is not implemented")
 }
 
 func (UnimplementedSizeReservationServiceHandler) Delete(context.Context, *v2.SizeReservationServiceDeleteRequest) (*v2.SizeReservationServiceDeleteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeReservationService.Delete is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.SizeReservationService.Delete is not implemented")
 }
 
 func (UnimplementedSizeReservationServiceHandler) List(context.Context, *v2.SizeReservationServiceListRequest) (*v2.SizeReservationServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeReservationService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.SizeReservationService.List is not implemented")
+}
+
+type sizeReservationServiceClient struct {
+	client *connect.Client
+}
+
+func (c *sizeReservationServiceClient) Create(ctx context.Context, req *v2.SizeReservationServiceCreateRequest) (*v2.SizeReservationServiceCreateResponse, error) {
+	var res v2.SizeReservationServiceCreateResponse
+	if err := c.client.CallUnary(ctx, sizeReservationServiceCreateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *sizeReservationServiceClient) Update(ctx context.Context, req *v2.SizeReservationServiceUpdateRequest) (*v2.SizeReservationServiceUpdateResponse, error) {
+	var res v2.SizeReservationServiceUpdateResponse
+	if err := c.client.CallUnary(ctx, sizeReservationServiceUpdateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *sizeReservationServiceClient) Delete(ctx context.Context, req *v2.SizeReservationServiceDeleteRequest) (*v2.SizeReservationServiceDeleteResponse, error) {
+	var res v2.SizeReservationServiceDeleteResponse
+	if err := c.client.CallUnary(ctx, sizeReservationServiceDeleteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *sizeReservationServiceClient) List(ctx context.Context, req *v2.SizeReservationServiceListRequest) (*v2.SizeReservationServiceListResponse, error) {
+	var res v2.SizeReservationServiceListResponse
+	if err := c.client.CallUnary(ctx, sizeReservationServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type sizeReservationServiceHandler struct{ svc SizeReservationServiceHandler }
+
+func (h sizeReservationServiceHandler) create(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SizeReservationServiceCreateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Create(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h sizeReservationServiceHandler) update(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SizeReservationServiceUpdateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Update(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h sizeReservationServiceHandler) delete(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SizeReservationServiceDeleteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Delete(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h sizeReservationServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SizeReservationServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

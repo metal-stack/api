@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"connectrpc.com/connect"
+	"connectrpc.com/connect/v2"
 	"github.com/google/go-cmp/cmp"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -97,7 +97,7 @@ func TestIsErrFns(t *testing.T) {
 			{
 				name:    "connect error",
 				errorFn: fns.errFn,
-				err:     connect.NewError(fns.code, errors.New("")),
+				err:     connect.NewError(fns.code, ""),
 				want:    true,
 			},
 			{
@@ -109,7 +109,7 @@ func TestIsErrFns(t *testing.T) {
 			{
 				name:    "wrapped",
 				errorFn: fns.errFn,
-				err:     fmt.Errorf("wrapped: %w", connect.NewError(fns.code, errors.New(""))),
+				err:     fmt.Errorf("wrapped: %w", connect.NewError(fns.code, "")),
 				want:    true,
 			},
 			{
@@ -143,7 +143,7 @@ func TestIsInternal(t *testing.T) {
 		},
 		{
 			name: "connect error",
-			err:  connect.NewError(connect.CodeInternal, errors.New("")),
+			err:  connect.NewError(connect.CodeInternal, ""),
 			want: true,
 		},
 		{
@@ -153,7 +153,7 @@ func TestIsInternal(t *testing.T) {
 		},
 		{
 			name: "wrapped",
-			err:  fmt.Errorf("wrapped: %w", connect.NewError(connect.CodeInternal, errors.New(""))),
+			err:  fmt.Errorf("wrapped: %w", connect.NewError(connect.CodeInternal, "")),
 			want: true,
 		},
 		{
@@ -181,17 +181,17 @@ func TestWrappedInternal(t *testing.T) {
 		{
 			name:    "one error",
 			err:     Internal("something went wrong"),
-			wantErr: connect.NewError(connect.CodeInternal, errors.New("something went wrong")),
+			wantErr: connect.NewError(connect.CodeInternal, "something went wrong"),
 		},
 		{
 			name:    "two errors",
 			err:     Internal("wrapping error: %w", fmt.Errorf("root error")),
-			wantErr: connect.NewError(connect.CodeInternal, fmt.Errorf("wrapping error: %w", errors.New("root error"))),
+			wantErr: connect.NewError(connect.CodeInternal, "wrapping error: root error"),
 		},
 		{
 			name:    "two errors upside down",
 			err:     fmt.Errorf("wrapping error: %w", Internal("root error")),
-			wantErr: fmt.Errorf("wrapping error: %w", connect.NewError(connect.CodeInternal, errors.New("root error"))),
+			wantErr: fmt.Errorf("wrapping error: %w", connect.NewError(connect.CodeInternal, "root error")),
 		},
 	}
 	for i := range tests {
@@ -213,42 +213,42 @@ func TestConvert(t *testing.T) {
 		{
 			name:    "non specific error",
 			err:     fmt.Errorf("something went wrong"),
-			wantErr: connect.NewError(connect.CodeInternal, errors.New("something went wrong")),
+			wantErr: connect.NewError(connect.CodeInternal, "something went wrong"),
 		},
 		{
 			name:    "passing connect error",
 			err:     Internal("something went wrong"),
-			wantErr: connect.NewError(connect.CodeInternal, errors.New("something went wrong")),
+			wantErr: connect.NewError(connect.CodeInternal, "something went wrong"),
 		},
 		{
 			name:    "wrapped connect error",
 			err:     Internal("wrapping error: %w", fmt.Errorf("root error")),
-			wantErr: connect.NewError(connect.CodeInternal, fmt.Errorf("wrapping error: %w", errors.New("root error"))),
+			wantErr: connect.NewError(connect.CodeInternal, "wrapping error: root error"),
 		},
 		{
 			name:    "wrapped connect error gets unwrapped",
 			err:     fmt.Errorf("wrapping error: %w", Internal("root error")),
-			wantErr: connect.NewError(connect.CodeInternal, fmt.Errorf("wrapping error: root error")),
+			wantErr: connect.NewError(connect.CodeInternal, "wrapping error: root error"),
 		},
 		{
 			name:    "doubly-wrapped connect error gets unwraps the first and maintains the last",
 			err:     fmt.Errorf("wrapping error: %w", Internal("doubly-wrapped: %w", InvalidArgument("invalid"))),
-			wantErr: connect.NewError(connect.CodeInternal, fmt.Errorf("wrapping error: doubly-wrapped: invalid_argument: invalid")),
+			wantErr: connect.NewError(connect.CodeInternal, "wrapping error: doubly-wrapped: invalid_argument: invalid"),
 		},
 		{
 			name:    "grpc error gets converted",
 			err:     status.Errorf(codes.AlreadyExists, "project already exists"), // TODO: check if this is really returned by a grpc client like that
-			wantErr: connect.NewError(connect.CodeAlreadyExists, fmt.Errorf("project already exists")),
+			wantErr: connect.NewError(connect.CodeAlreadyExists, "project already exists"),
 		},
 		{
 			name:    "wrapped grpc error gets unwrapped",
 			err:     fmt.Errorf("wrapping error: %w", status.Errorf(codes.AlreadyExists, "project already exists")),
-			wantErr: connect.NewError(connect.CodeAlreadyExists, fmt.Errorf("wrapping error: project already exists")),
+			wantErr: connect.NewError(connect.CodeAlreadyExists, "wrapping error: project already exists"),
 		},
 		{
 			name:    "doubly-wrapped grpc error unwraps the first and maintains the last",
 			err:     fmt.Errorf("wrapping error: %w", status.Errorf(codes.AlreadyExists, "doubly-wrapped: %s", status.Errorf(codes.FailedPrecondition, "precondition"))),
-			wantErr: connect.NewError(connect.CodeAlreadyExists, fmt.Errorf("wrapping error: doubly-wrapped: rpc error: code = FailedPrecondition desc = precondition")),
+			wantErr: connect.NewError(connect.CodeAlreadyExists, "wrapping error: doubly-wrapped: rpc error: code = FailedPrecondition desc = precondition"),
 		},
 	}
 	for i := range tests {

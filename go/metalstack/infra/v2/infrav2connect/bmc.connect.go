@@ -5,43 +5,56 @@
 package infrav2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/infra/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// BMCServiceName is the fully-qualified name of the BMCService service.
 	BMCServiceName = "metalstack.infra.v2.BMCService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// BMCServiceUpdateBMCInfoProcedure is the fully-qualified name of the BMCService's UpdateBMCInfo
-	// RPC.
+	// BMCServiceUpdateBMCInfoProcedure is the procedure name of the BMCService's UpdateBMCInfo RPC.
 	BMCServiceUpdateBMCInfoProcedure = "/metalstack.infra.v2.BMCService/UpdateBMCInfo"
-	// BMCServiceWaitForBMCCommandProcedure is the fully-qualified name of the BMCService's
-	// WaitForBMCCommand RPC.
-	BMCServiceWaitForBMCCommandProcedure = "/metalstack.infra.v2.BMCService/WaitForBMCCommand"
-	// BMCServiceBMCCommandDoneProcedure is the fully-qualified name of the BMCService's BMCCommandDone
+	// BMCServiceWaitForBMCCommandProcedure is the procedure name of the BMCService's WaitForBMCCommand
 	// RPC.
+	BMCServiceWaitForBMCCommandProcedure = "/metalstack.infra.v2.BMCService/WaitForBMCCommand"
+	// BMCServiceBMCCommandDoneProcedure is the procedure name of the BMCService's BMCCommandDone RPC.
 	BMCServiceBMCCommandDoneProcedure = "/metalstack.infra.v2.BMCService/BMCCommandDone"
+)
+
+var (
+	bMCServiceUpdateBMCInfoSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_bmc_proto.Services().ByName("BMCService").Methods().ByName("UpdateBMCInfo"),
+			Procedure:  BMCServiceUpdateBMCInfoProcedure,
+		}
+	})
+	bMCServiceWaitForBMCCommandSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeServer,
+			Schema:     v2.File_metalstack_infra_v2_bmc_proto.Services().ByName("BMCService").Methods().ByName("WaitForBMCCommand"),
+			Procedure:  BMCServiceWaitForBMCCommandProcedure,
+		}
+	})
+	bMCServiceBMCCommandDoneSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_bmc_proto.Services().ByName("BMCService").Methods().ByName("BMCCommandDone"),
+			Procedure:  BMCServiceBMCCommandDoneProcedure,
+		}
+	})
 )
 
 // BMCServiceClient is a client for the metalstack.infra.v2.BMCService service.
@@ -49,71 +62,36 @@ type BMCServiceClient interface {
 	// Updates BMC information.
 	UpdateBMCInfo(context.Context, *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error)
 	// WaitForBMCCommand is called by the metal-bmc and returns a BMC command to execute.
-	WaitForBMCCommand(context.Context, *v2.WaitForBMCCommandRequest) (*connect.ServerStreamForClient[v2.WaitForBMCCommandResponse], error)
+	WaitForBMCCommand(context.Context, *v2.WaitForBMCCommandRequest) (BMCServiceWaitForBMCCommandClientStream, error)
 	// BMCCommandDone must be called from metal-bmc after the command execution.
 	BMCCommandDone(context.Context, *v2.BMCCommandDoneRequest) (*v2.BMCCommandDoneResponse, error)
 }
 
-// NewBMCServiceClient constructs a client for the metalstack.infra.v2.BMCService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewBMCServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) BMCServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	bMCServiceMethods := v2.File_metalstack_infra_v2_bmc_proto.Services().ByName("BMCService").Methods()
-	return &bMCServiceClient{
-		updateBMCInfo: connect.NewClient[v2.UpdateBMCInfoRequest, v2.UpdateBMCInfoResponse](
-			httpClient,
-			baseURL+BMCServiceUpdateBMCInfoProcedure,
-			connect.WithSchema(bMCServiceMethods.ByName("UpdateBMCInfo")),
-			connect.WithClientOptions(opts...),
-		),
-		waitForBMCCommand: connect.NewClient[v2.WaitForBMCCommandRequest, v2.WaitForBMCCommandResponse](
-			httpClient,
-			baseURL+BMCServiceWaitForBMCCommandProcedure,
-			connect.WithSchema(bMCServiceMethods.ByName("WaitForBMCCommand")),
-			connect.WithClientOptions(opts...),
-		),
-		bMCCommandDone: connect.NewClient[v2.BMCCommandDoneRequest, v2.BMCCommandDoneResponse](
-			httpClient,
-			baseURL+BMCServiceBMCCommandDoneProcedure,
-			connect.WithSchema(bMCServiceMethods.ByName("BMCCommandDone")),
-			connect.WithClientOptions(opts...),
-		),
+// NewBMCServiceClient constructs a client for the metalstack.infra.v2.BMCService service. Multiple
+// service clients may share a single connect.Client.
+func NewBMCServiceClient(client *connect.Client) BMCServiceClient {
+	return &bMCServiceClient{client: client}
+}
+
+// BMCServiceWaitForBMCCommandClientStream is the client stream for the BMCService's
+// WaitForBMCCommand RPC.
+type BMCServiceWaitForBMCCommandClientStream struct {
+	stream connect.ClientStream
+}
+
+// Receive returns the next response message from the server.
+func (s BMCServiceWaitForBMCCommandClientStream) Receive() (*v2.WaitForBMCCommandResponse, error) {
+	var res v2.WaitForBMCCommandResponse
+	if err := s.stream.Receive(&res); err != nil {
+		return nil, err
 	}
+	return &res, nil
 }
 
-// bMCServiceClient implements BMCServiceClient.
-type bMCServiceClient struct {
-	updateBMCInfo     *connect.Client[v2.UpdateBMCInfoRequest, v2.UpdateBMCInfoResponse]
-	waitForBMCCommand *connect.Client[v2.WaitForBMCCommandRequest, v2.WaitForBMCCommandResponse]
-	bMCCommandDone    *connect.Client[v2.BMCCommandDoneRequest, v2.BMCCommandDoneResponse]
-}
-
-// UpdateBMCInfo calls metalstack.infra.v2.BMCService.UpdateBMCInfo.
-func (c *bMCServiceClient) UpdateBMCInfo(ctx context.Context, req *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error) {
-	response, err := c.updateBMCInfo.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// WaitForBMCCommand calls metalstack.infra.v2.BMCService.WaitForBMCCommand.
-func (c *bMCServiceClient) WaitForBMCCommand(ctx context.Context, req *v2.WaitForBMCCommandRequest) (*connect.ServerStreamForClient[v2.WaitForBMCCommandResponse], error) {
-	return c.waitForBMCCommand.CallServerStream(ctx, connect.NewRequest(req))
-}
-
-// BMCCommandDone calls metalstack.infra.v2.BMCService.BMCCommandDone.
-func (c *bMCServiceClient) BMCCommandDone(ctx context.Context, req *v2.BMCCommandDoneRequest) (*v2.BMCCommandDoneResponse, error) {
-	response, err := c.bMCCommandDone.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// Close releases the stream's resources. It is idempotent and is typically deferred to clean up a
+// stream abandoned before io.EOF.
+func (s BMCServiceWaitForBMCCommandClientStream) Close() error {
+	return s.stream.Close()
 }
 
 // BMCServiceHandler is an implementation of the metalstack.infra.v2.BMCService service.
@@ -121,61 +99,111 @@ type BMCServiceHandler interface {
 	// Updates BMC information.
 	UpdateBMCInfo(context.Context, *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error)
 	// WaitForBMCCommand is called by the metal-bmc and returns a BMC command to execute.
-	WaitForBMCCommand(context.Context, *v2.WaitForBMCCommandRequest, *connect.ServerStream[v2.WaitForBMCCommandResponse]) error
+	WaitForBMCCommand(context.Context, *v2.WaitForBMCCommandRequest, BMCServiceWaitForBMCCommandServerStream) error
 	// BMCCommandDone must be called from metal-bmc after the command execution.
 	BMCCommandDone(context.Context, *v2.BMCCommandDoneRequest) (*v2.BMCCommandDoneResponse, error)
 }
 
-// NewBMCServiceHandler builds an HTTP handler from the service implementation. It returns the path
-// on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewBMCServiceHandler(svc BMCServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	bMCServiceMethods := v2.File_metalstack_infra_v2_bmc_proto.Services().ByName("BMCService").Methods()
-	bMCServiceUpdateBMCInfoHandler := connect.NewUnaryHandlerSimple(
-		BMCServiceUpdateBMCInfoProcedure,
-		svc.UpdateBMCInfo,
-		connect.WithSchema(bMCServiceMethods.ByName("UpdateBMCInfo")),
-		connect.WithHandlerOptions(opts...),
+// RegisterBMCServiceHandler registers svc as the metalstack.infra.v2.BMCService implementation on
+// server.
+func RegisterBMCServiceHandler(server *connect.Server, svc BMCServiceHandler) {
+	adapter := bMCServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: bMCServiceUpdateBMCInfoSpec(), Handler: adapter.updateBMCInfo},
+		connect.Method{Spec: bMCServiceWaitForBMCCommandSpec(), Handler: adapter.waitForBMCCommand},
+		connect.Method{Spec: bMCServiceBMCCommandDoneSpec(), Handler: adapter.bMCCommandDone},
 	)
-	bMCServiceWaitForBMCCommandHandler := connect.NewServerStreamHandlerSimple(
-		BMCServiceWaitForBMCCommandProcedure,
-		svc.WaitForBMCCommand,
-		connect.WithSchema(bMCServiceMethods.ByName("WaitForBMCCommand")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bMCServiceBMCCommandDoneHandler := connect.NewUnaryHandlerSimple(
-		BMCServiceBMCCommandDoneProcedure,
-		svc.BMCCommandDone,
-		connect.WithSchema(bMCServiceMethods.ByName("BMCCommandDone")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.infra.v2.BMCService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case BMCServiceUpdateBMCInfoProcedure:
-			bMCServiceUpdateBMCInfoHandler.ServeHTTP(w, r)
-		case BMCServiceWaitForBMCCommandProcedure:
-			bMCServiceWaitForBMCCommandHandler.ServeHTTP(w, r)
-		case BMCServiceBMCCommandDoneProcedure:
-			bMCServiceBMCCommandDoneHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
+}
+
+// BMCServiceWaitForBMCCommandServerStream is the server stream for the BMCService's
+// WaitForBMCCommand RPC.
+type BMCServiceWaitForBMCCommandServerStream struct {
+	stream connect.ServerStream
+}
+
+// SendHeaders flushes the response headers without a message. The first Send does this implicitly.
+func (s BMCServiceWaitForBMCCommandServerStream) SendHeaders() error {
+	return s.stream.SendHeaders()
+}
+
+// Send sends a response message to the client.
+func (s BMCServiceWaitForBMCCommandServerStream) Send(res *v2.WaitForBMCCommandResponse) error {
+	return s.stream.Send(res)
 }
 
 // UnimplementedBMCServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedBMCServiceHandler struct{}
 
 func (UnimplementedBMCServiceHandler) UpdateBMCInfo(context.Context, *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BMCService.UpdateBMCInfo is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BMCService.UpdateBMCInfo is not implemented")
 }
 
-func (UnimplementedBMCServiceHandler) WaitForBMCCommand(context.Context, *v2.WaitForBMCCommandRequest, *connect.ServerStream[v2.WaitForBMCCommandResponse]) error {
-	return connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BMCService.WaitForBMCCommand is not implemented"))
+func (UnimplementedBMCServiceHandler) WaitForBMCCommand(context.Context, *v2.WaitForBMCCommandRequest, BMCServiceWaitForBMCCommandServerStream) error {
+	return connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BMCService.WaitForBMCCommand is not implemented")
 }
 
 func (UnimplementedBMCServiceHandler) BMCCommandDone(context.Context, *v2.BMCCommandDoneRequest) (*v2.BMCCommandDoneResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BMCService.BMCCommandDone is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BMCService.BMCCommandDone is not implemented")
+}
+
+type bMCServiceClient struct {
+	client *connect.Client
+}
+
+func (c *bMCServiceClient) UpdateBMCInfo(ctx context.Context, req *v2.UpdateBMCInfoRequest) (*v2.UpdateBMCInfoResponse, error) {
+	var res v2.UpdateBMCInfoResponse
+	if err := c.client.CallUnary(ctx, bMCServiceUpdateBMCInfoSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *bMCServiceClient) WaitForBMCCommand(ctx context.Context, req *v2.WaitForBMCCommandRequest) (BMCServiceWaitForBMCCommandClientStream, error) {
+	stream, err := c.client.CallServerStream(ctx, bMCServiceWaitForBMCCommandSpec(), req)
+	if err != nil {
+		return BMCServiceWaitForBMCCommandClientStream{}, err
+	}
+	return BMCServiceWaitForBMCCommandClientStream{stream: stream}, nil
+}
+
+func (c *bMCServiceClient) BMCCommandDone(ctx context.Context, req *v2.BMCCommandDoneRequest) (*v2.BMCCommandDoneResponse, error) {
+	var res v2.BMCCommandDoneResponse
+	if err := c.client.CallUnary(ctx, bMCServiceBMCCommandDoneSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type bMCServiceHandler struct{ svc BMCServiceHandler }
+
+func (h bMCServiceHandler) updateBMCInfo(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.UpdateBMCInfoRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.UpdateBMCInfo(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h bMCServiceHandler) waitForBMCCommand(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.WaitForBMCCommandRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	return h.svc.WaitForBMCCommand(ctx, &req, BMCServiceWaitForBMCCommandServerStream{stream: stream})
+}
+
+func (h bMCServiceHandler) bMCCommandDone(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.BMCCommandDoneRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.BMCCommandDone(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

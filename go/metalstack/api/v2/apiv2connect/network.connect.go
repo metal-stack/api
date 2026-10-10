@@ -5,47 +5,83 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// NetworkServiceName is the fully-qualified name of the NetworkService service.
 	NetworkServiceName = "metalstack.api.v2.NetworkService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// NetworkServiceGetProcedure is the fully-qualified name of the NetworkService's Get RPC.
+	// NetworkServiceGetProcedure is the procedure name of the NetworkService's Get RPC.
 	NetworkServiceGetProcedure = "/metalstack.api.v2.NetworkService/Get"
-	// NetworkServiceCreateProcedure is the fully-qualified name of the NetworkService's Create RPC.
+	// NetworkServiceCreateProcedure is the procedure name of the NetworkService's Create RPC.
 	NetworkServiceCreateProcedure = "/metalstack.api.v2.NetworkService/Create"
-	// NetworkServiceUpdateProcedure is the fully-qualified name of the NetworkService's Update RPC.
+	// NetworkServiceUpdateProcedure is the procedure name of the NetworkService's Update RPC.
 	NetworkServiceUpdateProcedure = "/metalstack.api.v2.NetworkService/Update"
-	// NetworkServiceListProcedure is the fully-qualified name of the NetworkService's List RPC.
+	// NetworkServiceListProcedure is the procedure name of the NetworkService's List RPC.
 	NetworkServiceListProcedure = "/metalstack.api.v2.NetworkService/List"
-	// NetworkServiceListBaseNetworksProcedure is the fully-qualified name of the NetworkService's
+	// NetworkServiceListBaseNetworksProcedure is the procedure name of the NetworkService's
 	// ListBaseNetworks RPC.
 	NetworkServiceListBaseNetworksProcedure = "/metalstack.api.v2.NetworkService/ListBaseNetworks"
-	// NetworkServiceDeleteProcedure is the fully-qualified name of the NetworkService's Delete RPC.
+	// NetworkServiceDeleteProcedure is the procedure name of the NetworkService's Delete RPC.
 	NetworkServiceDeleteProcedure = "/metalstack.api.v2.NetworkService/Delete"
+)
+
+var (
+	networkServiceGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_network_proto.Services().ByName("NetworkService").Methods().ByName("Get"),
+			Procedure:  NetworkServiceGetProcedure,
+		}
+	})
+	networkServiceCreateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_network_proto.Services().ByName("NetworkService").Methods().ByName("Create"),
+			Procedure:  NetworkServiceCreateProcedure,
+		}
+	})
+	networkServiceUpdateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_network_proto.Services().ByName("NetworkService").Methods().ByName("Update"),
+			Procedure:  NetworkServiceUpdateProcedure,
+		}
+	})
+	networkServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_network_proto.Services().ByName("NetworkService").Methods().ByName("List"),
+			Procedure:  NetworkServiceListProcedure,
+		}
+	})
+	networkServiceListBaseNetworksSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_network_proto.Services().ByName("NetworkService").Methods().ByName("ListBaseNetworks"),
+			Procedure:  NetworkServiceListBaseNetworksProcedure,
+		}
+	})
+	networkServiceDeleteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_network_proto.Services().ByName("NetworkService").Methods().ByName("Delete"),
+			Procedure:  NetworkServiceDeleteProcedure,
+		}
+	})
 )
 
 // NetworkServiceClient is a client for the metalstack.api.v2.NetworkService service.
@@ -64,118 +100,10 @@ type NetworkServiceClient interface {
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 }
 
-// NewNetworkServiceClient constructs a client for the metalstack.api.v2.NetworkService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) NetworkServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	networkServiceMethods := v2.File_metalstack_api_v2_network_proto.Services().ByName("NetworkService").Methods()
-	return &networkServiceClient{
-		get: connect.NewClient[v2.NetworkServiceGetRequest, v2.NetworkServiceGetResponse](
-			httpClient,
-			baseURL+NetworkServiceGetProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		create: connect.NewClient[v2.NetworkServiceCreateRequest, v2.NetworkServiceCreateResponse](
-			httpClient,
-			baseURL+NetworkServiceCreateProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("Create")),
-			connect.WithClientOptions(opts...),
-		),
-		update: connect.NewClient[v2.NetworkServiceUpdateRequest, v2.NetworkServiceUpdateResponse](
-			httpClient,
-			baseURL+NetworkServiceUpdateProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("Update")),
-			connect.WithClientOptions(opts...),
-		),
-		list: connect.NewClient[v2.NetworkServiceListRequest, v2.NetworkServiceListResponse](
-			httpClient,
-			baseURL+NetworkServiceListProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-		listBaseNetworks: connect.NewClient[v2.NetworkServiceListBaseNetworksRequest, v2.NetworkServiceListBaseNetworksResponse](
-			httpClient,
-			baseURL+NetworkServiceListBaseNetworksProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("ListBaseNetworks")),
-			connect.WithClientOptions(opts...),
-		),
-		delete: connect.NewClient[v2.NetworkServiceDeleteRequest, v2.NetworkServiceDeleteResponse](
-			httpClient,
-			baseURL+NetworkServiceDeleteProcedure,
-			connect.WithSchema(networkServiceMethods.ByName("Delete")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// networkServiceClient implements NetworkServiceClient.
-type networkServiceClient struct {
-	get              *connect.Client[v2.NetworkServiceGetRequest, v2.NetworkServiceGetResponse]
-	create           *connect.Client[v2.NetworkServiceCreateRequest, v2.NetworkServiceCreateResponse]
-	update           *connect.Client[v2.NetworkServiceUpdateRequest, v2.NetworkServiceUpdateResponse]
-	list             *connect.Client[v2.NetworkServiceListRequest, v2.NetworkServiceListResponse]
-	listBaseNetworks *connect.Client[v2.NetworkServiceListBaseNetworksRequest, v2.NetworkServiceListBaseNetworksResponse]
-	delete           *connect.Client[v2.NetworkServiceDeleteRequest, v2.NetworkServiceDeleteResponse]
-}
-
-// Get calls metalstack.api.v2.NetworkService.Get.
-func (c *networkServiceClient) Get(ctx context.Context, req *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error) {
-	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Create calls metalstack.api.v2.NetworkService.Create.
-func (c *networkServiceClient) Create(ctx context.Context, req *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error) {
-	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Update calls metalstack.api.v2.NetworkService.Update.
-func (c *networkServiceClient) Update(ctx context.Context, req *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error) {
-	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// List calls metalstack.api.v2.NetworkService.List.
-func (c *networkServiceClient) List(ctx context.Context, req *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// ListBaseNetworks calls metalstack.api.v2.NetworkService.ListBaseNetworks.
-func (c *networkServiceClient) ListBaseNetworks(ctx context.Context, req *v2.NetworkServiceListBaseNetworksRequest) (*v2.NetworkServiceListBaseNetworksResponse, error) {
-	response, err := c.listBaseNetworks.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Delete calls metalstack.api.v2.NetworkService.Delete.
-func (c *networkServiceClient) Delete(ctx context.Context, req *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error) {
-	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewNetworkServiceClient constructs a client for the metalstack.api.v2.NetworkService service.
+// Multiple service clients may share a single connect.Client.
+func NewNetworkServiceClient(client *connect.Client) NetworkServiceClient {
+	return &networkServiceClient{client: client}
 }
 
 // NetworkServiceHandler is an implementation of the metalstack.api.v2.NetworkService service.
@@ -194,92 +122,169 @@ type NetworkServiceHandler interface {
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 }
 
-// NewNetworkServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	networkServiceMethods := v2.File_metalstack_api_v2_network_proto.Services().ByName("NetworkService").Methods()
-	networkServiceGetHandler := connect.NewUnaryHandlerSimple(
-		NetworkServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(networkServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
+// RegisterNetworkServiceHandler registers svc as the metalstack.api.v2.NetworkService
+// implementation on server.
+func RegisterNetworkServiceHandler(server *connect.Server, svc NetworkServiceHandler) {
+	adapter := networkServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: networkServiceGetSpec(), Handler: adapter.get},
+		connect.Method{Spec: networkServiceCreateSpec(), Handler: adapter.create},
+		connect.Method{Spec: networkServiceUpdateSpec(), Handler: adapter.update},
+		connect.Method{Spec: networkServiceListSpec(), Handler: adapter.list},
+		connect.Method{Spec: networkServiceListBaseNetworksSpec(), Handler: adapter.listBaseNetworks},
+		connect.Method{Spec: networkServiceDeleteSpec(), Handler: adapter.delete},
 	)
-	networkServiceCreateHandler := connect.NewUnaryHandlerSimple(
-		NetworkServiceCreateProcedure,
-		svc.Create,
-		connect.WithSchema(networkServiceMethods.ByName("Create")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceUpdateHandler := connect.NewUnaryHandlerSimple(
-		NetworkServiceUpdateProcedure,
-		svc.Update,
-		connect.WithSchema(networkServiceMethods.ByName("Update")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListHandler := connect.NewUnaryHandlerSimple(
-		NetworkServiceListProcedure,
-		svc.List,
-		connect.WithSchema(networkServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceListBaseNetworksHandler := connect.NewUnaryHandlerSimple(
-		NetworkServiceListBaseNetworksProcedure,
-		svc.ListBaseNetworks,
-		connect.WithSchema(networkServiceMethods.ByName("ListBaseNetworks")),
-		connect.WithHandlerOptions(opts...),
-	)
-	networkServiceDeleteHandler := connect.NewUnaryHandlerSimple(
-		NetworkServiceDeleteProcedure,
-		svc.Delete,
-		connect.WithSchema(networkServiceMethods.ByName("Delete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.api.v2.NetworkService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case NetworkServiceGetProcedure:
-			networkServiceGetHandler.ServeHTTP(w, r)
-		case NetworkServiceCreateProcedure:
-			networkServiceCreateHandler.ServeHTTP(w, r)
-		case NetworkServiceUpdateProcedure:
-			networkServiceUpdateHandler.ServeHTTP(w, r)
-		case NetworkServiceListProcedure:
-			networkServiceListHandler.ServeHTTP(w, r)
-		case NetworkServiceListBaseNetworksProcedure:
-			networkServiceListBaseNetworksHandler.ServeHTTP(w, r)
-		case NetworkServiceDeleteProcedure:
-			networkServiceDeleteHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedNetworkServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedNetworkServiceHandler struct{}
 
 func (UnimplementedNetworkServiceHandler) Get(context.Context, *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.NetworkService.Get is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.NetworkService.Get is not implemented")
 }
 
 func (UnimplementedNetworkServiceHandler) Create(context.Context, *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.NetworkService.Create is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.NetworkService.Create is not implemented")
 }
 
 func (UnimplementedNetworkServiceHandler) Update(context.Context, *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.NetworkService.Update is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.NetworkService.Update is not implemented")
 }
 
 func (UnimplementedNetworkServiceHandler) List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.NetworkService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.NetworkService.List is not implemented")
 }
 
 func (UnimplementedNetworkServiceHandler) ListBaseNetworks(context.Context, *v2.NetworkServiceListBaseNetworksRequest) (*v2.NetworkServiceListBaseNetworksResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.NetworkService.ListBaseNetworks is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.NetworkService.ListBaseNetworks is not implemented")
 }
 
 func (UnimplementedNetworkServiceHandler) Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.NetworkService.Delete is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.NetworkService.Delete is not implemented")
+}
+
+type networkServiceClient struct {
+	client *connect.Client
+}
+
+func (c *networkServiceClient) Get(ctx context.Context, req *v2.NetworkServiceGetRequest) (*v2.NetworkServiceGetResponse, error) {
+	var res v2.NetworkServiceGetResponse
+	if err := c.client.CallUnary(ctx, networkServiceGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *networkServiceClient) Create(ctx context.Context, req *v2.NetworkServiceCreateRequest) (*v2.NetworkServiceCreateResponse, error) {
+	var res v2.NetworkServiceCreateResponse
+	if err := c.client.CallUnary(ctx, networkServiceCreateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *networkServiceClient) Update(ctx context.Context, req *v2.NetworkServiceUpdateRequest) (*v2.NetworkServiceUpdateResponse, error) {
+	var res v2.NetworkServiceUpdateResponse
+	if err := c.client.CallUnary(ctx, networkServiceUpdateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *networkServiceClient) List(ctx context.Context, req *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error) {
+	var res v2.NetworkServiceListResponse
+	if err := c.client.CallUnary(ctx, networkServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *networkServiceClient) ListBaseNetworks(ctx context.Context, req *v2.NetworkServiceListBaseNetworksRequest) (*v2.NetworkServiceListBaseNetworksResponse, error) {
+	var res v2.NetworkServiceListBaseNetworksResponse
+	if err := c.client.CallUnary(ctx, networkServiceListBaseNetworksSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *networkServiceClient) Delete(ctx context.Context, req *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error) {
+	var res v2.NetworkServiceDeleteResponse
+	if err := c.client.CallUnary(ctx, networkServiceDeleteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type networkServiceHandler struct{ svc NetworkServiceHandler }
+
+func (h networkServiceHandler) get(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.NetworkServiceGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Get(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h networkServiceHandler) create(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.NetworkServiceCreateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Create(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h networkServiceHandler) update(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.NetworkServiceUpdateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Update(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h networkServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.NetworkServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h networkServiceHandler) listBaseNetworks(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.NetworkServiceListBaseNetworksRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.ListBaseNetworks(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h networkServiceHandler) delete(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.NetworkServiceDeleteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Delete(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

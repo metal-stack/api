@@ -9,6 +9,8 @@ import (
 	"testing"
 	"time"
 
+	"connectrpc.com/connect/v2"
+	"connectrpc.com/connect/v2/connecthttp"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/metal-stack/api/go/client"
@@ -24,11 +26,13 @@ import (
 func Test_Ping(t *testing.T) {
 	var (
 		mux = http.NewServeMux()
+		srv = connect.NewServer()
 		log = slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
 		cs  = &mockComponentService{log: log}
 	)
 
-	mux.Handle(infrav2connect.NewComponentServiceHandler(cs))
+	infrav2connect.RegisterComponentServiceHandler(srv, cs)
+	connecthttp.Mount(mux, srv)
 	server := httptest.NewTLSServer(mux)
 	server.EnableHTTP2 = true
 	defer server.Close()

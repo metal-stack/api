@@ -2,8 +2,9 @@
 package permissions
 
 import (
-	"connectrpc.com/connect"
+	"connectrpc.com/connect/v2"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
+	"google.golang.org/protobuf/proto"
 )
 
 func GetServices() []string {
@@ -764,73 +765,73 @@ func GetServicePermissions() *ServicePermissions {
 	}
 }
 
-func IsPublicScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Public[req.Spec().Procedure]
+func IsPublicScope(spec connect.Spec) bool {
+	_, ok := GetServicePermissions().Visibility.Public[spec.Procedure]
 	return ok
 }
 
-func IsSelfScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Self[req.Spec().Procedure]
+func IsSelfScope(spec connect.Spec) bool {
+	_, ok := GetServicePermissions().Visibility.Self[spec.Procedure]
 	return ok
 }
 
-func IsAdminScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Admin[req.Spec().Procedure]
+func IsAdminScope(spec connect.Spec) bool {
+	_, ok := GetServicePermissions().Visibility.Admin[spec.Procedure]
 	return ok
 }
 
-func IsInfraScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Infra[req.Spec().Procedure]
+func IsInfraScope(spec connect.Spec) bool {
+	_, ok := GetServicePermissions().Visibility.Infra[spec.Procedure]
 	return ok
 }
 
-func IsMachineScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Machine[req.Spec().Procedure]
+func IsMachineScope(spec connect.Spec) bool {
+	_, ok := GetServicePermissions().Visibility.Machine[spec.Procedure]
 	return ok
 }
 
-func IsTenantScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Tenant[req.Spec().Procedure]
+func IsTenantScope(spec connect.Spec) bool {
+	_, ok := GetServicePermissions().Visibility.Tenant[spec.Procedure]
 	return ok
 }
 
-func IsProjectScope(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Visibility.Project[req.Spec().Procedure]
+func IsProjectScope(spec connect.Spec) bool {
+	_, ok := GetServicePermissions().Visibility.Project[spec.Procedure]
 	return ok
 }
 
-func IsAuditable(req connect.AnyRequest) bool {
-	_, ok := GetServicePermissions().Auditable[req.Spec().Procedure]
+func IsAuditable(spec connect.Spec) bool {
+	_, ok := GetServicePermissions().Auditable[spec.Procedure]
 	return ok
 }
 
-func GetTenantFromRequest(req connect.AnyRequest) (string, bool) {
-	if !IsTenantScope(req) {
+func GetTenantFromRequest(spec connect.Spec, req proto.Message) (string, bool) {
+	if !IsTenantScope(spec) {
 		return "", false
 	}
-	switch rq := req.Any().(type) {
+	switch rq := req.(type) {
 	case interface{ GetLogin() string }:
 		return rq.GetLogin(), true
 	}
 	return "", false
 }
 
-func GetProjectFromRequest(req connect.AnyRequest) (string, bool) {
-	if !IsProjectScope(req) {
+func GetProjectFromRequest(spec connect.Spec, req proto.Message) (string, bool) {
+	if !IsProjectScope(spec) {
 		return "", false
 	}
-	switch rq := req.Any().(type) {
+	switch rq := req.(type) {
 	case interface{ GetProject() string }:
 		return rq.GetProject(), true
 	}
 	return "", false
 }
 
-func GetMachineIdFromRequest(req connect.AnyRequest) (string, bool) {
-	if !IsMachineScope(req) {
+func GetMachineIdFromRequest(spec connect.Spec, req proto.Message) (string, bool) {
+	if !IsMachineScope(spec) {
 		return "", false
 	}
-	switch rq := req.Any().(type) {
+	switch rq := req.(type) {
 	case interface{ GetUuid() string }:
 		return rq.GetUuid(), true
 	}
