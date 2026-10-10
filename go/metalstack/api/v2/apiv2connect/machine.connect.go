@@ -5,49 +5,91 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// MachineServiceName is the fully-qualified name of the MachineService service.
 	MachineServiceName = "metalstack.api.v2.MachineService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// MachineServiceGetProcedure is the fully-qualified name of the MachineService's Get RPC.
+	// MachineServiceGetProcedure is the procedure name of the MachineService's Get RPC.
 	MachineServiceGetProcedure = "/metalstack.api.v2.MachineService/Get"
-	// MachineServiceCreateProcedure is the fully-qualified name of the MachineService's Create RPC.
+	// MachineServiceCreateProcedure is the procedure name of the MachineService's Create RPC.
 	MachineServiceCreateProcedure = "/metalstack.api.v2.MachineService/Create"
-	// MachineServiceUpdateProcedure is the fully-qualified name of the MachineService's Update RPC.
+	// MachineServiceUpdateProcedure is the procedure name of the MachineService's Update RPC.
 	MachineServiceUpdateProcedure = "/metalstack.api.v2.MachineService/Update"
-	// MachineServiceListProcedure is the fully-qualified name of the MachineService's List RPC.
+	// MachineServiceListProcedure is the procedure name of the MachineService's List RPC.
 	MachineServiceListProcedure = "/metalstack.api.v2.MachineService/List"
-	// MachineServiceDeleteProcedure is the fully-qualified name of the MachineService's Delete RPC.
+	// MachineServiceDeleteProcedure is the procedure name of the MachineService's Delete RPC.
 	MachineServiceDeleteProcedure = "/metalstack.api.v2.MachineService/Delete"
-	// MachineServiceBMCCommandProcedure is the fully-qualified name of the MachineService's BMCCommand
-	// RPC.
+	// MachineServiceBMCCommandProcedure is the procedure name of the MachineService's BMCCommand RPC.
 	MachineServiceBMCCommandProcedure = "/metalstack.api.v2.MachineService/BMCCommand"
-	// MachineServiceGetBMCProcedure is the fully-qualified name of the MachineService's GetBMC RPC.
+	// MachineServiceGetBMCProcedure is the procedure name of the MachineService's GetBMC RPC.
 	MachineServiceGetBMCProcedure = "/metalstack.api.v2.MachineService/GetBMC"
+)
+
+var (
+	machineServiceGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods().ByName("Get"),
+			Procedure:  MachineServiceGetProcedure,
+		}
+	})
+	machineServiceCreateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods().ByName("Create"),
+			Procedure:  MachineServiceCreateProcedure,
+		}
+	})
+	machineServiceUpdateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods().ByName("Update"),
+			Procedure:  MachineServiceUpdateProcedure,
+		}
+	})
+	machineServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods().ByName("List"),
+			Procedure:  MachineServiceListProcedure,
+		}
+	})
+	machineServiceDeleteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods().ByName("Delete"),
+			Procedure:  MachineServiceDeleteProcedure,
+		}
+	})
+	machineServiceBMCCommandSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods().ByName("BMCCommand"),
+			Procedure:  MachineServiceBMCCommandProcedure,
+		}
+	})
+	machineServiceGetBMCSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods().ByName("GetBMC"),
+			Procedure:  MachineServiceGetBMCProcedure,
+		}
+	})
 )
 
 // MachineServiceClient is a client for the metalstack.api.v2.MachineService service.
@@ -68,134 +110,10 @@ type MachineServiceClient interface {
 	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
 }
 
-// NewMachineServiceClient constructs a client for the metalstack.api.v2.MachineService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewMachineServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) MachineServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	machineServiceMethods := v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods()
-	return &machineServiceClient{
-		get: connect.NewClient[v2.MachineServiceGetRequest, v2.MachineServiceGetResponse](
-			httpClient,
-			baseURL+MachineServiceGetProcedure,
-			connect.WithSchema(machineServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		create: connect.NewClient[v2.MachineServiceCreateRequest, v2.MachineServiceCreateResponse](
-			httpClient,
-			baseURL+MachineServiceCreateProcedure,
-			connect.WithSchema(machineServiceMethods.ByName("Create")),
-			connect.WithClientOptions(opts...),
-		),
-		update: connect.NewClient[v2.MachineServiceUpdateRequest, v2.MachineServiceUpdateResponse](
-			httpClient,
-			baseURL+MachineServiceUpdateProcedure,
-			connect.WithSchema(machineServiceMethods.ByName("Update")),
-			connect.WithClientOptions(opts...),
-		),
-		list: connect.NewClient[v2.MachineServiceListRequest, v2.MachineServiceListResponse](
-			httpClient,
-			baseURL+MachineServiceListProcedure,
-			connect.WithSchema(machineServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-		delete: connect.NewClient[v2.MachineServiceDeleteRequest, v2.MachineServiceDeleteResponse](
-			httpClient,
-			baseURL+MachineServiceDeleteProcedure,
-			connect.WithSchema(machineServiceMethods.ByName("Delete")),
-			connect.WithClientOptions(opts...),
-		),
-		bMCCommand: connect.NewClient[v2.MachineServiceBMCCommandRequest, v2.MachineServiceBMCCommandResponse](
-			httpClient,
-			baseURL+MachineServiceBMCCommandProcedure,
-			connect.WithSchema(machineServiceMethods.ByName("BMCCommand")),
-			connect.WithClientOptions(opts...),
-		),
-		getBMC: connect.NewClient[v2.MachineServiceGetBMCRequest, v2.MachineServiceGetBMCResponse](
-			httpClient,
-			baseURL+MachineServiceGetBMCProcedure,
-			connect.WithSchema(machineServiceMethods.ByName("GetBMC")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// machineServiceClient implements MachineServiceClient.
-type machineServiceClient struct {
-	get        *connect.Client[v2.MachineServiceGetRequest, v2.MachineServiceGetResponse]
-	create     *connect.Client[v2.MachineServiceCreateRequest, v2.MachineServiceCreateResponse]
-	update     *connect.Client[v2.MachineServiceUpdateRequest, v2.MachineServiceUpdateResponse]
-	list       *connect.Client[v2.MachineServiceListRequest, v2.MachineServiceListResponse]
-	delete     *connect.Client[v2.MachineServiceDeleteRequest, v2.MachineServiceDeleteResponse]
-	bMCCommand *connect.Client[v2.MachineServiceBMCCommandRequest, v2.MachineServiceBMCCommandResponse]
-	getBMC     *connect.Client[v2.MachineServiceGetBMCRequest, v2.MachineServiceGetBMCResponse]
-}
-
-// Get calls metalstack.api.v2.MachineService.Get.
-func (c *machineServiceClient) Get(ctx context.Context, req *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error) {
-	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Create calls metalstack.api.v2.MachineService.Create.
-func (c *machineServiceClient) Create(ctx context.Context, req *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error) {
-	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Update calls metalstack.api.v2.MachineService.Update.
-func (c *machineServiceClient) Update(ctx context.Context, req *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error) {
-	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// List calls metalstack.api.v2.MachineService.List.
-func (c *machineServiceClient) List(ctx context.Context, req *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Delete calls metalstack.api.v2.MachineService.Delete.
-func (c *machineServiceClient) Delete(ctx context.Context, req *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error) {
-	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// BMCCommand calls metalstack.api.v2.MachineService.BMCCommand.
-func (c *machineServiceClient) BMCCommand(ctx context.Context, req *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error) {
-	response, err := c.bMCCommand.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// GetBMC calls metalstack.api.v2.MachineService.GetBMC.
-func (c *machineServiceClient) GetBMC(ctx context.Context, req *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error) {
-	response, err := c.getBMC.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewMachineServiceClient constructs a client for the metalstack.api.v2.MachineService service.
+// Multiple service clients may share a single connect.Client.
+func NewMachineServiceClient(client *connect.Client) MachineServiceClient {
+	return &machineServiceClient{client: client}
 }
 
 // MachineServiceHandler is an implementation of the metalstack.api.v2.MachineService service.
@@ -216,104 +134,194 @@ type MachineServiceHandler interface {
 	GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error)
 }
 
-// NewMachineServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	machineServiceMethods := v2.File_metalstack_api_v2_machine_proto.Services().ByName("MachineService").Methods()
-	machineServiceGetHandler := connect.NewUnaryHandlerSimple(
-		MachineServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(machineServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
+// RegisterMachineServiceHandler registers svc as the metalstack.api.v2.MachineService
+// implementation on server.
+func RegisterMachineServiceHandler(server *connect.Server, svc MachineServiceHandler) {
+	adapter := machineServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: machineServiceGetSpec(), Handler: adapter.get},
+		connect.Method{Spec: machineServiceCreateSpec(), Handler: adapter.create},
+		connect.Method{Spec: machineServiceUpdateSpec(), Handler: adapter.update},
+		connect.Method{Spec: machineServiceListSpec(), Handler: adapter.list},
+		connect.Method{Spec: machineServiceDeleteSpec(), Handler: adapter.delete},
+		connect.Method{Spec: machineServiceBMCCommandSpec(), Handler: adapter.bMCCommand},
+		connect.Method{Spec: machineServiceGetBMCSpec(), Handler: adapter.getBMC},
 	)
-	machineServiceCreateHandler := connect.NewUnaryHandlerSimple(
-		MachineServiceCreateProcedure,
-		svc.Create,
-		connect.WithSchema(machineServiceMethods.ByName("Create")),
-		connect.WithHandlerOptions(opts...),
-	)
-	machineServiceUpdateHandler := connect.NewUnaryHandlerSimple(
-		MachineServiceUpdateProcedure,
-		svc.Update,
-		connect.WithSchema(machineServiceMethods.ByName("Update")),
-		connect.WithHandlerOptions(opts...),
-	)
-	machineServiceListHandler := connect.NewUnaryHandlerSimple(
-		MachineServiceListProcedure,
-		svc.List,
-		connect.WithSchema(machineServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	machineServiceDeleteHandler := connect.NewUnaryHandlerSimple(
-		MachineServiceDeleteProcedure,
-		svc.Delete,
-		connect.WithSchema(machineServiceMethods.ByName("Delete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	machineServiceBMCCommandHandler := connect.NewUnaryHandlerSimple(
-		MachineServiceBMCCommandProcedure,
-		svc.BMCCommand,
-		connect.WithSchema(machineServiceMethods.ByName("BMCCommand")),
-		connect.WithHandlerOptions(opts...),
-	)
-	machineServiceGetBMCHandler := connect.NewUnaryHandlerSimple(
-		MachineServiceGetBMCProcedure,
-		svc.GetBMC,
-		connect.WithSchema(machineServiceMethods.ByName("GetBMC")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.api.v2.MachineService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case MachineServiceGetProcedure:
-			machineServiceGetHandler.ServeHTTP(w, r)
-		case MachineServiceCreateProcedure:
-			machineServiceCreateHandler.ServeHTTP(w, r)
-		case MachineServiceUpdateProcedure:
-			machineServiceUpdateHandler.ServeHTTP(w, r)
-		case MachineServiceListProcedure:
-			machineServiceListHandler.ServeHTTP(w, r)
-		case MachineServiceDeleteProcedure:
-			machineServiceDeleteHandler.ServeHTTP(w, r)
-		case MachineServiceBMCCommandProcedure:
-			machineServiceBMCCommandHandler.ServeHTTP(w, r)
-		case MachineServiceGetBMCProcedure:
-			machineServiceGetBMCHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedMachineServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedMachineServiceHandler struct{}
 
 func (UnimplementedMachineServiceHandler) Get(context.Context, *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.Get is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.MachineService.Get is not implemented")
 }
 
 func (UnimplementedMachineServiceHandler) Create(context.Context, *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.Create is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.MachineService.Create is not implemented")
 }
 
 func (UnimplementedMachineServiceHandler) Update(context.Context, *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.Update is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.MachineService.Update is not implemented")
 }
 
 func (UnimplementedMachineServiceHandler) List(context.Context, *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.MachineService.List is not implemented")
 }
 
 func (UnimplementedMachineServiceHandler) Delete(context.Context, *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.Delete is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.MachineService.Delete is not implemented")
 }
 
 func (UnimplementedMachineServiceHandler) BMCCommand(context.Context, *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.BMCCommand is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.MachineService.BMCCommand is not implemented")
 }
 
 func (UnimplementedMachineServiceHandler) GetBMC(context.Context, *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MachineService.GetBMC is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.MachineService.GetBMC is not implemented")
+}
+
+type machineServiceClient struct {
+	client *connect.Client
+}
+
+func (c *machineServiceClient) Get(ctx context.Context, req *v2.MachineServiceGetRequest) (*v2.MachineServiceGetResponse, error) {
+	var res v2.MachineServiceGetResponse
+	if err := c.client.CallUnary(ctx, machineServiceGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *machineServiceClient) Create(ctx context.Context, req *v2.MachineServiceCreateRequest) (*v2.MachineServiceCreateResponse, error) {
+	var res v2.MachineServiceCreateResponse
+	if err := c.client.CallUnary(ctx, machineServiceCreateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *machineServiceClient) Update(ctx context.Context, req *v2.MachineServiceUpdateRequest) (*v2.MachineServiceUpdateResponse, error) {
+	var res v2.MachineServiceUpdateResponse
+	if err := c.client.CallUnary(ctx, machineServiceUpdateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *machineServiceClient) List(ctx context.Context, req *v2.MachineServiceListRequest) (*v2.MachineServiceListResponse, error) {
+	var res v2.MachineServiceListResponse
+	if err := c.client.CallUnary(ctx, machineServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *machineServiceClient) Delete(ctx context.Context, req *v2.MachineServiceDeleteRequest) (*v2.MachineServiceDeleteResponse, error) {
+	var res v2.MachineServiceDeleteResponse
+	if err := c.client.CallUnary(ctx, machineServiceDeleteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *machineServiceClient) BMCCommand(ctx context.Context, req *v2.MachineServiceBMCCommandRequest) (*v2.MachineServiceBMCCommandResponse, error) {
+	var res v2.MachineServiceBMCCommandResponse
+	if err := c.client.CallUnary(ctx, machineServiceBMCCommandSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *machineServiceClient) GetBMC(ctx context.Context, req *v2.MachineServiceGetBMCRequest) (*v2.MachineServiceGetBMCResponse, error) {
+	var res v2.MachineServiceGetBMCResponse
+	if err := c.client.CallUnary(ctx, machineServiceGetBMCSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type machineServiceHandler struct{ svc MachineServiceHandler }
+
+func (h machineServiceHandler) get(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.MachineServiceGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Get(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h machineServiceHandler) create(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.MachineServiceCreateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Create(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h machineServiceHandler) update(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.MachineServiceUpdateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Update(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h machineServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.MachineServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h machineServiceHandler) delete(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.MachineServiceDeleteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Delete(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h machineServiceHandler) bMCCommand(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.MachineServiceBMCCommandRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.BMCCommand(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h machineServiceHandler) getBMC(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.MachineServiceGetBMCRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.GetBMC(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

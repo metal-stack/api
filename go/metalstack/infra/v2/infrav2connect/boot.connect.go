@@ -5,53 +5,102 @@
 package infrav2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/infra/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// BootServiceName is the fully-qualified name of the BootService service.
 	BootServiceName = "metalstack.infra.v2.BootService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// BootServiceDhcpProcedure is the fully-qualified name of the BootService's Dhcp RPC.
+	// BootServiceDhcpProcedure is the procedure name of the BootService's Dhcp RPC.
 	BootServiceDhcpProcedure = "/metalstack.infra.v2.BootService/Dhcp"
-	// BootServiceBootProcedure is the fully-qualified name of the BootService's Boot RPC.
+	// BootServiceBootProcedure is the procedure name of the BootService's Boot RPC.
 	BootServiceBootProcedure = "/metalstack.infra.v2.BootService/Boot"
-	// BootServiceMachineTokenProcedure is the fully-qualified name of the BootService's MachineToken
-	// RPC.
+	// BootServiceMachineTokenProcedure is the procedure name of the BootService's MachineToken RPC.
 	BootServiceMachineTokenProcedure = "/metalstack.infra.v2.BootService/MachineToken"
-	// BootServiceSuperUserPasswordProcedure is the fully-qualified name of the BootService's
+	// BootServiceSuperUserPasswordProcedure is the procedure name of the BootService's
 	// SuperUserPassword RPC.
 	BootServiceSuperUserPasswordProcedure = "/metalstack.infra.v2.BootService/SuperUserPassword"
-	// BootServiceRegisterProcedure is the fully-qualified name of the BootService's Register RPC.
+	// BootServiceRegisterProcedure is the procedure name of the BootService's Register RPC.
 	BootServiceRegisterProcedure = "/metalstack.infra.v2.BootService/Register"
-	// BootServiceWaitProcedure is the fully-qualified name of the BootService's Wait RPC.
+	// BootServiceWaitProcedure is the procedure name of the BootService's Wait RPC.
 	BootServiceWaitProcedure = "/metalstack.infra.v2.BootService/Wait"
-	// BootServiceInstallationSucceededProcedure is the fully-qualified name of the BootService's
+	// BootServiceInstallationSucceededProcedure is the procedure name of the BootService's
 	// InstallationSucceeded RPC.
 	BootServiceInstallationSucceededProcedure = "/metalstack.infra.v2.BootService/InstallationSucceeded"
-	// BootServiceSendEventProcedure is the fully-qualified name of the BootService's SendEvent RPC.
+	// BootServiceSendEventProcedure is the procedure name of the BootService's SendEvent RPC.
 	BootServiceSendEventProcedure = "/metalstack.infra.v2.BootService/SendEvent"
+)
+
+var (
+	bootServiceDhcpSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods().ByName("Dhcp"),
+			Procedure:  BootServiceDhcpProcedure,
+		}
+	})
+	bootServiceBootSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods().ByName("Boot"),
+			Procedure:  BootServiceBootProcedure,
+		}
+	})
+	bootServiceMachineTokenSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods().ByName("MachineToken"),
+			Procedure:  BootServiceMachineTokenProcedure,
+		}
+	})
+	bootServiceSuperUserPasswordSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods().ByName("SuperUserPassword"),
+			Procedure:  BootServiceSuperUserPasswordProcedure,
+		}
+	})
+	bootServiceRegisterSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods().ByName("Register"),
+			Procedure:  BootServiceRegisterProcedure,
+		}
+	})
+	bootServiceWaitSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeServer,
+			Schema:     v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods().ByName("Wait"),
+			Procedure:  BootServiceWaitProcedure,
+		}
+	})
+	bootServiceInstallationSucceededSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods().ByName("InstallationSucceeded"),
+			Procedure:  BootServiceInstallationSucceededProcedure,
+		}
+	})
+	bootServiceSendEventSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods().ByName("SendEvent"),
+			Procedure:  BootServiceSendEventProcedure,
+		}
+	})
 )
 
 // BootServiceClient is a client for the metalstack.infra.v2.BootService service.
@@ -67,153 +116,37 @@ type BootServiceClient interface {
 	// Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all details about that machine.
 	Register(context.Context, *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error)
 	// Wait is a hanging call that waits until the machine gets allocated by a user.
-	Wait(context.Context, *v2.BootServiceWaitRequest) (*connect.ServerStreamForClient[v2.BootServiceWaitResponse], error)
+	Wait(context.Context, *v2.BootServiceWaitRequest) (BootServiceWaitClientStream, error)
 	// InstallationSucceeded tells metal-apiserver that installation was successful.
 	InstallationSucceeded(context.Context, *v2.BootServiceInstallationSucceededRequest) (*v2.BootServiceInstallationSucceededResponse, error)
 	// SendEvent is used to send provisioning events to the metal-apiserver.
 	SendEvent(context.Context, *v2.BootServiceSendEventRequest) (*v2.BootServiceSendEventResponse, error)
 }
 
-// NewBootServiceClient constructs a client for the metalstack.infra.v2.BootService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewBootServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) BootServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	bootServiceMethods := v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods()
-	return &bootServiceClient{
-		dhcp: connect.NewClient[v2.BootServiceDhcpRequest, v2.BootServiceDhcpResponse](
-			httpClient,
-			baseURL+BootServiceDhcpProcedure,
-			connect.WithSchema(bootServiceMethods.ByName("Dhcp")),
-			connect.WithClientOptions(opts...),
-		),
-		boot: connect.NewClient[v2.BootServiceBootRequest, v2.BootServiceBootResponse](
-			httpClient,
-			baseURL+BootServiceBootProcedure,
-			connect.WithSchema(bootServiceMethods.ByName("Boot")),
-			connect.WithClientOptions(opts...),
-		),
-		machineToken: connect.NewClient[v2.BootServiceMachineTokenRequest, v2.BootServiceMachineTokenResponse](
-			httpClient,
-			baseURL+BootServiceMachineTokenProcedure,
-			connect.WithSchema(bootServiceMethods.ByName("MachineToken")),
-			connect.WithClientOptions(opts...),
-		),
-		superUserPassword: connect.NewClient[v2.BootServiceSuperUserPasswordRequest, v2.BootServiceSuperUserPasswordResponse](
-			httpClient,
-			baseURL+BootServiceSuperUserPasswordProcedure,
-			connect.WithSchema(bootServiceMethods.ByName("SuperUserPassword")),
-			connect.WithClientOptions(opts...),
-		),
-		register: connect.NewClient[v2.BootServiceRegisterRequest, v2.BootServiceRegisterResponse](
-			httpClient,
-			baseURL+BootServiceRegisterProcedure,
-			connect.WithSchema(bootServiceMethods.ByName("Register")),
-			connect.WithClientOptions(opts...),
-		),
-		wait: connect.NewClient[v2.BootServiceWaitRequest, v2.BootServiceWaitResponse](
-			httpClient,
-			baseURL+BootServiceWaitProcedure,
-			connect.WithSchema(bootServiceMethods.ByName("Wait")),
-			connect.WithClientOptions(opts...),
-		),
-		installationSucceeded: connect.NewClient[v2.BootServiceInstallationSucceededRequest, v2.BootServiceInstallationSucceededResponse](
-			httpClient,
-			baseURL+BootServiceInstallationSucceededProcedure,
-			connect.WithSchema(bootServiceMethods.ByName("InstallationSucceeded")),
-			connect.WithClientOptions(opts...),
-		),
-		sendEvent: connect.NewClient[v2.BootServiceSendEventRequest, v2.BootServiceSendEventResponse](
-			httpClient,
-			baseURL+BootServiceSendEventProcedure,
-			connect.WithSchema(bootServiceMethods.ByName("SendEvent")),
-			connect.WithClientOptions(opts...),
-		),
+// NewBootServiceClient constructs a client for the metalstack.infra.v2.BootService service.
+// Multiple service clients may share a single connect.Client.
+func NewBootServiceClient(client *connect.Client) BootServiceClient {
+	return &bootServiceClient{client: client}
+}
+
+// BootServiceWaitClientStream is the client stream for the BootService's Wait RPC.
+type BootServiceWaitClientStream struct {
+	stream connect.ClientStream
+}
+
+// Receive returns the next response message from the server.
+func (s BootServiceWaitClientStream) Receive() (*v2.BootServiceWaitResponse, error) {
+	var res v2.BootServiceWaitResponse
+	if err := s.stream.Receive(&res); err != nil {
+		return nil, err
 	}
+	return &res, nil
 }
 
-// bootServiceClient implements BootServiceClient.
-type bootServiceClient struct {
-	dhcp                  *connect.Client[v2.BootServiceDhcpRequest, v2.BootServiceDhcpResponse]
-	boot                  *connect.Client[v2.BootServiceBootRequest, v2.BootServiceBootResponse]
-	machineToken          *connect.Client[v2.BootServiceMachineTokenRequest, v2.BootServiceMachineTokenResponse]
-	superUserPassword     *connect.Client[v2.BootServiceSuperUserPasswordRequest, v2.BootServiceSuperUserPasswordResponse]
-	register              *connect.Client[v2.BootServiceRegisterRequest, v2.BootServiceRegisterResponse]
-	wait                  *connect.Client[v2.BootServiceWaitRequest, v2.BootServiceWaitResponse]
-	installationSucceeded *connect.Client[v2.BootServiceInstallationSucceededRequest, v2.BootServiceInstallationSucceededResponse]
-	sendEvent             *connect.Client[v2.BootServiceSendEventRequest, v2.BootServiceSendEventResponse]
-}
-
-// Dhcp calls metalstack.infra.v2.BootService.Dhcp.
-func (c *bootServiceClient) Dhcp(ctx context.Context, req *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error) {
-	response, err := c.dhcp.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Boot calls metalstack.infra.v2.BootService.Boot.
-func (c *bootServiceClient) Boot(ctx context.Context, req *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error) {
-	response, err := c.boot.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// MachineToken calls metalstack.infra.v2.BootService.MachineToken.
-func (c *bootServiceClient) MachineToken(ctx context.Context, req *v2.BootServiceMachineTokenRequest) (*v2.BootServiceMachineTokenResponse, error) {
-	response, err := c.machineToken.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// SuperUserPassword calls metalstack.infra.v2.BootService.SuperUserPassword.
-func (c *bootServiceClient) SuperUserPassword(ctx context.Context, req *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error) {
-	response, err := c.superUserPassword.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Register calls metalstack.infra.v2.BootService.Register.
-func (c *bootServiceClient) Register(ctx context.Context, req *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error) {
-	response, err := c.register.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Wait calls metalstack.infra.v2.BootService.Wait.
-func (c *bootServiceClient) Wait(ctx context.Context, req *v2.BootServiceWaitRequest) (*connect.ServerStreamForClient[v2.BootServiceWaitResponse], error) {
-	return c.wait.CallServerStream(ctx, connect.NewRequest(req))
-}
-
-// InstallationSucceeded calls metalstack.infra.v2.BootService.InstallationSucceeded.
-func (c *bootServiceClient) InstallationSucceeded(ctx context.Context, req *v2.BootServiceInstallationSucceededRequest) (*v2.BootServiceInstallationSucceededResponse, error) {
-	response, err := c.installationSucceeded.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// SendEvent calls metalstack.infra.v2.BootService.SendEvent.
-func (c *bootServiceClient) SendEvent(ctx context.Context, req *v2.BootServiceSendEventRequest) (*v2.BootServiceSendEventResponse, error) {
-	response, err := c.sendEvent.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// Close releases the stream's resources. It is idempotent and is typically deferred to clean up a
+// stream abandoned before io.EOF.
+func (s BootServiceWaitClientStream) Close() error {
+	return s.stream.Close()
 }
 
 // BootServiceHandler is an implementation of the metalstack.infra.v2.BootService service.
@@ -229,123 +162,237 @@ type BootServiceHandler interface {
 	// Register is called from metal-hammer after hardware inventory is finished, tells metal-apiserver all details about that machine.
 	Register(context.Context, *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error)
 	// Wait is a hanging call that waits until the machine gets allocated by a user.
-	Wait(context.Context, *v2.BootServiceWaitRequest, *connect.ServerStream[v2.BootServiceWaitResponse]) error
+	Wait(context.Context, *v2.BootServiceWaitRequest, BootServiceWaitServerStream) error
 	// InstallationSucceeded tells metal-apiserver that installation was successful.
 	InstallationSucceeded(context.Context, *v2.BootServiceInstallationSucceededRequest) (*v2.BootServiceInstallationSucceededResponse, error)
 	// SendEvent is used to send provisioning events to the metal-apiserver.
 	SendEvent(context.Context, *v2.BootServiceSendEventRequest) (*v2.BootServiceSendEventResponse, error)
 }
 
-// NewBootServiceHandler builds an HTTP handler from the service implementation. It returns the path
-// on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewBootServiceHandler(svc BootServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	bootServiceMethods := v2.File_metalstack_infra_v2_boot_proto.Services().ByName("BootService").Methods()
-	bootServiceDhcpHandler := connect.NewUnaryHandlerSimple(
-		BootServiceDhcpProcedure,
-		svc.Dhcp,
-		connect.WithSchema(bootServiceMethods.ByName("Dhcp")),
-		connect.WithHandlerOptions(opts...),
+// RegisterBootServiceHandler registers svc as the metalstack.infra.v2.BootService implementation on
+// server.
+func RegisterBootServiceHandler(server *connect.Server, svc BootServiceHandler) {
+	adapter := bootServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: bootServiceDhcpSpec(), Handler: adapter.dhcp},
+		connect.Method{Spec: bootServiceBootSpec(), Handler: adapter.boot},
+		connect.Method{Spec: bootServiceMachineTokenSpec(), Handler: adapter.machineToken},
+		connect.Method{Spec: bootServiceSuperUserPasswordSpec(), Handler: adapter.superUserPassword},
+		connect.Method{Spec: bootServiceRegisterSpec(), Handler: adapter.register},
+		connect.Method{Spec: bootServiceWaitSpec(), Handler: adapter.wait},
+		connect.Method{Spec: bootServiceInstallationSucceededSpec(), Handler: adapter.installationSucceeded},
+		connect.Method{Spec: bootServiceSendEventSpec(), Handler: adapter.sendEvent},
 	)
-	bootServiceBootHandler := connect.NewUnaryHandlerSimple(
-		BootServiceBootProcedure,
-		svc.Boot,
-		connect.WithSchema(bootServiceMethods.ByName("Boot")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bootServiceMachineTokenHandler := connect.NewUnaryHandlerSimple(
-		BootServiceMachineTokenProcedure,
-		svc.MachineToken,
-		connect.WithSchema(bootServiceMethods.ByName("MachineToken")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bootServiceSuperUserPasswordHandler := connect.NewUnaryHandlerSimple(
-		BootServiceSuperUserPasswordProcedure,
-		svc.SuperUserPassword,
-		connect.WithSchema(bootServiceMethods.ByName("SuperUserPassword")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bootServiceRegisterHandler := connect.NewUnaryHandlerSimple(
-		BootServiceRegisterProcedure,
-		svc.Register,
-		connect.WithSchema(bootServiceMethods.ByName("Register")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bootServiceWaitHandler := connect.NewServerStreamHandlerSimple(
-		BootServiceWaitProcedure,
-		svc.Wait,
-		connect.WithSchema(bootServiceMethods.ByName("Wait")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bootServiceInstallationSucceededHandler := connect.NewUnaryHandlerSimple(
-		BootServiceInstallationSucceededProcedure,
-		svc.InstallationSucceeded,
-		connect.WithSchema(bootServiceMethods.ByName("InstallationSucceeded")),
-		connect.WithHandlerOptions(opts...),
-	)
-	bootServiceSendEventHandler := connect.NewUnaryHandlerSimple(
-		BootServiceSendEventProcedure,
-		svc.SendEvent,
-		connect.WithSchema(bootServiceMethods.ByName("SendEvent")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.infra.v2.BootService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case BootServiceDhcpProcedure:
-			bootServiceDhcpHandler.ServeHTTP(w, r)
-		case BootServiceBootProcedure:
-			bootServiceBootHandler.ServeHTTP(w, r)
-		case BootServiceMachineTokenProcedure:
-			bootServiceMachineTokenHandler.ServeHTTP(w, r)
-		case BootServiceSuperUserPasswordProcedure:
-			bootServiceSuperUserPasswordHandler.ServeHTTP(w, r)
-		case BootServiceRegisterProcedure:
-			bootServiceRegisterHandler.ServeHTTP(w, r)
-		case BootServiceWaitProcedure:
-			bootServiceWaitHandler.ServeHTTP(w, r)
-		case BootServiceInstallationSucceededProcedure:
-			bootServiceInstallationSucceededHandler.ServeHTTP(w, r)
-		case BootServiceSendEventProcedure:
-			bootServiceSendEventHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
+}
+
+// BootServiceWaitServerStream is the server stream for the BootService's Wait RPC.
+type BootServiceWaitServerStream struct {
+	stream connect.ServerStream
+}
+
+// SendHeaders flushes the response headers without a message. The first Send does this implicitly.
+func (s BootServiceWaitServerStream) SendHeaders() error {
+	return s.stream.SendHeaders()
+}
+
+// Send sends a response message to the client.
+func (s BootServiceWaitServerStream) Send(res *v2.BootServiceWaitResponse) error {
+	return s.stream.Send(res)
 }
 
 // UnimplementedBootServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedBootServiceHandler struct{}
 
 func (UnimplementedBootServiceHandler) Dhcp(context.Context, *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Dhcp is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BootService.Dhcp is not implemented")
 }
 
 func (UnimplementedBootServiceHandler) Boot(context.Context, *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Boot is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BootService.Boot is not implemented")
 }
 
 func (UnimplementedBootServiceHandler) MachineToken(context.Context, *v2.BootServiceMachineTokenRequest) (*v2.BootServiceMachineTokenResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.MachineToken is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BootService.MachineToken is not implemented")
 }
 
 func (UnimplementedBootServiceHandler) SuperUserPassword(context.Context, *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.SuperUserPassword is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BootService.SuperUserPassword is not implemented")
 }
 
 func (UnimplementedBootServiceHandler) Register(context.Context, *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Register is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BootService.Register is not implemented")
 }
 
-func (UnimplementedBootServiceHandler) Wait(context.Context, *v2.BootServiceWaitRequest, *connect.ServerStream[v2.BootServiceWaitResponse]) error {
-	return connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.Wait is not implemented"))
+func (UnimplementedBootServiceHandler) Wait(context.Context, *v2.BootServiceWaitRequest, BootServiceWaitServerStream) error {
+	return connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BootService.Wait is not implemented")
 }
 
 func (UnimplementedBootServiceHandler) InstallationSucceeded(context.Context, *v2.BootServiceInstallationSucceededRequest) (*v2.BootServiceInstallationSucceededResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.InstallationSucceeded is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BootService.InstallationSucceeded is not implemented")
 }
 
 func (UnimplementedBootServiceHandler) SendEvent(context.Context, *v2.BootServiceSendEventRequest) (*v2.BootServiceSendEventResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.BootService.SendEvent is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.BootService.SendEvent is not implemented")
+}
+
+type bootServiceClient struct {
+	client *connect.Client
+}
+
+func (c *bootServiceClient) Dhcp(ctx context.Context, req *v2.BootServiceDhcpRequest) (*v2.BootServiceDhcpResponse, error) {
+	var res v2.BootServiceDhcpResponse
+	if err := c.client.CallUnary(ctx, bootServiceDhcpSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *bootServiceClient) Boot(ctx context.Context, req *v2.BootServiceBootRequest) (*v2.BootServiceBootResponse, error) {
+	var res v2.BootServiceBootResponse
+	if err := c.client.CallUnary(ctx, bootServiceBootSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *bootServiceClient) MachineToken(ctx context.Context, req *v2.BootServiceMachineTokenRequest) (*v2.BootServiceMachineTokenResponse, error) {
+	var res v2.BootServiceMachineTokenResponse
+	if err := c.client.CallUnary(ctx, bootServiceMachineTokenSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *bootServiceClient) SuperUserPassword(ctx context.Context, req *v2.BootServiceSuperUserPasswordRequest) (*v2.BootServiceSuperUserPasswordResponse, error) {
+	var res v2.BootServiceSuperUserPasswordResponse
+	if err := c.client.CallUnary(ctx, bootServiceSuperUserPasswordSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *bootServiceClient) Register(ctx context.Context, req *v2.BootServiceRegisterRequest) (*v2.BootServiceRegisterResponse, error) {
+	var res v2.BootServiceRegisterResponse
+	if err := c.client.CallUnary(ctx, bootServiceRegisterSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *bootServiceClient) Wait(ctx context.Context, req *v2.BootServiceWaitRequest) (BootServiceWaitClientStream, error) {
+	stream, err := c.client.CallServerStream(ctx, bootServiceWaitSpec(), req)
+	if err != nil {
+		return BootServiceWaitClientStream{}, err
+	}
+	return BootServiceWaitClientStream{stream: stream}, nil
+}
+
+func (c *bootServiceClient) InstallationSucceeded(ctx context.Context, req *v2.BootServiceInstallationSucceededRequest) (*v2.BootServiceInstallationSucceededResponse, error) {
+	var res v2.BootServiceInstallationSucceededResponse
+	if err := c.client.CallUnary(ctx, bootServiceInstallationSucceededSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *bootServiceClient) SendEvent(ctx context.Context, req *v2.BootServiceSendEventRequest) (*v2.BootServiceSendEventResponse, error) {
+	var res v2.BootServiceSendEventResponse
+	if err := c.client.CallUnary(ctx, bootServiceSendEventSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type bootServiceHandler struct{ svc BootServiceHandler }
+
+func (h bootServiceHandler) dhcp(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.BootServiceDhcpRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Dhcp(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h bootServiceHandler) boot(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.BootServiceBootRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Boot(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h bootServiceHandler) machineToken(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.BootServiceMachineTokenRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.MachineToken(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h bootServiceHandler) superUserPassword(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.BootServiceSuperUserPasswordRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.SuperUserPassword(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h bootServiceHandler) register(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.BootServiceRegisterRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Register(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h bootServiceHandler) wait(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.BootServiceWaitRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	return h.svc.Wait(ctx, &req, BootServiceWaitServerStream{stream: stream})
+}
+
+func (h bootServiceHandler) installationSucceeded(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.BootServiceInstallationSucceededRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.InstallationSucceeded(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h bootServiceHandler) sendEvent(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.BootServiceSendEventRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.SendEvent(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

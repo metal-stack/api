@@ -5,44 +5,73 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// IPServiceName is the fully-qualified name of the IPService service.
 	IPServiceName = "metalstack.api.v2.IPService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// IPServiceGetProcedure is the fully-qualified name of the IPService's Get RPC.
+	// IPServiceGetProcedure is the procedure name of the IPService's Get RPC.
 	IPServiceGetProcedure = "/metalstack.api.v2.IPService/Get"
-	// IPServiceCreateProcedure is the fully-qualified name of the IPService's Create RPC.
+	// IPServiceCreateProcedure is the procedure name of the IPService's Create RPC.
 	IPServiceCreateProcedure = "/metalstack.api.v2.IPService/Create"
-	// IPServiceUpdateProcedure is the fully-qualified name of the IPService's Update RPC.
+	// IPServiceUpdateProcedure is the procedure name of the IPService's Update RPC.
 	IPServiceUpdateProcedure = "/metalstack.api.v2.IPService/Update"
-	// IPServiceListProcedure is the fully-qualified name of the IPService's List RPC.
+	// IPServiceListProcedure is the procedure name of the IPService's List RPC.
 	IPServiceListProcedure = "/metalstack.api.v2.IPService/List"
-	// IPServiceDeleteProcedure is the fully-qualified name of the IPService's Delete RPC.
+	// IPServiceDeleteProcedure is the procedure name of the IPService's Delete RPC.
 	IPServiceDeleteProcedure = "/metalstack.api.v2.IPService/Delete"
+)
+
+var (
+	iPServiceGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_ip_proto.Services().ByName("IPService").Methods().ByName("Get"),
+			Procedure:  IPServiceGetProcedure,
+		}
+	})
+	iPServiceCreateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_ip_proto.Services().ByName("IPService").Methods().ByName("Create"),
+			Procedure:  IPServiceCreateProcedure,
+		}
+	})
+	iPServiceUpdateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_ip_proto.Services().ByName("IPService").Methods().ByName("Update"),
+			Procedure:  IPServiceUpdateProcedure,
+		}
+	})
+	iPServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_ip_proto.Services().ByName("IPService").Methods().ByName("List"),
+			Procedure:  IPServiceListProcedure,
+		}
+	})
+	iPServiceDeleteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_ip_proto.Services().ByName("IPService").Methods().ByName("Delete"),
+			Procedure:  IPServiceDeleteProcedure,
+		}
+	})
 )
 
 // IPServiceClient is a client for the metalstack.api.v2.IPService service.
@@ -59,102 +88,10 @@ type IPServiceClient interface {
 	Delete(context.Context, *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error)
 }
 
-// NewIPServiceClient constructs a client for the metalstack.api.v2.IPService service. By default,
-// it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses, and
-// sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the connect.WithGRPC()
-// or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewIPServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) IPServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	iPServiceMethods := v2.File_metalstack_api_v2_ip_proto.Services().ByName("IPService").Methods()
-	return &iPServiceClient{
-		get: connect.NewClient[v2.IPServiceGetRequest, v2.IPServiceGetResponse](
-			httpClient,
-			baseURL+IPServiceGetProcedure,
-			connect.WithSchema(iPServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		create: connect.NewClient[v2.IPServiceCreateRequest, v2.IPServiceCreateResponse](
-			httpClient,
-			baseURL+IPServiceCreateProcedure,
-			connect.WithSchema(iPServiceMethods.ByName("Create")),
-			connect.WithClientOptions(opts...),
-		),
-		update: connect.NewClient[v2.IPServiceUpdateRequest, v2.IPServiceUpdateResponse](
-			httpClient,
-			baseURL+IPServiceUpdateProcedure,
-			connect.WithSchema(iPServiceMethods.ByName("Update")),
-			connect.WithClientOptions(opts...),
-		),
-		list: connect.NewClient[v2.IPServiceListRequest, v2.IPServiceListResponse](
-			httpClient,
-			baseURL+IPServiceListProcedure,
-			connect.WithSchema(iPServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-		delete: connect.NewClient[v2.IPServiceDeleteRequest, v2.IPServiceDeleteResponse](
-			httpClient,
-			baseURL+IPServiceDeleteProcedure,
-			connect.WithSchema(iPServiceMethods.ByName("Delete")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// iPServiceClient implements IPServiceClient.
-type iPServiceClient struct {
-	get    *connect.Client[v2.IPServiceGetRequest, v2.IPServiceGetResponse]
-	create *connect.Client[v2.IPServiceCreateRequest, v2.IPServiceCreateResponse]
-	update *connect.Client[v2.IPServiceUpdateRequest, v2.IPServiceUpdateResponse]
-	list   *connect.Client[v2.IPServiceListRequest, v2.IPServiceListResponse]
-	delete *connect.Client[v2.IPServiceDeleteRequest, v2.IPServiceDeleteResponse]
-}
-
-// Get calls metalstack.api.v2.IPService.Get.
-func (c *iPServiceClient) Get(ctx context.Context, req *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error) {
-	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Create calls metalstack.api.v2.IPService.Create.
-func (c *iPServiceClient) Create(ctx context.Context, req *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error) {
-	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Update calls metalstack.api.v2.IPService.Update.
-func (c *iPServiceClient) Update(ctx context.Context, req *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error) {
-	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// List calls metalstack.api.v2.IPService.List.
-func (c *iPServiceClient) List(ctx context.Context, req *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Delete calls metalstack.api.v2.IPService.Delete.
-func (c *iPServiceClient) Delete(ctx context.Context, req *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error) {
-	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewIPServiceClient constructs a client for the metalstack.api.v2.IPService service. Multiple
+// service clients may share a single connect.Client.
+func NewIPServiceClient(client *connect.Client) IPServiceClient {
+	return &iPServiceClient{client: client}
 }
 
 // IPServiceHandler is an implementation of the metalstack.api.v2.IPService service.
@@ -171,80 +108,144 @@ type IPServiceHandler interface {
 	Delete(context.Context, *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error)
 }
 
-// NewIPServiceHandler builds an HTTP handler from the service implementation. It returns the path
-// on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewIPServiceHandler(svc IPServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	iPServiceMethods := v2.File_metalstack_api_v2_ip_proto.Services().ByName("IPService").Methods()
-	iPServiceGetHandler := connect.NewUnaryHandlerSimple(
-		IPServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(iPServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
+// RegisterIPServiceHandler registers svc as the metalstack.api.v2.IPService implementation on
+// server.
+func RegisterIPServiceHandler(server *connect.Server, svc IPServiceHandler) {
+	adapter := iPServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: iPServiceGetSpec(), Handler: adapter.get},
+		connect.Method{Spec: iPServiceCreateSpec(), Handler: adapter.create},
+		connect.Method{Spec: iPServiceUpdateSpec(), Handler: adapter.update},
+		connect.Method{Spec: iPServiceListSpec(), Handler: adapter.list},
+		connect.Method{Spec: iPServiceDeleteSpec(), Handler: adapter.delete},
 	)
-	iPServiceCreateHandler := connect.NewUnaryHandlerSimple(
-		IPServiceCreateProcedure,
-		svc.Create,
-		connect.WithSchema(iPServiceMethods.ByName("Create")),
-		connect.WithHandlerOptions(opts...),
-	)
-	iPServiceUpdateHandler := connect.NewUnaryHandlerSimple(
-		IPServiceUpdateProcedure,
-		svc.Update,
-		connect.WithSchema(iPServiceMethods.ByName("Update")),
-		connect.WithHandlerOptions(opts...),
-	)
-	iPServiceListHandler := connect.NewUnaryHandlerSimple(
-		IPServiceListProcedure,
-		svc.List,
-		connect.WithSchema(iPServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	iPServiceDeleteHandler := connect.NewUnaryHandlerSimple(
-		IPServiceDeleteProcedure,
-		svc.Delete,
-		connect.WithSchema(iPServiceMethods.ByName("Delete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.api.v2.IPService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case IPServiceGetProcedure:
-			iPServiceGetHandler.ServeHTTP(w, r)
-		case IPServiceCreateProcedure:
-			iPServiceCreateHandler.ServeHTTP(w, r)
-		case IPServiceUpdateProcedure:
-			iPServiceUpdateHandler.ServeHTTP(w, r)
-		case IPServiceListProcedure:
-			iPServiceListHandler.ServeHTTP(w, r)
-		case IPServiceDeleteProcedure:
-			iPServiceDeleteHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedIPServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedIPServiceHandler struct{}
 
 func (UnimplementedIPServiceHandler) Get(context.Context, *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.Get is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.IPService.Get is not implemented")
 }
 
 func (UnimplementedIPServiceHandler) Create(context.Context, *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.Create is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.IPService.Create is not implemented")
 }
 
 func (UnimplementedIPServiceHandler) Update(context.Context, *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.Update is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.IPService.Update is not implemented")
 }
 
 func (UnimplementedIPServiceHandler) List(context.Context, *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.IPService.List is not implemented")
 }
 
 func (UnimplementedIPServiceHandler) Delete(context.Context, *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.IPService.Delete is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.IPService.Delete is not implemented")
+}
+
+type iPServiceClient struct {
+	client *connect.Client
+}
+
+func (c *iPServiceClient) Get(ctx context.Context, req *v2.IPServiceGetRequest) (*v2.IPServiceGetResponse, error) {
+	var res v2.IPServiceGetResponse
+	if err := c.client.CallUnary(ctx, iPServiceGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *iPServiceClient) Create(ctx context.Context, req *v2.IPServiceCreateRequest) (*v2.IPServiceCreateResponse, error) {
+	var res v2.IPServiceCreateResponse
+	if err := c.client.CallUnary(ctx, iPServiceCreateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *iPServiceClient) Update(ctx context.Context, req *v2.IPServiceUpdateRequest) (*v2.IPServiceUpdateResponse, error) {
+	var res v2.IPServiceUpdateResponse
+	if err := c.client.CallUnary(ctx, iPServiceUpdateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *iPServiceClient) List(ctx context.Context, req *v2.IPServiceListRequest) (*v2.IPServiceListResponse, error) {
+	var res v2.IPServiceListResponse
+	if err := c.client.CallUnary(ctx, iPServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *iPServiceClient) Delete(ctx context.Context, req *v2.IPServiceDeleteRequest) (*v2.IPServiceDeleteResponse, error) {
+	var res v2.IPServiceDeleteResponse
+	if err := c.client.CallUnary(ctx, iPServiceDeleteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type iPServiceHandler struct{ svc IPServiceHandler }
+
+func (h iPServiceHandler) get(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.IPServiceGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Get(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h iPServiceHandler) create(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.IPServiceCreateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Create(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h iPServiceHandler) update(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.IPServiceUpdateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Update(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h iPServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.IPServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h iPServiceHandler) delete(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.IPServiceDeleteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Delete(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

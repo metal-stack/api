@@ -3,10 +3,6 @@ package client
 
 import (
 	"context"
-
-	"connectrpc.com/connect"
-	compress "github.com/klauspost/connect-compress/v2"
-
 	"github.com/metal-stack/api/go/metalstack/admin/v2/adminv2connect"
 	"github.com/metal-stack/api/go/metalstack/api/v2/apiv2connect"
 	"github.com/metal-stack/api/go/metalstack/infra/v2/infrav2connect"
@@ -19,11 +15,6 @@ type (
 		Infrav2() Infrav2
 
 		Ping(context.Context, *PingConfig)
-	}
-	client struct {
-		config *DialConfig
-
-		interceptors []connect.Interceptor
 	}
 	Adminv2 interface {
 		Audit() adminv2connect.AuditServiceClient
@@ -124,108 +115,23 @@ type (
 
 func (c *client) Adminv2() Adminv2 {
 	a := &adminv2{
-		auditservice: adminv2connect.NewAuditServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		componentservice: adminv2connect.NewComponentServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		filesystemservice: adminv2connect.NewFilesystemServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		imageservice: adminv2connect.NewImageServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		ipservice: adminv2connect.NewIPServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		machineservice: adminv2connect.NewMachineServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		networkservice: adminv2connect.NewNetworkServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		partitionservice: adminv2connect.NewPartitionServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		projectservice: adminv2connect.NewProjectServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		sizeservice: adminv2connect.NewSizeServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		sizeimageconstraintservice: adminv2connect.NewSizeImageConstraintServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		sizereservationservice: adminv2connect.NewSizeReservationServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		switchservice: adminv2connect.NewSwitchServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		taskservice: adminv2connect.NewTaskServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		tenantservice: adminv2connect.NewTenantServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		tokenservice: adminv2connect.NewTokenServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		vpnservice: adminv2connect.NewVPNServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
+		auditservice:               adminv2connect.NewAuditServiceClient(c.httpClient),
+		componentservice:           adminv2connect.NewComponentServiceClient(c.httpClient),
+		filesystemservice:          adminv2connect.NewFilesystemServiceClient(c.httpClient),
+		imageservice:               adminv2connect.NewImageServiceClient(c.httpClient),
+		ipservice:                  adminv2connect.NewIPServiceClient(c.httpClient),
+		machineservice:             adminv2connect.NewMachineServiceClient(c.httpClient),
+		networkservice:             adminv2connect.NewNetworkServiceClient(c.httpClient),
+		partitionservice:           adminv2connect.NewPartitionServiceClient(c.httpClient),
+		projectservice:             adminv2connect.NewProjectServiceClient(c.httpClient),
+		sizeservice:                adminv2connect.NewSizeServiceClient(c.httpClient),
+		sizeimageconstraintservice: adminv2connect.NewSizeImageConstraintServiceClient(c.httpClient),
+		sizereservationservice:     adminv2connect.NewSizeReservationServiceClient(c.httpClient),
+		switchservice:              adminv2connect.NewSwitchServiceClient(c.httpClient),
+		taskservice:                adminv2connect.NewTaskServiceClient(c.httpClient),
+		tenantservice:              adminv2connect.NewTenantServiceClient(c.httpClient),
+		tokenservice:               adminv2connect.NewTokenServiceClient(c.httpClient),
+		vpnservice:                 adminv2connect.NewVPNServiceClient(c.httpClient),
 	}
 	return a
 }
@@ -284,108 +190,23 @@ func (c *adminv2) VPN() adminv2connect.VPNServiceClient {
 
 func (c *client) Apiv2() Apiv2 {
 	a := &apiv2{
-		auditservice: apiv2connect.NewAuditServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		filesystemservice: apiv2connect.NewFilesystemServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		healthservice: apiv2connect.NewHealthServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		imageservice: apiv2connect.NewImageServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		ipservice: apiv2connect.NewIPServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		machineservice: apiv2connect.NewMachineServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		methodservice: apiv2connect.NewMethodServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		networkservice: apiv2connect.NewNetworkServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		partitionservice: apiv2connect.NewPartitionServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		projectservice: apiv2connect.NewProjectServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		sizeservice: apiv2connect.NewSizeServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		sizeimageconstraintservice: apiv2connect.NewSizeImageConstraintServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		sizereservationservice: apiv2connect.NewSizeReservationServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		tenantservice: apiv2connect.NewTenantServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		tokenservice: apiv2connect.NewTokenServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		userservice: apiv2connect.NewUserServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		versionservice: apiv2connect.NewVersionServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
+		auditservice:               apiv2connect.NewAuditServiceClient(c.httpClient),
+		filesystemservice:          apiv2connect.NewFilesystemServiceClient(c.httpClient),
+		healthservice:              apiv2connect.NewHealthServiceClient(c.httpClient),
+		imageservice:               apiv2connect.NewImageServiceClient(c.httpClient),
+		ipservice:                  apiv2connect.NewIPServiceClient(c.httpClient),
+		machineservice:             apiv2connect.NewMachineServiceClient(c.httpClient),
+		methodservice:              apiv2connect.NewMethodServiceClient(c.httpClient),
+		networkservice:             apiv2connect.NewNetworkServiceClient(c.httpClient),
+		partitionservice:           apiv2connect.NewPartitionServiceClient(c.httpClient),
+		projectservice:             apiv2connect.NewProjectServiceClient(c.httpClient),
+		sizeservice:                apiv2connect.NewSizeServiceClient(c.httpClient),
+		sizeimageconstraintservice: apiv2connect.NewSizeImageConstraintServiceClient(c.httpClient),
+		sizereservationservice:     apiv2connect.NewSizeReservationServiceClient(c.httpClient),
+		tenantservice:              apiv2connect.NewTenantServiceClient(c.httpClient),
+		tokenservice:               apiv2connect.NewTokenServiceClient(c.httpClient),
+		userservice:                apiv2connect.NewUserServiceClient(c.httpClient),
+		versionservice:             apiv2connect.NewVersionServiceClient(c.httpClient),
 	}
 	return a
 }
@@ -444,36 +265,11 @@ func (c *apiv2) Version() apiv2connect.VersionServiceClient {
 
 func (c *client) Infrav2() Infrav2 {
 	a := &infrav2{
-		bmcservice: infrav2connect.NewBMCServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		bootservice: infrav2connect.NewBootServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		componentservice: infrav2connect.NewComponentServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		eventservice: infrav2connect.NewEventServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
-		switchservice: infrav2connect.NewSwitchServiceClient(
-			c.config.HttpClient(),
-			c.config.BaseURL,
-			connect.WithInterceptors(c.interceptors...),
-			compress.WithAll(compress.LevelBalanced),
-		),
+		bmcservice:       infrav2connect.NewBMCServiceClient(c.httpClient),
+		bootservice:      infrav2connect.NewBootServiceClient(c.httpClient),
+		componentservice: infrav2connect.NewComponentServiceClient(c.httpClient),
+		eventservice:     infrav2connect.NewEventServiceClient(c.httpClient),
+		switchservice:    infrav2connect.NewSwitchServiceClient(c.httpClient),
 	}
 	return a
 }

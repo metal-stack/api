@@ -5,20 +5,11 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// SizeImageConstraintServiceName is the fully-qualified name of the SizeImageConstraintService
@@ -26,29 +17,67 @@ const (
 	SizeImageConstraintServiceName = "metalstack.admin.v2.SizeImageConstraintService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// SizeImageConstraintServiceCreateProcedure is the fully-qualified name of the
+	// SizeImageConstraintServiceCreateProcedure is the procedure name of the
 	// SizeImageConstraintService's Create RPC.
 	SizeImageConstraintServiceCreateProcedure = "/metalstack.admin.v2.SizeImageConstraintService/Create"
-	// SizeImageConstraintServiceUpdateProcedure is the fully-qualified name of the
+	// SizeImageConstraintServiceUpdateProcedure is the procedure name of the
 	// SizeImageConstraintService's Update RPC.
 	SizeImageConstraintServiceUpdateProcedure = "/metalstack.admin.v2.SizeImageConstraintService/Update"
-	// SizeImageConstraintServiceDeleteProcedure is the fully-qualified name of the
+	// SizeImageConstraintServiceDeleteProcedure is the procedure name of the
 	// SizeImageConstraintService's Delete RPC.
 	SizeImageConstraintServiceDeleteProcedure = "/metalstack.admin.v2.SizeImageConstraintService/Delete"
-	// SizeImageConstraintServiceGetProcedure is the fully-qualified name of the
-	// SizeImageConstraintService's Get RPC.
+	// SizeImageConstraintServiceGetProcedure is the procedure name of the SizeImageConstraintService's
+	// Get RPC.
 	SizeImageConstraintServiceGetProcedure = "/metalstack.admin.v2.SizeImageConstraintService/Get"
-	// SizeImageConstraintServiceListProcedure is the fully-qualified name of the
-	// SizeImageConstraintService's List RPC.
+	// SizeImageConstraintServiceListProcedure is the procedure name of the SizeImageConstraintService's
+	// List RPC.
 	SizeImageConstraintServiceListProcedure = "/metalstack.admin.v2.SizeImageConstraintService/List"
+)
+
+var (
+	sizeImageConstraintServiceCreateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_size_imageconstraint_proto.Services().ByName("SizeImageConstraintService").Methods().ByName("Create"),
+			Procedure:  SizeImageConstraintServiceCreateProcedure,
+		}
+	})
+	sizeImageConstraintServiceUpdateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_size_imageconstraint_proto.Services().ByName("SizeImageConstraintService").Methods().ByName("Update"),
+			Procedure:  SizeImageConstraintServiceUpdateProcedure,
+		}
+	})
+	sizeImageConstraintServiceDeleteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_size_imageconstraint_proto.Services().ByName("SizeImageConstraintService").Methods().ByName("Delete"),
+			Procedure:  SizeImageConstraintServiceDeleteProcedure,
+		}
+	})
+	sizeImageConstraintServiceGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_size_imageconstraint_proto.Services().ByName("SizeImageConstraintService").Methods().ByName("Get"),
+			Procedure:  SizeImageConstraintServiceGetProcedure,
+		}
+	})
+	sizeImageConstraintServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_size_imageconstraint_proto.Services().ByName("SizeImageConstraintService").Methods().ByName("List"),
+			Procedure:  SizeImageConstraintServiceListProcedure,
+		}
+	})
 )
 
 // SizeImageConstraintServiceClient is a client for the
@@ -67,102 +96,10 @@ type SizeImageConstraintServiceClient interface {
 }
 
 // NewSizeImageConstraintServiceClient constructs a client for the
-// metalstack.admin.v2.SizeImageConstraintService service. By default, it uses the Connect protocol
-// with the binary Protobuf Codec, asks for gzipped responses, and sends uncompressed requests. To
-// use the gRPC or gRPC-Web protocols, supply the connect.WithGRPC() or connect.WithGRPCWeb()
-// options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewSizeImageConstraintServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) SizeImageConstraintServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	sizeImageConstraintServiceMethods := v2.File_metalstack_admin_v2_size_imageconstraint_proto.Services().ByName("SizeImageConstraintService").Methods()
-	return &sizeImageConstraintServiceClient{
-		create: connect.NewClient[v2.SizeImageConstraintServiceCreateRequest, v2.SizeImageConstraintServiceCreateResponse](
-			httpClient,
-			baseURL+SizeImageConstraintServiceCreateProcedure,
-			connect.WithSchema(sizeImageConstraintServiceMethods.ByName("Create")),
-			connect.WithClientOptions(opts...),
-		),
-		update: connect.NewClient[v2.SizeImageConstraintServiceUpdateRequest, v2.SizeImageConstraintServiceUpdateResponse](
-			httpClient,
-			baseURL+SizeImageConstraintServiceUpdateProcedure,
-			connect.WithSchema(sizeImageConstraintServiceMethods.ByName("Update")),
-			connect.WithClientOptions(opts...),
-		),
-		delete: connect.NewClient[v2.SizeImageConstraintServiceDeleteRequest, v2.SizeImageConstraintServiceDeleteResponse](
-			httpClient,
-			baseURL+SizeImageConstraintServiceDeleteProcedure,
-			connect.WithSchema(sizeImageConstraintServiceMethods.ByName("Delete")),
-			connect.WithClientOptions(opts...),
-		),
-		get: connect.NewClient[v2.SizeImageConstraintServiceGetRequest, v2.SizeImageConstraintServiceGetResponse](
-			httpClient,
-			baseURL+SizeImageConstraintServiceGetProcedure,
-			connect.WithSchema(sizeImageConstraintServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		list: connect.NewClient[v2.SizeImageConstraintServiceListRequest, v2.SizeImageConstraintServiceListResponse](
-			httpClient,
-			baseURL+SizeImageConstraintServiceListProcedure,
-			connect.WithSchema(sizeImageConstraintServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// sizeImageConstraintServiceClient implements SizeImageConstraintServiceClient.
-type sizeImageConstraintServiceClient struct {
-	create *connect.Client[v2.SizeImageConstraintServiceCreateRequest, v2.SizeImageConstraintServiceCreateResponse]
-	update *connect.Client[v2.SizeImageConstraintServiceUpdateRequest, v2.SizeImageConstraintServiceUpdateResponse]
-	delete *connect.Client[v2.SizeImageConstraintServiceDeleteRequest, v2.SizeImageConstraintServiceDeleteResponse]
-	get    *connect.Client[v2.SizeImageConstraintServiceGetRequest, v2.SizeImageConstraintServiceGetResponse]
-	list   *connect.Client[v2.SizeImageConstraintServiceListRequest, v2.SizeImageConstraintServiceListResponse]
-}
-
-// Create calls metalstack.admin.v2.SizeImageConstraintService.Create.
-func (c *sizeImageConstraintServiceClient) Create(ctx context.Context, req *v2.SizeImageConstraintServiceCreateRequest) (*v2.SizeImageConstraintServiceCreateResponse, error) {
-	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Update calls metalstack.admin.v2.SizeImageConstraintService.Update.
-func (c *sizeImageConstraintServiceClient) Update(ctx context.Context, req *v2.SizeImageConstraintServiceUpdateRequest) (*v2.SizeImageConstraintServiceUpdateResponse, error) {
-	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Delete calls metalstack.admin.v2.SizeImageConstraintService.Delete.
-func (c *sizeImageConstraintServiceClient) Delete(ctx context.Context, req *v2.SizeImageConstraintServiceDeleteRequest) (*v2.SizeImageConstraintServiceDeleteResponse, error) {
-	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Get calls metalstack.admin.v2.SizeImageConstraintService.Get.
-func (c *sizeImageConstraintServiceClient) Get(ctx context.Context, req *v2.SizeImageConstraintServiceGetRequest) (*v2.SizeImageConstraintServiceGetResponse, error) {
-	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// List calls metalstack.admin.v2.SizeImageConstraintService.List.
-func (c *sizeImageConstraintServiceClient) List(ctx context.Context, req *v2.SizeImageConstraintServiceListRequest) (*v2.SizeImageConstraintServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// metalstack.admin.v2.SizeImageConstraintService service. Multiple service clients may share a
+// single connect.Client.
+func NewSizeImageConstraintServiceClient(client *connect.Client) SizeImageConstraintServiceClient {
+	return &sizeImageConstraintServiceClient{client: client}
 }
 
 // SizeImageConstraintServiceHandler is an implementation of the
@@ -180,80 +117,146 @@ type SizeImageConstraintServiceHandler interface {
 	List(context.Context, *v2.SizeImageConstraintServiceListRequest) (*v2.SizeImageConstraintServiceListResponse, error)
 }
 
-// NewSizeImageConstraintServiceHandler builds an HTTP handler from the service implementation. It
-// returns the path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewSizeImageConstraintServiceHandler(svc SizeImageConstraintServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	sizeImageConstraintServiceMethods := v2.File_metalstack_admin_v2_size_imageconstraint_proto.Services().ByName("SizeImageConstraintService").Methods()
-	sizeImageConstraintServiceCreateHandler := connect.NewUnaryHandlerSimple(
-		SizeImageConstraintServiceCreateProcedure,
-		svc.Create,
-		connect.WithSchema(sizeImageConstraintServiceMethods.ByName("Create")),
-		connect.WithHandlerOptions(opts...),
+// RegisterSizeImageConstraintServiceHandler registers svc as the
+// metalstack.admin.v2.SizeImageConstraintService implementation on server.
+func RegisterSizeImageConstraintServiceHandler(server *connect.Server, svc SizeImageConstraintServiceHandler) {
+	adapter := sizeImageConstraintServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: sizeImageConstraintServiceCreateSpec(), Handler: adapter.create},
+		connect.Method{Spec: sizeImageConstraintServiceUpdateSpec(), Handler: adapter.update},
+		connect.Method{Spec: sizeImageConstraintServiceDeleteSpec(), Handler: adapter.delete},
+		connect.Method{Spec: sizeImageConstraintServiceGetSpec(), Handler: adapter.get},
+		connect.Method{Spec: sizeImageConstraintServiceListSpec(), Handler: adapter.list},
 	)
-	sizeImageConstraintServiceUpdateHandler := connect.NewUnaryHandlerSimple(
-		SizeImageConstraintServiceUpdateProcedure,
-		svc.Update,
-		connect.WithSchema(sizeImageConstraintServiceMethods.ByName("Update")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sizeImageConstraintServiceDeleteHandler := connect.NewUnaryHandlerSimple(
-		SizeImageConstraintServiceDeleteProcedure,
-		svc.Delete,
-		connect.WithSchema(sizeImageConstraintServiceMethods.ByName("Delete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sizeImageConstraintServiceGetHandler := connect.NewUnaryHandlerSimple(
-		SizeImageConstraintServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(sizeImageConstraintServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
-	)
-	sizeImageConstraintServiceListHandler := connect.NewUnaryHandlerSimple(
-		SizeImageConstraintServiceListProcedure,
-		svc.List,
-		connect.WithSchema(sizeImageConstraintServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.admin.v2.SizeImageConstraintService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case SizeImageConstraintServiceCreateProcedure:
-			sizeImageConstraintServiceCreateHandler.ServeHTTP(w, r)
-		case SizeImageConstraintServiceUpdateProcedure:
-			sizeImageConstraintServiceUpdateHandler.ServeHTTP(w, r)
-		case SizeImageConstraintServiceDeleteProcedure:
-			sizeImageConstraintServiceDeleteHandler.ServeHTTP(w, r)
-		case SizeImageConstraintServiceGetProcedure:
-			sizeImageConstraintServiceGetHandler.ServeHTTP(w, r)
-		case SizeImageConstraintServiceListProcedure:
-			sizeImageConstraintServiceListHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedSizeImageConstraintServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSizeImageConstraintServiceHandler struct{}
 
 func (UnimplementedSizeImageConstraintServiceHandler) Create(context.Context, *v2.SizeImageConstraintServiceCreateRequest) (*v2.SizeImageConstraintServiceCreateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeImageConstraintService.Create is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.SizeImageConstraintService.Create is not implemented")
 }
 
 func (UnimplementedSizeImageConstraintServiceHandler) Update(context.Context, *v2.SizeImageConstraintServiceUpdateRequest) (*v2.SizeImageConstraintServiceUpdateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeImageConstraintService.Update is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.SizeImageConstraintService.Update is not implemented")
 }
 
 func (UnimplementedSizeImageConstraintServiceHandler) Delete(context.Context, *v2.SizeImageConstraintServiceDeleteRequest) (*v2.SizeImageConstraintServiceDeleteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeImageConstraintService.Delete is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.SizeImageConstraintService.Delete is not implemented")
 }
 
 func (UnimplementedSizeImageConstraintServiceHandler) Get(context.Context, *v2.SizeImageConstraintServiceGetRequest) (*v2.SizeImageConstraintServiceGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeImageConstraintService.Get is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.SizeImageConstraintService.Get is not implemented")
 }
 
 func (UnimplementedSizeImageConstraintServiceHandler) List(context.Context, *v2.SizeImageConstraintServiceListRequest) (*v2.SizeImageConstraintServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.SizeImageConstraintService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.SizeImageConstraintService.List is not implemented")
+}
+
+type sizeImageConstraintServiceClient struct {
+	client *connect.Client
+}
+
+func (c *sizeImageConstraintServiceClient) Create(ctx context.Context, req *v2.SizeImageConstraintServiceCreateRequest) (*v2.SizeImageConstraintServiceCreateResponse, error) {
+	var res v2.SizeImageConstraintServiceCreateResponse
+	if err := c.client.CallUnary(ctx, sizeImageConstraintServiceCreateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *sizeImageConstraintServiceClient) Update(ctx context.Context, req *v2.SizeImageConstraintServiceUpdateRequest) (*v2.SizeImageConstraintServiceUpdateResponse, error) {
+	var res v2.SizeImageConstraintServiceUpdateResponse
+	if err := c.client.CallUnary(ctx, sizeImageConstraintServiceUpdateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *sizeImageConstraintServiceClient) Delete(ctx context.Context, req *v2.SizeImageConstraintServiceDeleteRequest) (*v2.SizeImageConstraintServiceDeleteResponse, error) {
+	var res v2.SizeImageConstraintServiceDeleteResponse
+	if err := c.client.CallUnary(ctx, sizeImageConstraintServiceDeleteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *sizeImageConstraintServiceClient) Get(ctx context.Context, req *v2.SizeImageConstraintServiceGetRequest) (*v2.SizeImageConstraintServiceGetResponse, error) {
+	var res v2.SizeImageConstraintServiceGetResponse
+	if err := c.client.CallUnary(ctx, sizeImageConstraintServiceGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *sizeImageConstraintServiceClient) List(ctx context.Context, req *v2.SizeImageConstraintServiceListRequest) (*v2.SizeImageConstraintServiceListResponse, error) {
+	var res v2.SizeImageConstraintServiceListResponse
+	if err := c.client.CallUnary(ctx, sizeImageConstraintServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type sizeImageConstraintServiceHandler struct {
+	svc SizeImageConstraintServiceHandler
+}
+
+func (h sizeImageConstraintServiceHandler) create(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SizeImageConstraintServiceCreateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Create(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h sizeImageConstraintServiceHandler) update(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SizeImageConstraintServiceUpdateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Update(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h sizeImageConstraintServiceHandler) delete(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SizeImageConstraintServiceDeleteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Delete(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h sizeImageConstraintServiceHandler) get(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SizeImageConstraintServiceGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Get(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h sizeImageConstraintServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SizeImageConstraintServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

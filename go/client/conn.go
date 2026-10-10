@@ -9,7 +9,9 @@ import (
 	"os"
 	"time"
 
-	"connectrpc.com/connect"
+	"connectrpc.com/connect/v2"
+	"connectrpc.com/connect/v2/connectgzip"
+	"connectrpc.com/connect/v2/connecthttp"
 	"github.com/golang-jwt/jwt/v5"
 )
 
@@ -38,7 +40,7 @@ type (
 		TokenFileRereadDuration time.Duration
 
 		// Optional client Interceptors
-		Interceptors []connect.Interceptor
+		Interceptors []connect.ClientInterceptor
 
 		UserAgent string
 		// TokenRenewal defines if and how the token should be renewed
@@ -61,6 +63,13 @@ type (
 	}
 
 	PersistTokenFn func(token string) error
+	client         struct {
+		config *DialConfig
+
+		interceptors []connect.ClientInterceptor
+
+		httpClient *connect.Client
+	}
 )
 
 func New(config *DialConfig) (Client, error) {
@@ -71,32 +80,42 @@ func New(config *DialConfig) (Client, error) {
 
 	c := &client{
 		config:       config,
-		interceptors: []connect.Interceptor{},
+		interceptors: []connect.ClientInterceptor{},
 	}
 
 	if config.Token != "" {
 		authInterceptor := &authInterceptor{config: config}
-		c.interceptors = append(c.interceptors, authInterceptor)
+		c.interceptors = append(c.interceptors, authInterceptor.intercept)
 
 		if config.TokenRenewal != nil {
 			tokenRenewingInterceptor := &tokenRenewingInterceptor{config: config, client: c}
-			c.interceptors = append(c.interceptors, tokenRenewingInterceptor)
+			c.interceptors = append(c.interceptors, tokenRenewingInterceptor.intercept)
 		}
 	}
 
 	if config.TokenFile != "" {
 		authInterceptor := &authInterceptor{config: config}
-		c.interceptors = append(c.interceptors, authInterceptor)
+		c.interceptors = append(c.interceptors, authInterceptor.intercept)
 
 		tokenRenewingInterceptor := &tokenRenewingInterceptor{config: config, client: c}
-		c.interceptors = append(c.interceptors, tokenRenewingInterceptor)
+		c.interceptors = append(c.interceptors, tokenRenewingInterceptor.intercept)
 	}
 
 	if config.Log != nil {
 		loggingInterceptor := &loggingInterceptor{config: config}
-		c.interceptors = append(c.interceptors, loggingInterceptor)
+		c.interceptors = append(c.interceptors, loggingInterceptor.intercept)
 	}
 	c.interceptors = append(c.interceptors, config.Interceptors...)
+
+	gzipCompressor := connectgzip.New()
+	options := []connecthttp.Option{
+		connecthttp.WithCompressors(gzipCompressor),
+		connecthttp.WithSendCompression(gzipCompressor.Name()),
+	}
+	c.httpClient = connect.NewClient(
+		connecthttp.NewTransport(c.config.HttpClient(), c.config.BaseURL, options...),
+		c.interceptors...,
+	)
 
 	return c, nil
 }

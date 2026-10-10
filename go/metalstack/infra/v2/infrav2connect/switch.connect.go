@@ -5,40 +5,55 @@
 package infrav2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/infra/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// SwitchServiceName is the fully-qualified name of the SwitchService service.
 	SwitchServiceName = "metalstack.infra.v2.SwitchService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// SwitchServiceGetProcedure is the fully-qualified name of the SwitchService's Get RPC.
+	// SwitchServiceGetProcedure is the procedure name of the SwitchService's Get RPC.
 	SwitchServiceGetProcedure = "/metalstack.infra.v2.SwitchService/Get"
-	// SwitchServiceRegisterProcedure is the fully-qualified name of the SwitchService's Register RPC.
+	// SwitchServiceRegisterProcedure is the procedure name of the SwitchService's Register RPC.
 	SwitchServiceRegisterProcedure = "/metalstack.infra.v2.SwitchService/Register"
-	// SwitchServiceHeartbeatProcedure is the fully-qualified name of the SwitchService's Heartbeat RPC.
+	// SwitchServiceHeartbeatProcedure is the procedure name of the SwitchService's Heartbeat RPC.
 	SwitchServiceHeartbeatProcedure = "/metalstack.infra.v2.SwitchService/Heartbeat"
+)
+
+var (
+	switchServiceGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods().ByName("Get"),
+			Procedure:  SwitchServiceGetProcedure,
+		}
+	})
+	switchServiceRegisterSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods().ByName("Register"),
+			Procedure:  SwitchServiceRegisterProcedure,
+		}
+	})
+	switchServiceHeartbeatSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods().ByName("Heartbeat"),
+			Procedure:  SwitchServiceHeartbeatProcedure,
+		}
+	})
 )
 
 // SwitchServiceClient is a client for the metalstack.infra.v2.SwitchService service.
@@ -51,70 +66,10 @@ type SwitchServiceClient interface {
 	Heartbeat(context.Context, *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error)
 }
 
-// NewSwitchServiceClient constructs a client for the metalstack.infra.v2.SwitchService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewSwitchServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) SwitchServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	switchServiceMethods := v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods()
-	return &switchServiceClient{
-		get: connect.NewClient[v2.SwitchServiceGetRequest, v2.SwitchServiceGetResponse](
-			httpClient,
-			baseURL+SwitchServiceGetProcedure,
-			connect.WithSchema(switchServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		register: connect.NewClient[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse](
-			httpClient,
-			baseURL+SwitchServiceRegisterProcedure,
-			connect.WithSchema(switchServiceMethods.ByName("Register")),
-			connect.WithClientOptions(opts...),
-		),
-		heartbeat: connect.NewClient[v2.SwitchServiceHeartbeatRequest, v2.SwitchServiceHeartbeatResponse](
-			httpClient,
-			baseURL+SwitchServiceHeartbeatProcedure,
-			connect.WithSchema(switchServiceMethods.ByName("Heartbeat")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// switchServiceClient implements SwitchServiceClient.
-type switchServiceClient struct {
-	get       *connect.Client[v2.SwitchServiceGetRequest, v2.SwitchServiceGetResponse]
-	register  *connect.Client[v2.SwitchServiceRegisterRequest, v2.SwitchServiceRegisterResponse]
-	heartbeat *connect.Client[v2.SwitchServiceHeartbeatRequest, v2.SwitchServiceHeartbeatResponse]
-}
-
-// Get calls metalstack.infra.v2.SwitchService.Get.
-func (c *switchServiceClient) Get(ctx context.Context, req *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error) {
-	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Register calls metalstack.infra.v2.SwitchService.Register.
-func (c *switchServiceClient) Register(ctx context.Context, req *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error) {
-	response, err := c.register.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Heartbeat calls metalstack.infra.v2.SwitchService.Heartbeat.
-func (c *switchServiceClient) Heartbeat(ctx context.Context, req *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error) {
-	response, err := c.heartbeat.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewSwitchServiceClient constructs a client for the metalstack.infra.v2.SwitchService service.
+// Multiple service clients may share a single connect.Client.
+func NewSwitchServiceClient(client *connect.Client) SwitchServiceClient {
+	return &switchServiceClient{client: client}
 }
 
 // SwitchServiceHandler is an implementation of the metalstack.infra.v2.SwitchService service.
@@ -127,56 +82,94 @@ type SwitchServiceHandler interface {
 	Heartbeat(context.Context, *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error)
 }
 
-// NewSwitchServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewSwitchServiceHandler(svc SwitchServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	switchServiceMethods := v2.File_metalstack_infra_v2_switch_proto.Services().ByName("SwitchService").Methods()
-	switchServiceGetHandler := connect.NewUnaryHandlerSimple(
-		SwitchServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(switchServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
+// RegisterSwitchServiceHandler registers svc as the metalstack.infra.v2.SwitchService
+// implementation on server.
+func RegisterSwitchServiceHandler(server *connect.Server, svc SwitchServiceHandler) {
+	adapter := switchServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: switchServiceGetSpec(), Handler: adapter.get},
+		connect.Method{Spec: switchServiceRegisterSpec(), Handler: adapter.register},
+		connect.Method{Spec: switchServiceHeartbeatSpec(), Handler: adapter.heartbeat},
 	)
-	switchServiceRegisterHandler := connect.NewUnaryHandlerSimple(
-		SwitchServiceRegisterProcedure,
-		svc.Register,
-		connect.WithSchema(switchServiceMethods.ByName("Register")),
-		connect.WithHandlerOptions(opts...),
-	)
-	switchServiceHeartbeatHandler := connect.NewUnaryHandlerSimple(
-		SwitchServiceHeartbeatProcedure,
-		svc.Heartbeat,
-		connect.WithSchema(switchServiceMethods.ByName("Heartbeat")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.infra.v2.SwitchService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case SwitchServiceGetProcedure:
-			switchServiceGetHandler.ServeHTTP(w, r)
-		case SwitchServiceRegisterProcedure:
-			switchServiceRegisterHandler.ServeHTTP(w, r)
-		case SwitchServiceHeartbeatProcedure:
-			switchServiceHeartbeatHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedSwitchServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedSwitchServiceHandler struct{}
 
 func (UnimplementedSwitchServiceHandler) Get(context.Context, *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Get is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.SwitchService.Get is not implemented")
 }
 
 func (UnimplementedSwitchServiceHandler) Register(context.Context, *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Register is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.SwitchService.Register is not implemented")
 }
 
 func (UnimplementedSwitchServiceHandler) Heartbeat(context.Context, *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.infra.v2.SwitchService.Heartbeat is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.infra.v2.SwitchService.Heartbeat is not implemented")
+}
+
+type switchServiceClient struct {
+	client *connect.Client
+}
+
+func (c *switchServiceClient) Get(ctx context.Context, req *v2.SwitchServiceGetRequest) (*v2.SwitchServiceGetResponse, error) {
+	var res v2.SwitchServiceGetResponse
+	if err := c.client.CallUnary(ctx, switchServiceGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *switchServiceClient) Register(ctx context.Context, req *v2.SwitchServiceRegisterRequest) (*v2.SwitchServiceRegisterResponse, error) {
+	var res v2.SwitchServiceRegisterResponse
+	if err := c.client.CallUnary(ctx, switchServiceRegisterSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *switchServiceClient) Heartbeat(ctx context.Context, req *v2.SwitchServiceHeartbeatRequest) (*v2.SwitchServiceHeartbeatResponse, error) {
+	var res v2.SwitchServiceHeartbeatResponse
+	if err := c.client.CallUnary(ctx, switchServiceHeartbeatSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type switchServiceHandler struct{ svc SwitchServiceHandler }
+
+func (h switchServiceHandler) get(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SwitchServiceGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Get(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h switchServiceHandler) register(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SwitchServiceRegisterRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Register(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h switchServiceHandler) heartbeat(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.SwitchServiceHeartbeatRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Heartbeat(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

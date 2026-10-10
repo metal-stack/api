@@ -9,68 +9,68 @@ import (
 	"sync/atomic"
 	"time"
 
-	"connectrpc.com/connect"
+	"connectrpc.com/connect/v2"
 	apiv2models "github.com/metal-stack/api/go/metalstack/api/v2"
 )
 
-// authinterceptor adds the required auth headers
+// authInterceptor adds the required auth headers
 type authInterceptor struct {
 	config *DialConfig
 }
 
-func (i *authInterceptor) WrapUnary(next connect.UnaryFunc) connect.UnaryFunc {
-	return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-		request.Header().Add("Authorization", "Bearer "+i.config.Token)
-		return next(ctx, request)
-	})
-}
-
-func (i *authInterceptor) WrapStreamingClient(next connect.StreamingClientFunc) connect.StreamingClientFunc {
-	return func(ctx context.Context, spec connect.Spec) connect.StreamingClientConn {
-		return &streamingInterceptorConn{
-			StreamingClientConn: next(ctx, spec),
-			token:               i.config.Token,
+func (i *authInterceptor) intercept(next connect.ClientFunc) connect.ClientFunc {
+	return func(ctx context.Context, spec connect.Spec) (connect.ClientStream, error) {
+		if callInfo, ok := connect.CallInfoForClientContext(ctx); ok {
+			callInfo.RequestHeader().Set("Authorization", "Bearer "+i.config.Token)
 		}
+		return next(ctx, spec)
 	}
-}
-
-func (i *authInterceptor) WrapStreamingHandler(next connect.StreamingHandlerFunc) connect.StreamingHandlerFunc {
-	return next
-}
-
-type streamingInterceptorConn struct {
-	connect.StreamingClientConn
-	token string
-}
-
-func (conn *streamingInterceptorConn) Send(m any) error {
-	conn.RequestHeader().Add("Authorization", "Bearer "+conn.token)
-	return conn.StreamingClientConn.Send(m)
 }
 
 type loggingInterceptor struct {
 	config *DialConfig
 }
 
-func (i *loggingInterceptor) WrapUnary(next connect.UnaryFunc) connect.UnaryFunc {
-	return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-		i.config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "body", request.Any())
-		response, err := next(ctx, request)
+func (i *loggingInterceptor) intercept(next connect.ClientFunc) connect.ClientFunc {
+	return func(ctx context.Context, spec connect.Spec) (connect.ClientStream, error) {
+		stream, err := next(ctx, spec)
 		if err != nil {
 			return nil, err
 		}
-		i.config.Log.Debug("intercept", "request procedure", request.Spec().Procedure, "response", response.Any())
-		return response, err
-	})
+		return &loggingStream{config: i.config, spec: spec, stream: stream}, nil
+	}
 }
 
-func (i *loggingInterceptor) WrapStreamingClient(next connect.StreamingClientFunc) connect.StreamingClientFunc {
-	// TODO also log here
-	return next
+type loggingStream struct {
+	config *DialConfig
+	spec   connect.Spec
+	stream connect.ClientStream
 }
 
-func (i *loggingInterceptor) WrapStreamingHandler(next connect.StreamingHandlerFunc) connect.StreamingHandlerFunc {
-	return next
+func (s *loggingStream) SendHeaders() error {
+	return s.stream.SendHeaders()
+}
+
+func (s *loggingStream) Send(msg any) error {
+	s.config.Log.Debug("intercept", "request procedure", s.spec.Procedure, "body", msg)
+	return s.stream.Send(msg)
+}
+
+func (s *loggingStream) CloseSend() error {
+	return s.stream.CloseSend()
+}
+
+func (s *loggingStream) Receive(msg any) error {
+	err := s.stream.Receive(msg)
+	if err != nil {
+		return err
+	}
+	s.config.Log.Debug("intercept", "request procedure", s.spec.Procedure, "response", msg)
+	return nil
+}
+
+func (s *loggingStream) Close() error {
+	return s.stream.Close()
 }
 
 type tokenRenewingInterceptor struct {
@@ -82,22 +82,14 @@ type tokenRenewingInterceptor struct {
 	sync.Mutex
 }
 
-func (i *tokenRenewingInterceptor) WrapUnary(next connect.UnaryFunc) connect.UnaryFunc {
-	return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
+func (i *tokenRenewingInterceptor) intercept(next connect.ClientFunc) connect.ClientFunc {
+	return func(ctx context.Context, spec connect.Spec) (connect.ClientStream, error) {
 		err := i.renewTokenIfNeeded()
 		if err != nil {
 			return nil, err
 		}
-		return next(ctx, request)
-	})
-}
-
-func (i *tokenRenewingInterceptor) WrapStreamingClient(next connect.StreamingClientFunc) connect.StreamingClientFunc {
-	return next
-}
-
-func (i *tokenRenewingInterceptor) WrapStreamingHandler(next connect.StreamingHandlerFunc) connect.StreamingHandlerFunc {
-	return next
+		return next(ctx, spec)
+	}
 }
 
 func (i *tokenRenewingInterceptor) renewTokenIfNeeded() error {

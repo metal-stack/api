@@ -16,13 +16,15 @@ import (
 
 	"time"
 
-	"connectrpc.com/connect"
+	"connectrpc.com/connect/v2"
+	"connectrpc.com/connect/v2/connecthttp"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/metal-stack/api/go/client"
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	infrav2 "github.com/metal-stack/api/go/metalstack/infra/v2"
 	"github.com/metal-stack/api/go/metalstack/infra/v2/infrav2connect"
 	"github.com/stretchr/testify/require"
+	"google.golang.org/protobuf/proto"
 )
 
 func Test_Client(t *testing.T) {
@@ -39,41 +41,41 @@ func Test_Client(t *testing.T) {
 			BaseURL: "http://localhost",
 			Token:   tokenString,
 
-			Interceptors: []connect.Interceptor{
+			Interceptors: []connect.ClientInterceptor{
 				client.NewTestInterceptor(t, []client.ClientCall{
 					{
 						WantRequest: &apiv2.VersionServiceGetRequest{},
-						WantResponse: func() connect.AnyResponse {
-							return connect.NewResponse(&apiv2.VersionServiceGetResponse{
+						WantResponse: func() proto.Message {
+							return &apiv2.VersionServiceGetResponse{
 								Version: &apiv2.Version{Version: "1.0"},
-							})
+							}
 						},
 					},
 					{
 						WantRequest: &apiv2.VersionServiceGetRequest{},
-						WantResponse: func() connect.AnyResponse {
-							return connect.NewResponse(&apiv2.VersionServiceGetResponse{
+						WantResponse: func() proto.Message {
+							return &apiv2.VersionServiceGetResponse{
 								Version: &apiv2.Version{Version: "1.0"},
-							})
+							}
 						},
 					},
 					{
 						WantRequest: &apiv2.TokenServiceRefreshRequest{},
-						WantResponse: func() connect.AnyResponse {
+						WantResponse: func() proto.Message {
 							tokenString, err := generateToken(2 * time.Second)
 							require.NoError(t, err)
 
-							return connect.NewResponse(&apiv2.TokenServiceRefreshResponse{
+							return &apiv2.TokenServiceRefreshResponse{
 								Secret: tokenString,
-							})
+							}
 						},
 					},
 					{
 						WantRequest: &apiv2.VersionServiceGetRequest{},
-						WantResponse: func() connect.AnyResponse {
-							return connect.NewResponse(&apiv2.VersionServiceGetResponse{
+						WantResponse: func() proto.Message {
+							return &apiv2.VersionServiceGetResponse{
 								Version: &apiv2.Version{Version: "1.0"},
-							})
+							}
 						},
 					},
 				}),
@@ -134,11 +136,13 @@ func Test_ClientInterceptors(t *testing.T) {
 	var (
 		bs  = &mockBMCService{}
 		mux = http.NewServeMux()
+		srv = connect.NewServer()
 		log = slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: slog.LevelDebug}))
 		ctx = t.Context()
 	)
 
-	mux.Handle(infrav2connect.NewBMCServiceHandler(bs))
+	infrav2connect.RegisterBMCServiceHandler(srv, bs)
+	connecthttp.Mount(mux, srv)
 	server := httptest.NewTLSServer(mux)
 	server.EnableHTTP2 = true
 	defer func() {
@@ -179,7 +183,7 @@ func (m *mockBMCService) BMCCommandDone(context.Context, *infrav2.BMCCommandDone
 }
 
 func (m *mockBMCService) UpdateBMCInfo(ctx context.Context, _ *infrav2.UpdateBMCInfoRequest) (*infrav2.UpdateBMCInfoResponse, error) {
-	callinfo, _ := connect.CallInfoForHandlerContext(ctx)
+	callinfo, _ := connect.CallInfoForServerContext(ctx)
 	authHeader := callinfo.RequestHeader().Get("Authorization")
 
 	_, token, found := strings.Cut(authHeader, "Bearer ")
@@ -191,8 +195,8 @@ func (m *mockBMCService) UpdateBMCInfo(ctx context.Context, _ *infrav2.UpdateBMC
 	return &infrav2.UpdateBMCInfoResponse{}, nil
 }
 
-func (m *mockBMCService) WaitForBMCCommand(ctx context.Context, _ *infrav2.WaitForBMCCommandRequest, stream *connect.ServerStream[infrav2.WaitForBMCCommandResponse]) error {
-	callinfo, _ := connect.CallInfoForHandlerContext(ctx)
+func (m *mockBMCService) WaitForBMCCommand(ctx context.Context, _ *infrav2.WaitForBMCCommandRequest, stream infrav2connect.BMCServiceWaitForBMCCommandServerStream) error {
+	callinfo, _ := connect.CallInfoForServerContext(ctx)
 	authHeader := callinfo.RequestHeader().Get("Authorization")
 
 	_, token, found := strings.Cut(authHeader, "Bearer ")

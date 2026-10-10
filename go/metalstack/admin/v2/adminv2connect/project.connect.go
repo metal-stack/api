@@ -5,36 +5,37 @@
 package adminv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/admin/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// ProjectServiceName is the fully-qualified name of the ProjectService service.
 	ProjectServiceName = "metalstack.admin.v2.ProjectService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ProjectServiceListProcedure is the fully-qualified name of the ProjectService's List RPC.
+	// ProjectServiceListProcedure is the procedure name of the ProjectService's List RPC.
 	ProjectServiceListProcedure = "/metalstack.admin.v2.ProjectService/List"
+)
+
+var (
+	projectServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_admin_v2_project_proto.Services().ByName("ProjectService").Methods().ByName("List"),
+			Procedure:  ProjectServiceListProcedure,
+		}
+	})
 )
 
 // ProjectServiceClient is a client for the metalstack.admin.v2.ProjectService service.
@@ -44,37 +45,9 @@ type ProjectServiceClient interface {
 }
 
 // NewProjectServiceClient constructs a client for the metalstack.admin.v2.ProjectService service.
-// By default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped
-// responses, and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ProjectServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	projectServiceMethods := v2.File_metalstack_admin_v2_project_proto.Services().ByName("ProjectService").Methods()
-	return &projectServiceClient{
-		list: connect.NewClient[v2.ProjectServiceListRequest, v2.ProjectServiceListResponse](
-			httpClient,
-			baseURL+ProjectServiceListProcedure,
-			connect.WithSchema(projectServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// projectServiceClient implements ProjectServiceClient.
-type projectServiceClient struct {
-	list *connect.Client[v2.ProjectServiceListRequest, v2.ProjectServiceListResponse]
-}
-
-// List calls metalstack.admin.v2.ProjectService.List.
-func (c *projectServiceClient) List(ctx context.Context, req *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// Multiple service clients may share a single connect.Client.
+func NewProjectServiceClient(client *connect.Client) ProjectServiceClient {
+	return &projectServiceClient{client: client}
 }
 
 // ProjectServiceHandler is an implementation of the metalstack.admin.v2.ProjectService service.
@@ -83,32 +56,44 @@ type ProjectServiceHandler interface {
 	List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error)
 }
 
-// NewProjectServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	projectServiceMethods := v2.File_metalstack_admin_v2_project_proto.Services().ByName("ProjectService").Methods()
-	projectServiceListHandler := connect.NewUnaryHandlerSimple(
-		ProjectServiceListProcedure,
-		svc.List,
-		connect.WithSchema(projectServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
+// RegisterProjectServiceHandler registers svc as the metalstack.admin.v2.ProjectService
+// implementation on server.
+func RegisterProjectServiceHandler(server *connect.Server, svc ProjectServiceHandler) {
+	adapter := projectServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: projectServiceListSpec(), Handler: adapter.list},
 	)
-	return "/metalstack.admin.v2.ProjectService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case ProjectServiceListProcedure:
-			projectServiceListHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedProjectServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedProjectServiceHandler struct{}
 
 func (UnimplementedProjectServiceHandler) List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ProjectService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.admin.v2.ProjectService.List is not implemented")
+}
+
+type projectServiceClient struct {
+	client *connect.Client
+}
+
+func (c *projectServiceClient) List(ctx context.Context, req *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error) {
+	var res v2.ProjectServiceListResponse
+	if err := c.client.CallUnary(ctx, projectServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type projectServiceHandler struct{ svc ProjectServiceHandler }
+
+func (h projectServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ProjectServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

@@ -5,39 +5,47 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// MethodServiceName is the fully-qualified name of the MethodService service.
 	MethodServiceName = "metalstack.api.v2.MethodService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// MethodServiceListProcedure is the fully-qualified name of the MethodService's List RPC.
+	// MethodServiceListProcedure is the procedure name of the MethodService's List RPC.
 	MethodServiceListProcedure = "/metalstack.api.v2.MethodService/List"
-	// MethodServiceTokenScopedListProcedure is the fully-qualified name of the MethodService's
+	// MethodServiceTokenScopedListProcedure is the procedure name of the MethodService's
 	// TokenScopedList RPC.
 	MethodServiceTokenScopedListProcedure = "/metalstack.api.v2.MethodService/TokenScopedList"
+)
+
+var (
+	methodServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_method_proto.Services().ByName("MethodService").Methods().ByName("List"),
+			Procedure:  MethodServiceListProcedure,
+		}
+	})
+	methodServiceTokenScopedListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_method_proto.Services().ByName("MethodService").Methods().ByName("TokenScopedList"),
+			Procedure:  MethodServiceTokenScopedListProcedure,
+		}
+	})
 )
 
 // MethodServiceClient is a client for the metalstack.api.v2.MethodService service.
@@ -48,54 +56,10 @@ type MethodServiceClient interface {
 	TokenScopedList(context.Context, *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error)
 }
 
-// NewMethodServiceClient constructs a client for the metalstack.api.v2.MethodService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewMethodServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) MethodServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	methodServiceMethods := v2.File_metalstack_api_v2_method_proto.Services().ByName("MethodService").Methods()
-	return &methodServiceClient{
-		list: connect.NewClient[v2.MethodServiceListRequest, v2.MethodServiceListResponse](
-			httpClient,
-			baseURL+MethodServiceListProcedure,
-			connect.WithSchema(methodServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-		tokenScopedList: connect.NewClient[v2.MethodServiceTokenScopedListRequest, v2.MethodServiceTokenScopedListResponse](
-			httpClient,
-			baseURL+MethodServiceTokenScopedListProcedure,
-			connect.WithSchema(methodServiceMethods.ByName("TokenScopedList")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// methodServiceClient implements MethodServiceClient.
-type methodServiceClient struct {
-	list            *connect.Client[v2.MethodServiceListRequest, v2.MethodServiceListResponse]
-	tokenScopedList *connect.Client[v2.MethodServiceTokenScopedListRequest, v2.MethodServiceTokenScopedListResponse]
-}
-
-// List calls metalstack.api.v2.MethodService.List.
-func (c *methodServiceClient) List(ctx context.Context, req *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// TokenScopedList calls metalstack.api.v2.MethodService.TokenScopedList.
-func (c *methodServiceClient) TokenScopedList(ctx context.Context, req *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error) {
-	response, err := c.tokenScopedList.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewMethodServiceClient constructs a client for the metalstack.api.v2.MethodService service.
+// Multiple service clients may share a single connect.Client.
+func NewMethodServiceClient(client *connect.Client) MethodServiceClient {
+	return &methodServiceClient{client: client}
 }
 
 // MethodServiceHandler is an implementation of the metalstack.api.v2.MethodService service.
@@ -106,44 +70,69 @@ type MethodServiceHandler interface {
 	TokenScopedList(context.Context, *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error)
 }
 
-// NewMethodServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewMethodServiceHandler(svc MethodServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	methodServiceMethods := v2.File_metalstack_api_v2_method_proto.Services().ByName("MethodService").Methods()
-	methodServiceListHandler := connect.NewUnaryHandlerSimple(
-		MethodServiceListProcedure,
-		svc.List,
-		connect.WithSchema(methodServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
+// RegisterMethodServiceHandler registers svc as the metalstack.api.v2.MethodService implementation
+// on server.
+func RegisterMethodServiceHandler(server *connect.Server, svc MethodServiceHandler) {
+	adapter := methodServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: methodServiceListSpec(), Handler: adapter.list},
+		connect.Method{Spec: methodServiceTokenScopedListSpec(), Handler: adapter.tokenScopedList},
 	)
-	methodServiceTokenScopedListHandler := connect.NewUnaryHandlerSimple(
-		MethodServiceTokenScopedListProcedure,
-		svc.TokenScopedList,
-		connect.WithSchema(methodServiceMethods.ByName("TokenScopedList")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.api.v2.MethodService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case MethodServiceListProcedure:
-			methodServiceListHandler.ServeHTTP(w, r)
-		case MethodServiceTokenScopedListProcedure:
-			methodServiceTokenScopedListHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedMethodServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedMethodServiceHandler struct{}
 
 func (UnimplementedMethodServiceHandler) List(context.Context, *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MethodService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.MethodService.List is not implemented")
 }
 
 func (UnimplementedMethodServiceHandler) TokenScopedList(context.Context, *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.MethodService.TokenScopedList is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.MethodService.TokenScopedList is not implemented")
+}
+
+type methodServiceClient struct {
+	client *connect.Client
+}
+
+func (c *methodServiceClient) List(ctx context.Context, req *v2.MethodServiceListRequest) (*v2.MethodServiceListResponse, error) {
+	var res v2.MethodServiceListResponse
+	if err := c.client.CallUnary(ctx, methodServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *methodServiceClient) TokenScopedList(ctx context.Context, req *v2.MethodServiceTokenScopedListRequest) (*v2.MethodServiceTokenScopedListResponse, error) {
+	var res v2.MethodServiceTokenScopedListResponse
+	if err := c.client.CallUnary(ctx, methodServiceTokenScopedListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type methodServiceHandler struct{ svc MethodServiceHandler }
+
+func (h methodServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.MethodServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h methodServiceHandler) tokenScopedList(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.MethodServiceTokenScopedListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.TokenScopedList(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

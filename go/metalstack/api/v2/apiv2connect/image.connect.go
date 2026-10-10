@@ -5,40 +5,55 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// ImageServiceName is the fully-qualified name of the ImageService service.
 	ImageServiceName = "metalstack.api.v2.ImageService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ImageServiceGetProcedure is the fully-qualified name of the ImageService's Get RPC.
+	// ImageServiceGetProcedure is the procedure name of the ImageService's Get RPC.
 	ImageServiceGetProcedure = "/metalstack.api.v2.ImageService/Get"
-	// ImageServiceListProcedure is the fully-qualified name of the ImageService's List RPC.
+	// ImageServiceListProcedure is the procedure name of the ImageService's List RPC.
 	ImageServiceListProcedure = "/metalstack.api.v2.ImageService/List"
-	// ImageServiceLatestProcedure is the fully-qualified name of the ImageService's Latest RPC.
+	// ImageServiceLatestProcedure is the procedure name of the ImageService's Latest RPC.
 	ImageServiceLatestProcedure = "/metalstack.api.v2.ImageService/Latest"
+)
+
+var (
+	imageServiceGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_image_proto.Services().ByName("ImageService").Methods().ByName("Get"),
+			Procedure:  ImageServiceGetProcedure,
+		}
+	})
+	imageServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_image_proto.Services().ByName("ImageService").Methods().ByName("List"),
+			Procedure:  ImageServiceListProcedure,
+		}
+	})
+	imageServiceLatestSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_image_proto.Services().ByName("ImageService").Methods().ByName("Latest"),
+			Procedure:  ImageServiceLatestProcedure,
+		}
+	})
 )
 
 // ImageServiceClient is a client for the metalstack.api.v2.ImageService service.
@@ -51,70 +66,10 @@ type ImageServiceClient interface {
 	Latest(context.Context, *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error)
 }
 
-// NewImageServiceClient constructs a client for the metalstack.api.v2.ImageService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewImageServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ImageServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	imageServiceMethods := v2.File_metalstack_api_v2_image_proto.Services().ByName("ImageService").Methods()
-	return &imageServiceClient{
-		get: connect.NewClient[v2.ImageServiceGetRequest, v2.ImageServiceGetResponse](
-			httpClient,
-			baseURL+ImageServiceGetProcedure,
-			connect.WithSchema(imageServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		list: connect.NewClient[v2.ImageServiceListRequest, v2.ImageServiceListResponse](
-			httpClient,
-			baseURL+ImageServiceListProcedure,
-			connect.WithSchema(imageServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-		latest: connect.NewClient[v2.ImageServiceLatestRequest, v2.ImageServiceLatestResponse](
-			httpClient,
-			baseURL+ImageServiceLatestProcedure,
-			connect.WithSchema(imageServiceMethods.ByName("Latest")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// imageServiceClient implements ImageServiceClient.
-type imageServiceClient struct {
-	get    *connect.Client[v2.ImageServiceGetRequest, v2.ImageServiceGetResponse]
-	list   *connect.Client[v2.ImageServiceListRequest, v2.ImageServiceListResponse]
-	latest *connect.Client[v2.ImageServiceLatestRequest, v2.ImageServiceLatestResponse]
-}
-
-// Get calls metalstack.api.v2.ImageService.Get.
-func (c *imageServiceClient) Get(ctx context.Context, req *v2.ImageServiceGetRequest) (*v2.ImageServiceGetResponse, error) {
-	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// List calls metalstack.api.v2.ImageService.List.
-func (c *imageServiceClient) List(ctx context.Context, req *v2.ImageServiceListRequest) (*v2.ImageServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Latest calls metalstack.api.v2.ImageService.Latest.
-func (c *imageServiceClient) Latest(ctx context.Context, req *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error) {
-	response, err := c.latest.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewImageServiceClient constructs a client for the metalstack.api.v2.ImageService service.
+// Multiple service clients may share a single connect.Client.
+func NewImageServiceClient(client *connect.Client) ImageServiceClient {
+	return &imageServiceClient{client: client}
 }
 
 // ImageServiceHandler is an implementation of the metalstack.api.v2.ImageService service.
@@ -127,56 +82,94 @@ type ImageServiceHandler interface {
 	Latest(context.Context, *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error)
 }
 
-// NewImageServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewImageServiceHandler(svc ImageServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	imageServiceMethods := v2.File_metalstack_api_v2_image_proto.Services().ByName("ImageService").Methods()
-	imageServiceGetHandler := connect.NewUnaryHandlerSimple(
-		ImageServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(imageServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
+// RegisterImageServiceHandler registers svc as the metalstack.api.v2.ImageService implementation on
+// server.
+func RegisterImageServiceHandler(server *connect.Server, svc ImageServiceHandler) {
+	adapter := imageServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: imageServiceGetSpec(), Handler: adapter.get},
+		connect.Method{Spec: imageServiceListSpec(), Handler: adapter.list},
+		connect.Method{Spec: imageServiceLatestSpec(), Handler: adapter.latest},
 	)
-	imageServiceListHandler := connect.NewUnaryHandlerSimple(
-		ImageServiceListProcedure,
-		svc.List,
-		connect.WithSchema(imageServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	imageServiceLatestHandler := connect.NewUnaryHandlerSimple(
-		ImageServiceLatestProcedure,
-		svc.Latest,
-		connect.WithSchema(imageServiceMethods.ByName("Latest")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.api.v2.ImageService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case ImageServiceGetProcedure:
-			imageServiceGetHandler.ServeHTTP(w, r)
-		case ImageServiceListProcedure:
-			imageServiceListHandler.ServeHTTP(w, r)
-		case ImageServiceLatestProcedure:
-			imageServiceLatestHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedImageServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedImageServiceHandler struct{}
 
 func (UnimplementedImageServiceHandler) Get(context.Context, *v2.ImageServiceGetRequest) (*v2.ImageServiceGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ImageService.Get is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ImageService.Get is not implemented")
 }
 
 func (UnimplementedImageServiceHandler) List(context.Context, *v2.ImageServiceListRequest) (*v2.ImageServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ImageService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ImageService.List is not implemented")
 }
 
 func (UnimplementedImageServiceHandler) Latest(context.Context, *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.ImageService.Latest is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.ImageService.Latest is not implemented")
+}
+
+type imageServiceClient struct {
+	client *connect.Client
+}
+
+func (c *imageServiceClient) Get(ctx context.Context, req *v2.ImageServiceGetRequest) (*v2.ImageServiceGetResponse, error) {
+	var res v2.ImageServiceGetResponse
+	if err := c.client.CallUnary(ctx, imageServiceGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *imageServiceClient) List(ctx context.Context, req *v2.ImageServiceListRequest) (*v2.ImageServiceListResponse, error) {
+	var res v2.ImageServiceListResponse
+	if err := c.client.CallUnary(ctx, imageServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *imageServiceClient) Latest(ctx context.Context, req *v2.ImageServiceLatestRequest) (*v2.ImageServiceLatestResponse, error) {
+	var res v2.ImageServiceLatestResponse
+	if err := c.client.CallUnary(ctx, imageServiceLatestSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type imageServiceHandler struct{ svc ImageServiceHandler }
+
+func (h imageServiceHandler) get(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ImageServiceGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Get(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h imageServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ImageServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h imageServiceHandler) latest(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.ImageServiceLatestRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Latest(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }

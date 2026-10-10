@@ -3,16 +3,21 @@ package client
 import (
 	"context"
 	"errors"
+	"io"
 	"log/slog"
 	"time"
-
-	"connectrpc.com/connect"
 )
 
 const defaultStreamBackoff = time.Second
 
 type (
-	StreamFunc[T any] func(ctx context.Context) (*connect.ServerStreamForClient[T], error)
+	// Stream is the client-side view of a server-streaming RPC.
+	Stream[T any] interface {
+		Receive() (*T, error)
+		Close() error
+	}
+
+	StreamFunc[T any] func(ctx context.Context) (Stream[T], error)
 
 	StreamOption func(*streamOptions)
 
@@ -100,17 +105,20 @@ func ReconnectingStreamRead[T any](ctx context.Context, open StreamFunc[T], opts
 	return messages, errorsChan
 }
 
-func consumeStream[T any](ctx context.Context, stream *connect.ServerStreamForClient[T], messages chan<- *T, errorsChan chan<- error, options *streamOptions) bool {
-	for stream.Receive() {
-		if !send(ctx, messages, stream.Msg()) {
-			return false
+func consumeStream[T any](ctx context.Context, stream Stream[T], messages chan<- *T, errorsChan chan<- error, options *streamOptions) bool {
+	for {
+		msg, err := stream.Receive()
+		if err != nil {
+			if !errors.Is(err, io.EOF) && !errors.Is(err, context.Canceled) && ctx.Err() == nil {
+				options.error("reading stream failed, reconnecting", err)
+				if !send(ctx, errorsChan, err) {
+					return false
+				}
+			}
+			break
 		}
-	}
 
-	err := stream.Err()
-	if err != nil && !errors.Is(err, context.Canceled) && ctx.Err() == nil {
-		options.error("reading stream failed, reconnecting", err)
-		if !send(ctx, errorsChan, err) {
+		if !send(ctx, messages, msg) {
 			return false
 		}
 	}

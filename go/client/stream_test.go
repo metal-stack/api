@@ -2,16 +2,16 @@ package client_test
 
 import (
 	"context"
-	"errors"
 	"log/slog"
 	"strconv"
 	"testing"
 	"time"
 
-	"connectrpc.com/connect"
+	"connectrpc.com/connect/v2"
 	"github.com/metal-stack/api/go/client"
 	infrav2 "github.com/metal-stack/api/go/metalstack/infra/v2"
 	"github.com/stretchr/testify/require"
+	"google.golang.org/protobuf/proto"
 )
 
 func Test_ReconnectingStreamRead_Reconnects(t *testing.T) {
@@ -19,30 +19,30 @@ func Test_ReconnectingStreamRead_Reconnects(t *testing.T) {
 
 	c, err := client.New(&client.DialConfig{
 		BaseURL: "http://this-is-just-for-testing",
-		Interceptors: []connect.Interceptor{
+		Interceptors: []connect.ClientInterceptor{
 			client.NewTestInterceptor(t, []client.ClientCall{
 				{
 					WantRequest: req,
-					WantStreamResponses: func() []connect.AnyResponse {
-						return []connect.AnyResponse{
-							connect.NewResponse(&infrav2.WaitForBMCCommandResponse{CommandId: "1"}),
-							connect.NewResponse(&infrav2.WaitForBMCCommandResponse{CommandId: "2"}),
+					WantStreamResponses: func() []proto.Message {
+						return []proto.Message{
+							(&infrav2.WaitForBMCCommandResponse{CommandId: "1"}),
+							(&infrav2.WaitForBMCCommandResponse{CommandId: "2"}),
 						}
 					},
 				},
 				{
 					WantRequest: req,
-					WantStreamResponses: func() []connect.AnyResponse {
-						return []connect.AnyResponse{
-							connect.NewResponse(&infrav2.WaitForBMCCommandResponse{CommandId: "3"}),
-							connect.NewResponse(&infrav2.WaitForBMCCommandResponse{CommandId: "4"}),
+					WantStreamResponses: func() []proto.Message {
+						return []proto.Message{
+							(&infrav2.WaitForBMCCommandResponse{CommandId: "3"}),
+							(&infrav2.WaitForBMCCommandResponse{CommandId: "4"}),
 						}
 					},
 				},
 				{
 					WantRequest: req,
-					WantStreamResponses: func() []connect.AnyResponse {
-						return []connect.AnyResponse{connect.NewResponse(&infrav2.WaitForBMCCommandResponse{CommandId: "5"})}
+					WantStreamResponses: func() []proto.Message {
+						return []proto.Message{(&infrav2.WaitForBMCCommandResponse{CommandId: "5"})}
 					},
 					BlockingStream: true,
 				},
@@ -54,7 +54,7 @@ func Test_ReconnectingStreamRead_Reconnects(t *testing.T) {
 	ctx, cancel := context.WithCancel(t.Context())
 	defer cancel()
 
-	messages, errs := client.ReconnectingStreamRead(ctx, func(ctx context.Context) (*connect.ServerStreamForClient[infrav2.WaitForBMCCommandResponse], error) {
+	messages, errs := client.ReconnectingStreamRead(ctx, func(ctx context.Context) (client.Stream[infrav2.WaitForBMCCommandResponse], error) {
 		return c.Infrav2().BMC().WaitForBMCCommand(ctx, &infrav2.WaitForBMCCommandRequest{Partition: "p1"})
 	}, client.WithStreamBackoff(0), client.WithStreamLogger(slog.Default()))
 
@@ -78,18 +78,18 @@ func Test_ReconnectingStreamRead_ReportsErrorsAndReconnects(t *testing.T) {
 
 	c, err := client.New(&client.DialConfig{
 		BaseURL: "http://this-is-just-for-testing",
-		Interceptors: []connect.Interceptor{
+		Interceptors: []connect.ClientInterceptor{
 			client.NewTestInterceptor(t, []client.ClientCall{
 				{
 					WantRequest: req,
-					WantError:   connect.NewError(connect.CodeInternal, errors.New("stream failure")),
+					WantError:   connect.NewError(connect.CodeInternal, "stream failure"),
 				},
 				{
 					WantRequest: req,
-					WantStreamResponses: func() []connect.AnyResponse {
-						return []connect.AnyResponse{
-							connect.NewResponse(&infrav2.WaitForBMCCommandResponse{CommandId: "1"}),
-							connect.NewResponse(&infrav2.WaitForBMCCommandResponse{CommandId: "2"}),
+					WantStreamResponses: func() []proto.Message {
+						return []proto.Message{
+							(&infrav2.WaitForBMCCommandResponse{CommandId: "1"}),
+							(&infrav2.WaitForBMCCommandResponse{CommandId: "2"}),
 						}
 					},
 					BlockingStream: true,
@@ -102,7 +102,7 @@ func Test_ReconnectingStreamRead_ReportsErrorsAndReconnects(t *testing.T) {
 	ctx, cancel := context.WithCancel(t.Context())
 	defer cancel()
 
-	messages, errs := client.ReconnectingStreamRead(ctx, func(ctx context.Context) (*connect.ServerStreamForClient[infrav2.WaitForBMCCommandResponse], error) {
+	messages, errs := client.ReconnectingStreamRead(ctx, func(ctx context.Context) (client.Stream[infrav2.WaitForBMCCommandResponse], error) {
 		return c.Infrav2().BMC().WaitForBMCCommand(ctx, &infrav2.WaitForBMCCommandRequest{Partition: "p1"})
 	}, client.WithStreamBackoff(0))
 
@@ -131,7 +131,7 @@ func Test_ReconnectingStreamRead_ClosesOnContextCancel(t *testing.T) {
 
 	c, err := client.New(&client.DialConfig{
 		BaseURL: "http://this-is-just-for-testing",
-		Interceptors: []connect.Interceptor{
+		Interceptors: []connect.ClientInterceptor{
 			client.NewTestInterceptor(t, []client.ClientCall{
 				{
 					WantRequest:    req,
@@ -144,7 +144,7 @@ func Test_ReconnectingStreamRead_ClosesOnContextCancel(t *testing.T) {
 
 	ctx, cancel := context.WithCancel(t.Context())
 
-	messages, errs := client.ReconnectingStreamRead(ctx, func(ctx context.Context) (*connect.ServerStreamForClient[infrav2.WaitForBMCCommandResponse], error) {
+	messages, errs := client.ReconnectingStreamRead(ctx, func(ctx context.Context) (client.Stream[infrav2.WaitForBMCCommandResponse], error) {
 		return c.Infrav2().BMC().WaitForBMCCommand(ctx, &infrav2.WaitForBMCCommandRequest{Partition: "p1"})
 	}, client.WithStreamBackoff(0))
 

@@ -5,67 +5,154 @@
 package apiv2connect
 
 import (
-	connect "connectrpc.com/connect"
+	connect "connectrpc.com/connect/v2"
 	context "context"
-	errors "errors"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
-	http "net/http"
-	strings "strings"
+	sync "sync"
 )
-
-// This is a compile-time assertion to ensure that this generated file and the connect package are
-// compatible. If you get a compiler error that this constant is not defined, this code was
-// generated with a version of connect newer than the one compiled into your binary. You can fix the
-// problem by either regenerating this code with an older version of connect or updating the connect
-// version compiled into your binary.
-const _ = connect.IsAtLeastVersion1_13_0
 
 const (
 	// TenantServiceName is the fully-qualified name of the TenantService service.
 	TenantServiceName = "metalstack.api.v2.TenantService"
 )
 
-// These constants are the fully-qualified names of the RPCs defined in this package. They're
-// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+// These constants are the procedure names of the RPCs defined in this package. They're exposed at
+// runtime as Spec.Procedure and as the final two segments of the HTTP route.
 //
 // Note that these are different from the fully-qualified method names used by
 // google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// TenantServiceCreateProcedure is the fully-qualified name of the TenantService's Create RPC.
+	// TenantServiceCreateProcedure is the procedure name of the TenantService's Create RPC.
 	TenantServiceCreateProcedure = "/metalstack.api.v2.TenantService/Create"
-	// TenantServiceListProcedure is the fully-qualified name of the TenantService's List RPC.
+	// TenantServiceListProcedure is the procedure name of the TenantService's List RPC.
 	TenantServiceListProcedure = "/metalstack.api.v2.TenantService/List"
-	// TenantServiceGetProcedure is the fully-qualified name of the TenantService's Get RPC.
+	// TenantServiceGetProcedure is the procedure name of the TenantService's Get RPC.
 	TenantServiceGetProcedure = "/metalstack.api.v2.TenantService/Get"
-	// TenantServiceUpdateProcedure is the fully-qualified name of the TenantService's Update RPC.
+	// TenantServiceUpdateProcedure is the procedure name of the TenantService's Update RPC.
 	TenantServiceUpdateProcedure = "/metalstack.api.v2.TenantService/Update"
-	// TenantServiceDeleteProcedure is the fully-qualified name of the TenantService's Delete RPC.
+	// TenantServiceDeleteProcedure is the procedure name of the TenantService's Delete RPC.
 	TenantServiceDeleteProcedure = "/metalstack.api.v2.TenantService/Delete"
-	// TenantServiceLeaveProcedure is the fully-qualified name of the TenantService's Leave RPC.
+	// TenantServiceLeaveProcedure is the procedure name of the TenantService's Leave RPC.
 	TenantServiceLeaveProcedure = "/metalstack.api.v2.TenantService/Leave"
-	// TenantServiceAddMemberProcedure is the fully-qualified name of the TenantService's AddMember RPC.
+	// TenantServiceAddMemberProcedure is the procedure name of the TenantService's AddMember RPC.
 	TenantServiceAddMemberProcedure = "/metalstack.api.v2.TenantService/AddMember"
-	// TenantServiceRemoveMemberProcedure is the fully-qualified name of the TenantService's
-	// RemoveMember RPC.
+	// TenantServiceRemoveMemberProcedure is the procedure name of the TenantService's RemoveMember RPC.
 	TenantServiceRemoveMemberProcedure = "/metalstack.api.v2.TenantService/RemoveMember"
-	// TenantServiceUpdateMemberProcedure is the fully-qualified name of the TenantService's
-	// UpdateMember RPC.
+	// TenantServiceUpdateMemberProcedure is the procedure name of the TenantService's UpdateMember RPC.
 	TenantServiceUpdateMemberProcedure = "/metalstack.api.v2.TenantService/UpdateMember"
-	// TenantServiceInviteProcedure is the fully-qualified name of the TenantService's Invite RPC.
+	// TenantServiceInviteProcedure is the procedure name of the TenantService's Invite RPC.
 	TenantServiceInviteProcedure = "/metalstack.api.v2.TenantService/Invite"
-	// TenantServiceInviteAcceptProcedure is the fully-qualified name of the TenantService's
-	// InviteAccept RPC.
+	// TenantServiceInviteAcceptProcedure is the procedure name of the TenantService's InviteAccept RPC.
 	TenantServiceInviteAcceptProcedure = "/metalstack.api.v2.TenantService/InviteAccept"
-	// TenantServiceInviteDeleteProcedure is the fully-qualified name of the TenantService's
-	// InviteDelete RPC.
+	// TenantServiceInviteDeleteProcedure is the procedure name of the TenantService's InviteDelete RPC.
 	TenantServiceInviteDeleteProcedure = "/metalstack.api.v2.TenantService/InviteDelete"
-	// TenantServiceInvitesListProcedure is the fully-qualified name of the TenantService's InvitesList
-	// RPC.
+	// TenantServiceInvitesListProcedure is the procedure name of the TenantService's InvitesList RPC.
 	TenantServiceInvitesListProcedure = "/metalstack.api.v2.TenantService/InvitesList"
-	// TenantServiceInviteGetProcedure is the fully-qualified name of the TenantService's InviteGet RPC.
+	// TenantServiceInviteGetProcedure is the procedure name of the TenantService's InviteGet RPC.
 	TenantServiceInviteGetProcedure = "/metalstack.api.v2.TenantService/InviteGet"
+)
+
+var (
+	tenantServiceCreateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("Create"),
+			Procedure:  TenantServiceCreateProcedure,
+		}
+	})
+	tenantServiceListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("List"),
+			Procedure:  TenantServiceListProcedure,
+		}
+	})
+	tenantServiceGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("Get"),
+			Procedure:  TenantServiceGetProcedure,
+		}
+	})
+	tenantServiceUpdateSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("Update"),
+			Procedure:  TenantServiceUpdateProcedure,
+		}
+	})
+	tenantServiceDeleteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("Delete"),
+			Procedure:  TenantServiceDeleteProcedure,
+		}
+	})
+	tenantServiceLeaveSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("Leave"),
+			Procedure:  TenantServiceLeaveProcedure,
+		}
+	})
+	tenantServiceAddMemberSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("AddMember"),
+			Procedure:  TenantServiceAddMemberProcedure,
+		}
+	})
+	tenantServiceRemoveMemberSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("RemoveMember"),
+			Procedure:  TenantServiceRemoveMemberProcedure,
+		}
+	})
+	tenantServiceUpdateMemberSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("UpdateMember"),
+			Procedure:  TenantServiceUpdateMemberProcedure,
+		}
+	})
+	tenantServiceInviteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("Invite"),
+			Procedure:  TenantServiceInviteProcedure,
+		}
+	})
+	tenantServiceInviteAcceptSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("InviteAccept"),
+			Procedure:  TenantServiceInviteAcceptProcedure,
+		}
+	})
+	tenantServiceInviteDeleteSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("InviteDelete"),
+			Procedure:  TenantServiceInviteDeleteProcedure,
+		}
+	})
+	tenantServiceInvitesListSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("InvitesList"),
+			Procedure:  TenantServiceInvitesListProcedure,
+		}
+	})
+	tenantServiceInviteGetSpec = sync.OnceValue(func() connect.Spec {
+		return connect.Spec{
+			StreamType: connect.StreamTypeUnary,
+			Schema:     v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods().ByName("InviteGet"),
+			Procedure:  TenantServiceInviteGetProcedure,
+		}
+	})
 )
 
 // TenantServiceClient is a client for the metalstack.api.v2.TenantService service.
@@ -100,246 +187,10 @@ type TenantServiceClient interface {
 	InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error)
 }
 
-// NewTenantServiceClient constructs a client for the metalstack.api.v2.TenantService service. By
-// default, it uses the Connect protocol with the binary Protobuf Codec, asks for gzipped responses,
-// and sends uncompressed requests. To use the gRPC or gRPC-Web protocols, supply the
-// connect.WithGRPC() or connect.WithGRPCWeb() options.
-//
-// The URL supplied here should be the base URL for the Connect or gRPC server (for example,
-// http://api.acme.com or https://acme.com/grpc).
-func NewTenantServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) TenantServiceClient {
-	baseURL = strings.TrimRight(baseURL, "/")
-	tenantServiceMethods := v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods()
-	return &tenantServiceClient{
-		create: connect.NewClient[v2.TenantServiceCreateRequest, v2.TenantServiceCreateResponse](
-			httpClient,
-			baseURL+TenantServiceCreateProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("Create")),
-			connect.WithClientOptions(opts...),
-		),
-		list: connect.NewClient[v2.TenantServiceListRequest, v2.TenantServiceListResponse](
-			httpClient,
-			baseURL+TenantServiceListProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("List")),
-			connect.WithClientOptions(opts...),
-		),
-		get: connect.NewClient[v2.TenantServiceGetRequest, v2.TenantServiceGetResponse](
-			httpClient,
-			baseURL+TenantServiceGetProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("Get")),
-			connect.WithClientOptions(opts...),
-		),
-		update: connect.NewClient[v2.TenantServiceUpdateRequest, v2.TenantServiceUpdateResponse](
-			httpClient,
-			baseURL+TenantServiceUpdateProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("Update")),
-			connect.WithClientOptions(opts...),
-		),
-		delete: connect.NewClient[v2.TenantServiceDeleteRequest, v2.TenantServiceDeleteResponse](
-			httpClient,
-			baseURL+TenantServiceDeleteProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("Delete")),
-			connect.WithClientOptions(opts...),
-		),
-		leave: connect.NewClient[v2.TenantServiceLeaveRequest, v2.TenantServiceLeaveResponse](
-			httpClient,
-			baseURL+TenantServiceLeaveProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("Leave")),
-			connect.WithClientOptions(opts...),
-		),
-		addMember: connect.NewClient[v2.TenantServiceAddMemberRequest, v2.TenantServiceAddMemberResponse](
-			httpClient,
-			baseURL+TenantServiceAddMemberProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("AddMember")),
-			connect.WithClientOptions(opts...),
-		),
-		removeMember: connect.NewClient[v2.TenantServiceRemoveMemberRequest, v2.TenantServiceRemoveMemberResponse](
-			httpClient,
-			baseURL+TenantServiceRemoveMemberProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("RemoveMember")),
-			connect.WithClientOptions(opts...),
-		),
-		updateMember: connect.NewClient[v2.TenantServiceUpdateMemberRequest, v2.TenantServiceUpdateMemberResponse](
-			httpClient,
-			baseURL+TenantServiceUpdateMemberProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("UpdateMember")),
-			connect.WithClientOptions(opts...),
-		),
-		invite: connect.NewClient[v2.TenantServiceInviteRequest, v2.TenantServiceInviteResponse](
-			httpClient,
-			baseURL+TenantServiceInviteProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("Invite")),
-			connect.WithClientOptions(opts...),
-		),
-		inviteAccept: connect.NewClient[v2.TenantServiceInviteAcceptRequest, v2.TenantServiceInviteAcceptResponse](
-			httpClient,
-			baseURL+TenantServiceInviteAcceptProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("InviteAccept")),
-			connect.WithClientOptions(opts...),
-		),
-		inviteDelete: connect.NewClient[v2.TenantServiceInviteDeleteRequest, v2.TenantServiceInviteDeleteResponse](
-			httpClient,
-			baseURL+TenantServiceInviteDeleteProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("InviteDelete")),
-			connect.WithClientOptions(opts...),
-		),
-		invitesList: connect.NewClient[v2.TenantServiceInvitesListRequest, v2.TenantServiceInvitesListResponse](
-			httpClient,
-			baseURL+TenantServiceInvitesListProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("InvitesList")),
-			connect.WithClientOptions(opts...),
-		),
-		inviteGet: connect.NewClient[v2.TenantServiceInviteGetRequest, v2.TenantServiceInviteGetResponse](
-			httpClient,
-			baseURL+TenantServiceInviteGetProcedure,
-			connect.WithSchema(tenantServiceMethods.ByName("InviteGet")),
-			connect.WithClientOptions(opts...),
-		),
-	}
-}
-
-// tenantServiceClient implements TenantServiceClient.
-type tenantServiceClient struct {
-	create       *connect.Client[v2.TenantServiceCreateRequest, v2.TenantServiceCreateResponse]
-	list         *connect.Client[v2.TenantServiceListRequest, v2.TenantServiceListResponse]
-	get          *connect.Client[v2.TenantServiceGetRequest, v2.TenantServiceGetResponse]
-	update       *connect.Client[v2.TenantServiceUpdateRequest, v2.TenantServiceUpdateResponse]
-	delete       *connect.Client[v2.TenantServiceDeleteRequest, v2.TenantServiceDeleteResponse]
-	leave        *connect.Client[v2.TenantServiceLeaveRequest, v2.TenantServiceLeaveResponse]
-	addMember    *connect.Client[v2.TenantServiceAddMemberRequest, v2.TenantServiceAddMemberResponse]
-	removeMember *connect.Client[v2.TenantServiceRemoveMemberRequest, v2.TenantServiceRemoveMemberResponse]
-	updateMember *connect.Client[v2.TenantServiceUpdateMemberRequest, v2.TenantServiceUpdateMemberResponse]
-	invite       *connect.Client[v2.TenantServiceInviteRequest, v2.TenantServiceInviteResponse]
-	inviteAccept *connect.Client[v2.TenantServiceInviteAcceptRequest, v2.TenantServiceInviteAcceptResponse]
-	inviteDelete *connect.Client[v2.TenantServiceInviteDeleteRequest, v2.TenantServiceInviteDeleteResponse]
-	invitesList  *connect.Client[v2.TenantServiceInvitesListRequest, v2.TenantServiceInvitesListResponse]
-	inviteGet    *connect.Client[v2.TenantServiceInviteGetRequest, v2.TenantServiceInviteGetResponse]
-}
-
-// Create calls metalstack.api.v2.TenantService.Create.
-func (c *tenantServiceClient) Create(ctx context.Context, req *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error) {
-	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// List calls metalstack.api.v2.TenantService.List.
-func (c *tenantServiceClient) List(ctx context.Context, req *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error) {
-	response, err := c.list.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Get calls metalstack.api.v2.TenantService.Get.
-func (c *tenantServiceClient) Get(ctx context.Context, req *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error) {
-	response, err := c.get.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Update calls metalstack.api.v2.TenantService.Update.
-func (c *tenantServiceClient) Update(ctx context.Context, req *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error) {
-	response, err := c.update.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Delete calls metalstack.api.v2.TenantService.Delete.
-func (c *tenantServiceClient) Delete(ctx context.Context, req *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error) {
-	response, err := c.delete.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Leave calls metalstack.api.v2.TenantService.Leave.
-func (c *tenantServiceClient) Leave(ctx context.Context, req *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error) {
-	response, err := c.leave.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// AddMember calls metalstack.api.v2.TenantService.AddMember.
-func (c *tenantServiceClient) AddMember(ctx context.Context, req *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error) {
-	response, err := c.addMember.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// RemoveMember calls metalstack.api.v2.TenantService.RemoveMember.
-func (c *tenantServiceClient) RemoveMember(ctx context.Context, req *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error) {
-	response, err := c.removeMember.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// UpdateMember calls metalstack.api.v2.TenantService.UpdateMember.
-func (c *tenantServiceClient) UpdateMember(ctx context.Context, req *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error) {
-	response, err := c.updateMember.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// Invite calls metalstack.api.v2.TenantService.Invite.
-func (c *tenantServiceClient) Invite(ctx context.Context, req *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error) {
-	response, err := c.invite.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// InviteAccept calls metalstack.api.v2.TenantService.InviteAccept.
-func (c *tenantServiceClient) InviteAccept(ctx context.Context, req *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error) {
-	response, err := c.inviteAccept.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// InviteDelete calls metalstack.api.v2.TenantService.InviteDelete.
-func (c *tenantServiceClient) InviteDelete(ctx context.Context, req *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error) {
-	response, err := c.inviteDelete.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// InvitesList calls metalstack.api.v2.TenantService.InvitesList.
-func (c *tenantServiceClient) InvitesList(ctx context.Context, req *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error) {
-	response, err := c.invitesList.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
-// InviteGet calls metalstack.api.v2.TenantService.InviteGet.
-func (c *tenantServiceClient) InviteGet(ctx context.Context, req *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error) {
-	response, err := c.inviteGet.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
+// NewTenantServiceClient constructs a client for the metalstack.api.v2.TenantService service.
+// Multiple service clients may share a single connect.Client.
+func NewTenantServiceClient(client *connect.Client) TenantServiceClient {
+	return &tenantServiceClient{client: client}
 }
 
 // TenantServiceHandler is an implementation of the metalstack.api.v2.TenantService service.
@@ -374,188 +225,369 @@ type TenantServiceHandler interface {
 	InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error)
 }
 
-// NewTenantServiceHandler builds an HTTP handler from the service implementation. It returns the
-// path on which to mount the handler and the handler itself.
-//
-// By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
-// and JSON codecs. They also support gzip compression.
-func NewTenantServiceHandler(svc TenantServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	tenantServiceMethods := v2.File_metalstack_api_v2_tenant_proto.Services().ByName("TenantService").Methods()
-	tenantServiceCreateHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceCreateProcedure,
-		svc.Create,
-		connect.WithSchema(tenantServiceMethods.ByName("Create")),
-		connect.WithHandlerOptions(opts...),
+// RegisterTenantServiceHandler registers svc as the metalstack.api.v2.TenantService implementation
+// on server.
+func RegisterTenantServiceHandler(server *connect.Server, svc TenantServiceHandler) {
+	adapter := tenantServiceHandler{svc: svc}
+	server.Register(
+		connect.Method{Spec: tenantServiceCreateSpec(), Handler: adapter.create},
+		connect.Method{Spec: tenantServiceListSpec(), Handler: adapter.list},
+		connect.Method{Spec: tenantServiceGetSpec(), Handler: adapter.get},
+		connect.Method{Spec: tenantServiceUpdateSpec(), Handler: adapter.update},
+		connect.Method{Spec: tenantServiceDeleteSpec(), Handler: adapter.delete},
+		connect.Method{Spec: tenantServiceLeaveSpec(), Handler: adapter.leave},
+		connect.Method{Spec: tenantServiceAddMemberSpec(), Handler: adapter.addMember},
+		connect.Method{Spec: tenantServiceRemoveMemberSpec(), Handler: adapter.removeMember},
+		connect.Method{Spec: tenantServiceUpdateMemberSpec(), Handler: adapter.updateMember},
+		connect.Method{Spec: tenantServiceInviteSpec(), Handler: adapter.invite},
+		connect.Method{Spec: tenantServiceInviteAcceptSpec(), Handler: adapter.inviteAccept},
+		connect.Method{Spec: tenantServiceInviteDeleteSpec(), Handler: adapter.inviteDelete},
+		connect.Method{Spec: tenantServiceInvitesListSpec(), Handler: adapter.invitesList},
+		connect.Method{Spec: tenantServiceInviteGetSpec(), Handler: adapter.inviteGet},
 	)
-	tenantServiceListHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceListProcedure,
-		svc.List,
-		connect.WithSchema(tenantServiceMethods.ByName("List")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceGetHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceGetProcedure,
-		svc.Get,
-		connect.WithSchema(tenantServiceMethods.ByName("Get")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceUpdateHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceUpdateProcedure,
-		svc.Update,
-		connect.WithSchema(tenantServiceMethods.ByName("Update")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceDeleteHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceDeleteProcedure,
-		svc.Delete,
-		connect.WithSchema(tenantServiceMethods.ByName("Delete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceLeaveHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceLeaveProcedure,
-		svc.Leave,
-		connect.WithSchema(tenantServiceMethods.ByName("Leave")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceAddMemberHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceAddMemberProcedure,
-		svc.AddMember,
-		connect.WithSchema(tenantServiceMethods.ByName("AddMember")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceRemoveMemberHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceRemoveMemberProcedure,
-		svc.RemoveMember,
-		connect.WithSchema(tenantServiceMethods.ByName("RemoveMember")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceUpdateMemberHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceUpdateMemberProcedure,
-		svc.UpdateMember,
-		connect.WithSchema(tenantServiceMethods.ByName("UpdateMember")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceInviteHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceInviteProcedure,
-		svc.Invite,
-		connect.WithSchema(tenantServiceMethods.ByName("Invite")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceInviteAcceptHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceInviteAcceptProcedure,
-		svc.InviteAccept,
-		connect.WithSchema(tenantServiceMethods.ByName("InviteAccept")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceInviteDeleteHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceInviteDeleteProcedure,
-		svc.InviteDelete,
-		connect.WithSchema(tenantServiceMethods.ByName("InviteDelete")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceInvitesListHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceInvitesListProcedure,
-		svc.InvitesList,
-		connect.WithSchema(tenantServiceMethods.ByName("InvitesList")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tenantServiceInviteGetHandler := connect.NewUnaryHandlerSimple(
-		TenantServiceInviteGetProcedure,
-		svc.InviteGet,
-		connect.WithSchema(tenantServiceMethods.ByName("InviteGet")),
-		connect.WithHandlerOptions(opts...),
-	)
-	return "/metalstack.api.v2.TenantService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		switch r.URL.Path {
-		case TenantServiceCreateProcedure:
-			tenantServiceCreateHandler.ServeHTTP(w, r)
-		case TenantServiceListProcedure:
-			tenantServiceListHandler.ServeHTTP(w, r)
-		case TenantServiceGetProcedure:
-			tenantServiceGetHandler.ServeHTTP(w, r)
-		case TenantServiceUpdateProcedure:
-			tenantServiceUpdateHandler.ServeHTTP(w, r)
-		case TenantServiceDeleteProcedure:
-			tenantServiceDeleteHandler.ServeHTTP(w, r)
-		case TenantServiceLeaveProcedure:
-			tenantServiceLeaveHandler.ServeHTTP(w, r)
-		case TenantServiceAddMemberProcedure:
-			tenantServiceAddMemberHandler.ServeHTTP(w, r)
-		case TenantServiceRemoveMemberProcedure:
-			tenantServiceRemoveMemberHandler.ServeHTTP(w, r)
-		case TenantServiceUpdateMemberProcedure:
-			tenantServiceUpdateMemberHandler.ServeHTTP(w, r)
-		case TenantServiceInviteProcedure:
-			tenantServiceInviteHandler.ServeHTTP(w, r)
-		case TenantServiceInviteAcceptProcedure:
-			tenantServiceInviteAcceptHandler.ServeHTTP(w, r)
-		case TenantServiceInviteDeleteProcedure:
-			tenantServiceInviteDeleteHandler.ServeHTTP(w, r)
-		case TenantServiceInvitesListProcedure:
-			tenantServiceInvitesListHandler.ServeHTTP(w, r)
-		case TenantServiceInviteGetProcedure:
-			tenantServiceInviteGetHandler.ServeHTTP(w, r)
-		default:
-			http.NotFound(w, r)
-		}
-	})
 }
 
 // UnimplementedTenantServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTenantServiceHandler struct{}
 
 func (UnimplementedTenantServiceHandler) Create(context.Context, *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Create is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.Create is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) List(context.Context, *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.List is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.List is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) Get(context.Context, *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Get is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.Get is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) Update(context.Context, *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Update is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.Update is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) Delete(context.Context, *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Delete is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.Delete is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) Leave(context.Context, *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Leave is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.Leave is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) AddMember(context.Context, *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.AddMember is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.AddMember is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) RemoveMember(context.Context, *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.RemoveMember is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.RemoveMember is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) UpdateMember(context.Context, *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.UpdateMember is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.UpdateMember is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) Invite(context.Context, *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.Invite is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.Invite is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) InviteAccept(context.Context, *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.InviteAccept is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.InviteAccept is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) InviteDelete(context.Context, *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.InviteDelete is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.InviteDelete is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) InvitesList(context.Context, *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.InvitesList is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.InvitesList is not implemented")
 }
 
 func (UnimplementedTenantServiceHandler) InviteGet(context.Context, *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.api.v2.TenantService.InviteGet is not implemented"))
+	return nil, connect.NewError(connect.CodeUnimplemented, "metalstack.api.v2.TenantService.InviteGet is not implemented")
+}
+
+type tenantServiceClient struct {
+	client *connect.Client
+}
+
+func (c *tenantServiceClient) Create(ctx context.Context, req *v2.TenantServiceCreateRequest) (*v2.TenantServiceCreateResponse, error) {
+	var res v2.TenantServiceCreateResponse
+	if err := c.client.CallUnary(ctx, tenantServiceCreateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) List(ctx context.Context, req *v2.TenantServiceListRequest) (*v2.TenantServiceListResponse, error) {
+	var res v2.TenantServiceListResponse
+	if err := c.client.CallUnary(ctx, tenantServiceListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) Get(ctx context.Context, req *v2.TenantServiceGetRequest) (*v2.TenantServiceGetResponse, error) {
+	var res v2.TenantServiceGetResponse
+	if err := c.client.CallUnary(ctx, tenantServiceGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) Update(ctx context.Context, req *v2.TenantServiceUpdateRequest) (*v2.TenantServiceUpdateResponse, error) {
+	var res v2.TenantServiceUpdateResponse
+	if err := c.client.CallUnary(ctx, tenantServiceUpdateSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) Delete(ctx context.Context, req *v2.TenantServiceDeleteRequest) (*v2.TenantServiceDeleteResponse, error) {
+	var res v2.TenantServiceDeleteResponse
+	if err := c.client.CallUnary(ctx, tenantServiceDeleteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) Leave(ctx context.Context, req *v2.TenantServiceLeaveRequest) (*v2.TenantServiceLeaveResponse, error) {
+	var res v2.TenantServiceLeaveResponse
+	if err := c.client.CallUnary(ctx, tenantServiceLeaveSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) AddMember(ctx context.Context, req *v2.TenantServiceAddMemberRequest) (*v2.TenantServiceAddMemberResponse, error) {
+	var res v2.TenantServiceAddMemberResponse
+	if err := c.client.CallUnary(ctx, tenantServiceAddMemberSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) RemoveMember(ctx context.Context, req *v2.TenantServiceRemoveMemberRequest) (*v2.TenantServiceRemoveMemberResponse, error) {
+	var res v2.TenantServiceRemoveMemberResponse
+	if err := c.client.CallUnary(ctx, tenantServiceRemoveMemberSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) UpdateMember(ctx context.Context, req *v2.TenantServiceUpdateMemberRequest) (*v2.TenantServiceUpdateMemberResponse, error) {
+	var res v2.TenantServiceUpdateMemberResponse
+	if err := c.client.CallUnary(ctx, tenantServiceUpdateMemberSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) Invite(ctx context.Context, req *v2.TenantServiceInviteRequest) (*v2.TenantServiceInviteResponse, error) {
+	var res v2.TenantServiceInviteResponse
+	if err := c.client.CallUnary(ctx, tenantServiceInviteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) InviteAccept(ctx context.Context, req *v2.TenantServiceInviteAcceptRequest) (*v2.TenantServiceInviteAcceptResponse, error) {
+	var res v2.TenantServiceInviteAcceptResponse
+	if err := c.client.CallUnary(ctx, tenantServiceInviteAcceptSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) InviteDelete(ctx context.Context, req *v2.TenantServiceInviteDeleteRequest) (*v2.TenantServiceInviteDeleteResponse, error) {
+	var res v2.TenantServiceInviteDeleteResponse
+	if err := c.client.CallUnary(ctx, tenantServiceInviteDeleteSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) InvitesList(ctx context.Context, req *v2.TenantServiceInvitesListRequest) (*v2.TenantServiceInvitesListResponse, error) {
+	var res v2.TenantServiceInvitesListResponse
+	if err := c.client.CallUnary(ctx, tenantServiceInvitesListSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+func (c *tenantServiceClient) InviteGet(ctx context.Context, req *v2.TenantServiceInviteGetRequest) (*v2.TenantServiceInviteGetResponse, error) {
+	var res v2.TenantServiceInviteGetResponse
+	if err := c.client.CallUnary(ctx, tenantServiceInviteGetSpec(), req, &res); err != nil {
+		return nil, err
+	}
+	return &res, nil
+}
+
+type tenantServiceHandler struct{ svc TenantServiceHandler }
+
+func (h tenantServiceHandler) create(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceCreateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Create(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) list(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.List(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) get(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Get(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) update(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceUpdateRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Update(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) delete(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceDeleteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Delete(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) leave(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceLeaveRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Leave(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) addMember(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceAddMemberRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.AddMember(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) removeMember(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceRemoveMemberRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.RemoveMember(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) updateMember(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceUpdateMemberRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.UpdateMember(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) invite(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceInviteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.Invite(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) inviteAccept(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceInviteAcceptRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.InviteAccept(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) inviteDelete(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceInviteDeleteRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.InviteDelete(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) invitesList(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceInvitesListRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.InvitesList(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
+}
+
+func (h tenantServiceHandler) inviteGet(ctx context.Context, _ connect.Spec, stream connect.ServerStream) error {
+	var req v2.TenantServiceInviteGetRequest
+	if err := stream.Receive(&req); err != nil {
+		return err
+	}
+	res, err := h.svc.InviteGet(ctx, &req)
+	if err != nil {
+		return err
+	}
+	return stream.Send(res)
 }
