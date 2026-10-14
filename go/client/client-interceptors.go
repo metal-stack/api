@@ -20,7 +20,7 @@ type authInterceptor struct {
 
 func (i *authInterceptor) WrapUnary(next connect.UnaryFunc) connect.UnaryFunc {
 	return connect.UnaryFunc(func(ctx context.Context, request connect.AnyRequest) (connect.AnyResponse, error) {
-		request.Header().Add("Authorization", "Bearer "+i.config.Token)
+		request.Header().Set("Authorization", "Bearer "+i.config.Token)
 		return next(ctx, request)
 	})
 }
@@ -44,7 +44,7 @@ type streamingInterceptorConn struct {
 }
 
 func (conn *streamingInterceptorConn) Send(m any) error {
-	conn.RequestHeader().Add("Authorization", "Bearer "+conn.token)
+	conn.RequestHeader().Set("Authorization", "Bearer "+conn.token)
 	return conn.StreamingClientConn.Send(m)
 }
 
