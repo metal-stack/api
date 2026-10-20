@@ -1,7 +1,4 @@
-import datetime
-
 from buf.validate import validate_pb2 as _validate_pb2
-from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from google.protobuf.internal import containers as _containers
@@ -13,20 +10,18 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class TenantMember(_message.Message):
-    __slots__ = ("member", "role", "projects", "created_at", "meta", "tenant")
+    __slots__ = ("member", "role", "projects", "meta", "tenant")
     MEMBER_FIELD_NUMBER: _ClassVar[int]
     ROLE_FIELD_NUMBER: _ClassVar[int]
     PROJECTS_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     TENANT_FIELD_NUMBER: _ClassVar[int]
     member: str
     role: _common_pb2.TenantRole
     projects: _containers.RepeatedScalarFieldContainer[str]
-    created_at: _timestamp_pb2.Timestamp
     meta: _common_pb2.Meta
     tenant: str
-    def __init__(self, member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., projects: _Optional[_Iterable[str]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., tenant: _Optional[str] = ...) -> None: ...
+    def __init__(self, member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., projects: _Optional[_Iterable[str]] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., tenant: _Optional[str] = ...) -> None: ...
 
 class TenantMemberServiceListRequest(_message.Message):
     __slots__ = ("login", "query")

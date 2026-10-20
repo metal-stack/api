@@ -1,7 +1,4 @@
-import datetime
-
 from buf.validate import validate_pb2 as _validate_pb2
-from google.protobuf import timestamp_pb2 as _timestamp_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from google.protobuf.internal import containers as _containers
@@ -13,18 +10,16 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ProjectMember(_message.Message):
-    __slots__ = ("member", "role", "inherited_membership", "created_at", "meta")
+    __slots__ = ("member", "role", "inherited_membership", "meta")
     MEMBER_FIELD_NUMBER: _ClassVar[int]
     ROLE_FIELD_NUMBER: _ClassVar[int]
     INHERITED_MEMBERSHIP_FIELD_NUMBER: _ClassVar[int]
-    CREATED_AT_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     member: str
     role: _common_pb2.ProjectRole
     inherited_membership: bool
-    created_at: _timestamp_pb2.Timestamp
     meta: _common_pb2.Meta
-    def __init__(self, member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ..., inherited_membership: _Optional[bool] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ...) -> None: ...
+    def __init__(self, member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ..., inherited_membership: _Optional[bool] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ...) -> None: ...
 
 class ProjectMemberQuery(_message.Message):
     __slots__ = ("member", "role")

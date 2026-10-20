@@ -23,12 +23,11 @@ _sym_db = _symbol_database.Default()
 
 
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
-from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
 from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%metalstack/api/v2/tenant_member.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x99\x02\n\x0cTenantMember\x12#\n\x06member\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12;\n\x04role\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x12\x1a\n\x08projects\x18\x03 \x03(\tR\x08projects\x12\x39\n\ncreated_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\x12+\n\x04meta\x18\x05 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\x12#\n\x06tenant\x18\x06 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06tenant\"\x7f\n\x1eTenantMemberServiceListRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12:\n\x05query\x18\x02 \x01(\x0b\x32$.metalstack.api.v2.TenantMemberQueryR\x05query\"\xaf\x01\n\x11TenantMemberQuery\x12(\n\x06member\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01H\x00R\x06member\x88\x01\x01\x12@\n\x04role\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x01R\x04role\x88\x01\x01\x12\x1a\n\x08projects\x18\x03 \x03(\tR\x08projectsB\t\n\x07_memberB\x07\n\x05_role\"g\n\x1dTenantMemberServiceGetRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\"]\n TenantMemberServiceDeleteRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12\x16\n\x06member\x18\x02 \x01(\tR\x06member\"\xa7\x01\n TenantMemberServiceCreateRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12;\n\x04role\x18\x03 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"\xfd\x01\n TenantMemberServiceUpdateRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12@\n\x04role\x18\x03 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04role\x88\x01\x01\x12\x46\n\x0bupdate_meta\x18\x04 \x01(\x0b\x32\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\nupdateMetaB\x07\n\x05_role\"Y\n\x1eTenantMemberServiceGetResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member\"\\\n\x1fTenantMemberServiceListResponse\x12\x39\n\x07members\x18\x01 \x03(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x07members\"\\\n!TenantMemberServiceCreateResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member\"\\\n!TenantMemberServiceUpdateResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member\"\\\n!TenantMemberServiceDeleteResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member\"D\n\x1fTenantMemberServiceLeaveRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\"[\n TenantMemberServiceLeaveResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member2\x88\x06\n\x13TenantMemberService\x12~\n\x06\x43reate\x12\x33.metalstack.api.v2.TenantMemberServiceCreateRequest\x1a\x34.metalstack.api.v2.TenantMemberServiceCreateResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12{\n\x04List\x12\x31.metalstack.api.v2.TenantMemberServiceListRequest\x1a\x32.metalstack.api.v2.TenantMemberServiceListResponse\"\x0c\xc2\xf3\x18\x04\x01\x02\x03\x04\xe0\xf3\x18\x02\x12x\n\x03Get\x12\x30.metalstack.api.v2.TenantMemberServiceGetRequest\x1a\x31.metalstack.api.v2.TenantMemberServiceGetResponse\"\x0c\xc2\xf3\x18\x04\x01\x02\x03\x04\xe0\xf3\x18\x02\x12~\n\x06Update\x12\x33.metalstack.api.v2.TenantMemberServiceUpdateRequest\x1a\x34.metalstack.api.v2.TenantMemberServiceUpdateResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12~\n\x06\x44\x65lete\x12\x33.metalstack.api.v2.TenantMemberServiceDeleteRequest\x1a\x34.metalstack.api.v2.TenantMemberServiceDeleteResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12z\n\x05Leave\x12\x32.metalstack.api.v2.TenantMemberServiceLeaveRequest\x1a\x33.metalstack.api.v2.TenantMemberServiceLeaveResponse\"\x08\xd8\xf3\x18\x02\xe0\xf3\x18\x01\x42\xc7\x01\n\x15\x63om.metalstack.api.v2B\x11TenantMemberProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%metalstack/api/v2/tenant_member.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xde\x01\n\x0cTenantMember\x12#\n\x06member\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12;\n\x04role\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x12\x1a\n\x08projects\x18\x03 \x03(\tR\x08projects\x12+\n\x04meta\x18\x04 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\x12#\n\x06tenant\x18\x05 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06tenant\"\x7f\n\x1eTenantMemberServiceListRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12:\n\x05query\x18\x02 \x01(\x0b\x32$.metalstack.api.v2.TenantMemberQueryR\x05query\"\xaf\x01\n\x11TenantMemberQuery\x12(\n\x06member\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01H\x00R\x06member\x88\x01\x01\x12@\n\x04role\x18\x02 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x01R\x04role\x88\x01\x01\x12\x1a\n\x08projects\x18\x03 \x03(\tR\x08projectsB\t\n\x07_memberB\x07\n\x05_role\"g\n\x1dTenantMemberServiceGetRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\"]\n TenantMemberServiceDeleteRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12\x16\n\x06member\x18\x02 \x01(\tR\x06member\"\xa7\x01\n TenantMemberServiceCreateRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12;\n\x04role\x18\x03 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"\xfd\x01\n TenantMemberServiceUpdateRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12@\n\x04role\x18\x03 \x01(\x0e\x32\x1d.metalstack.api.v2.TenantRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04role\x88\x01\x01\x12\x46\n\x0bupdate_meta\x18\x04 \x01(\x0b\x32\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\nupdateMetaB\x07\n\x05_role\"Y\n\x1eTenantMemberServiceGetResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member\"\\\n\x1fTenantMemberServiceListResponse\x12\x39\n\x07members\x18\x01 \x03(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x07members\"\\\n!TenantMemberServiceCreateResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member\"\\\n!TenantMemberServiceUpdateResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member\"\\\n!TenantMemberServiceDeleteResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member\"D\n\x1fTenantMemberServiceLeaveRequest\x12!\n\x05login\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x05login\"[\n TenantMemberServiceLeaveResponse\x12\x37\n\x06member\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.TenantMemberR\x06member2\x88\x06\n\x13TenantMemberService\x12~\n\x06\x43reate\x12\x33.metalstack.api.v2.TenantMemberServiceCreateRequest\x1a\x34.metalstack.api.v2.TenantMemberServiceCreateResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12{\n\x04List\x12\x31.metalstack.api.v2.TenantMemberServiceListRequest\x1a\x32.metalstack.api.v2.TenantMemberServiceListResponse\"\x0c\xc2\xf3\x18\x04\x01\x02\x03\x04\xe0\xf3\x18\x02\x12x\n\x03Get\x12\x30.metalstack.api.v2.TenantMemberServiceGetRequest\x1a\x31.metalstack.api.v2.TenantMemberServiceGetResponse\"\x0c\xc2\xf3\x18\x04\x01\x02\x03\x04\xe0\xf3\x18\x02\x12~\n\x06Update\x12\x33.metalstack.api.v2.TenantMemberServiceUpdateRequest\x1a\x34.metalstack.api.v2.TenantMemberServiceUpdateResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12~\n\x06\x44\x65lete\x12\x33.metalstack.api.v2.TenantMemberServiceDeleteRequest\x1a\x34.metalstack.api.v2.TenantMemberServiceDeleteResponse\"\t\xc2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12z\n\x05Leave\x12\x32.metalstack.api.v2.TenantMemberServiceLeaveRequest\x1a\x33.metalstack.api.v2.TenantMemberServiceLeaveResponse\"\x08\xd8\xf3\x18\x02\xe0\xf3\x18\x01\x42\xc7\x01\n\x15\x63om.metalstack.api.v2B\x11TenantMemberProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -82,34 +81,34 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TENANTMEMBERSERVICE'].methods_by_name['Delete']._serialized_options = b'\302\363\030\001\001\340\363\030\001'
   _globals['_TENANTMEMBERSERVICE'].methods_by_name['Leave']._loaded_options = None
   _globals['_TENANTMEMBERSERVICE'].methods_by_name['Leave']._serialized_options = b'\330\363\030\002\340\363\030\001'
-  _globals['_TENANTMEMBER']._serialized_start=197
-  _globals['_TENANTMEMBER']._serialized_end=478
-  _globals['_TENANTMEMBERSERVICELISTREQUEST']._serialized_start=480
-  _globals['_TENANTMEMBERSERVICELISTREQUEST']._serialized_end=607
-  _globals['_TENANTMEMBERQUERY']._serialized_start=610
-  _globals['_TENANTMEMBERQUERY']._serialized_end=785
-  _globals['_TENANTMEMBERSERVICEGETREQUEST']._serialized_start=787
-  _globals['_TENANTMEMBERSERVICEGETREQUEST']._serialized_end=890
-  _globals['_TENANTMEMBERSERVICEDELETEREQUEST']._serialized_start=892
-  _globals['_TENANTMEMBERSERVICEDELETEREQUEST']._serialized_end=985
-  _globals['_TENANTMEMBERSERVICECREATEREQUEST']._serialized_start=988
-  _globals['_TENANTMEMBERSERVICECREATEREQUEST']._serialized_end=1155
-  _globals['_TENANTMEMBERSERVICEUPDATEREQUEST']._serialized_start=1158
-  _globals['_TENANTMEMBERSERVICEUPDATEREQUEST']._serialized_end=1411
-  _globals['_TENANTMEMBERSERVICEGETRESPONSE']._serialized_start=1413
-  _globals['_TENANTMEMBERSERVICEGETRESPONSE']._serialized_end=1502
-  _globals['_TENANTMEMBERSERVICELISTRESPONSE']._serialized_start=1504
-  _globals['_TENANTMEMBERSERVICELISTRESPONSE']._serialized_end=1596
-  _globals['_TENANTMEMBERSERVICECREATERESPONSE']._serialized_start=1598
-  _globals['_TENANTMEMBERSERVICECREATERESPONSE']._serialized_end=1690
-  _globals['_TENANTMEMBERSERVICEUPDATERESPONSE']._serialized_start=1692
-  _globals['_TENANTMEMBERSERVICEUPDATERESPONSE']._serialized_end=1784
-  _globals['_TENANTMEMBERSERVICEDELETERESPONSE']._serialized_start=1786
-  _globals['_TENANTMEMBERSERVICEDELETERESPONSE']._serialized_end=1878
-  _globals['_TENANTMEMBERSERVICELEAVEREQUEST']._serialized_start=1880
-  _globals['_TENANTMEMBERSERVICELEAVEREQUEST']._serialized_end=1948
-  _globals['_TENANTMEMBERSERVICELEAVERESPONSE']._serialized_start=1950
-  _globals['_TENANTMEMBERSERVICELEAVERESPONSE']._serialized_end=2041
-  _globals['_TENANTMEMBERSERVICE']._serialized_start=2044
-  _globals['_TENANTMEMBERSERVICE']._serialized_end=2820
+  _globals['_TENANTMEMBER']._serialized_start=164
+  _globals['_TENANTMEMBER']._serialized_end=386
+  _globals['_TENANTMEMBERSERVICELISTREQUEST']._serialized_start=388
+  _globals['_TENANTMEMBERSERVICELISTREQUEST']._serialized_end=515
+  _globals['_TENANTMEMBERQUERY']._serialized_start=518
+  _globals['_TENANTMEMBERQUERY']._serialized_end=693
+  _globals['_TENANTMEMBERSERVICEGETREQUEST']._serialized_start=695
+  _globals['_TENANTMEMBERSERVICEGETREQUEST']._serialized_end=798
+  _globals['_TENANTMEMBERSERVICEDELETEREQUEST']._serialized_start=800
+  _globals['_TENANTMEMBERSERVICEDELETEREQUEST']._serialized_end=893
+  _globals['_TENANTMEMBERSERVICECREATEREQUEST']._serialized_start=896
+  _globals['_TENANTMEMBERSERVICECREATEREQUEST']._serialized_end=1063
+  _globals['_TENANTMEMBERSERVICEUPDATEREQUEST']._serialized_start=1066
+  _globals['_TENANTMEMBERSERVICEUPDATEREQUEST']._serialized_end=1319
+  _globals['_TENANTMEMBERSERVICEGETRESPONSE']._serialized_start=1321
+  _globals['_TENANTMEMBERSERVICEGETRESPONSE']._serialized_end=1410
+  _globals['_TENANTMEMBERSERVICELISTRESPONSE']._serialized_start=1412
+  _globals['_TENANTMEMBERSERVICELISTRESPONSE']._serialized_end=1504
+  _globals['_TENANTMEMBERSERVICECREATERESPONSE']._serialized_start=1506
+  _globals['_TENANTMEMBERSERVICECREATERESPONSE']._serialized_end=1598
+  _globals['_TENANTMEMBERSERVICEUPDATERESPONSE']._serialized_start=1600
+  _globals['_TENANTMEMBERSERVICEUPDATERESPONSE']._serialized_end=1692
+  _globals['_TENANTMEMBERSERVICEDELETERESPONSE']._serialized_start=1694
+  _globals['_TENANTMEMBERSERVICEDELETERESPONSE']._serialized_end=1786
+  _globals['_TENANTMEMBERSERVICELEAVEREQUEST']._serialized_start=1788
+  _globals['_TENANTMEMBERSERVICELEAVEREQUEST']._serialized_end=1856
+  _globals['_TENANTMEMBERSERVICELEAVERESPONSE']._serialized_start=1858
+  _globals['_TENANTMEMBERSERVICELEAVERESPONSE']._serialized_end=1949
+  _globals['_TENANTMEMBERSERVICE']._serialized_start=1952
+  _globals['_TENANTMEMBERSERVICE']._serialized_end=2728
 # @@protoc_insertion_point(module_scope)

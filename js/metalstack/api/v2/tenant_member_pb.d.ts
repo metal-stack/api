@@ -1,5 +1,4 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Meta, TenantRole, UpdateMeta } from "./common_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -31,21 +30,15 @@ export type TenantMember = Message<"metalstack.api.v2.TenantMember"> & {
      */
     projects: string[];
     /**
-     * CreatedAt the date when the member was added to the tenant.
-     *
-     * @generated from field: google.protobuf.Timestamp created_at = 4;
-     */
-    createdAt?: Timestamp | undefined;
-    /**
      * Meta for this tenant member.
      *
-     * @generated from field: metalstack.api.v2.Meta meta = 5;
+     * @generated from field: metalstack.api.v2.Meta meta = 4;
      */
     meta?: Meta | undefined;
     /**
      * Tenant is the tenant that this member participates in.
      *
-     * @generated from field: string tenant = 6;
+     * @generated from field: string tenant = 5;
      */
     tenant: string;
 };

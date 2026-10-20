@@ -1,5 +1,4 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import type { Meta, ProjectRole, UpdateMeta } from "./common_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -33,15 +32,9 @@ export type ProjectMember = Message<"metalstack.api.v2.ProjectMember"> & {
      */
     inheritedMembership: boolean;
     /**
-     * CreatedAt the date when the member was added to the project.
-     *
-     * @generated from field: google.protobuf.Timestamp created_at = 4;
-     */
-    createdAt?: Timestamp | undefined;
-    /**
      * Meta for this project member.
      *
-     * @generated from field: metalstack.api.v2.Meta meta = 5;
+     * @generated from field: metalstack.api.v2.Meta meta = 4;
      */
     meta?: Meta | undefined;
 };

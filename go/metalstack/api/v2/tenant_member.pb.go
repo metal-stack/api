@@ -10,7 +10,6 @@ import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -32,12 +31,10 @@ type TenantMember struct {
 	Role TenantRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.TenantRole" json:"role,omitempty"`
 	// Projects in which a user is a direct member.
 	Projects []string `protobuf:"bytes,3,rep,name=projects,proto3" json:"projects,omitempty"`
-	// CreatedAt the date when the member was added to the tenant.
-	CreatedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	// Meta for this tenant member.
-	Meta *Meta `protobuf:"bytes,5,opt,name=meta,proto3" json:"meta,omitempty"`
+	Meta *Meta `protobuf:"bytes,4,opt,name=meta,proto3" json:"meta,omitempty"`
 	// Tenant is the tenant that this member participates in.
-	Tenant        string `protobuf:"bytes,6,opt,name=tenant,proto3" json:"tenant,omitempty"`
+	Tenant        string `protobuf:"bytes,5,opt,name=tenant,proto3" json:"tenant,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -89,13 +86,6 @@ func (x *TenantMember) GetRole() TenantRole {
 func (x *TenantMember) GetProjects() []string {
 	if x != nil {
 		return x.Projects
-	}
-	return nil
-}
-
-func (x *TenantMember) GetCreatedAt() *timestamppb.Timestamp {
-	if x != nil {
-		return x.CreatedAt
 	}
 	return nil
 }
@@ -806,15 +796,13 @@ var File_metalstack_api_v2_tenant_member_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_tenant_member_proto_rawDesc = "" +
 	"\n" +
-	"%metalstack/api/v2/tenant_member.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\x99\x02\n" +
+	"%metalstack/api/v2/tenant_member.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xde\x01\n" +
 	"\fTenantMember\x12#\n" +
 	"\x06member\x18\x01 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12;\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x1d.metalstack.api.v2.TenantRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x12\x1a\n" +
-	"\bprojects\x18\x03 \x03(\tR\bprojects\x129\n" +
-	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12+\n" +
-	"\x04meta\x18\x05 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12#\n" +
-	"\x06tenant\x18\x06 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06tenant\"\x7f\n" +
+	"\bprojects\x18\x03 \x03(\tR\bprojects\x12+\n" +
+	"\x04meta\x18\x04 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12#\n" +
+	"\x06tenant\x18\x05 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06tenant\"\x7f\n" +
 	"\x1eTenantMemberServiceListRequest\x12!\n" +
 	"\x05login\x18\x01 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x05login\x12:\n" +
 	"\x05query\x18\x02 \x01(\v2$.metalstack.api.v2.TenantMemberQueryR\x05query\"\xaf\x01\n" +
@@ -893,42 +881,40 @@ var file_metalstack_api_v2_tenant_member_proto_goTypes = []any{
 	(*TenantMemberServiceLeaveRequest)(nil),   // 12: metalstack.api.v2.TenantMemberServiceLeaveRequest
 	(*TenantMemberServiceLeaveResponse)(nil),  // 13: metalstack.api.v2.TenantMemberServiceLeaveResponse
 	(TenantRole)(0),                           // 14: metalstack.api.v2.TenantRole
-	(*timestamppb.Timestamp)(nil),             // 15: google.protobuf.Timestamp
-	(*Meta)(nil),                              // 16: metalstack.api.v2.Meta
-	(*UpdateMeta)(nil),                        // 17: metalstack.api.v2.UpdateMeta
+	(*Meta)(nil),                              // 15: metalstack.api.v2.Meta
+	(*UpdateMeta)(nil),                        // 16: metalstack.api.v2.UpdateMeta
 }
 var file_metalstack_api_v2_tenant_member_proto_depIdxs = []int32{
 	14, // 0: metalstack.api.v2.TenantMember.role:type_name -> metalstack.api.v2.TenantRole
-	15, // 1: metalstack.api.v2.TenantMember.created_at:type_name -> google.protobuf.Timestamp
-	16, // 2: metalstack.api.v2.TenantMember.meta:type_name -> metalstack.api.v2.Meta
-	2,  // 3: metalstack.api.v2.TenantMemberServiceListRequest.query:type_name -> metalstack.api.v2.TenantMemberQuery
-	14, // 4: metalstack.api.v2.TenantMemberQuery.role:type_name -> metalstack.api.v2.TenantRole
-	14, // 5: metalstack.api.v2.TenantMemberServiceCreateRequest.role:type_name -> metalstack.api.v2.TenantRole
-	14, // 6: metalstack.api.v2.TenantMemberServiceUpdateRequest.role:type_name -> metalstack.api.v2.TenantRole
-	17, // 7: metalstack.api.v2.TenantMemberServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	0,  // 8: metalstack.api.v2.TenantMemberServiceGetResponse.member:type_name -> metalstack.api.v2.TenantMember
-	0,  // 9: metalstack.api.v2.TenantMemberServiceListResponse.members:type_name -> metalstack.api.v2.TenantMember
-	0,  // 10: metalstack.api.v2.TenantMemberServiceCreateResponse.member:type_name -> metalstack.api.v2.TenantMember
-	0,  // 11: metalstack.api.v2.TenantMemberServiceUpdateResponse.member:type_name -> metalstack.api.v2.TenantMember
-	0,  // 12: metalstack.api.v2.TenantMemberServiceDeleteResponse.member:type_name -> metalstack.api.v2.TenantMember
-	0,  // 13: metalstack.api.v2.TenantMemberServiceLeaveResponse.member:type_name -> metalstack.api.v2.TenantMember
-	5,  // 14: metalstack.api.v2.TenantMemberService.Create:input_type -> metalstack.api.v2.TenantMemberServiceCreateRequest
-	1,  // 15: metalstack.api.v2.TenantMemberService.List:input_type -> metalstack.api.v2.TenantMemberServiceListRequest
-	3,  // 16: metalstack.api.v2.TenantMemberService.Get:input_type -> metalstack.api.v2.TenantMemberServiceGetRequest
-	6,  // 17: metalstack.api.v2.TenantMemberService.Update:input_type -> metalstack.api.v2.TenantMemberServiceUpdateRequest
-	4,  // 18: metalstack.api.v2.TenantMemberService.Delete:input_type -> metalstack.api.v2.TenantMemberServiceDeleteRequest
-	12, // 19: metalstack.api.v2.TenantMemberService.Leave:input_type -> metalstack.api.v2.TenantMemberServiceLeaveRequest
-	9,  // 20: metalstack.api.v2.TenantMemberService.Create:output_type -> metalstack.api.v2.TenantMemberServiceCreateResponse
-	8,  // 21: metalstack.api.v2.TenantMemberService.List:output_type -> metalstack.api.v2.TenantMemberServiceListResponse
-	7,  // 22: metalstack.api.v2.TenantMemberService.Get:output_type -> metalstack.api.v2.TenantMemberServiceGetResponse
-	10, // 23: metalstack.api.v2.TenantMemberService.Update:output_type -> metalstack.api.v2.TenantMemberServiceUpdateResponse
-	11, // 24: metalstack.api.v2.TenantMemberService.Delete:output_type -> metalstack.api.v2.TenantMemberServiceDeleteResponse
-	13, // 25: metalstack.api.v2.TenantMemberService.Leave:output_type -> metalstack.api.v2.TenantMemberServiceLeaveResponse
-	20, // [20:26] is the sub-list for method output_type
-	14, // [14:20] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	15, // 1: metalstack.api.v2.TenantMember.meta:type_name -> metalstack.api.v2.Meta
+	2,  // 2: metalstack.api.v2.TenantMemberServiceListRequest.query:type_name -> metalstack.api.v2.TenantMemberQuery
+	14, // 3: metalstack.api.v2.TenantMemberQuery.role:type_name -> metalstack.api.v2.TenantRole
+	14, // 4: metalstack.api.v2.TenantMemberServiceCreateRequest.role:type_name -> metalstack.api.v2.TenantRole
+	14, // 5: metalstack.api.v2.TenantMemberServiceUpdateRequest.role:type_name -> metalstack.api.v2.TenantRole
+	16, // 6: metalstack.api.v2.TenantMemberServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	0,  // 7: metalstack.api.v2.TenantMemberServiceGetResponse.member:type_name -> metalstack.api.v2.TenantMember
+	0,  // 8: metalstack.api.v2.TenantMemberServiceListResponse.members:type_name -> metalstack.api.v2.TenantMember
+	0,  // 9: metalstack.api.v2.TenantMemberServiceCreateResponse.member:type_name -> metalstack.api.v2.TenantMember
+	0,  // 10: metalstack.api.v2.TenantMemberServiceUpdateResponse.member:type_name -> metalstack.api.v2.TenantMember
+	0,  // 11: metalstack.api.v2.TenantMemberServiceDeleteResponse.member:type_name -> metalstack.api.v2.TenantMember
+	0,  // 12: metalstack.api.v2.TenantMemberServiceLeaveResponse.member:type_name -> metalstack.api.v2.TenantMember
+	5,  // 13: metalstack.api.v2.TenantMemberService.Create:input_type -> metalstack.api.v2.TenantMemberServiceCreateRequest
+	1,  // 14: metalstack.api.v2.TenantMemberService.List:input_type -> metalstack.api.v2.TenantMemberServiceListRequest
+	3,  // 15: metalstack.api.v2.TenantMemberService.Get:input_type -> metalstack.api.v2.TenantMemberServiceGetRequest
+	6,  // 16: metalstack.api.v2.TenantMemberService.Update:input_type -> metalstack.api.v2.TenantMemberServiceUpdateRequest
+	4,  // 17: metalstack.api.v2.TenantMemberService.Delete:input_type -> metalstack.api.v2.TenantMemberServiceDeleteRequest
+	12, // 18: metalstack.api.v2.TenantMemberService.Leave:input_type -> metalstack.api.v2.TenantMemberServiceLeaveRequest
+	9,  // 19: metalstack.api.v2.TenantMemberService.Create:output_type -> metalstack.api.v2.TenantMemberServiceCreateResponse
+	8,  // 20: metalstack.api.v2.TenantMemberService.List:output_type -> metalstack.api.v2.TenantMemberServiceListResponse
+	7,  // 21: metalstack.api.v2.TenantMemberService.Get:output_type -> metalstack.api.v2.TenantMemberServiceGetResponse
+	10, // 22: metalstack.api.v2.TenantMemberService.Update:output_type -> metalstack.api.v2.TenantMemberServiceUpdateResponse
+	11, // 23: metalstack.api.v2.TenantMemberService.Delete:output_type -> metalstack.api.v2.TenantMemberServiceDeleteResponse
+	13, // 24: metalstack.api.v2.TenantMemberService.Leave:output_type -> metalstack.api.v2.TenantMemberServiceLeaveResponse
+	19, // [19:25] is the sub-list for method output_type
+	13, // [13:19] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_tenant_member_proto_init() }

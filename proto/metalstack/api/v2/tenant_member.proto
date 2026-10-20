@@ -3,7 +3,6 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
-import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
@@ -56,12 +55,10 @@ message TenantMember {
   TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
   // Projects in which a user is a direct member.
   repeated string projects = 3;
-  // CreatedAt the date when the member was added to the tenant.
-  google.protobuf.Timestamp created_at = 4;
   // Meta for this tenant member.
-  Meta meta = 5;
+  Meta meta = 4;
   // Tenant is the tenant that this member participates in.
-  string tenant = 6 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  string tenant = 5 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
 // TenantMemberServiceListRequest is the request payload of the tenant member list request.

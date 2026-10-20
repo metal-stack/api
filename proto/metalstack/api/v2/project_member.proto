@@ -3,7 +3,6 @@ syntax = "proto3";
 package metalstack.api.v2;
 
 import "buf/validate/validate.proto";
-import "google/protobuf/timestamp.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 
@@ -56,10 +55,8 @@ message ProjectMember {
   // This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
   // Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
   bool inherited_membership = 3;
-  // CreatedAt the date when the member was added to the project.
-  google.protobuf.Timestamp created_at = 4;
   // Meta for this project member.
-  Meta meta = 5;
+  Meta meta = 4;
 }
 
 // ProjectQuery is used to search projects.
