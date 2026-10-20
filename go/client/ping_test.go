@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"sync"
 	"testing"
 	"time"
 
@@ -61,7 +62,7 @@ func Test_Ping(t *testing.T) {
 	}
 
 	c.Ping(ctx, config)
-	time.Sleep(3 * config.Interval)
+	time.Sleep(2*config.Interval + 300*time.Millisecond)
 	if diff := cmp.Diff(
 		cs.pings, want,
 		protocmp.Transform(),
@@ -73,10 +74,13 @@ func Test_Ping(t *testing.T) {
 
 type mockComponentService struct {
 	log   *slog.Logger
+	mu    sync.Mutex
 	pings []*infra.ComponentServicePingRequest
 }
 
 func (m *mockComponentService) Ping(_ context.Context, req *infra.ComponentServicePingRequest) (*infra.ComponentServicePingResponse, error) {
+	m.mu.Lock()
+	defer m.mu.Unlock()
 	m.log.Debug("ping", "req", req)
 	m.pings = append(m.pings, req)
 	return nil, nil

@@ -154,14 +154,14 @@ func (dc *DialConfig) parse() error {
 		return nil
 	}
 
-	return dc.parseTokenClaims()
+	return dc.parseTokenClaims(dc.Token)
 }
 
 // parseTokenClaims extracts expiresAt and issuedAt from the current Token.
 // It is called both when initially parsing the config and when a tokenfile
 // token is re-read, in which case only the claims need to be refreshed.
-func (dc *DialConfig) parseTokenClaims() error {
-	parsed, err := jwt.Parse(dc.Token, nil)
+func (dc *DialConfig) parseTokenClaims(token string) error {
+	parsed, err := jwt.Parse(token, nil)
 	if err != nil && !errors.Is(err, jwt.ErrTokenUnverifiable) {
 		return fmt.Errorf("unable to parse token:%w", err)
 	}

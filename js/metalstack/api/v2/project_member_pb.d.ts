@@ -239,9 +239,9 @@ export type ProjectMemberServiceGetResponse = Message<"metalstack.api.v2.Project
     /**
      * Member in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
      *
-     * @generated from field: repeated metalstack.api.v2.ProjectMember member = 1;
+     * @generated from field: metalstack.api.v2.ProjectMember member = 1;
      */
-    member: ProjectMember[];
+    member?: ProjectMember | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectMemberServiceGetResponse.

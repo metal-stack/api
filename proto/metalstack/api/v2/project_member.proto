@@ -125,7 +125,7 @@ message ProjectMemberServiceListResponse {
 // ProjectMemberServiceGetResponse is the response payload to get a projects.
 message ProjectMemberServiceGetResponse {
   // Member in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
-  repeated ProjectMember member = 1;
+  ProjectMember member = 1;
 }
 
 // ProjectMemberServiceCreateResponse is the response payload to create a project member.

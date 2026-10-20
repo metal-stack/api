@@ -89,8 +89,8 @@ class ProjectMemberServiceListResponse(_message.Message):
 class ProjectMemberServiceGetResponse(_message.Message):
     __slots__ = ("member",)
     MEMBER_FIELD_NUMBER: _ClassVar[int]
-    member: _containers.RepeatedCompositeFieldContainer[ProjectMember]
-    def __init__(self, member: _Optional[_Iterable[_Union[ProjectMember, _Mapping]]] = ...) -> None: ...
+    member: ProjectMember
+    def __init__(self, member: _Optional[_Union[ProjectMember, _Mapping]] = ...) -> None: ...
 
 class ProjectMemberServiceCreateResponse(_message.Message):
     __slots__ = ("member",)

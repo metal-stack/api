@@ -514,7 +514,7 @@ func (x *ProjectMemberServiceListResponse) GetMembers() []*ProjectMember {
 type ProjectMemberServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Member in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
-	Member        []*ProjectMember `protobuf:"bytes,1,rep,name=member,proto3" json:"member,omitempty"`
+	Member        *ProjectMember `protobuf:"bytes,1,opt,name=member,proto3" json:"member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -549,7 +549,7 @@ func (*ProjectMemberServiceGetResponse) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_project_member_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ProjectMemberServiceGetResponse) GetMember() []*ProjectMember {
+func (x *ProjectMemberServiceGetResponse) GetMember() *ProjectMember {
 	if x != nil {
 		return x.Member
 	}
@@ -825,7 +825,7 @@ const file_metalstack_api_v2_project_member_proto_rawDesc = "" +
 	" ProjectMemberServiceListResponse\x12:\n" +
 	"\amembers\x18\x01 \x03(\v2 .metalstack.api.v2.ProjectMemberR\amembers\"[\n" +
 	"\x1fProjectMemberServiceGetResponse\x128\n" +
-	"\x06member\x18\x01 \x03(\v2 .metalstack.api.v2.ProjectMemberR\x06member\"^\n" +
+	"\x06member\x18\x01 \x01(\v2 .metalstack.api.v2.ProjectMemberR\x06member\"^\n" +
 	"\"ProjectMemberServiceCreateResponse\x128\n" +
 	"\x06member\x18\x01 \x01(\v2 .metalstack.api.v2.ProjectMemberR\x06member\"^\n" +
 	"\"ProjectMemberServiceDeleteResponse\x128\n" +
