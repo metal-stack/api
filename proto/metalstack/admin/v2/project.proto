@@ -47,18 +47,10 @@ message ProjectServiceListResponse {
 
 // ProjectServiceCreateRequest is the request payload to Create a project.
 message ProjectServiceCreateRequest {
-  // Login is the tenant of this project.
-  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Name of this project, unique per tenant.
-  string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
-  // Description of this project.
-  string description = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Avatar URL of the project.
-  optional string avatar_url = 4 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Labels on the project.
-  metalstack.api.v2.Labels labels = 5;
-  // Project is the uuid of the project.
-  optional string project = 6 [(buf.validate.field).string.uuid = true];
+  // Project is the project create request.
+  metalstack.api.v2.ProjectServiceCreateRequest project = 1;
+  // ID is a static uuid of the project.
+  optional string id = 2 [(buf.validate.field).string.uuid = true];
 }
 
 // ProjectServiceCreateResponse is the response payload for creating a project.

@@ -26,18 +26,10 @@ const (
 // TenantServiceCreateRequest is the request payload for creating a tenant.
 type TenantServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Name of the tenant.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of the tenant.
-	Description *string `protobuf:"bytes,2,opt,name=description,proto3,oneof" json:"description,omitempty"`
-	// Email of the tenant, if not set will be inherited from the creator.
-	Email *string `protobuf:"bytes,3,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	// AvatarUrl of the tenant.
-	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// Labels on the tenant.
-	Labels *v2.Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
-	// Login of the tenant.
-	Login         *string `protobuf:"bytes,6,opt,name=login,proto3,oneof" json:"login,omitempty"`
+	// Tenant is the tenant create request.
+	Tenant *v2.TenantServiceCreateRequest `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
+	// Login of a static ID for tenant.
+	Login         *string `protobuf:"bytes,2,opt,name=login,proto3,oneof" json:"login,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -72,37 +64,9 @@ func (*TenantServiceCreateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_tenant_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *TenantServiceCreateRequest) GetName() string {
+func (x *TenantServiceCreateRequest) GetTenant() *v2.TenantServiceCreateRequest {
 	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *TenantServiceCreateRequest) GetDescription() string {
-	if x != nil && x.Description != nil {
-		return *x.Description
-	}
-	return ""
-}
-
-func (x *TenantServiceCreateRequest) GetEmail() string {
-	if x != nil && x.Email != nil {
-		return *x.Email
-	}
-	return ""
-}
-
-func (x *TenantServiceCreateRequest) GetAvatarUrl() string {
-	if x != nil && x.AvatarUrl != nil {
-		return *x.AvatarUrl
-	}
-	return ""
-}
-
-func (x *TenantServiceCreateRequest) GetLabels() *v2.Labels {
-	if x != nil {
-		return x.Labels
+		return x.Tenant
 	}
 	return nil
 }
@@ -476,18 +440,10 @@ var File_metalstack_admin_v2_tenant_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_tenant_proto_rawDesc = "" +
 	"\n" +
-	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\x1a%metalstack/api/v2/tenant_member.proto\"\xd4\x02\n" +
-	"\x1aTenantServiceCreateRequest\x12\x1f\n" +
-	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x122\n" +
-	"\vdescription\x18\x02 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x00R\vdescription\x88\x01\x01\x12\"\n" +
-	"\x05email\x18\x03 \x01(\tB\a\xbaH\x04r\x02`\x01H\x01R\x05email\x88\x01\x01\x12/\n" +
-	"\n" +
-	"avatar_url\x18\x04 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01H\x02R\tavatarUrl\x88\x01\x01\x121\n" +
-	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12&\n" +
-	"\x05login\x18\x06 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01H\x03R\x05login\x88\x01\x01B\x0e\n" +
-	"\f_descriptionB\b\n" +
-	"\x06_emailB\r\n" +
-	"\v_avatar_urlB\b\n" +
+	" metalstack/admin/v2/tenant.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\x1a\x1emetalstack/api/v2/tenant.proto\x1a%metalstack/api/v2/tenant_member.proto\"\x95\x01\n" +
+	"\x1aTenantServiceCreateRequest\x12E\n" +
+	"\x06tenant\x18\x01 \x01(\v2-.metalstack.api.v2.TenantServiceCreateRequestR\x06tenant\x12&\n" +
+	"\x05login\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01H\x00R\x05login\x88\x01\x01B\b\n" +
 	"\x06_login\"P\n" +
 	"\x1bTenantServiceCreateResponse\x121\n" +
 	"\x06tenant\x18\x01 \x01(\v2\x19.metalstack.api.v2.TenantR\x06tenant\"P\n" +
@@ -539,14 +495,14 @@ var file_metalstack_admin_v2_tenant_proto_goTypes = []any{
 	(*TenantServiceAddMemberResponse)(nil),    // 5: metalstack.admin.v2.TenantServiceAddMemberResponse
 	(*TenantServiceRemoveMemberRequest)(nil),  // 6: metalstack.admin.v2.TenantServiceRemoveMemberRequest
 	(*TenantServiceRemoveMemberResponse)(nil), // 7: metalstack.admin.v2.TenantServiceRemoveMemberResponse
-	(*v2.Labels)(nil),                         // 8: metalstack.api.v2.Labels
+	(*v2.TenantServiceCreateRequest)(nil),     // 8: metalstack.api.v2.TenantServiceCreateRequest
 	(*v2.Tenant)(nil),                         // 9: metalstack.api.v2.Tenant
 	(*v2.TenantQuery)(nil),                    // 10: metalstack.api.v2.TenantQuery
 	(v2.TenantRole)(0),                        // 11: metalstack.api.v2.TenantRole
 	(*v2.TenantMember)(nil),                   // 12: metalstack.api.v2.TenantMember
 }
 var file_metalstack_admin_v2_tenant_proto_depIdxs = []int32{
-	8,  // 0: metalstack.admin.v2.TenantServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	8,  // 0: metalstack.admin.v2.TenantServiceCreateRequest.tenant:type_name -> metalstack.api.v2.TenantServiceCreateRequest
 	9,  // 1: metalstack.admin.v2.TenantServiceCreateResponse.tenant:type_name -> metalstack.api.v2.Tenant
 	10, // 2: metalstack.admin.v2.TenantServiceListRequest.query:type_name -> metalstack.api.v2.TenantQuery
 	9,  // 3: metalstack.admin.v2.TenantServiceListResponse.tenants:type_name -> metalstack.api.v2.Tenant

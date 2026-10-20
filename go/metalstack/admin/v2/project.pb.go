@@ -118,18 +118,10 @@ func (x *ProjectServiceListResponse) GetProjects() []*v2.Project {
 // ProjectServiceCreateRequest is the request payload to Create a project.
 type ProjectServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Login is the tenant of this project.
-	Login string `protobuf:"bytes,1,opt,name=login,proto3" json:"login,omitempty"`
-	// Name of this project, unique per tenant.
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// Description of this project.
-	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
-	// Avatar URL of the project.
-	AvatarUrl *string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
-	// Labels on the project.
-	Labels *v2.Labels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
-	// Project is the uuid of the project.
-	Project       *string `protobuf:"bytes,6,opt,name=project,proto3,oneof" json:"project,omitempty"`
+	// Project is the project create request.
+	Project *v2.ProjectServiceCreateRequest `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
+	// ID is a static uuid of the project.
+	Id            *string `protobuf:"bytes,2,opt,name=id,proto3,oneof" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -164,44 +156,16 @@ func (*ProjectServiceCreateRequest) Descriptor() ([]byte, []int) {
 	return file_metalstack_admin_v2_project_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ProjectServiceCreateRequest) GetLogin() string {
+func (x *ProjectServiceCreateRequest) GetProject() *v2.ProjectServiceCreateRequest {
 	if x != nil {
-		return x.Login
-	}
-	return ""
-}
-
-func (x *ProjectServiceCreateRequest) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *ProjectServiceCreateRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *ProjectServiceCreateRequest) GetAvatarUrl() string {
-	if x != nil && x.AvatarUrl != nil {
-		return *x.AvatarUrl
-	}
-	return ""
-}
-
-func (x *ProjectServiceCreateRequest) GetLabels() *v2.Labels {
-	if x != nil {
-		return x.Labels
+		return x.Project
 	}
 	return nil
 }
 
-func (x *ProjectServiceCreateRequest) GetProject() string {
-	if x != nil && x.Project != nil {
-		return *x.Project
+func (x *ProjectServiceCreateRequest) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
 	}
 	return ""
 }
@@ -472,18 +436,11 @@ const file_metalstack_admin_v2_project_proto_rawDesc = "" +
 	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.ProjectQueryH\x00R\x05query\x88\x01\x01B\b\n" +
 	"\x06_query\"T\n" +
 	"\x1aProjectServiceListResponse\x126\n" +
-	"\bprojects\x18\x01 \x03(\v2\x1a.metalstack.api.v2.ProjectR\bprojects\"\xb8\x02\n" +
-	"\x1bProjectServiceCreateRequest\x12!\n" +
-	"\x05login\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x05login\x12\x1f\n" +
-	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12-\n" +
-	"\vdescription\x18\x03 \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01R\vdescription\x12/\n" +
-	"\n" +
-	"avatar_url\x18\x04 \x01(\tB\v\xbaH\br\x06೮\xb1\x02\x01H\x00R\tavatarUrl\x88\x01\x01\x121\n" +
-	"\x06labels\x18\x05 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\x12'\n" +
-	"\aproject\x18\x06 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x01R\aproject\x88\x01\x01B\r\n" +
-	"\v_avatar_urlB\n" +
-	"\n" +
-	"\b_project\"T\n" +
+	"\bprojects\x18\x01 \x03(\v2\x1a.metalstack.api.v2.ProjectR\bprojects\"\x8d\x01\n" +
+	"\x1bProjectServiceCreateRequest\x12H\n" +
+	"\aproject\x18\x01 \x01(\v2..metalstack.api.v2.ProjectServiceCreateRequestR\aproject\x12\x1d\n" +
+	"\x02id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"T\n" +
 	"\x1cProjectServiceCreateResponse\x124\n" +
 	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\xa7\x01\n" +
 	"\x1eProjectServiceAddMemberRequest\x12\"\n" +
@@ -529,14 +486,14 @@ var file_metalstack_admin_v2_project_proto_goTypes = []any{
 	(*ProjectServiceRemoveMemberResponse)(nil), // 7: metalstack.admin.v2.ProjectServiceRemoveMemberResponse
 	(*v2.ProjectQuery)(nil),                    // 8: metalstack.api.v2.ProjectQuery
 	(*v2.Project)(nil),                         // 9: metalstack.api.v2.Project
-	(*v2.Labels)(nil),                          // 10: metalstack.api.v2.Labels
+	(*v2.ProjectServiceCreateRequest)(nil),     // 10: metalstack.api.v2.ProjectServiceCreateRequest
 	(v2.ProjectRole)(0),                        // 11: metalstack.api.v2.ProjectRole
 	(*v2.ProjectMember)(nil),                   // 12: metalstack.api.v2.ProjectMember
 }
 var file_metalstack_admin_v2_project_proto_depIdxs = []int32{
 	8,  // 0: metalstack.admin.v2.ProjectServiceListRequest.query:type_name -> metalstack.api.v2.ProjectQuery
 	9,  // 1: metalstack.admin.v2.ProjectServiceListResponse.projects:type_name -> metalstack.api.v2.Project
-	10, // 2: metalstack.admin.v2.ProjectServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	10, // 2: metalstack.admin.v2.ProjectServiceCreateRequest.project:type_name -> metalstack.api.v2.ProjectServiceCreateRequest
 	9,  // 3: metalstack.admin.v2.ProjectServiceCreateResponse.project:type_name -> metalstack.api.v2.Project
 	11, // 4: metalstack.admin.v2.ProjectServiceAddMemberRequest.role:type_name -> metalstack.api.v2.ProjectRole
 	12, // 5: metalstack.admin.v2.ProjectServiceAddMemberResponse.member:type_name -> metalstack.api.v2.ProjectMember

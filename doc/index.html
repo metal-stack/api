@@ -16230,45 +16230,17 @@ Inherited memberships are not included in member lists for users with guest perm
             <tbody>
               
                 <tr>
-                  <td>login</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Login is the tenant of this project. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Name of this project, unique per tenant. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>description</td>
-                  <td><a href="#string">string</a></td>
-                  <td></td>
-                  <td><p>Description of this project. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>avatar_url</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Avatar URL of the project. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Labels">metalstack.api.v2.Labels</a></td>
-                  <td></td>
-                  <td><p>Labels on the project. </p></td>
-                </tr>
-              
-                <tr>
                   <td>project</td>
+                  <td><a href="#metalstack.api.v2.ProjectServiceCreateRequest">metalstack.api.v2.ProjectServiceCreateRequest</a></td>
+                  <td></td>
+                  <td><p>Project is the project create request. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Project is the uuid of the project. </p></td>
+                  <td><p>ID is a static uuid of the project. </p></td>
                 </tr>
               
             </tbody>
@@ -20971,45 +20943,17 @@ Will return tasks from all queues if not specified. </p></td>
             <tbody>
               
                 <tr>
-                  <td>name</td>
-                  <td><a href="#string">string</a></td>
+                  <td>tenant</td>
+                  <td><a href="#metalstack.api.v2.TenantServiceCreateRequest">metalstack.api.v2.TenantServiceCreateRequest</a></td>
                   <td></td>
-                  <td><p>Name of the tenant. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>description</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Description of the tenant. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>email</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>Email of the tenant, if not set will be inherited from the creator. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>avatar_url</td>
-                  <td><a href="#string">string</a></td>
-                  <td>optional</td>
-                  <td><p>AvatarUrl of the tenant. </p></td>
-                </tr>
-              
-                <tr>
-                  <td>labels</td>
-                  <td><a href="#metalstack.api.v2.Labels">metalstack.api.v2.Labels</a></td>
-                  <td></td>
-                  <td><p>Labels on the tenant. </p></td>
+                  <td><p>Tenant is the tenant create request. </p></td>
                 </tr>
               
                 <tr>
                   <td>login</td>
                   <td><a href="#string">string</a></td>
                   <td>optional</td>
-                  <td><p>Login of the tenant. </p></td>
+                  <td><p>Login of a static ID for tenant. </p></td>
                 </tr>
               
             </tbody>

@@ -24,20 +24,12 @@ class ProjectServiceListResponse(_message.Message):
     def __init__(self, projects: _Optional[_Iterable[_Union[_project_pb2.Project, _Mapping]]] = ...) -> None: ...
 
 class ProjectServiceCreateRequest(_message.Message):
-    __slots__ = ("login", "name", "description", "avatar_url", "labels", "project")
-    LOGIN_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
-    AVATAR_URL_FIELD_NUMBER: _ClassVar[int]
-    LABELS_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ("project", "id")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
-    login: str
-    name: str
-    description: str
-    avatar_url: str
-    labels: _common_pb2.Labels
-    project: str
-    def __init__(self, login: _Optional[str] = ..., name: _Optional[str] = ..., description: _Optional[str] = ..., avatar_url: _Optional[str] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ..., project: _Optional[str] = ...) -> None: ...
+    ID_FIELD_NUMBER: _ClassVar[int]
+    project: _project_pb2.ProjectServiceCreateRequest
+    id: str
+    def __init__(self, project: _Optional[_Union[_project_pb2.ProjectServiceCreateRequest, _Mapping]] = ..., id: _Optional[str] = ...) -> None: ...
 
 class ProjectServiceCreateResponse(_message.Message):
     __slots__ = ("project",)

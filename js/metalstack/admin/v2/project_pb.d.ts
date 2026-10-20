@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Labels, ProjectRole } from "../../api/v2/common_pb";
-import type { Project, ProjectQuery } from "../../api/v2/project_pb";
+import type { ProjectRole } from "../../api/v2/common_pb";
+import type { Project, ProjectQuery, ProjectServiceCreateRequest as ProjectServiceCreateRequest$1 } from "../../api/v2/project_pb";
 import type { ProjectMember } from "../../api/v2/project_member_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -50,41 +50,17 @@ export declare const ProjectServiceListResponseSchema: GenMessage<ProjectService
  */
 export type ProjectServiceCreateRequest = Message<"metalstack.admin.v2.ProjectServiceCreateRequest"> & {
     /**
-     * Login is the tenant of this project.
+     * Project is the project create request.
      *
-     * @generated from field: string login = 1;
+     * @generated from field: metalstack.api.v2.ProjectServiceCreateRequest project = 1;
      */
-    login: string;
+    project?: ProjectServiceCreateRequest$1 | undefined;
     /**
-     * Name of this project, unique per tenant.
+     * ID is a static uuid of the project.
      *
-     * @generated from field: string name = 2;
+     * @generated from field: optional string id = 2;
      */
-    name: string;
-    /**
-     * Description of this project.
-     *
-     * @generated from field: string description = 3;
-     */
-    description: string;
-    /**
-     * Avatar URL of the project.
-     *
-     * @generated from field: optional string avatar_url = 4;
-     */
-    avatarUrl?: string | undefined;
-    /**
-     * Labels on the project.
-     *
-     * @generated from field: metalstack.api.v2.Labels labels = 5;
-     */
-    labels?: Labels | undefined;
-    /**
-     * Project is the uuid of the project.
-     *
-     * @generated from field: optional string project = 6;
-     */
-    project?: string | undefined;
+    id?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ProjectServiceCreateRequest.

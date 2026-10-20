@@ -1,6 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Labels, TenantRole } from "../../api/v2/common_pb";
-import type { Tenant, TenantQuery } from "../../api/v2/tenant_pb";
+import type { TenantRole } from "../../api/v2/common_pb";
+import type { Tenant, TenantQuery, TenantServiceCreateRequest as TenantServiceCreateRequest$1 } from "../../api/v2/tenant_pb";
 import type { TenantMember } from "../../api/v2/tenant_member_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -14,39 +14,15 @@ export declare const file_metalstack_admin_v2_tenant: GenFile;
  */
 export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServiceCreateRequest"> & {
     /**
-     * Name of the tenant.
+     * Tenant is the tenant create request.
      *
-     * @generated from field: string name = 1;
+     * @generated from field: metalstack.api.v2.TenantServiceCreateRequest tenant = 1;
      */
-    name: string;
+    tenant?: TenantServiceCreateRequest$1 | undefined;
     /**
-     * Description of the tenant.
+     * Login of a static ID for tenant.
      *
-     * @generated from field: optional string description = 2;
-     */
-    description?: string | undefined;
-    /**
-     * Email of the tenant, if not set will be inherited from the creator.
-     *
-     * @generated from field: optional string email = 3;
-     */
-    email?: string | undefined;
-    /**
-     * AvatarUrl of the tenant.
-     *
-     * @generated from field: optional string avatar_url = 4;
-     */
-    avatarUrl?: string | undefined;
-    /**
-     * Labels on the tenant.
-     *
-     * @generated from field: metalstack.api.v2.Labels labels = 5;
-     */
-    labels?: Labels | undefined;
-    /**
-     * Login of the tenant.
-     *
-     * @generated from field: optional string login = 6;
+     * @generated from field: optional string login = 2;
      */
     login?: string | undefined;
 };
