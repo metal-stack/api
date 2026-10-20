@@ -341,10 +341,10 @@ type ProjectMemberServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project.
 	Project string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
-	// Member is the id of the member to remove from this project.
+	// Member is the id of the member to update.
 	Member string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
 	// Role is the role in this project the user will get after the update.
-	Role ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
+	Role *ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole,oneof" json:"role,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request.
 	UpdateMeta    *UpdateMeta `protobuf:"bytes,4,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -396,8 +396,8 @@ func (x *ProjectMemberServiceUpdateRequest) GetMember() string {
 }
 
 func (x *ProjectMemberServiceUpdateRequest) GetRole() ProjectRole {
-	if x != nil {
-		return x.Role
+	if x != nil && x.Role != nil {
+		return *x.Role
 	}
 	return ProjectRole_PROJECT_ROLE_UNSPECIFIED
 }
@@ -812,13 +812,14 @@ const file_metalstack_api_v2_project_member_proto_rawDesc = "" +
 	"!ProjectMemberServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12<\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"\xe5\x01\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"\xf3\x01\n" +
 	"!ProjectMemberServiceUpdateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x16\n" +
-	"\x06member\x18\x02 \x01(\tR\x06member\x12<\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x12F\n" +
+	"\x06member\x18\x02 \x01(\tR\x06member\x12A\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04role\x88\x01\x01\x12F\n" +
 	"\vupdate_meta\x18\x04 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"updateMeta\"_\n" +
+	"updateMetaB\a\n" +
+	"\x05_role\"_\n" +
 	"!ProjectMemberServiceDeleteRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x16\n" +
 	"\x06member\x18\x02 \x01(\tR\x06member\"^\n" +
@@ -920,6 +921,7 @@ func file_metalstack_api_v2_project_member_proto_init() {
 	file_metalstack_api_v2_common_proto_init()
 	file_metalstack_api_v2_predefined_rules_proto_init()
 	file_metalstack_api_v2_project_member_proto_msgTypes[1].OneofWrappers = []any{}
+	file_metalstack_api_v2_project_member_proto_msgTypes[5].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

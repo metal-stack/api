@@ -100,10 +100,10 @@ message ProjectMemberServiceCreateRequest {
 message ProjectMemberServiceUpdateRequest {
   // Project is the uuid of the project.
   string project = 1 [(buf.validate.field).string.uuid = true];
-  // Member is the id of the member to remove from this project.
+  // Member is the id of the member to update.
   string member = 2;
   // Role is the role in this project the user will get after the update.
-  ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
+  optional ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request.
   UpdateMeta update_meta = 4 [(buf.validate.field).required = true];
 }

@@ -165,7 +165,7 @@ export type ProjectMemberServiceUpdateRequest = Message<"metalstack.api.v2.Proje
      */
     project: string;
     /**
-     * Member is the id of the member to remove from this project.
+     * Member is the id of the member to update.
      *
      * @generated from field: string member = 2;
      */
@@ -173,9 +173,9 @@ export type ProjectMemberServiceUpdateRequest = Message<"metalstack.api.v2.Proje
     /**
      * Role is the role in this project the user will get after the update.
      *
-     * @generated from field: metalstack.api.v2.ProjectRole role = 3;
+     * @generated from field: optional metalstack.api.v2.ProjectRole role = 3;
      */
-    role: ProjectRole;
+    role?: ProjectRole | undefined;
     /**
      * UpdateMeta contains the timestamp and strategy to be used in this update request.
      *
