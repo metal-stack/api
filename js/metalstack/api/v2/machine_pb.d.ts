@@ -1029,8 +1029,7 @@ export type MachineNic = Message<"metalstack.api.v2.MachineNic"> & {
     /**
      * Mac the macaddress of this interface.
      *
-     * @generated from field: string mac = 1 [deprecated = true];
-     * @deprecated
+     * @generated from field: string mac = 1;
      */
     mac: string;
     /**
@@ -1066,9 +1065,9 @@ export type MachineNic = Message<"metalstack.api.v2.MachineNic"> & {
     /**
      * Neighbors the neighbors visible to this network interface.
      *
-     * @generated from field: repeated metalstack.api.v2.MachineNic neighbors = 7;
+     * @generated from field: repeated metalstack.api.v2.NeighborNic neighbors = 7;
      */
-    neighbors: MachineNic[];
+    neighbors: NeighborNic[];
     /**
      * Hostname the nic belongs to.
      *
@@ -1081,6 +1080,37 @@ export type MachineNic = Message<"metalstack.api.v2.MachineNic"> & {
  * Use `create(MachineNicSchema)` to create a new message.
  */
 export declare const MachineNicSchema: GenMessage<MachineNic>;
+/**
+ * NeighborNic contains details of a network interface of the neighbor.
+ *
+ * @generated from message metalstack.api.v2.NeighborNic
+ */
+export type NeighborNic = Message<"metalstack.api.v2.NeighborNic"> & {
+    /**
+     * Name of this interface.
+     *
+     * @generated from field: string name = 1;
+     */
+    name: string;
+    /**
+     * Identifier the unique identifier of this network interface.
+     * This could either be a macaddress or alias of the interface, e.g. Eth1/1 on some switches.
+     *
+     * @generated from field: optional string identifier = 2;
+     */
+    identifier?: string | undefined;
+    /**
+     * Hostname the nic belongs to.
+     *
+     * @generated from field: string hostname = 3;
+     */
+    hostname: string;
+};
+/**
+ * Describes the message metalstack.api.v2.NeighborNic.
+ * Use `create(NeighborNicSchema)` to create a new message.
+ */
+export declare const NeighborNicSchema: GenMessage<NeighborNic>;
 /**
  * MachineBlockDevice contains details of a block device of this machine.
  *
