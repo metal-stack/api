@@ -14,30 +14,34 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class VPNServiceAuthKeyRequest(_message.Message):
-    __slots__ = ("project", "ephemeral", "expires", "reason")
+    __slots__ = ("project", "ephemeral", "expires", "reason", "reusable")
     PROJECT_FIELD_NUMBER: _ClassVar[int]
     EPHEMERAL_FIELD_NUMBER: _ClassVar[int]
     EXPIRES_FIELD_NUMBER: _ClassVar[int]
     REASON_FIELD_NUMBER: _ClassVar[int]
+    REUSABLE_FIELD_NUMBER: _ClassVar[int]
     project: str
     ephemeral: bool
     expires: _duration_pb2.Duration
     reason: str
-    def __init__(self, project: _Optional[str] = ..., ephemeral: _Optional[bool] = ..., expires: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., reason: _Optional[str] = ...) -> None: ...
+    reusable: bool
+    def __init__(self, project: _Optional[str] = ..., ephemeral: _Optional[bool] = ..., expires: _Optional[_Union[datetime.timedelta, _duration_pb2.Duration, _Mapping]] = ..., reason: _Optional[str] = ..., reusable: _Optional[bool] = ...) -> None: ...
 
 class VPNServiceAuthKeyResponse(_message.Message):
-    __slots__ = ("address", "auth_key", "ephemeral", "expires_at", "created_at")
+    __slots__ = ("address", "auth_key", "ephemeral", "expires_at", "created_at", "reusable")
     ADDRESS_FIELD_NUMBER: _ClassVar[int]
     AUTH_KEY_FIELD_NUMBER: _ClassVar[int]
     EPHEMERAL_FIELD_NUMBER: _ClassVar[int]
     EXPIRES_AT_FIELD_NUMBER: _ClassVar[int]
     CREATED_AT_FIELD_NUMBER: _ClassVar[int]
+    REUSABLE_FIELD_NUMBER: _ClassVar[int]
     address: str
     auth_key: str
     ephemeral: bool
     expires_at: _timestamp_pb2.Timestamp
     created_at: _timestamp_pb2.Timestamp
-    def __init__(self, address: _Optional[str] = ..., auth_key: _Optional[str] = ..., ephemeral: _Optional[bool] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ...) -> None: ...
+    reusable: bool
+    def __init__(self, address: _Optional[str] = ..., auth_key: _Optional[str] = ..., ephemeral: _Optional[bool] = ..., expires_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., created_at: _Optional[_Union[datetime.datetime, _timestamp_pb2.Timestamp, _Mapping]] = ..., reusable: _Optional[bool] = ...) -> None: ...
 
 class VPNServiceListNodesRequest(_message.Message):
     __slots__ = ("project",)
