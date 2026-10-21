@@ -27,7 +27,7 @@ from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common
 from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&metalstack/api/v2/project_member.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xd2\x01\n\rProjectMember\x12#\n\x06member\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12<\n\x04role\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x12\x31\n\x14inherited_membership\x18\x03 \x01(\x08R\x13inheritedMembership\x12+\n\x04meta\x18\x04 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\"\x95\x01\n\x12ProjectMemberQuery\x12(\n\x06member\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01H\x00R\x06member\x88\x01\x01\x12\x41\n\x04role\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x01R\x04role\x88\x01\x01\x42\t\n\x07_memberB\x07\n\x05_role\"\x82\x01\n\x1fProjectMemberServiceListRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12;\n\x05query\x18\x02 \x01(\x0b\x32%.metalstack.api.v2.ProjectMemberQueryR\x05query\"i\n\x1eProjectMemberServiceGetRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\"\xaa\x01\n!ProjectMemberServiceCreateRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12<\n\x04role\x18\x03 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"\xf3\x01\n!ProjectMemberServiceUpdateRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12\x16\n\x06member\x18\x02 \x01(\tR\x06member\x12\x41\n\x04role\x18\x03 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04role\x88\x01\x01\x12\x46\n\x0bupdate_meta\x18\x04 \x01(\x0b\x32\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\nupdateMetaB\x07\n\x05_role\"_\n!ProjectMemberServiceDeleteRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12\x16\n\x06member\x18\x02 \x01(\tR\x06member\"^\n ProjectMemberServiceListResponse\x12:\n\x07members\x18\x01 \x03(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x07members\"[\n\x1fProjectMemberServiceGetResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member\"^\n\"ProjectMemberServiceCreateResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member\"^\n\"ProjectMemberServiceDeleteResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member\"^\n\"ProjectMemberServiceUpdateResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member\"F\n ProjectMemberServiceLeaveRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\"]\n!ProjectMemberServiceLeaveResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member2\x96\x06\n\x14ProjectMemberService\x12|\n\x04List\x12\x32.metalstack.api.v2.ProjectMemberServiceListRequest\x1a\x33.metalstack.api.v2.ProjectMemberServiceListResponse\"\x0b\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12y\n\x03Get\x12\x31.metalstack.api.v2.ProjectMemberServiceGetRequest\x1a\x32.metalstack.api.v2.ProjectMemberServiceGetResponse\"\x0b\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12\x80\x01\n\x06\x43reate\x12\x34.metalstack.api.v2.ProjectMemberServiceCreateRequest\x1a\x35.metalstack.api.v2.ProjectMemberServiceCreateResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x80\x01\n\x06\x44\x65lete\x12\x34.metalstack.api.v2.ProjectMemberServiceDeleteRequest\x1a\x35.metalstack.api.v2.ProjectMemberServiceDeleteResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x80\x01\n\x06Update\x12\x34.metalstack.api.v2.ProjectMemberServiceUpdateRequest\x1a\x35.metalstack.api.v2.ProjectMemberServiceUpdateResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12|\n\x05Leave\x12\x33.metalstack.api.v2.ProjectMemberServiceLeaveRequest\x1a\x34.metalstack.api.v2.ProjectMemberServiceLeaveResponse\"\x08\xd8\xf3\x18\x02\xe0\xf3\x18\x01\x42\xc8\x01\n\x15\x63om.metalstack.api.v2B\x12ProjectMemberProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&metalstack/api/v2/project_member.proto\x12\x11metalstack.api.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xf6\x01\n\rProjectMember\x12#\n\x06member\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12<\n\x04role\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x12\x31\n\x14inherited_membership\x18\x03 \x01(\x08R\x13inheritedMembership\x12+\n\x04meta\x18\x04 \x01(\x0b\x32\x17.metalstack.api.v2.MetaR\x04meta\x12\"\n\x07project\x18\x05 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\"\x95\x01\n\x12ProjectMemberQuery\x12(\n\x06member\x18\x01 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01H\x00R\x06member\x88\x01\x01\x12\x41\n\x04role\x18\x02 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x01R\x04role\x88\x01\x01\x42\t\n\x07_memberB\x07\n\x05_role\"\x82\x01\n\x1fProjectMemberServiceListRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12;\n\x05query\x18\x02 \x01(\x0b\x32%.metalstack.api.v2.ProjectMemberQueryR\x05query\"i\n\x1eProjectMemberServiceGetRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\"\xaa\x01\n!ProjectMemberServiceCreateRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12#\n\x06member\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12<\n\x04role\x18\x03 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"\xf3\x01\n!ProjectMemberServiceUpdateRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12\x16\n\x06member\x18\x02 \x01(\tR\x06member\x12\x41\n\x04role\x18\x03 \x01(\x0e\x32\x1e.metalstack.api.v2.ProjectRoleB\x08\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04role\x88\x01\x01\x12\x46\n\x0bupdate_meta\x18\x04 \x01(\x0b\x32\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\nupdateMetaB\x07\n\x05_role\"_\n!ProjectMemberServiceDeleteRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\x12\x16\n\x06member\x18\x02 \x01(\tR\x06member\"^\n ProjectMemberServiceListResponse\x12:\n\x07members\x18\x01 \x03(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x07members\"[\n\x1fProjectMemberServiceGetResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member\"^\n\"ProjectMemberServiceCreateResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member\"^\n\"ProjectMemberServiceDeleteResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member\"^\n\"ProjectMemberServiceUpdateResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member\"F\n ProjectMemberServiceLeaveRequest\x12\"\n\x07project\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x07project\"]\n!ProjectMemberServiceLeaveResponse\x12\x38\n\x06member\x18\x01 \x01(\x0b\x32 .metalstack.api.v2.ProjectMemberR\x06member2\x96\x06\n\x14ProjectMemberService\x12|\n\x04List\x12\x32.metalstack.api.v2.ProjectMemberServiceListRequest\x1a\x33.metalstack.api.v2.ProjectMemberServiceListResponse\"\x0b\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12y\n\x03Get\x12\x31.metalstack.api.v2.ProjectMemberServiceGetRequest\x1a\x32.metalstack.api.v2.ProjectMemberServiceGetResponse\"\x0b\xca\xf3\x18\x03\x01\x02\x03\xe0\xf3\x18\x02\x12\x80\x01\n\x06\x43reate\x12\x34.metalstack.api.v2.ProjectMemberServiceCreateRequest\x1a\x35.metalstack.api.v2.ProjectMemberServiceCreateResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x80\x01\n\x06\x44\x65lete\x12\x34.metalstack.api.v2.ProjectMemberServiceDeleteRequest\x1a\x35.metalstack.api.v2.ProjectMemberServiceDeleteResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x80\x01\n\x06Update\x12\x34.metalstack.api.v2.ProjectMemberServiceUpdateRequest\x1a\x35.metalstack.api.v2.ProjectMemberServiceUpdateResponse\"\t\xca\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12|\n\x05Leave\x12\x33.metalstack.api.v2.ProjectMemberServiceLeaveRequest\x1a\x34.metalstack.api.v2.ProjectMemberServiceLeaveResponse\"\x08\xd8\xf3\x18\x02\xe0\xf3\x18\x01\x42\xc8\x01\n\x15\x63om.metalstack.api.v2B\x12ProjectMemberProtoP\x01Z5github.com/metal-stack/api/go/metalstack/api/v2;apiv2\xa2\x02\x03MAX\xaa\x02\x11Metalstack.Api.V2\xca\x02\x11Metalstack\\Api\\V2\xe2\x02\x1dMetalstack\\Api\\V2\\GPBMetadata\xea\x02\x13Metalstack::Api::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -39,6 +39,8 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_PROJECTMEMBER'].fields_by_name['member']._serialized_options = b'\272H\010r\006\220\264\256\261\002\001'
   _globals['_PROJECTMEMBER'].fields_by_name['role']._loaded_options = None
   _globals['_PROJECTMEMBER'].fields_by_name['role']._serialized_options = b'\272H\005\202\001\002\020\001'
+  _globals['_PROJECTMEMBER'].fields_by_name['project']._loaded_options = None
+  _globals['_PROJECTMEMBER'].fields_by_name['project']._serialized_options = b'\272H\005r\003\260\001\001'
   _globals['_PROJECTMEMBERQUERY'].fields_by_name['member']._loaded_options = None
   _globals['_PROJECTMEMBERQUERY'].fields_by_name['member']._serialized_options = b'\272H\010r\006\220\264\256\261\002\001'
   _globals['_PROJECTMEMBERQUERY'].fields_by_name['role']._loaded_options = None
@@ -78,33 +80,33 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_PROJECTMEMBERSERVICE'].methods_by_name['Leave']._loaded_options = None
   _globals['_PROJECTMEMBERSERVICE'].methods_by_name['Leave']._serialized_options = b'\330\363\030\002\340\363\030\001'
   _globals['_PROJECTMEMBER']._serialized_start=165
-  _globals['_PROJECTMEMBER']._serialized_end=375
-  _globals['_PROJECTMEMBERQUERY']._serialized_start=378
-  _globals['_PROJECTMEMBERQUERY']._serialized_end=527
-  _globals['_PROJECTMEMBERSERVICELISTREQUEST']._serialized_start=530
-  _globals['_PROJECTMEMBERSERVICELISTREQUEST']._serialized_end=660
-  _globals['_PROJECTMEMBERSERVICEGETREQUEST']._serialized_start=662
-  _globals['_PROJECTMEMBERSERVICEGETREQUEST']._serialized_end=767
-  _globals['_PROJECTMEMBERSERVICECREATEREQUEST']._serialized_start=770
-  _globals['_PROJECTMEMBERSERVICECREATEREQUEST']._serialized_end=940
-  _globals['_PROJECTMEMBERSERVICEUPDATEREQUEST']._serialized_start=943
-  _globals['_PROJECTMEMBERSERVICEUPDATEREQUEST']._serialized_end=1186
-  _globals['_PROJECTMEMBERSERVICEDELETEREQUEST']._serialized_start=1188
-  _globals['_PROJECTMEMBERSERVICEDELETEREQUEST']._serialized_end=1283
-  _globals['_PROJECTMEMBERSERVICELISTRESPONSE']._serialized_start=1285
-  _globals['_PROJECTMEMBERSERVICELISTRESPONSE']._serialized_end=1379
-  _globals['_PROJECTMEMBERSERVICEGETRESPONSE']._serialized_start=1381
-  _globals['_PROJECTMEMBERSERVICEGETRESPONSE']._serialized_end=1472
-  _globals['_PROJECTMEMBERSERVICECREATERESPONSE']._serialized_start=1474
-  _globals['_PROJECTMEMBERSERVICECREATERESPONSE']._serialized_end=1568
-  _globals['_PROJECTMEMBERSERVICEDELETERESPONSE']._serialized_start=1570
-  _globals['_PROJECTMEMBERSERVICEDELETERESPONSE']._serialized_end=1664
-  _globals['_PROJECTMEMBERSERVICEUPDATERESPONSE']._serialized_start=1666
-  _globals['_PROJECTMEMBERSERVICEUPDATERESPONSE']._serialized_end=1760
-  _globals['_PROJECTMEMBERSERVICELEAVEREQUEST']._serialized_start=1762
-  _globals['_PROJECTMEMBERSERVICELEAVEREQUEST']._serialized_end=1832
-  _globals['_PROJECTMEMBERSERVICELEAVERESPONSE']._serialized_start=1834
-  _globals['_PROJECTMEMBERSERVICELEAVERESPONSE']._serialized_end=1927
-  _globals['_PROJECTMEMBERSERVICE']._serialized_start=1930
-  _globals['_PROJECTMEMBERSERVICE']._serialized_end=2720
+  _globals['_PROJECTMEMBER']._serialized_end=411
+  _globals['_PROJECTMEMBERQUERY']._serialized_start=414
+  _globals['_PROJECTMEMBERQUERY']._serialized_end=563
+  _globals['_PROJECTMEMBERSERVICELISTREQUEST']._serialized_start=566
+  _globals['_PROJECTMEMBERSERVICELISTREQUEST']._serialized_end=696
+  _globals['_PROJECTMEMBERSERVICEGETREQUEST']._serialized_start=698
+  _globals['_PROJECTMEMBERSERVICEGETREQUEST']._serialized_end=803
+  _globals['_PROJECTMEMBERSERVICECREATEREQUEST']._serialized_start=806
+  _globals['_PROJECTMEMBERSERVICECREATEREQUEST']._serialized_end=976
+  _globals['_PROJECTMEMBERSERVICEUPDATEREQUEST']._serialized_start=979
+  _globals['_PROJECTMEMBERSERVICEUPDATEREQUEST']._serialized_end=1222
+  _globals['_PROJECTMEMBERSERVICEDELETEREQUEST']._serialized_start=1224
+  _globals['_PROJECTMEMBERSERVICEDELETEREQUEST']._serialized_end=1319
+  _globals['_PROJECTMEMBERSERVICELISTRESPONSE']._serialized_start=1321
+  _globals['_PROJECTMEMBERSERVICELISTRESPONSE']._serialized_end=1415
+  _globals['_PROJECTMEMBERSERVICEGETRESPONSE']._serialized_start=1417
+  _globals['_PROJECTMEMBERSERVICEGETRESPONSE']._serialized_end=1508
+  _globals['_PROJECTMEMBERSERVICECREATERESPONSE']._serialized_start=1510
+  _globals['_PROJECTMEMBERSERVICECREATERESPONSE']._serialized_end=1604
+  _globals['_PROJECTMEMBERSERVICEDELETERESPONSE']._serialized_start=1606
+  _globals['_PROJECTMEMBERSERVICEDELETERESPONSE']._serialized_end=1700
+  _globals['_PROJECTMEMBERSERVICEUPDATERESPONSE']._serialized_start=1702
+  _globals['_PROJECTMEMBERSERVICEUPDATERESPONSE']._serialized_end=1796
+  _globals['_PROJECTMEMBERSERVICELEAVEREQUEST']._serialized_start=1798
+  _globals['_PROJECTMEMBERSERVICELEAVEREQUEST']._serialized_end=1868
+  _globals['_PROJECTMEMBERSERVICELEAVERESPONSE']._serialized_start=1870
+  _globals['_PROJECTMEMBERSERVICELEAVERESPONSE']._serialized_end=1963
+  _globals['_PROJECTMEMBERSERVICE']._serialized_start=1966
+  _globals['_PROJECTMEMBERSERVICE']._serialized_end=2756
 # @@protoc_insertion_point(module_scope)

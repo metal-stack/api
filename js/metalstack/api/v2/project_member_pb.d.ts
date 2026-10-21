@@ -37,6 +37,12 @@ export type ProjectMember = Message<"metalstack.api.v2.ProjectMember"> & {
      * @generated from field: metalstack.api.v2.Meta meta = 4;
      */
     meta?: Meta | undefined;
+    /**
+     * Project is the uuid of the project this member participates in.
+     *
+     * @generated from field: string project = 5;
+     */
+    project: string;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectMember.

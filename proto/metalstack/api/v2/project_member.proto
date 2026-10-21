@@ -57,6 +57,8 @@ message ProjectMember {
   bool inherited_membership = 3;
   // Meta for this project member.
   Meta meta = 4;
+  // Project is the uuid of the project this member participates in.
+  string project = 5 [(buf.validate.field).string.uuid = true];
 }
 
 // ProjectQuery is used to search projects.

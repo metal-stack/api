@@ -10,16 +10,18 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ProjectMember(_message.Message):
-    __slots__ = ("member", "role", "inherited_membership", "meta")
+    __slots__ = ("member", "role", "inherited_membership", "meta", "project")
     MEMBER_FIELD_NUMBER: _ClassVar[int]
     ROLE_FIELD_NUMBER: _ClassVar[int]
     INHERITED_MEMBERSHIP_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
     member: str
     role: _common_pb2.ProjectRole
     inherited_membership: bool
     meta: _common_pb2.Meta
-    def __init__(self, member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ..., inherited_membership: _Optional[bool] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ...) -> None: ...
+    project: str
+    def __init__(self, member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.ProjectRole, str]] = ..., inherited_membership: _Optional[bool] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., project: _Optional[str] = ...) -> None: ...
 
 class ProjectMemberQuery(_message.Message):
     __slots__ = ("member", "role")

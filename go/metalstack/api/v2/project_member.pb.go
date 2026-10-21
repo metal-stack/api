@@ -34,7 +34,9 @@ type ProjectMember struct {
 	// Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
 	InheritedMembership bool `protobuf:"varint,3,opt,name=inherited_membership,json=inheritedMembership,proto3" json:"inherited_membership,omitempty"`
 	// Meta for this project member.
-	Meta          *Meta `protobuf:"bytes,4,opt,name=meta,proto3" json:"meta,omitempty"`
+	Meta *Meta `protobuf:"bytes,4,opt,name=meta,proto3" json:"meta,omitempty"`
+	// Project is the uuid of the project this member participates in.
+	Project       string `protobuf:"bytes,5,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -95,6 +97,13 @@ func (x *ProjectMember) GetMeta() *Meta {
 		return x.Meta
 	}
 	return nil
+}
+
+func (x *ProjectMember) GetProject() string {
+	if x != nil {
+		return x.Project
+	}
+	return ""
 }
 
 // ProjectQuery is used to search projects.
@@ -780,12 +789,13 @@ var File_metalstack_api_v2_project_member_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_project_member_proto_rawDesc = "" +
 	"\n" +
-	"&metalstack/api/v2/project_member.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xd2\x01\n" +
+	"&metalstack/api/v2/project_member.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xf6\x01\n" +
 	"\rProjectMember\x12#\n" +
 	"\x06member\x18\x01 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12<\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x121\n" +
 	"\x14inherited_membership\x18\x03 \x01(\bR\x13inheritedMembership\x12+\n" +
-	"\x04meta\x18\x04 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\"\x95\x01\n" +
+	"\x04meta\x18\x04 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\"\n" +
+	"\aproject\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\x95\x01\n" +
 	"\x12ProjectMemberQuery\x12(\n" +
 	"\x06member\x18\x01 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01H\x00R\x06member\x88\x01\x01\x12A\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\x04role\x88\x01\x01B\t\n" +
