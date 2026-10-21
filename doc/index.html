@@ -1437,6 +1437,10 @@
                   <a href="#metalstack.api.v2.MetalGPU"><span class="badge">M</span>MetalGPU</a>
                 </li>
               
+                <li>
+                  <a href="#metalstack.api.v2.NeighborNic"><span class="badge">M</span>NeighborNic</a>
+                </li>
+              
               
                 <li>
                   <a href="#metalstack.api.v2.IPProtocol"><span class="badge">E</span>IPProtocol</a>
@@ -11543,7 +11547,7 @@ Order of ips is preserved on the loopback interface. </p></td>
                   <td>mac</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
-                  <td><p><strong>Deprecated.</strong> Mac the macaddress of this interface. </p></td>
+                  <td><p>Mac the macaddress of this interface. </p></td>
                 </tr>
               
                 <tr>
@@ -11583,7 +11587,7 @@ Order of ips is preserved on the loopback interface. </p></td>
               
                 <tr>
                   <td>neighbors</td>
-                  <td><a href="#metalstack.api.v2.MachineNic">MachineNic</a></td>
+                  <td><a href="#metalstack.api.v2.NeighborNic">NeighborNic</a></td>
                   <td>repeated</td>
                   <td><p>Neighbors the neighbors visible to this network interface. </p></td>
                 </tr>
@@ -11598,27 +11602,6 @@ Order of ips is preserved on the loopback interface. </p></td>
             </tbody>
           </table>
 
-          
-            
-            
-            <h4>Fields with deprecated option</h4>
-            <table>
-              <thead>
-                <tr>
-                  <td>Name</td>
-                  <td>Option</td>
-                </tr>
-              </thead>
-              <tbody>
-              
-                <tr>
-                  <td>mac</td>
-                  <td><p>true</p></td>
-                </tr>
-              
-              </tbody>
-            </table>
-            
           
 
         
@@ -12677,6 +12660,45 @@ if placement labels are provided, the machine candidate has an additional anti-a
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>Model of this gpu. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.NeighborNic">NeighborNic</h3>
+        <p>NeighborNic contains details of a network interface of the neighbor.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>name</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Name of this interface. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>identifier</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Identifier the unique identifier of this network interface.
+This could either be a macaddress or alias of the interface, e.g. Eth1/1 on some switches. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>hostname</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Hostname the nic belongs to. </p></td>
                 </tr>
               
             </tbody>
