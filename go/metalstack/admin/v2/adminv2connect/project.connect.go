@@ -33,14 +33,28 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
+	// ProjectServiceCreateProcedure is the fully-qualified name of the ProjectService's Create RPC.
+	ProjectServiceCreateProcedure = "/metalstack.admin.v2.ProjectService/Create"
 	// ProjectServiceListProcedure is the fully-qualified name of the ProjectService's List RPC.
 	ProjectServiceListProcedure = "/metalstack.admin.v2.ProjectService/List"
+	// ProjectServiceAddMemberProcedure is the fully-qualified name of the ProjectService's AddMember
+	// RPC.
+	ProjectServiceAddMemberProcedure = "/metalstack.admin.v2.ProjectService/AddMember"
+	// ProjectServiceRemoveMemberProcedure is the fully-qualified name of the ProjectService's
+	// RemoveMember RPC.
+	ProjectServiceRemoveMemberProcedure = "/metalstack.admin.v2.ProjectService/RemoveMember"
 )
 
 // ProjectServiceClient is a client for the metalstack.admin.v2.ProjectService service.
 type ProjectServiceClient interface {
+	// Creates a new project.
+	Create(context.Context, *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error)
 	// Returns the list of projects matching the filter criteria.
 	List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error)
+	// Add a member to a project.
+	AddMember(context.Context, *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error)
+	// RemoveMember removes a member from a project.
+	RemoveMember(context.Context, *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error)
 }
 
 // NewProjectServiceClient constructs a client for the metalstack.admin.v2.ProjectService service.
@@ -54,10 +68,28 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	projectServiceMethods := v2.File_metalstack_admin_v2_project_proto.Services().ByName("ProjectService").Methods()
 	return &projectServiceClient{
+		create: connect.NewClient[v2.ProjectServiceCreateRequest, v2.ProjectServiceCreateResponse](
+			httpClient,
+			baseURL+ProjectServiceCreateProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("Create")),
+			connect.WithClientOptions(opts...),
+		),
 		list: connect.NewClient[v2.ProjectServiceListRequest, v2.ProjectServiceListResponse](
 			httpClient,
 			baseURL+ProjectServiceListProcedure,
 			connect.WithSchema(projectServiceMethods.ByName("List")),
+			connect.WithClientOptions(opts...),
+		),
+		addMember: connect.NewClient[v2.ProjectServiceAddMemberRequest, v2.ProjectServiceAddMemberResponse](
+			httpClient,
+			baseURL+ProjectServiceAddMemberProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("AddMember")),
+			connect.WithClientOptions(opts...),
+		),
+		removeMember: connect.NewClient[v2.ProjectServiceRemoveMemberRequest, v2.ProjectServiceRemoveMemberResponse](
+			httpClient,
+			baseURL+ProjectServiceRemoveMemberProcedure,
+			connect.WithSchema(projectServiceMethods.ByName("RemoveMember")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -65,7 +97,19 @@ func NewProjectServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // projectServiceClient implements ProjectServiceClient.
 type projectServiceClient struct {
-	list *connect.Client[v2.ProjectServiceListRequest, v2.ProjectServiceListResponse]
+	create       *connect.Client[v2.ProjectServiceCreateRequest, v2.ProjectServiceCreateResponse]
+	list         *connect.Client[v2.ProjectServiceListRequest, v2.ProjectServiceListResponse]
+	addMember    *connect.Client[v2.ProjectServiceAddMemberRequest, v2.ProjectServiceAddMemberResponse]
+	removeMember *connect.Client[v2.ProjectServiceRemoveMemberRequest, v2.ProjectServiceRemoveMemberResponse]
+}
+
+// Create calls metalstack.admin.v2.ProjectService.Create.
+func (c *projectServiceClient) Create(ctx context.Context, req *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error) {
+	response, err := c.create.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
 }
 
 // List calls metalstack.admin.v2.ProjectService.List.
@@ -77,10 +121,34 @@ func (c *projectServiceClient) List(ctx context.Context, req *v2.ProjectServiceL
 	return nil, err
 }
 
+// AddMember calls metalstack.admin.v2.ProjectService.AddMember.
+func (c *projectServiceClient) AddMember(ctx context.Context, req *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error) {
+	response, err := c.addMember.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// RemoveMember calls metalstack.admin.v2.ProjectService.RemoveMember.
+func (c *projectServiceClient) RemoveMember(ctx context.Context, req *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error) {
+	response, err := c.removeMember.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // ProjectServiceHandler is an implementation of the metalstack.admin.v2.ProjectService service.
 type ProjectServiceHandler interface {
+	// Creates a new project.
+	Create(context.Context, *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error)
 	// Returns the list of projects matching the filter criteria.
 	List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error)
+	// Add a member to a project.
+	AddMember(context.Context, *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error)
+	// RemoveMember removes a member from a project.
+	RemoveMember(context.Context, *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error)
 }
 
 // NewProjectServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -90,16 +158,40 @@ type ProjectServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	projectServiceMethods := v2.File_metalstack_admin_v2_project_proto.Services().ByName("ProjectService").Methods()
+	projectServiceCreateHandler := connect.NewUnaryHandlerSimple(
+		ProjectServiceCreateProcedure,
+		svc.Create,
+		connect.WithSchema(projectServiceMethods.ByName("Create")),
+		connect.WithHandlerOptions(opts...),
+	)
 	projectServiceListHandler := connect.NewUnaryHandlerSimple(
 		ProjectServiceListProcedure,
 		svc.List,
 		connect.WithSchema(projectServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
+	projectServiceAddMemberHandler := connect.NewUnaryHandlerSimple(
+		ProjectServiceAddMemberProcedure,
+		svc.AddMember,
+		connect.WithSchema(projectServiceMethods.ByName("AddMember")),
+		connect.WithHandlerOptions(opts...),
+	)
+	projectServiceRemoveMemberHandler := connect.NewUnaryHandlerSimple(
+		ProjectServiceRemoveMemberProcedure,
+		svc.RemoveMember,
+		connect.WithSchema(projectServiceMethods.ByName("RemoveMember")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.ProjectService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case ProjectServiceCreateProcedure:
+			projectServiceCreateHandler.ServeHTTP(w, r)
 		case ProjectServiceListProcedure:
 			projectServiceListHandler.ServeHTTP(w, r)
+		case ProjectServiceAddMemberProcedure:
+			projectServiceAddMemberHandler.ServeHTTP(w, r)
+		case ProjectServiceRemoveMemberProcedure:
+			projectServiceRemoveMemberHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -109,6 +201,18 @@ func NewProjectServiceHandler(svc ProjectServiceHandler, opts ...connect.Handler
 // UnimplementedProjectServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedProjectServiceHandler struct{}
 
+func (UnimplementedProjectServiceHandler) Create(context.Context, *v2.ProjectServiceCreateRequest) (*v2.ProjectServiceCreateResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ProjectService.Create is not implemented"))
+}
+
 func (UnimplementedProjectServiceHandler) List(context.Context, *v2.ProjectServiceListRequest) (*v2.ProjectServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ProjectService.List is not implemented"))
+}
+
+func (UnimplementedProjectServiceHandler) AddMember(context.Context, *v2.ProjectServiceAddMemberRequest) (*v2.ProjectServiceAddMemberResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ProjectService.AddMember is not implemented"))
+}
+
+func (UnimplementedProjectServiceHandler) RemoveMember(context.Context, *v2.ProjectServiceRemoveMemberRequest) (*v2.ProjectServiceRemoveMemberResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.ProjectService.RemoveMember is not implemented"))
 }

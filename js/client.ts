@@ -61,6 +61,8 @@ import { PartitionService as Apiv2PartitionService } from "./metalstack/api/v2/p
 
 import { ProjectService as Apiv2ProjectService } from "./metalstack/api/v2/project_pb";
 
+import { ProjectMemberService as Apiv2ProjectMemberService } from "./metalstack/api/v2/project_member_pb";
+
 import { SizeService as Apiv2SizeService } from "./metalstack/api/v2/size_pb";
 
 import { SizeImageConstraintService as Apiv2SizeImageConstraintService } from "./metalstack/api/v2/size_imageconstraint_pb";
@@ -68,6 +70,8 @@ import { SizeImageConstraintService as Apiv2SizeImageConstraintService } from ".
 import { SizeReservationService as Apiv2SizeReservationService } from "./metalstack/api/v2/size_reservation_pb";
 
 import { TenantService as Apiv2TenantService } from "./metalstack/api/v2/tenant_pb";
+
+import { TenantMemberService as Apiv2TenantMemberService } from "./metalstack/api/v2/tenant_member_pb";
 
 import { TokenService as Apiv2TokenService } from "./metalstack/api/v2/token_pb";
 
@@ -167,6 +171,8 @@ export interface Apiv2 {
 
   project(): ConnectClient<typeof Apiv2ProjectService>;
 
+  projectMember(): ConnectClient<typeof Apiv2ProjectMemberService>;
+
   size(): ConnectClient<typeof Apiv2SizeService>;
 
   sizeImageConstraint(): ConnectClient<typeof Apiv2SizeImageConstraintService>;
@@ -174,6 +180,8 @@ export interface Apiv2 {
   sizeReservation(): ConnectClient<typeof Apiv2SizeReservationService>;
 
   tenant(): ConnectClient<typeof Apiv2TenantService>;
+
+  tenantMember(): ConnectClient<typeof Apiv2TenantMemberService>;
 
   token(): ConnectClient<typeof Apiv2TokenService>;
 
@@ -460,6 +468,8 @@ class Apiv2Impl implements Apiv2 {
 
   private _project?: ConnectClient<typeof Apiv2ProjectService>;
 
+  private _projectMember?: ConnectClient<typeof Apiv2ProjectMemberService>;
+
   private _size?: ConnectClient<typeof Apiv2SizeService>;
 
   private _sizeImageConstraint?: ConnectClient<typeof Apiv2SizeImageConstraintService>;
@@ -467,6 +477,8 @@ class Apiv2Impl implements Apiv2 {
   private _sizeReservation?: ConnectClient<typeof Apiv2SizeReservationService>;
 
   private _tenant?: ConnectClient<typeof Apiv2TenantService>;
+
+  private _tenantMember?: ConnectClient<typeof Apiv2TenantMemberService>;
 
   private _token?: ConnectClient<typeof Apiv2TokenService>;
 
@@ -550,6 +562,13 @@ class Apiv2Impl implements Apiv2 {
     return this._project;
   }
 
+  projectMember(): ConnectClient<typeof Apiv2ProjectMemberService> {
+    if (!this._projectMember) {
+      this._projectMember = createClient(Apiv2ProjectMemberService, this.transport);
+    }
+    return this._projectMember;
+  }
+
   size(): ConnectClient<typeof Apiv2SizeService> {
     if (!this._size) {
       this._size = createClient(Apiv2SizeService, this.transport);
@@ -576,6 +595,13 @@ class Apiv2Impl implements Apiv2 {
       this._tenant = createClient(Apiv2TenantService, this.transport);
     }
     return this._tenant;
+  }
+
+  tenantMember(): ConnectClient<typeof Apiv2TenantMemberService> {
+    if (!this._tenantMember) {
+      this._tenantMember = createClient(Apiv2TenantMemberService, this.transport);
+    }
+    return this._tenantMember;
   }
 
   token(): ConnectClient<typeof Apiv2TokenService> {

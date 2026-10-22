@@ -6,6 +6,7 @@ import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/predefined_rules.proto";
 import "metalstack/api/v2/tenant.proto";
+import "metalstack/api/v2/tenant_member.proto";
 
 // TenantService provides tenant management operations.
 service TenantService {
@@ -34,16 +35,10 @@ service TenantService {
 
 // TenantServiceCreateRequest is the request payload for creating a tenant.
 message TenantServiceCreateRequest {
-  // Name of the tenant.
-  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Description of the tenant.
-  optional string description = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
-  // Email of the tenant, if not set will be inherited from the creator.
-  optional string email = 3 [(buf.validate.field).string.email = true];
-  // AvatarUrl of the tenant.
-  optional string avatar_url = 4 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-  // Labels on the tenant.
-  metalstack.api.v2.Labels labels = 5;
+  // Tenant is the tenant create request.
+  metalstack.api.v2.TenantServiceCreateRequest tenant = 1;
+  // Login of a static ID for tenant.
+  optional string login = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
 // TenantServiceCreateResponse is the response payload for creating a tenant.
@@ -78,8 +73,8 @@ message TenantServiceAddMemberRequest {
 
 // TenantServiceAddMemberResponse is the response payload for the add member request.
 message TenantServiceAddMemberResponse {
-  // TenantMember is the added tenant member.
-  metalstack.api.v2.TenantMember tenant_member = 1;
+  // Member is the added tenant member.
+  metalstack.api.v2.TenantMember member = 1;
 }
 
 // TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant.
@@ -92,6 +87,6 @@ message TenantServiceRemoveMemberRequest {
 
 // TenantServiceRemoveMemberResponse is the response payload for the remove member request.
 message TenantServiceRemoveMemberResponse {
-  // TenantMember is the removed tenant member.
-  metalstack.api.v2.TenantMember tenant_member = 1;
+  // Member is the removed tenant member.
+  metalstack.api.v2.TenantMember member = 1;
 }

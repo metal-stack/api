@@ -27,10 +27,12 @@ import { MethodService as Apiv2MethodService } from "./metalstack/api/v2/method_
 import { NetworkService as Apiv2NetworkService } from "./metalstack/api/v2/network_pb";
 import { PartitionService as Apiv2PartitionService } from "./metalstack/api/v2/partition_pb";
 import { ProjectService as Apiv2ProjectService } from "./metalstack/api/v2/project_pb";
+import { ProjectMemberService as Apiv2ProjectMemberService } from "./metalstack/api/v2/project_member_pb";
 import { SizeService as Apiv2SizeService } from "./metalstack/api/v2/size_pb";
 import { SizeImageConstraintService as Apiv2SizeImageConstraintService } from "./metalstack/api/v2/size_imageconstraint_pb";
 import { SizeReservationService as Apiv2SizeReservationService } from "./metalstack/api/v2/size_reservation_pb";
 import { TenantService as Apiv2TenantService } from "./metalstack/api/v2/tenant_pb";
+import { TenantMemberService as Apiv2TenantMemberService } from "./metalstack/api/v2/tenant_member_pb";
 import { TokenService as Apiv2TokenService } from "./metalstack/api/v2/token_pb";
 import { UserService as Apiv2UserService } from "./metalstack/api/v2/user_pb";
 import { VersionService as Apiv2VersionService } from "./metalstack/api/v2/version_pb";
@@ -79,10 +81,12 @@ export interface Apiv2 {
     network(): ConnectClient<typeof Apiv2NetworkService>;
     partition(): ConnectClient<typeof Apiv2PartitionService>;
     project(): ConnectClient<typeof Apiv2ProjectService>;
+    projectMember(): ConnectClient<typeof Apiv2ProjectMemberService>;
     size(): ConnectClient<typeof Apiv2SizeService>;
     sizeImageConstraint(): ConnectClient<typeof Apiv2SizeImageConstraintService>;
     sizeReservation(): ConnectClient<typeof Apiv2SizeReservationService>;
     tenant(): ConnectClient<typeof Apiv2TenantService>;
+    tenantMember(): ConnectClient<typeof Apiv2TenantMemberService>;
     token(): ConnectClient<typeof Apiv2TokenService>;
     user(): ConnectClient<typeof Apiv2UserService>;
     version(): ConnectClient<typeof Apiv2VersionService>;
