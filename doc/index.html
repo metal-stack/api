@@ -21452,6 +21452,13 @@ This service is suitable to create tokens for other users instead of deriving us
 Reason is only forwarded to an audit sink. </p></td>
                 </tr>
               
+                <tr>
+                  <td>reusable</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Reusable, if set to true, the authkey can be used multiple times within the expiration window. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -21503,6 +21510,13 @@ This key can only be seen once. </p></td>
                   <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
                   <td></td>
                   <td><p>CreatedAt this key was created at this timestamp. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reusable</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>Reusable, if set to true, the authkey can be used multiple times within the expiration window. </p></td>
                 </tr>
               
             </tbody>
