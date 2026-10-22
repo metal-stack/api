@@ -67,6 +67,8 @@ message ProjectMemberQuery {
   optional string member = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Role is the role of the member.
   optional ProjectRole role = 2 [(buf.validate.field).enum.defined_only = true];
+  // Labels lists only members containing the given labels.
+  optional Labels labels = 3;
 }
 
 // ProjectMemberServiceListRequest is the request payload to list all project members.
@@ -93,6 +95,8 @@ message ProjectMemberServiceCreateRequest {
   string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Role to assign to the new member.
   ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
+  // Labels on this member.
+  Labels labels = 4;
 }
 
 // ProjectMemberServiceUpdateRequest is the request payload to update a project.
@@ -105,6 +109,8 @@ message ProjectMemberServiceUpdateRequest {
   optional ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request.
   UpdateMeta update_meta = 4 [(buf.validate.field).required = true];
+  // Labels on this member.
+  UpdateLabels labels = 5;
 }
 
 // ProjectMemberServiceDeleteRequest is the request payload to delete a project.

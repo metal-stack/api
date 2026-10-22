@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Meta, TenantRole, UpdateMeta } from "./common_pb";
+import type { Labels, Meta, TenantRole, UpdateLabels, UpdateMeta } from "./common_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/api/v2/tenant_member.proto.
@@ -95,6 +95,12 @@ export type TenantMemberQuery = Message<"metalstack.api.v2.TenantMemberQuery"> &
      * @generated from field: repeated string projects = 3;
      */
     projects: string[];
+    /**
+     * Labels lists only members containing the given labels.
+     *
+     * @generated from field: optional metalstack.api.v2.Labels labels = 4;
+     */
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantMemberQuery.
@@ -173,6 +179,12 @@ export type TenantMemberServiceCreateRequest = Message<"metalstack.api.v2.Tenant
      * @generated from field: metalstack.api.v2.TenantRole role = 3;
      */
     role: TenantRole;
+    /**
+     * Labels on this member.
+     *
+     * @generated from field: metalstack.api.v2.Labels labels = 4;
+     */
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantMemberServiceCreateRequest.
@@ -209,6 +221,12 @@ export type TenantMemberServiceUpdateRequest = Message<"metalstack.api.v2.Tenant
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 4;
      */
     updateMeta?: UpdateMeta | undefined;
+    /**
+     * Labels on this member.
+     *
+     * @generated from field: metalstack.api.v2.UpdateLabels labels = 5;
+     */
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.TenantMemberServiceUpdateRequest.

@@ -112,7 +112,9 @@ type ProjectMemberQuery struct {
 	// Member is the user id of the member.
 	Member *string `protobuf:"bytes,1,opt,name=member,proto3,oneof" json:"member,omitempty"`
 	// Role is the role of the member.
-	Role          *ProjectRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole,oneof" json:"role,omitempty"`
+	Role *ProjectRole `protobuf:"varint,2,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole,oneof" json:"role,omitempty"`
+	// Labels lists only members containing the given labels.
+	Labels        *Labels `protobuf:"bytes,3,opt,name=labels,proto3,oneof" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -159,6 +161,13 @@ func (x *ProjectMemberQuery) GetRole() ProjectRole {
 		return *x.Role
 	}
 	return ProjectRole_PROJECT_ROLE_UNSPECIFIED
+}
+
+func (x *ProjectMemberQuery) GetLabels() *Labels {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
 }
 
 // ProjectMemberServiceListRequest is the request payload to list all project members.
@@ -279,7 +288,9 @@ type ProjectMemberServiceCreateRequest struct {
 	// Login of the member to add.
 	Member string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
 	// Role to assign to the new member.
-	Role          ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
+	Role ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
+	// Labels on this member.
+	Labels        *Labels `protobuf:"bytes,4,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -335,6 +346,13 @@ func (x *ProjectMemberServiceCreateRequest) GetRole() ProjectRole {
 	return ProjectRole_PROJECT_ROLE_UNSPECIFIED
 }
 
+func (x *ProjectMemberServiceCreateRequest) GetLabels() *Labels {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
+}
+
 // ProjectMemberServiceUpdateRequest is the request payload to update a project.
 type ProjectMemberServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -345,7 +363,9 @@ type ProjectMemberServiceUpdateRequest struct {
 	// Role is the role in this project the user will get after the update.
 	Role *ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole,oneof" json:"role,omitempty"`
 	// UpdateMeta contains the timestamp and strategy to be used in this update request.
-	UpdateMeta    *UpdateMeta `protobuf:"bytes,4,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
+	UpdateMeta *UpdateMeta `protobuf:"bytes,4,opt,name=update_meta,json=updateMeta,proto3" json:"update_meta,omitempty"`
+	// Labels on this member.
+	Labels        *UpdateLabels `protobuf:"bytes,5,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -404,6 +424,13 @@ func (x *ProjectMemberServiceUpdateRequest) GetRole() ProjectRole {
 func (x *ProjectMemberServiceUpdateRequest) GetUpdateMeta() *UpdateMeta {
 	if x != nil {
 		return x.UpdateMeta
+	}
+	return nil
+}
+
+func (x *ProjectMemberServiceUpdateRequest) GetLabels() *UpdateLabels {
+	if x != nil {
+		return x.Labels
 	}
 	return nil
 }
@@ -795,28 +822,32 @@ const file_metalstack_api_v2_project_member_proto_rawDesc = "" +
 	"\x04role\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x121\n" +
 	"\x14inherited_membership\x18\x03 \x01(\bR\x13inheritedMembership\x12+\n" +
 	"\x04meta\x18\x04 \x01(\v2\x17.metalstack.api.v2.MetaR\x04meta\x12\"\n" +
-	"\aproject\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\x95\x01\n" +
+	"\aproject\x18\x05 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\"\xd8\x01\n" +
 	"\x12ProjectMemberQuery\x12(\n" +
 	"\x06member\x18\x01 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01H\x00R\x06member\x88\x01\x01\x12A\n" +
-	"\x04role\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\x04role\x88\x01\x01B\t\n" +
+	"\x04role\x18\x02 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x01R\x04role\x88\x01\x01\x126\n" +
+	"\x06labels\x18\x03 \x01(\v2\x19.metalstack.api.v2.LabelsH\x02R\x06labels\x88\x01\x01B\t\n" +
 	"\a_memberB\a\n" +
-	"\x05_role\"\x82\x01\n" +
+	"\x05_roleB\t\n" +
+	"\a_labels\"\x82\x01\n" +
 	"\x1fProjectMemberServiceListRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12;\n" +
 	"\x05query\x18\x02 \x01(\v2%.metalstack.api.v2.ProjectMemberQueryR\x05query\"i\n" +
 	"\x1eProjectMemberServiceGetRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
-	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\"\xaa\x01\n" +
+	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\"\xdd\x01\n" +
 	"!ProjectMemberServiceCreateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12<\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"\xf3\x01\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x121\n" +
+	"\x06labels\x18\x04 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\"\xac\x02\n" +
 	"!ProjectMemberServiceUpdateRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x16\n" +
 	"\x06member\x18\x02 \x01(\tR\x06member\x12A\n" +
 	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04role\x88\x01\x01\x12F\n" +
 	"\vupdate_meta\x18\x04 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
-	"updateMetaB\a\n" +
+	"updateMeta\x127\n" +
+	"\x06labels\x18\x05 \x01(\v2\x1f.metalstack.api.v2.UpdateLabelsR\x06labelsB\a\n" +
 	"\x05_role\"_\n" +
 	"!ProjectMemberServiceDeleteRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x16\n" +
@@ -874,39 +905,44 @@ var file_metalstack_api_v2_project_member_proto_goTypes = []any{
 	(*ProjectMemberServiceLeaveResponse)(nil),  // 13: metalstack.api.v2.ProjectMemberServiceLeaveResponse
 	(ProjectRole)(0),                           // 14: metalstack.api.v2.ProjectRole
 	(*Meta)(nil),                               // 15: metalstack.api.v2.Meta
-	(*UpdateMeta)(nil),                         // 16: metalstack.api.v2.UpdateMeta
+	(*Labels)(nil),                             // 16: metalstack.api.v2.Labels
+	(*UpdateMeta)(nil),                         // 17: metalstack.api.v2.UpdateMeta
+	(*UpdateLabels)(nil),                       // 18: metalstack.api.v2.UpdateLabels
 }
 var file_metalstack_api_v2_project_member_proto_depIdxs = []int32{
 	14, // 0: metalstack.api.v2.ProjectMember.role:type_name -> metalstack.api.v2.ProjectRole
 	15, // 1: metalstack.api.v2.ProjectMember.meta:type_name -> metalstack.api.v2.Meta
 	14, // 2: metalstack.api.v2.ProjectMemberQuery.role:type_name -> metalstack.api.v2.ProjectRole
-	1,  // 3: metalstack.api.v2.ProjectMemberServiceListRequest.query:type_name -> metalstack.api.v2.ProjectMemberQuery
-	14, // 4: metalstack.api.v2.ProjectMemberServiceCreateRequest.role:type_name -> metalstack.api.v2.ProjectRole
-	14, // 5: metalstack.api.v2.ProjectMemberServiceUpdateRequest.role:type_name -> metalstack.api.v2.ProjectRole
-	16, // 6: metalstack.api.v2.ProjectMemberServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	0,  // 7: metalstack.api.v2.ProjectMemberServiceListResponse.members:type_name -> metalstack.api.v2.ProjectMember
-	0,  // 8: metalstack.api.v2.ProjectMemberServiceGetResponse.member:type_name -> metalstack.api.v2.ProjectMember
-	0,  // 9: metalstack.api.v2.ProjectMemberServiceCreateResponse.member:type_name -> metalstack.api.v2.ProjectMember
-	0,  // 10: metalstack.api.v2.ProjectMemberServiceDeleteResponse.member:type_name -> metalstack.api.v2.ProjectMember
-	0,  // 11: metalstack.api.v2.ProjectMemberServiceUpdateResponse.member:type_name -> metalstack.api.v2.ProjectMember
-	0,  // 12: metalstack.api.v2.ProjectMemberServiceLeaveResponse.member:type_name -> metalstack.api.v2.ProjectMember
-	2,  // 13: metalstack.api.v2.ProjectMemberService.List:input_type -> metalstack.api.v2.ProjectMemberServiceListRequest
-	3,  // 14: metalstack.api.v2.ProjectMemberService.Get:input_type -> metalstack.api.v2.ProjectMemberServiceGetRequest
-	4,  // 15: metalstack.api.v2.ProjectMemberService.Create:input_type -> metalstack.api.v2.ProjectMemberServiceCreateRequest
-	6,  // 16: metalstack.api.v2.ProjectMemberService.Delete:input_type -> metalstack.api.v2.ProjectMemberServiceDeleteRequest
-	5,  // 17: metalstack.api.v2.ProjectMemberService.Update:input_type -> metalstack.api.v2.ProjectMemberServiceUpdateRequest
-	12, // 18: metalstack.api.v2.ProjectMemberService.Leave:input_type -> metalstack.api.v2.ProjectMemberServiceLeaveRequest
-	7,  // 19: metalstack.api.v2.ProjectMemberService.List:output_type -> metalstack.api.v2.ProjectMemberServiceListResponse
-	8,  // 20: metalstack.api.v2.ProjectMemberService.Get:output_type -> metalstack.api.v2.ProjectMemberServiceGetResponse
-	9,  // 21: metalstack.api.v2.ProjectMemberService.Create:output_type -> metalstack.api.v2.ProjectMemberServiceCreateResponse
-	10, // 22: metalstack.api.v2.ProjectMemberService.Delete:output_type -> metalstack.api.v2.ProjectMemberServiceDeleteResponse
-	11, // 23: metalstack.api.v2.ProjectMemberService.Update:output_type -> metalstack.api.v2.ProjectMemberServiceUpdateResponse
-	13, // 24: metalstack.api.v2.ProjectMemberService.Leave:output_type -> metalstack.api.v2.ProjectMemberServiceLeaveResponse
-	19, // [19:25] is the sub-list for method output_type
-	13, // [13:19] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	16, // 3: metalstack.api.v2.ProjectMemberQuery.labels:type_name -> metalstack.api.v2.Labels
+	1,  // 4: metalstack.api.v2.ProjectMemberServiceListRequest.query:type_name -> metalstack.api.v2.ProjectMemberQuery
+	14, // 5: metalstack.api.v2.ProjectMemberServiceCreateRequest.role:type_name -> metalstack.api.v2.ProjectRole
+	16, // 6: metalstack.api.v2.ProjectMemberServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	14, // 7: metalstack.api.v2.ProjectMemberServiceUpdateRequest.role:type_name -> metalstack.api.v2.ProjectRole
+	17, // 8: metalstack.api.v2.ProjectMemberServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	18, // 9: metalstack.api.v2.ProjectMemberServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	0,  // 10: metalstack.api.v2.ProjectMemberServiceListResponse.members:type_name -> metalstack.api.v2.ProjectMember
+	0,  // 11: metalstack.api.v2.ProjectMemberServiceGetResponse.member:type_name -> metalstack.api.v2.ProjectMember
+	0,  // 12: metalstack.api.v2.ProjectMemberServiceCreateResponse.member:type_name -> metalstack.api.v2.ProjectMember
+	0,  // 13: metalstack.api.v2.ProjectMemberServiceDeleteResponse.member:type_name -> metalstack.api.v2.ProjectMember
+	0,  // 14: metalstack.api.v2.ProjectMemberServiceUpdateResponse.member:type_name -> metalstack.api.v2.ProjectMember
+	0,  // 15: metalstack.api.v2.ProjectMemberServiceLeaveResponse.member:type_name -> metalstack.api.v2.ProjectMember
+	2,  // 16: metalstack.api.v2.ProjectMemberService.List:input_type -> metalstack.api.v2.ProjectMemberServiceListRequest
+	3,  // 17: metalstack.api.v2.ProjectMemberService.Get:input_type -> metalstack.api.v2.ProjectMemberServiceGetRequest
+	4,  // 18: metalstack.api.v2.ProjectMemberService.Create:input_type -> metalstack.api.v2.ProjectMemberServiceCreateRequest
+	6,  // 19: metalstack.api.v2.ProjectMemberService.Delete:input_type -> metalstack.api.v2.ProjectMemberServiceDeleteRequest
+	5,  // 20: metalstack.api.v2.ProjectMemberService.Update:input_type -> metalstack.api.v2.ProjectMemberServiceUpdateRequest
+	12, // 21: metalstack.api.v2.ProjectMemberService.Leave:input_type -> metalstack.api.v2.ProjectMemberServiceLeaveRequest
+	7,  // 22: metalstack.api.v2.ProjectMemberService.List:output_type -> metalstack.api.v2.ProjectMemberServiceListResponse
+	8,  // 23: metalstack.api.v2.ProjectMemberService.Get:output_type -> metalstack.api.v2.ProjectMemberServiceGetResponse
+	9,  // 24: metalstack.api.v2.ProjectMemberService.Create:output_type -> metalstack.api.v2.ProjectMemberServiceCreateResponse
+	10, // 25: metalstack.api.v2.ProjectMemberService.Delete:output_type -> metalstack.api.v2.ProjectMemberServiceDeleteResponse
+	11, // 26: metalstack.api.v2.ProjectMemberService.Update:output_type -> metalstack.api.v2.ProjectMemberServiceUpdateResponse
+	13, // 27: metalstack.api.v2.ProjectMemberService.Leave:output_type -> metalstack.api.v2.ProjectMemberServiceLeaveResponse
+	22, // [22:28] is the sub-list for method output_type
+	16, // [16:22] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_api_v2_project_member_proto_init() }

@@ -77,6 +77,8 @@ message TenantMemberQuery {
   optional TenantRole role = 2 [(buf.validate.field).enum.defined_only = true];
   // Projects in which a user is a direct member.
   repeated string projects = 3;
+  // Labels lists only members containing the given labels.
+  optional Labels labels = 4;
 }
 
 // TenantMemberServiceGetRequest is the request payload of the tenant member get request.
@@ -103,6 +105,8 @@ message TenantMemberServiceCreateRequest {
   string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Role to assign to the new member.
   TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
+  // Labels on this member.
+  Labels labels = 4;
 }
 
 // TenantMemberServiceUpdateRequest is used to update a member from a tenant.
@@ -115,6 +119,8 @@ message TenantMemberServiceUpdateRequest {
   optional TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request.
   UpdateMeta update_meta = 4 [(buf.validate.field).required = true];
+  // Labels on this member.
+  UpdateLabels labels = 5;
 }
 
 // TenantMemberServiceGetResponse is the response payload of the tenant member get request.

@@ -32,14 +32,16 @@ class TenantMemberServiceListRequest(_message.Message):
     def __init__(self, login: _Optional[str] = ..., query: _Optional[_Union[TenantMemberQuery, _Mapping]] = ...) -> None: ...
 
 class TenantMemberQuery(_message.Message):
-    __slots__ = ("member", "role", "projects")
+    __slots__ = ("member", "role", "projects", "labels")
     MEMBER_FIELD_NUMBER: _ClassVar[int]
     ROLE_FIELD_NUMBER: _ClassVar[int]
     PROJECTS_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     member: str
     role: _common_pb2.TenantRole
     projects: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., projects: _Optional[_Iterable[str]] = ...) -> None: ...
+    labels: _common_pb2.Labels
+    def __init__(self, member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., projects: _Optional[_Iterable[str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class TenantMemberServiceGetRequest(_message.Message):
     __slots__ = ("login", "member")
@@ -58,26 +60,30 @@ class TenantMemberServiceDeleteRequest(_message.Message):
     def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
 
 class TenantMemberServiceCreateRequest(_message.Message):
-    __slots__ = ("login", "member", "role")
+    __slots__ = ("login", "member", "role", "labels")
     LOGIN_FIELD_NUMBER: _ClassVar[int]
     MEMBER_FIELD_NUMBER: _ClassVar[int]
     ROLE_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     login: str
     member: str
     role: _common_pb2.TenantRole
-    def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ...) -> None: ...
+    labels: _common_pb2.Labels
+    def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class TenantMemberServiceUpdateRequest(_message.Message):
-    __slots__ = ("login", "member", "role", "update_meta")
+    __slots__ = ("login", "member", "role", "update_meta", "labels")
     LOGIN_FIELD_NUMBER: _ClassVar[int]
     MEMBER_FIELD_NUMBER: _ClassVar[int]
     ROLE_FIELD_NUMBER: _ClassVar[int]
     UPDATE_META_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     login: str
     member: str
     role: _common_pb2.TenantRole
     update_meta: _common_pb2.UpdateMeta
-    def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ...) -> None: ...
+    labels: _common_pb2.UpdateLabels
+    def __init__(self, login: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., update_meta: _Optional[_Union[_common_pb2.UpdateMeta, _Mapping]] = ..., labels: _Optional[_Union[_common_pb2.UpdateLabels, _Mapping]] = ...) -> None: ...
 
 class TenantMemberServiceGetResponse(_message.Message):
     __slots__ = ("member",)

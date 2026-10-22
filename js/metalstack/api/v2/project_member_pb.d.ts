@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Meta, ProjectRole, UpdateMeta } from "./common_pb";
+import type { Labels, Meta, ProjectRole, UpdateLabels, UpdateMeta } from "./common_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/api/v2/project_member.proto.
@@ -67,6 +67,12 @@ export type ProjectMemberQuery = Message<"metalstack.api.v2.ProjectMemberQuery">
      * @generated from field: optional metalstack.api.v2.ProjectRole role = 2;
      */
     role?: ProjectRole | undefined;
+    /**
+     * Labels lists only members containing the given labels.
+     *
+     * @generated from field: optional metalstack.api.v2.Labels labels = 3;
+     */
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectMemberQuery.
@@ -145,6 +151,12 @@ export type ProjectMemberServiceCreateRequest = Message<"metalstack.api.v2.Proje
      * @generated from field: metalstack.api.v2.ProjectRole role = 3;
      */
     role: ProjectRole;
+    /**
+     * Labels on this member.
+     *
+     * @generated from field: metalstack.api.v2.Labels labels = 4;
+     */
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectMemberServiceCreateRequest.
@@ -181,6 +193,12 @@ export type ProjectMemberServiceUpdateRequest = Message<"metalstack.api.v2.Proje
      * @generated from field: metalstack.api.v2.UpdateMeta update_meta = 4;
      */
     updateMeta?: UpdateMeta | undefined;
+    /**
+     * Labels on this member.
+     *
+     * @generated from field: metalstack.api.v2.UpdateLabels labels = 5;
+     */
+    labels?: UpdateLabels | undefined;
 };
 /**
  * Describes the message metalstack.api.v2.ProjectMemberServiceUpdateRequest.
