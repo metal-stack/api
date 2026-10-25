@@ -149,7 +149,14 @@ export declare const MachineServiceBMCCommandRequestSchema: GenMessage<MachineSe
  *
  * @generated from message metalstack.admin.v2.MachineServiceBMCCommandResponse
  */
-export type MachineServiceBMCCommandResponse = Message<"metalstack.admin.v2.MachineServiceBMCCommandResponse"> & {};
+export type MachineServiceBMCCommandResponse = Message<"metalstack.admin.v2.MachineServiceBMCCommandResponse"> & {
+    /**
+     * TaskId is the identifier of the task that managed the bmc command execution.
+     *
+     * @generated from field: string task_id = 1;
+     */
+    taskId: string;
+};
 /**
  * Describes the message metalstack.admin.v2.MachineServiceBMCCommandResponse.
  * Use `create(MachineServiceBMCCommandResponseSchema)` to create a new message.

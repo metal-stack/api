@@ -60,4 +60,6 @@ enum ComponentType {
   COMPONENT_TYPE_METAL_CONSOLE = 5 [(metalstack.api.v2.enum_string_value) = "metal-console"];
   // COMPONENT_TYPE_METAL_METRICS_EXPORTER is metal-metrics-exporter.
   COMPONENT_TYPE_METAL_METRICS_EXPORTER = 6 [(metalstack.api.v2.enum_string_value) = "metal-metrics-exporter"];
+  // COMPONENT_TYPE_EXTERNAL_APPLICATION is an external application.
+  COMPONENT_TYPE_EXTERNAL_APPLICATION = 7 [(metalstack.api.v2.enum_string_value) = "external-application"];
 }

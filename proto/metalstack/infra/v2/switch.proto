@@ -19,7 +19,7 @@ service SwitchService {
   // Registers a switch.
   rpc Register(SwitchServiceRegisterRequest) returns (SwitchServiceRegisterResponse) {
     option (metalstack.api.v2.infra_roles) = INFRA_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
   // Heartbeat sends a heartbeat from a switch.
   rpc Heartbeat(SwitchServiceHeartbeatRequest) returns (SwitchServiceHeartbeatResponse) {

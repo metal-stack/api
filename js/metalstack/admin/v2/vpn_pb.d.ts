@@ -37,6 +37,12 @@ export type VPNServiceAuthKeyRequest = Message<"metalstack.admin.v2.VPNServiceAu
      * @generated from field: string reason = 4;
      */
     reason: string;
+    /**
+     * Reusable, if set to true, the authkey can be used multiple times within the expiration window.
+     *
+     * @generated from field: bool reusable = 5;
+     */
+    reusable: boolean;
 };
 /**
  * Describes the message metalstack.admin.v2.VPNServiceAuthKeyRequest.
@@ -80,6 +86,12 @@ export type VPNServiceAuthKeyResponse = Message<"metalstack.admin.v2.VPNServiceA
      * @generated from field: google.protobuf.Timestamp created_at = 5;
      */
     createdAt?: Timestamp | undefined;
+    /**
+     * Reusable, if set to true, the authkey can be used multiple times within the expiration window.
+     *
+     * @generated from field: bool reusable = 6;
+     */
+    reusable: boolean;
 };
 /**
  * Describes the message metalstack.admin.v2.VPNServiceAuthKeyResponse.

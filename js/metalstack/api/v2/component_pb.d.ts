@@ -153,7 +153,13 @@ export declare enum ComponentType {
      *
      * @generated from enum value: COMPONENT_TYPE_METAL_METRICS_EXPORTER = 6;
      */
-    METAL_METRICS_EXPORTER = 6
+    METAL_METRICS_EXPORTER = 6,
+    /**
+     * COMPONENT_TYPE_EXTERNAL_APPLICATION is an external application.
+     *
+     * @generated from enum value: COMPONENT_TYPE_EXTERNAL_APPLICATION = 7;
+     */
+    EXTERNAL_APPLICATION = 7
 }
 /**
  * Describes the enum metalstack.api.v2.ComponentType.
