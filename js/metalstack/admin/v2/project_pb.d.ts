@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { ProjectRole } from "../../api/v2/common_pb";
+import type { Labels, ProjectRole } from "../../api/v2/common_pb";
 import type { Project, ProjectQuery, ProjectServiceCreateRequest as ProjectServiceCreateRequest$1 } from "../../api/v2/project_pb";
 import type { ProjectMember } from "../../api/v2/project_member_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -109,6 +109,12 @@ export type ProjectServiceAddMemberRequest = Message<"metalstack.admin.v2.Projec
      * @generated from field: metalstack.api.v2.ProjectRole role = 3;
      */
     role: ProjectRole;
+    /**
+     * Labels on this member.
+     *
+     * @generated from field: metalstack.api.v2.Labels labels = 4;
+     */
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.ProjectServiceAddMemberRequest.

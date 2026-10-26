@@ -69,6 +69,8 @@ message TenantServiceAddMemberRequest {
   string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Role to assign to the new member.
   metalstack.api.v2.TenantRole role = 3 [(buf.validate.field).enum.defined_only = true];
+  // Labels on this member.
+  metalstack.api.v2.Labels labels = 4;
 }
 
 // TenantServiceAddMemberResponse is the response payload for the add member request.

@@ -224,7 +224,9 @@ type ProjectServiceAddMemberRequest struct {
 	// Login of the member to add.
 	Member string `protobuf:"bytes,2,opt,name=member,proto3" json:"member,omitempty"`
 	// Role to assign to the new member.
-	Role          v2.ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
+	Role v2.ProjectRole `protobuf:"varint,3,opt,name=role,proto3,enum=metalstack.api.v2.ProjectRole" json:"role,omitempty"`
+	// Labels on this member.
+	Labels        *v2.Labels `protobuf:"bytes,4,opt,name=labels,proto3" json:"labels,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -278,6 +280,13 @@ func (x *ProjectServiceAddMemberRequest) GetRole() v2.ProjectRole {
 		return x.Role
 	}
 	return v2.ProjectRole(0)
+}
+
+func (x *ProjectServiceAddMemberRequest) GetLabels() *v2.Labels {
+	if x != nil {
+		return x.Labels
+	}
+	return nil
 }
 
 // ProjectServiceAddMemberResponse is the response payload for the add member request.
@@ -442,11 +451,12 @@ const file_metalstack_admin_v2_project_proto_rawDesc = "" +
 	"\x02id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x02id\x88\x01\x01B\x05\n" +
 	"\x03_id\"T\n" +
 	"\x1cProjectServiceCreateResponse\x124\n" +
-	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\xa7\x01\n" +
+	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject\"\xda\x01\n" +
 	"\x1eProjectServiceAddMemberRequest\x12\"\n" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12<\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\"[\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x121\n" +
+	"\x06labels\x18\x04 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\"[\n" +
 	"\x1fProjectServiceAddMemberResponse\x128\n" +
 	"\x06member\x18\x01 \x01(\v2 .metalstack.api.v2.ProjectMemberR\x06member\"l\n" +
 	"!ProjectServiceRemoveMemberRequest\x12\"\n" +
@@ -488,7 +498,8 @@ var file_metalstack_admin_v2_project_proto_goTypes = []any{
 	(*v2.Project)(nil),                         // 9: metalstack.api.v2.Project
 	(*v2.ProjectServiceCreateRequest)(nil),     // 10: metalstack.api.v2.ProjectServiceCreateRequest
 	(v2.ProjectRole)(0),                        // 11: metalstack.api.v2.ProjectRole
-	(*v2.ProjectMember)(nil),                   // 12: metalstack.api.v2.ProjectMember
+	(*v2.Labels)(nil),                          // 12: metalstack.api.v2.Labels
+	(*v2.ProjectMember)(nil),                   // 13: metalstack.api.v2.ProjectMember
 }
 var file_metalstack_admin_v2_project_proto_depIdxs = []int32{
 	8,  // 0: metalstack.admin.v2.ProjectServiceListRequest.query:type_name -> metalstack.api.v2.ProjectQuery
@@ -496,21 +507,22 @@ var file_metalstack_admin_v2_project_proto_depIdxs = []int32{
 	10, // 2: metalstack.admin.v2.ProjectServiceCreateRequest.project:type_name -> metalstack.api.v2.ProjectServiceCreateRequest
 	9,  // 3: metalstack.admin.v2.ProjectServiceCreateResponse.project:type_name -> metalstack.api.v2.Project
 	11, // 4: metalstack.admin.v2.ProjectServiceAddMemberRequest.role:type_name -> metalstack.api.v2.ProjectRole
-	12, // 5: metalstack.admin.v2.ProjectServiceAddMemberResponse.member:type_name -> metalstack.api.v2.ProjectMember
-	12, // 6: metalstack.admin.v2.ProjectServiceRemoveMemberResponse.member:type_name -> metalstack.api.v2.ProjectMember
-	2,  // 7: metalstack.admin.v2.ProjectService.Create:input_type -> metalstack.admin.v2.ProjectServiceCreateRequest
-	0,  // 8: metalstack.admin.v2.ProjectService.List:input_type -> metalstack.admin.v2.ProjectServiceListRequest
-	4,  // 9: metalstack.admin.v2.ProjectService.AddMember:input_type -> metalstack.admin.v2.ProjectServiceAddMemberRequest
-	6,  // 10: metalstack.admin.v2.ProjectService.RemoveMember:input_type -> metalstack.admin.v2.ProjectServiceRemoveMemberRequest
-	3,  // 11: metalstack.admin.v2.ProjectService.Create:output_type -> metalstack.admin.v2.ProjectServiceCreateResponse
-	1,  // 12: metalstack.admin.v2.ProjectService.List:output_type -> metalstack.admin.v2.ProjectServiceListResponse
-	5,  // 13: metalstack.admin.v2.ProjectService.AddMember:output_type -> metalstack.admin.v2.ProjectServiceAddMemberResponse
-	7,  // 14: metalstack.admin.v2.ProjectService.RemoveMember:output_type -> metalstack.admin.v2.ProjectServiceRemoveMemberResponse
-	11, // [11:15] is the sub-list for method output_type
-	7,  // [7:11] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	12, // 5: metalstack.admin.v2.ProjectServiceAddMemberRequest.labels:type_name -> metalstack.api.v2.Labels
+	13, // 6: metalstack.admin.v2.ProjectServiceAddMemberResponse.member:type_name -> metalstack.api.v2.ProjectMember
+	13, // 7: metalstack.admin.v2.ProjectServiceRemoveMemberResponse.member:type_name -> metalstack.api.v2.ProjectMember
+	2,  // 8: metalstack.admin.v2.ProjectService.Create:input_type -> metalstack.admin.v2.ProjectServiceCreateRequest
+	0,  // 9: metalstack.admin.v2.ProjectService.List:input_type -> metalstack.admin.v2.ProjectServiceListRequest
+	4,  // 10: metalstack.admin.v2.ProjectService.AddMember:input_type -> metalstack.admin.v2.ProjectServiceAddMemberRequest
+	6,  // 11: metalstack.admin.v2.ProjectService.RemoveMember:input_type -> metalstack.admin.v2.ProjectServiceRemoveMemberRequest
+	3,  // 12: metalstack.admin.v2.ProjectService.Create:output_type -> metalstack.admin.v2.ProjectServiceCreateResponse
+	1,  // 13: metalstack.admin.v2.ProjectService.List:output_type -> metalstack.admin.v2.ProjectServiceListResponse
+	5,  // 14: metalstack.admin.v2.ProjectService.AddMember:output_type -> metalstack.admin.v2.ProjectServiceAddMemberResponse
+	7,  // 15: metalstack.admin.v2.ProjectService.RemoveMember:output_type -> metalstack.admin.v2.ProjectServiceRemoveMemberResponse
+	12, // [12:16] is the sub-list for method output_type
+	8,  // [8:12] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_project_proto_init() }

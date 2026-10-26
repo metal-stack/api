@@ -40,14 +40,16 @@ class TenantServiceListResponse(_message.Message):
     def __init__(self, tenants: _Optional[_Iterable[_Union[_tenant_pb2.Tenant, _Mapping]]] = ..., next_page: _Optional[int] = ...) -> None: ...
 
 class TenantServiceAddMemberRequest(_message.Message):
-    __slots__ = ("tenant", "member", "role")
+    __slots__ = ("tenant", "member", "role", "labels")
     TENANT_FIELD_NUMBER: _ClassVar[int]
     MEMBER_FIELD_NUMBER: _ClassVar[int]
     ROLE_FIELD_NUMBER: _ClassVar[int]
+    LABELS_FIELD_NUMBER: _ClassVar[int]
     tenant: str
     member: str
     role: _common_pb2.TenantRole
-    def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ...) -> None: ...
+    labels: _common_pb2.Labels
+    def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
 
 class TenantServiceAddMemberResponse(_message.Message):
     __slots__ = ("member",)

@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { TenantRole } from "../../api/v2/common_pb";
+import type { Labels, TenantRole } from "../../api/v2/common_pb";
 import type { Tenant, TenantQuery, TenantServiceCreateRequest as TenantServiceCreateRequest$1 } from "../../api/v2/tenant_pb";
 import type { TenantMember } from "../../api/v2/tenant_member_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -115,6 +115,12 @@ export type TenantServiceAddMemberRequest = Message<"metalstack.admin.v2.TenantS
      * @generated from field: metalstack.api.v2.TenantRole role = 3;
      */
     role: TenantRole;
+    /**
+     * Labels on this member.
+     *
+     * @generated from field: metalstack.api.v2.Labels labels = 4;
+     */
+    labels?: Labels | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.TenantServiceAddMemberRequest.
