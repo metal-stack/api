@@ -28,7 +28,7 @@ from metalstack.api.v2 import machine_pb2 as metalstack_dot_api_dot_v2_dot_machi
 from metalstack.api.v2 import predefined_rules_pb2 as metalstack_dot_api_dot_v2_dot_predefined__rules__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!metalstack/admin/v2/machine.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"8\n\x18MachineServiceGetRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"Q\n\x19MachineServiceGetResponse\x12\x34\n\x07machine\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.MachineR\x07machine\"\x90\x01\n\x19MachineServiceListRequest\x12\x35\n\x05query\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.MachineQueryR\x05query\x12.\n\tpartition\x18\x02 \x01(\tB\x0b\xbaH\x08r\x06\xd0\xb3\xae\xb1\x02\x01H\x00R\tpartition\x88\x01\x01\x42\x0c\n\n_partition\"T\n\x1aMachineServiceListResponse\x12\x36\n\x08machines\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.MachineR\x08machines\";\n\x1bMachineServiceDeleteRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"T\n\x1cMachineServiceDeleteResponse\x12\x34\n\x07machine\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.MachineR\x07machine\"\x89\x01\n\x1fMachineServiceBMCCommandRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12H\n\x07\x63ommand\x18\x02 \x01(\x0e\x32$.metalstack.api.v2.MachineBMCCommandB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x07\x63ommand\";\n MachineServiceBMCCommandResponse\x12\x17\n\x07task_id\x18\x01 \x01(\tR\x06taskId\";\n\x1bMachineServiceGetBMCRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"e\n\x1cMachineServiceGetBMCResponse\x12\x45\n\x0b\x62mc_details\x18\x01 \x01(\x0b\x32$.metalstack.api.v2.MachineBMCDetailsR\nbmcDetails\"U\n\x1cMachineServiceListBMCRequest\x12\x35\n\x05query\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.MachineQueryR\x05query\"f\n\x1dMachineServiceListBMCResponse\x12\x45\n\x0b\x62mc_details\x18\x01 \x03(\x0b\x32$.metalstack.api.v2.MachineBMCDetailsR\nbmcDetails\"h\n$MachineServiceConsolePasswordRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n\x06reason\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\n\x18\x80\x04R\x06reason\"a\n%MachineServiceConsolePasswordResponse\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1a\n\x08password\x18\x02 \x01(\tR\x08password\"\xad\x01\n\x1dMachineServiceSetStateRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12?\n\x05state\x18\x02 \x01(\x0e\x32\x1f.metalstack.api.v2.MachineStateB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x05state\x12-\n\x0b\x64\x65scription\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x0b\x64\x65scription\"V\n\x1eMachineServiceSetStateResponse\x12\x34\n\x07machine\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.MachineR\x07machine\"Z\n\x1bMachineServiceIssuesRequest\x12;\n\x05query\x18\x01 \x01(\x0b\x32%.metalstack.api.v2.MachineIssuesQueryR\x05query\"X\n\x1cMachineServiceIssuesResponse\x12\x38\n\x06issues\x18\x01 \x03(\x0b\x32 .metalstack.api.v2.MachineIssuesR\x06issues2\x83\t\n\x0eMachineService\x12p\n\x03Get\x12-.metalstack.admin.v2.MachineServiceGetRequest\x1a..metalstack.admin.v2.MachineServiceGetResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12s\n\x04List\x12..metalstack.admin.v2.MachineServiceListRequest\x1a/.metalstack.admin.v2.MachineServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12x\n\x06\x44\x65lete\x12\x30.metalstack.admin.v2.MachineServiceDeleteRequest\x1a\x31.metalstack.admin.v2.MachineServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x84\x01\n\nBMCCommand\x12\x34.metalstack.admin.v2.MachineServiceBMCCommandRequest\x1a\x35.metalstack.admin.v2.MachineServiceBMCCommandResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12y\n\x06GetBMC\x12\x30.metalstack.admin.v2.MachineServiceGetBMCRequest\x1a\x31.metalstack.admin.v2.MachineServiceGetBMCResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12|\n\x07ListBMC\x12\x31.metalstack.admin.v2.MachineServiceListBMCRequest\x1a\x32.metalstack.admin.v2.MachineServiceListBMCResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12\x94\x01\n\x0f\x43onsolePassword\x12\x39.metalstack.admin.v2.MachineServiceConsolePasswordRequest\x1a:.metalstack.admin.v2.MachineServiceConsolePasswordResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12~\n\x08SetState\x12\x32.metalstack.admin.v2.MachineServiceSetStateRequest\x1a\x33.metalstack.admin.v2.MachineServiceSetStateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12y\n\x06Issues\x12\x30.metalstack.admin.v2.MachineServiceIssuesRequest\x1a\x31.metalstack.admin.v2.MachineServiceIssuesResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x42\xd0\x01\n\x17\x63om.metalstack.admin.v2B\x0cMachineProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n!metalstack/admin/v2/machine.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"8\n\x18MachineServiceGetRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"Q\n\x19MachineServiceGetResponse\x12\x34\n\x07machine\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.MachineR\x07machine\"R\n\x19MachineServiceListRequest\x12\x35\n\x05query\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.MachineQueryR\x05query\"T\n\x1aMachineServiceListResponse\x12\x36\n\x08machines\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.MachineR\x08machines\";\n\x1bMachineServiceDeleteRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"T\n\x1cMachineServiceDeleteResponse\x12\x34\n\x07machine\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.MachineR\x07machine\"\x89\x01\n\x1fMachineServiceBMCCommandRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12H\n\x07\x63ommand\x18\x02 \x01(\x0e\x32$.metalstack.api.v2.MachineBMCCommandB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x07\x63ommand\";\n MachineServiceBMCCommandResponse\x12\x17\n\x07task_id\x18\x01 \x01(\tR\x06taskId\";\n\x1bMachineServiceGetBMCRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\"e\n\x1cMachineServiceGetBMCResponse\x12\x45\n\x0b\x62mc_details\x18\x01 \x01(\x0b\x32$.metalstack.api.v2.MachineBMCDetailsR\nbmcDetails\"U\n\x1cMachineServiceListBMCRequest\x12\x35\n\x05query\x18\x01 \x01(\x0b\x32\x1f.metalstack.api.v2.MachineQueryR\x05query\"f\n\x1dMachineServiceListBMCResponse\x12\x45\n\x0b\x62mc_details\x18\x01 \x03(\x0b\x32$.metalstack.api.v2.MachineBMCDetailsR\nbmcDetails\"h\n$MachineServiceConsolePasswordRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\"\n\x06reason\x18\x02 \x01(\tB\n\xbaH\x07r\x05\x10\n\x18\x80\x04R\x06reason\"a\n%MachineServiceConsolePasswordResponse\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12\x1a\n\x08password\x18\x02 \x01(\tR\x08password\"\xad\x01\n\x1dMachineServiceSetStateRequest\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12?\n\x05state\x18\x02 \x01(\x0e\x32\x1f.metalstack.api.v2.MachineStateB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x05state\x12-\n\x0b\x64\x65scription\x18\x03 \x01(\tB\x0b\xbaH\x08r\x06\xc8\xb3\xae\xb1\x02\x01R\x0b\x64\x65scription\"V\n\x1eMachineServiceSetStateResponse\x12\x34\n\x07machine\x18\x01 \x01(\x0b\x32\x1a.metalstack.api.v2.MachineR\x07machine\"Z\n\x1bMachineServiceIssuesRequest\x12;\n\x05query\x18\x01 \x01(\x0b\x32%.metalstack.api.v2.MachineIssuesQueryR\x05query\"X\n\x1cMachineServiceIssuesResponse\x12\x38\n\x06issues\x18\x01 \x03(\x0b\x32 .metalstack.api.v2.MachineIssuesR\x06issues2\x83\t\n\x0eMachineService\x12p\n\x03Get\x12-.metalstack.admin.v2.MachineServiceGetRequest\x1a..metalstack.admin.v2.MachineServiceGetResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12s\n\x04List\x12..metalstack.admin.v2.MachineServiceListRequest\x1a/.metalstack.admin.v2.MachineServiceListResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x12x\n\x06\x44\x65lete\x12\x30.metalstack.admin.v2.MachineServiceDeleteRequest\x1a\x31.metalstack.admin.v2.MachineServiceDeleteResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\x84\x01\n\nBMCCommand\x12\x34.metalstack.admin.v2.MachineServiceBMCCommandRequest\x1a\x35.metalstack.admin.v2.MachineServiceBMCCommandResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12y\n\x06GetBMC\x12\x30.metalstack.admin.v2.MachineServiceGetBMCRequest\x1a\x31.metalstack.admin.v2.MachineServiceGetBMCResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12|\n\x07ListBMC\x12\x31.metalstack.admin.v2.MachineServiceListBMCRequest\x1a\x32.metalstack.admin.v2.MachineServiceListBMCResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12\x94\x01\n\x0f\x43onsolePassword\x12\x39.metalstack.admin.v2.MachineServiceConsolePasswordRequest\x1a:.metalstack.admin.v2.MachineServiceConsolePasswordResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x01\x12~\n\x08SetState\x12\x32.metalstack.admin.v2.MachineServiceSetStateRequest\x1a\x33.metalstack.admin.v2.MachineServiceSetStateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12y\n\x06Issues\x12\x30.metalstack.admin.v2.MachineServiceIssuesRequest\x1a\x31.metalstack.admin.v2.MachineServiceIssuesResponse\"\n\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02\x42\xd0\x01\n\x17\x63om.metalstack.admin.v2B\x0cMachineProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -38,8 +38,6 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.admin.v2B\014MachineProtoP\001Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\242\002\003MAX\252\002\023Metalstack.Admin.V2\312\002\023Metalstack\\Admin\\V2\342\002\037Metalstack\\Admin\\V2\\GPBMetadata\352\002\025Metalstack::Admin::V2'
   _globals['_MACHINESERVICEGETREQUEST'].fields_by_name['uuid']._loaded_options = None
   _globals['_MACHINESERVICEGETREQUEST'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
-  _globals['_MACHINESERVICELISTREQUEST'].fields_by_name['partition']._loaded_options = None
-  _globals['_MACHINESERVICELISTREQUEST'].fields_by_name['partition']._serialized_options = b'\272H\010r\006\320\263\256\261\002\001'
   _globals['_MACHINESERVICEDELETEREQUEST'].fields_by_name['uuid']._loaded_options = None
   _globals['_MACHINESERVICEDELETEREQUEST'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
   _globals['_MACHINESERVICEBMCCOMMANDREQUEST'].fields_by_name['uuid']._loaded_options = None
@@ -82,38 +80,38 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_MACHINESERVICEGETREQUEST']._serialized_end=250
   _globals['_MACHINESERVICEGETRESPONSE']._serialized_start=252
   _globals['_MACHINESERVICEGETRESPONSE']._serialized_end=333
-  _globals['_MACHINESERVICELISTREQUEST']._serialized_start=336
-  _globals['_MACHINESERVICELISTREQUEST']._serialized_end=480
-  _globals['_MACHINESERVICELISTRESPONSE']._serialized_start=482
-  _globals['_MACHINESERVICELISTRESPONSE']._serialized_end=566
-  _globals['_MACHINESERVICEDELETEREQUEST']._serialized_start=568
-  _globals['_MACHINESERVICEDELETEREQUEST']._serialized_end=627
-  _globals['_MACHINESERVICEDELETERESPONSE']._serialized_start=629
-  _globals['_MACHINESERVICEDELETERESPONSE']._serialized_end=713
-  _globals['_MACHINESERVICEBMCCOMMANDREQUEST']._serialized_start=716
-  _globals['_MACHINESERVICEBMCCOMMANDREQUEST']._serialized_end=853
-  _globals['_MACHINESERVICEBMCCOMMANDRESPONSE']._serialized_start=855
-  _globals['_MACHINESERVICEBMCCOMMANDRESPONSE']._serialized_end=914
-  _globals['_MACHINESERVICEGETBMCREQUEST']._serialized_start=916
-  _globals['_MACHINESERVICEGETBMCREQUEST']._serialized_end=975
-  _globals['_MACHINESERVICEGETBMCRESPONSE']._serialized_start=977
-  _globals['_MACHINESERVICEGETBMCRESPONSE']._serialized_end=1078
-  _globals['_MACHINESERVICELISTBMCREQUEST']._serialized_start=1080
-  _globals['_MACHINESERVICELISTBMCREQUEST']._serialized_end=1165
-  _globals['_MACHINESERVICELISTBMCRESPONSE']._serialized_start=1167
-  _globals['_MACHINESERVICELISTBMCRESPONSE']._serialized_end=1269
-  _globals['_MACHINESERVICECONSOLEPASSWORDREQUEST']._serialized_start=1271
-  _globals['_MACHINESERVICECONSOLEPASSWORDREQUEST']._serialized_end=1375
-  _globals['_MACHINESERVICECONSOLEPASSWORDRESPONSE']._serialized_start=1377
-  _globals['_MACHINESERVICECONSOLEPASSWORDRESPONSE']._serialized_end=1474
-  _globals['_MACHINESERVICESETSTATEREQUEST']._serialized_start=1477
-  _globals['_MACHINESERVICESETSTATEREQUEST']._serialized_end=1650
-  _globals['_MACHINESERVICESETSTATERESPONSE']._serialized_start=1652
-  _globals['_MACHINESERVICESETSTATERESPONSE']._serialized_end=1738
-  _globals['_MACHINESERVICEISSUESREQUEST']._serialized_start=1740
-  _globals['_MACHINESERVICEISSUESREQUEST']._serialized_end=1830
-  _globals['_MACHINESERVICEISSUESRESPONSE']._serialized_start=1832
-  _globals['_MACHINESERVICEISSUESRESPONSE']._serialized_end=1920
-  _globals['_MACHINESERVICE']._serialized_start=1923
-  _globals['_MACHINESERVICE']._serialized_end=3078
+  _globals['_MACHINESERVICELISTREQUEST']._serialized_start=335
+  _globals['_MACHINESERVICELISTREQUEST']._serialized_end=417
+  _globals['_MACHINESERVICELISTRESPONSE']._serialized_start=419
+  _globals['_MACHINESERVICELISTRESPONSE']._serialized_end=503
+  _globals['_MACHINESERVICEDELETEREQUEST']._serialized_start=505
+  _globals['_MACHINESERVICEDELETEREQUEST']._serialized_end=564
+  _globals['_MACHINESERVICEDELETERESPONSE']._serialized_start=566
+  _globals['_MACHINESERVICEDELETERESPONSE']._serialized_end=650
+  _globals['_MACHINESERVICEBMCCOMMANDREQUEST']._serialized_start=653
+  _globals['_MACHINESERVICEBMCCOMMANDREQUEST']._serialized_end=790
+  _globals['_MACHINESERVICEBMCCOMMANDRESPONSE']._serialized_start=792
+  _globals['_MACHINESERVICEBMCCOMMANDRESPONSE']._serialized_end=851
+  _globals['_MACHINESERVICEGETBMCREQUEST']._serialized_start=853
+  _globals['_MACHINESERVICEGETBMCREQUEST']._serialized_end=912
+  _globals['_MACHINESERVICEGETBMCRESPONSE']._serialized_start=914
+  _globals['_MACHINESERVICEGETBMCRESPONSE']._serialized_end=1015
+  _globals['_MACHINESERVICELISTBMCREQUEST']._serialized_start=1017
+  _globals['_MACHINESERVICELISTBMCREQUEST']._serialized_end=1102
+  _globals['_MACHINESERVICELISTBMCRESPONSE']._serialized_start=1104
+  _globals['_MACHINESERVICELISTBMCRESPONSE']._serialized_end=1206
+  _globals['_MACHINESERVICECONSOLEPASSWORDREQUEST']._serialized_start=1208
+  _globals['_MACHINESERVICECONSOLEPASSWORDREQUEST']._serialized_end=1312
+  _globals['_MACHINESERVICECONSOLEPASSWORDRESPONSE']._serialized_start=1314
+  _globals['_MACHINESERVICECONSOLEPASSWORDRESPONSE']._serialized_end=1411
+  _globals['_MACHINESERVICESETSTATEREQUEST']._serialized_start=1414
+  _globals['_MACHINESERVICESETSTATEREQUEST']._serialized_end=1587
+  _globals['_MACHINESERVICESETSTATERESPONSE']._serialized_start=1589
+  _globals['_MACHINESERVICESETSTATERESPONSE']._serialized_end=1675
+  _globals['_MACHINESERVICEISSUESREQUEST']._serialized_start=1677
+  _globals['_MACHINESERVICEISSUESREQUEST']._serialized_end=1767
+  _globals['_MACHINESERVICEISSUESRESPONSE']._serialized_start=1769
+  _globals['_MACHINESERVICEISSUESRESPONSE']._serialized_end=1857
+  _globals['_MACHINESERVICE']._serialized_start=1860
+  _globals['_MACHINESERVICE']._serialized_end=3015
 # @@protoc_insertion_point(module_scope)
