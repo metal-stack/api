@@ -487,7 +487,7 @@ message MetalGPU {
 // MachineNic contains details of a network interface of this machine.
 message MachineNic {
   // Mac the macaddress of this interface.
-  string mac = 1 [deprecated = true];
+  string mac = 1 [(buf.validate.field).string.(metalstack.api.v2.macaddress) = true];
   // Name of this interface.
   string name = 2 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
   // Identifier the unique identifier of this network interface.
@@ -499,9 +499,20 @@ message MachineNic {
   // Speed in bits/second of this network card.
   uint64 speed = 6;
   // Neighbors the neighbors visible to this network interface.
-  repeated MachineNic neighbors = 7;
+  repeated NeighborNic neighbors = 7;
   // Hostname the nic belongs to.
   string hostname = 8;
+}
+
+// NeighborNic contains details of a network interface of the neighbor.
+message NeighborNic {
+  // Name of this interface.
+  string name = 1 [(buf.validate.field).string.(metalstack.api.v2.is_name) = true];
+  // Identifier the unique identifier of this network interface.
+  // This could either be a macaddress or alias of the interface, e.g. Eth1/1 on some switches.
+  optional string identifier = 2 [(buf.validate.field).string = {max_len: 128}];
+  // Hostname the nic belongs to.
+  string hostname = 3;
 }
 
 // MachineBlockDevice contains details of a block device of this machine.
