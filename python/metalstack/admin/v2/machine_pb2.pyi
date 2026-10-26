@@ -23,12 +23,10 @@ class MachineServiceGetResponse(_message.Message):
     def __init__(self, machine: _Optional[_Union[_machine_pb2.Machine, _Mapping]] = ...) -> None: ...
 
 class MachineServiceListRequest(_message.Message):
-    __slots__ = ("query", "partition")
+    __slots__ = ("query",)
     QUERY_FIELD_NUMBER: _ClassVar[int]
-    PARTITION_FIELD_NUMBER: _ClassVar[int]
     query: _machine_pb2.MachineQuery
-    partition: str
-    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineQuery, _Mapping]] = ..., partition: _Optional[str] = ...) -> None: ...
+    def __init__(self, query: _Optional[_Union[_machine_pb2.MachineQuery, _Mapping]] = ...) -> None: ...
 
 class MachineServiceListResponse(_message.Message):
     __slots__ = ("machines",)
