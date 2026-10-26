@@ -45,3 +45,5 @@ go/tests/mocks/buf
 
 # js
 node_modules/
+# generated binary
+proto/protoc-gen-go-mcp
