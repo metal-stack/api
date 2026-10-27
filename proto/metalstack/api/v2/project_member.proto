@@ -61,7 +61,7 @@ message ProjectMember {
   string project = 5 [(buf.validate.field).string.uuid = true];
 }
 
-// ProjectQuery is used to search projects.
+// ProjectMemberQuery is used to search project members.
 message ProjectMemberQuery {
   // Member is the user id of the member.
   optional string member = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
@@ -79,7 +79,7 @@ message ProjectMemberServiceListRequest {
   ProjectMemberQuery query = 2;
 }
 
-// ProjectMemberServiceGetRequest is the request payload to get a project.
+// ProjectMemberServiceGetRequest is the request payload to get a project member.
 message ProjectMemberServiceGetRequest {
   // Project is the uuid of the project.
   string project = 1 [(buf.validate.field).string.uuid = true];
@@ -87,7 +87,7 @@ message ProjectMemberServiceGetRequest {
   string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
 }
 
-// ProjectMemberServiceCreateRequest is the request payload to Create a project.
+// ProjectMemberServiceCreateRequest is the request payload to Create a project member.
 message ProjectMemberServiceCreateRequest {
   // Project is the uuid of the project.
   string project = 1 [(buf.validate.field).string.uuid = true];
@@ -99,12 +99,12 @@ message ProjectMemberServiceCreateRequest {
   Labels labels = 4;
 }
 
-// ProjectMemberServiceUpdateRequest is the request payload to update a project.
+// ProjectMemberServiceUpdateRequest is the request payload to update a project member.
 message ProjectMemberServiceUpdateRequest {
   // Project is the uuid of the project.
   string project = 1 [(buf.validate.field).string.uuid = true];
   // Member is the id of the member to update.
-  string member = 2;
+  string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
   // Role is the role in this project the user will get after the update.
   optional ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
   // UpdateMeta contains the timestamp and strategy to be used in this update request.
@@ -113,7 +113,7 @@ message ProjectMemberServiceUpdateRequest {
   UpdateLabels labels = 5;
 }
 
-// ProjectMemberServiceDeleteRequest is the request payload to delete a project.
+// ProjectMemberServiceDeleteRequest is the request payload to delete a project member.
 message ProjectMemberServiceDeleteRequest {
   // Project is the uuid of the project.
   string project = 1 [(buf.validate.field).string.uuid = true];
@@ -127,7 +127,7 @@ message ProjectMemberServiceListResponse {
   repeated ProjectMember members = 1;
 }
 
-// ProjectMemberServiceGetResponse is the response payload to get a projects.
+// ProjectMemberServiceGetResponse is the response payload to get a project member.
 message ProjectMemberServiceGetResponse {
   // Member in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
   ProjectMember member = 1;
@@ -153,7 +153,7 @@ message ProjectMemberServiceUpdateResponse {
 
 // ProjectMemberServiceLeaveRequest is used to leave a project. This way a member is not required to ask a project owner to remove him.
 message ProjectMemberServiceLeaveRequest {
-  // Project of the uuid of the project that the user wants to leave.
+  // Project is the uuid of the project that the user wants to leave.
   string project = 1 [(buf.validate.field).string.uuid = true];
 }
 

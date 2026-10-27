@@ -106,7 +106,7 @@ func (x *ProjectMember) GetProject() string {
 	return ""
 }
 
-// ProjectQuery is used to search projects.
+// ProjectMemberQuery is used to search project members.
 type ProjectMemberQuery struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Member is the user id of the member.
@@ -225,7 +225,7 @@ func (x *ProjectMemberServiceListRequest) GetQuery() *ProjectMemberQuery {
 	return nil
 }
 
-// ProjectMemberServiceGetRequest is the request payload to get a project.
+// ProjectMemberServiceGetRequest is the request payload to get a project member.
 type ProjectMemberServiceGetRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project.
@@ -280,7 +280,7 @@ func (x *ProjectMemberServiceGetRequest) GetMember() string {
 	return ""
 }
 
-// ProjectMemberServiceCreateRequest is the request payload to Create a project.
+// ProjectMemberServiceCreateRequest is the request payload to Create a project member.
 type ProjectMemberServiceCreateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project.
@@ -353,7 +353,7 @@ func (x *ProjectMemberServiceCreateRequest) GetLabels() *Labels {
 	return nil
 }
 
-// ProjectMemberServiceUpdateRequest is the request payload to update a project.
+// ProjectMemberServiceUpdateRequest is the request payload to update a project member.
 type ProjectMemberServiceUpdateRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project.
@@ -435,7 +435,7 @@ func (x *ProjectMemberServiceUpdateRequest) GetLabels() *UpdateLabels {
 	return nil
 }
 
-// ProjectMemberServiceDeleteRequest is the request payload to delete a project.
+// ProjectMemberServiceDeleteRequest is the request payload to delete a project member.
 type ProjectMemberServiceDeleteRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Project is the uuid of the project.
@@ -536,7 +536,7 @@ func (x *ProjectMemberServiceListResponse) GetMembers() []*ProjectMember {
 	return nil
 }
 
-// ProjectMemberServiceGetResponse is the response payload to get a projects.
+// ProjectMemberServiceGetResponse is the response payload to get a project member.
 type ProjectMemberServiceGetResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Member in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
@@ -723,7 +723,7 @@ func (x *ProjectMemberServiceUpdateResponse) GetMember() *ProjectMember {
 // ProjectMemberServiceLeaveRequest is used to leave a project. This way a member is not required to ask a project owner to remove him.
 type ProjectMemberServiceLeaveRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Project of the uuid of the project that the user wants to leave.
+	// Project is the uuid of the project that the user wants to leave.
 	Project       string `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -840,10 +840,10 @@ const file_metalstack_api_v2_project_member_proto_rawDesc = "" +
 	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
 	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12<\n" +
 	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01R\x04role\x121\n" +
-	"\x06labels\x18\x04 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\"\xac\x02\n" +
+	"\x06labels\x18\x04 \x01(\v2\x19.metalstack.api.v2.LabelsR\x06labels\"\xb9\x02\n" +
 	"!ProjectMemberServiceUpdateRequest\x12\"\n" +
-	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12\x16\n" +
-	"\x06member\x18\x02 \x01(\tR\x06member\x12A\n" +
+	"\aproject\x18\x01 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01R\aproject\x12#\n" +
+	"\x06member\x18\x02 \x01(\tB\v\xbaH\br\x06\x90\xb4\xae\xb1\x02\x01R\x06member\x12A\n" +
 	"\x04role\x18\x03 \x01(\x0e2\x1e.metalstack.api.v2.ProjectRoleB\b\xbaH\x05\x82\x01\x02\x10\x01H\x00R\x04role\x88\x01\x01\x12F\n" +
 	"\vupdate_meta\x18\x04 \x01(\v2\x1d.metalstack.api.v2.UpdateMetaB\x06\xbaH\x03\xc8\x01\x01R\n" +
 	"updateMeta\x127\n" +

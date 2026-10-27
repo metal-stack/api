@@ -50,7 +50,7 @@ export type ProjectMember = Message<"metalstack.api.v2.ProjectMember"> & {
  */
 export declare const ProjectMemberSchema: GenMessage<ProjectMember>;
 /**
- * ProjectQuery is used to search projects.
+ * ProjectMemberQuery is used to search project members.
  *
  * @generated from message metalstack.api.v2.ProjectMemberQuery
  */
@@ -104,7 +104,7 @@ export type ProjectMemberServiceListRequest = Message<"metalstack.api.v2.Project
  */
 export declare const ProjectMemberServiceListRequestSchema: GenMessage<ProjectMemberServiceListRequest>;
 /**
- * ProjectMemberServiceGetRequest is the request payload to get a project.
+ * ProjectMemberServiceGetRequest is the request payload to get a project member.
  *
  * @generated from message metalstack.api.v2.ProjectMemberServiceGetRequest
  */
@@ -128,7 +128,7 @@ export type ProjectMemberServiceGetRequest = Message<"metalstack.api.v2.ProjectM
  */
 export declare const ProjectMemberServiceGetRequestSchema: GenMessage<ProjectMemberServiceGetRequest>;
 /**
- * ProjectMemberServiceCreateRequest is the request payload to Create a project.
+ * ProjectMemberServiceCreateRequest is the request payload to Create a project member.
  *
  * @generated from message metalstack.api.v2.ProjectMemberServiceCreateRequest
  */
@@ -164,7 +164,7 @@ export type ProjectMemberServiceCreateRequest = Message<"metalstack.api.v2.Proje
  */
 export declare const ProjectMemberServiceCreateRequestSchema: GenMessage<ProjectMemberServiceCreateRequest>;
 /**
- * ProjectMemberServiceUpdateRequest is the request payload to update a project.
+ * ProjectMemberServiceUpdateRequest is the request payload to update a project member.
  *
  * @generated from message metalstack.api.v2.ProjectMemberServiceUpdateRequest
  */
@@ -206,7 +206,7 @@ export type ProjectMemberServiceUpdateRequest = Message<"metalstack.api.v2.Proje
  */
 export declare const ProjectMemberServiceUpdateRequestSchema: GenMessage<ProjectMemberServiceUpdateRequest>;
 /**
- * ProjectMemberServiceDeleteRequest is the request payload to delete a project.
+ * ProjectMemberServiceDeleteRequest is the request payload to delete a project member.
  *
  * @generated from message metalstack.api.v2.ProjectMemberServiceDeleteRequest
  */
@@ -248,7 +248,7 @@ export type ProjectMemberServiceListResponse = Message<"metalstack.api.v2.Projec
  */
 export declare const ProjectMemberServiceListResponseSchema: GenMessage<ProjectMemberServiceListResponse>;
 /**
- * ProjectMemberServiceGetResponse is the response payload to get a projects.
+ * ProjectMemberServiceGetResponse is the response payload to get a project member.
  *
  * @generated from message metalstack.api.v2.ProjectMemberServiceGetResponse
  */
@@ -326,7 +326,7 @@ export declare const ProjectMemberServiceUpdateResponseSchema: GenMessage<Projec
  */
 export type ProjectMemberServiceLeaveRequest = Message<"metalstack.api.v2.ProjectMemberServiceLeaveRequest"> & {
     /**
-     * Project of the uuid of the project that the user wants to leave.
+     * Project is the uuid of the project that the user wants to leave.
      *
      * @generated from field: string project = 1;
      */
