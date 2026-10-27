@@ -38,27 +38,6 @@ service ProjectService {
     option (project_roles) = PROJECT_ROLE_EDITOR;
     option (auditing) = AUDITING_INCLUDED;
   }
-  // Leave project.
-  rpc Leave(ProjectServiceLeaveRequest) returns (ProjectServiceLeaveResponse) {
-    option (project_roles) = PROJECT_ROLE_VIEWER;
-    option (auditing) = AUDITING_INCLUDED;
-  }
-
-  // AddMember adds a user to a project.
-  rpc AddMember(ProjectServiceAddMemberRequest) returns (ProjectServiceAddMemberResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (auditing) = AUDITING_INCLUDED;
-  }
-  // RemoveMember removes a user from a project.
-  rpc RemoveMember(ProjectServiceRemoveMemberRequest) returns (ProjectServiceRemoveMemberResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (auditing) = AUDITING_INCLUDED;
-  }
-  // UpdateMember updates a user for a project.
-  rpc UpdateMember(ProjectServiceUpdateMemberRequest) returns (ProjectServiceUpdateMemberResponse) {
-    option (project_roles) = PROJECT_ROLE_OWNER;
-    option (auditing) = AUDITING_INCLUDED;
-  }
 
   // Invite a user to a project.
   rpc Invite(ProjectServiceInviteRequest) returns (ProjectServiceInviteResponse) {
@@ -102,22 +81,6 @@ message Project {
   string tenant = 5;
   // AvatarUrl of the Project.
   optional string avatar_url = 6 [(buf.validate.field).string.(metalstack.api.v2.is_uri) = true];
-}
-
-// ProjectMember defines a user that participates in a project.
-message ProjectMember {
-  // Id is the user id of the member.
-  string id = 1;
-  // Role is the role of the member.
-  ProjectRole role = 2 [(buf.validate.field).enum.defined_only = true];
-  // InheritedMembership indicates that this member has implicit permissions on the project through his membership within the tenant.
-  // This member does not have direct project membership but gains permissions on this project from the role he has in the tenant.
-  // Inherited memberships are not included in member lists for users with guest permission but only for direct tenant members.
-  bool inherited_membership = 3;
-  // CreatedAt the date when the member was added to the project.
-  google.protobuf.Timestamp created_at = 4;
-  // Meta for this project member.
-  Meta meta = 5;
 }
 
 // ProjectInvite defines invite to project.
@@ -176,8 +139,6 @@ message ProjectServiceGetRequest {
 message ProjectServiceGetResponse {
   // Project is the project.
   Project project = 1;
-  // ProjectMembers in this project, projects guests will only see direct project members and not implicit memberships from tenant permissions.
-  repeated ProjectMember project_members = 2;
 }
 
 // ProjectServiceCreateRequest is the request payload to Create a project.
@@ -274,58 +235,6 @@ message ProjectServiceInviteGetRequest {
 message ProjectServiceInviteGetResponse {
   // Invite is the invite.
   ProjectInvite invite = 1;
-}
-
-// ProjectServiceLeaveRequest is used to leave a project.
-message ProjectServiceLeaveRequest {
-  // Project is the uuid of the project.
-  string project = 1 [(buf.validate.field).string.uuid = true];
-}
-
-// ProjectServiceLeaveResponse is the response payload to a leave project request.
-message ProjectServiceLeaveResponse {}
-
-// ProjectServiceAddMemberRequest is the request payload for adding a member to a project.
-message ProjectServiceAddMemberRequest {
-  // Project is the uuid of the project.
-  string project = 1 [(buf.validate.field).string.uuid = true];
-  // Login of the member to add.
-  string member = 2 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
-  // Role to assign to the new member.
-  ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
-}
-
-// ProjectServiceAddMemberResponse is the response payload for the add member request.
-message ProjectServiceAddMemberResponse {
-  // ProjectRole is the added project member.
-  ProjectRole project_member = 1;
-}
-
-// ProjectServiceRemoveMemberRequest is used to remove a member from a project.
-message ProjectServiceRemoveMemberRequest {
-  // Project is the uuid of the project.
-  string project = 1 [(buf.validate.field).string.uuid = true];
-  // Member is the id of the member to remove from this project.
-  string member = 2;
-}
-
-// ProjectServiceRemoveMemberResponse is the response payload to a remove member request.
-message ProjectServiceRemoveMemberResponse {}
-
-// ProjectServiceUpdateMemberRequest is used to update a member of a project.
-message ProjectServiceUpdateMemberRequest {
-  // Project is the uuid of the project.
-  string project = 1 [(buf.validate.field).string.uuid = true];
-  // Member is the id of the member to remove from this project.
-  string member = 2;
-  // Role is the role in this project the user will get after the update.
-  ProjectRole role = 3 [(buf.validate.field).enum.defined_only = true];
-}
-
-// ProjectServiceUpdateMemberResponse is the response payload to a update member request.
-message ProjectServiceUpdateMemberResponse {
-  // ProjectMember is the updated project member.
-  ProjectMember project_member = 1;
 }
 
 // ProjectServiceInviteAcceptRequest is the request payload to a accept invite request.

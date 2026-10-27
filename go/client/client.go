@@ -76,10 +76,12 @@ type (
 		Network() apiv2connect.NetworkServiceClient
 		Partition() apiv2connect.PartitionServiceClient
 		Project() apiv2connect.ProjectServiceClient
+		ProjectMember() apiv2connect.ProjectMemberServiceClient
 		Size() apiv2connect.SizeServiceClient
 		SizeImageConstraint() apiv2connect.SizeImageConstraintServiceClient
 		SizeReservation() apiv2connect.SizeReservationServiceClient
 		Tenant() apiv2connect.TenantServiceClient
+		TenantMember() apiv2connect.TenantMemberServiceClient
 		Token() apiv2connect.TokenServiceClient
 		User() apiv2connect.UserServiceClient
 		Version() apiv2connect.VersionServiceClient
@@ -96,10 +98,12 @@ type (
 		networkservice             apiv2connect.NetworkServiceClient
 		partitionservice           apiv2connect.PartitionServiceClient
 		projectservice             apiv2connect.ProjectServiceClient
+		projectmemberservice       apiv2connect.ProjectMemberServiceClient
 		sizeservice                apiv2connect.SizeServiceClient
 		sizeimageconstraintservice apiv2connect.SizeImageConstraintServiceClient
 		sizereservationservice     apiv2connect.SizeReservationServiceClient
 		tenantservice              apiv2connect.TenantServiceClient
+		tenantmemberservice        apiv2connect.TenantMemberServiceClient
 		tokenservice               apiv2connect.TokenServiceClient
 		userservice                apiv2connect.UserServiceClient
 		versionservice             apiv2connect.VersionServiceClient
@@ -344,6 +348,12 @@ func (c *client) Apiv2() Apiv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		projectmemberservice: apiv2connect.NewProjectMemberServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		sizeservice: apiv2connect.NewSizeServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -363,6 +373,12 @@ func (c *client) Apiv2() Apiv2 {
 			compress.WithAll(compress.LevelBalanced),
 		),
 		tenantservice: apiv2connect.NewTenantServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		tenantmemberservice: apiv2connect.NewTenantMemberServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			connect.WithInterceptors(c.interceptors...),
@@ -420,6 +436,9 @@ func (c *apiv2) Partition() apiv2connect.PartitionServiceClient {
 func (c *apiv2) Project() apiv2connect.ProjectServiceClient {
 	return c.projectservice
 }
+func (c *apiv2) ProjectMember() apiv2connect.ProjectMemberServiceClient {
+	return c.projectmemberservice
+}
 func (c *apiv2) Size() apiv2connect.SizeServiceClient {
 	return c.sizeservice
 }
@@ -431,6 +450,9 @@ func (c *apiv2) SizeReservation() apiv2connect.SizeReservationServiceClient {
 }
 func (c *apiv2) Tenant() apiv2connect.TenantServiceClient {
 	return c.tenantservice
+}
+func (c *apiv2) TenantMember() apiv2connect.TenantMemberServiceClient {
+	return c.tenantmemberservice
 }
 func (c *apiv2) Token() apiv2connect.TokenServiceClient {
 	return c.tokenservice

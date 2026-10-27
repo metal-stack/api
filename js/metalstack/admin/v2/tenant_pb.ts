@@ -8,15 +8,17 @@ import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import type { Labels, TenantRole } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
-import type { Tenant, TenantMember, TenantQuery } from "../../api/v2/tenant_pb";
+import type { Tenant, TenantQuery, TenantServiceCreateRequest as TenantServiceCreateRequest$1 } from "../../api/v2/tenant_pb";
 import { file_metalstack_api_v2_tenant } from "../../api/v2/tenant_pb";
+import type { TenantMember } from "../../api/v2/tenant_member_pb";
+import { file_metalstack_api_v2_tenant_member } from "../../api/v2/tenant_member_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file metalstack/admin/v2/tenant.proto.
  */
 export const file_metalstack_admin_v2_tenant: GenFile = /*@__PURE__*/
-  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiL1AQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgaQtK6xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIkCgphdmF0YXJfdXJsGAQgASgJQgu6SAhyBuCzrrECAUgCiAEBEikKBmxhYmVscxgFIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0IOCgxfZGVzY3JpcHRpb25CCAoGX2VtYWlsQg0KC19hdmF0YXJfdXJsIkgKG1RlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZRIpCgZ0ZW5hbnQYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiSQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Ei0KBXF1ZXJ5GAEgASgLMh4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50UXVlcnkibQoZVGVuYW50U2VydmljZUxpc3RSZXNwb25zZRIqCgd0ZW5hbnRzGAEgAygLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50EhYKCW5leHRfcGFnZRgCIAEoBEgAiAEBQgwKCl9uZXh0X3BhZ2UikAEKHVRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXF1ZXN0EhsKBnRlbmFudBgBIAEoCUILukgIcgaQtK6xAgESGwoGbWVtYmVyGAIgASgJQgu6SAhyBpC0rrECARI1CgRyb2xlGAMgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZUIIukgFggECEAEiWAoeVGVuYW50U2VydmljZUFkZE1lbWJlclJlc3BvbnNlEjYKDXRlbmFudF9tZW1iZXIYASABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRNZW1iZXIiXAogVGVuYW50U2VydmljZVJlbW92ZU1lbWJlclJlcXVlc3QSGwoGdGVuYW50GAEgASgJQgu6SAhyBpC0rrECARIbCgZtZW1iZXIYAiABKAlCC7pICHIGkLSusQIBIlsKIVRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZRI2Cg10ZW5hbnRfbWVtYmVyGAEgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50TWVtYmVyMoYECg1UZW5hbnRTZXJ2aWNlEnYKBkNyZWF0ZRIvLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QaMC5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnEKBExpc3QSLS5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VMaXN0UmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYARJ/CglBZGRNZW1iZXISMi5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXF1ZXN0GjMubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlQWRkTWVtYmVyUmVzcG9uc2UiCdLzGAEB4PMYARKIAQoMUmVtb3ZlTWVtYmVyEjUubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVxdWVzdBo2Lm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZVJlbW92ZU1lbWJlclJlc3BvbnNlIgnS8xgBAeDzGAFCzwEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgtUZW5hbnRQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
+  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiKGAQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSPQoGdGVuYW50GAEgASgLMi0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSHwoFbG9naW4YAiABKAlCC7pICHIGkLSusQIBSACIAQFCCAoGX2xvZ2luIkgKG1RlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZRIpCgZ0ZW5hbnQYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiSQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Ei0KBXF1ZXJ5GAEgASgLMh4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50UXVlcnkibQoZVGVuYW50U2VydmljZUxpc3RSZXNwb25zZRIqCgd0ZW5hbnRzGAEgAygLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50EhYKCW5leHRfcGFnZRgCIAEoBEgAiAEBQgwKCl9uZXh0X3BhZ2UiuwEKHVRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXF1ZXN0EhsKBnRlbmFudBgBIAEoCUILukgIcgaQtK6xAgESGwoGbWVtYmVyGAIgASgJQgu6SAhyBpC0rrECARI1CgRyb2xlGAMgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZUIIukgFggECEAESKQoGbGFiZWxzGAQgASgLMhkubWV0YWxzdGFjay5hcGkudjIuTGFiZWxzIlEKHlRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXNwb25zZRIvCgZtZW1iZXIYASABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRNZW1iZXIiXAogVGVuYW50U2VydmljZVJlbW92ZU1lbWJlclJlcXVlc3QSGwoGdGVuYW50GAEgASgJQgu6SAhyBpC0rrECARIbCgZtZW1iZXIYAiABKAlCC7pICHIGkLSusQIBIlQKIVRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZRIvCgZtZW1iZXIYASABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRNZW1iZXIyhgQKDVRlbmFudFNlcnZpY2USdgoGQ3JlYXRlEi8ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlQ3JlYXRlUmVxdWVzdBowLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlIgnS8xgBAeDzGAEScQoETGlzdBItLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgBEn8KCUFkZE1lbWJlchIyLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUFkZE1lbWJlclJlcXVlc3QaMy5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXNwb25zZSIJ0vMYAQHg8xgBEogBCgxSZW1vdmVNZW1iZXISNS5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXF1ZXN0GjYubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVzcG9uc2UiCdLzGAEB4PMYAULPAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCC1RlbmFudFByb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant, file_metalstack_api_v2_tenant_member]);
 
 /**
  * TenantServiceCreateRequest is the request payload for creating a tenant.
@@ -25,39 +27,18 @@ export const file_metalstack_admin_v2_tenant: GenFile = /*@__PURE__*/
  */
 export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServiceCreateRequest"> & {
   /**
-   * Name of the tenant.
+   * Tenant is the tenant create request.
    *
-   * @generated from field: string name = 1;
+   * @generated from field: metalstack.api.v2.TenantServiceCreateRequest tenant = 1;
    */
-  name: string;
+  tenant?: TenantServiceCreateRequest$1 | undefined;
 
   /**
-   * Description of the tenant.
+   * Login of a static ID for tenant.
    *
-   * @generated from field: optional string description = 2;
+   * @generated from field: optional string login = 2;
    */
-  description?: string | undefined;
-
-  /**
-   * Email of the tenant, if not set will be inherited from the creator.
-   *
-   * @generated from field: optional string email = 3;
-   */
-  email?: string | undefined;
-
-  /**
-   * AvatarUrl of the tenant.
-   *
-   * @generated from field: optional string avatar_url = 4;
-   */
-  avatarUrl?: string | undefined;
-
-  /**
-   * Labels on the tenant.
-   *
-   * @generated from field: metalstack.api.v2.Labels labels = 5;
-   */
-  labels?: Labels | undefined;
+  login?: string | undefined;
 };
 
 /**
@@ -163,6 +144,13 @@ export type TenantServiceAddMemberRequest = Message<"metalstack.admin.v2.TenantS
    * @generated from field: metalstack.api.v2.TenantRole role = 3;
    */
   role: TenantRole;
+
+  /**
+   * Labels on this member.
+   *
+   * @generated from field: metalstack.api.v2.Labels labels = 4;
+   */
+  labels?: Labels | undefined;
 };
 
 /**
@@ -179,11 +167,11 @@ export const TenantServiceAddMemberRequestSchema: GenMessage<TenantServiceAddMem
  */
 export type TenantServiceAddMemberResponse = Message<"metalstack.admin.v2.TenantServiceAddMemberResponse"> & {
   /**
-   * TenantMember is the added tenant member.
+   * Member is the added tenant member.
    *
-   * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
+   * @generated from field: metalstack.api.v2.TenantMember member = 1;
    */
-  tenantMember?: TenantMember | undefined;
+  member?: TenantMember | undefined;
 };
 
 /**
@@ -228,11 +216,11 @@ export const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantServiceRem
  */
 export type TenantServiceRemoveMemberResponse = Message<"metalstack.admin.v2.TenantServiceRemoveMemberResponse"> & {
   /**
-   * TenantMember is the removed tenant member.
+   * Member is the removed tenant member.
    *
-   * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
+   * @generated from field: metalstack.api.v2.TenantMember member = 1;
    */
-  tenantMember?: TenantMember | undefined;
+  member?: TenantMember | undefined;
 };
 
 /**
