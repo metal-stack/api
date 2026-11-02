@@ -2,7 +2,6 @@ from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import predefined_rules_pb2 as _predefined_rules_pb2
 from metalstack.api.v2 import tenant_pb2 as _tenant_pb2
-from metalstack.api.v2 import tenant_member_pb2 as _tenant_member_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
@@ -38,35 +37,3 @@ class TenantServiceListResponse(_message.Message):
     tenants: _containers.RepeatedCompositeFieldContainer[_tenant_pb2.Tenant]
     next_page: int
     def __init__(self, tenants: _Optional[_Iterable[_Union[_tenant_pb2.Tenant, _Mapping]]] = ..., next_page: _Optional[int] = ...) -> None: ...
-
-class TenantServiceAddMemberRequest(_message.Message):
-    __slots__ = ("tenant", "member", "role", "labels")
-    TENANT_FIELD_NUMBER: _ClassVar[int]
-    MEMBER_FIELD_NUMBER: _ClassVar[int]
-    ROLE_FIELD_NUMBER: _ClassVar[int]
-    LABELS_FIELD_NUMBER: _ClassVar[int]
-    tenant: str
-    member: str
-    role: _common_pb2.TenantRole
-    labels: _common_pb2.Labels
-    def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ..., role: _Optional[_Union[_common_pb2.TenantRole, str]] = ..., labels: _Optional[_Union[_common_pb2.Labels, _Mapping]] = ...) -> None: ...
-
-class TenantServiceAddMemberResponse(_message.Message):
-    __slots__ = ("member",)
-    MEMBER_FIELD_NUMBER: _ClassVar[int]
-    member: _tenant_member_pb2.TenantMember
-    def __init__(self, member: _Optional[_Union[_tenant_member_pb2.TenantMember, _Mapping]] = ...) -> None: ...
-
-class TenantServiceRemoveMemberRequest(_message.Message):
-    __slots__ = ("tenant", "member")
-    TENANT_FIELD_NUMBER: _ClassVar[int]
-    MEMBER_FIELD_NUMBER: _ClassVar[int]
-    tenant: str
-    member: str
-    def __init__(self, tenant: _Optional[str] = ..., member: _Optional[str] = ...) -> None: ...
-
-class TenantServiceRemoveMemberResponse(_message.Message):
-    __slots__ = ("member",)
-    MEMBER_FIELD_NUMBER: _ClassVar[int]
-    member: _tenant_member_pb2.TenantMember
-    def __init__(self, member: _Optional[_Union[_tenant_member_pb2.TenantMember, _Mapping]] = ...) -> None: ...
