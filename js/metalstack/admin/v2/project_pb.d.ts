@@ -1,5 +1,5 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import type { Project, ProjectQuery } from "../../api/v2/project_pb";
+import type { Project, ProjectQuery, ProjectServiceCreateRequest as ProjectServiceCreateRequest$1 } from "../../api/v2/project_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
  * Describes the file metalstack/admin/v2/project.proto.
@@ -42,11 +42,63 @@ export type ProjectServiceListResponse = Message<"metalstack.admin.v2.ProjectSer
  */
 export declare const ProjectServiceListResponseSchema: GenMessage<ProjectServiceListResponse>;
 /**
+ * ProjectServiceCreateRequest is the request payload to Create a project.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceCreateRequest
+ */
+export type ProjectServiceCreateRequest = Message<"metalstack.admin.v2.ProjectServiceCreateRequest"> & {
+    /**
+     * Project is the project create request.
+     *
+     * @generated from field: metalstack.api.v2.ProjectServiceCreateRequest project = 1;
+     */
+    project?: ProjectServiceCreateRequest$1 | undefined;
+    /**
+     * ID is a static uuid of the project.
+     *
+     * @generated from field: optional string id = 2;
+     */
+    id?: string | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceCreateRequest.
+ * Use `create(ProjectServiceCreateRequestSchema)` to create a new message.
+ */
+export declare const ProjectServiceCreateRequestSchema: GenMessage<ProjectServiceCreateRequest>;
+/**
+ * ProjectServiceCreateResponse is the response payload for creating a project.
+ *
+ * @generated from message metalstack.admin.v2.ProjectServiceCreateResponse
+ */
+export type ProjectServiceCreateResponse = Message<"metalstack.admin.v2.ProjectServiceCreateResponse"> & {
+    /**
+     * Project contains the created project.
+     *
+     * @generated from field: metalstack.api.v2.Project project = 1;
+     */
+    project?: Project | undefined;
+};
+/**
+ * Describes the message metalstack.admin.v2.ProjectServiceCreateResponse.
+ * Use `create(ProjectServiceCreateResponseSchema)` to create a new message.
+ */
+export declare const ProjectServiceCreateResponseSchema: GenMessage<ProjectServiceCreateResponse>;
+/**
  * ProjectService provides project management operations.
  *
  * @generated from service metalstack.admin.v2.ProjectService
  */
 export declare const ProjectService: GenService<{
+    /**
+     * Creates a new project.
+     *
+     * @generated from rpc metalstack.admin.v2.ProjectService.Create
+     */
+    create: {
+        methodKind: "unary";
+        input: typeof ProjectServiceCreateRequestSchema;
+        output: typeof ProjectServiceCreateResponseSchema;
+    };
     /**
      * Returns the list of projects matching the filter criteria.
      *
