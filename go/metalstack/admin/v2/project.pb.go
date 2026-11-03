@@ -7,6 +7,7 @@
 package adminv2
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	v2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -114,17 +115,125 @@ func (x *ProjectServiceListResponse) GetProjects() []*v2.Project {
 	return nil
 }
 
+// ProjectServiceCreateRequest is the request payload to Create a project.
+type ProjectServiceCreateRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Project is the project create request.
+	Project *v2.ProjectServiceCreateRequest `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
+	// ID is a static uuid of the project.
+	Id            *string `protobuf:"bytes,2,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProjectServiceCreateRequest) Reset() {
+	*x = ProjectServiceCreateRequest{}
+	mi := &file_metalstack_admin_v2_project_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProjectServiceCreateRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProjectServiceCreateRequest) ProtoMessage() {}
+
+func (x *ProjectServiceCreateRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_project_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProjectServiceCreateRequest.ProtoReflect.Descriptor instead.
+func (*ProjectServiceCreateRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_project_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ProjectServiceCreateRequest) GetProject() *v2.ProjectServiceCreateRequest {
+	if x != nil {
+		return x.Project
+	}
+	return nil
+}
+
+func (x *ProjectServiceCreateRequest) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+// ProjectServiceCreateResponse is the response payload for creating a project.
+type ProjectServiceCreateResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Project contains the created project.
+	Project       *v2.Project `protobuf:"bytes,1,opt,name=project,proto3" json:"project,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProjectServiceCreateResponse) Reset() {
+	*x = ProjectServiceCreateResponse{}
+	mi := &file_metalstack_admin_v2_project_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProjectServiceCreateResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProjectServiceCreateResponse) ProtoMessage() {}
+
+func (x *ProjectServiceCreateResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_project_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProjectServiceCreateResponse.ProtoReflect.Descriptor instead.
+func (*ProjectServiceCreateResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_project_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ProjectServiceCreateResponse) GetProject() *v2.Project {
+	if x != nil {
+		return x.Project
+	}
+	return nil
+}
+
 var File_metalstack_admin_v2_project_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_project_proto_rawDesc = "" +
 	"\n" +
-	"!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/project.proto\"a\n" +
+	"!metalstack/admin/v2/project.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/project.proto\"a\n" +
 	"\x19ProjectServiceListRequest\x12:\n" +
 	"\x05query\x18\x01 \x01(\v2\x1f.metalstack.api.v2.ProjectQueryH\x00R\x05query\x88\x01\x01B\b\n" +
 	"\x06_query\"T\n" +
 	"\x1aProjectServiceListResponse\x126\n" +
-	"\bprojects\x18\x01 \x03(\v2\x1a.metalstack.api.v2.ProjectR\bprojects2\x85\x01\n" +
-	"\x0eProjectService\x12s\n" +
+	"\bprojects\x18\x01 \x03(\v2\x1a.metalstack.api.v2.ProjectR\bprojects\"\x8d\x01\n" +
+	"\x1bProjectServiceCreateRequest\x12H\n" +
+	"\aproject\x18\x01 \x01(\v2..metalstack.api.v2.ProjectServiceCreateRequestR\aproject\x12\x1d\n" +
+	"\x02id\x18\x02 \x01(\tB\b\xbaH\x05r\x03\xb0\x01\x01H\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"T\n" +
+	"\x1cProjectServiceCreateResponse\x124\n" +
+	"\aproject\x18\x01 \x01(\v2\x1a.metalstack.api.v2.ProjectR\aproject2\xff\x01\n" +
+	"\x0eProjectService\x12x\n" +
+	"\x06Create\x120.metalstack.admin.v2.ProjectServiceCreateRequest\x1a1.metalstack.admin.v2.ProjectServiceCreateResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12s\n" +
 	"\x04List\x12..metalstack.admin.v2.ProjectServiceListRequest\x1a/.metalstack.admin.v2.ProjectServiceListResponse\"\n" +
 	"\xd2\xf3\x18\x02\x01\x02\xe0\xf3\x18\x02B\xd0\x01\n" +
 	"\x17com.metalstack.admin.v2B\fProjectProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
@@ -141,23 +250,30 @@ func file_metalstack_admin_v2_project_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_project_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_project_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_metalstack_admin_v2_project_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_metalstack_admin_v2_project_proto_goTypes = []any{
-	(*ProjectServiceListRequest)(nil),  // 0: metalstack.admin.v2.ProjectServiceListRequest
-	(*ProjectServiceListResponse)(nil), // 1: metalstack.admin.v2.ProjectServiceListResponse
-	(*v2.ProjectQuery)(nil),            // 2: metalstack.api.v2.ProjectQuery
-	(*v2.Project)(nil),                 // 3: metalstack.api.v2.Project
+	(*ProjectServiceListRequest)(nil),      // 0: metalstack.admin.v2.ProjectServiceListRequest
+	(*ProjectServiceListResponse)(nil),     // 1: metalstack.admin.v2.ProjectServiceListResponse
+	(*ProjectServiceCreateRequest)(nil),    // 2: metalstack.admin.v2.ProjectServiceCreateRequest
+	(*ProjectServiceCreateResponse)(nil),   // 3: metalstack.admin.v2.ProjectServiceCreateResponse
+	(*v2.ProjectQuery)(nil),                // 4: metalstack.api.v2.ProjectQuery
+	(*v2.Project)(nil),                     // 5: metalstack.api.v2.Project
+	(*v2.ProjectServiceCreateRequest)(nil), // 6: metalstack.api.v2.ProjectServiceCreateRequest
 }
 var file_metalstack_admin_v2_project_proto_depIdxs = []int32{
-	2, // 0: metalstack.admin.v2.ProjectServiceListRequest.query:type_name -> metalstack.api.v2.ProjectQuery
-	3, // 1: metalstack.admin.v2.ProjectServiceListResponse.projects:type_name -> metalstack.api.v2.Project
-	0, // 2: metalstack.admin.v2.ProjectService.List:input_type -> metalstack.admin.v2.ProjectServiceListRequest
-	1, // 3: metalstack.admin.v2.ProjectService.List:output_type -> metalstack.admin.v2.ProjectServiceListResponse
-	3, // [3:4] is the sub-list for method output_type
-	2, // [2:3] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	4, // 0: metalstack.admin.v2.ProjectServiceListRequest.query:type_name -> metalstack.api.v2.ProjectQuery
+	5, // 1: metalstack.admin.v2.ProjectServiceListResponse.projects:type_name -> metalstack.api.v2.Project
+	6, // 2: metalstack.admin.v2.ProjectServiceCreateRequest.project:type_name -> metalstack.api.v2.ProjectServiceCreateRequest
+	5, // 3: metalstack.admin.v2.ProjectServiceCreateResponse.project:type_name -> metalstack.api.v2.Project
+	2, // 4: metalstack.admin.v2.ProjectService.Create:input_type -> metalstack.admin.v2.ProjectServiceCreateRequest
+	0, // 5: metalstack.admin.v2.ProjectService.List:input_type -> metalstack.admin.v2.ProjectServiceListRequest
+	3, // 6: metalstack.admin.v2.ProjectService.Create:output_type -> metalstack.admin.v2.ProjectServiceCreateResponse
+	1, // 7: metalstack.admin.v2.ProjectService.List:output_type -> metalstack.admin.v2.ProjectServiceListResponse
+	6, // [6:8] is the sub-list for method output_type
+	4, // [4:6] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_project_proto_init() }
@@ -166,13 +282,14 @@ func file_metalstack_admin_v2_project_proto_init() {
 		return
 	}
 	file_metalstack_admin_v2_project_proto_msgTypes[0].OneofWrappers = []any{}
+	file_metalstack_admin_v2_project_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_project_proto_rawDesc), len(file_metalstack_admin_v2_project_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
