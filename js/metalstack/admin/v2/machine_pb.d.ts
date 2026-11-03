@@ -53,13 +53,6 @@ export type MachineServiceListRequest = Message<"metalstack.admin.v2.MachineServ
      * @generated from field: metalstack.api.v2.MachineQuery query = 1;
      */
     query?: MachineQuery | undefined;
-    /**
-     * Partition for which machines should be listed, could be left empty if only one partition is present.
-     * otherwise an error is thrown that the partition must be specified.
-     *
-     * @generated from field: optional string partition = 2;
-     */
-    partition?: string | undefined;
 };
 /**
  * Describes the message metalstack.admin.v2.MachineServiceListRequest.

@@ -173,4 +173,5 @@ func requireChannelsClosed[T any](t *testing.T, messages <-chan *T, errs <-chan 
 			t.Fatal("both channels should be closed after cancel")
 		}
 	}
+
 }

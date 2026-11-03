@@ -2,11 +2,17 @@ syntax = "proto3";
 
 package metalstack.admin.v2;
 
+import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/project.proto";
 
 // ProjectService provides project management operations.
 service ProjectService {
+  // Creates a new project.
+  rpc Create(ProjectServiceCreateRequest) returns (ProjectServiceCreateResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
   // Returns the list of projects matching the filter criteria.
   rpc List(ProjectServiceListRequest) returns (ProjectServiceListResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
@@ -25,4 +31,18 @@ message ProjectServiceListRequest {
 message ProjectServiceListResponse {
   // Projects contains the list of projects.
   repeated metalstack.api.v2.Project projects = 1;
+}
+
+// ProjectServiceCreateRequest is the request payload to Create a project.
+message ProjectServiceCreateRequest {
+  // Project is the project create request.
+  metalstack.api.v2.ProjectServiceCreateRequest project = 1;
+  // ID is a static uuid of the project.
+  optional string id = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// ProjectServiceCreateResponse is the response payload for creating a project.
+message ProjectServiceCreateResponse {
+  // Project contains the created project.
+  metalstack.api.v2.Project project = 1;
 }

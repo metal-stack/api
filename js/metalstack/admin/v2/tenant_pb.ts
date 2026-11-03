@@ -5,10 +5,9 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
-import type { Labels, TenantRole } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
 import { file_metalstack_api_v2_predefined_rules } from "../../api/v2/predefined_rules_pb";
-import type { Tenant, TenantMember, TenantQuery } from "../../api/v2/tenant_pb";
+import type { Tenant, TenantQuery, TenantServiceCreateRequest as TenantServiceCreateRequest$1 } from "../../api/v2/tenant_pb";
 import { file_metalstack_api_v2_tenant } from "../../api/v2/tenant_pb";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -16,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/tenant.proto.
  */
 export const file_metalstack_admin_v2_tenant: GenFile = /*@__PURE__*/
-  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiL1AQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSGQoEbmFtZRgBIAEoCUILukgIcgaQtK6xAgESJQoLZGVzY3JpcHRpb24YAiABKAlCC7pICHIGyLOusQIBSACIAQESGwoFZW1haWwYAyABKAlCB7pIBHICYAFIAYgBARIkCgphdmF0YXJfdXJsGAQgASgJQgu6SAhyBuCzrrECAUgCiAEBEikKBmxhYmVscxgFIAEoCzIZLm1ldGFsc3RhY2suYXBpLnYyLkxhYmVsc0IOCgxfZGVzY3JpcHRpb25CCAoGX2VtYWlsQg0KC19hdmF0YXJfdXJsIkgKG1RlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZRIpCgZ0ZW5hbnQYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiSQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Ei0KBXF1ZXJ5GAEgASgLMh4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50UXVlcnkibQoZVGVuYW50U2VydmljZUxpc3RSZXNwb25zZRIqCgd0ZW5hbnRzGAEgAygLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50EhYKCW5leHRfcGFnZRgCIAEoBEgAiAEBQgwKCl9uZXh0X3BhZ2UikAEKHVRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXF1ZXN0EhsKBnRlbmFudBgBIAEoCUILukgIcgaQtK6xAgESGwoGbWVtYmVyGAIgASgJQgu6SAhyBpC0rrECARI1CgRyb2xlGAMgASgOMh0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50Um9sZUIIukgFggECEAEiWAoeVGVuYW50U2VydmljZUFkZE1lbWJlclJlc3BvbnNlEjYKDXRlbmFudF9tZW1iZXIYASABKAsyHy5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnRNZW1iZXIiXAogVGVuYW50U2VydmljZVJlbW92ZU1lbWJlclJlcXVlc3QSGwoGdGVuYW50GAEgASgJQgu6SAhyBpC0rrECARIbCgZtZW1iZXIYAiABKAlCC7pICHIGkLSusQIBIlsKIVRlbmFudFNlcnZpY2VSZW1vdmVNZW1iZXJSZXNwb25zZRI2Cg10ZW5hbnRfbWVtYmVyGAEgASgLMh8ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50TWVtYmVyMoYECg1UZW5hbnRTZXJ2aWNlEnYKBkNyZWF0ZRIvLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QaMC5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZSIJ0vMYAQHg8xgBEnEKBExpc3QSLS5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VMaXN0UmVxdWVzdBouLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXNwb25zZSIK0vMYAgEC4PMYARJ/CglBZGRNZW1iZXISMi5tZXRhbHN0YWNrLmFkbWluLnYyLlRlbmFudFNlcnZpY2VBZGRNZW1iZXJSZXF1ZXN0GjMubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlQWRkTWVtYmVyUmVzcG9uc2UiCdLzGAEB4PMYARKIAQoMUmVtb3ZlTWVtYmVyEjUubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlUmVtb3ZlTWVtYmVyUmVxdWVzdBo2Lm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZVJlbW92ZU1lbWJlclJlc3BvbnNlIgnS8xgBAeDzGAFCzwEKF2NvbS5tZXRhbHN0YWNrLmFkbWluLnYyQgtUZW5hbnRQcm90b1ABWjlnaXRodWIuY29tL21ldGFsLXN0YWNrL2FwaS9nby9tZXRhbHN0YWNrL2FkbWluL3YyO2FkbWludjKiAgNNQViqAhNNZXRhbHN0YWNrLkFkbWluLlYyygITTWV0YWxzdGFja1xBZG1pblxWMuICH01ldGFsc3RhY2tcQWRtaW5cVjJcR1BCTWV0YWRhdGHqAhVNZXRhbHN0YWNrOjpBZG1pbjo6VjJiBnByb3RvMw", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
+  fileDesc("CiBtZXRhbHN0YWNrL2FkbWluL3YyL3RlbmFudC5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiKGAQoaVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSPQoGdGVuYW50GAEgASgLMi0ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50U2VydmljZUNyZWF0ZVJlcXVlc3QSHwoFbG9naW4YAiABKAlCC7pICHIGkLSusQIBSACIAQFCCAoGX2xvZ2luIkgKG1RlbmFudFNlcnZpY2VDcmVhdGVSZXNwb25zZRIpCgZ0ZW5hbnQYASABKAsyGS5tZXRhbHN0YWNrLmFwaS52Mi5UZW5hbnQiSQoYVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Ei0KBXF1ZXJ5GAEgASgLMh4ubWV0YWxzdGFjay5hcGkudjIuVGVuYW50UXVlcnkibQoZVGVuYW50U2VydmljZUxpc3RSZXNwb25zZRIqCgd0ZW5hbnRzGAEgAygLMhkubWV0YWxzdGFjay5hcGkudjIuVGVuYW50EhYKCW5leHRfcGFnZRgCIAEoBEgAiAEBQgwKCl9uZXh0X3BhZ2Uy+gEKDVRlbmFudFNlcnZpY2USdgoGQ3JlYXRlEi8ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlQ3JlYXRlUmVxdWVzdBowLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUNyZWF0ZVJlc3BvbnNlIgnS8xgBAeDzGAEScQoETGlzdBItLm1ldGFsc3RhY2suYWRtaW4udjIuVGVuYW50U2VydmljZUxpc3RSZXF1ZXN0Gi4ubWV0YWxzdGFjay5hZG1pbi52Mi5UZW5hbnRTZXJ2aWNlTGlzdFJlc3BvbnNlIgrS8xgCAQLg8xgBQs8BChdjb20ubWV0YWxzdGFjay5hZG1pbi52MkILVGVuYW50UHJvdG9QAVo5Z2l0aHViLmNvbS9tZXRhbC1zdGFjay9hcGkvZ28vbWV0YWxzdGFjay9hZG1pbi92MjthZG1pbnYyogIDTUFYqgITTWV0YWxzdGFjay5BZG1pbi5WMsoCE01ldGFsc3RhY2tcQWRtaW5cVjLiAh9NZXRhbHN0YWNrXEFkbWluXFYyXEdQQk1ldGFkYXRh6gIVTWV0YWxzdGFjazo6QWRtaW46OlYyYgZwcm90bzM", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_predefined_rules, file_metalstack_api_v2_tenant]);
 
 /**
  * TenantServiceCreateRequest is the request payload for creating a tenant.
@@ -25,39 +24,18 @@ export const file_metalstack_admin_v2_tenant: GenFile = /*@__PURE__*/
  */
 export type TenantServiceCreateRequest = Message<"metalstack.admin.v2.TenantServiceCreateRequest"> & {
   /**
-   * Name of the tenant.
+   * Tenant is the tenant create request.
    *
-   * @generated from field: string name = 1;
+   * @generated from field: metalstack.api.v2.TenantServiceCreateRequest tenant = 1;
    */
-  name: string;
+  tenant?: TenantServiceCreateRequest$1 | undefined;
 
   /**
-   * Description of the tenant.
+   * Login of a static ID for tenant.
    *
-   * @generated from field: optional string description = 2;
+   * @generated from field: optional string login = 2;
    */
-  description?: string | undefined;
-
-  /**
-   * Email of the tenant, if not set will be inherited from the creator.
-   *
-   * @generated from field: optional string email = 3;
-   */
-  email?: string | undefined;
-
-  /**
-   * AvatarUrl of the tenant.
-   *
-   * @generated from field: optional string avatar_url = 4;
-   */
-  avatarUrl?: string | undefined;
-
-  /**
-   * Labels on the tenant.
-   *
-   * @generated from field: metalstack.api.v2.Labels labels = 5;
-   */
-  labels?: Labels | undefined;
+  login?: string | undefined;
 };
 
 /**
@@ -138,111 +116,6 @@ export const TenantServiceListResponseSchema: GenMessage<TenantServiceListRespon
   messageDesc(file_metalstack_admin_v2_tenant, 3);
 
 /**
- * TenantServiceAddMemberRequest is the request payload for adding a member to a tenant.
- *
- * @generated from message metalstack.admin.v2.TenantServiceAddMemberRequest
- */
-export type TenantServiceAddMemberRequest = Message<"metalstack.admin.v2.TenantServiceAddMemberRequest"> & {
-  /**
-   * Login of the tenant to which the member will be added.
-   *
-   * @generated from field: string tenant = 1;
-   */
-  tenant: string;
-
-  /**
-   * Login of the member to add.
-   *
-   * @generated from field: string member = 2;
-   */
-  member: string;
-
-  /**
-   * Role to assign to the new member.
-   *
-   * @generated from field: metalstack.api.v2.TenantRole role = 3;
-   */
-  role: TenantRole;
-};
-
-/**
- * Describes the message metalstack.admin.v2.TenantServiceAddMemberRequest.
- * Use `create(TenantServiceAddMemberRequestSchema)` to create a new message.
- */
-export const TenantServiceAddMemberRequestSchema: GenMessage<TenantServiceAddMemberRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_tenant, 4);
-
-/**
- * TenantServiceAddMemberResponse is the response payload for the add member request.
- *
- * @generated from message metalstack.admin.v2.TenantServiceAddMemberResponse
- */
-export type TenantServiceAddMemberResponse = Message<"metalstack.admin.v2.TenantServiceAddMemberResponse"> & {
-  /**
-   * TenantMember is the added tenant member.
-   *
-   * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
-   */
-  tenantMember?: TenantMember | undefined;
-};
-
-/**
- * Describes the message metalstack.admin.v2.TenantServiceAddMemberResponse.
- * Use `create(TenantServiceAddMemberResponseSchema)` to create a new message.
- */
-export const TenantServiceAddMemberResponseSchema: GenMessage<TenantServiceAddMemberResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_tenant, 5);
-
-/**
- * TenantServiceRemoveMemberRequest is the request payload for removing a member from a tenant.
- *
- * @generated from message metalstack.admin.v2.TenantServiceRemoveMemberRequest
- */
-export type TenantServiceRemoveMemberRequest = Message<"metalstack.admin.v2.TenantServiceRemoveMemberRequest"> & {
-  /**
-   * Login of the tenant from which the member will be removed.
-   *
-   * @generated from field: string tenant = 1;
-   */
-  tenant: string;
-
-  /**
-   * Login of the member to remove.
-   *
-   * @generated from field: string member = 2;
-   */
-  member: string;
-};
-
-/**
- * Describes the message metalstack.admin.v2.TenantServiceRemoveMemberRequest.
- * Use `create(TenantServiceRemoveMemberRequestSchema)` to create a new message.
- */
-export const TenantServiceRemoveMemberRequestSchema: GenMessage<TenantServiceRemoveMemberRequest> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_tenant, 6);
-
-/**
- * TenantServiceRemoveMemberResponse is the response payload for the remove member request.
- *
- * @generated from message metalstack.admin.v2.TenantServiceRemoveMemberResponse
- */
-export type TenantServiceRemoveMemberResponse = Message<"metalstack.admin.v2.TenantServiceRemoveMemberResponse"> & {
-  /**
-   * TenantMember is the removed tenant member.
-   *
-   * @generated from field: metalstack.api.v2.TenantMember tenant_member = 1;
-   */
-  tenantMember?: TenantMember | undefined;
-};
-
-/**
- * Describes the message metalstack.admin.v2.TenantServiceRemoveMemberResponse.
- * Use `create(TenantServiceRemoveMemberResponseSchema)` to create a new message.
- */
-export const TenantServiceRemoveMemberResponseSchema: GenMessage<TenantServiceRemoveMemberResponse> = /*@__PURE__*/
-  messageDesc(file_metalstack_admin_v2_tenant, 7);
-
-/**
  * TenantService provides tenant management operations.
  *
  * @generated from service metalstack.admin.v2.TenantService
@@ -267,26 +140,6 @@ export const TenantService: GenService<{
     methodKind: "unary";
     input: typeof TenantServiceListRequestSchema;
     output: typeof TenantServiceListResponseSchema;
-  },
-  /**
-   * Add a member to a tenant.
-   *
-   * @generated from rpc metalstack.admin.v2.TenantService.AddMember
-   */
-  addMember: {
-    methodKind: "unary";
-    input: typeof TenantServiceAddMemberRequestSchema;
-    output: typeof TenantServiceAddMemberResponseSchema;
-  },
-  /**
-   * RemoveMember removes a member from a tenant.
-   *
-   * @generated from rpc metalstack.admin.v2.TenantService.RemoveMember
-   */
-  removeMember: {
-    methodKind: "unary";
-    input: typeof TenantServiceRemoveMemberRequestSchema;
-    output: typeof TenantServiceRemoveMemberResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_admin_v2_tenant, 0);

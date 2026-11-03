@@ -1,3 +1,4 @@
+from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import project_pb2 as _project_pb2
 from google.protobuf.internal import containers as _containers
@@ -19,3 +20,17 @@ class ProjectServiceListResponse(_message.Message):
     PROJECTS_FIELD_NUMBER: _ClassVar[int]
     projects: _containers.RepeatedCompositeFieldContainer[_project_pb2.Project]
     def __init__(self, projects: _Optional[_Iterable[_Union[_project_pb2.Project, _Mapping]]] = ...) -> None: ...
+
+class ProjectServiceCreateRequest(_message.Message):
+    __slots__ = ("project", "id")
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    ID_FIELD_NUMBER: _ClassVar[int]
+    project: _project_pb2.ProjectServiceCreateRequest
+    id: str
+    def __init__(self, project: _Optional[_Union[_project_pb2.ProjectServiceCreateRequest, _Mapping]] = ..., id: _Optional[str] = ...) -> None: ...
+
+class ProjectServiceCreateResponse(_message.Message):
+    __slots__ = ("project",)
+    PROJECT_FIELD_NUMBER: _ClassVar[int]
+    project: _project_pb2.Project
+    def __init__(self, project: _Optional[_Union[_project_pb2.Project, _Mapping]] = ...) -> None: ...
