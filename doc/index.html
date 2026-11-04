@@ -1529,6 +1529,14 @@
                 </li>
               
                 <li>
+                  <a href="#metalstack.admin.v2.MachineServiceHousekeepingRequest"><span class="badge">M</span>MachineServiceHousekeepingRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.MachineServiceHousekeepingResponse"><span class="badge">M</span>MachineServiceHousekeepingResponse</a>
+                </li>
+              
+                <li>
                   <a href="#metalstack.admin.v2.MachineServiceIssuesRequest"><span class="badge">M</span>MachineServiceIssuesRequest</a>
                 </li>
               
@@ -1560,6 +1568,10 @@
                   <a href="#metalstack.admin.v2.MachineServiceSetStateResponse"><span class="badge">M</span>MachineServiceSetStateResponse</a>
                 </li>
               
+              
+                <li>
+                  <a href="#metalstack.admin.v2.MachineHousekeepingAction"><span class="badge">E</span>MachineHousekeepingAction</a>
+                </li>
               
               
               
@@ -13538,6 +13550,61 @@ Reason is only forwarded to an audit sink. </p></td>
 
         
       
+        <h3 id="metalstack.admin.v2.MachineServiceHousekeepingRequest">MachineServiceHousekeepingRequest</h3>
+        <p>MachineServiceHousekeepingRequest is the request payload for a machine housekeeping request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>action</td>
+                  <td><a href="#metalstack.admin.v2.MachineHousekeepingAction">MachineHousekeepingAction</a></td>
+                  <td></td>
+                  <td><p>Housekeeping Action to perform. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.MachineServiceHousekeepingResponse">MachineServiceHousekeepingResponse</h3>
+        <p>MachineServiceHousekeepingResponse is the response payload for a machine housekeeping request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>action</td>
+                  <td><a href="#metalstack.admin.v2.MachineHousekeepingAction">MachineHousekeepingAction</a></td>
+                  <td></td>
+                  <td><p>Housekeeping Action which was performed. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>modified_machine_ids</td>
+                  <td><a href="#string">string</a></td>
+                  <td>repeated</td>
+                  <td><p>Modified Machine IDs modified during this housekeeping action. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.MachineServiceIssuesRequest">MachineServiceIssuesRequest</h3>
         <p>MachineServiceIssuesRequest is the request payload for a machine issues request.</p>
 
@@ -13747,6 +13814,41 @@ If State set to available, description is also cleared. </p></td>
       
 
       
+        <h3 id="metalstack.admin.v2.MachineHousekeepingAction">MachineHousekeepingAction</h3>
+        <p>HousekeepingAction defines which housekeeping action should be triggered.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED is not defined.</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED</td>
+                <td>1</td>
+                <td><p>MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED updates machines which have vpn configured if they are connected or not.</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_HOUSEKEEPING_ACTION_LIVELINESS</td>
+                <td>2</td>
+                <td><p>MACHINE_HOUSEKEEPING_ACTION_LIVELINESS reports the liveliness of machines.</p></td>
+              </tr>
+            
+              <tr>
+                <td>MACHINE_HOUSEKEEPING_ACTION_RESURRECT</td>
+                <td>3</td>
+                <td><p>MACHINE_HOUSEKEEPING_ACTION_RESURRECT resurrect dead machines.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
 
       
 
@@ -13820,6 +13922,13 @@ If State set to available, description is also cleared. </p></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceIssuesRequest">MachineServiceIssuesRequest</a></td>
                 <td><a href="#metalstack.admin.v2.MachineServiceIssuesResponse">MachineServiceIssuesResponse</a></td>
                 <td><p>Issues allows to query issues of machines.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Housekeeping</td>
+                <td><a href="#metalstack.admin.v2.MachineServiceHousekeepingRequest">MachineServiceHousekeepingRequest</a></td>
+                <td><a href="#metalstack.admin.v2.MachineServiceHousekeepingResponse">MachineServiceHousekeepingResponse</a></td>
+                <td><p>Housekeeping</p></td>
               </tr>
             
           </tbody>
