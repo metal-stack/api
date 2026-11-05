@@ -29,6 +29,7 @@ type (
 		Audit() adminv2connect.AuditServiceClient
 		Component() adminv2connect.ComponentServiceClient
 		Filesystem() adminv2connect.FilesystemServiceClient
+		Housekeeping() adminv2connect.HousekeepingServiceClient
 		Image() adminv2connect.ImageServiceClient
 		IP() adminv2connect.IPServiceClient
 		Machine() adminv2connect.MachineServiceClient
@@ -49,6 +50,7 @@ type (
 		auditservice               adminv2connect.AuditServiceClient
 		componentservice           adminv2connect.ComponentServiceClient
 		filesystemservice          adminv2connect.FilesystemServiceClient
+		housekeepingservice        adminv2connect.HousekeepingServiceClient
 		imageservice               adminv2connect.ImageServiceClient
 		ipservice                  adminv2connect.IPServiceClient
 		machineservice             adminv2connect.MachineServiceClient
@@ -141,6 +143,12 @@ func (c *client) Adminv2() Adminv2 {
 			compress.WithAll(compress.LevelBalanced),
 		),
 		filesystemservice: adminv2connect.NewFilesystemServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
+		housekeepingservice: adminv2connect.NewHousekeepingServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
 			connect.WithInterceptors(c.interceptors...),
@@ -242,6 +250,9 @@ func (c *adminv2) Component() adminv2connect.ComponentServiceClient {
 }
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
+}
+func (c *adminv2) Housekeeping() adminv2connect.HousekeepingServiceClient {
+	return c.housekeepingservice
 }
 func (c *adminv2) Image() adminv2connect.ImageServiceClient {
 	return c.imageservice

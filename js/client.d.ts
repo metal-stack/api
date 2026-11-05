@@ -3,6 +3,7 @@ import type { Client as ConnectClient } from "@connectrpc/connect";
 import { AuditService as Adminv2AuditService } from "./metalstack/admin/v2/audit_pb";
 import { ComponentService as Adminv2ComponentService } from "./metalstack/admin/v2/component_pb";
 import { FilesystemService as Adminv2FilesystemService } from "./metalstack/admin/v2/filesystem_pb";
+import { HousekeepingService as Adminv2HousekeepingService } from "./metalstack/admin/v2/housekeeping_pb";
 import { ImageService as Adminv2ImageService } from "./metalstack/admin/v2/image_pb";
 import { IPService as Adminv2IPService } from "./metalstack/admin/v2/ip_pb";
 import { MachineService as Adminv2MachineService } from "./metalstack/admin/v2/machine_pb";
@@ -55,6 +56,7 @@ export interface Adminv2 {
     audit(): ConnectClient<typeof Adminv2AuditService>;
     component(): ConnectClient<typeof Adminv2ComponentService>;
     filesystem(): ConnectClient<typeof Adminv2FilesystemService>;
+    housekeeping(): ConnectClient<typeof Adminv2HousekeepingService>;
     image(): ConnectClient<typeof Adminv2ImageService>;
     ip(): ConnectClient<typeof Adminv2IPService>;
     machine(): ConnectClient<typeof Adminv2MachineService>;
