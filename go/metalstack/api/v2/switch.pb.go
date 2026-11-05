@@ -156,6 +156,8 @@ const (
 	SwitchOSVendor_SWITCH_OS_VENDOR_CUMULUS SwitchOSVendor = 1
 	// SWITCH_OS_VENDOR_SONIC means this switch is running on SONiC NOS.
 	SwitchOSVendor_SWITCH_OS_VENDOR_SONIC SwitchOSVendor = 2
+	// SWITCH_OS_VENDOR_BISDN means this switch is running on BISDN Linux.
+	SwitchOSVendor_SWITCH_OS_VENDOR_BISDN SwitchOSVendor = 3
 )
 
 // Enum value maps for SwitchOSVendor.
@@ -164,11 +166,13 @@ var (
 		0: "SWITCH_OS_VENDOR_UNSPECIFIED",
 		1: "SWITCH_OS_VENDOR_CUMULUS",
 		2: "SWITCH_OS_VENDOR_SONIC",
+		3: "SWITCH_OS_VENDOR_BISDN",
 	}
 	SwitchOSVendor_value = map[string]int32{
 		"SWITCH_OS_VENDOR_UNSPECIFIED": 0,
 		"SWITCH_OS_VENDOR_CUMULUS":     1,
 		"SWITCH_OS_VENDOR_SONIC":       2,
+		"SWITCH_OS_VENDOR_BISDN":       3,
 	}
 )
 
@@ -1326,11 +1330,12 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x11SwitchReplaceMode\x12)\n" +
 	"\x1fSWITCH_REPLACE_MODE_UNSPECIFIED\x10\x00\x1a\x04\x82\xb2\x19\x00\x12,\n" +
 	"\x1bSWITCH_REPLACE_MODE_REPLACE\x10\x01\x1a\v\x82\xb2\x19\areplace\x124\n" +
-	"\x1fSWITCH_REPLACE_MODE_OPERATIONAL\x10\x02\x1a\x0f\x82\xb2\x19\voperational*\x84\x01\n" +
+	"\x1fSWITCH_REPLACE_MODE_OPERATIONAL\x10\x02\x1a\x0f\x82\xb2\x19\voperational*\xab\x01\n" +
 	"\x0eSwitchOSVendor\x12 \n" +
 	"\x1cSWITCH_OS_VENDOR_UNSPECIFIED\x10\x00\x12)\n" +
 	"\x18SWITCH_OS_VENDOR_CUMULUS\x10\x01\x1a\v\x82\xb2\x19\aCumulus\x12%\n" +
-	"\x16SWITCH_OS_VENDOR_SONIC\x10\x02\x1a\t\x82\xb2\x19\x05SONiC*\xad\x01\n" +
+	"\x16SWITCH_OS_VENDOR_SONIC\x10\x02\x1a\t\x82\xb2\x19\x05SONiC\x12%\n" +
+	"\x16SWITCH_OS_VENDOR_BISDN\x10\x03\x1a\t\x82\xb2\x19\x05BISDN*\xad\x01\n" +
 	"\x10SwitchPortStatus\x12\"\n" +
 	"\x1eSWITCH_PORT_STATUS_UNSPECIFIED\x10\x00\x12!\n" +
 	"\x15SWITCH_PORT_STATUS_UP\x10\x01\x1a\x06\x82\xb2\x19\x02up\x12%\n" +
