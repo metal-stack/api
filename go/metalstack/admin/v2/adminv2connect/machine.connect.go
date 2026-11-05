@@ -53,9 +53,6 @@ const (
 	MachineServiceSetStateProcedure = "/metalstack.admin.v2.MachineService/SetState"
 	// MachineServiceIssuesProcedure is the fully-qualified name of the MachineService's Issues RPC.
 	MachineServiceIssuesProcedure = "/metalstack.admin.v2.MachineService/Issues"
-	// MachineServiceHousekeepingProcedure is the fully-qualified name of the MachineService's
-	// Housekeeping RPC.
-	MachineServiceHousekeepingProcedure = "/metalstack.admin.v2.MachineService/Housekeeping"
 )
 
 // MachineServiceClient is a client for the metalstack.admin.v2.MachineService service.
@@ -78,8 +75,6 @@ type MachineServiceClient interface {
 	SetState(context.Context, *v2.MachineServiceSetStateRequest) (*v2.MachineServiceSetStateResponse, error)
 	// Issues allows to query issues of machines.
 	Issues(context.Context, *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error)
-	// Housekeeping
-	Housekeeping(context.Context, *v2.MachineServiceHousekeepingRequest) (*v2.MachineServiceHousekeepingResponse, error)
 }
 
 // NewMachineServiceClient constructs a client for the metalstack.admin.v2.MachineService service.
@@ -147,12 +142,6 @@ func NewMachineServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(machineServiceMethods.ByName("Issues")),
 			connect.WithClientOptions(opts...),
 		),
-		housekeeping: connect.NewClient[v2.MachineServiceHousekeepingRequest, v2.MachineServiceHousekeepingResponse](
-			httpClient,
-			baseURL+MachineServiceHousekeepingProcedure,
-			connect.WithSchema(machineServiceMethods.ByName("Housekeeping")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
@@ -167,7 +156,6 @@ type machineServiceClient struct {
 	consolePassword *connect.Client[v2.MachineServiceConsolePasswordRequest, v2.MachineServiceConsolePasswordResponse]
 	setState        *connect.Client[v2.MachineServiceSetStateRequest, v2.MachineServiceSetStateResponse]
 	issues          *connect.Client[v2.MachineServiceIssuesRequest, v2.MachineServiceIssuesResponse]
-	housekeeping    *connect.Client[v2.MachineServiceHousekeepingRequest, v2.MachineServiceHousekeepingResponse]
 }
 
 // Get calls metalstack.admin.v2.MachineService.Get.
@@ -251,15 +239,6 @@ func (c *machineServiceClient) Issues(ctx context.Context, req *v2.MachineServic
 	return nil, err
 }
 
-// Housekeeping calls metalstack.admin.v2.MachineService.Housekeeping.
-func (c *machineServiceClient) Housekeeping(ctx context.Context, req *v2.MachineServiceHousekeepingRequest) (*v2.MachineServiceHousekeepingResponse, error) {
-	response, err := c.housekeeping.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
 // MachineServiceHandler is an implementation of the metalstack.admin.v2.MachineService service.
 type MachineServiceHandler interface {
 	// Returns the machine with the specified UUID.
@@ -280,8 +259,6 @@ type MachineServiceHandler interface {
 	SetState(context.Context, *v2.MachineServiceSetStateRequest) (*v2.MachineServiceSetStateResponse, error)
 	// Issues allows to query issues of machines.
 	Issues(context.Context, *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error)
-	// Housekeeping
-	Housekeeping(context.Context, *v2.MachineServiceHousekeepingRequest) (*v2.MachineServiceHousekeepingResponse, error)
 }
 
 // NewMachineServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -345,12 +322,6 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 		connect.WithSchema(machineServiceMethods.ByName("Issues")),
 		connect.WithHandlerOptions(opts...),
 	)
-	machineServiceHousekeepingHandler := connect.NewUnaryHandlerSimple(
-		MachineServiceHousekeepingProcedure,
-		svc.Housekeeping,
-		connect.WithSchema(machineServiceMethods.ByName("Housekeeping")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/metalstack.admin.v2.MachineService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case MachineServiceGetProcedure:
@@ -371,8 +342,6 @@ func NewMachineServiceHandler(svc MachineServiceHandler, opts ...connect.Handler
 			machineServiceSetStateHandler.ServeHTTP(w, r)
 		case MachineServiceIssuesProcedure:
 			machineServiceIssuesHandler.ServeHTTP(w, r)
-		case MachineServiceHousekeepingProcedure:
-			machineServiceHousekeepingHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -416,8 +385,4 @@ func (UnimplementedMachineServiceHandler) SetState(context.Context, *v2.MachineS
 
 func (UnimplementedMachineServiceHandler) Issues(context.Context, *v2.MachineServiceIssuesRequest) (*v2.MachineServiceIssuesResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.Issues is not implemented"))
-}
-
-func (UnimplementedMachineServiceHandler) Housekeeping(context.Context, *v2.MachineServiceHousekeepingRequest) (*v2.MachineServiceHousekeepingResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.MachineService.Housekeeping is not implemented"))
 }

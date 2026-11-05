@@ -60,11 +60,6 @@ service MachineService {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
     option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
   }
-  // Housekeeping
-  rpc Housekeeping(MachineServiceHousekeepingRequest) returns (MachineServiceHousekeepingResponse) {
-    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
-  }
 }
 
 // ------------------------ Service Messages ----------------------------------
@@ -190,30 +185,4 @@ message MachineServiceIssuesRequest {
 message MachineServiceIssuesResponse {
   // Issues is the result of the issues query.
   repeated metalstack.api.v2.MachineIssues issues = 1;
-}
-
-// MachineServiceHousekeepingRequest is the request payload for a machine housekeeping request.
-message MachineServiceHousekeepingRequest {
-  // Housekeeping Action to perform.
-  MachineHousekeepingAction action = 1;
-}
-
-// MachineServiceHousekeepingResponse is the response payload for a machine housekeeping request.
-message MachineServiceHousekeepingResponse {
-  // Housekeeping Action which was performed.
-  MachineHousekeepingAction action = 1;
-  // Modified Machine IDs modified during this housekeeping action.
-  repeated string modified_machine_ids = 2;
-}
-
-// HousekeepingAction defines which housekeeping action should be triggered.
-enum MachineHousekeepingAction {
-  // MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED is not defined.
-  MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED = 0;
-  // MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED updates machines which have vpn configured if they are connected or not.
-  MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED = 1 [(metalstack.api.v2.enum_string_value) = "vpn-connected"];
-  // MACHINE_HOUSEKEEPING_ACTION_LIVELINESS reports the liveliness of machines.
-  MACHINE_HOUSEKEEPING_ACTION_LIVELINESS = 2 [(metalstack.api.v2.enum_string_value) = "liveliness"];
-  // MACHINE_HOUSEKEEPING_ACTION_RESURRECT resurrect dead machines.
-  MACHINE_HOUSEKEEPING_ACTION_RESURRECT = 3 [(metalstack.api.v2.enum_string_value) = "resurrect"];
 }

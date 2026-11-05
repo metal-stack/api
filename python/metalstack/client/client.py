@@ -5,6 +5,7 @@ import pyqwest
 import metalstack.admin.v2.audit_connect as admin_audit_connect
 import metalstack.admin.v2.component_connect as admin_component_connect
 import metalstack.admin.v2.filesystem_connect as admin_filesystem_connect
+import metalstack.admin.v2.housekeeping_connect as admin_housekeeping_connect
 import metalstack.admin.v2.image_connect as admin_image_connect
 import metalstack.admin.v2.ip_connect as admin_ip_connect
 import metalstack.admin.v2.machine_connect as admin_machine_connect
@@ -88,6 +89,9 @@ class Client:
 
         def filesystem(self):
             return admin_filesystem_connect.FilesystemServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
+
+        def housekeeping(self):
+            return admin_housekeeping_connect.HousekeepingServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def image(self):
             return admin_image_connect.ImageServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)

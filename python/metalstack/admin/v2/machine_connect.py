@@ -45,9 +45,6 @@ class MachineService(Protocol):
     async def issues(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceIssuesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceIssuesResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
-    async def housekeeping(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-
 
 class MachineServiceASGIApplication(ConnectASGIApplication[MachineService]):
     def __init__(self, service: MachineService | AsyncGenerator[MachineService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
@@ -143,16 +140,6 @@ class MachineServiceASGIApplication(ConnectASGIApplication[MachineService]):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.issues,
-                ),
-                "/metalstack.admin.v2.MachineService/Housekeeping": Endpoint.unary(
-                    method=MethodInfo(
-                        name="Housekeeping",
-                        service_name="metalstack.admin.v2.MachineService",
-                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=svc.housekeeping,
                 ),
             },
             interceptors=interceptors,
@@ -348,26 +335,6 @@ class MachineServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
-    async def housekeeping(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingResponse:
-        return await self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="Housekeeping",
-                service_name="metalstack.admin.v2.MachineService",
-                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingRequest,
-                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
 
 
 
@@ -390,8 +357,6 @@ class MachineServiceSync(Protocol):
     def set_state(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceSetStateResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def issues(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceIssuesRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceIssuesResponse:
-        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
-    def housekeeping(self, request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -488,16 +453,6 @@ class MachineServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.issues,
-                ),
-                "/metalstack.admin.v2.MachineService/Housekeeping": EndpointSync.unary(
-                    method=MethodInfo(
-                        name="Housekeeping",
-                        service_name="metalstack.admin.v2.MachineService",
-                        input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingResponse,
-                        idempotency_level=IdempotencyLevel.UNKNOWN,
-                    ),
-                    function=service.housekeeping,
                 ),
             },
             interceptors=interceptors,
@@ -687,26 +642,6 @@ class MachineServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.MachineService",
                 input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceIssuesRequest,
                 output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceIssuesResponse,
-                idempotency_level=IdempotencyLevel.UNKNOWN,
-            ),
-            headers=headers,
-            timeout_ms=timeout_ms,
-        )
-
-    def housekeeping(
-        self,
-        request: metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingRequest,
-        *,
-        headers: Headers | Mapping[str, str] | None = None,
-        timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingResponse:
-        return self.execute_unary(
-            request=request,
-            method=MethodInfo(
-                name="Housekeeping",
-                service_name="metalstack.admin.v2.MachineService",
-                input=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingRequest,
-                output=metalstack_dot_admin_dot_v2_dot_machine__pb2.MachineServiceHousekeepingResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

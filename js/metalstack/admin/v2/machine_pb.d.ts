@@ -1,4 +1,4 @@
-import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Machine, MachineBMCCommand, MachineBMCDetails, MachineIssues, MachineIssuesQuery, MachineQuery, MachineState } from "../../api/v2/machine_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -362,83 +362,6 @@ export type MachineServiceIssuesResponse = Message<"metalstack.admin.v2.MachineS
  */
 export declare const MachineServiceIssuesResponseSchema: GenMessage<MachineServiceIssuesResponse>;
 /**
- * MachineServiceHousekeepingRequest is the request payload for a machine housekeeping request.
- *
- * @generated from message metalstack.admin.v2.MachineServiceHousekeepingRequest
- */
-export type MachineServiceHousekeepingRequest = Message<"metalstack.admin.v2.MachineServiceHousekeepingRequest"> & {
-    /**
-     * Housekeeping Action to perform.
-     *
-     * @generated from field: metalstack.admin.v2.MachineHousekeepingAction action = 1;
-     */
-    action: MachineHousekeepingAction;
-};
-/**
- * Describes the message metalstack.admin.v2.MachineServiceHousekeepingRequest.
- * Use `create(MachineServiceHousekeepingRequestSchema)` to create a new message.
- */
-export declare const MachineServiceHousekeepingRequestSchema: GenMessage<MachineServiceHousekeepingRequest>;
-/**
- * MachineServiceHousekeepingResponse is the response payload for a machine housekeeping request.
- *
- * @generated from message metalstack.admin.v2.MachineServiceHousekeepingResponse
- */
-export type MachineServiceHousekeepingResponse = Message<"metalstack.admin.v2.MachineServiceHousekeepingResponse"> & {
-    /**
-     * Housekeeping Action which was performed.
-     *
-     * @generated from field: metalstack.admin.v2.MachineHousekeepingAction action = 1;
-     */
-    action: MachineHousekeepingAction;
-    /**
-     * Modified Machine IDs modified during this housekeeping action.
-     *
-     * @generated from field: repeated string modified_machine_ids = 2;
-     */
-    modifiedMachineIds: string[];
-};
-/**
- * Describes the message metalstack.admin.v2.MachineServiceHousekeepingResponse.
- * Use `create(MachineServiceHousekeepingResponseSchema)` to create a new message.
- */
-export declare const MachineServiceHousekeepingResponseSchema: GenMessage<MachineServiceHousekeepingResponse>;
-/**
- * HousekeepingAction defines which housekeeping action should be triggered.
- *
- * @generated from enum metalstack.admin.v2.MachineHousekeepingAction
- */
-export declare enum MachineHousekeepingAction {
-    /**
-     * MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED is not defined.
-     *
-     * @generated from enum value: MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED = 0;
-     */
-    UNSPECIFIED = 0,
-    /**
-     * MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED updates machines which have vpn configured if they are connected or not.
-     *
-     * @generated from enum value: MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED = 1;
-     */
-    VPN_CONNECTED = 1,
-    /**
-     * MACHINE_HOUSEKEEPING_ACTION_LIVELINESS reports the liveliness of machines.
-     *
-     * @generated from enum value: MACHINE_HOUSEKEEPING_ACTION_LIVELINESS = 2;
-     */
-    LIVELINESS = 2,
-    /**
-     * MACHINE_HOUSEKEEPING_ACTION_RESURRECT resurrect dead machines.
-     *
-     * @generated from enum value: MACHINE_HOUSEKEEPING_ACTION_RESURRECT = 3;
-     */
-    RESURRECT = 3
-}
-/**
- * Describes the enum metalstack.admin.v2.MachineHousekeepingAction.
- */
-export declare const MachineHousekeepingActionSchema: GenEnum<MachineHousekeepingAction>;
-/**
  * MachineService provides machine lifecycle management operations.
  *
  * @generated from service metalstack.admin.v2.MachineService
@@ -533,15 +456,5 @@ export declare const MachineService: GenService<{
         methodKind: "unary";
         input: typeof MachineServiceIssuesRequestSchema;
         output: typeof MachineServiceIssuesResponseSchema;
-    };
-    /**
-     * Housekeeping
-     *
-     * @generated from rpc metalstack.admin.v2.MachineService.Housekeeping
-     */
-    housekeeping: {
-        methodKind: "unary";
-        input: typeof MachineServiceHousekeepingRequestSchema;
-        output: typeof MachineServiceHousekeepingResponseSchema;
     };
 }>;
