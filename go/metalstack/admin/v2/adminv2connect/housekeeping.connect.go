@@ -33,15 +33,25 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// HousekeepingServiceMachineProcedure is the fully-qualified name of the HousekeepingService's
-	// Machine RPC.
-	HousekeepingServiceMachineProcedure = "/metalstack.admin.v2.HousekeepingService/Machine"
+	// HousekeepingServiceMachineLivelinessProcedure is the fully-qualified name of the
+	// HousekeepingService's MachineLiveliness RPC.
+	HousekeepingServiceMachineLivelinessProcedure = "/metalstack.admin.v2.HousekeepingService/MachineLiveliness"
+	// HousekeepingServiceMachineVPNConnectedProcedure is the fully-qualified name of the
+	// HousekeepingService's MachineVPNConnected RPC.
+	HousekeepingServiceMachineVPNConnectedProcedure = "/metalstack.admin.v2.HousekeepingService/MachineVPNConnected"
+	// HousekeepingServiceMachineResurrectProcedure is the fully-qualified name of the
+	// HousekeepingService's MachineResurrect RPC.
+	HousekeepingServiceMachineResurrectProcedure = "/metalstack.admin.v2.HousekeepingService/MachineResurrect"
 )
 
 // HousekeepingServiceClient is a client for the metalstack.admin.v2.HousekeepingService service.
 type HousekeepingServiceClient interface {
-	// Machine housekeeping
-	Machine(context.Context, *v2.HousekeepingServiceMachineRequest) (*v2.HousekeepingServiceMachineResponse, error)
+	// Machine liveliness
+	MachineLiveliness(context.Context, *v2.HousekeepingServiceMachineLivelinessRequest) (*v2.HousekeepingServiceMachineLivelinessResponse, error)
+	// Machine vpn connected
+	MachineVPNConnected(context.Context, *v2.HousekeepingServiceMachineVPNConnectedRequest) (*v2.HousekeepingServiceMachineVPNConnectedResponse, error)
+	// Machine resurrect dead machines
+	MachineResurrect(context.Context, *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error)
 }
 
 // NewHousekeepingServiceClient constructs a client for the metalstack.admin.v2.HousekeepingService
@@ -55,10 +65,22 @@ func NewHousekeepingServiceClient(httpClient connect.HTTPClient, baseURL string,
 	baseURL = strings.TrimRight(baseURL, "/")
 	housekeepingServiceMethods := v2.File_metalstack_admin_v2_housekeeping_proto.Services().ByName("HousekeepingService").Methods()
 	return &housekeepingServiceClient{
-		machine: connect.NewClient[v2.HousekeepingServiceMachineRequest, v2.HousekeepingServiceMachineResponse](
+		machineLiveliness: connect.NewClient[v2.HousekeepingServiceMachineLivelinessRequest, v2.HousekeepingServiceMachineLivelinessResponse](
 			httpClient,
-			baseURL+HousekeepingServiceMachineProcedure,
-			connect.WithSchema(housekeepingServiceMethods.ByName("Machine")),
+			baseURL+HousekeepingServiceMachineLivelinessProcedure,
+			connect.WithSchema(housekeepingServiceMethods.ByName("MachineLiveliness")),
+			connect.WithClientOptions(opts...),
+		),
+		machineVPNConnected: connect.NewClient[v2.HousekeepingServiceMachineVPNConnectedRequest, v2.HousekeepingServiceMachineVPNConnectedResponse](
+			httpClient,
+			baseURL+HousekeepingServiceMachineVPNConnectedProcedure,
+			connect.WithSchema(housekeepingServiceMethods.ByName("MachineVPNConnected")),
+			connect.WithClientOptions(opts...),
+		),
+		machineResurrect: connect.NewClient[v2.HousekeepingServiceMachineResurrectRequest, v2.HousekeepingServiceMachineResurrectResponse](
+			httpClient,
+			baseURL+HousekeepingServiceMachineResurrectProcedure,
+			connect.WithSchema(housekeepingServiceMethods.ByName("MachineResurrect")),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -66,12 +88,32 @@ func NewHousekeepingServiceClient(httpClient connect.HTTPClient, baseURL string,
 
 // housekeepingServiceClient implements HousekeepingServiceClient.
 type housekeepingServiceClient struct {
-	machine *connect.Client[v2.HousekeepingServiceMachineRequest, v2.HousekeepingServiceMachineResponse]
+	machineLiveliness   *connect.Client[v2.HousekeepingServiceMachineLivelinessRequest, v2.HousekeepingServiceMachineLivelinessResponse]
+	machineVPNConnected *connect.Client[v2.HousekeepingServiceMachineVPNConnectedRequest, v2.HousekeepingServiceMachineVPNConnectedResponse]
+	machineResurrect    *connect.Client[v2.HousekeepingServiceMachineResurrectRequest, v2.HousekeepingServiceMachineResurrectResponse]
 }
 
-// Machine calls metalstack.admin.v2.HousekeepingService.Machine.
-func (c *housekeepingServiceClient) Machine(ctx context.Context, req *v2.HousekeepingServiceMachineRequest) (*v2.HousekeepingServiceMachineResponse, error) {
-	response, err := c.machine.CallUnary(ctx, connect.NewRequest(req))
+// MachineLiveliness calls metalstack.admin.v2.HousekeepingService.MachineLiveliness.
+func (c *housekeepingServiceClient) MachineLiveliness(ctx context.Context, req *v2.HousekeepingServiceMachineLivelinessRequest) (*v2.HousekeepingServiceMachineLivelinessResponse, error) {
+	response, err := c.machineLiveliness.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// MachineVPNConnected calls metalstack.admin.v2.HousekeepingService.MachineVPNConnected.
+func (c *housekeepingServiceClient) MachineVPNConnected(ctx context.Context, req *v2.HousekeepingServiceMachineVPNConnectedRequest) (*v2.HousekeepingServiceMachineVPNConnectedResponse, error) {
+	response, err := c.machineVPNConnected.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
+// MachineResurrect calls metalstack.admin.v2.HousekeepingService.MachineResurrect.
+func (c *housekeepingServiceClient) MachineResurrect(ctx context.Context, req *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error) {
+	response, err := c.machineResurrect.CallUnary(ctx, connect.NewRequest(req))
 	if response != nil {
 		return response.Msg, err
 	}
@@ -81,8 +123,12 @@ func (c *housekeepingServiceClient) Machine(ctx context.Context, req *v2.Houseke
 // HousekeepingServiceHandler is an implementation of the metalstack.admin.v2.HousekeepingService
 // service.
 type HousekeepingServiceHandler interface {
-	// Machine housekeeping
-	Machine(context.Context, *v2.HousekeepingServiceMachineRequest) (*v2.HousekeepingServiceMachineResponse, error)
+	// Machine liveliness
+	MachineLiveliness(context.Context, *v2.HousekeepingServiceMachineLivelinessRequest) (*v2.HousekeepingServiceMachineLivelinessResponse, error)
+	// Machine vpn connected
+	MachineVPNConnected(context.Context, *v2.HousekeepingServiceMachineVPNConnectedRequest) (*v2.HousekeepingServiceMachineVPNConnectedResponse, error)
+	// Machine resurrect dead machines
+	MachineResurrect(context.Context, *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error)
 }
 
 // NewHousekeepingServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -92,16 +138,32 @@ type HousekeepingServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewHousekeepingServiceHandler(svc HousekeepingServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	housekeepingServiceMethods := v2.File_metalstack_admin_v2_housekeeping_proto.Services().ByName("HousekeepingService").Methods()
-	housekeepingServiceMachineHandler := connect.NewUnaryHandlerSimple(
-		HousekeepingServiceMachineProcedure,
-		svc.Machine,
-		connect.WithSchema(housekeepingServiceMethods.ByName("Machine")),
+	housekeepingServiceMachineLivelinessHandler := connect.NewUnaryHandlerSimple(
+		HousekeepingServiceMachineLivelinessProcedure,
+		svc.MachineLiveliness,
+		connect.WithSchema(housekeepingServiceMethods.ByName("MachineLiveliness")),
+		connect.WithHandlerOptions(opts...),
+	)
+	housekeepingServiceMachineVPNConnectedHandler := connect.NewUnaryHandlerSimple(
+		HousekeepingServiceMachineVPNConnectedProcedure,
+		svc.MachineVPNConnected,
+		connect.WithSchema(housekeepingServiceMethods.ByName("MachineVPNConnected")),
+		connect.WithHandlerOptions(opts...),
+	)
+	housekeepingServiceMachineResurrectHandler := connect.NewUnaryHandlerSimple(
+		HousekeepingServiceMachineResurrectProcedure,
+		svc.MachineResurrect,
+		connect.WithSchema(housekeepingServiceMethods.ByName("MachineResurrect")),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/metalstack.admin.v2.HousekeepingService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case HousekeepingServiceMachineProcedure:
-			housekeepingServiceMachineHandler.ServeHTTP(w, r)
+		case HousekeepingServiceMachineLivelinessProcedure:
+			housekeepingServiceMachineLivelinessHandler.ServeHTTP(w, r)
+		case HousekeepingServiceMachineVPNConnectedProcedure:
+			housekeepingServiceMachineVPNConnectedHandler.ServeHTTP(w, r)
+		case HousekeepingServiceMachineResurrectProcedure:
+			housekeepingServiceMachineResurrectHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -111,6 +173,14 @@ func NewHousekeepingServiceHandler(svc HousekeepingServiceHandler, opts ...conne
 // UnimplementedHousekeepingServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedHousekeepingServiceHandler struct{}
 
-func (UnimplementedHousekeepingServiceHandler) Machine(context.Context, *v2.HousekeepingServiceMachineRequest) (*v2.HousekeepingServiceMachineResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.HousekeepingService.Machine is not implemented"))
+func (UnimplementedHousekeepingServiceHandler) MachineLiveliness(context.Context, *v2.HousekeepingServiceMachineLivelinessRequest) (*v2.HousekeepingServiceMachineLivelinessResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.HousekeepingService.MachineLiveliness is not implemented"))
+}
+
+func (UnimplementedHousekeepingServiceHandler) MachineVPNConnected(context.Context, *v2.HousekeepingServiceMachineVPNConnectedRequest) (*v2.HousekeepingServiceMachineVPNConnectedResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.HousekeepingService.MachineVPNConnected is not implemented"))
+}
+
+func (UnimplementedHousekeepingServiceHandler) MachineResurrect(context.Context, *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.HousekeepingService.MachineResurrect is not implemented"))
 }

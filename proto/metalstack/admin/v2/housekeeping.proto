@@ -4,38 +4,60 @@ package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/machine.proto";
+import "metalstack/api/v2/vpn.proto";
 
 // HousekeepingService provides housekeeping operations.
 service HousekeepingService {
-  // Machine housekeeping
-  rpc Machine(HousekeepingServiceMachineRequest) returns (HousekeepingServiceMachineResponse) {
+  // Machine liveliness
+  rpc MachineLiveliness(HousekeepingServiceMachineLivelinessRequest) returns (HousekeepingServiceMachineLivelinessResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Machine vpn connected
+  rpc MachineVPNConnected(HousekeepingServiceMachineVPNConnectedRequest) returns (HousekeepingServiceMachineVPNConnectedResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+
+  // Machine resurrect dead machines
+  rpc MachineResurrect(HousekeepingServiceMachineResurrectRequest) returns (HousekeepingServiceMachineResurrectResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
 }
 
-// HousekeepingServiceMachineRequest is the request payload for a machine housekeeping request.
-message HousekeepingServiceMachineRequest {
-  // Housekeeping Action to perform.
-  MachineHousekeepingAction action = 1 [(buf.validate.field).enum.defined_only = true];
+// HousekeepingServiceMachineLivelinessRequest is the request payload for a machine liveliness housekeeping request.
+message HousekeepingServiceMachineLivelinessRequest {}
+
+// HousekeepingServiceMachineLivelinessResponse is the response payload for a machine liveliness housekeeping request.
+message HousekeepingServiceMachineLivelinessResponse {
+  // Modified Machines modified during this housekeeping action.
+  repeated MachineWithLiveliness modified_machines = 1;
 }
 
-// HousekeepingServiceMachineResponse is the response payload for a machine housekeeping request.
-message HousekeepingServiceMachineResponse {
-  // Housekeeping Action which was performed.
-  MachineHousekeepingAction action = 1;
-  // Modified Machine IDs modified during this housekeeping action.
-  repeated string modified_machine_ids = 2;
+// MachineWithLiveliness
+message MachineWithLiveliness {
+  // UUID of this machine.
+  string uuid = 1 [(buf.validate.field).string.uuid = true];
+  // Liveliness of this machine.
+  metalstack.api.v2.MachineLiveliness liveliness = 2 [(buf.validate.field).enum.defined_only = true];
 }
 
-// HousekeepingAction defines which housekeeping action should be triggered.
-enum MachineHousekeepingAction {
-  // MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED is not defined.
-  MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED = 0;
-  // MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED updates machines which have vpn configured if they are connected or not.
-  MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED = 1 [(metalstack.api.v2.enum_string_value) = "vpn-connected"];
-  // MACHINE_HOUSEKEEPING_ACTION_LIVELINESS reports the liveliness of machines.
-  MACHINE_HOUSEKEEPING_ACTION_LIVELINESS = 2 [(metalstack.api.v2.enum_string_value) = "liveliness"];
-  // MACHINE_HOUSEKEEPING_ACTION_RESURRECT resurrect dead machines.
-  MACHINE_HOUSEKEEPING_ACTION_RESURRECT = 3 [(metalstack.api.v2.enum_string_value) = "resurrect"];
+// HousekeepingServiceMachineVPNConnectedRequest is the request payload for a machine vpn connected housekeeping request.
+message HousekeepingServiceMachineVPNConnectedRequest {}
+
+// HousekeepingServiceMachineVPNConnectedResponse is the response payload for a machine vpn connected housekeeping request.
+message HousekeepingServiceMachineVPNConnectedResponse {
+  // Nodes connected to the VPN.
+  repeated metalstack.api.v2.VPNNode modified_machines = 1;
+}
+
+// HousekeepingServiceMachineResurrectRequest is the request payload for a machine resurrect housekeeping request.
+message HousekeepingServiceMachineResurrectRequest {}
+
+// HousekeepingServiceMachineResurrectResponse is the response payload for a machine resurrect housekeeping request.
+message HousekeepingServiceMachineResurrectResponse {
+  // Machines which have been resurrected
+  repeated metalstack.api.v2.Machine modified_machines = 1;
 }

@@ -24,9 +24,11 @@ _sym_db = _symbol_database.Default()
 
 from buf.validate import validate_pb2 as buf_dot_validate_dot_validate__pb2
 from metalstack.api.v2 import common_pb2 as metalstack_dot_api_dot_v2_dot_common__pb2
+from metalstack.api.v2 import machine_pb2 as metalstack_dot_api_dot_v2_dot_machine__pb2
+from metalstack.api.v2 import vpn_pb2 as metalstack_dot_api_dot_v2_dot_vpn__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&metalstack/admin/v2/housekeeping.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\"u\n!HousekeepingServiceMachineRequest\x12P\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32..metalstack.admin.v2.MachineHousekeepingActionB\x08\xbaH\x05\x82\x01\x02\x10\x01R\x06\x61\x63tion\"\x9e\x01\n\"HousekeepingServiceMachineResponse\x12\x46\n\x06\x61\x63tion\x18\x01 \x01(\x0e\x32..metalstack.admin.v2.MachineHousekeepingActionR\x06\x61\x63tion\x12\x30\n\x14modified_machine_ids\x18\x02 \x03(\tR\x12modifiedMachineIds*\x80\x02\n\x19MachineHousekeepingAction\x12+\n\'MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED\x10\x00\x12@\n)MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED\x10\x01\x1a\x11\x82\xb2\x19\rvpn-connected\x12:\n&MACHINE_HOUSEKEEPING_ACTION_LIVELINESS\x10\x02\x1a\x0e\x82\xb2\x19\nliveliness\x12\x38\n%MACHINE_HOUSEKEEPING_ACTION_RESURRECT\x10\x03\x1a\r\x82\xb2\x19\tresurrect2\x9d\x01\n\x13HousekeepingService\x12\x85\x01\n\x07Machine\x12\x36.metalstack.admin.v2.HousekeepingServiceMachineRequest\x1a\x37.metalstack.admin.v2.HousekeepingServiceMachineResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x42\xd5\x01\n\x17\x63om.metalstack.admin.v2B\x11HousekeepingProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&metalstack/admin/v2/housekeeping.proto\x12\x13metalstack.admin.v2\x1a\x1b\x62uf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"-\n+HousekeepingServiceMachineLivelinessRequest\"\x87\x01\n,HousekeepingServiceMachineLivelinessResponse\x12W\n\x11modified_machines\x18\x01 \x03(\x0b\x32*.metalstack.admin.v2.MachineWithLivelinessR\x10modifiedMachines\"\x85\x01\n\x15MachineWithLiveliness\x12\x1c\n\x04uuid\x18\x01 \x01(\tB\x08\xbaH\x05r\x03\xb0\x01\x01R\x04uuid\x12N\n\nliveliness\x18\x02 \x01(\x0e\x32$.metalstack.api.v2.MachineLivelinessB\x08\xbaH\x05\x82\x01\x02\x10\x01R\nliveliness\"/\n-HousekeepingServiceMachineVPNConnectedRequest\"y\n.HousekeepingServiceMachineVPNConnectedResponse\x12G\n\x11modified_machines\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.VPNNodeR\x10modifiedMachines\",\n*HousekeepingServiceMachineResurrectRequest\"v\n+HousekeepingServiceMachineResurrectResponse\x12G\n\x11modified_machines\x18\x01 \x03(\x0b\x32\x1a.metalstack.api.v2.MachineR\x10modifiedMachines2\x8a\x04\n\x13HousekeepingService\x12\xa3\x01\n\x11MachineLiveliness\x12@.metalstack.admin.v2.HousekeepingServiceMachineLivelinessRequest\x1a\x41.metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\xa9\x01\n\x13MachineVPNConnected\x12\x42.metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedRequest\x1a\x43.metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\xa0\x01\n\x10MachineResurrect\x12?.metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest\x1a@.metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x42\xd5\x01\n\x17\x63om.metalstack.admin.v2B\x11HousekeepingProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,22 +36,30 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'metalstack.admin.v2.houseke
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n\027com.metalstack.admin.v2B\021HousekeepingProtoP\001Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\242\002\003MAX\252\002\023Metalstack.Admin.V2\312\002\023Metalstack\\Admin\\V2\342\002\037Metalstack\\Admin\\V2\\GPBMetadata\352\002\025Metalstack::Admin::V2'
-  _globals['_MACHINEHOUSEKEEPINGACTION'].values_by_name["MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED"]._loaded_options = None
-  _globals['_MACHINEHOUSEKEEPINGACTION'].values_by_name["MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED"]._serialized_options = b'\202\262\031\rvpn-connected'
-  _globals['_MACHINEHOUSEKEEPINGACTION'].values_by_name["MACHINE_HOUSEKEEPING_ACTION_LIVELINESS"]._loaded_options = None
-  _globals['_MACHINEHOUSEKEEPINGACTION'].values_by_name["MACHINE_HOUSEKEEPING_ACTION_LIVELINESS"]._serialized_options = b'\202\262\031\nliveliness'
-  _globals['_MACHINEHOUSEKEEPINGACTION'].values_by_name["MACHINE_HOUSEKEEPING_ACTION_RESURRECT"]._loaded_options = None
-  _globals['_MACHINEHOUSEKEEPINGACTION'].values_by_name["MACHINE_HOUSEKEEPING_ACTION_RESURRECT"]._serialized_options = b'\202\262\031\tresurrect'
-  _globals['_HOUSEKEEPINGSERVICEMACHINEREQUEST'].fields_by_name['action']._loaded_options = None
-  _globals['_HOUSEKEEPINGSERVICEMACHINEREQUEST'].fields_by_name['action']._serialized_options = b'\272H\005\202\001\002\020\001'
-  _globals['_HOUSEKEEPINGSERVICE'].methods_by_name['Machine']._loaded_options = None
-  _globals['_HOUSEKEEPINGSERVICE'].methods_by_name['Machine']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
-  _globals['_MACHINEHOUSEKEEPINGACTION']._serialized_start=405
-  _globals['_MACHINEHOUSEKEEPINGACTION']._serialized_end=661
-  _globals['_HOUSEKEEPINGSERVICEMACHINEREQUEST']._serialized_start=124
-  _globals['_HOUSEKEEPINGSERVICEMACHINEREQUEST']._serialized_end=241
-  _globals['_HOUSEKEEPINGSERVICEMACHINERESPONSE']._serialized_start=244
-  _globals['_HOUSEKEEPINGSERVICEMACHINERESPONSE']._serialized_end=402
-  _globals['_HOUSEKEEPINGSERVICE']._serialized_start=664
-  _globals['_HOUSEKEEPINGSERVICE']._serialized_end=821
+  _globals['_MACHINEWITHLIVELINESS'].fields_by_name['uuid']._loaded_options = None
+  _globals['_MACHINEWITHLIVELINESS'].fields_by_name['uuid']._serialized_options = b'\272H\005r\003\260\001\001'
+  _globals['_MACHINEWITHLIVELINESS'].fields_by_name['liveliness']._loaded_options = None
+  _globals['_MACHINEWITHLIVELINESS'].fields_by_name['liveliness']._serialized_options = b'\272H\005\202\001\002\020\001'
+  _globals['_HOUSEKEEPINGSERVICE'].methods_by_name['MachineLiveliness']._loaded_options = None
+  _globals['_HOUSEKEEPINGSERVICE'].methods_by_name['MachineLiveliness']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
+  _globals['_HOUSEKEEPINGSERVICE'].methods_by_name['MachineVPNConnected']._loaded_options = None
+  _globals['_HOUSEKEEPINGSERVICE'].methods_by_name['MachineVPNConnected']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
+  _globals['_HOUSEKEEPINGSERVICE'].methods_by_name['MachineResurrect']._loaded_options = None
+  _globals['_HOUSEKEEPINGSERVICE'].methods_by_name['MachineResurrect']._serialized_options = b'\322\363\030\001\001\340\363\030\001'
+  _globals['_HOUSEKEEPINGSERVICEMACHINELIVELINESSREQUEST']._serialized_start=186
+  _globals['_HOUSEKEEPINGSERVICEMACHINELIVELINESSREQUEST']._serialized_end=231
+  _globals['_HOUSEKEEPINGSERVICEMACHINELIVELINESSRESPONSE']._serialized_start=234
+  _globals['_HOUSEKEEPINGSERVICEMACHINELIVELINESSRESPONSE']._serialized_end=369
+  _globals['_MACHINEWITHLIVELINESS']._serialized_start=372
+  _globals['_MACHINEWITHLIVELINESS']._serialized_end=505
+  _globals['_HOUSEKEEPINGSERVICEMACHINEVPNCONNECTEDREQUEST']._serialized_start=507
+  _globals['_HOUSEKEEPINGSERVICEMACHINEVPNCONNECTEDREQUEST']._serialized_end=554
+  _globals['_HOUSEKEEPINGSERVICEMACHINEVPNCONNECTEDRESPONSE']._serialized_start=556
+  _globals['_HOUSEKEEPINGSERVICEMACHINEVPNCONNECTEDRESPONSE']._serialized_end=677
+  _globals['_HOUSEKEEPINGSERVICEMACHINERESURRECTREQUEST']._serialized_start=679
+  _globals['_HOUSEKEEPINGSERVICEMACHINERESURRECTREQUEST']._serialized_end=723
+  _globals['_HOUSEKEEPINGSERVICEMACHINERESURRECTRESPONSE']._serialized_start=725
+  _globals['_HOUSEKEEPINGSERVICEMACHINERESURRECTRESPONSE']._serialized_end=843
+  _globals['_HOUSEKEEPINGSERVICE']._serialized_start=846
+  _globals['_HOUSEKEEPINGSERVICE']._serialized_end=1368
 # @@protoc_insertion_point(module_scope)

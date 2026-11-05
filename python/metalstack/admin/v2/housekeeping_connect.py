@@ -18,7 +18,13 @@ import metalstack.admin.v2.housekeeping_pb2 as metalstack_dot_admin_dot_v2_dot_h
 
 
 class HousekeepingService(Protocol):
-    async def machine(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResponse:
+    async def machine_liveliness(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
+    async def machine_v_p_n_connected(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
+    async def machine_resurrect(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -27,15 +33,35 @@ class HousekeepingServiceASGIApplication(ConnectASGIApplication[HousekeepingServ
         super().__init__(
             service=service,
             endpoints=lambda svc: {
-                "/metalstack.admin.v2.HousekeepingService/Machine": Endpoint.unary(
+                "/metalstack.admin.v2.HousekeepingService/MachineLiveliness": Endpoint.unary(
                     method=MethodInfo(
-                        name="Machine",
+                        name="MachineLiveliness",
                         service_name="metalstack.admin.v2.HousekeepingService",
-                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResponse,
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=svc.machine,
+                    function=svc.machine_liveliness,
+                ),
+                "/metalstack.admin.v2.HousekeepingService/MachineVPNConnected": Endpoint.unary(
+                    method=MethodInfo(
+                        name="MachineVPNConnected",
+                        service_name="metalstack.admin.v2.HousekeepingService",
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.machine_v_p_n_connected,
+                ),
+                "/metalstack.admin.v2.HousekeepingService/MachineResurrect": Endpoint.unary(
+                    method=MethodInfo(
+                        name="MachineResurrect",
+                        service_name="metalstack.admin.v2.HousekeepingService",
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.machine_resurrect,
                 ),
             },
             interceptors=interceptors,
@@ -51,20 +77,60 @@ class HousekeepingServiceASGIApplication(ConnectASGIApplication[HousekeepingServ
 
 
 class HousekeepingServiceClient(ConnectClient):
-    async def machine(
+    async def machine_liveliness(
         self,
-        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineRequest,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessRequest,
         *,
         headers: Headers | Mapping[str, str] | None = None,
         timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessResponse:
         return await self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="Machine",
+                name="MachineLiveliness",
                 service_name="metalstack.admin.v2.HousekeepingService",
-                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineRequest,
-                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResponse,
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    async def machine_v_p_n_connected(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="MachineVPNConnected",
+                service_name="metalstack.admin.v2.HousekeepingService",
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    async def machine_resurrect(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="MachineResurrect",
+                service_name="metalstack.admin.v2.HousekeepingService",
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
@@ -76,7 +142,11 @@ class HousekeepingServiceClient(ConnectClient):
 
 
 class HousekeepingServiceSync(Protocol):
-    def machine(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResponse:
+    def machine_liveliness(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def machine_v_p_n_connected(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def machine_resurrect(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -84,15 +154,35 @@ class HousekeepingServiceWSGIApplication(ConnectWSGIApplication):
     def __init__(self, service: HousekeepingServiceSync, interceptors: Iterable[InterceptorSync]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
         super().__init__(
             endpoints={
-                "/metalstack.admin.v2.HousekeepingService/Machine": EndpointSync.unary(
+                "/metalstack.admin.v2.HousekeepingService/MachineLiveliness": EndpointSync.unary(
                     method=MethodInfo(
-                        name="Machine",
+                        name="MachineLiveliness",
                         service_name="metalstack.admin.v2.HousekeepingService",
-                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineRequest,
-                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResponse,
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessResponse,
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
-                    function=service.machine,
+                    function=service.machine_liveliness,
+                ),
+                "/metalstack.admin.v2.HousekeepingService/MachineVPNConnected": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="MachineVPNConnected",
+                        service_name="metalstack.admin.v2.HousekeepingService",
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.machine_v_p_n_connected,
+                ),
+                "/metalstack.admin.v2.HousekeepingService/MachineResurrect": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="MachineResurrect",
+                        service_name="metalstack.admin.v2.HousekeepingService",
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.machine_resurrect,
                 ),
             },
             interceptors=interceptors,
@@ -108,20 +198,60 @@ class HousekeepingServiceWSGIApplication(ConnectWSGIApplication):
 
 
 class HousekeepingServiceClientSync(ConnectClientSync):
-    def machine(
+    def machine_liveliness(
         self,
-        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineRequest,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessRequest,
         *,
         headers: Headers | Mapping[str, str] | None = None,
         timeout_ms: int | None = None,
-    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResponse:
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessResponse:
         return self.execute_unary(
             request=request,
             method=MethodInfo(
-                name="Machine",
+                name="MachineLiveliness",
                 service_name="metalstack.admin.v2.HousekeepingService",
-                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineRequest,
-                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResponse,
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineLivelinessResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def machine_v_p_n_connected(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="MachineVPNConnected",
+                service_name="metalstack.admin.v2.HousekeepingService",
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def machine_resurrect(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="MachineResurrect",
+                service_name="metalstack.admin.v2.HousekeepingService",
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,

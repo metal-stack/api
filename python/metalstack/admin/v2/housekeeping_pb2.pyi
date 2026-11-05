@@ -1,35 +1,49 @@
 from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
+from metalstack.api.v2 import machine_pb2 as _machine_pb2
+from metalstack.api.v2 import vpn_pb2 as _vpn_pb2
 from google.protobuf.internal import containers as _containers
-from google.protobuf.internal import enum_type_wrapper as _enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from collections.abc import Iterable as _Iterable
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
 from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
-class MachineHousekeepingAction(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+class HousekeepingServiceMachineLivelinessRequest(_message.Message):
     __slots__ = ()
-    MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED: _ClassVar[MachineHousekeepingAction]
-    MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED: _ClassVar[MachineHousekeepingAction]
-    MACHINE_HOUSEKEEPING_ACTION_LIVELINESS: _ClassVar[MachineHousekeepingAction]
-    MACHINE_HOUSEKEEPING_ACTION_RESURRECT: _ClassVar[MachineHousekeepingAction]
-MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED: MachineHousekeepingAction
-MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED: MachineHousekeepingAction
-MACHINE_HOUSEKEEPING_ACTION_LIVELINESS: MachineHousekeepingAction
-MACHINE_HOUSEKEEPING_ACTION_RESURRECT: MachineHousekeepingAction
+    def __init__(self) -> None: ...
 
-class HousekeepingServiceMachineRequest(_message.Message):
-    __slots__ = ("action",)
-    ACTION_FIELD_NUMBER: _ClassVar[int]
-    action: MachineHousekeepingAction
-    def __init__(self, action: _Optional[_Union[MachineHousekeepingAction, str]] = ...) -> None: ...
+class HousekeepingServiceMachineLivelinessResponse(_message.Message):
+    __slots__ = ("modified_machines",)
+    MODIFIED_MACHINES_FIELD_NUMBER: _ClassVar[int]
+    modified_machines: _containers.RepeatedCompositeFieldContainer[MachineWithLiveliness]
+    def __init__(self, modified_machines: _Optional[_Iterable[_Union[MachineWithLiveliness, _Mapping]]] = ...) -> None: ...
 
-class HousekeepingServiceMachineResponse(_message.Message):
-    __slots__ = ("action", "modified_machine_ids")
-    ACTION_FIELD_NUMBER: _ClassVar[int]
-    MODIFIED_MACHINE_IDS_FIELD_NUMBER: _ClassVar[int]
-    action: MachineHousekeepingAction
-    modified_machine_ids: _containers.RepeatedScalarFieldContainer[str]
-    def __init__(self, action: _Optional[_Union[MachineHousekeepingAction, str]] = ..., modified_machine_ids: _Optional[_Iterable[str]] = ...) -> None: ...
+class MachineWithLiveliness(_message.Message):
+    __slots__ = ("uuid", "liveliness")
+    UUID_FIELD_NUMBER: _ClassVar[int]
+    LIVELINESS_FIELD_NUMBER: _ClassVar[int]
+    uuid: str
+    liveliness: _machine_pb2.MachineLiveliness
+    def __init__(self, uuid: _Optional[str] = ..., liveliness: _Optional[_Union[_machine_pb2.MachineLiveliness, str]] = ...) -> None: ...
+
+class HousekeepingServiceMachineVPNConnectedRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class HousekeepingServiceMachineVPNConnectedResponse(_message.Message):
+    __slots__ = ("modified_machines",)
+    MODIFIED_MACHINES_FIELD_NUMBER: _ClassVar[int]
+    modified_machines: _containers.RepeatedCompositeFieldContainer[_vpn_pb2.VPNNode]
+    def __init__(self, modified_machines: _Optional[_Iterable[_Union[_vpn_pb2.VPNNode, _Mapping]]] = ...) -> None: ...
+
+class HousekeepingServiceMachineResurrectRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class HousekeepingServiceMachineResurrectResponse(_message.Message):
+    __slots__ = ("modified_machines",)
+    MODIFIED_MACHINES_FIELD_NUMBER: _ClassVar[int]
+    modified_machines: _containers.RepeatedCompositeFieldContainer[_machine_pb2.Machine]
+    def __init__(self, modified_machines: _Optional[_Iterable[_Union[_machine_pb2.Machine, _Mapping]]] = ...) -> None: ...

@@ -2,107 +2,157 @@
 // @generated from file metalstack/admin/v2/housekeeping.proto (package metalstack.admin.v2, syntax proto3)
 /* eslint-disable */
 
-import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
+import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
+import type { Machine, MachineLiveliness } from "../../api/v2/machine_pb";
+import { file_metalstack_api_v2_machine } from "../../api/v2/machine_pb";
+import type { VPNNode } from "../../api/v2/vpn_pb";
+import { file_metalstack_api_v2_vpn } from "../../api/v2/vpn_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file metalstack/admin/v2/housekeeping.proto.
  */
 export const file_metalstack_admin_v2_housekeeping: GenFile = /*@__PURE__*/
-  fileDesc("CiZtZXRhbHN0YWNrL2FkbWluL3YyL2hvdXNla2VlcGluZy5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiJtCiFIb3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZVJlcXVlc3QSSAoGYWN0aW9uGAEgASgOMi4ubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lSG91c2VrZWVwaW5nQWN0aW9uQgi6SAWCAQIQASKCAQoiSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVSZXNwb25zZRI+CgZhY3Rpb24YASABKA4yLi5tZXRhbHN0YWNrLmFkbWluLnYyLk1hY2hpbmVIb3VzZWtlZXBpbmdBY3Rpb24SHAoUbW9kaWZpZWRfbWFjaGluZV9pZHMYAiADKAkqgAIKGU1hY2hpbmVIb3VzZWtlZXBpbmdBY3Rpb24SKwonTUFDSElORV9IT1VTRUtFRVBJTkdfQUNUSU9OX1VOU1BFQ0lGSUVEEAASQAopTUFDSElORV9IT1VTRUtFRVBJTkdfQUNUSU9OX1ZQTl9DT05ORUNURUQQARoRgrIZDXZwbi1jb25uZWN0ZWQSOgomTUFDSElORV9IT1VTRUtFRVBJTkdfQUNUSU9OX0xJVkVMSU5FU1MQAhoOgrIZCmxpdmVsaW5lc3MSOAolTUFDSElORV9IT1VTRUtFRVBJTkdfQUNUSU9OX1JFU1VSUkVDVBADGg2CshkJcmVzdXJyZWN0Mp0BChNIb3VzZWtlZXBpbmdTZXJ2aWNlEoUBCgdNYWNoaW5lEjYubWV0YWxzdGFjay5hZG1pbi52Mi5Ib3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZVJlcXVlc3QaNy5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lUmVzcG9uc2UiCdLzGAEB4PMYAULVAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCEUhvdXNla2VlcGluZ1Byb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common]);
+  fileDesc("CiZtZXRhbHN0YWNrL2FkbWluL3YyL2hvdXNla2VlcGluZy5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiItCitIb3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZUxpdmVsaW5lc3NSZXF1ZXN0InUKLEhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lTGl2ZWxpbmVzc1Jlc3BvbnNlEkUKEW1vZGlmaWVkX21hY2hpbmVzGAEgAygLMioubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lV2l0aExpdmVsaW5lc3MicwoVTWFjaGluZVdpdGhMaXZlbGluZXNzEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEkIKCmxpdmVsaW5lc3MYAiABKA4yJC5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lTGl2ZWxpbmVzc0IIukgFggECEAEiLwotSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVWUE5Db25uZWN0ZWRSZXF1ZXN0ImcKLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lVlBOQ29ubmVjdGVkUmVzcG9uc2USNQoRbW9kaWZpZWRfbWFjaGluZXMYASADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5WUE5Ob2RlIiwKKkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lUmVzdXJyZWN0UmVxdWVzdCJkCitIb3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZVJlc3VycmVjdFJlc3BvbnNlEjUKEW1vZGlmaWVkX21hY2hpbmVzGAEgAygLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZTKKBAoTSG91c2VrZWVwaW5nU2VydmljZRKjAQoRTWFjaGluZUxpdmVsaW5lc3MSQC5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lTGl2ZWxpbmVzc1JlcXVlc3QaQS5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lTGl2ZWxpbmVzc1Jlc3BvbnNlIgnS8xgBAeDzGAESqQEKE01hY2hpbmVWUE5Db25uZWN0ZWQSQi5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lVlBOQ29ubmVjdGVkUmVxdWVzdBpDLm1ldGFsc3RhY2suYWRtaW4udjIuSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVWUE5Db25uZWN0ZWRSZXNwb25zZSIJ0vMYAQHg8xgBEqABChBNYWNoaW5lUmVzdXJyZWN0Ej8ubWV0YWxzdGFjay5hZG1pbi52Mi5Ib3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZVJlc3VycmVjdFJlcXVlc3QaQC5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lUmVzdXJyZWN0UmVzcG9uc2UiCdLzGAEB4PMYAULVAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCEUhvdXNla2VlcGluZ1Byb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_vpn]);
 
 /**
- * HousekeepingServiceMachineRequest is the request payload for a machine housekeeping request.
+ * HousekeepingServiceMachineLivelinessRequest is the request payload for a machine liveliness housekeeping request.
  *
- * @generated from message metalstack.admin.v2.HousekeepingServiceMachineRequest
+ * @generated from message metalstack.admin.v2.HousekeepingServiceMachineLivelinessRequest
  */
-export type HousekeepingServiceMachineRequest = Message<"metalstack.admin.v2.HousekeepingServiceMachineRequest"> & {
-  /**
-   * Housekeeping Action to perform.
-   *
-   * @generated from field: metalstack.admin.v2.MachineHousekeepingAction action = 1;
-   */
-  action: MachineHousekeepingAction;
+export type HousekeepingServiceMachineLivelinessRequest = Message<"metalstack.admin.v2.HousekeepingServiceMachineLivelinessRequest"> & {
 };
 
 /**
- * Describes the message metalstack.admin.v2.HousekeepingServiceMachineRequest.
- * Use `create(HousekeepingServiceMachineRequestSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.HousekeepingServiceMachineLivelinessRequest.
+ * Use `create(HousekeepingServiceMachineLivelinessRequestSchema)` to create a new message.
  */
-export const HousekeepingServiceMachineRequestSchema: GenMessage<HousekeepingServiceMachineRequest> = /*@__PURE__*/
+export const HousekeepingServiceMachineLivelinessRequestSchema: GenMessage<HousekeepingServiceMachineLivelinessRequest> = /*@__PURE__*/
   messageDesc(file_metalstack_admin_v2_housekeeping, 0);
 
 /**
- * HousekeepingServiceMachineResponse is the response payload for a machine housekeeping request.
+ * HousekeepingServiceMachineLivelinessResponse is the response payload for a machine liveliness housekeeping request.
  *
- * @generated from message metalstack.admin.v2.HousekeepingServiceMachineResponse
+ * @generated from message metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse
  */
-export type HousekeepingServiceMachineResponse = Message<"metalstack.admin.v2.HousekeepingServiceMachineResponse"> & {
+export type HousekeepingServiceMachineLivelinessResponse = Message<"metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse"> & {
   /**
-   * Housekeeping Action which was performed.
+   * Modified Machines modified during this housekeeping action.
    *
-   * @generated from field: metalstack.admin.v2.MachineHousekeepingAction action = 1;
+   * @generated from field: repeated metalstack.admin.v2.MachineWithLiveliness modified_machines = 1;
    */
-  action: MachineHousekeepingAction;
-
-  /**
-   * Modified Machine IDs modified during this housekeeping action.
-   *
-   * @generated from field: repeated string modified_machine_ids = 2;
-   */
-  modifiedMachineIds: string[];
+  modifiedMachines: MachineWithLiveliness[];
 };
 
 /**
- * Describes the message metalstack.admin.v2.HousekeepingServiceMachineResponse.
- * Use `create(HousekeepingServiceMachineResponseSchema)` to create a new message.
+ * Describes the message metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse.
+ * Use `create(HousekeepingServiceMachineLivelinessResponseSchema)` to create a new message.
  */
-export const HousekeepingServiceMachineResponseSchema: GenMessage<HousekeepingServiceMachineResponse> = /*@__PURE__*/
+export const HousekeepingServiceMachineLivelinessResponseSchema: GenMessage<HousekeepingServiceMachineLivelinessResponse> = /*@__PURE__*/
   messageDesc(file_metalstack_admin_v2_housekeeping, 1);
 
 /**
- * HousekeepingAction defines which housekeeping action should be triggered.
+ * MachineWithLiveliness
  *
- * @generated from enum metalstack.admin.v2.MachineHousekeepingAction
+ * @generated from message metalstack.admin.v2.MachineWithLiveliness
  */
-export enum MachineHousekeepingAction {
+export type MachineWithLiveliness = Message<"metalstack.admin.v2.MachineWithLiveliness"> & {
   /**
-   * MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED is not defined.
+   * UUID of this machine.
    *
-   * @generated from enum value: MACHINE_HOUSEKEEPING_ACTION_UNSPECIFIED = 0;
+   * @generated from field: string uuid = 1;
    */
-  UNSPECIFIED = 0,
+  uuid: string;
 
   /**
-   * MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED updates machines which have vpn configured if they are connected or not.
+   * Liveliness of this machine.
    *
-   * @generated from enum value: MACHINE_HOUSEKEEPING_ACTION_VPN_CONNECTED = 1;
+   * @generated from field: metalstack.api.v2.MachineLiveliness liveliness = 2;
    */
-  VPN_CONNECTED = 1,
-
-  /**
-   * MACHINE_HOUSEKEEPING_ACTION_LIVELINESS reports the liveliness of machines.
-   *
-   * @generated from enum value: MACHINE_HOUSEKEEPING_ACTION_LIVELINESS = 2;
-   */
-  LIVELINESS = 2,
-
-  /**
-   * MACHINE_HOUSEKEEPING_ACTION_RESURRECT resurrect dead machines.
-   *
-   * @generated from enum value: MACHINE_HOUSEKEEPING_ACTION_RESURRECT = 3;
-   */
-  RESURRECT = 3,
-}
+  liveliness: MachineLiveliness;
+};
 
 /**
- * Describes the enum metalstack.admin.v2.MachineHousekeepingAction.
+ * Describes the message metalstack.admin.v2.MachineWithLiveliness.
+ * Use `create(MachineWithLivelinessSchema)` to create a new message.
  */
-export const MachineHousekeepingActionSchema: GenEnum<MachineHousekeepingAction> = /*@__PURE__*/
-  enumDesc(file_metalstack_admin_v2_housekeeping, 0);
+export const MachineWithLivelinessSchema: GenMessage<MachineWithLiveliness> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_housekeeping, 2);
+
+/**
+ * HousekeepingServiceMachineVPNConnectedRequest is the request payload for a machine vpn connected housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedRequest
+ */
+export type HousekeepingServiceMachineVPNConnectedRequest = Message<"metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedRequest"> & {
+};
+
+/**
+ * Describes the message metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedRequest.
+ * Use `create(HousekeepingServiceMachineVPNConnectedRequestSchema)` to create a new message.
+ */
+export const HousekeepingServiceMachineVPNConnectedRequestSchema: GenMessage<HousekeepingServiceMachineVPNConnectedRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_housekeeping, 3);
+
+/**
+ * HousekeepingServiceMachineVPNConnectedResponse is the response payload for a machine vpn connected housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse
+ */
+export type HousekeepingServiceMachineVPNConnectedResponse = Message<"metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse"> & {
+  /**
+   * Nodes connected to the VPN.
+   *
+   * @generated from field: repeated metalstack.api.v2.VPNNode modified_machines = 1;
+   */
+  modifiedMachines: VPNNode[];
+};
+
+/**
+ * Describes the message metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse.
+ * Use `create(HousekeepingServiceMachineVPNConnectedResponseSchema)` to create a new message.
+ */
+export const HousekeepingServiceMachineVPNConnectedResponseSchema: GenMessage<HousekeepingServiceMachineVPNConnectedResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_housekeeping, 4);
+
+/**
+ * HousekeepingServiceMachineResurrectRequest is the request payload for a machine resurrect housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest
+ */
+export type HousekeepingServiceMachineResurrectRequest = Message<"metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest"> & {
+};
+
+/**
+ * Describes the message metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest.
+ * Use `create(HousekeepingServiceMachineResurrectRequestSchema)` to create a new message.
+ */
+export const HousekeepingServiceMachineResurrectRequestSchema: GenMessage<HousekeepingServiceMachineResurrectRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_housekeeping, 5);
+
+/**
+ * HousekeepingServiceMachineResurrectResponse is the response payload for a machine resurrect housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse
+ */
+export type HousekeepingServiceMachineResurrectResponse = Message<"metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse"> & {
+  /**
+   * Machines which have been resurrected
+   *
+   * @generated from field: repeated metalstack.api.v2.Machine modified_machines = 1;
+   */
+  modifiedMachines: Machine[];
+};
+
+/**
+ * Describes the message metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse.
+ * Use `create(HousekeepingServiceMachineResurrectResponseSchema)` to create a new message.
+ */
+export const HousekeepingServiceMachineResurrectResponseSchema: GenMessage<HousekeepingServiceMachineResurrectResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_housekeeping, 6);
 
 /**
  * HousekeepingService provides housekeeping operations.
@@ -111,14 +161,34 @@ export const MachineHousekeepingActionSchema: GenEnum<MachineHousekeepingAction>
  */
 export const HousekeepingService: GenService<{
   /**
-   * Machine housekeeping
+   * Machine liveliness
    *
-   * @generated from rpc metalstack.admin.v2.HousekeepingService.Machine
+   * @generated from rpc metalstack.admin.v2.HousekeepingService.MachineLiveliness
    */
-  machine: {
+  machineLiveliness: {
     methodKind: "unary";
-    input: typeof HousekeepingServiceMachineRequestSchema;
-    output: typeof HousekeepingServiceMachineResponseSchema;
+    input: typeof HousekeepingServiceMachineLivelinessRequestSchema;
+    output: typeof HousekeepingServiceMachineLivelinessResponseSchema;
+  },
+  /**
+   * Machine vpn connected
+   *
+   * @generated from rpc metalstack.admin.v2.HousekeepingService.MachineVPNConnected
+   */
+  machineVPNConnected: {
+    methodKind: "unary";
+    input: typeof HousekeepingServiceMachineVPNConnectedRequestSchema;
+    output: typeof HousekeepingServiceMachineVPNConnectedResponseSchema;
+  },
+  /**
+   * Machine resurrect dead machines
+   *
+   * @generated from rpc metalstack.admin.v2.HousekeepingService.MachineResurrect
+   */
+  machineResurrect: {
+    methodKind: "unary";
+    input: typeof HousekeepingServiceMachineResurrectRequestSchema;
+    output: typeof HousekeepingServiceMachineResurrectResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_admin_v2_housekeeping, 0);
