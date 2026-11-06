@@ -33,6 +33,7 @@ type (
 		Audit() adminv2connect.AuditServiceClient
 		Component() adminv2connect.ComponentServiceClient
 		Filesystem() adminv2connect.FilesystemServiceClient
+		Housekeeping() adminv2connect.HousekeepingServiceClient
 		Image() adminv2connect.ImageServiceClient
 		IP() adminv2connect.IPServiceClient
 		Machine() adminv2connect.MachineServiceClient
@@ -55,6 +56,7 @@ type (
 		auditservice               adminv2connect.AuditServiceClient
 		componentservice           adminv2connect.ComponentServiceClient
 		filesystemservice          adminv2connect.FilesystemServiceClient
+		housekeepingservice        adminv2connect.HousekeepingServiceClient
 		imageservice               adminv2connect.ImageServiceClient
 		ipservice                  adminv2connect.IPServiceClient
 		machineservice             adminv2connect.MachineServiceClient
@@ -156,6 +158,12 @@ func (c *client) Adminv2() Adminv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		housekeepingservice: adminv2connect.NewHousekeepingServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		imageservice: adminv2connect.NewImageServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -252,6 +260,9 @@ func (c *adminv2) Component() adminv2connect.ComponentServiceClient {
 }
 func (c *adminv2) Filesystem() adminv2connect.FilesystemServiceClient {
 	return c.filesystemservice
+}
+func (c *adminv2) Housekeeping() adminv2connect.HousekeepingServiceClient {
+	return c.housekeepingservice
 }
 func (c *adminv2) Image() adminv2connect.ImageServiceClient {
 	return c.imageservice
@@ -530,6 +541,7 @@ func (c *adminv2) EnableMCP(mcps runtime.MCPServer, opts ...runtime.Option) {
 	adminv2mcp.ForwardToAuditServiceClient(mcps, c.Audit(), opts...)
 	adminv2mcp.ForwardToComponentServiceClient(mcps, c.Component(), opts...)
 	adminv2mcp.ForwardToFilesystemServiceClient(mcps, c.Filesystem(), opts...)
+	adminv2mcp.ForwardToHousekeepingServiceClient(mcps, c.Housekeeping(), opts...)
 	adminv2mcp.ForwardToImageServiceClient(mcps, c.Image(), opts...)
 	adminv2mcp.ForwardToIPServiceClient(mcps, c.IP(), opts...)
 	adminv2mcp.ForwardToMachineServiceClient(mcps, c.Machine(), opts...)
