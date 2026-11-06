@@ -11,6 +11,8 @@ import { ComponentService as Adminv2ComponentService } from "./metalstack/admin/
 
 import { FilesystemService as Adminv2FilesystemService } from "./metalstack/admin/v2/filesystem_pb";
 
+import { HousekeepingService as Adminv2HousekeepingService } from "./metalstack/admin/v2/housekeeping_pb";
+
 import { ImageService as Adminv2ImageService } from "./metalstack/admin/v2/image_pb";
 
 import { IPService as Adminv2IPService } from "./metalstack/admin/v2/ip_pb";
@@ -117,6 +119,8 @@ export interface Adminv2 {
   component(): ConnectClient<typeof Adminv2ComponentService>;
 
   filesystem(): ConnectClient<typeof Adminv2FilesystemService>;
+
+  housekeeping(): ConnectClient<typeof Adminv2HousekeepingService>;
 
   image(): ConnectClient<typeof Adminv2ImageService>;
 
@@ -288,6 +292,8 @@ class Adminv2Impl implements Adminv2 {
 
   private _filesystem?: ConnectClient<typeof Adminv2FilesystemService>;
 
+  private _housekeeping?: ConnectClient<typeof Adminv2HousekeepingService>;
+
   private _image?: ConnectClient<typeof Adminv2ImageService>;
 
   private _ip?: ConnectClient<typeof Adminv2IPService>;
@@ -341,6 +347,13 @@ class Adminv2Impl implements Adminv2 {
       this._filesystem = createClient(Adminv2FilesystemService, this.transport);
     }
     return this._filesystem;
+  }
+
+  housekeeping(): ConnectClient<typeof Adminv2HousekeepingService> {
+    if (!this._housekeeping) {
+      this._housekeeping = createClient(Adminv2HousekeepingService, this.transport);
+    }
+    return this._housekeeping;
   }
 
   image(): ConnectClient<typeof Adminv2ImageService> {
