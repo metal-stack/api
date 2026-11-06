@@ -289,8 +289,11 @@ type Switch struct {
 	LastSync *SwitchSync `protobuf:"bytes,14,opt,name=last_sync,json=lastSync,proto3" json:"last_sync,omitempty"`
 	// LastSyncError contains information about the last unsuccessful heartbeat of the switch.
 	LastSyncError *SwitchSync `protobuf:"bytes,15,opt,name=last_sync_error,json=lastSyncError,proto3" json:"last_sync_error,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	// DisableDualMachineConnections allows machines to be connected to this switch only, without a twin switch.
+	// By default, machines must be connected to exactly two switches.
+	DisableDualMachineConnections bool `protobuf:"varint,16,opt,name=disable_dual_machine_connections,json=disableDualMachineConnections,proto3" json:"disable_dual_machine_connections,omitempty"`
+	unknownFields                 protoimpl.UnknownFields
+	sizeCache                     protoimpl.SizeCache
 }
 
 func (x *Switch) Reset() {
@@ -426,6 +429,13 @@ func (x *Switch) GetLastSyncError() *SwitchSync {
 		return x.LastSyncError
 	}
 	return nil
+}
+
+func (x *Switch) GetDisableDualMachineConnections() bool {
+	if x != nil {
+		return x.DisableDualMachineConnections
+	}
+	return false
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.
@@ -1211,7 +1221,7 @@ var File_metalstack_api_v2_switch_proto protoreflect.FileDescriptor
 
 const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\n" +
-	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xe2\x06\n" +
+	"\x1emetalstack/api/v2/switch.proto\x12\x11metalstack.api.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a(metalstack/api/v2/predefined_rules.proto\"\xab\a\n" +
 	"\x06Switch\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12+\n" +
@@ -1231,7 +1241,8 @@ const file_metalstack_api_v2_switch_proto_rawDesc = "" +
 	"\x02os\x18\f \x01(\v2\x1b.metalstack.api.v2.SwitchOSR\x02os\x12U\n" +
 	"\x13machine_connections\x18\r \x03(\v2$.metalstack.api.v2.MachineConnectionR\x12machineConnections\x12:\n" +
 	"\tlast_sync\x18\x0e \x01(\v2\x1d.metalstack.api.v2.SwitchSyncR\blastSync\x12E\n" +
-	"\x0flast_sync_error\x18\x0f \x01(\v2\x1d.metalstack.api.v2.SwitchSyncR\rlastSyncErrorB\a\n" +
+	"\x0flast_sync_error\x18\x0f \x01(\v2\x1d.metalstack.api.v2.SwitchSyncR\rlastSyncError\x12G\n" +
+	" disable_dual_machine_connections\x18\x10 \x01(\bR\x1ddisableDualMachineConnectionsB\a\n" +
 	"\x05_rackB\a\n" +
 	"\x05_roomB\x12\n" +
 	"\x10_management_userB\x12\n" +
