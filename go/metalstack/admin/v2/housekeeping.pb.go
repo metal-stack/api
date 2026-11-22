@@ -327,11 +327,121 @@ func (x *HousekeepingServiceMachineResurrectResponse) GetModifiedMachines() []*v
 	return nil
 }
 
+// HousekeepingServiceNetworksConsistentRequest is the request payload for a network consistent housekeeping request.
+type HousekeepingServiceNetworksConsistentRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HousekeepingServiceNetworksConsistentRequest) Reset() {
+	*x = HousekeepingServiceNetworksConsistentRequest{}
+	mi := &file_metalstack_admin_v2_housekeeping_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HousekeepingServiceNetworksConsistentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HousekeepingServiceNetworksConsistentRequest) ProtoMessage() {}
+
+func (x *HousekeepingServiceNetworksConsistentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_housekeeping_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HousekeepingServiceNetworksConsistentRequest.ProtoReflect.Descriptor instead.
+func (*HousekeepingServiceNetworksConsistentRequest) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_housekeeping_proto_rawDescGZIP(), []int{7}
+}
+
+// HousekeepingServiceMachineResurrectResponse is the response payload for a network consistent housekeeping request.
+type HousekeepingServiceNetworksConsistentResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Networks missing in ipam
+	NetworksMissingInIpam []*v2.Network `protobuf:"bytes,1,rep,name=networks_missing_in_ipam,json=networksMissingInIpam,proto3" json:"networks_missing_in_ipam,omitempty"`
+	// Networks missing in metal
+	NetworksMissingInMetal []*v2.Network `protobuf:"bytes,2,rep,name=networks_missing_in_metal,json=networksMissingInMetal,proto3" json:"networks_missing_in_metal,omitempty"`
+	// IPs missing in ipam
+	IpsMissingInIpam []*v2.IP `protobuf:"bytes,3,rep,name=ips_missing_in_ipam,json=ipsMissingInIpam,proto3" json:"ips_missing_in_ipam,omitempty"`
+	// IPs missing in metal
+	IpsMissingInMetal []*v2.IP `protobuf:"bytes,4,rep,name=ips_missing_in_metal,json=ipsMissingInMetal,proto3" json:"ips_missing_in_metal,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *HousekeepingServiceNetworksConsistentResponse) Reset() {
+	*x = HousekeepingServiceNetworksConsistentResponse{}
+	mi := &file_metalstack_admin_v2_housekeeping_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HousekeepingServiceNetworksConsistentResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HousekeepingServiceNetworksConsistentResponse) ProtoMessage() {}
+
+func (x *HousekeepingServiceNetworksConsistentResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_admin_v2_housekeeping_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HousekeepingServiceNetworksConsistentResponse.ProtoReflect.Descriptor instead.
+func (*HousekeepingServiceNetworksConsistentResponse) Descriptor() ([]byte, []int) {
+	return file_metalstack_admin_v2_housekeeping_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *HousekeepingServiceNetworksConsistentResponse) GetNetworksMissingInIpam() []*v2.Network {
+	if x != nil {
+		return x.NetworksMissingInIpam
+	}
+	return nil
+}
+
+func (x *HousekeepingServiceNetworksConsistentResponse) GetNetworksMissingInMetal() []*v2.Network {
+	if x != nil {
+		return x.NetworksMissingInMetal
+	}
+	return nil
+}
+
+func (x *HousekeepingServiceNetworksConsistentResponse) GetIpsMissingInIpam() []*v2.IP {
+	if x != nil {
+		return x.IpsMissingInIpam
+	}
+	return nil
+}
+
+func (x *HousekeepingServiceNetworksConsistentResponse) GetIpsMissingInMetal() []*v2.IP {
+	if x != nil {
+		return x.IpsMissingInMetal
+	}
+	return nil
+}
+
 var File_metalstack_admin_v2_housekeeping_proto protoreflect.FileDescriptor
 
 const file_metalstack_admin_v2_housekeeping_proto_rawDesc = "" +
 	"\n" +
-	"&metalstack/admin/v2/housekeeping.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"-\n" +
+	"&metalstack/admin/v2/housekeeping.proto\x12\x13metalstack.admin.v2\x1a\x1bbuf/validate/validate.proto\x1a\x1emetalstack/api/v2/common.proto\x1a\x1ametalstack/api/v2/ip.proto\x1a\x1fmetalstack/api/v2/machine.proto\x1a\x1fmetalstack/api/v2/network.proto\x1a\x1bmetalstack/api/v2/vpn.proto\"-\n" +
 	"+HousekeepingServiceMachineLivelinessRequest\"\x87\x01\n" +
 	",HousekeepingServiceMachineLivelinessResponse\x12W\n" +
 	"\x11modified_machines\x18\x01 \x03(\v2*.metalstack.admin.v2.MachineWithLivelinessR\x10modifiedMachines\"\x85\x01\n" +
@@ -345,11 +455,18 @@ const file_metalstack_admin_v2_housekeeping_proto_rawDesc = "" +
 	"\x11modified_machines\x18\x01 \x03(\v2\x1a.metalstack.api.v2.VPNNodeR\x10modifiedMachines\",\n" +
 	"*HousekeepingServiceMachineResurrectRequest\"v\n" +
 	"+HousekeepingServiceMachineResurrectResponse\x12G\n" +
-	"\x11modified_machines\x18\x01 \x03(\v2\x1a.metalstack.api.v2.MachineR\x10modifiedMachines2\x8a\x04\n" +
+	"\x11modified_machines\x18\x01 \x03(\v2\x1a.metalstack.api.v2.MachineR\x10modifiedMachines\".\n" +
+	",HousekeepingServiceNetworksConsistentRequest\"\xe9\x02\n" +
+	"-HousekeepingServiceNetworksConsistentResponse\x12S\n" +
+	"\x18networks_missing_in_ipam\x18\x01 \x03(\v2\x1a.metalstack.api.v2.NetworkR\x15networksMissingInIpam\x12U\n" +
+	"\x19networks_missing_in_metal\x18\x02 \x03(\v2\x1a.metalstack.api.v2.NetworkR\x16networksMissingInMetal\x12D\n" +
+	"\x13ips_missing_in_ipam\x18\x03 \x03(\v2\x15.metalstack.api.v2.IPR\x10ipsMissingInIpam\x12F\n" +
+	"\x14ips_missing_in_metal\x18\x04 \x03(\v2\x15.metalstack.api.v2.IPR\x11ipsMissingInMetal2\xb3\x05\n" +
 	"\x13HousekeepingService\x12\xa3\x01\n" +
 	"\x11MachineLiveliness\x12@.metalstack.admin.v2.HousekeepingServiceMachineLivelinessRequest\x1aA.metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\xa9\x01\n" +
 	"\x13MachineVPNConnected\x12B.metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedRequest\x1aC.metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\xa0\x01\n" +
-	"\x10MachineResurrect\x12?.metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest\x1a@.metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01B\xd5\x01\n" +
+	"\x10MachineResurrect\x12?.metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest\x1a@.metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01\x12\xa6\x01\n" +
+	"\x12NetworksConsistent\x12A.metalstack.admin.v2.HousekeepingServiceNetworksConsistentRequest\x1aB.metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse\"\t\xd2\xf3\x18\x01\x01\xe0\xf3\x18\x01B\xd5\x01\n" +
 	"\x17com.metalstack.admin.v2B\x11HousekeepingProtoP\x01Z9github.com/metal-stack/api/go/metalstack/admin/v2;adminv2\xa2\x02\x03MAX\xaa\x02\x13Metalstack.Admin.V2\xca\x02\x13Metalstack\\Admin\\V2\xe2\x02\x1fMetalstack\\Admin\\V2\\GPBMetadata\xea\x02\x15Metalstack::Admin::V2b\x06proto3"
 
 var (
@@ -364,7 +481,7 @@ func file_metalstack_admin_v2_housekeeping_proto_rawDescGZIP() []byte {
 	return file_metalstack_admin_v2_housekeeping_proto_rawDescData
 }
 
-var file_metalstack_admin_v2_housekeeping_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_metalstack_admin_v2_housekeeping_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_metalstack_admin_v2_housekeeping_proto_goTypes = []any{
 	(*HousekeepingServiceMachineLivelinessRequest)(nil),    // 0: metalstack.admin.v2.HousekeepingServiceMachineLivelinessRequest
 	(*HousekeepingServiceMachineLivelinessResponse)(nil),   // 1: metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse
@@ -373,26 +490,36 @@ var file_metalstack_admin_v2_housekeeping_proto_goTypes = []any{
 	(*HousekeepingServiceMachineVPNConnectedResponse)(nil), // 4: metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse
 	(*HousekeepingServiceMachineResurrectRequest)(nil),     // 5: metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest
 	(*HousekeepingServiceMachineResurrectResponse)(nil),    // 6: metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse
-	(v2.MachineLiveliness)(0),                              // 7: metalstack.api.v2.MachineLiveliness
-	(*v2.VPNNode)(nil),                                     // 8: metalstack.api.v2.VPNNode
-	(*v2.Machine)(nil),                                     // 9: metalstack.api.v2.Machine
+	(*HousekeepingServiceNetworksConsistentRequest)(nil),   // 7: metalstack.admin.v2.HousekeepingServiceNetworksConsistentRequest
+	(*HousekeepingServiceNetworksConsistentResponse)(nil),  // 8: metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse
+	(v2.MachineLiveliness)(0),                              // 9: metalstack.api.v2.MachineLiveliness
+	(*v2.VPNNode)(nil),                                     // 10: metalstack.api.v2.VPNNode
+	(*v2.Machine)(nil),                                     // 11: metalstack.api.v2.Machine
+	(*v2.Network)(nil),                                     // 12: metalstack.api.v2.Network
+	(*v2.IP)(nil),                                          // 13: metalstack.api.v2.IP
 }
 var file_metalstack_admin_v2_housekeeping_proto_depIdxs = []int32{
-	2, // 0: metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse.modified_machines:type_name -> metalstack.admin.v2.MachineWithLiveliness
-	7, // 1: metalstack.admin.v2.MachineWithLiveliness.liveliness:type_name -> metalstack.api.v2.MachineLiveliness
-	8, // 2: metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse.modified_machines:type_name -> metalstack.api.v2.VPNNode
-	9, // 3: metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse.modified_machines:type_name -> metalstack.api.v2.Machine
-	0, // 4: metalstack.admin.v2.HousekeepingService.MachineLiveliness:input_type -> metalstack.admin.v2.HousekeepingServiceMachineLivelinessRequest
-	3, // 5: metalstack.admin.v2.HousekeepingService.MachineVPNConnected:input_type -> metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedRequest
-	5, // 6: metalstack.admin.v2.HousekeepingService.MachineResurrect:input_type -> metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest
-	1, // 7: metalstack.admin.v2.HousekeepingService.MachineLiveliness:output_type -> metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse
-	4, // 8: metalstack.admin.v2.HousekeepingService.MachineVPNConnected:output_type -> metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse
-	6, // 9: metalstack.admin.v2.HousekeepingService.MachineResurrect:output_type -> metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse
-	7, // [7:10] is the sub-list for method output_type
-	4, // [4:7] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	2,  // 0: metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse.modified_machines:type_name -> metalstack.admin.v2.MachineWithLiveliness
+	9,  // 1: metalstack.admin.v2.MachineWithLiveliness.liveliness:type_name -> metalstack.api.v2.MachineLiveliness
+	10, // 2: metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse.modified_machines:type_name -> metalstack.api.v2.VPNNode
+	11, // 3: metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse.modified_machines:type_name -> metalstack.api.v2.Machine
+	12, // 4: metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse.networks_missing_in_ipam:type_name -> metalstack.api.v2.Network
+	12, // 5: metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse.networks_missing_in_metal:type_name -> metalstack.api.v2.Network
+	13, // 6: metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse.ips_missing_in_ipam:type_name -> metalstack.api.v2.IP
+	13, // 7: metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse.ips_missing_in_metal:type_name -> metalstack.api.v2.IP
+	0,  // 8: metalstack.admin.v2.HousekeepingService.MachineLiveliness:input_type -> metalstack.admin.v2.HousekeepingServiceMachineLivelinessRequest
+	3,  // 9: metalstack.admin.v2.HousekeepingService.MachineVPNConnected:input_type -> metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedRequest
+	5,  // 10: metalstack.admin.v2.HousekeepingService.MachineResurrect:input_type -> metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest
+	7,  // 11: metalstack.admin.v2.HousekeepingService.NetworksConsistent:input_type -> metalstack.admin.v2.HousekeepingServiceNetworksConsistentRequest
+	1,  // 12: metalstack.admin.v2.HousekeepingService.MachineLiveliness:output_type -> metalstack.admin.v2.HousekeepingServiceMachineLivelinessResponse
+	4,  // 13: metalstack.admin.v2.HousekeepingService.MachineVPNConnected:output_type -> metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse
+	6,  // 14: metalstack.admin.v2.HousekeepingService.MachineResurrect:output_type -> metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse
+	8,  // 15: metalstack.admin.v2.HousekeepingService.NetworksConsistent:output_type -> metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse
+	12, // [12:16] is the sub-list for method output_type
+	8,  // [8:12] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_metalstack_admin_v2_housekeeping_proto_init() }
@@ -406,7 +533,7 @@ func file_metalstack_admin_v2_housekeeping_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_admin_v2_housekeeping_proto_rawDesc), len(file_metalstack_admin_v2_housekeeping_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

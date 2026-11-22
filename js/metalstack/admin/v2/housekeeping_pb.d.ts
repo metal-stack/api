@@ -1,5 +1,7 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import type { IP } from "../../api/v2/ip_pb";
 import type { Machine, MachineLiveliness } from "../../api/v2/machine_pb";
+import type { Network } from "../../api/v2/network_pb";
 import type { VPNNode } from "../../api/v2/vpn_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -118,6 +120,53 @@ export type HousekeepingServiceMachineResurrectResponse = Message<"metalstack.ad
  */
 export declare const HousekeepingServiceMachineResurrectResponseSchema: GenMessage<HousekeepingServiceMachineResurrectResponse>;
 /**
+ * HousekeepingServiceNetworksConsistentRequest is the request payload for a network consistent housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.HousekeepingServiceNetworksConsistentRequest
+ */
+export type HousekeepingServiceNetworksConsistentRequest = Message<"metalstack.admin.v2.HousekeepingServiceNetworksConsistentRequest"> & {};
+/**
+ * Describes the message metalstack.admin.v2.HousekeepingServiceNetworksConsistentRequest.
+ * Use `create(HousekeepingServiceNetworksConsistentRequestSchema)` to create a new message.
+ */
+export declare const HousekeepingServiceNetworksConsistentRequestSchema: GenMessage<HousekeepingServiceNetworksConsistentRequest>;
+/**
+ * HousekeepingServiceMachineResurrectResponse is the response payload for a network consistent housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse
+ */
+export type HousekeepingServiceNetworksConsistentResponse = Message<"metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse"> & {
+    /**
+     * Networks missing in ipam
+     *
+     * @generated from field: repeated metalstack.api.v2.Network networks_missing_in_ipam = 1;
+     */
+    networksMissingInIpam: Network[];
+    /**
+     * Networks missing in metal
+     *
+     * @generated from field: repeated metalstack.api.v2.Network networks_missing_in_metal = 2;
+     */
+    networksMissingInMetal: Network[];
+    /**
+     * IPs missing in ipam
+     *
+     * @generated from field: repeated metalstack.api.v2.IP ips_missing_in_ipam = 3;
+     */
+    ipsMissingInIpam: IP[];
+    /**
+     * IPs missing in metal
+     *
+     * @generated from field: repeated metalstack.api.v2.IP ips_missing_in_metal = 4;
+     */
+    ipsMissingInMetal: IP[];
+};
+/**
+ * Describes the message metalstack.admin.v2.HousekeepingServiceNetworksConsistentResponse.
+ * Use `create(HousekeepingServiceNetworksConsistentResponseSchema)` to create a new message.
+ */
+export declare const HousekeepingServiceNetworksConsistentResponseSchema: GenMessage<HousekeepingServiceNetworksConsistentResponse>;
+/**
  * HousekeepingService provides housekeeping operations.
  *
  * @generated from service metalstack.admin.v2.HousekeepingService
@@ -152,5 +201,15 @@ export declare const HousekeepingService: GenService<{
         methodKind: "unary";
         input: typeof HousekeepingServiceMachineResurrectRequestSchema;
         output: typeof HousekeepingServiceMachineResurrectResponseSchema;
+    };
+    /**
+     * NetworksConsistent reports inconsistencies between the metal database and ipam
+     *
+     * @generated from rpc metalstack.admin.v2.HousekeepingService.NetworksConsistent
+     */
+    networksConsistent: {
+        methodKind: "unary";
+        input: typeof HousekeepingServiceNetworksConsistentRequestSchema;
+        output: typeof HousekeepingServiceNetworksConsistentResponseSchema;
     };
 }>;

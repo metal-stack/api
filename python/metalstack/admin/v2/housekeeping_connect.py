@@ -27,6 +27,9 @@ class HousekeepingService(Protocol):
     async def machine_resurrect(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def networks_consistent(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class HousekeepingServiceASGIApplication(ConnectASGIApplication[HousekeepingService]):
     def __init__(self, service: HousekeepingService | AsyncGenerator[HousekeepingService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
@@ -62,6 +65,16 @@ class HousekeepingServiceASGIApplication(ConnectASGIApplication[HousekeepingServ
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.machine_resurrect,
+                ),
+                "/metalstack.admin.v2.HousekeepingService/NetworksConsistent": Endpoint.unary(
+                    method=MethodInfo(
+                        name="NetworksConsistent",
+                        service_name="metalstack.admin.v2.HousekeepingService",
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.networks_consistent,
                 ),
             },
             interceptors=interceptors,
@@ -137,6 +150,26 @@ class HousekeepingServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def networks_consistent(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="NetworksConsistent",
+                service_name="metalstack.admin.v2.HousekeepingService",
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 
 
@@ -147,6 +180,8 @@ class HousekeepingServiceSync(Protocol):
     def machine_v_p_n_connected(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def machine_resurrect(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def networks_consistent(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -183,6 +218,16 @@ class HousekeepingServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.machine_resurrect,
+                ),
+                "/metalstack.admin.v2.HousekeepingService/NetworksConsistent": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="NetworksConsistent",
+                        service_name="metalstack.admin.v2.HousekeepingService",
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.networks_consistent,
                 ),
             },
             interceptors=interceptors,
@@ -252,6 +297,26 @@ class HousekeepingServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.HousekeepingService",
                 input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest,
                 output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def networks_consistent(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="NetworksConsistent",
+                service_name="metalstack.admin.v2.HousekeepingService",
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceNetworksConsistentResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
