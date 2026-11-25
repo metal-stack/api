@@ -2,6 +2,8 @@
 package permissions
 
 import (
+	"sync"
+
 	apiv2 "github.com/metal-stack/api/go/metalstack/api/v2"
 	"connectrpc.com/connect"
 )
@@ -15,6 +17,12 @@ func GetServices() []string {
 }
 
 func GetServicePermissions() *ServicePermissions {
+	return getServicePermissions()
+}
+
+// servicePermissions are static and only need to be built once. The returned
+// value is shared and must be treated as read-only.
+var getServicePermissions = sync.OnceValue(func() *ServicePermissions {
 	return &ServicePermissions{
 		Roles:      Roles{
 			Admin:   Admin{
@@ -111,7 +119,7 @@ func GetServicePermissions() *ServicePermissions {
 {{- end }}
 		},
 	}
-}
+})
 
 func IsPublicScope(req connect.AnyRequest) bool {
 	_, ok := GetServicePermissions().Visibility.Public[req.Spec().Procedure]
