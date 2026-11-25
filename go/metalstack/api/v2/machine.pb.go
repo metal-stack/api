@@ -2650,8 +2650,6 @@ func (x *MetalGPU) GetModel() string {
 type MachineNic struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Mac the macaddress of this interface.
-	//
-	// Deprecated: Marked as deprecated in metalstack/api/v2/machine.proto.
 	Mac string `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Name of this interface.
 	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
@@ -2664,7 +2662,7 @@ type MachineNic struct {
 	// Speed in bits/second of this network card.
 	Speed uint64 `protobuf:"varint,6,opt,name=speed,proto3" json:"speed,omitempty"`
 	// Neighbors the neighbors visible to this network interface.
-	Neighbors []*MachineNic `protobuf:"bytes,7,rep,name=neighbors,proto3" json:"neighbors,omitempty"`
+	Neighbors []*NeighborNic `protobuf:"bytes,7,rep,name=neighbors,proto3" json:"neighbors,omitempty"`
 	// Hostname the nic belongs to.
 	Hostname      string `protobuf:"bytes,8,opt,name=hostname,proto3" json:"hostname,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -2701,7 +2699,6 @@ func (*MachineNic) Descriptor() ([]byte, []int) {
 	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{27}
 }
 
-// Deprecated: Marked as deprecated in metalstack/api/v2/machine.proto.
 func (x *MachineNic) GetMac() string {
 	if x != nil {
 		return x.Mac
@@ -2744,7 +2741,7 @@ func (x *MachineNic) GetSpeed() uint64 {
 	return 0
 }
 
-func (x *MachineNic) GetNeighbors() []*MachineNic {
+func (x *MachineNic) GetNeighbors() []*NeighborNic {
 	if x != nil {
 		return x.Neighbors
 	}
@@ -2752,6 +2749,71 @@ func (x *MachineNic) GetNeighbors() []*MachineNic {
 }
 
 func (x *MachineNic) GetHostname() string {
+	if x != nil {
+		return x.Hostname
+	}
+	return ""
+}
+
+// NeighborNic contains details of a network interface of the neighbor.
+type NeighborNic struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Name of this interface.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Identifier the unique identifier of this network interface.
+	// This could either be a macaddress or alias of the interface, e.g. Eth1/1 on some switches.
+	Identifier *string `protobuf:"bytes,2,opt,name=identifier,proto3,oneof" json:"identifier,omitempty"`
+	// Hostname the nic belongs to.
+	Hostname      string `protobuf:"bytes,3,opt,name=hostname,proto3" json:"hostname,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *NeighborNic) Reset() {
+	*x = NeighborNic{}
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *NeighborNic) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*NeighborNic) ProtoMessage() {}
+
+func (x *NeighborNic) ProtoReflect() protoreflect.Message {
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use NeighborNic.ProtoReflect.Descriptor instead.
+func (*NeighborNic) Descriptor() ([]byte, []int) {
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *NeighborNic) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *NeighborNic) GetIdentifier() string {
+	if x != nil && x.Identifier != nil {
+		return *x.Identifier
+	}
+	return ""
+}
+
+func (x *NeighborNic) GetHostname() string {
 	if x != nil {
 		return x.Hostname
 	}
@@ -2771,7 +2833,7 @@ type MachineBlockDevice struct {
 
 func (x *MachineBlockDevice) Reset() {
 	*x = MachineBlockDevice{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[28]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2783,7 +2845,7 @@ func (x *MachineBlockDevice) String() string {
 func (*MachineBlockDevice) ProtoMessage() {}
 
 func (x *MachineBlockDevice) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[28]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2796,7 +2858,7 @@ func (x *MachineBlockDevice) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineBlockDevice.ProtoReflect.Descriptor instead.
 func (*MachineBlockDevice) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{28}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *MachineBlockDevice) GetName() string {
@@ -2826,7 +2888,7 @@ type MachineChassisIdentifyLEDState struct {
 
 func (x *MachineChassisIdentifyLEDState) Reset() {
 	*x = MachineChassisIdentifyLEDState{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[29]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2838,7 +2900,7 @@ func (x *MachineChassisIdentifyLEDState) String() string {
 func (*MachineChassisIdentifyLEDState) ProtoMessage() {}
 
 func (x *MachineChassisIdentifyLEDState) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[29]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2851,7 +2913,7 @@ func (x *MachineChassisIdentifyLEDState) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineChassisIdentifyLEDState.ProtoReflect.Descriptor instead.
 func (*MachineChassisIdentifyLEDState) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{29}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *MachineChassisIdentifyLEDState) GetValue() string {
@@ -2889,7 +2951,7 @@ type MachineBMCDetails struct {
 
 func (x *MachineBMCDetails) Reset() {
 	*x = MachineBMCDetails{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[30]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2901,7 +2963,7 @@ func (x *MachineBMCDetails) String() string {
 func (*MachineBMCDetails) ProtoMessage() {}
 
 func (x *MachineBMCDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[30]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2914,7 +2976,7 @@ func (x *MachineBMCDetails) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineBMCDetails.ProtoReflect.Descriptor instead.
 func (*MachineBMCDetails) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{30}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *MachineBMCDetails) GetUuid() string {
@@ -2984,7 +3046,7 @@ type MachineBMCReport struct {
 
 func (x *MachineBMCReport) Reset() {
 	*x = MachineBMCReport{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[31]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2996,7 +3058,7 @@ func (x *MachineBMCReport) String() string {
 func (*MachineBMCReport) ProtoMessage() {}
 
 func (x *MachineBMCReport) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[31]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3009,7 +3071,7 @@ func (x *MachineBMCReport) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineBMCReport.ProtoReflect.Descriptor instead.
 func (*MachineBMCReport) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{31}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *MachineBMCReport) GetUuid() string {
@@ -3083,7 +3145,7 @@ type MachineBios struct {
 
 func (x *MachineBios) Reset() {
 	*x = MachineBios{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[32]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3095,7 +3157,7 @@ func (x *MachineBios) String() string {
 func (*MachineBios) ProtoMessage() {}
 
 func (x *MachineBios) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[32]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3108,7 +3170,7 @@ func (x *MachineBios) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineBios.ProtoReflect.Descriptor instead.
 func (*MachineBios) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{32}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *MachineBios) GetVersion() string {
@@ -3155,7 +3217,7 @@ type MachineBMC struct {
 
 func (x *MachineBMC) Reset() {
 	*x = MachineBMC{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[33]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3167,7 +3229,7 @@ func (x *MachineBMC) String() string {
 func (*MachineBMC) ProtoMessage() {}
 
 func (x *MachineBMC) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[33]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3180,7 +3242,7 @@ func (x *MachineBMC) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineBMC.ProtoReflect.Descriptor instead.
 func (*MachineBMC) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{33}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *MachineBMC) GetAddress() string {
@@ -3257,7 +3319,7 @@ type MachineFRU struct {
 
 func (x *MachineFRU) Reset() {
 	*x = MachineFRU{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[34]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3269,7 +3331,7 @@ func (x *MachineFRU) String() string {
 func (*MachineFRU) ProtoMessage() {}
 
 func (x *MachineFRU) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[34]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3282,7 +3344,7 @@ func (x *MachineFRU) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineFRU.ProtoReflect.Descriptor instead.
 func (*MachineFRU) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{34}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *MachineFRU) GetChassisPartNumber() string {
@@ -3359,7 +3421,7 @@ type MachinePowerMetric struct {
 
 func (x *MachinePowerMetric) Reset() {
 	*x = MachinePowerMetric{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[35]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3371,7 +3433,7 @@ func (x *MachinePowerMetric) String() string {
 func (*MachinePowerMetric) ProtoMessage() {}
 
 func (x *MachinePowerMetric) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[35]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3384,7 +3446,7 @@ func (x *MachinePowerMetric) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachinePowerMetric.ProtoReflect.Descriptor instead.
 func (*MachinePowerMetric) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{35}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *MachinePowerMetric) GetAverageConsumedWatts() float32 {
@@ -3428,7 +3490,7 @@ type MachinePowerSupply struct {
 
 func (x *MachinePowerSupply) Reset() {
 	*x = MachinePowerSupply{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[36]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3440,7 +3502,7 @@ func (x *MachinePowerSupply) String() string {
 func (*MachinePowerSupply) ProtoMessage() {}
 
 func (x *MachinePowerSupply) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[36]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3453,7 +3515,7 @@ func (x *MachinePowerSupply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachinePowerSupply.ProtoReflect.Descriptor instead.
 func (*MachinePowerSupply) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{36}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *MachinePowerSupply) GetHealth() string {
@@ -3487,7 +3549,7 @@ type MachineRecentProvisioningEvents struct {
 
 func (x *MachineRecentProvisioningEvents) Reset() {
 	*x = MachineRecentProvisioningEvents{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[37]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3499,7 +3561,7 @@ func (x *MachineRecentProvisioningEvents) String() string {
 func (*MachineRecentProvisioningEvents) ProtoMessage() {}
 
 func (x *MachineRecentProvisioningEvents) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[37]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3512,7 +3574,7 @@ func (x *MachineRecentProvisioningEvents) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineRecentProvisioningEvents.ProtoReflect.Descriptor instead.
 func (*MachineRecentProvisioningEvents) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{37}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *MachineRecentProvisioningEvents) GetEvents() []*MachineProvisioningEvent {
@@ -3558,7 +3620,7 @@ type MachineProvisioningEvent struct {
 
 func (x *MachineProvisioningEvent) Reset() {
 	*x = MachineProvisioningEvent{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[38]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3570,7 +3632,7 @@ func (x *MachineProvisioningEvent) String() string {
 func (*MachineProvisioningEvent) ProtoMessage() {}
 
 func (x *MachineProvisioningEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[38]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3583,7 +3645,7 @@ func (x *MachineProvisioningEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineProvisioningEvent.ProtoReflect.Descriptor instead.
 func (*MachineProvisioningEvent) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{38}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *MachineProvisioningEvent) GetTime() *timestamppb.Timestamp {
@@ -3624,7 +3686,7 @@ type MachineVPN struct {
 
 func (x *MachineVPN) Reset() {
 	*x = MachineVPN{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[39]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3636,7 +3698,7 @@ func (x *MachineVPN) String() string {
 func (*MachineVPN) ProtoMessage() {}
 
 func (x *MachineVPN) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[39]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3649,7 +3711,7 @@ func (x *MachineVPN) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineVPN.ProtoReflect.Descriptor instead.
 func (*MachineVPN) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{39}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *MachineVPN) GetControlPlaneAddress() string {
@@ -3728,7 +3790,7 @@ type MachineQuery struct {
 
 func (x *MachineQuery) Reset() {
 	*x = MachineQuery{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[40]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3740,7 +3802,7 @@ func (x *MachineQuery) String() string {
 func (*MachineQuery) ProtoMessage() {}
 
 func (x *MachineQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[40]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3753,7 +3815,7 @@ func (x *MachineQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineQuery.ProtoReflect.Descriptor instead.
 func (*MachineQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{40}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *MachineQuery) GetUuid() string {
@@ -3909,7 +3971,7 @@ type MachineAllocationQuery struct {
 
 func (x *MachineAllocationQuery) Reset() {
 	*x = MachineAllocationQuery{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[41]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3921,7 +3983,7 @@ func (x *MachineAllocationQuery) String() string {
 func (*MachineAllocationQuery) ProtoMessage() {}
 
 func (x *MachineAllocationQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[41]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3934,7 +3996,7 @@ func (x *MachineAllocationQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineAllocationQuery.ProtoReflect.Descriptor instead.
 func (*MachineAllocationQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{41}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *MachineAllocationQuery) GetUuid() string {
@@ -4021,7 +4083,7 @@ type MachineNetworkQuery struct {
 
 func (x *MachineNetworkQuery) Reset() {
 	*x = MachineNetworkQuery{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[42]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4033,7 +4095,7 @@ func (x *MachineNetworkQuery) String() string {
 func (*MachineNetworkQuery) ProtoMessage() {}
 
 func (x *MachineNetworkQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[42]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4046,7 +4108,7 @@ func (x *MachineNetworkQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineNetworkQuery.ProtoReflect.Descriptor instead.
 func (*MachineNetworkQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{42}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *MachineNetworkQuery) GetNetworks() []string {
@@ -4108,7 +4170,7 @@ type MachineNicQuery struct {
 
 func (x *MachineNicQuery) Reset() {
 	*x = MachineNicQuery{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[43]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4120,7 +4182,7 @@ func (x *MachineNicQuery) String() string {
 func (*MachineNicQuery) ProtoMessage() {}
 
 func (x *MachineNicQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[43]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4133,7 +4195,7 @@ func (x *MachineNicQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineNicQuery.ProtoReflect.Descriptor instead.
 func (*MachineNicQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{43}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *MachineNicQuery) GetMacs() []string {
@@ -4177,7 +4239,7 @@ type MachineDiskQuery struct {
 
 func (x *MachineDiskQuery) Reset() {
 	*x = MachineDiskQuery{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[44]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4189,7 +4251,7 @@ func (x *MachineDiskQuery) String() string {
 func (*MachineDiskQuery) ProtoMessage() {}
 
 func (x *MachineDiskQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[44]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4202,7 +4264,7 @@ func (x *MachineDiskQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineDiskQuery.ProtoReflect.Descriptor instead.
 func (*MachineDiskQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{44}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *MachineDiskQuery) GetNames() []string {
@@ -4236,7 +4298,7 @@ type MachineBMCQuery struct {
 
 func (x *MachineBMCQuery) Reset() {
 	*x = MachineBMCQuery{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[45]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4248,7 +4310,7 @@ func (x *MachineBMCQuery) String() string {
 func (*MachineBMCQuery) ProtoMessage() {}
 
 func (x *MachineBMCQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[45]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4261,7 +4323,7 @@ func (x *MachineBMCQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineBMCQuery.ProtoReflect.Descriptor instead.
 func (*MachineBMCQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{45}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *MachineBMCQuery) GetAddress() string {
@@ -4317,7 +4379,7 @@ type MachineFRUQuery struct {
 
 func (x *MachineFRUQuery) Reset() {
 	*x = MachineFRUQuery{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[46]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4329,7 +4391,7 @@ func (x *MachineFRUQuery) String() string {
 func (*MachineFRUQuery) ProtoMessage() {}
 
 func (x *MachineFRUQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[46]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4342,7 +4404,7 @@ func (x *MachineFRUQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineFRUQuery.ProtoReflect.Descriptor instead.
 func (*MachineFRUQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{46}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *MachineFRUQuery) GetChassisPartNumber() string {
@@ -4414,7 +4476,7 @@ type MachineHardwareQuery struct {
 
 func (x *MachineHardwareQuery) Reset() {
 	*x = MachineHardwareQuery{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[47]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4426,7 +4488,7 @@ func (x *MachineHardwareQuery) String() string {
 func (*MachineHardwareQuery) ProtoMessage() {}
 
 func (x *MachineHardwareQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[47]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4439,7 +4501,7 @@ func (x *MachineHardwareQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineHardwareQuery.ProtoReflect.Descriptor instead.
 func (*MachineHardwareQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{47}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *MachineHardwareQuery) GetMemory() uint64 {
@@ -4475,7 +4537,7 @@ type MachineIssuesQuery struct {
 
 func (x *MachineIssuesQuery) Reset() {
 	*x = MachineIssuesQuery{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[48]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4487,7 +4549,7 @@ func (x *MachineIssuesQuery) String() string {
 func (*MachineIssuesQuery) ProtoMessage() {}
 
 func (x *MachineIssuesQuery) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[48]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4500,7 +4562,7 @@ func (x *MachineIssuesQuery) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineIssuesQuery.ProtoReflect.Descriptor instead.
 func (*MachineIssuesQuery) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{48}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *MachineIssuesQuery) GetMachineQuery() *MachineQuery {
@@ -4551,7 +4613,7 @@ type MachineIssues struct {
 
 func (x *MachineIssues) Reset() {
 	*x = MachineIssues{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[49]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4563,7 +4625,7 @@ func (x *MachineIssues) String() string {
 func (*MachineIssues) ProtoMessage() {}
 
 func (x *MachineIssues) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[49]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4576,7 +4638,7 @@ func (x *MachineIssues) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineIssues.ProtoReflect.Descriptor instead.
 func (*MachineIssues) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{49}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *MachineIssues) GetUuid() string {
@@ -4612,7 +4674,7 @@ type MachineIssue struct {
 
 func (x *MachineIssue) Reset() {
 	*x = MachineIssue{}
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[50]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -4624,7 +4686,7 @@ func (x *MachineIssue) String() string {
 func (*MachineIssue) ProtoMessage() {}
 
 func (x *MachineIssue) ProtoReflect() protoreflect.Message {
-	mi := &file_metalstack_api_v2_machine_proto_msgTypes[50]
+	mi := &file_metalstack_api_v2_machine_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4637,7 +4699,7 @@ func (x *MachineIssue) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MachineIssue.ProtoReflect.Descriptor instead.
 func (*MachineIssue) Descriptor() ([]byte, []int) {
-	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{50}
+	return file_metalstack_api_v2_machine_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *MachineIssue) GetType() MachineIssueType {
@@ -4846,19 +4908,26 @@ const file_metalstack_api_v2_machine_proto_rawDesc = "" +
 	"\athreads\x18\x04 \x01(\rR\athreads\"L\n" +
 	"\bMetalGPU\x12 \n" +
 	"\x06vendor\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x06vendor\x12\x1e\n" +
-	"\x05model\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x05model\"\x9e\x02\n" +
+	"\x05model\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x02R\x05model\"\xa8\x02\n" +
 	"\n" +
-	"MachineNic\x12\x14\n" +
-	"\x03mac\x18\x01 \x01(\tB\x02\x18\x01R\x03mac\x12\x1f\n" +
+	"MachineNic\x12\x1d\n" +
+	"\x03mac\x18\x01 \x01(\tB\v\xbaH\br\x06\xb8\xb3\xae\xb1\x02\x01R\x03mac\x12\x1f\n" +
 	"\x04name\x18\x02 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12(\n" +
 	"\n" +
 	"identifier\x18\x03 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\n" +
 	"identifier\x12 \n" +
 	"\x06vendor\x18\x04 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x06vendor\x12\x1e\n" +
 	"\x05model\x18\x05 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01R\x05model\x12\x14\n" +
-	"\x05speed\x18\x06 \x01(\x04R\x05speed\x12;\n" +
-	"\tneighbors\x18\a \x03(\v2\x1d.metalstack.api.v2.MachineNicR\tneighbors\x12\x1a\n" +
-	"\bhostname\x18\b \x01(\tR\bhostname\"I\n" +
+	"\x05speed\x18\x06 \x01(\x04R\x05speed\x12<\n" +
+	"\tneighbors\x18\a \x03(\v2\x1e.metalstack.api.v2.NeighborNicR\tneighbors\x12\x1a\n" +
+	"\bhostname\x18\b \x01(\tR\bhostname\"\x88\x01\n" +
+	"\vNeighborNic\x12\x1f\n" +
+	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12-\n" +
+	"\n" +
+	"identifier\x18\x02 \x01(\tB\b\xbaH\x05r\x03\x18\x80\x01H\x00R\n" +
+	"identifier\x88\x01\x01\x12\x1a\n" +
+	"\bhostname\x18\x03 \x01(\tR\bhostnameB\r\n" +
+	"\v_identifier\"I\n" +
 	"\x12MachineBlockDevice\x12\x1f\n" +
 	"\x04name\x18\x01 \x01(\tB\v\xbaH\br\x06\xc0\xb3\xae\xb1\x02\x01R\x04name\x12\x12\n" +
 	"\x04size\x18\x02 \x01(\x04R\x04size\"o\n" +
@@ -5174,7 +5243,7 @@ func file_metalstack_api_v2_machine_proto_rawDescGZIP() []byte {
 }
 
 var file_metalstack_api_v2_machine_proto_enumTypes = make([]protoimpl.EnumInfo, 9)
-var file_metalstack_api_v2_machine_proto_msgTypes = make([]protoimpl.MessageInfo, 51)
+var file_metalstack_api_v2_machine_proto_msgTypes = make([]protoimpl.MessageInfo, 52)
 var file_metalstack_api_v2_machine_proto_goTypes = []any{
 	(IPProtocol)(0),                          // 0: metalstack.api.v2.IPProtocol
 	(MachineState)(0),                        // 1: metalstack.api.v2.MachineState
@@ -5213,127 +5282,128 @@ var file_metalstack_api_v2_machine_proto_goTypes = []any{
 	(*MetalCPU)(nil),                         // 34: metalstack.api.v2.MetalCPU
 	(*MetalGPU)(nil),                         // 35: metalstack.api.v2.MetalGPU
 	(*MachineNic)(nil),                       // 36: metalstack.api.v2.MachineNic
-	(*MachineBlockDevice)(nil),               // 37: metalstack.api.v2.MachineBlockDevice
-	(*MachineChassisIdentifyLEDState)(nil),   // 38: metalstack.api.v2.MachineChassisIdentifyLEDState
-	(*MachineBMCDetails)(nil),                // 39: metalstack.api.v2.MachineBMCDetails
-	(*MachineBMCReport)(nil),                 // 40: metalstack.api.v2.MachineBMCReport
-	(*MachineBios)(nil),                      // 41: metalstack.api.v2.MachineBios
-	(*MachineBMC)(nil),                       // 42: metalstack.api.v2.MachineBMC
-	(*MachineFRU)(nil),                       // 43: metalstack.api.v2.MachineFRU
-	(*MachinePowerMetric)(nil),               // 44: metalstack.api.v2.MachinePowerMetric
-	(*MachinePowerSupply)(nil),               // 45: metalstack.api.v2.MachinePowerSupply
-	(*MachineRecentProvisioningEvents)(nil),  // 46: metalstack.api.v2.MachineRecentProvisioningEvents
-	(*MachineProvisioningEvent)(nil),         // 47: metalstack.api.v2.MachineProvisioningEvent
-	(*MachineVPN)(nil),                       // 48: metalstack.api.v2.MachineVPN
-	(*MachineQuery)(nil),                     // 49: metalstack.api.v2.MachineQuery
-	(*MachineAllocationQuery)(nil),           // 50: metalstack.api.v2.MachineAllocationQuery
-	(*MachineNetworkQuery)(nil),              // 51: metalstack.api.v2.MachineNetworkQuery
-	(*MachineNicQuery)(nil),                  // 52: metalstack.api.v2.MachineNicQuery
-	(*MachineDiskQuery)(nil),                 // 53: metalstack.api.v2.MachineDiskQuery
-	(*MachineBMCQuery)(nil),                  // 54: metalstack.api.v2.MachineBMCQuery
-	(*MachineFRUQuery)(nil),                  // 55: metalstack.api.v2.MachineFRUQuery
-	(*MachineHardwareQuery)(nil),             // 56: metalstack.api.v2.MachineHardwareQuery
-	(*MachineIssuesQuery)(nil),               // 57: metalstack.api.v2.MachineIssuesQuery
-	(*MachineIssues)(nil),                    // 58: metalstack.api.v2.MachineIssues
-	(*MachineIssue)(nil),                     // 59: metalstack.api.v2.MachineIssue
-	(*Labels)(nil),                           // 60: metalstack.api.v2.Labels
-	(*DNSServer)(nil),                        // 61: metalstack.api.v2.DNSServer
-	(*NTPServer)(nil),                        // 62: metalstack.api.v2.NTPServer
-	(*UpdateMeta)(nil),                       // 63: metalstack.api.v2.UpdateMeta
-	(*UpdateLabels)(nil),                     // 64: metalstack.api.v2.UpdateLabels
-	(*Meta)(nil),                             // 65: metalstack.api.v2.Meta
-	(*Partition)(nil),                        // 66: metalstack.api.v2.Partition
-	(*Size)(nil),                             // 67: metalstack.api.v2.Size
-	(*Image)(nil),                            // 68: metalstack.api.v2.Image
-	(*FilesystemLayout)(nil),                 // 69: metalstack.api.v2.FilesystemLayout
-	(NetworkType)(0),                         // 70: metalstack.api.v2.NetworkType
-	(NATType)(0),                             // 71: metalstack.api.v2.NATType
-	(*timestamppb.Timestamp)(nil),            // 72: google.protobuf.Timestamp
-	(*durationpb.Duration)(nil),              // 73: google.protobuf.Duration
+	(*NeighborNic)(nil),                      // 37: metalstack.api.v2.NeighborNic
+	(*MachineBlockDevice)(nil),               // 38: metalstack.api.v2.MachineBlockDevice
+	(*MachineChassisIdentifyLEDState)(nil),   // 39: metalstack.api.v2.MachineChassisIdentifyLEDState
+	(*MachineBMCDetails)(nil),                // 40: metalstack.api.v2.MachineBMCDetails
+	(*MachineBMCReport)(nil),                 // 41: metalstack.api.v2.MachineBMCReport
+	(*MachineBios)(nil),                      // 42: metalstack.api.v2.MachineBios
+	(*MachineBMC)(nil),                       // 43: metalstack.api.v2.MachineBMC
+	(*MachineFRU)(nil),                       // 44: metalstack.api.v2.MachineFRU
+	(*MachinePowerMetric)(nil),               // 45: metalstack.api.v2.MachinePowerMetric
+	(*MachinePowerSupply)(nil),               // 46: metalstack.api.v2.MachinePowerSupply
+	(*MachineRecentProvisioningEvents)(nil),  // 47: metalstack.api.v2.MachineRecentProvisioningEvents
+	(*MachineProvisioningEvent)(nil),         // 48: metalstack.api.v2.MachineProvisioningEvent
+	(*MachineVPN)(nil),                       // 49: metalstack.api.v2.MachineVPN
+	(*MachineQuery)(nil),                     // 50: metalstack.api.v2.MachineQuery
+	(*MachineAllocationQuery)(nil),           // 51: metalstack.api.v2.MachineAllocationQuery
+	(*MachineNetworkQuery)(nil),              // 52: metalstack.api.v2.MachineNetworkQuery
+	(*MachineNicQuery)(nil),                  // 53: metalstack.api.v2.MachineNicQuery
+	(*MachineDiskQuery)(nil),                 // 54: metalstack.api.v2.MachineDiskQuery
+	(*MachineBMCQuery)(nil),                  // 55: metalstack.api.v2.MachineBMCQuery
+	(*MachineFRUQuery)(nil),                  // 56: metalstack.api.v2.MachineFRUQuery
+	(*MachineHardwareQuery)(nil),             // 57: metalstack.api.v2.MachineHardwareQuery
+	(*MachineIssuesQuery)(nil),               // 58: metalstack.api.v2.MachineIssuesQuery
+	(*MachineIssues)(nil),                    // 59: metalstack.api.v2.MachineIssues
+	(*MachineIssue)(nil),                     // 60: metalstack.api.v2.MachineIssue
+	(*Labels)(nil),                           // 61: metalstack.api.v2.Labels
+	(*DNSServer)(nil),                        // 62: metalstack.api.v2.DNSServer
+	(*NTPServer)(nil),                        // 63: metalstack.api.v2.NTPServer
+	(*UpdateMeta)(nil),                       // 64: metalstack.api.v2.UpdateMeta
+	(*UpdateLabels)(nil),                     // 65: metalstack.api.v2.UpdateLabels
+	(*Meta)(nil),                             // 66: metalstack.api.v2.Meta
+	(*Partition)(nil),                        // 67: metalstack.api.v2.Partition
+	(*Size)(nil),                             // 68: metalstack.api.v2.Size
+	(*Image)(nil),                            // 69: metalstack.api.v2.Image
+	(*FilesystemLayout)(nil),                 // 70: metalstack.api.v2.FilesystemLayout
+	(NetworkType)(0),                         // 71: metalstack.api.v2.NetworkType
+	(NATType)(0),                             // 72: metalstack.api.v2.NATType
+	(*timestamppb.Timestamp)(nil),            // 73: google.protobuf.Timestamp
+	(*durationpb.Duration)(nil),              // 74: google.protobuf.Duration
 }
 var file_metalstack_api_v2_machine_proto_depIdxs = []int32{
 	24, // 0: metalstack.api.v2.MachineServiceGetResponse.machine:type_name -> metalstack.api.v2.Machine
-	60, // 1: metalstack.api.v2.MachineServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
+	61, // 1: metalstack.api.v2.MachineServiceCreateRequest.labels:type_name -> metalstack.api.v2.Labels
 	28, // 2: metalstack.api.v2.MachineServiceCreateRequest.networks:type_name -> metalstack.api.v2.MachineAllocationNetwork
-	60, // 3: metalstack.api.v2.MachineServiceCreateRequest.placement_labels:type_name -> metalstack.api.v2.Labels
-	61, // 4: metalstack.api.v2.MachineServiceCreateRequest.dns_servers:type_name -> metalstack.api.v2.DNSServer
-	62, // 5: metalstack.api.v2.MachineServiceCreateRequest.ntp_servers:type_name -> metalstack.api.v2.NTPServer
+	61, // 3: metalstack.api.v2.MachineServiceCreateRequest.placement_labels:type_name -> metalstack.api.v2.Labels
+	62, // 4: metalstack.api.v2.MachineServiceCreateRequest.dns_servers:type_name -> metalstack.api.v2.DNSServer
+	63, // 5: metalstack.api.v2.MachineServiceCreateRequest.ntp_servers:type_name -> metalstack.api.v2.NTPServer
 	5,  // 6: metalstack.api.v2.MachineServiceCreateRequest.allocation_type:type_name -> metalstack.api.v2.MachineAllocationType
 	12, // 7: metalstack.api.v2.MachineServiceCreateRequest.firewall_spec:type_name -> metalstack.api.v2.FirewallSpec
 	29, // 8: metalstack.api.v2.FirewallSpec.firewall_rules:type_name -> metalstack.api.v2.FirewallRules
 	24, // 9: metalstack.api.v2.MachineServiceCreateResponse.machine:type_name -> metalstack.api.v2.Machine
-	63, // 10: metalstack.api.v2.MachineServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
-	64, // 11: metalstack.api.v2.MachineServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
+	64, // 10: metalstack.api.v2.MachineServiceUpdateRequest.update_meta:type_name -> metalstack.api.v2.UpdateMeta
+	65, // 11: metalstack.api.v2.MachineServiceUpdateRequest.labels:type_name -> metalstack.api.v2.UpdateLabels
 	24, // 12: metalstack.api.v2.MachineServiceUpdateResponse.machine:type_name -> metalstack.api.v2.Machine
-	49, // 13: metalstack.api.v2.MachineServiceListRequest.query:type_name -> metalstack.api.v2.MachineQuery
+	50, // 13: metalstack.api.v2.MachineServiceListRequest.query:type_name -> metalstack.api.v2.MachineQuery
 	24, // 14: metalstack.api.v2.MachineServiceListResponse.machines:type_name -> metalstack.api.v2.Machine
 	24, // 15: metalstack.api.v2.MachineServiceDeleteResponse.machine:type_name -> metalstack.api.v2.Machine
 	6,  // 16: metalstack.api.v2.MachineServiceBMCCommandRequest.command:type_name -> metalstack.api.v2.MachineBMCCommand
-	39, // 17: metalstack.api.v2.MachineServiceGetBMCResponse.bmc_details:type_name -> metalstack.api.v2.MachineBMCDetails
-	65, // 18: metalstack.api.v2.Machine.meta:type_name -> metalstack.api.v2.Meta
-	66, // 19: metalstack.api.v2.Machine.partition:type_name -> metalstack.api.v2.Partition
-	67, // 20: metalstack.api.v2.Machine.size:type_name -> metalstack.api.v2.Size
+	40, // 17: metalstack.api.v2.MachineServiceGetBMCResponse.bmc_details:type_name -> metalstack.api.v2.MachineBMCDetails
+	66, // 18: metalstack.api.v2.Machine.meta:type_name -> metalstack.api.v2.Meta
+	67, // 19: metalstack.api.v2.Machine.partition:type_name -> metalstack.api.v2.Partition
+	68, // 20: metalstack.api.v2.Machine.size:type_name -> metalstack.api.v2.Size
 	33, // 21: metalstack.api.v2.Machine.hardware:type_name -> metalstack.api.v2.MachineHardware
 	27, // 22: metalstack.api.v2.Machine.allocation:type_name -> metalstack.api.v2.MachineAllocation
 	25, // 23: metalstack.api.v2.Machine.status:type_name -> metalstack.api.v2.MachineStatus
-	46, // 24: metalstack.api.v2.Machine.recent_provisioning_events:type_name -> metalstack.api.v2.MachineRecentProvisioningEvents
+	47, // 24: metalstack.api.v2.Machine.recent_provisioning_events:type_name -> metalstack.api.v2.MachineRecentProvisioningEvents
 	26, // 25: metalstack.api.v2.MachineStatus.condition:type_name -> metalstack.api.v2.MachineCondition
-	38, // 26: metalstack.api.v2.MachineStatus.led_state:type_name -> metalstack.api.v2.MachineChassisIdentifyLEDState
+	39, // 26: metalstack.api.v2.MachineStatus.led_state:type_name -> metalstack.api.v2.MachineChassisIdentifyLEDState
 	4,  // 27: metalstack.api.v2.MachineStatus.liveliness:type_name -> metalstack.api.v2.MachineLiveliness
 	1,  // 28: metalstack.api.v2.MachineCondition.state:type_name -> metalstack.api.v2.MachineState
-	65, // 29: metalstack.api.v2.MachineAllocation.meta:type_name -> metalstack.api.v2.Meta
-	68, // 30: metalstack.api.v2.MachineAllocation.image:type_name -> metalstack.api.v2.Image
-	69, // 31: metalstack.api.v2.MachineAllocation.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
+	66, // 29: metalstack.api.v2.MachineAllocation.meta:type_name -> metalstack.api.v2.Meta
+	69, // 30: metalstack.api.v2.MachineAllocation.image:type_name -> metalstack.api.v2.Image
+	70, // 31: metalstack.api.v2.MachineAllocation.filesystem_layout:type_name -> metalstack.api.v2.FilesystemLayout
 	32, // 32: metalstack.api.v2.MachineAllocation.networks:type_name -> metalstack.api.v2.MachineNetwork
 	5,  // 33: metalstack.api.v2.MachineAllocation.allocation_type:type_name -> metalstack.api.v2.MachineAllocationType
 	29, // 34: metalstack.api.v2.MachineAllocation.firewall_rules:type_name -> metalstack.api.v2.FirewallRules
-	61, // 35: metalstack.api.v2.MachineAllocation.dns_servers:type_name -> metalstack.api.v2.DNSServer
-	62, // 36: metalstack.api.v2.MachineAllocation.ntp_servers:type_name -> metalstack.api.v2.NTPServer
-	48, // 37: metalstack.api.v2.MachineAllocation.vpn:type_name -> metalstack.api.v2.MachineVPN
-	60, // 38: metalstack.api.v2.MachineAllocation.placement_labels:type_name -> metalstack.api.v2.Labels
+	62, // 35: metalstack.api.v2.MachineAllocation.dns_servers:type_name -> metalstack.api.v2.DNSServer
+	63, // 36: metalstack.api.v2.MachineAllocation.ntp_servers:type_name -> metalstack.api.v2.NTPServer
+	49, // 37: metalstack.api.v2.MachineAllocation.vpn:type_name -> metalstack.api.v2.MachineVPN
+	61, // 38: metalstack.api.v2.MachineAllocation.placement_labels:type_name -> metalstack.api.v2.Labels
 	30, // 39: metalstack.api.v2.FirewallRules.egress:type_name -> metalstack.api.v2.FirewallEgressRule
 	31, // 40: metalstack.api.v2.FirewallRules.ingress:type_name -> metalstack.api.v2.FirewallIngressRule
 	0,  // 41: metalstack.api.v2.FirewallEgressRule.protocol:type_name -> metalstack.api.v2.IPProtocol
 	0,  // 42: metalstack.api.v2.FirewallIngressRule.protocol:type_name -> metalstack.api.v2.IPProtocol
-	70, // 43: metalstack.api.v2.MachineNetwork.network_type:type_name -> metalstack.api.v2.NetworkType
-	71, // 44: metalstack.api.v2.MachineNetwork.nat_type:type_name -> metalstack.api.v2.NATType
-	37, // 45: metalstack.api.v2.MachineHardware.disks:type_name -> metalstack.api.v2.MachineBlockDevice
+	71, // 43: metalstack.api.v2.MachineNetwork.network_type:type_name -> metalstack.api.v2.NetworkType
+	72, // 44: metalstack.api.v2.MachineNetwork.nat_type:type_name -> metalstack.api.v2.NATType
+	38, // 45: metalstack.api.v2.MachineHardware.disks:type_name -> metalstack.api.v2.MachineBlockDevice
 	34, // 46: metalstack.api.v2.MachineHardware.cpus:type_name -> metalstack.api.v2.MetalCPU
 	35, // 47: metalstack.api.v2.MachineHardware.gpus:type_name -> metalstack.api.v2.MetalGPU
 	36, // 48: metalstack.api.v2.MachineHardware.nics:type_name -> metalstack.api.v2.MachineNic
-	36, // 49: metalstack.api.v2.MachineNic.neighbors:type_name -> metalstack.api.v2.MachineNic
-	40, // 50: metalstack.api.v2.MachineBMCDetails.bmc_report:type_name -> metalstack.api.v2.MachineBMCReport
-	42, // 51: metalstack.api.v2.MachineBMCReport.bmc:type_name -> metalstack.api.v2.MachineBMC
-	41, // 52: metalstack.api.v2.MachineBMCReport.bios:type_name -> metalstack.api.v2.MachineBios
-	43, // 53: metalstack.api.v2.MachineBMCReport.fru:type_name -> metalstack.api.v2.MachineFRU
-	44, // 54: metalstack.api.v2.MachineBMCReport.power_metric:type_name -> metalstack.api.v2.MachinePowerMetric
-	45, // 55: metalstack.api.v2.MachineBMCReport.power_supplies:type_name -> metalstack.api.v2.MachinePowerSupply
-	38, // 56: metalstack.api.v2.MachineBMCReport.led_state:type_name -> metalstack.api.v2.MachineChassisIdentifyLEDState
-	72, // 57: metalstack.api.v2.MachineBMCReport.updated_at:type_name -> google.protobuf.Timestamp
-	47, // 58: metalstack.api.v2.MachineRecentProvisioningEvents.events:type_name -> metalstack.api.v2.MachineProvisioningEvent
-	72, // 59: metalstack.api.v2.MachineRecentProvisioningEvents.last_event_time:type_name -> google.protobuf.Timestamp
-	47, // 60: metalstack.api.v2.MachineRecentProvisioningEvents.last_error_event:type_name -> metalstack.api.v2.MachineProvisioningEvent
+	37, // 49: metalstack.api.v2.MachineNic.neighbors:type_name -> metalstack.api.v2.NeighborNic
+	41, // 50: metalstack.api.v2.MachineBMCDetails.bmc_report:type_name -> metalstack.api.v2.MachineBMCReport
+	43, // 51: metalstack.api.v2.MachineBMCReport.bmc:type_name -> metalstack.api.v2.MachineBMC
+	42, // 52: metalstack.api.v2.MachineBMCReport.bios:type_name -> metalstack.api.v2.MachineBios
+	44, // 53: metalstack.api.v2.MachineBMCReport.fru:type_name -> metalstack.api.v2.MachineFRU
+	45, // 54: metalstack.api.v2.MachineBMCReport.power_metric:type_name -> metalstack.api.v2.MachinePowerMetric
+	46, // 55: metalstack.api.v2.MachineBMCReport.power_supplies:type_name -> metalstack.api.v2.MachinePowerSupply
+	39, // 56: metalstack.api.v2.MachineBMCReport.led_state:type_name -> metalstack.api.v2.MachineChassisIdentifyLEDState
+	73, // 57: metalstack.api.v2.MachineBMCReport.updated_at:type_name -> google.protobuf.Timestamp
+	48, // 58: metalstack.api.v2.MachineRecentProvisioningEvents.events:type_name -> metalstack.api.v2.MachineProvisioningEvent
+	73, // 59: metalstack.api.v2.MachineRecentProvisioningEvents.last_event_time:type_name -> google.protobuf.Timestamp
+	48, // 60: metalstack.api.v2.MachineRecentProvisioningEvents.last_error_event:type_name -> metalstack.api.v2.MachineProvisioningEvent
 	2,  // 61: metalstack.api.v2.MachineRecentProvisioningEvents.state:type_name -> metalstack.api.v2.MachineProvisioningEventState
-	72, // 62: metalstack.api.v2.MachineProvisioningEvent.time:type_name -> google.protobuf.Timestamp
+	73, // 62: metalstack.api.v2.MachineProvisioningEvent.time:type_name -> google.protobuf.Timestamp
 	3,  // 63: metalstack.api.v2.MachineProvisioningEvent.event:type_name -> metalstack.api.v2.MachineProvisioningEventType
-	60, // 64: metalstack.api.v2.MachineQuery.labels:type_name -> metalstack.api.v2.Labels
-	50, // 65: metalstack.api.v2.MachineQuery.allocation:type_name -> metalstack.api.v2.MachineAllocationQuery
-	51, // 66: metalstack.api.v2.MachineQuery.network:type_name -> metalstack.api.v2.MachineNetworkQuery
-	52, // 67: metalstack.api.v2.MachineQuery.nic:type_name -> metalstack.api.v2.MachineNicQuery
-	53, // 68: metalstack.api.v2.MachineQuery.disk:type_name -> metalstack.api.v2.MachineDiskQuery
-	54, // 69: metalstack.api.v2.MachineQuery.bmc:type_name -> metalstack.api.v2.MachineBMCQuery
-	55, // 70: metalstack.api.v2.MachineQuery.fru:type_name -> metalstack.api.v2.MachineFRUQuery
-	56, // 71: metalstack.api.v2.MachineQuery.hardware:type_name -> metalstack.api.v2.MachineHardwareQuery
+	61, // 64: metalstack.api.v2.MachineQuery.labels:type_name -> metalstack.api.v2.Labels
+	51, // 65: metalstack.api.v2.MachineQuery.allocation:type_name -> metalstack.api.v2.MachineAllocationQuery
+	52, // 66: metalstack.api.v2.MachineQuery.network:type_name -> metalstack.api.v2.MachineNetworkQuery
+	53, // 67: metalstack.api.v2.MachineQuery.nic:type_name -> metalstack.api.v2.MachineNicQuery
+	54, // 68: metalstack.api.v2.MachineQuery.disk:type_name -> metalstack.api.v2.MachineDiskQuery
+	55, // 69: metalstack.api.v2.MachineQuery.bmc:type_name -> metalstack.api.v2.MachineBMCQuery
+	56, // 70: metalstack.api.v2.MachineQuery.fru:type_name -> metalstack.api.v2.MachineFRUQuery
+	57, // 71: metalstack.api.v2.MachineQuery.hardware:type_name -> metalstack.api.v2.MachineHardwareQuery
 	1,  // 72: metalstack.api.v2.MachineQuery.state:type_name -> metalstack.api.v2.MachineState
 	5,  // 73: metalstack.api.v2.MachineAllocationQuery.allocation_type:type_name -> metalstack.api.v2.MachineAllocationType
-	60, // 74: metalstack.api.v2.MachineAllocationQuery.labels:type_name -> metalstack.api.v2.Labels
-	48, // 75: metalstack.api.v2.MachineAllocationQuery.vpn:type_name -> metalstack.api.v2.MachineVPN
-	49, // 76: metalstack.api.v2.MachineIssuesQuery.machine_query:type_name -> metalstack.api.v2.MachineQuery
+	61, // 74: metalstack.api.v2.MachineAllocationQuery.labels:type_name -> metalstack.api.v2.Labels
+	49, // 75: metalstack.api.v2.MachineAllocationQuery.vpn:type_name -> metalstack.api.v2.MachineVPN
+	50, // 76: metalstack.api.v2.MachineIssuesQuery.machine_query:type_name -> metalstack.api.v2.MachineQuery
 	7,  // 77: metalstack.api.v2.MachineIssuesQuery.only:type_name -> metalstack.api.v2.MachineIssueType
 	7,  // 78: metalstack.api.v2.MachineIssuesQuery.omit:type_name -> metalstack.api.v2.MachineIssueType
 	8,  // 79: metalstack.api.v2.MachineIssuesQuery.severity:type_name -> metalstack.api.v2.MachineIssueSeverity
-	73, // 80: metalstack.api.v2.MachineIssuesQuery.last_error_threshold:type_name -> google.protobuf.Duration
-	59, // 81: metalstack.api.v2.MachineIssues.issues:type_name -> metalstack.api.v2.MachineIssue
+	74, // 80: metalstack.api.v2.MachineIssuesQuery.last_error_threshold:type_name -> google.protobuf.Duration
+	60, // 81: metalstack.api.v2.MachineIssues.issues:type_name -> metalstack.api.v2.MachineIssue
 	7,  // 82: metalstack.api.v2.MachineIssue.type:type_name -> metalstack.api.v2.MachineIssueType
 	8,  // 83: metalstack.api.v2.MachineIssue.severity:type_name -> metalstack.api.v2.MachineIssueSeverity
 	9,  // 84: metalstack.api.v2.MachineService.Get:input_type -> metalstack.api.v2.MachineServiceGetRequest
@@ -5372,20 +5442,21 @@ func file_metalstack_api_v2_machine_proto_init() {
 	file_metalstack_api_v2_machine_proto_msgTypes[2].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[5].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[23].OneofWrappers = []any{}
-	file_metalstack_api_v2_machine_proto_msgTypes[34].OneofWrappers = []any{}
-	file_metalstack_api_v2_machine_proto_msgTypes[40].OneofWrappers = []any{}
+	file_metalstack_api_v2_machine_proto_msgTypes[28].OneofWrappers = []any{}
+	file_metalstack_api_v2_machine_proto_msgTypes[35].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[41].OneofWrappers = []any{}
-	file_metalstack_api_v2_machine_proto_msgTypes[45].OneofWrappers = []any{}
+	file_metalstack_api_v2_machine_proto_msgTypes[42].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[46].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[47].OneofWrappers = []any{}
 	file_metalstack_api_v2_machine_proto_msgTypes[48].OneofWrappers = []any{}
+	file_metalstack_api_v2_machine_proto_msgTypes[49].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_metalstack_api_v2_machine_proto_rawDesc), len(file_metalstack_api_v2_machine_proto_rawDesc)),
 			NumEnums:      9,
-			NumMessages:   51,
+			NumMessages:   52,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
