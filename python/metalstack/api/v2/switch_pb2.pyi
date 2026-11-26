@@ -36,6 +36,7 @@ class SwitchOSVendor(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     SWITCH_OS_VENDOR_UNSPECIFIED: _ClassVar[SwitchOSVendor]
     SWITCH_OS_VENDOR_CUMULUS: _ClassVar[SwitchOSVendor]
     SWITCH_OS_VENDOR_SONIC: _ClassVar[SwitchOSVendor]
+    SWITCH_OS_VENDOR_BISDN: _ClassVar[SwitchOSVendor]
 
 class SwitchPortStatus(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = ()
@@ -56,6 +57,7 @@ SWITCH_REPLACE_MODE_OPERATIONAL: SwitchReplaceMode
 SWITCH_OS_VENDOR_UNSPECIFIED: SwitchOSVendor
 SWITCH_OS_VENDOR_CUMULUS: SwitchOSVendor
 SWITCH_OS_VENDOR_SONIC: SwitchOSVendor
+SWITCH_OS_VENDOR_BISDN: SwitchOSVendor
 SWITCH_PORT_STATUS_UNSPECIFIED: SwitchPortStatus
 SWITCH_PORT_STATUS_UP: SwitchPortStatus
 SWITCH_PORT_STATUS_DOWN: SwitchPortStatus

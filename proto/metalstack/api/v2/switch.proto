@@ -220,6 +220,8 @@ enum SwitchOSVendor {
   SWITCH_OS_VENDOR_CUMULUS = 1 [(enum_string_value) = "Cumulus"];
   // SWITCH_OS_VENDOR_SONIC means this switch is running on SONiC NOS.
   SWITCH_OS_VENDOR_SONIC = 2 [(enum_string_value) = "SONiC"];
+  // SWITCH_OS_VENDOR_BISDN means this switch is running on BISDN Linux.
+  SWITCH_OS_VENDOR_BISDN = 3 [(enum_string_value) = "BISDN"];
 }
 
 // SwitchPortStatus specifies the state of a switch port.
