@@ -231,9 +231,11 @@ type SwitchServiceUpdateRequest struct {
 	// Nics are the front panel ports of the switch.
 	Nics []*v2.SwitchNic `protobuf:"bytes,9,rep,name=nics,proto3" json:"nics,omitempty"`
 	// SwitchOs is the OS running on the switch.
-	Os            *v2.SwitchOS `protobuf:"bytes,10,opt,name=os,proto3,oneof" json:"os,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Os *v2.SwitchOS `protobuf:"bytes,10,opt,name=os,proto3,oneof" json:"os,omitempty"`
+	// DisableDualMachineConnections allows machines to be connected to this switch only, without a twin switch.
+	DisableDualMachineConnections *bool `protobuf:"varint,11,opt,name=disable_dual_machine_connections,json=disableDualMachineConnections,proto3,oneof" json:"disable_dual_machine_connections,omitempty"`
+	unknownFields                 protoimpl.UnknownFields
+	sizeCache                     protoimpl.SizeCache
 }
 
 func (x *SwitchServiceUpdateRequest) Reset() {
@@ -334,6 +336,13 @@ func (x *SwitchServiceUpdateRequest) GetOs() *v2.SwitchOS {
 		return x.Os
 	}
 	return nil
+}
+
+func (x *SwitchServiceUpdateRequest) GetDisableDualMachineConnections() bool {
+	if x != nil && x.DisableDualMachineConnections != nil {
+		return *x.DisableDualMachineConnections
+	}
+	return false
 }
 
 // SwitchServiceUpdateResponse is the response payload for updating a switch.
@@ -808,7 +817,7 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x18SwitchServiceListRequest\x124\n" +
 	"\x05query\x18\x01 \x01(\v2\x1e.metalstack.api.v2.SwitchQueryR\x05query\"R\n" +
 	"\x19SwitchServiceListResponse\x125\n" +
-	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xb9\x05\n" +
+	"\bswitches\x18\x01 \x03(\v2\x19.metalstack.api.v2.SwitchR\bswitches\"\xac\x06\n" +
 	"\x1aSwitchServiceUpdateRequest\x12\x1d\n" +
 	"\x02id\x18\x01 \x01(\tB\r\xbaH\n" +
 	"r\b\xc0\xb3\xae\xb1\x02\x01h\x01R\x02id\x12F\n" +
@@ -823,13 +832,15 @@ const file_metalstack_admin_v2_switch_proto_rawDesc = "" +
 	"\x0fconsole_command\x18\b \x01(\tB\v\xbaH\br\x06ȳ\xae\xb1\x02\x01H\x04R\x0econsoleCommand\x88\x01\x01\x120\n" +
 	"\x04nics\x18\t \x03(\v2\x1c.metalstack.api.v2.SwitchNicR\x04nics\x120\n" +
 	"\x02os\x18\n" +
-	" \x01(\v2\x1b.metalstack.api.v2.SwitchOSH\x05R\x02os\x88\x01\x01B\x0e\n" +
+	" \x01(\v2\x1b.metalstack.api.v2.SwitchOSH\x05R\x02os\x88\x01\x01\x12L\n" +
+	" disable_dual_machine_connections\x18\v \x01(\bH\x06R\x1ddisableDualMachineConnections\x88\x01\x01B\x0e\n" +
 	"\f_descriptionB\x0f\n" +
 	"\r_replace_modeB\x10\n" +
 	"\x0e_management_ipB\x12\n" +
 	"\x10_management_userB\x12\n" +
 	"\x10_console_commandB\x05\n" +
-	"\x03_os\"P\n" +
+	"\x03_osB#\n" +
+	"!_disable_dual_machine_connections\"P\n" +
 	"\x1bSwitchServiceUpdateResponse\x121\n" +
 	"\x06switch\x18\x01 \x01(\v2\x19.metalstack.api.v2.SwitchR\x06switch\"Q\n" +
 	"\x1aSwitchServiceDeleteRequest\x12\x1d\n" +

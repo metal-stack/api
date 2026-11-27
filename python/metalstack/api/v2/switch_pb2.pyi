@@ -62,7 +62,7 @@ SWITCH_PORT_STATUS_DOWN: SwitchPortStatus
 SWITCH_PORT_STATUS_UNKNOWN: SwitchPortStatus
 
 class Switch(_message.Message):
-    __slots__ = ("id", "meta", "description", "rack", "room", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections", "last_sync", "last_sync_error")
+    __slots__ = ("id", "meta", "description", "rack", "room", "partition", "replace_mode", "management_ip", "management_user", "console_command", "nics", "os", "machine_connections", "last_sync", "last_sync_error", "disable_dual_machine_connections")
     ID_FIELD_NUMBER: _ClassVar[int]
     META_FIELD_NUMBER: _ClassVar[int]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
@@ -78,6 +78,7 @@ class Switch(_message.Message):
     MACHINE_CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
     LAST_SYNC_FIELD_NUMBER: _ClassVar[int]
     LAST_SYNC_ERROR_FIELD_NUMBER: _ClassVar[int]
+    DISABLE_DUAL_MACHINE_CONNECTIONS_FIELD_NUMBER: _ClassVar[int]
     id: str
     meta: _common_pb2.Meta
     description: str
@@ -93,7 +94,8 @@ class Switch(_message.Message):
     machine_connections: _containers.RepeatedCompositeFieldContainer[MachineConnection]
     last_sync: SwitchSync
     last_sync_error: SwitchSync
-    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., room: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ..., last_sync: _Optional[_Union[SwitchSync, _Mapping]] = ..., last_sync_error: _Optional[_Union[SwitchSync, _Mapping]] = ...) -> None: ...
+    disable_dual_machine_connections: bool
+    def __init__(self, id: _Optional[str] = ..., meta: _Optional[_Union[_common_pb2.Meta, _Mapping]] = ..., description: _Optional[str] = ..., rack: _Optional[str] = ..., room: _Optional[str] = ..., partition: _Optional[str] = ..., replace_mode: _Optional[_Union[SwitchReplaceMode, str]] = ..., management_ip: _Optional[str] = ..., management_user: _Optional[str] = ..., console_command: _Optional[str] = ..., nics: _Optional[_Iterable[_Union[SwitchNic, _Mapping]]] = ..., os: _Optional[_Union[SwitchOS, _Mapping]] = ..., machine_connections: _Optional[_Iterable[_Union[MachineConnection, _Mapping]]] = ..., last_sync: _Optional[_Union[SwitchSync, _Mapping]] = ..., last_sync_error: _Optional[_Union[SwitchSync, _Mapping]] = ..., disable_dual_machine_connections: _Optional[bool] = ...) -> None: ...
 
 class SwitchOS(_message.Message):
     __slots__ = ("vendor", "version", "metal_core_version")

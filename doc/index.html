@@ -17610,6 +17610,14 @@ console.metalstack.cloud/invite/&lt;secret. </p></td>
                   <td><p>LastSyncError contains information about the last unsuccessful heartbeat of the switch. </p></td>
                 </tr>
               
+                <tr>
+                  <td>disable_dual_machine_connections</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td></td>
+                  <td><p>DisableDualMachineConnections allows machines to be connected to this switch only, without a twin switch.
+By default, machines must be connected to exactly two switches. </p></td>
+                </tr>
+              
             </tbody>
           </table>
 
@@ -18581,6 +18589,13 @@ Must be part of the update request to ensure optimistic locking. </p></td>
                   <td><a href="#metalstack.api.v2.SwitchOS">metalstack.api.v2.SwitchOS</a></td>
                   <td>optional</td>
                   <td><p>SwitchOs is the OS running on the switch. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>disable_dual_machine_connections</td>
+                  <td><a href="#bool">bool</a></td>
+                  <td>optional</td>
+                  <td><p>DisableDualMachineConnections allows machines to be connected to this switch only, without a twin switch. </p></td>
                 </tr>
               
             </tbody>

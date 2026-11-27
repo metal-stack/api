@@ -50,6 +50,9 @@ message Switch {
   SwitchSync last_sync = 14;
   // LastSyncError contains information about the last unsuccessful heartbeat of the switch.
   SwitchSync last_sync_error = 15;
+  // DisableDualMachineConnections allows machines to be connected to this switch only, without a twin switch.
+  // By default, machines must be connected to exactly two switches.
+  bool disable_dual_machine_connections = 16;
 }
 
 // SwitchOS holds information about the NOS and versions running on the switch.
