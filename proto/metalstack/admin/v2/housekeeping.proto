@@ -4,9 +4,7 @@ package metalstack.admin.v2;
 
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
-import "metalstack/api/v2/ip.proto";
 import "metalstack/api/v2/machine.proto";
-import "metalstack/api/v2/network.proto";
 import "metalstack/api/v2/vpn.proto";
 
 // HousekeepingService provides housekeeping operations.
@@ -24,12 +22,6 @@ service HousekeepingService {
 
   // Machine resurrect dead machines
   rpc MachineResurrect(HousekeepingServiceMachineResurrectRequest) returns (HousekeepingServiceMachineResurrectResponse) {
-    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
-    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
-  }
-
-  // NetworksConsistent reports inconsistencies between the metal database and ipam
-  rpc NetworksConsistent(HousekeepingServiceNetworksConsistentRequest) returns (HousekeepingServiceNetworksConsistentResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
@@ -68,19 +60,4 @@ message HousekeepingServiceMachineResurrectRequest {}
 message HousekeepingServiceMachineResurrectResponse {
   // Machines which have been resurrected
   repeated metalstack.api.v2.Machine modified_machines = 1;
-}
-
-// HousekeepingServiceNetworksConsistentRequest is the request payload for a network consistent housekeeping request.
-message HousekeepingServiceNetworksConsistentRequest {}
-
-// HousekeepingServiceMachineResurrectResponse is the response payload for a network consistent housekeeping request.
-message HousekeepingServiceNetworksConsistentResponse {
-  // Networks missing in ipam
-  repeated metalstack.api.v2.Network networks_missing_in_ipam = 1;
-  // Networks missing in metal
-  repeated metalstack.api.v2.Network networks_missing_in_metal = 2;
-  // IPs missing in ipam
-  repeated metalstack.api.v2.IP ips_missing_in_ipam = 3;
-  // IPs missing in metal
-  repeated metalstack.api.v2.IP ips_missing_in_metal = 4;
 }

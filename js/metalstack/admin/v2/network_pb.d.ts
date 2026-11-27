@@ -1,5 +1,6 @@
 import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
 import type { Labels, UpdateLabels, UpdateMeta } from "../../api/v2/common_pb";
+import type { IP } from "../../api/v2/ip_pb";
 import type { ChildPrefixLength, NATType, Network, NetworkAddressFamily, NetworkQuery, NetworkType } from "../../api/v2/network_pb";
 import type { Message } from "@bufbuild/protobuf";
 /**
@@ -349,6 +350,53 @@ export type NetworkServiceListResponse = Message<"metalstack.admin.v2.NetworkSer
  */
 export declare const NetworkServiceListResponseSchema: GenMessage<NetworkServiceListResponse>;
 /**
+ * NetworkServiceIssuesRequest is the request payload for a network consistent housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.NetworkServiceIssuesRequest
+ */
+export type NetworkServiceIssuesRequest = Message<"metalstack.admin.v2.NetworkServiceIssuesRequest"> & {};
+/**
+ * Describes the message metalstack.admin.v2.NetworkServiceIssuesRequest.
+ * Use `create(NetworkServiceIssuesRequestSchema)` to create a new message.
+ */
+export declare const NetworkServiceIssuesRequestSchema: GenMessage<NetworkServiceIssuesRequest>;
+/**
+ * HousekeepingServiceMachineResurrectResponse is the response payload for a network consistent housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.NetworkServiceIssuesResponse
+ */
+export type NetworkServiceIssuesResponse = Message<"metalstack.admin.v2.NetworkServiceIssuesResponse"> & {
+    /**
+     * Networks missing in ipam
+     *
+     * @generated from field: repeated metalstack.api.v2.Network networks_missing_in_ipam = 1;
+     */
+    networksMissingInIpam: Network[];
+    /**
+     * Networks missing in metal
+     *
+     * @generated from field: repeated metalstack.api.v2.Network networks_missing_in_metal = 2;
+     */
+    networksMissingInMetal: Network[];
+    /**
+     * IPs missing in ipam
+     *
+     * @generated from field: repeated metalstack.api.v2.IP ips_missing_in_ipam = 3;
+     */
+    ipsMissingInIpam: IP[];
+    /**
+     * IPs missing in metal
+     *
+     * @generated from field: repeated metalstack.api.v2.IP ips_missing_in_metal = 4;
+     */
+    ipsMissingInMetal: IP[];
+};
+/**
+ * Describes the message metalstack.admin.v2.NetworkServiceIssuesResponse.
+ * Use `create(NetworkServiceIssuesResponseSchema)` to create a new message.
+ */
+export declare const NetworkServiceIssuesResponseSchema: GenMessage<NetworkServiceIssuesResponse>;
+/**
  * NetworkService provides network management operations.
  *
  * @generated from service metalstack.admin.v2.NetworkService
@@ -403,5 +451,15 @@ export declare const NetworkService: GenService<{
         methodKind: "unary";
         input: typeof NetworkServiceListRequestSchema;
         output: typeof NetworkServiceListResponseSchema;
+    };
+    /**
+     * NetworksConsistent reports inconsistencies between the metal database and ipam
+     *
+     * @generated from rpc metalstack.admin.v2.NetworkService.Issues
+     */
+    issues: {
+        methodKind: "unary";
+        input: typeof NetworkServiceIssuesRequestSchema;
+        output: typeof NetworkServiceIssuesResponseSchema;
     };
 }>;

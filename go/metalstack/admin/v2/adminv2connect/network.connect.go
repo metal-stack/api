@@ -43,6 +43,8 @@ const (
 	NetworkServiceDeleteProcedure = "/metalstack.admin.v2.NetworkService/Delete"
 	// NetworkServiceListProcedure is the fully-qualified name of the NetworkService's List RPC.
 	NetworkServiceListProcedure = "/metalstack.admin.v2.NetworkService/List"
+	// NetworkServiceIssuesProcedure is the fully-qualified name of the NetworkService's Issues RPC.
+	NetworkServiceIssuesProcedure = "/metalstack.admin.v2.NetworkService/Issues"
 )
 
 // NetworkServiceClient is a client for the metalstack.admin.v2.NetworkService service.
@@ -57,6 +59,8 @@ type NetworkServiceClient interface {
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 	// Returns the list of all networks.
 	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
+	// NetworksConsistent reports inconsistencies between the metal database and ipam
+	Issues(context.Context, *v2.NetworkServiceIssuesRequest) (*v2.NetworkServiceIssuesResponse, error)
 }
 
 // NewNetworkServiceClient constructs a client for the metalstack.admin.v2.NetworkService service.
@@ -100,6 +104,12 @@ func NewNetworkServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(networkServiceMethods.ByName("List")),
 			connect.WithClientOptions(opts...),
 		),
+		issues: connect.NewClient[v2.NetworkServiceIssuesRequest, v2.NetworkServiceIssuesResponse](
+			httpClient,
+			baseURL+NetworkServiceIssuesProcedure,
+			connect.WithSchema(networkServiceMethods.ByName("Issues")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -110,6 +120,7 @@ type networkServiceClient struct {
 	update *connect.Client[v2.NetworkServiceUpdateRequest, v2.NetworkServiceUpdateResponse]
 	delete *connect.Client[v2.NetworkServiceDeleteRequest, v2.NetworkServiceDeleteResponse]
 	list   *connect.Client[v2.NetworkServiceListRequest, v2.NetworkServiceListResponse]
+	issues *connect.Client[v2.NetworkServiceIssuesRequest, v2.NetworkServiceIssuesResponse]
 }
 
 // Get calls metalstack.admin.v2.NetworkService.Get.
@@ -157,6 +168,15 @@ func (c *networkServiceClient) List(ctx context.Context, req *v2.NetworkServiceL
 	return nil, err
 }
 
+// Issues calls metalstack.admin.v2.NetworkService.Issues.
+func (c *networkServiceClient) Issues(ctx context.Context, req *v2.NetworkServiceIssuesRequest) (*v2.NetworkServiceIssuesResponse, error) {
+	response, err := c.issues.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // NetworkServiceHandler is an implementation of the metalstack.admin.v2.NetworkService service.
 type NetworkServiceHandler interface {
 	// Returns the network with the specified ID.
@@ -169,6 +189,8 @@ type NetworkServiceHandler interface {
 	Delete(context.Context, *v2.NetworkServiceDeleteRequest) (*v2.NetworkServiceDeleteResponse, error)
 	// Returns the list of all networks.
 	List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error)
+	// NetworksConsistent reports inconsistencies between the metal database and ipam
+	Issues(context.Context, *v2.NetworkServiceIssuesRequest) (*v2.NetworkServiceIssuesResponse, error)
 }
 
 // NewNetworkServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -208,6 +230,12 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 		connect.WithSchema(networkServiceMethods.ByName("List")),
 		connect.WithHandlerOptions(opts...),
 	)
+	networkServiceIssuesHandler := connect.NewUnaryHandlerSimple(
+		NetworkServiceIssuesProcedure,
+		svc.Issues,
+		connect.WithSchema(networkServiceMethods.ByName("Issues")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.NetworkService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case NetworkServiceGetProcedure:
@@ -220,6 +248,8 @@ func NewNetworkServiceHandler(svc NetworkServiceHandler, opts ...connect.Handler
 			networkServiceDeleteHandler.ServeHTTP(w, r)
 		case NetworkServiceListProcedure:
 			networkServiceListHandler.ServeHTTP(w, r)
+		case NetworkServiceIssuesProcedure:
+			networkServiceIssuesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -247,4 +277,8 @@ func (UnimplementedNetworkServiceHandler) Delete(context.Context, *v2.NetworkSer
 
 func (UnimplementedNetworkServiceHandler) List(context.Context, *v2.NetworkServiceListRequest) (*v2.NetworkServiceListResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.List is not implemented"))
+}
+
+func (UnimplementedNetworkServiceHandler) Issues(context.Context, *v2.NetworkServiceIssuesRequest) (*v2.NetworkServiceIssuesResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.NetworkService.Issues is not implemented"))
 }

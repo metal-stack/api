@@ -42,9 +42,6 @@ const (
 	// HousekeepingServiceMachineResurrectProcedure is the fully-qualified name of the
 	// HousekeepingService's MachineResurrect RPC.
 	HousekeepingServiceMachineResurrectProcedure = "/metalstack.admin.v2.HousekeepingService/MachineResurrect"
-	// HousekeepingServiceNetworksConsistentProcedure is the fully-qualified name of the
-	// HousekeepingService's NetworksConsistent RPC.
-	HousekeepingServiceNetworksConsistentProcedure = "/metalstack.admin.v2.HousekeepingService/NetworksConsistent"
 )
 
 // HousekeepingServiceClient is a client for the metalstack.admin.v2.HousekeepingService service.
@@ -55,8 +52,6 @@ type HousekeepingServiceClient interface {
 	MachineVPNConnected(context.Context, *v2.HousekeepingServiceMachineVPNConnectedRequest) (*v2.HousekeepingServiceMachineVPNConnectedResponse, error)
 	// Machine resurrect dead machines
 	MachineResurrect(context.Context, *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error)
-	// NetworksConsistent reports inconsistencies between the metal database and ipam
-	NetworksConsistent(context.Context, *v2.HousekeepingServiceNetworksConsistentRequest) (*v2.HousekeepingServiceNetworksConsistentResponse, error)
 }
 
 // NewHousekeepingServiceClient constructs a client for the metalstack.admin.v2.HousekeepingService
@@ -88,12 +83,6 @@ func NewHousekeepingServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(housekeepingServiceMethods.ByName("MachineResurrect")),
 			connect.WithClientOptions(opts...),
 		),
-		networksConsistent: connect.NewClient[v2.HousekeepingServiceNetworksConsistentRequest, v2.HousekeepingServiceNetworksConsistentResponse](
-			httpClient,
-			baseURL+HousekeepingServiceNetworksConsistentProcedure,
-			connect.WithSchema(housekeepingServiceMethods.ByName("NetworksConsistent")),
-			connect.WithClientOptions(opts...),
-		),
 	}
 }
 
@@ -102,7 +91,6 @@ type housekeepingServiceClient struct {
 	machineLiveliness   *connect.Client[v2.HousekeepingServiceMachineLivelinessRequest, v2.HousekeepingServiceMachineLivelinessResponse]
 	machineVPNConnected *connect.Client[v2.HousekeepingServiceMachineVPNConnectedRequest, v2.HousekeepingServiceMachineVPNConnectedResponse]
 	machineResurrect    *connect.Client[v2.HousekeepingServiceMachineResurrectRequest, v2.HousekeepingServiceMachineResurrectResponse]
-	networksConsistent  *connect.Client[v2.HousekeepingServiceNetworksConsistentRequest, v2.HousekeepingServiceNetworksConsistentResponse]
 }
 
 // MachineLiveliness calls metalstack.admin.v2.HousekeepingService.MachineLiveliness.
@@ -132,15 +120,6 @@ func (c *housekeepingServiceClient) MachineResurrect(ctx context.Context, req *v
 	return nil, err
 }
 
-// NetworksConsistent calls metalstack.admin.v2.HousekeepingService.NetworksConsistent.
-func (c *housekeepingServiceClient) NetworksConsistent(ctx context.Context, req *v2.HousekeepingServiceNetworksConsistentRequest) (*v2.HousekeepingServiceNetworksConsistentResponse, error) {
-	response, err := c.networksConsistent.CallUnary(ctx, connect.NewRequest(req))
-	if response != nil {
-		return response.Msg, err
-	}
-	return nil, err
-}
-
 // HousekeepingServiceHandler is an implementation of the metalstack.admin.v2.HousekeepingService
 // service.
 type HousekeepingServiceHandler interface {
@@ -150,8 +129,6 @@ type HousekeepingServiceHandler interface {
 	MachineVPNConnected(context.Context, *v2.HousekeepingServiceMachineVPNConnectedRequest) (*v2.HousekeepingServiceMachineVPNConnectedResponse, error)
 	// Machine resurrect dead machines
 	MachineResurrect(context.Context, *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error)
-	// NetworksConsistent reports inconsistencies between the metal database and ipam
-	NetworksConsistent(context.Context, *v2.HousekeepingServiceNetworksConsistentRequest) (*v2.HousekeepingServiceNetworksConsistentResponse, error)
 }
 
 // NewHousekeepingServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -179,12 +156,6 @@ func NewHousekeepingServiceHandler(svc HousekeepingServiceHandler, opts ...conne
 		connect.WithSchema(housekeepingServiceMethods.ByName("MachineResurrect")),
 		connect.WithHandlerOptions(opts...),
 	)
-	housekeepingServiceNetworksConsistentHandler := connect.NewUnaryHandlerSimple(
-		HousekeepingServiceNetworksConsistentProcedure,
-		svc.NetworksConsistent,
-		connect.WithSchema(housekeepingServiceMethods.ByName("NetworksConsistent")),
-		connect.WithHandlerOptions(opts...),
-	)
 	return "/metalstack.admin.v2.HousekeepingService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case HousekeepingServiceMachineLivelinessProcedure:
@@ -193,8 +164,6 @@ func NewHousekeepingServiceHandler(svc HousekeepingServiceHandler, opts ...conne
 			housekeepingServiceMachineVPNConnectedHandler.ServeHTTP(w, r)
 		case HousekeepingServiceMachineResurrectProcedure:
 			housekeepingServiceMachineResurrectHandler.ServeHTTP(w, r)
-		case HousekeepingServiceNetworksConsistentProcedure:
-			housekeepingServiceNetworksConsistentHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -214,8 +183,4 @@ func (UnimplementedHousekeepingServiceHandler) MachineVPNConnected(context.Conte
 
 func (UnimplementedHousekeepingServiceHandler) MachineResurrect(context.Context, *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.HousekeepingService.MachineResurrect is not implemented"))
-}
-
-func (UnimplementedHousekeepingServiceHandler) NetworksConsistent(context.Context, *v2.HousekeepingServiceNetworksConsistentRequest) (*v2.HousekeepingServiceNetworksConsistentResponse, error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.HousekeepingService.NetworksConsistent is not implemented"))
 }
