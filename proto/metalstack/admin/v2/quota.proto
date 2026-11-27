@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+package metalstack.admin.v2;
+
+import "buf/validate/validate.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+import "metalstack/api/v2/quota.proto";
+
+// QuotaService provides quota management operations.
+service QuotaService {
+  // List the quotas of tenants.
+  rpc List(QuotaServiceListRequest) returns (QuotaServiceListResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // ListRequests lists quota requests of tenants.
+  rpc ListRequests(QuotaServiceListRequestsRequest) returns (QuotaServiceListRequestsResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_VIEWER;
+    option (metalstack.api.v2.auditing) = AUDITING_EXCLUDED;
+  }
+  // Admit a pending quota request, the requested max gets applied to the quota of the tenant.
+  rpc Admit(QuotaServiceAdmitRequest) returns (QuotaServiceAdmitResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+  // Reject a pending quota request.
+  rpc Reject(QuotaServiceRejectRequest) returns (QuotaServiceRejectResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+}
+
+// QuotaServiceListRequest is the request payload of the quota list request.
+message QuotaServiceListRequest {
+  // Login filters quotas by tenant.
+  optional string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Resource filters quotas by resource.
+  optional metalstack.api.v2.QuotaResource resource = 2 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
+}
+
+// QuotaServiceListResponse is the response payload of the quota list request.
+message QuotaServiceListResponse {
+  // Quotas of the tenants.
+  repeated metalstack.api.v2.TenantQuota quotas = 1;
+}
+
+// QuotaServiceListRequestsRequest is the request payload of the quota list requests request.
+message QuotaServiceListRequestsRequest {
+  // Login filters quota requests by tenant.
+  optional string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Resource filters quota requests by resource.
+  optional metalstack.api.v2.QuotaResource resource = 2 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
+  // State filters quota requests by state, defaults to all states.
+  optional metalstack.api.v2.QuotaRequestState state = 3 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
+}
+
+// QuotaServiceListRequestsResponse is the response payload of the quota list requests request.
+message QuotaServiceListRequestsResponse {
+  // Requests are the quota requests.
+  repeated metalstack.api.v2.QuotaRequest requests = 1;
+}
+
+// QuotaServiceAdmitRequest is the request payload of the quota admit request.
+message QuotaServiceAdmitRequest {
+  // Id of the quota request to admit.
+  string id = 1 [(buf.validate.field).string.uuid = true];
+  // Max optionally overrides the requested max, e.g. to admit only a part of the request.
+  optional uint64 max = 2;
+  // Comment regarding the decision, visible to the tenant.
+  optional string comment = 3 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// QuotaServiceAdmitResponse is the response payload of the quota admit request.
+message QuotaServiceAdmitResponse {
+  // Request is the admitted quota request.
+  metalstack.api.v2.QuotaRequest request = 1;
+  // Quota is the resulting quota of the tenant.
+  metalstack.api.v2.TenantQuota quota = 2;
+}
+
+// QuotaServiceRejectRequest is the request payload of the quota reject request.
+message QuotaServiceRejectRequest {
+  // Id of the quota request to reject.
+  string id = 1 [(buf.validate.field).string.uuid = true];
+  // Comment regarding the decision, visible to the tenant.
+  optional string comment = 2 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// QuotaServiceRejectResponse is the response payload of the quota reject request.
+message QuotaServiceRejectResponse {
+  // Request is the rejected quota request.
+  metalstack.api.v2.QuotaRequest request = 1;
+}

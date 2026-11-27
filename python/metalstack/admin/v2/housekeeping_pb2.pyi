@@ -1,6 +1,7 @@
 from buf.validate import validate_pb2 as _validate_pb2
 from metalstack.api.v2 import common_pb2 as _common_pb2
 from metalstack.api.v2 import machine_pb2 as _machine_pb2
+from metalstack.api.v2 import quota_pb2 as _quota_pb2
 from metalstack.api.v2 import vpn_pb2 as _vpn_pb2
 from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
@@ -47,3 +48,13 @@ class HousekeepingServiceMachineResurrectResponse(_message.Message):
     MODIFIED_MACHINES_FIELD_NUMBER: _ClassVar[int]
     modified_machines: _containers.RepeatedCompositeFieldContainer[_machine_pb2.Machine]
     def __init__(self, modified_machines: _Optional[_Iterable[_Union[_machine_pb2.Machine, _Mapping]]] = ...) -> None: ...
+
+class HousekeepingServiceQuotaRequestCleanupRequest(_message.Message):
+    __slots__ = ()
+    def __init__(self) -> None: ...
+
+class HousekeepingServiceQuotaRequestCleanupResponse(_message.Message):
+    __slots__ = ("deleted_requests",)
+    DELETED_REQUESTS_FIELD_NUMBER: _ClassVar[int]
+    deleted_requests: _containers.RepeatedCompositeFieldContainer[_quota_pb2.QuotaRequest]
+    def __init__(self, deleted_requests: _Optional[_Iterable[_Union[_quota_pb2.QuotaRequest, _Mapping]]] = ...) -> None: ...

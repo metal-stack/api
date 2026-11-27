@@ -12,6 +12,7 @@ import metalstack.admin.v2.machine_connect as admin_machine_connect
 import metalstack.admin.v2.network_connect as admin_network_connect
 import metalstack.admin.v2.partition_connect as admin_partition_connect
 import metalstack.admin.v2.project_connect as admin_project_connect
+import metalstack.admin.v2.quota_connect as admin_quota_connect
 import metalstack.admin.v2.size_connect as admin_size_connect
 import metalstack.admin.v2.size_imageconstraint_connect as admin_size_imageconstraint_connect
 import metalstack.admin.v2.size_reservation_connect as admin_size_reservation_connect
@@ -32,6 +33,7 @@ import metalstack.api.v2.network_connect as api_network_connect
 import metalstack.api.v2.partition_connect as api_partition_connect
 import metalstack.api.v2.project_connect as api_project_connect
 import metalstack.api.v2.project_member_connect as api_project_member_connect
+import metalstack.api.v2.quota_connect as api_quota_connect
 import metalstack.api.v2.size_connect as api_size_connect
 import metalstack.api.v2.size_imageconstraint_connect as api_size_imageconstraint_connect
 import metalstack.api.v2.size_reservation_connect as api_size_reservation_connect
@@ -111,6 +113,9 @@ class Client:
         def project(self):
             return admin_project_connect.ProjectServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
+        def quota(self):
+            return admin_quota_connect.QuotaServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
+
         def size(self):
             return admin_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
@@ -175,6 +180,9 @@ class Client:
 
         def project_member(self):
             return api_project_member_connect.ProjectMemberServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
+
+        def quota(self):
+            return api_quota_connect.QuotaServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)
 
         def size(self):
             return api_size_connect.SizeServiceClientSync(address=self._baseurl, http_client=self._client, interceptors=self._interceptors)

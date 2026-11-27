@@ -1,0 +1,182 @@
+syntax = "proto3";
+
+package metalstack.api.v2;
+
+import "buf/validate/validate.proto";
+import "google/protobuf/timestamp.proto";
+import "metalstack/api/v2/common.proto";
+import "metalstack/api/v2/predefined_rules.proto";
+
+// QuotaService provides quota operations for tenants.
+service QuotaService {
+  // Get the quota of a tenant for a specific resource including the current usage.
+  rpc Get(QuotaServiceGetRequest) returns (QuotaServiceGetResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // List the quotas of a tenant, there is exactly one quota per resource.
+  rpc List(QuotaServiceListRequest) returns (QuotaServiceListResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (tenant_roles) = TENANT_ROLE_VIEWER;
+    option (auditing) = AUDITING_EXCLUDED;
+  }
+  // ChangeRequest requests a change of the quota of a tenant for a specific resource.
+  // The request must be admitted by an administrator before it becomes effective.
+  // There can only be one pending request per tenant and resource, an existing pending request gets replaced.
+  rpc ChangeRequest(QuotaServiceChangeRequestRequest) returns (QuotaServiceChangeRequestResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+  // DeleteRequest deletes a quota request of a tenant regardless of its state.
+  // Deleting a pending request withdraws it, deleting an admitted request does not revert the applied quota.
+  rpc DeleteRequest(QuotaServiceDeleteRequestRequest) returns (QuotaServiceDeleteRequestResponse) {
+    option (tenant_roles) = TENANT_ROLE_OWNER;
+    option (tenant_roles) = TENANT_ROLE_EDITOR;
+    option (auditing) = AUDITING_INCLUDED;
+  }
+}
+
+// QuotaResource is the type of resource a quota applies to.
+enum QuotaResource {
+  // QUOTA_RESOURCE_UNSPECIFIED is not specified.
+  QUOTA_RESOURCE_UNSPECIFIED = 0;
+  // QUOTA_RESOURCE_MACHINES limits the amount of allocated machines across all projects of a tenant.
+  QUOTA_RESOURCE_MACHINES = 1 [(enum_string_value) = "machines"];
+  // QUOTA_RESOURCE_NETWORKS limits the amount of child networks across all projects of a tenant.
+  QUOTA_RESOURCE_NETWORKS = 2 [(enum_string_value) = "networks"];
+  // QUOTA_RESOURCE_PROJECTS limits the amount of projects of a tenant.
+  QUOTA_RESOURCE_PROJECTS = 3 [(enum_string_value) = "projects"];
+  // QUOTA_RESOURCE_IPS limits the amount of static ips across all projects of a tenant.
+  QUOTA_RESOURCE_IPS = 4 [(enum_string_value) = "ips"];
+}
+
+// QuotaSource describes where the max value of a quota originates from.
+enum QuotaSource {
+  // QUOTA_SOURCE_UNSPECIFIED is not specified.
+  QUOTA_SOURCE_UNSPECIFIED = 0;
+  // QUOTA_SOURCE_DEFAULT the value is the platform default.
+  QUOTA_SOURCE_DEFAULT = 1 [(enum_string_value) = "default"];
+  // QUOTA_SOURCE_TENANT the value was explicitly set for this tenant.
+  QUOTA_SOURCE_TENANT = 2 [(enum_string_value) = "tenant"];
+}
+
+// TenantQuota is the quota of a tenant for a single resource.
+// There is exactly one quota per tenant and resource.
+message TenantQuota {
+  // Login of the tenant.
+  string login = 1;
+  // Resource this quota applies to.
+  QuotaResource resource = 2;
+  // Max is the maximum amount of this resource, if not set the resource is unlimited.
+  optional uint64 max = 3;
+  // Used is the current amount of this resource in use.
+  uint64 used = 4;
+  // Source describes where the max value originates from.
+  QuotaSource source = 5;
+  // PendingRequest is the currently pending quota request for this resource, if any.
+  optional QuotaRequest pending_request = 6;
+}
+
+// QuotaRequest is a request of a tenant to change the quota of a single resource.
+message QuotaRequest {
+  // Id of this quota request.
+  string id = 1;
+  // Meta for this quota request.
+  Meta meta = 2;
+  // Login of the tenant this request belongs to.
+  string login = 3;
+  // Resource the change is requested for.
+  QuotaResource resource = 4;
+  // Max is the requested maximum amount of this resource.
+  uint64 max = 5;
+  // Reason why the change is requested.
+  string reason = 6;
+  // State of this request.
+  QuotaRequestState state = 7;
+  // RequestedBy is the user who issued this request.
+  string requested_by = 8;
+  // DecidedAt is the date when this request was admitted or rejected.
+  optional google.protobuf.Timestamp decided_at = 9;
+  // Comment of the administrator regarding the decision.
+  optional string comment = 10;
+}
+
+// QuotaRequestState is the state of a quota request.
+enum QuotaRequestState {
+  // QUOTA_REQUEST_STATE_UNSPECIFIED is not specified.
+  QUOTA_REQUEST_STATE_UNSPECIFIED = 0;
+  // QUOTA_REQUEST_STATE_PENDING the request awaits a decision of an administrator.
+  QUOTA_REQUEST_STATE_PENDING = 1 [(enum_string_value) = "pending"];
+  // QUOTA_REQUEST_STATE_ADMITTED the request was admitted and the quota was applied.
+  QUOTA_REQUEST_STATE_ADMITTED = 2 [(enum_string_value) = "admitted"];
+  // QUOTA_REQUEST_STATE_REJECTED the request was rejected.
+  QUOTA_REQUEST_STATE_REJECTED = 3 [(enum_string_value) = "rejected"];
+}
+
+// QuotaServiceGetRequest is the request payload of the quota get request.
+message QuotaServiceGetRequest {
+  // Login of the tenant.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Resource of the quota.
+  QuotaResource resource = 2 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
+}
+
+// QuotaServiceGetResponse is the response payload of the quota get request.
+message QuotaServiceGetResponse {
+  // Quota of the tenant for the requested resource.
+  TenantQuota quota = 1;
+}
+
+// QuotaServiceListRequest is the request payload of the quota list request.
+message QuotaServiceListRequest {
+  // Login of the tenant.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+}
+
+// QuotaServiceListResponse is the response payload of the quota list request.
+message QuotaServiceListResponse {
+  // Quotas of the tenant, one per resource.
+  repeated TenantQuota quotas = 1;
+}
+
+// QuotaServiceChangeRequestRequest is the request payload of the quota change request request.
+message QuotaServiceChangeRequestRequest {
+  // Login of the tenant.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Resource the change is requested for.
+  QuotaResource resource = 2 [
+    (buf.validate.field).enum.defined_only = true,
+    (buf.validate.field).enum.not_in = 0
+  ];
+  // Max is the requested maximum amount of this resource.
+  uint64 max = 3;
+  // Reason why the change is requested.
+  string reason = 4 [(buf.validate.field).string.(metalstack.api.v2.is_description) = true];
+}
+
+// QuotaServiceChangeRequestResponse is the response payload of the quota change request request.
+message QuotaServiceChangeRequestResponse {
+  // Request is the created quota request.
+  QuotaRequest request = 1;
+}
+
+// QuotaServiceDeleteRequestRequest is the request payload of the quota delete request request.
+message QuotaServiceDeleteRequestRequest {
+  // Login of the tenant.
+  string login = 1 [(buf.validate.field).string.(metalstack.api.v2.is_tenant_login) = true];
+  // Id of the quota request to delete.
+  string id = 2 [(buf.validate.field).string.uuid = true];
+}
+
+// QuotaServiceDeleteRequestResponse is the response payload of the quota delete request request.
+message QuotaServiceDeleteRequestResponse {
+  // Request is the deleted quota request.
+  QuotaRequest request = 1;
+}

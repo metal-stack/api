@@ -5,6 +5,7 @@ package metalstack.admin.v2;
 import "buf/validate/validate.proto";
 import "metalstack/api/v2/common.proto";
 import "metalstack/api/v2/machine.proto";
+import "metalstack/api/v2/quota.proto";
 import "metalstack/api/v2/vpn.proto";
 
 // HousekeepingService provides housekeeping operations.
@@ -22,6 +23,12 @@ service HousekeepingService {
 
   // Machine resurrect dead machines
   rpc MachineResurrect(HousekeepingServiceMachineResurrectRequest) returns (HousekeepingServiceMachineResurrectResponse) {
+    option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
+    option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
+  }
+
+  // QuotaRequestCleanup deletes admitted and rejected quota requests whose decision is older than the configured retention.
+  rpc QuotaRequestCleanup(HousekeepingServiceQuotaRequestCleanupRequest) returns (HousekeepingServiceQuotaRequestCleanupResponse) {
     option (metalstack.api.v2.admin_roles) = ADMIN_ROLE_EDITOR;
     option (metalstack.api.v2.auditing) = AUDITING_INCLUDED;
   }
@@ -60,4 +67,13 @@ message HousekeepingServiceMachineResurrectRequest {}
 message HousekeepingServiceMachineResurrectResponse {
   // Machines which have been resurrected
   repeated metalstack.api.v2.Machine modified_machines = 1;
+}
+
+// HousekeepingServiceQuotaRequestCleanupRequest is the request payload for a quota request cleanup housekeeping request.
+message HousekeepingServiceQuotaRequestCleanupRequest {}
+
+// HousekeepingServiceQuotaRequestCleanupResponse is the response payload for a quota request cleanup housekeeping request.
+message HousekeepingServiceQuotaRequestCleanupResponse {
+  // Quota requests which have been deleted.
+  repeated metalstack.api.v2.QuotaRequest deleted_requests = 1;
 }

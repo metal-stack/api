@@ -36,6 +36,7 @@ type (
 		Network() adminv2connect.NetworkServiceClient
 		Partition() adminv2connect.PartitionServiceClient
 		Project() adminv2connect.ProjectServiceClient
+		Quota() adminv2connect.QuotaServiceClient
 		Size() adminv2connect.SizeServiceClient
 		SizeImageConstraint() adminv2connect.SizeImageConstraintServiceClient
 		SizeReservation() adminv2connect.SizeReservationServiceClient
@@ -57,6 +58,7 @@ type (
 		networkservice             adminv2connect.NetworkServiceClient
 		partitionservice           adminv2connect.PartitionServiceClient
 		projectservice             adminv2connect.ProjectServiceClient
+		quotaservice               adminv2connect.QuotaServiceClient
 		sizeservice                adminv2connect.SizeServiceClient
 		sizeimageconstraintservice adminv2connect.SizeImageConstraintServiceClient
 		sizereservationservice     adminv2connect.SizeReservationServiceClient
@@ -79,6 +81,7 @@ type (
 		Partition() apiv2connect.PartitionServiceClient
 		Project() apiv2connect.ProjectServiceClient
 		ProjectMember() apiv2connect.ProjectMemberServiceClient
+		Quota() apiv2connect.QuotaServiceClient
 		Size() apiv2connect.SizeServiceClient
 		SizeImageConstraint() apiv2connect.SizeImageConstraintServiceClient
 		SizeReservation() apiv2connect.SizeReservationServiceClient
@@ -101,6 +104,7 @@ type (
 		partitionservice           apiv2connect.PartitionServiceClient
 		projectservice             apiv2connect.ProjectServiceClient
 		projectmemberservice       apiv2connect.ProjectMemberServiceClient
+		quotaservice               apiv2connect.QuotaServiceClient
 		sizeservice                apiv2connect.SizeServiceClient
 		sizeimageconstraintservice apiv2connect.SizeImageConstraintServiceClient
 		sizereservationservice     apiv2connect.SizeReservationServiceClient
@@ -190,6 +194,12 @@ func (c *client) Adminv2() Adminv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		quotaservice: adminv2connect.NewQuotaServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		sizeservice: adminv2connect.NewSizeServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -271,6 +281,9 @@ func (c *adminv2) Partition() adminv2connect.PartitionServiceClient {
 }
 func (c *adminv2) Project() adminv2connect.ProjectServiceClient {
 	return c.projectservice
+}
+func (c *adminv2) Quota() adminv2connect.QuotaServiceClient {
+	return c.quotaservice
 }
 func (c *adminv2) Size() adminv2connect.SizeServiceClient {
 	return c.sizeservice
@@ -365,6 +378,12 @@ func (c *client) Apiv2() Apiv2 {
 			connect.WithInterceptors(c.interceptors...),
 			compress.WithAll(compress.LevelBalanced),
 		),
+		quotaservice: apiv2connect.NewQuotaServiceClient(
+			c.config.HttpClient(),
+			c.config.BaseURL,
+			connect.WithInterceptors(c.interceptors...),
+			compress.WithAll(compress.LevelBalanced),
+		),
 		sizeservice: apiv2connect.NewSizeServiceClient(
 			c.config.HttpClient(),
 			c.config.BaseURL,
@@ -449,6 +468,9 @@ func (c *apiv2) Project() apiv2connect.ProjectServiceClient {
 }
 func (c *apiv2) ProjectMember() apiv2connect.ProjectMemberServiceClient {
 	return c.projectmemberservice
+}
+func (c *apiv2) Quota() apiv2connect.QuotaServiceClient {
+	return c.quotaservice
 }
 func (c *apiv2) Size() apiv2connect.SizeServiceClient {
 	return c.sizeservice

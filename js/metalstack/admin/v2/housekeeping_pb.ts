@@ -8,6 +8,8 @@ import { file_buf_validate_validate } from "../../../buf/validate/validate_pb";
 import { file_metalstack_api_v2_common } from "../../api/v2/common_pb";
 import type { Machine, MachineLiveliness } from "../../api/v2/machine_pb";
 import { file_metalstack_api_v2_machine } from "../../api/v2/machine_pb";
+import type { QuotaRequest } from "../../api/v2/quota_pb";
+import { file_metalstack_api_v2_quota } from "../../api/v2/quota_pb";
 import type { VPNNode } from "../../api/v2/vpn_pb";
 import { file_metalstack_api_v2_vpn } from "../../api/v2/vpn_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -16,7 +18,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file metalstack/admin/v2/housekeeping.proto.
  */
 export const file_metalstack_admin_v2_housekeeping: GenFile = /*@__PURE__*/
-  fileDesc("CiZtZXRhbHN0YWNrL2FkbWluL3YyL2hvdXNla2VlcGluZy5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiItCitIb3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZUxpdmVsaW5lc3NSZXF1ZXN0InUKLEhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lTGl2ZWxpbmVzc1Jlc3BvbnNlEkUKEW1vZGlmaWVkX21hY2hpbmVzGAEgAygLMioubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lV2l0aExpdmVsaW5lc3MicwoVTWFjaGluZVdpdGhMaXZlbGluZXNzEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEkIKCmxpdmVsaW5lc3MYAiABKA4yJC5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lTGl2ZWxpbmVzc0IIukgFggECEAEiLwotSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVWUE5Db25uZWN0ZWRSZXF1ZXN0ImcKLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lVlBOQ29ubmVjdGVkUmVzcG9uc2USNQoRbW9kaWZpZWRfbWFjaGluZXMYASADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5WUE5Ob2RlIiwKKkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lUmVzdXJyZWN0UmVxdWVzdCJkCitIb3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZVJlc3VycmVjdFJlc3BvbnNlEjUKEW1vZGlmaWVkX21hY2hpbmVzGAEgAygLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZTKKBAoTSG91c2VrZWVwaW5nU2VydmljZRKjAQoRTWFjaGluZUxpdmVsaW5lc3MSQC5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lTGl2ZWxpbmVzc1JlcXVlc3QaQS5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lTGl2ZWxpbmVzc1Jlc3BvbnNlIgnS8xgBAeDzGAESqQEKE01hY2hpbmVWUE5Db25uZWN0ZWQSQi5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lVlBOQ29ubmVjdGVkUmVxdWVzdBpDLm1ldGFsc3RhY2suYWRtaW4udjIuSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVWUE5Db25uZWN0ZWRSZXNwb25zZSIJ0vMYAQHg8xgBEqABChBNYWNoaW5lUmVzdXJyZWN0Ej8ubWV0YWxzdGFjay5hZG1pbi52Mi5Ib3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZVJlc3VycmVjdFJlcXVlc3QaQC5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lUmVzdXJyZWN0UmVzcG9uc2UiCdLzGAEB4PMYAULVAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCEUhvdXNla2VlcGluZ1Byb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_vpn]);
+  fileDesc("CiZtZXRhbHN0YWNrL2FkbWluL3YyL2hvdXNla2VlcGluZy5wcm90bxITbWV0YWxzdGFjay5hZG1pbi52MiItCitIb3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZUxpdmVsaW5lc3NSZXF1ZXN0InUKLEhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lTGl2ZWxpbmVzc1Jlc3BvbnNlEkUKEW1vZGlmaWVkX21hY2hpbmVzGAEgAygLMioubWV0YWxzdGFjay5hZG1pbi52Mi5NYWNoaW5lV2l0aExpdmVsaW5lc3MicwoVTWFjaGluZVdpdGhMaXZlbGluZXNzEhYKBHV1aWQYASABKAlCCLpIBXIDsAEBEkIKCmxpdmVsaW5lc3MYAiABKA4yJC5tZXRhbHN0YWNrLmFwaS52Mi5NYWNoaW5lTGl2ZWxpbmVzc0IIukgFggECEAEiLwotSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVWUE5Db25uZWN0ZWRSZXF1ZXN0ImcKLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lVlBOQ29ubmVjdGVkUmVzcG9uc2USNQoRbW9kaWZpZWRfbWFjaGluZXMYASADKAsyGi5tZXRhbHN0YWNrLmFwaS52Mi5WUE5Ob2RlIiwKKkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lUmVzdXJyZWN0UmVxdWVzdCJkCitIb3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZVJlc3VycmVjdFJlc3BvbnNlEjUKEW1vZGlmaWVkX21hY2hpbmVzGAEgAygLMhoubWV0YWxzdGFjay5hcGkudjIuTWFjaGluZSIvCi1Ib3VzZWtlZXBpbmdTZXJ2aWNlUXVvdGFSZXF1ZXN0Q2xlYW51cFJlcXVlc3QiawouSG91c2VrZWVwaW5nU2VydmljZVF1b3RhUmVxdWVzdENsZWFudXBSZXNwb25zZRI5ChBkZWxldGVkX3JlcXVlc3RzGAEgAygLMh8ubWV0YWxzdGFjay5hcGkudjIuUXVvdGFSZXF1ZXN0MrYFChNIb3VzZWtlZXBpbmdTZXJ2aWNlEqMBChFNYWNoaW5lTGl2ZWxpbmVzcxJALm1ldGFsc3RhY2suYWRtaW4udjIuSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVMaXZlbGluZXNzUmVxdWVzdBpBLm1ldGFsc3RhY2suYWRtaW4udjIuSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVMaXZlbGluZXNzUmVzcG9uc2UiCdLzGAEB4PMYARKpAQoTTWFjaGluZVZQTkNvbm5lY3RlZBJCLm1ldGFsc3RhY2suYWRtaW4udjIuSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVWUE5Db25uZWN0ZWRSZXF1ZXN0GkMubWV0YWxzdGFjay5hZG1pbi52Mi5Ib3VzZWtlZXBpbmdTZXJ2aWNlTWFjaGluZVZQTkNvbm5lY3RlZFJlc3BvbnNlIgnS8xgBAeDzGAESoAEKEE1hY2hpbmVSZXN1cnJlY3QSPy5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VNYWNoaW5lUmVzdXJyZWN0UmVxdWVzdBpALm1ldGFsc3RhY2suYWRtaW4udjIuSG91c2VrZWVwaW5nU2VydmljZU1hY2hpbmVSZXN1cnJlY3RSZXNwb25zZSIJ0vMYAQHg8xgBEqkBChNRdW90YVJlcXVlc3RDbGVhbnVwEkIubWV0YWxzdGFjay5hZG1pbi52Mi5Ib3VzZWtlZXBpbmdTZXJ2aWNlUXVvdGFSZXF1ZXN0Q2xlYW51cFJlcXVlc3QaQy5tZXRhbHN0YWNrLmFkbWluLnYyLkhvdXNla2VlcGluZ1NlcnZpY2VRdW90YVJlcXVlc3RDbGVhbnVwUmVzcG9uc2UiCdLzGAEB4PMYAULVAQoXY29tLm1ldGFsc3RhY2suYWRtaW4udjJCEUhvdXNla2VlcGluZ1Byb3RvUAFaOWdpdGh1Yi5jb20vbWV0YWwtc3RhY2svYXBpL2dvL21ldGFsc3RhY2svYWRtaW4vdjI7YWRtaW52MqICA01BWKoCE01ldGFsc3RhY2suQWRtaW4uVjLKAhNNZXRhbHN0YWNrXEFkbWluXFYy4gIfTWV0YWxzdGFja1xBZG1pblxWMlxHUEJNZXRhZGF0YeoCFU1ldGFsc3RhY2s6OkFkbWluOjpWMmIGcHJvdG8z", [file_buf_validate_validate, file_metalstack_api_v2_common, file_metalstack_api_v2_machine, file_metalstack_api_v2_quota, file_metalstack_api_v2_vpn]);
 
 /**
  * HousekeepingServiceMachineLivelinessRequest is the request payload for a machine liveliness housekeeping request.
@@ -155,6 +157,42 @@ export const HousekeepingServiceMachineResurrectResponseSchema: GenMessage<House
   messageDesc(file_metalstack_admin_v2_housekeeping, 6);
 
 /**
+ * HousekeepingServiceQuotaRequestCleanupRequest is the request payload for a quota request cleanup housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupRequest
+ */
+export type HousekeepingServiceQuotaRequestCleanupRequest = Message<"metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupRequest"> & {
+};
+
+/**
+ * Describes the message metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupRequest.
+ * Use `create(HousekeepingServiceQuotaRequestCleanupRequestSchema)` to create a new message.
+ */
+export const HousekeepingServiceQuotaRequestCleanupRequestSchema: GenMessage<HousekeepingServiceQuotaRequestCleanupRequest> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_housekeeping, 7);
+
+/**
+ * HousekeepingServiceQuotaRequestCleanupResponse is the response payload for a quota request cleanup housekeeping request.
+ *
+ * @generated from message metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupResponse
+ */
+export type HousekeepingServiceQuotaRequestCleanupResponse = Message<"metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupResponse"> & {
+  /**
+   * Quota requests which have been deleted.
+   *
+   * @generated from field: repeated metalstack.api.v2.QuotaRequest deleted_requests = 1;
+   */
+  deletedRequests: QuotaRequest[];
+};
+
+/**
+ * Describes the message metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupResponse.
+ * Use `create(HousekeepingServiceQuotaRequestCleanupResponseSchema)` to create a new message.
+ */
+export const HousekeepingServiceQuotaRequestCleanupResponseSchema: GenMessage<HousekeepingServiceQuotaRequestCleanupResponse> = /*@__PURE__*/
+  messageDesc(file_metalstack_admin_v2_housekeeping, 8);
+
+/**
  * HousekeepingService provides housekeeping operations.
  *
  * @generated from service metalstack.admin.v2.HousekeepingService
@@ -189,6 +227,16 @@ export const HousekeepingService: GenService<{
     methodKind: "unary";
     input: typeof HousekeepingServiceMachineResurrectRequestSchema;
     output: typeof HousekeepingServiceMachineResurrectResponseSchema;
+  },
+  /**
+   * QuotaRequestCleanup deletes admitted and rejected quota requests whose decision is older than the configured retention.
+   *
+   * @generated from rpc metalstack.admin.v2.HousekeepingService.QuotaRequestCleanup
+   */
+  quotaRequestCleanup: {
+    methodKind: "unary";
+    input: typeof HousekeepingServiceQuotaRequestCleanupRequestSchema;
+    output: typeof HousekeepingServiceQuotaRequestCleanupResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_metalstack_admin_v2_housekeeping, 0);

@@ -27,6 +27,9 @@ class HousekeepingService(Protocol):
     async def machine_resurrect(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
+    async def quota_request_cleanup(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+
 
 class HousekeepingServiceASGIApplication(ConnectASGIApplication[HousekeepingService]):
     def __init__(self, service: HousekeepingService | AsyncGenerator[HousekeepingService], *, interceptors: Iterable[Interceptor]=(), read_max_bytes: int | None = None, compressions: Iterable[Compression] | None = None, codecs: Iterable[Codec] | None = None) -> None:
@@ -62,6 +65,16 @@ class HousekeepingServiceASGIApplication(ConnectASGIApplication[HousekeepingServ
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=svc.machine_resurrect,
+                ),
+                "/metalstack.admin.v2.HousekeepingService/QuotaRequestCleanup": Endpoint.unary(
+                    method=MethodInfo(
+                        name="QuotaRequestCleanup",
+                        service_name="metalstack.admin.v2.HousekeepingService",
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=svc.quota_request_cleanup,
                 ),
             },
             interceptors=interceptors,
@@ -137,6 +150,26 @@ class HousekeepingServiceClient(ConnectClient):
             timeout_ms=timeout_ms,
         )
 
+    async def quota_request_cleanup(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupResponse:
+        return await self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="QuotaRequestCleanup",
+                service_name="metalstack.admin.v2.HousekeepingService",
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
 
 
 
@@ -147,6 +180,8 @@ class HousekeepingServiceSync(Protocol):
     def machine_v_p_n_connected(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineVPNConnectedResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
     def machine_resurrect(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse:
+        raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
+    def quota_request_cleanup(self, request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupRequest, ctx: RequestContext) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupResponse:
         raise ConnectError(Code.UNIMPLEMENTED, "Not implemented")
 
 
@@ -183,6 +218,16 @@ class HousekeepingServiceWSGIApplication(ConnectWSGIApplication):
                         idempotency_level=IdempotencyLevel.UNKNOWN,
                     ),
                     function=service.machine_resurrect,
+                ),
+                "/metalstack.admin.v2.HousekeepingService/QuotaRequestCleanup": EndpointSync.unary(
+                    method=MethodInfo(
+                        name="QuotaRequestCleanup",
+                        service_name="metalstack.admin.v2.HousekeepingService",
+                        input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupRequest,
+                        output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupResponse,
+                        idempotency_level=IdempotencyLevel.UNKNOWN,
+                    ),
+                    function=service.quota_request_cleanup,
                 ),
             },
             interceptors=interceptors,
@@ -252,6 +297,26 @@ class HousekeepingServiceClientSync(ConnectClientSync):
                 service_name="metalstack.admin.v2.HousekeepingService",
                 input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectRequest,
                 output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceMachineResurrectResponse,
+                idempotency_level=IdempotencyLevel.UNKNOWN,
+            ),
+            headers=headers,
+            timeout_ms=timeout_ms,
+        )
+
+    def quota_request_cleanup(
+        self,
+        request: metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupRequest,
+        *,
+        headers: Headers | Mapping[str, str] | None = None,
+        timeout_ms: int | None = None,
+    ) -> metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupResponse:
+        return self.execute_unary(
+            request=request,
+            method=MethodInfo(
+                name="QuotaRequestCleanup",
+                service_name="metalstack.admin.v2.HousekeepingService",
+                input=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupRequest,
+                output=metalstack_dot_admin_dot_v2_dot_housekeeping__pb2.HousekeepingServiceQuotaRequestCleanupResponse,
                 idempotency_level=IdempotencyLevel.UNKNOWN,
             ),
             headers=headers,
