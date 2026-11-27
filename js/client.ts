@@ -25,6 +25,8 @@ import { PartitionService as Adminv2PartitionService } from "./metalstack/admin/
 
 import { ProjectService as Adminv2ProjectService } from "./metalstack/admin/v2/project_pb";
 
+import { QuotaService as Adminv2QuotaService } from "./metalstack/admin/v2/quota_pb";
+
 import { SizeService as Adminv2SizeService } from "./metalstack/admin/v2/size_pb";
 
 import { SizeImageConstraintService as Adminv2SizeImageConstraintService } from "./metalstack/admin/v2/size_imageconstraint_pb";
@@ -64,6 +66,8 @@ import { PartitionService as Apiv2PartitionService } from "./metalstack/api/v2/p
 import { ProjectService as Apiv2ProjectService } from "./metalstack/api/v2/project_pb";
 
 import { ProjectMemberService as Apiv2ProjectMemberService } from "./metalstack/api/v2/project_member_pb";
+
+import { QuotaService as Apiv2QuotaService } from "./metalstack/api/v2/quota_pb";
 
 import { SizeService as Apiv2SizeService } from "./metalstack/api/v2/size_pb";
 
@@ -134,6 +138,8 @@ export interface Adminv2 {
 
   project(): ConnectClient<typeof Adminv2ProjectService>;
 
+  quota(): ConnectClient<typeof Adminv2QuotaService>;
+
   size(): ConnectClient<typeof Adminv2SizeService>;
 
   sizeImageConstraint(): ConnectClient<typeof Adminv2SizeImageConstraintService>;
@@ -176,6 +182,8 @@ export interface Apiv2 {
   project(): ConnectClient<typeof Apiv2ProjectService>;
 
   projectMember(): ConnectClient<typeof Apiv2ProjectMemberService>;
+
+  quota(): ConnectClient<typeof Apiv2QuotaService>;
 
   size(): ConnectClient<typeof Apiv2SizeService>;
 
@@ -306,6 +314,8 @@ class Adminv2Impl implements Adminv2 {
 
   private _project?: ConnectClient<typeof Adminv2ProjectService>;
 
+  private _quota?: ConnectClient<typeof Adminv2QuotaService>;
+
   private _size?: ConnectClient<typeof Adminv2SizeService>;
 
   private _sizeImageConstraint?: ConnectClient<typeof Adminv2SizeImageConstraintService>;
@@ -398,6 +408,13 @@ class Adminv2Impl implements Adminv2 {
     return this._project;
   }
 
+  quota(): ConnectClient<typeof Adminv2QuotaService> {
+    if (!this._quota) {
+      this._quota = createClient(Adminv2QuotaService, this.transport);
+    }
+    return this._quota;
+  }
+
   size(): ConnectClient<typeof Adminv2SizeService> {
     if (!this._size) {
       this._size = createClient(Adminv2SizeService, this.transport);
@@ -482,6 +499,8 @@ class Apiv2Impl implements Apiv2 {
   private _project?: ConnectClient<typeof Apiv2ProjectService>;
 
   private _projectMember?: ConnectClient<typeof Apiv2ProjectMemberService>;
+
+  private _quota?: ConnectClient<typeof Apiv2QuotaService>;
 
   private _size?: ConnectClient<typeof Apiv2SizeService>;
 
@@ -580,6 +599,13 @@ class Apiv2Impl implements Apiv2 {
       this._projectMember = createClient(Apiv2ProjectMemberService, this.transport);
     }
     return this._projectMember;
+  }
+
+  quota(): ConnectClient<typeof Apiv2QuotaService> {
+    if (!this._quota) {
+      this._quota = createClient(Apiv2QuotaService, this.transport);
+    }
+    return this._quota;
   }
 
   size(): ConnectClient<typeof Apiv2SizeService> {

@@ -42,6 +42,9 @@ const (
 	// HousekeepingServiceMachineResurrectProcedure is the fully-qualified name of the
 	// HousekeepingService's MachineResurrect RPC.
 	HousekeepingServiceMachineResurrectProcedure = "/metalstack.admin.v2.HousekeepingService/MachineResurrect"
+	// HousekeepingServiceQuotaRequestCleanupProcedure is the fully-qualified name of the
+	// HousekeepingService's QuotaRequestCleanup RPC.
+	HousekeepingServiceQuotaRequestCleanupProcedure = "/metalstack.admin.v2.HousekeepingService/QuotaRequestCleanup"
 )
 
 // HousekeepingServiceClient is a client for the metalstack.admin.v2.HousekeepingService service.
@@ -52,6 +55,8 @@ type HousekeepingServiceClient interface {
 	MachineVPNConnected(context.Context, *v2.HousekeepingServiceMachineVPNConnectedRequest) (*v2.HousekeepingServiceMachineVPNConnectedResponse, error)
 	// Machine resurrect dead machines
 	MachineResurrect(context.Context, *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error)
+	// QuotaRequestCleanup deletes admitted and rejected quota requests whose decision is older than the configured retention.
+	QuotaRequestCleanup(context.Context, *v2.HousekeepingServiceQuotaRequestCleanupRequest) (*v2.HousekeepingServiceQuotaRequestCleanupResponse, error)
 }
 
 // NewHousekeepingServiceClient constructs a client for the metalstack.admin.v2.HousekeepingService
@@ -83,6 +88,12 @@ func NewHousekeepingServiceClient(httpClient connect.HTTPClient, baseURL string,
 			connect.WithSchema(housekeepingServiceMethods.ByName("MachineResurrect")),
 			connect.WithClientOptions(opts...),
 		),
+		quotaRequestCleanup: connect.NewClient[v2.HousekeepingServiceQuotaRequestCleanupRequest, v2.HousekeepingServiceQuotaRequestCleanupResponse](
+			httpClient,
+			baseURL+HousekeepingServiceQuotaRequestCleanupProcedure,
+			connect.WithSchema(housekeepingServiceMethods.ByName("QuotaRequestCleanup")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -91,6 +102,7 @@ type housekeepingServiceClient struct {
 	machineLiveliness   *connect.Client[v2.HousekeepingServiceMachineLivelinessRequest, v2.HousekeepingServiceMachineLivelinessResponse]
 	machineVPNConnected *connect.Client[v2.HousekeepingServiceMachineVPNConnectedRequest, v2.HousekeepingServiceMachineVPNConnectedResponse]
 	machineResurrect    *connect.Client[v2.HousekeepingServiceMachineResurrectRequest, v2.HousekeepingServiceMachineResurrectResponse]
+	quotaRequestCleanup *connect.Client[v2.HousekeepingServiceQuotaRequestCleanupRequest, v2.HousekeepingServiceQuotaRequestCleanupResponse]
 }
 
 // MachineLiveliness calls metalstack.admin.v2.HousekeepingService.MachineLiveliness.
@@ -120,6 +132,15 @@ func (c *housekeepingServiceClient) MachineResurrect(ctx context.Context, req *v
 	return nil, err
 }
 
+// QuotaRequestCleanup calls metalstack.admin.v2.HousekeepingService.QuotaRequestCleanup.
+func (c *housekeepingServiceClient) QuotaRequestCleanup(ctx context.Context, req *v2.HousekeepingServiceQuotaRequestCleanupRequest) (*v2.HousekeepingServiceQuotaRequestCleanupResponse, error) {
+	response, err := c.quotaRequestCleanup.CallUnary(ctx, connect.NewRequest(req))
+	if response != nil {
+		return response.Msg, err
+	}
+	return nil, err
+}
+
 // HousekeepingServiceHandler is an implementation of the metalstack.admin.v2.HousekeepingService
 // service.
 type HousekeepingServiceHandler interface {
@@ -129,6 +150,8 @@ type HousekeepingServiceHandler interface {
 	MachineVPNConnected(context.Context, *v2.HousekeepingServiceMachineVPNConnectedRequest) (*v2.HousekeepingServiceMachineVPNConnectedResponse, error)
 	// Machine resurrect dead machines
 	MachineResurrect(context.Context, *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error)
+	// QuotaRequestCleanup deletes admitted and rejected quota requests whose decision is older than the configured retention.
+	QuotaRequestCleanup(context.Context, *v2.HousekeepingServiceQuotaRequestCleanupRequest) (*v2.HousekeepingServiceQuotaRequestCleanupResponse, error)
 }
 
 // NewHousekeepingServiceHandler builds an HTTP handler from the service implementation. It returns
@@ -156,6 +179,12 @@ func NewHousekeepingServiceHandler(svc HousekeepingServiceHandler, opts ...conne
 		connect.WithSchema(housekeepingServiceMethods.ByName("MachineResurrect")),
 		connect.WithHandlerOptions(opts...),
 	)
+	housekeepingServiceQuotaRequestCleanupHandler := connect.NewUnaryHandlerSimple(
+		HousekeepingServiceQuotaRequestCleanupProcedure,
+		svc.QuotaRequestCleanup,
+		connect.WithSchema(housekeepingServiceMethods.ByName("QuotaRequestCleanup")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/metalstack.admin.v2.HousekeepingService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case HousekeepingServiceMachineLivelinessProcedure:
@@ -164,6 +193,8 @@ func NewHousekeepingServiceHandler(svc HousekeepingServiceHandler, opts ...conne
 			housekeepingServiceMachineVPNConnectedHandler.ServeHTTP(w, r)
 		case HousekeepingServiceMachineResurrectProcedure:
 			housekeepingServiceMachineResurrectHandler.ServeHTTP(w, r)
+		case HousekeepingServiceQuotaRequestCleanupProcedure:
+			housekeepingServiceQuotaRequestCleanupHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -183,4 +214,8 @@ func (UnimplementedHousekeepingServiceHandler) MachineVPNConnected(context.Conte
 
 func (UnimplementedHousekeepingServiceHandler) MachineResurrect(context.Context, *v2.HousekeepingServiceMachineResurrectRequest) (*v2.HousekeepingServiceMachineResurrectResponse, error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.HousekeepingService.MachineResurrect is not implemented"))
+}
+
+func (UnimplementedHousekeepingServiceHandler) QuotaRequestCleanup(context.Context, *v2.HousekeepingServiceQuotaRequestCleanupRequest) (*v2.HousekeepingServiceQuotaRequestCleanupResponse, error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("metalstack.admin.v2.HousekeepingService.QuotaRequestCleanup is not implemented"))
 }

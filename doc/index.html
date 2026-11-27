@@ -1344,6 +1344,73 @@
         
           
           <li>
+            <a href="#metalstack%2fapi%2fv2%2fquota.proto">metalstack/api/v2/quota.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaRequest"><span class="badge">M</span>QuotaRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaServiceChangeRequestRequest"><span class="badge">M</span>QuotaServiceChangeRequestRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaServiceChangeRequestResponse"><span class="badge">M</span>QuotaServiceChangeRequestResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaServiceDeleteRequestRequest"><span class="badge">M</span>QuotaServiceDeleteRequestRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaServiceDeleteRequestResponse"><span class="badge">M</span>QuotaServiceDeleteRequestResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaServiceGetRequest"><span class="badge">M</span>QuotaServiceGetRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaServiceGetResponse"><span class="badge">M</span>QuotaServiceGetResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaServiceListRequest"><span class="badge">M</span>QuotaServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaServiceListResponse"><span class="badge">M</span>QuotaServiceListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.TenantQuota"><span class="badge">M</span>TenantQuota</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaRequestState"><span class="badge">E</span>QuotaRequestState</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaResource"><span class="badge">E</span>QuotaResource</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaSource"><span class="badge">E</span>QuotaSource</a>
+                </li>
+              
+              
+              
+                <li>
+                  <a href="#metalstack.api.v2.QuotaService"><span class="badge">S</span>QuotaService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
             <a href="#metalstack%2fapi%2fv2%2fvpn.proto">metalstack/api/v2/vpn.proto</a>
             <ul>
               
@@ -1384,6 +1451,14 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.HousekeepingServiceMachineVPNConnectedResponse"><span class="badge">M</span>HousekeepingServiceMachineVPNConnectedResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupRequest"><span class="badge">M</span>HousekeepingServiceQuotaRequestCleanupRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupResponse"><span class="badge">M</span>HousekeepingServiceQuotaRequestCleanupResponse</a>
                 </li>
               
                 <li>
@@ -1871,6 +1946,53 @@
               
                 <li>
                   <a href="#metalstack.admin.v2.ProjectService"><span class="badge">S</span>ProjectService</a>
+                </li>
+              
+            </ul>
+          </li>
+        
+          
+          <li>
+            <a href="#metalstack%2fadmin%2fv2%2fquota.proto">metalstack/admin/v2/quota.proto</a>
+            <ul>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.QuotaServiceAdmitRequest"><span class="badge">M</span>QuotaServiceAdmitRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.QuotaServiceAdmitResponse"><span class="badge">M</span>QuotaServiceAdmitResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.QuotaServiceListRequest"><span class="badge">M</span>QuotaServiceListRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.QuotaServiceListRequestsRequest"><span class="badge">M</span>QuotaServiceListRequestsRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.QuotaServiceListRequestsResponse"><span class="badge">M</span>QuotaServiceListRequestsResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.QuotaServiceListResponse"><span class="badge">M</span>QuotaServiceListResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.QuotaServiceRejectRequest"><span class="badge">M</span>QuotaServiceRejectRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#metalstack.admin.v2.QuotaServiceRejectResponse"><span class="badge">M</span>QuotaServiceRejectResponse</a>
+                </li>
+              
+              
+              
+              
+                <li>
+                  <a href="#metalstack.admin.v2.QuotaService"><span class="badge">S</span>QuotaService</a>
                 </li>
               
             </ul>
@@ -12271,6 +12393,541 @@ if placement labels are provided, the machine candidate has an additional anti-a
     
       
       <div class="file-heading">
+        <h2 id="metalstack/api/v2/quota.proto">metalstack/api/v2/quota.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.api.v2.QuotaRequest">QuotaRequest</h3>
+        <p>QuotaRequest is a request of a tenant to change the quota of a single resource.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of this quota request. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>meta</td>
+                  <td><a href="#metalstack.api.v2.Meta">Meta</a></td>
+                  <td></td>
+                  <td><p>Meta for this quota request. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant this request belongs to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>resource</td>
+                  <td><a href="#metalstack.api.v2.QuotaResource">QuotaResource</a></td>
+                  <td></td>
+                  <td><p>Resource the change is requested for. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>max</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Max is the requested maximum amount of this resource. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reason</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reason why the change is requested. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#metalstack.api.v2.QuotaRequestState">QuotaRequestState</a></td>
+                  <td></td>
+                  <td><p>State of this request. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>requested_by</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>RequestedBy is the user who issued this request. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>decided_at</td>
+                  <td><a href="#google.protobuf.Timestamp">google.protobuf.Timestamp</a></td>
+                  <td>optional</td>
+                  <td><p>DecidedAt is the date when this request was admitted or rejected. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>comment</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Comment of the administrator regarding the decision. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.QuotaServiceChangeRequestRequest">QuotaServiceChangeRequestRequest</h3>
+        <p>QuotaServiceChangeRequestRequest is the request payload of the quota change request request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>resource</td>
+                  <td><a href="#metalstack.api.v2.QuotaResource">QuotaResource</a></td>
+                  <td></td>
+                  <td><p>Resource the change is requested for. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>max</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Max is the requested maximum amount of this resource. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>reason</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Reason why the change is requested. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.QuotaServiceChangeRequestResponse">QuotaServiceChangeRequestResponse</h3>
+        <p>QuotaServiceChangeRequestResponse is the response payload of the quota change request request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>request</td>
+                  <td><a href="#metalstack.api.v2.QuotaRequest">QuotaRequest</a></td>
+                  <td></td>
+                  <td><p>Request is the created quota request. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.QuotaServiceDeleteRequestRequest">QuotaServiceDeleteRequestRequest</h3>
+        <p>QuotaServiceDeleteRequestRequest is the request payload of the quota delete request request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the quota request to delete. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.QuotaServiceDeleteRequestResponse">QuotaServiceDeleteRequestResponse</h3>
+        <p>QuotaServiceDeleteRequestResponse is the response payload of the quota delete request request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>request</td>
+                  <td><a href="#metalstack.api.v2.QuotaRequest">QuotaRequest</a></td>
+                  <td></td>
+                  <td><p>Request is the deleted quota request. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.QuotaServiceGetRequest">QuotaServiceGetRequest</h3>
+        <p>QuotaServiceGetRequest is the request payload of the quota get request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>resource</td>
+                  <td><a href="#metalstack.api.v2.QuotaResource">QuotaResource</a></td>
+                  <td></td>
+                  <td><p>Resource of the quota. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.QuotaServiceGetResponse">QuotaServiceGetResponse</h3>
+        <p>QuotaServiceGetResponse is the response payload of the quota get request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>quota</td>
+                  <td><a href="#metalstack.api.v2.TenantQuota">TenantQuota</a></td>
+                  <td></td>
+                  <td><p>Quota of the tenant for the requested resource. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.QuotaServiceListRequest">QuotaServiceListRequest</h3>
+        <p>QuotaServiceListRequest is the request payload of the quota list request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.QuotaServiceListResponse">QuotaServiceListResponse</h3>
+        <p>QuotaServiceListResponse is the response payload of the quota list request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>quotas</td>
+                  <td><a href="#metalstack.api.v2.TenantQuota">TenantQuota</a></td>
+                  <td>repeated</td>
+                  <td><p>Quotas of the tenant, one per resource. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.api.v2.TenantQuota">TenantQuota</h3>
+        <p>TenantQuota is the quota of a tenant for a single resource.</p><p>There is exactly one quota per tenant and resource.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Login of the tenant. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>resource</td>
+                  <td><a href="#metalstack.api.v2.QuotaResource">QuotaResource</a></td>
+                  <td></td>
+                  <td><p>Resource this quota applies to. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>max</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td>optional</td>
+                  <td><p>Max is the maximum amount of this resource, if not set the resource is unlimited. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>used</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p>Used is the current amount of this resource in use. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>source</td>
+                  <td><a href="#metalstack.api.v2.QuotaSource">QuotaSource</a></td>
+                  <td></td>
+                  <td><p>Source describes where the max value originates from. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>pending_request</td>
+                  <td><a href="#metalstack.api.v2.QuotaRequest">QuotaRequest</a></td>
+                  <td>optional</td>
+                  <td><p>PendingRequest is the currently pending quota request for this resource, if any. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="metalstack.api.v2.QuotaRequestState">QuotaRequestState</h3>
+        <p>QuotaRequestState is the state of a quota request.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>QUOTA_REQUEST_STATE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>QUOTA_REQUEST_STATE_UNSPECIFIED is not specified.</p></td>
+              </tr>
+            
+              <tr>
+                <td>QUOTA_REQUEST_STATE_PENDING</td>
+                <td>1</td>
+                <td><p>QUOTA_REQUEST_STATE_PENDING the request awaits a decision of an administrator.</p></td>
+              </tr>
+            
+              <tr>
+                <td>QUOTA_REQUEST_STATE_ADMITTED</td>
+                <td>2</td>
+                <td><p>QUOTA_REQUEST_STATE_ADMITTED the request was admitted and the quota was applied.</p></td>
+              </tr>
+            
+              <tr>
+                <td>QUOTA_REQUEST_STATE_REJECTED</td>
+                <td>3</td>
+                <td><p>QUOTA_REQUEST_STATE_REJECTED the request was rejected.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.QuotaResource">QuotaResource</h3>
+        <p>QuotaResource is the type of resource a quota applies to.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>QUOTA_RESOURCE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>QUOTA_RESOURCE_UNSPECIFIED is not specified.</p></td>
+              </tr>
+            
+              <tr>
+                <td>QUOTA_RESOURCE_MACHINES</td>
+                <td>1</td>
+                <td><p>QUOTA_RESOURCE_MACHINES limits the amount of allocated machines across all projects of a tenant.</p></td>
+              </tr>
+            
+              <tr>
+                <td>QUOTA_RESOURCE_NETWORKS</td>
+                <td>2</td>
+                <td><p>QUOTA_RESOURCE_NETWORKS limits the amount of child networks across all projects of a tenant.</p></td>
+              </tr>
+            
+              <tr>
+                <td>QUOTA_RESOURCE_PROJECTS</td>
+                <td>3</td>
+                <td><p>QUOTA_RESOURCE_PROJECTS limits the amount of projects of a tenant.</p></td>
+              </tr>
+            
+              <tr>
+                <td>QUOTA_RESOURCE_IPS</td>
+                <td>4</td>
+                <td><p>QUOTA_RESOURCE_IPS limits the amount of static ips across all projects of a tenant.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+        <h3 id="metalstack.api.v2.QuotaSource">QuotaSource</h3>
+        <p>QuotaSource describes where the max value of a quota originates from.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>QUOTA_SOURCE_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p>QUOTA_SOURCE_UNSPECIFIED is not specified.</p></td>
+              </tr>
+            
+              <tr>
+                <td>QUOTA_SOURCE_DEFAULT</td>
+                <td>1</td>
+                <td><p>QUOTA_SOURCE_DEFAULT the value is the platform default.</p></td>
+              </tr>
+            
+              <tr>
+                <td>QUOTA_SOURCE_TENANT</td>
+                <td>2</td>
+                <td><p>QUOTA_SOURCE_TENANT the value was explicitly set for this tenant.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
+
+      
+
+      
+        <h3 id="metalstack.api.v2.QuotaService">QuotaService</h3>
+        <p>QuotaService provides quota operations for tenants.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>Get</td>
+                <td><a href="#metalstack.api.v2.QuotaServiceGetRequest">QuotaServiceGetRequest</a></td>
+                <td><a href="#metalstack.api.v2.QuotaServiceGetResponse">QuotaServiceGetResponse</a></td>
+                <td><p>Get the quota of a tenant for a specific resource including the current usage.</p></td>
+              </tr>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.api.v2.QuotaServiceListRequest">QuotaServiceListRequest</a></td>
+                <td><a href="#metalstack.api.v2.QuotaServiceListResponse">QuotaServiceListResponse</a></td>
+                <td><p>List the quotas of a tenant, there is exactly one quota per resource.</p></td>
+              </tr>
+            
+              <tr>
+                <td>ChangeRequest</td>
+                <td><a href="#metalstack.api.v2.QuotaServiceChangeRequestRequest">QuotaServiceChangeRequestRequest</a></td>
+                <td><a href="#metalstack.api.v2.QuotaServiceChangeRequestResponse">QuotaServiceChangeRequestResponse</a></td>
+                <td><p>ChangeRequest requests a change of the quota of a tenant for a specific resource.
+The request must be admitted by an administrator before it becomes effective.
+There can only be one pending request per tenant and resource, an existing pending request gets replaced.</p></td>
+              </tr>
+            
+              <tr>
+                <td>DeleteRequest</td>
+                <td><a href="#metalstack.api.v2.QuotaServiceDeleteRequestRequest">QuotaServiceDeleteRequestRequest</a></td>
+                <td><a href="#metalstack.api.v2.QuotaServiceDeleteRequestResponse">QuotaServiceDeleteRequestResponse</a></td>
+                <td><p>DeleteRequest deletes a quota request of a tenant regardless of its state.
+Deleting a pending request withdraws it, deleting an admitted request does not revert the applied quota.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
         <h2 id="metalstack/api/v2/vpn.proto">metalstack/api/v2/vpn.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
@@ -12442,6 +13099,37 @@ if placement labels are provided, the machine candidate has an additional anti-a
 
         
       
+        <h3 id="metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupRequest">HousekeepingServiceQuotaRequestCleanupRequest</h3>
+        <p>HousekeepingServiceQuotaRequestCleanupRequest is the request payload for a quota request cleanup housekeeping request.</p>
+
+        
+
+        
+      
+        <h3 id="metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupResponse">HousekeepingServiceQuotaRequestCleanupResponse</h3>
+        <p>HousekeepingServiceQuotaRequestCleanupResponse is the response payload for a quota request cleanup housekeeping request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>deleted_requests</td>
+                  <td><a href="#metalstack.api.v2.QuotaRequest">metalstack.api.v2.QuotaRequest</a></td>
+                  <td>repeated</td>
+                  <td><p>Quota requests which have been deleted. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="metalstack.admin.v2.MachineWithLiveliness">MachineWithLiveliness</h3>
         <p>MachineWithLiveliness</p>
 
@@ -12506,6 +13194,13 @@ if placement labels are provided, the machine candidate has an additional anti-a
                 <td><a href="#metalstack.admin.v2.HousekeepingServiceMachineResurrectRequest">HousekeepingServiceMachineResurrectRequest</a></td>
                 <td><a href="#metalstack.admin.v2.HousekeepingServiceMachineResurrectResponse">HousekeepingServiceMachineResurrectResponse</a></td>
                 <td><p>Machine resurrect dead machines</p></td>
+              </tr>
+            
+              <tr>
+                <td>QuotaRequestCleanup</td>
+                <td><a href="#metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupRequest">HousekeepingServiceQuotaRequestCleanupRequest</a></td>
+                <td><a href="#metalstack.admin.v2.HousekeepingServiceQuotaRequestCleanupResponse">HousekeepingServiceQuotaRequestCleanupResponse</a></td>
+                <td><p>QuotaRequestCleanup deletes admitted and rejected quota requests whose decision is older than the configured retention.</p></td>
               </tr>
             
           </tbody>
@@ -16036,6 +16731,301 @@ console.metalstack.cloud/invite/&lt;secret. </p></td>
                 <td><a href="#metalstack.admin.v2.ProjectServiceListRequest">ProjectServiceListRequest</a></td>
                 <td><a href="#metalstack.admin.v2.ProjectServiceListResponse">ProjectServiceListResponse</a></td>
                 <td><p>Returns the list of projects matching the filter criteria.</p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+
+        
+    
+      
+      <div class="file-heading">
+        <h2 id="metalstack/admin/v2/quota.proto">metalstack/admin/v2/quota.proto</h2><a href="#title">Top</a>
+      </div>
+      <p></p>
+
+      
+        <h3 id="metalstack.admin.v2.QuotaServiceAdmitRequest">QuotaServiceAdmitRequest</h3>
+        <p>QuotaServiceAdmitRequest is the request payload of the quota admit request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the quota request to admit. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>max</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td>optional</td>
+                  <td><p>Max optionally overrides the requested max, e.g. to admit only a part of the request. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>comment</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Comment regarding the decision, visible to the tenant. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.QuotaServiceAdmitResponse">QuotaServiceAdmitResponse</h3>
+        <p>QuotaServiceAdmitResponse is the response payload of the quota admit request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>request</td>
+                  <td><a href="#metalstack.api.v2.QuotaRequest">metalstack.api.v2.QuotaRequest</a></td>
+                  <td></td>
+                  <td><p>Request is the admitted quota request. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>quota</td>
+                  <td><a href="#metalstack.api.v2.TenantQuota">metalstack.api.v2.TenantQuota</a></td>
+                  <td></td>
+                  <td><p>Quota is the resulting quota of the tenant. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.QuotaServiceListRequest">QuotaServiceListRequest</h3>
+        <p>QuotaServiceListRequest is the request payload of the quota list request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Login filters quotas by tenant. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>resource</td>
+                  <td><a href="#metalstack.api.v2.QuotaResource">metalstack.api.v2.QuotaResource</a></td>
+                  <td>optional</td>
+                  <td><p>Resource filters quotas by resource. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.QuotaServiceListRequestsRequest">QuotaServiceListRequestsRequest</h3>
+        <p>QuotaServiceListRequestsRequest is the request payload of the quota list requests request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>login</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Login filters quota requests by tenant. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>resource</td>
+                  <td><a href="#metalstack.api.v2.QuotaResource">metalstack.api.v2.QuotaResource</a></td>
+                  <td>optional</td>
+                  <td><p>Resource filters quota requests by resource. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>state</td>
+                  <td><a href="#metalstack.api.v2.QuotaRequestState">metalstack.api.v2.QuotaRequestState</a></td>
+                  <td>optional</td>
+                  <td><p>State filters quota requests by state, defaults to all states. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.QuotaServiceListRequestsResponse">QuotaServiceListRequestsResponse</h3>
+        <p>QuotaServiceListRequestsResponse is the response payload of the quota list requests request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>requests</td>
+                  <td><a href="#metalstack.api.v2.QuotaRequest">metalstack.api.v2.QuotaRequest</a></td>
+                  <td>repeated</td>
+                  <td><p>Requests are the quota requests. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.QuotaServiceListResponse">QuotaServiceListResponse</h3>
+        <p>QuotaServiceListResponse is the response payload of the quota list request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>quotas</td>
+                  <td><a href="#metalstack.api.v2.TenantQuota">metalstack.api.v2.TenantQuota</a></td>
+                  <td>repeated</td>
+                  <td><p>Quotas of the tenants. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.QuotaServiceRejectRequest">QuotaServiceRejectRequest</h3>
+        <p>QuotaServiceRejectRequest is the request payload of the quota reject request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p>Id of the quota request to reject. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>comment</td>
+                  <td><a href="#string">string</a></td>
+                  <td>optional</td>
+                  <td><p>Comment regarding the decision, visible to the tenant. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="metalstack.admin.v2.QuotaServiceRejectResponse">QuotaServiceRejectResponse</h3>
+        <p>QuotaServiceRejectResponse is the response payload of the quota reject request.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>request</td>
+                  <td><a href="#metalstack.api.v2.QuotaRequest">metalstack.api.v2.QuotaRequest</a></td>
+                  <td></td>
+                  <td><p>Request is the rejected quota request. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+
+      
+
+      
+        <h3 id="metalstack.admin.v2.QuotaService">QuotaService</h3>
+        <p>QuotaService provides quota management operations.</p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>List</td>
+                <td><a href="#metalstack.admin.v2.QuotaServiceListRequest">QuotaServiceListRequest</a></td>
+                <td><a href="#metalstack.admin.v2.QuotaServiceListResponse">QuotaServiceListResponse</a></td>
+                <td><p>List the quotas of tenants.</p></td>
+              </tr>
+            
+              <tr>
+                <td>ListRequests</td>
+                <td><a href="#metalstack.admin.v2.QuotaServiceListRequestsRequest">QuotaServiceListRequestsRequest</a></td>
+                <td><a href="#metalstack.admin.v2.QuotaServiceListRequestsResponse">QuotaServiceListRequestsResponse</a></td>
+                <td><p>ListRequests lists quota requests of tenants.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Admit</td>
+                <td><a href="#metalstack.admin.v2.QuotaServiceAdmitRequest">QuotaServiceAdmitRequest</a></td>
+                <td><a href="#metalstack.admin.v2.QuotaServiceAdmitResponse">QuotaServiceAdmitResponse</a></td>
+                <td><p>Admit a pending quota request, the requested max gets applied to the quota of the tenant.</p></td>
+              </tr>
+            
+              <tr>
+                <td>Reject</td>
+                <td><a href="#metalstack.admin.v2.QuotaServiceRejectRequest">QuotaServiceRejectRequest</a></td>
+                <td><a href="#metalstack.admin.v2.QuotaServiceRejectResponse">QuotaServiceRejectResponse</a></td>
+                <td><p>Reject a pending quota request.</p></td>
               </tr>
             
           </tbody>
